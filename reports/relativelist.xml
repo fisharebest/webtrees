@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PGVReport access="PRIV_PUBLIC" icon="cfamily">
+<!-- $Id$ -->
+	<PGVRTitle><PGVRvar var="pgv_lang[relatives_report]" /></PGVRTitle>
+	<PGVRDescription>Prints a list of individuals related to a specific person</PGVRDescription>
+	<PGVRInput name="pid" lookup="INDI" type="text"><PGVRvar var="pgv_lang[enter_pid]" /></PGVRInput>
+	<PGVRInput name="relatives" type="select" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="pgv_lang[choose_relatives]" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none,ID,NAME,BIRT:DATE,DEAT:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
+	<PGVRInput name="pageorient" type="select" default="landscape" options="landscape,portrait"><PGVRvar var="pgv_lang[orientation]" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+
+	<PGVRStyle name="header" font="$fonts" size="14" style="b" />
+	<PGVRStyle name="pagenum" font="$fonts" size="8" />
+	<PGVRStyle name="text" font="$fonts" size="9" />
+	<PGVRStyle name="label" font="$fonts" size="9" style="b" />
+	<PGVRStyle name="genby" font="$fonts" size="8" />
+	<!-- Date text -->
+	<PGVRStyle name="date" font="$fonts" size="8"/>
+
+	<PGVRif condition="$pageorient=='landscape'">
+		<!-- landscape orientation -->
+		<PGVRSetVar name="idwidth" value="50"/>
+		<PGVRSetVar name="namewidth" value="180"/>
+		<PGVRSetVar name="birthwidth" value="250"/>
+	</PGVRif>
+	
+	<PGVRif condition="$pageorient=='portrait'">
+		<!-- portrait orientation -->
+		<PGVRSetVar name="idwidth" value="45"/>
+		<PGVRSetVar name="namewidth" value="155"/>
+		<PGVRSetVar name="birthwidth" value="160"/>
+	</PGVRif>
+
+	<PGVRDoc pageSize="$pageSize" orientation="$pageorient" >
+
+		<PGVRHeader>
+			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="pgv_lang[relatives_report]" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+
+			<PGVRSetVar name="fill" value="" />
+			<PGVRif condition="$sortby=='ID'">
+				<PGVRSetVar name="fill" value="#AAAAAA" />
+			</PGVRif>
+			<PGVRCell bgcolor="$fill" border="1" style="label" width="$idwidth"> </PGVRCell>
+
+			<PGVRSetVar name="fill" value="" />
+			<PGVRif condition="$sortby=='NAME'">
+				<PGVRSetVar name="fill" value="#AAAAAA" />
+			</PGVRif>
+			<PGVRCell bgcolor="$fill" border="1" style="label" width="$namewidth"> <PGVRvar var="pgv_lang[name]" /></PGVRCell>
+
+			<PGVRSetVar name="fill" value="" />
+			<PGVRif condition="$sortby=='BIRT:DATE'">
+				<PGVRSetVar name="fill" value="#AAAAAA" />
+			</PGVRif>
+			<PGVRCell bgcolor="$fill" border="1" style="label" width="$birthwidth"> <PGVRvar var="factarray[BIRT]" /></PGVRCell>
+
+			<PGVRSetVar name="fill" value="" />
+			<PGVRif condition="$sortby=='DEAT:DATE'">
+				<PGVRSetVar name="fill" value="#AAAAAA" />
+			</PGVRif>
+			<PGVRCell bgcolor="$fill" border="1" newline="1" style="label"> <PGVRvar var="factarray[DEAT]" /></PGVRCell>
+		</PGVRHeader>
+
+		<PGVRBody>
+
+			<PGVRRelatives id="$pid" group="$relatives" sortby="$sortby">
+				<PGVRTextBox height="1" newline="1"/>
+				<PGVRTextBox height="12" width="$idwidth">
+					<PGVRText style="text"><PGVRGedcomValue tag="@id" /></PGVRText>
+				</PGVRTextBox>
+				<PGVRTextBox height="12" width="$namewidth">
+					<PGVRText style="text"><PGVRGetPersonName id="" /></PGVRText>
+				</PGVRTextBox>
+				<PGVRTextBox height="12" width="$birthwidth">
+					<PGVRText style="text">
+						<PGVRGedcomValue tag="BIRT:DATE" />
+						<!-- Add space only if birth date exist -->
+						<PGVRif condition="@BIRT:DATE!=''">  </PGVRif>
+						<PGVRGedcomValue tag="BIRT:PLAC" />
+					</PGVRText>
+				</PGVRTextBox>
+				<PGVRTextBox height="12" newline="1">
+					<PGVRText style="text">
+						<PGVRGedcomValue tag="DEAT:DATE" />
+						<!-- Add space only if death date exist -->
+						<PGVRif condition="@DEAT:DATE!=''">  </PGVRif>
+						<PGVRGedcomValue tag="DEAT:PLAC" />
+					</PGVRText>
+				</PGVRTextBox>
+				<!-- page wide line, to the margin -->
+				<PGVRLine />
+			</PGVRRelatives>
+
+			<PGVRCell align="rightrtl" newline="1" style="label">
+				<br /><PGVRvar var="pgv_lang[total_indis]" />: <PGVRListTotal />
+			</PGVRCell>
+		</PGVRBody>
+		<PGVRFooter>
+			<PGVRCell align="rightrtl" newline="1" style="date"><PGVRNow /></PGVRCell>
+		</PGVRFooter>
+	</PGVRDoc>
+</PGVReport>

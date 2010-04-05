@@ -1,0 +1,8 @@
+/*
+ * @version $Id: mozilla.css 4197 2008-10-30 12:24:13Z fisharebest $
+ */
+.door dd {
+	-moz-border-radius-topleft: 0.6em;
+	-moz-border-radius-topright: 0.6em;
+}
+

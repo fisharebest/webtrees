@@ -1,0 +1,10 @@
+/*
+ * @version $Id$
+ */
+#container {
+	padding:10px;
+}
+
+.block {
+	overflow: hidden;
+}

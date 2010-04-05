@@ -1,0 +1,674 @@
+/**
+ * Print for Xenea theme
+ *
+ * Use this stylesheet to customize the display of your site.
+ * To learn more about CSS visit http://www.w3.org/TR/REC-CSS2/
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2010 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * $Id$
+ *
+ * @package webtrees
+ * @subpackage Themes
+ */
+.something {
+	/*empty style to make sure that the BODY style is not ignored */
+}
+#backprint {
+	display:none;
+}
+body {
+	color: black;
+	background-color: white;
+	font: 12px arial, helvetica, sans-serif;
+}
+a {
+	text-decoration: none;
+	font-family: arial, helvetica, verdana, sans-serif;
+	color: black;
+}
+ul {
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 8px;
+}
+.center {
+	text-align: center;
+}
+table.center {
+ 	margin-left: auto;
+ 	margin-right: auto;
+}
+
+th {
+	font-weight: 100;
+}
+.button {
+	width: 60px;
+}
+.person_box {
+	font: 10px arial, sans-serif;
+	border: solid black 1px;
+}
+.person_boxF {
+	font: 10px arial, sans-serif;
+	border: solid black 1px;
+}
+.person_boxNN {
+	font: 10px arial, sans-serif;
+	border: solid black 1px;
+}
+.list_table {
+}
+.list_label {
+	font: bold 13px arial, sans-serif;
+	text-align: center;
+	white-space: nowrap;
+}
+.list_label_wrap {
+	font: bold 13px arial, sans-serif;
+	text-align: center;
+}
+.list_value {
+	border: solid #C3DFFF 1px;
+	font: 12px arial, sans-serif;
+	vertical-align: top;
+	white-space: nowrap;
+}
+.list_value_wrap {
+	border: solid #C3DFFF 1px;
+	font: 12px arial, sans-serif;
+	vertical-align: top;
+}
+
+.list_item {
+	font-size:10px;
+}
+.facts_table {
+	width: 99%;
+}
+.facts_label {
+	font: 12px verdana, helvetica, sans-serif;
+	padding: 4px;
+	width: 20%;
+	text-align: center;
+}
+.facts_label02 {
+	font: bold 12px verdana, helvetica, sans-serif;
+	padding: 4px;
+	text-align: center;
+}
+.facts_label03 {
+	font: bold 12px verdana, helvetica, sans-serif;
+	padding: 4px;
+	text-align: center;
+}
+.facts_value {
+	font: 12px arial, sans-serif;
+	padding: 4px;
+}
+.facts_value02 {
+	font: 14px arial, sans-serif;
+	padding: 4px;
+}
+.facts_labelred {
+	border: solid red 2px;
+	font: 14px arial, sans-serif;
+	padding: 4px;
+	width: 20%;
+	text-align: center;
+}
+.facts_valuered {
+	border: solid red 2px;
+	font: 14px arial, sans-serif;
+	padding: 4px;
+}
+.facts_labelblue {
+	border: solid blue 2px;
+	font: 14px arial, sans-serif;
+	padding: 4px;
+	width: 20%;
+	text-align: center;
+}
+.facts_valueblue {
+	border: solid blue 2px;
+	font: 14px arial, sans-serif;
+	padding: 4px;
+}
+.tabs_table {
+	width: 99%;
+}
+.tab_cell_active {
+	border-color: #FF6633;
+	border-width: 1px;
+	border-bottom-style: none;
+	border-top-style: solid;
+	border-right-style: solid;
+	text-align: center;
+	font-weight: bold;
+}
+.tab_cell_inactive {
+	border-color: #FF6633;
+	border-width: 1px;
+	border-right-style: solid;
+	text-align: center;
+	font-weight: bold;
+}
+.tab_active_bottom {
+	border: none;
+	height: 5px;
+}
+.tab_inactive_bottom {
+	border-left: none;
+	border-right: none;
+	border-top: solid #FF6633 1px;
+	height: 5px;
+}
+.tab_inactive_bottom_right {
+	border-left: none;
+	border-right: none;
+	border-top: solid #FF6633 1px;
+	width: 35%;
+	height: 5px;
+}
+.name1 {
+	font: bold 10px verdana, helvetica, arial, sans-serif;
+}
+.namered {
+	border: solid red 1px;
+}
+.nameblue {
+	border: solid blue 1px;
+}
+.details1 {
+	font: 9px arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+.name2 {
+	font: bold 11px verdana, helvetica, arial, sans-serif;
+}
+.details2 {
+	font: 9px arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+.nameZoom {
+	font: bold 16px verdana, helvetica, arial, sans-serif;
+}
+.detailsZoom {
+	font: 13px arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.name_head {
+	font: bold 16px verdana, helvetica, arial, sans-serif;
+	letter-spacing: .2px;
+}
+.error {
+	font-family: verdana, helvetica, arial, sans-serif;
+}
+.warning {
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight: bold;
+}
+.indent {
+	padding-left: 7px;
+}
+.indent_rtl {
+	padding-right: 7px;
+}
+.image {
+	height: 150px;
+	padding: 5px;
+	border: solid black 1px;
+}
+.gender_image {
+	height: 9px;
+	width: 9px;
+	margin-right: 3px;
+}
+.pedigree_image_portrait {
+	float: left;
+	height: 50px;
+	border: solid black 1px;
+	margin-right: 3px;
+}
+.pedigree_image_portrait_rtl {
+	float: right;
+	height: 50px;
+	border: solid black 1px;
+	margin-left: 3px;
+}
+.pedigree_image_landscape {
+	float: left;
+	width: 50px;
+	border: solid black 1px;
+	margin-right: 3px;
+}
+.pedigree_image_landscape_rtl {
+	float: right;
+	width: 50px;
+	border: solid black 1px;
+	margin-left: 3px;
+}
+.pedigree_form {
+	width: 60px;
+}
+.thumbnail {
+	height: auto;
+	padding: 5px;
+}
+.icon {
+	border: none;
+}
+.link {
+	font-size: 11px;
+	text-align: center;
+}
+.sublinks_table {
+	border: solid #84BEFF 1px;
+}
+.sublinks_cell {
+	font-size: 11px;
+}
+.subheaders {
+	text-indent: 20px;
+	margin-top: 15px;
+	vertical-align: bottom;
+	font: bold 16px arial, sans-serif;
+}
+.age {
+	font-size: 9px;
+}
+.source_citations {
+	display: none;
+}
+.footer {
+	font: 12px arial, helvetica, sans-serif;
+	width: 99%;
+}
+.contact_links {
+	text-align: center;
+}
+.flag {
+	width: 15px;
+	border: solid black 1px;
+}
+.header_select {
+	font-size: 9pt;
+}
+.lang_form {
+	margin-top: 3px;
+}
+.favorites_form {
+	margin-top: 0;
+}
+.help {
+	font-weight: bold;
+	cursor: help;
+}
+.menuitem {
+	font: 11px verdana, helvetica, sans-serif;
+	text-decoration: none;
+	text-align: center;
+	padding: 1px;
+}
+.menuitem_hover	{
+	font: 11px verdana, helvetica, sans-serif;
+	text-decoration: none;
+	text-align: center;
+	padding: 1px;
+}
+.submenu {
+	text-decoration: none;
+	font: 11px arial, sans-serif;
+	text-align: center;
+	border: solid #84BEFF 1px;
+	white-space: nowrap;
+}
+.submenuitem {
+	font: normal 11px verdana, helvetica, sans-serif;
+	text-decoration: none;
+	background-color: #ECF5FF;
+	white-space: nowrap;
+	text-align: left;
+	padding: 1px;
+}
+.submenuitem_hover	{
+	font: normal 11px verdana, helvetica, sans-serif;
+	text-decoration: none;
+	background-color: white;
+	white-space: nowrap;
+	text-align: left;
+	padding: 1px;
+}
+.menuitem a {
+}
+
+.current_day {
+	font-weight: bold;
+	font-size: 16px;
+}
+.cal_day {
+	float: left;
+	font-weight: bold;
+}
+.rtl_cal_day {
+	direction: rtl;
+	float: right;
+	color: blue;
+	font-weight: bold;
+}
+.helpheader {
+	font: bold 16px arial, sans-serif;
+	color: black;
+}
+.helpstart {
+	font: bold 14px arial, sans-serif;
+	color: blue;
+	text-decoration : none;
+}
+.helptext {
+	font: 12px arial, sans-serif;
+	color: black;
+}
+
+#content {
+	margin-left: 1px;
+}
+
+#footer {
+	clear: both;
+}
+
+/*-- index.php specific style sheets -- */
+.small_inner_block {
+	height: 250px;
+	overflow: auto;
+	font: 10px times, "Times New Roman", serif;
+	text-decoration: none;
+}
+
+.block {
+	border: solid #84BEFF 1px;
+	font: 12px arial, sans-serif;
+	vertical-align: top;
+	margin: 1px;
+	padding: 1px;
+}
+
+#index_title {
+	float: left;
+	clear: none;
+	width: 74%;
+}
+
+#index_main_blocks {
+	clear: none;
+	width: 74%;
+	float: left;
+}
+
+#index_small_blocks {
+	clear: none;
+	width: 25%;
+	float: right;
+}
+
+#random_picture {
+	text-align: center;
+}
+
+#random_picture .small_inner_block {
+	height: 200px;
+}
+.news_title {
+	font: bold 14px arial, sans-serif;
+}
+.news_date {
+	font: 12px arial, sans-serif;
+}
+
+/*-- pedigree chart specific stylesheets --*/
+#pedigree_chart {
+	position: absolute;
+	top: 120px;
+	left: 0;
+}
+/*-- pedigree chart rtl specific stylesheets --*/
+#pedigree_chart_rtl {
+	position: absolute;
+	float: right;
+	top: 120px;
+	right: 0;
+}
+
+/*-- descendancy chart specific stylesheets --*/
+#descendancy_chart ul {
+	border-left: thin solid #FF6633;
+	list-style: none;
+	margin: 0 0 5px 15px; /* top right bottom left */
+	padding: 0; /* top right bottom left */
+}
+#descendancy_chart li {
+	list-style: none;
+	margin: 0 0 0 -16px; /* top right bottom left */
+	padding: 0;
+}
+/*-- descendancy chart rtl specific stylesheets --*/
+#descendancy_chart_rtl ul {
+	border-right: thin solid #FF6633;
+	list-style: none;
+	margin: 0 15px 5px 0; /* top right bottom left */
+	padding: 0;
+}
+#descendancy_chart_rtl li {
+	list-style: none;
+	margin: 0 -18px 0 0; /* top right bottom left */
+	padding: 0 2px 0 0; /* top right bottom left */
+}
+
+/*-- relationship chart specific stylesheets --*/
+#relationship_chart {
+	position: relative;
+	top: -40px;
+	left: 0;
+}
+#relationship_chart_rtl {
+	position: relative;
+	top: -40px;
+	right: 10px;
+}
+/*-- ancestry chart specific stylesheets --*/
+#ancestry_chart ul {
+	border-left: thin solid #FF6633;
+	list-style: none;
+	margin: 0 0 5px 15px; /* top right bottom left */
+	padding: 0;
+}
+#ancestry_chart li {
+	list-style: none;
+	margin: 0 0 2px -15px; /* top right bottom left */
+	padding: 0;
+}
+/*-- ancestry chart rtl specific stylesheets --*/
+#ancestry_chart_rtl ul {
+	border-right: thin solid #FF6633;
+	list-style: none;
+	margin: 0 15px 0 0; /* top right bottom left */
+	padding: 0;
+}
+#ancestry_chart_rtl li {
+	list-style: none;
+	margin: 0 -18px 2px 0; /* top right bottom left */
+	padding: 0 2px 0 0; /* top right bottom left */
+}
+
+/*-- timeline chart specific styles --*/
+.timeline_table {
+}
+.person0 {
+	border: outset #84BEFF 1px;
+	vertical-align: top;
+	padding: 3px;
+}
+.person1 {
+	border: outset #AAFFAA 1px;
+	vertical-align: top;
+	padding: 3px;
+}
+.person2 {
+	border: outset #FFAAAA 1px;
+	vertical-align: top;
+	padding: 3px;
+}
+.person3 {
+	border: outset #5555FF 1px;
+	vertical-align: top;
+	padding: 3px;
+}
+.person4 {
+	border: outset #FF5555 1px;
+	vertical-align: top;
+	padding: 3px;
+}
+.person5 {
+	border: outset #55FF55 1px;
+	vertical-align: top;
+	padding: 3px;
+}
+
+.listlog {
+	line-height: 20pt;
+	font-family: arial, sans-serif;
+}
+.barra {
+	font: normal 11px verdana, helvetica, sans-serif;
+}
+.blanco {
+	font: bold 10px verdana, helvetica, sans-serif;
+}
+input, textarea {
+	border-color: white #000066 #000066 white;
+	border-width: 1px;
+	font: 10px verdana, helvetica, sans-serif;
+}
+select {
+	border-color: #84BEFF;
+	border-width: 1px;
+	font: 10px verdana, helvetica, sans-serif;
+}
+form {
+	font: 10px verdana, helvetica, sans-serif;
+}
+h2 {
+	font: normal 18px arial, helvetica, sans-serif;
+}
+.formField {
+	font: 12px arial, sans-serif;
+}
+
+div#header, div#footer, .noprint {
+	display:none !important;
+}
+form, button, input { /* buttons and input are used out of forms in sortable tables*/
+	display: none;
+}
+
+/* Colors */
+.red {
+	color: red;
+}
+
+/* Text direction */
+.ltr {
+	text-align: left;
+}
+.rtl {
+	text-align: right;
+}
+
+/* Width settings */
+.width10 {
+	width: 10%;
+}
+.width20 {
+	width: 20%;
+}
+.width25 {
+	width: 25%;
+}
+.width30 {
+	width: 30%;
+}
+.width33 {
+	width: 33%;
+}
+.width40 {
+	width: 40%;
+}
+.width50 {
+	width: 50%;
+}
+.width60 {
+	width: 60%;
+}
+.width66 {
+	width: 66%;
+}
+.width70 {
+	width: 70%;
+}
+.width75 {
+	width: 75%;
+}
+.width80 {
+	width: 80%;
+}
+.width90 {
+	width: 90%;
+}
+.width100 {
+	width: 100%;
+}
+
+/* Font sizes */
+.font11 {
+	font-size: 11px;
+}
+.font9 {
+	font-size: 9px;
+}
+
+.lifespan_outer {
+	position: relative;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	border: none;
+}
+
+.lifespan_people {
+	position: absolute;
+	width: auto;
+	left: -10px;
+	top: -60px;
+	z-index:1;
+}

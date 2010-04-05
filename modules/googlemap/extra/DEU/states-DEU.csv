@@ -1,0 +1,17 @@
+"Level";"Country";"State";"County";"Place";"Longitude";"Latitude";"ZoomLevel";"Icon"
+1;DEU;Baden-Württemberg;;;E9.2;N48.75;6;places/DEU/flags/BAW.gif
+1;DEU;Bayern;;;E11.5;N49;6;places/DEU/flags/BAY.gif
+1;DEU;Berlin;;;E13.35;N52.49;6;places/DEU/flags/BLN.gif
+1;DEU;Brandenburg;;;E12.5;N52.5;6;places/DEU/flags/BBG.gif
+1;DEU;Bremen;;;E8.75;N53;6;places/DEU/flags/BRM.gif
+1;DEU;Hamburg;;;E10;N53.55;6;places/DEU/flags/HBG.gif
+1;DEU;Hessen;;;E8.20;N50.05;6;places/DEU/flags/HES.gif
+1;DEU;Mecklenburg-Vorpommern;;;E13;N54;6;places/DEU/flags/MVP.gif
+1;DEU;Niedersachsen;;;E9;N52.5;6;places/DEU/flags/NDS.gif
+1;DEU;Nordrhein-Westfalen;;;E7.5;N51.25;6;places/DEU/flags/NRW.gif
+1;DEU;Rheinland-Pfalz;;;E7.5;N50;6;places/DEU/flags/RPF.gif
+1;DEU;Sachsen;;;E13.5;N51.25;6;places/DEU/flags/SAC.gif
+1;DEU;Sachsen-Anhalt;;;E11.5;N52;6;places/DEU/flags/SAA.gif
+1;DEU;Saarland;;;E7.0;N49.3;6;places/DEU/flags/SAL.gif
+1;DEU;Schleswig-Holstein;;;E9.75;N54;6;places/DEU/flags/SLH.gif
+1;DEU;Thüringen;;;E10.75;N50.75;6;places/DEU/flags/THN.gif

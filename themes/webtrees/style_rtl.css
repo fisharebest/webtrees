@@ -1,0 +1,47 @@
+/**
+ * Styles for rtl
+ *
+ * needed to fix some of the RTL theme problems
+ *
+ * @package webtrees
+ * @subpackage Themes
+ * @version $Id: style_rtl.css 4197 2008-10-30 12:24:13Z fisharebest $
+ */
+body {
+	direction: rtl;
+	text-align: right;
+}
+.door {
+	direction: rtl;
+}
+.door dd {
+	float: right;
+}
+
+.icon, .adminicon {
+	border: none;
+	padding-left: 5pt;
+	padding-right: 0pt;
+}
+
+.sublinks_table_rtl .icon {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}
+
+.menuitem_rtl .icon {
+	width: 50px;
+	height: 50px;
+}
+
+.menuitem_hover_rtl .icon {
+	width: 50px;
+	height: 50px;
+}
+
+.submenu_rtl .icon {
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+}

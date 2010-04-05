@@ -1,0 +1,30 @@
+/*
+ * @version $Id: msie.css 4197 2008-10-30 12:24:13Z fisharebest $
+ */
+.small_inner_block {
+	height: expression( this.scrollHeight > 199 ? "200px" : "auto" ); 
+}
+
+.normal_inner_block {
+	width: 100%;
+}
+
+/* 
+ * The following style definitions can be removed when IE supports the "opacity" 
+ * specification in place of its proprietary and non-standard method.
+ */
+.flag, .activeflag, .brightflag {
+	filter: alpha(opacity=100);
+}
+
+.dimflag {
+	filter: alpha(opacity=50);
+}
+
+.rela {
+	filter: alpha(opacity=67);
+}
+
+a.showit:hover span {
+	filter: alpha(opacity=85);
+}

@@ -1,0 +1,5 @@
+
+Place all thumbnails associated with your GEDCOM file in this folder.
+Give them the same name as their parent items in the "media" folder.
+
+See README for more details.

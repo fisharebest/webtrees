@@ -1,0 +1,14 @@
+/*
+ * @version $Id:S$
+ */
+/* 
+ * The following style definitions should be removed when Opera supports the 
+ * "opacity" specification.
+ */
+#container {
+	padding:10px;
+}
+
+.block {
+	overflow: hidden;
+}

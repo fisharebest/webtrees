@@ -1,0 +1,258 @@
+/**
+ * Theme specific module CSS for PHPGedView
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2010 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * @package webtrees
+ * @subpackage Themes
+ * @version $Id: modules.css 6883 2010-01-31 09:25:35Z windmillway $
+ */
+ 
+/* GEDFact_assistant - Census - module ===================================== */
+/* Date Drop-down menu (census_asst_date.php) */
+.UK {
+	background-color:#aaffaa; 
+	color:black;
+ }
+.USA {
+	background-color:#aaccff; 
+	color:black;
+ }
+/* Indi Page - Shared Note column headers (census_note_decode.php) */
+.note1 {
+	margin-left: -0.05em;
+	font-weight: bold;
+}
+.note2 {
+	margin-left: -0.25em;
+	font-weight: bold;
+}
+.notecell {
+	white-space: nowrap;
+}
+/* Navigator */
+.cens_search {
+	position: relative; 
+	float: left;
+	margin: 0.5em 0 0 0.5em;
+	width: 23.1em;
+	height: 33.9em;
+	overflow: auto; 
+	/*border: 1px solid red; */
+}
+#navenclose {
+	margin-left: -0.4em;
+	margin-top: -0.4em;
+	margin-bottom: -0.3em;
+	border-bottom: 0px;
+	width: 22.3em;
+	/* border: 1px solid green; */ 
+}
+.linkcell a { 
+	display: block;
+	padding:  0.3em 0.3em 0.6em 0.3em;
+	margin: -0.3em -0.3em -0.6em -0.3em; 
+} 
+.linkcell a:hover{ 
+	/* background: #888888; */ 
+}
+a.linka {
+	padding: 0 0 0 0;
+	margin: 0 0 0 0; 
+}
+.ltrnav {
+	position: absolute;
+	top:-1.6em;
+	left:5.9em;
+}
+.rtlnav {
+	position: absolute;
+	top:-1.5em;
+	right:5.5em;
+}
+.headimg {
+	margin-top:-4px;
+	border:0;
+}
+.headimg2 {
+	height:17px;
+	border-style:none;
+	margin:-3px;
+	margin-left:0px;
+}
+/* Container for Census & Source Information Area */
+.cens_container {
+	clear: both;
+	float: left;
+	width: 46.2em;
+	margin: 0.5em 0 0 0.3em;
+	padding: 0;
+	border: 0px solid yellow;
+}
+.cens_container span {
+	margin: 0 0.5em;
+}
+/* Header of assistant window */
+.cens_header {
+	text-align: left;
+	margin-top: 0.5em;
+	height: 2.5em;
+}
+.cens_header_left {
+	float: left;
+	margin-left: 1.5em;
+	font-weight: bold;
+}
+.cens_header_right {
+	float: right;
+	margin: 0 2em 0 0;
+}
+/* Source Input section */
+.cens_sour {
+	font-weight: bold;
+	font-size: 0.9em;
+	text-align: left;
+	/*padding: 0.3em;
+	border: 0.3em outset;*/
+	margin-bottom : 0.3em;
+	overflow: hidden;
+	width: 50.8em;
+}
+.cens_sour_country {
+	float: left;
+	width: 5.3em;
+	text-align: left;
+	padding-bottom: .2em;
+	margin-left: -0.4em;
+}
+.cens_sour_sour {
+	position: absolute;
+	margin-top: 3.4em;
+	float: left;
+	width: 12.5em;
+	text-align: left;
+	padding-bottom: 0em;
+}
+.cens_sour_obje {
+	position: absolute;
+	margin-top: 5.2em;
+	margin-left: 0.37em;
+	float: left;
+	width: 12.5em;
+	text-align: left;
+	padding-bottom: 0em;
+}
+.cens_sour_year {
+	float: left;
+	width: 3.6em; 
+	text-align: left;
+	margin-left: .25em;
+	padding-bottom: .2em;
+}
+.cens_sour_scs {
+	float: right;
+	width: 74%;
+}
+.cens_sour select {
+	font-weight: normal;
+	margin: 0 0.5em;
+}
+.cens_sour input {
+	font-weight: normal;
+	font-size: 0.9em;
+	margin-top: 0.25em;
+	width: 78%;
+}
+.spacer {
+	padding-top:.5em;
+}
+.cens_sour_1 {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.cens_sour_2 {
+	width: 17%;
+	float: left;
+	margin-top: 0.25em;
+}
+#notes, #locality {
+	margin-top: 0.20em;
+}
+/* Census Text Input Area */
+.cens_text {
+	font-size: 0.9em;
+	text-align: left;
+	padding: 0.3em;
+	/*border: 0.3em outset;*/
+	margin-bottom: 0.3em;
+	margin-right: -0.17em;
+width: 50.7em;
+}
+.cens_text span {
+	margin: 0 1em 0 0.3em;
+}
+textarea#NOTE {
+	height: 20.6em;
+	width: 98.5%;
+	overflow: auto;
+}
+.cens_textinput {
+	clear: both;
+	/*border: 0.3em outset;*/
+	float: left;
+	margin: 0.4em 0 0 0.3em;
+	width: 69.8em;
+}
+.cens_textinput_left  {
+	float: left;
+	width: 90%;
+	text-align: center;
+}
+.cens_textinput_right  {
+	float: right;
+	font-size: 1em;
+	margin-right: 2em;
+}
+/* Census Add Rows Area */
+.cens_addrows {
+	clear: both;
+	/*border: 0em outset;*/
+	float: left;
+	margin: 0;
+	width: 69.8em; 
+}
+/* Census data Input area */
+.cens_data {
+	width:100%;
+	height:12.46em;
+	overflow:auto;
+}
+.cens_data table {
+	width: 68em;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+/* xxxxxxxxxx - module ===================================================== */
+ 
+/* yyyyyyyyyy - module ===================================================== */

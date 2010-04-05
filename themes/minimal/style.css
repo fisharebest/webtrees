@@ -1,0 +1,1348 @@
+/**
+ * Style for Minimal theme
+ *
+ * Use this stylesheet to customize the display of your site.
+ * To learn more about CSS visit http://www.w3.org/TR/REC-CSS2/
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2010 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * @package webtrees
+ * @subpackage Themes
+ * @version $Id$
+ */
+
+
+.something {
+	/*empty style to make sure that the BODY style is not ignored */
+}
+
+body {
+	color: black;
+	background-color: white;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+fieldset {
+	margin: 8px 8px 4px 8px;
+}
+
+legend {
+	font-weight: bold;
+}
+
+a {
+	color: #666666;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+a:hover	{
+	color: black;
+	text-decoration: underline;
+}
+
+h2 {
+	color: black;
+	font: bold 18px tahoma, arial, helvetica, sans-serif;
+}
+
+h4 {
+	color: black;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+}
+
+th {
+	font-weight: 100;
+}
+
+ul {
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 8px;
+}
+
+.button {
+	width: 60px
+}
+
+input, textarea {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.gedcom_table {
+	border: 1px solid black;
+	margin:0;
+	width:99%;
+}
+
+.person_box {
+	background-color: white;
+	border: solid black 1px;
+}
+
+.person_boxF {
+	background-color: white;
+	border: solid black 1px;
+}
+
+.person_boxNN {
+	background-color: white;
+	border: 1px dashed gray;
+}
+
+.person_box:target, .news_box:target, #gedcom_stats:target {
+	background-color: #ffffcc;
+}
+
+.list_table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.center {
+	text-align: center;
+}
+
+table.center{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list_label, .list_label_wrap {
+	color: black;
+	background-color: #aaaaaa;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+}
+
+.list_value, .list_value_wrap {
+	background-color: white;
+	color: black;
+	border: solid black 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	vertical-align: top;
+}
+
+.list_label, .list_value {
+	white-space: nowrap;
+}
+
+.list_label_wrap, .list_value_wrap {
+	white-space: normal;
+}
+
+.list_item {
+	font-size:12px;
+}
+
+.facts_table, .facts_table_rtl {
+	width: 100%;
+}
+
+.facts_label {
+	color: black;
+	background-color: #aaaaaa;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px 4px 4px 4px;
+	width: 20%;
+	text-align: center;
+}
+
+.facts_label02, .facts_label03 {
+	color: black;
+	background-color: #aaaaaa;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px 4px 4px 4px;
+	width: 20%;
+	text-align: center;
+}
+
+.facts_value {
+	background-color: white;
+	color: black;
+	border: solid black 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px 4px 4px 4px;
+}
+
+.facts_value02 {
+	background-color: white;
+	color: black;
+	border: solid black 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 5px;
+}
+
+.facts_labelred, .facts_labelblue {
+	color: #333333;
+	background-color: #aaaaaa;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px 4px 4px 4px;
+	width: 20%;
+	text-align: center;
+}
+
+.facts_valuered, .facts_valueblue {
+	background-color: white;
+	color: black;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px 4px 4px 4px;
+}
+
+.facts_labelred, .facts_valuered {
+	border: solid red 2px;
+}
+
+.facts_labelblue, .facts_valueblue {
+	border: solid blue 2px;
+}
+
+.tabs_table {
+	width: 100%;
+}
+
+.tab_cell_active {
+	background-color: white;
+	border-left: outset #aaaaaa 2px;
+	border-top: outset #aaaaaa 2px;
+	border-right: outset #aaaaaa 2px;
+	text-align: center;
+}
+
+.tab_cell_inactive {
+	background-color: #aaaaaa;
+	border-left: solid black 2px;
+	border-top: solid black 2px;
+	border-right: outset black 2px;
+	text-align: center;
+}
+
+.tab_active_bottom {
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	height: 5px;
+}
+
+.tab_inactive_bottom {
+	border-left: none;
+	border-right: none;
+	border-top: outset black 2px;
+	height: 5px;
+}
+
+.tab_inactive_bottom_right {
+	border-left: none;
+	border-right: none;
+	border-top: outset black 2px;
+	width: 33%;
+	height: 5px;
+}
+
+.tab_cell_inactive_empty {
+	background-color: #bababa;
+	border-left: solid black 2px;
+	border-top: solid black 2px;
+	border-right: outset black 2px;
+	text-align: center;
+}
+
+.tab_cell_inactive_empty a {
+	color: #888888;
+}
+
+.tab_page {
+	width: 100%;
+}
+
+.name1 {
+	color: black;
+	font: bold 10px tahoma, arial, helvetica, sans-serif;
+}
+
+.name1Hover {
+	color: black;
+	font: bold 10px tahoma, arial, helvetica, sans-serif;
+	text-decoration: underline;
+}
+
+.namered {
+	border: solid red 1px;
+}
+
+.nameblue {
+	border: solid blue 1px;
+}
+
+.details1 {
+	font: normal 10px tahoma, arial, helvetica, sans-serif;
+}
+
+.name2 {
+	color: black;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+}
+
+.name2Hover {
+	color: black;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	text-decoration: underline;
+}
+
+.details2 {
+	font: normal 12px tahoma, arial, helvetica, sans-serif;
+}
+
+.nameZoom {
+	color: black;
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+}
+.detailsZoom {
+	font: 14px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.details_label {
+	font-weight: bold;
+}
+
+.name_head {
+	color: black;
+	font: bold 16px tahoma, arial, helvetica, sans-serif;
+	letter-spacing: .2px;
+}
+
+.date {
+	color: #666666;
+	font-weight: bold;
+}
+
+.label, .field {
+	color: black;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.error {
+	color: #dd0000;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.largeError {
+	color: #dd0000;
+	font: large tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.warning {
+	color: #dd0000;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.indent {
+	padding-left: 7px;
+}
+
+.indent_rtl {
+	padding-right: 7px;
+}
+
+.image {
+	height: 150px;
+	padding: 5px;
+	border: solid black 1px;
+}
+
+.gender_image {
+	padding-left: 3px;
+	padding-right: 3px;
+	border: none;
+	vertical-align: middle;
+}
+
+.pedigree_image_portrait, .pedigree_image_landscape {
+	float: left;
+	height: 50px;
+	border: solid black 1px;
+	margin-right: 3px;
+}
+
+.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
+	float: right;
+	height: 50px;
+	border: solid black 1px;
+	margin-left: 3px;
+}
+
+.pedigree_form {
+	width: 45px;
+}
+
+.thumbnail {
+	height: auto;
+	padding: 5px;
+}
+
+.icon {
+	display: none;
+	border: none;
+	padding-left: 0pt;
+	padding-right: 5pt;
+}
+
+.adminicon {
+	border: none;
+	padding-left: 0pt;
+	padding-right: 5pt;
+}
+
+.link {
+	font-size: 11px;
+	text-align: center;
+}
+
+.sublinks_table {
+	border: solid black 1px;
+}
+
+.sublinks_cell {
+	font-size: 12px;
+	background-color: #aaaaaa;
+}
+
+.sublinks_table .icon {
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+}
+
+.menuitem .icon {
+	width: 50px;
+	height: 50px;
+}
+
+.submenu .icon {
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+}
+
+.subheaders {
+	font: bold 16px tahoma, arial, helvetica, sans-serif;
+	text-indent: 20px;
+	margin-top: 15px;
+	vertical-align: bottom;
+}
+
+.age {
+	font-size: 9px;
+}
+
+.source_citations {
+	display: none;
+}
+
+.lang_form {
+	margin-top: 0px;
+}
+
+.selected-option {
+	background-color: #aaaaaa;
+	border: solid black 1px;
+}
+
+.user_links {
+	white-space: nowrap;
+}
+
+.contact_links {
+	text-align: center;
+}
+
+.hit-counter {
+	background: black;
+	color: white;
+	font-weight: bold;
+}
+
+/* This is the original.
+ * It's not used, but it's left in in case you want to go back to it. */
+.flag {
+	width: 15px;
+	border: solid black 1px;
+}
+/* This one is for a place flag */
+.brightflag {
+	height: 15px;
+	border: none;
+	opacity: 1;		/* IE's support is different */
+}
+
+.border1 {
+	border: solid black 1px;
+}
+
+.header_select {
+	font-size: 9pt;
+}
+
+.favorites_form {
+	margin-top: 0px;
+}
+
+.help {
+	font-weight: bold;
+	cursor: help;
+}
+
+.menuitem {
+	color: #555555;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+	padding: 1px;
+}
+
+.menuitem_hover	{
+	color: black;
+	text-decoration: underline;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+	padding: 1px;
+}
+
+.submenu {
+	visibility: hidden;
+	position: absolute;
+	z-index: 100;
+	color: black;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+	background-color: #eeeeee;
+	border: solid black 1px;
+	white-space: nowrap;
+}
+
+.submenu_rtl {
+	color: black;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+	background-color: #eeeeee;
+	border: solid black 1px;
+	white-space: nowrap;
+}
+
+.submenuitem {
+	color: #555555;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	background-color: #eeeeee;
+	white-space: nowrap;
+	text-align: left;
+	padding: 1px;
+}
+
+.submenuitem_rtl {
+	color: #555555;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	background-color: #eeeeee;
+	white-space: nowrap;
+	text-align: right;
+	padding: 1px;
+}
+
+.submenuitem_hover	{
+	color: black;
+	text-decoration: underline;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	background-color: white;
+	white-space: nowrap;
+	text-align: left;
+	padding: 1px;
+}
+
+.submenuitem_hover_rtl	{
+	color: black;
+	text-decoration: underline;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	background-color: white;
+	white-space: nowrap;
+	text-align: right;
+	padding: 1px;
+}
+
+.submenuitem a, .submenuitem_rtl a, .submenuitem_hover a, .submenuitem_hover_rtl a {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.news_box {
+	background-color: white;
+	border: solid black 1px;
+}
+
+.news_title {
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	color: black;
+}
+
+.news_date {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	color: black;
+}
+
+.current_day {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.cal_day {
+	float: left;
+	font-weight: bold;
+}
+
+.rtl_cal_day {
+	direction: rtl;
+	float: right;
+	color: blue;
+	font-weight: bold;
+}
+
+.helpcontent {
+	margin-left: 10px;
+	margin-right:10px;
+}
+
+.helpfooter {
+	margin: 10px;
+}
+
+.helpheader {
+	margin: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: black;
+}
+
+.helpstart {
+	margin: 10px;
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	color: #444444;
+	text-decoration: none;
+}
+
+.helptext {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	color: black;
+}
+
+#content {
+	margin-left: 1px;
+}
+
+#footer {
+	clear: both;
+	color: black;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+/*-- index.php specific style sheets -- */
+.small_inner_block {
+	max-height: 200px;
+	overflow: auto;
+	font: normal 10px tahoma, tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.normal_inner_block {
+	overflow: auto;
+}
+
+.block {
+	background-color: white;
+	color: black;
+	border: solid black 2px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	vertical-align: top;
+	margin-bottom: 5px;
+	padding: 1px;
+}
+
+#index_main_blocks {
+	clear: none;
+	width: 66%;
+	float: left;
+}
+
+#index_small_blocks {
+	clear: none;
+	width: 33%;
+	float: right;
+}
+
+#index_full_blocks {
+	clear: none;
+	width: 100%;
+}
+
+#random_picture {
+	text-align: center;
+}
+
+/*-- pedigree chart specific stylesheets --*/
+#pedigree_chart {
+	position: relative;
+	top: -240px;
+	left: 10px;
+	width: 99%;
+}
+/*-- pedigree chart rtl specific stylesheets --*/
+#pedigree_chart_rtl {
+	position: relative;
+	float: right;
+	top: -240px;
+	right: 10px;
+	width: 99%;
+}
+
+/*-- descendancy chart specific stylesheets --*/
+#descendancy_chart ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	list-style: none;
+	margin: 0px 0px 5px 15px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+#descendancy_chart li {
+	list-style: none;
+	margin: 0px 0px 0px -14px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+/*-- descendancy chart rtl specific stylesheets --*/
+#descendancy_chart_rtl ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	list-style: none;
+	margin: 0px 15px 5px 0px; /* top right bottom left */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+
+}
+
+#descendancy_chart_rtl li {
+	list-style: none;
+	margin: 0px -14px 0px 0px; /* top right bottom left */
+	padding: 0px 0px 0px 0px; /* top right bottom left */
+}
+
+/*-- relationship chart specific stylesheets --*/
+#relationship_chart {
+	position: relative;
+	top: -40px;
+	left: 0px;
+}
+
+#relationship_chart_rtl {
+	position: relative;
+	top: -40px;
+	right: 10px;
+}
+
+/*-- ancestry chart specific stylesheets --*/
+#ancestry_chart ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	margin: 0px 0px 0px 15px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+#ancestry_chart li {
+	list-style: url(images/spacer.gif);
+	margin: 0px 0px 2px -13px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+/*-- ancestry chart rtl specific stylesheets --*/
+#ancestry_chart_rtl ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	margin: 0px 16px 0px 0px; /* top right bottom left */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#ancestry_chart_rtl li {
+	list-style: url(images/spacer.gif);
+	margin: 0px -15px 2px 0px; /* top right bottom left */
+	padding: 0px 2px 0px 0px; /* top right bottom left */
+}
+
+/*-- timeline chart specific styles --*/
+#timeline_chart {
+	position: relative;
+	top: 0px;
+}
+
+.timeline_table {
+}
+
+.person0 {
+	background-color: #a5a5a5;
+	border: outset black 1px;
+	vertical-align: top;
+}
+
+.person1 {
+	background-color: #bfbfbf;
+	border: outset black 1px;
+	vertical-align: top;
+}
+
+.person2 {
+	background-color: #999999;
+	border: outset black 1px;
+	vertical-align: top;
+}
+
+.person3 {
+	background-color: #dfdfdf;
+	border: outset black 1px;
+	vertical-align: top;
+}
+
+.person4 {
+	background-color: #eeeeee;
+	border: outset black 1px;
+	vertical-align: top;
+}
+
+.person5 {
+	background-color: #fefefe;
+	border: outset black 1px;
+	vertical-align: top;
+}
+
+.listlog {
+	line-height: 20pt;
+	color: #555555;
+	font-family: tahoma, arial, helvetica, sans-serif;
+}
+
+.formField {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+.starredname {
+	text-decoration: underline;
+}
+
+.search_hit {
+	background-color: #cccccc;
+}
+
+.title {
+	font: 20px tahoma, arial, helvetica, sans-serif;
+}
+
+/* Style for the top and bottom bar */
+.topbottombar {
+	color: black;
+	background-color: #aaaaaa;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+	text-align: center;
+}
+
+/* Style for the subbar in  */
+.subbar {
+	background-color: white;
+	color: black;
+	border: solid black 1px;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	padding: 3px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+/* Style for the descriptionbox */
+.descriptionbox {
+	background-color: white;
+	color: black;
+	border: solid black 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 3px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+/* Style for the optionbox */
+.optionbox {
+	background-color: white;
+	color: black;
+	border: solid black 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	vertical-align: top;
+	white-space: nowrap;
+	padding: 3px;
+}
+
+.vmiddle {
+	vertical-align: middle
+}
+
+/* colors */
+.red {
+	color: red;
+}
+
+.rela {
+	opacity: 0.67;
+}
+
+/* Text direction */
+.ltr {
+	text-align: left;
+}
+
+.rtl {
+	text-align: right;
+	direction: rtl;
+}
+
+/* Width settings */
+.width10 {
+	width: 10%;
+}
+.width20 {
+	width: 20%;
+}
+.width25 {
+	width: 25%;
+}
+.width30 {
+	width: 30%;
+}
+.width33 {
+	width: 33%;
+}
+.width40 {
+	width: 40%;
+}
+.width50 {
+	width: 50%;
+}
+.width60 {
+	width: 60%;
+}
+.width66 {
+	width: 66%;
+}
+.width70 {
+	width: 70%;
+}
+.width75 {
+	width: 75%;
+}
+.width80 {
+	width: 80%;
+}
+.width90 {
+	width: 90%;
+}
+.width100 {
+	width: 100%;
+}
+
+/* font sizes */
+.font11 {
+	font-size: 11px;
+}
+
+.font9 {
+	font-size: 9px;
+}
+
+/* Chart styles */
+.pedigree_table {
+	margin: 0;
+}
+
+/* Message box */
+.messagebox {
+	background-color: white;
+	border: solid black 1px;
+}
+
+/* Change indicators */
+.change_new {
+	border: solid blue 2px;
+}
+
+.change_old {
+	border: solid red 2px;
+}
+
+.door {
+	margin:0px 0px 0px 0px;
+	padding:0px 0px 0px 0px;
+}
+
+.door dd {
+	margin:2px 2px 2px 2px;
+	padding:2px 6px 2px 6px;
+	height:100%; float:left;
+	font-weight:bold;
+	display:none;
+}
+
+.note_details {
+	display: none;
+}
+
+a.showit {
+	position: relative;
+	z-index: 24;
+	color: black;
+	text-decoration: none;
+}
+
+a.showit:hover {
+	z-index: 25;
+	background-color: #ffff9b;
+	cursor: crosshair;
+}
+a.showit span {
+	display: none;
+}
+a.showit:hover span {
+	display: block;
+	position: absolute;
+	top: 22px;
+	left: 0px;
+	width: 225px;
+	border-style: outset;
+	border-left: 15px outset #1f1f1f;
+	border-top: 2px solid #1f1f1f;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	padding: 3px;
+	background: #4f4f4f;
+	color: white;
+	font: 15px tahoma, arial, helvetica, sans-serif;
+	text-align: left;
+	opacity: .85;
+	z-index: 5;
+	white-space: normal;
+}
+.lifespan_people span:first-letter {
+   font: bold 16px tahoma, arial, helvetica, sans-serif;
+	font-variant: small-caps;
+	padding: 1px;
+}
+
+.lifespan_outer {
+	position: relative;
+	width: 99.5%;
+	height: 600px;
+	overflow: hidden;
+	border: solid blue 1px;
+}
+
+.lifespan_outer a {
+	color: black;
+}
+
+.lifespan_outer a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+.lifespan_timeline {
+	position: absolute;
+	width: 100%;
+	left: -10px;
+	top:-65px;
+	z-index:2;
+	background-color: white
+}
+
+.lifespan_people {
+	position: absolute;
+	width: 500px;
+	left: -10px;
+	top: -60px;
+	z-index:1;
+}
+.iwstyle {
+	width:360px;
+	/*background-color: #FFFFFF;*/
+}
+.iwstyle a {
+}
+.iwstyle a:hover {
+}
+
+#map_nav {
+	position: relative;
+	top: -484px;
+	left: 101%;
+}
+
+#tree_nav {
+	position: relative;
+	top: -584px;
+	left: 90%;
+	z-index: 100;
+}
+
+	#map_type
+	{
+		margin: 0;
+		padding: 0;
+		font-family: Arial;
+		font-size: 10px;
+		list-style: none;
+	}
+	#map_type li
+	{
+		display: block;
+		width: 70px;
+		text-align: center;
+		padding: 2px;
+		border: 1px solid black;
+		cursor: pointer;
+		float: left;
+		margin-left: 2px;
+	}
+	#map_type li.non_active
+	{
+		background: white;
+		color: black;
+		font-weight: normal;
+	}
+	#map_type li.active
+	{
+		background: gray;
+		color: white;
+		font-weight: bold;
+	}
+	#map_type li:hover
+	{
+		background: #ddd;
+	}
+
+/* Tag Cloud styles*/
+.tag_cloud_table {
+	width:70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tag_cloud {
+	font-family: tahoma, arial, helvetica, sans-serif;
+	text-align: justify;
+	padding: 10px 5px 10px 15px; /* top right bottom left */
+}
+
+.tag_cloud_sub {
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-size: 8px;
+	color:#808080;
+}
+/* End of Tag Cloud styles*/
+
+/* Autocomplete styles*/
+.ac_input {
+	background-color: #EEE8AA;
+}
+
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/*
+	if width will be 100% horizontal scrollbar will apear
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/*
+	it is very important, if line-height not setted or setted
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 14px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background: white url(../../images/indicator.gif) right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
+}
+/* End of Autocomplete styles*/
+
+/* Flyout menu Styles */
+.flyout {
+	color:#000000;
+	text-align: left;
+	margin-top: -20px;
+	right: 210px;
+	padding: 3px;
+}
+.flyoutrtl {
+	color:#000000;
+	text-align: right;
+	margin-top: -20px;
+	left: 210px;
+	padding: 3px;
+}
+/* End of Flyout Menu styles*/
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.wrap {
+	white-space: normal;
+}
+
+ul.clist {
+	list-style-image: none;
+	margin: 0px;
+}
+
+.menu_separator img {
+	height: 3px;
+	width: 8em;
+}
+
+/*
+.menu_separator {
+	height: 3px;
+	display: block;
+	background-image: url(images/hline.gif);
+	background-repeat: repeat-x;
+	background-position: center middle;
+}
+*/
+
+.statistics_chart {
+	text-align: center;
+	text-align: center;
+}
+
+.gchart {
+	border: solid black 1px;
+}
+
+.execution_stats {
+	padding-top: 12px;
+	text-align: center;
+}
+
+dl {
+	margin-bottom:20px;
+}
+
+dt {
+	float:left; 
+	font-weight:bold;
+	margin-right:10px;
+	clear:both; 
+}
+
+#indi_details dt:after { content: ":"; }
+
+#facts_content dd {
+	float:left;
+	width: 70%;
+}
+
+#indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
+	float:left;
+	margin-right:15px;
+}
+
+#hitcounter {
+	display: block;
+	width: 100%;
+	margin-bottom:10px;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+#indi_details {
+	display: block;
+	width: 100%;
+}

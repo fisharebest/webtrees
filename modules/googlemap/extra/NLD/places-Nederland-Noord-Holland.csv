@@ -1,0 +1,463 @@
+"Level";"Country";"State";"County";"Place";"Longitude";"Latitude";"ZoomLevel";"Icon"
+2;NLD;Noord-Holland;Aalsmeer;;E4.761;N52.258;12;places/NLD/flags/NH/Aalsmeer.gif
+3;NLD;Noord-Holland;Aalsmeer;Aalsmeer;E4.753;N52.263;12;
+3;NLD;Noord-Holland;Aalsmeer;Kalslagen;E4.734;N52.233;13;
+3;NLD;Noord-Holland;Aalsmeer;Kudelstaart;E4.747;N52.233;12;
+3;NLD;Noord-Holland;Aalsmeer;Oosteinde;E4.792;N52.280;13;
+3;NLD;Noord-Holland;Aalsmeer;Vrouwentroost;E4.762;N52.251;12;
+2;NLD;Noord-Holland;Alkmaar;;E4.753;N52.656;12;places/NLD/flags/NH/Alkmaar.gif
+3;NLD;Noord-Holland;Alkmaar;Alkmaar;E4.748;N52.633;12;
+3;NLD;Noord-Holland;Alkmaar;De Hoef;E4.717;N52.633;14;
+3;NLD;Noord-Holland;Alkmaar;Koedijk;E4.756;N52.671;12;
+3;NLD;Noord-Holland;Alkmaar;Oudorp;E4.771;N52.631;12;
+2;NLD;Noord-Holland;Amstelveen;;E4.868;N52.284;12;places/NLD/flags/NH/Amstelveen.gif
+3;NLD;Noord-Holland;Amstelveen;Amstelveen;E4.861;N52.303;12;
+3;NLD;Noord-Holland;Amstelveen;Bovenkerk;E4.834;N52.292;12;
+3;NLD;Noord-Holland;Amstelveen;Nes aan de Amstel;E4.872;N52.260;12;
+3;NLD;Noord-Holland;Amstelveen;Ouderkerk aan de Amstel;E4.904;N52.296;12;
+2;NLD;Noord-Holland;Amsterdam;;E4.892;N52.373;12;places/NLD/flags/NH/Amsterdam.gif
+3;NLD;Noord-Holland;Amsterdam;Amsterdam;E4.892;N52.373;12;
+2;NLD;Noord-Holland;Andijk;;E5.218;N52.743;12;places/NLD/flags/NH/Andijk.gif
+3;NLD;Noord-Holland;Andijk;Andijk;E5.220;N52.744;12;
+2;NLD;Noord-Holland;Anna Paulowna;;E4.833;N52.865;12;places/NLD/flags/NH/Anna_Paulowna.gif
+3;NLD;Noord-Holland;Anna Paulowna;Anna Paulowna;E4.827;N52.860;12;
+3;NLD;Noord-Holland;Anna Paulowna;Breezand;E4.807;N52.889;12;
+3;NLD;Noord-Holland;Anna Paulowna;Gelderse Buurt;E4.793;N52.876;12;
+3;NLD;Noord-Holland;Anna Paulowna;Kleine Sluis;E4.839;N52.856;12;
+3;NLD;Noord-Holland;Anna Paulowna;Spoorbuurt;E4.8166667;N52.8666667;13;
+3;NLD;Noord-Holland;Anna Paulowna;Van Ewijcksluis;E4.874;N52.882;12;
+3;NLD;Noord-Holland;Anna Paulowna;Wieringerwaard;E4.863;N52.836;12;
+2;NLD;Noord-Holland;Beemster;;E4.927;N52.551;11;places/NLD/flags/NH/Beemster.gif
+3;NLD;Noord-Holland;Beemster;Middenbeemster;E4.911;N52.548;12;
+3;NLD;Noord-Holland;Beemster;Noordbeemster;E4.933;N52.580;12;
+3;NLD;Noord-Holland;Beemster;Westbeemster;E4.898;N52.573;12;
+3;NLD;Noord-Holland;Beemster;Zuidoostbeemster;E4.942;N52.515;12;
+2;NLD;Noord-Holland;Bennebroek;;E4.594;N52.323;13;places/NLD/flags/NH/Bennebroek.gif
+3;NLD;Noord-Holland;Bennebroek;Bennebroek;E4.594;N52.324;13;
+2;NLD;Noord-Holland;Bergen;;E4.666;N52.674;10;
+3;NLD;Noord-Holland;Bergen;Aagtdorp;E4.700;N52.688;12;
+3;NLD;Noord-Holland;Bergen;Bergen;E4.709;N52.668;12;
+3;NLD;Noord-Holland;Bergen;Bergen aan Zee;E4.632;N52.661;12;
+3;NLD;Noord-Holland;Bergen;Bregtdorp;E4.683;N52.717;13;
+3;NLD;Noord-Holland;Bergen;Camperduin;E4.644;N52.725;13;
+3;NLD;Noord-Holland;Bergen;Catrijp;E4.682;N52.713;12;
+3;NLD;Noord-Holland;Bergen;Egmond aan den Hoef;E4.651;N52.620;12;
+3;NLD;Noord-Holland;Bergen;Egmond aan Zee;E4.626;N52.617;12;
+3;NLD;Noord-Holland;Bergen;Egmond-Binnen;E4.654;N52.595;12;
+3;NLD;Noord-Holland;Bergen;Egmondermeer;;;12;
+3;NLD;Noord-Holland;Bergen;Groet;E4.666;N52.720;12;
+3;NLD;Noord-Holland;Bergen;Hargen;E4.655;N52.725;12;
+3;NLD;Noord-Holland;Bergen;Het Woud;E4.661;N52.645;12;
+3;NLD;Noord-Holland;Bergen;Rinnegom;E4.649;N52.609;12;
+3;NLD;Noord-Holland;Bergen;Schoorl;E4.695;N52.700;12;
+3;NLD;Noord-Holland;Bergen;Schoorldam;E4.716;N52.706;12;
+2;NLD;Noord-Holland;Beverwijk;;E4.625;N52.487;12;places/NLD/flags/NH/Beverwijk.gif
+3;NLD;Noord-Holland;Beverwijk;Beverwijk;E4.655;N52.484;12;
+3;NLD;Noord-Holland;Beverwijk;Wijk aan Zee;E4.592;N52.491;12;
+2;NLD;Noord-Holland;Blaricum;;E5.223;N52.271;12;places/NLD/flags/NH/Blaricum.gif
+3;NLD;Noord-Holland;Blaricum;Blaricum;E5.244;N52.271;12;
+3;NLD;Noord-Holland;Blaricum;Craailo;E5.208;N52.268;12;
+2;NLD;Noord-Holland;Bloemendaal;;E4.584;N52.375;11;places/NLD/flags/NH/Bloemendaal.gif
+3;NLD;Noord-Holland;Bloemendaal;Aerdenhout;E4.594;N52.367;13;
+3;NLD;Noord-Holland;Bloemendaal;Bloemendaal;E4.624;N52.402;12;
+3;NLD;Noord-Holland;Bloemendaal;Bloemendaal aan Zee;;;12;
+3;NLD;Noord-Holland;Bloemendaal;Overveen;E4.612;N52.390;12;
+3;NLD;Noord-Holland;Bloemendaal;Santpoort-Zuid;E4.629;N52.417;12;
+3;NLD;Noord-Holland;Bloemendaal;Vogelenzang;E4.578;N52.319;12;
+2;NLD;Noord-Holland;Bussum;;E5.166;N52.270;12;places/NLD/flags/NH/Bussum.gif
+3;NLD;Noord-Holland;Bussum;Bussum;E5.167;N52.272;12;
+2;NLD;Noord-Holland;Castricum;;E4.694;N52.564;11;places/NLD/flags/NH/Castricum.gif
+3;NLD;Noord-Holland;Castricum;Akersloot;E4.732;N52.560;12;
+3;NLD;Noord-Holland;Castricum;Bakkum;E4.657;N52.558;13;
+3;NLD;Noord-Holland;Castricum;Bakkum-Noord;E4.656;N52.565;12;
+3;NLD;Noord-Holland;Castricum;Boekel;E4.753;N52.589;12;
+3;NLD;Noord-Holland;Castricum;Castricum;E4.665;N52.546;12;
+3;NLD;Noord-Holland;Castricum;Castricum aan Zee;E4.610;N52.555;13;
+3;NLD;Noord-Holland;Castricum;De Woude;E4.776;N52.546;12;
+3;NLD;Noord-Holland;Castricum;Limmen;E4.697;N52.569;12;
+2;NLD;Noord-Holland;Den Helder;;E4.752;N52.930;11;places/NLD/flags/NH/Den_Helder.gif
+3;NLD;Noord-Holland;Den Helder;Blauwe Keet;E4.782;N52.897;12;
+3;NLD;Noord-Holland;Den Helder;De Kooy;E4.794;N52.917;12;
+3;NLD;Noord-Holland;Den Helder;Den Helder;E4.761;N52.948;12;
+3;NLD;Noord-Holland;Den Helder;Het Koegras;;;12;
+3;NLD;Noord-Holland;Den Helder;Huisduinen;E4.726;N52.953;12;
+3;NLD;Noord-Holland;Den Helder;Julianadorp;E4.747;N52.894;12;
+3;NLD;Noord-Holland;Den Helder;Nieuweschild;E4.884;N53.073;12;
+2;NLD;Noord-Holland;Diemen;;E4.964;N52.340;12;places/NLD/flags/NH/Diemen.gif
+3;NLD;Noord-Holland;Diemen;Diemen;E4.962;N52.340;12;
+2;NLD;Noord-Holland;Drechterland;;E5.166;N52.671;11;places/NLD/flags/NH/Drechterland.gif
+3;NLD;Noord-Holland;Drechterland;Binnenwijzend;E5.146;N52.681;12;
+3;NLD;Noord-Holland;Drechterland;Blokdijk;E5.148;N52.654;12;
+3;NLD;Noord-Holland;Drechterland;Hem;E5.183;N52.661;13;
+3;NLD;Noord-Holland;Drechterland;Hoogkarspel;E5.180;N52.696;13;
+3;NLD;Noord-Holland;Drechterland;Oosterblokker;E5.113;N52.667;12;
+3;NLD;Noord-Holland;Drechterland;Oosterleek;E5.198;N52.638;12;
+3;NLD;Noord-Holland;Drechterland;Schellinkhout;E5.119;N52.635;12;
+3;NLD;Noord-Holland;Drechterland;Venhuizen;E5.213;N52.665;12;
+3;NLD;Noord-Holland;Drechterland;Westwoud;E5.134;N52.685;12;
+3;NLD;Noord-Holland;Drechterland;Wijdenes;E5.157;N52.635;12;
+2;NLD;Noord-Holland;Edam-Volendam;;E5.041;N52.497;12;places/NLD/flags/NH/Edam-Volendam.gif
+3;NLD;Noord-Holland;Edam-Volendam;Edam;E5.048;N52.512;12;
+3;NLD;Noord-Holland;Edam-Volendam;Purmer;E4.995;N52.475;12;
+3;NLD;Noord-Holland;Edam-Volendam;Volendam;E5.072;N52.497;12;
+2;NLD;Noord-Holland;Enkhuizen;;E5.277;N52.725;12;places/NLD/flags/NH/Enkhuizen.gif
+3;NLD;Noord-Holland;Enkhuizen;Enkhuizen;E5.286;N52.703;12;
+3;NLD;Noord-Holland;Enkhuizen;Oosterdijk;E5.263;N52.745;12;
+3;NLD;Noord-Holland;Enkhuizen;Westeinde;E5.067;N52.750;13;
+2;NLD;Noord-Holland;Graft-De Rijp;;E4.816;N52.556;12;places/NLD/flags/NH/Graft-De_Rijp.gif
+3;NLD;Noord-Holland;Graft-De Rijp;De Rijp;E4.846;N52.555;12;
+3;NLD;Noord-Holland;Graft-De Rijp;Graft;E4.833;N52.560;12;
+3;NLD;Noord-Holland;Graft-De Rijp;Markenbinnen;E4.781;N52.530;13;
+3;NLD;Noord-Holland;Graft-De Rijp;Noordeinde;E4.833;N52.571;12;
+3;NLD;Noord-Holland;Graft-De Rijp;Oost-Graftdijk;E4.816;N52.544;12;
+3;NLD;Noord-Holland;Graft-De Rijp;Oost-Graftdyk;;;12;
+3;NLD;Noord-Holland;Graft-De Rijp;Starnmeer;;;12;
+3;NLD;Noord-Holland;Graft-De Rijp;West-Graftdijk;E4.796;N52.553;12;
+2;NLD;Noord-Holland;Haarlem;;E4.655;N52.402;12;places/NLD/flags/NH/Haarlem.gif
+3;NLD;Noord-Holland;Haarlem;Haarlem;E4.635;N52.381;12;
+3;NLD;Noord-Holland;Haarlem;Spaarndam;E4.674;N52.415;13;
+2;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;;E4.703;N52.403;12;places/NLD/flags/NH/Haarlemmerliede_en_Spaarnwoude.gif
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Haarlemmerliede;E4.681;N52.388;12;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Halfweg;E4.754;N52.383;13;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Penningsveer;E4.684;N52.384;14;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Ruigoord;E4.752;N52.409;12;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Spaarndam;E4.691;N52.414;13;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Spaarndam-West;E4.675;N52.414;13;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Spaarnwoude;E4.696;N52.403;13;
+3;NLD;Noord-Holland;Haarlemmerliede en Spaarnwoude;Vinkebrug;E4.715;N52.384;13;
+2;NLD;Noord-Holland;Haarlemmermeer;;E4.682;N52.303;10;places/NLD/flags/NH/Haarlemmermeer.gif
+3;NLD;Noord-Holland;Haarlemmermeer;'t Kabel;E4.65;N52.25;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Aalsmeerderbrug;E4.754;N52.273;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Abbenes;E4.590;N52.233;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Badhoevedorp;E4.778;N52.335;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Beinsdorp;E4.593;N52.286;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Boesingheliede;E4.733;N52.358;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Buitenkaag;E4.559;N52.219;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Burgerveen;E4.680;N52.239;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Cruquius;E4.631;N52.335;12;
+3;NLD;Noord-Holland;Haarlemmermeer;De Hoek;E4.721;N52.292;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Hoofddorp;E4.688;N52.306;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Leimuiderbrug;E4.675;N52.231;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Lijnden;E4.760;N52.351;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Lisserbroek;E4.573;N52.256;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Luchthaven Schiphol;E4.767;N52.306;11;
+3;NLD;Noord-Holland;Haarlemmermeer;Nieuw Vennep;E4.630;N52.264;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Nieuwe Meer;E4.812;N52.328;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Nieuwebrug;E4.673;N52.370;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Oude Meer;E4.779;N52.286;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Rijsenhout;E4.711;N52.259;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Rozenburg;E4.737;N52.281;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Schiphol;E4.757;N52.306;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Schiphol-Centrum;E4.762;N52.307;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Schiphol-Oost;E4.805;N52.307;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Schiphol-Rijk;E4.749;N52.278;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Vijfhuizen;E4.679;N52.350;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Weteringbrug;E4.648;N52.221;13;
+3;NLD;Noord-Holland;Haarlemmermeer;Zwaanshoek;E4.617;N52.312;12;
+3;NLD;Noord-Holland;Haarlemmermeer;Zwanenburg;E4.742;N52.379;12;
+2;NLD;Noord-Holland;Harenkarspel;;E4.770;N52.747;11;places/NLD/flags/NH/Harenkarspel.gif
+3;NLD;Noord-Holland;Harenkarspel;'t Rijpje;;;12;
+3;NLD;Noord-Holland;Harenkarspel;Dirkshorn;E4.780;N52.748;12;
+3;NLD;Noord-Holland;Harenkarspel;Eenigenburg;E4.725;N52.743;13;
+3;NLD;Noord-Holland;Harenkarspel;Groenveld;E4.780;N52.765;12;
+3;NLD;Noord-Holland;Harenkarspel;Kalverdijk;E4.766;N52.734;13;
+3;NLD;Noord-Holland;Harenkarspel;Kerkbuurt;E4.767;N52.733;13;
+3;NLD;Noord-Holland;Harenkarspel;Krabbendam;E4.703;N52.732;13;
+3;NLD;Noord-Holland;Harenkarspel;Schoorldam;E4.716;N52.706;12;
+3;NLD;Noord-Holland;Harenkarspel;Sint Maarten;E4.745;N52.772;12;
+3;NLD;Noord-Holland;Harenkarspel;St Maarten;;;12;
+3;NLD;Noord-Holland;Harenkarspel;Stroet;E4.766;N52.751;13;
+3;NLD;Noord-Holland;Harenkarspel;Tuitjenhorn;E4.750;N52.738;12;
+3;NLD;Noord-Holland;Harenkarspel;Valkkoog;E4.774;N52.776;12;
+3;NLD;Noord-Holland;Harenkarspel;Waarland;E4.833;N52.726;12;
+3;NLD;Noord-Holland;Harenkarspel;Warmenhuizen;E4.738;N52.722;12;
+2;NLD;Noord-Holland;Heemskerk;;E4.673;N52.506;12;places/NLD/flags/NH/Heemskerk.gif
+3;NLD;Noord-Holland;Heemskerk;Heemskerk;E4.674;N52.510;12;
+2;NLD;Noord-Holland;Heemstede;;E4.615;N52.349;12;places/NLD/flags/NH/Heemstede.gif
+3;NLD;Noord-Holland;Heemstede;Heemstede;E4.619;N52.351;12;
+2;NLD;Noord-Holland;Heerhugowaard;;E4.857;N52.691;11;places/NLD/flags/NH/Heerhugowaard.gif
+3;NLD;Noord-Holland;Heerhugowaard;'t Kruis;E4.850;N52.650;13;
+3;NLD;Noord-Holland;Heerhugowaard;Broekhorn;E4.817;N52.667;13;
+3;NLD;Noord-Holland;Heerhugowaard;Butterhuizen;E4.817;N52.650;13;
+3;NLD;Noord-Holland;Heerhugowaard;De Noord;E4.851;N52.706;12;
+3;NLD;Noord-Holland;Heerhugowaard;Draai;E4.867;N52.667;13;
+3;NLD;Noord-Holland;Heerhugowaard;Frik;E4.867;N52.716;13;
+3;NLD;Noord-Holland;Heerhugowaard;Heerhugowaard;E4.843;N52.667;12;
+3;NLD;Noord-Holland;Heerhugowaard;Kabel;E4.857;N52.658;12;
+3;NLD;Noord-Holland;Heerhugowaard;Veenhuizen;E4.890;N52.703;12;
+3;NLD;Noord-Holland;Heerhugowaard;Verlaat;E4.850;N52.717;13;
+2;NLD;Noord-Holland;Heiloo;;E4.705;N52.601;12;places/NLD/flags/NH/Heiloo.gif
+3;NLD;Noord-Holland;Heiloo;Heiloo;E4.707;N52.603;12;
+2;NLD;Noord-Holland;Hilversum;;E5.173;N52.222;12;places/NLD/flags/NH/Hilversum.gif
+3;NLD;Noord-Holland;Hilversum;Hilversum;E5.170;N52.223;12;
+2;NLD;Noord-Holland;Hoorn;;E5.091;N52.654;12;places/NLD/flags/NH/Hoorn.gif
+3;NLD;Noord-Holland;Hoorn;Bangert;;;10;
+3;NLD;Noord-Holland;Hoorn;Blokdijk;E5.150;N52.655;13;
+3;NLD;Noord-Holland;Hoorn;Blokker;E5.090;N52.661;13;
+3;NLD;Noord-Holland;Hoorn;Hoorn;E5.060;N52.641;12;
+3;NLD;Noord-Holland;Hoorn;Westerblokker;E5.091;N52.664;13;
+3;NLD;Noord-Holland;Hoorn;Zwaag;E5.075;N52.668;12;
+2;NLD;Noord-Holland;Huizen;;E5.239;N52.295;12;places/NLD/flags/NH/Huizen.gif
+3;NLD;Noord-Holland;Huizen;Huizen;E5.237;N52.297;12;
+2;NLD;Noord-Holland;Landsmeer;;E4.915;N52.455;12;places/NLD/flags/NH/Landsmeer.gif
+3;NLD;Noord-Holland;Landsmeer;Den Ilp;E4.909;N52.451;12;
+3;NLD;Noord-Holland;Landsmeer;Landsmeer;E4.916;N52.429;12;
+3;NLD;Noord-Holland;Landsmeer;Purmerland;E4.925;N52.480;12;
+2;NLD;Noord-Holland;Langedijk;;E4.795;N52.691;12;places/NLD/flags/NH/Langedijk.gif
+3;NLD;Noord-Holland;Langedijk;Broek op Langedijk;E4.805;N52.672;12;
+3;NLD;Noord-Holland;Langedijk;Koedijk;E4.756;N52.673;12;
+3;NLD;Noord-Holland;Langedijk;Noord-Scharwoude;E4.811;N52.701;12;
+3;NLD;Noord-Holland;Langedijk;Oudkarspel;E4.802;N52.712;12;
+3;NLD;Noord-Holland;Langedijk;Sint Pancras;E4.785;N52.662;12;
+3;NLD;Noord-Holland;Langedijk;Zuid-Scharwoude;E4.807;N52.683;12;
+2;NLD;Noord-Holland;Laren;;E5.226;N52.251;12;places/NLD/flags/NH/Laren.gif
+3;NLD;Noord-Holland;Laren;Laren;E5.229;N52.252;12;
+2;NLD;Noord-Holland;Medemblik;;E5.103;N52.765;12;places/NLD/flags/NH/Medemblik.gif
+3;NLD;Noord-Holland;Medemblik;Medemblik;E5.103;N52.766;12;
+2;NLD;Noord-Holland;Muiden;;E5.091;N52.328;12;places/NLD/flags/NH/Muiden.gif
+3;NLD;Noord-Holland;Muiden;Muiden;E5.068;N52.329;12;
+3;NLD;Noord-Holland;Muiden;Muiderberg;E5.119;N52.325;12;
+2;NLD;Noord-Holland;Naarden;;E5.175;N52.297;12;places/NLD/flags/NH/Naarden.gif
+3;NLD;Noord-Holland;Naarden;Naarden;E5.154;N52.291;12;
+3;NLD;Noord-Holland;Naarden;Valkeveen;E5.193;N52.304;13;
+2;NLD;Noord-Holland;Niedorp;;E4.863;N52.761;11;places/NLD/flags/NH/Niedorp.gif
+3;NLD;Noord-Holland;Niedorp;'t Veld;E4.854;N52.738;12;
+3;NLD;Noord-Holland;Niedorp;Barsingerhorn;E4.845;N52.786;13;
+3;NLD;Noord-Holland;Niedorp;Blokhuizen;E4.830;N52.751;12;
+3;NLD;Noord-Holland;Niedorp;Groetpolder;;;12;
+3;NLD;Noord-Holland;Niedorp;Haringhuizen;E4.829;N52.774;13;
+3;NLD;Noord-Holland;Niedorp;Kolhorn;E4.889;N52.792;13;
+3;NLD;Noord-Holland;Niedorp;Lutjewinkel;E4.883;N52.768;12;
+3;NLD;Noord-Holland;Niedorp;Nieuwe Niedorp;E4.894;N52.740;12;
+3;NLD;Noord-Holland;Niedorp;Oude Niedorp;E4.872;N52.718;12;
+3;NLD;Noord-Holland;Niedorp;Terdiek;E4.897;N52.727;12;
+3;NLD;Noord-Holland;Niedorp;Winkel;E4.899;N52.754;12;
+3;NLD;Noord-Holland;Niedorp;Zijdewind;E4.838;N52.743;12;
+2;NLD;Noord-Holland;Noorder-Koggenland;;E5.051;N52.730;11;places/NLD/flags/NH/Noorder-Koggenland.gif
+3;NLD;Noord-Holland;Noorder-Koggenland;Abbekerk;E5.017;N52.731;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Benningbroek;E5.013;N52.703;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Hauwert;E5.101;N52.707;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Lambertschaag;E5.018;N52.745;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Midwoud;E5.075;N52.716;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Oostwoud;E5.092;N52.724;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Opperdoes;E5.075;N52.759;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Sijbekarspel;E4.983;N52.710;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Twisk;E5.054;N52.740;12;
+3;NLD;Noord-Holland;Noorder-Koggenland;Veldhuis;E5.117;N52.733;13;
+2;NLD;Noord-Holland;Obdam;;E4.899;N52.671;12;places/NLD/flags/NH/Obdam.gif
+3;NLD;Noord-Holland;Obdam;Berkmeer;E4.898;N52.684;12;
+3;NLD;Noord-Holland;Obdam;Hensbroek;E4.882;N52.657;12;
+3;NLD;Noord-Holland;Obdam;Obdam;E4.902;N52.674;12;
+3;NLD;Noord-Holland;Obdam;Wogmeer;E4.916;N52.652;12;
+2;NLD;Noord-Holland;Oostzaan;;E4.876;N52.438;12;places/NLD/flags/NH/Oostzaan.gif
+3;NLD;Noord-Holland;Oostzaan;Oostzaan;E4.880;N52.437;12;
+2;NLD;Noord-Holland;Opmeer;;E4.956;N52.719;11;places/NLD/flags/NH/Opmeer.gif
+3;NLD;Noord-Holland;Opmeer;Aartswoud;E4.950;N52.744;12;
+3;NLD;Noord-Holland;Opmeer;Abbekerkeweere;E5.012;N52.727;13;
+3;NLD;Noord-Holland;Opmeer;Berkmeer;E4.896;N52.683;12;
+3;NLD;Noord-Holland;Opmeer;De Weere;E5.000;N52.723;12;
+3;NLD;Noord-Holland;Opmeer;Gouwe;E4.967;N52.733;13;
+3;NLD;Noord-Holland;Opmeer;Hoogwoud;E4.935;N52.715;12;
+3;NLD;Noord-Holland;Opmeer;Opmeer;E4.943;N52.703;12;
+3;NLD;Noord-Holland;Opmeer;Spanbroek;E4.960;N52.697;12;
+3;NLD;Noord-Holland;Opmeer;Wadwaij;E4.980;N52.690;12;
+3;NLD;Noord-Holland;Opmeer;Zandwerven;E4.950;N52.683;13;
+2;NLD;Noord-Holland;Ouder-Amstel;;E4.929;N52.296;11;places/NLD/flags/NH/Ouder-Amstel.gif
+3;NLD;Noord-Holland;Ouder-Amstel;Duivendrecht;E4.941;N52.330;12;
+3;NLD;Noord-Holland;Ouder-Amstel;Ouderkerk aan de Amstel;E4.907;N52.294;12;
+3;NLD;Noord-Holland;Ouder-Amstel;Waver;E4.913;N52.254;12;
+2;NLD;Noord-Holland;Purmerend;;E4.955;N52.504;12;places/NLD/flags/NH/Purmerend.gif
+3;NLD;Noord-Holland;Purmerend;Purmerend;E4.948;N52.507;12;
+2;NLD;Noord-Holland;Schagen;;E4.802;N52.783;12;places/NLD/flags/NH/Schagen.gif
+3;NLD;Noord-Holland;Schagen;Schagen;E4.800;N52.786;12;
+2;NLD;Noord-Holland;Schermer;;E4.842;N52.613;11;places/NLD/flags/NH/Schermer.gif
+3;NLD;Noord-Holland;Schermer;Driehuizen;E4.808;N52.578;12;
+3;NLD;Noord-Holland;Schermer;Grootschermer;E4.849;N52.581;12;
+3;NLD;Noord-Holland;Schermer;Oterleek;E4.834;N52.636;12;
+3;NLD;Noord-Holland;Schermer;Schermerhorn;E4.885;N52.599;12;
+3;NLD;Noord-Holland;Schermer;Stompetoren;E4.820;N52.613;12;
+3;NLD;Noord-Holland;Schermer;Ursem;E4.891;N52.626;12;
+3;NLD;Noord-Holland;Schermer;Veenhuizen;;;12;
+3;NLD;Noord-Holland;Schermer;Zuidschermer;E4.778;N52.583;12;
+2;NLD;Noord-Holland;Stede Broec;;E5.228;N52.697;12;places/NLD/flags/NH/Stede_Broec.gif
+3;NLD;Noord-Holland;Stede Broec;Bovenkarspel;E5.248;N52.698;12;
+3;NLD;Noord-Holland;Stede Broec;Broekerhaven;E5.256;N52.687;12;
+3;NLD;Noord-Holland;Stede Broec;Grootebroek;E5.220;N52.698;12;
+3;NLD;Noord-Holland;Stede Broec;Horn;;;12;
+3;NLD;Noord-Holland;Stede Broec;Lutjebroek;E5.205;N52.697;12;
+2;NLD;Noord-Holland;Texel;;E4.811;N53.089;10;places/NLD/flags/NH/Texel.gif
+3;NLD;Noord-Holland;Texel;'t Horntje;E4.785;N53.004;12;
+3;NLD;Noord-Holland;Texel;Bargen;E4.833;N53.083;12;
+3;NLD;Noord-Holland;Texel;De Cocksdorp;E4.870;N53.156;12;
+3;NLD;Noord-Holland;Texel;De Koog;E4.766;N53.099;12;
+3;NLD;Noord-Holland;Texel;De Nes;E4.867;N53.083;13;
+3;NLD;Noord-Holland;Texel;De Waal;E4.822;N53.072;12;
+3;NLD;Noord-Holland;Texel;Den Burg;E4.793;N53.054;12;
+3;NLD;Noord-Holland;Texel;Den Hoorn;E4.750;N53.026;12;
+3;NLD;Noord-Holland;Texel;Dijkmanshuizen;E4.863;N53.051;13;
+3;NLD;Noord-Holland;Texel;Driehuizen;E4.783;N53.050;13;
+3;NLD;Noord-Holland;Texel;Eierland;E4.863;N53.129;12;
+3;NLD;Noord-Holland;Texel;Harkebuurt;E4.850;N53.083;13;
+3;NLD;Noord-Holland;Texel;Midden-Eierland;E4.867;N53.133;12;
+3;NLD;Noord-Holland;Texel;Molenbuurt;E4.850;N53.083;13;
+3;NLD;Noord-Holland;Texel;Nieuweschild;E4.886;N53.074;12;
+3;NLD;Noord-Holland;Texel;Noorderbuurt;E4.850;N53.083;13;
+3;NLD;Noord-Holland;Texel;Ongeren;E4.800;N53.067;12;
+3;NLD;Noord-Holland;Texel;Oost;E4.890;N53.096;12;
+3;NLD;Noord-Holland;Texel;Oosterend;E4.876;N53.085;12;
+3;NLD;Noord-Holland;Texel;Oudeschild;E4.847;N53.040;12;
+3;NLD;Noord-Holland;Texel;Spang;E4.850;N53.065;13;
+3;NLD;Noord-Holland;Texel;Spijkdorp;E4.850;N53.083;12;
+3;NLD;Noord-Holland;Texel;Tienhoven;E4.800;N53.067;13;
+3;NLD;Noord-Holland;Texel;Westermient;E4.767;N53.067;12;
+3;NLD;Noord-Holland;Texel;Zevenhuizen;E4.883;N53.083;13;
+3;NLD;Noord-Holland;Texel;Zuid-Eierland;E4.825;N53.113;12;
+2;NLD;Noord-Holland;Uitgeest;;E4.750;N52.534;11;places/NLD/flags/NH/Uitgeest.gif
+3;NLD;Noord-Holland;Uitgeest;Assum;E4.704;N52.516;12;
+3;NLD;Noord-Holland;Uitgeest;Bus en Dam;E4.743;N52.501;12;
+3;NLD;Noord-Holland;Uitgeest;Dorregeest;E4.728;N52.550;13;
+3;NLD;Noord-Holland;Uitgeest;Groot Dorregeest;E4.729;N52.535;13;
+3;NLD;Noord-Holland;Uitgeest;Kogerpolder;E4.794;N52.552;13;
+3;NLD;Noord-Holland;Uitgeest;Starnmeer;E4.793;N52.542;13;
+3;NLD;Noord-Holland;Uitgeest;Uitgeest;E4.708;N52.529;13;
+2;NLD;Noord-Holland;Uithoorn;;E4.811;N52.242;12;places/NLD/flags/NH/Uithoorn.gif
+3;NLD;Noord-Holland;Uithoorn;De Kwakel;E4.793;N52.238;12;
+3;NLD;Noord-Holland;Uithoorn;Uithoorn;E4.825;N52.236;12;
+2;NLD;Noord-Holland;Velsen;;E4.647;N52.448;12;places/NLD/flags/NH/Velsen.gif
+3;NLD;Noord-Holland;Velsen;Driehuis;E4.636;N52.445;12;
+3;NLD;Noord-Holland;Velsen;IJmuiden;E4.621;N52.458;12;
+3;NLD;Noord-Holland;Velsen;Santpoort-Noord;E4.639;N52.431;12;
+3;NLD;Noord-Holland;Velsen;Santpoort-Zuid;E4.629;N52.418;12;
+3;NLD;Noord-Holland;Velsen;Velsen-Noord;E4.647;N52.468;12;
+3;NLD;Noord-Holland;Velsen;Velsen-Zuid;E4.644;N52.460;12;
+3;NLD;Noord-Holland;Velsen;Velserbroek;E4.660;N52.434;12;
+2;NLD;Noord-Holland;Waterland;;E5.010;N52.454;11;places/NLD/flags/NH/Waterland.gif
+3;NLD;Noord-Holland;Waterland;Broek in Waterland;E4.997;N52.433;12;
+3;NLD;Noord-Holland;Waterland;Ilpendam;E4.952;N52.466;12;
+3;NLD;Noord-Holland;Waterland;Katwoude;E5.051;N52.470;12;
+3;NLD;Noord-Holland;Waterland;Marken;E5.105;N52.458;12;
+3;NLD;Noord-Holland;Waterland;Monnickendam;E5.037;N52.457;12;
+3;NLD;Noord-Holland;Waterland;Purmer;E4.995;N52.475;12;
+3;NLD;Noord-Holland;Waterland;Uitdam;E5.070;N52.419;12;
+3;NLD;Noord-Holland;Waterland;Watergang;E4.951;N52.438;12;
+3;NLD;Noord-Holland;Waterland;Zuiderwoude;E5.033;N52.432;12;
+2;NLD;Noord-Holland;Weesp;;E5.056;N52.302;12;places/NLD/flags/NH/Weesp.gif
+3;NLD;Noord-Holland;Weesp;De Horn;E5.066;N52.299;13;
+3;NLD;Noord-Holland;Weesp;Uitermeer;E5.077;N52.291;12;
+3;NLD;Noord-Holland;Weesp;Weesp;E5.039;N52.309;12;
+2;NLD;Noord-Holland;Wervershoof;;E5.140;N52.723;12;places/NLD/flags/NH/Wervershoof.gif
+3;NLD;Noord-Holland;Wervershoof;Onderdijk;E5.135;N52.742;12;
+3;NLD;Noord-Holland;Wervershoof;Wervershoof;E5.159;N52.731;12;
+3;NLD;Noord-Holland;Wervershoof;Zwaagdijk;E5.129;N52.702;12;
+3;NLD;Noord-Holland;Wervershoof;Zwaagdijk-Oost;E5.128;N52.702;12;
+2;NLD;Noord-Holland;Wester-Koggenland;;E4.962;N52.643;11;places/NLD/flags/NH/Wester-Koggenland.gif
+3;NLD;Noord-Holland;Wester-Koggenland;Avenhorn;E4.952;N52.619;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Baarsdorpermeer;E5.000;N52.667;13;
+3;NLD;Noord-Holland;Wester-Koggenland;Berkhout;E4.996;N52.640;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Bobeldijk;E4.998;N52.653;12;
+3;NLD;Noord-Holland;Wester-Koggenland;De Goorn;E4.945;N52.628;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Grosthuizen;E4.982;N52.618;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Mijzen;;;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Oudendijk;E4.967;N52.601;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Rustenburg;E4.879;N52.635;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Scharwoude;E5.013;N52.621;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Spierdijk;E4.940;N52.649;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Ursem;E4.893;N52.627;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Wogmeer;E4.916;N52.653;12;
+3;NLD;Noord-Holland;Wester-Koggenland;Zuidermeer;E4.976;N52.663;12;
+2;NLD;Noord-Holland;Wieringen;;E4.980;N52.914;12;places/NLD/flags/NH/Wieringen.gif
+3;NLD;Noord-Holland;Wieringen;Belt;E4.950;N52.898;13;
+3;NLD;Noord-Holland;Wieringen;Dam;E4.917;N52.896;13;
+3;NLD;Noord-Holland;Wieringen;De Gest;E5.017;N52.933;12;
+3;NLD;Noord-Holland;Wieringen;De Haukes;E4.935;N52.889;12;
+3;NLD;Noord-Holland;Wieringen;De Heid;E5.018;N52.932;13;
+3;NLD;Noord-Holland;Wieringen;De Hoelm;E4.947;N52.893;13;
+3;NLD;Noord-Holland;Wieringen;Den Oever;E5.028;N52.934;12;
+3;NLD;Noord-Holland;Wieringen;Elft;E4.983;N52.900;13;
+3;NLD;Noord-Holland;Wieringen;Hippolytushoef;E4.964;N52.908;12;
+3;NLD;Noord-Holland;Wieringen;Hollebalg;E4.948;N52.900;13;
+3;NLD;Noord-Holland;Wieringen;Noord-Stroe;;;12;
+3;NLD;Noord-Holland;Wieringen;Noordburen;E4.964;N52.919;12;
+3;NLD;Noord-Holland;Wieringen;Noorderbuurt;E4.933;N52.900;12;
+3;NLD;Noord-Holland;Wieringen;Oosterklief;E4.958;N52.900;12;
+3;NLD;Noord-Holland;Wieringen;Oosterland;E5.010;N52.930;13;
+3;NLD;Noord-Holland;Wieringen;Smerp;E4.992;N52.925;12;
+3;NLD;Noord-Holland;Wieringen;Stroe;E4.975;N52.925;12;
+3;NLD;Noord-Holland;Wieringen;Vatrop;E5.012;N52.932;12;
+3;NLD;Noord-Holland;Wieringen;Westerklief;E4.947;N52.898;12;
+3;NLD;Noord-Holland;Wieringen;Westerland;E4.934;N52.894;12;
+2;NLD;Noord-Holland;Wieringermeer;;E5.029;N52.833;12;places/NLD/flags/NH/Wieringermeer.gif
+3;NLD;Noord-Holland;Wieringermeer;Kreileroord;E5.083;N52.842;12;
+3;NLD;Noord-Holland;Wieringermeer;Middenmeer;E4.997;N52.809;12;
+3;NLD;Noord-Holland;Wieringermeer;Slootdorp;E4.972;N52.844;12;
+3;NLD;Noord-Holland;Wieringermeer;Wieringerwerf;E5.026;N52.850;12;
+2;NLD;Noord-Holland;Wijdemeren;;E5.089;N52.230;11;places/NLD/flags/NH/Wijdemeren.gif
+3;NLD;Noord-Holland;Wijdemeren;'s-Graveland;E5.119;N52.246;12;
+3;NLD;Noord-Holland;Wijdemeren;Ankeveen;E5.100;N52.267;13;
+3;NLD;Noord-Holland;Wijdemeren;Boomhoek;E5.095;N52.187;12;
+3;NLD;Noord-Holland;Wijdemeren;Breukeleveen;E5.070;N52.178;12;
+3;NLD;Noord-Holland;Wijdemeren;Kortenhoef;E5.115;N52.240;12;
+3;NLD;Noord-Holland;Wijdemeren;Loosdrecht;E5.140;N52.199;13;
+3;NLD;Noord-Holland;Wijdemeren;Muyeveld;E5.069;N52.185;12;
+3;NLD;Noord-Holland;Wijdemeren;Nederhorst den Berg;E5.047;N52.260;12;
+3;NLD;Noord-Holland;Wijdemeren;Nieuw-Loosdrecht;E5.138;N52.199;12;
+3;NLD;Noord-Holland;Wijdemeren;Oud-Loosdrecht;E5.078;N52.206;12;
+2;NLD;Noord-Holland;Wognum;;E5.073;N52.691;12;places/NLD/flags/NH/Wognum.gif
+3;NLD;Noord-Holland;Wognum;Nibbixwoud;E5.059;N52.692;12;
+3;NLD;Noord-Holland;Wognum;Wognum;E5.020;N52.684;12;
+3;NLD;Noord-Holland;Wognum;Zwaagdijk;E5.128;N52.702;12;
+3;NLD;Noord-Holland;Wognum;Zwaagdijk-West;E5.060;N52.675;12;
+2;NLD;Noord-Holland;Wormerland;;E4.864;N52.515;11;places/NLD/flags/NH/Wormerland.gif
+3;NLD;Noord-Holland;Wormerland;Jisp;E4.850;N52.506;12;
+3;NLD;Noord-Holland;Wormerland;Neck;E4.915;N52.508;12;
+3;NLD;Noord-Holland;Wormerland;Oostknollendam;E4.786;N52.517;13;
+3;NLD;Noord-Holland;Wormerland;Spijkerboor;E4.831;N52.538;12;
+3;NLD;Noord-Holland;Wormerland;Wijdewormer;E4.872;N52.488;12;
+3;NLD;Noord-Holland;Wormerland;Wormer;E4.811;N52.498;12;
+2;NLD;Noord-Holland;Zaanstad;;E4.772;N52.484;11;places/NLD/flags/NH/Zaanstad.gif
+3;NLD;Noord-Holland;Zaanstad;Assendelft;E4.742;N52.465;12;
+3;NLD;Noord-Holland;Zaanstad;Bus en Dam;E4.743;N52.500;12;
+3;NLD;Noord-Holland;Zaanstad;Koog aan de Zaan;E4.798;N52.459;12;
+3;NLD;Noord-Holland;Zaanstad;Krommenie;E4.759;N52.500;12;
+3;NLD;Noord-Holland;Zaanstad;Krommeniedijk;E4.774;N52.513;12;
+3;NLD;Noord-Holland;Zaanstad;Westknollendam;E4.782;N52.519;13;
+3;NLD;Noord-Holland;Zaanstad;Westzaan;E4.769;N52.465;12;
+3;NLD;Noord-Holland;Zaanstad;Wormerveer;E4.789;N52.494;12;
+3;NLD;Noord-Holland;Zaanstad;Zaandam;E4.824;N52.439;12;
+3;NLD;Noord-Holland;Zaanstad;Zaandijk;E4.808;N52.473;12;
+2;NLD;Noord-Holland;Zandvoort;;E4.552;N52.373;12;places/NLD/flags/NH/Zandvoort.gif
+3;NLD;Noord-Holland;Zandvoort;Bentveld;E4.579;N52.365;12;
+3;NLD;Noord-Holland;Zandvoort;Zandvoort;E4.530;N52.371;12;
+2;NLD;Noord-Holland;Zeevang;;E4.993;N52.563;11;places/NLD/flags/NH/Zeevang.gif
+3;NLD;Noord-Holland;Zeevang;Axwijk;E5.017;N52.531;13;
+3;NLD;Noord-Holland;Zeevang;Beets;E4.979;N52.588;12;
+3;NLD;Noord-Holland;Zeevang;Etersheim;E5.020;N52.584;12;
+3;NLD;Noord-Holland;Zeevang;Hobrede;E4.978;N52.545;12;
+3;NLD;Noord-Holland;Zeevang;Kwadijk;E4.977;N52.528;12;
+3;NLD;Noord-Holland;Zeevang;Middelie;E5.017;N52.533;13;
+3;NLD;Noord-Holland;Zeevang;Oosthuizen;E4.997;N52.574;12;
+3;NLD;Noord-Holland;Zeevang;Schardam;E5.018;N52.595;12;
+3;NLD;Noord-Holland;Zeevang;Verloren Einde;E4.967;N52.533;12;
+3;NLD;Noord-Holland;Zeevang;Warder;E5.032;N52.563;12;
+2;NLD;Noord-Holland;Zijpe;;E4.741;N52.795;10;places/NLD/flags/NH/Zijpe.gif
+3;NLD;Noord-Holland;Zijpe;'t Buurtje;E4.742;N52.805;13;
+3;NLD;Noord-Holland;Zijpe;'t Zand;E4.757;N52.836;12;
+3;NLD;Noord-Holland;Zijpe;Burgerbrug;E4.702;N52.747;12;
+3;NLD;Noord-Holland;Zijpe;Burgervlotbrug;E4.683;N52.753;12;
+3;NLD;Noord-Holland;Zijpe;Callantsoog;E4.697;N52.836;12;
+3;NLD;Noord-Holland;Zijpe;De Stolpen;E4.734;N52.812;12;
+3;NLD;Noord-Holland;Zijpe;Eenigenburg;E4.725;N52.743;13;
+3;NLD;Noord-Holland;Zijpe;Groenveld;E4.779;N52.766;12;
+3;NLD;Noord-Holland;Zijpe;Groote Keeten;E4.714;N52.862;12;
+3;NLD;Noord-Holland;Zijpe;Keinsmerbrug;E4.788;N52.815;12;
+3;NLD;Noord-Holland;Zijpe;Oudesluis;E4.810;N52.832;12;
+3;NLD;Noord-Holland;Zijpe;Petten;E4.661;N52.767;12;
+3;NLD;Noord-Holland;Zijpe;Schagerbrug;E4.762;N52.801;12;
+3;NLD;Noord-Holland;Zijpe;Schagerwaard;;;12;
+3;NLD;Noord-Holland;Zijpe;Sint Maartensbrug;E4.728;N52.780;12;
+3;NLD;Noord-Holland;Zijpe;Sint Maartensvlotbrug;E4.709;N52.785;12;
+3;NLD;Noord-Holland;Zijpe;Sint Maartenszee;E4.687;N52.792;12;
+3;NLD;Noord-Holland;Zijpe;Stolpervlotbrug;E4.743;N52.807;12;
+3;NLD;Noord-Holland;Zijpe;Stroet;E4.767;N52.750;12;
+3;NLD;Noord-Holland;Zijpe;Valkkoog;E4.770;N52.777;12;
+3;NLD;Noord-Holland;Zijpe;Zijpersluis;E4.687;N52.734;12;

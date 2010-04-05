@@ -1,0 +1,9 @@
+Le fichier présenté ici est issu des fichiers de André Vanderlynden disponibles sur le site de phpGedView ( https://sourceforge.net/tracker/index.php?func=detail&aid=1600506&group_id=55456&atid=477081 ). J'ai modifié ses fichiers pour qu'ils soient en accord avec les lieux déjà présents dans phpGedView.
+La liste des lieux présentés est identique à celle du fichier correspondant dans le répertoire /places/FRA/ de phpGedView. La seule différence est que le trigramme de pays "FRA" est remplacé par le nom complet "France".
+En conséquence, lorsque vous saisissez le lieu dans les fiches, il devra être de la forme:
+  France, "Région", "Département", "Commune code_INSEE".
+
+La saisie de ces fichiers, entièrement manuelle, implique des erreurs (fautes de frappes, fautes d'orthographe des noms de communes, champs mal renseignés, oublis de certaines communes, erreur de formatage, etc ...). La France comportant plus de 36000 communes (sans compter les communes disparues), il m'est assez difficile de tout vérifier. Je compte sur vous, utilisateurs, pour me signaler toutes ces coquilles. Attention, comme dit ci-dessus, je ne traite que les communes des fichiers /places/FRA/*.txt de phpGedView. Je les corrigerai en conséquence.
+
+Alain BOUQUET
+alamo29@gmail.com

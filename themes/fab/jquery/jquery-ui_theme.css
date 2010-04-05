@@ -1,0 +1,79 @@
+/* jquery css THEME adjustments */
+
+/* Tabs --------------------------------*/
+.ui-widget-content a:hover 				 { color: red; }
+
+.ui-tabs-nav li.ui-tabs-selected 			 { background: #f8f8f8; }
+.ui-tabs-nav li.ui-tabs-selected a	 		 { font-weight:600; color: black; }
+.ui-tabs-nav li.ui-tabs-selected a:hover	 { font-weight:600; color: black; }
+
+
+.static_tab_content { 
+	border-style:none solid solid solid; 
+	border-color: #c8c8c8 
+}
+
+.static_tab_ltr {
+	float: right;
+	margin-right: 1px;
+	border-color: #cccccc;
+}
+.static_tab_content_ltr {
+	position: absolute;
+	z-index: 100;
+	right: 11px;
+	margin-top:-2px; 
+	
+}
+.static_tab_rtl { display: none; }
+
+/* ------- Sidebar ------- */
+#sidebar_open img {
+	margin-left: 0px;
+}
+
+/* Navigator and Flyout menu Styles */
+.nam a:hover{
+color:red;
+}
+.nav_content {
+	width:240px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:3px;
+	background-color: white;
+}
+.flyout {
+	color:#000000; 
+	text-align: left;
+	margin-top: -20px;
+	right: 210px;
+	padding: 3px;
+}
+.flyout2 {
+	color:#000000;
+	text-align: left;
+	margin-top: -2px;
+	left: 70px;
+	padding: 3px;
+}
+.flyout2 a:hover{
+	color:#ff0000;
+}
+.flyout4 {
+	color:#000000;
+	text-align: left;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 3px;
+}
+#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
+	background:none;
+	border:none;
+	text-decoration:none;
+	text-align: left;
+	margin-top: 0px;
+	left: 0px;
+	padding: 0px;
+}
+/* End of Flyout Menu styles*/

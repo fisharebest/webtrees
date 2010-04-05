@@ -1,0 +1,52 @@
+"Level";"Country";"State";"County";"Place";"Longitude";"Latitude";"ZoomLevel";"Icon"
+1;USA;Alabama;;;W86.8073;N32.799;7;places/USA/flags/AL.gif
+1;USA;Alaska;;;W152.2683;N61.385;4;places/USA/flags/AK.gif
+1;USA;Arizona;;;W111.3877;N33.7712;7;places/USA/flags/AZ.gif
+1;USA;Arkansas;;;W92.3809;N34.9513;7;places/USA/flags/AR.gif
+1;USA;California;;;W119.7462;N36.17;5;places/USA/flags/CA.gif
+1;USA;Colorado;;;W105.3272;N39.0646;7;places/USA/flags/CO.gif
+1;USA;Connecticut;;;W72.7622;N41.5834;8;places/USA/flags/CT.gif
+1;USA;Delaware;;;W75.5148;N39.3498;7;places/USA/flags/DE.gif
+1;USA;District of Columbia;;;W77.0262;N38.8964;9;places/USA/flags/DC.gif
+1;USA;Florida;;;W81.717;N27.8333;7;places/USA/flags/FL.gif
+1;USA;Georgia;;;W83.6487;N32.9866;7;places/USA/flags/GA.gif
+1;USA;Hawaii;;;W157.5311;N21.1098;7;places/USA/flags/HI.gif
+1;USA;Idaho;;;W114.5103;N44.2394;7;places/USA/flags/ID.gif
+1;USA;Illinois;;;W89.0022;N40.3363;7;places/USA/flags/IL.gif
+1;USA;Indiana;;;W86.2604;N39.8647;7;places/USA/flags/IN.gif
+1;USA;Iowa;;;W93.214;N42.0046;7;places/USA/flags/IA.gif
+1;USA;Kansas;;;W96.8005;N38.5111;7;places/USA/flags/KS.gif
+1;USA;Kentucky;;;W84.6514;N37.669;7;places/USA/flags/KY.gif
+1;USA;Louisiana;;;W91.8749;N31.1801;7;places/USA/flags/LA.gif
+1;USA;Maine;;;W69.3977;N44.6074;7;places/USA/flags/ME.gif
+1;USA;Maryland;;;W76.7902;N39.0724;7;places/USA/flags/MD.gif
+1;USA;Massachusetts;;;W71.5314;N42.2373;7;places/USA/flags/MA.gif
+1;USA;Michigan;;;W84.5603;N43.3504;7;places/USA/flags/MI.gif
+1;USA;Minnesota;;;W93.9196;N45.7326;7;places/USA/flags/MN.gif
+1;USA;Mississippi;;;W89.6812;N32.7673;7;places/USA/flags/MS.gif
+1;USA;Missouri;;;W92.302;N38.4623;7;places/USA/flags/MO.gif
+1;USA;Montana;;;W110.3261;N46.9048;7;places/USA/flags/MT.gif
+1;USA;Nebraska;;;W98.2883;N41.1289;7;places/USA/flags/NE.gif
+1;USA;Nevada;;;W117.1219;N38.4199;7;places/USA/flags/NV.gif
+1;USA;New Hampshire;;;W71.5653;N43.4108;7;places/USA/flags/NH.gif
+1;USA;New Jersey;;;W74.5089;N40.314;7;places/USA/flags/NJ.gif
+1;USA;New Mexico;;;W106.2371;N34.8375;7;places/USA/flags/NM.gif
+1;USA;New York;;;W74.9384;N42.1497;7;places/USA/flags/NY.gif
+1;USA;North Carolina;;;W79.8431;N35.6411;7;places/USA/flags/NC.gif
+1;USA;North Dakota;;;W99.793;N47.5362;7;places/USA/flags/ND.gif
+1;USA;Ohio;;;W82.7755;N40.3736;7;places/USA/flags/OH.gif
+1;USA;Oklahoma;;;W96.9247;N35.5376;7;places/USA/flags/OK.gif
+1;USA;Oregon;;;W122.1269;N44.5672;7;places/USA/flags/OR.gif
+1;USA;Pennsylvania;;;W77.264;N40.5773;7;places/USA/flags/PA.gif
+1;USA;Rhode Island;;;W71.5101;N41.6772;7;places/USA/flags/RI.gif
+1;USA;South Carolina;;;W80.9066;N33.8191;7;places/USA/flags/SC.gif
+1;USA;South Dakota;;;W99.4632;N44.2853;7;places/USA/flags/SD.gif
+1;USA;Tennessee;;;W86.7489;N35.7449;7;places/USA/flags/TN.gif
+1;USA;Texas;;;W97.6475;N31.106;7;places/USA/flags/TX.gif
+1;USA;Utah;;;W111.8535;N40.1135;7;places/USA/flags/UT.gif
+1;USA;Vermont;;;W72.7093;N44.0407;7;places/USA/flags/VT.gif
+1;USA;Virginia;;;W78.2057;N37.768;7;places/USA/flags/VA.gif
+1;USA;Washington;;;W121.5708;N47.3917;7;places/USA/flags/WA.gif
+1;USA;West Virginia;;;W80.9696;N38.468;7;places/USA/flags/WV.gif
+1;USA;Wisconsin;;;W89.6385;N44.2563;7;places/USA/flags/WI.gif
+1;USA;Wyoming;;;W107.2085;N42.7475;7;places/USA/flags/WY.gif

@@ -1,0 +1,938 @@
+/*
+* Style for FAB theme
+*
+* Copyright (c) 2010 Greg Roach
+*
+* Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.
+*
+* $Id$
+*/
+
+/* temp stuff - for old PGV menus */
+.submenu, .sublinks_table {
+	background-color:#EEE;
+	border:thin solid #AAA;
+}
+.sublinks_cell {
+	text-align:center;
+}
+.sublinks_cell .icon {
+	display:none;
+}
+@media print {
+	.submenu, .sublinks_table {
+		display:none;
+	}
+}
+
+/* Thin grey borders around block-level elements */
+input,
+textarea,
+fieldset,
+.border1,
+.block,
+.descriptionbox,
+.facts_label, .facts_label02, .facts_label03, .facts_value,
+.image,
+.lifespan_outer,
+.list_label, .list_label_wrap, .list_value, .list_value_wrap,
+.messagebox,
+.optionbox,
+.person_box, .person_boxF, .person_boxNN,
+.person0, .person1, .person2, .person3, .person4, .person5
+.subbar,
+.topbottombar {
+	margin:3px;
+	padding:3px;
+	border:1px solid DarkGray;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
+legend {
+	font-weight:bold;
+}
+
+/* Indicate that the parent died shortly after the birth */
+.parentdeath {
+	border:1px solid Black;
+}
+
+/* Hyperlinks: regular and help */
+a {
+	text-decoration:none;
+}
+a:link, a:visited {
+	color:DarkSlateGray;
+}
+a:hover, a:active {
+	color:White !important;
+	background-color:DarkSlateGray;
+}
+a.help {
+	font-weight:bold;
+	text-shadow: Black 1px 1px 1px;
+	color:Yellow !important;
+	cursor:help;
+}
+
+body {
+	color:DimGray;
+	background-color:White;
+	font:12px sans-serif;
+	margin:0px;
+}
+
+img {
+	border:0;
+}
+
+/* Various text styles */
+.warning .error .largeError {
+	color: red;
+	font-weight: bold;
+}
+
+/* Fact labels */
+.label {
+	font-weight:bold;
+}
+
+/* Main name on INDI/FAM/etc. pages */
+.name_head {
+	font-size:150%;
+}
+
+/* Elements used on every page */
+#header {
+	color:#888;
+	text-align:center;
+}
+#topMenu {
+	clear:both;
+	text-align:center;
+	padding-top:1em;
+}
+#content {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+#footer {
+	text-align:center;
+}
+
+/* Block level objects, such as header, footer, etc. */
+.block {
+	background-color:#EEE;
+	clear:none;
+}
+
+/* Pending edits */
+.change_new, .nameblue {
+	border: solid blue 2px !important;
+}
+.change_old, .namered {
+	color: #888 !important;
+	text-decoration:line-through !important;
+}
+
+/* Use CSS menus based on nested <ul> */
+.makeMenu li {
+	display:inline;
+	position:relative;
+	white-space:nowrap;
+}
+
+.makeMenu li ul {
+	display:none;
+	position:absolute;
+	left:0px;
+	top:1.1em;
+	background-color:#EEE;
+	border:thin solid #AAA;
+	z-index:999;
+}
+
+.makeMenu li ul li {
+	display:block;
+	text-align:left;
+}
+
+.makeMenu, .makeMenu li ul {
+	list-style:none;
+	margin:0;
+	padding:1px;
+}
+
+.makeMenu li:hover > ul {
+	display:block;
+}
+
+/* person boxes are used in various charts */
+.person_box {
+	background-color:#DDF;
+}
+
+.person_boxF {
+	background-color:#FDD;
+}
+
+.person_boxNN {
+	background-color:#DFD;
+}
+
+/* index.php */
+#index_main_blocks {
+	width:60%;
+	float:left;
+}
+#index_small_blocks {
+	width:40%;
+	float:right;
+}
+#index_full_blocks {
+}
+
+
+.facts_table, .facts_table_rtl {
+	width:100%;
+}
+
+/* pedigree.php */
+.pedigree_image_portrait, .pedigree_image_landscape {
+	float:left;
+	height:48px;
+	margin-right:3px;
+}
+
+.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
+	float:right;
+	height:48px;
+	margin-left:3px;
+}
+
+/* Printer friendliness */
+@media print {
+	#header, #footer {
+		display:none;
+	}
+}
+
+/* Tabular data */
+.list_table {
+	padding: 3px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.topbottombar {
+	font-weight:bold;
+	font-size:125%;
+	background-color:#BBB;
+	text-align:center;
+}
+.descriptionbox {
+	font-weight:bold;
+	background-color:#CCC;
+	vertical-align:top;
+	white-space: nowrap;
+}
+.optionbox {
+	background-color:#DDD;
+	color:black;
+	vertical-align:top;
+	white-space:nowrap;
+}
+.facts_label, .facts_label02, .facts_label03 {
+	background-color: #CCC;
+	width: 20%;
+	text-align: center;
+}
+
+.list_label, .list_value {
+	white-space: nowrap;
+}
+.list_label_wrap, .list_value_wrap {
+	white-space: normal;
+}
+
+.list_label, .list_label_wrap {
+	background-color:#CCC;
+}
+
+.list_value, .list_value_wrap {
+	background-color:#DDD;
+}
+
+/* Autocomplete styles*/
+.ac_input {
+	background-color: #EEE8AA;
+}
+.ac_results {
+	padding: 0px;
+	border:thin solid #AAA;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	font: menu;
+	line-height: 14px; /* absolute setting required for firefox? */
+	overflow: hidden;
+}
+.ac_loading {
+	xbackground: white url(../../images/indicator.gif) right center no-repeat;
+}
+.ac_odd {
+	background-color: #eee;
+}
+.ac_over {
+	background-color:navy;
+	color:white;
+}
+
+/* Review everything below this line */
+
+.center {
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.nowrap {
+	white-space: nowrap;
+}
+.wrap {
+	white-space: normal;
+}
+
+.tabs_table {
+	width: 99%;
+}
+
+.tab_cell_active {
+	background-color: white;
+	border-left: outset #9ca3d4 2px;
+	border-top: outset #9ca3d4 2px;
+	border-right: outset #9ca3d4 2px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tab_cell_inactive {
+	background-color: #d6e0ea;
+	border-left: solid #9ca3d4 2px;
+	border-top: solid #9ca3d4 2px;
+	border-right: outset #9ca3d4 2px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tab_cell_inactive_empty {
+	background-color: #c6d0da;
+	border-left: solid #9ca3d4 2px;
+	border-top: solid #9ca3d4 2px;
+	border-right: outset #9ca3d4 2px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tab_cell_inactive_empty a {
+	color: #999999;
+}
+
+.tab_active_bottom {
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	height: 5px;
+}
+
+.tab_inactive_bottom {
+	border-left: none;
+	border-right: none;
+	border-top: outset #9ca3d4 2px;
+	height: 5px;
+}
+
+.tab_inactive_bottom_right {
+	border-left: none;
+	border-right: none;
+	border-top: outset #9ca3d4 2px;
+	width: 33%;
+	height: 5px;
+}
+
+.indent {
+	padding-left: 7px;
+}
+
+.indent_rtl {
+	padding-right: 7px;
+}
+
+.image {
+	height: 150px;
+	padding: 5px;
+	margin: 2px;
+}
+
+.icon, .adminicon {
+	padding-left: 0pt;
+	padding-right: 5pt;
+}
+
+.link {
+	font-size: 11px;
+	text-align: center;
+}
+
+.subheaders {
+	margin-top: 15px;
+	vertical-align: bottom;
+}
+
+.age {
+	font-size: 9px;
+}
+
+.source_citations {
+	display: none;
+}
+
+.favorites_form {
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
+.selected-option {
+	background-color: #d6e0ea;
+}
+
+.user_links {
+	white-space: nowrap;
+}
+
+.hit-counter {
+	background: black;
+	color: white;
+	font-weight: bold;
+}
+
+.current_day {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.cal_day {
+	float: left;
+	font-weight: bold;
+}
+
+.rtl_cal_day {
+	direction: rtl;
+	float: right;
+	color: blue;
+	font-weight: bold;
+}
+.helpcontent {
+	margin-left: 10px;
+	margin-right:10px;
+}
+
+.helpfooter {
+	margin: 10px;
+}
+
+.helpheader {
+	margin: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: black;
+}
+
+.helpstart {
+	margin: 10px;
+	color: blue;
+	text-decoration: none;
+}
+
+.helptext {
+	color: black;
+}
+
+/*-- descendancy chart specific stylesheets --*/
+#descendancy_chart ul {
+	background-image: url(../../images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	list-style: none;
+	margin: 0px 0px 5px 15px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+#descendancy_chart li {
+	list-style: none;
+	margin: 0px 0px 0px -15px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+/*-- descendancy chart rtl specific stylesheets --*/
+#descendancy_chart_rtl ul {
+	background-image: url(../../images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	list-style: none;
+	margin: 0px 15px 5px 0px; /* top right bottom left */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#descendancy_chart_rtl li {
+	list-style: none;
+	margin: 0px -15px 0px 0px; /* top right bottom left */
+	padding: 0px 0px 0px 0px; /* top right bottom left */
+}
+
+/*-- relationship chart specific stylesheets --*/
+#relationship_chart {
+	position: relative;
+	top: -40px;
+	left: 0px;
+}
+
+#relationship_chart_rtl {
+	position: relative;
+	top: -40px;
+	right: 10px;
+}
+
+/*-- ancestry chart specific stylesheets --*/
+#ancestry_chart ul {
+	background-image: url(../../images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	list-style: none;
+	margin: 0px 0px 0px 15px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+#ancestry_chart li {
+	list-style: none;
+	margin: 0px 0px 2px -13px; /* top right bottom left */
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+/*-- ancestry chart rtl specific stylesheets --*/
+#ancestry_chart_rtl ul {
+	background-image: url(../../images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	list-style: none;
+	margin: 0px 15px 0px 0px; /* top right bottom left */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#ancestry_chart_rtl li {
+	list-style: none;
+	margin: 0px -15px 2px 0px; /* top right bottom left */
+	padding: 0px 2px 0px 0px; /* top right bottom left */
+}
+
+/*-- relationship chart specific stylesheets --*/
+#relationship_chart {
+	position: relative;
+	top: -40px;
+	left: 0px;
+}
+
+#relationship_chart_rtl {
+	position: relative;
+	top: -40px;
+	right: 0px;
+}
+
+/*-- timeline chart specific styles --*/
+#timeline_chart {
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+
+.person0 {
+	background-color: #aaaaff;
+	vertical-align: top;
+}
+
+.person1 {
+	background-color: #aaffaa;
+	vertical-align: top;
+}
+
+.person2 {
+	background-color: #ffaaaa;
+	vertical-align: top;
+}
+
+.person3 {
+	background-color: #5555ff;
+	vertical-align: top;
+}
+
+.person4 {
+	background-color: #ff5555;
+	vertical-align: top;
+}
+
+.person5 {
+	background-color: #55ff55;
+	vertical-align: top;
+}
+
+.listlog {
+	line-height: 20pt;
+	color: #555555;
+}
+
+.starredname {
+	text-decoration: underline;
+}
+
+.search_hit {
+	background-color: yellow;
+}
+
+.title {
+	font-size: 150%;
+}
+
+/* Style for the subbar in  */
+/* facts_value */
+.subbar {
+	background-color: #d1d9ef;
+	color: black;
+	vertical-align: top;
+	white-space: nowrap;
+	padding: 3px;
+}
+
+.vmiddle {
+	vertical-align: middle
+}
+
+/* Colors */
+.red {
+	color: red;
+}
+
+.rela {
+	opacity: 0.67;
+}
+
+/* Text direction */
+.ltr {
+	text-align: left;
+}
+
+.rtl {
+	text-align: right;
+	direction: rtl;
+}
+
+/* Width settings */
+.width10 {
+	width: 10%;
+}
+
+.width20 {
+	width: 20%;
+}
+
+.width25 {
+	width: 25%;
+}
+
+.width30 {
+	width: 30%;
+}
+
+.width33 {
+	width: 33%;
+}
+
+.width40 {
+	width: 40%;
+}
+
+.width50 {
+	width: 50%;
+}
+
+.width60 {
+	width: 60%;
+}
+
+.width66 {
+	width: 66%;
+}
+
+.width70 {
+	width: 70%;
+}
+
+.width75 {
+	width: 75%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.width90 {
+	width: 90%;
+}
+
+.width100 {
+	width: 100%;
+}
+
+/* Font sizes */
+.font11 {
+	font-size: 11px;
+}
+
+.font9 {
+	font-size: 9px;
+}
+
+/* Message box */
+.messagebox {
+	background-color: #c2ceef;
+}
+
+.door {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.door dd {
+	margin: 2px 2px 2px 2px;
+	padding: 2px 6px 2px 6px;
+	height: 100%; float: left;
+	font-weight: bold;
+	display: none;
+}
+
+.note_details {
+	display: none;
+}
+
+a.showit {
+	position: relative;
+	z-index: 24;
+	color: black;
+	text-decoration: none;
+}
+
+a.showit:hover {
+	z-index: 25;
+	background-color: #ffff9b;
+	cursor: crosshair;
+}
+
+a.showit span {
+	display: none;
+}
+
+a.showit:hover span {
+	display: block;
+	position: absolute;
+	top: 22px;
+	left: 0px;
+	width: 225px;
+	border-style: outset;
+	border-left: 15px outset #1f1f1f;
+	border-top: 2px solid #1f1f1f;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	padding: 3px;
+	background: #4f4f4f;
+	color: white;
+	text-align: left;
+	opacity: .85;
+	z-index: 5;
+}
+
+.lifespan_people span:first-letter {
+	font-variant: small-caps;
+	padding: 1px;
+}
+
+.lifespan_outer {
+	position: relative;
+	width: 99.5%;
+	height: 600px;
+	overflow: hidden;
+}
+
+.lifespan_outer a {
+	color: black;
+}
+
+.lifespan_outer a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+.lifespan_timeline {
+	position: absolute;
+	width: 100%;
+	left: -10px;
+	top: -65px;
+	z-index: 2;
+	background-color: white
+}
+
+.lifespan_people {
+	position: absolute;
+	width: 500px;
+	left: -10px;
+	top: -60px;
+	z-index: 1;
+}
+.iwstyle {
+	width:360px;
+	/*background-color: #FFFFFF;*/
+}
+.iwstyle a {
+}
+.iwstyle a:hover {
+}
+
+#map_nav {
+	position: relative;
+	top: -484px;
+	left: 101%;
+}
+
+#tree_nav {
+	position: relative;
+	top: -584px;
+	left: 90%;  
+	z-index: 100;
+}
+
+#map_type
+{
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	font-size: 10px;
+	list-style: none;
+}
+#map_type li
+{
+	display: block;
+	width: 70px;
+	text-align: center;
+	padding: 2px;
+	border:thin solid #AAA;
+	cursor: pointer;
+	float: left;
+	margin-left: 2px;
+}
+#map_type li.non_active
+{
+	background: white;
+	color: black;
+	font-weight: normal;
+}
+#map_type li.active
+{
+	background: gray;
+	color: white;
+	font-weight: bold;
+}
+#map_type li:hover
+{
+	background: #ddd;
+}
+
+/* Tag Cloud styles*/
+.tag_cloud_table {
+	width:70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tag_cloud {
+	text-align: justify;
+	padding: 10px 5px 10px 15px; /* top right bottom left */
+}
+
+.tag_cloud_sub {
+	font-size: 8px;
+	color:#808080;
+}
+/* End of Tag Cloud styles*/
+
+
+dl {
+	margin-bottom:20px;
+}
+
+dt {
+	float:left; 
+	font-weight:bold;
+	margin-right:10px;
+	clear:both; 
+}
+
+#indi_details dt:after { content: ":"; }
+
+#facts_content dd {
+	float:left;
+	width: 70%;
+}
+
+#indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
+	float:left;
+	margin-right:15px;
+}
+
+#hitcounter {
+	display: block;
+	width: 100%;
+	margin-bottom:10px;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+#indi_details {
+	display: block;
+	width: 100%;
+}

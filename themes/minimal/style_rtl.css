@@ -1,0 +1,33 @@
+/**
+ * Styles for rtl
+ *
+ * needed to fix some of the RTL theme problems
+ *
+ * @package webtrees
+ * @subpackage Themes
+ * @version $Id$
+ */
+body {
+	direction: rtl;
+	text-align: right;
+}
+.door {
+	direction: rtl;
+}
+.door dd {
+	float: right;
+}
+
+.icon {
+	display: none;
+	border: none;
+	padding-left: 5pt;
+	padding-right: 0pt;
+}
+
+.adminicon {
+	border: none;
+	padding-left: 5pt;
+	padding-right: 0pt;
+}
+

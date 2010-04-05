@@ -1,0 +1,102 @@
+/* jquery css THEME adjustments */
+
+/* Tabs --------------------------------*/
+.ui-widget-content 						 { color:black; border-color:#999999; }
+.ui-widget-content a 					 { color:black; }
+.ui-widget-content a:hover 				 { color:black; }
+
+.ui-tabs .ui-tabs-nav 					 { padding: .3em .3em 0 .3em; border-color:#888888; background: #dddddd; }
+.ui-tabs .ui-tabs-nav li 					 { font-size:1em; bottom:0px; margin:0 0.15em 0 0.1em; border-color:#888888; background: #efefef;}
+.ui-tabs .ui-tabs-nav li a 					 { color:#555555; padding: .2em .2em .2em .2em;  }
+.ui-tabs .ui-tabs-nav li:hover			 { color:black; background: #dfdfdf;}
+.ui-tabs .ui-tabs-nav li a:hover			 { color:black;}
+
+.ui-tabs-nav li.ui-tabs-selected  	 		 { color:black; padding-top:0px; top:1px; bottom:0px; border-color: #888888; border-bottom-width: 0 !important; background:#f8f8f8;}
+.ui-tabs-nav li.ui-tabs-selected a	 		 { font-weight:600; color:black; }
+.ui-tabs-nav li.ui-tabs-selected a:hover	 { font-weight:600; color:black; background:#f8f8f8; }
+.ui-tabs-nav li.ui-tabs-selected:hover	 { background:#f8f8f8; }
+.ui-tabs .ui-tabs-panel	 				 { background:#f8f8f8; }
+
+.static_tab_content  { 
+	border-color: #999999; 
+	border-style:none solid solid solid; 
+	background: #efefef;
+}
+.static_tab_ltr {
+	float: right;
+	margin-right: 0px;
+	border-color: #cccccc;
+}
+.static_tab_content_ltr {
+	position: absolute; 
+	z-index: 100;
+	right: 0px; 
+	background: #efefef; 
+	margin-top:0px; 
+	margin-right:19px;
+}
+
+.static_tab_rtl { display: none; }
+
+/* ------- Sidebar ------- */
+#sidebar {
+	margin-left:0px;
+	margin-top: 9px;
+	margin-right: 19px;
+	background-color: #dddddd;
+}
+#sidebar_controls {
+	height: 22px;
+}
+#sidebar_open img {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-left: 0px;
+}
+
+
+/* Navigator & Flyout menu Styles --------*/
+.nam a:hover{
+color:black;
+}
+.nav_content {
+	width:240px;
+	background:#efefef;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:3px;
+}
+.flyout {
+	color:#000000; 
+	text-align: left;
+	margin-top: -20px;
+	right: 210px;
+	padding: 3px;
+}
+.flyout2 {
+	color:#000000;
+	text-align: left;
+	margin-top: -2px;
+	left: 64px;
+	padding: 3px;
+}
+.flyout2 a:hover{
+	color:black;
+}
+.flyout4 {
+	color:#000000;
+	text-align: left;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 3px;
+}
+#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
+	background:none;
+	border:none;
+	text-decoration:normal;
+	text-align: left;
+	margin-top: 0px;
+	left: 0px;
+	padding: 0px;
+}
+/* End of Flyout Menu styles*/

@@ -1,0 +1,12 @@
+<!-- @version $Id$ -->
+<script type="text/javascript" src="js/strings.js"></script>
+<script type="text/javascript" src="js/kryogenix/sorttable.js"></script>
+<script type="text/javascript" src="js/kryogenix/sorttable_filter.js"></script>
+<script type="text/javascript">
+<?php
+global $LANGUAGE, $ALPHABET_lower, $ALPHABET_upper;
+// set locale to active PGV language alphabet
+echo "var _lc_locale = '_0123456789".$ALPHABET_upper[$LANGUAGE].$ALPHABET_lower[$LANGUAGE]."';";
+?>
+</script>
+<script type="text/javascript" src="js/kryogenix/locale.js"></script>

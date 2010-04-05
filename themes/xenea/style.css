@@ -1,0 +1,1497 @@
+/**
+ * Style for Xenea theme
+ *
+ * Use this stylesheet to customize the display of your site.
+ * To learn more about CSS visit http: //www.w3.org/TR/REC-CSS2/
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2010 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * @package webtrees
+ * @subpackage Themes
+ * @version $Id$
+ */
+
+
+.something {
+	/*empty style to make sure that the BODY style is not ignored */
+}
+
+body {
+	color: #000066;
+	background-color: white;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	margin: 1px;
+}
+
+fieldset {
+	margin: 8px 8px 4px 8px;
+}
+
+legend {
+	font-weight: bold;
+}
+
+a.link:link, a.link:active, a.link:visited {
+	color: white;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+a.link:hover {
+	color: #333366;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+a {
+	color: blue;
+	text-decoration: none;
+	font-family: tahoma, arial, helvetica, sans-serif;
+}
+
+a:hover	{
+	color: red;
+	text-decoration: none;
+}
+
+ul {
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 8px;
+}
+
+.center {
+	text-align: center;
+}
+
+table.center{
+ 	margin-left: auto;
+ 	margin-right: auto;
+}
+
+th {
+	font-weight: 100;
+}
+
+.button {
+	width: 60px;
+}
+
+.gedcom_table {
+	border: 1px solid #84BEFF;
+	margin: 0;
+	width: 99%;
+}
+
+.person_box {
+	background-color: #F0F9FF;
+	border: 1px solid #84BEFF;
+}
+
+.person_boxF {
+	background-color: #FFF0F0;
+	border: 1px solid #FF2080;
+}
+
+.person_boxNN {
+	background-color: white;
+	border: dashed #008080 1px;
+}
+
+.person_box:target, .news_box:target, #gedcom_stats:target {
+	background-color: #FFFFCC;
+}
+
+.list_table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list_label, .list_label_wrap {
+	color: #000066;
+	background-color: #C3DFFF;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+}
+
+.list_value, .list_value_wrap {
+	background-color: #ECF5FF;
+	border: solid #C3DFFF 1px;
+	color: #000066;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	vertical-align: top;
+}
+
+.list_label, .list_value {
+	white-space: nowrap;
+}
+
+.list_label_wrap, .list_value_wrap {
+	white-space: normal;
+}
+
+.list_item {
+	font-size: 12px;
+}
+
+.facts_table, .facts_table_rtl {
+	width: 99%;
+}
+
+.facts_label {
+	color: #000066;
+	background-color: #C3DFFF;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+	width: 20%;
+	text-align: center;
+}
+
+.facts_label02, .facts_label03 {
+	color: white;
+	background-color: #84BEFF;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.facts_value {
+	background-color: #ECF5FF;
+	border: solid #C3DFFF 1px;
+	color: #000066;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+}
+
+.facts_value02 {
+	background-color: #FBFDFF;
+	border: solid #C3DFFF 1px;
+	color: #000066;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 5px;
+}
+
+.facts_labelred, .facts_labelblue {
+	color: #000066;
+	background-color: #9DD8FF;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+	width: 20%;
+	text-align: center;
+}
+
+.facts_valuered, .facts_valueblue {
+	background-color: #FBFDFF;
+	color: #000066;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+}
+
+.facts_labelred, .facts_valuered {
+	border: solid red 2px;
+}
+
+.facts_labelblue, .facts_valueblue {
+	border: solid blue 2px;
+}
+
+.tabs_table {
+	width: 99%;
+}
+
+.tab_cell_active {
+	color: #000066;
+	background-color: white;
+	border-color: #FF6633;
+	border-width: 1px;
+	border-bottom-style: none;
+	border-top-style: solid;
+	border-right-style: solid;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tab_cell_inactive {
+	color: #000066;
+	background-color: #ECF5FF;
+	border-color: #FF6633;
+	border-width: 1px;
+	border-right-style: solid;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tab_cell_inactive_empty {
+	color: #000066;
+	background-color: #DCE5EF;
+	border-color: #FF6633;
+	border-width: 1px;
+	border-right-style: solid;
+	text-align: center;
+	font-weight: bold;
+}
+
+.tab_cell_inactive_empty a {
+	color: #5555FF;
+}
+.tab_active_bottom {
+	background-color: white;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	height: 5px;
+}
+
+.tab_inactive_bottom {
+	background-color: white;
+	border-left: none;
+	border-right: none;
+	border-top: solid #FF6633 1px;
+	height: 5px;
+}
+
+.tab_inactive_bottom_right {
+	background-color: white;
+	border-left: none;
+	border-right: none;
+	border-top: solid #FF6633 1px;
+	width: 35%;
+	height: 5px;
+}
+
+.name1 {
+	color: #000066;
+	font: bold 10px tahoma, arial, helvetica, sans-serif;
+}
+
+a:hover .name1 {
+	color: red;
+	font: bold 10px tahoma, arial, helvetica, sans-serif;
+}
+
+a:hover .name2 {
+	color: red;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+}
+
+a:hover .nameZoom {
+	color: red;
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+}
+
+.namered {
+	border: solid red 1px;
+}
+
+.nameblue {
+	border: solid blue 1px;
+}
+
+.details1 {
+	color: #000066;
+	font: 10px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.name2 {
+	color: #000066;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+}
+
+.details2 {
+	color: #000066;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.nameZoom {
+	color: #000066;
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+}
+
+.detailsZoom {
+	font: 14px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.name_head {
+	color: #000066;
+	font: bold 16px tahoma, arial, helvetica, sans-serif;
+	letter-spacing: .2px;
+}
+
+.date {
+	/*font-weight: bold;*/
+}
+
+.label, .field {
+	color: #000066;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.error {
+	color: #DD0000;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.largeError {
+	color: #DD0000;
+	font: large tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.warning {
+	color: red;
+	font-family: tahoma, arial, helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.indent {
+	padding-left: 7px;
+}
+
+.indent_rtl {
+	padding-right: 7px;
+}
+
+.image {
+	height: 150px;
+	padding: 5px;
+	border: solid black 1px;
+}
+
+.gender_image {
+	padding-left: 3px;
+	padding-right: 3px;
+	border: none;
+	vertical-align: middle;
+}
+
+.pedigree_image_portrait, .pedigree_image_landscape {
+	float: left;
+	height: 50px;
+	border: solid black 1px;
+	margin-right: 3px;
+}
+
+.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
+	float: right;
+	height: 50px;
+	border: solid black 1px;
+	margin-left: 3px;
+}
+
+.pedigree_form {
+	width: 60px;
+}
+
+.thumbnail {
+	height: auto;
+	padding: 5px;
+}
+
+.icon, .adminicon {
+	border: none;
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+.link {
+	font-size: 11px;
+	text-align: center;
+}
+
+.sublinks_table {
+	border: solid #84BEFF 1px;
+}
+
+.sublinks_cell {
+	font-size: 11px;
+	background-color: #ECF5FF;
+}
+
+.sublinks_table .icon {
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+}
+
+.menuitem .icon {
+	width: 32px;
+	height: 32px;
+}
+
+.menuitem_hover .icon {
+	width: 32px;
+	height: 32px;
+}
+
+.submenu .icon {
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+}
+
+.subheaders {
+	font: bold 16px tahoma, arial, helvetica, sans-serif;
+	text-indent: 20px;
+	margin-top: 15px;
+	vertical-align: bottom;
+}
+
+.age {
+	font-size: 9px;
+}
+
+.parentdeath {
+	border: thin solid #808080;
+	padding: 1px;
+}
+
+.source_citations {
+	display: none;
+}
+
+.contact_links {
+	margin-top: 15px;
+	text-align: center;
+}
+
+.theme_form {
+	margin-top: 0;
+	font: 14px tahoma, arial, helvetica, sans-serif;
+	color: white;
+}
+
+.hit-counter {
+	background: black;
+	color: white;
+	font-weight: bold;
+}
+
+/* This is the original.
+ * It's not used, but it's left in in case you want to go back to it. */
+.flag {
+	width: 15px;
+	border: solid black 1px;
+}
+
+/* This one is for a place flag */
+.brightflag {
+	height: 15px;
+	border: none;
+	opacity: 1;		/* IE's support is different */
+}
+
+.border1 {
+	border: solid black 1px;
+}
+
+.header_select {
+	font-size: 9pt;
+}
+
+.lang_form {
+	margin-bottom: 1px;
+}
+
+.selected-option {
+	background-color: #ECF5FF;
+	border: solid #84BEFF 1px;
+}
+
+.favorites_form {
+	margin-top: 0px;
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	color: white;
+}
+
+.langmenuitem, .langmenuitem_rtl {
+	color: white;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	padding: 1px;
+}
+
+.langmenuitem a, .langmenuitem_rtl a {
+	color: white;
+}
+
+.langmenuitem_hover, .langmenuitem_hover_rtl {
+	color: red;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	padding: 1px;
+}
+.langmenuitem_rtl, .langmenuitem_hover_rtl {
+	text-align: left;
+}
+
+.thememenuitem  {
+	color: white;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	padding: 1px;
+}
+
+.thememenuitem a {
+	color: white;
+}
+
+.thememenuitem_hover {
+	color: red;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	padding: 1px;
+}
+
+.themesubmenu {
+	color: black;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-align: left;
+	background-color: #ECF5FF;
+	border: solid #84BEFF 1px;
+	white-space: nowrap;
+	width: 100px;
+}
+
+.favmenuitem {
+	color: white;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	padding: 1px;
+}
+
+.favmenuitem a {
+	color: white;
+}
+
+.favmenuitem_hover {
+	color: red;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	padding: 1px;
+}
+
+.favsubmenu {
+	color: black;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	text-align: center;
+	background-color: #ECF5FF;
+	border: solid #84BEFF 1px;
+	white-space: nowrap;
+}
+
+.favsubmenuitem a, .favsubmenuitem_selected a {
+	color: black;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	background-color: #ECF5FF;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.favsubmenuitem_selected a {
+	background-color: aqua;
+}
+
+.favsubmenuitem_hover a {
+	color: red;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	background-color: white;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.help {
+	font-weight: bold;
+	cursor: help;
+}
+
+.menuitem, .menuitem_rtl {
+	color: black;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	text-align: center;
+	padding: 1px;
+}
+
+.menuitem_hover, .menuitem_hover_rtl {
+	color: black;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	text-align: center;
+	padding: 1px;
+}
+
+.submenu, .submenu_rtl {
+	visibility: hidden;
+	position: absolute;
+	z-index: 100;
+	color: black;
+	text-decoration: none;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	background-color: #ECF5FF;
+	border: solid #84BEFF 1px;
+	white-space: nowrap;
+}
+
+.submenuitem, .submenuitem_rtl {
+	vertical-align: middle;
+	height: 22px;
+	color: black;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	background-color: #ECF5FF;
+	white-space: nowrap;
+	padding: 1px;
+}
+
+.submenuitem, .submenuitem_hover {
+	text-align: left;
+}
+
+.submenuitem_rtl, .submenuitem_hover_rtl {
+	text-align: right;
+}
+
+.submenuitem a, .submenuitem_rtl a, .submenuitem_hover a, .submenuitem_hover_rtl a {
+ 	color: black;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.submenuitem_hover, .submenuitem_hover_rtl {
+	vertical-align: middle;
+	height: 22px;
+	color: black;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+	background-color: white;
+	white-space: nowrap;
+	padding: 1px;
+}
+
+.news_box {
+	background-color: #F0F9FF;
+	border: 1px solid #84BEFF;
+}
+
+.news_title {
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	color: black;
+}
+
+.news_date {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	color: black;
+}
+
+.menuitem a {
+	color: black;
+}
+
+.current_day {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.cal_day {
+	float: left;
+	font-weight: bold;
+}
+
+.rtl_cal_day {
+	direction: rtl;
+	float: right;
+	color: blue;
+	font-weight: bold;
+}
+.helpcontent {
+	margin-left: 10px;
+	margin-right:10px;
+}
+
+.helpfooter {
+	margin: 10px;
+}
+
+.helpheader {
+	margin: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: black;
+}
+
+.helpstart {
+	margin: 10px;
+	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	color: Blue;
+	text-decoration: none;
+}
+
+.helptext {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	color: black;
+}
+
+#content {
+	margin-left: 1px;
+}
+
+#footer {
+	clear: both;
+	color: #000066;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	width: 99%;
+}
+
+/*-- index.php specific style sheets -- */
+.small_inner_block {
+	max-height: 190px;
+	overflow: auto;
+	font: normal 10px tahoma, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.normal_inner_block {
+	overflow: auto;
+}
+
+.block {
+	background-color: #ECF5FF;
+	border: solid #84BEFF 1px;
+	color: black;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	vertical-align: top;
+	margin-bottom: 5px;
+	padding: 1px;
+}
+
+#index_main_blocks {
+	clear: none;
+	width: 66%;
+	float: left;
+}
+
+#index_small_blocks {
+	clear: none;
+	width: 33%;
+	float: right;
+}
+
+#index_full_blocks {
+	clear: none;
+	width: 100%;
+}
+
+#random_picture {
+	text-align: center;
+}
+
+/*-- pedigree chart specific stylesheets --*/
+#pedigree_chart {
+	position: relative;
+	top: -240px;
+	left: 0;
+	width: 99%;
+}
+
+/*-- pedigree chart rtl specific stylesheets --*/
+#pedigree_chart_rtl {
+	position: relative;
+	float: right;
+	top: -240px;
+	right: 0;
+	width: 99%;
+}
+
+/*-- descendancy chart specific stylesheets --*/
+#descendancy_chart ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	list-style: none;
+	margin: 0 0 5px 15px; /* top right bottom left */
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+#descendancy_chart li {
+	list-style: none;
+	margin: 0 0 0 -15px; /* top right bottom left */
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+/*-- descendancy chart rtl specific stylesheets --*/
+#descendancy_chart_rtl ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	list-style: none;
+	margin: 0 15px 5px 0; /* top right bottom left */
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+
+#descendancy_chart_rtl li {
+	list-style: none;
+	margin: 0 -15px 0 0; /* top right bottom left */
+	padding: 0;
+}
+
+/*-- relationship chart specific stylesheets --*/
+#relationship_chart {
+	position: relative;
+	top: -40px;
+	left: 0;
+}
+
+#relationship_chart_rtl {
+	position: relative;
+	top: -40px;
+	right: 10px;
+}
+
+/*-- ancestry chart specific stylesheets --*/
+#ancestry_chart ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: left top;
+	list-style: none;
+	margin: 0 0 0 15px; /* top right bottom left */
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+#ancestry_chart li {
+	list-style: none;
+	margin: 0 0 2px -15px; /* top right bottom left */
+	padding-top: 0;
+	padding-right: 0;
+	padding-bottom: 0;
+}
+
+/*-- ancestry chart rtl specific stylesheets --*/
+#ancestry_chart_rtl ul {
+	background-image: url(images/vline.gif);
+	background-repeat: repeat-y;
+	background-position: right top;
+	list-style: none;
+	margin: 0 15px 0 0; /* top right bottom left */
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+
+#ancestry_chart_rtl li {
+	list-style: none;
+	margin: 0 -15px 2px 0; /* top right bottom left */
+	padding: 0 2px 0 0; /* top right bottom left */
+}
+
+/*-- timeline chart specific styles --*/
+#timeline_chart {
+	position: relative;
+	top: 0px;
+}
+
+.timeline_table {
+}
+
+.person0 {
+	background-color: #ECF5FF;
+	border: outset #84BEFF 1px;
+	vertical-align: top;
+}
+
+.person1 {
+	background-color: #AAFFAA;
+	border: outset #AAFFAA 1px;
+	vertical-align: top;
+}
+
+.person2 {
+	background-color: #FFAAAA;
+	border: outset #FFAAAA 1px;
+	vertical-align: top;
+}
+
+.person3 {
+	background-color: #AAAADD;
+	border: outset #5555FF 1px;
+	vertical-align: top;
+}
+
+.person4 {
+	background-color: #FF5555;
+	border: outset #FF5555 1px;
+	vertical-align: top;
+}
+
+.person5 {
+	background-color: #55FF55;
+	border: outset #55FF55 1px;
+	vertical-align: top;
+}
+
+.listlog {
+	line-height: 20pt;
+	color: #555555;
+	font-family: tahoma, arial, helvetica, sans-serif;
+}
+
+.barra {
+	color: black;
+	font: normal 11px tahoma, arial, helvetica, sans-serif;
+}
+
+.blanco {
+	color: white;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
+}
+
+input, button, textarea {
+	border-color: white #000066 #000066 white;
+	border-width: 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+input, textarea {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+select {
+	border-color: #84BEFF;
+	border-width: 1px;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+form {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+h2 {
+	color: #000066;
+	font: bold 18px tahoma, arial, helvetica, sans-serif;
+}
+
+h4 {
+	color: #000066;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+}
+
+.formField {
+	font: 12px tahoma, arial, helvetica, sans-serif;
+}
+
+.starredname {
+	text-decoration: underline;
+}
+
+.search_hit {
+	background-color: yellow;
+}
+
+.details_label {
+	font-weight: bold;
+}
+
+/* Style for the top and bottom bar */
+.topbottombar {
+	color: white;
+	background-color: #84BEFF;
+	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+	text-align: center;
+}
+
+/* Style for the subbar in  */
+
+.subbar {
+	background-color: #ECF5FF;
+	border: solid #C3DFFF 1px;
+	color: #000066;
+	font: 11px tahoma, arial, helvetica, sans-serif;
+	padding: 3px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+/* Style for the descriptionbox */
+.descriptionbox {
+	color: #000066;
+	background-color: #C3DFFF;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 4px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+/* Style for the optionbox */
+.optionbox {
+	background-color: #ECF5FF;
+	border: solid #C3DFFF 1px;
+	color: #000066;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	padding: 3px;
+	vertical-align: top;
+	white-space: nowrap;
+}
+
+.ltr {
+	text-align: left;
+}
+
+.vmiddle {
+	vertical-align: middle;
+}
+
+/* Colors */
+.red {
+	color: red;
+}
+
+.rela {
+	opacity: 0.67;
+}
+
+/* Text direction */
+.ltr {
+	text-align: left;
+}
+
+.rtl {
+	text-align: right;
+	direction: rtl;
+}
+
+/* Width settings */
+.width10 {
+	width: 10%;
+}
+
+.width20 {
+	width: 20%;
+}
+
+.width25 {
+	width: 25%;
+}
+
+.width30 {
+	width: 30%;
+}
+
+.width33 {
+	width: 33%;
+}
+
+.width40 {
+	width: 40%;
+}
+
+.width50 {
+	width: 50%;
+}
+
+.width60 {
+	width: 60%;
+}
+
+.width66 {
+	width: 66%;
+}
+
+.width70 {
+	width: 70%;
+}
+
+.width75 {
+	width: 75%;
+}
+
+.width80 {
+	width: 80%;
+}
+
+.width90 {
+	width: 90%;
+}
+
+.width100 {
+	width: 100%;
+}
+
+/* Font sizes */
+.font11 {
+	font-size: 11px;
+}
+
+.font9 {
+	font-size: 9px;
+}
+
+/* Chart styles */
+.pedigree_table {
+	margin: 0;
+}
+
+/* Message box */
+.messagebox {
+	background-color: #DFEEFF;
+	border: solid #C3DFFF 1px;
+}
+
+/* Change indicators */
+.change_new {
+	border: solid blue 2px;
+}
+
+.change_old {
+	border: solid red 2px;
+}
+
+.door {
+	margin: 0;
+	padding: 0;
+}
+
+.door dd {
+	margin: 2px;
+	padding: 2px 6px;
+	height: 100%;
+	float: left;
+	font-weight: bold;
+	display: none;
+}
+
+.note_details {
+	display: none;
+}
+
+a.showit {
+	position: relative;
+	z-index: 24;
+	color: black;
+	text-decoration: none;
+}
+
+a.showit:hover {
+	z-index: 25;
+	background-color: #FFFF9B;
+	cursor: crosshair;
+}
+
+a.showit span {
+	display: none;
+}
+
+a.showit:hover span {
+	display: block;
+	position: absolute;
+	top: 22px;
+	left: 0;
+	width: 225px;
+	border-left: 15px outset #1F1F1F;
+	border-top: 2px solid #1F1F1F;
+	border-bottom: 2px solid black;
+	border-right: 2px solid black;
+	padding: 3px;
+	background: #4F4F4F;
+	color: white;
+	font: 15px tahoma, arial, helvetica, sans-serif;
+	text-align: left;
+	opacity: .85;
+	z-index: 5;
+	white-space: normal;
+}
+
+.lifespan_people span:first-letter {
+	font: small-caps bold 16px tahoma, arial, helvetica, sans-serif;
+	padding: 1px;
+}
+
+.lifespan_outer {
+	position: relative;
+	width: 99.5%;
+	height: 600px;
+	overflow: hidden;
+	border: solid blue 1px;
+}
+
+.lifespan_outer a {
+	color: black;
+}
+
+.lifespan_outer a:hover {
+	color: red;
+	text-decoration: none;
+}
+
+.lifespan_timeline {
+	position: absolute;
+	width: 100%;
+	left: -10px;
+	top: -65px;
+	z-index: 2;
+	background-color: white
+}
+
+.lifespan_people {
+	position: absolute;
+	width: 500px;
+	left: -10px;
+	top: -60px;
+	z-index: 1;
+}
+.iwstyle {
+	width:360px;
+	/*background-color: white;*/
+}
+.iwstyle a {
+}
+.iwstyle a:hover {
+}
+
+#map_nav {
+	position: relative;
+	top: -484px;
+	left: 101%;
+}
+
+#tree_nav {
+	position: relative;
+	top: -584px;
+	left: 90%;
+	z-index: 100;
+}
+
+	#map_type
+	{
+		margin: 0;
+		padding: 0;
+		font-family: Arial;
+		font-size: 10px;
+		list-style: none;
+	}
+	#map_type li
+	{
+		display: block;
+		width: 70px;
+		text-align: center;
+		padding: 2px;
+		border: 1px solid black;
+		cursor: pointer;
+		float: left;
+		margin-left: 2px;
+	}
+	#map_type li.non_active
+	{
+		background: white;
+		color: black;
+		font-weight: normal;
+	}
+	#map_type li.active
+	{
+		background: gray;
+		color: white;
+		font-weight: bold;
+	}
+	#map_type li:hover
+	{
+		background: #ddd;
+	}
+
+/* Tag Cloud styles*/
+.tag_cloud_table {
+	width:70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tag_cloud {
+	font-family: tahoma, arial, helvetica, sans-serif;
+	text-align: justify;
+	padding: 10px 5px 10px 15px; /* top right bottom left */
+}
+
+.tag_cloud_sub {
+	font: 8px tahoma, arial, helvetica, sans-serif;
+	color:#808080;
+}
+/* End of Tag Cloud styles*/
+
+/* Autocomplete styles*/
+.ac_input {
+	background-color: #EEE8AA;
+}
+
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/*
+	if width will be 100% horizontal scrollbar will apear
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/*
+	it is very important, if line-height not setted or setted
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 14px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background: white url(../../images/indicator.gif) right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
+}
+/* End of Autocomplete styles*/
+
+/* Flyout menu Styles */
+.flyout {
+	color:#000000;
+	text-align: left;
+	margin-top: -20px;
+	right: 210px;
+	padding: 3px;
+}
+.flyoutrtl {
+	color:#000000;
+	text-align: right;
+	margin-top: -20px;
+	left: 210px;
+	padding: 3px;
+}
+/* End of Flyout Menu styles*/
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.wrap {
+	white-space: normal;
+}
+
+ul.clist {
+	list-style-image: none;
+	margin: 0px;
+}
+
+.menu_separator img {
+	height: 3px;
+	width: 8em;
+}
+
+.statistics_chart {
+	text-align: center;
+}
+
+.gchart{
+}
+
+.execution_stats {
+	padding-top: 12px;
+	text-align: center;
+}
+
+dl {
+	margin-bottom:20px;
+}
+
+dt {
+	float:left; 
+	font-weight:bold;
+	margin-right:10px;
+	clear:both; 
+}
+
+#indi_details dt:after { content: ":"; }
+
+#facts_content dd {
+	float:left;
+	width: 70%;
+}
+
+#indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
+	float:left;
+	margin-right:15px;
+}
+
+#hitcounter {
+	display: block;
+	width: 100%;
+	margin-bottom:10px;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+#indi_details {
+	display: block;
+	width: 100%;
+}

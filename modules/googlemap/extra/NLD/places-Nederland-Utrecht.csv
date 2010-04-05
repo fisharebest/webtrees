@@ -1,0 +1,166 @@
+"Level";"Country";"State";"County";"Place";"Longitude";"Latitude";"ZoomLevel";"Icon"
+2;NLD;Utrecht;Abcoude;;E4.991;N52.258;12;
+3;NLD;Utrecht;Abcoude;Abcoude;E4.975;N52.270;12;
+3;NLD;Utrecht;Abcoude;Baambrugge;E4.991;N52.245;12;
+2;NLD;Utrecht;Amersfoort;;E5.433;N52.175;12;places/NLD/flags/UT/Amersfoort.gif
+3;NLD;Utrecht;Amersfoort;Amersfoort;E5.388;N52.157;12;
+3;NLD;Utrecht;Amersfoort;Coelhorst;E5.350;N52.183;12;
+3;NLD;Utrecht;Amersfoort;Hoogland;E5.376;N52.188;13;
+3;NLD;Utrecht;Amersfoort;Hooglanderveen;E5.433;N52.187;12;
+2;NLD;Utrecht;Baarn;;E5.283;N52.201;12;places/NLD/flags/UT/Baarn.gif
+3;NLD;Utrecht;Baarn;Baarn;E5.291;N52.209;12;
+3;NLD;Utrecht;Baarn;Eembrugge;E5.311;N52.224;12;
+3;NLD;Utrecht;Baarn;Lage Vuursche;E5.231;N52.178;12;
+3;NLD;Utrecht;Baarn;Soestdijk;E5.283;N52.183;12;
+2;NLD;Utrecht;Breukelen;;E4.918;N52.172;11;places/NLD/flags/UT/Breukelen.gif
+3;NLD;Utrecht;Breukelen;Breukelen;E5.001;N52.171;12;
+3;NLD;Utrecht;Breukelen;Geer;E4.918;N52.164;12;
+3;NLD;Utrecht;Breukelen;Gieltjesdorp;E4.983;N52.133;12;
+3;NLD;Utrecht;Breukelen;Kockengen;E4.950;N52.149;12;
+3;NLD;Utrecht;Breukelen;Kortrijk;E4.985;N52.157;12;
+3;NLD;Utrecht;Breukelen;Laagnieuwkoop;E4.984;N52.128;12;
+3;NLD;Utrecht;Breukelen;Nieuwer ter Aa;E4.979;N52.191;12;
+3;NLD;Utrecht;Breukelen;Oud Aa;E4.974;N52.179;12;
+3;NLD;Utrecht;Breukelen;Oukoop;E4.967;N52.200;12;
+3;NLD;Utrecht;Breukelen;Portengen;E4.963;N52.156;12;
+3;NLD;Utrecht;Breukelen;Portengense Brug;E4.963;N52.161;13;
+3;NLD;Utrecht;Breukelen;Scheendijk;;;12;
+3;NLD;Utrecht;Breukelen;Spengen;E4.918;N52.157;12;
+2;NLD;Utrecht;Bunnik;;E5.245;N52.043;12;places/NLD/flags/UT/Bunnik.gif
+3;NLD;Utrecht;Bunnik;Bunnik;E5.200;N52.067;12;
+3;NLD;Utrecht;Bunnik;Odijk;E5.233;N52.050;12;
+3;NLD;Utrecht;Bunnik;Werkhoven;E5.245;N52.024;12;
+2;NLD;Utrecht;Bunschoten;;E5.389;N52.235;12;places/NLD/flags/UT/Bunschoten.gif
+3;NLD;Utrecht;Bunschoten;Bunschoten;E5.373;N52.234;12;
+3;NLD;Utrecht;Bunschoten;Bunschoten-Spakenburg;E5.366;N52.240;12;
+3;NLD;Utrecht;Bunschoten;Eemdijk;E5.328;N52.253;12;
+3;NLD;Utrecht;Bunschoten;Spakenburg;E5.380;N52.251;12;
+3;NLD;Utrecht;Bunschoten;Zevenhuizen;E5.389;N52.209;12;
+2;NLD;Utrecht;De Bilt;;E5.183;N52.142;11;places/NLD/flags/UT/De_Bilt.gif
+3;NLD;Utrecht;De Bilt;Achttienhoven;E5.167;N52.150;13;
+3;NLD;Utrecht;De Bilt;Bilthoven;E5.200;N52.127;12;
+3;NLD;Utrecht;De Bilt;Blauwkapel;E5.147;N52.114;13;
+3;NLD;Utrecht;De Bilt;de Bilt;E5.183;N52.110;12;
+3;NLD;Utrecht;De Bilt;Groenekan;E5.150;N52.123;13;
+3;NLD;Utrecht;De Bilt;Hollandsche Rading;E5.179;N52.176;13;
+3;NLD;Utrecht;De Bilt;Maartensdijk;E5.177;N52.155;13;
+3;NLD;Utrecht;De Bilt;Westbroek;E5.126;N52.150;13;
+2;NLD;Utrecht;De Ronde Venen;;E4.906;N52.214;11;places/NLD/flags/UT/De_Ronde_Venen.gif
+3;NLD;Utrecht;De Ronde Venen;Aan de Zuwe;E4.900;N52.167;13;
+3;NLD;Utrecht;De Ronde Venen;Amstelhoek;E4.834;N52.231;13;
+3;NLD;Utrecht;De Ronde Venen;De Hoef;E4.814;N52.209;12;
+3;NLD;Utrecht;De Ronde Venen;Mijdrecht;E4.867;N52.200;12;
+3;NLD;Utrecht;De Ronde Venen;Nessersluis;E4.867;N52.250;13;
+3;NLD;Utrecht;De Ronde Venen;Vinkeveen;E4.934;N52.213;12;
+3;NLD;Utrecht;De Ronde Venen;Waverveen;E4.900;N52.217;12;
+3;NLD;Utrecht;De Ronde Venen;Wilnis;E4.906;N52.196;13;
+2;NLD;Utrecht;Eemnes;;E5.256;N52.251;12;places/NLD/flags/UT/Eemnes.gif
+3;NLD;Utrecht;Eemnes;Eemnes;E5.256;N52.251;12;
+2;NLD;Utrecht;Houten;;E5.134;N52.019;12;places/NLD/flags/UT/Houten.gif
+3;NLD;Utrecht;Houten;'t Goy;E5.223;N52.002;13;
+3;NLD;Utrecht;Houten;Houten;E5.167;N52.033;12;
+3;NLD;Utrecht;Houten;Schalkwijk;E5.184;N51.995;13;
+3;NLD;Utrecht;Houten;Tull en 't Waal;E5.134;N52.001;13;
+2;NLD;Utrecht;IJsselstein;;E5.041;N52.039;12;places/NLD/flags/UT/IJsselstein.gif
+3;NLD;Utrecht;IJsselstein;Achthoven;E4.989;N52.056;12;
+3;NLD;Utrecht;IJsselstein;IJsselstein;E5.041;N52.017;12;
+2;NLD;Utrecht;Leusden;;E5.430;N52.139;12;places/NLD/flags/UT/Leusden.gif
+3;NLD;Utrecht;Leusden;Achterveld;E5.495;N52.134;12;
+3;NLD;Utrecht;Leusden;Leusden;E5.431;N52.130;12;
+3;NLD;Utrecht;Leusden;Leusden-Zuid;E5.400;N52.117;13;
+3;NLD;Utrecht;Leusden;Stoutenburg;E5.430;N52.155;13;
+2;NLD;Utrecht;Loenen;;E5.031;N52.237;11;places/NLD/flags/UT/Loenen.gif
+3;NLD;Utrecht;Loenen;Loenen aan de Vecht;E5.022;N52.211;12;
+3;NLD;Utrecht;Loenen;Loenersloot;E5.002;N52.229;12;
+3;NLD;Utrecht;Loenen;Nieuwersluis;E5.008;N52.197;14;
+3;NLD;Utrecht;Loenen;Nigtevecht;E5.027;N52.273;12;
+3;NLD;Utrecht;Loenen;Vreeland;E5.031;N52.229;12;
+2;NLD;Utrecht;Lopik;;E4.882;N51.992;11;places/NLD/flags/UT/Lopik.gif
+3;NLD;Utrecht;Lopik;Benschop;E4.982;N52.006;12;
+3;NLD;Utrecht;Lopik;Cabauw;E4.897;N51.965;12;
+3;NLD;Utrecht;Lopik;Jaarsveld;E4.976;N51.969;12;
+3;NLD;Utrecht;Lopik;Lopik;E4.946;N51.972;12;
+3;NLD;Utrecht;Lopik;Lopikerkapel;E5.049;N51.991;12;
+3;NLD;Utrecht;Lopik;Polsbroek;E4.850;N51.976;12;
+3;NLD;Utrecht;Lopik;Polsbroekerdam;E4.902;N51.994;12;
+3;NLD;Utrecht;Lopik;Uitweg;E5.014;N51.981;12;
+3;NLD;Utrecht;Lopik;Willige Langerak;E4.882;N51.942;13;
+2;NLD;Utrecht;Maarssen;;E5.081;N52.154;12;places/NLD/flags/UT/Maarssen.gif
+3;NLD;Utrecht;Maarssen;Maarssen;E5.041;N52.139;12;
+3;NLD;Utrecht;Maarssen;Maarssenbroek;E5.028;N52.136;13;
+3;NLD;Utrecht;Maarssen;Molenpolder;;;12;
+3;NLD;Utrecht;Maarssen;Oud-Maarsseveen;E5.089;N52.160;13;
+3;NLD;Utrecht;Maarssen;Oud-Zuilen;E5.070;N52.127;12;
+3;NLD;Utrecht;Maarssen;Tienhoven;E5.081;N52.169;13;
+2;NLD;Utrecht;Montfoort;;E4.906;N52.049;12;places/NLD/flags/UT/Montfoort.gif
+3;NLD;Utrecht;Montfoort;Achthoven;E4.989;N52.054;12;
+3;NLD;Utrecht;Montfoort;Heeswijk;E4.950;N52.050;12;
+3;NLD;Utrecht;Montfoort;Linschoten;E4.912;N52.063;12;
+3;NLD;Utrecht;Montfoort;Montfoort;E4.950;N52.043;12;
+3;NLD;Utrecht;Montfoort;Willeskop;E4.906;N52.023;13;
+2;NLD;Utrecht;Nieuwegein;;E5.094;N52.021;12;places/NLD/flags/UT/Nieuwegein.gif
+3;NLD;Utrecht;Nieuwegein;Jutphaas;E5.085;N52.036;12;
+3;NLD;Utrecht;Nieuwegein;Nieuwegein;E5.084;N52.030;12;
+3;NLD;Utrecht;Nieuwegein;Vreeswijk;E5.094;N52.006;12;
+2;NLD;Utrecht;Oudewater;;E4.917;N52.031;12;places/NLD/flags/UT/Oudewater.gif
+3;NLD;Utrecht;Oudewater;Hekendorp;E4.809;N52.014;13;
+3;NLD;Utrecht;Oudewater;Oudewater;E4.870;N52.024;12;
+3;NLD;Utrecht;Oudewater;Papekop;E4.853;N52.046;13;
+3;NLD;Utrecht;Oudewater;Snelrewaard;E4.917;N52.026;13;
+2;NLD;Utrecht;Renswoude;;E5.540;N52.072;12;places/NLD/flags/UT/Renswoude.gif
+3;NLD;Utrecht;Renswoude;Renswoude;E5.540;N52.074;12;
+2;NLD;Utrecht;Rhenen;;E5.569;N51.970;12;places/NLD/flags/UT/Rhenen.gif
+3;NLD;Utrecht;Rhenen;Achterberg;E5.585;N51.972;13;
+3;NLD;Utrecht;Rhenen;Elst;E5.496;N51.984;13;
+3;NLD;Utrecht;Rhenen;Remmerden;E5.535;N51.970;13;
+3;NLD;Utrecht;Rhenen;Rhenen;E5.569;N51.959;12;
+2;NLD;Utrecht;Soest;;E5.287;N52.160;11;places/NLD/flags/UT/Soest.gif
+3;NLD;Utrecht;Soest;Soest;E5.312;N52.172;12;
+3;NLD;Utrecht;Soest;Soestdijk;E5.283;N52.183;12;
+3;NLD;Utrecht;Soest;Soestduinen;E5.299;N52.144;12;
+3;NLD;Utrecht;Soest;Soesterberg;E5.287;N52.118;12;
+2;NLD;Utrecht;Utrecht;;E5.013;N52.105;11;places/NLD/flags/UT/Utrecht.gif
+3;NLD;Utrecht;Utrecht;Blauwkapel;E5.149;N52.113;12;
+3;NLD;Utrecht;Utrecht;De Meern;E5.038;N52.080;12;
+3;NLD;Utrecht;Utrecht;Haarzuilens;E4.997;N52.119;13;
+3;NLD;Utrecht;Utrecht;Utrecht;E5.120;N52.088;12;
+3;NLD;Utrecht;Utrecht;Vleuten;E5.013;N52.105;12;
+2;NLD;Utrecht;Utrechtse Heuvelrug;;E5.397;N52.042;10;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Amerongen;E5.459;N52.000;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Darthuizen;E5.397;N52.013;13;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Doorn;E5.345;N52.032;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Driebergen;E5.280;N52.052;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Driebergen-Rijsenburg;E5.282;N52.051;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Leersum;E5.428;N52.012;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Maarn;E5.371;N52.063;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Maarsbergen;E5.406;N52.055;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Overberg;E5.500;N52.033;12;
+3;NLD;Utrecht;Utrechtse Heuvelrug;Palmstad;;;12;
+2;NLD;Utrecht;Veenendaal;;E5.558;N52.017;12;places/NLD/flags/UT/Veenendaal.gif
+3;NLD;Utrecht;Veenendaal;Veenendaal;E5.558;N52.022;12;
+2;NLD;Utrecht;Vianen;;E5.141;N51.973;11;places/NLD/flags/UT/Vianen.gif
+3;NLD;Utrecht;Vianen;Everdingen;E5.157;N51.964;13;
+3;NLD;Utrecht;Vianen;Hagestein;E5.117;N51.980;13;
+3;NLD;Utrecht;Vianen;Ossenwaard;E5.137;N51.992;13;
+3;NLD;Utrecht;Vianen;Vianen;E5.097;N51.991;12;
+3;NLD;Utrecht;Vianen;Zijderveld;E5.141;N51.941;12;
+2;NLD;Utrecht;Wijk bij Duurstede;;E5.339;N51.995;12;
+3;NLD;Utrecht;Wijk bij Duurstede;Cothen;E5.308;N51.996;12;
+3;NLD;Utrecht;Wijk bij Duurstede;Langbroek;E5.330;N52.012;12;
+3;NLD;Utrecht;Wijk bij Duurstede;Wijk bij Duurstede;E5.339;N51.974;12;
+2;NLD;Utrecht;Woerden;;E4.837;N52.104;12;places/NLD/flags/UT/Woerden.gif
+3;NLD;Utrecht;Woerden;Barwoutswaarder;E4.864;N52.084;13;
+3;NLD;Utrecht;Woerden;Harmelen;E4.963;N52.088;12;
+3;NLD;Utrecht;Woerden;Kamerik;E4.893;N52.111;12;
+3;NLD;Utrecht;Woerden;Kanis;E4.892;N52.123;13;
+3;NLD;Utrecht;Woerden;Meye;E4.792;N52.122;13;
+3;NLD;Utrecht;Woerden;Woerden;E4.889;N52.083;12;
+3;NLD;Utrecht;Woerden;Zegveld;E4.837;N52.115;13;
+2;NLD;Utrecht;Woudenberg;;E5.415;N52.079;12;places/NLD/flags/UT/Woudenberg.gif
+3;NLD;Utrecht;Woudenberg;Woudenberg;E5.415;N52.079;12;
+2;NLD;Utrecht;Zeist;;E5.238;N52.112;11;places/NLD/flags/UT/Zeist.gif
+3;NLD;Utrecht;Zeist;Austerlitz;E5.316;N52.078;13;
+3;NLD;Utrecht;Zeist;Bosch en Duin;E5.240;N52.115;13;
+3;NLD;Utrecht;Zeist;Den Dolder;E5.240;N52.138;12;
+3;NLD;Utrecht;Zeist;Huis ter Heide;E5.256;N52.112;13;
+3;NLD;Utrecht;Zeist;Zeist;E5.238;N52.087;12;

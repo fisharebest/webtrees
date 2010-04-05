@@ -1,0 +1,166 @@
+/* jquery css THEME adjustments */
+
+/* Tabs --------------------------------*/
+.ui-widget-content a:hover 				 { color: red; }
+
+.ui-tabs-nav li.ui-tabs-selected 			 { background: #f8f8f8; }
+.ui-tabs-nav li.ui-tabs-selected a	 		 { font-weight:600; color: black; }
+.ui-tabs-nav li.ui-tabs-selected a:hover	 { font-weight:600; color: black; }
+
+
+.static_tab_content { 
+	border-style:none solid solid solid; 
+	border-color: #c8c8c8 
+}
+
+.static_tab_ltr {
+	float: right;
+	margin-right: 1px;
+	width: 15px;
+	height: 27px;
+	border-color: #cccccc;
+}
+.static_tab_content_ltr {
+	position: absolute;
+	z-index: 100;
+	right: 11px;
+	margin-top:-2px; 
+	
+}
+.static_tab_rtl { display: none; }
+
+
+/* Navigator and Flyout menu Styles */
+.nam a:hover{
+color:red;
+}
+.nav_content {
+	width:240px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-top:3px;
+	background-color: white;
+}
+.flyout {
+	color:#000000; 
+	text-align: left;
+	margin-top: -20px;
+	right: 210px;
+	padding: 3px;
+}
+.flyout2 {
+	color:#000000;
+	text-align: left;
+	margin-top: -2px;
+	left: 70px;
+	padding: 3px;
+}
+.flyout2 a:hover{
+	color:#ff0000;
+}
+.flyout4 {
+	color:#000000;
+	text-align: left;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 3px;
+}
+#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
+	background:none;
+	border:none;
+	text-decoration:none;
+	text-align: left;
+	margin-top: 0px;
+	left: 0px;
+	padding: 0px;
+}
+/* End of Flyout Menu styles*/
+
+/* Sidebar --------------------------------*/
+#sidebar {
+	position: absolute;
+	right: 0px;
+	width: 0px;
+	height: 500px;
+	z-index: 50;
+	margin-left:0px;
+	margin-top: 10px;
+	margin-right: 12px;
+	background-color: #dddddd;
+}
+#sidebar_controls {
+	position: absolute;
+	float: left;
+	left: -24px;
+	margin: 0;
+	height: 24px; 
+	width: 24px;
+	z-index: 10;
+	border: none;
+}
+#sidebar_open img {
+	padding: 0;
+	margin: 0;
+	height: 24px;
+}
+
+#sidebar_open {
+	padding: 0;
+}
+#sidebarAccordion {
+	/* display: none; */
+	margin-top: -1px;
+}
+#sidebar_pin {
+	display: none;
+	padding: 1px;
+}
+.sb_indi_surname_li, .sb_fam_surname_li {
+	list-style-image: url('images/plus.gif');
+	white-space: nowrap;
+}
+.sb_desc_indi_li {
+	list-style-type: none;
+	white-space: nowrap;
+}
+.desc_tree_div {
+	display: none;
+}
+.desc_tree_div ul {
+	padding: 0px;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 0px;
+}
+#sb_desc_content {
+	width: 100%;
+}
+#sb_desc_content ul {
+	padding: 0px;
+	margin: 0px;
+}
+.name_tree_div {
+	display: none;
+}
+.name_tree_div li,  .name_tree_div_visible li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	white-space: nowrap;
+}
+
+.name_tree_div ul, .name_tree_div_visible ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+#sb_clippings_content li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	white-space: nowrap;
+}
+#sb_clippings_content ul {
+	padding: 0px;
+	margin: 0px;
+}
