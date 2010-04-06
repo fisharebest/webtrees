@@ -1188,6 +1188,8 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
 			if ( strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php') ) {
 				require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
+			}else{
+				$text = $centitl."".$text; 
 			}
 		}
 		
