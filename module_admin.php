@@ -28,8 +28,9 @@
  */
 
 define('WT_SCRIPT_NAME', 'module_admin.php');
+
 require_once 'includes/session.php';
-require_once(WT_ROOT.'includes/classes/class_module.php');
+require_once WT_ROOT.'includes/classes/class_module.php';
 
 
 if (!WT_USER_GEDCOM_ADMIN) {
@@ -57,37 +58,55 @@ function write_access_option_numeric($checkVar) {
 
 $action = safe_POST('action');
 
-$modules = WT_Module::getInstalledList();
-uasort($modules, "WT_Module::compare_name");
-
 if ($action=='update_mods') {
-  foreach($modules as $mod) {
-    foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-      $varname = 'accessLevel-'.$mod->getName().'-'.$ged_id;
-      $value = safe_POST($varname);
-      if ($value!=null) $mod->setAccessLevel($value, $ged_id);
+	foreach (WT_Module::getInstalledModules() as $module) {
+		$module_name=$module->getName();
+		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+			WT_DB::prepare("INSERT IGNORE INTO {$TBLPREFIX}module (module_name) VALUES (?)")->execute(array($module_name));
 
-      $varname = 'menuaccess-'.$mod->getName().'-'.$ged_id;
-      $value = safe_POST($varname);
-      if ($value>$mod->getAccessLevel($ged_id)) $value=$mod->getAccessLevel($ged_id);
-      if ($value!=null) $mod->setMenuEnabled($value, $ged_id);
+			$value = safe_POST("menuaccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
 
-      $varname = 'tabaccess-'.$mod->getName().'-'.$ged_id;
-      $value = safe_POST($varname);
-      if ($value>$mod->getAccessLevel($ged_id)) $value=$mod->getAccessLevel($ged_id);
-      if ($value!=null) $mod->setTabEnabled($value, $ged_id);
-      
-      $varname = 'sidebaraccess-'.$mod->getName().'-'.$ged_id;
-      $value = safe_POST($varname);
-      if ($value>$mod->getAccessLevel($ged_id)) $value=$mod->getAccessLevel($ged_id);
-      if ($value!=null) $mod->setSidebarEnabled($value, $ged_id);
+			$value = safe_POST("sidebaraccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
+
+			$value = safe_POST("tabaccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
+			
     }
 
-    $value = safe_POST_integer('taborder-'.$mod->getName(), 0, 100, $mod->getTaborder());
-    $mod->setTaborder($value);
-    $mod->setMenuorder(safe_POST_integer('menuorder-'.$mod->getName(), 0, 100, $mod->getMenuorder()));
-    $mod->setSidebarorder(safe_POST_integer('sideorder-'.$mod->getName(), 0, 100, $mod->getSidebarorder()));
-	WT_Module::updateModule($mod);
+		$value = safe_POST_integer('menuorder-'.$module_name, 1, 127, 0);
+		if ($value) {
+			WT_DB::prepare(
+				"UPDATE {$TBLPREFIX}module SET menu_order=? WHERE module_name=?"
+			)->execute(array($value, $module_name));
+		}
+
+		$value = safe_POST_integer('taborder-'.$module_name, 1, 127, 0);
+		if ($value) {
+			WT_DB::prepare(
+				"UPDATE {$TBLPREFIX}module SET tab_order=? WHERE module_name=?"
+			)->execute(array($value, $module_name));
+		}
+
+		$value = safe_POST_integer('sidebarorder-'.$module_name, 1, 127, 0);
+		if ($value) {
+			WT_DB::prepare(
+				"UPDATE {$TBLPREFIX}module SET sidebar_order=? WHERE module_name=?"
+			)->execute(array($value, $module_name));
+		}
   }
 }
 
@@ -197,42 +216,26 @@ print_header(i18n::translate('Module Administration'));
   <table id="installed_table" class="list_table">
     <thead>
       <tr>
-      <th class="list_label"><?php echo i18n::translate('Active')?></th>
-      <th class="list_label"><?php echo i18n::translate('Mod Settings')?></th>
+      <th class="list_label"><?php echo i18n::translate('Enabled')?></th>
+      <th class="list_label"><?php echo i18n::translate('Configuration')?></th>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
       <th class="list_label"><?php echo i18n::translate('Description')?></th>
       <th class="list_label"><?php echo i18n::translate('Tab')?></th>
       <th class="list_label"><?php echo i18n::translate('Menu')?></th>
       <th class="list_label"><?php echo i18n::translate('Sidebar')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
       </tr>
     </thead>
     <tbody>
 <?php
-foreach($modules as $mod) {
+foreach (WT_Module::getInstalledModules() as $module) {
 	?><tr>
-	<td class="list_value"><?php if ($mod->getId()>0) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-	<td class="list_value"><?php if ($mod instanceof WT_Module_Config) echo '<a href="', $mod->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $mod->getName(), '" /></a>'; ?></td>
-	<td class="list_value"><?php echo $mod->getTitle()?></td>
-	<td class="list_value_wrap"><?php echo $mod->getDescription()?></td>
-	<td class="list_value"><?php if ($mod instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($mod instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($mod instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value_wrap">
-	  <table>
-	<?php
-		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			$varname = 'accessLevel-'.$mod->getName().'-'.$ged_id;
-			?>
-			<tr><td><?php echo $ged_name ?></td><td>
-			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-				<?php write_access_option_numeric($mod->getAccessLevel($ged_id)) ?>
-			</select></td></tr>
-			<?php 
-		} 
-	?>
-	  </table>
-	</td>
+	<td class="list_value"><?php if (true) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value_wrap"><?php echo $module->getDescription()?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 	</tr>
 	<?php 
 }
@@ -246,22 +249,17 @@ foreach($modules as $mod) {
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Description')?></th>
       <th class="list_label"><?php echo i18n::translate('Order')?></th>
       <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
       </tr>
     </thead>
     <tbody>
 <?php
-uasort($modules, "WT_Module::compare_menu_order");
 $order = 1;
-foreach($modules as $mod) {
-	if(!$mod instanceof WT_Module_Menu) continue;
-if ($mod->getMenuorder()==0) $mod->setMenuorder($order);
+foreach(WT_Module::getInstalledMenus() as $module) {
 	?><tr class="sortme">
-	<td class="list_value"><?php echo $mod->getTitle()?></td>
-	<td class="list_value_wrap"><?php echo $mod->getDescription()?></td>
-	<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $mod->getName() ?>" />
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName() ?>" />
 		<br />
 		<img class="uarrow" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];?>" border="0" title="move up" />
 		<img class="udarrow" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["udarrow"]["other"];?>" border="0" title="move to top" />
@@ -272,11 +270,14 @@ if ($mod->getMenuorder()==0) $mod->setMenuorder($order);
 	  <table>
 	<?php
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			$varname = 'menuaccess-'.$mod->getName().'-'.$ged_id;
+			$varname = 'menuaccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='menu'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
 			?>
 			<tr><td><?php echo $ged_name ?></td><td>
 			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-				<?php write_access_option_numeric($mod->getMenuEnabled($ged_id)) ?>
+				<?php write_access_option_numeric($access_level) ?>
 			</select></td></tr>
 			<?php 
 		} 
@@ -297,22 +298,17 @@ $order++;
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Description')?></th>
       <th class="list_label"><?php echo i18n::translate('Order')?></th>
       <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
       </tr>
     </thead>
     <tbody>
 <?php
-uasort($modules, "WT_Module::compare_tab_order");
 $order = 1;
-foreach($modules as $mod) {
-	if(!$mod instanceof WT_Module_Tab) continue;
-	if ($mod->getTaborder()==0) $mod->setTaborder($order);
+foreach(WT_Module::getInstalledTabs() as $module) {
 	?><tr class="sortme">
-	<td class="list_value"><?php echo $mod->getTitle()?></td>
-	<td class="list_value_wrap"><?php echo $mod->getDescription()?></td>
-	<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $mod->getName() ?>" />
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName() ?>" />
 		<br />
 		<img class="uarrow" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];?>" border="0" title="move up" />
 		<img class="udarrow" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["udarrow"]["other"];?>" border="0" title="move to top" />
@@ -323,11 +319,14 @@ foreach($modules as $mod) {
 	<table>
 	<?php
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			$varname = 'tabaccess-'.$mod->getName().'-'.$ged_id;
+			$varname = 'tabaccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='tab'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
 			?>
 			<tr><td><?php echo $ged_name ?></td><td>
 			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-				<?php write_access_option_numeric($mod->getTabEnabled($ged_id)) ?>
+				<?php write_access_option_numeric($access_level) ?>
 			</select></td></tr>
 			<?php 
 		} 
@@ -348,22 +347,17 @@ $order++;
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Description')?></th>
       <th class="list_label"><?php echo i18n::translate('Order')?></th>
       <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
       </tr>
     </thead>
     <tbody>
 <?php
-uasort($modules, "WT_Module::compare_sidebar_order");
 $order = 1;
-foreach($modules as $mod) {
-	if(!$mod instanceof WT_Module_Sidebar) continue;
-	if ($mod->getSidebarorder()==0) $mod->setSidebarorder($order);
+foreach(WT_Module::getInstalledSidebars() as $module) {
 	?><tr class="sortme">
-	<td class="list_value"><?php echo $mod->getTitle()?></td>
-	<td class="list_value_wrap"><?php echo $mod->getDescription()?></td>
-	<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="sideorder-<?php echo $mod->getName() ?>" />
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName() ?>" />
 		<br />
 		<img class="uarrow" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];?>" border="0" title="move up" />
 		<img class="udarrow" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["udarrow"]["other"];?>" border="0" title="move to top" />
@@ -374,11 +368,14 @@ foreach($modules as $mod) {
 	<table>
 	<?php
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			$varname = 'sidebaraccess-'.$mod->getName().'-'.$ged_id;
+			$varname = 'sidebaraccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
 			?>
 			<tr><td><?php echo $ged_name ?></td><td>
 			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-				<?php write_access_option_numeric($mod->getSidebarEnabled($ged_id)) ?>
+				<?php write_access_option_numeric($access_level) ?>
 			</select></td></tr>
 			<?php 
 		} 

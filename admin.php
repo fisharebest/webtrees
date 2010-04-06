@@ -158,7 +158,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		<li><a href="#site"><span><?php echo i18n::translate('Site administration')?></span></a></li>
 		<?php } ?>
 		<?php 
-		$modules = WT_Module::getActiveListAllGeds();
+		$modules = WT_Module::getInstalledModules();
 		if (WT_USER_IS_ADMIN || count($modules)>0) {?>
 		<!-- ---- MODIFIED BY BH ------------------------------------ -->
 			<!-- <li><a href="#modules"><span><?php // echo i18n::translate('Module Administration')?></span></a></li> -->

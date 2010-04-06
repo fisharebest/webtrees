@@ -253,19 +253,16 @@ class IndividualControllerRoot extends BaseController {
 */
 		}
 		
-		$this->modules = WT_Module::getActiveList('T');
-		uasort($this->modules, "WT_Module::compare_tab_order");
+		$this->modules = WT_Module::getActiveTabs();
 		$count = 0;
 		if (empty($this->default_tab)) $this->default_tab=0;
 		foreach($this->modules as $mod) {
-			if ($mod instanceof WT_Module_Tab) {
-				$mod->setController($this);
-				if ($mod->hasTabContent() || WT_USER_CAN_EDIT) {		
-					//-- convert default tab as name to number
-					if ($mod->getName()===$this->default_tab) $this->default_tab = $count;
-					if ($this->static_tab==null) $this->static_tab = $mod;
-					else $count++;
-				}
+			$mod->setController($this);
+			if ($mod->hasTabContent() || WT_USER_CAN_EDIT) {		
+				//-- convert default tab as name to number
+				if ($mod->getName()===$this->default_tab) $this->default_tab = $count;
+				if ($this->static_tab==null) $this->static_tab = $mod;
+				else $count++;
 			}
 		}
 		if ($this->default_tab<0 || $this->default_tab > count($this->modules)-1) $this->default_tab=0;

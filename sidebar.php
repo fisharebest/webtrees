@@ -6,8 +6,7 @@ require_once(WT_ROOT.'includes/classes/class_module.php');
 $sb_action = safe_GET('sb_action', WT_REGEX_ALPHANUM, 'none');
 //-- handle ajax calls
 if ($sb_action!='none') {
-	$sidebarmods = WT_Module::getActiveList('S', WT_USER_ACCESS_LEVEL);
-	uasort($sidebarmods, "WT_Module::compare_sidebar_order");
+	$sidebarmods = WT_Module::getActiveSidebars();
 	class tempController {
 		var $pid;
 		var $famid;
@@ -39,17 +38,15 @@ if ($sb_action!='none') {
 	if ($sb_action=='loadMods') {
 		$counter = 0;
 		foreach($sidebarmods as $mod) {
-			if ($mod instanceof WT_Module_Sidebar) {
-				if (isset($controller)) $mod->setController($controller);
-				if ($mod->hasSidebarContent()) {
-					?><h3 title="<?php echo $mod->getName()?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
-					<div id="sb_content_<?php echo $mod->getName()?>">
-					<?php if ($counter==0) echo $mod->getSidebarContent();
-					else {?><img src="<?php echo $WT_IMAGE_DIR ?>/loading.gif" /><?php }?>
-					</div>
-					<?php 
-					$counter++;
-				}
+			if (isset($controller)) $mod->setController($controller);
+			if ($mod->hasSidebarContent()) {
+				?><h3 title="<?php echo $mod->getName()?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
+				<div id="sb_content_<?php echo $mod->getName()?>">
+				<?php if ($counter==0) echo $mod->getSidebarContent();
+				else {?><img src="<?php echo $WT_IMAGE_DIR ?>/loading.gif" /><?php }?>
+				</div>
+				<?php 
+				$counter++;
 			}
 		}
 		exit;
@@ -58,18 +55,14 @@ if ($sb_action!='none') {
 		$modName = safe_GET('mod', WT_REGEX_URL, '');
 		if (isset($sidebarmods[$modName])) {
 			$mod = $sidebarmods[$modName];
-			if ($mod instanceof WT_Module_Sidebar) {
-				if (isset($controller)) $mod->setController($controller);
-				echo $mod->getSidebarContent();
-			}
+			if (isset($controller)) $mod->setController($controller);
+			echo $mod->getSidebarContent();
 		}
 		exit;
 	}
 	if (isset($sidebarmods[$sb_action])) {
 		$mod = $sidebarmods[$sb_action];
-		if ($mod instanceof WT_Module_Sidebar) {
-			echo $mod->getSidebarAjaxContent();
-		}
+		echo $mod->getSidebarAjaxContent();
 	}
 	exit;
 }

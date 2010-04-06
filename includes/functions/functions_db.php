@@ -1922,7 +1922,7 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}link                WHERE l_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}media               WHERE m_gedfile =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}media_mapping       WHERE mm_gedfile=?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_privacy      WHERE mp_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_privacy      WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}mutex               WHERE mx_name   =?")->execute(array($ged   ));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}name                WHERE n_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}news                WHERE n_username=?")->execute(array($ged   ));
@@ -2487,6 +2487,10 @@ function get_id_from_gedcom($ged_name, $create=false) {
 		try {
 			WT_DB::prepare("INSERT INTO {$TBLPREFIX}gedcom (gedcom_name) VALUES (?)")
 				->execute(array($ged_name));
+			$ged_id=WT_DB::getInstance()->lastInsertId();
+			require_once WT_ROOT.'includes/classes/class_module.php';
+			WT_Module::setDefaultAccess($ged_id);
+			return $ged_id;
 		} catch (PDOException $ex) {
 			// The gedcom already exists - can't create
 		}

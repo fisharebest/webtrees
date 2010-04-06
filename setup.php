@@ -849,23 +849,23 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module (".
-		" mod_id           INTEGER NOT NULL,".
-		" mod_name         VARCHAR(40) NOT NULL,".
-		" mod_description  VARCHAR(255) NOT NULL,".
-		" mod_taborder     TINYINT NOT NULL, ".
-		" mod_menuorder    TINYINT NOT NULL, ".
-		" mod_sidebarorder TINYINT NOT NULL".
+		" module_name   VARCHAR(32)                 NOT NULL,".
+		" status        ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
+		" tab_order     TINYINT                     NULL, ".
+		" menu_order    TINYINT                     NULL, ".
+		" sidebar_order TINYINT                     NULL,".
+		" PRIMARY KEY (module_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_privacy (".
-		" mp_id     INTEGER NOT NULL,".
-		" mp_mod_id INTEGER NOT NULL,".
-		" mp_file   INTEGER NOT NULL,".
-		" mp_access TINYINT NOT NULL,".
-		" mp_type   CHAR(1) NOT NULL,".
-		" KEY ix1 (mp_mod_id, mp_file, mp_access),".
-		" KEY ix2 (mp_mod_id, mp_access)".
+		" module_name   VARCHAR(32)                    NOT NULL,".
+		" gedcom_id     INTEGER                        NOT NULL,".
+		" component     ENUM('menu', 'sidebar', 'tab') NOT NULL,".
+		" access_level  TINYINT                        NOT NULL,".
+		" PRIMARY KEY     (module_name, gedcom_id, component),".
+		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) ON DELETE CASCADE,".
+		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  ) ON DELETE CASCADE".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
