@@ -153,7 +153,7 @@ if ($view!='preview') {
 	echo i18n::translate('Month'), help_link('annivers_month_select'), '</td>';
 	echo '<td class="optionbox" colspan="7">';
 	for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
-		$month_name=$cal_date->NUM_TO_MONTH_GENITIVE($n, $cal_date->IsLeapYear());
+		$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
 		$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
 		if ($n==$cal_date->m)
 			$month_name="<span class=\"error\">{$month_name}</span>";
