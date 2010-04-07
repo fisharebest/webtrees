@@ -2340,11 +2340,6 @@ case 'LANGUAGE':
 	$text=i18n::translate('Assign the default language for the site.<br /><br />When the <b>Allow user to change language</b> option is set, users can override this setting through their browser\'s preferred language configuration, configuration options on their Account page, or through links or buttons on most <b>webtrees</b> pages.');
 	break;
 
-case 'LANG_SELECTION':
-	$title=i18n::translate('Supported languages');
-	$text=i18n::translate('You can change the list of languages supported by your <b>webtrees</b> site by adding or removing checkmarks as appropriate.  This changes the language choices available to your users.<br /><br />You can achieve the same thing through the <b>Configure supported languages</b> link on the Admin menu, where you can also change things such as the language\'s flag icon, the date format, or whether the surname should always be printed first.');
-	break;
-
 case 'LINK_ICONS':
 	$title=i18n::translate('PopUp links on charts');
 	$text=i18n::translate('Allows the user to select links to other charts and close relatives of the person.<br /><br />Set to <b>Disabled</b> to disable this feature.  Set to <b>On Mouse Over</b> to popup the links when the user mouses over the icon in the box.  Set to <b>On Mouse Click</b> to popup the links when the user clicks on the icon in the box.');
@@ -4568,16 +4563,6 @@ case 'moveup_faq_item':
 	$text=i18n::translate('This option will let you move an item upwards on the FAQ page.<br /><br />Each time you use this option, the FAQ Position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ Position field.  When more than one FAQ item has the same position number, only one of these items will be visible.');
 	break;
 
-case 'multi_letter_alphabet':
-	$title=i18n::translate('Multi-letter alphabet');
-	$text=i18n::translate('Multi-letter combinations that are to be treated as a single distinct letter when sorting lists of names and titles in this language.<br /><br />Some languages, Hungarian and Slovak for example, consider certain combinations of letters to be distinct letters in their own right.  The order in which you specify these letter combinations determines the order in which they are inserted into the normal alphabet during sorting.  This is important when several multi-letter combinations have the same first letter.  Except for <b>ch</b>, these letter combinations are inserted into the normal alphabet according to their first letter.  <b>ch</b> is always inserted after <b>h</b>.');
-	break;
-
-case 'multi_letter_equiv':
-	$title=i18n::translate('Multi-letter equivalents');
-	$text=i18n::translate('In some languages, multiple letters are often treated as equivalent to a single letter when generating lists of names.<br /><br />For example, in Dutch, names beginning with IJ are listed together with names beginning with Y. In Norwegian, names beginning with AA are listed with &Aring;. In some languages, there are letters that can be written as one character or two. For example in Slovakian, the two characters D and \xC5\xBE can be written as the single character \xC7\x85. By specifying equivalents here, you can allow names beginning with these letters to be grouped together on the individual list pages.<br /><br />You should specify a comma-separated list of equivalents. To support databases that don\'t recognize UTF-8 encoding, you should specify both upper and lower case equivalents. This example demonstrates the format to use.<br /><br />Aa=&Aring;,aa=&aring;');
-	break;
-
 case 'mygedview_charts':
 // duplicate text. see index_charts
 	$title=i18n::translate('Charts block');
@@ -4891,7 +4876,7 @@ case 'show_full':
 	$text=i18n::translate('With this option you can either show or hide all details in the Name boxes.  You can display more boxes on one screen when the details are hidden.<br /><br />When all details are hidden, the Zoom icon described below is not shown.  However, if the administrator has enabled the Zoom function, the entire box will act like a Zoom icon to reveal full details about the person.<br /><br />When the details are not hidden and the Zoom function, identified by a magnifying glass icon, has been enabled by the administrator, you can reveal even more details about that person.  If you normally have to click on the Zoom icon to zoom in, you can reveal additional hidden details by clicking that icon here.  Similarly, if you can zoom in by hovering over the Zoom icon, hidden details will be revealed by hovering over that icon here.<br /><br />If you have clicked on the Zoom icon to reveal more details, you can restore the box to its normal level of detail by clicking on the Zoom icon again.  If you have revealed more details by simply moving the mouse pointer over the Zoom icon, the box will be restored to its normal level of detail when you move the mouse pointer away from the Zoom icon.');
 	break;
 
-case 'show_marnms':
+case 'show_marnm':
 	$title=i18n::translate('Include married names');
 	$text=i18n::translate('The individual and family list pages can either include or exclude married names.  This option can be helpful when searching for individuals or families where you only know the married name.  Married names can only be included if they already exist in the database.<br /><br />On the family list, this value defaults to exclude.  On the individual list, the default value is set in the GEDCOM Configuration page.<br /><br />When you change this option, your selection will be remembered until you log off or your session ends.');
 	break;
