@@ -144,23 +144,7 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	function getLabel($tag) {
-		if (i18n::is_not_translated($tag)) {
-			// No translation
-			if (substr($tag, 0, 10)=='NAME:GIVN:') {
-				return i18n::translate('GIVN');
-			}
-			if (substr($tag, 0, 10)=='NAME:SURN:') {
-				return i18n::translate('SURN');
-			}
-			// TODO: this logic is repeated elsewhere.
-			$parts=explode(':', $tag);
-			foreach ($parts as &$part) {
-				$part=i18n::translate($part);
-			}
-			return implode(' ', $tag);
-		} else {
-			return i18n::translate($tag);
-		}
+		return translate_fact(str_replace(':SDX', '', $tag));
 	}
 
 	function reorderFields() {

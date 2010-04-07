@@ -229,9 +229,6 @@ class i18n {
 	static public function is_translated($string) {
 		return i18n::translate($string)!=$string;
 	}
-	static public function is_not_translated($string) {
-		return i18n::translate($string)==$string;
-	}
 
 	// Convert an array to a list.  For example
 	// array("red", "green", "yellow", "blue") => "red, green, yellow and blue"
