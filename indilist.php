@@ -198,8 +198,6 @@ if (!$SEARCH_SPIDER) {
 			echo '<a href="', $url, '&amp;show_marnm=yes">', i18n::translate('Include married names'), '</a>';
 		}
 		echo help_link('show_marnm');
-		echo '<br />';
-		echo help_link('name_list');
 		echo '</p>';
 	}
 }
