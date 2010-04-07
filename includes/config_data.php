@@ -1071,6 +1071,7 @@ $FACTS=array(
 	'DIVF'=>i18n::translate('Divorce filed'),
 	'DSCR'=>i18n::translate('Description'),
 	'EDUC'=>i18n::translate('Education'),
+	'EDUC:AGNC'=>i18n::translate('School or college'),
 	'EMAI'=>i18n::translate('Email Address'),
 	'EMAIL'=>i18n::translate('Email Address'),
 	'EMAL'=>i18n::translate('Email Address'),
@@ -1165,6 +1166,7 @@ $FACTS=array(
 	'OCCU:AGNC'=>i18n::translate('Employer'),
 	'ORDI'=>i18n::translate('Ordinance'),
 	'ORDN'=>i18n::translate('Ordination'),
+//'ORDN:AGNC'=>i18n::translate('Religious Institution'), // What is the correct english word?
 	'PAGE'=>i18n::translate('Citation Details'),
 	'PEDI'=>i18n::translate('Pedigree'),
 	'PHON'=>i18n::translate('Phone'),
@@ -1400,10 +1402,27 @@ $FACTS=array(
 	'__BRTM_SIBL'=>i18n::translate('Brit Mila of sibling'),
 );
 
-// TODO: Look at persons->getSex(), to provide different translations for male/female.
-function translate_fact($fact, $person=null) {
-	global $FACTS;
+// Facts, as applied to Males
+$FACTS_M=array(
+//	'_NMR'=>i18n::translate_c('MALE', 'Not married')
+);
 
+// Facts, as applied to Females
+$FACTS_F=array(
+//	'_NMR'=>i18n::translate_c('FEMALE', 'Not married')
+);
+
+
+// Create a label for a fact type.
+function translate_fact($fact, $person=null) {
+	global $FACTS, $FACTS_M, $FACTS_F;
+
+	if ($person && $person->getSex()=='M' && array_key_exists($fact, $FACTS_M)) {
+		return $FACTS_M[$fact];
+	}
+	if ($person && $person->getSex()=='F' && array_key_exists($fact, $FACTS_F)) {
+		return $FACTS_M[$fact];
+	}
 	if (array_key_exists($fact, $FACTS)) {
 		return $FACTS[$fact];
 	}
