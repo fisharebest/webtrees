@@ -225,11 +225,6 @@ class i18n {
 		return call_user_func_array('sprintf', $args);
 	}
 
-	// These two functions are deprecated.
-	static public function is_translated($string) {
-		return i18n::translate($string)!=$string;
-	}
-
 	// Convert an array to a list.  For example
 	// array("red", "green", "yellow", "blue") => "red, green, yellow and blue"
 	static public function make_list($array) {

@@ -194,52 +194,20 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php //echo "<span class=\"details_label\">".i18n::translate('NCHI').": </span>".$family->getNumberOfChildren()."<br />";?>
 					<?php if ($date && $date->isOK() || $place) {
 						$marr_type = "MARR_".strtoupper($family->getMarriageType());
-						if (i18n::is_translated($marr_type)) echo "<span class=\"details_label\">".i18n::translate($marr_type).": </span>";
-						else echo "<span class=\"details_label\">".i18n::translate('MARR').": </span>".$family->getMarriageType();
+						echo "<span class=\"details_label\">".i18n::translate('MARR').": </span>".$family->getMarriageType();
 						if ($date) {
 							echo $date->Display(false);
 							if (!empty($place)) echo ' -- ';
 						}
 						if (!empty($place)) echo $place;
-					}
-					else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
-						// Allow special processing for different languages
-						$func="fact_NMR_localisation_".WT_LOCALE;
-						if (function_exists($func)) {
-							// Localise the _NMR facts
-							echo i18n::translate($func("_NMR", $famid));
-						} else {
-							echo i18n::translate('_NMR');
-						}
-					}
-					else if (get_sub_record(1, "1 _NMAR", find_family_record($famid, WT_GED_ID))) {
-						// Allow special processing for different languages
-						$func="fact_NMR_localisation_".WT_LOCALE;
-						if (function_exists($func)) {
-							// Localise the _NMR facts
-							echo i18n::translate($func("_NMAR", $famid));
-						} else {
-							echo i18n::translate('_NMAR');
-						}
-					}
-					else if ($family->getMarriageRecord()=="" && $this->controller->canedit) {
+					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
+						echo i18n::translate('_NMR');
+					} else if (get_sub_record(1, "1 _NMAR", find_family_record($famid, WT_GED_ID))) {
+						echo i18n::translate('_NMAR');
+					} else if ($family->getMarriageRecord()=="" && $this->controller->canedit) {
 						print "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".i18n::translate('Add marriage details')."</a>";
-					}
-					else {
-						$factdetail = explode(' ', trim($family->getMarriageRecord()));
-						if ($family->getMarriageType())
-							$marr_type = "MARR_".strtoupper($family->getMarriageType());
-						else
-							$marr_type = "MARR";
-						if (i18n::is_translated($marr_type)) {
-							if (isset($factdetail))
-								if (count($factdetail) == 3)
-									if (strtoupper($factdetail[2]) == "Y")
-										echo "<span class=\"details_label\">".i18n::translate($marr_type).": </span>".i18n::translate('Yes');
-									else if (strtoupper($factdetail[2]) == "N")
-										echo "<span class=\"details_label\">".i18n::translate($marr_type).": </span>".i18n::translate('No');
-						}
-						else echo "<span class=\"details_label\">".i18n::translate('MARR').": </span>".$family->getMarriageType();
+					} else {
+						echo "<span class=\"details_label\">".i18n::translate('MARR').": </span>".$family->getMarriageType();
 					}
 					?>
 				</td>
