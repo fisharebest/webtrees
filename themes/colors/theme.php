@@ -65,7 +65,7 @@ $COLOR_THEME_LIST=array(
 	'mercury'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Mercury'),
 	'nocturnal'       => /* I18N: This is the name of theme color-scheme */ i18n::translate('Nocturnal'),
 	'olivia'          => /* I18N: This is the name of theme color-scheme */ i18n::translate('Olivia'),
-	'pinkplastic'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Pink Plastic'),
+	'pinkplastic'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Pink Plstic'),
 	'shinytomato'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Shiny Tomato'),
 	'tealtop'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Teal Top'),
 );
@@ -131,8 +131,10 @@ $WT_IMAGES["source"]["large"] = "source.gif";
 $WT_IMAGES["sex"]["large"] = "male.gif";
 $WT_IMAGES["sexf"]["large"] = "female.gif";
 $WT_IMAGES["sexn"]["large"] = "fe_male.gif";
-$WT_IMAGES['slide_open']['other'] = "open.png";
-$WT_IMAGES['slide_close']['other'] = "close.png";
+$WT_IMAGES["edit_indi"]["large"] = "edit_indi.png";
+$WT_IMAGES["edit_fam"]["large"] = "edit_fam.png";
+$WT_IMAGES["edit_source"]["large"] = "edit_source.png";
+
 
 //- WT main icons for optional modules
 $WT_IMAGES["menu_gallery"]["large"] = "menu_gallery.gif";
@@ -250,6 +252,8 @@ $WT_IMAGES["pin-in"]["other"] = "pin-in.png";
 $WT_IMAGES["default_image_M"]["other"] = "silhouette_male.gif";
 $WT_IMAGES["default_image_F"]["other"] = "silhouette_female.gif";
 $WT_IMAGES["default_image_U"]["other"] = "silhouette_unknown.gif";
+$WT_IMAGES['slide_open']['other'] = "open.png";
+$WT_IMAGES['slide_close']['other'] = "close.png";
 
 // - lifespan chart arrows
 $WT_IMAGES["lsltarrow"]["other"] = "lsltarrow.gif";

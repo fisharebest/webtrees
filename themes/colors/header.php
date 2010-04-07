@@ -53,11 +53,6 @@ if ($ENABLE_RSS && !$REQUIRE_AUTHENTICATION) {
 	echo '<link href="', urlencode($SERVER_URL.'rss.php?ged='.WT_GEDCOM), '" rel="alternate" type="', $applicationType, '" title="', htmlspecialchars($GEDCOM_TITLE), '" />';
 }
 
-if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
-	<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
-<?php 
-}
-
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
 		echo
@@ -103,6 +98,12 @@ echo
 	'<link type="text/css" href="themes/colors/modules.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 	
+if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
+	<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
+<?php 
+}
+	
+	
 if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?> 
 	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> 
 <?php }
@@ -112,9 +113,6 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 ?>
 
 <!-- begin header section -->
-<?php
-if ($view!='simple')
-   {?>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
 
 <!-- begin colors code -->
@@ -144,7 +142,6 @@ if ($view!='simple')
 	</tr>
 </table>
 </div>
-<?php } ?>
 <!--end colors code -->
 <?php include($toplinks);
 } ?>
