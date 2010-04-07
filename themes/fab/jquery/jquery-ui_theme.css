@@ -8,25 +8,6 @@
 .ui-tabs-nav li.ui-tabs-selected a:hover	 { font-weight:600; color: black; }
 
 
-.static_tab_content { 
-	border-style:none solid solid solid; 
-	border-color: #c8c8c8 
-}
-
-.static_tab_ltr {
-	float: right;
-	margin-right: 1px;
-	border-color: #cccccc;
-}
-.static_tab_content_ltr {
-	position: absolute;
-	z-index: 100;
-	right: 11px;
-	margin-top:-2px; 
-	
-}
-.static_tab_rtl { display: none; }
-
 /* ------- Sidebar ------- */
 #sidebar_open img {
 	margin-left: 0px;

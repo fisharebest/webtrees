@@ -85,7 +85,6 @@ class IndividualControllerRoot extends BaseController {
 	var $SEX_COUNT = 0;
 	var $sexarray = array();
 	var $modules = array();
-	var $static_tab = null;
 	var $Fam_Navigator = 'YES';
 	var $NAME_LINENUM = 1;
 	var $SEX_LINENUM = null;
@@ -261,7 +260,6 @@ class IndividualControllerRoot extends BaseController {
 			if ($mod->hasTabContent() || WT_USER_CAN_EDIT) {		
 				//-- convert default tab as name to number
 				if ($mod->getName()===$this->default_tab) $this->default_tab = $count;
-				if ($this->static_tab==null) $this->static_tab = $mod;
 				else $count++;
 			}
 		}

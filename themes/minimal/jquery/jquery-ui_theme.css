@@ -17,27 +17,6 @@
 .ui-tabs-nav li.ui-tabs-selected:hover	 { background:#f8f8f8; }
 .ui-tabs .ui-tabs-panel	 				 { background:#f8f8f8; }
 
-.static_tab_content  { 
-	border-color: #999999; 
-	border-style:none solid solid solid; 
-	background: #efefef;
-}
-.static_tab_ltr {
-	float: right;
-	margin-right: 0px;
-	border-color: #cccccc;
-}
-.static_tab_content_ltr {
-	position: absolute; 
-	z-index: 100;
-	right: 0px; 
-	background: #efefef; 
-	margin-top:0px; 
-	margin-right:19px;
-}
-
-.static_tab_rtl { display: none; }
-
 /* ------- Sidebar ------- */
 #sidebar {
 	margin-left:0px;

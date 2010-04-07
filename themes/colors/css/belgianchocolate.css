@@ -1618,15 +1618,6 @@ dt {
 
 /* Override jquery-ui_theme.css                */
 
-.static_tab_ltr {display:none;}
-
-.static_tab_content_ltr {
-	right: 0px; 
-	margin-top:0px; 
-	margin-right:22px;
-	margin-top:0px; 
-}
-
 .flyout2 {
         margin-left:-40px; /* move popup left */
 }
@@ -1655,8 +1646,4 @@ color:  #000;
 color: #fff;
 }
 
-.static_tab_content_ltr {
-	right: 0px; 
-	margin-top:0px; 
-	margin-right:22px;
-}
+

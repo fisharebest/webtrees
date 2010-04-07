@@ -7,23 +7,6 @@
 .ui-tabs .ui-tabs-nav li a { float: right; }
 
 
-.static_tab_rtl {
-	float: left;
-	margin-left: 1px;
-	border-color: #cccccc;
-}
-.static_tab_content_rtl {
-	position: absolute;
-	z-index: 100;
-	left: 0px;
-	background: #eff8f8; 
-	margin-top:-2px; 
-	margin-left:12px;
-}
-
-
-.static_tab_rtl { display: none; }
-
 /* -----  Sidebar (rtl) ----- */
 #sidebar {
 	position: absolute;

@@ -767,16 +767,6 @@ if (isset($content) && $content==1) {
 	}
 	var tabCache = new Array();
 
-	function enable_static_tab() {
-		jQuery(".static_tab").addClass("static_tab_ltr");
-		jQuery(".static_tab_content").removeClass("ui-tabs-hide");
-		jQuery(".static_tab_content").removeClass("ui-tabs-panel");
-		jQuery(".static_tab_content").addClass("ui-corner-all");
-		var top = jQuery(".static_tab").offset().top+jQuery(".static_tab").height();
-		jQuery(".static_tab_content").css("top", top+"px");
-		jQuery(".static_tab_content").addClass("static_tab_content_ltr");
-	}
-
 	jQuery(document).ready(function(){
 		// TODO: change images directory when the common images will be deleted.
 		// jQuery('#tabs').tabs({ spinner: '<img src=\"<?php echo $WT_IMAGE_DIR; ?>/loading.gif\" height=\"18\" border=\"0\" />' });
@@ -786,7 +776,6 @@ if (isset($content) && $content==1) {
 		jQuery('#tabs').bind('tabsshow', function(event, ui) {
 			selectedTab = ui.tab.name;
 			tabCache[selectedTab] = true;
-			enable_static_tab();
 		});
 	});
 	//]]>

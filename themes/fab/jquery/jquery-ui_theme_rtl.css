@@ -6,20 +6,6 @@
 .ui-tabs .ui-tabs-nav li.ui-state-default {float: right; }
 .ui-tabs .ui-tabs-nav li a { float: right; }
 
-.static_tab_rtl {
-	float: left;
-	margin-right: 1px;
-	border-color: #cccccc;
-}
-.static_tab_content_rtl {
-	position: absolute;
-	z-index: 100;
-	left: 10px;
-	margin-top:-2px; 
-	
-}
-.static_tab_rtl { display: none; }
-
 /* -----  Sidebar (rtl) ----- */
 #sidebar {
 	position: absolute;

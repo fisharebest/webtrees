@@ -36,7 +36,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 require_once WT_ROOT.'includes/controllers/individual_ctrl.php';
 
-class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar, WT_Module_Tab {
+class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
 		return i18n::translate('Family Navigator');
@@ -90,21 +90,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar, WT_Mo
 		return "";
 	}
 
-	// Implement WT_Module_Tab
-	public function defaultTabOrder() {
-		return 0;
-	}
-	
 	public function getLinkUrl(&$person) {
 		
 	}
 
-	// Implement WT_Module_Tab
+	// TODO: These functions aren't really part of the WT_Module_Tab interface, as
+	// this module no longer provides a tab.
 	public function hasTabContent() {
 		return true;
 	}
-
-	// Implement WT_Module_Tab
 	public function getTabContent() {
 		$out = '';
 		ob_start();
@@ -589,26 +583,6 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar, WT_Mo
 		return $out;
 		
 	} // End public function getTabContent()
-
-	// Implement WT_Module_Tab
-	public function canLoadAjax() {
-		return true;
-	}
-
-	// Implement WT_Module_Tab
-	public function getPreLoadContent() {
-		return '';
-	}
-	
-	// Implement WT_Module_Tab
-	public function getJSCallbackAllTabs() {
-		return '';
-	}
-	
-	// Implement WT_Module_Tab
-	public function getJSCallback() {
-		return '';
-	}
 
 function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $SCRIPT_NAME, $GEDCOM;

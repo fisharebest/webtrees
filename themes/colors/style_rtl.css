@@ -81,21 +81,6 @@ padding-right:0pt;
 .ui-tabs .ui-tabs-nav li.ui-state-default {float: right; }
 .ui-tabs .ui-tabs-nav li a { float: right; }
 
-.static_tab_rtl {
-	float: left;
-	margin-left: 1px;
-	width: 240px;
-	border-color: #cccccc;
-}
-
-.static_tab_content_rtl {
-	position: absolute;
-	z-index: 100;
-	left: 0px;
-	margin-top:0px; 
-	margin-left:41px;
-}
-
 /* Navigator & Flyout menu Styles ------*/
 .flyoutrtl {
 	color:#000000; 

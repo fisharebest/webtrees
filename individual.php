@@ -107,18 +107,6 @@ if (selectedTab != "" && selectedTab != "undefined" && selectedTab != null) {
 var tabCache = new Array();
 
 var pinned = false;
-function enable_static_tab() {
-	jQuery(".static_tab").addClass("static_tab_<?php echo $TEXT_DIRECTION;?>");
-	jQuery(".static_tab_content").removeClass("ui-tabs-hide");
-	jQuery(".static_tab_content").removeClass("ui-tabs-panel");
-	// jQuery(".static_tab_content").removeClass("ui-widget-content");
-	jQuery(".static_tab_content").addClass("ui-corner-all");
-	var top = jQuery(".static_tab").offset().top+jQuery(".static_tab").height();
-	jQuery(".static_tab_content").css("top", top+"px");
-	jQuery(".static_tab_content").addClass("static_tab_content_<?php echo $TEXT_DIRECTION;?>");
-	if (!pinned) jQuery(".static_tab_content").hide();
-}
-
 jQuery(document).ready(function(){
 	// TODO: change images directory when the common images will be deleted.
 	// jQuery('#tabs').tabs({ spinner: '<img src=\"<?php echo $WT_IMAGE_DIR; ?>/loading.gif\" height=\"18\" border=\"0\" />' });
@@ -130,8 +118,8 @@ jQuery(document).ready(function(){
 		tabCache[selectedTab] = true;
 
 	<?php
-	foreach($controller->modules as $mod) {
-		if ($mod!=$controller->static_tab && $mod instanceof WT_Module_Tab) {
+	foreach ($controller->modules as $mod) {
+		if ($mod instanceof WT_Module_Tab) {
 			echo $mod->getJSCallbackAllTabs()."\n";
 			$modjs = $mod->getJSCallback();
 			if (!empty($modjs)) {
@@ -140,62 +128,11 @@ jQuery(document).ready(function(){
 		}
 	}
 	?>
-	<?php if ($controller->static_tab){ 
-		echo "enable_static_tab();";
-	}?>
 	});
-	// static tab changes
-	<?php if ($controller->static_tab){?>
-	jQuery('#tabs').bind('tabsselect', function(event, ui) {
-			if (ui.panel.id=='<?php echo $controller->static_tab->getName();?>') {
-				if (!pinned) {
-					if (jQuery(".static_tab_content").css("display")=="none") {
-							jQuery(".static_tab_content").show();
-							<?php echo $controller->static_tab->getJSCallbackAllTabs()."\n";
-							$modjs = $controller->static_tab->getJSCallback();
-							echo $modjs;
-							?>
-					}
-					else jQuery(".static_tab_content").hide();
-				}
-				return false;
-			}
-	});
-	enable_static_tab();
-
-	jQuery('#pin').toggle(
-			function() {
-				jQuery('#pin img').attr('src', '<?php echo $WT_IMAGE_DIR.'/'.$WT_IMAGES['pin-in']['other'];?>');
-				var newwidth = jQuery('.static_tab').position().left-40;
-				<?php if ($TEXT_DIRECTION=='rtl') {?>
-				newwidth = jQuery('.static_tab').width() + 40;
-				newwidth = jQuery('#tabs').width() - newwidth;
-				<?php } ?>
-				// --- NOTE: --- REM next line to avoid the "page shift" when Navigator is pinned. (Purely a preference choice)
-				jQuery('#tabs > div').css('width', newwidth+'px');
-				jQuery('.static_tab_content').show();
-				<?php echo $controller->static_tab->getJSCallbackAllTabs()."\n";
-				$modjs = $controller->static_tab->getJSCallback();
-				echo $modjs;
-				?>
-				pinned = true;
-				jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
-			},
-			function() {
-				jQuery('#pin img').attr('src', '<?php echo $WT_IMAGE_DIR.'/'.$WT_IMAGES['pin-out']['other'];?>');
-				jQuery('#tabs div').css('width', '');
-				jQuery('.static_tab_content').hide();
-				pinned = false;
-				jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
-			});
-		<?php  if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { ?>
-			jQuery('#pin').click();
-		<?php }
-	}
-	
+	<?php 
 	$tabcount = 0;
 	foreach($controller->modules as $mod) {
-		if ($mod!=$controller->static_tab && $mod instanceof WT_Module_Tab) {
+		if ($mod instanceof WT_Module_Tab) {
 			if ($tabcount==$controller->default_tab || !$mod->canLoadAjax()) {
 				$modjs = $mod->getJSCallback();
 				echo $modjs."\n";
@@ -341,7 +278,7 @@ if (!$controller->indi->canDisplayDetails()) {
 		<?php
 		$tabcount = 0; 
 		foreach($controller->modules as $mod) {
-			if ($mod!=$controller->static_tab && $mod instanceof WT_Module_Tab) {
+			if ($mod instanceof WT_Module_Tab) {
 				if ($tabcount==$controller->default_tab || !$mod->canLoadAjax()) {?>
 					<li class="ui-state-default ui-corner-top"><a name="<?php echo $mod->getName(); ?>" href="#<?php echo $mod->getName()?>"><span><?php echo $mod->getTitle(); ?></span></a></li>
 				<?php } else if ($mod instanceof WT_Module_Tab && ($mod->hasTabContent() || WT_USER_CAN_EDIT)) { ?>
@@ -352,30 +289,13 @@ if (!$controller->indi->canDisplayDetails()) {
 				if ($mod->hasTabContent()) $tabcount++; 
 			}
 		}
-		if ($controller->static_tab) {
-			?><li class="ui-state-default ui-corner-top static_tab" style=" float:<?php echo ($TEXT_DIRECTION=='rtl')? 'left':'right';?>">
-			<?php /*
-				<a name="<?php echo $controller->static_tab->getName(); ?>" href="#<?php echo $controller->static_tab->getName()?>">
-					<span><?php echo $controller->static_tab->getTitle(); ?></span>
-				</a>
-				<a id="pin" href="#pin"><img src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['pin-out']['other'];?>" border="0" alt=""/></a>
-			*/ ?>
-			<?php
-			//global $controller;
-			//if (method_exists($controller, 'getOtherMenu')) {	
-				// echo "&nbsp;";
-			//	require './sidebar.php'; 
-			//}
 			?>
-			</li><?php 
-		} 
-		 ?>
 	</ul>
 
 	<?php 
 	$tabcount = 0; 
 	foreach($controller->modules as $mod) {
-		if ($mod!=$controller->static_tab && $mod instanceof WT_Module_Tab) {
+		if ($mod instanceof WT_Module_Tab) {
 		if ($tabcount==$controller->default_tab || !$mod->canLoadAjax()) {?>
 		<div id="<?php echo $mod->getName()?>" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
 			<?php echo $mod->getTabContent(); ?>
@@ -385,12 +305,7 @@ if (!$controller->indi->canDisplayDetails()) {
 		}
 	} ?>
 	</div> <!-- tabs -->
-	<?php if ($controller->static_tab) { ?>
-	<div class="static_tab_content ui-corner-bottom ui-corner-all" id="<?php echo $controller->static_tab->getName();?>">
-	<?php echo $controller->static_tab->getTabContent(); ?>
-	</div> 
-	<!-- static tab -->
-	<?php }
+	<?php
 }?>
 </div> <!--  end column 1 -->
 <?php

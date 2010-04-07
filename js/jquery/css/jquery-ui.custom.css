@@ -400,8 +400,6 @@
 .ui-tabs .ui-tabs-panel { padding: 1em 1.4em; display: block; border-width: 0; background: none; }
 .ui-tabs .ui-tabs-hide { display: none !important; }
 
-/* .static_tab_ltr { display: none; } */
-
 /* Sidebar --------------------------------*/
 #sidebar {
 	position: absolute;
