@@ -310,7 +310,8 @@ function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 // This is a list of digits.  Note that arabic digits are displayed LTR, even in RTL text
 define('WT_UTF8_DIGITS', '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹');
 // This is a list of parentheses, which need special RTL logic.
-define('WT_UTF8_PARENTHESES', ')(][}{><»«﴾﴿‹›““”‘‘’');
+define('WT_UTF8_PARENTHESES1', ')(][}{><»«﴾﴿‹›“”‘’');
+define('WT_UTF8_PARENTHESES2', '()[]{}<>«»﴿﴾›‹”“’‘');
 
 // This is a list of all reversable character conversions from the UNICODE 5.1 database.
 // It excludes ambiguous (dotless i) and mixed-case (Dz) characters.

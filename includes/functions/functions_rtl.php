@@ -1263,9 +1263,6 @@ function hasLTRText($text) {
  *         quotation marks, etc. must be reversed so that the appearance of the RTL text is preserved.
  */
 function reverseText($text) {
-	$UTF8_numbers=WT_UTF8_DIGITS;
-	$UTF8_brackets=WT_UTF8_PARENTHESES;
-
 	$text = strip_tags(html_entity_decode($text,ENT_COMPAT,'UTF-8'));
 	$text = str_replace(array('&lrm;', '&rlm;', WT_UTF8_LRM, WT_UTF8_RLM), '', $text);
 	$textLanguage = utf8_script($text);
@@ -1282,12 +1279,16 @@ function reverseText($text) {
 
 		$letter = substr($text, 0, $charLen);
 		$text = substr($text, $charLen);
-		if (in_array($letter, $UTF8_numbers)) $numbers .= $letter;		// accumulate numbers in LTR mode
-		else {
+		if (strpos(WT_UTF8_DIGITS, $letter)!==false) {
+			$numbers .= $letter;		// accumulate numbers in LTR mode
+		} else {
 			$reversedText = $numbers.$reversedText;		// emit any waiting LTR numbers now
 			$numbers = '';
-			if (isset($UTF8_brackets[$letter])) $reversedText = $UTF8_brackets[$letter].$reversedText;
-			else $reversedText = $letter.$reversedText;
+			if (strpos(WT_UTF8_PARENTHESES1, $letter)!==false) {
+				$reversedText = substr(WT_UTF8_PARENTHESES2, strpos(WT_UTF8_PARENTHESES1, $letter), strlen($letter)).$reversedText;
+			} else {
+				$reversedText = $letter.$reversedText;
+			}
 		}
 	}
 
