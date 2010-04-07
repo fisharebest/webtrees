@@ -972,22 +972,22 @@ class HebrewDate extends JewishDate {
 
 	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
 		// Hebrew does not have genitive forms
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		// Hebrew does not have locative forms
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		// Hebrew does not have instrumental forms
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 
 	function FormatShortYear() {
@@ -1182,7 +1182,7 @@ class FrenchRDate extends CalendarDate {
 	}
 	static function SHORT_DAYS_OF_WEEK($n) {
 		// TODO: Do these have short names?
-		return $this->LONG_DAYS_OF_WEEK($n);
+		return self::LONG_DAYS_OF_WEEK($n);
 	}
 	static function NUM_DAYS_OF_WEEK() {
 		return 10; // A "metric" week of 10 unimaginatively named days.
@@ -1371,21 +1371,21 @@ class ArabicDate extends HijriDate {
 	}
 	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
 		// Arabic does not have genitive forms
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		// Arabic does not have locative forms
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		// Arabic does not have instrumental forms
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
-		return $this->NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 
 	function FormatLongWeekday() {
