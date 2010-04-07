@@ -3666,16 +3666,6 @@ case 'collation':
 	$text=i18n::translate('If you are using the database\'s built-in collation rules, this option specifies the collation sequence to use for this language.  You should ensure that your database supports all the collation sequences you intend to use.<br /><br />The use of database collation is controlled in the site configuration settings.');
 	break;
 
-case 'commit_google':
-	$title=i18n::translate('Commit Google&reg; translated changes');
-	$text=i18n::translate('When you click this link, all accumulated translations performed through the Google&reg; Translation system that have not already been saved will be saved.<br /><br />The indicator shows the progress of the Save operation.');
-	break;
-
-case 'compare_lang_utility':
-	$title=i18n::translate('Language file comparison utility');
-	$text=i18n::translate('This utility will compare two sets of language files to produce a list of the additions and subtractions between them.<br /><br />You should also check the various CHANGELOG files for changes to the English versions.  The English files should be used as the reference from which all others are produced.');
-	break;
-
 case 'config':
 	$title=i18n::translate('Configuration');
 	$text=i18n::translate('Configuration help');
@@ -5083,7 +5073,7 @@ case 'time_limit':
 	break;
 
 case 'timeline_control':
-	$title=i18n::translate('Timeline_control');
+	$title=i18n::translate('Timeline control');
 	$text=i18n::translate('Click the drop down menu to change the speed at which the timeline scrolls.<br/><br/>~Begin Year~<br/>Enter the starting year of the range.<br/><br/>~End Year~<br/>Enter the ending year of the range.<br/><br/>~Search~<br/>Click the Search button to begin searching for events that occurred within the range identified by the Begin Year and End Year fields.');
 	break;
 
