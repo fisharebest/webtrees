@@ -151,7 +151,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		echo "\n\t\t\t<td class=\"descriptionbox $styleadd center width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
-		echo translate_fact($factref);
+		echo translate_fact($factref, $parent);
 		if ($fact=="_BIRT_CHIL" and isset($n_chil)) echo "<br />", i18n::translate('#%d', $n_chil++);
 		if ($fact=="_BIRT_GCHI" and isset($n_gchi)) echo "<br />", i18n::translate('#%d', $n_gchi++);
 		if ($fact=="_BIRT_GGCH" and isset($n_ggch)) echo "<br />", i18n::translate('#%d', $n_ggch++);
@@ -247,9 +247,9 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($fact!="EVEN" && $fact!="FACT") {
 			if (preg_match("/2 TYPE (.*)/", $factrec, $match)) {
 				if ($fact=="MARR") {
-					echo translate_fact("MARR_".strtoupper($match[1]));
+					echo translate_fact("MARR_".strtoupper($match[1]), $parent);
 				} else {
-					echo translate_fact(strtoupper($match[1]));
+					echo translate_fact(strtoupper($match[1]), $parent);
 				}
 				echo "<br />";
 			}
@@ -424,7 +424,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			for($i=0; $i<$ct; $i++) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
-					$label = translate_fact($fact.':'.$factref);
+					$label = translate_fact($fact.':'.$factref, $parent);
 					if ($SHOW_FACT_ICONS && file_exists($WT_IMAGE_DIR."/facts/".$factref.".gif"))
 						//echo $eventObj->Icon(), ' '; // print incorrect fact icon !!!
 						echo "<img src=\"{$WT_IMAGE_DIR}/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";

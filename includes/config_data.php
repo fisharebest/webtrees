@@ -1417,10 +1417,10 @@ $FACTS_F=array(
 function translate_fact($fact, $person=null) {
 	global $FACTS, $FACTS_M, $FACTS_F;
 
-	if ($person && $person->getSex()=='M' && array_key_exists($fact, $FACTS_M)) {
+	if ($person instanceof Person && $person->getSex()=='M' && array_key_exists($fact, $FACTS_M)) {
 		return $FACTS_M[$fact];
 	}
-	if ($person && $person->getSex()=='F' && array_key_exists($fact, $FACTS_F)) {
+	if ($person instanceof Person && $person->getSex()=='F' && array_key_exists($fact, $FACTS_F)) {
 		return $FACTS_M[$fact];
 	}
 	if (array_key_exists($fact, $FACTS)) {
