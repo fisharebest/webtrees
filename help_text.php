@@ -3526,16 +3526,6 @@ case 'alpha':
 	$text=i18n::translate('Clicking a letter in the Alphabetical index will display a list of the names that start with the letter you clicked.<br /><br />The second to last item in the Alphabetical index can be <b>(unknown)</b>.  This entry will be present when there are people in the database whose surname has not been recorded or does not contain any recognizable letters.  Unknown surnames are often recorded as <b>?</b>, and these will be recognized as <b>(unknown)</b>.  This will also happen if the person is unknown.<br /><br /><b>Note:</b><br />Surnames entered as, for example, <b>Nn</b>, <b>NN</b>, <b>Unknown</b>, or even <b>N.N.</b> will <u>not</u> be found in the <b>(unknown)</b> list. Instead, you will find these persons by clicking <b>N</b> or <b>U</b> because these are the initial letters of those names.  <b>webtrees</b> cannot possibly account for all possible ways of entering unknown surnames;  there is no recognized convention for this.<br /><br />At the end of the Alphabetical index you see <b>ALL</b>. When you click on this item, you will see a list of all surnames in the database.<br /><br /><b>Missing letters?</b><br />If your Alphabetical index appears to be incomplete, with missing letters, your database doesn\'t contain any surnames that start with that missing letter.');
 	break;
 
-case 'alphabet_lower':
-	$title=i18n::translate('Alphabet lower case');
-	$text=i18n::translate('Lower case alphabet letters in this language.  This alphabet is used while sorting lists of names.');
-	break;
-
-case 'alphabet_upper':
-	$title=i18n::translate('Alphabet upper case');
-	$text=i18n::translate('Upper case alphabet letters in this language.  This alphabet is used while sorting lists of names.');
-	break;
-
 case 'annivers_date_select':
 	$title=i18n::translate('Day selector');
 	$text=i18n::translate('The top row of the Selector table is the <b>Day</b> selector.  Its meaning is obvious: You select a <u>day</u>.<br /><br />The result of clicking on a certain day depends of whether you are in <b>Day</b> or in <b>Month</b> mode.<br /><dl><dt><b>Day mode</b></dt><dd>In this mode, you click a day, the screen will refresh, and the list for that day will be displayed.</dd><dt><b>Month mode</b></dt><dd>You have the calendar of a certain month on the screen.  You click a day and the screen will refresh, but you will still see the month that you had on the screen before.  The reason for this is that you can still decide to select another month, year, or event before you either click the <b>View Day</b> or <b>View Month</b> button.<br /><br />At the end of the Day row you will see a <b>Quick Link</b> with today\'s date.  Clicking that <b>Quick Link</b> will display the list for today in <b>Day</b> mode, no matter whether you are in <b>Month</b> or in <b>Day</b> mode.</dd></dl>');
@@ -3584,11 +3574,6 @@ case 'autoContinue':
 case 'basic_or_all':
 	$title=i18n::translate('Show only births, deaths and marriages?');
 	$text=i18n::translate('This option lets you eliminate some dated events.  For example, Divorce, Cremation, Graduation, Bar Mitzvah, First Communion, etc. should all be dated.<br /><br />When you select <b>Yes</b>, only Births, Deaths, and Marriages will be shown. When you select <b>No</b>, all dated events will be shown.');
-	break;
-
-case 'best_display':
-	$title=i18n::translate('Screen display');
-	$text=i18n::translate('<b>webtrees</b> is designed for a screen size of 1024x768 pixels.  This should be the minimum size to have everything displayed properly.<br /><br />If you set the size to a lower value (for example 800x600), you may need to do horizontal scrolling on some pages.');
 	break;
 
 case 'block_move_right':
@@ -3661,11 +3646,6 @@ case 'clip_download':
 	$text=i18n::translate('When you click this link you will be taken to the next page.  If any of the clippings in your cart refer to multimedia items, these items will also be displayed on that page.<br /><br />Simply follow the instructions.');
 	break;
 
-case 'collation':
-	$title=i18n::translate('Database collation sequence');
-	$text=i18n::translate('If you are using the database\'s built-in collation rules, this option specifies the collation sequence to use for this language.  You should ensure that your database supports all the collation sequences you intend to use.<br /><br />The use of database collation is controlled in the site configuration settings.');
-	break;
-
 case 'config':
 	$title=i18n::translate('Configuration');
 	$text=i18n::translate('Configuration help');
@@ -3674,11 +3654,6 @@ case 'config':
 case 'config_help':
 	$title=i18n::translate('Configuration help');
 	$text=i18n::translate('This page collects all of the major topics of Configuration Help into one place.  You can view the information on your screen, or you can print it for later use.');
-	break;
-
-case 'config_lang_utility':
-	$title=i18n::translate('Configuration of supported languages');
-	$text=i18n::translate('This page is used to control what language choices are available to your users.  For example, you can set things up so that only German and French are available.  This might be useful if, for example, you are not able to communicate with your users in Hungarian.<br /><br />You also use this page to alter certain aspects of <b>webtrees</b> that depend on the selected language.  For example, here is where you tell <b>webtrees</b> how to format date and time fields.<br /><br />The languages that are active and greyed out cannot be disabled because they are in use. Look at the bottom table to see where the language is used. When a language is no longer used by the GEDCOM or user you will be able to disable it.<br /><br />All of your changes will be recorded in a new file called <b>lang_settings.php</b> created in the <b>#INDEX_DIRECTORY#</b> directory.  All of your further changes will be made to this new file and <b>webtrees</b> will use only <u>this</u> file.  You can revert to the original default language settings by deleting this file.<br /><br />If you must report problems with your language settings, please tell the <b>webtrees</b> support team whether this new file is present or not.');
 	break;
 
 case 'context':
@@ -3739,11 +3714,6 @@ case 'def':
 case 'def_pdf_format':
 	$title=i18n::translate('PDF definition');
 	$text=i18n::translate('The <b>webtrees</b> Reporting Engine produces downloadable reports in Adobe&reg; PDF format.  The GEDCOM 5.5.1 Standard specification, mentioned elsewhere in this Help file, is also downloadable as a PDF file.  PDF is an acronym for <b>P</b>ortable <b>D</b>ocument <b>F</b>ormat.<br /><br />PDF files are not viewable or printable by the standard software on your PC.  If you already have Acrobat Reader installed (it\'s often packaged with other softwares), you do not need to replace or upgrade it to deal with report files produced by <b>webtrees</b>.<br /><br />Acrobat Reader, the viewing and printing program for these files, is available free of charge from Adobe Systems Inc.  The free Adobe&reg; Acrobat Reader can be downloaded from the <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank"><b>Adobe Systems Inc.</b></a> web site.  You may find copies of "Acrobat Reader" available for download from other Internet sites, but we strongly advise you to trust <u>only</u> the Adobe Systems Inc. site.<br /><br />Acrobat Reader is available for many different systems, including Microsoft&reg; Windows and Apple&reg; Macintosh, in many languages other than English.  If you have a Windows 95 system, be sure to download Acrobat Reader version 5.0.5.  Versions more recent than this will not install correctly on Windows 95 systems.<br /><br /><a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank"><b>Download Adobe Reader here</b></a>');
-	break;
-
-case 'def_PGV':
-	$title=i18n::translate('PGV definition');
-	$text=i18n::translate('<b>PhpGedView</b> does not just put static pages on the Web; it is dynamic and can be customized in many ways.<br /><br /><b>PhpGedView</b> was created by John Finlay to view GEDCOM files online.  John started developing the program on his own.  An international team of developers and translators has since joined him and is working to improve the program.  Among the more significant features that have been added or improved in the program are its extensive support of languages other than English, and the ability to add and edit events online.');
 	break;
 
 case 'def_portal':
@@ -3809,11 +3779,6 @@ case 'detected_ansi2utf':
 case 'detected_date':
 	$title=i18n::translate('Date format will be changed');
 	$text=i18n::translate('The date format that is standard for <b>webtrees</b> and also according to the GEDCOM 5.5.1 Standard is <b>DD&nbsp;MMM&nbsp;YYYY</b> (e.g. 01&nbsp;JAN&nbsp;2004)<br /><br />If, after your GEDCOM file has been validated, you see a message that a wrong date format has been detected, <b>webtrees</b> will convert the incorrectly formatted dates as prescribed by the Standard.<br /><br />You have, however, the option to choose either "<b>day</b> before month" (DD&nbsp;MMM&nbsp;YYYY), or "<b>month</b> before day" (MMM&nbsp;DD&nbsp;YYYY).<br /><br />We recommend that you use the first format (day before month).');
-	break;
-
-case 'dictionary_sort':
-	$title=i18n::translate('Use dictionary rules while sorting');
-	$text=i18n::translate('This option controls how characters with diacritic marks are handled when sorting lists of names and titles.<br /><br />When set to <b>Yes</b>, all characters with diacritic marks are treated as if they did not have any marks.  Diacritic marks are considered only when the two words being considered are otherwise identical.  When set to <b>No</b>, all letters are distinct, regardless of the presence or absence of diacritic marks.');
 	break;
 
 case 'download_gedcom':
@@ -3957,11 +3922,6 @@ case 'edit_TIME':
 	$text=i18n::translate('Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.<br /><br />.');
 	break;
 	
-case 'editlang':
-	$title=i18n::translate('Edit');
-	$text=i18n::translate('Edit message from language file.');
-	break;
-
 case 'edituser_change_lang':
 	$title=i18n::translate('Language selector');
 	$text=i18n::translate('Here you can change the language in which <b>webtrees</b> will display all its pages and messages after you have logged in.<br /><br />When you first access the site, <b>webtrees</b> assumes that you want to see everything in the language configured as the Preferred Language in your browser.  If that assumption is incorrect, you would override it here.  For example, your browser might be set to English because that is the most prevalent language on the Internet.  However, for genealogical purposes, you would prefer to see everything in Finnish or Hebrew.  Here\'s where you do that.<br /><br />The administrator controls what language choices are available to you.  If your preference isn\'t listed, you need to contact the administrator.<br /><br />Please remember that <b>webtrees</b> is very much a project staffed by an international team of unpaid volunteers.  Experts come and go.  Consequently, support for languages other than English is sometimes not as good as it should be.<br /><br />If you see something that has not been translated, has been translated incorrectly, or could be phrased better, let your administrator know.  The administrator will know how to get in touch with the <b>webtrees</b> developer team to have your concerns addressed.  Better still, volunteer some of your time.  We can use the help.');
@@ -4152,11 +4112,6 @@ case 'header':
 	$text=i18n::translate('The header is shown at the top of every page.  The header contains some useful links that you can use throughout the site.<br /><br />Since this site can have a different look depending on the selected <a href="?help=def_theme">theme</a>, headers can be affected and links may vary.<br /><br />The links that you might find are:<ul><li><a href="?help=header_search"><b>Search box</b></a></li><li><a href="?help=header_lang_select"><b>Language selector</b></a></li><li><a href="?help=header_user_links"><b>User links</b></a></li><li><a href="?help=header_favorites"><b>Favorites</b></a></li><li><a href="?help=header_theme"><b>Change theme</b></a></li></ul>');
 	break;
 
-case 'header_lang_select':
-	$title=i18n::translate('Change language');
-	$text=i18n::translate('One of the most important features of <b>webtrees</b> is that multiple languages are supported.<br /><br />The language in which <b>webtrees</b> displays all pages is determined automatically according to the Preferred Language setting of the browser.  However, the site administrator may have limited the availability of certain languages.<br /><br />Depending on site configuration, you may be able to change the language of <b>webtrees</b> by selecting a more suitable language from a drop-down list.  If you are a registered user, you can configure <b>webtrees</b> to switch to your preferred language after you login, regardless of what your browser is set to.');
-	break;
-
 case 'header_search':
 	$title=i18n::translate('Search box');
 	$text=i18n::translate('This Search box is small but powerful.  You can have <b>webtrees</b> search almost anything for you. When you click the <b>></b> or <b>Search</b> button, you will be linked to the Search page to see the results of your search.  You will find extensive help about searching options on the Search page.');
@@ -4213,8 +4168,7 @@ case 'help_contents_help':
 			.i18n::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.i18n::translate('Individuals').'</a></li><li><a href="?help=treenav.php">'.i18n::translate('Interactive tree').'</a></li><li><a href="?help=accesskey_viewing_advice">'.i18n::translate('Keyboard shortcuts').'</a></li><li><a href="?help=login.php">'
 			.i18n::translate('Login').'</a></li><li><a href="?help=pls_note11">'.i18n::translate('Lost password request').'</a></li><li><a href="?help=menu">'.i18n::translate('Menus').'</a></li><li><a href="?help=medialist.php">'.i18n::translate('Multimedia').'</a></li><li><a href="?help=edituser.php">'
 			.i18n::translate('My account').'</a></li><li><a href="?help=mygedview_portal">'.i18n::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.i18n::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.i18n::translate('Pedigree Tree').'</a></li><li><a href="?help=placelist.php">'
-			.i18n::translate('Place hierarchy').'</a></li><li><a href="?help=relationship.php">'.i18n::translate('Relationship chart').'</a></li><li><a href="?help=reportengine.php">'.i18n::translate('Reports').'</a></li><li><a href="?help=login_register.php">'.i18n::translate('Request new user account').'</a></li><li><a href="?help=best_display">'
-			.i18n::translate('Screen resolution').'</a></li><li><a href="?help=search">'.i18n::translate('Search').'</a></li><li><a href="?help=hs_title">'.i18n::translate('Search help text').'</a></li><li><a href="?help=source.php">'.i18n::translate('Source').'</a></li><li><a href="?help=sourcelist.php">'
+			.i18n::translate('Place hierarchy').'</a></li><li><a href="?help=relationship.php">'.i18n::translate('Relationship chart').'</a></li><li><a href="?help=reportengine.php">'.i18n::translate('Reports').'</a></li><li><a href="?help=login_register.php">'.i18n::translate('Request new user account').'</a></li><li><a href="?help=search">'.i18n::translate('Search').'</a></li><li><a href="?help=hs_title">'.i18n::translate('Search help text').'</a></li><li><a href="?help=source.php">'.i18n::translate('Source').'</a></li><li><a href="?help=sourcelist.php">'
 			.i18n::translate('Sources').'</a></li><li><a href="?help=timeline.php">'.i18n::translate('Timeline chart').'</a></li><li><a href="?help=edituser_username">'.i18n::translate('Username').'</a></li></ul></td>';	
 		if (WT_USER_IS_ADMIN) {
 			$text.='<td valign="top"><span class="helpstart">'.i18n::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.i18n::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.i18n::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
@@ -4432,41 +4386,6 @@ case 'is_user':
 case 'keep_media':
 	$title=i18n::translate('Keep media links');
 	$text=i18n::translate('Should existing media links be retained in the database when a replacement GEDCOM is being uploaded. The <b>No</b> option removes existing media links from the database, while the <b>Yes</b> option keeps them.<br /><br />This option is useful when you export your GEDCOM from <b>webtrees</b> to an off-line GEDCOM maintenance program that does not handle embedded media pointers properly, and then subsequently re-import that changed GEDCOM into <b>webtrees</b>.  Under such circumstances, the media pointers within the GEDCOM you exported to your off-line editing program are destroyed, and you would have to re-link all of your media files to the proper Person, Family, and Source records after you re-import the GEDCOM into <b>webtrees</b>.<br /><br />The <b>Yes</b> option tells <b>webtrees</b> to keep the existing media links so that you do not have to re-create them after you import the changed GEDCOM, but this requires the off-line editing program to always produce the same Person, Family, and Source identification numbers.<br /><br /><i>Family Tree Maker</i> is one of several off-line editing programs that does <u>not</u> properly handle media object pointers within the GEDCOM.  <i>Legacy</i>, among many others, <u>does</u> handle these properly.');
-	break;
-
-case 'lang_debug':
-	$title=i18n::translate('Help text debug option');
-	$text=i18n::translate('When you enable this option, the names of the language variables used in help text will print in the help text popup window.  This will help translators determine the variable name when text needs to be adjusted.<br /><br />This setting will only be valid during your current <b>webtrees</b> session.');
-	break;
-
-case 'lang_edit':
-	$title=i18n::translate('Edit language');
-	$text=i18n::translate('This page is intended to be used by translators.  You can translate, compare, and export language files.  There is also an option to help translators determine the origin of text that is output by <b>webtrees</b>.<br /><br />You can use the following options and utilities:');
-	break;
-
-case 'lang_filenames':
-	$title=i18n::translate('Language files');
-	$text=i18n::translate('<b>webtrees</b> has implemented support for many different languages.  This has been achieved by keeping all text that is visible to users in files completely separate from the main program.  There is a set of eight files for each supported language, and the various texts have been separated into one of these files according to function.  <b>Not all language files need to be present.</b>  When a given text is not yet available in translated form, <b>webtrees</b> will always use the English version.<br /><br />The files in each language set are:<br /><ul><li><b><i>admin.xx.php</i></b>&nbsp;&nbsp;This file contains terms and common expressions for use during the administration of <b>webtrees</b> and the genealogical databases.<br /><br /></li><li><b><i>configure_help.xx.php</i></b>&nbsp;&nbsp;This file contains Help text for use during configuration of <b>webtrees</b>.  The Help text is not intended to be viewed by ordinary users.<br /><br /></li><li><b><i>countries.xx.php</i></b>&nbsp;&nbsp;This is a list of country names, taken from the Web site of the Statistics Division, United Nations Department of Economic and Social Affairs.  This is the relevant <a href="http://unstats.un.org/unsd/methods/m49/m49alpha.htm" target="_blank"><b>link</b></a> to the English list.  The list is available in either English or French.<br /><br /></li><li><b><i>editor.xx.php</i></b>&nbsp;&nbsp;This file contains terms and common expressions for use during the editing of entries in the genealogical databases.<br /><br /></li><li><b><i>facts.xx.php</i></b>&nbsp;&nbsp;This file contains the textual equivalents of the GEDCOM Fact codes found in the GEDCOM 5.5.1 Standard.  It also contains additional Fact codes not found in the Standard but used by various genealogy programs.<br /><br />An English copy of the <a href="http://www.phpgedview.net/ged551-5.pdf" target="_blank"><b>GEDCOM 5.5.1 Standard</b></a> can be downloaded in PDF (Portable Document Format).<br /><br /></li><li><b><i>faqlist.xx.php</i></b>&nbsp;&nbsp;This file is a set of <b>f</b>requently <b>a</b>sked <b>q</b>uestions that have been collected by the <b>webtrees</b> development team.  Each FAQ has two entries in this file.  One entry is the FAQ heading (usually the question), and the other is the FAQ body (usually the answer).  Replacements for the <b><i>faqlist.xx.php</i></b> files, which are updated frequently, may be downloaded from the <b>webtrees</b> home site.<br /><br />The administrator can use the FAQs in this file to build an FAQ list that is specific to his site.<br /><br /></li><li><b><i>help_text.xx.php</i></b>&nbsp;&nbsp;This file contains Help text for ordinary users.  Some Help topics in this file address the needs of administrators, and are hidden from users who do not have Admin rights.<br /><br /></li><li><b><i>lang.xx.php</i></b>&nbsp;&nbsp;Many terms and common expressions are found in this file.</li></ul><br /><b>webtrees</b> also supports an optional ninth language file, <b><i>extra.xx.php</i></b>.  This file is always loaded after all the others and provides a means whereby a site administrator can override or alter any standard text in the selected language.  It can also be used to provide a title for the genealogical databases that varies according to the currently active language.<br /><br />The contents of this additional file are completely up to the site administrator;  this file will <b>never</b> be distributed with any version of <b>webtrees</b>.  The administrator should never make changes to the standard language files;  all local changes should be concentrated in this optional file.');
-	break;
-
-case 'lang_langcode':
-	$title=i18n::translate('Language detection codes');
-	$text=i18n::translate('These codes allow <b>webtrees</b> to detect the Preferred Language setting of the browser being used. <b>webtrees</b> determines the language actually being requested by the browser by matching the browser\'s language code against this list.  Individual list entries must be separated by a semicolon.');
-	break;
-
-case 'lang_shortcut':
-	$title=i18n::translate('Abbreviation for language files');
-	$text=i18n::translate('This code defines an abbreviation for the language name.  This abbreviation forms part of the name of each of the language files used by <b>webtrees</b>.  For example, the abbreviation used for French is <b>fr</b>, and consequently the file names for French are <i>configure_help.<b>fr</b>.php</i>, <i>countries.<b>fr</b>.php</i>, <i>facts.<b>fr</b>.php</i>, <i>help_text.<b>fr</b>.php</i>, and <i>lang.<b>fr</b>.php</i>');
-	break;
-
-case 'language_to_edit':
-	$title=i18n::translate('Language to edit');
-	$text=i18n::translate('In this list box you select the language whose messages you want to edit.');
-	break;
-
-case 'language_to_export':
-	$title=i18n::translate('Language to export');
-	$text=i18n::translate('From this list box you can select the language whose messages you want to export.<br /><br />The routine currently only exports the contents of the <i>configure_help.xx.php</i>, <i>help_text.xx.php</i>, and <i>lang.xx.php</i> files.  The output is an HTML file that you can print from your browser.');
 	break;
 
 case 'lifespan_add_person':
