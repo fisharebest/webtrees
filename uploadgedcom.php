@@ -1143,7 +1143,6 @@ if ($stage == 1) {
 	// NOTE: Finished Links
 	import_max_ids($ged_id, $MAX_IDS);
 	set_gedcom_setting($ged_id, 'imported', true);
-	set_gedcom_setting($ged_id, 'pgv_ver', WT_VERSION);
 	print "</td></tr>";
 
 	$record_count = 0;

@@ -263,7 +263,6 @@ if ($action=="update") {
 	set_gedcom_setting($ged_id, 'privacy', $gedcom_privacy);
 	set_gedcom_setting($ged_id, 'title',   $gedcom_title);
 	set_gedcom_setting($ged_id, 'path',    $path.$GEDFILENAME);
-	set_gedcom_setting($ged_id, 'pgv_ver', WT_VERSION);
 
 	// Check that add/remove common surnames are separated by [,;] blank
 	$_POST["NEW_COMMON_NAMES_REMOVE"] = preg_replace("/[,;]\b/", ", ", $_POST["NEW_COMMON_NAMES_REMOVE"]);
