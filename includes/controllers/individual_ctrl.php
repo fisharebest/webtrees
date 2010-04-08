@@ -253,7 +253,7 @@ class IndividualControllerRoot extends BaseController {
 		}
 		
 		$this->modules = WT_Module::getActiveTabs();
-		$count = 0;
+		$count = -1;  // BH Changed to "-1" from "0" to select correct tab from url suffix &tab=<tabname>. Not sure this is really the correct way
 		if (empty($this->default_tab)) $this->default_tab=0;
 		foreach($this->modules as $mod) {
 			$mod->setController($this);
