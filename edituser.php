@@ -42,7 +42,6 @@ if (get_user_setting(WT_USER_ID, 'editaccount')!='Y') {
 
 // Valid values for form variables
 $ALL_ACTIONS=array('update');
-$ALL_DEFAULT_TABS=array(0=>'personal_facts', 1=>'notes', 2=>'ssourcess', 3=>'media', 4=>'relatives', -1=>'all', -2=>'lasttab');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
@@ -59,7 +58,7 @@ $form_rootid        =safe_POST('form_rootid',         WT_REGEX_XREF,            
 $form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS,                         $THEME_DIR         );
 $form_language      =safe_POST('form_language',       array_keys(i18n::installed_languages()), WT_LOCALE          );
 $form_contact_method=safe_POST('form_contact_method');
-$form_default_tab   =safe_POST('form_default_tab',    array_keys($ALL_DEFAULT_TABS),           $GEDCOM_DEFAULT_TAB);
+$form_default_tab   =safe_POST('form_default_tab',    array_keys(WT_Module::getActiveTabs()),  $GEDCOM_DEFAULT_TAB);
 $form_visible_online=safe_POST('form_visible_online', 'Y', 'N');
 
 // Respond to form action
@@ -228,15 +227,8 @@ echo ' /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Default Tab to show on Individual Information page'), help_link('edituser_user_default_tab'), '</td><td class="optionbox">';
-echo '<select name="form_default_tab" tabindex="', ++$tab, '">';
-foreach ($ALL_DEFAULT_TABS as $key=>$value) {
-	echo '<option value="', $key,'"';
-	if ($key==get_user_setting(WT_USER_ID, 'defaulttab')) {
-		echo ' selected="selected"';
-	}
-	echo '>', $value, '</option>';
-}
-echo '</select></td></tr>';
+echo edit_field_default_tab('form_default_tab', get_user_setting(WT_USER_ID, 'defaulttab'), 'tabindex="'.(++$tab).'"');
+echo '</td></tr>';
 
 echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', i18n::translate('Update MyAccount'), '" /></td></tr>';
 

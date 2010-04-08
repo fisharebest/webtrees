@@ -122,7 +122,7 @@ $HIDE_GEDCOM_ERRORS = false;			//-- a true value will disable error messages for
 
 $WORD_WRAPPED_NOTES = false;			//-- some programs wrap notes at word boundaries while others wrap notes anywhere
 										//-- setting this to true will add a space between words where they are wrapped in the gedcom
-$GEDCOM_DEFAULT_TAB = "0";				//-- this setting controls which tab on the individual page should first be displayed to visitors
+$GEDCOM_DEFAULT_TAB = "personal_facts";				//-- this setting controls which tab on the individual page should first be displayed to visitors
 
 $SHOW_CONTEXT_HELP = true;				// show ? links on the page for contextual popup help
 $WEBTREES_EMAIL = "";			// -- "From:" address for automatically generated e-mails

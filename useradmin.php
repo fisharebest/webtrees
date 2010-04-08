@@ -42,7 +42,6 @@ if (!WT_USER_IS_ADMIN) {
 
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers');
-$ALL_DEFAULT_TABS=array(0=>'personal_facts', 1=>'notes', 2=>'ssourcess', 3=>'media', 4=>'relatives', -1=>'all', -2=>'lasttab');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
@@ -79,7 +78,7 @@ $emailaddress            =safe_POST('emailaddress', WT_REGEX_EMAIL);
 $user_theme              =safe_POST('user_theme',               $ALL_THEME_DIRS);
 $user_language           =safe_POST('user_language',            array_keys(i18n::installed_languages()), WT_LOCALE);
 $new_contact_method      =safe_POST('new_contact_method');
-$new_default_tab         =safe_POST('new_default_tab',          array_keys($ALL_DEFAULT_TABS), $GEDCOM_DEFAULT_TAB);
+$new_default_tab         =safe_POST('new_default_tab',          array_keys(WT_Module::getActiveTabs()), $GEDCOM_DEFAULT_TAB);
 $new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
 $new_comment_exp         =safe_POST('new_comment_exp'           );
 $new_max_relation_path   =safe_POST_integer('new_max_relation_path', 1, $MAX_RELATION_PATH_LENGTH, 2);
@@ -415,17 +414,8 @@ if ($action=="edituser") {
 	</tr>
 	<tr>
 	<td class="descriptionbox wrap"><?php echo i18n::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
-	<td class="optionbox wrap"><select name="new_default_tab" tabindex="<?php echo ++$tab; ?>">
-	<?php
-	foreach ($ALL_DEFAULT_TABS as $key=>$value) {
-		echo '<option value="', $key, '"';
-		if (get_user_setting($user_id, 'defaulttab')==$key) {
-			echo ' selected="selected"';
-		}
-		echo '>', $value, '</option>';
-	}
-	?>
-	</select>
+	<td class="optionbox wrap">
+	<?php echo edit_field_default_tab('new_default_tab', get_user_setting($user_id, 'defaulttab'), 'tabindex="'.(++$tab).'"'); ?>
 	</td>
 	</tr>
 	<tr>
@@ -817,17 +807,8 @@ if ($action == "createform") {
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap"><?php echo i18n::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
-			<td class="optionbox wrap"><select name="new_default_tab" tabindex="<?php echo ++$tab; ?>">
-			<?php
-			foreach ($ALL_DEFAULT_TABS as $key=>$value) {
-				echo '<option value="', $key, '"';
-				if ($GEDCOM_DEFAULT_TAB==$key) {
-					echo ' selected="selected"';
-				}
-				echo '>', $value, '</option>';
-			}
-			?>
-			</select>
+			<td class="optionbox wrap">
+			<?php echo edit_field_default_tab('new_default_tab', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$tab).'"'); ?>
 			</td>
 		</tr>
 		<?php if (WT_USER_IS_ADMIN) { ?>

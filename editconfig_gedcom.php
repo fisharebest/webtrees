@@ -1511,16 +1511,8 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Layout')."\" onclick=\"exp
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Default tab to show on Individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_GEDCOM_DEFAULT_TAB" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('GEDCOM_DEFAULT_TAB');">
-				<option value="0" <?php if ($GEDCOM_DEFAULT_TAB==0) print "selected=\"selected\""; ?>><?php print i18n::translate('Personal Facts and Details'); ?></option>
-				<option value="1" <?php if ($GEDCOM_DEFAULT_TAB==1) print "selected=\"selected\""; ?>><?php print i18n::translate('Notes'); ?></option>
-				<option value="2" <?php if ($GEDCOM_DEFAULT_TAB==2) print "selected=\"selected\""; ?>><?php print i18n::translate('Sources'); ?></option>
-				<option value="3" <?php if ($GEDCOM_DEFAULT_TAB==3) print "selected=\"selected\""; ?>><?php print i18n::translate('Media'); ?></option>
-				<option value="4" <?php if ($GEDCOM_DEFAULT_TAB==4) print "selected=\"selected\""; ?>><?php print i18n::translate('Close Relatives'); ?></option>
-				<option value="5" <?php if ($GEDCOM_DEFAULT_TAB==5) print "selected=\"selected\""; ?>><?php print i18n::translate('Tree'); ?></option>
-				<option value="-1" <?php if ($GEDCOM_DEFAULT_TAB==-1) print "selected=\"selected\""; ?>><?php print i18n::translate('ALL'); ?></option>
-				<option value="-2" <?php if ($GEDCOM_DEFAULT_TAB==-2) print "selected=\"selected\""; ?>><?php print i18n::translate('Last Visited Tab For Individual'); ?></option>
-			</select>
+		<td class="optionbox">
+		<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'" onfocus="getHelp(\'GEDCOM_DEFAULT_TAB\');"'); ?>
 		</td>
 	</tr>
 	<tr>

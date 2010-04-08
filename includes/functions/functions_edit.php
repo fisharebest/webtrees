@@ -129,6 +129,15 @@ function edit_field_rela($name, $selected='', $extra='') {
 	return select_edit_control($name, $RELA_CODES, '', $selected, $extra);
 }
 
+// Print an edit control for a default tab field
+function edit_field_default_tab($name, $selected='', $extra='') {
+	$tabs=array();
+	foreach (WT_Module::getActiveTabs() as $module) {
+		$tabs[$module->getName()]=$module->getTitle();
+	}
+	return select_edit_control($name, $tabs, null, $selected, $extra);
+}
+
 //-- this function creates a new unique connection
 //-- and adds it to the connections file
 //-- it returns the connection identifier
