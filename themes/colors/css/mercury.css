@@ -23,7 +23,7 @@ padding:0px;
 
 /*	Color settings for the this theme	*/
 
-/*	Define Header and Light Text Colors	*/
+/*	Define Header, Tbl hdrs and Light Text Colors	*/
 
 #header,
 .gedcomtitle {
@@ -52,9 +52,11 @@ color: #707070;
 
 #toplinks {
 background:#a9adbc;
-color: #a9adbc;
 }
 
+.menuitem_hover a:hover{
+color: #a9adbc;
+}
 /*	Define Base Color					*/
 
 .descriptionbox .submenu a,
@@ -82,7 +84,7 @@ color:#333333;
 }
 
 a:hover { 
-color: #f50;
+color: #ff5500;
 text-decoration: none;
 }
 
@@ -1613,6 +1615,7 @@ dt {
 .ui-widget-header { border: 1px solid #fff; background: #C6C8D2 !important;  opacity: 0.67;}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: #999; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #707070;}
 
 /* Override jquery-ui_theme.css                */
 
@@ -1643,5 +1646,3 @@ color:  #000;
 .nav_content .facts_label a{
 color: #fff;
 }
-
-
