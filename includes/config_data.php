@@ -1421,7 +1421,7 @@ function translate_fact($fact, $person=null) {
 		return $FACTS_M[$fact];
 	}
 	if ($person instanceof Person && $person->getSex()=='F' && array_key_exists($fact, $FACTS_F)) {
-		return $FACTS_M[$fact];
+		return $FACTS_F[$fact];
 	}
 	if (array_key_exists($fact, $FACTS)) {
 		return $FACTS[$fact];
