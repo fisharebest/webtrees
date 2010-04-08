@@ -82,7 +82,6 @@ function print_fact(&$eventObj, $noedit=false) {
 	global $n_chil, $n_gchi, $n_ggch;
 	global $SEARCH_SPIDER;
 
-	$estimates = array("abt", "aft", "bef", "est", "cir");
 	$fact = $eventObj->getTag();
 	$rawEvent = $eventObj->getDetail();
 	$event = htmlspecialchars($rawEvent, ENT_COMPAT, 'UTF-8');
@@ -94,6 +93,18 @@ function print_fact(&$eventObj, $noedit=false) {
 		$pid = $eventObj->getFamilyId();
 	} elseif (!is_null($parent)) {
 		$pid = $parent->getXref();
+	}
+
+	// Who is this fact about?  Need it to translate fact label correctly
+	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
+		// Event of close relative
+		$label_person=Person::getInstance($match[1]);
+	} elseif (preg_match('/2 _PGVS @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
+		// Event of close relative
+		$label_person=Person::getInstance($match[1]);
+	} else {
+		// The actual person
+		$label_person=$parent;
 	}
 
 	if ($fact=="NOTE") return print_main_notes($factrec, 1, $pid, $linenum, $noedit);
@@ -151,7 +162,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		echo "\n\t\t\t<td class=\"descriptionbox $styleadd center width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
-		echo translate_fact($factref, $parent);
+		echo translate_fact($factref, $label_person);
 		if ($fact=="_BIRT_CHIL" and isset($n_chil)) echo "<br />", i18n::translate('#%d', $n_chil++);
 		if ($fact=="_BIRT_GCHI" and isset($n_gchi)) echo "<br />", i18n::translate('#%d', $n_gchi++);
 		if ($fact=="_BIRT_GGCH" and isset($n_ggch)) echo "<br />", i18n::translate('#%d', $n_ggch++);
@@ -247,9 +258,9 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($fact!="EVEN" && $fact!="FACT") {
 			if (preg_match("/2 TYPE (.*)/", $factrec, $match)) {
 				if ($fact=="MARR") {
-					echo translate_fact("MARR_".strtoupper($match[1]), $parent);
+					echo translate_fact("MARR_".strtoupper($match[1]), $label_person);
 				} else {
-					echo translate_fact(strtoupper($match[1]), $parent);
+					echo translate_fact(strtoupper($match[1]), $label_person);
 				}
 				echo "<br />";
 			}
@@ -424,7 +435,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			for($i=0; $i<$ct; $i++) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
-					$label = translate_fact($fact.':'.$factref, $parent);
+					$label = translate_fact($fact.':'.$factref, $label_person);
 					if ($SHOW_FACT_ICONS && file_exists($WT_IMAGE_DIR."/facts/".$factref.".gif"))
 						//echo $eventObj->Icon(), ' '; // print incorrect fact icon !!!
 						echo "<img src=\"{$WT_IMAGE_DIR}/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";

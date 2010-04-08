@@ -1402,14 +1402,31 @@ $FACTS=array(
 	'__BRTM_SIBL'=>i18n::translate('Brit Mila of sibling'),
 );
 
-// Facts, as applied to Males
+// Facts, as applied to Males.
+// Use the context-sensitive translations when the word is the same in English
 $FACTS_M=array(
-//	'_NMR'=>i18n::translate_c('MALE', 'Not married')
+	'_BIRT_CHIL'=>i18n::translate  (        'Birth of a son'),
+	'_BIRT_COUS'=>i18n::translate_c('MALE', 'Birth of a cousin'),
+	'_BIRT_NEPH'=>i18n::translate  (        'Birth of a nephew'),
+	'_BIRT_SIBL'=>i18n::translate  (        'Birth of a brother'),
+	'_MARR_NEPH'=>i18n::translate  (        'Marriage of a nephew'),
+	'_MARR_SIBL'=>i18n::translate  (        'Marriage of a brother'),
+	'_DEAT_CHIL'=>i18n::translate  (        'Death of a son'),
+	'_DEAT_NEPH'=>i18n::translate  (        'Death of a nephew'),
+	'_DEAT_SPOU'=>i18n::translate  (        'Death of a husband'),
 );
 
 // Facts, as applied to Females
 $FACTS_F=array(
-//	'_NMR'=>i18n::translate_c('FEMALE', 'Not married')
+	'_BIRT_CHIL'=>i18n::translate  (          'Birth of a daughter'),
+	'_BIRT_COUS'=>i18n::translate_c('FEMALE', 'Birth of a cousin'),
+	'_BIRT_NEPH'=>i18n::translate  (          'Birth of a niece'),
+	'_BIRT_SIBL'=>i18n::translate  (          'Birth of a sister'),
+	'_MARR_NEPH'=>i18n::translate  (          'Marriage of a niece'),
+	'_MARR_SIBL'=>i18n::translate  (          'Marriage of a sister'),
+	'_DEAT_CHIL'=>i18n::translate  (          'Death of a daughter'),
+	'_DEAT_NEPH'=>i18n::translate  (          'Death of a niece'),
+	'_DEAT_SPOU'=>i18n::translate  (          'Death of a wife'),
 );
 
 
