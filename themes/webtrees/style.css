@@ -59,7 +59,9 @@ a:hover	{
 	color: red;
 	text-decoration: none;
 }
-
+:focus {
+  -moz-outline-style: none;
+}
 th {
 	font-weight: 100;
 }
