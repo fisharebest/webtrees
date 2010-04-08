@@ -283,7 +283,6 @@ class IndividualControllerRoot extends BaseController {
 						$js.=$module->getJSCallbackAllTabs();
 					}
 					if ($js) {
-						var_dump("EEK!");
 						echo WT_JS_START, $js, WT_JS_END;
 					}
 				}
