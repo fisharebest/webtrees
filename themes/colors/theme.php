@@ -131,17 +131,9 @@ $WT_IMAGES["source"]["large"] = "source.gif";
 $WT_IMAGES["sex"]["large"] = "male.gif";
 $WT_IMAGES["sexf"]["large"] = "female.gif";
 $WT_IMAGES["sexn"]["large"] = "fe_male.gif";
-$WT_IMAGES["edit_indi"]["large"] = "edit_indi.png";
-$WT_IMAGES["edit_fam"]["large"] = "edit_fam.png";
-$WT_IMAGES["edit_source"]["large"] = "edit_source.png";
+$WT_IMAGES["edit_source"]["large"] = "small/edit_sour.gif";
 
-
-//- WT main icons for optional modules
-$WT_IMAGES["menu_gallery"]["large"] = "menu_gallery.gif";
-$WT_IMAGES["menu_punbb"]["large"] = "menu_punbb.gif";
-$WT_IMAGES["menu_research"]["large"] = "menu_research.gif";
-
-//- WT small icons
+//- PGV small icons
 $WT_IMAGES["admin"]["small"] = "small/admin.gif";
 $WT_IMAGES["ancestry"]["small"] = "small/ancestry.gif";
 $WT_IMAGES["calendar"]["small"] = "small/calendar.gif";
@@ -185,8 +177,10 @@ $WT_IMAGES["sfamily"]["small"] = "small/sfamily.gif";
 $WT_IMAGES["source"]["small"] = "small/source.gif";
 $WT_IMAGES["statistic"]["small"] = "small/statistic.gif";
 $WT_IMAGES["timeline"]["small"] = "small/timeline.gif";
+$WT_IMAGES["favorites"]["small"] = "small/gedcom.gif";
 
-//- WT buttons for data entry pages
+//- PGV buttons for data entry pages
+$WT_IMAGES["addmedia"]["button"] = "buttons/addmedia.gif";
 $WT_IMAGES["addrepository"]["button"] = "buttons/addrepository.gif";
 $WT_IMAGES["addsource"]["button"] = "buttons/addsource.gif";
 $WT_IMAGES["addnote"]["button"] = "buttons/addnote.gif";
@@ -202,8 +196,8 @@ $WT_IMAGES["place"]["button"] = "buttons/place.gif";
 $WT_IMAGES["refresh"]["button"] = "buttons/refresh.gif";
 $WT_IMAGES["repository"]["button"] = "buttons/repository.gif";
 $WT_IMAGES["source"]["button"] = "buttons/source.gif";
-$WT_IMAGES["target"]["button"] = "buttons/target.gif";
-$WT_IMAGES["view_all"]["button"] = "buttons/view_all.gif";
+$WT_IMAGES["note"]["button"] = "buttons/note.gif";
+$WT_IMAGES["head"]["button"] = "buttons/head.gif";
 
 // Media images
 $WT_IMAGES["media"]["audio"] = "media/audio.png";
