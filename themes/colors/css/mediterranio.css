@@ -54,7 +54,7 @@ color: #ffffff;
 background:#fc6d1d;
 }
 
-.menuitem_hover a:hover{
+.menuitem_hover a:hover, .menuitem_hover_rtl a:hover{
 color: #fc6d1d;
 }
 /*	Define Base Color					*/
