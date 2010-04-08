@@ -50,7 +50,7 @@ color: #ffffff;
 
 /*	Define TopLink Color				*/
 
-#toplinks, .menuitem_hover a:hover {
+#toplinks {
 background:#7be000;
 color: #03961e;
 }
@@ -66,7 +66,7 @@ color: #03961e;
 .person0,  .center .person_box,
 .submenuitem_hover, 
 .submenuitem_hover_rtl {
-background:#f1f0f4;
+background:#E6FFC7;
 }
 
 /*	Define Link Color					*/
@@ -1607,12 +1607,10 @@ dt {
 
 /* Override js/jquery-ui.custom.css            */
 /* Accordion ----------------------------------*/
-
-.ui-accordion .ui-accordion-header { background: #04AF23;}
-.ui-accordion .ui-accordion-header a { color: #FFFFFF ;}
+.ui-state-active, .ui-widget-content .ui-state-active { background: #04AF23;}
 
 /* Tabs ----------------------------------*/
-.ui-widget-header { border: 1px solid #fff; background: #04AF23 !important; }
+.ui-widget-header { border: 1px solid #fff; background: #04AF23 !important;  opacity: 0.67;}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: #999; }
 
@@ -1634,7 +1632,7 @@ dt {
 /* Override inline code in --------------------*/
 #sidebar {  
 background: #fff !important;
-margin: 15px 18px 15px 15px;
+margin: 9px 20px 15px 15px;
 }
 
 /* Navigator and Flyout menu Styles -----------*/
@@ -1645,4 +1643,5 @@ color:  #000;
 .nav_content .facts_label a{
 color: #fff;
 }
+
 

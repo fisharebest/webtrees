@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 7782 2010-04-02 13:23:19Z rob $
+* $Id: ash.css 7896 2010-04-07 22:08:56Z greg $
 */
 
 .something {
@@ -50,7 +50,7 @@ color: #707070;
 
 /*	Define TopLink Color				*/
 
-#toplinks, .menuitem_hover a:hover {
+#toplinks {
 background:#a9adbc;
 color: #a9adbc;
 }
@@ -1607,12 +1607,10 @@ dt {
 
 /* Override js/jquery-ui.custom.css            */
 /* Accordion ----------------------------------*/
-
-.ui-accordion .ui-accordion-header { background: #C6C8D2;}
-.ui-accordion .ui-accordion-header a { color: #000000 ;}
+.ui-state-active, .ui-widget-content .ui-state-active { background: #C6C8D2;}
 
 /* Tabs ----------------------------------*/
-.ui-widget-header { border: 1px solid #fff; background: #C6C8D2 !important; }
+.ui-widget-header { border: 1px solid #fff; background: #C6C8D2 !important;  opacity: 0.67;}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: #999; }
 
@@ -1634,7 +1632,7 @@ dt {
 /* Override inline code in --------------------*/
 #sidebar {  
 background: #fff !important;
-margin: 15px 18px 15px 15px;
+margin: 9px 20px 15px 15px;
 }
 
 /* Navigator and Flyout menu Styles -----------*/
@@ -1645,4 +1643,5 @@ color:  #000;
 .nav_content .facts_label a{
 color: #fff;
 }
+
 

@@ -1,11 +1,11 @@
-Color Style Matrix 2010/02/09
+Color Style Matrix 2010/04/08
 
          Aqua-            Belgian    Blue    Blue     Cold     Green    Medit-                              Pink    Shinny    Teal
         marine     Ash   Chocolate  Lagoon  Marine    Day      Bean    erranio  Mercury Nocturnal Olivia   Plastic  Tomato    Top
 
 Header  #007e94  #5d6779  #971702   #2BA0E9 #6598cb  #1a1575  #03961e  #a30f42  #d4d4d4  #0a2352  #5E881B  #f41063  #f21107  #34775a
 Toplinks#085360  #2a2b2d  #331900   #2385c2 #98badd  #4d91ff  #7be000  #fc6d1d  #a9adbc  #9fa8d5  #b5d52a  #f391c6  #a1443a  #52bf90
-Base    #dcf2f9  #ededee  #f6edd5   #e6f5ff #e0e7ff  #e6e1ff  #5effed  #fef9dc  #f0f2f5  #F1F2F8  #eef9dc  #fbdaed  #FFD9CC  #d2f4e6
+Base    #dcf2f9  #ededee  #f6edd5   #e6f5ff #e0e7ff  #e6e1ff  #E6FFC7  #fef9dc  #f0f2f5  #F1F2F8  #eef9dc  #fbdaed  #FFD9CC  #d2f4e6
 TblHdr  #00A9C7  #9DA5B4  #af2604   #5ab5ee #6598cb  #5997E3  #04AF23  #D23014  #C6C8D2  #6A78BE  #7db323  #F75993  #F96058  #51B389
 
 D-Text  #696969  #494949  #494949   #494949 #000000  #000000  #494949  #494949  #707070  #494949  #191a19  #7d7373  #515d52  #2d2d2d
