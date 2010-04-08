@@ -24,27 +24,17 @@
 	right: -22px;
 	margin-top: 0px;
 	margin-right: 5px;
-	height: 21px;
+	height: 29px;
 	width: 16px;
 	z-index: 10;
 }
 #sidebar_open img {
-	padding-top: 2px;
-	padding-bottom: 3px;
-	margin-right: 1px;
+	padding-top: 6px;
+	padding-bottom: 7px;
+	margin-right: 0px;
 	height: 15px;
 	background-color: #ffffff;
 }
-
-/*
-#sidebar_controls { 	
-	height: 21px;
-}
-#sidebar_open img {
-	padding-top: 3px;
-	padding-bottom: 3px;
-}
-*/
 
 /* Navigator & Flyout menu Styles ------*/
 .flyoutrtl {
@@ -58,11 +48,11 @@
 	color:#000000; 
 	text-align: right;
 	margin-top: -2px;
-	right: 64px;
+	right: 70px;
 	padding: 3px;
 }
 .flyout2rtl a:hover{
-	color:red;
+	color:#ff0000;
 }
 #flyout3 {
 	text-align: right;
