@@ -87,7 +87,7 @@ class HourglassControllerRoot extends BaseController {
 	 * Initialization function
 	 */
 	function init($rootid='', $show_full=1, $generations=3) {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $bhalfheight, $GEDCOM_DEFAULT_TAB, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
+		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $WT_IMAGES, $WT_IMAGE_DIR, $TEXT_DIRECTION, $show_full;
 
 		// Extract parameters from from
