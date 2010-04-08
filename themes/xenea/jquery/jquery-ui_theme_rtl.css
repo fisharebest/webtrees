@@ -14,25 +14,26 @@
 	width: 0px;
 	height: 450px;
 	z-index: 50;
-	margin-top: 10px;
+	margin-top: 4px;
 	margin-left: 12px;
 	background-color: #dddddd;
 }
 #sidebar_controls {
 	position: absolute;
 	float: right;
-	right: -22px;
+	right: -26px;
 	margin-top: 0px;
 	margin-right: 5px;
 	height: 21px;
-	width: 16px;
+	width: 20px;
 	z-index: 10;
 }
 #sidebar_open img {
-	padding-top: 2px;
+	padding-top: 3px;
 	padding-bottom: 3px;
-	margin-right: 1px;
-	height: 15px;
+	margin-right: 0px;
+	height: 18px;
+	width: 20px;
 	background-color: #ffffff;
 }
 
