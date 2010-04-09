@@ -52,8 +52,12 @@ function select_edit_control($name, $values, $empty, $selected, $extra) {
 		if (empty($selected)) {
 			$html='<option value="" selected="selected">'.htmlspecialchars($empty).'</option>';
 		} else {
-			$html='<option value="">'.$empty.'</option>';
+			$html='<option value="">'.htmlspecialchars($empty).'</option>';
 		}
+	}
+	// A completely empty list would be invalid, and break various things
+	if (empty($values) && empty($html)) {
+		$html='<option value=""></option>';
 	}
 	foreach ($values as $key=>$value) {
 		if ($key==$selected) {
