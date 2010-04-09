@@ -883,7 +883,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo " $styleadd center width20\">";
 			if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["source"]["small"], "\" alt=\"\" /><br />";
 			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
-			echo i18n::translate($factname[1]);
+			echo translate_fact($factname[1]);
 			if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="red" && $view!="preview") {
 				$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
 				$menu->addOnclick("return edit_record('$pid', $linenum);");
