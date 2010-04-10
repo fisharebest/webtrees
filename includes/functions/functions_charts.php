@@ -134,7 +134,6 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	 * husband side
 	 */
 	print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tr><td rowspan=\"2\">";
-	print "<span class=\"subheaders\">" . get_sosa_name($sosa*2) . "</span>";
 	print "\n\t<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
 	if ($parid) {
 		if ($husb->getXref()==$parid) print_sosa_number($label);
@@ -209,7 +208,6 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	 * wife side
 	 */
 	print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><tr><td rowspan=\"2\">";
-	print "<span class=\"subheaders\">" . get_sosa_name($sosa*2+1) . "</span>";
 	print "\n\t<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
 	if ($parid) {
 		if ($wife->getXref()==$parid) print_sosa_number($label);
