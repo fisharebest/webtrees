@@ -55,7 +55,7 @@ if (!WT_DB::table_exists("{$TBLPREFIX}placelocation")) {
 		" pl_zoom      INTEGER             NULL,".
 		" pl_icon      VARCHAR(255)     NULL,".
 		" PRIMARY KEY (pl_id)".
-		") ".self::$UTF8_TABLE
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	self::exec("CREATE INDEX {$TBLPREFIX}pl_level     ON {$TBLPREFIX}placelocation (pl_level    )");
 	self::exec("CREATE INDEX {$TBLPREFIX}pl_long      ON {$TBLPREFIX}placelocation (pl_long     )");
