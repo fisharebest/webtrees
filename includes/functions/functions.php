@@ -2416,7 +2416,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
-		$down=strlen($match[1])/3;
+		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
 		switch ($up) {
 		case 4:
