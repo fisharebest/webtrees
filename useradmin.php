@@ -243,7 +243,7 @@ if ($action=="edituser") {
 	}
 	//-->
 	</script>
-	<form name="editform" method="post" action="useradmin.php" onsubmit="return checkform(this);">
+	<form name="editform" method="post" action="useradmin.php" onsubmit="return checkform(this);" autocomplete="off">
 	<input type="hidden" name="action" value="edituser2" />
 	<input type="hidden" name="filter" value="<?php echo $filter; ?>" />
 	<input type="hidden" name="sort" value="<?php echo $sort; ?>" />
@@ -687,7 +687,7 @@ if ($action == "createform") {
 	//-->
 	</script>
 
-	<form name="newform" method="post" action="useradmin.php" onsubmit="return checkform(this);">
+	<form name="newform" method="post" action="useradmin.php" onsubmit="return checkform(this);" autocomplete="off">
 	<input type="hidden" name="action" value="createuser" />
 	<!--table-->
 	<?php $tab = 0; ?>
