@@ -2525,7 +2525,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 
 	// TODO: long relationships are a bit ridiculous - although tecnically correct.
 	// Perhaps translate long paths as "a distant blood relative", or "a distant relative by marriage"
-	switch (substr($path, 0, 3)) {
+	switch (substr($path, -3, 3)) {
 	case 'mot': $relationship=i18n::translate('mother'  ); break;
 	case 'fat': $relationship=i18n::translate('father'  ); break;
 	case 'par': $relationship=i18n::translate('parent'  ); break;
@@ -2539,8 +2539,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'dau': $relationship=i18n::translate('daughter'); break;
 	case 'chi': $relationship=i18n::translate('child'   ); break;
 	}
-	while (($path=substr($path, 4))!='') {
-		switch (substr($path, 0, 3)) {
+	while (($path=substr($path, 0, strlen($path)-3))!='') {
+		switch (substr($path, -3, 3)) {
 			// I18N: These strings are used to build paths of relationships, such as "father's wife's husband's brother"
 		case 'mot': $relationship=i18n::translate('mother\'s %s',   $relationship); break;
 		case 'fat': $relationship=i18n::translate('father\'s %s',   $relationship); break;

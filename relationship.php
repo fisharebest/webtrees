@@ -580,13 +580,8 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				print "</td></tr></table></div>\n";
 			}
 
-			$sentence = get_relationship_name($node);
-			if($sentence != false) {
-				print "<div style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":1px; top:".abs($Dbaseyoffset-70)."px; z-index:1;\">";
-				print "<h4>";
-				print $sentence;
-				print "</h4></div>\n";
-			}
+			print "<div style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":1px; top:".abs($Dbaseyoffset-70)."px; z-index:1;\">";
+			echo '<h4>', i18n::translate('Relationship: %s', get_relationship_name($node)), '</h4></div>';
 		}
 	}
 }
