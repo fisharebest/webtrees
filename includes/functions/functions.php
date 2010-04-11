@@ -2060,11 +2060,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'parfat': return i18n::translate_c('parent\'s father', 'grandfather');
 	case 'parpar': return i18n::translate_c('parent\'s parent', 'grandparent');
 
-	case 'daumot': return i18n::translate_c('daughter\'s daughter', 'granddaughter');
+	case 'daudau': return i18n::translate_c('daughter\'s daughter', 'granddaughter');
 	case 'dauson': return i18n::translate_c('daughter\'s son', 'grandson');
 	case 'dauchi': return i18n::translate_c('daughter\'s child', 'grandchild');
 	case 'sondau': return i18n::translate_c('son\'s daughter', 'granddaughter');
-	case 'sonfat': return i18n::translate_c('son\'s son', 'grandson');
+	case 'sonson': return i18n::translate_c('son\'s son', 'grandson');
 	case 'sonchi': return i18n::translate_c('son\'s child', 'grandchild');
 	case 'chidau': return i18n::translate_c('child\'s daughter', 'granddaughter');
 	case 'chison': return i18n::translate_c('child\'s son', 'grandson');
