@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_MEDIA_TAB_HEAD_PHP', '');
 
-global $LB_AL_HEAD_LINKS, $gedrec;
+global $LB_AL_HEAD_LINKS, $gedrec, $pid;
 
 require_once WT_ROOT.'js/prototype.js.htm';
 require_once WT_ROOT.'js/scriptaculous.js.htm';
