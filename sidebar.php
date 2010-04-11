@@ -87,7 +87,6 @@ if (isset($controller)) {
 }
 ?>
 <style type="text/css">
-<!-- 
 <?php 
 //-- standard theme styles
 if ($TEXT_DIRECTION=='ltr') { ?>
@@ -125,9 +124,6 @@ else {  ?>
 }
 */
 <?php } ?>
-
-
-// -->
 </style>
 <script type="text/javascript" src="js/jquery/jquery.scrollfollow.js"></script> 
 <script type="text/javascript">
