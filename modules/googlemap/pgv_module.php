@@ -58,12 +58,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
-		$out = '';
 		ob_start();
 		setup_map();
-		$out.=ob_get_contents();
-		ob_end_clean();
-		return $out;
+		return ob_get_clean();
 	}
 
 	// Implement WT_Module_Tab

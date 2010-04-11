@@ -81,12 +81,11 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
-		$out = 'if (selectedTab=="all_tab") {
-		';
+		$out = 'if (selectedTab=="'.$this->getName().'") {';
 		$i = 0;
 		foreach($this->controller->modules as $mod) {
 			if ($mod instanceof WT_Module_Tab) {
-				if ($i>0 && $mod->getName()!='all_tab' && $mod->canLoadAjax()) {
+				if ($i>0 && $mod->getName()!=$this->getName() && $mod->canLoadAjax()) {
 					$out .= 'if (!tabCache["'.$mod->getName().'"]) {
 						jQuery("#'.$mod->getName().'").load("individual.php?action=ajax&module='.$mod->getName().'&pid='.$this->controller->pid.'");
 						tabCache["'.$mod->getName().'"] = true;

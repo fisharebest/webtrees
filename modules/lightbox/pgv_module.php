@@ -105,12 +105,9 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
-		$out = '';
 		ob_start();
-		include_once('modules/lightbox/functions/lb_call_js.php');
-		$out .= ob_get_contents();
-		ob_end_clean();
-		return $out; 
+		require_once WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
+		return ob_get_clean(); 
 	}
 	
 	// Implement WT_Module_Tab
