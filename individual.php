@@ -111,33 +111,23 @@ jQuery(document).ready(function(){
 	// TODO: change images directory when the common images will be deleted.
 	// jQuery('#tabs').tabs({ spinner: '<img src=\"<?php echo $WT_IMAGE_DIR; ?>/loading.gif\" height=\"18\" border=\"0\" />' });
 	jQuery('#tabs').tabs({ spinner: '<img src=\"images/loading.gif\" height=\"18\" border=\"0\" alt=\"\" />' });
-	jQuery("#tabs").tabs({ cache: true, selected: <?php echo $controller->default_tab?> });
+	jQuery("#tabs").tabs({ cache: true });
 	var $tabs = jQuery('#tabs');
 	jQuery('#tabs').bind('tabsshow', function(event, ui) {
 		selectedTab = ui.tab.name;
 		tabCache[selectedTab] = true;
 
 	<?php
-	foreach ($controller->modules as $mod) {
-		if ($mod instanceof WT_Module_Tab) {
-			echo $mod->getJSCallbackAllTabs()."\n";
-			$modjs = $mod->getJSCallback();
-			if (!empty($modjs)) {
-				echo 'if (ui.tab.name == "'.$mod->getName().'") { '.$modjs.' }';
-			}
-		}
+	foreach ($controller->tabs as $tab) {
+		echo $tab->getJSCallbackAllTabs()."\n";
+		echo 'if (ui.tab.name == "'.$tab->getName().'") { '.$tab->getJSCallback().' }';
 	}
 	?>
 	});
 	<?php 
-	$tabcount = 0;
-	foreach($controller->modules as $mod) {
-		if ($mod instanceof WT_Module_Tab) {
-			if ($tabcount==$controller->default_tab || !$mod->canLoadAjax()) {
-				$modjs = $mod->getJSCallback();
-				echo $modjs."\n";
-			}
-			if ($mod->hasTabContent()) $tabcount++; 
+	foreach ($controller->tabs as $tab) {
+		if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
+			echo $tab->getJSCallback();
 		}
 	}
 	?>
@@ -255,10 +245,8 @@ jQuery(document).ready(function(){
 
 ?>
 <?php
-foreach($controller->modules as $mod) {
-	if ($mod instanceof WT_Module_Tab) {
-		echo $mod->getPreLoadContent();
-	}
+foreach ($controller->tabs as $tab) {
+	echo $tab->getPreLoadContent();
 } 
 ?>
 <?php 
@@ -272,36 +260,31 @@ if (!$controller->indi->canDisplayDetails()) {
 	print_privacy_error($CONTACT_EMAIL);
 	print "</td></tr></table>";
 } else {
-	?>
-	<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-	<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-		<?php
-		$tabcount = 0; 
-		foreach($controller->modules as $mod) {
-			if ($mod instanceof WT_Module_Tab) {
-				if ($tabcount==$controller->default_tab || !$mod->canLoadAjax()) {?>
-					<li class="ui-state-default ui-corner-top"><a name="<?php echo $mod->getName(); ?>" href="#<?php echo $mod->getName()?>"><span><?php echo $mod->getTitle(); ?></span></a></li>
-				<?php } else if ($mod instanceof WT_Module_Tab && ($mod->hasTabContent() || WT_USER_CAN_EDIT)) { ?>
-					<li class="ui-state-default ui-corner-top"><a name="<?php echo $mod->getName(); ?>" href="individual.php?action=ajax&amp;module=<?php echo $mod->getName()?>&amp;pid=<?php echo $controller->pid?>">
-						<span><?php echo $mod->getTitle()?></span>
-						</a></li>
-				<?php } 
-				if ($mod->hasTabContent()) $tabcount++; 
-			}
+	echo '<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
+	echo '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
+	foreach ($controller->tabs as $tab) {
+		if ($tab->hasTabContent()) {
+			if ($tab->getName()==$controller->default_tab) {
+				// Default tab loads immediately
+				echo '<li class="ui-state-default ui-corner-top ui-tabs-selected"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+			} elseif ($tab->canLoadAjax()) {
+				// AJAX tabs load later
+				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="individual.php?action=ajax&amp;module=', $tab->getName(), '&amp;pid=', $controller->pid, '">';
+			} else {
+				// Non-AJAX tabs load immediately (search engines don't load ajax)
+				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+			} 
+			echo '<span>', $tab->getTitle(), '</span></a></li>';
 		}
-			?>
-	</ul>
-
-	<?php 
-	$tabcount = 0; 
-	foreach($controller->modules as $mod) {
-		if ($mod instanceof WT_Module_Tab) {
-		if ($tabcount==$controller->default_tab || !$mod->canLoadAjax()) {?>
-		<div id="<?php echo $mod->getName()?>" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
-			<?php echo $mod->getTabContent(); ?>
-		</div>	
-		<?php }
-		if ($mod->hasTabContent() || WT_USER_CAN_EDIT) $tabcount++;
+	}
+	echo '</ul>';
+	foreach ($controller->tabs as $tab) {
+		if ($tab->hasTabContent()) {
+			if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
+				echo '<div id="', $tab->getName(), '" class="ui-tabs-panel ui-widget-content ui-corner-bottom">';
+				echo $tab->getTabContent();
+				echo '</div>';
+			}
 		}
 	} ?>
 	</div> <!-- tabs -->

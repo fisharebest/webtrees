@@ -84,7 +84,7 @@ class IndividualControllerRoot extends BaseController {
 	var $total_names = 0;
 	var $SEX_COUNT = 0;
 	var $sexarray = array();
-	var $modules = array();
+	var $tabs;
 	var $Fam_Navigator = 'YES';
 	var $NAME_LINENUM = 1;
 	var $SEX_LINENUM = null;
@@ -251,19 +251,17 @@ class IndividualControllerRoot extends BaseController {
 			}
 */
 		}
-		
-		$this->modules = WT_Module::getActiveTabs();
-		$count = 0;
-		if (empty($this->default_tab)) $this->default_tab=0;
-		foreach($this->modules as $mod) {
+
+		// Initialise tabs
+		$this->tabs = WT_Module::getActiveTabs();
+		foreach($this->tabs as $mod) {
 			$mod->setController($this);
-			if ($mod->hasTabContent() || WT_USER_CAN_EDIT) {		
-				//-- convert default tab as name to number
-				if ($mod->getName()===$this->default_tab) $this->default_tab = $count;
-				else $count++;
+			if ($mod->hasTabContent()) {		
+				if (empty($this->default_tab)) {
+					$this->default_tab=$mod->getName();
+				}
 			}
 		}
-		if ($this->default_tab<0 || $this->default_tab > count($this->modules)-1) $this->default_tab=0;
 		
 		if (!isset($_SESSION['WT_pin']) && $DEFAULT_PIN_STATE)
 			 $_SESSION['WT_pin'] = true;
@@ -274,7 +272,7 @@ class IndividualControllerRoot extends BaseController {
 			if (isset($_REQUEST['module'])) {
 				$tabname = $_REQUEST['module'];
 				header("Content-Type: text/html; charset=UTF-8"); //AJAX calls do not have the meta tag headers and need this set
-				$mod = $this->modules[$tabname];
+				$mod = $this->tabs[$tabname];
 				if ($mod) {
 					echo $mod->getTabContent();
 					// Allow the other tabs to modify this one - e.g. lightbox does this.

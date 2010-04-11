@@ -225,6 +225,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 */
 
 		//Popup Reorder Media ( If media exists and is greater than 1 item ) -----
+		global $tot_med_ct;
 		if (WT_USER_CAN_EDIT && $tot_med_ct>1) {
 			if ($LB_AL_HEAD_LINKS == "both") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";

@@ -138,7 +138,8 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
-		return true;
+		// Don't load this tab using AJAX, otherwise search engines won't see it
+		return false;
 	}
 
 	// Implement WT_Module_Tab
