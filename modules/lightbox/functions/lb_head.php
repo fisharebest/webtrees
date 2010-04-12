@@ -194,8 +194,8 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			}
         }
 /*
-		//Album Reorder Media  ( If media exists and is greater than 1 item ) -----
-		if (WT_USER_CAN_EDIT && $tot_med_ct>1) {
+		// Album Reorder Media -----
+		if (WT_USER_CAN_EDIT) {
 			if ($LB_AL_HEAD_LINKS == "both") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
 				print "<a href=\"".encode_url(WT_SCRIPT_NAME."?pid={$pid}&tab={$tabno}&reorder=1")."\">" ;
@@ -224,9 +224,8 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 		}
 */
 
-		//Popup Reorder Media ( If media exists and is greater than 1 item ) -----
-		global $tot_med_ct;
-		if (WT_USER_CAN_EDIT && $tot_med_ct>1) {
+		// Popup Reorder Media -----
+		if (WT_USER_CAN_EDIT ) {
 			if ($LB_AL_HEAD_LINKS == "both") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
 				print "<a href=\"javascript: reorder_media()\">" ;
