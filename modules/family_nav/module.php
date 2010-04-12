@@ -773,20 +773,28 @@ function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0,
 								}
 							}
 						}
-						$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">\n";
+						
 						// Children ------------------------------   @var $child Person
+						$hasChildren = 'No';
 						foreach($children as $c=>$child) {
 							if ($child) {
+								if ($hasChildren == 'No') {
+									$hasChildren = 'Yes';
+									$spouselinks .= "\n<ul class=\"clist ".$TEXT_DIRECTION."\">";
+								}
 								$persons="Yes";
-									$title = i18n::translate('Individual Information').": ".$child->getXref();
-									$spouselinks .= "<li id=\"flyout3\">";
-									$spouselinks .= "<a href=\"".encode_url($child->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($child->getLinkUrl())."');\">";
-									$spouselinks .= PrintReady($child->getFullName());
-									$spouselinks .= "</a>";
-									$spouselinks .= "</li>\n";
+								$title = i18n::translate('Individual Information').": ".$child->getXref();
+								$spouselinks .= "\n<li id=\"flyout3\">";
+								$spouselinks .= "<a href=\"".encode_url($child->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($child->getLinkUrl())."');\">";
+								$spouselinks .= PrintReady($child->getFullName());
+								$spouselinks .= "</a>";
 							}
 						}
-						$spouselinks .= "</ul>";
+						if ($hasChildren == 'Yes') {
+							$spouselinks .= "\n</ul>";
+						} else {
+							$spouselinks .= '<br />';
+						}
 					}
 				}
 				
