@@ -28,7 +28,7 @@
  * @subpackage Census Assistant
  * @version $Id$
  */
-require_once './config.php';
+
 require_once WT_ROOT.'includes/controllers/individual_ctrl.php'; 
 $controller = new IndividualController(); 
 $controller->init(); 
