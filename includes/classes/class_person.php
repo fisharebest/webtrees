@@ -599,8 +599,9 @@ class Person extends GedcomRecord {
 	// Get a count of the children for this individual
 	function getNumberOfChildren() {
 		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->gedrec);
-		$nchi2=count(fetch_child_ids($this->xref, $this->ged_id));
-		return max($nchi1, $nchi2);
+		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->gedrec);
+		$nchi3=count(fetch_child_ids($this->xref, $this->ged_id));
+		return max($nchi1, $nchi2, $nchi3);
 	}
 	/**
 	* get family with child ids
@@ -1124,8 +1125,15 @@ class Person extends GedcomRecord {
 				// nephew/niece
 				if ($option=='_NEPH') {
 					$rela='sibchi';
-					if ($sex=='F') $rela='sibdau';
-					if ($sex=='M') $rela='sibson';
+					$parent_sex = Person::getInstance($except)->getSex();
+					if ($sex=='F') {		   $rela='sibdau';
+						if ($parent_sex=='F'){ $rela='sisdau';  $op='_NIE1';}
+						if ($parent_sex=='M'){ $rela='brodau';  $op='_NIE2';}
+					}
+					if ($sex=='M') {		   $rela='sibson';
+						if ($parent_sex=='F'){ $rela='sisson';  $op='_NEP1';}
+						if ($parent_sex=='M'){ $rela='broson';  $op='_NEP2';}
+					}
 				}
 				// add child birth
 				if (strstr($SHOW_RELATIVES_EVENTS, '_BIRT'.$option)) {
@@ -1135,7 +1143,8 @@ class Person extends GedcomRecord {
 						$srec = $sEvent->getGedcomRecord();
 						$sgdate=$sEvent->getDate();
 						if ($option=='_CHIL' || $sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-							$factrec='1 _'.$sEvent->getTag().$option;
+							if (isset($op)) $factrec='1 _'.$sEvent->getTag().$op;
+							else $factrec='1 _'.$sEvent->getTag().$option;
 							$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
 							if (!$sEvent->canShow()) {
 								$factrec.='\n2 RESN privacy';
@@ -1208,7 +1217,7 @@ class Person extends GedcomRecord {
 				// add children of siblings = nephew/niece
 				if ($option=='_SIBL') {
 					foreach ($child->getSpouseFamilies() as $sfamid=>$sfamily) {
-						$this->add_children_facts($sfamily, '_NEPH');
+						$this->add_children_facts($sfamily, '_NEPH', $child->getXref());
 					}
 				}
 				// add children of uncle/aunt = firstcousins
