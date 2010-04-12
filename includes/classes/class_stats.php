@@ -981,13 +981,13 @@ class stats {
 		if ($fact) {
 			if ($what=='INDI') {
 				$rows=
-					WT_DB::prepare("SELECT i_gedcom AS ged FROM ${TBLPREFIX}individuals WHERE i_file=?")
+					WT_DB::prepare("SELECT i_gedcom AS ged FROM {$TBLPREFIX}individuals WHERE i_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
 			else if ($what=='FAM') {
 				$rows=
-					WT_DB::prepare("SELECT f_gedcom AS ged FROM ${TBLPREFIX}families WHERE f_file=?")
+					WT_DB::prepare("SELECT f_gedcom AS ged FROM {$TBLPREFIX}families WHERE f_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
@@ -2780,7 +2780,7 @@ class stats {
 	function totalMarriedMales() {
 		global $TBLPREFIX;
 
-		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM ${TBLPREFIX}families WHERE f_file=?")
+		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM {$TBLPREFIX}families WHERE f_file=?")
 				->execute(array($this->_ged_id))
 				->fetchAll();
 		$husb = array();
@@ -2796,7 +2796,7 @@ class stats {
 	function totalMarriedFemales() {
 		global $TBLPREFIX;
 
-		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_wife AS wife FROM ${TBLPREFIX}families WHERE f_file=?")
+		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_wife AS wife FROM {$TBLPREFIX}families WHERE f_file=?")
 				->execute(array($this->_ged_id))
 				->fetchAll();
 		$wife = array();

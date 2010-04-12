@@ -198,11 +198,11 @@ if ($action=="ImportGedcom") {
 	$j=0;
 	if ($mode=="all") {
 		$statement=
-			WT_DB::prepare("SELECT i_gedcom FROM ${TBLPREFIX}individuals UNION ALL SELECT f_gedcom FROM ${TBLPREFIX}families")
+			WT_DB::prepare("SELECT i_gedcom FROM {$TBLPREFIX}individuals UNION ALL SELECT f_gedcom FROM {$TBLPREFIX}families")
 			->execute();
 	} else {
 		$statement=
-			WT_DB::prepare("SELECT i_gedcom FROM ${TBLPREFIX}individuals WHERE i_file=? UNION ALL SELECT f_gedcom FROM ${TBLPREFIX}families WHERE f_file=?")
+			WT_DB::prepare("SELECT i_gedcom FROM {$TBLPREFIX}individuals WHERE i_file=? UNION ALL SELECT f_gedcom FROM {$TBLPREFIX}families WHERE f_file=?")
 			->execute(array(WT_GED_ID, WT_GED_ID));
 	}
 	while ($gedrec=$statement->fetchColumn()) {

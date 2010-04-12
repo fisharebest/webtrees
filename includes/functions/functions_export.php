@@ -137,14 +137,14 @@ function gedcom_header($gedfile) {
 		}
 		// Link to SUBM/SUBN records, if they exist
 		$subn=
-			WT_DB::prepare("SELECT o_id FROM ${TBLPREFIX}other WHERE o_type=? AND o_file=?")
+			WT_DB::prepare("SELECT o_id FROM {$TBLPREFIX}other WHERE o_type=? AND o_file=?")
 			->execute(array('SUBN', $ged_id))
 			->fetchOne();
 		if ($subn) {
 			$SUBN="\n1 SUBN @{$subn}@";
 		}
 		$subm=
-			WT_DB::prepare("SELECT o_id FROM ${TBLPREFIX}other WHERE o_type=? AND o_file=?")
+			WT_DB::prepare("SELECT o_id FROM {$TBLPREFIX}other WHERE o_type=? AND o_file=?")
 			->execute(array('SUBM', $ged_id))
 			->fetchOne();
 		if ($subm) {
