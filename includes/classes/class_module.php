@@ -98,7 +98,7 @@ abstract class WT_Module {
 				// Module has been deleted from disk?  Remove it from the database.
 				AddToLog("Module {$module_name} has been deleted from disk - deleting from database");
 				WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=?")->execute(array($module_name));
-				WT_DB::prepare("DELETE FROM {$TBLPREFIX}moduley WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM {$TBLPREFIX}module WHERE module_name=?")->execute(array($module_name));
 			}
 		}
 		return $array;
