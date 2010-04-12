@@ -1074,10 +1074,14 @@ function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 // ************************************************* START OF MULTIMEDIA FUNCTIONS ********************************* //
 /**
  * find the highlighted media object for a gedcom entity
- *
- * Rules for finding the highlighted media object:
- * 1. The first _PRIM Y object will be used regardless of level in gedcom record
- * 2. The first level 1 object will be used if there if it doesn't have _PRIM N (level 1 objects appear on the media tab on the individual page)
+ * 1. Ignore all media objects that are not displayable because of Privacy rules
+ * 2. Ignore all media objects with the Highlight option set to "N"
+ * 3. Pick the first media object that matches these criteria, in order of preference:
+ *    (a) Level 1 object with the Highlight option set to "Y"
+ *    (b) Level 1 object with the Highlight option missing or set to other than "Y" or "N"
+ *    (c) Level 2 or higher object with the Highlight option set to "Y"
+ *    (d) Level 2 or higher object with the Highlight option missing or set to other than "Y" or "N"
+ * Criterion (d) will be present in the code but will be commented out for now.
  *
  * @param string $pid the individual, source, or family id
  * @param string $indirec the gedcom record to look in
@@ -1089,8 +1093,11 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 	if (!showFactDetails("OBJE", $pid)) {
 		return false;
 	}
-	$object = array();
 	$media = array();
+	$objectA = array();
+	$objectB = array();
+	$objectC = array();
+	$objectD = array();
 
 	//-- handle finding the media of remote objects
 	$ct = preg_match("/(.*):(.*)/", $pid, $match);
@@ -1131,29 +1138,56 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 				$thum = get_gedcom_value('_THUM', 1, $row[2]);
 				$prim = get_gedcom_value('_PRIM', 1, $row[2]);
 			}
+
 			if ($prim=='N') continue;		// Skip _PRIM N objects
-			if ($prim=='Y') {
-				// Take the first _PRIM Y object
-				$object["file"] = check_media_depth($row[1]);
-				$object["thumb"] = thumbnail_file($row[1], true, false, $pid);
-//				$object["_PRIM"] = $prim;	// Not sure whether this is needed.
-				$object["_THUM"] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
-				$object["level"] = $level;
-				$object["mid"] = $row[0];
-				break;		// Stop looking: we found a suitable image
-			}
-			if ($level==1 && empty($object)) {
-				// Take the first level 1 object, but keep looking for an overriding _PRIM Y
-				$object["file"] = check_media_depth($row[1]);
-				$object["thumb"] = thumbnail_file($row[1], true, false, $pid);
-//				$object["_PRIM"] = $prim;	// Not sure whether this is needed.
-				$object["_THUM"] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
-				$object["level"] = $level;
-				$object["mid"] = $row[0];
+			$file = check_media_depth($row[1]);
+			$thumb = thumbnail_file($row[1], true, false, $pid);
+			if ($level == 1) {
+				if ($prim == 'Y') {
+					if (empty($objectA)) {
+						$objectA['file'] = $file;
+						$objectA['thumb'] = $thumb;
+						$objectA['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
+						$objectA['level'] = $level;
+						$objectA['mid'] = $row[0];
+					}
+				} else {
+					if (empty($objectB)) {
+						$objectB['file'] = $file;
+						$objectB['thumb'] = $thumb;
+						$objectB['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
+						$objectB['level'] = $level;
+						$objectB['mid'] = $row[0];
+					}
+				}
+			} else {
+				if ($prim == 'Y') {
+					if (empty($objectC)) {
+						$objectC['file'] = $file;
+						$objectC['thumb'] = $thumb;
+						$objectC['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
+						$objectC['level'] = $level;
+						$objectC['mid'] = $row[0];
+					}
+				} else {
+					if (empty($objectD)) {
+						$objectD['file'] = $file;
+						$objectD['thumb'] = $thumb;
+						$objectD['_THUM'] = $thum;	// This overrides GEDCOM's "Use main image as thumbnail" option
+						$objectD['level'] = $level;
+						$objectD['mid'] = $row[0];
+					}
+				}
 			}
 		}
 	}
-	return $object;
+
+	if (!empty($objectA)) return $objectA;
+	if (!empty($objectB)) return $objectB;
+	if (!empty($objectC)) return $objectC;
+//	if (!empty($objectD)) return $objectD;
+
+	return array();
 }
 
 /**
