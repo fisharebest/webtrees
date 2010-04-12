@@ -119,16 +119,16 @@ if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	 	echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR), '</p>';
 		$error=true;
 	} elseif (!is_writable(WT_DATA_DIR)) {
-		echo '<p class="good">', i18n::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_DATA_DIR), '</p>';
+		echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_DATA_DIR), '</p>';
 		$error=true;
 	} else {
 		echo '<p class="good">', i18n::translate('The directory <b>%s</b> has read-write permission.  Good.', WT_DATA_DIR), '</p>';
 	}
-	if (!is_readable(WT_MEDIA_DIR)) {
-	 	echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_MEDIA_DIR), '</p>';
+	if (!is_writable(WT_MEDIA_DIR)) {
+		echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_MEDIA_DIR), '</p>';
 		$error=true;
-	} elseif (!is_writable(WT_MEDIA_DIR)) {
-		echo '<p class="good">', i18n::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_MEDIA_DIR), '</p>';
+	} elseif (!is_readable(WT_MEDIA_DIR)) {
+	 	echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_MEDIA_DIR), '</p>';
 		$error=true;
 	} else {
 		echo '<p class="good">', i18n::translate('The directory <b>%s</b> has read-write permission.  Good.', WT_MEDIA_DIR), '</p>';
@@ -140,7 +140,7 @@ if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 		echo '<p class="indifferent">', i18n::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
 		$warning=true;
 	} else {
-		echo '<p class="good">', i18n::translate('The file <b>%s</b> has read-only permission.  Good.', WT_MEDIA_DIR), '</p>';
+		echo '<p class="good">', i18n::translate('The file <b>%s</b> has read-only permission.  Good.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
 	}
 	if ($error || $warning) {
 		echo '<p><a href="setup.php"><button>', i18n::translate('Test the permissions again'), '</button></a></p>';
