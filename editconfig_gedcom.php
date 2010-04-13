@@ -1939,12 +1939,12 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 		<td class="optionbox"><select name="NEW_SURNAME_TRADITION" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SURNAME_TRADITION');">
 			<?php
 				foreach (array(
-					'paternal'=>i18n::translate('Paternal'),
-					'spanish'=>i18n::translate('Spanish'),
-					'portuguese'=>i18n::translate('Portuguese'),
-					'icelandic'=>i18n::translate('Icelandic'),
-					'polish'=>i18n::translate('Polish'),
-					'none'=>i18n::translate('None')
+					'paternal'=>i18n::translate_c('Surname tradition', 'Paternal'),
+					'spanish'=>i18n::translate_c('Surname tradition', 'Spanish'),
+					'portuguese'=>i18n::translate_c('Surname tradition', 'Portuguese'),
+					'icelandic'=>i18n::translate_c('Surname tradition', 'Icelandic'),
+					'polish'=>i18n::translate_c('Surname tradition', 'Polish'),
+					'none'=>i18n::translate_c('Surname tradition', 'None')
 				) as $value=>$desc) {
 					print '<option value="'.$value.'"';
 					if ($SURNAME_TRADITION==$value) print ' selected="selected"';
