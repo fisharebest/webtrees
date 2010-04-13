@@ -575,7 +575,7 @@ try {
 		" setting_name  VARCHAR(32)      NOT NULL,".
 		" setting_value VARCHAR(255)     NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) ON DELETE CASCADE".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -596,7 +596,7 @@ try {
 		" setting_name  VARCHAR(32)      NOT NULL,".
 		" setting_value VARCHAR(255)     NOT NULL,".
 		" PRIMARY KEY     (user_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id) ON DELETE CASCADE".
+		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -606,8 +606,8 @@ try {
 		" setting_name  VARCHAR(32)      NOT NULL,".
 		" setting_value VARCHAR(255)     NOT NULL,".
 		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id) ON DELETE CASCADE,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) ON DELETE CASCADE".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id),".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -641,7 +641,7 @@ try {
 		" b_id       INTEGER AUTO_INCREMENT NOT NULL,".
 		" b_username VARCHAR(100)     NULL,".
 		" b_location VARCHAR(30)      NULL,".
-	 	" b_order    INTEGER             NULL,".
+	 	" b_order    INTEGER          NULL,".
 		" b_name     VARCHAR(255)     NULL,".
 		" b_config   TEXT             NULL,".
 		" PRIMARY KEY (b_id),".
@@ -864,8 +864,8 @@ try {
 		" component     ENUM('menu', 'sidebar', 'tab') NOT NULL,".
 		" access_level  TINYINT                        NOT NULL,".
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) ON DELETE CASCADE,".
-		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  ) ON DELETE CASCADE".
+		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name),".
+		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  )".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
