@@ -31,7 +31,6 @@
  */
 
 require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
-loadlangfile('pgv_admin');		// we need some definitions from this file, even when not logged in as admin
 
 $controller = new ClippingsController();
 $controller->init();
