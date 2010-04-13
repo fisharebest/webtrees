@@ -57,8 +57,6 @@ else if (!$controller->indi->canDisplayName()) {
 }
 $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 
-//$last_clicked=safe_get('tab');
-
 ?>
 
 <script language="JavaScript" type="text/javascript">
@@ -264,6 +262,8 @@ if (!$controller->indi->canDisplayDetails()) {
 	echo '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
 	foreach ($controller->tabs as $tab) {
 		if ($tab->hasTabContent()) {
+			// jQuery UI uses the title attribute to link named tabs to content-divs.
+			// Unfortunately, this shows in a tool-tip.  How to improve this?
 			if ($tab->getName()==$controller->default_tab) {
 				// Default tab loads immediately
 				echo '<li class="ui-state-default ui-corner-top ui-tabs-selected"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
