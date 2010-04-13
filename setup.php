@@ -571,9 +571,9 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}gedcom_setting (".
-		" gedcom_id     INTEGER NOT NULL,".
-		" setting_name  VARCHAR(32)      NOT NULL,".
-		" setting_value VARCHAR(255)     NOT NULL,".
+		" gedcom_id     INTEGER      NOT NULL,".
+		" setting_name  VARCHAR(32)  NOT NULL,".
+		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, setting_name),".
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -592,19 +592,19 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user_setting (".
-		" user_id       INTEGER NOT NULL,".
-		" setting_name  VARCHAR(32)      NOT NULL,".
-		" setting_value VARCHAR(255)     NOT NULL,".
+		" user_id       INTEGER      NOT NULL,".
+		" setting_name  VARCHAR(32)  NOT NULL,".
+		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, setting_name),".
 		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user_gedcom_setting (".
-		" user_id       INTEGER NOT NULL,".
-		" gedcom_id     INTEGER NOT NULL,".
-		" setting_name  VARCHAR(32)      NOT NULL,".
-		" setting_value VARCHAR(255)     NOT NULL,".
+		" user_id       INTEGER      NOT NULL,".
+		" gedcom_id     INTEGER      NOT NULL,".
+		" setting_name  VARCHAR(32)  NOT NULL,".
+		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
 		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id),".
 		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)".
@@ -613,11 +613,11 @@ try {
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}messages (".
 		" m_id      INTEGER AUTO_INCREMENT NOT NULL,".
-		" m_from    VARCHAR(255)     NOT NULL,".
-		" m_to      VARCHAR(32)      NOT NULL,". // TODO: user_id
-		" m_subject VARCHAR(255)     NOT NULL,".
-		" m_body    TEXT             NOT NULL,".
-		" m_created VARCHAR(255)     NOT NULL,". // TODO: timestamp
+		" m_from    VARCHAR(255)           NOT NULL,".
+		" m_to      VARCHAR(32)            NOT NULL,". // TODO: user_id
+		" m_subject VARCHAR(255)           NOT NULL,".
+		" m_body    TEXT                   NOT NULL,".
+		" m_created VARCHAR(255)           NOT NULL,". // TODO: timestamp
 		" PRIMARY KEY     (m_id),".
 		"         KEY ix1 (m_to)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -625,8 +625,8 @@ try {
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}favorites (".
 		" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
-	 	" fv_username VARCHAR(32)                NULL,". // TODO user_id, ged_id
-		" fv_gid      VARCHAR(20)            NOT NULL,".
+	 	" fv_username VARCHAR(32)            NOT NULL,". // TODO user_id, ged_id
+		" fv_gid      VARCHAR(20)                NULL,".
 		" fv_type     VARCHAR(15)                NULL,".
 		" fv_file     VARCHAR(100)               NULL,".
 		" fv_url      VARCHAR(255)               NULL,".
@@ -639,11 +639,11 @@ try {
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}blocks (".
 		" b_id       INTEGER AUTO_INCREMENT NOT NULL,".
-		" b_username VARCHAR(100)     NULL,".
-		" b_location VARCHAR(30)      NULL,".
-	 	" b_order    INTEGER          NULL,".
-		" b_name     VARCHAR(255)     NULL,".
-		" b_config   TEXT             NULL,".
+		" b_username VARCHAR(100)           NOT NULL,".
+		" b_location VARCHAR(30)            NOT NULL,".
+	 	" b_order    INTEGER                NOT NULL,".
+		" b_name     VARCHAR(255)           NOT NULL,".
+		" b_config   TEXT                   NOT NULL,".
 		" PRIMARY KEY (b_id),".
 		"         KEY ix1 (b_username)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -651,10 +651,10 @@ try {
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}news (".
 		" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
-		" n_username VARCHAR(100)     NULL,".
-		" n_date     INTEGER             NULL,".
-		" n_title    VARCHAR(255)     NULL,".
-		" n_text     TEXT             NULL,".
+		" n_username VARCHAR(100)           NOT NULL,".
+		" n_date     INTEGER                NOT NULL,".
+		" n_title    VARCHAR(255)           NOT NULL,".
+		" n_text     TEXT                   NOT NULL,".
 		" PRIMARY KEY     (n_id),".
 		"         KEY ix1 (n_username)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -662,9 +662,9 @@ try {
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}mutex (".
 		" mx_id     INTEGER AUTO_INCREMENT NOT NULL,".
-		" mx_name   VARCHAR(255)     NULL,".
-	 	" mx_thread VARCHAR(255)     NULL,".
-		" mx_time   INTEGER             NULL,".
+		" mx_name   VARCHAR(255)               NULL,".
+	 	" mx_thread VARCHAR(255)               NULL,".
+		" mx_time   INTEGER                    NULL,".
 		" PRIMARY KEY     (mx_id),".
 		"         KEY ix1 (mx_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -678,7 +678,7 @@ try {
 		" i_sex    ENUM('U', 'M', 'F') NOT NULL,".
 		" i_gedcom LONGTEXT            NOT NULL,".
 		" PRIMARY KEY     (i_id, i_file),".
-		"         KEY ix1 (i_file)".
+		" UNIQUE  KEY ux1 (i_file, i_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -691,9 +691,9 @@ try {
 		" f_gedcom  LONGTEXT     NOT NULL,".
 		" f_numchil INTEGER      NOT NULL,".
 		" PRIMARY KEY     (f_id, f_file),".
-		"         KEY ix1 (f_file),".
-		"         KEY ix2 (f_husb),".
-		"         KEY ix3 (f_wife)".
+		" UNIQUE  KEY ux1 (f_file, f_id),".
+		"         KEY ix1 (f_husb),".
+		"         KEY ix2 (f_wife)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -762,9 +762,9 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}remotelinks (".
-		" r_gid    VARCHAR(20)          NOT NULL,".
+		" r_gid    VARCHAR(20)  NOT NULL,".
 		" r_linkid VARCHAR(255)     NULL,".
-		" r_file   INTEGER          NOT NULL,".
+		" r_file   INTEGER      NOT NULL,".
 		" KEY ix1 (r_gid),".
 		" KEY ix2 (r_linkid),".
 		" KEY ix3 (r_file)".
@@ -773,11 +773,11 @@ try {
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}media_mapping (".
 		" mm_id      INTEGER     NOT NULL,".
-		" mm_media   VARCHAR(20)      NOT NULL,".
-		" mm_gid     VARCHAR(20)      NOT NULL,".
+		" mm_media   VARCHAR(20) NOT NULL,".
+		" mm_gid     VARCHAR(20) NOT NULL,".
 		" mm_order   INTEGER     NOT NULL DEFAULT '0',".
-		" mm_gedfile INTEGER      NOT NULL,".
-		" mm_gedrec  LONGTEXT                 NOT NULL,".
+		" mm_gedfile INTEGER     NOT NULL,".
+		" mm_gedrec  LONGTEXT    NOT NULL,".
 		" PRIMARY KEY (mm_id),".
 		"         KEY ix1 (mm_media, mm_gedfile),".
 		"         KEY ix2 (mm_gid, mm_gedfile),".
@@ -786,33 +786,33 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}nextid (".
-		" ni_id      INTEGER NOT NULL,". // TODO: use auto-increment columns
-		" ni_type    VARCHAR(15)   NOT NULL,".
-		" ni_gedfile INTEGER  NOT NULL,".
+		" ni_id      INTEGER     NOT NULL,". // TODO: use auto-increment columns
+		" ni_type    VARCHAR(15) NOT NULL,".
+		" ni_gedfile INTEGER     NOT NULL,".
 		" PRIMARY KEY (ni_type, ni_gedfile)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}other (".
-		" o_id     VARCHAR(20)  NOT NULL,".
-		" o_file   INTEGER      NOT NULL,".
-		" o_type   VARCHAR(15)  NOT NULL,".
-		" o_gedcom LONGTEXT         NULL,".
-		" PRIMARY KEY (o_id, o_file),".
-		"         KEY ix1 (o_file)".
+		" o_id     VARCHAR(20) NOT NULL,".
+		" o_file   INTEGER     NOT NULL,".
+		" o_type   VARCHAR(15) NOT NULL,".
+		" o_gedcom LONGTEXT        NULL,".
+		" PRIMARY KEY     (o_id, o_file),".
+		" UNIQUE  KEY ux1 (o_file, o_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}sources (".
-		" s_id     VARCHAR(20)      NOT NULL,".
-		" s_file   INTEGER          NOT NULL,".
-		" s_name   VARCHAR(255)     NOT NULL,".
-		" s_gedcom LONGTEXT         NOT NULL,".
-		" s_dbid   ENUM('N', 'Y')       NULL,".
-		" PRIMARY KEY (s_id, s_file),".
+		" s_id     VARCHAR(20)    NOT NULL,".
+		" s_file   INTEGER        NOT NULL,".
+		" s_name   VARCHAR(255)   NOT NULL,".
+		" s_gedcom LONGTEXT       NOT NULL,".
+		" s_dbid   ENUM('N', 'Y')     NULL,".
+		" PRIMARY KEY     (s_id, s_file),".
+		" UNIQUE  KEY ux1 (s_file, s_id),".
 		"         KEY ix1 (s_name),".
-		"         KEY ix2 (s_file),".
-		"         KEY ix3 (s_dbid)".
+		"         KEY ix2 (s_dbid)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
