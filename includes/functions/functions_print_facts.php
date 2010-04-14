@@ -129,14 +129,6 @@ function print_fact(&$eventObj, $noedit=false) {
 	// Assume that all recognised tags are translated.
 	// -- handle generic facts
 	if ($fact!="EVEN" && $fact!="FACT" && $fact!="OBJE") {
-		if ($fact=="_AKAN" || $fact=="_AKA" || $fact=="ALIA" || $fact == "_INTE") {
-			// Allow special processing for different languages
-			$func="fact_AKA_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise the AKA or _INTE facts
-				$func($fact, $pid);
-			}
-		}
 		if ($fact=="_NMR") {
 			// Allow special processing for different languages
 			$func="fact_NMR_localisation_".WT_LOCALE;
