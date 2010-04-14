@@ -243,17 +243,6 @@ class i18n {
 		}
 	}
 
-	// Provide a (one letter) abbreviation of a fact name for charts, etc.
-	static public function fact_abbreviation($fact) {
-		$abbrev='ABBREV_'.$fact;
-		if (i18n::is_translated($abbrev)) {
-			return i18n::translate($abbrev);
-		} else {
-			// Just use the first letter of the full fact
-			return utf8_substr(i18n::translate($fact), 0, 1);
-		}
-	}
-
 	// Convert a GEDCOM age string into translated_text
 	// NB: The import function will have normalised this, so we don't need
 	// to worry about badly formatted strings

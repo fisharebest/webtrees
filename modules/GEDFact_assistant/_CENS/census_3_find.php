@@ -526,7 +526,7 @@ if ($action=="filter") {
 						echo "<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";										 // Name Link
 
 						if ($ABBREVIATE_CHART_LABELS) {
-							$born=i18n::fact_abbreviation('BIRT');
+							$born=abbreviate_fact('BIRT');
 						} else {
 							$born=i18n::translate('BIRT');
 						}

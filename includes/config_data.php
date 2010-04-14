@@ -1671,6 +1671,11 @@ $FACTS_F=array(
 	'_NMR'      =>i18n::translate_c('FEMALE', 'Not married'),
 );
 
+$FACT_ABBREV=array(
+	'BIRT'=>i18n::translate_c('Abbreviation for birth',    'b.'),
+	'MARR'=>i18n::translate_c('Abbreviation for marriage', 'm.'),
+	'DEAT'=>i18n::translate_c('Abbreviation for death',    'd.'),
+);
 
 // Create a label for a fact type.
 function translate_fact($fact, $person=null) {
@@ -1692,4 +1697,15 @@ function translate_fact($fact, $person=null) {
 	}
 	// Still no translation? Highlight this as an error
 	return '<span class="error" title="'.i18n::translate('Unrecognized GEDCOM Code').'">'.$fact.'</span>';
+}
+
+function abbreviate_fact($fact) {
+	global $FACT_ABBREV;
+
+	if (array_key_exists($fact, $FACT_ABBREV)) {
+		return i18n::translate($FACT_ABBREV[$fact]);
+	} else {
+		// Just use the first letter of the full fact
+		return utf8_substr(translate_fact($fact), 0, 1).'.';
+	}
 }
