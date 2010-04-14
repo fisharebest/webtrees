@@ -506,7 +506,7 @@ class IndividualControllerRoot extends BaseController {
 					}
 				}
 				echo "\n\t\t\t<dt class=\"label\">";
-				echo i18n::translate($fact);
+				echo translate_fact($fact, $this->indi);
 				echo "</dt><dd class=\"field\">";
 				if (isset($nmatch[$i][2])) {
 					$name = trim($nmatch[$i][2]);
