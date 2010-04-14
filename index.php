@@ -36,13 +36,13 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';  //--needed
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 if (isset($_REQUEST['ctype'])) $ctype = $_REQUEST['ctype'];
 $message_id = safe_GET('message_id');
-$gid = safe_POST("gid");
-$favnote = safe_POST("favnote");
-$favtype = safe_POST("favtype");
-$url = safe_POST("url", WT_REGEX_URL);
-$favtitle = safe_POST("favtitle");
-$fv_id = safe_GET("fv_id");
-$news_id = safe_GET("news_id");
+$gid = safe_POST('gid');
+$favnote = safe_POST('favnote');
+$favtype = safe_POST('favtype');
+$url = safe_POST('url', WT_REGEX_URL);
+$favtitle = safe_POST('favtitle');
+$fv_id = safe_GET('fv_id');
+$news_id = safe_GET('news_id');
 
 /**
  * Block definition array
@@ -50,9 +50,9 @@ $news_id = safe_GET("news_id");
  * The following block definition array defines the
  * blocks that can be used to customize the portals
  * their names and the function to call them
- * "name" is the name of the block in the lists
- * "descr" is a description of this block
- * "type" the options are "user" or "gedcom" or undefined
+ * 'name' is the name of the block in the lists
+ * 'descr' is a description of this block
+ * 'type' the options are 'user' or 'gedcom' or 'both'
  * - The type determines which lists the block is available in.
  * - Leaving the type undefined allows it to be on both the user and gedcom portal
  * @global $WT_BLOCKS
@@ -62,13 +62,13 @@ $news_id = safe_GET("news_id");
  * Load List of Blocks in blocks directory (unchanged)
  */
 $WT_BLOCKS = array();
-$d = dir("blocks");
-while (false !== ($entry = $d->read())) {
-	if (($entry!=".") && ($entry!="..") && ($entry!="CVS") && (preg_match("/\.php$/", $entry)>0)) {
-		require_once WT_ROOT.'blocks/'.$entry;
+$d = opendir('blocks');
+while (false !== ($f=readdir($d))) {
+	if (preg_match('/\.php$/', $f)>0) {
+		require_once WT_ROOT.'blocks/'.$f;
 	}
 }
-$d->close();
+closedir($d);
 /**
  * End loading list of Blocks in blocks directory
  *
@@ -77,12 +77,12 @@ $d->close();
 if (file_exists(WT_ROOT.'modules')) {
 	$dir=dir(WT_ROOT.'modules');
 	while (false !== ($entry = $dir->read())) {
-		if (!strstr($entry,".") && ($entry!="..") && ($entry!="CVS")&& !strstr($entry, "svn")) {
+		if (!strstr($entry,'.') && ($entry!='..') && ($entry!='CVS')&& !strstr($entry, 'svn')) {
 			$path = WT_ROOT.'modules/' . $entry.'/blocks';
 			if (is_readable($path)) {
 				$d=dir($path);
 				while (false !== ($entry = $d->read())) {
-					if (($entry!=".") && ($entry!="..") && ($entry!="CVS")&& !strstr($entry, "svn")&&(preg_match("/\.php$/", $entry)>0)) {
+					if (($entry!='.') && ($entry!='..') && ($entry!='CVS')&& !strstr($entry, 'svn')&&(preg_match('/\.php$/', $entry)>0)) {
 						$p=$path.'/'.$entry;
 						require_once $p;
 					}
@@ -97,7 +97,7 @@ if (file_exists(WT_ROOT.'modules')) {
 
 $time = client_time();
 
-if (!isset($action)) $action="";
+if (!isset($action)) $action='';
 
 // Visitors should see any links to a user page, but they may be
 // following a link after an inactivity logout.
@@ -117,57 +117,57 @@ if (empty($ctype)) {
 
 if (WT_USER_ID) {
 	//-- add favorites action
-	if ($action=="addfav" && !empty($gid)) {
+	if ($action=='addfav' && !empty($gid)) {
 		$gid = strtoupper($gid);
 		$indirec = find_gedcom_record($gid, WT_GED_ID);
-		$ct = preg_match("/0 @(.*)@ (.*)/", $indirec, $match);
+		$ct = preg_match('/0 @(.*)@ (.*)/', $indirec, $match);
 		if ($indirec && $ct>0) {
 			$favorite = array();
 			if (empty($favtype)) {
-				if ($ctype=="user") $favtype = "user";
-				else $favtype = "gedcom";
+				if ($ctype=='user') $favtype = 'user';
+				else $favtype = 'gedcom';
 			}
-			if ($favtype=="gedcom") {
+			if ($favtype=='gedcom') {
 				$favtype = $GEDCOM;
 				$_SESSION['clearcache'] = true;
 			}
 			else $favtype=WT_USER_NAME;
-			$favorite["username"] = $favtype;
-			$favorite["gid"] = $gid;
-			$favorite["type"] = trim($match[2]);
-			$favorite["file"] = $GEDCOM;
-			$favorite["url"] = "";
-			$favorite["note"] = $favnote;
-			$favorite["title"] = "";
+			$favorite['username'] = $favtype;
+			$favorite['gid'] = $gid;
+			$favorite['type'] = trim($match[2]);
+			$favorite['file'] = $GEDCOM;
+			$favorite['url'] = '';
+			$favorite['note'] = $favnote;
+			$favorite['title'] = '';
 			addFavorite($favorite);
 		}
 	}
-	if (($action=="addfav")&&(!empty($url))) {
+	if (($action=='addfav')&&(!empty($url))) {
 		if (empty($favtitle)) $favtitle = $url;
 		$favorite = array();
 		if (!isset($favtype)) {
-			if ($ctype=="user") $favtype = "user";
-			else $favtype = "gedcom";
+			if ($ctype=='user') $favtype = 'user';
+			else $favtype = 'gedcom';
 		}
-		if ($favtype=="gedcom") {
+		if ($favtype=='gedcom') {
 			$favtype = $GEDCOM;
 			$_SESSION['clearcache'] = true;
 		}
 		else $favtype=WT_USER_NAME;
-		$favorite["username"] = $favtype;
-		$favorite["gid"] = "";
-		$favorite["type"] = "URL";
-		$favorite["file"] = $GEDCOM;
-		$favorite["url"] = $url;
-		$favorite["note"] = $favnote;
-		$favorite["title"] = $favtitle;
+		$favorite['username'] = $favtype;
+		$favorite['gid'] = '';
+		$favorite['type'] = 'URL';
+		$favorite['file'] = $GEDCOM;
+		$favorite['url'] = $url;
+		$favorite['note'] = $favnote;
+		$favorite['title'] = $favtitle;
 		addFavorite($favorite);
 	}
-	if (($action=="deletefav")&&(!empty($fv_id))) {
+	if (($action=='deletefav')&&(!empty($fv_id))) {
 		deleteFavorite($fv_id);
-		if ($ctype=="gedcom") $_SESSION['clearcache'] = true;
+		if ($ctype=='gedcom') $_SESSION['clearcache'] = true;
 	}
-	else if ($action=="deletemessage") {
+	else if ($action=='deletemessage') {
 		if (isset($message_id)) {
 			if (!is_array($message_id)) deleteMessage($message_id);
 			else {
@@ -175,41 +175,41 @@ if (WT_USER_ID) {
 					if (isset($mid)) deleteMessage($mid);
 				}
 			}
-			if ($ctype=="gedcom") $_SESSION['clearcache'] = true;
+			if ($ctype=='gedcom') $_SESSION['clearcache'] = true;
 		}
 	}
-	else if (($action=="deletenews")&&(isset($news_id))) {
+	else if (($action=='deletenews')&&(isset($news_id))) {
 		deleteNews($news_id);
-		if ($ctype=="gedcom") $_SESSION['clearcache'] = true;
+		if ($ctype=='gedcom') $_SESSION['clearcache'] = true;
 	}
 }
 
 //-- get the blocks list
-if ($ctype=="user") {
+if ($ctype=='user') {
 	$ublocks = getBlocks(WT_USER_NAME);
-	if ((count($ublocks["main"])==0) && (count($ublocks["right"])==0)) {
-		$ublocks["main"][] = array("print_todays_events", "");
-		$ublocks["main"][] = array("print_user_messages", "");
-		$ublocks["main"][] = array("print_user_favorites", "");
+	if ((count($ublocks['main'])==0) && (count($ublocks['right'])==0)) {
+		$ublocks['main'][] = array('print_todays_events', '');
+		$ublocks['main'][] = array('print_user_messages', '');
+		$ublocks['main'][] = array('print_user_favorites', '');
 
-		$ublocks["right"][] = array("print_welcome_block", "");
-		$ublocks["right"][] = array("print_random_media", "");
-		$ublocks["right"][] = array("print_upcoming_events", "");
-		$ublocks["right"][] = array("print_logged_in_users", "");
+		$ublocks['right'][] = array('print_welcome_block', '');
+		$ublocks['right'][] = array('print_random_media', '');
+		$ublocks['right'][] = array('print_upcoming_events', '');
+		$ublocks['right'][] = array('print_logged_in_users', '');
 	}
 }
 else {
 	$ublocks = getBlocks($GEDCOM);
-	if ((count($ublocks["main"])==0) && (count($ublocks["right"])==0)) {
-		$ublocks["main"][] = array("print_gedcom_stats", "");
-		$ublocks["main"][] = array("print_gedcom_news", "");
-		$ublocks["main"][] = array("print_gedcom_favorites", "");
-		$ublocks["main"][] = array("review_changes_block", "");
+	if ((count($ublocks['main'])==0) && (count($ublocks['right'])==0)) {
+		$ublocks['main'][] = array('print_gedcom_stats', '');
+		$ublocks['main'][] = array('print_gedcom_news', '');
+		$ublocks['main'][] = array('print_gedcom_favorites', '');
+		$ublocks['main'][] = array('review_changes_block', '');
 
-		$ublocks["right"][] = array("print_gedcom_block", "");
-		$ublocks["right"][] = array("print_random_media", "");
-		$ublocks["right"][] = array("print_todays_events", "");
-		$ublocks["right"][] = array("print_logged_in_users", "");
+		$ublocks['right'][] = array('print_gedcom_block', '');
+		$ublocks['right'][] = array('print_random_media', '');
+		$ublocks['right'][] = array('print_todays_events', '');
+		$ublocks['right'][] = array('print_logged_in_users', '');
 	}
 }
 
@@ -218,17 +218,17 @@ $welcome_block_present = false;
 $gedcom_block_present = false;
 $top10_block_present = false;
 $login_block_present = false;
-foreach($ublocks["right"] as $block) {
-	if ($block[0]=="print_welcome_block") $welcome_block_present = true;
-	if ($block[0]=="print_gedcom_block") $gedcom_block_present = true;
-	if ($block[0]=="print_block_name_top10") $top10_block_present = true;
-	if ($block[0]=="print_login_block") $login_block_present = true;
+foreach($ublocks['right'] as $block) {
+	if ($block[0]=='print_welcome_block') $welcome_block_present = true;
+	if ($block[0]=='print_gedcom_block') $gedcom_block_present = true;
+	if ($block[0]=='print_block_name_top10') $top10_block_present = true;
+	if ($block[0]=='print_login_block') $login_block_present = true;
 }
-foreach($ublocks["main"] as $block) {
-	if ($block[0]=="print_welcome_block") $welcome_block_present = true;
-	if ($block[0]=="print_gedcom_block") $gedcom_block_present = true;
-	if ($block[0]=="print_block_name_top10") $top10_block_present = true;
-	if ($block[0]=="print_login_block") $login_block_present = true;
+foreach($ublocks['main'] as $block) {
+	if ($block[0]=='print_welcome_block') $welcome_block_present = true;
+	if ($block[0]=='print_gedcom_block') $gedcom_block_present = true;
+	if ($block[0]=='print_block_name_top10') $top10_block_present = true;
+	if ($block[0]=='print_login_block') $login_block_present = true;
 }
 
 //-- clear the GEDCOM cache files
@@ -247,26 +247,26 @@ session_write_close();
  * side = the side of the page the block is on (e.g. 'main' or 'right')
  * bindex = the number of the block on that side, first block = 0
  */
-if ($action=="ajax") {
+if ($action=='ajax') {
 	header('Content-Type: text/html; charset=UTF-8');
 	//--  if a block wasn't sent then exit with nothing
 	if (!isset($_REQUEST['block'])) {
-		print "Block not sent";
+		echo 'Block not sent';
 		exit;
 	}
 	$block = $_REQUEST['block'];
 	//-- set which side the block is on
-	$side = "main";
+	$side = 'main';
 	if (isset($_REQUEST['side'])) $side = $_REQUEST['side'];
 	//-- get the block number
 	if (isset($_REQUEST['bindex'])) {
 		if (isset($ublocks[$side][$_REQUEST['bindex']])) {
 			$blockval = $ublocks[$side][$_REQUEST['bindex']];
 			if ($blockval[0]==$block && array_key_exists($blockval[0], $WT_BLOCKS)) {
-				if ($side=="main") {
-					$param1 = "false";
+				if ($side=='main') {
+					$param1 = 'false';
 				} else {
-					$param1 = "true";
+					$param1 = 'true';
 				}
 				if (array_key_exists($blockval[0], $WT_BLOCKS) && !loadCachedBlock($blockval, $side.$_REQUEST['bindex'])) {
 					ob_start();
@@ -287,12 +287,12 @@ if ($action=="ajax") {
 	}
 
 	//-- not sure which block to call so call the first one we find
-	foreach($ublocks["main"] as $bindex=>$blockval) {
+	foreach($ublocks['main'] as $bindex=>$blockval) {
 		if ($blockval[0]==$block && array_key_exists($blockval[0], $WT_BLOCKS)) {
 			eval($blockval[0]."(false, \$blockval[1], \"main\", $bindex);");
 		}
 	}
-	foreach($ublocks["right"] as $bindex=>$blockval) {
+	foreach($ublocks['right'] as $bindex=>$blockval) {
 		if ($blockval[0]==$block && array_key_exists($blockval[0], $WT_BLOCKS)) {
 			eval($blockval[0]."(true, \$blockval[1], \"right\", $bindex);");
 		}
@@ -301,8 +301,8 @@ if ($action=="ajax") {
 }
 //-- end of ajax call handler
 
-if ($ctype=="user") {
-	$helpindex = "index_myged_help";
+if ($ctype=='user') {
+	$helpindex = 'index_myged_help';
 	print_header(i18n::translate('My Page'));
 } else {
 	print_header(get_gedcom_setting(WT_GED_ID, 'title'));
@@ -316,7 +316,7 @@ if (WT_USE_LIGHTBOX) {
 echo WT_JS_START;
 ?>
 	function refreshpage() {
-		window.location = 'index.php?ctype=<?php print $ctype; ?>';
+		window.location = 'index.php?ctype=<?php echo $ctype; ?>';
 	}
 	function addnews(uname) {
 		window.open('editnews.php?username='+uname, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
@@ -342,7 +342,7 @@ echo WT_JS_START;
 		if (!target) return false;
 
 		target.style.height = (target.offsetHeight) + "px";
-		if (loading) target.innerHTML = "<br /><br /><?php print i18n::translate('Loading...'); ?><br /><br />";
+		if (loading) target.innerHTML = "<br /><br /><?php echo i18n::translate('Loading...'); ?><br /><br />";
 
 		var oXmlHttp = createXMLHttp();
 		link = "index.php?action=ajax&block="+block+"&side="+side+"&bindex="+bindex+"&ctype="+ctype;
@@ -361,26 +361,26 @@ echo WT_JS_START;
 <?php
 echo WT_JS_END;
 //-- start of main content section
-print "<table width=\"100%\"><tr><td>";		// This is needed so that page footers print in the right place
-if ($ctype=="user") {
-	print "<div align=\"center\" style=\"width: 99%;\">";
-	print "<h1>".i18n::translate('My Page')."</h1>";
-	print i18n::translate('My Page allows you to keep bookmarks of your favorite people, track upcoming events, and collaborate with other webtrees users.');
-	print "<br /><br /></div>";
+echo '<table width="100%"><tr><td>';		// This is needed so that page footers print in the right place
+if ($ctype=='user') {
+	echo '<div align="center" style="width: 99%;">';
+	echo '<h1>', i18n::translate('My Page'), '</h1>';
+	echo i18n::translate('My Page allows you to keep bookmarks of your favorite people, track upcoming events, and collaborate with other webtrees users.');
+	echo '<br /><br /></div>';
 }
-if (count($ublocks["main"])!=0) {
-	if (count($ublocks["right"])!=0) {
-		print "<div id=\"index_main_blocks\">";
+if (count($ublocks['main'])!=0) {
+	if (count($ublocks['right'])!=0) {
+		echo '<div id="index_main_blocks">';
 	} else {
-		print "<div id=\"index_full_blocks\">";
+		echo '<div id="index_full_blocks">';
 	}
 	echo '<script src="js/jquery/jquery.min.js" type="text/javascript"></script>';
 	echo '<script type="text/javascript">jQuery.noConflict();</script>';
-	foreach($ublocks["main"] as $bindex=>$block) {
+	foreach($ublocks['main'] as $bindex=>$block) {
 		if (WT_DEBUG) {
 			echo execution_stats();
 		}
-		if (array_key_exists($block[0], $WT_BLOCKS) && !loadCachedBlock($block, "main".$bindex)) {
+		if (array_key_exists($block[0], $WT_BLOCKS) && !loadCachedBlock($block, 'main'.$bindex)) {
 			$url="index.php?action=ajax&block={$block[0]}&side=main&bindex={$bindex}&ctype={$ctype}";
 			if ($SEARCH_SPIDER || WT_DEBUG) {
 				// Search spiders get the blocks directly
@@ -389,7 +389,7 @@ if (count($ublocks["main"])!=0) {
 				$content = ob_get_contents();
 				$temp = $SEARCH_SPIDER;
 				$SEARCH_SPIDER = false;
-				saveCachedBlock($block, "main".$bindex, $content);
+				saveCachedBlock($block, 'main'.$bindex, $content);
 				$SEARCH_SPIDER = $temp;
 				ob_end_flush();
 			} else {
@@ -399,29 +399,29 @@ if (count($ublocks["main"])!=0) {
 			}
 		}
 	}
-	print "</div>";
+	echo '</div>';
 }
 //-- end of main content section
 
 //-- start of blocks section
-if (count($ublocks["right"])!=0) {
-	if (count($ublocks["main"])!=0) {
-		print "<div id=\"index_small_blocks\">";
+if (count($ublocks['right'])!=0) {
+	if (count($ublocks['main'])!=0) {
+		echo '<div id="index_small_blocks">';
 	} else {
-		print "<div id=\"index_full_blocks\">";
+		echo '<div id="index_full_blocks">';
 	}
-	foreach($ublocks["right"] as $bindex=>$block) {
+	foreach($ublocks['right'] as $bindex=>$block) {
 		if (WT_DEBUG) {
 			echo execution_stats();
 		}
-		if (array_key_exists($block[0], $WT_BLOCKS) && !loadCachedBlock($block, "right".$bindex)) {
+		if (array_key_exists($block[0], $WT_BLOCKS) && !loadCachedBlock($block, 'right'.$bindex)) {
 			$url="index.php?action=ajax&block={$block[0]}&side=right&bindex={$bindex}&ctype={$ctype}";
 			if ($SEARCH_SPIDER || WT_DEBUG) {
 				// Search spiders get the blocks directly
 				ob_start();
 				eval($block[0]."(true, \$block[1], \"right\", $bindex);");
 				$content = ob_get_contents();
-				saveCachedBlock($block, "right".$bindex, $content);
+				saveCachedBlock($block, 'right'.$bindex, $content);
 				ob_end_flush();
 			} else {
 				// Interactive users get the blocks via ajax
@@ -430,25 +430,24 @@ if (count($ublocks["right"])!=0) {
 			}
 		}
 	}
-	print "</div>";
+	echo '</div>';
 }
 //-- end of blocks section
 
-print "</td></tr></table><br />";		// Close off that table
+echo '</td></tr></table><br />';		// Close off that table
 
-if ($ctype=="user" && !$welcome_block_present) {
-	print "<div align=\"center\" style=\"width: 99%;\">";
-	print "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&ctype=user', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".i18n::translate('Customize My Page')."</a>";
+if ($ctype=='user' && !$welcome_block_present) {
+	echo '<div align="center" style="width: 99%;">';
+	echo "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&ctype=user', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".i18n::translate('Customize My Page').'</a>';
 	echo help_link('mygedview_customize');
-	print "</div>";
+	echo '</div>';
 }
-if ($ctype=="gedcom" && !$gedcom_block_present) {
+if ($ctype=='gedcom' && !$gedcom_block_present) {
 	if (WT_USER_IS_ADMIN) {
-		print "<div align=\"center\" style=\"width: 99%;\">";
-		print "<a href=\"javascript:;\" onclick=\"window.open('".encode_url("index_edit.php?name={$GEDCOM}&ctype=gedcom", false)."', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".i18n::translate('Customize this GEDCOM Home Page')."</a>";
-		print "</div>";
+		echo '<div align="center" style="width: 99%;">';
+		echo "<a href=\"javascript:;\" onclick=\"window.open('".encode_url("index_edit.php?name={$GEDCOM}&ctype=gedcom", false)."', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".i18n::translate('Customize this GEDCOM Home Page').'</a>';
+		echo '</div>';
 	}
 }
 
 print_footer();
-?>

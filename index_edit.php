@@ -46,35 +46,35 @@ if (isset($_REQUEST['name'])) $name = $_REQUEST['name'];
 //-- make sure that they have user status before they can use this page
 //-- otherwise have them login again
 if (!WT_USER_ID) {
-	print_simple_header("");
-	print i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	print "<div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".i18n::translate('Close Window')."</a></div>\n";
+	print_simple_header('');
+	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo '<div class="center"><a href="javascript:;" onclick="self.close();">', i18n::translate('Close Window').'</a></div>';
 	print_simple_footer();
 	exit;
 }
 if (!WT_USER_IS_ADMIN) $setdefault=false;
 
-if (!isset($action)) $action="";
-if (!isset($ctype)) $ctype="user";
+if (!isset($action)) $action='';
+if (!isset($ctype)) $ctype='user';
 if (!isset($main)) $main=array();
 if (!isset($right)) $right=array();
 if (!isset($setdefault)) $setdefault=false;
-if (!isset($side)) $side="main";
+if (!isset($side)) $side='main';
 if (!isset($index)) $index=1;
 
 // Define all the icons we're going to use
-$IconUarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"]."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconDarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"]."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconRarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["rarrow"]["other"]."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconLarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["larrow"]["other"]."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconRDarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["rdarrow"]["other"]."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconLDarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["ldarrow"]["other"]."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconUarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['uarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconDarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['darrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconRarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['rarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconLarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['larrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconRDarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['rdarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconLDarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['ldarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
 
 /**
  * Load List of Blocks in blocks directory (unchanged)
  */
 $WT_BLOCKS = array();
-$d = dir("blocks");
+$d = dir('blocks');
 while (false !== ($entry = $d->read())) {
 	if (preg_match("/\.php$/", $entry)>0) {
 		require_once WT_ROOT.'blocks/'.$entry;
@@ -89,12 +89,12 @@ $d->close();
 if (file_exists(WT_ROOT.'modules')) {
 	$dir=dir(WT_ROOT.'modules');
 	while (false !== ($entry = $dir->read())) {
-		if (!strstr($entry,".") && ($entry!="..") && ($entry!="CVS")&& !strstr($entry, "svn")) {
+		if (!strstr($entry,'.') && ($entry!='..') && ($entry!='CVS')&& !strstr($entry, 'svn')) {
 			$path = WT_ROOT.'modules/' . $entry.'/blocks';
 			if (is_readable($path)) {
 				$d=dir($path);
 				while (false !== ($entry = $d->read())) {
-				if (($entry!=".") && ($entry!="..") && ($entry!="CVS")&& !strstr($entry, "svn")&&(preg_match("/\.php$/", $entry)>0)) {
+				if (($entry!='.') && ($entry!='..') && ($entry!='CVS')&& !strstr($entry, 'svn')&&(preg_match("/\.php$/", $entry)>0)) {
 						$p=$path.'/'.$entry;
 						require_once $p;
 					}
@@ -109,9 +109,9 @@ if (file_exists(WT_ROOT.'modules')) {
 
 //	Build sorted table of block names, BUT:
 //		include in this table ONLY if the block is appropriate for this page
-//		If $BLOCK["type"] is	"both", include in both page types
-//					"user", include in My Page only
-//					"gedcom", include in Index page only
+//		If $BLOCK['type'] is	'both', include in both page types
+//					'user', include in My Page only
+//					'gedcom', include in Index page only
 $SortedBlocks = array();
 foreach($WT_BLOCKS as $key => $BLOCK) {
 	if ($BLOCK['type']=='both' || $BLOCK['type']==$ctype) {
@@ -121,38 +121,38 @@ foreach($WT_BLOCKS as $key => $BLOCK) {
 asort($SortedBlocks);
 
 //-- get the blocks list
-if ($ctype=="user") {
+if ($ctype=='user') {
 	$ublocks = getBlocks(WT_USER_NAME);
-	if (($action=="reset") || ((count($ublocks["main"])==0) && (count($ublocks["right"])==0))) {
-		$ublocks["main"] = array();
-		$ublocks["main"][] = array("print_todays_events", "");
-		$ublocks["main"][] = array("print_user_messages", "");
-		$ublocks["main"][] = array("print_user_favorites", "");
+	if (($action=='reset') || ((count($ublocks['main'])==0) && (count($ublocks['right'])==0))) {
+		$ublocks['main'] = array();
+		$ublocks['main'][] = array('print_todays_events', '');
+		$ublocks['main'][] = array('print_user_messages', '');
+		$ublocks['main'][] = array('print_user_favorites', '');
 
-		$ublocks["right"] = array();
-		$ublocks["right"][] = array("print_welcome_block", "");
-		$ublocks["right"][] = array("print_random_media", "");
-		$ublocks["right"][] = array("print_upcoming_events", "");
-		$ublocks["right"][] = array("print_logged_in_users", "");
+		$ublocks['right'] = array();
+		$ublocks['right'][] = array('print_welcome_block', '');
+		$ublocks['right'][] = array('print_random_media', '');
+		$ublocks['right'][] = array('print_upcoming_events', '');
+		$ublocks['right'][] = array('print_logged_in_users', '');
 	}
 } else {
 	$ublocks = getBlocks($GEDCOM);
-	if (($action=="reset") or ((count($ublocks["main"])==0) and (count($ublocks["right"])==0))) {
-		$ublocks["main"] = array();
-		$ublocks["main"][] = array("print_gedcom_stats", "");
-		$ublocks["main"][] = array("print_gedcom_news", "");
-		$ublocks["main"][] = array("print_gedcom_favorites", "");
-		$ublocks["main"][] = array("review_changes_block", "");
+	if (($action=='reset') or ((count($ublocks['main'])==0) and (count($ublocks['right'])==0))) {
+		$ublocks['main'] = array();
+		$ublocks['main'][] = array('print_gedcom_stats', '');
+		$ublocks['main'][] = array('print_gedcom_news', '');
+		$ublocks['main'][] = array('print_gedcom_favorites', '');
+		$ublocks['main'][] = array('review_changes_block', '');
 
-		$ublocks["right"] = array();
-		$ublocks["right"][] = array("print_gedcom_block", "");
-		$ublocks["right"][] = array("print_random_media", "");
-		$ublocks["right"][] = array("print_todays_events", "");
-		$ublocks["right"][] = array("print_logged_in_users", "");
+		$ublocks['right'] = array();
+		$ublocks['right'][] = array('print_gedcom_block', '');
+		$ublocks['right'][] = array('print_random_media', '');
+		$ublocks['right'][] = array('print_todays_events', '');
+		$ublocks['right'][] = array('print_logged_in_users', '');
 	}
 }
 
-if ($ctype=="user") {
+if ($ctype=='user') {
 	print_simple_header(i18n::translate('My Page'));
 } else {
 	print_simple_header(get_gedcom_setting(WT_GED_ID, 'title'));
@@ -160,90 +160,80 @@ if ($ctype=="user") {
 
 $GEDCOM_TITLE=PrintReady(get_gedcom_setting(WT_GED_ID, 'title'));
 
-?>
-<script language="JavaScript" type="text/javascript">
-<!--
-function parentrefresh() {
-	opener.window.location.reload();
-	window.close();
-}
-//-->
-</script>
-<?php
-if ($action=="updateconfig") {
+if ($action=='updateconfig') {
 	$block = $ublocks[$side][$index];
-	if ($WT_BLOCKS[$block[0]]["canconfig"] && is_array($WT_BLOCKS[$block[0]]["config"])) {
+	if ($WT_BLOCKS[$block[0]]['canconfig'] && is_array($WT_BLOCKS[$block[0]]['config'])) {
 		$config = $block[1];
-		foreach($WT_BLOCKS[$block[0]]["config"] as $config_name=>$config_value) {
+		foreach($WT_BLOCKS[$block[0]]['config'] as $config_name=>$config_value) {
 			if (isset($_POST[$config_name])) {
 				$config[$config_name] = $_POST[$config_name];
 			} else {
-				$config[$config_name] = "";
+				$config[$config_name] = '';
 			}
 		}
 		$ublocks[$side][$index][1] = $config;
 		setBlocks($name, $ublocks, $setdefault);
 	}
-	print i18n::translate('Configuration file updated successfully.')."<br />\n";
-	if (isset($_POST["nextaction"])) $action = $_POST["nextaction"];
-	if ($ctype!="user") $_SESSION['clearcache'] = true;
+	echo WT_JS_START, 'opener.window.location.reload(); window.close();', WT_JS_END;
+	exit;
 }
 
-if ($action=="update") {
-	$newublocks["main"] = array();
+if ($action=='update') {
+	$newublocks['main'] = array();
 	if (is_array($main)) {
 		foreach($main as $indexval => $b) {
-			$config = "";
-			$index = "";
-			reset($ublocks["main"]);
-			foreach($ublocks["main"] as $index=>$block) {
+			$config = '';
+			$index = '';
+			reset($ublocks['main']);
+			foreach($ublocks['main'] as $index=>$block) {
 				if ($block[0]==$b) {
 					$config = $block[1];
 					break;
 				}
 			}
-			if ($index!="") unset($ublocks["main"][$index]);
-			$newublocks["main"][] = array($b, $config);
+			if ($index!='') unset($ublocks['main'][$index]);
+			$newublocks['main'][] = array($b, $config);
 		}
 	}
 
-	$newublocks["right"] = array();
+	$newublocks['right'] = array();
 	if (is_array($right)) {
 		foreach($right as $indexval => $b) {
-			$config = "";
-			$index = "";
-			reset($ublocks["right"]);
-			foreach($ublocks["right"] as $index=>$block) {
+			$config = '';
+			$index = '';
+			reset($ublocks['right']);
+			foreach($ublocks['right'] as $index=>$block) {
 				if ($block[0]==$b) {
 					$config = $block[1];
 					break;
 				}
 			}
-			if ($index!="") unset($ublocks["right"][$index]);
-			$newublocks["right"][] = array($b, $config);
+			if ($index!='') unset($ublocks['right'][$index]);
+			$newublocks['right'][] = array($b, $config);
 		}
 	}
 	$ublocks = $newublocks;
 	setBlocks($name, $ublocks, $setdefault);
-	if (isset($_POST["nextaction"])) $action = $_POST["nextaction"];
-	?><script language="JavaScript" type="text/javascript">parentrefresh();</script><?php
+	if (isset($_POST['nextaction'])) $action = $_POST['nextaction'];
+	echo WT_JS_START, 'opener.window.location.reload(); window.close();', WT_JS_END;
+	exit;
 }
 
 if ($action=="clearcache") {
 	clearCache();
-	print "<span class=\"warning\">".i18n::translate('The cache files have been removed.')."</span><br /><br />";
+	echo "<span class=\"warning\">".i18n::translate('The cache files have been removed.')."</span><br /><br />";
 }
 
 if ($action=="configure" && isset($ublocks[$side][$index])) {
 	$block = $ublocks[$side][$index];
-	print "<table class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
-	print "<tr><td class=\"facts_label\">";
-	print "<h2>".i18n::translate('Configure')."</h2>";
-	print "</td></tr>";
-	print "<tr><td class=\"facts_label03\">";
-	print "<b>".$WT_BLOCKS[$block[0]]["name"]."</b>";
-	print "</td></tr>";
-	print "</table>";
+	echo "<table class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
+	echo "<tr><td class=\"facts_label\">";
+	echo "<h2>".i18n::translate('Configure')."</h2>";
+	echo "</td></tr>";
+	echo "<tr><td class=\"facts_label03\">";
+	echo "<b>".$WT_BLOCKS[$block[0]]["name"]."</b>";
+	echo "</td></tr>";
+	echo "</table>";
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -254,32 +244,30 @@ if ($action=="configure" && isset($ublocks[$side][$index])) {
 //-->
 </script>
 <?php
-	print "\n<form name=\"block\" method=\"post\" action=\"index_edit.php\">\n";
-	print "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />\n";
-	print "<input type=\"hidden\" name=\"action\" value=\"updateconfig\" />\n";
-	print "<input type=\"hidden\" name=\"name\" value=\"$name\" />\n";
-	print "<input type=\"hidden\" name=\"nextaction\" value=\"configure\" />\n";
-	print "<input type=\"hidden\" name=\"side\" value=\"$side\" />\n";
-	print "<input type=\"hidden\" name=\"index\" value=\"$index\" />\n";
-	print "<table border=\"0\" class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
+	echo "\n<form name=\"block\" method=\"post\" action=\"index_edit.php\">\n";
+	echo "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />\n";
+	echo "<input type=\"hidden\" name=\"action\" value=\"updateconfig\" />\n";
+	echo "<input type=\"hidden\" name=\"name\" value=\"$name\" />\n";
+	echo "<input type=\"hidden\" name=\"nextaction\" value=\"configure\" />\n";
+	echo "<input type=\"hidden\" name=\"side\" value=\"$side\" />\n";
+	echo "<input type=\"hidden\" name=\"index\" value=\"$index\" />\n";
+	echo "<table border=\"0\" class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
 	if ($WT_BLOCKS[$block[0]]["canconfig"]) {
 		eval($block[0]."_config(\$block[1]);");
-		print "<tr><td colspan=\"2\" class=\"topbottombar\">";
-		print "<input type=\"button\" value=\"".i18n::translate('Click here to continue')."\" onclick=\"document.block.submit();\" />";
-		print help_link('click_here');
-		print "&nbsp;&nbsp;<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
-		print "</td></tr>";
+		echo "<tr><td colspan=\"2\" class=\"topbottombar\">";
+		echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"document.block.submit();\" />";
+		echo "&nbsp;&nbsp;<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
+		echo "</td></tr>";
 	} else {
-		print "<tr><td colspan=\"2\" class=\"optionbox\">";
-		print i18n::translate('This block cannot be configured.');
-		print "</td></tr>";
-		print "<tr><td colspan=\"2\" class=\"topbottombar\">";
-		print "<input type=\"button\" value=\"".i18n::translate('Click here to continue')."\" onclick=\"parentrefresh();\" />";
-		print help_link('click_here');
-		print "</td></tr>";
+		echo "<tr><td colspan=\"2\" class=\"optionbox\">";
+		echo i18n::translate('This block cannot be configured.');
+		echo "</td></tr>";
+		echo "<tr><td colspan=\"2\" class=\"topbottombar\">";
+		echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"opener.window.location.reload(); window.close();\" />";
+		echo "</td></tr>";
 	}
-	print "</table>";
-	print "</form>";
+	echo "</table>";
+	echo "</form>";
 }
 else {
 	?>
@@ -369,11 +357,11 @@ else {
  * Load Block Description array for use by jscript
  */
 	<?php
-	print "var block_descr = new Array();\n";
+	echo "var block_descr = new Array();\n";
 	foreach ($WT_BLOCKS as $b=>$block) {
-		print "block_descr['$b'] = '".str_replace("'", "\\'", embed_globals($block["descr"]))."';\n";
+		echo "block_descr['$b'] = '".str_replace("'", "\\'", embed_globals($block["descr"]))."';\n";
 	}
-	print "block_descr['advice1'] = '".str_replace("'", "\\'", i18n::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'))."';\n";
+	echo "block_descr['advice1'] = '".str_replace("'", "\\'", i18n::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'))."';\n";
 	?>
 
 
@@ -417,137 +405,134 @@ else {
 	<div id="configure" class="tab_page center" style="position: absolute; display: block; top: auto; left: auto; z-index: 1; ">
 	<br />
 	<form name="config_setup" method="post" action="index_edit.php">
-	<input type="hidden" name="ctype" value="<?php print $ctype;?>" />
+	<input type="hidden" name="ctype" value="<?php echo $ctype;?>" />
 	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="name" value="<?php print $name;?>" />
+	<input type="hidden" name="name" value="<?php echo $name;?>" />
 	<table dir="ltr" border="1" width="400px">
 	<tr><td class="topbottombar" colspan="7">
 	<?php
-	if ($ctype=="user") print "<b>".i18n::translate('Customize My Page')."</b>";
-	else print "<b>".i18n::translate('Customize this GEDCOM Home Page')."</b>";
+	if ($ctype=="user") echo "<b>".i18n::translate('Customize My Page')."</b>";
+	else echo "<b>".i18n::translate('Customize this GEDCOM Home Page')."</b>";
 	echo help_link('portal_config_intructions');
-	print "</td></tr>";
+	echo "</td></tr>";
 	// NOTE: Row 1: Column legends
-	print "<tr>";
-		print "<td class=\"descriptionbox center vmiddle\" colspan=\"2\">\n";
-			print "<b>".i18n::translate('Main Section Blocks')."</b>";
-		print "</td>\n";
-		print "<td class=\"descriptionbox center vmiddle\" colspan=\"3\">";
-			print "<b>".i18n::translate('Available Blocks')."</b>";
-		print "</td>\n";
-		print "<td class=\"descriptionbox center vmiddle\" colspan=\"2\">";
-			print "<b>".i18n::translate('Right Section Blocks')."</b>";
-		print "</td>";
-	print "</tr>\n";
-	print "<tr>";
+	echo "<tr>";
+		echo "<td class=\"descriptionbox center vmiddle\" colspan=\"2\">\n";
+			echo "<b>".i18n::translate('Main Section Blocks')."</b>";
+		echo "</td>\n";
+		echo "<td class=\"descriptionbox center vmiddle\" colspan=\"3\">";
+			echo "<b>".i18n::translate('Available Blocks')."</b>";
+		echo "</td>\n";
+		echo "<td class=\"descriptionbox center vmiddle\" colspan=\"2\">";
+			echo "<b>".i18n::translate('Right Section Blocks')."</b>";
+		echo "</td>";
+	echo "</tr>\n";
+	echo "<tr>";
 	// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
-	print "<td class=\"optionbox width20px center vmiddle\">";
-		print "<a tabindex=\"-1\" onclick=\"move_up_block('main_select');\" title=\"".i18n::translate('Move Up')."\">".$IconUarrow."</a>";
-		print "<br />";
-		print "<a tabindex=\"-1\" onclick=\"move_down_block('main_select');\" title=\"".i18n::translate('Move Down')."\">".$IconDarrow."</a>";
-		print "<br /><br />";
-		print help_link('block_move_up');
+	echo "<td class=\"optionbox width20px center vmiddle\">";
+		echo "<a tabindex=\"-1\" onclick=\"move_up_block('main_select');\" title=\"".i18n::translate('Move Up')."\">".$IconUarrow."</a>";
+		echo "<br />";
+		echo "<a tabindex=\"-1\" onclick=\"move_down_block('main_select');\" title=\"".i18n::translate('Move Down')."\">".$IconDarrow."</a>";
+		echo "<br /><br />";
+		echo help_link('block_move_up');
 
-	print "</td>";
+	echo "</td>";
 	// NOTE: Row 2 column 2: Left (Main) block list
-	print "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">\n";
-		print "<select multiple=\"multiple\" id=\"main_select\" name=\"main[]\" size=\"10\" onchange=\"show_description('main_select');\">\n";
+	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">\n";
+		echo "<select multiple=\"multiple\" id=\"main_select\" name=\"main[]\" size=\"10\" onchange=\"show_description('main_select');\">\n";
 		foreach($ublocks["main"] as $indexval => $block) {
 			if (function_exists($block[0])) {
-				print "<option value=\"$block[0]\">".$WT_BLOCKS[$block[0]]["name"]."</option>\n";
+				echo "<option value=\"$block[0]\">".$WT_BLOCKS[$block[0]]["name"]."</option>\n";
 			}
 		}
-		print "</select>\n";
-	print "</td>";
+		echo "</select>\n";
+	echo "</td>";
 	// NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
-	print "<td class=\"optionbox width20 vmiddle\">";
-		print "<a tabindex=\"-1\" onclick=\"move_left_right_block('main_select', 'right_select');\" title=\"".i18n::translate('Move Right')."\">".$IconRDarrow."</a>";
-		print "<br />";
-		print "<a tabindex=\"-1\" onclick=\"move_left_right_block('main_select', 'available_select');\" title=\"".i18n::translate('Remove')."\">".$IconRarrow."</a>";
-		print "<br />";
-		print "<a tabindex=\"-1\" onclick=\"move_left_right_block('available_select', 'main_select');\" title=\"".i18n::translate('Add')."\">".$IconLarrow."</a>";
-		print "<br /><br />";
-		print help_link('block_move_right');
+	echo "<td class=\"optionbox width20 vmiddle\">";
+		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('main_select', 'right_select');\" title=\"".i18n::translate('Move Right')."\">".$IconRDarrow."</a>";
+		echo "<br />";
+		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('main_select', 'available_select');\" title=\"".i18n::translate('Remove')."\">".$IconRarrow."</a>";
+		echo "<br />";
+		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('available_select', 'main_select');\" title=\"".i18n::translate('Add')."\">".$IconLarrow."</a>";
+		echo "<br /><br />";
+		echo help_link('block_move_right');
 
-	print "</td>";
+	echo "</td>";
 	// Row 2 column 4: Middle (Available) block list
-	print "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
-		print "<select id=\"available_select\" name=\"available[]\" size=\"10\" onchange=\"show_description('available_select');\">\n";
+	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
+		echo "<select id=\"available_select\" name=\"available[]\" size=\"10\" onchange=\"show_description('available_select');\">\n";
 		foreach($SortedBlocks as $key => $value) {
-			print "<option value=\"$key\">".$SortedBlocks[$key]."</option>\n";
+			echo "<option value=\"$key\">".$SortedBlocks[$key]."</option>\n";
 		}
-		print "</select>\n";
-	print "</td>";
+		echo "</select>\n";
+	echo "</td>";
 	// NOTE: Row 2 column 5: Left/Right buttons for right block list
-	print "<td class=\"optionbox width20 vmiddle\">";
-		print "<a tabindex=\"-1\" onclick=\"move_left_right_block('right_select', 'main_select');\" title=\"".i18n::translate('Move Left')."\">".$IconLDarrow."</a>";
-		print "<br />";
-		print "<a tabindex=\"-1\" onclick=\"move_left_right_block('right_select', 'available_select');\" title=\"".i18n::translate('Remove')."\">".$IconLarrow."</a>";
-		print "<br />";
-		print "<a tabindex=\"-1\" onclick=\"move_left_right_block('available_select', 'right_select');\" title=\"".i18n::translate('Add')."\">".$IconRarrow."</a>";
-		print "<br /><br />";
-		print help_link('block_move_right');
-	print "</td>";
+	echo "<td class=\"optionbox width20 vmiddle\">";
+		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('right_select', 'main_select');\" title=\"".i18n::translate('Move Left')."\">".$IconLDarrow."</a>";
+		echo "<br />";
+		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('right_select', 'available_select');\" title=\"".i18n::translate('Remove')."\">".$IconLarrow."</a>";
+		echo "<br />";
+		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('available_select', 'right_select');\" title=\"".i18n::translate('Add')."\">".$IconRarrow."</a>";
+		echo "<br /><br />";
+		echo help_link('block_move_right');
+	echo "</td>";
 	// NOTE: Row 2 column 6: Right block list
-	print "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
-		print "<select multiple=\"multiple\" id=\"right_select\" name=\"right[]\" size=\"10\" onchange=\"show_description('right_select');\">\n";
+	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
+		echo "<select multiple=\"multiple\" id=\"right_select\" name=\"right[]\" size=\"10\" onchange=\"show_description('right_select');\">\n";
 		foreach($ublocks["right"] as $indexval => $block) {
 			if (function_exists($block[0])) {
-				print "<option value=\"$block[0]\">".$WT_BLOCKS[$block[0]]["name"]."</option>\n";
+				echo "<option value=\"$block[0]\">".$WT_BLOCKS[$block[0]]["name"]."</option>\n";
 			}
 		}
-		print "</select>\n";
-	print "</td>";
+		echo "</select>\n";
+	echo "</td>";
 	// NOTE: Row 2 column 7: Up/Down buttons for right block list
-	print "<td class=\"optionbox width20 vmiddle\">";
-		print "<a tabindex=\"-1\" onclick=\"move_up_block('right_select');\" title=\"".i18n::translate('Move Up')."\">".$IconUarrow."</a>";
-		print "<br />";
-		print "<a tabindex=\"-1\" onclick=\"move_down_block('right_select');\" title=\"".i18n::translate('Move Down')."\">".$IconDarrow."</a>";
-		print "<br /><br />";
-		print help_link('block_move_up');
-	print "</td>";
-	print "</tr>";
+	echo "<td class=\"optionbox width20 vmiddle\">";
+		echo "<a tabindex=\"-1\" onclick=\"move_up_block('right_select');\" title=\"".i18n::translate('Move Up')."\">".$IconUarrow."</a>";
+		echo "<br />";
+		echo "<a tabindex=\"-1\" onclick=\"move_down_block('right_select');\" title=\"".i18n::translate('Move Down')."\">".$IconDarrow."</a>";
+		echo "<br /><br />";
+		echo help_link('block_move_up');
+	echo "</td>";
+	echo "</tr>";
 	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
-	print "<tr><td class=\"descriptionbox wrap\" colspan=\"7\" dir=\"".$TEXT_DIRECTION."\"><div id=\"instructions\">";
-	print i18n::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
-	print "</div></td></tr>";
-	print "<tr><td class=\"topbottombar\" colspan=\"7\">";
+	echo "<tr><td class=\"descriptionbox wrap\" colspan=\"7\" dir=\"".$TEXT_DIRECTION."\"><div id=\"instructions\">";
+	echo i18n::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
+	echo "</div></td></tr>";
+	echo "<tr><td class=\"topbottombar\" colspan=\"7\">";
 
 	if (WT_USER_IS_ADMIN && $ctype=='user') {
-		print i18n::translate('Use these blocks as the default block configuration for all users?')."<input type=\"checkbox\" name=\"setdefault\" value=\"1\" /><br /><br />\n";
+		echo i18n::translate('Use these blocks as the default block configuration for all users?')."<input type=\"checkbox\" name=\"setdefault\" value=\"1\" /><br /><br />\n";
 	}
 
-	print "<input type=\"button\" value=\"".i18n::translate('Reset to Default Blocks')."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=reset&amp;name=".str_replace("'", "\'", $name)."';\" />\n";
+	echo "<input type=\"button\" value=\"".i18n::translate('Reset to Default Blocks')."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=reset&amp;name=".str_replace("'", "\'", $name)."';\" />\n";
 	if ($ctype=='user') {
 		echo help_link('block_default_portal');
 	} else {
 		echo help_link('block_default_index');
 	}
-	print "&nbsp;&nbsp;";
-	print "<input type=\"button\" value=\"".i18n::translate('Click here to continue')."\" onclick=\"select_options(); save_form();\" />\n";
-	print help_link('click_here');
-	print "&nbsp;&nbsp;";
-	print "<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
 	if (WT_USER_GEDCOM_ADMIN && $ctype!="user") {
-		print "<br />";
-		print "<input type =\"button\" value=\"".i18n::translate('Clear cache files')."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=clearcache&amp;name=".str_replace("'", "\'", $name)."';\" />";
-		print help_link('clear_cache');
+		echo "<input type =\"button\" value=\"".i18n::translate('Clear cache files')."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=clearcache&amp;name=".str_replace("'", "\'", $name)."';\" />";
+		echo help_link('clear_cache');
 	}
-	print "</td></tr></table>";
-	print "</form>\n";
+	echo "&nbsp;&nbsp;";
+	echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"select_options(); save_form();\" />\n";
+	echo "&nbsp;&nbsp;";
+	echo "<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
+	echo "</td></tr></table>";
+	echo "</form>\n";
 
 	// end of 1st tab
-	print "</div>\n";
+	echo "</div>\n";
 
 	//--------------------------------Start 2nd tab Help page
-	print "\n\t<div id=\"help\" class=\"tab_page\" style=\"position: absolute; display: none; top: auto; left: auto; z-index: 2; \">\n\t";
+	echo "\n\t<div id=\"help\" class=\"tab_page\" style=\"position: absolute; display: none; top: auto; left: auto; z-index: 2; \">\n\t";
 
-	print "<br /><center><input type=\"button\" value=\"".i18n::translate('Click here to continue')."\" onclick=\"expand_layer('configure', true); expand_layer('help', false);\" /></center><br /><br />\n";
+	echo "<br /><center><input type=\"button\" value=\"".i18n::translate('Click here to continue')."\" onclick=\"expand_layer('configure', true); expand_layer('help', false);\" /></center><br /><br />\n";
 	echo i18n::translate("Here is a short description of each of the blocks you can place on the Welcome or My Page.<br /><table border='1' align='center'><tr><td class='list_value'><b>Name</b></td><td class='list_value'><b>Description</b></td></tr>&nbsp;</table>");
 
 	// end of 2nd tab
-	print "</div>\n";
+	echo "</div>\n";
 }
 
-print "</body></html>";		// Yes! Absolutely NOTHING at page bottom, please.
-?>
+echo "</body></html>";		// Yes! Absolutely NOTHING at page bottom, please.
