@@ -236,17 +236,7 @@ class TimelineControllerRoot extends BaseController {
 				print "</td><td valign=\"top\" class=\"person".$col."\">\n";
 				if (count($this->pids) > 6) print $event->getParentObject()->getFullName()." - ";
 				$indi=$event->getParentObject();
-				if ($fact=="_AKAN" || $fact=="_AKA" || $fact=="ALIA" || $fact == "_INTE") {
-					// Allow special processing for different languages
-					$func="fact_AKA_localisation_".WT_LOCALE;
-					if (function_exists($func) && get_class($indi)=="Person") {
-						// Localise the facts
-						$func($fact, $indi->getXref());
-						print i18n::translate($fact);
-					}
-					else print $event->getLabel();
-				}
-				else print $event->getLabel();
+				print $event->getLabel();
 				print " -- ";
 				if (get_class($indi)=="Person") {
 					print format_fact_date($event);

@@ -283,7 +283,7 @@ class Event {
 		if ($abbreviate) {
 			return i18n::fact_abbreviation($this->tag);
 		} else {
-			return i18n::translate($this->tag);
+			return translate_fact($this->tag, $this->parentObject);
 		}
 	}
 

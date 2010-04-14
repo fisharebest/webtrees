@@ -497,14 +497,6 @@ class IndividualControllerRoot extends BaseController {
 		for($i=0; $i<$ct; $i++) {
 			$fact = trim($nmatch[$i][1]);
 			if (($fact!="SOUR")&&($fact!="NOTE")) {
-				if ($fact=="_AKAN" || $fact=="_AKA" || $fact=="ALIA") {
-					// Allow special processing for different languages
-					$func="fact_AKA_localisation_".WT_LOCALE;
-					if (function_exists($func)) {
-						// Localise the AKA fact
-						$func($fact, $this->pid);
-					}
-				}
 				echo "\n\t\t\t<dt class=\"label\">";
 				echo translate_fact($fact, $this->indi);
 				echo "</dt><dd class=\"field\">";
