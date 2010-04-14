@@ -709,6 +709,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || (strpos($namerec, '2 _MARNM')!==false))
 		$adv_name_fields['_MARNM']='';
 
+	$person = Person::getInstance($pid);
 	foreach ($adv_name_fields as $tag=>$dummy) {
 		// Edit existing tags
 		if (preg_match_all("/2 $tag (.+)/", $namerec, $match))
@@ -720,7 +721,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					add_simple_tag("2 _MARNM ".$value);
 					add_simple_tag("2 _MARNM_SURN ".$marnm_surn);
 				} else {
-					add_simple_tag("2 $tag $value", '', translate_fact("NAME:{$tag}"));
+					// TODO: check this again - $person in config_data.php return error:
+					// Fatal error: Call to a member function getSex() on a non-object in \includes\config_data.php on line 1678
+					add_simple_tag("2 $tag $value", '', translate_fact("NAME:{$tag}", $person));
 				}
 			}
 			// Allow a new row to be entered if there was no row provided
@@ -729,7 +732,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					add_simple_tag("0 _MARNM");
 					add_simple_tag("0 _MARNM_SURN $new_marnm");
 				} else {
-					add_simple_tag("0 $tag", '', translate_fact("NAME:{$tag}"));
+					// TODO: check this again - $person in config_data.php return error:
+					// Fatal error: Call to a member function getSex() on a non-object in \includes\config_data.php on line 1678
+					add_simple_tag("0 $tag", '', translate_fact("NAME:{$tag}", $person));
 				}
 	}
 
@@ -1344,7 +1349,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}
 	} else {
 		if ($fact=="NOTE" && $islink){
-			echo i18n::translate('SHARED_NOTE');
+			echo translate_fact('SHARED_NOTE');
 			/*
 			if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
 				//	use $label (GEDFact Assistant); 
@@ -1376,22 +1381,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				}
 			} else {
 				echo help_link($fact);
-			}
-		}
-		if ($fact=="_AKAN" || $fact=="_AKA" || $fact=="ALIA") {
-			// Allow special processing for different languages
-			$func="fact_AKA_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise the AKA fact
-				$func($fact, $pid);
-			}
-		}
-		else if ($fact=="AGNC" && !empty($main_fact)) {
-			// Allow special processing for different languages
-			$func="fact_AGNC_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise the AGNC fact
-				$func($fact, $main_fact);
 			}
 		}
 	}
@@ -1601,7 +1590,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			print_specialchar_link($element_id, false);
 			print_findplace_link($element_id);
 			echo "</div>\n";
-			echo "<a href=\"javascript:;\" onclick=\"toggle_lati_long();\"><img src=\"images/buttons/target.gif\" border=\"0\" align=\"middle\" alt=\"", i18n::translate('LATI'), " / ", i18n::translate('LONG'), "\" title=\"", i18n::translate('LATI'), " / ", i18n::translate('LONG'), "\" /></a>";
+			echo "<a href=\"javascript:;\" onclick=\"toggle_lati_long();\"><img src=\"images/buttons/target.gif\" border=\"0\" align=\"middle\" alt=\"", translate_fact('LATI'), " / ", translate_fact('LONG'), "\" title=\"", translate_fact('LATI'), " / ", translate_fact('LONG'), "\" /></a>";
 			if ($SPLIT_PLACES) {
 				if (!function_exists("print_place_subfields")) {
 					require WT_ROOT.'includes/functions/functions_places.php';
@@ -1815,7 +1804,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		add_simple_tag(($level+2)." $text");
 		if ($FULL_SOURCES) {
 			// 4 DATE
-			add_simple_tag(($level+2)." DATE", '', i18n::translate('DATA:DATE'));
+			add_simple_tag(($level+2)." DATE", '', translate_fact('DATA:DATE'));
 			// 3 QUAY
 			add_simple_tag(($level+1)." QUAY");
 		}
@@ -1895,7 +1884,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		} else {
 			//-- Retrieve existing resn or add new resn to fact
 			$text = '';
-			echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["plus"]["other"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", i18n::translate('RESN'), "</a>";
+			echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["plus"]["other"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", translate_fact('RESN'), "</a>";
 			echo help_link('RESN');
 			echo "<br />\n";
 			echo "<div id=\"newresn\" style=\"display: none;\">\n";
@@ -2379,7 +2368,7 @@ function create_add_form($fact) {
 			add_simple_tag("2 PAGE");
 			add_simple_tag("3 TEXT");
 			if ($FULL_SOURCES) {
-				add_simple_tag("3 DATE", '', i18n::translate('DATA:DATE'));
+				add_simple_tag("3 DATE", '', translate_fact('DATA:DATE'));
 				add_simple_tag("2 QUAY");
 			}
 		}
@@ -2485,22 +2474,15 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 		if ($type!="DATA" && $type!="CONT") {
 			$tags[]=$type;
-			if ($type=="_AKAN" || $type=="_AKA" || $type=="ALIA") {
-				// Allow special processing for different languages
-				$func="fact_AKA_localisation_".WT_LOCALE;
-				if (function_exists($func)) {
-					// Localise the AKA fact
-					$func($type, $pid);
-				}
-			}
+			$person = Person::getInstance($pid);
 			$subrecord = $level.' '.$type.' '.$text;
 			if ($inSource && $type=="DATE") {
-				add_simple_tag($subrecord, '', translate_fact($label));
+				add_simple_tag($subrecord, '', translate_fact($label, $person));
 			} elseif (!$inSource && $type=="DATE") {
-				add_simple_tag($subrecord, $level1type, translate_fact($label));
+				add_simple_tag($subrecord, $level1type, translate_fact($label, $person));
 				$add_date = false;
 			} else {
-				add_simple_tag($subrecord, $level0type, translate_fact($label));
+				add_simple_tag($subrecord, $level0type, translate_fact($label, $person));
 			}
 		}
 
@@ -2531,7 +2513,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
 		}
 		if ($level==2 && $type=='STAT' && in_array($level1type, $templefacts) && !in_array('DATE', $subtags)) {
-			add_simple_tag("3 DATE", '', i18n::translate('STAT:DATE'));
+			add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
 		}
 
 		$i++;
@@ -2604,7 +2586,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 					break;
 				case "STAT":
 					if (in_array($level1tag, $templefacts))
-						add_simple_tag("3 DATE", '', i18n::translate('STAT:DATE'));
+						add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
 					break;
 				case "DATE":
 					if (in_array($level1tag, $date_and_time))
