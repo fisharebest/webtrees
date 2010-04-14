@@ -356,7 +356,7 @@ class stats_ui extends stats
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function gedcomNews($params=null) {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $ctype, $WT_BLOCKS;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $ctype;
 
 		if($params === null){$params = array();}
 		if(isset($params[0]) && $params[0] != ''){$limit = strtolower($params[0]);}else{$limit = 'count';}

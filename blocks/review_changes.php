@@ -39,14 +39,17 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_REVIEW_CHANGES_PHP', '');
 
-$WT_BLOCKS["review_changes_block"]["name"]			= i18n::translate('Pending Changes');
-$WT_BLOCKS["review_changes_block"]["descr"]		= i18n::translate('The Pending Changes block will give users with Edit rights a list of the records that have been changed online and that still need to be reviewed and accepted.  These changes are pending acceptance or rejection.<br /><br />If this block is enabled, users with Accept rights will receive an email once a day notifying them that changes need to be reviewed.');
-$WT_BLOCKS["review_changes_block"]["canconfig"]	= false;
-$WT_BLOCKS["review_changes_block"]["config"]		= array(
-	"cache"=>0,
-	"days"=>1,
-	"sendmail"=>"yes"
-	);
+$WT_BLOCKS['review_changes_block']=array(
+	'name'=>i18n::translate('Pending Changes'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The Pending Changes block will give users with Edit rights a list of the records that have been changed online and that still need to be reviewed and accepted.  These changes are pending acceptance or rejection.<br /><br />If this block is enabled, users with Accept rights will receive an email once a day notifying them that changes need to be reviewed.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0,
+		'days'=>1,
+		'sendmail'=>'yes'
+	)
+);
 
 /**
  * Print Review Changes Block

@@ -76,7 +76,7 @@ $IconLDarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["ldarrow"]["other"]."\
 $WT_BLOCKS = array();
 $d = dir("blocks");
 while (false !== ($entry = $d->read())) {
-	if (($entry!=".") && ($entry!="..") && ($entry!="CVS") && (preg_match("/\.php$/", $entry)>0)) {
+	if (preg_match("/\.php$/", $entry)>0) {
 		require_once WT_ROOT.'blocks/'.$entry;
 	}
 }
@@ -114,9 +114,8 @@ if (file_exists(WT_ROOT.'modules')) {
 //					"gedcom", include in Index page only
 $SortedBlocks = array();
 foreach($WT_BLOCKS as $key => $BLOCK) {
-	if (empty($BLOCK["type"])) $BLOCK["type"] = "both";
-	if (($BLOCK["type"]=="both") or ($BLOCK["type"]==$ctype)) {
-		$SortedBlocks[$key] = $BLOCK["name"];
+	if ($BLOCK['type']=='both' || $BLOCK['type']==$ctype) {
+		$SortedBlocks[$key] = $BLOCK['name'];
 	}
 }
 asort($SortedBlocks);
@@ -136,8 +135,7 @@ if ($ctype=="user") {
 		$ublocks["right"][] = array("print_upcoming_events", "");
 		$ublocks["right"][] = array("print_logged_in_users", "");
 	}
-}
-else {
+} else {
 	$ublocks = getBlocks($GEDCOM);
 	if (($action=="reset") or ((count($ublocks["main"])==0) and (count($ublocks["right"])==0))) {
 		$ublocks["main"] = array();
@@ -174,13 +172,12 @@ function parentrefresh() {
 <?php
 if ($action=="updateconfig") {
 	$block = $ublocks[$side][$index];
-	if (isset($WT_BLOCKS[$block[0]]["canconfig"]) && $WT_BLOCKS[$block[0]]["canconfig"] && isset($WT_BLOCKS[$block[0]]["config"]) && is_array($WT_BLOCKS[$block[0]]["config"])) {
+	if ($WT_BLOCKS[$block[0]]["canconfig"] && is_array($WT_BLOCKS[$block[0]]["config"])) {
 		$config = $block[1];
 		foreach($WT_BLOCKS[$block[0]]["config"] as $config_name=>$config_value) {
 			if (isset($_POST[$config_name])) {
 				$config[$config_name] = $_POST[$config_name];
-			}
-			else {
+			} else {
 				$config[$config_name] = "";
 			}
 		}
@@ -272,8 +269,7 @@ if ($action=="configure" && isset($ublocks[$side][$index])) {
 		print help_link('click_here');
 		print "&nbsp;&nbsp;<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
 		print "</td></tr>";
-	}
-	else {
+	} else {
 		print "<tr><td colspan=\"2\" class=\"optionbox\">";
 		print i18n::translate('This block cannot be configured.');
 		print "</td></tr>";
@@ -374,7 +370,7 @@ else {
  */
 	<?php
 	print "var block_descr = new Array();\n";
-	foreach($WT_BLOCKS as $b=>$block) {
+	foreach ($WT_BLOCKS as $b=>$block) {
 		print "block_descr['$b'] = '".str_replace("'", "\\'", embed_globals($block["descr"]))."';\n";
 	}
 	print "block_descr['advice1'] = '".str_replace("'", "\\'", i18n::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'))."';\n";
@@ -478,7 +474,6 @@ else {
 	print "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
 		print "<select id=\"available_select\" name=\"available[]\" size=\"10\" onchange=\"show_description('available_select');\">\n";
 		foreach($SortedBlocks as $key => $value) {
-			if (!isset($WT_BLOCKS[$key]["type"])) $WT_BLOCKS[$key]["type"]=$ctype;
 			print "<option value=\"$key\">".$SortedBlocks[$key]."</option>\n";
 		}
 		print "</select>\n";

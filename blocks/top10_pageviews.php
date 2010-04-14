@@ -36,14 +36,17 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_TOP10_PAGEVIEWS_PHP', '');
 
-$WT_BLOCKS["top10_pageviews"]["name"]		= i18n::translate('Most Viewed Items');
-$WT_BLOCKS["top10_pageviews"]["descr"]		= i18n::translate('This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings.');
-$WT_BLOCKS["top10_pageviews"]["canconfig"]	= true;
-$WT_BLOCKS["top10_pageviews"]["config"]	= array(
-	"cache"=>1,
-	"num"=>10,
-	"count_placement"=>"left"
-	);
+$WT_BLOCKS['top10_pageviews']=array(
+	'name'=>i18n::translate('Most Viewed Items'),
+	'type'=>'both',
+	'descr'=>i18n::translate('This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>1,
+		'num'=>10,
+		'count_placement'=>'left'
+	)
+);
 
 function top10_pageviews($block=true, $config="", $side, $index) {
 	global $TBLPREFIX, $INDEX_DIRECTORY, $WT_BLOCKS, $ctype, $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_COUNTER, $SHOW_SOURCES, $TEXT_DIRECTION;

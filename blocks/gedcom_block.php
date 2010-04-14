@@ -36,11 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_GEDCOM_BLOCK_PHP', '');
 
-$WT_BLOCKS["print_gedcom_block"]["name"]		= i18n::translate('GEDCOM Welcome');
-$WT_BLOCKS["print_gedcom_block"]["descr"]		= i18n::translate('The GEDCOM Welcome block works the same as the User Welcome block.  It welcomes the visitor to the site and displays the title of the currently active database as well as the current date and time.');
-$WT_BLOCKS["print_gedcom_block"]["type"]		= "gedcom";
-$WT_BLOCKS["print_gedcom_block"]["canconfig"]	= false;
-$WT_BLOCKS["print_gedcom_block"]["config"]		= array("cache"=>0);
+$WT_BLOCKS['print_gedcom_block']=array(
+	'name'=>i18n::translate('GEDCOM Welcome'),
+	'type'=>'gedcom',
+	'descr'=>i18n::translate('The GEDCOM Welcome block works the same as the User Welcome block.  It welcomes the visitor to the site and displays the title of the currently active database as well as the current date and time.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 
 //-- function to print the gedcom block
 function print_gedcom_block($block = true, $config="", $side, $index) {

@@ -38,19 +38,20 @@ define('WT_TODAYS_EVENTS_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$WT_BLOCKS["print_todays_events"]["name"]		= i18n::translate('On This Day');
-$WT_BLOCKS["print_todays_events"]["descr"]		= i18n::translate('The On This Day, in Your History... block shows anniversaries of events for today.  You can configure the amount of detail shown.');
-$WT_BLOCKS["print_todays_events"]["infoStyle"]	= "style2";
-$WT_BLOCKS["print_todays_events"]["sortStyle"]	= "alpha";
-$WT_BLOCKS["print_todays_events"]["canconfig"]	= true;
-$WT_BLOCKS["print_todays_events"]["config"]	= array(
-	"cache"=>1,
-	"filter"=>"all",
-	"onlyBDM"=>"no",
-	"infoStyle"=>"style2",
-	"sortStyle"=>"alpha",
-	"allowDownload"=>"yes"
-	);
+$WT_BLOCKS['print_todays_events']=array(
+	'name'=>i18n::translate('On This Day'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The On This Day, in Your History... block shows anniversaries of events for today.  You can configure the amount of detail shown.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>1,
+		'filter'=>'all',
+		'onlyBDM'=>'no',
+		'infoStyle'=>'style2',
+		'sortStyle'=>'alpha',
+		'allowDownload'=>'yes'
+	)
+);
 
 //-- today's events block
 //-- this block prints a list of today's upcoming events of living people in your gedcom

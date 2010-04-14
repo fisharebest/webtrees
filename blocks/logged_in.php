@@ -36,10 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_LOGGED_IN_PHP', '');
 
-$WT_BLOCKS["print_logged_in_users"]["name"]		= i18n::translate('Logged In Users');
-$WT_BLOCKS["print_logged_in_users"]["descr"]		= i18n::translate('The Logged In Users block shows a list of the users who are currently logged in.');
-$WT_BLOCKS["print_logged_in_users"]["canconfig"]	= false;
-$WT_BLOCKS["print_logged_in_users"]["config"]		= array("cache"=>0);
+$WT_BLOCKS['print_logged_in_users']=array(
+	'name'=>i18n::translate('Logged In Users'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The Logged In Users block shows a list of the users who are currently logged in.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 
 /**
  * logged in users

@@ -39,11 +39,16 @@ if (!defined('WT_WEBTREES')) {
 define('WT_RSS_BLOCK_PHP', '');
 
 global $GEDCOM_TITLE;
-$WT_BLOCKS["print_RSS_block"]["name"]			= i18n::translate('RSS Feeds');
-$WT_BLOCKS["print_RSS_block"]["descr"]			= i18n::translate('News and links from the %s site', $GEDCOM_TITLE);
-$WT_BLOCKS["print_RSS_block"]["type"]			= "gedcom";
-$WT_BLOCKS["print_RSS_block"]["canconfig"]		= false;
-$WT_BLOCKS["print_RSS_block"]["config"]		= array("cache"=>0);
+
+$WT_BLOCKS['print_RSS_block']=array(
+	'name'=>i18n::translate('RSS Feeds'),
+	'type'=>'gedcom',
+	'descr'=>i18n::translate('News and links from the %s site', $GEDCOM_TITLE),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 /**
  * Print RSS Block
  *

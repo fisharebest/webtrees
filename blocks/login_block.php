@@ -36,11 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_LOGIN_BLOCK_PHP', '');
 
-$WT_BLOCKS["print_login_block"]["name"]		= i18n::translate('Login');
-$WT_BLOCKS["print_login_block"]["descr"]		= i18n::translate('The Login block accepts a user name and password for users to login.');
-$WT_BLOCKS["print_login_block"]["type"]		= "both";		// On My Page, this becomes a Logout block
-$WT_BLOCKS["print_login_block"]["canconfig"]	= false;
-$WT_BLOCKS["print_login_block"]["config"]		= array("cache"=>0);
+$WT_BLOCKS['print_login_block']=array(
+	'name'=>i18n::translate('Login'),
+	'type'=>'both',		// On My Page, this becomes a Logout block
+	'descr'=>i18n::translate('The Login block accepts a user name and password for users to login.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 
 /**
  * Print Login Block

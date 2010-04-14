@@ -40,14 +40,17 @@ define('WT_TODO_PHP', '');
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-$WT_BLOCKS['print_todo']['name']     =i18n::translate('&quot;To Do&quot; tasks');
-$WT_BLOCKS['print_todo']['descr']    =i18n::translate('The To Do block lists all outstanding _TODO facts in the database.');
-$WT_BLOCKS['print_todo']['canconfig']=true;
-$WT_BLOCKS['print_todo']['config']   =array(
-	'cache'          =>0,
-	'show_unassigned'=>true,  // show unassigned items
-	'show_other'     =>false, // show items assigned to other users
-	'show_future'    =>false  // show items with a future date
+$WT_BLOCKS['print_todo']=array(
+	'name'=>i18n::translate('&quot;To Do&quot; tasks'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The To Do block lists all outstanding _TODO facts in the database.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'          =>0,
+		'show_unassigned'=>true,  // show unassigned items
+		'show_other'     =>false, // show items assigned to other users
+		'show_future'    =>false  // show items with a future date
+	)
 );
 
 // this block prints a list of _TODO events in your gedcom

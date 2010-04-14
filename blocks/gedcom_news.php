@@ -36,14 +36,16 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_GEDCOM_NEWS_PHP', '');
 
-$WT_BLOCKS['print_gedcom_news']['name']		= i18n::translate('GEDCOM News');
-$WT_BLOCKS['print_gedcom_news']['descr']		= i18n::translate('The GEDCOM News block shows the visitor news releases or articles posted by an admin user.<br /><br />The News block is a good place to announce a significant database update, a family reunion, or the birth of a child.');
-$WT_BLOCKS['print_gedcom_news']['type']		= 'gedcom';
-$WT_BLOCKS['print_gedcom_news']['canconfig']	= true;
-$WT_BLOCKS['print_gedcom_news']['config']		= array(
-	'cache'=>7,
-	'limit' => 'nolimit',
-	'flag' => 0
+$WT_BLOCKS['print_gedcom_news']=array(
+	'name'=>i18n::translate('GEDCOM News'),
+	'type'=>'gedcom',
+	'descr'=>i18n::translate('The GEDCOM News block shows the visitor news releases or articles posted by an admin user.<br /><br />The News block is a good place to announce a significant database update, a family reunion, or the birth of a child.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>7,
+		'limit'=>'nolimit',
+		'flag'=>0
+	)
 );
 
 /**

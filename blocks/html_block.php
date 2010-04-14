@@ -36,12 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_HTML_BLOCK_PHP', '');
 
-$WT_BLOCKS["print_html_block"]["name"]			= i18n::translate('HTML');
-$WT_BLOCKS["print_html_block"]["descr"]		= i18n::translate('This is a simple HTML block that you can place on your page to add any sort of message you may want.');
-$WT_BLOCKS["print_html_block"]["canconfig"]= true;
-$WT_BLOCKS["print_html_block"]["config"]		= array(
-	"cache"=>1,
-	"html"=>i18n::translate('<p class="blockhc"><b>Put your title here</b></p><br /><p>Click the configure button')." <img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["admin"]["small"]."\" alt=\"".i18n::translate('Configure')."\" /> ".i18n::translate('to change what is printed here.</p>')
+$WT_BLOCKS['print_html_block']=array(
+	'name'=>i18n::translate('HTML'),
+	'type'=>'both',
+	'descr'=>i18n::translate('This is a simple HTML block that you can place on your page to add any sort of message you may want.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>1,
+		'html'=>i18n::translate('<p class="blockhc"><b>Put your title here</b></p><br /><p>Click the configure button')." <img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['admin']['small']."\" alt=\"".i18n::translate('Configure')."\" /> ".i18n::translate('to change what is printed here.</p>')
+	)
 );
 
 function print_html_block($block=true, $config="", $side, $index) {

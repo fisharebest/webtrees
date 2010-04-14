@@ -38,20 +38,21 @@ define('WT_UPCOMING_EVENTS_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$WT_BLOCKS["print_upcoming_events"]["name"]		= i18n::translate('Upcoming Events');
-$WT_BLOCKS["print_upcoming_events"]["descr"]		= i18n::translate('The Upcoming Events block shows anniversaries of events that will occur in the near future.  You can configure the amount of detail shown, and the administrator can configure how far into the future this block will look.');
-$WT_BLOCKS["print_upcoming_events"]["infoStyle"]	= "style2";
-$WT_BLOCKS["print_upcoming_events"]["sortStyle"]	= "alpha";
-$WT_BLOCKS["print_upcoming_events"]["canconfig"]	= true;
-$WT_BLOCKS["print_upcoming_events"]["config"]		= array(
-	"cache"=>1,
-	"days"=>30,
-	"filter"=>"all",
-	"onlyBDM"=>"no",
-	"infoStyle"=>"style2",
-	"sortStyle"=>"alpha",
-	"allowDownload"=>"yes"
-	);
+$WT_BLOCKS['print_upcoming_events']=array(
+	'name'=>i18n::translate('Upcoming Events'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The Upcoming Events block shows anniversaries of events that will occur in the near future.  You can configure the amount of detail shown, and the administrator can configure how far into the future this block will look.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>1,
+		'days'=>30,
+		'filter'=>'all',
+		'onlyBDM'=>'no',
+		'infoStyle'=>'style2',
+		'sortStyle'=>'alpha',
+		'allowDownload'=>'yes'
+	)
+);
 
 //-- upcoming events block
 //-- this block prints a list of upcoming events of people in your gedcom

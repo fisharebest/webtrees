@@ -36,13 +36,16 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_TOP10SURNAMES_PHP', '');
 
-$WT_BLOCKS["print_block_name_top10"]["name"]		= i18n::translate('Top 10 Surnames');
-$WT_BLOCKS["print_block_name_top10"]["descr"]		= i18n::translate('This block shows a table of the 10 most frequently occurring surnames in the database.  The actual number of surnames shown in this block is configurable.  You can configure the GEDCOM to remove names from this list.');
-$WT_BLOCKS["print_block_name_top10"]["canconfig"]	= true;
-$WT_BLOCKS["print_block_name_top10"]["config"]		= array(
-	"cache"=>7,
-	"num"=>10,
-	);
+$WT_BLOCKS['print_block_name_top10']=array(
+	'name'=>i18n::translate('Top 10 Surnames'),
+	'type'=>'both',
+	'descr'=>i18n::translate('This block shows a table of the 10 most frequently occurring surnames in the database.  The actual number of surnames shown in this block is configurable.  You can configure the GEDCOM to remove names from this list.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>7,
+		'num'=>10,
+	)
+);
 
 function top_surname_sort($a, $b) {
 	$counta=0;

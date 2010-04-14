@@ -36,11 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_USER_WELCOME_PHP', '');
 
-$WT_BLOCKS["print_welcome_block"]["name"]		= i18n::translate('User Welcome');
-$WT_BLOCKS["print_welcome_block"]["descr"]		= i18n::translate('The User Welcome block shows the user the current date and time, quick links to modify his account or go to his own Pedigree chart, and a link to customize his My Page.');
-$WT_BLOCKS["print_welcome_block"]["type"]		= "user";
-$WT_BLOCKS["print_welcome_block"]["canconfig"]	= false;
-$WT_BLOCKS["print_welcome_block"]["config"]	= array("cache"=>0);
+$WT_BLOCKS['print_welcome_block']=array(
+	'name'=>i18n::translate('User Welcome'),
+	'descr'=>i18n::translate('The User Welcome block shows the user the current date and time, quick links to modify his account or go to his own Pedigree chart, and a link to customize his My Page.'),
+	'type'=>'user',
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 
 //-- function to print the welcome block
 function print_welcome_block($block=true, $config="", $side, $index) {

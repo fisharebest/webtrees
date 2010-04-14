@@ -37,17 +37,18 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_TOP10_GIVNNAMES_PHP', '');
 
-$WT_BLOCKS["print_block_givn_top10"]["name"]		= i18n::translate('Top 10 Given Names');
-$WT_BLOCKS["print_block_givn_top10"]["descr"]		= i18n::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
-$WT_BLOCKS["print_block_givn_top10"]["type"]		= "both";
-$WT_BLOCKS["print_block_givn_top10"]["infoStyle"]	= "style2";
-$WT_BLOCKS["print_block_givn_top10"]["canconfig"]	= true;
-$WT_BLOCKS["print_block_givn_top10"]["config"]		= array(
-	"cache"=>7,
-	"num"=>10,
-	"infoStyle"=>"style2",
-	"showUnknown"=>true
-	);
+$WT_BLOCKS['print_block_givn_top10']=array(
+	'name'=>i18n::translate('Top 10 Given Names'),
+	'type'=>'both',
+	'descr'=>i18n::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>7,
+		'num'=>10,
+		'infoStyle'=>'style2',
+		'showUnknown'=>true
+	)
+);
 
 /**
  * Print First Names Block

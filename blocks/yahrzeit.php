@@ -37,14 +37,17 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_YAHRZEIT_PHP', '');
 
-$WT_BLOCKS['print_yahrzeit']['name']     =i18n::translate('Upcoming Yahrzeiten');
-$WT_BLOCKS['print_yahrzeit']['descr']    =i18n::translate('The Upcoming Yahrzeiten block shows anniversaries of death dates that will occur in the near future.  You can configure the period shown, and the Administrator can configure how far into the future this block will look.');
-$WT_BLOCKS['print_yahrzeit']['canconfig']=true;
-$WT_BLOCKS['print_yahrzeit']['config']   =array(
-	'cache'        =>1,
-	'days'         =>30,
-	'infoStyle'    =>'style2',
-	'allowDownload'=>'yes'
+$WT_BLOCKS['print_yahrzeit']=array(
+	'name'=>i18n::translate('Upcoming Yahrzeiten'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The Upcoming Yahrzeiten block shows anniversaries of death dates that will occur in the near future.  You can configure the period shown, and the Administrator can configure how far into the future this block will look.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'        =>1,
+		'days'         =>30,
+		'infoStyle'    =>'style2',
+		'allowDownload'=>'yes'
+	)
 );
 
 // this block prints a list of upcoming yahrzeit events of people in your gedcom

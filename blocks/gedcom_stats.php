@@ -40,29 +40,32 @@ define('WT_GEDCOM_STATS_PHP', '');
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require_once WT_ROOT.'includes/classes/class_stats.php';
 
-$WT_BLOCKS['print_gedcom_stats']['name']     =i18n::translate('GEDCOM Statistics');
-$WT_BLOCKS['print_gedcom_stats']['descr']    =i18n::translate('The GEDCOM Statistics block shows the visitor some basic information about the database, such as when it was created and how many people are in it.<br /><br />It also has a list of the most frequent surnames.  You can configure this block to not show the Frequent Surnames list, and you can also configure the GEDCOM to remove or add names to this list.  You can set the occurrence threshold for this list in the GEDCOM configuration.');
-$WT_BLOCKS['print_gedcom_stats']['canconfig']=true;
-$WT_BLOCKS['print_gedcom_stats']['config']   =array(
-	'cache'               =>1,
-	'show_common_surnames'=>'yes',
-	'stat_indi'           =>'yes',
-	'stat_fam'            =>'yes',
-	'stat_sour'           =>'yes',
-	'stat_other'          =>'yes',
-	'stat_media'          =>'yes',
-	'stat_surname'        =>'yes',
-	'stat_events'         =>'yes',
-	'stat_users'          =>'yes',
-	'stat_first_birth'    =>'yes',
-	'stat_last_birth'     =>'yes',
-	'stat_first_death'    =>'yes',
-	'stat_last_death'     =>'yes',
-	'stat_long_life'      =>'yes',
-	'stat_avg_life'       =>'yes',
-	'stat_most_chil'      =>'yes',
-	'stat_avg_chil'       =>'yes',
-	'stat_link'           =>'yes'
+$WT_BLOCKS['print_gedcom_stats']=array(
+	'name'=>i18n::translate('GEDCOM Statistics'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The GEDCOM Statistics block shows the visitor some basic information about the database, such as when it was created and how many people are in it.<br /><br />It also has a list of the most frequent surnames.  You can configure this block to not show the Frequent Surnames list, and you can also configure the GEDCOM to remove or add names to this list.  You can set the occurrence threshold for this list in the GEDCOM configuration.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'               =>1,
+		'show_common_surnames'=>'yes',
+		'stat_indi'           =>'yes',
+		'stat_fam'            =>'yes',
+		'stat_sour'           =>'yes',
+		'stat_other'          =>'yes',
+		'stat_media'          =>'yes',
+		'stat_surname'        =>'yes',
+		'stat_events'         =>'yes',
+		'stat_users'          =>'yes',
+		'stat_first_birth'    =>'yes',
+		'stat_last_birth'     =>'yes',
+		'stat_first_death'    =>'yes',
+		'stat_last_death'     =>'yes',
+		'stat_long_life'      =>'yes',
+		'stat_avg_life'       =>'yes',
+		'stat_most_chil'      =>'yes',
+		'stat_avg_chil'       =>'yes',
+		'stat_link'           =>'yes'
+	)
 );
 
 //-- function to print the gedcom statistics block

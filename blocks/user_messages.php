@@ -38,11 +38,15 @@ define('WT_USER_MESSAGES_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-$WT_BLOCKS["print_user_messages"]["name"]		= i18n::translate('User Messages');
-$WT_BLOCKS["print_user_messages"]["descr"]		= i18n::translate('The User Messages block shows a list of the messages that have been sent to the active user.');
-$WT_BLOCKS["print_user_messages"]["type"]		= "user";
-$WT_BLOCKS["print_user_messages"]["canconfig"]	= false;
-$WT_BLOCKS["print_user_messages"]["config"]	= array("cache"=>0);
+$WT_BLOCKS['print_user_messages']=array(
+	'name'=>i18n::translate('User Messages'),
+	'type'=>'user',
+	'descr'=>i18n::translate('The User Messages block shows a list of the messages that have been sent to the active user.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 
 //-- print user messages
 function print_user_messages($block=true, $config="", $side, $index) {

@@ -40,15 +40,18 @@ define('WT_CHARTS_PHP', '');
 require_once WT_ROOT.'includes/controllers/hourglass_ctrl.php';
 require_once WT_ROOT.'includes/classes/class_treenav.php';
 
-$WT_BLOCKS["print_charts_block"]["name"]		= i18n::translate('Charts Block');
-$WT_BLOCKS["print_charts_block"]["descr"]		= i18n::translate('The Charts block allows you to place a chart on the Home or My Page.  You can configure the block to show an ancestors, descendants, or hourglass view.  You can also choose the root person for the chart.');
-$WT_BLOCKS["print_charts_block"]["canconfig"]	= true;
-$WT_BLOCKS["print_charts_block"]["config"]		= array(
-	"cache"=>1,
-	"pid"=>'',
-	"type"=>'pedigree',
-	"details"=>'no'
-	);
+$WT_BLOCKS['print_charts_block']=array(
+	'name'=>i18n::translate('Charts Block'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The Charts block allows you to place a chart on the Home or My Page.  You can configure the block to show an ancestors, descendants, or hourglass view.  You can also choose the root person for the chart.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>1,
+		'pid'=>'',
+		'type'=>'pedigree',
+		'details'=>'no'
+	)
+);
 
 function print_charts_block($block = true, $config="", $side, $index) {
 	global $WT_BLOCKS, $ctype, $WT_IMAGE_DIR, $WT_IMAGES, $PEDIGREE_ROOT_ID, $PEDIGREE_FULL_DETAILS;

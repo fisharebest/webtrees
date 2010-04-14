@@ -40,16 +40,19 @@ define('WT_BLOCK_HTMLPLUS_PHP', '');
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require_once WT_ROOT.'includes/classes/class_stats.php';
 
-$WT_BLOCKS['print_htmlplus_block']['name']			= i18n::translate('Advanced HTML');
-$WT_BLOCKS['print_htmlplus_block']['descr']		= i18n::translate('This is an HTML block that you can place on your page to add any sort of message you may want.  You can insert references to information from your GEDCOM into the HTML text.');
-$WT_BLOCKS['print_htmlplus_block']['canconfig']	= true;
-$WT_BLOCKS['print_htmlplus_block']['config']		= array(
-	'cache'=>0,
-	'title'=>'',
-	'html'=>i18n::translate('<p class="blockhc"><b>Put your title here</b></p><br /><p>Click the configure button')." <img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" alt=\"".i18n::translate('Configure')."\" /> ".i18n::translate('to change what is printed here.</p>'),
-	'gedcom'=>'__current__',
-	'compat'=>0,
-	'ui'=>0
+$WT_BLOCKS['print_htmlplus_block']=array(
+	'name'=>i18n::translate('Advanced HTML'),
+	'type'=>'both',
+	'descr'=>i18n::translate('This is an HTML block that you can place on your page to add any sort of message you may want.  You can insert references to information from your GEDCOM into the HTML text.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>0,
+		'title'=>'',
+		'html'=>i18n::translate('<p class="blockhc"><b>Put your title here</b></p><br /><p>Click the configure button')." <img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" alt=\"".i18n::translate('Configure')."\" /> ".i18n::translate('to change what is printed here.</p>'),
+		'gedcom'=>'__current__',
+		'compat'=>0,
+		'ui'=>0
+	)
 );
 
 function print_htmlplus_block($block=true, $config='', $side, $index) {

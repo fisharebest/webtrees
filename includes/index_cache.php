@@ -50,11 +50,7 @@ function loadCachedBlock($block, $index) {
 	}
 
 	//-- ignore cache when its life is not configured or when its life is zero
-	$cacheLife = 0;
-	if (isset($block[1]['cache'])) $cacheLife = $block[1]['cache'];
-	else {
-		if (isset($WT_BLOCKS[$block[0]]['config']['cache'])) $cacheLife = $WT_BLOCKS[$block[0]]['config']['cache'];
-	}
+	$cacheLife = $WT_BLOCKS[$block[0]]['config']['cache'];
 	if ($cacheLife==0) return false;
 
 	$fname = "{$INDEX_DIRECTORY}/cache/{$theme_name}/".WT_LOCALE."/".WT_GEDCOM."/{$index}_{$block[0]}";
@@ -90,12 +86,7 @@ function saveCachedBlock($block, $index, $content) {
 	}
 
 	//-- ignore cache when its life is not configured or when its life is zero
-	$cacheLife = 0;
-	if (isset($block[1]['cache'])) {
-		$cacheLife = $block[1]['cache'];
-	} elseif (isset($WT_BLOCKS[$block[0]]['config']['cache'])) {
-		$cacheLife = $WT_BLOCKS[$block[0]]['config']['cache'];
-	}
+	$cacheLife=$WT_BLOCKS[$block[0]]['config']['cache'];
 	if ($cacheLife==0) {
 		return false;
 	}

@@ -36,11 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_THEME_SELECT_PHP', '');
 
-$WT_BLOCKS["print_block_theme_select"]["name"]			= i18n::translate('Theme Select');
-$WT_BLOCKS["print_block_theme_select"]["descr"]		= i18n::translate('The Theme Select block displays the Theme selector even when the Change Theme feature is disabled.');
-$WT_BLOCKS["print_block_theme_select"]["type"]			= "gedcom";
-$WT_BLOCKS["print_block_theme_select"]["canconfig"]	= false;
-$WT_BLOCKS["print_block_theme_select"]["config"]		= array("cache"=>-1);
+$WT_BLOCKS['print_block_theme_select']=array(
+	'name'=>i18n::translate('Theme Select'),
+	'type'=>'gedcom',
+	'descr'=>i18n::translate('The Theme Select block displays the Theme selector even when the Change Theme feature is disabled.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>-1
+	)
+);
 
 function print_block_theme_select($style=0, $config="", $side, $index) {
 	global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $THEME_DIR, $themeformcount;

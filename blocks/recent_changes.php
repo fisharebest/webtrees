@@ -36,14 +36,17 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_RECENT_CHANGES_PHP', '');
 
-$WT_BLOCKS["print_recent_changes"]["name"]     = i18n::translate('Recent Changes');
-$WT_BLOCKS["print_recent_changes"]["descr"]    = i18n::translate('The Recent Changes block will list all of the changes that have been made to the database in the last month.  This block can help you stay current with the changes that have been made.  Changes are detected automatically, using the CHAN tag defined in the GEDCOM Standard.');
-$WT_BLOCKS["print_recent_changes"]["canconfig"]= true;
-$WT_BLOCKS["print_recent_changes"]["config"]   = array(
-	"cache"=>1,
-	"days"=>30,
-	"hide_empty"=>"no"
-	);
+$WT_BLOCKS['print_recent_changes']=array(
+	'name'=>i18n::translate('Recent Changes'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The Recent Changes block will list all of the changes that have been made to the database in the last month.  This block can help you stay current with the changes that have been made.  Changes are detected automatically, using the CHAN tag defined in the GEDCOM Standard.'),
+	'canconfig'=>true,
+	'config'=>array(
+		'cache'=>1,
+		'days'=>30,
+		'hide_empty'=>'no'
+	)
+);
 
 //-- Recent Changes block
 //-- this block prints a list of changes that have occurred recently in your gedcom

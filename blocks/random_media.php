@@ -38,45 +38,46 @@ define('WT_RANDOM_MEDIA_PHP', '');
 
 //-- only enable this block if multi media has been enabled
 if ($MULTI_MEDIA) {
-	$WT_BLOCKS['print_random_media']['name']		= i18n::translate('Random Media');
-	$WT_BLOCKS['print_random_media']['descr']		= i18n::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br /><br />The administrator determines whether this block can show media items associated with persons or events.');
-	$WT_BLOCKS['print_random_media']['canconfig']	= true;
-	$WT_BLOCKS['print_random_media']['config']		= array(
-		'cache'   =>0,
-		'filter'  =>'all',
-		'controls'=>'yes',
-		'start'   =>'no',
-
-		'filter_avi'  =>'no',
-		'filter_bmp'  =>'yes',
-		'filter_gif'  =>'yes',
-		'filter_jpeg' =>'yes',
-		'filter_mp3'  =>'no',
-		'filter_ole'  =>'yes',
-		'filter_pcx'  =>'yes',
-		'filter_pdf'  =>'no',
-		'filter_png'  =>'yes',
-		'filter_tiff' =>'yes',
-		'filter_wav'  =>'no',
-
-		'filter_audio'		=>'no',
-		'filter_book'		=>'yes',
-		'filter_card'		=>'yes',
-		'filter_certificate'=>'yes',
-		'filter_coat'		=>'yes',
-		'filter_document'	=>'yes',
-		'filter_electronic'	=>'yes',
-		'filter_fiche'		=>'yes',
-		'filter_film'		=>'yes',
-		'filter_magazine'	=>'yes',
-		'filter_manuscript'	=>'yes',
-		'filter_map'		=>'yes',
-		'filter_newspaper'	=>'yes',
-		'filter_other'		=>'yes',
-		'filter_painting'	=>'yes',
-		'filter_photo'		=>'yes',
-		'filter_tombstone'	=>'yes',
-		'filter_video'		=>'no'
+	$WT_BLOCKS['print_random_media']=array(
+		'name'=>i18n::translate('Random Media'),
+		'type'=>'both',
+		'descr'=>i18n::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br /><br />The administrator determines whether this block can show media items associated with persons or events.'),
+		'canconfig'=>true,
+		'config'=>array(
+			'cache'   =>0,
+			'filter'  =>'all',
+			'controls'=>'yes',
+			'start'   =>'no',
+			'filter_avi'  =>'no',
+			'filter_bmp'  =>'yes',
+			'filter_gif'  =>'yes',
+			'filter_jpeg' =>'yes',
+			'filter_mp3'  =>'no',
+			'filter_ole'  =>'yes',
+			'filter_pcx'  =>'yes',
+			'filter_pdf'  =>'no',
+			'filter_png'  =>'yes',
+			'filter_tiff' =>'yes',
+			'filter_wav'  =>'no',
+			'filter_audio'		=>'no',
+			'filter_book'		=>'yes',
+			'filter_card'		=>'yes',
+			'filter_certificate'=>'yes',
+			'filter_coat'		=>'yes',
+			'filter_document'	=>'yes',
+			'filter_electronic'	=>'yes',
+			'filter_fiche'		=>'yes',
+			'filter_film'		=>'yes',
+			'filter_magazine'	=>'yes',
+			'filter_manuscript'	=>'yes',
+			'filter_map'		=>'yes',
+			'filter_newspaper'	=>'yes',
+			'filter_other'		=>'yes',
+			'filter_painting'	=>'yes',
+			'filter_photo'		=>'yes',
+			'filter_tombstone'	=>'yes',
+			'filter_video'		=>'no'
+		)
 	);
 
 	require_once WT_ROOT.'includes/functions/functions_print_facts.php';

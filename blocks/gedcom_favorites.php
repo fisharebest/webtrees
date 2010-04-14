@@ -36,10 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_GEDCOM_FAVORITES_PHP', '');
 
-$WT_BLOCKS["print_gedcom_favorites"]["name"]     = i18n::translate('GEDCOM Favorites');
-$WT_BLOCKS["print_gedcom_favorites"]["descr"]    = i18n::translate('The GEDCOM Favorites block gives the administrator the ability to designate individuals from the database so that their information is easily accessible to all.  This is a way to highlight people who are important in your family history.');
-$WT_BLOCKS["print_gedcom_favorites"]["canconfig"]= false;
-$WT_BLOCKS["print_gedcom_favorites"]["config"]   = array("cache"=>7);
+$WT_BLOCKS['print_gedcom_favorites']=array(
+	'name'=>i18n::translate('GEDCOM Favorites'),
+	'type'=>'both',
+	'descr'=>i18n::translate('The GEDCOM Favorites block gives the administrator the ability to designate individuals from the database so that their information is easily accessible to all.  This is a way to highlight people who are important in your family history.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>7
+	)
+);
 
 //-- print gedcom favorites
 function print_gedcom_favorites($block = true, $config="", $side, $index) {

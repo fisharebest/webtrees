@@ -36,11 +36,15 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_USER_BLOG_PHP', '');
 
-$WT_BLOCKS["print_user_news"]["name"]		= i18n::translate('User Journal');
-$WT_BLOCKS["print_user_news"]["descr"]		= i18n::translate('The User Journal block lets the user keep notes or a journal online.');
-$WT_BLOCKS["print_user_news"]["type"]		= "user";
-$WT_BLOCKS["print_user_news"]["canconfig"]	= false;
-$WT_BLOCKS["print_user_news"]["config"]	= array("cache"=>0);
+$WT_BLOCKS['print_user_news']=array(
+	'name'=>i18n::translate('User Journal'),
+	'type'=>'user',
+	'descr'=>i18n::translate('The User Journal block lets the user keep notes or a journal online.'),
+	'canconfig'=>false,
+	'config'=>array(
+		'cache'=>0
+	)
+);
 
 /**
  * Prints a user news/journal
