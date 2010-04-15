@@ -42,6 +42,8 @@ class i18n {
 	static private $dir='';
 	static private $list_separator;
 	static private $list_separator_last;
+	static public  $alphabet;
+	static public  $collation;
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
@@ -124,6 +126,11 @@ class i18n {
 		self::$locale=$locale;
 		self::$dir=$TEXT_DIRECTION;
 
+		// I18N: This is a space separated list of initial letters for lists of names, etc.  Multi-letter characters are OK, e.g. "A B C CS D DZ DZS E F G GY H ..."  You may use upper/lowers case, such as "D Dz Dzs".
+		self::$alphabet=i18n::translate('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z');
+
+		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
+		self::$collation=i18n::translate('utf8_unicode_ci');
 
 		// I18N: This is the puncutation symbol used to separate the first items in a list.  e.g. the <comma><space> in "red, green, yellow and blue"
 		self::$list_separator=i18n::noop('LANGUAGE_LIST_SEPARATOR');
