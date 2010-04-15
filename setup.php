@@ -415,7 +415,7 @@ if (empty($_POST['wtuser'    ])) $_POST['wtuser'    ]='';
 if (empty($_POST['wtpass'    ])) $_POST['wtpass'    ]='';
 if (empty($_POST['wtpass2'   ])) $_POST['wtpass2'   ]='';
 if (empty($_POST['wtemail'   ])) $_POST['wtemail'   ]='';
-if (empty($_POST['smtpuse'   ])) $_POST['smtpuse'   ]=1;
+if (empty($_POST['smtpuse'   ])) $_POST['smtpuse'   ]=0;
 if (empty($_POST['smtpserv'  ])) $_POST['smtpserv'  ]='localhost';
 if (empty($_POST['smtpport'  ])) $_POST['smtpport'  ]='25';
 if (empty($_POST['smtpusepw' ])) $_POST['smtpusepw' ]=1;
@@ -463,32 +463,35 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</fieldset>',
 		'<br /><br />',
 		'<h3>', i18n::translate('2. Email details'), '</h3>',
-		'<p>', i18n::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it needs to connect to an SMTP (mail-relay) service.  If your server provides this, enter the details here.  If it does not, most email providers will allow you to use their SMTP service.  Check with their support documentation for details.'), '</p>',
+		'<p>', i18n::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.'), '</p>',
 		'<p>', i18n::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'), '</p>',
 		'<p>', i18n::translate('If you do not know these settings, leave the default values.  They may work.  You can change them later.'), '</p>',
 		'<fieldset><legend>', i18n::translate('SMTP mail server'), '</legend>',
 		'<table border="0"><tr><td>',
-		i18n::translate('Use SMTP'), '</td><td>',
-		'<select name="smtpuse">',
-		'<option value="yes" ',
-		$_POST['smtpuse'] ? 'selected="selected"' : '',
-		'>', i18n::translate('yes'), '</option>',
-		'<option value="no" ',
-		!$_POST['smtpuse'] ? 'selected="selected"' : '',
-		'>', i18n::translate('no'), '</option>',
+		i18n::translate('Messages'), '</td><td>',
+		'<select name="smtpuse" onchange="document.config.smtpserv.disabled=(this.value!=1);document.config.smtpport.disabled=(this.value!=1);document.config.smtpusepw.disabled=(this.value!=1);document.config.smtpuser.disabled=(this.value!=1);document.config.smtppass.disabled=(this.value!=1);document.config.smtpsecure.disabled=(this.value!=1);document.config.smtpfrom.disabled=(this.value!=1);document.config.smtpsender.disabled=(this.value!=1);">',
+		'<option value="1" ',
+		$_POST['smtpuse']==1 ? 'selected="selected"' : '',
+		'>', i18n::translate('Use SMTP to send messages'), '</option>',
+		'<option value="0" ',
+		$_POST['smtpuse']==0 ? 'selected="selected"' : '',
+		'>', i18n::translate('Use PHP mail to send messages'), '</option>',
+		'<option value="-1" ',
+		$_POST['smtpuse']==-1 ? 'selected="selected"' : '',
+		'>', i18n::translate('Do not send messages'), '</option>',
 		'</select></td><td>',
 		i18n::translate('If you don\'t want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Server'), '</td><td>',
-		'<input type="text" name="smtpserv" value="', htmlspecialchars($_POST['smtpserv']), '"></td><td>',
+		'<input type="text" name="smtpserv" value="', htmlspecialchars($_POST['smtpserv']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is the name of the SMTP server. \'localhost\' means that the mail service is running on the same computer as your web server.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Port'), '</td><td>',
-		'<input type="text" name="smtpport" value="', htmlspecialchars($_POST['smtpport']), '"></td><td>',
+		'<input type="text" name="smtpport" value="', htmlspecialchars($_POST['smtpport']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('By default, SMTP works on port 25.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Use password'), '</td><td>',
-		'<select name="smtpusepw">',
+		'<select name="smtpusepw"', $_POST['smtpuse']==1 ? '' : 'disabled', '>',
 		'<option value="yes" ',
 		$_POST['smtpusepw'] ? 'selected="selected"' : '',
 		'>', i18n::translate('yes'), '</option>',
@@ -499,15 +502,15 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		i18n::translate('Most SMTP servers require a password.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Username'), '</td><td>',
-		'<input type="text" name="smtpuser" value="', htmlspecialchars($_POST['smtpuser']), '"></td><td>',
+		'<input type="text" name="smtpuser" value="', htmlspecialchars($_POST['smtpuser']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		'&nbsp;',
 		'</td></tr><tr><td>',
 		i18n::translate('Password'), '</td><td>',
-		'<input type="password" name="smtppass" value="', htmlspecialchars($_POST['smtppass']), '"></td><td>',
+		'<input type="password" name="smtppass" value="', htmlspecialchars($_POST['smtppass']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		'&nbsp;',
 		'</td></tr><tr><td>',
 		i18n::translate('Security'), '</td><td>',
-		'<select name="smtpsecure">',
+		'<select name="smtpsecure"', $_POST['smtpuse']==1 ? '' : 'disabled', '>',
 		'<option value="none" ',
 		$_POST['smtpusepw']=='none' ? 'selected="selected"' : '',
 		'>', i18n::translate('none'), '</option>',
@@ -521,11 +524,11 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		i18n::translate('Most servers do not use secure connections.'),
 		'</td></tr><tr><td>',
 		i18n::translate('From domain'), '</td><td>',
-		'<input type="text" name="smtpfrom" value="', htmlspecialchars($_POST['smtpfrom']), '"></td><td>',
+		'<input type="text" name="smtpfrom" value="', htmlspecialchars($_POST['smtpfrom']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is used in the "From:" header when sending mails.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Sender domain'), '</td><td>',
-		'<input type="text" name="smtpsender" value="', htmlspecialchars($_POST['smtpsender']), '"></td><td>',
+		'<input type="text" name="smtpsender" value="', htmlspecialchars($_POST['smtpsender']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is used in the "Sender:" header when sending mails.  It is often the same as the "From:" header.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
@@ -943,11 +946,11 @@ try {
 		"('MAX_VIEW_TIME',                   '1'),".
 		"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
 		"('MAX_EXECUTION_TIME',              '".addcslashes($_POST['maxcpu'], "'")."'),".
-		"('SMTP_ACTIVE',                     '".($_POST['smtpuse']=='yes'?1:0)."'),".
+		"('SMTP_ACTIVE',                     '".($_POST['smtpuse']==1)."'),".
 		"('SMTP_HOST',                       '".addcslashes($_POST['smtpserv'], "'")."'),".
 		"('SMTP_HELO',                       '".addcslashes($_POST['smtpsender'], "'")."'),".
 		"('SMTP_PORT',                       '".addcslashes($_POST['smtpport'], "'")."'),".
-		"('SMTP_AUTH',                       '".($_POST['smtpusepw']=='yes'?1:0)."'),".
+		"('SMTP_AUTH',                       '".($_POST['smtpusepw']==1)."'),".
 		"('SMTP_AUTH_USER',                  '".addcslashes($_POST['smtpuser'], "'")."'),".
 		"('SMTP_AUTH_PASS',                  '".addcslashes($_POST['smtppass'], "'")."'),".
 		"('SMTP_SSL',                        '".addcslashes($_POST['smtpsecure'], "'")."'),".
