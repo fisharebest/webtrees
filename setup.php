@@ -415,7 +415,7 @@ if (empty($_POST['wtuser'    ])) $_POST['wtuser'    ]='';
 if (empty($_POST['wtpass'    ])) $_POST['wtpass'    ]='';
 if (empty($_POST['wtpass2'   ])) $_POST['wtpass2'   ]='';
 if (empty($_POST['wtemail'   ])) $_POST['wtemail'   ]='';
-if (empty($_POST['smtpuse'   ])) $_POST['smtpuse'   ]=0;
+if (empty($_POST['smtpuse'   ])) $_POST['smtpuse'   ]='internal';
 if (empty($_POST['smtpserv'  ])) $_POST['smtpserv'  ]='localhost';
 if (empty($_POST['smtpport'  ])) $_POST['smtpport'  ]='25';
 if (empty($_POST['smtpusepw' ])) $_POST['smtpusepw' ]=1;
@@ -470,14 +470,14 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<table border="0"><tr><td>',
 		i18n::translate('Messages'), '</td><td>',
 		'<select name="smtpuse" onchange="document.config.smtpserv.disabled=(this.value!=1);document.config.smtpport.disabled=(this.value!=1);document.config.smtpusepw.disabled=(this.value!=1);document.config.smtpuser.disabled=(this.value!=1);document.config.smtppass.disabled=(this.value!=1);document.config.smtpsecure.disabled=(this.value!=1);document.config.smtpfrom.disabled=(this.value!=1);document.config.smtpsender.disabled=(this.value!=1);">',
-		'<option value="1" ',
-		$_POST['smtpuse']==1 ? 'selected="selected"' : '',
-		'>', i18n::translate('Use SMTP to send messages'), '</option>',
-		'<option value="0" ',
-		$_POST['smtpuse']==0 ? 'selected="selected"' : '',
+		'<option value="internal" ',
+		$_POST['smtpuse']=='internal' ? 'selected="selected"' : '',
 		'>', i18n::translate('Use PHP mail to send messages'), '</option>',
-		'<option value="-1" ',
-		$_POST['smtpuse']==-1 ? 'selected="selected"' : '',
+		'<option value="external" ',
+		$_POST['smtpuse']=='external' ? 'selected="selected"' : '',
+		'>', i18n::translate('Use SMTP to send messages'), '</option>',
+		'<option value="disabled" ',
+		$_POST['smtpuse']=='disbled' ? 'selected="selected"' : '',
 		'>', i18n::translate('Do not send messages'), '</option>',
 		'</select></td><td>',
 		i18n::translate('If you don\'t want to send mail, for example when running webtrees with a single user or on a standalone computer, you can disable this feature.'),

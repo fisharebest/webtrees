@@ -245,7 +245,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
-				href="install.php?step=4"><?php echo i18n::translate('Configuration');?></a><?php echo help_link('help_editconfig.php'); ?></td>
+				href="siteconfig.php"><?php echo i18n::translate('Configuration');?></a><?php echo help_link('help_editconfig.php'); ?></td>
 			<td class="optionbox width50">&nbsp;</td>
 		</tr>
 		<tr>

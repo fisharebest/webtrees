@@ -239,29 +239,29 @@ try {
 
 // We'll tidy these up later.  Some of them are used infrequently.
 $INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
-$WT_STORE_MESSAGES              =get_site_setting('WT_STORE_MESSAGES');
-$WT_SIMPLE_MAIL                 =get_site_setting('WT_SIMPLE_MAIL');
+$WT_STORE_MESSAGES              =get_site_setting('STORE_MESSAGES');
+$WT_SIMPLE_MAIL                 =get_site_setting('SIMPLE_MAIL');
 $USE_REGISTRATION_MODULE        =get_site_setting('USE_REGISTRATION_MODULE');
 $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
 $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
 $LOGFILE_CREATE                 =get_site_setting('LOGFILE_CREATE');
 $LOG_LANG_ERROR                 =get_site_setting('LOG_LANG_ERROR');
-$WT_SESSION_SAVE_PATH           =get_site_setting('WT_SESSION_SAVE_PATH');
-$WT_SESSION_TIME                =get_site_setting('WT_SESSION_TIME');
+$WT_SESSION_SAVE_PATH           =get_site_setting('SESSION_SAVE_PATH');
+$WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
-$LOGIN_URL                      =get_site_setting('LOGIN_URLNDEX_DIRECTORY');
+$LOGIN_URL                      =get_site_setting('LOGIN_URL');
 $MAX_VIEWS                      =get_site_setting('MAX_VIEWS');
 $MAX_VIEW_TIME                  =get_site_setting('MAX_VIEW_TIME');
-$WT_SMTP_PORT                   =get_site_setting('WT_SMTP_PORT');
-$WT_SMTP_ACTIVE                 =get_site_setting('WT_SMTP_ACTIVE');
-$WT_SMTP_HOST                   =get_site_setting('WT_SMTP_HOST');
-$WT_SMTP_HELO                   =get_site_setting('WT_SMTP_HELO');
-$WT_SMTP_AUTH                   =get_site_setting('WT_SMTP_AUTH');
-$WT_SMTP_AUTH_USER              =get_site_setting('WT_SMTP_AUTH_USER');
-$WT_SMTP_AUTH_PASS              =get_site_setting('WT_SMTP_AUTH_PASS');
-$WT_SMTP_SSL                    =get_site_setting('WT_SMTP_SSL');
-$WT_SMTP_FROM_NAME              =get_site_setting('WT_SMTP_FROM_NAME');
+$WT_SMTP_PORT                   =get_site_setting('SMTP_PORT');
+$WT_SMTP_ACTIVE                 =get_site_setting('SMTP_ACTIVE');
+$WT_SMTP_HOST                   =get_site_setting('SMTP_HOST');
+$WT_SMTP_HELO                   =get_site_setting('SMTP_HELO');
+$WT_SMTP_AUTH                   =get_site_setting('SMTP_AUTH');
+$WT_SMTP_AUTH_USER              =get_site_setting('SMTP_AUTH_USER');
+$WT_SMTP_AUTH_PASS              =get_site_setting('SMTP_AUTH_PASS');
+$WT_SMTP_SSL                    =get_site_setting('SMTP_SSL');
+$WT_SMTP_FROM_NAME              =get_site_setting('SMTP_FROM_NAME');
 
 //-- allow user to cancel
 ignore_user_abort(false);
@@ -271,8 +271,9 @@ if (!ini_get('safe_mode')) {
 	set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
 }
 
-require WT_ROOT.'includes/authentication.php';
-// require get_site_setting('AUTHENTICATION_MODULE');
+// default: include/authentication.php
+// Maybe Joomla/Drupal/etc. systems will provide their own?
+require get_site_setting('AUTHENTICATION_MODULE');
 
 // Determine browser type
 $BROWSERTYPE = 'other';
@@ -439,7 +440,7 @@ if (WT_SCRIPT_NAME!='install.php' && WT_SCRIPT_NAME!='help_text.php') {
 		exit;
 	}
 
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'admin.php', 'config_download.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'printlog.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'config_download.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'printlog.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
 		header('Location: editgedcoms.php');
 		exit;
 	}
