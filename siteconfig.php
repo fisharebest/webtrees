@@ -56,7 +56,7 @@ case 'update':
 	set_site_setting('LOGIN_URL',                       safe_POST('login_url'));
 	set_site_setting('MAX_VIEWS',                       safe_POST('max_views'));
 	set_site_setting('MAX_VIEW_TIME',                   safe_POST('max_view_time'));
-	set_site_setting('MEMORY_LIMIT',                    safe_POST('memory_limit', '\d+[KMG]?/', ini_get('memory_limit')));
+	set_site_setting('MEMORY_LIMIT',                    safe_POST('memory_limit', '\d+[KMG]?', ini_get('memory_limit')));
 	set_site_setting('MAX_EXECUTION_TIME',              safe_POST('max_execution_time', '\d+', ini_get('max_execution_time')));
 	set_site_setting('SMTP_ACTIVE',                     safe_POST('smtp_active', 'internal|external|disabled', 'internal'));
 	set_site_setting('SMTP_HOST',                       safe_POST('smtp_host'));
@@ -96,6 +96,12 @@ echo
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Data file directory'), help_link('INDEX_DIRECTORY'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="data_directory" value="', get_site_setting('INDEX_DIRECTORY'), '" size="50" /></td>',
+	'</tr><tr>',
+	'<td class="descriptionbox width20 wrap">', i18n::translate('Memory limit'), help_link('MEMORY_LIMIT'), '</td>',
+	'<td class="optionbox wrap"><input type="text" name="memory_limit" value="', get_site_setting('MEMORY_LIMIT'), '" /></td>',
+	'</tr><tr>',
+	'<td class="descriptionbox width20 wrap">', i18n::translate('Script execution time'), help_link('MAX_EXECUTION_TIME'), '</td>',
+	'<td class="optionbox wrap"><input type="text" name="max_execution_time" value="', get_site_setting('MAX_EXECUTION_TIME'), '" /></td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Authentication module'), help_link('AUTHENTICATION_MODULE'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="authentication_module" value="', get_site_setting('AUTHENTICATION_MODULE'), '" size="50" /></td>',
