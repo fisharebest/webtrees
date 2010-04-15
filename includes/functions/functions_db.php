@@ -178,64 +178,6 @@ function get_prev_xref($pid, $ged_id=WT_GED_ID) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Generate a list of alternate initial letters for the indilist and famlist
-////////////////////////////////////////////////////////////////////////////////
-function db_collation_alternatives($letter) {
-	global $DB_UTF8_COLLATION, $MULTI_LETTER_ALPHABET, $MULTI_LETTER_EQUIV;
-
-	// Multi-letter collation.
-	// e.g. on czech pages, we don't include "CH" under "C"
-	$include=array($letter);
-	$exclude=array();
-	foreach (preg_split('/[ ,;]/', utf8_strtoupper($MULTI_LETTER_ALPHABET)) as $digraph) {
-		if ($letter && $digraph!=$letter && strpos($digraph, $letter)===0) {
-			$exclude[]=$digraph;
-		}
-	}
-
-	// Multi-letter equivalents
-	// e.g. on danish pages, we include "AA" under "Aring", not under "A"
-	foreach (preg_split('/[ ,;]/', $MULTI_LETTER_EQUIV[WT_LOCALE], -1, PREG_SPLIT_NO_EMPTY) as $digraph) {
-		list($from, $to)=explode('=', $digraph);
-		$from=utf8_strtoupper($from);
-		if ($from==$letter && strpos($from, $letter)===0) {
-			$include[]=$to;
-		}
-		if ($letter && $from!=$letter && strpos($from, $letter)===0) {
-			$exclude[]=$from;
-		}
-		if ($to==$letter) {
-			$include[]=$from;
-		}
-	}
-
-	return array($include, $exclude);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Generate a list of digraphs for the indilist and famlist
-////////////////////////////////////////////////////////////////////////////////
-function db_collation_digraphs() {
-	global $MULTI_LETTER_ALPHABET, $MULTI_LETTER_EQUIV;
-
-	// Multi-letter collation.
-	// e.g. on czech pages, we don't include "CH" under "C"
-	$digraphs=array();
-	foreach (preg_split('/[ ,;]/', utf8_strtoupper($MULTI_LETTER_ALPHABET), -1, PREG_SPLIT_NO_EMPTY) as $digraph) {
-		$digraphs[$digraph]=$digraph;
-	}
-
-	// Multi-letter equivalents
-	// e.g. danish pages, we include "AE" under "AE-ligature"
-	foreach (preg_split('/[ ,;]/', $MULTI_LETTER_EQUIV[WT_LOCALE], -1, PREG_SPLIT_NO_EMPTY) as $digraph) {
-		list($from, $to)=explode('=', $digraph);
-		$digraphs[$to]=utf8_strtoupper($from);
-	}
-
-	return $digraphs;
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Get a list of initial surname letters for indilist.php and famlist.php
 // $marnm - if set, include married names
 // $fams - if set, only consider individuals with FAMS records
@@ -388,7 +330,7 @@ function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
 // $ged_id - only consider individuals from this gedcom
 ////////////////////////////////////////////////////////////////////////////////
 function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
-	global $TBLPREFIX, $DB_UTF8_COLLATION, $DBCOLLATE;
+	global $TBLPREFIX;
 
 	$sql="SELECT DISTINCT n_surn, n_surname, n_id FROM {$TBLPREFIX}individuals JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file)";
 	if ($fams) {
@@ -398,32 +340,19 @@ function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
 	if (!$marnm) {
 		$where[]="n_type!='_MARNM'";
 	}
-
-	list($s_incl, $s_excl)=db_collation_alternatives($salpha);
-
-	$includes=array();
 	if ($surn) {
 		// Match a surname
-		$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
+		$where[]="n_surn LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
 	} elseif ($salpha==',') {
 		// Match a surname-less name
-		$includes[]="n_surn {$DBCOLLATE} = ''";
+		$where[]="n_surn = ''";
 	} elseif ($salpha) {
 		// Match a surname initial
-		foreach ($s_incl as $s) {
-			$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$s}%")." COLLATE '".i18n::$collation."'";
-		}
-		foreach ($s_excl as $s) {
-			$where[]="n_surn {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$s}%")." COLLATE '".i18n::$collation."'";
-		}
+		$where[]="n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'";
 	} else {
 		// Match all individuals
-		$where[]="n_surn {$DBCOLLATE} <>'@N.N.'";
-		$where[]="n_surn {$DBCOLLATE} <> ''";
-	}
-
-	if ($includes) {
-		$where[]='('.implode(' OR ', $includes).')';
+		$where[]="n_surn <>'@N.N.'";
+		$where[]="n_surn <> ''";
 	}
 
 	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn";
@@ -432,9 +361,6 @@ function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
 	$rows=WT_DB::prepare($sql)->fetchAll();
 	foreach ($rows as $row) {
 		$list[$row->n_surn][$row->n_surname][$row->n_id]=true;
-	}
-	if (!$DB_UTF8_COLLATION) {
-		uksort($list, 'utf8_strcasecmp');
 	}
 	return $list;
 }
@@ -447,7 +373,7 @@ function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
 // $ged_id - only consider individuals from this gedcom
 ////////////////////////////////////////////////////////////////////////////////
 function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
-	global $TBLPREFIX, $DB_UTF8_COLLATION, $DBCOLLATE;
+	global $TBLPREFIX;
 
 	$sql="SELECT DISTINCT n_surn, n_surname, l_to FROM {$TBLPREFIX}individuals JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file) JOIN {$TBLPREFIX}link ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
 	$where=array("n_file={$ged_id}");
@@ -455,31 +381,19 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 		$where[]="n_type!='_MARNM'";
 	}
 
-	list($s_incl, $s_excl)=db_collation_alternatives($salpha);
-
-	$includes=array();
 	if ($surn) {
 		// Match a surname
-		$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
+		$where[]="n_surn LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
 	} elseif ($salpha==',') {
 		// Match a surname-less name
-		$includes[]="n_surn {$DBCOLLATE} = ''";
+		$where[]="n_surn = ''";
 	} elseif ($salpha) {
 		// Match a surname initial
-		foreach ($s_incl as $s) {
-			$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$s}%")." COLLATE '".i18n::$collation."'";
-		}
-		foreach ($s_excl as $s) {
-			$where[]="n_surn {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$s}%")." COLLATE '".i18n::$collation."'";
-		}
+		$where[]="n_surn LIKE ".WT_DB::quote("{$surn}%")." COLLATE '".i18n::$collation."'";
 	} else {
 		// Match all individuals
-		$where[]="n_surn {$DBCOLLATE} <> '@N.N.'";
-		$where[]="n_surn {$DBCOLLATE} <> ''";
-	}
-
-	if ($includes) {
-		$where[]='('.implode(' OR ', $includes).')';
+		$where[]="n_surn <> '@N.N.'";
+		$where[]="n_surn <> ''";
 	}
 
 	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn";
@@ -488,9 +402,6 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 	$rows=WT_DB::prepare($sql)->fetchAll();
 	foreach ($rows as $row) {
 		$list[$row->n_surn][$row->n_surname][$row->l_to]=true;
-	}
-	if (!$DB_UTF8_COLLATION) {
-		uksort($list, 'utf8_strcasecmp');
 	}
 	return $list;
 }
@@ -512,7 +423,7 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 // To search for names with no surnames, use $salpha=","
 ////////////////////////////////////////////////////////////////////////////////
 function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fams=false, $ged_id=null) {
-	global $TBLPREFIX, $DB_UTF8_COLLATION, $DBCOLLATE;
+	global $TBLPREFIX;
 
 	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, n_surn, n_surname, n_num FROM {$TBLPREFIX}individuals JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file)";
 	if ($fams) {
@@ -526,67 +437,32 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 		$where[]="n_type!='_MARNM'";
 	}
 
-	list($s_incl, $s_excl)=db_collation_alternatives($salpha);
-	list($g_incl, $g_excl)=db_collation_alternatives($galpha);
-
-	$includes=array();
 	if ($surn) {
 		// Match a surname, with or without a given initial
 		if ($galpha) {
-			foreach ($g_incl as $g) {
-				$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote("{$surn},{$g}%");
-			}
-			foreach ($g_excl as $g) {
-				$where[]="n_sort {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$surn},{$g}%");
-			}
+			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},{$galpha}%");
 		} else {
-			$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote("{$surn},%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},%");
 		}
 	} elseif ($salpha==',') {
 		// Match a surname-less name, with or without a given initial
 		if ($galpha) {
-			foreach ($g_incl as $g) {
-				$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote(",{$g}%");
-			}
-			foreach ($g_excl as $g) {
-				$where[]="n_sort {$DBCOLLATE} NOT LIKE ".WT_DB::quote(",{$g}%");
-			}
+			$where[]="n_sort LIKE ".WT_DB::quote(",{$galpha}%");
 		} else {
-			$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote(",%");
+			$where[]="n_sort LIKE ".WT_DB::quote(",%");
 		}
 	} elseif ($salpha) {
 		// Match a surname initial, with or without a given initial
 		if ($galpha) {
-			foreach ($g_excl as $g) {
-				foreach ($s_excl as $s) {
-					$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote("{$s}%,{$g}%");
-				}
-			}
-			foreach ($g_excl as $g) {
-				foreach ($s_excl as $s) {
-					$where[]="n_sort {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$s}%,{$g}%");
-				}
-			}
+			$where[]="n_sort LIKE ".WT_DB::quote("{$s}%,{$g}%");
 		} else {
-			foreach ($s_incl as $s) {
-				$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote("{$s}%");
-			}
-			foreach ($s_excl as $s) {
-				$where[]="n_sort {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$s}%");
-			}
+			$where[]="n_sort LIKE ".WT_DB::quote("{$s}%");
 		}
 	} elseif ($galpha) {
 		// Match all surnames with a given initial
-		$includes[]="n_sort {$DBCOLLATE} LIKE ".WT_DB::quote("%,{$galpha}%");
-		foreach ($g_excl as $g) {
-			$where[]="n_sort {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$g}%");
-		}
+		$where[]="n_sort LIKE ".WT_DB::quote("%,{$galpha}%");
 	} else {
 		// Match all individuals
-	}
-
-	if ($includes) {
-		$where[]='('.implode(' OR ', $includes).')';
 	}
 
 	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn";

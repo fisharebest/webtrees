@@ -98,9 +98,9 @@ if ($show_all=='yes') {
 } elseif ($surname) {
 	$surname=utf8_strtoupper($surname);
 	$alpha=utf8_substr($surname, 0, 1);
-	foreach (db_collation_digraphs() as $from=>$to) {
-		if (strpos($surname, utf8_strtoupper($to))===0) {
-			$alpha=utf8_strtoupper($from);
+	foreach (explode(' ', i18n::$alphabet) as $letter) {
+		if (strpos($surname, utf8_strtoupper($letter))===0) {
+			$alpha=utf8_strtoupper($letter);
 		}
 	}
 	$show_all='no';

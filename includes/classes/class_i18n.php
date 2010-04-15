@@ -112,9 +112,6 @@ class i18n {
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 		$WEEK_START=self::noop('WEEK_START=0');
 		list(, $WEEK_START)=explode('=', $WEEK_START);
-		global $MULTI_LETTER_ALPHABET; // I18N: semicolon separated list of digraphs
-		$MULTI_LETTER_ALPHABET=self::noop('MULTI_LETTER_ALPHABET=');
-		list(, $MULTI_LETTER_ALPHABET)=explode('=', $MULTI_LETTER_ALPHABET);
 		global $DICTIONARY_SORT; // I18N: 1=>ignore diacrics when sorting, 0=>letters with diacritics are distinct
 		$DICTIONARY_SORT=self::noop('DICTIONARY_SORT=1');
 		list(, $DICTIONARY_SORT)=explode('=', $DICTIONARY_SORT);
