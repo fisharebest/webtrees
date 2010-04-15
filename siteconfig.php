@@ -103,9 +103,6 @@ echo
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow messages to be stored online'), help_link('STORE_MESSAGES'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('store_messages', get_site_setting('STORE_MESSAGES')), '</td>',
 	'</tr><tr>',
-	'<td class="descriptionbox width20 wrap">', i18n::translate('Use simple mail headers in external mails'), help_link('SMTP_SIMPLE_MAIL'), '</td>',
-	'<td class="optionbox wrap">', edit_field_yes_no('smtp_simple_mail', get_site_setting('SMTP_SIMPLE_MAIL')), '</td>',
-	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow visitors to request account registration'), help_link('USE_REGISTRATION_MODULE'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('use_registration_module', get_site_setting('USE_REGISTRATION_MODULE')), '</td>',
 	'</tr><tr>',
@@ -149,7 +146,7 @@ echo
 		),
 		null,
 		$smtp_active,
-		'onchange="document.siteconfig.smtp_host.disabled=(this.value!=\'external\');document.siteconfig.smtp_port.disabled=(this.value!=\'external\');document.siteconfig.smtp_helo.disabled=(this.value!=\'external\');document.siteconfig.smtp_auth.disabled=(this.value!=\'external\');document.siteconfig.smtp_auth_user.disabled=(this.value!=\'external\');document.siteconfig.smtp_auth_pass.disabled=(this.value!=\'external\');document.siteconfig.smtp_ssl.disabled=(this.value!=\'external\');document.siteconfig.smtp_from_name.disabled=(this.value!=\'external\');"'
+		'onchange="document.siteconfig.smtp_host.disabled=(this.value!=\'external\');document.siteconfig.smtp_port.disabled=(this.value!=\'external\');document.siteconfig.smtp_helo.disabled=(this.value!=\'external\');document.siteconfig.smtp_simple_mail.disabled=(this.value!=\'external\');document.siteconfig.smtp_auth.disabled=(this.value!=\'external\');document.siteconfig.smtp_auth_user.disabled=(this.value!=\'external\');document.siteconfig.smtp_auth_pass.disabled=(this.value!=\'external\');document.siteconfig.smtp_ssl.disabled=(this.value!=\'external\');document.siteconfig.smtp_from_name.disabled=(this.value!=\'external\');"'
 	),
 	'</td>',
 	'</tr><tr>',
@@ -161,6 +158,9 @@ echo
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('SMTP sender email address'), help_link('SMTP_HELO'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="smtp_helo" value="', get_site_setting('SMTP_HELO'), '" ', $smtp_active=='external' ? '' : 'disabled', '/></td>',
+	'</tr><tr>',
+	'<td class="descriptionbox width20 wrap">', i18n::translate('Use simple mail headers in external mails'), help_link('SMTP_SIMPLE_MAIL'), '</td>',
+	'<td class="optionbox wrap">', edit_field_yes_no('smtp_simple_mail', get_site_setting('SMTP_SIMPLE_MAIL'), $smtp_active=='external' ? '' : 'disabled'), '</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('SMTP server needs authentication'), help_link('SMTP_AUTH'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('smtp_auth', get_site_setting('SMTP_AUTH'), $smtp_active=='external' ? '' : 'disabled'), '</td>',

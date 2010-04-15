@@ -246,7 +246,8 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		<tr>
 			<td class="optionbox width50"><a
 				href="siteconfig.php"><?php echo i18n::translate('Configuration');?></a><?php echo help_link('help_editconfig.php'); ?></td>
-			<td class="optionbox width50">&nbsp;</td>
+			<td class="optionbox width50"><a
+				href="manageservers.php"><?php echo i18n::translate('Manage Sites');?></a><?php echo help_link('help_managesites'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
@@ -256,11 +257,6 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		<tr>
 			<td class="optionbox width50"><a
 				href="faq.php"><?php echo i18n::translate('FAQ List');?></a><?php echo help_link('help_faq.php'); ?></td>
-			<td class="optionbox width50"><a
-				href="manageservers.php"><?php echo i18n::translate('Manage Sites');?></a><?php echo help_link('help_managesites'); ?></td>
-		</tr>
-		<tr>
-			<td class="optionbox width50">&nbsp;</td>
 			<td class="optionbox width50"><?php echo $d_logfile_str; ?></td>
 		</tr>
 		</table>
