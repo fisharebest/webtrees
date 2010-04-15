@@ -423,7 +423,7 @@ if (empty($_POST['smtpuser'  ])) $_POST['smtpuser'  ]='';
 if (empty($_POST['smtppass'  ])) $_POST['smtppass'  ]='';
 if (empty($_POST['smtpsmpl'  ])) $_POST['smtpsmpl'  ]=0;
 if (empty($_POST['smtpsecure'])) $_POST['smtpsecure']='none';
-if (empty($_POST['smtpfrom'  ])) $_POST['smtpfrom'  ]=empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME'];
+if (empty($_POST['smtpfrom'  ])) $_POST['smtpfrom'  ]='webmaster@localhost';
 if (empty($_POST['smtpsender'])) $_POST['smtpsender']=$_POST['smtpfrom'];
 
 if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'])<6 || strlen($_POST['wtpass2'])<6 || empty($_POST['wtemail']) || $_POST['wtpass']<>$_POST['wtpass2']) {
@@ -520,7 +520,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'>', i18n::translate('no'), '</option>',
 		'</select></td><td>',
 		'</td></tr><tr><td>',
-		i18n::translate('Use simple mail headers in external mails'), '</td><td>',
+		i18n::translate('Use simple mail headers'), '</td><td>',
 		'<select name="smtpsmpl"', $_POST['smtpuse']==1 ? '' : 'disabled', '>',
 		'<option value="yes" ',
 		$_POST['smtpsmpl'] ? 'selected="selected"' : '',
@@ -544,11 +544,11 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</select></td><td>',
 		i18n::translate('Most servers do not use secure connections.'),
 		'</td></tr><tr><td>',
-		i18n::translate('From domain'), '</td><td>',
+		i18n::translate('From email address'), '</td><td>',
 		'<input type="text" name="smtpfrom" value="', htmlspecialchars($_POST['smtpfrom']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is used in the "From:" header when sending mails.'),
 		'</td></tr><tr><td>',
-		i18n::translate('Sender domain'), '</td><td>',
+		i18n::translate('Sender email address'), '</td><td>',
 		'<input type="text" name="smtpsender" value="', htmlspecialchars($_POST['smtpsender']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is used in the "Sender:" header when sending mails.  It is often the same as the "From:" header.'),
 		'</td></tr><tr><td>',
