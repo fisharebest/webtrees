@@ -100,7 +100,7 @@ echo
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Memory limit'), help_link('MEMORY_LIMIT'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="memory_limit" value="', get_site_setting('MEMORY_LIMIT'), '" /></td>',
 	'</tr><tr>',
-	'<td class="descriptionbox width20 wrap">', i18n::translate('Script execution time'), help_link('MAX_EXECUTION_TIME'), '</td>',
+	'<td class="descriptionbox width20 wrap">', i18n::translate('PHP time limit'), help_link('MAX_EXECUTION_TIME'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="max_execution_time" value="', get_site_setting('MAX_EXECUTION_TIME'), '" /></td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Authentication module'), help_link('AUTHENTICATION_MODULE'), '</td>',

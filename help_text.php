@@ -2370,6 +2370,11 @@ case 'MAX_DESCENDANCY_GENERATIONS':
 	$text=i18n::translate('Set the maximum number of generations to display on Descendancy charts.');
 	break;
 
+case 'MAX_EXECUTION_TIME':
+	$title=i18n::translate('PHP time limit');
+	$text=i18n::translate('The maximum time in seconds that <b>webtrees</b> should be allowed to run.<br /><br />The default is 1 minute.  Depending on the size of your GEDCOM file, you may need to increase this time limit when you need to build the indexes.  Set this value to 0 to allow PHP to run forever.<br /><br />CAUTION: Setting this to 0 or setting it too high could cause your site to hang on certain operating systems until the script finishes.  Setting it to 0 means it may never finish until a server administrator kills the process or restarts the server.  A large Pedigree chart can take a very long time to run; leaving this value as low as possible ensures that someone cannot crash your server by requesting an excessively large chart.');
+	break;
+
 case 'MAX_PEDIGREE_GENERATIONS':
 	$title=i18n::translate('Maximum pedigree generations');
 	$text=i18n::translate('Set the maximum number of generations to display on Pedigree charts.');
@@ -2888,11 +2893,6 @@ case 'THEME_DIR':
 case 'THUMBNAIL_WIDTH':
 	$title=i18n::translate('Width of generated thumbnails');
 	$text=i18n::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.');
-	break;
-
-case 'TIME_LIMIT':
-	$title=i18n::translate('PHP time limit');
-	$text=i18n::translate('The maximum time in seconds that <b>webtrees</b> should be allowed to run.<br /><br />The default is 1 minute.  Depending on the size of your GEDCOM file, you may need to increase this time limit when you need to build the indexes.  Set this value to 0 to allow PHP to run forever.<br /><br />CAUTION: Setting this to 0 or setting it too high could cause your site to hang on certain operating systems until the script finishes.  Setting it to 0 means it may never finish until a server administrator kills the process or restarts the server.  A large Pedigree chart can take a very long time to run; leaving this value as low as possible ensures that someone cannot crash your server by requesting an excessively large chart.');
 	break;
 
 case 'UNDERLINE_NAME_QUOTES':
