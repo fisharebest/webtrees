@@ -113,10 +113,10 @@ define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);
 //-- setup execution timer
 $start_time=microtime(true);
 
-@ini_set('arg_separator.output', '&amp;');
-@ini_set('error_reporting', 0);
-@ini_set('display_errors', '1');
-@error_reporting(0);
+ini_set('arg_separator.output', '&amp;');
+ini_set('error_reporting', 0);
+ini_set('display_errors', '1');
+error_reporting(0);
 
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
@@ -212,7 +212,7 @@ set_error_handler('pgv_error_handler');
 try {
 	// Load our configuration file, so we can connect to the database
 	if (file_exists(WT_ROOT.'data/config.ini.php')) {
-		$dbconfig=@parse_ini_file(WT_ROOT.'data/config.ini.php');
+		$dbconfig=parse_ini_file(WT_ROOT.'data/config.ini.php');
 		// Invalid/unreadable config file?
 		if (!is_array($dbconfig)) {
 			header('Location: site-unavailable.php');
@@ -267,7 +267,9 @@ $WT_SMTP_FROM_NAME              =get_site_setting('WT_SMTP_FROM_NAME');
 ignore_user_abort(false);
 
 ini_set('memory_limit', get_site_setting('MEMORY_LIMIT'));
-set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
+if (!ini_get('safe_mode')) {
+	set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
+}
 
 require WT_ROOT.'includes/authentication.php';
 // require get_site_setting('AUTHENTICATION_MODULE');

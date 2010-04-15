@@ -204,25 +204,29 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	// Memory
 	$mem=to_mb(ini_get('memory_limit'));
 	$maxmem=$mem;
-	for ($i=$mem+1; $i<=1024; ++$i) {
-		@ini_set('memory_limit', $i.'M');
-		$newmem=to_mb(ini_get('memory_limit'));
-		if ($newmem>$mem) {
-			$maxmem=$newmem;
-		} else {
-			break;
+	if (!ini_get('safe_mode')) {
+		for ($i=$mem+1; $i<=1024; ++$i) {
+			ini_set('memory_limit', $i.'M');
+			$newmem=to_mb(ini_get('memory_limit'));
+			if ($newmem>$mem) {
+				$maxmem=$newmem;
+			} else {
+				break;
+			}
 		}
 	}
 	// CPU
 	$cpu=ini_get('max_execution_time');
 	$maxcpu=$cpu;
-	for ($i=$cpu+1; $i<=300; ++$i) {
-		@set_time_limit('max_execution_time', $i);
-		$newcpu=ini_get('max_execution_time');
-		if ($newcpu>$cpu) {
-			$maxcpu=$newcpu;
-		} else {
-			break;
+	if (!ini_get('safe_mode')) {
+		for ($i=$cpu+1; $i<=300; ++$i) {
+			set_time_limit('max_execution_time', $i);
+			$newcpu=ini_get('max_execution_time');
+			if ($newcpu>$cpu) {
+				$maxcpu=$newcpu;
+			} else {
+				break;
+			}
 		}
 	}
 	echo
