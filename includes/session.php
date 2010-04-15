@@ -266,8 +266,8 @@ $WT_SMTP_FROM_NAME              =get_site_setting('WT_SMTP_FROM_NAME');
 //-- allow user to cancel
 ignore_user_abort(false);
 
-ini_set('memory_limit', get_site_setting('MEMORY_LIMIT'));
 if (!ini_get('safe_mode')) {
+	ini_set('memory_limit', get_site_setting('MEMORY_LIMIT'));
 	set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
 }
 
