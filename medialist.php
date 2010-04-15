@@ -32,7 +32,6 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 // $LB_SS_SPEED = "5";
-$medialist = safe_GET('medialist');
 $level = safe_GET("level", "", "0");
 $action = safe_GET('action');
 $search = safe_GET('search');
@@ -42,7 +41,7 @@ $folder = safe_GET('folder');
 $show = safe_GET('show');
 $build = safe_GET('build');
 $reset = safe_GET('reset');
-$temp_medialist = safe_GET('temp_medialist');
+$filtered_medialist = safe_GET('filtered_medialist');
 $apply_filter = safe_GET('apply_filter');
 $filter1 = safe_GET('filter1');
 $filter1 = stripLRMRLM($filter1);
@@ -54,8 +53,6 @@ $filter_type = safe_GET('filter_type', array($or, $and), $or);
 $columns = safe_GET('columns', array('1', '2'), '2');
 $currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=="on") ? false : true;
 $show_thumbnail = (isset($_REQUEST['thumbnails']) && $_REQUEST['thumbnails']=="on") ? true : false;
-
-print_header(i18n::translate('MultiMedia Objects'));
  
 if ($reset == "Reset") {
 	$sortby = "title";
@@ -69,6 +66,7 @@ if ($reset == "Reset") {
 	$filter2 = "";
 	$action = "";
 	unset($_SESSION['medialist']);
+	unset($_SESSION['filtered_medialist']);
 }
   
 if (empty($_SESSION['medialist_ged'])) $_SESSION['medialist_ged'] = WT_GEDCOM;
@@ -92,7 +90,7 @@ if (isset($_SESSION['medialist'])) {
 	// Not if $action <> filter (ie It's either a layout/page change or a return visit)
 	// Load up the session variables	
 	if ($action != "filter") {
-		$medialist = ($_SESSION['medialist']);
+		$medialist = ($_SESSION['filtered_medialist']);
 		$folder=($_SESSION['medialist_folder']);		
 		$filter1=($_SESSION['medialist_filter1']);
 		$filter2=($_SESSION['medialist_filter2']);
@@ -105,21 +103,18 @@ if (isset($_SESSION['medialist'])) {
 	
 	} else {		
 		// This is a return visit and the FILTER button was used
-		// Check if the subdirectory and folder have changed
-		if ($MEDIA_DIRECTORY_LEVELS > 0) {
-			if ($folder != $_SESSION['medialist_folder']) $build = "yes";
-			if ($currentdironly != $_SESSION['medialist_currentdironly']) $build ="yes";
+			// Check if the subdirectory and folder have changed
+			if ($MEDIA_DIRECTORY_LEVELS > 0) {
+				if ($folder != $_SESSION['medialist_folder']) $build = "yes";
+				if ($currentdironly != $_SESSION['medialist_currentdironly']) $build ="yes";
+			}			
+			// if same subdirectory and folder then use an existing medialist
+			if ($build != "yes") {
+				if (($filter1 == $_SESSION['medialist_filter1']) && ($filter2 == $_SESSION['medialist_filter2'])) {
+					$medialist = $_SESSION['filtered_medialist'];
+				} else $medialist = $_SESSION['medialist'];
+			}			
 		}
-			
-		// Check if a filter has been changed
-		if ($filter_type !=($_SESSION['filter_type'])) $build = "yes";	
-		if (($filter1 !=($_SESSION['medialist_filter1'])) && (strlen($_SESSION['medialist_filter1']))) $build = "yes";
-		if (($filter2 !=($_SESSION['medialist_filter2'])) && (strlen($_SESSION['medialist_filter2']))) $build = "yes";
-	
-	// If none of the above have changed we can use the existing medialist
-	if ($build != "yes") $medialist = $_SESSION['medialist'];		
-	}
-
 } else {
 	// This is the first visit to the medialist page
 	if ($action == "filter") {
@@ -131,6 +126,7 @@ if (isset($_SESSION['medialist'])) {
 // Disable autocomplete
 // if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
+print_header(i18n::translate('MultiMedia Objects'));
 echo "\n\t<div class=\"center\"><h2>", i18n::translate('MultiMedia Objects'), "</h2></div>\n\t";
 
 // Get Javascript variables from lb_config.php ---------------------------
@@ -146,7 +142,7 @@ if (WT_USE_LIGHTBOX) {
 	}
 }
 
-//-- automatically generate an image NOT CURRENTLY USED
+//-- automatically generate an image (NOT CURRENTLY USED)
 if (WT_USER_IS_ADMIN && $action=="generate" && !empty($file) && !empty($thumb)) {
 	generate_thumbnail($file, $thumb);
 }
@@ -188,6 +184,8 @@ if ($build == "yes") {
 	}
 	
 	usort($medialist, "mediasort"); // Reset numbering of medialist array
+// save the array
+$_SESSION['medialist'] = $medialist;
 }
 
 // ************************  END = 'Build the medialist array' ************************
@@ -213,166 +211,167 @@ if ($build == "yes") {
 		$right = "float: left;";
 	}
 	?>
-
+	<!-- Build the form cells -->
+	<tr>
 <!-- // NOTE: Row 1, left: -->
-	<tr>	
 	<!-- // begin select media folders -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Media directory'), help_link('media_dir'); ?></td>
-	<td class="optionbox wrap width25">
-		<?php
-		//if ($MEDIA_DIRECTORY_LEVELS > 0) {
-			if (empty($folder)) {
-				if (!empty($_SESSION['upload_folder'])) $folder = $_SESSION['upload_folder'];
-				else $folder = "ALL";
-			}
-			$folders = array_merge(array("ALL"), get_media_folders());
-			echo "<span dir=\"ltr\"><select name=\"folder\">\n";
-			foreach($folders as $f) {
-				echo "<option value=\"", $f, "\"";
-				if ($folder==$f) echo " selected=\"selected\"";
-				echo ">";
-				if ($f=="ALL") echo i18n::translate('ALL');
-				else echo $f;
-				echo "</option>\n";
-			}
-			echo "</select></span><br />";
+		<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+			<?php echo i18n::translate('Media directory'), help_link('media_dir'); ?></td>
+		<td class="optionbox wrap width25">
+			<?php
+				//if ($MEDIA_DIRECTORY_LEVELS > 0) {
+				if (empty($folder)) {
+					if (!empty($_SESSION['upload_folder'])) $folder = $_SESSION['upload_folder'];
+					else $folder = "ALL";
+				}
+					$folders = array_merge(array("ALL"), get_media_folders());
+					echo "<span dir=\"ltr\"><select name=\"folder\">\n";
+				foreach($folders as $f) {
+					echo "<option value=\"", $f, "\"";
+					if ($folder==$f) echo " selected=\"selected\"";
+					echo ">";
+					if ($f=="ALL") echo i18n::translate('ALL');
+					else echo $f;
+					echo "</option>\n";
+				}
+				echo "</select></span><br />";
 		//} else echo $MEDIA_DIRECTORY, "<input name=\"folder\" type=\"hidden\" value=\"ALL\" />";
-		?>
-		
-	</td>
-	<!-- // end select media folders -->	
-
-	
+					?>
+			</td>
+	<!-- // end select media folders -->
 <!-- // NOTE: Row 1 right: -->
 	<!-- begin sort files -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Sort by title or file name'), help_link('sortby'); ?></td>
-	<td class="optionbox wrap width25"><select name="sortby">
-		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\"";?>><?php echo i18n::translate('Sort by title'); ?></option>
-		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\"";?>><?php echo i18n::translate('Sort by file name'); ?></option>
-	</select></td>
-	<!-- //end sort files -->	
-	</tr>
-
-<!-- // NOTE: Row 2 left:-->	
+			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+					<?php echo i18n::translate('Sort by title or file name'), help_link('sortby'); ?>
+			</td>
+			<td class="optionbox wrap width25"><select name="sortby">
+				<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\"";?>>
+					<?php echo i18n::translate('Sort by title'); ?></option>
+				<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\"";?>>
+					<?php echo i18n::translate('Sort by file name'); ?></option>
+				</select>
+			</td>
+	<!-- //end sort files -->
+	</tr><tr>
+<!-- // NOTE: Row 2 left:-->
 	<!-- // begin sub directories -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
-		<td class="optionbox wrap width25">
-		<?php //if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
-		<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
-	</td>
-	<?php 
-	//} else echo i18n::translate('none');{ ?>	
-	</td>
-	<?php // } ?>
+			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+				<?php echo i18n::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
+			<td class="optionbox wrap width25">
+				<?php //if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
+				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
+			</td>
+				<?php
+				//} else echo i18n::translate('none');{ ?>
+			</td>
+				<?php // } ?>
 	<!-- // end subdirectories -->
-		
 <!-- // NOTE: Row 2 right:-->
 	<!-- // begin media objects per page -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Media objects per page'), help_link('media_objects_pp');; ?></td>
-	<td class="optionbox wrap width25">
-		<select name="max">
-		<?php
-			foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
-				echo "<option value=\"$selectEntry\"";
-				if ($selectEntry==$max) echo " selected=\"selected\"";
-				echo ">", $selectEntry, "</option>";
-			}
-		?>
-		</select>
-	</td>
+			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+				<?php echo i18n::translate('Media objects per page'), help_link('media_objects_pp');; ?>
+			</td>
+			<td class="optionbox wrap width25">
+				<select name="max">
+					<?php
+					foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
+						echo "<option value=\"$selectEntry\"";
+						if ($selectEntry==$max) echo " selected=\"selected\"";
+						echo ">", $selectEntry, "</option>";
+					}
+					?>
+				</select>
+			</td>
 	<!-- // end media objects per page -->
-	</tr>
-
+	</tr><tr>
 <!-- // NOTE: Row 3 left:-->
 	<!-- // begin search filter -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Search filters'), help_link('medialist_filters'); ?></td>
-	<td class="optionbox wrap width25">
+			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+				<?php echo i18n::translate('Search filters'), help_link('medialist_filters'); ?>
+			</td>
+			<td class="optionbox wrap width25">
 		<!-- // begin Text field for filter and "submit" button -->
-		<input id="filter1" name="filter1" value="<?php echo PrintReady($filter1); ?>" size="12" />		
-		<select name="filter_type">	
-		<?php
-			foreach (array($or, $and) as $selectEntry) {
-				echo "<option value=\"$selectEntry\"";
-				if ($selectEntry==$filter_type) echo " selected=\"selected\"";
-				echo ">", $selectEntry, "</option>";
-			}
-		?>
-		</select>		
-		<input id="filter2" name="filter2" value="<?php echo PrintReady($filter2); ?>" size="12" />	
-	</td>
+				<input id="filter1" name="filter1" value="<?php echo PrintReady($filter1); ?>" size="14" />
+				<select name="filter_type">
+					<?php
+					foreach (array($or, $and) as $selectEntry) {
+						echo "<option value=\"$selectEntry\"";
+						if ($selectEntry==$filter_type) echo " selected=\"selected\"";
+						echo ">", $selectEntry, "</option>";
+					}
+					?>
+				</select><br />
+				<input id="filter2" name="filter2" value="<?php echo PrintReady($filter2); ?>" size="14" />
+			</td>
 	<!-- // end search filter -->
-
 <!-- // NOTE: Row 3 right:-->
 	<!-- // begin columns per page -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Columns per page'), help_link('media_columns_pp'); ?></td>
-	<td class="optionbox wrap width25">
-		<select name="columns">
-		
-		<?php
-			foreach (array('1', '2') as $selectEntry) {
-				echo "<option value=\"$selectEntry\"";
-				if ($selectEntry==$columns) echo " selected=\"selected\"";
-				echo ">", $selectEntry, "</option>";
-			}
-		?>
-		</select>
-		</td>
-		<!-- // end columns per page -->
-		
+			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+				<?php echo i18n::translate('Columns per page'), help_link('media_columns_pp'); ?>
+			</td>
+			<td class="optionbox wrap width25">
+				<select name="columns">
+					<?php
+					foreach (array('1', '2') as $selectEntry) {
+						echo "<option value=\"$selectEntry\"";
+						if ($selectEntry==$columns) echo " selected=\"selected\"";
+						echo ">", $selectEntry, "</option>";
+					}
+					?>
+				</select>
+			</td>
+
+	<!-- // end columns per page -->
+	</tr><tr>
 <!-- // NOTE: Row 4 left:-->
 	<!-- // begin search buttons  -->
-		<tr>
-		<td class="descriptionbox wrap width25"></td>
-	<td class="optionbox wrap width25">
-
-	<input type="submit" name="apply_filter" value="<?php echo i18n::translate('Search');?>" />
-	
-	<input type="submit" name="reset" value="<?php echo i18n::translate('Reset');?>" />
-
-	</td>
+			<td class="descriptionbox wrap width25">
+			</td>
+			<td class="optionbox wrap width25">
+				<input type="submit" name="apply_filter" value="<?php echo i18n::translate('Search');?>" />
+				<input type="submit" name="reset" value="<?php echo i18n::translate('Reset');?>" />
+			</td>
 	<!-- // end search buttons  -->
-	
 <!-- // NOTE: Row 4 right:-->
-	<!-- // thumbnail option  -->	
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Show thumbnails'), help_link('media_thumbs'); ?></td>
-	<td class="optionbox wrap width25">	
-		<input type="checkbox" id="thumbnails" name="thumbnails"<?php if ($show_thumbnail) { ?>checked="checked"<?php } ?> />
-	</td>
-	</tr>
+	<!-- // thumbnail option  -->
+			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+				<?php echo i18n::translate('Show thumbnails'), help_link('media_thumbs'); ?>
+			</td>
+			<td class="optionbox wrap width25">	
+				<input type="checkbox" id="thumbnails" name="thumbnails"<?php if ($show_thumbnail) { ?>checked="checked"<?php } ?> />
+			</td>	
 	<!-- // end thumbnail option -->
-	</table>
+	</tr></table>
 </form>
 <!-- // end form for filtering the media items -->
-
 <?php
-
 // ************************  END = 'Build the input form' ************************
 
 // ************************  BEGIN = 'Filter the medialist array' ************************
 
-// medialist gets corrupted if user isn't admin, so use a temp variable
+// preserve the original medialist
+if (!empty($medialist)) $filtered_medialist = $medialist;
 
-$temp_medialist = $medialist;
-
-if ($action=="filter" && (!empty($temp_medialist))) {
+if ($action=="filter" && (!empty($filtered_medialist))) {
 	$temp_filter = $filter_type;
 	if ($filter_type == $or) {
 		if ((strlen($filter1) > 1) && (strlen($filter2)) > 1) {
-			foreach($temp_medialist as $key => $media) {
-				if (!filterMedia($media, $filter1, "http") && !filterMedia($media, $filter2, "http")) unset($temp_medialist[$key]);
+			foreach($filtered_medialist as $key => $media) {
+				if (!filterMedia($media, $filter1, "http") && !filterMedia($media, $filter2, "http"))
+				unset($filtered_medialist[$key]);
 			}
-			usort($temp_medialist, "mediasort"); // Reset numbering of medialist array
+			usort($filtered_medialist, "mediasort"); // Reset numbering of medialist array
 		// If either of the filters is empty use the "and" filter
 		} else $filter_type = $and;
 	} 
 
 	if ($filter_type == $and) {
 		if ((strlen($filter1) > 1) || (strlen($filter2)) > 1) {
-			foreach($temp_medialist as $key => $media) {
-				if (!filterMedia($media, $filter1, "http")) unset($temp_medialist[$key]);
-				if (!filterMedia($media, $filter2, "http")) unset($temp_medialist[$key]);
+			foreach($filtered_medialist as $key => $media) {
+				if (!filterMedia($media, $filter1, "http")) unset($filtered_medialist[$key]);
+				if (!filterMedia($media, $filter2, "http")) unset($filtered_medialist[$key]);
 			}
-			usort($temp_medialist, "mediasort"); // Reset numbering of medialist array
+			usort($filtered_medialist, "mediasort"); // Reset numbering of medialist array
 		}
 	}
 // Restore filter type
@@ -384,8 +383,7 @@ $filter_type = $temp_filter;
 // *****************************  BEGIN Set SESSION variables ********************************************
 
 if ($search=="yes") {
-	
-	if (isset($temp_medialist)) $_SESSION["medialist"] = $temp_medialist;
+	if ($filtered_medialist) $_SESSION["filtered_medialist"] = $filtered_medialist;
 	$_SESSION['filter_type']=$filter_type;
 	$_SESSION['medialist_filter1']=$filter1;
 	$_SESSION['medialist_filter2']=$filter2;
@@ -394,10 +392,7 @@ if ($search=="yes") {
 	$_SESSION['medialist_max']=$max;
 	$_SESSION['medialist_columns']=$columns;
 	$_SESSION['medialist_currentdironly']=$currentdironly;
-	$_SESSION['medialist_thumbnail']=$show_thumbnail;
-	
-} else {
-	if (isset($_SESSION["medialist"])) $medialist = $_SESSION["medialist"];
+	$_SESSION['medialist_thumbnail']=$show_thumbnail;	
 }
 
 // *****************************  End Set SESSION variables ********************************************
@@ -405,8 +400,8 @@ if ($search=="yes") {
 // ************************  BEGIN = 'Print the medialist array' ************************
 
 if ($show == "yes") {
-	if (!empty($temp_medialist)) {
-		$sortedMediaList = $temp_medialist;	// Default sort (by title) has already been done
+	if (!empty($filtered_medialist)) {
+		$sortedMediaList = $filtered_medialist;	// Default sort (by title) has already been done
 		if ($sortby=='file') usort($sortedMediaList, 'filesort');
 
 		// Count the number of items in the medialist
@@ -414,7 +409,6 @@ if ($show == "yes") {
 		$start = 0;
 		//$max = 20;
 		if (isset($_GET["start"])) $start = $_GET["start"];
-
 		$count = $max;
 		if ($start+$count > $ct) $count = $ct-$start;
 	} else $ct = "0";
@@ -670,8 +664,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 	// echo page back, page number, page forward controls
 	echo "\n<tr><td colspan=\"2\">\n";
 	
-	print"\n\t<table class=\"list_table width100\">\n";
-	
+	print"\n\t<table class=\"list_table width100\">\n";	
 	echo "\n<tr>\n";
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
@@ -726,7 +719,6 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			}
 		}
 	}
-
 	echo "</td>";
 	echo "</tr>\n</table></td></tr>";
 	echo "</table><br />";
@@ -737,10 +729,8 @@ if (!WT_USE_LIGHTBOX) {
 	if (file_exists(WT_ROOT.'modules/slideshow/slideshow.php')) {
 		require_once WT_ROOT.'modules/slideshow/slideshow.php';
 		}
-	}
-	
+	}	
 }
 // ************************  END = 'Print the medialist array' ************************
 print_footer();
-
 ?>
