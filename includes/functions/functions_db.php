@@ -242,7 +242,6 @@ function db_collation_digraphs() {
 // $ged_id - only consider individuals from this gedcom
 ////////////////////////////////////////////////////////////////////////////////
 function get_indilist_salpha($marnm, $fams, $ged_id) {
-	// TODO: this isn't picking up the collation_connection setting. Do we *really* need to add a collation suffix to every literal string?
 	global $TBLPREFIX;
 
 	$alphas=array();
@@ -310,63 +309,74 @@ function get_indilist_salpha($marnm, $fams, $ged_id) {
 // $ged_id - only consider individuals from this gedcom
 ////////////////////////////////////////////////////////////////////////////////
 function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
-	global $TBLPREFIX, $DB_UTF8_COLLATION, $DBCOLLATE;
+	global $TBLPREFIX;
 
-	if ($fams) {
-		$tables="{$TBLPREFIX}name, {$TBLPREFIX}individuals, {$TBLPREFIX}link";
-		$join="n_file=$ged_id AND i_file=n_file AND i_id=n_id AND l_file=n_file AND l_from=n_id AND l_type='FAMS'";
-	} else {
-		$tables="{$TBLPREFIX}name, {$TBLPREFIX}individuals";
-		$join="n_file=$ged_id AND i_file=n_file AND i_id=n_id";
-	}
-	if ($marnm) {
-		$join.=" AND n_type!='_MARNM'";
-	}
-	if ($surn) {
-		$join.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
-	} elseif ($salpha) {
-		$join.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".i18n::$collation."'";
-	}
-
-	$column="UPPER(SUBSTR(n_givn {$DBCOLLATE}, 1, 1))";
-	
-	$exclude='';
-	$include='';
-	$digraphs=db_collation_digraphs();
-	foreach (array_unique($digraphs) as $digraph) { // Multi-character digraphs
-		$exclude.=" AND n_sort NOT LIKE '{$digraph}%' {$DBCOLLATE}";
-	}
-	foreach ($digraphs as $to=>$from) { // Single-character digraphs
-		$include.=" UNION SELECT UPPER('{$to}' {$DBCOLLATE}) AS alpha FROM {$tables} WHERE {$join} AND n_sort LIKE '{$from}%' {$DBCOLLATE} GROUP BY 1";
-	}
-	$alphas=
-		WT_DB::prepare("SELECT {$column} AS alpha FROM {$tables} WHERE {$join} {$exclude} GROUP BY 1 {$include} ORDER BY 1")
-		->fetchOneColumn();
-
-	$list=array();
-	foreach ($alphas as $alpha) {
-		if ($DB_UTF8_COLLATION) {
-			$letter=$alpha;
+	$alphas=array();
+	// This logic relies on the database's collation rules to ensure that accented letters
+	// and digraphs appear in the correct listing.
+	foreach (explode(' ', i18n::$alphabet) as $letter) {
+		$query="SELECT COUNT(DISTINCT i_id) FROM {$TBLPREFIX}individuals";
+		if ($marnm) {
+			$query.=" JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file)";
 		} else {
-			$letter=utf8_strtoupper(utf8_substr($alpha,0,1));
+			$query.=" JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file AND n_type!='_MARNM')";
 		}
-		$list[$letter]=$letter;
+		if ($fams) {
+			$query.=" JOIN {$TBLPREFIX}link ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
+		}
+		$query.=" WHERE n_file=?";
+		if ($surn) {
+			$query.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
+		} elseif ($salpha) {
+			$query.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".i18n::$collation."'";
+		}
+		$query.=" AND n_givn LIKE '".$letter."%' COLLATE '".i18n::$collation."'";
+		foreach (explode(' ', i18n::$alphabet) as $letter2) {
+			if ($letter!=$letter2 && strpos($letter, $letter2)!==0) {
+				$query.=" AND n_givn NOT LIKE '{$letter2}%' COLLATE '".i18n::$collation."'";
+			}
+		}
+		$alphas[$letter]=WT_DB::prepare($query)->execute(array(WT_GED_ID))->fetchOne();
 	}
-
-	// If we didn't sort in the DB, sort ourselves
-	if (!$DB_UTF8_COLLATION) {
-		uasort($list, 'utf8_strcasecmp');
+	// Now repeat for all letters not in our alphabet.
+	// This includes "@" (unknown) and "," (none)
+	$query=
+		"SELECT LEFT(n_givn, 1), COUNT(DISTINCT i_id)".
+		" FROM {$TBLPREFIX}individuals";
+	if ($marnm) {
+		$query.=" JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file)";
+	} else {
+		$query.=" JOIN {$TBLPREFIX}name ON (i_id=n_id AND i_file=n_file AND n_type!='_MARNM')";
 	}
-	// sorting puts "," and "@" first, so force them to the end
-	if (in_array(',', $list)) {
-		unset($list[',']);
-		$list[',']=',';
+	if ($fams) {
+		$query.=" JOIN {$TBLPREFIX}link ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
 	}
-	if (in_array('@', $list)) {
-		unset($list['@']);
-		$list['@']='@';
+	$query.=" WHERE n_file=?";
+	if ($surn) {
+		$query.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
+	} elseif ($salpha) {
+		$query.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".i18n::$collation."'";
 	}
-	return $list;
+	$query.=" AND n_givn LIKE '".$letter."%' COLLATE '".i18n::$collation."'";
+	foreach (explode(' ', i18n::$alphabet) as $letter) {
+		$query.=" AND n_givn NOT LIKE '{$letter}%' COLLATE '".i18n::$collation."'";
+	}
+	$query.=" GROUP BY LEFT(n_givn, 1)";
+	foreach (WT_DB::prepare($query)->execute(array(WT_GED_ID))->fetchAssoc() as $letter=>$count) {
+		$alphas[$letter]=$count;
+	}
+	// Force "," and "@" first to the end of the list
+	if (array_key_exists(',', $alphas)) {
+		$count=$alphas[','];
+		unset($alphas[',']);
+		$alphas[',']=$count;
+	}
+	if (array_key_exists('@', $alphas)) {
+		$count=$alphas['@'];
+		unset($alphas['@']);
+		$alphas['@']=$count;
+	}
+	return $alphas;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -450,17 +460,17 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 	$includes=array();
 	if ($surn) {
 		// Match a surname
-		$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$surn}");
+		$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
 	} elseif ($salpha==',') {
 		// Match a surname-less name
 		$includes[]="n_surn {$DBCOLLATE} = ''";
 	} elseif ($salpha) {
 		// Match a surname initial
 		foreach ($s_incl as $s) {
-			$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$s}%");
+			$includes[]="n_surn {$DBCOLLATE} LIKE ".WT_DB::quote("{$s}%")." COLLATE '".i18n::$collation."'";
 		}
 		foreach ($s_excl as $s) {
-			$where[]="n_surn {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$s}%");
+			$where[]="n_surn {$DBCOLLATE} NOT LIKE ".WT_DB::quote("{$s}%")." COLLATE '".i18n::$collation."'";
 		}
 	} else {
 		// Match all individuals

@@ -153,12 +153,12 @@ foreach ($initials as $letter=>$count) {
 	if ($count) {
 		if ($showList && $letter==$alpha && $show_all=='no') {
 			if ($surname) {
-				$html='<a href="indilist.php?alpha='.urlencode($letter).'" class="warning">'.$html.'</a>';
+				$html='<a href="indilist.php?alpha='.urlencode($letter).'" class="warning" title="'.$count.'">'.$html.'</a>';
 			} else {
-				$html='<span class="warning">'.$html.'</span>';
+				$html='<span class="warning" title="'.$count.'">'.$html.'</span>';
 			}
 		} else {
-			$html='<a href="indilist.php?alpha='.urlencode($letter).'">'.$html.'</a>';
+			$html='<a href="indilist.php?alpha='.urlencode($letter).'" title="'.$count.'">'.$html.'</a>';
 		}
 	}
 	$list[]=$html;
@@ -235,7 +235,7 @@ if ($showList) {
 				// Don't show the list until we have some filter criteria
 				$showList=($falpha || $show_all_firstnames=='yes');
 				$list=array();
-				foreach ($givn_initials as $givn_initial) {
+				foreach ($givn_initials as $givn_initial=>$count) {
 					switch ($givn_initial) {
 					case '@':
 						$html=i18n::translate('(unknown)');
@@ -244,10 +244,12 @@ if ($showList) {
 						$html=$givn_initial;
 						break;
 					}
-					if ($showList && $givn_initial==$falpha && $show_all_firstnames=='no') {
-						$html='<span class="warning">'.$html.'</span>';
-					} else {
-						$html='<a href="'.$url.'&amp;falpha='.$givn_initial.'">'.$html.'</a>';
+					if ($count) {
+						if ($showList && $givn_initial==$falpha && $show_all_firstnames=='no') {
+							$html='<span class="warning" title="'.$count.'">'.$html.'</span>';
+						} else {
+							$html='<a href="'.$url.'&amp;falpha='.$givn_initial.'" title="'.$count.'">'.$html.'</a>';
+						}
 					}
 					$list[]=$html;
 				}
