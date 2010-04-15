@@ -150,7 +150,8 @@ if ($action == "choose" && $paramok) {
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		$filename = str_replace(" ", "%20", $filename);
-		$thumbnail = thumbnail_file($filename, false, false);
+		// $thumbnail = thumbnail_file($filename, false, false);
+		$thumbnail = str_replace("media/", "media/thumbs/", $filename);
 		echo '<img src = ', $thumbnail, ' class="thumbheight" />';
 		echo '</td></tr></table>';
 		echo '</td></tr>';
