@@ -2415,6 +2415,11 @@ case 'MEDIA_ID_PREFIX':
 	$text=i18n::translate('When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix.');
 	break;
 
+case 'MEMORY_LIMIT':
+	$title=i18n::translate('Memory limit');
+	$text=i18n::translate('The maximum amount of memory that can be consumed by <b>webtrees</b> scripts.  The default is 32 Mb.  Many hosts disable this option in their PHP configuration; changing this value may not actually affect the current maximum memory setting.');
+	break;
+
 case 'META_AUDIENCE':
 	$title=i18n::translate('Audience META tag');
 	$text=i18n::translate('The value to place in the Audience meta tag in the HTML page header.');
@@ -2520,22 +2525,17 @@ case 'PEDIGREE_SHOW_GENDER':
 	$text=i18n::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br /><br />Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.');
 	break;
 
-case 'WT_MEMORY_LIMIT':
-	$title=i18n::translate('Memory limit');
-	$text=i18n::translate('The maximum amount of memory that can be consumed by <b>webtrees</b> scripts.  The default is 32 Mb.  Many hosts disable this option in their PHP configuration; changing this value may not actually affect the current maximum memory setting.');
-	break;
-
-case 'WT_SESSION_SAVE_PATH':
+case 'SESSION_SAVE_PATH':
 	$title=i18n::translate('Session save path');
 	$text=i18n::translate('The path to store <b>webtrees</b> session files.<br /><br />Some hosts do not have PHP configured properly and sessions are not maintained between page requests.  This option lets site administrators overcome that problem by saving files in one of their local directories.  The ./index/ directory is a good choice if you need to change this.  The default is to leave the field empty, which will use the Save path as configured in <i>php.ini</i>.');
 	break;
 
-case 'WT_SESSION_TIME':
+case 'SESSION_TIME':
 	$title=i18n::translate('Session timeout');
 	$text=i18n::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
 	break;
 
-case 'WT_SIMPLE_MAIL':
+case 'SIMPLE_MAIL':
 	$title=i18n::translate('Use simple mail headers in external mails');
 	$text=i18n::translate('In normal mail headers for external mails, the email address as well as the name are used. Some mail systems will not accept this. When set to <b>Yes</b>, only the email address will be used.');
 	break;
@@ -2585,7 +2585,7 @@ case 'SMTP_SSL':
 	$text=i18n::translate('Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option.');
 	break;
 
-case 'WT_STORE_MESSAGES':
+case 'STORE_MESSAGES':
 	$title=i18n::translate('Allow messages to be stored online');
 	$text=i18n::translate('Specifies whether messages sent through <b>webtrees</b> can be stored in the database.  If set to <b>Yes</b> users will be able to retrieve their messages when they login to <b>webtrees</b>.  If set to <b>No</b> messages will only be emailed.');
 	break;
