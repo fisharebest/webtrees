@@ -2540,47 +2540,47 @@ case 'WT_SIMPLE_MAIL':
 	$text=i18n::translate('In normal mail headers for external mails, the email address as well as the name are used. Some mail systems will not accept this. When set to <b>Yes</b>, only the email address will be used.');
 	break;
 
-case 'WT_SMTP_ACTIVE':
+case 'SMTP_ACTIVE':
 	$title=i18n::translate('Use SMTP to send external mails');
 	$text=i18n::translate('Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server.');
 	break;
 
-case 'WT_SMTP_AUTH_PASS':
+case 'SMTP_AUTH_PASS':
 	$title=i18n::translate('Password');
 	$text=i18n::translate('The password required for authentication with the SMTP server.');
 	break;
 
-case 'WT_SMTP_AUTH_USER':
+case 'SMTP_AUTH_USER':
 	$title=i18n::translate('Username');
 	$text=i18n::translate('The user name required for authentication with the SMTP server.');
 	break;
 
-case 'WT_SMTP_AUTH':
+case 'SMTP_AUTH':
 	$title=i18n::translate('Username and password');
 	$text=i18n::translate('Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails.');
 	break;
 
-case 'WT_SMTP_FROM_NAME':
+case 'SMTP_FROM_NAME':
 	$title=i18n::translate('Sender name');
 	$text=i18n::translate('Enter the name to be used in the &laquo;From:&raquo; field of e-mails originating at this site.<br /><br />For example, if your name is <b>John Smith</b> and you are the site administrator for a site that is  known as <b>Jones Genealogy</b>, you could enter something like <b>John Smith</b> or <b>Jones Genealogy</b> or even <b>John Smith, Administrator: Jones Genealogy</b>.  You may enter whatever you wish, but HTML is not permitted.');
 	break;
 
-case 'WT_SMTP_HELO':
+case 'SMTP_HELO':
 	$title=i18n::translate('Sending domain name');
 	$text=i18n::translate('This is the domain part of a valid e-mail address on the SMTP server.<br /><br />For example, if you have an e-mail account such as <b>yourname@abc.xyz.com</b>, you would enter <b>abc.xyz.com</b> here.');
 	break;
 
-case 'WT_SMTP_HOST':
+case 'SMTP_HOST':
 	$title=i18n::translate('Outgoing server (SMTP) name');
 	$text=i18n::translate('This is the name of the SMTP mail server.  Example: <b>smtp.foo.bar.com</b>.<br /><br />Configuration values for some e-mail providers:<br /><br /><b>Gmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.gmail.com<br /><b>SMTP Port:</b> 465 or 587<br /><b>Secure connection:</b> SSL<br /><br /><b>Hotmail<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.live.com<br /><b>SMTP Port:</b> 25 or 587<br /><b>Secure connection:</b> TLS<br /><br /><b>Yahoo Mail Plus (currently a paid service)<br /></b><br /><b>Outgoing server (SMTP) name:</b> smtp.mail.yahoo.com<br /><b>SMTP Port:</b> 25');
 	break;
 
-case 'WT_SMTP_PORT':
+case 'SMTP_PORT':
 	$title=i18n::translate('SMTP port');
 	$text=i18n::translate('The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>.');
 	break;
 
-case 'WT_SMTP_SSL':
+case 'SMTP_SSL':
 	$title=i18n::translate('Secure connection');
 	$text=i18n::translate('Transport Layer Security (TLS) and Secure Sockets Layer (SSL) are Internet data encryption protocols.<br /><br />TLS 1.0, 1.1 and 1.2 are standardized developments of SSL 3.0. TLS 1.0 and SSL 3.1 are equivalent. Further work on SSL is now done under the new name, TLS.<br /><br />If your SMTP Server requires the SSL protocol during login, you should select the <b>SSL</b> option. If your SMTP Server requires the TLS protocol during login, you should select the <b>TLS</b> option.');
 	break;
