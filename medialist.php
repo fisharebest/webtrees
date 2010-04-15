@@ -53,6 +53,7 @@ $filter_type = safe_GET('filter_type', array($or, $and), $or);
 $columns = safe_GET('columns', array('1', '2'), '2');
 $currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=="on") ? false : true;
 $show_thumbnail = (isset($_REQUEST['thumbnails']) && $_REQUEST['thumbnails']=="on") ? true : false;
+$include_links = (isset($_REQUEST['include_links']) && $_REQUEST['include_links']=="on") ? true : false;
  
 if ($reset == "Reset") {
 	$sortby = "title";
@@ -79,6 +80,7 @@ if ($_SESSION['medialist_ged'] != WT_GEDCOM) {
 if (empty($folder)) {
 	$folder = $MEDIA_DIRECTORY; // default setting
 	$show_thumbnail = true; // default setting
+	$include_links = true; // default setting
 }
 
 // If SESSION_medialist then it's a return
@@ -100,18 +102,22 @@ if (isset($_SESSION['medialist'])) {
 		$columns=($_SESSION['medialist_columns']);
 		$currentdironly=($_SESSION['medialist_currentdironly']);
 		$show_thumbnail=($_SESSION['medialist_thumbnail']);
+		$include_links=($_SESSION['medialist_links']);
 	
 	} else {		
 		// This is a return visit and the FILTER button was used
 			// Check if the subdirectory and folder have changed
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				if ($folder != $_SESSION['medialist_folder']) $build = "yes";
-				if ($currentdironly != $_SESSION['medialist_currentdironly']) $build ="yes";
-			}			
+				if ($currentdironly != $_SESSION['medialist_currentdironly']) $build ="yes";				
+			}
+			// Check if the 'Include media links' option has changed
+			if ($include_links != $_SESSION['medialist_links']) $build ="yes";
 			// if same subdirectory and folder then use an existing medialist
 			if ($build != "yes") {
-				if (($filter1 == $_SESSION['medialist_filter1']) && ($filter2 == $_SESSION['medialist_filter2'])) {
+				if (($filter1 == $_SESSION['medialist_filter1']) && ($filter2 == $_SESSION['medialist_filter2']) && ($filter_type == $_SESSION['filter_type'])) {
 					$medialist = $_SESSION['filtered_medialist'];
+					$action = false;
 				} else $medialist = $_SESSION['medialist'];
 			}			
 		}
@@ -156,7 +162,7 @@ if ($build == "yes") {
 	}
 	// show external links only if looking at top level directory
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
-	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal);
+	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal, $include_links);
 
 	//-- remove all private media objects
 	foreach($medialist as $key => $media) {
@@ -308,6 +314,8 @@ $_SESSION['medialist'] = $medialist;
 	<!-- // begin columns per page -->
 			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
 				<?php echo i18n::translate('Columns per page'), help_link('media_columns_pp'); ?>
+				<br />
+			<?php echo i18n::translate('Show thumbnails'), help_link('media_thumbs'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 				<select name="columns">
@@ -319,6 +327,8 @@ $_SESSION['medialist'] = $medialist;
 					}
 					?>
 				</select>
+				<br /><input type="checkbox" id="thumbnails" name="thumbnails"
+				<?php if ($show_thumbnail) { ?>checked="checked"<?php } ?> />
 			</td>
 
 	<!-- // end columns per page -->
@@ -335,11 +345,16 @@ $_SESSION['medialist'] = $medialist;
 <!-- // NOTE: Row 4 right:-->
 	<!-- // thumbnail option  -->
 			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
-				<?php echo i18n::translate('Show thumbnails'), help_link('media_thumbs'); ?>
+				<?php if (WT_USER_IS_ADMIN) { ?>
+					<?php echo i18n::translate('Include media links'), help_link('media_links'); ?>
+				<?php } ?>
 			</td>
-			<td class="optionbox wrap width25">	
-				<input type="checkbox" id="thumbnails" name="thumbnails"<?php if ($show_thumbnail) { ?>checked="checked"<?php } ?> />
-			</td>	
+			<td class="optionbox wrap width25">
+			<?php if (WT_USER_IS_ADMIN) { ?>
+				<input type="checkbox" id="include_links" name="include_links"
+				<?php if ($include_links) { ?>checked="checked"<?php } ?> />
+			<?php } ?>
+							</td>	
 	<!-- // end thumbnail option -->
 	</tr></table>
 </form>
@@ -393,6 +408,7 @@ if ($search=="yes") {
 	$_SESSION['medialist_columns']=$columns;
 	$_SESSION['medialist_currentdironly']=$currentdironly;
 	$_SESSION['medialist_thumbnail']=$show_thumbnail;	
+	$_SESSION['medialist_links']=$include_links;
 }
 
 // *****************************  End Set SESSION variables ********************************************
@@ -594,21 +610,21 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			if ($isExternal) $name_disp2 = "URL";
 			$name_disp3 = $media['FILE'];
 			$name_disp4 = i18n::translate('Filename');
-			}else {
+		} else {
 			$name_disp1 = basename($media['FILE']);
 			if ($isExternal) $name_disp1 = "URL";
 			$name_disp2 = $name;
 			$name_disp3 = $media['FILE'];
 			$name_disp4 = i18n::translate('Title');
-			}
+		}
 
 			echo "<a href=\"mediaviewer.php?mid=".$media["XREF"]."\">";
 
 			if (begRTLText($name_disp1) && $TEXT_DIRECTION=="ltr") {
-			echo "(".$media["XREF"].")&nbsp;&nbsp;&nbsp;";
-			echo "<b>".PrintReady($name_disp1)."</b>";
+				echo "(".$media["XREF"].")&nbsp;&nbsp;&nbsp;";
+				echo "<b>".PrintReady($name_disp1)."</b>";
 			} else {
-			echo "<b>".PrintReady($name_disp1)."</b>&nbsp;&nbsp;&nbsp;";
+				echo "<b>".PrintReady($name_disp1)."</b>&nbsp;&nbsp;&nbsp;";
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo "(", $media["XREF"], ")";
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
@@ -617,8 +633,6 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			echo "</a>";
 			
 		if ($showFile) {
-			//if ($isExternal) echo "<br /><sub>URL</sub>";
-		//	else {
 				echo "<br /><br /><sub><span dir=\"ltr\"><b>", PrintReady($name_disp4), ": </b>", PrintReady($name_disp2), "</span></sub>";
 				echo "<br /><sub><span dir=\"ltr\"><b>", i18n::translate('Location'), ": </b>", PrintReady($name_disp3), "</span></sub>";
 //}
