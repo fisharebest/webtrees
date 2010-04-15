@@ -240,7 +240,6 @@ try {
 // We'll tidy these up later.  Some of them are used infrequently.
 $INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
 $WT_STORE_MESSAGES              =get_site_setting('STORE_MESSAGES');
-$WT_SIMPLE_MAIL                 =get_site_setting('SIMPLE_MAIL');
 $USE_REGISTRATION_MODULE        =get_site_setting('USE_REGISTRATION_MODULE');
 $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
@@ -253,15 +252,6 @@ $SERVER_URL                     =get_site_setting('SERVER_URL');
 $LOGIN_URL                      =get_site_setting('LOGIN_URL');
 $MAX_VIEWS                      =get_site_setting('MAX_VIEWS');
 $MAX_VIEW_TIME                  =get_site_setting('MAX_VIEW_TIME');
-$WT_SMTP_PORT                   =get_site_setting('SMTP_PORT');
-$WT_SMTP_ACTIVE                 =get_site_setting('SMTP_ACTIVE');
-$WT_SMTP_HOST                   =get_site_setting('SMTP_HOST');
-$WT_SMTP_HELO                   =get_site_setting('SMTP_HELO');
-$WT_SMTP_AUTH                   =get_site_setting('SMTP_AUTH');
-$WT_SMTP_AUTH_USER              =get_site_setting('SMTP_AUTH_USER');
-$WT_SMTP_AUTH_PASS              =get_site_setting('SMTP_AUTH_PASS');
-$WT_SMTP_SSL                    =get_site_setting('SMTP_SSL');
-$WT_SMTP_FROM_NAME              =get_site_setting('SMTP_FROM_NAME');
 
 //-- allow user to cancel
 ignore_user_abort(false);

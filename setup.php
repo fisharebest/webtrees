@@ -421,6 +421,7 @@ if (empty($_POST['smtpport'  ])) $_POST['smtpport'  ]='25';
 if (empty($_POST['smtpusepw' ])) $_POST['smtpusepw' ]=1;
 if (empty($_POST['smtpuser'  ])) $_POST['smtpuser'  ]='';
 if (empty($_POST['smtppass'  ])) $_POST['smtppass'  ]='';
+if (empty($_POST['smtpsmpl'  ])) $_POST['smtpsmpl'  ]=0;
 if (empty($_POST['smtpsecure'])) $_POST['smtpsecure']='none';
 if (empty($_POST['smtpfrom'  ])) $_POST['smtpfrom'  ]=empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME'];
 if (empty($_POST['smtpsender'])) $_POST['smtpsender']=$_POST['smtpfrom'];
@@ -508,6 +509,26 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		i18n::translate('Password'), '</td><td>',
 		'<input type="password" name="smtppass" value="', htmlspecialchars($_POST['smtppass']), '"', $_POST['smtpuse']==1 ? '' : 'disabled', ' /></td><td>',
 		'&nbsp;',
+		'</td></tr><tr><td>',
+		i18n::translate('Use password'), '</td><td>',
+		'<select name="smtpusepw"', $_POST['smtpuse']==1 ? '' : 'disabled', '>',
+		'<option value="yes" ',
+		$_POST['smtpusepw'] ? 'selected="selected"' : '',
+		'>', i18n::translate('yes'), '</option>',
+		'<option value="no" ',
+		!$_POST['smtpusepw'] ? 'selected="selected"' : '',
+		'>', i18n::translate('no'), '</option>',
+		'</select></td><td>',
+		'</td></tr><tr><td>',
+		i18n::translate('Use simple mail headers in external mails'), '</td><td>',
+		'<select name="smtpsmpl"', $_POST['smtpuse']==1 ? '' : 'disabled', '>',
+		'<option value="yes" ',
+		$_POST['smtpsmpl'] ? 'selected="selected"' : '',
+		'>', i18n::translate('yes'), '</option>',
+		'<option value="no" ',
+		!$_POST['smtpsmpl'] ? 'selected="selected"' : '',
+		'>', i18n::translate('no'), '</option>',
+		'</select></td><td>',
 		'</td></tr><tr><td>',
 		i18n::translate('Security'), '</td><td>',
 		'<select name="smtpsecure"', $_POST['smtpuse']==1 ? '' : 'disabled', '>',
@@ -932,7 +953,6 @@ try {
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('AUTHENTICATION_MODULE',           'includes/authentication.php'),".
 		"('STORE_MESSAGES',                  '1'),".
-		"('SIMPLE_MAIL',                     '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
 		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".
 		"('ALLOW_USER_THEMES',               '1'),".
@@ -954,6 +974,7 @@ try {
 		"('SMTP_AUTH_USER',                  '".addcslashes($_POST['smtpuser'], "'")."'),".
 		"('SMTP_AUTH_PASS',                  '".addcslashes($_POST['smtppass'], "'")."'),".
 		"('SMTP_SSL',                        '".addcslashes($_POST['smtpsecure'], "'")."'),".
+		"('SMTP_SIMPLE_MAIL',                '".addcslashes($_POST['smtpsmpl'], "'")."'),".
 		"('SMTP_FROM_NAME',                  '".addcslashes($_POST['smtpfrom'], "'")."')"
 	);
 	echo

@@ -437,7 +437,7 @@ function AddToChangeLog($LogString, $ged="") {
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {
-	global $TBLPREFIX, $CONTACT_METHOD, $WT_STORE_MESSAGES, $SERVER_URL, $WT_SIMPLE_MAIL, $WEBMASTER_EMAIL;
+	global $TBLPREFIX, $CONTACT_METHOD, $WT_STORE_MESSAGES, $SERVER_URL, $WEBMASTER_EMAIL;
 	global $TEXT_DIRECTION;
 	global $WEBTREES_EMAIL;
 
@@ -476,7 +476,7 @@ function addMessage($message) {
 		$fromFullName = $message["from"];
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
-		if (!$WT_SIMPLE_MAIL)
+		if (!get_site_setting('SIMPLE_MAIL'))
 			$from = hex4email($fromFullName, 'UTF-8'). " <".getUserEmail($user_id_from).">";
 		else
 			$from = getUserEmail($user_id_from);
@@ -546,7 +546,7 @@ function addMessage($message) {
 			return false;
 		} else {
 			$toFullName=getUserFullName($user_id_to);
-			if (!$WT_SIMPLE_MAIL)
+			if (!get_site_setting('SIMPLE_MAIL'))
 				$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
 			else
 				$to = getUserEmail($user_id_to);

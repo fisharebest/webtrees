@@ -699,7 +699,8 @@ class PHPMailer {
    * @return bool
    */
   protected function SmtpSend($header, $body) {
-    global $WT_SMTP_HELO, $WT_SMTP_AUTH_USER;
+		$SMTP_HELO=get_site_setting('SMTP_HELO');
+		$SMTP_AUTH_USER=get_site_setting('SMTP_AUTH_USER');
     require_once $this->PluginDir . 'class.smtp.php';
     $bad_rcpt = array();
 
@@ -708,10 +709,10 @@ class PHPMailer {
     }
     $smtp_from = ($this->Sender == '') ? $this->From : $this->Sender;
     if(!$this->smtp->Mail($smtp_from)) {
-      if (strstr($WT_SMTP_AUTH_USER, "@")!==False) {
-        $from_user = $WT_SMTP_AUTH_USER;
+      if (strstr($SMTP_AUTH_USER, "@")!==False) {
+        $from_user = $SMTP_AUTH_USER;
       } else {
-        $from_user = $WT_SMTP_AUTH_USER.'@'.$WT_SMTP_HELO;
+        $from_user = $SMTP_AUTH_USER.'@'.$SMTP_HELO;
       }
       if($this->smtp->Mail($from_user)) {
         $smtp_from = $from_user;

@@ -45,7 +45,6 @@ case 'update':
 		set_site_setting('AUTHENTICATION_MODULE',           safe_POST('authentication_module'));
 	}
 	set_site_setting('STORE_MESSAGES',                  safe_POST('store_messages'));
-	set_site_setting('SIMPLE_MAIL',                     safe_POST('simple_mail'));
 	set_site_setting('USE_REGISTRATION_MODULE',         safe_POST('use_registration_module'));
 	set_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION', safe_POST('require_admin_auth_registration'));
 	set_site_setting('ALLOW_USER_THEMES',               safe_POST('allow_user_themes'));
@@ -68,6 +67,7 @@ case 'update':
 	set_site_setting('SMTP_AUTH_PASS',                  safe_POST('smtp_auth_pass'));
 	set_site_setting('SMTP_SSL',                        safe_POST('smtp_ssl'));
 	set_site_setting('SMTP_FROM_NAME',                  safe_POST('smtp_from_name'));
+	set_site_setting('SMTP_SIMPLE_MAIL',                safe_POST('smtp_simple_mail'));
 
 	// We've saved the updated values - now return to the admin page
 	if (!$errors) {
@@ -103,8 +103,8 @@ echo
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow messages to be stored online'), help_link('STORE_MESSAGES'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('store_messages', get_site_setting('STORE_MESSAGES')), '</td>',
 	'</tr><tr>',
-	'<td class="descriptionbox width20 wrap">', i18n::translate('Use simple mail headers in external mails'), help_link('SIMPLE_MAIL'), '</td>',
-	'<td class="optionbox wrap">', edit_field_yes_no('simple_mail', get_site_setting('SIMPLE_MAIL')), '</td>',
+	'<td class="descriptionbox width20 wrap">', i18n::translate('Use simple mail headers in external mails'), help_link('SMTP_SIMPLE_MAIL'), '</td>',
+	'<td class="optionbox wrap">', edit_field_yes_no('smtp_simple_mail', get_site_setting('SMTP_SIMPLE_MAIL')), '</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow visitors to request account registration'), help_link('USE_REGISTRATION_MODULE'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('use_registration_module', get_site_setting('USE_REGISTRATION_MODULE')), '</td>',

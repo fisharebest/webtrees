@@ -2535,11 +2535,6 @@ case 'SESSION_TIME':
 	$text=i18n::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');
 	break;
 
-case 'SIMPLE_MAIL':
-	$title=i18n::translate('Use simple mail headers in external mails');
-	$text=i18n::translate('In normal mail headers for external mails, the email address as well as the name are used. Some mail systems will not accept this. When set to <b>Yes</b>, only the email address will be used.');
-	break;
-
 case 'SMTP_ACTIVE':
 	$title=i18n::translate('Use SMTP to send external mails');
 	$text=i18n::translate('Use SMTP to send e-mails from <b>webtrees</b>.<br /><br />This option requires access to an SMTP mail server.  When set to <b>No</b> <b>webtrees</b> will use the e-mail system built into PHP on this server.');
@@ -2578,6 +2573,11 @@ case 'SMTP_HOST':
 case 'SMTP_PORT':
 	$title=i18n::translate('SMTP port');
 	$text=i18n::translate('The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>.');
+	break;
+
+case 'SMTP_SIMPLE_MAIL':
+	$title=i18n::translate('Use simple mail headers in external mails');
+	$text=i18n::translate('In normal mail headers for external mails, the email address as well as the name are used. Some mail systems will not accept this. When set to <b>Yes</b>, only the email address will be used.');
 	break;
 
 case 'SMTP_SSL':
