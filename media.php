@@ -851,7 +851,7 @@ if (check_media_structure()) {
 
 	if (!empty($savedOutput)) print $savedOutput;		// Print everything we have saved up
 
-	if ($action == "filter") {
+	if ($action == "filter" && $subclick != "none") {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 		$medialist = get_medialist(true, $directory);
 // Get the list of media items
