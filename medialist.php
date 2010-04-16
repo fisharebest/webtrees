@@ -546,10 +546,6 @@ if ($show == "yes") {
 		
 		//-- Thumbnail field
 		if ($show_thumbnail) {
-			// == auto generate thumnails
-			if (AUTO_GENERATE_THUMBS && !$media["THUMBEXISTS"]) {
-				thumbnail_file($media["THUMB"], $generateThumb = true, $overwrite = false);
-			}
 		echo '<a href="', $mediaInfo['url'], '">';
 		echo '<img src="', $mediaInfo['thumb'], '" align="center" class="thumbnail" border="none"', $mediaInfo['width'];
 		echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
