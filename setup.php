@@ -642,12 +642,14 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}log (".
+		" log_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" log_type    ENUM('auth', 'change', 'config', 'debug', 'edit', 'error', 'media', 'search') NOT NULL,".
 		" log_message TEXT         NOT NULL,".
 		" ip_address  VARCHAR(40)  NOT NULL,".
 		" user_id     INTEGER          NULL,".
 		" gedcom_id   INTEGER          NULL,".
+		" PRIMARY KEY     (log_id),".
 		"         KEY ix1 (log_time),".
 		"         KEY ix2 (log_type),".
 		"         KEY ix3 (ip_address),".
