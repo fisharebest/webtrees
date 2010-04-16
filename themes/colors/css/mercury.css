@@ -22,14 +22,14 @@ padding:0px;
 }
 
 /*	Color settings for the this theme	*/
-
-/*	Define Header, Tbl hdrs and Light Text Colors	*/
+/*	Define Header and Light Text Colors	*/
 
 #header,
 .gedcomtitle {
 background:#d4d4d4;
 color: #707070;
 }
+/*	Define Tbl hdrs and Light Text Colors	*/
 
 .descriptionbox,
 .descriptionbox a,
@@ -54,9 +54,11 @@ color: #707070;
 background:#a9adbc;
 }
 
+/* Correct icon link problem  */
 .menuitem_hover a:hover, .menuitem_hover_rtl a:hover{
 color: #a9adbc;
 }
+
 /*	Define Base Color					*/
 
 .descriptionbox .submenu a,
@@ -241,10 +243,6 @@ table.header {
 width:100%;
 padding:0 10px;
 margin:8px 0px 0px 0px;
-}
-
-.nameZoom a:hover {
-font: bold 14px tahoma, arial, helvetica, sans-serif;
 }
 
 div.error {
@@ -434,11 +432,6 @@ border:1px solid #ccc;
 float: left;
 }
 
-#facts, #relatives {
-max-width: 100%;
-width:100%;
-}
-
 #random_picture {
 height:auto;
 }
@@ -592,20 +585,20 @@ width:99%;
  }
 
 .person_box {
-background:#f0f9ff;
+background:#ddddff;
 border:1px solid #999;
 padding:3px;
 }
 
 .person_boxF {
-background:#fff0f0;
+background:#ffdddd;
 border:1px solid #ff2080;
 padding:3px;
 }
 
 .person_boxNN {
 background:#fff;
-border:1px dashed #CCC;
+border:1px solid #CCC;
 padding:3px;
 }
 
@@ -767,9 +760,20 @@ font-size: 11px;
 font-weight: bold;
 }
 
-.name1Hover {
+.name2 {
+font-size: 12px;
+font-weight: bold;
+}
+
+a:hover .name1 {
 color: red;
 font-size: 11px;
+font-weight: bold;
+}
+
+a:hover.name2 {
+color: red;
+font-size: 12px;
 font-weight: bold;
 }
 
@@ -782,17 +786,6 @@ font-size: 10px;
 text-decoration:none;
 }
 
-.name2 {
-font-size: 12px;
-font-weight: bold;
-}
-
-.name2Hover {
-color: red;
-font-size: 12px;
-font-weight: bold;
-}
-
 .details2 {
 font-size: 11px;
 text-decoration:none;
@@ -802,6 +795,11 @@ text-decoration:none;
 font-size: 14px;
 font-weight: bold;
 text-decoration:none;
+}
+
+ a:hover .nameZoom {
+font: bold 14px tahoma, arial, helvetica, sans-serif;
+color: red;
 }
 
 .detailsZoom {
@@ -862,7 +860,6 @@ vertical-align: middle;
 .pedigree_image_portrait, .pedigree_image_landscape {
 float: left;
 height: 50px;
-border: solid black 1px;
 margin-right: 3px;
 }
 
@@ -1608,16 +1605,10 @@ dt {
 }
 
 /* Override js/jquery-ui.custom.css            */
-/* Accordion ----------------------------------*/
+/* Right Side Tab----------------------------------*/
 .ui-state-active, .ui-widget-content .ui-state-active { background: #C6C8D2;}
 
-/* Tabs ----------------------------------*/
-.ui-widget-header { border: 1px solid #fff; background: #C6C8D2 !important;  opacity: 0.67;}
-.ui-widget-content a:hover {color: #f50;}
-.ui-state-active, .ui-widget-content .ui-state-active { border: #999; }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #707070;}
-
-/* Override jquery-ui_theme.css                */
+/* Flyout changes */
 
 .flyout2 {
         margin-left:-40px; /* move popup left */
@@ -1631,8 +1622,18 @@ dt {
     color: #000;
 }
 
+/* Tabs ----------------------------------*/
+.ui-widget-header { border: 1px solid #fff; background: #C6C8D2 !important;  opacity: 0.67;}
+.ui-widget-content a:hover {color: #f50;}
+.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #999 !important ; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #707070;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #000000; }
+.ui-tabs-nav li.ui-tabs-selected { background: #fff; }
+
+
 /* Colors specific changes                     */
-/* Override inline code in --------------------*/
+/* Location and behavior of Right Site Tab in/out pin-------*/
+
 #sidebar {  
 background: #fff !important;
 margin: 9px 20px 15px 15px;
@@ -1644,5 +1645,5 @@ margin: 9px 20px 15px 15px;
 color:  #000;
 }
 .nav_content .facts_label a{
-color: #fff;
+color: #707070;
 }
