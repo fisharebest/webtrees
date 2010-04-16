@@ -454,9 +454,9 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 	} elseif ($salpha) {
 		// Match a surname initial, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$s}%,{$g}%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%,{$galpha}%");
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$s}%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%");
 		}
 	} elseif ($galpha) {
 		// Match all surnames with a given initial
