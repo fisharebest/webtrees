@@ -53,7 +53,7 @@ $filter_type = safe_GET('filter_type', array($or, $and), $or);
 $columns = safe_GET('columns', array('1', '2'), '2');
 $currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=="on") ? false : true;
 $show_thumbnail = (isset($_REQUEST['thumbnails']) && $_REQUEST['thumbnails']=="on") ? true : false;
-$include_links = (isset($_REQUEST['include_links']) && $_REQUEST['include_links']=="on") ? true : false;
+$exclude_links = (isset($_REQUEST['exclude_links']) && $_REQUEST['exclude_links']=="on") ? true : false;
  
 if ($reset == "Reset") {
 	$sortby = "title";
@@ -80,7 +80,7 @@ if ($_SESSION['medialist_ged'] != WT_GEDCOM) {
 if (empty($folder)) {
 	$folder = $MEDIA_DIRECTORY; // default setting
 	$show_thumbnail = true; // default setting
-	$include_links = true; // default setting
+	$exclude_links = false; // default setting
 }
 
 // If SESSION_medialist then it's a return
@@ -102,7 +102,7 @@ if (isset($_SESSION['medialist'])) {
 		$columns=($_SESSION['medialist_columns']);
 		$currentdironly=($_SESSION['medialist_currentdironly']);
 		$show_thumbnail=($_SESSION['medialist_thumbnail']);
-		$include_links=($_SESSION['medialist_links']);
+		$exclude_links=($_SESSION['medialist_links']);
 	
 	} else {		
 		// This is a return visit and the FILTER button was used
@@ -112,7 +112,7 @@ if (isset($_SESSION['medialist'])) {
 				if ($currentdironly != $_SESSION['medialist_currentdironly']) $build ="yes";				
 			}
 			// Check if the 'Include media links' option has changed
-			if ($include_links != $_SESSION['medialist_links']) $build ="yes";
+			if ($exclude_links != $_SESSION['medialist_links']) $build ="yes";
 			// if same subdirectory and folder then use an existing medialist
 			if ($build != "yes") {
 				if (($filter1 == $_SESSION['medialist_filter1']) && ($filter2 == $_SESSION['medialist_filter2']) && ($filter_type == $_SESSION['filter_type'])) {
@@ -162,7 +162,7 @@ if ($build == "yes") {
 	}
 	// show external links only if looking at top level directory
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
-	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal, $include_links);
+	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal, $exclude_links);
 
 	//-- remove all private media objects
 	foreach($medialist as $key => $media) {
@@ -346,13 +346,13 @@ $_SESSION['medialist'] = $medialist;
 	<!-- // thumbnail option  -->
 			<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
 				<?php if (WT_USER_IS_ADMIN) { ?>
-					<?php echo i18n::translate('Include media links'), help_link('media_links'); ?>
+					<?php echo i18n::translate('Exclude media links'), help_link('media_links'); ?>
 				<?php } ?>
 			</td>
 			<td class="optionbox wrap width25">
 			<?php if (WT_USER_IS_ADMIN) { ?>
-				<input type="checkbox" id="include_links" name="include_links"
-				<?php if ($include_links) { ?>checked="checked"<?php } ?> />
+				<input type="checkbox" id="exclude_links" name="exclude_links"
+				<?php if ($exclude_links) { ?>checked="checked"<?php } ?> />
 			<?php } ?>
 							</td>	
 	<!-- // end thumbnail option -->
@@ -408,7 +408,7 @@ if ($search=="yes") {
 	$_SESSION['medialist_columns']=$columns;
 	$_SESSION['medialist_currentdironly']=$currentdironly;
 	$_SESSION['medialist_thumbnail']=$show_thumbnail;	
-	$_SESSION['medialist_links']=$include_links;
+	$_SESSION['medialist_links']=$exclude_links;
 }
 
 // *****************************  End Set SESSION variables ********************************************
@@ -452,24 +452,24 @@ if ($show == "yes") {
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
 			}
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
 			}
 		}
 	} else {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
 			}
 		}
 	}
@@ -484,11 +484,11 @@ if ($show == "yes") {
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
 			}
 		}
 	} else {
@@ -496,11 +496,11 @@ if ($show == "yes") {
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
 			}
 			if ($currentPage > 1) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
 			}
 		}
 	}
@@ -684,24 +684,24 @@ Plus other Media Options - MediaViewer page') . "\" />";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
 			}
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
 			}
 		}
 	} else {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
 			}
 		}
 	}
@@ -713,11 +713,11 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
 			}
 		}
 	} else {
@@ -725,11 +725,11 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
 			}
 			if ($currentPage > 1) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?folder={$folder}&filter1={$filter1}&filter2={$filter2}&sortby={$sortby}&search=no&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
 			}
 		}
 	}
