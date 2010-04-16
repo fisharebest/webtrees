@@ -653,10 +653,24 @@ try {
 		"         KEY ix1 (log_time),".
 		"         KEY ix2 (log_type),".
 		"         KEY ix3 (ip_address),".
-		"         KEY ix4 (user_id),".
-		"         KEY ix5 (gedcom_id),".
 		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE SET NULL */,".
 		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE SET NULL */".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}change (".
+		" change_id      INTEGER AUTO_INCREMENT                  NOT NULL,".
+		" change_time    TIMESTAMP                               NOT NULL DEFAULT CURRENT_TIMESTAMP,".
+		" status         ENUM('approved', 'pending', 'rejected') NOT NULL DEFAULT 'pending',".
+		" gedcom_id      INTEGER                                 NOT NULL,".
+		" xref           VARCHAR(20)                             NOT NULL,".
+		" old_gedcom     LONGTEXT                                NOT NULL,".
+		" new_gedcom     LONGTEXT                                NOT NULL,".
+		" user_id        INTEGER                                 NOT NULL,".
+		" PRIMARY KEY     (change_id),".
+		"         KEY ix1 (gedcom_id, status),".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE RESTRICT */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -978,7 +992,7 @@ try {
 		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".
 		"('ALLOW_USER_THEMES',               '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
-		"('LOGFILE_CREATE',                  'monthly'),".
+		"('LOGFILE_CREATE',                  'database'),".
 		"('SESSION_SAVE_PATH',               ''),".
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
