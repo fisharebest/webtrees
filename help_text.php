@@ -2880,11 +2880,6 @@ case 'SURNAME_TRADITION':
 	$text=i18n::translate('When you add new members to a family, <b>webtrees</b> can supply default values for surnames according to regional custom.<br /><br /><ul><li>In the <b>Paternal</b> tradition, all family members share the father\'s surname.</li><li>In the <b>Spanish</b> and <b>Portuguese</b> tradition, children receive a surname from each parent.</li><li>In the <b>Icelandic</b> tradition, children receive their male parent\'s given name as a surname, with a suffix that denotes gender.</li><li>In the <b>Polish</b> tradition, all family members share the father\'s surname. For some surnames, the suffix indicates gender.  The suffixes <i>ski</i>, <i>cki</i>, and <i>dzki</i> indicate male, while the corresponding suffixes <i>ska</i>, <i>cka</i>, and <i>dzka</i> indicate female.</li></ul>');
 	break;
 
-case 'SYNC_GEDCOM_FILE':
-	$title=i18n::translate('Synchronize edits into GEDCOM file');
-	$text=i18n::translate('In past versions of <b>webtrees</b> the pending edits were stored in the GEDCOM file and the changed records were then "accepted" into the database.  Starting with v4.1 pending changes are no longer stored in the GEDCOM file but in the changes file.  <br /><br />Setting this value to true will update the GEDCOM file when changes are accepted into the database.  This will keep the GEDCOM file synchronized with the database.  For greater compatibility with previous versions the default value of this field is on.<br /><br />You may want to turn it off to conserve memory when accepting changes.');
-	break;
-
 case 'THEME_DIR':
 	$title=i18n::translate('Theme directory');
 	$text=i18n::translate('The directory where your <b>webtrees</b> theme files are kept.<br /><br />You may customize any of the standard themes that come with <b>webtrees</b> to give your site a unique look and feel.  See the Theme Customization section of the <a href="readme.txt">readme.txt</a> file for more information.');

@@ -96,9 +96,6 @@ case 'acceptall':
 	}
 	write_changes();
 	$manual_save = false;
-	if ($SYNC_GEDCOM_FILE) {
-		write_file();
-	}
 	echo '<b>', i18n::translate('Changes successfully accepted into database'), '</b>';
 	break;
 }

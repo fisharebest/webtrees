@@ -399,7 +399,6 @@ if ($action=="update") {
 	$configtext = preg_replace('/\$SURNAME_LIST_STYLE\s*=\s*.*;/', "\$SURNAME_LIST_STYLE = \"".$_POST["NEW_SURNAME_LIST_STYLE"]."\";", $configtext);
 	$configtext = preg_replace('/\$SUPPORT_METHOD\s*=\s*".*";/', "\$SUPPORT_METHOD = \"".$_POST["NEW_SUPPORT_METHOD"]."\";", $configtext);
 	$configtext = preg_replace('/\$SURNAME_TRADITION\s*=\s*.*;/', "\$SURNAME_TRADITION = \"".$_POST["NEW_SURNAME_TRADITION"]."\";", $configtext);
-	$configtext = preg_replace('/\$SYNC_GEDCOM_FILE\s*=\s*.*;/', "\$SYNC_GEDCOM_FILE = ".$boolarray[$_POST["NEW_SYNC_GEDCOM_FILE"]].";", $configtext);
 	$configtext = preg_replace('/\$THUMBNAIL_WIDTH\s*=\s*".*";/', "\$THUMBNAIL_WIDTH = \"".$_POST["NEW_THUMBNAIL_WIDTH"]."\";", $configtext);
 	$configtext = preg_replace('/\$UNDERLINE_NAME_QUOTES\s*=\s*.*;/', "\$UNDERLINE_NAME_QUOTES = ".$boolarray[$_POST["NEW_UNDERLINE_NAME_QUOTES"]].";", $configtext);
 	$configtext = preg_replace('/\$USE_RIN\s*=\s*.*;/', "\$USE_RIN = ".$boolarray[$_POST["NEW_USE_RIN"]].";", $configtext);
@@ -1814,14 +1813,6 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 		</td>
 		<td class="optionbox">
 			<?php echo edit_field_yes_no('NEW_ALLOW_EDIT_GEDCOM', $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'" onfocus="getHelp(\'ALLOW_EDIT_GEDCOM\');"'); ?>
-		</td>
-	</tr>
-	<tr>
-		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Synchronize edits into GEDCOM file'), help_link('SYNC_GEDCOM_FILE'); ?>
-		</td>
-		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SYNC_GEDCOM_FILE', $SYNC_GEDCOM_FILE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SYNC_GEDCOM_FILE\');"'); ?>
 		</td>
 	</tr>
 	<tr>

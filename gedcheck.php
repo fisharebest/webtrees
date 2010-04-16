@@ -131,7 +131,7 @@ if (!isset($_POST['action'])) {
 }
 
 // If we're checking a gedcom that is imported into the database, check that the file is synchronised
-if ($ged==WT_GEDCOM && !$SYNC_GEDCOM_FILE) {
+if ($ged==WT_GEDCOM) {
 	$ged_link='href="javascript:" onclick="window.open(\''.encode_url("export_gedcom.php?export={$ged}").'\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');"';
 	echo '<div class="error">', i18n::translate('Edits made to the database are not synchronized to the file %s.  The file contents may be out-of-date.  You can synchronize it with the database now by performing an <b><a "%s">export</a></b>.', $ged, $ged_link), '</div><hr/>';
 }

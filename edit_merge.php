@@ -237,9 +237,6 @@ if ($action!="choose") {
 					}
 
 					replace_gedrec($gid1, $newgedrec);
-					if ($SYNC_GEDCOM_FILE) {
-						write_file();
-					}
 					write_changes();
 					$rec=GedcomRecord::getInstance($gid1);
 					echo '<br />', i18n::translate('Record %s successfully updated.', $rec->getXrefLink()), '<br />';

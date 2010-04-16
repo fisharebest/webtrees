@@ -480,8 +480,7 @@ if ($verify == "verify_gedcom") {
 
 		if ($imported) {
 			print "<span class=error>".i18n::translate('A GEDCOM with this file name has already been imported into the database.')."</span><br /><br />";
-			if (!$SYNC_GEDCOM_FILE)
-				print "<span class=error>".i18n::translate('This GEDCOM file is <em>not</em> synchronized with the database.  It may not contain the latest version of your data.  To re-import from the database rather than the file, you should download and re-upload.')."</span><br /><br />";
+			print "<span class=error>".i18n::translate('This GEDCOM file is <em>not</em> synchronized with the database.  It may not contain the latest version of your data.  To re-import from the database rather than the file, you should download and re-upload.')."</span><br /><br />";
 		}
 		if ($bakfile != "") print i18n::translate('A GEDCOM file with the same name has been found. If you choose to continue, the old GEDCOM file will be replaced with the file that you uploaded and the Import process will begin again.  If you choose to cancel, the old GEDCOM will remain unchanged.')."</td></tr>";
 		// NOTE: Check for existing changes

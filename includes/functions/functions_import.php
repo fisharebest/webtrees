@@ -1253,56 +1253,6 @@ function read_gedcom_file() {
 	}
 }
 
-//-------------------------------------------- write_file
-//-- this function writes the $fcontents back to the
-//-- gedcom file
-function write_file() {
-	global $fcontents;
-
-	if (empty($fcontents)) {
-		return;
-	}
-	if (strpos($fcontents, "0 TRLR")===false) {
-		$fcontents.="0 TRLR\n";
-	}
-	//-- write the gedcom file
-	$path=get_gedcom_setting(WT_GED_ID, 'path');
-	if (!is_writable($path)) {
-		print "ERROR 5: GEDCOM file is not writable.  Unable to complete request.\n";
-		AddToChangeLog("ERROR 5: GEDCOM file is not writable.  Unable to complete request. ->" . WT_USER_NAME ."<-");
-		return false;
-	}
-	//-- only allow one thread to write the file at a time
-	$mutex = new Mutex(WT_GEDCOM);
-	$mutex->Wait();
-	//-- what to do if file changed while waiting
-
-	$fp = fopen($path, "wb");
-	if ($fp===false) {
-		print "ERROR 6: Unable to open GEDCOM file resource.  Unable to complete request.\n";
-		AddToChangeLog("ERROR 6: Unable to open GEDCOM file resource.  Unable to complete request. ->" . WT_USER_NAME ."<-");
-		return false;
-	}
-	$fl = @flock($fp, LOCK_EX);
-	if (!$fl) {
-		AddToChangeLog("ERROR 7: Unable to obtain file lock. ->" . WT_USER_NAME ."<-");
-	}
-	$fw = fwrite($fp, $fcontents);
-	if ($fw===false) {
-		print "ERROR 7: Unable to write to GEDCOM file.\n";
-		AddToChangeLog("ERROR 7: Unable to write to GEDCOM file. ->" . WT_USER_NAME ."<-");
-		$fl = @flock($fp, LOCK_UN);
-		fclose($fp);
-		return false;
-	}
-	$fl = @flock($fp, LOCK_UN);
-	fclose($fp);
-	//-- always release the mutex
-	$mutex->Release();
-	$logline = AddToLog($path." updated", 'config');
-
-	return true;
-}
 /**
 * Accpet changed gedcom record into database
 *
@@ -1311,7 +1261,7 @@ function write_file() {
 * @param string $cid The change id of the record to accept
 */
 function accept_changes($cid) {
-	global $pgv_changes, $GEDCOM, $TBLPREFIX, $SYNC_GEDCOM_FILE, $fcontents, $manual_save;
+	global $pgv_changes, $GEDCOM, $TBLPREFIX, $fcontents, $manual_save;
 
 	if (isset ($pgv_changes[$cid])) {
 		$changes = $pgv_changes[$cid];
@@ -1327,58 +1277,6 @@ function accept_changes($cid) {
 		}
 
 		update_record($gedrec, $ged_id, $change["type"]=="delete");
-
-		//-- write the changes back to the gedcom file
-		if ($SYNC_GEDCOM_FILE) {
-			// TODO: We merge CONC lines on import, so need to add them back on export
-			if (!isset($manual_save) || $manual_save==false) {
-				//-- only allow one thread to accept changes at a time
-				$mutex = new Mutex("accept_changes");
-				$mutex->Wait();
-			}
-
-			if (empty($fcontents)) {
-				read_gedcom_file();
-			}
-			if ($change["type"]=="delete") {
-				$pos1=find_newline_string($fcontents, "0 @{$gid}@");
-				if ($pos1!==false) {
-					$pos2=find_newline_string($fcontents, "0", $pos1+5);
-					if ($pos2===false) {
-						$fcontents=substr($fcontents, 0, $pos1).'0 TRLR'.WT_EOL;
-						AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct", 'error');
-					} else {
-						$fcontents=substr($fcontents, 0, $pos1).substr($fcontents, $pos2);
-					}
-				} else {
-					AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct.  Deleted gedcom record $gid was not found in the gedcom file.", 'error');
-				}
-			} elseif ($change["type"]=="append") {
-				$pos1=find_newline_string($fcontents, "0 TRLR");
-				$fcontents=substr($fcontents, 0, $pos1).reformat_record_export($gedrec).'0 TRLR'.WT_EOL;
-			} elseif ($change["type"]=="replace") {
-				$pos1=find_newline_string($fcontents, "0 @{$gid}@");
-				if ($pos1!==false) {
-					$pos2=find_newline_string($fcontents, "0", $pos1+5);
-					if ($pos2===false) {
-						$fcontents=substr($fcontents, 0, $pos1).'0 TRLR'.WT_EOL;
-						AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct", 'error');
-					} else {
-						$fcontents=substr($fcontents, 0, $pos1).reformat_record_export($gedrec).substr($fcontents, $pos2);
-					}
-				} else {
-					//-- attempted to replace a record that doesn't exist
-					AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct.  Replaced gedcom record $gid was not found in the gedcom file.", 'error');
-					$pos1=find_newline_string($fcontents, "0 TRLR");
-					$fcontents=substr($fcontents, 0, $pos1).reformat_record_export($gedrec).'0 TRLR'.WT_EOL;
-					AddToLog("Gedcom record $gid was appended back to the GEDCOM file.", 'edit');
-				}
-			}
-			if (!isset($manual_save) || $manual_save==false) {
-				write_file();
-				$mutex->Release();
-			}
-		}
 
 		unset ($pgv_changes[$cid]);
 		if (!isset($manual_save) || $manual_save==false) {
