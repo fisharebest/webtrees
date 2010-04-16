@@ -1762,11 +1762,10 @@ function format_parents_age($pid, $birth_date=null) {
 						$title=i18n::translate('Parent\'s age');
 						break;
 					}
-					// luk
 					if ($class) {
-						$html.=' <span class="'.$class.'" title="'.$title.'">'.$parent->getSexImage('small', '', '', false).$age.'</span>';
+						$html.=' <span class="'.$class.'" title="'.$title.'">'.$parent->getSexImage().$age.'</span>';
 					} else {
-						$html.=' <span title="'.$title.'">'.$parent->getSexImage('small', '', '', false).$age.'</span>';
+						$html.=' <span title="'.$title.'">'.$parent->getSexImage().$age.'</span>';
 					}
 				}
 			}
@@ -1937,31 +1936,8 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 				$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
 				$tempURL .= "parent[{$pindex}]=".PrintReady($ppart).'&';
 			}
-			/*
 			$tempURL .= 'level='.count($levels);
 			$html .= '<a href="'.encode_url($tempURL).'"> '.PrintReady($place).'</a>';
-			*/ //luk
-			$tempURL .= 'level='.count($levels);
-			$place_pic = ' ';
-			global $TBLPREFIX, $WT_IMAGES, $WT_IMAGE_DIR, $GEDCOM;
-			if (empty($ged)) $ged=$GEDCOM;
-			$sql = "SELECT * FROM ".$TBLPREFIX."media WHERE m_file LIKE '%/places/%' AND m_gedfile=".WT_GED_ID;
-			$rows=WT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
-			foreach ($rows as $rowm) {
-				// Get info on how to handle this media file
-				$media=Media::getInstance($rowm["m_media"]);
-				$rawTitle = $rowm["m_titl"];
-				if (empty($rawTitle)) $rawTitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
-				if (empty($rawTitle)) $rawTitle = basename($rowm["m_file"]);
-				$mediaTitle = PrintReady(htmlspecialchars($rawTitle));
-				$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
-				$thumbnail = thumbnail_file($rowm["m_file"], true, false);
-				if ($mediaTitle == PrintReady($place) && $media->canDisplayDetails()) {
-					$place_pic .= "<a href=\"".$mainMedia."\" rel=\"clearbox[general_6]\" rev=\"".$rowm["m_media"]."::".$ged."::".$mediaTitle."::\"> <img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["media"]["button"]."\" alt=\"".i18n::translate('Show photos?')."\" title= \"".i18n::translate('Show photos?')."\" border=\"0\" align=\"top\" /></a>";
-					break;
-				}
-			}
-			$html .= '<br /><a href="'.encode_url($tempURL).'"> '.PrintReady($place).'</a>'.$place_pic;
 		} else {
 			if (!$SEARCH_SPIDER) {
 				$html.=' -- ';

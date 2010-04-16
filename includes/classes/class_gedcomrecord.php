@@ -618,35 +618,23 @@ class GedcomRecord {
 	}
 
 	// Get the three variants of the name
-	// luk
 	function getFullName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
-			if (isset($tmp[1]['full']) && $tmp[1]['type']=='_MARNM')
-				return $tmp[$this->getPrimaryName()]['full']." [".$tmp[1]['full']."]";
-			else
-				return $tmp[$this->getPrimaryName()]['full'];
+			return $tmp[$this->getPrimaryName()]['full'];
 		} else {
 			return i18n::translate('Private');
 		}
 	}
-	// luk
 	function getSortName() {
 		// The sortable name is never displayed, no need to call canDisplayName()
 		$tmp=$this->getAllNames();
-		if (isset($tmp[1]['sort']) && $tmp[1]['type']=='_MARNM')
-			return $tmp[$this->getPrimaryName()]['sort']." [".$tmp[1]['sort']."]";
-		else
-			return $tmp[$this->getPrimaryName()]['sort'];
+		return $tmp[$this->getPrimaryName()]['sort'];
 	}
-	// luk
 	function getListName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
-			if (isset($tmp[1]['list']) && $tmp[1]['type']=='_MARNM')
-				return $tmp[$this->getPrimaryName()]['list']." [".$tmp[1]['list']."]";
-			else
-				return $tmp[$this->getPrimaryName()]['list'];
+			return $tmp[$this->getPrimaryName()]['list'];
 		} else {
 			return i18n::translate('Private');
 		}
@@ -678,12 +666,12 @@ class GedcomRecord {
 		} else {
 			$href=encode_url($this->getLinkUrl());
 		}
-		$html='<a href="'.$href.'" class="list_item"><b>'.PrintReady($name).'</b></a>';
+		$html='<a href="'.$href.'" class="list_item"><b>'.PrintReady($name).'</b>';
 		if ($SHOW_ID_NUMBERS) {
 			$html.=' '.WT_LPARENS.$this->getXref().WT_RPARENS;
 		}
 		$html.=$this->format_list_details();
-		$html='<'.$tag.' class="'.$dir.'" dir="'.$dir.'">'.$html.'</'.$tag.'>';
+		$html='<'.$tag.' class="'.$dir.'" dir="'.$dir.'">'.$html.'</a></'.$tag.'>';
 		return $html;
 	}
 

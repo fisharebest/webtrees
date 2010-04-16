@@ -348,8 +348,7 @@ class Event {
 		$eras=array("{$decade}_", "{$century}_", '');
 
 		// Extra details, such as 1 OCCU Shoemaker or 1 RELI Catholic
-		$detail=trim(UTF8_strtoupper(UTF8_substr($this->getDetail(),0,4)));
-		if ($detail=="ROLN" || $detail=="GOSP" || $detail=="WŁOŚ") $detail="FARM";
+		$detail=trim(strtoupper(substr($this->getDetail(),0,4)));
 		if ($detail=='KEEP') // Keeping House => House Keeper
 			$detail='HOUS';
 		$details=array('_'.$detail, '');
@@ -442,6 +441,7 @@ class Event {
 				"_BIRT_", "_MARR_", "_DEAT_","_BURI_", // other events of close relatives
 				"CENS",
 				"OCCU",
+				"RESI",
 				"PROP",
 				"CHRA",
 				"RETI",
@@ -451,8 +451,6 @@ class Event {
 				"WILL",
 				"_HOL",
 				"_????_",
-				"RESI",
-				"RELI",
 				"DEAT", "CAUS",
 				"_FNRL", "BURI", "CREM", "_INTE", "CEME",
 				"_YART",
@@ -463,6 +461,7 @@ class Event {
 				"NATI",
 				"CITN",
 				"CAST",
+				"RELI",
 				"SSN", "IDNO",
 				"TEMP",
 				"SLGC", "BAPL", "CONL", "ENDL", "SLGS",

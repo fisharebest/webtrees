@@ -58,13 +58,7 @@ $WT_BLOCKS['print_todays_events']=array(
 function print_todays_events($block=true, $config="", $side, $index) {
   global $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
   global $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS;
-  global $lang_short_cut, $LANGUAGE;
 
-  // Show holidays and name-days if file with them exist
-  $file = "./modules/holydays/".$lang_short_cut[$LANGUAGE].".dates.php";
-  if (file_exists($file)) {
-	include($file);
-  }
   $block = true;		// Always restrict this block's height
 
 	$todayjd=client_jd();
@@ -104,28 +98,10 @@ function print_todays_events($block=true, $config="", $side, $index) {
   $content = "";
 	switch ($infoStyle) {
 	case "style1":
-		$content .= "<div>";
-		// Show holydays and name-days
-			$func = "holyday";
-			if (function_exists($func))
-				$content .= "<b>".PrintReady($func(date('j'), date('n'), date('Y')))."<br /></b>";
-			$func = "name_day";
-			if (function_exists($func))
-				$content .= "<b>".PrintReady($func(date('j'), date('n'), date('Y')))."</b>";
-		$content .= "</div>";
 		// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
 		$content .= print_events_list($todayjd, $todayjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', $sortStyle);
 		break;
 	case "style2":
-		$content .= "<div class=\"center\">";
-		// Show holydays and name-days
-			$func = "holyday";
-			if (function_exists($func))
-				$content .= "<b>".PrintReady($func(date('j'), date('n'), date('Y')))."<br /></b>";
-			$func = "name_day";
-			if (function_exists($func))
-				$content .= "<b>".PrintReady($func(date('j'), date('n'), date('Y')))."</b>";
-		$content .= "</div>";
 		// Style 2: New format, tables, big text, etc.  Not too good on right side of page
 		ob_start();
 		$content .= print_events_table($todayjd, $todayjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', $allowDownload=='yes', $sortStyle);

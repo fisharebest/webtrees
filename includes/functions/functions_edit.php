@@ -1901,9 +1901,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 // Add some empty tags to create a new fact
 function addSimpleTags($fact) {
 	global $ADVANCED_PLAC_FACTS;
-	//luk
-	//add_simple_tag("0 {$fact}");
-	add_simple_tag($fact=='MARR' ? '0 MARR Y' : "0 {$fact}");
+	add_simple_tag("0 {$fact}");
 	add_simple_tag("0 DATE", $fact, translate_fact("{$fact}:DATE"));
 	add_simple_tag("0 PLAC", $fact, translate_fact("{$fact}:PLAC"));
 

@@ -194,19 +194,15 @@ function print_indi_table($datalist, $legend="", $option="") {
 			} else {
 				$title='';
 			}
-			// luk
 			if ($num==$primary) {
 				$class='list_item name2';
 				$sex_image=$person->getSexImage();
 				list($surn, $givn)=explode(',', $name['sort']);
-				echo '<a ', $title, ' href="', encode_url($person->getLinkUrl()), '" class="', $class, '"> ', PrintReady($name['list']), '</a>', $sex_image, "";
 			} else {
-				$class='list_item name3';
+				$class='list_item';
 				$sex_image='';
-				$names_html[]='<a '.$title.' href="'.encode_url($person->getLinkUrl()).'" class="'.$class.'"> ['.PrintReady($name['list']).']</a>'.$sex_image;
-				echo '<a ', $title, ' href="', encode_url($person->getLinkUrl()), '" class="', $class, '"> [', PrintReady($name['list']), ']</a>', $sex_image, "";
 			}
-			//echo '<a ', $title, ' href="', encode_url($person->getLinkUrl()), '" class="', $class, '"> ', PrintReady($name['list']), '</a>', $sex_image, "<br/>";
+			echo '<a ', $title, ' href="', encode_url($person->getLinkUrl()), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, "<br/>";
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_$table_id details1", 'none');
@@ -570,10 +566,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		if (!$husb->isDead()) $tdclass .= " alive";
 		if (!$husb->getChildFamilyIds()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($names[$n1]['list']), "\">";
-		echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']);
-		// luk
-		if (isset($names[1]['list'])) echo " [", PrintReady($names[1]['list']), "]</a>";
-		else echo "</a>";
+		echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
 		if ($tiny) echo $husb->getSexImage();
 		if ($n1!=$n2) {
 			echo "<br /><a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\">", PrintReady($names[$n2]['list']), "</a>";
@@ -622,10 +615,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		if (!$wife->isDead()) $tdclass .= " alive";
 		if (!$wife->getChildFamilyIds()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($names[$n1]['list']), "\">";
-		echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']);
-		// luk
-		if (isset($names[1]['list'])) echo " [", PrintReady($names[1]['list']), "]</a>";
-		else echo "</a>";
+		echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
 		if ($tiny) echo $wife->getSexImage();
 		if ($n1!=$n2) {
 			echo "<br /><a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\">", PrintReady($names[$n2]['list']), "</a>";
@@ -1721,7 +1711,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		//-- Record name(s)
 		$name = $value['name'];
 		if ($value['record']->getType()=="FAM") {
-			$exp = explode(" + ", $name);
+			$exp = explode("<br />", $name);
 			$husb = $value['record']->getHusband();
 			if ($husb) $exp[0] .= $husb->getPrimaryParentsNames("parents_$table_id details1", "none");
 			$wife = $value['record']->getWife();
