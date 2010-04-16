@@ -177,7 +177,7 @@ function check_media_structure() {
 * @return mixed A media list array.
 */
 
-function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $includeLinks = true) {
+function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $TBLPREFIX, $MEDIATYPE;
 	global $level, $dirs, $ALLOW_CHANGE_GEDCOM, $MEDIA_DIRECTORY;
 	global $MEDIA_EXTERNAL, $pgv_changes, $USE_MEDIA_FIREWALL;
@@ -349,7 +349,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			}
 		}
 	}
-if ($includeLinks) {
+if (!$excludeLinks) {
 	foreach ($medialist as $key=>$media) {
 		foreach (fetch_linked_indi($media["XREF"], 'OBJE', WT_GED_ID) as $indi) {
 			$medialist[$key]["LINKS"][$indi->getXref()]='INDI';
