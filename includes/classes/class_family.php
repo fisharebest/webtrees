@@ -394,18 +394,50 @@ class Family extends GedcomRecord {
 				$wife_names[$n]['script']=utf8_script($wife_name['surn']);
 			}
 			// Add the matched names first
+			// luk
 			foreach ($husb_names as $husb_name) {
 				foreach ($wife_names as $wife_name) {
 					if ($husb_name['type']!='_MARNM' && $wife_name['type']!='_MARNM' && $husb_name['script']==$wife_name['script']) {
+						$htype=$husb_name['type'];
+						$hfull=$husb_name['full'];
+						$wfull=$wife_name['full'];
+						$hlist=$husb_name['list'].$husb->getSexImage();
+						$wlist=$wife_name['list'].$wife->getSexImage();
+						$hsort=$husb_name['sort'];
+						$wsort=$wife_name['sort'];
+					}
+					if ($husb_name['type']=='_MARNM') {
+						$mhfull=$husb_name['full'];
+						$mhlist=$husb_name['list'].$husb->getSexImage();
+					}
+					if ($wife_name['type']=='_MARNM') {
+						$mwfull=$wife_name['full'];
+						$mwlist=$wife_name['list'].$wife->getSexImage();
+					}
+						/*
 						$this->_getAllNames[]=array(
 							'type'=>$husb_name['type'],
 							'full'=>$husb_name['full'].' + '.$wife_name['full'],
 							'list'=>$husb_name['list'].$husb->getSexImage().'<br />'.$wife_name['list'].$wife->getSexImage(),
 							'sort'=>$husb_name['sort'].' + '.$wife_name['sort'],
 						);
-					}
+						*/
 				}
 			}
+			$full=$hfull;
+			if (!empty($mhfull)) $full.=" [".$mhfull."]";
+			$full.=' + '.$wfull;
+			if (!empty($mwfull)) $full.=" [".$mwfull."]";
+			$list=$hlist;
+			if (!empty($mhlist)) $list.=" [".$mhlist."]";
+			$list.=' + '.$wlist;
+			if (!empty($mwlist)) $list.=" [".$mwlist."]";
+			$this->_getAllNames[]=array(
+				'type'=>$htype,
+				'full'=>$full,
+				'list'=>$list,
+				'sort'=>$hsort.' + '.$wsort,
+			);
 			// Add the unmatched names second (there may be no matched names)
 			foreach ($husb_names as $husb_name) {
 				foreach ($wife_names as $wife_name) {

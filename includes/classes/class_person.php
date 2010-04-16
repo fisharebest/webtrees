@@ -457,8 +457,10 @@ class Person extends GedcomRecord {
 	* NOTE: It would have been nice if we'd called the images sexM, sexF and sexU
 	* @return string  <img ... />
 	*/
-	function getSexImage($size='small', $style='', $title='') {
-		return self::sexImage($this->getSex(), $size, $style, $title);
+	// luk
+	function getSexImage($size='small', $style='', $title='', $no=true) {
+		if ($no) return;
+		else return self::sexImage($this->getSex(), $size, $style, $title);
 	}
 
 	static function sexImage($sex, $size='small', $style='', $title='') {
@@ -1701,7 +1703,9 @@ class Person extends GedcomRecord {
 			$list=$full;
 		} else {
 			$pos2=strrpos($full, '/');
-			$list=trim(substr($full, $pos1+1, $pos2-$pos1-1)).', '.substr($full, 0, $pos1).substr($full, $pos2+1);
+			//$list=trim(substr($full, $pos1+1, $pos2-$pos1-1)).', '.substr($full, 0, $pos1).substr($full, $pos2+1);
+			// luk przecinek
+			$list=trim(substr($full, $pos1+1, $pos2-$pos1-1)).' '.substr($full, 0, $pos1).substr($full, $pos2+1);
 			$list=trim(str_replace(array('/', ' ,', '  '), array('', ',', ' '), $list));
 			$full=trim(str_replace(array('/', ' ,', '  '), array('', ',', ' '), $full));
 		}
@@ -1734,8 +1738,15 @@ class Person extends GedcomRecord {
 					$PN=$UNKNOWN_PN[utf8_script($surns[0])];
 				$NN=$UNKNOWN_NN[utf8_script($givn)];
 			}
-			$list=str_replace(array('@N.N.','@P.N.'), array($NN, $PN), $list);
-			$full=str_replace(array('@N.N.','@P.N.'), array($NN, $PN), $full);
+			// luk
+			if ($type!="_MARNM") {
+				$list=str_replace(array('@N.N.','@P.N.'), array($NN, $PN), $list);
+				$full=str_replace(array('@N.N.','@P.N.'), array($NN, $PN), $full);
+			}
+			else {
+				$list=trim(str_replace(array('@N.N.','@P.N.'), array("", ""), $list));
+				$full=trim(str_replace(array('@N.N.','@P.N.'), array("", ""), $full));
+			}
 		}
 		// A comma separated list of surnames (from the SURN, not from the NAME) indicates
 		// multiple surnames (e.g. Spanish).  Each one is a separate sortable name.
@@ -1767,6 +1778,37 @@ class Person extends GedcomRecord {
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
 		return $this->_getAllNames('NAME', 1);
+	}
+
+	//luk
+	function getRodName() {
+		global $pgv_lang;
+		if (!$this->canDisplayName()) {
+			return $pgv_lang["private"];
+		}
+		//we need only the 1 SURN main names, not all the individual names
+		$namerec = get_sub_record(2, "2 _MARNM", $this->gedrec, 1);
+		$rodname = get_gedcom_value("_MARNM", 2, $namerec, '', false);
+		if (empty($rodname)) {
+			$namerec = get_sub_record(2, "2 _MARNM", $this->gedrec, 1);
+			$name = get_gedcom_value("_MARNM", 2, $namerec, '', false);
+		}
+		return str_replace("/", "", $rodname);
+	}
+	
+	/**
+	 * get the surname
+	 * @return string
+	 */
+	function getSurname() {
+		global $pgv_lang;
+		if (!$this->canDisplayName()) {
+			return $pgv_lang["private"];
+		}
+		//we need only the 2 SURN main names, not all the individual names
+		$namerec = get_sub_record(2, "2 SURN", $this->gedrec, 1);
+		$name = get_gedcom_value("SURN", 2, $namerec, '', false);
+		return $name;
 	}
 
 	// Extra info to display when displaying this record in a list of

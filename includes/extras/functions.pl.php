@@ -35,6 +35,7 @@ define('WT_FUNCTIONS_PL_PHP', '');
 ////////////////////////////////////////////////////////////////////////////////
 // Localise a date. Lokalizacja daty.
 ////////////////////////////////////////////////////////////////////////////////
+/*
 function date_localisation_pl(&$q1, &$d1, &$q2, &$d2, &$q3) {
 	static $NOMINATIVE_MONTHS=NULL;
 	static $GENITIVE_MONTHS=NULL;
@@ -80,7 +81,7 @@ function date_localisation_pl(&$q1, &$d1, &$q2, &$d2, &$q3) {
 		break;
 	}
 }
-
+*/
 ////////////////////////////////////////////////////////////////////////////////
 // Localise an age. Lokalizacja wieku.
 ////////////////////////////////////////////////////////////////////////////////
@@ -148,6 +149,7 @@ function age_localisation_pl(&$agestring, &$show_years) {
 		$agestring
 	);
 }
+/*
 function age2_localisation_pl($years) {
 	if ($years==1) $years .= " ".i18n::translate('year');
 	else if ($years > 1 && $years < 5) $years .= " ".i18n::translate('years');
@@ -155,22 +157,24 @@ function age2_localisation_pl($years) {
 	else $years .= " ".i18n::translate('years');
 	return $years;
 }
+*/
 ////////////////////////////////////////////////////////////////////////////////
 // Localise a date differences. Lokalizacja różnic dat.
 ////////////////////////////////////////////////////////////////////////////////
 function date_diff_localisation_pl(&$label, &$gap) {
 	$yrs = round($gap/12);
-	if ($gap == 12 || $gap == -12) $label .= $yrs." ".i18n::translate('year'); // 1 rok
-	else if (($yrs > 1 && $yrs < 5) || ($yrs < -1 && $yrs > -5)) $label .= $yrs." ".i18n::translate('years'); // 2-4 lata
-	else if (($yrs > 21 || $yrs < -21) && substr($yrs, -1, 1) > 1 && substr($yrs, -1, 1) < 5 && substr($yrs, -2, 1) != 1) $label .= $yrs." ".i18n::translate('years');
-	else if ($gap > 20 or $gap < -20) $label .= $yrs." ".i18n::translate('years'); // x lat
-	else if ($gap == 1 || $gap == -1) $label .= $gap." ".i18n::translate('month'); // 1 miesiąc
+	if ($gap == 12 || $gap == -12) $label .= $yrs." rok"; // 1 rok
+	else if (($yrs > 1 && $yrs < 5) || ($yrs < -1 && $yrs > -5)) $label .= $yrs." lata"; // 2-4 lata
+	else if (($yrs > 21 || $yrs < -21) && substr($yrs, -1, 1) > 1 && substr($yrs, -1, 1) < 5 && substr($yrs, -2, 1) != 1) $label .= $yrs." lata";
+	else if ($gap > 20 or $gap < -20) $label .= $yrs." lat"; // x lat
+	else if ($gap == 1 || $gap == -1) $label .= $gap." miesiąc"; // 1 miesiąc
 	else if (($gap > 1 && $gap < 5) || ($gap < -1 && $gap > -5)) $label .= $gap." miesiące"; // 2-4 miesiące
-	else if ($gap != 0) $label .= $gap." ".i18n::translate('months'); // x miesięcy
+	else if ($gap != 0) $label .= $gap." miesięcy"; // x miesięcy
 }
 ////////////////////////////////////////////////////////////////////////////////
 // Localise a number of people. Lokalizacja liczby osób.
 ////////////////////////////////////////////////////////////////////////////////
+/*
 function num_people_localisation_pl(&$count) {
 	if ($count == 1)
 		print "<br /><b>".$count." ".i18n::translate('Individual')."</b>"; // 1 osoba
@@ -181,6 +185,7 @@ function num_people_localisation_pl(&$count) {
 	else
 		print "<br /><b>".$count." ".i18n::translate('Individuals')."</b>"; // x osób
 }
+*/
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Localise the _AKAN, _AKA, ALIA and _INTE facts. Lokalizacja faktów _AKAN, _AKA, ALIA i _INTE.
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +223,7 @@ function fact_NMR_localisation_pl($fact, &$fid) {
 ///////////////////////////////////////////////////////////////////////////////////////////
 // Localise the AGNC fact. Lokalizacja faktu AGNC.
 ///////////////////////////////////////////////////////////////////////////////////////////
+/*
 function fact_AGNC_localisation_pl($fact, $main_fact) {
 
 	if ($main_fact == "EDUC") {
@@ -230,6 +236,7 @@ function fact_AGNC_localisation_pl($fact, $main_fact) {
 		$fact = "Seminarium duchowne";
 	}
 }
+*/
 ////////////////////////////////////////////////////////////////////////////////
 // Localise the close relatives facts. Lokalizacja faktów dotyczących bliskich
 ////////////////////////////////////////////////////////////////////////////////

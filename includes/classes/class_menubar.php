@@ -567,7 +567,9 @@ class MenuBar
 		if ($style=="top" && file_exists(WT_ROOT.'repolist.php')) $menuList["repository"] = i18n::translate('Repositories');
 		if ($style=="top" && file_exists(WT_ROOT.'placelist.php')) $menuList["places"] = i18n::translate('Place Hierarchy');
 		if ($style=="top" && file_exists(WT_ROOT.'medialist.php') && $MULTI_MEDIA) $menuList["media"] = i18n::translate('MultiMedia');
-		asort($menuList);
+		//if (!$surname and file_exists("changelist.php")) $menuList["recent_changes"] = $WT_lang["recent_changes_list"];
+		//if (!$surname and file_exists("useradmin.php")) $menuList["users"] = $WT_lang["users_list"];
+		//asort($menuList);
 
 		// Produce the submenus in localized name order
 
@@ -652,6 +654,39 @@ class MenuBar
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_media");
 				$menu->addSubmenu($submenu);
 				break;
+			/*
+			case "cemetery":
+				//-- cemetery
+				$submenu = new Menu($WT_lang["cemetery_list"], "cemlist.php");
+				if (!empty($WT_IMAGES["indis"]["small"]))
+					$submenu->addIcon($WT_IMAGE_DIR."/"."small/menu_ceme.gif");
+				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$menu->addSubmenu($submenu);
+				break;
+
+			case "recent_changes":
+				//-- changes
+				if (WT_USER_IS_ADMIN) {
+					$menu->addSeparator();
+					$submenu = new Menu($WT_lang["recent_changes_list"], "changelist.php");
+					if (!empty($WT_IMAGES["indis"]["small"]))
+						$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["timeline"]["small"]);
+					$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+					$menu->addSubmenu($submenu);
+					break;
+				}
+				
+			case "users":
+				//-- changes
+				if (WT_USER_IS_ADMIN) {
+					$submenu = new Menu($WT_lang["users_list"], "useradmin.php?action=listusers");
+					if (!empty($WT_IMAGES["indis"]["small"]))
+						$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mygedview"]["small"]);
+					$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+					$menu->addSubmenu($submenu);
+					break;
+				}
+			*/
 			}
 		}
 
@@ -832,6 +867,26 @@ class MenuBar
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_printer");
 		return $menu;
 	}
+	
+	/**
+	 * get the gallery menu
+	 * @return Menu 	the menu item
+	 */
+	function &getGalleryMenu() {
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_lang, $SEARCH_SPIDER;
+		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
+		if ((!file_exists("gallery.php")) || (!empty($SEARCH_SPIDER))) {
+			$menu = new Menu("", "", "");
+			$menu->print_menu = null;
+			return $menu;
+		}
+		//-- main gallery menu item
+		//$menu = new Menu($WT_lang["gallery_menu"], "gallery.php", "down");
+		$menu = new Menu("gallery_menu", "gallery.php", "down");
+		$menu->addIcon($WT_IMAGE_DIR."/"."gallery.gif");
+		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff");
+		return $menu;
+	}
 
 	/**
 	* get the search menu
@@ -948,6 +1003,7 @@ class MenuBar
 		$submenu->addOnclick("return helpPopup('help_contents_help');");
 		$menu->addSubmenu($submenu);
 		//-- faq sub menu
+		/*
 		if (file_exists(WT_ROOT.'faq.php')) {
 			$submenu = new Menu(i18n::translate('FAQ List'), "faq.php");
 			if (!empty($WT_IMAGES["menu_help"]["small"]))
@@ -970,7 +1026,7 @@ class MenuBar
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_wiki");
 			$menu->addSubmenu($submenu);
 		}
-
+		*/
 		//-- add contact links to help menu
 		$menu->addSeparator();
 		$menuitems = contact_menus();
@@ -990,6 +1046,26 @@ class MenuBar
 			$submenu = new Menu(i18n::translate('Show Contextual Help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=yes"));
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		$menu->addSubmenu($submenu);
+		return $menu;
+	}
+	
+	/**
+	 * get the link menu
+	 * @return Menu 	the menu item
+	 */
+	function &getLinkMenu() {
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_lang, $SEARCH_SPIDER;
+		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
+		if ((!file_exists("link.php")) || (!empty($SEARCH_SPIDER))) {
+			$menu = new Menu("", "", "");
+			$menu->print_menu = null;
+			return $menu;
+		}
+		//-- main link menu item
+		//$menu = new Menu($WT_lang["m_links"], "link.php", "down");
+		$menu = new Menu("m_links", "link.php", "down");
+		$menu->addIcon($WT_IMAGE_DIR."/"."link.gif");
+		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff");
 		return $menu;
 	}
 
