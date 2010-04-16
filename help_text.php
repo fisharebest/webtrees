@@ -2507,7 +2507,7 @@ case 'PEDIGREE_MAP_clustersize':
 
 case 'PEDIGREE_MAP_hideflags':
 	$title=i18n::translate('Hide flags');
-	$text=i18n::translate('Hide the flags that are configured in the googlemap module. Ususally these are for countries and states.  This serves as a visual queue that the markers around the flag are from the general area, and not the specific spot.');
+	$text=i18n::translate('Hide the flags that are configured in the googlemap module. Ususally these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.');
 	break;
 
 case 'PEDIGREE_MAP_hidelines':
