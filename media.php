@@ -855,7 +855,7 @@ if (check_media_structure()) {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 			// only check for externalLinks when dealing with the root folder
 			$showExternal = ($directory == $MEDIA_DIRECTORY) ? true : false;
-			$medialist=get_medialist(true, $directory, true, false, $showExternal);
+			$medialist=get_medialist(true, $directory, false, false, $showExternal);
 
 		
 		// Get the list of media items
