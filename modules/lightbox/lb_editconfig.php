@@ -69,7 +69,7 @@ if ($action=='update' && !isset($security_user)) {
 	set_site_setting('LB_URL_WIDTH',      $_POST['NEW_LB_URL_WIDTH']);
 	set_site_setting('LB_URL_HEIGHT',     $_POST['NEW_LB_URL_HEIGHT']);
 
-	AddToLog('Lightbox config updated');
+	AddToLog('Lightbox config updated', 'config');
 	// read the config file again, to set the vars
 	require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 }

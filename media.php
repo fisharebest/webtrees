@@ -339,7 +339,7 @@ if (check_media_structure()) {
 			}
 		} else {
 			print "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
-			AddToLog($directory." ".i18n::translate('Directory does not exist.'));
+			AddToLog('Directory does not exist.'.$directory, 'media');
 		}
 
 		// Thumbs directory check
@@ -374,22 +374,22 @@ if (check_media_structure()) {
 		if (!isset($error)) {
 			if (count($files) > 0 ) {
 				print "<div class=\"error\">".$directory." -- ".i18n::translate('Directory not empty.')."</div>";
-				AddToLog($directory." -- ".i18n::translate('Directory not empty.'));
+				AddToLog($directory." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			if (count($thumbfiles) > 0) {
 				print "<div class=\"error\">".$thumbdir." -- ".i18n::translate('Directory not empty.')."</div>";
-				AddToLog($thumbdir." -- ".i18n::translate('Directory not empty.'));
+				AddToLog($thumbdir." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			if (count($files_fw) > 0 ) {
 				print "<div class=\"error\">".$directory_fw." -- ".i18n::translate('Directory not empty.')."</div>";
-				AddToLog($directory_fw." -- ".i18n::translate('Directory not empty.'));
+				AddToLog($directory_fw." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			if (count($thumbfiles_fw) > 0) {
 				print "<div class=\"error\">".$thumbdir_fw." -- ".i18n::translate('Directory not empty.')."</div>";
-				AddToLog($thumbdir_fw." -- ".i18n::translate('Directory not empty.'));
+				AddToLog($thumbdir_fw." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			else $clean = true;
@@ -411,27 +411,27 @@ if (check_media_structure()) {
 			if (@is_dir(filename_decode($thumbdir_fw))) $resthumb_fw = @rmdir(filename_decode(substr($thumbdir_fw, 0, -1)));
 			if ($resdir && $resthumb && $resdir_fw && $resthumb_fw) {
 				print i18n::translate('Media and thumbnail directories successfully removed.');
-				AddToLog($directory." -- ".i18n::translate('Media and thumbnail directories successfully removed.'));
+				AddToLog($directory." -- ".i18n::translate('Media and thumbnail directories successfully removed.'), 'media');
 			} else {
 				if (!$resdir) {
 					print "<div class=\"error\">".i18n::translate('Media directory not removed.')."</div>";
-					AddToLog($directory." -- ".i18n::translate('Media directory not removed.'));
+					AddToLog($directory." -- ".i18n::translate('Media directory not removed.'), 'media');
 				} else if (!$resdir_fw) {
 					print "<div class=\"error\">".i18n::translate('Media directory not removed.')."</div>";
-					AddToLog($directory_fw." -- ".i18n::translate('Media directory not removed.'));
+					AddToLog($directory_fw." -- ".i18n::translate('Media directory not removed.'), 'media');
 				} else {
 					print i18n::translate('Media directory successfully removed.');
-					AddToLog($directory." -- ".i18n::translate('Media directory successfully removed.'));
+					AddToLog($directory." -- ".i18n::translate('Media directory successfully removed.'), 'media');
 				}
 				if (!$resthumb) {
 					print "<div class=\"error\">".i18n::translate('Thumbnail directory not removed.')."</div>";
-					AddToLog($thumbdir." -- ".i18n::translate('Thumbnail directory not removed.'));
+					AddToLog($thumbdir." -- ".i18n::translate('Thumbnail directory not removed.'), 'media');
 				} else if (!$resthumb_fw) {
 					print "<div class=\"error\">".i18n::translate('Thumbnail directory not removed.')."</div>";
-					AddToLog($thumbdir_fw." -- ".i18n::translate('Thumbnail directory not removed.'));
+					AddToLog($thumbdir_fw." -- ".i18n::translate('Thumbnail directory not removed.'), 'media');
 				} else {
 					print i18n::translate('Thumbnail directory successfully removed.');
-					AddToLog($thumbdir." -- ".i18n::translate('Thumbnail directory successfully removed.'));
+					AddToLog($thumbdir." -- ".i18n::translate('Thumbnail directory successfully removed.'), 'media');
 				}
 
 			}

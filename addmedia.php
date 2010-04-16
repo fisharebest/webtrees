@@ -199,7 +199,7 @@ if ($action=="newentry") {
 					$error .= i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES["mediafile"]["error"])."<br />";
 				} else {
 					@chmod(filename_decode($newFile), WT_PERM_FILE);
-					AddToLog("Media file {$folderName}{$mediaFile} uploaded");
+					AddToLog("Media file {$folderName}{$mediaFile} uploaded", 'media');
 				}
 			}
 		}
@@ -214,7 +214,7 @@ if ($action=="newentry") {
 					$error .= i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES["thumbnail"]["error"])."<br />";
 				} else {
 					@chmod(filename_decode($newThum), WT_PERM_FILE);
-					AddToLog("Media file {$thumbFolderName}{$mediaFile} uploaded");
+					AddToLog("Media file {$thumbFolderName}{$mediaFile} uploaded", 'media');
 				}
 			}
 		}
@@ -225,7 +225,7 @@ if ($action=="newentry") {
 				$error .= i18n::translate('There was an error uploading your file.')."<br />".i18n::translate('The file %s could not be copied from %s', $realThumbFolderName.$mediaFile, $realThumbFolderName.$mediaFile)."<br />";
 			} else {
 				@chmod(filename_decode($whichFile2), WT_PERM_FILE);
-				AddToLog("Media file {$folderName}{$mediaFile} copied from {$thumbFolderName}{$mediaFile}");
+				AddToLog("Media file {$folderName}{$mediaFile} copied from {$thumbFolderName}{$mediaFile}", 'media');
 			}
 		}
 		if ($error=="" && !empty($_FILES["mediafile"]["name"]) && empty($_FILES["thumbnail"]["name"])) {
@@ -242,7 +242,7 @@ if ($action=="newentry") {
 						} else {
 							echo i18n::translate('Thumbnail %s generated automatically.', $thumbnail);
 							print "<br />";
-							AddToLog("Media thumbnail {$thumbnail} generated");
+							AddToLog("Media thumbnail {$thumbnail} generated", 'media');
 						}
 					}
 				}

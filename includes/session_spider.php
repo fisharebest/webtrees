@@ -89,7 +89,7 @@ try {
 		if ($banned_ip->comment) {
 			$log_msg.=' ('.$banned_ip->comment.')';
 		}
-		AddToLog($log_msg);
+		AddToLog($log_msg, 'auth');
 		header('HTTP/1.1 403 Access Denied');
 		exit;
 	}
@@ -161,9 +161,7 @@ if ($quitReason != "") {
 		//-- load db specific functions
 		require_once WT_ROOT.'includes/functions/functions_db.php';
 		require_once WT_ROOT.'includes/authentication.php';      // -- load the authentication system
-		AddToLog("MSG>{$quitReason}; script terminated.");
-		AddToLog("UA>{$ua}<");
-		AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
+		AddToLog("MSG>{$quitReason}; script terminated. UA>{$ua}< >{$_SERVER["REQUEST_URI"]}<", 'auth');
 	}
 	header("HTTP/1.0 403 Forbidden");
 	print "Hackers are not welcome here.";
@@ -380,9 +378,7 @@ if(!empty($SEARCH_SPIDER)) {
 		if ($logSpider) {
 			//adds a message to the log that a new spider session is starting
 			require_once WT_ROOT.'includes/authentication.php';      // -- Loaded early so AddToLog works
-			AddToLog("New search engine encountered: ->".$outstr."<-");
-			AddToLog("UA>{$ua}<");
-			AddToLog("URI>{$_SERVER["REQUEST_URI"]}<");
+			AddToLog("New search engine encountered: ->".$outstr."<- UA>{$ua}< >{$_SERVER["REQUEST_URI"]}<", 'auth');
 		}
 	}
 	if(isset($_SESSION['last_spider_date'])) {
@@ -390,7 +386,7 @@ if(!empty($SEARCH_SPIDER)) {
 			//adds a message to the log that a new spider session is starting
 			if ($logSpider) {
 				require_once WT_ROOT.'includes/authentication.php';      // -- Loaded early so AddToLog works
-				AddToLog("Returning search engine last seen ".$_SESSION['spider_count']." times on ".$_SESSION['last_spider_date']." from ".$_SESSION['last_spider_ip']." ->".$outstr."<-");
+				AddToLog("Returning search engine last seen ".$_SESSION['spider_count']." times on ".$_SESSION['last_spider_date']." from ".$_SESSION['last_spider_ip']." ->".$outstr."<-", 'auth');
 			}
 			$_SESSION['last_spider_date'] = $spiderdate;
 			$spidercount = 1;

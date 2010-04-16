@@ -68,12 +68,12 @@ function authenticateUser($user_name, $password, $basic=false) {
 				//-- reset the user's session
 				$_SESSION = array();
 				$_SESSION['pgv_user'] = $user_id;
-				AddToLog(($basic ? 'Basic HTTP Authentication' :'Login'). ' Successful');
+				AddToLog(($basic ? 'Basic HTTP Authentication' :'Login'). ' Successful', 'auth');
 				return $user_id;
 			}
 		}
 	}
-	AddToLog(($basic ? 'Basic HTTP Authentication' : 'Login').' Failed ->'.$user_name.'<-');
+	AddToLog(($basic ? 'Basic HTTP Authentication' : 'Login').' Failed ->'.$user_name.'<-', 'auth');
 	return false;
 }
 
@@ -109,10 +109,10 @@ function basicHTTPAuthenticateUser() {
 function userLogout($user_id) {
 	set_user_setting($user_id, 'loggedin', 'N');
 if ($user_id != "Anonymous" and $user_id != "") {
-	AddToLog('Logout '.getUserName($user_id));
+	AddToLog('Logout '.getUserName($user_id), 'auth');
 	}
 	// If we are logging ourself out, then end our session too.
-	if (getUserId()==$user_id) {
+	if (WT_USER_ID==$user_id) {
 		session_destroy();
 	}
 }
@@ -296,142 +296,142 @@ function getUserGedcomId($user_id, $ged_id) {
 
 /**
  * add a message into the log-file
- * @param string $LogString		the message to add
- * @param boolean $savelangerror
- * @return string returns the log line if successfully inserted into the log (used for CVS/SVN commit messages)
  */
-function AddToLog($LogString, $savelangerror=false) {
-	global $INDEX_DIRECTORY, $LOGFILE_CREATE, $argc;
+function AddToLog($log_message, $log_type='error') {
+	global $TBLPREFIX, $argc;
 
-	$wroteLogString = false;
-
-	if ($LOGFILE_CREATE=='none') {
+	switch (get_site_setting('LOGFILE_CREATE')) {
+	case 'none':
 		return;
+	case 'database':
+		WT_DB::prepare(
+			"INSERT INTO {$TBLPREFIX}log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
+		)->execute(array(
+			$log_type,
+			$log_message,
+			$argc ? 'cli' : $_SERVER['REMOTE_ADDR'],
+			getUserId() ? getUserId() : null,
+			WT_GED_ID  ? WT_GED_ID  : null
+		));
+		return;
+	case 'daily':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'pgv-'.date('Ymd').'.log';
+		break;
+	case 'weekly':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'pgv-'.date('Ym').'-week'.date('W').'.log';
+		break;
+	case 'monthly':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'pgv-'.date('Ym').'.log';
+		break;
+	case 'yearly':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'pgv-'.date('Y').'.log';
+		break;
 	}
 
-	if (isset($_SERVER['REMOTE_ADDR'])) {
-		$REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
-	} elseif ($argc>1) {
-		$REMOTE_ADDR = 'cli';
-	}
-	if ($LOGFILE_CREATE !== 'none' && $savelangerror === false) {
-		if (empty($LOGFILE_CREATE))
-			$LOGFILE_CREATE='daily';
-		if ($LOGFILE_CREATE=='daily')
-			$logfile = $INDEX_DIRECTORY.'pgv-' . date('Ymd') . '.log';
-		if ($LOGFILE_CREATE=='weekly')
-			$logfile = $INDEX_DIRECTORY.'pgv-' . date('Ym') . '-week' . date('W') . '.log';
-		if ($LOGFILE_CREATE=='monthly')
-			$logfile = $INDEX_DIRECTORY.'pgv-' . date('Ym') . '.log';
-		if ($LOGFILE_CREATE=='yearly')
-			$logfile = $INDEX_DIRECTORY.'pgv-' . date('Y') . '.log';
-		if (is_writable($INDEX_DIRECTORY)) {
-			$logline=date('d.m.Y H:i:s').' - '.$REMOTE_ADDR.' - '.(getUserId() ? getUserName() : 'Anonymous').' - '.$LogString.WT_EOL;
-			$fp = fopen($logfile, 'a');
-			flock($fp, 2);
-			fputs($fp, $logline);
-			flock($fp, 3);
-			fclose($fp);
-			$wroteLogString = true;
-		}
-	}
-	if ($wroteLogString)
-		return $logline;
-	else
-		return '';
+	$logline=
+		date('d.m.Y H:i:s').
+		' - '.($argc ? 'cli' : $_SERVER['REMOTE_ADDR']).
+		' - '.(getUserId() ? getUserName() : 'Anonymous').
+		' - '.$LogString.WT_EOL;
+
+	$fp=fopen($logfile, 'a');
+	flock($fp, 2);
+	fputs($fp, $logline);
+	flock($fp, 3);
+	fclose($fp);
 }
 
 //----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
-function AddToSearchLog($LogString, $allgeds) {
-	global $INDEX_DIRECTORY;
-
-	if (empty($allgeds))
-		return;
+function AddToSearchLog($log_message, $geds) {
+	global $TBLPREFIX;
 
 	$all_geds=get_all_gedcoms();
-
-	//-- do not allow code to be written to the log file
-	$LogString = preg_replace('/<\?.*\?>/', '*** CODE DETECTED ***', $LogString);
-
-	foreach ($allgeds as $ged_id=>$ged_name) {
-		if (count($all_geds)) {
-			// If we have more than one gedcom, then need to load the settings
-			require get_config_file($ged_id); // Note: load locally, not globally
-		}
+	foreach ($geds as $ged_id=>$ged_name) {
+		require get_config_file($ged_id); // Note: load locally, not globally
 		switch ($SEARCHLOG_CREATE) {
 		case 'none':
 			continue 2;
+		case 'database':
+			WT_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
+			)->execute(array(
+				(count($all_geds)==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
+				$_SERVER['REMOTE_ADDR'],
+				WT_USER_ID ? WT_USER_ID : null,
+				$ged_id
+			));
+			break;
 		case 'yearly':
-			$logfile=$INDEX_DIRECTORY.'srch-'.$ged_name.date('Y').'.log';
+			$logfile=get_site_setting('INDEX_DIRECTORY').'srch-'.$ged_name.date('Y').'.log';
 			break;
 		case 'monthly':
-			$logfile=$INDEX_DIRECTORY.'srch-'.$ged_name.date('Ym').'.log';
+			$logfile=get_site_setting('INDEX_DIRECTORY').'srch-'.$ged_name.date('Ym').'.log';
 			break;
 		case 'weekly':
-			$logfile=$INDEX_DIRECTORY.'srch-'.$ged_name.date('Ym').'-week'.date('W').'.log';
+			$logfile=get_site_setting('INDEX_DIRECTORY').'srch-'.$ged_name.date('Ym').'-week'.date('W').'.log';
 			break;
 		case 'daily':
-		default:
-			$logfile=$INDEX_DIRECTORY.'srch-'.$ged_name.date('Ymd').'.log';
+			$logfile=get_site_setting('INDEX_DIRECTORY').'srch-'.$ged_name.date('Ymd').'.log';
 			break;
 		}
-		if (is_writable($INDEX_DIRECTORY)) {
-			$logline='Date / Time: '.date('d.m.Y H:i:s').' - IP: '.$_SERVER['REMOTE_ADDR'].' - User: '.WT_USER_NAME.'<br />';
-			if (count($allgeds)==count($all_geds)) {
-				$logline.='Searchtype: Global<br />';
-			} else {
-				$logline.='Searchtype: Gedcom<br />';
-			}
-			$logline.=$LogString.'<br /><br />'.WT_EOL;
-			$fp=fopen($logfile, 'a');
-			flock($fp, 2);
-			fputs($fp, $logline);
-			flock($fp, 3);
-			fclose($fp);
+		$logline='Date / Time: '.date('d.m.Y H:i:s').' - IP: '.$_SERVER['REMOTE_ADDR'].' - User: '.WT_USER_NAME.'<br />';
+		if (count($allgeds)==count($all_geds)) {
+			$logline.='Searchtype: Global<br />';
+		} else {
+			$logline.='Searchtype: Gedcom<br />';
 		}
+		$logline.=$LogString.'<br /><br />'.WT_EOL;
+		$fp=fopen($logfile, 'a');
+		flock($fp, 2);
+		fputs($fp, $logline);
+		flock($fp, 3);
+		fclose($fp);
 	}
 }
 
 //----------------------------------- AddToChangeLog
 //-- requires a string to add into the changelog-file
-function AddToChangeLog($LogString, $ged="") {
-	global $INDEX_DIRECTORY, $CHANGELOG_CREATE, $GEDCOM, $username, $SEARCHLOG_CREATE;
+function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
+	global $TBLPREFIX;
 
-	//-- do not allow code to be written to the log file
-	$LogString = preg_replace('/<\?.*\?>/', "*** CODE DETECTED ***", $LogString);
-
-	if (empty($ged))
-		$ged = $GEDCOM;
-	$oldged = $GEDCOM;
-	$GEDCOM = $ged;
-	if ($ged!=$oldged)
-		include(get_config_file());
-	if ($CHANGELOG_CREATE != "none") {
-		$REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
-		if (empty($CHANGELOG_CREATE))
-			$CHANGELOG_CREATE="daily";
-		if ($CHANGELOG_CREATE=="daily")
-			$logfile = $INDEX_DIRECTORY."/ged-" . $GEDCOM . date("Ymd") . ".log";
-		if ($CHANGELOG_CREATE=="weekly")
-			$logfile = $INDEX_DIRECTORY."/ged-" . $GEDCOM . date("Ym") . "-week" . date("W") . ".log";
-		if ($CHANGELOG_CREATE=="monthly")
-			$logfile = $INDEX_DIRECTORY."/ged-" . $GEDCOM . date("Ym") . ".log";
-		if ($CHANGELOG_CREATE=="yearly")
-			$logfile = $INDEX_DIRECTORY."/ged-" . $GEDCOM . date("Y") . ".log";
-		if (is_writable($INDEX_DIRECTORY)) {
-			$logline = date("d.m.Y H:i:s") . " - " . $REMOTE_ADDR . " - " . $LogString . "\r\n";
-			$fp = fopen($logfile, "a");
-			flock($fp, 2);
-			fputs($fp, $logline);
-			flock($fp, 3);
-			fclose($fp);
-		}
-
+	if ($ged_id!=WT_GED_ID) {
+		require get_config_file($ged_id); // Note: load locally, not globally
 	}
-	$GEDCOM = $oldged;
-	if ($ged!=$oldged)
-		include(get_config_file());
+
+	switch ($CHANGELOG_CREATE) {
+	case 'none':
+		break;
+	case 'database':
+		WT_DB::prepare(
+			"INSERT INTO {$TBLPREFIX}log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('change', ?, ?, ?, ?)"
+		)->execute(array(
+			$log_message,
+			$_SERVER['REMOTE_ADDR'],
+			WT_USER_ID ? WT_USER_ID : null,
+			$ged_id
+		));
+		break;
+	case 'yearly':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'ged-'.$ged_name.date('Y').'.log';
+		break;
+	case 'monthly':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'ged-'.$ged_name.date('Ym').'.log';
+		break;
+	case 'weekly':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'ged-'.$ged_name.date('Ym').'-week'.date('W').'.log';
+		break;
+	case 'daily':
+		$logfile=get_site_setting('INDEX_DIRECTORY').'ged-'.$ged_name.date('Ymd').'.log';
+		break;
+	}
+	$LogString = preg_replace('/<\?.*\?>/', "*** CODE DETECTED ***", $log_message);
+	$logline = date("d.m.Y H:i:s") . " - " . $REMOTE_ADDR . " - " . $LogString . "\r\n";
+	$fp=fopen($logfile, 'a');
+	flock($fp, 2);
+	fputs($fp, $logline);
+	flock($fp, 3);
+	fclose($fp);
 }
 
 //----------------------------------- addMessage

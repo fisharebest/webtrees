@@ -128,7 +128,7 @@ if (isset($GEDCOMPATH)) {
 		// NOTE: When uploading a file check if it doesn't exist yet
 		if ($action=="replace" || !in_array($GEDFILENAME, get_all_gedcoms()) && !file_exists($upload_path.$GEDFILENAME)) {
 			if (move_uploaded_file($_FILES['GEDCOMPATH']['tmp_name'], $upload_path.$GEDFILENAME)) {
-				AddToLog("Gedcom ".$path.$GEDFILENAME." uploaded");
+				AddToLog("Gedcom ".$path.$GEDFILENAME." uploaded", 'config');
 				$GEDCOMPATH = $upload_path.$GEDFILENAME;
 			} else {
 				$error = i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES['GEDCOMPATH']['error']);
@@ -495,7 +495,7 @@ if ($action=="update") {
 
 
 	if (($NEW_USE_MEDIA_FIREWALL=='yes') && !$USE_MEDIA_FIREWALL) {
-		AddToLog("Media Firewall enabled");
+		AddToLog("Media Firewall enabled", 'config');
 
 		if (!$errors) {
 			// create/modify an htaccess file in the main media directory
@@ -533,7 +533,7 @@ if ($action=="update") {
 		}
 
 	} elseif (($NEW_USE_MEDIA_FIREWALL=='no') && $USE_MEDIA_FIREWALL) {
-		AddToLog("Media Firewall disabled");
+		AddToLog("Media Firewall disabled", 'config');
 
 		if (file_exists($MEDIA_DIRECTORY.".htaccess")) {
 			$httext = implode('', file($MEDIA_DIRECTORY.".htaccess"));
@@ -578,7 +578,7 @@ if ($action=="update") {
 	require_once WT_ROOT.'includes/index_cache.php';
 	clearCache();
 
-	$logline = AddToLog("Gedcom configuration ".$INDEX_DIRECTORY.$FILE."_conf.php"." updated");
+	$logline = AddToLog("Gedcom configuration ".$INDEX_DIRECTORY.$FILE."_conf.php"." updated", 'config');
 	$gedcomconfname = $FILE."_conf.php";
 	if (!$errors) {
 		$gednews = getUserNews($FILE);

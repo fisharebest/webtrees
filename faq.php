@@ -76,14 +76,14 @@ if ($action=="commit") {
 		WT_DB::prepare("UPDATE {$TBLPREFIX}blocks SET b_order=?, b_username=?, b_config=? WHERE b_id=? and b_username=? and b_location=?")
 			->execute(array($order, $whichGEDCOM, serialize($body), $pidb, $oldGEDCOM, 'body'));
 
-		AddToChangeLog("FAQ item has been edited.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, $GEDCOM);
+		AddToChangeLog("FAQ item has been edited.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, get_id_from_gedcom($GEDCOM));
 		break;
 
 	case 'delete':
 		WT_DB::prepare("DELETE FROM {$TBLPREFIX}blocks WHERE b_order=? AND b_name=? AND b_username=?")
 			->execute(array($id, 'faq', $oldGEDCOM));
 
-		AddToChangeLog("FAQ item has been deleted.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, $oldGEDCOM);
+		AddToChangeLog("FAQ item has been deleted.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, get_id_from_gedcom($oldGEDCOM));
 		break;
 
 	case 'add':
@@ -104,7 +104,7 @@ if ($action=="commit") {
 		WT_DB::prepare("INSERT INTO {$TBLPREFIX}blocks (b_id, b_username, b_location, b_order, b_name, b_config) VALUES (?, ?, ?, ?, ?, ?)")
 			->execute(array($newid+1, $whichGEDCOM, 'body', $order, 'faq', serialize($body)));
 
-		AddToChangeLog("FAQ item has been added.<br />Header ID: ".$newid.".<br />Body ID: ".($newid+1), $whichGEDCOM);
+		AddToChangeLog("FAQ item has been added.<br />Header ID: ".$newid.".<br />Body ID: ".($newid+1), get_id_from_gedcom($whichGEDCOM));
 		break;
 
 	case 'moveup':
@@ -122,7 +122,7 @@ if ($action=="commit") {
 		WT_DB::prepare("UPDATE {$TBLPREFIX}blocks SET b_order=? WHERE b_id=? and b_location=?")
 			->execute(array($id-1, $pidb, 'body'));
 
-		AddToChangeLog("FAQ item has been moved up.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, $oldGEDCOM);
+		AddToChangeLog("FAQ item has been moved up.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, get_id_from_gedcom($oldGEDCOM));
 		break;
 
 	case 'movedown':
@@ -140,7 +140,7 @@ if ($action=="commit") {
 		WT_DB::prepare("UPDATE {$TBLPREFIX}blocks SET b_order=? WHERE b_id=? and b_location=?")
 			->execute(array($id+1, $pidb, 'body'));
 
-		AddToChangeLog("FAQ item has been moved down.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, $GEDCOM);
+		AddToChangeLog("FAQ item has been moved down.<br />Header ID: ".$pidh.".<br />Body ID: ".$pidb, get_id_from_gedcom($GEDCOM));
 		break;
 	}
 

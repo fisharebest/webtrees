@@ -96,13 +96,13 @@ switch ($action) {
 		print "<div class=\"center\">";
 		$user_id=get_user_id($user_name);
 		if (!$user_id) {
-			AddToLog("New password requests for user ".$user_name." that does not exist");
+			AddToLog("New password requests for user ".$user_name." that does not exist", 'auth');
 			print "<span class=\"warning\">";
 			echo i18n::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
 			print "</span><br />";
 		} else {
 			if (getUserEmail($user_id)=='') {
-				AddToLog("Unable to send password to user ".$user_name." because they do not have an email address");
+				AddToLog("Unable to send password to user ".$user_name." because they do not have an email address", 'auth');
 				print "<span class=\"warning\">";
 				echo i18n::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
 				print "</span><br />";
@@ -143,7 +143,7 @@ switch ($action) {
 				<tr><td class="wrap <?php print $TEXT_DIRECTION; ?>"><?php print i18n::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', $user_name);?></td></tr>
 				</table>
 				<?php
-				AddToLog("Password request was sent to user: ".$user_name);
+				AddToLog("Password request was sent to user: ".$user_name, 'auth');
 
 				i18n::init(WT_LOCALE);   // Reset language
 			}
@@ -306,7 +306,7 @@ switch ($action) {
 			exit;
 		}
 		if ((stripos($user_name, "SUNTZU")!==false) || (stripos($user_email, "SUNTZU")!==false)) {
-			AddToLog("SUNTZU hacker");
+			AddToLog("SUNTZU hacker", 'auth');
 			print "Go Away!";
 			exit;
 		}
@@ -315,12 +315,12 @@ switch ($action) {
 			if (!isset($_SERVER['HTTP_REFERER']) || stristr($_SERVER['HTTP_REFERER'],"login_register.php")===false) {
 				print "<center><br /><span class=\"error\">Invalid page referer.</span>\n";
 				print "<br /><br /></center>";
-				AddToLog('Invalid page referer while trying to register a user.  Possible spam attack.');
+				AddToLog('Invalid page referer while trying to register a user.  Possible spam attack.', 'auth');
 				exit;
 			}
 
 			if ((!isset($_SESSION["good_to_send"]))||($_SESSION["good_to_send"]!==true)) {
-				AddToLog('Invalid session reference while trying to register a user.  Possible spam attack.');
+				AddToLog('Invalid session reference while trying to register a user.  Possible spam attack.', 'auth');
 				exit;
 			}
 			$_SESSION["good_to_send"] = false;
@@ -331,7 +331,7 @@ switch ($action) {
 			print "<div class=\"center\">";
 			$user_created_ok = false;
 
-			AddToLog("User registration requested for: ".$user_name);
+			AddToLog("User registration requested for: ".$user_name, 'auth');
 
 			if (get_user_id($user_name)) {
 				print "<span class=\"warning\">".i18n::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.')."</span><br /><br />";
@@ -471,7 +471,7 @@ switch ($action) {
 			exit;
 		}
 		$QUERY_STRING = "";
-		AddToLog("User attempted to verify hashcode: ".$user_name);
+		AddToLog("User attempted to verify hashcode: ".$user_name, 'auth');
 
 		// Change to the new user's language
 		$user_id=get_user_id($user_name);
@@ -494,7 +494,7 @@ switch ($action) {
 				if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
 					set_user_setting($user_id, 'verified_by_admin', 'yes');
 				}
-				AddToLog("User verified: ".$user_name);
+				AddToLog("User verified: ".$user_name, 'auth');
 
 				// switch language to webmaster settings
 				i18n::init(get_user_setting($WEBMASTER_EMAIL, 'language'));

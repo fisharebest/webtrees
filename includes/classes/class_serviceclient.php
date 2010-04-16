@@ -111,7 +111,6 @@ class ServiceClient extends GedcomRecord {
 			if (!class_exists('Soap_Client') || $this->client_type=='PEAR:SOAP') {
 
 				require_once './SOAP/Client.php';
-				//AddToLog('Using PEAR:SOAP library');
 				// get the wsdl and cache it
 				$wsdl = new SOAP_WSDL($this->url);
 				//change the encoding style
@@ -737,7 +736,7 @@ class ServiceClient extends GedcomRecord {
 			$result = $this->soapClient->getGedcomRecord($this->SID, $xref);
 			if (PEAR::isError($result) || isset($result->faultcode) || get_class($result)=='SOAP_Fault' || is_object($result)) {
 				if (isset($result->faultstring)) {
-					AddToLog($result->faultstring);
+					AddToLog($result->faultstring, 'error');
 					print $result->faultstring;
 				}
 				return $localrec;
@@ -763,7 +762,7 @@ class ServiceClient extends GedcomRecord {
 			$result = $this->soapClient->getGedcomRecord($this->SID, $xref);
 			if (PEAR::isError($result) || isset($result->faultcode) || is_object($result) && get_class($result)=='SOAP_Fault') {
 				if (isset($result->faultstring)) {
-					AddToLog($result->faultstring);
+					AddToLog($result->faultstring, 'error');
 					print $result->faultstring;
 				}
 				return $localrec;
@@ -802,8 +801,8 @@ class ServiceClient extends GedcomRecord {
 				// If there are no changes between the local and remote copies
 				if (PEAR::isError($person) || isset($person->faultcode) || get_class($person)=='SOAP_Fault' || isset($person->error_message_prefix)) {
 
-					if (isset($person->faultstring)) AddToLog($person->faultstring);
-					else AddToLog($person->message);
+					if (isset($person->faultstring)) AddToLog($person->faultstring, 'error');
+					else AddToLog($person->message, 'edit');
 					//-- update the last change time
 					$pos1 = strpos($localrec, "1 CHAN");
 					if ($pos1!==false) {

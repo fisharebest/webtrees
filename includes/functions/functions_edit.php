@@ -249,7 +249,7 @@ function replace_gedrec($gid, $gedrec, $chan=true, $linkpid='') {
 					//-- delete records will be added back in when they are accepted
 					//-- but we should add a warning to the log
 					else if ($lastchange["type"]=="delete") {
-						AddToLog("Possible GEDCOM corruption: Attempting to replace GEDCOM record $gid which has already been marked for deletion.");
+						AddToLog("Possible GEDCOM corruption: Attempting to replace GEDCOM record $gid which has already been marked for deletion.", 'error');
 					}
 				}
 			}
@@ -1989,19 +1989,6 @@ function addNewFact($fact) {
 		}
 	} else {
 		return '';
-	}
-}
-
-/**
-* Add Debug Log
-*
-* This function adds debugging information to the log file
-* only if debugging output is enabled in session.php
-* @param string $logstr the string to add to the log
-*/
-function addDebugLog($logstr) {
-	if (WT_DEBUG) {
-		AddToChangeLog($logstr);
 	}
 }
 

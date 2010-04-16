@@ -403,7 +403,7 @@ class ClippingsControllerRoot extends BaseController {
 				if ($this->privatize_export!='none') {
 					$_SESSION["pgv_user"]=$_SESSION["org_user"];
 					delete_user($export_user_id);
-					AddToLog("deleted dummy user -> {$tempUserID} <-");
+					AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 				}
 
 				if($this->IncludeMedia == "yes")

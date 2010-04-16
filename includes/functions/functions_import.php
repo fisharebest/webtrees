@@ -1299,7 +1299,7 @@ function write_file() {
 	fclose($fp);
 	//-- always release the mutex
 	$mutex->Release();
-	$logline = AddToLog($path." updated");
+	$logline = AddToLog($path." updated", 'config');
 
 	return true;
 }
@@ -1346,12 +1346,12 @@ function accept_changes($cid) {
 					$pos2=find_newline_string($fcontents, "0", $pos1+5);
 					if ($pos2===false) {
 						$fcontents=substr($fcontents, 0, $pos1).'0 TRLR'.WT_EOL;
-						AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct");
+						AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct", 'error');
 					} else {
 						$fcontents=substr($fcontents, 0, $pos1).substr($fcontents, $pos2);
 					}
 				} else {
-					AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct.  Deleted gedcom record $gid was not found in the gedcom file.");
+					AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct.  Deleted gedcom record $gid was not found in the gedcom file.", 'error');
 				}
 			} elseif ($change["type"]=="append") {
 				$pos1=find_newline_string($fcontents, "0 TRLR");
@@ -1362,16 +1362,16 @@ function accept_changes($cid) {
 					$pos2=find_newline_string($fcontents, "0", $pos1+5);
 					if ($pos2===false) {
 						$fcontents=substr($fcontents, 0, $pos1).'0 TRLR'.WT_EOL;
-						AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct");
+						AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct", 'error');
 					} else {
 						$fcontents=substr($fcontents, 0, $pos1).reformat_record_export($gedrec).substr($fcontents, $pos2);
 					}
 				} else {
 					//-- attempted to replace a record that doesn't exist
-					AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct.  Replaced gedcom record $gid was not found in the gedcom file.");
+					AddToLog("Corruption found in GEDCOM $GEDCOM Attempted to correct.  Replaced gedcom record $gid was not found in the gedcom file.", 'error');
 					$pos1=find_newline_string($fcontents, "0 TRLR");
 					$fcontents=substr($fcontents, 0, $pos1).reformat_record_export($gedrec).'0 TRLR'.WT_EOL;
-					AddToLog("Gedcom record $gid was appended back to the GEDCOM file.");
+					AddToLog("Gedcom record $gid was appended back to the GEDCOM file.", 'edit');
 				}
 			}
 			if (!isset($manual_save) || $manual_save==false) {
@@ -1384,7 +1384,7 @@ function accept_changes($cid) {
 		if (!isset($manual_save) || $manual_save==false) {
 			write_changes();
 		}
-		$logline = AddToLog("Accepted change $cid " . $change["type"] . " into database");
+		$logline = AddToLog("Accepted change $cid " . $change["type"] . " into database", 'edit');
 		if (isset ($change["linkpid"])) {
 			accept_changes($change["linkpid"] . "_" . $GEDCOM);
 		}

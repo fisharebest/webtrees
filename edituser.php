@@ -69,7 +69,7 @@ if ($form_action=='update') {
 	} else {
 		// Change password
 		if (!empty($form_pass1)) {
-			AddToLog('User changed password');
+			AddToLog('User changed password', 'auth');
 			set_user_password(WT_USER_ID, crypt($form_pass1));
 		}
 		$old_realname =getUserFullName(WT_USER_ID);
@@ -86,7 +86,7 @@ if ($form_action=='update') {
 
 		// Change username
 		if ($form_username!=WT_USER_NAME) {
-			AddToLog('User renamed to ->'.$form_username.'<-');
+			AddToLog('User renamed to ->'.$form_username.'<-', 'auth');
 			rename_user(WT_USER_ID, $form_username);
 			$_SESSION['pgv_user']=$form_username;
 		}

@@ -605,7 +605,7 @@ try {
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -626,7 +626,7 @@ try {
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id)".
+		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -636,8 +636,25 @@ try {
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id),".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE CASCADE */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}log (".
+		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
+		" log_type    ENUM('auth', 'change', 'config', 'debug', 'edit', 'error', 'media', 'search') NOT NULL,".
+		" log_message TEXT         NOT NULL,".
+		" ip_address  VARCHAR(40)  NOT NULL,".
+		" user_id     INTEGER          NULL,".
+		" gedcom_id   INTEGER          NULL,".
+		"         KEY ix1 (log_time),".
+		"         KEY ix2 (log_type),".
+		"         KEY ix3 (ip_address),".
+		"         KEY ix4 (user_id),".
+		"         KEY ix5 (gedcom_id),".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE SET NULL */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE SET NULL */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -894,8 +911,8 @@ try {
 		" component     ENUM('menu', 'sidebar', 'tab') NOT NULL,".
 		" access_level  TINYINT                        NOT NULL,".
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name),".
-		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  )".
+		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */,".
+		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)   /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(

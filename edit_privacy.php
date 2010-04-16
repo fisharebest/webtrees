@@ -257,7 +257,7 @@ if ($action=="update") {
 	}
 	// NOTE: load the new variables
 	require $INDEX_DIRECTORY.$GEDCOM.'_priv.php';
-	$logline = AddToLog("Privacy file $PRIVACY_MODULE updated");
+	$logline = AddToLog("Privacy file $PRIVACY_MODULE updated", 'config');
  	$gedcomprivname = $GEDCOM."_priv.php";
 
  	//-- delete the cache files for the Home Page blocks

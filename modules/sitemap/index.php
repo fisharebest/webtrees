@@ -175,7 +175,7 @@ if ($action=="sendFiles") {
 	echo "</urlset>";
 	$_SESSION["pgv_user"]=$_SESSION["org_user"];
 	delete_user($sitemap_user_id);
-	AddToLog("deleted dummy user -> #SiteMap# <-");
+	AddToLog("deleted dummy user -> #SiteMap# <-", 'auth');
 	$GEDCOM = $oldGEDCOM;
 	exit;
 }

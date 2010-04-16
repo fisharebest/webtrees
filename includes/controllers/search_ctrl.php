@@ -491,7 +491,7 @@ class SearchControllerRoot extends BaseController {
 			return;
 		}
 
-		AddToLog("Search And Replace old:".$oldquery." new:".$this->replace);
+		AddToLog("Search And Replace old:".$oldquery." new:".$this->replace, 'edit');
 		$manual_save = true;
 		// Include edit functions.
 		require_once WT_ROOT.'includes/functions/functions_edit.php';

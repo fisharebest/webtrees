@@ -113,7 +113,7 @@ else if ($check == "add") {
 			$newgedcom = preg_replace('/[\r\n]+/', WT_EOL, $newgedcom);
 			fwrite($fp, $newgedcom);
 			fclose($fp);
-			$logline = AddToLog($GEDFILENAME." updated");
+			$logline = AddToLog($GEDFILENAME." updated", 'config');
 			$verify = "validate_form";
 			$exists = true;
 			// NOTE: Go straight to import, no other settings needed
@@ -1092,7 +1092,7 @@ if ($stage == 1) {
 		print "<span class=\"error\">Unable to copy updated GEDCOM file ".$INDEX_DIRECTORY.basename($GEDCOM_FILE).".new to ".$GEDCOM_FILE."</span><br />";
 	} else {
 		@unlink($INDEX_DIRECTORY.basename($GEDCOM_FILE).".new");
-		$logline = AddToLog($GEDCOM_FILE." updated");
+		$logline = AddToLog($GEDCOM_FILE." updated", 'config');
 	}
 	$newtime = time();
 	$exectime = $newtime - $oldtime;

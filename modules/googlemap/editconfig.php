@@ -133,7 +133,7 @@ if ($action=="update" && !isset($security_user)) {
 		set_site_setting('GM_PRE_POST_MODE_'.$i, $_POST['NEW_GM_PRE_POST_MODE_'.$i]);
 	}
 
-	AddToLog('Googlemap config updated');
+	AddToLog('Googlemap config updated', 'config');
 	// read the config file again, to set the vars
 	require WT_ROOT.'modules/googlemap/defaultconfig.php';
 }

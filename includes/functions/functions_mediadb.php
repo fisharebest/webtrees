@@ -929,7 +929,7 @@ function process_uploadMedia_form() {
 					$error .= i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES["mediafile".$i]["error"])."<br />";
 				} else {
 					@chmod(filename_decode($destFolder.$mediaFile), WT_PERM_FILE);
-					AddToLog("Media file {$folderName}{$mediaFile} uploaded");
+					AddToLog("Media file {$folderName}{$mediaFile} uploaded", 'media');
 				}
 			}
 			if ($error=="" && !empty($_FILES["thumbnail".$i]["name"])) {
@@ -939,7 +939,7 @@ function process_uploadMedia_form() {
 					$error .= i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES["thumbnail".$i]["error"])."<br />";
 				} else {
 					@chmod(filename_decode($destThumbFolder.$mediaFile), WT_PERM_FILE);
-					AddToLog("Media file {$thumbFolderName}{$mediaFile} uploaded");
+					AddToLog("Media file {$thumbFolderName}{$mediaFile} uploaded", 'media');
 				}
 			}
 			if ($error=="" && empty($_FILES["mediafile".$i]["name"]) && !empty($_FILES["thumbnail".$i]["name"])) {
@@ -949,7 +949,7 @@ function process_uploadMedia_form() {
 					$error .= i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES["thumbnail".$i]["error"])."<br />";
 				} else {
 					@chmod(filename_decode($folderName.$mediaFile), WT_PERM_FILE);
-					AddToLog("Media file {$folderName}{$mediaFile} copied from {$thumbFolderName}{$mediaFile}");
+					AddToLog("Media file {$folderName}{$mediaFile} copied from {$thumbFolderName}{$mediaFile}", 'media');
 				}
 			}
 			if ($error=="" && !empty($_FILES["mediafile".$i]["name"]) && empty($_FILES["thumbnail".$i]["name"])) {
@@ -966,7 +966,7 @@ function process_uploadMedia_form() {
 							} else {
 								echo i18n::translate('Thumbnail %s generated automatically.', $thumbnail);
 								print "<br />";
-								AddToLog("Media thumbnail {$thumbnail} generated");
+								AddToLog("Media thumbnail {$thumbnail} generated", 'media');
 							}
 						}
 					}
@@ -1874,11 +1874,11 @@ function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
 		$memorySpare = $memoryAvailable - $memoryUsed - $memoryNeeded;
 		if ($memorySpare > 0) {
 			// we have enough memory to load this file
-			if ($debug_verboseLogging) AddToLog("Media: >about to load< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory avail: ".$memoryAvailable." used: ".$memoryUsed." needed: ".$memoryNeeded." spare: ".$memorySpare);
+			if ($debug_verboseLogging) AddToLog("Media: >about to load< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory avail: ".$memoryAvailable." used: ".$memoryUsed." needed: ".$memoryNeeded." spare: ".$memorySpare, 'media');
 			return true;
 		} else {
 			// not enough memory to load this file
-			AddToLog("Media: >image too large to load< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory avail: ".$memoryAvailable." used: ".$memoryUsed." needed: ".$memoryNeeded." spare: ".$memorySpare);
+			AddToLog("Media: >image too large to load< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory avail: ".$memoryAvailable." used: ".$memoryUsed." needed: ".$memoryNeeded." spare: ".$memorySpare, 'media');
 			return false;
 		}
 	} else {

@@ -105,7 +105,7 @@ if ($action=='deleteuser') {
 	$user_id=get_user_id($username);
 	if ($user_id!=WT_USER_ID) {
 		delete_user($user_id);
-		AddToLog("deleted user ->{$username}<-");
+		AddToLog("deleted user ->{$username}<-", 'auth');
 	}
 	// User data is cached, so reload the page to ensure we're up to date
 	header("Location: useradmin.php");
@@ -127,9 +127,9 @@ if ($action=='createuser' || $action=='edituser2') {
 				if ($user_id=create_user($username, $realname, $emailaddress, crypt($pass1))) {
 					set_user_setting($user_id, 'reg_timestamp', date('U'));
 					set_user_setting($user_id, 'sessiontime', '0');
-					AddToLog("User ->{$username}<- created");
+					AddToLog("User ->{$username}<- created", 'auth');
 				} else {
-					AddToLog("User ->{$username}<- was not created");
+					AddToLog("User ->{$username}<- was not created", 'auth');
 					$user_id=get_user_id($username);
 				}
 			} else {
@@ -138,12 +138,12 @@ if ($action=='createuser' || $action=='edituser2') {
 			// Change password
 			if ($action=='edituser2' && !empty($pass1)) {
 				set_user_password($user_id, crypt($pass1));
-				AddToLog("User ->{$oldusername}<- had password changed");
+				AddToLog("User ->{$oldusername}<- had password changed", 'auth');
 			}
 			// Change username
 			if ($action=='edituser2' && $username!=$oldusername) {
 				rename_user($oldusername, $username);
-				AddToLog("User ->{$oldusername}<- renamed to ->{$username}<-");
+				AddToLog("User ->{$oldusername}<- renamed to ->{$username}<-", 'auth');
 			}
 				// Create/change settings that can be updated in the user's gedcom record?
 			$email_changed=($emailaddress!=getUserEmail($user_id));
@@ -946,7 +946,7 @@ if ($action == "cleanup2") {
 		$var = "del_".str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name);
 		if (safe_POST($var)=='yes') {
 			delete_user($user_id);
-			AddToLog("deleted user ->{$user_name}<-");
+			AddToLog("deleted user ->{$user_name}<-", 'auth');
 			echo i18n::translate('Deleted user: '); echo $user_name, "<br />";
 		} else {
 			$tempArray = unserialize(get_user_setting($user_id, 'canedit'));

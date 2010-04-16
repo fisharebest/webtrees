@@ -293,7 +293,7 @@ function textlength($t, $mxl, $text) {
 function imagettftextErrorHandler($errno, $errstr, $errfile, $errline) {
 	global $useTTF, $serverFilename;
 	// log the error
-	AddToLog("Media Firewall error: >".$errstr."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).")" );
+	AddToLog("Media Firewall error: >".$errstr."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).")", 'error');
 
 	// change value of useTTF to false so the fallback watermarking can be used.
 	$useTTF = false;
@@ -506,9 +506,9 @@ if ( $generatewatermark ) {
 	$im = @$imCreateFunc($serverFilename);
 
 	if ($im) {
-		if ($debug_verboseLogging) AddToLog("Media Firewall log: >about to watermark< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage());
+		if ($debug_verboseLogging) AddToLog("Media Firewall log: >about to watermark< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 		$im = applyWatermark($im);
-		if ($debug_verboseLogging) AddToLog("Media Firewall log: >watermark complete< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage());
+		if ($debug_verboseLogging) AddToLog("Media Firewall log: >watermark complete< file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 
 		$imSendFunc = 'image'.$type;
 		// save the image, if preferences allow
@@ -525,12 +525,12 @@ if ( $generatewatermark ) {
 		$imSendFunc($im);
 		imagedestroy($im);
 
-		if ($debug_verboseLogging) AddToLog("Media Firewall log: >done with < file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage());
+		if ($debug_verboseLogging) AddToLog("Media Firewall log: >done with < file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 		exit;
 
 	} else {
 		// this image is defective.  log it
-		AddToLog("Media Firewall error: >".i18n::translate('This media file is broken and cannot be watermarked')."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage());
+		AddToLog("Media Firewall error: >".i18n::translate('This media file is broken and cannot be watermarked')."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

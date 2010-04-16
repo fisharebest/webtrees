@@ -394,7 +394,7 @@ function pgv_error_handler($errno, $errstr, $errfile, $errline) {
 		}
 		echo $fmt_msg;
 		if (function_exists('AddToLog')) {
-			AddToLog($log_msg);
+			AddToLog($log_msg, 'error');
 		}
 		if ($errno==1) {
 			die();
@@ -2645,7 +2645,7 @@ function write_changes() {
 	//-- release the mutex acquired above
 	$mutex->Release();
 
-	$logline = AddToLog("pgv_changes.php updated");
+	$logline = AddToLog("pgv_changes.php updated", 'edit');
 	return true;
 }
 
@@ -2797,7 +2797,7 @@ function get_report_list($force=false) {
 	$fp = @fopen($INDEX_DIRECTORY."/reports.dat", "w");
 	@fwrite($fp, serialize($files));
 	@fclose($fp);
-	$logline = AddToLog("reports.dat updated");
+	$logline = AddToLog("reports.dat updated", 'config');
 	return $files;
 }
 
@@ -3044,7 +3044,7 @@ function CheckPageViews() {
 			// The configured page view rate has been exceeded
 			// - Log a message and then sleep to slow things down
 			$text = "Permitted page view rate of {$MAX_VIEWS} per {$MAX_VIEW_TIME} seconds exceeded.";
-			AddToLog($text);
+			AddToLog($text, 'auth');
 			sleep($sleepTime);
 		}
 	}

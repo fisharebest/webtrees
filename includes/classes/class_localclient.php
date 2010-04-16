@@ -111,7 +111,6 @@ class LocalClient extends ServiceClient {
 		{
 			// privatize the gedcoms returned
 			$gedrec = privatize_gedcom($indi["gedcom"]);
-			//AddToLog(substr($gedrec,0,50));
 			// set the fields that exist and return all the results that are not private
 			if(preg_match("~".$query."~i",$gedrec)>0)
 			{
@@ -127,7 +126,6 @@ class LocalClient extends ServiceClient {
 				$results_array[] = $person;
 			}
 		}
-//			AddToLog('Found '.count($results_array).' after privatizing');
 		// set the number of possible results
 		//$results[0]['totalResults'] = count($results_array);
 		$results_array = array_slice($results_array,$start,$max);

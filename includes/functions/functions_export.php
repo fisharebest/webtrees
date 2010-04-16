@@ -161,7 +161,7 @@ function gedcom_header($gedfile) {
 function createTempUser($userID, $rights, $gedcom) {
 	if ($tempUserID=get_user_id($userID)) {
 		delete_user($tempUserID);
-		AddToLog("deleted dummy user -> {$userID} <-, which was not deleted in a previous session");
+		AddToLog("deleted dummy user -> {$userID} <-, which was not deleted in a previous session", 'auth');
 	}
 	$ged_id=get_id_from_gedcom($gedcom);
 
@@ -190,7 +190,7 @@ function createTempUser($userID, $rights, $gedcom) {
 		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'none');
 		break;
 	}
-	AddToLog("created dummy user -> {$userID} <- with level {$rights} to GEDCOM {$gedcom}");
+	AddToLog("created dummy user -> {$userID} <- with level {$rights} to GEDCOM {$gedcom}", 'auth');
 
 	// Save things in cache
 	$_SESSION["pgv_GEDCOM"]				= $gedcom;
@@ -366,7 +366,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	if ($exportOptions['privatize']!='none') {
 		$_SESSION["pgv_user"]=$_SESSION["org_user"];
 		delete_user($export_user_id);
-		AddToLog("deleted dummy user -> {$tempUserID} <-");
+		AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 	}
 
 	$GEDCOM = $oldGEDCOM;
@@ -452,7 +452,7 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 	if ($exportOptions['privatize']!='none') {
 		$_SESSION["pgv_user"]=$_SESSION["org_user"];
 		delete_user($export_user_id);
-		AddToLog("deleted dummy user -> {$tempUserID} <-");
+		AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 	}
 
 	$GEDCOM = $oldGEDCOM;
