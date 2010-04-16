@@ -853,8 +853,12 @@ if (check_media_structure()) {
 
 	if ($action == "filter" && $subclick != "none") {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
-		$medialist = get_medialist(true, $directory);
-// Get the list of media items
+			// only check for externalLinks when dealing with the root folder
+			$showExternal = ($directory == $MEDIA_DIRECTORY) ? true : false;
+			$medialist=get_medialist(true, $directory, true, false, $showExternal);
+
+		
+		// Get the list of media items
 /**
  * This is the default action for the page
  *
