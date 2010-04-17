@@ -908,20 +908,18 @@ function find_media_record($xref, $ged_id) {
 	return $statement->execute(array($xref, $ged_id))->fetchOne();
 }
 
-/**
-* find the gedcom record
-*
-* @link http://phpgedview.sourceforge.net/devdocs/arrays.php#other
-* @param string $pid the unique gedcom xref id of the record to retrieve
-* @param string $gedfile [optional] the gedcomfile to search in
-* @return string the raw gedcom record is returned
-*/
-function find_gedcom_record($xref, $ged_id) {
+// Find the gedcom data for a record. Optionally include pending changes.
+function find_gedcom_record($xref, $ged_id, $pending=false) {
 	global $TBLPREFIX;
-	static $statement=null;
+	static $statement1=null;
+	static $statement2=null;
 
-	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
+	if (is_null($statement2)) {
+		$statement1=WT_DB::prepare(
+			"SELECT new_gedcom FROM {$TBLPREFIX}change WHERE gedcom_id=? AND xref=? AND status='pending' ".
+			"ORDER BY change_id DESC LIMIT 1"
+		);
+		$statement2=WT_DB::prepare(
 			"SELECT i_gedcom FROM {$TBLPREFIX}individuals WHERE i_id   =? AND i_file   =? UNION ALL ".
 			"SELECT f_gedcom FROM {$TBLPREFIX}families    WHERE f_id   =? AND f_file   =? UNION ALL ".
 			"SELECT s_gedcom FROM {$TBLPREFIX}sources     WHERE s_id   =? AND s_file   =? UNION ALL ".
@@ -929,12 +927,22 @@ function find_gedcom_record($xref, $ged_id) {
 			"SELECT o_gedcom FROM {$TBLPREFIX}other       WHERE o_id   =? AND o_file   =?"
 		);
 	}
+
+	if ($pending) {
+		// This will return NULL if no record exists, or an empty string if the record has been deleted.
+		$gedcom=$statement1->execute(array($ged_id, $xref))->fetchOne();
+	} else {
+		$gedcom=null;
+	}
 	
-	// Exact match on xref?
-	return
-		$statement
-		->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))
-		->fetchOne();
+	if (is_null($gedcom)) {
+		return
+			$statement2
+			->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))
+			->fetchOne();
+	} else {
+		return $gedcom;
+	}
 }
 
 // Find the type of a gedcom record. Check the cache before querying the database.
