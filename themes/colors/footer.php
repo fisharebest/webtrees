@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 }
 //start colors unique code
 echo "</div>"; // Close table started in toplinks.html
-echo "<br />";
+echo "<br />";echo "<br />";echo "<br />";
 echo "<div id=\"footer\" class=\"$TEXT_DIRECTION\">";
 echo "\n\t<br /><div align=\"center\" style=\"width:99%;\">";
 
