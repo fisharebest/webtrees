@@ -353,6 +353,7 @@ elseif ($action=="run") {
 	//-- load the report generator
 	switch ($output) {
 		case "HTML":
+			header('Content-type: text/html; charset=UTF-8');
 			require_once WT_ROOT."includes/classes/class_reporthtml.php";
 			break;
 		case "PDF":

@@ -90,6 +90,7 @@ class TreeNav {
 				else $this->allSpouses = true;
 			}
 			if (!empty($_REQUEST['details'])) {
+				header('Content-type: text/html; charset=UTF-8');
 				$this->getDetails($this->rootPerson);
 			}
 			else if (!empty($_REQUEST['newroot'])) {
