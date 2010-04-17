@@ -65,7 +65,7 @@ $COLOR_THEME_LIST=array(
 	'mercury'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Mercury'),
 	'nocturnal'       => /* I18N: This is the name of theme color-scheme */ i18n::translate('Nocturnal'),
 	'olivia'          => /* I18N: This is the name of theme color-scheme */ i18n::translate('Olivia'),
-	'pinkplastic'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Pink Plstic'),
+	'pinkplastic'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Pink Plastic'),
 	'shinytomato'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Shiny Tomato'),
 	'tealtop'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Teal Top'),
 );
