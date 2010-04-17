@@ -75,6 +75,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	$subColor=$_GET['themecolor'];
 	if (WT_USER_ID) {
 		set_user_setting(WT_USER_ID, 'themecolor', $subColor);
+		set_site_setting('DEFAULT_COLOR_PALETTE', $subColor);
 	}
 	unset($_GET['themecolor']);
 } elseif (isset($_SESSION['themecolor']))  {
@@ -84,11 +85,15 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	if (WT_USER_ID) {
 		$subColor=get_user_setting(WT_USER_ID, 'themecolor');
 		if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
-			$subColor='ash';
+			$subColor = get_site_setting('DEFAULT_COLOR_PALETTE','aquamarine');
 		}
 	} else {
 		// Default color set here
-		$subColor='ash';
+		$test_value=get_site_setting('DEFAULT_COLOR_PALETTE');
+		if (empty($test_value)) {
+			set_site_setting('DEFAULT_COLOR_PALETTE','ash');
+		}
+		$subColor=get_site_setting('DEFAULT_COLOR_PALETTE');
 	}
 }
 
