@@ -389,7 +389,7 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 		$where[]="n_surn = ''";
 	} elseif ($salpha) {
 		// Match a surname initial
-		$where[]="n_surn LIKE ".WT_DB::quote("{$surn}%")." COLLATE '".i18n::$collation."'";
+		$where[]="n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'";
 	} else {
 		// Match all individuals
 		$where[]="n_surn <> '@N.N.'";
