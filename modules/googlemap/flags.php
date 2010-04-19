@@ -34,7 +34,6 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
-require $INDEX_DIRECTORY."pgv_changes.php";
 
 if (isset($_REQUEST['countrySelected'])) $countrySelected = $_REQUEST['countrySelected'];
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];

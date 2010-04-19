@@ -217,18 +217,15 @@ class Family extends GedcomRecord {
 	 * return a new family object for it
 	 */
 	function &getUpdatedFamily() {
-		global $GEDCOM, $pgv_changes;
 		if ($this->getChanged()) {
 			return $this;
 		}
 		if (WT_USER_CAN_EDIT && $this->canDisplayDetails()) {
-			if (isset($pgv_changes[$this->xref.'_'.$GEDCOM])) {
-				$newrec = find_updated_record($this->xref, $this->ged_id);
-				if (!empty($newrec)) {
-					$newfamily = new Family($newrec);
-					$newfamily->setChanged(true);
-					return $newfamily;
-				}
+			$newrec = find_updated_record($this->xref, $this->ged_id);
+			if (!is_null($newrec)) {
+				$newfamily = new Family($newrec);
+				$newfamily->setChanged(true);
+				return $newfamily;
 			}
 		}
 		return null;

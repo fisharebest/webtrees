@@ -911,15 +911,10 @@ function find_media_record($xref, $ged_id) {
 // Find the gedcom data for a record. Optionally include pending changes.
 function find_gedcom_record($xref, $ged_id, $pending=false) {
 	global $TBLPREFIX;
-	static $statement1=null;
-	static $statement2=null;
+	static $statement=null;
 
-	if (is_null($statement2)) {
-		$statement1=WT_DB::prepare(
-			"SELECT new_gedcom FROM {$TBLPREFIX}change WHERE gedcom_id=? AND xref=? AND status='pending' ".
-			"ORDER BY change_id DESC LIMIT 1"
-		);
-		$statement2=WT_DB::prepare(
+	if (is_null($statement)) {
+		$statement=WT_DB::prepare(
 			"SELECT i_gedcom FROM {$TBLPREFIX}individuals WHERE i_id   =? AND i_file   =? UNION ALL ".
 			"SELECT f_gedcom FROM {$TBLPREFIX}families    WHERE f_id   =? AND f_file   =? UNION ALL ".
 			"SELECT s_gedcom FROM {$TBLPREFIX}sources     WHERE s_id   =? AND s_file   =? UNION ALL ".
@@ -930,19 +925,39 @@ function find_gedcom_record($xref, $ged_id, $pending=false) {
 
 	if ($pending) {
 		// This will return NULL if no record exists, or an empty string if the record has been deleted.
-		$gedcom=$statement1->execute(array($ged_id, $xref))->fetchOne();
+		$gedcom=find_updated_record($xref, $ged_id);
 	} else {
 		$gedcom=null;
 	}
 	
 	if (is_null($gedcom)) {
 		return
-			$statement2
+			$statement
 			->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))
 			->fetchOne();
 	} else {
 		return $gedcom;
 	}
+}
+
+/**
+ * find and return an updated gedcom record
+ * @param string $gid	the id of the record to find
+ * @param string $gedfile	the gedcom file to get the record from.. defaults to currently active gedcom
+ */
+function find_updated_record($xref, $ged_id) {
+	global $TBLPREFIX;
+	static $statement=null;
+
+	if (is_null($statement)) {
+		$statement=WT_DB::prepare(
+			"SELECT new_gedcom FROM {$TBLPREFIX}change WHERE gedcom_id=? AND xref=? AND status='pending' ".
+			"ORDER BY change_id DESC LIMIT 1"
+		);
+	}
+
+	// This will return NULL if no record exists, or an empty string if the record has been deleted.
+	return $gedcom=$statement->execute(array($ged_id, $xref))->fetchOne();
 }
 
 // Find the type of a gedcom record. Check the cache before querying the database.
@@ -965,6 +980,22 @@ function gedcom_record_type($xref, $ged_id) {
 		return $gedcom_record_cache[$xref][$ged_id]->getType();
 	} else {
 		return $statement->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))->fetchOne();
+	}
+}
+
+// Find out if there are any pending changes that a given user may accept
+function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
+	global $TBLPREFIX;
+
+	if (userCanAccept($user_id, $ged_id)) {
+		return
+			WT_DB::prepare(
+				"SELECT 1".
+				" FROM {$TBLPREFIX}change".
+				" WHERE status='pending' AND gedcom_id=?"
+			)->execute(array($ged_id))->fetchOne();
+	} else {
+		return false;
 	}
 }
 
@@ -1792,7 +1823,7 @@ function find_rin_id($rin) {
 * @param string $ged  the filename of the gedcom to delete
 */
 function delete_gedcom($ged_id) {
-	global $TBLPREFIX, $pgv_changes;
+	global $TBLPREFIX;
 
 	$ged=get_gedcom_from_id($ged_id);
 
@@ -1816,17 +1847,8 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}places              WHERE p_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}sources             WHERE s_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}hit_counter         WHERE gedcom_id =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM {$TBLPREFIX}change              WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}gedcom              WHERE gedcom_id =?")->execute(array($ged_id));
-
-	if (isset($pgv_changes)) {
-		//-- erase any of the changes
-		foreach ($pgv_changes as $cid=>$changes) {
-			if ($changes[0]["gedcom"]==$ged) {
-				unset($pgv_changes[$cid]);
-			}
-		}
-		write_changes();
-	}
 
 	if (get_site_setting('DEFAULT_GEDCOM')==$ged) {
 		set_site_setting('DEFAULT_GEDCOM', '');
@@ -1929,9 +1951,8 @@ function delete_fact($linenum, $pid, $gedrec) {
 
 	if (!empty($linenum)) {
 		if ($linenum==0) {
-			if (delete_gedrec($pid)) {
-				print i18n::translate('GEDCOM record successfully deleted.');
-			}
+			delete_gedrec($pid, WT_GED_ID);
+			print i18n::translate('GEDCOM record successfully deleted.');
 		} else {
 			$gedlines = explode("\n", $gedrec);
 			// NOTE: The array_pop is used to kick off the last empty element on the array

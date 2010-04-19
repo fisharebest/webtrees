@@ -153,19 +153,6 @@ class DescendancyControllerRoot extends BaseController {
 		$this->position = "absolute";
 		$this->display = "none";
 	}
-	//-- perform the desired action
-	switch($this->action) {
-		case "addfav":
-			$this->addFavorite();
-			break;
-		case "accept":
-			$this->acceptChanges();
-			break;
-		case "undo":
-			$this->desc->undoChange();
-			break;
-	}
-
 	}
 
 	/**

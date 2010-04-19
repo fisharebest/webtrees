@@ -328,8 +328,7 @@ function getRecentChanges() {
 	if (count($changes)>0) {
 		$found_facts = array();
 		foreach($changes as $gid) {
-			$gedrec = find_gedcom_record($gid, WT_GED_ID);
-			if (empty($gedrec)) $gedrec = find_updated_record($gid, WT_GED_ID);
+			$gedrec = find_gedcom_record($gid, WT_GED_ID, true);
 
 			if (!empty($gedrec)) {
 				$type = "INDI";

@@ -101,7 +101,7 @@ class IndividualControllerRoot extends BaseController {
 	* Initialization function
 	*/
 	function init() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $GEDCOM_DEFAULT_TAB, $pgv_changes;
+		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $GEDCOM_DEFAULT_TAB;
 		global $USE_QUICK_UPDATE, $DEFAULT_PIN_STATE, $pid;
 		global $Fam_Navigator;
 
@@ -180,18 +180,42 @@ class IndividualControllerRoot extends BaseController {
 				$this->addFavorite();
 				break;
 			case "accept":
-				$this->acceptChanges();
+				if (WT_USER_CAN_ACCEPT) {
+					accept_all_changes($this->pid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					//-- delete the record from the cache and refresh it
+					$indirec = find_person_record($this->pid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->indi = new Person($indirec);
+				}
 				break;
 			case "undo":
-				$this->indi->undoChange();
+				if (WT_USER_CAN_ACCEPT) {
+					reject_all_changes($this->pid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					//-- delete the record from the cache and refresh it
+					$indirec = find_person_record($this->pid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->indi = new Person($indirec);
+				}
 				break;
 		}
 
 		//-- if the user can edit and there are changes then get the new changes
 		if ($this->show_changes && WT_USER_CAN_EDIT) {
-			if (isset($pgv_changes[$this->pid."_".$GEDCOM])) {
+			$newrec = find_updated_record($this->pid, WT_GED_ID);
+			if ($newrec) {
 				//-- get the changed record from the file
-				$newrec = find_updated_record($this->pid, WT_GED_ID);
 				//print("jkdsakjhdkjsadkjsakjdhsakd".$newrec);
 				$remoterfn = get_gedcom_value("RFN", 1, $newrec);
 			} else {
@@ -234,22 +258,6 @@ class IndividualControllerRoot extends BaseController {
 		//-- only allow editors or users who are editing their own individual or their immediate relatives
 		if ($this->indi->canDisplayDetails()) {
 			$this->canedit = WT_USER_CAN_EDIT;
-/* Disable self-editing completely until we have a GEDCOM config option to control this
-			if (!$this->canedit && $USE_QUICK_UPDATE) {
-				$my_id=WT_USER_GEDCOM_ID;
-				if ($my_id) {
-					if ($this->pid==$my_id) $this->canedit=true;
-					else {
-						$famids = array_merge(find_sfamily_ids($my_id), find_family_ids($my_id));
-						foreach($famids as $indexval => $famid) {
-							if (!isset($pgv_changes[$famid."_".$GEDCOM])) $famrec = find_family_record($famid, $this->ged_id);
-							else $famrec = find_updated_record($famid, $this->ged_id);
-							if (preg_match("/1 (HUSB|WIFE|CHIL) @$this->pid@/", $famrec)>0) $this->canedit=true;
-						}
-					}
-				}
-			}
-*/
 		}
 
 		// Initialise tabs
@@ -322,26 +330,6 @@ class IndividualControllerRoot extends BaseController {
 				$favorite["title"] = "";
 				addFavorite($favorite);
 			}
-		}
-	}
-	/**
-	* Accept any edit changes into the database
-	* Also update the indirec we will use to generate the page
-	*/
-	function acceptChanges() {
-		global $GEDCOM;
-		if (!WT_USER_CAN_ACCEPT) return;
-		if (accept_changes($this->pid."_".$GEDCOM)) {
-			$this->show_changes=false;
-			$this->accept_success=true;
-			//-- delete the record from the cache and refresh it
-			$indirec = find_person_record($this->pid, WT_GED_ID);
-			//-- check if we just deleted the record and redirect to index
-			if (empty($indirec)) {
-				header("Location: index.php?ctype=gedcom");
-				exit;
-			}
-			$this->indi = new Person($indirec);
 		}
 	}
 
@@ -589,7 +577,7 @@ class IndividualControllerRoot extends BaseController {
 	*/
 	function &getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		global $pgv_changes, $USE_QUICK_UPDATE;
+		global $USE_QUICK_UPDATE;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {
@@ -638,7 +626,7 @@ class IndividualControllerRoot extends BaseController {
 			$menu->addSeparator();
 		}
 
-		if (isset($pgv_changes[$this->pid."_".$GEDCOM])) {
+		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
 				$link = $this->indi->getLinkUrl()."&show_changes=yes";

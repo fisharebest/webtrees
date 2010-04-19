@@ -102,7 +102,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	global $TEXT_DIRECTION, $SHOW_EMPTY_BOXES, $SHOW_ID_NUMBERS;
 	global $pbwidth, $pbheight;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
-	global $show_changes, $pgv_changes, $GEDCOM;
+	global $show_changes, $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family = Family::getInstance($famid);
@@ -125,8 +125,8 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		print_family_header($famid);
 	}
 	// -- get the new record and parents if in editing show changes mode
-	if (WT_USER_CAN_EDIT && isset($pgv_changes[$famid . "_" . $GEDCOM])) {
-		$newrec = find_updated_record($famid, $ged_id);
+	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
+		$newrec = find_gedcom_record($famid, $ged_id, true);
 		$newparents = find_parents_in_record($newrec);
 	}
 
@@ -278,7 +278,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
 	global $pbwidth, $pbheight, $view, $show_famlink, $show_cousins;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $pgv_changes, $GEDCOM, $SHOW_ID_NUMBERS, $TEXT_DIRECTION;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $GEDCOM, $SHOW_ID_NUMBERS, $TEXT_DIRECTION;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family=Family::getInstance($famid);
@@ -315,8 +315,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	$newchildren = array();
 	$oldchildren = array();
 	if (WT_USER_CAN_EDIT) {
-		if ((isset($_REQUEST['show_changes'])&&$_REQUEST['show_changes']=='yes') && (isset($pgv_changes[$famid . "_" . $GEDCOM]))) {
-			$newrec = find_updated_record($famid, $ged_id);
+		if ((isset($_REQUEST['show_changes'])&&$_REQUEST['show_changes']=='yes') && find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
+			$newrec = find_gedcom_record($famid, $ged_id, true);
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
 			if ($ct > 0) {
 				$oldchil = array();
@@ -437,8 +437,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		print "<tr><td></td><td valign=\"top\" >";
 
 		$nchi = "";
-		if (isset($pgv_changes[$famid."_".$GEDCOM])) $famrec = find_updated_record($famid, $ged_id);
-		else $famrec = find_family_record($famid, $ged_id);
+		$famrec = find_gedcom_record($famid, $ged_id, true);
 		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 		if ($ct>0) $nchi = $match[1];
 		else {
@@ -470,7 +469,7 @@ function print_family_facts(&$family, $sosa = 0) {
 	global $pbwidth, $pbheight, $view;
 	global $nonfacts;
 	global $TEXT_DIRECTION, $GEDCOM, $SHOW_ID_NUMBERS;
-	global $show_changes, $pgv_changes;
+	global $show_changes;
 	global $linkToID;
 
 	$famid=$family->getXref();

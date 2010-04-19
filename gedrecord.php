@@ -37,12 +37,13 @@ $pid=safe_GET_xref('pid');
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html  xmlns="http://www.w3.org/1999/xhtml" <?php echo i18n::html_markup(); ?>>
+<html xmlns="http://www.w3.org/1999/xhtml" <?php echo i18n::html_markup(); ?>>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title><?php echo i18n::translate('Record'), ': ',$pid ; ?></title>
 	</head>
-	<body><?php
+	<body>
+<?php
 
 if (!$SHOW_GEDCOM_RECORD && !WT_USER_CAN_ACCEPT) {
 	echo "<span class=\"error\">", i18n::translate('This page has been disabled by the site administrator.'), "</span>\n";
@@ -57,12 +58,9 @@ if (is_null($obj) || !$obj->canDisplayDetails()) {
 	echo "</body></html>";
 	exit;
 }
-if (!isset($fromfile)) {
-	$indirec=$obj->getGedcomRecord();
-} else  {
-	$indirec=find_updated_record($pid, WT_GED_ID);
-	$indirec=privatize_gedcom($indirec);
-}
+
+$indirec=find_gedcom_record($pid, WT_GED_ID, true);
+$indirec=privatize_gedcom($indirec);
 $indirec=htmlspecialchars($indirec);
 $indirec=preg_replace("/@(\w+)@/", "@<a href=\"gedrecord.php?pid=$1\">$1</a>@", $indirec);
 echo "<pre style=\"white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: pre-wrap; word-wrap: break-word;\">", $indirec, "</pre>";

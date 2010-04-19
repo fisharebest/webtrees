@@ -60,16 +60,8 @@ if ($action!="choose") {
 		$action="choose";
 		echo "<span class=\"error\">", i18n::translate('You entered the same IDs.  You cannot merge the same records.'), "</span>\n";
 	} else {
-		if (!isset($pgv_changes[$gid1."_".WT_GEDCOM])) {
-			$gedrec1 = find_gedcom_record($gid1, WT_GED_ID);
-		} else {
-			$gedrec1 = find_updated_record($gid1, get_id_from_gedcom($GEDCOM));
-		}
-		if (!isset($pgv_changes[$gid2."_".$ged2])) {
-			$gedrec2 = find_gedcom_record($gid2, get_id_from_gedcom($ged2));
-		} else {
-			$gedrec2 = find_updated_record($gid2, get_id_from_gedcom($ged2));
-		}
+		$gedrec1 = find_gedcom_record($gid1, WT_GED_ID, true);
+		$gedrec2 = find_gedcom_record($gid2, get_id_from_gedcom($ged2), true);
 
 		// Fetch the original XREF - may differ in case from the supplied value
 		$tmp=new Person($gedrec1); $gid1=$tmp->getXref();
@@ -177,7 +169,7 @@ if ($action!="choose") {
 					$manual_save = true;
 					echo "<h2>", i18n::translate('Merge Step 3 of 3'), "</h2>\n";
 					if ($GEDCOM==$ged2) {
-						$success = delete_gedrec($gid2);
+						$success = delete_gedrec($gid2, WT_GED_ID);
 						if ($success) {
 							echo "<br />", i18n::translate('GEDCOM record successfully deleted.'), "<br />\n";
 						}
@@ -186,20 +178,15 @@ if ($action!="choose") {
 						$ids=fetch_all_links($gid2, WT_GED_ID);
 
 						foreach ($ids as $id) {
-							if (isset($pgv_changes[$id."_".WT_GEDCOM])) {
-								$record=find_updated_record($id, WT_GED_ID);
-							} else {
-								$record=fetch_gedcom_record($id, WT_GED_ID);
-								$record=$record['gedrec'];
-								echo i18n::translate('Updating linked record'), " {$id}<br />\n";
-								$newrec=str_replace("@$gid2@", "@$gid1@", $record);
-								$newrec=preg_replace(
-									'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-									'$2',
-									$newrec
-								);
-								replace_gedrec($id, $newrec);
-							}
+							$record=find_gedcom_record($id, WT_GED_ID, true);
+							echo i18n::translate('Updating linked record'), " {$id}<br />\n";
+							$newrec=str_replace("@$gid2@", "@$gid1@", $record);
+							$newrec=preg_replace(
+								'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+								'$2',
+								$newrec
+							);
+							replace_gedrec($id, WT_GED_ID, $newrec);
 						}
 
 						// Merge hit counters
@@ -236,8 +223,7 @@ if ($action!="choose") {
 						}
 					}
 
-					replace_gedrec($gid1, $newgedrec);
-					write_changes();
+					replace_gedrec($gid1, WT_GED_ID, $newgedrec);
 					$rec=GedcomRecord::getInstance($gid1);
 					echo '<br />', i18n::translate('Record %s successfully updated.', $rec->getXrefLink()), '<br />';
 					$fav_count=update_favorites($gid2, $gid1);

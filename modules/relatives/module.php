@@ -74,7 +74,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printParentsRows(&$family, &$people, $type) {
-		global $personcount, $pgv_changes;
+		global $personcount;
 		global $WT_IMAGE_DIR, $WT_IMAGES;
 		$elderdate = "";
 		//-- new father/husband
@@ -177,8 +177,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$date = $family->getMarriageDate();
 			$place = $family->getMarriagePlace();
 			$famid = $family->getXref();
-			if (!$date && $this->controller->show_changes && isset($pgv_changes[$famid."_".$GEDCOM])) {
-				$famrec = find_updated_record($famid);
+			if (!$date && $this->controller->show_changes && ($famrec = find_updated_record($famid))!==null) {
 				$marrrec = get_sub_record(1, "1 MARR", $famrec);
 				if ($marrrec!=$family->getMarriageRecord()) {
 					$date = new GedcomDate(get_gedcom_value("MARR:DATE", 1, $marrrec, '', false));
@@ -283,7 +282,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_AGE_DIFF;
-		global $pgv_changes, $GEDCOM, $ABBREVIATE_CHART_LABELS;
+		global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 		global $show_full, $personcount;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here

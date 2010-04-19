@@ -63,13 +63,13 @@ class RepositoryControllerRoot extends BaseController {
 	* initialize the controller
 	*/
 	function init() {
-		global $CONTACT_EMAIL, $GEDCOM, $pgv_changes;
+		global $CONTACT_EMAIL;
 
 		$this->rid = safe_GET_xref('rid');
 
 		$repositoryrec = find_other_record($this->rid, WT_GED_ID);
 
-		if (isset($pgv_changes[$this->rid."_".$GEDCOM])){
+		if ( (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			$repositoryrec = "0 @".$this->rid."@ REPO\n";
 		} else if (!$repositoryrec) {
 			return false;
@@ -93,17 +93,38 @@ class RepositoryControllerRoot extends BaseController {
 				$this->addFavorite();
 				break;
 			case "accept":
-				$this->acceptChanges();
+				if (WT_USER_CAN_ACCEPT) {
+					accept_all_changes($this->rid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$indirec = find_other_record($this->rid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->repository = new Repository($indirec);
+				}
 				break;
 			case "undo":
-				$this->repository->undoChange();
+				if (WT_USER_CAN_ACCEPT) {
+					reject_all_changes($this->rid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$indirec = find_other_record($this->rid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->repository = new Repository($indirec);
+				}
 				break;
 		}
 
 		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && isset($pgv_changes[$this->rid."_".$GEDCOM])) {
-			$newrec = find_updated_record($this->rid, WT_GED_ID);
+		if ($this->show_changes && WT_USER_CAN_EDIT && ($newrec = find_updated_record($this->rid, WT_GED_ID))!==null) {
 			$this->diffrepository = new Repository($newrec);
 			$this->diffrepository->setChanged(true);
 			$repositoryrec = $newrec;
@@ -140,26 +161,6 @@ class RepositoryControllerRoot extends BaseController {
 			}
 		}
 	}
-	/**
-	* Accept any edit changes into the database
-	* Also update the indirec we will use to generate the page
-	*/
-	function acceptChanges() {
-		global $GEDCOM;
-
-		if (!WT_USER_CAN_ACCEPT) return;
-		if (accept_changes($this->rid."_".$GEDCOM)) {
-			$this->show_changes=false;
-			$this->accept_success=true;
-			$indirec = find_other_record($this->rid, WT_GED_ID);
-			//-- check if we just deleted the record and redirect to index
-			if (empty($indirec)) {
-				header("Location: index.php?ctype=gedcom");
-				exit;
-			}
-			$this->repository = new Repository($indirec);
-		}
-	}
 
 	/**
 	* get the title for this page
@@ -185,7 +186,7 @@ class RepositoryControllerRoot extends BaseController {
 	* @return Menu
 	*/
 	function &getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $pgv_changes;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
@@ -221,8 +222,7 @@ class RepositoryControllerRoot extends BaseController {
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 		$menu->addSubmenu($submenu);
 
-		if (isset($pgv_changes[$this->rid.'_'.$GEDCOM]))
-		{
+		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			// edit_repo / separator
 			$submenu = new Menu();
 			$submenu->isSeparator();

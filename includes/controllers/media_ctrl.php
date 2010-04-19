@@ -50,7 +50,7 @@ class MediaControllerRoot extends IndividualController{
 	var $show_changes=true;
 
 	function init() {
-		global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL, $GEDCOM, $pgv_changes;
+		global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL, $GEDCOM;
 
 		$filename = decrypt(safe_GET('filename'));
 		$this->mid = safe_GET_xref('mid');
@@ -106,10 +106,32 @@ class MediaControllerRoot extends IndividualController{
 				$this->addFavorite();
 				break;
 			case "accept":
-				$this->acceptChanges();
+				if (WT_USER_CAN_ACCEPT) {
+					accept_all_changes($this->pid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
+					//-- check if we just deleted the record and redirect to index
+					if (empty($mediarec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->mediaobject = new Media($mediarec);
+				}
 				break;
 			case "undo":
-				$this->mediaobject->undoChange();
+				if (WT_USER_CAN_ACCEPT) {
+					reject_all_changes($this->pid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
+					//-- check if we just deleted the record and redirect to index
+					if (empty($mediarec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->mediaobject = new Media($mediarec);
+				}
 				break;
 		}
 
@@ -144,29 +166,6 @@ class MediaControllerRoot extends IndividualController{
 	}
 
 	/**
-	* Accept any edit changes into the database
-	* Also update the mediarec we will use to generate the page
-	*/
-	function acceptChanges() {
-		global $GEDCOM;
-		if (!WT_USER_CAN_ACCEPT) return;
-		if (accept_changes($this->pid."_".$GEDCOM)) {
-			$this->show_changes=false;
-			$this->accept_success=true;
-			$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
-			//-- check if we just deleted the record and redirect to index
-			if (empty($mediarec)) {
-				header("Location: index.php?ctype=gedcom");
-				exit;
-			}
-			//$this->mediaobject = Media::getInstance($this->pid);
-			$this->mediaobject = new Media($mediarec);
-		}
-		//This sets the controller ID to be the Media ID
-		if (is_null($this->mediaobject)) $this->mediaobject = new Media("0 @".$this->pid."@ OBJE");
-	}
-
-	/**
 	* return the title of this page
 	* @return string the title of the page to go in the <title> tags
 	*/
@@ -188,7 +187,7 @@ class MediaControllerRoot extends IndividualController{
 	*/
 	function &getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $TOTAL_NAMES;
-		global $NAME_LINENUM, $SEX_LINENUM, $pgv_changes;
+		global $NAME_LINENUM, $SEX_LINENUM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
@@ -261,7 +260,7 @@ class MediaControllerRoot extends IndividualController{
 			}
 			$menu->addSubmenu($submenu);
 		}
-		if (isset($pgv_changes[$this->pid."_".$GEDCOM])) {
+		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			$menu->addSeparator();
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
@@ -364,7 +363,7 @@ class MediaControllerRoot extends IndividualController{
 	* @return array
 	*/
 	function getFacts($includeFileName=true) {
-		global $pgv_changes, $GEDCOM, $MEDIA_TYPES;
+		global $GEDCOM, $MEDIA_TYPES;
 
 		$ignore = array("TITL","FILE");
 		if ($this->show_changes) {
@@ -380,8 +379,7 @@ class MediaControllerRoot extends IndividualController{
 		if (array_key_exists($mediaType, $MEDIA_TYPES)) $facts[] = new Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
 		else $facts[] = new Event("1 TYPE ".i18n::translate('Other'));
 
-		if (isset($pgv_changes[$this->pid."_".$GEDCOM]) && ($this->show_changes)) {
-			$newrec = find_updated_record($this->pid, WT_GED_ID);
+		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
 			if ($includeFileName) $newfacts[] = new Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);

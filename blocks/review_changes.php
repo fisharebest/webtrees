@@ -58,18 +58,25 @@ $WT_BLOCKS['review_changes_block']=array(
  */
 function review_changes_block($block = true, $config="", $side, $index) {
 	global $ctype, $QUERY_STRING, $WT_IMAGE_DIR, $WT_IMAGES;
-	global $pgv_changes, $TEXT_DIRECTION, $SHOW_SOURCES, $WT_BLOCKS;
+	global $TEXT_DIRECTION, $SHOW_SOURCES, $WT_BLOCKS;
 	global $WEBTREES_EMAIL;
+	global $TBLPREFIX;
 
 	if (empty($config)) $config = $WT_BLOCKS["review_changes_block"]["config"];
 
-	if ($pgv_changes) {
+	$changes=WT_DB::prepare(
+		"SELECT 1".
+		" FROM {$TBLPREFIX}change".
+		" WHERE status='pending'".
+		" LIMIT 1"
+	)->fetchOne();
+
+	if ($changes) {
 		//-- if the time difference from the last email is greater than 24 hours then send out another email
 		$LAST_CHANGE_EMAIL=get_site_setting('LAST_CHANGE_EMAIL');
 		if (time()-$LAST_CHANGE_EMAIL > (60*60*24*$config["days"])) {
 			$LAST_CHANGE_EMAIL = time();
 			set_site_setting('LAST_CHANGE_EMAIL', $LAST_CHANGE_EMAIL);
-			write_changes();
 			if ($config["sendmail"]=="yes") {
 				// Which users have pending changes?
 				$users_with_changes=array();
@@ -118,23 +125,27 @@ function review_changes_block($block = true, $config="", $side, $index) {
 				$content .= i18n::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br />";
 				$content .= i18n::translate('Next email reminder will be sent after ').format_timestamp($LAST_CHANGE_EMAIL+(60*60*24*$config["days"]))."<br /><br />";
 			}
-			foreach ($pgv_changes as $cid=>$changes) {
-				$change = $changes[count($changes)-1];
-				if ($change["gedcom"]==WT_GEDCOM) {
-					$record=GedcomRecord::getInstance($change['gid']);
-					if ($record->getType()!='SOUR' || $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) {
-						$content.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM();
-						switch ($record->getType()) {
-						case 'INDI':
-						case 'FAM':
-						case 'SOUR':
-						case 'OBJE':
-							$content.=$block ? '<br />' : ' ';
-							$content.='<a href="'.encode_url($record->getLinkUrl().'&show_changes=yes').'">'.i18n::translate('View Change Diff').'</a>';
-							break;
-						}
-						$content.='<br />';
+			$changes=WT_DB::prepare(
+				"SELECT xref".
+				" FROM  {$TBLPREFIX}change".
+				" WHERE status='pending'".
+				" AND   gedcom_id=?".
+				" GROUP BY xref"
+			)->execute(array(WT_GED_ID))->fetchAll();
+			foreach ($changes as $change) {
+				$record=GedcomRecord::getInstance($change->xref);
+				if ($record->getType()!='SOUR' || $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) {
+					$content.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM();
+					switch ($record->getType()) {
+					case 'INDI':
+					case 'FAM':
+					case 'SOUR':
+					case 'OBJE':
+						$content.=$block ? '<br />' : ' ';
+						$content.='<a href="'.encode_url($record->getLinkUrl().'&show_changes=yes').'">'.i18n::translate('View Change Diff').'</a>';
+						break;
 					}
+					$content.='<br />';
 				}
 			}
 

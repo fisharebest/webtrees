@@ -476,7 +476,7 @@ class SearchControllerRoot extends BaseController {
 	 */
 	function SearchAndReplace()
 	{
-		global $GEDCOM, $pgv_changes, $manual_save, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
+		global $GEDCOM, $manual_save, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
 		$this->sgeds = array($GEDCOM);
 		$this->srindi = "yes";
@@ -506,11 +506,7 @@ class SearchControllerRoot extends BaseController {
 		$name_tags = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
 		$name_tags[] = "_MARNM";
 		foreach($this->myindilist as $id=>$individual) {
-			if (isset($pgv_changes[$individual->getXref().'_'.$GEDCOM])) {
-				$indirec=find_updated_record($individual->getXref(), WT_GED_ID);
-			} else {
-				$indirec=$individual->getGedcomRecord();
-			}
+			$indirec=find_gedcom_record($individual->getXref(), WT_GED_ID, true);
 			$oldRecord = $indirec;
 			$newRecord = $indirec;
 			if($this->replaceAll) {
@@ -528,18 +524,14 @@ class SearchControllerRoot extends BaseController {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if($newRecord != $oldRecord) {
-				replace_gedrec($individual->getXref(), $newRecord);
+				replace_gedrec($individual->getXref(), WT_GED_ID, $newRecord);
 			} else {
 				unset($this->myindilist[$id]);
 			}
 		}
 
 		foreach($this->myfamlist as $id=>$family) {
-			if (isset($pgv_changes[$family->getXref().'_'.$GEDCOM])) {
-				$indirec=find_updated_record($family->getXref(), WT_GED_ID);
-			} else {
-				$indirec=$family->getGedcomRecord();
-			}
+			$indirec=find_gedcom_record($family->getXref(), WT_GED_ID, true);
 			$oldRecord = $indirec;
 			$newRecord = $indirec;
 
@@ -554,18 +546,14 @@ class SearchControllerRoot extends BaseController {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if($newRecord != $oldRecord) {
-				replace_gedrec($family->getXref(), $newRecord);
+				replace_gedrec($family->getXref(), WT_GED_ID, $newRecord);
 			} else {
 				unset($this->myfamlist[$id]);
 			}
 		}
 
 		foreach ($this->mysourcelist as $id=>$source) {
-			if (isset($pgv_changes[$source->getXref().'_'.$GEDCOM])) {
-				$indirec=find_updated_record($source->getXref(), WT_GED_ID);
-			} else {
-				$indirec=$source->getGedcomRecord();
-			}
+			$indirec=find_gedcom_record($source->getXref(), WT_GED_ID, true);
 			$oldRecord = $indirec;
 			$newRecord = $indirec;
 
@@ -583,18 +571,14 @@ class SearchControllerRoot extends BaseController {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if($newRecord != $oldRecord) {
-				replace_gedrec($source->getXref(), $newRecord);
+				replace_gedrec($source->getXref(), WT_GED_ID, $newRecord);
 			}	else {
 				unset($this->mysourcelist[$id]);
 			}
 		}
 
 		foreach ($this->mynotelist as $id=>$note) {
-			if (isset($pgv_changes[$note->getXref().'_'.$GEDCOM])) {
-				$indirec=find_updated_record($note->getXref(), WT_GED_ID);
-			} else {
-				$indirec=$note->getGedcomRecord();
-			}
+			$indirec=find_gedcom_record($note->getXref(), WT_GED_ID, true);
 			$oldRecord = $indirec;
 			$newRecord = $indirec;
 
@@ -603,13 +587,11 @@ class SearchControllerRoot extends BaseController {
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if($newRecord != $oldRecord) {
-				replace_gedrec($note->getXref(), $newRecord);
+				replace_gedrec($note->getXref(), WT_GED_ID, $newRecord);
 			}	else {
 				unset($this->mynotelist[$id]);
 			}
 		}
-
-		write_changes();
 	}
 
 	/**

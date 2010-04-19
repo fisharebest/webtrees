@@ -1201,6 +1201,7 @@ function empty_database($ged_id, $keepmedia) {
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}remotelinks WHERE r_file =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}name        WHERE n_file =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}dates       WHERE d_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM {$TBLPREFIX}change      WHERE gedcom_id=?")->execute(array($ged_id));
 
 	if ($keepmedia) {
 		WT_DB::prepare("DELETE FROM {$TBLPREFIX}link   WHERE l_file    =? AND l_type<> ?")->execute(array($ged_id, 'OBJE'));
@@ -1253,42 +1254,28 @@ function read_gedcom_file() {
 	}
 }
 
-/**
-* Accpet changed gedcom record into database
-*
-* This function gets an updated record from the gedcom file and replaces it in the database
-* @author John Finlay
-* @param string $cid The change id of the record to accept
-*/
-function accept_changes($cid) {
-	global $pgv_changes, $GEDCOM, $TBLPREFIX, $fcontents, $manual_save;
-
-	if (isset ($pgv_changes[$cid])) {
-		$changes = $pgv_changes[$cid];
-		$change = $changes[count($changes) - 1];
-		if ($GEDCOM != $change["gedcom"]) {
-			$GEDCOM = $change["gedcom"];
-		}
-		$gid = $change["gid"];
-		$gedrec = $change["undo"];
-		$ged_id=get_id_from_gedcom($GEDCOM);
-		if (empty($gedrec)) {
-			$gedrec = find_gedcom_record($gid, $ged_id);
-		}
-
-		update_record($gedrec, $ged_id, $change["type"]=="delete");
-
-		unset ($pgv_changes[$cid]);
-		if (!isset($manual_save) || $manual_save==false) {
-			write_changes();
-		}
-		$logline = AddToLog("Accepted change $cid " . $change["type"] . " into database", 'edit');
-		if (isset ($change["linkpid"])) {
-			accept_changes($change["linkpid"] . "_" . $GEDCOM);
-		}
-		return true;
+// Accept all pending changes for a specified record
+function accept_all_changes($xref, $ged_id) {
+	$changes=WT_DB::prepare(
+		"SELECT change_id, gedcom_name, new_gedcom".
+		" FROM {$TBLPREFIX}change c".
+		" JOIN {$TBLPREFIX}gedcom g USING (gedcom_id)".
+		" WHERE c.status='pending' AND xref=? AND gedcom_id=?".
+		" ORDER BY change_id"
+	)->execute(array($xref, $ged_id))->fetchAll();
+	foreach ($changes as $change) {
+		update_record($change->new_gedcom, ged_id, empty($change->new_gedcom));
+		AddToLog("Accepted change {$change->change_id} for {$xref} / {$changes->gedcom_name} into database", 'edit');
 	}
-	return false;
+}
+
+// Accept all pending changes for a specified record
+function reject_all_changes($xref, $ged_id) {
+	WT_DB::prepare(
+		"UPDATE {$TBLPREFIX}change".
+		" SET status='rejected'".
+		" WHERE status='pending' AND xref=? AND gedcom_id=?"
+	)->execute(array($xref, $ged_id));
 }
 
 // Find a string in a file, preceded by a any form of line-ending.

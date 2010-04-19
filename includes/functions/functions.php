@@ -881,16 +881,9 @@ function get_cont($nlevel, $nrec, $tobr=true) {
  * @return array returns a two element array with indexes HUSB and WIFE for the parent ids
  */
 function find_parents($famid) {
-	$famrec = find_family_record($famid, WT_GED_ID);
+	$famrec = find_gedcom_record($famid, WT_GED_ID, WT_USER_CAN_EDIT);
 	if (empty($famrec)) {
-		if (WT_USER_CAN_EDIT) {
-			$famrec = find_updated_record($famid, WT_GED_ID);
-			if (empty($famrec)) {
-				return false;
-			}
-		} else {
-			return false;
-		}
+		return false;
 	}
 	return find_parents_in_record($famrec);
 }
@@ -934,16 +927,9 @@ function find_parents_in_record($famrec) {
  * @return array
  */
 function find_children($famid, $me='') {
-	$famrec = find_family_record($famid, WT_GED_ID);
+	$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 	if (empty($famrec)) {
-		if (WT_USER_CAN_EDIT) {
-			$famrec = find_updated_record($famid, WT_GED_ID);
-			if (empty($famrec)) {
-				return false;
-			}
-		} else {
-			return false;
-		}
+		return false;
 	}
 	return find_children_in_record($famrec);
 }
@@ -1031,44 +1017,6 @@ function find_visible_families_in_record($indirec, $tag) {
 		}
 	}
 	return $visiblefams;
-}
-
-/**
- * find and return an updated gedcom record
- * @param string $gid	the id of the record to find
- * @param string $gedfile	the gedcom file to get the record from.. defaults to currently active gedcom
- */
-function find_updated_record($gid, $ged_id) {
-	global $pgv_changes;
-
-	// NOTE: when changes are moved to database storage, they will be
-	// indexed by gedcom_id, not gedcom_name
-	$gedfile=get_gedcom_from_id($ged_id);
-
-	if (isset($pgv_changes[$gid."_".$gedfile])) {
-		$change = end($pgv_changes[$gid."_".$gedfile]);
-		return $change['undo'];
-	}
-	return "";
-}
-
-// Find out if there are any pending changes that a given user may accept
-function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	global $pgv_changes;
-
-	if (empty($pgv_changes) || !userCanAccept($user_id, $ged_id)) {
-		return false;
-	}
-
-	// NOTE: when changes are moved to database storage, they will be
-	// indexed by gedcom_id, not gedcom_name
-	$gedcom=get_gedcom_from_id($ged_id);
-	foreach ($pgv_changes as $pgv_change) {
-		if ($pgv_change[0]['gedcom']==$gedcom) {
-			return true;
-		}
-	}
-	return false;
 }
 
 // ************************************************* START OF MULTIMEDIA FUNCTIONS ********************************* //
@@ -1539,13 +1487,10 @@ function gedcomsort($a, $b) {
  * @param int $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
 function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignore_cache=false, $path_to_find=0) {
-	global $start_time, $NODE_CACHE, $NODE_CACHE_LENGTH, $USE_RELATIONSHIP_PRIVACY, $pgv_changes;
+	global $start_time, $NODE_CACHE, $NODE_CACHE_LENGTH, $USE_RELATIONSHIP_PRIVACY;
 
 	$time_limit=get_site_setting('MAX_EXECUTION_TIME');
-	if (isset($pgv_changes[$pid2."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-		$indirec = find_updated_record($pid2, WT_GED_ID);
-	else
-		$indirec = find_person_record($pid2, WT_GED_ID);
+	$indirec = find_gedcom_record($pid2, WT_GED_ID, WT_USER_CAN_EDIT);
 	//-- check the cache
 	if ($USE_RELATIONSHIP_PRIVACY && !$ignore_cache) {
 		if (isset($NODE_CACHE["$pid1-$pid2"])) {
@@ -1562,10 +1507,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 			$famids[$i]=$match[$i][1];
 		}
 		foreach ($famids as $indexval => $fam) {
-			if (isset($pgv_changes[$fam."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-				$famrec = find_updated_record($fam, WT_GED_ID);
-			else
-				$famrec = find_family_record($fam, WT_GED_ID);
+			$famrec = find_gedcom_record($fam, WT_GED_ID, WT_USER_CAN_EDIT);
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
 			for ($i=0; $i<$ct; $i++) {
 				$child = $match[$i][1];
@@ -1611,19 +1553,13 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		$numfams = preg_match_all("/1 FAMS @(.*)@/", $indirec, $fmatch, PREG_SET_ORDER);
 		for ($j=0; $j<$numfams; $j++) {
 			// Get the family record
-			if (isset($pgv_changes[$fmatch[$j][1]."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-				$famrec = find_updated_record($fmatch[$j][1], WT_GED_ID);
-			else
-				$famrec = find_family_record($fmatch[$j][1], WT_GED_ID);
+			$famrec = find_gedcom_record($fmatch[$j][1], WT_GED_ID, WT_USER_CAN_EDIT);
 
 			// Get the set of children
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $cmatch, PREG_SET_ORDER);
 			for ($i=0; $i<$ct; $i++) {
 				// Get each child's record
-				if (isset($pgv_changes[$cmatch[$i][1]."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-					$childrec = find_updated_record($cmatch[$i][1], WT_GED_ID);
-				else
-					$childrec = find_person_record($cmatch[$i][1], WT_GED_ID);
+				$childrec = find_gedcom_record($cmatch[$i][1], WT_GED_ID, WT_USER_CAN_EDIT);
 				$birthrec = get_sub_record(1, "1 BIRT", $childrec);
 				if ($birthrec!==false) {
 					$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $bmatch);
@@ -1713,10 +1649,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				$childh = 3;
 
 				//-- generate heuristic values based of the birthdates of the current node and p2
-				if (isset($pgv_changes[$node["pid"]."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-					$indirec = find_updated_record($node["pid"], WT_GED_ID);
-				else
-					$indirec = find_person_record($node["pid"], WT_GED_ID);
+				$indirec = find_gedcom_record($node["pid"], WT_GED_ID, WT_USER_CAN_EDIT);
 				$byear1 = -1;
 				$birthrec = get_sub_record(1, "1 BIRT", $indirec);
 				if ($birthrec!==false) {
@@ -1792,10 +1725,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				}
 				foreach ($famids as $indexval => $fam) {
 					$visited[$fam] = true;
-					if (isset($pgv_changes[$fam."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-						$famrec = find_updated_record($fam, WT_GED_ID);
-					else
-						$famrec = find_family_record($fam, WT_GED_ID);
+					$famrec = find_gedcom_record($fam, WT_GED_ID, WT_USER_CAN_EDIT);
 					$parents = find_parents_in_record($famrec);
 					if ((!empty($parents["HUSB"]))&&(!isset($visited[$parents["HUSB"]]))) {
 						$node1 = $node;
@@ -1870,10 +1800,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				}
 				foreach ($famids as $indexval => $fam) {
 					$visited[$fam] = true;
-					if (isset($pgv_changes[$fam."_".WT_GEDCOM]) && WT_USER_CAN_EDIT)
-						$famrec = find_updated_record($fam, WT_GED_ID);
-					else
-						$famrec = find_family_record($fam, WT_GED_ID);
+					$famrec = find_gedcom_record($fam, WT_GED_ID, WT_USER_CAN_EDIT);
 					if ($followspouse) {
 						$parents = find_parents_in_record($famrec);
 						if ((!empty($parents["HUSB"]))&&((!in_arrayr($parents["HUSB"], $node1))||(!isset($visited[$parents["HUSB"]])))) {
@@ -2594,62 +2521,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 }
 
 /**
- * write changes
- *
- * this function writes the $pgv_changes back to the <var>$INDEX_DIRECTORY</var>/pgv_changes.php
- * file so that it can be read in and checked to see if records have been updated.  It also stores
- * old records so that they can be undone.
- * @return bool true if successful false if there was an error
- */
-function write_changes() {
-	global $pgv_changes, $INDEX_DIRECTORY, $CONTACT_EMAIL;
-
-	//-- only allow 1 thread to write changes at a time
-	$mutex = new Mutex("pgv_changes");
-	$mutex->Wait();
-	//-- write the changes file
-	$changestext = "<?php\n\$pgv_changes = array();\n";
-	foreach ($pgv_changes as $gid=>$changes) {
-		if (count($changes)>0) {
-			$changestext .= "\$pgv_changes[\"$gid\"] = array();\n";
-			foreach ($changes as $indexval => $change) {
-				$changestext .= "// Start of change record.\n";
-				$changestext .= "\$change = array();\n";
-				$changestext .= "\$change[\"gid\"] = '".$change["gid"]."';\n";
-				$changestext .= "\$change[\"gedcom\"] = '".$change["gedcom"]."';\n";
-				$changestext .= "\$change[\"type\"] = '".$change["type"]."';\n";
-				$changestext .= "\$change[\"status\"] = '".$change["status"]."';\n";
-				$changestext .= "\$change[\"user\"] = '".$change["user"]."';\n";
-				$changestext .= "\$change[\"time\"] = '".$change["time"]."';\n";
-				if (isset($change["linkpid"]))
-					$changestext .= "\$change[\"linkpid\"] = '".$change["linkpid"]."';\n";
-				$changestext .= "\$change[\"undo\"] = '".str_replace("\\\\'", "\\'", preg_replace("/'/", "\\'", $change["undo"]))."';\n";
-				$changestext .= "// End of change record.\n";
-				$changestext .= "\$pgv_changes[\"$gid\"][] = \$change;\n";
-			}
-		}
-	}
-	$fp = fopen($INDEX_DIRECTORY."pgv_changes.php", "wb");
-	if ($fp===false) {
-		print "ERROR 6: Unable to open changes file resource.  Unable to complete request.\n";
-		return false;
-	}
-	$fw = fwrite($fp, $changestext);
-	if ($fw===false) {
-		print "ERROR 7: Unable to write to changes file.\n";
-		fclose($fp);
-		return false;
-	}
-	fclose($fp);
-
-	//-- release the mutex acquired above
-	$mutex->Release();
-
-	$logline = AddToLog("pgv_changes.php updated", 'edit');
-	return true;
-}
-
-/**
  * get theme names
  *
  * function to get the names of all of the themes as an array
@@ -3058,7 +2929,7 @@ function CheckPageViews() {
  * @return string
  */
 function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
-	global $fcontents, $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $pgv_changes, $TBLPREFIX;
+	global $fcontents, $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $TBLPREFIX;
 	global $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $MAX_IDS;
 
 	$num = null;
@@ -3123,7 +2994,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
 	if ($num>=2147483647 || $num<=0) { // Popular databases are only 32 bits (signed)
 		$num=1;
 	}
-	while (find_gedcom_record($prefix.$num, $ged_id) || find_updated_record($prefix.$num, $ged_id)) {
+	while (find_gedcom_record($prefix.$num, $ged_id) || find_gedcom_record($prefix.$num, $ged_id, true)) {
 		++$num;
 		if ($num>=2147483647 || $num<=0) { // Popular databases are only 32 bits (signed)
 			$num=1;

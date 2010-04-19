@@ -376,15 +376,14 @@ class ServiceClient extends GedcomRecord {
 	* This mergest the the two familys together
 	*/
 	function MergeForUpdateFamily($Family1,$Family2,$Familylist,&$FamilyListReturn){
-		global $pgv_changes, $GEDCOM;
+		global $GEDCOM;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		//print "<br />In MergeForUpdateFamily ".$Family1." ".$Family2;
 		//print_r($Familylist);
 		$FamilyListReturn=$Familylist;
 
-		if (isset($pgv_changes[$Family1."_".$GEDCOM])) $famrec1 = find_updated_record($Family1, get_id_from_gedcom($GEDCOM));
-		else $famrec1 = find_family_record($Family1, get_id_from_gedcom($GEDCOM));
+		$famrec1 = find_gedcom_record($Family1, get_id_from_gedcom($GEDCOM), true);
 
 		$ct = preg_match("/(\w+):(.+)/", $Family2, $match);
 		if ($ct>0) {
@@ -449,7 +448,7 @@ class ServiceClient extends GedcomRecord {
 						if (strpos($childrec, "1 RFN ".$this->xref.":")===false) {
 							$childrec .= "\n1 RFN ".$Child2->getXref();
 							//print "<br/> repalcing for child ".$Child1->getXref();
-							replace_gedrec($Child1->getXref(), $childrec);
+							replace_gedrec($Child1->getXref(), WT_GED_ID, $childrec);
 							$this->setSameId($Child1->getXref(), $Child2->getXref());
 						}
 					} else {
@@ -468,7 +467,7 @@ class ServiceClient extends GedcomRecord {
 		}
 		if ($famupdated) {
 			//print "<br /> updating family record ".$family1->getXref();
-			replace_gedrec($family1->getXref(), $famrec1);
+			replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 		}
 
 		// Merge Father basicly they just add the rfn numer and let the merge handle it latter
@@ -477,7 +476,7 @@ class ServiceClient extends GedcomRecord {
 				$father1=$father2;
 				$famrec1 .="\n1 HUSB @".$father1->getXref()."@";
 				//print "<br/> adding for fahter ".$father1->getXref();
-				replace_gedrec($family1->getXref(), $famrec1);
+				replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 			}
 		} elseif(!empty($father2)){
 			if($this->ComparePeople($father1,$father2)){
@@ -485,7 +484,7 @@ class ServiceClient extends GedcomRecord {
 				if (strpos($fatherrec, "1 RFN ".$this->xref.":")===false) {
 					$fatherrec .= "\n1 RFN ".$father2->getXref();
 					//print "<br/> repalcing for father ".$father1->getXref();
-					replace_gedrec($father1->getXref(), $fatherrec);
+					replace_gedrec($father1->getXref(), WT_GED_ID, $fatherrec);
 					$this->setSameId($father1->getXref(), $father2->getXref());
 				}
 			}
@@ -496,7 +495,7 @@ class ServiceClient extends GedcomRecord {
 				$mother1=$mother2;
 				$famrec1 .="\n1 WIFE @".$mother1->getXref()."@";
 				//print "<br/> adding for mother ".$mother1->getXref();
-				replace_gedrec($family1->getXref(), $famrec1);
+				replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 			}
 		} else if(!empty($mother2)){
 			if($this->ComparePeople($mother1,$mother2)){
@@ -504,7 +503,7 @@ class ServiceClient extends GedcomRecord {
 				if (strpos($motherrec, "1 RFN ".$this->xref.":")===false) {
 					$motherrec .= "\n1 RFN ".$mother2->getXref();
 					//print "<br/> repalcing for mother ".$mother1->getXref();
-					replace_gedrec($mother1->getXref(), $motherrec);
+					replace_gedrec($mother1->getXref(), WT_GED_ID, $motherrec);
 					$this->setSameId($mother1->getXref(), $mother2->getXref());
 				}
 			}
@@ -724,7 +723,7 @@ class ServiceClient extends GedcomRecord {
 	* @param boolean $firstLink is this the first time this record is being linked
 	*/
 	function mergeGedcomRecord($xref, $localrec, $isStub=false, $firstLink=false) {
-		global $GEDCOM, $TBLPREFIX, $pgv_changes;
+		global $GEDCOM, $TBLPREFIX;
 
 		if (!$isStub) {
 			$gedrec = find_gedcom_record($this->xref.":".$xref, get_id_from_gedcom($GEDCOM));
@@ -750,7 +749,7 @@ class ServiceClient extends GedcomRecord {
 			$ct=preg_match("/0 @(.*)@/", $localrec, $match);
 			if ($ct>0) {
 				$pid = trim($match[1]);
-				replace_gedrec($pid,$localrec);
+				replace_gedrec($pid, WT_GED_ID, $localrec);
 			}
 		}
 
@@ -778,7 +777,7 @@ class ServiceClient extends GedcomRecord {
 				if ($isStub) {
 					require_once WT_ROOT.'includes/functions/functions_edit.php';
 					$localrec = $this->UpdateFamily($localrec,$gedrec);
-					replace_gedrec($pid,$localrec);
+					replace_gedrec($pid, WT_GED_ID, $localrec);
 				} else {
 					update_record($localrec, get_id_from_gedcom($GEDCOM), false);
 				}
@@ -830,12 +829,12 @@ class ServiceClient extends GedcomRecord {
 					$ct=preg_match("/0 @(.*)@/", $localrec, $match);
 					if ($ct>0) {
 						$pid = trim($match[1]);
-						if (isset($pgv_changes[$pid."_".$GEDCOM])) $localrec = find_updated_record($pid, get_id_from_gedcom($GEDCOM));
+						$localrec = find_gedcom_record($pid, get_id_from_gedcom($GEDCOM), true);
 						$localrec = $this->_merge($localrec, $gedrec);
 						if ($isStub) {
 							require_once WT_ROOT.'includes/functions/functions_edit.php';
 							$localrec = $this->UpdateFamily($localrec,$gedrec);
-							replace_gedrec($pid,$localrec);
+							replace_gedrec($pid, WT_GED_ID, $localrec);
 						} else {
 							update_record($localrec, get_id_from_gedcom($GEDCOM), false);
 						}
@@ -889,8 +888,7 @@ class ServiceClient extends GedcomRecord {
 		$ged_id=get_id_from_gedcom($GEDCOM);
 
 		if (isset($WT_SERVERS[$id])) return $WT_SERVERS[$id];
-		$gedrec = find_gedcom_record($id, $ged_id);
-		if (empty($gedrec)) $gedrec = find_updated_record($id, $ged_id);
+		$gedrec = find_gedcom_record($id, $ged_id, true);
 		if (!empty($gedrec)) {
 			$url = get_gedcom_value("URL",1,$gedrec);
 			$gedfile = get_gedcom_value("_DBID", 1, $gedrec);

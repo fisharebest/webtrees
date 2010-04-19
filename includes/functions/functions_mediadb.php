@@ -180,7 +180,7 @@ function check_media_structure() {
 function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $TBLPREFIX, $MEDIATYPE;
 	global $level, $dirs, $ALLOW_CHANGE_GEDCOM, $MEDIA_DIRECTORY;
-	global $MEDIA_EXTERNAL, $pgv_changes, $USE_MEDIA_FIREWALL;
+	global $MEDIA_EXTERNAL, $USE_MEDIA_FIREWALL;
 
 	// Create the medialist array of media in the DB and on disk
 	// NOTE: Get the media in the DB
@@ -249,7 +249,9 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 
 	// Look for new Media objects in the list of changes pending approval
 	// At the same time, accumulate a list of GEDCOM IDs that have changes pending approval
+
 	$changedRecords = array ();
+/* DO WE NEED THIS?  Surely we should not be showing unapproved media objects on the welcome page?
 	foreach ($pgv_changes as $changes) {
 		foreach ($changes as $change) {
 			while (true) {
@@ -349,6 +351,8 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			}
 		}
 	}
+*/	
+	
 if (!$excludeLinks) {
 	foreach ($medialist as $key=>$media) {
 		foreach (fetch_linked_indi($media["XREF"], 'OBJE', WT_GED_ID) as $indi) {
@@ -1122,7 +1126,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 */
 function show_media_form($pid, $action = "newentry", $filename = "", $linktoid = "", $level = 1, $line = 0) {
 	global $TEXT_DIRECTION, $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS;
-	global $pgv_changes, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
+	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
 	global $AUTO_GENERATE_THUMBS, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
 
 	// NOTE: add a table and form to easily add new values to the table
@@ -1152,15 +1156,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		print_findsource_link("gid");
 		echo "<br /><sub>", i18n::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), "</sub></td></tr>\n";
 	}
-	if (isset ($pgv_changes[$pid . "_" . WT_GEDCOM])) {
-		$gedrec = find_updated_record($pid, WT_GED_ID);
-	} else {
-		if (gedcom_record_type($pid, get_id_from_gedcom(WT_GEDCOM)) == "OBJE") {
-			$gedrec = find_media_record($pid, WT_GED_ID);
-		} else {
-			$gedrec = "";
-		}
-	}
+	$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
 
 	// 0 OBJE
 	// 1 FILE

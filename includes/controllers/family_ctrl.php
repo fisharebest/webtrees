@@ -66,17 +66,7 @@ class FamilyRoot extends BaseController {
 	}
 
 	function init() {
-		global
-			$Dbwidth,
-			$bwidth,
-			$pbwidth,
-			$pbheight,
-			$bheight,
-			$GEDCOM,
-			$CONTACT_EMAIL,
-			$show_famlink,
-			$pgv_changes
-		;
+		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM, $CONTACT_EMAIL, $show_famlink;
 		$bwidth = $Dbwidth;
 		$pbwidth = $bwidth + 12;
 		$pbheight = $bheight + 14;
@@ -100,7 +90,7 @@ class FamilyRoot extends BaseController {
 				}
 			}
 			//-- if no record was found create a default empty one
-			if (isset($pgv_changes[$this->famid."_".$GEDCOM])){
+			if (find_updated_record($this->famid, WT_GED_ID)!==null){
 				$this->famrec = "0 @".$this->famid."@ FAM\n";
 				$this->family = new Family($this->famrec);
 			} else if (empty($this->family)){
@@ -112,9 +102,8 @@ class FamilyRoot extends BaseController {
 		$this->display = displayDetailsById($this->famid, 'FAM');
 
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && isset($pgv_changes[$this->famid."_".$GEDCOM])) {
-			$newrec = find_updated_record($this->famid, WT_GED_ID);
-			if (empty($newrec)) $newrec = find_family_record($this->famid, WT_GED_ID);
+		if ($this->show_changes && WT_USER_CAN_EDIT && find_updated_record($this->famid, WT_GED_ID)!==null) {
+			$newrec = find_gedcom_record($this->famid, WT_GED_ID, true);
 			$this->difffam = new Family($newrec);
 			$this->difffam->setChanged(true);
 			$this->family->diffMerge($this->difffam);
@@ -149,23 +138,25 @@ class FamilyRoot extends BaseController {
 
 		if (WT_USER_CAN_ACCEPT) {
 			if ($this->action=='accept') {
-				if (accept_changes($_REQUEST['famid'].'_'.$GEDCOM)) {
-					$this->show_changes = false;
-					$this->accept_success = true;
-					//-- check if we just deleted the record and redirect to index
-					$famrec = find_family_record($_REQUEST['famid'], WT_GED_ID);
-					if (empty($famrec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->family = new Family($famrec);
-					$this->parents = find_parents($_REQUEST['famid']);
+				accept_all_changes($this->famid, WT_GED_ID);
+				$this->show_changes = false;
+				$this->accept_success = true;
+				//-- check if we just deleted the record and redirect to index
+				$famrec = find_family_record($this->famid, WT_GED_ID);
+				if (empty($famrec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
+				$this->family = new Family($famrec);
+				$this->parents = find_parents($_REQUEST['famid']);
 			}
 
 			if ($this->action=='undo') {
-				$this->family->undoChange();
-				$this->parents = find_parents($_REQUEST['famid']);
+				reject_all_changes($this->famid, WT_GED_ID);
+				$this->show_changes = false;
+				$this->accept_success = true;
+				$this->family = new Family($famrec);
+				$this->parents = find_parents($this->famid);
 			}
 		}
 
@@ -341,7 +332,7 @@ class FamilyRoot extends BaseController {
 	* get the family page edit menu
 	*/
 	function &getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $pgv_changes;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
@@ -395,7 +386,7 @@ class FamilyRoot extends BaseController {
 			$menu->addSubmenu($submenu);
 		}
 
-		if (isset($pgv_changes[$this->getFamilyID().'_'.$GEDCOM])) {
+		if (find_updated_record($this->getFamilyID(), WT_GED_ID)!==null) {
 			// edit_fam / separator
 			$menu->addSeparator();
 

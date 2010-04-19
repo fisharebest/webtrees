@@ -151,7 +151,7 @@ class RemoteLinkController extends BaseController {
 					$title=$service->getServiceTitle();
 				}
 				$gedcom_string.="\n1 TITL {$title}";
-				$serverID=append_gedrec($gedcom_string);
+				$serverID=append_gedrec($gedcom_string, WT_GED_ID);
 			}
 		}
 		return $serverID;
@@ -189,7 +189,7 @@ class RemoteLinkController extends BaseController {
 				}
 				$title = $service->getServiceTitle();
 				$gedcom_string.= "1 TITL ".$title."\n";
-				$serverID = append_gedrec($gedcom_string);
+				$serverID = append_gedrec($gedcom_string, WT_GED_ID);
 			}
 		}
 		return $serverID;
@@ -202,7 +202,7 @@ class RemoteLinkController extends BaseController {
 	function addLocalServer($title, $gedcom_id) {
 		global $SERVER_URL;
 		$serverID = $this->checkExistingServer($SERVER_URL, $gedcom_id);
-		if ($serverID===false) {
+		if (!$serverID) {
 			$gedcom_string = "0 @new@ SOUR\n";
 			if (empty($title)) {
 				$title=get_gedcom_setting(get_id_from_gedcom($gedcom_id), 'title');
@@ -211,7 +211,7 @@ class RemoteLinkController extends BaseController {
 			$gedcom_string.= "1 URL ".$SERVER_URL."\n";
 			$gedcom_string.= "1 _DBID ".$gedcom_id."\n";
 			$gedcom_string.= "2 _BLOCK false\n";
-			$serverID = append_gedrec($gedcom_string);
+			$serverID = append_gedrec($gedcom_string, WT_GED_ID);
 		}
 		return $serverID;
 	}
@@ -222,7 +222,8 @@ class RemoteLinkController extends BaseController {
 	// @param string $gedcom_id
 	// @return mixed the id of the server to link to or false if it does not exist
 	function checkExistingServer($url, $gedcom_id='') {
-		global $pgv_changes;
+		global $TBLPREFIX;
+
 		//-- get rid of the protocol
 		$turl = preg_replace('~^\w+://~', '', $url);
 		//-- check the existing server list
@@ -234,25 +235,13 @@ class RemoteLinkController extends BaseController {
 		}
 
 		//-- check for recent additions
-		foreach ($pgv_changes as $cid=>$changes) {
-			$change = $changes[count($changes) - 1];
-			if ($change['type']!='delete') {
-				$gid = $change["gid"];
-				$indirec = $change["undo"];
-				$surl = get_gedcom_value("URL", 1, $indirec);
-				if (!empty($surl) && stristr($surl, $turl)) {
-					if (preg_match('/^0 @('.WT_REGEX_XREF.')@ *('.WT_REGEX_TAG.')/', $indirec, $match)) {
-						$id = $match[1];
-						$type=$match[2];
-						if ($type=="SOUR") {
-							if (empty($gedcom_id) || preg_match("/\n1 _DBID {$gedcom_id}/", $indirec))
-								return $id;
-						}
-					}
-				}
-			}
-		}
-		return false;
+		return WT_DB::prepare(
+			"SELECT xref".
+			" FROM {$TBLPREFIX}change".
+			" WHERE status='pending' AND gedcom_id=? AND new_gedcom LIKE CONCAT('%\n1 _DBID ', ?, '%')".
+			" ORDER BY change_id DESC".
+			" LIMIT 1"
+		)->execute(array(WT_GED_ID, $gedcom_id))->fetchOne();
 	}
 
 	function addLink() {
@@ -292,96 +281,92 @@ class RemoteLinkController extends BaseController {
 		$link_pid     =$this->form_txtPID;
 		$relation_type=$this->form_cbRelationship;
 		if ($serverID && $link_pid) {
-			if (isset($pgv_changes[$this->pid."_".$GEDCOM])) {
-				$indirec=find_updated_record($this->pid, WT_GED_ID);
-			} else {
-				$indirec=find_person_record($this->pid, WT_GED_ID);
-			}
+			$indirec=find_gedcom_record($this->pid, WT_GED_ID, true);
 	
 			switch ($relation_type) {
 			case "father":
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
-				$stub_id=append_gedrec($indistub, false);
-				$indistub=find_updated_record($stub_id, WT_GED_ID);
+				$stub_id=append_gedrec($indistub, WT_GED_ID);
+				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
 	
 				$gedcom_fam="0 @new@ FAM\n1 HUSB @{$stub_id}@\n1 CHIL @{$this->pid}@";
-				$fam_id=append_gedrec($gedcom_fam);
+				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
 	
 				$indirec.= "\n1 FAMC @{$fam_id}@";
-				replace_gedrec($this->pid, $indirec);
+				replace_gedrec($this->pid, WT_GED_ID, $indirec);
 
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMS @{$fam_id}@";
-				replace_gedrec($stub_id, $indistub, false);
+				replace_gedrec($stub_id, WT_GED_ID, $indistub);
 				break;
 			case "mother":
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
-				$stub_id=append_gedrec($indistub, false);
-				$indistub=find_updated_record($stub_id, WT_GED_ID);
+				$stub_id=append_gedrec($indistub, WT_GED_ID);
+				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
 	
 				$gedcom_fam="0 @new@ FAM\n1 WIFE @{$stub_id}@\n1 CHIL @{$this->pid}@";
-				$fam_id=append_gedrec($gedcom_fam);
+				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
 	
 				$indirec.="\n1 FAMC @{$fam_id}@";
-				replace_gedrec($this->pid, $indirec);
+				replace_gedrec($this->pid, WT_GED_ID, $indirec);
 	
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMS @".$fam_id."@";
-				replace_gedrec($stub_id, $indistub, false);
+				replace_gedrec($stub_id, WT_GED_ID, $indistub);
 				break;
 			case "husband":
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
-				$stub_id=append_gedrec($indistub, false);
-				$indistub=find_updated_record($stub_id, WT_GED_ID);
+				$stub_id=append_gedrec($indistub, WT_GED_ID);
+				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
 	
 				$gedcom_fam="0 @new@ FAM\n1 MARR Y\n1 WIFE @{$this->pid}@\n1 HUSB @{$stub_id}@\n";
-				$fam_id=append_gedrec($gedcom_fam);
+				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
 	
 				$indirec.="\n1 FAMS @{$fam_id}@";
-				replace_gedrec($this->pid, $indirec);
+				replace_gedrec($this->pid, WT_GED_ID, $indirec);
 	
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 			$indistub.="\n1 FAMS @{$fam_id}@";
-				replace_gedrec($stub_id, $indistub, false);
+				replace_gedrec($stub_id, WT_GED_ID, $indistub);
 				break;
 			case "wife":
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
-				$stub_id=append_gedrec($indistub, false);
-				$indistub=find_updated_record($stub_id, WT_GED_ID);
+				$stub_id=append_gedrec($indistub, WT_GED_ID);
+				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
 
 				$gedcom_fam="0 @new@ FAM\n1 MARR Y\n1 WIFE @{$stub_id}@\n1 HUSB @{$this->pid}@";
-				$fam_id=append_gedrec($gedcom_fam);
+				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
 	
 				$indirec.="\n1 FAMS @{$fam_id}@";
-				replace_gedrec($this->pid, $indirec);
+				replace_gedrec($this->pid, WT_GED_ID, $indirec);
 	
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMS @{$fam_id}@\n";
-				replace_gedrec($stub_id, $indistub, false);
+				replace_gedrec($stub_id, WT_GED_ID, $indistub);
 				break;
 			case "son":
 			case "daughter":
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
-				$stub_id=append_gedrec($indistub, false);
-				$indistub=find_updated_record($stub_id, WT_GED_ID);
+				$stub_id=append_gedrec($indistub, WT_GED_ID);
+				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
 	
 				if (get_gedcom_value('SEX', 1, $indirec, '', false)=='F') {
 					$gedcom_fam="0 @new@ FAM\n1 WIFE @{$this->pid}@\n1 CHIL @{$stub_id}@";
 				} else {
 					$gedcom_fam="0 @new@ FAM\n1 HUSB @{$this->pid}@\n1 CHIL @{$stub_id}@";
 				}
-				$fam_id=append_gedrec($gedcom_fam);
+				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
 				$indirec.="\n1 FAMS @{$fam_id}@";
-				replace_gedrec($this->pid, $indirec);
+				replace_gedrec($this->pid, WT_GED_ID, $indirec);
 	
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMC @".$fam_id."@";
-				replace_gedrec($stub_id, $indistub,false);
+				replace_gedrec($stub_id, WT_GED_ID, $indistub);
 				break;
 			case 'current_person':
 				$indirec.="\n1 RFN {$serverID}:{$link_pid}\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}";

@@ -64,13 +64,13 @@ class SourceControllerRoot extends BaseController {
 	* initialize the controller
 	*/
 	function init() {
-		global $CONTACT_EMAIL, $GEDCOM, $pgv_changes;
+		global $CONTACT_EMAIL;
 
 		$this->sid = safe_GET_xref('sid');
 
 		$sourcerec = find_source_record($this->sid, WT_GED_ID);
 
-		if (isset($pgv_changes[$this->sid."_".$GEDCOM])){
+		if  (find_updated_record($this->sid, WT_GED_ID)!==null) {
 			$sourcerec = "0 @".$this->sid."@ SOUR\n";
 		} else if (!$sourcerec) {
 			return false;
@@ -94,17 +94,38 @@ class SourceControllerRoot extends BaseController {
 				$this->addFavorite();
 				break;
 			case "accept":
-				$this->acceptChanges();
+				if (WT_USER_CAN_ACCEPT) {
+					accept_all_changes($this->sid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$indirec = find_source_record($this->sid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->source = new Source($indirec);
+				}
 				break;
 			case "undo":
-				$this->source->undoChange();
+				if (WT_USER_CAN_ACCEPT) {
+					reject_all_changes($this->sid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$indirec = find_source_record($this->sid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->source = new Source($indirec);
+				}
 				break;
 		}
 
 		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && isset($pgv_changes[$this->sid."_".$GEDCOM])) {
-			$newrec = find_updated_record($this->sid, WT_GED_ID);
+		if ($this->show_changes && WT_USER_CAN_EDIT && ($newrec = find_updated_record($this->sid, WT_GED_ID))!==null) {
 			$this->diffsource = new Source($newrec);
 			$this->diffsource->setChanged(true);
 			$sourcerec = $newrec;
@@ -141,26 +162,6 @@ class SourceControllerRoot extends BaseController {
 			}
 		}
 	}
-	/**
-	* Accept any edit changes into the database
-	* Also update the indirec we will use to generate the page
-	*/
-	function acceptChanges() {
-		global $GEDCOM;
-
-		if (!WT_USER_CAN_ACCEPT) return;
-		if (accept_changes($this->sid."_".$GEDCOM)) {
-			$this->show_changes=false;
-			$this->accept_success=true;
-			$indirec = find_source_record($this->sid, WT_GED_ID);
-			//-- check if we just deleted the record and redirect to index
-			if (empty($indirec)) {
-				header("Location: index.php?ctype=gedcom");
-				exit;
-			}
-			$this->source = new Source($indirec);
-		}
-	}
 
 	/**
 	* get the title for this page
@@ -186,7 +187,7 @@ class SourceControllerRoot extends BaseController {
 	* @return Menu
 	*/
 	function &getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $pgv_changes;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
@@ -229,8 +230,7 @@ class SourceControllerRoot extends BaseController {
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 		$menu->addSubmenu($submenu);
 
-		if (isset($pgv_changes[$this->sid.'_'.$GEDCOM]))
-		{
+		if (find_updated_record($this->sid, WT_GED_ID)!==null) {
 			// edit_sour / separator
 			$submenu = new Menu();
 			$submenu->isSeparator();

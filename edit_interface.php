@@ -183,11 +183,7 @@ function checkFactEdit($gedrec) {
 
 if (!empty($pid)) {
 	if (($pid!="newsour") && ($pid!="newrepo") && ($noteid!="newnote")) {
-		if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) {
-			$gedrec = find_gedcom_record($pid, WT_GED_ID);
-		} else {
-			$gedrec = find_updated_record($pid, WT_GED_ID);
-		}
+		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		$ct = preg_match("/0 @$pid@ (.*)/", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
@@ -202,11 +198,7 @@ if (!empty($pid)) {
 }
 else if (!empty($famid)) {
 	if ($famid != "new") {
-		if (!isset($pgv_changes[$famid."_".WT_GEDCOM])) {
-			$gedrec = find_gedcom_record($famid, WT_GED_ID);
-		} else {
-			$gedrec = find_updated_record($famid, WT_GED_ID);
-		}
+		$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
 		$ct = preg_match("/0 @$famid@ (.*)/", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
@@ -322,9 +314,8 @@ case 'delete':
 	}
 	if (!empty($linenum)) {
 		if ($linenum===0) {
-			if (delete_gedrec($pid)) {
-				echo i18n::translate('GEDCOM record successfully deleted.');
-			}
+			delete_gedrec($pid, WT_GED_ID);
+			echo i18n::translate('GEDCOM record successfully deleted.');
 		}
 		else {
 			$mediaid='';
@@ -338,10 +329,8 @@ case 'delete':
 			} else {
 				$newged = remove_subline($gedrec, $linenum);
 			}
-			$success = (replace_gedrec($pid, $newged, $update_CHAN));
-			if ($success) {
-				echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
-			}
+			replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
+			echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
 		}
 	}
 	break;
@@ -600,9 +589,7 @@ case 'linkfamaction':
 	if (WT_DEBUG) {
 		phpinfo(INFO_VARIABLES);
 	}
-	if (!isset($pgv_changes[$famid."_".WT_GEDCOM])) $famrec = find_gedcom_record($famid, WT_GED_ID);
-	else $famrec = find_updated_record($famid, WT_GED_ID);
-	$famrec = trim($famrec);
+	$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 	if (!empty($famrec)) {
 		$itag = "FAMC";
 		if ($famtag=="HUSB" || $famtag=="WIFE") $itag="FAMS";
@@ -633,14 +620,14 @@ case 'linkfamaction':
 			} else {
 				$gedrec .= "1 FAMS @$famid@";
 			}
-			replace_gedrec($pid, $gedrec, $update_CHAN);
+			replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
 		}
 
 		//-- if it is adding a new child to a family
 		if ($famtag=="CHIL") {
 			if (strpos($famrec, "1 $famtag @$pid@")===false) {
 				$famrec = trim($famrec) . "\n1 $famtag @$pid@\n";
-				replace_gedrec($famid, $famrec, $update_CHAN);
+				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 			}
 		}
 		//-- if it is adding a husband or wife
@@ -657,17 +644,16 @@ case 'linkfamaction':
 					if (WT_DEBUG) {
 						echo "<pre>$famrec</pre>";
 					}
-					replace_gedrec($famid, $famrec, $update_CHAN);
+					replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 					//-- remove the FAMS reference from the old husb/wife
 					if (!empty($spid)) {
-						if (!isset($pgv_changes[$spid."_".WT_GEDCOM])) $srec = find_gedcom_record($spid, WT_GED_ID);
-						else $srec = find_updated_record($spid, WT_GED_ID);
+						$srec = find_gedcom_record($spid, WT_GED_ID, true);
 						if ($srec) {
 							$srec = str_replace("1 $itag @$famid@", "", $srec);
 							if (WT_DEBUG) {
 								echo "<pre>$srec</pre>";
 							}
-							replace_gedrec($spid, $srec, $update_CHAN);
+							replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN);
 						}
 					}
 				}
@@ -676,7 +662,7 @@ case 'linkfamaction':
 				if (WT_DEBUG) {
 					echo "<pre>$famrec</pre>";
 				}
-				replace_gedrec($famid, $famrec, $update_CHAN);
+				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 			}
 		}
 	}
@@ -825,7 +811,7 @@ case 'addsourceaction':
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
 	}
-	$xref = append_gedrec($newgedrec, $update_CHAN);
+	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	$link = "source.php?sid=$xref&show_changes=yes";
 	if ($xref) {
 		echo "<br /><br />\n", i18n::translate('New source created successfully.'), "<br /><br />";
@@ -946,7 +932,7 @@ case 'addnoteaction':
 		echo "<pre>$newgedrec</pre>";
 	}
 	// $xref = "Test";
-	$xref = append_gedrec($newgedrec, $update_CHAN);
+	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	
 	// Not sure if next line is needed ?? BH ?? --------
 	// $link = "note.php?nid=$xref&show_changes=yes";
@@ -1110,11 +1096,7 @@ case 'editnote':
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
 
 		<?php
-		if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) {
-			$gedrec = find_gedcom_record($pid, WT_GED_ID);
-		} else {
-			$gedrec = find_updated_record($pid, WT_GED_ID);
-		}
+		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
 			$note_content=$n1match[1].get_cont(1, $gedrec, false);
 		} else {
@@ -1258,7 +1240,7 @@ case 'addrepoaction':
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
 	}
-	$xref = append_gedrec($newgedrec, $update_CHAN);
+	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	$link = "repo.php?rid=$xref&show_changes=yes";
 	if ($xref) {
 		echo "<br /><br />\n", i18n::translate('New Repository created'), "<br /><br />";
@@ -1274,8 +1256,10 @@ case 'updateraw':
 		echo "<pre>$newgedrec</pre>";
 	}
 	$newgedrec = trim($newgedrec);
-	$success = (!empty($newgedrec)&&(replace_gedrec($pid, $newgedrec, $update_CHAN)));
-	if ($success) echo "<br /><br />", i18n::translate('Update successful');
+	if (!empty($newgedrec)) {
+		replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+		echo "<br /><br />", i18n::translate('Update successful');
+	}
 	break;
 	
 //----------------------------------------------------------------------------------
@@ -1309,11 +1293,9 @@ case 'update':
 	// Cycle through each individual concerned defined by $cens_pids array.
 	foreach ($cens_pids as $pid) {
 		if (isset($pid)) {
-			$gedrec = find_updated_record($pid, WT_GED_ID);
-			if (empty($gedrec)) $gedrec = find_gedcom_record($pid, WT_GED_ID);			
+			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		} else if (isset($famid)) {
-			$gedrec = find_updated_record($famid, WT_GED_ID);
-			if (empty($gedrec)) $gedrec = find_gedcom_record($famid, WT_GED_ID);			
+			$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
 		}
 		
 		if (WT_DEBUG) {
@@ -1489,11 +1471,8 @@ case 'update':
 			echo "<pre>$newged</pre>";
 		}
 		
-		$success  = (replace_gedrec($pid, $newged, $update_CHAN));
-		if ($success) {
-			echo "<br /><br />", i18n::translate('Update successful'), " - ", $pid;
-		}
-		
+		replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
+		echo "<br /><br />", i18n::translate('Update successful'), " - ", $pid;
 	} // end foreach $cens_pids  -------------
 	break;
 
@@ -1547,7 +1526,7 @@ case 'addchildaction':
 	if (WT_DEBUG) {
 		echo "<pre>$gedrec</pre>";
 	}
-	$xref = append_gedrec($gedrec, $update_CHAN);
+	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref&show_changes=yes";
 	if ($xref) {
 		echo "<br /><br />", i18n::translate('Update successful');
@@ -1580,7 +1559,7 @@ case 'addchildaction':
 			if (WT_DEBUG) {
 				echo "<pre>$gedrec</pre>";
 			}
-			replace_gedrec($famid, $gedrec, $update_CHAN);
+			replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
 		}
 		$success = true;
 	}
@@ -1611,7 +1590,7 @@ case 'addspouseaction':
 	if (WT_DEBUG) {
 		echo "<pre>$gedrec</pre>";
 	}
-	$xref = append_gedrec($gedrec, $update_CHAN);
+	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref&show_changes=yes";
 	if ($xref) echo "<br /><br />", i18n::translate('Update successful');
 	else exit;
@@ -1646,12 +1625,10 @@ case 'addspouseaction':
 		if (WT_DEBUG) {
 			echo "<pre>$famrec</pre>";
 		}
-		$famid = append_gedrec($famrec, $update_CHAN);
+		$famid = append_gedrec($famrec, WT_GED_ID);
 	}
 	else if (!empty($famid)) {
-		$famrec = "";
-		if (isset($pgv_changes[$famid."_".WT_GEDCOM])) $famrec = find_updated_record($famid, WT_GED_ID);
-		else $famrec = find_family_record($famid, WT_GED_ID);
+		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 		if (!empty($famrec)) {
 			$famrec = trim($famrec) . "\n1 $famtag @$xref@\n";
 
@@ -1670,7 +1647,7 @@ case 'addspouseaction':
 			if (WT_DEBUG) {
 				echo "<pre>$famrec</pre>";
 			}
-			replace_gedrec($famid, $famrec, $update_CHAN);
+			replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
@@ -1679,18 +1656,16 @@ case 'addspouseaction':
 		if (WT_DEBUG) {
 			echo "<pre>$gedrec</pre>";
 		}
-		replace_gedrec($xref, $gedrec, $update_CHAN);
+		replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
 	}
 	if (!empty($pid)) {
-		$indirec="";
-		if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) $indirec = find_gedcom_record($pid, WT_GED_ID);
-		else $indirec = find_updated_record($pid, WT_GED_ID);
+		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 		if ($indirec) {
 			$indirec = trim($indirec) . "\n1 FAMS @$famid@\n";
 			if (WT_DEBUG) {
 				echo "<pre>$indirec</pre>";
 			}
-			replace_gedrec($pid, $indirec, $update_CHAN);
+			replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 		}
 	}
 	break;
@@ -1704,8 +1679,7 @@ case 'linkspouseaction':
 
 	if (isset($_REQUEST['spid'])) $spid = $_REQUEST['spid'];
 	if (!empty($spid)) {
-		if (isset($pgv_changes[$spid.'_'.WT_GEDCOM])) $gedrec = find_updated_record($spid, WT_GED_ID);
-		else $gedrec = find_person_record($spid, WT_GED_ID);
+		$gedrec = find_gedcom_record($spid, WT_GED_ID, true);
 		$gedrec = trim($gedrec);
 		if (!empty($gedrec)) {
 			if ($famid=="new") {
@@ -1740,25 +1714,23 @@ case 'linkspouseaction':
 				if (WT_DEBUG) {
 					echo "<pre>$famrec</pre>";
 				}
-				$famid = append_gedrec($famrec, $update_CHAN);
+				$famid = append_gedrec($famrec, WT_GED_ID);
 			}
 			if ((!empty($famid))&&($famid!="new")) {
 				$gedrec .= "\n1 FAMS @$famid@\n";
 				if (WT_DEBUG) {
 					echo "<pre>$gedrec</pre>";
 				}
-				replace_gedrec($spid, $gedrec, $update_CHAN);
+				replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN);
 			}
 			if (!empty($pid)) {
-				$indirec="";
-				if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) $indirec = find_gedcom_record($pid, WT_GED_ID);
-				else $indirec = find_updated_record($pid, WT_GED_ID);
+				$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 				if (!empty($indirec)) {
 					$indirec = trim($indirec) . "\n1 FAMS @$famid@\n";
 					if (WT_DEBUG) {
 						echo "<pre>$indirec</pre>";
 					}
-					replace_gedrec($pid, $indirec, $update_CHAN);
+					replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 				}
 			}
 		}
@@ -1790,7 +1762,7 @@ case 'addnewparentaction':
 	if (WT_DEBUG) {
 		echo "<pre>$gedrec</pre>";
 	}
-	$xref = append_gedrec($gedrec, $update_CHAN);
+	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref&show_changes=yes";
 	if ($xref) echo "<br /><br />", i18n::translate('Update successful');
 	else exit;
@@ -1822,12 +1794,10 @@ case 'addnewparentaction':
 		if (WT_DEBUG) {
 			echo "<pre>$famrec</pre>";
 		}
-		$famid = append_gedrec($famrec, $update_CHAN);
+		$famid = append_gedrec($famrec, WT_GED_ID);
 	}
 	else if (!empty($famid)) {
-		$famrec = "";
-		if (isset($pgv_changes[$famid."_".WT_GEDCOM])) $famrec = find_updated_record($famid, WT_GED_ID);
-		else $famrec = find_family_record($famid, WT_GED_ID);
+		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 		if (!empty($famrec)) {
 			$famrec = trim($famrec) . "\n1 $famtag @$xref@\n";
 
@@ -1846,7 +1816,7 @@ case 'addnewparentaction':
 			if (WT_DEBUG) {
 				echo "<pre>$famrec</pre>";
 			}
-			replace_gedrec($famid, $famrec, $update_CHAN);
+			replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
@@ -1855,12 +1825,10 @@ case 'addnewparentaction':
 			if (WT_DEBUG) {
 				echo "<pre>$gedrec</pre>";
 			}
-			replace_gedrec($xref, $gedrec, $update_CHAN);
+			replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
 	}
 	if (!empty($pid)) {
-		$indirec="";
-		if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) $indirec = find_gedcom_record($pid, WT_GED_ID);
-		else $indirec = find_updated_record($pid, WT_GED_ID);
+		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 		$indirec = trim($indirec);
 		if ($indirec) {
 			if (strpos($indirec, "1 FAMC @$famid@")===false) {
@@ -1868,7 +1836,7 @@ case 'addnewparentaction':
 				if (WT_DEBUG) {
 					echo "<pre>$indirec</pre>";
 				}
-				replace_gedrec($pid, $indirec, $update_CHAN);
+				replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 			}
 		}
 	}
@@ -1905,11 +1873,7 @@ case 'addopfchildaction':
 		$famrec.="\n1 HUSB @{$pid}@";
 	}
 
-	if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) {
-		$indirec=find_gedcom_record($pid, WT_GED_ID);
-	} else {
-		$indirec=find_updated_record($pid, WT_GED_ID);
-	}
+	$indirec=find_gedcom_record($pid, WT_GED_ID, true);
 	if ($indirec) {
 		$indirec.="\n1 FAMS @{$newfamxref}@";
 		if (WT_DEBUG) {
@@ -1917,10 +1881,10 @@ case 'addopfchildaction':
 			echo "<pre>$famrec</pre>";
 			echo "<pre>$indirec</pre>";
 		}
-		if (replace_gedrec($pid, $indirec, $update_CHAN) && append_gedrec($gedrec, $update_CHAN) && append_gedrec($famrec, $update_CHAN)) {
-			echo "<br /><br />", i18n::translate('Update successful');
-			$success = true;
-		}
+		replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
+		append_gedrec($gedrec, WT_GED_ID);
+		append_gedrec($famrec, WT_GED_ID);
+		echo "<br /><br />", i18n::translate('Update successful');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1974,11 +1938,7 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 		$success = true;
 		// Delete links to this record
 		foreach (fetch_all_links($pid, WT_GED_ID) as $xref) {
-			if (isset($pgv_changes[$xref.'_'.WT_GEDCOM])) {
-				$gedrec=find_updated_record($xref, WT_GED_ID);
-			} else {
-				$gedrec=find_gedcom_record($xref, WT_GED_ID);
-			}
+			$gedrec=find_gedcom_record($xref, WT_GED_ID, true);
 			$lines = explode("\n", $gedrec);
 			$newrec = "";
 			$skipline = false;
@@ -2001,15 +1961,11 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 			if (WT_DEBUG) {
 				echo "<pre>$newrec</pre>";
 			}
-			$success = $success && replace_gedrec($xref, $newrec, $update_CHAN);
+			replace_gedrec($xref, WT_GED_ID, $newrec, $update_CHAN);
 		}
 
-		if ($success) {
-			$success = $success && delete_gedrec($pid);
-		}
-		if ($success) {
-			echo "<br /><br />".i18n::translate('GEDCOM record successfully deleted.');
-		}
+		delete_gedrec($pid, WT_GED_ID);
+		echo "<br /><br />".i18n::translate('GEDCOM record successfully deleted.');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -2069,8 +2025,8 @@ case 'paste':
 		phpinfo(INFO_VARIABLES);
 		echo "<pre>$gedrec</pre>";
 	}
-	$success = replace_gedrec($pid, $gedrec, $update_CHAN);
-	if ($success) echo "<br /><br />", i18n::translate('Update successful');
+	replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
+	echo "<br /><br />", i18n::translate('Update successful');
 	break;
 
 
@@ -2092,10 +2048,8 @@ case 'reset_media_update': // Reset sort using popup
 			$newgedrec .= $line."\n";
 		}
 	}
-	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) { 
-		echo "<br />", i18n::translate('Update successful'), "<br /><br />";
-	}
+	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
 	break;
 
 //------------------------------------------------------------------------------
@@ -2117,19 +2071,19 @@ case 'reorder_media_update': // Update sort using popup
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
 	}
-	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) echo "<br />", i18n::translate('Update successful'), "<br /><br />";
-		// $mediaordsuccess='yes';
-		if ($_COOKIE['lasttabs'][strlen($_COOKIE['lasttabs'])-1]==8) {
-			$link = "individual.php?pid=$pid&tab=7&show_changes=yes";
-		}elseif ($_COOKIE['lasttabs'][strlen($_COOKIE['lasttabs'])-1]==7) {
-			$link = "individual.php?pid=$pid&tab=6&show_changes=yes";
-		}else{
-			$link = "individual.php?pid=$pid&tab=3&show_changes=yes";
-		}
-		echo WT_JS_START;
-		echo "edit_close('{$link}');";
-		echo WT_JS_END;
+	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
+	// $mediaordsuccess='yes';
+	if ($_COOKIE['lasttabs'][strlen($_COOKIE['lasttabs'])-1]==8) {
+		$link = "individual.php?pid=$pid&tab=7&show_changes=yes";
+	}elseif ($_COOKIE['lasttabs'][strlen($_COOKIE['lasttabs'])-1]==7) {
+		$link = "individual.php?pid=$pid&tab=6&show_changes=yes";
+	}else{
+		$link = "individual.php?pid=$pid&tab=3&show_changes=yes";
+	}
+	echo WT_JS_START;
+	echo "edit_close('{$link}');";
+	echo WT_JS_END;
 	break;
 
 //------------------------------------------------------------------------------
@@ -2141,16 +2095,16 @@ case 'al_reset_media_update': // Reset sort using Album Page
 			$newgedrec .= $line."\n";
 		}
 	}
-	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) echo "<br />", i18n::translate('Update successful'), "<br /><br />";
-		if (!file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
-			$tabno = "7";
-		}else{
-			$tabno = "8";
-		}
-		echo WT_JS_START;
-		echo "location.href='individual.php?pid={$pid}&tab={$tabno}'";
-		echo WT_JS_END;
+	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
+	if (!file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
+		$tabno = "7";
+	}else{
+		$tabno = "8";
+	}
+	echo WT_JS_START;
+	echo "location.href='individual.php?pid={$pid}&tab={$tabno}'";
+	echo WT_JS_END;
 	break;
 
 //------------------------------------------------------------------------------
@@ -2182,17 +2136,15 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
 	}
-	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) {
-		if (!file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
-			$tabno = "7";
-		}else{
-			$tabno = "8";
-		}
-		echo WT_JS_START;
-		echo "location.href='individual.php?pid={$pid}&tab={$tabno}'";
-		echo WT_JS_END;
+	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	if (!file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
+		$tabno = "7";
+	} else {
+		$tabno = "8";
 	}
+	echo WT_JS_START;
+	echo "location.href='individual.php?pid={$pid}&tab={$tabno}'";
+	echo WT_JS_END;
 	break;
 
 //LBox ===================================================
@@ -2413,11 +2365,10 @@ case 'changefamily_update':
 		if (strstr($gedrec, "1 HUSB")!==false)
 			$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @$HUSB@", $gedrec);
 		else $gedrec .= "\n1 HUSB @$HUSB@\n";
-		if (isset($pgv_changes[$HUSB."_".WT_GEDCOM])) $indirec = find_updated_record($HUSB, WT_GED_ID);
-		else $indirec = find_person_record($HUSB, WT_GED_ID);
+		$indirec = find_gedcom_record($HUSB, WT_GED_ID, true);
 		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$famid@")===false)) {
 			$indirec .= "\n1 FAMS @$famid@\n";
-			replace_gedrec($HUSB, $indirec, $update_CHAN);
+			replace_gedrec($HUSB, WT_GED_ID, $indirec, $update_CHAN);
 		}
 		$updated = true;
 	}
@@ -2434,15 +2385,14 @@ case 'changefamily_update':
 	}
 	//-- remove the FAMS link from the old father
 	if (!is_null($father) && $father->getXref()!=$HUSB) {
-		if (isset($pgv_changes[$father->getXref()."_".WT_GEDCOM])) $indirec = find_updated_record($father->getXref(), WT_GED_ID);
-		else $indirec = find_person_record($father->getXref(), WT_GED_ID);
+		$indirec = find_gedcom_record($father->getXref(), WT_GED_ID, true);
 		$pos1 = strpos($indirec, "1 FAMS @$famid@");
 		if ($pos1!==false) {
 			$pos2 = strpos($indirec, "\n1", $pos1+5);
 			if ($pos2===false) $pos2 = strlen($indirec);
 			else $pos2++;
 			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-			replace_gedrec($father->getXref(), $indirec, $update_CHAN);
+			replace_gedrec($father->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 		}
 	}
 	//-- add the new mother link
@@ -2451,11 +2401,10 @@ case 'changefamily_update':
 		if (strstr($gedrec, "1 WIFE")!==false)
 			$gedrec = preg_replace("/1 WIFE @.*@/", "1 WIFE @$WIFE@", $gedrec);
 		else $gedrec .= "\n1 WIFE @$WIFE@\n";
-		if (isset($pgv_changes[$WIFE."_".WT_GEDCOM])) $indirec = find_updated_record($WIFE, WT_GED_ID);
-		else $indirec = find_person_record($WIFE, WT_GED_ID);
+		$indirec = find_gedcom_record($WIFE, WT_GED_ID, true);
 		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$famid@")===false)) {
 			$indirec .= "\n1 FAMS @$famid@\n";
-			replace_gedrec($WIFE, $indirec, $update_CHAN);
+			replace_gedrec($WIFE, WT_GED_ID, $indirec, $update_CHAN);
 		}
 		$updated = true;
 	}
@@ -2472,15 +2421,14 @@ case 'changefamily_update':
 	}
 	//-- remove the FAMS link from the old father
 	if (!is_null($mother) && $mother->getXref()!=$WIFE) {
-		if (isset($pgv_changes[$mother->getXref()."_".WT_GEDCOM])) $indirec = find_updated_record($mother->getXref(), WT_GED_ID);
-		else $indirec = find_person_record($mother->getXref(), WT_GED_ID);
+		$indirec = find_gedcom_record($mother->getXref(), WT_GED_ID, true);
 		$pos1 = strpos($indirec, "1 FAMS @$famid@");
 		if ($pos1!==false) {
 			$pos2 = strpos($indirec, "\n1", $pos1+5);
 			if ($pos2===false) $pos2 = strlen($indirec);
 			else $pos2++;
 			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-			replace_gedrec($mother->getXref(), $indirec, $update_CHAN);
+			replace_gedrec($mother->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 		}
 	}
 
@@ -2495,11 +2443,10 @@ case 'changefamily_update':
 			if (strpos($gedrec, "1 CHIL @$CHIL@")===false) {
 				$gedrec .= "\n1 CHIL @$CHIL@\n";
 				$updated = true;
-				if (isset($pgv_changes[$CHIL."_".WT_GEDCOM])) $indirec = find_updated_record($CHIL, WT_GED_ID);
-				else $indirec = find_person_record($CHIL, WT_GED_ID);
+				$indirec = find_gedcom_record($CHIL, WT_GED_ID, true);
 				if (!empty($indirec) && (strpos($indirec, "1 FAMC @$famid@")===false)) {
 					$indirec .= "\n1 FAMC @$famid@\n";
-					replace_gedrec($CHIL, $indirec, $update_CHAN);
+					replace_gedrec($CHIL, WT_GED_ID, $indirec, $update_CHAN);
 				}
 			}
 		}
@@ -2521,23 +2468,22 @@ case 'changefamily_update':
 					$updated = true;
 				}
 				//-- remove the FAMC link from the child record
-				if (isset($pgv_changes[$child->getXref()."_".WT_GEDCOM])) $indirec = find_updated_record($child->getXref(), WT_GED_ID);
-				else $indirec = find_person_record($child->getXref(), WT_GED_ID);
+				$indirec = find_gedcom_record($child->getXref(), WT_GED_ID, true);
 				$pos1 = strpos($indirec, "1 FAMC @$famid@");
 				if ($pos1!==false) {
 					$pos2 = strpos($indirec, "\n1", $pos1+5);
 					if ($pos2===false) $pos2 = strlen($indirec);
 					else $pos2++;
 					$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
-					replace_gedrec($child->getXref(), $indirec, $update_CHAN);
+					replace_gedrec($child->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 				}
 			}
 		}
 	}
 
 	if ($updated) {
-		$success = replace_gedrec($famid, $gedrec, $update_CHAN);
-		if ($success) echo "<br /><br />", i18n::translate('Update successful');
+		replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
+		echo "<br /><br />", i18n::translate('Update successful');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -2609,8 +2555,8 @@ case 'reorder_update':
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
 	}
-	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) echo "<br /><br />", i18n::translate('Update successful');
+	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	echo "<br /><br />", i18n::translate('Update successful');
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_fams':
@@ -2679,10 +2625,8 @@ case 'reorder_fams_update':
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
 	}
-	$success = (replace_gedrec($pid, $newgedrec, $update_CHAN));
-	if ($success) {
-		echo "<br /><br />", i18n::translate('Update successful');
-	}
+	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	echo "<br /><br />", i18n::translate('Update successful');
 	break;
 //------------------------------------------------------------------------------
 //-- the following section provides a hook for modules

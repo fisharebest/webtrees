@@ -3171,7 +3171,7 @@ function PGVRLineSHandler($attrs) {
 */
 function PGVRListSHandler($attrs) {
 	global $gedrec, $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
-	global $pgv_changes, $GEDCOM, $TBLPREFIX;
+	global $GEDCOM, $TBLPREFIX;
 
 	$processRepeats++;
 	if ($processRepeats > 1) return;
@@ -3195,21 +3195,19 @@ function PGVRListSHandler($attrs) {
 	// Some filters/sorts can be applied using SQL, while others require PHP
 	switch ($listname) {
 		case "pending":
+			$rows=WT_DB::prepare(
+				"SELECT CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom".
+				" FROM {$TBLPREFIX}change".
+				" WHERE (xref, change_id) IN (".
+				"  SELECT xref, MAX(change_id)".
+				"   FROM {$TBLPREFIX}change".
+				"   WHERE status='pending' AND gedcom_id=?".
+				"   GROUP BY xref".
+				" )"
+			)->execute(array(WT_GED_ID))->fetchAll();
 			$list=array();
-			foreach ($pgv_changes as $changes) {
-				$change=end($changes);
-				if ($change["gedcom"]==$GEDCOM) {
-					switch ($change["type"]) {
-					case "replace":
-						// Update - show the latest version of the record
-						$list[]=new GedcomRecord($change["undo"]);
-						break;
-					case "delete":
-						// Delete - show the last accepted version of the record
-						$list[]=GedcomRecord::getInstance($change["gid"]);
-						break;
-					}
-				}
+			foreach ($rows as $row) {
+				$list[]=new GedcomRecord($row->gedcom);
 			}
 			break;
 		case "individual":

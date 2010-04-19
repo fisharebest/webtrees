@@ -48,10 +48,11 @@ if (isset($_REQUEST['logfilename'])) $logfilename = $_REQUEST['logfilename'];
 if (!isset($action)) $action="";
 
 print_header(i18n::translate('Administration'));
-
-$d_pgv_changes = "";
-if (count($pgv_changes) > 0) {
-	$d_pgv_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">" . i18n::translate('Accept / Reject Changes') . "</a>\n";
+$pending_changes=WT_DB::prepare("SELECT 1 FROM {$TBLPREFIX}change WHERE status='pending' LIMIT 1")->fetchOne();
+if ($pending_changes) {
+	$d_wt_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Accept / Reject Changes').help_link('edit_changes.php')."</a>\n";
+} else {
+	$d_wt_changes = '&nbsp;';
 }
 
 if (!isset($logfilename)) {
@@ -196,7 +197,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 			</tr>
 			<tr>
 				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup Index directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
-				<td class="optionbox width50"><?php if ($d_pgv_changes != "") echo $d_pgv_changes; else echo "&nbsp;"; ?></td>
+				<td class="optionbox width50"><?php echo $d_wt_changes; ?></td>
 			</tr>
 			<?php if (WT_USER_GEDCOM_ADMIN && is_dir('./modules/batch_update')) { ?>
 			<tr>

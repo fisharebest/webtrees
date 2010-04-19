@@ -484,12 +484,10 @@ if ($verify == "verify_gedcom") {
 		}
 		if ($bakfile != "") print i18n::translate('A GEDCOM file with the same name has been found. If you choose to continue, the old GEDCOM file will be replaced with the file that you uploaded and the Import process will begin again.  If you choose to cancel, the old GEDCOM will remain unchanged.')."</td></tr>";
 		// NOTE: Check for existing changes
-		foreach ($pgv_changes as $cid => $changes) {
-			if ($changes[0]["gedcom"] == $GEDFILENAME) {
-				echo i18n::translate('The current GEDCOM has changes pending review.  If you continue this Import, these pending changes will be discarded.  You should review the pending changes before continuing the Import.');
-				echo "<br /><br />";
-				break;
-			}
+		$changes=WT_DB::prepare("SELECT 1 FROM {$TBLPREFIX}change WHERE status='pending' AND gedcom_id=?")->execute(array(get_id_from_gedcom($GEDFILENAME)))->fetchOne();
+		if ($changes) {
+			echo i18n::translate('The current GEDCOM has changes pending review.  If you continue this Import, these pending changes will be discarded.  You should review the pending changes before continuing the Import.');
+			echo "<br /><br />";
 		}
 		print "<tr><td class=\"descriptionbox width20 wrap\">".i18n::translate('Do you want to erase the old data and replace it with this new data?')."</td><td class=\"optionbox vmiddle\">\n";
 		print "<select name=\"override\">";
@@ -879,12 +877,6 @@ if ($stage == 0) {
 	if (file_exists($INDEX_DIRECTORY.basename($GEDCOM_FILE).".new"))
 	unlink($INDEX_DIRECTORY.basename($GEDCOM_FILE).".new");
 	empty_database($ged_id, $keepmedia);
-	//-- erase any of the changes
-	foreach ($pgv_changes as $cid => $changes) {
-		if ($changes[0]["gedcom"] == $ged)
-		unset ($pgv_changes[$cid]);
-	}
-	write_changes();
 	$stage = 1;
 }
 flush();

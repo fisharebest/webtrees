@@ -123,7 +123,6 @@ function warnuser(cbox) {
 		<ul id="reorder_list">
 		<?php
 
-		$locked_with_warning = array("lang_settings.php", "pgv_changes.php");
 		//-- lock the GEDCOM and settings files
 		foreach(get_all_gedcoms() as $ged_id=>$ged_name){
 			$file=get_privacy_file($ged_id);
@@ -157,13 +156,6 @@ function warnuser(cbox) {
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
 					print "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
 					print "<span class=\"name2\">".$entry."</span>";
-				}
-				else if (in_array($entry, $locked_with_warning)) {
-					print "<li class=\"facts_value\" name=\"$entry\" warn=\"true\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
-					print "<input type=\"checkbox\" name=\"to_delete[]\" warn=\"true\" value=\"".$entry."\" onclick=\"warnuser(this);\" />\n";
-					print "<img src=\"./images/RESN_locked.gif\" alt=\"\" />&nbsp;&nbsp;";
-					print $entry;
-					$element[] = "li_".$entry;
 				}
 				else{
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";

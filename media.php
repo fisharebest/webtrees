@@ -678,56 +678,34 @@ if (check_media_structure()) {
 			if ($xref != "") {
 				$links = get_media_relations($xref);
 				foreach($links as $pid=>$type) {
-					if (isset($pgv_changes[$pid."_".WT_GEDCOM])) $gedrec = find_updated_record($pid, WT_GED_ID);
-					else $gedrec = find_gedcom_record($pid, WT_GED_ID);
+					$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 					$gedrec = remove_subrecord($gedrec, "OBJE", $xref, -1);
-					if (replace_gedrec($pid, $gedrec, true, $xref)) {
-						echo i18n::translate('Record %s successfully updated.', $pid);
-						AddToChangeLog("Record $pid successfully updated.");
-					} else {
-						$finalResult = false;
-						echo "<span class=\"error\">";
-						echo i18n::translate('Record %s could not be updated.', $pid);
-						echo "</span>";
-						AddToChangeLog("Record $pid could not be updated.");
-					}
-					echo "<br />";
+					replace_gedrec($pid, WT_GED_ID, $gedrec);
+					echo i18n::translate('Record %s successfully updated.', $pid), '<br />';
 				}
 
 				// Record changes to the Media object
-					//-- why do we accept changes just to delete the item?
-					accept_changes($xref."_".WT_GEDCOM);
-					$objerec = find_gedcom_record($xref, WT_GED_ID);
+				accept_all_changes($xref, WT_GED_ID);
+				$objerec = find_gedcom_record($xref, WT_GED_ID);
+	
+				// Remove media object from gedcom
+				delete_gedrec($xref, WT_GED_ID);
+				echo i18n::translate('Record %s successfully removed from GEDCOM.', $xref), '<br />';
 
-					// Remove media object from gedcom
-					if (delete_gedrec($xref)) {
-						echo i18n::translate('Record %s successfully removed from GEDCOM.', $xref);
-						AddToChangeLog("Record $xref successfully removed from GEDCOM.");
+				// Add the same file as a new object
+				if ($finalResult && !$removeObject && $objerec!="") {
+					$xref = get_new_xref("OBJE");
+					$objerec = preg_replace("/0 @.*@ OBJE/", "0 @".$xref."@ OBJE", $objerec);
+					if(append_gedrec($objerec, WT_GED_ID)) {
+						echo i18n::translate('Record %s successfully added to GEDCOM.', $xref);
 					} else {
 						$finalResult = false;
-						print "<span class=\"error\">";
-						echo i18n::translate('Record %s could not be removed from GEDCOM.', $xref);
-						print "</span>";
-						AddToChangeLog("Record $xref could not be removed from GEDCOM.");
+						echo "<span class=\"error\">";
+						echo i18n::translate('Record %s could not be added to GEDCOM.', $xref);
+						echo "</span>";
 					}
 					print "<br />";
-
-					// Add the same file as a new object
-					if ($finalResult && !$removeObject && $objerec!="") {
-						$xref = get_new_xref("OBJE");
-						$objerec = preg_replace("/0 @.*@ OBJE/", "0 @".$xref."@ OBJE", $objerec);
-						if(append_gedrec($objerec)) {
-							echo i18n::translate('Record %s successfully added to GEDCOM.', $xref);
-							AddToChangeLog("Record $xref successfully added to GEDCOM.");
-						} else {
-							$finalResult = false;
-							echo "<span class=\"error\">";
-							echo i18n::translate('Record %s could not be added to GEDCOM.', $xref);
-							echo "</span>";
-							AddToChangeLog("Record $xref could not be added to GEDCOM.");
-						}
-						print "<br />";
-					}
+				}
 			}
 		}
 		if ($finalResult) print i18n::translate('Update successful');

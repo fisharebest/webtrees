@@ -48,7 +48,7 @@ class GedcomRecord {
 	var $type       =null;  // INDI, FAM, etc.
 	var $ged_id     =null;  // The gedcom file, only set if this record comes from the database
 	var $gedrec     =null;  // Raw gedcom text (privatised)
-	private $changed=false; // Is this a new record from pgv_changes[]
+	private $changed=false; // Is this a new record, pending approval
 	var $rfn        =null;
 	var $facts      =null;
 	var $changeEvent=null;
@@ -107,7 +107,7 @@ class GedcomRecord {
 	// from the database (if we anticipate the record hasn't
 	// been fetched previously).
 	static function &getInstance($data) {
-		global $gedcom_record_cache, $GEDCOM, $pgv_changes;
+		global $gedcom_record_cache, $GEDCOM;
 
 		$is_pending=false; // Did this record come from a pending edit
 
@@ -167,8 +167,7 @@ class GedcomRecord {
 			}
 
 			// If we didn't find the record in the database, it may be new/pending
-			if (!$data && WT_USER_CAN_EDIT && isset($pgv_changes[$pid.'_'.$GEDCOM])) {
-				$data=find_updated_record($pid, $ged_id);
+			if (!$data && WT_USER_CAN_EDIT && ($data=find_gedcom_record($pid, $ged_id, true))!='') {
 				$is_pending=true;
 			}
 
@@ -379,42 +378,21 @@ class GedcomRecord {
 	}
 
 	/**
-	* Undo the latest change to this gedcom record
-	*/
-	function undoChange() {
-		global $GEDCOM, $pgv_changes;
-		require_once 'includes/functions/functions_edit.php';
-		if (!WT_USER_CAN_ACCEPT) {
-			return false;
-		}
-		$cid = $this->xref.'_'.$GEDCOM;
-		if (!isset($pgv_changes[$cid])) {
-			return false;
-		}
-		$index = count($pgv_changes[$cid])-1;
-		if (undo_change($cid, $index)) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	* check if this record has been marked for deletion
 	* @return boolean
 	*/
 	function isMarkedDeleted() {
-		global $pgv_changes, $GEDCOM;
+		global $TBLPREFIX;
 
-		if (!WT_USER_CAN_EDIT) {
-			return false;
-		}
-		if (isset($pgv_changes[$this->xref.'_'.$GEDCOM])) {
-			$change = end($pgv_changes[$this->xref.'_'.$GEDCOM]);
-			if ($change['type']=='delete') {
-				return true;
-			}
-		}
-		return false;
+		$tmp=WT_DB::prepare(
+			"SELECT new_gedcom".
+			" FROM {$TBLPREFIX}change".
+			" WHERE status='pending' AND gedcom_id=? AND xref=?".
+			" ORDER BY change_id desc".
+			" LIMIT 1"	
+		)->execute(array($this->ged_id, $this->xref))->fetchOne();
+
+		return $tmp==='';
 	}
 
 	/**

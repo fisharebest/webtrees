@@ -131,33 +131,30 @@ case 'get':
 		$gedrecords="";
 		foreach ($xrefs as $xref1) {
 			if (!empty($xref1)) {
-				$gedrec=find_updated_record($xref1, $GED_ID);
-				if (!$gedrec) {
-					$gedrec=find_gedcom_record($xref1, $GED_ID);
-					if ($gedrec) {
-						preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
-						$type = trim($match[2]);
-						if (!displayDetailsById($xref1, $type)) {
-							//-- do not have full access to this record, so privatize it
-							$gedrec = privatize_gedcom($gedrec);
-						}
-						else if ($view=='version' || $view=='change') {
-							$chan = get_gedcom_value('CHAN', 1, $gedrec);
-							if (empty($chan)) {
-								$head = find_gedcom_record("HEAD", $GED_ID);
-								$head_date = get_sub_record(1, "1 DATE", $head);
-								$lines = explode("\n", $head_date);
-								$head_date = "";
-								foreach($lines as $line) {
-									$num = $line{0};
-									$head_date.=($num+1).substr($line, 1)."\n";
-								}
-								$chan = "1 CHAN\n".$head_date;
-							}
-							$gedrec = '0 @'.$xref1.'@ '.$type."\n".$chan;
-						}
-						if (!empty($gedrec)) $gedrecords = $gedrecords . "\n".trim($gedrec);
+				$gedrec=find_gedcom_record($xref1, $GED_ID, true);
+				if ($gedrec) {
+					preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
+					$type = trim($match[2]);
+					if (!displayDetailsById($xref1, $type)) {
+						//-- do not have full access to this record, so privatize it
+						$gedrec = privatize_gedcom($gedrec);
 					}
+					else if ($view=='version' || $view=='change') {
+						$chan = get_gedcom_value('CHAN', 1, $gedrec);
+						if (empty($chan)) {
+							$head = find_gedcom_record("HEAD", $GED_ID);
+							$head_date = get_sub_record(1, "1 DATE", $head);
+							$lines = explode("\n", $head_date);
+							$head_date = "";
+							foreach($lines as $line) {
+								$num = $line{0};
+								$head_date.=($num+1).substr($line, 1)."\n";
+							}
+							$chan = "1 CHAN\n".$head_date;
+						}
+						$gedrec = '0 @'.$xref1.'@ '.$type."\n".$chan;
+					}
+					if (!empty($gedrec)) $gedrecords = $gedrecords . "\n".trim($gedrec);
 				}
 			}
 		}
@@ -196,11 +193,8 @@ case 'update':
 		if ($gedrec) {
 			if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && displayDetailsById($xref)) {
 				$gedrec = preg_replace(array("/\\\\+r/","/\\\\+n/"), array("\r","\n"), $gedrec);
-				$success = replace_gedrec($xref, $gedrec);
-				if ($success) {
-					addToLog($action." xref=$xref gedrec=$gedrec SUCCESS", 'debug');
-					print "SUCCESS\n";
-				}
+				replace_gedrec($xref, WT_GED_ID, $gedrec);
+				print "SUCCESS\n";
 			} else {
 				addToLog($action." xref=$xref ERROR 11: No write privileges for this record.", 'debug');
 				print "ERROR 11: No write privileges for this record.\n";
@@ -219,7 +213,7 @@ case 'append':
 	if ($gedrec) {
 		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT) {
 			$gedrec = preg_replace(array("/\\\\+r/","/\\\\+n/"), array("\r","\n"), $gedrec);
-			$xref = append_gedrec($gedrec);
+			$xref = append_gedrec($gedrec, WT_GED_ID);
 			if ($xref) {
 				addToLog($action." gedrec=$gedrec SUCCESS\n$xref", 'debug');
 				print "SUCCESS\n$xref\n";
@@ -237,7 +231,7 @@ case 'delete':
 	$xref=safe_REQUEST($_REQUEST,'xref', WT_REGEX_XREF);
 	if ($xref) {
 		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && displayDetailsById($xref)) {
-			$success = delete_gedrec($xref);
+			$success = delete_gedrec($xref, WT_GED_ID);
 			if ($success) {
 				addToLog($action." xref=$xref SUCCESS", 'debug');
 				print "SUCCESS\n";
@@ -255,10 +249,7 @@ case 'getnext':
 	$xref=safe_REQUEST($_REQUEST,'xref', WT_REGEX_XREF);
 	if ($xref) {
 		$xref1 = get_next_xref($xref, $GED_ID);
-		$gedrec = find_updated_record($xref1, $GED_ID);
-		if (!$gedrec) {
-			$gedrec = find_gedcom_record($xref1, $GED_ID);
-		}
+		$gedrec = find_gedcom_record($xref1, $GED_ID, true);
 		if (!displayDetailsById($xref1)) {
 			//-- do not have full access to this record, so privatize it
 			$gedrec = privatize_gedcom($gedrec);
@@ -274,10 +265,7 @@ case 'getprev':
 	$xref=safe_REQUEST($_REQUEST,'xref', WT_REGEX_XREF);
 	if ($xref) {
 		$xref1 = get_prev_xref($xref, $GED_ID);
-		$gedrec = find_updated_record($xref1, $GED_ID);
-		if (!$gedrec) {
-			$gedrec = find_gedcom_record($xref1, $GED_ID);
-		}
+		$gedrec = find_gedcom_record($xref1, $GED_ID, true);
 		if (!displayDetailsById($xref1)) {
 			//-- do not have full access to this record, so privatize it
 			$gedrec = privatize_gedcom($gedrec);
@@ -398,7 +386,7 @@ case 'getxref':
 	case 'new':
 		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT) {
 			$gedrec = "0 @REF@ $type";
-			$xref = append_gedrec($gedrec);
+			$xref = append_gedrec($gedrec, WT_GED_ID);
 			if ($xref) {
 				addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
 				print "SUCCESS\n$xref\n";

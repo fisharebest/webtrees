@@ -156,30 +156,26 @@ function newConnection() {
 * loaded the individual page and the time they clicked on a link to edit
 * the data.
 *
-* @param string $pid The gedcom id of the record to check pgv_changes
-* @param string $gedrec The latest gedcom record to check the CHAN:DATE:TIME (auto accept)
+* @param string $pid The gedcom id of the record to check
 */
 function checkChangeTime($pid, $gedrec, $last_time) {
-	global $pgv_changes;
-	//-- check if the record changes since last access
-	$changeTime = 0;
-	$changeUser = '';
-	if (isset($pgv_changes[$pid."_".WT_GEDCOM])) {
-		$change = end($pgv_changes[$pid."_".WT_GEDCOM]);
-		$changeTime = $change['time'];
-		$changeUser = $change['user'];
-	}
-	else {
-		$changrec = get_sub_record(1, "1 CHAN", $gedrec);
-		$cdate = get_gedcom_value("DATE", 2, $changrec, '', false);
-		if (!empty($cdate)) {
-			$ctime = get_gedcom_value("DATE:TIME", 2, $changrec);
-			$changeUser = get_gedcom_value("_PGVU", 2, $changrec, '', false);
-			$chan_date = new GedcomDate($cdate);
-			$chan_date = $chan_date->MinDate();
-			$chan_time = parse_time($ctime);
-			$changeTime = mktime($chan_time[0], $chan_time[1], $chan_time[2], $chan_date->m, $chan_date->d, $chan_date->y);
-		}
+	global $TBLPREFIX;
+
+	$change=WT_DB::prepare(
+		"SELECT UNIX_TIMESTAMP(change_time) AS change_time, user_name".
+		" FROM {$TBLPREFIX}change".
+		" JOIN {$TBLPREFIX}user USING (user_id)".
+		" WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?".
+		" ORDER BY change_id DESC".
+		" LIMIT 1"
+	)->execute(array(WT_GED_ID, $pid, $last_time))->fetchOneRow();
+
+	if ($change) {
+		$changeTime=$change->change_time;
+		$changeUser=$change->user_name;
+	} else {
+		$changeTime = 0;
+		$changeUser = '';
 	}
 	if (isset($_REQUEST['linenum']) && $changeTime!=0 && $last_time && $changeTime > $last_time) {
 		echo "<span class=\"error\">", i18n::translate('The record with id %s was changed by another user since you last accessed it.', $pid), "<br /><br />";
@@ -196,12 +192,10 @@ function checkChangeTime($pid, $gedrec, $last_time) {
 * @param string $gid The XREF id of the record to replace
 * @param string $gedrec The new gedcom record to replace with
 * @param boolean $chan Whether or not to update/add the CHAN record
-* @param string $linkpid Tells whether or not this record change is linked with the record change of another record identified by $linkpid
 */
-function replace_gedrec($gid, $gedrec, $chan=true, $linkpid='') {
-	global $fcontents, $pgv_changes, $manual_save, $pgv_private_records;
+function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
+	global $TBLPREFIX, $pgv_private_records;
 
-	$gid = strtoupper($gid);
 	//-- restore any data that was hidden during privatizing
 	if (isset($pgv_private_records[$gid])) {
 		$privatedata = trim(get_last_private_data($gid));
@@ -223,51 +217,28 @@ function replace_gedrec($gid, $gedrec, $chan=true, $linkpid='') {
 				if ($gid=="REF" || $gid=="new" || $gid=="NEW") {
 					$gedrec = preg_replace("/0 @(.*)@/", "0 @".$oldgid."@", $gedrec);
 					$gid = $oldgid;
-				}
-				else {
+				} else {
 					AddToChangeLog("Warning: $oldgid was changed to $gid");
-					if (isset($pgv_changes[$oldgid."_".WT_GEDCOM])) unset($pgv_changes[$oldgid."_".WT_GEDCOM]);
 				}
 			}
 		}
 
-			$change = array();
-			$change["gid"] = $gid;
-			$change["gedcom"] = WT_GEDCOM;
-			$change["type"] = "replace";
-			$change["status"] = "submitted";
-			$change["user"] = WT_USER_NAME;
-			$change["time"] = time();
-			if (!empty($linkpid)) $change["linkpid"] = $linkpid;
-			$change["undo"] = reformat_record_import($gedrec);
-			if (!isset($pgv_changes[$gid."_".WT_GEDCOM])) $pgv_changes[$gid."_".WT_GEDCOM] = array();
-			else {
-				$lastchange = end($pgv_changes[$gid."_".WT_GEDCOM]);
-				if (!empty($lastchange)) {
-					//-- append recods should continue to be marked as append
-					if ($lastchange["type"]=="append") $change["type"] = "append";
-					//-- delete records will be added back in when they are accepted
-					//-- but we should add a warning to the log
-					else if ($lastchange["type"]=="delete") {
-						AddToLog("Possible GEDCOM corruption: Attempting to replace GEDCOM record $gid which has already been marked for deletion.", 'error');
-					}
-				}
-			}
-			$pgv_changes[$gid."_".WT_GEDCOM][] = $change;
+		$old_gedrec=find_gedcom_record($gid, $ged_id, true);
+		if ($old_gedrec!=$gedrec) {
+			WT_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+			)->execute(array(
+				$ged_id,
+				$gid,
+				$old_gedrec,
+				$gedrec,
+				WT_USER_ID
+			));
+		}
 
 		if (WT_USER_AUTO_ACCEPT) {
-			accept_changes($gid."_".WT_GEDCOM);
-		} else {
-			write_changes();
+			accept_all_changes($gid, WT_GED_ID);
 		}
-		$backtrace = debug_backtrace();
-		$temp = '';
-		if (isset($backtrace[2])) $temp .= basename($backtrace[2]["file"])." (".$backtrace[2]["line"].")";
-		if (isset($backtrace[1])) $temp .= basename($backtrace[1]["file"])." (".$backtrace[1]["line"].")";
-		if (isset($backtrace[0])) $temp .= basename($backtrace[0]["file"])." (".$backtrace[0]["line"].")";
-		$action=WT_SCRIPT_NAME;
-		if (!empty($_REQUEST['action'])) $action .= ' '.$_REQUEST['action'];
-		AddToChangeLog($action.' '.$temp." Replacing gedcom record $gid ->" . WT_USER_NAME ."<-");
 		return true;
 	}
 	return false;
@@ -275,43 +246,35 @@ function replace_gedrec($gid, $gedrec, $chan=true, $linkpid='') {
 
 //-- this function will append a new gedcom record at
 //-- the end of the gedcom file.
-function append_gedrec($gedrec, $chan=true, $linkpid='') {
-	global $fcontents, $pgv_changes, $manual_save;
+function append_gedrec($gedrec, $ged_id) {
+	global $TBLPREFIX;
 
-	if (($gedrec = check_gedcom($gedrec, $chan))!==false) {
-		$ct = preg_match("/0 @(".WT_REGEX_XREF.")@ (".WT_REGEX_TAG.")/", $gedrec, $match);
-		$gid = $match[1];
-		$type = trim($match[2]);
+	if (($gedrec = check_gedcom($gedrec, true))!==false && preg_match("/0 @(".WT_REGEX_XREF.")@ (".WT_REGEX_TAG.")/", $gedrec, $match)) {
+		$gid  = $match[1];
+		$type = $match[2];
 
-		if (preg_match("/\d+/", $gid)==0) $xref = get_new_xref($type);
-		else $xref = $gid;
-		$gedrec = preg_replace("/0 @(.*)@/", "0 @$xref@", $gedrec);
+		if (preg_match("/\d/", $gid)==0) {
+			$xref = get_new_xref($type);
+		} else {
+			$xref = $gid;
+		}
+		$gedrec=preg_replace("/^0 @(.*)@/", "0 @$xref@", $gedrec);
 
-		$change = array();
-		$change["gid"] = $xref;
-		$change["gedcom"] = WT_GEDCOM;
-		$change["type"] = "append";
-		$change["status"] = "submitted";
-		$change["user"] = WT_USER_NAME;
-		$change["time"] = time();
-		if (!empty($linkpid)) $change["linkpid"] = $linkpid;
-		$change["undo"] = reformat_record_import($gedrec);
-		if (!isset($pgv_changes[$xref."_".WT_GEDCOM])) $pgv_changes[$xref."_".WT_GEDCOM] = array();
-		$pgv_changes[$xref."_".WT_GEDCOM][] = $change;
+		WT_DB::prepare(
+			"INSERT INTO {$TBLPREFIX}change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+		)->execute(array(
+			$ged_id,
+			$xref,
+			'',
+			$gedrec,
+			WT_USER_ID
+		));
+
+		AddToChangeLog("Appending new $type record $xref");
 
 		if (WT_USER_AUTO_ACCEPT) {
-			accept_changes($xref."_".WT_GEDCOM);
-		} else {
-			write_changes();
+			accept_all_changes($xref, WT_GED_ID);
 		}
-		$backtrace = debug_backtrace();
-		$temp = '';
-		if (isset($backtrace[2])) $temp .= basename($backtrace[2]["file"])." (".$backtrace[2]["line"].")";
-		if (isset($backtrace[1])) $temp .= basename($backtrace[1]["file"])." (".$backtrace[1]["line"].")";
-		if (isset($backtrace[0])) $temp .= basename($backtrace[0]["file"])." (".$backtrace[0]["line"].")";
-		$action=WT_SCRIPT_NAME;
-		if (!empty($_REQUEST['action'])) $action .= ' '.$_REQUEST['action'];
-		AddToChangeLog($action.' '.$temp." Appending new $type record $xref ->" . WT_USER_NAME ."<-");
 		return $xref;
 	}
 	return false;
@@ -319,44 +282,24 @@ function append_gedrec($gedrec, $chan=true, $linkpid='') {
 
 //-- this function will delete the gedcom record with
 //-- the given $gid
-function delete_gedrec($gid, $linkpid='') {
-	global $fcontents, $pgv_changes, $manual_save;
+function delete_gedrec($gid, $ged_id) {
+	global $TBLPREFIX;
+	
+	WT_DB::prepare(
+		"INSERT INTO {$TBLPREFIX}change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+	)->execute(array(
+		$ged_id,
+		$gid,
+		find_gedcom_record($gid, $ged_id, true),
+		'',
+		WT_USER_ID
+	));
 
-	//-- first check if the record is not already deleted
-	if (isset($pgv_changes[$gid."_".WT_GEDCOM])) {
-		$change = end($pgv_changes[$gid."_".WT_GEDCOM]);
-		if ($change["type"]=="delete") return true;
-	}
-
-	$undo = find_gedcom_record($gid, WT_GED_ID);
-	if (empty($undo)) return false;
-		$change = array();
-		$change["gid"] = $gid;
-		$change["gedcom"] = WT_GEDCOM;
-		$change["type"] = "delete";
-		$change["status"] = "submitted";
-		$change["user"] = WT_USER_NAME;
-		$change["time"] = time();
-		if (!empty($linkpid)) $change["linkpid"] = $linkpid;
-		$change["undo"] = '';
-		if (!isset($pgv_changes[$gid."_".WT_GEDCOM])) $pgv_changes[$gid."_".WT_GEDCOM] = array();
-		$pgv_changes[$gid."_".WT_GEDCOM][] = $change;
+	AddToChangeLog("Deleting gedcom record $gid");
 
 	if (WT_USER_AUTO_ACCEPT) {
-		accept_changes($gid."_".WT_GEDCOM);
+		accept_all_changes($xref, WT_GED_ID);
 	}
-	else {
-		write_changes();
-	}
-	$backtrace = debug_backtrace();
-	$temp = '';
-	if (isset($backtrace[2])) $temp .= basename($backtrace[2]["file"])." (".$backtrace[2]["line"].")";
-	if (isset($backtrace[1])) $temp .= basename($backtrace[1]["file"])." (".$backtrace[1]["line"].")";
-	if (isset($backtrace[0])) $temp .= basename($backtrace[0]["file"])." (".$backtrace[0]["line"].")";
-	$action=WT_SCRIPT_NAME;
-	if (!empty($_REQUEST['action'])) $action .= ' '.$_REQUEST['action'];
-	AddToChangeLog($action.' '.$temp." Deleting gedcom record $gid ->" . WT_USER_NAME ."<-");
-	return true;
 }
 
 //-- this function will check a GEDCOM record for valid gedcom format
@@ -474,34 +417,6 @@ function remove_subline($oldrecord, $linenum) {
 }
 
 /**
-* Undo a change
-* this function will undo a change in the gedcom file
-* @param string $cid the change id of the form gid_gedcom
-* @param int $index the index of the change to undo
-* @return boolean true if undo successful
-*/
-function undo_change($cid, $index) {
-	global $fcontents, $pgv_changes, $manual_save;
-
-	if (isset($pgv_changes[$cid])) {
-		$changes = $pgv_changes[$cid];
-		$change = $changes[$index];
-
-		if ($index==0) unset($pgv_changes[$cid]);
-		else {
-			for($i=$index; $i<count($pgv_changes[$cid]); $i++) {
-				unset($pgv_changes[$cid][$i]);
-			}
-			if (count($pgv_changes[$cid])==0) unset($pgv_changes[$cid]);
-		}
-		AddToChangeLog("Undoing change $cid - $index ".$change["type"]." ->" . WT_USER_NAME ."<-");
-		if (!isset($manual_save) || $manual_save==false) write_changes();
-		return true;
-	}
-	return false;
-}
-
-/**
 * prints a form to add an individual or edit an individual's name
 *
 * @param string $nextaction the next action the edit_interface.php file should take after the form is submitted
@@ -545,18 +460,12 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	// Inherit surname from parents, spouse or child
 	if (empty($namerec)) {
 		// We'll need the parent's name to set the child's surname
-		if (isset($pgv_changes[$famid."_".WT_GEDCOM]))
-			$famrec=find_updated_record($famid, WT_GED_ID);
-		else
-			$famrec=find_family_record($famid, WT_GED_ID);
+		$famrec=find_gedcom_record($famid, WT_GED_ID, true);
 		$parents=find_parents_in_record($famrec);
 		$father_name=get_gedcom_value('NAME', 0, find_person_record($parents['HUSB'], WT_GED_ID));
 		$mother_name=get_gedcom_value('NAME', 0, find_person_record($parents['WIFE'], WT_GED_ID));
 		// We'll need the spouse/child's name to set the spouse/parent's surname
-		if (isset($pgv_changes[$pid."_".WT_GEDCOM]))
-			$prec=find_updated_record($pid, WT_GED_ID);
-		else
-			$prec=find_person_record($pid, WT_GED_ID);
+		$prec=find_gedcom_record($pid, WT_GED_ID, true);
 		$indi_name=get_gedcom_value('NAME', 0, $prec);
 		// Different cultures do surnames differently
 		switch ($SURNAME_TRADITION) {
@@ -1156,7 +1065,7 @@ function print_addnewsource_link($element_id) {
 */
 function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose='', $rowDisplay=true) {
 	global $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY, $TEMPLE_CODES;
-	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION, $pgv_changes;
+	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $tabkey, $STATUS_CODES, $SPLIT_PLACES, $pid, $linkToID;
 	global $bdm, $PRIVACY_BY_RESN;
@@ -2172,7 +2081,7 @@ function handle_updates($newged, $levelOverride="no") {
 		//-- update external note records first
 		if (($islink[$j])&&($tag[$j]=="NOTE")) {
 			if (empty($NOTE[$text[$j]])) {
-				delete_gedrec($text[$j]);
+				delete_gedrec($text[$j], WT_GED_ID);
 				$text[$j] = '';
 			} else {
 				$noterec = find_gedcom_record($text[$j], WT_GED_ID);
@@ -2182,7 +2091,7 @@ function handle_updates($newged, $levelOverride="no") {
 				if (WT_DEBUG) {
 					echo "<pre>$newnote</pre>";
 				}
-				replace_gedrec($text[$j], $newnote);
+				replace_gedrec($text[$j], WT_GED_ID, $newnote);
 			}
 		} //-- end of external note handling code
 */
@@ -2262,23 +2171,17 @@ function handle_updates($newged, $levelOverride="no") {
 * @return  bool success or failure
 */
 function linkMedia($mediaid, $linktoid, $level=1, $chan=true) {
-	global $pgv_changes;
-
 	if (empty($level)) $level = 1;
 	if ($level!=1) return false; // Level 2 items get linked elsewhere
 	// find Indi, Family, or Source record to link to
-	if (isset($pgv_changes[$linktoid."_".WT_GEDCOM])) {
-		$gedrec = find_updated_record($linktoid, WT_GED_ID);
-	} else {
-		$gedrec = find_gedcom_record($linktoid, WT_GED_ID);
-	}
-
+	$gedrec = find_gedcom_record($linktoid, WT_GED_ID, true);
+	
 	//-- check if we are re-editing an unaccepted link that is not already in the DB
 	if (strpos($gedrec, "1 OBJE @$mediaid@")!==false) return false;
 
 	if ($gedrec) {
 		$newrec = $gedrec."\n1 OBJE @".$mediaid."@";
-		replace_gedrec($linktoid, $newrec, $chan);
+		replace_gedrec($linktoid, WT_GED_ID, $newrec, $chan);
 		return true;
 	} else {
 		echo "<br /><center>", i18n::translate('No such ID exists in this GEDCOM file.'), "</center>";
@@ -2298,16 +2201,10 @@ function linkMedia($mediaid, $linktoid, $level=1, $chan=true) {
 * @return  bool success or failure
 */
 function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
-	global $pgv_changes;
-
 	if (empty($level)) $level = 1;
 	if ($level!=1) return false; // Level 2 items get unlinked elsewhere (maybe ??)
 	// find Indi, Family, or Source record to unlink from
-	if (isset($pgv_changes[$linktoid."_".WT_GEDCOM])) {
-		$gedrec = find_updated_record($linktoid, WT_GED_ID);
-	} else {
-		$gedrec = find_gedcom_record($linktoid, WT_GED_ID);
-	}
+	$gedrec = find_gedcom_record($linktoid, WT_GED_ID, true);
 	
 	//-- when deleting/unlinking a media link
 	//-- $linenum comes as an OBJE and the $mediaid to delete should be set
@@ -2316,7 +2213,7 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 	}else{
 		$newged = remove_subline($gedrec, $linenum);
 	}
-	replace_gedrec($linktoid, $newged, $chan);
+	replace_gedrec($linktoid, WT_GED_ID, $newged, $chan);
 }
 
 
@@ -2618,7 +2515,6 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 * @return boolean true or false based on the successful completion of the deletion
 */
 function delete_person($pid, $gedrec='') {
-	// NOTE: $pgv_changes isn't a global.  Making it global appears to cause problems.
 	if (WT_DEBUG) {
 		phpinfo(INFO_VARIABLES);
 		echo "<pre>$gedrec</pre>";
@@ -2630,8 +2526,7 @@ function delete_person($pid, $gedrec='') {
 		$ct = preg_match_all("/1 FAM. @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 		for($i=0; $i<$ct; $i++) {
 			$famid = $match[$i][1];
-			if (!isset($pgv_changes[$famid."_".WT_GEDCOM])) $famrec = find_gedcom_record($famid, WT_GED_ID);
-			else $famrec = find_updated_record($famid, WT_GED_ID);
+			$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 			if (!empty($famrec)) {
 				$lines = explode("\n", $famrec);
 				$newfamrec = '';
@@ -2653,24 +2548,21 @@ function delete_person($pid, $gedrec='') {
 					for ($j=0; $j<$pt; $j++) {
 						$xref = $pmatch[$j][1];
 						if($xref!=$pid) {
-							if (!isset($pgv_changes[$xref."_".WT_GEDCOM])) $indirec = find_gedcom_record($xref, WT_GED_ID);
-							else $indirec = find_updated_record($xref, WT_GED_ID);
+							$indirec = find_gedcom_record($xref, WT_GED_ID, true);
 							$indirec = preg_replace("/1.*@$famid@.*/", '', $indirec);
 							if (WT_DEBUG) {
 								echo "<pre>$indirec</pre>";
 							}
-							replace_gedrec($xref, $indirec);
+							replace_gedrec($xref, WT_GED_ID, $indirec);
 						}
 					}
-					$success = $success && delete_gedrec($famid);
+					delete_gedrec($famid, WT_GED_ID);
 				}
-				else $success = $success && replace_gedrec($famid, $newfamrec);
+				else replace_gedrec($famid, WT_GED_ID, $newfamrec);
 			}
 		}
-		if ($success) {
-			$success = $success && delete_gedrec($pid);
-		}
-		return $success;
+		delete_gedrec($pid, WT_GED_ID);
+		return true;
 	}
 	return false;
 }
@@ -2682,7 +2574,6 @@ function delete_person($pid, $gedrec='') {
 * @return boolean true or false based on the successful completion of the deletion
 */
 function delete_family($pid, $gedrec='') {
-	// NOTE: $pgv_changes isn't a global.  Making it global appears to cause problems.
 	if (empty($gedrec)) $gedrec = find_family_record($pid, WT_GED_ID);
 	if (!empty($gedrec)) {
 		$success = true;
@@ -2693,8 +2584,7 @@ function delete_family($pid, $gedrec='') {
 			if (WT_DEBUG) {
 				echo $type, ' ', $id, ' ';
 			}
-			if (!isset($pgv_changes[$id."_".WT_GEDCOM])) $indirec = find_gedcom_record($id, WT_GED_ID);
-			else $indirec = find_updated_record($id, WT_GED_ID);
+			$indirec = find_gedcom_record($id, WT_GED_ID, true);
 			if (!empty($indirec)) {
 				$lines = explode("\n", $indirec);
 				$newindirec = '';
@@ -2710,13 +2600,13 @@ function delete_family($pid, $gedrec='') {
 						$lastlevel=$level;
 					}
 				}
-				$success = $success && replace_gedrec($id, $newindirec);
+				replace_gedrec($id, WT_GED_ID, $newindirec);
 			}
 		}
 		if ($success) {
-			$success = $success && delete_gedrec($pid);
+			delete_gedrec($pid, WT_GED_ID);
 		}
-		return $success;
+		return true;
 	}
 	return false;
 }

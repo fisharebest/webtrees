@@ -87,7 +87,7 @@ class LocalClient extends ServiceClient {
 				$localrec = $this->UpdateFamily($localrec,$gedrec);
 				//-- restore the correct id since it may have been changed by the UpdateFamily method
 				$localrec = preg_replace("/0 @(.*)@/", "0 @$pid@", $localrec);
-				replace_gedrec($pid,$localrec);
+				replace_gedrec($pid, WT_GED_ID, $localrec);
 			}
 		}
 		return $localrec;

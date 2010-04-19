@@ -64,13 +64,13 @@ class NoteControllerRoot extends BaseController {
 	* initialize the controller
 	*/
 	function init() {
-		global $CONTACT_EMAIL, $GEDCOM, $pgv_changes;
+		global $CONTACT_EMAIL;
 
 		$this->nid = safe_GET_xref('nid');
 
 		$noterec = find_other_record($this->nid, WT_GED_ID);
 
-		if (isset($pgv_changes[$this->nid."_".WT_GEDCOM])){
+		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
 			$noterec = "0 @".$this->nid."@ NOTE\n";
 		} else if (!$noterec) {
 			return false;
@@ -94,20 +94,44 @@ class NoteControllerRoot extends BaseController {
 				$this->addFavorite();
 				break;
 			case "accept":
-				$this->acceptChanges();
+				if (WT_USER_CAN_ACCEPT) {
+					accept_all_changes($this->nid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$indirec = find_other_record($this->nid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->note = new Note($indirec);
+				}
 				break;
 			case "undo":
-				$this->note->undoChange();
+				if (WT_USER_CAN_ACCEPT) {
+					reject_all_changes($this->nid, WT_GED_ID);
+					$this->show_changes=false;
+					$this->accept_success=true;
+					$indirec = find_other_record($this->nid, WT_GED_ID);
+					//-- check if we just deleted the record and redirect to index
+					if (empty($indirec)) {
+						header("Location: index.php?ctype=gedcom");
+						exit;
+					}
+					$this->note = new Note($indirec);
+				}
 				break;
 		}
 
 		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && isset($pgv_changes[$this->nid."_".$GEDCOM])) {
+		if ($this->show_changes && WT_USER_CAN_EDIT)
 			$newrec = find_updated_record($this->nid, WT_GED_ID);
-			$this->diffnote = new Note($newrec);
-			$this->diffnote->setChanged(true);
-			$noterec = $newrec;
+			if (!is_null($newrec)) {
+				$this->diffnote = new Note($newrec);
+				$this->diffnote->setChanged(true);
+				$noterec = $newrec;
+			}
 		}
 
 		if ($this->note->canDisplayDetails()) {
@@ -141,26 +165,6 @@ class NoteControllerRoot extends BaseController {
 			}
 		}
 	}
-	/**
-	* Accept any edit changes into the database
-	* Also update the indirec we will use to generate the page
-	*/
-	function acceptChanges() {
-		global $GEDCOM;
-
-		if (!WT_USER_CAN_ACCEPT) return;
-		if (accept_changes($this->nid."_".$GEDCOM)) {
-			$this->show_changes=false;
-			$this->accept_success=true;
-			$indirec = find_other_record($this->nid, WT_GED_ID);
-			//-- check if we just deleted the record and redirect to index
-			if (empty($indirec)) {
-				header("Location: index.php?ctype=gedcom");
-				exit;
-			}
-			$this->note = new Note($indirec);
-		}
-	}
 
 	/**
 	* get the title for this page
@@ -186,7 +190,7 @@ class NoteControllerRoot extends BaseController {
 	* @return Menu
 	*/
 	function &getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $pgv_changes;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
@@ -222,8 +226,7 @@ class NoteControllerRoot extends BaseController {
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 		$menu->addSubmenu($submenu);
 
-		if (isset($pgv_changes[$this->nid.'_'.$GEDCOM]))
-		{
+		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
 			// edit_note / separator
 			$submenu = new Menu();
 			$submenu->isSeparator();

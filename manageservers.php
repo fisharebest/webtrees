@@ -165,8 +165,8 @@ if ($action=='addServer') {
 			if (empty($sid) || PEAR::isError($sid)) {
 				$errorServer = i18n::translate('Failed to authenticate to remote site');
 			} else {
-				$serverID = append_gedrec($gedcom_string);
-				accept_changes($serverID."_".$GEDCOM);
+				$serverID = append_gedrec($gedcom_string, WT_GED_ID);
+				accept_all_changes($serverID, WT_GED_ID);
 				$remoteServers = get_server_list(); // refresh the list
 			}
 		}
@@ -186,11 +186,7 @@ if ($action=='deleteServer') {
 			$errorDelete = i18n::translate('The remote server could not be removed because its Connections list is not empty.');
 		} else {
 			// No references exist:  it's OK to delete this source
-			if (delete_gedrec($sid)) {
-				accept_changes($sid."_".$GEDCOM);
-			} else {
-				$errorDelete = i18n::translate('The remote server could not be removed.');
-			}
+			delete_gedrec($sid, WT_GED_ID);
 		}
 	}
 

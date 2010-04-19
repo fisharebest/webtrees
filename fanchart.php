@@ -187,8 +187,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 		while ($sosa >= $p2) {
 			$pid=$treeid[$sosa];
 			if (!empty($pid)) {
-				$indirec=find_person_record($pid, WT_GED_ID);
-				if (!$indirec) $indirec = find_updated_record($pid, WT_GED_ID);
+				$indirec=find_gedcom_record($pid, WT_GED_ID, WT_USER_CAN_EDIT);
 
 				if ($sosa%2) $bg=$bgcolorF;
 				else $bg=$bgcolorM;

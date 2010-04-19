@@ -350,8 +350,8 @@ function xref_change($tag="RIN")
 	$ct = preg_match_all("/0 @(.*)@ INDI/", $fcontents, $match, PREG_SET_ORDER);
 	for($i=0; $i<$ct; $i++) {
 		$xref = trim($match[$i][1]);
-		$indirec = find_updated_record($xref, $ged_id);
-		if ($indirec!==false) {
+		$indirec = find_gedcom_record($xref, $ged_id, true);
+		if ($indirec) {
 			$rt = preg_match("/1 NAME (.*)/", $indirec, $rmatch);
 			if($rt>0)
 			{

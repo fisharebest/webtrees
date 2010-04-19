@@ -101,7 +101,7 @@
 	}
 	// $xref = "Test";
 	if ($pid_array != '') {
-		$xref = append_gedrec($newgedrec);
+		$xref = append_gedrec($newgedrec, WT_GED_ID);
 	} else {
 		$xref="none";
 		echo "<br /><br /><br />";

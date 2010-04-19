@@ -41,8 +41,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	print "&nbsp --- &nbsp;" . i18n::translate('Click a row, then drag-and-drop to re-order media ');
 
 	global $MULTI_MEDIA, $TBLPREFIX, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
-	global $pgv_changes;
-	global $MEDIATYPE, $pgv_changes;
+	global $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
 	global $edit, $tabno ;
@@ -65,11 +64,10 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 <ul id="reorder_media_list">
 
 	<?php
-	  print "\n";
+	print "\n";
 
-      if (!showFact("OBJE", $pid)) return false;
-      if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) $gedrec = find_gedcom_record($pid, WT_GED_ID);
-      else $gedrec = find_updated_record($pid, WT_GED_ID);
+	if (!showFact("OBJE", $pid)) return false;
+	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 
 	//related=true means show related items
 	$related="true";

@@ -361,7 +361,7 @@ function AddToSearchLog($log_message, $geds) {
 				WT_USER_ID ? WT_USER_ID : null,
 				$ged_id
 			));
-			break;
+			continue 2;
 		case 'yearly':
 			$logfile=get_site_setting('INDEX_DIRECTORY').'srch-'.$ged_name.date('Y').'.log';
 			break;
@@ -397,11 +397,13 @@ function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 
 	if ($ged_id!=WT_GED_ID) {
 		require get_config_file($ged_id); // Note: load locally, not globally
+	} else {
+		global $CHANGELOG_CREATE;
 	}
 
 	switch ($CHANGELOG_CREATE) {
 	case 'none':
-		break;
+		return;
 	case 'database':
 		WT_DB::prepare(
 			"INSERT INTO {$TBLPREFIX}log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('change', ?, ?, ?, ?)"
@@ -411,7 +413,7 @@ function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 			WT_USER_ID ? WT_USER_ID : null,
 			$ged_id
 		));
-		break;
+		return;
 	case 'yearly':
 		$logfile=get_site_setting('INDEX_DIRECTORY').'ged-'.$ged_name.date('Y').'.log';
 		break;
@@ -426,7 +428,7 @@ function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 		break;
 	}
 	$LogString = preg_replace('/<\?.*\?>/', "*** CODE DETECTED ***", $log_message);
-	$logline = date("d.m.Y H:i:s") . " - " . $REMOTE_ADDR . " - " . $LogString . "\r\n";
+	$logline = date("d.m.Y H:i:s") . " - " . $_SERVER['REMOTE_ADDR'] . " - " . $LogString . "\r\n";
 	$fp=fopen($logfile, 'a');
 	flock($fp, 2);
 	fputs($fp, $logline);

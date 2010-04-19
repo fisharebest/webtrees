@@ -62,11 +62,7 @@ print_simple_header(i18n::translate('Add a new Media item'));
 $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {
-	if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) {
-		$gedrec = find_media_record($pid, WT_GED_ID);
-	} else {
-		$gedrec = find_updated_record($pid, WT_GED_ID);
-	}
+	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 	$disp = displayDetailsById($pid, "OBJE");
 }
 if ($action=="update" || $action=="newentry") {
@@ -432,7 +428,7 @@ if ($action=="newentry") {
 		require_once WT_ROOT.'includes/classes/class_media.php';
 		$media_obje = new Media($newged);
 		$mediaid = Media::in_obje_list($media_obje);
-		if (!$mediaid) $mediaid = append_gedrec($newged, $linktoid);
+		if (!$mediaid) $mediaid = append_gedrec($newged, WT_GED_ID);
 		if ($mediaid) {
 			AddToChangeLog("Media ID ".$mediaid." successfully added.");
 			if ($linktoid!="") $link = linkMedia($mediaid, $linktoid, $level);
@@ -601,11 +597,7 @@ if ($action == "update") {
 		$text = array_merge(array($folder.$filename), $text);
 
 		if (!empty($pid)) {
-			if (!isset($pgv_changes[$pid."_".WT_GEDCOM])) {
-				$gedrec = find_gedcom_record($pid, WT_GED_ID);
-			} else {
-				$gedrec = find_updated_record($pid, WT_GED_ID);
-			}
+			$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
 		}
 		$newrec = "0 @$pid@ OBJE\n";
 		$newrec = handle_updates($newrec);
@@ -616,9 +608,7 @@ if ($action == "update") {
 		//-- look for the old record media in the file
 		//-- if the old media record does not exist that means it was
 		//-- generated at import and we need to append it
-		if (replace_gedrec($pid, $newrec, $update_CHAN)) {
-			AddToChangeLog("Media ID ".$pid." successfully updated.");
-		}
+		replace_gedrec($pid, WT_GED_ID, $newrec, $update_CHAN);
 
 		if ($pid && $linktoid!="") {
 			$link = linkMedia($pid, $linktoid, $level);
@@ -634,7 +624,7 @@ if ($action == "update") {
 
 // **** begin action "delete"
 if ($action=="delete") {
-	if (delete_gedrec($pid)) {
+	if (delete_gedrec($pid, WT_GED_ID)) {
 		AddToChangeLog("Media ID ".$pid." successfully deleted.");
 		print i18n::translate('Update successful');
 	}

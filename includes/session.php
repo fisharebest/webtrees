@@ -114,9 +114,9 @@ define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);
 $start_time=microtime(true);
 
 ini_set('arg_separator.output', '&amp;');
-ini_set('error_reporting', 0);
+ini_set('error_reporting', E_ALL | E_STRICT);
 ini_set('display_errors', '1');
-error_reporting(0);
+error_reporting(E_ALL | E_STRICT);
 
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
@@ -464,13 +464,6 @@ if (WT_SCRIPT_NAME!='install.php' && WT_SCRIPT_NAME!='help_text.php') {
 
 	if (!isset($_SESSION['timediff'])) {
 		$_SESSION['timediff'] = 0;
-	}
-
-	//-- load any editing changes
-	if (WT_USER_CAN_EDIT && file_exists("{$INDEX_DIRECTORY}pgv_changes.php")) {
-		require $INDEX_DIRECTORY.'pgv_changes.php';
-	} else {
-		$pgv_changes = array();
 	}
 
 	if (empty($LOGIN_URL)) {

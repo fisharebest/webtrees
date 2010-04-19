@@ -817,18 +817,15 @@ class Person extends GedcomRecord {
 	* @return Person
 	*/
 	function &getUpdatedPerson() {
-		global $GEDCOM, $pgv_changes;
 		if ($this->getChanged()) {
 			return null;
 		}
 		if (WT_USER_CAN_EDIT && $this->canDisplayDetails()) {
-			if (isset($pgv_changes[$this->xref.'_'.$GEDCOM])) {
-				$newrec = find_updated_record($this->xref, $this->ged_id);
-				if (!empty($newrec)) {
-					$new = new Person($newrec);
-					$new->setChanged(true);
-					return $new;
-				}
+			$newrec = find_updated_record($this->xref, $this->ged_id);
+			if (!is_null($newrec)) {
+				$new = new Person($newrec);
+				$new->setChanged(true);
+				return $new;
 			}
 		}
 		return null;
