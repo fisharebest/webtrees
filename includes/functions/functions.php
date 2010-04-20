@@ -2301,12 +2301,25 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			}
 			break;
 		default:
-			switch ($last) {
-			case 'bro': return i18n::translate('great x%d uncle',      $up-1);
-			case 'sis': return i18n::translate('great x%d aunt',       $up-1);
-			case 'sib': return i18n::translate('great x%d aunt/uncle', $up-1);
+			// Different languages have different rules for naming generations.
+			// An english great x12 uncle is a danish great x10 uncle.
+			//
+			// Need to find out which languages use which rules.
+			switch (WT_LOCALE) {
+			case 'da':
+				switch ($last) {
+				case 'bro': return i18n::translate('great x%d uncle', $up-4);
+				case 'sis': return i18n::translate('great x%d aunt', $up-4);
+				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-4);
+				}
+			default:
+				switch ($last) {
+				case 'bro': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
+				            return i18n::translate('great x%d uncle', $up-2);
+				case 'sis': return i18n::translate('great x%d aunt', $up-2);
+				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-2);
+				}
 			}
-			break;
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
@@ -2369,7 +2382,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				}
 			default:
 				switch ($last) {
-				case 'mot': return i18n::translate('great x%d grandmother', $up-2);
+				case 'mot': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
+				            return i18n::translate('great x%d grandmother', $up-2);
 				case 'fat': return i18n::translate('great x%d grandfather', $up-2);
 				case 'par': return i18n::translate('great x%d grandparent', $up-2);
 				}
@@ -2423,12 +2437,26 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			}
 			break;
 		default:
-			switch ($last) {
-			case 'son': return i18n::translate('great x%d grandson', $up-2);
-			case 'dau': return i18n::translate('great x%d granddaughter', $up-2);
-			case 'chi': return i18n::translate('great x%d grandchild', $up-2);
+			// Different languages have different rules for naming generations.
+			// An english great x12 grandson is a danish great x11 grandson.
+			//
+			// Need to find out which languages use which rules.
+			switch (WT_LOCALE) {
+			case 'da':
+				switch ($last) {
+				case 'mot': return i18n::translate('great x%d grandson',      $up-3);
+				case 'fat': return i18n::translate('great x%d granddaughter', $up-3);
+				case 'par': return i18n::translate('great x%d grandchild',    $up-3);
+				}
+			default:
+				switch ($last) {
+					
+				case 'son': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
+				            return i18n::translate('great x%d grandson',      $up-2);
+				case 'dau': return i18n::translate('great x%d granddaughter', $up-2);
+				case 'chi': return i18n::translate('great x%d grandchild',    $up-2);
+				}
 			}
-			break;
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
