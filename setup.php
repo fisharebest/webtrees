@@ -136,7 +136,7 @@ if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	if (!is_readable(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	 	echo '<p class="bad">', i18n::translate('The file <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
 		$error=true;
-	} elseif (is_writable(WT_DATA_DIR.WT_CONFIG_FILE)) {
+	} elseif (is_writable(WT_DATA_DIR.WT_CONFIG_FILE) && DIRECTORY_SEPARATOR=='/') {
 		echo '<p class="indifferent">', i18n::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
 		$warning=true;
 	} else {
@@ -1013,10 +1013,17 @@ try {
 		"('SMTP_FROM_NAME',                  '".addcslashes($_POST['smtpfrom'], "'")."')"
 	);
 	echo
-		'<p>', i18n::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.', WT_CONFIG_FILE, WT_DATA_DIR), '</p>',
-		'<p>', i18n::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br/>This normally means setting the permissions to "777" or "drwxrwxrwx".', WT_DATA_DIR), '</p>',
-		'<p>', i18n::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br/>This normally means setting the permissions to "444" or "-r--r--r--".', WT_DATA_DIR.WT_CONFIG_FILE), '</p>',
-		'<p>', i18n::translate('<b>webtrees</b> will check the permissions in the next step.'), '</p>',
+		'<p>', i18n::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.', WT_CONFIG_FILE, realpath(WT_DATA_DIR)), '</p>';
+	if (DIRECTORY_SEPARATOR=='/') {
+		// These hints only apply to UNIX based servers.
+		// For Windows/XAMPP, defaults are fine
+		// For Windows/IIS, the defaults are probably fine.  Anyone confirm?
+		echo
+			'<p>', i18n::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br/>This normally means setting the permissions to "777" or "drwxrwxrwx".', WT_DATA_DIR), '</p>',
+			'<p>', i18n::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br/>This normally means setting the permissions to "444" or "-r--r--r--".', WT_DATA_DIR.WT_CONFIG_FILE), '</p>',
+			'<p>', i18n::translate('<b>webtrees</b> will check the permissions in the next step.'), '</p>';
+	}
+	echo
 		'<input type="hidden" name="action" value="download">',
 		'<input type="submit" value="'. /* I18N: %s is a filename */ i18n::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.continue.continue.disabled=false; return true;">',
 		'</form>',
