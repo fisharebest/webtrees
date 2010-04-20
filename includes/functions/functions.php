@@ -364,7 +364,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 			return;
 		}
 		$fmt_msg="\n<br />ERROR {$errno}: {$errstr}<br />\n";
-		$log_msg="ERROR {$errno}: {$errstr};\n";
+		$log_msg="ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
 		// Possibly calling it generates an error, which causes infinite recursion??
 		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by")===false) {
@@ -376,7 +376,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 			for ($i=0; $i<$num; $i++) {
 				if ($i==0) {
 					$fmt_msg.="0 Error occurred on ";
-					$log_msg.="0 Error occurred on ";
+					$log_msg.="\n0 Error occurred on ";
 				} else {
 					$fmt_msg.="{$i} called from ";
 					$log_msg.="{$i} called from ";
@@ -390,7 +390,6 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 					$log_msg.=" in function ".$backtrace[$i+1]['function'];
 				}
 				$fmt_msg.="<br />\n";
-				$log_msg.="\n";
 			}
 		}
 		echo $fmt_msg;
