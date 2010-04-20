@@ -69,7 +69,7 @@ class RepositoryControllerRoot extends BaseController {
 
 		$repositoryrec = find_other_record($this->rid, WT_GED_ID);
 
-		if ( (find_updated_record($this->rid, WT_GED_ID)!==null) {
+		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			$repositoryrec = "0 @".$this->rid."@ REPO\n";
 		} else if (!$repositoryrec) {
 			return false;
