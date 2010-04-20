@@ -725,16 +725,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}mutex (".
-		" mx_id     INTEGER AUTO_INCREMENT NOT NULL,".
-		" mx_name   VARCHAR(255)               NULL,".
-	 	" mx_thread VARCHAR(255)               NULL,".
-		" mx_time   INTEGER                    NULL,".
-		" PRIMARY KEY     (mx_id),".
-		"         KEY ix1 (mx_name)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}individuals (".
 		" i_id     VARCHAR(20)         NOT NULL,".
 		" i_file   INTEGER             NOT NULL,".

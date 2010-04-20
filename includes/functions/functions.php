@@ -38,7 +38,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_mutex.php';
 require_once WT_ROOT.'includes/classes/class_media.php';
 require_once WT_ROOT.'includes/functions/functions_utf-8.php';
 

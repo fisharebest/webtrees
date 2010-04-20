@@ -1828,7 +1828,6 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("UPDATE {$TBLPREFIX}log SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($ged_id));
 
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}blocks              WHERE b_username=?")->execute(array($ged   ));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}mutex               WHERE mx_name   =?")->execute(array($ged   ));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}news                WHERE n_username=?")->execute(array($ged   ));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}dates               WHERE d_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}families            WHERE f_file    =?")->execute(array($ged_id));

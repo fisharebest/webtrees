@@ -39,7 +39,6 @@ define('WT_FUNCTIONS_IMPORT_PHP', '');
 
 require_once WT_ROOT.'includes/index_cache.php';
 require_once WT_ROOT.'includes/classes/class_media.php';
-require_once WT_ROOT.'includes/classes/class_mutex.php';
 require_once WT_ROOT.'includes/functions/functions_lang.php';
 require_once WT_ROOT.'includes/functions/functions_export.php';
 
