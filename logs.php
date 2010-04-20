@@ -90,7 +90,7 @@ $sql1=
 	" LEFT JOIN {$TBLPREFIX}gedcom USING (gedcom_id)"; // gedcom may be deleted
 
 $sql2=
-	"SELECT log_time, log_type, log_message, ip_address, IFNULL(user_name, '<deleted>') AS user_name, IFNULL(gedcom_name, '<deleted>') AS gedcom_name".
+	"SELECT log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name".
 	" FROM {$TBLPREFIX}log".
 	" LEFT JOIN {$TBLPREFIX}user   USING (user_id)".   // user may be deleted
 	" LEFT JOIN {$TBLPREFIX}gedcom USING (gedcom_id)"; // gedcom may be deleted
