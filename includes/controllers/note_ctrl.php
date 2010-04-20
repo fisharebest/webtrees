@@ -125,7 +125,7 @@ class NoteControllerRoot extends BaseController {
 
 		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT)
+		if ($this->show_changes && WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->nid, WT_GED_ID);
 			if (!is_null($newrec)) {
 				$this->diffnote = new Note($newrec);
