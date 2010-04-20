@@ -346,6 +346,8 @@ function AddToLog($log_message, $log_type='error') {
 function AddToSearchLog($log_message, $geds) {
 	global $TBLPREFIX;
 
+	global $INDEX_DIRECTORY; // usused, but needed to allow require get_config_file($ged_id)
+
 	$all_geds=get_all_gedcoms();
 	foreach ($geds as $ged_id=>$ged_name) {
 		require get_config_file($ged_id); // Note: load locally, not globally
