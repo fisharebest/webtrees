@@ -120,13 +120,13 @@ if (safe_GET('export', 'yes')=='yes') {
 
 if (safe_GET('delete', 'yes')=='yes') {
 	$sql3=
-		"DELETE FROM {$TBLPREFIX}log".
+		"DELETE {$TBLPREFIX}log FROM {$TBLPREFIX}log".
 		" LEFT JOIN {$TBLPREFIX}user   USING (user_id)".   // user may be deleted
 		" LEFT JOIN {$TBLPREFIX}gedcom USING (gedcom_id)"; // gedcom may be deleted
 	if ($query) {
 		$sql3.=" WHERE ".implode(' AND ', $query);
 	}
-	WT_DB::prepare($sql3)->execute($args)->fetchAll();
+	WT_DB::prepare($sql3)->execute($args);
 }
 
 $total_rows=WT_DB::prepare($sql1)->execute($args)->fetchOne();
