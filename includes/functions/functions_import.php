@@ -1232,28 +1232,6 @@ function import_max_ids($ged_id, $MAX_IDS) {
 	}
 }
 
-/**
-* read the contents of a gedcom file
-*
-* opens a gedcom file and reads the contents into the <var>$fcontents</var> global string
-*/
-function read_gedcom_file() {
-	global $fcontents;
-
-	if (WT_GED_ID) {
-		$path=get_gedcom_setting(WT_GED_ID, 'path');
-		//-- only allow one thread to write the file at a time
-		$mutex = new Mutex(WT_GEDCOM);
-		$mutex->Wait();
-		$fp = fopen($path, "r");
-		$fcontents = fread($fp, filesize($path));
-		fclose($fp);
-		$mutex->Release();
-	} else {
-		$fcontents = "";
-	}
-}
-
 // Accept all pending changes for a specified record
 function accept_all_changes($xref, $ged_id) {
 	$changes=WT_DB::prepare(
