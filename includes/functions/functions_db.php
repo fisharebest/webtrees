@@ -479,9 +479,6 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 		// is clean, easy and works.
 		$list[]=clone $person;
 	}
-	if (!$DB_UTF8_COLLATION) {
-		usort($list, array('GedcomRecord', 'Compare'));
-	}
 	return $list;
 }
 
