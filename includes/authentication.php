@@ -383,7 +383,7 @@ function AddToSearchLog($log_message, $geds) {
 		} else {
 			$logline.='Searchtype: Gedcom<br />';
 		}
-		$logline.=$LogString.'<br /><br />'.WT_EOL;
+		$logline.=nl2br($log_message).'<br /><br />'.WT_EOL;
 		$fp=fopen($logfile, 'a');
 		flock($fp, 2);
 		fputs($fp, $logline);

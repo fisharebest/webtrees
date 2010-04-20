@@ -206,7 +206,7 @@ require WT_ROOT.'includes/functions/functions_name.php';
 require WT_ROOT.'includes/functions/functions_db.php';
 require WT_ROOT.'includes/classes/class_wt_db.php';
 
-set_error_handler('pgv_error_handler');
+set_error_handler('wt_error_handler');
 
 // Connect to the database
 try {

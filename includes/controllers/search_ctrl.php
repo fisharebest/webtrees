@@ -401,7 +401,7 @@ class SearchControllerRoot extends BaseController {
 		//-- perform the search
 		if ($query_terms && $this->sgeds) {
 			// Write a log entry
-			$logstring = "Type: General<br />Query: ".$this->query;
+			$logstring = "Type: General\nQuery: ".$this->query;
 			AddToSearchlog($logstring, $this->sgeds);
 
 			// Search the indi's
@@ -615,15 +615,15 @@ class SearchControllerRoot extends BaseController {
 	 */
 	function SoundexSearch() {
 		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && (count($this->sgeds) > 0)) {
-			$logstring = "Type: Soundex<br />";
+			$logstring = "Type: Soundex\n";
 			if (!empty ($this->lastname))
-			$logstring .= "Last name: ".$this->lastname."<br />";
+			$logstring .= "Last name: ".$this->lastname."\n";
 			if (!empty ($this->firstname))
-			$logstring .= "First name: ".$this->firstname."<br />";
+			$logstring .= "First name: ".$this->firstname."\n";
 			if (!empty ($this->place))
-			$logstring .= "Place: ".$this->place."<br />";
+			$logstring .= "Place: ".$this->place."\n";
 			if (!empty ($this->year))
-			$logstring .= "Year: ".$this->year."<br />";
+			$logstring .= "Year: ".$this->year."\n";
 			AddToSearchlog($logstring, $this->sgeds);
 
 			if ($this->sgeds) {

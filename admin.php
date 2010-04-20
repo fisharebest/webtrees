@@ -253,7 +253,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		<tr>
 			<td class="optionbox width50"><a
 				href="useradmin.php"><?php echo i18n::translate('User administration');?></a><?php echo help_link('help_useradmin.php'); ?></td>
-			<td class="optionbox width50">&nbsp;</td>
+				<td class="optionbox width50"><a href="logs.php"><?php echo i18n::translate('Logs'); ?></a><?php echo help_link('logs.php'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a

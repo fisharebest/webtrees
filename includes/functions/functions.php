@@ -349,13 +349,13 @@ function file_is_writeable($file) {
 }
 
 /**
- * PGV Error Handling function
+ * Webtrees Error Handling function
  *
  * This function will be called by PHP whenever an error occurs.  The error handling
  * is set in the session.php
  * @see http://us2.php.net/manual/en/function.set-error-handler.php
  */
-function pgv_error_handler($errno, $errstr, $errfile, $errline) {
+function wt_error_handler($errno, $errstr, $errfile, $errline) {
 	if ((error_reporting() > 0)&&($errno<2048)) {
 		if (WT_ERROR_LEVEL==0) {
 			return;
@@ -364,7 +364,7 @@ function pgv_error_handler($errno, $errstr, $errfile, $errline) {
 			return;
 		}
 		$fmt_msg="\n<br />ERROR {$errno}: {$errstr}<br />\n";
-		$log_msg="ERROR {$errno}: {$errstr}; ";
+		$log_msg="ERROR {$errno}: {$errstr};\n";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
 		// Possibly calling it generates an error, which causes infinite recursion??
 		if ($errno<16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by")===false) {
@@ -390,6 +390,7 @@ function pgv_error_handler($errno, $errstr, $errfile, $errline) {
 					$log_msg.=" in function ".$backtrace[$i+1]['function'];
 				}
 				$fmt_msg.="<br />\n";
+				$log_msg.="\n";
 			}
 		}
 		echo $fmt_msg;

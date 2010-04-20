@@ -3179,6 +3179,11 @@ case 'login_register.php':
 	$text=i18n::translate('The amount of data that can be publicly viewed on this website may be limited due to applicable law concerning privacy protection. Many people do not want their personal data publicly available on the Internet. Personal data could be misused for spam or identity theft.<br /><br />Access to this site is permitted to every visitor who has a user account. After the administrator has verified and approved your account application, you will be able to login.<br /><br />If Relationship Privacy has been activated you will only be able to access your own close relatives\' private information after logging in. The administrator can also allow database editing for certain users, so that they can change or add information.<br /><br />If you need any further support, please use the link below to contact the administrator.');
 	break;
 
+case 'logs.php':
+	$title=i18n::translate('Logs');
+	$text='';
+	break;
+
 case 'manageservers.php':
 	$title=i18n::translate('Manage sites');
 	$text=i18n::translate('On this page you can add remote sites and ban IP addresses.<br /><br />Remote sites can be added by providing the site title, URL, database id(optional), username, and password for the remote web service.<br /><br />IP address banning is accomplished by supplying any valid IP address range. For example, 212.10.*.*  Remote sites within the IP address ranges in the Banned list will not be able to access your web service.  You can ban specific IP addresses too.');

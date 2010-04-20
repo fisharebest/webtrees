@@ -1788,7 +1788,7 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	if (!is_object($eventObj)) pgv_error_handler(2, "Must use Event object", __FILE__, __LINE__);
+	if (!is_object($eventObj)) trigger_error("Must use Event object", E_USER_WARNING);
 	$factrec = $eventObj->getGedcomRecord();
 	$html='';
 	// Recorded age
@@ -1916,7 +1916,7 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 	global $SHOW_PEDIGREE_PLACES, $TEMPLE_CODES, $SEARCH_SPIDER;
 	if ($eventObj==null) return '';
 	if (!is_object($eventObj)) {
-		pgv_error_handler("2", "Object was not sent in, please use Event object", __FILE__, __LINE__);
+		trigger_error("Object was not sent in, please use Event object", E_USER_WARNING);
 		$factrec = $eventObj;
 	}
 	else $factrec = $eventObj->getGedcomRecord();
