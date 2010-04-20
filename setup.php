@@ -218,6 +218,7 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	// CPU
 	$cpu=ini_get('max_execution_time');
 	$maxcpu=$cpu;
+	/* Commented out temporarily.  How can we reliably determine the "master value" instead of the "local value"?
 	if (!ini_get('safe_mode')) {
 		for ($i=$cpu+1; $i<=300; ++$i) {
 			set_time_limit('max_execution_time', $i);
@@ -229,6 +230,7 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 			}
 		}
 	}
+ */
 	echo
 		'<p>',
 		i18n::translate('The memory and CPU time requirements depend on the number of individuals in your family tree.'),
