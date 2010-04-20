@@ -343,13 +343,13 @@ function AddToLog($log_message, $log_type='error') {
 
 //----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
-function AddToSearchLog($log_message, $geds) {
+function AddToSearchLog($log_message, $allgeds) {
 	global $TBLPREFIX;
 
 	global $INDEX_DIRECTORY; // usused, but needed to allow require get_config_file($ged_id)
 
 	$all_geds=get_all_gedcoms();
-	foreach ($geds as $ged_id=>$ged_name) {
+	foreach ($allgeds as $ged_id=>$ged_name) {
 		require get_config_file($ged_id); // Note: load locally, not globally
 		switch ($SEARCHLOG_CREATE) {
 		case 'none':
@@ -358,7 +358,7 @@ function AddToSearchLog($log_message, $geds) {
 			WT_DB::prepare(
 				"INSERT INTO {$TBLPREFIX}log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 			)->execute(array(
-				(count($all_geds)==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
+				(count($all_geds)==count($allgeds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
 				$_SERVER['REMOTE_ADDR'],
 				WT_USER_ID ? WT_USER_ID : null,
 				$ged_id
