@@ -68,7 +68,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	//-- fieldset
 	if ($option=="BIRT_PLAC" || $option=="DEAT_PLAC") {
 		$filter=$legend;
-		$legend=i18n::translate(substr($option, 0, 4))." @ ".$legend;
+		$legend=translate_fact(substr($option, 0, 4))." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Individuals');
 	$legend = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["indis"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
@@ -95,13 +95,13 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo i18n::translate('Leaves'), "</button> ";
 	echo "<br />";
 	echo "<button type=\"button\" class=\"BIRT_YES\" title=\"", i18n::translate('Show persons born more than 100 years ago.'), "\" >";
-	echo i18n::translate('BIRT'), "&gt;100</button> ";
+	echo translate_fact('BIRT'), "&gt;100</button> ";
 	echo "<button type=\"button\" class=\"BIRT_Y100\" title=\"", i18n::translate('Show persons born within the last 100 years.'), "\" >";
-	echo i18n::translate('BIRT'), "&lt;=100</button> ";
+	echo translate_fact('BIRT'), "&lt;=100</button> ";
 	echo "<button type=\"button\" class=\"DEAT_YES\" title=\"", i18n::translate('Show people who died more than 100 years ago.'), "\" >";
-	echo i18n::translate('DEAT'), "&gt;100</button> ";
+	echo translate_fact('DEAT'), "&gt;100</button> ";
 	echo "<button type=\"button\" class=\"DEAT_Y100\" title=\"", i18n::translate('Show people who died within the last 100 years.'), "\" >";
-	echo i18n::translate('DEAT'), "&lt;=100</button> ";
+	echo translate_fact('DEAT'), "&lt;=100</button> ";
 	echo "<button type=\"button\" class=\"reset\" title=\"", i18n::translate('Reset to the list defaults.'), "\" >";
 	echo i18n::translate('Reset'), "</button> ";
 	//-- table header
@@ -113,15 +113,15 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<th class=\"list_label\" style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
 	if ($option=="sosa") echo "<th class=\"list_label\">Sosa</th>";
-	echo "<th class=\"list_label\">", i18n::translate('BIRT'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('BIRT'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
-	echo "<th class=\"list_label\">", i18n::translate('PLAC'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
 	if ($tiny) echo "<th class=\"list_label\"><img src=\"./images/children.gif\" alt=\"", i18n::translate('Children'), "\" title=\"", i18n::translate('Children'), "\" border=\"0\" /></th>";
-	echo "<th class=\"list_label\">", i18n::translate('DEAT'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('DEAT'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
-	echo "<th class=\"list_label\">", i18n::translate('AGE'), "</th>";
-	echo "<th class=\"list_label\">", i18n::translate('PLAC'), "</th>";
-	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", i18n::translate('CHAN'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
+	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SEX</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">BIRT</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">DEAT</th>";
@@ -190,7 +190,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				continue;
 			}
 			if ($title=$name['type']=='_MARNM') {
-				$title='title="'.i18n::translate('_MARNM').'"';
+				$title='title="'.translate_fact('_MARNM').'"';
 			} else {
 				$title='';
 			}
@@ -459,7 +459,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	//-- fieldset
 	if ($option=="MARR_PLAC") {
 		$filter=$legend;
-		$legend=i18n::translate('MARR')." @ ".$legend;
+		$legend=translate_fact('MARR')." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Families');
 	$legend = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["sfamily"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
@@ -498,16 +498,16 @@ function print_fam_table($datalist, $legend="", $option="") {
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
 	echo "<th class=\"list_label\">", i18n::translate('NAME'), "</th>";
 	echo "<th style=\"display:none\">HUSB:GIVN</th>";
-	echo "<th class=\"list_label\">", i18n::translate('AGE'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
 	echo "<th class=\"list_label\">", i18n::translate('NAME'), "</th>";
 	echo "<th style=\"display:none\">WIFE:GIVN</th>";
-	echo "<th class=\"list_label\">", i18n::translate('AGE'), "</th>";
-	echo "<th class=\"list_label\">", i18n::translate('MARR'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('MARR'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
-	echo "<th class=\"list_label\">", i18n::translate('PLAC'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
 	if ($tiny) echo "<th class=\"list_label\"><img src=\"./images/children.gif\" alt=\"", i18n::translate('Children'), "\" title=\"", i18n::translate('Children'), "\" border=\"0\" /></th>";
-	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", i18n::translate('CHAN'), "</th>";
+	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
 	echo "<th style=\"display:none\">MARR</th>";
 	echo "<th style=\"display:none\">DEAT</th>";
 	echo "<th style=\"display:none\">TREE</th>";
@@ -660,16 +660,16 @@ function print_fam_table($datalist, $legend="", $option="") {
 				$marr_by_decade[floor($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
 		} else if (get_sub_record(1, "1 _NMR", $family->getGedcomRecord())) {
-			$husb = $family->getHusband();
-			$wife = $family->getWife();
-			if (empty($wife) && !empty($husb)) echo translate_fact('_NMR', $husb);
-			else if (empty($husb) && !empty($wife)) echo translate_fact('_NMR', $wife);
+			$hus = $family->getHusband();
+			$wif = $family->getWife();
+			if (empty($wif) && !empty($hus)) echo translate_fact('_NMR', $hus);
+			else if (empty($hus) && !empty($wif)) echo translate_fact('_NMR', $wif);
 			else echo translate_fact('_NMR');
 		} else if (get_sub_record(1, "1 _NMAR", $family->getGedcomRecord())) {
-			$husb = $family->getHusband();
-			$wife = $family->getWife();
-			if (empty($wife) && !empty($husb)) echo translate_fact('_NMAR', $husb);
-			else if (empty($husb) && !empty($wife)) echo translate_fact('_NMAR', $wife);
+			$hus = $family->getHusband();
+			$wif = $family->getWife();
+			if (empty($wif) && !empty($hus)) echo translate_fact('_NMAR', $hus);
+			else if (empty($hus) && !empty($wif)) echo translate_fact('_NMAR', $wif);
 			else echo translate_fact('_NMAR');
 		} else {
 			$factdetail = explode(' ', trim($family->getMarriageRecord()));
@@ -838,15 +838,15 @@ function print_sour_table($datalist, $legend=null) {
 	if ($SHOW_ID_NUMBERS) {
 		echo '<th class="list_label rela">SOUR</th>';
 	}
-	echo '<th class="list_label">', i18n::translate('TITL'), '</th>';
-	echo '<td class="list_label t2" style="display:none;">', i18n::translate('TITL'), ' 2</td>';
-	echo '<th class="list_label">', i18n::translate('AUTH'), '</th>';
+	echo '<th class="list_label">', translate_fact('TITL'), '</th>';
+	echo '<td class="list_label t2" style="display:none;">', translate_fact('TITL'), ' 2</td>';
+	echo '<th class="list_label">', translate_fact('AUTH'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Families'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Media'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Shared Notes'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', i18n::translate('CHAN'), '</th>';
+		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
 	}
 	echo '</tr>';
 	//-- table body
@@ -979,13 +979,13 @@ function print_note_table($datalist, $legend=null) {
 	if ($SHOW_ID_NUMBERS) {
 		echo '<th class="list_label rela">NOTE</th>';
 	}
-	echo '<th class="list_label">', i18n::translate('TITL'), '</th>';
+	echo '<th class="list_label">', translate_fact('TITL'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Families'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Media'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', i18n::translate('CHAN'), '</th>';
+		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
 	}
 	echo '</tr>';
 	//-- table body
@@ -1066,7 +1066,7 @@ function print_repo_table($repos, $legend='') {
 	echo '<th class="list_label">', i18n::translate('NAME'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', i18n::translate('CHAN'), '</th>';
+		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
 	}
 	echo '</tr>';
 	//-- table body
@@ -1120,11 +1120,11 @@ function print_media_table($datalist, $legend="") {
 	echo "<tr>";
 	echo "<td></td>";
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">OBJE</th>";
-	echo "<th class=\"list_label\">", i18n::translate('TITL'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('TITL'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Individuals'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Families'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Sources'), "</th>";
-	if ($SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", i18n::translate('CHAN'), "</th>";
+	if ($SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
 	echo "</tr>\n";
 	//-- table body
 	$n = 0;
@@ -1256,7 +1256,7 @@ function print_surn_table($datalist, $target="INDI", $listFormat="") {
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
 	echo "<td></td>";
-	echo "<th class=\"list_label\">", i18n::translate('SURN'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('SURN'), "</th>";
 	echo "<th class=\"list_label\">";
 	if ($target=="FAM") echo i18n::translate('Spouses'); else echo i18n::translate('Individuals');
 	echo "</th>";
@@ -1528,9 +1528,9 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=
 	echo "<th class=\"list_label\">", i18n::translate('Record'), "</th>";
 	echo "<th style=\"display:none\">GIVN</th>";
 	if ($showChange) {
-		echo "<th class=\"list_label\">", i18n::translate('CHAN'), "</th>";
+		echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
 		if ($show_pgvu) {
-			echo "<th class=\"list_label\">", i18n::translate('_PGVU'), "</th>";
+			echo "<th class=\"list_label\">", translate_fact('_PGVU'), "</th>";
 		}
 	}
 	echo "</tr>\n";
@@ -1677,9 +1677,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<tr>";
 			$return .= "<th class=\"list_label\">".i18n::translate('Record')."</th>";
 			$return .= "<th style=\"display:none\">GIVN</th>";
-			$return .= "<th class=\"list_label\">".i18n::translate('DATE')."</th>";
+			$return .= "<th class=\"list_label\">".translate_fact('DATE')."</th>";
 			$return .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"".i18n::translate('Anniversary')."\" title=\"".i18n::translate('Anniversary')."\" border=\"0\" /></th>";
-			$return .= "<th class=\"list_label\">".i18n::translate('EVEN')."</th>";
+			$return .= "<th class=\"list_label\">".translate_fact('EVEN')."</th>";
 			$return .= "</tr>\n";
 		}
 
