@@ -193,7 +193,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php //echo "<span class=\"details_label\">".i18n::translate('NCHI').": </span>".$family->getNumberOfChildren()."<br />";?>
 					<?php if ($date && $date->isOK() || $place) {
 						$marr_type = "MARR_".strtoupper($family->getMarriageType());
-						echo "<span class=\"details_label\">".i18n::translate('MARR').": </span>".$family->getMarriageType();
+						echo "<span class=\"details_label\">".translate_fact($marr_type).": </span>";
 						if ($date) {
 							echo $date->Display(false);
 							if (!empty($place)) echo ' -- ';
@@ -206,7 +206,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					} else if ($family->getMarriageRecord()=="" && $this->controller->canedit) {
 						print "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".i18n::translate('Add marriage details')."</a>";
 					} else {
-						echo "<span class=\"details_label\">".i18n::translate('MARR').": </span>".$family->getMarriageType();
+						echo "<span class=\"details_label\">".translate_fact($marr_type).": </span>";
 					}
 					?>
 				</td>
