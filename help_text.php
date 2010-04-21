@@ -2140,11 +2140,6 @@ case 'CALENDAR_FORMAT':
 	$text=i18n::translate('Dates can be recorded in various calendars such as Gregorian, Julian, or the Jewish Calendar.  This option allows you to convert dates to a preferred calendar.  For example, you could select Gregorian to convert Julian and Hebrew dates to Gregorian.  The converted date is shown in parentheses after the regular date.<br /><br />Dates are only converted if they are valid for the calendar.  For example, only dates between 22&nbsp;SEP&nbsp;1792 and 31&nbsp;DEC&nbsp;1805 will be converted to the French Republican calendar and only dates after 15&nbsp;OCT&nbsp;1582 will be converted to the Gregorian calendar.<br /><br />Hebrew is the same as Jewish, but using Hebrew characters.  Arabic is the same as Hijri, but using Arabic characters.<br /><br />Note: Since the Jewish and Hijri calendar day starts at dusk, any event taking place from dusk till midnight will display as one day prior to the correct date.  The display of Hebrew and Arabic can be problematic in old browsers, which may display text backwards (left to right) or not at all.');
 	break;
 
-case 'CHANGELOG_CREATE':
-	$title=i18n::translate('Archive changelog files');
-	$text=i18n::translate('How often should the program archive Changelog files.');
-	break;
-
 case 'CHARACTER_SET':
 	$title=i18n::translate('Character set encoding');
 	$text=i18n::translate('This is the character set of your GEDCOM file.  UTF-8 is the default and should work for almost all sites.  If you export your GEDCOM using IBM Windows encoding, you should put WINDOWS here.<br /><br />NOTE: <b>webtrees</b> can\'t support UNICODE (UTF-16) because the support is missing in PHP.');
@@ -2343,16 +2338,6 @@ case 'LANGUAGE':
 case 'LINK_ICONS':
 	$title=i18n::translate('PopUp links on charts');
 	$text=i18n::translate('Allows the user to select links to other charts and close relatives of the person.<br /><br />Set to <b>Disabled</b> to disable this feature.  Set to <b>On Mouse Over</b> to popup the links when the user mouses over the icon in the box.  Set to <b>On Mouse Click</b> to popup the links when the user clicks on the icon in the box.');
-	break;
-
-case 'LOG_LANG_ERROR':
-	$title=i18n::translate('Logfile for language errors');
-	$text='';
-	break;
-
-case 'LOGFILE_CREATE':
-	$title=i18n::translate('Archive log files');
-	$text=i18n::translate('How often should the program archive log files.');
 	break;
 
 case 'LOGIN_URL':
@@ -2673,11 +2658,6 @@ case 'SAVE_WATERMARK_IMAGE':
 case 'SAVE_WATERMARK_THUMB':
 	$title=i18n::translate('Store watermarked thumbnails on server?');
 	$text=i18n::translate('If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements.');
-	break;
-
-case 'SEARCHLOG_CREATE':
-	$title=i18n::translate('Archive searchLog files');
-	$text=i18n::translate('How often should the program archive Searchlog files.');
 	break;
 
 case 'SECURITY_CHECK_GEDCOM_DOWNLOADABLE':
@@ -3226,12 +3206,6 @@ case 'pedigree.php':
 case 'placelist.php':
 	$title=i18n::translate('Place hierarchy');
 	$text=i18n::translate('(or Persons Per Place)<br /><br />This page will show you a hierarchy of the places in the GEDCOM and which individuals or families are connected to a location.<br /><br />If there is any connection between an individual or family and an event at a certain location, <b>webtrees</b> will find it.<br /><br />The results are displayed in a two-column list, one column for individuals and one for families.');
-	break;
-
-case 'printlog.php':
-	// no help text
-	$title=i18n::translate('Print logfile');
-	$text='';
 	break;
 
 case 'relationship.php':

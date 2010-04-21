@@ -43,7 +43,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 }
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-if (isset($_REQUEST['logfilename'])) $logfilename = $_REQUEST['logfilename'];
 
 if (!isset($action)) $action="";
 
@@ -54,45 +53,6 @@ if ($pending_changes) {
 } else {
 	$d_wt_changes = '&nbsp;';
 }
-
-if (!isset($logfilename)) {
-	$logfilename = "";
-}
-$file_nr = 0;
-$dir_var = opendir ($INDEX_DIRECTORY);
-$dir_array = array();
-while ($file = readdir ($dir_var)) {
-	if (substr($file,-4)==".log" && substr($file,0,4)== "pgv-") {
-		$dir_array[$file_nr] = $file;
-		$file_nr++;
-	}
-}
-closedir($dir_var);
-$d_logfile_str = "&nbsp;";
-if (count($dir_array)>0) {
-	sort($dir_array);
-	$d_logfile_str = "<form name=\"logform\" action=\"admin.php\" method=\"post\">";
-	$d_logfile_str .= i18n::translate('View log files') . ": ";
-	$d_logfile_str .= "\n<select name=\"logfilename\">\n";
-	$ct = count($dir_array);
-	for($x = 0; $x < $file_nr; $x++) {
-		$ct--;
-		$d_logfile_str .= "<option value=\"";
-		$d_logfile_str .= $dir_array[$ct];
-		if ($dir_array[$ct] == $logfilename) {
-			$d_logfile_str .= "\" selected=\"selected";
-		}
-		$d_logfile_str .= "\">";
-		$d_logfile_str .= $dir_array[$ct];
-		$d_logfile_str .= "</option>\n";
-	}
-	$d_logfile_str .= "</select>\n";
-	// $d_logfile_str .= "<input type=\"submit\" name=\"logfile\" value=\" &gt; \" />";
-	$d_logfile_str .= "<input type=\"button\" name=\"logfile\" value=\" &gt; \" onclick=\"window.open('printlog.php?logfile='+document.logform.logfilename.options[document.logform.logfilename.selectedIndex].value, '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\" />";
-	$d_logfile_str .= "</form>";
-}
-
-$err_write = file_is_writeable("config.php");
 
 $verify_msg = false;
 $warn_msg = false;
@@ -127,11 +87,6 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		echo "<br />".i18n::translate('Current User Time:');
 		echo " ".format_timestamp(client_time());
 		if (WT_USER_IS_ADMIN) {
-			if ($err_write) {
-				echo "<br /><span class=\"error\">";
-				echo i18n::translate('Your <i>config.php</i> file is still writable.  For security, you should set the permissions of this file back to read-only when you have finished configuring your site.');
-				echo "</span><br /><br />";
-			}
 			if ($verify_msg) {
 				echo "<br />";
 				echo "<a href=\"".encode_url("useradmin.php?action=listusers&filter=admunver")."\" class=\"error\">".i18n::translate('User accounts awaiting verification by admin')."</a>";
@@ -258,7 +213,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		<tr>
 			<td class="optionbox width50"><a
 				href="faq.php"><?php echo i18n::translate('FAQ List');?></a><?php echo help_link('help_faq.php'); ?></td>
-			<td class="optionbox width50"><?php echo $d_logfile_str; ?></td>
+			<td class="optionbox width50">&nbsp;</td>
 		</tr>
 		</table>
 		</div>
@@ -277,18 +232,6 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 </td>
 </tr></table>
 	<?php 
-	if (isset($logfilename) && ($logfilename != "")) {
-		echo "<hr><table align=\"center\" width=\"70%\"><tr><td class=\"listlog\">";
-		echo "<strong>";
-		echo i18n::translate('Content of log file');
-		echo " [" . $INDEX_DIRECTORY . $logfilename . "]</strong><br /><br />";
-		$lines=file($INDEX_DIRECTORY . $logfilename);
-		$num = sizeof($lines);
-		for ($i = 0; $i < $num ; $i++) {
-			echo $lines[$i] . "<br />";
-		}
-		echo "</td></tr></table><hr>";
-	}
 	echo WT_JS_START;
 	echo 'function manageservers() {';
 	echo ' window.open("manageservers.php", "", "top=50,left=50,width=700,height=500,scrollbars=1,resizable=1");';

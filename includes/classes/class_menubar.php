@@ -165,12 +165,6 @@ class MenuBar
 					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["admin"]["small"]);
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
 				$menu->addSubmenu($submenu);
-				//-- log files submenu
-				$submenu = new Menu(i18n::translate('View log files'), "logfiles.php");
-				if (!empty($WT_IMAGES["admin"]["small"]))
-					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["admin"]["small"]);
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
-				$menu->addSubmenu($submenu);
 				//-- manage_media submenu
 				if (is_writable($MEDIA_DIRECTORY) && $MULTI_MEDIA) {
 					$submenu = new Menu(i18n::translate('Manage MultiMedia'), "media.php");

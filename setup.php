@@ -984,7 +984,6 @@ try {
 		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".
 		"('ALLOW_USER_THEMES',               '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
-		"('LOGFILE_CREATE',                  'database'),".
 		"('SESSION_SAVE_PATH',               ''),".
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".

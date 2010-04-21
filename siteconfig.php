@@ -49,7 +49,6 @@ case 'update':
 	set_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION', safe_POST('require_admin_auth_registration'));
 	set_site_setting('ALLOW_USER_THEMES',               safe_POST('allow_user_themes'));
 	set_site_setting('ALLOW_CHANGE_GEDCOM',             safe_POST('allow_change_gedcom'));
-	set_site_setting('LOGFILE_CREATE',                  safe_POST('logfile_create'));
 	set_site_setting('SESSION_SAVE_PATH',               safe_POST('session_save_path'));
 	set_site_setting('SESSION_TIME',                    safe_POST('session_time'));
 	set_site_setting('SERVER_URL',                      safe_POST('server_url'));
@@ -120,9 +119,6 @@ echo
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow GEDCOM switching'), help_link('ALLOW_CHANGE_GEDCOM'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('allow_change_gedcom', get_site_setting('ALLOW_CHANGE_GEDCOM')), '</td>',
-	'</tr><tr>',
-	'<td class="descriptionbox width20 wrap">', i18n::translate('Archive log files'), help_link('LOGFILE_CREATE'), '</td>',
-	'<td class="optionbox wrap">', edit_field_log_frequency('logfile_create', get_site_setting('LOGFILE_CREATE')), '</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Session save path'), help_link('SESSION_SAVE_PATH'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="session_save_path" value="', get_site_setting('SESSION_SAVE_PATH'), '" size="50" /></td>',

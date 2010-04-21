@@ -244,8 +244,6 @@ $USE_REGISTRATION_MODULE        =get_site_setting('USE_REGISTRATION_MODULE');
 $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
 $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
-$LOGFILE_CREATE                 =get_site_setting('LOGFILE_CREATE');
-$LOG_LANG_ERROR                 =get_site_setting('LOG_LANG_ERROR');
 $WT_SESSION_SAVE_PATH           =get_site_setting('SESSION_SAVE_PATH');
 $WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
@@ -430,7 +428,7 @@ if (WT_SCRIPT_NAME!='install.php' && WT_SCRIPT_NAME!='help_text.php') {
 		exit;
 	}
 
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'config_download.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'printlog.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'config_download.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
 		header('Location: editgedcoms.php');
 		exit;
 	}
