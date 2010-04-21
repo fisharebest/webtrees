@@ -250,14 +250,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $personcount;
 		global $WT_IMAGE_DIR, $WT_IMAGES;
 		$elderdate = $family->getMarriageDate();
-		foreach($people["children"] as $key=>$child) {
+		$key=0;
+		foreach($people["children"] as $child) {
 			$label = $child->getLabel();
-			if ($label[0]=='+')
-				$styleadd = "blue";
-			else if ($label[0]=='-')
-				$styleadd = "red";
-			else
-				$styleadd = "";
+			$styleadd = "";
 			?>
 			<tr>
 				<td class="facts_label<?php print $styleadd; ?>"><?php if ($styleadd=="red") print $child->getLabel(); else print $child->getLabel($elderdate, $key+1); ?></td>
@@ -269,6 +265,39 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			</tr>
 			<?php
 			$elderdate = $child->getBirthDate();
+			++$key;
+		}
+		foreach($people["newchildren"] as $child) {
+			$label = $child->getLabel();
+			$styleadd = "blue";
+			?>
+			<tr>
+				<td class="facts_label<?php print $styleadd; ?>"><?php if ($styleadd=="red") print $child->getLabel(); else print $child->getLabel($elderdate, $key+1); ?></td>
+				<td class="<?php print $this->controller->getPersonStyle($child); ?>">
+				<?php
+				print_pedigree_person($child->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++);
+				?>
+				</td>
+			</tr>
+			<?php
+			$elderdate = $child->getBirthDate();
+			++$key;
+		}
+		foreach($people["delchildren"] as $child) {
+			$label = $child->getLabel();
+			$styleadd = "red";
+			?>
+			<tr>
+				<td class="facts_label<?php print $styleadd; ?>"><?php if ($styleadd=="red") print $child->getLabel(); else print $child->getLabel($elderdate, $key+1); ?></td>
+				<td class="<?php print $this->controller->getPersonStyle($child); ?>">
+				<?php
+				print_pedigree_person($child->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++);
+				?>
+				</td>
+			</tr>
+			<?php
+			$elderdate = $child->getBirthDate();
+			++$key;
 		}
 		if (isset($family) && !$this->controller->isPrintPreview() && $this->controller->canedit) {
 			if ($type == "spouse") {

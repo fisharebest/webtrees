@@ -315,7 +315,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	$newchildren = array();
 	$oldchildren = array();
 	if (WT_USER_CAN_EDIT) {
-		if ((isset($_REQUEST['show_changes'])&&$_REQUEST['show_changes']=='yes') && find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {
+		if (!isset($_REQUEST['show_changes']) || $_REQUEST['show_changes']=='yes') {
 			$newrec = find_gedcom_record($famid, $ged_id, true);
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
 			if ($ct > 0) {
