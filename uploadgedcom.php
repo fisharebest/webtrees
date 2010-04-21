@@ -734,12 +734,12 @@ if ($import == true) {
 	print "</td><td class=\"optionbox\">";
 	if ($startimport == "true") {
 		if ($xreftype == "NA")
-		print i18n::translate('Do not change');
+		print i18n::translate_c('Do not change Individual ID', 'Do not change');
 		else
 		print $xreftype;
 	} else {
 		print "<select name=\"xreftype\">\n";
-		print "<option value=\"NA\">".i18n::translate('Do not change')."</option>\n<option value=\"RIN\">RIN</option>\n";
+		print "<option value=\"NA\">".i18n::translate_c('Do not change Individual ID', 'Do not change')."</option>\n<option value=\"RIN\">RIN</option>\n";
 		print "<option value=\"REFN\">REFN</option>\n</select>";
 	}
 	print "</td></tr>\n";
