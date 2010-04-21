@@ -530,13 +530,13 @@ class Person extends GedcomRecord {
 					}**/
 				// gap in years or months
 				$gap = round($gap*12/365.25); // months
-
-				// Allow special processing for different languages
-				$func="date_diff_localisation_".WT_LOCALE;
-				if (!function_exists($func))
-					$func='DefaultGetLabel';
-				// Localise the age diff
-				$func($label, $gap);
+				if (($gap==12)||($gap==-12)) {
+					$label .= i18n::plural('%d year', '%d years', round($gap/12), round($gap/12));
+				} elseif ($gap>23 or $gap<-23) {
+					$label .= i18n::plural('%d year', '%d years', round($gap/12), round($gap/12));
+				} elseif ($gap!=0) {
+					$label .= i18n::plural('%d month', '%d months', $gap, $gap);
+				}
 				$label .= '</div>';
 			}
 		}
@@ -1774,18 +1774,5 @@ class Person extends GedcomRecord {
 		$this->format_first_major_fact(WT_EVENTS_DEAT, 1);
 	}
 
-}
-
-// Localise a date differences.  This is a default function, and may be overridden in includes/extras/functions.xx.php
-function DefaultGetLabel(&$label, &$gap) {
-	if (($gap==12)||($gap==-12)) {
-		$label .= round($gap/12).' '.i18n::translate('year'); // 1 year
-	} elseif ($gap>20 or $gap<-20) {
-		$label .= round($gap/12).' '.i18n::translate('years'); // x years
-	} elseif (($gap==1)||($gap==-1)) {
-		$label .= $gap.' '.i18n::translate('month'); // 1 month
-	} elseif ($gap!=0) {
-		$label .= $gap.' '.i18n::translate('months'); // x months
-	}
 }
 ?>

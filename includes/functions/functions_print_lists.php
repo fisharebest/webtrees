@@ -660,23 +660,17 @@ function print_fam_table($datalist, $legend="", $option="") {
 				$marr_by_decade[floor($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
 		} else if (get_sub_record(1, "1 _NMR", $family->getGedcomRecord())) {
-			// Allow special processing for different languages
-			$func="fact_NMR_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise the _NMR facts
-				echo '<div>', i18n::translate($func("_NMR", $family->getXref())), '<a name="9999999"></a></div>';
-			} else {
-				echo '<div>', i18n::translate('_NMR'), '<a name="9999999"></a></div>';
-			}
+			$husb = $family->getHusband();
+			$wife = $family->getWife();
+			if (empty($wife) && !empty($husb)) echo translate_fact('_NMR', $husb);
+			else if (empty($husb) && !empty($wife)) echo translate_fact('_NMR', $wife);
+			else echo translate_fact('_NMR');
 		} else if (get_sub_record(1, "1 _NMAR", $family->getGedcomRecord())) {
-			// Allow special processing for different languages
-			$func="fact_NMR_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise the _NMR facts
-				echo '<div>', i18n::translate($func("_NMAR", $family->getXref())), '<a name="9999999"></a></div>';
-			} else {
-				echo '<div>', i18n::translate('_NMAR'), '<a name="9999999"></a></div>';
-			}
+			$husb = $family->getHusband();
+			$wife = $family->getWife();
+			if (empty($wife) && !empty($husb)) echo translate_fact('_NMAR', $husb);
+			else if (empty($husb) && !empty($wife)) echo translate_fact('_NMAR', $wife);
+			else echo translate_fact('_NMAR');
 		} else {
 			$factdetail = explode(' ', trim($family->getMarriageRecord()));
 			if (isset($factdetail)) {

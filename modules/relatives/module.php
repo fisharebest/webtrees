@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -190,23 +190,47 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label"><br />
 				</td>
 				<td class="facts_value<?php print $styleadd ?>">
-					<?php //echo "<span class=\"details_label\">".i18n::translate('NCHI').": </span>".$family->getNumberOfChildren()."<br />";?>
-					<?php if ($date && $date->isOK() || $place) {
-						$marr_type = "MARR_".strtoupper($family->getMarriageType());
-						echo "<span class=\"details_label\">".translate_fact($marr_type).": </span>";
+					<?php //echo "<span class=\"details_label\">".translate_fact('NCHI').": </span>".$family->getNumberOfChildren()."<br />";?>
+					<?php $marr_type = strtoupper($family->getMarriageType());
+					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='UNKNOWN') {
+						$marr_fact = translate_fact("MARR_".$marr_type);
+					} else if ($marr_type) {
+						$marr_fact = translate_fact("MARR").' '.$family->getMarriageType();
+					} else {
+						$marr_fact = translate_fact("MARR");
+					}
+					if ($date && $date->isOK() || $place) {
+						echo '<span class="details_label">', $marr_fact, ': </span>';
 						if ($date) {
 							echo $date->Display(false);
 							if (!empty($place)) echo ' -- ';
 						}
 						if (!empty($place)) echo $place;
 					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
-						echo i18n::translate('_NMR');
+						$husb = $family->getHusband();
+						$wife = $family->getWife();
+						if (empty($wife) && !empty($husb)) echo translate_fact('_NMR', $husb);
+						else if (empty($husb) && !empty($wife)) echo translate_fact('_NMR', $wife);
+						else echo translate_fact('_NMR');
 					} else if (get_sub_record(1, "1 _NMAR", find_family_record($famid, WT_GED_ID))) {
-						echo i18n::translate('_NMAR');
+						$husb = $family->getHusband();
+						$wife = $family->getWife();
+						if (empty($wife) && !empty($husb)) echo translate_fact('_NMAR', $husb);
+						else if (empty($husb) && !empty($wife)) echo translate_fact('_NMAR', $wife);
+						else echo translate_fact('_NMAR');
 					} else if ($family->getMarriageRecord()=="" && $this->controller->canedit) {
-						print "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".i18n::translate('Add marriage details')."</a>";
+						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".i18n::translate('Add marriage details')."</a>";
 					} else {
-						echo "<span class=\"details_label\">".translate_fact($marr_type).": </span>";
+						$factdetail = explode(' ', trim($family->getMarriageRecord()));
+						if (isset($factdetail) && count($factdetail) == 3) {
+							if (strtoupper($factdetail[2]) == "Y") {
+								echo '<span class="details_label">', $marr_fact, ': </span>', i18n::translate('Yes');
+							} else if (strtoupper($factdetail[2]) == "N") {
+								echo '<span class="details_label">', $marr_fact, ': </span>', i18n::translate('No');
+							}
+						} else {
+							echo '<span class="details_label">', $marr_fact, '</span>';
+						}
 					}
 					?>
 				</td>

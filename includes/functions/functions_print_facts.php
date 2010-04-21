@@ -99,9 +99,16 @@ function print_fact(&$eventObj, $noedit=false) {
 	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
 		// Event of close relative
 		$label_person=Person::getInstance($match[1]);
-	} elseif (preg_match('/2 _PGVS @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
+	} else if (preg_match('/2 _PGVS @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
 		// Event of close relative
 		$label_person=Person::getInstance($match[1]);
+	} else if ($parent instanceof Family) {
+		// Family event
+		$husb = $parent->getHusband();
+		$wife = $parent->getWife();
+		if (empty($wife) && !empty($husb)) $label_person=$husb;
+		else if (empty($husb) && !empty($wife)) $label_person=$wife;
+		else $label_person=$parent;
 	} else {
 		// The actual person
 		$label_person=$parent;
@@ -129,23 +136,6 @@ function print_fact(&$eventObj, $noedit=false) {
 	// Assume that all recognised tags are translated.
 	// -- handle generic facts
 	if ($fact!="EVEN" && $fact!="FACT" && $fact!="OBJE") {
-		if ($fact=="_NMR") {
-			// Allow special processing for different languages
-			$func="fact_NMR_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise the _NMR facts
-				$fact = $func($fact, $pid);
-			}
-		}
-		$explode_fact = explode("_", $fact);
-		if (!empty($explode_fact[1]) && !empty($explode_fact[2])) {
-			// Allow special processing for different languages
-			$func="cr_facts_localisation_".WT_LOCALE;
-			if (function_exists($func)) {
-				// Localise close relatives facts
-				$func($factrec, $fact, $explode_fact, $pid);
-			}
-		}
 		$factref = $fact;
 		if (!$eventObj->canShow()) return false;
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
