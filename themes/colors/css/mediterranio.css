@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 7896 2010-04-07 22:08:56Z greg $
+* $Id: ash.css 7989 2010-04-16 00:16:21Z rob $
 */
 
 .something {
@@ -792,7 +792,7 @@ text-decoration:none;
 }
 
 .nameZoom {
-font-size: 14px;
+font: 14px tahoma, arial, helvetica, sans-serif;
 font-weight: bold;
 text-decoration:none;
 }
@@ -958,7 +958,7 @@ background:#c8e7ff;
 }
 
 .favorites_form {
-margin-top:0;
+margin-top:1px;
 font-size: 14px;
 color:#FFF;
 }

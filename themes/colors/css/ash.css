@@ -792,7 +792,7 @@ text-decoration:none;
 }
 
 .nameZoom {
-font-size: 14px;
+font: 14px tahoma, arial, helvetica, sans-serif;
 font-weight: bold;
 text-decoration:none;
 }
@@ -958,7 +958,7 @@ background:#c8e7ff;
 }
 
 .favorites_form {
-margin-top:0;
+margin-top:1px;
 font-size: 14px;
 color:#FFF;
 }
