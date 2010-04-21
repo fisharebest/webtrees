@@ -881,6 +881,12 @@ if ($stage == 0) {
 }
 flush();
 
+// Importing generates 1000's of separate updates, and in auto-commit mode, each of these
+// is a separate transaction, which must be flushed to disk.  This limits writes to approx
+// 100 per second (on a typical 6000 RPM disk).
+// By wrapping it all in one transaction, we only have one disk flush.
+WT_DB::exec("START TRANSACTION");
+
 if ($stage == 1) {
 	@ set_time_limit($timelimit);
 	//-- make sure that we are working with the true time limit
@@ -1157,6 +1163,7 @@ if ($stage == 1) {
 </form>
 	<?php
 
+WT_DB::exec("COMMIT");
 
 	print_footer();
 	?>
