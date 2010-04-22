@@ -474,7 +474,7 @@ padding-bottom: 0px;
 }
 
 #descendancy_chart li {
-list-style: url(../images/spacer.gif);
+list-style: none;
 margin: 0px 0px 2px -15px;
 padding-top: 0px;
 padding-right: 0px;
@@ -494,7 +494,7 @@ padding-left: 0px;
 }
 
 #descendancy_chart_rtl li {
-list-style:url(../images/spacer.gif);
+list-style: none;
 margin: 0px -15px 2px 0px;
 padding: 0px 0px 0px 0px;
 }
@@ -523,7 +523,7 @@ padding-bottom:0px;
 }
 
 #ancestry_chart li {
-list-style:url(../images/spacer.gif);
+list-style: none;
 margin:0 0 2px -15px;
 padding-top:0px;
 padding-right:0px;
@@ -542,7 +542,7 @@ padding-left:0px;
 }
 
 #ancestry_chart_rtl li {
-list-style:url(../images/spacer.gif);
+list-style: none;
 margin:0px -15px 2px 0px;
 padding:0px 2px 0px 0px;
 }
