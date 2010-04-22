@@ -113,6 +113,11 @@ define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);
 //-- setup execution timer
 $start_time=microtime(true);
 
+// PHP5 requires a time zone to be set in php.ini
+if (!ini_get('date.timezone')) {
+	date_default_timezone_set(@date_default_timezone_get());
+}
+
 ini_set('arg_separator.output', '&amp;');
 ini_set('error_reporting', E_ALL | E_STRICT);
 ini_set('display_errors', '1');

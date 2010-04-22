@@ -191,8 +191,9 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	// Settings
 	foreach (array(
 		'file_uploads'=>i18n::translate('upload files'),
+		'date.timezone'=>i18n::translate('correct date and time in logs and messages'),
 	) as $setting=>$features) {
-		if (ini_get($setting)==false) {
+		if (!ini_get($setting)) {
 			echo '<p class="bad">', i18n::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
 			$warnings=true;
 		}
