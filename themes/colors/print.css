@@ -46,18 +46,18 @@
 #descendancy_chart ul {
 	list-style: none;
 	margin: 0px 0px 5px 15px; /* top right bottom left */
-	padding: 0px 0px 0px auto; /* top right bottom left */
+	padding: 0px 0px 0px 0px; /* top right bottom left */
 	border-left: thin solid #9CA3D4;
 }
 #descendancy_chart li {
 	list-style: none;
 	margin: 0px 0px 2px -16px; /* top right bottom left */
-	padding: 0px 0px 0px auto; /* top right bottom left */
+	padding: 0px 0px 0px 0px; /* top right bottom left */
 }
 /*-- descendancy chart rtl specific stylesheets --*/
 #descendancy_chart_rtl ul {
 	margin: 0px 15px 5px 0px; /* top right bottom left */
-	padding: 0px auto 0px 0px; /* top right bottom left */
+	padding: 0px 0px 0px 0px; /* top right bottom left */
 	border-right: thin solid #9CA3D4;
 }
 #descendancy_chart_rtl li {
