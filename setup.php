@@ -993,7 +993,7 @@ try {
 		"('MAX_VIEW_TIME',                   '1'),".
 		"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
 		"('MAX_EXECUTION_TIME',              '".addcslashes($_POST['maxcpu'], "'")."'),".
-		"('SMTP_ACTIVE',                     '".($_POST['smtpuse']==1)."'),".
+		"('SMTP_ACTIVE',                     '".addcslashes($_POST['smtpuse'], "'")."'),".
 		"('SMTP_HOST',                       '".addcslashes($_POST['smtpserv'], "'")."'),".
 		"('SMTP_HELO',                       '".addcslashes($_POST['smtpsender'], "'")."'),".
 		"('SMTP_PORT',                       '".addcslashes($_POST['smtpport'], "'")."'),".
