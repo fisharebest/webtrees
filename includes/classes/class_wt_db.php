@@ -85,7 +85,7 @@ class WT_DB {
 		trigger_error('WT_DB::unserialize() is not allowed.', E_USER_ERROR);
 	}
 
-	// Disconnect from the server, so we can connect to another one during install.php
+	// Disconnect from the server, so we can connect to another one
 	public static function disconnect() {
 		self::$pdo=null;
 	}

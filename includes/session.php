@@ -392,23 +392,18 @@ try {
 require WT_ROOT.'includes/functions/functions_privacy.php';
 
 // The current user's profile - from functions in authentication.php
-define('WT_USER_ID', getUserId());
-if (WT_DB::isConnected()) {
-	define('WT_USER_NAME',         getUserName   ());
-	define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
-	define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
-	define('WT_ADMIN_USER_EXISTS', WT_USER_IS_ADMIN     || adminUserExists());
-	define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_ACCEPT',   WT_USER_GEDCOM_ADMIN || userCanAccept  (WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
-	define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
-	define('WT_USER_ACCESS_LEVEL', getUserAccessLevel(WT_USER_ID, WT_GED_ID));
-	define('WT_USER_GEDCOM_ID',    getUserGedcomId   (WT_USER_ID, WT_GED_ID));
-	define('WT_USER_ROOT_ID',      getUserRootId     (WT_USER_ID, WT_GED_ID));
-} else {
-	// No DB?  Just set the basics, for install.php
-	define('WT_ADMIN_USER_EXISTS', false);
-}
+define('WT_USER_ID',           getUserId  ());
+define('WT_USER_NAME',         getUserName());
+define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
+define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
+define('WT_ADMIN_USER_EXISTS', WT_USER_IS_ADMIN     || adminUserExists());
+define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
+define('WT_USER_CAN_ACCEPT',   WT_USER_GEDCOM_ADMIN || userCanAccept  (WT_USER_ID, WT_GED_ID));
+define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
+define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
+define('WT_USER_ACCESS_LEVEL', getUserAccessLevel(WT_USER_ID, WT_GED_ID));
+define('WT_USER_GEDCOM_ID',    getUserGedcomId   (WT_USER_ID, WT_GED_ID));
+define('WT_USER_ROOT_ID',      getUserRootId     (WT_USER_ID, WT_GED_ID));
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 if (WT_USER_ID && safe_GET_bool('logout')) {
@@ -427,13 +422,9 @@ if (!isset($_SESSION['pgv_user'])) $_SESSION['pgv_user'] = '';
 if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='yes') $_SESSION['show_context_help'] = true;
 if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='no') $_SESSION['show_context_help'] = false;
 if (!isset($USE_THUMBS_MAIN)) $USE_THUMBS_MAIN = false;
-if (WT_SCRIPT_NAME!='install.php' && WT_SCRIPT_NAME!='help_text.php') {
-	if (!WT_DB::isConnected() || !WT_ADMIN_USER_EXISTS) {
-		header('Location: install.php');
-		exit;
-	}
 
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'config_download.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
+if (WT_SCRIPT_NAME!='help_text.php') {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
 		header('Location: editgedcoms.php');
 		exit;
 	}

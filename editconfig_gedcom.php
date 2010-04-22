@@ -477,8 +477,6 @@ if ($action=="update") {
 	if (!is_writable($whichFile)) {
 		$errors = true;
 		$error_msg .= "<span class=\"error\"><b>".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</b></span><br />";
-		$_SESSION[$gedcom_config]=$configtext;
-		$error_msg .= "<br /><br /><a href=\"".encode_url("config_download.php?file={$gedcom_config}")."\">".i18n::translate('Download GEDCOM configuration.')."</a> ".i18n::translate('Upload the file to your index directory: ')."$INDEX_DIRECTORY<br /><br />\n";
 	}
 	$fp = @fopen($whichFile, "wb");
 	if (!$fp) {
