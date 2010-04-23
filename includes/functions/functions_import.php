@@ -1233,6 +1233,8 @@ function import_max_ids($ged_id, $MAX_IDS) {
 
 // Accept all pending changes for a specified record
 function accept_all_changes($xref, $ged_id) {
+	global $TBLPREFIX;
+
 	$changes=WT_DB::prepare(
 		"SELECT change_id, gedcom_name, new_gedcom".
 		" FROM {$TBLPREFIX}change c".
@@ -1248,6 +1250,8 @@ function accept_all_changes($xref, $ged_id) {
 
 // Accept all pending changes for a specified record
 function reject_all_changes($xref, $ged_id) {
+	global $TBLPREFIX;
+
 	WT_DB::prepare(
 		"UPDATE {$TBLPREFIX}change".
 		" SET status='rejected'".
