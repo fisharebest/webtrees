@@ -150,6 +150,50 @@ $RELA_CODES=array(
 	'witness'         =>i18n::translate('Witness'),
 );
 
+// GEDCOM RELA codes for non-genealogical relationships.
+// These aren't part of the standard, but we list the common ones here so we can translate them.
+$RELA_CODES_F=array(
+	'attendant'       =>i18n::translate_c('FEMALE', 'Attendant'),
+	'attending'       =>i18n::translate_c('FEMALE', 'Attending'),
+	'buyer'           =>i18n::translate_c('FEMALE', 'Buyer'),
+	'civil_registrar' =>i18n::translate_c('FEMALE', 'Civil Registrar'),
+	'employee'        =>i18n::translate_c('FEMALE', 'Employee'),
+	'employer'        =>i18n::translate_c('FEMALE', 'Employer'),
+	'friend'          =>i18n::translate_c('FEMALE', 'Friend'),
+	'guardian'        =>i18n::translate_c('FEMALE', 'Guardian'),
+	'informant'       =>i18n::translate_c('FEMALE', 'Informant'),
+	'lodger'          =>i18n::translate_c('FEMALE', 'Lodger'),
+	'nurse'           =>i18n::translate_c('FEMALE', 'Nurse'),
+	'owner'           =>i18n::translate_c('FEMALE', 'Owner'),
+	'registry_officer'=>i18n::translate_c('FEMALE', 'Registry Officer'),
+	'seller'          =>i18n::translate_c('FEMALE', 'Seller'),
+	'servant'         =>i18n::translate_c('FEMALE', 'Servant'),
+	'slave'           =>i18n::translate_c('FEMALE', 'Slave'),
+	'ward'            =>i18n::translate_c('FEMALE', 'Ward'),
+);
+
+// GEDCOM RELA codes for non-genealogical relationships.
+// These aren't part of the standard, but we list the common ones here so we can translate them.
+$RELA_CODES_M=array(
+	'attendant'       =>i18n::translate_c('MALE', 'Attendant'),
+	'attending'       =>i18n::translate_c('MALE', 'Attending'),
+	'buyer'           =>i18n::translate_c('MALE', 'Buyer'),
+	'civil_registrar' =>i18n::translate_c('MALE', 'Civil Registrar'),
+	'employee'        =>i18n::translate_c('MALE', 'Employee'),
+	'employer'        =>i18n::translate_c('MALE', 'Employer'),
+	'friend'          =>i18n::translate_c('MALE', 'Friend'),
+	'guardian'        =>i18n::translate_c('MALE', 'Guardian'),
+	'informant'       =>i18n::translate_c('MALE', 'Informant'),
+	'lodger'          =>i18n::translate_c('MALE', 'Lodger'),
+	'nurse'           =>i18n::translate_c('MALE', 'Nurse'),
+	'owner'           =>i18n::translate_c('MALE', 'Owner'),
+	'registry_officer'=>i18n::translate_c('MALE', 'Registry Officer'),
+	'seller'          =>i18n::translate_c('MALE', 'Seller'),
+	'servant'         =>i18n::translate_c('MALE', 'Servant'),
+	'slave'           =>i18n::translate_c('MALE', 'Slave'),
+	'ward'            =>i18n::translate_c('MALE', 'Ward'),
+);
+
 // TEMP tags - LDS temple codes
 $TEMPLE_CODES = array(
 	'ABA'  =>i18n::translate('Aba, Nigeria'),
@@ -1711,4 +1755,21 @@ function abbreviate_fact($fact) {
 		// Just use the first letter of the full fact
 		return utf8_substr(translate_fact($fact), 0, 1).'.';
 	}
+}
+
+// Create a label for a relationship type.
+function translate_rela($rela, $sex='') {
+	global $RELA_CODES, $RELA_CODES_M, $RELA_CODES_F;
+
+	if ($sex=='M' && array_key_exists($rela, $RELA_CODES_M)) {
+		return $RELA_CODES_M[$rela];
+	}
+	if ($sex=='F' && array_key_exists($rela, $RELA_CODES_F)) {
+		return $RELA_CODES_F[$rela];
+	}
+	if (array_key_exists($rela, $RELA_CODES)) {
+		return $RELA_CODES[$rela];
+	}
+	// Still no translation? Return original relationship name
+	return $rela;
 }

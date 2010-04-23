@@ -33,56 +33,6 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FUNCTIONS_PL_PHP', '');
 
 ////////////////////////////////////////////////////////////////////////////////
-// Localise a date. Lokalizacja daty.
-////////////////////////////////////////////////////////////////////////////////
-/*
-function date_localisation_pl(&$q1, &$d1, &$q2, &$d2, &$q3) {
-	static $NOMINATIVE_MONTHS=NULL;
-	static $GENITIVE_MONTHS=NULL;
-	static $INSTRUMENTAL_MONTHS=NULL;
-	static $LOCATIVE_MONTHS=NULL;
-
-	if (empty($NOMINATIVE_MONTHS)) {
-		$NOMINATIVE_MONTHS=array(i18n::translate('January'), i18n::translate('February'), i18n::translate('March'), i18n::translate('April'), i18n::translate('May'), i18n::translate('June'), i18n::translate('July'), i18n::translate('August'), i18n::translate('September'), i18n::translate('October'), i18n::translate('November'), i18n::translate('December'));
-		$GENITIVE_MONTHS=array('stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia');
-		$INSTRUMENTAL_MONTHS=array('styczniem', 'lutym', 'marcem', 'kwietniem', 'majem', 'czerwcem', 'lipcem', 'sierpniem', 'wrześniem', 'październikiem', 'listopadem', 'grudniem');
-		$LOCATIVE_MONTHS=array('styczniu', 'lutym', 'marcu', 'kwietniu', 'maju', 'czerwcu', 'lipcu', 'sierpniu', 'wrześniu', 'październiku', 'listopadzie', 'grudniu');
-	}
-
-	// Months with a day number are genitive, regardless of qualifier
-	for ($i=0; $i<12; ++$i) {
-		$d1=preg_replace("/(\d+ ){$NOMINATIVE_MONTHS[$i]}/", "$1{$GENITIVE_MONTHS[$i]}", $d1);
-		$d2=preg_replace("/(\d+ ){$NOMINATIVE_MONTHS[$i]}/", "$1{$GENITIVE_MONTHS[$i]}", $d2);
-	}
-
-	// Months without a day number (i.e. month at start) depend on the qualifier
-	switch ($q1) {
-	case 'from': case 'to': case 'abt': case 'apx': case 'cir':
-		for ($i=0; $i<12; ++$i)
-			$d1=preg_replace("/^{$NOMINATIVE_MONTHS[$i]}/", $GENITIVE_MONTHS[$i], $d1);
-		break;
-	case 'bet': case 'bef':
-		for ($i=0; $i<12; ++$i)
-			$d1=preg_replace("/^{$NOMINATIVE_MONTHS[$i]}/", $INSTRUMENTAL_MONTHS[$i], $d1);
-		break;
-	case 'aft':
-		for ($i=0; $i<12; ++$i)
-			$d1=preg_replace("/^{$NOMINATIVE_MONTHS[$i]}/", $LOCATIVE_MONTHS[$i], $d1);
-	 	break;
-	}
-	switch ($q2) {
-	case 'to':
-		for ($i=0; $i<12; ++$i)
-			$d2=preg_replace("/^{$NOMINATIVE_MONTHS[$i]}/", $GENITIVE_MONTHS[$i], $d2);
-		break;
-	case 'and':
-		for ($i=0; $i<12; ++$i)
-			$d2=preg_replace("/^{$NOMINATIVE_MONTHS[$i]}/", $INSTRUMENTAL_MONTHS[$i], $d2);
-		break;
-	}
-}
-*/
-////////////////////////////////////////////////////////////////////////////////
 // Localise an age. Lokalizacja wieku.
 ////////////////////////////////////////////////////////////////////////////////
 function age_localisation_pl(&$agestring, &$show_years) {
@@ -148,79 +98,6 @@ function age_localisation_pl(&$agestring, &$show_years) {
 		),
 		$agestring
 	);
-////////////////////////////////////////////////////////////////////////////////
-// Localise the relationships. Lokalizacja pokrewieństwa.
-////////////////////////////////////////////////////////////////////////////////
-function rela_localisation_pl(&$rela, &$pid2) {
-	if (isset($pid2)) {
-		$record = Person::getInstance($pid2);
-		if (!empty($record)) {
-			$sex = $record->getSex();
-			switch ($rela) {
-				case i18n::translate('Informant'):
-					if ($sex == "M")		$rela = "Informator";
-					else if ($sex == "F")   $rela = "Informatorka";
-					break;
-				case i18n::translate('Lodger'):
-					if ($sex == "M")		$rela = "Lokator";
-					else if ($sex == "F")   $rela = "Lokatorka";
-					break;
-				case i18n::translate('Slave'):
-					if ($sex == "M")		$rela = "Niewolnik";
-					else if ($sex == "F")   $rela = "Niewolnica";
-					break;
-				case i18n::translate('Attending'):
-					if ($sex == "M")		$rela = "Obsługujący";
-					else if ($sex == "F")   $rela = "Obsługująca";
-					break;
-				case i18n::translate('Guardian'):
-					if ($sex == "M")		$rela = "Opiekun";
-					else if ($sex == "F")   $rela = "Opiekunka";
-					break;
-				case i18n::translate('Nurse'):
-					if ($sex == "M")		$rela = "Pielęgniarz";
-					else if ($sex == "F")   $rela = "Pielęgniarka";
-					break;
-				case i18n::translate('Attendant'):
-					if ($sex == "M")		$rela = "Pomocnik";
-					else if ($sex == "F")   $rela = "Pomocnica";
-					break;
-				case i18n::translate('Employee'):
-					if ($sex == "M")		$rela = "Pracownik";
-					else if ($sex == "F")   $rela = "Pracownica";
-					break;
-				case i18n::translate('Friend'):
-					if ($sex == "M")		$rela = "Przyjaciel";
-					else if ($sex == "F")   $rela = "Przyjaciółka";
-					break;
-				case i18n::translate('Servant'):
-					if ($sex == "M")		$rela = "Służący";
-					else if ($sex == "F")   $rela = "Służąca";
-					break;
-				case i18n::translate('Seller'):
-					if ($sex == "M")		$rela = "Sprzedawca";
-					else if ($sex == "F")   $rela = "Sprzedawczyni";
-					break;
-				case i18n::translate('Owner'):
-					if ($sex == "M")		$rela = "Właściciel";
-					else if ($sex == "F")   $rela = "Właścicielka";
-					break;
-				case i18n::translate('Ward'):
-					if ($sex == "M")		$rela = "Wychowanek";
-					else if ($sex == "F")   $rela = "Wychowanka";
-					break;
-			}
-		}
-	}
-	return $rela;
-}
-
-function getRelationshipText_pl($relationshipDescription, $node, $pid1, $pid2) {
-	if ($relationshipDescription != false) {
-		return utf8_strtolower($relationshipDescription);
-	}
-	return false;
-}
 
 //-- functions to calculate polish specific genitive names
 function getFirstRelationsName_pl($pid) {

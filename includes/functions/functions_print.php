@@ -1607,8 +1607,10 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 	// Level 1 ASSO
 	if (preg_match('/^1 ASSO @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $factrec, $amatch)) {
 		$person=Person::getInstance($amatch[1]);
+		$sex='';
 		if ($person) {
 			$name=$person->getFullName();
+			$sex=$person->getSex();
 			switch ($type) {
 			case 'INDI':
 				$relationship=get_relationship_name(get_relationship($pid, $amatch[1], true, 4));
@@ -1647,7 +1649,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 			$name.=' ('.$amatch[1].')';
 		}
 		if (preg_match('/\n2 RELA (.+)/', $amatch[2], $rmatch)) {
-			$label='<br /><span class="label">'.i18n::translate('Relationship').':</span> '.$rmatch[1];
+			$label='<br /><span class="label">'.i18n::translate('Relationship').':</span> '.translate_rela($rmatch[1], $sex);
 		} else {
 			$label='';
 		}
@@ -1657,12 +1659,14 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 	// Level 2 ASSO
 	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@(\n[3-9].*)*/', $factrec, $amatches, PREG_SET_ORDER);
 	foreach ($amatches as $amatch) {
+		$person=Person::getInstance($amatch[1]);
+		if ($person) $sex=$person->getSex();
+		else $sex='';
 		if (preg_match('/\n3 RELA (.+)/', $amatch[0], $rmatch)) {
-			$label='<span class="label">'.i18n::translate(ucfirst(strtolower($rmatch[1]))).':</span> ';
+			$label='<span class="label">'.translate_rela($rmatch[1], $sex).':</span> ';
 		} else {
 			$label='';
 		}
-		$person=Person::getInstance($amatch[1]);
 		if ($person) {
 			$name=$person->getFullName();
 			switch ($type) {

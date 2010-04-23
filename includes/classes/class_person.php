@@ -1161,7 +1161,8 @@ class Person extends GedcomRecord {
 						$sgdate=$sEvent->getDate();
 						$srec = $sEvent->getGedcomRecord();
 						if ($sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-							$factrec='1 _'.$sEvent->getTag().$option;
+							if (isset($op)) $factrec='1 _'.$sEvent->getTag().$op;
+							else $factrec='1 _'.$sEvent->getTag().$option;
 							$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
 							if (!$sEvent->canShow()) {
 								$factrec.='\n2 RESN privacy';
@@ -1180,7 +1181,8 @@ class Person extends GedcomRecord {
 						$sgdate=$sEvent->getDate();
 						$srec = $sEvent->getGedcomRecord();
 						if ($sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-							$factrec='1 _'.$sEvent->getTag().$option;
+							if (isset($op)) $factrec='1 _'.$sEvent->getTag().$op;
+							else $factrec='1 _'.$sEvent->getTag().$option;
 							$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
 							if (!$sEvent->canShow()) {
 								$factrec.='\n2 RESN privacy';
