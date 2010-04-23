@@ -1658,7 +1658,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@(\n[3-9].*)*/', $factrec, $amatches, PREG_SET_ORDER);
 	foreach ($amatches as $amatch) {
 		if (preg_match('/\n3 RELA (.+)/', $amatch[0], $rmatch)) {
-			$label='<span class="label">'.$rmatch[1].':</span> ';
+			$label='<span class="label">'.i18n::translate(ucfirst(strtolower($rmatch[1]))).':</span> ';
 		} else {
 			$label='';
 		}
