@@ -96,6 +96,22 @@ $PEDI_CODES=array(
 	'sealing'=>i18n::translate('Sealing'),
 );
 
+// GEDCOM PEDI Female codes
+$PEDI_CODES_F=array(
+	'birth'  =>i18n::translate('Birth'),
+	'adopted'=>i18n::translate('Adopted'),
+	'foster' =>i18n::translate('Foster'),
+	'sealing'=>i18n::translate('Sealing'),
+);
+
+// GEDCOM PEDI Male codes
+$PEDI_CODES_M=array(
+	'birth'  =>i18n::translate('Birth'),
+	'adopted'=>i18n::translate('Adopted'),
+	'foster' =>i18n::translate('Foster'),
+	'sealing'=>i18n::translate('Sealing'),
+);
+
 // GEDCOM RELA codes for non-genealogical relationships.
 // These aren't part of the standard, but we list the common ones here so we can translate them.
 $RELA_CODES=array(
@@ -1166,7 +1182,7 @@ $FACTS=array(
 	'OCCU:AGNC'=>i18n::translate('Employer'),
 	'ORDI'=>i18n::translate('Ordinance'),
 	'ORDN'=>i18n::translate('Ordination'),
-//'ORDN:AGNC'=>i18n::translate('Religious Institution'), // What is the correct english word?  - clerical seminary?
+//	'ORDN:AGNC'=>i18n::translate('Religious Institution'), // What is the correct english word?  - clerical seminary?
 	'PAGE'=>i18n::translate('Citation Details'),
 	'PEDI'=>i18n::translate('Pedigree'),
 	'PHON'=>i18n::translate('Phone'),
@@ -1402,19 +1418,6 @@ $FACTS=array(
 	'__BRTM_SIBL'=>i18n::translate('Brit Mila of sibling'),
 );
 
-// TODO separate niece and nephew facts for brother's child facts and sister's child facts
-// $node = get_relationship($this_person_id, $niece_or_nephew_id);
-//if (isset($node["path"][1])) {
-//	$sibling_sex = Person::getInstance($node["path"][1])->getSex();
-//	if ($niece_or_nephew == "M") {
-//		if ($sibling_sex == "M") 	{	brother's son	}
-//		else if ($sibling_sex == "F")	{	sister's son 		}
-//	}
-//	else if ($niece_or_nephew == "F") {
-//		if ($sibling_sex == "M")	{	brother's daughter}
-//		else if ($sibling_sex == "F")	{	sister's daughter	}
-//	}
-//}
 // Facts, as applied to Males.
 // Use the context-sensitive translations when the word is the same in English
 $FACTS_M=array(
