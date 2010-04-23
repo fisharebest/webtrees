@@ -111,7 +111,7 @@ if ($surn) {
 print_footer();
 
 function print_fams($person, $famid=null) {
-	global $UNKNOWN_NN, $PEDI_CODES, $surn, $surn_script, $TEXT_DIRECTION;
+	global $UNKNOWN_NN, $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $surn, $surn_script, $TEXT_DIRECTION;
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
@@ -146,7 +146,11 @@ function print_fams($person, $famid=null) {
 		"<a target=\"_blank\" class=\"{$class}\" title=\"".$person->getXref()."\" href=\"{$person->getLinkUrl()}\">".PrintReady($person_name)."</a> ".
 		$person->getBirthDeathYears()." {$sosa}"; 
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
-		$current = "<span class='red'>".$PEDI_CODES[$person->getChildFamilyPedigree($famid)]."</span> ".$current;
+		$sex = $person->getSex();
+		if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label = $PEDI_CODES_F[$pedi];
+		else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label = $PEDI_CODES_M[$pedi];
+		else if (isset($PEDI_CODES[$pedi]))					$label = $PEDI_CODES[$pedi];
+		$current = "<span class='red'>".$label."</span> ".$current;
 	}
 	// spouses and children
 	if (count($person->getSpouseFamilies())<1) {

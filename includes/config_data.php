@@ -90,26 +90,26 @@ $ADOP_CODES=array(
 
 // GEDCOM PEDI codes
 $PEDI_CODES=array(
-	'birth'  =>i18n::translate('Birth'),
-	'adopted'=>i18n::translate('Adopted'),
-	'foster' =>i18n::translate('Foster'),
-	'sealing'=>i18n::translate('Sealing'),
+	'birth'  =>i18n::translate_c('Pedigree', 'Birth'),
+	'adopted'=>i18n::translate_c('Pedigree', 'Adopted'),
+	'foster' =>i18n::translate_c('Pedigree', 'Foster'),
+	'sealing'=>i18n::translate_c('Pedigree', 'Sealing'),
 );
 
 // GEDCOM PEDI Female codes
 $PEDI_CODES_F=array(
-	'birth'  =>i18n::translate('Birth'),
-	'adopted'=>i18n::translate('Adopted'),
-	'foster' =>i18n::translate('Foster'),
-	'sealing'=>i18n::translate('Sealing'),
+	'birth'  =>i18n::translate_c('Female pedigree', 'Birth'),
+	'adopted'=>i18n::translate_c('Female pedigree', 'Adopted'),
+	'foster' =>i18n::translate_c('Female pedigree', 'Foster'),
+	'sealing'=>i18n::translate_c('Female pedigree', 'Sealing'),
 );
 
 // GEDCOM PEDI Male codes
 $PEDI_CODES_M=array(
-	'birth'  =>i18n::translate('Birth'),
-	'adopted'=>i18n::translate('Adopted'),
-	'foster' =>i18n::translate('Foster'),
-	'sealing'=>i18n::translate('Sealing'),
+	'birth'  =>i18n::translate_c('Male pedigree', 'Birth'),
+	'adopted'=>i18n::translate_c('Male pedigree', 'Adopted'),
+	'foster' =>i18n::translate_c('Male pedigree', 'Foster'),
+	'sealing'=>i18n::translate_c('Male pedigree', 'Sealing'),
 );
 
 // GEDCOM RELA codes for non-genealogical relationships.

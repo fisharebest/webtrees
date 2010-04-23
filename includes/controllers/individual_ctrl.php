@@ -790,6 +790,8 @@ class IndividualControllerRoot extends BaseController {
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/
 	function buildFamilyList(&$family, $type) {
+		global $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M;
+
 		$people = array();
 		if (!is_object($family)) return $people;
 		$labels = array();
@@ -975,14 +977,16 @@ class IndividualControllerRoot extends BaseController {
 				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->gedrec);
 				$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
 				if ($pedi) {
-					$label.=i18n::translate($pedi);
+					if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= " (".$PEDI_CODES_F[$pedi].")";
+					else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= " (".$PEDI_CODES_M[$pedi].")";
+					else if (isset($PEDI_CODES[$pedi]))					$label .= " (".$PEDI_CODES[$pedi].")";
 				}
 				$children[$i]->setLabel($label);
 			}
 		}
 		$num = count($newchildren);
 		for($i=0; $i<$num; $i++) {
-				$label = $labels["sibling"];
+			$label = $labels["sibling"];
 			$sex = $newchildren[$i]->getSex();
 			if ($sex=="F") {
 				$label = $labels["sister"];
@@ -992,7 +996,9 @@ class IndividualControllerRoot extends BaseController {
 		}
 			if ($newchildren[$i]->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
 			$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if (isset($PEDI_CODES[$pedi])) $label .= " (".$PEDI_CODES[$pedi].")";
+			if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= " (".$PEDI_CODES_F[$pedi].")";
+			else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= " (".$PEDI_CODES_M[$pedi].")";
+			else if (isset($PEDI_CODES[$pedi]))					$label .= " (".$PEDI_CODES[$pedi].")";
 			$newchildren[$i]->setLabel($label);
 		}
 		$num = count($delchildren);
@@ -1007,7 +1013,9 @@ class IndividualControllerRoot extends BaseController {
 			}
 			if ($delchildren[$i]->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
 			$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if (isset($PEDI_CODES[$pedi])) $label .= " (".$PEDI_CODES[$pedi].")";
+			if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= " (".$PEDI_CODES_F[$pedi].")";
+			else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= " (".$PEDI_CODES_M[$pedi].")";
+			else if (isset($PEDI_CODES[$pedi]))					$label .= " (".$PEDI_CODES[$pedi].")";
 			$delchildren[$i]->setLabel($label);
 		}
 		if (!is_null($newhusb)) $people['newhusb'] = $newhusb;

@@ -123,6 +123,18 @@ function edit_field_pedi($name, $selected='', $extra='') {
 	return select_edit_control($name, $PEDI_CODES, '', $selected, $extra);
 }
 
+// Print an edit control for a PEDI female field
+function edit_field_pedi_f($name, $selected='', $extra='') {
+	global $PEDI_CODES_F;
+	return select_edit_control($name, $PEDI_CODES_F, '', $selected, $extra);
+}
+
+// Print an edit control for a PEDI male field
+function edit_field_pedi_m($name, $selected='', $extra='') {
+	global $PEDI_CODES_M;
+	return select_edit_control($name, $PEDI_CODES_M, '', $selected, $extra);
+}
+
 // Print an edit control for a RELA field
 function edit_field_rela($name, $selected='', $extra='') {
 	global $RELA_CODES;
@@ -1067,7 +1079,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY, $TEMPLE_CODES;
 	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $tabkey, $STATUS_CODES, $SPLIT_PLACES, $pid, $linkToID;
+	global $tabkey, $STATUS_CODES, $SPLIT_PLACES, $pid, $gender, $linkToID;
 	global $bdm, $PRIVACY_BY_RESN;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
@@ -1369,7 +1381,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	else if ($fact=="ADOP") {
 		echo edit_field_adop($element_name, $value, 'tabindex="'.$tabkey.'"');
 	} else if ($fact=="PEDI") {
-		echo edit_field_pedi($element_name, $value, 'tabindex="'.$tabkey.'"');
+		if ($gender=="F")		echo edit_field_pedi_f($element_name, $value, 'tabindex="'.$tabkey.'"');
+		else if ($gender=="M")	echo edit_field_pedi_m($element_name, $value, 'tabindex="'.$tabkey.'"');
+		else					echo edit_field_pedi($element_name, $value, 'tabindex="'.$tabkey.'"');
 	} else if ($fact=="STAT") {
 		echo "<select tabindex=\"", $tabkey, "\" name=\"", $element_name, "\" >\n";
 		echo "<option value=''>No special status</option>\n";

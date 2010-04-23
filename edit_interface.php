@@ -47,6 +47,7 @@ $islink =safe_REQUEST($_REQUEST, 'islink',  WT_REGEX_UNSAFE);
 $type   =safe_REQUEST($_REQUEST, 'type',    WT_REGEX_UNSAFE);
 $fact   =safe_REQUEST($_REQUEST, 'fact',    WT_REGEX_UNSAFE);
 $option =safe_REQUEST($_REQUEST, 'option',  WT_REGEX_UNSAFE);
+$gender =safe_REQUEST($_REQUEST, 'gender',  WT_REGEX_UNSAFE);
 
 $assist =safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
 $noteid =safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
@@ -284,6 +285,12 @@ if (strstr($action, "addchild")) {
 	if (empty($famid)) {
 		echo '<b>', i18n::translate('Add an unlinked person'), '</b>', help_link('edit_add_unlinked_person');
 	}
+	else if ($gender=="F") {
+		echo '<b>', i18n::translate('Add daughter'), '</b>', help_link('edit_add_child');
+	}
+	else if ($gender=="M") {
+		echo '<b>', i18n::translate('Add son'), '</b>', help_link('edit_add_child');
+	}
 	else {
 		echo '<b>', i18n::translate('Add child'), '</b>', help_link('edit_add_child');
 	}
@@ -486,7 +493,7 @@ case 'add':
 	break;
 //------------------------------------------------------------------------------
 case 'addchild':
-	print_indi_form("addchildaction", $famid, "", "", "CHIL", @$_REQUEST["gender"]);
+	print_indi_form("addchildaction", $famid, "", "", "CHIL", $gender);
 	break;
 //------------------------------------------------------------------------------
 case 'addspouse':
@@ -512,11 +519,11 @@ case 'addfamlink':
 	print_findfamily_link("famid");
 	echo "\n</td></tr>";
 	if ($famtag=='CHIL') {
-		echo
-			'<tr>',
-			'<td class="facts_label">', i18n::translate('Pedigree'), '</td>',
-			'<td class="facts_value">', edit_field_pedi('pedigree'), '</td>',
-			'</tr>';
+		$sex = Person::getInstance($pid)->getSex();
+		echo '<tr><td class="facts_label">', i18n::translate('Pedigree'), '</td>';
+		if ($sex=='F') echo '<td class="facts_value">', edit_field_pedi_f('pedigree'), '</td></tr>';
+		else if ($sex=='M') echo '<td class="facts_value">', edit_field_pedi_m('pedigree'), '</td></tr>';
+		else echo '<td class="facts_value">', edit_field_pedi_('pedigree'), '</td></tr>';
 	}
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";

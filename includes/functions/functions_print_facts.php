@@ -192,7 +192,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		echo "<td class=\"descriptionbox $styleadd center width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
-		echo translate_fact($factref);
+		echo translate_fact($factref, $label_person);
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $view!="preview" && !FactEditRestricted($pid, $factrec)) {
 			$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
 			$menu->addOnclick("return edit_record('$pid', $linenum);");
