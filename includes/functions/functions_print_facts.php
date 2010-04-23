@@ -192,7 +192,8 @@ function print_fact(&$eventObj, $noedit=false) {
 		echo "<td class=\"descriptionbox $styleadd center width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
-		echo translate_fact($factref, $label_person);
+		if ($ct>0) echo $factref;
+		else echo translate_fact($factref, $label_person);
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $view!="preview" && !FactEditRestricted($pid, $factrec)) {
 			$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
 			$menu->addOnclick("return edit_record('$pid', $linenum);");
@@ -865,7 +866,22 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo " $styleadd center width20\">";
 			if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["source"]["small"], "\" alt=\"\" /><br />";
 			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
-			echo translate_fact($factname[1]);
+			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
+			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
+			$factname = $factwords[1]; // BIRT
+			$parent=GedcomRecord::getInstance($pid);
+			if ($factname == "EVEN" || $factname=="FACT") {
+				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
+				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
+				if ($ct>0) {
+					$factname = trim($ematch[1]);
+					echo $factname;
+				} else {
+					echo translate_fact($factname, $parent);
+				}
+			} else {
+				echo translate_fact($factname, $parent);
+			}
 			if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="red" && $view!="preview") {
 				$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
 				$menu->addOnclick("return edit_record('$pid', $linenum);");
@@ -1121,13 +1137,19 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT
-			if ($factname == "EVEN") {
-				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
-				$factwords = explode(" ", $factlines[1].' EVEN'); // 1 EVEN\n2 TYPE MDCL\n2 NOTE
-				$factname = $factwords[2]; // MDCL
-			}
 			$parent=GedcomRecord::getInstance($pid);
-			echo translate_fact($factname, $parent);
+			if ($factname == "EVEN" || $factname=="FACT") {
+				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
+				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
+				if ($ct>0) {
+					$factname = trim($ematch[1]);
+					echo $factname;
+				} else {
+					echo translate_fact($factname, $parent);
+				}
+			} else {
+				echo translate_fact($factname, $parent);
+			}
 		}
 		if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="change_old" && $view!="preview") {
 			$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
