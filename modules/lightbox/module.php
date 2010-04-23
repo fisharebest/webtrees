@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -91,7 +91,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		}
 		echo "</div>";
 
-		$out .= ob_get_contents();
+		$out = ob_get_contents();
 		ob_end_clean();
 		$out .= "</div>";
 		return $out;
