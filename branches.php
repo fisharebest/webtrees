@@ -32,7 +32,7 @@ require './includes/session.php';
 
 //-- const
 $fact='MARR';
-define('WT_ICON_RINGS', '<img src="images/small/rings.gif" alt="'.i18n::translate('MARR').'" title="'.i18n::translate('MARR').'" />');
+define('WT_ICON_RINGS', '<img src="images/small/rings.gif" alt="'.translate_fact('MARR').'" title="'.translate_fact('MARR').'" />');
 define('WT_ICON_BRANCHES', "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["patriarch"]["small"]."\" alt=\"\" align=\"middle\" />");
 
 //-- args
@@ -70,7 +70,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 	<table class="center facts_table width50">
 		<tr>
 			<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>">
-				<?php echo i18n::translate('SURN'), help_link('surname'); ?></td>
+				<?php echo translate_fact('SURN'), help_link('surname'); ?></td>
 			<td class="optionbox <?php echo $TEXT_DIRECTION; ?>">
 				<input type="text" name="surn" id="SURN" value="<?php echo $surn?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged?>" />
@@ -244,6 +244,6 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 
 function sosa_gen($sosa) {
 	$gen = (int)log($sosa, 2)+1;
-	return "<sup title=\"".i18n::translate('Generations')."\">{$gen}</sup>";
+	return "<sup title=\"".i18n::translate('Generation')."\">{$gen}</sup>";
 }
 ?>
