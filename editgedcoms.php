@@ -79,6 +79,9 @@ case 'new_ged':
 	// check it doesn't already exist before we create it
 	if (!$gedcom_id) {
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
+		copy('config_gedcom.php', $INDEX_DIRECTORY.$ged_name.'_conf.php');
+		copy('privacy.php',       $INDEX_DIRECTORY.$ged_name.'_priv.php');
+
 		WT_DB::prepare(
 			"UPDATE {$TBLPREFIX}gedcom".
 			" SET import_gedcom=?, import_offset=1".
