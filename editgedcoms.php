@@ -85,11 +85,14 @@ case 'new_ged':
 		set_gedcom_setting($gedcom_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
 		set_gedcom_setting($gedcom_id, 'title',   i18n::translate('Genealogy from [%s]', $ged_name));
 
+		// I18N: This should be a common/default/placeholder name of a person.  Put slashes around the surname.
+		$john_doe=i18n::translate('John /DOE/');
+		$note=i18n::translate('Edit this individual and replace their details with your own');
 		WT_DB::prepare(
 			"UPDATE {$TBLPREFIX}gedcom".
 			" SET import_gedcom=?, import_offset=1".
 			" WHERE gedcom_id=?"
-		)->execute(array("0 HEAD\n0 @I1@ INDI\n1 NAME John /DOE/\n1 SEX M\n1 BIRT\n2 DATE 1 JAN 1850\n2 NOTE Edit this individual and replace with your own details\n0 TRLR\n", $gedcom_id));
+		)->execute(array("0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 1 JAN 1850\n2 NOTE {$note}\n0 TRLR\n", $gedcom_id));
 	}
 	break;
 case 'upload_ged':
