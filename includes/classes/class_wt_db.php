@@ -363,6 +363,11 @@ class WT_DBStatement {
 		$this->pdostatement=$statement;
 	}
 
+	// Need this function to load BLOB values from streams
+	public function bindParam($num, &$value, $type) {
+		$this->pdostatement->bindParam($num, $value, $type);
+	}
+
 	//////////////////////////////////////////////////////////////////////////////
 	// FLUENT INTERFACE
 	// Add automatic calling of execute() and closeCursor()
