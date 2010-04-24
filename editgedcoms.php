@@ -156,7 +156,7 @@ case 'importform':
 		$d=opendir($INDEX_DIRECTORY);
 		$files=array();
 		while (($f=readdir($d))!==false) {
-			if (is_file($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
+			if (!is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
 				$fp=fopen($INDEX_DIRECTORY.$f, 'rb');
 				$header=fread($fp, 64);
 				fclose($fp);
@@ -271,7 +271,7 @@ if (WT_USER_IS_ADMIN) {
 	$d=opendir($INDEX_DIRECTORY);
 	$files=false;
 	while (($f=readdir($d))!==false) {
-		if (!in_array($f, $all_gedcoms) && is_readable($INDEX_DIRECTORY.$f)) {
+		if (!in_array($f, $all_gedcoms) && !is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
 			$fp=fopen($INDEX_DIRECTORY.$f, 'rb');
 			$header=fread($fp, 64);
 			fclose($fp);
