@@ -98,6 +98,7 @@ function age_localisation_pl(&$agestring, &$show_years) {
 		),
 		$agestring
 	);
+}
 
 //-- functions to calculate polish specific genitive names
 function getFirstRelationsName_pl($pid) {
