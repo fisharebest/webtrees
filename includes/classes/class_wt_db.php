@@ -366,6 +366,7 @@ class WT_DBStatement {
 	// Need this function to load BLOB values from streams
 	public function bindParam($num, &$value, $type) {
 		$this->pdostatement->bindParam($num, $value, $type);
+		return $this;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
