@@ -150,7 +150,6 @@ case 'importform':
 	if (safe_GET('action')=='uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload" />';
 		echo '<input type="file" name="ged_name" />';
-		echo '<br /><br /><input type="submit" value="', i18n::translate('Save'), '" /></form>';
 	} else {
 		echo '<input type="hidden" name="action" value="replace_import" />';
 		$d=opendir($INDEX_DIRECTORY);
@@ -175,11 +174,18 @@ case 'importform':
 				echo'>', htmlspecialchars($file), '</option>';
 			}
 			echo '</select>';
-			echo '<br /><br /><input type="submit" value="', i18n::translate('Save'), '" /></form>';
 		} else {
 			echo '<p>', i18n::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', $INDEX_DIRECTORY);
+			echo '</form>';
+			echo '<br /><br />';
+			echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', i18n::translate('Cancel'), '" /></form>';
+			print_footer();
+			exit;
 		}
 	}
+	echo '<br /><br /><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
+	echo i18n::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then tick this box to merge the current media objects with the new GEDCOM.');
+	echo '<br /><br /><input type="submit" value="', i18n::translate('Save'), '" /></form>';
 	echo '</form>';
 	echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', i18n::translate('Cancel'), '" /></form>';
 	print_footer();
@@ -194,7 +200,7 @@ foreach ($gedcoms as $gedcom) {
 		echo
 			'<table class="gedcom_table" width="100%">',
 			'<tr><td class="list_label" width="20%">', i18n::translate('GEDCOM name'),
-			'</td><td class="list_value"><a href="index.php?ctype=gedcom&ged="', urlencode($gedcom->gedcom_name), '">', htmlspecialchars($gedcom->gedcom_name), ' - ',
+			'</td><td class="list_value"><a href="index.php?ctype=gedcom&ged=', urlencode($gedcom->gedcom_name), '">', htmlspecialchars($gedcom->gedcom_name), ' - ',
 			htmlspecialchars(get_gedcom_setting($gedcom->gedcom_id, 'title')), '</a>',
 			'</td></tr><tr><td class="list_label">', i18n::translate('GEDCOM administration'),
 			'</td><td class="list_value">';
@@ -204,7 +210,7 @@ foreach ($gedcoms as $gedcom) {
 			echo
 				'<div id="import', $gedcom->gedcom_id, '"></div>',
 				WT_JS_START,
-				'$("#import', $gedcom->gedcom_id, '").load("import.php?gedcom_id=', $gedcom->gedcom_id, '")',
+				'$("#import', $gedcom->gedcom_id, '").load("import.php?gedcom_id=', $gedcom->gedcom_id, '&keep_media=', safe_POST('keep_media'.$gedcom->gedcom_id), '");',
 				WT_JS_END;
 		}
 		echo 
