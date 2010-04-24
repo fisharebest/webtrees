@@ -125,7 +125,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
-		if (preg_match('/\n1\s*CHAR(ACTER)\s+(.+)/', $data, $match)) {
+		if (preg_match('/\n1\s*CHAR(?:ACTER)?\s+(.+)/', $data, $match)) {
 			$charset=strtoupper($match[1]);
 		} else {
 			$charset='ASCII';
@@ -168,7 +168,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		default:
 			echo
 				WT_JS_START,
-				'alert(', htmlspecialchars(i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset)), ');',
+				'alert(\'', htmlspecialchars(i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset)), '\');',
 				WT_JS_END;
 			break;
 		}
