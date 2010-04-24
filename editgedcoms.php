@@ -81,6 +81,8 @@ case 'new_ged':
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
 		copy('config_gedcom.php', $INDEX_DIRECTORY.$ged_name.'_conf.php');
 		copy('privacy.php',       $INDEX_DIRECTORY.$ged_name.'_priv.php');
+		set_gedcom_setting($gedcom_id, 'config',  $INDEX_DIRECTORY.$ged_name.'_conf.php');
+		set_gedcom_setting($gedcom_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
 
 		WT_DB::prepare(
 			"UPDATE {$TBLPREFIX}gedcom".
