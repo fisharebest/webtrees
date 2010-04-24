@@ -83,6 +83,7 @@ case 'new_ged':
 		copy('privacy.php',       $INDEX_DIRECTORY.$ged_name.'_priv.php');
 		set_gedcom_setting($gedcom_id, 'config',  $INDEX_DIRECTORY.$ged_name.'_conf.php');
 		set_gedcom_setting($gedcom_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
+		set_gedcom_setting($gedcom_id, 'title',   i18n::translate('Genealogy from [%s]', $ged_name));
 
 		WT_DB::prepare(
 			"UPDATE {$TBLPREFIX}gedcom".

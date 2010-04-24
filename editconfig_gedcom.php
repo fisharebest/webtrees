@@ -84,16 +84,14 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 $gedcom_config = $INDEX_DIRECTORY.WT_GEDCOM."_conf.php";
 $gedcom_privacy = $INDEX_DIRECTORY.WT_GEDCOM."_priv.php";
 	
-if (empty($gedcom_title)) {
-	if (!empty($_POST["gedcom_title"])) {
-		$gedcom_title=$_POST["gedcom_title"];
-	} else {
-		$gedcom_title=i18n::translate('Genealogy from [%s]', WT_GEDCOM);
-	}
-}
-	
 if (safe_POST('action')=='update') {
 	$errors = false;
+
+	$gedcom_title=$_POST["gedcom_title"];
+	if (empty($gedcom_title)) {
+		$gedcom_title=i18n::translate('Genealogy from [%s]', WT_GEDCOM);
+	}
+	set_gedcom_setting(WT_GED_ID, 'title', $gedcom_title);
 
 	// Check that add/remove common surnames are separated by [,;] blank
 	$_POST["NEW_COMMON_NAMES_REMOVE"] = preg_replace("/[,;]\b/", ", ", $_POST["NEW_COMMON_NAMES_REMOVE"]);
@@ -391,6 +389,10 @@ if (safe_POST('action')=='update') {
 }
 
 require $gedcom_config;
+$gedcom_title=get_gedcom_setting(WT_GED_ID, 'title');
+if (empty($gedcom_title)) {
+	$gedcom_title=i18n::translate('Genealogy from [%s]', WT_GEDCOM);
+}
 
 //-- output starts here
 print_header(i18n::translate('GEDCOM Configuration'));
