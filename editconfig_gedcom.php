@@ -34,20 +34,10 @@ define('WT_SCRIPT_NAME', 'editconfig_gedcom.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-// editconfig.php and uploadgedcom.php make extensive use of
-// import_request_variables and are heavily inter-dependent.
-@import_request_variables('cgp');
-
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-if (empty($action)) $action = "";
-if (isset($_REQUEST['source'])) $source = $_REQUEST['source'];
-if (empty($source)) $source="";		// Set when loaded from uploadgedcom.php
 if (!WT_USER_GEDCOM_ADMIN) {
 	header("Location: editgedcoms.php");
 	exit;
 }
-
-	global $whichFile;		// This is needed for error messages
 
 /**
  * find the name of the first GEDCOM file in a zipfile
@@ -91,178 +81,19 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 	return $zipfile;
 }
 
-if (isset($_REQUEST['path'])) $path = $_REQUEST['path'];
-if (isset($_REQUEST['oldged'])) $oldged = $_REQUEST['oldged'];
-if (isset($_REQUEST['GEDFILENAME'])) $GEDFILENAME = $_REQUEST['GEDFILENAME'];
-if (isset($_REQUEST['GEDCOMPATH'])) $GEDCOMPATH = $_REQUEST['GEDCOMPATH'];
-if (isset($_REQUEST['ged'])) $ged = $_REQUEST['ged'];
-if (isset($_REQUEST['gedcom_title'])) $gedcom_title = $_REQUEST['gedcom_title'];
-if (isset($_REQUEST['THEME_DIR'])) $THEME_DIR = $_REQUEST['THEME_DIR'];
-
-if (empty($oldged)) $oldged = "";
-else $ged = $oldged;
-if (!isset($path)) $path = "";
-if (!isset($GEDFILENAME)) $GEDFILENAME = "";
-
-if (isset($GEDCOMPATH)) {
-	$ctupload = count($_FILES);
-	if ($ctupload > 0) {
-		// NOTE: Extract the GEDCOM filename
-		if (!empty($path)) {
-			$GEDFILENAME = basename($path);
-		} else {
-			$GEDFILENAME = $_FILES['GEDCOMPATH']['name'];
-		}
-		if ($path=="" || dirname($path) == ".") {
-			$upload_path = $INDEX_DIRECTORY;
-		} else {
-			$upload_path = dirname($path)."/";
-		}
-		if (empty($GEDFILENAME)) {
-			$GEDFILENAME = $_FILES['GEDCOMPATH']['name'];
-		}
-
-		//-- remove any funny characters from uploaded files
-		$GEDFILENAME = preg_replace('/[\+\&\%\$@]/', "_", $GEDFILENAME);
-
-		// NOTE: When uploading a file check if it doesn't exist yet
-		if ($action=="replace" || !in_array($GEDFILENAME, get_all_gedcoms()) && !file_exists($upload_path.$GEDFILENAME)) {
-			if (move_uploaded_file($_FILES['GEDCOMPATH']['tmp_name'], $upload_path.$GEDFILENAME)) {
-				AddToLog("Gedcom ".$path.$GEDFILENAME." uploaded", 'config');
-				$GEDCOMPATH = $upload_path.$GEDFILENAME;
-			} else {
-				$error = i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES['GEDCOMPATH']['error']);
-				$action = "upload_form";
-			}
-		} else {
-			// NOTE: If the file exists we will make a backup file
-			if (move_uploaded_file($_FILES['GEDCOMPATH']['tmp_name'], $upload_path.$GEDFILENAME.".bak")) {
-				$bakfile = $upload_path.$GEDFILENAME.".bak";
-				$GEDCOMPATH = $upload_path.$GEDFILENAME;
-			} else {
-				$error = i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($_FILES['GEDCOMPATH']['error']);
-				$action = "upload_form";
-			}
-		}
-	}
-	//-- check if there was an error during the upload
-	if (empty($error)) {
-		// NOTE: Extract the GEDCOM filename
-		if (!empty($path)) {
-			$GEDFILENAME = basename($path);
-		} else {
-			$GEDFILENAME = basename($GEDCOMPATH);
-		}
-		// NOTE: Check if the input contains a valid path otherwise check if there is one in the GEDCOMPATH
-		if (!is_dir($path)) {
-			if (!empty($path)) {
-				$parts = preg_split("/[\/\\\]/", $path);
-			} else {
-				$parts = preg_split("/[\/\\\]/", $GEDCOMPATH);
-			}
-			$path = "";
-			$ctparts = count($parts)-1;
-			if (count($parts) == 1) {
-				$path = $INDEX_DIRECTORY;
-			} else {
-				foreach ($parts as $key => $pathpart) {
-					if ($key < $ctparts) $path .= $pathpart."/";
-				}
-			}
-		}
-		// NOTE: Check if it is a zipfile
-		if (strstr(strtolower(trim($GEDFILENAME)), ".zip")==".zip") {
-			$GEDFILENAME = GetGEDFromZIP($path.$GEDFILENAME);
-		}
-		$ged = $GEDFILENAME;
-	} else {
-		$action = "";
-	}
-}
-if (isset($ged)) {
-	$ged_id=get_id_from_gedcom($ged);
-	if ($ged_id) {
-		$GEDCOMPATH = get_gedcom_setting($ged_id, 'path');
-		if (empty($path)) {
-			$path = "";
-			$parts = preg_split("/[\/\\\]/", $GEDCOMPATH);
-			$ctparts = count($parts)-1;
-			if (count($parts) == 1) {
-				$path = $INDEX_DIRECTORY;
-			} else {
-				foreach ($parts as $key => $pathpart) {
-					if ($key < $ctparts) $path .= $pathpart."/";
-				}
-			}
-		}
-		$GEDFILENAME = $ged;
-		if (!isset($gedcom_title)) {
-			$gedcom_title = get_gedcom_setting($ged_id, 'title');
-		}
-		$gedcom_config = get_config_file($ged_id);
-		$gedcom_privacy = get_privacy_file($ged_id);
-		$FILE = $ged;
-		$oldged = $ged;
-	} else {
-		if (empty($_POST["GEDCOMPATH"])) {
-			$GEDCOMPATH = "";
-			$gedcom_title = "";
-		}
-		$gedcom_config = "config_gedcom.php";
-		$gedcom_privacy = "privacy.php";
-	}
-} else {
-	$GEDCOMPATH = "";
-	$gedcom_title = "";
-	$gedcom_config = "config_gedcom.php";
-	$gedcom_privacy = "privacy.php";
-	$path = "";
-	$GEDFILENAME = "";
-}
-$USERLANG = $LANGUAGE;
-$temp = $THEME_DIR;
-require $gedcom_config;
-if (!isset($_POST["GEDCOMLANG"])) {
-	$GEDCOMLANG = $LANGUAGE;
-} else {
-	$GEDCOMLANG = $_POST["GEDCOMLANG"];
-}
-$LANGUAGE = $USERLANG;
-$error_msg = "";
-
-if (!file_exists($path.$GEDFILENAME) && $source != "add_new_form") {
-	$action="add";
-}
-if ($action=="update") {
-	$errors = false;
-	$FILE=$GEDFILENAME;
-	$newgedcom=false;
-	$gedcom_config="config_gedcom.php";
-	if (copy($gedcom_config, $INDEX_DIRECTORY.$FILE."_conf.php")) {
-		$gedcom_config = "\${INDEX_DIRECTORY}".$FILE."_conf.php";
-	}
-	if (!file_exists($INDEX_DIRECTORY.$FILE."_priv.php")) {
-		if (copy($gedcom_privacy, $INDEX_DIRECTORY.$FILE."_priv.php")) {
-			$gedcom_privacy = "\${INDEX_DIRECTORY}".$FILE."_priv.php";
-		}
-	} else {
-		$gedcom_privacy = "\${INDEX_DIRECTORY}".$FILE."_priv.php";
-	}
-
-	if (empty($gedcom_title)) {
-		if (!empty($_POST["gedcom_title"])) {
-			$gedcom_title=$_POST["gedcom_title"];
-		} else {
-			$gedcom_title=i18n::translate('Genealogy from [%s]', $FILE);
-		}
-	}
+$gedcom_config = $INDEX_DIRECTORY.WT_GEDCOM."_conf.php";
+$gedcom_privacy = $INDEX_DIRECTORY.WT_GEDCOM."_priv.php";
 	
-	// Create the gedcom if it doesn't already exist
-	$ged_id=get_id_from_gedcom($FILE, true);
-	set_gedcom_setting($ged_id, 'config',  $gedcom_config);
-	set_gedcom_setting($ged_id, 'privacy', $gedcom_privacy);
-	set_gedcom_setting($ged_id, 'title',   $gedcom_title);
-	set_gedcom_setting($ged_id, 'path',    $path.$GEDFILENAME);
+if (empty($gedcom_title)) {
+	if (!empty($_POST["gedcom_title"])) {
+		$gedcom_title=$_POST["gedcom_title"];
+	} else {
+		$gedcom_title=i18n::translate('Genealogy from [%s]', WT_GEDCOM);
+	}
+}
+	
+if (safe_POST('action')=='update') {
+	$errors = false;
 
 	// Check that add/remove common surnames are separated by [,;] blank
 	$_POST["NEW_COMMON_NAMES_REMOVE"] = preg_replace("/[,;]\b/", ", ", $_POST["NEW_COMMON_NAMES_REMOVE"]);
@@ -276,7 +107,7 @@ if ($action=="update") {
 	$boolarray["no"]="false";
 	$boolarray[false]="false";
 	$boolarray[true]="true";
-	$configtext = implode('', file("config_gedcom.php"));
+	$configtext = file_get_contents($gedcom_config);
 
 	$_POST["NEW_MEDIA_DIRECTORY"] = preg_replace('/\\\/', '/', $_POST["NEW_MEDIA_DIRECTORY"]);
 	$ct = preg_match("'/$'", $_POST["NEW_MEDIA_DIRECTORY"]);
@@ -431,7 +262,7 @@ if ($action=="update") {
 		// create the media directory
 		// if NEW_MEDIA_FIREWALL_ROOTDIR is the INDEX_DIRECTORY, PGV will have perms to create it
 		// if PGV is unable to create the directory, tell the user to create it
-		if (($NEW_USE_MEDIA_FIREWALL=='yes') || $USE_MEDIA_FIREWALL) {
+		if (($_POST["NEW_USE_MEDIA_FIREWALL"]=='yes') || $USE_MEDIA_FIREWALL) {
 			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY, WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
@@ -443,7 +274,7 @@ if ($action=="update") {
 	}
 	if (!$errors) {
 		// create the thumbs dir to make sure we have write perms
-		if (($NEW_USE_MEDIA_FIREWALL=='yes') || $USE_MEDIA_FIREWALL) {
+		if (($_POST["NEW_USE_MEDIA_FIREWALL"]=='yes') || $USE_MEDIA_FIREWALL) {
 			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs", WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
@@ -455,7 +286,7 @@ if ($action=="update") {
 	}
 	if (!$errors) {
 		// copy the .htaccess file from INDEX_DIRECTORY to NEW_MEDIA_FIREWALL_ROOTDIR in case it is still in a web-accessible area
-		if (($NEW_USE_MEDIA_FIREWALL=='yes') || $USE_MEDIA_FIREWALL) {
+		if (($_POST["NEW_USE_MEDIA_FIREWALL"]=='yes') || $USE_MEDIA_FIREWALL) {
 			if ( (file_exists($INDEX_DIRECTORY.".htaccess")) && (is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) && (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) ) {
 				@copy($INDEX_DIRECTORY.".htaccess", $NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess");
 				if (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) {
@@ -468,28 +299,9 @@ if ($action=="update") {
 	if (!$errors) {
 		$configtext = preg_replace('/\$MEDIA_FIREWALL_ROOTDIR\s*=\s*".*";/', "\$MEDIA_FIREWALL_ROOTDIR = \"".$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]."\";", $configtext);
 	}
-	if (file_exists($NTHEME_DIR))
-		$configtext = preg_replace('/\$THEME_DIR\s*=\s*".*";/', "\$THEME_DIR = \"".$_POST["NTHEME_DIR"]."\";", $configtext);
-	else {
-		$errors = true;
-	}
-	$whichFile = $INDEX_DIRECTORY.$FILE."_conf.php";
-	if (!is_writable($whichFile)) {
-		$errors = true;
-		$error_msg .= "<span class=\"error\"><b>".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</b></span><br />";
-	}
-	$fp = @fopen($whichFile, "wb");
-	if (!$fp) {
-		$errors = true;
-		$error_msg .= "<span class=\"error\">".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />\n";
-	}
-	else {
-		fwrite($fp, $configtext);
-		fclose($fp);
-	}
+	file_put_contents($gedcom_config, $configtext);
 
-
-	if (($NEW_USE_MEDIA_FIREWALL=='yes') && !$USE_MEDIA_FIREWALL) {
+	if (($_POST["NEW_USE_MEDIA_FIREWALL"]=='yes') && !$USE_MEDIA_FIREWALL) {
 		AddToLog("Media Firewall enabled", 'config');
 
 		if (!$errors) {
@@ -527,7 +339,7 @@ if ($action=="update") {
 			}
 		}
 
-	} elseif (($NEW_USE_MEDIA_FIREWALL=='no') && $USE_MEDIA_FIREWALL) {
+	} elseif (($_POST["NEW_USE_MEDIA_FIREWALL"]=='no') && $USE_MEDIA_FIREWALL) {
 		AddToLog("Media Firewall disabled", 'config');
 
 		if (file_exists($MEDIA_DIRECTORY.".htaccess")) {
@@ -556,67 +368,36 @@ if ($action=="update") {
 			unlink ($INDEX_DIRECTORY.$FILE."_upcoming.php");
 		}
 	}
-	foreach ($_POST as $key=>$value) {
-		if ($key != "path") {
-			$key=str_replace("NEW_", "", $key);
-			if ($value=='yes') {
-				$$key=true;
-			} elseif ($value=='no') {
-				$$key=false;
-			} else {
-				$$key=$value;
-			}
-		}
-	}
 
 	//-- delete the cache files for the Home Page blocks
 	require_once WT_ROOT.'includes/index_cache.php';
 	clearCache();
 
-	$logline = AddToLog("Gedcom configuration ".$INDEX_DIRECTORY.$FILE."_conf.php"." updated", 'config');
-	$gedcomconfname = $FILE."_conf.php";
+	$logline = AddToLog("Gedcom configuration ".$INDEX_DIRECTORY.WT_GEDCOM."_conf.php"." updated", 'config');
+	$gedcomconfname = WT_GEDCOM."_conf.php";
 	if (!$errors) {
-		$gednews = getUserNews($FILE);
+		$gednews = getUserNews(WT_GEDCOM);
 		if (count($gednews)==0) {
 			$news = array();
 			$news["title"] = i18n::translate('Welcome to Your Genealogy');
-			$news["username"] = $FILE;
+			$news["username"] = WT_GEDCOM;
 			$news["text"] = i18n::translate('The genealogy information on this website is powered by <a href="http://www.webtrees.net/" target="_blank">webtrees</a>.  This page provides an introduction and overview to this genealogy.<br /><br />To begin working with the data, choose one of the charts from the Charts menu, go to the Individual list, or search for a name or place.<br /><br />If you have trouble using the site, you can click on the Help icon to give you information on how to use the page that you are currently viewing.<br /><br />Thank you for visiting this site.');
 			$news["date"] = client_time();
 			addNews($news);
 		}
-		if ($source == "upload_form") {
-			$check = "upload";
-		} elseif ($source == "add_form") {
-			$check = "add";
-		} elseif ($source == "add_new_form") {
-			$check = "add_new";
-		}
-		if (!isset($bakfile)) {
-			$bakfile = "";
-		}
-		if ($source !== "") {
-			header("Location: ".encode_url("uploadgedcom.php?action=$source&check=$check&step=2&GEDFILENAME={$GEDFILENAME}&path={$path}&verify=verify_gedcom&bakfile={$bakfile}", false));
-		} else {
-			header("Location: editgedcoms.php");
-		}
+		header("Location: editgedcoms.php");
 		exit;
 	}
 }
-else if ($action=="replace") {
-	header("Location: ".encode_url("uploadgedcom.php?action=upload_form&GEDFILENAME={$GEDFILENAME}&path={$path}&verify=validate_form", false));
-}
+
+require $gedcom_config;
 
 //-- output starts here
 print_header(i18n::translate('GEDCOM Configuration'));
 
-if ($ENABLE_AUTOCOMPLETE && $source=='') require WT_ROOT.'js/autocomplete.js.htm';
+if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 if (!isset($GENERATE_UIDS)) $GENERATE_UIDS = false;
-$temp2 = $THEME_DIR;
-$THEME_DIR = $temp;
-$THEME_DIR = $temp2;
-if (!isset($NTHEME_DIR)) $NTHEME_DIR=$THEME_DIR;
 if (!isset($themeselect)) $themeselect="";
 if (!empty($error)) print "<span class=\"error\">".$error."</span>";
 ?>
@@ -643,24 +424,13 @@ if (!empty($error)) print "<span class=\"error\">".$error."</span>";
 	<tr>
 		<td colspan="2" class="facts_label"><?php
 		echo "<h2>", i18n::translate('GEDCOM Configuration'), " - ";
-		if (WT_GED_ID) {
-			echo PrintReady(get_gedcom_setting(WT_GED_ID, 'title'));
-		} elseif ($source == "add_form") {
-			echo i18n::translate('Add GEDCOM');
-		} elseif ($source == "upload_form") {
-			echo i18n::translate('Upload GEDCOM');
-		} elseif ($source == "add_new_form") {
-			echo i18n::translate('Create a new GEDCOM');
-		} elseif ($source == "replace_form") {
-			echo i18n::translate('Upload Replacement');
-		}
+		echo PrintReady(get_gedcom_setting(WT_GED_ID, 'title'));
 		echo "</h2>";
 		echo "<a href=\"editgedcoms.php\"><b>";
 		echo i18n::translate('Return to the GEDCOM management menu');
 		echo "</b></a><br /><br />";
 	?>
 
-<?php if ($source!="replace_form") { ?>
 <script language="javascript" type="text/javascript">
 <!--
 var searchable_tds, searchable_text;
@@ -835,15 +605,11 @@ function display_results(amount_found){
 		</td>
 	</tr>
 </table>
-<?php } // ($source!="replace_form") ?>
 		</td>
 	</tr>
 </table>
 
-<?php if ($source!="replace_form") { ?> <input type="hidden" name="action" value="update" />
-<?php } else { ?> <input type="hidden" name="action" value="replace" /> <?php } ?>
-<input type="hidden" name="source" value="<?php print $source; ?>" />
-<input type="hidden" name="oldged" value="<?php print $oldged; ?>" />
+<input type="hidden" name="action" value="update" />
 <input type="hidden" name="old_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" />
 <?php
 	if (!empty($error_msg)) print "<br /><span class=\"error\">".$error_msg."</span><br />\n";
@@ -866,50 +632,9 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
-		<?php
-		if ($source == "upload_form" || $source=="replace_form") {
-			echo i18n::translate('Upload path'), help_link('upload_path');
-			print "</td><td class=\"optionbox\">";
-			print "<input name=\"GEDCOMPATH\" type=\"file\" size=\"60\" dir=\"ltr\" />";
-			if ($source=="replace_form") print "<input type=\"hidden\" name=\"path\" value=\"".preg_replace('/\\*/', '\\', $path)."\" />";
-			if (!$filesize = ini_get('upload_max_filesize')) $filesize = "2M";
-			print " ( ".i18n::translate('Maximum upload size: ')." $filesize )";
-		} else {
-			echo i18n::translate('Path and name of GEDCOM on server'), help_link('gedcom_path');
-			echo "</td><td class=\"optionbox\">";
-			?>
-		<input type="text" name="GEDCOMPATH" value="<?php print preg_replace('/\\*/', '\\', $GEDCOMPATH); ?>" size="40" dir ="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('gedcom_path');" />
-		<?php
-		}
-			if ($source!="replace_form" && ($GEDCOMPATH != "" || $GEDFILENAME != "")) {
-				if (!file_exists($path.$GEDFILENAME) && !empty($GEDCOMPATH)) {
-					//-- gedcom not found so try looking for it with a .ged extension
-					if (strtolower(substr(trim($path.$GEDFILENAME), -4)) != ".ged") $GEDFILENAME .= ".ged";
-				}
-				if ((!isFileExternal($GEDCOMPATH)) &&(!file_exists($path.$GEDFILENAME))) {
-					print "<br /><span class=\"error\">".i18n::translate('The GEDCOM file, <b>%s</b>, does not exist at the specified location.', $GEDCOMPATH)."</span>\n";
-				}
-			}
-		?>
-		</td>
-	</tr>
-	<?php if ($source == "upload_form") { ?>
-	<tr>
-		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Path and name of GEDCOM on server'), help_link('gedcom_path'); ?>
-		</td>
-		<td class="optionbox">
-		<input type="text" name="path" value="<?php print preg_replace('/\\*/', '\\', $path); ?>" size="40" dir ="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('gedcom_path');" />
-		</td>
-	</tr>
-	<?php }
-	if ($source != "replace_form") {
-	?>
-	<tr>
-		<td class="descriptionbox wrap width20">
 			<?php	echo i18n::translate('GEDCOM title'), help_link('gedcom_title'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="gedcom_title" dir="ltr" value="<?php print str_replace("\"", "&quot;", PrintReady($gedcom_title)); ?>" size="40" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('gedcom_title');" /></td>
+		<td class="optionbox"><input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('gedcom_title');" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
@@ -917,7 +642,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 		</td>
 		<td class="optionbox">
 		<?php
-			echo edit_field_language('GEDCOMLANG', $GEDCOMLANG, 'dir="ltr" onfocus="getHelp(\'LANGUAGE\');" tabindex="'.(++$i).'"');
+			echo edit_field_language('GEDCOMLANG', $LANGUAGE, 'dir="ltr" onfocus="getHelp(\'LANGUAGE\');" tabindex="'.(++$i).'"');
 		?>
 		</td>
 	</tr>
@@ -927,18 +652,13 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 		</td>
 	<td class="optionbox"><input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('PEDIGREE_ROOT_ID');" />
 			<?php
-			// We can only show the person's details if we're editing an existing
-			// gedcom.  Otherwise there could be a mismatch between DB and FILE,
-			// or we could be uploading a new file, which we haven't seen yet.
-			if ($source=='') {
-				print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
-				if ($PEDIGREE_ROOT_ID) {
-					$person=Person::getInstance($PEDIGREE_ROOT_ID);
-					if ($person) {
-						echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
-					} else {
-						echo ' <span class="error">', i18n::translate('Unable to find record with ID'), '</span>';
-					}
+			print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
+			if ($PEDIGREE_ROOT_ID) {
+				$person=Person::getInstance($PEDIGREE_ROOT_ID);
+				if ($person) {
+					echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
+				} else {
+					echo ' <span class="error">', i18n::translate('Unable to find record with ID'), '</span>';
 				}
 			}
 		?>
@@ -2005,25 +1725,15 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick
 			<?php echo i18n::translate('Theme directory'), help_link('THEME_DIR'); ?>
 		</td>
 		<td class="optionbox">
-			<select name="themeselect" dir="ltr" tabindex="<?php echo ++$i; ?>"  onchange="document.configform.NTHEME_DIR.value=document.configform.themeselect.options[document.configform.themeselect.selectedIndex].value;">
+			<select name="themeselect" dir="ltr" tabindex="<?php echo ++$i; ?>">
 				<?php
 					foreach (get_theme_names() as $themename=>$themedir) {
 						print "<option value=\"".$themedir."\"";
-						if ($themedir == $NTHEME_DIR) print " selected=\"selected\"";
+						if ($themedir == $THEME_DIR) print " selected=\"selected\"";
 						print ">".$themename."</option>\n";
 					}
 				?>
-				<option value="themes/" <?php if ($themeselect=="themes//") print "selected=\"selected\""; ?>><?php print i18n::translate('Other, please type in'); ?></option>
 			</select>
-			<input type="text" name="NTHEME_DIR" value="<?php print $NTHEME_DIR; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('THEME_DIR');" />
-	<?php
-	if (!file_exists($NTHEME_DIR)) {
-		print "<span class=\"error\">$NTHEME_DIR ";
-		print i18n::translate('does not exist');
-		print "</span>\n";
-		$NTHEME_DIR=$THEME_DIR;
-	}
-	?>
 		</td>
 	</tr>
 	<tr>
@@ -2256,7 +1966,6 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Web Site and META Tag Sett
 			</select>
 		</td>
 	</tr>
-<?php } ?>
 </table>
 </div>
 <table class="facts_table" border="0">
@@ -2275,12 +1984,10 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Web Site and META Tag Sett
 <?php
 }
 
-// NOTE: Put the focus on the GEDCOM title field since the GEDCOM path actually
-// NOTE: needs no changing
+// NOTE: Put the focus on the GEDCOM title field
 ?>
 <script language="JavaScript" type="text/javascript">
-	<?php if ($source == "") print "document.configform.gedcom_title.focus();";
-	else print "document.configform.GEDCOMPATH.focus();"; ?>
+document.configform.gedcom_title.focus();
 </script>
 <?php
 if ($CONTACT_EMAIL=="you@yourdomain.com") $CONTACT_EMAIL = WT_USER_NAME;
