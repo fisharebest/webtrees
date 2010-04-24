@@ -46,6 +46,7 @@ $UNKNOWN_NN=array(
 	'russian'   =>'(неопределено)',
 	'han'       =>'(未知)',
 	'latin'     =>'(unknown)',
+	'common'    =>'(unknown)',
 );
 
 // Unknown givne name in various scripts
@@ -57,6 +58,7 @@ $UNKNOWN_PN=array(
 	'russian'   =>'(неопределено)',
 	'han'       =>'(未知)',
 	'latin'     =>'(unknown)',
+	'common'    =>'(unknown)',
 );
 
 // Type attribute of a media object
