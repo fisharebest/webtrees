@@ -378,7 +378,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 					$log_msg.="\n0 Error occurred on ";
 				} else {
 					$fmt_msg.="{$i} called from ";
-					$log_msg.="{$i} called from ";
+					$log_msg.="\n{$i} called from ";
 				}
 				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
 					$fmt_msg.="line <b>{$backtrace[$i]['line']}</b> of file <b>".basename($backtrace[$i]['file'])."</b>";
