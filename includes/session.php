@@ -424,7 +424,7 @@ if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='no') $_SESSION['show_cont
 if (!isset($USE_THUMBS_MAIN)) $USE_THUMBS_MAIN = false;
 
 if (WT_SCRIPT_NAME!='help_text.php') {
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php'))) {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php', 'import.php'))) {
 		header('Location: editgedcoms.php');
 		exit;
 	}

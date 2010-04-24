@@ -52,7 +52,7 @@ print_simple_header(i18n::translate('Export'));
 
 if ($export) {
 	$ged_id = get_id_from_gedcom($export);
-	$filename = get_gedcom_setting($ged_id, 'path');
+	$filename = get_site_setting('INDEX_DIRECTORY').$export;
 	echo '<h1>', i18n::translate('Export'), '</h1>';
 	echo '<p>', htmlspecialchars(filename_decode($export)), ' => ', $filename, '</p>';
 	flush();
@@ -71,7 +71,7 @@ if ($export) {
 
 		$end = microtime(true);
 		fclose($gedout);
-		unlink($filename);
+		@unlink($filename);
 		rename($filename.'.tmp', $filename);
 		$stat = stat($filename);
 		echo sprintf('<p>%d bytes, %0.3f seconds</p>', $stat['size'], $end-$start);

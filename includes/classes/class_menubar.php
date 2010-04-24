@@ -153,7 +153,7 @@ class MenuBar
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
 			$menu->addSubmenu($submenu);
 			//-- manage_gedcoms submenu
-			$submenu = new Menu(i18n::translate('Manage GEDCOMs and edit Privacy'), "editgedcoms.php");
+			$submenu = new Menu(i18n::translate('GEDCOM administration'), "editgedcoms.php");
 			if (!empty($WT_IMAGES["admin"]["small"]))
 				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["admin"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");

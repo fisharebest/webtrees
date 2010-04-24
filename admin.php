@@ -146,7 +146,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	    	</tr>
 			<tr>
 				<td class="optionbox width50"><a
-					href="editgedcoms.php"><?php echo i18n::translate('Manage GEDCOMs and edit Privacy');?></a><?php echo help_link('edit_gedcoms'); ?></td>
+					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration');?></a><?php echo help_link('edit_gedcoms'); ?></td>
 				<td class="optionbox width50"><a
 					href="edit_merge.php"><?php echo i18n::translate('Merge records'); ?></a><?php echo help_link('help_edit_merge.php'); ?></td>
 			</tr>

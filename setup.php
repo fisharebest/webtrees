@@ -589,8 +589,10 @@ try {
 	$TBLPREFIX=$_POST['tblpfx'];
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}gedcom (".
-		" gedcom_id   INTEGER AUTO_INCREMENT NOT NULL,".
-		" gedcom_name VARCHAR(255)           NOT NULL,".
+		" gedcom_id     INTEGER AUTO_INCREMENT                        NOT NULL,".
+		" gedcom_name   VARCHAR(255)                                  NOT NULL,".
+		" import_gedcom LONGBLOB                                      NOT NULL DEFAULT '',".
+		" import_offset INTEGER UNSIGNED                              NOT NULL DEFAULT 1,".
 		" PRIMARY KEY     (gedcom_id),".
 		" UNIQUE  KEY ux1 (gedcom_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -977,7 +979,6 @@ try {
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}site_setting (setting_name, setting_value) VALUES ".
 		"('WT_SCHEMA_VERSION',               '1'),".
-		"('DEFAULT_GEDCOM',                  'default.ged'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('AUTHENTICATION_MODULE',           'includes/authentication.php'),".
 		"('STORE_MESSAGES',                  '1'),".
@@ -988,7 +989,7 @@ try {
 		"('SESSION_SAVE_PATH',               ''),".
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
-		"('LOGIN_URL',                       ''),".
+		"('LOGIN_URL',                       'login.php'),".
 		"('MAX_VIEWS',                       '20'),".
 		"('MAX_VIEW_TIME',                   '1'),".
 		"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
