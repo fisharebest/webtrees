@@ -77,9 +77,9 @@ $percent=100*(($row->import_offset-1) / $row->import_total);
 $status=i18n::translate('Loading data from GEDCOM: %.1f%%', $percent);
 
 echo
-	'<div id="progressbar"><div style="position:absolute;">', htmlspecialchars($status), '</div></div>',
+	'<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', htmlspecialchars($status), '</div></div>',
 	WT_JS_START,
-	'$("#progressbar").progressbar({value: ', round($percent, 1), '});',
+	'$("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
 	WT_JS_END,
 flush();
 
@@ -192,18 +192,6 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				import_record(trim($rec), $gedcom_id, false);
 			}
 		}
-		// Recalculate progress and update status bar.
-		/* This isn't working.  These JS statements don't run until the script has finished. :-(
-		$row->import_offset+=strlen($data);
-		$percent=100*($row->import_offset / $row->import_total);
-		$status=sprintf('%.1f%%', $percent);
-		echo
-			WT_JS_START,
-			'$("#progress', $gedcom_id, '").attr("width", "', round($percent, 1), '%");',
-			'$("#status', $gedcom_id, '").html("', htmlspecialchars($status), '");',
-			WT_JS_END;
-		flush();
-		*/
 	}
 }
 
