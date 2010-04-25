@@ -1729,63 +1729,51 @@ class stats {
 			if (empty($rows)) return '';
 			$func="century_localisation_".WT_LOCALE;
 			$chxl = "0:|";
-			$male = true;
-			$temp = "";
 			$countsm = "";
 			$countsf = "";
 			$countsa = "";
 			foreach ($rows as $values) {
-				if ($temp!=$values['century']) {
-					$temp = $values['century'];
-					if ($sizes[0]<980) $sizes[0] += 50;
-					if (function_exists($func)) {
-						$century = $func($values['century'], false);
-					} else {
-						$century = $values['century'];
-					}
-					$chxl .= $century."|";
-					if ($values['sex'] == "F") {
-						if (!$male) {
-							$countsm .= "0,";
-							$countsa .= $fage.",";
-						}
-						$countsf .= $values['age'].",";
-						$fage = $values['age'];
-						$male = false;
-					} else if ($values['sex'] == "M") {
-						$countsf .= "0,";
-						$countsm .= $values['age'].",";
-						$countsa .= $values['age'].",";
-					} else if ($values['sex'] == "U") {
-						$countsf .= "0,";
-						$countsm .= "0,";
-						$countsa .= "0,";
-					}
-				}
-				else if ($values['sex'] == "M") {
-					$countsm .= $values['age'].",";
-					$countsa .= round(($fage+$values['age'])/2,1).",";
-					$male = true;
-				}
+				$out[$values['century']][$values['sex']]=$values['age'];
 			}
-			if (!$male) {
-				$countsa .= $fage.",";
+			foreach ($out as $century=>$values) {
+				if ($sizes[0]<980) $sizes[0] += 50;
+				if (function_exists($func)) {
+					$century = $func($century, false);
+				}
+				$chxl .= $century."|";
+				$average = 0;
+				if (isset($values['F'])) {
+					$countsf .= $values['F'].",";
+					$average = $values['F'];
+				} else {
+					$countsf .= "0,";
+				}
+				if (isset($values['M'])) {
+					$countsm .= $values['M'].",";
+					if ($average==0) $countsa .= $values['M'].",";
+					else $countsa .= (($values['M']+$average)/2).",";
+				} else {
+					$countsm .= "0,";
+					if ($average==0) $countsa .= "0,";
+					else $countsa .= $values['F'].",";
+				}
 			}
 			$countsm = substr($countsm,0,-1);
 			$countsf = substr($countsf,0,-1);
 			$countsa = substr($countsa,0,-1);
 			$chd = "t2:{$countsm}|{$countsf}|{$countsa}";
 			$chxl .= "1:||".i18n::translate('century')."|2:|0|10|20|30|40|50|60|70|80|90|100|3:||".i18n::translate('Age')."|";
-			if (count($rows)>4 || utf8_strlen(i18n::translate('Average age related to death century'))<30) {
-				$chtt = i18n::translate('Average age related to death century');
+			$title = i18n::translate('Average age related to death century');
+			if (count($rows)>6 || utf8_strlen($title)<30) {
+				$chtt = $title;
 			} else {
 				$offset = 0;
 				$counter = array();
-				while($offset = strpos(i18n::translate('Average age related to death century'), " ", $offset + 1)){
+				while($offset = strpos($title, " ", $offset + 1)){
 					$counter[] = $offset;
 				}
 				$half = floor(count($counter)/2);
-				$chtt = substr_replace(i18n::translate('Average age related to death century'), '|', $counter[$half], 1);
+				$chtt = substr_replace($title, '|', $counter[$half], 1);
 			}
 			return '<img src="'.encode_url("http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt={$chtt}&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl={$chxl}&amp;chdl=".i18n::translate('Males').'|'.i18n::translate('Females').'|'.i18n::translate('Average age at death'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average age related to death century')."\" title=\"".i18n::translate('Average age related to death century')."\" />";
 		} else {
@@ -2597,57 +2585,43 @@ class stats {
 			$chmm = "";
 			$chmf = "";
 			$i = 0;
-			$male = true;
-			$temp = "";
 			$countsm = "";
 			$countsf = "";
 			$countsa = "";
 			foreach ($rows as $values) {
-				if ($max<=50) $chage = $values['age']*2;
-				else $chage = $values['age'];
-				if ($temp!=$values['century']) {
-					$temp = $values['century'];
-					if ($sizes[0]<1000) $sizes[0] += 50;
-					if (function_exists($func)) {
-						$century = $func($values['century'], false);
-					} else {
-						$century = $values['century'];
-					}
-					$chxl .= $century."|";
-					if ($values['sex'] == "F") {
-						if (!$male) {
-							$countsm .= "0,";
-							$chmm .= 't0,000000,0,'.($i-1).',11,1|';
-							$countsa .= $fage.",";
-						}
-						$countsf .= $chage.",";
-						$chmf .= 't'.$values['age'].',000000,1,'.$i.',11,1|';
-						$fage = $chage;
-						$male = false;
-					} else if ($values['sex'] == "M") {
-						$countsf .= "0,";
-						$chmf .= 't0,000000,1,'.$i.',11,1|';
-						$countsm .= $chage.",";
-						$chmm .= 't'.$values['age'].',000000,0,'.$i.',11,1|';
-						$countsa .= $chage.",";
-					} else if ($values['sex'] == "U") {
-						$countsf .= "0,";
-						$chmf .= 't0,000000,1,'.$i.',11,1|';
-						$countsm .= "0,";
-						$chmm .= 't0,000000,0,'.$i.',11,1|';
-						$countsa .= "0,";
-					}
-					$i++;
-				}
-				else if ($values['sex'] == "M") {
-					$countsm .= $chage.",";
-					$chmm .= 't'.$values['age'].',000000,0,'.($i-1).',11,1|';
-					$countsa .= round(($fage+$chage)/2,1).",";
-					$male = true;
-				}
+				$out[$values['century']][$values['sex']]=$values['age'];
 			}
-			if (!$male) {
-				$countsa .= $fage.",";
+			foreach ($out as $century=>$values) {
+				if ($sizes[0]<1000) $sizes[0] += 50;
+				if (function_exists($func)) {
+					$century = $func($century, false);
+				}
+				$chxl .= $century."|";
+				$average = 0;
+				if (isset($values['F'])) {
+					if ($max<=50) $value = $values['F']*2;
+					else $value = $values['F'];
+					$countsf .= $value.",";
+					$average = $value;
+					$chmf .= 't'.$values['F'].',000000,1,'.$i.',11,1|';
+				} else {
+					$countsf .= "0,";
+					$chmf .= 't0,000000,1,'.$i.',11,1|';
+				}
+				if (isset($values['M'])) {
+					if ($max<=50) $value = $values['M']*2;
+					else $value = $values['M'];
+					$countsm .= $value.",";
+					if ($average==0) $countsa .= $value.",";
+					else $countsa .= (($value+$average)/2).",";
+					$chmm .= 't'.$values['M'].',000000,0,'.$i.',11,1|';
+				} else {
+					$countsm .= "0,";
+					if ($average==0) $countsa .= "0,";
+					else $countsa .= $value.",";
+					$chmm .= 't0,000000,0,'.$i.',11,1|';
+				}
+				$i++;
 			}
 			$countsm = substr($countsm,0,-1);
 			$countsf = substr($countsf,0,-1);
