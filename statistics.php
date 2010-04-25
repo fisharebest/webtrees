@@ -645,7 +645,7 @@ if (isset($content) && $content==1) {
 			</div>
 			<div id="surname_opt" style="display:none;">
 			<?php
-			echo i18n::translate('SURN'), help_link('google_chart_surname'), '<br /><input type="text" name="SURN" size="20" />';
+			echo translate_fact('SURN'), help_link('google_chart_surname'), '<br /><input type="text" name="SURN" size="20" />';
 			?>
 			<br />
 			</div>
@@ -668,7 +668,7 @@ if (isset($content) && $content==1) {
 			<?php
 			if ($plotshow == "300") echo " checked=\"checked\"";
 			echo " onclick=\"statusDisable('zas-grenzen-periode');";
-			echo "\" /><label for=\"z_none\">", i18n::translate('none'), "</label><br />";
+			echo "\" /><label for=\"z_none\">", i18n::translate('overall'), "</label><br />";
 			echo "<input type=\"radio\" id=\"z_sex\" name=\"z-as\" value=\"301\"";
 			if ($plotshow == "301") echo " checked=\"checked\"";
 			echo " onclick=\"statusDisable('zas-grenzen-periode');";
