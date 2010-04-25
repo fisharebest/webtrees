@@ -74,11 +74,7 @@ if ($row->import_offset==0 || $row->import_total==0) {
 
 // Calculate progress so far
 $percent=100*(($row->import_offset-1) / $row->import_total);
-if ($row->import_offset==1) {
-	$status=i18n::translate('Initialising ...');
-} else {
-	$status=sprintf('%.1f%%', $percent);
-}
+$status=i18n::translate('Loading data from GEDCOM: %.1f%%', $percent);
 
 echo
 	'<div id="progressbar"><div style="position:absolute;">', htmlspecialchars($status), '</div></div>',
