@@ -379,7 +379,7 @@ if (safe_POST('action')=='update') {
 			$news = array();
 			$news["title"] = i18n::translate('Welcome to Your Genealogy');
 			$news["username"] = WT_GEDCOM;
-			$news["text"] = i18n::translate('The genealogy information on this website is powered by <a href="http://www.webtrees.net/" target="_blank">webtrees</a>.  This page provides an introduction and overview to this genealogy.<br /><br />To begin working with the data, choose one of the charts from the Charts menu, go to the Individual list, or search for a name or place.<br /><br />If you have trouble using the site, you can click on the Help icon to give you information on how to use the page that you are currently viewing.<br /><br />Thank you for visiting this site.');
+			$news["text"] = i18n::translate('The genealogy information on this website is powered by <a href="http://webtrees.net/" target="_blank">webtrees</a>.  This page provides an introduction and overview to this genealogy.<br /><br />To begin working with the data, choose one of the charts from the Charts menu, go to the Individual list, or search for a name or place.<br /><br />If you have trouble using the site, you can click on the Help icon to give you information on how to use the page that you are currently viewing.<br /><br />Thank you for visiting this site.');
 			$news["date"] = client_time();
 			addNews($news);
 		}
@@ -398,7 +398,15 @@ if (empty($gedcom_title)) {
 print_header(i18n::translate('GEDCOM Configuration'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
-
+?>
+<script type="text/javascript">
+//<![CDATA[
+  jQuery(document).ready(function(){
+    jQuery("#tabs").tabs();
+  });
+//]]>
+  </script>
+<?php
 if (!isset($GENERATE_UIDS)) $GENERATE_UIDS = false;
 if (!isset($themeselect)) $themeselect="";
 if (!empty($error)) print "<span class=\"error\">".$error."</span>";
@@ -1263,7 +1271,7 @@ foreach ($rel_events as $row) {
 				echo " checked=\"checked\"";
 			}
 			echo " onchange=\"var old=document.configform.NEW_SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.NEW_SHOW_RELATIVES_EVENTS.value=old\" /> ";
-			echo i18n::translate($col);
+			echo translate_fact($col);
 		}
 		echo '</td>';
 	}
