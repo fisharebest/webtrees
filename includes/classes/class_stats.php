@@ -1076,7 +1076,7 @@ class stats {
 	}
 
 	function chartDistribution($chart_shows='world', $chart_type='', $surname='') {
-		global $iso3166;
+		global $iso3166, $countries;
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
 
 		if ($this->totalPlaces()==0) return '';
@@ -1086,9 +1086,8 @@ class stats {
 		$country_to_iso3166=array();
 		foreach ($iso3166 as $three=>$two) {
 			$country_to_iso3166[$three]=$two;
-			$country_to_iso3166[i18n::translate($three)]=$two;
+			$country_to_iso3166[$countries[$three]]=$two;
 		}
-
 		switch ($chart_type) {
 		case 'surname_distribution_chart':
 			if ($surname=="") $surname = $this->getCommonSurname();
@@ -1098,7 +1097,7 @@ class stats {
 			$indis = get_indilist_indis(utf8_strtoupper($surname), '', '', false, false, WT_GED_ID);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->gedrec, $matches)) {
-					// PGV uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 					foreach ($matches[1] as $country) {
 						$country=trim($country);
 						if (array_key_exists($country, $country_to_iso3166)) {
@@ -1116,8 +1115,8 @@ class stats {
 			$chart_title=i18n::translate('Birth by country');
 			// Count how many people were born in each country
 			$surn_countries=array();
-			$countries=$this->_statsPlaces('INDI', 'BIRT', 0, true);
-			foreach ($countries as $place=>$count) {
+			$b_countries=$this->_statsPlaces('INDI', 'BIRT', 0, true);
+			foreach ($b_countries as $place=>$count) {
 				$country=$place;
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
@@ -1133,8 +1132,8 @@ class stats {
 			$chart_title=i18n::translate('Death by country');
 			// Count how many people were death in each country
 			$surn_countries=array();
-			$countries=$this->_statsPlaces('INDI', 'DEAT', 0, true);
-			foreach ($countries as $place=>$count) {
+			$d_countries=$this->_statsPlaces('INDI', 'DEAT', 0, true);
+			foreach ($d_countries as $place=>$count) {
 				$country=$place;
 				if (array_key_exists($country, $country_to_iso3166)) {
 					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
@@ -1150,10 +1149,9 @@ class stats {
 			$chart_title=i18n::translate('Marriage by country');
 			// Count how many families got marriage in each country
 			$surn_countries=array();
-			$countries=$this->_statsPlaces('FAM');
-			// PGV uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-			if (!empty($countries))
-			  foreach ($countries as $place) {
+			$m_countries=$this->_statsPlaces('FAM');
+			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+			foreach ($m_countries as $place) {
 				$country=trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
 					$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
@@ -1165,10 +1163,9 @@ class stats {
 			$chart_title=i18n::translate('Individual distribution chart');
 			// Count how many people are events in each country
 			$surn_countries=array();
-			$countries=$this->_statsPlaces('INDI');
-			// PGV uses 3 letter country codes and localised country names, but google uses 2 letter codes.
-			if (!empty($countries))
-			  foreach ($countries as $place) {
+			$a_countries=$this->_statsPlaces('INDI');
+			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
+			foreach ($a_countries as $place) {
 				$country=trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
 					$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
