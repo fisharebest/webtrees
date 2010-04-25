@@ -70,6 +70,11 @@ case 'add_ged':
 	// check it doesn't already exist before we create it
 	if (!$gedcom_id && file_exists($INDEX_DIRECTORY.$ged_name)) {
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
+		copy('config_gedcom.php', $INDEX_DIRECTORY.$ged_name.'_conf.php');
+		copy('privacy.php',       $INDEX_DIRECTORY.$ged_name.'_priv.php');
+		set_gedcom_setting($gedcom_id, 'config',  $INDEX_DIRECTORY.$ged_name.'_conf.php');
+		set_gedcom_setting($gedcom_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
+		set_gedcom_setting($gedcom_id, 'title',   i18n::translate('Genealogy from [%s]', $ged_name));
 		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
 	}
 	break;
@@ -103,6 +108,11 @@ case 'upload_ged':
 			// check it doesn't already exist before we create it
 			if (!$gedcom_id) {
 				$gedcom_id=get_id_from_gedcom($ged_name, true);
+				copy('config_gedcom.php', $INDEX_DIRECTORY.$ged_name.'_conf.php');
+				copy('privacy.php',       $INDEX_DIRECTORY.$ged_name.'_priv.php');
+				set_gedcom_setting($gedcom_id, 'config',  $INDEX_DIRECTORY.$ged_name.'_conf.php');
+				set_gedcom_setting($gedcom_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
+				set_gedcom_setting($gedcom_id, 'title',   i18n::translate('Genealogy from [%s]', $ged_name));
 				import_gedcom_file($gedcom_id, $FILE['tmp_name']);
 			}
 		}
