@@ -4,9 +4,8 @@
 <script type="text/javascript" src="js/kryogenix/sorttable_filter.js"></script>
 <script type="text/javascript">
 <?php
-global $LANGUAGE, $ALPHABET_lower, $ALPHABET_upper;
-// set locale to active PGV language alphabet
-echo "var _lc_locale = '_0123456789".$ALPHABET_upper[$LANGUAGE].$ALPHABET_lower[$LANGUAGE]."';";
+// set locale to active webtrees language alphabet
+echo "var _lc_locale = '_0123456789".WT_UTF8_ALPHABET_UPPER.WT_UTF8_ALPHABET_LOWER."';";
 ?>
 </script>
 <script type="text/javascript" src="js/kryogenix/locale.js"></script>
