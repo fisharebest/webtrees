@@ -162,11 +162,9 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'ANSEL':
 			// TODO: fisharebest has written a mysql stored procedure that converts ANSEL to UTF-8
 		default:
-			echo
-				WT_JS_START,
-				'alert(\'', htmlspecialchars(i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset)), '\');',
-				WT_JS_END;
-			break;
+			WT_DB::exec("ROLLBACK");
+			echo '<span class="error">',  i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset), '</span>';
+			exit;
 		}
 		$data=preg_replace('/\n1 CHAR.*(\n[2-9].+)*/', '', $data)."\n1 CHAR UTF-8";
 		import_record(trim($data), $gedcom_id, false);
