@@ -69,19 +69,11 @@ case 'update':
 	set_site_setting('SMTP_SIMPLE_MAIL',                safe_POST('smtp_simple_mail'));
 
 	// We've saved the updated values - now return to the admin page
-	if (!$errors) {
-		header('Location: admin.php');
-		exit;
-	}
+	header('Location: admin.php');
+	exit;
 }
 
 print_header(i18n::translate('Site configuration'));
-
-if ($errors) {
-	foreach ($errors as $error) {
-		echo '<p class="error">', $error, '</p>';
-	}
-}
 
 $smtp_active=get_site_setting('SMTP_ACTIVE');
 
