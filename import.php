@@ -194,6 +194,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				} catch (PDOException $ex) {
 					// A fatal error.  Nothing we can do.
 					echo '<span class="error">', $ex->getMessage(), '</span>';
+					WT_DB::exec("ROLLBACK");
 					exit;
 				}
 			}
