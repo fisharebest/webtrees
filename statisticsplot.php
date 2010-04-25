@@ -687,16 +687,8 @@ function calc_legend($grenzen_zas) {
 	//-- get numbers out of $grenzen_zas
 	$hulpar = explode(",", $grenzen_zas);
 	$i=1;
-	// Allow special processing for different languages
-	$func="date_localisation_".WT_LOCALE;
-	if (!function_exists($func))
-		$func="DefaultDateLocalisation";
-	// Localise the date
-	$q1='bef';
-	$d1=$hulpar[0];
-	$q2=''; $d2=''; $q3='';
-	$func($q1, $d1, $q2, $d2, $q3);
-	$legend[0] = trim("{$q1} {$d1} {$q2} {$d2} {$q3}");
+	// I18N: %d is a year
+	$legend[0] = i18n::translate('before %d', $hulpar[0]);
 	$zgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
 		$i1 = $i-1;
@@ -706,11 +698,8 @@ function calc_legend($grenzen_zas) {
 	}
 	$zmax = $i;
 	$zmax1 = $zmax-1;
-	// Localise the date
-	$q1='from';
-	$d1 = $hulpar[$zmax1];
-	$func($q1, $d1, $q2, $d2, $q3);
-	$legend[$zmax] = trim("{$q1} {$d1} {$q2} {$d2} {$q3}");
+	// I18N: %d is a year
+	$legend[$zmax] = i18n::translate('from %d', $hulpar[$zmax1]);
 	$zgrenzen[$zmax] = 10000;
 	$zmax = $zmax+1;
 	if ($zmax > 8) $zmax=8;
@@ -730,11 +719,11 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 	$monthdata= array();
 	$monthdata[] = i18n::translate('Jan');
 	$monthdata[] = i18n::translate('Feb');
-	$monthdata[] = i18n::translate('March');
-	$monthdata[] = i18n::translate('April');
+	$monthdata[] = i18n::translate('Mar');
+	$monthdata[] = i18n::translate('Apr');
 	$monthdata[] = i18n::translate('May');
-	$monthdata[] = i18n::translate('June');
-	$monthdata[] = i18n::translate('July');
+	$monthdata[] = i18n::translate('Jun');
+	$monthdata[] = i18n::translate('Jul');
 	$monthdata[] = i18n::translate('Aug');
 	$monthdata[] = i18n::translate('Sep');
 	$monthdata[] = i18n::translate('Oct');
@@ -951,7 +940,7 @@ case '14':
 	set_params(14, "FAM", true, 	false, i18n::translate('Month of birth of first child in a relation'), i18n::translate('month'), 	$y_as, 	$g_xas, 	$zgp, "bimo1");
 	break;
 case '15':
-	set_params(15, "FAM", true, 	false, i18n::translate('Months between marriage and first child'), i18n::translate('month'), 	$y_as, 	$g_xas, 	$zgp, "mamo1");
+	set_params(15, "FAM", true, 	false, i18n::translate('Month of first marriage'), i18n::translate('month'), 	$y_as, 	$g_xas, 	$zgp, "mamo1");
 	break;
 case '16':
 	set_params(16, "FAM", false, 	false, i18n::translate('Months between marriage and first child'), i18n::translate('Months between marriage and birth of first child'), $y_as, $xgm, 	$zgp, "mamam");
