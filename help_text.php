@@ -247,7 +247,7 @@ case 'CAST':
 
 case 'CAUS':	
 	$title=i18n::translate('Cause');
-	$text='A description of the cause of the associated event or fact, such as the cause of death.';
+	$text=i18n::translate('A description of the cause of the associated event or fact, such as the cause of death.');
 	break;
 
 case 'CEME':
