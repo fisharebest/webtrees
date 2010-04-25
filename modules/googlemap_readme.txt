@@ -1,4 +1,4 @@
-README file for the Googlemap module for phpGedView
+﻿README file for the Googlemap module for phpGedView
 
 The files in this archive should be extracted into your modules directory.
 
@@ -57,7 +57,7 @@ information. Existing places can be imported and location information can be
 added using graphic tools (zoom/click on map) or specific location data. 
 
 The location information is held outside the GEDCOM (and can be shared between
-GEDCOMs in PGV) and location data is entered only once for each place. Backup
+GEDCOMs in webtrees) and location data is entered only once for each place. Backup
 of location data is available by export of each new place database table to a
 text file (separated with ";"). Bulk additions can be performed by text file
 import (with reservations for specific place structure and spelling). 
@@ -67,8 +67,7 @@ from the top down – which, in 99% of cases, will mean starting by entering
 a country. When that is done, we move to the next layer (state, county,
 whatever is appropriate for your locale.) 
 
-To make the flags work in PGV basic, copy the flags directory from images to
-places, or download the flags from the full version.
+To make the flags work make sure that ./places/flags directory exists.
 
 More information:
-http://wiki.phpgedview.net/en/index.php?title=How_to:Add_Google_maps
+http://wiki.webtrees.net/en/index.php?title=How_to:Add_Google_maps

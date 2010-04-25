@@ -43,7 +43,7 @@ if (!isset($countrySelected)) $countrySelected="Countries";
 print_simple_header(i18n::translate('Select flag'));
 
 if (!is_dir('./places/flags/')) {
-	echo '<br /><div class="optionbox wrap">', i18n::translate('<b>The flags directory doesn\'t exist</b><br /><br />To make the flags work, copy the <b>flags</b> directory from <b>images</b> directory to <b>places</b> directory, or download the flags from the full version.'), '</div><br />';
+	echo '<br /><div class="optionbox wrap">', i18n::translate('<b>The flags directory doesn\'t exist</b><br /><br />To make the flags work make sure that ./places/flags directory exists and contains flags files.'), '</div><br />';
 	echo '<div class="center"><a href="javascript:;" onclick="window.close();">', i18n::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
@@ -132,7 +132,7 @@ else {
 				$rep = opendir('./places/'.$country[$i].'/');
 				while ($file = readdir($rep)) {
 					if (stristr($file, "flags")) {
-						$countryList[$country[$i]] = i18n::translate($country[$i]);
+						$countryList[$country[$i]] = i18n::translate($countries[$country[$i]]);
 					}
 				}
 				closedir($rep);
@@ -169,7 +169,8 @@ else {
 	for ($i = 0; $i < count($flags); $i++) {
 		if ($countrySelected == "Countries") {
 			$tempstr = "<td><input type=\"radio\" dir=\"ltr\" tabindex=\"".($i+1)."\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"places/flags/".$flags[$i].".gif\" alt=\"".$flags[$i]."\"  title=\"";
-			$tempstr.=i18n::translate($country[$i]);
+			if ($flags[$i]!='blank') $tempstr.=i18n::translate($countries[$flags[$i]]);
+			else $tempstr.=i18n::translate($countries['???']);
 			echo $tempstr, "\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 		}
 		else {
