@@ -3055,7 +3055,7 @@ case 'edituser.php':
 case 'export_gedcom.php':
 	// no help link
 	$title=i18n::translate('Export');
-	$text='';
+	$text='On this page you can export your data to a GEDCOM file in UTF-8 encoding. The file will be saved automatically to the data directory.';
 	break;
 
 case 'family.php':
