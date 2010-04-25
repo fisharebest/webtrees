@@ -196,7 +196,7 @@ if ($rows) {
 		'&amp;offset=';
 
 	if ($offset>0) {
-		echo ' | <a href="', $url, 0, '">', i18n::translate('first'), '</a>';
+		echo ' | <a href="', $url, 0, '">', i18n::translate_c('first page', 'first'), '</a>';
 		echo ' | <a href="', $url, max(0, $offset-$limit), '">', i18n::translate('previous'), '</a>';
 	}
 	if ($offset+$limit<$total_rows) {

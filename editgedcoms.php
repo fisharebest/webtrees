@@ -248,15 +248,15 @@ foreach ($gedcoms as $gedcom) {
 			'</td>',
 			// import
 			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom->gedcom_id, '">', i18n::translate('Import'), '</a>',
-			help_link('import_gedcom.php'),
+			help_link('import_gedcom'),
 			'</td>',
 			// download
 			'<td><a href="downloadgedcom.php?ged=', urlencode($gedcom->gedcom_name),'">', i18n::translate('Download'), '</a>',
-			help_link('ownload_gedcom'),
+			help_link('download_gedcom'),
 			'</td>',
 			// upload
 			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom->gedcom_id, '">', i18n::translate('Upload'), '</a>',
-			help_link(''),
+			help_link('help_uploadgedcom.php'),
 			'</td>',
 			// delete
 			'<td><a href="editgedcoms.php?action=delete&ged=', urlencode($gedcom->gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(i18n::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom->gedcom_name)),'\');">', i18n::translate('Delete'), '</a>',
