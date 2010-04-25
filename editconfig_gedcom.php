@@ -1774,7 +1774,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" 
 	<tr>
 		<?php
 		if (empty($WEBTREES_EMAIL)) {
-			$WEBTREES_EMAIL = "phpgedview-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
+			$WEBTREES_EMAIL = "webtrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
 		}
 		?>
 		<td class="descriptionbox wrap width20">

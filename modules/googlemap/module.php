@@ -101,7 +101,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			</script> <?php
 		}else{
 			$tNew = str_replace(array("&HIDE_GOOGLEMAP=true", "&HIDE_GOOGLEMAP=false", "action=ajax&module=googlemap&"), "", $_SERVER["REQUEST_URI"]);
-			$tab = WT_DB::prepare("SELECT mod_taborder AS tab FROM {$TBLPREFIX}module WHERE mod_name=?")
+			$tab = WT_DB::prepare("SELECT tab_order AS tab FROM {$TBLPREFIX}module WHERE module_name=?")
 				->execute(array('googlemap'))
 				->fetchOneRow();
 			$tab = $tab->tab-2;
@@ -161,7 +161,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					build_indiv_map($this->controller->getIndiFacts(), $famids);
 					print "</div>\n";
 					print "</td>";
-
 					print "</tr></table>\n";
 
 				}

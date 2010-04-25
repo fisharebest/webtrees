@@ -531,12 +531,12 @@ function build_indiv_map($indifacts, $famids) {
 					if ($fact == "EVEN" || $fact=="FACT") {
 						$eventrec = get_sub_record(1, "2 TYPE", $factrec);
 						if (preg_match("/\d TYPE (.*)/", $eventrec, $match3)) {
-							$markers[$i]["fact"]=i18n::translate($match3[1]);
+							$markers[$i]["fact"]=translate_fact($match3[1]);
 						} else {
-							$markers[$i]["fact"]=i18n::translate($fact);
+							$markers[$i]["fact"]=translate_fact($fact);
 						}
 					} else {
-						$markers[$i]["fact"]=i18n::translate($fact);
+						$markers[$i]["fact"]=translate_fact($fact);
 					}
 					if (!empty($fact_data) && $fact_data!='Y')
 						$markers[$i]["info"] = $fact_data;
@@ -567,12 +567,12 @@ function build_indiv_map($indifacts, $famids) {
 							if ($fact == "EVEN" || $fact=="FACT") {
 								$eventrec = get_sub_record(1, "2 TYPE", $factrec);
 								if (preg_match("/\d TYPE (.*)/", $eventrec, $match3)) {
-									$markers[$i]["fact"]=i18n::translate($match3[1]);
+									$markers[$i]["fact"]=translate_fact($match3[1]);
 								} else {
-									$markers[$i]["fact"]=i18n::translate($fact);
+									$markers[$i]["fact"]=translate_fact($fact);
 								}
 							} else {
-								$markers[$i]["fact"]=i18n::translate($fact);
+								$markers[$i]["fact"]=translate_fact($fact);
 							}
 							if (!empty($fact_data) && $fact_data!='Y')
 								$markers[$i]["info"] = $fact_data;
