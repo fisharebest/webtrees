@@ -101,11 +101,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			</script> <?php
 		}else{
 			$tNew = str_replace(array("&HIDE_GOOGLEMAP=true", "&HIDE_GOOGLEMAP=false", "action=ajax&module=googlemap&"), "", $_SERVER["REQUEST_URI"]);
-			$tab = WT_DB::prepare("SELECT tab_order AS tab FROM {$TBLPREFIX}module WHERE module_name=?")
-				->execute(array('googlemap'))
-				->fetchOneRow();
-			$tab = $tab->tab-2;
-			$tNew .= "&tab=".$tab;
+			$tNew .= "&tab=googlemap";
 			$tNew = str_replace("&", "&amp;", $tNew);
 			if($SESSION_HIDE_GOOGLEMAP=="true") {
 				print "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false\">";
