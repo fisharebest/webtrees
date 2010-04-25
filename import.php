@@ -118,6 +118,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		if (substr($data, 0, 6)!='0 HEAD') {
 			WT_DB::exec("ROLLBACK");
 			echo i18n::translate('Invalid GEDCOM file - no header record found.');
+			echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
@@ -165,6 +166,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		default:
 			WT_DB::exec("ROLLBACK");
 			echo '<span class="error">',  i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset), '</span>';
+			echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
 		$data=preg_replace('/\n1 CHAR.*(\n[2-9].+)*/', '', $data)."\n1 CHAR UTF-8";
@@ -192,8 +194,9 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 					import_record(trim($rec), $gedcom_id, false);
 				} catch (PDOException $ex) {
 					// A fatal error.  Nothing we can do.
-					echo '<span class="error">', $ex->getMessage(), '</span>';
 					WT_DB::exec("ROLLBACK");
+					echo '<span class="error">', $ex->getMessage(), '</span>';
+					echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 					exit;
 				}
 			}
