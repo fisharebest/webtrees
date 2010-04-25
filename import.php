@@ -189,7 +189,13 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		echo WT_JS_START, WT_JS_END;
 		foreach (preg_split('/\n(?=0)/', $data) as $rec) {
 			if ($rec) {
-				import_record(trim($rec), $gedcom_id, false);
+				try {
+					import_record(trim($rec), $gedcom_id, false);
+				} catch (PDOException $ex) {
+					// A fatal error.  Nothing we can do.
+					echo '<span class="error">', $ex->getMessage(), '</span>';
+					exit;
+				}
 			}
 		}
 	}
