@@ -252,7 +252,6 @@ $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
 $WT_SESSION_SAVE_PATH           =get_site_setting('SESSION_SAVE_PATH');
 $WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
-$LOGIN_URL                      =get_site_setting('LOGIN_URL');
 $MAX_VIEWS                      =get_site_setting('MAX_VIEWS');
 $MAX_VIEW_TIME                  =get_site_setting('MAX_VIEW_TIME');
 
@@ -440,12 +439,7 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 			} else {
 				$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
 			}
-			if ($LOGIN_URL) {
-				// Specify an absolute URL, as $LOGIN_URL could be anywhere
-				header('Location: '.$LOGIN_URL.'?url='.urlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$url));
-			} else {
-				header('Location: login.php?url='.urlencode($url));
-			}
+			header('Location: '.get_site_setting('LOGIN_URL').'?url='.urlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$url));
 			exit;
 		}
 	}
@@ -458,10 +452,6 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 
 	if (!isset($_SESSION['timediff'])) {
 		$_SESSION['timediff'] = 0;
-	}
-
-	if (empty($LOGIN_URL)) {
-		$LOGIN_URL = 'login.php';
 	}
 }
 

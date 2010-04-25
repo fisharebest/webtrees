@@ -52,7 +52,7 @@ $WT_BLOCKS['print_login_block']=array(
  * Prints a block allowing the user to login to the site directly from the portal
  */
 function print_login_block($block = true, $config="", $side, $index) {
-	global $QUERY_STRING, $USE_REGISTRATION_MODULE, $LOGIN_URL, $TEXT_DIRECTION;
+	global $QUERY_STRING, $USE_REGISTRATION_MODULE, $TEXT_DIRECTION;
 
 	if (WT_USER_ID) {
 		$id="logout_block";
@@ -76,6 +76,7 @@ function print_login_block($block = true, $config="", $side, $index) {
 		} else {
 			$title.=help_link('index_login');
 		}
+		$LOGIN_URL=get_site_setting('LOGIN_URL');
 		$content = "<div class=\"center\"><form method=\"post\" action=\"$LOGIN_URL\" name=\"loginform\" onsubmit=\"t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;\">";
 		$content .= "<input type=\"hidden\" name=\"url\" value=\"index.php\" />";
 		$content .= "<input type=\"hidden\" name=\"ged\" value=\"";

@@ -119,7 +119,7 @@ if ($action=='login') {
 	}
 } else {
 	$tSERVER_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), $SERVER_URL);
-	$tLOGIN_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), $LOGIN_URL);
+	$tLOGIN_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), get_site_setting('LOGIN_URL'));
 	if (empty($url)) {
 		if ((isset($_SERVER['HTTP_REFERER'])) && ((stristr($_SERVER['HTTP_REFERER'],$tSERVER_URL)!==false)||(stristr($_SERVER['HTTP_REFERER'],$tLOGIN_URL)!==false))) {
 			$url = basename($_SERVER['HTTP_REFERER']);
@@ -171,7 +171,7 @@ case 4:
 echo '</td></tr></table><br /><br />';
 $tab=0;		// initialize tab index
 	?>
-	<form name="loginform" method="post" action="<?php print $LOGIN_URL; ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
+	<form name="loginform" method="post" action="<?php print get_site_setting('LOGIN_URL'); ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login" />
 		<input type="hidden" name="url" value="<?php print htmlentities($url,ENT_COMPAT,'UTF-8'); ?>" />
 		<input type="hidden" name="ged" value="<?php if (isset($ged)) print htmlentities($ged,ENT_COMPAT,'UTF-8'); else print htmlentities($GEDCOM,ENT_COMPAT,'UTF-8'); ?>" />

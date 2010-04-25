@@ -746,7 +746,7 @@ function print_lang_form($option=0) {
 */
 function print_user_links() {
 	global $QUERY_STRING, $GEDCOM;
-	global $LOGIN_URL, $SEARCH_SPIDER;
+	global $SEARCH_SPIDER;
 
 	if (WT_USER_ID) {
 		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
@@ -760,6 +760,7 @@ function print_user_links() {
 			if (WT_SCRIPT_NAME=='login.php') {
 				echo "<a href=\"#\" class=\"link\">", i18n::translate('Login'), "</a>";
 			} else {
+				$LOGIN_URL=get_site_setting('LOGIN_URL');
 				echo "<a href=\"$LOGIN_URL?url=", rawurlencode(WT_SCRIPT_NAME.decode_url(normalize_query_string($QUERY_STRING."&amp;ged=$GEDCOM"))), "\" class=\"link\">", i18n::translate('Login'), "</a>";
 			}
 		}

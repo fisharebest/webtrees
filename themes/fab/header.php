@@ -124,8 +124,8 @@ if ($view!='simple') {
 				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending Changes'), '</a></li>';
 			}
 		} else {
-			global $LOGIN_URL;
-			if (WT_SCRIPT_NAME==basename($LOGIN_URL)) {
+			$LOGIN_URL=get_site_setting('LOGIN_URL');
+			if (WT_SCRIPT_NAME==$LOGIN_URL) {
 				echo '<li><a href="', $LOGIN_URL, '" class="link">', i18n::translate('Login'), '</a></li>';
 			} else {
 				$QUERY_STRING = normalize_query_string($QUERY_STRING.'&amp;logout=');
