@@ -72,6 +72,9 @@ ul {
 	margin: 8px;
 }
 
+img {
+	border: none;
+}
 .edit_link:after {
 	content: url(images/small/edit.png);
 }
