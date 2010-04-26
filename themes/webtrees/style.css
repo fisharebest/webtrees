@@ -295,14 +295,6 @@ a:hover .nameZoom {
 	font: bold 14px tahoma, arial, helvetica, sans-serif;
 }
 
-.namered {
-	border: solid red 1px;
-}
-
-.nameblue {
-	border: solid blue 1px;
-}
-
 .details1 {
 	font: normal 10px tahoma, arial, helvetica, sans-serif;
 }
@@ -1075,15 +1067,17 @@ h4 {
 	border: solid #81a9cb 1px;
 }
 
-/* Change indicators */
-.change_new {
-	border: solid blue 2px;
+/* Pending edits */
+.change_new, .nameblue {
+	border: solid blue 2px !important;
 }
 
-.change_old {
-	border: solid red 2px;
+.change_old, .namered {
+	color: black !important;
+	text-decoration:line-through !important;
 }
-
+ /* ====== */
+ 
 .door {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
