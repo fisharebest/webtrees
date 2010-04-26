@@ -96,10 +96,6 @@ text-decoration: none;
 color:#2385c2;
 }
 
-.namered {
-border: solid #2385c2 1px;
-}
-
 .facts_labelred, .facts_valuered {
 border: solid #2385c2 2px;
 }
@@ -777,10 +773,6 @@ font-size: 12px;
 font-weight: bold;
 }
 
-.nameblue {
-border: solid blue 1px;
-}
-
 .details1 {
 font-size: 10px;
 text-decoration:none;
@@ -1328,12 +1320,14 @@ margin: 0;
 background: #dfeeff;
 }
 
-.change_new {
-border: solid #999 2px;
+/* Pending edits */
+.change_new, .nameblue {
+	border: solid blue 2px !important;
 }
 
-.change_old {
-border: solid #ff0000 2px;
+.change_old, .namered {
+	color: black !important;
+	text-decoration:line-through !important;
 }
 
 .door {
