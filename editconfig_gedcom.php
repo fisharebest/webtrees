@@ -84,8 +84,10 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 $gedcom_config = $INDEX_DIRECTORY.WT_GEDCOM."_conf.php";
 $gedcom_privacy = $INDEX_DIRECTORY.WT_GEDCOM."_priv.php";
 	
+$errors=false;
+$error_msg='';
+
 if (safe_POST('action')=='update') {
-	$errors = false;
 
 	$gedcom_title=$_POST["gedcom_title"];
 	if (empty($gedcom_title)) {
@@ -388,28 +390,11 @@ if (safe_POST('action')=='update') {
 	}
 }
 
-require $gedcom_config;
-$gedcom_title=get_gedcom_setting(WT_GED_ID, 'title');
-if (empty($gedcom_title)) {
-	$gedcom_title=i18n::translate('Genealogy from [%s]', WT_GEDCOM);
-}
-
-//-- output starts here
 print_header(i18n::translate('GEDCOM Configuration'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
-?>
-<script type="text/javascript">
-//<![CDATA[
-  jQuery(document).ready(function(){
-    jQuery("#tabs").tabs();
-  });
-//]]>
-  </script>
-<?php
 if (!isset($GENERATE_UIDS)) $GENERATE_UIDS = false;
 if (!isset($themeselect)) $themeselect="";
-if (!empty($error)) print "<span class=\"error\">".$error."</span>";
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--
