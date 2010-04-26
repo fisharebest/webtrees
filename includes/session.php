@@ -285,6 +285,7 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 require WT_ROOT.'includes/session_spider.php';
 
 // Start the php session
+session_name('WTSESSION');
 session_set_cookie_params(date('D M j H:i:s T Y', time()+$WT_SESSION_TIME), WT_SCRIPT_PATH);
 
 if ($WT_SESSION_TIME>0) {
