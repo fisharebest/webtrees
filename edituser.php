@@ -88,7 +88,7 @@ if ($form_action=='update') {
 		if ($form_username!=WT_USER_NAME) {
 			AddToLog('User renamed to ->'.$form_username.'<-', 'auth');
 			rename_user(WT_USER_ID, $form_username);
-			$_SESSION['pgv_user']=$form_username;
+			$_SESSION['wt_user']=$form_username;
 		}
 		// Reload page to pick up changes such as theme and user_id
 		header('Location: edituser.php');

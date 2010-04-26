@@ -417,7 +417,7 @@ CheckPageViews();
 $show_context_help = '';
 if (!empty($_REQUEST['show_context_help'])) $show_context_help = $_REQUEST['show_context_help'];
 if (!isset($_SESSION['show_context_help'])) $_SESSION['show_context_help'] = $SHOW_CONTEXT_HELP;
-if (!isset($_SESSION['pgv_user'])) $_SESSION['pgv_user'] = '';
+if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='yes') $_SESSION['show_context_help'] = true;
 if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='no') $_SESSION['show_context_help'] = false;
 if (!isset($USE_THUMBS_MAIN)) $USE_THUMBS_MAIN = false;

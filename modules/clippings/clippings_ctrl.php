@@ -281,8 +281,8 @@ class ClippingsControllerRoot extends BaseController {
 					$export_user_id = createTempUser($tempUserID, $this->privatize_export, $GEDCOM);	// Create a temporary userid
 
 					// Temporarily become this user
-					$_SESSION["org_user"]=$_SESSION["pgv_user"];
-					$_SESSION["pgv_user"]=$tempUserID;
+					$_SESSION["org_user"]=$_SESSION["wt_user"];
+					$_SESSION["wt_user"]=$tempUserID;
 				}
 
 				for ($i = 0; $i < $ct; $i++) {
@@ -401,7 +401,7 @@ class ClippingsControllerRoot extends BaseController {
 				}
 
 				if ($this->privatize_export!='none') {
-					$_SESSION["pgv_user"]=$_SESSION["org_user"];
+					$_SESSION["wt_user"]=$_SESSION["org_user"];
 					delete_user($export_user_id);
 					AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 				}

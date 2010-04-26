@@ -400,7 +400,7 @@ if(!empty($SEARCH_SPIDER)) {
 	if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 	$_SESSION['last_spider_lang'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
-	$_SESSION['pgv_user'] = "";	// Don't allow search engine into user/admin mode.
+	$_SESSION['wt_user'] = "";	// Don't allow search engine into user/admin mode.
 }
 
 ?>

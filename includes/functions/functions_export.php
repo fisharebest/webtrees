@@ -271,8 +271,8 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		$export_user_id = createTempUser($tempUserID, $exportOptions['privatize'], $gedcom);	// Create a temporary userid
 
 		// Temporarily become this user
-		$_SESSION["org_user"]=$_SESSION["pgv_user"];
-		$_SESSION["pgv_user"]=$tempUserID;
+		$_SESSION["org_user"]=$_SESSION["wt_user"];
+		$_SESSION["wt_user"]=$tempUserID;
 	}
 
 	$head=gedcom_header($gedcom);
@@ -364,7 +364,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	fwrite($gedout, $buffer."0 TRLR".WT_EOL);
 
 	if ($exportOptions['privatize']!='none') {
-		$_SESSION["pgv_user"]=$_SESSION["org_user"];
+		$_SESSION["wt_user"]=$_SESSION["org_user"];
 		delete_user($export_user_id);
 		AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 	}
@@ -400,8 +400,8 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 		$export_user_id = createTempUser($tempUserID, $exportOptions['privatize'], $gedcom);	// Create a temporary userid
 
 		// Temporarily become this user
-		$_SESSION["org_user"]=$_SESSION["pgv_user"];
-		$_SESSION["pgv_user"]=$tempUserID;
+		$_SESSION["org_user"]=$_SESSION["wt_user"];
+		$_SESSION["wt_user"]=$tempUserID;
 	}
 
 	$geDownloadGedcom=new GEDownloadGedcom();
@@ -450,7 +450,7 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 	fwrite($gedout,$geDownloadGedcom->dom->saveXML());
 
 	if ($exportOptions['privatize']!='none') {
-		$_SESSION["pgv_user"]=$_SESSION["org_user"];
+		$_SESSION["wt_user"]=$_SESSION["org_user"];
 		delete_user($export_user_id);
 		AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 	}

@@ -48,7 +48,7 @@ define('WT_AUTHENTICATION_PHP', '');
  *
  * This function takes the given <var>$username</var> and <var>$password</var> and authenticates
  * them against the database.  The passwords are encrypted using the crypt() function.
- * The username is stored in the <var>$_SESSION["pgv_user"]</var> session variable.
+ * The username is stored in the <var>$_SESSION["wt_user"]</var> session variable.
  * @param string $user_name the username for the user attempting to login
  * @param string $password the plain text password to test
  * @param boolean $basic true if the userName and password were retrived via Basic HTTP authentication. Defaults to false. At this point, this is only used for logging
@@ -67,7 +67,7 @@ function authenticateUser($user_name, $password, $basic=false) {
 				set_user_setting($user_id, 'loggedin', 'Y');
 				//-- reset the user's session
 				$_SESSION = array();
-				$_SESSION['pgv_user'] = $user_id;
+				$_SESSION['wt_user'] = $user_id;
 				AddToLog(($basic ? 'Basic HTTP Authentication' :'Login'). ' Successful', 'auth');
 				return $user_id;
 			}
@@ -139,10 +139,10 @@ function userUpdateLogin($user_id) {
  */
 
 function getUserId() {
-	if (empty($_SESSION['pgv_user'])) {
+	if (empty($_SESSION['wt_user'])) {
 		return 0;
 	} else {
-		return $_SESSION['pgv_user'];
+		return $_SESSION['wt_user'];
 	}
 }
 

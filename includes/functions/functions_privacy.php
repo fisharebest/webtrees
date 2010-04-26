@@ -351,7 +351,7 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	if ($_SESSION["pgv_user"]==WT_USER_ID) {
+	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
 		$pgv_GEDCOM            = WT_GEDCOM;
 		$pgv_GED_ID            = WT_GED_ID;
@@ -667,7 +667,7 @@ function showLivingNameById($pid) {
 	global $GEDCOM;
 	global $SHOW_LIVING_NAMES, $person_privacy, $user_privacy;
 
-	if ($_SESSION["pgv_user"]==WT_USER_ID) {
+	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
 		$pgv_USER_NAME			= WT_USER_NAME;
 		$pgv_USER_ACCESS_LEVEL	= WT_USER_ACCESS_LEVEL;
@@ -717,7 +717,7 @@ function showFact($fact, $pid, $type='INDI') {
 	global $GEDCOM;
 	global $global_facts, $person_facts, $SHOW_SOURCES;
 
-	if ($_SESSION["pgv_user"]==WT_USER_ID) {
+	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
 		$pgv_USER_ACCESS_LEVEL	= WT_USER_ACCESS_LEVEL;
 	} else {
@@ -768,7 +768,7 @@ function showFactDetails($fact, $pid) {
 	global $GEDCOM;
 	global $global_facts, $person_facts;
 
-	if ($_SESSION["pgv_user"]==WT_USER_ID) {
+	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
 		$pgv_USER_ACCESS_LEVEL	= WT_USER_ACCESS_LEVEL;
 	} else {
@@ -966,7 +966,7 @@ function FactEditRestricted($pid, $factrec) {
 * @return int Allowed or not allowed
 */
 function FactViewRestricted($pid, $factrec) {
-	if ($_SESSION['pgv_user']==WT_USER_ID) {
+	if ($_SESSION['wt_user']==WT_USER_ID) {
 		// Normal operation
 		$pgv_GED_ID				= WT_GED_ID;
 		$pgv_USER_GEDCOM_ADMIN	= WT_USER_GEDCOM_ADMIN;

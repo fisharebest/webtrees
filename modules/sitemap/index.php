@@ -91,8 +91,8 @@ if ($action=="sendFiles") {
 	// Create a temporary userid
 	$sitemap_user_id = createTempUser('#SiteMap#', 'visitor', $gedcom_name);	// Create a temporary userid
 	// Temporarily become this user
-	$_SESSION["org_user"]=$_SESSION["pgv_user"];
-	$_SESSION["pgv_user"]='#SiteMap#';
+	$_SESSION["org_user"]=$_SESSION["wt_user"];
+	$_SESSION["wt_user"]='#SiteMap#';
 	if (isset($indi_rec)) {
 		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM {$TBLPREFIX}individuals WHERE i_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
@@ -173,7 +173,7 @@ if ($action=="sendFiles") {
 		}
 	}
 	echo "</urlset>";
-	$_SESSION["pgv_user"]=$_SESSION["org_user"];
+	$_SESSION["wt_user"]=$_SESSION["org_user"];
 	delete_user($sitemap_user_id);
 	AddToLog("deleted dummy user -> #SiteMap# <-", 'auth');
 	$GEDCOM = $oldGEDCOM;
