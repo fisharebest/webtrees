@@ -240,6 +240,7 @@ if (safe_POST('action')=='update') {
 	$configtext = preg_replace('/\$WATERMARK_THUMB\s*=\s*.*;/', "\$WATERMARK_THUMB = ".$boolarray[$_POST["NEW_WATERMARK_THUMB"]].";", $configtext);
 	$configtext = preg_replace('/\$SAVE_WATERMARK_THUMB\s*=\s*.*;/', "\$SAVE_WATERMARK_THUMB = ".$boolarray[$_POST["NEW_SAVE_WATERMARK_THUMB"]].";", $configtext);
 	$configtext = preg_replace('/\$SAVE_WATERMARK_IMAGE\s*=\s*.*;/', "\$SAVE_WATERMARK_IMAGE = ".$boolarray[$_POST["NEW_SAVE_WATERMARK_IMAGE"]].";", $configtext);
+	$configtext = preg_replace('/\$THEME_DIR\s*=\s*".*";/', "\$THEME_DIR = \"".trim($_POST["NEW_THEME_DIR"])."\";", $configtext);
 	$configtext = preg_replace('/\$WEBTREES_EMAIL\s*=\s*".*";/', "\$WEBTREES_EMAIL = \"".trim($_POST["NEW_WEBTREES_EMAIL"])."\";", $configtext);
 	$configtext = preg_replace('/\$WEBMASTER_EMAIL\s*=\s*".*";/', "\$WEBMASTER_EMAIL = \"".$_POST["NEW_WEBMASTER_EMAIL"]."\";", $configtext);
 	$configtext = preg_replace('/\$WELCOME_TEXT_AUTH_MODE\s*=\s*".*";/', "\$WELCOME_TEXT_AUTH_MODE = \"".$_POST["NEW_WELCOME_TEXT_AUTH_MODE"]."\";", $configtext);
@@ -392,9 +393,6 @@ if (safe_POST('action')=='update') {
 
 print_header(i18n::translate('GEDCOM Configuration'));
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
-if (!isset($GENERATE_UIDS)) $GENERATE_UIDS = false;
-if (!isset($themeselect)) $themeselect="";
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -1720,7 +1718,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick
 			<?php echo i18n::translate('Theme directory'), help_link('THEME_DIR'); ?>
 		</td>
 		<td class="optionbox">
-			<select name="themeselect" dir="ltr" tabindex="<?php echo ++$i; ?>">
+			<select name="NEW_THEME_DIR" dir="ltr" tabindex="<?php echo ++$i; ?>">
 				<?php
 					foreach (get_theme_names() as $themename=>$themedir) {
 						print "<option value=\"".$themedir."\"";
