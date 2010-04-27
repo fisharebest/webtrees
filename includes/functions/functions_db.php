@@ -2449,12 +2449,12 @@ function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
 // Functions to access the WT_USER table
 ////////////////////////////////////////////////////////////////////////////////
 
-function create_user($username, $realname, $password) {
+function create_user($username, $realname, $email, $password) {
 	global $TBLPREFIX;
 
 	try {
-		WT_DB::prepare("INSERT INTO {$TBLPREFIX}user (user_name, real_name, password) VALUES (?, ?, ?)")
-			->execute(array($username, $realname, $password));
+		WT_DB::prepare("INSERT INTO {$TBLPREFIX}user (user_name, real_name, email, password) VALUES (?, ?, ?, ?)")
+			->execute(array($username, $realname, $email, $password));
 	} catch (PDOException $ex) {
 		// User already exists?
 	}

@@ -165,7 +165,7 @@ function createTempUser($userID, $rights, $gedcom) {
 	}
 	$ged_id=get_id_from_gedcom($gedcom);
 
-	$tempUserID=create_user($userID, md5(rand()));
+	$tempUserID=create_user($userID, "Dummy User", "dummy@email", md5(rand()));
 	if (!$tempUserID) return false;
 
 	set_user_setting($tempUserID, 'relationship_privacy', 'N');

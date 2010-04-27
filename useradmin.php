@@ -674,7 +674,7 @@ if ($action == "createform") {
 				frm.pass1.focus();
 				return false;
 			}
-			if ((frm.emailaddress.value!="")&&(frm.emailaddress.value.indexOf("@")==-1)) {
+			if (frm.emailaddress.value.indexOf("@")==-1) {
 				alert("<?php echo i18n::translate('You must enter an email address.'); ?>");
 				frm.emailaddress.focus();
 				return false;
