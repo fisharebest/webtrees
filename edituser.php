@@ -41,7 +41,6 @@ if (get_user_setting(WT_USER_ID, 'editaccount')!='Y') {
 }
 
 // Valid values for form variables
-$ALL_ACTIONS=array('update');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
@@ -55,7 +54,7 @@ $form_pass1         =safe_POST('form_pass1',          WT_REGEX_PASSWORD);
 $form_pass2         =safe_POST('form_pass2',          WT_REGEX_PASSWORD);
 $form_email         =safe_POST('form_email',          WT_REGEX_EMAIL,                         'email@example.com');
 $form_rootid        =safe_POST('form_rootid',         WT_REGEX_XREF,                           WT_USER_ROOT_ID   );
-$form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS,                         $THEME_DIR         );
+$form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS);
 $form_language      =safe_POST('form_language',       array_keys(i18n::installed_languages()), WT_LOCALE          );
 $form_contact_method=safe_POST('form_contact_method');
 $form_default_tab   =safe_POST('form_default_tab',    array_keys(WT_Module::getActiveTabs()),  $GEDCOM_DEFAULT_TAB);
