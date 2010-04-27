@@ -629,7 +629,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 		<td class="descriptionbox wrap width20">
 			<?php	echo i18n::translate('GEDCOM title'), help_link('gedcom_title'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('gedcom_title');" /></td>
+		<td class="optionbox"><input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
@@ -637,7 +637,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 		</td>
 		<td class="optionbox">
 		<?php
-			echo edit_field_language('GEDCOMLANG', $LANGUAGE, 'dir="ltr" onfocus="getHelp(\'LANGUAGE\');" tabindex="'.(++$i).'"');
+			echo edit_field_language('GEDCOMLANG', $LANGUAGE, 'dir="ltr" tabindex="'.(++$i).'"');
 		?>
 		</td>
 	</tr>
@@ -645,7 +645,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Default person for Pedigree and Descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
 		</td>
-	<td class="optionbox"><input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('PEDIGREE_ROOT_ID');" />
+	<td class="optionbox"><input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 			<?php
 			print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
 			if ($PEDIGREE_ROOT_ID) {
@@ -664,7 +664,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?>
 		</td>
 		<td class="optionbox">
-			<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT" tabindex="<?php echo ++$i; ?>"  onfocus="getHelp('CALENDAR_FORMAT');" onchange="show_jewish();">
+			<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT" tabindex="<?php echo ++$i; ?>" onchange="show_jewish();">
 			<?php
 			foreach (array(
 				'none'=>i18n::translate('No calendar conversion'),
@@ -695,7 +695,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Display Hebrew Thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_THOUSANDS', $DISPLAY_JEWISH_THOUSANDS, 'onfocus="getHelp(\'DISPLAY_JEWISH_THOUSANDS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_THOUSANDS', $DISPLAY_JEWISH_THOUSANDS); ?>
 		</td>
 	</tr>
 	<tr>
@@ -703,7 +703,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Display Hebrew Gershayim'), help_link('DISPLAY_JEWISH_GERESHAYIM'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_GERESHAYIM', $DISPLAY_JEWISH_GERESHAYIM, 'onfocus="getHelp(\'DISPLAY_JEWISH_GERESHAYIM\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_GERESHAYIM', $DISPLAY_JEWISH_GERESHAYIM); ?>
 		</td>
 	</tr>
 	</table>
@@ -714,7 +714,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_USE_RIN', $USE_RIN, 'tabindex="'.(++$i).'" onfocus="getHelp(\'USE_RIN\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_USE_RIN', $USE_RIN, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -722,7 +722,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Automatically create globally unique IDs'), help_link('GENERATE_GUID'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', $GENERATE_UIDS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'GENERATE_UIDS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', $GENERATE_UIDS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -730,7 +730,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?>
 		</td>
 		<td class="optionbox">
-			<input type="text" name="NEW_GEDCOM_ID_PREFIX" dir="ltr" value="<?php print $GEDCOM_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('GEDCOM_ID_PREFIX');" />
+			<input type="text" name="NEW_GEDCOM_ID_PREFIX" dir="ltr" value="<?php print $GEDCOM_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -738,7 +738,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?>
 		</td>
 		<td class="optionbox">
-			<input type="text" name="NEW_FAM_ID_PREFIX" dir="ltr" value="<?php print $FAM_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('FAM_ID_PREFIX');" />
+			<input type="text" name="NEW_FAM_ID_PREFIX" dir="ltr" value="<?php print $FAM_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -746,21 +746,21 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo i18n::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?>
 		</td>
 		<td class="optionbox">
-			<input type="text" name="NEW_SOURCE_ID_PREFIX" dir="ltr" value="<?php print $SOURCE_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SOURCE_ID_PREFIX');" />
+			<input type="text" name="NEW_SOURCE_ID_PREFIX" dir="ltr" value="<?php print $SOURCE_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Repository ID prefix'), help_link('REPO_ID_PREFIX'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_REPO_ID_PREFIX" dir="ltr" value="<?php print $REPO_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('REPO_ID_PREFIX');" />
+		<td class="optionbox"><input type="text" name="NEW_REPO_ID_PREFIX" dir="ltr" value="<?php print $REPO_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Media ID prefix'), help_link('MEDIA_ID_PREFIX'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php print $MEDIA_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('MEDIA_ID_PREFIX');" />
+		<td class="optionbox"><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php print $MEDIA_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 </table>
@@ -786,7 +786,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Multimedia')."\" onclick=\
 			<?php echo i18n::translate('Enable multimedia features'), help_link('MULTI_MEDIA'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_MULTI_MEDIA', $MULTI_MEDIA, 'tabindex="'.(++$i).'" onfocus="getHelp(\'MULTI_MEDIA\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_MULTI_MEDIA', $MULTI_MEDIA, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -804,14 +804,14 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Keep links'), help_link('MEDIA_EXTERNAL'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_MEDIA_EXTERNAL', $MEDIA_EXTERNAL, 'tabindex="'.(++$i).'" onfocus="getHelp(\'MEDIA_EXTERNAL\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_MEDIA_EXTERNAL', $MEDIA_EXTERNAL, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('MultiMedia directory'), help_link('MEDIA_DIRECTORY'); ?>
 		</td>
-		<td class="optionbox"><input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php print $MEDIA_DIRECTORY; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('MEDIA_DIRECTORY');" />
+		<td class="optionbox"><input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php print $MEDIA_DIRECTORY; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" />
 		<?php
 		if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) print "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>\n";
 		?>
@@ -821,20 +821,20 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Multi-Media directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php print $MEDIA_DIRECTORY_LEVELS; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('MEDIA_DIRECTORY_LEVELS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php print $MEDIA_DIRECTORY_LEVELS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php print $THUMBNAIL_WIDTH; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('THUMBNAIL_WIDTH');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php print $THUMBNAIL_WIDTH; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Automatically generated thumbnails'), help_link('AUTO_GENERATE_THUMBS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_AUTO_GENERATE_THUMBS', $AUTO_GENERATE_THUMBS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'AUTO_GENERATE_THUMBS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_AUTO_GENERATE_THUMBS', $AUTO_GENERATE_THUMBS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -842,7 +842,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Use thumbnail'), help_link('USE_THUMBS_MAIN'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_USE_THUMBS_MAIN', $USE_THUMBS_MAIN, 'tabindex="'.(++$i).'" onfocus="getHelp(\'USE_THUMBS_MAIN\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_USE_THUMBS_MAIN', $USE_THUMBS_MAIN, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -850,7 +850,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Use silhouettes'), help_link('USE_SILHOUETTE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', $USE_SILHOUETTE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'USE_SILHOUETTE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', $USE_SILHOUETTE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -858,7 +858,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', $SHOW_HIGHLIGHT_IMAGES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_HIGHLIGHT_IMAGES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', $SHOW_HIGHLIGHT_IMAGES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -866,7 +866,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Use Media Viewer'), help_link('USE_MEDIA_VIEWER'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', $USE_MEDIA_VIEWER, 'tabindex="'.(++$i).'" onfocus="getHelp(\'USE_MEDIA_VIEWER\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', $USE_MEDIA_VIEWER, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -874,7 +874,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Show file name in Media Viewer'), help_link('SHOW_MEDIA_FILENAME'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_FILENAME', $SHOW_MEDIA_FILENAME, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_MEDIA_FILENAME\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_FILENAME', $SHOW_MEDIA_FILENAME, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -882,7 +882,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"ex
 			<?php echo i18n::translate('Show download link in Media Viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', $SHOW_MEDIA_DOWNLOAD, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_MEDIA_DOWNLOAD\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', $SHOW_MEDIA_DOWNLOAD, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -900,14 +900,14 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Media Firewall')."\" oncli
 			<?php echo i18n::translate('Use Media Firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', $USE_MEDIA_FIREWALL, 'tabindex="'.(++$i).'" onfocus="getHelp(\'USE_MEDIA_FIREWALL\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', $USE_MEDIA_FIREWALL, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Media Firewall Root Directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php print ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" onfocus="getHelp('MEDIA_FIREWALL_ROOTDIR');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php print ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		<?php echo i18n::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?></td>
 	</tr>
 	<tr>
@@ -915,7 +915,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Media Firewall')."\" oncli
 			<?php echo i18n::translate('Protect Thumbnails of Protected Images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_MEDIA_FIREWALL_THUMBS', $MEDIA_FIREWALL_THUMBS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'MEDIA_FIREWALL_THUMBS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_MEDIA_FIREWALL_THUMBS', $MEDIA_FIREWALL_THUMBS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -933,7 +933,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Media Firewall')."\" oncli
 			<?php echo i18n::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', $WATERMARK_THUMB, 'tabindex="'.(++$i).'" onfocus="getHelp(\'WATERMARK_THUMB\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', $WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -941,7 +941,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Media Firewall')."\" oncli
 			<?php echo i18n::translate('Store watermarked full size images on server?'), help_link('SAVE_WATERMARK_IMAGE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', $SAVE_WATERMARK_IMAGE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SAVE_WATERMARK_IMAGE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', $SAVE_WATERMARK_IMAGE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -949,7 +949,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Media Firewall')."\" oncli
 			<?php echo i18n::translate('Store watermarked thumbnails on server?'), help_link('SAVE_WATERMARK_THUMB'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SAVE_WATERMARK_THUMB\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -976,7 +976,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 			<?php echo i18n::translate('Enable Privacy'), help_link('HIDE_LIVE_PEOPLE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'HIDE_LIVE_PEOPLE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -984,7 +984,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 			<?php echo i18n::translate('Check child dates'), help_link('CHECK_CHILD_DATES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_CHECK_CHILD_DATES', $CHECK_CHILD_DATES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'CHECK_CHILD_DATES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_CHECK_CHILD_DATES', $CHECK_CHILD_DATES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -992,14 +992,14 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 			<?php echo i18n::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION, 'tabindex="'.(++$i).'" onfocus="getHelp(\'REQUIRE_AUTHENTICATION\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', $REQUIRE_AUTHENTICATION, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Page to show after Login'), help_link('PAGE_AFTER_LOGIN'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_PAGE_AFTER_LOGIN" tabindex="<?php echo ++$i; ?>>" onfocus="getHelp('PAGE_AFTER_LOGIN');">
+		<td class="optionbox"><select name="NEW_PAGE_AFTER_LOGIN" tabindex="<?php echo ++$i; ?>">
 				<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') print " selected=\"selected\""; ?>><?php print i18n::translate('Home'); ?></option>
 				<option value="mygedview" <?php if ($PAGE_AFTER_LOGIN=='mygedview') print " selected=\"selected\""; ?>><?php print i18n::translate('My Page'); ?></option>
 			</select>
@@ -1009,7 +1009,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Welcome text on Login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_WELCOME_TEXT_AUTH_MODE" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('WELCOME_TEXT_AUTH_MODE');">
+		<td class="optionbox"><select name="NEW_WELCOME_TEXT_AUTH_MODE" tabindex="<?php echo ++$i; ?>">
 				<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') print "selected=\"selected\""; ?>><?php print i18n::translate('No predefined text'); ?></option>
 				<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states all users can request a user account'); ?></option>
 				<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
@@ -1023,14 +1023,14 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 			<?php echo i18n::translate('Standard header for custom Welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_WELCOME_TEXT_CUST_HEAD', $WELCOME_TEXT_CUST_HEAD, 'tabindex="'.(++$i).'" onfocus="getHelp(\'WELCOME_TEXT_CUST_HEAD\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_WELCOME_TEXT_CUST_HEAD', $WELCOME_TEXT_CUST_HEAD, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Custom Welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
 		</td>
-		<td class="optionbox"><textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" rows="5" cols="60" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('WELCOME_TEXT_AUTH_MODE_CUST');"><?php print  $WELCOME_TEXT_AUTH_MODE_4; ?></textarea>
+		<td class="optionbox"><textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" rows="5" cols="60" dir="ltr" tabindex="<?php echo ++$i; ?>"><?php print  $WELCOME_TEXT_AUTH_MODE_4; ?></textarea>
 		</td>
 	</tr>
 	<tr>
@@ -1038,7 +1038,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 			<?php echo i18n::translate('Show Acceptable Use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_REGISTER_CAUTION\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -1070,7 +1070,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Names')."\" onclick=\"expa
 			<?php echo i18n::translate('Show married names on Individual list'), help_link('SHOW_MARRIED_NAMES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_MARRIED_NAMES', $SHOW_MARRIED_NAMES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_MARRIED_NAMES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_MARRIED_NAMES', $SHOW_MARRIED_NAMES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1078,7 +1078,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Names')."\" onclick=\"expa
 			<?php echo i18n::translate('Underline names in quotes'), help_link('UNDERLINE_NAME_QUOTES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_UNDERLINE_NAME_QUOTES', $UNDERLINE_NAME_QUOTES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'UNDERLINE_NAME_QUOTES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_UNDERLINE_NAME_QUOTES', $UNDERLINE_NAME_QUOTES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1086,7 +1086,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Names')."\" onclick=\"expa
 			<?php echo i18n::translate('Show ID numbers next to names'), help_link('SHOW_ID_NUMBERS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_ID_NUMBERS', $SHOW_ID_NUMBERS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_ID_NUMBERS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_ID_NUMBERS', $SHOW_ID_NUMBERS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -1103,21 +1103,21 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Common Surnames')."\" oncl
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Min. no. of occurrences to be a "Common Surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php print $COMMON_NAMES_THRESHOLD; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('COMMON_NAMES_THRESHOLD');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php print $COMMON_NAMES_THRESHOLD; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Names to add to Common Surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php print $COMMON_NAMES_ADD; ?>" size="50" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('COMMON_NAMES_ADD');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php print $COMMON_NAMES_ADD; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Names to remove from Common Surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('COMMON_NAMES_REMOVE');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 </table>
 <table class="facts_table" border="0">
@@ -1142,25 +1142,25 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Layout')."\" onclick=\"exp
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php print $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('DEFAULT_PEDIGREE_GENERATIONS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php print $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Maximum Pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php print $MAX_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('MAX_PEDIGREE_GENERATIONS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php print $MAX_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Maximum Descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php print $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('DMAX_DESCENDANCY_GENERATIONS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php print $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Default Pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_PEDIGREE_LAYOUT" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('PEDIGREE_LAYOUT');">
+		<td class="optionbox"><select name="NEW_PEDIGREE_LAYOUT" tabindex="<?php echo ++$i; ?>">
 				<option value="yes" <?php if ($PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Landscape'); ?></option>
 				<option value="no" <?php if (!$PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Portrait'); ?></option>
 			</select>
@@ -1170,19 +1170,19 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Layout')."\" onclick=\"exp
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?>
 		</td>
-		<td class="optionbox"><input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php print $SHOW_PEDIGREE_PLACES; ?>" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SHOW_PEDIGREE_PLACES');" /></td>
+		<td class="optionbox"><input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php print $SHOW_PEDIGREE_PLACES; ?>" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Place levels to show on lists'), help_link('SHOW_LIST_PLACES'); ?>
 		</td>
-		<td class="optionbox"><input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php print $SHOW_LIST_PLACES; ?>" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SHOW_LIST_PLACES');" /></td>
+		<td class="optionbox"><input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php print $SHOW_LIST_PLACES; ?>" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Zoom boxes on charts'), help_link('ZOOM_BOXES'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_ZOOM_BOXES" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('ZOOM_BOXES');">
+		<td class="optionbox"><select name="NEW_ZOOM_BOXES" tabindex="<?php echo ++$i; ?>">
 				<option value="disabled" <?php if ($ZOOM_BOXES=='disabled') print "selected=\"selected\""; ?>><?php print i18n::translate('Disabled'); ?></option>
 				<option value="mouseover" <?php if ($ZOOM_BOXES=='mouseover') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Over'); ?></option>
 				<option value="mousedown" <?php if ($ZOOM_BOXES=='mousedown') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Down'); ?></option>
@@ -1194,7 +1194,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Layout')."\" onclick=\"exp
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('PopUp links on charts'), help_link('LINK_ICONS'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_LINK_ICONS" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('LINK_ICONS');">
+		<td class="optionbox"><select name="NEW_LINK_ICONS" tabindex="<?php echo ++$i; ?>">
 				<option value="disabled" <?php if ($LINK_ICONS=='disabled') print "selected=\"selected\""; ?>><?php print i18n::translate('Disabled'); ?></option>
 				<option value="mouseover" <?php if ($LINK_ICONS=='mouseover') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Over'); ?></option>
 				<option value="click" <?php if ($LINK_ICONS=='click') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Click'); ?></option>
@@ -1206,7 +1206,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Layout')."\" onclick=\"exp
 			<?php echo i18n::translate('Default tab to show on Individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
 		</td>
 		<td class="optionbox">
-		<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'" onfocus="getHelp(\'GEDCOM_DEFAULT_TAB\');"'); ?>
+		<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1214,7 +1214,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Layout')."\" onclick=\"exp
 			<?php echo i18n::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', $EXPAND_RELATIVES_EVENTS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'EXPAND_RELATIVES_EVENTS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', $EXPAND_RELATIVES_EVENTS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1270,7 +1270,7 @@ foreach ($rel_events as $row) {
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Postal Code position'), help_link('POSTAL_CODE'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_POSTAL_CODE" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('POSTAL_CODE');">
+		<td class="optionbox"><select name="NEW_POSTAL_CODE" tabindex="<?php echo ++$i; ?>">
 				<option value="yes" <?php if ($POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('after')); ?></option>
 				<option value="no" <?php if (!$POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('before')); ?></option>
 			</select>
@@ -1280,19 +1280,19 @@ foreach ($rel_events as $row) {
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print $SUBLIST_TRIGGER_I; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SUBLIST_TRIGGER_I');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print $SUBLIST_TRIGGER_I; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print $SUBLIST_TRIGGER_F; ?>" size="5" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SUBLIST_TRIGGER_F');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print $SUBLIST_TRIGGER_F; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Surname list style'), help_link('SURNAME_LIST_STYLE'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SURNAME_LIST_STYLE');">
+		<td class="optionbox"><select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>">
 				<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('Table'); ?></option>
 				<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('Tagcloud'); ?></option>
 			</select>
@@ -1313,7 +1313,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Upcoming Events block day limit'), help_link('DAYS_TO_SHOW_LIMIT'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" size="2" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('DAYS_TO_SHOW_LIMIT');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" size="2" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 
 	<tr>
@@ -1321,7 +1321,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show empty boxes on Pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_EMPTY_BOXES', $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_EMPTY_BOXES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_EMPTY_BOXES', $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1329,7 +1329,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', $ABBREVIATE_CHART_LABELS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'ABBREVIATE_CHART_LABELS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', $ABBREVIATE_CHART_LABELS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1337,7 +1337,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show Birth and Death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'PEDIGREE_FULL_DETAILS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1345,7 +1345,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_PEDIGREE_SHOW_GENDER', $PEDIGREE_SHOW_GENDER, 'tabindex="'.(++$i).'" onfocus="getHelp(\'PEDIGREE_SHOW_GENDER\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_PEDIGREE_SHOW_GENDER', $PEDIGREE_SHOW_GENDER, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1353,7 +1353,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_PARENTS_AGE', $SHOW_PARENTS_AGE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_PARENTS_AGE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_PARENTS_AGE', $SHOW_PARENTS_AGE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1361,7 +1361,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_LDS_AT_GLANCE', $SHOW_LDS_AT_GLANCE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_LDS_AT_GLANCE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_LDS_AT_GLANCE', $SHOW_LDS_AT_GLANCE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1369,7 +1369,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
 		</td>
 		<td class="optionbox">
-			<input type="text" size="50" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('CHART_BOX_TAGS');" />
+			<input type="text" size="50" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
@@ -1377,7 +1377,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', $SHOW_GEDCOM_RECORD, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_GEDCOM_RECORD\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', $SHOW_GEDCOM_RECORD, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1385,7 +1385,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Hide GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_HIDE_GEDCOM_ERRORS', $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'HIDE_GEDCOM_ERRORS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_HIDE_GEDCOM_ERRORS', $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1393,7 +1393,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'WORD_WRAPPED_NOTES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1401,7 +1401,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_FACT_ICONS', $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_FACT_ICONS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_FACT_ICONS', $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1409,7 +1409,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', $EXPAND_SOURCES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'EXPAND_SOURCES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', $EXPAND_SOURCES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1417,7 +1417,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', $EXPAND_NOTES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'EXPAND_NOTES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', $EXPAND_NOTES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1425,7 +1425,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show all Notes and Source references on Notes and Sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', $SHOW_LEVEL2_NOTES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_LEVEL2_NOTES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', $SHOW_LEVEL2_NOTES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1433,21 +1433,21 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show Date Differences'), help_link('SHOW_AGE_DIFF'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_AGE_DIFF', $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_AGE_DIFF\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_AGE_DIFF', $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Favorites icon'), help_link('FAVICON'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_FAVICON" value="<?php print $FAVICON; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('FAVICON');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_FAVICON" value="<?php print $FAVICON; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Show hit counters'), help_link('SHOW_COUNTER'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_COUNTER', $SHOW_COUNTER, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_COUNTER\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_COUNTER', $SHOW_COUNTER, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1455,7 +1455,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show spider tagline'), help_link('SHOW_SPIDER_TAGLINE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_SPIDER_TAGLINE', $SHOW_SPIDER_TAGLINE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_SPIDER_TAGLINE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_SPIDER_TAGLINE', $SHOW_SPIDER_TAGLINE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1463,7 +1463,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show execution statistics'), help_link('SHOW_STATS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_STATS', $SHOW_STATS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_STATS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_STATS', $SHOW_STATS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1471,7 +1471,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show GEDCOM record last change date on lists'), help_link('SHOW_LAST_CHANGE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_LAST_CHANGE', $SHOW_LAST_CHANGE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_LAST_CHANGE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_LAST_CHANGE', $SHOW_LAST_CHANGE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1479,7 +1479,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Show estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_EST_LIST_DATES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -1507,7 +1507,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 			<?php echo i18n::translate('Enable online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_ALLOW_EDIT_GEDCOM', $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'" onfocus="getHelp(\'ALLOW_EDIT_GEDCOM\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_ALLOW_EDIT_GEDCOM', $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1515,87 +1515,87 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 			<?php echo i18n::translate('Enable Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_ENABLE_AUTOCOMPLETE', $ENABLE_AUTOCOMPLETE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'ENABLE_AUTOCOMPLETE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_ENABLE_AUTOCOMPLETE', $ENABLE_AUTOCOMPLETE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Individual Add Facts'), help_link('INDI_FACTS_ADD'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('INDI_FACTS_ADD');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Unique Individual Facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('INDI_FACTS_UNIQUE');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Quick Individual Facts'), help_link('INDI_FACTS_QUICK'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('INDI_FACTS_QUICK');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Family Add Facts'), help_link('FAM_FACTS_ADD'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('FAM_FACTS_ADD');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Unique Family Facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('FAM_FACTS_UNIQUE');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Quick Family Facts'), help_link('FAM_FACTS_QUICK'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('FAM_FACTS_QUICK');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Source Add Facts'), help_link('SOUR_FACTS_ADD'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SOUR_FACTS_ADD');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Unique Source Facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SOUR_FACTS_UNIQUE');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Quick Source Facts'), help_link('SOUR_FACTS_QUICK'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SOUR_FACTS_QUICK');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Repository Add Facts'), help_link('REPO_FACTS_ADD'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('REPO_FACTS_ADD');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Unique Repository Facts'), help_link('REPO_FACTS_UNIQUE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('REPO_FACTS_UNIQUE');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Quick Repository Facts'), help_link('REPO_FACTS_QUICK'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('REPO_FACTS_QUICK');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Autoclose edit window'), help_link('EDIT_AUTOCLOSE'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_EDIT_AUTOCLOSE', $EDIT_AUTOCLOSE, 'tabindex="'.(++$i).'" onfocus="getHelp(\'EDIT_AUTOCLOSE\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_EDIT_AUTOCLOSE', $EDIT_AUTOCLOSE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1603,26 +1603,26 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 			<?php echo i18n::translate('Split places in Edit mode'), help_link('SPLIT_PLACES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SPLIT_PLACES', $SPLIT_PLACES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SPLIT_PLACES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SPLIT_PLACES', $SPLIT_PLACES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Facts to always show on Quick Update'), help_link('QUICK_REQUIRED_FACTS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('QUICK_REQUIRED_FACTS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Facts for families to always show on Quick Update'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('QUICK_REQUIRED_FAMFACTS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_SURNAME_TRADITION" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SURNAME_TRADITION');">
+		<td class="optionbox"><select name="NEW_SURNAME_TRADITION" tabindex="<?php echo ++$i; ?>">
 			<?php
 				foreach (array(
 					'paternal'=>i18n::translate_c('Surname tradition', 'Paternal'),
@@ -1644,20 +1644,20 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_ADVANCED_NAME_FACTS" value="<?php print $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('ADVANCED_NAME_FACTS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_ADVANCED_NAME_FACTS" value="<?php print $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_ADVANCED_PLAC_FACTS" value="<?php print $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('ADVANCED_PLAC_FACTS');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_ADVANCED_PLAC_FACTS" value="<?php print $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Use GeoNames database'), help_link('USE_GEONAMES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_USE_GEONAMES', $USE_GEONAMES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'USE_GEONAMES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_USE_GEONAMES', $USE_GEONAMES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1665,14 +1665,14 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 			<?php echo i18n::translate('Use full source citations'), help_link('FULL_SOURCES'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_FULL_SOURCES', $FULL_SOURCES, 'tabindex="'.(++$i).'" onfocus="getHelp(\'FULL_SOURCES\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_FULL_SOURCES', $FULL_SOURCES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_PREFER_LEVEL2_SOURCES" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('PREFER_LEVEL2_SOURCES');">
+		<td class="optionbox"><select name="NEW_PREFER_LEVEL2_SOURCES" tabindex="<?php echo ++$i; ?>">
 				<option value="0" <?php if ($PREFER_LEVEL2_SOURCES==='0') print " selected=\"selected\""; ?>><?php print i18n::translate('None'); ?></option>
 				<option value="1" <?php if ($PREFER_LEVEL2_SOURCES==='1' || $PREFER_LEVEL2_SOURCES===true) print " selected=\"selected\""; ?>><?php print i18n::translate('Facts'); ?></option>
 				<option value="2" <?php if ($PREFER_LEVEL2_SOURCES==='2' || $PREFER_LEVEL2_SOURCES===false) print " selected=\"selected\""; ?>><?php print i18n::translate('Record'); ?></option>
@@ -1684,7 +1684,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 			<?php echo i18n::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', $NO_UPDATE_CHAN, 'tabindex="'.(++$i).'" onfocus="getHelp(\'NO_UPDATE_CHAN\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', $NO_UPDATE_CHAN, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 
@@ -1712,7 +1712,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick
 			<?php echo i18n::translate('Show contextual <b>?</b> Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_SHOW_CONTEXT_HELP', $SHOW_CONTEXT_HELP, 'tabindex="'.(++$i).'" onfocus="getHelp(\'SHOW_CONTEXT_HELP\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_SHOW_CONTEXT_HELP', $SHOW_CONTEXT_HELP, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
@@ -1736,7 +1736,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick
 			<?php echo i18n::translate('Display theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'" onfocus="getHelp(\'ALLOW_THEME_DROPDOWN\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 </table>
@@ -1765,13 +1765,13 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" 
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('webtrees reply address'), help_link('WEBTREES_EMAIL'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php print $WEBTREES_EMAIL; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('WEBTREES_EMAIL');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php print $WEBTREES_EMAIL; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Genealogy contact'), help_link('CONTACT_EMAIL'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_CONTACT_EMAIL" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('CONTACT_EMAIL');">
+		<td class="optionbox"><select name="NEW_CONTACT_EMAIL" tabindex="<?php echo ++$i; ?>">
 		<?php
 			if ($CONTACT_EMAIL=="you@yourdomain.com") $CONTACT_EMAIL = WT_USER_NAME;
 			foreach (get_all_users() as $user_id=>$user_name) {
@@ -1789,7 +1789,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" 
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Contact method'), help_link('CONTACT_METHOD'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_CONTACT_METHOD" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('CONTACT_METHOD');">
+		<td class="optionbox"><select name="NEW_CONTACT_METHOD" tabindex="<?php echo ++$i; ?>">
 		<?php if ($WT_STORE_MESSAGES) { ?>
 				<option value="messaging" <?php if ($CONTACT_METHOD=='messaging') print "selected=\"selected\""; ?>><?php print i18n::translate('webtrees internal messaging'); ?></option>
 				<option value="messaging2" <?php if ($CONTACT_METHOD=='messaging2') print "selected=\"selected\""; ?>><?php print i18n::translate('Internal messaging with emails'); ?></option>
@@ -1805,7 +1805,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" 
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Support contact'), help_link('WEBMASTER_EMAIL'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_WEBMASTER_EMAIL" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('WEBMASTER_EMAIL');">
+		<td class="optionbox"><select name="NEW_WEBMASTER_EMAIL" tabindex="<?php echo ++$i; ?>">
 		<?php
 			if ($WEBMASTER_EMAIL=="webmaster@yourdomain.com") $WEBMASTER_EMAIL = WT_USER_NAME;
 			foreach (get_all_users() as $user_id=>$user_name) {
@@ -1823,7 +1823,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" 
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Support method'), help_link('SUPPORT_METHOD'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_SUPPORT_METHOD" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('SUPPORT_METHOD');">
+		<td class="optionbox"><select name="NEW_SUPPORT_METHOD" tabindex="<?php echo ++$i; ?>">
 		<?php if ($WT_STORE_MESSAGES) { ?>
 				<option value="messaging" <?php if ($SUPPORT_METHOD=='messaging') print "selected=\"selected\""; ?>><?php print i18n::translate('webtrees internal messaging'); ?></option>
 				<option value="messaging2" <?php if ($SUPPORT_METHOD=='messaging2') print "selected=\"selected\""; ?>><?php print i18n::translate('Internal messaging with emails'); ?></option>
@@ -1856,103 +1856,103 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Web Site and META Tag Sett
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Main WebSite URL'), help_link('HOME_SITE_URL'); ?>
 		</td>
-		<td class="optionbox"><input type="text" name="NEW_HOME_SITE_URL" value="<?php print $HOME_SITE_URL; ?>" size="50" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('HOME_SITE_URL');" /></td>
+		<td class="optionbox"><input type="text" name="NEW_HOME_SITE_URL" value="<?php print $HOME_SITE_URL; ?>" size="50" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Main WebSite text'), help_link('HOME_SITE_TEXT'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_HOME_SITE_TEXT" value="<?php print htmlspecialchars($HOME_SITE_TEXT, ENT_COMPAT, 'UTF-8'); ?>" size="50" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('HOME_SITE_TEXT');" /></td>
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_HOME_SITE_TEXT" value="<?php print htmlspecialchars($HOME_SITE_TEXT, ENT_COMPAT, 'UTF-8'); ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Author META tag'), help_link('META_AUTHOR'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_AUTHOR" value="<?php print $META_AUTHOR; ?>" onfocus="getHelp('META_AUTHOR');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_AUTHOR" value="<?php print $META_AUTHOR; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		<?php echo i18n::translate('Leave this field empty to use the full name of the Genealogy contact.'); ?></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Publisher META tag'), help_link('META_PUBLISHER'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_PUBLISHER" value="<?php print $META_PUBLISHER; ?>" onfocus="getHelp('META_PUBLISHER');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_PUBLISHER" value="<?php print $META_PUBLISHER; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		<?php echo i18n::translate('Leave this field empty to use the full name of the Genealogy contact.'); ?></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Copyright META tag'), help_link('META_COPYRIGHT'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_COPYRIGHT" value="<?php print $META_COPYRIGHT; ?>" onfocus="getHelp('META_COPYRIGHT');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_COPYRIGHT" value="<?php print $META_COPYRIGHT; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		<?php echo i18n::translate('Leave this field empty to use the full name of the  Genealogy contact.'); ?></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php print $META_DESCRIPTION; ?>" onfocus="getHelp('META_DESCRIPTION');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php print $META_DESCRIPTION; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		<?php print i18n::translate('Leave this field empty to use the title of the currently active database.'); ?></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Page-topic META tag'), help_link('META_PAGE_TOPIC'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_PAGE_TOPIC" value="<?php print $META_PAGE_TOPIC; ?>" onfocus="getHelp('META_PAGE_TOPIC');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_PAGE_TOPIC" value="<?php print $META_PAGE_TOPIC; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		<?php print i18n::translate('Leave this field empty to use the title of the currently active database.'); ?></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Audience META tag'), help_link('META_AUDIENCE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_AUDIENCE" value="<?php print $META_AUDIENCE; ?>" onfocus="getHelp('META_AUDIENCE');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_AUDIENCE" value="<?php print $META_AUDIENCE; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Page-type META tag'), help_link('META_PAGE_TYPE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_PAGE_TYPE" value="<?php print $META_PAGE_TYPE; ?>" onfocus="getHelp('META_PAGE_TYPE');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_PAGE_TYPE" value="<?php print $META_PAGE_TYPE; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Robots META tag'), help_link('META_ROBOTS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php print $META_ROBOTS; ?>" onfocus="getHelp('META_ROBOTS');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php print $META_ROBOTS; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('How often should crawlers revisit META tag'), help_link('META_REVISIT'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_REVISIT" value="<?php print $META_REVISIT; ?>" onfocus="getHelp('META_REVISIT');" tabindex="<?php echo ++$i; ?>" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_REVISIT" value="<?php print $META_REVISIT; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Keywords META tag'), help_link('META_KEYWORDS'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_KEYWORDS" value="<?php print $META_KEYWORDS; ?>" onfocus="getHelp('META_KEYWORDS');" tabindex="<?php echo ++$i; ?>" size="75" /><br />
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_KEYWORDS" value="<?php print $META_KEYWORDS; ?>" tabindex="<?php echo ++$i; ?>" size="75" /><br />
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
 		</td>
-		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php print $META_TITLE; ?>" onfocus="getHelp('META_TITLE');" tabindex="<?php echo ++$i; ?>" size="75" /></td>
+		<td class="optionbox"><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php print $META_TITLE; ?>" tabindex="<?php echo ++$i; ?>" size="75" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Enable RSS'), help_link('ENABLE_RSS'); ?>
 		</td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('NEW_ENABLE_RSS', $ENABLE_RSS, 'tabindex="'.(++$i).'" onfocus="getHelp(\'ENABLE_RSS\');"'); ?>
+			<?php echo edit_field_yes_no('NEW_ENABLE_RSS', $ENABLE_RSS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('RSS Format'), help_link('RSS_FORMAT'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_RSS_FORMAT" dir="ltr" tabindex="<?php echo ++$i; ?>" onfocus="getHelp('RSS_FORMAT');">
+		<td class="optionbox"><select name="NEW_RSS_FORMAT" dir="ltr" tabindex="<?php echo ++$i; ?>">
 				<option value="ATOM" <?php if ($RSS_FORMAT=="ATOM") print "selected=\"selected\""; ?>>ATOM 1.0</option>
 				<!--option value="ATOM0.3" <?php if ($RSS_FORMAT=="ATOM0.3") print "selected=\"selected\""; ?>>ATOM 0.3</option-->
 				<option value="RSS2.0" <?php if ($RSS_FORMAT=="RSS2.0") print "selected=\"selected\""; ?>>RSS 2.0</option>

@@ -44,9 +44,6 @@ function helpPopup(which, mod) {
 	}
 	return false;
 }
-function getHelp(which) {
-	if ((helpWin)&&(!helpWin.closed)) helpWin.location='help_text.php?help='+which;
-}
 function closeHelp() {
 	if (helpWin) helpWin.close();
 }
