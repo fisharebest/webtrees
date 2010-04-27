@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_PUBLIC" icon="place">
 	<!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="pgv_lang[death_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Death Date and Place Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals matching specific name and/or death criteria</PGVRDescription>
-	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="pgv_lang[name]" /></PGVRInput>
-	<PGVRInput name="deathplace" lookup="PLAC" type="text"><PGVRvar var="pgv_lang[deathplace]" /></PGVRInput>
-	<PGVRInput name="deathdate1" lookup="DATE" type="text"><PGVRvar var="pgv_lang[deathdate1]" /></PGVRInput>
-	<PGVRInput name="deathdate2" lookup="DATE" type="text"><PGVRvar var="pgv_lang[deathdate2]" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="NAME" options="none,ID,NAME,DEAT:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="adlist" type="select" default="none" options="none,_MARNM,HUSB"><PGVRvar var="pgv_lang[name_list]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="i18n::translate('Name')" /></PGVRInput>
+	<PGVRInput name="deathplace" lookup="PLAC" type="text"><PGVRvar var="i18n::translate('Death Place contains')" /></PGVRInput>
+	<PGVRInput name="deathdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Death Date range start')" /></PGVRInput>
+	<PGVRInput name="deathdate2" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Death Date range end')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="NAME" options="none,ID,NAME,DEAT:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="adlist" type="select" default="none" options="none,_MARNM,HUSB"><PGVRvar var="i18n::translate('Name List')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="16" style="b" />
@@ -27,13 +27,13 @@
 
 	<PGVRDoc pageSize="$pageSize" orientation="landscape">
 		<PGVRHeader>
-			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="pgv_lang[death_report]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="i18n::translate('Death Date and Place Report')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="($sortby=='NAME') or ($sortby=='ID')"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" width="200">
-				<PGVRText style="label"><PGVRvar var="pgv_lang[name]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Name')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRSetVar name="fill" value="" />
@@ -41,15 +41,15 @@
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" width="100">
-				<PGVRText style="label"><PGVRvar var="factarray[DATE]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Date')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRTextBox border="1" width="225">
-				<PGVRText style="label"><PGVRvar var="factarray[PLAC]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Place')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRTextBox border="1" newline="1">
-			  <PGVRText style="label"><PGVRvar var="factarray[SOUR]" /></PGVRText>
+			  <PGVRText style="label"><PGVRvar var="i18n::translate('Source')" /></PGVRText>
 			</PGVRTextBox>
 		</PGVRHeader>
 
@@ -91,7 +91,7 @@
 					</PGVRText>
 				</PGVRTextBox>
 			</PGVRList>
-			<PGVRCell align="rightrtl" height="24" newline="1" style="label"><br/><PGVRvar var="pgv_lang[total_indis]"/>: <PGVRListTotal/></PGVRCell>
+			<PGVRCell align="rightrtl" height="24" newline="1" style="label"><br/><PGVRvar var="i18n::translate('Total individuals')"/>: <PGVRListTotal/></PGVRCell>
 		</PGVRBody>
 		<PGVRFooter>
 			<PGVRCell align="rightrtl" newline="1" style="date"><PGVRNow/></PGVRCell>

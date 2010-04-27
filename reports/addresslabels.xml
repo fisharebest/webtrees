@@ -2,15 +2,12 @@
 <PGVReport access="PRIV_USER" icon="place">
 <!-- $Id$ -->
 	<PGVRDescription>Prints address labels</PGVRDescription>
-	<PGVRTitle><PGVRvar var="pgv_lang[address_labels]" /></PGVRTitle>
-	<PGVRInput name="address" type="text"><PGVRvar var="pgv_lang[filter_address]" /> </PGVRInput>
-	<PGVRInput name="sortby" type="select" options="NAME,ID"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="email_in" type="select" options="all,noemail,onlyemail"><PGVRvar var="pgv_lang[include]"/> </PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
-	<!--
-	<PGVRInput name="showid" type="checkbox" default="1"><PGVRvar var="pgv_lang[show_ids]" /></PGVRInput>
-	-->
+	<PGVRTitle><PGVRvar var="i18n::translate('Address Labels')" /></PGVRTitle>
+	<PGVRInput name="address" type="text"><PGVRvar var="i18n::translate('Show addresses that contain:')" /> </PGVRInput>
+	<PGVRInput name="sortby" type="select" options="NAME,ID"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="email_in" type="select" options="all,noemail,onlyemail"><PGVRvar var="i18n::translate('Include:')"/> </PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 	<PGVRStyle name="header" font="$fonts" size="16" style="b" />
 	<PGVRStyle name="pagenum" font="$fonts" size="8" style="" />
 	<PGVRStyle name="text" font="$fonts" size="8" style="" />

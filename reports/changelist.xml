@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_USER" icon="place">
 	<!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="pgv_lang[changes_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Changes Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals matching specific change criteria</PGVRDescription>
-	<PGVRInput name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><PGVRvar var="pgv_lang[changedate2]" /></PGVRInput>
-	<PGVRInput name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><PGVRvar var="pgv_lang[changedate1]" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" options="CHAN,NAME,BIRT:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="pending" type="select" options="yes,no"><PGVRvar var="pgv_lang[show_pending]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="pageorient" type="select" default="landscape" options="landscape,portrait"><PGVRvar var="pgv_lang[orientation]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><PGVRvar var="i18n::translate('Starting range of change dates')" /></PGVRInput>
+	<PGVRInput name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><PGVRvar var="i18n::translate('Ending range of change dates')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" options="CHAN,NAME,BIRT:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="pending" type="select" options="yes,no"><PGVRvar var="i18n::translate('Show pending changes')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="pageorient" type="select" default="landscape" options="landscape,portrait"><PGVRvar var="i18n::translate('Orientation')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="16" style="b" />
@@ -41,15 +41,15 @@
 
 	<PGVRDoc pageSize="$pageSize" orientation="$pageorient" >
 		<PGVRHeader>
-			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="pgv_lang[changes_report]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="i18n::translate('Changes Report')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 		</PGVRHeader>
 
 		<PGVRBody>
 
 			<!-- Pending changes section Header -->
 			<PGVRif condition="$pending=='yes'">
-				<PGVRCell align="center" height="20" newline="1" style="header2"><PGVRvar var="pgv_lang[review_changes_block]" /></PGVRCell>
+				<PGVRCell align="center" height="20" newline="1" style="header2"><PGVRvar var="i18n::translate('Pending Changes')" /></PGVRCell>
 				<PGVRTextBox border="1" height="12" width="$idwidth">
 					<PGVRText style="label"> </PGVRText>
 				</PGVRTextBox>
@@ -57,17 +57,17 @@
 				<PGVRSetVar name="fill" value="" />
 				<PGVRif condition="$sortby=='NAME'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 				<PGVRTextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
-					<PGVRText style="label"><PGVRvar var="pgv_lang[name]" /></PGVRText>
+					<PGVRText style="label"><PGVRvar var="i18n::translate('Name')" /></PGVRText>
 				</PGVRTextBox>
 
 				<PGVRTextBox border="1" height="12" width="$datewidth">
-					<PGVRText style="label"><PGVRvar var="pgv_lang[differences]" /></PGVRText>
+					<PGVRText style="label"><PGVRvar var="i18n::translate('Differences')" /></PGVRText>
 				</PGVRTextBox>
 
 				<PGVRSetVar name="fill" value="" />
 				<PGVRif condition="$sortby=='CHAN'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 				<PGVRTextBox bgcolor="$fill" border="1" height="12" newline="1">
-					<PGVRText style="label"><PGVRvar var="factarray[CHAN]" /></PGVRText>
+					<PGVRText style="label"><PGVRvar var="i18n::translate('Last Change')" /></PGVRText>
 				</PGVRTextBox>
 
 				<!-- Pending Changes Section Data -->
@@ -81,7 +81,7 @@
 					<PGVRTextBox height="12" width="$datewidth">
 						<PGVRFacts ignore="CHAN" families="0" diff="true">
 							<PGVRText style="text">
-								<PGVRvar var="factarray[@fact]" /> <PGVRGedcomValue tag="@fact:DATE" /><br />
+								<PGVRvar var="i18n::translate('@fact')" /> <PGVRGedcomValue tag="@fact:DATE" /><br />
 							</PGVRText>
 						</PGVRFacts>
 					</PGVRTextBox>
@@ -91,12 +91,12 @@
 
 				</PGVRList>
 				<PGVRCell align="rightrtl" height="25" newline="1" style="label">
-					<PGVRvar var="pgv_lang[changes_pending_tot]" /><PGVRListTotal /><br />
+					<PGVRvar var="i18n::translate('Total pending changes: ')" /><PGVRListTotal /><br />
 				</PGVRCell>
 			</PGVRif>
 
 			<!-- Recent Changes Section Header -->
-			<PGVRCell align="center" height="20" newline="1" style="header2"><PGVRvar var="pgv_lang[recent_changes]" /> <PGVRvar var="changeRangeStart" date="1" /> - <PGVRvar var="changeRangeEnd" date="1" /></PGVRCell>
+			<PGVRCell align="center" height="20" newline="1" style="header2"><PGVRvar var="i18n::translate('Recent Changes')" /> <PGVRvar var="changeRangeStart" date="1" /> - <PGVRvar var="changeRangeEnd" date="1" /></PGVRCell>
 			<PGVRTextBox border="1" height="12" width="$idwidth">
 				<PGVRText style="label"> </PGVRText>
 			</PGVRTextBox>
@@ -104,19 +104,19 @@
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='NAME'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
-				<PGVRText style="label"><PGVRvar var="pgv_lang[name]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Name')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='BIRT:DATE'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="$datewidth">
-				<PGVRText style="label"><PGVRvar var="factarray[BIRT]" /> - <PGVRvar var="factarray[DEAT]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Birth')" /> - <PGVRvar var="i18n::translate('Death')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='CHAN'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" newline="1">
-				<PGVRText style="label"><PGVRvar var="factarray[CHAN]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Last Change')" /></PGVRText>
 			</PGVRTextBox>
 
 			<!-- Recent Changes Section Data -->
@@ -130,7 +130,7 @@
 				</PGVRTextBox>
 
 				<PGVRTextBox height="12" width="$datewidth">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /><br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" /></PGVRText>
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /><br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" /></PGVRText>
 				</PGVRTextBox>
 
 				<PGVRTextBox height="12" newline="1">
@@ -139,7 +139,7 @@
 			</PGVRList>
 
 			<PGVRCell align="rightrtl" height="25" newline="1" style="label">
-				<PGVRvar var="pgv_lang[changes_accepted_tot]" /><PGVRListTotal />
+				<PGVRvar var="i18n::translate('Total accepted changes: ')" /><PGVRListTotal />
 			</PGVRCell>
 		</PGVRBody>
 		<PGVRFooter>

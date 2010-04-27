@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_NONE" icon="source">
-	<PGVRTitle><PGVRvar var="pgv_lang[fact_sources_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Fact Sources')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals and families with a specific source for facts</PGVRDescription>
 
-	<PGVRInput name="sid" lookup="SOUR" default="" type="text"><PGVRvar var="pgv_lang[find_sourceid]" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="NAME,BIRT:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="sid" lookup="SOUR" default="" type="text"><PGVRvar var="i18n::translate('Find Source ID')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="NAME,BIRT:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="18" style="b" />
@@ -37,8 +37,8 @@
 
 	<PGVRDoc pageSize="$pageSize" orientation="landscape">
 		<PGVRHeader>
-			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="pgv_lang[source_list]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="i18n::translate('Sources')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 			<!-- Source Title -->
 			<PGVRGedcom id="$sid">
 				<PGVRCell align="center" newline="1" style="header2"><PGVRGedcomValue tag="TITL" /> (<PGVRvar var="sid"/>)</PGVRCell>
@@ -47,7 +47,7 @@
 
 		<PGVRBody>
 			<!-- List type -->
-			<PGVRCell align="center" newline="1" style="listtype"><PGVRvar var="pgv_lang[individual_list]" /></PGVRCell>
+			<PGVRCell align="center" newline="1" style="listtype"><PGVRvar var="i18n::translate('Individuals')" /></PGVRCell>
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual Name -->
@@ -55,19 +55,19 @@
 			<PGVRif condition="$sortby=='NAME'">
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><PGVRvar var="pgv_lang[name]" /></PGVRCell>
+			<PGVRCell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><PGVRvar var="i18n::translate('Name')" /></PGVRCell>
 			<!-- Birth date -->
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='BIRT:DATE'">
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><PGVRvar var="factarray[BIRT:DATE]" /></PGVRCell>
+			<PGVRCell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><PGVRvar var="i18n::translate('Birth Date')" /></PGVRCell>
 			<!-- Name of the fact that contains the source -->
-			<PGVRCell border="1" style="list_label" width="$fact"><PGVRvar var="factarray[EVEN]" /></PGVRCell>
+			<PGVRCell border="1" style="list_label" width="$fact"><PGVRvar var="i18n::translate('Event')" /></PGVRCell>
 			<!-- Date of the fact -->
-			<PGVRCell border="1" style="list_label" width="$dateevent"><PGVRvar var="factarray[DATE]" /></PGVRCell>
+			<PGVRCell border="1" style="list_label" width="$dateevent"><PGVRvar var="i18n::translate('Date')" /></PGVRCell>
 			<!-- Detailed source text -->
-			<PGVRCell border="1" newline="1" style="list_label"><PGVRvar var="factarray[SOUR]" /></PGVRCell>
+			<PGVRCell border="1" newline="1" style="list_label"><PGVRvar var="i18n::translate('Source')" /></PGVRCell>
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual List -->
@@ -99,7 +99,7 @@
 						</PGVRif>
 
 						<!-- Name of the fact that contains the source -->
-						<PGVRCell style="list_value" width="$fact"><PGVRvar var="factarray[@fact]"/></PGVRCell>
+						<PGVRCell style="list_value" width="$fact"><PGVRvar var="i18n::translate('@fact')"/></PGVRCell>
 						<!-- Date of the fact -->
 						<PGVRCell style="list_value" width="$dateevent"><PGVRGedcomValue tag="@fact:DATE"/></PGVRCell>
 						<!-- Detailed source text -->
@@ -127,25 +127,25 @@
 
 			<!-- Print the list counter -->
 			<PGVRif condition="$printedsource==0">
-				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="pgv_lang[total_indis]"/>: 0</PGVRCell>
+				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total individuals')"/>: 0</PGVRCell>
 			</PGVRif>
 			<PGVRif condition="$printedsource > 0">
 				<PGVRTextBox height="$vspace" newline="1" padding="0"/>
-				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="pgv_lang[total_indis]"/>: <PGVRvar var="printedsource" /></PGVRCell>
+				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total individuals')"/>: <PGVRvar var="printedsource" /></PGVRCell>
 			</PGVRif>
 
 			<!-- Family List -->
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
-			<PGVRCell align="center" newline="1" style="listtype"><PGVRvar var="pgv_lang[family_list]" /></PGVRCell>
+			<PGVRCell align="center" newline="1" style="listtype"><PGVRvar var="i18n::translate('Families')" /></PGVRCell>
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
 			<!-- Family Name -->
-			<PGVRCell border="1" style="list_label" width="$namefam"><PGVRvar var="pgv_lang[name]" /></PGVRCell>
+			<PGVRCell border="1" style="list_label" width="$namefam"><PGVRvar var="i18n::translate('Name')" /></PGVRCell>
 			<!-- Name of the fact that contains the source -->
-			<PGVRCell border="1" style="list_label" width="$fact"><PGVRvar var="factarray[EVEN]" /></PGVRCell>
+			<PGVRCell border="1" style="list_label" width="$fact"><PGVRvar var="i18n::translate('Event')" /></PGVRCell>
 			<!-- Date of the fact -->
-			<PGVRCell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><PGVRvar var="factarray[DATE]" /></PGVRCell>
+			<PGVRCell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><PGVRvar var="i18n::translate('Date')" /></PGVRCell>
 			<!-- Detailed source text -->
-			<PGVRCell border="1" newline="1" style="list_label"><PGVRvar var="factarray[SOUR]" /></PGVRCell>
+			<PGVRCell border="1" newline="1" style="list_label"><PGVRvar var="i18n::translate('Source')" /></PGVRCell>
 
 			<!-- Family List -->
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
@@ -180,20 +180,20 @@
 							<PGVRif condition="@fact=='MARR'">
 								<!-- Print different type of marriages -->
 								<PGVRif condition="@MARR:TYPE==''">
-									<PGVRvar var="factarray[@fact]"/>
+									<PGVRvar var="i18n::translate('@fact')"/>
 								</PGVRif>
 								<PGVRif condition="@MARR:TYPE=='Religious'">
-									<PGVRvar var="factarray[MARR_RELIGIOUS]" />
+									<PGVRvar var="i18n::translate('Religious Marriage')" />
 								</PGVRif>
 								<PGVRif condition="@MARR:TYPE=='Civil'">
-									<PGVRvar var="factarray[MARR_CIVIL]" />
+									<PGVRvar var="i18n::translate('Civil Marriage')" />
 								</PGVRif>
 								<PGVRif condition="@MARR:TYPE=='Partners'">
-									<PGVRvar var="factarray[MARR_PARTNERS]" />
+									<PGVRvar var="i18n::translate('Registered Partnership')" />
 								</PGVRif>
 							</PGVRif>
 							<PGVRif condition="@fact!='MARR'">
-								<PGVRvar var="factarray[@fact]"/>
+								<PGVRvar var="i18n::translate('@fact')"/>
 							</PGVRif>
 						</PGVRCell>
 
@@ -224,11 +224,11 @@
 
 			<!-- Print the list counter -->
 			<PGVRif condition="$printedsource==0">
-				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="pgv_lang[total_fams]"/>: 0</PGVRCell>
+				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total families')"/>: 0</PGVRCell>
 			</PGVRif>
 			<PGVRif condition="$printedsource > 0">
 				<PGVRTextBox height="$vspace" newline="1" padding="0"/>
-				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="pgv_lang[total_fams]"/>: <PGVRvar var="printedsource" /></PGVRCell>
+				<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total families')"/>: <PGVRvar var="printedsource" /></PGVRCell>
 			</PGVRif>
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
 		</PGVRBody>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_PUBLIC" icon="descendancy">
 <!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="pgv_lang[descend_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Descendancy Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a descendant chart in portrait mode</PGVRDescription>
-	<PGVRInput name="pid" lookup="INDI" type="text" default=""><PGVRvar var="pgv_lang[enter_pid]" /></PGVRInput>
-	<PGVRInput name="maxgen" type="select" options="3,4,5,6,7,8,9,*"><PGVRvar var="pgv_lang[generations]" /></PGVRInput>
-	<PGVRInput name="sources" type="checkbox" default="1"><PGVRvar var="pgv_lang[show_sources]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="pid" lookup="INDI" type="text" default=""><PGVRvar var="i18n::translate('Enter Individual ID')" /></PGVRInput>
+	<PGVRInput name="maxgen" type="select" options="3,4,5,6,7,8,9,*"><PGVRvar var="i18n::translate('Generations')" /></PGVRInput>
+	<PGVRInput name="sources" type="checkbox" default="1"><PGVRvar var="i18n::translate('Show sources?')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="18"/>
@@ -37,8 +37,8 @@
 	
 	<PGVRDoc pageSize="$pageSize">
 		<PGVRHeader>
-			<PGVRCell align="center" height="30" newline="1" style="header"><PGVRvar var="pgv_lang[descendancy_header]" /><PGVRGetPersonName id="$pid" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" height="30" newline="1" style="header"><PGVRvar var="i18n::translate('Descendancy Report for ')" /><PGVRGetPersonName id="$pid" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 		</PGVRHeader>
 		<PGVRBody>
 			<PGVRRelatives id="$pid" group="descendants" sortby="generation" maxgen="$maxgen">
@@ -50,7 +50,7 @@
 				</PGVRRepeatTag>
 				<PGVRif condition="$showPerson=='T'">
 					<PGVRif condition="$generation!=@generation">
-						<PGVRCell align="center" height="20" newline="1" style="subheader"><PGVRvar var="pgv_lang[ahnentafel_generation]" /> <PGVRGeneration /></PGVRCell>
+						<PGVRCell align="center" height="20" newline="1" style="subheader"><PGVRvar var="i18n::translate('Generation ')" /> <PGVRGeneration /></PGVRCell>
 						<PGVRSetVar name="generation" value="@generation" />
 					</PGVRif>
 					<PGVRTextBox border="" width="25" height="40">
@@ -83,10 +83,10 @@
 							<PGVRSetVar name="birtExists" value="true" />	
 							<PGVRSetVar name="printPeriod" value="true" />
 							<PGVRif condition="$gender=='male'">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_born_m]" /> </PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('MALE', 'was born')" /> </PGVRText>
 							</PGVRif>
 							<PGVRif condition="$gender=='female'">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_born_f]" /> </PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('FEMALE', 'was born')" /> </PGVRText>
 							</PGVRif>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="BIRT:SOUR">
@@ -101,22 +101,22 @@
 								</PGVRRepeatTag>
 							</PGVRif>
 							<PGVRif condition="@DATE!=''">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
+								<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
 							</PGVRif>
 							<PGVRif condition="@PLAC!=''">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
 							</PGVRif>
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
 							<PGVRSetVar name="printPeriod" value="true" />
 							<PGVRif condition="$birtExists=='true'">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[and]" /></PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate('and')" /></PGVRText>
 							</PGVRif>
 							<PGVRif condition="$gender=='male'">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_died_m]" /> </PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('MALE', 'died')" /> </PGVRText>
 							</PGVRif>
 							<PGVRif condition="$gender=='female'">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_died_f]" /> </PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('FEMALE', 'died')" /> </PGVRText>
 							</PGVRif>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="DEAT:SOUR">
@@ -131,10 +131,10 @@
 								</PGVRRepeatTag>
 							</PGVRif>
 							<PGVRif condition="@DATE!=''">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
+								<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
 							</PGVRif>
 							<PGVRif condition="@PLAC!=''">
-								<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
+								<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
 							</PGVRif>
 						</PGVRGedcom>
 						<PGVRif condition="$printPeriod=='true'">
@@ -149,10 +149,10 @@
 									<PGVRGedcom id="MARR">
 										<PGVRSetVar name="marrExists" value="true" />
 										<PGVRif condition="$printPronoun=='true'" >
-											<PGVRText style="label1">  <PGVRvar var="pgv_lang[ahnentafel_pronoun_m]" /> </PGVRText>
+											<PGVRText style="label1">  <PGVRvar var="i18n::translate('He ')" /> </PGVRText>
 										</PGVRif>
 										<PGVRSetVar name="printPeriod" value="true" />
-										<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_married_m]" /> </PGVRText>
+										<PGVRText style="label1"> <PGVRvar var="i18n::translate('She ')" /> </PGVRText>
 										<PGVRif condition="$sources==1">
 											<PGVRRepeatTag tag="MARR:SOUR">
 												<PGVRFootnote>
@@ -182,11 +182,11 @@
 													</PGVRRepeatTag>
 												</PGVRif>
 											<PGVRGedcom id="@FAMC">
-												<PGVRText style="label1"> <PGVRvar var="pgv_lang[daughter_of]" /></PGVRText>
+												<PGVRText style="label1"> <PGVRvar var="i18n::translate('daughter of')" /></PGVRText>
 												<PGVRText style="name"> <PGVRGetPersonName id="@HUSB" /> </PGVRText>
 												<PGVRGedcom id="@HUSB">
 													<PGVRGedcom id="@FAMS:@WIFE">
-														<PGVRText style="label1"> <PGVRvar var="pgv_lang[and]" /></PGVRText>
+														<PGVRText style="label1"> <PGVRvar var="i18n::translate('and')" /></PGVRText>
 													</PGVRGedcom>
 												</PGVRGedcom>
 												<PGVRText style="name"> <PGVRGetPersonName id="@WIFE" /> </PGVRText>
@@ -198,10 +198,10 @@
 									<PGVRGedcom id="MARR">
 										<PGVRSetVar name="marrExists" value="true" />
 										<PGVRif condition="$printPronoun=='true'" >
-											<PGVRText style="label1">  <PGVRvar var="pgv_lang[ahnentafel_pronoun_f]" /> </PGVRText>
+											<PGVRText style="label1">  <PGVRvar var="i18n::translate('She ')" /> </PGVRText>
 										</PGVRif>
 										<PGVRSetVar name="printPeriod" value="true" />
-										<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_married_f]" /> </PGVRText>
+										<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('FEMALE', 'married')" /> </PGVRText>
 										<PGVRif condition="$sources==1">
 											<PGVRRepeatTag tag="MARR:SOUR">
 												<PGVRFootnote>
@@ -231,11 +231,11 @@
 												</PGVRRepeatTag>
 											</PGVRif>
 											<PGVRGedcom id="@FAMC">
-												<PGVRText style="label1"> <PGVRvar var="pgv_lang[son_of]" /></PGVRText>
+												<PGVRText style="label1"> <PGVRvar var="i18n::translate('son of')" /></PGVRText>
 												<PGVRText style="name"> <PGVRGetPersonName id="@HUSB" /></PGVRText>
 												<PGVRGedcom id="@HUSB">
 													<PGVRGedcom id="@FAMS:@WIFE">
-														<PGVRText style="label1"> <PGVRvar var="pgv_lang[and]" /></PGVRText>
+														<PGVRText style="label1"> <PGVRvar var="i18n::translate('and')" /></PGVRText>
 													</PGVRGedcom>
 												</PGVRGedcom>
 												<PGVRText style="name"> <PGVRGetPersonName id="@WIFE" /></PGVRText>
@@ -244,14 +244,14 @@
 									</PGVRif>
 								</PGVRif>
 								<PGVRGedcom id="MARR">
-									<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_married_post]" /></PGVRText>
+									<PGVRText style="label1"> <PGVRvar var=" " /></PGVRText>
 									<PGVRif condition="@DATE!=''">
 										<PGVRSetVar name="printPeriod" value="true" />
-										<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2"/></PGVRText>
+										<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2"/></PGVRText>
 									</PGVRif>
 									<PGVRif condition="@PLAC!=''">
 										<PGVRSetVar name="printPeriod" value="true" />
-										<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
+										<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
 									</PGVRif>
 								</PGVRGedcom>
 								<PGVRif condition="$printPeriod=='true'">
@@ -266,11 +266,11 @@
 											<PGVRGedcom id="BIRT">
 												<PGVRif condition="$printPronoun=='true'">
 													<PGVRSetVar name="printPeriod" value="true" />
-													<PGVRText style="label1">  <PGVRvar var="pgv_lang[descendancy_pronoun_f]" /></PGVRText>
+													<PGVRText style="label1">  <PGVRvar var="i18n::translate('She ')" /></PGVRText>
 													<PGVRSetVar name="printPronoun" value="false" />
 												</PGVRif>
 												<PGVRSetVar name="birtExist" value="true" />
-												<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_born_f]" /> </PGVRText>
+												<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('FEMALE', 'was born')" /> </PGVRText>
 												<PGVRif condition="$sources==1">
 													<PGVRRepeatTag tag="BIRT:SOUR">
 														<PGVRFootnote>
@@ -284,22 +284,22 @@
 													</PGVRRepeatTag>
 												</PGVRif>
 												<PGVRif condition="@DATE!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
 												</PGVRif>
 												<PGVRif condition="@PLAC!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
 												</PGVRif>
 											</PGVRGedcom>
 											<PGVRGedcom id="DEAT">
 												<PGVRif condition="$printPronoun=='true'">
-													<PGVRText style="label1">  <PGVRvar var="pgv_lang[ahnentafel_pronoun_f]" /></PGVRText>
+													<PGVRText style="label1">  <PGVRvar var="i18n::translate('She ')" /></PGVRText>
 													<PGVRSetVar name="printPronoun" value="false" />
 												</PGVRif>
 												<PGVRSetVar name="printPeriod" value="true" />
 												<PGVRif condition="$birtExist=='true'">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[and]" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var="i18n::translate('and')" /></PGVRText>
 												</PGVRif>
-												<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_died_f]" /> </PGVRText>
+												<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('FEMALE', 'died')" /> </PGVRText>
 												<PGVRif condition="$sources==1">
 													<PGVRRepeatTag tag="DEAT:SOUR">
 														<PGVRFootnote>
@@ -313,10 +313,10 @@
 													</PGVRRepeatTag>
 												</PGVRif>
 												<PGVRif condition="@DATE!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
 												</PGVRif>
 												<PGVRif condition="@PLAC!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
 												</PGVRif>
 											</PGVRGedcom>
 											<PGVRif condition="$printPeriod=='true'">
@@ -332,11 +332,11 @@
 											<PGVRGedcom id="BIRT">
 												<PGVRSetVar name="printPeriod" value="true" />
 												<PGVRif condition="$printPronoun=='true'">
-													<PGVRText style="label1">  <PGVRvar var="pgv_lang[descendancy_pronoun_m]" /></PGVRText>
+													<PGVRText style="label1">  <PGVRvar var="i18n::translate('He ')" /></PGVRText>
 													<PGVRSetVar name="printPronoun" value="false" />
 												</PGVRif>
 												<PGVRSetVar name="birtExist" value="true" />
-												<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_born_m]" /> </PGVRText>
+												<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('MALE', 'was born')" /> </PGVRText>
 												<PGVRif condition="$sources==1">
 													<PGVRRepeatTag tag="BIRT:SOUR">
 														<PGVRFootnote>
@@ -350,22 +350,22 @@
 													</PGVRRepeatTag>
 												</PGVRif>
 												<PGVRif condition="@DATE!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
 												</PGVRif>
 												<PGVRif condition="@PLAC!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
 												</PGVRif>
 											</PGVRGedcom>
 											<PGVRGedcom id="DEAT">
 												<PGVRif condition="$printPronoun=='true'">
-													<PGVRText style="label1">  <PGVRvar var="pgv_lang[ahnentafel_pronoun_m]" /></PGVRText>
+													<PGVRText style="label1">  <PGVRvar var="i18n::translate('He ')" /></PGVRText>
 													<PGVRSetVar name="printPronoun" value="true" />
 												</PGVRif>
 												<PGVRSetVar name="printPeriod" value="true" />
 												<PGVRif condition="$birtExist=='true'">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[and]" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var="i18n::translate('and')" /></PGVRText>
 												</PGVRif>
-												<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_died_m]" /> </PGVRText>
+												<PGVRText style="label1"> <PGVRvar var="i18n::translate_c('MALE', 'died')" /> </PGVRText>
 												<PGVRif condition="$sources==1">
 													<PGVRRepeatTag tag="DEAT:SOUR">
 														<PGVRFootnote>
@@ -379,10 +379,10 @@
 													</PGVRRepeatTag>
 												</PGVRif>
 												<PGVRif condition="@DATE!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_on]" /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var=" " /> <PGVRGedcomValue tag="DATE" level="2" /></PGVRText>
 												</PGVRif>
 												<PGVRif condition="@PLAC!=''">
-													<PGVRText style="label1"> <PGVRvar var="pgv_lang[ahnentafel_place]" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
+													<PGVRText style="label1"> <PGVRvar var="i18n::translate(' in ')" /> <PGVRGedcomValue tag="PLAC" level="2" /></PGVRText>
 												</PGVRif>
 											</PGVRGedcom>
 											<PGVRif condition="$printPeriod=='true'">
@@ -407,13 +407,13 @@
 
 								<PGVRTextBox height="20" left="25" newline="1">
 									<PGVRif condition="$numberOfChildren==1">
-										<PGVRText style="label1"><PGVRvar var="pgv_lang[child_of]" /></PGVRText>
+										<PGVRText style="label1"><PGVRvar var="i18n::translate('Child of ')" /></PGVRText>
 									</PGVRif>
 									<PGVRif condition="$numberOfChildren>1">
-										<PGVRText style="label1"><PGVRvar var="pgv_lang[children_of]" /></PGVRText>
+										<PGVRText style="label1"><PGVRvar var="i18n::translate('Children of ')" /></PGVRText>
 									</PGVRif>
 									<PGVRText style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
-									<PGVRText style="label1"> <PGVRvar var="pgv_lang[and]" /> </PGVRText>
+									<PGVRText style="label1"> <PGVRvar var="i18n::translate('and')" /> </PGVRText>
 									<PGVRText style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 									<PGVRText style="label1">:</PGVRText>
 								</PGVRTextBox>
@@ -470,7 +470,7 @@
 												</PGVRRepeatTag>
 											</PGVRif>
 											<PGVRGedcom id="BIRT">
-												<PGVRText style="label1"> <PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="DATE" level="2"/>  <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
+												<PGVRText style="label1"> <PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="DATE" level="2"/>  <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
 											</PGVRGedcom>
 											<PGVRSetVar name="showMarraige" value="T" />
 											<PGVRRepeatTag tag="FAMS">
@@ -487,7 +487,7 @@
 												</PGVRif>
 												<PGVRRepeatTag tag="FAMS">
 													<PGVRGedcom id="@FAMS">
-														<PGVRText style="label1"> <PGVRvarLetter var="factarray[MARR]" />: </PGVRText>
+														<PGVRText style="label1"> <PGVRvarLetter var="i18n::translate('Marriage')" />: </PGVRText>
 														<PGVRif condition="$gender=='male'">
 															<PGVRText style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 														</PGVRif>
@@ -506,7 +506,7 @@
 												</PGVRRepeatTag>
 											</PGVRif>
 											<PGVRGedcom id="DEAT">
-												<PGVRText style="label1"> <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DATE" level="2"/> <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
+												<PGVRText style="label1"> <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DATE" level="2"/> <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
 											</PGVRGedcom>
 										</PGVRTextBox>
 									</PGVRGedcom>
@@ -522,7 +522,7 @@
 			<PGVRif condition="($sources==1) and ($source_exist==1)">
 				<PGVRNewPage/>
 				<PGVRTextBox newline="1">
-					<PGVRText style="subheader"><PGVRvar var="pgv_lang[sources]" /><br /><br /></PGVRText>
+					<PGVRText style="subheader"><PGVRvar var="i18n::translate('Sources')" /><br /><br /></PGVRText>
 					<PGVRFootnoteTexts />
 				</PGVRTextBox>
 			</PGVRif>

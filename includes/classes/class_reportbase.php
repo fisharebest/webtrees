@@ -2459,8 +2459,7 @@ function PGVRRepeatTagEHandler() {
 * @ desc					GEDCOM fact description, example:
 * 								1 EVEN This is a description
 * @ fact					GEDCOM fact tag, such as BIRT, DEAT etc.
-* $ pgv_lang[]
-* $ factarray[]
+* $ i18n::translate('....')
 * $ language_settings[]
 * 
 * 
@@ -2493,12 +2492,15 @@ function PGVRvarSHandler($attrs) {
 			// n TYPE This text if string
 			$tfact = $type;
 		}
-		$var = str_replace(array("[", "]", "@fact", "@desc"), array("['", "']", $tfact, $desc), $var);
-		eval("if (!empty(\$$var)) \$var = \$$var;");
-		$match = array();
-		if (preg_match("/factarray\['(.*)'\]/", $var, $match)) {
-			$var = $match[1];
+		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
+		if (substr($var, 0, 6)=='i18n::') {
+			eval("\$var=$var;");
 		}
+		//eval("if (!empty(\$$var)) \$var = \$$var;");
+		//$match = array();
+		//if (preg_match("/factarray\['(.*)'\]/", $var, $match)) {
+		//	$var = $match[1];
+		//}
 	}
 	// Check if variable is set as a date and reformat the date
 	if (isset($attrs["date"])) {
@@ -2735,18 +2737,16 @@ function PGVRSetVarSHandler($attrs) {
 	if (preg_match("/\\$(\w+)/", $name, $match)) {
 		$name = $vars["'".$match[1]."'"]["id"];
 	}
-	// TODO: find an alternative that doesn't use pgv_lang
-	//if ((substr($value, 0, 10) == "\$pgv_lang[") or (substr($value, 0, 11) == "\$factarray[")) {
-	//	$var = str_replace(array("[", "]"), array("['", "']"), $value);
-	//	eval("\$value = $var;");
-	//}
-	//$count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
-	//$i=0;
-	//while($i<$count) {
-	//	$t = $vars[$match[$i][1]]["id"];
-	//	$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
-	//	$i++;
-	//}
+	$count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
+	$i=0;
+	while($i<$count) {
+		$t = $vars[$match[$i][1]]["id"];
+		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
+		$i++;
+	}
+	if (substr($value, 0, 6) == "i18n::") {
+		eval("\$value = $value;");
+	}
 	// Arithmetic functions
 	if (preg_match("/(\d+)\s*([\-\+\*\/])\s*(\d+)/", $value, $match)) {
 		switch($match[2]) {

@@ -2,10 +2,10 @@
 <PGVReport access="PRIV_PUBLIC" icon="pedigree">
 <!-- $Id$ -->
 	<PGVRDescription>Prints a pedigree chart in portrait mode</PGVRDescription>
-	<PGVRTitle><PGVRvar var="pgv_lang[pedigree_chart]" /> - <PGVRvar var="pgv_lang[portrait]" /></PGVRTitle>
-	<PGVRInput name="pid" lookup="INDI" type="text" default=""><PGVRvar var="pgv_lang[enter_pid]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRTitle><PGVRvar var="i18n::translate('Pedigree Chart')" /> - <PGVRvar var="i18n::translate('Portrait')" /></PGVRTitle>
+	<PGVRInput name="pid" lookup="INDI" type="text" default=""><PGVRvar var="i18n::translate('Enter Individual ID')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<PGVRStyle name="header" font="$fonts" size="18" />
 	<PGVRStyle name="label1" font="$fonts" size="9" />
@@ -36,7 +36,7 @@
 
 	<PGVRDoc pageSize="$pageSize" leftmargin="1" rightmargin="1">
 		<PGVRHeader>
-			<PGVRCell height="20" newline="1" left="20" style="header"><PGVRvar var="pgv_lang[pedigree_chart]" /></PGVRCell>
+			<PGVRCell height="20" newline="1" left="20" style="header"><PGVRvar var="i18n::translate('Pedigree Chart')" /></PGVRCell>
 			<PGVRCell align="rightrtl" height="10" newline="1" style="date"><PGVRNow /></PGVRCell>
 		</PGVRHeader>
 		<PGVRBody>
@@ -61,15 +61,15 @@
 				<PGVRText style="name"><PGVRGetPersonName id="$pid" truncate="$trunc_place" /></PGVRText>
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="160" height="10" align="left" left="$name_1_2_3" top="372" reseth="1">
-				<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-					<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+				<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+					<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 					<PGVRGedcom id="@FAMS">
-						<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
 					</PGVRGedcom>
 					<PGVRGedcom id="DEAT">
-						<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 					</PGVRGedcom>
 				</PGVRText>
 			</PGVRTextBox>
@@ -82,15 +82,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_1_2_3" top="222" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_123_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_123_place" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_123_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_123_place" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_123_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_123_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_123_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_123_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_123_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_123_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_123_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_123_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -104,11 +104,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_1_2_3" top="572" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_123_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_123_place" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_123_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_123_place" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_123_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_123_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_123_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_123_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -122,15 +122,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="132" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_4_to_7_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -144,11 +144,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="292" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -163,15 +163,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="452" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_4_to_7_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -185,11 +185,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="122" height="10" align="left" left="$name_4_to_7" top="612" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_4_to_7_place" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_4_to_7_place" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_4_to_7_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_4_to_7_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -208,15 +208,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="92" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -230,11 +230,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="172" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -251,15 +251,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="252" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -273,11 +273,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="332" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -294,15 +294,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="412" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -316,11 +316,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="492" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -337,15 +337,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="572" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -359,11 +359,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="130" height="10" align="left" left="$name_8_to_15" top="652" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
-						<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
-							<br /><PGVRvarLetter var="factarray[PLAC]" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -382,12 +382,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="72" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -401,9 +401,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="112" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -420,12 +420,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="152" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -439,9 +439,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="192" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -458,12 +458,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="232" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -477,9 +477,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="272" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -496,12 +496,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="312" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -515,9 +515,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="352" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -534,12 +534,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="392" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -553,9 +553,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="432" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -572,12 +572,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="472" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -591,9 +591,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="512" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -610,12 +610,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="552" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -629,9 +629,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="592" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -648,12 +648,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="632" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="factarray[MARR]" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="30" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -667,9 +667,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" width="135" height="10" align="left" left="$name_16_to_31" top="672" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
+					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="30" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
+							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="30" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>

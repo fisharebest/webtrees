@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_PUBLIC" icon="cfamily">
 <!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="pgv_lang[relatives_report_ext]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Expanded Relatives Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals related to a specific person</PGVRDescription>
-	<PGVRInput name="pid" lookup="INDI" type="text"><PGVRvar var="pgv_lang[enter_pid]" /></PGVRInput>
-	<PGVRInput name="relatives" type="select" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="pgv_lang[choose_relatives]" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none,ID,NAME,BIRT:DATE,DEAT:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="pid" lookup="INDI" type="text"><PGVRvar var="i18n::translate('Enter Individual ID')" /></PGVRInput>
+	<PGVRInput name="relatives" type="select" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="i18n::translate('Choose relatives')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none,ID,NAME,BIRT:DATE,DEAT:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="14" />
@@ -38,8 +38,8 @@
 
 	<PGVRDoc pageSize="$pageSize" orientation="landscape">
 		<PGVRHeader>
-			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="pgv_lang[relatives_report_ext]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="i18n::translate('Expanded Relatives Report')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='ID'">
@@ -51,22 +51,22 @@
 			<PGVRif condition="$sortby=='NAME'">
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" height="$height1" style="label" width="$width2"> <PGVRvar var="pgv_lang[name]" /></PGVRCell>
+			<PGVRCell bgcolor="$fill" border="1" height="$height1" style="label" width="$width2"> <PGVRvar var="i18n::translate('Name')" /></PGVRCell>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='BIRT:DATE'">
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" height="$height1" style="label" width="$width3"> <PGVRvar var="factarray[BIRT]" /></PGVRCell>
+			<PGVRCell bgcolor="$fill" border="1" height="$height1" style="label" width="$width3"> <PGVRvar var="i18n::translate('Birth')" /></PGVRCell>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='DEAT:DATE'">
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" height="$height1" style="label" width="$width4"> <PGVRvar var="factarray[DEAT]" /></PGVRCell>
+			<PGVRCell bgcolor="$fill" border="1" height="$height1" style="label" width="$width4"> <PGVRvar var="i18n::translate('Death')" /></PGVRCell>
 
-			<PGVRCell border="1" height="$height1" style="label" width="$width5"> <PGVRvar var="pgv_lang[father]" /></PGVRCell>
-			<PGVRCell border="1" height="$height1" newline="1" style="label"> <PGVRvar var="pgv_lang[mother]" /></PGVRCell>
+			<PGVRCell border="1" height="$height1" style="label" width="$width5"> <PGVRvar var="i18n::translate('Father')" /></PGVRCell>
+			<PGVRCell border="1" height="$height1" newline="1" style="label"> <PGVRvar var="i18n::translate('Mother')" /></PGVRCell>
 		</PGVRHeader>
 
 		<PGVRBody>
@@ -117,17 +117,17 @@
 						<PGVRTextBox height="$height2" left="$width1" width="$widthB2">
 							<PGVRif condition="$sex=='M'">
 								<PGVRText style="mini">
-									<PGVRvar var="pgv_lang[family]" /> (<PGVRGedcomValue tag="@id" />) <PGVRvar var="pgv_lang[with]" /> <PGVRGetPersonName id="@WIFE" /> (<PGVRGedcom id="@WIFE"><PGVRGedcomValue tag="@id" /></PGVRGedcom>) <PGVRGedcomValue tag="MARR:DATE" />
+									<PGVRvar var="i18n::translate('Family')" /> (<PGVRGedcomValue tag="@id" />) <PGVRvar var="i18n::translate('with')" /> <PGVRGetPersonName id="@WIFE" /> (<PGVRGedcom id="@WIFE"><PGVRGedcomValue tag="@id" /></PGVRGedcom>) <PGVRGedcomValue tag="MARR:DATE" />
 								</PGVRText>
 							</PGVRif>
 							<PGVRif condition="$sex=='F'">
 								<PGVRText style="mini">
-									<PGVRvar var="pgv_lang[family]" /> (<PGVRGedcomValue tag="@id" />) <PGVRvar var="pgv_lang[with]" /> <PGVRGetPersonName id="@HUSB" /> (<PGVRGedcom id="@HUSB"><PGVRGedcomValue tag="@id" /></PGVRGedcom>) <PGVRGedcomValue tag="MARR:DATE" />
+									<PGVRvar var="i18n::translate('Family')" /> (<PGVRGedcomValue tag="@id" />) <PGVRvar var="i18n::translate('with')" /> <PGVRGetPersonName id="@HUSB" /> (<PGVRGedcom id="@HUSB"><PGVRGedcomValue tag="@id" /></PGVRGedcom>) <PGVRGedcomValue tag="MARR:DATE" />
 								</PGVRText>
 							</PGVRif>
 						</PGVRTextBox>
 						<PGVRTextBox height="$height2" width="50">
-							<PGVRText style="minibold"><PGVRvar var="pgv_lang[children]" />:</PGVRText>
+							<PGVRText style="minibold"><PGVRvar var="i18n::translate('Children')" />:</PGVRText>
 						</PGVRTextBox>
 						<PGVRTextBox height="$height2" newline="1">
 							<PGVRSetVar name="morechildren" value="0" />
@@ -152,7 +152,7 @@
 
 			</PGVRRelatives>
 			<PGVRCell align="rightrtl" height="15" newline="1" style="label">
-				<br /><PGVRvar var="pgv_lang[total_indis]" />: <PGVRListTotal />
+				<br /><PGVRvar var="i18n::translate('Total individuals')" />: <PGVRListTotal />
 			</PGVRCell>
 		</PGVRBody>
 		

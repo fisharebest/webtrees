@@ -118,10 +118,9 @@ function PGVRvarSHandler($attrs) {
 		if ($fact=="EVEN") {
 			$tfact = $type;
 		}
-		$var = str_replace(array("[", "]", "@fact", "@desc"), array("['", "']", $tfact, $desc), $var);
-		eval("if (!empty(\$$var)) \$var = \$$var;");
-		if (preg_match("/factarray\['(.*)'\]/", $var, $match)>0) {
-			$var = $match[1];
+		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
+		if (substr($var, 0, 6)=='i18n::') {
+			eval("\$var=$var;");
 		}
 		$text .= $var;
 	}

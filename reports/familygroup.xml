@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_PUBLIC" icon="sfamily">
 	<!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="pgv_lang[family_group_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Family Group Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a PAF style family group record</PGVRDescription>
 	<!-- User inputs for the report -->
-	<PGVRInput name="famid" lookup="FAM" type="text" default=""><PGVRvar var="pgv_lang[enter_famid]" /></PGVRInput>
-	<PGVRInput name="sources" type="checkbox" default="1"><PGVRvar var="pgv_lang[show_sources]" /></PGVRInput>
-	<PGVRInput name="notes" type="checkbox" default="1"><PGVRvar var="pgv_lang[show_notes]" /></PGVRInput>
-	<PGVRInput name="photos" type="checkbox" default="0"><PGVRvar var="pgv_lang[show_photos]" /></PGVRInput>
-	<PGVRInput name="blanks" type="checkbox" default="0"><PGVRvar var="pgv_lang[show_basic]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
-	<PGVRInput name="colors" type="checkbox" default="1"><PGVRvar var="pgv_lang[use_colors]"/></PGVRInput>
-	<PGVRInput name="showplace" type="checkbox" default="1"><PGVRvar var="pgv_lang[print]"/> "<PGVRvar var="factarray[PLAC]" />"?</PGVRInput>
+	<PGVRInput name="famid" lookup="FAM" type="text" default=""><PGVRvar var="i18n::translate('Enter Family ID')" /></PGVRInput>
+	<PGVRInput name="sources" type="checkbox" default="1"><PGVRvar var="i18n::translate('Show sources?')" /></PGVRInput>
+	<PGVRInput name="notes" type="checkbox" default="1"><PGVRvar var="i18n::translate('Show notes?')" /></PGVRInput>
+	<PGVRInput name="photos" type="checkbox" default="0"><PGVRvar var="i18n::translate('Show photos?')" /></PGVRInput>
+	<PGVRInput name="blanks" type="checkbox" default="0"><PGVRvar var="i18n::translate('Print basic events when blank?')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
+	<PGVRInput name="colors" type="checkbox" default="1"><PGVRvar var="i18n::translate('Use colors')"/></PGVRInput>
+	<PGVRInput name="showplace" type="checkbox" default="1"><PGVRvar var="i18n::translate('Print')"/> "<PGVRvar var="i18n::translate('Place')" />"?</PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="18" />
@@ -90,15 +90,15 @@
 		<PGVRSetVar name="wifeid" value="@WIFE" />
 
 		<PGVRHeader>
-			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="pgv_lang[family_group_report]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="i18n::translate('Family Group Report')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 		</PGVRHeader>
 
 		<PGVRBody>
 			<PGVRGedcom id="$famid">
 				<!-- Print the Family name with Level 1 sources -->
 				<PGVRTextBox newline="1">
-					<PGVRText style="pageheader"><PGVRvar var="pgv_lang[family]" /> <PGVRGetPersonName id=""/> </PGVRText>
+					<PGVRText style="pageheader"><PGVRvar var="i18n::translate('Family')" /> <PGVRGetPersonName id=""/> </PGVRText>
 					<PGVRif condition="$sources==1">
 						<PGVRRepeatTag tag="SOUR">
 							<PGVRFootnote>
@@ -130,7 +130,7 @@
 				<PGVRGedcom id="@HUSB">
 					<!-- print the name and any level 1 sources -->
 					<PGVRTextBox bgcolor="$malebox_bgcolor" border="1" width="$width" newline="1">
-						<PGVRText color="$tcolor" style="text"><PGVRvar var="pgv_lang[husband]" />  </PGVRText>
+						<PGVRText color="$tcolor" style="text"><PGVRvar var="i18n::translate('Husband')" />  </PGVRText>
 						<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="" /> </PGVRText>
 						<PGVRif condition="$sources==1">
 							<PGVRRepeatTag tag="SOUR">
@@ -149,7 +149,7 @@
 					<!-- print the birth and christening if the blanks are on -->
 					<PGVRif condition="$blanks==1">
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[BIRT]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Birth')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BIRT:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="BIRT:SOUR">
@@ -166,13 +166,13 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BIRT:PLAC" /></PGVRText>
 						</PGVRTextBox>
 
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[CHR]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Christening')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="CHR:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="CHR:SOUR">
@@ -189,7 +189,7 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="CHR:PLAC" /></PGVRText>
 						</PGVRTextBox>
@@ -198,7 +198,7 @@
 					<!-- print all of the other facts -->
 					<PGVRFacts ignore="$ignore">
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[@fact]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('@fact')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="@fact:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="@fact:SOUR">
@@ -223,7 +223,7 @@
 						<PGVRif condition="@desc==''">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text">
 									<PGVRGedcomValue tag="@fact:PLAC" /> <PGVRGedcomValue tag="@fact:TEMP" />
@@ -235,7 +235,7 @@
 					<!-- put the death and burial info if blanks are on -->
 					<PGVRif condition="$blanks==1">
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[DEAT]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Death')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="DEAT:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="DEAT:SOUR">
@@ -252,13 +252,13 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="DEAT:PLAC" /></PGVRText>
 						</PGVRTextBox>
 
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[BURI]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Burial')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BURI:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="BURI:SOUR">
@@ -275,7 +275,7 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BURI:PLAC" /></PGVRText>
 						</PGVRTextBox>
@@ -285,7 +285,7 @@
 						<!-- put the marriage info if blanks are on -->
 						<PGVRif condition="$blanks==1">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[MARR]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Marriage')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="MARR:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="MARR:SOUR">
@@ -302,7 +302,7 @@
 							</PGVRTextBox>
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="MARR:PLAC" /></PGVRText>
 							</PGVRTextBox>
@@ -311,7 +311,7 @@
 						<!-- print all of the other family facts -->
 						<PGVRFacts ignore="$ignore">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[@fact]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('@fact')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="@fact:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="@fact:SOUR">
@@ -336,7 +336,7 @@
 							<PGVRif condition="@desc==''">
 								<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 									<PGVRif condition="$showplace==1">
-										<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+										<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 									</PGVRif>
 									<PGVRText color="$tcolor" style="text">
 										<PGVRGedcomValue tag="@fact:PLAC" /> <PGVRGedcomValue tag="@fact:TEMP" />
@@ -349,17 +349,17 @@
 					<!-- print the father and mother of the main husband -->
 					<PGVRGedcom id="@FAMC">
 						<PGVRTextBox bgcolor="$malebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="pgv_lang[father]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Father')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
 							<PGVRGedcom id="@HUSB">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="pgv_lang[mother]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Mother')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 							<PGVRGedcom id="@WIFE">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 					</PGVRGedcom>
@@ -367,7 +367,7 @@
 					<PGVRif condition="$notes==1">
 						<PGVRRepeatTag tag="NOTE">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$width1" newline="1">
-								<PGVRText color="$tcolor" style="name"><PGVRvar var="factarray[NOTE]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="name"><PGVRvar var="i18n::translate('Note')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="NOTE" /></PGVRText>
 							</PGVRTextBox>
 						</PGVRRepeatTag>
@@ -380,7 +380,7 @@
 				<PGVRGedcom id="@WIFE">
 					<!-- print the name and sources -->
 					<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" width="$width" newline="1">
-						<PGVRText color="$tcolor" style="text"><PGVRvar var="pgv_lang[wife]" />  </PGVRText>
+						<PGVRText color="$tcolor" style="text"><PGVRvar var="i18n::translate('Wife')" />  </PGVRText>
 						<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="" /> </PGVRText>
 						<PGVRif condition="$sources==1">
 							<PGVRRepeatTag tag="SOUR">
@@ -399,7 +399,7 @@
 					<!-- print the birth and christening with blanks on -->
 					<PGVRif condition="$blanks==1">
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[BIRT]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Birth')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BIRT:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="BIRT:SOUR">
@@ -416,13 +416,13 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BIRT:PLAC" /></PGVRText>
 						</PGVRTextBox>
 
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[CHR]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Christening')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="CHR:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="CHR:SOUR">
@@ -439,7 +439,7 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="CHR:PLAC" /></PGVRText>
 						</PGVRTextBox>
@@ -447,7 +447,7 @@
 					<!-- print all of the other facts -->
 					<PGVRFacts ignore="$ignore">
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[@fact]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('@fact')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="@fact:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="@fact:SOUR">
@@ -472,7 +472,7 @@
 						<PGVRif condition="@desc==''">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text">
 									<PGVRGedcomValue tag="@fact:PLAC" /> <PGVRGedcomValue tag="@fact:TEMP" />
@@ -484,7 +484,7 @@
 					<!-- print the death and burial with blanks on -->
 					<PGVRif condition="$blanks==1">
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[DEAT]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Death')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="DEAT:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="DEAT:SOUR">
@@ -501,13 +501,13 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="DEAT:PLAC" /></PGVRText>
 						</PGVRTextBox>
 
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[BURI]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Burial')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BURI:DATE" /> </PGVRText>
 							<PGVRif condition="$sources==1">
 								<PGVRRepeatTag tag="BURI:SOUR">
@@ -524,7 +524,7 @@
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 							<PGVRif condition="$showplace==1">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 							</PGVRif>
 							<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BURI:PLAC" /></PGVRText>
 						</PGVRTextBox>
@@ -533,17 +533,17 @@
 					<!-- print the wife's parents -->
 					<PGVRGedcom id="@FAMC">
 						<PGVRTextBox bgcolor="$malebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="pgv_lang[father]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Father')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
 							<PGVRGedcom id="@HUSB">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<PGVRText color="$tcolor" style="fact"><PGVRvar var="pgv_lang[mother]" />  </PGVRText>
+							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Mother')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 							<PGVRGedcom id="@WIFE">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 					</PGVRGedcom>
@@ -552,7 +552,7 @@
 					<PGVRif condition="$notes==1">
 						<PGVRRepeatTag tag="NOTE">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$width1" newline="1">
-								<PGVRText color="$tcolor" style="name"><PGVRvar var="factarray[NOTE]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="name"><PGVRvar var="i18n::translate('Note')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="NOTE" /></PGVRText>
 							</PGVRTextBox>
 						</PGVRRepeatTag>
@@ -564,7 +564,7 @@
 				<!-- print the children box in gray or color -->
 				<PGVRTextBox border="1" width="$width" newline="1" bgcolor="$sectionbox_bgcolor">
 					<PGVRText color="$tcolor" style="text">
-						<PGVRvar var="pgv_lang[children]" />  <PGVRvar var="pgv_lang[list_children]" />
+						<PGVRvar var="i18n::translate('Children')" />  <PGVRvar var="i18n::translate('List each child in order of birth.')" />
 					</PGVRText>
 				</PGVRTextBox>
 
@@ -574,7 +574,7 @@
 						<!-- Print the male child's name -->
 						<PGVRif condition="@SEX=='M'">
 							<PGVRTextBox bgcolor="$malebox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<PGVRText color="$tcolor" style="text"><PGVRvar var="pgv_lang[son]"/>  </PGVRText>
+								<PGVRText color="$tcolor" style="text"><PGVRvar var="i18n::translate('Son')"/>  </PGVRText>
 								<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="SOUR">
@@ -593,7 +593,7 @@
 						<!-- Print the female child's name -->
 						<PGVRif condition="@SEX=='F'">
 							<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<PGVRText color="$tcolor" style="text"><PGVRvar var="pgv_lang[daughter]"/>  </PGVRText>
+								<PGVRText color="$tcolor" style="text"><PGVRvar var="i18n::translate('Daughter')"/>  </PGVRText>
 								<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="SOUR">
@@ -612,7 +612,7 @@
 						<!-- Print the unknown gender child's name -->
 						<PGVRif condition="(@SEX=='U') or (@SEX=='')">
 							<PGVRTextBox bgcolor="$unknowngenderbox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<PGVRText color="$tcolor" style="text"><PGVRvar var="factarray[SEX]"/> <PGVRvar var="pgv_lang[stat_unknown]"/>  </PGVRText>
+								<PGVRText color="$tcolor" style="text"><PGVRvar var="i18n::translate('Gender')"/> <PGVRvar var="i18n::translate('Unknown')"/>  </PGVRText>
 								<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="SOUR">
@@ -632,7 +632,7 @@
 						<!-- print the birth and christenting when blanks are on -->
 						<PGVRif condition="$blanks==1">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[BIRT]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Birth')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BIRT:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="BIRT:SOUR">
@@ -649,13 +649,13 @@
 							</PGVRTextBox>
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BIRT:PLAC" /></PGVRText>
 							</PGVRTextBox>
 
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[CHR]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Christening')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="CHR:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="CHR:SOUR">
@@ -672,7 +672,7 @@
 							</PGVRTextBox>
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="CHR:PLAC" /></PGVRText>
 							</PGVRTextBox>
@@ -681,7 +681,7 @@
 						<!-- print the rest of the facts -->
 						<PGVRFacts ignore="$ignore">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[@fact]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('@fact')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="@fact:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="@fact:SOUR">
@@ -712,7 +712,7 @@
 										<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@_PGVS" />  </PGVRText>
 									</PGVRif>
 									<PGVRif condition="$showplace==1">
-										<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+										<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 									</PGVRif>
 									<PGVRText color="$tcolor" style="text">
 										<PGVRGedcomValue tag="@fact:PLAC" /> <PGVRGedcomValue tag="@fact:TEMP" />
@@ -724,7 +724,7 @@
 						<!-- print the death and burial with blanks on -->
 						<PGVRif condition="$blanks==1">
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[DEAT]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Death')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="DEAT:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="DEAT:SOUR">
@@ -741,13 +741,13 @@
 							</PGVRTextBox>
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="DEAT:PLAC" /></PGVRText>
 							</PGVRTextBox>
 
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[BURI]" />  </PGVRText>
+								<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Burial')" />  </PGVRText>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BURI:DATE" /> </PGVRText>
 								<PGVRif condition="$sources==1">
 									<PGVRRepeatTag tag="BURI:SOUR">
@@ -764,7 +764,7 @@
 							</PGVRTextBox>
 							<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<PGVRif condition="$showplace==1">
-									<PGVRText color="$tcolor" style="fact"><PGVRvar var="factarray[PLAC]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Place')" />  </PGVRText>
 								</PGVRif>
 								<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="BURI:PLAC" /></PGVRText>
 							</PGVRTextBox>
@@ -777,19 +777,19 @@
 							<PGVRGedcom id="@FAMS">
 								<PGVRif condition="$spid==@HUSB">
 									<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-										<PGVRText color="$tcolor" style="fact"><PGVRvar var="pgv_lang[wife]" />  </PGVRText>
+										<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Wife')" />  </PGVRText>
 										<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 										<PGVRGedcom id="@WIFE">
-											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 										</PGVRGedcom>
 									</PGVRTextBox>
 								</PGVRif>
 								<PGVRif condition="$spid==@WIFE">
 									<PGVRTextBox bgcolor="$malebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-										<PGVRText color="$tcolor" style="fact"><PGVRvar var="pgv_lang[husband]" />  </PGVRText>
+										<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Husband')" />  </PGVRText>
 										<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
 										<PGVRGedcom id="@HUSB">
-											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="factarray[BIRT]" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="factarray[DEAT]" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 										</PGVRGedcom>
 									</PGVRTextBox>
 								</PGVRif>
@@ -800,7 +800,7 @@
 						<PGVRif condition="$notes==1">
 							<PGVRRepeatTag tag="NOTE">
 								<PGVRTextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$width1" newline="1">
-									<PGVRText color="$tcolor" style="name"><PGVRvar var="factarray[NOTE]" />  </PGVRText>
+									<PGVRText color="$tcolor" style="name"><PGVRvar var="i18n::translate('Note')" />  </PGVRText>
 									<PGVRText color="$tcolor" style="text"><PGVRGedcomValue tag="NOTE" /></PGVRText>
 								</PGVRTextBox>
 							</PGVRRepeatTag>
@@ -816,7 +816,7 @@
 			<!-- if the sources were on, print the source citations as footnotes -->
 			<PGVRif condition="($sources==1) and ($source_exist==1)">
 				<PGVRTextBox newline="1" width="$width">
-					<PGVRText style="pageheader"><br /><PGVRvar var="pgv_lang[sources]" /><br /><br /></PGVRText>
+					<PGVRText style="pageheader"><br /><PGVRvar var="i18n::translate('Sources')" /><br /><br /></PGVRText>
 					<PGVRFootnoteTexts />
 				</PGVRTextBox>
 			</PGVRif>

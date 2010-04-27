@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_NONE" icon="indis">
-	<PGVRTitle><PGVRvar var="pgv_lang[missing_facts_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Missing relatives facts')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals who has missing information</PGVRDescription>
-	<PGVRInput name="pid" type="text" default="" lookup="INDI"><PGVRvar var="pgv_lang[enter_pid]"/></PGVRInput>
-	<PGVRInput name="relatives" type="select" default="direct-ancestors" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="pgv_lang[choose_relatives]"/></PGVRInput>
-	<PGVRInput name="maxgen" type="select" default="*" options="*,1,2,3,4,5,6,7,8,9,10"><PGVRvar var="pgv_lang[generations]"/></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="A3,A4,letter,legal"><PGVRvar var="pgv_lang[page_size]"/></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="pid" type="text" default="" lookup="INDI"><PGVRvar var="i18n::translate('Enter Individual ID')"/></PGVRInput>
+	<PGVRInput name="relatives" type="select" default="direct-ancestors" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="i18n::translate('Choose relatives')"/></PGVRInput>
+	<PGVRInput name="maxgen" type="select" default="*" options="*,1,2,3,4,5,6,7,8,9,10"><PGVRvar var="i18n::translate('Generations')"/></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="A3,A4,letter,legal"><PGVRvar var="i18n::translate('Page size')"/></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 	
-	<PGVRInput name="fsour" type="checkbox" default="0"><PGVRvar var="pgv_lang[sources_to_events]" /></PGVRInput>
-	<PGVRInput name="fbirt" type="checkbox" default="1"><PGVRvar var="factarray[BIRT]"/></PGVRInput>
-	<PGVRInput name="fbapm" type="checkbox" default="0"><PGVRvar var="factarray[BAPM]"/> / <PGVRvar var="factarray[CHR]"/></PGVRInput>
-	<PGVRInput name="fbarm" type="checkbox" default="0"><PGVRvar var="factarray[BARM]"/></PGVRInput>
-	<PGVRInput name="fbasm" type="checkbox" default="0"><PGVRvar var="factarray[BASM]"/></PGVRInput>
-	<PGVRInput name="fconf" type="checkbox" default="0"><PGVRvar var="factarray[CONF]"/></PGVRInput>
-	<PGVRInput name="fenga" type="checkbox" default="0"><PGVRvar var="factarray[ENGA]"/></PGVRInput>
-	<PGVRInput name="ffcom" type="checkbox" default="0"><PGVRvar var="factarray[FCOM]"/></PGVRInput>
-	<PGVRInput name="fmarb" type="checkbox" default="0"><PGVRvar var="factarray[MARB]"/></PGVRInput>
-	<PGVRInput name="fmarr" type="checkbox" default="0"><PGVRvar var="factarray[MARR]"/></PGVRInput>
-	<PGVRInput name="fdeat" type="checkbox" default="1"><PGVRvar var="factarray[DEAT]"/></PGVRInput>
-	<PGVRInput name="fburi" type="checkbox" default="0"><PGVRvar var="factarray[BURI]"/></PGVRInput>
-	<PGVRInput name="freli" type="checkbox" default="0"><PGVRvar var="factarray[RELI]"/></PGVRInput>
+	<PGVRInput name="fsour" type="checkbox" default="0"><PGVRvar var="i18n::translate('Sources to the events')" /></PGVRInput>
+	<PGVRInput name="fbirt" type="checkbox" default="1"><PGVRvar var="i18n::translate('Birth')"/></PGVRInput>
+	<PGVRInput name="fbapm" type="checkbox" default="0"><PGVRvar var="i18n::translate('Baptism')"/> / <PGVRvar var="i18n::translate('Christening')"/></PGVRInput>
+	<PGVRInput name="fbarm" type="checkbox" default="0"><PGVRvar var="i18n::translate('Bar Mitzvah')"/></PGVRInput>
+	<PGVRInput name="fbasm" type="checkbox" default="0"><PGVRvar var="i18n::translate('Bas Mitzvah')"/></PGVRInput>
+	<PGVRInput name="fconf" type="checkbox" default="0"><PGVRvar var="i18n::translate('Confirmation')"/></PGVRInput>
+	<PGVRInput name="fenga" type="checkbox" default="0"><PGVRvar var="i18n::translate('Engagement')"/></PGVRInput>
+	<PGVRInput name="ffcom" type="checkbox" default="0"><PGVRvar var="i18n::translate('First Communion')"/></PGVRInput>
+	<PGVRInput name="fmarb" type="checkbox" default="0"><PGVRvar var="i18n::translate('Marriage Banns')"/></PGVRInput>
+	<PGVRInput name="fmarr" type="checkbox" default="0"><PGVRvar var="i18n::translate('Marriage')"/></PGVRInput>
+	<PGVRInput name="fdeat" type="checkbox" default="1"><PGVRvar var="i18n::translate('Death')"/></PGVRInput>
+	<PGVRInput name="fburi" type="checkbox" default="0"><PGVRvar var="i18n::translate('Burial')"/></PGVRInput>
+	<PGVRInput name="freli" type="checkbox" default="0"><PGVRvar var="i18n::translate('Religion')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="18" style="b"/>
@@ -46,10 +46,10 @@
 
 	<PGVRDoc pageSize="$pageSize">
 		<PGVRHeader>
-			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="pgv_lang[missing_facts_report]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]"/> <PGVRPageNum/> / <PGVRTotalPages/></PGVRCell>
-			<PGVRCell align="center" border="1" style="list_label" width="$name"><PGVRvar var="pgv_lang[name]" /></PGVRCell>
-			<PGVRCell align="center" border="1" newline="1" style="list_label"><PGVRvar var="factarray[EVEN]" /></PGVRCell>
+			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="i18n::translate('Missing relatives facts')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')"/> <PGVRPageNum/> / <PGVRTotalPages/></PGVRCell>
+			<PGVRCell align="center" border="1" style="list_label" width="$name"><PGVRvar var="i18n::translate('Name')" /></PGVRCell>
+			<PGVRCell align="center" border="1" newline="1" style="list_label"><PGVRvar var="i18n::translate('Event')" /></PGVRCell>
 		</PGVRHeader>
 
 <!--	Start with BIRT GEDCOM tag.
@@ -74,7 +74,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BIRT:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Birth Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@BIRT:PLAC==''">
 						<!-- Missing event counter -->
@@ -86,7 +86,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BIRT:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Birth Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<!-- Total Event Counter -->
@@ -101,7 +101,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BIRT:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Birth Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -122,7 +122,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BAPM:DATE]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Baptism Date')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="@BAPM:PLAC==''">
 							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -133,7 +133,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BAPM:PLAC]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Baptism Place')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="$fsour=='1'">
 							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -146,7 +146,7 @@
 									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 									<PGVRSetVar name="printname" value="1" />
 								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BAPM:SOUR]" /></PGVRCell>
+								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Baptism Source')" /></PGVRCell>
 							</PGVRif>
 						</PGVRif>
 						<PGVRSetVar name="printbapm" value="1" />
@@ -163,7 +163,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[CHR:DATE]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Christening Date')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="@CHR:PLAC==''">
 							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -174,7 +174,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[CHR:PLAC]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Christening Place')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="$fsour=='1'">
 							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -187,7 +187,7 @@
 									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 									<PGVRSetVar name="printname" value="1" />
 								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[CHR:SOUR]" /></PGVRCell>
+								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Christening Source')" /></PGVRCell>
 							</PGVRif>
 						</PGVRif>
 					</PGVRif>
@@ -205,7 +205,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BARM:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bar Mitzvah Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@BARM:PLAC==''">
 						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -216,7 +216,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BARM:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bar Mitzvah Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -229,7 +229,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BARM:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bar Mitzvah Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -246,7 +246,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BASM:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bas Mitzvah Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@BASM:PLAC==''">
 						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -257,7 +257,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BASM:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bas Mitzvah Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -270,7 +270,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BASM:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bas Mitzvah Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -287,7 +287,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[CONF:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Confirmation Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@CONF:PLAC==''">
 						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -298,7 +298,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[CONF:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Confirmation Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -311,7 +311,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[CONF:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Confirmation Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -329,7 +329,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[ENGA:DATE]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Engagement Date')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="@ENGA:PLAC==''">
 							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -340,7 +340,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[ENGA:PLAC]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Engagement Place')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="$fsour=='1'">
 							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -353,7 +353,7 @@
 									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 									<PGVRSetVar name="printname" value="1" />
 								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[ENGA:SOUR]" /></PGVRCell>
+								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Engagement Source')" /></PGVRCell>
 							</PGVRif>
 						</PGVRif>
 					</PGVRGedcom>
@@ -371,7 +371,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[FCOM:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('First Communion Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@FCOM:PLAC==''">
 						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -382,7 +382,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[FCOM:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('First Communion Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -395,7 +395,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[FCOM:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('First Communion Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -413,7 +413,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[MARB:DATE]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Banns Date')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="@MARB:PLAC==''">
 							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -424,7 +424,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[MARB:PLAC]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Banns Place')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="$fsour=='1'">
 							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -437,7 +437,7 @@
 									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 									<PGVRSetVar name="printname" value="1" />
 								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[MARB:SOUR]" /></PGVRCell>
+								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Banns Source')" /></PGVRCell>
 							</PGVRif>
 						</PGVRif>
 					</PGVRGedcom>
@@ -456,7 +456,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[MARR:DATE]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Date')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="@MARR:PLAC==''">
 							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -467,7 +467,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[MARR:PLAC]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Place')" /></PGVRCell>
 						</PGVRif>
 						<PGVRif condition="$fsour=='1'">
 							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -480,7 +480,7 @@
 									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 									<PGVRSetVar name="printname" value="1" />
 								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[MARR:SOUR]" /></PGVRCell>
+								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Source')" /></PGVRCell>
 							</PGVRif>
 						</PGVRif>
 					</PGVRGedcom>
@@ -498,7 +498,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[DEAT:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Death Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@DEAT:PLAC==''">
 						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -509,7 +509,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[DEAT:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Death Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -522,7 +522,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[DEAT:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Death Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -539,7 +539,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BURI:DATE]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Burial Date')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="@BURI:PLAC==''">
 						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -550,7 +550,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BURI:PLAC]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Burial Place')" /></PGVRCell>
 					</PGVRif>
 					<PGVRif condition="$fsour=='1'">
 						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
@@ -563,7 +563,7 @@
 								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 								<PGVRSetVar name="printname" value="1" />
 							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[BURI:SOUR]" /></PGVRCell>
+							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Burial Source')" /></PGVRCell>
 						</PGVRif>
 					</PGVRif>
 				</PGVRif>
@@ -580,7 +580,7 @@
 							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
 							<PGVRSetVar name="printname" value="1" />
 						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="factarray[RELI]" /></PGVRCell>
+						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Religion')" /></PGVRCell>
 					</PGVRif>
 				</PGVRif>
 
@@ -594,8 +594,8 @@
 			</PGVRRelatives>
 
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
-			<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="pgv_lang[total_indis]"/>: <PGVRvar var="nrprinted"/> / <PGVRvar var="nrrelatives"/></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="pgv_lang[stat_events]"/>: <PGVRvar var="nrmissingevent"/> / <PGVRvar var="nrevent"/></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total individuals')"/>: <PGVRvar var="nrprinted"/> / <PGVRvar var="nrrelatives"/></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total events')"/>: <PGVRvar var="nrmissingevent"/> / <PGVRvar var="nrevent"/></PGVRCell>
 			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
 
 		</PGVRBody>

@@ -5,17 +5,17 @@
 	@subpackage Reports
 	@version $Id$
 	-->
-	<PGVRTitle><PGVRvar var="pgv_lang[bdm]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Births, Deaths, Marriages')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of BIRT/DEAT/MARR events for individuals matching NAME or PLAC criteria.</PGVRDescription>
-	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="pgv_lang[name]" /></PGVRInput>
-	<PGVRInput name="bdmplace" lookup="PLAC" type="text"><PGVRvar var="factarray[PLAC]" /></PGVRInput>
-	<PGVRInput name="birthdate1" lookup="DATE" type="text"><PGVRvar var="pgv_lang[birthdate1]" /></PGVRInput>
-	<PGVRInput name="birthdate2" lookup="DATE" type="text"><PGVRvar var="pgv_lang[birthdate2]" /></PGVRInput>
-	<PGVRInput name="deathdate1" lookup="DATE" type="text"><PGVRvar var="pgv_lang[deathdate1]" /></PGVRInput>
-	<PGVRInput name="deathdate2" lookup="DATE" type="text"><PGVRvar var="pgv_lang[deathdate2]" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="ID,NAME,BIRT:DATE,DEAT:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="i18n::translate('Name')" /></PGVRInput>
+	<PGVRInput name="bdmplace" lookup="PLAC" type="text"><PGVRvar var="i18n::translate('Place')" /></PGVRInput>
+	<PGVRInput name="birthdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Place')" /></PGVRInput>
+	<PGVRInput name="birthdate2" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Birth Date range end')" /></PGVRInput>
+	<PGVRInput name="deathdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Death Date range start')" /></PGVRInput>
+	<PGVRInput name="deathdate2" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Death Date range end')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="ID,NAME,BIRT:DATE,DEAT:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="15" style="b" />
@@ -32,7 +32,7 @@
 
 	<PGVRDoc pageSize="$pageSize" orientation="landscape">
 		<PGVRHeader>
-			<PGVRCell align="center" newline="1" style="label"><PGVRvar var="pgv_lang[bdm]" /></PGVRCell>
+			<PGVRCell align="center" newline="1" style="label"><PGVRvar var="i18n::translate('Births, Deaths, Marriages')" /></PGVRCell>
 			<PGVRCell align="center" newline="1" style="header">
 				<PGVRif condition="$name!=''">
 				    <PGVRvar var="name" /> 
@@ -41,7 +41,7 @@
 					<PGVRvar var="bdmplace" />
 				</PGVRif>
 			</PGVRCell>
-			<PGVRCell align="rightrtl" height="10" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="rightrtl" height="10" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 			<!-- ID -->
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='ID'">
@@ -56,7 +56,7 @@
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="205">
-				<PGVRText style="label"><PGVRvar var="pgv_lang[name]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Name')" /></PGVRText>
 			</PGVRTextBox>
 			<!-- Birth -->
 			<PGVRSetVar name="fill" value="" />
@@ -66,7 +66,7 @@
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="165">
 			<!-- todo: do not print [-] if no dates are selected -->
 				<PGVRText style="label">
-					<PGVRvar var="factarray[BIRT]" />   [
+					<PGVRvar var="i18n::translate('Birth')" />   [
 					<PGVRif condition="$birthdate1!=''">
 						<PGVRvar var="birthdate1" />
 					</PGVRif>
@@ -83,7 +83,7 @@
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="165">
-				<PGVRText style="label"><PGVRvar var="factarray[MARR]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Marriage')" /></PGVRText>
 			</PGVRTextBox>
 			<!-- Death -->
 			<PGVRSetVar name="fill" value="" />
@@ -93,7 +93,7 @@
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" newline="1">
 			<!-- todo: do not print [-] if no dates are selected -->
 				<PGVRText style="label">
-					<PGVRvar var="factarray[DEAT]" />   [
+					<PGVRvar var="i18n::translate('Death')" />   [
 					<PGVRif condition="$deathdate1!=''">
 						<PGVRvar var="deathdate1" />
 					</PGVRif>
@@ -127,9 +127,9 @@
 						<PGVRGetPersonName id="" />
 					</PGVRText>
 					<PGVRText style="small">
-						<br />   <PGVRvar var="pgv_lang[father]" />
+						<br />   <PGVRvar var="i18n::translate('Father')" />
 						: <PGVRGedcom id="@FAMC"><PGVRGetPersonName id="@HUSB" /></PGVRGedcom>
-						<br />   <PGVRvar var="pgv_lang[mother]" />
+						<br />   <PGVRvar var="i18n::translate('Mother')" />
 						: <PGVRGedcom id="@FAMC"><PGVRGetPersonName id="@WIFE" /></PGVRGedcom>
 					</PGVRText>
 				</PGVRTextBox>
@@ -141,11 +141,11 @@
 							<PGVRif condition="$moreB==1">
 								<br />
 							</PGVRif>
-							<PGVRvar var="factarray[DATE]" />
+							<PGVRvar var="i18n::translate('Date')" />
 							: <PGVRGedcomValue tag="BIRT:DATE" />
-							<br />  <PGVRvar var="factarray[PLAC]" />
+							<br />  <PGVRvar var="i18n::translate('Place')" />
 							: <PGVRGedcomValue tag="BIRT:PLAC" />
-							<br />  <PGVRvar var="factarray[SOUR]" />
+							<br />  <PGVRvar var="i18n::translate('Source')" />
 							: <PGVRRepeatTag tag="BIRT:SOUR">
 								<PGVRGedcomValue tag="SOUR" /> 
 							</PGVRRepeatTag>
@@ -165,16 +165,16 @@
 									<br />
 								</PGVRif>
 								<!-- todo: print the dates, places and sources of all the FAM MARR records -->
-								<PGVRvar var="factarray[DATE]" />
+								<PGVRvar var="i18n::translate('Date')" />
 								: <PGVRGedcomValue tag="MARR:DATE" />
-								<br />  <PGVRvar var="factarray[PLAC]" />
+								<br />  <PGVRvar var="i18n::translate('Place')" />
 								: <PGVRGedcomValue tag="MARR:PLAC" />
-								<br />  <PGVRvar var="factarray[SOUR]" />
+								<br />  <PGVRvar var="i18n::translate('Source')" />
 								: <PGVRRepeatTag tag="MARR:SOUR">
 									<PGVRGedcomValue tag="SOUR" /> 
 								</PGVRRepeatTag>
 								<br />
-								<PGVRvar var="pgv_lang[spouse]" />
+								<PGVRvar var="i18n::translate('Spouse')" />
 								: 
 								<PGVRif condition="$spid==@WIFE">
 									<PGVRGetPersonName id="@HUSB" />
@@ -195,18 +195,18 @@
 							<PGVRif condition="$moreD==1">
 								<br />
 							</PGVRif>
-							<PGVRvar var="factarray[DATE]" />
+							<PGVRvar var="i18n::translate('Date')" />
 							: <PGVRGedcomValue tag="DEAT:DATE" />
-							<br />  <PGVRvar var="factarray[PLAC]" />
+							<br />  <PGVRvar var="i18n::translate('Place')" />
 							: <PGVRGedcomValue tag="DEAT:PLAC" />
-							<br />  <PGVRvar var="factarray[SOUR]" />
+							<br />  <PGVRvar var="i18n::translate('Source')" />
 							: <PGVRRepeatTag tag="DEAT:SOUR">
 								<PGVRGedcomValue tag="SOUR" /> 
 							</PGVRRepeatTag>
 							<PGVRSetVar name="moreD" value="1" />
 						</PGVRRepeatTag>
 						<PGVRRepeatTag tag="BURI:CEME">
-							<br /><PGVRvar var="factarray[CEME]" />
+							<br /><PGVRvar var="i18n::translate('Cemetery')" />
 							: <PGVRGedcomValue tag="CEME" />
 						</PGVRRepeatTag>
 					</PGVRText>
@@ -215,7 +215,7 @@
 			</PGVRList>
 
 			<PGVRCell align="rightrtl" height="24" newline="1" style="label"><br />
-				<PGVRvar var="pgv_lang[total_indis]" />
+				<PGVRvar var="i18n::translate('Total individuals')" />
 				: <PGVRListTotal />
 			</PGVRCell>
 		</PGVRBody>

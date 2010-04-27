@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PGVReport access="PRIV_PUBLIC" icon="sfamily">
 	<!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="pgv_lang[marr_report]" /></PGVRTitle>
+	<PGVRTitle><PGVRvar var="i18n::translate('Marriage Date and Place Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of families matching specific name and/or marriage criteria</PGVRDescription>
-	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="pgv_lang[name]" /></PGVRInput>
-	<PGVRInput name="marrplace" lookup="PLAC" type="text"><PGVRvar var="pgv_lang[marrplace]" /> </PGVRInput>
-	<PGVRInput name="marrdate1" lookup="DATE" type="text"><PGVRvar var="pgv_lang[marrdate1]" /></PGVRInput>
-	<PGVRInput name="marrdate2" lookup="DATE" type="text"><PGVRvar var="pgv_lang[marrdate2]" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" options="NAME,MARR:DATE"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="i18n::translate('Name')" /></PGVRInput>
+	<PGVRInput name="marrplace" lookup="PLAC" type="text"><PGVRvar var="i18n::translate('Marriage Place contains')" /> </PGVRInput>
+	<PGVRInput name="marrdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Marriage Date range start')" /></PGVRInput>
+	<PGVRInput name="marrdate2" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Marriage Date range end')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" options="NAME,MARR:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="16" style="b" />
@@ -25,15 +25,15 @@
 
 	<PGVRDoc pageSize="$pageSize" orientation="landscape">
 		<PGVRHeader>
-			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="pgv_lang[marr_report]" /></PGVRCell>
-			<PGVRCell align="rightrtl" height="10" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="i18n::translate('Marriage Date and Place Report')" /></PGVRCell>
+			<PGVRCell align="rightrtl" height="10" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='NAME'">
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="200">
-				<PGVRText style="label"><PGVRvar var="pgv_lang[name]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Name')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRSetVar name="fill" value="" />
@@ -41,15 +41,15 @@
 				<PGVRSetVar name="fill" value="#AAAAAA" />
 			</PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" width="100">
-				<PGVRText style="label"><PGVRvar var="factarray[DATE]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Date')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRTextBox border="1" height="12" width="225">
-				<PGVRText style="label"><PGVRvar var="factarray[PLAC]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Place')" /></PGVRText>
 			</PGVRTextBox>
 
 			<PGVRTextBox border="1" height="12" newline="1">
-				<PGVRText style="label"><PGVRvar var="factarray[SOUR]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Source')" /></PGVRText>
 			</PGVRTextBox>
 		</PGVRHeader>
 
@@ -106,7 +106,7 @@
 
 				</PGVRif>
 			</PGVRList>
-			<PGVRCell align="rightrtl" height="24" newline="1" style="label"><br/><PGVRvar var="pgv_lang[total_fams]"/>: <PGVRvar var="printedFamilies" /></PGVRCell>
+			<PGVRCell align="rightrtl" height="24" newline="1" style="label"><br/><PGVRvar var="i18n::translate('Total families')"/>: <PGVRvar var="printedFamilies" /></PGVRCell>
 		</PGVRBody>
 		<PGVRFooter>
 			<PGVRCell align="rightrtl" newline="1" style="date"><PGVRNow/></PGVRCell>

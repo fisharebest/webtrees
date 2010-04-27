@@ -2,12 +2,12 @@
 <PGVReport access="PRIV_USER" icon="place">
 	<!-- $Id$ -->
 	<PGVRDescription>Prints a list of addresses</PGVRDescription>
-	<PGVRTitle><PGVRvar var="pgv_lang[address_list]" /></PGVRTitle>
-	<PGVRInput name="address" type="text"><PGVRvar var="pgv_lang[filter_address]" /> </PGVRInput>
-	<PGVRInput name="sortby" type="select" options="NAME,ID"><PGVRvar var="pgv_lang[sort_by]" /></PGVRInput>
-	<PGVRInput name="email_in" type="select" options="all,noemail,onlyemail"><PGVRvar var="pgv_lang[include]"/> </PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="pgv_lang[page_size]" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="pgv_lang[font]"/></PGVRInput>
+	<PGVRTitle><PGVRvar var="i18n::translate('Address List')" /></PGVRTitle>
+	<PGVRInput name="address" type="text"><PGVRvar var="i18n::translate('Show addresses that contain:')" /> </PGVRInput>
+	<PGVRInput name="sortby" type="select" options="NAME,ID"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="email_in" type="select" options="all,noemail,onlyemail"><PGVRvar var="i18n::translate('Include:')"/> </PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 	
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="16" style="b" />
@@ -24,19 +24,19 @@
 
 	<PGVRDoc pageSize="$pageSize" >
 		<PGVRHeader>
-			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="pgv_lang[address_list]" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="pgv_lang[page]" /> <PGVRPageNum /> <PGVRvar var="pgv_lang[of]" /> <PGVRTotalPages /></PGVRCell>
+			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="i18n::translate('Address List')" /></PGVRCell>
+			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
 			<PGVRTextBox border="1" height="12" width="40">
 				<PGVRText style="label"> </PGVRText>
 			</PGVRTextBox>
 			<PGVRTextBox border="1" height="12" width="170">
-				<PGVRText style="label"><PGVRvar var="pgv_lang[name]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Name')" /></PGVRText>
 			</PGVRTextBox>
 			<PGVRTextBox border="1" height="12" width="160">
-				<PGVRText style="label"><PGVRvar var="factarray[ADDR]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Address')" /></PGVRText>
 			</PGVRTextBox>
 			<PGVRTextBox border="1" height="12" newline="1">
-				<PGVRText style="label"><PGVRvar var="factarray[PHON]" /> / <PGVRvar var="factarray[_EMAIL]" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Phone')" /> / <PGVRvar var="i18n::translate('Email Address')" /></PGVRText>
 			</PGVRTextBox>
 		</PGVRHeader>
 
@@ -94,14 +94,14 @@
 				</PGVRTextBox>
 				<PGVRTextBox height="52" border="1" newline="1">
 					<PGVRText style="text">
-						<PGVRvarLetter var="factarray[PHON]" />: <PGVRGedcomValue tag="PHON" /><br />
-						<PGVRvarLetter var="factarray[FAX]" />: <PGVRGedcomValue tag="FAX" /><br />
-						<PGVRvarLetter var="factarray[_EMAIL]" />: <PGVRGedcomValue tag="_EMAIL" /><PGVRGedcomValue tag="EMAIL" />
+						<PGVRvarLetter var="i18n::translate('Phone')" />: <PGVRGedcomValue tag="PHON" /><br />
+						<PGVRvarLetter var="i18n::translate('FAX')" />: <PGVRGedcomValue tag="FAX" /><br />
+						<PGVRvarLetter var="i18n::translate('Email Address')" />: <PGVRGedcomValue tag="_EMAIL" /><PGVRGedcomValue tag="EMAIL" />
 					</PGVRText>
 				</PGVRTextBox>
 			</PGVRList>
 			<PGVRCell align="rightrtl" newline="1" style="label">
-				<br /><PGVRvar var="pgv_lang[total_indis]" />: <PGVRListTotal />
+				<br /><PGVRvar var="i18n::translate('Total individuals')" />: <PGVRListTotal />
 			</PGVRCell>
 		</PGVRBody>
 		
