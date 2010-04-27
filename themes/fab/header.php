@@ -101,7 +101,7 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 echo '<div id="header" class="block">'; // Every page has a header
 if ($view!='simple') {
 	echo
-		'<div style="float:', WT_CSS_ALIGN, '; font-size:250%;"><a style="color:#888888;" href="', $HOME_SITE_URL, '?>">', $HOME_SITE_TEXT, '</div>';
+		'<div style="float:', WT_CSS_ALIGN, '; font-size:250%;"><a style="color:#888888;" href="', $HOME_SITE_URL, '">', $HOME_SITE_TEXT, '</div>';
 	// Print the user links
 	if ($SEARCH_SPIDER) {
 		// Search engines get a reduced menu
