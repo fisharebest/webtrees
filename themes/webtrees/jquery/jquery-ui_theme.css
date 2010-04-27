@@ -59,7 +59,7 @@ color:red;
 	position: absolute;
 	right: 0px;
 	width: 0px;
-	height: 500px;
+	/* height: 500px; */
 	z-index: 50;
 	margin-left:0px;
 	margin-top: 10px;
