@@ -83,4 +83,6 @@ $(LANGUAGE_ARCHIVE):
 # Update the PO Template file from the sources.
 ################################################################################
 $(POT): $(PHP)
-	@xgettext --package-name=$(PACKAGE) --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1 $(PHP)
+	cat ../reports/*.xml | php -r "echo preg_replace('/<PGVRvar var=\"([^\"]+)\" *\/>/', '<'.'?php echo \\1; ?>', file_get_contents('php://stdin'));" > dummy.php
+	@xgettext --package-name=$(PACKAGE) --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1 $(PHP) dummy.php
+	rm dummy.php
