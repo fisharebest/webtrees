@@ -39,6 +39,7 @@ body {
 	background-color: white;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	margin: 1px;
+	padding-left:5px;
 }
 
 fieldset {
