@@ -1243,8 +1243,8 @@ function accept_all_changes($xref, $ged_id) {
 		" ORDER BY change_id"
 	)->execute(array($xref, $ged_id))->fetchAll();
 	foreach ($changes as $change) {
-		update_record($change->new_gedcom, ged_id, empty($change->new_gedcom));
-		AddToLog("Accepted change {$change->change_id} for {$xref} / {$changes->gedcom_name} into database", 'edit');
+		update_record($change->new_gedcom, $ged_id, empty($change->new_gedcom));
+		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
 	}
 }
 
