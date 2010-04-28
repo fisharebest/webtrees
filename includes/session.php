@@ -113,11 +113,6 @@ define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);
 //-- setup execution timer
 $start_time=microtime(true);
 
-// PHP5 requires a time zone to be set in php.ini
-if (!ini_get('date.timezone')) {
-	date_default_timezone_set(@date_default_timezone_get());
-}
-
 ini_set('arg_separator.output', '&amp;');
 ini_set('error_reporting', E_ALL | E_STRICT);
 ini_set('display_errors', '1');
@@ -128,13 +123,12 @@ set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 
-// Check configuration issues that affect older versions of PHP
-if (version_compare(PHP_VERSION, '5.3.0', '<')) {
-	// magic quotes were deprecated in PHP5.3.0 and removed in PHP6.0.0
+// Check configuration issues that affect various versions of PHP
+if (version_compare(PHP_VERSION, '5.3', '<')) {
+	// magic quotes were deprecated in PHP5.3 and removed in PHP6.0
 	set_magic_quotes_runtime(0);
 	// magic_quotes_gpc can't be disabled at run-time, so clean them up as necessary.
-	if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc() ||
-		ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
+	if (get_magic_quotes_gpc() || ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
 		$in = array(&$_GET, &$_POST, &$_REQUEST, &$_COOKIE);
 		while (list($k,$v) = each($in)) {
 			foreach ($v as $key => $val) {
@@ -146,6 +140,11 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 			}
 		}
 		unset($in);
+	}
+} else {
+	// PHP5.3 requires a time zone to be set in php.ini
+	if (!ini_get('date.timezone')) {
+		date_default_timezone_set(@date_default_timezone_get());
 	}
 }
 
@@ -164,12 +163,8 @@ define('WT_SERVER_NAME',
 // SCRIPT_NAME should always be correct, but is not always present.
 // PHP_SELF should always be present, but may have trailing path: /path/to/script.php/FOO/BAR
 if (!empty($_SERVER['SCRIPT_NAME'])) {
-	// PHP 5.3 only
-	//define('WT_SCRIPT_PATH', stristr($_SERVER['SCRIPT_NAME'], WT_SCRIPT_NAME, true));
 	define('WT_SCRIPT_PATH', substr($_SERVER['SCRIPT_NAME'], 0, stripos($_SERVER['SCRIPT_NAME'], WT_SCRIPT_NAME)));
 } elseif (!empty($_SERVER['PHP_SELF'])) {
-	// PHP 5.3 only
-	//define('WT_SCRIPT_PATH', stristr($_SERVER['PHP_SELF'], WT_SCRIPT_NAME, true));
 	define('WT_SCRIPT_PATH', substr($_SERVER['PHP_SELF'], 0, stripos($_SERVER['PHP_SELF'], WT_SCRIPT_NAME)));
 } else {
 	// No server settings - probably running as a command line script
@@ -421,7 +416,6 @@ if (!isset($_SESSION['show_context_help'])) $_SESSION['show_context_help'] = $SH
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='yes') $_SESSION['show_context_help'] = true;
 if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='no') $_SESSION['show_context_help'] = false;
-if (!isset($USE_THUMBS_MAIN)) $USE_THUMBS_MAIN = false;
 
 if (WT_SCRIPT_NAME!='help_text.php') {
 	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'logs.php', 'uploadgedcom.php', 'login.php', 'siteconfig.php', 'admin.php', 'addnewgedcom.php', 'validategedcom.php', 'addmedia.php', 'importgedcom.php', 'client.php', 'edit_privacy.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php', 'import.php'))) {
