@@ -33,6 +33,16 @@
 	padding-bottom: 3px;
 	margin-left: 0px;
 }
+#sidebar_pin {
+	/* display: none; */
+	padding-top: 3px;
+	background: #ffffff; 
+}
+#sidebar_pin img {
+	padding-right: 0px;
+	padding-left: 0px;
+	width: 14px;
+}
 
 /* Navigator & Flyout menu Styles --------*/
 .nam a:hover{

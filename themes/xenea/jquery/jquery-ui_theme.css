@@ -43,6 +43,17 @@
 	width: 20px;
 }
 
+#sidebar_pin {
+	/* display: none; */
+	padding-bottom: -2px;
+	padding-top: 3px;
+	background: #ffffff; 
+}
+#sidebar_pin img {
+	padding-right: 2px;
+	padding-left: 2px;
+}
+
 
 
 /* Navigator & Flyout menu Styles --------*/

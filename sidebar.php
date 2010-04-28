@@ -133,6 +133,9 @@ var loadedMods = new Array();
 function closeCallback() {
 	jQuery('#sidebarAccordion').hide();
 	jQuery('#sidebar_pin').hide();
+	if (pinned == true) {
+		jQuery('#sidebar_pin').click();
+	}
 }
 function openCallback() {
 	jQuery('#sidebarAccordion').accordion({
@@ -147,6 +150,36 @@ function openCallback() {
 	});
 }
 jQuery(document).ready(function() {
+	
+	// Sidebar Pin Function ====================================
+	jQuery('#sidebar_pin').toggle(
+   		   	function() {
+   	   		   	jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGE_DIR.'/'.$WT_IMAGES['pin-in']['other'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
+   	   		   	var newwidth = 345;
+   	   		   	newwidth = jQuery('#tabs').width() - newwidth;
+   	   		   	<?php if ($TEXT_DIRECTION=='rtl') {?>
+   	   		   		//newwidth = jQuery('.static_tab').width() + 40;
+   	   				//newwidth = jQuery('#tabs').width() - newwidth;
+   	   		   	<?php } ?>
+				// --- NOTE: --- REM next line to avoid the "page shift" when Navigator is pinned. (Purely a preference choice)
+   	   		 	jQuery('#tabs > div').css('width', newwidth+'px');
+   	   		   	pinned = true;
+   	   			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
+   		   	},
+   		   	function() {
+   		   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGE_DIR.'/'.$WT_IMAGES['pin-out']['other'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
+   		   		jQuery('#tabs div').css('width', '');
+   		   		pinned = false;
+   		   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
+   		   	});
+	   	<?php 	
+	   	if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { 
+	   	?>
+	   		jQuery('#sidebar_pin').click();
+	  	<?php 
+	  	} 
+	  	?>
+   	// =========================================================	
 
 //	jQuery('#sidebar').scrollFollow();
 
@@ -163,6 +196,7 @@ jQuery(document).ready(function() {
 		}
 		else jQuery("#sidebarAccordion").accordion("resize");
 		jQuery('#sidebarAccordion').show();
+		jQuery('#sidebar_pin').show();
 	}, function() {
 		jQuery('#sidebar_open img').attr('src', '<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
 		jQuery('#sidebar').css('left', '');
@@ -171,12 +205,21 @@ jQuery(document).ready(function() {
 			width: "0px"
 		}, 500, 'linear', closeCallback);
 	});
+   	<?php 
+   	if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { 
+   	?>
+	   		jQuery('#sidebar_open').click();
+  	<?php 
+  	} 
+  	?>
+
 });
 //-->
 </script>
 <div id="sidebar">
 	<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
-		<a id="sidebar_open" href="#open"><img src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>">
+		<a id="sidebar_open" href="#open"><img src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>"></a> 
+		<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['pin-out']['other'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>"></a> 
 	</div>
 	<div id="sidebarAccordion"></div>
 	<span class="ui-icon ui-icon-grip-dotted-horizontal" style="margin:2px auto;"></span>

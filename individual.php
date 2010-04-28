@@ -238,7 +238,15 @@ jQuery(document).ready(function(){
 		global $controller;
 		if (method_exists($controller, 'getOtherMenu')) {	
 			// echo "&nbsp;";
-			require './sidebar.php'; 
+			require './sidebar.php';
+			
+			// Initially hide the sidebar pin ======
+			?>
+			<script>
+				jQuery('#sidebar_pin').hide();
+			</script>
+			<?php
+			// =====================================
 		}
 
 ?>

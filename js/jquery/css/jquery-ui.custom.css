@@ -442,8 +442,13 @@ margin-top: 1px;
 	margin-top: -1px;
 }
 #sidebar_pin {
-	display: none;
-	padding: 1px;
+	/* display: none; */
+	padding-top: 3px;
+	background: #ffffff; 
+}
+#sidebar_pin img {
+	padding-right: 4px;
+	padding-left: 4px;
 }
 .sb_indi_surname_li, .sb_fam_surname_li {
 	list-style-image: url('images/plus.gif');
