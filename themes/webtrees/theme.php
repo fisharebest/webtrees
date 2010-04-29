@@ -107,7 +107,7 @@ $WT_IMAGES["sex"]["small"] = "small/male.gif";
 $WT_IMAGES["sexf"]["small"] = "small/female.gif";
 $WT_IMAGES["sexn"]["small"] = "small/fe_male.gif";
 $WT_IMAGES["sfamily"]["small"] = "small/sfamily.png";
-$WT_IMAGES["source"]["small"] = "small/source.gif";
+$WT_IMAGES["source"]["small"] = "small/source.png";
 $WT_IMAGES["statistic"]["small"] = "small/statistic.png";
 $WT_IMAGES["timeline"]["small"] = "small/timeline.png";
 
