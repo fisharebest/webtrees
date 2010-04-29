@@ -115,6 +115,9 @@ if ($action == "download") {
 	$gedout = fopen('php://output', 'w');
 	switch ($filetype) {
 	case 'gedcom':
+		if (strtolower(substr($ged, -4, 4))!='.ged') {
+			$ged.='.ged';
+		}
 		header('Content-Disposition: attachment; filename="'.$ged.'"');
 		export_gedcom($GEDCOM, $gedout, $exportOptions);
 		break;
