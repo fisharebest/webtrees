@@ -64,6 +64,20 @@ if ($action=='update_mods') {
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 			WT_DB::prepare("INSERT IGNORE INTO {$TBLPREFIX}module (module_name) VALUES (?)")->execute(array($module_name));
 
+			$value = safe_POST("blockaccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
+
+			$value = safe_POST("chartaccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'chart', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
+
 			$value = safe_POST("menuaccess-{$module_name}-{$ged_id}");
 			if ($value!==null) {
 				WT_DB::prepare(
@@ -78,10 +92,24 @@ if ($action=='update_mods') {
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
+			$value = safe_POST("reportaccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
+
 			$value = safe_POST("tabaccess-{$module_name}-{$ged_id}");
 			if ($value!==null) {
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
+				)->execute(array($module_name, $ged_id, $value));
+			}
+
+			$value = safe_POST("themeaccess-{$module_name}-{$ged_id}");
+			if ($value!==null) {
+				WT_DB::prepare(
+					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 			
@@ -206,23 +234,31 @@ print_header(i18n::translate('Module Administration'));
 
 <div id="tabs">
 <ul>
-	<li><a href="#installed_tab"><span><?php echo i18n::translate('Installed Modules')?></span></a></li>
-	<li><a href="#menus_tab"><span><?php echo i18n::translate('Manage Menus')?></span></a></li>
-	<li><a href="#tabs_tab"><span><?php echo i18n::translate('Manage Tabs')?></span></a></li>
-	<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Manage Sidebars')?></span></a></li>
+	<li><a href="#installed_tab"><span><?php echo i18n::translate('All Modules')?></span></a></li>
+	<li><a href="#menus_tab"><span><?php echo i18n::translate('Menus')?></span></a></li>
+	<li><a href="#tabs_tab"><span><?php echo i18n::translate('Tabs')?></span></a></li>
+	<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebars')?></span></a></li>
+	<li><a href="#blocks_tab"><span><?php echo i18n::translate('Blocks')?></span></a></li>
+	<li><a href="#charts_tab"><span><?php echo i18n::translate('Charts')?></span></a></li>
+	<li><a href="#reports_tab"><span><?php echo i18n::translate('Reports')?></span></a></li>
+	<li><a href="#themes_tab"><span><?php echo i18n::translate('Themes')?></span></a></li>
 </ul>
 <div id="installed_tab">
 <!-- installed -->
   <table id="installed_table" class="list_table">
     <thead>
       <tr>
-      <th class="list_label"><?php echo i18n::translate('Enabled')?></th>
-      <th class="list_label"><?php echo i18n::translate('Configuration')?></th>
-      <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Description')?></th>
-      <th class="list_label"><?php echo i18n::translate('Tab')?></th>
-      <th class="list_label"><?php echo i18n::translate('Menu')?></th>
-      <th class="list_label"><?php echo i18n::translate('Sidebar')?></th>
+      <th class="list_label"><?php echo i18n::translate('Enabled'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Configuration'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Description'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Menu'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Tab'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Sidebar'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Block'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Chart'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Report'); ?></th>
+      <th class="list_label"><?php echo i18n::translate('Theme'); ?></th>
       </tr>
     </thead>
     <tbody>
@@ -233,9 +269,13 @@ foreach (WT_Module::getInstalledModules() as $module) {
 	<td class="list_value"><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
 	<td class="list_value"><?php echo $module->getTitle()?></td>
 	<td class="list_value_wrap"><?php echo $module->getDescription()?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 	<td class="list_value"><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 	<td class="list_value"><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Block) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Chart) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td class="list_value"><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 	</tr>
 	<?php 
 }
@@ -244,7 +284,6 @@ foreach (WT_Module::getInstalledModules() as $module) {
   </table>
 </div>
 <div id="menus_tab">
-<!-- menus -->
 <table id="menus_table" class="list_table">
     <thead>
       <tr>
@@ -293,7 +332,6 @@ $order++;
   </table>
 </div>
 <div id="tabs_tab">
-<!-- tabs -->
 <table id="tabs_table" class="list_table">
     <thead>
       <tr>
@@ -342,7 +380,6 @@ $order++;
   </table>
 </div>
 <div id="sidebars_tab">
-<!-- sidebars -->
 <table id="sidebars_table" class="list_table">
     <thead>
       <tr>
@@ -371,6 +408,166 @@ foreach(WT_Module::getInstalledSidebars() as $module) {
 			$varname = 'sidebaraccess-'.$module->getName().'-'.$ged_id;
 			$access_level=WT_DB::prepare(
 				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
+			?>
+			<tr><td><?php echo $ged_name ?></td><td>
+			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
+				<?php write_access_option_numeric($access_level) ?>
+			</select></td></tr>
+			<?php 
+		} 
+	?>
+	</table>
+	</td>
+	</tr>
+	<?php
+$order++; 
+}
+?>
+    </tbody>
+  </table>
+</div>
+<div id="blocks_tab">
+<table id="blocks_table" class="list_table">
+    <thead>
+      <tr>
+      <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+$order = 1;
+foreach(WT_Module::getInstalledBlocks() as $module) {
+	?><tr class="sortme">
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value_wrap">
+	<table>
+	<?php
+		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+			$varname = 'blockaccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='block'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
+			?>
+			<tr><td><?php echo $ged_name ?></td><td>
+			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
+				<?php write_access_option_numeric($access_level) ?>
+			</select></td></tr>
+			<?php 
+		} 
+	?>
+	</table>
+	</td>
+	</tr>
+	<?php
+$order++; 
+}
+?>
+    </tbody>
+  </table>
+</div>
+<div id="charts_tab">
+<table id="charts_table" class="list_table">
+    <thead>
+      <tr>
+      <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+$order = 1;
+foreach(WT_Module::getInstalledCharts() as $module) {
+	?><tr class="sortme">
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value_wrap">
+	<table>
+	<?php
+		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+			$varname = 'chartaccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='chart'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
+			?>
+			<tr><td><?php echo $ged_name ?></td><td>
+			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
+				<?php write_access_option_numeric($access_level) ?>
+			</select></td></tr>
+			<?php 
+		} 
+	?>
+	</table>
+	</td>
+	</tr>
+	<?php
+$order++; 
+}
+?>
+    </tbody>
+  </table>
+</div>
+<div id="reports_tab">
+<table id="reports_table" class="list_table">
+    <thead>
+      <tr>
+      <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+$order = 1;
+foreach(WT_Module::getInstalledReports() as $module) {
+	?><tr class="sortme">
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value_wrap">
+	<table>
+	<?php
+		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+			$varname = 'reportaccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='report'"
+			)->execute(array($ged_id, $module->getName()))->fetchOne();
+			?>
+			<tr><td><?php echo $ged_name ?></td><td>
+			<select id="<?php echo $varname?>" name="<?php echo $varname?>">
+				<?php write_access_option_numeric($access_level) ?>
+			</select></td></tr>
+			<?php 
+		} 
+	?>
+	</table>
+	</td>
+	</tr>
+	<?php
+$order++; 
+}
+?>
+    </tbody>
+  </table>
+</div>
+<div id="themes_tab">
+<table id="themes_table" class="list_table">
+    <thead>
+      <tr>
+      <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+$order = 1;
+foreach(WT_Module::getInstalledThemes() as $module) {
+	?><tr class="sortme">
+	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value_wrap">
+	<table>
+	<?php
+		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+			$varname = 'themeaccess-'.$module->getName().'-'.$ged_id;
+			$access_level=WT_DB::prepare(
+				"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='theme'"
 			)->execute(array($ged_id, $module->getName()))->fetchOne();
 			?>
 			<tr><td><?php echo $ged_name ?></td><td>

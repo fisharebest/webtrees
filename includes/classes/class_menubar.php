@@ -698,7 +698,7 @@ class MenuBar
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 		global $SEARCH_SPIDER;
 		global $controller;
-		
+
 		$style = "top";
 		if ($pid || $famid) $style = "sub";
 		if (isset($controller)) {
@@ -734,58 +734,9 @@ class MenuBar
 			$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_reports");
 		}
 
-		// Build a list of reports and sort that list into localized title order
-		$reports = get_report_list();
-		$menuList = array();
-		foreach ($reports as $file=>$report) {
-			if (!empty($report["title"][WT_LOCALE])) $label = $report["title"][WT_LOCALE];
-			else $label = implode("", $report["title"]);
-			$menuList[$file] = trim($label);
-		}
-		asort($menuList);
-
-		// Produce those submenus in localized name order
-
-		//print_r($reports);
-		$username = WT_USER_NAME;
-		foreach($menuList as $file=>$label) {
-			$report = $reports[$file];
-			if (!isset($report["access"])) {
-				$report["access"] = WT_PRIV_PUBLIC;
-			}
-			if ($report["access"]>=WT_USER_ACCESS_LEVEL) {
-				if (!empty($report["title"][WT_LOCALE])) {
-					$label = $report["title"][WT_LOCALE];
-				} else {
-					$label = implode("", $report["title"]);
-				}
-				// indi report
-				if ($pid) {
-					$submenu = new Menu($label, encode_url("reportengine.php?ged=".WT_GEDCOM."&action=setup&report={$report['file']}&pid={$pid}"));
-				}
-				// family report
-				elseif ($famid) {
-					$submenu = new Menu($label, encode_url("reportengine.php?ged=".WT_GEDCOM."&action=setup&report={$report['file']}&famid={$famid}"));
-				}
-				// default
-				else {
-					$submenu = new Menu($label, encode_url("reportengine.php?ged=".WT_GEDCOM."&action=setup&report={$report['file']}"));
-				}
-				if (isset($WT_IMAGES["reports"]["small"]) && isset($WT_IMAGES[$report["icon"]]["small"])) $iconfile=$WT_IMAGE_DIR."/".$WT_IMAGES[$report["icon"]]["small"];
-				if (isset($iconfile) && file_exists($iconfile)) $submenu->addIcon($iconfile);
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_".$report["icon"]);
-				// indi report
-				if ($pid && $report["icon"]!="sfamily" && $report["icon"]!="place") {
-					$menu->addSubmenu($submenu);
-				}
-				// family report
-				elseif ($famid && $report["icon"]=="sfamily") {
-					$menu->addSubmenu($submenu);
-				}
-				// default
-				elseif (empty($pid) && empty($famid)) {
-					$menu->addSubmenu($submenu);
-				}
+		foreach (WT_Module::getActiveReports() as $report) {
+			foreach ($report->getReportMenus() as $submenu) {
+				$menu->addSubmenu($submenu);
 			}
 		}
 		return $menu;

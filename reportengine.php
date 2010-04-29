@@ -120,30 +120,23 @@ foreach($varnames as $indexval => $name) {
 	}
 }
 
-$reports = get_report_list();
+$reports=array();
+foreach (WT_Module::getActiveReports() as $rep) {
+	foreach ($rep->getReportMenus() as $menu) {
+		if (preg_match('/report=(modules\/[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->link, $match)) {
+			$reports[$match[1]]=$menu->label;
+		}
+	}
+}
+
 if (!empty($report)) {
-	$r = basename($report);
-	if (!isset($reports[$r]["access"])) {
-		$action = "choose";
-	} elseif ($reports[$r]["access"]<WT_USER_ACCESS_LEVEL) {
+	if (!array_key_exists($report, $reports)) {
 		$action = "choose";
 	}
 }
 
 //-- choose a report to run
 if ($action=="choose") {
-	// Get the list of available reports in sorted localized title order
-	$reportList = get_report_list(true);
-	$reportTitles = array();
-	foreach ($reportList as $file=>$report) {
-		$reportTitles[$file] = $report["title"][WT_LOCALE];
-	}
-	asort($reportTitles);
-	$reports = array();
-	foreach ($reportTitles as $file=>$title) {
-		$reports[$file] = $reportList[$file];
-	}
-	
 	print_header(i18n::translate('Choose a report to run'));
 
 	echo "<br /><br />\n<form name=\"choosereport\" method=\"get\" action=\"reportengine.php\">\n";
@@ -155,7 +148,7 @@ if ($action=="choose") {
 	echo "<td class=\"optionbox\"><select onchange=\"this.form.submit();\" name=\"report\">\n";
 	foreach($reports as $file=>$report) {
 		if ($report["access"] >= WT_USER_ACCESS_LEVEL) {
-			echo "<option value=\"", $report["file"], "\">", $report["title"][WT_LOCALE], "</option>\n";
+			echo "<option value=\"", $file, "\">", $report, "</option>\n";
 		}
 	}
 	echo "</select></td></tr>\n";

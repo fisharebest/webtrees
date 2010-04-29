@@ -32,12 +32,25 @@ if (!defined('WT_WEBTREES')) {
 define('WT_CLASS_MODULE_PHP', '');
 
 // Modules can optionally implement the following interfaces.
+interface WT_Module_Block {
+	public function getBlock($block, $config, $side, $index);
+	public function configureBlock();
+}
+
+interface WT_Module_Chart {
+	public function getChart();
+}
+
 interface WT_Module_Config {
 	public function getConfigLink();
 }
 
 interface WT_Module_Menu {
 	public function defaultMenuOrder();
+}
+
+interface WT_Module_Report {
+	public function getReportMenus();
 }
 
 interface WT_Module_Sidebar {
@@ -55,6 +68,10 @@ interface WT_Module_Tab {
 	public function getPreLoadContent();
 	public function getJSCallbackAllTabs();
 	public function getJSCallback();
+}
+
+interface WT_Module_Theme {
+	public function getTheme();
 }
 
 abstract class WT_Module {
@@ -104,13 +121,43 @@ abstract class WT_Module {
 		return $array;
 	}
 
-	// Get a list of all the active, authorised sidebars
+	// Get a list of all the active, authorised blocks
+	final static public function getActiveBlocks($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+		static $blocks=null;
+		if ($blocks===null) {
+			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
+		}
+		usort($blocks, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $blocks;
+	}
+
+	// Get a list of all the active, authorised charts
+	final static public function getActiveCharts($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+		static $charts=null;
+		if ($charts===null) {
+			$charts=self::getActiveModulesByComponent('chart', $ged_id, $access_level);
+		}
+		usort($charts, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $charts;
+	}
+
+	// Get a list of all the active, authorised menus
 	final static public function getActiveMenus($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $menus=null;
 		if ($menus===null) {
 			$menus=self::getActiveModulesByComponent('menu', $ged_id, $access_level);
 		}
 		return $menus;
+	}
+
+	// Get a list of all the active, authorised reports
+	final static public function getActiveReports($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+		static $reports=null;
+		if ($reports===null) {
+			$reports=self::getActiveModulesByComponent('report', $ged_id, $access_level);
+		}
+		usort($reports, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $reports;
 	}
 
 	// Get a list of all the active, authorised sidebars
@@ -131,6 +178,16 @@ abstract class WT_Module {
 		return $tabs;
 	}
 
+	// Get a list of all the active, authorised themes
+	final static public function getActiveThemes($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+		static $themes=null;
+		if ($themes===null) {
+			$themes=self::getActiveModulesByComponent('theme', $ged_id, $access_level);
+		}
+		usort($themes, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $themes;
+	}
+
 	// Get installed modules
 	final static public function getInstalledModules() {
 		static $modules=null;
@@ -147,6 +204,32 @@ abstract class WT_Module {
 		return $modules;
 	}
 
+	// Get installed blocks
+	final static public function getInstalledBlocks() {
+		global $TBLPREFIX;
+		$modules=array();
+		foreach (self::getInstalledModules() as $module) {
+			if ($module instanceof WT_Module_Block) {
+				$modules[]=$module;
+			}
+		}
+		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $modules;
+	}
+
+	// Get installed charts
+	final static public function getInstalledCharts() {
+		global $TBLPREFIX;
+		$modules=array();
+		foreach (self::getInstalledModules() as $module) {
+			if ($module instanceof WT_Module_Chart) {
+				$modules[]=$module;
+			}
+		}
+		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $modules;
+	}
+
 	// Get installed menus
 	final static public function getInstalledMenus() {
 		global $TBLPREFIX;
@@ -160,6 +243,19 @@ abstract class WT_Module {
 			}
 		}
 		usort($modules, create_function('$x,$y', 'return $x->sort-$y->sort;'));
+		return $modules;
+	}
+
+	// Get installed reports
+	final static public function getInstalledReports() {
+		global $TBLPREFIX;
+		$modules=array();
+		foreach (self::getInstalledModules() as $module) {
+			if ($module instanceof WT_Module_Report) {
+				$modules[]=$module;
+			}
+		}
+		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $modules;
 	}
 
@@ -195,6 +291,19 @@ abstract class WT_Module {
 		return $modules;
 	}
 
+	// Get installed themes
+	final static public function getInstalledThemes() {
+		global $TBLPREFIX;
+		$modules=array();
+		foreach (self::getInstalledModules() as $module) {
+			if ($module instanceof WT_Module_Theme) {
+				$modules[]=$module;
+			}
+		}
+		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		return $modules;
+	}
+
 	//
 	final static public function setDefaultAccess($ged_id) {
 		global $TBLPREFIX;
@@ -221,6 +330,26 @@ abstract class WT_Module {
 		foreach (self::getInstalledTabs() as $module) {
 			WT_DB::prepare(
 				"INSERT INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
+			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+		}
+		foreach (self::getInstalledBlocks() as $module) {
+			WT_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
+			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+		}
+		foreach (self::getInstalledCharts() as $module) {
+			WT_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'charts', ?)"
+			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+		}
+		foreach (self::getInstalledReports() as $module) {
+			WT_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
+			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+		}
+		foreach (self::getInstalledThemes() as $module) {
+			WT_DB::prepare(
+				"INSERT INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 	}

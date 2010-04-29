@@ -927,10 +927,10 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_privacy (".
-		" module_name   VARCHAR(32)                    NOT NULL,".
-		" gedcom_id     INTEGER                        NOT NULL,".
-		" component     ENUM('menu', 'sidebar', 'tab') NOT NULL,".
-		" access_level  TINYINT                        NOT NULL,".
+		" module_name   VARCHAR(32) NOT NULL,".
+		" gedcom_id     INTEGER     NOT NULL,".
+		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme') NOT NULL,".
+		" access_level  TINYINT     NOT NULL,".
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
 		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */,".
 		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)   /* ON DELETE CASCADE */".
