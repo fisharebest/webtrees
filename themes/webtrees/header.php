@@ -154,7 +154,7 @@ function SetCookie(cookieName,cookieValue,nDays)
 <table width="99%">
 	<tr>
 		<td width="75%">
-			<div class="title" style="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>">
+			<div class="title">
 				<?php print_gedcom_title_link(TRUE); ?>
 			</div>
 		</td>
