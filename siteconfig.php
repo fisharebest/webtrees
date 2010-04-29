@@ -80,7 +80,7 @@ $smtp_active=get_site_setting('SMTP_ACTIVE');
 echo
 	'<form name="siteconfig" method="post" action="siteconfig.php" autocomplete="off">',
 	'<input type="hidden" name="action" value="update" />',
-	'<table class="list_table width80" style="left-margin:auto;right-margin:auto;"><tr>',
+	'<table class="list_table width80" style="margin-left:auto;margin-right:auto;"><tr>',
 	'<td class="topbottombar" colspan="2">', i18n::translate('Site configuration'), '</td>',
 	'</tr><tr>',
 	'<td class="facts_label" colspan="2">', i18n::translate('Server configuration'), '</td>',
