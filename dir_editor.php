@@ -1,7 +1,5 @@
 <?php
 /**
- * PopUp Window to provide editing features.
- *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
@@ -70,9 +68,7 @@ function full_rmdir($dir) {
 // Vars
 $ajaxdeleted = false;
 $elements = Array();
-$locked_by_context = array("readme.txt", "index.php", "gedcoms.php");
-$dbname = explode("/", $DBNAME);
-$locked_by_context[] = end($dbname);
+$locked_by_context = array("readme.txt", "index.php", "gedcoms.php", 'config.ini.php');
 
 // If we are storing the media in the index directory (this is the
 // default for the media firewall), then don't delete it.
