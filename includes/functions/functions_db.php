@@ -2393,20 +2393,7 @@ function get_id_from_gedcom($ged_name, $create=false) {
 			WT_DB::prepare("INSERT INTO {$TBLPREFIX}gedcom (gedcom_name) VALUES (?)")
 				->execute(array($ged_name));
 			$ged_id=WT_DB::getInstance()->lastInsertId();
-			$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-			// Don't overwrite existing config files.
-			if (!file_exists($INDEX_DIRECTORY.$ged_name.'_conf.php')) {
-				copy('config_gedcom.php', $INDEX_DIRECTORY.$ged_name.'_conf.php');
-			}
-			if (!file_exists($INDEX_DIRECTORY.$ged_name.'_priv.php')) {
-				copy('privacy.php',       $INDEX_DIRECTORY.$ged_name.'_priv.php');
-			}
-			set_gedcom_setting($ged_id, 'config',  $INDEX_DIRECTORY.$ged_name.'_conf.php');
-			set_gedcom_setting($ged_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
-			set_gedcom_setting($ged_id, 'title',   i18n::translate('Genealogy from [%s]', $ged_name));
-
-			require_once WT_ROOT.'includes/classes/class_module.php';
-			WT_Module::setDefaultAccess($ged_id);
+			require WT_ROOT.'includes/set_gedcom_defaults.php';
 			return $ged_id;
 		} catch (PDOException $ex) {
 			// The gedcom already exists - can't create
