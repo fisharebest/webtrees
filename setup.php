@@ -407,7 +407,7 @@ if (!$dbname_ok) {
 		'<table border="0"><tr><td>',
 		i18n::translate('Database name'), '</td><td>',
 		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '"></td><td>',
-		 i18n::translate('This is case sensitive.'),
+		 i18n::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Table prefix'), '</td><td>',
 		'<input type="text" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '"></td><td>',
