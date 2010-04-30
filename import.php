@@ -68,7 +68,11 @@ header('Content-type: text/html; charset=UTF-8');
 if ($row->import_offset==0 || $row->import_total==0) {
 	// Finished?  Show the maintenance links, similar to editgedcoms.php
 	WT_DB::exec("COMMIT");
-	echo "DONE";
+	echo
+		WT_JS_START,
+		'$("#import',  $gedcom_id, '").toggle();',
+		'$("#actions', $gedcom_id, '").toggle();',
+		WT_JS_END;
 	exit;	
 }
 
