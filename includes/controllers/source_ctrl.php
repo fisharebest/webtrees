@@ -201,7 +201,7 @@ class SourceControllerRoot extends BaseController {
 		$menu = new Menu(i18n::translate('Edit Source'));
 		$menu->addOnclick('return edit_source(\''.$this->sid.'\');');
 		if (!empty($WT_IMAGES["edit_sour"]["small"]))
-			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['edit_source']['large']}");
+			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['edit_sour']['small']}");
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
 		// edit source / edit_source
