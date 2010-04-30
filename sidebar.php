@@ -181,7 +181,7 @@ jQuery(document).ready(function() {
 	  	?>
    	// =========================================================	
 
-//	jQuery('#sidebar').scrollFollow();
+	//	jQuery('#sidebar').scrollFollow();
 
 	var modsLoaded = false;
 	jQuery('#sidebar_open').toggle(function() {
@@ -190,13 +190,18 @@ jQuery(document).ready(function() {
 			right: "0px",
 			width: "310px"
 		}, 500);
+		
+  		if ( pinned == false ) {
+			jQuery('#sidebar_pin').click();
+		}
+			
 		if (!modsLoaded) {
 			jQuery('#sidebarAccordion').load('sidebar.php', 'sb_action=loadMods&pid=<?php echo $pid?>&famid=<?php echo $famid?>', openCallback);
 			modsLoaded=true;
 		}
 		else jQuery("#sidebarAccordion").accordion("resize");
 		jQuery('#sidebarAccordion').show();
-		jQuery('#sidebar_pin').show();
+		// jQuery('#sidebar_pin').show();
 	}, function() {
 		jQuery('#sidebar_open img').attr('src', '<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
 		jQuery('#sidebar').css('left', '');
@@ -205,12 +210,53 @@ jQuery(document).ready(function() {
 			width: "0px"
 		}, 500, 'linear', closeCallback);
 	});
+	
    	<?php 
-   	if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { 
+   	// Sidebar state control =======================================================================
+   	// NOTE: Unnecessary "sidebar_pin" image has now been removed. (Ref. remmed line 204)
+	// NOTE: Need config option for setting $sidebar_state.
+	$sidebar_state = "open";  	// "on" 	= 	Sidebar open permanently,	- no facility to turn open/close. 
+								// "open"	=	Sidebar open, [default]		- may be turned on/off. Page refresh opens sidebar again. 
+								// "closed" =	Sidebar closed, 			- may be turned on/off. Page refresh closes sidebar again.
+								// "off		=	Sidebar closed permanently	- no facility to open/close.	
+	
+   	if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || $sidebar_state == "on" || $sidebar_state == "open" ) { 
    	?>
-	   		jQuery('#sidebar_open').click();
+	   	jQuery('#sidebar_open').click();
+		jQuery('#sidebar_controls').show();	
+  		if ( pinned == false ) {
+  			jQuery('#sidebar_pin').click();
+  		}
+  		sb_open = true;
   	<?php 
+  	}
+  	
+  	if ( $sidebar_state == "on" ) {
+  	?>	
+  			jQuery('#sidebar_pin').hide();
+  			jQuery('#sidebar_controls').hide();	
+  	<?php
   	} 
+  	else if ( $sidebar_state == "closed" ) {
+  	?>
+  		if ( sb_open == true && pinned == false) {
+  			jQuery('#sidebar_open').click();
+  		}
+  		jQuery('#sidebar_controls').show();
+  		sb_open = false;
+  	<?php 
+  	}
+  	else if ( $sidebar_state == "off" ) {
+  	?>
+  		if ( sb_open == true ) {
+  			jQuery('#sidebar_open').click();
+  		}
+  		jQuery('#sidebar_pin').hide();
+  		jQuery('#sidebar_controls').hide();
+  		sb_open = false;
+  	<?php 
+  	}
+  	// =============================================================================================
   	?>
 
 });

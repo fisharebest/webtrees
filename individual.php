@@ -103,8 +103,9 @@ if (selectedTab != "" && selectedTab != "undefined" && selectedTab != null) {
 }
 
 var tabCache = new Array();
-
 var pinned = false;
+var sb_open = false;
+
 jQuery(document).ready(function(){
 	// TODO: change images directory when the common images will be deleted.
 	// jQuery('#tabs').tabs({ spinner: '<img src=\"<?php echo $WT_IMAGE_DIR; ?>/loading.gif\" height=\"18\" border=\"0\" />' });
@@ -240,9 +241,10 @@ jQuery(document).ready(function(){
 			// echo "&nbsp;";
 			require './sidebar.php';
 			
-			// Initially hide the sidebar pin ======
+			// Initially hide the sidebar controls & pin ======
 			?>
 			<script>
+				jQuery('#sidebar_controls').hide();
 				jQuery('#sidebar_pin').hide();
 			</script>
 			<?php
