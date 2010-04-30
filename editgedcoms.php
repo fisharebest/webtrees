@@ -37,16 +37,46 @@ $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 function import_gedcom_file($gedcom_id, $file_name) {
 	global $TBLPREFIX;
 
+	$file_size=filesize($file_name);
 	$fp=fopen($file_name, 'rb');
 	WT_DB::exec("START TRANSACTION");
+
+	// Cannot use the stream technique at http://php.net/manual/en/pdo.lobs.php
+	// It doesn't work, probably due to the MySQL bug mentioned below.
+	//WT_DB::prepare(
+	//	"UPDATE {$TBLPREFIX}gedcom".
+	//	" SET import_gedcom=?, import_offset=1".
+	//	" WHERE gedcom_id=?"
+	//)
+	//->bindParam(1, $fp,        PDO::PARAM_LOB)
+	//->bindParam(2, $gedcom_id, PDO::PARAM_INT)
+	//->execute();
+
+	$max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
 	WT_DB::prepare(
 		"UPDATE {$TBLPREFIX}gedcom".
-		" SET import_gedcom=?, import_offset=1".
+		" SET import_gedcom='', import_offset=1".
 		" WHERE gedcom_id=?"
-	)
-	->bindParam(1, $fp,        PDO::PARAM_LOB)
-	->bindParam(2, $gedcom_id, PDO::PARAM_INT)
-	->execute();
+	)->execute(array($gedcom_id));
+
+	// The max_allowed_packet setting in MySQL puts a limit on the size of SQL
+	// statements that can be received over the network.  Due to a bug, it also
+	// limits the size of blobs that can be processed on the server.
+	// Setting this value has no effect on upload limits (so we must still
+	// upload data in chunks smaller than this), but it will allow us to use
+	// CONCAT(import_gedcom, ?)
+	// See http://bugs.mysql.com/bug.php?id=22853 (Scheduled to be fixed in MySQL 6)
+	WT_DB::exec("SET @@max_allowed_packet=".max($file_size*2, $max_allowed_packet));		
+
+	while (!feof($fp)) {
+		$data=fread($fp, $max_allowed_packet * 0.75);
+		WT_DB::prepare(
+			"UPDATE {$TBLPREFIX}gedcom".
+			" SET import_gedcom=CONCAT(import_gedcom, ?)".
+			" WHERE gedcom_id=?"
+		)->execute(array($data, $gedcom_id));
+	}
+
 	WT_DB::exec("COMMIT");
 	fclose($fp);
 }

@@ -65,6 +65,12 @@ if (!$row) {
 
 header('Content-type: text/html; charset=UTF-8');
 
+// MySQL cannot use string functions on blobs larger than max_allowed_packet
+// See http://bugs.mysql.com/bug.php?id=22853 (Scheduled to be fixed in MySQL 6)
+$max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
+WT_DB::exec("SET @@max_allowed_packet=".max($row->import_total*2, $max_allowed_packet));		
+
+
 if ($row->import_offset==0 || $row->import_total==0) {
 	// Finished?  Show the maintenance links, similar to editgedcoms.php
 	WT_DB::exec("COMMIT");
