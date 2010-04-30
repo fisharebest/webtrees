@@ -215,9 +215,9 @@ jQuery(document).ready(function() {
    	// Sidebar state control =======================================================================
    	// NOTE: Unnecessary "sidebar_pin" image has now been removed. (Ref. remmed line 204)
 	// NOTE: Need config option for setting $sidebar_state.
-	$sidebar_state = "open";  	// "on" 	= 	Sidebar open permanently,	- no facility to turn open/close. 
-								// "open"	=	Sidebar open, [default]		- may be turned on/off. Page refresh opens sidebar again. 
-								// "closed" =	Sidebar closed, 			- may be turned on/off. Page refresh closes sidebar again.
+	$sidebar_state = "open";  	// "on" 	= 	Sidebar open permanently,	- no facility to open/close. 
+								// "open"	=	Sidebar open, [default]		- may be opened/closed. Page refresh opens sidebar again. 
+								// "closed" =	Sidebar closed, 			- may be opened/closed. Page refresh closes sidebar again.
 								// "off		=	Sidebar closed permanently	- no facility to open/close.	
 	
    	if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || $sidebar_state == "on" || $sidebar_state == "open" ) { 
