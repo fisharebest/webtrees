@@ -8,8 +8,6 @@
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
  *
- * Modifications Copyright (c) 2010 Greg Roach
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -24,7 +22,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author PGV Development Team
  * @package webtrees
  * @subpackage Admin
  * @version $Id$
@@ -83,7 +80,7 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 
 $gedcom_config = $INDEX_DIRECTORY.WT_GEDCOM."_conf.php";
 $gedcom_privacy = $INDEX_DIRECTORY.WT_GEDCOM."_priv.php";
-	
+
 $errors=false;
 $error_msg='';
 
@@ -180,6 +177,7 @@ if (safe_POST('action')=='update') {
 	$configtext = preg_replace('/\$META_ROBOTS\s*=\s*".*";/', "\$META_ROBOTS = \"".$_POST["NEW_META_ROBOTS"]."\";", $configtext);
 	$configtext = preg_replace('/\$META_TITLE\s*=\s*".*";/', "\$META_TITLE = \"".$_POST["NEW_META_TITLE"]."\";", $configtext);
 	$configtext = preg_replace('/\$MULTI_MEDIA\s*=\s*.*;/', "\$MULTI_MEDIA = ".$boolarray[$_POST["NEW_MULTI_MEDIA"]].";", $configtext);
+	$configtext = preg_replace('/\$NOTE_ID_PREFIX\s*=\s*".*";/', "\$NOTE_ID_PREFIX = \"".$_POST["NEW_NOTE_ID_PREFIX"]."\";", $configtext);
 	$configtext = preg_replace('/\$PEDIGREE_FULL_DETAILS\s*=\s*.*;/', "\$PEDIGREE_FULL_DETAILS = ".$boolarray[$_POST["NEW_PEDIGREE_FULL_DETAILS"]].";", $configtext);
 	$configtext = preg_replace('/\$PEDIGREE_SHOW_GENDER\s*=\s*.*;/', "\$PEDIGREE_SHOW_GENDER = ".$boolarray[$_POST["NEW_PEDIGREE_SHOW_GENDER"]].";", $configtext);
 	$configtext = preg_replace('/\$PEDIGREE_LAYOUT\s*=\s*.*;/', "\$PEDIGREE_LAYOUT = ".$boolarray[$_POST["NEW_PEDIGREE_LAYOUT"]].";", $configtext);
@@ -392,8 +390,15 @@ if (safe_POST('action')=='update') {
 }
 
 print_header(i18n::translate('GEDCOM Configuration'));
-
 ?>
+<script type="text/javascript">
+//<![CDATA[
+  jQuery.noConflict();
+  jQuery(document).ready(function(){
+  jQuery("#tabs").tabs();
+  });
+//]]>
+</script>
 <script language="JavaScript" type="text/javascript">
 <!--
 	function show_jewish() {
@@ -608,24 +613,27 @@ function display_results(amount_found){
 	if (!empty($error_msg)) print "<br /><span class=\"error\">".$error_msg."</span><br />\n";
 	$i = 0;
 ?>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
 
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclick=\"expand_layer('file-options');return false\"><img id=\"file-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["minus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclick=\"expand_layer('file-options');return false\">".i18n::translate('GEDCOM Basics')."</a>";
-?></td></tr></table>
-<div id="file-options" style="display: block">
-<table class="facts_table">
+<table class="center <?php echo $TEXT_DIRECTION ?> width90">
+	
+	<tr><td colspan="2">
+	
+	<div id="tabs" class="width100">
+	<ul>
+		<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics')?></span></a></li>
+		<li><a href="#config-media"><span><?php echo i18n::translate('Multimedia')?></span></a></li>
+		<li><a href="#access-options"><span><?php echo i18n::translate('Access and Privacy')?></span></a></li>
+		<li><a href="#layout-options"><span><?php echo i18n::translate('Display and Layout')?></span></a></li>
+		<li><a href="#edit-options"><span><?php echo i18n::translate('Edit Options')?></span></a></li>
+		<li><a href="#user-options"><span><?php echo i18n::translate('User Options')?></span></a></li>
+		<li><a href="#contact-options"><span><?php echo i18n::translate('Contact Information')?></span></a></li>
+		<li><a href="#config-meta"><span><?php echo i18n::translate('Web Site and META Tag Settings')?></span></a></li>
+	</ul>
+<div id="file-options">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
-			<?php	echo i18n::translate('GEDCOM title'), help_link('gedcom_title'); ?>
+			<?php echo i18n::translate('GEDCOM title'), help_link('gedcom_title'); ?>
 		</td>
 		<td class="optionbox"><input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
@@ -685,9 +693,9 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			?>
 		</select></td>
 	</tr>
-	</table>
-	<div id="hebrew-cal" style="display: none">
-	<table class="facts_table">
+  </table>
+ <div id="hebrew-cal" style="display: none">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Display Hebrew Thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?>
@@ -704,9 +712,9 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 			<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_GERESHAYIM', $DISPLAY_JEWISH_GERESHAYIM); ?>
 		</td>
 	</tr>
-	</table>
-	</div>
-	<table class="facts_table">
+  </table>
+ </div>
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?>
@@ -761,24 +769,17 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('GEDCOM Basics')."\" onclic
 		<td class="optionbox"><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php print $MEDIA_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
-</table>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
+	<tr>
+		<td class="descriptionbox wrap width20">
+			<?php echo i18n::translate('Note ID prefix'), help_link('NOTE_ID_PREFIX'); ?>
+		</td>
+		<td class="optionbox"><input type="text" name="NEW_NOTE_ID_PREFIX" dir="ltr" value="<?php print $NOTE_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+		</td>
+	</tr>
+  </table>
 </div>
-
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('Multimedia')."\" onclick=\"expand_layer('config-media');return false\"><img id=\"config-media_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('Multimedia')."\" onclick=\"expand_layer('config-media');return false\">".i18n::translate('Multimedia')."</a>";
-?></td></tr></table>
-<div id="config-media" style="display: none">
-
-<table class="facts_table">
+<div id="config-media">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Enable multimedia features'), help_link('MULTI_MEDIA'); ?>
@@ -787,9 +788,8 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Multimedia')."\" onclick=\
 			<?php echo edit_field_yes_no('NEW_MULTI_MEDIA', $MULTI_MEDIA, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
-</table>
-
-<table class="facts_table"><tr><td class="subbar">
+  </table>
+  <table class="facts_table"><tr><td class="subbar">
 <?php
 print "<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"expand_layer('config-media1');return false\"><img id=\"config-media1_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
 print "&nbsp;<a href=\"javascript: ".i18n::translate('General')."\" onclick=\"expand_layer('config-media1');return false\">".i18n::translate('General')."</a>";
@@ -950,25 +950,11 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Media Firewall')."\" oncli
 			<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', $SAVE_WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
-</table>
+  </table>
+  </div>
 </div>
-
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
-</div>
-
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" onclick=\"expand_layer('access-options');return false\"><img id=\"access-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" onclick=\"expand_layer('access-options');return false\">".i18n::translate('Access and Privacy')."</a>";
-?></td></tr></table>
-<div id="access-options" style="display: none">
-<table class="facts_table">
+<div id="access-options">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Enable Privacy'), help_link('HIDE_LIVE_PEOPLE'); ?>
@@ -1039,24 +1025,10 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Access and Privacy')."\" o
 			<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
-</table>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
+  </table>
 </div>
-
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('Display and Layout')."\" onclick=\"expand_layer('layout-options');return false\"><img id=\"layout-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('Display and Layout')."\" onclick=\"expand_layer('layout-options');return false\">".i18n::translate('Display and Layout')."</a>";
-?></td></tr></table>
-<div id="layout-options" style="display: none">
-
-<table class="facts_table"><tr><td class="subbar">
+<div id="layout-options">
+  <table class="facts_table"><tr><td class="subbar">
 <?php
 print "<a href=\"javascript: ".i18n::translate('Names')."\" onclick=\"expand_layer('layout-options2');return false\"><img id=\"layout-options2_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
 print "&nbsp;<a href=\"javascript: ".i18n::translate('Names')."\" onclick=\"expand_layer('layout-options2');return false\">".i18n::translate('Names')."</a>";
@@ -1117,13 +1089,6 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Common Surnames')."\" oncl
 		</td>
 		<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
-</table>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
 </table>
 </div>
 
@@ -1480,26 +1445,11 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo edit_field_yes_no('NEW_SHOW_EST_LIST_DATES', $SHOW_EST_LIST_DATES, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
-</table>
+  </table>
+  </div>
 </div>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
-</div>
-
-<?php // Edit Options
-?>
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick=\"expand_layer('edit-options');return false\"><img id=\"edit-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick=\"expand_layer('edit-options');return false\">".i18n::translate('Edit Options')."</a>";
-?></td></tr></table>
-<div id="edit-options" style="display: none">
-<table class="facts_table">
+<div id="edit-options">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Enable online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
@@ -1685,26 +1635,10 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Edit Options')."\" onclick
 			<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', $NO_UPDATE_CHAN, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
-
-</table>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
+  </table>
 </div>
-
-<?php // User Options
-?>
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('User Options')."\" onclick=\"expand_layer('user-options');return false\"><img id=\"user-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick=\"expand_layer('user-options');return false\">".i18n::translate('User Options')."</a>";
-?></td></tr></table>
-<div id="user-options" style="display: none">
-<table class="facts_table">
+<div id="user-options">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Show contextual <b>?</b> Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
@@ -1718,7 +1652,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick
 			<?php echo i18n::translate('Theme directory'), help_link('THEME_DIR'); ?>
 		</td>
 		<td class="optionbox">
-			<select name="NEW_THEME_DIR" dir="ltr" tabindex="<?php echo ++$i; ?>">
+			<select name="themeselect" dir="ltr" tabindex="<?php echo ++$i; ?>">
 				<?php
 					foreach (get_theme_names() as $themename=>$themedir) {
 						print "<option value=\"".$themedir."\"";
@@ -1737,23 +1671,10 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('User Options')."\" onclick
 			<?php echo edit_field_yes_no('NEW_ALLOW_THEME_DROPDOWN', $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
-</table>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
+ </table>
 </div>
-
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('Contact Information')."\" onclick=\"expand_layer('contact-options');return false\"><img id=\"contact-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" onclick=\"expand_layer('contact-options');return false\">".i18n::translate('Contact Information')."</a>";
-?></td></tr></table>
-<div id="contact-options" style="display: none">
-<table class="facts_table">
+<div id="contact-options">
+  <table class="facts_table">
 	<tr>
 		<?php
 		if (empty($WEBTREES_EMAIL)) {
@@ -1833,23 +1754,10 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Contact Information')."\" 
 			</select>
 		</td>
 	</tr>
-</table>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-</td></tr>
-</table>
+  </table>
 </div>
-
-<table class="facts_table"><tr><td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-<?php
-print "<a href=\"javascript: ".i18n::translate('Web Site and META Tag Settings')."\" onclick=\"expand_layer('config-meta');return false\"><img id=\"config-meta_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-print "&nbsp;<a href=\"javascript: ".i18n::translate('Web Site and META Tag Settings')."\" onclick=\"expand_layer('config-meta');return false\">".i18n::translate('Web Site and META Tag Settings')."</a>";
-?></td></tr></table>
-<div id="config-meta" style="display: none">
-<table class="facts_table">
+<div id="config-meta">
+  <table class="facts_table">
 	<tr>
 		<td class="descriptionbox wrap width20">
 			<?php echo i18n::translate('Main WebSite URL'), help_link('HOME_SITE_URL'); ?>
@@ -1959,13 +1867,19 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Web Site and META Tag Sett
 			</select>
 		</td>
 	</tr>
-</table>
+  </table>
 </div>
-<table class="facts_table" border="0">
-<tr><td style="padding: 5px" class="topbottombar">
-<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-&nbsp;&nbsp;
-<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
+</div>
+</td>
+</tr>
+<tr><td>
+	<table class="facts_table" border="0">
+	<tr><td style="padding: 5px" class="topbottombar">
+	<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
+	&nbsp;&nbsp;
+	<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
+	</td></tr>
+	</table>
 </td></tr>
 </table>
 </form>

@@ -59,6 +59,7 @@ $SOURCE_ID_PREFIX = "S";					// -- This is the prefix prepend to newly generated
 $REPO_ID_PREFIX = "R";					// -- This is the prefix prepend to newly generated repository records
 $FAM_ID_PREFIX = "F";					// -- This is the prefix prepend to newly generated family records
 $MEDIA_ID_PREFIX = "M";					// -- This is the prefix prepend to newly generated media records
+$NOTE_ID_PREFIX = "N";					// -- This is the prefix prepend to newly generated note records
 $PEDIGREE_FULL_DETAILS = true;			// -- Show the birth and death details of an individual on charts
 $PEDIGREE_SHOW_GENDER = true;			// -- Show the gender of an individual by means of an icon on charts
 $PEDIGREE_LAYOUT = true;					// -- Set to true for Landscape mode, false for portrait mode

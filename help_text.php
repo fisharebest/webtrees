@@ -2470,6 +2470,11 @@ case 'MULTI_MEDIA':
 	$text=i18n::translate('GEDCOM 5.5.1 allows you to link pictures, videos, and other multimedia objects into your GEDCOM.  If you do not include multimedia objects in your GEDCOM, you can disable the multimedia features by setting this value to <b>No</b>.<br /><br />See the Multimedia section in the <a href="readme.txt">readme.txt</a> file for more information about including media in your site.');
 	break;
 
+case 'NOTE_ID_PREFIX':
+	$title=i18n::translate('Note ID prefix');
+	$text=i18n::translate('When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix.');
+	break;
+
 case 'PAGE_AFTER_LOGIN':
 	$title=i18n::translate('Page to show after login');
 	$text=i18n::translate('Which page should users see after they have logged in?<br /><br />The choice made here determines whether a successful Login causes My Page or the Home Page to appear when the login is done from the Home Page.<br /><br />A Login done from the link at the top of every other page will return the user to that page.');
