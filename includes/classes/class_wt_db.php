@@ -395,7 +395,7 @@ class WT_DBStatement {
 				$start=microtime(true);
 				$result=call_user_func_array(array($this->pdostatement, $function), $params);
 				$end=microtime(true);
-				$this->executed=!preg_match('/^(insert into|delete from|update|create|alter) /i', $this->pdostatement->queryString);
+				$this->executed=!preg_match('/^(insert|delete|update|create|alter) /i', $this->pdostatement->queryString);
 				if ($params) {
 					$this->bind_variables=$params[0];
 				}
