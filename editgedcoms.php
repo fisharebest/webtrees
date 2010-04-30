@@ -66,7 +66,11 @@ function import_gedcom_file($gedcom_id, $file_name) {
 	// upload data in chunks smaller than this), but it will allow us to use
 	// CONCAT(import_gedcom, ?)
 	// See http://bugs.mysql.com/bug.php?id=22853 (Scheduled to be fixed in MySQL 6)
-	WT_DB::exec("SET @@max_allowed_packet=".max($file_size*2, $max_allowed_packet));		
+	try {
+		WT_DB::exec("SET @@max_allowed_packet=".max($file_size*2, $max_allowed_packet));		
+	} catch (PDOException $ex) {
+		// We can only set this on MySQL 5.1.30 or earlier
+	}
 
 	while (!feof($fp)) {
 		$data=fread($fp, $max_allowed_packet * 0.75);
