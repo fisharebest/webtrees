@@ -1,14 +1,14 @@
 =======================================================
-    PhpGedView
+    webtrees
 
-    Version 4.3
-    Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
+    Version 0.9
+    Copyright (C) 2010 webtrees development team.
 
     This and other information can be found online at
-    http://www.PhpGedView.net
+    http://www.webtrees.net
 
     The installation instructions can also be found in the wiki at:
-	http://wiki.phpgedview.net/en/index.php?title=Installation_Guide
+	http://wiki.webtrees.net/en/index.php?title=Installation_Guide
 
     # $Id$
 =======================================================
@@ -30,9 +30,7 @@ CONTENTS
     14.  LANGUAGES
     15.  NON-STANDARD GEDCOM CODES
     16.  LANGUAGE EXTENSION FILES
-    17.  MIGRATING FROM SQL TO INDEX MODE AND VICE VERSA
-    18.  POSTNUKE AND PHPNUKE INTEGRATION
-    19.  BACKUP
+    17.  BACKUP
 
 -------------------------------------------------------
 LICENSE
@@ -59,16 +57,16 @@ detailed licensing information.
 -------------------------------------------------------
 INTRODUCTION
 
-PhpGedView is a revolutionary genealogy program which allows you to view 
-and edit your genealogy on your website.  PhpGedView has full editing 
+webtrees is a revolutionary genealogy program which allows you to view 
+and edit your genealogy on your website.  webtrees has full editing 
 capabilities, full privacy functions, and supports multimedia like photos 
-and document images.  PhpGedView also simplifies the process of 
+and document images.  webtrees also simplifies the process of 
 collaborating with others working on your family lines.  Your latest 
 information is always on your web site and available for others to see.  
 For more information and to see working demos, visit 
-http://www.PhpGedView.net/
+http://www.webtrees.net/
 
-PhpGedView is Open Source software that has been produced by people from 
+webtrees is Open Source software that has been produced by people from 
 many countries freely donating their time and talents to the project.  All 
 service, support, and future development is dependent on the time 
 developers are willing to donate to the project, often at the expense of 
@@ -80,7 +78,7 @@ project.
 -------------------------------------------------------
 SYSTEM REQUIREMENTS
 
-PhpGedView requires a web server with at least PHP v5.2 and around 20MB of
+webtrees requires a web server with at least PHP v5.2 and around 20MB of
 web space.  The default installations of PHP on most servers should provide
 you with all of the PHP functionality you should need.
 
@@ -93,7 +91,7 @@ you with all of the PHP functionality you should need.
 
 Database
     You will need at least 1 database and a username and password to access it. 
-    PhpGedView primarily supports MySQL, but has also been tested and shown to 
+    webtrees primarily supports MySQL, but has also been tested and shown to 
     work with Postgresql, SQLite, and SQL-Server. The versions required for 
     each of these databases is outlined below: 
     MySQL 4.1+ 
@@ -109,13 +107,13 @@ To use the reporting engine, PHP needs to be compiled with XML support.
 This is compiled into PHP by default unless it is specifically disabled.  
 See http://us3.php.net/manual/en/ref.xml.php
 
-Some features of PhpGedView require the GD library and that PHP be compiled
+Some features of webtrees require the GD library and that PHP be compiled
 with GD support.  Most precompiled versions of PHP include GD support.  If 
 you are compiling PHP yourself you will need to configure it with the 
     --with-gd 
 option.  See http://us3.php.net/manual/en/ref.image.php
 
-The advanced calendar features of PhpGedView for converting Gregorian dates 
+The advanced calendar features of webtrees for converting Gregorian dates 
 to the Hebrew or Jewish calendars require that PHP be compiled with the
     --enable-calendar 
 configuration option.  See http://us2.php.net/manual/en/ref.calendar.php 
@@ -124,15 +122,15 @@ for more information.
 For GEDCOMs larger than 2MB, you will likely need to research different
 hosting options and find one that will accept a request to modify the
 default memory and time limits built into PHP.  See the FAQ at
-http://www.phpgedview.net/faq.php for more information about large GEDCOMs.
+http://www.webtrees.net/faq.php for more information about large GEDCOMs.
 
 -------------------------------------------------------
 QUICK INSTALLATION
 
 These instructions can also be found in the wiki at:
-http://wiki.phpgedview.net/en/index.php?title=Installation_Guide
+http://wiki.webtrees.net/en/index.php?title=Installation_Guide
 
-Follow the instructions in this section to install PhpGedView if you are
+Follow the instructions in this section to install webtrees if you are
 already familiar with the program or are familiar with installing other PHP 
 web applications.
 
@@ -142,7 +140,7 @@ web applications.
      optimal security, you should move the "index" directory to a location 
      where it is not accessible from the Internet.
  4.  Point your browser install.php in the directory where you uploaded your 
-     PhpGedView files (for example, http://www.yourserver.com/PhpGedView/install.php).
+     webtrees files (for example, http://www.yourserver.com/webtrees/install.php).
  5.  Enter your configuration settings.  If you moved the index directory, 
      be sure to specify the correct location to it on this page.  Save the 
      configuration parameters.
@@ -160,9 +158,9 @@ Optional Steps
 12.  If you want to edit your GEDCOM file online, the GEDCOM file must have
      Write permissions set for the PHP user.
 13.  If you want to use the Backup feature of the Upgrade utility in 
-     PhpGedView you will need to either set Write permission on the 
-     PhpGedView folder itself or create a folder named "backup" with Write 
-     permissions.  Write permissions for the PhpGedView folder can be 
+     webtrees you will need to either set Write permission on the 
+     webtrees folder itself or create a folder named "backup" with Write 
+     permissions.  Write permissions for the webtrees folder can be 
      removed as soon as the backup folder is in place and has the 
      appropriate permissions.
 14.  For security you should set the permissions back to Read-only when you 
@@ -172,15 +170,15 @@ Optional Steps
 INSTALLATION
 
 These instructions can also be found in the wiki at:
-http://wiki.phpgedview.net/en/index.php?title=Installation_Guide
+http://wiki.webtrees.net/en/index.php?title=Installation_Guide
 
-Follow these instructions if you are not familiar with PhpGedView or 
+Follow these instructions if you are not familiar with webtrees or 
 installing PHP applications.
 
 *A.  Upload Program Files:
-To install PhpGedView, unzip the compressed package and upload the files to 
+To install webtrees, unzip the compressed package and upload the files to 
 a directory on your web server.  If you are using a SVN (development)
-version of PhpGedView, you will need to rename the config.dist file to
+version of webtrees, you will need to rename the config.dist file to
 config.php.  If you are using an official release, it will already have
 a config.php file.
 
@@ -206,10 +204,10 @@ specify the location of this directory during the online configuration.
 See the SECURITY section for more information.
 
 *B.  Required File Permissions:
-PhpGedView requires that Read permissions be set for all files in the
-PhpGedView directory tree.  Some hosts also require Execute permissions
-(chmod 755).  PhpGedView requires full Write permissions on the index 
-directory (chmod 777 under most hosting configurations).  PhpGedView also 
+webtrees requires that Read permissions be set for all files in the
+webtrees directory tree.  Some hosts also require Execute permissions
+(chmod 755).  webtrees requires full Write permissions on the index 
+directory (chmod 777 under most hosting configurations).  webtrees also 
 requires that Write permissions (chmod 777) be set temporarily for the 
 config.php file.
 
@@ -232,24 +230,24 @@ file online, the GEDCOM file must have Write permissions set to the PHP
 user (chmod 777).
 
 *C.  Configuration:
-Next point your web browser to the PhpGedView folder
-(for example, http://www.yourserver.com/PhpGedView/) to automatically 
+Next point your web browser to the webtrees folder
+(for example, http://www.yourserver.com/webtrees/) to automatically 
 begin the online configuration process.  Information about each of the 
 configuration options can be found online by clicking on the question mark 
 (?) near each label.
 
-PhpGedView has support for importing your GEDCOMs into a PEAR:DB supported 
+webtrees has support for importing your GEDCOMs into a PEAR:DB supported 
 database like MySQL or PostgreSQL.  Currently, MySQL is the only fully tested 
 database.  Using a database requires that an existing user, password, and 
 database already exist.
 
-You may reconfigure PhpGedView at any time by going to PhpGedView/admin.php 
+You may reconfigure webtrees at any time by going to webtrees/admin.php 
 and logging in as an administrator user and clicking on the "Configuration" 
 link.
 
-If you are having any problems setting up PhpGedView then you should run the 
+If you are having any problems setting up webtrees then you should run the 
 sanity_check file. To do this you should type sanity_check.php into your URL 
-(for example, http://www.yourserver.com/PhpGedView/sanity_check.php). If you are 
+(for example, http://www.yourserver.com/webtrees/sanity_check.php). If you are 
 not able to view that page then you most likely don't have either the sanity_check 
 file or you do not have PHP installed properly.
 
@@ -270,7 +268,7 @@ Most hosts limit the size of files that can be uploaded from a web form for
 security reasons, so you may be forced to use a manual method.  You may 
 also upload your GEDCOM in ZIP format, either manually or using the 
 "Upload GEDCOM" option.  Make sure to enter the filename of the ZIP file.  
-PhpGedView will automatically unpack the ZIP file and use the GEDCOM file 
+webtrees will automatically unpack the ZIP file and use the GEDCOM file 
 inside it.  Be sure to create the ZIP file to contain only one GEDCOM file.
 
 *F.  Set GEDCOM Configuration Settings
@@ -280,7 +278,7 @@ options in this document.  Please use the online Help documentation to
 guide you through the configuration process.
 
 *G.  Validate GEDCOM
-After you save the GEDCOM configuration PhpGedView will validate your 
+After you save the GEDCOM configuration webtrees will validate your 
 GEDCOM and automatically fix any errors that it can.  If any errors found 
 in the GEDCOM require user input, you will be prompted to choose how to 
 proceed.  Again use the online Help ? for more information.
@@ -291,7 +289,7 @@ your data.  After validating the GEDCOM and fixing any errors, you will
 need to import the GEDCOM into the data store.  During the Import you will 
 see a lot of processing statistics printed on the screen.  If the Import 
 completed successfully you will see a blue "Import Complete" message.  
-Everything is now set up and you can begin using PhpGedView with your 
+Everything is now set up and you can begin using webtrees with your 
 GEDCOM.
 
 *I.  Deleting GEDCOMs
@@ -299,7 +297,7 @@ You may delete GEDCOMs from your site from the "Manage GEDCOMs" area.
 Deleting a GEDCOM from the site will remove it from the database but will 
 not delete the original GEDCOM file that you imported.  It will also not
 delete any of the cache or privacy files related to this GEDCOM.  These 
-retained files, which are no longer required by PhpGedView, are all located 
+retained files, which are no longer required by webtrees, are all located 
 in the "index" directory.
 
 *J.  Reset config.php Permissions
@@ -310,27 +308,27 @@ Admin->Configuration link.  Everything else will be stored in the index
 directory.
 
 *K.  Custom Themes
-You can customize the look and feel of PhpGedView by modifying one of the
+You can customize the look and feel of webtrees by modifying one of the
 provided themes.  See the THEMES section of this readme file for more
 information.
 
 *L.  HTTP Compression
-Pages generated by PhpGedView can be large and use up a lot of bandwidth.
+Pages generated by webtrees can be large and use up a lot of bandwidth.
 Compression of the data between the server and browser using GZip 
 compression can compress the bandwidth by up to 90% (usually 80% - 90% for 
-PhpGedView that were tested).  Add the following 2 lines to your php.ini file:
+webtrees that were tested).  Add the following 2 lines to your php.ini file:
     zlib.output_compression On
     zlib.output_compression_level 5
 
 If you have no access to the php.ini file and you are using Apache, create a 
 blank file named .htaccess (including the dot) and add the following lines to 
 that file  (or add them to an existing .htaccess file and upload the file to 
-your PhpGedView directory.
+your webtrees directory.
     php_flag zlib.output_compression On
     php_value zlib.output_compression_level 5
 
 Some hosts do not allow adding this through .htaccess files, but they may 
-allow you to create a partial php.ini file in your phpGedView directory. To
+allow you to create a partial php.ini file in your webtrees directory. To
 this file you would add the same two lines from the php.ini file above:
     zlib.output_compression On
     zlib.output_compression_level 5
@@ -340,18 +338,18 @@ this technique can cause problems.  Compression will have no effect on
 browsers that do not support it.  You can test the compression at
 http://leknor.com/code/gziped.php
 
-If you need help or support visit  http://www.PhpGedView.net/support.php
+If you need help or support visit  http://www.webtrees.net/support.php
 
 -------------------------------------------------------
 UPGRADING
 
-See http://wiki.phpgedview.net/en/index.php?title=Upgrading
+See http://wiki.webtrees.net/en/index.php?title=Upgrading
 
 -------------------------------------------------------
 UPDATING GEDCOMS
 
-When you change your genealogy data outside of PhpGedView, it is not 
-necessary to delete your GEDCOMs from PhpGedView and start over.  Follow 
+When you change your genealogy data outside of webtrees, it is not 
+necessary to delete your GEDCOMs from webtrees and start over.  Follow 
 these steps to update a GEDCOM that has already been imported:
 
 1.  The first step is to replace your old GEDCOM on the site with your new
@@ -376,12 +374,12 @@ preserved.
 -------------------------------------------------------
 THEMES
 
-PhpGedView uses a theme based architecture allowing you to have greater
+webtrees uses a theme based architecture allowing you to have greater
 flexibility over the appearance of the site.  The "themes" directory 
-contains the standard themes that come packaged with PhpGedView.  You may 
+contains the standard themes that come packaged with webtrees.  You may 
 customize any of these themes to your liking or create your own theme by 
 copying any of the standard themes to a new folder and modifying it.  When 
-you configure PhpGedView, you should tell it to look in your new theme 
+you configure webtrees, you should tell it to look in your new theme 
 directory.
 
 A theme directory must contain at least the following 6 files:
@@ -394,8 +392,8 @@ A theme directory must contain at least the following 6 files:
   theme.php          # The PHP design variables that you may customize
   toplinks.html      # PHP/HTML that appears just below the header.html
 
-For a guide to building your own custom PhpGedView theme, go to:
-http://www.PhpGedView.net/styleguide.php
+For a guide to building your own custom webtrees theme, go to:
+http://www.webtrees.net/styleguide.php
 
 If you really like a theme that you have done and would like it included 
 with the project, you should send your theme files to the developers at
@@ -405,13 +403,13 @@ yalnifj@users.sourceforge.net.
 MULTIMEDIA OBJECTS
 
 The GEDCOM 5.5 standard supports multimedia files of all types.  Currently
-PhpGedView supports multimedia objects only as external files.  Multimedia
+webtrees supports multimedia objects only as external files.  Multimedia
 embedded in the GEDCOM file itself will be ignored.  To use the multimedia
-support in PhpGedView you must copy the multimedia files external to your
+support in webtrees you must copy the multimedia files external to your
 GEDCOM to the "media" directory in the folder where you installed 
-PhpGedView.
+webtrees.
 
-In choosing which picture to show on charts, PhpGedView will choose the 
+In choosing which picture to show on charts, webtrees will choose the 
 first one with the _PRIM Y marker.  If there are no _PRIM tags in your 
 media object records then the first object found will be used.  You can 
 disable all photos on charts for a particular person by setting _PRIM N on 
@@ -421,9 +419,9 @@ automatically.
 You can find all of the images referenced in your file by opening your 
 GEDCOM in a text editor and looking for the OBJE or FILE tags.
 
-PhpGedView includes a "media/thumbs" directory where you can place 
+webtrees includes a "media/thumbs" directory where you can place 
 thumbnails of your media files for display in lists and on other pages.  
-PhpGedView allows you to create your own thumbnails so that you can 
+webtrees allows you to create your own thumbnails so that you can 
 maintain artistic control over your media and to avoid the installation of 
 other server side software.  Make a copy your images and reduce them to an 
 appropriate thumbnail size somewhere around 100px width and upload them to 
@@ -436,13 +434,13 @@ IMAGE with the PDF or AVI file extension).
 
 There is an Image module that fully integrates with PGV and that will
 automatically create thumbnails for you if you use it to upload your files.  
-It is not included with the main PhpGedView files because it requires 
+It is not included with the main webtrees files because it requires 
 external libraries that not all hosts will have installed.  You should be 
 able to get it to work by following the instructions included with it.  
 You can download the ImageModule from:
 http://sourceforge.net/project/showfiles.php?group_id=55456&package_id=88140
 
-You can configure PhpGedView to recognize subdirectories in your media 
+You can configure webtrees to recognize subdirectories in your media 
 folder.  The subdirectories must be the same names as the subdirectories in 
 your media file paths pointed to in your GEDCOM file.  For example, if you 
 have the following media references in your GEDCOM file:
@@ -475,7 +473,7 @@ PGV now includes an RSS feed.  RSS is an XML format that allows other sites
 to get news and other data from your site.  The language used is the 
 default language of the site.  The language of the feed can be set to any 
 language supported by PGV by changing the URL that your RSS aggregator uses 
-from the default /phpGedView/rss.php to /phpGedView/rss.php?lang=english 
+from the default /webtrees/rss.php to /webtrees/rss.php?lang=english 
 (or any language supported by PGV such as rss.php?lang=french).  
 
 Currently only the default site GEDCOM is supported for the feed info.  
@@ -484,25 +482,25 @@ type via the rssStyle parameter.  The PGV default is "RSS1.0".  Passing any
 supported type including "PIE0.1", "mbox","RSS0.91", "RSS1.0", "RSS2.0", 
 "OPML", "ATOM0.3", "HTML", "JS" will change the feed type.  
 
-For example, calling  /phpGedView/rss.php?rssStyle=HTML will create HTML 
+For example, calling  /webtrees/rss.php?rssStyle=HTML will create HTML 
 output suitable for inclusion in an other page via an iFrame.  The JS 
 option will output JavaScript that can be included in an other page without 
 using an iFrame.  
 
 You can also specify a module that you want to output (only 1) so that only 
 that module will be output.  This is done via the module parameter.  For 
-example, /phpGedView/rss.php?module=gedcomStats will only output the GEDCOM 
+example, /webtrees/rss.php?module=gedcomStats will only output the GEDCOM 
 Stats block.  
 
 These parameters can be chained so that
-/phpGedView/rss.php?lang=hebrew&module=gedcomStats&rssStyle=HTML 
+/webtrees/rss.php?lang=hebrew&module=gedcomStats&rssStyle=HTML 
 will output the GEDCOM Stats module in Hebrew in HTML.
 
 
 -------------------------------------------------------
 DATABASE TABLE LAYOUT
 
-PhpGedView uses a very simple database table layout because it operates
+webtrees uses a very simple database table layout because it operates
 primarily on the GEDCOM data and only needs the database for search and
 retrieval.  There are only a few tables in the database:
   pgv_blocks        # Description of each user's My Page
@@ -735,7 +733,7 @@ array in the index/GEDCOMs.php file.  The GEDCOM array looks like this:
   $gedarray["path"] = "./surname.ged";
   $GEDCOMS["surname.ged"] = $gedarray;
 "surname" above could be anything, for example, "johnson" or "private".  
-You must pay attention to the case of what you enter.  PhpGedView is case 
+You must pay attention to the case of what you enter.  webtrees is case 
 sensitive.
 
 Each GEDCOM will need a configuration file.  You can copy the 
@@ -750,7 +748,7 @@ location of the new privacy.php file.
 -------------------------------------------------------
 SECURITY
 
-Even though PhpGedView gives you the ability to hide the details of living
+Even though webtrees gives you the ability to hide the details of living
 individuals, whenever you post the personal details of living individuals 
 on the Internet, you should first obtain the permission of EACH living 
 person you plan to include.  There are many people who would not even want 
@@ -765,8 +763,8 @@ the Internet you should place it outside the root directory of your web
 server or virtual host and set the value of the $GEDCOM variable to point 
 to that location.  For example, if your home directory is something like
 "/home/username" and if the root directory for your web site is
-"/home/username/public_html" and you have installed PhpGedView in the
-"public_html/PhpGedView" directory then you would place your GEDCOM file in
+"/home/username/public_html" and you have installed webtrees in the
+"public_html/webtrees" directory then you would place your GEDCOM file in
 your home directory at the same level as your "public_html" directory.  You
 would then set the file path to "/home/username/GEDCOM.ged" by editing the
 GEDCOM configuration.
@@ -779,7 +777,7 @@ or
 
 Since your GEDCOM file resides in a directory outside of your web server's 
 root directory, your web server will not be able to fullfill requests to 
-download it.  However, PhpGedView will still be able to read and display 
+download it.  However, webtrees will still be able to read and display 
 its contents.
 
 In the end it is YOUR responsibility to guarantee that there has been no
@@ -787,14 +785,14 @@ violation of an individual's privacy and YOU could be held liable should
 private information be made public on the web sites that you administer.
 
 For more privacy options visit:
-http://www.PhpGedView.net/privacy.php
+http://www.webtrees.net/privacy.php
 
 -------------------------------------------------------
 LANGUAGES
 
-PhpGedView has built-in support for multiple languages.  PHP does not 
+webtrees has built-in support for multiple languages.  PHP does not 
 support unicode (UTF-16).  It does support UTF-8 and that is the 
-recommended character encoding for GEDCOMs with PhpGedView.  If you have 
+recommended character encoding for GEDCOMs with webtrees.  If you have 
 characters in your GEDCOM outside the standard ASCII alphabet, you should 
 probably use the UTF-8 encoding.  There are many differences between UTF-8 
 and UTF-16, but anything that you can encode in UTF-16 you should be able 
@@ -804,16 +802,16 @@ UTF-8.  Simply open your Unicode GEDCOM file in Windows Notepad and select
 You shouldn't lose any of the characters in the translation.
 
 You should check the Patches section of
-http://sourceforge.net/projects/PhpGedView to get the latest language 
+http://sourceforge.net/projects/webtrees to get the latest language 
 files.
 
-Discussion and questions about the multiple language features of PhpGedView
+Discussion and questions about the multiple language features of webtrees
 including translations, should be posted in the Translations forum 
-available from the PhpGedView project page here:
+available from the webtrees project page here:
 http://sourceforge.net/forum/forum.php?forum_id=294245
 
-To translate PhpGedView into another language that is not currently 
-supported you must first login to PhpGedView as an administrator and go to 
+To translate webtrees into another language that is not currently 
+supported you must first login to webtrees as an administrator and go to 
 the Language Edit Utility by clicking on "Admin-> Translator Tools".  At 
 the bottom of that page is an option to Add a new language.  Choose your l
 anguage from the dropdown list and click on the "Add new Language" button.  
@@ -846,7 +844,7 @@ editor.  If you manually edit the files, you must be sure to save them in
 the UTF-8 character set.  Some text editors like Windows Notepad add a 
 3-byte Byte-Order-Mark (BOM) to files they save in UTF-8.  PHP does not 
 like the BOM and it should be removed before testing the files in 
-PhpGedView.  PhpGedView's Translator Tools section has a utility program
+webtrees.  webtrees's Translator Tools section has a utility program
 for removing these BOMs.
 
 You should obtain a flag file from http://w3f.com/gifs/index.html and size 
@@ -856,22 +854,22 @@ To help maintain languages, a language change log is provided in the
 languages directory.  This change log is named LANG_CHANGELOG.txt.  All 
 changes to the English language files are recorded here.
 
-If you make a new translation of PhpGedView or update another translation, 
+If you make a new translation of webtrees or update another translation, 
 and would like to contribute it to the community please post your language 
 files and your index/lang_settings.php file to the Patches section of the 
-SourceForge project site at http://www.sourceforge.net/projects/phpgedview
+SourceForge project site at http://www.sourceforge.net/projects/webtrees
 
 -------------------------------------------------------
 NON-STANDARD GEDCOM CODES
 
 The GEDCOM 5.5 standard has a defined set of codes.  You can read the
-specification online at http://www.PhpGedView.net/ged551-5.pdf  Part of the
+specification online at http://www.webtrees.net/ged551-5.pdf  Part of the
 standard allows for genealogy software to define their own codes, and 
 requests that they begin with an "_" underscore.  
 
-When PhpGedView comes across a tag that is not defined it will display an 
+When webtrees comes across a tag that is not defined it will display an 
 error message.  You can disable these error messages by setting 
-$HIDE_GEDCOM_ERRORS=true; in the gedcom configuration settings.  PhpGedView can also be 
+$HIDE_GEDCOM_ERRORS=true; in the gedcom configuration settings.  webtrees can also be 
 customized to work with these codes by adding them to the facts array in a 
 new language file named extra.en.php.  If you add it to the English 
 facts file you should also add it to the other facts language files you are 
@@ -884,7 +882,7 @@ for the ABBR GEDCOM tag.
     $factarray["ABBR"] = "Abbreviation";
 
 As an example, if you use a genealogy program that generates the tag 
-"_ZZZZ" you can customize PhpGedView to accept this code by adding the 
+"_ZZZZ" you can customize webtrees to accept this code by adding the 
 following lines to the extra.en.php file:
     <?php
     $factarray["_ZZZZ"] = "Tag Label goes here";
@@ -894,7 +892,7 @@ following lines to the extra.en.php file:
 LANGUAGE EXTENSION FILES
 
 Language extension files are custom PHP files that you can use to make your 
-own language specific extensions to PhpGedView.  To add a language file 
+own language specific extensions to webtrees.  To add a language file 
 extension, create a new PHP file called extra.xx.php replacing the 
 "xx" with the code for the language you want to extend.  These files are 
 not automatically included with the package so that when you upgrade, your 
@@ -942,108 +940,18 @@ german.ged have the same people in them, just in a different language.
 Thus I0001 in english.ged should refer to the same I0001 in german.ged.
 
 
--------------------------------------------------------
-MIGRATING FROM DATABASE TO INDEX MODE AND VICE VERSA
-
-Older of versions of PhpGedView supported and internal "index" mode format
-which allowed it to run without a database.  Since version 4.0, index mode
-has no longer been supported.  If you are running an older version of PGV
-in index mode then these instructions can help you to upgrade to a new version
-of PGV which only supports databases.
-
-Basically it's possible to switch a PhpGedView installation from Index to 
-DATABASE mode or vice-versa without losing any settings.  The following 
-steps have to be made:
-
-DATABASE to Index
---------------
- 1.  Make sure you have all rights in the ./index/ folder on your web site 
-     and on the file ./config.php
- 2.  Copy the file config.php to configsql.php (or any other name) to 
-     backup the old configuration.  You may also use the Backup function 
-     from the Admin menu to backup all vital files before switching mode.
- 3.  DO NOT remove any files from your index directory, as some of them 
-     (Privacy and GEDCOM settings) will also be used in Index mode.
- 4.  In DATABASE mode, log in to PhpGedView with Admin rights.
- 5.  Go to the Administration page and select the User Information 
-     Migration tool.
- 6.  Choose the Export function.
- 7.  User Migrate will try to create the following files:
-       - authenticate.php  - user accounts and settings
-       - favorites.dat     - user and GEDCOM favorites
-       - blocks.dat        - block layout of Home and My Pages
-       - news.dat          - User and GEDCOM news
-       - messages.dat      - User messages
-     If any of the files already exist in your index directory, you will be 
-     prompted to overwrite them.  If there are problems creating the files, 
-     when, for instance, you don't have sufficient rights, you can always 
-     correct the problem and run the Export function again, as nothing 
-     irreversible has happened.
- 8.  Check that the above files exist in your index directory.
- 9.  Go to Admin, Configuration, change mode to Index and save the 
-     configuration.
-10.  As all Index mode related files are already present, you should be 
-     able to use your web site in Index mode immediately.
-10.  Import your GEDCOM files again to build the Index database.  You don't 
-     need to change any GEDCOM settings, as they still exist in the index 
-     directory and will be used again.
-11.  Test all settings and functions thoroughly before you remove your SQL
-     database from your web site.
-
-Index to DATABASE
---------------
- 1.  Make sure you have all rights in the ./index/ folder on your web site 
-     and on the file ./config.php
- 2.  Copy the file config.php to configindex.php (or any other name) to 
-     backup the old configuration.  You can also use the Backup function 
-     from the Admin menu to backup all vital files before switching mode.
- 3.  DO NOT remove any files from your index directory, as all of them 
-     (Privacy and GEDCOM settings) will also be used in DATABASE mode, or 
-     will be used to migrate the information to DATABASE mode.
- 4.  Connect to your SQL DBMS with your regular administration tool, and 
-     define a database, without any tables.
- 5.  Create a user in your SQL-DBMS with the following rights on the 
-     database:
-         SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER.
- 6.  In PhpGedView, go to Admin, Configuration, and change mode to 
-     DATABASE, fill in the appropriate SQL-DBMS and database name, user and 
-     user password and save the configuration.
- 7.  PhpGedView will ask you to create an admin user.  Create one.  This 
-     user will be overwritten later with the migrated information.
- 8.  From the admin menu, choose the User Information Migration tool, then 
-     choose Import.
- 9.  PhpGedview will now import all settings from Index mode to DATABASE 
-     mode.
-10.  Go to Admin, Manage GEDCOMs and Edit Privacy, and then import all your 
-     GEDCOM files again.  There is no need to change GEDCOM settings and 
-     Privacy settings, as all settings made in Index mode will be used.
-11.  Test all settings and functions thoroughly before you remove Index 
-     related files (.\index\*.dat and .\index\authenticate.php) from your 
-     web site.
-
--------------------------------------------------------
-POSTNUKE AND PHPNUKE INTEGRATION
-
-PhpGedView can integrate with PostNuke and phpNuke so that your users do 
-not have to login twice.
-
-After you have PhpGedView up and running, you should follow the 
-instructions in the readme.txt file in the pgvnuke folder.
-
-The files that make the integration magic happen were donated by Jim Carey.
-
 ===========================================================
 BACKUP
 
 With the Backup function in the administration menu, you can make a simple 
-backup of all important PhpGedview files.  With this backup, it's possible 
-to rebuild your PhpGedView site to the situation at backup time.
+backup of all important webtrees files.  With this backup, it's possible 
+to rebuild your webtrees site to the situation at backup time.
 
 The backup can contain the following files, as selected on the Backup page:
   - config.php with all configuration settings of your installation
   - all GEDCOM files that were present in your installation
   - all GEDCOM options and privacy settings for the above files
-  - counters, PhpGedView- and search-logfiles
+  - counters, webtrees- and search-logfiles
   - user definitions and options (block definitions, favorites, messages 
     and news)
 
