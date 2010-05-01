@@ -1652,7 +1652,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 			<?php echo i18n::translate('Theme directory'), help_link('THEME_DIR'); ?>
 		</td>
 		<td class="optionbox">
-			<select name="themeselect" dir="ltr" tabindex="<?php echo ++$i; ?>">
+			<select name="NEW_THEME_DIR" dir="ltr" tabindex="<?php echo ++$i; ?>">
 				<?php
 					foreach (get_theme_names() as $themename=>$themedir) {
 						print "<option value=\"".$themedir."\"";
