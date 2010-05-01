@@ -1,0 +1,106 @@
+<?php
+/**
+  *  webtrees
+
+  *  Version 1.0
+  *  Copyright (C) 2010 webtrees Development Team. All rights reserved.
+  *
+  *  This and other information can be found online at
+  *  http://webtrees.net
+  *
+  *  The installation instructions can also be found in the wiki at:
+  *  http://webtrees.net/mediawiki/index.php/Main_Page
+  *
+  *  # $Id: readme.html 7872 2010-04-05 10:29:41Z veit $
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>webtrees ReadMe file</title>
+<style type="text/css">
+	body { 	color: black; background-color: white; font: 14px tahoma arial helvetica sans-serif;	padding:10px; }
+	a {color: #81A9CB; font-weight: normal; text-decoration: none;}
+	a:hover {color: #81A9CB;}
+	h1 {color: #81A9CB; font-weight:normal;}
+	.back {color: #81A9CB; float:right;}
+</style>
+</head><body>
+<a name="top"><h1><b>webtrees</b> ReadMe File</h1></a>
+<h2>CONTENTS</h2>
+<ol>
+	<li><a href="#licence">LICENSE</a></li>
+	<li><a href="#intro">INTRODUCTION</li>
+	<li><a href="#system">SYSTEM REQUIREMENTS</li>
+	<li><a href="#install">INSTALLATION</li>
+	<li><a href="#upgrade">UPGRADING</li>
+	<li><a href="#update">UPDATING GEDCOMS</li>
+	<li><a href="#themes">THEMES</li>
+	<li><a href="#multimedia">MULTIMEDIA OBJECTS</li>
+	<li><a href="#licence">RSS FEED</li>
+	<li><a href="#licence">DATABASE TABLE LAYOUT</li>
+	<li><a href="#licence">MANUAL CONFIGURATION</li>
+	<li><a href="#licence">SECURITY</li>
+	<li><a href="#licence">LANGUAGES</li>
+	<li><a href="#licence">NON-STANDARD GEDCOM CODES</li>
+	<li><a href="#licence">LANGUAGE EXTENSION FILES</li>
+	<li><a href="#licence">BACKUP</li>
+</ol>
+<hr width="100%">
+<div style="float:left;"><a name="licence"><h3>LICENSE</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+webtrees: Web based Family History software<br />
+ * Copyright (C) 2010 webtrees development team.<br />
+ *<br />
+ * Derived from PhpGedView<br />
+Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+<br /><br />
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+<br /><br />
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+<br /><br />
+See the file GPL.txt included with this software for more detailed licensing information.
+<br /><br />
+<hr width="100%">
+<div style="float:left;"><a name="intro"><h3>INTRODUCTION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+<b>webtrees</b> is based on the popular PhpGedView application ("PGV"). Whereas PGV aimed to do everything for everyone, webtrees aims to to be efficient and effective by using the right combination of third-party tools, design techniques and open standards. webtrees allows you to view and edit your genealogy on your website. It has full editing capabilities, full privacy functions, and supports multimedia like photos and document images. It also simplifies the process of collaborating with others working on your family lines. Your latest information is always on your web site and available for others to see. For more information and to see working demos, visit http://webtrees.net/
+<br /><br />
+<b>webtrees</b> is Open Source software that has been produced by people from many countries freely donating their time and talents to the project. All service, support, and future development is dependent on the time developers are willing to donate to the project, often at the expense of work, recreation, and family. Beyond the few donations received from users, developers receive no compensation for the time they spend working on the project. There is also no outside source of revenue to support the project. 
+<br /><br />
+<hr width="100%">
+<div style="float:left;"><a name="system"><h3>SYSTEM REQUIREMENTS</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+<b>To install webtrees, you need:</b>
+<br /><br />
+<ul>
+	<li>A webserver. Apache and IIS are the most common types. There are no requirements to use a specific type or version.</li>
+	<li>Approximately 65MB of disk space for the application files, plus whatever is needed for your multi-media files, gedcom files and database.</li>
+	<li>PHP 5.2.3 or later. Note that many web hosts offer *both* PHP4 and PHP5, typically with PHP4 as the default. If this is the case, you can usually switch between the two using a control panel or a configuration file. Refer to your web host&#39;s support documentation for details.</li>
+	 <ul>
+	<li>PHP should be configured to allow sufficient server resources (memory and execution time) for the size of your system. Typical requirements are:</li>
+		<ul>
+			<li>Small systems (500 individuals): 16-32MB, 10-20 seconds</li>
+			<li>Medium systems (5000 individuals): 32-64MB, 20-40 seconds</li>
+			<li>Large systems (50000 individuals): 64-128MB, 40-80 seconds</li>
+		</ul>
+	</ul>
+	<li>MySQL 5.0.13 or later. Webtrees can share a single database with other applications, by choosing a unique table prefix during configuration. 
+</ul>
+<hr width="100%">
+<div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+The following instructions will guide you through a basic installation of <b>webtrees</b> . We recommend this approach initially, and that on completion you check your site is working correctly before looking at the more advanced configuration options available.
+<br /><br />
+<ol>
+	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
+	<li>Upload the files to your web server.</li>
+	<li>Open your web browser and enter the URL for your webtrees site (for example, http://www.yourserver.com/webtrees).</li>
+	<li><b>webtrees</b> setup will start automatically. Follow the steps described there, reading all notes, and any red warning messages you receive carefully as you proceed through each step.</li>
+	<li>On successful completion of all steps you will be taken to the GEDCOM configuration page where you can:</li>
+	<ul>
+		<li>UPLOAD a GEDCOM file from your local machine, or</li>
+		<li>IMPORT a GEDCOM file from your server, if you have previously uploaded it to the webtrees/data folder, or</li>
+		<li>CREATE a new, empty GEDCOM file.</li>
+	</ul>
+</ol>
+Once all these steps are completed you can check that everything is in place, then consider looking at more advanced configuration options.	
+<br /><br />
+</body>
+</html>
