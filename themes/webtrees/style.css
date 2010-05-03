@@ -1444,6 +1444,7 @@ dt {
 #indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
 	float:left;
 	margin-right:15px;
+	max-width:	25%;
 }
 
 #hitcounter {
