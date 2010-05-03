@@ -307,7 +307,7 @@ function AddToLog($log_message, $log_type='error') {
 		$log_message,
 		$argc ? 'cli' : $_SERVER['REMOTE_ADDR'],
 		getUserId() ? getUserId() : null,
-		WT_GED_ID  ? WT_GED_ID  : null
+		defined(WT_GED_ID) ? WT_GED_ID : null // logs raised before we select the gedcom won't have this.
 	));
 }
 
