@@ -5,7 +5,7 @@
   *  Version 1.0
   *  Copyright (C) 2010 webtrees Development Team. All rights reserved.
   *
-  *  This and other information can be found online at
+  *  This and other information can be found on line at
   *  http://webtrees.net
   *
   *  The installation instructions can also be found in the wiki at:
@@ -23,10 +23,11 @@
 	a {color: #81A9CB; font-weight: normal; text-decoration: none;}
 	a:hover {color: #81A9CB;}
 	h1 {color: #81A9CB; font-weight:normal;}
+	li {line-height:150%;}
 	.back {color: #81A9CB; float:right;}
 </style>
 </head><body>
-<a name="top"><h1><b>webtrees</b> ReadMe File</h1></a>
+<a name="top"><h1><b>webtrees</b> ReadMe File [NOT YET COMPLETED]</h1></a>
 <h2>CONTENTS</h2>
 <ol>
 	<li><a href="#licence">LICENSE</a></li>
@@ -34,7 +35,7 @@
 	<li><a href="#system">SYSTEM REQUIREMENTS</li>
 	<li><a href="#install">INSTALLATION</li>
 	<li><a href="#upgrade">UPGRADING</li>
-	<li><a href="#update">UPDATING GEDCOMS</li>
+	<li><a href="#gedcom">GEDCOM (family tree) FILES</li>
 	<li><a href="#themes">THEMES</li>
 	<li><a href="#multimedia">MULTIMEDIA OBJECTS</li>
 	<li><a href="#licence">RSS FEED</li>
@@ -62,7 +63,7 @@ See the file GPL.txt included with this software for more detailed licensing inf
 <br /><br />
 <hr width="100%">
 <div style="float:left;"><a name="intro"><h3>INTRODUCTION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-<b>webtrees</b> is based on the popular PhpGedView online genealogy application ("PGV"). Whereas PGV aimed to do everything for everyone, webtrees aims to be more efficient and effective by using the right combination of third-party tools, design techniques and open standards. webtrees allows you to view and edit your genealogy on your website. It has full editing capabilities, full privacy functions, and supports multimedia like photos and document images. As an online program, it fosters extended family participation and good ancestral recording habits, as it simplifies the process of collaborating with others working on your family lines. Your latest information is always on your web site and available for others to see, defined by viewing rules you set. For more information and to see working demos, visit http://webtrees.net/ 
+<b>webtrees</b> is based on the popular PhpGedView on line genealogy application ("PGV"). Whereas PGV aimed to do everything for everyone,<b>webtrees</b> aims to be more efficient and effective by using the right combination of third-party tools, design techniques and open standards.<b>webtrees</b> allows you to view and edit your genealogy on your website. It has full editing capabilities, full privacy functions, and supports multimedia like photos and document images. As an on line program, it fosters extended family participation and good ancestral recording habits, as it simplifies the process of collaborating with others working on your family lines. Your latest information is always on your web site and available for others to see, defined by viewing rules you set. For more information and to see working demos, visit http://webtrees.net/ 
 <br /><br />
 <b>webtrees</b> is Open Source software that has been produced by people from many countries freely donating their time and talents to the project. All service, support, and future development is dependent on the time developers are willing to donate to the project, often at the expense of work, recreation, and family. Beyond the few donations received from users, developers receive no compensation for the time they spend working on the project. There is also no outside source of revenue to support the project. Please consider these circumstances when making support requests and consider volunteering your own time and skills to make the project even stronger and better.
 <br /><br />
@@ -82,7 +83,7 @@ The following instructions will guide you through a basic installation of <b>web
 			<li>Large systems (50000 individuals): 64-128MB, 40-80 seconds</li>
 		</ul>
 	</ul>
-	<li>MySQL 5.0.13 or later. Webtrees can share a single database with other applications, by choosing a unique table prefix during configuration. 
+	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration. 
 </ul>
 <hr width="100%">
 <div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
@@ -91,7 +92,7 @@ The following instructions will guide you through a basic installation of <b>web
 <ol>
 	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
 	<li>Upload the files to your web server.</li>
-	<li>Open your web browser and enter the URL for your webtrees site (for example, http://www.yourserver.com/webtrees).</li>
+	<li>Open your web browser and enter the URL for your <b>webtrees</b> site (for example, http://www.yourserver.com/webtrees).</li>
 	<li><b>webtrees</b> setup will start automatically. Follow the steps described there, reading all notes, and any red warning messages you receive carefully as you proceed through each step.</li>
 	<li>On successful completion of all steps you will be taken to the GEDCOM (family tree) administration page where you can:</li>
 	<ul>
@@ -103,14 +104,35 @@ The following instructions will guide you through a basic installation of <b>web
 Once all these steps are completed you can check that everything is in place, then consider looking at more advanced configuration options.	
 <hr width="100%">
 <div style="float:left;"><a name="upgrade"><h3>UPGRADING</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-<b>IMPORTANT NOTE: The following instructions do NOT apply to beta versions of webtrees. If you are testing beta versions they will have specific, usually more complex upgrade instructions, often requiring a completely fresh installation. Please read the latest Release Notes for any beta version.</b>
+<b>IMPORTANT NOTE: The following instructions do NOT apply to beta versions of <b>webtrees</b>. If you are testing beta versions they will have specific, usually more complex upgrade instructions, often requiring a completely fresh installation. Please read the latest Release Notes for any beta version.</b>
 <br /><br />
-<b>webtrees</b> has ben designed to make upgrading to a new version of the software as straightforward as possible. Just follow these simple steps:
+<b>webtrees</b> has been designed to make upgrading to a new version of the software as straightforward as possible. Just follow these simple steps:
 <ol>
 	<li>Ensure you first have a good backup of your entire system, including all files and the database.</li>
 	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
 	<li>Upload the files to your web server, copying all the new files directly over the existing ones.</li>
-	<li>If any other requirements exist for the specific upgrade you are doing, you will be advised on screen as soon as you go to your site URL. This may occassionally include a requirement to re-import your GEDCOM (family tree) file.</li>
+	<li>If any other requirements exist for the specific upgrade you are doing, you will be advised on screen as soon as you go to your site URL. This may occasionally include a requirement to re-import your GEDCOM (family tree) file.</li>
+</ol>
+<hr width="100%">
+<div style="float:left;"><a name="gedcom"><h3>GEDCOM (family tree) FILES</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+When you IMPORT or UPLOAD a GEDCOM (family tree) file in <b>webtrees</b> the data from the file is all transferred to the database tables. The file itself is no longer used or required by <b>webtrees</b>
+<br />
+<ul>
+	<li>If you use IMPORT, your file remains in the webtrees/data folder you first copied it to, and will not be changed by any subsequent editing of the <b>webtrees</b> data.</li>
+	<li>If you use UPLOAD, the file is left in its original location, and again remains untouched.</li>
+</ul>
+<br />
+When or if you change your genealogy data outside of <b>webtrees</b>, it is not necessary to delete your GEDCOM file or database from <b>webtrees</b> and start over.  Follow these steps to update a GEDCOM that has already been imported:
+<ol>
+	<li>Decide if you want to IMPORT or UPLOAD your new GEDCOM file.</li>
+		<ul>
+			<li>Use UPLOAD if your GEDCOM file is smaller than your server's PHP file upload limit (often 2MB).The new file can have any name you choose.</li>
+			<li>Use IMPORT for larger files. In this case you need to use FTP to first copy your file to the webtrees/data folder. Either copy over the existing file, or use a different name.</li>
+		</ul>
+	<li> Go to your <b>webtrees</b> GEDCOM configuration page. On the line relating to this GEDCOM file click either IMPORT or UPLOAD.</li>
+	<li>Take careful note of the media items option (<i>"If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then tick this box to merge the current media objects with the new GEDCOM."</i>) In most cases you should leave this box <b>UNCHECKED</b>.</li>
+	<li>Click "SAVE". <b>webtrees</b> will validate the GEDCOM again before importing.</li>
+	<li>You can use a ZIP file to upload the GEDCOM, but only if you use the UPLOAD option. The file name can be anything you choose.</li>
 </ol>
 <br /><br />
 </body>
