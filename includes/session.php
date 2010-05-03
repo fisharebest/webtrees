@@ -141,11 +141,10 @@ if (version_compare(PHP_VERSION, '5.3', '<')) {
 		}
 		unset($in);
 	}
-} else {
-	// PHP5.3 requires a time zone to be set in php.ini
-	if (!ini_get('date.timezone')) {
-		date_default_timezone_set(@date_default_timezone_get());
-	}
+}
+// PHP requires a time zone to be set in php.ini
+if (!ini_get('date.timezone')) {
+	date_default_timezone_set(@date_default_timezone_get());
 }
 
 // Split the request "protocol://host:port/path/to/script.php?var=value" into parts
