@@ -44,12 +44,12 @@ function get_common_surnames($min) {
 	global $COMMON_NAMES_ADD, $COMMON_NAMES_REMOVE;
 
 	$topsurns=get_top_surnames(WT_GED_ID, $min, 0);
-	foreach (preg_split('/[,;] /', $COMMON_NAMES_ADD) as $surname) {
-		if (!array_key_exists($surname, $topsurns)) {
+	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
+		if ($surname && !array_key_exists($surname, $topsurns)) {
 			$topsurns[$surname]=$min;
 		}
 	}
-	foreach (preg_split('/[,;] /', $COMMON_NAMES_REMOVE) as $surname) {
+	foreach (explode(',', $COMMON_NAMES_REMOVE) as $surname) {
 		unset($topsurns[utf8_strtoupper($surname)]);
 	}
 
