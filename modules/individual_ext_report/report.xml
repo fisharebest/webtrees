@@ -37,7 +37,7 @@
 	<!-- Date text -->
 	<PGVRStyle name="date" font="$fonts" size="8"/>
 
-	<PGVRSetVar name="ignore" value="CHAN,CHIL,FAMC,FAMS,HUSB,NAME,NOTE,OBJE,SEX,SOUR,TITL,WIFE,_UID,_PGV_OBJS"/>
+	<PGVRSetVar name="ignore" value="CHAN,CHIL,FAMC,FAMS,HUSB,NAME,NOTE,OBJE,SEX,SOUR,TITL,WIFE,_UID,_WT_OBJE_SORT"/>
 	<!-- Setup colors -->
 	<!-- Section title background color -->
 	<PGVRSetVar name="stbgcolor" value="#AAAAAA"/>

@@ -2051,7 +2051,7 @@ case 'reset_media_update': // Reset sort using popup
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
-		if (strpos($line, "1 _WT_OBJS")===false) {
+		if (strpos($line, "1 _WT_OBJE_SORT")===false) {
 			$newgedrec .= $line."\n";
 		}
 	}
@@ -2068,12 +2068,12 @@ case 'reorder_media_update': // Update sort using popup
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
-		if (strpos($line, "1 _WT_OBJS")===false) {
+		if (strpos($line, "1 _WT_OBJE_SORT")===false) {
 			$newgedrec .= $line."\n";
 		}
 	}
 	foreach ($order1 as $m_media=>$num) {
-		$newgedrec .= "1 _WT_OBJS @".$m_media."@\n";
+		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
 	}
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";
@@ -2098,7 +2098,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
-		if (strpos($line, "1 _WT_OBJS")===false) {
+		if (strpos($line, "1 _WT_OBJE_SORT")===false) {
 			$newgedrec .= $line."\n";
 		}
 	}
@@ -2133,12 +2133,12 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
-		if (strpos($line, "1 _WT_OBJS")===false) {
+		if (strpos($line, "1 _WT_OBJE_SORT")===false) {
 			$newgedrec .= $line."\n";
 		}
 	}
 	foreach ($order2 as $m_media=>$num) {
-		$newgedrec .= "1 _WT_OBJS @".$m_media."@\n";
+		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
 	}
 	if (WT_DEBUG) {
 		echo "<pre>$newgedrec</pre>";

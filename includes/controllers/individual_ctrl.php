@@ -51,8 +51,8 @@ $nonfacts[] = "CHIL";
 $nonfacts[] = "HUSB";
 $nonfacts[] = "WIFE";
 $nonfacts[] = "RFN";
-$nonfacts[] = "_WT_OBJS";
-$nonfacts[] = "_PGV_OBJS";
+$nonfacts[] = "_WT_OBJE_SORT";
+$nonfacts[] = "_WT_OBJE_SORT";
 $nonfacts[] = "";
 
 //$nonfamfacts[] = "NCHI"; // Turning back on NCHI display for the indi page.

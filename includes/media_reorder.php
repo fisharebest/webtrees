@@ -81,10 +81,10 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 		}
 	}
 
-	//-- If  they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJS @xxx@ .... etc) ----------
+	//-- If  they exist, get a list of the sorted current objects in the indi gedcom record  -  (1 _WT_OBJE_SORT @xxx@ .... etc) ----------
 	$sort_current_objes = array();
-	if ($level>0) $sort_regexp = "/".$level." _WT_OBJS @(.*)@/";
-	else $sort_regexp = "/_WT_OBJS @(.*)@/";
+	if ($level>0) $sort_regexp = "/".$level." _WT_OBJE_SORT @(.*)@/";
+	else $sort_regexp = "/_WT_OBJE_SORT @(.*)@/";
 	$sort_ct = preg_match_all($sort_regexp, $gedrec, $sort_match, PREG_SET_ORDER);
 	for ($i=0; $i<$sort_ct; $i++) {
 		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;

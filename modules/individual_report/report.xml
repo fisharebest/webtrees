@@ -27,7 +27,7 @@
 	<PGVRStyle name="name1" font="$fonts" size="14" />
 	<PGVRStyle name="text" font="$fonts" size="9" />
 
-	<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,_UID,_PGV_OBJS" />
+	<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,_UID,_WT_OBJE_SORT" />
 	<!-- Section title background color -->
 	<PGVRSetVar name="stbgcolor" value="#AAAAAA"/>
 	<!-- set the default widths -->

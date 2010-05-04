@@ -37,10 +37,10 @@
 
 	<!-- if the option to show blanks is selected then ignore the MARR, BIRT etc facts that are printed with the blanks -->
 	<PGVRif condition="$blanks==1">
-		<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,MARR,BIRT,CHR,DEAT,BURI,_UID,_PGV_OBJS" />
+		<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,MARR,BIRT,CHR,DEAT,BURI,_UID,_WT_OBJE_SORT" />
 	</PGVRif>
 	<PGVRif condition="$blanks!=1">
-		<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,_UID,_PGV_OBJS" />
+		<PGVRSetVar name="ignore" value="CHAN,NAME,SEX,SOUR,NOTE,OBJE,FAMC,FAMS,TITL,CHIL,HUSB,WIFE,_UID,_WT_OBJE_SORT" />
 	</PGVRif>
 	<!-- Setup colors -->
 	<!-- Section title background color -->
