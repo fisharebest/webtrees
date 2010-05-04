@@ -165,7 +165,7 @@ print_header(i18n::translate('Download GEDCOM'));
 		</td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Remove custom PGV tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
 		<td class="list_value"><input type="checkbox" name="remove" value="yes" checked="checked" /></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media path to'), help_link('convertPath');?></td>
 		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $conv_path, getLRM();?>" /></td></tr>
