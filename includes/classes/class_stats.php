@@ -1539,11 +1539,6 @@ class stats {
 		, $total);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
-		$func = "age_localisation_".WT_LOCALE;
-		if (!function_exists($func)) {
-			$func="DefaultAgeLocalisation";
-		}
-		$show_years = true;
 		foreach ($rows as $row) {
 			$person = Person::getInstance($row['deathdate']);
 			$age = $row['age'];
@@ -1554,7 +1549,7 @@ class stats {
 			} else {
 				$age = $age.'d';
 			}
-			$func($age, $show_years);
+			$age = get_age_at_event($age, true);
 			if ($person->canDisplayDetails()) {
 				if ($type == 'list') {
 					$top10[]="\t<li><a href=\"".encode_url($person->getLinkUrl())."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
@@ -1612,11 +1607,6 @@ class stats {
 		, $total);
 		if (!isset($rows)) {return 0;}
 		$top10 = array();
-		$func = "age_localisation_".WT_LOCALE;
-		if (!function_exists($func)) {
-			$func="DefaultAgeLocalisation";
-		}
-		$show_years = true;
 		foreach ($rows as $row) {
 			$person=Person::getInstance($row['id']);
 			$age = (client_jd()-$row['age']);
@@ -1627,7 +1617,7 @@ class stats {
 			} else {
 				$age = $age.'d';
 			}
-			$func($age, $show_years);
+			$age = get_age_at_event($age, true);
 			if ($type == 'list') {
 				$top10[]="\t<li><a href=\"".encode_url($person->getLinkUrl())."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
 			} else {
@@ -1680,10 +1670,6 @@ class stats {
 		$row = $rows[0];
 		$age = $row['age'];
 		if ($show_years) {
-			$func = "age_localisation_".WT_LOCALE;
-			if (!function_exists($func)) {
-				$func="DefaultAgeLocalisation";
-			}
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
 			} else if (floor($age/12)>0) {
@@ -1691,8 +1677,7 @@ class stats {
 			} else if (!empty($age)) {
 				$age = $age.'d';
 			}
-			$func($age, $show_years);
-			return $age;
+			return get_age_at_event($age, true);
 		} else {
 			return floor($age/365.25);
 		}
@@ -2049,10 +2034,6 @@ class stats {
 			case 'age':
 				$age = $row['age'];
 				if ($show_years) {
-					$func = "age_localisation_".WT_LOCALE;
-					if (!function_exists($func)) {
-						$func="DefaultAgeLocalisation";
-					}
 					if (floor($age/365.25)>0) {
 						$age = floor($age/365.25).'y';
 					} else if (floor($age/12)>0) {
@@ -2060,8 +2041,7 @@ class stats {
 					} else {
 						$age = $age.'d';
 					}
-					$func($age, $show_years);
-					$result = $age;
+					$result = get_age_at_event($age, true);
 				} else {
 					$result = floor($age/365.25);
 				}
@@ -2159,11 +2139,6 @@ class stats {
 		else {asort($rows);}
 		$top10 = array();
 		$i = 0;
-		$func = "age_localisation_".WT_LOCALE;
-		if (!function_exists($func)) {
-			$func="DefaultAgeLocalisation";
-		}
-		$show_years = true;
 		foreach ($rows as $fam=>$age) {
 			$family = Family::getInstance($fam);
 			if ($type == 'name') {
@@ -2176,7 +2151,7 @@ class stats {
 			} else {
 				$age = $age.'d';
 			}
-			$func($age, $show_years);
+			$age = get_age_at_event($age, true);
 			if ($type == 'age') {
 				return $age;
 			}
@@ -2243,11 +2218,6 @@ class stats {
 		,$total);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
-		$func = "age_localisation_".WT_LOCALE;
-		if (!function_exists($func)) {
-			$func="DefaultAgeLocalisation";
-		}
-		$show_years = true;
 		foreach ($rows as $fam) {
 			$family=Family::getInstance($fam['family']);
 			if ($fam['age']<0) break;
@@ -2259,7 +2229,7 @@ class stats {
 			} else {
 				$age = $age.'d';
 			}
-			$func($age, $show_years);
+			$age = get_age_at_event($age, true);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
 					$top10[] = "\t<li><a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
@@ -2330,10 +2300,6 @@ class stats {
 			case 'age':
 				$age = $row['age'];
 				if ($show_years) {
-					$func = "age_localisation_".WT_LOCALE;
-					if (!function_exists($func)) {
-						$func="DefaultAgeLocalisation";
-					}
 					if (floor($age/365.25)>0) {
 						$age = floor($age/365.25).'y';
 					} else if (floor($age/12)>0) {
@@ -2341,8 +2307,7 @@ class stats {
 					} else {
 						$age = $age.'d';
 					}
-					$func($age, $show_years);
-					$result = $age;
+					$result = get_age_at_event($age, true);
 				} else {
 					$result = floor($age/365.25);
 				}
@@ -2897,11 +2862,6 @@ class stats {
 		,$total);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
-		$func = "age_localisation_".WT_LOCALE;
-		if (!function_exists($func)) {
-			$func="DefaultAgeLocalisation";
-		}
-		$show_years = true;
 		if ($one) $dist = array();
 		foreach ($rows as $fam) {
 			$family = Family::getInstance($fam['family']);
@@ -2926,7 +2886,7 @@ class stats {
 			} else {
 				$age = $age.'d';
 			}
-			$func($age, $show_years);
+			$age = get_age_at_event($age, true);
 			if ($type == 'age') {
 				return $age;
 			}

@@ -49,45 +49,24 @@ require_once WT_ROOT.'includes/classes/class_date.php';
 * @see http://homepages.rootsweb.com/~pmcbride/gedcom/55gcch2.htm#AGE_AT_EVENT
 */
 function get_age_at_event($agestring, $show_years) {
-	// Allow special processing for different languages
-	$func="age_localisation_".WT_LOCALE;
-	if (!function_exists($func)) {
-		$func="DefaultAgeLocalisation";
-	}
-	// Localise the age
-	$func($agestring, $show_years);
-
-	return $agestring;
-}
-
-// Localise an age.  This is a default function, and may be overridden in includes/extras/functions.xx.php
-function DefaultAgeLocalisation(&$agestring, &$show_years) {
-	$agestring=preg_replace(
+	return preg_replace(
 		array(
 			'/\bchi(ld)?\b/i',
 			'/\binf(ant)?\b/i',
 			'/\bsti(llborn)?\b/i',
-			'/\b1y/i',
-			'/(\d+)y/i',
-			'/\b1m/i',
-			'/(\d+)m/i',
-			'/\b1d/i',
-			'/(\d+)d/i',
-			'/\b1w/i',
-			'/(\d+)w/i'
+			'/(\d+)y/ie',
+			'/(\d+)m/ie',
+			'/(\d+)d/ie',
+			'/(\d+)w/ie'
 		),
 		array(
 			i18n::translate('Child'),
 			i18n::translate('Infant'),
 			i18n::translate('Stillborn'),
-			($show_years || preg_match('/[dm]/', $agestring)) ? '1 '.i18n::translate('year') : '1',
-			($show_years || preg_match('/[dm]/', $agestring)) ? '$1 '.i18n::translate('years') : '$1',
-			'1 '.i18n::translate('month'),
-			'$1 '.i18n::translate('months'),
-			'1 '.i18n::translate('day'),
-			'$1 '.i18n::translate('days'),
-	  	'1 '.i18n::translate('week'),
-			'$1 '.i18n::translate('weeks')
+			($show_years || preg_match('/[dm]/', $agestring)) ? "i18n::plural('%d year', '%d years', '$1' , '$1')" : '$1',
+			"i18n::plural('%d month', '%d months', '$1' , '$1')",
+			"i18n::plural('%d day', '%d days', '$1' , '$1')",
+			"i18n::plural('%d week', '%d weeks', '$1' , '$1')"
 		),
 		$agestring
 	);
