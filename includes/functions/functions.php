@@ -2266,9 +2266,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			break;
 		case 4:
 			switch ($last) {
-			case 'bro': return i18n::translate('great-great-uncle');
-			case 'sis': return i18n::translate('great-great-aunt');
-			case 'sib': return i18n::translate('great-great-aunt/uncle');
+			case 'bro': return i18n::translate('great-great-great-uncle');
+			case 'sis': return i18n::translate('great-great-great-aunt');
+			case 'sib': return i18n::translate('great-great-great-aunt/uncle');
 			}
 			break;
 		case 5:
