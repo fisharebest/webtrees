@@ -351,7 +351,7 @@ try {
 $_SESSION['GEDCOM']=WT_GEDCOM;
 
 if (empty($WEBTREES_EMAIL)) {
-	$WEBTREES_EMAIL='phpgedview-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
+	$WEBTREES_EMAIL='webtrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
 }
 
 require WT_ROOT.'includes/functions/functions_print.php';
