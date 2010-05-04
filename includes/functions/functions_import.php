@@ -63,7 +63,7 @@ function reformat_record_import($rec) {
 		list(, $level, $xref, $tag, $data)=$match;
 		switch ($tag) {
 		// Convert PGV tags to WT
-		case '_WT_USER':
+		case '_PGVU':
 			$tag='_WT_USER';
 			break;
 		case '_PGV_OBJS':
