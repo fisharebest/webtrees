@@ -174,7 +174,7 @@ $WT_IMAGES["default_image_M"]["other"] = "silhouette_male.gif";
 $WT_IMAGES["default_image_F"]["other"] = "silhouette_female.gif";
 $WT_IMAGES["default_image_U"]["other"] = "silhouette_unknown.gif";
 $WT_IMAGES['slide_open']['other'] = "open.png";
-$WT_IMAGES['slide_close']['other'] = "open.png";
+$WT_IMAGES['slide_close']['other'] = "close.png";
 
 //-- Variables for the Fan chart
 $fanChart = array(
