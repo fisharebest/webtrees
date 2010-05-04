@@ -67,6 +67,7 @@ $WT_IMAGES["ancestry"]["small"] = "small/ancestry.gif";
 $WT_IMAGES["calendar"]["small"] = "small/calendar.gif";
 $WT_IMAGES["cfamily"]["small"] = "small/cfamily.gif";
 $WT_IMAGES["clippings"]["small"] = "small/clippings.gif";
+$WT_IMAGES["descendant"]["small"] = "small/descendancy.gif";
 $WT_IMAGES["fambook"]["small"] = "small/fambook.gif";
 $WT_IMAGES["fanchart"]["small"] = "small/fanchart.gif";
 $WT_IMAGES["gedcom"]["small"] = "small/gedcom.gif";
