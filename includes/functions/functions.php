@@ -2311,6 +2311,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'sis': return i18n::translate('great x%d aunt', $up-4);
 				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-4);
 				}
+			case 'en':
+			case 'it': // Source: Michele Locati
 			default:
 				switch ($last) {
 				case 'bro': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -2373,12 +2375,19 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
-			case 'da':
+			case 'da': // Source: Patrick Sorensen
 				switch ($last) {
 				case 'mot': return i18n::translate('great x%d grandmother', $up-3);
 				case 'fat': return i18n::translate('great x%d grandfather', $up-3);
 				case 'par': return i18n::translate('great x%d grandparent', $up-3);
 				}
+			case 'it': // Source: Michele Locati
+				switch ($last) {
+				case 'mot': return i18n::translate('great x%d grandmother', $up-1);
+				case 'fat': return i18n::translate('great x%d grandfather', $up-1);
+				case 'par': return i18n::translate('great x%d grandparent', $up-1);
+				}
+			case 'en':
 			default:
 				switch ($last) {
 				case 'mot': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
@@ -2441,12 +2450,14 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
-			case 'da':
+			case 'da': // Source: Patrick Sorensen
 				switch ($last) {
 				case 'mot': return i18n::translate('great x%d grandson',      $up-3);
 				case 'fat': return i18n::translate('great x%d granddaughter', $up-3);
 				case 'par': return i18n::translate('great x%d grandchild',    $up-3);
 				}
+			case 'en':
+			case 'it': // Source: Michele Locati
 			default:
 				switch ($last) {
 					
@@ -2467,7 +2478,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		//
 		// Need to find out which languages use which rules.
 		switch (WT_LOCALE) {
-		case 'pl': // See: Lucasz
+		case 'pl': // Source: Lucasz Wilenski
 		case 'it': // ??? See: http://it.wikipedia.org/wiki/Cugino
 			switch ($last) {
 			case 'son': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('MALE', 'cousin of the %s degree',   i18n::ordinal_word($up+$down+2));
