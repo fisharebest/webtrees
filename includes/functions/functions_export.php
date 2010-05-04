@@ -207,7 +207,7 @@ function createTempUser($userID, $rights, $gedcom) {
 
 /**
  * remove any custom PGV tags from the given gedcom record
- * custom tags include _PGVU and _THUM
+ * custom tags include _WT_USER and _THUM
  * @param string $gedrec	the raw gedcom record
  * @return string		the updated gedcom record
  */

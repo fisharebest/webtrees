@@ -237,13 +237,13 @@ class ServiceClient extends GedcomRecord {
 			$newgedrec = substr($localrec, 0, $pos1);
 			$newgedrec .= "1 CHAN\n2 DATE ".date("d M Y")."\n";
 			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-			$newgedrec .= "2 _PGVU @".$this->xref."@\n";
+			$newgedrec .= "2 _WT_USER @".$this->xref."@\n";
 			$newgedrec .= trim(substr($localrec, $pos2+1));
 			$localrec = $newgedrec;
 		} else {
 			$newgedrec = "\n1 CHAN\n2 DATE ".date("d M Y")."\n";
 			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-			$newgedrec .= "2 _PGVU @".$this->xref."@";
+			$newgedrec .= "2 _WT_USER @".$this->xref."@";
 			$localrec .= $newgedrec;
 		}
 
@@ -810,13 +810,13 @@ class ServiceClient extends GedcomRecord {
 						$newgedrec = substr($localrec, 0, $pos1);
 						$newgedrec .= "1 CHAN\n2 DATE ".date("d M Y")."\n";
 						$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-						$newgedrec .= "2 _PGVU @".$this->xref."@\n";
+						$newgedrec .= "2 _WT_USER @".$this->xref."@\n";
 						$newgedrec .= substr($localrec, $pos2);
 						$localrec = $newgedrec;
 					} else {
 						$newgedrec = "\n1 CHAN\n2 DATE ".date("d M Y")."\n";
 						$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-						$newgedrec .= "2 _PGVU @".$this->xref."@";
+						$newgedrec .= "2 _WT_USER @".$this->xref."@";
 						$localrec .= $newgedrec;
 					}
 					update_record($localrec, get_id_from_gedcom($GEDCOM), false);

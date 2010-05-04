@@ -943,7 +943,7 @@ class GedcomRecord {
 			return '&nbsp;';
 		}
 
-		$chan_user = $chan->getValue('_PGVU');
+		$chan_user = $chan->getValue('_WT_USER');
 		if (empty($chan_user)) {
 			return '&nbsp;';
 		}

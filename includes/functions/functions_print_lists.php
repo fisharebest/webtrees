@@ -1512,7 +1512,7 @@ function format_surname_list($surnames, $style, $totals) {
  *
  * @param array $datalist contain records that were extracted from the database.
  */
-function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=true) {
+function print_changes_table($datalist, $showChange=true, $total='', $show_WT_USER=true) {
 	global $SHOW_ID_NUMBERS, $SHOW_MARRIED_NAMES, $TEXT_DIRECTION;
 	if (count($datalist)<1) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
@@ -1529,8 +1529,8 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=
 	echo "<th style=\"display:none\">GIVN</th>";
 	if ($showChange) {
 		echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
-		if ($show_pgvu) {
-			echo "<th class=\"list_label\">", translate_fact('_PGVU'), "</th>";
+		if ($show_WT_USER) {
+			echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
 		}
 	}
 	echo "</tr>\n";
@@ -1590,7 +1590,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_pgvu=
 		if ($showChange) {
 			//-- Last change date/time
 			print "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
-			if ($show_pgvu) {
+			if ($show_WT_USER) {
 				//-- Last change user
 				print "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
 			}

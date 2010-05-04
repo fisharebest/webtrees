@@ -98,7 +98,7 @@ function print_todo($block=true, $config='', $side, $index) {
 	foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
 		$record=GedcomRecord::getInstance($todo['id']);
 		if ($record && $record->canDisplayDetails()) {
-			$pgvu=get_gedcom_value('_PGVU', 2, $todo['factrec']);
+			$pgvu=get_gedcom_value('_WT_USER', 2, $todo['factrec']);
 			if ($pgvu==WT_USER_NAME || !$pgvu && $config['show_unassigned']=='yes' || $pgvu && $config['show_other']=='yes') {
 				$content.='<tr valign="top">';
 				$content.='<td class="list_value_wrap">'.str_replace('<a', '<a name="'.$todo['date']->MinJD().'"', $todo['date']->Display(false)).'</td>';

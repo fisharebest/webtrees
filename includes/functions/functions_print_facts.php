@@ -355,9 +355,9 @@ function print_fact(&$eventObj, $noedit=false) {
 		}
 		// -- Enhanced ASSOciates > RELAtionship
 		print_asso_rela_record($pid, $factrec, true, gedcom_record_type($pid, get_id_from_gedcom($GEDCOM)));
-		// -- find _PGVU field
-		$ct = preg_match("/2 _PGVU (.*)/", $factrec, $match);
-		if ($ct>0) echo " - ", translate_fact('_PGVU'), ": ", $match[1];
+		// -- find _WT_USER field
+		$ct = preg_match("/2 _WT_USER (.*)/", $factrec, $match);
+		if ($ct>0) echo " - ", translate_fact('_WT_USER'), ": ", $match[1];
 		// -- Find RESN tag
 		if (isset($resn_value)) {
 			switch($resn_value) {
@@ -415,7 +415,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			//-- catch all other facts that could be here
 			$special_facts = array("ADDR", "ALIA", "ASSO", "CEME", "CONT", "DATE", "DESC", "EMAIL",
 			"FAMC", "FAMS", "FAX", "NOTE", "OBJE", "PHON", "PLAC", "RESN", "RELA", "SOUR", "STAT", "TEMP",
-			"TIME", "TYPE", "WWW", "_EMAIL", "_PGVU", "URL", "AGE", "_PGVS", "_PGVFS");
+			"TIME", "TYPE", "WWW", "_EMAIL", "_WT_USER", "URL", "AGE", "_PGVS", "_PGVFS");
 			$ct = preg_match_all("/\n2 (\w+) (.*)/", $factrec, $match, PREG_SET_ORDER);
 			if ($ct>0) echo "<br />";
 			for($i=0; $i<$ct; $i++) {

@@ -61,8 +61,15 @@ function reformat_record_import($rec) {
 	$newrec='';
 	foreach ($matches as $n=>$match) {
 		list(, $level, $xref, $tag, $data)=$match;
-		// Convert FTM-style "TAG_FORMAL_NAME" into "TAG".
 		switch ($tag) {
+		// Convert PGV tags to WT
+		case '_WT_USER':
+			$tag='_WT_USER';
+			break;
+		case '_PGV_OBJS':
+			$tag='_WT_OBJE_SORT';
+			break;
+		// Convert FTM-style "TAG_FORMAL_NAME" into "TAG".
 		case 'ABBREVIATION':
 			$tag='ABBR';
 			break;

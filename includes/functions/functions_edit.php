@@ -337,14 +337,14 @@ function check_gedcom($gedrec, $chan=true) {
 			$newgedrec = substr($gedrec, 0, $pos1);
 			$newgedrec .= "1 CHAN\n2 DATE ".strtoupper(date("d M Y"))."\n";
 			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-			$newgedrec .= "2 _PGVU ".WT_USER_NAME."\n";
+			$newgedrec .= "2 _WT_USER ".WT_USER_NAME."\n";
 			$newgedrec .= substr($gedrec, $pos2);
 			$gedrec = $newgedrec;
 		}
 		else {
 			$newgedrec = "\n1 CHAN\n2 DATE ".strtoupper(date("d M Y"))."\n";
 			$newgedrec .= "3 TIME ".date("H:i:s")."\n";
-			$newgedrec .= "2 _PGVU ".WT_USER_NAME;
+			$newgedrec .= "2 _WT_USER ".WT_USER_NAME;
 			$gedrec .= $newgedrec;
 		}
 	}
@@ -1396,7 +1396,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	else if ($fact=="RELA") {
 		echo edit_field_rela($element_name, strtolower($value), 'tabindex="'.$tabkey.'"');
-	} else if ($fact=="_PGVU") {
+	} else if ($fact=="_WT_USER") {
 		$text=strtolower($value);
 		echo "<select tabindex=\"", $tabkey, "\" id=\"", $element_id, "\" name=\"", $element_name, "\" >\n";
 		echo '<option value=""';
@@ -2458,7 +2458,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				add_simple_tag("2 TYPE ".$type_val);
 			} elseif ($level1tag=='_TODO' && $key=='DATE') {
 				add_simple_tag("2 ".$key.' '.strtoupper(date('d F Y')));
-			} elseif ($level1tag=='_TODO' && $key=='_PGVU') {
+			} elseif ($level1tag=='_TODO' && $key=='_WT_USER') {
 				add_simple_tag("2 ".$key.' '.WT_USER_NAME);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
 				add_simple_tag("2 ".$key);

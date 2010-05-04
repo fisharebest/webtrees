@@ -86,7 +86,7 @@
 						</PGVRFacts>
 					</PGVRTextBox>
 					<PGVRTextBox height="12" newline="1">
-						<PGVRText style="text"><PGVRGedcomValue tag="CHAN:DATE" /> <PGVRGedcomValue tag="CHAN:DATE:TIME" /> - <PGVRGedcomValue tag="CHAN:_PGVU" /></PGVRText>
+						<PGVRText style="text"><PGVRGedcomValue tag="CHAN:DATE" /> <PGVRGedcomValue tag="CHAN:DATE:TIME" /> - <PGVRGedcomValue tag="CHAN:_WT_USER" /></PGVRText>
 					</PGVRTextBox>
 
 				</PGVRList>
@@ -134,7 +134,7 @@
 				</PGVRTextBox>
 
 				<PGVRTextBox height="12" newline="1">
-					<PGVRText style="text"><PGVRGedcomValue tag="CHAN:DATE" /> <PGVRGedcomValue tag="CHAN:DATE:TIME" /> - <PGVRGedcomValue tag="CHAN:_PGVU" /></PGVRText>
+					<PGVRText style="text"><PGVRGedcomValue tag="CHAN:DATE" /> <PGVRGedcomValue tag="CHAN:DATE:TIME" /> - <PGVRGedcomValue tag="CHAN:_WT_USER" /></PGVRText>
 				</PGVRTextBox>
 			</PGVRList>
 

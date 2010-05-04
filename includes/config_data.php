@@ -739,7 +739,7 @@ $level2_tags=array(
 	'EVEN'=>array(
 		'DATA',
 	),
-	'_PGVU'=>array(
+	'_WT_USER'=>array(
 		'_TODO',
 	),
 );
@@ -1439,7 +1439,7 @@ $FACTS=array(
 	'_NLIV'=>i18n::translate('Not living'),
 	'_NMAR'=>i18n::translate('Never married'),
 	'_NMR'=>i18n::translate('Not married'),
-	'_PGVU'=>i18n::translate('by'),
+	'_WT_USER'=>i18n::translate('by'),
 	'_PRMN'=>i18n::translate('Permanent Number'),
 	'_SCBK'=>i18n::translate('Scrapbook'),
 	'_SEPR'=>i18n::translate('Separated'),
