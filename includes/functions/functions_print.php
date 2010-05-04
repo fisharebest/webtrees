@@ -774,23 +774,14 @@ function user_contact_link($user_id, $method=null) {
 		$method=get_user_setting($user_id, 'contactmethod');
 	}
 
-	// Webmaster/contact addresses can be an email address as well as a user-id
-	if (strpos($user_id, '@')!==false) {
-		$email=$user_id;
-		$fullname=$user_id;
-		if ($method!='none') {
-			$method='mailto';
-		}
-	} else {
-		$email   =getUserEmail   ($user_id);
-		$fullname=getUserFullName($user_id);
-	}
+	$fullname=getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':
 		return '';
 	case 'mailto':
-		return "<a href='mailto:{$email}' {$fullname}</a>";
+		$email   =getUserEmail   ($user_id);
+		return '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>';
 	default:
 		return "<a href='javascript:;' onclick='message(\"".get_user_name($user_id)."\", \"{$method}\");return false;'>{$fullname}</a>";
 	}
@@ -803,17 +794,8 @@ function user_contact_menu($user_id, $method=null) {
 		$method=get_user_setting($user_id, 'contactmethod');
 	}
 
-	// Webmaster/contact addresses can be an email address as well as a user-id
-	if (strpos($user_id, '@')!==false) {
-		$email=$user_id;
-		$fullname=$user_id;
-		if ($method!='none') {
-			$method='mailto';
-		}
-	} else {
-		$email   =getUserEmail   ($user_id);
-		$fullname=getUserFullName($user_id);
-	}
+	$email   =getUserEmail   ($user_id);
+	$fullname=getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':
