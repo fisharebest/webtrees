@@ -130,7 +130,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	$vars[]=WT_GED_ID;
 	//-- for family and source page only show level 1 obje references
 	if ($level>0) {
-		$sqlmm .= "AND mm_gedrec ".WT_DB::$LIKE." ?";
+		$sqlmm .= "AND mm_gedrec LIKE ?";
 		$vars[]="{$level} OBJE%";
 	}
 

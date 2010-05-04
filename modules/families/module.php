@@ -213,7 +213,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$sql=
 		"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
 		" FROM {$TBLPREFIX}individuals, {$TBLPREFIX}name".
-		" WHERE (i_id ".WT_DB::$LIKE." ? OR n_sort ".WT_DB::$LIKE." ?)".
+		" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 		" AND i_id=n_id AND i_file=n_file AND i_file=?".
 		" ORDER BY n_sort";
 		$rows=
@@ -228,7 +228,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$vars=array('FAM');
 		if (empty($ids)) {
 			//-- no match : search for FAM id
-			$where = "f_id ".WT_DB::$LIKE." ?";
+			$where = "f_id LIKE ?";
 			$vars[]="%{$FILTER}%";
 		} else {
 			//-- search for spouses
