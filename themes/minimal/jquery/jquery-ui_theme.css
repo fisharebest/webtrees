@@ -19,37 +19,59 @@
 
 /* ------- Sidebar ------- */
 #sidebar {
+	position: absolute;
+	right: 0px;
+	width: 0px;
+	z-index: 50;
 	margin-left:0px;
-	margin-top: 9px;
+	margin-top: 4px;
 	margin-right: 19px;
 	background-color: #dddddd;
 }
 #sidebar_controls {
-	height: 22px;
+	position: absolute;
+	left: -20px;
+	top: 2px;
+	margin: 0;
+	height: 18px; 
+	width: 20px;
+	z-index: 10;
+	border: none;
+	background-color: transparent;
+}
+#sidebar_open {
+	padding: 0;
 }
 #sidebar_open img {
+	position: absolute;
 	padding-top: 3px;
 	padding-bottom: 3px;
 	margin-left: 0px;
-}
-#sidebar_pin {
-	/* display: none; */
-	padding-top: 3px;
-	background: #ffffff; 
-}
-#sidebar_pin img {
-	padding-right: 0px;
-	padding-left: 0px;
-	width: 14px;
+	height: 18px;
+	width: 20px;
+	background-color: transparent;
 }
 
+#sidebar_pin {
+	position: absolute;
+	top: -22px;
+	padding-top: 3px;
+	margin-left: 225px;
+	background: transparent; 
+}
+#sidebar_pin img {
+	margin-top: -55px;
+	padding-right: 2px;
+	padding-left: 2px;
+}
 
 /* Navigator & Flyout menu Styles --------*/
 .nam a:hover{
 color:black;
 }
 .nav_content {
-	width:240px;
+	width: 235px;
+	margin-left: -25px;
 	background:#efefef;
 	padding-left:5px;
 	padding-right:5px;

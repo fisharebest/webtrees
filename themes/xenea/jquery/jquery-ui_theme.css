@@ -19,6 +19,10 @@
 
 /* ------- Sidebar ------- */
 #sidebar {
+	position: absolute;
+	right: 0px;
+	width: 0px;
+	z-index: 50;
 	margin-left:0px;
 	margin-top: 4px;
 	margin-right: 12px;
@@ -26,7 +30,6 @@
 }
 #sidebar_controls {
 	position: absolute;
-	float: left;
 	left: -20px;
 	top: 2px;
 	margin: 0;
@@ -34,22 +37,29 @@
 	width: 20px;
 	z-index: 10;
 	border: none;
+	background-color: transparent;
+}
+#sidebar_open {
+	padding: 0;
 }
 #sidebar_open img {
+	position: absolute;
 	padding-top: 3px;
 	padding-bottom: 3px;
 	margin-left: 0px;
 	height: 18px;
 	width: 20px;
+	background-color: transparent;
 }
-
 #sidebar_pin {
-	/* display: none; */
-	padding-bottom: -2px;
+	position: absolute;
+	top: -22px;
 	padding-top: 3px;
-	background: #ffffff; 
+	margin-left: 225px;
+	background: transparent; 
 }
 #sidebar_pin img {
+	margin-top: -55px;
 	padding-right: 2px;
 	padding-left: 2px;
 }
@@ -61,7 +71,8 @@
 color:red;
 }
 .nav_content {
-	width:240px;
+	width: 235px;
+	margin-left: -25px;
 	background:#eff8f8;
 	padding-left:5px;
 	padding-right:5px;

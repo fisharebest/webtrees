@@ -404,7 +404,7 @@
 #sidebar {
 	position: absolute;
 	right: 0px;
-	width: 0px;
+	width: 260px;
 	height: 690px;
 	z-index: 50;
 	margin-left:0px;
@@ -424,6 +424,9 @@
 	background-color: #ffffff;
 	border-bottom: transparent;
 }
+#sidebar_open {
+	padding: 0px;
+}
 #sidebar_open img {
 margin-top: 1px;
 	padding-top: 5px;
@@ -433,13 +436,10 @@ margin-top: 1px;
 	height: 14px;
 	background-color: white;
 }
-
-#sidebar_open {
-	padding: 0px;
-}
 #sidebarAccordion {
 	/* display: none; */
 	margin-top: -1px;
+	width: 260px;
 }
 #sidebar_pin {
 	/* display: none; */

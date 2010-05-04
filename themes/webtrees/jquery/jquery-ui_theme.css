@@ -9,14 +9,15 @@
 
 
 /* Navigator and Flyout menu Styles */
-.nam a:hover{
-color:red;
+.nam a:hover {
+	color:red;
 }
 .nav_content {
-	width:240px;
-	padding-left:5px;
-	padding-right:5px;
-	padding-top:3px;
+	width: 235px;
+	margin-left: -25px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 3px;
 	background-color: white;
 }
 .flyout {
@@ -59,7 +60,6 @@ color:red;
 	position: absolute;
 	right: 0px;
 	width: 0px;
-	/* height: 500px; */
 	z-index: 50;
 	margin-left:0px;
 	margin-top: 10px;
@@ -68,29 +68,34 @@ color:red;
 }
 #sidebar_controls {
 	position: absolute;
-	float: left;
-	left: -24px;
+	top: 2px;
+	left: -24px; 
 	margin: 0;
 	height: 24px; 
 	width: 24px;
 	z-index: 10;
 	border: none;
+	background-color: transparent;
 }
-#sidebar_open img {
-	padding: 0;
-	margin: 0;
-	height: 24px;
-}
-
 #sidebar_open {
 	padding: 0;
 }
+#sidebar_open img {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	height: 24px;
+	background-color: transparent;
+}
 #sidebar_pin {
-	/* display: none; */
+	position: absolute;
+	top: -22px;
 	padding-top: 3px;
-	background: #ffffff; 
+	margin-left: 225px;
+	background: transparent; 
 }
 #sidebar_pin img {
+	margin-top: -55px;
 	padding-right: 4px;
 	padding-left: 4px;
 }
