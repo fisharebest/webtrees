@@ -76,12 +76,13 @@ The following instructions will guide you through a basic installation of <b>web
 	<li>Approximately 65MB of disk space for the application files, plus whatever is needed for your multi-media files, gedcom files and database.</li>
 	<li>PHP 5.2.3 or later. Note that many web hosts offer *both* PHP4 and PHP5, typically with PHP4 as the default. If this is the case, you can usually switch between the two using a control panel or a configuration file. Refer to your web host&#39;s support documentation for details.</li>
 	 <ul>
-	<li>PHP should be configured to allow sufficient server resources (memory and execution time) for the size of your system. Typical requirements are:</li>
-		<ul>
-			<li>Small systems (500 individuals): 16-32MB, 10-20 seconds</li>
-			<li>Medium systems (5000 individuals): 32-64MB, 20-40 seconds</li>
-			<li>Large systems (50000 individuals): 64-128MB, 40-80 seconds</li>
-		</ul>
+		<li>The PHP/PDO library for MySQL. This is a server configuration option. It is enabled by default on most hosts. See http://php.net/pdo</li>
+		<li>PHP should be configured to allow sufficient server resources (memory and execution time) for the size of your system. Typical requirements are:</li>
+			<ul>
+				<li>Small systems (500 individuals): 16-32MB, 10-20 seconds</li>
+				<li>Medium systems (5000 individuals): 32-64MB, 20-40 seconds</li>
+				<li>Large systems (50000 individuals): 64-128MB, 40-80 seconds</li>
+			</ul>
 	</ul>
 	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration. 
 </ul>
