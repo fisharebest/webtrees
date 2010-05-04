@@ -424,12 +424,12 @@ class MenuBar
 							if ($person instanceof Person) {
 								$submenu = new Menu(
 									i18n::translate('Relationship Chart').': '.PrintReady($person->getFullName()),
-									encode_url("relationship.php?pid1={$pid1}&pid2={$pid2}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+									encode_url("relationship.php?pid1={$pid2}&pid2={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
 								);
 							} else {
 								$submenu = new Menu(
 									i18n::translate('Relationship Chart'),
-									encode_url("relationship.php?pid1={$pid1}&pid2={$pid2}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+									encode_url("relationship.php?pid1={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
 								);
 							}
 							if (!empty($WT_IMAGES["relationship"]["small"])) {
