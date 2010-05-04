@@ -56,5 +56,7 @@ $statement=WT_DB::prepare(
 
 $statement->execute(array($ged_id, 'title', i18n::translate('Genealogy from [%s]', $ged_name)));
 $statement->execute(array($ged_id, 'imported', 0));
+$statement->execute(array($ged_id, 'CONTACT_USER_ID', WT_USER_ID));
+$statement->execute(array($ged_id, 'WEBMASTER_USER_ID', WT_USER_ID));
 
 // Eventually, all the settings in config_gedcom.php and privacy.php will be here...

@@ -126,10 +126,8 @@ $GEDCOM_DEFAULT_TAB = "personal_facts";				//-- this setting controls which tab 
 
 $SHOW_CONTEXT_HELP = true;				// show ? links on the page for contextual popup help
 $WEBTREES_EMAIL = "";			// -- "From:" address for automatically generated e-mails
-$CONTACT_EMAIL = "you@yourdomain.com";		// -- this is who the user should contact for more information
-$CONTACT_METHOD = "messaging2";						// -- the method to allow users to contact you. options are: mailto, messaging, messaging2
-$WEBMASTER_EMAIL = "webmaster@yourdomain.com";		// -- this is who the user should contact in case of errors
-$SUPPORT_METHOD = "messaging2";						// -- the method to allow users to contact you. options are: mailto, messaging, messaging2
+$CONTACT_USER_ID = 1;		// -- this is who the user should contact for more information
+$WEBMASTER_USER_ID = 1;		// -- this is who the user should contact in case of errors
 $HOME_SITE_URL = "http://webtrees.net";		// -- url for your home page
 $HOME_SITE_TEXT = "webtrees";		// -- name of your site
 $SHOW_FACT_ICONS = true;					//-- Show Fact icons on Indi page

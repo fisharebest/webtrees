@@ -129,8 +129,7 @@ if (safe_POST('action')=='update') {
 	$configtext = preg_replace('/\$COMMON_NAMES_ADD\s*=\s*".*";/', "\$COMMON_NAMES_ADD = \"".$_POST["NEW_COMMON_NAMES_ADD"]."\";", $configtext);
 	$configtext = preg_replace('/\$COMMON_NAMES_REMOVE\s*=\s*".*";/', "\$COMMON_NAMES_REMOVE = \"".$_POST["NEW_COMMON_NAMES_REMOVE"]."\";", $configtext);
 	$configtext = preg_replace('/\$COMMON_NAMES_THRESHOLD\s*=\s*".*";/', "\$COMMON_NAMES_THRESHOLD = \"".$_POST["NEW_COMMON_NAMES_THRESHOLD"]."\";", $configtext);
-	$configtext = preg_replace('/\$CONTACT_EMAIL\s*=\s*".*";/', "\$CONTACT_EMAIL = \"".$_POST["NEW_CONTACT_EMAIL"]."\";", $configtext);
-	$configtext = preg_replace('/\$CONTACT_METHOD\s*=\s*".*";/', "\$CONTACT_METHOD = \"".$_POST["NEW_CONTACT_METHOD"]."\";", $configtext);
+	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID', $_POST["NEW_CONTACT_USER_ID"]);
 	$configtext = preg_replace('/\$DAYS_TO_SHOW_LIMIT\s*=\s*".*";/', "\$DAYS_TO_SHOW_LIMIT = \"".$_POST["NEW_DAYS_TO_SHOW_LIMIT"]."\";", $configtext);
 	$configtext = preg_replace('/\$DEFAULT_PEDIGREE_GENERATIONS\s*=\s*".*";/', "\$DEFAULT_PEDIGREE_GENERATIONS = \"".$_POST["NEW_DEFAULT_PEDIGREE_GENERATIONS"]."\";", $configtext);
 	$configtext = preg_replace('/\$DISPLAY_JEWISH_GERESHAYIM\s*=\s*.*;/', "\$DISPLAY_JEWISH_GERESHAYIM = ".$boolarray[$_POST["NEW_DISPLAY_JEWISH_GERESHAYIM"]].";", $configtext);
@@ -224,7 +223,6 @@ if (safe_POST('action')=='update') {
 	$configtext = preg_replace('/\$SUBLIST_TRIGGER_I\s*=\s*.*;/', "\$SUBLIST_TRIGGER_I = \"".$_POST["NEW_SUBLIST_TRIGGER_I"]."\";", $configtext);
 	$configtext = preg_replace('/\$SUBLIST_TRIGGER_F\s*=\s*.*;/', "\$SUBLIST_TRIGGER_F = \"".$_POST["NEW_SUBLIST_TRIGGER_F"]."\";", $configtext);
 	$configtext = preg_replace('/\$SURNAME_LIST_STYLE\s*=\s*.*;/', "\$SURNAME_LIST_STYLE = \"".$_POST["NEW_SURNAME_LIST_STYLE"]."\";", $configtext);
-	$configtext = preg_replace('/\$SUPPORT_METHOD\s*=\s*".*";/', "\$SUPPORT_METHOD = \"".$_POST["NEW_SUPPORT_METHOD"]."\";", $configtext);
 	$configtext = preg_replace('/\$SURNAME_TRADITION\s*=\s*.*;/', "\$SURNAME_TRADITION = \"".$_POST["NEW_SURNAME_TRADITION"]."\";", $configtext);
 	$configtext = preg_replace('/\$THUMBNAIL_WIDTH\s*=\s*".*";/', "\$THUMBNAIL_WIDTH = \"".$_POST["NEW_THUMBNAIL_WIDTH"]."\";", $configtext);
 	$configtext = preg_replace('/\$UNDERLINE_NAME_QUOTES\s*=\s*.*;/', "\$UNDERLINE_NAME_QUOTES = ".$boolarray[$_POST["NEW_UNDERLINE_NAME_QUOTES"]].";", $configtext);
@@ -240,7 +238,7 @@ if (safe_POST('action')=='update') {
 	$configtext = preg_replace('/\$SAVE_WATERMARK_IMAGE\s*=\s*.*;/', "\$SAVE_WATERMARK_IMAGE = ".$boolarray[$_POST["NEW_SAVE_WATERMARK_IMAGE"]].";", $configtext);
 	$configtext = preg_replace('/\$THEME_DIR\s*=\s*".*";/', "\$THEME_DIR = \"".trim($_POST["NEW_THEME_DIR"])."\";", $configtext);
 	$configtext = preg_replace('/\$WEBTREES_EMAIL\s*=\s*".*";/', "\$WEBTREES_EMAIL = \"".trim($_POST["NEW_WEBTREES_EMAIL"])."\";", $configtext);
-	$configtext = preg_replace('/\$WEBMASTER_EMAIL\s*=\s*".*";/', "\$WEBMASTER_EMAIL = \"".$_POST["NEW_WEBMASTER_EMAIL"]."\";", $configtext);
+	set_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID', $_POST["NEW_WEBMASTER_USER_ID"]);
 	$configtext = preg_replace('/\$WELCOME_TEXT_AUTH_MODE\s*=\s*".*";/', "\$WELCOME_TEXT_AUTH_MODE = \"".$_POST["NEW_WELCOME_TEXT_AUTH_MODE"]."\";", $configtext);
 	$configtext = preg_replace('/\$WELCOME_TEXT_AUTH_MODE_4\s*=\s*".*";/', "\$WELCOME_TEXT_AUTH_MODE_4 = \"".$_POST["NEW_WELCOME_TEXT_AUTH_MODE_4"]."\";", $configtext);// new
 	$configtext = preg_replace('/\$WELCOME_TEXT_CUST_HEAD\s*=\s*.*;/', "\$WELCOME_TEXT_CUST_HEAD = ".$boolarray[$_POST["NEW_WELCOME_TEXT_CUST_HEAD"]].";", $configtext);
@@ -1688,15 +1686,15 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Genealogy contact'), help_link('CONTACT_EMAIL'); ?>
+			<?php echo i18n::translate('Genealogy contact'), help_link('CONTACT_USER_ID'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_CONTACT_EMAIL" tabindex="<?php echo ++$i; ?>">
+		<td class="optionbox"><select name="NEW_CONTACT_USER_ID" tabindex="<?php echo ++$i; ?>">
 		<?php
-			if ($CONTACT_EMAIL=="you@yourdomain.com") $CONTACT_EMAIL = WT_USER_NAME;
+			$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if (get_user_setting($user_id, 'verified_by_admin')=="yes") {
-					print "<option value=\"".$user_name."\"";
-					if ($CONTACT_EMAIL==$user_name) print " selected=\"selected\"";
+					print "<option value=\"".$user_id."\"";
+					if ($CONTACT_USER_ID==$user_id) print " selected=\"selected\"";
 					print ">".getUserFullName($user_id)." - ".$user_name."</option>\n";
 				}
 			}
@@ -1706,31 +1704,15 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 	</tr>
 	<tr>
 		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Contact method'), help_link('CONTACT_METHOD'); ?>
+			<?php echo i18n::translate('Support contact'), help_link('WEBMASTER_USER_ID'); ?>
 		</td>
-		<td class="optionbox"><select name="NEW_CONTACT_METHOD" tabindex="<?php echo ++$i; ?>">
-		<?php if ($WT_STORE_MESSAGES) { ?>
-				<option value="messaging" <?php if ($CONTACT_METHOD=='messaging') print "selected=\"selected\""; ?>><?php print i18n::translate('webtrees internal messaging'); ?></option>
-				<option value="messaging2" <?php if ($CONTACT_METHOD=='messaging2') print "selected=\"selected\""; ?>><?php print i18n::translate('Internal messaging with emails'); ?></option>
-		<?php } else { ?>
-				<option value="messaging3" <?php if ($CONTACT_METHOD=='messaging3') print "selected=\"selected\""; ?>><?php print i18n::translate('webtrees sends emails with no storage'); ?></option>
-		<?php } ?>
-				<option value="mailto" <?php if ($CONTACT_METHOD=='mailto') print "selected=\"selected\""; ?>><?php print i18n::translate('Mailto link'); ?></option>
-				<option value="none" <?php if ($CONTACT_METHOD=='none') print "selected=\"selected\""; ?>><?php print i18n::translate('No contact method'); ?></option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Support contact'), help_link('WEBMASTER_EMAIL'); ?>
-		</td>
-		<td class="optionbox"><select name="NEW_WEBMASTER_EMAIL" tabindex="<?php echo ++$i; ?>">
+		<td class="optionbox"><select name="NEW_WEBMASTER_USER_ID" tabindex="<?php echo ++$i; ?>">
 		<?php
-			if ($WEBMASTER_EMAIL=="webmaster@yourdomain.com") $WEBMASTER_EMAIL = WT_USER_NAME;
+			$WEBMASTER_USER_ID=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if (userIsAdmin($user_id)) {
-					print "<option value=\"".$user_name."\"";
-					if ($WEBMASTER_EMAIL==$user_name) print " selected=\"selected\"";
+					print "<option value=\"".$user_id."\"";
+					if ($WEBMASTER_USER_ID==$user_id) print " selected=\"selected\"";
 					print ">".getUserFullName($user_id)." - ".$user_name."</option>\n";
 				}
 			}
@@ -1738,23 +1720,7 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 		</select>
 		</td>
 	</tr>
-	<tr>
-		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Support method'), help_link('SUPPORT_METHOD'); ?>
-		</td>
-		<td class="optionbox"><select name="NEW_SUPPORT_METHOD" tabindex="<?php echo ++$i; ?>">
-		<?php if ($WT_STORE_MESSAGES) { ?>
-				<option value="messaging" <?php if ($SUPPORT_METHOD=='messaging') print "selected=\"selected\""; ?>><?php print i18n::translate('webtrees internal messaging'); ?></option>
-				<option value="messaging2" <?php if ($SUPPORT_METHOD=='messaging2') print "selected=\"selected\""; ?>><?php print i18n::translate('Internal messaging with emails'); ?></option>
-		<?php } else { ?>
-				<option value="messaging3" <?php if ($SUPPORT_METHOD=='messaging3') print "selected=\"selected\""; ?>><?php print i18n::translate('webtrees sends emails with no storage'); ?></option>
-		<?php } ?>
-				<option value="mailto" <?php if ($SUPPORT_METHOD=='mailto') print "selected=\"selected\""; ?>><?php print i18n::translate('Mailto link'); ?></option>
-				<option value="none" <?php if ($SUPPORT_METHOD=='none') print "selected=\"selected\""; ?>><?php print i18n::translate('No contact method'); ?></option>
-			</select>
-		</td>
-	</tr>
-  </table>
+ </table>
 </div>
 <div id="config-meta">
   <table class="facts_table">
@@ -1897,7 +1863,5 @@ print "&nbsp;<a href=\"javascript: ".i18n::translate('Hide and Show')."\" onclic
 document.configform.gedcom_title.focus();
 </script>
 <?php
-if ($CONTACT_EMAIL=="you@yourdomain.com") $CONTACT_EMAIL = WT_USER_NAME;
-if ($WEBMASTER_EMAIL=="webmaster@yourdomain.com") $WEBMASTER_EMAIL = WT_USER_NAME;
 print_footer();
 ?>

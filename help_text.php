@@ -2175,7 +2175,7 @@ case 'COMMON_NAMES_THRESHOLD':
 	$text=i18n::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the Home Page.');
 	break;
 
-case 'CONTACT_EMAIL':
+case 'CONTACT_USER_ID':
 	$title=i18n::translate('Genealogy contact');
 	$text=i18n::translate('The person to contact about the genealogical data on this site.');
 	break;
@@ -2925,7 +2925,7 @@ case 'WATERMARK_THUMB':
 	$text=i18n::translate('If the Media Firewall is enabled, should thumbnails be watermarked? Your media lists will load faster if you don\'t watermark the thumbnails.');
 	break;
 
-case 'WEBMASTER_EMAIL':
+case 'WEBMASTER_USER_ID':
 	$title=i18n::translate('Support contact');
 	$text=i18n::translate('The person to be contacted about technical questions or errors encountered on your site.');
 	break;

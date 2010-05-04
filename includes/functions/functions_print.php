@@ -829,26 +829,16 @@ function user_contact_menu($user_id, $method=null) {
 //
 // this function will print appropriate links based on the preferred contact methods for the genealogy
 // contact user and the technical support contact user
-
-function print_contact_links() { // This function is used by 3rd party themes.
-	echo contact_links();
-}
-
-function contact_links() {
-	global $WEBMASTER_EMAIL, $SUPPORT_METHOD, $CONTACT_EMAIL, $CONTACT_METHOD;
-
-	$webmaster_user_id=get_user_id($WEBMASTER_EMAIL);
-	if ($WEBMASTER_EMAIL==$CONTACT_EMAIL) {
-		$contact_user_id=$webmaster_user_id;
-	} else {
-		$contact_user_id=get_user_id($CONTACT_EMAIL);
-	}
-
-	$supportLink = user_contact_link($webmaster_user_id, $SUPPORT_METHOD);
-	if ($webmaster_user_id==$contact_user_id && $SUPPORT_METHOD==$CONTACT_METHOD) {
+function contact_links($ged_id=WT_GED_ID) {
+	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
+	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
+	$contact_method   =get_user_setting($contact_user_id,   'contactmethod');
+	$webmaster_method =get_user_setting($webmaster_user_id, 'contactmethod');
+	$supportLink = user_contact_link($webmaster_user_id, $webmaster_method);
+	if ($webmaster_user_id==$contact_user_id && $webmaster_method==$contact_method) {
 		$contactLink = $supportLink;
 	} else {
-		$contactLink = user_contact_link($contact_user_id,   $CONTACT_METHOD);
+		$contactLink = user_contact_link($contact_user_id,   $contact_method);
 	}
 
 	if (!$supportLink && !$contactLink) {
@@ -873,21 +863,21 @@ function contact_links() {
 	}
 }
 
-function contact_menus() {
-	global $WEBMASTER_EMAIL, $SUPPORT_METHOD, $CONTACT_EMAIL, $CONTACT_METHOD;
+function contact_menus($ged_id=WT_GED_ID) {
+	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
+	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
+	$contact_method   =get_user_setting($contact_user_id,   'contactmethod');
+	$webmaster_method =get_user_setting($webmaster_user_id, 'contactmethod');
 
-	$webmaster_user_id=get_user_id($WEBMASTER_EMAIL);
-	if ($WEBMASTER_EMAIL==$CONTACT_EMAIL) {
+	if ($webmaster_user_id==$contact_user_id) {
 		$contact_user_id=$webmaster_user_id;
-	} else {
-		$contact_user_id=get_user_id($CONTACT_EMAIL);
 	}
 
-	$support_menu=user_contact_menu($webmaster_user_id, $SUPPORT_METHOD);
-	if ($webmaster_user_id==$contact_user_id && $SUPPORT_METHOD==$CONTACT_METHOD) {
+	$support_menu=user_contact_menu($webmaster_user_id, $webmaster_method);
+	if ($webmaster_user_id==$contact_user_id) {
 		$contact_menu=$support_menu;
 	} else {
-		$contact_menu=user_contact_menu($contact_user_id,   $CONTACT_METHOD);
+		$contact_menu=user_contact_menu($contact_user_id,   $contact_method);
 	}
 
 	if (!$support_menu) {
