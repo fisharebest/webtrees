@@ -51,6 +51,7 @@ if ($sb_action!='none') {
 		}
 		exit;
 	}
+	header('Content-type: text/html; charset=UTF-8');
 	if ($sb_action=='loadmod') {
 		$modName = safe_GET('mod', WT_REGEX_URL, '');
 		if (isset($sidebarmods[$modName])) {
