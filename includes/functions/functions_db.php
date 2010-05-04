@@ -686,7 +686,7 @@ function fetch_linked_obje($xref, $link, $ged_id) {
 		" FROM {$TBLPREFIX}media".
 		" JOIN {$TBLPREFIX}link ON (m_gedfile=l_file AND m_media=l_from)".
 		" LEFT JOIN {$TBLPREFIX}name ON (m_gedfile=n_file AND m_media=n_id AND n_num=0)".
-		" WHERE m_gedfile=? AND l_type=? AND l_to=? AND n_num=?".
+		" WHERE m_gedfile=? AND l_type=? AND l_to=?".
 		" ORDER BY n_sort"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
