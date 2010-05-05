@@ -9,7 +9,7 @@
 	<PGVRDescription>Prints a list of BIRT/DEAT/MARR events for individuals matching NAME or PLAC criteria.</PGVRDescription>
 	<PGVRInput name="name" lookup="NAME" type="text"><PGVRvar var="i18n::translate('Name')" /></PGVRInput>
 	<PGVRInput name="bdmplace" lookup="PLAC" type="text"><PGVRvar var="i18n::translate('Place')" /></PGVRInput>
-	<PGVRInput name="birthdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Place')" /></PGVRInput>
+	<PGVRInput name="birthdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Birth Date range start')" /></PGVRInput>
 	<PGVRInput name="birthdate2" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Birth Date range end')" /></PGVRInput>
 	<PGVRInput name="deathdate1" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Death Date range start')" /></PGVRInput>
 	<PGVRInput name="deathdate2" lookup="DATE" type="text"><PGVRvar var="i18n::translate('Death Date range end')" /></PGVRInput>
