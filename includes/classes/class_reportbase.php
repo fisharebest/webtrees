@@ -2492,15 +2492,10 @@ function PGVRvarSHandler($attrs) {
 			// n TYPE This text if string
 			$tfact = $type;
 		}
-		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
+		$var = str_replace(array("@fact", "@desc"), array(translate_fact($tfact), $desc), $var);
 		if (substr($var, 0, 6)=='i18n::') {
 			eval("\$var=$var;");
 		}
-		//eval("if (!empty(\$$var)) \$var = \$$var;");
-		//$match = array();
-		//if (preg_match("/factarray\['(.*)'\]/", $var, $match)) {
-		//	$var = $match[1];
-		//}
 	}
 	// Check if variable is set as a date and reformat the date
 	if (isset($attrs["date"])) {
@@ -2528,8 +2523,10 @@ function PGVRvarLetterSHandler($attrs) {
 	if (!empty($var)) {
 		$abbrev = substr(strrchr(substr($var, 0, -1), "["), 1);
 		$tfact = $fact;
-		$var = str_replace(array("[", "]", "@fact", "@desc"), array("['", "']", $tfact, $desc), $var);
-		eval("if (!empty(\$$var)) \$var = \$$var;");
+		$var = str_replace(array("@fact", "@desc"), array(translate_fact($tfact), $desc), $var);
+		if (substr($var, 0, 6) == "i18n::") {
+			eval("\$var = $var;");
+		}
 		$letter = utf8_substr($var, 0, 1);
 		$currentElement->addText($letter);
 	}
