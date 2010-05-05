@@ -517,7 +517,7 @@ switch ($action) {
 
 				$message = array();
 				$message["to"]=getUserEmail($webmaster_user_id);
-				$message["from"]=getUserEmail($webmaster_user_id);
+				$message["from"]=$WEBTREES_EMAIL;
 				$message["subject"] = i18n::translate('New user at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
