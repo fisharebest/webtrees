@@ -136,7 +136,7 @@ switch ($action) {
 				else $mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
 
 				require_once WT_ROOT.'includes/functions/functions_mail.php';
-				pgvMail(getUserEmail($user_id), $WEBTREES_EMAIL, i18n::translate('Data request at %s', WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
+				webtreesMail(getUserEmail($user_id), $WEBTREES_EMAIL, i18n::translate('Data request at %s', WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
 
 				?>
 				<table class="center facts_table">
@@ -388,7 +388,7 @@ switch ($action) {
 				$mail_body .= i18n::translate('If you didn\'t request an account, you can just delete this message.') . "  ";
 				$mail_body .= i18n::translate('You won\'t get any more email from this site, because the account request will be deleted automatically after seven days.') . "\r\n";
 				require_once WT_ROOT.'includes/functions/functions_mail.php';
-				pgvMail($user_email, $WEBTREES_EMAIL, i18n::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
+				webtreesMail($user_email, $WEBTREES_EMAIL, i18n::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
 
 				// switch language to webmaster settings
 				$webmaster_user_id=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');

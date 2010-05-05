@@ -40,7 +40,7 @@ define('WT_FUNCTIONS_MAIL_PHP', '');
  * for more info on format="flowed" see: http://www.joeclark.org/ffaq.html
  * for deatiled info on MIME (RFC 1521) email see: http://www.freesoft.org/CIE/RFC/1521/index.htm
  */
-function pgvMail($to, $from, $subject, $message) {
+function webtreesMail($to, $from, $subject, $message) {
 	$SMTP_ACTIVE   =get_site_setting('SMTP_ACTIVE');
 	$SMTP_HOST     =get_site_setting('SMTP_HOST');
 	$SMTP_HELO     =get_site_setting('SMTP_HELO');
@@ -179,7 +179,7 @@ function pgvMail($to, $from, $subject, $message) {
 }
 
 function getWTMailLogo() {
-// the following is a base64 encoded PGV logo for use in html formatted email.
+// the following is a base64 encoded webtrees logo for use in html formatted email.
 	$wtLogo =
 "Content-Type: image/png;
 	name=\"gedview.png\"

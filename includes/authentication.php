@@ -416,7 +416,7 @@ function addMessage($message) {
 				$header2 = $to;
 			}
 			if (!empty($header2)) {
-				pgvMail($from, $header2, $subject2, $email2);
+				webtreesMail($from, $header2, $subject2, $email2);
 			}
 		}
 	}
@@ -462,7 +462,7 @@ function addMessage($message) {
 				$to = getUserEmail($user_id_to);
 		}
 		if (getUserEmail($user_id_to))
-			pgvMail($to, $from, $subject1, $email1);
+			webtreesMail($to, $from, $subject1, $email1);
 	}
 
 	i18n::init(WT_LOCALE); // restore language settings if needed
