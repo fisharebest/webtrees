@@ -173,7 +173,7 @@ function pgvMail($to, $from, $subject, $message) {
 			return;
 		}
 	} elseif ($SMTP_ACTIVE=='internal') {
-		// use original PGV mail sending function	
+		// use original PHP mail sending function	
 		mail($to, hex4email($subject, 'UTF-8'), $message, $extraHeaders);
 	}
 }
