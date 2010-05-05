@@ -54,9 +54,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $CONTACT_EMAIL, $FACT_COUNT;
-		global $SHOW_LEVEL2_NOTES;
-		global $NAV_SOURCES;
+		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_SOURCES;
 		
 		/*if (isset($_COOKIE['row_sour2'])) $SHOW_LEVEL2_SOURCES = ($_COOKIE['row_sour2']);
 		else*/ $SHOW_LEVEL2_SOURCES = $SHOW_LEVEL2_NOTES;

@@ -95,7 +95,7 @@ class ClippingsControllerRoot extends BaseController {
 	}
 	//----------------beginning of function definitions for ClippingsControllerRoot
 	function init() {
-		global $ENABLE_CLIPPINGS_CART, $SCRIPT_NAME, $SERVER_URL, $CONTACT_EMAIL, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
+		global $ENABLE_CLIPPINGS_CART, $SCRIPT_NAME, $SERVER_URL, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
 		global $GEDCOM, $cart;
 
 		if (!isset ($ENABLE_CLIPPINGS_CART))
@@ -411,7 +411,7 @@ class ClippingsControllerRoot extends BaseController {
 					$this->media_list = $media;
 				}
 				$filetext .= "0 @SPGV1@ SOUR\n";
-				if ($user_id=get_user_id($CONTACT_EMAIL)) {
+				if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
 					$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
 				}
 				$filetext .= "1 TITL " . $HOME_SITE_TEXT . "\n";

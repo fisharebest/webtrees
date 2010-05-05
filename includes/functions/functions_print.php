@@ -53,7 +53,7 @@ require_once WT_ROOT.'includes/classes/class_menubar.php';
 function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $view, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_ID_NUMBERS, $SHOW_PEDIGREE_PLACES;
-	global $CONTACT_EMAIL, $CONTACT_METHOD, $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
+	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 	global $USE_SILHOUETTE, $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
@@ -434,7 +434,7 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	global $HOME_SITE_URL, $HOME_SITE_TEXT, $SERVER_URL;
 	global $BROWSERTYPE, $SEARCH_SPIDER;
 	global $view, $cart;
-	global $WT_IMAGE_DIR, $GEDCOM, $GEDCOM_TITLE, $CONTACT_EMAIL, $COMMON_NAMES_THRESHOLD, $INDEX_DIRECTORY;
+	global $WT_IMAGE_DIR, $GEDCOM, $GEDCOM_TITLE, $COMMON_NAMES_THRESHOLD, $INDEX_DIRECTORY;
 	global $QUERY_STRING, $action, $query, $theme_name;
 	global $FAVICON, $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION, $SHOW_SOURCES, $ENABLE_RSS, $RSS_FORMAT;
@@ -488,13 +488,11 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 		$old_META_DESCRIPTION = $META_DESCRIPTION;
 		$old_META_PAGE_TOPIC = $META_PAGE_TOPIC;
 		if (empty($META_AUTHOR) || empty($META_PUBLISHER) || empty($META_COPYRIGHT)) {
-			$user_id=get_user_id($CONTACT_EMAIL);
-			if ($user_id) {
-				$cuserName=getUserFullName($user_id);
-				if (empty($META_AUTHOR   )) $META_AUTHOR    = $cuserName;
-				if (empty($META_PUBLISHER)) $META_PUBLISHER = $cuserName;
-				if (empty($META_COPYRIGHT)) $META_COPYRIGHT = $cuserName;
-			}
+			$user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+			$cuserName=getUserFullName($user_id);
+			if (empty($META_AUTHOR   )) $META_AUTHOR    = $cuserName;
+			if (empty($META_PUBLISHER)) $META_PUBLISHER = $cuserName;
+			if (empty($META_COPYRIGHT)) $META_COPYRIGHT = $cuserName;
 		}
 		if (empty($META_DESCRIPTION)) {
 			$META_DESCRIPTION = $GEDCOM_TITLE;

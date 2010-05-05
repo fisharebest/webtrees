@@ -52,7 +52,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $CONTACT_EMAIL, $WT_IMAGE_DIR, $WT_IMAGES, $EXPAND_RELATIVES_EVENTS;
+		global $FACT_COUNT, $WT_IMAGE_DIR, $WT_IMAGES, $EXPAND_RELATIVES_EVENTS;
 		global $n_chil, $n_gchi, $n_ggch;
 		global $EXPAND_RELATIVES_EVENTS;
 		global $NAV_FACTS;

@@ -158,7 +158,6 @@ class TimelineControllerRoot extends BaseController {
 	* check the privacy of the incoming people to make sure they can be shown
 	*/
 	function checkPrivacy() {
-		global $CONTACT_EMAIL;
 		$printed = false;
 		for($i=0; $i<count($this->people); $i++) {
 			if (!is_null($this->people[$i])) {

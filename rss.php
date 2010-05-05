@@ -90,7 +90,7 @@ $cacheControl[1] = array("cache"=>1);
 if (!empty($module) && $module=="randomMedia") $cacheControl[1]["cache"] = 0;
 
 if(!loadCachedBlock($cacheControl, $rssStyle)){
-	$author=getUserFullName($CONTACT_EMAIL);
+	$author=getUserFullName(get_gedcom_setting(PGV_GED_ID, 'CONTACT_USER_ID'));
 
 	$feed = new UniversalFeedCreator();
 	$feed->generator = WT_WEBTREES_URL;

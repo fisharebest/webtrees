@@ -64,8 +64,6 @@ class SourceControllerRoot extends BaseController {
 	* initialize the controller
 	*/
 	function init() {
-		global $CONTACT_EMAIL;
-
 		$this->sid = safe_GET_xref('sid');
 
 		$sourcerec = find_source_record($this->sid, WT_GED_ID);

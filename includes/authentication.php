@@ -347,7 +347,7 @@ function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {
-	global $TBLPREFIX, $CONTACT_METHOD, $WT_STORE_MESSAGES, $SERVER_URL, $WEBMASTER_EMAIL;
+	global $TBLPREFIX, $WT_STORE_MESSAGES, $SERVER_URL, $WEBMASTER_EMAIL;
 	global $TEXT_DIRECTION;
 	global $WEBTREES_EMAIL;
 

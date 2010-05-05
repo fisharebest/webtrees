@@ -60,8 +60,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $CONTACT_EMAIL, $MULTI_MEDIA;
-		global $NAV_MEDIA;
+		global $MULTI_MEDIA, $NAV_MEDIA;
 		
 		ob_start();
 		// For Reorder media ------------------------------------

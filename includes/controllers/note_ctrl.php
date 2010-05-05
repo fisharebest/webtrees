@@ -64,8 +64,6 @@ class NoteControllerRoot extends BaseController {
 	* initialize the controller
 	*/
 	function init() {
-		global $CONTACT_EMAIL;
-
 		$this->nid = safe_GET_xref('nid');
 
 		$noterec = find_other_record($this->nid, WT_GED_ID);

@@ -78,7 +78,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	global $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION;
 	global $HIDE_GEDCOM_ERRORS, $SHOW_ID_NUMBERS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
-	global $CONTACT_EMAIL, $view;
+	global $view;
 	global $n_chil, $n_gchi, $n_ggch;
 	global $SEARCH_SPIDER;
 

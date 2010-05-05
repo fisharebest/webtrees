@@ -66,7 +66,7 @@ class FamilyRoot extends BaseController {
 	}
 
 	function init() {
-		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM, $CONTACT_EMAIL, $show_famlink;
+		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM, $show_famlink;
 		$bwidth = $Dbwidth;
 		$pbwidth = $bwidth + 12;
 		$pbheight = $bheight + 14;

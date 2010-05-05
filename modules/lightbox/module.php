@@ -69,7 +69,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $is_media;
 		global $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec ;
 		global $edit ;
-		global $CONTACT_EMAIL, $pid, $tabno;
+		global $pid, $tabno;
 		global $Fam_Navigator, $NAV_ALBUM;
 
 		ob_start();

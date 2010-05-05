@@ -63,8 +63,6 @@ class RepositoryControllerRoot extends BaseController {
 	* initialize the controller
 	*/
 	function init() {
-		global $CONTACT_EMAIL;
-
 		$this->rid = safe_GET_xref('rid');
 
 		$repositoryrec = find_other_record($this->rid, WT_GED_ID);

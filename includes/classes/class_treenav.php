@@ -149,7 +149,7 @@ class TreeNav {
 	* @param string $height the height parameter for the outer style
 	*/
 	function drawViewport($id='', $width='', $height='') {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $CONTACT_EMAIL, $SERVER_URL;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SERVER_URL;
 		if (empty($id)) $id = $this->rootPerson->getXref();
 		$widthS = "";
 		$heightS = "";

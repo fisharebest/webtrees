@@ -54,9 +54,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $CONTACT_EMAIL, $FACT_COUNT;
-		global $SHOW_LEVEL2_NOTES;
-		global $NAV_NOTES;
+		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_NOTES;
 
 		ob_start();
 		?>
