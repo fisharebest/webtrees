@@ -40,107 +40,107 @@
 <script>
 
 //Load Language variables for Edit header and tooltip ============================
-var HeaderName        = "<?php echo i18n::translate('Name');?>";
-var TTEditName        = "<?php echo i18n::translate('Full Name or Married name if married');?>";
-var HeaderRela        = "<?php echo i18n::translate('Relation');?>";
-var TTEditRela        = "<?php echo i18n::translate('Relationship to Head of Household - Head, Wife, Son etc');?>";
-var HeaderMCond       = "<?php echo i18n::translate('MC');?>";
-var TTEditMCond       = "<?php echo i18n::translate('Marital Condition - M,S,U,W,D - Married, Single, Unmarried, Widowed or Divorced');?>";
-var HeaderAsset       = "<?php echo i18n::translate('Assets');?>";
-var TTEditAsset       = "<?php echo i18n::translate('Assets = O,R - value,rent - Y,N,R - Y,N,F  =  Owned,Rented - Value,Rent - Radio - Farm');?>";
-var HeaderAge         = "<?php echo i18n::translate('Age');?>";
-var TTEditAge         = "<?php echo i18n::translate('Age at last birthday');?>";
-var HeaderRace        = "<?php echo i18n::translate('Race');?>";
-var TTEditRace        = "<?php echo i18n::translate('Race or Color - B.W,M,A,I,C - Black, White, Mulatto, Asian, Indian, Chinese etc');?>";
-var HeaderSex         = "<?php echo i18n::translate('Sex');?>";
-var TTEditSex         = "<?php echo i18n::translate('Male(M) or Female(F)');?>";
-var HeaderYOB         = "<?php echo i18n::translate('DOB');?>";
-var TTEditYOB         = "<?php echo i18n::translate('Date of Birth - mmm yyyy');?>";
-var HeaderBmth        = "<?php echo i18n::translate('Bmth');?>";
-var TTEditBmth        = "<?php echo i18n::translate('If born within Census year - mmm - Month of birth');?>";
-var HeaderYrsM        = "<?php echo i18n::translate('YrsM');?>";
-var TTEditYrsM        = "<?php echo i18n::translate('Years Married or if married in Census Year - yy or Y');?>";
-var HeaderChilB       = "<?php echo i18n::translate('ChB');?>";
-var TTEditChilB       = "<?php echo i18n::translate('Children born alive - nn');?>";
-var HeaderChilL       = "<?php echo i18n::translate('ChL');?>";
-var TTEditChilL       = "<?php echo i18n::translate('Children still living - nn');?>";
-var HeaderChilD       = "<?php echo i18n::translate('ChD');?>";
-var TTEditChilD       = "<?php echo i18n::translate('Children who have died - nn');?>";
-var HeaderAgeM        = "<?php echo i18n::translate('AgM');?>";
-var TTEditAgeM        = "<?php echo i18n::translate('Age at first marriage - yy');?>";
-var HeaderOccu        = "<?php echo i18n::translate('Occupation');?>";
-var TTEditOccu        = "<?php echo i18n::translate('Occupation');?>";
-var HeaderBplace      = "<?php echo i18n::translate('Birthplace');?>";    // Full format
-var TTEditBplace      = "<?php echo i18n::translate('Birthplace (Full format)');?>";   // Full format
-var HeaderBP          = "<?php echo i18n::translate('BP');?>";        // Chapman format
-var TTEditBP          = "<?php echo i18n::translate('Birthplace - xx or xxx - State/Country (Chapman format)');?>";       // Chapman format
-var HeaderFBP         = "<?php echo i18n::translate('FBP');?>";       // Chapman format
-var TTEditFBP         = "<?php echo i18n::translate('Father\'s Birthplace - xx or xxx - State or Country (Chapman format)');?>";      // Chapman format
-var HeaderMBP         = "<?php echo i18n::translate('MBP');?>";       // Chapman format
-var TTEditMBP         = "<?php echo i18n::translate('Mother\'s Birthplace - xx or xxx - State or Country (Chapman format)');?>";      // Chapman format
-var HeaderNL          = "<?php echo i18n::translate('NL');?>";        
-var TTEditNL          = "<?php echo i18n::translate('If Foreign Born - Native Language');?>";       
-var HeaderHealth      = "<?php echo i18n::translate('Health');?>";
-var TTEditHealth      = "<?php echo i18n::translate('Health - 12345 = 1.Blind, 2.Deaf&Dumb, 3.Idiotic, 4.Insane, 5.Disabled etc');?>";
-var HeaderYrsUS       = "<?php echo i18n::translate('YUS');?>";
-var TTEditYrsUS       = "<?php echo i18n::translate('If Foreign Born - yy -Years in the USA');?>";
-var HeaderYOI         = "<?php echo i18n::translate('YOI');?>";
-var TTEditYOI         = "<?php echo i18n::translate('If Foreign Born - yyyy - Year of Immigration');?>";
-var HeaderNA          = "<?php echo i18n::translate('N/A');?>";
-var TTEditNA          = "<?php echo i18n::translate('If Foreign Born - N,A - Naturalized, Alien');?>";
-var HeaderYON         = "<?php echo i18n::translate('YON');?>";
-var TTEditYON         = "<?php echo i18n::translate('If Foreign Born - yyyy - Year of Naturalization');?>";
-var HeaderEngL        = "<?php echo i18n::translate('EngL');?>";
-var TTEditEngL        = "<?php echo i18n::translate('English spoken?, if not, Native Language');?>";
-var HeaderEng         = "<?php echo i18n::translate('Eng?');?>";
-var TTEditEng         = "<?php echo i18n::translate('English spoken? - Y/N');?>";
-var HeaderInd         = "<?php echo i18n::translate('Industry');?>";
-var TTEditInd         = "<?php echo i18n::translate('Industry');?>";
-var HeaderEmp         = "<?php echo i18n::translate('Employ');?>";
-var TTEditEmp         = "<?php echo i18n::translate('Employment - Yes, No, Worker, Employer etc');?>";
-var HeaderEmR         = "<?php echo i18n::translate('EmR');?>";
-var TTEditEmR         = "<?php echo i18n::translate('Employer? - Y/N');?>";
-var HeaderEmD         = "<?php echo i18n::translate('EmD');?>";
-var TTEditEmD         = "<?php echo i18n::translate('Employed? - Y/N');?>";
-var HeaderEmH         = "<?php echo i18n::translate('WH');?>";
-var TTEditEmH         = "<?php echo i18n::translate('Working at Home? - Y/N');?>";
-var HeaderEmN         = "<?php echo i18n::translate('EmN');?>";
-var TTEditEmN         = "<?php echo i18n::translate('UnEmployed? - Y/N');?>";
-var HeaderEduc        = "<?php echo i18n::translate('Edu');?>";
-var TTEditEduc        = "<?php echo i18n::translate('Education - xxx - At School? Y/N, Can Read? Y/N, Can Write? Y/N');?>";
-var HeaderBIC         = "<?php echo i18n::translate('BIC');?>";
-var TTEditBIC         = "<?php echo i18n::translate('Born in County - Y/N - (UK 1841 only)');?>";
-var HeaderBOE         = "<?php echo i18n::translate('BOE');?>";
-var TTEditBOE         = "<?php echo i18n::translate('Born outside England - SCO,IRE,WAL,FOReign - (UK 1841 only)');?>";
-var HeaderInfirm      = "<?php echo i18n::translate('Infirm');?>";
-var TTEditInfirm      = "<?php echo i18n::translate('Infirmaties - 1234 - 1.Deaf&Dumb, 2.Blind, 3.Lunatic, 4.Imbecile/feeble-minded');?>";
-var HeaderVet         = "<?php echo i18n::translate('Vet');?>";
-var TTEditVet         = "<?php echo i18n::translate('War Veteran? - Y/N');?>";
-var HeaderTenure      = "<?php echo i18n::translate('Ten');?>";
-var TTEditTenure      = "<?php echo i18n::translate('Tenure - xx - Owned/Rented, (if owned)Free/Mortgaged - eg OM, or R-, or OF');?>";
-var HeaderParent      = "<?php echo i18n::translate('Par');?>";
-var TTEditParent      = "<?php echo i18n::translate('Parentage - xx = Father if foreign born Y/N/-, Mother if foreign born Y/N/- = eg YY, YN, NY, or -');?>";
-var HeaderMmth        = "<?php echo i18n::translate('Mmth');?>";
-var TTEditMmth        = "<?php echo i18n::translate('Marriage month - mmm = If married within Census year - Month of marriage');?>";
-var HeaderMnse        = "<?php echo i18n::translate('MnsE');?>";
-var TTEditMnse        = "<?php echo i18n::translate('Months Employed - xx = Months employed during Census Year');?>";
-var HeaderWksu        = "<?php echo i18n::translate('WksU');?>";
-var TTEditWksu        = "<?php echo i18n::translate('Weeks Unemployed - xx = Weeks unemployed during Census Year');?>";
-var HeaderMnsu        = "<?php echo i18n::translate('MnsU');?>";
-var TTEditMnsu        = "<?php echo i18n::translate('Months Unemployed - xx = Months unemployed during Census Year');?>";
-var HeaderHome        = "<?php echo i18n::translate('Home');?>";
-var TTEditHome        = "<?php echo i18n::translate('Home Ownership - x-x-x-xxxx = O/R-F/M-F/H-#### = Owned/Rented-Free/Mortgaged-Farm/House-Farm Schedule number');?>";
-var HeaderSitu        = "<?php echo i18n::translate('Situ');?>";
-var TTEditSitu        = "<?php echo i18n::translate('Situation - 3 parameters - Diseases, Infimaties, Convict/Pauper etc');?>";
-var HeaderWar         = "<?php echo i18n::translate('War');?>";
-var TTEditWar         = "<?php echo i18n::translate('War or Expedition');?>";
-var HeaderInfirm1910  = "<?php echo i18n::translate('Infirm');?>";
-var TTEditInfirm1910  = "<?php echo i18n::translate('Infirmaties - xx = Whether blind (both eyes) Y/N, Whether Deaf and Dumb Y/N');?>";
-var HeaderEducpre1890 = "<?php echo i18n::translate('Edu');?>";
-var TTEditEducpre1890 = "<?php echo i18n::translate('Education - xxx = At School, Cannot Read, Cannot Write = eg x--, xxx, or -xx etc');?>";
+var HeaderName        = 'Name';
+var TTEditName        = 'Full Name or Married name if married';
+var HeaderRela        = 'Relation';
+var TTEditRela        = 'Relationship to Head of Household - Head, Wife, Son etc';
+var HeaderMCond       = 'MC';
+var TTEditMCond       = 'Marital Condition - M,S,U,W,D - Married, Single, Unmarried, Widowed or Divorced';
+var HeaderAsset       = 'Assets';
+var TTEditAsset       = 'Assets = O,R - value,rent - Y,N,R - Y,N,F  =  Owned,Rented - Value,Rent - Radio - Farm';
+var HeaderAge         = 'Age';
+var TTEditAge         = 'Age at last birthday';
+var HeaderRace        = 'Race';
+var TTEditRace        = 'Race or Color - B.W,M,A,I,C - Black, White, Mulatto, Asian, Indian, Chinese etc';
+var HeaderSex         = 'Sex';
+var TTEditSex         = 'Male(M) or Female(F)';
+var HeaderYOB         = 'DOB';
+var TTEditYOB         = 'Date of Birth - mmm yyyy';
+var HeaderBmth        = 'Bmth';
+var TTEditBmth        = 'If born within Census year - mmm - Month of birth';
+var HeaderYrsM        = 'YrsM';
+var TTEditYrsM        = 'Years Married or if married in Census Year - yy or Y';
+var HeaderChilB       = 'ChB';
+var TTEditChilB       = 'Children born alive - nn';
+var HeaderChilL       = 'ChL';
+var TTEditChilL       = 'Children still living - nn';
+var HeaderChilD       = 'ChD';
+var TTEditChilD       = 'Children who have died - nn';
+var HeaderAgeM        = 'AgM';
+var TTEditAgeM        = 'Age at first marriage - yy';
+var HeaderOccu        = 'Occupation';
+var TTEditOccu        = 'Occupation';
+var HeaderBplace      = 'Birthplace';    // Full format
+var TTEditBplace      = 'Birthplace (Full format)';   // Full format
+var HeaderBP          = 'BP';        // Chapman format
+var TTEditBP          = 'Birthplace - xx or xxx - State/Country (Chapman format)';       // Chapman format
+var HeaderFBP         = 'FBP';       // Chapman format
+var TTEditFBP         = 'Father\'s Birthplace - xx or xxx - State or Country (Chapman format)';      // Chapman format
+var HeaderMBP         = 'MBP';       // Chapman format
+var TTEditMBP         = 'Mother\'s Birthplace - xx or xxx - State or Country (Chapman format)';      // Chapman format
+var HeaderNL          = 'NL';        
+var TTEditNL          = 'If Foreign Born - Native Language';       
+var HeaderHealth      = 'Health';
+var TTEditHealth      = 'Health - 12345 = 1.Blind, 2.Deaf&amp;Dumb, 3.Idiotic, 4.Insane, 5.Disabled etc';
+var HeaderYrsUS       = 'YUS';
+var TTEditYrsUS       = 'If Foreign Born - yy -Years in the USA';
+var HeaderYOI         = 'YOI';
+var TTEditYOI         = 'If Foreign Born - yyyy - Year of Immigration';
+var HeaderNA          = 'N/A';
+var TTEditNA          = 'If Foreign Born - N,A - Naturalized, Alien';
+var HeaderYON         = 'YON';
+var TTEditYON         = 'If Foreign Born - yyyy - Year of Naturalization';
+var HeaderEngL        = 'EngL';
+var TTEditEngL        = 'English spoken?, if not, Native Language';
+var HeaderEng         = 'Eng?';
+var TTEditEng         = 'English spoken? - Y/N';
+var HeaderInd         = 'Industry';
+var TTEditInd         = 'Industry';
+var HeaderEmp         = 'Employ';
+var TTEditEmp         = 'Employment - Yes, No, Worker, Employer etc';
+var HeaderEmR         = 'EmR';
+var TTEditEmR         = 'Employer? - Y/N';
+var HeaderEmD         = 'EmD';
+var TTEditEmD         = 'Employed? - Y/N';
+var HeaderEmH         = 'WH';
+var TTEditEmH         = 'Working at Home? - Y/N';
+var HeaderEmN         = 'EmN';
+var TTEditEmN         = 'UnEmployed? - Y/N';
+var HeaderEduc        = 'Edu';
+var TTEditEduc        = 'Education - xxx - At School? Y/N, Can Read? Y/N, Can Write? Y/N';
+var HeaderBIC         = 'BIC';
+var TTEditBIC         = 'Born in County - Y/N - (UK 1841 only)';
+var HeaderBOE         = 'BOE';
+var TTEditBOE         = 'Born outside England - SCO,IRE,WAL,FOReign - (UK 1841 only)';
+var HeaderInfirm      = 'Infirm';
+var TTEditInfirm      = 'Infirmaties - 1234 - 1.Deaf&amp;Dumb, 2.Blind, 3.Lunatic, 4.Imbecile/feeble-minded';
+var HeaderVet         = 'Vet';
+var TTEditVet         = 'War Veteran? - Y/N';
+var HeaderTenure      = 'Ten';
+var TTEditTenure      = 'Tenure - xx - Owned/Rented, (if owned)Free/Mortgaged - eg OM, or R-, or OF';
+var HeaderParent      = 'Par';
+var TTEditParent      = 'Parentage - xx = Father if foreign born Y/N/-, Mother if foreign born Y/N/- = eg YY, YN, NY, or -';
+var HeaderMmth        = 'Mmth';
+var TTEditMmth        = 'Marriage month - mmm = If married within Census year - Month of marriage';
+var HeaderMnse        = 'MnsE';
+var TTEditMnse        = 'Months Employed - xx = Months employed during Census Year';
+var HeaderWksu        = 'WksU';
+var TTEditWksu        = 'Weeks Unemployed - xx = Weeks unemployed during Census Year';
+var HeaderMnsu        = 'MnsU';
+var TTEditMnsu        = 'Months Unemployed - xx = Months unemployed during Census Year';
+var HeaderHome        = 'Home';
+var TTEditHome        = 'Home Ownership - x-x-x-xxxx = O/R-F/M-F/H-#### = Owned/Rented-Free/Mortgaged-Farm/House-Farm Schedule number';
+var HeaderSitu        = 'Situ';
+var TTEditSitu        = 'Situation - 3 parameters - Diseases, Infimaties, Convict/Pauper etc';
+var HeaderWar         = 'War';
+var TTEditWar         = 'War or Expedition';
+var HeaderInfirm1910  = 'Infirm';
+var TTEditInfirm1910  = 'Infirmaties - xx = Whether blind (both eyes) Y/N, Whether Deaf and Dumb Y/N';
+var HeaderEducpre1890 = 'Edu';
+var TTEditEducpre1890 = 'Education - xxx = At School, Cannot Read, Cannot Write = eg x--, xxx, or -xx etc';
 
-var HeaderLang        = "<?php echo i18n::translate('Lang');?>";
-var TTEditLang        = "<?php echo i18n::translate('If Foreign Born - Native Language');?>";
+var HeaderLang        = 'Lang';
+var TTEditLang        = 'If Foreign Born - Native Language';
 
 // Load Edit Table variables =====================================================
 var INPUT_NAME_PREFIX = 'InputCell_'; // this is being set via script
