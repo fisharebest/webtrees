@@ -6,6 +6,7 @@ require_once(WT_ROOT.'includes/classes/class_module.php');
 $sb_action = safe_GET('sb_action', WT_REGEX_ALPHANUM, 'none');
 //-- handle ajax calls
 if ($sb_action!='none') {
+	header('Content-type: text/html; charset=UTF-8');
 	$sidebarmods = WT_Module::getActiveSidebars();
 	class tempController {
 		var $pid;
@@ -51,7 +52,6 @@ if ($sb_action!='none') {
 		}
 		exit;
 	}
-	header('Content-type: text/html; charset=UTF-8');
 	if ($sb_action=='loadmod') {
 		$modName = safe_GET('mod', WT_REGEX_URL, '');
 		if (isset($sidebarmods[$modName])) {
