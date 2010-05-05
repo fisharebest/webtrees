@@ -769,10 +769,8 @@ function print_user_links() {
 
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
-function user_contact_link($user_id, $method=null) {
-	if (is_null($method)) {
-		$method=get_user_setting($user_id, 'contactmethod');
-	}
+function user_contact_link($user_id) {
+	$method=get_user_setting($user_id, 'contactmethod');
 
 	$fullname=getUserFullName($user_id);
 
@@ -780,7 +778,7 @@ function user_contact_link($user_id, $method=null) {
 	case 'none':
 		return '';
 	case 'mailto':
-		$email   =getUserEmail   ($user_id);
+		$email=getUserEmail($user_id);
 		return '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>';
 	default:
 		return "<a href='javascript:;' onclick='message(\"".get_user_name($user_id)."\", \"{$method}\");return false;'>{$fullname}</a>";
@@ -789,18 +787,16 @@ function user_contact_link($user_id, $method=null) {
 
 // Print a menu item to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
-function user_contact_menu($user_id, $method=null) {
-	if (is_null($method)) {
-		$method=get_user_setting($user_id, 'contactmethod');
-	}
+function user_contact_menu($user_id) {
+	$method=get_user_setting($user_id, 'contactmethod');
 
-	$email   =getUserEmail   ($user_id);
 	$fullname=getUserFullName($user_id);
 
 	switch ($method) {
 	case 'none':
 		return array();
 	case 'mailto':
+		$email=getUserEmail($user_id);
 		return array('label'=>$fullname, 'labelpos'=>'right', 'class'=>'submenuitem', 'hoverclass'=>'submenuitem_hover', 'link'=>"mailto:{$email}");
 	default:
 		return array('label'=>$fullname, 'labelpos'=>'right', 'class'=>'submenuitem', 'hoverclass'=>'submenuitem_hover', 'link'=>'#', 'onclick'=>"message('".get_user_name($user_id)."', '{$method}');return false;");
@@ -814,13 +810,11 @@ function user_contact_menu($user_id, $method=null) {
 function contact_links($ged_id=WT_GED_ID) {
 	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	$contact_method   =get_user_setting($contact_user_id,   'contactmethod');
-	$webmaster_method =get_user_setting($webmaster_user_id, 'contactmethod');
-	$supportLink = user_contact_link($webmaster_user_id, $webmaster_method);
-	if ($webmaster_user_id==$contact_user_id && $webmaster_method==$contact_method) {
+	$supportLink = user_contact_link($webmaster_user_id);
+	if ($webmaster_user_id==$contact_user_id) {
 		$contactLink = $supportLink;
 	} else {
-		$contactLink = user_contact_link($contact_user_id,   $contact_method);
+		$contactLink = user_contact_link($contact_user_id);
 	}
 
 	if (!$supportLink && !$contactLink) {
@@ -848,19 +842,9 @@ function contact_links($ged_id=WT_GED_ID) {
 function contact_menus($ged_id=WT_GED_ID) {
 	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-	$contact_method   =get_user_setting($contact_user_id,   'contactmethod');
-	$webmaster_method =get_user_setting($webmaster_user_id, 'contactmethod');
 
-	if ($webmaster_user_id==$contact_user_id) {
-		$contact_user_id=$webmaster_user_id;
-	}
-
-	$support_menu=user_contact_menu($webmaster_user_id, $webmaster_method);
-	if ($webmaster_user_id==$contact_user_id) {
-		$contact_menu=$support_menu;
-	} else {
-		$contact_menu=user_contact_menu($contact_user_id,   $contact_method);
-	}
+	$support_menu=user_contact_menu($webmaster_user_id);
+	$contact_menu=user_contact_menu($contact_user_id);
 
 	if (!$support_menu) {
 		$support_menu=$contact_menu;
