@@ -391,7 +391,8 @@ switch ($action) {
 				pgvMail($user_email, $WEBTREES_EMAIL, i18n::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
 
 				// switch language to webmaster settings
-				i18n::init(get_user_setting($WEBMASTER_EMAIL, 'language'));
+				$webmaster_user_id=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+				i18n::init(get_user_setting($webmaster_user_id, 'language'));
 
 				$mail_body = "";
 				$mail_body .= i18n::translate('Hello Administrator ...') . "\r\n\r\n";
@@ -404,12 +405,12 @@ switch ($action) {
 				else $mail_body .= i18n::translate('You will be informed by email when this prospective user has confirmed his request.  After this, the user will be able to login without any action on your part.') . "\r\n";
 
 				$message = array();
-				$message["to"]=$WEBMASTER_EMAIL;
+				$message["to"]=getUserEmail($webmaster_user_id);
 				$message["from"]=$user_email;
 				$message["subject"] = i18n::translate('New registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
-				$message["method"] = $SUPPORT_METHOD;
+				$message["method"] = get_user_setting($webmaster_user_id, 'contact_method');
 				$message["no_from"] = true;
 				addMessage($message);
 
@@ -497,7 +498,8 @@ switch ($action) {
 				AddToLog("User verified: ".$user_name, 'auth');
 
 				// switch language to webmaster settings
-				i18n::init(get_user_setting($WEBMASTER_EMAIL, 'language'));
+				$webmaster_user_id=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
+				i18n::init(get_user_setting($webmaster_user_id, 'language'));
 
 				$mail_body = "";
 				$mail_body .= i18n::translate('Hello Administrator ...') . "\r\n\r\n";
@@ -514,12 +516,12 @@ switch ($action) {
 				$mail_body .= "\r\n";
 
 				$message = array();
-				$message["to"]=$WEBMASTER_EMAIL;
-				$message["from"]=$WEBTREES_EMAIL;
+				$message["to"]=getUserEmail($webmaster_user_id);
+				$message["from"]=getUserEmail($webmaster_user_id);
 				$message["subject"] = i18n::translate('New user at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
-				$message["method"] = $SUPPORT_METHOD;
+				$message["method"] = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 				$message["no_from"] = true;
 				addMessage($message);
 

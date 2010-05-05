@@ -2180,11 +2180,6 @@ case 'CONTACT_USER_ID':
 	$text=i18n::translate('The person to contact about the genealogical data on this site.');
 	break;
 
-case 'CONTACT_METHOD':
-	$title=i18n::translate('Contact method');
-	$text=i18n::translate('The method to be used to contact the Genealogy contact about genealogy questions.<ul><li>The <b>Mailto link</b> option will create a "mailto" link that can be clicked to send an email using the mail client on the user\'s PC.</li><li>The <b><b>webtrees</b> internal messaging</b> option will use a messaging system internal to <b>webtrees</b>, and no emails will be sent.</li><li>The <b>Internal messaging with emails</b> option is the default.  It will use the <b>webtrees</b> messaging system and will also send copies of the messages via email.</li><li>The <b>webtrees sends emails with no storage</b> option allows <b>webtrees</b> to handle the messaging and will send the messages as emails, but will not store the messages internally.  This option is similar to the <b>Mailto link</b> option, except that the message will be sent by <b>webtrees</b> instead of the user\'s workstation.</li><li>The <b>No contact method</b> option results in your users having no way of contacting you.</li></ul>');
-	break;
-
 case 'DAYS_TO_SHOW_LIMIT':
 	$title=i18n::translate('Upcoming events block day limit');
 	$text=i18n::translate('Enter the maximum number of days to show in Upcoming Events blocks.  This number cannot be greater than 30. If you enter a larger value, 30 will be used.<br /><br />The value you enter here determines how far ahead <b>webtrees</b> looks when searching for upcoming events.  The results of this search, done once daily, are copied into a temporary file.<br /><br />No Upcoming Events blocks on Index or Portal pages can request more days than this value.  The larger you make this, the longer it will take to build the daily database extract, and the longer it will take to display the block, even when you request to display a number of days less than this setting.');
@@ -2848,11 +2843,6 @@ case 'SUBLIST_TRIGGER_F':
 case 'SUBLIST_TRIGGER_I':
 	$title=i18n::translate('Maximum number of surnames');
 	$text=i18n::translate('Long lists of persons with the same surname can be broken into smaller sub-lists according to the first letter of the individual\'s given name.<br /><br />This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero.');
-	break;
-
-case 'SUPPORT_METHOD':
-	$title=i18n::translate('Support method');
-	$text=i18n::translate('The method to be used to contact the Support contact about technical questions.<ul><li>The <b>Mailto link</b> option will create a "mailto" link that can be clicked to send an email using the mail client on the user\'s PC.</li><li>The <b>webtrees internal messaging</b> option will use a messaging system internal to <b>webtrees</b>, and no emails will be sent.</li><li>The <b>Internal messaging with emails</b> option is the default.  It will use the <b>webtrees</b> messaging system and will also send copies of the messages via email.</li><li>The <b>webtrees sends emails with no storage</b> option allows <b>webtrees</b> to handle the messaging and will send the messages as emails, but will not store the messages internally.  This option is similar to the <b>Mailto link</b> option, except that the message will be sent by <b>webtrees</b> instead of the user\'s workstation.</li><li>The <b>No contact method</b> option results in your users having no way of contacting you.</li></ul>');
 	break;
 
 case 'SURNAME_LIST_STYLE':

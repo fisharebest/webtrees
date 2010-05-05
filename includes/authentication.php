@@ -347,7 +347,7 @@ function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {
-	global $TBLPREFIX, $WT_STORE_MESSAGES, $SERVER_URL, $WEBMASTER_EMAIL;
+	global $TBLPREFIX, $WT_STORE_MESSAGES, $SERVER_URL;
 	global $TEXT_DIRECTION;
 	global $WEBTREES_EMAIL;
 
@@ -408,7 +408,7 @@ function addMessage($message) {
 		}
 		if (!isset($message["no_from"])) {
 			if (stristr($from, $WEBTREES_EMAIL)){
-				$from = getUserEmail(get_user_id($WEBMASTER_EMAIL));
+				$from = getUserEmail(get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID'));
 			}
 			if (!$user_id_from) {
 				$header2 = $WEBTREES_EMAIL;
