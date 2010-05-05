@@ -116,7 +116,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			if (!$this->controller->indi->canDisplayName()) {
 				print "\n\t<table class=\"facts_table\">";
 				print "<tr><td class=\"facts_value\">";
-				print_privacy_error($CONTACT_EMAIL);
+				print_privacy_error();
 				print "</td></tr>";
 				print "\n\t</table>\n<br />";
 				print "<script type=\"text/javascript\">\n";

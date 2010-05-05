@@ -1243,35 +1243,22 @@ function print_gedcom_title_link($InHeader=FALSE) {
 }
 
 //-- function to print a privacy error with contact method
-function print_privacy_error($username) {
-	global $CONTACT_METHOD, $SUPPORT_METHOD, $WEBMASTER_EMAIL;
+function print_privacy_error() {
+	$user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
+	$method=get_user_setting($user_id, 'contactmethod');
+	$fullname=getUserFullName($user_id);
 
-	$method = $CONTACT_METHOD;
-	if ($username==$WEBMASTER_EMAIL) {
-		$method = $SUPPORT_METHOD;
-	}
-	$user_id=get_user_id($username);
-	if (!$user_id) {
-		$method = "mailto";
-	}
-	echo "<br /><span class=\"error\">", i18n::translate('This information is private and cannot be shown.'), " ";
-	if ($method=="none") {
-		echo "</span><br />";
-		return;
-	}
-	echo i18n::translate('For more information contact');
-	if ($method=="mailto") {
-		if (!$user_id) {
-			$email = $username;
-			$fullname = $username;
-		} else {
-			$email   =getUserEmail   ($user_id);
-			$fullname=getUserFullName($user_id);
-		}
-		echo " <a href=\"mailto:$email\">", $fullname, "</a></span><br />";
-	} else {
-		$userName=getUserFullName($user_id);
-		echo " <a href=\"javascript:;\" onclick=\"message('$username', '$method'); return false;\">", $userName, "</a></span><br />";
+	echo '<div class="error">', i18n::translate('This information is private and cannot be shown.'), '</div>';
+	switch ($method) {
+	case 'none':
+		break;
+	case 'mailto':
+		$email=getUserEmail($user_id);
+		echo '<div class="error">', i18n::translate('For more information contact'), ' ', '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>', '</div>';
+		break;
+	default:
+		echo '<div class="error">', i18n::translate('For more information contact'), ' ', "<a href='javascript:;' onclick='message(\"".get_user_name($user_id)."\", \"{$method}\");return false;'>{$fullname}</a>", '</div>';
+		break;
 	}
 }
 

@@ -81,7 +81,7 @@ class NoteControllerRoot extends BaseController {
 
 		if (!$this->note->canDisplayDetails()) {
 			print_header(i18n::translate('Private')." ".i18n::translate('Shared Note Information'));
-			print_privacy_error($CONTACT_EMAIL);
+			print_privacy_error();
 			print_footer();
 			exit;
 		}

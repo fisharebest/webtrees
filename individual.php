@@ -51,7 +51,7 @@ if (!$controller->indi){
 	exit;
 }
 else if (!$controller->indi->canDisplayName()) {
-	print_privacy_error($CONTACT_EMAIL);
+	print_privacy_error();
 	print_footer();
 	exit;
 }
@@ -265,7 +265,7 @@ foreach ($controller->tabs as $tab) {
 <?php
 if (!$controller->indi->canDisplayDetails()) {
 	print "<table><tr><td class=\"facts_value\" >";
-	print_privacy_error($CONTACT_EMAIL);
+	print_privacy_error();
 	print "</td></tr></table>";
 } else {
 	echo '<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';

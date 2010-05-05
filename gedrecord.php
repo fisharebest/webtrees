@@ -54,7 +54,7 @@ if (!$SHOW_GEDCOM_RECORD && !WT_USER_CAN_ACCEPT) {
 $obj=GedcomRecord::getInstance($pid);
 
 if (is_null($obj) || !$obj->canDisplayDetails()) {
-	print_privacy_error($CONTACT_EMAIL);
+	print_privacy_error();
 	echo "</body></html>";
 	exit;
 }

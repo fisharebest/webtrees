@@ -575,12 +575,12 @@ class LifespanControllerRoot extends BaseController {
 				if ($this->people[$i]->canDisplayName()) {
 					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $this->people[$i]->getFullName()));
 					print "&nbsp;<a href=\"".encode_url($this->people[$i]->getLinkUrl())."\">".$indiName."</a>";
-					print_privacy_error($CONTACT_EMAIL);
+					print_privacy_error();
 					print "<br />";
 					$printed = true;
 				} else
 					if (!$printed) {
-						print_privacy_error($CONTACT_EMAIL);
+						print_privacy_error();
 						print "<br />";
 					}
 			}

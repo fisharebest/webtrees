@@ -69,7 +69,7 @@ if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 		if (!$controller->indi->canDisplayName()) {
 			echo "\n\t<table class=\"facts_table\">";
 			echo '<tr><td class="facts_value">';
-			print_privacy_error($CONTACT_EMAIL);
+			print_privacy_error();
 			echo '</td></tr>';
 			echo "\n\t</table>\n<br />";
 			echo "<script type=\"text/javascript\">\n";

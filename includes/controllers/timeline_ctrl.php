@@ -165,12 +165,12 @@ class TimelineControllerRoot extends BaseController {
 				if (!$this->people[$i]->canDisplayDetails()) {
 					if ($this->people[$i]->canDisplayName()) {
 						print "&nbsp;<a href=\"".encode_url($this->people[$i]->getLinkUrl())."\">".PrintReady($this->people[$i]->getFullName())."</a>";
-						print_privacy_error($CONTACT_EMAIL);
+						print_privacy_error();
 						print "<br />";
 						$printed = true;
 					}
 					else if (!$printed) {
-						print_privacy_error($CONTACT_EMAIL);
+						print_privacy_error();
 						print "<br />";
 					}
 				}

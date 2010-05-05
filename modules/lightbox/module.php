@@ -81,7 +81,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		if (!$this->controller->indi->canDisplayDetails()) {
 			print "<table class=\"facts_table\" cellpadding=\"0\">\n";
 			print "<tr><td class=\"facts_value\">";
-			print_privacy_error($CONTACT_EMAIL);
+			print_privacy_error();
 			print "</td></tr>";
 			print "</table>";
 		}else{

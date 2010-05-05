@@ -367,7 +367,7 @@ $maxyoffset = $Dbaseyoffset;
 if ((!empty($pid1))&&(!empty($pid2))) {
 	if (!$disp) {
 		print "<br /><br />";
-		print_privacy_error($CONTACT_EMAIL);
+		print_privacy_error();
 	}
 	else {
 		if (isset($_SESSION["relationships"][$path_to_find])) $node = $_SESSION["relationships"][$path_to_find];

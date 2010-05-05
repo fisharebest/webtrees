@@ -80,7 +80,7 @@ class RepositoryControllerRoot extends BaseController {
 
 		if (!$this->repository->canDisplayDetails()) {
 			print_header(i18n::translate('Private')." ".i18n::translate('Repository Information'));
-			print_privacy_error($CONTACT_EMAIL);
+			print_privacy_error();
 			print_footer();
 			exit;
 		}

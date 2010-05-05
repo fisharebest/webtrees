@@ -44,7 +44,7 @@ if (!$controller->family){
 	exit;
 }
 else if (!$controller->family->canDisplayDetails()) {
-	print_privacy_error($CONTACT_EMAIL);
+	print_privacy_error();
 	print_footer();
 	exit;
 }

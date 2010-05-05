@@ -161,7 +161,7 @@ class TreeNav {
 		<div id="out_<?php print $this->name; ?>" dir="ltr" style="position: relative; <?php print $widthS.$heightS; ?>text-align: center; overflow: hidden; border: 1px solid;">
 			<div id="in_<?php print $this->name; ?>" style="position: relative; left: -20px; width: auto; cursor: move;" onmousedown="dragStart(event, 'in_<?php print $this->name; ?>', <?php print $this->name; ?>);" onmouseup="dragStop(event);">
 			<?php $parent=null;
-			//if ($this->rootPerson!=null && !$this->rootPerson->canDisplayDetails()) print_privacy_error($CONTACT_EMAIL);
+			//if ($this->rootPerson!=null && !$this->rootPerson->canDisplayDetails()) print_privacy_error();
 			if (!$this->allSpouses) $this->drawPerson($this->rootPerson, $this->generations, 0, $parent);
 			else $this->drawPersonAllSpouses($this->rootPerson, $this->generations, 0);?>
 			</div>

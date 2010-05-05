@@ -168,7 +168,7 @@ class FamilyRoot extends BaseController {
 
 		if ($this->showLivingHusb == false && $this->showLivingWife == false) {
 			print_header(i18n::translate('Private')." ".i18n::translate('Family Information'));
-			print_privacy_error($CONTACT_EMAIL);
+			print_privacy_error();
 			print_footer();
 			exit;
 		}

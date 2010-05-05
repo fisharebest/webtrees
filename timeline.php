@@ -303,7 +303,7 @@ $controller->checkPrivacy();
 			<br />
 		<?php
 		} else {
-			print_privacy_error($CONTACT_EMAIL);
+			print_privacy_error();
 			?>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlentities($pid, ENT_COMPAT, 'UTF-8'); ?>" />
 			<?php if (!$controller->isPrintPreview()) {
