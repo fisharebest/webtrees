@@ -537,29 +537,6 @@ function fetch_child_ids($parent_id, $ged_id) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Count the number of records of each type in the database.  Return an array
-// of 'type'=>count for each type where records exist.
-////////////////////////////////////////////////////////////////////////////////
-function count_all_records($ged_id) {
-	global $TBLPREFIX;
-
-	return
-		WT_DB::prepare(
-			"SELECT 'INDI' AS type, COUNT(*) AS num FROM {$TBLPREFIX}individuals WHERE i_file=?".
-			" UNION ALL ".
-			"SELECT 'FAM'  AS type, COUNT(*) AS num FROM {$TBLPREFIX}families    WHERE f_file=?".
-			" UNION ALL ".
-			"SELECT 'SOUR' AS type, COUNT(*) AS num FROM {$TBLPREFIX}sources     WHERE s_file=?".
-			" UNION ALL ".
-			"SELECT 'OBJE' AS type, COUNT(*) AS num FROM {$TBLPREFIX}media       WHERE m_gedfile=?".
-			" UNION ALL ".
-			"SELECT o_type AS type, COUNT(*) as num FROM {$TBLPREFIX}other       WHERE o_file=? GROUP BY type"
-		)
-		->execute(array($ged_id, $ged_id, $ged_id, $ged_id, $ged_id))
-		->fetchAssoc();
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Count the number of records linked to a given record
 ////////////////////////////////////////////////////////////////////////////////
 function count_linked_indi($xref, $link, $ged_id) {
