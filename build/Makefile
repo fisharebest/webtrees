@@ -85,7 +85,6 @@ $(LANGUAGE_ARCHIVE):
 $(POT): $(PHP)
 	rm -Rf tmp_reports
 	mkdir tmp_reports
-	for file in ../modules/*/*.xml; do cat $$file | php -r "echo preg_replace('/<PGVRvar var=\"([^\"]+)\" *\/>/', '<'.'?php echo \\1; ?>', file_get_contents('php://stdin'));" > tmp_reports/$$(basename $$file.php); done
-	#cat ../reports/*.xml | php -r "echo preg_replace('/<PGVRvar var=\"([^\"]+)\" *\/>/', '<'.'?php echo \\1; ?>', file_get_contents('php://stdin'));" > dummy.php
+	for file in ../modules/*/*.xml; do cat $$file | php -r "echo preg_replace('/(i18n::[^)]+\))/', '<'.'?php echo \\1; ?>', file_get_contents('php://stdin'));" > tmp_reports/$$(echo $$file.php | cut -c 12- | tr / _); done
 	@xgettext --package-name=$(PACKAGE) --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1 $(PHP) tmp_reports/*.php
 	rm -Rf tmp_reports
