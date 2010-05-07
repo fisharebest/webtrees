@@ -104,7 +104,6 @@ if (selectedTab != "" && selectedTab != "undefined" && selectedTab != null) {
 
 var tabCache = new Array();
 var pinned = false;
-var sb_open = false;
 
 jQuery(document).ready(function(){
 	// TODO: change images directory when the common images will be deleted.
@@ -235,7 +234,6 @@ jQuery(document).ready(function(){
 	</div>
 	
 <?php // -- Sidebar --
-
 		global $controller;
 		if (method_exists($controller, 'getOtherMenu')) {	
 			// echo "&nbsp;";
@@ -250,8 +248,8 @@ jQuery(document).ready(function(){
 			<?php
 			// =====================================
 		}
-
 ?>
+
 <?php
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();

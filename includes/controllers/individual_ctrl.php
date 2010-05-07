@@ -102,7 +102,7 @@ class IndividualControllerRoot extends BaseController {
 	*/
 	function init() {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $GEDCOM_DEFAULT_TAB;
-		global $USE_QUICK_UPDATE, $DEFAULT_PIN_STATE, $pid;
+		global $USE_QUICK_UPDATE, $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
 		global $Fam_Navigator;
 
 		$this->sexarray["M"] = i18n::translate('Male');
@@ -274,6 +274,9 @@ class IndividualControllerRoot extends BaseController {
 		if (!isset($_SESSION['WT_pin']) && $DEFAULT_PIN_STATE)
 			 $_SESSION['WT_pin'] = true;
 			 
+		if (!isset($_SESSION['WT_sb_closed']) && $DEFAULT_SB_CLOSED_STATE)
+			 $_SESSION['WT_sb_closed'] = true;
+			 
 		//-- handle ajax calls
 		if ($this->action=="ajax") {
 			$tab = 0;
@@ -297,6 +300,11 @@ class IndividualControllerRoot extends BaseController {
 			if (isset($_REQUEST['pin'])) {
 				if ($_REQUEST['pin']=='true') $_SESSION['WT_pin'] = true;
 				else $_SESSION['WT_pin'] = false;
+			}
+			
+			if (isset($_REQUEST['sb_closed'])) {
+				if ($_REQUEST['sb_closed']=='true') $_SESSION['WT_sb_closed'] = true;
+				else $_SESSION['WT_sb_closed'] = false;
 			}
 			
 			//-- only get the requested tab and then exit

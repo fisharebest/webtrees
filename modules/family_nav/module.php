@@ -283,8 +283,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			?>
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
-				<?php
-				echo "<a style=\"padding:0px; width:100%;\" href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
+				<?php				 
+				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\"href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
 				echo "<b>".$label."&nbsp;&nbsp;</b><span class=\"age\">(".$famid.")</span>";
 				echo "</a>";
 				?>
