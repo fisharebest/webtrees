@@ -472,7 +472,7 @@ class LifespanControllerRoot extends BaseController {
 							$fact = $val->getType();
 						}
 						$place = $val->getPlace();
-						$trans = i18n::translate($fact);
+						$trans = translate_fact($fact);
 						if (isset($eventinformation[$evntwdth])) {
 							$eventinformation[$evntwdth] .= "<br />\n".$trans."<br />\n".strip_tags($date->Display(false, '', NULL, false))." ".$place;
 						} else {
