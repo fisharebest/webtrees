@@ -113,19 +113,19 @@ print_header(i18n::translate('Advanced Search'));
 		sel.name = 'plusminus['+row+']';
 		var opt = document.createElement('option');
 		opt.value='';
-		opt.text='<?php print i18n::translate('Exact'); ?>';
+		opt.text='<?php echo i18n::translate('Exact date'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='';
-		opt.text='+/- 2 <?php print i18n::translate('years'); ?>';
+		opt.text='<?php echo i18n::translate('+/- 2 years'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='5';
-		opt.text='+/- 5 <?php print i18n::translate('years'); ?>';
+		opt.text='<?php echo i18n::translate('+/- 5 years'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='10';
-		opt.text='+/- 10 <?php print i18n::translate('years'); ?>';
+		opt.text='<?php echo i18n::translate('+/- 10 years'); ?>';
 		sel.appendChild(opt);
 		var spc = document.createTextNode(' ');
 		elm.appendChild(spc);
@@ -134,13 +134,13 @@ print_header(i18n::translate('Advanced Search'));
 //-->
 </script>
 
-<h2 class="center"><?php print $controller->getPageTitle(); ?></h2>
+<h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->PrintResults(); ?>
 <!--	/*************************************************** Search Form Outer Table **************************************************/ -->
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
-<input type="hidden" name="action" value="<?php print $controller->action; ?>" />
+<input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
-<table id="field_table" class="list_table $TEXT_DIRECTION" width="35%" border="0">
+<table id="field_table" class="list_table <?php print $TEXT_DIRECTION; ?>" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center; ">
 			<?php echo i18n::translate('Advanced Search'), help_link('advanced_search'); ?>
@@ -177,10 +177,10 @@ print_header(i18n::translate('Advanced Search'));
 			if (preg_match("/:DATE$/", $currentFieldSearch)>0) {
 				?>
 				<select name="plusminus[<?php print $i ?>]">
-					<option value=""><?php print i18n::translate('Exact'); ?></option>
-					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) print " selected=\"selected\""; ?>>+/- 2 <?php print i18n::translate('years'); ?></option>
-					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) print "selected=\"selected\""; ?>>+/- 5 <?php print i18n::translate('years'); ?></option>
-					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) print "selected=\"selected\""; ?>>+/- 10 <?php print i18n::translate('years'); ?></option>
+					<option value=""><?php print i18n::translate('Exact date'); ?></option>
+					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) print " selected=\"selected\""; ?>><?php print i18n::translate('+/- 2 years'); ?></option>
+					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) print "selected=\"selected\""; ?>><?php print i18n::translate('+/- 5 years'); ?></option>
+					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) print "selected=\"selected\""; ?>><?php print i18n::translate('+/- 10 years'); ?></option>
 				</select>
 			<?php }?>
 		</td>
@@ -223,7 +223,7 @@ print_header(i18n::translate('Advanced Search'));
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo i18n::translate('GIVN'); ?>
+							<?php echo translate_fact('GIVN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>" />
@@ -238,7 +238,7 @@ print_header(i18n::translate('Advanced Search'));
 					<tr>
 						<?php $j++; ?>
 						<td class="list_label">
-							<?php echo i18n::translate('SURN'); ?>
+							<?php echo translate_fact('SURN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>" />
@@ -260,7 +260,7 @@ print_header(i18n::translate('Advanced Search'));
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo i18n::translate('GIVN'); ?>
+							<?php echo translate_fact('GIVN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>" />
@@ -275,7 +275,7 @@ print_header(i18n::translate('Advanced Search'));
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo i18n::translate('SURN'); ?>
+							<?php echo translate_fact('SURN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>" />
