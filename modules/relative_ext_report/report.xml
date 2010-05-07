@@ -4,10 +4,10 @@
 	<PGVRTitle><PGVRvar var="i18n::translate('Expanded Relatives Report')" /></PGVRTitle>
 	<PGVRDescription>Prints a list of individuals related to a specific person</PGVRDescription>
 	<PGVRInput name="pid" lookup="INDI" type="text"><PGVRvar var="i18n::translate('Enter Individual ID')" /></PGVRInput>
-	<PGVRInput name="relatives" type="select" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="i18n::translate('Choose relatives')" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none,ID,NAME,BIRT:DATE,DEAT:DATE"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter,A3,A4,legal"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
+	<PGVRInput name="relatives" type="select" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><PGVRvar var="i18n::translate('Choose relatives')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|ID=>i18n::translate('ID number')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')|DEAT:DATE=>i18n::translate('Date of death')"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 
 	<!-- Header -->
 	<PGVRStyle name="header" font="$fonts" size="14" />

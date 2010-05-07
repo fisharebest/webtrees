@@ -4,14 +4,14 @@
 	<PGVRTitle><PGVRvar var="i18n::translate('Close Relatives Report')" /></PGVRTitle>
 	<PGVRDescription>Prints an individual record report showing close relatives</PGVRDescription>
 	<PGVRInput name="pid" type="text" default="" lookup="INDI"><PGVRvar var="i18n::translate('Enter Individual ID')"/></PGVRInput>
-	<PGVRInput name="relatives" type="select" options="child-family,spouse-family,direct-ancestors,ancestors,descendants,all"><PGVRvar var="i18n::translate('Choose relatives')"/></PGVRInput>
-	<PGVRInput name="maxgen" type="select" default="4" options="*,1,2,3,4,5,6,7,8,9,10"><PGVRvar var="i18n::translate('Generations')"/></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none,BIRT:DATE,NAME"><PGVRvar var="i18n::translate('Sort by')"/></PGVRInput>
+	<PGVRInput name="relatives" type="select" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><PGVRvar var="i18n::translate('Choose relatives')"/></PGVRInput>
+	<PGVRInput name="maxgen" type="select" default="4" options="*=>*|1=>1|2=>2|3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|10=>10"><PGVRvar var="i18n::translate('Generations')"/></PGVRInput>
+	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|BIRT:DATE=>i18n::translate('Date of birth')|NAME=>i18n::translate('Name')"><PGVRvar var="i18n::translate('Sort by')"/></PGVRInput>
 	<PGVRInput name="sources" type="checkbox" default="0"><PGVRvar var="i18n::translate('Show sources?')"/></PGVRInput>
 	<PGVRInput name="notes" type="checkbox" default="1"><PGVRvar var="i18n::translate('Show notes?')"/></PGVRInput>
-	<PGVRInput name="photos" type="select" default="highlighted" options="none,all,highlighted"><PGVRvar var="i18n::translate('Show photos?')"/></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="A3,A4,letter,legal"><PGVRvar var="i18n::translate('Page size')"/></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0,dejavusans,helvetica"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
+	<PGVRInput name="photos" type="select" default="highlighted" options="none=>i18n::translate('None')|all=>i18n::translate('All')|highlighted=>i18n::translate('Highlighted image')"><PGVRvar var="i18n::translate('Show photos?')"/></PGVRInput>
+	<PGVRInput name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
+	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
 	<PGVRInput name="colors" type="checkbox" default="1"><PGVRvar var="i18n::translate('Use colors')"/></PGVRInput>
 
 	<!-- Header -->
