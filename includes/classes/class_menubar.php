@@ -902,18 +902,20 @@ class MenuBar
 		}
 		//-- add wiki links
 		$menu->addSeparator();
-		$submenu = new Menu(i18n::translate('Wiki Main Page'), WT_WEBTREES_WIKI.'/en/index.php?title=Main_Page" target="_blank');
+		$submenu = new Menu(i18n::translate('Wiki Main Page'), WT_WEBTREES_WIKI.'" target="_blank');
+		if (!empty($WT_IMAGES["wiki"]["small"]))
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["wiki"]["small"]);
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_wiki");
 		$menu->addSubmenu($submenu);
-
-		$submenu = new Menu(i18n::translate('Wiki User\'s Guide'), WT_WEBTREES_WIKI.'/en/index.php?title=Users_Guide" target="_blank');
-		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_wiki");
-		$menu->addSubmenu($submenu);
-
+// These two sub menu items temporarily removed as the WIKI pages do not exist
+//		$submenu = new Menu(i18n::translate('Wiki User\'s Guide'), WT_WEBTREES_WIKI.'/en/index.php?title=Users_Guide" target="_blank');
+//		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_wiki");
+//		$menu->addSubmenu($submenu);
+//
 		if (WT_USER_GEDCOM_ADMIN) {
-			$submenu = new Menu(i18n::translate('Wiki Administrator\'s Guide'), WT_WEBTREES_WIKI.'/en/index.php?title=Administrators_Guide" target="_blank');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_wiki");
-			$menu->addSubmenu($submenu);
+//			$submenu = new Menu(i18n::translate('Wiki Administrator\'s Guide'), WT_WEBTREES_WIKI.'/en/index.php?title=Administrators_Guide" target="_blank');
+//			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_wiki");
+//			$menu->addSubmenu($submenu);
 		}
 
 		//-- add contact links to help menu

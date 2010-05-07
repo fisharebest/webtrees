@@ -117,6 +117,7 @@ $WT_IMAGES["source"]["small"] = "small/source.gif";
 $WT_IMAGES["statistic"]["small"] = "small/statistic.gif";
 $WT_IMAGES["timeline"]["small"] = "small/timeline.gif";
 $WT_IMAGES["favorites"]["small"] = "small/gedcom.gif";
+$WT_IMAGES["wiki"]["small"] = "small/w_22.png";
 
 //- PGV buttons for data entry pages
 $WT_IMAGES["addmedia"]["button"] = "buttons/addmedia.gif";

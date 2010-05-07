@@ -153,16 +153,13 @@ if ($view!='simple') {
 			MenuBar::getCalendarMenu(),
 			MenuBar::getReportsMenu(),
 			MenuBar::getSearchMenu(),
-			MenuBar::getOptionalMenu()
+			MenuBar::getOptionalMenu(),
+			MenuBar::getHelpMenu()
 		);
 		foreach (MenuBar::getModuleMenus() as $menu) {
 			$menu_items[]=$menu;
 		}
 
-		// Help menu
-		$menu = new Menu(i18n::translate('Help'), "#", "down");
-		$menu->addOnclick('return helpPopup("'.WT_SCRIPT_NAME.'");');
-		$menu_items[]=$menu;
 		echo
 			'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',
 			htmlspecialchars($GEDCOM_TITLE),
