@@ -126,8 +126,8 @@ abstract class WT_Module {
 		static $blocks=null;
 		if ($blocks===null) {
 			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
+			usort($blocks, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
-		usort($blocks, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $blocks;
 	}
 
@@ -136,8 +136,8 @@ abstract class WT_Module {
 		static $charts=null;
 		if ($charts===null) {
 			$charts=self::getActiveModulesByComponent('chart', $ged_id, $access_level);
+			usort($charts, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
-		usort($charts, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $charts;
 	}
 
@@ -146,6 +146,7 @@ abstract class WT_Module {
 		static $menus=null;
 		if ($menus===null) {
 			$menus=self::getActiveModulesByComponent('menu', $ged_id, $access_level);
+			// Don't sort them - the order comes from the database
 		}
 		return $menus;
 	}
@@ -155,8 +156,8 @@ abstract class WT_Module {
 		static $reports=null;
 		if ($reports===null) {
 			$reports=self::getActiveModulesByComponent('report', $ged_id, $access_level);
+			usort($reports, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
-		usort($reports, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $reports;
 	}
 
@@ -165,6 +166,7 @@ abstract class WT_Module {
 		static $sidebars=null;
 		if ($sidebars===null) {
 			$sidebars=self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
+			// Don't sort them - the order comes from the database
 		}
 		return $sidebars;
 	}
@@ -174,6 +176,7 @@ abstract class WT_Module {
 		static $tabs=null;
 		if ($tabs===null) {
 			$tabs=self::getActiveModulesByComponent('tab', $ged_id, $access_level);
+			// Don't sort them - the order comes from the database
 		}
 		return $tabs;
 	}
@@ -183,8 +186,8 @@ abstract class WT_Module {
 		static $themes=null;
 		if ($themes===null) {
 			$themes=self::getActiveModulesByComponent('theme', $ged_id, $access_level);
+			usort($themes, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
-		usort($themes, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $themes;
 	}
 
@@ -352,9 +355,5 @@ abstract class WT_Module {
 				"INSERT INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
-	}
-
-	static public function compare_name(&$a, &$b) {
-		return strcmp($a->getName(), $b->getName());
 	}
 }

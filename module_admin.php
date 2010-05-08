@@ -61,6 +61,8 @@ $action = safe_POST('action');
 if ($action=='update_mods') {
 	foreach (WT_Module::getInstalledModules() as $module) {
 		$module_name=$module->getName();
+		$status=safe_POST_bool("status-{$module_name}");
+		WT_DB::prepare("UPDATE {$TBLPREFIX}module SET status=? WHERE module_name=?")->execute(array($status ? 'enabled' : 'disabled', $module_name));
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 			WT_DB::prepare("INSERT IGNORE INTO {$TBLPREFIX}module (module_name) VALUES (?)")->execute(array($module_name));
 
@@ -264,8 +266,13 @@ print_header(i18n::translate('Module Administration'));
     <tbody>
 <?php
 foreach (WT_Module::getInstalledModules() as $module) {
+	$status=WT_DB::prepare(
+		"SELECT status FROM {$TBLPREFIX}module WHERE module_name=?"
+	)->execute(array($module->getName()))->fetchOne();
 	?><tr>
-	<td class="list_value"><?php if (true) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+	<td class="list_value">
+		<input type="checkbox" name="status-<?php echo $module->getName(); ?>" value="Y" <?php if ($status=='enabled') {echo 'checked';} ?>/>
+	</td>
 	<td class="list_value"><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
 	<td class="list_value"><?php echo $module->getTitle()?></td>
 	<td class="list_value_wrap"><?php echo $module->getDescription()?></td>
