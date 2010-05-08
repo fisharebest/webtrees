@@ -77,7 +77,7 @@ if ($action=='update' && !isset($security_user)) {
 $i = 0;
 
 ?>
-<form method="post" name="configform" action="<?php print encode_url("module.php?mod=lightbox&pgvaction=lb_editconfig&pid={$pid}"); ?>">
+<form method="post" name="configform" action="<?php print encode_url("module.php?mod=lightbox&mod_action=lb_editconfig&pid={$pid}"); ?>">
 <input type="hidden" name="action" value="update" />
 
 	<table class="facts_table">

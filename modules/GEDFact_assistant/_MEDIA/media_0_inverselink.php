@@ -102,7 +102,7 @@ if ($action == "choose" && $paramok) {
 			alert(id_empty);
 		}else{
 			var iid = document.getElementById('gid').value;
-			var winblank = window.open('module.php?mod=GEDFact_assistant&pgvaction=_MEDIA/media_query_3a&iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
+			var winblank = window.open('module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_query_3a&iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
 		}
 	}
 	

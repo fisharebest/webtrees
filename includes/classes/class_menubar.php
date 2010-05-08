@@ -467,7 +467,7 @@ class MenuBar
 			//added for pedigree_map
 			case "pedigree_map":
 				//-- pedigree map
-				$link = "module.php?ged=".WT_GEDCOM."&mod=googlemap&pgvaction=pedigree_map";
+				$link = "module.php?ged=".WT_GEDCOM."&mod=googlemap&mod_action=pedigree_map";
 				if ($rootid) $link .= "&rootid=".$rootid;
 				$submenu = new Menu(i18n::translate('Pedigree Map'), encode_url($link));
 				$submenu->addIcon('modules/googlemap/images/pedigree_map.gif');

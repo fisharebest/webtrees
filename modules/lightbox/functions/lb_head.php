@@ -81,7 +81,7 @@ if (!file_exists($lbHelpFile)) $lbHelpFile = "modules/lightbox/languages/help_te
 	}
 	
 	function goto_config_lightbox() {
-		window.location = "module.php?mod=lightbox&pgvaction=lb_editconfig&pid=<?php print $pid; ?>&gedcom=<?php print $GEDCOM; ?>&tab="+selectedTab;
+		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php print $pid; ?>&gedcom=<?php print $GEDCOM; ?>&tab="+selectedTab;
 	}
 -->
 </script>
@@ -113,7 +113,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
         if (WT_USER_IS_ADMIN) {
 			if ($LB_AL_HEAD_LINKS == "both") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				// print "<a href=\"".encode_url("module.php?mod=lightbox&pgvaction=lb_editconfig&pid={$pid}&gedcom={$GEDCOM}&tab=4")."\">";
+				// print "<a href=\"".encode_url("module.php?mod=lightbox&mod_action=lb_editconfig&pid={$pid}&gedcom={$GEDCOM}&tab=4")."\">";
 				print "<a href=\"javascript:goto_config_lightbox()\">";
 				print "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" /><br />" ;
 				print "" . i18n::translate('Lightbox-Album Configuration') . "&nbsp;";

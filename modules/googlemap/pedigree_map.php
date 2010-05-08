@@ -83,7 +83,7 @@ if (!$GOOGLEMAP_ENABLED) {
 	echo "<tr><td class=\"facts_value\">", i18n::translate('GoogleMap module disabled'), "</td></tr>\n";
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&pgvaction=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
 		echo "</td></tr>\n";
 	}
 	echo "</table><br />";
@@ -147,9 +147,9 @@ if (!$controller->isPrintPreview()) {
 	//-->
 </script>
 </td><td width="50px">&nbsp;</td><td>
-	  <form name="people" method="get" action="module.php?ged=<?php echo $GEDCOM; ?>&amp;mod=googlemap&amp;pgvaction=pedigree_map">
+	  <form name="people" method="get" action="module.php?ged=<?php echo $GEDCOM; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
 		<input type="hidden" name="mod" value="googlemap" />
-		<input type="hidden" name="pgvaction" value="pedigree_map" />
+		<input type="hidden" name="mod_action" value="pedigree_map" />
 		<table class="pedigree_table <?php echo $TEXT_DIRECTION; ?>" width="555">
 			<tr>
 				<td colspan="5" class="topbottombar" style="text-align:center; ">
@@ -301,13 +301,13 @@ echo " background-image: url('images/loading.gif'); background-position: center;
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
 	echo "<tr><td align=\"left\">\n";
-	echo "<a href=\"module.php?mod=googlemap&pgvaction=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"center\">\n";
-	echo "<a href=\"module.php?mod=googlemap&pgvaction=places\">", i18n::translate('Edit geographic place locations'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=places\">", i18n::translate('Edit geographic place locations'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"right\">\n";
-	echo "<a href=\"module.php?mod=googlemap&pgvaction=placecheck\">", i18n::translate('Place Check'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=placecheck\">", i18n::translate('Place Check'), "</a>";
 	echo "</td></tr>\n";
 	echo "</table>\n";
 }
@@ -716,7 +716,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				echo "var point = new GLatLng(" . $lat[$i] . "," . $lon[$i]. ");\n";
 				echo "var marker = createMarker(point, \"" . addslashes($name). "\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 				echo "<div class='iwstyle'>";
-				echo "<a href='module.php?ged={$GEDCOM}&mod=googlemap&pgvaction=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+				echo "<a href='module.php?ged={$GEDCOM}&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 				if ($hideflags) echo "&hideflags=1";
 				if ($hidelines) echo "&hidelines=1";
 				if ($clustersize != 5) echo "&clustersize=". $clustersize; // ignoring the default of 5

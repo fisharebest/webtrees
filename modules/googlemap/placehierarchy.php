@@ -186,13 +186,13 @@ function create_map() {
 	if (WT_USER_IS_ADMIN) {
 		echo "<table style=\"width: ", $GOOGLEMAP_PH_XSIZE, "px\">";
 		echo "<tr><td align=\"left\">\n";
-		echo "<a href=\"module.php?mod=googlemap&amp;pgvaction=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&amp;mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
 		echo "</td>\n";
 		echo "<td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&pgvaction=places\">", i18n::translate('Edit geographic place locations'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=places\">", i18n::translate('Edit geographic place locations'), "</a>";
 		echo "</td>\n";
 		echo "<td align=\"right\">\n";
-		echo "<a href=\"module.php?mod=googlemap&pgvaction=placecheck\">", i18n::translate('Place Check'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=placecheck\">", i18n::translate('Place Check'), "</a>";
 		echo "</td></tr>\n";
 		echo "</table>\n";
 	}
@@ -304,7 +304,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo "<br />", i18n::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=", $levelm, "&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
+			echo "<br /><a href='module.php?mod=googlemap&mod_action=places&parent=", $levelm, "&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
 		echo "</div></td>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), PrintReady(addslashes($place2['place']))), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
@@ -615,7 +615,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 							echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><b>";
 							echo substr($placelevels, 2), "</b><br />", i18n::translate('This place has no coordinates');
 							if (WT_USER_IS_ADMIN)
-								echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=0&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
+								echo "<br /><a href='module.php?mod=googlemap&mod_action=places&parent=0&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
 							echo "<br /></div></td>\", icon_type, \"", i18n::translate('Edit geographic location'), "\");\n";
 							echo "place_map.addOverlay(marker);\n";
 							echo "bounds.extend(point);\n";
@@ -672,7 +672,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'>";
 		echo "<br />", i18n::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&pgvaction=places&parent=0&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
+			echo "<br /><a href='module.php?mod=googlemap&mod_action=places&parent=0&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
 		echo "<br /></div></td>\", icon_type, \"", i18n::translate('Edit geographic location'), "\");\n";
 		echo "place_map.addOverlay(marker);\n";
 		echo "bounds.extend(point);\n";

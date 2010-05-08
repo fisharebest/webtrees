@@ -296,7 +296,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				echo "</a>";
 				echo "<br /><a href=\"pedigree.php?rootid=$pid\" >".i18n::translate('Pedigree Tree')."</a>";
 				if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
-					echo "<br /><a href=\"module.php?mod=googlemap&pgvaction=pedigree_map&rootid=".$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
+					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
 					echo "<br /><a href=\"".encode_url("relationship.php?pid1=".WT_USER_GEDCOM_ID."&pid2={$pid}&ged={$GEDCOM}")."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";

@@ -38,7 +38,7 @@ if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 		echo '<tr><td id="no_tab8" colspan="2" class="facts_value">', i18n::translate('GoogleMap module disabled'), "</td></tr>\n";
 		if (WT_USER_IS_ADMIN) {
 			echo "<tr><td align=\"center\" colspan=\"2\">\n";
-			echo '<a href="module.php?mod=googlemap&amp;pgvaction=editconfig">', i18n::translate('Manage GoogleMap configuration'), '</a>';
+			echo '<a href="module.php?mod=googlemap&amp;mod_action=editconfig">', i18n::translate('Manage GoogleMap configuration'), '</a>';
 			echo '</td>';
 			echo "</tr>\n";
 		}
@@ -86,13 +86,13 @@ if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 					if (WT_USER_IS_ADMIN) {
 						echo "<table width=\"100%\"><tr>\n";
 						echo "<td width=\"33%\" align=\"left\">\n";
-						echo '<a href="module.php?mod=googlemap&amp;pgvaction=editconfig">', i18n::translate('Manage GoogleMap configuration'), '</a>';
+						echo '<a href="module.php?mod=googlemap&amp;mod_action=editconfig">', i18n::translate('Manage GoogleMap configuration'), '</a>';
 						echo "</td>\n";
 						echo "<td width=\"33%\" align=\"center\">\n";
-						echo '<a href="module.php?mod=googlemap&amp;pgvaction=places">', i18n::translate('Edit geographic place locations'), '</a>';
+						echo '<a href="module.php?mod=googlemap&amp;mod_action=places">', i18n::translate('Edit geographic place locations'), '</a>';
 						echo "</td>\n";
 						echo "<td width=\"33%\" align=\"right\">\n";
-						echo '<a href="module.php?mod=googlemap&amp;pgvaction=placecheck">', i18n::translate('Place Check'), '</a>';
+						echo '<a href="module.php?mod=googlemap&amp;mod_action=placecheck">', i18n::translate('Place Check'), '</a>';
 						echo "</td>\n";
 						echo "</tr></table>\n";
 					}

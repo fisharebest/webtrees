@@ -50,13 +50,13 @@ if (WT_USER_IS_ADMIN) { ?>
 	  <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('GoogleMap Configuration'); ?></td>
    </tr>
    <tr>
-      <td class="optionbox"><a href="module.php?mod=googlemap&pgvaction=editconfig"><?php echo i18n::translate('Manage GoogleMap configuration');?></a><?php echo help_link('GOOGLEMAP_CONFIG','googlemap'); ?>
+      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=editconfig"><?php echo i18n::translate('Manage GoogleMap configuration');?></a><?php echo help_link('GOOGLEMAP_CONFIG','googlemap'); ?>
 	  </td>
-      <td class="optionbox"><a href="module.php?mod=googlemap&pgvaction=places"><?php echo i18n::translate('Edit geographic place locations');?></a><?php echo help_link('PLE_EDIT','googlemap'); ?>
+      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=places"><?php echo i18n::translate('Edit geographic place locations');?></a><?php echo help_link('PLE_EDIT','googlemap'); ?>
 	  </td>
    </tr>
    <tr>
-      <td class="optionbox"><a href="module.php?mod=googlemap&pgvaction=placecheck"><?php echo i18n::translate('Place Check');?></a><?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
+      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=placecheck"><?php echo i18n::translate('Place Check');?></a><?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
 	  </td>
       <td class="optionbox">&nbsp;
 	  </td>
@@ -65,7 +65,7 @@ if (WT_USER_IS_ADMIN) { ?>
 <?php 
 print_footer();
 } else {
-	header("Location: login.php?url=module.php?mod=googlemap&pgvaction=admin-config");
+	header("Location: login.php?url=module.php?mod=googlemap&mod_action=admin-config");
 	exit;
 }
 ?>

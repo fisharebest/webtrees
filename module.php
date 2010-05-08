@@ -65,15 +65,15 @@ switch($modinfo['Module']['type'])
 {
 	case WT_MOD_SIMPLE:
 	{
-		if (!isset ($_REQUEST['pgvaction']))
+		if (!isset ($_REQUEST['mod_action']))
 		{
-			$_REQUEST['pgvaction'] = 'index';
+			$_REQUEST['mod_action'] = 'index';
 		}
-		if (!file_exists(WT_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['pgvaction'].'.php'))
+		if (!file_exists(WT_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['mod_action'].'.php'))
 		{
-			$_REQUEST['pgvaction'] = 'index';
+			$_REQUEST['mod_action'] = 'index';
 		}
-		require_once WT_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['pgvaction'].'.php';
+		require_once WT_ROOT.'modules/'.$_REQUEST['mod'].'/'.$_REQUEST['mod_action'].'.php';
 		break;
 	}
 	case WT_MOD_OO:

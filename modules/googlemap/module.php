@@ -48,7 +48,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=googlemap&pgvaction=admin-config';
+		return 'module.php?mod=googlemap&mod_action=admin-config';
 	}
 
 	// Implement WT_Module_Tab
@@ -88,7 +88,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			print "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>\n";
 			if (WT_USER_IS_ADMIN) {
 				print "<tr><td align=\"center\" colspan=\"2\">\n";
-				print "<a href=\"module.php?mod=googlemap&amp;pgvaction=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+				print "<a href=\"module.php?mod=googlemap&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
 				print "</td>";
 				print "</tr>\n";
 			}
@@ -131,13 +131,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if (WT_USER_IS_ADMIN) {
 						print "<table width=\"100%\"><tr>\n";
 						print "<td width=\"33%\" align=\"left\">\n";
-						print "<a href=\"module.php?mod=googlemap&amp;pgvaction=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+						print "<a href=\"module.php?mod=googlemap&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
 						print "</td>\n";
 						print "<td width=\"33%\" align=\"center\">\n";
-						print "<a href=\"module.php?mod=googlemap&amp;pgvaction=places\">".i18n::translate('Edit geographic place locations')."</a>";
+						print "<a href=\"module.php?mod=googlemap&amp;mod_action=places\">".i18n::translate('Edit geographic place locations')."</a>";
 						print "</td>\n";
 						print "<td width=\"33%\" align=\"right\">\n";
-						print "<a href=\"module.php?mod=googlemap&amp;pgvaction=placecheck\">".i18n::translate('Place Check')."</a>";
+						print "<a href=\"module.php?mod=googlemap&amp;mod_action=placecheck\">".i18n::translate('Place Check')."</a>";
 						print "</td>\n";
 						print "</tr></table>\n";
 					}

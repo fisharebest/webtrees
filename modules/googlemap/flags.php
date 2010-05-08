@@ -108,10 +108,10 @@ else {
 
 	function selectCountry() {
 		if (document.flags.COUNTRYSELECT.value == "Countries") {
-			window.location="module.php?mod=googlemap&pgvaction=flags";
+			window.location="module.php?mod=googlemap&mod_action=flags";
 		}
 		else {
-			window.location="module.php?mod=googlemap&pgvaction=flags&countrySelected=" + document.flags.COUNTRYSELECT.value;
+			window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value;
 		}
 	}
 
@@ -145,7 +145,7 @@ else {
 	}
 ?>
 
-<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&pgvaction=flags&countrySelected=<?php echo $countrySelected;?>">
+<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $countrySelected;?>">
 	<input type="hidden" name="action" value="ChangeFlag" />
 	<input type="hidden" name="selcountry" value="<?php echo $countrySelected;?>" />
 	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo i18n::translate('Save');?>" /><br />

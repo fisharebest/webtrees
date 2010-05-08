@@ -48,7 +48,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=lightbox&pgvaction=lb_editconfig';
+		return 'module.php?mod=lightbox&mod_action=lb_editconfig';
 	}
 
 	// Implement WT_Module_Tab

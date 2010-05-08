@@ -42,7 +42,7 @@ if (WT_USER_IS_ADMIN) { ?>
    </tr>
    <tr>
       <td class="optionbox">
-		<a href="module.php?mod=lightbox&pgvaction=lb_editconfig"><?php echo i18n::translate('Manage Lightbox configuration');?>
+		<a href="module.php?mod=lightbox&mod_action=lb_editconfig"><?php echo i18n::translate('Manage Lightbox configuration');?>
 		</a><?php echo help_link('LIGHTBOX_CONFIG','lightbox'); ?>
 	  </td>
       <td class="optionbox">

@@ -646,7 +646,7 @@ if ($action=="add") {
 	}
 
 	function change_icon() {
-	window.open('module.php?mod=googlemap&pgvaction=flags&countrySelected=<?php echo $selected_country ?>', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
+	window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country ?>', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
 	return false;
 	}
 
@@ -713,7 +713,7 @@ if ($action=="add") {
 	//-->
 </script>
 
-<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;pgvaction=places_edit">
+<form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=places_edit">
 	<input type="hidden" name="action" value="<?php echo $action;?>record" />
 	<input type="hidden" name="placeid" value="<?php echo $placeid;?>" />
 	<input type="hidden" name="level" value="<?php echo $level;?>" />
@@ -824,7 +824,7 @@ if ($action=="add") {
 	<input name="save2" type="submit" value="<?php echo i18n::translate('Save');?>" /><br />
 </form>
 <?php
-$link = 'module.php?mod=googlemap&pgvaction=places&parent='.$placeid;
+$link = 'module.php?mod=googlemap&mod_action=places&parent='.$placeid;
 echo "<center><br /><br /><br /><a href=\"javascript:;\" onclick=\"edit_close('{$link}')\">", i18n::translate('Close Window'), "</a><br /></center>\n";
 
 print_simple_footer();
