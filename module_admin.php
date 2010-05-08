@@ -274,7 +274,7 @@ foreach (WT_Module::getInstalledModules() as $module) {
 		<input type="checkbox" name="status-<?php echo $module->getName(); ?>" value="Y" <?php if ($status=='enabled') {echo 'checked';} ?>/>
 	</td>
 	<td class="list_value"><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
-	<td class="list_value"><?php echo $module->getTitle()?></td>
+	<td class="list_value_wrap"><?php echo $module->getTitle()?></td>
 	<td class="list_value_wrap"><?php echo $module->getDescription()?></td>
 	<td class="list_value"><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 	<td class="list_value"><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
