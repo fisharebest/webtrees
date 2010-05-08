@@ -117,15 +117,15 @@ print_header(i18n::translate('Advanced Search'));
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='';
-		opt.text='<?php echo i18n::translate('+/- 2 years'); ?>';
+		opt.text='<?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='5';
-		opt.text='<?php echo i18n::translate('+/- 5 years'); ?>';
+		opt.text='<?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='10';
-		opt.text='<?php echo i18n::translate('+/- 10 years'); ?>';
+		opt.text='<?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?>';
 		sel.appendChild(opt);
 		var spc = document.createTextNode(' ');
 		elm.appendChild(spc);
@@ -178,9 +178,9 @@ print_header(i18n::translate('Advanced Search'));
 				?>
 				<select name="plusminus[<?php print $i ?>]">
 					<option value=""><?php print i18n::translate('Exact date'); ?></option>
-					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) print " selected=\"selected\""; ?>><?php print i18n::translate('+/- 2 years'); ?></option>
-					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) print "selected=\"selected\""; ?>><?php print i18n::translate('+/- 5 years'); ?></option>
-					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) print "selected=\"selected\""; ?>><?php print i18n::translate('+/- 10 years'); ?></option>
+					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) print " selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
+					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) print "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
+					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) print "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
 				</select>
 			<?php }?>
 		</td>
