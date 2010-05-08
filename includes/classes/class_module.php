@@ -95,6 +95,36 @@ abstract class WT_Module {
 	final public function &getController()   { return $this->controller; }
 	final public function setController(&$c) { $this->controller=$c;     }
 
+	// Run an action specified on the URL through mod=FOO&mod_action=BAR
+	public function modAction($mod_action) {
+		header('Location: index.php');
+	}
+
+	final static public function getActiveModules() {
+		global $TBLPREFIX;
+
+		$module_names=WT_DB::prepare(
+			"SELECT module_name".
+			" FROM {$TBLPREFIX}module".
+			" WHERE status='enabled'".
+			" ORDER BY module_name"
+		)->fetchOneColumn();
+		$array=array();
+		foreach ($module_names as $module_name) {
+			if (file_exists(WT_ROOT.'modules/'.$module_name.'/module.php')) {
+				require_once WT_ROOT.'modules/'.$module_name.'/module.php';
+				$class=$module_name.'_WT_Module';
+				$array[$module_name]=new $class();
+			} else {
+				// Module has been deleted from disk?  Remove it from the database.
+				AddToLog("Module {$module_name} has been deleted from disk - deleting from database", 'config');
+				WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM {$TBLPREFIX}module WHERE module_name=?")->execute(array($module_name));
+			}
+		}
+		return $array;
+	}
+
 	final static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
 		global $TBLPREFIX;
 
@@ -118,6 +148,9 @@ abstract class WT_Module {
 				WT_DB::prepare("DELETE FROM {$TBLPREFIX}module WHERE module_name=?")->execute(array($module_name));
 			}
 		}
+		if ($component!='menu' && $component!='sidebar' && $component!='tab') {
+			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+		}
 		return $array;
 	}
 
@@ -126,7 +159,6 @@ abstract class WT_Module {
 		static $blocks=null;
 		if ($blocks===null) {
 			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
-			usort($blocks, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $blocks;
 	}
@@ -136,7 +168,6 @@ abstract class WT_Module {
 		static $charts=null;
 		if ($charts===null) {
 			$charts=self::getActiveModulesByComponent('chart', $ged_id, $access_level);
-			usort($charts, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $charts;
 	}
@@ -146,7 +177,6 @@ abstract class WT_Module {
 		static $menus=null;
 		if ($menus===null) {
 			$menus=self::getActiveModulesByComponent('menu', $ged_id, $access_level);
-			// Don't sort them - the order comes from the database
 		}
 		return $menus;
 	}
@@ -156,7 +186,6 @@ abstract class WT_Module {
 		static $reports=null;
 		if ($reports===null) {
 			$reports=self::getActiveModulesByComponent('report', $ged_id, $access_level);
-			usort($reports, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $reports;
 	}
@@ -166,7 +195,6 @@ abstract class WT_Module {
 		static $sidebars=null;
 		if ($sidebars===null) {
 			$sidebars=self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
-			// Don't sort them - the order comes from the database
 		}
 		return $sidebars;
 	}
@@ -176,7 +204,6 @@ abstract class WT_Module {
 		static $tabs=null;
 		if ($tabs===null) {
 			$tabs=self::getActiveModulesByComponent('tab', $ged_id, $access_level);
-			// Don't sort them - the order comes from the database
 		}
 		return $tabs;
 	}
@@ -186,7 +213,6 @@ abstract class WT_Module {
 		static $themes=null;
 		if ($themes===null) {
 			$themes=self::getActiveModulesByComponent('theme', $ged_id, $access_level);
-			usort($themes, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $themes;
 	}
