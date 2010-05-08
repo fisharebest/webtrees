@@ -70,7 +70,15 @@ if ($sb_action!='none') {
 		foreach($sidebarmods as $mod) {
 			if (isset($controller)) $mod->setController($controller);
 			if ($mod->hasSidebarContent()) {
-				?><h3 title="<?php echo $mod->getName()?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
+				?>
+				<!-- ==== Adjust Sidebar Header Title tooltip display for module ==== -->
+				<!-- ==== directories with shortened names.    e.g. 'family_nav' ==== -->
+				<?php if ($mod->getName()=='family_nav') { ?>
+					<h3 title="<?php echo i18n::translate('family navigator')?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
+				<!-- ==== ====================================================== ==== -->
+				<?php } else { ?>
+					<h3 title="<?php echo $mod->getName()?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
+				<?php } ?>
 				<div id="sb_content_<?php echo $mod->getName()?>">
 				<?php if ($counter==0) echo $mod->getSidebarContent();
 				else {?><img src="<?php echo $WT_IMAGE_DIR ?>/loading.gif" /><?php }?>
