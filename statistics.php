@@ -46,6 +46,7 @@ if (isset($_REQUEST['tab'])) {
 $content = safe_GET('content');
 
 if (isset($content) && $content==1) {
+	header('Content-type: text/html; charset=UTF-8');
 	/*
 	* Initiate the stats object.
 	*/
