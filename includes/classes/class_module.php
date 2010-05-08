@@ -95,7 +95,7 @@ abstract class WT_Module {
 	final public function &getController()   { return $this->controller; }
 	final public function setController(&$c) { $this->controller=$c;     }
 
-	// Run an action specified on the URL through mod=FOO&mod_action=BAR
+	// Run an action specified on the URL through module.php?mod=FOO&mod_action=BAR
 	public function modAction($mod_action) {
 		header('Location: index.php');
 	}
@@ -223,12 +223,13 @@ abstract class WT_Module {
 		if ($modules===null) {
 			$dir=opendir(WT_ROOT.'modules');
 			while (($file=readdir($dir))!==false) {
-				if (preg_match('/^[a-z_]+$/', $file) && file_exists(WT_ROOT.'modules/'.$file.'/module.php')) {
+				if (preg_match('/^[a-zA-Z_]+$/', $file) && file_exists(WT_ROOT.'modules/'.$file.'/module.php')) {
 					require_once WT_ROOT.'modules/'.$file.'/module.php';
 					$class=$file.'_WT_Module';
-					$modules[]=new $class();					
+					$modules[$file]=new $class();
 				}
 			}
+			usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $modules;
 	}
@@ -239,10 +240,9 @@ abstract class WT_Module {
 		$modules=array();
 		foreach (self::getInstalledModules() as $module) {
 			if ($module instanceof WT_Module_Block) {
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $modules;
 	}
 
@@ -252,10 +252,9 @@ abstract class WT_Module {
 		$modules=array();
 		foreach (self::getInstalledModules() as $module) {
 			if ($module instanceof WT_Module_Chart) {
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $modules;
 	}
 
@@ -268,10 +267,9 @@ abstract class WT_Module {
 				$module->sort=WT_DB::prepare(
 					"SELECT menu_order FROM {$TBLPREFIX}module WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return $x->sort-$y->sort;'));
 		return $modules;
 	}
 
@@ -281,10 +279,9 @@ abstract class WT_Module {
 		$modules=array();
 		foreach (self::getInstalledModules() as $module) {
 			if ($module instanceof WT_Module_Report) {
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $modules;
 	}
 
@@ -297,10 +294,9 @@ abstract class WT_Module {
 				$module->sort=WT_DB::prepare(
 					"SELECT sidebar_order FROM {$TBLPREFIX}module WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return $x->sort-$y->sort;'));
 		return $modules;
 	}
 
@@ -313,10 +309,9 @@ abstract class WT_Module {
 				$module->sort=WT_DB::prepare(
 					"SELECT tab_order FROM {$TBLPREFIX}module WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return $x->sort-$y->sort;'));
 		return $modules;
 	}
 
@@ -326,10 +321,9 @@ abstract class WT_Module {
 		$modules=array();
 		foreach (self::getInstalledModules() as $module) {
 			if ($module instanceof WT_Module_Theme) {
-				$modules[]=$module;
+				$modules[$file]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $modules;
 	}
 
