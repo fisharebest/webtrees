@@ -48,7 +48,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=googlemap&mod_action=admin-config';
+		return 'module.php?mod=googlemap&mod_action=admin_config';
 	}
 
 	// Implement WT_Module_Tab
