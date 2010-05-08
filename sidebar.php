@@ -193,7 +193,7 @@ jQuery(document).ready(function() {
 		jQuery('#sidebarAccordion').show();
 		jQuery('#sidebar_pin').show();
 		// Shift content -----------------------------------
-   	   		var newwidth = 280;
+   	   		var newwidth = 310;
 	   		newwidth = jQuery('#tabs').width() - newwidth;
 			// --- NOTE: --- REM next line to avoid the "page shift" when Navigator is opened. (Purely a preference choice)
    	   		jQuery('#tabs > div').css('width', newwidth+'px');
