@@ -17,24 +17,28 @@
 .ui-tabs-nav li.ui-tabs-selected:hover	 { background:#f8f8f8; }
 .ui-tabs .ui-tabs-panel	 				 { background:#f8f8f8; }
 
-/* ------- Sidebar ------- */
+/* Sidebar --------------------------------*/
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; }
+.ui-accordion .ui-accordion-content-active { display: block;  height: 550px;}
+
 #sidebar {
 	position: absolute;
 	right: 0px;
 	width: 0px;
-	z-index: 50;
 	margin-left:0px;
 	margin-top: 4px;
-	margin-right: 19px;
-	background-color: #dddddd;
+	margin-right: 16px;
+	background-color: transparent;
+
 }
 #sidebar_controls {
 	position: absolute;
-	left: -20px;
 	top: 2px;
+	left: -22px;
 	margin: 0;
-	height: 18px; 
-	width: 20px;
+	height: 24px; 
+	width: 24px;
 	z-index: 10;
 	border: none;
 	background-color: transparent;
@@ -44,26 +48,26 @@
 }
 #sidebar_open img {
 	position: absolute;
-	padding-top: 3px;
-	padding-bottom: 3px;
+	padding-top: 1px;
+	padding-bottom: 0px;
 	margin-left: 0px;
-	height: 18px;
+	height: 22px;
 	width: 20px;
-	background-color: transparent;
+	background: transparent;
 }
-
 #sidebar_pin {
 	position: absolute;
-	top: -22px;
-	padding-top: 3px;
+	margin-top: 4px;
 	margin-left: 225px;
-	background: transparent; 
+	padding-top: 1px;
+	padding-bottom: 0px;
+	background: transparent;
 }
 #sidebar_pin img {
-	margin-top: -55px;
-	padding-right: 2px;
-	padding-left: 2px;
+	padding-right: 4px;
+	padding-left: 4px;
 }
+
 
 /* Navigator & Flyout menu Styles --------*/
 .nam a:hover{
@@ -88,7 +92,7 @@ color:black;
 	color:#000000;
 	text-align: left;
 	margin-top: -2px;
-	left: 64px;
+	left: 40px;
 	padding: 3px;
 }
 .flyout2 a:hover{

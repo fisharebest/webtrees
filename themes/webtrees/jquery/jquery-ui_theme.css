@@ -55,21 +55,26 @@
 }
 /* End of Flyout Menu styles*/
 
+
 /* Sidebar --------------------------------*/
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; }
+.ui-accordion .ui-accordion-content-active { display: block;  height: 550px;}
+
 #sidebar {
 	position: absolute;
 	right: 0px;
 	width: 0px;
-	z-index: 50;
 	margin-left:0px;
-	margin-top: 10px;
+	margin-top: 8px;
 	margin-right: 12px;
-	background-color: #dddddd;
+	background-color: transparent;
+
 }
 #sidebar_controls {
 	position: absolute;
-	top: 2px;
-	left: -24px; 
+	top: 0px;
+	left: -22px;
 	margin: 0;
 	height: 24px; 
 	width: 24px;
@@ -82,27 +87,26 @@
 }
 #sidebar_open img {
 	position: absolute;
-	padding: 0;
-	margin: 0;
-	height: 24px;
-	background-color: transparent;
+	padding-top: 1px;
+	padding-bottom: 0px;
+	margin-left: 0px;
+	height: 22px;
+	width: 20px;
+	background: transparent;
 }
 #sidebar_pin {
 	position: absolute;
-	top: -22px;
-	padding-top: 3px;
+	margin-top: 4px;
 	margin-left: 225px;
-	background: transparent; 
+	padding-top: 1px;
+	padding-bottom: 0px;
+	background: transparent;
 }
 #sidebar_pin img {
-	margin-top: -55px;
 	padding-right: 4px;
 	padding-left: 4px;
 }
-#sidebarAccordion {
-	/* display: none; */
-	margin-top: -1px;
-}
+
 .sb_indi_surname_li, .sb_fam_surname_li {
 	list-style-image: url('images/plus.gif');
 	white-space: nowrap;
