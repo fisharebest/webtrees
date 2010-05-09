@@ -440,27 +440,27 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 	if ($surn) {
 		// Match a surname, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},{$galpha}%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},{$galpha}%")." COLLATE '".i18n::$collation."'";
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
 		}
 	} elseif ($salpha==',') {
 		// Match a surname-less name, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote(",{$galpha}%");
+			$where[]="n_sort LIKE ".WT_DB::quote(",{$galpha}%")." COLLATE '".i18n::$collation."'";
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote(",%");
+			$where[]="n_sort LIKE ".WT_DB::quote(",%")." COLLATE '".i18n::$collation."'";
 		}
 	} elseif ($salpha) {
 		// Match a surname initial, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%,{$galpha}%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%,{$galpha}%")." COLLATE '".i18n::$collation."'";
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%");
+			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'";
 		}
 	} elseif ($galpha) {
 		// Match all surnames with a given initial
-		$where[]="n_sort LIKE ".WT_DB::quote("%,{$galpha}%");
+		$where[]="n_sort LIKE ".WT_DB::quote("%,{$galpha}%")." COLLATE '".i18n::$collation."'";
 	} else {
 		// Match all individuals
 	}
