@@ -44,6 +44,8 @@ $reorder=safe_get('reorder', '1', '0');
 // Get Javascript variables from lb_config.php ---------------------------
 require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 //	require_once WT_ROOT.'modules/lightbox/functions/browser_detection_php_ar.php';
+require_once WT_ROOT.'modules/lightbox/functions/lightbox_print_media.php';
+require_once WT_ROOT.'modules/lightbox/functions/lightbox_print_media_row.php';
 
 function cut_html($string)
 {
