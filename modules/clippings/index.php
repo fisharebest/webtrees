@@ -32,6 +32,8 @@
 
 require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 
+global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM;
+
 $controller = new ClippingsController();
 $controller->init();
 
@@ -54,7 +56,7 @@ if ($controller->action=='add') {
 	if ($controller->type=='fam') {?>
 		<form action="module.php" method="get">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<table>
 			<tr><td class="topbottombar"><?php print i18n::translate('Which other links from this family would you like to add?')?>
 			<input type="hidden" name="id" value="<?php print $controller->id; ?>" />
@@ -72,7 +74,7 @@ if ($controller->action=='add') {
 	else if ($controller->type=='indi') {?>
 		<form action="module.php" method="get">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<table>
 			<tr><td class="topbottombar"><?php print i18n::translate('Which links from this person would you also like to add?')?>
 			<input type="hidden" name="id" value="<?php print $controller->id; ?>" />
@@ -93,7 +95,7 @@ if ($controller->action=='add') {
 	<?php } else if ($controller->type=='sour')  {?>
 		<form action="module.php" method="get">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<table>
 			<tr><td class="topbottombar"><?php print i18n::translate('Which records linked to this source should be added?')?>
 			<input type="hidden" name="id" value="<?php print $controller->id; ?>" />
@@ -126,7 +128,7 @@ if ($ct==0) {
 		?>
 		<form method="get" name="addin" action="module.php">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<table>
 		<tr>
 			<td colspan="2" class="topbottombar" style="text-align:center; ">
@@ -158,7 +160,7 @@ if ($ct==0) {
 		<table><tr><td class="width33" valign="top" rowspan="3">
 		<form method="get" action="module.php">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<input type="hidden" name="action" value="download" />
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2><?php print i18n::translate('File Information') ?></h2></td></tr>
@@ -251,7 +253,7 @@ if ($ct==0) {
 		</script>
 		<form method="get" name="addin" action="module.php">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<table>
 		<tr>
 			<td colspan="2" class="topbottombar" style="text-align:center; ">
@@ -276,7 +278,7 @@ if ($ct==0) {
 
 
 	<?php } ?>
-	<br /><a href="module.php?mod=clippings&amp;pgv_action=index&amp;action=empty"><?php echo i18n::translate('Empty Cart');?></a><?php echo help_link('empty_cart', 'clippings'); ?>
+	<br /><a href="module.php?mod=clippings&amp;action=empty"><?php echo i18n::translate('Empty Cart');?></a><?php echo help_link('empty_cart', 'clippings'); ?>
 	</td></tr>
 
 	<tr><td class="topbottombar"><h2><?php echo i18n::translate('Family Tree Clippings Cart'), help_link('clip_cart', 'clippings'); ?></h2></td></tr>

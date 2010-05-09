@@ -49,6 +49,16 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		return WT_PRIV_USER;
 	}
 
+	// Extend WT_Module
+	public function modAction($mod_action) {
+		switch($mod_action) {
+		case 'index':
+			// TODO: these files should be methods in this class
+			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			break;
+		}
+	}
+
 	// Implement WT_Module_Menu
 	public function defaultMenuOrder() {
 		return 20;
@@ -62,7 +72,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			return new Menu("", "", "");
 		}
 		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), encode_url('module.php?mod=clippings&amp;ged='.$GEDCOM), "down");
+		$menu = new Menu($this->getTitle(), encode_url('module.php?mod=clippings&mod_action=index&amp;ged='.$GEDCOM), "down");
 		if (!empty($WT_IMAGES["clippings"]["large"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["large"]);
 		}
