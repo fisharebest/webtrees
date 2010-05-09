@@ -238,9 +238,9 @@ abstract class WT_Module {
 	final static public function getInstalledBlocks() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Block) {
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
@@ -250,9 +250,9 @@ abstract class WT_Module {
 	final static public function getInstalledCharts() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Chart) {
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
@@ -262,12 +262,12 @@ abstract class WT_Module {
 	final static public function getInstalledMenus() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Menu) {
 				$module->sort=WT_DB::prepare(
 					"SELECT menu_order FROM {$TBLPREFIX}module WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
@@ -277,9 +277,9 @@ abstract class WT_Module {
 	final static public function getInstalledReports() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Report) {
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
@@ -289,12 +289,12 @@ abstract class WT_Module {
 	final static public function getInstalledSidebars() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Sidebar) {
 				$module->sort=WT_DB::prepare(
 					"SELECT sidebar_order FROM {$TBLPREFIX}module WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
@@ -304,12 +304,12 @@ abstract class WT_Module {
 	final static public function getInstalledTabs() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Tab) {
 				$module->sort=WT_DB::prepare(
 					"SELECT tab_order FROM {$TBLPREFIX}module WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
@@ -319,9 +319,9 @@ abstract class WT_Module {
 	final static public function getInstalledThemes() {
 		global $TBLPREFIX;
 		$modules=array();
-		foreach (self::getInstalledModules() as $module) {
+		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Theme) {
-				$modules[$file]=$module;
+				$modules[$name]=$module;
 			}
 		}
 		return $modules;
