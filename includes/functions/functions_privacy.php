@@ -73,7 +73,7 @@ if (!function_exists("is_dead")) {
 * @return bool true if dead false if alive
 */
 function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
-	global $CHECK_CHILD_DATES, $MAX_ALIVE_AGE, $GEDCOM;
+	global $MAX_ALIVE_AGE, $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ INDI/', $indirec, $match)) {
@@ -133,7 +133,6 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 	}
 
 	// If we found no dates then check the dates of close relatives.
-	if ($CHECK_CHILD_DATES ) {
 		// Check parents (birth and adopted)
 		preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $indirec, $famc_matches);
 		foreach ($famc_matches[1] as $famc_match) {
@@ -264,7 +263,6 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 				}
 			}
 		}
-	}
 	if (!$sitemap) {
 		return update_isdead($pid, WT_GED_ID, false);
 	} else {

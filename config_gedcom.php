@@ -61,7 +61,7 @@ $FAM_ID_PREFIX = "F";					// -- This is the prefix prepend to newly generated fa
 $MEDIA_ID_PREFIX = "M";					// -- This is the prefix prepend to newly generated media records
 $NOTE_ID_PREFIX = "N";					// -- This is the prefix prepend to newly generated note records
 $PEDIGREE_FULL_DETAILS = true;			// -- Show the birth and death details of an individual on charts
-$PEDIGREE_SHOW_GENDER = true;			// -- Show the gender of an individual by means of an icon on charts
+$PEDIGREE_SHOW_GENDER = false;			// -- Show the gender of an individual by means of an icon on charts
 $PEDIGREE_LAYOUT = true;					// -- Set to true for Landscape mode, false for portrait mode
 $SHOW_EMPTY_BOXES = true;				// -- Show empty boxes on charts if the person is unknown
 $ZOOM_BOXES = "click";				// -- When should pedigree boxes zoom.  Values are "disabled", "mouseover", "click"
@@ -70,14 +70,13 @@ $ABBREVIATE_CHART_LABELS = false;		//-- should chart labels like "Birth" be abbr
 $SHOW_PARENTS_AGE = true;				// -- show age of parents on charts next to the birth date
 
 $HIDE_LIVE_PEOPLE = true;				// -- a false value will show details of people who are still alive
-$CHECK_CHILD_DATES = true;		// -- When checking if a person is alive, check the children's birth dates in addition to the person's
 $REQUIRE_AUTHENTICATION = false;		// -- set this to try to force all visitors to login before they can view anything on the site
 $PAGE_AFTER_LOGIN = "mygedview";		// -- Which page should be shown after successful Login
 $WELCOME_TEXT_AUTH_MODE = "1";			// -- Sets which predefined of custom welcome message will be displayed on the Hoem Page in authentication mode
 $WELCOME_TEXT_AUTH_MODE_4 = "";			// -- Customized welcome text to display on login screen if that option is chosen
 $WELCOME_TEXT_CUST_HEAD = false;		// -- Use standard PGV header to display with custom welcome text
 $SHOW_REGISTER_CAUTION = true;		// -- Show text about following site rules on Login-Register page
-$SHOW_GEDCOM_RECORD = true;				// -- a true value will provide a link on detail pages that will
+$SHOW_GEDCOM_RECORD = false;				// -- a true value will provide a link on detail pages that will
 										// --allow people to view the actual lines from the gedcom file
 $ALLOW_EDIT_GEDCOM = true;				//-- allow users with canEdit privileges to edit the gedcom
 $ENABLE_AUTOCOMPLETE = true;			//-- Enable Autocomplete for certain input fields
@@ -88,10 +87,10 @@ $SUBLIST_TRIGGER_F = "200";				// -- Number of names required before Family list
 										// -- Set to zero to disable sub-lists
 $SURNAME_LIST_STYLE = "style2";			// -- Surname list style.  "style2"=sortable table, "style3"=list of names in varying font sizes
 
-$SHOW_MARRIED_NAMES = false;			// -- Option to show the married name for females in the indilist
+$SHOW_MARRIED_NAMES = true;			// -- Option to show the married name for females in the indilist
 
 $SHOW_ID_NUMBERS = true;				// -- Show gedcom id numbers on charts next to  names
-$SHOW_LAST_CHANGE = true;				// -- Show gedcom record last change on lists
+$SHOW_LAST_CHANGE = false;				// -- Show gedcom record last change on lists
 $SHOW_EST_LIST_DATES = false;		// -- Show estimated birth/death dates on individual lists
 $SHOW_PEDIGREE_PLACES = "9";			// -- What level to show the birth and death places next to the birth and death dates on the pedigree and descendency charts.
 $SHOW_LIST_PLACES = "1";				// -- What level of detail to display for places in a list
@@ -117,7 +116,7 @@ $SAVE_WATERMARK_IMAGE = false;		// -- whether to save copies of watermarked main
 $SHOW_MEDIA_FILENAME = false;			// -- show Media File Name in Media Viewer
 $SHOW_MEDIA_DOWNLOAD = false;			// -- show Media Download link in Media Viewer
 
-$HIDE_GEDCOM_ERRORS = false;			//-- a true value will disable error messages for undefined GEDCOM codes.  See the
+$HIDE_GEDCOM_ERRORS = true;			//-- a true value will disable error messages for undefined GEDCOM codes.  See the
 										//-- non-standard gedcom codes section of the readme file for more information.
 
 $WORD_WRAPPED_NOTES = false;			//-- some programs wrap notes at word boundaries while others wrap notes anywhere
@@ -138,9 +137,9 @@ $ALLOW_THEME_DROPDOWN = true;		//-- allows the themes to display theme change dr
 $SECURITY_CHECK_GEDCOM_DOWNLOADABLE = true;	//-- check for downloadability of GEDCOM
 
 $SHOW_STATS = false;					//-- Show execution stats at the bottom of the page
-$SHOW_COUNTER = false;		//-- Show hit counters on portal and individual pages
-$SHOW_SPIDER_TAGLINE = false;		//-- On pages generated for search engines, name the engine as the last line
-$DAYS_TO_SHOW_LIMIT = "30";			//-- Maximum number of days in Upcoming Events block
+$SHOW_COUNTER = true;		//-- Show hit counters on portal and individual pages
+$SHOW_SPIDER_TAGLINE = true;		//-- On pages generated for search engines, name the engine as the last line
+$DAYS_TO_SHOW_LIMIT = "7";			//-- Maximum number of days in Upcoming Events block
 $COMMON_NAMES_THRESHOLD	= "40";		//-- The minimum number of times a surname must appear before it is shown on the most common surnames list
 $COMMON_NAMES_ADD	= "";			//-- a comma seperated list of surnames the admin can add to the common surnames list
 $COMMON_NAMES_REMOVE	= "";		//-- a comma seperated list of surnames to ignore in the common surnames list
@@ -161,37 +160,37 @@ $CHART_BOX_TAGS		= "";		//-- optional comma seperated gedcom tags to show in cha
 $QUICK_REQUIRED_FACTS	= "BIRT,DEAT";	//-- comma delimited list of facts that will be required by default on the quick update
 $QUICK_REQUIRED_FAMFACTS	= "MARR";	//-- comma delimited list of facts that will be required by on the quick update for families
 $SHOW_LDS_AT_GLANCE	= false;	//-- Show status of LDS ordinances in chart boxes
-$UNDERLINE_NAME_QUOTES	= false;	//-- convert double quotes in names to underlines
-$SPLIT_PLACES	= true;	//-- split PLAC tag into subtags (town, county, state...) in edit mode
-$SHOW_RELATIVES_EVENTS = "_BIRT_CHIL,_BIRT_COUS,_BIRT_FSIB,_BIRT_GCHI,_BIRT_HSIB,_BIRT_MSIB,_BIRT_NEPH,_BIRT_SIBL,_DEAT_CHIL,_DEAT_COUS,_DEAT_FATH,_DEAT_FSIB,_DEAT_GCHI,_DEAT_GPAR,_DEAT_HSIB,_DEAT_MOTH,_DEAT_MSIB,_DEAT_NEPH,_DEAT_SIBL,_DEAT_SPOU,_MARR_CHIL,_MARR_COUS,_MARR_FATH,_MARR_FSIB,_MARR_GCHI,_MARR_HSIB,_MARR_MOTH,_MARR_MSIB,_MARR_NEPH,_MARR_SIBL";		//-- show events of relatives on individual page
+$UNDERLINE_NAME_QUOTES	= true;	//-- convert double quotes in names to underlines
+$SPLIT_PLACES	= false;	//-- split PLAC tag into subtags (town, county, state...) in edit mode
+$SHOW_RELATIVES_EVENTS = "_BIRT_CHIL,_BIRT_GCHI,_BIRT_HSIB,_BIRT_SIBL,_DEAT_CHIL,_DEAT_COUS,_DEAT_FATH,_DEAT_GCHI,_DEAT_GPAR,_DEAT_GGPA,_DEAT_MOTH,_DEAT_SIBL,_DEAT_SPOU,_MARR_CHIL,_MARR_FATH,_MARR_GCHI,_MARR_MOTH,_FAMC_EMIG";		//-- show events of relatives on individual page
 $EXPAND_RELATIVES_EVENTS = false;
 $EXPAND_SOURCES = false;
 $EXPAND_NOTES = false;
 $SHOW_LEVEL2_NOTES = true;			// -- Show level 2 Notes & Sources on Notes & Sources tabs
 $SHOW_AGE_DIFF = false;				// -- show age diff between spouses and between children on close relatives tab
-$EDIT_AUTOCLOSE = false;		//-- autoclose edit window when update successful
+$EDIT_AUTOCLOSE = true;		//-- autoclose edit window when update successful
 $NOTE_FACTS_UNIQUE = "";
 $NOTE_FACTS_ADD = "ASSO,SOUR,NOTE,REPO";
 $NOTE_FACTS_QUICK = "";
 $SOUR_FACTS_UNIQUE = "AUTH,ABBR,TITL,PUBL,TEXT";
 $SOUR_FACTS_ADD = "NOTE,OBJE,REPO,SHARED_NOTE";
-$SOUR_FACTS_QUICK = "";
+$SOUR_FACTS_QUICK = "WWW,EMAIL,NOTE";
 $REPO_FACTS_UNIQUE = "NAME,ADDR";
 $REPO_FACTS_ADD = "PHON,EMAIL,FAX,WWW,NOTE,SHARED_NOTE";
 $REPO_FACTS_QUICK = "";
 $INDI_FACTS_UNIQUE = "";
 $INDI_FACTS_ADD = "ADDR,AFN,BIRT,CHR,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,EMAIL,FAX,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,CAST,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO";
-$INDI_FACTS_QUICK = "BIRT,ADDR,RESI,OCCU,DEAT";
+$INDI_FACTS_QUICK = "BIRT,BURI,CHR,CENS,DEAT,OCCU,RESI";
 $FAM_FACTS_UNIQUE = "NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS";
 $FAM_FACTS_ADD = "CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS";
-$FAM_FACTS_QUICK = "MARR,DIV";
+$FAM_FACTS_QUICK = "MARR,DIV,_NMR";
 $SEARCH_FACTS_DEFAULT = "NAME:GIVN:SDX,NAME:SURN:SDX,BIRT:DATE,BIRT:PLAC,FAMS:MARR:DATE,FAMS:MARR:PLAC,DEAT:DATE,DEAT:PLAC";  //-- DEFAULT FACTS ON ADVANCED SEARCH
 $GENERATE_UIDS = false;		//-- automatically generate _UID fields for records that do not already have them
-$ADVANCED_NAME_FACTS = "NICK,_HEB,ROMN";
+$ADVANCED_NAME_FACTS = "NICK,_AKA";
 $ADVANCED_PLAC_FACTS = "";
 $USE_GEONAMES = false;	// use geonames.org with autocomplite function
 $SURNAME_TRADITION = "paternal";
-$FULL_SOURCES = true; // Include the quality-of-data and date-of-entry-in-original-source fields
+$FULL_SOURCES = false; // Include the quality-of-data and date-of-entry-in-original-source fields
 $PREFER_LEVEL2_SOURCES = '1';	//-- When adding close relatives, which Source checkboxes are checked by default: 0: none, 1: facts, 2: record
 $NO_UPDATE_CHAN = false;	// -- Do not update the CHAN record if true
 
