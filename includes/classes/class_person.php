@@ -1741,16 +1741,16 @@ class Person extends GedcomRecord {
 
 		// Where nicknames are entered in the given name field, these will break
 		// sorting, so strip them out.
-		$GIVN=preg_replace('/["\'()]/', '', utf8_strtoupper($givn));
+		$GIVN=preg_replace('/["\'()]/', '', $givn);
 
 		foreach ($surns as $n=>$surn) {
-			$SURN=utf8_strtoupper($surn);
-			// Scottish 'Mc and Mac' prefixes sort under 'Mac'
-			if (substr($SURN, 0, 2)=='MC'  ) { $SURN='MAC'.substr($SURN, 2); }
-			if (substr($SURN, 0, 4)=='MAC ') { $SURN='MAC'.substr($SURN, 4); }
+			// Scottish 'Mc and Mac' prefixes both sort under 'Mac'
+			if (strcasecmp(substr($surn, 0, 2), 'Mc')==0) {
+				$surn=substr_replace($surn, 0, 2, 'Mac');
+			}
 
 			$this->_getAllNames[]=array(
-				'type'=>$type, 'full'=>$full, 'list'=>$list, 'sort'=>$SURN.','.$GIVN,
+				'type'=>$type, 'full'=>$full, 'list'=>$list, 'sort'=>$surn.','.$givn,
 				// These extra parts used to populate the pgv_name table and the indi list
 				// For these, we don't want to translate the @N.N. into local text
 				'fullNN'=>$fullNN,
@@ -1758,7 +1758,7 @@ class Person extends GedcomRecord {
 				'surname'=>$surname,
 				'givn'=>$givn,
 				'spfx'=>($n?'':$spfx),
-				'surn'=>$SURN
+				'surn'=>$surn
 			);
 		}
 	}

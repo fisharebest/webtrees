@@ -360,7 +360,7 @@ function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll();
 	foreach ($rows as $row) {
-		$list[$row->n_surn][$row->n_surname][$row->n_id]=true;
+		$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
 	}
 	return $list;
 }
@@ -401,7 +401,7 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll();
 	foreach ($rows as $row) {
-		$list[$row->n_surn][$row->n_surname][$row->l_to]=true;
+		$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->l_to]=true;
 	}
 	return $list;
 }
