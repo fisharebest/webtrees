@@ -13,11 +13,11 @@
 color:red;
 }
 .nav_content {
-	width: 240px;
+	width: 235px;
 	margin-left: -25px;
-	padding-left:5px;
-	padding-right:5px;
-	padding-top:3px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 3px;
 	background-color: white;
 }
 .flyout {
@@ -31,7 +31,7 @@ color:red;
 	color:#000000;
 	text-align: left;
 	margin-top: -2px;
-	left: 70px;
+	left: 40px;
 	padding: 3px;
 }
 .flyout2 a:hover{
@@ -55,6 +55,7 @@ color:red;
 }
 /* End of Flyout Menu styles*/
 
+
 /* Sidebar --------------------------------*/
 .ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
 .ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: auto; display: none; }
@@ -75,10 +76,10 @@ color:red;
 	top: 0px;
 	left: -22px;
 	margin: 0;
-	height: 0px; 
-	width: 0px;
+	height: 24px; 
+	width: 24px;
 	z-index: 10;
-	border-color: none;
+	border: none;
 	background-color: transparent;
 }
 #sidebar_open {
