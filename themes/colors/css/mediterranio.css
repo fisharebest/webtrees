@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 7989 2010-04-16 00:16:21Z rob $
+* $Id: ash.css 8110 2010-04-26 23:29:26Z rob $
 */
 
 .something {
@@ -1619,7 +1619,7 @@ dt {
 /* Tabs ----------------------------------*/
 .ui-widget-header { border: 1px solid #fff; background: #D23014 !important;  opacity: 0.67;}
 .ui-widget-content a:hover {color: #f50;}
-.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #999 !important ; }
+.ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff;}
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #000000; }
 .ui-tabs-nav li.ui-tabs-selected { background: #fff; }

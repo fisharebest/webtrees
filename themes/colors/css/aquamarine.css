@@ -1619,7 +1619,7 @@ dt {
 /* Tabs ----------------------------------*/
 .ui-widget-header { border: 1px solid #fff; background: #00A9C7 !important;  opacity: 0.67;}
 .ui-widget-content a:hover {color: #f50;}
-.ui-state-active, .ui-widget-content .ui-state-active { border: 1px solid #999 !important ; }
+.ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff;}
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #000000; }
 .ui-tabs-nav li.ui-tabs-selected { background: #fff; }
