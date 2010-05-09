@@ -35,9 +35,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+global $TBLPREFIX;
+
 if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 	require WT_ROOT.'modules/googlemap/defaultconfig.php';
-	require WT_ROOT.'modules/googlemap/googlemap.php';
 }
 require_once WT_ROOT.'includes/classes/class_stats.php';
 $stats = new stats($GEDCOM);

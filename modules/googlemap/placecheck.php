@@ -35,8 +35,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'/modules/googlemap/googlemap.php'; // gives access to googlemap functions
-
+global $TBLPREFIX;
 $action   =safe_POST     ('action'                                              );
 $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID);
 $openinnew=safe_POST_bool('openinnew'                                           );
@@ -48,7 +47,7 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	header("Location: login.php?url=placelist.php");
 	exit;
 }
-print_header(i18n::translate('Place Check').' - '.$GEDCOM);
+print_header(i18n::translate('Place Check').' - '.WT_GEDCOM);
 
 $target=$openinnew ? "target='_blank'" : "";
 

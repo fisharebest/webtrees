@@ -46,9 +46,25 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		return i18n::translate('Adds a tab to the individual page which maps the events of an individual and their close relatives on a Google map.');
 	}
 
+	// Extend WT_Module
+	public function modAction($mod_action) {
+		switch($mod_action) {
+		case 'admin_config':
+		case 'editconfig':
+		case 'flags':
+		case 'pedigree_map':
+		case 'placecheck':
+		case 'places':
+		case 'places_edit':
+			// TODO: these files should be methods in this class
+			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			break;
+		}
+	}
+
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=googlemap&mod_action=admin_config';
+		return 'module.php?mod='.$this->getName().'&mod_action=admin_config';
 	}
 
 	// Implement WT_Module_Tab

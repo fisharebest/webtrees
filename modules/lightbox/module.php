@@ -46,9 +46,21 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		return i18n::translate('Adds a tab (Album) to the individual page which an alternate way to view and work with media.');
 	}
 
+	// Extend WT_Module
+	public function modAction($mod_action) {
+		switch($mod_action) {
+		case 'admin_config':
+		case 'album':
+		case 'lb_editconfig':
+			// TODO: these files should be methods in this class
+			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			break;
+		}
+	}
+
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod=lightbox&mod_action=lb_editconfig';
+		return 'module.php?mod='.$this->getName().'&mod_action=lb_editconfig';
 	}
 
 	// Implement WT_Module_Tab

@@ -61,6 +61,7 @@ class batch_update {
 			self::getJavascript().
 			'<form id="batch_update_form" action="module.php" method="get">'.
 			'<input type="hidden" name="mod" value="batch_update">'.
+			'<input type="hidden" name="mod_action" value="batch_update">'.
 			'<input type="hidden" name="xref"   value="'.$this->xref.'">'.
 			'<input type="hidden" name="action" value="">'. // will be set by javascript for next update
 			'<input type="hidden" name="data"   value="">'. // will be set by javascript for next update

@@ -1,12 +1,12 @@
 <?php
 /**
- * Module system for adding features to phpGedView.
+ * Classes and libraries for module system
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
  * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2009 John Finlay
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,19 +23,36 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @subpackage Display
+ * @subpackage Modules
  * @version $Id$
- * @author Patrick Kellum
  */
 
-define('WT_SCRIPT_NAME', 'module.php');
-require './includes/session.php';
+if (!defined('WT_WEBTREES')) {
+	header('HTTP/1.0 403 Forbidden');
+	exit;
+}
 
-$all_modules=WT_Module::getActiveModules();
-$mod=safe_REQUEST($_REQUEST, 'mod', array_keys($all_modules));
-if ($mod) {
-	$module=$all_modules[$mod];
-	$module->modAction(safe_REQUEST($_REQUEST, 'mod_action'));
-} else {
-	header('Location: index.php');
+require_once WT_ROOT.'includes/classes/class_module.php';
+
+class JWplayer_WT_Module extends WT_Module {
+	// Extend WT_Module
+	public function getTitle() {
+		return i18n::translate('JW Player');
+	}
+
+	// Extend WT_Module
+	public function getDescription() {
+		return i18n::translate('Adds support for embedded video.');
+	}
+
+	// Extend WT_Module
+	public function modAction($mod_action) {
+		switch($mod_action) {
+		case 'flvVideo':
+		case 'wmvVideo':
+			// TODO: these files should be methods in this class
+			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			break;
+		}
+	}
 }

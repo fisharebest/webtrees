@@ -36,9 +36,7 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-if (isset($_REQUEST['action'])) {
-	$action  = $_REQUEST['action'];
-}
+$action=safe_REQUEST($_REQUEST, 'action');
 
 function print_level_config_table($level) {
 	global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX;

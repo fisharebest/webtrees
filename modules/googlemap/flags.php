@@ -35,8 +35,10 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+global $countries, $EDIT_AUTOCLOSE;
+$action=safe_REQUEST($_REQUEST, 'action');
+
 if (isset($_REQUEST['countrySelected'])) $countrySelected = $_REQUEST['countrySelected'];
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 if (!isset($countrySelected)) $countrySelected="Countries";
 

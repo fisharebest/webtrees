@@ -154,13 +154,6 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup Index directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
 				<td class="optionbox width50"><?php echo $d_wt_changes; ?></td>
 			</tr>
-			<?php if (WT_USER_GEDCOM_ADMIN && is_dir('./modules/batch_update')) { ?>
-			<tr>
-				<td class="optionbox with50"><a
-					href="module.php?mod=batch_update"><?php echo i18n::translate('Batch Update'); ?></a><?php echo help_link('batch_update'); ?></td>
-				<td class="optionbox width50">&nbsp;</td>
-			</tr>
-			<?php } ?>
 		</table>
 	</div>
 	

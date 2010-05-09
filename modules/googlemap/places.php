@@ -39,13 +39,13 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-if (isset($_REQUEST['action']))	 $action=$_REQUEST['action'];
+global $TBLPREFIX;
+$action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['parent']))	 $parent=$_REQUEST['parent'];
 if (isset($_REQUEST['display'])) $display=$_REQUEST['display'];
 if (isset($_REQUEST['mode']))	 $mode=$_REQUEST['mode'];
 if (isset($_REQUEST['deleteRecord'])) $deleteRecord=$_REQUEST['deleteRecord'];
 
-if (!isset($action)) $action="";
 if (!isset($parent)) $parent=0;
 if (!isset($display)) $display="";
 

@@ -35,9 +35,10 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+global $TBLPREFIX;
+$action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
-if (isset($_REQUEST['action']))  $action  = $_REQUEST['action'];
 
 print_simple_header(i18n::translate('Edit geographic place locations'));
 

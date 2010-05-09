@@ -97,7 +97,6 @@ abstract class WT_Module {
 
 	// Run an action specified on the URL through module.php?mod=FOO&mod_action=BAR
 	public function modAction($mod_action) {
-		header('Location: index.php');
 	}
 
 	final static public function getActiveModules() {
