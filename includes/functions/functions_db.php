@@ -1123,7 +1123,7 @@ function search_fams_custom($join, $where, $order) {
 // $match - AND or OR
 // $skip - ignore data in certain tags
 function search_indis($query, $geds, $match, $skip) {
-	global $TBLPREFIX, $GEDCOM, $DB_UTF8_COLLATION;
+	global $TBLPREFIX, $GEDCOM;
 
 	// No query => no results
 	if (!$query) {
@@ -1136,12 +1136,8 @@ function search_indis($query, $geds, $match, $skip) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
-			$querysql[]="i_gedcom LIKE ".WT_DB::quote("%{$q}%");
-		} else {
-			$querysql[]="(i_gedcom LIKE ".WT_DB::quote("%{$q}%")." OR i_gedcom LIKE ".WT_DB::quote("%".utf8_strtoupper($q)."%")." OR i_gedcom LIKE ".WT_DB::quote("%".utf8_strtolower($q)."%").")";
-		}
+		$queryregex[]=preg_quote($q, '/');
+		$querysql[]="i_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
 	}
 
 	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex FROM {$TBLPREFIX}individuals WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
@@ -1192,7 +1188,7 @@ function search_indis($query, $geds, $match, $skip) {
 // $geds - array of gedcoms to search
 // $match - AND or OR
 function search_indis_names($query, $geds, $match) {
-	global $TBLPREFIX, $GEDCOM, $DB_UTF8_COLLATION;
+	global $TBLPREFIX, $GEDCOM;
 
 	// No query => no results
 	if (!$query) {
@@ -1202,11 +1198,7 @@ function search_indis_names($query, $geds, $match) {
 	// Convert the query into a SQL expression
 	$querysql=array();
 	foreach ($query as $q) {
-		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
-			$querysql[]="n_full LIKE ".WT_DB::quote("%{$q}%");
-		} else {
-			$querysql[]="(n_full LIKE ".WT_DB::quote("%{$q}%")." OR n_full LIKE ".WT_DB::quote("%".utf8_strtoupper($q)."%")." OR n_full LIKE ".WT_DB::quote("%".utf8_strtolower($q)."%").")";
-		}
+		$querysql[]="n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
 	}
 	$sql="SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, n_num FROM {$TBLPREFIX}individuals JOIN {$TBLPREFIX}name ON i_id=n_id AND i_file=n_file WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
 
@@ -1418,7 +1410,7 @@ function search_indis_year_range($startyear, $endyear) {
 // $match - AND or OR
 // $skip - ignore data in certain tags
 function search_fams($query, $geds, $match, $skip) {
-	global $TBLPREFIX, $GEDCOM, $DB_UTF8_COLLATION;
+	global $TBLPREFIX, $GEDCOM;
 
 	// No query => no results
 	if (!$query) {
@@ -1432,12 +1424,7 @@ function search_fams($query, $geds, $match, $skip) {
 
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-
-		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
-			$querysql[]="f_gedcom LIKE ".WT_DB::quote("%{$q}%");
-		} else {
-			$querysql[]="(f_gedcom LIKE ".WT_DB::quote("%{$q}%")." OR f_gedcom LIKE ".WT_DB::quote("%".utf8_strtoupper($q)."%")." OR f_gedcom LIKE ".WT_DB::quote("%".utf8_strtolower($q)."%").")";
-		}
+		$querysql[]="f_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
 	}
 
 	$sql="SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil FROM {$TBLPREFIX}families WHERE (".implode(" {$match} ", $querysql).') AND f_file IN ('.implode(',', $geds).')';
@@ -1489,7 +1476,7 @@ function search_fams($query, $geds, $match, $skip) {
 // $geds - array of gedcoms to search
 // $match - AND or OR
 function search_fams_names($query, $geds, $match) {
-	global $TBLPREFIX, $GEDCOM, $DB_UTF8_COLLATION;
+	global $TBLPREFIX, $GEDCOM;
 
 	// No query => no results
 	if (!$query) {
@@ -1499,11 +1486,7 @@ function search_fams_names($query, $geds, $match) {
 	// Convert the query into a SQL expression
 	$querysql=array();
 	foreach ($query as $q) {
-		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
-			$querysql[]="(husb.n_full LIKE ".WT_DB::quote("%{$q}%")." OR wife.n_full LIKE ".WT_DB::quote("%{$q}%").")";
-		} else {
-			$querysql[]="(husb.n_full LIKE ".WT_DB::quote("%{$q}%")." OR wife.n_full LIKE '%{$q}%' OR husb.n_full LIKE ".WT_DB::quote(utf8_strtoupper("%{$q}%"))." OR husb.n_full LIKE ".WT_DB::quote(utf8_strtolower("%{$q}%"))." OR wife.n_full LIKE ".WT_DB::quote(utf8_strtoupper("%{$q}%"))." OR wife.n_full LIKE ".WT_DB::quote(utf8_strtolower("%{$q}%")).")";
-		}
+		$querysql[]="(husb.n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."' OR wife.n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."')";
 	}
 
 	$sql="SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil FROM {$TBLPREFIX}families LEFT OUTER JOIN {$TBLPREFIX}name husb ON f_husb=husb.n_id AND f_file=husb.n_file LEFT OUTER JOIN {$TBLPREFIX}name wife ON f_wife=wife.n_id AND f_file=wife.n_file WHERE (".implode(" {$match} ", $querysql).') AND f_file IN ('.implode(',', $geds).')';
@@ -1540,7 +1523,7 @@ function search_fams_names($query, $geds, $match) {
 // $match - AND or OR
 // $skip - ignore data in certain tags
 function search_sources($query, $geds, $match, $skip) {
-	global $TBLPREFIX, $GEDCOM, $DB_UTF8_COLLATION;
+	global $TBLPREFIX, $GEDCOM;
 
 	// No query => no results
 	if (!$query) {
@@ -1553,12 +1536,8 @@ function search_sources($query, $geds, $match, $skip) {
 	$queryregex=array();
 
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
-			$querysql[]="s_gedcom LIKE ".WT_DB::quote("%{$q}%");
-		} else {
-			$querysql[]="(s_gedcom LIKE ".WT_DB::quote("%{$q}%")." OR s_gedcom LIKE ".WT_DB::quote(utf8_strtoupper("%{$q}%"))." OR s_gedcom LIKE ".WT_DB::quote(utf8_strtolower("%{$q}%")).")";
-		}
+		$queryregex[]=preg_quote($q, '/');
+		$querysql[]="s_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
 	}
 
 	$sql="SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec FROM {$TBLPREFIX}sources WHERE (".implode(" {$match} ", $querysql).') AND s_file IN ('.implode(',', $geds).')';
@@ -1610,7 +1589,7 @@ function search_sources($query, $geds, $match, $skip) {
 // $match - AND or OR
 // $skip - ignore data in certain tags
 function search_notes($query, $geds, $match, $skip) {
-	global $TBLPREFIX, $GEDCOM, $DB_UTF8_COLLATION;
+	global $TBLPREFIX, $GEDCOM;
 
 	// No query => no results
 	if (!$query) {
@@ -1623,12 +1602,8 @@ function search_notes($query, $geds, $match, $skip) {
 	$queryregex=array();
 	
 	foreach ($query as $q) {
-		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		if ($DB_UTF8_COLLATION || !has_utf8($q)) {
-			$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%");
-		} else {
-			$querysql[]="(o_gedcom LIKE ".WT_DB::quote("%{$q}%")." OR o_gedcom LIKE ".WT_DB::quote(utf8_strtoupper("%{$q}%"))." OR o_gedcom LIKE ".WT_DB::quote(utf8_strtolower("%{$q}%")).")";
-		}
+		$queryregex[]=preg_quote($q, '/');
+		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
 	}
 
 	$sql="SELECT 'NOTE' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec FROM {$TBLPREFIX}other WHERE (".implode(" {$match} ", $querysql).") AND o_type='NOTE' AND o_file IN (".implode(',', $geds).')';
