@@ -1,4 +1,4 @@
-﻿README file for the Googlemap module for phpGedView
+﻿README file for the Googlemap module for webtrees
 
 The files in this archive should be extracted into your modules directory.
 
@@ -30,14 +30,14 @@ The correct way to do this is for a PLAC record:
 The MAP, LONG and LATI lines should be added directly after the PLAC line.
 In the ‘edit’ function pop-up window, there is a ‘+’ (plus sign) under ‘Place’
 where you can select a country, state, county, and city that exists in your
-PhpGedview ‘place’ file. This can help avoid duplications by various spellings
-or versions of the same place. The PhpGedView configuration allows for ‘expanded’
+webtrees ‘place’ file. This can help avoid duplications by various spellings
+or versions of the same place. The webtrees configuration allows for ‘expanded’
 editing if that option is selected.
 
 It is also possible to define a MAP record within a ADDR record, even though
 this is not according to the standard (these records are created by Legacy).
 
-Add a place using PhpGedView Googlemap module (recommended method):
+Add a place using webtrees Googlemap module (recommended method):
 
 Forenote: the Google Map module is designed to work with locations in tree-like
 fashion. If we were to consider a suburb of London, the tree would take the
@@ -45,7 +45,7 @@ order 'England, London, Hackney'. This is not how we enter place names in our
 family data, but it is how we manage the Google Map module. This will give
 access to useful place lookup features as we build up map information. It will
 help you find groups of people from the same locale. And it conforms to the
-GEDCOM specification, a feature of PhpGedView. 
+GEDCOM specification, a feature of webtrees. 
 
 And, BEFORE you start with any mapping endeavours, review your data. Make sure
 spelling is consistent, there are no 'almost' duplicates, places are in their
