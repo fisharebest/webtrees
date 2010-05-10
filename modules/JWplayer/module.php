@@ -37,7 +37,8 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class JWplayer_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('JW Player');
+		// Do not translate this?
+		return 'JW Player&trade;';
 	}
 
 	// Extend WT_Module
