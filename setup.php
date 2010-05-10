@@ -1018,12 +1018,13 @@ try {
 	}
 	echo
 		'<input type="hidden" name="action" value="download">',
-		'<input type="submit" value="'. /* I18N: %s is a filename */ i18n::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.continue.continue.disabled=false; return true;">',
+		'<input type="submit" value="'. /* I18N: %s is a filename */ i18n::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.contform.contbtn.disabled=false; return true;">',
 		'</form>',
 		'<p>', i18n::translate('After you have copied this file to the webserver and set the access permissions, click here to continue'), '</p>',
-		'<form name="continue" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', i18n::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
-		'<input type="submit" name="continue" value="'.i18n::translate('Continue').'" disabled>',
+		'<form name="contform" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', i18n::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
+		'<input type="submit" name="contbtn" value="'.i18n::translate('Continue').'" disabled>',
 		'</form></body></html>';
+	exit;
 } catch (PDOException $ex) {
 	echo
 		'<p class="bad">', i18n::translate('An unexpected database error occured.'), '</p>',
