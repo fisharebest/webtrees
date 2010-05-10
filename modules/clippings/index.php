@@ -33,6 +33,7 @@
 require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 
 global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM;
+global $WT_IMAGE_DIR, $WT_IMAGES;
 
 $controller = new ClippingsController();
 $controller->init();
