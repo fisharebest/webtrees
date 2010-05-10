@@ -565,7 +565,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		}
 		echo "</table>";
-		echo "<br />";
+		echo "<br /><br /><br /><br />";
 		
 		// -----------------------------------------------------------------------------
 		// }

@@ -144,7 +144,8 @@ function closeCallback() {
 
 function openCallback() {
 	jQuery('#sidebarAccordion').accordion({
-		fillSpace: true, 
+		/* fillSpace: true, */ 
+		autoHeight: false,
 		changestart: function(event, ui) {
 			loadedMods[ui.oldHeader.attr('title')] = true;
 			var active = ui.newHeader.attr('title');
