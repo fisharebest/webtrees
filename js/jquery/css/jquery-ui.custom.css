@@ -468,7 +468,11 @@ margin-top: 1px;
 	margin-right: 0px;
 }
 #sb_desc_content {
-	width: 100%;
+	width: 240px;
+	margin-left: -20px;
+	overflow: auto;
+	padding-top: 5px;
+	padding-bottom: 8px;
 }
 #sb_desc_content ul {
 	padding: 0px;

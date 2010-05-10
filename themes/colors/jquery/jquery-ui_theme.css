@@ -14,10 +14,10 @@ color:red;
 }
 .nav_content {
 	width: 235px;
-	margin-left: -25px;
+	margin-left: -15px;
 	padding-left: 0px;
 	padding-right: 0px;
-	padding-top: 3px;
+	padding-top: 0px;
 }
 .flyout {
 	color:#000000; 
@@ -129,9 +129,6 @@ ul.clist {
 	margin-left: 10px;
 	margin-top: 0px;
 	margin-right: 0px;
-}
-#sb_desc_content {
-	width: 100%;
 }
 #sb_desc_content ul {
 	padding: 0px;
