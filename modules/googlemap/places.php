@@ -39,7 +39,7 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-global $TBLPREFIX;
+global $TBLPREFIX, $iso3166;
 $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['parent']))	 $parent=$_REQUEST['parent'];
 if (isset($_REQUEST['display'])) $display=$_REQUEST['display'];
