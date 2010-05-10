@@ -457,13 +457,13 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				<ul>
 					<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics')?></span></a></li>
 					<li><a href="#config-media"><span><?php echo i18n::translate('Multimedia')?></span></a></li>
-					<li><a href="#access-options"><span><?php echo i18n::translate('Access & Privacy')?></span></a></li>
+					<li><a href="#access-options"><span><?php echo i18n::translate('Access &amp; Privacy')?></span></a></li>
 					<li><a href="#name-options"><span><?php echo i18n::translate('Names')?></span></a></li>
 					<li><a href="#layout-options"><span><?php echo i18n::translate('Layout')?></span></a></li>
-					<li><a href="#hide-show"><span><?php echo i18n::translate('Hide & Show')?></span></a></li>
+					<li><a href="#hide-show"><span><?php echo i18n::translate('Hide &amp; Show')?></span></a></li>
 					<li><a href="#edit-options"><span><?php echo i18n::translate('Edit Options')?></span></a></li>
 					<li><a href="#user-options"><span><?php echo i18n::translate('User Options')?></span></a></li>
-					<li><a href="#other-options"><span><?php echo i18n::translate('Contact & Site Options')?></span></a></li>
+					<li><a href="#other-options"><span><?php echo i18n::translate('Contact &amp; Site Options')?></span></a></li>
 				</ul>
 			<!-- GEDCOM BASICS -->
 			<div id="file-options">
