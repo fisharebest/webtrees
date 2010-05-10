@@ -1,3 +1,5 @@
+NOTE - THIS FILE IS IN THE PROCESS OF BEING REPLACED BY README.HTML
+Some instructions may not be correct
 =======================================================
     webtrees
 

@@ -36,16 +36,16 @@
 	<li><a href="#install">INSTALLATION</li>
 	<li><a href="#upgrade">UPGRADING</li>
 	<li><a href="#gedcom">GEDCOM (family tree) FILES</li>
-	<li><a href="#themes">THEMES</li>
-	<li><a href="#multimedia">MULTIMEDIA OBJECTS</li>
-	<li><a href="#licence">RSS FEED</li>
-	<li><a href="#licence">DATABASE TABLE LAYOUT</li>
-	<li><a href="#licence">MANUAL CONFIGURATION</li>
-	<li><a href="#licence">SECURITY</li>
-	<li><a href="#licence">LANGUAGES</li>
-	<li><a href="#licence">NON-STANDARD GEDCOM CODES</li>
-	<li><a href="#licence">LANGUAGE EXTENSION FILES</li>
-	<li><a href="#licence">BACKUP</li>
+	<li><a href="#security">SECURITY</li>
+	<li><a href="#">THEMES</li>
+	<li><a href="#">MULTIMEDIA OBJECTS</li>
+	<li><a href="#">RSS FEED</li>
+	<li><a href="#">DATABASE TABLE LAYOUT</li>
+	<li><a href="#">MANUAL CONFIGURATION</li>
+	<li><a href="#">LANGUAGES</li>
+	<li><a href="#">NON-STANDARD GEDCOM CODES</li>
+	<li><a href="#">LANGUAGE EXTENSION FILES</li>
+	<li><a href="#">BACKUP</li>
 </ol>
 <hr width="100%">
 <div style="float:left;"><a name="licence"><h3>LICENSE</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
@@ -135,6 +135,35 @@ When or if you change your genealogy data outside of <b>webtrees</b>, it is not 
 	<li>Click "SAVE". <b>webtrees</b> will validate the GEDCOM again before importing.</li>
 	<li>You can use a ZIP file to upload the GEDCOM, but only if you use the UPLOAD option. The file name can be anything you choose.</li>
 </ol>
+<hr width="100%">
+<div style="float:left;"><a name="security"><h3>SECURITY</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+Even though <b>webtrees</b> gives you the ability to hide the details of living individuals, whenever you post personal details of living individuals on the Internet, you should first obtain the permission of EACH living person you plan to include.  There are many people who would not even want their name linked with their family history made public on the Internet and their wishes should be respected and honored.  Most family history programs allow you to choose the people who are exported when you create your GEDCOM file.  The most secure option is to deselect all living people in your genealogy program when you export your genealogical data to a GEDCOM file.
+<br /><br />
+If you wish to protect your GEDCOM (family tree) and other key files from being downloaded over the Internet you should do one or both of the following:
+<ul>
+	<li>Delete your GEDCOM (family tree) file from your web server after you have completed <b>webtrees</b> IMPORT process (<b>webtrees</b> does not need or use the file after it has been imported), or</li>
+	<li>Place the webtrees/data folder outside the root directory of your web server or virtual host</li>
+</ul>
+Following is an example of moving the file outside the root directory:
+<br /><br />
+If your home directory is something like <b>/home/username</b>,<br />
+and the root directory for your web site is <b>/home/username/public_html</b>,<br />
+and you have installed webtrees in the <b>public_html/webtrees</b> directory,<br />
+then you would create a new <b>data</b> folder in your home directory at the same level as your public_html directory, such as <b>/home/username/private/data</b>, and place your GEDCOM (family tree) file there.
+<br /><br />
+Then change the <b>Data file directory</b> setting on the Admin --> Site Administration page from the default <b>data/</b> to the new location <b>/home/username/private/data</b>
+<br />
+You will have <b>two</b> data directories:
+<ul>
+	<li>[path to webtrees]/data - just needs to contain config.ini.php</li>
+	<li>/home/username/private/data - contains everything else.</li>
+</ul>
+Since your GEDCOM and other files now reside in a directory outside of your web server's root directory, your web server will not be able to fulfill requests to download them.  However, <b>webtrees</b> will still be able to read and use their contents.
+<br /><br />
+If you also want to protect the security of some or all of the media files you upload to webtrees, then you should enable the <b>Media Firewall</b> option (GEDCOM Configuration - Multimedia - Use Media Firewall). Setting the <b>Media Firewall Root Directory</b> to </b>data/</b> will move your media items to the protected folder created in /home/username/private/data. 
+<br /><br />In the end it is YOUR responsibility to guarantee that there has been no violation of an individual's privacy and YOU could be held liable should private information be made public on the web sites that you administer.
+<br /><br />
+<!-- For more privacy options visit: http://www.webtrees.net/privacy.php -->
 <br /><br />
 </body>
 </html>
