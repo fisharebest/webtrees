@@ -415,7 +415,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="editconfig_gedcom.php">
 
-<table class="facts_table <?php echo $TEXT_DIRECTION; ?>">
+<table class="facts_table center <?php echo $TEXT_DIRECTION; ?> width90">
 	<tr>
 		<td colspan="2" class="facts_label">
 			<?php
@@ -627,7 +627,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar">
+						<td class="subbar" colspan="2">
 							<?php print i18n::translate('General'); ?>
 						</td>
 					</tr>
@@ -718,7 +718,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar">
+						<td class="subbar" colspan="2">
 							<?php print i18n::translate('Media Firewall');?>
 						</td>
 					</tr>
@@ -852,7 +852,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 			<div id="name-options">
 				<table class="facts_table">
 					<tr>
-						<td class="subbar">
+						<td class="subbar" colspan="2">
 							<?php print i18n::translate('Names');?>
 						</td>
 					</tr>
@@ -881,7 +881,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar">
+						<td class="subbar" colspan="2">
 							<?php print i18n::translate('Common Surnames');?>
 						</td>
 						</tr>
@@ -1479,7 +1479,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 			<div id="other-options">
 			  <table class="facts_table">
 					<tr>
-						<td class="subbar">
+						<td class="subbar" colspan="2">
 							<?php print i18n::translate('Contact Information'); ?>
 						</td>
 					</tr>
@@ -1531,7 +1531,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar">
+						<td class="subbar" colspan="2">
 							<?php print i18n::translate('Web Site and META Tag Settings'); ?>
 						</td>
 					</tr>
