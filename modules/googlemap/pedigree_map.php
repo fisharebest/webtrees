@@ -42,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'includes/controllers/pedigree_ctrl.php';
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-global $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $WT_IMAGE_DIR;
+global $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $WT_IMAGE_DIR, $GEDCOM;
 
 // Default is show for both of these.
 $hideflags = safe_GET('hideflags');
