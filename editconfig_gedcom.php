@@ -1274,19 +1274,19 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('All Facts'), help_link('INDI_FACTS_ADD'); ?>
+						<?php echo i18n::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Unique Facts'), help_link('INDI_FACTS_UNIQUE'); ?>
+						<?php echo i18n::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Quick Facts'), help_link('INDI_FACTS_QUICK'); ?>
+						<?php echo i18n::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
@@ -1297,19 +1297,19 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('All Facts'), help_link('FAM_FACTS_ADD'); ?>
+						<?php echo i18n::translate('All facts'), help_link('FAM_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Unique Facts'), help_link('FAM_FACTS_UNIQUE'); ?>
+						<?php echo i18n::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Quick Facts'), help_link('FAM_FACTS_QUICK'); ?>
+						<?php echo i18n::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
@@ -1320,19 +1320,19 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('All Facts'), help_link('SOUR_FACTS_ADD'); ?>
+						<?php echo i18n::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Unique Facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
+						<?php echo i18n::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Quick Facts'), help_link('SOUR_FACTS_QUICK'); ?>
+						<?php echo i18n::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox"><input type="text" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 				</tr>
