@@ -42,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'includes/controllers/pedigree_ctrl.php';
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-global $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $WT_IMAGE_DIR, $GEDCOM;
+global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $WT_IMAGE_DIR, $GEDCOM;
 
 // Default is show for both of these.
 $hideflags = safe_GET('hideflags');
@@ -628,6 +628,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 			$curgen++;
 		}
 		$relationship=get_relationship_name(get_relationship($controller->rootid, $pid, false));
+		if (empty($relationship)) $relationship=i18n::translate('self');
 		$event = "<img src='modules/googlemap/images/sq".($curgen+1).".png' width='10' height='10'>".
 			 "<strong>&nbsp;".$relationship.":&nbsp;</strong>";
 
