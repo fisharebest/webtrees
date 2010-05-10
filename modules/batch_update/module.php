@@ -42,7 +42,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Perform bulk udates and corrections on your GEDCOM data');
+		return i18n::translate('Perform bulk updates and corrections on your GEDCOM data');
 	}
 
 	// Extend WT_Module
