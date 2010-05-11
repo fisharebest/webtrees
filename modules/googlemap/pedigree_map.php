@@ -629,7 +629,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		}
 		$relationship=get_relationship_name(get_relationship($controller->rootid, $pid, false));
 		if (empty($relationship)) $relationship=i18n::translate('self');
-		$event = "<img src='modules/googlemap/images/sq".($curgen+1).".png' width='10' height='10'>".
+		$event = "<img src='modules/googlemap/images/sq".$curgen.".png' width='10' height='10'>".
 			 "<strong>&nbsp;".$relationship.":&nbsp;</strong>";
 
 		// add thumbnail image
