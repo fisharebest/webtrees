@@ -140,7 +140,8 @@ $quitReason = "";
 
 // check for attempt to redirect
 if (preg_match("/=.*:\/\//i", rawurldecode($_SERVER["REQUEST_URI"]))) {
-	$quitReason = "Embedded URL detected";
+	//Removed (temporarily?) - this just hides badly escaped code elsewhere.  We should fix the real problem!?
+	//$quitReason = "Embedded URL detected";
 }
 
 // check for worms and bad bots
