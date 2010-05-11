@@ -2342,7 +2342,7 @@ function get_id_from_gedcom($ged_name, $create=false) {
 
 	if ($create) {
 		try {
-			WT_DB::prepare("INSERT INTO {$TBLPREFIX}gedcom (gedcom_name) VALUES (?)")
+			WT_DB::prepare("INSERT INTO {$TBLPREFIX}gedcom (gedcom_name, import_gedcom, import_offset) VALUES (?, '', 0)")
 				->execute(array($ged_name));
 			$ged_id=WT_DB::getInstance()->lastInsertId();
 			require WT_ROOT.'includes/set_gedcom_defaults.php';

@@ -591,8 +591,8 @@ try {
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}gedcom (".
 		" gedcom_id     INTEGER AUTO_INCREMENT                        NOT NULL,".
 		" gedcom_name   VARCHAR(255)                                  NOT NULL,".
-		" import_gedcom LONGBLOB                                      NOT NULL DEFAULT '',".
-		" import_offset INTEGER UNSIGNED                              NOT NULL DEFAULT 1,".
+		" import_gedcom LONGBLOB                                      NOT NULL,".
+		" import_offset INTEGER UNSIGNED                              NOT NULL,".
 		" PRIMARY KEY     (gedcom_id),".
 		" UNIQUE  KEY ux1 (gedcom_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
