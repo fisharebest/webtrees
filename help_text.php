@@ -5095,13 +5095,6 @@ case 'multiple':
 	$text=i18n::translate('<center>--- This is a general help text for multiple pages ---</center>');
 	break;
 
-case 'upload_gedcom':
- // not used? see 'help_uploadgedcom.php'
-	$title=i18n::translate('Upload GEDCOM');
-	$text=i18n::translate('Unlike the <b>Add GEDCOM</b> function, the GEDCOM file you wish to add to your database does not have to be on your server.<br /><br />In Step 1 you select a GEDCOM file from your local computer. Type the complete path and file name in the text box or use the <b>Browse</b> button on the page.<br /><br />You can also use this function to upload a ZIP file containing the GEDCOM file. <b>webtrees</b> will recognize the ZIP file and extract the file and the filename automatically.<br /><br />If a GEDCOM file with the same name already exists in <b>webtrees</b>, it will, after your confirmation, be overwritten. However, all GEDCOM settings made previously will be preserved.<br /><br />You will find more help on other pages of the procedure.');
-	break;
-
-
 // ===================================================	
 
 // Is the next block still needed? see 'help_contents_help'
