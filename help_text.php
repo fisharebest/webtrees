@@ -2596,13 +2596,13 @@ case 'PRIVACY_BY_YEAR':
 	break;
 
 case 'QUICK_REQUIRED_FACTS':
-	$title=i18n::translate('Facts to always show on quick update');
-	$text=i18n::translate('This is a comma separated list of GEDCOM fact tags that will always be shown on the Quick Update form whether or not they already exist in the individual\'s record.  For example, if BIRT is in the list, fields for birth date and birth place will always be shown on the form.');
+	$title=i18n::translate('Facts for new individuals');
+	$text=i18n::translate('This is a comma separated list of GEDCOM fact tags that will always be shown on any Add New Person form whether or not they already exist in the individual\'s record.  For example, if BIRT is in the list, fields for birth date and birth place will always be shown on the form.');
 	break;
 
 case 'QUICK_REQUIRED_FAMFACTS':
-	$title=i18n::translate('Facts for families to always show on quick update');
-	$text=i18n::translate('This is a comma separated list of GEDCOM fact tags that will always be shown on the Family tabs of the Quick Update form whether or not they already exist in the family\'s record.  For example, if MARR is in the list, then fields for marriage date and marriage place will always be shown on the form.');
+	$title=i18n::translate('Facts for new families');
+	$text=i18n::translate('This is a comma separated list of GEDCOM fact tags that will always be shown on any Add New Family form whether or not they already exist in the family\'s record.  For example, if MARR is in the list, then fields for marriage date and marriage place will always be shown on the form.');
 	break;
 
 case 'REPO_FACTS_ADD':
