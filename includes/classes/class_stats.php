@@ -1253,7 +1253,7 @@ class stats {
 	}
 
 	function statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -1298,13 +1298,12 @@ class stats {
 			// Beware divide by zero
 			if ($tot==0) return '';
 			$centuries = "";
-			$func="century_localisation_".WT_LOCALE;
 			foreach ($rows as $values) {
-				if (function_exists($func)) {
-					$century = $func($values['century']);
-				}
-				else {
-					$century = $values['century'];
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($values['century']);
+					$century = $date->NumToRoman($values['century']);
+				} else {
+					$century = i18n::century_name($values['century']);
 				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $century.' - '.$values['total'].'|';
@@ -1318,7 +1317,7 @@ class stats {
 	}
 
 	function statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -1363,13 +1362,12 @@ class stats {
 			// Beware divide by zero
 			if ($tot==0) return '';
 			$centuries = "";
-			$func="century_localisation_".WT_LOCALE;
 			foreach ($rows as $values) {
-				if (function_exists($func)) {
-					$century = $func($values['century']);
-				}
-				else {
-					$century = $values['century'];
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($values['century']);
+					$century = $date->NumToRoman($values['century']);
+				} else {
+					$century = i18n::century_name($values['century']);
 				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $century.' - '.$values['total'].'|';
@@ -1684,7 +1682,7 @@ class stats {
 	}
 
 	function statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
+		global $TBLPREFIX, $CENTURY_FORMAT;
 
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '230x250';}
@@ -1712,7 +1710,6 @@ class stats {
 					.' death.d_julianday1>birth.d_julianday2'
 				.' GROUP BY century, sex ORDER BY century, sex');
 			if (empty($rows)) return '';
-			$func="century_localisation_".WT_LOCALE;
 			$chxl = "0:|";
 			$countsm = "";
 			$countsf = "";
@@ -1722,8 +1719,11 @@ class stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<980) $sizes[0] += 50;
-				if (function_exists($func)) {
-					$century = $func($century, false);
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($century);
+					$century = $date->NumToRoman($century);
+				} else {
+					$century = i18n::century_name($century);
 				}
 				$chxl .= $century."|";
 				$average = 0;
@@ -2317,7 +2317,7 @@ class stats {
 	}
 
 	function statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -2380,14 +2380,13 @@ class stats {
 			// Beware divide by zero
 			if ($tot==0) return '';
 			$centuries = "";
-			$func="century_localisation_".WT_LOCALE;
 			$counts=array();
 			foreach ($rows as $values) {
-				if (function_exists($func)) {
-					$century = $func($values['century']);
-				}
-				else {
-					$century = $values['century'];
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($values['century']);
+					$century = $date->NumToRoman($values['century']);
+				} else {
+					$century = i18n::century_name($values['century']);
 				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $century.' - '.$values['total'].'|';
@@ -2400,7 +2399,7 @@ class stats {
 	}
 
 	function statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -2463,14 +2462,13 @@ class stats {
 			// Beware divide by zero
 			if ($tot==0) return '';
 			$centuries = "";
-			$func="century_localisation_".WT_LOCALE;
 			$counts=array();
 			foreach ($rows as $values) {
-				if (function_exists($func)) {
-					$century = $func($values['century']);
-				}
-				else {
-					$century = $values['century'];
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($values['century']);
+					$century = $date->NumToRoman($values['century']);
+				} else {
+					$century = i18n::century_name($values['century']);
 				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
 				$centuries .= $century.' - '.$values['total'].'|';
@@ -2509,7 +2507,7 @@ class stats {
 	function lastDivorcePlace() {return $this->_mortalityQuery('place', 'DESC', 'DIV');}
 
 	function statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
+		global $TBLPREFIX, $CENTURY_FORMAT;
 
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '200x250';}
@@ -2545,7 +2543,6 @@ class stats {
 			foreach ($rows as $values) {
 				if ($max<$values['age']) $max = $values['age'];
 			}
-			$func="century_localisation_".WT_LOCALE;
 			$chxl = "0:|";
 			$chmm = "";
 			$chmf = "";
@@ -2558,8 +2555,11 @@ class stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<1000) $sizes[0] += 50;
-				if (function_exists($func)) {
-					$century = $func($century, false);
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($century);
+					$century = $date->NumToRoman($century);
+				} else {
+					$century = i18n::century_name($century);
 				}
 				$chxl .= $century."|";
 				$average = 0;
@@ -2594,7 +2594,7 @@ class stats {
 			$chmf = substr($chmf,0,-1);
 			$chd = "t2:{$countsm}|{$countsf}|{$countsa}";
 			if ($max<=50) $chxl .= "1:||".i18n::translate('century')."|2:|0|10|20|30|40|50|3:||".i18n::translate('Age')."|";
-			else 	$chxl .= "1:||".i18n::translate('century')."|2:|0|10|20|30|40|50|60|70|80|90|100|3:||".i18n::translate('Age')."|";
+			else $chxl .= "1:||".i18n::translate('century')."|2:|0|10|20|30|40|50|60|70|80|90|100|3:||".i18n::translate('Age')."|";
 			if (count($rows)>4 || utf8_strlen(i18n::translate('Average age in century of marriage'))<30) {
 				$chtt = i18n::translate('Average age in century of marriage');
 			} else {
@@ -3001,7 +3001,7 @@ class stats {
 	}
 
 	function statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
+		global $TBLPREFIX, $CENTURY_FORMAT;
 
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
@@ -3028,16 +3028,16 @@ class stats {
 			$chm = "";
 			$chxl = "0:|";
 			$i = 0;
-			$func="century_localisation_".WT_LOCALE;
 			$counts=array();
 			foreach ($rows as $values) {
 				if ($sizes[0]<980) $sizes[0] += 38;
-				if (function_exists($func)) {
-					$chxl .= $func($values['century'], false)."|";
+				if ($CENTURY_FORMAT=='ROMAN') {
+					$date=new CalendarDate($values['century']);
+					$century = $date->NumToRoman($values['century']);
+				} else {
+					$century = i18n::century_name($values['century']);
 				}
-				else {
-					$chxl .= $values['century']."|";
-				}
+				$chxl .= $century."|";
 				if ($max<=5) $counts[] = round($values['num']*819.2-1, 1);
 				else $counts[] = round($values['num']*409.6, 1);
 				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
@@ -3146,7 +3146,7 @@ class stats {
 	}
 
 	function chartNoChildrenFamilies($year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
+		global $TBLPREFIX, $CENTURY_FORMAT;
 
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
 		$sizes = explode('x', $size);
@@ -3183,15 +3183,15 @@ class stats {
 		$chm = "";
 		$chxl = "0:|";
 		$i = 0;
-		$func="century_localisation_".WT_LOCALE;
 		foreach ($rows as $values) {
 			if ($sizes[0]<980) $sizes[0] += 38;
-			if (function_exists($func)) {
-				$chxl .= $func($values['century'], false)."|";
+			if ($CENTURY_FORMAT=='ROMAN') {
+				$date=new CalendarDate($values['century']);
+				$century = $date->NumToRoman($values['century']);
+			} else {
+				$century = i18n::century_name($values['century']);
 			}
-			else {
-				$chxl .= $values['century']."|";
-			}
+			$chxl .= $century."|";
 			$counts[] = round(4095*$values['count']/($max+1));
 			$chm .= 't'.$values['count'].',000000,0,'.$i.',11,1|';
 			$i++;
