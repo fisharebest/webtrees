@@ -45,7 +45,7 @@ function get_plac_label() {
 	if (empty($HEAD_PLAC_FORM)) $HEAD_PLAC_FORM = i18n::translate('City, County, State/Province, Country');
 	$plac_label = explode(',', $HEAD_PLAC_FORM);
 	$plac_label = array_reverse($plac_label);
-	if ($HEAD_PLAC_FORM == i18n::translate('City, County, State/Province, Country')) $plac_label[0] = i18n::translate('CTRY');
+	if ($HEAD_PLAC_FORM == i18n::translate('City, County, State/Province, Country')) $plac_label[0] = translate_fact('CTRY');
 
 	return $plac_label;
 }
@@ -300,7 +300,7 @@ function print_place_subfields($element_id) {
 		$subtagid=$element_id."_".$i;
 		$subtagname=$element_id."_".$i;
 		$plac_label[$i]=trim($plac_label[$i]);
-		if (in_array(utf8_strtolower($plac_label[$i]), array("country", "pays", "land", "zeme", "ülke", "país", "ország", "nazione", "kraj", "maa", utf8_strtolower(i18n::translate('CTRY'))))) {
+		if (in_array(utf8_strtolower($plac_label[$i]), array("country", "pays", "land", "zeme", "ülke", "país", "ország", "nazione", "kraj", "maa", utf8_strtolower(translate_fact('CTRY'))))) {
 			$cols="8";
 			$subtagname=$element_id."_PLAC_CTRY";
 			$icountry=$i;

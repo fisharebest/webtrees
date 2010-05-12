@@ -775,8 +775,8 @@ if (check_media_structure()) {
 	<!-- // NOTE: Row 1 left: Sort sequence -->
 	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Sequence'), help_link('sortby'); ?></td>
 	<td class="optionbox wrap"><select name="sortby">
-		<option value="title" <?php if ($sortby=='title') print "selected=\"selected\"";?>><?php print i18n::translate('TITL');?></option>
-		<option value="file" <?php if ($sortby=='file') print "selected=\"selected\"";?>><?php print i18n::translate('FILE');?></option>
+		<option value="title" <?php if ($sortby=='title') print "selected=\"selected\"";?>><?php print translate_fact('TITL');?></option>
+		<option value="file" <?php if ($sortby=='file') print "selected=\"selected\"";?>><?php print translate_fact('FILE');?></option>
 	</select></td>
 
 	<!-- // NOTE: Row 1 right, Upload media files -->

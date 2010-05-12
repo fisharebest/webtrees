@@ -451,7 +451,7 @@ if ($action=="filter") {
 					if ($ABBREVIATE_CHART_LABELS) {
 						$born=abbreviate_fact('BIRT');
 					} else {
-						$born=i18n::translate('BIRT');
+						$born=translate_fact('BIRT');
 					}
 
 				

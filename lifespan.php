@@ -305,7 +305,7 @@ var oldMx = 0;
 			<td align="center"><?php print i18n::translate('Speed');?></td>
 				<td align="center"><?php print i18n::translate('Begin Year');?></td>
 				<td align="center"><?php print i18n::translate('End Year');?></td>
-				<td align="center"><?php print i18n::translate('PLAC');?></td>
+				<td align="center"><?php print translate_fact('PLAC');?></td>
 		</tr>
 		<tr>
 			<td><select name="speedMenu" size="1">

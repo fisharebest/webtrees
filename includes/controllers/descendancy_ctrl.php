@@ -308,12 +308,12 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		$children = $family->getChildren();
 		print "<tr><td colspan=\"3\" class=\"details1\" >&nbsp;&nbsp;";
 		if ($children) {
-			print i18n::translate('NCHI').": ".count($children);
+			print translate_fact('NCHI').": ".count($children);
 		} else {
 			// Distinguish between no children (NCHI 0) and no recorded
 			// children (no CHIL records)
 			if (strpos($family->getGedcomRecord(), "\n1 NCHI 0")) {
-				print i18n::translate('NCHI').": ".count($children);
+				print translate_fact('NCHI').": ".count($children);
 			} else {
 				print i18n::translate('No children');
 			}

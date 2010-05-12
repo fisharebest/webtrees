@@ -392,7 +392,7 @@ function getRecentChanges() {
 				if ($SHOW_ID_NUMBERS) {
 					$recentText .= ' '.WT_LPARENS.$gid.WT_RPARENS;
 				}
-				$recentText.='</a> '.i18n::translate('CHAN').' - '.$record->LastChangeTimestamp(false).'</li>';
+				$recentText.='</a> '.translate_fact('CHAN').' - '.$record->LastChangeTimestamp(false).'</li>';
 			}
 		}
 	}

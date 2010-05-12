@@ -1843,7 +1843,7 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 		}
 	}
 	// print gedcom ages
-	foreach (array(i18n::translate('AGE')=>$fact_age, i18n::translate('Husband')=>$husb_age, i18n::translate('Wife')=>$wife_age) as $label=>$age) {
+	foreach (array(translate_fact('AGE')=>$fact_age, translate_fact('HUSB')=>$husb_age, translate_fact('WIFE')=>$wife_age) as $label=>$age) {
 		if ($age!='') {
 			$html.=' <span class="label">'.$label.':</span> <span class="age">'.PrintReady(get_age_at_event($age, false)).'</span>';
 		}
@@ -1922,13 +1922,13 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);
 			if ($cts>0) {
 				$map_lati=$match[1];
-				$html.='<br /><span class="label">'.i18n::translate('LATI').': </span>'.$map_lati;
+				$html.='<br /><span class="label">'.translate_fact('LATI').': </span>'.$map_lati;
 			}
 			$map_long="";
 			$cts = preg_match('/\d LONG (.*)/', $placerec, $match);
 			if ($cts>0) {
 				$map_long=$match[1];
-				$html.=' <span class="label">'.i18n::translate('LONG').': </span>'.$map_long;
+				$html.=' <span class="label">'.translate_fact('LONG').': </span>'.$map_long;
 			}
 			if ($map_lati && $map_long && empty($SEARCH_SPIDER)) {
 				$map_lati=trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789

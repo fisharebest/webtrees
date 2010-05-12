@@ -145,19 +145,19 @@ function print_address_structure_map($factrec, $level) {
 	$resultText = "<table>";
 	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for($i=0; $i<$ct; $i++) {
-		$resultText .= "<tr><td><span class=\"label\"><b>".i18n::translate('PHON').": </b></span></td><td><span class=\"field\">";
+		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('PHON').": </b></span></td><td><span class=\"field\">";
 		$resultText .= getLRM() . $omatch[$i][1]. getLRM();
 		$resultText .= "</span></td></tr>";
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for($i=0; $i<$ct; $i++) {
-		$resultText .= "<tr><td><span class=\"label\"><b>".i18n::translate('FAX').": </b></span></td><td><span class=\"field\">";
+		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('FAX').": </b></span></td><td><span class=\"field\">";
 		$resultText .= getLRM() . $omatch[$i][1] . getLRM();
 		$resultText .= "</span></td></tr>";
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for($i=0; $i<$ct; $i++) {
-		$resultText .= "<tr><td><span class=\"label\"><b>".i18n::translate('EMAIL').": </b></span></td><td><span class=\"field\">";
+		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('EMAIL').": </b></span></td><td><span class=\"field\">";
 		$resultText .= "<a href=\"mailto:".$omatch[$i][1]."\">".$omatch[$i][1]."</a>";
 		$resultText .= "</span></td></tr>";
 	}
@@ -624,7 +624,7 @@ function build_indiv_map($indifacts, $famids) {
 												$markers[$i]["fact"] = i18n::translate('Son');
 												$markers[$i]["class"]  = "person_box";
 											} else {
-												$markers[$i]["fact"]     = i18n::translate('CHIL');
+												$markers[$i]["fact"]     = translate_fact('CHIL');
 												$markers[$i]["class"]    = "person_boxNN";
 											}
 										$markers[$i]["placerec"] = $placerec;
@@ -649,7 +649,7 @@ function build_indiv_map($indifacts, $famids) {
 											if ((count($latlongval) != 0) && ($latlongval["lati"] != NULL) && ($latlongval["long"] != NULL)) {
 												$i = $i + 1;
 												$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-												$markers[$i]["fact"]     = i18n::translate('CHIL');
+												$markers[$i]["fact"]     = translate_fact('CHIL');
 												$markers[$i]["class"]    = "option_boxNN";
 												if (strpos($srec, "\n1 SEX F")!==false) {
 													$markers[$i]["fact"] = i18n::translate('Daughter');

@@ -496,7 +496,7 @@ class LifespanControllerRoot extends BaseController {
 					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
 					echo "\n\t<table><tr>\n\t\t<td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
 					echo abbreviate_fact('BIRT');
-					echo "</b><span>", $value->getSexImage(), $indiName, "<br/>", i18n::translate('BIRT'), " ", strip_tags($bdate->Display(false)), " ", PrintReady($value->getBirthPlace()), "</span></a></td>" ,
+					echo "</b><span>", $value->getSexImage(), $indiName, "<br/>", translate_fact('BIRT'), " ", strip_tags($bdate->Display(false)), " ", PrintReady($value->getBirthPlace()), "</span></a></td>" ,
 						"\n\t\t<td align=\"left\" width=\"100%\"><a href=\"", encode_url($value->getLinkUrl()), "\">", $value->getSexImage(), $indiName, ":  $lifespan </a></td>" ,
 						"\n\t\t<td width=\"15\">";
 					if ($value->isDead()) {
@@ -504,7 +504,7 @@ class LifespanControllerRoot extends BaseController {
 							print "<a class=\"showit\" href=\"#\"><b>";
 							echo abbreviate_fact('DEAT');
 							if (!$deathReal) print "*";
-							print "</b><span>".$value->getSexImage().$indiName."<br/>".i18n::translate('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
+							print "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
 						}
 					}
 					print "</td></tr></table>";
@@ -525,7 +525,7 @@ class LifespanControllerRoot extends BaseController {
 						print "\n\t<table dir=\"ltr\"><tr>\n\t\t<td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
 						echo abbreviate_fact('BIRT');
 						if (!$birthReal) print "*";
-						print "</b><span>".$value->getSexImage().$indiName."<br/>".i18n::translate('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."</span></a></td>" .
+						print "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."</span></a></td>" .
 						"<td align=\"left\" width=\"100%\"><a href=\"".encode_url($value->getLinkUrl())."\">".$value->getSexImage().$indiName."</a></td>" .
 						"\n\t\t<td width=\"15\">";
 						if ($value->isDead()) {
@@ -533,7 +533,7 @@ class LifespanControllerRoot extends BaseController {
 								print "<a class=\"showit\" href=\"#\"><b>";
 								echo abbreviate_fact('DEAT');
 								if (!$deathReal) print "*";
-								print "</b><span>".$value->getSexImage().$indiName."<br/>".i18n::translate('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
+								print "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
 							}
 						}
 						print "</td></tr></table>";
@@ -544,13 +544,13 @@ class LifespanControllerRoot extends BaseController {
 						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
 						print "<a class=\"showit\" href=\"".encode_url($value->getLinkUrl())."\"><b>";
 						echo abbreviate_fact('BIRT');
-						print "</b><span>".$value->getSexImage().$indiName."<br/>".i18n::translate('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."<br/>";
+						print "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."<br/>";
 						foreach($eventinformation as $evtwidth=>$val){
 							$text = explode("-fact,", $val);
 							$val = $text[1];
 							print $val."<br />\n";
 						}
-						if ($value->isDead() && $deathReal) print i18n::translate('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace());
+						if ($value->isDead() && $deathReal) print translate_fact('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace());
 						print "</span></a>";
 						echo '</div>';
 					}

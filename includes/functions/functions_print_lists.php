@@ -109,7 +109,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<thead><tr>";
 	echo "<td></td>";
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
-	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', i18n::translate('NAME'), '</a></th>';
+	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', translate_fact('NAME'), '</a></th>';
 	echo "<th class=\"list_label\" style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
 	if ($option=="sosa") echo "<th class=\"list_label\">Sosa</th>";
@@ -392,7 +392,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // INDI:ID
 	echo "<td class=\"list_label\">"; // NAME
 	if (count($unique_indis)>1) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', i18n::translate('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", i18n::translate('Show parents'), "</label><br />";
 	echo i18n::translate('Total individuals'), ' : ', count($unique_indis);
@@ -481,13 +481,13 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo i18n::translate('Leaves'), "</button> ";
 	echo "<br />";
 	echo "<button type=\"button\" class=\"MARR_U\" title=\"", i18n::translate('Show couples with an unknown marriage date.'), "\" >";
-	echo i18n::translate('MARR'), " ?</button> ";
+	echo translate_fact('MARR'), " ?</button> ";
 	echo "<button type=\"button\" class=\"MARR_YES\" title=\"", i18n::translate('Show couples who married more than 100 years ago.'), "\" >";
-	echo i18n::translate('MARR'), "&gt;100</button> ";
+	echo translate_fact('MARR'), "&gt;100</button> ";
 	echo "<button type=\"button\" class=\"MARR_Y100\" title=\"", i18n::translate('Show couples who married within the last 100 years.'), "\" >";
-	echo i18n::translate('MARR'), "&lt;=100</button> ";
+	echo translate_fact('MARR'), "&lt;=100</button> ";
 	echo "<button type=\"button\" class=\"MARR_DIV\" title=\"", i18n::translate('Show divorced couples.'), "\" >";
-	echo i18n::translate('DIV'), "</button> ";
+	echo translate_fact('DIV'), "</button> ";
 	echo "<button type=\"button\" class=\"reset\" title=\"", i18n::translate('Reset to the list defaults.'), "\" >";
 	echo i18n::translate('Reset'), "</button> ";
 	//-- table header
@@ -496,11 +496,11 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<td></td>";
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">FAM</th>";
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
-	echo "<th class=\"list_label\">", i18n::translate('NAME'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('NAME'), "</th>";
 	echo "<th style=\"display:none\">HUSB:GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
 	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
-	echo "<th class=\"list_label\">", i18n::translate('NAME'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('NAME'), "</th>";
 	echo "<th style=\"display:none\">WIFE:GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
 	echo "<th class=\"list_label\">", translate_fact('MARR'), "</th>";
@@ -771,7 +771,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // HUSB:ID
 	echo "<td class=\"list_label\">"; // HUSB:NAME
 	if ($num>1) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', i18n::translate('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", i18n::translate('Show parents'), "</label><br />";
 	echo i18n::translate('Total families'), " : ", $num;
@@ -781,7 +781,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<td></td>"; // HUSB:AGE
 	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // WIFE:ID
 	echo "<td class=\"list_label\" style=\"vertical-align: top;\">"; // WIFE:NAME
-	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', i18n::translate('GIVN'), '</a><br />';
+	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
 	echo "</td>";
 	echo "<td style=\"display:none\">WIFE:GIVN</td>";
 	echo "<td></td>"; // WIFE:AGE
@@ -1063,7 +1063,7 @@ function print_repo_table($repos, $legend='') {
 	if ($SHOW_ID_NUMBERS) {
 		echo '<th class="list_label rela">REPO</th>';
 	}
-	echo '<th class="list_label">', i18n::translate('NAME'), '</th>';
+	echo '<th class="list_label">', translate_fact('NAME'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
@@ -1305,7 +1305,7 @@ function format_surname_table($surnames, $type) {
 	$table_id ='ID'.floor(microtime()*1000000); // sorttable requires a unique ID
 	$html='<table id="'.$table_id.'" class="sortable list_table center">';
 	$html.='<tr><th></th>';
-	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.i18n::translate('SURN').'</a></th>';
+	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.translate_fact('SURN').'</a></th>';
 	$html.='<th style="display:none;">SURN</th>'; // hidden column for sorting surnames
 	$html.='<th class="list_label">';
 	if ($type=='famlist') {
@@ -1603,7 +1603,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 	if ($SHOW_ID_NUMBERS) echo "<td></td>";
 	echo "<td class=\"list_label\">";
 	if ($n>1 && $indi) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', i18n::translate('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
 	}
 	if ($indi) {
 		echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", i18n::translate('Show parents'), "</label><br />";
