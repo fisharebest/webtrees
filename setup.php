@@ -705,18 +705,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}blocks (".
-		" b_id       INTEGER AUTO_INCREMENT NOT NULL,".
-		" b_username VARCHAR(100)           NOT NULL,".
-		" b_location VARCHAR(30)            NOT NULL,".
-	 	" b_order    INTEGER                NOT NULL,".
-		" b_name     VARCHAR(255)           NOT NULL,".
-		" b_config   TEXT                   NOT NULL,".
-		" PRIMARY KEY (b_id),".
-		"         KEY ix1 (b_username)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}news (".
 		" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
 		" n_username VARCHAR(100)           NOT NULL,".
@@ -924,6 +912,29 @@ try {
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
 		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */,".
 		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)   /* ON DELETE CASCADE */".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block (".
+		" block_id    INTEGER AUTO_INCREMENT        NOT NULL,".
+		" gedcom_id   INTEGER                           NULL,".
+		" user_id     INTEGER                           NULL,".
+		" location    ENUM('faq', 'main','side')    NOT NULL,".
+	 	" block_order INTEGER                       NOT NULL,".
+		" module_name VARCHAR(32)                   NOT NULL,".
+		" PRIMARY KEY     (block_id),".
+		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  ), /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk2 (user_id    ) REFERENCES {$TBLPREFIX}user   (user_id    ), /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk3 (module_name) REFERENCES {$TBLPREFIX}module (module_name)  /* ON DELETE CASCADE */".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block_setting (".
+		" block_id      INTEGER     NOT NULL,".
+		" setting_name  VARCHAR(32) NOT NULL,".
+		" setting_value TEXT        NOT NULL,".
+		" PRIMARY KEY     (block_id, setting_name),".
+		" FOREIGN KEY fk1 (block_id) REFERENCES {$TBLPREFIX}block (block_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(

@@ -22,8 +22,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Modules
  * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
  */
 
@@ -46,12 +44,32 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block, $config, $side, $index) {
-		// Generate the block contents
+	public function getBlock($block_id) {
+		global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $THEME_DIR;
+
+		$id=$this->getName().$block_id;
+		$title=i18n::translate('Change Theme').help_link('change_theme');
+		$content='<br /><div class="center theme_form">'.MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';
+
+		require $THEME_DIR.'templates/block_main_temp.php';
 	}
 
 	// Implement class WT_Module_Block
-	public function configureBlock() {
-		// Create an edit form, and respond to the result
+	public function canLoadAjax() {
+		return false;
+	}
+
+	// Implement class WT_Module_Block
+	public function isUserBlock() {
+		return true;
+	}
+
+	// Implement class WT_Module_Block
+	public function isGedcomBlock() {
+		return true;
+	}
+
+	// Implement class WT_Module_Block
+	public function configureBlock($block_id) {
 	}
 }

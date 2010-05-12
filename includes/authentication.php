@@ -581,57 +581,6 @@ function getUserFavorites($username) {
 }
 
 /**
- * get blocks for the given username
- *
- * retrieve the block configuration for the given user
- * if no blocks have been set yet, and the username is a valid user (not a gedcom) then try and load
- * the defaultuser blocks.
- * @param string $username	the username or gedcom name for the blocks
- * @return array	an array of the blocks.  The two main indexes in the array are "main" and "right"
- */
-function getBlocks($username) {
-	global $TBLPREFIX;
-
-	$blocks = array();
-	$blocks["main"] = array();
-	$blocks["right"] = array();
-
-	$rows=
-		WT_DB::prepare("SELECT * FROM {$TBLPREFIX}blocks WHERE b_username=? ORDER BY b_location, b_order")
-		->execute(array($username))
-		->fetchAll();
-
-	if ($rows) {
-		foreach ($rows as $row) {
-			if (!isset($row->b_config))
-				$row->b_config="";
-			if ($row->b_location=="main")
-				$blocks["main"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
-			if ($row->b_location=="right")
-				$blocks["right"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
-		}
-	} else {
-		if (get_user_id($username)) {
-			//-- if no blocks found, check for a default block setting
-			//$rows=
-				WT_DB::prepare("SELECT * FROM {$TBLPREFIX}blocks WHERE b_username=? ORDER BY b_location, b_order")
-				->execute(array('defaultuser'))
-				->fetchAll();
-
-			foreach ($rows as $row) {
-				if (!isset($row->b_config))
-					$row->b_config="";
-				if ($row->b_location=="main")
-					$blocks["main"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
-				if ($row->b_location=="right")
-					$blocks["right"][$row->b_order] = array($row->b_name, @unserialize($row->b_config));
-			}
-		}
-	}
-	return $blocks;
-}
-
-/**
  * Set Blocks
  *
  * Sets the blocks for a gedcom or user portal

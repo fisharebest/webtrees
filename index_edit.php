@@ -62,6 +62,8 @@ if (!isset($setdefault)) $setdefault=false;
 if (!isset($side)) $side='main';
 if (!isset($index)) $index=1;
 
+$block_id=safe_REQUEST($_REQUEST, 'block_id');
+
 // Define all the icons we're going to use
 $IconUarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['uarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
 $IconDarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['darrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
@@ -70,86 +72,25 @@ $IconLarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['larrow']['other']."\" 
 $IconRDarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['rdarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
 $IconLDarrow = "<img src=\"".$WT_IMAGE_DIR.'/'.$WT_IMAGES['ldarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
 
-/**
- * Load List of Blocks in blocks directory (unchanged)
- */
-$WT_BLOCKS = array();
-$d = dir('blocks');
-while (false !== ($entry = $d->read())) {
-	if (preg_match("/\.php$/", $entry)>0) {
-		require_once WT_ROOT.'blocks/'.$entry;
+$all_blocks=array();
+foreach (WT_Module::getActiveBlocks() as $name=>$block) {
+	if ($ctype=='user' && $block->isUserBlock() || $ctype=='gedcom' && $block->isGedcomBlock()) {
+		$all_blocks[$name]=$block;
 	}
 }
-$d->close();
-/**
- * End loading list of Blocks in blocks directory
- *
- * Load List of Blocks in modules/XX/blocks directories
- */
-if (file_exists(WT_ROOT.'modules')) {
-	$dir=dir(WT_ROOT.'modules');
-	while (false !== ($entry = $dir->read())) {
-		if (!strstr($entry,'.') && ($entry!='..') && ($entry!='CVS')&& !strstr($entry, 'svn')) {
-			$path = WT_ROOT.'modules/' . $entry.'/blocks';
-			if (is_readable($path)) {
-				$d=dir($path);
-				while (false !== ($entry = $d->read())) {
-				if (($entry!='.') && ($entry!='..') && ($entry!='CVS')&& !strstr($entry, 'svn')&&(preg_match("/\.php$/", $entry)>0)) {
-						$p=$path.'/'.$entry;
-						require_once $p;
-					}
-				}
-			}
-		}
-	}
-}
-/**
- * End loading list of Blocks in modules/XX/blocks directories
-*/
-
-//	Build sorted table of block names, BUT:
-//		include in this table ONLY if the block is appropriate for this page
-//		If $BLOCK['type'] is	'both', include in both page types
-//					'user', include in My Page only
-//					'gedcom', include in Index page only
-$SortedBlocks = array();
-foreach($WT_BLOCKS as $key => $BLOCK) {
-	if ($BLOCK['type']=='both' || $BLOCK['type']==$ctype) {
-		$SortedBlocks[$key] = $BLOCK['name'];
-	}
-}
-asort($SortedBlocks);
 
 //-- get the blocks list
 if ($ctype=='user') {
-	$ublocks = getBlocks(WT_USER_NAME);
-	if (($action=='reset') || ((count($ublocks['main'])==0) && (count($ublocks['right'])==0))) {
-		$ublocks['main'] = array();
-		$ublocks['main'][] = array('print_todays_events', '');
-		$ublocks['main'][] = array('print_user_messages', '');
-		$ublocks['main'][] = array('print_user_favorites', '');
-
-		$ublocks['right'] = array();
-		$ublocks['right'][] = array('print_welcome_block', '');
-		$ublocks['right'][] = array('print_random_media', '');
-		$ublocks['right'][] = array('print_upcoming_events', '');
-		$ublocks['right'][] = array('print_logged_in_users', '');
+	if ($action=='reset') {
+		WT_DB::prepare("DELETE {$TBLPREFIX}block_setting FROM {$TBLPREFIX}block_setting JOIN {$TBLPREFIX}block USING (block_id) WHERE user_id=?")->execute(array(WT_USER_ID));
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}block WHERE user_id=?")->execute(array(WT_USER_ID));
 	}
+	$blocks=get_user_blocks(WT_USER_ID);
 } else {
-	$ublocks = getBlocks($GEDCOM);
-	if (($action=='reset') or ((count($ublocks['main'])==0) and (count($ublocks['right'])==0))) {
-		$ublocks['main'] = array();
-		$ublocks['main'][] = array('print_gedcom_stats', '');
-		$ublocks['main'][] = array('print_gedcom_news', '');
-		$ublocks['main'][] = array('print_gedcom_favorites', '');
-		$ublocks['main'][] = array('review_changes_block', '');
-
-		$ublocks['right'] = array();
-		$ublocks['right'][] = array('print_gedcom_block', '');
-		$ublocks['right'][] = array('print_random_media', '');
-		$ublocks['right'][] = array('print_todays_events', '');
-		$ublocks['right'][] = array('print_logged_in_users', '');
+	if ($action=='reset') {
+		WT_DB::prepare("DELETE {$TBLPREFIX}block_setting FROM {$TBLPREFIX}block_setting JOIN {$TBLPREFIX}block USING (block_id) WHERE gedcom_id=?")->execute(array(WT_GED_ID));
 	}
+	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
 
 if ($ctype=='user') {
@@ -158,62 +99,34 @@ if ($ctype=='user') {
 	print_simple_header(get_gedcom_setting(WT_GED_ID, 'title'));
 }
 
-$GEDCOM_TITLE=PrintReady(get_gedcom_setting(WT_GED_ID, 'title'));
-
-if ($action=='updateconfig') {
-	$block = $ublocks[$side][$index];
-	if ($WT_BLOCKS[$block[0]]['canconfig'] && is_array($WT_BLOCKS[$block[0]]['config'])) {
-		$config = $block[1];
-		foreach($WT_BLOCKS[$block[0]]['config'] as $config_name=>$config_value) {
-			if (isset($_POST[$config_name])) {
-				$config[$config_name] = $_POST[$config_name];
-			} else {
-				$config[$config_name] = '';
-			}
-		}
-		$ublocks[$side][$index][1] = $config;
-		setBlocks($name, $ublocks, $setdefault);
-	}
-	echo WT_JS_START, 'opener.window.location.reload(); window.close();', WT_JS_END;
-	exit;
-}
-
 if ($action=='update') {
-	$newublocks['main'] = array();
-	if (is_array($main)) {
-		foreach($main as $indexval => $b) {
-			$config = '';
-			$index = '';
-			reset($ublocks['main']);
-			foreach($ublocks['main'] as $index=>$block) {
-				if ($block[0]==$b) {
-					$config = $block[1];
-					break;
+	foreach (array('main', 'side') as $location) {
+		if ($location=='main') {
+			$new_blocks=$main;
+		} else {
+			$new_blocks=$right;
+		}
+		// Deleted blocks
+		foreach ($blocks[$location] as $block_id=>$block_name) {
+			if (!in_array($block_id, $new_blocks)) {
+				WT_DB::prepare("DELETE FROM {$TBLPREFIX}block_setting WHERE block_id=?")->execute(array($block_id));
+				WT_DB::prepare("DELETE FROM {$TBLPREFIX}block         WHERE block_id=?")->execute(array($block_id));
+			}
+		}
+		foreach ($new_blocks as $order=>$block_name) {
+			if (is_numeric($block_name)) {
+				// existing block
+				WT_DB::prepare("UPDATE {$TBLPREFIX}block SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
+			} else {
+				// new block
+				if ($ctype=='user') {
+					WT_DB::prepare("INSERT INTO {$TBLPREFIX}block (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_USER_ID, $location, $order, $block_name));
+				} else {
+					WT_DB::prepare("INSERT INTO {$TBLPREFIX}block (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_GED_ID, $location, $order, $block_name));
 				}
 			}
-			if ($index!='') unset($ublocks['main'][$index]);
-			$newublocks['main'][] = array($b, $config);
 		}
 	}
-
-	$newublocks['right'] = array();
-	if (is_array($right)) {
-		foreach($right as $indexval => $b) {
-			$config = '';
-			$index = '';
-			reset($ublocks['right']);
-			foreach($ublocks['right'] as $index=>$block) {
-				if ($block[0]==$b) {
-					$config = $block[1];
-					break;
-				}
-			}
-			if ($index!='') unset($ublocks['right'][$index]);
-			$newublocks['right'][] = array($b, $config);
-		}
-	}
-	$ublocks = $newublocks;
-	setBlocks($name, $ublocks, $setdefault);
 	if (isset($_POST['nextaction'])) $action = $_POST['nextaction'];
 	echo WT_JS_START, 'opener.window.location.reload(); window.close();', WT_JS_END;
 	exit;
@@ -224,14 +137,24 @@ if ($action=="clearcache") {
 	echo "<span class=\"warning\">".i18n::translate('The cache files have been removed.')."</span><br /><br />";
 }
 
-if ($action=="configure" && isset($ublocks[$side][$index])) {
-	$block = $ublocks[$side][$index];
+//var_dump($blocks);die("eek");
+if ($action=="configure") {
+	if (array_key_exists($block_id, $blocks['main'])) {
+		$block_name=$blocks['main'][$block_id];
+	} elseif (array_key_exists($block_id, $blocks['side'])) {
+		$block_name=$blocks['side'][$block_id];
+	} else {
+		echo WT_JS_START, 'window.close();', WT_JS_END;
+		exit;
+	}
+	$class_name=$block_name.'_WT_Module';
+	$block=new $class_name;
 	echo "<table class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
 	echo "<tr><td class=\"facts_label\">";
 	echo "<h2>".i18n::translate('Configure')."</h2>";
 	echo "</td></tr>";
 	echo "<tr><td class=\"facts_label03\">";
-	echo "<b>".$WT_BLOCKS[$block[0]]["name"]."</b>";
+	echo "<b>".$block->getTitle()."</b>";
 	echo "</td></tr>";
 	echo "</table>";
 ?>
@@ -244,32 +167,17 @@ if ($action=="configure" && isset($ublocks[$side][$index])) {
 //-->
 </script>
 <?php
-	echo "\n<form name=\"block\" method=\"post\" action=\"index_edit.php\">\n";
-	echo "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"updateconfig\" />\n";
-	echo "<input type=\"hidden\" name=\"name\" value=\"$name\" />\n";
-	echo "<input type=\"hidden\" name=\"nextaction\" value=\"configure\" />\n";
-	echo "<input type=\"hidden\" name=\"side\" value=\"$side\" />\n";
-	echo "<input type=\"hidden\" name=\"index\" value=\"$index\" />\n";
-	echo "<table border=\"0\" class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
-	if ($WT_BLOCKS[$block[0]]["canconfig"]) {
-		eval($block[0]."_config(\$block[1]);");
-		echo "<tr><td colspan=\"2\" class=\"topbottombar\">";
-		echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"document.block.submit();\" />";
-		echo "&nbsp;&nbsp;<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
-		echo "</td></tr>";
-	} else {
-		echo "<tr><td colspan=\"2\" class=\"optionbox\">";
-		echo i18n::translate('This block cannot be configured.');
-		echo "</td></tr>";
-		echo "<tr><td colspan=\"2\" class=\"topbottombar\">";
-		echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"opener.window.location.reload(); window.close();\" />";
-		echo "</td></tr>";
-	}
+	echo "\n<form name=\"block\" method=\"post\" action=\"index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id=", $block_id, "\">\n";
+	echo "<input type=\"hidden\" name=\"save\" value=\"1\" />\n";
+	echo "<table border=\"0\" class=\"facts_table ".$TEXT_DIRECTION."\">";
+	$block->configureBlock($block_id);
+	echo "<tr><td colspan=\"2\" class=\"topbottombar\">";
+	echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"document.block.submit();\" />";
+	echo "&nbsp;&nbsp;<input type =\"button\" value=\"".i18n::translate('Cancel')."\" onclick=\"window.close()\" />";
+	echo "</td></tr>";
 	echo "</table>";
 	echo "</form>";
-}
-else {
+} else {
 	?>
 	<script language="JavaScript" type="text/javascript">
 	<!--
@@ -358,8 +266,8 @@ else {
  */
 	<?php
 	echo "var block_descr = new Array();\n";
-	foreach ($WT_BLOCKS as $b=>$block) {
-		echo "block_descr['$b'] = '".str_replace("'", "\\'", embed_globals($block["descr"]))."';\n";
+	foreach ($all_blocks as $block_name=>$block) {
+		echo "block_descr['$block_name'] = '".str_replace("'", "\\'", $block->getDescription())."';\n";
 	}
 	echo "block_descr['advice1'] = '".str_replace("'", "\\'", i18n::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.'))."';\n";
 	?>
@@ -440,10 +348,8 @@ else {
 	// NOTE: Row 2 column 2: Left (Main) block list
 	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">\n";
 		echo "<select multiple=\"multiple\" id=\"main_select\" name=\"main[]\" size=\"10\" onchange=\"show_description('main_select');\">\n";
-		foreach($ublocks["main"] as $indexval => $block) {
-			if (function_exists($block[0])) {
-				echo "<option value=\"$block[0]\">".$WT_BLOCKS[$block[0]]["name"]."</option>\n";
-			}
+		foreach($blocks['main'] as $block_id=>$block_name) {
+			echo "<option value=\"$block_id\">".$all_blocks[$block_name]->getTitle()."</option>\n";
 		}
 		echo "</select>\n";
 	echo "</td>";
@@ -461,8 +367,8 @@ else {
 	// Row 2 column 4: Middle (Available) block list
 	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
 		echo "<select id=\"available_select\" name=\"available[]\" size=\"10\" onchange=\"show_description('available_select');\">\n";
-		foreach($SortedBlocks as $key => $value) {
-			echo "<option value=\"$key\">".$SortedBlocks[$key]."</option>\n";
+		foreach($all_blocks as $block_name=>$block) {
+			echo "<option value=\"$block_name\">".$block->getTitle()."</option>\n";
 		}
 		echo "</select>\n";
 	echo "</td>";
@@ -479,10 +385,8 @@ else {
 	// NOTE: Row 2 column 6: Right block list
 	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
 		echo "<select multiple=\"multiple\" id=\"right_select\" name=\"right[]\" size=\"10\" onchange=\"show_description('right_select');\">\n";
-		foreach($ublocks["right"] as $indexval => $block) {
-			if (function_exists($block[0])) {
-				echo "<option value=\"$block[0]\">".$WT_BLOCKS[$block[0]]["name"]."</option>\n";
-			}
+		foreach($blocks['side'] as $block_id=>$block_name) {
+			echo "<option value=\"$block_id\">".$all_blocks[$block_name]->getTitle()."</option>\n";
 		}
 		echo "</select>\n";
 	echo "</td>";

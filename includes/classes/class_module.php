@@ -33,8 +33,11 @@ define('WT_CLASS_MODULE_PHP', '');
 
 // Modules can optionally implement the following interfaces.
 interface WT_Module_Block {
-	public function getBlock($block, $config, $side, $index);
-	public function configureBlock();
+	public function getBlock($block_id);
+	public function canLoadAjax();
+	public function isUserBlock();
+	public function isGedcomBlock();
+	public function configureBlock($block_id);
 }
 
 interface WT_Module_Chart {
@@ -222,7 +225,7 @@ abstract class WT_Module {
 		if ($modules===null) {
 			$dir=opendir(WT_ROOT.'modules');
 			while (($file=readdir($dir))!==false) {
-				if (preg_match('/^[a-zA-Z_]+$/', $file) && file_exists(WT_ROOT.'modules/'.$file.'/module.php')) {
+				if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.'modules/'.$file.'/module.php')) {
 					require_once WT_ROOT.'modules/'.$file.'/module.php';
 					$class=$file.'_WT_Module';
 					$modules[$file]=new $class();

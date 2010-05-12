@@ -22,8 +22,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Modules
  * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
  */
 
@@ -46,12 +44,40 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block, $config, $side, $index) {
-		// Generate the block contents
+	public function getBlock($block_id) {
+		global $hitCount, $SHOW_COUNTER, $THEME_DIR;
+
+		$id=$this->getName().$block_id;
+		$title=get_gedcom_setting(WT_GED_ID, 'title');
+		$content = "<div class=\"center\">";
+		$content .= "<br />".format_timestamp(client_time())."<br />\n";
+		if ($SHOW_COUNTER)
+			$content .=  i18n::translate('Hit Count:')." ".$hitCount."<br />\n";
+		$content .=  "\n<br />";
+		if (WT_USER_GEDCOM_ADMIN) {
+			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('".encode_url("index_edit.php?name=".WT_GEDCOM."&ctype=gedcom")."', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".i18n::translate('Customize this GEDCOM Home Page')."</a><br />\n";
+		}
+		$content .=  "</div>";
+
+		require $THEME_DIR.'templates/block_main_temp.php';
 	}
 
 	// Implement class WT_Module_Block
-	public function configureBlock() {
-		// Create an edit form, and respond to the result
+	public function canLoadAjax() {
+		return false;
+	}
+
+	// Implement class WT_Module_Block
+	public function isUserBlock() {
+		return false;
+	}
+
+	// Implement class WT_Module_Block
+	public function isGedcomBlock() {
+		return true;
+	}
+
+	// Implement class WT_Module_Block
+	public function configureBlock($block_id) {
 	}
 }
