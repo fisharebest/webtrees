@@ -3704,16 +3704,6 @@ case 'desc_rootid':
 	$text=i18n::translate('If you want to display a chart with a new starting (root) person, the ID of that new starting person is typed here.<br /><br />If you don\'t know the ID of that person, use the <b>Find ID</b> link.<br /><br /><b>ID NUMBER</b><br />The ID numbers used inside <b>webtrees</b> are <u>not</u> the identification numbers issued by various governments (driving permit or passport numbers, for instance).  The ID number referred to here is simply a number used within the database to uniquely identify each individual; it was assigned by the ancestry program that created the GEDCOM file which was imported into <b>webtrees</b>.');
 	break;
 
-case 'detected_ansi2utf':
-	$title=i18n::translate('ANSI character set');
-	$text=i18n::translate('The GEDCOM file being validated now is encoded in the ANSI character set.  You are strongly advised to convert the file\'s encoding to UTF-8.<br /><br /><br />~CONVERT ANSI TO UTF-8~<br /><br />To ensure that the information in your input GEDCOM files is processed and displayed correctly, these files should be encoded in UTF-8.<br /><br />Some of the more modern genealogy programs can export their data to a GEDCOM file in UTF-8 encoding.  Older programs often don\'t have this capability.  If your program does not offer you this option, <b>webtrees</b> can convert the file for you.<br /><br />When <b>webtrees</b> validates the input file, it will detect the file\'s encoding and advise you accordingly.');
-	break;
-
-case 'detected_date':
-	$title=i18n::translate('Date format will be changed');
-	$text=i18n::translate('The date format that is standard for <b>webtrees</b> and also according to the GEDCOM 5.5.1 Standard is <b>DD&nbsp;MMM&nbsp;YYYY</b> (e.g. 01&nbsp;JAN&nbsp;2004)<br /><br />If, after your GEDCOM file has been validated, you see a message that a wrong date format has been detected, <b>webtrees</b> will convert the incorrectly formatted dates as prescribed by the Standard.<br /><br />You have, however, the option to choose either "<b>day</b> before month" (DD&nbsp;MMM&nbsp;YYYY), or "<b>month</b> before day" (MMM&nbsp;DD&nbsp;YYYY).<br /><br />We recommend that you use the first format (day before month).');
-	break;
-
 case 'download_gedcom':
 	$title=i18n::translate('Download GEDCOM');
 	$text=i18n::translate('From this page you can download your genealogical database in GEDCOM format.  You may want to import the data into another genealogical program, or you may want to share its information with others.<br /><br />~CONVERT FROM UTF-8 TO ANSI~<br /><br />For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br /><br />The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren\'t sure, consult the documentation of that program.<br /><br />Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program\'s method for handling these special characters by some other means.  Consult your program\'s manufacturer or author.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/UTF-8\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8.<br /><br /><br /><br />~REMOVE CUSTOM WEBTREES TAGS~<br /><br />Checking this option will remove any custom tags that may have been added to the records by <b>webtrees</b>.<br /><br />Custom tags used by <b>webtrees</b> include the <b>_WT_USER</b> tag which identifies the user who changed a record online and the <b>_THUM</b> tag which tells <b>webtrees</b> that the image should be used as a thumbnail.<br /><br />Custom tags may cause errors when importing the downloaded GEDCOM to another genealogy application.<br /><br /><br /><br />~DOWNLOAD GEDCOM AS ZIP FILE~<br /><br />When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins. This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br /><br />This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent.');
@@ -4888,11 +4878,6 @@ case 'talloffset':
 	$text=i18n::translate('With this option you determine the page layout orientation.<br /><br />Changing this setting might be useful if you want to make a screen print or if you have a different type of screen.<ul><li><b>Portrait</b> mode will make the tree taller, such that a 4 generation chart should fit on a single page printed vertically.</li><li><b>Landscape</b> mode will make a wider tree that should print on a single page printed horizontally.</li><li><b>Oldest at top</b> mode rotates the chart, but not its boxes, by 90 degrees counter-clockwise, so that the oldest generation is at the top of the chart.</li><li><b>Oldest at bottom</b> mode rotates the chart, but not its boxes, by 90 degrees clockwise, so that the oldest generation is at the bottom of the chart.</li></ul');
 	break;
 
-case 'time_limit':
-	$title=i18n::translate('Time limit:');
-	$text=i18n::translate('The maximum time the import is allowed to run for processing the GEDCOM file.');
-	break;
-
 case 'timeline_control':
 	$title=i18n::translate('Timeline control');
 	$text=i18n::translate('Click the drop down menu to change the speed at which the timeline scrolls.<br/><br/>~Begin Year~<br/>Enter the starting year of the range.<br/><br/>~End Year~<br/>Enter the ending year of the range.<br/><br/>~Search~<br/>Click the Search button to begin searching for events that occurred within the range identified by the Begin Year and End Year fields.');
@@ -4931,11 +4916,6 @@ case 'upload_media_folder':
 case 'upload_media':
 	$title=i18n::translate('Upload media files');
 	$text=i18n::translate('Select files from your local computer to upload to your server.  All files will be uploaded to the directory <b>%s</b> or to one of its sub-directories.<br /><br />Folder names you specify will be appended to <b>%s</b>. For example, <b>%smyfamily</b>. If the thumbnail directory does not exist, it is created automatically.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
-	break;
-
-case 'upload_path':
-	$title=i18n::translate('Upload path');
-	$text=i18n::translate('This is the path where the GEDCOM file you wish to upload can be found. To select the path, click on <b>Browse</b> and navigate to your GEDCOM file and then click <b>Open</b>.');
 	break;
 
 case 'upload_server_file':
