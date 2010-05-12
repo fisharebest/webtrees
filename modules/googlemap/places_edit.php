@@ -737,7 +737,7 @@ if ($action=="add") {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('PLAC'), help_link('PLE_PLACES','googlemap');?></td>
+		<td class="descriptionbox"><?php echo translate_fact('PLAC'), help_link('PLE_PLACES','googlemap');?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name) ?>" size="25" class="address_input" tabindex="<?php echo ++$i;?>" />
 		<div id="INDI_PLAC_pop" style="display: inline;">
 		<?php print_specialchar_link("NEW_PLACE_NAME", false);?></div>
@@ -782,7 +782,7 @@ if ($action=="add") {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('LATI'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo translate_fact('LATI'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
 		<td class="optionbox">
 			<select name="LATI_CONTROL" tabindex="<?php echo ++$i;?>" onchange="updateMap();">
 				<option value="" <?php if ($place_lati == null) echo " selected=\"selected\"";?>></option>
@@ -792,7 +792,7 @@ if ($action=="add") {
 			<input type="text" name="NEW_PLACE_LATI" value="<?php if ($place_lati != null) echo abs($place_lati);?>" size="20" tabindex="<?php echo ++$i;?>" onchange="updateMap();" /></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('LONG'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo translate_fact('LONG'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
 		<td class="optionbox">
 			<select name="LONG_CONTROL" tabindex="<?php echo ++$i;?>" onchange="updateMap();">
 				<option value="" <?php if ($place_long == null) echo " selected=\"selected\"";?>></option>

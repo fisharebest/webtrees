@@ -403,7 +403,7 @@ function openPic(filename, width, height) {
 ?>
 	</td>
 		<td class="optionbox">
-			<center><b><?php echo i18n::translate('FORM'); ?></b></center>
+			<center><b><?php echo translate_fact('FORM'); ?></b></center>
 			<table class="width100">
 				<tr>
 			<td class="width33"><input type="checkbox" value="yes"
@@ -450,7 +450,7 @@ function openPic(filename, width, height) {
 				</tr>
 			</table>
 			<br />
-			<center><b><?php echo i18n::translate('TYPE'); ?></b></center>
+			<center><b><?php echo translate_fact('TYPE'); ?></b></center>
 			<table class="width100">
 				<tr>
 				<?php

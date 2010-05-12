@@ -182,7 +182,7 @@ class stats_ui extends stats
 				.print_findnote_link("gid{$uniqueID}",'',true)
 				.print_findmedia_link("gid{$uniqueID}",'1','',true)
 				."<br />".i18n::translate('OR<br />Enter a URL and a title')
-				."<table><tr><td>".i18n::translate('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\" /></td></tr>"
+				."<table><tr><td>".translate_fact('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\" /></td></tr>"
 				."<tr><td>".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\" /></td></tr></table>"
 				."</td><td>"
 				.i18n::translate('Enter an optional note about this favorite')

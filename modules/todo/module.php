@@ -71,12 +71,12 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$table_id = 'ID'.floor(microtime()*1000000); // sorttable requires a unique ID
 		$content .= '<table id="'.$table_id.'" class="sortable list_table center">';
 		$content .= '<tr>';
-		$content .= '<th class="list_label">'.i18n::translate('DATE').'</th>';
+		$content .= '<th class="list_label">'.translate_fact('DATE').'</th>';
 		$content .= '<th class="list_label">'.i18n::translate('Record').'</th>';
 		if ($show_unassigned || $show_other) {
 			$content .= '<th class="list_label">'.i18n::translate('User name').'</th>';
 		}
-		$content .= '<th class="list_label">'.i18n::translate('TEXT').'</th>';
+		$content .= '<th class="list_label">'.translate_fact('TEXT').'</th>';
 		$content .= '</tr>';
 
 		$found=false;

@@ -206,7 +206,7 @@ class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
 		$html=get_block_setting($block_id, 'html');
 		// title
 		print "<tr><td class=\"descriptionbox wrap width33\">"
-			.i18n::translate('TITL')
+			.translate_fact('TITL')
 			.help_link('index_htmlplus_title')
 			."</td><td class=\"optionbox\"><input type=\"text\" name=\"title\" size=\"30\" value=\"".htmlspecialchars($title)."\" /></td></tr>"
 		;

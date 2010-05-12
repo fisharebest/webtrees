@@ -163,7 +163,7 @@ function print_address_structure_map($factrec, $level) {
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for($i=0; $i<$ct; $i++) {
-		$resultText .= "<tr><td><span class=\"label\"><b>".i18n::translate('URL').": </b></span></td><td><span class=\"field\">";
+		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('URL').": </b></span></td><td><span class=\"field\">";
 		$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>";
 		$resultText .= "</span></td></tr>";
 	}

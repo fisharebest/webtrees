@@ -8,7 +8,7 @@
  * The alphabet bar shows all the available letters users can click. The bar is built
  * up from the lastnames first letter. Added to this bar is the symbol @, which is
  * shown as a translated version of the variable <var>pgv_lang["NN"]</var>, and a
- * translated version of the word ALL by means of variable <var>i18n::translate('ALL')</var>.
+ * translated version of the word ALL by means of variable <var>i18n::translate('All')</var>.
  *
  * The details can be shown in two ways, with surnames or without surnames. By default
  * the user first sees a list of surnames of the chosen letter and by clicking on a
