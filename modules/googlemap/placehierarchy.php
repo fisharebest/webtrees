@@ -37,6 +37,7 @@ if (!defined('WT_WEBTREES')) {
 
 global $TBLPREFIX;
 
+require WT_ROOT.'modules/googlemap/googlemap.php';
 if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 	require WT_ROOT.'modules/googlemap/defaultconfig.php';
 }
