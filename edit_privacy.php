@@ -283,9 +283,9 @@ if ($action=="update") {
 		<tr>
 			<td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
 				<?php
-				print "<a href=\"javascript: ".i18n::translate('General Privacy settings')."\" onclick=\"expand_layer('general-privacy-options');return false\"><img id=\"general-privacy-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["minus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> ";
+				print "<a href=\"javascript: ".i18n::translate('General privacy settings')."\" onclick=\"expand_layer('general-privacy-options');return false\"><img id=\"general-privacy-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["minus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> ";
 				?>
-				<a href="javascript: <?php print i18n::translate('General Privacy settings'); ?>" onclick="expand_layer('general-privacy-options');return false"><b><?php echo i18n::translate('General Privacy settings'), help_link('general_privacy'); ?></b></a>
+				<a href="javascript: <?php print i18n::translate('General privacy settings'); ?>" onclick="expand_layer('general-privacy-options');return false"><b><?php echo i18n::translate('General privacy settings'), help_link('general_privacy'); ?></b></a>
 			</td>
 		</tr>
 	</table>
@@ -319,7 +319,7 @@ if ($action=="update") {
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Enable Clippings Cart'), help_link('ENABLE_CLIPPINGS_CART'); ?>
+					<?php echo i18n::translate('Enable clippings cart'), help_link('ENABLE_CLIPPINGS_CART'); ?>
 				</td>
 				<td class="optionbox">
 					<select size="1" name="v_ENABLE_CLIPPINGS_CART"><?php write_access_option($ENABLE_CLIPPINGS_CART); ?></select>
@@ -683,8 +683,8 @@ if ($action=="update") {
 	<table class="facts_table">
 		<tr>
 			<td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-				<?php print "<a href=\"javascript: ".i18n::translate('Facts Privacy settings by ID')."\" onclick=\"expand_layer('person-facts-options');return false\"><img id=\"person-facts-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> "; ?>
-				<a href="javascript: <?php print i18n::translate('Facts Privacy settings by ID'); ?>" onclick="expand_layer('person-facts-options');return false"><b><?php echo i18n::translate('Facts Privacy settings by ID'); ?></b></a><?php echo help_link('person_facts'); ?>
+				<?php print "<a href=\"javascript: ".i18n::translate('Facts privacy settings by ID')."\" onclick=\"expand_layer('person-facts-options');return false\"><img id=\"person-facts-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> "; ?>
+				<a href="javascript: <?php print i18n::translate('Facts privacy settings by ID'); ?>" onclick="expand_layer('person-facts-options');return false"><b><?php echo i18n::translate('Facts privacy settings by ID'); ?></b></a><?php echo help_link('person_facts'); ?>
 			</td>
 		</tr>
 	</table>

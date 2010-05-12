@@ -101,7 +101,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 					$title .= "<img class=\"adminicon\" src=\"$WT_IMAGE_DIR/".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 				}
-				$title.=i18n::translate('Review GEDCOM Changes').help_link('review_changes');
+				$title.=i18n::translate('Review GEDCOM changes').help_link('review_changes');
 				$content = "";
 				if (WT_USER_CAN_ACCEPT) {
 					$content .= "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Accept / Reject Changes')."</a><br />";

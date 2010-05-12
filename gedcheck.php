@@ -37,7 +37,7 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	header('Location: login.php?url=gedcheck.php');
 	exit;
 }
-print_header(i18n::translate('Gedcom checker').' - '.$GEDCOM);
+print_header(i18n::translate('GEDCOM checker').' - '.$GEDCOM);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Scan all the gedcom directories for gedcom files

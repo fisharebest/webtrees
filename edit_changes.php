@@ -41,7 +41,7 @@ $change_id=safe_GET('change_id');
 $index =safe_GET('index');
 $ged   =safe_GET('ged');
 
-print_simple_header(i18n::translate('Review GEDCOM Changes'));
+print_simple_header(i18n::translate('Review GEDCOM changes'));
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--

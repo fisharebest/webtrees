@@ -410,7 +410,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr><td class="descriptionbox width50 wrap">'.i18n::translate('Zip File(s)').help_link('zip').'</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked" /></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap">'.i18n::translate('Include Media (automatically zips files)').help_link('include_media').'</td>
+		<tr><td class="descriptionbox width50 wrap">'.i18n::translate('Include media (automatically zips files)').help_link('include_media').'</td>
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked="checked" /></td></tr>
 		';
 		
