@@ -2130,11 +2130,6 @@ case 'AUTO_GENERATE_THUMBS':
 	$text=i18n::translate('Should the system automatically generate thumbnails for images that do not have them.  Your PHP installation might not support this functionality.');
 	break;
 
-case 'BOM_detected':
-	$title=i18n::translate('A Byte Order Mark (BOM) was detected at the beginning of the file. On cleanup, this special code will be removed.');
-	$text=i18n::translate('The GEDCOM file you are importing has a special 3-byte code at the beginning.  This special code is used by some programs to indicate that the file has been recorded in the UTF-8 character set.<br /><br />Although this special code is not really an error, <b>webtrees</b> will not work properly when the input file contains the code.  You should let <b>webtrees</b> remove the code.');
-	break;
-
 case 'CALENDAR_FORMAT':
 	$title=i18n::translate('Calendar format');
 	$text=i18n::translate('Dates can be recorded in various calendars such as Gregorian, Julian, or the Jewish Calendar.  This option allows you to convert dates to a preferred calendar.  For example, you could select Gregorian to convert Julian and Hebrew dates to Gregorian.  The converted date is shown in parentheses after the regular date.<br /><br />Dates are only converted if they are valid for the calendar.  For example, only dates between 22&nbsp;SEP&nbsp;1792 and 31&nbsp;DEC&nbsp;1805 will be converted to the French Republican calendar and only dates after 15&nbsp;OCT&nbsp;1582 will be converted to the Gregorian calendar.<br /><br />Hebrew is the same as Jewish, but using Hebrew characters.  Arabic is the same as Hijri, but using Arabic characters.<br /><br />Note: Since the Jewish and Hijri calendar day starts at dusk, any event taking place from dusk till midnight will display as one day prior to the correct date.  The display of Hebrew and Arabic can be problematic in old browsers, which may display text backwards (left to right) or not at all.');
@@ -3524,11 +3519,6 @@ case 'apply_privacy':
 	$text=i18n::translate('When this option is checked, the output file will pass through privacy checks according to the selected option.  This can result in the removal of certain information.  The output file will contain only the information that is normally visible to a user with the indicated privilege level.<br /><br />If you only have GEDCOM administrator rights, you cannot specify that the output file should be privatized according to the Site administrator privilege level.');
 	break;
 
-case 'autoContinue':
-	$title=i18n::translate('Automatically press «continue» button');
-	$text=i18n::translate('When <b>webtrees</b> detects that the GEDCOM Import requires more time than is permitted by the time limit, it will display a <b>Continue</b> button that you must press to continue the Import.<br /><br />When this option is set to <b>Yes</b>, <b>webtrees</b> will automatically press the <b>Continue</b> button for you.  This should relieve the tedium of having to press the button repeatedly for lengthy Imports.');
-	break;
-
 case 'basic_or_all':
 	$title=i18n::translate('Show only births, deaths and marriages?');
 	$text=i18n::translate('This option lets you eliminate some dated events.  For example, Divorce, Cremation, Graduation, Bar Mitzvah, First Communion, etc. should all be dated.<br /><br />When you select <b>Yes</b>, only Births, Deaths, and Marriages will be shown. When you select <b>No</b>, all dated events will be shown.');
@@ -3542,11 +3532,6 @@ case 'block_move_right':
 case 'block_move_up':
 	$title=i18n::translate('Move list entries');
 	$text=i18n::translate('Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br /><br />Highlight the entry to be moved, and then click a button to move that entry up or down.');
-	break;
-
-case 'bom_check':
-	$title=i18n::translate('Byte Order Mark (BOM) check');
-	$text=i18n::translate('This check will analyze all the language files for the BOM (Byte Order Mark). If found, it will remove the BOM from the affected file. These special codes can cause malfunctions in some parts of <b>webtrees</b>.');
 	break;
 
 case 'box_width':
@@ -3627,11 +3612,6 @@ case 'convertPath':
 case 'convertSlashes':
 	$title=i18n::translate('Convert media folder separators to');
 	$text=i18n::translate('This option determines whether folder names in the FILE specification of media objects should be separated by forward slashes or by backslashes.  Your choice depends on the requirements of the receiving operating system.<br /><br />The choice <b>Forward slashes : /</b> is appropriate for most operating systems other than Microsoft Windows.  The choice <b>Backslashes : \</b> should be used when the destination program is running on a Microsoft Windows system.<br /><br />Media paths that are actually URLs will not be changed.');
-	break;
-
-case 'convert_ansi2utf':
-	$title=i18n::translate('Convert ANSI to UTF-8');
-	$text=i18n::translate('To ensure that the information in your input GEDCOM files is processed and displayed correctly, these files should be encoded in UTF-8.<br /><br />Some of the more modern genealogy programs can export their data to a GEDCOM file in UTF-8 encoding.  Older programs often don\'t have this capability.  If your program does not offer you this option, <b>webtrees</b> can convert the file for you.<br /><br />When <b>webtrees</b> validates the input file, it will detect the file\'s encoding and advise you accordingly.');
 	break;
 
 case 'cookie':
@@ -4126,8 +4106,7 @@ case 'help_contents_help':
 		if (WT_USER_IS_ADMIN) {
 			$text.='<td valign="top"><span class="helpstart">'.i18n::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.i18n::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.i18n::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
 			.i18n::translate('FAQ List: Edit').'</a></li><li><a href="?help=add_gedcom">'.i18n::translate('GEDCOM: Add').'</li><li><a href="?help=add_upload_gedcom">'.i18n::translate('GEDCOM: Add vs Upload').'</a></li><li><a href="?help=edit_gedcoms">'.i18n::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=change_indi2id">'
-			.i18n::translate('GEDCOM: Change Individual ID to ...').'</a></li><li><a href="?help=gedcom_configfile">'.i18n::translate('GEDCOM: Configuration file').'</a></li><li><a href="?help=edit_config_gedcom">'.i18n::translate('GEDCOM: Configure').'</a></li><li><a href="?help=convert_ansi2utf">'
-			.i18n::translate('GEDCOM: Convert ANSI to UTF-8').'</a></li><li><a href="?help=add_new_gedcom">'.i18n::translate('GEDCOM: Create new').'</a></li><li><a href="?help=default_gedcom">'.i18n::translate('GEDCOM: Default').'</a></li><li><a href="?help=delete_gedcom">'.i18n::translate('GEDCOM: Delete').'</a></li><li><a href="?help=download_gedcom">'
+			.i18n::translate('GEDCOM: Change Individual ID to ...').'</a></li><li><a href="?help=gedcom_configfile">'.i18n::translate('GEDCOM: Configuration file').'</a></li><li><a href="?help=edit_config_gedcom">'.i18n::translate('GEDCOM: Configure').'</a></li><li><a href="?help=add_new_gedcom">'.i18n::translate('GEDCOM: Create new').'</a></li><li><a href="?help=default_gedcom">'.i18n::translate('GEDCOM: Default').'</a></li><li><a href="?help=delete_gedcom">'.i18n::translate('GEDCOM: Delete').'</a></li><li><a href="?help=download_gedcom">'
 			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=edit_privacy">'.i18n::translate('GEDCOM: Privacy settings').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="?help=validate_gedcom">'
 			.i18n::translate('GEDCOM: Validate').'</a></li><li><a href="?help=readmefile">'.i18n::translate('Readme file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User Administration').'</a></li></ul></td>';
 		}
@@ -4419,11 +4398,6 @@ case 'login_buttons':
 case 'login_page':
 	$title=i18n::translate('Login page');
 	$text=i18n::translate('On this page you can login, request a new password, or request a new user account.');
-	break;
-
-case 'macfile_detected':
-	$title=i18n::translate('Macintosh file detected.  On cleanup your file will be converted to a DOS file.');
-	$text=i18n::translate('<b>webtrees</b> detected that your GEDCOM file was created on a Macintosh computer.<br /><br />Macintosh files end each line with a CR control code.  CR is Ctrl+M.<br />Unix files end each line with an LF control code.  LF is Ctrl+J.<br />Windows and DOS use a two-code sequence, CR followed by LF.<br /><br /><b>webtrees</b> requires that all files use Unix or DOS line endings. When you click the Cleanup button, your line endings will be converted accordingly.');
 	break;
 
 case 'mail_option1':
