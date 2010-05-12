@@ -581,7 +581,7 @@ function apply_filter($facts, $filterof, $filtersx) {
 ////////////////////////////////////////////////////////////////////////////////
 function calendar_fact_text($fact, $show_places) {
 	global $TEXT_DIRECTION;
-	$text=i18n::translate($fact['fact']).' - '.$fact['date']->Display(true, "", array());
+	$text=translate_fact($fact['fact']).' - '.$fact['date']->Display(true, "", array());
 	if ($fact['anniv']>0)
 		$text.=' <span dir="'.$TEXT_DIRECTION.'">('.i18n::translate('%s year anniversary', $fact['anniv']).')</span>';
 	if ($show_places && !empty($fact['plac']))
