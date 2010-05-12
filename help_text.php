@@ -2145,11 +2145,6 @@ case 'CHART_BOX_TAGS':
 	$text=i18n::translate('This should be a comma or space separated list of facts, in addition to Birth and Death, that you want to appear in chart boxes such as the Pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 Standard.  For example, if you wanted the occupation to show up in the box, you would add "OCCU" to this field.');
 	break;
 
-case 'CHECK_CHILD_DATES':
-	$title=i18n::translate('Check child dates');
-	$text=i18n::translate('Check children\'s dates when determining whether a person is dead.  On older systems and large GEDCOMs this can slow down the response time of your site.');
-	break;
-
 case 'CHECK_MARRIAGE_RELATIONS':
 	$title=i18n::translate('Check marriage relations');
 	$text=i18n::translate('Check relationships that are related by marriage.');
@@ -5046,11 +5041,6 @@ case 'utf8_ansi':
 case 'validate_gedcom':
 	$title=i18n::translate('Validate GEDCOM');
 	$text=i18n::translate('This is the third step in the procedure to add externally created GEDCOM data to your genealogical database.<br /><br /><b>webtrees</b> will check the input file for the correct use of Date format, Place format, Character Set, etc.  Some deviations from the GEDCOM 5.5.1 Standard, to which <b>webtrees</b> adheres, can be corrected automatically. Examples are Macintosh line endings and incorrect use of Place format.  When this happens, you will see a message that the data has been changed.  For other abnormalities you will get a warning message with a recommended solution.<br /><br /><b>Optional Tools</b><br />At this moment there is only one additional tool:<br /><b>Change Individual ID to...</b>.<br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
-case 'verify_gedcom':
-	$title=i18n::translate('Verify GEDCOM');
-	$text=i18n::translate('Here you can choose to either continue with the upload and import of this GEDCOM file or to abort the upload and import.');
 	break;
 
 case 'view_server_folder':
