@@ -304,7 +304,7 @@ function openPic(filename, width, height) {
 	}
 
 	// Implement class WT_Module_Block
-	public function canLoadAjax() {
+	public function loadAjax() {
 		return true;
 	}
 

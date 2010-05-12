@@ -34,7 +34,7 @@ define('WT_CLASS_MODULE_PHP', '');
 // Modules can optionally implement the following interfaces.
 interface WT_Module_Block {
 	public function getBlock($block_id);
-	public function canLoadAjax();
+	public function loadAjax();
 	public function isUserBlock();
 	public function isGedcomBlock();
 	public function configureBlock($block_id);

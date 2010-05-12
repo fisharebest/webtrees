@@ -145,7 +145,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function canLoadAjax() {
+	public function loadAjax() {
 		return false;
 	}
 

@@ -148,7 +148,7 @@ if ($blocks['main']) {
 	foreach ($blocks['main'] as $block_id=>$module_name) {
 		$class_name=$module_name.'_WT_Module';
 		$module=new $class_name;
-		if ($SEARCH_SPIDER || !$module->canLoadAjax()) {
+		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
 			$module->getBlock($block_id);
 		} else {
@@ -169,7 +169,7 @@ if ($blocks['side']) {
 	foreach ($blocks['side'] as $block_id=>$module_name) {
 		$class_name=$module_name.'_WT_Module';
 		$module=new $class_name;
-		if ($SEARCH_SPIDER || !$module->canLoadAjax()) {
+		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
 			$module->getBlock($block_id);
 		} else {
