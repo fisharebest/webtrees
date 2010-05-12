@@ -3875,11 +3875,6 @@ case 'edit_surname':
 	$text=i18n::translate('In this field you should enter the surname for the person.  As an example, in the name "John Robert Finlay", the surname that should be entered here is "Finlay"<br /><br />Individuals with multiple surnames, common in Spain and Portugal, should separate the surnames with a comma.  This indicates that the person is to be listed under each of the names.  For example, the surname "Cortes,Vega" will be listed under both <b>C</b> and <b>V</b>, whereas the surname "Cortes Vega" will only be listed under <b>C</b>.');
 	break;
 	
-case 'edit_TIME':
-	$title=i18n::translate('Time');
-	$text=i18n::translate('Enter the time for this event in 24-hour format with leading zeroes. Midnight is 00:00. Examples: 04:50 13:00 20:30.<br /><br />.');
-	break;
-	
 case 'edituser_change_lang':
 	$title=i18n::translate('Language selector');
 	$text=i18n::translate('Here you can change the language in which <b>webtrees</b> will display all its pages and messages after you have logged in.<br /><br />When you first access the site, <b>webtrees</b> assumes that you want to see everything in the language configured as the Preferred Language in your browser.  If that assumption is incorrect, you would override it here.  For example, your browser might be set to English because that is the most prevalent language on the Internet.  However, for genealogical purposes, you would prefer to see everything in Finnish or Hebrew.  Here\'s where you do that.<br /><br />The administrator controls what language choices are available to you.  If your preference isn\'t listed, you need to contact the administrator.<br /><br />Please remember that <b>webtrees</b> is very much a project staffed by an international team of unpaid volunteers.  Experts come and go.  Consequently, support for languages other than English is sometimes not as good as it should be.<br /><br />If you see something that has not been translated, has been translated incorrectly, or could be phrased better, let your administrator know.  The administrator will know how to get in touch with the <b>webtrees</b> developer team to have your concerns addressed.  Better still, volunteer some of your time.  We can use the help.');
