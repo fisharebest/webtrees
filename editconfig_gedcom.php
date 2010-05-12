@@ -484,7 +484,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Default person for Pedigree and Descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
+						<?php echo i18n::translate('Default person for pedigree and descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
 					</td>
 				<td class="optionbox"><input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 						<?php
@@ -533,7 +533,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				  <table class="facts_table">
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Display Hebrew Thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?>
+							<?php echo i18n::translate('Display Hebrew thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_THOUSANDS', $DISPLAY_JEWISH_THOUSANDS); ?>
@@ -541,7 +541,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Display Hebrew Gershayim'), help_link('DISPLAY_JEWISH_GERESHAYIM'); ?>
+							<?php echo i18n::translate('Display Hebrew gershayim'), help_link('DISPLAY_JEWISH_GERESHAYIM'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_GERESHAYIM', $DISPLAY_JEWISH_GERESHAYIM); ?>
@@ -730,14 +730,14 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Media Firewall Root Directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
+							<?php echo i18n::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php print ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" tabindex="<?php echo ++$i; ?>" /><br />
 						<?php echo i18n::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Protect Thumbnails of Protected Images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
+							<?php echo i18n::translate('Protect thumbnails of protected images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_MEDIA_FIREWALL_THUMBS', $MEDIA_FIREWALL_THUMBS, 'tabindex="'.(++$i).'"'); ?>
@@ -1553,13 +1553,13 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Main WebSite URL'), help_link('HOME_SITE_URL'); ?>
+							<?php echo i18n::translate('Main website URL'), help_link('HOME_SITE_URL'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_HOME_SITE_URL" value="<?php print $HOME_SITE_URL; ?>" size="50" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Main WebSite text'), help_link('HOME_SITE_TEXT'); ?>
+							<?php echo i18n::translate('Main website text'), help_link('HOME_SITE_TEXT'); ?>
 						</td>
 						<td class="optionbox"><input type="text" dir="ltr" name="NEW_HOME_SITE_TEXT" value="<?php print htmlspecialchars($HOME_SITE_TEXT, ENT_COMPAT, 'UTF-8'); ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>

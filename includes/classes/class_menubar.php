@@ -771,7 +771,7 @@ class MenuBar
 			return $menu;
 			}
 		//-- main print_preview menu item
-		$menu = new Menu(i18n::translate('Printer-friendly Version'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;view=preview"), "down");
+		$menu = new Menu(i18n::translate('Printer-friendly version'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;view=preview"), "down");
 		if (!empty($WT_IMAGES["printer"]["large"]))
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["printer"]["large"]);
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_printer");
@@ -1019,7 +1019,7 @@ class MenuBar
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
-		$menu=new Menu(i18n::translate('Change Language'), '#', 'down');
+		$menu=new Menu(i18n::translate('Change language'), '#', 'down');
 		$menu->addClass("langmenuitem$ff", "langmenuitem_hover$ff", "submenu$ff");
 
 		foreach (i18n::installed_languages() as $lang=>$name) {

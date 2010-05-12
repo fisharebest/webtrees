@@ -280,7 +280,7 @@ switch ($action) {
 						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Confirm Password'), help_link('edituser_conf_password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" name="user_password02" value="" tabindex="<?php echo $i++;?>" /> *</td></tr>
 						<?php
 						echo "<tr><td class=\"descriptionbox wrap ", $TEXT_DIRECTION, "\">";
-						echo i18n::translate('Change Language'), help_link('edituser_change_lang');
+						echo i18n::translate('Change language'), help_link('edituser_change_lang');
 						echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 						echo edit_field_language('user_language', WT_LOCALE, $extra='tabindex="'.(++$i).'"');
 						echo '</td></tr>';

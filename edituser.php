@@ -186,7 +186,7 @@ echo i18n::translate('Confirm Password'), help_link('edituser_conf_password'), '
 echo '<input type="password" name="form_pass2" tabindex="', ++$tab, '" /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Change Language'), help_link('edituser_change_lang');
+echo i18n::translate('Change language'), help_link('edituser_change_lang');
 echo '</td><td class="optionbox" valign="top">';
 echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language'), 'tabindex="'.(++$tab).'"');
 echo '</td></tr>';

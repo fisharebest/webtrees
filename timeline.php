@@ -332,8 +332,8 @@ $controller->checkPrivacy();
 		$scalemod = round($controller->scale*.2) + 1;
 		?>
 		<td class="list_value" style="padding: 5px">
-			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>"><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES['zoomin']['other']; ?>" title="<?php print i18n::translate('Zoom In'); ?>" alt="<?php print i18n::translate('Zoom In'); ?>" border="0" /></a><br />
-			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>"><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES['zoomout']['other']; ?>" title="<?php print i18n::translate('Zoom Out'); ?>" alt="<?php print i18n::translate('Zoom Out'); ?>" border="0" /></a><br />
+			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>"><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES['zoomin']['other']; ?>" title="<?php print i18n::translate('Zoom in'); ?>" alt="<?php print i18n::translate('Zoom in'); ?>" border="0" /></a><br />
+			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>"><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES['zoomout']['other']; ?>" title="<?php print i18n::translate('Zoom out'); ?>" alt="<?php print i18n::translate('Zoom out'); ?>" border="0" /></a><br />
 			<input type="button" value="<?php print i18n::translate('Clear Chart'); ?>" onclick="window.location = 'timeline.php?clear=1';" />
 		</td>
 	<?php } ?>
