@@ -142,7 +142,8 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'num',  safe_POST_integer('num', 1, 10000));
+			set_block_setting($block_id, 'num',    safe_POST_integer('num', 1, 10000));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
@@ -154,6 +155,13 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo i18n::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '" />';
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', false);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 

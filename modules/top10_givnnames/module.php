@@ -101,7 +101,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .=  "</div>";
 
 		global $THEME_DIR;
-		$block=false;
+		$block=get_block_setting($block_id, 'block', false);
 		if ($block) {
 			require $THEME_DIR.'templates/block_small_temp.php';
 		} else {
@@ -130,6 +130,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'num', safe_POST_integer('num', 1, 10000));
 			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table'), 'table'));
 			set_block_setting($block_id, 'showUnknown', safe_POST_bool('showUnknown'));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
@@ -155,6 +156,13 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo i18n::translate('Show unknown gender'), help_link('showUnknown');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('showUnknown', $showUnknown);
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', false);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

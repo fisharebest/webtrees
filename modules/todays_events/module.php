@@ -107,13 +107,16 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $WT_BLOCKS;
-		if (empty($config)) $config = $WT_BLOCKS["print_todays_events"]["config"];
-		if (!isset($config["filter"])) $config["filter"] = "all";
-		if (!isset($config["onlyBDM"])) $config["onlyBDM"] = "no";
-		if (!isset($config["infoStyle"])) $config["infoStyle"] = "style2";
-		if (!isset($config["sortStyle"])) $config["sortStyle"] = "alpha";
-		if (!isset($config["allowDownload"])) $config["allowDownload"] = "yes";
+		if (safe_POST_bool('save')) {
+			set_block_setting($block_id, 'filter',        safe_POST_bool('filter'));
+			set_block_setting($block_id, 'onlyBDM',       safe_POST_bool('onlyBDM'));
+			set_block_setting($block_id, 'infoStyle',     safe_POST('infoStyle', array('list', 'table'), 'table'));
+			set_block_setting($block_id, 'sortStyle',     safe_POST('sortStyle', array('alpha', 'anniv'), 'alpha'));
+			set_block_setting($block_id, 'allowDownload', safe_POST_bool('allowDownload'));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
+			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
+			exit;
+		}
 
 		?>
 		<tr><td class="descriptionbox wrap width33">
@@ -122,8 +125,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		?>
 		</td><td class="optionbox">
 			<select name="filter">
-				<option value="all"<?php if ($config["filter"]=="all") print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
-				<option value="living"<?php if ($config["filter"]=="living") print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
+				<option value="all"<?php if ($filter=="all") print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
+				<option value="living"<?php if ($filter=="living") print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
 			</select>
 		</td></tr>
 
@@ -134,8 +137,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		?>
 		</td><td class="optionbox">
 			<select name="onlyBDM">
-				<option value="no"<?php if ($config["onlyBDM"]=="no") print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
-				<option value="yes"<?php if ($config["onlyBDM"]=="yes") print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
+				<option value="no"<?php if (!$onlyBDM) print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
+				<option value="yes"<?php if ($onlyBDM) print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
 			</select>
 		</td></tr>
 
@@ -146,8 +149,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		?>
 		</td><td class="optionbox">
 			<select name="infoStyle">
-				<option value="style1"<?php if ($config["infoStyle"]=="style1") print " selected=\"selected\"";?>><?php print i18n::translate('List'); ?></option>
-				<option value="style2"<?php if ($config["infoStyle"]=="style2") print " selected=\"selected\"";?>><?php print i18n::translate('Table'); ?></option>
+				<option value="style1"<?php if ($infoStyle=="list") print " selected=\"selected\"";?>><?php print i18n::translate('List'); ?></option>
+				<option value="style2"<?php if ($infoStyle=="table") print " selected=\"selected\"";?>><?php print i18n::translate('Table'); ?></option>
 			</select>
 		</td></tr>
 
@@ -158,8 +161,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		?>
 		</td><td class="optionbox">
 			<select name="sortStyle">
-				<option value="alpha"<?php if ($config["sortStyle"]=="alpha") print " selected=\"selected\"";?>><?php print i18n::translate('Alphabetically'); ?></option>
-				<option value="anniv"<?php if ($config["sortStyle"]=="anniv") print " selected=\"selected\"";?>><?php print i18n::translate('By Anniversary'); ?></option>
+				<option value="alpha"<?php if ($sortStyle=="alpha") print " selected=\"selected\"";?>><?php print i18n::translate('Alphabetically'); ?></option>
+				<option value="anniv"<?php if ($sortStyle=="anniv") print " selected=\"selected\"";?>><?php print i18n::translate('By Anniversary'); ?></option>
 			</select>
 		</td></tr>
 
@@ -170,11 +173,18 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		?>
 		</td><td class="optionbox">
 			<select name="allowDownload">
-				<option value="yes"<?php if ($config["allowDownload"]=="yes") print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
-				<option value="no"<?php if ($config["allowDownload"]=="no") print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
+				<option value="yes"<?php if ($allowDownload) print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
+				<option value="no"<?php if (!$allowDownload) print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
 			</select>
 			<input type="hidden" name="cache" value="1" />
 		</td></tr>
 	  <?php
+
+		$block=get_block_setting($block_id, 'block', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
+		echo '</td></tr>';
 	}
 }

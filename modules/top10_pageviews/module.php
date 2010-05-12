@@ -131,6 +131,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'num',  safe_POST_integer('num', 1, 10000));
 			set_block_setting($block_id, 'count_placement',  safe_POST('count_placement', array('before', 'after'), 'before'));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
@@ -148,6 +149,13 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		print i18n::translate('Place counts before or after name?');
 		print "</td><td class=\"optionbox\">";
 		echo select_edit_control('count_placement', array('before'=>i18n::translate('before'), 'after'=>i18n::translate('after')), null, $count_placement, '');
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', false);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

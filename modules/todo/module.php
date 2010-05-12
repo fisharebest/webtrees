@@ -137,6 +137,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'show_other',      safe_POST_bool('show_other'));
 			set_block_setting($block_id, 'show_unassigned', safe_POST_bool('show_unassigned'));
 			set_block_setting($block_id, 'show_future',     safe_POST_bool('show_future'));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
@@ -162,6 +163,13 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		echo i18n::translate('Show future tasks'), help_link('todo_show_future');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_other', $show_future);
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

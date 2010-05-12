@@ -115,6 +115,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'infoStyle',     safe_POST('infoStyle', array('list', 'table'), 'table'));
 			set_block_setting($block_id, 'sortStyle',     safe_POST('sortStyle', array('alpha', 'anniv'), 'alpha'));
 			set_block_setting($block_id, 'allowDownload', safe_POST_bool('allowDownload'));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
@@ -161,6 +162,13 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		echo i18n::translate('Allow calendar events download?'), help_link('cal_dowload');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('allowDownload', $allowDownload);
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', false);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

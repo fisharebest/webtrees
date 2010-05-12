@@ -64,7 +64,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			} else {
 				$name = WT_USER_NAME;
 			}
-			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('".encode_url("index_edit.php?action=configure&block_id={$block_id}")."', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
+			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('".encode_url("index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}")."', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title .= "<img class=\"adminicon\" src=\"$WT_IMAGE_DIR/".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 		}
 		$title.=i18n::translate('Recent Changes').help_link('recent_changes');
@@ -112,6 +112,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'days', safe_POST_integer('days', 1, $DAYS_TO_SHOW_LIMIT, $DAYS_TO_SHOW_LIMIT));
 			set_block_setting($block_id, 'hide_empty', safe_POST_bool('hide_empty'));
+			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
@@ -133,6 +134,13 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 		echo '<tr><td colspan="2" class="optionbox wrap">';
 		echo '<span class="error">', i18n::translate('If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty.'), '</span>';
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
 }

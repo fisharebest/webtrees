@@ -98,7 +98,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					} else {
 						$name = WT_USER_NAME;
 					}
-					$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
+					$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 					$title .= "<img class=\"adminicon\" src=\"$WT_IMAGE_DIR/".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 				}
 				$title.=i18n::translate('Review GEDCOM changes').help_link('review_changes');
@@ -161,27 +161,30 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $WT_BLOCKS;
-		if (empty($config)) $config = $WT_BLOCKS["review_changes_block"]["config"];
-		print i18n::translate('Send out reminder emails?');
-		print "&nbsp;<select name='sendmail'>";
-		print "<option value='yes'";
-		if ($config["sendmail"]=="yes") print " selected='selected'";
-		print ">".i18n::translate('Yes')."</option>";
-		print "<option value='no'";
-		if ($config["sendmail"]=="no") print " selected='selected'";
-		print ">".i18n::translate('No')."</option>";
-		print "</select><br /><br />";
-		print i18n::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$config["days"]."' size='2' />";
-		// Cache file life
-		if ($ctype=="gedcom") {
-			echo "<tr><td class=\"descriptionbox wrap width33\">";
-			echo i18n::translate('Cache file life'), help_link('cache_life');
-			echo "</td><td class=\"optionbox\">";
-			echo "<input type=\"text\" name=\"cache\" size=\"2\" value=\"".$config["cache"]."\" />";
-			echo "</td></tr>";
+		if (safe_POST_bool('save')) {
+			set_block_setting($block_id, 'days',     safe_POST_integer('num', 1, 180));
+			set_block_setting($block_id, 'sendmail', safe_POST_bool('sendmail'));
+			set_block_setting($block_id, 'block',    safe_POST_bool('block'));
+			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
+			exit;
 		}
-		// Cache file life is not configurable by user:  anything other than "no cache" doesn't make sense
-		print "<input type=\"hidden\" name=\"cache\" value=\"0\" />";
+
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+
+		$sendmail=get_block_setting($block_id, 'sendmail', true);
+		$days=get_block_setting($block_id, 'days', 7);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		print i18n::translate('Send out reminder emails?');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('sendmail', $sendmail);
+		print i18n::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2' />";
+		echo '</td></tr>';
+
+		$block=get_block_setting($block_id, 'block', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
+		echo '</td></tr>';
 	}
 }
