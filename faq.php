@@ -170,7 +170,7 @@ if ($action=="add") {
 	echo '</td></tr><tr><td class="optionbox"><input type="text" name="order" size="3" tabindex="', $i++, '" /></td>';
 	echo '<td class="optionbox">';
 		echo '<select name="whichGEDCOM" tabindex="', $i++, '" />';
-			echo '<option value="*all*">', i18n::translate('ALL'), '</option>';
+			echo '<option value="*all*">', i18n::translate('All'), '</option>';
 			echo '<option value="', $GEDCOM, '" selected="selected">', $GEDCOM, '</option';
 		echo '</select>';
 	echo '</td></tr>';
@@ -215,7 +215,7 @@ if ($action == "edit") {
 			echo '</td></tr><tr><td class="optionbox"><input type="text" name="order" size="3" tabindex="', $i++, '" value="', $id, '" /></td>';
 			echo '<td class="optionbox">';
 				echo '<select name="whichGEDCOM" tabindex="', $i++, '" />';
-					echo '<option value="*all*"';if ($data["header"]["gedcom"]=="*all*") echo ' selected="selected"';echo '>', i18n::translate('ALL'), '</option>';
+					echo '<option value="*all*"';if ($data["header"]["gedcom"]=="*all*") echo ' selected="selected"';echo '>', i18n::translate('All'), '</option>';
 					echo '<option value="', $GEDCOM, '"';
 					if ($data["header"]["gedcom"]==$GEDCOM) echo ' selected="selected"';
 					echo '>', $GEDCOM, '</option';
@@ -276,7 +276,7 @@ if ($action == "show") {
 				if ($adminedit) {
 					echo '<td class="descriptionbox width20 $TEXT_DIRECTION" colspan="4">';
 					echo i18n::translate('Position item'), ': ', $id, ', ';
-					if ($data["header"]["gedcom"]=="*all*") echo i18n::translate('ALL');
+					if ($data["header"]["gedcom"]=="*all*") echo i18n::translate('All');
 					else echo PrintReady($data["header"]["gedcom"]);
 					echo '</td>';
 				}

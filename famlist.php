@@ -93,7 +93,7 @@ $initials=get_indilist_salpha($SHOW_MARRIED_NAMES, true, WT_GED_ID);
 if ($show_all=='yes') {
 	$alpha='';
 	$surname='';
-	$legend=i18n::translate('ALL');
+	$legend=i18n::translate('All');
 	$url='famlist.php?show_all=yes';
 } elseif ($surname) {
 	$surname=utf8_strtoupper($surname);
@@ -167,9 +167,9 @@ foreach ($initials as $letter=>$count) {
 // Search spiders don't get the "show all" option as the other links give them everything.
 if (!$SEARCH_SPIDER) {
 	if ($show_all=='yes') {
-		$list[]='<span class="warning">'.i18n::translate('ALL').'</span>';
+		$list[]='<span class="warning">'.i18n::translate('All').'</span>';
 	} else {
-		$list[]='<a href="famlist.php?show_all=yes">'.i18n::translate('ALL').'</a>';
+		$list[]='<a href="famlist.php?show_all=yes">'.i18n::translate('All').'</a>';
 	}
 }
 echo '<div class="alpha_index"><p class="center">';
@@ -256,9 +256,9 @@ if ($showList) {
 				// Search spiders don't get the "show all" option as the other links give them everything.
 				if (!$SEARCH_SPIDER) {
 					if ($show_all_firstnames=='yes') {
-						$list[]='<span class="warning">'.i18n::translate('ALL').'</span>';
+						$list[]='<span class="warning">'.i18n::translate('All').'</span>';
 					} else {
-						$list[]='<a href="'.$url.'&amp;show_all_firstnames=yes">'.i18n::translate('ALL').'</a>';
+						$list[]='<a href="'.$url.'&amp;show_all_firstnames=yes">'.i18n::translate('All').'</a>';
 					}
 				}
 				if ($show_all=='no') {

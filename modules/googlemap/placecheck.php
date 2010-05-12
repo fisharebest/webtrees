@@ -77,7 +77,7 @@ echo "</select></td></tr>";
 echo "<tr><td class='descriptionbox'>", i18n::translate('Top Level Place'), "</td>";
 echo "<td class='optionbox'><select name='country'>";
 echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Top Level...'), "</option>";
-echo "<option value='XYZ'>", i18n::translate('ALL'), "</option>";
+echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
 $rows=
 	WT_DB::prepare("SELECT pl_id, pl_place FROM {$TBLPREFIX}placelocation WHERE pl_level=0 ORDER BY pl_place")
 	->fetchAssoc();
@@ -96,7 +96,7 @@ if ($country!='XYZ') {
 	echo "<tr><td class='descriptionbox'>", i18n::translate('Level One Place'), "</td>";
 	echo "<td class='optionbox'><select name='state'>";
 	echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Next Level...'), "</option>";
-	echo "<option value='XYZ'>", i18n::translate('ALL'), "</option>";
+	echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
 	$places=
 		WT_DB::prepare("SELECT pl_place FROM {$TBLPREFIX}placelocation WHERE pl_parent_id=? ORDER BY pl_place")
 		->execute(array($par_id))

@@ -223,7 +223,7 @@ if ($view!='preview') {
 	echo ">".i18n::translate('Births, Deaths, Marriages')."</option>";
 	echo "<option value=\"all\"";
 	if ($filterev == "all") echo " selected=\"selected\"";
-	echo ">".i18n::translate('ALL')."</option>";
+	echo ">".i18n::translate('All')."</option>";
 	echo "<option value=\"BIRT\"";
 	if ($filterev == "BIRT") echo " selected=\"selected\"";
 	echo ">".translate_fact('BIRT')."</option>";

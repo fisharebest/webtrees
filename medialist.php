@@ -236,7 +236,7 @@ $_SESSION['medialist'] = $medialist;
 					echo "<option value=\"", $f, "\"";
 					if ($folder==$f) echo " selected=\"selected\"";
 					echo ">";
-					if ($f=="ALL") echo i18n::translate('ALL');
+					if ($f=="ALL") echo i18n::translate('All');
 					else echo $f;
 					echo "</option>\n";
 				}

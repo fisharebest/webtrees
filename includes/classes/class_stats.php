@@ -3469,7 +3469,7 @@ class stats {
 		if ($common) {
 			switch ($type) {
 			case 'table':
-				$lookup=array('M'=>i18n::translate('Male'), 'F'=>i18n::translate('Female'), 'U'=>i18n::translate('unknown'), 'B'=>i18n::translate('ALL'));
+				$lookup=array('M'=>i18n::translate('Male'), 'F'=>i18n::translate('Female'), 'U'=>i18n::translate('unknown'), 'B'=>i18n::translate('All'));
 				return '<table><tr><td colspan="2" class="descriptionbox center">'.$lookup[$sex].'</td></tr><tr><td class="descriptionbox center">'.i18n::translate('Names').'</td><td class="descriptionbox center">'.i18n::translate('Count').'</td></tr>'.join('', $common).'</table>';
 			case 'list':
 				return "<ul>\n".join("\n", $common)."</ul>\n";

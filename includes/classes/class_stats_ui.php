@@ -244,7 +244,7 @@ class stats_ui extends stats
 			';
 			$content .= '<input type="hidden" name="action" value="deletemessage" />'
 				.'<table class="list_table"><tr>'
-				."<td class=\"list_label\">".i18n::translate('Delete')."<br />\n<a href=\"javascript:;\" onclick=\"return select_all();\">".i18n::translate('ALL')."</a></td>\n"
+				."<td class=\"list_label\">".i18n::translate('Delete')."<br />\n<a href=\"javascript:;\" onclick=\"return select_all();\">".i18n::translate('All')."</a></td>\n"
 				."<td class=\"list_label\">".i18n::translate('Subject:')."</td>\n"
 				."<td class=\"list_label\">".i18n::translate('Date Sent:')."</td>\n"
 				."<td class=\"list_label\">".i18n::translate('Email Address:')."</td>\n"
