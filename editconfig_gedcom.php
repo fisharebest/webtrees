@@ -1064,7 +1064,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 						</td>
 						<td class="optionbox"><select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>">
 								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('Table'); ?></option>
-								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('Tagcloud'); ?></option>
+								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('Tag cloud'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1481,7 +1481,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Theme directory'), help_link('THEME_DIR'); ?>
+						<?php echo i18n::translate('Theme'), help_link('THEME'); ?>
 					</td>
 					<td class="optionbox">
 						<select name="NEW_THEME_DIR" dir="ltr" tabindex="<?php echo ++$i; ?>">
