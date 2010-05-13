@@ -47,10 +47,10 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id) {
 		global $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $DAYS_TO_SHOW_LIMIT, $THEME_DIR;
 
-		$filter       =get_block_setting($block_id, 'days', 'all');
-		$onlyBDM      =get_block_setting($block_id, 'days', 'no');
-		$infoStyle    =get_block_setting($block_id, 'days', 'style2');
-		$sortStyle    =get_block_setting($block_id, 'days', 'alpha');
+		$filter       =get_block_setting($block_id, 'filter', true);
+		$onlyBDM      =get_block_setting($block_id, 'onlyBDM', true);
+		$infoStyle    =get_block_setting($block_id, 'infoStyle', 'table');
+		$sortStyle    =get_block_setting($block_id, 'sortStyle',  'alpha');
 		$allowDownload=WT_USER_ID && get_block_setting($block_id, 'allowDownload', true);
 
 		$todayjd=client_jd();
@@ -70,14 +70,14 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
   	$content = "";
 		switch ($infoStyle) {
-		case "style1":
+		case 'list':
 			// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
-			$content .= print_events_list($todayjd, $todayjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', $sortStyle);
+			$content .= print_events_list($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			break;
-		case "style2":
+		case 'table':
 			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
 			ob_start();
-			$content .= print_events_table($todayjd, $todayjd, $onlyBDM=='yes'?'BIRT MARR DEAT':'', $filter=='living', $allowDownload=='yes', $sortStyle);
+			$content .= print_events_table($todayjd, $todayjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $allowDownload, $sortStyle);
 			$content .= ob_get_clean();
 			break;
 		}
@@ -118,75 +118,42 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 			exit;
 		}
 
-		$filter       =get_block_setting($block_id, 'days', 'all');
-		$onlyBDM      =get_block_setting($block_id, 'days', 'no');
-		$infoStyle    =get_block_setting($block_id, 'days', 'style2');
-		$sortStyle    =get_block_setting($block_id, 'days', 'alpha');
-		$allowDownload=get_block_setting($block_id, 'allowDownload', true);
-
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		
-		?>
-		<tr><td class="descriptionbox wrap width33">
-		<?php
-		print i18n::translate('Show only events of living people?');
-		?>
-		</td><td class="optionbox">
-			<select name="filter">
-				<option value="all"<?php if ($filter=="all") print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
-				<option value="living"<?php if ($filter=="living") print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
-			</select>
-		</td></tr>
+		$filter=get_block_setting($block_id, 'filter', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Show only events of living people?');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('filter', $filter);
+		echo '</td></tr>';
+		
+		$onlyBDM=get_block_setting($block_id, 'onlyBDM', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Show only Births, Deaths, and Marriages?');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('onlyBDM', $onlyBDM);
+		echo '</td></tr>';
 
-		<tr><td class="descriptionbox wrap width33">
-		<?php
-		print i18n::translate('Show only Births, Deaths, and Marriages?');
-		print help_link('basic_or_all');
-		?>
-		</td><td class="optionbox">
-			<select name="onlyBDM">
-				<option value="no"<?php if (!$onlyBDM) print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
-				<option value="yes"<?php if ($onlyBDM) print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
-			</select>
-		</td></tr>
+		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Presentation Style'), help_link('style');
+		echo '</td><td class="optionbox">';
+		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
+		echo '</td></tr>';
 
-		<tr><td class="descriptionbox wrap width33">
-		<?php
-		print i18n::translate('Presentation Style');
-		print help_link('style');
-		?>
-		</td><td class="optionbox">
-			<select name="infoStyle">
-				<option value="style1"<?php if ($infoStyle=="list") print " selected=\"selected\"";?>><?php print i18n::translate('List'); ?></option>
-				<option value="style2"<?php if ($infoStyle=="table") print " selected=\"selected\"";?>><?php print i18n::translate('Table'); ?></option>
-			</select>
-		</td></tr>
+		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Sort Style'), help_link('sort_style');
+		echo '</td><td class="optionbox">';
+		echo select_edit_control('sortStyle', array('alpha'=>i18n::translate('Alphabetically'), 'anniv'=>i18n::translate('By Anniversary')), null, $sortStyle, '');
+		echo '</td></tr>';
 
-		<tr><td class="descriptionbox wrap width33">
-		<?php
-		print i18n::translate('Sort Style');
-		print help_link('sort_style');
-		?>
-		</td><td class="optionbox">
-			<select name="sortStyle">
-				<option value="alpha"<?php if ($sortStyle=="alpha") print " selected=\"selected\"";?>><?php print i18n::translate('Alphabetically'); ?></option>
-				<option value="anniv"<?php if ($sortStyle=="anniv") print " selected=\"selected\"";?>><?php print i18n::translate('By Anniversary'); ?></option>
-			</select>
-		</td></tr>
-
-		<tr><td class="descriptionbox wrap width33">
-		<?php
-		print i18n::translate('Allow calendar events download?');
-		print help_link('cal_dowload');
-		?>
-		</td><td class="optionbox">
-			<select name="allowDownload">
-				<option value="yes"<?php if ($allowDownload) print " selected=\"selected\"";?>><?php print i18n::translate('Yes'); ?></option>
-				<option value="no"<?php if (!$allowDownload) print " selected=\"selected\"";?>><?php print i18n::translate('No'); ?></option>
-			</select>
-			<input type="hidden" name="cache" value="1" />
-		</td></tr>
-	  <?php
+		$allowDownload=get_block_setting($block_id, 'allowDownload', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Allow calendar events download?');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('allowDownload', $allowDownload);
+		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
