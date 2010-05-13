@@ -241,7 +241,7 @@ jQuery(document).ready(function(){
 			
 			// Initially hide the sidebar controls & pin ======
 			?>
-			<script>
+			<script type="text/javascript">
 				jQuery('#sidebar_controls').hide();
 				jQuery('#sidebar_pin').hide();
 			</script>
