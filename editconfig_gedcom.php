@@ -1276,7 +1276,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					<td class="descriptionbox wrap width20">
 						<?php echo i18n::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
 					</td>
-					<td class="optionbox"><input type="text" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
+					<td class="optionbox"><input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $INDI_FACTS_ADD, $GEDCOM); ?></td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">

@@ -1649,14 +1649,13 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 				}
 				break;
 			}
+			if ($SHOW_ID_NUMBERS) {
+				$name.=' ('.$amatch[1].')';
+			}
+			echo '<br/>', $label, '<a href="', $person->getLinkUrl().'">', $name, '</a>', $relationship;
 		} else {
-			$name=$amatch[1];
-			$relationship='';
+			echo '<br/>', $label, $amatch[1];
 		}
-		if ($SHOW_ID_NUMBERS) {
-			$name.=' ('.$amatch[1].')';
-		}
-		echo '<br/>', $label, '<a href="', $person->getLinkUrl().'">', $name, '</a>', $relationship;
 	}
 }
 
@@ -2237,7 +2236,6 @@ function print_findsource_link($element_id, $sourcename="", $asString=false, $ge
 	echo $out;
 }
 
-// Shared Notes =============================================
 function print_findnote_link($element_id, $notename="", $asString=false, $ged='') {
 	global $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 
@@ -2251,7 +2249,6 @@ function print_findnote_link($element_id, $notename="", $asString=false, $ged=''
 	if ($asString) return $out;
 	echo $out;
 }
-// ========================================================
 
 function print_findrepository_link($element_id, $ged='', $asString=false) {
 	global $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
@@ -2275,6 +2272,20 @@ function print_findmedia_link($element_id, $choose="", $ged='', $asString=false)
 	if (isset($WT_IMAGES["media"]["button"])) $Link = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["media"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findMedia(document.getElementById('".$element_id."'), '".$choose."', '".$ged."'); return false;\">";
+	$out .= $Link;
+	$out .= "</a>";
+	if ($asString) return $out;
+	echo $out;
+}
+
+function print_findfact_link($element_id, $facts, $ged='', $asString=false) {
+	global $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
+
+	$text = i18n::translate('Find fact tag');
+	if (empty($ged)) $ged=$GEDCOM;
+	if (isset($WT_IMAGES["keyboard"]["button"])) $Link = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["keyboard"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	else $Link = $text;
+	$out = " <a href=\"javascript:;\" onclick=\"findFact(document.getElementById('".$element_id."'), '".$facts."', '".$ged."'); return false;\">";
 	$out .= $Link;
 	$out .= "</a>";
 	if ($asString) return $out;
