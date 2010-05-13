@@ -51,7 +51,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$onlyBDM      =get_block_setting($block_id, 'days', 'no');
 		$infoStyle    =get_block_setting($block_id, 'days', 'style2');
 		$sortStyle    =get_block_setting($block_id, 'days', 'alpha');
-		$allowDownload=WT_USER_ID && get_block_setting($block_id, 'days', 1); // only allow if logged in
+		$allowDownload=WT_USER_ID && get_block_setting($block_id, 'allowDownload', true);
 
 		$todayjd=client_jd();
 
@@ -63,7 +63,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 			} else {
 				$name = WT_USER_NAME;
 			}
-	  	$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
+	  	$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 	  	$title .= "<img class=\"adminicon\" src=\"$WT_IMAGE_DIR/".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
   	}
   	$title.=i18n::translate('On This Day ...').help_link('index_onthisday');
@@ -118,6 +118,14 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 			exit;
 		}
 
+		$filter       =get_block_setting($block_id, 'days', 'all');
+		$onlyBDM      =get_block_setting($block_id, 'days', 'no');
+		$infoStyle    =get_block_setting($block_id, 'days', 'style2');
+		$sortStyle    =get_block_setting($block_id, 'days', 'alpha');
+		$allowDownload=get_block_setting($block_id, 'allowDownload', true);
+
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		
 		?>
 		<tr><td class="descriptionbox wrap width33">
 		<?php

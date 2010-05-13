@@ -34,8 +34,13 @@ define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/index_cache.php';
 
+$ctype=safe_REQUEST($_REQUEST, 'ctype', array('user', 'gedcom'));
+
+if (!$ctype) {
+	die("Internal error - missing ctype parameter");
+}
+
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-if (isset($_REQUEST['ctype'])) $ctype = $_REQUEST['ctype'];
 if (isset($_REQUEST['main'])) $main = $_REQUEST['main'];
 if (isset($_REQUEST['right'])) $right = $_REQUEST['right'];
 if (isset($_REQUEST['setdefault'])) $setdefault = $_REQUEST['setdefault'];
@@ -55,7 +60,6 @@ if (!WT_USER_ID) {
 if (!WT_USER_IS_ADMIN) $setdefault=false;
 
 if (!isset($action)) $action='';
-if (!isset($ctype)) $ctype='user';
 if (!isset($main)) $main=array();
 if (!isset($right)) $right=array();
 if (!isset($setdefault)) $setdefault=false;
