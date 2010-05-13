@@ -130,7 +130,7 @@
 				</PGVRTextBox>
 
 				<PGVRTextBox height="12" width="$datewidth">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /><br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" /></PGVRText>
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /><br /><PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" /></PGVRText>
 				</PGVRTextBox>
 
 				<PGVRTextBox height="12" newline="1">

@@ -470,7 +470,7 @@
 												</PGVRRepeatTag>
 											</PGVRif>
 											<PGVRGedcom id="BIRT">
-												<PGVRText style="label1"> <PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="DATE" level="2"/>  <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
+												<PGVRText style="label1"> <PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="DATE" level="2"/>  <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
 											</PGVRGedcom>
 											<PGVRSetVar name="showMarraige" value="T" />
 											<PGVRRepeatTag tag="FAMS">
@@ -487,7 +487,7 @@
 												</PGVRif>
 												<PGVRRepeatTag tag="FAMS">
 													<PGVRGedcom id="@FAMS">
-														<PGVRText style="label1"> <PGVRvarLetter var="i18n::translate('Marriage')" />: </PGVRText>
+														<PGVRText style="label1"> <PGVRvarLetter var="MARR" />: </PGVRText>
 														<PGVRif condition="$gender=='male'">
 															<PGVRText style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 														</PGVRif>
@@ -506,7 +506,7 @@
 												</PGVRRepeatTag>
 											</PGVRif>
 											<PGVRGedcom id="DEAT">
-												<PGVRText style="label1"> <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DATE" level="2"/> <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
+												<PGVRText style="label1"> <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DATE" level="2"/> <PGVRGedcomValue tag="PLAC" level="2"/></PGVRText>
 											</PGVRGedcom>
 										</PGVRTextBox>
 									</PGVRGedcom>

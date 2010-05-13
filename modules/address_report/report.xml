@@ -94,9 +94,9 @@
 				</PGVRTextBox>
 				<PGVRTextBox height="52" border="1" newline="1">
 					<PGVRText style="text">
-						<PGVRvarLetter var="i18n::translate('Phone')" />: <PGVRGedcomValue tag="PHON" /><br />
-						<PGVRvarLetter var="i18n::translate('FAX')" />: <PGVRGedcomValue tag="FAX" /><br />
-						<PGVRvarLetter var="i18n::translate('Email Address')" />: <PGVRGedcomValue tag="_EMAIL" /><PGVRGedcomValue tag="EMAIL" />
+						<PGVRvarLetter var="PHON" />: <PGVRGedcomValue tag="PHON" /><br />
+						<PGVRvarLetter var="FAX" />: <PGVRGedcomValue tag="FAX" /><br />
+						<PGVRvarLetter var="_EMAIL" />: <PGVRGedcomValue tag="_EMAIL" /><PGVRGedcomValue tag="EMAIL" />
 					</PGVRText>
 				</PGVRTextBox>
 			</PGVRList>

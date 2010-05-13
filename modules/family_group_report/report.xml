@@ -352,14 +352,14 @@
 							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Father')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
 							<PGVRGedcom id="@HUSB">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
 							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Mother')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 							<PGVRGedcom id="@WIFE">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 					</PGVRGedcom>
@@ -536,14 +536,14 @@
 							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Father')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
 							<PGVRGedcom id="@HUSB">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 						<PGVRTextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
 							<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Mother')" />  </PGVRText>
 							<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 							<PGVRGedcom id="@WIFE">
-								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+								<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 							</PGVRGedcom>
 						</PGVRTextBox>
 					</PGVRGedcom>
@@ -780,7 +780,7 @@
 										<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Wife')" />  </PGVRText>
 										<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@WIFE" /></PGVRText>
 										<PGVRGedcom id="@WIFE">
-											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 										</PGVRGedcom>
 									</PGVRTextBox>
 								</PGVRif>
@@ -789,7 +789,7 @@
 										<PGVRText color="$tcolor" style="fact"><PGVRvar var="i18n::translate('Husband')" />  </PGVRText>
 										<PGVRText color="$tcolor" style="name"><PGVRGetPersonName id="@HUSB" /></PGVRText>
 										<PGVRGedcom id="@HUSB">
-											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
+											<PGVRText color="$tcolor" style="text"> (<PGVRvarLetter var="BIRT" />: <PGVRGedcomValue tag="BIRT:DATE" /> - <PGVRvarLetter var="DEAT" />: <PGVRGedcomValue tag="DEAT:DATE" />)</PGVRText>
 										</PGVRGedcom>
 									</PGVRTextBox>
 								</PGVRif>

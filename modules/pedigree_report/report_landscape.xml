@@ -58,15 +58,15 @@
 				<PGVRText style="name"><PGVRGetPersonName id="$pid" truncate="$truncatename" /></PGVRText>
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="272" reseth="1">
-				<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-					<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+				<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+					<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 					<PGVRGedcom id="@FAMS">
-						<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
 					</PGVRGedcom>
 					<PGVRGedcom id="DEAT">
-						<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 					</PGVRGedcom>
 				</PGVRText>
 			</PGVRTextBox>
@@ -79,15 +79,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="152" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -101,11 +101,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_1_2_3" top="427" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -119,15 +119,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="97" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -141,11 +141,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="217" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -159,15 +159,15 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="337" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="i18n::translate('Place')" /> <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -181,11 +181,11 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_4_to_7" top="457" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
-						<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_place" />
+						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" />: <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -203,14 +203,14 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="67" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
 							 <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -225,10 +225,10 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="127" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="32" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -246,14 +246,14 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="187" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
 							 <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -268,10 +268,10 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="247" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="32" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -289,14 +289,14 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="307" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
 							 <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -311,10 +311,10 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="367" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="32" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -332,14 +332,14 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="427" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_dateplace" />
 							 <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -354,10 +354,10 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="160" height="10" align="left" left="$name_8_to_15" top="487" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="$trunc_dateplace" />
 						 <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_dateplace" />
 						<PGVRGedcom id="DEAT">
-							<br /><PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
+							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_dateplace" />
 								 <PGVRGedcomValue tag="DEAT:PLAC" truncate="$trunc_dateplace" />
 						</PGVRGedcom>
 					</PGVRText>
@@ -377,12 +377,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="52" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -396,9 +396,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="82" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -415,12 +415,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="112" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -434,9 +434,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="142" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -453,12 +453,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="172" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -472,9 +472,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="202" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -491,12 +491,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="232" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -510,9 +510,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="262" reseth="1">
 				<PGVRGedcom id="@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -529,12 +529,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="292" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -548,9 +548,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="322" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -567,12 +567,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="352" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -586,9 +586,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="382" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -605,12 +605,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="412" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -624,9 +624,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="442" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -643,12 +643,12 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="472" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@HUSB">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 						<PGVRGedcom id="@FAMS">
-							<br /><PGVRvarLetter var="i18n::translate('Marriage')" />: <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>
@@ -662,9 +662,9 @@
 			</PGVRTextBox>
 			<PGVRTextBox padding="0" pagecheck="0" width="180" height="10" align="left" left="$name_16_to_31" top="502" reseth="1">
 				<PGVRGedcom id="@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE:@FAMC:@WIFE">
-					<PGVRText style="text"><PGVRvarLetter var="i18n::translate('Birth')" />: <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
+					<PGVRText style="text"><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:DATE" truncate="20" />
 						<PGVRGedcom id="DEAT">
-							 <PGVRvarLetter var="i18n::translate('Death')" />: <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
+							 <PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="20" />
 						</PGVRGedcom>
 					</PGVRText>
 				</PGVRGedcom>

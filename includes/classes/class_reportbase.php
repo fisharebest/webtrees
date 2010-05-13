@@ -2519,16 +2519,12 @@ function PGVRvarLetterSHandler($attrs) {
 		die("<strong>REPORT ERROR PGVRvarLetter: </strong> The attribute \"var=\" is missing or not set in the XML file.");
 	}
 
-	$var = $attrs["var"];
-	if (!empty($var)) {
-		$abbrev = substr(strrchr(substr($var, 0, -1), "["), 1);
-		$tfact = $fact;
-		$var = str_replace(array("@fact", "@desc"), array(translate_fact($tfact), $desc), $var);
-		if (substr($var, 0, 6) == "i18n::") {
-			eval("\$var = $var;");
+	$var=$attrs["var"];
+	if ($var) {
+		if ($var=='@fact') {
+			$var=$fact;
 		}
-		$letter = utf8_substr($var, 0, 1);
-		$currentElement->addText($letter);
+		$currentElement->addText(abbreviate_fact($var));
 	}
 }
 
