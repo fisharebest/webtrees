@@ -2569,7 +2569,7 @@ case 'reorder_update':
 case 'reorder_fams':
 	require_once WT_ROOT.'js/prototype.js.htm';
 	require_once WT_ROOT.'js/scriptaculous.js.htm';
-	echo "<br /><b>", i18n::translate('Reorder Families'), "</b>", help_link('reorder_families');
+	echo "<br /><b>", i18n::translate('Reorder families'), "</b>", help_link('reorder_families');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_fams_update" />

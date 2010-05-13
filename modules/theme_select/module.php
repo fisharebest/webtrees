@@ -48,7 +48,7 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 		global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('Change Theme').help_link('change_theme');
+		$title=i18n::translate('Change theme').help_link('change_theme');
 		$content='<br /><div class="center theme_form">'.MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';
 
 		require $THEME_DIR.'templates/block_main_temp.php';

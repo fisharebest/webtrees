@@ -71,7 +71,7 @@ case 'lb_ss_speed':
 	break;
 
 case 'lb_music_file':
-	$title=i18n::translate('Slideshow Sound Track');
+	$title=i18n::translate('Slideshow sound track');
 	$text=i18n::translate('This option lets you specify a sound track to be played whenever the slide show is active.  When you leave this field blank, no sound will play during the slide show.<br /><br />This feature only supports files in the mp3 format.<br />');
 	break;
 

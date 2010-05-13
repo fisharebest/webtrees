@@ -967,7 +967,7 @@ class MenuBar
 			if (substr($frompage,-1) == "&") $frompage = substr($frompage,0,-1);
 			// encode frompage address in other case we lost the all variables on theme change
 			$frompage = base64_encode($frompage);
-			$menu=new Menu(i18n::translate('Change Theme'));
+			$menu=new Menu(i18n::translate('Change theme'));
 			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
 			foreach ($all_themes as $themename=>$themedir) {
 				$submenu=new Menu($themename, encode_url("themechange.php?frompage={$frompage}&mytheme={$themedir}"));

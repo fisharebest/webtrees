@@ -219,7 +219,7 @@ if ($action=="generate") {
 	if (isset($_POST["welcome_page"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Home Page'), "</td></tr>\n";
 	if (isset($_POST["indi_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual Information'), "</td></tr>\n";
 	if (isset($_POST["indi_list"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual List'), "</td></tr>\n";
-	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family Information'), "</td></tr>\n";
+	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family information'), "</td></tr>\n";
 	if (isset($_POST["fam_list"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family List'), "</td></tr>\n";
 	if (isset($_POST["GEDCOM_Privacy"])) echo "<tr><td class=\"optionbox\">", i18n::translate('No links to private information'), "</td></tr>\n";
 
