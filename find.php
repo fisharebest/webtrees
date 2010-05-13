@@ -582,10 +582,12 @@ if ($type == "facts") {
 
 		DefaultTags=[<?php
 		$firstFact=TRUE;
-		foreach($FACTS as $facId => $factName) {
-			if($firstFact) $firstFact=FALSE;
-			else echo ',';
-			echo 'new DefaultTag("'.addslashes($facId).'","'.addslashes($factName).'",preselectedDefaultTags.indexOf("\\x01'.addslashes($facId).'\\x01")>=0)';
+		foreach($FACTS as $factId => $factName) {
+			if (preg_match('/^_?[A-Z0-9]+$/', $factId, $matches)) {
+				if($firstFact) $firstFact=FALSE;
+				else echo ',';
+				echo 'new DefaultTag("'.addslashes($factId).'","'.addslashes($factName).'",preselectedDefaultTags.indexOf("\\x01'.addslashes($factId).'\\x01")>=0)';
+			}
 		}
 		?>];
 		//Sort defined tags alphabetically by name
