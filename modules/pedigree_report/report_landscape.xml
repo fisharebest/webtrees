@@ -163,7 +163,7 @@
 						<br /><PGVRvarLetter var="BIRT" /> <PGVRGedcomValue tag="BIRT:PLAC" truncate="$trunc_place" />
 						<PGVRGedcom id="@FAMS">
 							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:DATE" truncate="$trunc_place" />
-							<br /><PGVRvarLetter var="i18n::translate('Place')" /> <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
+							<br /><PGVRvarLetter var="MARR" /> <PGVRGedcomValue tag="MARR:PLAC" truncate="$trunc_place" />
 						</PGVRGedcom>
 						<PGVRGedcom id="DEAT">
 							<br /><PGVRvarLetter var="DEAT" /> <PGVRGedcomValue tag="DEAT:DATE" truncate="$trunc_place" />
