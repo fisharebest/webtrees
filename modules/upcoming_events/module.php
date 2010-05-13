@@ -164,7 +164,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		echo edit_field_yes_no('allowDownload', $allowDownload);
 		echo '</td></tr>';
 
-		$block=get_block_setting($block_id, 'block', false);
+		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
