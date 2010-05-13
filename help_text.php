@@ -121,8 +121,6 @@ case 'BAPL':
 
 case 'BAPM':	
 	$title=i18n::translate('Baptism');
-	// I18N: This is a very short abbreviation for the label "Baptism", to be used on genealogy charts
-	$abbrev=i18n::translate('ABBREV_BAPM');
 	$text='';
 	break;
 
@@ -183,8 +181,6 @@ case 'BASM:SOUR':
 
 case 'BIRT':	
 	$title=i18n::translate('Birth');
-	// I18N: This is a very short abbreviation for the label "Birth", to be used on genealogy charts
-	$abbr=i18n::translate('ABBREV_BIRT');
 	$text='';
 	break;
 
@@ -215,8 +211,6 @@ case 'BLOB':
 
 case 'BURI':	
 	$title=i18n::translate('Burial');
-	// I18N: This is a very short abbreviation for the label "Burial", to be used on genealogy charts
-	$abbr=i18n::translate('ABBREV_BURI');
 	$text='';
 	break;
 
@@ -277,8 +271,6 @@ case 'CHIL':
 
 case 'CHR':	
 	$title=i18n::translate('Christening');
-	// I18N: This is a very short abbreviation for the label "Christening", to be used on genealogy charts
-	$abbr=i18n::translate('ABBREV_CHR');
 	$text='';
 	break;
 
@@ -389,8 +381,6 @@ case 'DATE':
 
 case 'DEAT':	
 	$title=i18n::translate('Death');
-	// I18N: This is a very short abbreviation for the label "Death", to be used on genealogy charts
-	$abbr=i18n::translate('ABBREV_DEAT');
 	$text='';
 	break;
 
@@ -786,8 +776,6 @@ case 'MARL':
 
 case 'MARR':	
 	$title=i18n::translate('Marriage');
-	// I18N: This is a very short abbreviation for the label "Marriage", to be used on genealogy charts
-	$abbr=i18n::translate('ABBREV_MARR');
 	$text='';
 	break;
 
