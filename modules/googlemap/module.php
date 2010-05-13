@@ -115,7 +115,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				function SetMarkersAndBounds () {}
 			//-->
 			</script> <?php
-		}else{
+		} else {
 			$tNew = str_replace(array("&HIDE_GOOGLEMAP=true", "&HIDE_GOOGLEMAP=false", "action=ajax&module=googlemap&"), "", $_SERVER["REQUEST_URI"]);
 			$tNew .= "&tab=googlemap";
 			$tNew = str_replace("&", "&amp;", $tNew);
