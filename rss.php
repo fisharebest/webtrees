@@ -90,7 +90,7 @@ $cacheControl[1] = array("cache"=>1);
 if (!empty($module) && $module=="randomMedia") $cacheControl[1]["cache"] = 0;
 
 if(!loadCachedBlock($cacheControl, $rssStyle)){
-	$author=getUserFullName(get_gedcom_setting(PGV_GED_ID, 'CONTACT_USER_ID'));
+	$author=getUserFullName(get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID'));
 
 	$feed = new UniversalFeedCreator();
 	$feed->generator = WT_WEBTREES_URL;
@@ -121,59 +121,8 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 
 	if($ENABLE_RSS) {
 		// determine if to show parts of feed based on their exsistance in the blocks on index.php
-		$blocks=  getBlocks(WT_GEDCOM);
-		$main = $blocks["main"];
-
-		if(empty($module)) {
-			if (count($main)==0) {
-				$printGedcomStats = true;
-				$printGedcomNews = true;
-			} else {
-				foreach($main as $mname => $value){
-					$WT_BLOCKS[$value[0]]['config'] = $value[1]; //set the config needed by functions_rss
-					if($value[0] == "print_todays_events"){
-						$printTodays = true;
-					} else if($value[0] == "print_upcoming_events"){
-						$printUpcoming = true;
-					} else if($value[0] == "print_gedcom_stats"){
-						$printGedcomStats = true;
-					} else if($value[0] == "print_gedcom_news"){
-						$printGedcomNews = true;
-					} else if($value[0] == "print_block_name_top10"){
-						$printTop10Surnames = true;
-					} else if($value[0] == "print_recent_changes"){
-						$printRecentChanges = true;
-					} else if($value[0] == "print_random_media"){
-						$printRandomMedia = true;
-					}
-				}
-			}
-			$right = $blocks["right"];
-			if (count($right)==0) {
-				$printTodays = true;
-			} else {
-				foreach($right as $mname => $value){
-					$WT_BLOCKS[$value[0]]['config'] = $value[1]; //set the config needed by functions_rss
-					if($value[0] == "print_todays_events"){
-						$printTodays = true;
-					} else if($value[0] == "print_upcoming_events"){
-						$printUpcoming = true;
-					} else if($value[0] == "print_gedcom_stats"){
-						$printGedcomStats = true;
-					} else if($value[0] == "print_gedcom_news"){
-						$printGedcomNews = true;
-					} else if($value[0] == "print_block_name_top10"){
-						$printTop10Surnames = true;
-					} else if($value[0] == "print_recent_changes"){
-						$printRecentChanges = true;
-					} else if($value[0] == "print_random_media"){
-						$printRandomMedia = true;
-					}
-				}
-			}
-		}
-
-		if($printTodays){
+		$blocks=  get_gedcom_blocks(WT_GED_ID);
+		if (array_key_exists('todays_events', $blocks['main']) || array_key_exists('todays_events', $blocks['side'])) {
 			$todaysEvents = getTodaysEvents();
 			if (! empty($todaysEvents[2])) {
 				$item = new FeedItem();
@@ -190,7 +139,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 			}
 		}
 
-		if($printUpcoming){
+		if (array_key_exists('upcoming_events', $blocks['main']) || array_key_exists('upcoming_events', $blocks['side'])) {
 			$upcomingEvent = getUpcomingEvents();
 			if (! empty($upcomingEvent[2])) {
 				$item = new FeedItem();
@@ -207,7 +156,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 			}
 		}
 
-		if($printGedcomStats){
+		if (array_key_exists('gedcom_stats', $blocks['main']) || array_key_exists('gedcom_stats', $blocks['side'])) {
 			$gedcomStats = getGedcomStats();
 			if (! empty($gedcomStats[2])) {
 				$item = new FeedItem();
@@ -226,7 +175,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 			}
 		}
 
-		if($printTop10Surnames){
+		if (array_key_exists('top10_surnames', $blocks['main']) || array_key_exists('top10_surnames', $blocks['side'])) {
 			$top10 = getTop10Surnames();
 			if (! empty($top10[2])) {
 				$item = new FeedItem();
@@ -245,7 +194,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 			}
 		}
 
-		if($printGedcomNews){
+		if (array_key_exists('gedcom_news', $blocks['main']) || array_key_exists('gedcom_news', $blocks['side'])) {
 			$gedcomNews = getGedcomNews();
 
 			$numElements = count($gedcomNews); //number of news items
@@ -267,7 +216,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 			}
 		}
 
-		if($printRecentChanges){
+		if (array_key_exists('recent_changes', $blocks['main']) || array_key_exists('recent_changes', $blocks['side'])) {
 			$recentChanges= getRecentChanges();
 			if (! empty($recentChanges[2])) {
 				$item = new FeedItem();
@@ -287,7 +236,7 @@ if(!loadCachedBlock($cacheControl, $rssStyle)){
 			}
 		}
 
-		if($printRandomMedia){
+		if (array_key_exists('random_media', $blocks['main']) || array_key_exists('random_media', $blocks['side'])) {
 			$randomMedia= getRandomMedia();
 			if (! empty($randomMedia[2])) {
 				$item = new FeedItem();
