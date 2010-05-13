@@ -318,6 +318,15 @@ class i18n {
 		case 12: return i18n::translate_c('CENTURY', '12th');
 		case 11: return i18n::translate_c('CENTURY', '11th');
 		case 10: return i18n::translate_c('CENTURY', '10th');
+		case  9: return i18n::translate_c('CENTURY', '9th');
+		case  8: return i18n::translate_c('CENTURY', '8th');
+		case  7: return i18n::translate_c('CENTURY', '7th');
+		case  6: return i18n::translate_c('CENTURY', '6th');
+		case  5: return i18n::translate_c('CENTURY', '5th');
+		case  4: return i18n::translate_c('CENTURY', '4th');
+		case  3: return i18n::translate_c('CENTURY', '3rd');
+		case  2: return i18n::translate_c('CENTURY', '2nd');
+		case  1: return i18n::translate_c('CENTURY', '1st');
 		default: return ($century-1).'01-'.$century.'00';
 		}
 	}
