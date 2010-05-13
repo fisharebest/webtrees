@@ -1277,8 +1277,7 @@ case '_BIBL':
 	break;
 
 case '_BIRT_CHIL':
-	$tag_name=i18n::translate('_BIRT_CHIL');
-	$title=translate_fact('Birth of a child');
+	$title=translate_fact('_BIRT_CHIL');
 	$text='';
 	break;
 
@@ -1318,7 +1317,7 @@ case '_BIRT_NEPH':
 	break;
 
 case '_BIRT_SIBL':	
-	$title=translate_fact('_BIRT_SIBL of sibling');
+	$title=translate_fact('_BIRT_SIBL');
 	$text='';
 	break;
 
@@ -1738,7 +1737,7 @@ case '_HNM':
 	break;
 
 case '_HOL':	
-	$title=translate_fact('Holocaust');
+	$title=translate_fact('_HOL');
 	$text='';
 	break;
 
@@ -1923,7 +1922,7 @@ case '_MSTAT':
 	break;
 
 case '_NAME':	
-	$title=translate_fact('_NAMEname');
+	$title=translate_fact('_NAME');
 	$text='';
 	break;
 
