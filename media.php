@@ -780,8 +780,8 @@ if (check_media_structure()) {
 	</select></td>
 
 	<!-- // NOTE: Row 1 right, Upload media files -->
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Upload Media files'), help_link('upload_media'); ?></td>
-	<td class="optionbox wrap"><?php print "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".i18n::translate('Upload Media files')."</a>"; ?></td></tr>
+	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Upload media files'), help_link('upload_media'); ?></td>
+	<td class="optionbox wrap"><?php print "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".i18n::translate('Upload media files')."</a>"; ?></td></tr>
 
 	<!-- // NOTE: Row 2 left: Filter options -->
 	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Filter'), help_link('simple_filter'); ?></td>

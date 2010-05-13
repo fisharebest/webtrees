@@ -464,7 +464,7 @@ if ($display=="list") {
 		echo "\n\t\t</ul></td></tr>\n\t\t";
 		if ($i>1) {
 			echo "<tr><td>";
-			if ($i>0) echo i18n::translate('Total Unique Places'), " ", $i;
+			if ($i>0) echo i18n::translate('Total unique places'), " ", $i;
 			echo "</td></tr>\n";
 		}
 		echo "\n\t\t</table>";

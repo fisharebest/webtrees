@@ -179,7 +179,7 @@ class MenuBar
 			//-- upload_media submenu
 			if (is_writable($MEDIA_DIRECTORY) && $MULTI_MEDIA) {
 				$menu->addSeparator();
-				$submenu = new Menu(i18n::translate('Upload Media files'), "uploadmedia.php");
+				$submenu = new Menu(i18n::translate('Upload media files'), "uploadmedia.php");
 				if (!empty($WT_IMAGES["menu_media"]["small"]))
 					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["menu_media"]["small"]);
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_media");
@@ -242,7 +242,7 @@ class MenuBar
 		if (file_exists(WT_ROOT.'fanchart.php') && function_exists("imagettftext")) $menuList["fanchart"] = i18n::translate('Circle Diagram');
 		if (file_exists(WT_ROOT.'hourglass.php')) $menuList["hourglass"] = i18n::translate('Hourglass Chart');
 		if (file_exists(WT_ROOT.'familybook.php')) $menuList["familybook"] = i18n::translate('Family Book Chart');
-		if (file_exists(WT_ROOT.'timeline.php')) $menuList["timeline"] = i18n::translate('Timeline Chart');
+		if (file_exists(WT_ROOT.'timeline.php')) $menuList["timeline"] = i18n::translate('Timeline chart');
 		if (file_exists(WT_ROOT.'lifespan.php')) $menuList["lifespan"] = i18n::translate('Lifespan Chart');
 		if (file_exists(WT_ROOT.'relationship.php')) $menuList["relationship"] = i18n::translate('Relationship Chart');
 		if (file_exists(WT_ROOT.'statistics.php')) $menuList["statistics"] = i18n::translate('Statistics');
@@ -336,7 +336,7 @@ class MenuBar
 				//-- timeline
 				$link = "timeline.php?ged=".WT_GEDCOM;
 				if ($rootid) $link .= "&amp;pids[]=".$rootid;
-				$submenu = new Menu(i18n::translate('Timeline Chart'), $link);
+				$submenu = new Menu(i18n::translate('Timeline chart'), $link);
 				if (!empty($WT_IMAGES["timeline"]["small"]))
 					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["timeline"]["small"]);
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_timeline");

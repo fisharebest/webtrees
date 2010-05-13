@@ -52,7 +52,7 @@ if (!WT_USER_CAN_EDIT) {
 	exit;
 }
 
-print_header(i18n::translate('Upload Media files'));
+print_header(i18n::translate('Upload media files'));
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -71,7 +71,7 @@ print_header(i18n::translate('Upload Media files'));
 </script>
 <center>
 <?php
-print "<span class=\"subheaders\">".i18n::translate('Upload Media files')."</span><br /><br />";
+print "<span class=\"subheaders\">".i18n::translate('Upload media files')."</span><br /><br />";
 $action = safe_POST('action');
 if ($action == "upload") {
 	process_uploadMedia_form();

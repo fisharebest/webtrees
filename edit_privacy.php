@@ -346,7 +346,7 @@ if ($action=="update") {
 
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Use GEDCOM (RESN) Privacy restriction'), help_link('PRIVACY_BY_RESN'); ?>
+					<?php echo i18n::translate('Use GEDCOM (RESN) privacy restriction'), help_link('PRIVACY_BY_RESN'); ?>
 				</td>
 				<td class="optionbox">
 					<select size="1" name="v_PRIVACY_BY_RESN"><?php write_yes_no($PRIVACY_BY_RESN); ?></select>
@@ -493,8 +493,8 @@ if ($action=="update") {
 	<table class="facts_table">
 		<tr>
 			<td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
-				<?php print "<a href=\"javascript: ".i18n::translate('User Privacy settings')."\" onclick=\"expand_layer('user-privacy-options');return false\"><img id=\"user-privacy-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> "; ?>
-				<a href="javascript: <?php print i18n::translate('User Privacy settings'); ?>" onclick="expand_layer('user-privacy-options');return false"><b><?php echo i18n::translate('User Privacy settings'); ?></b></a><?php echo help_link('user_privacy'); ?>
+				<?php print "<a href=\"javascript: ".i18n::translate('User privacy settings')."\" onclick=\"expand_layer('user-privacy-options');return false\"><img id=\"user-privacy-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> "; ?>
+				<a href="javascript: <?php print i18n::translate('User privacy settings'); ?>" onclick="expand_layer('user-privacy-options');return false"><b><?php echo i18n::translate('User privacy settings'); ?></b></a><?php echo help_link('user_privacy'); ?>
 			</td>
 		</tr>
 	</table>

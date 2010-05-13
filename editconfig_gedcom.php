@@ -695,7 +695,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Use Media Viewer'), help_link('USE_MEDIA_VIEWER'); ?>
+							<?php echo i18n::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', $USE_MEDIA_VIEWER, 'tabindex="'.(++$i).'"'); ?>
@@ -724,7 +724,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Use Media Firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
+							<?php echo i18n::translate('Use media firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', $USE_MEDIA_FIREWALL, 'tabindex="'.(++$i).'"'); ?>
@@ -812,7 +812,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Welcome text on Login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
+						<?php echo i18n::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
 					</td>
 					<td class="optionbox"><select name="NEW_WELCOME_TEXT_AUTH_MODE" tabindex="<?php echo ++$i; ?>">
 							<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') print "selected=\"selected\""; ?>><?php print i18n::translate('No predefined text'); ?></option>
@@ -1075,7 +1075,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				<table class="facts_table">
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Upcoming Events block day limit'), help_link('DAYS_TO_SHOW_LIMIT'); ?>
+							<?php echo i18n::translate('Upcoming events block day limit'), help_link('DAYS_TO_SHOW_LIMIT'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" size="2" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>

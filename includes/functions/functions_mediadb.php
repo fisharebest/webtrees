@@ -1025,7 +1025,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 	echo '<input type="hidden" name="showthumb" value="', $showthumb, '" />';
 	echo '<table class="list_table ', $TEXT_DIRECTION, ' width100">';
 	echo '<tr><td class="topbottombar" colspan="2">';
-		echo i18n::translate('Upload Media files'), '<br />', i18n::translate('Maximum upload size: '), $filesize;
+		echo i18n::translate('Upload media files'), '<br />', i18n::translate('Maximum upload size: '), $filesize;
 	echo '</td></tr>';
 	$tab = 1;
 	// Print the Submit button for uploading the media
