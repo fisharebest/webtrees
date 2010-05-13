@@ -2,7 +2,7 @@
  * Javascript module for Googlemap
  *
  * This module contains the Javasript functions needed by the Googlemap
- * module of phpGedView
+ * module of webtrees
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -26,7 +26,7 @@
  *
  * @package webtrees
  * @subpackage Display
- * @version $Id: pgvGoogleMap.js$
+ * @version $Id: wt_googlemap.js$
  * $Id$
  */
 

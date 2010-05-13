@@ -309,7 +309,7 @@ function setup_map() {
 	}
 	?>
 	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=<?php echo $GOOGLEMAP_API_KEY; ?>" type="text/javascript"></script>
-	<script src="modules/googlemap/pgvGoogleMap.js" type="text/javascript"></script>
+	<script src="modules/googlemap/wt_googlemap.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	// <![CDATA[
 		if (window.attachEvent) {
