@@ -1253,7 +1253,7 @@ class stats {
 	}
 
 	function statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -1299,14 +1299,8 @@ class stats {
 			if ($tot==0) return '';
 			$centuries = "";
 			foreach ($rows as $values) {
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($values['century']);
-					$century = $date->NumToRoman($values['century']);
-				} else {
-					$century = i18n::century_name($values['century']);
-				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= $century.' - '.$values['total'].'|';
+				$centuries .= i18n::century_name($values['century']).' - '.$values['total'].'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -1317,7 +1311,7 @@ class stats {
 	}
 
 	function statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -1363,14 +1357,8 @@ class stats {
 			if ($tot==0) return '';
 			$centuries = "";
 			foreach ($rows as $values) {
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($values['century']);
-					$century = $date->NumToRoman($values['century']);
-				} else {
-					$century = i18n::century_name($values['century']);
-				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= $century.' - '.$values['total'].'|';
+				$centuries .= i18n::century_name($values['century']).' - '.$values['total'].'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -1682,7 +1670,7 @@ class stats {
 	}
 
 	function statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT;
+		global $TBLPREFIX;
 
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '230x250';}
@@ -1719,13 +1707,7 @@ class stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<980) $sizes[0] += 50;
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($century);
-					$century = $date->NumToRoman($century);
-				} else {
-					$century = i18n::century_name($century);
-				}
-				$chxl .= $century."|";
+				$chxl .= i18n::century_name($century)."|";
 				$average = 0;
 				if (isset($values['F'])) {
 					$countsf .= $values['F'].",";
@@ -1895,7 +1877,7 @@ class stats {
 				if (isset($eventTypes[$row['fact']])) {
 					$result=$eventTypes[$row['fact']];
 				} else {
-					$result=i18n::translate($row['fact']);
+					$result=translate_fact($row['fact']);
 				}
 				break;
 			case 'name':
@@ -2317,7 +2299,7 @@ class stats {
 	}
 
 	function statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -2382,14 +2364,8 @@ class stats {
 			$centuries = "";
 			$counts=array();
 			foreach ($rows as $values) {
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($values['century']);
-					$century = $date->NumToRoman($values['century']);
-				} else {
-					$century = i18n::century_name($values['century']);
-				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= $century.' - '.$values['total'].'|';
+				$centuries .= i18n::century_name($values['century']).' - '.$values['total'].'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -2399,7 +2375,7 @@ class stats {
 	}
 
 	function statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
 			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
@@ -2464,14 +2440,8 @@ class stats {
 			$centuries = "";
 			$counts=array();
 			foreach ($rows as $values) {
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($values['century']);
-					$century = $date->NumToRoman($values['century']);
-				} else {
-					$century = i18n::century_name($values['century']);
-				}
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= $century.' - '.$values['total'].'|';
+				$centuries .= i18n::century_name($values['century']).' - '.$values['total'].'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -2507,7 +2477,7 @@ class stats {
 	function lastDivorcePlace() {return $this->_mortalityQuery('place', 'DESC', 'DIV');}
 
 	function statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT;
+		global $TBLPREFIX;
 
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '200x250';}
@@ -2555,13 +2525,7 @@ class stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<1000) $sizes[0] += 50;
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($century);
-					$century = $date->NumToRoman($century);
-				} else {
-					$century = i18n::century_name($century);
-				}
-				$chxl .= $century."|";
+				$chxl .= i18n::century_name($century)."|";
 				$average = 0;
 				if (isset($values['F'])) {
 					if ($max<=50) $value = $values['F']*2;
@@ -3001,7 +2965,7 @@ class stats {
 	}
 
 	function statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT;
+		global $TBLPREFIX;
 
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
@@ -3031,13 +2995,7 @@ class stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				if ($sizes[0]<980) $sizes[0] += 38;
-				if ($CENTURY_FORMAT=='ROMAN') {
-					$date=new CalendarDate($values['century']);
-					$century = $date->NumToRoman($values['century']);
-				} else {
-					$century = i18n::century_name($values['century']);
-				}
-				$chxl .= $century."|";
+				$chxl .= i18n::century_name($values['century'])."|";
 				if ($max<=5) $counts[] = round($values['num']*819.2-1, 1);
 				else $counts[] = round($values['num']*409.6, 1);
 				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
@@ -3146,7 +3104,7 @@ class stats {
 	}
 
 	function chartNoChildrenFamilies($year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $CENTURY_FORMAT;
+		global $TBLPREFIX;
 
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
 		$sizes = explode('x', $size);
@@ -3185,13 +3143,7 @@ class stats {
 		$i = 0;
 		foreach ($rows as $values) {
 			if ($sizes[0]<980) $sizes[0] += 38;
-			if ($CENTURY_FORMAT=='ROMAN') {
-				$date=new CalendarDate($values['century']);
-				$century = $date->NumToRoman($values['century']);
-			} else {
-				$century = i18n::century_name($values['century']);
-			}
-			$chxl .= $century."|";
+			$chxl .= i18n::century_name($values['century'])."|";
 			$counts[] = round(4095*$values['count']/($max+1));
 			$chm .= 't'.$values['count'].',000000,0,'.$i.',11,1|';
 			$i++;

@@ -103,9 +103,6 @@ class i18n {
 		$DATE_FORMAT=self::noop('%j %F %Y');
 		global $TIME_FORMAT; // I18N: This a the format string for the time-of-day.  See http://php.net/date for codes
 		$TIME_FORMAT=self::noop('%g:%i:%s%a');
-		global $CENTURY_FORMAT; // I18N: This is the format of displaying the centuries. DECIMAL=21st century, ROMAN=XXI century
-		$CENTURY_FORMAT=self::noop('CENTURY_FORMAT=DECIMAL');
-		list(, $CENTURY_FORMAT)=explode('=', $CENTURY_FORMAT);
 		global $ALPHABET_upper; // Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
 		$ALPHABET_upper=self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 		list(, $ALPHABET_upper)=explode('=', $ALPHABET_upper);
@@ -321,7 +318,7 @@ class i18n {
 		case 12: return i18n::translate_c('CENTURY', '12th');
 		case 11: return i18n::translate_c('CENTURY', '11th');
 		case 10: return i18n::translate_c('CENTURY', '10th');
-		default: return $century.'01-'.($century+1).'00';
+		default: return ($century-1).'01-'.$century.'00';
 		}
 	}
 
