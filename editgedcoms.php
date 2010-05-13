@@ -106,6 +106,7 @@ case 'add_ged':
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
 		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
 	}
+	header('Location: editgedcoms.php');exit;
 	break;
 case 'new_ged':
 	$ged_name=basename(safe_POST('ged_name'));
@@ -135,6 +136,7 @@ case 'upload_ged':
 			}
 		}
 	}
+	header('Location: editgedcoms.php');exit;
 	break;
 case 'replace_upload':
 	$gedcom_id=safe_POST('gedcom_id');
@@ -146,6 +148,7 @@ case 'replace_upload':
 			}
 		}
 	}
+	header('Location: editgedcoms.php');exit;
 	break;
 case 'replace_import':
 	$gedcom_id=safe_POST('gedcom_id');
@@ -154,6 +157,7 @@ case 'replace_import':
 		$ged_name=basename(safe_POST('ged_name'));
 		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
 	}
+	header('Location: editgedcoms.php');exit;
 	break;
 }
 

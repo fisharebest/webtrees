@@ -44,9 +44,8 @@ if (!userGedcomAdmin(WT_USER_ID, $gedcom_id)) {
 	exit;
 }
 
-// Don't allow the user to cancel the request.  We do not want
-// to be left with an incomplete transaction, as this could cause a
-// timeout error in another session.
+// Don't allow the user to cancel the request.  We do not want to be left
+// with an incomplete transaction, as this could block another session.
 ignore_user_abort(true);
 
 // Run in a transaction, and make sure we are the only ones importing this gedcom
@@ -66,14 +65,13 @@ if (!$row) {
 header('Content-type: text/html; charset=UTF-8');
 
 // MySQL cannot use string functions on blobs larger than max_allowed_packet
-// See http://bugs.mysql.com/bug.php?id=22853 (Scheduled to be fixed in MySQL 6)
+// See http://bugs.mysql.com/bug.php?id=22853
 $max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
 try {
 	WT_DB::exec("SET @@max_allowed_packet=".max($row->import_total*2, $max_allowed_packet));		
 } catch (PDOException $ex) {
 	// We can only set this on MySQL 5.1.30 or earlier
 }
-
 
 if ($row->import_offset==0 || $row->import_total==0) {
 	// Finished?  Show the maintenance links, similar to editgedcoms.php
@@ -91,16 +89,17 @@ $percent=100*(($row->import_offset-1) / $row->import_total);
 $status=i18n::translate('Loading data from GEDCOM: %.1f%%', $percent);
 
 echo
-	'<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', htmlspecialchars($status), '</div></div>',
+	'<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>',
 	WT_JS_START,
-	'$("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
+	' $("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
 	WT_JS_END,
 flush();
 
+$first_time=($row->import_offset==1);
 // Run for one second.  This keeps the resource requirements low.
 for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	// If we are at the start position, do some tidying up
-	if ($row->import_offset==1) {
+	if ($first_time) {
 		$keep_media=safe_GET_bool('keep_media');
 		// Delete any existing genealogical data
 		empty_database($gedcom_id, $keep_media);
@@ -119,24 +118,19 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			" WHERE gedcom_id=?"
 		)->execute(array($gedcom_id));
 		// Fetch the header record
-		$data=WT_DB::prepare(
+		$head=WT_DB::prepare(
 			"SELECT LEFT(import_gedcom, CASE LOCATE('\n0', import_gedcom, 2) WHEN 0 THEN LENGTH(import_gedcom) ELSE LOCATE('\n0', import_gedcom, 2) END)".
 			" FROM {$TBLPREFIX}gedcom".
 			" WHERE gedcom_id=?"
 		)->execute(array($gedcom_id))->fetchOne();
-		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}gedcom".
-			" SET import_offset=?".
-			" WHERE gedcom_id=?"
-		)->execute(array(strlen($data)+1, $gedcom_id));
-		if (substr($data, 0, 6)!='0 HEAD') {
+		if (substr($head, 0, 6)!='0 HEAD') {
 			WT_DB::exec("ROLLBACK");
 			echo i18n::translate('Invalid GEDCOM file - no header record found.');
 			echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
-		if (preg_match('/\n1\s*CHAR(?:ACTER)?\s+(.+)/', $data, $match)) {
+		if (preg_match('/\n1\s*CHAR(?:ACTER)?\s+(.+)/', $head, $match)) {
 			$charset=strtoupper($match[1]);
 		} else {
 			$charset='ASCII';
@@ -183,36 +177,34 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
-		$data=preg_replace('/\n1 CHAR.*(\n[2-9].+)*/', '', $data)."\n1 CHAR UTF-8";
-		import_record(trim($data), $gedcom_id, false);
-	} else {
-		// Fetch the next block of data. At least 64KB, and ending on a record boundary.
-		$data=WT_DB::prepare(
-			"SELECT".
-			"  CASE LOCATE('\n0', import_gedcom, import_offset+65536)".
-			"   WHEN 0 THEN SUBSTR(import_gedcom FROM import_offset)".
-			"   ELSE SUBSTR(import_gedcom FROM import_offset FOR LOCATE('\n0', import_gedcom, import_offset+65536)-import_offset)".
-			"  END".
-			" FROM {$TBLPREFIX}gedcom".
-			" WHERE gedcom_id=?"
-		)->execute(array($gedcom_id))->fetchOne();
-		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}gedcom".
-			" SET import_offset=import_offset+?".
-			" WHERE gedcom_id=?"
-		)->execute(array(strlen($data), $gedcom_id));
-		echo WT_JS_START, WT_JS_END;
-		foreach (preg_split('/\n(?=0)/', $data) as $rec) {
-			if ($rec) {
-				try {
-					import_record(trim($rec), $gedcom_id, false);
-				} catch (PDOException $ex) {
-					// A fatal error.  Nothing we can do.
-					WT_DB::exec("ROLLBACK");
-					echo '<span class="error">', $ex->getMessage(), '</span>';
-					echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
-					exit;
-				}
+		$first_time=false;
+	}
+	// Fetch the next block of data ending on a record boundary.
+	$data=WT_DB::prepare(
+		"SELECT".
+		"  CASE LOCATE('\n0', import_gedcom, import_offset+65536)".
+		"   WHEN 0 THEN SUBSTR(import_gedcom FROM import_offset)".
+		"   ELSE SUBSTR(import_gedcom FROM import_offset FOR LOCATE('\n0', import_gedcom, import_offset+65536)-import_offset)".
+		"  END".
+		" FROM {$TBLPREFIX}gedcom".
+		" WHERE gedcom_id=?"
+	)->execute(array($gedcom_id))->fetchOne();
+	WT_DB::prepare(
+		"UPDATE {$TBLPREFIX}gedcom".
+		" SET import_offset=import_offset+?".
+		" WHERE gedcom_id=?"
+	)->execute(array(strlen($data), $gedcom_id));
+	echo WT_JS_START, WT_JS_END;
+	foreach (preg_split('/\n(?=0)/', $data) as $rec) {
+		if ($rec) {
+			try {
+				import_record(trim($rec), $gedcom_id, false);
+			} catch (PDOException $ex) {
+				// A fatal error.  Nothing we can do.
+				WT_DB::exec("ROLLBACK");
+				echo '<span class="error">', $ex->getMessage(), '</span>';
+				echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
+				exit;
 			}
 		}
 	}
@@ -226,12 +218,14 @@ if ($row->import_offset>$row->import_total) {
 		" SET import_offset=0".
 		" WHERE gedcom_id=?"
 	)->execute(array($gedcom_id));
+	WT_DB::exec("COMMIT");
 	echo
 		WT_JS_START,
 		'$("#import',  $gedcom_id, '").toggle();',
 		'$("#actions', $gedcom_id, '").toggle();',
 		WT_JS_END;
 } else {
+	WT_DB::exec("COMMIT");
 	// Reload.....
 	echo
 		WT_JS_START,
@@ -239,4 +233,3 @@ if ($row->import_offset>$row->import_total) {
 		WT_JS_END;
 }
 
-WT_DB::exec("COMMIT");
