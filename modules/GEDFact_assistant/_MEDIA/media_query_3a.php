@@ -31,7 +31,7 @@
 
 $iid2		= safe_GET('iid');
 
-print_simple_header(i18n::translate('Link Media'));
+print_simple_header(i18n::translate('Link media'));
 
 $record=GedcomRecord::getInstance($iid2);
 $headjs="";

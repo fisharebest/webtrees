@@ -261,7 +261,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'style2');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation Style'), help_link('style');
+		echo i18n::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
 		echo '</td></tr>';

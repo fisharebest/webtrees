@@ -57,7 +57,7 @@ function help_window2(frm)  {
 	<br /><br />
 	<span class="descriptionbox width15 nowrap <?php $TEXT_DIRECTION; ?>">
 		<?php
-			echo i18n::translate('Shared Note'), help_link('SHARED_NOTE');
+			echo i18n::translate('Shared note'), help_link('SHARED_NOTE');
 		?>
 	</span>
 	<div class="optionbox">

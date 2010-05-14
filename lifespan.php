@@ -41,7 +41,7 @@ $controller->init();
 $zoomfactor = 10;
 //if peeps !null then pass new array for zooming
 
-print_header(i18n::translate('Lifespan Chart'));
+print_header(i18n::translate('Lifespan chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
@@ -54,7 +54,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	//-->
 	</script>
 
-<h2><?php print i18n::translate('Lifespan Chart'); ?></h2>
+<h2><?php print i18n::translate('Lifespan chart'); ?></h2>
 <table><tr><td>
 <form name="people" action="lifespan.php">
 

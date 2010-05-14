@@ -117,8 +117,8 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		$modules = WT_Module::getInstalledModules();
 		if (WT_USER_IS_ADMIN || count($modules)>0) {?>
 		<!-- ---- MODIFIED BY BH ------------------------------------ -->
-			<!-- <li><a href="#modules"><span><?php // echo i18n::translate('Module Administration')?></span></a></li> -->
-			<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module Administration')?></span></a></li>
+			<!-- <li><a href="#modules"><span><?php // echo i18n::translate('Module administration')?></span></a></li> -->
+			<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration')?></span></a></li>
 		<!-- -------------------------------------------------------- -->
 		<?php } ?>
 	</ul>
@@ -196,7 +196,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 			<td class="optionbox width50"><a
 				href="siteconfig.php"><?php echo i18n::translate('Configuration');?></a><?php echo help_link('help_editconfig.php'); ?></td>
 			<td class="optionbox width50"><a
-				href="manageservers.php"><?php echo i18n::translate('Manage Sites');?></a><?php echo help_link('help_managesites'); ?></td>
+				href="manageservers.php"><?php echo i18n::translate('Manage sites');?></a><?php echo help_link('help_managesites'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
@@ -205,7 +205,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
-				href="faq.php"><?php echo i18n::translate('FAQ List');?></a><?php echo help_link('help_faq.php'); ?></td>
+				href="faq.php"><?php echo i18n::translate('FAQ list');?></a><?php echo help_link('help_faq.php'); ?></td>
 			<td class="optionbox width50">&nbsp;</td>
 		</tr>
 		</table>

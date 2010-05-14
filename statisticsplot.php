@@ -903,8 +903,8 @@ else {
 	unset($savedInput);
 }
 
-print_simple_header(i18n::translate('Statistics Plot'));
-echo "<center><h2>", i18n::translate('Statistics Plot'), "</h2>";
+print_simple_header(i18n::translate('Statistics plot'));
+echo "<center><h2>", i18n::translate('Statistics plot'), "</h2>";
 echo "</center><br />";
 
 $nrpers = $_SESSION[$GEDCOM."nrpers"];

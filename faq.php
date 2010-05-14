@@ -35,7 +35,7 @@ require './includes/session.php';
 global $WT_IMAGES, $faqs;
 
 // -- print html header information
-print_header(i18n::translate('FAQ List'));
+print_header(i18n::translate('FAQ list'));
 
 // -- Get all of the _POST variables we're interested in
 $action     = safe_REQUEST($_REQUEST, 'action',      WT_REGEX_UNSAFE, 'show');
@@ -158,15 +158,15 @@ if ($action=="add") {
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo i18n::translate('Add FAQ item'), help_link('add_faq_item');
 	echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
-	echo i18n::translate('FAQ Header'), help_link('add_faq_header');
+	echo i18n::translate('FAQ header'), help_link('add_faq_header');
 	echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="', $i++, '" /></td></tr>';
 	echo '<tr><td class="descriptionbox" colspan="2">';
-	echo i18n::translate('FAQ Body'), help_link("add_faq_body","qm","add_faq_body");
+	echo i18n::translate('FAQ body'), help_link("add_faq_body","qm","add_faq_body");
 	echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="', $i++, '"></textarea></td></tr>';
 	echo '<tr><td class="descriptionbox">';
-	echo i18n::translate('FAQ Position'), help_link('add_faq_order');
+	echo i18n::translate('FAQ position'), help_link('add_faq_order');
 	echo '</td><td class="descriptionbox">';
-	echo i18n::translate('FAQ Visibility'), help_link('add_faq_visibility');
+	echo i18n::translate('FAQ visibility'), help_link('add_faq_visibility');
 	echo '</td></tr><tr><td class="optionbox"><input type="text" name="order" size="3" tabindex="', $i++, '" /></td>';
 	echo '<td class="optionbox">';
 		echo '<select name="whichGEDCOM" tabindex="', $i++, '" />';
@@ -203,15 +203,15 @@ if ($action == "edit") {
 			echo '<input type="hidden" name="oldGEDCOM" value="', htmlspecialchars($data["header"]["gedcom"]), '" />';
 			echo '<input type="hidden" name="oldOrder" value="', htmlspecialchars($id), '" />';
 			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('FAQ Header'), help_link('add_faq_header');
+			echo i18n::translate('FAQ header'), help_link('add_faq_header');
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="', $i++, '" value="', htmlspecialchars($data["header"]["text"]), '" /></td></tr>';
 			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('FAQ Body'), help_link('add_faq_body');
+			echo i18n::translate('FAQ body'), help_link('add_faq_body');
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="', $i++, '">', htmlspecialchars($data["body"]["text"]), '</textarea></td></tr>';
 			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('FAQ Position'), help_link('add_faq_order');
+			echo i18n::translate('FAQ position'), help_link('add_faq_order');
 			echo '</td><td class="descriptionbox">';
-			echo i18n::translate('FAQ Visibility'), help_link('add_faq_visibility');
+			echo i18n::translate('FAQ visibility'), help_link('add_faq_visibility');
 			echo '</td></tr><tr><td class="optionbox"><input type="text" name="order" size="3" tabindex="', $i++, '" value="', $id, '" /></td>';
 			echo '<td class="optionbox">';
 				echo '<select name="whichGEDCOM" tabindex="', $i++, '" />';

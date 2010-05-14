@@ -309,9 +309,9 @@ function print_td_person($n) {
 	$pid = $treeid[$n];
 
 	if ($TEXT_DIRECTION=="ltr") {
-		$title = i18n::translate('Individual Information').": ".$pid;
+		$title = i18n::translate('Individual information').": ".$pid;
 	} else {
-		$title = $pid." :".i18n::translate('Individual Information');
+		$title = $pid." :".i18n::translate('Individual information');
 	}
 
 	if ($pid) {

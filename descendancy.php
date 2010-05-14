@@ -35,7 +35,7 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new DescendancyController();
 $controller->init();
 
-print_header($controller->name." ".i18n::translate('Descendancy Chart'));
+print_header($controller->name." ".i18n::translate('Descendancy chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -46,7 +46,7 @@ if (WT_USE_LIGHTBOX) {
 }
 // ==========================================================================================
 
-echo '<table><tr><td valign="top"><h2>', i18n::translate('Descendancy Chart'), ':<br />', PrintReady($controller->name), '</h2>';
+echo '<table><tr><td valign="top"><h2>', i18n::translate('Descendancy chart'), ':<br />', PrintReady($controller->name), '</h2>';
 echo WT_JS_START;
 echo 'var pastefield; function paste_id(value) {pastefield.value=value;}';
 echo WT_JS_END;
@@ -141,13 +141,13 @@ case 1: //-- booklet
 case 2: //-- Individual list
 	$descendants=indi_desc($controller->descPerson, $controller->generations, array());
 	echo '<div class="center">';
-	print_indi_table($descendants, i18n::translate('Descendancy Chart').' : '.PrintReady($controller->name));
+	print_indi_table($descendants, i18n::translate('Descendancy chart').' : '.PrintReady($controller->name));
 	echo '</div>';
 	break;
 case 3: //-- Family list
 	$descendants=fam_desc($controller->descPerson, $controller->generations, array());
 	echo '<div class="center">';
-	print_fam_table($descendants, i18n::translate('Descendancy Chart').' : '.PrintReady($controller->name));
+	print_fam_table($descendants, i18n::translate('Descendancy chart').' : '.PrintReady($controller->name));
 	echo '</div>';
 	break;
 }

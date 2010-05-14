@@ -96,13 +96,13 @@ require WT_ROOT.'includes/specialchars.php';
 
 switch ($type) {
 case "indi":
-	print_simple_header(i18n::translate('Find Individual ID'));
+	print_simple_header(i18n::translate('Find individual ID'));
 	break;
 case "fam":
 	print_simple_header(i18n::translate('Find Family List'));
 	break;
 case "media":
-	print_simple_header(i18n::translate('Find Media'));
+	print_simple_header(i18n::translate('Find media'));
 	$action="filter";
 	break;
 case "place":
@@ -207,13 +207,13 @@ echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 widt
 
 switch ($type) {
 case "indi":
-	echo i18n::translate('Find Individual ID');
+	echo i18n::translate('Find individual ID');
 	break;
 case "fam":
 	echo i18n::translate('Find Family List');
 	break;
 case "media":
-	echo i18n::translate('Find Media');
+	echo i18n::translate('Find media');
 	break;
 case "place":
 	echo i18n::translate('Find Place');

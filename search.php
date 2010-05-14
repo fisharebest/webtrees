@@ -169,7 +169,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php print i18n::translate('Enter Search terms'); ?>
+			<?php print i18n::translate('Enter search terms'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) print $controller->myquery; ?>" size="40" />
@@ -219,7 +219,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<!-- Choice to Exclude non-genealogical data -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php echo i18n::translate('Exclude Filter'), help_link('search_exclude_tags'); ?>
+			<?php echo i18n::translate('Exclude filter'), help_link('search_exclude_tags'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input type="radio" name="tagfilter" value="on"
@@ -258,7 +258,7 @@ if ($controller->action == "replace")
 	if (WT_USER_CAN_EDIT) {
 ?>
 				<td colspan="3" class="facts_label03" style="text-align: center;">
-					<?php echo i18n::translate('Search and Replace'), help_link('search_replace'); ?>
+					<?php echo i18n::translate('Search and replace'), help_link('search_replace'); ?>
 				</td>
 	</tr>
 	<!-- // search terms -->
@@ -570,9 +570,9 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 
 if ($controller->action == "general") {
 	print "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-	print " | <a href='search_advanced.php'>".i18n::translate('Advanced Search')."</a>";
+	print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
 	if(WT_USER_CAN_EDIT) {
-		print " | <a href='?action=replace'>".i18n::translate('Search and Replace')."</a>";
+		print " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 	}
 	if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 		if (count($controller->Sites) > 0) {
@@ -586,7 +586,7 @@ else if ($controller->action == "replace")
 {
 	print "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
 	print "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-	print " | <a href='search_advanced.php'>".i18n::translate('Advanced Search')."</a>";
+	print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
 		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 			if (count($controller->Sites) > 0) {
 
@@ -597,10 +597,10 @@ else if ($controller->action == "replace")
 else
 	if ($controller->action == "soundex") {
 		print "<a href='?action=general'>".i18n::translate('General Search')."</a>";
-		print " | <a href='search_advanced.php'>".i18n::translate('Advanced Search')."</a>";
+		print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
 		if(WT_USER_CAN_EDIT)
 		{
-			print " | <a href='?action=replace'>".i18n::translate('Search and Replace')."</a>";
+			print " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 		}
 		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 			if (count($controller->Sites) > 0) {
@@ -613,12 +613,12 @@ else
 		{
 			if(WT_USER_CAN_EDIT)
 			{
-				print "<a href='?action=replace'>".i18n::translate('Search and Replace')."</a> | ";
+				print "<a href='?action=replace'>".i18n::translate('Search and replace')."</a> | ";
 			}
 
 			print "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
 			print "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-			print " | <a href='search_advanced.php'>".i18n::translate('Advanced Search')."</a></td></tr>";
+			print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a></td></tr>";
 		}
 
 ?>

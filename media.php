@@ -256,7 +256,7 @@ if (WT_USER_IS_ADMIN) {
 }
 
 // Print the header of the page
-print_header(i18n::translate('Manage MultiMedia'));
+print_header(i18n::translate('Manage multimedia'));
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -766,7 +766,7 @@ if (check_media_structure()) {
 	<input type="hidden" name="all" value="true" />
 	<input type="hidden" name="subclick" />
 	<table class="facts_table center width75 <?php print $TEXT_DIRECTION; ?>">
-	<tr><td class="topbottombar" colspan="4"><?php echo i18n::translate('Manage MultiMedia'), help_link('manage_media'); ?></td></tr>
+	<tr><td class="topbottombar" colspan="4"><?php echo i18n::translate('Manage multimedia'), help_link('manage_media'); ?></td></tr>
 	<?php
 	if ($TEXT_DIRECTION=='ltr') $legendAlign = 'align="right"';
 	else $legendAlign = 'align="left"';

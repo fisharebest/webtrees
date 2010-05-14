@@ -292,10 +292,10 @@ $controller->checkPrivacy();
 			<?php if (!$controller->isPrintPreview()) {
 				?>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >
-				<span class="details1"><?php echo i18n::translate('Remove Person'), help_link('remove_person'); ?></span></a>
+				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
 				<span class="details1"><br />
-				<?php echo i18n::translate('Show Age Marker'), help_link('show_age_marker'); ?>
+				<?php echo i18n::translate('Show age marker'), help_link('show_age_marker'); ?>
 				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="showhide('agebox<?php echo $p; ?>', this);" />
 				</span>
 			<?php }
@@ -310,7 +310,7 @@ $controller->checkPrivacy();
 				echo "<br />";
 				?>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >
-				<span class="details1"><?php echo i18n::translate('Remove Person'), help_link('remove_person'); ?></span></a>
+				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<?php } ?>
 			<br />
 		<?php } ?>

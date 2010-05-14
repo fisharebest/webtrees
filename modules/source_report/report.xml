@@ -183,13 +183,13 @@
 									<PGVRvar var="i18n::translate('@fact')"/>
 								</PGVRif>
 								<PGVRif condition="@MARR:TYPE=='Religious'">
-									<PGVRvar var="i18n::translate('Religious Marriage')" />
+									<PGVRvar var="i18n::translate('Religious marriage')" />
 								</PGVRif>
 								<PGVRif condition="@MARR:TYPE=='Civil'">
-									<PGVRvar var="i18n::translate('Civil Marriage')" />
+									<PGVRvar var="i18n::translate('Civil marriage')" />
 								</PGVRif>
 								<PGVRif condition="@MARR:TYPE=='Partners'">
-									<PGVRvar var="i18n::translate('Registered Partnership')" />
+									<PGVRvar var="i18n::translate('Registered partnership')" />
 								</PGVRif>
 							</PGVRif>
 							<PGVRif condition="@fact!='MARR'">

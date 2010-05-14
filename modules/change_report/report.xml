@@ -5,7 +5,7 @@
 	<PGVRDescription>Prints a list of individuals matching specific change criteria</PGVRDescription>
 	<PGVRInput name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><PGVRvar var="i18n::translate('Starting range of change dates')" /></PGVRInput>
 	<PGVRInput name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><PGVRvar var="i18n::translate('Ending range of change dates')" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" options="CHAN=>i18n::translate('Last Change')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
+	<PGVRInput name="sortby" type="select" options="CHAN=>i18n::translate('Last change')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
 	<PGVRInput name="pending" type="select" options="yes=>i18n::translate('Yes')|no=>i18n::translate('No')"><PGVRvar var="i18n::translate('Show pending changes')" /></PGVRInput>
 	<PGVRInput name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
 	<PGVRInput name="pageorient" type="select" default="landscape" options="landscape=>i18n::translate('Landscape')|portrait=>i18n::translate('Portrait')"><PGVRvar var="i18n::translate('Orientation')" /></PGVRInput>
@@ -67,7 +67,7 @@
 				<PGVRSetVar name="fill" value="" />
 				<PGVRif condition="$sortby=='CHAN'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 				<PGVRTextBox bgcolor="$fill" border="1" height="12" newline="1">
-					<PGVRText style="label"><PGVRvar var="i18n::translate('Last Change')" /></PGVRText>
+					<PGVRText style="label"><PGVRvar var="i18n::translate('Last change')" /></PGVRText>
 				</PGVRTextBox>
 
 				<!-- Pending Changes Section Data -->
@@ -116,7 +116,7 @@
 			<PGVRSetVar name="fill" value="" />
 			<PGVRif condition="$sortby=='CHAN'"><PGVRSetVar name="fill" value="#AAAAAA" /></PGVRif>
 			<PGVRTextBox bgcolor="$fill" border="1" height="12" newline="1">
-				<PGVRText style="label"><PGVRvar var="i18n::translate('Last Change')" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Last change')" /></PGVRText>
 			</PGVRTextBox>
 
 			<!-- Recent Changes Section Data -->

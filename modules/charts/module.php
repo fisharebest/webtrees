@@ -37,7 +37,7 @@ require_once WT_ROOT.'includes/classes/class_treenav.php';
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Charts Block');
+		return i18n::translate('Charts block');
 	}
 
 	// Extend class WT_Module
@@ -94,10 +94,10 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 					$title .= $name." ".i18n::translate('Pedigree Tree');
 					break;
 				case 'descendants':
-					$title .= $name." ".i18n::translate('Descendancy Chart');
+					$title .= $name." ".i18n::translate('Descendancy chart');
 					break;
 				case 'hourglass':
-					$title .= $name." ".i18n::translate('Hourglass Chart');
+					$title .= $name." ".i18n::translate('Hourglass chart');
 					break;
 				case 'treenav':
 					$title .= $name." ".i18n::translate('Tree');
@@ -190,14 +190,14 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	?>
-		<tr><td class="descriptionbox wrap width33"><?php print i18n::translate('Chart Type'); ?></td>
+		<tr><td class="descriptionbox wrap width33"><?php print i18n::translate('Chart type'); ?></td>
 		<td class="optionbox">
 			<select name="type">
 				<option value="pedigree"<?php if ($type=="pedigree") print " selected=\"selected\""; ?>><?php print i18n::translate('Pedigree Tree'); ?></option>
-				<option value="descendants"<?php if ($type=="descendants") print " selected=\"selected\""; ?>><?php print i18n::translate('Descendancy Chart'); ?></option>
-				<option value="hourglass"<?php if ($type=="hourglass") print " selected=\"selected\""; ?>><?php print i18n::translate('Hourglass Chart'); ?></option>
+				<option value="descendants"<?php if ($type=="descendants") print " selected=\"selected\""; ?>><?php print i18n::translate('Descendancy chart'); ?></option>
+				<option value="hourglass"<?php if ($type=="hourglass") print " selected=\"selected\""; ?>><?php print i18n::translate('Hourglass chart'); ?></option>
 				<?php if (file_exists(WT_ROOT.'includes/classes/class_treenav.php')) { ?>
-				<option value="treenav"<?php if ($type=="treenav") print " selected=\"selected\""; ?>><?php print i18n::translate('Interactive Tree'); ?></option>
+				<option value="treenav"<?php if ($type=="treenav") print " selected=\"selected\""; ?>><?php print i18n::translate('Interactive tree'); ?></option>
 				<?php } ?>
 			</select>
 		</td></tr>

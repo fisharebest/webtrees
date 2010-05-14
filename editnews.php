@@ -52,7 +52,7 @@ $text    =safe_POST('text', WT_REGEX_UNSAFE);
 if (empty($username)) $username=$GEDCOM;
 
 if ($action=="compose") {
-	print '<span class="subheaders">'.i18n::translate('Add/Edit Journal/News entry').'</span>';
+	print '<span class="subheaders">'.i18n::translate('Add/edit journal/news entry').'</span>';
 	?>
 	<script language="JavaScript" type="text/javascript">
 		function checkForm(frm) {

@@ -202,7 +202,7 @@
 
 				<!-- print family with parents and siblings -->
 				<PGVRTextBox height="$sheight" newline="1" padding="0" width="15"/>
-				<PGVRCell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width"><PGVRvar var="i18n::translate('Family with Parents')"/></PGVRCell>
+				<PGVRCell bgcolor="$stbgcolor" border="1" newline="1" style="title" tcolor="$tcolor" width="$width"><PGVRvar var="i18n::translate('Family with parents')"/></PGVRCell>
 				<PGVRRepeatTag tag="FAMC">
 					<PGVRGedcom id="@FAMC">
 						<!-- father -->

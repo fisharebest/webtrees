@@ -301,12 +301,12 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
 					echo "<br /><a href=\"".encode_url("relationship.php?pid1=".WT_USER_GEDCOM_ID."&pid2={$pid}&ged={$GEDCOM}")."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
 				}
-				echo "<br /><a href=\"descendancy.php?pid=$pid\" >".i18n::translate('Descendancy Chart')."</a>";
-				echo "<br /><a href=\"ancestry.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry Chart')."</a>";
+				echo "<br /><a href=\"descendancy.php?pid=$pid\" >".i18n::translate('Descendancy chart')."</a>";
+				echo "<br /><a href=\"ancestry.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
 				echo "<br /><a href=\"compact.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact Chart')."</a>";
-				echo "<br /><a href=\"".encode_url($tempURL)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle Diagram')."</a>";
-				echo "<br /><a href=\"hourglass.php?pid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass Chart')."</a>";
-				echo "<br /><a href=\"treenav.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive Tree')."</a>";
+				echo "<br /><a href=\"".encode_url($tempURL)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
+				echo "<br /><a href=\"hourglass.php?pid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
+				echo "<br /><a href=\"treenav.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
 				if ($sosa>=1) {
 					$famids = find_sfamily_ids($pid);
 					//-- make sure there is more than 1 child in the family with parents
@@ -399,7 +399,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	// note: arg "image_name=" is to avoid image miscaching
 	$image_name= "V".time();
 	unset($_SESSION[$image_name]);		// statisticsplot.php uses this to hold a file name to send to browser
-	$image_title=preg_replace("~<.*>~", "", $name) . " " . i18n::translate('Circle Diagram');
+	$image_title=preg_replace("~<.*>~", "", $name) . " " . i18n::translate('Circle diagram');
 	echo "<p align=\"center\" >";
 	echo "<img src=\"imageflush.php?image_type=png&amp;image_name=$image_name&amp;height=$fanh&amp;width=$fanw\" width=\"$fanw\" height=\"$fanh\" border=\"0\" alt=\"$image_title\" title=\"$image_title\" usemap=\"#fanmap\" />";
 	echo "</p>";
@@ -420,7 +420,7 @@ $name   =$person->getFullName();
 $addname=$person->getAddName();
 
 // -- print html header information
-print_header(PrintReady($name) . " " . i18n::translate('Circle Diagram'));
+print_header(PrintReady($name) . " " . i18n::translate('Circle diagram'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -428,7 +428,7 @@ if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
 if ($view == "preview") echo "<h2>" . i18n::translate('%s Generation Circle Diagram', $PEDIGREE_GENERATIONS) . ":";
-else echo "<h2>" . i18n::translate('Circle Diagram') . ":";
+else echo "<h2>" . i18n::translate('Circle diagram') . ":";
 echo "<br />".PrintReady($name);
 if ($addname != "") echo "<br />" . PrintReady($addname);
 echo "</h2>";
@@ -451,7 +451,7 @@ if ($view != "preview") {
 
 	// NOTE: fan style
 	echo "<td rowspan=\"3\" class=\"descriptionbox\">";
-	echo i18n::translate('Circle Diagram'), help_link('fan_style');
+	echo i18n::translate('Circle diagram'), help_link('fan_style');
 	echo "</td><td rowspan=\"3\" class=\"optionbox\">";
 	echo "<input type=\"radio\" name=\"fan_style\" value=\"2\"";
 	if ($fan_style==2) echo " checked=\"checked\"";

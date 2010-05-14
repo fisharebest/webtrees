@@ -148,7 +148,7 @@ if (!$success) {
 	<?php if ($controller->server_list || $controller->gedcom_list) { ?>
 	<tr>
 		<td class="descriptionbox wrap width20">
-			<?php echo i18n::translate('Site Location'), help_link('link_remote_location'); ?>
+			<?php echo i18n::translate('Site location'), help_link('link_remote_location'); ?>
 		</td>
 		<td class="optionbox">
 			<?php

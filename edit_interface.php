@@ -60,7 +60,7 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
 
-print_simple_header(i18n::translate('Edit Interface'));
+print_simple_header(i18n::translate('Edit interface'));
 
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'js/autocomplete.js.htm';
@@ -850,7 +850,7 @@ case 'addnewnote':
 			echo "<table class=\"facts_table\">";
 				echo "<tr>";
 					echo "<td class=\"descriptionbox\" ", $TEXT_DIRECTION, " wrap=\"nowrap\">";
-					echo i18n::translate('Shared Note'), help_link('SHARED_NOTE');
+					echo i18n::translate('Shared note'), help_link('SHARED_NOTE');
 					echo "</td>";
 					echo "<td class=\"optionbox wrap\" ><textarea name=\"NOTE\" id=\"NOTE\" rows=\"15\" cols=\"87\"></textarea>";
 						print_specialchar_link("NOTE", true);
@@ -1112,7 +1112,7 @@ case 'editnote':
 		?>
 		<table class="facts_table">
 			<tr>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo i18n::translate('Shared Note'), help_link('SHARED_NOTE'); ?></td>
+				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo i18n::translate('Shared note'), help_link('SHARED_NOTE'); ?></td>
 				<td class="optionbox wrap">
 					<textarea tabindex="<?php echo $tabkey; ?>" name="NOTE" id="NOTE" rows="15" cols="90"><?php
 						echo htmlspecialchars($note_content);

@@ -59,7 +59,7 @@ print_simple_header(i18n::translate('Review GEDCOM changes'));
 //-->
 </script>
 <?php
-echo '<div class="center"><span class="subheaders">', i18n::translate('Review GEDCOM Changes'), '</span><br /><br />';
+echo '<div class="center"><span class="subheaders">', i18n::translate('Review GEDCOM changes'), '</span><br /><br />';
 
 switch ($action) {
 case 'undo':

@@ -32,7 +32,7 @@ require './includes/session.php';
 
 $filename=decrypt(safe_GET('filename'));
 
-print_simple_header(i18n::translate('Image Viewer'));
+print_simple_header(i18n::translate('Image viewer'));
 
 ?>
 <script language="JavaScript" type="text/javascript">

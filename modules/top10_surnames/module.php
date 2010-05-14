@@ -161,7 +161,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation Style'), help_link('style');
+		echo i18n::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('table'=>i18n::translate('Table'), 'tagcloud'=>i18n::translate('Tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';

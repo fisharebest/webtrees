@@ -39,16 +39,16 @@ $controller = new HourglassController();
 $controller->init();
 
 // -- print html header information
-print_header(PrintReady($controller->name)." ".i18n::translate('Hourglass Chart'));
+print_header(PrintReady($controller->name)." ".i18n::translate('Hourglass chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 if ($controller->view=="preview") {
-	print "<h2 style=\"text-align: center\">".i18n::translate('Hourglass Chart').":&nbsp;&nbsp;&nbsp;".PrintReady($controller->name)."</h2>";
+	print "<h2 style=\"text-align: center\">".i18n::translate('Hourglass chart').":&nbsp;&nbsp;&nbsp;".PrintReady($controller->name)."</h2>";
 } else {
 	print "<!-- // NOTE: Start table header -->";
 	print "<table><tr><td valign=\"top\">";
-	print "<h2>".i18n::translate('Hourglass Chart').":<br />".PrintReady($controller->name)."</h2>";
+	print "<h2>".i18n::translate('Hourglass chart').":<br />".PrintReady($controller->name)."</h2>";
 }
 
 $controller->setupJavascript();

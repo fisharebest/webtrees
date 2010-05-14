@@ -153,9 +153,9 @@ class AncestryControllerRoot extends BaseController {
 		print "</td>";
 		print "<td>";
 		if ($TEXT_DIRECTION=="ltr") {
-			$label = i18n::translate('Ancestry Chart').": ".$pid;
+			$label = i18n::translate('Ancestry chart').": ".$pid;
 		} else {
-			$label = $pid." :".i18n::translate('Ancestry Chart');
+			$label = $pid." :".i18n::translate('Ancestry chart');
 		}
 		if ($sosa>1) print_url_arrow($pid, encode_url("?rootid={$pid}&PEDIGREE_GENERATIONS={$OLD_PGENS}&show_full={$this->show_full}&box_width={$box_width}&chart_style={$this->chart_style}"), $label, 3);
 		print "</td>";

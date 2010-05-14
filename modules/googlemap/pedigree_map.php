@@ -656,7 +656,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		// end of add image
 
 		$dataleft  = $image . $event . addslashes($name);
-		$datamid   = " <span><a href='individual.php?pid=". $pid . "' id='alturl' title='" . i18n::translate('Individual Information') . "'>";
+		$datamid   = " <span><a href='individual.php?pid=". $pid . "' id='alturl' title='" . i18n::translate('Individual information') . "'>";
 		if ($TEXT_DIRECTION == "rtl") $datamid .= PrintReady("(".$pid.")");
 		else $datamid .= "(". $pid . ")";
 		$datamid  .= "</a></span>";

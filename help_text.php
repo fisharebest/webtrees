@@ -4063,7 +4063,7 @@ case 'help_contents_help':
 			<ul><li><a href="?help=add_media">'.i18n::translate('Add media').'</a></li><li><a href="?help=ancestry.php">'.i18n::translate('Ancestry chart').'</a></li><li><a href="?help=calendar.php">'.i18n::translate('Calendar').'</a></li><li><a href="?help=fanchart.php">'.i18n::translate('Circle diagram').'</a></li><li><a href="?help=clippings.php">'
 			.i18n::translate('Clippings cart').'</a></li><li><a href="?help=def">'.i18n::translate('Definitions').'</a></li><li><a href="?help=descendancy.php">'.i18n::translate('Descendancy chart').'</a></li><li><a href="?help=famlist.php">'.i18n::translate('Families').'</a></li><li><a href="?help=familybook.php">'
 			.i18n::translate('Family book chart').'</a></li><li><a href="?help=family.php">'.i18n::translate('Family information').'</a></li><li><a href="?help=faq.php">'.i18n::translate('FAQ list').'</a></li><li><a href="?help=gedcom_info">'.i18n::translate('GEDCOM information').'</a></li><li><a href="?help=header">'
-			.i18n::translate('Header').'</a></li><li><a href="?help=help">'.i18n::translate('Help').'</a></li><li><a href="?help=index_portal">'.i18n::translate('Home Page').'</a></li><li><a href="?help=hourglass.php">'.i18n::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
+			.i18n::translate('Header').'</a></li><li><a href="?help=help">'.i18n::translate('Help').'</a></li><li><a href="?help=index_portal">'.i18n::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.i18n::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
 			.i18n::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.i18n::translate('Individuals').'</a></li><li><a href="?help=treenav.php">'.i18n::translate('Interactive tree').'</a></li><li><a href="?help=login.php">'
 			.i18n::translate('Login').'</a></li><li><a href="?help=pls_note11">'.i18n::translate('Lost password request').'</a></li><li><a href="?help=menu">'.i18n::translate('Menus').'</a></li><li><a href="?help=medialist.php">'.i18n::translate('Multimedia').'</a></li><li><a href="?help=edituser.php">'
 			.i18n::translate('My account').'</a></li><li><a href="?help=mygedview_portal">'.i18n::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.i18n::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.i18n::translate('Pedigree Tree').'</a></li><li><a href="?help=placelist.php">'
@@ -4133,7 +4133,7 @@ case 'help_useradmin.php':
 
 case 'hide_context':
 	$title=i18n::translate('Hide contextual help');
-	$text=i18n::translate('Hide Contextual Help');
+	$text=i18n::translate('Hide contextual help');
 	break;
 
 case 'import_gedcom':

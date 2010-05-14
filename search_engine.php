@@ -58,7 +58,7 @@ echo '</div><br />';
 $all_gedcoms=get_all_gedcoms();
 if ($ALLOW_CHANGE_GEDCOM && count($all_gedcoms)>1) {
 	foreach ($all_gedcoms as $ged_id=>$gedcom) {
-		$title=i18n::translate('Home Page').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
+		$title=i18n::translate('Home page').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
 		echo '<a href="', encode_url("index.php?ged={$gedcom}"), '"><b>', $title, '</b></a><br />';
 	}
 	echo '<br />';
@@ -67,7 +67,7 @@ if ($ALLOW_CHANGE_GEDCOM && count($all_gedcoms)>1) {
 		echo '<a href="', encode_url("indilist.php?ged={$gedcom}"), '"><b>', $title, '</b></a><br />';
 	}
 } else {
-	$title=i18n::translate('Home Page');
+	$title=i18n::translate('Home page');
 	echo '<a href="', encode_url("index.php?ged={$GEDCOM}"), '"><b>', $title, '</b></a><br />';
 	$title=i18n::translate('Individuals');
 	echo '<a href="', encode_url("indilist.php?ged={$GEDCOM}"), '"><b>', $title, '</b></a><br />';

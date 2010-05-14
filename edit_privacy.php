@@ -328,7 +328,7 @@ if ($action=="update") {
 
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Show Multi-Site Search'), help_link('SHOW_MULTISITE_SEARCH'); ?>
+					<?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?>
 				</td>
 				<td class="optionbox">
 					<select size="1" name="v_SHOW_MULTISITE_SEARCH"><?php write_access_option($SHOW_MULTISITE_SEARCH); ?></select>
@@ -337,7 +337,7 @@ if ($action=="update") {
 
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Limit Privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?>
+					<?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?>
 				</td>
 				<td class="optionbox">
 					<select size="1" name="v_PRIVACY_BY_YEAR"><?php write_yes_no($PRIVACY_BY_YEAR); ?></select>
@@ -593,8 +593,8 @@ if ($action=="update") {
 		<tr>
 			<td class="topbottombar <?php print $TEXT_DIRECTION; ?>">
 				<?php
-				print "<a href=\"javascript: ".i18n::translate('Global Fact Privacy settings')."\" onclick=\"expand_layer('global-facts-options');return false\"><img id=\"global-facts-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> "; ?>
-				<a href="javascript: <?php print i18n::translate('Global Fact Privacy settings'); ?>" onclick="expand_layer('global-facts-options');return false"><b><?php echo i18n::translate('Global Fact Privacy settings'); ?></b></a><?php echo help_link('global_facts'); ?>
+				print "<a href=\"javascript: ".i18n::translate('Global fact privacy settings')."\" onclick=\"expand_layer('global-facts-options');return false\"><img id=\"global-facts-options_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a> "; ?>
+				<a href="javascript: <?php print i18n::translate('Global fact privacy settings'); ?>" onclick="expand_layer('global-facts-options');return false"><b><?php echo i18n::translate('Global fact privacy settings'); ?></b></a><?php echo help_link('global_facts'); ?>
 			</td>
 		</tr>
 	</table>

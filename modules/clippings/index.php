@@ -39,7 +39,7 @@ $controller = new ClippingsController();
 $controller->init();
 
 // -- print html header information
-print_header(i18n::translate('Clippings Cart'));
+print_header(i18n::translate('Clippings cart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 

@@ -37,7 +37,7 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new AncestryController();
 $controller->init();
 
-print_header($controller->name . " " . i18n::translate('Ancestry Chart'));
+print_header($controller->name . " " . i18n::translate('Ancestry chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -51,7 +51,7 @@ echo '<table><tr><td valign="middle">';
 if ($view=="preview") {
 	echo '<h2>', i18n::translate('%s Generation Ancestry Chart', $PEDIGREE_GENERATIONS) , ':';
 } else {
-	echo '<h2>', i18n::translate('Ancestry Chart'), ':';
+	echo '<h2>', i18n::translate('Ancestry chart'), ':';
 }
 echo '<br />', PrintReady($controller->name);
 if ($controller->addname!="") {
@@ -225,7 +225,7 @@ case 2:
 	// Individual list
 	$treeid=ancestry_array($controller->rootid, $PEDIGREE_GENERATIONS);
 	echo '<div class="center">';
-	print_indi_table($treeid, i18n::translate('Ancestry Chart').' : '.PrintReady($controller->name), 'sosa');
+	print_indi_table($treeid, i18n::translate('Ancestry chart').' : '.PrintReady($controller->name), 'sosa');
 	echo '</div>';
 	break;
 case 3:
@@ -242,7 +242,7 @@ case 3:
 		}
 	}
 	echo '<div class="center">';
-	print_fam_table($famlist, i18n::translate('Ancestry Chart').' : '.PrintReady($controller->name));
+	print_fam_table($famlist, i18n::translate('Ancestry chart').' : '.PrintReady($controller->name));
 	echo '</div>';
 	break;
 }

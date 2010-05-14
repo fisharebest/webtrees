@@ -348,7 +348,7 @@ class IndividualControllerRoot extends BaseController {
 	function getPageTitle() {
 		if ($this->indi) {
 			$name = $this->indi->getFullName();
-			return $name." - ".$this->indi->getXref()." - ".i18n::translate('Individual Information');
+			return $name." - ".$this->indi->getXref()." - ".i18n::translate('Individual information');
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
@@ -511,8 +511,8 @@ class IndividualControllerRoot extends BaseController {
 		}
 		echo "\n\t\t</dl>";
 		if ($this->total_names>1 && !$this->isPrintPreview() && $this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
-			echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit Name'), "</a> | ";
-			echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete Name'), "</a>";
+			echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit name'), "</a> | ";
+			echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete name'), "</a>";
 			if ($this->name_count==2) {
 				echo help_link('delete_name');
 			}
@@ -612,7 +612,7 @@ class IndividualControllerRoot extends BaseController {
 			//--make sure the totals are correct
 			$this->getGlobalFacts();
 			if ($this->total_names<2) {
-				$submenu = new Menu(i18n::translate('Edit Name'));
+				$submenu = new Menu(i18n::translate('Edit name'));
 				$submenu->addOnclick("return edit_name('".$this->pid."', $this->NAME_LINENUM);");
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 				$menu->addSubmenu($submenu);
@@ -624,7 +624,7 @@ class IndividualControllerRoot extends BaseController {
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
-				$submenu = new Menu(i18n::translate('Edit Gender'));
+				$submenu = new Menu(i18n::translate('Edit gender'));
 				if ($this->SEX_LINENUM=="new") $submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
 				else $submenu->addOnclick("return edit_record('".$this->pid."', $this->SEX_LINENUM);");
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");

@@ -37,7 +37,7 @@ case 'add_by_id':
 	break;
 
 case 'clip_cart':
-	$title=i18n::translate('Clippings Cart');
+	$title=i18n::translate('Clippings cart');
 	$text=i18n::translate('This box shows the contents of your Clippings Cart.  The <i>Types</i> column indicates the type of each entry, which can be Individual (INDI), Family (FAM), Source (SOUR), Repository (REPO), Note (NOTE), and Media (OBJE);  each is represented by its own icon.  The <i>ID</i> column shows the ID number for each item of that particular type.  The <i>Name / Description</i> column gives either the name of the family or individual, or a description of the item.  The Remove button will remove that record from the Clippings Cart.  <b>Confirmation to remove is NOT asked for.</b>');
 	break;
 

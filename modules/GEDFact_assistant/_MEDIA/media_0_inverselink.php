@@ -55,7 +55,7 @@ if (empty($linktoid) || empty($linkto)) {
 	}
 }
 if (WT_USER_IS_ADMIN) {
-	print_simple_header(i18n::translate('Link Media')." ".$toitems);
+	print_simple_header(i18n::translate('Link media')." ".$toitems);
 }else{
 	print_simple_header(i18n::translate('Admin'));
 	echo i18n::translate('Unable to authenticate user.');
@@ -126,7 +126,7 @@ if ($action == "choose" && $paramok) {
 	echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
 	echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 	echo '<tr><td class="topbottombar" colspan="2">';
-	echo i18n::translate('Link Media'), ' ', $toitems, help_link('add_media_linkid');
+	echo i18n::translate('Link media'), ' ', $toitems, help_link('add_media_linkid');
 	echo '</td></tr><tr><td class="descriptionbox width20 wrap">', i18n::translate('Media ID'), '</td>';
 	echo '<td class="optionbox wrap">';
 	if (!empty($mediaid)) {

@@ -41,7 +41,7 @@ class search_replace_bu_plugin extends base_plugin {
 	var $error  =null; // Message for bad user parameters
 
 	static function getName() {
-		return i18n::translate('Search and Replace');
+		return i18n::translate('Search and replace');
 	}
 
 	static function getDescription() {

@@ -216,8 +216,8 @@ if ($action=="generate") {
 	echo "</h3>\n";
 	echo "<table class=\"facts_table\">\n";
 	echo "<tr><td class=\"topbottombar\">", i18n::translate('Selected items to store in Sitemap:'), "</td></tr>\n";
-	if (isset($_POST["welcome_page"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Home Page'), "</td></tr>\n";
-	if (isset($_POST["indi_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual Information'), "</td></tr>\n";
+	if (isset($_POST["welcome_page"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Home page'), "</td></tr>\n";
+	if (isset($_POST["indi_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual information'), "</td></tr>\n";
 	if (isset($_POST["indi_list"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual List'), "</td></tr>\n";
 	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family information'), "</td></tr>\n";
 	if (isset($_POST["fam_list"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family List'), "</td></tr>\n";
@@ -294,7 +294,7 @@ if ($action=="") {
 		</tr>
 		<tr>
 			<td class="optionbox">
-				<input type="checkbox" name="welcome_page" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Home Page');?>
+				<input type="checkbox" name="welcome_page" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Home page');?>
 			</td>
 			<td class="optionbox">
 				<select name="welcome_priority" tabindex="<?php $i++; echo $i?>">
@@ -322,7 +322,7 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_recs" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Individual Information');?></td>
+			<td class="optionbox"><input type="checkbox" name="indi_recs" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Individual information');?></td>
 			<td class="optionbox">
 				<select name="indirec_priority" tabindex="<?php $i++; echo $i?>">
 					<option value="1">0.1</option>
@@ -376,7 +376,7 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_recs" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Family Information');?></td>
+			<td class="optionbox"><input type="checkbox" name="fam_recs" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Family information');?></td>
 			<td class="optionbox">
 				<select name="famrec_priority" tabindex="<?php $i++; echo $i?>">
 					<option value="1">0.1</option>

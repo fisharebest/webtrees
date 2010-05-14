@@ -371,7 +371,7 @@ function print_family_book($pid, $descent)
 }
 
 // -- print html header information
-print_header(PrintReady($name)." ".i18n::translate('Family Book Chart'));
+print_header(PrintReady($name)." ".i18n::translate('Family book chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -383,11 +383,11 @@ if (WT_USE_LIGHTBOX) {
 // ==========================================================================================
 
 if ($view=="preview") {
-	print "<h2 style=\"text-align: center\">".i18n::translate('Family Book Chart').":&nbsp;&nbsp;&nbsp;".PrintReady($name)."</h2>";
+	print "<h2 style=\"text-align: center\">".i18n::translate('Family book chart').":&nbsp;&nbsp;&nbsp;".PrintReady($name)."</h2>";
 } else {
 	print "<!-- // NOTE: Start table header -->";
 	print "<table><tr><td valign=\"top\">";
-	print "<h2>".i18n::translate('Family Book Chart').":<br />".PrintReady($name)."</h2>";
+	print "<h2>".i18n::translate('Family book chart').":<br />".PrintReady($name)."</h2>";
 }
 ?>
 

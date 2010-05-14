@@ -284,7 +284,7 @@ if ($action=="choose") {
 		echo ">", PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), "</option>\n";
 	}
 	echo "</select>\n";
-	echo "<a href=\"javascript:iopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"6\"> ", i18n::translate('Find Individual ID'), "</a> |";
+	echo "<a href=\"javascript:iopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"6\"> ", i18n::translate('Find individual ID'), "</a> |";
 	echo " <a href=\"javascript:fopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"8\"> ", i18n::translate('Find Family ID'), "</a> |";
 	echo " <a href=\"javascript:sopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"10\"> ", i18n::translate('Find Source ID'), "</a>";
 	echo help_link('rootid');
@@ -301,7 +301,7 @@ if ($action=="choose") {
 		echo ">", PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), "</option>\n";
 	}
 	echo "</select>\n";
-	echo "<a href=\"javascript:iopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"7\"> ", i18n::translate('Find Individual ID'), "</a> |";
+	echo "<a href=\"javascript:iopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"7\"> ", i18n::translate('Find individual ID'), "</a> |";
 	echo "<a href=\"javascript:fopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"9\"> ", i18n::translate('Find Family ID'), "</a> |";
 	echo "<a href=\"javascript:sopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"11\"> ", i18n::translate('Find Source ID'), "</a>";
 	echo help_link('rootid');

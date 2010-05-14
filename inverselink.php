@@ -67,7 +67,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 	}
 
-	print_simple_header(i18n::translate('Link Media')." ".$toitems);
+	print_simple_header(i18n::translate('Link media')." ".$toitems);
 
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -115,7 +115,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
 		echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 		echo '<tr><td class="topbottombar" colspan="2">';
-		echo i18n::translate('Link Media'), help_link('add_media_linkid'), ' ', $toitems;
+		echo i18n::translate('Link media'), help_link('add_media_linkid'), ' ', $toitems;
 		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', i18n::translate('Media ID'), '</td>';
 		echo '<td class="optionbox wrap">';
 		if (!empty($mediaid)) {
@@ -202,7 +202,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 		
 		if ($linkto == "note") {
-			echo i18n::translate('Shared Note'), "</td>";
+			echo i18n::translate('Shared note'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '" />';

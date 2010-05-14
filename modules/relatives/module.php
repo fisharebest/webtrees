@@ -349,7 +349,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<table class="facts_table"><tr><td style="width:20%; padding:4px"></td><td class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="toggleByClassName('DIV', 'elderdate');" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\"";?>/>
-		<label for="checkbox_elder"><?php echo i18n::translate('Show Date Differences'), help_link('age_differences'); ?></label>
+		<label for="checkbox_elder"><?php echo i18n::translate('Show date differences'), help_link('age_differences'); ?></label>
 		</td></tr></table>
 		<?php
 		}

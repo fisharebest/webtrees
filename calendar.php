@@ -102,7 +102,7 @@ if ($cal_date->d>$days_in_month && $action=='today')
 	$action='calendar';
 
 // Print the header stuff
-print_header(i18n::translate('Anniversary Calendar'));
+print_header(i18n::translate('Anniversary calendar'));
 echo '<div style="text-align: center;" id="calendar_page">';
 
 if ($view!='preview') {

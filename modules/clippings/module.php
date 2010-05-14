@@ -36,7 +36,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Clippings Cart');
+		return i18n::translate('Clippings cart');
 	}
 
 	// Extend class WT_Module

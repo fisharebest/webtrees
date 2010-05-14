@@ -167,7 +167,7 @@
 				<!-- print family with parents and siblings -->
 				<PGVRTextBox width="15" height="16" newline="1" padding="0"/>
 				<PGVRTextBox border="1" width="$width" height="16" newline="1" bgcolor="$stbgcolor">
-					<PGVRText style="label1"><PGVRvar var="i18n::translate('Family with Parents')" /></PGVRText>
+					<PGVRText style="label1"><PGVRvar var="i18n::translate('Family with parents')" /></PGVRText>
 				</PGVRTextBox>
 				<PGVRRepeatTag tag="FAMC">
 					<PGVRGedcom id="@FAMC">

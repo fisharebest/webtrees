@@ -36,7 +36,7 @@
 				<PGVRText style="label"><PGVRvar var="i18n::translate('Address')" /></PGVRText>
 			</PGVRTextBox>
 			<PGVRTextBox border="1" height="12" newline="1">
-				<PGVRText style="label"><PGVRvar var="i18n::translate('Phone')" /> / <PGVRvar var="i18n::translate('Email Address')" /></PGVRText>
+				<PGVRText style="label"><PGVRvar var="i18n::translate('Phone')" /> / <PGVRvar var="i18n::translate('Email address')" /></PGVRText>
 			</PGVRTextBox>
 		</PGVRHeader>
 

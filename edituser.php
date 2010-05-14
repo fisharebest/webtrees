@@ -145,7 +145,7 @@ echo '<form name="editform" method="post" action="" onsubmit="return checkform(t
 echo '<input type="hidden" name="form_action" value="update" />';
 echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
 
-echo '<tr><td class="topbottombar" colspan="2"><h2>', i18n::translate('My Account'), '</h2></td></tr>';
+echo '<tr><td class="topbottombar" colspan="2"><h2>', i18n::translate('My account'), '</h2></td></tr>';
 
 echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', i18n::translate('Update MyAccount'), '" /></td></tr>';
 
@@ -169,7 +169,7 @@ if ($person) {
 
 $person=Person::getInstance(WT_USER_ROOT_ID);
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Pedigree Chart Root Person'), help_link('edituser_rootid'), '</td><td class="optionbox">';
+echo i18n::translate('Pedigree chart root person'), help_link('edituser_rootid'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_rootid" id="rootid" tabindex="', ++$tab, '" value="', WT_USER_ROOT_ID, '" />';
 echo print_findindi_link('rootid', '', true), '<br/>';
 if ($person) {
@@ -182,7 +182,7 @@ echo i18n::translate('Password'), '</td><td class="optionbox">';
 echo '<input type="password" name="form_pass1" tabindex="', ++$tab, '" /> ', i18n::translate('Leave password blank if you want to keep the current password.'), help_link('edituser_password'), '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Confirm Password'), help_link('edituser_conf_password'), '</td><td class="optionbox">';
+echo i18n::translate('Confirm password'), help_link('edituser_conf_password'), '</td><td class="optionbox">';
 echo '<input type="password" name="form_pass2" tabindex="', ++$tab, '" /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
@@ -192,7 +192,7 @@ echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Email Address'), help_link('edituser_email'), '</td><td class="optionbox" valign="top">';
+echo i18n::translate('Email address'), help_link('edituser_email'), '</td><td class="optionbox" valign="top">';
 echo '<input type="text" name="form_email" tabindex="', ++$tab, '" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
 
 if ($ALLOW_USER_THEMES) {
@@ -211,7 +211,7 @@ if ($ALLOW_USER_THEMES) {
 }
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Preferred Contact Method'), help_link('edituser_user_contact');
+echo i18n::translate('Preferred contact method'), help_link('edituser_user_contact');
 echo '</td><td class="optionbox">';
 echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod'), 'tabindex="'.(++$tab).'"');
 echo '</td></tr>';

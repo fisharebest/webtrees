@@ -44,7 +44,7 @@ if (!empty($_REQUEST['jsname'])) $name = $_REQUEST['jsname'];
 $nav = new TreeNav($rootid, $name, $zoom);
 $nav->generations=6;
 $nav->zoomLevel-=1;
-print_header(i18n::translate('Interactive Tree'));
+print_header(i18n::translate('Interactive tree'));
 $nav->drawViewport('', "", "600px");
 print_footer();
 ?>

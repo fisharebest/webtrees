@@ -386,7 +386,7 @@ if (safe_POST('action')=='update') {
 	}
 }
 
-print_header(i18n::translate('GEDCOM Configuration'));
+print_header(i18n::translate('GEDCOM configuration'));
 ?>
 <script type="text/javascript">
 //<![CDATA[
@@ -419,7 +419,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 	<tr>
 		<td colspan="2" class="facts_label">
 			<?php
-				echo "<h2>", i18n::translate('GEDCOM Configuration'), " - ";
+				echo "<h2>", i18n::translate('GEDCOM configuration'), " - ";
 				echo PrintReady(get_gedcom_setting(WT_GED_ID, 'title'));
 				echo "</h2>";
 				echo "<a href=\"editgedcoms.php\"><b>";
@@ -641,7 +641,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('MultiMedia directory'), help_link('MEDIA_DIRECTORY'); ?>
+							<?php echo i18n::translate('Multimedia directory'), help_link('MEDIA_DIRECTORY'); ?>
 						</td>
 						<td class="optionbox"><input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php print $MEDIA_DIRECTORY; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" />
 						<?php
@@ -703,7 +703,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show file name in Media Viewer'), help_link('SHOW_MEDIA_FILENAME'); ?>
+							<?php echo i18n::translate('Show file name in media viewer'), help_link('SHOW_MEDIA_FILENAME'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_FILENAME', $SHOW_MEDIA_FILENAME, 'tabindex="'.(++$i).'"'); ?>
@@ -711,7 +711,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show download link in Media Viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
+							<?php echo i18n::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', $SHOW_MEDIA_DOWNLOAD, 'tabindex="'.(++$i).'"'); ?>
@@ -786,7 +786,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 			  <table class="facts_table">
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Enable Privacy'), help_link('HIDE_LIVE_PEOPLE'); ?>
+						<?php echo i18n::translate('Enable privacy'), help_link('HIDE_LIVE_PEOPLE'); ?>
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_HIDE_LIVE_PEOPLE', $HIDE_LIVE_PEOPLE, 'tabindex="'.(++$i).'"'); ?>
@@ -802,7 +802,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Page to show after Login'), help_link('PAGE_AFTER_LOGIN'); ?>
+						<?php echo i18n::translate('Page to show after login'), help_link('PAGE_AFTER_LOGIN'); ?>
 					</td>
 					<td class="optionbox"><select name="NEW_PAGE_AFTER_LOGIN" tabindex="<?php echo ++$i; ?>">
 							<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') print " selected=\"selected\""; ?>><?php print i18n::translate('Home'); ?></option>
@@ -825,7 +825,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Standard header for custom Welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
+						<?php echo i18n::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_WELCOME_TEXT_CUST_HEAD', $WELCOME_TEXT_CUST_HEAD, 'tabindex="'.(++$i).'"'); ?>
@@ -833,14 +833,14 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Custom Welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
+						<?php echo i18n::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
 					</td>
 					<td class="optionbox"><textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" rows="5" cols="60" dir="ltr" tabindex="<?php echo ++$i; ?>"><?php print  $WELCOME_TEXT_AUTH_MODE_4; ?></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Show Acceptable Use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
+						<?php echo i18n::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'"'); ?>
@@ -858,7 +858,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show married names on Individual list'), help_link('SHOW_MARRIED_NAMES'); ?>
+							<?php echo i18n::translate('Show married names on individual list'), help_link('SHOW_MARRIED_NAMES'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_MARRIED_NAMES', $SHOW_MARRIED_NAMES, 'tabindex="'.(++$i).'"'); ?>
@@ -887,19 +887,19 @@ print_header(i18n::translate('GEDCOM Configuration'));
 						</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Min. no. of occurrences to be a "Common Surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
+							<?php echo i18n::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php print $COMMON_NAMES_THRESHOLD; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Names to add to Common Surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
+							<?php echo i18n::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php print $COMMON_NAMES_ADD; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Names to remove from Common Surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
+							<?php echo i18n::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
@@ -916,19 +916,19 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Maximum Pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
+							<?php echo i18n::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php print $MAX_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Maximum Descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
+							<?php echo i18n::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
 						</td>
 						<td class="optionbox"><input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php print $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Default Pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?>
+							<?php echo i18n::translate('Default pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?>
 						</td>
 						<td class="optionbox"><select name="NEW_PEDIGREE_LAYOUT" tabindex="<?php echo ++$i; ?>">
 								<option value="yes" <?php if ($PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Landscape'); ?></option>
@@ -973,7 +973,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Default tab to show on Individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
+							<?php echo i18n::translate('Default tab to show on individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
 						</td>
 						<td class="optionbox">
 						<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'"'); ?>
@@ -989,7 +989,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show events of close relatives on Individual page'), help_link('SHOW_RELATIVES_EVENTS'); ?>
+							<?php echo i18n::translate('Show events of close relatives on individual page'), help_link('SHOW_RELATIVES_EVENTS'); ?>
 						</td>
 						<td class="optionbox">
 							<input type="hidden" name="NEW_SHOW_RELATIVES_EVENTS" value="<?php echo $SHOW_RELATIVES_EVENTS; ?>" />
@@ -1038,7 +1038,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Postal Code position'), help_link('POSTAL_CODE'); ?>
+							<?php echo i18n::translate('Postal code position'), help_link('POSTAL_CODE'); ?>
 						</td>
 						<td class="optionbox"><select name="NEW_POSTAL_CODE" tabindex="<?php echo ++$i; ?>">
 								<option value="yes" <?php if ($POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('after')); ?></option>
@@ -1082,7 +1082,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show empty boxes on Pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
+							<?php echo i18n::translate('Show empty boxes on pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_EMPTY_BOXES', $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'"'); ?>
@@ -1098,7 +1098,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show Birth and Death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?>
+							<?php echo i18n::translate('Show birth and death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_PEDIGREE_FULL_DETAILS', $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'"'); ?>
@@ -1162,7 +1162,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
+							<?php echo i18n::translate('Show fact icons'), help_link('SHOW_FACT_ICONS'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_FACT_ICONS', $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"'); ?>
@@ -1186,7 +1186,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show all Notes and Source references on Notes and Sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
+							<?php echo i18n::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', $SHOW_LEVEL2_NOTES, 'tabindex="'.(++$i).'"'); ?>
@@ -1194,7 +1194,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show Date Differences'), help_link('SHOW_AGE_DIFF'); ?>
+							<?php echo i18n::translate('Show date differences'), help_link('SHOW_AGE_DIFF'); ?>
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_SHOW_AGE_DIFF', $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'"'); ?>
@@ -1261,7 +1261,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Enable Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
+						<?php echo i18n::translate('Enable autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_ENABLE_AUTOCOMPLETE', $ENABLE_AUTOCOMPLETE, 'tabindex="'.(++$i).'"'); ?>
@@ -1403,7 +1403,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 				</tr>
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Split places in Edit mode'), help_link('SPLIT_PLACES'); ?>
+						<?php echo i18n::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?>
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_SPLIT_PLACES', $SPLIT_PLACES, 'tabindex="'.(++$i).'"'); ?>
@@ -1473,7 +1473,7 @@ print_header(i18n::translate('GEDCOM Configuration'));
 			  <table class="facts_table">
 				<tr>
 					<td class="descriptionbox wrap width20">
-						<?php echo i18n::translate('Show contextual <b>?</b> Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
+						<?php echo i18n::translate('Show contextual <b>?</b> help links'), help_link('SHOW_CONTEXT_HELP'); ?>
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_SHOW_CONTEXT_HELP', $SHOW_CONTEXT_HELP, 'tabindex="'.(++$i).'"'); ?>

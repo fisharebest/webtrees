@@ -123,7 +123,7 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	function getPageTitle() {
-		if ($this->action=="advanced") return i18n::translate('Advanced Search');
+		if ($this->action=="advanced") return i18n::translate('Advanced search');
 		else parent :: getPageTitle();
 	}
 

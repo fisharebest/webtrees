@@ -37,7 +37,7 @@ $controller=new AdvancedSearchController();
 $controller->init();
 
 // Print the top header
-print_header(i18n::translate('Advanced Search'));
+print_header(i18n::translate('Advanced search'));
 ?>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -143,7 +143,7 @@ print_header(i18n::translate('Advanced Search'));
 <table id="field_table" class="list_table <?php print $TEXT_DIRECTION; ?>" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center; ">
-			<?php echo i18n::translate('Advanced Search'), help_link('advanced_search'); ?>
+			<?php echo i18n::translate('Advanced search'), help_link('advanced_search'); ?>
 		</td>
 	</tr>
 	<!-- // search terms -->

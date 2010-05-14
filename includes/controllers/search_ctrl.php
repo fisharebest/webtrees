@@ -313,7 +313,7 @@ class SearchControllerRoot extends BaseController {
 		case 'soundex':
 			return i18n::translate('Soundex Search');
 		case 'replace':
-			return i18n::translate('Search and Replace');
+			return i18n::translate('Search and replace');
 		case 'multisite':
 			return i18n::translate('Multi Site Search');
 		}

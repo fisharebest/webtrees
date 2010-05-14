@@ -104,7 +104,7 @@ if ($surn) {
 	echo "</fieldset>";
 	if ($rootid) {
 		$person = Person::getInstance($rootid);
-		echo "<p class=\"center\">", i18n::translate('Pedigree Chart Root Person'), " : <a title=\"", $person->getXref(), "\" href=\"{$person->getLinkUrl()}\">{$person->getFullName()}</a>";
+		echo "<p class=\"center\">", i18n::translate('Pedigree chart root person'), " : <a title=\"", $person->getXref(), "\" href=\"{$person->getLinkUrl()}\">{$person->getFullName()}</a>";
 		echo "<br />".i18n::translate('Direct line ancestors-ancestors')." : ", count($_SESSION['user_ancestors']), "</p>";
 	}
 }

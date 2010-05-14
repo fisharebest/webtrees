@@ -77,7 +77,7 @@ class RepositoryControllerRoot extends BaseController {
 		$this->repository->ged_id=WT_GED_ID; // This record is from a file
 
 		if (!$this->repository->canDisplayDetails()) {
-			print_header(i18n::translate('Private')." ".i18n::translate('Repository Information'));
+			print_header(i18n::translate('Private')." ".i18n::translate('Repository information'));
 			print_privacy_error();
 			print_footer();
 			exit;
@@ -166,7 +166,7 @@ class RepositoryControllerRoot extends BaseController {
 	*/
 	function getPageTitle() {
 		if ($this->repository) {
-			return $this->repository->getFullName()." - ".$this->rid." - ".i18n::translate('Repository Information');
+			return $this->repository->getFullName()." - ".$this->rid." - ".i18n::translate('Repository information');
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
@@ -213,7 +213,7 @@ class RepositoryControllerRoot extends BaseController {
 		}
 
 		// edit repository / delete_repository
-		$submenu = new Menu(i18n::translate('Delete Repository'));
+		$submenu = new Menu(i18n::translate('Delete repository'));
 		$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
 		if (!empty($WT_IMAGES["edit_repo"]["small"]))
 			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['edit_repo']['small']}");
