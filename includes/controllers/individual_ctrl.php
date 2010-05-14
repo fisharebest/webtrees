@@ -704,7 +704,7 @@ class IndividualControllerRoot extends BaseController {
 			else $menu->addOnclick("return show_gedcom_record('');");
 		} else {
 			if (!empty($WT_IMAGES["clippings"]["small"])) $menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
-			$menu->addLink(encode_url("module.php?mod=clippings&action=add&id={$this->pid}&type=indi"));
+			$menu->addLink(encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=indi"));
 		}
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 		if ($SHOW_GEDCOM_RECORD) {

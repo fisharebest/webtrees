@@ -279,7 +279,7 @@ if ($ct==0) {
 
 
 	<?php } ?>
-	<br /><a href="module.php?mod=clippings&amp;action=empty"><?php echo i18n::translate('Empty Cart');?></a><?php echo help_link('empty_cart', 'clippings'); ?>
+	<br /><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo i18n::translate('Empty Cart');?></a><?php echo help_link('empty_cart', 'clippings'); ?>
 	</td></tr>
 
 	<tr><td class="topbottombar"><h2><?php echo i18n::translate('Family Tree Clippings Cart'), help_link('clip_cart', 'clippings'); ?></h2></td></tr>
