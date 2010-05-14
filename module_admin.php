@@ -117,21 +117,21 @@ if ($action=='update_mods') {
 			
     }
 
-		$value = safe_POST_integer('menuorder-'.$module_name, 1, 127, 0);
+		$value = safe_POST('menuorder-'.$module_name);
 		if ($value) {
 			WT_DB::prepare(
 				"UPDATE {$TBLPREFIX}module SET menu_order=? WHERE module_name=?"
 			)->execute(array($value, $module_name));
 		}
 
-		$value = safe_POST_integer('taborder-'.$module_name, 1, 127, 0);
+		$value = safe_POST('taborder-'.$module_name);
 		if ($value) {
 			WT_DB::prepare(
 				"UPDATE {$TBLPREFIX}module SET tab_order=? WHERE module_name=?"
 			)->execute(array($value, $module_name));
 		}
 
-		$value = safe_POST_integer('sidebarorder-'.$module_name, 1, 127, 0);
+		$value = safe_POST('sidebarorder-'.$module_name);
 		if ($value) {
 			WT_DB::prepare(
 				"UPDATE {$TBLPREFIX}module SET sidebar_order=? WHERE module_name=?"

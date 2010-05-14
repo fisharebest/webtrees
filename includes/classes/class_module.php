@@ -272,6 +272,7 @@ abstract class WT_Module {
 				$modules[$name]=$module;
 			}
 		}
+		usort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
 		return $modules;
 	}
 
@@ -299,6 +300,7 @@ abstract class WT_Module {
 				$modules[$name]=$module;
 			}
 		}
+		usort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
 		return $modules;
 	}
 
@@ -314,6 +316,7 @@ abstract class WT_Module {
 				$modules[$name]=$module;
 			}
 		}
+		usort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
 		return $modules;
 	}
 
