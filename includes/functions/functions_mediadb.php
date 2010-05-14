@@ -1141,7 +1141,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	echo "<table class=\"facts_table center ", $TEXT_DIRECTION, "\">\n";
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
 	if ($action == "newentry") {
-		echo i18n::translate('Add a new Media item');
+		echo i18n::translate('Add a new media item');
 	} else {
 		echo i18n::translate('Edit Media Item (%s)', $pid);
 	}

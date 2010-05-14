@@ -96,7 +96,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add Source Citation'), help_link('add_source'); ?></td>
 					<td class="facts_value">
-					<a href="javascript:;" onclick="add_new_record('<?php echo $this->controller->pid; ?>','SOUR'); return false;"><?php echo i18n::translate('Add a new Source Citation'); ?></a>
+					<a href="javascript:;" onclick="add_new_record('<?php echo $this->controller->pid; ?>','SOUR'); return false;"><?php echo i18n::translate('Add a new source citation'); ?></a>
 					<br />
 					</td>
 				</tr>

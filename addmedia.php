@@ -58,7 +58,7 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 $filename = decrypt($filename);
 $oldFilename = decrypt($oldFilename);
 
-print_simple_header(i18n::translate('Add a new Media item'));
+print_simple_header(i18n::translate('Add a new media item'));
 $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {

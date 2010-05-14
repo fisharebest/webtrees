@@ -99,14 +99,14 @@ if (!$this->controller->indi->canDisplayDetails()) {
 	<tr>
 		<td class="facts_label"><?php echo i18n::translate('Add Note'), help_link('add_note'); ?></td>
 		<td class="facts_value"><a href="javascript:;"
-			onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo i18n::translate('Add a new Note'); ?></a>
+			onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo i18n::translate('Add a new note'); ?></a>
 		<br />
 		</td>
 	</tr>
 	<tr>
 		<td class="facts_label"><?php echo i18n::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
 		<td class="facts_value"><a href="javascript:;"
-			onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo i18n::translate('Add a new Shared Note'); ?></a>
+			onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo i18n::translate('Add a new shared note'); ?></a>
 		<br />
 		</td>
 	</tr>

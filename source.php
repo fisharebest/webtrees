@@ -97,9 +97,9 @@ if (!$controller->isPrintPreview() && $controller->userCanEdit()) {
 	print_add_new_fact($controller->sid, $sourcefacts, 'SOUR');
 	// new media
 	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
-	echo i18n::translate('Add Media'), help_link('add_media');
+	echo i18n::translate('Add media'), help_link('add_media');
 	echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
-	echo '<a href="javascript: ', i18n::translate('Add Media'), '" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=', $controller->sid, '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', i18n::translate('Add a new Media item'), '</a>';
+	echo '<a href="javascript: ', i18n::translate('Add media'), '" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=', $controller->sid, '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', i18n::translate('Add a new media item'), '</a>';
 	echo '<br />';
 	echo '<a href="javascript:;" onclick="window.open(\'inverselink.php?linktoid=', $controller->sid, '&linkto=source\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', i18n::translate('Link to an existing Media item'), '</a>';
 	echo '</td></tr>';

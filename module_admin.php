@@ -296,7 +296,7 @@ foreach (WT_Module::getInstalledModules() as $module) {
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
       <th class="list_label"><?php echo i18n::translate('Order')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>
@@ -344,7 +344,7 @@ $order++;
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
       <th class="list_label"><?php echo i18n::translate('Order')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>
@@ -392,7 +392,7 @@ $order++;
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
       <th class="list_label"><?php echo i18n::translate('Order')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>
@@ -439,7 +439,7 @@ $order++;
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>
@@ -479,7 +479,7 @@ $order++;
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>
@@ -519,7 +519,7 @@ $order++;
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>
@@ -559,7 +559,7 @@ $order++;
     <thead>
       <tr>
       <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-      <th class="list_label"><?php echo i18n::translate('Access Level')?></th>
+      <th class="list_label"><?php echo i18n::translate('Access level')?></th>
       </tr>
     </thead>
     <tbody>

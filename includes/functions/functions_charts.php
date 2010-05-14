@@ -531,7 +531,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			print i18n::translate('Add Note');
 			print help_link('add_note');
 			print "</td><td class=\"optionbox\">";
-			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','NOTE');\">" . i18n::translate('Add a new Note') . "</a>";
+			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','NOTE');\">" . i18n::translate('Add a new note') . "</a>";
 			print "<br />\n";
 			print "</td></tr>\n";
 			
@@ -540,16 +540,16 @@ function print_family_facts(&$family, $sosa = 0) {
 			print i18n::translate('Add Shared Note');
 			print help_link('add_shared_note');
 			print "</td><td class=\"optionbox\">";
-			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">" . i18n::translate('Add a new Shared Note') . "</a>";
+			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">" . i18n::translate('Add a new shared note') . "</a>";
 			print "<br />\n";
 			print "</td></tr>\n";
 			
 			// -- new media
 			print "<tr><td class=\"descriptionbox\">";
-			print i18n::translate('Add Media');
+			print i18n::translate('Add media');
 			print help_link('add_media');
 			print "</td><td class=\"optionbox\">";
-			print "<a href=\"javascript: ".i18n::translate('Add Media')."\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Add a new Media item')."</a>";
+			print "<a href=\"javascript: ".i18n::translate('Add media')."\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Add a new media item')."</a>";
 			print "<br />\n";
 			print "<a href=\"javascript:;\" onclick=\"window.open('inverselink.php?linktoid={$famid}&linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Link to an existing Media item')."</a>";
 			print "</td></tr>\n";
@@ -559,7 +559,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			print i18n::translate('Add Source Citation');
 			print help_link('add_source');
 			print "</td><td class=\"optionbox\">";
-			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SOUR');\">" . i18n::translate('Add a new Source Citation') . "</a>";
+			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SOUR');\">" . i18n::translate('Add a new source citation') . "</a>";
 			print "<br />\n";
 			print "</td></tr>\n";
 			// -- end new objects

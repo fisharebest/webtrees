@@ -807,8 +807,8 @@ if (check_media_structure()) {
 		<input type="text" name="filter" value="<?php if($filter) print $filter;?>" /><br /><input type="submit" name="search" value="<?php print i18n::translate('Filter');?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php print i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
 
 	<!-- // NOTE: Row 2 right: Add media -->
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Add Media'), help_link('add_media'); ?></td>
-	<td class="optionbox wrap"><a href="javascript: <?php echo i18n::translate('Add Media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo i18n::translate('Add a new Media item'); ?></a></td></tr>
+	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
+	<td class="optionbox wrap"><a href="javascript: <?php echo i18n::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo i18n::translate('Add a new media item'); ?></a></td></tr>
 
 	<!-- // NOTE: Row 3 left: Show thumbnails -->
 	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Show thumbnails'), help_link('show_thumb'); ?></td>

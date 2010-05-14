@@ -34,7 +34,7 @@ if($useFCK){
 	require WT_ROOT.'modules/FCKeditor/fckeditor.php';
 }
 
-print_simple_header(i18n::translate('Add/Edit Journal/News entry'));
+print_simple_header(i18n::translate('Add/edit journal/news entry'));
 
 if (!WT_USER_ID) {
 	print i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
