@@ -2093,15 +2093,18 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	$addfacts=array_merge(CheckFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
 	$quickfacts=array_intersect($quickfacts, $addfacts);
 
-	usort($addfacts, "factsort");
+	foreach ($addfacts as $addfact) {
+		$tanslated_addfacts[$addfact] = translate_fact($addfact);
+	}
+	uasort($tanslated_addfacts, "factsort");
 	echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, "\">";
 	echo i18n::translate('Add new fact');
 	echo help_link('add_new_facts'), "</td>\n";
 	echo "<td class=\"optionbox wrap ", $TEXT_DIRECTION, "\">";
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
 	echo "<select id=\"newfact\" name=\"newfact\">\n";
-	foreach($addfacts as $fact) {
-		echo '<option value="', $fact, '">', translate_fact($fact), " [".$fact."]</option>";
+	foreach($tanslated_addfacts as $tag=>$fact) {
+		echo '<option value="', $fact, '">', $fact, " [".$tag."]</option>";
 	}
 	if (($type == "INDI") || ($type == "FAM")) echo "<option value=\"EVEN\">", i18n::translate('Custom Event'), " [EVEN]</option>";
 	echo "\n</select>\n";

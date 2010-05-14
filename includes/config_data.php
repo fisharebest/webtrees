@@ -1779,7 +1779,7 @@ function translate_fact($fact, $person=null) {
 	// If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
 	if (strpos($fact, ':')) {
 		list(, $fact)=explode(':', $fact, 2);
-		return translate_fact($fact);
+		return translate_fact($fact, $person);
 	}
 	// Still no translation? Highlight this as an error
 	return '<span class="error" title="'.i18n::translate('Unrecognized GEDCOM Code').'">'.$fact.'</span>';

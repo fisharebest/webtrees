@@ -643,8 +643,6 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					add_simple_tag("2 _MARNM ".$value);
 					add_simple_tag("2 _MARNM_SURN ".$marnm_surn);
 				} else {
-					// TODO: check this again - $person in config_data.php return error:
-					// Fatal error: Call to a member function getSex() on a non-object in \includes\config_data.php on line 1678
 					add_simple_tag("2 $tag $value", '', translate_fact("NAME:{$tag}", $person));
 				}
 			}
@@ -654,8 +652,6 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					add_simple_tag("0 _MARNM");
 					add_simple_tag("0 _MARNM_SURN $new_marnm");
 				} else {
-					// TODO: check this again - $person in config_data.php return error:
-					// Fatal error: Call to a member function getSex() on a non-object in \includes\config_data.php on line 1678
 					add_simple_tag("0 $tag", '', translate_fact("NAME:{$tag}", $person));
 				}
 	}
