@@ -221,11 +221,15 @@ print_header(i18n::translate('Module administration'));
 	    reindexMods('tabs_table');
 	    reindexMods('sidebars_table');
 	});
-  });
+	
+	jQuery("#installed_table")
+		.tablesorter({sortList: [[2,0], [3,0]], widgets: ['zebra']})
+
+});
 //]]>
   </script>
 <div align="center">
-<div class="width75">
+<div class="width90">
 
 <p><?php echo "<h2>".i18n::translate('Module administration')."</h2>"; ?></p>
 <p><?php echo i18n::translate('Below is the list of all the modules installed in this instance of webtrees.  Modules are installed by placing them in the <i>modules</i> directory.  Here you can set the access level per GEDCOM for each module.  If a module includes tabs for the individual page or menus for the menu bar, you can also set the access level and order of each of them.')?></p>
@@ -247,20 +251,21 @@ print_header(i18n::translate('Module administration'));
 </ul>
 <div id="installed_tab">
 <!-- installed -->
-  <table id="installed_table" class="list_table">
+  <table id="installed_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+
     <thead>
       <tr>
-      <th class="list_label"><?php echo i18n::translate('Enabled'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Configuration'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Description'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Menu'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Tab'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Sidebar'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Block'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Chart'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Report'); ?></th>
-      <th class="list_label"><?php echo i18n::translate('Theme'); ?></th>
+      <th><?php echo i18n::translate('Enabled'); ?></th>
+      <th><?php echo i18n::translate('Configuration'); ?></th>
+      <th><?php echo i18n::translate('Module Name'); ?></th>
+      <th><?php echo i18n::translate('Description'); ?></th>
+      <th><?php echo i18n::translate('Menu'); ?></th>
+      <th><?php echo i18n::translate('Tab'); ?></th>
+      <th><?php echo i18n::translate('Sidebar'); ?></th>
+      <th><?php echo i18n::translate('Block'); ?></th>
+      <th><?php echo i18n::translate('Chart'); ?></th>
+      <th><?php echo i18n::translate('Report'); ?></th>
+      <th><?php echo i18n::translate('Theme'); ?></th>
       </tr>
     </thead>
     <tbody>
@@ -270,19 +275,19 @@ foreach (WT_Module::getInstalledModules() as $module) {
 		"SELECT status FROM {$TBLPREFIX}module WHERE module_name=?"
 	)->execute(array($module->getName()))->fetchOne();
 	?><tr>
-	<td class="list_value">
+	<td>
 		<input type="checkbox" name="status-<?php echo $module->getName(); ?>" value="Y" <?php if ($status=='enabled') {echo 'checked';} ?>/>
 	</td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
-	<td class="list_value_wrap"><?php echo $module->getTitle()?></td>
-	<td class="list_value_wrap"><?php echo $module->getDescription()?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Block) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Chart) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-	<td class="list_value"><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
+	<td><?php echo $module->getTitle()?></td>
+	<td><?php echo $module->getDescription()?></td>
+	<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Block) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Chart) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+	<td><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 	</tr>
 	<?php 
 }
