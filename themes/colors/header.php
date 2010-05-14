@@ -112,9 +112,11 @@ if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?>
 flush(); // Allow the browser to start fetching external stylesheets, javascript, etc.
 ?>
 
+<!-- Remove header for edit windows -->
+<?php if ($view!='simple') {?>
+
 <!-- begin header section -->
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
-
 <!-- begin colors code -->
 <table class="header">
 	<tr>
@@ -136,7 +138,8 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 			</form>
 			</div>
 			<div align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
-<?php print_favorite_selector(0); ?>
+				<?php } ?>
+					<?php print_favorite_selector(); ?>
 			</div>
 		</td>
 	</tr>
