@@ -476,10 +476,12 @@ if ($type == "facts") {
 	#tabDefinedTags tr.sel
 	{
 		background-color:#efe;
+		color:#888;
 	}
 	#tabDefinedTags tr.unsel
 	{
 		background-color:#fee;
+		color:#888;
 	}
 	#tabFilterAndCustom
 	{
