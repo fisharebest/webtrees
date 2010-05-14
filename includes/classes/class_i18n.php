@@ -303,31 +303,53 @@ class i18n {
 		}
 	}
 
-	// 5=>fifth, 9=>ninth, etc.  Used for Nth cousins, etc.
+	// century name, English => 21st, Polish => XXI, etc.
 	static function century_name($century) {
-		switch ($century) {
-		case 21: return i18n::translate_c('CENTURY', '21st');
-		case 20: return i18n::translate_c('CENTURY', '20th');
-		case 19: return i18n::translate_c('CENTURY', '19th');
-		case 18: return i18n::translate_c('CENTURY', '18th');
-		case 17: return i18n::translate_c('CENTURY', '17th');
-		case 16: return i18n::translate_c('CENTURY', '16th');
-		case 15: return i18n::translate_c('CENTURY', '15th');
-		case 14: return i18n::translate_c('CENTURY', '14th');
-		case 13: return i18n::translate_c('CENTURY', '13th');
-		case 12: return i18n::translate_c('CENTURY', '12th');
-		case 11: return i18n::translate_c('CENTURY', '11th');
-		case 10: return i18n::translate_c('CENTURY', '10th');
-		case  9: return i18n::translate_c('CENTURY', '9th');
-		case  8: return i18n::translate_c('CENTURY', '8th');
-		case  7: return i18n::translate_c('CENTURY', '7th');
-		case  6: return i18n::translate_c('CENTURY', '6th');
-		case  5: return i18n::translate_c('CENTURY', '5th');
-		case  4: return i18n::translate_c('CENTURY', '4th');
-		case  3: return i18n::translate_c('CENTURY', '3rd');
-		case  2: return i18n::translate_c('CENTURY', '2nd');
-		case  1: return i18n::translate_c('CENTURY', '1st');
-		default: return ($century-1).'01-'.$century.'00';
+		switch (abs($century)) {
+		case 21: return $century>0 ?
+					i18n::translate_c('CENTURY', '21st') : str_replace(21, i18n::translate_c('CENTURY', '21st'), i18n::translate('%d B.C.', 21));
+		case 20: return $century>0 ?
+					i18n::translate_c('CENTURY', '20th') : str_replace(20, i18n::translate_c('CENTURY', '20th'), i18n::translate('%d B.C.', 20));
+		case 19: return $century>0 ?
+					i18n::translate_c('CENTURY', '19th') : str_replace(19, i18n::translate_c('CENTURY', '19th'), i18n::translate('%d B.C.', 19));
+		case 18: return $century>0 ?
+					i18n::translate_c('CENTURY', '18th') : str_replace(18, i18n::translate_c('CENTURY', '18th'), i18n::translate('%d B.C.', 18));
+		case 17: return $century>0 ?
+					i18n::translate_c('CENTURY', '17th') : str_replace(17, i18n::translate_c('CENTURY', '17th'), i18n::translate('%d B.C.', 17));
+		case 16: return $century>0 ?
+					i18n::translate_c('CENTURY', '16th') : str_replace(16, i18n::translate_c('CENTURY', '16th'), i18n::translate('%d B.C.', 16));
+		case 15: return $century>0 ?
+					i18n::translate_c('CENTURY', '15th') : str_replace(15, i18n::translate_c('CENTURY', '15th'), i18n::translate('%d B.C.', 15));
+		case 14: return $century>0 ?
+					i18n::translate_c('CENTURY', '14th') : str_replace(14, i18n::translate_c('CENTURY', '14th'), i18n::translate('%d B.C.', 14));
+		case 13: return $century>0 ?
+					i18n::translate_c('CENTURY', '13th') : str_replace(13, i18n::translate_c('CENTURY', '13th'), i18n::translate('%d B.C.', 13));
+		case 12: return $century>0 ?
+					i18n::translate_c('CENTURY', '12th') : str_replace(12, i18n::translate_c('CENTURY', '12th'), i18n::translate('%d B.C.', 12));
+		case 11: return $century>0 ?
+					i18n::translate_c('CENTURY', '11th') : str_replace(11, i18n::translate_c('CENTURY', '11th'), i18n::translate('%d B.C.', 11));
+		case 10: return $century>0 ?
+					i18n::translate_c('CENTURY', '10th') : str_replace(10, i18n::translate_c('CENTURY', '10th'), i18n::translate('%d B.C.', 10));
+		case  9: return $century>0 ?
+					i18n::translate_c('CENTURY', '9th') : str_replace(9, i18n::translate_c('CENTURY', '9th'), i18n::translate('%d B.C.', 9));
+		case  8: return $century>0 ?
+					i18n::translate_c('CENTURY', '8th') : str_replace(8, i18n::translate_c('CENTURY', '8th'), i18n::translate('%d B.C.', 8));
+		case  7: return $century>0 ?
+					i18n::translate_c('CENTURY', '7th') : str_replace(7, i18n::translate_c('CENTURY', '7th'), i18n::translate('%d B.C.', 7));
+		case  6: return $century>0 ?
+					i18n::translate_c('CENTURY', '6th') : str_replace(6, i18n::translate_c('CENTURY', '6th'), i18n::translate('%d B.C.', 6));
+		case  5: return $century>0 ?
+					i18n::translate_c('CENTURY', '5th') : str_replace(5, i18n::translate_c('CENTURY', '5th'), i18n::translate('%d B.C.', 5));
+		case  4: return $century>0 ?
+					i18n::translate_c('CENTURY', '4th') : str_replace(4, i18n::translate_c('CENTURY', '4th'), i18n::translate('%d B.C.', 4));
+		case  3: return $century>0 ?
+					i18n::translate_c('CENTURY', '3rd') : str_replace(3, i18n::translate_c('CENTURY', '3rd'), i18n::translate('%d B.C.', 3));
+		case  2: return $century>0 ?
+					i18n::translate_c('CENTURY', '2nd') : str_replace(2, i18n::translate_c('CENTURY', '2ns'), i18n::translate('%d B.C.', 2));
+		case  1: return $century>0 ?
+					i18n::translate_c('CENTURY', '1st') : str_replace(1, i18n::translate_c('CENTURY', '1st'), i18n::translate('%d B.C.', 1));
+		default: return $century>0 ?
+					($century-1).'01-'.$century.'00' : str_replace(1, (abs($century-1)).'01-'.abs($century).'00', i18n::translate('%d B.C.', 1));
 		}
 	}
 
