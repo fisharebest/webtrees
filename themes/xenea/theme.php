@@ -108,6 +108,7 @@ $WT_IMAGES["sfamily"]["small"] = "small/sfamily.gif";
 $WT_IMAGES["source"]["small"] = "small/source.gif";
 $WT_IMAGES["statistic"]["small"] = "small/statistic.gif";
 $WT_IMAGES["timeline"]["small"] = "small/timeline.gif";
+$WT_IMAGES["tree"]["small"] = "small/tree.gif";
 $WT_IMAGES["wiki"]["small"] = "small/w_22.png";
 
 //- PGV buttons for data entry pages

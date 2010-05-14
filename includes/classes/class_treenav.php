@@ -308,7 +308,7 @@ class TreeNav {
 			echo $thumbnail;
 		} ?>
 		<a href="<?php print $person->getLinkUrl(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;"><?php print $person->getSexImage().PrintReady($name); ?></a>
-		<img src="<?php print $SERVER_URL.$WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"];?>" border="0" width="15" onclick="<?php print $this->name;?>.newRoot('<?php print $person->getXref();?>', <?php print $this->name;?>.innerPort, '<?php print htmlentities($GEDCOM,ENT_COMPAT,'UTF-8'); ?>');" />
+		<img src="<?php print $SERVER_URL.$WT_IMAGE_DIR."/".$WT_IMAGES["tree"]["small"];?>" border="0" width="15" onclick="<?php print $this->name;?>.newRoot('<?php print $person->getXref();?>', <?php print $this->name;?>.innerPort, '<?php print htmlentities($GEDCOM,ENT_COMPAT,'UTF-8'); ?>');" />
 		</span><br />
 		<div class="details1 indent">
 			<?php
@@ -349,7 +349,7 @@ class TreeNav {
 				} ?>
 				<a href="<?php print $spouse->getLinkUrl(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;">
 				<?php print $spouse->getSexImage().PrintReady($name); ?></a>
-				<img src="<?php print $SERVER_URL.$WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"];?>" border="0" width="15" onclick="<?php print $this->name;?>.newRoot('<?php print $spouse->getXref();?>', <?php print $this->name;?>.innerPort, '<?php print htmlentities($GEDCOM,ENT_COMPAT,'UTF-8'); ?>');" />
+				<img src="<?php print $SERVER_URL.$WT_IMAGE_DIR."/".$WT_IMAGES["tree"]["small"];?>" border="0" width="15" onclick="<?php print $this->name;?>.newRoot('<?php print $spouse->getXref();?>', <?php print $this->name;?>.innerPort, '<?php print htmlentities($GEDCOM,ENT_COMPAT,'UTF-8'); ?>');" />
 				<br />
 				<div class="details1 indent">
 					<?php

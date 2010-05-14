@@ -88,6 +88,7 @@ $WT_IMAGES["edit_repo"]["small"] = "small/edit_repo.gif";
 $WT_IMAGES["fambook"]["small"] = "small/fambook.gif";
 $WT_IMAGES["fanchart"]["small"] = "small/fanchart.gif";
 $WT_IMAGES["favorite"]["small"] = "small/fav.gif";
+$WT_IMAGES["favorites"]["small"] = "small/gedcom.gif";
 $WT_IMAGES["gedcom"]["small"] = "small/gedcom.gif";
 $WT_IMAGES["help"]["small"] = "small/help.gif";
 $WT_IMAGES["home"]["small"] = "small/home.gif";
@@ -116,7 +117,7 @@ $WT_IMAGES["sfamily"]["small"] = "small/sfamily.gif";
 $WT_IMAGES["source"]["small"] = "small/source.gif";
 $WT_IMAGES["statistic"]["small"] = "small/statistic.gif";
 $WT_IMAGES["timeline"]["small"] = "small/timeline.gif";
-$WT_IMAGES["favorites"]["small"] = "small/gedcom.gif";
+$WT_IMAGES["tree"]["small"] = "small/gedcom.gif";
 $WT_IMAGES["wiki"]["small"] = "small/w_22.png";
 
 //- PGV buttons for data entry pages

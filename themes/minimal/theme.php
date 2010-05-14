@@ -84,6 +84,7 @@ $WT_IMAGES["search"]["small"] = "small/search.gif";
 $WT_IMAGES["sfamily"]["small"] = "sfamily.gif";
 $WT_IMAGES["source"]["small"] = "small/source.gif";
 $WT_IMAGES["timeline"]["small"] = "small/timeline.gif";
+$WT_IMAGES["tree"]["small"] = "small/gedcom.gif";
 
 //- PGV buttons for data entry pages
 $WT_IMAGES["addmedia"]["button"] = "buttons/addmedia.gif";

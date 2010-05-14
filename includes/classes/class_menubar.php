@@ -456,10 +456,8 @@ class MenuBar
 				$link = "treenav.php?ged=".WT_GEDCOM;
 				if ($rootid) $link .= "&rootid=".$rootid;
 				$submenu = new Menu(i18n::translate('Interactive Tree'), encode_url($link));
-				if (!empty($WT_IMAGES["gedcom"]["tree"]))
-					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["tree"]);
-				else if (!empty($WT_IMAGES["gedcom"]["small"]))
-					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+				if (!empty($WT_IMAGES["tree"]["small"]))
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["tree"]["small"]);
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_gedcom");
 				$menu->addSubmenu($submenu);
 				break;
