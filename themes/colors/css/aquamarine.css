@@ -274,7 +274,8 @@ background:#FFC;
 }
 
 #footer {
-text-align: left;
+clear: both;
+width: 99%;
 }
 
 #index_main_blocks {

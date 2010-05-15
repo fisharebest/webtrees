@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8110 2010-04-26 23:29:26Z rob $
+* $Id: ash.css 8234 2010-05-09 20:17:19Z rob $
 */
 
 .something {
@@ -274,7 +274,8 @@ background:#FFC;
 }
 
 #footer {
-text-align: left;
+clear: both;
+width: 99%;
 }
 
 #index_main_blocks {
