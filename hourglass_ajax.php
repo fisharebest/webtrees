@@ -44,6 +44,7 @@ require_once WT_ROOT.'includes/controllers/hourglass_ctrl.php';
 $controller = new HourglassController();
 $controller->init();
 
+header('Content-type: text/html; charset=UTF-8');
 // -- print html header information
 if (isset($_REQUEST['type']) && $_REQUEST['type']=='desc')
 	$controller->print_descendency($controller->pid, 1, false);
