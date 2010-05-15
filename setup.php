@@ -62,6 +62,8 @@ if (!empty($_POST['action']) && $_POST['action']=='download') {
 	exit;
 }
 
+header('Content-Type: text/html; charset=UTF-8');
+
 if (version_compare(PHP_VERSION, '5.2')<0) {
 	// Our translation system requires PHP 5.2, so we cannot translate this message :-(
 	echo
