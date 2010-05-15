@@ -65,6 +65,7 @@ class TreeNav {
 		$this->name = $name;
 		//-- handle AJAX requests
 		if (!empty($_REQUEST['navAjax'])) {
+			header('Content-type: text/html; charset=UTF-8');
 			//-- embedded tree for mashups
 			if ($_REQUEST['navAjax']=='embed') {
 				global $SERVER_URL;
@@ -90,15 +91,18 @@ class TreeNav {
 				else $this->allSpouses = true;
 			}
 			if (!empty($_REQUEST['details'])) {
-				header('Content-type: text/html; charset=UTF-8');
 				$this->getDetails($this->rootPerson);
 			}
 			else if (!empty($_REQUEST['newroot'])) {
-				if (!empty($_REQUEST['drawport'])) $this->drawViewport('', "", "150px");
-				else {
+				if (!empty($_REQUEST['drawport'])) {
+					$this->drawViewport('', "", "150px");
+				} else {
 					$fam = null;
-					if ($this->allSpouses) $this->drawPersonAllSpouses($this->rootPerson, 4, 0);
-					else $this->drawPerson($this->rootPerson, 4, 0, $fam);
+					if ($this->allSpouses) {
+						$this->drawPersonAllSpouses($this->rootPerson, 4, 0);
+					} else {
+						$this->drawPerson($this->rootPerson, 4, 0, $fam);
+					}
 				}
 			}
 			else if (!empty($_REQUEST['parent'])) {
