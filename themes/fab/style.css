@@ -119,7 +119,9 @@ img {
 	margin-bottom:1em;
 }
 #footer {
-	text-align:center;
+	clear: both;
+    text-align: center;
+	width: 99%;
 }
 
 /* Block level objects, such as header, footer, etc. */
