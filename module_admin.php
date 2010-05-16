@@ -29,9 +29,8 @@
 
 define('WT_SCRIPT_NAME', 'module_admin.php');
 
-require_once 'includes/session.php';
-require_once WT_ROOT.'includes/classes/class_module.php';
-
+require 'includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
 	header("Location: login.php?url=module_admin.php");
@@ -61,8 +60,10 @@ $action = safe_POST('action');
 if ($action=='update_mods') {
 	foreach (WT_Module::getInstalledModules() as $module) {
 		$module_name=$module->getName();
-		$status=safe_POST_bool("status-{$module_name}");
-		WT_DB::prepare("UPDATE {$TBLPREFIX}module SET status=? WHERE module_name=?")->execute(array($status ? 'enabled' : 'disabled', $module_name));
+		$status=safe_POST("status-{$module_name}-value");
+		if ($status!==null) {
+			WT_DB::prepare("UPDATE {$TBLPREFIX}module SET status=? WHERE module_name=?")->execute(array($status ? 'enabled' : 'disabled', $module_name));
+		}
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 			WT_DB::prepare("INSERT IGNORE INTO {$TBLPREFIX}module (module_name) VALUES (?)")->execute(array($module_name));
 
@@ -271,11 +272,8 @@ print_header(i18n::translate('Module administration'));
 							$status=WT_DB::prepare(
 								"SELECT status FROM {$TBLPREFIX}module WHERE module_name=?"
 							)->execute(array($module->getName()))->fetchOne();
-							?><tr>
-							<td>
-								<input type="checkbox" name="status-<?php echo $module->getName(); ?>" value="Y" <?php if ($status=='enabled') {echo 'checked';} ?>/>
-							</td>
-							<td><?php if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
+							echo '<tr><td>', checkbox_with_value('status-'.$module->getName(), $status=='enabled'), '</td><td>';
+							if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
 							<td><?php echo $module->getTitle()?></td>
 							<td><?php echo $module->getDescription()?></td>
 							<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
