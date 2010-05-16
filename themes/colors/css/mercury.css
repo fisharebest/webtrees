@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8234 2010-05-09 20:17:19Z rob $
+* $Id: ash.css 8326 2010-05-16 00:15:42Z nigel $
 */
 
 .something {
@@ -1195,7 +1195,12 @@ vertical-align:middle;
 }
 
 fieldset {
+padding: 30px;
 margin:8px 8px 4px 8px;
+}
+
+fieldset ol, fieldset li {
+margin:2px 0px 0px 5px;
 }
 
 #header td {

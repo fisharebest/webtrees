@@ -1195,7 +1195,12 @@ vertical-align:middle;
 }
 
 fieldset {
+padding: 30px;
 margin:8px 8px 4px 8px;
+}
+
+fieldset ol, fieldset li {
+margin:2px 0px 0px 5px;
 }
 
 #header td {
