@@ -36,8 +36,7 @@ header('Content-Type: text/plain; charset=UTF-8');
 session_write_close();
 
 //-- args
-$FILTER=safe_GET('term', WT_REGEX_UNSAFE); // we can search on '"><& etc.
-$FILTER=utf8_strtoupper($FILTER);
+$FILTER=safe_GET('q', WT_REGEX_UNSAFE); // we can search on '"><& etc.
 $OPTION=safe_GET('option');
 $FORMAT=safe_GET('fmt');
 $FIELD =safe_GET('field');
