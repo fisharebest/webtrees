@@ -57,7 +57,7 @@ class batch_update {
 	function main() {
 		// HTML common to all pages
 		$html=
-			mod_print_header(i18n::translate('Batch Update')).
+			print_header(i18n::translate('Batch Update')).
 			self::getJavascript().
 			'<form id="batch_update_form" action="module.php" method="get">'.
 			'<input type="hidden" name="mod" value="batch_update">'.
@@ -118,7 +118,9 @@ class batch_update {
 			}
 		}
 		$html.='</table></form>';
-		return $html.mod_print_footer();
+		ob_start();
+		print_footer();
+		return $html.ob_get_flush();
 	}
 
 	// Constructor - initialise variables and validate user-input
