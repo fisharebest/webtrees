@@ -92,8 +92,6 @@ echo
 	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
 <?php }?>
 
-<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" />
-
 <?php
 echo
 	'</head><body id="body" ', $bodyOnLoad, '>';
