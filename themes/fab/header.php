@@ -81,6 +81,7 @@ echo
 	$javascript, $head, 
 	'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>',
+	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>',
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
 	
 ?>

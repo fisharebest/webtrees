@@ -1642,3 +1642,43 @@ color:  #000;
 .nav_content .facts_label a{
 color: #ffffff;
 }
+
+/* tables for Module Admin tab */
+table.tablesorter {
+	background-color: #E0E0E0;
+	margin:5px 0pt 15px;
+	width: 100%;
+	text-align: left;
+	font-family:tahoma,arial,helvetica,sans-serif;
+	font-size:11px;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	background-color: #E7EEF3;
+	border: 1px solid #FFF;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(../images/jquery/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	padding-right:20px;
+	white-space:nowrap;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	color: #3D3D3D;
+	padding: 4px;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#E7EEF3;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(../images/jquery/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(../images/jquery/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color: #5997E3;
+}

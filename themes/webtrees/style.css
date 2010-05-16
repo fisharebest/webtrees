@@ -1479,6 +1479,7 @@ table.tablesorter thead tr .header {
 	background-repeat: no-repeat;
 	background-position: center right;
 	padding-right:20px;
+	white-space:nowrap;
 	cursor: pointer;
 }
 table.tablesorter tbody td {

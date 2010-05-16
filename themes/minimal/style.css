@@ -1346,3 +1346,41 @@ dt {
 	display: block;
 	width: 100%;
 }
+
+/* tables for Module Admin tab */
+table.tablesorter {
+	margin:5px 0pt 15px;
+	width: 100%;
+	text-align: left;
+	font-family:tahoma,arial,helvetica,sans-serif;
+	font-size:12px;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	border: 1px solid #000;
+	padding: 4px;
+}
+table.tablesorter thead tr .header {
+	background-image: url(images/jquery/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	font-size:11px;
+	padding-right:20px;
+	white-space:nowrap;
+	cursor: pointer;
+}
+table.tablesorter tbody td {
+	padding: 4px;
+	vertical-align: top;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#DDD;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(images/jquery/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(images/jquery/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color: #DDD;
+}
