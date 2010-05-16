@@ -1243,14 +1243,20 @@ function accept_all_changes($xref, $ged_id) {
 	global $TBLPREFIX;
 
 	$changes=WT_DB::prepare(
-		"SELECT change_id, gedcom_name, new_gedcom".
+		"SELECT change_id, gedcom_name, old_gedcom, new_gedcom".
 		" FROM {$TBLPREFIX}change c".
 		" JOIN {$TBLPREFIX}gedcom g USING (gedcom_id)".
 		" WHERE c.status='pending' AND xref=? AND gedcom_id=?".
 		" ORDER BY change_id"
 	)->execute(array($xref, $ged_id))->fetchAll();
 	foreach ($changes as $change) {
-		update_record($change->new_gedcom, $ged_id, empty($change->new_gedcom));
+		if (empty($change->new_gedcom)) {
+			// delete
+			update_record($change->old_gedcom, $ged_id, true);
+		} else {
+			// add/update
+			update_record($change->new_gedcom, $ged_id, false);
+		}
 		WT_DB::prepare(
 			"UPDATE {$TBLPREFIX}change".
 			" SET status='accepted'".
