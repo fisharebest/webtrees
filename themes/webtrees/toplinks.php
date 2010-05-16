@@ -34,8 +34,8 @@ if (!defined('WT_WEBTREES')) {
 
 $menubar = new MenuBar();
 ?>
-<div style="width: 98%">
-		<img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]; ?>" width="99%" height="3" alt="" />
+<div>
+		<img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]; ?>" width="100%" height="3" alt="" />
 	<table id="topMenu">
 		<tr>
 			<?php
@@ -108,7 +108,7 @@ $menubar = new MenuBar();
 			?>
 		</tr>
 	</table>
-	<img align="middle" src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]; ?>" width="99%" height="3" alt="" />
+	<img align="middle" src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]; ?>" width="100%" height="3" alt="" />
 </div>
 </div>
 

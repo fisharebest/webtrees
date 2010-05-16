@@ -119,7 +119,7 @@ function SetCookie(cookieName,cookieValue,nDays)
 	}
 </script>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
-<table width="99%">
+<table width="100%">
 	<tr>
 		<td><img src="<?php echo WT_THEME_DIR; ?>header.jpg" width="281" height="50" alt="" /></td>
 		<td>
@@ -152,7 +152,7 @@ function SetCookie(cookieName,cookieValue,nDays)
 		</td>
 	</tr>
 </table>
-<table width="99%">
+<table width="100%">
 	<tr>
 		<td width="75%">
 			<div class="title">
