@@ -945,7 +945,8 @@ try {
 		" page_name      VARCHAR(32) NOT NULL,".
 		" page_parameter VARCHAR(32) NOT NULL,".
 		" page_count     INTEGER     NOT NULL,".
-		" PRIMARY KEY (gedcom_id, page_name, page_parameter)".
+		" PRIMARY KEY     (gedcom_id, page_name, page_parameter),".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
