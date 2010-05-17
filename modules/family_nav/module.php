@@ -117,7 +117,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		echo WT_JS_START;
 		echo 'function familyNavLoad(url) {
-			window.location = url+"&tab="+jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
+			window.location = url+"#"+jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
 			return false;
 		}
 		';
