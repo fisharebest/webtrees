@@ -327,7 +327,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings" />
-			<input type="hidden" name="pgv_action" value="index" />
+			<input type="hidden" name="mod_action" value="index" />
 			<table>
 			<tr><td class="topbottombar">'.i18n::translate('Which other links from this family would you like to add?').'
 			<input type="hidden" name="pid" value="'.$person->getXref().'" />
@@ -344,7 +344,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		else if ($person->getType()=='INDI') {
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 			<input type="hidden" name="mod" value="clippings" />
-			<input type="hidden" name="pgv_action" value="index" />
+			<input type="hidden" name="mod_action" value="index" />
 		'.i18n::translate('Which links from this person would you also like to add?').'
 		<input type="hidden" name="pid" value="'.$person->getXref().'" />
 		<input type="hidden" name="type" value="'.$person->getType().'" />
@@ -365,7 +365,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		} else if ($person->getType()=='SOUR')  {
 			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<table>
 		<tr><td class="topbottombar">'.i18n::translate('Which records linked to this source should be added?').'
 		<input type="hidden" name="pid" value="'.$person->getXref().'" />
@@ -392,7 +392,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		$out .= WT_JS_END;
 		$out .= '<form method="get" action="module.php">
 		<input type="hidden" name="mod" value="clippings" />
-		<input type="hidden" name="pgv_action" value="index" />
+		<input type="hidden" name="mod_action" value="index" />
 		<input type="hidden" name="action" value="download" />
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2>'.i18n::translate('File Information').'</h2></td></tr>

@@ -250,15 +250,6 @@ class ClippingsControllerRoot extends BaseController {
 		if ($this->action == 'download') {
 			usort($cart, "same_group");
 			if ($this->filetype == "gedcom") {
-				$path = substr($SCRIPT_NAME, 0, strrpos($SCRIPT_NAME, "/"));
-				if (empty ($path))
-				$path = "/";
-				if ($path[strlen($path) - 1] != "/")
-				$path .= "/";
-				if ($SERVER_URL[strlen($SERVER_URL) - 1] == "/") {
-					$dSERVER_URL = substr($SERVER_URL, 0, strlen($SERVER_URL) - 1);
-				} else
-				$dSERVER_URL = $SERVER_URL;
 				$media = array ();
 				$mediacount = 0;
 				$ct = count($cart);
@@ -320,10 +311,10 @@ class ClippingsControllerRoot extends BaseController {
 							}
 							$filetext .= trim($record) . "\n";
 							$filetext .= "1 SOUR @SPGV1@\n";
-							$filetext .= "2 PAGE " . $dSERVER_URL . "/individual.php?pid=" . $clipping['id'] . "\n";
+							$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "individual.php?pid=" . $clipping['id'] . "\n";
 							$filetext .= "2 DATA\n";
 							$filetext .= "3 TEXT " . i18n::translate('This Individual was downloaded from:') . "\n";
-							$filetext .= "4 CONT " . $dSERVER_URL . "/individual.php?pid=" . $clipping['id'] . "\n";
+							$filetext .= "4 CONT " . WT_SERVER_NAME.WT_SCRIPT_PATH . "individual.php?pid=" . $clipping['id'] . "\n";
 							break;
 
 						case 'fam':
@@ -363,10 +354,10 @@ class ClippingsControllerRoot extends BaseController {
 
 							$filetext .= trim($record) . "\n";
 							$filetext .= "1 SOUR @SPGV1@\n";
-							$filetext .= "2 PAGE " . $dSERVER_URL . $path . "family.php?famid=" . $clipping['id'] . "\n";
+							$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid=" . $clipping['id'] . "\n";
 							$filetext .= "2 DATA\n";
 							$filetext .= "3 TEXT " . i18n::translate('This Family was downloaded from:') . "\n";
-							$filetext .= "4 CONT " . $dSERVER_URL . "/family.php?famid=" . $clipping['id'] . "\n";
+							$filetext .= "4 CONT " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid=" . $clipping['id'] . "\n";
 							break;
 
 						case 'source':
@@ -381,7 +372,7 @@ class ClippingsControllerRoot extends BaseController {
 							}
 							$filetext .= trim($record) . "\n";
 							$filetext .= "1 NOTE " . i18n::translate('This Source was downloaded from:') . "\n";
-							$filetext .= "2 CONT " . $dSERVER_URL . "/source.php?sid=" . $clipping['id'] . "\n";
+							$filetext .= "2 CONT " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid=" . $clipping['id'] . "\n";
 							break;
 
 						default:
