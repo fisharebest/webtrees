@@ -78,7 +78,7 @@ $MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
 global $theme_name, $TEXT_DIRECTION;
 
 // -- print html header information
-print_header($controller->getPageTitle());
+print_header($controller->getPersonName().' - '.i18n::translate('Pedigree Map'));
 
 if (!$GOOGLEMAP_ENABLED) {
 	echo "<table class=\"facts_table\">\n";
@@ -92,46 +92,9 @@ if (!$GOOGLEMAP_ENABLED) {
 	print_footer();
 	return;
 }
-
-	?>
-	<style type="text/css">
-	#map_type
-	{
-		margin: 0;
-		padding: 0;
-		font-family: Arial;
-		font-size: 10px;
-		list-style: none;
-	}
-	#map_type li
-	{
-		display: block;
-		width: 70px;
-		text-align: center;
-		padding: 2px;
-		border: 1px solid black;
-		cursor: pointer;
-		float: left;
-		margin-left: 2px;
-	}
-	#map_type li.non_active
-	{
-		background: white;
-		color: black;
-		font-weight: normal;
-	}
-	#map_type li.active
-	{
-		background: gray;
-		color: white;
-		font-weight: bold;
-	}
-	#map_type li:hover
-	{
-		background: #ddd;
-	}
-	</style>
-	<?php
+?>
+<link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
+<?php
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 echo '<div><table><tr><td valign="middle">';
 echo "<h2>" . i18n::translate('Pedigree Map') . " " . i18n::translate('for') . " ";

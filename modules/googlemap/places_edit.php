@@ -51,50 +51,13 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 ?>
-
-<style type="text/css">
-	#map_type
-	{
-		margin: 0;
-		padding: 0;
-		font-family: Arial;
-		font-size: 10px;
-		list-style: none;
-	}
-	#map_type li
-	{
-		display: block;
-		width: 70px;
-		text-align: center;
-		padding: 2px;
-		border: 1px solid black;
-		cursor: pointer;
-		float: left;
-		margin-left: 2px;
-	}
-	#map_type li.non_active
-	{
-		background: white;
-		color: black;
-		font-weight: normal;
-	}
-	#map_type li.active
-	{
-		background: gray;
-		color: white;
-		font-weight: bold;
-	}
-	#map_type li:hover
-	{
-		background: #ddd;
-	}
-</style>
+<link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
 <script type="text/javascript">
 <!--
-	function edit_close() {
-		if (window.opener.showchanges) window.opener.showchanges();
-		window.close();
-	}
+function edit_close() {
+	if (window.opener.showchanges) window.opener.showchanges();
+	window.close();
+}
 
 function showchanges() {
 	updateMap();

@@ -8,8 +8,6 @@
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
  *
- * Modifications Copyright (c) 2010 Greg Roach
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -400,52 +398,10 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 	echo "bounds.extend(point);\n";
 }
 
-function create_buttons($numfound, $level) {
-	?>
-	<style type="text/css">
-	#map_type
-	{
-		margin: 0;
-		padding: 0;
-		font-family: Arial;
-		font-size: 10px;
-		list-style: none;
-	}
-	#map_type li
-	{
-		display: block;
-		width: 70px;
-		text-align: center;
-		padding: 2px;
-		border: 1px solid black;
-		cursor: pointer;
-		float: left;
-		margin-left: 2px;
-	}
-	#map_type li.non_active
-	{
-		background: white;
-		color: black;
-		font-weight: normal;
-	}
-	#map_type li.active
-	{
-		background: gray;
-		color: white;
-		font-weight: bold;
-	}
-	#map_type li:hover
-	{
-		background: #ddd;
-	}
-	</style>
-	<?php
-}
-
 function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
 	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS;
 	?>
-	<?php echo create_buttons($numfound, $level);?>
+	<link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
 	<script type="text/javascript">
 	// <![CDATA[
 	if (window.attachEvent) {
