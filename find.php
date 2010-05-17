@@ -448,13 +448,13 @@ if ($type == "facts") {
 	getPreselectedTags($preselDefault, $preselCustom);
 	?> 
 	<style type="text/css">
-	#layDefinedTags { width:450px; }
+	#layDefinedTags,#tabDefinedTagsShow { width:450px; }
 	#tabDefinedTags { width:430px; }
 	#layDefinedTags
 	{
 		margin-left:auto;
 		margin-right:auto;
-		height:300px;
+		height:285px;
 		overflow:auto;
 		border:inset 2px buttonface;
 	}
@@ -482,6 +482,16 @@ if ($type == "facts") {
 	{
 		background-color:#fee;
 		color:#888;
+	}
+	#tabDefinedTagsShow
+	{
+		margin-left:auto;
+		margin-right:auto;
+	}
+	#tabDefinedTagsShow td
+	{
+		width:50%;
+		text-align:center;
 	}
 	#tabFilterAndCustom
 	{
@@ -533,6 +543,7 @@ if ($type == "facts") {
 			o.onclick=function() {
 				this.DefaultTag.selected=!!this.checked;
 				this.ParentRow.className=this.DefaultTag.selected?"sel":"unsel";
+				Lister.recount();
 			};
 			cell.appendChild(o);
 			row.appendChild(cell=document.createElement("th"));
@@ -566,15 +577,30 @@ if ($type == "facts") {
 			this._clearTimer();
 			this._timer=setTimeout("Lister.refreshNow()",200);
 		}
-		,refreshNow:function() {
+		,refreshNow:function(force) {
 			this._clearTimer();
 			var s=document.getElementById("tbxFilter").value.toLowerCase().replace(/\s+/g," ").replace(/^ | $/g,""),k;
-			if((typeof(this._curFilter)!="string")||(this._curFilter!=s)) {
+			if(force||(typeof(this._curFilter)!="string")||(this._curFilter!=s)) {
 				this._curFilter=s;
 				this.clear();
 				for(k=0;k<DefaultTags.length;k++) {
 					if(DefaultTags[k].LowerName.indexOf(this._curFilter)>=0) DefaultTags[k].view();
 				}
+			}
+		}
+		,recount:function() {
+			var k,n=0;
+			for(k=0;k<DefaultTags.length;k++)
+				if(DefaultTags[k].selected)
+					n++;
+			document.getElementById("layCurSelectedCount").innerHTML=n.toString();
+		}
+		,showSelected:function() {
+			this._clearTimer();
+			this.clear();
+			for(var k=0;k<DefaultTags.length;k++) {
+				if(DefaultTags[k].selected)
+					DefaultTags[k].view();
 			}
 		}
 	};
@@ -608,6 +634,7 @@ if ($type == "facts") {
 		i.onkeypress=i.onchange=i.onkeyup=function() {
 			Lister.askRefresh();
 		};
+		Lister.recount();
 		Lister.refreshNow();
 		document.getElementById("btnOk").disabled=false;
 	}
@@ -642,6 +669,11 @@ if ($type == "facts") {
 		<tbody id="tbDefinedTags">
 		</tbody>
 	</table></div>
+
+	<table id="tabDefinedTagsShow"><tbody><tr>
+		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo i18n::translate('Show only selected tags') ?> (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo i18n::translate('Show all tags') ?></a></td>
+	</tr></tbody></table>
 
 	<table id="tabFilterAndCustom"><tbody>
 		<tr><td><?php echo i18n::translate('Filter') ?>:</td><td><input type="text" id="tbxFilter" /></td></tr>
@@ -1019,7 +1051,7 @@ if ($action=="filter") {
 echo "</div>"; // Close div that centers table
 
 // Set focus to the input field
-echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
+if ($type!='facts') echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
 
 print_simple_footer();
 

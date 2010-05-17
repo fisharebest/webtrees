@@ -2281,14 +2281,14 @@ function print_findmedia_link($element_id, $choose="", $ged='', $asString=false)
 	echo $out;
 }
 
-function print_findfact_link($element_id, $facts, $ged='', $asString=false) {
+function print_findfact_link($element_id, $ged='', $asString=false) {
 	global $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 
 	$text = i18n::translate('Find fact tag');
 	if (empty($ged)) $ged=$GEDCOM;
 	if (isset($WT_IMAGES["keyboard"]["button"])) $Link = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["keyboard"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
-	$out = " <a href=\"javascript:;\" onclick=\"findFact(document.getElementById('".$element_id."'), '".$facts."', '".$ged."'); return false;\">";
+	$out = " <a href=\"javascript:;\" onclick=\"findFact(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
 	$out .= $Link;
 	$out .= "</a>";
 	if ($asString) return $out;
