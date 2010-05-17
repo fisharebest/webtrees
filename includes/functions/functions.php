@@ -2307,8 +2307,13 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'sis': return i18n::translate('great x%d aunt', $up-4);
 				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-4);
 				}
-			case 'en':
 			case 'it': // Source: Michele Locati
+				switch ($last) {
+				case 'bro': return i18n::translate('great x%d uncle', $up-3);
+				case 'sis': return i18n::translate('great x%d aunt', $up-3);
+				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-3);
+				}
+			case 'en':
 			default:
 				switch ($last) {
 				case 'bro': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
