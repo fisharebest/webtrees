@@ -295,7 +295,7 @@ img {
 	overflow: hidden;
 }
 .ac_loading {
-	xbackground: white url(../../images/indicator.gif) right center no-repeat;
+	background: white url(images/indicator.gif) right center no-repeat;
 }
 .ac_odd {
 	background-color: #eee;
@@ -477,7 +477,7 @@ img {
 
 /*-- descendancy chart specific stylesheets --*/
 #descendancy_chart ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
@@ -497,7 +497,7 @@ img {
 
 /*-- descendancy chart rtl specific stylesheets --*/
 #descendancy_chart_rtl ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: right top;
 	list-style: none;
@@ -528,7 +528,7 @@ img {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
@@ -548,7 +548,7 @@ img {
 
 /*-- ancestry chart rtl specific stylesheets --*/
 #ancestry_chart_rtl ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: right top;
 	list-style: none;
