@@ -46,7 +46,8 @@ fieldset,
 	margin:3px;
 	padding:3px;
 	border:1px solid DarkGray;
-	border-radius:3px;
+	/* Uncomment this next line when it becomes a standard */
+	/*border-radius:3px;*/
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 }
