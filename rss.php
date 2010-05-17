@@ -36,15 +36,8 @@ require './includes/session.php';
 
 require_once WT_ROOT.'includes/classes/class_feedcreator.php';
 require_once WT_ROOT.'includes/functions/functions_rss.php';
-require_once WT_ROOT.'includes/index_cache.php';
 
 $feedCacheName = "fullFeed";
-
-/*if (!empty($auth)){
-	if($auth=="basic"){
-		basicHTTPAuthenticateUser();
-	}
-}*/
 
 // valid format strings are: RSS0.91, RSS1.0, RSS2.0, MBOX, OPML, ATOM, ATOM1.0, ATOM0.3, HTML, JS
 if (empty($rssStyle)){
@@ -89,198 +82,186 @@ $cacheControl[0] = $feedCacheName;
 $cacheControl[1] = array("cache"=>1);
 if (!empty($module) && $module=="randomMedia") $cacheControl[1]["cache"] = 0;
 
-if(!loadCachedBlock($cacheControl, $rssStyle)){
-	$author=getUserFullName(get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID'));
+$author=getUserFullName(get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID'));
 
-	$feed = new UniversalFeedCreator();
-	$feed->generator = WT_WEBTREES_URL;
-	$feed->title = get_gedcom_setting(WT_GED_ID, 'title');
-	$feed->language = WT_LOCALE;
-	$feed->descriptionHtmlSyndicated = true;
-	//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
-	$feed->link = $SERVER_URL;
-	$syndURL = $SERVER_URL."rss.php?".$_SERVER['QUERY_STRING'];
-	$syndURL = str_replace("&", "&amp;", $syndURL);
-	$feed->syndicationURL = $syndURL;
+$feed = new UniversalFeedCreator();
+$feed->generator = WT_WEBTREES_URL;
+$feed->title = get_gedcom_setting(WT_GED_ID, 'title');
+$feed->language = WT_LOCALE;
+$feed->descriptionHtmlSyndicated = true;
+//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
+$feed->link = $SERVER_URL;
+$syndURL = $SERVER_URL."rss.php?".$_SERVER['QUERY_STRING'];
+$syndURL = str_replace("&", "&amp;", $syndURL);
+$feed->syndicationURL = $syndURL;
 
-	$feedDesc =  i18n::translate('News and links from the %s site', $feed->title);
-	$feed->description = $feedDesc;
-	$feed->copyright = $author . " (c) " . date("Y");
-	$feed->category="genealogy";
+$feedDesc =  i18n::translate('News and links from the %s site', $feed->title);
+$feed->description = $feedDesc;
+$feed->copyright = $author . " (c) " . date("Y");
+$feed->category="genealogy";
 
-	$image = new FeedImage();
-	$image->title = i18n::translate('Feed created by webtrees');
-	$image->url = $SERVER_URL."images/gedview.gif";
-	$image->link = WT_WEBTREES_URL;
-	$image->description = i18n::translate('Feed created by webtrees');
-	$image->descriptionHtmlSyndicated = true;
-	//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
-	$feed->image = $image;
+$image = new FeedImage();
+$image->title = i18n::translate('Feed created by webtrees');
+$image->url = $SERVER_URL."images/gedview.gif";
+$image->link = WT_WEBTREES_URL;
+$image->description = i18n::translate('Feed created by webtrees');
+$image->descriptionHtmlSyndicated = true;
+//$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
+$feed->image = $image;
 
-
-
-	if($ENABLE_RSS) {
-		// determine if to show parts of feed based on their exsistance in the blocks on index.php
-		$blocks=  get_gedcom_blocks(WT_GED_ID);
-		if (array_key_exists('todays_events', $blocks['main']) || array_key_exists('todays_events', $blocks['side'])) {
-			$todaysEvents = getTodaysEvents();
-			if (! empty($todaysEvents[2])) {
-				$item = new FeedItem();
-				$item->title = $todaysEvents[0];
-				$item->link = $SERVER_URL. "calendar.php?action=today";
-				$item->description = $todaysEvents[2];
-				$item->descriptionHtmlSyndicated = true;
-				$item->date = $todaysEvents[1];
-				$item->source = $SERVER_URL;
-				$item->author = $author;
-				$item->authorURL = $feed->link;
-				$item->category = i18n::translate('genealogy');
-				$feed->addItem($item);
-			}
+if($ENABLE_RSS) {
+	// determine if to show parts of feed based on their exsistance in the blocks on index.php
+	$blocks=  get_gedcom_blocks(WT_GED_ID);
+	if (array_key_exists('todays_events', $blocks['main']) || array_key_exists('todays_events', $blocks['side'])) {
+		$todaysEvents = getTodaysEvents();
+		if (! empty($todaysEvents[2])) {
+			$item = new FeedItem();
+			$item->title = $todaysEvents[0];
+			$item->link = $SERVER_URL. "calendar.php?action=today";
+			$item->description = $todaysEvents[2];
+			$item->descriptionHtmlSyndicated = true;
+			$item->date = $todaysEvents[1];
+			$item->source = $SERVER_URL;
+			$item->author = $author;
+			$item->authorURL = $feed->link;
+			$item->category = i18n::translate('genealogy');
+			$feed->addItem($item);
 		}
-
-		if (array_key_exists('upcoming_events', $blocks['main']) || array_key_exists('upcoming_events', $blocks['side'])) {
-			$upcomingEvent = getUpcomingEvents();
-			if (! empty($upcomingEvent[2])) {
-				$item = new FeedItem();
-				$item->title = $upcomingEvent[0];
-				$item->link = $SERVER_URL. "calendar.php?action=calendar";
-				$item->description = $upcomingEvent[2];
-				$item->descriptionHtmlSyndicated = true;
-				$item->date = $upcomingEvent[1];
-				$item->source = $SERVER_URL;
-				$item->author = $author;
-				$item->authorURL = $feed->link;
-				$item->category = i18n::translate('genealogy');
-				$feed->addItem($item);
-			}
-		}
-
-		if (array_key_exists('gedcom_stats', $blocks['main']) || array_key_exists('gedcom_stats', $blocks['side'])) {
-			$gedcomStats = getGedcomStats();
-			if (! empty($gedcomStats[2])) {
-				$item = new FeedItem();
-				$item->title = $gedcomStats[0];
-				$item->link = $SERVER_URL. "index.php?ctype=gedcom#gedcom_stats";
-				$item->description = $gedcomStats[2];
-				$item->descriptionHtmlSyndicated = true;
-				if (! empty($gedcomStats[1])) {
-					$item->date = $gedcomStats[1];
-				}
-				$item->source = $SERVER_URL;
-				$item->author = $author;
-				$item->authorURL = $feed->link;
-				$item->category = i18n::translate('genealogy');
-				$feed->addItem($item);
-			}
-		}
-
-		if (array_key_exists('top10_surnames', $blocks['main']) || array_key_exists('top10_surnames', $blocks['side'])) {
-			$top10 = getTop10Surnames();
-			if (! empty($top10[2])) {
-				$item = new FeedItem();
-				$item->title = $top10[0];
-				$item->link = $SERVER_URL. "indilist.php";
-				$item->description = $top10[2];
-				$item->descriptionHtmlSyndicated = true;
-				if (! empty($top10[1])) {
-					$item->date = $top10[1];
-				}
-				$item->source = $SERVER_URL;
-				$item->author = $author;
-				$item->authorURL = $feed->link;
-				$item->category = i18n::translate('genealogy');
-				$feed->addItem($item);
-			}
-		}
-
-		if (array_key_exists('gedcom_news', $blocks['main']) || array_key_exists('gedcom_news', $blocks['side'])) {
-			$gedcomNews = getGedcomNews();
-
-			$numElements = count($gedcomNews); //number of news items
-			for($i=0; $i < $numElements; $i++) {
-				$newsItem = $gedcomNews[$i];
-				if (! empty($newsItem[1])) {
-					$item = new FeedItem();
-					$item->title = $newsItem[0];
-					$item->link = $SERVER_URL . "index.php?ctype=gedcom#" . $newsItem[3];
-					$item->description = $newsItem[2];
-					$item->descriptionHtmlSyndicated = true;
-					$item->date = $newsItem[1];
-					$item->source = $SERVER_URL ;
-					$item->author = $author;
-					$item->authorURL = $feed->link;
-					$item->category="genealogy";
-					$feed->addItem($item);
-				}
-			}
-		}
-
-		if (array_key_exists('recent_changes', $blocks['main']) || array_key_exists('recent_changes', $blocks['side'])) {
-			$recentChanges= getRecentChanges();
-			if (! empty($recentChanges[2])) {
-				$item = new FeedItem();
-				$item->title = $recentChanges[0];
-				$item->link = $SERVER_URL. "index.php?ctype=gedcom#recent_changes";
-				$item->description = $recentChanges[2];
-				$item->descriptionHtmlSyndicated = true;
-
-				if (! empty($recentChanges[1])) {
-					$item->date = $recentChanges[1];
-				}
-				$item->source = $SERVER_URL;
-				$item->author = $author;
-				$item->authorURL = $feed->link;
-				$item->category = i18n::translate('genealogy');
-				$feed->addItem($item);
-			}
-		}
-
-		if (array_key_exists('random_media', $blocks['main']) || array_key_exists('random_media', $blocks['side'])) {
-			$randomMedia= getRandomMedia();
-			if (! empty($randomMedia[2])) {
-				$item = new FeedItem();
-				$item->title = $randomMedia[0];
-				$item->link = $SERVER_URL. "medialist.php";
-				$item->description = $randomMedia[2];
-				$item->descriptionHtmlSyndicated = true;
-
-				if (! empty($randomMedia[1])) {
-					$item->date = $randomMedia[1];
-				}
-				$item->source = $SERVER_URL;
-				$item->author = $author;
-				$item->authorURL = $feed->link;
-				$item->category = i18n::translate('genealogy');
-				$item->enclosure = new EnclosureItem();
-				$item->enclosure->url = $SERVER_URL . $randomMedia[3];
-				$item->enclosure->type = $randomMedia[4];
-				$item->enclosure->length = $randomMedia[5];
-				$item->enclosure->title = $randomMedia[6];
-
-				$feed->addItem($item);
-			}
-		}
-	} else {
-		$item = new FeedItem();
-		$item->title = i18n::translate('Feed not available');
-		$item->link = $SERVER_URL. "index.php";
-		$item->description = i18n::translate('There is no RSS feed available for this webtrees site');
-		$item->date = time();
-		$item->source = $SERVER_URL;
-		$item->author = $author;
-		$item->authorURL = $feed->link;
-		$item->category = i18n::translate('genealogy');
-		$feed->addItem($item);
 	}
 
-	//$feed->outputFeed($rssStyle);
+	if (array_key_exists('upcoming_events', $blocks['main']) || array_key_exists('upcoming_events', $blocks['side'])) {
+		$upcomingEvent = getUpcomingEvents();
+		if (! empty($upcomingEvent[2])) {
+			$item = new FeedItem();
+			$item->title = $upcomingEvent[0];
+			$item->link = $SERVER_URL. "calendar.php?action=calendar";
+			$item->description = $upcomingEvent[2];
+			$item->descriptionHtmlSyndicated = true;
+			$item->date = $upcomingEvent[1];
+			$item->source = $SERVER_URL;
+			$item->author = $author;
+			$item->authorURL = $feed->link;
+			$item->category = i18n::translate('genealogy');
+			$feed->addItem($item);
+		}
+	}
 
-	ob_start();
-	$feed->outputFeed($rssStyle);
-	$content = ob_get_contents();
-	saveCachedBlock($cacheControl, $rssStyle, $content);
-	ob_end_flush();
+	if (array_key_exists('gedcom_stats', $blocks['main']) || array_key_exists('gedcom_stats', $blocks['side'])) {
+		$gedcomStats = getGedcomStats();
+		if (! empty($gedcomStats[2])) {
+			$item = new FeedItem();
+			$item->title = $gedcomStats[0];
+			$item->link = $SERVER_URL. "index.php?ctype=gedcom#gedcom_stats";
+			$item->description = $gedcomStats[2];
+			$item->descriptionHtmlSyndicated = true;
+			if (! empty($gedcomStats[1])) {
+				$item->date = $gedcomStats[1];
+			}
+			$item->source = $SERVER_URL;
+			$item->author = $author;
+			$item->authorURL = $feed->link;
+			$item->category = i18n::translate('genealogy');
+			$feed->addItem($item);
+		}
+	}
+
+	if (array_key_exists('top10_surnames', $blocks['main']) || array_key_exists('top10_surnames', $blocks['side'])) {
+		$top10 = getTop10Surnames();
+		if (! empty($top10[2])) {
+			$item = new FeedItem();
+			$item->title = $top10[0];
+			$item->link = $SERVER_URL. "indilist.php";
+			$item->description = $top10[2];
+			$item->descriptionHtmlSyndicated = true;
+			if (! empty($top10[1])) {
+				$item->date = $top10[1];
+			}
+			$item->source = $SERVER_URL;
+			$item->author = $author;
+			$item->authorURL = $feed->link;
+			$item->category = i18n::translate('genealogy');
+			$feed->addItem($item);
+		}
+	}
+
+	if (array_key_exists('gedcom_news', $blocks['main']) || array_key_exists('gedcom_news', $blocks['side'])) {
+		$gedcomNews = getGedcomNews();
+
+		$numElements = count($gedcomNews); //number of news items
+		for($i=0; $i < $numElements; $i++) {
+			$newsItem = $gedcomNews[$i];
+			if (! empty($newsItem[1])) {
+				$item = new FeedItem();
+				$item->title = $newsItem[0];
+				$item->link = $SERVER_URL . "index.php?ctype=gedcom#" . $newsItem[3];
+				$item->description = $newsItem[2];
+				$item->descriptionHtmlSyndicated = true;
+				$item->date = $newsItem[1];
+				$item->source = $SERVER_URL ;
+				$item->author = $author;
+				$item->authorURL = $feed->link;
+				$item->category="genealogy";
+				$feed->addItem($item);
+			}
+		}
+	}
+
+	if (array_key_exists('recent_changes', $blocks['main']) || array_key_exists('recent_changes', $blocks['side'])) {
+		$recentChanges= getRecentChanges();
+		if (! empty($recentChanges[2])) {
+			$item = new FeedItem();
+			$item->title = $recentChanges[0];
+			$item->link = $SERVER_URL. "index.php?ctype=gedcom#recent_changes";
+			$item->description = $recentChanges[2];
+			$item->descriptionHtmlSyndicated = true;
+
+			if (! empty($recentChanges[1])) {
+				$item->date = $recentChanges[1];
+			}
+			$item->source = $SERVER_URL;
+			$item->author = $author;
+			$item->authorURL = $feed->link;
+			$item->category = i18n::translate('genealogy');
+			$feed->addItem($item);
+		}
+	}
+
+	if (array_key_exists('random_media', $blocks['main']) || array_key_exists('random_media', $blocks['side'])) {
+		$randomMedia= getRandomMedia();
+		if (! empty($randomMedia[2])) {
+			$item = new FeedItem();
+			$item->title = $randomMedia[0];
+			$item->link = $SERVER_URL. "medialist.php";
+			$item->description = $randomMedia[2];
+			$item->descriptionHtmlSyndicated = true;
+
+			if (! empty($randomMedia[1])) {
+				$item->date = $randomMedia[1];
+			}
+			$item->source = $SERVER_URL;
+			$item->author = $author;
+			$item->authorURL = $feed->link;
+			$item->category = i18n::translate('genealogy');
+			$item->enclosure = new EnclosureItem();
+			$item->enclosure->url = $SERVER_URL . $randomMedia[3];
+			$item->enclosure->type = $randomMedia[4];
+			$item->enclosure->length = $randomMedia[5];
+			$item->enclosure->title = $randomMedia[6];
+
+			$feed->addItem($item);
+		}
+	}
+} else {
+	$item = new FeedItem();
+	$item->title = i18n::translate('Feed not available');
+	$item->link = $SERVER_URL. "index.php";
+	$item->description = i18n::translate('There is no RSS feed available for this webtrees site');
+	$item->date = time();
+	$item->source = $SERVER_URL;
+	$item->author = $author;
+	$item->authorURL = $feed->link;
+	$item->category = i18n::translate('genealogy');
+	$feed->addItem($item);
 }
 
-?>
+$feed->outputFeed($rssStyle);

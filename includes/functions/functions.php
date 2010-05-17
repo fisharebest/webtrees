@@ -1924,10 +1924,6 @@ function get_relationship_name($nodes) {
 	// name can be used for many different relationships.  e.g.
 	// brother's wife & husband's sister = sister-in-law.
 	//
-	// For this reason, we need to use a "generic" english relationships,
-	// which will need translating into specific english relationships, even
-	// for english.
-	//
 	// $path is an array of the 12 possible gedcom family relationships:
 	// mother/father/parent
 	// brother/sister/sibling
@@ -2479,15 +2475,22 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		// Need to find out which languages use which rules.
 		switch (WT_LOCALE) {
 		case 'pl': // Source: Lucasz Wilenski
-		case 'it': // ??? See: http://it.wikipedia.org/wiki/Cugino
 			switch ($last) {
 			case 'son': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('MALE', 'cousin of the %s degree',   i18n::ordinal_word($up+$down+2));
 			case 'dau': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('FEMALE', 'cousin of the %s degree', i18n::ordinal_word($up+$down+2));
 			case 'chi': return /* I18N: %s is "first", "second", ... */ i18n::translate('cousin of the %s degree',             i18n::ordinal_word($up+$down+2));
 			}
 			break;
+		case 'it':
+			// Source: Michele Locati.  See italian_cousins_names.zip
+			// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
+			switch ($last) {
+			case 'son': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('MALE', 'cousin of the %s degree',   i18n::ordinal_word($up+$down-3));
+			case 'dau': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('FEMALE', 'cousin of the %s degree', i18n::ordinal_word($up+$down-3));
+			case 'chi': return /* I18N: %s is "first", "second", ... */ i18n::translate('cousin of the %s degree',             i18n::ordinal_word($up+$down-3));
+			}
+			break;
 		case 'en': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
-		case 'en_GB':
 		default:
 			if ($up==$down) {
 				switch ($last) {
