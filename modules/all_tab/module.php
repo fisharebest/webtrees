@@ -5,9 +5,6 @@
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
- * Copyright (C) 2010 John Finlay
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -24,7 +21,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -76,12 +73,32 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getJSCallbackAllTabs() {
-		return '';
+		$out = 'selectedTab = jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
+		if (selectedTab=="'.$this->getName().'") {';
+		foreach($this->controller->tabs as $tab) {
+			if ($tab->getName()!=$this->getName() && $tab->canLoadAjax()) {
+				$out .= 'if (!tabCache["'.$tab->getName().'"]) {
+					jQuery("#'.$tab->getName().'").load("individual.php?action=ajax&module='.$tab->getName().'&pid='.$this->controller->pid.'");
+					tabCache["'.$tab->getName().'"] = true;
+				}';
+			}
+		}
+		
+		$out .= '
+			jQuery("#tabs > div").each(function() { 
+				if (this.name!="all_tab") {
+					jQuery(this).removeClass("ui-tabs-hide");
+				}
+			});
+			}
+		';
+		return $out;
 	}
 	
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
-		$out = 'if (selectedTab=="'.$this->getName().'") {';
+		$out = 'selectedTab = jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
+		if (selectedTab=="'.$this->getName().'") {';
 		foreach($this->controller->tabs as $tab) {
 			if ($tab->getName()!=$this->getName() && $tab->canLoadAjax()) {
 				$out .= 'if (!tabCache["'.$tab->getName().'"]) {
