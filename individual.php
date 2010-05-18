@@ -95,13 +95,6 @@ function resize_content_div(i) {
 </script>
 <script type="text/javascript">
 //<![CDATA[
-var selectedTab="<?php echo safe_get('tab')?>";
-if (selectedTab != "" && selectedTab != "undefined" && selectedTab != null) {
-	var selectedTab = selectedTab;
-}else{
-	var selectedTab = 0;
-}
-
 var tabCache = new Array();
 var pinned = false;
 
@@ -112,23 +105,15 @@ jQuery(document).ready(function(){
 	jQuery("#tabs").tabs({ cache: true });
 	var $tabs = jQuery('#tabs');
 	jQuery('#tabs').bind('tabsshow', function(event, ui) {
-		selectedTab = ui.tab.name;
+		var selectedTab = ui.tab.name;
 		tabCache[selectedTab] = true;
 
 	<?php
 	foreach ($controller->tabs as $tab) {
-		echo $tab->getJSCallbackAllTabs()."\n";
-		echo 'if (ui.tab.name == "'.$tab->getName().'") { '.$tab->getJSCallback().' }';
+		echo $tab->getJSCallback()."\n";
 	}
 	?>
 	});
-	<?php 
-	foreach ($controller->tabs as $tab) {
-		if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
-			echo $tab->getJSCallback();
-		}
-	}
-	?>
 });
 
 //]]>

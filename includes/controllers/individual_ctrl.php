@@ -287,13 +287,11 @@ class IndividualControllerRoot extends BaseController {
 				if ($mod) {
 					echo $mod->getTabContent();
 					// Allow the other tabs to modify this one - e.g. lightbox does this.
-					$js='';
+					echo WT_JS_START;
 					foreach (WT_Module::getActiveTabs() as $module) {
-						$js.=$module->getJSCallbackAllTabs();
+						echo $module->getJSCallback();
 					}
-					if ($js) {
-						echo WT_JS_START, $js, WT_JS_END;
-					}
+					echo WT_JS_END;
 				}
 			}
 			

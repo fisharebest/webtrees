@@ -154,11 +154,6 @@ if (!$SHOW_LEVEL2_NOTES) {
 	}
 	
 	// Implement WT_Module_Tab
-	public function getJSCallbackAllTabs() {
-		return '';
-	}
-	
-	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return '';
 	}

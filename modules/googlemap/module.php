@@ -201,50 +201,20 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		global $GOOGLEMAP_PH_CONTROLS;
-		$out = "loadMap();\n";
+		$out=
+			'if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {'.
+			' loadMap();';
 		if ($GOOGLEMAP_PH_CONTROLS) {
-			$out .= '// hide controls
-					GEvent.addListener(map,"mouseout",function()
-					{
-						map.hideControls();
-					});
-					// show controls
-					GEvent.addListener(map,"mouseover",function()
-					{
-						map.showControls();
-					});
-					GEvent.trigger(map,"mouseout");
-					';
+			$out.=
+				' GEvent.addListener(map,"mouseout", function() { map.hideControls(); });'.
+				' GEvent.addListener(map,"mouseover",function() { map.showControls(); });'.
+				' GEvent.trigger    (map,"mouseout");';
 		}
-		$out.='map.setMapType(GOOGLEMAP_MAP_TYPE);
-				SetMarkersAndBounds();
-				ResizeMap();
-				';
-		return $out;
-	}
-	
-	// Implement WT_Module_Tab
-	public function getJSCallbackAllTabs() {
-		global $GOOGLEMAP_PH_CONTROLS;
-		$out = "loadMap();\n";
-		if ($GOOGLEMAP_PH_CONTROLS) {
-			$out .= '// hide controls
-					GEvent.addListener(map,"mouseout",function()
-					{
-						map.hideControls();
-					});
-					// show controls
-					GEvent.addListener(map,"mouseover",function()
-					{
-						map.showControls();
-					});
-					GEvent.trigger(map,"mouseout");
-					';
-		}
-		$out.='map.setMapType(GOOGLEMAP_MAP_TYPE);
-				SetMarkersAndBounds();
-				ResizeMap();
-				';
+		$out.=
+			' map.setMapType(GOOGLEMAP_MAP_TYPE);'.
+			' SetMarkersAndBounds();'.
+			' ResizeMap();'.
+			'}';
 		return $out;
 	}
 }

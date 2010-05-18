@@ -72,50 +72,24 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	
 	// Implement WT_Module_Tab
-	public function getJSCallbackAllTabs() {
-		$out = 'selectedTab = jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
-		if (selectedTab=="'.$this->getName().'") {';
-		foreach($this->controller->tabs as $tab) {
-			if ($tab->getName()!=$this->getName() && $tab->canLoadAjax()) {
-				$out .= 'if (!tabCache["'.$tab->getName().'"]) {
-					jQuery("#'.$tab->getName().'").load("individual.php?action=ajax&module='.$tab->getName().'&pid='.$this->controller->pid.'");
-					tabCache["'.$tab->getName().'"] = true;
-				}';
-			}
-		}
-		
-		$out .= '
-			jQuery("#tabs > div").each(function() { 
-				if (this.name!="all_tab") {
-					jQuery(this).removeClass("ui-tabs-hide");
-				}
-			});
-			}
-		';
-		return $out;
-	}
-	
-	// Implement WT_Module_Tab
 	public function getJSCallback() {
-		$out = 'selectedTab = jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
-		if (selectedTab=="'.$this->getName().'") {';
-		foreach($this->controller->tabs as $tab) {
-			if ($tab->getName()!=$this->getName() && $tab->canLoadAjax()) {
-				$out .= 'if (!tabCache["'.$tab->getName().'"]) {
-					jQuery("#'.$tab->getName().'").load("individual.php?action=ajax&module='.$tab->getName().'&pid='.$this->controller->pid.'");
-					tabCache["'.$tab->getName().'"] = true;
-				}';
+		$out='if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {';
+		foreach ($this->controller->tabs as $tab) {
+			if ($tab->getName()!=$this->getName()) {
+				$out.=
+					' if (!tabCache["'.$tab->getName().'"]) {'.
+					'  jQuery("#'.$tab->getName().'").load("individual.php?action=ajax&module='.$tab->getName().'&pid='.$this->controller->pid.'");'.
+					'  tabCache["'.$tab->getName().'"] = true;'.
+					' }';
 			}
 		}
-		
-		$out .= '
-			jQuery("#tabs > div").each(function() { 
-				if (this.name!="all_tab") {
-					jQuery(this).removeClass("ui-tabs-hide");
-				}
-			});
-			}
-		';
+		$out.=
+			' jQuery("#tabs > div").each(function() {'.
+			' 	if (this.name!="all_tab") {'.
+			'   jQuery(this).removeClass("ui-tabs-hide");'.
+			'  }'.
+			' });'.
+			'}';
 		return $out;
 	}
 }

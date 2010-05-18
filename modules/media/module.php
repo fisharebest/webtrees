@@ -127,11 +127,6 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	
 	// Implement WT_Module_Tab
-	public function getJSCallbackAllTabs() {
-		return '';
-	}
-	
-	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return '';
 	}

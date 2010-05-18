@@ -69,7 +69,6 @@ interface WT_Module_Tab {
 	public function hasTabContent();
 	public function canLoadAjax();
 	public function getPreLoadContent();
-	public function getJSCallbackAllTabs();
 	public function getJSCallback();
 }
 

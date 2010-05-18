@@ -53,11 +53,14 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
-		return 'treetab.sizeLines(); 
-var outdiv = document.getElementById("out_treetab");
-var parent = document.getElementById("subtab");
-if (!parent) parent = document.getElementById("tabs");
-outdiv.style.width = (parent.offsetWidth-30) + "px";';
+		return
+			'if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {'.
+			' treetab.sizeLines();'.
+			' var outdiv = document.getElementById("out_treetab");'.
+			' var parent = document.getElementById("subtab");'.
+			' if (!parent) parent = document.getElementById("tabs");'.
+			' outdiv.style.width = (parent.offsetWidth-30) + "px";'.
+			'}';
 	}
 	
 	// Implement WT_Module_Tab
@@ -83,10 +86,4 @@ outdiv.style.width = (parent.offsetWidth-30) + "px";';
 	public function getPreLoadContent() {
 		return '';
 	}
-	
-	// Implement WT_Module_Tab
-	public function getJSCallbackAllTabs() {
-		return '';
-	}
-	
 }
