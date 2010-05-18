@@ -328,7 +328,6 @@ function setup_map() {
 	//]]>
 	</script>
 	<?php
-
 }
 
 function tool_tip_text($marker) {
