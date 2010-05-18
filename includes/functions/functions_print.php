@@ -2103,8 +2103,8 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo "<td class=\"optionbox wrap ", $TEXT_DIRECTION, "\">";
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
 	echo "<select id=\"newfact\" name=\"newfact\">\n";
-	foreach($tanslated_addfacts as $tag=>$fact) {
-		echo '<option value="', $fact, '">', $fact, " [".$tag."]</option>";
+	foreach($tanslated_addfacts as $fact=>$fact_name) {
+		echo '<option value="', $fact, '">', $fact_name, " [".$fact."]</option>";
 	}
 	if (($type == "INDI") || ($type == "FAM")) echo "<option value=\"EVEN\">", i18n::translate('Custom Event'), " [EVEN]</option>";
 	echo "\n</select>\n";
