@@ -120,7 +120,7 @@ class batch_update {
 		$html.='</table></form>';
 		ob_start();
 		print_footer();
-		return $html.ob_get_flush();
+		return $html.ob_get_clean();
 	}
 
 	// Constructor - initialise variables and validate user-input
