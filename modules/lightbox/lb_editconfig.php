@@ -232,7 +232,7 @@ $i = 0;
 			<?php if ($pid){ ?>
 				<INPUT TYPE="button" VALUE="<?php print i18n::translate('Return to Album page');?>" 		onclick="javascript:window.location='individual.php?pid=<?php echo $pid;?>&gedcom=<?php echo $GEDCOM;?>&tab=lightbox'" />
 			<?php }else{ ?>
-				<INPUT TYPE="button" VALUE="<?php print i18n::translate('Return to Admin Page');?>" 	onclick="javascript:window.location='admin.php'" />
+				<INPUT TYPE="button" VALUE="<?php print i18n::translate('Return to Admin Page');?>" 	onclick="javascript:window.location='module_admin.php'" />
 			<?php } ?>
 			
 			</td>
