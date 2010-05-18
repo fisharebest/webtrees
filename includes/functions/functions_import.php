@@ -765,8 +765,12 @@ function update_places($gid, $ged_id, $gedrec) {
 	static $sql_insert_places=null;
 	static $sql_select_places=null;
 	if (!$sql_insert_placelinks) {
+		// Use INSERT IGNORE as a (temporary) fix for https://bugs.launchpad.net/webtrees/+bug/582226
+		// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
+		// Of course, there almost certainly are such places .....
+		// We need a better solution that attaches multiple names to single places
 		$sql_insert_placelinks=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}placelinks (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
+			"INSERT IGNORE INTO {$TBLPREFIX}placelinks (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
 		);
 		$sql_insert_places=WT_DB::prepare(
 			"INSERT INTO {$TBLPREFIX}places (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?,?,?)"
