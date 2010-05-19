@@ -437,7 +437,7 @@ if ($action=="configure") {
 	echo "\n\t<div id=\"help\" class=\"tab_page\" style=\"position: absolute; display: none; top: auto; left: auto; z-index: 2; \">\n\t";
 
 	echo "<br /><center><input type=\"button\" value=\"".i18n::translate('Click here to continue')."\" onclick=\"expand_layer('configure', true); expand_layer('help', false);\" /></center><br /><br />\n";
-	echo i18n::translate("Here is a short description of each of the blocks you can place on the Welcome or My Page.<br /><table border='1' align='center'><tr><td class='list_value'><b>Name</b></td><td class='list_value'><b>Description</b></td></tr>&nbsp;</table>");
+	echo i18n::translate("Here is a short description of each of the blocks you can place on the Welcome or My Page.<br /><table border='1' align='center'><tr><td class='list_value'><b>Name</b></td><td class='list_value'><b>Description</b></td></tr></table>");
 
 	// end of 2nd tab
 	echo "</div>\n";
