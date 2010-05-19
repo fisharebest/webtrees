@@ -71,7 +71,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		global $MULTI_MEDIA;
-		return $MULTI_MEDIA && $this->get_media_count()>0;
+		return $MULTI_MEDIA && (WT_USER_CAN_EDIT || $this->get_media_count()>0);
 	}
 	
 	// Implement WT_Module_Tab
