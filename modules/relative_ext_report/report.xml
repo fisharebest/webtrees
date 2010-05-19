@@ -134,7 +134,7 @@
 							<PGVRRepeatTag tag="CHIL">
 								<PGVRGedcom id="@CHIL">
 									<PGVRText style="mini">
-										<!-- Print this only when more then one child exist -->
+										<!-- Print this only when more than one child exist -->
 										<PGVRif condition="$morechildren==1">, </PGVRif>
 										<PGVRGetPersonName id="" /> (<PGVRGedcomValue tag="@id" />)
 									</PGVRText>
