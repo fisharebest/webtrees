@@ -45,7 +45,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id) {
-		global $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
+		global $ctype, $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 		global $MEDIA_EXTERNAL, $MEDIA_DIRECTORY, $SHOW_SOURCES;
 		global $MEDIATYPE, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $WT_IMAGE_DIR, $WT_IMAGES;
 
@@ -162,8 +162,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$id=$this->getName().$block_id;
 				$title='';
 				$content = "";
-				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('".encode_url("index_edit.php?action=configure&block_id={$block_id}")."', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">"
+			."<img class=\"adminicon\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
 				$title .= i18n::translate('Random Picture');
 				$title .= help_link('index_media');
 				$content = "<div id=\"random_picture_container$block_id\">";
