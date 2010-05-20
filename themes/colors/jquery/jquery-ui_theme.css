@@ -71,9 +71,10 @@ ul.clist {
 	position: absolute;
 	right: 0px;
 	width: 0px;
-	margin-left:0px;
-	margin-top: 8px;
-	margin-right: 12px;
+	margin-top: 10px;
+	margin-right: 22px;
+	margin-bottom: 15px;
+	margin-left:15px;
 	background-color: transparent;
 
 }
