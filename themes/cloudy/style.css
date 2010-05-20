@@ -1773,3 +1773,57 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 	background-color: #8dbdd8;
 }
+/* styles for FindFacts pop-up */
+#layDefinedTags,#tabDefinedTagsShow {
+	width:450px;
+}
+#tabDefinedTags {
+	width:430px;
+}
+#layDefinedTags {
+	margin-left:auto;
+	margin-right:auto;
+	height:285px;
+	overflow:auto;
+	border:inset 2px buttonface;
+}
+#tabDefinedTags {
+	border-collapse:collapse;
+}
+#tabDefinedTags th,#tabDefinedTags td {
+	border:solid 1px #000;
+	margin:0;
+	padding:3px;
+}
+#tabDefinedTags tbody th {
+	text-align:left;
+	font-weight:bold;
+}
+#tabDefinedTags tr.sel {
+	background-color:#D1D9EF;
+	color:#888;
+}
+#tabDefinedTags tr.unsel {
+	background-color:#FFFFFF;
+	color:#888;
+}
+#tabDefinedTagsShow {
+	margin-left:auto;
+	margin-right:auto;
+}
+#tabDefinedTagsShow td {
+	width:50%;
+	text-align:center;
+}
+#tabFilterAndCustom {
+	margin-left:auto;
+	margin-right:auto;
+}
+#tabAction {
+	margin-left:auto;
+	margin-right:auto;
+}
+#tabAction td {
+	width:50%;
+	text-align:center;
+}

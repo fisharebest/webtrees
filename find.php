@@ -447,68 +447,6 @@ if ($type == "facts") {
 	echo "<tr><td class=\"list_label $TEXT_DIRECTION\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
 	getPreselectedTags($preselDefault, $preselCustom);
 	?> 
-	<style type="text/css">
-	#layDefinedTags,#tabDefinedTagsShow { width:450px; }
-	#tabDefinedTags { width:430px; }
-	#layDefinedTags
-	{
-		margin-left:auto;
-		margin-right:auto;
-		height:285px;
-		overflow:auto;
-		border:inset 2px buttonface;
-	}
-	#tabDefinedTags
-	{
-		border-collapse:collapse;
-	}
-	#tabDefinedTags th,#tabDefinedTags td
-	{
-		border:solid 1px #000;
-		margin:0;
-		padding:3px;
-	}
-	#tabDefinedTags tbody th
-	{
-		text-align:left;
-		font-weight:bold;
-	}
-	#tabDefinedTags tr.sel
-	{
-		background-color:#efe;
-		color:#888;
-	}
-	#tabDefinedTags tr.unsel
-	{
-		background-color:#fee;
-		color:#888;
-	}
-	#tabDefinedTagsShow
-	{
-		margin-left:auto;
-		margin-right:auto;
-	}
-	#tabDefinedTagsShow td
-	{
-		width:50%;
-		text-align:center;
-	}
-	#tabFilterAndCustom
-	{
-		margin-left:auto;
-		margin-right:auto;
-	}
-	#tabAction
-	{
-		margin-left:auto;
-		margin-right:auto;
-	}
-	#tabAction td
-	{
-		width:50%;
-		text-align:center;
-	}
-	</style>
 	<?php echo WT_JS_START; ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
