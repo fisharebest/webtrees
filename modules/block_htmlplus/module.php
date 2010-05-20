@@ -47,6 +47,12 @@ class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id) {
 		global $ctype, $GEDCOM, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $MULTI_MEDIA, $SHOW_ID_NUMBERS, $THEME_DIR;
 
+		// Only show this block for certain languages
+		$languages=get_block_setting($block_id, 'languages');
+		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+			return;
+		}
+
 		/*
 	 	* Select GEDCOM
 	 	*/
@@ -170,9 +176,21 @@ class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'gedcom', safe_POST('gedcom'));
 			set_block_setting($block_id, 'title', $_POST['title']);
 			set_block_setting($block_id, 'html', $_POST['html']);
+			$languages=array();
+			foreach (i18n::installed_languages() as $code=>$name) {
+				if (safe_POST_bool('lang_'.$code)) {
+					$languages[]=$code;
+				}
+			}
+			if (!$languages) {
+				$languages[]=WT_LOCALE;
+			}
+			set_block_setting($block_id, 'languages', implode(',', $languages));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
+
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$useFCK = file_exists(WT_ROOT.'modules/FCKeditor/fckeditor.php');
 		if($useFCK){
@@ -409,5 +427,12 @@ class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
 			."</td><td class=\"optionbox\"><input type=\"checkbox\" name=\"ui\" value=\"1\"{$ui} /></td>\n"
 			."\t</tr>\n"
 		;
+
+		$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Show this block for which languages?');
+		echo '</td><td class="optionbox">';
+		echo edit_language_checkboxes('lang_', $languages);
+		echo '</td></tr>';
 	}
 }

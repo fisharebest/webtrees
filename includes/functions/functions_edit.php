@@ -88,6 +88,17 @@ function checkbox_with_value($name, $is_checked='', $checked_value='1', $uncheck
 		' onclick="document.getElementById(\''.$name.'-value\').value=(this.checked ? \''.$checked_value.'\' : \''.$unchecked_value.'\');" />';
 }
 
+// Print a set of edit controls to select languages
+function edit_language_checkboxes($field_prefix, $languages) {
+	foreach (i18n::installed_languages() as $code=>$name) {
+		echo '<input type="checkbox" name="'.$field_prefix.$code.'"';
+		if (strpos("@{$languages}@", $code)!==false) {
+			echo 'checked="checked"';
+		}
+		echo '> ', $name, '<br/>';
+	}
+}
+
 // Print an edit control for logging frequency
 function edit_field_log_frequency($name, $selected='', $extra='') {
 	$LOG_FREQUENCY=array(
