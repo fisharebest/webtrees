@@ -138,7 +138,6 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		// MySQL supports a wide range of collation conversions.  These are ones that
 		// have been encountered "in the wild".
 		switch ($charset) {
-		case 'ANSI':
 		case 'ASCII':
 			WT_DB::prepare(
 				"UPDATE {$TBLPREFIX}gedcom".
@@ -154,6 +153,36 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			WT_DB::prepare(
 				"UPDATE {$TBLPREFIX}gedcom".
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING cp850) USING utf8)".
+				" WHERE gedcom_id=?"
+			)->execute(array($gedcom_id));
+			break;				
+		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
+			echo
+				// I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
+				WT_JS_START, 
+				'alert("', i18n::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");',
+				WT_JS_END;
+		case 'CP1252':
+		case 'ISO8859-1':
+		case 'ISO-8859-1':
+		case 'LATIN1':
+		case 'LATIN-1':
+			// Convert from ISO-8859-1 (western european) to UTF8.
+			WT_DB::prepare(
+				"UPDATE {$TBLPREFIX}gedcom".
+				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin1) USING utf8)".
+				" WHERE gedcom_id=?"
+			)->execute(array($gedcom_id));
+			break;				
+		case 'CP1250':
+		case 'ISO8859-2':
+		case 'ISO-8859-2':
+		case 'LATIN2':
+		case 'LATIN-2':
+			// Convert from ISO-8859-2 (eastern european) to UTF8.
+			WT_DB::prepare(
+				"UPDATE {$TBLPREFIX}gedcom".
+				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin2) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;				
