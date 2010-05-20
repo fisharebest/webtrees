@@ -146,7 +146,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				-->
 				</script>';
 		} else {
-			$content=i18n::translate('No such ID exists in this GEDCOM file.');
+			$content=i18n::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
 		require $THEME_DIR.'templates/block_small_temp.php';
