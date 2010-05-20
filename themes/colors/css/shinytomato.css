@@ -250,6 +250,49 @@ p.center .warning, tr td.optionbox span.error, span.error {
 color:#f50;
 }
 
+/* Override js/jquery-ui.custom.css            */
+/* Right Side Tab----------------------------------*/
+.ui-state-active, .ui-widget-content .ui-state-active { background: #F96058;}
+
+/* Flyout changes */
+
+.flyout2 {
+        margin-left:-40px; /* move popup left */
+}
+.flyout2 a:hover{ /* color change and force underline */
+         color:#2f416f;
+         text-decoration:underline !important;
+}
+#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
+    font-size: 11px;
+    color: #000;
+}
+
+/* Tabs ----------------------------------*/
+.ui-widget-header { border: 1px solid #fff; background: #F96058 !important;  opacity: 0.67;}
+.ui-widget-content a:hover {color: #f50;}
+.ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff;}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #000000; }
+.ui-tabs-nav li.ui-tabs-selected { background: #fff; }
+
+
+/* Colors specific changes                     */
+/* Location and behavior of Right Site Tab in/out pin-------*/
+
+#sidebar {  
+background: #fff !important;
+}
+
+/* Navigator and Flyout menu Styles -----------*/
+
+.nav_content #spouse {
+color:  #000;
+}
+.nav_content .facts_label a{
+color: #ffffff;
+}
+
 /*	Start Standard Code					*/
 
 .blockcontent {
@@ -1602,50 +1645,6 @@ dt {
 #indi_details {
 	display: block;
 	width: 100%;
-}
-
-/* Override js/jquery-ui.custom.css            */
-/* Right Side Tab----------------------------------*/
-.ui-state-active, .ui-widget-content .ui-state-active { background: #F96058;}
-
-/* Flyout changes */
-
-.flyout2 {
-        margin-left:-40px; /* move popup left */
-}
-.flyout2 a:hover{ /* color change and force underline */
-         color:#2f416f;
-         text-decoration:underline !important;
-}
-#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
-    font-size: 11px;
-    color: #000;
-}
-
-/* Tabs ----------------------------------*/
-.ui-widget-header { border: 1px solid #fff; background: #F96058 !important;  opacity: 0.67;}
-.ui-widget-content a:hover {color: #f50;}
-.ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff;}
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #000000; }
-.ui-tabs-nav li.ui-tabs-selected { background: #fff; }
-
-
-/* Colors specific changes                     */
-/* Location and behavior of Right Site Tab in/out pin-------*/
-
-#sidebar {  
-background: #fff !important;
-margin: 9px 20px 15px 15px;
-}
-
-/* Navigator and Flyout menu Styles -----------*/
-
-.nav_content #spouse {
-color:  #000;
-}
-.nav_content .facts_label a{
-color: #ffffff;
 }
 
 /* tables for Module Admin tab */
