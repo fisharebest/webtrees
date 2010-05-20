@@ -104,6 +104,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		// I18N: %1$s = software program, %2$s = date
 		$content .= i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', $software, $version);
+		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'.encode_url("indilist.php?surname_sublist=no&ged=".WT_GEDCOM).'">'.$stats->totalIndividuals().'</a></div></td></tr>';
 			$content.='<tr><td class="facts_label">'.i18n::translate('Males').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexMales().'<br />'.$stats->totalSexMalesPercentage().'%</div></td></tr>';
