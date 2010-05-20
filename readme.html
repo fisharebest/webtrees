@@ -48,6 +48,7 @@
 	<li><a href="#">BACKUP</li>
 </ol>
 <hr width="100%">
+<!-- LICENSE -->
 <div style="float:left;"><a name="licence"><h3>LICENSE</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
 webtrees: Web based Family History software<br />
  * Copyright (C) 2010 webtrees development team.<br />
@@ -62,12 +63,14 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 See the file GPL.txt included with this software for more detailed licensing information.
 <br /><br />
 <hr width="100%">
+<!-- INTRODUCTION -->
 <div style="float:left;"><a name="intro"><h3>INTRODUCTION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
 <b>webtrees</b> is based on the popular PhpGedView on line genealogy application ("PGV"). Whereas PGV aimed to do everything for everyone,<b>webtrees</b> aims to be more efficient and effective by using the right combination of third-party tools, design techniques and open standards.<b>webtrees</b> allows you to view and edit your genealogy on your website. It has full editing capabilities, full privacy functions, and supports multimedia like photos and document images. As an on line program, it fosters extended family participation and good ancestral recording habits, as it simplifies the process of collaborating with others working on your family lines. Your latest information is always on your web site and available for others to see, defined by viewing rules you set. For more information and to see working demos, visit http://webtrees.net/ 
 <br /><br />
 <b>webtrees</b> is Open Source software that has been produced by people from many countries freely donating their time and talents to the project. All service, support, and future development is dependent on the time developers are willing to donate to the project, often at the expense of work, recreation, and family. Beyond the few donations received from users, developers receive no compensation for the time they spend working on the project. There is also no outside source of revenue to support the project. Please consider these circumstances when making support requests and consider volunteering your own time and skills to make the project even stronger and better.
 <br /><br />
 <hr width="100%">
+<!-- SYSTEM REQUIREMENTS -->
 <div style="float:left;"><a name="system"><h3>SYSTEM REQUIREMENTS</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
 The following instructions will guide you through a basic installation of <b>webtrees</b>. Initially, we recommend this approach, and that on completion of your new <b>webtrees</b> installation, you confirm your site is working correctly before considering the many advanced configuration options available.
 <br /><br />
@@ -87,14 +90,15 @@ The following instructions will guide you through a basic installation of <b>web
 	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration. 
 </ul>
 <hr width="100%">
+<!-- INSTALLATION -->
 <div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
 The following instructions will guide you through a basic installation of <b>webtrees</b> . We recommend this approach initially, and that on completion you check your site is working correctly before looking at the more advanced configuration options available.
 <br /><br />
 <ol>
 	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
-	<li>Upload the files to your web server.</li>
-	<li>Open your web browser and enter the URL for your <b>webtrees</b> site (for example, http://www.yourserver.com/webtrees).</li>
-	<li><b>webtrees</b> setup will start automatically. Follow the steps described there, reading all notes, and any red warning messages you receive carefully as you proceed through each step.</li>
+	<li>Unzip the files and upload them to an empty directory on your web server.</li>
+	<li>Open your web browser and type the URL for your <b>webtrees</b> site (for example, http://www.yourserver.com/webtrees) into the address bar.</li>
+	<li>The <b>webtrees</b> setup wizard will start automatically. Follow the steps described there, reading all notes, and any red warning messages you receive carefully as you proceed through each step.</li>
 	<li>On successful completion of all steps you will be taken to the GEDCOM (family tree) administration page where you can:</li>
 	<ul>
 		<li>UPLOAD a GEDCOM file from your local machine, or</li>
@@ -115,6 +119,7 @@ Once all these steps are completed you can check that everything is in place, th
 	<li>If any other requirements exist for the specific upgrade you are doing, you will be advised on screen as soon as you go to your site URL. This may occasionally include a requirement to re-import your GEDCOM (family tree) file.</li>
 </ol>
 <hr width="100%">
+<!-- GEDCOM FILES -->
 <div style="float:left;"><a name="gedcom"><h3>GEDCOM (family tree) FILES</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
 When you IMPORT or UPLOAD a GEDCOM (family tree) file in <b>webtrees</b> the data from the file is all transferred to the database tables. The file itself is no longer used or required by <b>webtrees</b>
 <br />
@@ -136,34 +141,43 @@ When or if you change your genealogy data outside of <b>webtrees</b>, it is not 
 	<li>You can use a ZIP file to upload the GEDCOM, but only if you use the UPLOAD option. The file name can be anything you choose.</li>
 </ol>
 <hr width="100%">
+<!-- SECURITY -->
 <div style="float:left;"><a name="security"><h3>SECURITY</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-Even though <b>webtrees</b> gives you the ability to hide the details of living individuals, whenever you post personal details of living individuals on the Internet, you should first obtain the permission of EACH living person you plan to include.  There are many people who would not even want their name linked with their family history made public on the Internet and their wishes should be respected and honored.  Most family history programs allow you to choose the people who are exported when you create your GEDCOM file.  The most secure option is to deselect all living people in your genealogy program when you export your genealogical data to a GEDCOM file.
+<b>Security in <i>webtrees</i> means ensuring your site is safe from unwanted intrusions, hacking, or access to data and configuration files. The developers of <i>webtrees</i> regard security as an extremely important part of its development and have made every attempt to ensure your data is safe.</b>
 <br /><br />
-If you wish to protect your GEDCOM (family tree) and other key files from being downloaded over the Internet you should do one or both of the following:
-<ul>
-	<li>Delete your GEDCOM (family tree) file from your web server after you have completed <b>webtrees</b> IMPORT process (<b>webtrees</b> does not need or use the file after it has been imported), or</li>
-	<li>Place the webtrees/data folder outside the root directory of your web server or virtual host</li>
-</ul>
-Following is an example of moving the file outside the root directory:
+The area most at risk of intrusion would be the /data folder that contains your config.ini.php, GEDCOM configuration (<i>xxxx</i>.ged_conf.php), and privacy setting (<i>xxxx</i>.ged_priv.php) files. If you are concerned there may be a risk there is a very simple test you can do: try to fetch <b>config.ini.php</b> by typing <b>http:// </b><i>url to your site</i><b> /data/config.ini.php</b> in your web browser. 
 <br /><br />
-If your home directory is something like <b>/home/username</b>,<br />
-and the root directory for your web site is <b>/home/username/public_html</b>,<br />
-and you have installed webtrees in the <b>public_html/webtrees</b> directory,<br />
-then you would create a new <b>data</b> folder in your home directory at the same level as your public_html directory, such as <b>/home/username/private/data</b>, and place your GEDCOM (family tree) file there.
-<br /><br />
-Then change the <b>Data file directory</b> setting on the Admin --> Site Administration page from the default <b>data/</b> to the new location <b>/home/username/private/data</b>
+<table border="1px" cellpadding="5px" cellspacing="0">
+	<tr>
+		<td>
+			<font size="4"><b>Forbidden</b></font><br /><br />You don't have permission to access /data/xxxx.ged on this server.
+		</td>
+	</tr>
+</table>
 <br />
+This indicates that the protection built into <b>webtrees</b> is working, and no further action is required.
+<br /><br />
+In the unlikely event you do fetch the file (you will just see a semicolon), then that protection is not working on your site and you should take some further action.
+<br /><br />
+If your server runs PHP in CGI mode, then change the permission of the /data directory to 700 instead of 777. This will block access to the httpd process, while still allowing access to PHP scripts.
+<br /><br />
+This will work for perhaps 99% of all users. Only the remaining 1% should consider the most complex solution, moving the /data/ directory out of accessible web space. (<b><i>Note:</i></b> In many shared hosting environments this is not an option anyway.
+<br /><br /><br />
+If you do find it necessary, following is an example of the process required:
+<br /><br />
+If your home directory is something like <b>/home/username</b>,
+and the root directory for your web site is <b>/home/username/public_html</b>,
+and you have installed webtrees in the <b>public_html/webtrees</b> directory,
+then you would create a new <b>data</b> folder in your home directory at the same level as your public_html directory, such as <b>/home/username/private/data</b>, and place your GEDCOM (family tree) file there.
+
+Then change the <b>Data file directory</b> setting on the Admin --> Site Administration page from the default <b>data/</b> to the new location <b>/home/username/private/data</b>
+
 You will have <b>two</b> data directories:
 <ul>
 	<li>[path to webtrees]/data - just needs to contain config.ini.php</li>
-	<li>/home/username/private/data - contains everything else.</li>
+	<li>/home/username/private/data - contains everything else</li>
 </ul>
-Since your GEDCOM and other files now reside in a directory outside of your web server's root directory, your web server will not be able to fulfill requests to download them.  However, <b>webtrees</b> will still be able to read and use their contents.
-<br /><br />
-If you also want to protect the security of some or all of the media files you upload to webtrees, then you should enable the <b>Media Firewall</b> option (GEDCOM Configuration - Multimedia - Use Media Firewall). Setting the <b>Media Firewall Root Directory</b> to </b>data/</b> will move your media items to the protected folder created in /home/username/private/data. 
-<br /><br />In the end it is YOUR responsibility to guarantee that there has been no violation of an individual's privacy and YOU could be held liable should private information be made public on the web sites that you administer.
-<br /><br />
-<!-- For more privacy options visit: http://www.webtrees.net/privacy.php -->
+<hr width="100%">
 <br /><br />
 </body>
 </html>
