@@ -415,7 +415,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="editconfig_gedcom.php">
 
-<table class="facts_table center <?php echo $TEXT_DIRECTION; ?> width90">
+<table class="facts_table center <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
 		<td colspan="2" class="facts_label">
 			<?php
@@ -450,10 +450,10 @@ print_header(i18n::translate('GEDCOM configuration'));
 	$i = 0;
 ?>
 
-<table class="center <?php echo $TEXT_DIRECTION ?> width90">
+<table class="center <?php echo $TEXT_DIRECTION ?>">
 	<tr>
 		<td colspan="2">
-			<div id="tabs" class="width100">
+			<div id="tabs" class="">
 				<ul>
 					<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics')?></span></a></li>
 					<li><a href="#config-media"><span><?php echo i18n::translate('Multimedia')?></span></a></li>

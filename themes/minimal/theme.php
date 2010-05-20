@@ -101,6 +101,7 @@ $WT_IMAGES["media"]["button"] = "buttons/media.gif";
 $WT_IMAGES["source"]["button"] = "buttons/source.gif";
 $WT_IMAGES["note"]["button"] = "buttons/note.gif";
 $WT_IMAGES["head"]["button"] = "buttons/head.gif";
+$WT_IMAGES["find_facts"]["button"] = "buttons/find_facts.png";
 
 // Media images
 $WT_IMAGES["media"]["audio"] = "../../../images/media/audio.png";

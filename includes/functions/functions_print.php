@@ -2286,7 +2286,7 @@ function print_findfact_link($element_id, $ged='', $asString=false) {
 
 	$text = i18n::translate('Find fact tag');
 	if (empty($ged)) $ged=$GEDCOM;
-	if (isset($WT_IMAGES["keyboard"]["button"])) $Link = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["keyboard"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["find_facts"]["button"])) $Link = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["find_facts"]["button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"top\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findFact(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
 	$out .= $Link;
