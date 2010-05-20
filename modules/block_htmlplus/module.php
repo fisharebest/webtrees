@@ -206,8 +206,7 @@ class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
  </tr>
  #getAllTagsTable#
 </table>',
-			// I18N: do not translate the #keywords#
-			i18n::translate('Narrative description')=>i18n::translate('This site was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br /><br />If you have any comments or feedback please contact #contactWebmaster#.'),
+i18n::translate('Narrative description')=>/* I18N: do not translate the #keywords# */ i18n::translate('This site was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br /><br />If you have any comments or feedback please contact #contactWebmaster#.'),
 			i18n::translate('GEDCOM statistics')=>'<div class="gedcom_stats">
 <span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br />
 '.i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', '#gedcomCreatedSoftware#', '#gedcomDate#').'

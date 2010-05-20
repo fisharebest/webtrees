@@ -158,9 +158,8 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			break;				
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
 			echo
-				// I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 				WT_JS_START, 
-				'alert("', i18n::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");',
+				'alert("', /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ i18n::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");',
 				WT_JS_END;
 		case 'CP1252':
 		case 'ISO8859-1':
