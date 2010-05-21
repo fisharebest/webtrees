@@ -119,20 +119,27 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." thumbnail file could not be found</span><br />";}
 
 				// Filter according to format and type  (Default: unless configured otherwise, don't filter)
-				if (!empty($medialist[$value]["FORM"]) && !$filters[$medialist[$value]["FORM"]]) $disp = false;
-				if (!empty($medialist[$value]["TYPE"]) && !$filters[$medialist[$value]["TYPE"]]) $disp = false;
+				if (!array_key_exists($medialist[$value]["FORM"], $filters)) {
+					$disp=false;
+				} elseif (!array_key_exists($medialist[$value]["TYPE"], $filters)) {
+					$disp=false;
+				} elseif (!empty($medialist[$value]["FORM"]) && !$filters[$medialist[$value]["FORM"]]) {
+					$disp=false;
+				} elseif (!empty($medialist[$value]["TYPE"]) && !$filters[$medialist[$value]["TYPE"]]) {
+					$disp=false;
+				}
 				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." failed Format or Type filters</span><br />";
 				}
 
 				if ($disp && count($links) != 0){
 					if ($disp && $filter!="all") {
 						// Apply filter criteria
-						$ct = preg_match("/0\s(@.*@)\sOBJE/", $medialist[$value]["GEDCOM"], $match);
+						$ct = preg_match("/0 (@.*@) OBJE/", $medialist[$value]["GEDCOM"], $match);
 						$objectID = $match[1];
 						//-- we could probably use the database for this filter
 						foreach($links as $key=>$type) {
 							$gedrec = find_gedcom_record($key, WT_GED_ID);
-							$ct2 = preg_match("/(\d)\sOBJE\s{$objectID}/", $gedrec, $match2);
+							$ct2 = preg_match("/(\d) OBJE {$objectID}/", $gedrec, $match2);
 							if ($ct2>0) {
 								$objectRefLevel = $match2[1];
 								if ($filter=="indi" && $objectRefLevel!="1") $disp = false;
