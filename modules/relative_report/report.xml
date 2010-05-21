@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PGVReport>
+<Report>
 <!-- $Id$ -->
-	<PGVRTitle><PGVRvar var="i18n::translate('Relatives Report')" /></PGVRTitle>
-	<PGVRDescription>Prints a list of individuals related to a specific person</PGVRDescription>
-	<PGVRInput name="pid" lookup="INDI" type="text"><PGVRvar var="i18n::translate('Enter Individual ID')" /></PGVRInput>
-	<PGVRInput name="relatives" type="select" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><PGVRvar var="i18n::translate('Choose relatives')" /></PGVRInput>
-	<PGVRInput name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|ID=>i18n::translate('ID number')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')|DEAT:DATE=>i18n::translate('Date of death')"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
-	<PGVRInput name="pageorient" type="select" default="landscape" options="landscape=>i18n::translate('Landscape')|portrait=>i18n::translate('Portrait')"><PGVRvar var="i18n::translate('Orientation')" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
+	<Title><var var="i18n::translate('Relatives Report')" /></Title>
+	<Description>Prints a list of individuals related to a specific person</Description>
+	<Input name="pid" lookup="INDI" type="text"><var var="i18n::translate('Enter Individual ID')" /></Input>
+	<Input name="relatives" type="select" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><var var="i18n::translate('Choose relatives')" /></Input>
+	<Input name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|ID=>i18n::translate('ID number')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')|DEAT:DATE=>i18n::translate('Date of death')"><var var="i18n::translate('Sort by')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
+	<Input name="pageorient" type="select" default="landscape" options="landscape=>i18n::translate('Landscape')|portrait=>i18n::translate('Portrait')"><var var="i18n::translate('Orientation')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
 
-	<PGVRStyle name="header" font="$fonts" size="14" style="b" />
-	<PGVRStyle name="pagenum" font="$fonts" size="8" />
-	<PGVRStyle name="text" font="$fonts" size="9" />
-	<PGVRStyle name="label" font="$fonts" size="9" style="b" />
-	<PGVRStyle name="genby" font="$fonts" size="8" />
+	<Style name="header" font="$fonts" size="14" style="b" />
+	<Style name="pagenum" font="$fonts" size="8" />
+	<Style name="text" font="$fonts" size="9" />
+	<Style name="label" font="$fonts" size="9" style="b" />
+	<Style name="genby" font="$fonts" size="8" />
 	<!-- Date text -->
-	<PGVRStyle name="date" font="$fonts" size="8"/>
+	<Style name="date" font="$fonts" size="8"/>
 
-	<PGVRif condition="$pageorient=='landscape'">
+	<if condition="$pageorient=='landscape'">
 		<!-- landscape orientation -->
-		<PGVRSetVar name="idwidth" value="50"/>
-		<PGVRSetVar name="namewidth" value="180"/>
-		<PGVRSetVar name="birthwidth" value="250"/>
-	</PGVRif>
+		<SetVar name="idwidth" value="50"/>
+		<SetVar name="namewidth" value="180"/>
+		<SetVar name="birthwidth" value="250"/>
+	</if>
 	
-	<PGVRif condition="$pageorient=='portrait'">
+	<if condition="$pageorient=='portrait'">
 		<!-- portrait orientation -->
-		<PGVRSetVar name="idwidth" value="45"/>
-		<PGVRSetVar name="namewidth" value="155"/>
-		<PGVRSetVar name="birthwidth" value="160"/>
-	</PGVRif>
+		<SetVar name="idwidth" value="45"/>
+		<SetVar name="namewidth" value="155"/>
+		<SetVar name="birthwidth" value="160"/>
+	</if>
 
-	<PGVRDoc pageSize="$pageSize" orientation="$pageorient" >
+	<Doc pageSize="$pageSize" orientation="$pageorient" >
 
-		<PGVRHeader>
-			<PGVRCell align="center" height="20" newline="1" style="header"><PGVRvar var="i18n::translate('Relatives Report')" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')" /> <PGVRPageNum /> <PGVRvar var="i18n::translate('of')" /> <PGVRTotalPages /></PGVRCell>
+		<Header>
+			<Cell align="center" height="20" newline="1" style="header"><var var="i18n::translate('Relatives Report')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="i18n::translate('Page')" /> <PageNum /> <var var="i18n::translate('of')" /> <TotalPages /></Cell>
 
-			<PGVRSetVar name="fill" value="" />
-			<PGVRif condition="$sortby=='ID'">
-				<PGVRSetVar name="fill" value="#AAAAAA" />
-			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" style="label" width="$idwidth"> </PGVRCell>
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='ID'">
+				<SetVar name="fill" value="#AAAAAA" />
+			</if>
+			<Cell bgcolor="$fill" border="1" style="label" width="$idwidth"> </Cell>
 
-			<PGVRSetVar name="fill" value="" />
-			<PGVRif condition="$sortby=='NAME'">
-				<PGVRSetVar name="fill" value="#AAAAAA" />
-			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" style="label" width="$namewidth"> <PGVRvar var="i18n::translate('Name')" /></PGVRCell>
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='NAME'">
+				<SetVar name="fill" value="#AAAAAA" />
+			</if>
+			<Cell bgcolor="$fill" border="1" style="label" width="$namewidth"> <var var="i18n::translate('Name')" /></Cell>
 
-			<PGVRSetVar name="fill" value="" />
-			<PGVRif condition="$sortby=='BIRT:DATE'">
-				<PGVRSetVar name="fill" value="#AAAAAA" />
-			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" style="label" width="$birthwidth"> <PGVRvar var="i18n::translate('Birth')" /></PGVRCell>
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='BIRT:DATE'">
+				<SetVar name="fill" value="#AAAAAA" />
+			</if>
+			<Cell bgcolor="$fill" border="1" style="label" width="$birthwidth"> <var var="i18n::translate('Birth')" /></Cell>
 
-			<PGVRSetVar name="fill" value="" />
-			<PGVRif condition="$sortby=='DEAT:DATE'">
-				<PGVRSetVar name="fill" value="#AAAAAA" />
-			</PGVRif>
-			<PGVRCell bgcolor="$fill" border="1" newline="1" style="label"> <PGVRvar var="i18n::translate('Death')" /></PGVRCell>
-		</PGVRHeader>
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='DEAT:DATE'">
+				<SetVar name="fill" value="#AAAAAA" />
+			</if>
+			<Cell bgcolor="$fill" border="1" newline="1" style="label"> <var var="i18n::translate('Death')" /></Cell>
+		</Header>
 
-		<PGVRBody>
+		<Body>
 
-			<PGVRRelatives id="$pid" group="$relatives" sortby="$sortby">
-				<PGVRTextBox height="1" newline="1"/>
-				<PGVRTextBox height="12" width="$idwidth">
-					<PGVRText style="text"><PGVRGedcomValue tag="@id" /></PGVRText>
-				</PGVRTextBox>
-				<PGVRTextBox height="12" width="$namewidth">
-					<PGVRText style="text"><PGVRGetPersonName id="" /></PGVRText>
-				</PGVRTextBox>
-				<PGVRTextBox height="12" width="$birthwidth">
-					<PGVRText style="text">
-						<PGVRGedcomValue tag="BIRT:DATE" />
+			<Relatives id="$pid" group="$relatives" sortby="$sortby">
+				<TextBox height="1" newline="1"/>
+				<TextBox height="12" width="$idwidth">
+					<Text style="text"><GedcomValue tag="@id" /></Text>
+				</TextBox>
+				<TextBox height="12" width="$namewidth">
+					<Text style="text"><GetPersonName id="" /></Text>
+				</TextBox>
+				<TextBox height="12" width="$birthwidth">
+					<Text style="text">
+						<GedcomValue tag="BIRT:DATE" />
 						<!-- Add space only if birth date exist -->
-						<PGVRif condition="@BIRT:DATE!=''">  </PGVRif>
-						<PGVRGedcomValue tag="BIRT:PLAC" />
-					</PGVRText>
-				</PGVRTextBox>
-				<PGVRTextBox height="12" newline="1">
-					<PGVRText style="text">
-						<PGVRGedcomValue tag="DEAT:DATE" />
+						<if condition="@BIRT:DATE!=''">  </if>
+						<GedcomValue tag="BIRT:PLAC" />
+					</Text>
+				</TextBox>
+				<TextBox height="12" newline="1">
+					<Text style="text">
+						<GedcomValue tag="DEAT:DATE" />
 						<!-- Add space only if death date exist -->
-						<PGVRif condition="@DEAT:DATE!=''">  </PGVRif>
-						<PGVRGedcomValue tag="DEAT:PLAC" />
-					</PGVRText>
-				</PGVRTextBox>
+						<if condition="@DEAT:DATE!=''">  </if>
+						<GedcomValue tag="DEAT:PLAC" />
+					</Text>
+				</TextBox>
 				<!-- page wide line, to the margin -->
-				<PGVRLine />
-			</PGVRRelatives>
+				<Line />
+			</Relatives>
 
-			<PGVRCell align="rightrtl" newline="1" style="label">
-				<br /><PGVRvar var="i18n::translate('Total individuals')" />: <PGVRListTotal />
-			</PGVRCell>
-		</PGVRBody>
-		<PGVRFooter>
-			<PGVRCell align="rightrtl" newline="1" style="date"><PGVRNow /></PGVRCell>
-		</PGVRFooter>
-	</PGVRDoc>
-</PGVReport>
+			<Cell align="rightrtl" newline="1" style="label">
+				<br /><var var="i18n::translate('Total individuals')" />: <ListTotal />
+			</Cell>
+		</Body>
+		<Footer>
+			<Cell align="rightrtl" newline="1" style="date"><Now /></Cell>
+		</Footer>
+	</Doc>
+</Report>

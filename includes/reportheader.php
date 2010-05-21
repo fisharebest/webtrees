@@ -24,13 +24,13 @@ define('WT_REPORTHEADER_PHP', '');
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["PGVReport"]["start"]		= "PGVReportSHandler";
-$elementHandler["PGVRvar"]["start"]			= "PGVRvarSHandler";
-$elementHandler["PGVRTitle"]["start"]		= "PGVRTitleSHandler";
-$elementHandler["PGVRTitle"]["end"]			= "PGVRTitleEHandler";
-$elementHandler["PGVRDescription"]["end"]	= "PGVRDescriptionEHandler";
-$elementHandler["PGVRInput"]["start"]		= "PGVRInputSHandler";
-$elementHandler["PGVRInput"]["end"]			= "PGVRInputEHandler";
+$elementHandler["Report"]["start"]		= "ReportSHandler";
+$elementHandler["var"]["start"]			= "varSHandler";
+$elementHandler["Title"]["start"]		= "TitleSHandler";
+$elementHandler["Title"]["end"]			= "TitleEHandler";
+$elementHandler["Description"]["end"]	= "DescriptionEHandler";
+$elementHandler["Input"]["start"]		= "InputSHandler";
+$elementHandler["Input"]["end"]			= "InputEHandler";
 
 $text = "";
 $report_array = array();
@@ -50,7 +50,7 @@ function startElement($parser, $name, $attrs) {
 //	global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
-	if (($processIfs==0) || ($name=="PGVRif")) {
+	if (($processIfs==0) || ($name=="if")) {
 		if (isset($elementHandler[$name]["start"])) {
 			call_user_func($elementHandler[$name]["start"], $attrs);
 		}
@@ -69,7 +69,7 @@ function endElement($parser, $name) {
 //	global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
-	if (($processIfs==0) || ($name=="PGVRif")) {
+	if (($processIfs==0) || ($name=="if")) {
 		if (isset($elementHandler[$name]["end"])) {
 			call_user_func($elementHandler[$name]["end"]);
 		}
@@ -90,7 +90,7 @@ function characterData($parser, $data) {
 	$text .= $data;
 }
 
-function PGVReportSHandler($attrs) {
+function ReportSHandler($attrs) {
 	global $report_array;
 
 	$access = WT_PRIV_PUBLIC;
@@ -108,7 +108,7 @@ function PGVReportSHandler($attrs) {
 	}
 }
 
-function PGVRvarSHandler($attrs) {
+function varSHandler($attrs) {
 	global $text, $vars, $fact, $desc, $type, $generation;
 
 	$var = $attrs["var"];
@@ -126,7 +126,7 @@ function PGVRvarSHandler($attrs) {
 	}
 }
 
-function PGVRTitleSHandler() {
+function TitleSHandler() {
 	// @deprecated
 //	global $report_array, $text;
 	global $text;
@@ -134,21 +134,21 @@ function PGVRTitleSHandler() {
 	$text = "";
 }
 
-function PGVRTitleEHandler() {
+function TitleEHandler() {
 	global $report_array, $text;
 
 	$report_array["title"] = $text;
 	$text = "";
 }
 
-function PGVRDescriptionEHandler() {
+function DescriptionEHandler() {
 	global $report_array, $text;
 
 	$report_array["description"] = $text;
 	$text = "";
 }
 
-function PGVRInputSHandler($attrs) {
+function InputSHandler($attrs) {
 	global $input, $text;
 
 	$text ="";
@@ -189,7 +189,7 @@ function PGVRInputSHandler($attrs) {
 	}
 }
 
-function PGVRInputEHandler() {
+function InputEHandler() {
 	global $report_array, $text, $input;
 
 	$input["value"] = $text;

@@ -1,108 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PGVReport>
+<Report>
 <!-- $Id$ -->
-	<PGVRDescription>Prints address labels</PGVRDescription>
-	<PGVRTitle><PGVRvar var="i18n::translate('Address Labels')" /></PGVRTitle>
-	<PGVRInput name="address" type="text"><PGVRvar var="i18n::translate('Show addresses that contain:')" /> </PGVRInput>
-	<PGVRInput name="sortby" type="select" options="NAME=>i18n::translate('Name')|ID=>i18n::translate('ID number')"><PGVRvar var="i18n::translate('Sort by')" /></PGVRInput>
-	<PGVRInput name="email_in" type="select" options="all=>i18n::translate('All addresses')|noemail=>i18n::translate('Addresses without emails')|onlyemail=>i18n::translate('Only addresses with emails')"><PGVRvar var="i18n::translate('Include:')"/> </PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
-	<PGVRStyle name="header" font="$fonts" size="16" style="b" />
-	<PGVRStyle name="pagenum" font="$fonts" size="8" style="" />
-	<PGVRStyle name="text" font="$fonts" size="8" style="" />
-	<PGVRStyle name="label" font="$fonts" size="8" style="b" />
-	<PGVRStyle name="idstyle" font="$fonts" size="6" style="" />
+	<Description>Prints address labels</Description>
+	<Title><var var="i18n::translate('Address Labels')" /></Title>
+	<Input name="address" type="text"><var var="i18n::translate('Show addresses that contain:')" /> </Input>
+	<Input name="sortby" type="select" options="NAME=>i18n::translate('Name')|ID=>i18n::translate('ID number')"><var var="i18n::translate('Sort by')" /></Input>
+	<Input name="email_in" type="select" options="all=>i18n::translate('All addresses')|noemail=>i18n::translate('Addresses without emails')|onlyemail=>i18n::translate('Only addresses with emails')"><var var="i18n::translate('Include:')"/> </Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
+	<Style name="header" font="$fonts" size="16" style="b" />
+	<Style name="pagenum" font="$fonts" size="8" style="" />
+	<Style name="text" font="$fonts" size="8" style="" />
+	<Style name="label" font="$fonts" size="8" style="b" />
+	<Style name="idstyle" font="$fonts" size="6" style="" />
 
-	<PGVRDoc pageSize="$pageSize" leftmargin="1" rightmargin="1" showGeneratedBy="0">
-		<PGVRHeader>
-		</PGVRHeader>
-		<PGVRBody>
-			<PGVRSetVar name="email" value="" />
-			<PGVRSetVar name="addrfilter" value="ADDR CONTAINS " />
-			<PGVRSetVar name="addrfilter2" value="" />
-			<PGVRif condition="$address != ''">
-				<PGVRSetVar name="addrfilter2" value="ADDR SUBCONTAINS $address" />
-			</PGVRif>
-			<PGVRif condition="$email_in=='noemail'">
-				<PGVRSetVar name="email" value="EMAIL EQUALS ''" />
-			</PGVRif>
-			<PGVRif condition="$email_in=='onlyemail'">
-				<PGVRSetVar name="email" value="EMAIL CONTAINS ." />
-				<PGVRif condition="$address==''">
-					<PGVRSetVar name="addrfilter" value="EMAIL CONTAINS ." />
-					<PGVRSetVar name="email" value="" />
-				</PGVRif>
-			</PGVRif>
-			<PGVRSetVar name="newline" value="0" />
-			<PGVRSetVar name="count" value="1" />
-			<PGVRSetVar name="Xstart" value="1" />
-			<PGVRSetVar name="Ystart" value="30" />
-			<PGVRSetVar name="width" value="200" />
-			<PGVRSetVar name="height" value="74" />
-			<PGVRSetVar name="Xspace" value="3" />
-			<PGVRSetVar name="Yspace" value="1" />
-			<PGVRif condition="$pageSize=='letter'">
-				<PGVRSetVar name="Xstart" value="5" />
-				<PGVRSetVar name="Ystart" value="25" />
-				<PGVRSetVar name="width" value="194" />
-				<PGVRSetVar name="height" value="76" />
-				<PGVRSetVar name="Xspace" value="15" />
-				<PGVRSetVar name="Yspace" value="1" />
-			</PGVRif>
-			<PGVRSetVar name="X" value="$Xstart" />
-			<PGVRSetVar name="Y" value="$Ystart" />
-			<PGVRList list="individual" filter1="$addrfilter" filter2="$addrfilter2" filter3="$email" sortby="$sortby">
-				<PGVRTextBox top="$Y" left="$X" width="$width" height="$height" newline="$newline" pagecheck="false">
-					<PGVRText style="label"><PGVRGetPersonName id="" /></PGVRText>
-					<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR" /><PGVRGedcomValue tag="RESI:ADDR" /></PGVRText>
-					<PGVRif condition="@ADDR:ADR1 != ''">
-						<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR:ADR1" /></PGVRText>
-					</PGVRif>
-					<PGVRif condition="@ADDR:CITY != ''">
-					<PGVRif condition="$POSTAL_CODE==false">
-							<PGVRif condition="@ADDR:STAE != ''">
-								<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR:POST" /> <PGVRGedcomValue tag="ADDR:CITY" />, <PGVRGedcomValue tag="ADDR:STAE" /> </PGVRText>
-							</PGVRif>
-							<PGVRif condition="@ADDR:STAE == ''">
-								<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR:POST" /> <PGVRGedcomValue tag="ADDR:CITY" /></PGVRText>
-							</PGVRif>
-						</PGVRif>
-						<PGVRif condition="$POSTAL_CODE==true">
-							<PGVRif condition="@ADDR:STAE != ''">
-								<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR:CITY" />, <PGVRGedcomValue tag="ADDR:STAE" /> <PGVRGedcomValue tag="ADDR:POST" /></PGVRText>
-					    	</PGVRif>
-							<PGVRif condition="@ADDR:STAE == ''">
-								<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR:CITY" /> <PGVRGedcomValue tag="ADDR:POST" /></PGVRText>
-					    	</PGVRif>
-					    </PGVRif>
-					</PGVRif>
-					<PGVRif condition="@ADDR:CTRY != ''">
-						<PGVRText style="text"><br /><PGVRGedcomValue tag="ADDR:CTRY" /></PGVRText>
-					</PGVRif>
-					<PGVRif condition="$showid==1">
-						<PGVRText style="idstyle"><br />                                                                       <PGVRGedcomValue tag="@id" /></PGVRText>
-					</PGVRif>
-				</PGVRTextBox>
-				<PGVRSetVar name="count" value="$count+1" />
-				<PGVRSetVar name="X" value="$X+$Xspace" />
-				<PGVRSetVar name="X" value="$X+$width" />
-				<PGVRif condition="$count==4">
-					<PGVRSetVar name="Y" value="$Y+$Yspace" />
-					<PGVRSetVar name="Y" value="$Y+$height" />
-				</PGVRif>
-				<PGVRif condition="$Y>$pageHeight">
-					<PGVRSetVar name="Y" value="$Ystart" />
-					<PGVRSetVar name="X" value="$Xstart" />
-					<PGVRNewPage />
-				</PGVRif>
-				<PGVRif condition="$count>3">
-					<PGVRSetVar name="count" value="1" />
-					<PGVRSetVar name="X" value="$Xstart" />
-				</PGVRif>
-			</PGVRList>
-		</PGVRBody>
-		<PGVRFooter>
-		</PGVRFooter>
-	</PGVRDoc>
-</PGVReport>
+	<Doc pageSize="$pageSize" leftmargin="1" rightmargin="1" showGeneratedBy="0">
+		<Header>
+		</Header>
+		<Body>
+			<SetVar name="email" value="" />
+			<SetVar name="addrfilter" value="ADDR CONTAINS " />
+			<SetVar name="addrfilter2" value="" />
+			<if condition="$address != ''">
+				<SetVar name="addrfilter2" value="ADDR SUBCONTAINS $address" />
+			</if>
+			<if condition="$email_in=='noemail'">
+				<SetVar name="email" value="EMAIL EQUALS ''" />
+			</if>
+			<if condition="$email_in=='onlyemail'">
+				<SetVar name="email" value="EMAIL CONTAINS ." />
+				<if condition="$address==''">
+					<SetVar name="addrfilter" value="EMAIL CONTAINS ." />
+					<SetVar name="email" value="" />
+				</if>
+			</if>
+			<SetVar name="newline" value="0" />
+			<SetVar name="count" value="1" />
+			<SetVar name="Xstart" value="1" />
+			<SetVar name="Ystart" value="30" />
+			<SetVar name="width" value="200" />
+			<SetVar name="height" value="74" />
+			<SetVar name="Xspace" value="3" />
+			<SetVar name="Yspace" value="1" />
+			<if condition="$pageSize=='letter'">
+				<SetVar name="Xstart" value="5" />
+				<SetVar name="Ystart" value="25" />
+				<SetVar name="width" value="194" />
+				<SetVar name="height" value="76" />
+				<SetVar name="Xspace" value="15" />
+				<SetVar name="Yspace" value="1" />
+			</if>
+			<SetVar name="X" value="$Xstart" />
+			<SetVar name="Y" value="$Ystart" />
+			<List list="individual" filter1="$addrfilter" filter2="$addrfilter2" filter3="$email" sortby="$sortby">
+				<TextBox top="$Y" left="$X" width="$width" height="$height" newline="$newline" pagecheck="false">
+					<Text style="label"><GetPersonName id="" /></Text>
+					<Text style="text"><br /><GedcomValue tag="ADDR" /><GedcomValue tag="RESI:ADDR" /></Text>
+					<if condition="@ADDR:ADR1 != ''">
+						<Text style="text"><br /><GedcomValue tag="ADDR:ADR1" /></Text>
+					</if>
+					<if condition="@ADDR:CITY != ''">
+					<if condition="$POSTAL_CODE==false">
+							<if condition="@ADDR:STAE != ''">
+								<Text style="text"><br /><GedcomValue tag="ADDR:POST" /> <GedcomValue tag="ADDR:CITY" />, <GedcomValue tag="ADDR:STAE" /> </Text>
+							</if>
+							<if condition="@ADDR:STAE == ''">
+								<Text style="text"><br /><GedcomValue tag="ADDR:POST" /> <GedcomValue tag="ADDR:CITY" /></Text>
+							</if>
+						</if>
+						<if condition="$POSTAL_CODE==true">
+							<if condition="@ADDR:STAE != ''">
+								<Text style="text"><br /><GedcomValue tag="ADDR:CITY" />, <GedcomValue tag="ADDR:STAE" /> <GedcomValue tag="ADDR:POST" /></Text>
+					    	</if>
+							<if condition="@ADDR:STAE == ''">
+								<Text style="text"><br /><GedcomValue tag="ADDR:CITY" /> <GedcomValue tag="ADDR:POST" /></Text>
+					    	</if>
+					    </if>
+					</if>
+					<if condition="@ADDR:CTRY != ''">
+						<Text style="text"><br /><GedcomValue tag="ADDR:CTRY" /></Text>
+					</if>
+					<if condition="$showid==1">
+						<Text style="idstyle"><br />                                                                       <GedcomValue tag="@id" /></Text>
+					</if>
+				</TextBox>
+				<SetVar name="count" value="$count+1" />
+				<SetVar name="X" value="$X+$Xspace" />
+				<SetVar name="X" value="$X+$width" />
+				<if condition="$count==4">
+					<SetVar name="Y" value="$Y+$Yspace" />
+					<SetVar name="Y" value="$Y+$height" />
+				</if>
+				<if condition="$Y>$pageHeight">
+					<SetVar name="Y" value="$Ystart" />
+					<SetVar name="X" value="$Xstart" />
+					<NewPage />
+				</if>
+				<if condition="$count>3">
+					<SetVar name="count" value="1" />
+					<SetVar name="X" value="$Xstart" />
+				</if>
+			</List>
+		</Body>
+		<Footer>
+		</Footer>
+	</Doc>
+</Report>

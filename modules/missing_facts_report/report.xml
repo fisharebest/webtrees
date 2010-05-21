@@ -1,607 +1,607 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PGVReport>
-	<PGVRTitle><PGVRvar var="i18n::translate('Missing relatives facts')" /></PGVRTitle>
-	<PGVRDescription>Prints a list of individuals who has missing information</PGVRDescription>
-	<PGVRInput name="pid" type="text" default="" lookup="INDI"><PGVRvar var="i18n::translate('Enter Individual ID')"/></PGVRInput>
-	<PGVRInput name="relatives" type="select" default="direct-ancestors" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><PGVRvar var="i18n::translate('Choose relatives')"/></PGVRInput>
-	<PGVRInput name="maxgen" type="select" default="*" options="*=>*|1=>1|2=>2|3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|10=>10"><PGVRvar var="i18n::translate('Generations')"/></PGVRInput>
-	<PGVRInput name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><PGVRvar var="i18n::translate('Page size')" /></PGVRInput>
-	<PGVRInput name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><PGVRvar var="i18n::translate('Font')"/></PGVRInput>
+<Report>
+	<Title><var var="i18n::translate('Missing relatives facts')" /></Title>
+	<Description>Prints a list of individuals who has missing information</Description>
+	<Input name="pid" type="text" default="" lookup="INDI"><var var="i18n::translate('Enter Individual ID')"/></Input>
+	<Input name="relatives" type="select" default="direct-ancestors" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><var var="i18n::translate('Choose relatives')"/></Input>
+	<Input name="maxgen" type="select" default="*" options="*=>*|1=>1|2=>2|3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|10=>10"><var var="i18n::translate('Generations')"/></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
 	
-	<PGVRInput name="fsour" type="checkbox" default="0"><PGVRvar var="i18n::translate('Sources to the events')" /></PGVRInput>
-	<PGVRInput name="fbirt" type="checkbox" default="1"><PGVRvar var="i18n::translate('Birth')"/></PGVRInput>
-	<PGVRInput name="fbapm" type="checkbox" default="0"><PGVRvar var="i18n::translate('Baptism')"/> / <PGVRvar var="i18n::translate('Christening')"/></PGVRInput>
-	<PGVRInput name="fbarm" type="checkbox" default="0"><PGVRvar var="i18n::translate('Bar mitzvah')"/></PGVRInput>
-	<PGVRInput name="fbasm" type="checkbox" default="0"><PGVRvar var="i18n::translate('Bas mitzvah')"/></PGVRInput>
-	<PGVRInput name="fconf" type="checkbox" default="0"><PGVRvar var="i18n::translate('Confirmation')"/></PGVRInput>
-	<PGVRInput name="fenga" type="checkbox" default="0"><PGVRvar var="i18n::translate('Engagement')"/></PGVRInput>
-	<PGVRInput name="ffcom" type="checkbox" default="0"><PGVRvar var="i18n::translate('First communion')"/></PGVRInput>
-	<PGVRInput name="fmarb" type="checkbox" default="0"><PGVRvar var="i18n::translate('Marriage banns')"/></PGVRInput>
-	<PGVRInput name="fmarr" type="checkbox" default="0"><PGVRvar var="i18n::translate('Marriage')"/></PGVRInput>
-	<PGVRInput name="fdeat" type="checkbox" default="1"><PGVRvar var="i18n::translate('Death')"/></PGVRInput>
-	<PGVRInput name="fburi" type="checkbox" default="0"><PGVRvar var="i18n::translate('Burial')"/></PGVRInput>
-	<PGVRInput name="freli" type="checkbox" default="0"><PGVRvar var="i18n::translate('Religion')"/></PGVRInput>
+	<Input name="fsour" type="checkbox" default="0"><var var="i18n::translate('Sources to the events')" /></Input>
+	<Input name="fbirt" type="checkbox" default="1"><var var="i18n::translate('Birth')"/></Input>
+	<Input name="fbapm" type="checkbox" default="0"><var var="i18n::translate('Baptism')"/> / <var var="i18n::translate('Christening')"/></Input>
+	<Input name="fbarm" type="checkbox" default="0"><var var="i18n::translate('Bar mitzvah')"/></Input>
+	<Input name="fbasm" type="checkbox" default="0"><var var="i18n::translate('Bas mitzvah')"/></Input>
+	<Input name="fconf" type="checkbox" default="0"><var var="i18n::translate('Confirmation')"/></Input>
+	<Input name="fenga" type="checkbox" default="0"><var var="i18n::translate('Engagement')"/></Input>
+	<Input name="ffcom" type="checkbox" default="0"><var var="i18n::translate('First communion')"/></Input>
+	<Input name="fmarb" type="checkbox" default="0"><var var="i18n::translate('Marriage banns')"/></Input>
+	<Input name="fmarr" type="checkbox" default="0"><var var="i18n::translate('Marriage')"/></Input>
+	<Input name="fdeat" type="checkbox" default="1"><var var="i18n::translate('Death')"/></Input>
+	<Input name="fburi" type="checkbox" default="0"><var var="i18n::translate('Burial')"/></Input>
+	<Input name="freli" type="checkbox" default="0"><var var="i18n::translate('Religion')"/></Input>
 
 	<!-- Header -->
-	<PGVRStyle name="header" font="$fonts" size="18" style="b"/>
+	<Style name="header" font="$fonts" size="18" style="b"/>
 	<!-- Generated by style - required style name by the generator -->
-	<PGVRStyle name="genby" font="$fonts" size="8"/>
+	<Style name="genby" font="$fonts" size="8"/>
 	<!-- Page numbers text -->
-	<PGVRStyle name="pagenum" font="$fonts" size="8"/>
+	<Style name="pagenum" font="$fonts" size="8"/>
 	<!-- Date Text - CSS Style name -->
-	<PGVRStyle name="date" font="$fonts" size="8"/>
+	<Style name="date" font="$fonts" size="8"/>
 	<!-- Column list labels - CSS Style name -->
-	<PGVRStyle name="list_label" font="$fonts" size="9" style="b"/>
+	<Style name="list_label" font="$fonts" size="9" style="b"/>
 	<!-- List values - CSS Style name -->
-	<PGVRStyle name="list_value" font="$fonts" size="9"/>
+	<Style name="list_value" font="$fonts" size="9"/>
 
 
-	<PGVRSetVar name="name" value="300" />
-	<PGVRSetVar name="printname" value="0" />
-	<PGVRSetVar name="vspace" value="5" />
-	<PGVRSetVar name="nrrelatives" value="0" />
-	<PGVRSetVar name="nrprinted" value="0" />
-	<PGVRSetVar name="nrevent" value="0" />
-	<PGVRSetVar name="nrmissingevent" value="0" />
+	<SetVar name="name" value="300" />
+	<SetVar name="printname" value="0" />
+	<SetVar name="vspace" value="5" />
+	<SetVar name="nrrelatives" value="0" />
+	<SetVar name="nrprinted" value="0" />
+	<SetVar name="nrevent" value="0" />
+	<SetVar name="nrmissingevent" value="0" />
 
-	<PGVRDoc pageSize="$pageSize">
-		<PGVRHeader>
-			<PGVRCell align="center" newline="1" style="header"><PGVRvar var="i18n::translate('Missing relatives facts')" /></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="pagenum"><PGVRvar var="i18n::translate('Page')"/> <PGVRPageNum/> / <PGVRTotalPages/></PGVRCell>
-			<PGVRCell align="center" border="1" style="list_label" width="$name"><PGVRvar var="i18n::translate('Name')" /></PGVRCell>
-			<PGVRCell align="center" border="1" newline="1" style="list_label"><PGVRvar var="i18n::translate('Event')" /></PGVRCell>
-		</PGVRHeader>
+	<Doc pageSize="$pageSize">
+		<Header>
+			<Cell align="center" newline="1" style="header"><var var="i18n::translate('Missing relatives facts')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="i18n::translate('Page')"/> <PageNum/> / <TotalPages/></Cell>
+			<Cell align="center" border="1" style="list_label" width="$name"><var var="i18n::translate('Name')" /></Cell>
+			<Cell align="center" border="1" newline="1" style="list_label"><var var="i18n::translate('Event')" /></Cell>
+		</Header>
 
 <!--	Start with BIRT GEDCOM tag.
 			Place any GEDCOM tags in GEDCOM alphabetic order here
 		End it with DEAT and BURI
 		Place any GEDCOM tags after DEAT/BURI witch has no additional subtags, such as RELI, in alphabetic order
 -->
-		<PGVRBody>
+		<Body>
 
-			<PGVRRelatives id="$pid" group="$relatives" maxgen="$maxgen" sortby="NAME">
+			<Relatives id="$pid" group="$relatives" maxgen="$maxgen" sortby="NAME">
 				<!-- Relatives counter -->
-				<PGVRSetVar name="nrrelatives" value="$nrrelatives + 1" />
-				<PGVRSetVar name="printname" value="0" />
+				<SetVar name="nrrelatives" value="$nrrelatives + 1" />
+				<SetVar name="printname" value="0" />
 				<!-- Birth -->
-				<PGVRif condition="$fbirt=='1'">
+				<if condition="$fbirt=='1'">
 					<!-- Total Event Counter -->
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@BIRT:DATE==''">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@BIRT:DATE==''">
 						<!-- Missing event counter -->
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Birth date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@BIRT:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Birth date')" /></Cell>
+					</if>
+					<if condition="@BIRT:PLAC==''">
 						<!-- Missing event counter -->
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Birth place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Birth place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
 						<!-- Total Event Counter -->
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@BIRT:SOUR==''">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@BIRT:SOUR==''">
 							<!-- Missing event counter -->
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Birth source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Birth source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- Baptism / Christining -->
-				<PGVRif condition="$fbapm=='1'">
+				<if condition="$fbapm=='1'">
 					<!-- Total Event Counter -->
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRSetVar name="printbapm" value="0" />
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<SetVar name="printbapm" value="0" />
 					<!-- Baptism -->
-					<PGVRif condition="(@CHR:DATE=='') and (@CHR:PLAC=='') and (@CHR:SOUR=='')">
-						<PGVRif condition="@BAPM:DATE==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Baptism date')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="@BAPM:PLAC==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Baptism place')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$fsour=='1'">
-							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-							<PGVRif condition="@BAPM:SOUR==''">
-								<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-								<PGVRif condition="$printname=='1'">
-									<PGVRCell style="list_value" width="$name"> </PGVRCell>
-								</PGVRif>
-								<PGVRif condition="$printname=='0'">
-									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-									<PGVRSetVar name="printname" value="1" />
-								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Baptism source')" /></PGVRCell>
-							</PGVRif>
-						</PGVRif>
-						<PGVRSetVar name="printbapm" value="1" />
-					</PGVRif>
+					<if condition="(@CHR:DATE=='') and (@CHR:PLAC=='') and (@CHR:SOUR=='')">
+						<if condition="@BAPM:DATE==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Baptism date')" /></Cell>
+						</if>
+						<if condition="@BAPM:PLAC==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Baptism place')" /></Cell>
+						</if>
+						<if condition="$fsour=='1'">
+							<SetVar name="nrevent" value="$nrevent + 1" />
+							<if condition="@BAPM:SOUR==''">
+								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+								<if condition="$printname=='1'">
+									<Cell style="list_value" width="$name"> </Cell>
+								</if>
+								<if condition="$printname=='0'">
+									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<SetVar name="printname" value="1" />
+								</if>
+								<Cell newline="1" style="list_value"><var var="i18n::translate('Baptism source')" /></Cell>
+							</if>
+						</if>
+						<SetVar name="printbapm" value="1" />
+					</if>
 					
 					<!-- Christining -->
-					<PGVRif condition="((@CHR:DATE=='') or (@CHR:PLAC=='')) and ($printbapm==0)">
-						<PGVRif condition="@CHR:DATE==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Christening date')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="@CHR:PLAC==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Christening place')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$fsour=='1'">
-							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-							<PGVRif condition="@CHR:SOUR==''">
-								<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-								<PGVRif condition="$printname=='1'">
-									<PGVRCell style="list_value" width="$name"> </PGVRCell>
-								</PGVRif>
-								<PGVRif condition="$printname=='0'">
-									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-									<PGVRSetVar name="printname" value="1" />
-								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Christening source')" /></PGVRCell>
-							</PGVRif>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+					<if condition="((@CHR:DATE=='') or (@CHR:PLAC=='')) and ($printbapm==0)">
+						<if condition="@CHR:DATE==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Christening date')" /></Cell>
+						</if>
+						<if condition="@CHR:PLAC==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Christening place')" /></Cell>
+						</if>
+						<if condition="$fsour=='1'">
+							<SetVar name="nrevent" value="$nrevent + 1" />
+							<if condition="@CHR:SOUR==''">
+								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+								<if condition="$printname=='1'">
+									<Cell style="list_value" width="$name"> </Cell>
+								</if>
+								<if condition="$printname=='0'">
+									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<SetVar name="printname" value="1" />
+								</if>
+								<Cell newline="1" style="list_value"><var var="i18n::translate('Christening source')" /></Cell>
+							</if>
+						</if>
+					</if>
+				</if>
 
 				<!-- BARM - male only -->
-				<PGVRif condition="($fbarm=='1') and (@SEX=='M')">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@BARM:DATE==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bar Mitzvah date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@BARM:PLAC==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bar Mitzvah place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@BARM:SOUR==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bar Mitzvah source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+				<if condition="($fbarm=='1') and (@SEX=='M')">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@BARM:DATE==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Bar Mitzvah date')" /></Cell>
+					</if>
+					<if condition="@BARM:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Bar Mitzvah place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@BARM:SOUR==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Bar Mitzvah source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- BASM - female only -->
-				<PGVRif condition="($fbasm=='1') and (@SEX=='F')">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@BASM:DATE==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bas Mitzvah date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@BASM:PLAC==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bas Mitzvah place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@BASM:SOUR==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Bas Mitzvah source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+				<if condition="($fbasm=='1') and (@SEX=='F')">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@BASM:DATE==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Bas Mitzvah date')" /></Cell>
+					</if>
+					<if condition="@BASM:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Bas Mitzvah place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@BASM:SOUR==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Bas Mitzvah source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- CONF -->
-				<PGVRif condition="$fconf=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@CONF:DATE==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Confirmation date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@CONF:PLAC==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Confirmation place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@CONF:SOUR==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Confirmation source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+				<if condition="$fconf=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@CONF:DATE==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Confirmation date')" /></Cell>
+					</if>
+					<if condition="@CONF:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Confirmation place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@CONF:SOUR==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Confirmation source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- ENGA -->
-				<PGVRif condition="$fenga=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRGedcom id="@FAMS">
-						<PGVRif condition="@ENGA:DATE==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Engagement date')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="@ENGA:PLAC==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Engagement place')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$fsour=='1'">
-							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-							<PGVRif condition="@ENGA:SOUR==''">
-								<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-								<PGVRif condition="$printname=='1'">
-									<PGVRCell style="list_value" width="$name"> </PGVRCell>
-								</PGVRif>
-								<PGVRif condition="$printname=='0'">
-									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-									<PGVRSetVar name="printname" value="1" />
-								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Engagement source')" /></PGVRCell>
-							</PGVRif>
-						</PGVRif>
-					</PGVRGedcom>
-				</PGVRif>
+				<if condition="$fenga=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<Gedcom id="@FAMS">
+						<if condition="@ENGA:DATE==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Engagement date')" /></Cell>
+						</if>
+						<if condition="@ENGA:PLAC==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Engagement place')" /></Cell>
+						</if>
+						<if condition="$fsour=='1'">
+							<SetVar name="nrevent" value="$nrevent + 1" />
+							<if condition="@ENGA:SOUR==''">
+								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+								<if condition="$printname=='1'">
+									<Cell style="list_value" width="$name"> </Cell>
+								</if>
+								<if condition="$printname=='0'">
+									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<SetVar name="printname" value="1" />
+								</if>
+								<Cell newline="1" style="list_value"><var var="i18n::translate('Engagement source')" /></Cell>
+							</if>
+						</if>
+					</Gedcom>
+				</if>
 
 				<!-- FCOM -->
-				<PGVRif condition="$ffcom=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@FCOM:DATE==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('First Communion date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@FCOM:PLAC==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('First Communion place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@FCOM:SOUR==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('First Communion source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+				<if condition="$ffcom=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@FCOM:DATE==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('First Communion date')" /></Cell>
+					</if>
+					<if condition="@FCOM:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('First Communion place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@FCOM:SOUR==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('First Communion source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- MARB -->
-				<PGVRif condition="$fmarb=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRGedcom id="@FAMS">
-						<PGVRif condition="@MARB:DATE==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Banns date')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="@MARB:PLAC==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Banns place')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$fsour=='1'">
-							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-							<PGVRif condition="@MARB:SOUR==''">
-								<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-								<PGVRif condition="$printname=='1'">
-									<PGVRCell style="list_value" width="$name"> </PGVRCell>
-								</PGVRif>
-								<PGVRif condition="$printname=='0'">
-									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-									<PGVRSetVar name="printname" value="1" />
-								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage Banns source')" /></PGVRCell>
-							</PGVRif>
-						</PGVRif>
-					</PGVRGedcom>
-				</PGVRif>
+				<if condition="$fmarb=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<Gedcom id="@FAMS">
+						<if condition="@MARB:DATE==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Marriage Banns date')" /></Cell>
+						</if>
+						<if condition="@MARB:PLAC==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Marriage Banns place')" /></Cell>
+						</if>
+						<if condition="$fsour=='1'">
+							<SetVar name="nrevent" value="$nrevent + 1" />
+							<if condition="@MARB:SOUR==''">
+								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+								<if condition="$printname=='1'">
+									<Cell style="list_value" width="$name"> </Cell>
+								</if>
+								<if condition="$printname=='0'">
+									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<SetVar name="printname" value="1" />
+								</if>
+								<Cell newline="1" style="list_value"><var var="i18n::translate('Marriage Banns source')" /></Cell>
+							</if>
+						</if>
+					</Gedcom>
+				</if>
 
 				<!-- MARM -->
-				<PGVRif condition="$fmarr=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRGedcom id="@FAMS">
-						<PGVRif condition="@MARR:DATE==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage date')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="@MARR:PLAC==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage place')" /></PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$fsour=='1'">
-							<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-							<PGVRif condition="@MARR:SOUR==''">
-								<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-								<PGVRif condition="$printname=='1'">
-									<PGVRCell style="list_value" width="$name"> </PGVRCell>
-								</PGVRif>
-								<PGVRif condition="$printname=='0'">
-									<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-									<PGVRSetVar name="printname" value="1" />
-								</PGVRif>
-								<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Marriage source')" /></PGVRCell>
-							</PGVRif>
-						</PGVRif>
-					</PGVRGedcom>
-				</PGVRif>
+				<if condition="$fmarr=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<Gedcom id="@FAMS">
+						<if condition="@MARR:DATE==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Marriage date')" /></Cell>
+						</if>
+						<if condition="@MARR:PLAC==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Marriage place')" /></Cell>
+						</if>
+						<if condition="$fsour=='1'">
+							<SetVar name="nrevent" value="$nrevent + 1" />
+							<if condition="@MARR:SOUR==''">
+								<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+								<if condition="$printname=='1'">
+									<Cell style="list_value" width="$name"> </Cell>
+								</if>
+								<if condition="$printname=='0'">
+									<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+									<SetVar name="printname" value="1" />
+								</if>
+								<Cell newline="1" style="list_value"><var var="i18n::translate('Marriage source')" /></Cell>
+							</if>
+						</if>
+					</Gedcom>
+				</if>
 
 				<!-- DEAT -->
-				<PGVRif condition="$fdeat=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@DEAT:DATE==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Death date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@DEAT:PLAC==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Death place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@DEAT:SOUR==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Death source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+				<if condition="$fdeat=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@DEAT:DATE==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Death date')" /></Cell>
+					</if>
+					<if condition="@DEAT:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Death place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@DEAT:SOUR==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Death source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- BURI -->
-				<PGVRif condition="$fburi=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 2" />
-					<PGVRif condition="@BURI:DATE==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Burial date')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="@BURI:PLAC==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Burial place')" /></PGVRCell>
-					</PGVRif>
-					<PGVRif condition="$fsour=='1'">
-						<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-						<PGVRif condition="@BURI:SOUR==''">
-							<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-							<PGVRif condition="$printname=='1'">
-								<PGVRCell style="list_value" width="$name"> </PGVRCell>
-							</PGVRif>
-							<PGVRif condition="$printname=='0'">
-								<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-								<PGVRSetVar name="printname" value="1" />
-							</PGVRif>
-							<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Burial source')" /></PGVRCell>
-						</PGVRif>
-					</PGVRif>
-				</PGVRif>
+				<if condition="$fburi=='1'">
+					<SetVar name="nrevent" value="$nrevent + 2" />
+					<if condition="@BURI:DATE==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Burial date')" /></Cell>
+					</if>
+					<if condition="@BURI:PLAC==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Burial place')" /></Cell>
+					</if>
+					<if condition="$fsour=='1'">
+						<SetVar name="nrevent" value="$nrevent + 1" />
+						<if condition="@BURI:SOUR==''">
+							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+							<if condition="$printname=='1'">
+								<Cell style="list_value" width="$name"> </Cell>
+							</if>
+							<if condition="$printname=='0'">
+								<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+								<SetVar name="printname" value="1" />
+							</if>
+							<Cell newline="1" style="list_value"><var var="i18n::translate('Burial source')" /></Cell>
+						</if>
+					</if>
+				</if>
 
 				<!-- RELI -->
-				<PGVRif condition="$freli=='1'">
-					<PGVRSetVar name="nrevent" value="$nrevent + 1" />
-					<PGVRif condition="@RELI==''">
-						<PGVRSetVar name="nrmissingevent" value="$nrmissingevent + 1" />
-						<PGVRif condition="$printname=='1'">
-							<PGVRCell style="list_value" width="$name"> </PGVRCell>
-						</PGVRif>
-						<PGVRif condition="$printname=='0'">
-							<PGVRCell style="list_value" width="$name"><PGVRGetPersonName id="" /> - (<PGVRGedcomValue tag="@id" />)</PGVRCell>
-							<PGVRSetVar name="printname" value="1" />
-						</PGVRif>
-						<PGVRCell newline="1" style="list_value"><PGVRvar var="i18n::translate('Religion')" /></PGVRCell>
-					</PGVRif>
-				</PGVRif>
+				<if condition="$freli=='1'">
+					<SetVar name="nrevent" value="$nrevent + 1" />
+					<if condition="@RELI==''">
+						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
+						<if condition="$printname=='1'">
+							<Cell style="list_value" width="$name"> </Cell>
+						</if>
+						<if condition="$printname=='0'">
+							<Cell style="list_value" width="$name"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+							<SetVar name="printname" value="1" />
+						</if>
+						<Cell newline="1" style="list_value"><var var="i18n::translate('Religion')" /></Cell>
+					</if>
+				</if>
 
-				<PGVRif condition="$printname=='1'">
-					<PGVRSetVar name="nrprinted" value="$nrprinted + 1" />
-					<PGVRTextBox height="1" newline="1" padding="0"/>
-					<PGVRLine />
-					<PGVRTextBox height="1" newline="1" padding="0"/>
-				</PGVRif>
+				<if condition="$printname=='1'">
+					<SetVar name="nrprinted" value="$nrprinted + 1" />
+					<TextBox height="1" newline="1" padding="0"/>
+					<Line />
+					<TextBox height="1" newline="1" padding="0"/>
+				</if>
 
-			</PGVRRelatives>
+			</Relatives>
 
-			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
-			<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total individuals')"/>: <PGVRvar var="nrprinted"/> / <PGVRvar var="nrrelatives"/></PGVRCell>
-			<PGVRCell align="rightrtl" newline="1" style="list_label"><PGVRvar var="i18n::translate('Total events')"/>: <PGVRvar var="nrmissingevent"/> / <PGVRvar var="nrevent"/></PGVRCell>
-			<PGVRTextBox height="$vspace" newline="1" padding="0"/>
+			<TextBox height="$vspace" newline="1" padding="0"/>
+			<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total individuals')"/>: <var var="nrprinted"/> / <var var="nrrelatives"/></Cell>
+			<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total events')"/>: <var var="nrmissingevent"/> / <var var="nrevent"/></Cell>
+			<TextBox height="$vspace" newline="1" padding="0"/>
 
-		</PGVRBody>
+		</Body>
 
-		<PGVRFooter>
-			<PGVRCell align="rightrtl" newline="1" style="date"><PGVRNow/></PGVRCell>
-		</PGVRFooter>
-	</PGVRDoc>
-</PGVReport>
+		<Footer>
+			<Cell align="rightrtl" newline="1" style="date"><Now/></Cell>
+		</Footer>
+	</Doc>
+</Report>
