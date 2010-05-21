@@ -143,9 +143,9 @@ jQuery(document).ready(function(){
 			if (WT_USER_IS_ADMIN) {
 				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
 				if ($user_id) {
-					$pgvuser=get_user_name($user_id);
+					$wt_user=get_user_name($user_id);
 					echo "&nbsp;";
-					echo printReady("(<a href=\"useradmin.php?action=edituser&amp;username={$pgvuser}\">{$pgvuser}</a>)");
+					echo printReady("(<a href=\"useradmin.php?action=edituser&amp;username={$wt_user}\">{$wt_user}</a>)");
 				}
 			}
 		?></span><br /><br />
