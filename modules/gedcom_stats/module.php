@@ -80,30 +80,21 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stats=new stats(WT_GEDCOM);
 
 		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br />";
-		$head = find_other_record('HEAD', WT_GED_ID);
-		$ct=preg_match('/1 SOUR (.*)/', $head, $match);
-		if ($ct>0) {
-			$softrec = get_sub_record(1, '1 SOUR', $head);
-			$tt= preg_match('/2 NAME (.*)/', $softrec, $tmatch);
-			if ($tt>0) $software = printReady(trim($tmatch[1]));
-			else $software = trim($match[1]);
-			if (!empty($software)) {
-				$tt = preg_match('/2 VERS (.*)/', $softrec, $tmatch);
-				if ($tt>0) $version = printReady(trim($tmatch[1]));
-				else $version='';
-				$content .= i18n::translate('This GEDCOM was created using <b>%s %s</b>', $software, $version);
-			}
-		}
-		if (preg_match('/1 DATE (.+)/', $head, $match)) {
-			if (empty($software)) {
-				$content.=i18n::translate('This GEDCOM was created on <b>%s</b>', $stats->gedcomDate());
-			} else {
-				$content.=i18n::translate(' on <b>%s</b>', $stats->gedcomDate());
-			}
-		}
 
-		// I18N: %1$s = software program, %2$s = date
-		$content .= i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', $software, $version);
+		$software=trim($stats->gedcomCreatedSoftware().' '.$stats->gedcomCreatedVersion());
+		$date=strip_tags($stats->gedcomDate());
+
+		if ($software && $date) {
+			// I18N: %1$s = software program, %2$s = date
+			$content .= i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', $software, $date);
+		} elseif ($software) {
+			// I18N: %s = software program
+			$content .= i18n::translate('This GEDCOM was created using <b>%s</b>,', $software);
+		} elseif ($date) {
+			// I18N: %s = date
+			$content .= i18n::translate('This GEDCOM was created on <b>%s</b>', $date);
+		}
+		
 		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'.encode_url("indilist.php?surname_sublist=no&ged=".WT_GEDCOM).'">'.$stats->totalIndividuals().'</a></div></td></tr>';
