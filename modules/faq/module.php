@@ -355,10 +355,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo '<table class="list_table width100">';
 		foreach ($faqs as $faq) {
 			echo
-				'<tr>',
-				'<td class="optionbox center">', $faq->header, '</td>',
-				'<td class="optionbox center">', nl2br($faq->body), '</td>',
-				'</tr>';
+				'<tr><td class="optionbox center">',
+				$faq->header,
+				'</td><td class="optionbox center">',
+				substr($faq_body, 0, 1)=='<' ? $faq->body : nl2br($faq->body),
+				'</td></tr>';
 		}
 		echo '</table>';
 
