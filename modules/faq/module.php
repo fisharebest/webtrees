@@ -104,6 +104,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	private function edit() {
 		global $TBLPREFIX;
 
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+
 		if (safe_POST_bool('save')) {
 			$block_id=safe_POST('block_id');
 			if ($block_id) {
@@ -182,6 +184,14 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					echo '<option value="', WT_GED_ID, '" selected="selected">', htmlspecialchars(WT_GEDCOM), '</option';
 				echo '</select>';
 			echo '</td></tr>';
+
+			$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
+			echo '<tr><td class="descriptionbox wrap width33">';
+			echo i18n::translate('Show this block for which languages?');
+			echo '</td><td class="optionbox">';
+			echo edit_language_checkboxes('lang_', $languages);
+			echo '</td></tr>';
+
 			echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Save'), '" tabindex="5"/>';
 			echo '&nbsp;<input type="button" value="', i18n::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></td></tr>';
 			echo '</table>';
@@ -281,13 +291,19 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
+
 		echo '<table class="list_table width100">';
 		foreach ($faqs as $faq) {
+			// Only show this block for certain languages
+			$languages=get_block_setting($faq->block_id, 'languages');
+			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+				return;
+			}
 			echo
 				'<tr><td class="optionbox center">',
 				$faq->header,
 				'</td><td class="optionbox center">',
-				substr($faq_body, 0, 1)=='<' ? $faq->body : nl2br($faq->body),
+				substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body),
 				'</td></tr>';
 		}
 		echo '</table>';
@@ -364,7 +380,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				echo help_link('delete_faq_item');
 				echo '</td>';
 				// NOTE: Print the body text of the current item
-				echo '<td class="list_value_wrap">', nl2br($faq->body), '</td></tr>';
+				echo '<td class="list_value_wrap">', substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body), '</td></tr>';
 			}
 			echo '</table>';
 		}
