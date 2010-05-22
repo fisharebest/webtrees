@@ -78,19 +78,6 @@ function showchanges() {
 }
 <?php } ?>
 
-// function is required by cloudy theme
-function resize_content_div(i) {
-	// check for container ..
-	var cont = document.getElementById("content");
-	if (!cont) cont = document.getElementById("container");
-	if (cont) {
-		if (document.getElementById("marker"+i)) {
-			var y = getAbsoluteTop("marker"+i);
-			if (y<300) y=600;
-			cont.style.height =y.toString()+'px';
-		}
-	}
-}
 //]]>
 </script>
 <script type="text/javascript">
