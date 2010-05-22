@@ -36,11 +36,9 @@ echo "</div><!-- closing div id=\"content\" -->";
 echo "<div id=\"footer\" class=\"$TEXT_DIRECTION\">";
 echo "\n\t<br /><div align=\"center\" style=\"width:99%;\">";
 echo contact_links();
+echo "\n\t<br />";
 echo '<a href="', WT_WEBTREES_URL, '" target="_blank" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" , '" title="', WT_WEBTREES , WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"><span style="font-size:150%; color:#888888;">', WT_WEBTREES, '</span></a>';
 echo "\n\t<br />";
-echo '<a href="', WT_SCRIPT_NAME, '?view=preview&amp;', get_query_string(), '">', i18n::translate('Printer-friendly version'), '</a>';
-echo help_link('preview');
-echo "<br />";
 if ($SHOW_STATS || WT_DEBUG) {
 	echo execution_stats();
 }
