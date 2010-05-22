@@ -72,7 +72,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		FORM { margin-top: 0px; margin-bottom: 0px; }
 	</style>
 	<?php }
-	if ($view!="preview" && $view!="simple") { ?>
+	if ($view!="simple") { ?>
 		<?php if (!empty($META_AUTHOR)) { ?><meta name="author" content="<?php echo htmlspecialchars($META_AUTHOR); ?>" /><?php } ?>
 		<?php if (!empty($META_PUBLISHER)) { ?><meta name="publisher" content="<?php echo htmlspecialchars($META_PUBLISHER); ?>" /><?php } ?>
 		<?php if (!empty($META_COPYRIGHT)) { ?><meta name="copyright" content="<?php echo htmlspecialchars($META_COPYRIGHT); ?>" /><?php } ?>
@@ -99,9 +99,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 </head>
 <body id="body" <?php echo $bodyOnLoad; ?>>
 <!-- begin header section -->
-<?php
-if ($view=='preview') include($print_headerfile);
-else if ($view!='simple'){?>
+<?php if ($view!='simple') {?>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
 <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#003399">
    <tr>

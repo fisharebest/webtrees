@@ -38,9 +38,6 @@ echo "\n\t<div align=\"center\" style=\"width:99%;\">";
 echo contact_links();
 echo '<br /><a href="', WT_WEBTREES_URL, '" target="_blank"><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['gedview']['other'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" /></a><br />';
 echo "\n\t<br />";
-echo '<a href="', WT_SCRIPT_NAME, '?view=preview&amp;', get_query_string(), '">', i18n::translate('Printer-friendly version'), '</a>';
-echo help_link('preview');
-echo "<br />";
 if ($SHOW_STATS || WT_DEBUG) {
 	echo execution_stats();
 }
