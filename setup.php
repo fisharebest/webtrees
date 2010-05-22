@@ -921,6 +921,7 @@ try {
 		" block_id    INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_id   INTEGER                    NULL,".
 		" user_id     INTEGER                    NULL,".
+		" xref        VARCHAR(20)                NULL,".
 		" location    ENUM('main', 'side')       NULL,".
 	 	" block_order INTEGER                NOT NULL,".
 		" module_name VARCHAR(32)            NOT NULL,".
