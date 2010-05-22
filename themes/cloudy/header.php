@@ -70,7 +70,7 @@ $menubar = new MenuBar();
 		FORM { margin-top: 0px; margin-bottom: 0px; }
 	</style>
 	<?php }
-	if ($view!="preview" && $view!="simple") { ?>
+	if ($view!="simple") { ?>
 		<?php if (!empty($META_AUTHOR)) { ?><meta name="author" content="<?php echo htmlspecialchars($META_AUTHOR); ?>" /><?php } ?>
 		<?php if (!empty($META_PUBLISHER)) { ?><meta name="publisher" content="<?php echo htmlspecialchars($META_PUBLISHER); ?>" /><?php } ?>
 		<?php if (!empty($META_COPYRIGHT)) { ?><meta name="copyright" content="<?php echo ($META_COPYRIGHT); ?>" /><?php } ?>
@@ -97,10 +97,7 @@ $menubar = new MenuBar();
 </head>
 <body id="body" <?php echo $bodyOnLoad; ?>>
 <!-- begin header section -->
-<?php
-if ($view!='simple')
-if ($view=='preview') include($print_headerfile);
-else { ?>
+<?php if ($view!='simple') {?>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
 	<?php if (empty($SEARCH_SPIDER)) { ?>
 	<img src="<?php echo $WT_IMAGE_DIR; ?>/loading.gif" width="70" height="25" id="ProgBar" name="ProgBar" style="position:absolute;margin-left:auto;margin-right:auto;left:47%;top:48%;margin-bottom:auto;margin-top:auto;" alt="loading..." />
@@ -231,13 +228,6 @@ else { ?>
 											$menu->printMenu();
 											echo "</td>";
 										}
-									}
-									$menu = $menubar->getPreviewMenu();
-									if ($menu->link != "") {
-										echo '<td width="1">';
-										$menu->addLabel("", "none");
-										$menu->printMenu();
-										echo "</td>";
 									}
 									$menu = $menubar->getHelpMenu();
 									if ($menu->link != "") {
