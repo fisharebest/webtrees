@@ -733,7 +733,7 @@ class SearchControllerRoot extends BaseController {
 		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $global_facts;
 		//-- all privacy settings must be global if we are going to load up privacy files
 		global $SHOW_DEAD_PEOPLE,$SHOW_LIVING_NAMES,$SHOW_SOURCES,$MAX_ALIVE_AGE,$USE_RELATIONSHIP_PRIVACY,$MAX_RELATION_PATH_LENGTH;
-		global $CHECK_MARRIAGE_RELATIONS,$PRIVACY_BY_YEAR,$PRIVACY_BY_RESN,$SHOW_PRIVATE_RELATIONSHIPS,$person_privacy,$user_privacy;
+		global $CHECK_MARRIAGE_RELATIONS,$PRIVACY_BY_YEAR,$SHOW_PRIVATE_RELATIONSHIPS,$person_privacy,$user_privacy;
 		global $global_facts,$person_facts;
 		$somethingPrinted = false;	// whether anything printed
 		// ---- section to search and display results on a general keyword search

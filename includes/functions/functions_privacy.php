@@ -345,7 +345,7 @@ function checkPrivacyByYear($pid) {
 function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $global_facts, $person_privacy, $user_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
-	global $PRIVACY_CHECKS, $PRIVACY_BY_RESN, $SHOW_SOURCES, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
+	global $PRIVACY_CHECKS, $SHOW_SOURCES, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -436,23 +436,21 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 		}
 
 		//-- look for an Ancestral File RESN (restriction) tag
-		if (isset($PRIVACY_BY_RESN) && ($PRIVACY_BY_RESN==true)) {
-			$gedrec = find_gedcom_record($pid, $ged_id);
-			$resn = get_gedcom_value("RESN", 1, $gedrec);
-			if (!empty($resn)) {
-				if ($resn == "confidential") {
-					$ret = false;
-				} elseif ($resn=="privacy" && $pgv_USER_GEDCOM_ID != $pid) {
-					$ret = false;
-				} else {
-					$ret = true;
+		$gedrec = find_gedcom_record($pid, $ged_id);
+		$resn = get_gedcom_value("RESN", 1, $gedrec);
+		if (!empty($resn)) {
+			if ($resn == "confidential") {
+				$ret = false;
+			} elseif ($resn=="privacy" && $pgv_USER_GEDCOM_ID != $pid) {
+				$ret = false;
+			} else {
+				$ret = true;
+			}
+			if (!$ret) {
+				if ($cache_privacy) {
+					$privacy_cache[$pkey] = $ret;
 				}
-				if (!$ret) {
-					if ($cache_privacy) {
-						$privacy_cache[$pkey] = $ret;
-					}
-					return $ret;
-				}
+				return $ret;
 			}
 		}
 
@@ -538,16 +536,14 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	}
 
 	//-- look for an Ancestral File RESN (restriction) tag
-	if (isset($PRIVACY_BY_RESN) && ($PRIVACY_BY_RESN==true)) {
-		$gedrec = find_gedcom_record($pid, $ged_id);
-		$resn = get_gedcom_value("RESN", 1, $gedrec);
-		if ($resn == "none") {
-			if ($cache_privacy) $privacy_cache[$pkey] = true;
-			return true;
-		} else if (!empty($resn)) {
-			if ($cache_privacy) $privacy_cache[$pkey] = false;
-			return false;
-		}
+	$gedrec = find_gedcom_record($pid, $ged_id);
+	$resn = get_gedcom_value("RESN", 1, $gedrec);
+	if ($resn == "none") {
+		if ($cache_privacy) $privacy_cache[$pkey] = true;
+		return true;
+	} else if (!empty($resn)) {
+		if ($cache_privacy) $privacy_cache[$pkey] = false;
+		return false;
 	}
 
 	if ($type=="INDI") {

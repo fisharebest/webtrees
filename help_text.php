@@ -2566,11 +2566,6 @@ case 'PREFER_LEVEL2_SOURCES':
 	$text=i18n::translate('When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default.');
 	break;
 
-case 'PRIVACY_BY_RESN':
-	$title=i18n::translate('Use GEDCOM (RESN) privacy restriction');
-	$text=i18n::translate('The GEDCOM 5.5.1 specification includes the option of using RESN tags to set Privacy options for people and facts in the GEDCOM file.  Enabling this option will tell the program to look for level 1 RESN tags in GEDCOM records.  Level 2+ RESN tags are automatically applied and will not be affected by this setting.  Note that this might slow down some of the functions of <b>webtrees</b> such as the Individual list.');
-	break;
-
 case 'PRIVACY_BY_YEAR':
 	$title=i18n::translate('Limit privacy by age of event');
 	$text=i18n::translate('The <b>Limit Privacy by age of event</b> setting will hide the details of people based on how old they were at specific events regardless of whether they are dead or alive.<br /><br />Use this setting along with the <b>Age at which to assume a person is dead</b> setting.  For example, if you made the Age setting 100 and set this option to <b>Yes</b>, all persons, alive or dead, born less than 100 years ago would be set to private.  People who were married less than 85 years ago and people who died less than 75 years ago would also be marked as private.  Please note that using this option will slow down your performance somewhat.');

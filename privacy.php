@@ -168,15 +168,6 @@ $CHECK_MARRIAGE_RELATIONS = true;
 $PRIVACY_BY_YEAR = false;
 
 /**
- * Check for RESN privacy restrictions
- *
- * This setting tells the privacy functions to look inside the gedcom record for a RESN restriction tag.
- * The RESN tag was used by Ancestral File as a way of marking a record as private.
- * @global boolean $PRIVACY_BY_RESN
- */
-$PRIVACY_BY_RESN = false;
-
-/**
  * When privatizing a gedom record should the relationship links be left in or stripped out
  * @global boolean $SHOW_PRIVATE_RELATIONSHIPS
  */

@@ -1099,7 +1099,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $tabkey, $STATUS_CODES, $SPLIT_PLACES, $pid, $gender, $linkToID;
-	global $bdm, $PRIVACY_BY_RESN;
+	global $bdm;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
 	global $CensDate, $MEDIA_TYPES;
@@ -1444,10 +1444,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		//-->
 		</script>
 		<?php
-		if (!$PRIVACY_BY_RESN && $level==1) {
-			// warn user that level 1 RESN tags have no effect when PRIVACY_BY_RESN is false
-			echo "<small>", i18n::translate('Note: You must enable the \'Use GEDCOM (RESN) Privacy restriction\' feature for this setting to take effect.'), "</small>";
-		}
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\" />\n";
 		echo "<table><tr valign=\"top\">\n";
 		foreach (array(
@@ -1724,7 +1720,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 */
 function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	global $WT_IMAGE_DIR, $WT_IMAGES;
-	global $MEDIA_DIRECTORY, $TEXT_DIRECTION, $PRIVACY_BY_RESN;
+	global $MEDIA_DIRECTORY, $TEXT_DIRECTION;
 	global $gedrec, $FULL_SOURCES;
 	global $islink;
 	if ($tag=="SOUR") {
@@ -1821,22 +1817,17 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "</table></div>";
 	}
 	if ($tag=="RESN") {
-		if (!$PRIVACY_BY_RESN && $level==1) {
-			// PRIVACY_BY_RESN is not active for level 1 tags
-			// do not display
-		} else {
-			//-- Retrieve existing resn or add new resn to fact
-			$text = '';
-			echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["plus"]["other"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", translate_fact('RESN'), "</a>";
-			echo help_link('RESN');
-			echo "<br />\n";
-			echo "<div id=\"newresn\" style=\"display: none;\">\n";
-			if ($printSaveButton) echo "<input type=\"submit\" value=\"", i18n::translate('Save'), "\" />";
-			echo "<table class=\"facts_table center $TEXT_DIRECTION\">\n";
-			// 2 RESN
-			add_simple_tag(($level)." RESN ".$text);
-			echo "</table></div>";
-		}
+		//-- Retrieve existing resn or add new resn to fact
+		$text = '';
+		echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["plus"]["other"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", translate_fact('RESN'), "</a>";
+		echo help_link('RESN');
+		echo "<br />\n";
+		echo "<div id=\"newresn\" style=\"display: none;\">\n";
+		if ($printSaveButton) echo "<input type=\"submit\" value=\"", i18n::translate('Save'), "\" />";
+		echo "<table class=\"facts_table center $TEXT_DIRECTION\">\n";
+		// 2 RESN
+		add_simple_tag(($level)." RESN ".$text);
+		echo "</table></div>";
 	}
 }
 
