@@ -918,12 +918,12 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block (".
-		" block_id    INTEGER AUTO_INCREMENT        NOT NULL,".
-		" gedcom_id   INTEGER                           NULL,".
-		" user_id     INTEGER                           NULL,".
-		" location    ENUM('faq', 'main','side')    NOT NULL,".
-	 	" block_order INTEGER                       NOT NULL,".
-		" module_name VARCHAR(32)                   NOT NULL,".
+		" block_id    INTEGER AUTO_INCREMENT NOT NULL,".
+		" gedcom_id   INTEGER                    NULL,".
+		" user_id     INTEGER                    NULL,".
+		" location    ENUM('main', 'side')       NULL,".
+	 	" block_order INTEGER                NOT NULL,".
+		" module_name VARCHAR(32)            NOT NULL,".
 		" PRIMARY KEY     (block_id),".
 		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  ), /* ON DELETE CASCADE */".
 		" FOREIGN KEY fk2 (user_id    ) REFERENCES {$TBLPREFIX}user   (user_id    ), /* ON DELETE CASCADE */".

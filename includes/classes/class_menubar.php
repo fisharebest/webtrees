@@ -855,7 +855,7 @@ class MenuBar
 	* @return Menu the menu item
 	*/
 	static function getHelpMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
+		global $TBLPREFIX, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
 		global $SHOW_CONTEXT_HELP, $QUERY_STRING, $helpindex, $action;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if (!empty($SEARCH_SPIDER)) {
@@ -891,8 +891,9 @@ class MenuBar
 		$submenu->addOnclick("return helpPopup('help_contents_help');");
 		$menu->addSubmenu($submenu);
 		//-- faq sub menu
-		if (file_exists(WT_ROOT.'faq.php')) {
-			$submenu = new Menu(i18n::translate('FAQ list'), "faq.php");
+		if (array_key_exists('faq', WT_Module::getActiveBlocks()) && WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}block WHERE module_name='faq'")->fetchOne()) {
+
+			$submenu = new Menu(i18n::translate('FAQ'), "module.php?mod=faq&mod_action=show");
 			if (!empty($WT_IMAGES["menu_help"]["small"]))
 				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["menu_help"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
