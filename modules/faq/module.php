@@ -1,12 +1,12 @@
 <?php
 /**
- * Classes and libraries for module system
+ * FAQ module.
+ *
+ * This is a block, so we can take advantage of block storage.
+ * It does not display on index.php.
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2010 John Finlay
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -79,29 +79,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id) {
-		global $ctype, $WT_IMAGE_DIR, $WT_IMAGES, $THEME_DIR;
-
-		// Only show this block for certain languages
-		$languages=get_block_setting($block_id, 'languages');
-		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
-			return;
-		}
-
-		$id=$this->getName().$block_id;
-		$header='';
-		$content=embed_globals(get_block_setting($block_id, 'html'));
-
-		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user") {
-			$content .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">"
-			."<img class=\"adminicon\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
-		}
-
-		$block=get_block_setting($block_id, 'block', false);
-		if ($block) {
-			require $THEME_DIR.'templates/block_small_temp.php';
-		} else {
-			require $THEME_DIR.'templates/block_main_temp.php';
-		}
 	}
 
 	// Implement class WT_Module_Block
@@ -121,54 +98,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'html', $_POST['html']);
-			$languages=array();
-			foreach (i18n::installed_languages() as $code=>$name) {
-				if (safe_POST_bool('lang_'.$code)) {
-					$languages[]=$code;
-				}
-			}
-			if (!$languages) {
-				$languages[]=WT_LOCALE;
-			}
-			set_block_setting($block_id, 'languages', implode(',', $languages));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
-			exit;
-		}
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		$useFCK = file_exists(WT_ROOT.'modules/FCKeditor/fckeditor.php');
-		if($useFCK){
-			require WT_ROOT.'modules/FCKeditor/fckeditor.php';
-		}
-
-?>
-		<tr>
-		<td class="optionbox" colspan="2"><?php
-		if ($useFCK) { // use FCKeditor module
-			$oFCKeditor = new FCKeditor('html') ;
-			$oFCKeditor->BasePath =  './modules/FCKeditor/';
-			$oFCKeditor->Value = get_block_setting($block_id, 'html');
-			$oFCKeditor->Width = 700;
-			$oFCKeditor->Height = 250;
-			$oFCKeditor->Config['AutoDetectLanguage'] = false ;
-			$oFCKeditor->Config['DefaultLanguage'] = WT_LOCALE;
-			$oFCKeditor->Create() ;
-		} else { //use standard textarea
-			echo '<textarea name="html" rows="10" cols="80">', htmlspecialchars(get_block_setting($block_id, 'html')), '</textarea>';
-		}
-		?></td>
-		</tr>
-		<?php
-
-		$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show this block for which languages?');
-		echo '</td><td class="optionbox">';
-		echo edit_language_checkboxes('lang_', $languages);
-		echo '</td></tr>';
 	}
 
 	// Action from the configuration page
