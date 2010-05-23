@@ -280,10 +280,6 @@ color:#f50;
 /* Colors specific changes                     */
 /* Location and behavior of Right Site Tab in/out pin-------*/
 
-#sidebar {  
-background: #fff !important;
-}
-
 /* Navigator and Flyout menu Styles -----------*/
 
 .nav_content #spouse {
@@ -1610,133 +1606,133 @@ text-align: center;
 } 
 
 dl {
-	margin-bottom:20px;
+margin-bottom:20px;
 }
 
 dt {
-	float:left; 
-	font-weight:bold;
-	margin-right:10px;
-	clear:both; 
+float:left; 
+font-weight:bold;
+margin-right:10px;
+clear:both; 
 }
 
 #indi_details dt:after { content: ":"; }
 
 #facts_content dd {
-	float:left;
-	width: 70%;
+float:left;
+width: 70%;
 }
 
 #indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
-	float:left;
-	margin-right:15px;
+float:left;
+margin-right:15px;
 }
 
 #hitcounter {
-	display: block;
-	width: 100%;
-	margin-bottom:10px;
+display: block;
+width: 100%;
+margin-bottom:10px;
 }
 
 .clearfloat {
-	clear: both;
+clear: both;
 }
 
 #indi_details {
-	display: block;
-	width: 100%;
+display: block;
+width: 100%;
 }
 
 /* tables for Module Admin tab */
 table.tablesorter {
-	background-color: #E0E0E0;
-	margin:5px 0pt 15px;
-	width: 100%;
-	text-align: left;
-	font-family:tahoma,arial,helvetica,sans-serif;
-	font-size:11px;
+background-color: #E0E0E0;
+margin:5px 0pt 15px;
+width: 100%;
+text-align: left;
+font-family:tahoma,arial,helvetica,sans-serif;
+font-size:11px;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	background-color: #E7EEF3;
-	border: 1px solid #FFF;
-	padding: 4px;
+background-color: #E7EEF3;
+border: 1px solid #FFF;
+padding: 4px;
 }
 table.tablesorter thead tr .header {
-	background-image: url(../images/jquery/bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	padding-right:20px;
-	white-space:nowrap;
-	cursor: pointer;
+background-image: url(../images/jquery/bg.gif);
+background-repeat: no-repeat;
+background-position: center right;
+padding-right:20px;
+white-space:nowrap;
+cursor: pointer;
 }
 table.tablesorter tbody td {
-	color: #3D3D3D;
-	padding: 4px;
-	vertical-align: top;
+color: #3D3D3D;
+padding: 4px;
+vertical-align: top;
 }
 table.tablesorter tbody tr.odd td {
-	background-color:#E7EEF3;
+background-color:#E7EEF3;
 }
 table.tablesorter thead tr .headerSortUp {
-	background-image: url(../images/jquery/asc.gif);
+background-image: url(../images/jquery/asc.gif);
 }
 table.tablesorter thead tr .headerSortDown {
-	background-image: url(../images/jquery/desc.gif);
+background-image: url(../images/jquery/desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-	background-color: #F75993;
+background-color: #F75993;
 }
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
-	width:450px;
+width:450px;
 }
 #tabDefinedTags {
-	width:430px;
+width:430px;
 }
 #layDefinedTags {
-	margin-left:auto;
-	margin-right:auto;
-	height:285px;
-	overflow:auto;
-	border:inset 2px buttonface;
+margin-left:auto;
+margin-right:auto;
+height:285px;
+overflow:auto;
+border:inset 2px buttonface;
 }
 #tabDefinedTags {
-	border-collapse:collapse;
+border-collapse:collapse;
 }
 #tabDefinedTags th,#tabDefinedTags td {
-	border:solid 1px #000;
-	margin:0;
-	padding:3px;
+border:solid 1px #000;
+margin:0;
+padding:3px;
 }
 #tabDefinedTags tbody th {
-	text-align:left;
-	font-weight:bold;
+text-align:left;
+font-weight:bold;
 }
 #tabDefinedTags tr.sel {
-	background-color:#D1D9EF;
-	color:#888;
+background-color:#D1D9EF;
+color:#888;
 }
 #tabDefinedTags tr.unsel {
-	background-color:#FFFFFF;
-	color:#888;
+background-color:#FFFFFF;
+color:#888;
 }
 #tabDefinedTagsShow {
-	margin-left:auto;
-	margin-right:auto;
+margin-left:auto;
+margin-right:auto;
 }
 #tabDefinedTagsShow td {
-	width:50%;
-	text-align:center;
+width:50%;
+text-align:center;
 }
 #tabFilterAndCustom {
-	margin-left:auto;
-	margin-right:auto;
+margin-left:auto;
+margin-right:auto;
 }
 #tabAction {
-	margin-left:auto;
-	margin-right:auto;
+margin-left:auto;
+margin-right:auto;
 }
 #tabAction td {
-	width:50%;
-	text-align:center;
+width:50%;
+text-align:center;
 }
