@@ -345,6 +345,14 @@ $STATUS_CODES = array(
 	'UNCLEARED'=>i18n::translate('Uncleared: insufficient data'),
 );
 
+// RESN tags - restriction status
+$RESN_CODES = array(
+	'none'			=>i18n::translate_c('Restriction status', 'None'),
+	'locked'		=>i18n::translate_c('Restriction status', 'Do not change'),
+	'privacy'		=>i18n::translate_c('Restriction status', 'Privacy'),
+	'confidential'	=>i18n::translate_c('Restriction status', 'Confidential')
+);
+
 // NPFX tags - name prefixes
 $NPFX_accept=array(
 	'Adm',

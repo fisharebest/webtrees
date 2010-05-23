@@ -1099,7 +1099,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
 	global $tabkey, $STATUS_CODES, $SPLIT_PLACES, $pid, $gender, $linkToID;
-	global $bdm;
+	global $bdm, $RESN_CODES;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
 	global $CensDate, $MEDIA_TYPES;
@@ -1446,12 +1446,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		<?php
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\" />\n";
 		echo "<table><tr valign=\"top\">\n";
-		foreach (array(
-			'none'=>i18n::translate('None'),
-			'locked'=>i18n::translate('Do not change'),
-			'privacy'=>i18n::translate('Privacy'),
-			'confidential'=>i18n::translate('Confidential')
-		) as $resn_val => $text) {
+		foreach ($RESN_CODES as $resn_val => $text) {
 			if ($resn_val=="none") $resnv=""; else $resnv=$resn_val;
 			echo "<td><input tabindex=\"", $tabkey, "\" type=\"radio\" name=\"RESN_radio\" onclick=\"update_RESN_img('", $resn_val, "')\"";
 			echo " value=\"", $resnv, "\"";
