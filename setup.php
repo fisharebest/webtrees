@@ -449,7 +449,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 	}
 	echo
 		'<h2>', i18n::translate('System settings'), '</h2>',
-		'<h3>', i18n::translate('1. Administrator account'), '</h3>',
+		'<h3>', i18n::translate('Administrator account'), '</h3>',
 		'<p>', i18n::translate('You need to set up an administrator account.  This account can control all aspects of this <b>webtrees</b> installation.  Please choose a strong password.'), '</p>',
 		'<fieldset><legend>', i18n::translate('Administrator account'), '</legend>',
 		'<table border="0"><tr><td>',
@@ -476,7 +476,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr></table>',
 		'</fieldset>',
 		'<br /><br />',
-		'<h3>', i18n::translate('2. Email details'), '</h3>',
+		'<h3>', i18n::translate('Email'), '</h3>',
 		'<p>', i18n::translate('<b>webtrees</b> needs to send emails, such as password reminders and site notifications.  To do this, it can use this server\'s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.'), '</p>',
 		'<p>', i18n::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'), '</p>',
 		'<p>', i18n::translate('If you do not know these settings, leave the default values.  They may work.  You can change them later.'), '</p>',
