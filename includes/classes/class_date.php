@@ -397,7 +397,7 @@ class CalendarDate {
 
 	// Format a date
 	// $format - format string: the codes are specified in http://php.net/date
-	function Format($format, $qualifier='') {
+	function Format($format, $qualifier='', $day=true) {
 		// Legacy formats (DMY) become jFY
 		if (preg_match('/^[DMY,. ;\/-]+$/', $format)) {
 			$format=strtr($format, 'DM', 'jF');
@@ -416,7 +416,7 @@ class CalendarDate {
 		if (!$this->d || !$this->m || !$this->y) {
 			$format=trim($format, ',. ;/-');
 		}
-		if ($this->d) {
+		if ($this->d && $day) {
 			$case='GENITIVE';
 		} else {
 			switch ($qualifier) {

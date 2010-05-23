@@ -160,7 +160,7 @@ if ($view!='preview') {
 		echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$m}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$month_name}</a>";
 		echo ' | ';
 	}
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day=".min($cal_date->d, $today->DaysInMonth())."&month={$today_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
+	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day=".min($cal_date->d, $today->DaysInMonth())."&month={$today_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%F %Y', '', false).'</b></a></td></tr>';
 	// Year selector
 	echo '<tr><td class="descriptionbox vmiddle">';
 	echo i18n::translate('Year'), help_link('annivers_year_select'), '</td>';
