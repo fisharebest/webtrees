@@ -174,13 +174,12 @@ if ($action=='createuser' || $action=='edituser2') {
 			// If we're verifying a new user, send them a message to let them know
 			if ($newly_verified && $action=='edituser2') {
 				i18n::init($user_language);
-				$serverURL = rtrim($SERVER_URL, '/');
 				$message=array();
 				$message["to"]=$username;
 				$headers="From: ".$WEBTREES_EMAIL;
 				$message["from"]=WT_USER_NAME;
-				$message["subject"]=i18n::translate('Approval of account at %s', $serverURL);
-				$message["body"]=i18n::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', $serverURL, $serverURL);
+				$message["subject"]=i18n::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
+				$message["body"]=i18n::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["created"]="";
 				$message["method"]="messaging2";
 				addMessage($message);
@@ -189,8 +188,8 @@ if ($action=='createuser' || $action=='edituser2') {
 				$message["to"]=WT_USER_NAME;
 				$headers="From: ".$WEBTREES_EMAIL;
 				$message["from"]=$username; // fake the from address - so the admin can "reply" to it.
-				$message["subject"]=i18n::translate('Approval of account at %s', $serverURL));
-				$message["body"]=i18n::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', $serverURL, $serverURL));
+				$message["subject"]=i18n::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH));
+				$message["body"]=i18n::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH));
 				$message["created"]="";
 				$message["method"]="messaging2";
 				addMessage($message); */
