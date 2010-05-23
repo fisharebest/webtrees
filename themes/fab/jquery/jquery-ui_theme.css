@@ -90,7 +90,7 @@ color:red;
 	padding: 3px;
 }
 .flyout2 a:hover{
-	color:#ff0000;
+	color:red !important;
 }
 .flyout4 {
 	color:#000000;
