@@ -74,7 +74,7 @@ function expand_urls($text) {
 function print_fact(&$eventObj, $noedit=false) {
 	global $nonfacts;
 	global $WT_IMAGE_DIR, $WT_MENUS_AS_LISTS;
-	global $GEDCOM;
+	global $GEDCOM, $RESN_CODES;
 	global $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION;
 	global $HIDE_GEDCOM_ERRORS, $SHOW_ID_NUMBERS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
@@ -228,14 +228,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	//echo "<td class=\"facts_value facts_value$styleadd\">";
 	if ((showFactDetails($factref, $pid)) && (FactViewRestricted($pid, $factrec))) {
 		if (isset($resn_value)) {
-			switch($resn_value) {
-			case 'privacy':
-				echo '<img src="images/RESN_privacy.gif" alt="', i18n::translate('Privacy'), '" title="', i18n::translate('Privacy'), '" />'; break;
-			case 'confidential':
-				echo '<img src="images/RESN_confidential.gif" alt="', i18n::translate('Confidential'), '" title="', i18n::translate('Confidential'), '" />'; break;
-			case 'locked':
-				echo '<img src="images/RESN_locked.gif" alt="', i18n::translate('Do not change'), '" title="', i18n::translate('Do not change'), '" />'; break;
-			}
+			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
 			echo help_link('RESN');
 		}
 	}
@@ -360,14 +353,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($ct>0) echo " - ", translate_fact('_WT_USER'), ": ", $match[1];
 		// -- Find RESN tag
 		if (isset($resn_value)) {
-			switch($resn_value) {
-			case 'privacy':
-				echo '<img src="images/RESN_privacy.gif" alt="', i18n::translate('Privacy'), '" title="', i18n::translate('Privacy'), '" />'; break;
-			case 'confidential':
-				echo '<img src="images/RESN_confidential.gif" alt="', i18n::translate('Confidential'), '" title="', i18n::translate('Confidential'), '" />'; break;
-			case 'locked':
-				echo '<img src="images/RESN_locked.gif" alt="', i18n::translate('Do not change'), '" title="', i18n::translate('Do not change'), '" />'; break;
-			}
+			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
 			echo help_link('RESN');
 		}
 		if (preg_match("/\n2 FAMC @(.+)@/", $factrec, $match)) {
@@ -843,7 +829,7 @@ function print_address_structure($factrec, $level) {
 }
 
 function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $view;
+	global $view, $RESN_CODES;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_SOURCES;
 	if ($SHOW_SOURCES<WT_USER_ACCESS_LEVEL) return;
 
@@ -926,14 +912,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 				if ($resn_tag > 0) $resn_value = strtolower(trim($rmatch[1]));
 				// -- Find RESN tag
 				if (isset($resn_value)) {
-					switch($resn_value) {
-					case 'privacy':
-						echo '<img src="images/RESN_privacy.gif" alt="', i18n::translate('Privacy'), '" title="', i18n::translate('Privacy'), '" />'; break;
-					case 'confidential':
-						echo '<img src="images/RESN_confidential.gif" alt="', i18n::translate('Confidential'), '" title="', i18n::translate('Confidential'), '" />'; break;
-					case 'locked':
-						echo '<img src="images/RESN_locked.gif" alt="', i18n::translate('Do not change'), '" title="', i18n::translate('Do not change'), '" />'; break;
-					}
+					echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
 					echo help_link('RESN');
 				}
 				$cs = preg_match("/$nlevel EVEN (.*)/", $srec, $cmatch);
@@ -1101,7 +1080,7 @@ function getSourceStructure($srec) {
  * @param boolean $noedit	Whether or not to allow this fact to be edited
  */
 function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $GEDCOM;
+	global $GEDCOM, $RESN_CODES;
 	global $view;
 	global $WT_IMAGE_DIR;
 	global $WT_IMAGES;
@@ -1225,14 +1204,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			if ($resn_tag > 0) $resn_value = strtolower(trim($rmatch[1]));
 			// -- Find RESN tag
 			if (isset($resn_value)) {
-				switch($resn_value) {
-				case 'privacy':
-					echo '<img src="images/RESN_privacy.gif" alt="', i18n::translate('Privacy'), '" title="', i18n::translate('Privacy'), '" />'; break;
-				case 'confidential':
-					echo '<img src="images/RESN_confidential.gif" alt="', i18n::translate('Confidential'), '" title="', i18n::translate('Confidential'), '" />'; break;
-				case 'locked':
-					echo '<img src="images/RESN_locked.gif" alt="', i18n::translate('Do not change'), '" title="', i18n::translate('Do not change'), '" />'; break;
-				}
+				echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
 				echo help_link('RESN');
 			}
 			echo "<br />\n";
