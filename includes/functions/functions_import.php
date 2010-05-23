@@ -1008,7 +1008,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 * @return string an updated record
 */
 function update_media($gid, $ged_id, $gedrec, $update = false) {
-	global $TBLPREFIX, $media_count, $found_ids, $zero_level_media, $MAX_IDS, $keepmedia;
+	global $TBLPREFIX, $media_count, $found_ids, $zero_level_media, $keepmedia;
 
 	static $sql_insert_media=null;
 	if (!$sql_insert_media) {
@@ -1025,16 +1025,6 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 	}
 	if (!isset ($zero_level_media)) {
 		$zero_level_media = false;
-	}
-	if (!$update && !isset ($MAX_IDS["OBJE"])) {
-		if (!$keepmedia) {
-			$MAX_IDS["OBJE"] = 1;
-		} else {
-			$MAX_IDS["OBJE"]=
-				WT_DB::prepare("SELECT ni_id FROM {$TBLPREFIX}nextid WHERE ni_type=? AND ni_gedfile=?")
-				->execute(array('OBJE', $ged_id))
-				->fetchOne();
-		}
 	}
 
 	//-- handle level 0 media OBJE seperately
