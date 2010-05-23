@@ -1205,21 +1205,6 @@ function empty_database($ged_id, $keepmedia) {
 	clearCache();
 }
 
-//
-// While importing a gedcom, we keep track of the the maximum ID values for each
-// record type.  Write these to the database in one go.
-//
-function import_max_ids($ged_id, $MAX_IDS) {
-	global $TBLPREFIX;
-
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}nextid WHERE ni_gedfile=?")->execute(array($ged_id));
-
-	$statement=WT_DB::prepare("INSERT INTO {$TBLPREFIX}nextid (ni_id, ni_type, ni_gedfile) VALUES (?, ?, ?)");
-	foreach ($MAX_IDS as $type => $id) {
-		$statement->execute(array($id+1, $type, $ged_id));
-	}
-}
-
 // Accept all pending changes for a specified record
 function accept_all_changes($xref, $ged_id) {
 	global $TBLPREFIX;
