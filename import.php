@@ -78,8 +78,8 @@ if ($row->import_offset==0 || $row->import_total==0) {
 	WT_DB::exec("COMMIT");
 	echo
 		WT_JS_START,
-		'$("#import',  $gedcom_id, '").toggle();',
-		'$("#actions', $gedcom_id, '").toggle();',
+		'jQuery("#import',  $gedcom_id, '").toggle();',
+		'jQuery("#actions', $gedcom_id, '").toggle();',
 		WT_JS_END;
 	exit;	
 }
@@ -91,7 +91,7 @@ $status=i18n::translate('Loading data from GEDCOM: %.1f%%', $percent);
 echo
 	'<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>',
 	WT_JS_START,
-	' $("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
+	' jQuery("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
 	WT_JS_END,
 flush();
 
@@ -126,7 +126,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		if (substr($head, 0, 6)!='0 HEAD') {
 			WT_DB::exec("ROLLBACK");
 			echo i18n::translate('Invalid GEDCOM file - no header record found.');
-			echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
+			echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
@@ -202,7 +202,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		default:
 			WT_DB::exec("ROLLBACK");
 			echo '<span class="error">',  i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset), '</span>';
-			echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
+			echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
 		$first_time=false;
@@ -222,7 +222,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		" SET import_offset=import_offset+?".
 		" WHERE gedcom_id=?"
 	)->execute(array(strlen($data), $gedcom_id));
-	echo WT_JS_START, WT_JS_END;
+
 	foreach (preg_split('/\n(?=0)/', $data) as $rec) {
 		if ($rec) {
 			try {
@@ -231,7 +231,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				// A fatal error.  Nothing we can do.
 				WT_DB::exec("ROLLBACK");
 				echo '<span class="error">', $ex->getMessage(), '</span>';
-				echo WT_JS_START, '$("#actions', $gedcom_id, '").toggle();', WT_JS_END;
+				echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 				exit;
 			}
 		}
@@ -249,15 +249,15 @@ if ($row->import_offset>$row->import_total) {
 	WT_DB::exec("COMMIT");
 	echo
 		WT_JS_START,
-		'$("#import',  $gedcom_id, '").toggle();',
-		'$("#actions', $gedcom_id, '").toggle();',
+		'jQuery("#import',  $gedcom_id, '").toggle();',
+		'jQuery("#actions', $gedcom_id, '").toggle();',
 		WT_JS_END;
 } else {
 	WT_DB::exec("COMMIT");
 	// Reload.....
 	echo
 		WT_JS_START,
-		'$("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
+		'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
 		WT_JS_END;
 }
 

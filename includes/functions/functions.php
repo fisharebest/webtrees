@@ -2893,45 +2893,7 @@ function CheckPageViews() {
  * @return string
  */
 function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
-	global $fcontents, $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $TBLPREFIX;
-	global $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX, $MAX_IDS;
-
-	$num = null;
-	//-- check if an id is stored in MAX_IDS used mainly during the import
-	//-- the number stored in the max_id is the next number to use... no need to increment it
-	if ($use_cache && !empty($MAX_IDS)&& isset($MAX_IDS[$type])) {
-		$num = 1;
-		$num = $MAX_IDS[$type];
-		$MAX_IDS[$type] = $num+1;
-	} else {
-		//-- check for the id in the nextid table
-		$num=
-			WT_DB::prepare("SELECT ni_id FROM {$TBLPREFIX}nextid WHERE ni_type=? AND ni_gedfile=?")
-			->execute(array($type, $ged_id))
-			->fetchOne();
-
-		//-- the id was not found in the table so try and find it in the file
-		if (is_null($num) && !empty($fcontents)) {
-			$ct = preg_match_all("/0 @(.*)@ $type/", $fcontents, $match, PREG_SET_ORDER);
-			$num = 0;
-			for ($i=0; $i<$ct; $i++) {
-				$ckey = $match[$i][1];
-				$bt = preg_match("/(\d+)/", $ckey, $bmatch);
-				if ($bt>0) {
-					$bnum = trim($bmatch[1]);
-					if ($num < $bnum)
-						$num = $bnum;
-				}
-			}
-			$num++;
-		}
-		//-- type wasn't found in database or in file so make a new one
-		if (is_null($num)) {
-			$num = 1;
-			WT_DB::prepare("INSERT INTO {$TBLPREFIX}nextid VALUES(?, ?, ?)")
-				->execute(array($num+1, $type, $ged_id));
-		}
-	}
+	global $TBLPREFIX, $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
 
 	switch ($type) {
 	case "INDI":
@@ -2954,11 +2916,26 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
 		break;
 	}
 
+	$num=
+		WT_DB::prepare("SELECT ni_id FROM {$TBLPREFIX}nextid WHERE ni_type=? AND ni_gedfile=?")
+		->execute(array($type, $ged_id))
+		->fetchOne();
+
+	// TODO?  If a gedcom file contains *both* inline and object based media, then
+	// we could be generating an XREF that we will find later.  Need to scan the
+	// entire gedcom for them?
+
+	if (is_null($num)) {
+		$num = 1;
+		WT_DB::prepare("INSERT INTO {$TBLPREFIX}nextid VALUES(?, ?, ?)")
+			->execute(array($num+1, $type, $ged_id));
+	}
+
 	//-- make sure this number has not already been used
 	if ($num>=2147483647 || $num<=0) { // Popular databases are only 32 bits (signed)
 		$num=1;
 	}
-	while (find_gedcom_record($prefix.$num, $ged_id) || find_gedcom_record($prefix.$num, $ged_id, true)) {
+	while (find_gedcom_record($prefix.$num, $ged_id, true)) {
 		++$num;
 		if ($num>=2147483647 || $num<=0) { // Popular databases are only 32 bits (signed)
 			$num=1;
@@ -2968,10 +2945,6 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
 	//-- the key is the prefix and the number
 	$key = $prefix.$num;
 
-	//-- during the import we won't update the database at this time so return now
-	if ($use_cache && isset($MAX_IDS[$type])) {
-		return $key;
-	}
 	//-- update the next id number in the DB table
 	WT_DB::prepare("UPDATE {$TBLPREFIX}nextid SET ni_id=? WHERE ni_type=? AND ni_gedfile=?")
 		->execute(array($num+1, $type, $ged_id));

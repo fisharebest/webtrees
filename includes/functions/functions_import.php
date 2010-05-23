@@ -581,7 +581,7 @@ function reformat_record_import($rec) {
 * @param boolean $update whether or not this is an updated record that has been accepted
 */
 function import_record($gedrec, $ged_id, $update) {
-	global $TBLPREFIX, $USE_RIN, $MAX_IDS, $fpnewged, $GENERATE_UIDS;
+	global $TBLPREFIX, $USE_RIN, $GENERATE_UIDS;
 
 	static $sql_insert_indi=null;
 	static $sql_insert_fam=null;
@@ -623,21 +623,6 @@ function import_record($gedrec, $ged_id, $update) {
 	} else {
 		echo i18n::translate('Invalid GEDCOM format'), '<br /><pre>', $gedrec, '</pre>';
 		return;
-	}
-
-	// keep track of the max id for each type as they are imported
-	if (!isset($MAX_IDS)) {
-		$MAX_IDS=array ();
-	}
-	if (preg_match('/(\d+)/', $xref, $match)) {
-		$idnum=(int)$match[1];
-	} else {
-		$idnum=0;
-	}
-	if (isset($MAX_IDS[$type])) {
-		$MAX_IDS[$type]=max($MAX_IDS[$type], $idnum);
-	} else {
-		$MAX_IDS[$type]=$idnum;
 	}
 
 	$newrec=update_media($xref, $ged_id, $gedrec, $update);
@@ -744,13 +729,6 @@ function import_record($gedrec, $ged_id, $update) {
 		}
 		break;
 	}
-
-	// if this is not an update then write it to the new gedcom file
-	if (!$update && !empty($fpnewged)) {
-		fwrite($fpnewged, reformat_record_export($gedrec));
-	}
-
-	return $type; // uploadgedcom.php needs this for the statistics
 }
 
 /**
