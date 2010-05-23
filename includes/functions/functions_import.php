@@ -944,7 +944,7 @@ function update_names($xref, $ged_id, $record) {
 * @param int $count The count of OBJE records in the parent record
 */
 function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
-	global $TBLPREFIX, $media_count, $found_ids, $fpnewged;
+	global $TBLPREFIX, $media_count, $found_ids;
 
 	static $sql_insert_media=null;
 	static $sql_insert_media_mapping=null;
@@ -987,10 +987,6 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 			//-- add it to the media database table
 			$sql_insert_media->execute(array(get_next_id('media', 'm_id'), $m_media, $media->ext, $media->title, $media->file, $ged_id, $objrec));
 			$media_count++;
-			//-- if this is not an update then write it to the new gedcom file
-			if (!$update && !empty ($fpnewged)) {
-				fwrite($fpnewged, reformat_record_export($objrec));
-			}
 		} else {
 			//-- already added so update the local id
 			$objref = str_replace("@$m_media@", "@$new_media@", $objref);
@@ -1012,7 +1008,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 * @return string an updated record
 */
 function update_media($gid, $ged_id, $gedrec, $update = false) {
-	global $TBLPREFIX, $media_count, $found_ids, $zero_level_media, $fpnewged, $MAX_IDS, $keepmedia;
+	global $TBLPREFIX, $media_count, $found_ids, $zero_level_media, $MAX_IDS, $keepmedia;
 
 	static $sql_insert_media=null;
 	if (!$sql_insert_media) {
@@ -1192,8 +1188,8 @@ function empty_database($ged_id, $keepmedia) {
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}change      WHERE gedcom_id=?")->execute(array($ged_id));
 
 	if ($keepmedia) {
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}link   WHERE l_file    =? AND l_type<> ?")->execute(array($ged_id, 'OBJE'));
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}nextid WHERE ni_gedfile=? AND ni_type<>?")->execute(array($ged_id, 'OBJE'));
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}link   WHERE l_file    =? AND l_type<> 'OBJE'")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}nextid WHERE ni_gedfile=? AND ni_type<>'OBJE'")->execute(array($ged_id));
 	} else {
 		WT_DB::prepare("DELETE FROM {$TBLPREFIX}link          WHERE l_file    =?")->execute(array($ged_id));
 		WT_DB::prepare("DELETE FROM {$TBLPREFIX}nextid        WHERE ni_gedfile=?")->execute(array($ged_id));
