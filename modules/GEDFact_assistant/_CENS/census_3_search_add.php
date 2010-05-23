@@ -2248,15 +2248,6 @@ function print_pedigree_person_nav2($pid, $style=1, $show_famlink=true, $count=0
 						$spouselinks .= "</ul>\n";
 					}
 				}
-				?>
-				
-				<?php if ($theme_name=="Xenea" || $theme_name=="Standard" || $theme_name=="Wood" || $theme_name=="Ocean") { ?>
-				<style type="text/css" rel="stylesheet">
-					a:hover .name2 { color: #222222; }
-				</style>
-				<?php } ?>
-				
-				<?php
 				if ($persons != "Yes") {
 					$spouselinks  .= "(" . i18n::translate('None') . ")</td></tr></table>\n\t\t";
 				}else{
