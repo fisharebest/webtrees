@@ -119,7 +119,8 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		)->execute(array($gedcom_id));
 		// Fetch the header record
 		$head=WT_DB::prepare(
-			"SELECT LEFT(import_gedcom, CASE LOCATE('\n0', import_gedcom, 2) WHEN 0 THEN LENGTH(import_gedcom) ELSE LOCATE('\n0', import_gedcom, 2) END)".
+			"SELECT SQL_NO_CACHE".
+			" LEFT(import_gedcom, CASE LOCATE('\n0', import_gedcom, 2) WHEN 0 THEN LENGTH(import_gedcom) ELSE LOCATE('\n0', import_gedcom, 2) END)".
 			" FROM {$TBLPREFIX}gedcom".
 			" WHERE gedcom_id=?"
 		)->execute(array($gedcom_id))->fetchOne();
@@ -209,7 +210,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	}
 	// Fetch the next block of data ending on a record boundary.
 	$data=WT_DB::prepare(
-		"SELECT".
+		"SELECT SQL_NO_CACHE".
 		"  CASE LOCATE('\n0', import_gedcom, import_offset+65536)".
 		"   WHEN 0 THEN SUBSTR(import_gedcom FROM import_offset)".
 		"   ELSE SUBSTR(import_gedcom FROM import_offset FOR LOCATE('\n0', import_gedcom, import_offset+65536)-import_offset)".
