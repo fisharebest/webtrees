@@ -319,7 +319,7 @@ class MediaControllerRoot extends IndividualController{
 		else {
 			if (!empty($WT_IMAGES["clippings"]["small"]))
 				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
-			$menu->addLink(encode_url("clippings.php?action=add&id={$this->pid}&type=obje"));
+			$menu->addLink(encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=obje"));
 		}
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 		if ($this->canShowGedcomRecord()) {
@@ -332,7 +332,7 @@ class MediaControllerRoot extends IndividualController{
 			$menu->addSubmenu($submenu);
 		}
 		if ($this->mediaobject->canDisplayDetails() && $ENABLE_CLIPPINGS_CART>=WT_USER_ACCESS_LEVEL) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("clippings.php?action=add&id={$this->pid}&type=obje"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=obje"));
 			if (!empty($WT_IMAGES["clippings"]["small"]))
 				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");

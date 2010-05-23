@@ -297,7 +297,7 @@ class RepositoryControllerRoot extends BaseController {
 		{
 			if (!empty($WT_IMAGES["clippings"]["small"]))
 				$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['clippings']['small']}");
-			$menu->addLink(encode_url("clippings.php?action=add&id={$this->rid}&type=repo"));
+			$menu->addLink(encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->rid}&type=repo"));
 		}
 		if ($SHOW_GEDCOM_RECORD)
 		{
@@ -318,7 +318,7 @@ class RepositoryControllerRoot extends BaseController {
 		if ($ENABLE_CLIPPINGS_CART >= WT_USER_ACCESS_LEVEL)
 		{
 				// other / add_to_cart
-				$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("clippings.php?action=add&id={$this->rid}&type=repo"));
+				$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->rid}&type=repo"));
 				if (!empty($WT_IMAGES["clippings"]["small"]))
 					$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['clippings']['small']}");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
