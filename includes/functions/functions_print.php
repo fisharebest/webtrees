@@ -431,7 +431,7 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 */
 function print_header($title, $head="", $use_alternate_styles=true) {
 	global $bwidth;
-	global $HOME_SITE_URL, $HOME_SITE_TEXT, $SERVER_URL;
+	global $HOME_SITE_URL, $HOME_SITE_TEXT;
 	global $BROWSERTYPE, $SEARCH_SPIDER;
 	global $view, $cart;
 	global $WT_IMAGE_DIR, $GEDCOM, $GEDCOM_TITLE, $COMMON_NAMES_THRESHOLD, $INDEX_DIRECTORY;
