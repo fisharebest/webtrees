@@ -405,13 +405,12 @@ switch ($action) {
 				else $mail_body .= i18n::translate('You will be informed by email when this prospective user has confirmed his request.  After this, the user will be able to login without any action on your part.') . "\r\n";
 
 				$message = array();
-				$message["to"]=getUserEmail($webmaster_user_id);
+				$message["to"]=get_user_name($webmaster_user_id);
 				$message["from"]=$WEBTREES_EMAIL;
 				$message["subject"] = i18n::translate('New registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
 				$message["method"] = get_user_setting($webmaster_user_id, 'contact_method');
-				$message["no_from"] = true;
 				addMessage($message);
 
 				// switch language to user's settings
@@ -516,13 +515,12 @@ switch ($action) {
 				$mail_body .= "\r\n";
 
 				$message = array();
-				$message["to"]=getUserEmail($webmaster_user_id);
+				$message["to"]=get_user_name($webmaster_user_id);
 				$message["from"]=$WEBTREES_EMAIL;
 				$message["subject"] = i18n::translate('New user at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
 				$message["method"] = get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
-				$message["no_from"] = true;
 				addMessage($message);
 
 				i18n::init(WT_LOCALE); // Reset language
