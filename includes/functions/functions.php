@@ -2858,35 +2858,6 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 }
 
 /**
- * check if the page view rate for a session has been exeeded.
- */
-function CheckPageViews() {
-	global $SEARCH_SPIDER, $MAX_VIEWS, $MAX_VIEW_TIME;
-
-	if ($MAX_VIEW_TIME == 0 || $MAX_VIEWS == 0 || !empty($SEARCH_SPIDER))
-		return;
-
-	// The media firewall should not be throttled
-	if (WT_SCRIPT_NAME=='mediafirewall.php')
-		return;
-
-	if (!empty($_SESSION["pageviews"]["time"]) && !empty($_SESSION["pageviews"]["number"])) {
-		$_SESSION["pageviews"]["number"] ++;
-		if ($_SESSION["pageviews"]["number"] < $MAX_VIEWS)
-			return;
-		$sleepTime = $MAX_VIEW_TIME - time() + $_SESSION["pageviews"]["time"];
-		if ($sleepTime > 0) {
-			// The configured page view rate has been exceeded
-			// - Log a message and then sleep to slow things down
-			$text = "Permitted page view rate of {$MAX_VIEWS} per {$MAX_VIEW_TIME} seconds exceeded.";
-			AddToLog($text, 'auth');
-			sleep($sleepTime);
-		}
-	}
-	$_SESSION["pageviews"] = array("time"=>time(), "number"=>1);
-}
-
-/**
  * get the next available xref
  * calculates the next available XREF id for the given type of record
  * @param string $type	the type of record, defaults to 'INDI'

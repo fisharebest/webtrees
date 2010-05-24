@@ -53,8 +53,6 @@ case 'update':
 	set_site_setting('SESSION_TIME',                    safe_POST('session_time'));
 	set_site_setting('SERVER_URL',                      safe_POST('server_url'));
 	set_site_setting('LOGIN_URL',                       safe_POST('login_url'));
-	set_site_setting('MAX_VIEWS',                       safe_POST('max_views'));
-	set_site_setting('MAX_VIEW_TIME',                   safe_POST('max_view_time'));
 	set_site_setting('MEMORY_LIMIT',                    safe_POST('memory_limit', '\d+[KMG]?', ini_get('memory_limit')));
 	set_site_setting('MAX_EXECUTION_TIME',              safe_POST('max_execution_time', '\d+', ini_get('max_execution_time')));
 	set_site_setting('SMTP_ACTIVE',                     safe_POST('smtp_active', 'internal|external|disabled', 'internal'));
@@ -123,9 +121,6 @@ echo
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Login URL'), help_link('LOGIN_URL'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="login_url" value="', get_site_setting('LOGIN_URL'), '" size="50" /></td>',
-	'</tr><tr>',
-	'<td class="descriptionbox width20 wrap">', i18n::translate('Maximum page view rate'), help_link('MAX_VIEW_RATE'), '</td>',
-	'<td class="optionbox wrap"><input type="text" name="max_views" value="', get_site_setting('MAX_VIEWS'), '" size="10" /> ', i18n::translate('pages per'), ' <input type="text" name="max_view_time" value="', get_site_setting('MAX_VIEW_TIME'), '" size="10" />', i18n::translate('seconds'), '</td>',
 	'</tr><tr>',
 	'<td class="facts_label" colspan="2">', i18n::translate('SMTP mail configuration'), '</td>',
 	'</tr><tr>',

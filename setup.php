@@ -1005,8 +1005,6 @@ try {
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
 		"('LOGIN_URL',                       'login.php'),".
-		"('MAX_VIEWS',                       '20'),".
-		"('MAX_VIEW_TIME',                   '1'),".
 		"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
 		"('MAX_EXECUTION_TIME',              '".addcslashes($_POST['maxcpu'], "'")."'),".
 		"('SMTP_ACTIVE',                     '".addcslashes($_POST['smtpuse'], "'")."'),".

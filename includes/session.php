@@ -246,8 +246,6 @@ $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
 $WT_SESSION_SAVE_PATH           =get_site_setting('SESSION_SAVE_PATH');
 $WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
-$MAX_VIEWS                      =get_site_setting('MAX_VIEWS');
-$MAX_VIEW_TIME                  =get_site_setting('MAX_VIEW_TIME');
 
 //-- allow user to cancel
 ignore_user_abort(false);
@@ -405,9 +403,6 @@ if (WT_USER_ID && safe_GET_bool('logout')) {
 	header("Location: ".WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
-
-// Check for page views exceeding the limit
-CheckPageViews();
 
 $show_context_help = '';
 if (!empty($_REQUEST['show_context_help'])) $show_context_help = $_REQUEST['show_context_help'];

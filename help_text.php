@@ -2336,11 +2336,6 @@ case 'MAX_RELATION_PATH_LENGTH':
 	$text=i18n::translate('If the <i>Use relationship privacy</i> option is enabled, logged-in users will only be able to see or edit individuals within this number of relationship steps.<br /><br />This option sets the default for all users who have access to this genealogical database.  The Administrator can override this option for individual users by editing the user\'s account details.');
 	break;
 
-case 'MAX_VIEW_RATE':
-	$title=i18n::translate('Maximum page view rate');
-	$text=i18n::translate('This option limits the rate at which a user can view pages.<br /><br />If that rate is exceeded, <b>webtrees</b> treats the session as a hacking attempt;  the session will be terminated with a suitable message.  These two values should place a reasonable limit on the amount of bandwith and downloaded bytes from the server.  This feature can be switched off by setting the time interval to 0.');
-	break;
-
 case 'MEDIA_DIRECTORY_LEVELS':
 	$title=i18n::translate('Multimedia directory levels to keep');
 	$text=i18n::translate('A value of 0 will ignore all directories in the file path for the media object.  A value of 1 will retain the first directory containing this image.  Increasing the numbers increases number of parent directories to retain in the path.<br /><br />For example, if you link an image in your GEDCOM with a path like <b>C:\Documents&nbsp;and&nbsp;Settings\User\My&nbsp;Documents\My&nbsp;Pictures\Genealogy\Surname&nbsp;Line\grandpa.jpg</b>, a value of 0 will translate this path to <b>./media/grandpa.jpg</b>.  A value of 1 will translate this to <b>./media/Surname&nbsp;Line/grandpa.jpg</b>, etc.  Most people will only need to use a 0.  However, it is possible that some media objects kept in different directories have identical names and would overwrite each other when this option is set to 0.  Non-zero settings allow you to keep some organization in your media thereby preventing name collisions.');
