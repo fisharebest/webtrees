@@ -833,11 +833,12 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}nextid (".
-		" ni_id      INTEGER     NOT NULL,". // TODO: use auto-increment columns
-		" ni_type    VARCHAR(15) NOT NULL,".
-		" ni_gedfile INTEGER     NOT NULL,".
-		" PRIMARY KEY (ni_type, ni_gedfile)".
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}next_id (".
+		" gedcom_id   INTEGER     NOT NULL,".
+		" record_type VARCHAR(15) NOT NULL,".
+		" next_id     INTEGER     NOT NULL,".
+		" PRIMARY KEY     (gedcom_id, record_type),".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -903,6 +904,15 @@ try {
 		" menu_order    TINYINT                     NULL, ".
 		" sidebar_order TINYINT                     NULL,".
 		" PRIMARY KEY (module_name)".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_setting (".
+		" module_name   VARCHAR(32) NOT NULL,".
+		" setting_name  VARCHAR(32) NOT NULL,".
+		" setting_value TEXT        NOT NULL,".
+		" PRIMARY KEY     (module_name, setting_name),".
+		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(

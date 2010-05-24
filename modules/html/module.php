@@ -32,10 +32,10 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
+class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Advanced HTML');
+		return i18n::translate('HTML');
 	}
 
 	// Extend class WT_Module
@@ -192,9 +192,9 @@ class block_htmlplus_WT_Module extends WT_Module implements WT_Module_Block {
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$useFCK = file_exists(WT_ROOT.'modules/FCKeditor/fckeditor.php');
+		$useFCK = file_exists(WT_ROOT.'modules/fck_editor/fckeditor.php');
 		if($useFCK){
-			require WT_ROOT.'modules/FCKeditor/fckeditor.php';
+			require WT_ROOT.'modules/fck_editor/fckeditor.php';
 		}
 
 		$templates=array(
@@ -385,9 +385,9 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 		if($useFCK)
 		{
 			// use FCKeditor module
-			require_once WT_ROOT.'modules/FCKeditor/fckeditor.php';
+			require_once WT_ROOT.'modules/fck_editor/fckeditor.php';
 			$oFCKeditor = new FCKeditor('html') ;
-			$oFCKeditor->BasePath = './modules/FCKeditor/';
+			$oFCKeditor->BasePath = './modules/fck_editor/';
 			$oFCKeditor->Value = $html;
 			$oFCKeditor->Width = 700;
 			$oFCKeditor->Height = 250;

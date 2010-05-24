@@ -1764,7 +1764,7 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}media_mapping       WHERE mm_gedfile=?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_privacy      WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}name                WHERE n_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}nextid              WHERE ni_gedfile=?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM {$TBLPREFIX}next_id             WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}other               WHERE o_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}placelinks          WHERE pl_file   =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM {$TBLPREFIX}places              WHERE p_file    =?")->execute(array($ged_id));
@@ -2663,6 +2663,32 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 	}
 }
 
+function get_module_setting($module_name, $setting_name, $default_value=null) {
+	global $TBLPREFIX;
+
+	$value=
+		WT_DB::prepare("SELECT setting_value FROM {$TBLPREFIX}module_setting WHERE module_name=? AND setting_name=?")
+		->execute(array($module_name, $setting_name))
+		->fetchOne();
+
+	if (is_null($value)) {
+		return $default_value;
+	} else {
+		return $value;
+	}
+}
+
+function set_module_setting($module_name, $setting_name, $setting_value) {
+	global $TBLPREFIX;
+
+	if (is_null($setting_value)) {
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_setting WHERE module_name=? AND setting_name=?")
+			->execute(array($module_name, $setting_name));
+	} else {
+		WT_DB::prepare("REPLACE INTO {$TBLPREFIX}module_setting (module_name, setting_name, setting_value) VALUES (?, ?, ?)")
+			->execute(array($module_name, $setting_name, $setting_value));
+	}
+}
 
 /**
 * update favorites regarding a merge of records

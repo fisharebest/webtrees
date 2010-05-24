@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-class JWplayer_WT_Module extends WT_Module {
+class jw_player_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
 		// Do not translate this?

@@ -47,37 +47,37 @@ if (file_exists(WT_ROOT.'modules/googlemap/config.php')) {
 	// Use @, in case the config.php file is incomplete/corrupt
 	@require WT_ROOT.'modules/googlemap/config.php';
 	// Rename settings from GOOGLEMAP_ to GM_ for consistency.
-	@set_site_setting('GM_ENABLED',           (int)$GOOGLEMAP_ENABLED);
-	@set_site_setting('GM_API_KEY',           $GOOGLEMAP_API_KEY);
-	@set_site_setting('GM_MAP_TYPE',          $GOOGLEMAP_MAP_TYPE);
-	@set_site_setting('GM_MIN_ZOOM',          $GOOGLEMAP_MIN_ZOOM);
-	@set_site_setting('GM_MAX_ZOOM',          $GOOGLEMAP_MAX_ZOOM);
-	@set_site_setting('GM_XSIZE',             $GOOGLEMAP_XSIZE);
-	@set_site_setting('GM_YSIZE',             $GOOGLEMAP_YSIZE);
-	@set_site_setting('GM_PRECISION_0',       $GOOGLEMAP_PRECISION_0);
-	@set_site_setting('GM_PRECISION_1',       $GOOGLEMAP_PRECISION_1);
-	@set_site_setting('GM_PRECISION_2',       $GOOGLEMAP_PRECISION_2);
-	@set_site_setting('GM_PRECISION_3',       $GOOGLEMAP_PRECISION_3);
-	@set_site_setting('GM_PRECISION_4',       $GOOGLEMAP_PRECISION_4);
-	@set_site_setting('GM_PRECISION_5',       $GOOGLEMAP_PRECISION_5);
-	@set_site_setting('GM_DEFAULT_TOP_VALUE', $GM_DEFAULT_TOP_VALUE);
-	@set_site_setting('GM_MAX_NOF_LEVELS',    $GM_MAX_NOF_LEVELS);
-	@set_site_setting('GM_COORD',             (int)$GOOGLEMAP_COORD);
-	@set_site_setting('GM_PLACE_HIERARCHY',   (int)$GOOGLEMAP_PLACE_HIERARCHY);
-	@set_site_setting('GM_PH_XSIZE',          $GOOGLEMAP_PH_XSIZE);
-	@set_site_setting('GM_PH_YSIZE',          $GOOGLEMAP_PH_YSIZE);
-	@set_site_setting('GM_PH_MARKER',         $GOOGLEMAP_PH_MARKER);
-	@set_site_setting('GM_DISP_SHORT_PLACE',  (int)$GM_DISP_SHORT_PLACE);
-	@set_site_setting('GM_PH_WHEEL',          (int)$GOOGLEMAP_PH_WHEEL);
-	@set_site_setting('GM_PH_CONTROLS',       (int)$GOOGLEMAP_PH_CONTROLS);
-	@set_site_setting('GM_DISP_COUNT',        (int)$GM_DISP_COUNT);
+	@set_module_setting('googlemap', 'GM_ENABLED',           (int)$GOOGLEMAP_ENABLED);
+	@set_module_setting('googlemap', 'GM_API_KEY',           $GOOGLEMAP_API_KEY);
+	@set_module_setting('googlemap', 'GM_MAP_TYPE',          $GOOGLEMAP_MAP_TYPE);
+	@set_module_setting('googlemap', 'GM_MIN_ZOOM',          $GOOGLEMAP_MIN_ZOOM);
+	@set_module_setting('googlemap', 'GM_MAX_ZOOM',          $GOOGLEMAP_MAX_ZOOM);
+	@set_module_setting('googlemap', 'GM_XSIZE',             $GOOGLEMAP_XSIZE);
+	@set_module_setting('googlemap', 'GM_YSIZE',             $GOOGLEMAP_YSIZE);
+	@set_module_setting('googlemap', 'GM_PRECISION_0',       $GOOGLEMAP_PRECISION_0);
+	@set_module_setting('googlemap', 'GM_PRECISION_1',       $GOOGLEMAP_PRECISION_1);
+	@set_module_setting('googlemap', 'GM_PRECISION_2',       $GOOGLEMAP_PRECISION_2);
+	@set_module_setting('googlemap', 'GM_PRECISION_3',       $GOOGLEMAP_PRECISION_3);
+	@set_module_setting('googlemap', 'GM_PRECISION_4',       $GOOGLEMAP_PRECISION_4);
+	@set_module_setting('googlemap', 'GM_PRECISION_5',       $GOOGLEMAP_PRECISION_5);
+	@set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', $GM_DEFAULT_TOP_VALUE);
+	@set_module_setting('googlemap', 'GM_MAX_NOF_LEVELS',    $GM_MAX_NOF_LEVELS);
+	@set_module_setting('googlemap', 'GM_COORD',             (int)$GOOGLEMAP_COORD);
+	@set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   (int)$GOOGLEMAP_PLACE_HIERARCHY);
+	@set_module_setting('googlemap', 'GM_PH_XSIZE',          $GOOGLEMAP_PH_XSIZE);
+	@set_module_setting('googlemap', 'GM_PH_YSIZE',          $GOOGLEMAP_PH_YSIZE);
+	@set_module_setting('googlemap', 'GM_PH_MARKER',         $GOOGLEMAP_PH_MARKER);
+	@set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  (int)$GM_DISP_SHORT_PLACE);
+	@set_module_setting('googlemap', 'GM_PH_WHEEL',          (int)$GOOGLEMAP_PH_WHEEL);
+	@set_module_setting('googlemap', 'GM_PH_CONTROLS',       (int)$GOOGLEMAP_PH_CONTROLS);
+	@set_module_setting('googlemap', 'GM_DISP_COUNT',        (int)$GM_DISP_COUNT);
 
 	for ($i=1; $i<=9; $i++) {
-		@set_site_setting('GM_MARKER_COLOR_'.$i,  $GM_MARKER_COLOR[$i]);
-		@set_site_setting('GM_MARKER_SIZE_'.$i,   $GM_MARKER_SIZE[$i]);
-		@set_site_setting('GM_PREFIX_'.$i,        $GM_PREFIX[$i]);
-		@set_site_setting('GM_POSTFIX_'.$i,       $GM_POSTFIX[$i]);
-		@set_site_setting('GM_PRE_POST_MODE_'.$i, $GM_PRE_POST_MODE[$i]);
+		@set_module_setting('googlemap', 'GM_MARKER_COLOR_'.$i,  $GM_MARKER_COLOR[$i]);
+		@set_module_setting('googlemap', 'GM_MARKER_SIZE_'.$i,   $GM_MARKER_SIZE[$i]);
+		@set_module_setting('googlemap', 'GM_PREFIX_'.$i,        $GM_PREFIX[$i]);
+		@set_module_setting('googlemap', 'GM_POSTFIX_'.$i,       $GM_POSTFIX[$i]);
+		@set_module_setting('googlemap', 'GM_PRE_POST_MODE_'.$i, $GM_PRE_POST_MODE[$i]);
 	}
 	@unlink(WT_ROOT.'modules/googlemap/config.php');
 }

@@ -100,35 +100,35 @@ if (!WT_USER_IS_ADMIN) {
 }
 
 if ($action=="update" && !isset($security_user)) {
-	set_site_setting('GM_ENABLED',           $_POST['NEW_GM_ENABLE']);
-	set_site_setting('GM_API_KEY',           $_POST['NEW_GM_API_KEY']);
-	set_site_setting('GM_MAP_TYPE',          $_POST['NEW_GM_MAP_TYPE']);
-	set_site_setting('GM_MIN_ZOOM',          $_POST['NEW_GM_MIN_ZOOM']);
-	set_site_setting('GM_MAX_ZOOM',          $_POST['NEW_GM_MAX_ZOOM']);
-	set_site_setting('GM_XSIZE',             $_POST['NEW_GM_XSIZE']);
-	set_site_setting('GM_YSIZE',             $_POST['NEW_GM_YSIZE']);
-	set_site_setting('GM_PRECISION_0',       $_POST['NEW_GM_PRECISION_0']);
-	set_site_setting('GM_PRECISION_1',       $_POST['NEW_GM_PRECISION_1']);
-	set_site_setting('GM_PRECISION_2',       $_POST['NEW_GM_PRECISION_2']);
-	set_site_setting('GM_PRECISION_3',       $_POST['NEW_GM_PRECISION_3']);
-	set_site_setting('GM_PRECISION_4',       $_POST['NEW_GM_PRECISION_4']);
-	set_site_setting('GM_PRECISION_5',       $_POST['NEW_GM_PRECISION_5']);
-	set_site_setting('GM_DEFAULT_TOP_VALUE', $_POST['NEW_GM_DEFAULT_TOP_LEVEL']);
-	set_site_setting('GM_MAX_NOF_LEVELS',    $_POST['NEW_GM_LEVEL_COUNT']);
-	set_site_setting('GM_COORD',             $_POST['NEW_GM_COORD']);
-	set_site_setting('GM_PLACE_HIERARCHY',   $_POST['NEW_GM_PLACE_HIERARCHY']);
-	set_site_setting('GM_PH_XSIZE',          $_POST['NEW_GM_PH_XSIZE']);
-	set_site_setting('GM_PH_YSIZE',          $_POST['NEW_GM_PH_YSIZE']);
-	set_site_setting('GM_PH_MARKER',         $_POST['NEW_GM_PH_MARKER']);
-	set_site_setting('GM_DISP_SHORT_PLACE',  $_POST['NEW_GM_DISP_SHORT_PLACE']);
-	set_site_setting('GM_PH_WHEEL',          $_POST['NEW_GM_PH_WHEEL']);
-	set_site_setting('GM_PH_CONTROLS',       $_POST['NEW_GM_PH_CONTROLS']);
-	set_site_setting('GM_DISP_COUNT',        $_POST['NEW_GM_DISP_COUNT']);
+	set_module_setting('googlemap', 'GM_ENABLED',           $_POST['NEW_GM_ENABLE']);
+	set_module_setting('googlemap', 'GM_API_KEY',           $_POST['NEW_GM_API_KEY']);
+	set_module_setting('googlemap', 'GM_MAP_TYPE',          $_POST['NEW_GM_MAP_TYPE']);
+	set_module_setting('googlemap', 'GM_MIN_ZOOM',          $_POST['NEW_GM_MIN_ZOOM']);
+	set_module_setting('googlemap', 'GM_MAX_ZOOM',          $_POST['NEW_GM_MAX_ZOOM']);
+	set_module_setting('googlemap', 'GM_XSIZE',             $_POST['NEW_GM_XSIZE']);
+	set_module_setting('googlemap', 'GM_YSIZE',             $_POST['NEW_GM_YSIZE']);
+	set_module_setting('googlemap', 'GM_PRECISION_0',       $_POST['NEW_GM_PRECISION_0']);
+	set_module_setting('googlemap', 'GM_PRECISION_1',       $_POST['NEW_GM_PRECISION_1']);
+	set_module_setting('googlemap', 'GM_PRECISION_2',       $_POST['NEW_GM_PRECISION_2']);
+	set_module_setting('googlemap', 'GM_PRECISION_3',       $_POST['NEW_GM_PRECISION_3']);
+	set_module_setting('googlemap', 'GM_PRECISION_4',       $_POST['NEW_GM_PRECISION_4']);
+	set_module_setting('googlemap', 'GM_PRECISION_5',       $_POST['NEW_GM_PRECISION_5']);
+	set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', $_POST['NEW_GM_DEFAULT_TOP_LEVEL']);
+	set_module_setting('googlemap', 'GM_MAX_NOF_LEVELS',    $_POST['NEW_GM_LEVEL_COUNT']);
+	set_module_setting('googlemap', 'GM_COORD',             $_POST['NEW_GM_COORD']);
+	set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   $_POST['NEW_GM_PLACE_HIERARCHY']);
+	set_module_setting('googlemap', 'GM_PH_XSIZE',          $_POST['NEW_GM_PH_XSIZE']);
+	set_module_setting('googlemap', 'GM_PH_YSIZE',          $_POST['NEW_GM_PH_YSIZE']);
+	set_module_setting('googlemap', 'GM_PH_MARKER',         $_POST['NEW_GM_PH_MARKER']);
+	set_module_setting('googlemap', 'GM_DISP_SHORT_PLACE',  $_POST['NEW_GM_DISP_SHORT_PLACE']);
+	set_module_setting('googlemap', 'GM_PH_WHEEL',          $_POST['NEW_GM_PH_WHEEL']);
+	set_module_setting('googlemap', 'GM_PH_CONTROLS',       $_POST['NEW_GM_PH_CONTROLS']);
+	set_module_setting('googlemap', 'GM_DISP_COUNT',        $_POST['NEW_GM_DISP_COUNT']);
 
 	for ($i=1; $i<=9; $i++) {
-		set_site_setting('GM_PREFIX_'.$i,        $_POST['NEW_GM_PREFIX_'.$i]);
-		set_site_setting('GM_POSTFIX_'.$i,       $_POST['NEW_GM_POSTFIX_'.$i]);
-		set_site_setting('GM_PRE_POST_MODE_'.$i, $_POST['NEW_GM_PRE_POST_MODE_'.$i]);
+		set_module_setting('googlemap', 'GM_PREFIX_'.$i,        $_POST['NEW_GM_PREFIX_'.$i]);
+		set_module_setting('googlemap', 'GM_POSTFIX_'.$i,       $_POST['NEW_GM_POSTFIX_'.$i]);
+		set_module_setting('googlemap', 'GM_PRE_POST_MODE_'.$i, $_POST['NEW_GM_PRE_POST_MODE_'.$i]);
 	}
 
 	AddToLog('Googlemap config updated', 'config');

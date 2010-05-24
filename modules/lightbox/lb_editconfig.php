@@ -58,16 +58,16 @@ if (!WT_USER_IS_ADMIN) {
 }
 
 if ($action=='update' && !isset($security_user)) {
-	set_site_setting('LB_ENABLED',        $_POST['NEW_mediatab']);
-	set_site_setting('LB_AL_HEAD_LINKS',  $_POST['NEW_LB_AL_HEAD_LINKS']);
-	set_site_setting('LB_AL_THUMB_LINKS', $_POST['NEW_LB_AL_THUMB_LINKS']);
-	set_site_setting('LB_TT_BALLOON',     $_POST['NEW_LB_TT_BALLOON']);
-	set_site_setting('LB_ML_THUMB_LINKS', $_POST['NEW_LB_ML_THUMB_LINKS']);
-	set_site_setting('LB_MUSIC_FILE',     $_POST['NEW_LB_MUSIC_FILE']);
-	set_site_setting('LB_SS_SPEED',       $_POST['NEW_LB_SS_SPEED']);
-	set_site_setting('LB_TRANSITION',     $_POST['NEW_LB_TRANSITION']);
-	set_site_setting('LB_URL_WIDTH',      $_POST['NEW_LB_URL_WIDTH']);
-	set_site_setting('LB_URL_HEIGHT',     $_POST['NEW_LB_URL_HEIGHT']);
+	set_module_setting('lightbox', 'LB_ENABLED',        $_POST['NEW_mediatab']);
+	set_module_setting('lightbox', 'LB_AL_HEAD_LINKS',  $_POST['NEW_LB_AL_HEAD_LINKS']);
+	set_module_setting('lightbox', 'LB_AL_THUMB_LINKS', $_POST['NEW_LB_AL_THUMB_LINKS']);
+	set_module_setting('lightbox', 'LB_TT_BALLOON',     $_POST['NEW_LB_TT_BALLOON']);
+	set_module_setting('lightbox', 'LB_ML_THUMB_LINKS', $_POST['NEW_LB_ML_THUMB_LINKS']);
+	set_module_setting('lightbox', 'LB_MUSIC_FILE',     $_POST['NEW_LB_MUSIC_FILE']);
+	set_module_setting('lightbox', 'LB_SS_SPEED',       $_POST['NEW_LB_SS_SPEED']);
+	set_module_setting('lightbox', 'LB_TRANSITION',     $_POST['NEW_LB_TRANSITION']);
+	set_module_setting('lightbox', 'LB_URL_WIDTH',      $_POST['NEW_LB_URL_WIDTH']);
+	set_module_setting('lightbox', 'LB_URL_HEIGHT',     $_POST['NEW_LB_URL_HEIGHT']);
 
 	AddToLog('Lightbox config updated', 'config');
 	// read the config file again, to set the vars

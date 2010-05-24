@@ -45,16 +45,16 @@ define('WT_LB_DB_SCHEMA_0_1', '');
 if (file_exists(WT_ROOT.'modules/lightbox/lb_config.php')) {
 	// Use @, in case the lb_config.php file is incomplete/corrupt
 	@require_once WT_ROOT.'modules/lightbox/lb_config.php';
-  @set_site_setting('LB_ENABLED',        $mediatab);
-  @set_site_setting('LB_AL_HEAD_LINKS',  $LB_AL_HEAD_LINKS);
-  @set_site_setting('LB_AL_THUMB_LINKS', $LB_AL_THUMB_LINKS);
-  @set_site_setting('LB_TT_BALLOON',     $LB_TT_BALLOON);
-  @set_site_setting('LB_ML_THUMB_LINKS', $LB_ML_THUMB_LINKS);
-  @set_site_setting('LB_MUSIC_FILE',     $LB_MUSIC_FILE);
-  @set_site_setting('LB_SS_SPEED',       $LB_SS_SPEED);
-  @set_site_setting('LB_TRANSITION',     $LB_TRANSITION);
-	@set_site_setting('LB_URL_WIDTH',      $LB_URL_WIDTH);
-	@set_site_setting('LB_URL_HEIGHT',     $LB_URL_HEIGHT);
+  @set_module_setting('lightbox', 'LB_ENABLED',        $mediatab);
+  @set_module_setting('lightbox', 'LB_AL_HEAD_LINKS',  $LB_AL_HEAD_LINKS);
+  @set_module_setting('lightbox', 'LB_AL_THUMB_LINKS', $LB_AL_THUMB_LINKS);
+  @set_module_setting('lightbox', 'LB_TT_BALLOON',     $LB_TT_BALLOON);
+  @set_module_setting('lightbox', 'LB_ML_THUMB_LINKS', $LB_ML_THUMB_LINKS);
+  @set_module_setting('lightbox', 'LB_MUSIC_FILE',     $LB_MUSIC_FILE);
+  @set_module_setting('lightbox', 'LB_SS_SPEED',       $LB_SS_SPEED);
+  @set_module_setting('lightbox', 'LB_TRANSITION',     $LB_TRANSITION);
+	@set_module_setting('lightbox', 'LB_URL_WIDTH',      $LB_URL_WIDTH);
+	@set_module_setting('lightbox', 'LB_URL_HEIGHT',     $LB_URL_HEIGHT);
 	@unlink(WT_ROOT.'modules/lightbox/lb_config.php');
 }
 

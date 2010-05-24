@@ -1481,7 +1481,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		} else {
 			$file_type = 'local_';
 		}
-		if (preg_match("/\.flv$/i", $rowm['m_file']) && file_exists(WT_ROOT.'modules/JWplayer/flvVideo.php')) {
+		if (preg_match("/\.flv$/i", $rowm['m_file']) && file_exists(WT_ROOT.'modules/jw_player/flvVideo.php')) {
 			$file_type .= 'flv';
 		} elseif (preg_match("/\.(jpg|jpeg|gif|png)$/i", $rowm['m_file'])) {
 			$file_type .= 'image';
