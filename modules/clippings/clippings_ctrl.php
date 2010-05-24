@@ -95,7 +95,7 @@ class ClippingsControllerRoot extends BaseController {
 	}
 	//----------------beginning of function definitions for ClippingsControllerRoot
 	function init() {
-		global $ENABLE_CLIPPINGS_CART, $SCRIPT_NAME, $SERVER_URL, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
+		global $ENABLE_CLIPPINGS_CART, $SCRIPT_NAME, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
 		global $GEDCOM, $cart;
 
 		if (!isset ($ENABLE_CLIPPINGS_CART))

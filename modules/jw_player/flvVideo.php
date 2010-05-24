@@ -42,7 +42,7 @@
 
 <?php
 global $pid, $GEDCOM ;
-global $flvVideo, $SERVER_URL;
+global $flvVideo;
 $flvVideo="../../".decrypt(safe_GET('flvVideo'));
 $preview="";
 // echo "<font color=white>".$flvVideo."</font>";

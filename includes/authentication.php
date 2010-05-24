@@ -347,7 +347,7 @@ function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {
-	global $TBLPREFIX, $WT_STORE_MESSAGES, $SERVER_URL;
+	global $TBLPREFIX, $WT_STORE_MESSAGES;
 	global $TEXT_DIRECTION;
 	global $WEBTREES_EMAIL;
 
@@ -374,7 +374,7 @@ function addMessage($message) {
 	if (isset($message["from_name"]))
 		$email2 = i18n::translate('Your Name:')." ".$message["from_name"]."\r\n".i18n::translate('Email Address:')." ".$message["from_email"]."\r\n\r\n".$email2;
 	if (!empty($message["url"]))
-		$email2 .= "\r\n\r\n--------------------------------------\r\n\r\n".i18n::translate('This message was sent while viewing the following URL: ')."\r\n".$SERVER_URL.$message["url"]."\r\n";
+		$email2 .= "\r\n\r\n--------------------------------------\r\n\r\n".i18n::translate('This message was sent while viewing the following URL: ')."\r\n".WT_SERVER_NAME.WT_SCRIPT_PATH.$message["url"]."\r\n";
 	$email2 .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n";
 	$email2 .= "DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n";
 	$email2 .= "LANGUAGE: ".WT_LOCALE."\r\n";
@@ -428,7 +428,7 @@ function addMessage($message) {
 	//-- [ webtrees-Feature Requests-1588353 ] Supress admin IP address in Outgoing PGV Email
 	if (!userIsAdmin($user_id_from)) {
 		if (!empty($message["url"]))
-			$message["body"] .= "\r\n\r\n--------------------------------------\r\n\r\n".i18n::translate('This message was sent while viewing the following URL: ')."\r\n".$SERVER_URL.$message["url"]."\r\n";
+			$message["body"] .= "\r\n\r\n--------------------------------------\r\n\r\n".i18n::translate('This message was sent while viewing the following URL: ')."\r\n".WT_SERVER_NAME.WT_SCRIPT_PATH.$message["url"]."\r\n";
 		$message["body"] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n";
 		$message["body"] .= "DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n";
 		$message["body"] .= "LANGUAGE: ".WT_LOCALE."\r\n";

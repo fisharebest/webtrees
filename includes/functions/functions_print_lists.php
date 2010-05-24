@@ -1627,7 +1627,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
  * @param array $datalist contain records that were extracted from the database.
  */
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $allow_download=false, $sort_by_event=false) {
-	global $TEXT_DIRECTION, $SERVER_URL;
+	global $TEXT_DIRECTION;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
@@ -1755,7 +1755,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "</td><td class=\"list_label\" colspan=\"3\">";
 		$return .= i18n::translate('Total events').": ".$output;
 		if ($allow_download) {
-			$uri = $SERVER_URL.basename($_SERVER["REQUEST_URI"]);
+			$uri = WT_SERVER_NAME.WT_SCRIPT_PATH.basename($_SERVER["REQUEST_URI"]);
 			$title = i18n::translate('Download file %s', 'hCal-events.ics');
 			$return .= "<br /><a href=\"".encode_url("http://feeds.technorati.com/events/{$uri}")."\"><img src=\"images/hcal.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
 		}

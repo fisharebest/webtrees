@@ -884,7 +884,7 @@ class ServiceClient extends GedcomRecord {
 	* @return ServiceClient
 	*/
 	static function &getInstance($id) {
-		global $WT_SERVERS, $SERVER_URL, $GEDCOM;
+		global $WT_SERVERS, $GEDCOM;
 		$ged_id=get_id_from_gedcom($GEDCOM);
 
 		if (isset($WT_SERVERS[$id])) return $WT_SERVERS[$id];
@@ -894,7 +894,7 @@ class ServiceClient extends GedcomRecord {
 			$gedfile = get_gedcom_value("_DBID", 1, $gedrec);
 			if (empty($url) && empty($gedfile))
 				return null;
-			if (!empty($url) && (strtolower($url)!=strtolower($SERVER_URL))) {
+			if (!empty($url) && (strtolower($url)!=strtolower(WT_SERVER_NAME.WT_SCRIPT_PATH))) {
 				$server = new ServiceClient($gedrec);
 			} else {
 				require_once WT_ROOT.'includes/classes/class_localclient.php';

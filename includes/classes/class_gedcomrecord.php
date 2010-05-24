@@ -373,8 +373,7 @@ class GedcomRecord {
 	*
 	*/
 	function getAbsoluteLinkUrl() {
-		global $SERVER_URL;
-		return $SERVER_URL.$this->getLinkUrl();
+		return WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getLinkUrl();
 	}
 
 	/**

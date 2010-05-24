@@ -1419,7 +1419,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
  * @param string $pid	The record id this media item was attached to
  */
 function print_main_media_row($rtype, $rowm, $pid) {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $view, $TEXT_DIRECTION, $SERVER_URL;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $view, $TEXT_DIRECTION;
 	global $SHOW_ID_NUMBERS, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER, $MEDIA_TYPES;
 

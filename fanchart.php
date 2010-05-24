@@ -100,7 +100,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style;
 	global $name, $SHOW_ID_NUMBERS, $view, $TEXT_DIRECTION;
 	global $stylesheet, $print_stylesheet;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $LINK_ICONS, $GEDCOM, $SERVER_URL;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $LINK_ICONS, $GEDCOM;
 	global $fanChart;
 
 	// check for GD 2.x library
@@ -376,12 +376,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	$imagemap .= "</map>";
 	echo $imagemap;
 
-	if (!empty($SERVER_URL)) {
-		ImageStringUp($image, 1, $fanw-10, $fanh/3, $SERVER_URL, $color);
-	} else {
-		// PGV banner ;-)
-		ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_WEBTREES_URL, $color);
-	}
+	ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
 
 	// here we cannot send image to browser ('header already sent')
 	// and we dont want to use a tmp file
