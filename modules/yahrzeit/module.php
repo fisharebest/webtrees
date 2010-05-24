@@ -45,7 +45,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id) {
-		global $ctype, $SHOW_ID_NUMBERS, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS, $DAYS_TO_SHOW_LIMIT, $SHOW_MARRIED_NAMES, $SERVER_URL, $THEME_DIR;
+		global $ctype, $SHOW_ID_NUMBERS, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS, $DAYS_TO_SHOW_LIMIT, $SHOW_MARRIED_NAMES, $THEME_DIR;
 
 		$days=get_block_setting($block_id, 'days', $DAYS_TO_SHOW_LIMIT);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
@@ -202,7 +202,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<td style=\"display:none\">GIVN</td>";
 			$content .= "<td>";
 			if ($allowDownload) {
-				$uri = $SERVER_URL.basename($_SERVER['REQUEST_URI']);
+				$uri = WT_SERVER_NAME.WT_SCRIPT_PATH.basename($_SERVER['REQUEST_URI']);
 				$alt = i18n::translate('Download file %s', 'hCal-events.ics');
 				if (count($yahrzeits)) {
 					$content .= "<a href=\"http://feeds.technorati.com/events/{$uri}\"><img src=\"images/hcal.png\" border=\"0\" alt=\"{$alt}\" title=\"{$alt}\" /></a>";
@@ -258,7 +258,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<input type="text" name="days" size="2" value="'.$days.'" />';
 		echo '</td></tr>';
 
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'style2');
+		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
