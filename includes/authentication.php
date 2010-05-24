@@ -436,8 +436,8 @@ function addMessage($message) {
 	if (empty($message["created"]))
 		$message["created"] = gmdate ("D, d M Y H:i:s T");
 	if ($WT_STORE_MESSAGES && ($message["method"]!="messaging3" && $message["method"]!="mailto" && $message["method"]!="none")) {
-		WT_DB::prepare("INSERT INTO {$TBLPREFIX}messages (m_id, m_from, m_to, m_subject, m_body, m_created) VALUES (?, ? ,? ,? ,? ,?)")
-			->execute(array(get_next_id("messages", "m_id"), $message["from"], $message["to"], $message["subject"], $message["body"], $message["created"]));
+		WT_DB::prepare("INSERT INTO {$TBLPREFIX}message (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
+			->execute(array($message["from"], $_SERVER['REMOTE_ADDR'], get_user_id($message["to"]), $message["subject"], $message["body"]));
 	}
 	if ($message["method"]!="messaging") {
 		$subject1 = "[".i18n::translate('webtrees Message').($TEXT_DIRECTION=="ltr"?"] ":" [").$message["subject"];
@@ -475,28 +475,27 @@ function addMessage($message) {
 function deleteMessage($message_id) {
 	global $TBLPREFIX;
 
-	return (bool)WT_DB::prepare("DELETE FROM {$TBLPREFIX}messages WHERE m_id=?")->execute(array($message_id));
+	return (bool)WT_DB::prepare("DELETE FROM {$TBLPREFIX}message WHERE message_id=?")->execute(array($message_id));
 }
 
 //----------------------------------- getUserMessages
 //-- Return an array of a users messages
-function getUserMessages($username) {
+function getUserMessages($user_id) {
 	global $TBLPREFIX;
 
 	$rows=
-		WT_DB::prepare("SELECT * FROM {$TBLPREFIX}messages WHERE m_to=? ORDER BY m_id DESC")
-		->execute(array($username))
+		WT_DB::prepare("SELECT message_id, sender, subject, body, created FROM {$TBLPREFIX}message WHERE user_id=? ORDER BY message_id DESC")
+		->execute(array($user_id))
 		->fetchAll();
 
 	$messages=array();
 	foreach ($rows as $row) {
 		$messages[]=array(
-			"id"=>$row->m_id,
-			"to"=>$row->m_to,
-			"from"=>$row->m_from,
-			"subject"=>$row->m_subject,
-			"body"=>$row->m_body,
-			"created"=>$row->m_created
+			"id"=>$row->message_id,
+			"from"=>$row->sender,
+			"subject"=>$row->subject,
+			"body"=>$row->body,
+			"created"=>$row->created
 		);
 	}
 	return $messages;

@@ -681,15 +681,16 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}messages (".
-		" m_id      INTEGER AUTO_INCREMENT NOT NULL,".
-		" m_from    VARCHAR(255)           NOT NULL,".
-		" m_to      VARCHAR(32)            NOT NULL,". // TODO: user_id
-		" m_subject VARCHAR(255)           NOT NULL,".
-		" m_body    TEXT                   NOT NULL,".
-		" m_created VARCHAR(255)           NOT NULL,". // TODO: timestamp
-		" PRIMARY KEY     (m_id),".
-		"         KEY ix1 (m_to)".
+		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}message (".
+		" message_id INTEGER AUTO_INCREMENT NOT NULL,".
+		" sender     VARCHAR(64)            NOT NULL,". // username or email address
+		" ip_address VARCHAR(40)            NOT NULL,". // long enough for IPv6
+		" user_id    INTEGER                NOT NULL,".
+		" subject    VARCHAR(255)           NOT NULL,".
+		" body       TEXT                   NOT NULL,".
+		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
+		" PRIMARY KEY     (message_id),".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user (user_id) /* ON DELETE RESTRICT */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -900,9 +901,9 @@ try {
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module (".
 		" module_name   VARCHAR(32)                 NOT NULL,".
 		" status        ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
-		" tab_order     TINYINT                     NULL, ".
-		" menu_order    TINYINT                     NULL, ".
-		" sidebar_order TINYINT                     NULL,".
+		" tab_order     INTEGER                         NULL, ".
+		" menu_order    INTEGER                         NULL, ".
+		" sidebar_order INTEGER                         NULL,".
 		" PRIMARY KEY (module_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);

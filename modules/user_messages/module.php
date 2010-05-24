@@ -62,7 +62,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$usermessages = getUserMessages(WT_USER_NAME);
+		$usermessages = getUserMessages(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
 		$title=i18n::translate('My Messages').help_link('mygedview_message');
@@ -110,12 +110,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message["subject"]));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
 				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" alt=\"".i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
-				if (!empty($message["created"])) {
-					$time = strtotime($message["created"]);
-				} else {
-					$time = time();
-				}
-				$content .= "<td class=\"list_value_wrap\">".format_timestamp($time)."</td>";
+				$content .= "<td class=\"list_value_wrap\">".$message["created"]."</td>";
 				$content .= "<td class=\"list_value_wrap\">";
 				$user_id=get_user_id($message["from"]);
 				if ($user_id) {
