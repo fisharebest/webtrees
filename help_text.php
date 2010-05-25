@@ -4018,8 +4018,7 @@ case 'help_contents_help':
 			$text.='<td valign="top"><span class="helpstart">'.i18n::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.i18n::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.i18n::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
 			.i18n::translate('FAQ List: Edit').'</a></li><li><a href="?help=add_gedcom">'.i18n::translate('GEDCOM: Add').'</li><li><a href="?help=add_upload_gedcom">'.i18n::translate('GEDCOM: Add vs Upload').'</a></li><li><a href="?help=edit_gedcoms">'.i18n::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=change_indi2id">'
 			.i18n::translate('GEDCOM: Change Individual ID to ...').'</a></li><li><a href="?help=gedcom_configfile">'.i18n::translate('GEDCOM: Configuration file').'</a></li><li><a href="?help=edit_config_gedcom">'.i18n::translate('GEDCOM: Configure').'</a></li><li><a href="?help=add_new_gedcom">'.i18n::translate('GEDCOM: Create new').'</a></li><li><a href="?help=default_gedcom">'.i18n::translate('GEDCOM: Default').'</a></li><li><a href="?help=delete_gedcom">'.i18n::translate('GEDCOM: Delete').'</a></li><li><a href="?help=download_gedcom">'
-			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=edit_privacy">'.i18n::translate('GEDCOM: Privacy settings').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="?help=validate_gedcom">'
-			.i18n::translate('GEDCOM: Validate').'</a></li><li><a href="?help=readmefile">'.i18n::translate('Readme file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
+			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=edit_privacy">'.i18n::translate('GEDCOM: Privacy settings').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="?help=readmefile">'.i18n::translate('Readme file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
 		}
 	$text.=('</tr></table>');
 	break;
@@ -4912,11 +4911,6 @@ case 'username':
 case 'utf8_ansi':
 	$title=i18n::translate('Convert from UTF-8 to ANSI');
 	$text=i18n::translate('For optimal display on the Internet, <b>webtrees</b> uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br /><br />The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren\'t sure, consult the documentation of that program.<br /><br />Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program\'s method for handling these special characters by some other means.  Consult your program\'s manufacturer or author.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/UTF-8\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8.');
-	break;
-
-case 'validate_gedcom':
-	$title=i18n::translate('Validate GEDCOM');
-	$text=i18n::translate('This is the third step in the procedure to add externally created GEDCOM data to your genealogical database.<br /><br /><b>webtrees</b> will check the input file for the correct use of Date format, Place format, Character Set, etc.  Some deviations from the GEDCOM 5.5.1 Standard, to which <b>webtrees</b> adheres, can be corrected automatically. Examples are Macintosh line endings and incorrect use of Place format.  When this happens, you will see a message that the data has been changed.  For other abnormalities you will get a warning message with a recommended solution.<br /><br /><b>Optional Tools</b><br />At this moment there is only one additional tool:<br /><b>Change Individual ID to...</b>.<br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.');
 	break;
 
 case 'view_server_folder':
