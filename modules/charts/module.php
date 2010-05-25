@@ -88,24 +88,22 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$title .= "<img class=\"adminicon\" src=\"$WT_IMAGE_DIR/".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 		}
 		if ($person) {
-			$name=PrintReady($person->getFullName());
 			switch($type) {
 				case 'pedigree':
-					$title .= $name." ".i18n::translate('Pedigree Tree');
+					$title .= i18n::translate('Pedigree tree of %s', $person->getFullName());
 					break;
 				case 'descendants':
-					$title .= $name." ".i18n::translate('Descendancy chart');
+					$title .= i18n::translate('Descendancy chart of %s', $person->getFullName());
 					break;
 				case 'hourglass':
-					$title .= $name." ".i18n::translate('Hourglass chart');
+					$title .= i18n::translate('Hourglass chart of %s', $person->getFullName());
 					break;
 				case 'treenav':
-					$title .= $name." ".i18n::translate('Tree');
+					$title .= i18n::translate('Interactive tree of %s', $person->getFullName());
 					break;
 			}
 			$title .= help_link('index_charts', $this->getName());
-			$content = "";
-			$content .= "<script src=\"js/webtrees.js\" language=\"JavaScript\" type=\"text/javascript\"></script>";
+			$content = "<script src=\"js/webtrees.js\" language=\"JavaScript\" type=\"text/javascript\"></script>";
 			if ($show_full==0) {
 				$content .= '<center><span class="details2">'.i18n::translate('Click on any of the boxes to get more information about that person.').'</span></center><br />';
 			}
