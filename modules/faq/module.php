@@ -166,17 +166,17 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
 			echo '<table class="center list_table">';
 			echo '<tr><td class="topbottombar" colspan="2">';
-			echo i18n::translate('Add FAQ item'), help_link('add_faq_item');
+			echo i18n::translate('Add FAQ item'), help_link('add_faq_item', $this->getName());
 			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('FAQ header'), help_link('add_faq_header');
+			echo i18n::translate('FAQ header'), help_link('add_faq_header', $this->getName());
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
 			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('FAQ body'), help_link("add_faq_body","qm","add_faq_body");
+			echo i18n::translate('FAQ body'), help_link('add_faq_body', $this->getName());
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
 			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('FAQ position'), help_link('add_faq_order');
+			echo i18n::translate('FAQ position'), help_link('add_faq_order', $this->getName());
 			echo '</td><td class="descriptionbox">';
-			echo i18n::translate('FAQ visibility'), help_link('add_faq_visibility');
+			echo i18n::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName());
 			echo '</td></tr><tr><td class="optionbox"><input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '" /></td>';
 			echo '<td class="optionbox">';
 				echo '<select name="gedcom_id" tabindex="4" />';
@@ -339,7 +339,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo '<table class="list_table width100">';
 		echo '<tr><td class="width20 list_label" colspan="5">';
 		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add FAQ item'), '</a>';
-		echo help_link('add_faq_item');
+		echo help_link('add_faq_item', $this->getName());
 		echo '</td></tr>';
 		if (empty($faqs)) {
 			echo '<tr><td class="error center">', i18n::translate('The FAQ list is empty.'), '</td></tr>';
@@ -363,21 +363,21 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["uarrow"]["other"], '" border="0" alt="" /></a>';
-					echo help_link('moveup_faq_item');
+					echo help_link('moveup_faq_item', $this->getName());
 				}
 				echo '</td><td class="optionbox center">';
 				if ($faq->block_order==$max_block_order) {
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["darrow"]["other"], '" border="0" alt="" /></a>';
-					echo help_link('movedown_faq_item');
+					echo help_link('movedown_faq_item', $this->getName());
 				}
 				echo '</td><td class="optionbox center">';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $faq->block_id, '">', i18n::translate('Edit'), '</a>';
-				echo help_link('edit_faq_item');
+				echo help_link('edit_faq_item', $this->getName());
 				echo '</td><td class="optionbox center">';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this FAQ entry?'), '\');">', i18n::translate('Delete'), '</a>';
-				echo help_link('delete_faq_item');
+				echo help_link('delete_faq_item', $this->getName());
 				echo '</td>';
 				// NOTE: Print the body text of the current item
 				echo '<td class="list_value_wrap">', substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body), '</td></tr>';

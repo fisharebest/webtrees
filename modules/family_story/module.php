@@ -201,10 +201,10 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 			echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '" />';
 			echo '<table class="center list_table">';
 			echo '<tr><td class="topbottombar" colspan="2">';
-			echo i18n::translate('Add family story'), help_link('add_family_story');
+			echo i18n::translate('Add family story'), help_link('add_story', $this->getName());
 			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
 			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('Family story'), help_link("add_family_story");
+			echo i18n::translate('Family story'), help_link('add_story', $this->getName());
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
 			echo '<tr><td class="descriptionbox">';
 			echo i18n::translate('Person');
@@ -262,7 +262,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 		echo '<table class="list_table">';
 		echo '<tr><td class="list_label" colspan="3">';
 		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add family story'), '</a>';
-		echo help_link('add_story');
+		echo help_link('add_story', $this->getName());
 		echo '</td></tr>';
 		foreach ($stories as $story) {
 			$indi=Person::getInstance($story->xref);
@@ -273,10 +273,10 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 			}
 			echo '<tr><td class="optionbox center width20">';
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a>';
-			echo help_link('edit_faq_item');
+			echo help_link('edit_story', $this->getName());
 			echo '</td><td class="optionbox center width20">';
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this family story?'), '\');">', i18n::translate('Delete'), '</a>';
-			echo help_link('delete_faq_item');
+			echo help_link('delete_story', $this->getName());
 			echo '</td>';
 			echo '<td class="list_value_wrap">', $name, '</td></tr>';
 		}

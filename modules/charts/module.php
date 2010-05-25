@@ -103,7 +103,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 					$title .= $name." ".i18n::translate('Tree');
 					break;
 			}
-			$title .= help_link('index_charts');
+			$title .= help_link('index_charts', $this->getName());
 			$content = "";
 			$content .= "<script src=\"js/webtrees.js\" language=\"JavaScript\" type=\"text/javascript\"></script>";
 			if ($show_full==0) {

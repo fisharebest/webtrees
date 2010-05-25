@@ -306,7 +306,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 		$out .= '</ul>';
 		if (count($cart)>0) {
-			$out .= '<a href="sidebar.php?sb_action=clippings&amp;empty=true" class="remove_cart">'.i18n::translate('Empty Cart').'</a>'.help_link('empty_cart', 'clippings');
+			$out .= '<a href="sidebar.php?sb_action=clippings&amp;empty=true" class="remove_cart">'.i18n::translate('Empty Cart').'</a>'.help_link('empty_cart', $this->getName());
 			$out .= '<br /><a href="sidebar.php?sb_action=clippings&amp;download=true" class="add_cart">'.i18n::translate('Download Now').'</a>';
 		}
 		$out .= '<br />';
