@@ -147,7 +147,11 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$content=i18n::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
-		require $THEME_DIR.'templates/block_small_temp.php';
+		if (get_block_setting($block_id, 'block')) {
+			require $THEME_DIR.'templates/block_small_temp.php';
+		} else {
+			require $THEME_DIR.'templates/block_main_temp.php';
+		}
 
 		// Restore GEDCOM configuration
 		unset($show_full);
@@ -222,5 +226,14 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			</td>
 		</tr>
 		<?php
+
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+
+		$block=get_block_setting($block_id, 'block', false);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('block', $block);
+		echo '</td></tr>';
 	}
 }
