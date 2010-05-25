@@ -134,7 +134,6 @@ $FAVICON = "images/favicon.ico";		// -- change to point to your favicon, either 
 $THEME_DIR = "themes/webtrees/";					// -- directory where display theme files are kept
 if (substr ($THEME_DIR, -1) != "/") $THEME_DIR = $THEME_DIR . "/";
 $ALLOW_THEME_DROPDOWN = true;		//-- allows the themes to display theme change dropdown
-$SECURITY_CHECK_GEDCOM_DOWNLOADABLE = true;	//-- check for downloadability of GEDCOM
 
 $SHOW_STATS = false;					//-- Show execution stats at the bottom of the page
 $SHOW_COUNTER = true;		//-- Show hit counters on portal and individual pages

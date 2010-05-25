@@ -2621,11 +2621,6 @@ case 'SAVE_WATERMARK_THUMB':
 	$text=i18n::translate('If the Media Firewall is enabled, should copies of watermarked thumbnails be stored on the server in addition to the same thumbnails without watermarks?<br /><br />When set to <b>Yes</b>, media lists containing watermarked thumbnails will be produced more quickly at the expense of higher server disk space requirements.');
 	break;
 
-case 'SECURITY_CHECK_GEDCOM_DOWNLOADABLE':
-	$title=i18n::translate('Check if GEDCOM files are downloadable');
-	$text=i18n::translate('For security reasons, GEDCOM files should not be in a location where they can be directly downloaded, thus bypassing privacy checks. Clicking this link will check if your GEDCOM files can be downloaded over the network.<br /><br />On some systems this check has been known to take a really long time or not even complete.  If that is the case for you, then you should try to point your browser directly at your GEDCOM to see if it can be downloaded.');
-	break;
-
 case 'SERVER_URL':
 	$title=i18n::translate('<b>webtrees</b> URL');
 	$text=i18n::translate('If you use https or a port other than the default, you will need to enter the URL to access your server here.');
