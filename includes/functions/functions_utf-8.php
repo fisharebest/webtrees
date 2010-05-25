@@ -34,6 +34,7 @@ define('WT_FUNCTIONS_UTF_8_PHP', '');
 // If there are mixed scripts, then the enclosed scripts should already have been wrapped
 // in lrm/rlm markup.
 function utf8_script($string) {
+	$string=strip_tags($string); // otherwise html tags show up as latin!
 	$pos=0;
 	$strlen=strlen($string);
 	while ($pos<$strlen) {
