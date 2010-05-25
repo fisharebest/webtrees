@@ -217,18 +217,18 @@ class CalendarDate {
 	}
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate('Jan');
-		case 2:  return i18n::translate('Feb');
-		case 3:  return i18n::translate('Mar');
-		case 4:  return i18n::translate('Apr');
-		case 5:  return i18n::translate('May');
-		case 6:  return i18n::translate('Jun');
-		case 7:  return i18n::translate('Jul');
-		case 8:  return i18n::translate('Aug');
-		case 9:  return i18n::translate('Sep');
-		case 10: return i18n::translate('Oct');
-		case 11: return i18n::translate('Nov');
-		case 12: return i18n::translate('Dec');
+		case 1:  return i18n::translate_c('Abbreviation for January',   'Jan');
+		case 2:  return i18n::translate_c('Abbreviation for February',  'Feb');
+		case 3:  return i18n::translate_c('Abbreviation for March',     'Mar');
+		case 4:  return i18n::translate_c('Abbreviation for April',     'Apr');
+		case 5:  return i18n::translate_c('Abbreviation for May',       'May');
+		case 6:  return i18n::translate_c('Abbreviation for June',      'Jun');
+		case 7:  return i18n::translate_c('Abbreviation for July',      'Jul');
+		case 8:  return i18n::translate_c('Abbreviation for August',    'Aug');
+		case 9:  return i18n::translate_c('Abbreviation for September', 'Sep');
+		case 10: return i18n::translate_c('Abbreviation for October',   'Oct');
+		case 11: return i18n::translate_c('Abbreviation for November',  'Nov');
+		case 12: return i18n::translate_c('Abbreviation for December',  'Dec');
 		default: return '';
 		}
 	}
