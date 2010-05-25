@@ -188,11 +188,14 @@ class i18n {
 				// For each embedded string, if the text-direction is the opposite of the
 				// page language, then wrap it in directional indicators.  This will stop
 				// weakly-directional characters being displayed in the wrong sequence.
-				if (self::$dir=='ltr' && utf8_direction($arg)=='rtl') {
-					$arg='&lrm;'.$arg.'&rtl;';
-				}
-				if (self::$dir=='rtl' && utf8_direction($arg)=='ltr') {
-					$arg='&rlm;'.$arg.'&rlm;';
+				if (self::$dir=='ltr') {
+					if (utf8_direction($arg)=='rtl') {
+						$arg='&lrm;'.$arg.'&lrm;';
+					}
+				} else {
+					if (utf8_direction($arg)=='ltr') {
+						$arg='&rlm;'.$arg.'&rlm;';
+					}
 				}
 			}
 		}
