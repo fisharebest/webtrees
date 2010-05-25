@@ -304,6 +304,9 @@ if (WT_USER_IS_ADMIN) {
 		'<input type="hidden" name="action" value="setdefault" />',
 		'<select name="default_ged" class="header_select" onchange="document.defaultform.submit();">';
 	$DEFAULT_GEDCOM=get_site_setting('DEFAULT_GEDCOM');
+	if (empty($DEFAULT_GEDCOM)) {
+		echo '<option value="" selected="selected"></option>';
+	}
 	foreach ($gedcoms as $gedcom) {
 		echo '<option value="', urlencode($gedcom->gedcom_name), '"';
 		if ($DEFAULT_GEDCOM==$gedcom->gedcom_name) echo ' selected="selected"';
