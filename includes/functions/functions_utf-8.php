@@ -80,7 +80,7 @@ function utf8_direction($string) {
 
 function utf8_strtoupper($string) {
 	global $ALPHABET_lower, $ALPHABET_upper; // Language-specific conversions, e.g. Turkish dotless i
-$ALPHABET_lower='';$ALPHABET_upper='';
+
 	$upper=$string;
 	$pos=0;
 	$strlen=strlen($string);
