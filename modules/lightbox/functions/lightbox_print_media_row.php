@@ -46,9 +46,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
 	global $SHOW_ID_NUMBERS, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER;
-	global $t, $n, $item, $items, $p, $edit, $SERVER_URL, $reorder, $LB_AL_THUMB_LINKS, $note;
+	global $t, $n, $item, $items, $p, $edit, $reorder, $LB_AL_THUMB_LINKS, $note;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT, $order1, $sort_i, $notes, $q, $LB_TT_BALLOON, $theme_name ;
-	global $SERVER_URL;
 
 	$reorder=safe_get('reorder', '1', '0');
 
@@ -236,12 +235,12 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				$menu->addSubMenu($submenu);
 			}
 			//View Details
-			$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('View Details') . "&nbsp;&nbsp;", $SERVER_URL . "mediaviewer.php?mid=" . $rowm["m_media"], "right");
+			$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('View Details') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "mediaviewer.php?mid=" . $rowm["m_media"], "right");
 			$submenu->addClass($submenu_class, $submenu_hoverclass);
 			$menu->addSubMenu($submenu);
 			//View Source
 			if (strpos($rowm['m_gedrec'], "\n1 SOUR") && displayDetailsById($sour, "SOUR")) {
-				$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('View Source') . "&nbsp;&nbsp;", $SERVER_URL . "source.php?sid=" . $sour, "right");
+				$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('View Source') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid=" . $sour, "right");
 				$submenu->addClass($submenu_class, $submenu_hoverclass);
 				$menu->addSubMenu($submenu);
 			}

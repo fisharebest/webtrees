@@ -161,7 +161,7 @@ case 'get':
 		if (!safe_REQUEST($_REQUEST,'keepfile')) {
 			$ct = preg_match_all("/ FILE (.*)/", $gedrecords, $match, PREG_SET_ORDER);
 			for($i=0; $i<$ct; $i++) {
-				$mediaurl = $SERVER_URL.$MEDIA_DIRECTORY.extract_filename($match[$i][1]);
+				$mediaurl = WT_SERVER_NAME.WT_SCRIPT_PATH.$MEDIA_DIRECTORY.extract_filename($match[$i][1]);
 				$gedrecords = str_replace($match[$i][1], $mediaurl, $gedrecords);
 			}
 		}

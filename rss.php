@@ -90,8 +90,8 @@ $feed->title = get_gedcom_setting(WT_GED_ID, 'title');
 $feed->language = WT_LOCALE;
 $feed->descriptionHtmlSyndicated = true;
 //$feed->descriptionTruncSize = 500; // does not make sense to truncate HTML since it will result in unpredictable output
-$feed->link = $SERVER_URL;
-$syndURL = $SERVER_URL."rss.php?".$_SERVER['QUERY_STRING'];
+$feed->link = WT_SERVER_NAME.WT_SCRIPT_PATH;
+$syndURL = WT_SERVER_NAME.WT_SCRIPT_PATH."rss.php?".$_SERVER['QUERY_STRING'];
 $syndURL = str_replace("&", "&amp;", $syndURL);
 $feed->syndicationURL = $syndURL;
 
@@ -102,7 +102,7 @@ $feed->category="genealogy";
 
 $image = new FeedImage();
 $image->title = i18n::translate('Feed created by webtrees');
-$image->url = $SERVER_URL."images/gedview.gif";
+$image->url = WT_SERVER_NAME.WT_SCRIPT_PATH."images/gedview.gif";
 $image->link = WT_WEBTREES_URL;
 $image->description = i18n::translate('Feed created by webtrees');
 $image->descriptionHtmlSyndicated = true;
@@ -117,11 +117,11 @@ if($ENABLE_RSS) {
 		if (! empty($todaysEvents[2])) {
 			$item = new FeedItem();
 			$item->title = $todaysEvents[0];
-			$item->link = $SERVER_URL. "calendar.php?action=today";
+			$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."calendar.php?action=today";
 			$item->description = $todaysEvents[2];
 			$item->descriptionHtmlSyndicated = true;
 			$item->date = $todaysEvents[1];
-			$item->source = $SERVER_URL;
+			$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			$item->author = $author;
 			$item->authorURL = $feed->link;
 			$item->category = i18n::translate('genealogy');
@@ -134,11 +134,11 @@ if($ENABLE_RSS) {
 		if (! empty($upcomingEvent[2])) {
 			$item = new FeedItem();
 			$item->title = $upcomingEvent[0];
-			$item->link = $SERVER_URL. "calendar.php?action=calendar";
+			$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."calendar.php?action=calendar";
 			$item->description = $upcomingEvent[2];
 			$item->descriptionHtmlSyndicated = true;
 			$item->date = $upcomingEvent[1];
-			$item->source = $SERVER_URL;
+			$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			$item->author = $author;
 			$item->authorURL = $feed->link;
 			$item->category = i18n::translate('genealogy');
@@ -151,13 +151,13 @@ if($ENABLE_RSS) {
 		if (! empty($gedcomStats[2])) {
 			$item = new FeedItem();
 			$item->title = $gedcomStats[0];
-			$item->link = $SERVER_URL. "index.php?ctype=gedcom#gedcom_stats";
+			$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."index.php?ctype=gedcom#gedcom_stats";
 			$item->description = $gedcomStats[2];
 			$item->descriptionHtmlSyndicated = true;
 			if (! empty($gedcomStats[1])) {
 				$item->date = $gedcomStats[1];
 			}
-			$item->source = $SERVER_URL;
+			$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			$item->author = $author;
 			$item->authorURL = $feed->link;
 			$item->category = i18n::translate('genealogy');
@@ -170,13 +170,13 @@ if($ENABLE_RSS) {
 		if (! empty($top10[2])) {
 			$item = new FeedItem();
 			$item->title = $top10[0];
-			$item->link = $SERVER_URL. "indilist.php";
+			$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."indilist.php";
 			$item->description = $top10[2];
 			$item->descriptionHtmlSyndicated = true;
 			if (! empty($top10[1])) {
 				$item->date = $top10[1];
 			}
-			$item->source = $SERVER_URL;
+			$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			$item->author = $author;
 			$item->authorURL = $feed->link;
 			$item->category = i18n::translate('genealogy');
@@ -193,11 +193,11 @@ if($ENABLE_RSS) {
 			if (! empty($newsItem[1])) {
 				$item = new FeedItem();
 				$item->title = $newsItem[0];
-				$item->link = $SERVER_URL . "index.php?ctype=gedcom#" . $newsItem[3];
+				$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH . "index.php?ctype=gedcom#" . $newsItem[3];
 				$item->description = $newsItem[2];
 				$item->descriptionHtmlSyndicated = true;
 				$item->date = $newsItem[1];
-				$item->source = $SERVER_URL ;
+				$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 				$item->author = $author;
 				$item->authorURL = $feed->link;
 				$item->category="genealogy";
@@ -211,14 +211,14 @@ if($ENABLE_RSS) {
 		if (! empty($recentChanges[2])) {
 			$item = new FeedItem();
 			$item->title = $recentChanges[0];
-			$item->link = $SERVER_URL. "index.php?ctype=gedcom#recent_changes";
+			$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."index.php?ctype=gedcom#recent_changes";
 			$item->description = $recentChanges[2];
 			$item->descriptionHtmlSyndicated = true;
 
 			if (! empty($recentChanges[1])) {
 				$item->date = $recentChanges[1];
 			}
-			$item->source = $SERVER_URL;
+			$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			$item->author = $author;
 			$item->authorURL = $feed->link;
 			$item->category = i18n::translate('genealogy');
@@ -231,19 +231,19 @@ if($ENABLE_RSS) {
 		if (! empty($randomMedia[2])) {
 			$item = new FeedItem();
 			$item->title = $randomMedia[0];
-			$item->link = $SERVER_URL. "medialist.php";
+			$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."medialist.php";
 			$item->description = $randomMedia[2];
 			$item->descriptionHtmlSyndicated = true;
 
 			if (! empty($randomMedia[1])) {
 				$item->date = $randomMedia[1];
 			}
-			$item->source = $SERVER_URL;
+			$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			$item->author = $author;
 			$item->authorURL = $feed->link;
 			$item->category = i18n::translate('genealogy');
 			$item->enclosure = new EnclosureItem();
-			$item->enclosure->url = $SERVER_URL . $randomMedia[3];
+			$item->enclosure->url = WT_SERVER_NAME.WT_SCRIPT_PATH.$randomMedia[3];
 			$item->enclosure->type = $randomMedia[4];
 			$item->enclosure->length = $randomMedia[5];
 			$item->enclosure->title = $randomMedia[6];
@@ -254,10 +254,10 @@ if($ENABLE_RSS) {
 } else {
 	$item = new FeedItem();
 	$item->title = i18n::translate('Feed not available');
-	$item->link = $SERVER_URL. "index.php";
+	$item->link = WT_SERVER_NAME.WT_SCRIPT_PATH."index.php";
 	$item->description = i18n::translate('There is no RSS feed available for this webtrees site');
 	$item->date = time();
-	$item->source = $SERVER_URL;
+	$item->source = WT_SERVER_NAME.WT_SCRIPT_PATH;
 	$item->author = $author;
 	$item->authorURL = $feed->link;
 	$item->category = i18n::translate('genealogy');

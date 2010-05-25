@@ -200,15 +200,14 @@ class RemoteLinkController extends BaseController {
 	// @param string $gedcom_id
 	// @return mixed the serverID of the server to link to
 	function addLocalServer($title, $gedcom_id) {
-		global $SERVER_URL;
-		$serverID = $this->checkExistingServer($SERVER_URL, $gedcom_id);
+		$serverID = $this->checkExistingServer(WT_SERVER_NAME.WT_SCRIPT_PATH, $gedcom_id);
 		if (!$serverID) {
 			$gedcom_string = "0 @new@ SOUR\n";
 			if (empty($title)) {
 				$title=get_gedcom_setting(get_id_from_gedcom($gedcom_id), 'title');
 			}
 			$gedcom_string.= "1 TITL ".$title."\n";
-			$gedcom_string.= "1 URL ".$SERVER_URL."\n";
+			$gedcom_string.= "1 URL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
 			$gedcom_string.= "1 _DBID ".$gedcom_id."\n";
 			$gedcom_string.= "2 _BLOCK false\n";
 			$serverID = append_gedrec($gedcom_string, WT_GED_ID);

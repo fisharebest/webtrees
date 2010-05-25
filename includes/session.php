@@ -170,13 +170,6 @@ if (!empty($_SERVER['SCRIPT_NAME'])) {
 	define('WT_SCRIPT_PATH', '/');
 }
 
-// If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
-// www.isp.com/~example), then redirect to it.
-if (!empty($SERVER_URL) && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
-	header('Location: '.$SERVER_URL);
-	exit;
-}
-
 // Microsoft IIS servers don't set REQUEST_URI, so generate it for them.
 if (!isset($_SERVER['REQUEST_URI']))  {
 	$_SERVER['REQUEST_URI']=substr($_SERVER['PHP_SELF'], 1);
@@ -246,6 +239,13 @@ $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
 $WT_SESSION_SAVE_PATH           =get_site_setting('SESSION_SAVE_PATH');
 $WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
+
+// If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
+// www.isp.com/~example), then redirect to it.
+if (!empty($SERVER_URL) && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
+	header('Location: '.$SERVER_URL);
+	exit;
+}
 
 //-- allow user to cancel
 ignore_user_abort(false);

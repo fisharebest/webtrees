@@ -66,7 +66,7 @@ function iso8601_date($time) {
 function getUpcomingEvents() {
 	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS;
-	global $DAYS_TO_SHOW_LIMIT, $SERVER_URL;
+	global $DAYS_TO_SHOW_LIMIT;
 
 	$dataArray[0] = i18n::translate('Upcoming Events');
 	$dataArray[1] = time();
@@ -103,7 +103,6 @@ function getUpcomingEvents() {
 function getTodaysEvents() {
 	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS;
-	global $SERVER_URL;
 	global $DAYS_TO_SHOW_LIMIT;
 
 	$dataArray[0] = i18n::translate('On This Day ...');
@@ -130,7 +129,7 @@ function getTodaysEvents() {
 * @TODO does not print the family with most children due to the embedded html in that function.
 */
 function getGedcomStats() {
-	global $day, $month, $year, $WT_BLOCKS, $ALLOW_CHANGE_GEDCOM, $ctype, $COMMON_NAMES_THRESHOLD, $SERVER_URL, $RTLOrd;
+	global $day, $month, $year, $WT_BLOCKS, $ALLOW_CHANGE_GEDCOM, $ctype, $COMMON_NAMES_THRESHOLD, $RTLOrd;
 
 	if (empty($config)) $config = $WT_BLOCKS["print_gedcom_stats"]["config"];
 	if (!isset($config['stat_indi'])) $config = $WT_BLOCKS["print_gedcom_stats"]["config"];
@@ -165,7 +164,7 @@ function getGedcomStats() {
 		}
 	}
 
-	$stats=new stats(WT_GEDCOM, $SERVER_URL);
+	$stats=new stats(WT_GEDCOM, WT_SERVER_NAME.WT_SCRIPT_PATH);
 
 	$data .= " <br />";
 	if (!isset($config["stat_indi"]) || $config["stat_indi"]=="yes"){
@@ -212,10 +211,10 @@ function getGedcomStats() {
 *
 * @return array of GEDCOM news arrays. Each GEDCOM news array contains $itemArray[0] = title, $itemArray[1] = date,
 * $itemArray[2] = data, $itemArray[3] = anchor (so that the link will load the proper part of the PGV page)
-* @TODO prepend relative URL's in news items with $SERVER_URL
+* @TODO prepend relative URL's in news items with SERVER URL
 */
 function getGedcomNews() {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $ctype, $SERVER_URL;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $ctype;
 
 	$usernews = getUserNews(WT_GEDCOM);
 
@@ -256,7 +255,7 @@ function getGedcomNews() {
 * @TODO Possibly turn list into a <ul> list
 */
 function getTop10Surnames() {
-	global $SERVER_URL, $TEXT_DIRECTION;
+	global $TEXT_DIRECTION;
 	global $COMMON_NAMES_ADD, $COMMON_NAMES_REMOVE, $COMMON_NAMES_THRESHOLD, $WT_BLOCKS, $ctype, $WT_IMAGES, $WT_IMAGE_DIR;
 
 	$data = "";
@@ -283,7 +282,7 @@ function getTop10Surnames() {
 	if (count($surnames)>0) {
 		$i=0;
 		foreach($surnames as $indexval => $surname) {
-			$data .= "<a href=\"".encode_url("{$SERVER_URL}indilist.php?surname={$surname['name']}")."\">".PrintReady($surname["name"])."</a> ";
+			$data .= "<a href=\"".encode_url(WT_SERVER_NAME.WT_SCRIPT_PATH."indilist.php?surname={$surname['name']}")."\">".PrintReady($surname["name"])."</a> ";
 			if ($TEXT_DIRECTION=="rtl") $data .= getRLM() . "[" . getRLM() .$surname["match"].getRLM() . "]" . getRLM() . "<br />";
 			else $data .= "[".$surname["match"]."]<br />";
 			$i++;
@@ -305,7 +304,7 @@ function getTop10Surnames() {
 function getRecentChanges() {
 	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $ASC, $IGNORE_FACTS, $IGNORE_YEAR, $LAST_QUERY, $WT_BLOCKS, $SHOW_SOURCES;
-	global $objectlist, $SERVER_URL;
+	global $objectlist;
 
 	if ($ctype=="user") $filter = "living";
 	else $filter = "all";

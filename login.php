@@ -118,7 +118,7 @@ if ($action=='login') {
 		$message = i18n::translate('Unable to authenticate user.');
 	}
 } else {
-	$tSERVER_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), $SERVER_URL);
+	$tSERVER_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), WT_SERVER_NAME.WT_SCRIPT_PATH);
 	$tLOGIN_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), get_site_setting('LOGIN_URL'));
 	if (empty($url)) {
 		if ((isset($_SERVER['HTTP_REFERER'])) && ((stristr($_SERVER['HTTP_REFERER'],$tSERVER_URL)!==false)||(stristr($_SERVER['HTTP_REFERER'],$tLOGIN_URL)!==false))) {
@@ -129,9 +129,9 @@ if ($action=='login') {
 		}
 		else {
 			if (isset($url)) {
-				if (stristr($url,$SERVER_URL)!==false) $url = $SERVER_URL;
+				if (stristr($url,WT_SERVER_NAME.WT_SCRIPT_PATH)!==false) $url = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			}
-			//else $url = $SERVER_URL;
+			//else $url = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			/* - commented out based on UI feedback
 			else $url = "index.php?ctype=user";
 			*/
