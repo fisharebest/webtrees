@@ -4200,11 +4200,6 @@ case 'index_welcome':
 	$text=i18n::translate('The Welcome block shows you the current database title, the date and time, and, if enabled by the admin, the Hit Counter.<br /><br />The Hit Counter is only available in the Welcome block and on the Individual Information page.  The counter counts the "Hits" of these pages. That means it counts how many times these pages are visited.  The counter does not check the Internet address of a visitor; every visit to a page from <u>any</u> remote location counts as another Hit.');
 	break;
 
-case 'invalid_header':
-	$title=i18n::translate('Detected lines before the GEDCOM header <b>0&nbsp;HEAD</b>.  On cleanup, these lines will be removed.');
-	$text=i18n::translate('A GEDCOM file must begin with <b>0&nbsp;HEAD</b>. <b>webtrees</b> detected that the GEDCOM file you are importing does not have <b>0&nbsp;HEAD</b> as the first line. When you click the Cleanup button, any lines before the first <b>0&nbsp;HEAD</b> line will be removed.<br /><br />This error usually means that the program you used to create your GEDCOM did not create it properly or it is not a GEDCOM file. You should check to make sure that you uploaded the correct file, and that it starts with the line <b>0&nbsp;HEAD</b> and ends with the line <b>0&nbsp;TRLR</b>.');
-	break;
-
 case 'is_user':
 	$title=i18n::translate('No admin text');
 	$text=i18n::translate('--- This help text is the same text that site visitors will read. --- <br />--- To save space, we did not make a special admin text for this item. ---');
