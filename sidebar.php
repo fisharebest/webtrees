@@ -222,7 +222,7 @@ jQuery(document).ready(function() {
 		jQuery('#sidebar_open img').attr('style', 'margin-left:0px;' ).attr('src', '<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
 		jQuery('#sidebar').css('left', '');
 		jQuery('#sidebar').animate({
-			right: "0px",
+			right: "4px",
 			width: "0px"
 		}, 500, 'linear', closeCallback);		
 		// Shift content back ------------------------------
