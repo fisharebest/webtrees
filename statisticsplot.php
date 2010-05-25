@@ -717,37 +717,11 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 	}
 
 	$monthdata= array();
-	$monthdata[] = i18n::translate('Jan');
-	$monthdata[] = i18n::translate('Feb');
-	$monthdata[] = i18n::translate('Mar');
-	$monthdata[] = i18n::translate('Apr');
-	$monthdata[] = i18n::translate('May');
-	$monthdata[] = i18n::translate('Jun');
-	$monthdata[] = i18n::translate('Jul');
-	$monthdata[] = i18n::translate('Aug');
-	$monthdata[] = i18n::translate('Sep');
-	$monthdata[] = i18n::translate('Oct');
-	$monthdata[] = i18n::translate('Nov');
-	$monthdata[] = i18n::translate('Dec');
-	foreach ($monthdata as $key=>$month) {
-		$monthdata[$key] = $month;
+	for ($i=0; $i<12; ++$i) {
+		$monthdata[$i]=GregorianDate::NUM_TO_SHORT_MONTH($i+1, false);
 	}
-	$months= array();
-	$months[] = 'JAN';
-	$months[] = 'FEB';
-	$months[] = 'MAR';
-	$months[] = 'APR';
-	$months[] = 'MAY';
-	$months[] = 'JUN';
-	$months[] = 'JUL';
-	$months[] = 'AUG';
-	$months[] = 'SEP';
-	$months[] = 'OCT';
-	$months[] = 'NOV';
-	$months[] = 'DEC';
-	foreach ($months as $key=>$month) {
-		$months[$key] = $month;
-	}
+
+	$months= array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC');
 
 	if ($x_as == $current) {
 		if (($x_as==13 || $x_as==15) && $z_as == 301) {
