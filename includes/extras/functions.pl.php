@@ -194,18 +194,3 @@ function getFirstRelationsName_pl($pid) {
 	if (!empty($pname)) return trim($pname);
 	else return $fname;
 }
-
-function century_localisation_pl($n, $show=true) {
-	$arab = array(1, 4, 5, 9, 10);
-	$roman = array("I", "IV", "V", "IX", "X");
-	$roman_century = "";
-	for ($i=4; $i>=0; $i--) {
-		while ($n>=$arab[$i]) {
-			$n-=$arab[$i];
-			$roman_century .= $roman[$i];
-		}
-	}
-	if ($show) return $roman_century." w.";
-	else return $roman_century;
-}
-?>

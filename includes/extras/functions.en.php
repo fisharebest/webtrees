@@ -44,8 +44,3 @@ function ordinal_suffix_en($n) {
 		return 'rd';
   return 'th';
 }
-
-function century_localisation_en($n) {
-	return $n.ordinal_suffix_en($n);
-}
-?>
