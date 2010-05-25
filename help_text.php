@@ -4080,11 +4080,6 @@ case 'import_gedcom':
 	$text=i18n::translate('In most cases importing of an externally created GEDCOM file is one step in procedures that result in bulk changes to the genealogical database.<br /><br />These steps are in a logical sequence and need to be completed in the prescribed order so that the genealogical database is usable.<br /><br />If, for some reason, you did not complete these steps in the correct order, you will see a <u>warning</u> message that the GEDCOM is not yet imported. To correct the problem, click the <b>Import GEDCOM</b> link to import the file.<br /><br />Existing GEDCOM configuration settings will not change when you re-import a GEDCOM.  Existing data will, however, be overwritten.');
 	break;
 
-case 'import_options':
-	$title=i18n::translate('Import options');
-	$text=i18n::translate('You can choose additional options to be used when importing the GEDCOM.');
-	break;
-
 case 'include_media':
 	$title=i18n::translate('Include media (automatically zips files)');
 	$text=i18n::translate('Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download.');
