@@ -2104,7 +2104,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
 	echo "<select id=\"newfact\" name=\"newfact\">\n";
 	foreach($tanslated_addfacts as $fact=>$fact_name) {
-		echo '<option value="', $fact, '">', $fact_name, " [".$fact."]</option>";
+		echo '<option value="', $fact, '">', i18n::translate('%s [%s]', $fact_name, $fact), '</option>';
 	}
 	if (($type == "INDI") || ($type == "FAM")) echo "<option value=\"EVEN\">", i18n::translate('Custom Event'), " [EVEN]</option>";
 	echo "\n</select>\n";

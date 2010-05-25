@@ -181,10 +181,21 @@ class i18n {
 				$arg=i18n::make_list($arg);
 			}
 		}
-		// TODO: for each embedded string, if the text-direction is the opposite of the
-		// page language, then wrap it in &ltr; on LTR pages and &rtl; on RTL pages.
-		// This will ensure that non/weakly direction characters in the main string
-		// are displayed correctly by the browser's BIDI algorithm.
+		foreach ($args as &$arg) {
+			if (is_numeric($arg)) {
+				// TODO? Convert latin to, say, arabic digits.
+			} else {
+				// For each embedded string, if the text-direction is the opposite of the
+				// page language, then wrap it in directional indicators.  This will stop
+				// weakly-directional characters being displayed in the wrong sequence.
+				if (self::$dir=='ltr' && utf8_direction($arg)=='rtl') {
+					$arg='&lrm;'.$arg.'&rtl;';
+				}
+				if (self::$dir=='rtl' && utf8_direction($arg)=='ltr') {
+					$arg='&rlm;'.$arg.'&rlm;';
+				}
+			}
+		}
 		return call_user_func_array('sprintf', $args);
 	}
 
