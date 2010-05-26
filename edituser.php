@@ -78,6 +78,7 @@ if ($form_action=='update') {
 		setUserEmail   (WT_USER_ID, $form_email);
 		set_user_setting(WT_USER_ID, 'theme',         $form_theme);
 		set_user_setting(WT_USER_ID, 'language',      $form_language);
+		$_SESSION['locale']=$form_language; // switch to the new language right away
 		set_user_setting(WT_USER_ID, 'contactmethod', $form_contact_method);
 		set_user_setting(WT_USER_ID, 'visibleonline', $form_visible_online);
 		set_user_setting(WT_USER_ID, 'defaulttab',    $form_default_tab);
