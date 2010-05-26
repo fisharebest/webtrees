@@ -86,6 +86,7 @@ if (version_compare(PHP_VERSION, '5.2')<0) {
 define('WT_WEBTREES', true);
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
+define('WT_USER_ID', 0);
 set_include_path('library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();

@@ -364,6 +364,9 @@ if (empty($PEDIGREE_GENERATIONS)) {
 	$PEDIGREE_GENERATIONS=$DEFAULT_PEDIGREE_GENERATIONS;
 }
 
+// Who are we?
+define('WT_USER_ID', getUserId());
+
 // With no parameters, init() looks to the environment to choose a language
 require WT_ROOT.'includes/classes/class_i18n.php';
 define('WT_LOCALE', i18n::init());
@@ -384,7 +387,6 @@ try {
 require WT_ROOT.'includes/functions/functions_privacy.php';
 
 // The current user's profile - from functions in authentication.php
-define('WT_USER_ID',           getUserId  ());
 define('WT_USER_NAME',         getUserName());
 define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
 define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));

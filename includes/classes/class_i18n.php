@@ -55,6 +55,9 @@ class i18n {
 				// Requested in the URL?
 				$locale=$_GET['lang'];
 				unset($_GET['lang']);
+				if (WT_USER_ID) {
+					set_user_setting(WT_USER_ID, 'language', $locale);
+				}
 			} elseif (isset($_SESSION['locale']) && array_key_exists($_SESSION['locale'], $installed_languages)) {
 				// Rembered from a previous visit?
 				$locale=$_SESSION['locale'];
