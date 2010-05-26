@@ -3,7 +3,7 @@
  * User and Authentication functions
  *
  * This file contains functions for working with users and authenticating them.
- * It also handles the internal mail messages, favorites, news/journal, and storage of My Page
+ * It also handles the internal mail messages and storage of My Page
  * customizations.  Assumes that a database connection has already been established.
  *
  * You can extend webtrees to work with other systems by implementing the functions in this file.
@@ -508,6 +508,8 @@ function getUserMessages($user_id) {
 function addFavorite($favorite) {
 	global $TBLPREFIX;
 
+	return;
+
 	// -- make sure a favorite is added
 	if (empty($favorite["gid"]) && empty($favorite["url"]))
 		return false;
@@ -535,18 +537,6 @@ function addFavorite($favorite) {
 			->execute(array(get_next_id("favorites", "fv_id"), $favorite["username"], $favorite["gid"], $favorite["type"], $favorite["file"], $favorite["url"], $favorite["title"], $favorite["note"]));
 }
 
-/**
- * deleteFavorite
- * deletes a favorite in the database
- * @param int $fv_id	the id of the favorite to delete
- */
-function deleteFavorite($fv_id) {
-	global $TBLPREFIX;
-
-	return (bool)
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}favorites WHERE fv_id=?")
-		->execute(array($fv_id));
-}
 
 /**
  * Get a user's favorites
@@ -554,6 +544,8 @@ function deleteFavorite($fv_id) {
  * @param string $username		the username to get the favorites for
  */
 function getUserFavorites($username) {
+	return array();
+
 	global $TBLPREFIX;
 
 	$rows=
