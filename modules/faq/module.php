@@ -106,6 +106,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
+		$useFCK = file_exists(WT_ROOT.'modules/fck_editor/fckeditor.php');
+		if($useFCK){
+			require WT_ROOT.'modules/fck_editor/fckeditor.php';
+		}
+		
 		if (safe_POST_bool('save')) {
 			$block_id=safe_POST('block_id');
 			if ($block_id) {
@@ -291,20 +296,55 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
-
-		echo '<table class="list_table width100">';
-		foreach ($faqs as $faq) {
-			// Only show this block for certain languages
+		// Define your colors for the alternating rows
+		$odd = "odd";
+		$even = "even"; 
+		echo '<h2 class="center">', i18n::translate('Frequently asked questions'), '</h2>';
+		// Instructions
+		echo '<span class="faq_italic">Click on a title to go straight to it, or scroll down to read them all</span>';
+		//Start the table to contain the list of headers
+		$row_count = 0;
+		echo '<table class="faq">';
+		// List of titles
+		foreach($faqs as $id => $faq) {
+		$languages=get_block_setting($faq->block_id, 'languages');
+		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+			return;
+		}
+			if ($faq->header && $faq->body) {
+				$row_color = ($row_count % 2) ? $odd : $even; 
+				echo '';
+					// NOTE: Print the header of the current item
+						echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
+						echo '<a href="#faq', $id, '">';
+							echo $id+1, '.&nbsp;', $faq->header;
+						echo '</a>';
+					echo '</td></tr>';
+				echo '';
+				$row_count++;
+			}
+		}
+		echo '</table><hr>';
+		// Detailed entries
+		echo '<table>';
+		foreach($faqs as $id => $faq) {
 			$languages=get_block_setting($faq->block_id, 'languages');
 			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
 				return;
 			}
-			echo
-				'<tr><td class="optionbox center">',
-				$faq->header,
-				'</td><td class="optionbox center">',
-				substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body),
-				'</td></tr>';
+			if ($faq->header && $faq->body) {
+				// NOTE: Print the body text of the current item, with its header
+				echo '<div class="faq_title" id="faq', $id, '">',
+					$faq->header;
+					echo '<div style="float:right;"class="faq_italic">';
+						echo '<a href="#body">[', i18n::translate('back to top'), ']</a>';
+					echo '</div>';
+				echo '</div>';
+				echo '<div class="faq_body">',
+					substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body);
+				echo '</div>';
+				echo '<hr />';
+			}
 		}
 		echo '</table>';
 

@@ -1587,3 +1587,29 @@ table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSo
 	width:50%;
 	text-align:center;
 }
+/* FAQ table styles */
+table.faq   {
+	background-color: #E0E0E0;
+	margin:5px 0 50px 5px;
+	width: 98%;
+}
+table.faq  tr.odd td {
+	background-color:#E7EEF3;
+}
+div.faq_title {
+	background-color: #E0E0E0;
+	margin: 1em 0;
+	padding: .25em;
+	font-weight:bold;
+	width: 98%;
+}
+div.faq_body {
+	clear:both;
+	margin: 1em 0;
+	padding: 1em; "
+}
+.faq_italic {
+	font-style: italic;
+	font-weight: bold;
+	font-size: 90%;
+}
