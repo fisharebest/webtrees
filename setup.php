@@ -695,31 +695,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}favorites (".
-		" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
-	 	" fv_username VARCHAR(32)            NOT NULL,". // TODO user_id, ged_id
-		" fv_gid      VARCHAR(20)                NULL,".
-		" fv_type     VARCHAR(15)                NULL,".
-		" fv_file     VARCHAR(100)               NULL,".
-		" fv_url      VARCHAR(255)               NULL,".
-	 	" fv_title    VARCHAR(255)               NULL,".
-		" fv_note     TEXT                       NULL,".
-		" PRIMARY KEY (fv_id),".
-		"         KEY ix1 (fv_username)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}news (".
-		" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
-		" n_username VARCHAR(100)           NOT NULL,".
-		" n_date     INTEGER                NOT NULL,".
-		" n_title    VARCHAR(255)           NOT NULL,".
-		" n_text     TEXT                   NOT NULL,".
-		" PRIMARY KEY     (n_id),".
-		"         KEY ix1 (n_username)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}individuals (".
 		" i_id     VARCHAR(20)         NOT NULL,".
 		" i_file   INTEGER             NOT NULL,".
