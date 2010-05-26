@@ -134,6 +134,10 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content = $html;
 
+		if (get_block_setting($block_id, 'show_timestamp', false)) {
+			$content.='<br/>'.format_timestamp(get_block_setting($block_id, 'timestamp', time()));
+		}
+
 		$block=get_block_setting($block_id, 'block', false);
 		if ($block) {
 			require $THEME_DIR.'templates/block_small_temp.php';
@@ -160,11 +164,13 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'compat', safe_POST_bool('compat'));
-			set_block_setting($block_id, 'ui', safe_POST_bool('ui'));
-			set_block_setting($block_id, 'gedcom', safe_POST('gedcom'));
-			set_block_setting($block_id, 'title', $_POST['title']);
-			set_block_setting($block_id, 'html', $_POST['html']);
+			set_block_setting($block_id, 'compat',         safe_POST_bool('compat'));
+			set_block_setting($block_id, 'ui',             safe_POST_bool('ui'));
+			set_block_setting($block_id, 'gedcom',         safe_POST('gedcom'));
+			set_block_setting($block_id, 'title',          $_POST['title']);
+			set_block_setting($block_id, 'html',           $_POST['html']);
+			set_block_setting($block_id, 'show_timestamp', safe_POST_bool('show_timestamp'));
+			set_block_setting($block_id, 'timestamp',      safe_POST('timestamp'));
 			$languages=array();
 			foreach (i18n::installed_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
@@ -415,6 +421,14 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 			."</td><td class=\"optionbox\"><input type=\"checkbox\" name=\"ui\" value=\"1\"{$ui} /></td>\n"
 			."\t</tr>\n"
 		;
+
+		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo i18n::translate('Show the date and time of update');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('show_timestamp', $show_timestamp);
+		echo '<input type="hidden" name="timestamp" value="'.time().'">';
+		echo '</td></tr>';
 
 		$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
 		echo '<tr><td class="descriptionbox wrap width33">';
