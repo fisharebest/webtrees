@@ -750,9 +750,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?>
 						</td>
 						<td class="optionbox">
-							<select size="1" name="NEW_SHOW_NO_WATERMARK">
-								<?php write_access_option($SHOW_NO_WATERMARK); ?>
-							</select>
+							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
 						</td>
 					</tr>
 					<tr>

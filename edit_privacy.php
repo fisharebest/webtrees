@@ -31,6 +31,7 @@
 define('WT_SCRIPT_NAME', 'edit_privacy.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_print_facts.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (empty($ged)) $ged = $GEDCOM;
 
@@ -297,7 +298,7 @@ if ($action=="update") {
 					<?php echo i18n::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_SHOW_DEAD_PEOPLE"><?php write_access_option($SHOW_DEAD_PEOPLE); ?></select>
+					<?php echo edit_field_access_level("v_SHOW_DEAD_PEOPLE", $SHOW_DEAD_PEOPLE); ?>
 				</td>
 			</tr>
 			<tr>
@@ -305,7 +306,7 @@ if ($action=="update") {
 					<?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_SHOW_LIVING_NAMES"><?php write_access_option($SHOW_LIVING_NAMES); ?></select>
+					<?php echo edit_field_access_level("v_SHOW_LIVING_NAMES", $SHOW_LIVING_NAMES); ?>
 				</td>
 			</tr>
 			<tr>
@@ -313,7 +314,7 @@ if ($action=="update") {
 					<?php echo i18n::translate('Show sources'), help_link('SHOW_SOURCES'); ?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_SHOW_SOURCES"><?php write_access_option($SHOW_SOURCES); ?></select>
+					<?php echo edit_field_access_level("v_SHOW_SOURCES", $SHOW_SOURCES); ?>
 				</td>
 			</tr>
 			<tr>
@@ -321,7 +322,7 @@ if ($action=="update") {
 					<?php echo i18n::translate('Enable clippings cart'), help_link('ENABLE_CLIPPINGS_CART'); ?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_ENABLE_CLIPPINGS_CART"><?php write_access_option($ENABLE_CLIPPINGS_CART); ?></select>
+					<?php echo edit_field_access_level("v_ENABLE_CLIPPINGS_CART", $ENABLE_CLIPPINGS_CART); ?>
 				</td>
 			</tr>
 
@@ -330,7 +331,7 @@ if ($action=="update") {
 					<?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_SHOW_MULTISITE_SEARCH"><?php write_access_option($SHOW_MULTISITE_SEARCH); ?></select>
+					<?php echo edit_field_access_level("v_SHOW_MULTISITE_SEARCH", $SHOW_MULTISITE_SEARCH); ?>
 				</td>
 			</tr>
 
@@ -438,7 +439,7 @@ if ($action=="update") {
 					?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_new_person_privacy_access_option"><?php write_access_option(""); ?></select>
+					<?php echo edit_field_access_level("v_new_person_privacy_access_option", WT_PRIV_USER); ?>
 				</td>
 			</tr>
 		</table>
@@ -469,7 +470,7 @@ if ($action=="update") {
 					<?php search_ID_details($key, 1); ?>
 				</td>
 				<td class="optionbox">
-					<select size="1" name="v_person_privacy[<?php print $key; ?>]"><?php write_access_option($value); ?></select>
+					<?php echo edit_field_access_level("v_person_privacy[{$key}]", $value); ?>
 				</td>
 			</tr>
 			<?php } ?>
@@ -531,7 +532,7 @@ if ($action=="update") {
 				?>
 			</td>
 			<td class="optionbox">
-				<select size="1" name="v_new_user_privacy_access_option"><?php write_access_option(""); ?></select>
+				<?php echo edit_field_access_level("v_new_user_privacy_access_option", WT_PRIV_USER); ?>
 			</td>
 		</tr>
 	</table>
@@ -568,7 +569,7 @@ if ($action=="update") {
 				<?php search_ID_details($id, 2); ?>
 			</td>
 			<td class="optionbox">
-				<select size="1" name="v_user_privacy[<?php print $key; ?>][<?php print $id; ?>]"><?php write_access_option($setting); ?></select>
+				<?php echo edit_field_access_level("v_user_privacy[{$key}][{$id}]", $setting); ?>
 			</td>
 		</tr>
 
@@ -611,7 +612,7 @@ if ($action=="update") {
 					print " value=\"";
 					print $tag;
 					print "\">";
-					print $tag . " - " . i18n::translate($tag);
+					print $tag . " - " . translate_fact($tag);
 					print "</option>";
 				}
 				?>
@@ -624,7 +625,7 @@ if ($action=="update") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select size="1" name="v_new_global_facts_access_option"><?php write_access_option(""); ?></select>
+				<?php echo edit_field_access_level("v_new_global_facts_access_option", WT_PRIV_USER); ?>
 			</td>
 		</tr>
 	</table>
@@ -661,7 +662,7 @@ if ($action=="update") {
 				?>
 			</td>
 			<td class="optionbox">
-				<select size="1" name="v_global_facts[<?php print $tag; ?>][<?php print $key; ?>]"><?php write_access_option($setting); ?></select>
+				<?php echo edit_field_access_level("v_global_facts[{$tag}][{$key}]", $setting); ?>
 			</td>
 		</tr>
 		<?php } } ?>
@@ -711,7 +712,7 @@ if ($action=="update") {
 					print " value=\"";
 					print $tag;
 					print "\">";
-					print $tag . " - " . i18n::translate($tag);
+					print $tag . " - " . translate_fact($tag);
 					print "</option>";
 				}
 				?>
@@ -724,7 +725,7 @@ if ($action=="update") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select size="1" name="v_new_person_facts_access_option"><?php write_access_option(""); ?></select>
+				<?php echo edit_field_access_level("v_new_person_facts_access_option", WT_PRIV_USER); ?>
 			</td>
 		</tr>
 	</table>
@@ -766,7 +767,7 @@ if ($action=="update") {
 				?>
 			</td>
 			<td class="optionbox">
-				<select size="1" name="v_person_facts[<?php print $id; ?>][<?php print $tag; ?>][<?php print $key; ?>]"><?php write_access_option($setting); ?></select>
+				<?php echo edit_field_access_level("v_person_facts[{$id}][{$tag}][{$key}]", $setting); ?>
 			</td>
 		</tr>
 		<?php } } } ?>

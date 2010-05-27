@@ -223,29 +223,6 @@ function get_config_file($ged_id=WT_GED_ID) {
 }
 
 /**
- * print write_access option
- *
- * @param string $checkVar
- */
-function write_access_option($checkVar) {
-	echo "<option value=\"WT_PRIV_PUBLIC\"";
-	echo $checkVar==WT_PRIV_PUBLIC ? " selected=\"selected\"" : '';
-	echo ">", i18n::translate('Show to public'), "</option>\n";
-
-	echo "<option value=\"WT_PRIV_USER\"";
-	echo $checkVar==WT_PRIV_USER ? " selected=\"selected\"" : '';
-	echo ">", i18n::translate('Show only to authenticated users'), "</option>\n";
-
-	echo "<option value=\"WT_PRIV_NONE\"";
-	echo $checkVar==WT_PRIV_NONE ? " selected=\"selected\"" : '';
-	echo ">", i18n::translate('Show only to admin users'), "</option>\n";
-
-	echo "<option value=\"WT_PRIV_HIDE\"";
-	echo $checkVar==WT_PRIV_HIDE ? " selected=\"selected\"" : '';
-	echo ">", i18n::translate('Hide even from admin users'), "</option>\n";
-}
-
-/**
  * Get the path to the privacy file
  *
  * Get the path to the privacy file for the currently active GEDCOM

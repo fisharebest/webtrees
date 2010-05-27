@@ -37,24 +37,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-function write_access_option_numeric($checkVar) {
-	echo "<option value=\"".WT_PRIV_PUBLIC."\"";
-	echo ($checkVar==WT_PRIV_PUBLIC) ? " selected=\"selected\"" : '';
-	echo ">".i18n::translate('Show to public')."</option>\n";
-
-	echo "<option value=\"".WT_PRIV_USER."\"";
-	echo ($checkVar==WT_PRIV_USER) ? " selected=\"selected\"" : '';
-	echo ">".i18n::translate('Show only to authenticated users')."</option>\n";
-
-	echo "<option value=\"".WT_PRIV_NONE."\"";
-	echo ($checkVar==WT_PRIV_NONE) ? " selected=\"selected\"" : '';
-	echo ">".i18n::translate('Show only to admin users')."</option>\n";
-
-	echo "<option value=\"".WT_PRIV_HIDE."\"";
-	echo ($checkVar==WT_PRIV_HIDE) ? " selected=\"selected\"" : '';
-	echo ">".i18n::translate('Hide even from admin users')."</option>\n";
-}
-
 $action = safe_POST('action');
 
 if ($action=='update_mods') {
@@ -324,12 +306,8 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='menu'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
-											?>
-											<tr><td><?php echo $ged_name ?></td><td>
-											<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-												<?php write_access_option_numeric($access_level) ?>
-											</select></td></tr>
-											<?php 
+											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+											echo edit_field_access_level($varname, $access_level);
 										} 
 									?>
 								</table>
@@ -376,12 +354,8 @@ print_header(i18n::translate('Module administration'));
 									$access_level=WT_DB::prepare(
 										"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='tab'"
 									)->execute(array($ged_id, $module->getName()))->fetchOne();
-									?>
-									<tr><td><?php echo $ged_name ?></td><td>
-									<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-										<?php write_access_option_numeric($access_level) ?>
-									</select></td></tr>
-								<?php 
+									echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+									echo edit_field_access_level($varname, $access_level);
 								} 
 								?>
 							</table>
@@ -428,12 +402,8 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
-											?>
-											<tr><td><?php echo $ged_name ?></td><td>
-											<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-												<?php write_access_option_numeric($access_level) ?>
-											</select></td></tr>
-										<?php 
+											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+											echo edit_field_access_level($varname, $access_level);
 										} 
 										?>
 									</table>
@@ -473,12 +443,8 @@ print_header(i18n::translate('Module administration'));
 										$access_level=WT_DB::prepare(
 											"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='block'"
 										)->execute(array($ged_id, $module->getName()))->fetchOne();
-										?>
-										<tr><td><?php echo $ged_name ?></td><td>
-										<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-											<?php write_access_option_numeric($access_level) ?>
-										</select></td></tr>
-										<?php 
+											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+											echo edit_field_access_level($varname, $access_level);
 									} 
 								?>
 								</table>
@@ -518,12 +484,8 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='chart'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
-											?>
-											<tr><td><?php echo $ged_name ?></td><td>
-											<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-												<?php write_access_option_numeric($access_level) ?>
-											</select></td></tr>
-										<?php 
+											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+											echo edit_field_access_level($varname, $access_level);
 										} 
 										?>
 									</table>
@@ -563,14 +525,10 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='report'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
-											?>
-											<tr><td><?php echo $ged_name ?></td><td>
-											<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-												<?php write_access_option_numeric($access_level) ?>
-											</select></td></tr>
-											<?php 
-											} 
-											?>
+											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+											echo edit_field_access_level($varname, $access_level);
+										} 
+										?>
 									</table>
 								</td>
 							</tr>
@@ -608,13 +566,9 @@ print_header(i18n::translate('Module administration'));
 										$access_level=WT_DB::prepare(
 											"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='theme'"
 										)->execute(array($ged_id, $module->getName()))->fetchOne();
-										?>
-										<tr><td><?php echo $ged_name ?></td><td>
-										<select id="<?php echo $varname?>" name="<?php echo $varname?>">
-											<?php write_access_option_numeric($access_level) ?>
-										</select></td></tr>
-										<?php 
-										} 
+										echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+										echo edit_field_access_level($varname, $access_level);
+									} 
 									?>
 								</table>
 							</td>
