@@ -2599,7 +2599,7 @@ function get_user_blocks() {
 			"(?, 'side', 1, 'random_media'),".
 			"(?, 'side', 2, 'upcoming_events'),".
 			"(?, 'side', 3, 'logged_in')"
-		)->execute(array(WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID));
+		)->execute(array(WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID));
 		return get_user_blocks();
 	}
 }
@@ -2625,14 +2625,12 @@ function get_gedcom_blocks() {
 		WT_DB::prepare(
 			"REPLACE INTO {$TBLPREFIX}block (gedcom_id, location, block_order, module_name) VALUES ".
 			"(?, 'main', 0, 'gedcom_stats'),".
-			"(?, 'main', 1, 'gedcom_news'),".
-			"(?, 'main', 2, 'gedcom_favorites'),".
-			"(?, 'main', 3, 'review_changes'),".
+			"(?, 'main', 1, 'review_changes'),".
 			"(?, 'side', 0, 'gedcom_block'),".
 			"(?, 'side', 1, 'random_media'),".
 			"(?, 'side', 2, 'todays_events'),".
 			"(?, 'side', 3, 'logged_in')"
-		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID));
+		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID));
 		return get_gedcom_blocks();
 	}
 }
