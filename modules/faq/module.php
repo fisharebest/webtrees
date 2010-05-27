@@ -297,11 +297,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
 		// Define your colors for the alternating rows
-		$odd = "odd";
-		$even = "even"; 
 		echo '<h2 class="center">', i18n::translate('Frequently asked questions'), '</h2>';
 		// Instructions
-		echo '<span class="faq_italic">Click on a title to go straight to it, or scroll down to read them all</span>';
+		echo '<div class="faq_italic">', i18n::translate('Click on a title to go straight to it, or scroll down to read them all');
+			if (WT_USER_GEDCOM_ADMIN){
+				echo '<div style="float:right;">',
+						'<a href="module.php?mod=faq&mod_action=config">', i18n::translate('Click here to Add, Edit, or Delete'), '</a>',
+				'</div>';
+			}
+		echo '</div>';
 		//Start the table to contain the list of headers
 		$row_count = 0;
 		echo '<table class="faq">';
@@ -312,7 +316,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			return;
 		}
 			if ($faq->header && $faq->body) {
-				$row_color = ($row_count % 2) ? $odd : $even; 
+				$row_color = ($row_count % 2) ? 'odd' : 'even'; 
 				echo '';
 					// NOTE: Print the header of the current item
 						echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
@@ -336,7 +340,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				// NOTE: Print the body text of the current item, with its header
 				echo '<div class="faq_title" id="faq', $id, '">',
 					$faq->header;
-					echo '<div style="float:right;"class="faq_italic">';
+					echo '<div style="float:right;" class="faq_italic">';
 						echo '<a href="#body">[', i18n::translate('back to top'), ']</a>';
 					echo '</div>';
 				echo '</div>';
