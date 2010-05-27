@@ -26,7 +26,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: style.css 7089 2010-03-01 17:04:05Z veit $
+ * @version $Id$
  */
 
 
@@ -1595,7 +1595,7 @@ div.faq_title {
 div.faq_body {
 	clear:both;
 	margin: 1em 0;
-	padding: 1em; "
+	padding: 1em;
 }
 .faq_italic {
 	font-style: italic;
