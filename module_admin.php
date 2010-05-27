@@ -37,6 +37,84 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
+// Modules may have been added or updated to no longer provide a particular component
+$installed_modules=WT_Module::getInstalledModules();
+foreach ($installed_modules as $module_name=>$module) {
+	// New module
+	WT_DB::prepare("INSERT IGNORE INTO {$TBLPREFIX}module (module_name) VALUES (?)")->execute(array($module_name));
+
+	// Removed component
+	if (!$module instanceof WT_Module_Block) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='block'"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"DELETE {$TBLPREFIX}block_setting FROM {$TBLPREFIX}block_setting JOIN {$TBLPREFIX}block USING (block_id) WHERE module_name=?"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}block WHERE module_name=?"
+		)->execute(array($module_name));
+	}
+	if (!$module instanceof WT_Module_Chart) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='chart'"
+		)->execute(array($module_name));
+	}
+	if (!$module instanceof WT_Module_Menu) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='menu'"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"UPDATE {$TBLPREFIX}module SET menu_order=NULL WHERE module_name=?"
+		)->execute(array($module_name));
+	}
+	if (!$module instanceof WT_Module_Report) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='report'"
+		)->execute(array($module_name));
+	}
+	if (!$module instanceof WT_Module_Sidebar) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='sidebar'"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"UPDATE {$TBLPREFIX}module SET sidebar_order=NULL WHERE module_name=?"
+		)->execute(array($module_name));
+	}
+	if (!$module instanceof WT_Module_Tab) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='tab'"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"UPDATE {$TBLPREFIX}module SET tab_order=NULL WHERE module_name=?"
+		)->execute(array($module_name));
+	}
+	if (!$module instanceof WT_Module_Theme) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=? AND component='theme'"
+		)->execute(array($module_name));
+	}
+}
+
+// Delete config for modules that no longer exist
+$module_names=WT_DB::prepare("SELECT module_name FROM {$TBLPREFIX}module")->fetchOneColumn();
+foreach ($module_names as $module_name) {
+	if (!array_key_exists($module_name, $installed_modules)) {
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module_privacy WHERE module_name=?"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"DELETE {$TBLPREFIX}block_setting FROM {$TBLPREFIX}block_setting JOIN {$TBLPREFIX}block USING (block_id) WHERE module_name=?"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}block WHERE module_name=?"
+		)->execute(array($module_name));
+		WT_DB::prepare(
+			"DELETE FROM {$TBLPREFIX}module WHERE module_name=?"
+		)->execute(array($module_name));
+	}
+}
+
 $action = safe_POST('action');
 
 if ($action=='update_mods') {
@@ -47,58 +125,55 @@ if ($action=='update_mods') {
 			WT_DB::prepare("UPDATE {$TBLPREFIX}module SET status=? WHERE module_name=?")->execute(array($status ? 'enabled' : 'disabled', $module_name));
 		}
 		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			WT_DB::prepare("INSERT IGNORE INTO {$TBLPREFIX}module (module_name) VALUES (?)")->execute(array($module_name));
-
-			$value = safe_POST("blockaccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Block) {
+				$value = safe_POST("blockaccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
-			$value = safe_POST("chartaccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Chart) {
+				$value = safe_POST("chartaccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'chart', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
-			$value = safe_POST("menuaccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Menu) {
+				$value = safe_POST("menuaccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
-			$value = safe_POST("sidebaraccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Sidebar) {
+				$value = safe_POST("sidebaraccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
-			$value = safe_POST("reportaccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Report) {
+				$value = safe_POST("reportaccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
-			$value = safe_POST("tabaccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Tab) {
+				$value = safe_POST("tabaccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
 					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
 
-			$value = safe_POST("themeaccess-{$module_name}-{$ged_id}");
-			if ($value!==null) {
+			if ($module instanceof WT_Module_Theme) {
+				$value = safe_POST("themeaccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 				WT_DB::prepare(
-					"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
+				"REPLACE INTO {$TBLPREFIX}module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
-			
-    }
+	}
 
 		$value = safe_POST('menuorder-'.$module_name);
 		if ($value) {
@@ -120,7 +195,7 @@ if ($action=='update_mods') {
 				"UPDATE {$TBLPREFIX}module SET sidebar_order=? WHERE module_name=?"
 			)->execute(array($value, $module_name));
 		}
-  }
+	}
 }
 
 print_header(i18n::translate('Module administration'));
@@ -306,6 +381,9 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='menu'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
+											if ($access_level===null) {
+												$access_level=$module->defaultAccessLevel();
+											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
 										} 
@@ -354,6 +432,9 @@ print_header(i18n::translate('Module administration'));
 									$access_level=WT_DB::prepare(
 										"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='tab'"
 									)->execute(array($ged_id, $module->getName()))->fetchOne();
+									if ($access_level===null) {
+										$access_level=$module->defaultAccessLevel();
+									}
 									echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 									echo edit_field_access_level($varname, $access_level);
 								} 
@@ -402,6 +483,9 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
+											if ($access_level===null) {
+												$access_level=$module->defaultAccessLevel();
+											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
 										} 
@@ -443,8 +527,11 @@ print_header(i18n::translate('Module administration'));
 										$access_level=WT_DB::prepare(
 											"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='block'"
 										)->execute(array($ged_id, $module->getName()))->fetchOne();
-											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
-											echo edit_field_access_level($varname, $access_level);
+										if ($access_level===null) {
+											$access_level=$module->defaultAccessLevel();
+										}
+										echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+										echo edit_field_access_level($varname, $access_level);
 									} 
 								?>
 								</table>
@@ -484,6 +571,9 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='chart'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
+											if ($access_level===null) {
+												$access_level=$module->defaultAccessLevel();
+											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
 										} 
@@ -525,6 +615,9 @@ print_header(i18n::translate('Module administration'));
 											$access_level=WT_DB::prepare(
 												"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='report'"
 											)->execute(array($ged_id, $module->getName()))->fetchOne();
+											if ($access_level===null) {
+												$access_level=$module->defaultAccessLevel();
+											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
 										} 
@@ -566,6 +659,9 @@ print_header(i18n::translate('Module administration'));
 										$access_level=WT_DB::prepare(
 											"SELECT access_level FROM {$TBLPREFIX}module_privacy WHERE gedcom_id=? AND module_name=? AND component='theme'"
 										)->execute(array($ged_id, $module->getName()))->fetchOne();
+										if ($access_level===null) {
+											$access_level=$module->defaultAccessLevel();
+										}
 										echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 										echo edit_field_access_level($varname, $access_level);
 									} 

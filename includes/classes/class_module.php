@@ -234,7 +234,7 @@ abstract class WT_Module {
 					$modules[$file]=new $class();
 				}
 			}
-			usort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $modules;
 	}
