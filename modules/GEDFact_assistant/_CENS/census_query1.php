@@ -91,6 +91,7 @@ background-color: #FFFFFF;
 </script>
 
 <?php
+die("This code looks very dodgy.  Why are we trying to send our DB connection parameters back to the user!?!?!?");
 $refresh  = "<input class=\"button\" type=\"button\" name=\"Button\" value=\"Refresh\" ";
 $refresh .= "onClick=\"javascript:attach_file('modules/GEDFact_assistant/_CENS/census_query1a.php";
 $refresh .= "?noteid='+INDI_NOTE.value+'";			// 

@@ -29,6 +29,7 @@
 // require './config.php';
 // require './includes/classes/class_wt_db.php';
 
+die("This code looks very dodgy.  Why are we bypassing all our session checks and existing DB infrastructure!?!?!?");
 //get values of input fields
 	$noteid 	= addslashes($_GET['noteid']);		 //-- Note Id
 	$TBLPREFIX 	= addslashes($_GET['tblprefix']);	 //-- table prefix
