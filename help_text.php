@@ -2181,11 +2181,6 @@ case 'ENABLE_AUTOCOMPLETE':
 	$text=i18n::translate('This option determines whether Autocomplete should be active while information is being entered into certain fields on input forms.  When this option is set to <b>Yes</b>, text input fields for which Autocomplete is possible are indicated by a differently colored background.<br /><br />When Autocomplete is active, <b>webtrees</b> will search its database for possible matches according to what you have already entered.  As you enter more information, the list of possible matches is refined.  When you see the desired input in the list of matches, you can move the mouse cursor to that line of the list and then click the left mouse button to complete the input.<br /><br />The disadvantages of Autocomplete are that it slows the program, entails significant database activity, and also results in more data being sent to the browser.');
 	break;
 
-case 'ENABLE_CLIPPINGS_CART':
-	$title=i18n::translate('Enable clippings cart');
-	$text=i18n::translate('The clippings cart allows users to add people to a temporary file that they can download in GEDCOM format for subsequent import into their genealogy software.');
-	break;
-
 case 'ENABLE_MULTI_LANGUAGE':
 	$title=i18n::translate('Allow user to change language');
 	$text=i18n::translate('Set to <b>Yes</b> to allow users to override the site\'s default language.  They can do this through their browser\'s preferred language configuration, configuration options on their Account page, or through links or buttons on most <b>webtrees</b> pages.');

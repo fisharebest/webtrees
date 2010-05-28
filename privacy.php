@@ -99,19 +99,6 @@ $SHOW_SOURCES = WT_PRIV_PUBLIC;
 $MAX_ALIVE_AGE      = "120";
 
 /**
- * Set the access level for the clippings cart
- *
- * Sets the access level required to view the clippings cart.
- * Can be one of the PRIV access levels:
- *		- <var>WT_PRIV_HIDE</var>
- *		- <var>WT_PRIV_PUBLIC</var>
- *		- <var>WT_PRIV_USER</var>
- *		- <var>WT_PRIV_NONE</var>
- * The default settings is set to <var>WT_PRIV_PUBLIC</var> allowing only authenticated users to have access.
- * @global integer $ENABLE_CLIPPINGS_CART
- */
-$ENABLE_CLIPPINGS_CART = WT_PRIV_PUBLIC;
-/**
  * Set the access level for the multi-site search
  *
  * Sets the access level required to use the multi-site search feature.
@@ -121,7 +108,7 @@ $ENABLE_CLIPPINGS_CART = WT_PRIV_PUBLIC;
  *		- <var>WT_PRIV_USER</var>
  *		- <var>WT_PRIV_NONE</var>
  * The default settings is set to <var>WT_PRIV_PUBLIC</var> allowing only authenticated users to have access.
- * @global integer $ENABLE_CLIPPINGS_CART
+ * @global integer $SHOW_MULTISITE_SEARCH
  */
 $SHOW_MULTISITE_SEARCH = WT_PRIV_NONE;
 /**

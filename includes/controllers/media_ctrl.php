@@ -291,8 +291,8 @@ class MediaControllerRoot extends IndividualController{
 	* @return boolean
 	*/
 	function canShowOtherMenu() {
-		global $SHOW_GEDCOM_RECORD, $ENABLE_CLIPPINGS_CART;
-		if ($this->mediaobject->canDisplayDetails() && ($SHOW_GEDCOM_RECORD || $ENABLE_CLIPPINGS_CART>=WT_USER_ACCESS_LEVEL))
+		global $SHOW_GEDCOM_RECORD;
+		if ($this->mediaobject->canDisplayDetails() && ($SHOW_GEDCOM_RECORD || array_key_exists('clippings', WT_Module::getActiveModules())))
 			return true;
 		return false;
 	}
@@ -302,8 +302,8 @@ class MediaControllerRoot extends IndividualController{
 	* @return Menu
 	*/
 	function &getOtherMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $THEME_DIR;
-		global $SHOW_GEDCOM_RECORD, $ENABLE_CLIPPINGS_CART;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $THEME_DIR, $SHOW_GEDCOM_RECORD;
+
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 		//-- main other menu item
@@ -331,7 +331,7 @@ class MediaControllerRoot extends IndividualController{
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}
-		if ($this->mediaobject->canDisplayDetails() && $ENABLE_CLIPPINGS_CART>=WT_USER_ACCESS_LEVEL) {
+		if ($this->mediaobject->canDisplayDetails() && array_key_exists('clippings', WT_Module::getActiveModules())) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=obje"));
 			if (!empty($WT_IMAGES["clippings"]["small"]))
 				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);

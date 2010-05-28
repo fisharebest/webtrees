@@ -66,7 +66,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	
 	// Implement WT_Module_Menu
 	public function getMenu() { 
-		global $ENABLE_CLIPPINGS_CART, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER;
+
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ($SEARCH_SPIDER) {
 			return new Menu("", "", "");

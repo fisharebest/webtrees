@@ -680,8 +680,8 @@ class IndividualControllerRoot extends BaseController {
 	* @return boolean
 	*/
 	function canShowOtherMenu() {
-		global $SHOW_GEDCOM_RECORD, $ENABLE_CLIPPINGS_CART;
-		if ($this->indi->canDisplayDetails() && ($SHOW_GEDCOM_RECORD || $ENABLE_CLIPPINGS_CART>=WT_USER_ACCESS_LEVEL))
+		global $SHOW_GEDCOM_RECORD;
+		if ($this->indi->canDisplayDetails() && ($SHOW_GEDCOM_RECORD || array_key_exists('clippings', WT_Module::getActiveModules())))
 			return true;
 		return false;
 	}
@@ -691,7 +691,7 @@ class IndividualControllerRoot extends BaseController {
 	*/
 	function &getOtherMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		global $SHOW_GEDCOM_RECORD, $ENABLE_CLIPPINGS_CART;
+		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 		//-- main other menu item
@@ -713,7 +713,7 @@ class IndividualControllerRoot extends BaseController {
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}
-		if ($this->indi->canDisplayDetails() && $ENABLE_CLIPPINGS_CART>=WT_USER_ACCESS_LEVEL) {
+		if ($this->indi->canDisplayDetails() && array_key_exists('clippings', WT_Module::getActiveModules())) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=indi"));
 			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");

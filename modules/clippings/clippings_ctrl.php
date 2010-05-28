@@ -95,17 +95,8 @@ class ClippingsControllerRoot extends BaseController {
 	}
 	//----------------beginning of function definitions for ClippingsControllerRoot
 	function init() {
-		global $ENABLE_CLIPPINGS_CART, $SCRIPT_NAME, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
+		global $SCRIPT_NAME, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
 		global $GEDCOM, $cart;
-
-		if (!isset ($ENABLE_CLIPPINGS_CART))
-		$ENABLE_CLIPPINGS_CART = WT_PRIV_HIDE;
-		if ($ENABLE_CLIPPINGS_CART === true)
-		$ENABLE_CLIPPING_CART = WT_PRIV_PUBLIC;
-		if ($ENABLE_CLIPPINGS_CART < WT_USER_ACCESS_LEVEL) {
-			header("Location: index.php");
-			exit;
-		}
 
 		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
 		if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';

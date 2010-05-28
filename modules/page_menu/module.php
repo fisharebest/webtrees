@@ -65,8 +65,10 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 		}
 		if (method_exists($controller, 'getOtherMenu')) {	
 			$menu = $controller->getOtherMenu();
-			$menu->addClass('menuitem'.$ff, 'menuitem_hover'.$ff, 'submenu'.$ff, 'icon_large_gedcom');
-			$menu->addLabel($menu->label, 'down');
+			if ($menu) {
+				$menu->addClass('menuitem'.$ff, 'menuitem_hover'.$ff, 'submenu'.$ff, 'icon_large_gedcom');
+				$menu->addLabel($menu->label, 'down');
+			}
 		}
 		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
 			$editmenu = $controller->getEditMenu();

@@ -275,13 +275,12 @@ class SourceControllerRoot extends BaseController {
 	* @return Menu
 	*/
 	function &getOtherMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		global $SHOW_GEDCOM_RECORD, $ENABLE_CLIPPINGS_CART;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 
-		if (!$this->source->canDisplayDetails() || (!$SHOW_GEDCOM_RECORD && $ENABLE_CLIPPINGS_CART < WT_USER_ACCESS_LEVEL)) {
+		if (!$this->source->canDisplayDetails() || (!$SHOW_GEDCOM_RECORD && !array_key_exists('clippings', WT_Module::getActiveModules()))) {
 			$tempvar = false;
 			return $tempvar;
 		}
@@ -323,7 +322,7 @@ class SourceControllerRoot extends BaseController {
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 				$menu->addSubmenu($submenu);
 		}
-		if ($ENABLE_CLIPPINGS_CART >= WT_USER_ACCESS_LEVEL)
+		if (array_key_exists('clippings', WT_Module::getActiveModules()))
 		{
 				// other / add_to_cart
 				$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->sid}&type=sour"));

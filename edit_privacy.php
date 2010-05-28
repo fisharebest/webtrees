@@ -165,7 +165,6 @@ if ($action=="update") {
 	$configtext = preg_replace('/\$MAX_ALIVE_AGE\s*=\s*".*";/', "\$MAX_ALIVE_AGE = \"".$_POST["v_MAX_ALIVE_AGE"]."\";", $configtext);
 	if ($MAX_ALIVE_AGE!=$_POST["v_MAX_ALIVE_AGE"]) reset_isdead(get_id_from_gedcom($ged));
 	$configtext = preg_replace('/\$SHOW_MULTISITE_SEARCH\s*=\s*.*;/', "\$SHOW_MULTISITE_SEARCH = ".$_POST["v_SHOW_MULTISITE_SEARCH"].";", $configtext);
-	$configtext = preg_replace('/\$ENABLE_CLIPPINGS_CART\s*=\s*.*;/', "\$ENABLE_CLIPPINGS_CART = ".$_POST["v_ENABLE_CLIPPINGS_CART"].";", $configtext);
 	$configtext = preg_replace('/\$PRIVACY_BY_YEAR\s*=\s*.*;/', "\$PRIVACY_BY_YEAR = ".$boolarray[$_POST["v_PRIVACY_BY_YEAR"]].";", $configtext);
 	$configtext = preg_replace('/\$SHOW_DEAD_PEOPLE\s*=\s*.*;/', "\$SHOW_DEAD_PEOPLE = ".$_POST["v_SHOW_DEAD_PEOPLE"].";", $configtext);
 	$configtext = preg_replace('/\$USE_RELATIONSHIP_PRIVACY\s*=\s*.*;/', "\$USE_RELATIONSHIP_PRIVACY = ".$boolarray[$_POST["v_USE_RELATIONSHIP_PRIVACY"]].";", $configtext);
@@ -301,6 +300,7 @@ if ($action=="update") {
 					<?php echo edit_field_access_level("v_SHOW_DEAD_PEOPLE", $SHOW_DEAD_PEOPLE); ?>
 				</td>
 			</tr>
+
 			<tr>
 				<td class="descriptionbox wrap">
 					<?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
@@ -309,20 +309,13 @@ if ($action=="update") {
 					<?php echo edit_field_access_level("v_SHOW_LIVING_NAMES", $SHOW_LIVING_NAMES); ?>
 				</td>
 			</tr>
+
 			<tr>
 				<td class="descriptionbox wrap">
 					<?php echo i18n::translate('Show sources'), help_link('SHOW_SOURCES'); ?>
 				</td>
 				<td class="optionbox">
 					<?php echo edit_field_access_level("v_SHOW_SOURCES", $SHOW_SOURCES); ?>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Enable clippings cart'), help_link('ENABLE_CLIPPINGS_CART'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo edit_field_access_level("v_ENABLE_CLIPPINGS_CART", $ENABLE_CLIPPINGS_CART); ?>
 				</td>
 			</tr>
 
