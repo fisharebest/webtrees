@@ -2226,9 +2226,13 @@ function get_site_setting($setting_name, $default_value=null) {
 function set_site_setting($setting_name, $setting_value) {
 	global $TBLPREFIX;
 
-	WT_DB::prepare(
-		"REPLACE INTO {$TBLPREFIX}site_setting (setting_name, setting_value) VALUES (?, ?)"
-	)->execute(array($setting_name, $setting_value));
+	if (is_null($setting_value)) {
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}site_setting WHERE setting_name=?")
+			->execute(array($setting_name));
+	} else {
+		WT_DB::prepare("REPLACE INTO {$TBLPREFIX}site_setting (setting_name, setting_value) VALUES (?, ?)")
+			->execute(array($setting_name, $setting_value));
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2316,9 +2320,13 @@ function get_gedcom_setting($gedcom_id, $setting_name, $default_value=null) {
 function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
 	global $TBLPREFIX;
 
-	WT_DB::prepare(
-		"REPLACE INTO {$TBLPREFIX}gedcom_setting (gedcom_id, setting_name, setting_value) VALUES (?, ?, ?)"
-	)->execute(array($ged_id, $setting_name, $setting_value));
+	if (is_null($setting_value)) {
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}gedcom_setting WHERE gedcom_id=? AND setting_name=?")
+			->execute(array($ged_id, $setting_name));
+	} else {
+		WT_DB::prepare("REPLACE INTO {$TBLPREFIX}gedcom_setting (gedcom_id, setting_name, setting_value) VALUES (?, ?, ?)")
+			->execute(array($ged_id, $setting_name, $setting_value));
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -2514,9 +2522,13 @@ function get_user_setting($user_id, $setting_name, $default_value=null) {
 function set_user_setting($user_id, $setting_name, $setting_value) {
 	global $TBLPREFIX;
 
-	WT_DB::prepare(
-		"REPLACE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES (?, ?, ?)"
-	)->execute(array($user_id, $setting_name, $setting_value));
+	if (is_null($setting_value)) {
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}user_setting WHERE user_id=? AND setting_name=?")
+			->execute(array($user_id, $setting_name));
+	} else {
+		WT_DB::prepare("REPLACE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES (?, ?, ?)")
+			->execute(array($user_id, $setting_name, $setting_value));
+	}
 }
 
 function admin_user_exists() {
@@ -2539,9 +2551,13 @@ function get_user_gedcom_setting($user_id, $gedcom_id, $setting_name, $default_v
 function set_user_gedcom_setting($user_id, $ged_id, $setting_name, $setting_value) {
 	global $TBLPREFIX;
 
-	WT_DB::prepare(
-		"REPLACE INTO {$TBLPREFIX}user_gedcom_setting (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-	)->execute(array($user_id, $ged_id, $setting_name, $setting_value));
+	if (is_null($setting_value)) {
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}user_gedcom_setting WHERE user_id=? AND gedcom_id=? AND setting_name=?")
+			->execute(array($user_id, $ged_id, $setting_name));
+	} else {
+		WT_DB::prepare("REPLACE INTO {$TBLPREFIX}user_gedcom_setting (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)")
+			->execute(array($user_id, $ged_id, $setting_name, $setting_value));
+	}
 }
 
 function get_user_from_gedcom_xref($ged_id, $xref) {
@@ -2653,9 +2669,13 @@ function get_module_setting($module_name, $setting_name, $default_value=null) {
 function set_module_setting($module_name, $setting_name, $setting_value) {
 	global $TBLPREFIX;
 
-	WT_DB::prepare(
-		"REPLACE INTO {$TBLPREFIX}module_setting (module_name, setting_name, setting_value) VALUES (?, ?, ?)"
-	)->execute(array($module_name, $setting_name, $setting_value));
+	if (is_null($setting_value)) {
+		WT_DB::prepare("DELETE FROM {$TBLPREFIX}module_setting WHERE module_name=? AND setting_name=?")
+			->execute(array($module_name, $setting_name));
+	} else {
+		WT_DB::prepare("REPLACE INTO {$TBLPREFIX}module_setting (module_name, setting_name, setting_value) VALUES (?, ?, ?)")
+			->execute(array($module_name, $setting_name, $setting_value));
+	}
 }
 
 /**
@@ -2705,7 +2725,8 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 			WT_DB::prepareLimit($sql, WT_AUTOCOMPLETE_LIMIT)
 			->execute(array("%{$FILTER}%", $ged_id))
 			->fetchAll(PDO::FETCH_ASSOC);
-	} else {
+	}
+	else {
 		return $rows;
 	}
 }
