@@ -2214,12 +2214,13 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 // functions after performing DDL statements, and these invalidate any
 // existing prepared statement handles in some databases.
 ////////////////////////////////////////////////////////////////////////////////
-function get_site_setting($setting_name, $default=null) {
+function get_site_setting($setting_name, $default_value=null) {
 	global $TBLPREFIX;
 
-	return WT_DB::prepare(
-		"SELECT setting_value FROM {$TBLPREFIX}site_setting WHERE setting_name=?"
-	)->execute(array($setting_name))->fetchOne($default);
+	return
+		WT_DB::prepare(
+			"SELECT setting_value FROM {$TBLPREFIX}site_setting WHERE setting_name=?"
+		)->execute(array($setting_name))->fetchOne($default_value);
 }
 
 function set_site_setting($setting_name, $setting_value) {
@@ -2307,13 +2308,13 @@ function get_id_from_gedcom($ged_name, $create=false) {
 // Functions to access the WT_GEDCOM_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_gedcom_setting($ged_id, $setting_name) {
+function get_gedcom_setting($gedcom_id, $setting_name, $default_value=null) {
 	global $TBLPREFIX;
 
 	return
-		WT_DB::prepare("SELECT setting_value FROM {$TBLPREFIX}gedcom_setting WHERE gedcom_id=? AND setting_name=?")
-		->execute(array($ged_id, $setting_name))
-		->fetchOne();
+		WT_DB::prepare(
+			"SELECT setting_value FROM {$TBLPREFIX}gedcom_setting WHERE gedcom_id=? AND setting_name=?"
+		)->execute(array($gedcom_id, $setting_name))->fetchOne($default_value);
 }
 
 function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
@@ -2509,13 +2510,13 @@ function get_user_password($user_id) {
 // Functions to access the WT_USER_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_user_setting($user_id, $setting_name) {
+function get_user_setting($user_id, $setting_name, $default_value=null) {
 	global $TBLPREFIX;
 
 	return
-		WT_DB::prepare("SELECT setting_value FROM {$TBLPREFIX}user_setting WHERE user_id=? AND setting_name=?")
-		->execute(array($user_id, $setting_name))
-		->fetchOne();
+		WT_DB::prepare(
+			"SELECT setting_value FROM {$TBLPREFIX}user_setting WHERE user_id=? AND setting_name=?"
+		)->execute(array($user_id, $setting_name))->fetchOne($default_value);
 }
 
 function set_user_setting($user_id, $setting_name, $setting_value) {
@@ -2538,13 +2539,13 @@ function admin_user_exists() {
 // Functions to access the WT_USER_GEDCOM_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_user_gedcom_setting($user_id, $ged_id, $setting_name) {
+function get_user_gedcom_setting($user_id, $gedcom_id, $setting_name, $default_value=null) {
 	global $TBLPREFIX;
 
 	return
-		WT_DB::prepare("SELECT setting_value FROM {$TBLPREFIX}user_gedcom_setting WHERE user_id=? AND gedcom_id=? AND setting_name=?")
-		->execute(array($user_id, $ged_id, $setting_name))
-		->fetchOne();
+		WT_DB::prepare(
+			"SELECT setting_value FROM {$TBLPREFIX}user_gedcom_setting WHERE user_id=? AND gedcom_id=? AND setting_name=?"
+		)->execute(array($user_id, $gedcom_id, $setting_name))->fetchOne($default_value);
 }
 
 function set_user_gedcom_setting($user_id, $ged_id, $setting_name, $setting_value) {
@@ -2637,16 +2638,11 @@ function get_gedcom_blocks($gedcom_id) {
 function get_block_setting($block_id, $setting_name, $default_value=null) {
 	global $TBLPREFIX;
 
-	$value=
-		WT_DB::prepare("SELECT setting_value FROM {$TBLPREFIX}block_setting WHERE block_id=? AND setting_name=?")
-		->execute(array($block_id, $setting_name))
-		->fetchOne();
+	return
+		WT_DB::prepare(
+			"SELECT setting_value FROM {$TBLPREFIX}block_setting WHERE block_id=? AND setting_name=?"
+		)->execute(array($block_id, $setting_name))->fetchOne($default_value);
 
-	if (is_null($value)) {
-		return $default_value;
-	} else {
-		return $value;
-	}
 }
 
 function set_block_setting($block_id, $setting_name, $setting_value) {
@@ -2664,16 +2660,10 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	global $TBLPREFIX;
 
-	$value=
-		WT_DB::prepare("SELECT setting_value FROM {$TBLPREFIX}module_setting WHERE module_name=? AND setting_name=?")
-		->execute(array($module_name, $setting_name))
-		->fetchOne();
-
-	if (is_null($value)) {
-		return $default_value;
-	} else {
-		return $value;
-	}
+	return
+		WT_DB::prepare(
+			"SELECT setting_value FROM {$TBLPREFIX}module_setting WHERE module_name=? AND setting_name=?"
+		)->execute(array($module_name, $setting_name))->fetchOne($default_value);
 }
 
 function set_module_setting($module_name, $setting_name, $setting_value) {
