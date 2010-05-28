@@ -1649,8 +1649,6 @@ table.tablesorter {
 	margin:5px 0pt 15px;
 	width: 100%;
 	text-align: left;
-	font-family:tahoma,arial,helvetica,sans-serif;
-	font-size:11px;
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	background-color: #E7EEF3;
@@ -1680,8 +1678,17 @@ table.tablesorter thead tr .headerSortDown {
 	background-image: url(../images/jquery/desc.gif);
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-	background-color: #51B389;
+	background-color: #ccc;
 }
+div.pager {
+	margin-top: -20px;
+	text-align: left;
+}
+div.pager input {
+	width: 50px;
+	text-align: center;
+}
+
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
 	width:450px;
