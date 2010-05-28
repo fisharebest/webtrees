@@ -40,7 +40,7 @@ echo "</div> <!-- closing div id=\"content\" -->";
 <br /><div align="center" style="width:99%;">
 <br />
 <a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank">
-	<img src="<?php echo $WT_IMAGE_DIR, '/', $WT_IMAGES['gedview']['other']; ?>" width="100" border="0" alt="<?php echo WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): ""; ?>"
+	<img src="<?php echo $WT_IMAGE_DIR, '/', $WT_IMAGES['webtrees']['other']; ?>" width="100" border="0" alt="<?php echo WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): ""; ?>"
 		title="<?php echo WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" ;?>" /></a><br />
 <br />
 <?php

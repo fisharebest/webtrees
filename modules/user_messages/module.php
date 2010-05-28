@@ -65,7 +65,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$usermessages = getUserMessages(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('My Messages').help_link('mygedview_message');
+		$title=i18n::translate('My Messages').help_link('mypage_message');
 		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
 		$title .= "(".count($usermessages).")";
 		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();

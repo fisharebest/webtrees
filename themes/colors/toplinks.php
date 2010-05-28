@@ -47,7 +47,7 @@ $menubar = new MenuBar();
 		$menu->printMenu();
 		echo "</td>";
 	}
-	$menu = $menubar->getMygedviewMenu();
+	$menu = $menubar->getMyPageMenu();
 	if($menu->link != "") {
 		echo "<td>";
 		$menu->addLabel("", "none");

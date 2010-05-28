@@ -804,7 +804,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</td>
 					<td class="optionbox"><select name="NEW_PAGE_AFTER_LOGIN" tabindex="<?php echo ++$i; ?>">
 							<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') print " selected=\"selected\""; ?>><?php print i18n::translate('Home'); ?></option>
-							<option value="mygedview" <?php if ($PAGE_AFTER_LOGIN=='mygedview') print " selected=\"selected\""; ?>><?php print i18n::translate('My Page'); ?></option>
+							<option value="mypage" <?php if ($PAGE_AFTER_LOGIN=='mypage') print " selected=\"selected\""; ?>><?php print i18n::translate('My Page'); ?></option>
 						</select>
 					</td>
 				</tr>

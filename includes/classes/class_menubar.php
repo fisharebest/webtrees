@@ -90,10 +90,10 @@ class MenuBar
 	}
 
 	/**
-	* get the mygedview menu
+	* get the mypage menu
 	* @return Menu the menu item
 	*/
-	static function getMygedviewMenu() {
+	static function getMyPageMenu() {
 		global $MEDIA_DIRECTORY, $MULTI_MEDIA;
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
@@ -108,25 +108,25 @@ class MenuBar
 
 		//-- main menu
 		$menu = new Menu(i18n::translate('My Page'), "index.php?ctype=user", "down");
-		if (!empty($WT_IMAGES["mygedview"]["large"])) {
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mygedview"]["large"]);
+		if (!empty($WT_IMAGES["mypage"]["large"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mypage"]["large"]);
 		} elseif (!empty($WT_IMAGES["gedcom"]["large"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["large"]);
 		}
-		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_mygedview");
+		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_mypage");
 
-		//-- mygedview submenu
+		//-- mypage submenu
 		$submenu = new Menu(i18n::translate('My Page'), "index.php?ctype=user");
-		if (!empty($WT_IMAGES["mygedview"]["small"]))
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mygedview"]["small"]);
-		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_mygedview");
+		if (!empty($WT_IMAGES["mypage"]["small"]))
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mypage"]["small"]);
+		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_mypage");
 		$menu->addSubmenu($submenu);
 		//-- editaccount submenu
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
 			$submenu = new Menu(i18n::translate('My account'), "edituser.php");
-			if (!empty($WT_IMAGES["mygedview"]["small"]))
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mygedview"]["small"]);
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_mygedview");
+			if (!empty($WT_IMAGES["mypage"]["small"]))
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mypage"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_mypage");
 			$menu->addSubmenu($submenu);
 		}
 		if (WT_USER_GEDCOM_ID) {
@@ -922,8 +922,8 @@ class MenuBar
 		$menuitems = contact_menus();
 		foreach($menuitems as $menuitem) {
 			$submenu = new Menu($menuitem["label"], $menuitem["link"]);
-			if (!empty($WT_IMAGES["mygedview"]["small"]))
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mygedview"]["small"]);
+			if (!empty($WT_IMAGES["mypage"]["small"]))
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["mypage"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_contact");
 			if (!empty($menuitem["onclick"])) $submenu->addOnclick($menuitem["onclick"]);
 			$menu->addSubmenu($submenu);

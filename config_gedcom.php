@@ -71,7 +71,7 @@ $SHOW_PARENTS_AGE = true;				// -- show age of parents on charts next to the bir
 
 $HIDE_LIVE_PEOPLE = true;				// -- a false value will show details of people who are still alive
 $REQUIRE_AUTHENTICATION = false;		// -- set this to try to force all visitors to login before they can view anything on the site
-$PAGE_AFTER_LOGIN = "mygedview";		// -- Which page should be shown after successful Login
+$PAGE_AFTER_LOGIN = "mypage";			// -- Which page should be shown after successful Login
 $WELCOME_TEXT_AUTH_MODE = "1";			// -- Sets which predefined of custom welcome message will be displayed on the Hoem Page in authentication mode
 $WELCOME_TEXT_AUTH_MODE_4 = "";			// -- Customized welcome text to display on login screen if that option is chosen
 $WELCOME_TEXT_CUST_HEAD = false;		// -- Use standard PGV header to display with custom welcome text

@@ -102,7 +102,7 @@ $feed->category="genealogy";
 
 $image = new FeedImage();
 $image->title = i18n::translate('Feed created by webtrees');
-$image->url = WT_SERVER_NAME.WT_SCRIPT_PATH."images/gedview.gif";
+$image->url = WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGE_DIR.'/'.$WT_IMAGES['webtrees']['other'];
 $image->link = WT_WEBTREES_URL;
 $image->description = i18n::translate('Feed created by webtrees');
 $image->descriptionHtmlSyndicated = true;

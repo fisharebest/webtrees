@@ -182,11 +182,11 @@ function getWTMailLogo() {
 // the following is a base64 encoded webtrees logo for use in html formatted email.
 	$wtLogo =
 "Content-Type: image/png;
-	name=\"gedview.png\"
+	name=\"webtrees.png\"
 Content-Transfer-Encoding: base64
 Content-ID: <wtlogo@wtserver>
-Content-Description: gedview.png
-Content-Location: gedview.png
+Content-Description: webtrees.png
+Content-Location: webtrees.png
 
 iVBORw0KGgoAAAANSUhEUgAAAGQAAAAVCAYAAACwnEswAAAAB3RJTUUH2gMGBCYo7Ngz5wAAAAlw
 SFlzAAAcIAAAHCABzQ+bngAAAARnQU1BAACxjwv8YQUAAA6gSURBVHja7VlZcFvndf7+C1zsAAkS

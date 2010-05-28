@@ -45,7 +45,7 @@ $menubar = new MenuBar();
 				$menu->printMenu();
 				print "\t</td>\n";
 			}
-			$menu = $menubar->getMygedviewMenu();
+			$menu = $menubar->getMyPageMenu();
 			if($menu->link != "") {
 				print "\t<td width=\"7%\" valign=\"top\">\n";
 				$menu->printMenu();

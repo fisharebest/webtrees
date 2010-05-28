@@ -147,7 +147,7 @@ if ($view!='simple') {
 			'</ul></div>';
 		$menu_items=array(
 			MenuBar::getGedcomMenu(),
-			MenuBar::getMygedviewMenu(),
+			MenuBar::getMyPageMenu(),
 			MenuBar::getChartsMenu(),
 			MenuBar::getListsMenu(),
 			MenuBar::getCalendarMenu(),

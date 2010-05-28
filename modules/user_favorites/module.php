@@ -132,7 +132,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if (!is_array($userfavs)) $userfavs = array();
 
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('My Favorites').help_link('mygedview_favorites');
+		$title=i18n::translate('My Favorites').help_link('mypage_favorites');
 		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
 		$title .= "(".count($userfavs).")";
 		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
