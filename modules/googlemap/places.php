@@ -78,8 +78,7 @@ function getHighestLevel() {
 /**
  * Find all of the places in the hierarchy
  */
-function get_place_list_loc($parent_id) {
-	global $display;
+function get_place_list_loc($parent_id, $display='') {
 	if ($display=="inactive") {
 		$rows=
 			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM ##placelocation WHERE pl_parent_id=? ORDER BY pl_place")
@@ -574,7 +573,7 @@ echo help_link('PLE_ACTIVE','googlemap');
 echo "</td></tr></table>";
 echo "</form>";
 
-$placelist=get_place_list_loc($parent);
+$placelist=get_place_list_loc($parent, $display);
 
 echo "<table class=\"facts_table\"><tr>";
 echo "<th class=\"descriptionbox\">", translate_fact('PLAC'), "</th>";
