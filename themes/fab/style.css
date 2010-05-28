@@ -981,6 +981,17 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 	background-color: #8dbdd8;
 }
+div.pager {
+	margin-top: -30px;
+	text-align: left;
+	font-size: .9em;
+}
+div.pager input {
+	width: 50px;
+	text-align: center;
+	padding: 0;
+}
+
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
 	width:450px;

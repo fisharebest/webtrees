@@ -1499,28 +1499,15 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 	background-color: #8dbdd8;
 }
-/*div.tablesorterPager {
-	padding: 10px 0 10px 0;
-	background-color: #D6D2C2;
+div.pager {
+	margin-top: -20px;
+	text-align: left;
+}
+div.pager input {
+	width: 50px;
 	text-align: center;
 }
-div.tablesorterPager span {
-	padding: 0 5px 0 5px;
-}
-div.tablesorterPager input.prev {
-	width: auto;
-	margin-right: 10px;
-}
-div.tablesorterPager input.next {
-	width: auto;
-	margin-left: 10px;
-}
-div.tablesorterPager input {
-	font-size: 8px;
-	width: 50px;
-	border: 1px solid #330000;
-	text-align: center;*/
-}
+
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
 	width:450px;

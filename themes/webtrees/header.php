@@ -93,7 +93,9 @@ if (!defined('WT_WEBTREES')) {
 	<?php }?>
 	<link type="text/css" href="<?php echo WT_THEME_DIR?>modules.css" rel="Stylesheet" />
 </head>
+
 <body id="body" <?php echo $bodyOnLoad; ?>>
+
 <!-- begin header section -->
 <?php
 if ($view!='simple')

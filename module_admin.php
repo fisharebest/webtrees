@@ -280,8 +280,16 @@ print_header(i18n::translate('Module administration'));
 	    reindexMods('sidebars_table');
 	});
 	
-	jQuery("#installed_table")
-		.tablesorter({sortList: [[2,0], [3,0]], widgets: ['zebra']})
+	jQuery("#installed_table") 
+		.tablesorter({
+			sortList: [[2,0], [3,0]], widgets: ['zebra'],
+			headers: { 0: { sorter: false }}
+		})
+		.tablesorterPager({
+			container: jQuery("#pager"),
+			positionFixed: false,
+			size: 15
+		});
 
 });
 //]]>
@@ -348,6 +356,23 @@ print_header(i18n::translate('Module administration'));
 				</table>
 				<input type="submit" value="<?php echo i18n::translate('Save')?>" />
 			</form>
+			<div id="pager" class="pager">
+				<form>
+					<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/first.png" class="first"/>
+					<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/prev.png" class="prev"/>
+					<input type="text" class="pagedisplay"/>
+					<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/next.png" class="next"/>
+					<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/last.png" class="last"/>
+					<select class="pagesize">
+						<option value="10">10</option>
+						<option selected="selected"  value="15">15</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+						<option  value="50">50</option>
+						<option  value="100">100</option>
+					</select>
+				</form>
+			</div>
 		</div>
 		<!-- menus -->
 		<div id="menus_tab">
