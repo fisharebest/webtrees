@@ -1,6 +1,6 @@
 <?php
 /**
- * Family story module.
+ * Stories module.
  *
  * This is a block, so we can take advantage of block storage.
  * It does not display on index.php.
@@ -32,10 +32,10 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Tab, WT_Module_Config {
+class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Tab, WT_Module_Config {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Family story');
+		return i18n::translate('Stories');
 	}
 
 	// Extend class WT_Module
@@ -144,7 +144,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 
 	// Action from the configuration page
 	private function edit() {
-		global $TBLPREFIX;
+		global $TBLPREFIX, $TEXT_DIRECTION;
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -180,7 +180,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 		} else {
 			$block_id=safe_GET('block_id');
 			if ($block_id) {
-				print_header(i18n::translate('Edit family story'));
+				print_header(i18n::translate('Edit story'));
 				$body=get_block_setting($block_id, 'body');
 				$gedcom_id=WT_DB::prepare(
 					"SELECT gedcom_id FROM {$TBLPREFIX}block WHERE block_id=?"
@@ -189,7 +189,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 					"SELECT xref FROM {$TBLPREFIX}block WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
-				print_header(i18n::translate('Add family story'));
+				print_header(i18n::translate('Add story'));
 				$body='';
 				$gedcom_id=WT_GED_ID;
 				$xref='';
@@ -201,10 +201,10 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 			echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '" />';
 			echo '<table class="center list_table">';
 			echo '<tr><td class="topbottombar" colspan="2">';
-			echo i18n::translate('Add family story'), help_link('add_story', $this->getName());
+			echo i18n::translate('Add story'), help_link('add_story', $this->getName());
 			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
 			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('Family story'), help_link('add_story', $this->getName());
+			echo i18n::translate('Story'), help_link('add_story', $this->getName());
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
 			echo '<tr><td class="descriptionbox">';
 			echo i18n::translate('Person');
@@ -215,7 +215,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 			$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
 			echo '<tr><td class="descriptionbox wrap width33">';
 			echo i18n::translate('Show this block for which languages?');
-			echo '</td><td class="optionbox">';
+			echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 			echo edit_language_checkboxes('lang_', $languages);
 			echo '</td></tr>';
 			echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Save'), '" tabindex="5"/>';
@@ -261,7 +261,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 
 		echo '<table class="list_table">';
 		echo '<tr><td class="list_label" colspan="3">';
-		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add family story'), '</a>';
+		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add story'), '</a>';
 		echo help_link('add_story', $this->getName());
 		echo '</td></tr>';
 		foreach ($stories as $story) {
@@ -275,7 +275,7 @@ class family_story_WT_Module extends WT_Module implements WT_Module_Block, WT_Mo
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a>';
 			echo help_link('edit_story', $this->getName());
 			echo '</td><td class="optionbox center width20">';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this family story?'), '\');">', i18n::translate('Delete'), '</a>';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
 			echo help_link('delete_story', $this->getName());
 			echo '</td>';
 			echo '<td class="list_value_wrap">', $name, '</td></tr>';
