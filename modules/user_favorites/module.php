@@ -61,7 +61,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		case 'deletefav':
 			$fv_id=safe_GET('fv_id');
 			if ($fv_id) {
-				deleteFavorite($fv_id);
+				self::deleteFavorite($fv_id);
 			}
 			break;
 		case 'addfav':
@@ -92,7 +92,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					$favorite['url'] = '';
 					$favorite['note'] = $favnote;
 					$favorite['title'] = '';
-					addFavorite($favorite);
+					self::addFavorite($favorite);
 				}
 			}
 			$url=safe_GET('url');
@@ -115,7 +115,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$favorite['url'] = $url;
 				$favorite['note'] = $favnote;
 				$favorite['title'] = $favtitle;
-				addFavorite($favorite);
+				self::addFavorite($favorite);
 			}
 			break;
 		}
@@ -128,7 +128,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
 
-		$userfavs = getUserFavorites(WT_USER_NAME);
+		$userfavs = self::getUserFavorites(WT_USER_NAME);
 		if (!is_array($userfavs)) $userfavs = array();
 
 		$id=$this->getName().$block_id;
@@ -301,5 +301,83 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
+	}
+	
+	/**
+	 * deleteFavorite
+	 * deletes a favorite in the database
+	 * @param int $fv_id	the id of the favorite to delete
+	 */
+	public static function deleteFavorite($fv_id) {
+		global $TBLPREFIX;
+	
+		return (bool)
+			WT_DB::prepare("DELETE FROM {$TBLPREFIX}favorites WHERE fv_id=?")
+			->execute(array($fv_id));
+	}
+
+	/**
+	 * stores a new favorite in the database
+	 * @param array $favorite	the favorite array of the favorite to add
+	 */
+	public static function addFavorite($favorite) {
+		global $TBLPREFIX;
+
+		// -- make sure a favorite is added
+		if (empty($favorite["gid"]) && empty($favorite["url"]))
+			return false;
+
+		//-- make sure this is not a duplicate entry
+		$sql = "SELECT 1 FROM {$TBLPREFIX}favorites WHERE";
+		if (!empty($favorite["gid"])) {
+			$sql.=" fv_gid=?";
+			$vars=array($favorite["gid"]);
+		} else {
+			$sql.=" fv_url=?";
+			$vars=array($favorite["url"]);
+		}
+		$sql.=" AND fv_file=? AND fv_username=?";
+		$vars[]=$favorite["file"];
+		$vars[]=$favorite["username"];
+	
+		if (WT_DB::prepare($sql)->execute($vars)->fetchOne()) {
+			return false;
+		}
+	
+		//-- add the favorite to the database
+		return (bool)
+			WT_DB::prepare("INSERT INTO {$TBLPREFIX}favorites (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,? ,?)")
+				->execute(array(get_next_id("favorites", "fv_id"), $favorite["username"], $favorite["gid"], $favorite["type"], $favorite["file"], $favorite["url"], $favorite["title"], $favorite["note"]));
+	}
+
+	/**
+	 * Get a user's favorites
+	 * Return an array of a users messages
+	 * @param string $username		the username to get the favorites for
+	 */
+	public static function getUserFavorites($username) {
+		global $TBLPREFIX;
+	
+		$rows=
+			WT_DB::prepare("SELECT * FROM {$TBLPREFIX}favorites WHERE fv_username=?")
+			->execute(array($username))
+			->fetchAll();
+	
+		$favorites = array();
+		foreach ($rows as $row) {
+			if (get_id_from_gedcom($row->fv_file)) { // If gedcom exists
+				$favorites[]=array(
+					"id"=>$row->fv_id,
+					"username"=>$row->fv_username,
+					"gid"=>$row->fv_gid,
+					"type"=>$row->fv_type,
+					"file"=>$row->fv_file,
+					"title"=>$row->fv_title,
+					"note"=>$row->fv_note,
+					"url"=>$row->fv_url
+				);
+			}
+		}
+		return $favorites;
 	}
 }

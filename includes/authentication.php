@@ -3,7 +3,7 @@
  * User and Authentication functions
  *
  * This file contains functions for working with users and authenticating them.
- * It also handles the internal mail messages, favorites, news/journal, and storage of My Page
+ * It also handles the internal mail messages, news/journal, and storage of My Page
  * customizations.  Assumes that a database connection has already been established.
  *
  * You can extend webtrees to work with other systems by implementing the functions in this file.
@@ -14,8 +14,6 @@
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -499,84 +497,6 @@ function getUserMessages($user_id) {
 		);
 	}
 	return $messages;
-}
-
-/**
- * stores a new favorite in the database
- * @param array $favorite	the favorite array of the favorite to add
- */
-function addFavorite($favorite) {
-	global $TBLPREFIX;
-
-	// -- make sure a favorite is added
-	if (empty($favorite["gid"]) && empty($favorite["url"]))
-		return false;
-
-	//-- make sure this is not a duplicate entry
-	$sql = "SELECT 1 FROM {$TBLPREFIX}favorites WHERE";
-	if (!empty($favorite["gid"])) {
-		$sql.=" fv_gid=?";
-		$vars=array($favorite["gid"]);
-	} else {
-		$sql.=" fv_url=?";
-		$vars=array($favorite["url"]);
-	}
-	$sql.=" AND fv_file=? AND fv_username=?";
-	$vars[]=$favorite["file"];
-	$vars[]=$favorite["username"];
-
-	if (WT_DB::prepare($sql)->execute($vars)->fetchOne()) {
-		return false;
-	}
-
-	//-- add the favorite to the database
-	return (bool)
-		WT_DB::prepare("INSERT INTO {$TBLPREFIX}favorites (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,? ,?)")
-			->execute(array(get_next_id("favorites", "fv_id"), $favorite["username"], $favorite["gid"], $favorite["type"], $favorite["file"], $favorite["url"], $favorite["title"], $favorite["note"]));
-}
-
-/**
- * deleteFavorite
- * deletes a favorite in the database
- * @param int $fv_id	the id of the favorite to delete
- */
-function deleteFavorite($fv_id) {
-	global $TBLPREFIX;
-
-	return (bool)
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}favorites WHERE fv_id=?")
-		->execute(array($fv_id));
-}
-
-/**
- * Get a user's favorites
- * Return an array of a users messages
- * @param string $username		the username to get the favorites for
- */
-function getUserFavorites($username) {
-	global $TBLPREFIX;
-
-	$rows=
-		WT_DB::prepare("SELECT * FROM {$TBLPREFIX}favorites WHERE fv_username=?")
-		->execute(array($username))
-		->fetchAll();
-
-	$favorites = array();
-	foreach ($rows as $row) {
-		if (get_id_from_gedcom($row->fv_file)) { // If gedcom exists
-			$favorites[]=array(
-				"id"=>$row->fv_id,
-				"username"=>$row->fv_username,
-				"gid"=>$row->fv_gid,
-				"type"=>$row->fv_type,
-				"file"=>$row->fv_file,
-				"title"=>$row->fv_title,
-				"note"=>$row->fv_note,
-				"url"=>$row->fv_url
-			);
-		}
-	}
-	return $favorites;
 }
 
 /**

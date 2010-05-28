@@ -144,7 +144,7 @@ class SourceControllerRoot extends BaseController {
 	function addFavorite() {
 		global $GEDCOM;
 		if (empty($this->uname)) return;
-		if (!empty($_REQUEST["gid"])) {
+		if (!empty($_REQUEST["gid"]) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$gid = strtoupper($_REQUEST["gid"]);
 			$indirec = find_source_record($gid, WT_GED_ID);
 			if ($indirec) {
@@ -156,7 +156,7 @@ class SourceControllerRoot extends BaseController {
 				$favorite["url"] = "";
 				$favorite["note"] = "";
 				$favorite["title"] = "";
-				addFavorite($favorite);
+				user_favorites_WT_Module::addFavorite($favorite);
 			}
 		}
 	}

@@ -56,10 +56,10 @@ class stats_ui extends stats
 		$PEDIGREE_FULL_DETAILS = 1;
 
 		if($isged) {
-			$userfavs = getUserFavorites($GEDCOM);
+			$userfavs = gedcom_favorites_WT_Module::getUserFavorites($GEDCOM);
 		}
 		else {
-			$userfavs = getUserFavorites(WT_USER_NAME);
+			$userfavs = user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
 		}
 		$content = '';
 		if(!count($userfavs)) {
@@ -204,8 +204,8 @@ class stats_ui extends stats
 	static function gedcomFavorites(){return self::_getFavorites(true);}
 	static function userFavorites(){return self::_getFavorites(false);}
 
-	static function totalGedcomFavorites(){return count(getUserFavorites($GLOBALS['GEDCOM']));}
-	static function totalUserFavorites(){return count(getUserFavorites(WT_USER_NAME));}
+	static function totalGedcomFavorites(){return count(gedcom_favorites_WT_Module::getUserFavorites($GLOBALS['GEDCOM']));}
+	static function totalUserFavorites(){return count(user_favorites_WT_Module::getUserFavorites(WT_USER_NAME));}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Messages                                                                  //

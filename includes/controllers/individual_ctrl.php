@@ -322,7 +322,7 @@ class IndividualControllerRoot extends BaseController {
 	*/
 	function addFavorite() {
 		global $GEDCOM;
-		if (WT_USER_ID && !empty($_REQUEST["gid"])) {
+		if (WT_USER_ID && !empty($_REQUEST["gid"]) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$gid = strtoupper($_REQUEST["gid"]);
 			$indirec = find_person_record($gid, WT_GED_ID);
 			if ($indirec) {
@@ -334,7 +334,7 @@ class IndividualControllerRoot extends BaseController {
 				$favorite["url"] = "";
 				$favorite["note"] = "";
 				$favorite["title"] = "";
-				addFavorite($favorite);
+				user_favorites_WT_Module::addFavorite($favorite);
 			}
 		}
 	}

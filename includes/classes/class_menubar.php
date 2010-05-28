@@ -404,8 +404,8 @@ class MenuBar
 					// Pages focused on a specific person
 					$from=array($rootid);
 					$to=array('', WT_USER_GEDCOM_ID, WT_USER_ROOT_ID);
-					if (WT_USER_ID) {
-						foreach (getUserFavorites(WT_USER_NAME) as $favorite) {
+					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+						foreach (user_favorites_WT_Module::getUserFavorites(WT_USER_NAME) as $favorite) {
 							// An indi in this gedcom?
 							if ($favorite['type']=='INDI' && $favorite['file']==WT_GEDCOM) {
 								$to[]=$favorite['gid'];
@@ -1057,10 +1057,14 @@ class MenuBar
 		}
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_gedcom");
 
-		$gedfavs=getUserFavorites(WT_GEDCOM);
+		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
+			$gedfavs=gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM);
+		} else {
+			$gedfavs=array();
+		}
 
-		if (WT_USER_ID) {
-			$userfavs=getUserFavorites(WT_USER_NAME);
+		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			$userfavs=user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
 
 			// User favorites
 			if ($userfavs || WT_USER_ID) {

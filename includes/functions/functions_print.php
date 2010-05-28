@@ -879,9 +879,16 @@ function print_favorite_selector($option=0) {
 
 	$currentGedcom = $GEDCOM;
 
-	$gedcomfavs = getUserFavorites($GEDCOM);
-	$userfavs = array();
-	if (WT_USER_NAME) $userfavs = getUserFavorites(WT_USER_NAME);
+	if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
+		$gedcomfavs = gedcom_favorites_WT_Module::getUserFavorites($GEDCOM);
+	} else {
+		$gedcomfavs = array();
+	}
+	if (WT_USER_NAME && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+		$userfavs = user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
+	} else {
+		$userfavs = array();
+	}
 
 	$gid = '';
 	if (WT_USER_NAME && isset($controller)) {
@@ -992,7 +999,7 @@ function print_favorite_selector($option=0) {
 		echo " method=\"post\" onsubmit=\"return false;\">";
 		echo "<select name=\"fav_id\" class=\"header_select\" onchange=\"if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value!='') window.location=document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value; if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value=='add') window.location='", WT_SCRIPT_NAME, normalize_query_string("{$QUERY_STRING}&amp;action=addfav&amp;gid={$gid}"), "';\">";
 		echo "<option value=\"\">", i18n::translate('Favorites'), "</option>";
-		if (WT_USER_NAME) {
+		if (WT_USER_NAME && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			if (count($userfavs)>0 || $gid!='') {
 				echo "<optgroup label=\"", i18n::translate('My Favorites'), "\">";
 			}

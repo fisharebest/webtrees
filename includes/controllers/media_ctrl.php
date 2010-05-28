@@ -148,7 +148,7 @@ class MediaControllerRoot extends IndividualController{
 		if (!WT_USER_ID) {
 			return;
 		}
-		if (!empty($_REQUEST["gid"])) {
+		if (!empty($_REQUEST["gid"]) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$gid = strtoupper($_REQUEST["gid"]);
 			$mediarec = find_media_record($gid, get_id_from_gedcom($GEDCOM));
 			if ($mediarec) {
@@ -160,7 +160,7 @@ class MediaControllerRoot extends IndividualController{
 				$favorite["url"] = "";
 				$favorite["note"] = "";
 				$favorite["title"] = "";
-				addFavorite($favorite);
+				user_favorites_WT_Module::addFavorite($favorite);
 			}
 		}
 	}
