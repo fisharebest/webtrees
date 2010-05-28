@@ -32,6 +32,14 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/classes/class_module.php';
 
+// Create tables, if not already present
+try {
+	WT_DB::updateSchema('./modules/gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 1);
+}	 catch (PDOException $ex) {
+	// The schema update scripts should never fail.  If they do, there is no clean recovery.
+	die($ex);
+}
+
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -47,14 +55,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id) {
 		global $WT_IMAGE_DIR, $WT_IMAGES, $ctype, $TEXT_DIRECTION;
 		global $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $ENABLE_AUTOCOMPLETE;
-
-		// Create tables, if not already present
-		try {
-			WT_DB::updateSchema('./modules/'.$this->getName().'/db_schema/', 'FV_SCHEMA_VERSION', 1);
-		}	 catch (PDOException $ex) {
-			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			die($ex);
-		}
 
 		$action=safe_GET('action');
 		switch ($action) {
