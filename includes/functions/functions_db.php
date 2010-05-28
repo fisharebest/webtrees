@@ -2573,18 +2573,16 @@ function get_user_from_gedcom_xref($ged_id, $xref) {
 // Functions to access the WT_BLOCK table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_user_blocks() {
+function get_user_blocks($user_id) {
 	global $TBLPREFIX;
 
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
 		"SELECT location, block_id, module_name".
 		" FROM {$TBLPREFIX}block".
-		" JOIN {$TBLPREFIX}module USING (module_name)".
-		" JOIN {$TBLPREFIX}module_privacy USING (module_name)".
-		" WHERE user_id=? AND status='enabled' AND access_level>=?".
+		" WHERE user_id=?".
 		" ORDER BY location, block_order"
-	)->execute(array(WT_USER_ID, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($user_id))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
@@ -2595,27 +2593,26 @@ function get_user_blocks() {
 			"REPLACE INTO {$TBLPREFIX}block (user_id, location, block_order, module_name) VALUES ".
 			"(?, 'main', 0, 'todays_events'),".
 			"(?, 'main', 1, 'user_messages'),".
+			"(?, 'main', 2, 'user_favorites'),".
 			"(?, 'side', 0, 'user_welcome'),".
 			"(?, 'side', 1, 'random_media'),".
 			"(?, 'side', 2, 'upcoming_events'),".
 			"(?, 'side', 3, 'logged_in')"
-		)->execute(array(WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID, WT_USER_ID));
-		return get_user_blocks();
+		)->execute(array($user_id, $user_id, $user_id, $user_id, $user_id, $user_id, $user_id));
+		return get_user_blocks($user_id);
 	}
 }
 
-function get_gedcom_blocks() {
+function get_gedcom_blocks($gedcom_id) {
 	global $TBLPREFIX;
 
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
 		"SELECT location, block_id, module_name".
 		" FROM {$TBLPREFIX}block".
-		" JOIN {$TBLPREFIX}module USING (module_name)".
-		" JOIN {$TBLPREFIX}module_privacy USING (module_name, gedcom_id)".
-		" WHERE gedcom_id=? AND status='enabled' AND access_level>=?".
+		" WHERE gedcom_id=?".
 		" ORDER BY location, block_order"
-	)->execute(array(WT_GED_ID, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($gedcom_id))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
@@ -2625,13 +2622,15 @@ function get_gedcom_blocks() {
 		WT_DB::prepare(
 			"REPLACE INTO {$TBLPREFIX}block (gedcom_id, location, block_order, module_name) VALUES ".
 			"(?, 'main', 0, 'gedcom_stats'),".
-			"(?, 'main', 1, 'review_changes'),".
+			"(?, 'main', 1, 'gedcom_news'),".
+			"(?, 'main', 2, 'gedcom_favorites'),".
+			"(?, 'main', 3, 'review_changes'),".
 			"(?, 'side', 0, 'gedcom_block'),".
 			"(?, 'side', 1, 'random_media'),".
 			"(?, 'side', 2, 'todays_events'),".
 			"(?, 'side', 3, 'logged_in')"
-		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID));
-		return get_gedcom_blocks();
+		)->execute(array($gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id));
+		return get_gedcom_blocks($gedcom_id);
 	}
 }
 
