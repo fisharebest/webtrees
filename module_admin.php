@@ -303,10 +303,10 @@ print_header(i18n::translate('Module administration'));
 	<!-- page tabs -->
 	<div id="tabs">
 		<ul>
-			<li><a href="#installed_tab"><span><?php echo i18n::translate('All Modules')?></span></a></li>
+			<li><a href="#installed_tab"><span><?php echo i18n::translate('All modules')?></span></a></li>
 			<li><a href="#menus_tab"><span><?php echo i18n::translate('Menus')?></span></a></li>
 			<li><a href="#tabs_tab"><span><?php echo i18n::translate('Tabs')?></span></a></li>
-			<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebars')?></span></a></li>
+			<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebar')?></span></a></li>
 			<li><a href="#blocks_tab"><span><?php echo i18n::translate('Blocks')?></span></a></li>
 			<li><a href="#charts_tab"><span><?php echo i18n::translate('Charts')?></span></a></li>
 			<li><a href="#reports_tab"><span><?php echo i18n::translate('Reports')?></span></a></li>
