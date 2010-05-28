@@ -619,7 +619,7 @@ class ServiceClient extends GedcomRecord {
 	* @param string $remote the remote id that matches the $local id
 	*/
 	static function setSameId($local, $remote) {
-		global $TBLPREFIX, $GEDCOM;
+		global $GEDCOM;
 
 		if ($local == $remote) {
 			debug_print_backtrace();
@@ -628,7 +628,7 @@ class ServiceClient extends GedcomRecord {
 		//-- check if the link already exists
 		$gid=get_remote_id($remote);
 		if (empty($gid)) {
-			WT_DB::prepare("INSERT INTO {$TBLPREFIX}remotelinks (r_gid, r_linkid, r_file) VALUES (? ,? ,?)")
+			WT_DB::prepare("INSERT INTO ##remotelinks (r_gid, r_linkid, r_file) VALUES (? ,? ,?)")
 				->execute(array($local, $remote, get_id_from_gedcom($GEDCOM)));
 		}
 	}
@@ -723,7 +723,7 @@ class ServiceClient extends GedcomRecord {
 	* @param boolean $firstLink is this the first time this record is being linked
 	*/
 	function mergeGedcomRecord($xref, $localrec, $isStub=false, $firstLink=false) {
-		global $GEDCOM, $TBLPREFIX;
+		global $GEDCOM;
 
 		if (!$isStub) {
 			$gedrec = find_gedcom_record($this->xref.":".$xref, get_id_from_gedcom($GEDCOM));

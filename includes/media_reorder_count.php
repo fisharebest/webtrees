@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_MEDIA_REORDER_COUNT_PHP', '');
 
-global $pid, $TBLPREFIX;
+global $pid;
 // Find if indi and family associated media exists and then count them ( $tot_med_ct)  ===================================================
 // Check indi gedcom items
 $gedrec = find_gedcom_record($pid, WT_GED_ID);
@@ -60,7 +60,7 @@ if ($ct>0) {
 	}
 	// Use database to get details of indi related items ---------------------------------------------
 	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ".$TBLPREFIX."media, ".$TBLPREFIX."media_mapping where ";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping WHERE ";
 	$sqlmm .= "mm_gid IN (";
 	$vars=array();
 	$i=0;

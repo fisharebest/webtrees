@@ -213,10 +213,9 @@ function load_ancestors_array($xref, $sosa=1) {
 }
 
 function indis_array($surn, $soundex_std, $soundex_dm) {
-	global $TBLPREFIX;
 	$sql=
 		"SELECT DISTINCT n_id".
-		" FROM {$TBLPREFIX}name".
+		" FROM ##name".
 		" WHERE n_file=?".
 		" AND n_type!=?".
 		" AND (n_surn=? OR n_surname=?";

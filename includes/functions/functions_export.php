@@ -99,8 +99,6 @@ function reformat_record_export($rec) {
 * Create a header for a (newly-created or already-imported) gedcom file.
 */
 function gedcom_header($gedfile) {
-	global $TBLPREFIX;
-
 	$ged_id=get_id_from_gedcom($gedfile);
 
 	// Default values for a new header
@@ -137,14 +135,14 @@ function gedcom_header($gedfile) {
 		}
 		// Link to SUBM/SUBN records, if they exist
 		$subn=
-			WT_DB::prepare("SELECT o_id FROM {$TBLPREFIX}other WHERE o_type=? AND o_file=?")
+			WT_DB::prepare("SELECT o_id FROM ##other WHERE o_type=? AND o_file=?")
 			->execute(array('SUBN', $ged_id))
 			->fetchOne();
 		if ($subn) {
 			$SUBN="\n1 SUBN @{$subn}@";
 		}
 		$subm=
-			WT_DB::prepare("SELECT o_id FROM {$TBLPREFIX}other WHERE o_type=? AND o_file=?")
+			WT_DB::prepare("SELECT o_id FROM ##other WHERE o_type=? AND o_file=?")
 			->execute(array('SUBM', $ged_id))
 			->fetchOne();
 		if ($subm) {
@@ -258,7 +256,7 @@ function convert_media_path($rec, $path, $slashes) {
  *			'slashes':		what folder separators apply to media file paths?  (forward, backward)
  */
 function export_gedcom($gedcom, $gedout, $exportOptions) {
-	global $GEDCOM, $TBLPREFIX;
+	global $GEDCOM;
 
 	// Temporarily switch to the specified GEDCOM
 	$oldGEDCOM = $GEDCOM;
@@ -286,7 +284,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$buffer=reformat_record_export($head);
 
 	$recs=
-		WT_DB::prepare("SELECT i_gedcom FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_id NOT LIKE ? ORDER BY i_id")
+		WT_DB::prepare("SELECT i_gedcom FROM ##individuals WHERE i_file=? AND i_id NOT LIKE ? ORDER BY i_id")
 		->execute(array($ged_id, '%:%'))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
@@ -301,7 +299,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT f_gedcom FROM {$TBLPREFIX}families WHERE f_file=? AND f_id NOT LIKE ? ORDER BY f_id")
+		WT_DB::prepare("SELECT f_gedcom FROM ##families WHERE f_file=? AND f_id NOT LIKE ? ORDER BY f_id")
 		->execute(array($ged_id, '%:%'))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
@@ -316,7 +314,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT s_gedcom FROM {$TBLPREFIX}sources WHERE s_file=? AND s_id NOT LIKE ? ORDER BY s_id")
+		WT_DB::prepare("SELECT s_gedcom FROM ##sources WHERE s_file=? AND s_id NOT LIKE ? ORDER BY s_id")
 		->execute(array($ged_id, '%:%'))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
@@ -331,7 +329,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT o_gedcom FROM {$TBLPREFIX}other WHERE o_file=? AND o_id NOT LIKE ? AND o_type!=? AND o_type!=? ORDER BY o_id")
+		WT_DB::prepare("SELECT o_gedcom FROM ##other WHERE o_file=? AND o_id NOT LIKE ? AND o_type!=? AND o_type!=? ORDER BY o_id")
 		->execute(array($ged_id, '%:%', 'HEAD', 'TRLR'))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
@@ -346,7 +344,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT m_gedrec FROM {$TBLPREFIX}media WHERE m_gedfile=? AND m_media NOT LIKE ? ORDER BY m_media")
+		WT_DB::prepare("SELECT m_gedrec FROM ##media WHERE m_gedfile=? AND m_media NOT LIKE ? ORDER BY m_media")
 		->execute(array($ged_id, '%:%'))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
@@ -387,7 +385,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
  */
 function export_gramps($gedcom, $gedout, $exportOptions) {
 	global $GEDCOM;
-	global $TBLPREFIX;
 
 	// Temporarily switch to the specified GEDCOM
 	$oldGEDCOM = $GEDCOM;
@@ -408,7 +405,7 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 	$geDownloadGedcom->begin_xml();
 
 	$recs=
-		WT_DB::prepare("SELECT i_id, i_gedcom FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_id NOT LIKE ? ORDER BY i_id")
+		WT_DB::prepare("SELECT i_id, i_gedcom FROM ##individuals WHERE i_file=? AND i_id NOT LIKE ? ORDER BY i_id")
 		->execute(array($ged_id, '%:%'))
 		->fetchAssoc();
 	foreach ($recs as $id=>$rec) {
@@ -418,7 +415,7 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT f_id, f_gedcom FROM {$TBLPREFIX}families WHERE f_file=? AND f_id NOT LIKE ? ORDER BY f_id")
+		WT_DB::prepare("SELECT f_id, f_gedcom FROM ##families WHERE f_file=? AND f_id NOT LIKE ? ORDER BY f_id")
 		->execute(array($ged_id, '%:%'))
 		->fetchAssoc();
 	foreach ($recs as $id=>$rec) {
@@ -428,7 +425,7 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT s_id, s_gedcom FROM {$TBLPREFIX}sources WHERE s_file=? AND s_id NOT LIKE ? ORDER BY s_id")
+		WT_DB::prepare("SELECT s_id, s_gedcom FROM ##sources WHERE s_file=? AND s_id NOT LIKE ? ORDER BY s_id")
 		->execute(array($ged_id, '%:%'))
 		->fetchAssoc();
 	foreach ($recs as $id=>$rec) {
@@ -438,7 +435,7 @@ function export_gramps($gedcom, $gedout, $exportOptions) {
 	}
 
 	$recs=
-		WT_DB::prepare("SELECT m_media, m_gedrec FROM {$TBLPREFIX}media WHERE m_gedfile=? AND m_media NOT LIKE ? ORDER BY m_media")
+		WT_DB::prepare("SELECT m_media, m_gedrec FROM ##media WHERE m_gedfile=? AND m_media NOT LIKE ? ORDER BY m_media")
 		->execute(array($ged_id, '%:%'))
 		->fetchAssoc();
 	foreach ($recs as $id=>$rec) {

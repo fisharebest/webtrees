@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-global $TBLPREFIX, $EDIT_AUTOCLOSE;
+global $EDIT_AUTOCLOSE;
 $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
@@ -72,10 +72,8 @@ function showchanges() {
 // e.g. array(0=>"Top Level", 16=>"England", 19=>"London", 217=>"Westminster");
 // NB This function exists in both places.php and places_edit.php
 function place_id_to_hierarchy($id) {
-	global $TBLPREFIX;
-
 	$statement=
-		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM {$TBLPREFIX}placelocation WHERE pl_id=?");
+		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM ##placelocation WHERE pl_id=?");
 	$arr=array();
 	while ($id!=0) {
 		$row=$statement->execute(array($id))->fetchOneRow();
@@ -87,9 +85,7 @@ function place_id_to_hierarchy($id) {
 
 // NB This function exists in both places.php and places_edit.php
 function getHighestIndex() {
-	global $TBLPREFIX;
-
-	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM {$TBLPREFIX}placelocation")->fetchOne();
+	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM ##placelocation")->fetchOne();
 }
 
 $where_am_i=place_id_to_hierarchy($placeid);
@@ -97,7 +93,7 @@ $level=count($where_am_i);
 
 if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 	$statement=
-		WT_DB::prepare("INSERT INTO {$TBLPREFIX}placelocation (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+		WT_DB::prepare("INSERT INTO ##placelocation (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 	if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
 		$statement->execute(array(getHighestIndex()+1, $placeid, $level, stripLRMRLM($_POST['NEW_PLACE_NAME']), null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
@@ -115,7 +111,7 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 
 if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 	$statement=
-		WT_DB::prepare("UPDATE {$TBLPREFIX}placelocation SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
+		WT_DB::prepare("UPDATE ##placelocation SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
 
 	if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
 		$statement->execute(array(stripLRMRLM($_POST['NEW_PLACE_NAME']), null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
@@ -134,7 +130,7 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 if ($action=="update") {
 	// --- find the place in the file
 	$row=
-		WT_DB::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon, pl_parent_id, pl_level, pl_zoom FROM {$TBLPREFIX}placelocation WHERE pl_id=?")
+		WT_DB::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon, pl_parent_id, pl_level, pl_zoom FROM ##placelocation WHERE pl_id=?")
 		->execute(array($placeid))
 		->fetchOneRow();
 	$place_name = $row->pl_place;
@@ -162,7 +158,7 @@ if ($action=="update") {
 
 	do {
 		$row=
-			WT_DB::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom FROM {$TBLPREFIX}placelocation WHERE pl_id=?")
+			WT_DB::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom FROM ##placelocation WHERE pl_id=?")
 			->execute(array($parent_id))
 			->fetchOneRow();
 		if (!$row) {
@@ -196,7 +192,7 @@ if ($action=="add") {
 		$parent_id=$placeid;
 		do {
 			$row=
-				WT_DB::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom, pl_level FROM {$TBLPREFIX}placelocation WHERE pl_id=?")
+				WT_DB::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom, pl_level FROM ##placelocation WHERE pl_id=?")
 				->execute(array($parent_id))
 				->fetchOneRow();
 			if ($row->pl_lati!==null && $row->pl_long!==null) {
@@ -496,7 +492,7 @@ if ($action=="add") {
 			childicon.infoWindowAnchor = new GPoint(5, 1);
 <?php
 			$rows=
-				WT_DB::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon FROM {$TBLPREFIX}placelocation WHERE pl_parent_id=?")
+				WT_DB::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon FROM ##placelocation WHERE pl_parent_id=?")
 				->execute(array($placeid))
 				->fetchAll();
 			$i = 0;

@@ -40,7 +40,7 @@
 
 // database info: Change password and DB Name ===================
 //	$dbh = new PDO("$DBTYPE:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
-//	$statement=$DBH::prepare("SELECT 'INDI' AS type, l_from, l_to FROM {$TBLPREFIX}link, {$TBLPREFIX}individuals WHERE l_from LIKE 'I%' AND i_file=l_file AND i_id=l_from AND l_file='1' AND l_type='NOTE' AND l_to='$noteid'")->execute();
+//	$statement=$DBH::prepare("SELECT 'INDI' AS type, l_from, l_to FROM ##link, ##individuals WHERE l_from LIKE 'I%' AND i_file=l_file AND i_id=l_from AND l_file='1' AND l_type='NOTE' AND l_to='$noteid'")->execute();
 
 	$db = mysql_connect($DBHOST, $DBUSER, $DBPASS) or die (mysql_error());
 	mysql_select_db ($DBNAME, $db) or die (mysql_error());
@@ -56,7 +56,7 @@
 	$output .= "<td width=\'25\' align=\'center\' bgcolor=\'#AAAAAA\' nowrap='nowrap'><span class=\'style1\'>&nbsp;&nbsp;Unlink</span></td>";
 	$output .= "</tr>";
 
-	$res_indis = mysql_query("SELECT 'INDI' AS type, l_from, l_to FROM {$TBLPREFIX}link, {$TBLPREFIX}individuals WHERE l_from LIKE 'I%' AND i_file=l_file AND i_id=l_from AND l_file='1' AND l_type='NOTE' AND l_to='$noteid'");
+	$res_indis = mysql_query("SELECT 'INDI' AS type, l_from, l_to FROM ##link, ##individuals WHERE l_from LIKE 'I%' AND i_file=l_file AND i_id=l_from AND l_file='1' AND l_type='NOTE' AND l_to='$noteid'");
 	
 //	while ($rows = $statement->fetch(PDO::FETCH_NUM)) {
 //		$output .= "<tr><td> $rows[0]</td><td> $rows[1]</td><td> $rows[2]</td></tr>";

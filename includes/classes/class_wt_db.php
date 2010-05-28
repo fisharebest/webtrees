@@ -45,32 +45,6 @@ class WT_DB {
 	private static $instance=null;
 	private static $pdo=null;
 
-	// Dialects of SQL
-	public static $AUTO_ID_TYPE =null; /* for primary keys */
-	public static $ID_TYPE      =null; /* for foreign keys */
-	public static $INT1_TYPE    =null;
-	public static $INT2_TYPE    =null;
-	public static $INT3_TYPE    =null;
-	public static $INT4_TYPE    =null;
-	public static $INT8_TYPE    =null;
-	public static $CHAR_TYPE    =null;
-	public static $VARCHAR_TYPE =null;
-	public static $UNSIGNED     =null;
-	public static $RANDOM       =null;
-	public static $TEXT_TYPE    =null;
-	public static $LONGTEXT_TYPE=null;
-	public static $UTF8_TABLE   =null;
-
-	// Standard column types for gedcom data
-	public static $COL_FILE=null;
-	public static $COL_XREF=null;
-	public static $COL_TAG =null;
-	public static $COL_JD  =null;
-	public static $COL_DAY =null;
-	public static $COL_MON =null;
-	public static $COL_YEAR=null;
-	public static $COL_CAL =null;
-
 	// Prevent instantiation via new WT_DB
 	private final function __construct() {
 	}
@@ -235,17 +209,6 @@ class WT_DB {
 	// FUNCTIONALITY ENHANCEMENTS
 	//////////////////////////////////////////////////////////////////////////////
 
-	// Deprecated function.  We only support MySQL
-	public static function getAvailableDrivers() {
-		$array=PDO::getAvailableDrivers();
-		foreach ($array as $key=>$value) {
-			if ($value!='mysql') {
-				unset($array[$key]);
-			}
-		}
-		return $array;
-	}
-
 	// The native quote() function does not convert PHP nulls to DB nulls
 	public static function quote($string, $parameter_type=PDO::PARAM_STR) {
 		if (is_null($string)) {
@@ -256,16 +219,18 @@ class WT_DB {
 	}
 
 	// Add logging to query()
-	public static function query($string, $parameter_type= PDO::PARAM_STR) {
+	public static function query($statement, $parameter_type= PDO::PARAM_STR) {
+		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		$start=microtime(true);
-		$result=self::$pdo->query($string, $parameter_type);
+		$result=self::$pdo->query($statement, $parameter_type);
 		$end=microtime(true);
-		self::logQuery($string, count($result), $end-$start, array());
+		self::logQuery($statement, count($result), $end-$start, array());
 		return $result;
 	}
 
 	// Add logging to exec()
 	public static function exec($statement) {
+		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		$start=microtime(true);
 		$result=self::$pdo->exec($statement);
 		$end=microtime(true);
@@ -278,6 +243,7 @@ class WT_DB {
 		if (!self::$pdo instanceof PDO) {
 			throw new PDOException("No Connection Established");
 		}
+		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		return new WT_DBStatement(self::$pdo->prepare($statement));
 	}
 
@@ -286,6 +252,7 @@ class WT_DB {
 		if (!self::$pdo instanceof PDO) {
 			throw new PDOException("No Connection Established");
 		}
+		$statement=str_replace('##', WT_TBLPREFIX, $statement);
 		if ($n) {
 			switch (self::$pdo->getAttribute(PDO::ATTR_DRIVER_NAME)) {
 			case 'mysql':
@@ -305,26 +272,6 @@ class WT_DB {
 	// Create/update tables, indexes, etc.
 	//////////////////////////////////////////////////////////////////////////////
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {
-		global $TBLPREFIX;
-
-		// Allow the schema scripts to do different things for different databases		
-		$DRIVER_NAME=self::getInstance()->getAttribute(PDO::ATTR_DRIVER_NAME);
-
-		// Define some "standard" columns, so we create our tables consistently
-		self::$COL_FILE=self::$INT2_TYPE.' '.self::$UNSIGNED; // Allow 32768/65536 Gedcoms
-		self::$COL_XREF=self::$VARCHAR_TYPE.'(20)';           // Gedcom identifiers are max 20 chars
-		self::$COL_TAG =self::$VARCHAR_TYPE.'(15)';           // Gedcom tags/record types are max 15 chars
-		self::$COL_JD  =self::$INT3_TYPE.' '.self::$UNSIGNED; // Julian Day numbers only need 3 bytes
-		self::$COL_DAY =self::$INT1_TYPE.' '.self::$UNSIGNED; // Day numbers only need 1 byte
-		self::$COL_MON =self::$INT1_TYPE.' '.self::$UNSIGNED; // Month Day numbers only need 1 byte
-		self::$COL_YEAR=self::$INT2_TYPE;                     // Year Day numbers only need 2 bytes
-
-		if ($DRIVER_NAME=='mysql') {
-			self::$COL_CAL="ENUM ('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@')"; // Fixed list of calendar names
-		} else {
-			self::$COL_CAL=self::$VARCHAR_TYPE.'(13)'; // Calendar names have max 13 characters
-		}
-
 		try {
 			$current_version=(int)get_site_setting($schema_name);
 		} catch (PDOException $e) {

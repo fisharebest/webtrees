@@ -3164,7 +3164,7 @@ function LineSHandler($attrs) {
 */
 function ListSHandler($attrs) {
 	global $gedrec, $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
-	global $GEDCOM, $TBLPREFIX;
+	global $GEDCOM;
 
 	$processRepeats++;
 	if ($processRepeats > 1) return;
@@ -3190,10 +3190,10 @@ function ListSHandler($attrs) {
 		case "pending":
 			$rows=WT_DB::prepare(
 				"SELECT CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom".
-				" FROM {$TBLPREFIX}change".
+				" FROM ##change".
 				" WHERE (xref, change_id) IN (".
 				"  SELECT xref, MAX(change_id)".
-				"   FROM {$TBLPREFIX}change".
+				"   FROM ##change".
 				"   WHERE status='pending' AND gedcom_id=?".
 				"   GROUP BY xref".
 				" )"
@@ -3215,7 +3215,7 @@ function ListSHandler($attrs) {
 					$value=preg_replace('/\$(\w+)/e', '$vars["\\1"]["id"]', $value);
 					// Convert the various filters into SQL
 					if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-						$sql_join[]="JOIN {$TBLPREFIX}dates AS {$attr} ON ({$attr}.d_file={$sql_col_prefix}file AND {$attr}.d_gid={$sql_col_prefix}id)";
+						$sql_join[]="JOIN ##dates AS {$attr} ON ({$attr}.d_file={$sql_col_prefix}file AND {$attr}.d_gid={$sql_col_prefix}id)";
 						$sql_where[]="{$attr}.d_fact='{$match[1]}'";
 						$date=new GedcomDate($match[3]);
 						if ($match[2]=="LTE") {
@@ -3231,7 +3231,7 @@ function ListSHandler($attrs) {
 					} elseif (($listname=="individual") && (preg_match('/^NAME CONTAINS (.*)$/', $value, $match))){
 						// Do nothing, unless you have to
 						if (($match[1] != "") or ($sortby=="NAME")){
-							$sql_join[]="JOIN {$TBLPREFIX}name AS {$attr} ON (n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
+							$sql_join[]="JOIN ##name AS {$attr} ON (n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
 							// Search the DB only if there is any name supplied
 							if ($match[1] != ""){
 								$names = explode(" ", $match[1]);
@@ -3248,8 +3248,8 @@ function ListSHandler($attrs) {
 						unset($attrs[$attr]); // This filter has been fully processed
 					} elseif (($listname=="family") && (preg_match('/^NAME CONTAINS (.+)$/', $value, $match))) {
 						// Eventually, family "names" will be stored in pgv_name.  Until then, an extra is needed....
-						$sql_join[]="JOIN {$TBLPREFIX}link AS {$attr}a ON ({$attr}a.l_file={$sql_col_prefix}file AND {$attr}a.l_from={$sql_col_prefix}id)";
-						$sql_join[]="JOIN {$TBLPREFIX}name AS {$attr}b ON ({$attr}b.n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
+						$sql_join[]="JOIN ##link AS {$attr}a ON ({$attr}a.l_file={$sql_col_prefix}file AND {$attr}a.l_from={$sql_col_prefix}id)";
+						$sql_join[]="JOIN ##name AS {$attr}b ON ({$attr}b.n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
 						$sql_where[]="{$attr}a.l_type=IN ('HUSB, 'WIFE')";
 						$sql_where[]="{$attr}.n_full LIKE ".WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
 						if ($sortby=="NAME") {
@@ -3258,8 +3258,8 @@ function ListSHandler($attrs) {
 						}
 						unset($attrs[$attr]); // This filter has been fully processed
 	 				} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
-						$sql_join[]="JOIN {$TBLPREFIX}places AS {$attr}a ON ({$attr}a.p_file={$sql_col_prefix}file)";
-						$sql_join[]="JOIN {$TBLPREFIX}placelinks AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid={$sql_col_prefix}id)";
+						$sql_join[]="JOIN ##places AS {$attr}a ON ({$attr}a.p_file={$sql_col_prefix}file)";
+						$sql_join[]="JOIN ##placelinks AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid={$sql_col_prefix}id)";
 						$sql_where[]="{$attr}a.p_place LIKE ".WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
 						// Don't unset this filter. This is just the first primary PLAC filter to reduce the returned list from the DB
 					}

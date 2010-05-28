@@ -205,12 +205,10 @@ function newConnection() {
 * @param string $pid The gedcom id of the record to check
 */
 function checkChangeTime($pid, $gedrec, $last_time) {
-	global $TBLPREFIX;
-
 	$change=WT_DB::prepare(
 		"SELECT UNIX_TIMESTAMP(change_time) AS change_time, user_name".
-		" FROM {$TBLPREFIX}change".
-		" JOIN {$TBLPREFIX}user USING (user_id)".
+		" FROM ##change".
+		" JOIN ##user USING (user_id)".
 		" WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?".
 		" ORDER BY change_id DESC".
 		" LIMIT 1"
@@ -240,7 +238,7 @@ function checkChangeTime($pid, $gedrec, $last_time) {
 * @param boolean $chan Whether or not to update/add the CHAN record
 */
 function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
-	global $TBLPREFIX, $pgv_private_records;
+	global $pgv_private_records;
 
 	//-- restore any data that was hidden during privatizing
 	if (isset($pgv_private_records[$gid])) {
@@ -272,7 +270,7 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 		$old_gedrec=find_gedcom_record($gid, $ged_id, true);
 		if ($old_gedrec!=$gedrec) {
 			WT_DB::prepare(
-				"INSERT INTO {$TBLPREFIX}change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+				"INSERT INTO ##change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 			)->execute(array(
 				$ged_id,
 				$gid,
@@ -293,8 +291,6 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 //-- this function will append a new gedcom record at
 //-- the end of the gedcom file.
 function append_gedrec($gedrec, $ged_id) {
-	global $TBLPREFIX;
-
 	if (($gedrec = check_gedcom($gedrec, true))!==false && preg_match("/0 @(".WT_REGEX_XREF.")@ (".WT_REGEX_TAG.")/", $gedrec, $match)) {
 		$gid  = $match[1];
 		$type = $match[2];
@@ -307,7 +303,7 @@ function append_gedrec($gedrec, $ged_id) {
 		$gedrec=preg_replace("/^0 @(.*)@/", "0 @$xref@", $gedrec);
 
 		WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+			"INSERT INTO ##change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 		)->execute(array(
 			$ged_id,
 			$xref,
@@ -329,10 +325,8 @@ function append_gedrec($gedrec, $ged_id) {
 //-- this function will delete the gedcom record with
 //-- the given $xref
 function delete_gedrec($xref, $ged_id) {
-	global $TBLPREFIX;
-	
 	WT_DB::prepare(
-		"INSERT INTO {$TBLPREFIX}change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+		"INSERT INTO ##change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
 		$ged_id,
 		$xref,

@@ -272,7 +272,6 @@ function abbreviate($text) {
 }
 
 function get_lati_long_placelocation ($place) {
-	global $TBLPREFIX;
 	$parent = explode (",", $place);
 	$parent = array_reverse($parent);
 	$place_id = 0;
@@ -282,7 +281,7 @@ function get_lati_long_placelocation ($place) {
 		$placelist = create_possible_place_names($parent[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT pl_id FROM {$TBLPREFIX}placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				WT_DB::prepare("SELECT pl_id FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $place_id, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;
@@ -292,7 +291,7 @@ function get_lati_long_placelocation ($place) {
 	}
 
 	$row=
-		WT_DB::prepare("SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM {$TBLPREFIX}placelocation WHERE pl_id=? ORDER BY pl_place")
+		WT_DB::prepare("SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM ##placelocation WHERE pl_id=? ORDER BY pl_place")
 		->execute(array($place_id))
 		->fetchOneRow();
 	if ($row) {
@@ -428,7 +427,7 @@ function create_indiv_buttons() {
 function build_indiv_map($indifacts, $famids) {
 	global $GOOGLEMAP_API_KEY, $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
 	global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
-	global $GOOGLEMAP_ENABLED, $TBLPREFIX, $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD;
+	global $GOOGLEMAP_ENABLED, $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD;
 
 	if (!$GOOGLEMAP_ENABLED) {
 		echo "<table class=\"facts_table\">\n";
@@ -453,7 +452,7 @@ function build_indiv_map($indifacts, $famids) {
 	$markers=array();
 
 	$zoomLevel = $GOOGLEMAP_MAX_ZOOM;
-	$placelocation=WT_DB::table_exists("{$TBLPREFIX}placelocation");
+	$placelocation=WT_DB::table_exists("##placelocation");
 	//-- sort the facts
 	//sort_facts($indifacts); facts should already be sorted
 	$i = 0;

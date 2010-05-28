@@ -40,7 +40,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	print "<br /><b>".i18n::translate('Re-order media')."</b>";
 	print "&nbsp --- &nbsp;" . i18n::translate('Click a row, then drag-and-drop to re-order media ');
 
-	global $MULTI_MEDIA, $TBLPREFIX, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
+	global $MULTI_MEDIA, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
 	global $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
@@ -116,7 +116,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	$media_found = false;
 
 	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM {$TBLPREFIX}media, {$TBLPREFIX}media_mapping where ";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping WHERE ";
 	$sqlmm .= "mm_gid IN (";
 	$i=0;
 	$vars=array();

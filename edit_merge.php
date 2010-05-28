@@ -192,18 +192,18 @@ if ($action!="choose") {
 						// Merge hit counters
 						$hits=WT_DB::prepare(
 							"SELECT page_name, SUM(page_count)".
-							" FROM {$TBLPREFIX}hit_counter".
+							" FROM ##hit_counter".
 							" WHERE gedcom_id=? AND page_parameter IN (?, ?)".
 							" GROUP BY page_name"
 						)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
 						foreach ($hits as $page_name=>$page_count) {
 							WT_DB::prepare(
-								"UPDATE {$TBLPREFIX}hit_counter SET page_count=?".
+								"UPDATE ##hit_counter SET page_count=?".
 								" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 							)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
 						}
 						WT_DB::prepare(
-							"DELETE FROM {$TBLPREFIX}hit_counter".
+							"DELETE FROM ##hit_counter".
 						 	" WHERE gedcom_id=? AND page_parameter=?"
 						)->execute(array(WT_GED_ID, $gid2));
 					}

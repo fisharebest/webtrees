@@ -51,7 +51,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	$n=1;
 	$fn=1;
 
-	global $MULTI_MEDIA, $TBLPREFIX, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
+	global $MULTI_MEDIA, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
 	global $GEDCOM, $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 
@@ -111,7 +111,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 	// Get the related media items
 	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ".$TBLPREFIX."media, ".$TBLPREFIX."media_mapping where ";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping where ";
 	$sqlmm .= "mm_gid IN (";
 	$vars=array();
 	foreach ($ids as $id) {
@@ -280,7 +280,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		
 		// Firstly, get count of Items in Database for this Individual
 		$indiobjs = "SELECT DISTINCT ";
-		$indiobjs .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM {$TBLPREFIX}media, {$TBLPREFIX}media_mapping where ";
+		$indiobjs .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping where ";
 		$indiobjs .= "mm_gid=? ";
 		$indiobjs .= "AND mm_gedfile=? AND mm_media=m_media AND mm_gedfile=m_gedfile ";
 		$vars2=array($pid, WT_GED_ID);

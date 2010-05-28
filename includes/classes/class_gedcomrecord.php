@@ -381,11 +381,9 @@ class GedcomRecord {
 	* @return boolean
 	*/
 	function isMarkedDeleted() {
-		global $TBLPREFIX;
-
 		$tmp=WT_DB::prepare(
 			"SELECT new_gedcom".
-			" FROM {$TBLPREFIX}change".
+			" FROM ##change".
 			" WHERE status='pending' AND gedcom_id=? AND xref=?".
 			" ORDER BY change_id desc".
 			" LIMIT 1"	

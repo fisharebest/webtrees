@@ -35,7 +35,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $TBLPREFIX;
 $action   =safe_POST     ('action'                                              );
 $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID);
 $openinnew=safe_POST_bool('openinnew'                                           );
@@ -79,7 +78,7 @@ echo "<td class='optionbox'><select name='country'>";
 echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Top Level...'), "</option>";
 echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
 $rows=
-	WT_DB::prepare("SELECT pl_id, pl_place FROM {$TBLPREFIX}placelocation WHERE pl_level=0 ORDER BY pl_place")
+	WT_DB::prepare("SELECT pl_id, pl_place FROM ##placelocation WHERE pl_level=0 ORDER BY pl_place")
 	->fetchAssoc();
 foreach ($rows as $id=>$place) {
 	echo "<option value='{$place}'";
@@ -98,7 +97,7 @@ if ($country!='XYZ') {
 	echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Next Level...'), "</option>";
 	echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
 	$places=
-		WT_DB::prepare("SELECT pl_place FROM {$TBLPREFIX}placelocation WHERE pl_parent_id=? ORDER BY pl_place")
+		WT_DB::prepare("SELECT pl_place FROM ##placelocation WHERE pl_parent_id=? ORDER BY pl_place")
 		->execute(array($par_id))
 		->fetchOneColumn();
 	foreach ($places as $place) {
@@ -150,7 +149,7 @@ case 'go':
 	echo "<strong>", i18n::translate('Place list for GEDCOM file'), ": </strong>", htmlspecialchars(get_gedcom_setting($gedcom_id, 'title')), "<br /><br />";
 	//Select all '2 PLAC ' tags in the file and create array
 	$place_list=array();
-	$ged_data=WT_DB::prepare("SELECT i_gedcom FROM {$TBLPREFIX}individuals WHERE i_gedcom LIKE ? AND i_file=?")
+	$ged_data=WT_DB::prepare("SELECT i_gedcom FROM ##individuals WHERE i_gedcom LIKE ? AND i_file=?")
 		->execute(array("%\n2 PLAC %", $gedcom_id))
 		->fetchOneColumn();
 	foreach ($ged_data as $ged_datum) {
@@ -159,7 +158,7 @@ case 'go':
 			$place_list[$match]=true;
 		}
 	}
-	$ged_data=WT_DB::prepare("SELECT f_gedcom FROM {$TBLPREFIX}families WHERE f_gedcom LIKE ? AND f_file=?")
+	$ged_data=WT_DB::prepare("SELECT f_gedcom FROM ##families WHERE f_gedcom LIKE ? AND f_file=?")
 		->execute(array("%\n2 PLAC %", $gedcom_id))
 		->fetchOneColumn();
 	foreach ($ged_data as $ged_datum) {
@@ -271,7 +270,7 @@ case 'go':
 			$placelist=create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
 			foreach ($placelist as $key=>$placename) {
 				$row=
-					WT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM {$TBLPREFIX}placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+					WT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 					->execute(array($z, $id, $placename))
 					->fetchOneRow(PDO::FETCH_ASSOC);
 				if (!empty($row['pl_id'])) {

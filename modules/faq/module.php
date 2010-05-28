@@ -102,8 +102,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Action from the configuration page
 	private function edit() {
-		global $TBLPREFIX;
-
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$useFCK = file_exists(WT_ROOT.'modules/fck_editor/fckeditor.php');
@@ -115,7 +113,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			$block_id=safe_POST('block_id');
 			if ($block_id) {
 				WT_DB::prepare(
-					"UPDATE {$TBLPREFIX}block SET gedcom_id=?, block_order=? WHERE block_id=?"
+					"UPDATE ##block SET gedcom_id=?, block_order=? WHERE block_id=?"
 				)->execute(array(
 					safe_POST('gedcom_id'),
 					(int)safe_POST('block_order'),
@@ -123,7 +121,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				));
 			} else {
 				WT_DB::prepare(
-					"INSERT INTO {$TBLPREFIX}block (gedcom_id, module_name, block_order) VALUES (?, ?, ?)"
+					"INSERT INTO ##block (gedcom_id, module_name, block_order) VALUES (?, ?, ?)"
 				)->execute(array(
 					safe_POST('gedcom_id', array_keys(get_all_gedcoms())),
 					$this->getName(),
@@ -151,17 +149,17 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				$header=get_block_setting($block_id, 'header');
 				$body=get_block_setting($block_id, 'body');
 				$block_order=WT_DB::prepare(
-					"SELECT block_order FROM {$TBLPREFIX}block WHERE block_id=?"
+					"SELECT block_order FROM ##block WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 				$gedcom_id=WT_DB::prepare(
-					"SELECT gedcom_id FROM {$TBLPREFIX}block WHERE block_id=?"
+					"SELECT gedcom_id FROM ##block WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
 				print_header(i18n::translate('Add FAQ item'));
 				$header='';
 				$body='';
 				$block_order=WT_DB::prepare(
-					"SELECT IFNULL(MAX(block_order)+1, 0) FROM {$TBLPREFIX}block WHERE module_name=?"
+					"SELECT IFNULL(MAX(block_order)+1, 0) FROM ##block WHERE module_name=?"
 				)->execute(array($this->getName()))->fetchOne();
 				$gedcom_id=WT_GED_ID;
 			}
@@ -208,87 +206,79 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	}
 
 	private function delete() {
-		global $TBLPREFIX;
-
 		$block_id=safe_GET('block_id');
 
 		$block_order=WT_DB::prepare(
-			"SELECT block_order FROM {$TBLPREFIX}block WHERE block_id=?"
+			"SELECT block_order FROM ##block WHERE block_id=?"
 		)->execute(array($block_id))->fetchOne();
 
 		WT_DB::prepare(
-			"DELETE FROM {$TBLPREFIX}block_setting WHERE block_id=?"
+			"DELETE FROM ##block_setting WHERE block_id=?"
 		)->execute(array($block_id));
 
 		WT_DB::prepare(
-			"DELETE FROM {$TBLPREFIX}block WHERE block_id=?"
+			"DELETE FROM ##block WHERE block_id=?"
 		)->execute(array($block_id));
 	}
 
 	private function moveup() {
-		global $TBLPREFIX;
-
 		$block_id=safe_GET('block_id');
 
 		$block_order=WT_DB::prepare(
-			"SELECT block_order FROM {$TBLPREFIX}block WHERE block_id=?"
+			"SELECT block_order FROM ##block WHERE block_id=?"
 		)->execute(array($block_id))->fetchOne();
 
 		$swap_block=WT_DB::prepare(
 			"SELECT block_order, block_id".
-			" FROM {$TBLPREFIX}block".
+			" FROM ##block".
 			" WHERE block_order=(".
-			"  SELECT MAX(block_order) FROM {$TBLPREFIX}block WHERE block_order<? AND module_name=?".
+			"  SELECT MAX(block_order) FROM ##block WHERE block_order<? AND module_name=?".
 			" )".
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName()))->fetchOneRow();
 		if ($swap_block) {
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}block SET block_order=? WHERE block_id=?"
+				"UPDATE ##block SET block_order=? WHERE block_id=?"
 			)->execute(array($swap_block->block_order, $block_id));
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}block SET block_order=? WHERE block_id=?"
+				"UPDATE ##block SET block_order=? WHERE block_id=?"
 			)->execute(array($block_order, $swap_block->block_id));
 		}
 	}
 
 	private function movedown() {
-		global $TBLPREFIX;
-
 		$block_id=safe_GET('block_id');
 
 		$block_order=WT_DB::prepare(
-			"SELECT block_order FROM {$TBLPREFIX}block WHERE block_id=?"
+			"SELECT block_order FROM ##block WHERE block_id=?"
 		)->execute(array($block_id))->fetchOne();
 
 		$swap_block=WT_DB::prepare(
 			"SELECT block_order, block_id".
-			" FROM {$TBLPREFIX}block".
+			" FROM ##block".
 			" WHERE block_order=(".
-			"  SELECT MIN(block_order) FROM {$TBLPREFIX}block WHERE block_order>? AND module_name=?".
+			"  SELECT MIN(block_order) FROM ##block WHERE block_order>? AND module_name=?".
 			" )".
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName()))->fetchOneRow();
 		if ($swap_block) {
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}block SET block_order=? WHERE block_id=?"
+				"UPDATE ##block SET block_order=? WHERE block_id=?"
 			)->execute(array($swap_block->block_order, $block_id));
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}block SET block_order=? WHERE block_id=?"
+				"UPDATE ##block SET block_order=? WHERE block_id=?"
 			)->execute(array($block_order, $swap_block->block_id));
 		}
 	}
 
 	private function show() {
-		global $TBLPREFIX;
-
 		print_header($this->getTitle());
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
-			" FROM {$TBLPREFIX}block b".
-			" JOIN {$TBLPREFIX}block_setting bs1 USING (block_id)".
-			" JOIN {$TBLPREFIX}block_setting bs2 USING (block_id)".
+			" FROM ##block b".
+			" JOIN ##block_setting bs1 USING (block_id)".
+			" JOIN ##block_setting bs2 USING (block_id)".
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='body'".
@@ -356,15 +346,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	}
 
 	private function config() {
-		global $TBLPREFIX, $WT_IMAGES, $WT_IMAGE_DIR;
+		global $WT_IMAGES, $WT_IMAGE_DIR;
 
 		print_header($this->getTitle());
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS body".
-			" FROM {$TBLPREFIX}block b".
-			" JOIN {$TBLPREFIX}block_setting bs1 USING (block_id)".
-			" JOIN {$TBLPREFIX}block_setting bs2 USING (block_id)".
+			" FROM ##block b".
+			" JOIN ##block_setting bs1 USING (block_id)".
+			" JOIN ##block_setting bs2 USING (block_id)".
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='body'".
@@ -373,11 +363,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
 		$min_block_order=WT_DB::prepare(
-			"SELECT MIN(block_order) FROM {$TBLPREFIX}block WHERE module_name=?"
+			"SELECT MIN(block_order) FROM ##block WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
 		$max_block_order=WT_DB::prepare(
-			"SELECT MAX(block_order) FROM {$TBLPREFIX}block WHERE module_name=?"
+			"SELECT MAX(block_order) FROM ##block WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
 		echo '<table class="list_table width100">';

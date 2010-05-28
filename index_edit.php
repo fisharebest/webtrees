@@ -86,13 +86,13 @@ foreach (WT_Module::getActiveBlocks() as $name=>$block) {
 //-- get the blocks list
 if ($ctype=='user') {
 	if ($action=='reset') {
-		WT_DB::prepare("DELETE {$TBLPREFIX}block_setting FROM {$TBLPREFIX}block_setting JOIN {$TBLPREFIX}block USING (block_id) WHERE user_id=?")->execute(array(WT_USER_ID));
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}block WHERE user_id=?")->execute(array(WT_USER_ID));
+		WT_DB::prepare("DELETE ##block_setting FROM ##block_setting JOIN ##block USING (block_id) WHERE user_id=?")->execute(array(WT_USER_ID));
+		WT_DB::prepare("DELETE FROM ##block WHERE user_id=?")->execute(array(WT_USER_ID));
 	}
 	$blocks=get_user_blocks(WT_USER_ID);
 } else {
 	if ($action=='reset') {
-		WT_DB::prepare("DELETE {$TBLPREFIX}block_setting FROM {$TBLPREFIX}block_setting JOIN {$TBLPREFIX}block USING (block_id) WHERE gedcom_id=?")->execute(array(WT_GED_ID));
+		WT_DB::prepare("DELETE ##block_setting FROM ##block_setting JOIN ##block USING (block_id) WHERE gedcom_id=?")->execute(array(WT_GED_ID));
 	}
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
@@ -113,20 +113,20 @@ if ($action=='update') {
 		// Deleted blocks
 		foreach ($blocks[$location] as $block_id=>$block_name) {
 			if (!in_array($block_id, $new_blocks)) {
-				WT_DB::prepare("DELETE FROM {$TBLPREFIX}block_setting WHERE block_id=?")->execute(array($block_id));
-				WT_DB::prepare("DELETE FROM {$TBLPREFIX}block         WHERE block_id=?")->execute(array($block_id));
+				WT_DB::prepare("DELETE FROM ##block_setting WHERE block_id=?")->execute(array($block_id));
+				WT_DB::prepare("DELETE FROM ##block         WHERE block_id=?")->execute(array($block_id));
 			}
 		}
 		foreach ($new_blocks as $order=>$block_name) {
 			if (is_numeric($block_name)) {
 				// existing block
-				WT_DB::prepare("UPDATE {$TBLPREFIX}block SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
+				WT_DB::prepare("UPDATE ##block SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
 			} else {
 				// new block
 				if ($ctype=='user') {
-					WT_DB::prepare("INSERT INTO {$TBLPREFIX}block (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_USER_ID, $location, $order, $block_name));
+					WT_DB::prepare("INSERT INTO ##block (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_USER_ID, $location, $order, $block_name));
 				} else {
-					WT_DB::prepare("INSERT INTO {$TBLPREFIX}block (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_GED_ID, $location, $order, $block_name));
+					WT_DB::prepare("INSERT INTO ##block (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_GED_ID, $location, $order, $block_name));
 				}
 			}
 		}

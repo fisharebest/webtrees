@@ -216,7 +216,7 @@ try {
 		exit;
 	}
 	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
-	$TBLPREFIX=$dbconfig['tblpfx'];
+	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
 	unset($dbconfig);
 	try {
 		WT_DB::updateSchema(WT_ROOT.'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);

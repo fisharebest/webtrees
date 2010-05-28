@@ -46,7 +46,7 @@ if (!WT_USER_IS_ADMIN) {
 	}
 }
 
-global $TBLPREFIX, $GEDCOM;
+global $GEDCOM;
 
 $action				= safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
 $welcome			= safe_REQUEST($_REQUEST, 'welcome', WT_REGEX_XREF);
@@ -96,7 +96,7 @@ if ($action=="sendFiles") {
 	$_SESSION["org_user"]=$_SESSION["wt_user"];
 	$_SESSION["wt_user"]='#SiteMap#';
 	if (isset($indi_rec)) {
-		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM {$TBLPREFIX}individuals WHERE i_file=?")->execute(array($index));
+		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM ##individuals WHERE i_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
 				if (displayDetailsById($row[0], "INDI", true)) {
@@ -124,7 +124,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($fam_rec)) {
-		$statement=WT_DB::prepare("SELECT f_id, f_gedcom FROM {$TBLPREFIX}families WHERE f_file=?")->execute(array($index));
+		$statement=WT_DB::prepare("SELECT f_id, f_gedcom FROM ##families WHERE f_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
 				if (displayDetailsById($row[0], "FAM", true)) {

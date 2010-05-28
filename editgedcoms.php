@@ -35,8 +35,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
 function import_gedcom_file($gedcom_id, $file_name) {
-	global $TBLPREFIX;
-
 	$file_size=filesize($file_name);
 	$fp=fopen($file_name, 'rb');
 	WT_DB::exec("START TRANSACTION");
@@ -44,7 +42,7 @@ function import_gedcom_file($gedcom_id, $file_name) {
 	// Cannot use the stream technique at http://php.net/manual/en/pdo.lobs.php
 	// It doesn't work, probably due to the MySQL bug mentioned below.
 	//WT_DB::prepare(
-	//	"UPDATE {$TBLPREFIX}gedcom".
+	//	"UPDATE ##gedcom".
 	//	" SET import_gedcom=?, import_offset=1".
 	//	" WHERE gedcom_id=?"
 	//)
@@ -54,7 +52,7 @@ function import_gedcom_file($gedcom_id, $file_name) {
 
 	$max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
 	WT_DB::prepare(
-		"UPDATE {$TBLPREFIX}gedcom".
+		"UPDATE ##gedcom".
 		" SET import_gedcom='', import_offset=1".
 		" WHERE gedcom_id=?"
 	)->execute(array($gedcom_id));
@@ -75,7 +73,7 @@ function import_gedcom_file($gedcom_id, $file_name) {
 	while (!feof($fp)) {
 		$data=fread($fp, $max_allowed_packet * 0.75);
 		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}gedcom".
+			"UPDATE ##gedcom".
 			" SET import_gedcom=CONCAT(import_gedcom, ?)".
 			" WHERE gedcom_id=?"
 		)->execute(array($data, $gedcom_id));
@@ -118,7 +116,7 @@ case 'new_ged':
 		$john_doe=i18n::translate('John /DOE/');
 		$note=i18n::translate('Edit this individual and replace their details with your own');
 		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}gedcom".
+			"UPDATE ##gedcom".
 			" SET import_gedcom=?, import_offset=1".
 			" WHERE gedcom_id=?"
 		)->execute(array("0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 1 JAN 1850\n2 NOTE {$note}\n0 TRLR\n", $gedcom_id));
@@ -163,7 +161,7 @@ case 'replace_import':
 
 $gedcoms=WT_DB::prepare(
 	"SELECT gedcom_id, gedcom_name, import_offset".
-	" FROM {$TBLPREFIX}gedcom".
+	" FROM ##gedcom".
 	" ORDER BY gedcom_name"
 )->fetchAll();
 

@@ -53,7 +53,7 @@ WT_DB::exec("START TRANSACTION");
 
 // What is the current import status?
 $row=WT_DB::prepare(
-	"SELECT import_offset, LENGTH(import_gedcom) AS import_total FROM {$TBLPREFIX}gedcom WHERE gedcom_id=? FOR UPDATE"
+	"SELECT import_offset, LENGTH(import_gedcom) AS import_total FROM ##gedcom WHERE gedcom_id=? FOR UPDATE"
 )->execute(array($gedcom_id))->fetchOneRow();
 
 if (!$row) {
@@ -106,14 +106,14 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		set_gedcom_setting($gedcom_id, 'imported', false);
 		// Remove any byte-order-mark
 		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}gedcom".
+			"UPDATE ##gedcom".
 			" SET import_gedcom=TRIM(LEADING ? FROM import_gedcom)".
 			" WHERE gedcom_id=?"
 		)->execute(array(WT_UTF8_BOM, $gedcom_id));
 		// Convert line endings.  Don't convert \r\n - it is very slow.  Just deal
 		// with empty records later.
 		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}gedcom".
+			"UPDATE ##gedcom".
 			" SET import_gedcom=REPLACE(import_gedcom, '\r', '\n')".
 			" WHERE gedcom_id=?"
 		)->execute(array($gedcom_id));
@@ -121,7 +121,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		$head=WT_DB::prepare(
 			"SELECT SQL_NO_CACHE".
 			" LEFT(import_gedcom, CASE LOCATE('\n0', import_gedcom, 2) WHEN 0 THEN LENGTH(import_gedcom) ELSE LOCATE('\n0', import_gedcom, 2) END)".
-			" FROM {$TBLPREFIX}gedcom".
+			" FROM ##gedcom".
 			" WHERE gedcom_id=?"
 		)->execute(array($gedcom_id))->fetchOne();
 		if (substr($head, 0, 6)!='0 HEAD') {
@@ -141,7 +141,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		switch ($charset) {
 		case 'ASCII':
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}gedcom".
+				"UPDATE ##gedcom".
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING ascii) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
@@ -152,7 +152,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'CP850':
 			// CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}gedcom".
+				"UPDATE ##gedcom".
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING cp850) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
@@ -169,7 +169,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'LATIN-1':
 			// Convert from ISO-8859-1 (western european) to UTF8.
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}gedcom".
+				"UPDATE ##gedcom".
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin1) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
@@ -181,7 +181,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'LATIN-2':
 			// Convert from ISO-8859-2 (eastern european) to UTF8.
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}gedcom".
+				"UPDATE ##gedcom".
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin2) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
@@ -189,7 +189,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'MACINTOSH':
 			// Convert from MAC Roman to UTF8.
 			WT_DB::prepare(
-				"UPDATE {$TBLPREFIX}gedcom".
+				"UPDATE ##gedcom".
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING macroman) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
@@ -215,11 +215,11 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		"   WHEN 0 THEN SUBSTR(import_gedcom FROM import_offset)".
 		"   ELSE SUBSTR(import_gedcom FROM import_offset FOR LOCATE('\n0', import_gedcom, import_offset+65536)-import_offset)".
 		"  END".
-		" FROM {$TBLPREFIX}gedcom".
+		" FROM ##gedcom".
 		" WHERE gedcom_id=?"
 	)->execute(array($gedcom_id))->fetchOne();
 	WT_DB::prepare(
-		"UPDATE {$TBLPREFIX}gedcom".
+		"UPDATE ##gedcom".
 		" SET import_offset=import_offset+?".
 		" WHERE gedcom_id=?"
 	)->execute(array(strlen($data), $gedcom_id));
@@ -243,7 +243,7 @@ if ($row->import_offset>$row->import_total) {
 	// Done
 	set_gedcom_setting($gedcom_id, 'imported', true);
 	WT_DB::prepare(
-		"UPDATE {$TBLPREFIX}gedcom".
+		"UPDATE ##gedcom".
 		" SET import_offset=0".
 		" WHERE gedcom_id=?"
 	)->execute(array($gedcom_id));

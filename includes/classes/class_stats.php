@@ -276,10 +276,8 @@ class stats {
 	}
 
 	function gedcomUpdated() {
-		global $TBLPREFIX;
-
 		$row=
-			WT_DB::prepareLimit("SELECT d_year, d_month, d_day FROM {$TBLPREFIX}dates WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type", 1)
+			WT_DB::prepareLimit("SELECT d_year, d_month, d_day FROM ##dates WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type", 1)
 			->execute(array($this->_ged_id, 'CHAN'))
 			->fetchOneRow();
 		if ($row) {
@@ -375,17 +373,14 @@ class stats {
 	}
 
 	function totalIndividuals() {
-		global $TBLPREFIX;
-
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
 	function totalIndisWithSources() {
-		global $TBLPREFIX, $DBTYPE;
-		$rows=self::_runSQL("SELECT COUNT(DISTINCT i_id) AS tot FROM {$TBLPREFIX}link, {$TBLPREFIX}individuals WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
+		$rows=self::_runSQL("SELECT COUNT(DISTINCT i_id) AS tot FROM ##link, ##individuals WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
 		return $rows[0]['tot'];
 	}
 
@@ -417,16 +412,14 @@ class stats {
 	}
 
 	function totalFamilies() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}families WHERE f_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##families WHERE f_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
 	function totalFamsWithSources() {
-		global $TBLPREFIX, $DBTYPE;
-		$rows=self::_runSQL("SELECT COUNT(DISTINCT f_id) AS tot FROM {$TBLPREFIX}link, {$TBLPREFIX}families WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
+		$rows=self::_runSQL("SELECT COUNT(DISTINCT f_id) AS tot FROM ##link, ##families WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
 		return $rows[0]['tot'];
 	}
 
@@ -458,9 +451,8 @@ class stats {
 	}
 
 	function totalSources() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}sources WHERE s_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##sources WHERE s_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -470,9 +462,8 @@ class stats {
 	}
 
 	function totalNotes() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}other WHERE o_type=? AND o_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##other WHERE o_type=? AND o_file=?")
 			->execute(array('NOTE', $this->_ged_id))
 			->fetchOne();
 	}
@@ -482,9 +473,8 @@ class stats {
 	}
 
 	function totalOtherRecords() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}other WHERE o_type<>? AND o_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##other WHERE o_type<>? AND o_file=?")
 			->execute(array('NOTE', $this->_ged_id))
 			->fetchOne();
 	}
@@ -494,7 +484,6 @@ class stats {
 	}
 
 	function totalSurnames($params = null) {
-		global $DBTYPE, $TBLPREFIX;
 		if ($params) {
 			$qs=implode(',', array_fill(0, count($params), '?'));
 			$opt="IN ({$qs})";
@@ -507,13 +496,12 @@ class stats {
 		}
 		$vars[]=$this->_ged_id;
 		return (int)
-			WT_DB::prepare("SELECT COUNT({$distinct} n_surn) FROM {$TBLPREFIX}name WHERE n_surn {$opt} AND n_file=?")
+			WT_DB::prepare("SELECT COUNT({$distinct} n_surn) FROM ##name WHERE n_surn {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
 	}
 
 	function totalGivennames($params = null) {
-		global $DBTYPE, $TBLPREFIX;
 		if ($params) {
 			$qs=implode(',', array_fill(0, count($params), '?'));
 			$opt="IN ({$qs})";
@@ -526,15 +514,13 @@ class stats {
 		}
 		$vars[]=$this->_ged_id;
 		return (int)
-			WT_DB::prepare("SELECT COUNT({$distinct} n_givn) FROM {$TBLPREFIX}name WHERE n_givn {$opt} AND n_file=?")
+			WT_DB::prepare("SELECT COUNT({$distinct} n_givn) FROM ##name WHERE n_givn {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
 	}
 
 	function totalEvents($params = null) {
-		global $TBLPREFIX;
-
-		$sql="SELECT COUNT(*) AS tot FROM {$TBLPREFIX}dates WHERE d_file=?";
+		$sql="SELECT COUNT(*) AS tot FROM ##dates WHERE d_file=?";
 		$vars=array($this->_ged_id);
 
 		$no_types=array('HEAD', 'CHAN');
@@ -600,9 +586,8 @@ class stats {
 	}
 
 	function totalSexMales() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_sex=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'M'))
 			->fetchOne();
 	}
@@ -612,9 +597,8 @@ class stats {
 	}
 
 	function totalSexFemales() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_sex=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'F'))
 			->fetchOne();
 	}
@@ -624,9 +608,8 @@ class stats {
 	}
 
 	function totalSexUnknown() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_sex=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'U'))
 			->fetchOne();
 	}
@@ -671,9 +654,8 @@ class stats {
 	}
 
 	function totalLiving() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_isdead=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_isdead=?")
 			->execute(array($this->_ged_id, 0))
 			->fetchOne();
 	}
@@ -683,9 +665,8 @@ class stats {
 	}
 
 	function totalDeceased() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_isdead=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_isdead=?")
 			->execute(array($this->_ged_id, 1))
 			->fetchOne();
 	}
@@ -695,9 +676,8 @@ class stats {
 	}
 
 	function totalMortalityUnknown() {
-		global $TBLPREFIX;
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}individuals WHERE i_file=? AND i_isdead=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_isdead=?")
 			->execute(array($this->_ged_id, -1))
 			->fetchOne();
 	}
@@ -707,8 +687,7 @@ class stats {
 	}
 
 	function mortalityUnknown() {
-		global $TBLPREFIX;
-		$rows=self::_runSQL("SELECT i_id AS id FROM {$TBLPREFIX}individuals WHERE i_file={$this->_ged_id} AND i_isdead=-1");
+		$rows=self::_runSQL("SELECT i_id AS id FROM ##individuals WHERE i_file={$this->_ged_id} AND i_isdead=-1");
 		if (!isset($rows[0])) {return '';}
 		return $rows;
 	}
@@ -765,12 +744,12 @@ class stats {
 	}
 
 	function _totalMediaType($type='all') {
-		global $TBLPREFIX, $MULTI_MEDIA;
+		global $MULTI_MEDIA;
 
 		if (!$MULTI_MEDIA || !in_array($type, self::$_media_types) && $type != 'all' && $type != 'unknown') {
 			return 0;
 		}
-		$sql="SELECT COUNT(*) AS tot FROM {$TBLPREFIX}media WHERE m_gedfile=?";
+		$sql="SELECT COUNT(*) AS tot FROM ##media WHERE m_gedfile=?";
 		$vars=array($this->_ged_id);
 
 		if ($type != 'all') {
@@ -879,7 +858,7 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
-		global $TBLPREFIX, $SHOW_ID_NUMBERS, $listDir, $DBTYPE, $TEXT_DIRECTION;
+		global $SHOW_ID_NUMBERS, $listDir, $DBTYPE, $TEXT_DIRECTION;
 		if ($birth_death == 'MARR') {
 			$query_field = "'".str_replace('|', "','", WT_EVENTS_MARR)."'";
 		} else if ($birth_death == 'DIV') {
@@ -898,7 +877,7 @@ class stats {
 		}
 		$rows=self::_runSQL(''
 			."SELECT d_year, d_type, d_fact, d_gid"
-			." FROM {$TBLPREFIX}dates"
+			." FROM ##dates"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0"
 			." ORDER BY d_julianday1 {$life_dir}, d_type",
 			1
@@ -912,7 +891,7 @@ class stats {
 				.' d2.d_fact,'
 				.' d2.d_gid'
 			.' FROM'
-				." {$TBLPREFIX}dates AS d2"
+				." ##dates AS d2"
 			.' WHERE'
 				." d2.d_file={$this->_ged_id} AND"
 				." d2.d_fact IN ({$query_field}) AND"
@@ -920,12 +899,12 @@ class stats {
 					.' SELECT'
 						." {$dmod}(d_julianday1)"
 					.' FROM'
-						." {$TBLPREFIX}dates"
+						." ##dates"
 					.' JOIN ('
 						.' SELECT'
 							.' d1.d_gid, MIN(d1.d_julianday1) as date'
 						.' FROM'
-							."  {$TBLPREFIX}dates AS d1"
+							."  ##dates AS d1"
 						.' WHERE'
 							." d1.d_fact IN ({$query_field}) AND"
 							." d1.d_file={$this->_ged_id} AND"
@@ -977,17 +956,16 @@ class stats {
 	}
 
 	function _statsPlaces($what='ALL', $fact=false, $parent=0, $country=false) {
-		global $TBLPREFIX;
 		if ($fact) {
 			if ($what=='INDI') {
 				$rows=
-					WT_DB::prepare("SELECT i_gedcom AS ged FROM {$TBLPREFIX}individuals WHERE i_file=?")
+					WT_DB::prepare("SELECT i_gedcom AS ged FROM ##individuals WHERE i_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
 			else if ($what=='FAM') {
 				$rows=
-					WT_DB::prepare("SELECT f_gedcom AS ged FROM {$TBLPREFIX}families WHERE f_file=?")
+					WT_DB::prepare("SELECT f_gedcom AS ged FROM ##families WHERE f_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
@@ -1014,10 +992,10 @@ class stats {
 		// used by placehierarchy googlemap module
 		else if ($parent>0) {
 			if ($what=='INDI') {
-				$join = " JOIN {$TBLPREFIX}individuals ON pl_file = i_file AND pl_gid = i_id";
+				$join = " JOIN ##individuals ON pl_file = i_file AND pl_gid = i_id";
 			}
 			else if ($what=='FAM') {
-				$join = " JOIN {$TBLPREFIX}families ON pl_file = f_file AND pl_gid = f_id";
+				$join = " JOIN ##families ON pl_file = f_file AND pl_gid = f_id";
 			}
 			else {
 				$join = "";
@@ -1027,8 +1005,8 @@ class stats {
 				.' p_place AS place,'
 				.' COUNT(*) AS tot'
 				.' FROM'
-					." {$TBLPREFIX}places"
-				." JOIN {$TBLPREFIX}placelinks ON pl_file=p_file AND p_id=pl_p_id"
+					." ##places"
+				." JOIN ##placelinks ON pl_file=p_file AND p_id=pl_p_id"
 				.$join
 				.' WHERE'
 					." p_id={$parent} AND"
@@ -1040,10 +1018,10 @@ class stats {
 		}
 		else {
 			if ($what=='INDI') {
-				$join = " JOIN {$TBLPREFIX}individuals ON pl_file = i_file AND pl_gid = i_id";
+				$join = " JOIN ##individuals ON pl_file = i_file AND pl_gid = i_id";
 			}
 			else if ($what=='FAM') {
-				$join = " JOIN {$TBLPREFIX}families ON pl_file = f_file AND pl_gid = f_id";
+				$join = " JOIN ##families ON pl_file = f_file AND pl_gid = f_id";
 			}
 			else {
 				$join = "";
@@ -1053,8 +1031,8 @@ class stats {
 						.' p_place AS country,'
 						.' COUNT(*) AS tot'
 					.' FROM'
-						." {$TBLPREFIX}places"
-					." JOIN {$TBLPREFIX}placelinks ON pl_file=p_file AND p_id=pl_p_id"
+						." ##places"
+					." JOIN ##placelinks ON pl_file=p_file AND p_id=pl_p_id"
 					.$join
 					.' WHERE'
 						." p_file={$this->_ged_id}"
@@ -1067,10 +1045,8 @@ class stats {
 	}
 
 	function totalPlaces() {
-		global $TBLPREFIX;
-
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM {$TBLPREFIX}places WHERE p_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM ##places WHERE p_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -1253,24 +1229,24 @@ class stats {
 	}
 
 	function statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='BIRT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else if ($sex) {
-			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM {$TBLPREFIX}dates "
-					."JOIN {$TBLPREFIX}individuals ON d_file = i_file AND d_gid = i_id "
+			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM ##dates "
+					."JOIN ##individuals ON d_file = i_file AND d_gid = i_id "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='BIRT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='BIRT' AND "
@@ -1311,24 +1287,24 @@ class stats {
 	}
 
 	function statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='DEAT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else if ($sex) {
-			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM {$TBLPREFIX}dates "
-					."JOIN {$TBLPREFIX}individuals ON d_file = i_file AND d_gid = i_id "
+			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM ##dates "
+					."JOIN ##individuals ON d_file = i_file AND d_gid = i_id "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='DEAT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='DEAT' AND "
@@ -1401,7 +1377,7 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _longlifeQuery($type='full', $sex='F') {
-		global $TBLPREFIX, $SHOW_ID_NUMBERS, $listDir;
+		global $SHOW_ID_NUMBERS, $listDir;
 
 		$sex_search = ' 1=1';
 		if ($sex == 'F') {
@@ -1415,9 +1391,9 @@ class stats {
 				.' death.d_gid AS id,'
 				.' death.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
-				." {$TBLPREFIX}dates AS death,"
-				." {$TBLPREFIX}dates AS birth,"
-				." {$TBLPREFIX}individuals AS indi"
+				." ##dates AS death,"
+				." ##dates AS birth,"
+				." ##individuals AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' birth.d_gid=death.d_gid AND'
@@ -1440,17 +1416,17 @@ class stats {
 				.' death.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
 				.' (SELECT d_gid, d_file, MIN(d_julianday1) AS birth_jd'
-					.' FROM {$TBLPREFIX}date'
+					.' FROM ##date'
 					." WHERE d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND d_julianday1>0"
 					.' GROUP BY d_gid, d_file'
 				.' ) AS birth'
 			.' JOIN ('
 				.' SELECT d_gid, d_file, MIN(d_julianday1) AS death_jd'
-					.' FROM {$TBLPREFIX}date'
+					.' FROM ##date'
 					." WHERE d_fact IN ('DEAT', 'BURI', 'CREM') AND d_julianday1>0"
 					.' GROUP BY d_gid, d_file'
 				.' ) AS death USING (d_gid, d_file)'
-			.' JOIN {$TBLPREFIX}individuals ON (d_gid=i_id AND d_file=i_file)'
+			.' JOIN ##individuals ON (d_gid=i_id AND d_file=i_file)'
 			.' WHERE'
 				." i_file={$this->_ged_id} AND"
 				.$sex_search
@@ -1489,7 +1465,7 @@ class stats {
 	}
 
 	function _topTenOldest($type='list', $sex='BOTH', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 
 		if ($sex == 'F') {
 			$sex_search = " AND i_sex='F'";
@@ -1504,9 +1480,9 @@ class stats {
 				.' MAX(death.d_julianday2-birth.d_julianday1) AS age,'
 				.' death.d_gid AS deathdate'
 			.' FROM'
-				." {$TBLPREFIX}dates AS death,"
-				." {$TBLPREFIX}dates AS birth,"
-				." {$TBLPREFIX}individuals AS indi"
+				." ##dates AS death,"
+				." ##dates AS birth,"
+				." ##individuals AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' birth.d_gid=death.d_gid AND'
@@ -1560,7 +1536,7 @@ class stats {
 	}
 
 	function _topTenOldestAlive($type='list', $sex='BOTH', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 
 		if (!WT_USER_CAN_ACCESS) return i18n::translate('This information is private and cannot be shown.');
 		if ($sex == 'F') {
@@ -1576,8 +1552,8 @@ class stats {
 				.' birth.d_gid AS id,'
 				.' MIN(birth.d_julianday1) AS age'
 			.' FROM'
-				." {$TBLPREFIX}dates AS birth,"
-				." {$TBLPREFIX}individuals AS indi"
+				." ##dates AS birth,"
+				." ##individuals AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' indi.i_isdead=0 AND'
@@ -1625,7 +1601,6 @@ class stats {
 	}
 
 	function _averageLifespanQuery($sex='BOTH', $show_years=false) {
-		global $TBLPREFIX;
 		if ($sex == 'F') {
 			$sex_search = " AND i_sex='F'";
 		} elseif ($sex == 'M') {
@@ -1637,9 +1612,9 @@ class stats {
 			.' SELECT'
 				.' AVG(death.d_julianday2-birth.d_julianday1) AS age'
 			.' FROM'
-				." {$TBLPREFIX}dates AS death,"
-				." {$TBLPREFIX}dates AS birth,"
-				." {$TBLPREFIX}individuals AS indi"
+				." ##dates AS death,"
+				." ##dates AS birth,"
+				." ##individuals AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' birth.d_gid=death.d_gid AND'
@@ -1670,8 +1645,6 @@ class stats {
 	}
 
 	function statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
-
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '230x250';}
 			$sizes = explode('x', $size);
@@ -1681,9 +1654,9 @@ class stats {
 					.' ROUND((death.d_year+49.1)/100) AS century,'
 					.' i_sex AS sex'
 				.' FROM'
-					." {$TBLPREFIX}dates AS death,"
-					." {$TBLPREFIX}dates AS birth,"
-					." {$TBLPREFIX}individuals AS indi"
+					." ##dates AS death,"
+					." ##dates AS birth,"
+					." ##individuals AS indi"
 				.' WHERE'
 					.' indi.i_id=birth.d_gid AND'
 					.' birth.d_gid=death.d_gid AND'
@@ -1763,9 +1736,9 @@ class stats {
 				.' SELECT'
 					.' death.d_julianday2-birth.d_julianday1 AS age'
 				.' FROM'
-					." {$TBLPREFIX}dates AS death,"
-					." {$TBLPREFIX}dates AS birth,"
-					." {$TBLPREFIX}individuals AS indi"
+					." ##dates AS death,"
+					." ##dates AS birth,"
+					." ##individuals AS indi"
 				.' WHERE'
 					.' indi.i_id=birth.d_gid AND'
 					.' birth.d_gid=death.d_gid AND'
@@ -1828,7 +1801,7 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _eventQuery($type, $direction, $facts) {
-		global $TBLPREFIX, $SHOW_ID_NUMBERS, $listDir;
+		global $SHOW_ID_NUMBERS, $listDir;
 		$eventTypes = array(
 			'BIRT'=>i18n::translate('birth'),
 			'DEAT'=>i18n::translate('death'),
@@ -1848,7 +1821,7 @@ class stats {
 				.' d_fact AS fact,'
 				.' d_type AS type'
 			.' FROM'
-				." {$TBLPREFIX}dates"
+				." ##dates"
 			.' WHERE'
 				." d_file={$this->_ged_id} AND"
 				." d_gid<>'HEAD' AND"
@@ -1937,7 +1910,6 @@ class stats {
 	* Query the database for marriage tags.
 	*/
 	function _marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
-		global $TBLPREFIX;
 		if ($sex == 'F') {$sex_field = 'f_wife';}else{$sex_field = 'f_husb';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$rows=self::_runSQL(''
@@ -1947,13 +1919,13 @@ class stats {
 				.' married.d_julianday2-birth.d_julianday1 AS age,'
 				.' indi.i_id AS i_id'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS birth ON birth.d_file = {$this->_ged_id}"
+				." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+				." ##dates AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' birth.d_gid = indi.i_id AND'
 				.' married.d_gid = fam.f_id AND'
@@ -1974,15 +1946,15 @@ class stats {
 				.' married.d_julianday2-birth.d_julianday1 AS age,'
 				.' indi.i_id AS i_id'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS birth ON birth.d_file = {$this->_ged_id} AND birth.d_fact = 'BIRT'"
+				." ##dates AS birth ON birth.d_file = {$this->_ged_id} AND birth.d_fact = 'BIRT'"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS birth_act ON birth_act.d_file = {$this->_ged_id} AND birth_act.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM')"
+				." ##dates AS birth_act ON birth_act.d_file = {$this->_ged_id} AND birth_act.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM')"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id} AND married.d_fact = 'MARR'"
+				." ##dates AS married ON married.d_file = {$this->_ged_id} AND married.d_fact = 'MARR'"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' birth.d_gid = indi.i_id AND'
 				.' birth_act.d_gid = indi.i_id AND'
@@ -2033,7 +2005,7 @@ class stats {
 	}
 
 	function _ageOfMarriageQuery($type='list', $age_dir='ASC', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$hrows=self::_runSQL(''
@@ -2041,11 +2013,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.' MIN(husbdeath.d_julianday2-married.d_julianday1) AS age'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+				." ##dates AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS husbdeath ON husbdeath.d_file = {$this->_ged_id}"
+				." ##dates AS husbdeath ON husbdeath.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbdeath.d_gid = fam.f_husb AND'
@@ -2063,11 +2035,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.' MIN(wifedeath.d_julianday2-married.d_julianday1) AS age'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+				." ##dates AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS wifedeath ON wifedeath.d_file = {$this->_ged_id}"
+				." ##dates AS wifedeath ON wifedeath.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' wifedeath.d_gid = fam.f_wife AND'
@@ -2085,11 +2057,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.' MIN(divorced.d_julianday2-married.d_julianday1) AS age'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+				." ##dates AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS divorced ON divorced.d_file = {$this->_ged_id}"
+				." ##dates AS divorced ON divorced.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' married.d_gid = fam.f_id AND'
@@ -2165,7 +2137,7 @@ class stats {
 	}
 
 	function _ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
 		if ($age_dir=='DESC') {
 			$query1 = ' MIN(wifebirth.d_julianday2-husbbirth.d_julianday1) AS age';
@@ -2181,11 +2153,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.$query1
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS wifebirth ON wifebirth.d_file = {$this->_ged_id}"
+				." ##dates AS wifebirth ON wifebirth.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS husbbirth ON husbbirth.d_file = {$this->_ged_id}"
+				." ##dates AS husbbirth ON husbbirth.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbbirth.d_gid = fam.f_husb AND'
@@ -2235,7 +2207,6 @@ class stats {
 	}
 
 	function _parentsQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
-		global $TBLPREFIX;
 		if ($sex == 'F') {$sex_field = 'WIFE';}else{$sex_field = 'HUSB';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$rows=self::_runSQL(''
@@ -2243,13 +2214,13 @@ class stats {
 				.' parentfamily.l_to AS id,'
 				.' childbirth.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
-				." {$TBLPREFIX}link AS parentfamily"
+				." ##link AS parentfamily"
 			.' JOIN'
-				." {$TBLPREFIX}link AS childfamily ON childfamily.l_file = {$this->_ged_id}"
+				." ##link AS childfamily ON childfamily.l_file = {$this->_ged_id}"
 			.' JOIN'
-				." {$TBLPREFIX}dates AS birth ON birth.d_file = {$this->_ged_id}"
+				." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
 			.' JOIN'
-				." {$TBLPREFIX}dates AS childbirth ON childbirth.d_file = {$this->_ged_id}"
+				." ##dates AS childbirth ON childbirth.d_file = {$this->_ged_id}"
 			.' WHERE'
 				.' birth.d_gid = parentfamily.l_to AND'
 				.' childfamily.l_to = childbirth.d_gid AND'
@@ -2299,10 +2270,10 @@ class stats {
 	}
 
 	function statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -2325,11 +2296,11 @@ class stats {
 				.' married.d_month AS month,'
 				.' indi.i_id AS indi'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+				." ##dates AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' married.d_gid = fam.f_id AND'
 				." fam.f_file = {$this->_ged_id} AND"
@@ -2339,7 +2310,7 @@ class stats {
 				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
 			.' ORDER BY fams, indi, age ASC';
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
 				."WHERE "
 				."d_file={$this->_ged_id} AND "
 				."d_fact='MARR'";
@@ -2375,10 +2346,10 @@ class stats {
 	}
 
 	function statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -2401,11 +2372,11 @@ class stats {
 				.' divorced.d_month AS month,'
 				.' indi.i_id AS indi'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS divorced ON divorced.d_file = {$this->_ged_id}"
+				." ##dates AS divorced ON divorced.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' divorced.d_gid = fam.f_id AND'
 				." fam.f_file = {$this->_ged_id} AND"
@@ -2415,7 +2386,7 @@ class stats {
 				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
 			.' ORDER BY fams, indi, age ASC';
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM {$TBLPREFIX}dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
 				."WHERE "
 				."d_file={$this->_ged_id} AND "
 				."d_fact IN ('DIV', 'ANUL', '_SEPR')";
@@ -2477,8 +2448,6 @@ class stats {
 	function lastDivorcePlace() {return $this->_mortalityQuery('place', 'DESC', 'DIV');}
 
 	function statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
-
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '200x250';}
 			$sizes = explode('x', $size);
@@ -2488,13 +2457,13 @@ class stats {
 					.' ROUND((married.d_year+49.1)/100) AS century,'
 					.' indi.i_sex AS sex'
 				.' FROM'
-					." {$TBLPREFIX}families AS fam"
+					." ##families AS fam"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}dates AS birth ON birth.d_file = {$this->_ged_id}"
+					." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+					." ##dates AS married ON married.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}individuals AS indi ON indi.i_file = {$this->_ged_id}"
+					." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
 				.' WHERE'
 					.' birth.d_gid = indi.i_id AND'
 					.' married.d_gid = fam.f_id AND'
@@ -2593,13 +2562,13 @@ class stats {
 					.' married.d_julianday2-birth.d_julianday1 AS age,'
 					.' indi.i_id AS indi'
 				.' FROM'
-					." {$TBLPREFIX}families AS fam"
+					." ##families AS fam"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}dates AS birth ON birth.d_file = {$this->_ged_id}"
+					." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+					." ##dates AS married ON married.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}individuals AS indi ON indi.i_file = {$this->_ged_id}"
+					." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
 				.' WHERE'
 					.' birth.d_gid = indi.i_id AND'
 					.' married.d_gid = fam.f_id AND'
@@ -2678,9 +2647,7 @@ class stats {
 	function oldestFatherAge($show_years=false) {return $this->_parentsQuery('age', 'DESC', 'M', $show_years);}
 
 	function totalMarriedMales() {
-		global $TBLPREFIX;
-
-		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM {$TBLPREFIX}families WHERE f_file=?")
+		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM ##families WHERE f_file=?")
 				->execute(array($this->_ged_id))
 				->fetchAll();
 		$husb = array();
@@ -2694,9 +2661,7 @@ class stats {
 	}
 
 	function totalMarriedFemales() {
-		global $TBLPREFIX;
-
-		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_wife AS wife FROM {$TBLPREFIX}families WHERE f_file=?")
+		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_wife AS wife FROM ##families WHERE f_file=?")
 				->execute(array($this->_ged_id))
 				->fetchAll();
 		$wife = array();
@@ -2714,13 +2679,12 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _familyQuery($type='full') {
-		global $TBLPREFIX;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' f_numchil AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." {$TBLPREFIX}families"
+				." ##families"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
@@ -2750,14 +2714,14 @@ class stats {
 	}
 
 	function _topTenFamilyQuery($type='list', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' f_numchil AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." {$TBLPREFIX}families"
+				." ##families"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
@@ -2791,7 +2755,7 @@ class stats {
 	}
 
 	function _ageBetweenSiblingsQuery($type='list', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 		if ($params === null) {$params = array();}
 		if (isset($params[0])) {$total = $params[0];}else{$total = 10;}
 		if (isset($params[1])) {$one = $params[1];}else{$one = false;} // each family only once if true
@@ -2802,13 +2766,13 @@ class stats {
 				.' link2.l_to AS ch2,'
 				.' child1.d_julianday2-child2.d_julianday2 AS age'
 			.' FROM'
-				." {$TBLPREFIX}link AS link1"
+				." ##link AS link1"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS child1 ON child1.d_file = {$this->_ged_id}"
+				." ##dates AS child1 ON child1.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS child2 ON child2.d_file = {$this->_ged_id}"
+				." ##dates AS child2 ON child2.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}link AS link2 ON link2.l_file = {$this->_ged_id}"
+				." ##link AS link2 ON link2.l_file = {$this->_ged_id}"
 			.' WHERE'
 				." link1.l_file = {$this->_ged_id} AND"
 				.' link1.l_from = link2.l_from AND'
@@ -2908,7 +2872,7 @@ class stats {
 	function topTenLargestFamilyList($params=null) {return $this->_topTenFamilyQuery('list', $params);}
 
 	function chartLargestFamilies($params=null) {
-		global $TBLPREFIX, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_L_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
@@ -2920,7 +2884,7 @@ class stats {
 				.' f_numchil AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." {$TBLPREFIX}families"
+				." ##families"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
@@ -2950,23 +2914,19 @@ class stats {
 	}
 
 	function totalChildren() {
-		global $TBLPREFIX;
-		$rows=self::_runSQL("SELECT SUM(f_numchil) AS tot FROM {$TBLPREFIX}families WHERE f_file={$this->_ged_id}");
+		$rows=self::_runSQL("SELECT SUM(f_numchil) AS tot FROM ##families WHERE f_file={$this->_ged_id}");
 		$row=$rows[0];
 		return $row['tot'];
 	}
 
 
 	function averageChildren() {
-		global $TBLPREFIX;
-		$rows=self::_runSQL("SELECT AVG(f_numchil) AS tot FROM {$TBLPREFIX}families WHERE f_file={$this->_ged_id}");
+		$rows=self::_runSQL("SELECT AVG(f_numchil) AS tot FROM ##families WHERE f_file={$this->_ged_id}");
 		$row=$rows[0];
 		return sprintf('%.2f', $row['tot']);
 	}
 
 	function statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
-
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
 			$sizes = explode('x', $size);
@@ -2976,9 +2936,9 @@ class stats {
 					.' ROUND(AVG(f_numchil),2) AS num,'
 					.' ROUND((married.d_year+49.1)/100) AS century'
 				.' FROM'
-					." {$TBLPREFIX}families AS fam"
+					." ##families AS fam"
 				.' LEFT JOIN'
-					." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+					." ##dates AS married ON married.d_file = {$this->_ged_id}"
 				.' WHERE'
 					.' married.d_gid = fam.f_id AND'
 					." fam.f_file = {$this->_ged_id} AND"
@@ -3009,26 +2969,26 @@ class stats {
 		} else {
 			if ($sex=='M') {
 				$sql = "SELECT num, COUNT(*) AS total FROM "
-						."(SELECT count(i_sex) AS num FROM {$TBLPREFIX}link "
-							."LEFT OUTER JOIN {$TBLPREFIX}individuals "
+						."(SELECT count(i_sex) AS num FROM ##link "
+							."LEFT OUTER JOIN ##individuals "
 							."ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' "
-							."JOIN {$TBLPREFIX}families ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
+							."JOIN ##families ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
 						.") boys"
 						." GROUP BY num ORDER BY num ASC";
 			}
 			else if ($sex=='F') {
 				$sql = "SELECT num, COUNT(*) AS total FROM "
-						."(SELECT count(i_sex) AS num FROM {$TBLPREFIX}link "
-							."LEFT OUTER JOIN {$TBLPREFIX}individuals "
+						."(SELECT count(i_sex) AS num FROM ##link "
+							."LEFT OUTER JOIN ##individuals "
 							."ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' "
-							."JOIN {$TBLPREFIX}families ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
+							."JOIN ##families ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
 						.") girls"
 						." GROUP BY num ORDER BY num ASC";
 			}
 			else {
-				$sql = "SELECT f_numchil, COUNT(*) AS total FROM {$TBLPREFIX}families ";
+				$sql = "SELECT f_numchil, COUNT(*) AS total FROM ##families ";
 				if ($year1>=0 && $year2>=0) {
-					$sql .= "AS fam LEFT JOIN {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+					$sql .= "AS fam LEFT JOIN ##dates AS married ON married.d_file = {$this->_ged_id}"
 						.' WHERE'
 						.' married.d_gid = fam.f_id AND'
 						." fam.f_file = {$this->_ged_id} AND"
@@ -3053,12 +3013,11 @@ class stats {
 	function topAgeBetweenSiblingsList($params=null) {return $this->_ageBetweenSiblingsQuery($type='list', $params=null);}
 
 	function noChildrenFamilies() {
-		global $TBLPREFIX;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' COUNT(*) AS tot'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' WHERE'
 				.' f_numchil = 0 AND'
 				." fam.f_file = {$this->_ged_id}");
@@ -3068,12 +3027,12 @@ class stats {
 
 
 	function noChildrenFamiliesList($type='list') {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' f_id AS family'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' WHERE'
 				.' f_numchil = 0 AND'
 				." fam.f_file = {$this->_ged_id}");
@@ -3104,8 +3063,6 @@ class stats {
 	}
 
 	function chartNoChildrenFamilies($year1=-1, $year2=-1, $params=null) {
-		global $TBLPREFIX;
-
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
 		$sizes = explode('x', $size);
 		if ($year1>=0 && $year2>=0) {
@@ -3120,9 +3077,9 @@ class stats {
 				.' COUNT(*) AS count,'
 				.' ROUND((married.d_year+49.1)/100) AS century'
 			.' FROM'
-				." {$TBLPREFIX}families AS fam"
+				." ##families AS fam"
 			.' LEFT JOIN'
-				." {$TBLPREFIX}dates AS married ON married.d_file = {$this->_ged_id}"
+				." ##dates AS married ON married.d_file = {$this->_ged_id}"
 			.' WHERE'
 				.' f_numchil = 0 AND'
 				.' married.d_gid = fam.f_id AND'
@@ -3173,20 +3130,20 @@ class stats {
 	}
 
 	function _topTenGrandFamilyQuery($type='list', $params=null) {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' COUNT(*) AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." {$TBLPREFIX}families"
+				." ##families"
 			.' JOIN'
-				." {$TBLPREFIX}link AS children ON children.l_file = {$this->_ged_id}"
+				." ##link AS children ON children.l_file = {$this->_ged_id}"
 			.' JOIN'
-				." {$TBLPREFIX}link AS mchildren ON mchildren.l_file = {$this->_ged_id}"
+				." ##link AS mchildren ON mchildren.l_file = {$this->_ged_id}"
 			.' JOIN'
-				." {$TBLPREFIX}link AS gchildren ON gchildren.l_file = {$this->_ged_id}"
+				." ##link AS gchildren ON gchildren.l_file = {$this->_ged_id}"
 			.' WHERE'
 				." f_file={$this->_ged_id} AND"
 				." children.l_from=f_id AND"
@@ -3344,7 +3301,7 @@ class stats {
 	* Original block created by kiwi_pgv
 	*/
 	static function _commonGivenQuery($sex='B', $type='list', $show_tot=false, $params=null) {
-		global $TEXT_DIRECTION, $GEDCOM, $TBLPREFIX;
+		global $TEXT_DIRECTION, $GEDCOM;
 		static $sort_types = array('count'=>'asort', 'rcount'=>'arsort', 'alpha'=>'ksort', 'ralpha'=>'krsort');
 		static $sort_flags = array('count'=>SORT_NUMERIC, 'rcount'=>SORT_NUMERIC, 'alpha'=>SORT_STRING, 'ralpha'=>SORT_STRING);
 
@@ -3368,7 +3325,7 @@ class stats {
 		}
 		$ged_id=get_id_from_gedcom($GEDCOM);
 
-		$rows=WT_DB::prepare("SELECT n_givn, COUNT(*) AS num FROM {$TBLPREFIX}name JOIN {$TBLPREFIX}individuals ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
+		$rows=WT_DB::prepare("SELECT n_givn, COUNT(*) AS num FROM ##name JOIN ##individuals ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
 			->fetchAll();
 		$nameList=array();
 		foreach ($rows as $row) {

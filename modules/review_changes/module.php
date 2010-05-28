@@ -45,11 +45,11 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id) {
-		global $ctype, $QUERY_STRING, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $SHOW_SOURCES, $WEBTREES_EMAIL, $TBLPREFIX;
+		global $ctype, $QUERY_STRING, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $SHOW_SOURCES, $WEBTREES_EMAIL;
 
 		$changes=WT_DB::prepare(
 			"SELECT 1".
-			" FROM {$TBLPREFIX}change".
+			" FROM ##change".
 			" WHERE status='pending'".
 			" LIMIT 1"
 		)->fetchOne();
@@ -112,7 +112,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$changes=WT_DB::prepare(
 					"SELECT xref".
-					" FROM  {$TBLPREFIX}change".
+					" FROM  ##change".
 					" WHERE status='pending'".
 					" AND   gedcom_id=?".
 					" GROUP BY xref"

@@ -45,7 +45,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id) {
-		global $ctype, $TBLPREFIX, $INDEX_DIRECTORY, $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_COUNTER, $SHOW_SOURCES, $TEXT_DIRECTION;
+		global $ctype, $INDEX_DIRECTORY, $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_COUNTER, $SHOW_SOURCES, $TEXT_DIRECTION;
 
 		$count_placement=get_block_setting($block_id, 'count_placement', 'before');
 		$num=get_block_setting($block_id, 'num', 10);
@@ -70,7 +70,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 			// load the lines from the file
 			$top10=WT_DB::prepareLimit(
 				"SELECT page_parameter, page_count".
-				" FROM {$TBLPREFIX}hit_counter".
+				" FROM ##hit_counter".
 				" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
 				" ORDER BY page_count DESC",
 				$num

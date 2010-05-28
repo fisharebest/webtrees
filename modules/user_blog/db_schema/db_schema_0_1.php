@@ -43,7 +43,7 @@ exit;
 define('WT_FV_DB_SCHEMA_0_1', '');
 
 WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}news (".
+	"CREATE TABLE IF NOT EXISTS ##news (".
 	" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
 	" n_username VARCHAR(100)           NOT NULL,".
 	" n_date     INTEGER                NOT NULL,".

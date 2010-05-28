@@ -96,12 +96,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Tab
 	public function getTabContent() {
-		global $TBLPREFIX;
-
 		$block_ids=
 			WT_DB::prepare(
 				"SELECT block_id".
-				" FROM {$TBLPREFIX}block".
+				" FROM ##block".
 				" WHERE module_name=?".
 				" AND xref=?".
 				" AND gedcom_id=?"
@@ -144,7 +142,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Action from the configuration page
 	private function edit() {
-		global $TBLPREFIX, $TEXT_DIRECTION;
+		global $TEXT_DIRECTION;
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -152,11 +150,11 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$block_id=safe_POST('block_id');
 			if ($block_id) {
 				WT_DB::prepare(
-					"UPDATE {$TBLPREFIX}block SET gedcom_id=?, xref=? WHERE block_id=?"
+					"UPDATE ##block SET gedcom_id=?, xref=? WHERE block_id=?"
 				)->execute(array(safe_POST('gedcom_id'), safe_POST('xref'), $block_id));
 			} else {
 				WT_DB::prepare(
-					"INSERT INTO {$TBLPREFIX}block (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
+					"INSERT INTO ##block (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
 				)->execute(array(
 					safe_POST('gedcom_id', array_keys(get_all_gedcoms())),
 					safe_POST('xref'),
@@ -183,10 +181,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				print_header(i18n::translate('Edit story'));
 				$body=get_block_setting($block_id, 'body');
 				$gedcom_id=WT_DB::prepare(
-					"SELECT gedcom_id FROM {$TBLPREFIX}block WHERE block_id=?"
+					"SELECT gedcom_id FROM ##block WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 				$xref=WT_DB::prepare(
-					"SELECT xref FROM {$TBLPREFIX}block WHERE block_id=?"
+					"SELECT xref FROM ##block WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
 				print_header(i18n::translate('Add story'));
@@ -229,31 +227,29 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function delete() {
-		global $TBLPREFIX;
-
 		$block_id=safe_GET('block_id');
 
 		$block_order=WT_DB::prepare(
-			"SELECT block_order FROM {$TBLPREFIX}block WHERE block_id=?"
+			"SELECT block_order FROM ##block WHERE block_id=?"
 		)->execute(array($block_id))->fetchOne();
 
 		WT_DB::prepare(
-			"DELETE FROM {$TBLPREFIX}block_setting WHERE block_id=?"
+			"DELETE FROM ##block_setting WHERE block_id=?"
 		)->execute(array($block_id));
 
 		WT_DB::prepare(
-			"DELETE FROM {$TBLPREFIX}block WHERE block_id=?"
+			"DELETE FROM ##block WHERE block_id=?"
 		)->execute(array($block_id));
 	}
 
 	private function config() {
-		global $TBLPREFIX, $WT_IMAGES, $WT_IMAGE_DIR;
+		global $WT_IMAGES, $WT_IMAGE_DIR;
 
 		print_header($this->getTitle());
 
 		$stories=WT_DB::prepare(
 			"SELECT block_id, xref".
-			" FROM {$TBLPREFIX}block b".
+			" FROM ##block b".
 			" WHERE module_name=?".
 			" AND gedcom_id=?".
 			" ORDER BY xref"

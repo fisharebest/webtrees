@@ -206,13 +206,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function search($query) {
-		global $TBLPREFIX;
 		if (strlen($query)<2) return '';
 
 		//-- search for INDI names
 		$sql=
 		"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
-		" FROM {$TBLPREFIX}individuals, {$TBLPREFIX}name".
+		" FROM ##individuals, ##name".
 		" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 		" AND i_id=n_id AND i_file=n_file AND i_file=?".
 		" ORDER BY n_sort";
@@ -237,7 +236,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$vars=array_merge($vars, $ids, $ids);
 		}
 
-		$sql="SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil FROM {$TBLPREFIX}families WHERE {$where} AND f_file=?";
+		$sql="SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil FROM ##families WHERE {$where} AND f_file=?";
 		$vars[]=WT_GED_ID;
 		$rows=
 		WT_DB::prepareLimit($sql, WT_AUTOCOMPLETE_LIMIT)

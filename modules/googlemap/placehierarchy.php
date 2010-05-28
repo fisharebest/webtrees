@@ -33,8 +33,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $TBLPREFIX;
-
 require WT_ROOT.'modules/googlemap/googlemap.php';
 if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 	require WT_ROOT.'modules/googlemap/defaultconfig.php';
@@ -43,24 +41,23 @@ require_once WT_ROOT.'includes/classes/class_stats.php';
 $stats = new stats($GEDCOM);
 
 function check_exist_table() {
-	global $TBLPREFIX;
-	return WT_DB::table_exists("{$TBLPREFIX}placelocation");
+	return WT_DB::table_exists("##placelocation");
 }
 
 
 function get_place_list_loc($parent_id, $inactive=false) {
-	global $display, $TBLPREFIX;
+	global $display;
 	if ($inactive) {
 		$rows=
-			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM {$TBLPREFIX}placelocation WHERE pl_parent_id=? ORDER BY pl_place")
+			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM ##placelocation WHERE pl_parent_id=? ORDER BY pl_place")
 			->execute(array($parent_id))
 			->fetchAll();
 	} else {
 		$rows=
 			WT_DB::prepare(
 				"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
-				" FROM {$TBLPREFIX}placelocation".
-				" INNER JOIN {$TBLPREFIX}places ON {$TBLPREFIX}placelocation.pl_place={$TBLPREFIX}places.p_place AND {$TBLPREFIX}placelocation.pl_level={$TBLPREFIX}places.p_level".
+				" FROM ##placelocation".
+				" INNER JOIN ##places ON ##placelocation.pl_place=##places.p_place AND ##placelocation.pl_level=##places.p_level".
 				" WHERE pl_parent_id=? ORDER BY pl_place"
 			)
 			->execute(array($parent_id))
@@ -75,10 +72,8 @@ function get_place_list_loc($parent_id, $inactive=false) {
 }
 
 function place_id_to_hierarchy($id) {
-	global $TBLPREFIX;
-
 	$statement=
-		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM {$TBLPREFIX}placelocation WHERE pl_id=?");
+		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM ##placelocation WHERE pl_id=?");
 	$arr=array();
 	while ($id!=0) {
 		$row=$statement->execute(array($id))->fetchOneRow();
@@ -89,7 +84,6 @@ function place_id_to_hierarchy($id) {
 }
 
 function get_placeid($place) {
-	global $TBLPREFIX;
 	$par = explode (",", $place);
 	$par = array_reverse($par);
 	$place_id = 0;
@@ -100,7 +94,7 @@ function get_placeid($place) {
 			$placelist = create_possible_place_names($par[$i], $i+1);
 			foreach ($placelist as $key => $placename) {
 				$pl_id=
-					WT_DB::prepare("SELECT pl_id FROM {$TBLPREFIX}placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+					WT_DB::prepare("SELECT pl_id FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 					->execute(array($i, $place_id, $placename))
 					->fetchOne();
 				if (!empty($pl_id)) break;
@@ -113,7 +107,6 @@ function get_placeid($place) {
 }
 
 function get_p_id($place) {
-	global $TBLPREFIX;
 	$par = explode (",", $place);
 	$par = array_reverse($par);
 	$place_id = 0;
@@ -122,7 +115,7 @@ function get_p_id($place) {
 		$placelist = create_possible_place_names($par[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT p_id FROM {$TBLPREFIX}places WHERE p_level=? AND p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
+				WT_DB::prepare("SELECT p_id FROM ##places WHERE p_level=? AND p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
 				->execute(array($i, $place_id, WT_GED_ID, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;

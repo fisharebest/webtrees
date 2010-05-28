@@ -309,10 +309,8 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	 * @param int $fv_id	the id of the favorite to delete
 	 */
 	public static function deleteFavorite($fv_id) {
-		global $TBLPREFIX;
-	
 		return (bool)
-			WT_DB::prepare("DELETE FROM {$TBLPREFIX}favorites WHERE fv_id=?")
+			WT_DB::prepare("DELETE FROM ##favorites WHERE fv_id=?")
 			->execute(array($fv_id));
 	}
 
@@ -321,14 +319,12 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	 * @param array $favorite	the favorite array of the favorite to add
 	 */
 	public static function addFavorite($favorite) {
-		global $TBLPREFIX;
-
 		// -- make sure a favorite is added
 		if (empty($favorite["gid"]) && empty($favorite["url"]))
 			return false;
 
 		//-- make sure this is not a duplicate entry
-		$sql = "SELECT 1 FROM {$TBLPREFIX}favorites WHERE";
+		$sql = "SELECT 1 FROM ##favorites WHERE";
 		if (!empty($favorite["gid"])) {
 			$sql.=" fv_gid=?";
 			$vars=array($favorite["gid"]);
@@ -346,7 +342,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	
 		//-- add the favorite to the database
 		return (bool)
-			WT_DB::prepare("INSERT INTO {$TBLPREFIX}favorites (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,? ,?)")
+			WT_DB::prepare("INSERT INTO ##favorites (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,? ,?)")
 				->execute(array(get_next_id("favorites", "fv_id"), $favorite["username"], $favorite["gid"], $favorite["type"], $favorite["file"], $favorite["url"], $favorite["title"], $favorite["note"]));
 	}
 
@@ -356,10 +352,8 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	 * @param string $username		the username to get the favorites for
 	 */
 	public static function getUserFavorites($username) {
-		global $TBLPREFIX;
-	
 		$rows=
-			WT_DB::prepare("SELECT * FROM {$TBLPREFIX}favorites WHERE fv_username=?")
+			WT_DB::prepare("SELECT * FROM ##favorites WHERE fv_username=?")
 			->execute(array($username))
 			->fetchAll();
 	

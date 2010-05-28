@@ -221,8 +221,6 @@ class RemoteLinkController extends BaseController {
 	// @param string $gedcom_id
 	// @return mixed the id of the server to link to or false if it does not exist
 	function checkExistingServer($url, $gedcom_id='') {
-		global $TBLPREFIX;
-
 		//-- get rid of the protocol
 		$turl = preg_replace('~^\w+://~', '', $url);
 		//-- check the existing server list
@@ -236,7 +234,7 @@ class RemoteLinkController extends BaseController {
 		//-- check for recent additions
 		return WT_DB::prepare(
 			"SELECT xref".
-			" FROM {$TBLPREFIX}change".
+			" FROM ##change".
 			" WHERE status='pending' AND gedcom_id=? AND new_gedcom LIKE CONCAT('%\n1 _DBID ', ?, '%')".
 			" ORDER BY change_id DESC".
 			" LIMIT 1"

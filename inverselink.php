@@ -121,7 +121,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		if (!empty($mediaid)) {
 			//-- Get the title of this existing Media item
 			$title=
-				WT_DB::prepare("SELECT m_titl FROM {$TBLPREFIX}media where m_media=? AND m_gedfile=?")
+				WT_DB::prepare("SELECT m_titl FROM ##media where m_media=? AND m_gedfile=?")
 				->execute(array($mediaid, WT_GED_ID))
 				->fetchOne();
 			if ($title) {

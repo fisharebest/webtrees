@@ -178,7 +178,7 @@ function check_media_structure() {
 */
 
 function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
-	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $TBLPREFIX, $MEDIATYPE;
+	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $ALLOW_CHANGE_GEDCOM, $MEDIA_DIRECTORY;
 	global $MEDIA_EXTERNAL, $USE_MEDIA_FIREWALL;
 
@@ -190,12 +190,12 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
 	if ($random) {
 		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM {$TBLPREFIX}media WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
+			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM ##media WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
 			->execute(array(WT_GED_ID))
 			->fetchAll();
 	} else {
 		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM {$TBLPREFIX}media WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
+			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM ##media WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
 			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
 			->fetchAll();
 	}
@@ -1623,9 +1623,8 @@ function PrintMediaLinks($links, $size = "small") {
 }
 
 function get_media_id_from_file($filename){
-	global $TBLPREFIX;
 	return
-		WT_DB::prepare("SELECT m_media FROM {$TBLPREFIX}media WHERE m_file LIKE ?")
+		WT_DB::prepare("SELECT m_media FROM ##media WHERE m_file LIKE ?")
 		->execute(array("%{$filename}"))
 		->fetchOne();
 }
@@ -1668,10 +1667,9 @@ function get_media_relations($mid){
 // clips a media item based on data from the gedcom
 function picture_clip($person_id, $image_id, $filename, $thumbDir)
 {
-	global $TBLPREFIX;
 	// This gets the gedrec
 	$gedrec=
-		WT_DB::prepare("SELECT m_gedrec FROM {$TBLPREFIX}media WHERE m_media=? AND m_gedfile=?")
+		WT_DB::prepare("SELECT m_gedrec FROM ##media WHERE m_media=? AND m_gedfile=?")
 		->execute(array($image_id, WT_GED_ID))
 		->fetchOne();
 

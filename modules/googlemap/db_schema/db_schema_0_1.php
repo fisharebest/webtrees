@@ -43,9 +43,9 @@ exit;
 define('WT_GM_DB_SCHEMA_0_1', '');
 
 // Create all of the tables needed for this module
-if (!WT_DB::table_exists("{$TBLPREFIX}placelocation")) {
+if (!WT_DB::table_exists("##placelocation")) {
 	WT_DB::exec(
-		"CREATE TABLE {$TBLPREFIX}placelocation (".
+		"CREATE TABLE ##placelocation (".
 		" pl_id        INTEGER         NOT NULL,".
 		" pl_parent_id INTEGER             NULL,".
 		" pl_level     INTEGER             NULL,".
@@ -57,11 +57,11 @@ if (!WT_DB::table_exists("{$TBLPREFIX}placelocation")) {
 		" PRIMARY KEY (pl_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	self::exec("CREATE INDEX {$TBLPREFIX}pl_level     ON {$TBLPREFIX}placelocation (pl_level    )");
-	self::exec("CREATE INDEX {$TBLPREFIX}pl_long      ON {$TBLPREFIX}placelocation (pl_long     )");
-	self::exec("CREATE INDEX {$TBLPREFIX}pl_lati      ON {$TBLPREFIX}placelocation (pl_lati     )");
-	self::exec("CREATE INDEX {$TBLPREFIX}pl_name      ON {$TBLPREFIX}placelocation (pl_place    )");
-	self::exec("CREATE INDEX {$TBLPREFIX}pl_parent_id ON {$TBLPREFIX}placelocation (pl_parent_id)");
+	self::exec("CREATE INDEX ##pl_level     ON ##placelocation (pl_level    )");
+	self::exec("CREATE INDEX ##pl_long      ON ##placelocation (pl_long     )");
+	self::exec("CREATE INDEX ##pl_lati      ON ##placelocation (pl_lati     )");
+	self::exec("CREATE INDEX ##pl_name      ON ##placelocation (pl_place    )");
+	self::exec("CREATE INDEX ##pl_parent_id ON ##placelocation (pl_parent_id)");
 
 }
 

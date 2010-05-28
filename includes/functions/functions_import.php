@@ -581,7 +581,7 @@ function reformat_record_import($rec) {
 * @param boolean $update whether or not this is an updated record that has been accepted
 */
 function import_record($gedrec, $ged_id, $update) {
-	global $TBLPREFIX, $USE_RIN, $GENERATE_UIDS;
+	global $USE_RIN, $GENERATE_UIDS;
 
 	static $sql_insert_indi=null;
 	static $sql_insert_fam=null;
@@ -589,16 +589,16 @@ function import_record($gedrec, $ged_id, $update) {
 	static $sql_insert_other=null;
 	if (!$sql_insert_indi) {
 		$sql_insert_indi=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}individuals (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom) VALUES (?,?,?,?,?,?)"
+			"INSERT INTO ##individuals (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom) VALUES (?,?,?,?,?,?)"
 		);
 		$sql_insert_fam=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}families (f_id, f_file, f_husb, f_wife, f_chil, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?,?)"
+			"INSERT INTO ##families (f_id, f_file, f_husb, f_wife, f_chil, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?,?)"
 		);
 		$sql_insert_sour=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}sources (s_id, s_file, s_name, s_gedcom, s_dbid) VALUES (?,?,?,?,?)"
+			"INSERT INTO ##sources (s_id, s_file, s_name, s_gedcom, s_dbid) VALUES (?,?,?,?,?)"
 		);
 		$sql_insert_other=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}other (o_id, o_file, o_type, o_gedcom) VALUES (?,?,?,?)"
+			"INSERT INTO ##other (o_id, o_file, o_type, o_gedcom) VALUES (?,?,?,?)"
 		);
 	}
 
@@ -737,7 +737,7 @@ function import_record($gedrec, $ged_id, $update) {
 * @param string $gedrec
 */
 function update_places($gid, $ged_id, $gedrec) {
-	global $placecache, $TBLPREFIX;
+	global $placecache;
 
 	static $sql_insert_placelinks=null;
 	static $sql_insert_places=null;
@@ -748,13 +748,13 @@ function update_places($gid, $ged_id, $gedrec) {
 		// Of course, there almost certainly are such places .....
 		// We need a better solution that attaches multiple names to single places
 		$sql_insert_placelinks=WT_DB::prepare(
-			"INSERT IGNORE INTO {$TBLPREFIX}placelinks (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
+			"INSERT IGNORE INTO ##placelinks (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
 		);
 		$sql_insert_places=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}places (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?,?,?)"
+			"INSERT INTO ##places (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?,?,?)"
 		);
 		$sql_select_places=WT_DB::prepare(
-			"SELECT p_id FROM {$TBLPREFIX}places WHERE p_level=? AND p_file=? AND p_parent_id=? AND p_place LIKE ?"
+			"SELECT p_id FROM ##places WHERE p_level=? AND p_file=? AND p_parent_id=? AND p_place LIKE ?"
 		);
 	}
 
@@ -827,12 +827,10 @@ function update_places($gid, $ged_id, $gedrec) {
 
 // extract all the dates from the given record and insert them into the database
 function update_dates($xref, $ged_id, $gedrec) {
-	global $TBLPREFIX;
-
 	static $sql_insert_date=null;
 	if (!$sql_insert_date) {
 		$sql_insert_date=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}dates (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
+			"INSERT INTO ##dates (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
 		);
 	}
 
@@ -854,11 +852,9 @@ function update_dates($xref, $ged_id, $gedrec) {
 
 // extract all the remote links from the given record and insert them into the database
 function update_rlinks($xref, $ged_id, $gedrec) {
-	global $TBLPREFIX;
-
 	static $sql_insert_rlink=null;
 	if (!$sql_insert_rlink) {
-		$sql_insert_rlink=WT_DB::prepare("INSERT INTO {$TBLPREFIX}remotelinks (r_gid,r_linkid,r_file) VALUES (?,?,?)");
+		$sql_insert_rlink=WT_DB::prepare("INSERT INTO ##remotelinks (r_gid,r_linkid,r_file) VALUES (?,?,?)");
 	}
 
 	if (preg_match_all("/\n1 RFN (".WT_REGEX_XREF.')/', $gedrec, $matches, PREG_SET_ORDER)) {
@@ -875,11 +871,9 @@ function update_rlinks($xref, $ged_id, $gedrec) {
 
 // extract all the links from the given record and insert them into the database
 function update_links($xref, $ged_id, $gedrec) {
-	global $TBLPREFIX;
-
 	static $sql_insert_link=null;
 	if (!$sql_insert_link) {
-		$sql_insert_link=WT_DB::prepare("INSERT INTO {$TBLPREFIX}link (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
+		$sql_insert_link=WT_DB::prepare("INSERT INTO ##link (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
 	}
 
 	if (preg_match_all('/^\d+ ('.WT_REGEX_TAG.') @('.WT_REGEX_XREF.')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
@@ -901,13 +895,11 @@ function update_links($xref, $ged_id, $gedrec) {
 
 // extract all the names from the given record and insert them into the database
 function update_names($xref, $ged_id, $record) {
-	global $TBLPREFIX;
-
 	static $sql_insert_name_indi=null;
 	static $sql_insert_name_other=null;
 	if (!$sql_insert_name_indi) {
-		$sql_insert_name_indi=WT_DB::prepare("INSERT INTO {$TBLPREFIX}name (n_file,n_id,n_num,n_type,n_sort,n_full,n_list,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$sql_insert_name_other=WT_DB::prepare("INSERT INTO {$TBLPREFIX}name (n_file,n_id,n_num,n_type,n_sort,n_full,n_list) VALUES (?,?,?,?,?,?,?)");
+		$sql_insert_name_indi=WT_DB::prepare("INSERT INTO ##name (n_file,n_id,n_num,n_type,n_sort,n_full,n_list,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$sql_insert_name_other=WT_DB::prepare("INSERT INTO ##name (n_file,n_id,n_num,n_type,n_sort,n_full,n_list) VALUES (?,?,?,?,?,?,?)");
 	}
 
 	if ($record->getType()!='FAM' && $record->getXref()) {
@@ -944,16 +936,16 @@ function update_names($xref, $ged_id, $record) {
 * @param int $count The count of OBJE records in the parent record
 */
 function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
-	global $TBLPREFIX, $media_count, $found_ids;
+	global $media_count, $found_ids;
 
 	static $sql_insert_media=null;
 	static $sql_insert_media_mapping=null;
 	if (!$sql_insert_media) {
 		$sql_insert_media=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}media (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec) VALUES (?, ?, ?, ?, ?, ?, ?)"
+			"INSERT INTO ##media (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
 		$sql_insert_media_mapping=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}media_mapping (mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec) VALUES (?, ?, ?, ?, ?, ?)"
+			"INSERT INTO ##media_mapping (mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec) VALUES (?, ?, ?, ?, ?, ?)"
 		);
 	}
 
@@ -1008,12 +1000,12 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 * @return string an updated record
 */
 function update_media($gid, $ged_id, $gedrec, $update = false) {
-	global $TBLPREFIX, $media_count, $found_ids, $zero_level_media, $keepmedia;
+	global $media_count, $found_ids, $zero_level_media, $keepmedia;
 
 	static $sql_insert_media=null;
 	if (!$sql_insert_media) {
 		$sql_insert_media=WT_DB::prepare(
-			"INSERT INTO {$TBLPREFIX}media (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec) VALUES (?, ?, ?, ?, ?, ?, ?)"
+			"INSERT INTO ##media (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
 	}
 
@@ -1072,7 +1064,7 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 
 	if ($keepmedia) {
 		$old_linked_media=
-			WT_DB::prepare("SELECT mm_media, mm_gedrec FROM {$TBLPREFIX}media_mapping WHERE mm_gid=? AND mm_gedfile=?")
+			WT_DB::prepare("SELECT mm_media, mm_gedrec FROM ##media_mapping WHERE mm_gid=? AND mm_gedfile=?")
 			->execute(array($gid, $ged_id))
 			->fetchAll(PDO::FETCH_NUM);
 	}
@@ -1164,27 +1156,25 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 * @param boolean $keepmedia Whether or not to keep media and media links in the tables
 */
 function empty_database($ged_id, $keepmedia) {
-	global $TBLPREFIX;
-
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}individuals WHERE i_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}families    WHERE f_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}sources     WHERE s_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}other       WHERE o_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}places      WHERE p_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}placelinks  WHERE pl_file=?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}remotelinks WHERE r_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}name        WHERE n_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}dates       WHERE d_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}change      WHERE gedcom_id=?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##individuals WHERE i_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##families    WHERE f_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##sources     WHERE s_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##other       WHERE o_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##places      WHERE p_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##placelinks  WHERE pl_file=?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##remotelinks WHERE r_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##name        WHERE n_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##dates       WHERE d_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM ##change      WHERE gedcom_id=?")->execute(array($ged_id));
 
 	if ($keepmedia) {
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}link    WHERE l_file   =? AND l_type     <>'OBJE'")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}next_id WHERE gedcom_id=? AND record_type<>'OBJE'")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM ##link    WHERE l_file   =? AND l_type     <>'OBJE'")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM ##next_id WHERE gedcom_id=? AND record_type<>'OBJE'")->execute(array($ged_id));
 	} else {
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}link          WHERE l_file    =?")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}next_id       WHERE gedcom_id =?")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}media         WHERE m_gedfile =?")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}media_mapping WHERE mm_gedfile=?")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM ##link          WHERE l_file    =?")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM ##next_id       WHERE gedcom_id =?")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM ##media         WHERE m_gedfile =?")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM ##media_mapping WHERE mm_gedfile=?")->execute(array($ged_id));
 	}
 
 	//-- clear all of the cache files for this gedcom
@@ -1193,12 +1183,10 @@ function empty_database($ged_id, $keepmedia) {
 
 // Accept all pending changes for a specified record
 function accept_all_changes($xref, $ged_id) {
-	global $TBLPREFIX;
-
 	$changes=WT_DB::prepare(
 		"SELECT change_id, gedcom_name, old_gedcom, new_gedcom".
-		" FROM {$TBLPREFIX}change c".
-		" JOIN {$TBLPREFIX}gedcom g USING (gedcom_id)".
+		" FROM ##change c".
+		" JOIN ##gedcom g USING (gedcom_id)".
 		" WHERE c.status='pending' AND xref=? AND gedcom_id=?".
 		" ORDER BY change_id"
 	)->execute(array($xref, $ged_id))->fetchAll();
@@ -1211,7 +1199,7 @@ function accept_all_changes($xref, $ged_id) {
 			update_record($change->new_gedcom, $ged_id, false);
 		}
 		WT_DB::prepare(
-			"UPDATE {$TBLPREFIX}change".
+			"UPDATE ##change".
 			" SET status='accepted'".
 			"	WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
@@ -1221,10 +1209,8 @@ function accept_all_changes($xref, $ged_id) {
 
 // Accept all pending changes for a specified record
 function reject_all_changes($xref, $ged_id) {
-	global $TBLPREFIX;
-
 	WT_DB::prepare(
-		"UPDATE {$TBLPREFIX}change".
+		"UPDATE ##change".
 		" SET status='rejected'".
 		" WHERE status='pending' AND xref=? AND gedcom_id=?"
 	)->execute(array($xref, $ged_id));
@@ -1250,7 +1236,7 @@ function find_newline_string($haystack, $needle, $offset=0) {
 * @param string $gedrec
 */
 function update_record($gedrec, $ged_id, $delete) {
-	global $TBLPREFIX, $GEDCOM;
+	global $GEDCOM;
 
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
 		list(,$gid, $type)=$match;
@@ -1261,44 +1247,44 @@ function update_record($gedrec, $ged_id, $delete) {
 
 	// TODO deleting unlinked places can be done more efficiently in a single query
 	$placeids=
-		WT_DB::prepare("SELECT pl_p_id FROM {$TBLPREFIX}placelinks WHERE pl_gid=? AND pl_file=?")
+		WT_DB::prepare("SELECT pl_p_id FROM ##placelinks WHERE pl_gid=? AND pl_file=?")
 		->execute(array($gid, $ged_id))
 		->fetchOneColumn();
 
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}placelinks WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}dates      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
+	WT_DB::prepare("DELETE FROM ##placelinks WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
+	WT_DB::prepare("DELETE FROM ##dates      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
 
 	//-- delete any unlinked places
 	foreach ($placeids as $p_id) {
 		$num=
-			WT_DB::prepare("SELECT count(pl_p_id) FROM {$TBLPREFIX}placelinks WHERE pl_p_id=? AND pl_file=?")
+			WT_DB::prepare("SELECT count(pl_p_id) FROM ##placelinks WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($p_id, $ged_id))
 			->fetchOne();
 		if ($num==0) {
-			WT_DB::prepare("DELETE FROM {$TBLPREFIX}places WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
+			WT_DB::prepare("DELETE FROM ##places WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
 		}
 	}
 
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}media_mapping WHERE mm_gid=? AND mm_gedfile=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}remotelinks WHERE r_gid=? AND r_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}name WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM {$TBLPREFIX}link WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
+	WT_DB::prepare("DELETE FROM ##media_mapping WHERE mm_gid=? AND mm_gedfile=?")->execute(array($gid, $ged_id));
+	WT_DB::prepare("DELETE FROM ##remotelinks WHERE r_gid=? AND r_file=?")->execute(array($gid, $ged_id));
+	WT_DB::prepare("DELETE FROM ##name WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
+	WT_DB::prepare("DELETE FROM ##link WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
 
 	switch ($type) {
 	case 'INDI':
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}individuals WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
+		WT_DB::prepare("DELETE FROM ##individuals WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'FAM':
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}families WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
+		WT_DB::prepare("DELETE FROM ##families WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'SOUR':
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}sources WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
+		WT_DB::prepare("DELETE FROM ##sources WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'OBJE':
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}media WHERE m_media=? AND m_gedfile=?")->execute(array($gid, $ged_id));
+		WT_DB::prepare("DELETE FROM ##media WHERE m_media=? AND m_gedfile=?")->execute(array($gid, $ged_id));
 		break;
 	default:
-		WT_DB::prepare("DELETE FROM {$TBLPREFIX}other WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
+		WT_DB::prepare("DELETE FROM ##other WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
 		break;
 	}
 
