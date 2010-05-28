@@ -173,7 +173,10 @@ foreach ($gedcoms as $gedcom) {
 }
 
 print_header(i18n::translate('GEDCOM administration'));
-echo '<h2>', i18n::translate('GEDCOM administration'), '</h2>';
+
+echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
+
+echo '<h2 class="center">', i18n::translate('GEDCOM administration'), '</h2>';
 
 // Process GET actions
 switch (safe_GET('action')) {

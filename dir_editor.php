@@ -81,7 +81,8 @@ if (
 }
 
 print_header(i18n::translate('Cleanup Index directory'));
-echo "<h2>", i18n::translate('Cleanup Index directory'), "</h2>";
+echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
+	 '<h2 class="center">', i18n::translate('Cleanup Index directory'), '</h2>';
 
 echo i18n::translate('To delete a file or subdirectory from the Index directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.<br /><br />Files marked with <img src="./images/RESN_confidential.gif" alt="" /> are required for proper operation and cannot be removed.<br />Files marked with <img src="./images/RESN_locked.gif" alt="" /> have important settings or pending change data and should only be deleted if you are sure you know what you are doing.');
 

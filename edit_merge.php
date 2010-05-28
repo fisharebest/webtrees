@@ -263,6 +263,7 @@ if ($action=="choose") {
 	//-->
 	</script>
 	<?php
+	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
 	echo "<h2>", i18n::translate('Merge Step 1 of 3'), "</h2>\n";
 	echo "<form method=\"post\" name=\"merge\" action=\"edit_merge.php\">\n";
 	echo "<input type=\"hidden\" name=\"action\" value=\"select\" />\n";

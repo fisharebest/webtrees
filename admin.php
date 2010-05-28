@@ -105,21 +105,18 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	
 	<div id="tabs" class="width100">
 	<ul>
-		<li><a href="#info"><span><?php echo i18n::translate('Informational')?></span></a></li>
-		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration')?></span></a></li>
-		<?php if (WT_USER_CAN_EDIT) { ?>
-		<li><a href="#unlinked"><span><?php echo i18n::translate('Unlinked Records')?></span></a></li>
+		<li><a href="#info"><span><?php echo i18n::translate('Other Administration')?></span></a></li>
+<!--		<?php if (WT_USER_CAN_EDIT) { ?>
+			<li><a href="#unlinked"><span><?php echo i18n::translate('Unlinked Records')?></span></a></li>
 		<?php } ?>
-		<?php if (WT_USER_IS_ADMIN) { ?>
+		<?php if (WT_USER_IS_ADMIN) { ?>-->
 		<li><a href="#site"><span><?php echo i18n::translate('Site administration')?></span></a></li>
 		<?php } ?>
+		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration')?></span></a></li>
 		<?php 
 		$modules = WT_Module::getInstalledModules();
 		if (WT_USER_IS_ADMIN || count($modules)>0) {?>
-		<!-- ---- MODIFIED BY BH ------------------------------------ -->
-			<!-- <li><a href="#modules"><span><?php // echo i18n::translate('Module administration')?></span></a></li> -->
 			<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration')?></span></a></li>
-		<!-- -------------------------------------------------------- -->
 		<?php } ?>
 	</ul>
 	<div id="info">
@@ -129,7 +126,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	    	</tr>
 			<tr>
 				<td class="optionbox width50">
-					<a href="readme.txt" target="manual" title="<?php echo i18n::translate('View readme.txt file'); ?>"><?php echo i18n::translate('README documentation'); ?></a>
+					<a href="readme.html" target="manual" title="<?php echo i18n::translate('View readme.html file'); ?>"><?php echo i18n::translate('README documentation'); ?></a>
 					<?php echo help_link('readmefile'); ?>
 				</td>
 				<td class="optionbox width50">
@@ -137,8 +134,33 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 					<?php echo help_link('phpinfo'); ?>
 				</td>
 			</tr>
+	<?php if (WT_USER_CAN_EDIT) { 
+		?>
+		<tr>                                                                                                                                             
+			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Unlinked Records'); ?></td>                            
+		</tr>
+		<tr>
+			<td class="optionbox with50">
+				<a href="javascript: <?php echo i18n::translate('Add an unlinked person'); ?> "onclick="addnewchild(''); return false;"><?php echo i18n::translate('Add an unlinked person'); ?></a><?php echo help_link('edit_add_unlinked_person'); ?>
+			</td>
+			<td class="optionbox width50">
+				<a href="javascript: <?php echo i18n::translate('Add an unlinked source'); ?> "onclick="addnewsource(''); return false;"><?php echo i18n::translate('Add an unlinked source'); ?></a><?php echo help_link('edit_add_unlinked_source'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td class="optionbox with50">
+				<a href="javascript: <?php echo i18n::translate('Add an unlinked note'); ?> "onclick="addnewnote(''); return false;"><?php echo i18n::translate('Add an unlinked note'); ?></a><?php echo help_link('edit_add_unlinked_note'); ?>
+			</td>
+			<td class="optionbox width50">
+				&nbsp;
+			</td>
+		</tr>
 		</table>
-	</div>
+		</div>
+		<?php 
+	} 
+	?>
+	
 	<div id="gedcom">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
 			<tr>                                                                                                                                             
@@ -157,34 +179,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</table>
 	</div>
 	
-	<?php if (WT_USER_CAN_EDIT) { 
-		?>
-		<div id="unlinked">
-		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
-		<tr>                                                                                                                                             
-			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Unlinked Records'); ?></td>                            
-		</tr>
-		<tr>
-			<td class="optionbox with50">
-				<a href="javascript: <?php echo i18n::translate('Add an unlinked person'); ?> "onclick="addnewchild(''); return false;"><?php echo i18n::translate('Add an unlinked person'); ?></a><?php echo help_link('edit_add_unlinked_person'); ?>
-			</td>
-			<td class="optionbox width50">
-				<a href="javascript: <?php echo i18n::translate('Add an unlinked source'); ?> "onclick="addnewsource(''); return false;"><?php echo i18n::translate('Add an unlinked source'); ?></a><?php echo help_link('edit_add_unlinked_source'); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="optionbox with50"><a
-				href="javascript: <?php echo i18n::translate('Add an unlinked note'); ?> "onclick="addnewnote(''); return false;"><?php echo i18n::translate('Add an unlinked note'); ?></a><?php echo help_link('edit_add_unlinked_note'); ?>
-			</td>
-			<td class="optionbox width50">
-				&nbsp;
-			</td>
-		</tr>
-		</table>
-		</div>
-		<?php 
-	} 
-	
+	<?php
 	if (WT_USER_IS_ADMIN) { 
 		?>
 		<div id="site">
@@ -202,11 +197,6 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 			<td class="optionbox width50"><a
 				href="useradmin.php"><?php echo i18n::translate('User administration');?></a><?php echo help_link('help_useradmin.php'); ?></td>
 				<td class="optionbox width50"><a href="logs.php"><?php echo i18n::translate('Logs'); ?></a><?php echo help_link('logs.php'); ?></td>
-		</tr>
-		<tr>
-			<td class="optionbox width50"><a
-				href="faq.php"><?php echo i18n::translate('FAQ list');?></a><?php echo help_link('help_faq.php'); ?></td>
-			<td class="optionbox width50">&nbsp;</td>
 		</tr>
 		</table>
 		</div>

@@ -212,57 +212,50 @@ function showSite(siteID) {
 //-->
 </script>
 
-
-<!-- Search Engine IP address table -->
-<table class="width66" align="center">
-<tr>
-	<td colspan="2" class="title" align="center">
-	<?php echo i18n::translate('Manage sites');?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<form name="searchengineform" action="manageservers.php" method="post">
-	<table class="width100" align="center">
-		<tr>
-		<td class="facts_label">
-			<b><?php echo i18n::translate('Manually mark Search Engines by IP');?></b>
-			<?php echo help_link('help_manual_search_engines'); ?>
-		</td>
-		</tr>
-		<tr>
-		<td class="facts_value">
-			<table align="center">
 <?php
-	$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='search-engine' ORDER BY INET_ATON(ip_address)";
-	$index=0;
-	$search_engines=WT_DB::prepare($sql)->fetchAssoc();
-	foreach ($search_engines as $ip_address=>$ip_comment) {
-		echo '<tr><td>';
-		if (isset($WT_IMAGES["remove"]["other"])) {
-			echo '<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["remove"]["other"], '" alt="', i18n::translate('Delete'), '" name="deleteSearch" value="', $ip_address, '">';
-		} else {
-			echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', i18n::translate('Remove'), '</button>';
-		}
-		echo '</td><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
-		echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
-	}
-	echo '<tr><td valign="top"><input name="action" type="hidden" value="addSearch"/>';
-	if (isset($WT_IMAGES["add"]["other"])) {
-		echo '<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), '">';
-	} else {
-		echo '<input type="submit" value="', i18n::translate('Add'), '" />';
-	}
-	echo '</td><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorSearch) ? '':$address, '" /></span></td>';
-	echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
-	echo '<br />', i18n::translate('You may enter a comment here.'), '</td></tr>';
+// Search Engine IP address table 
+echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
+	 '<h2 class="center">', i18n::translate('Manage sites'), '</h2>',
+	'<table class="width66" align="center">',
+	'<tr><td>',
+	'<form name="searchengineform" action="manageservers.php" method="post">',
+	'<table class="width100" align="center">',
+		'<tr>',
+		'<td class="facts_label"><b>', i18n::translate('Manually mark Search Engines by IP'), '</b>'. help_link('help_manual_search_engines'), '</td>',
+		'</tr>',
+		'<tr>',
+		'<td class="facts_value">',
+			'<table align="center">';
 
-	if (!empty($errorSearch)) {
-		print '<tr><td colspan="2"><span class="warning">';
-		print $errorSearch;
-		print '</span></td></tr>';
-		$errorSearch = '';
-	}
+			$sql="SELECT ip_address, comment FROM {$TBLPREFIX}ip_address WHERE category='search-engine' ORDER BY INET_ATON(ip_address)";
+			$index=0;
+			$search_engines=WT_DB::prepare($sql)->fetchAssoc();
+			foreach ($search_engines as $ip_address=>$ip_comment) {
+				echo '<tr><td>';
+				if (isset($WT_IMAGES["remove"]["other"])) {
+					echo '<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["remove"]["other"], '" alt="', i18n::translate('Delete'), '" name="deleteSearch" value="', $ip_address, '">';
+				} else {
+					echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', i18n::translate('Remove'), '</button>';
+				}
+				echo '</td><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
+				echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
+			}
+			echo '<tr><td valign="top"><input name="action" type="hidden" value="addSearch"/>';
+			if (isset($WT_IMAGES["add"]["other"])) {
+				echo '<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), '">';
+			} else {
+				echo '<input type="submit" value="', i18n::translate('Add'), '" />';
+			}
+			echo '</td><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorSearch) ? '':$address, '" /></span></td>';
+			echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
+			echo '<br />', i18n::translate('You may enter a comment here.'), '</td></tr>';
+
+			if (!empty($errorSearch)) {
+				print '<tr><td colspan="2"><span class="warning">';
+				print $errorSearch;
+				print '</span></td></tr>';
+				$errorSearch = '';
+			}
 	echo '</table></td></tr></table></form></td></tr></table>';
 ?>
 

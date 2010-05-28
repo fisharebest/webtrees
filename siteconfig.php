@@ -76,11 +76,11 @@ print_header(i18n::translate('Site configuration'));
 $smtp_active=get_site_setting('SMTP_ACTIVE');
 
 echo
+	'<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
+	'<h2 class="center">', i18n::translate('Site configuration'), '</h2>',
 	'<form name="siteconfig" method="post" action="siteconfig.php" autocomplete="off">',
 	'<input type="hidden" name="action" value="update" />',
 	'<table class="list_table width80" style="margin-left:auto;margin-right:auto;"><tr>',
-	'<td class="topbottombar" colspan="2">', i18n::translate('Site configuration'), '</td>',
-	'</tr><tr>',
 	'<td class="facts_label" colspan="2">', i18n::translate('Server configuration'), '</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Data file directory'), help_link('INDEX_DIRECTORY'), '</td>',

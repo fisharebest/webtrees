@@ -243,19 +243,18 @@ if ($action=="edituser") {
 	}
 	//-->
 	</script>
-	<form name="editform" method="post" action="useradmin.php" onsubmit="return checkform(this);" autocomplete="off">
-	<input type="hidden" name="action" value="edituser2" />
-	<input type="hidden" name="filter" value="<?php echo $filter; ?>" />
-	<input type="hidden" name="sort" value="<?php echo $sort; ?>" />
-	<input type="hidden" name="usrlang" value="<?php echo $usrlang; ?>" />
-	<input type="hidden" name="oldusername" value="<?php echo $username; ?>" />
-	<?php $tab=0; ?>
-	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
-	<tr><td colspan="2" class="facts_label"><?php
-	echo "<h2>", i18n::translate('Update user account'), "</h2>";
+	<?php
+	echo '<h2 class="center">', i18n::translate('Update user account'), '</h2>';
 	?>
-	</td>
-	</tr>
+
+	<form name="editform" method="post" action="useradmin.php" onsubmit="return checkform(this);" autocomplete="off">
+		<input type="hidden" name="action" value="edituser2" />
+		<input type="hidden" name="filter" value="<?php echo $filter; ?>" />
+		<input type="hidden" name="sort" value="<?php echo $sort; ?>" />
+		<input type="hidden" name="usrlang" value="<?php echo $usrlang; ?>" />
+		<input type="hidden" name="oldusername" value="<?php echo $username; ?>" />
+		<?php $tab=0; ?>
+	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr><td class="topbottombar" colspan="2">
 	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Update user account'); ?>" />
 	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&sort={$sort}&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
@@ -495,12 +494,11 @@ if ($action == "listusers") {
 	}
 
 	// Then show the users
+	
+	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
+		 '<h2 class="center">', i18n::translate('User List'), '</h2>';
 	?>
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
-	<tr><td colspan="<?php if ($view == "preview") echo "8"; else echo "11"; ?>" class="facts_label"><?php
-		echo "<h2>", i18n::translate('User List'), "</h2>";
-	?>
-	</td></tr>
 	<tr>
 	<?php if ($view!="preview") { ?>
 	<td colspan="5" class="topbottombar rtl"><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
@@ -986,30 +984,25 @@ if ($action == "cleanup2") {
 
 // Print main menu
 // NOTE: WORKING
+echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
+	 '<h2 class="center">', i18n::translate('User administration'), '</h2>';
 ?>
 <table class="center list_table width40 <?php echo $TEXT_DIRECTION; ?>">
-	<tr>
-		<td class="facts_label" colspan="3">
-		<h2><?php echo i18n::translate('User administration'); ?></h2>
-		</td>
-	</tr>
 	<tr>
 		<td colspan="3" class="topbottombar"><?php echo i18n::translate('Select an option below:'); ?></td>
 	</tr>
 	<tr>
 		<td class="optionbox"><a href="useradmin.php?action=listusers"><?php echo i18n::translate('User List'); ?></a></td>
-		<td class="optionbox" colspan="2" ><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
+		<td class="optionbox width50" colspan="2" ><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
 	</tr>
 	<tr>
 		<td class="optionbox"><a href="useradmin.php?action=cleanup"><?php echo i18n::translate('Cleanup users'); ?></a></td>
-		<td class="optionbox" colspan="2" >
-			<a href="javascript: <?php echo i18n::translate('Send message to all users'); ?>" onclick="message('all', 'messaging2', '', ''); return false;"><?php echo i18n::translate('Send message to all users'); ?></a><br />
-			<a href="javascript: <?php echo i18n::translate('Send message to users who have never logged in'); ?>" onclick="message('never_logged', 'messaging2', '', ''); return false;"><?php echo i18n::translate('Send message to users who have never logged in'); ?></a><br />
-			<a href="javascript: <?php echo i18n::translate('Send message to users who have not logged in for 6 months'); ?>" onclick="message('last_6mo', 'messaging2', '', ''); return false;"><?php echo i18n::translate('Send message to users who have not logged in for 6 months'); ?></a><br />
-		</td>
+		<td class="optionbox" colspan="2" ><a href="javascript: <?php echo i18n::translate('Send message to all users'); ?>" onclick="message('all', 'messaging2', '', ''); return false;"><?php echo i18n::translate('Send message to all users'); ?></a></td>
+	</tr>
+		<td class="optionbox" colspan="3"><a href="javascript: <?php echo i18n::translate('Send message to users who have never logged in'); ?>" onclick="message('never_logged', 'messaging2', '', ''); return false;"><?php echo i18n::translate('Send message to users who have never logged in'); ?></a></td>
 	</tr>
 	<tr>
-		<td class="topbottombar" colspan="3" align="center" ><a href="admin.php"><?php echo i18n::translate('Return to the Admin menu'); ?></a></td>
+		<td class="optionbox" colspan="3"><a href="javascript: <?php echo i18n::translate('Send message to users who have not logged in for 6 months'); ?>" onclick="message('last_6mo', 'messaging2', '', ''); return false;"><?php echo i18n::translate('Send message to users who have not logged in for 6 months'); ?></a></td>
 	</tr>
 	<tr>
 		<td colspan="3" class="topbottombar"><?php echo i18n::translate('Informational'); ?></td>

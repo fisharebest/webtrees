@@ -42,10 +42,11 @@ if (!isset($action)) $action = "";
 if ($action == "phpinfo") {
 	$helpindex = "phpinfo_help";
 	print_header(i18n::translate('PHP information'));
-	?>
-	<div class="center">
-	<?php
-
+	
+	echo '<div class="center">';
+	echo '<p><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
+	echo '<p><h2>', i18n::translate('PHP information'), '</h2></p>';
+	
 	ob_start();
 
 	phpinfo();
@@ -65,23 +66,21 @@ if ($action == "phpinfo") {
 	$php_info    = str_replace(",", ", ", $php_info);
 
 	// Put logo in table header
-
 	$logo_offset = strpos($php_info, "<td>");
 	$php_info = substr_replace($php_info, "<td colspan=\"3\" class=\"facts_label03\">", $logo_offset, 4);
 	$logo_width_offset = strpos($php_info, "width=\"\"");
 	$php_info = substr_replace($php_info, "width=\"800\"", $logo_width_offset, 8);
-	$php_info    = str_replace(" width=\"\"", "", $php_info);
+	$php_info = str_replace(" width=\"\"", "", $php_info);
 
-
-	$offset          = strpos($php_info, "<table");
-	$php_info	= substr($php_info, $offset);
+	$offset = strpos($php_info, "<table");
+	$php_info = substr($php_info, $offset);
 
 	echo $php_info;
 
-	?>
-	</div>
-	<?php
-//	exit;
+	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
+	echo '</div>';
+
+	//	exit;
 }
 
 print_footer();
