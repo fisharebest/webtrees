@@ -32,6 +32,14 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/classes/class_module.php';
 
+// Create tables, if not already present
+try {
+	WT_DB::updateSchema('./modules/gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 1);
+}	 catch (PDOException $ex) {
+	// The schema update scripts should never fail.  If they do, there is no clean recovery.
+	die($ex);
+}
+
 class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -46,14 +54,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function getBlock($block_id) {
 		global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $ctype, $THEME_DIR;
-
-		// Create tables, if not already present
-		try {
-			WT_DB::updateSchema('./modules/'.$this->getName().'/db_schema/', 'NB_SCHEMA_VERSION', 1);
-		}	 catch (PDOException $ex) {
-			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			die($ex);
-		}
 
 		switch (safe_GET('action')) {
 		case 'deletenews':
