@@ -40,7 +40,7 @@ header('HTTP/1.0 403 Forbidden');
 exit;
 }
 
-define('WT_FV_DB_SCHEMA_0_1', '');
+define('WT_NB_DB_SCHEMA_0_1', '');
 
 WT_DB::exec(
 	"CREATE TABLE IF NOT EXISTS ##news (".
