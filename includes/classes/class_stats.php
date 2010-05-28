@@ -858,7 +858,7 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
-		global $SHOW_ID_NUMBERS, $listDir, $DBTYPE, $TEXT_DIRECTION;
+		global $SHOW_ID_NUMBERS, $listDir, $TEXT_DIRECTION;
 		if ($birth_death == 'MARR') {
 			$query_field = "'".str_replace('|', "','", WT_EVENTS_MARR)."'";
 		} else if ($birth_death == 'DIV') {
