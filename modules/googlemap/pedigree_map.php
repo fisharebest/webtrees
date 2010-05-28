@@ -61,13 +61,6 @@ if (!empty($_REQUEST['clustersize'])) {
 }
 
 // Start of internal configuration variables
-//
-// The Cloudy theme resizes itself to max screen width, sometimes making
-// tables hard to construct for browser windows smaller that the screen
-// width.  Setting $cloudy_locked = 1/0 will/won't force a the map to use
-// the width chosen in the GoogleMap configuration.  All other themes
-// float the width of the map to fill the browser width nicely.
-$cloudy_locked = 1;
 
 // Limit this to match available number of icons.
 // 8 generations equals 255 individuals
@@ -75,7 +68,7 @@ $MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
 
 // End of internal configuration variables
 
-global $theme_name, $TEXT_DIRECTION;
+global $TEXT_DIRECTION;
 
 // -- print html header information
 print_header($controller->getPersonName().' - '.i18n::translate('Pedigree Map'));
@@ -251,17 +244,11 @@ for ($i=0; $i<($controller->treesize); $i++) {
 
 //<!-- start of map display -->
 echo "<table ";
-if (($cloudy_locked == 0) || ($theme_name != "Cloudy")) {
-	echo "width=\"100%\"";
-}
-echo " style=\"tabs_table\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n";
+echo " style=\"tabs_table\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\">\n";
 echo "<tr>\n";
 echo "<td valign=\"top\">\n";
 echo "<img src=\"images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\" border=\"0\"/>\n";
 echo "<div id=\"pm_map\" style=\"border: 1px solid gray; height: ".$GOOGLEMAP_YSIZE."px; font-size: 0.9em;";
-if (($cloudy_locked) && ($theme_name == "Cloudy")) {
-	echo " width: ".$GOOGLEMAP_XSIZE."px;";
-}
 echo " background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>\n";
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
