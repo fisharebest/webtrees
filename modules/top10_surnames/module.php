@@ -110,6 +110,10 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			uksort($all_surnames,'utf8_strcasecmp');
 			$content=format_surname_tagcloud($all_surnames, 'indilist', true);
 			break;
+		case 'list':
+			uksort($all_surnames,'utf8_strcasecmp');
+			$content=format_surname_list($all_surnames, '2', true);
+			break;
 		case 'table':
 		default:
 			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
@@ -144,7 +148,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'num',    safe_POST_integer('num', 1, 10000));
-			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('table', 'tagcloud'), 'table'));
+			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table', 'tagcloud'), 'table'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
@@ -163,7 +167,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('table'=>i18n::translate('Table'), 'tagcloud'=>i18n::translate('Tag cloud')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table'), 'tagcloud'=>i18n::translate('Tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', false);
