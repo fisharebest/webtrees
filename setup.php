@@ -93,7 +93,7 @@ Zend_Loader_Autoloader::getInstance();
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_edit.php';
 require 'includes/classes/class_i18n.php';
-define('WT_LOCALE', i18n::init());
+define('WT_LOCALE', i18n::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
