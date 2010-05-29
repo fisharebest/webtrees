@@ -27,11 +27,11 @@
  * @version $Id$
  */
 
-define('WT_SCRIPT_NAME', 'pgvinfo.php');
+define('WT_SCRIPT_NAME', 'wtinfo.php');
 require './includes/session.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header("Location: login.php?url=pgvinfo.php?action=".$action);
+	header("Location: login.php?url=wtinfo.php?action=".$action);
 exit;
 }
 
