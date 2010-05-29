@@ -429,8 +429,12 @@ height:24px;
 }
 
 .blockhc {
-height:25px;
-max-height:25px;
+padding-right:15px;
+padding-left:5px;
+overflow:hidden;
+}
+
+.blockhc {
 padding-right:15px;
 padding-left:5px;
 overflow:hidden;

@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8425 2010-05-23 23:50:28Z rob $
+* $Id: ash.css 8488 2010-05-28 10:13:14Z rob $
 */
 
 .something {
@@ -429,8 +429,12 @@ height:24px;
 }
 
 .blockhc {
-height:25px;
-max-height:25px;
+padding-right:15px;
+padding-left:5px;
+overflow:hidden;
+}
+
+.blockhc {
 padding-right:15px;
 padding-left:5px;
 overflow:hidden;
