@@ -114,7 +114,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			// Only show this block for certain languages
 			$languages=get_block_setting($block_id, 'languages');
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
-				$html.='<div>'.get_block_setting($block_id, 'body').'</div>';
+				$html.='<div class="news_title center">'.get_block_setting($block_id, 'title').'</div>';
+				$html.='<div>'.get_block_setting($block_id, 'body').'</div><br />';
+				if (WT_USER_CAN_EDIT) {
+					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&amp;block_id='.$block_id.'">';
+					$html.=i18n::translate('Edit story').'</a></div><br />';
+				}
 			}
 		}
 		return $html;		
@@ -145,139 +150,170 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		global $TEXT_DIRECTION;
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		if (safe_POST_bool('save')) {
-			$block_id=safe_POST('block_id');
-			if ($block_id) {
-				WT_DB::prepare(
-					"UPDATE ##block SET gedcom_id=?, xref=? WHERE block_id=?"
-				)->execute(array(safe_POST('gedcom_id'), safe_POST('xref'), $block_id));
-			} else {
-				WT_DB::prepare(
-					"INSERT INTO ##block (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
-				)->execute(array(
-					safe_POST('gedcom_id', array_keys(get_all_gedcoms())),
-					safe_POST('xref'),
-					$this->getName(),
-					0
-				));
-				$block_id=WT_DB::getInstance()->lastInsertId();
-			}
-			set_block_setting($block_id, 'body',   safe_POST('body', WT_REGEX_UNSAFE)); // allow html
-			$languages=array();
-			foreach (i18n::installed_languages() as $code=>$name) {
-				if (safe_POST_bool('lang_'.$code)) {
-					$languages[]=$code;
+		if (WT_USER_CAN_EDIT) {
+			if (safe_POST_bool('save')) {
+				$block_id=safe_POST('block_id');
+				if ($block_id) {
+					WT_DB::prepare(
+						"UPDATE ##block SET gedcom_id=?, xref=? WHERE block_id=?"
+					)->execute(array(safe_POST('gedcom_id'), safe_POST('xref'), $block_id));
+				} else {
+					WT_DB::prepare(
+						"INSERT INTO ##block (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
+					)->execute(array(
+						safe_POST('gedcom_id', array_keys(get_all_gedcoms())),
+						safe_POST('xref'),
+						$this->getName(),
+						0
+					));
+					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-			}
-			if (!$languages) {
-				$languages[]=WT_LOCALE;
-			}
-			set_block_setting($block_id, 'languages', implode(',', $languages));
-			$this->config();
-		} else {
-			$block_id=safe_GET('block_id');
-			if ($block_id) {
-				print_header(i18n::translate('Edit story'));
-				$body=get_block_setting($block_id, 'body');
-				$gedcom_id=WT_DB::prepare(
-					"SELECT gedcom_id FROM ##block WHERE block_id=?"
-				)->execute(array($block_id))->fetchOne();
-				$xref=WT_DB::prepare(
-					"SELECT xref FROM ##block WHERE block_id=?"
-				)->execute(array($block_id))->fetchOne();
+				set_block_setting($block_id, 'title',  safe_POST('title', WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'body',   safe_POST('body',  WT_REGEX_UNSAFE)); // allow html
+				$languages=array();
+				foreach (i18n::installed_languages() as $code=>$name) {
+					if (safe_POST_bool('lang_'.$code)) {
+						$languages[]=$code;
+					}
+				}
+				if (!$languages) {
+					$languages[]=WT_LOCALE;
+				}
+				set_block_setting($block_id, 'languages', implode(',', $languages));
+				$this->config();
 			} else {
-				print_header(i18n::translate('Add story'));
-				$body='';
-				$gedcom_id=WT_GED_ID;
-				$xref='';
+				$block_id=safe_GET('block_id');
+				if ($block_id) {
+					print_header(i18n::translate('Edit story'));
+					$title=get_block_setting($block_id, 'title');
+					$body=get_block_setting($block_id, 'body');
+					$gedcom_id=WT_DB::prepare(
+						"SELECT gedcom_id FROM ##block WHERE block_id=?"
+					)->execute(array($block_id))->fetchOne();
+					$xref=WT_DB::prepare(
+						"SELECT xref FROM ##block WHERE block_id=?"
+					)->execute(array($block_id))->fetchOne();
+				} else {
+					print_header(i18n::translate('Add story'));
+					$title='';
+					$body='';
+					$gedcom_id=WT_GED_ID;
+					$xref='';
+				}
+
+				echo '<form name="story" method="post" action="#">';
+				echo '<input type="hidden" name="save" value="1" />';
+				echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
+				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '" />';
+				echo '<table class="center list_table">';
+				echo '<tr><td class="topbottombar" colspan="2">';
+				echo i18n::translate('Add story'), help_link('add_story', $this->getName());
+				echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
+				echo '<tr><td class="descriptionbox" colspan="2">';
+				echo i18n::translate('Story title'), help_link('story_title', $this->getName());
+				echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td></tr>';
+				echo '<tr><td class="descriptionbox" colspan="2">';
+				echo i18n::translate('Story'), help_link('add_story', $this->getName());
+				echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
+				echo '<tr><td class="descriptionbox">';
+				echo i18n::translate('Person');
+				echo '</td><td class="optionbox">';
+				echo '<input name="xref" size="4" value="'.$xref.'" tabindex="3"/>';
+				echo '</td></tr>';
+
+				$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
+				echo '<tr><td class="descriptionbox wrap width33">';
+				echo i18n::translate('Show this block for which languages?');
+				echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
+				echo edit_language_checkboxes('lang_', $languages);
+				echo '</td></tr>';
+				echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Save'), '" tabindex="5"/>';
+				echo '&nbsp;<input type="button" value="', i18n::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></td></tr>';
+				echo '</table>';
+				echo '</form>';
+
+				print_footer();
+				exit;
 			}
-
-			echo '<form name="story" method="post" action="#">';
-			echo '<input type="hidden" name="save" value="1" />';
-			echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
-			echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '" />';
-			echo '<table class="center list_table">';
-			echo '<tr><td class="topbottombar" colspan="2">';
-			echo i18n::translate('Add story'), help_link('add_story', $this->getName());
-			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
-			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('Story'), help_link('add_story', $this->getName());
-			echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
-			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('Person');
-			echo '</td><td class="optionbox">';
-			echo '<input name="xref" size="4" value="'.$xref.'" tabindex="3"/>';
-			echo '</td></tr>';
-
-			$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
-			echo '<tr><td class="descriptionbox wrap width33">';
-			echo i18n::translate('Show this block for which languages?');
-			echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
-			echo edit_language_checkboxes('lang_', $languages);
-			echo '</td></tr>';
-			echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Save'), '" tabindex="5"/>';
-			echo '&nbsp;<input type="button" value="', i18n::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></td></tr>';
-			echo '</table>';
-			echo '</form>';
-
-			print_footer();
+		} else {
+			header("Location: index.php");
 			exit;
 		}
 	}
 
 	private function delete() {
-		$block_id=safe_GET('block_id');
+		if (WT_USER_CAN_EDIT) {
+			$block_id=safe_GET('block_id');
 
-		$block_order=WT_DB::prepare(
-			"SELECT block_order FROM ##block WHERE block_id=?"
-		)->execute(array($block_id))->fetchOne();
+			$block_order=WT_DB::prepare(
+				"SELECT block_order FROM ##block WHERE block_id=?"
+			)->execute(array($block_id))->fetchOne();
 
-		WT_DB::prepare(
-			"DELETE FROM ##block_setting WHERE block_id=?"
-		)->execute(array($block_id));
+			WT_DB::prepare(
+				"DELETE FROM ##block_setting WHERE block_id=?"
+			)->execute(array($block_id));
 
-		WT_DB::prepare(
-			"DELETE FROM ##block WHERE block_id=?"
-		)->execute(array($block_id));
+			WT_DB::prepare(
+				"DELETE FROM ##block WHERE block_id=?"
+			)->execute(array($block_id));
+		} else {
+			header("Location: index.php");
+			exit;
+		}
 	}
 
 	private function config() {
-		global $WT_IMAGES, $WT_IMAGE_DIR;
+		global $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_ID_NUMBERS, $TEXT_DIRECTION;
 
-		print_header($this->getTitle());
+		if (WT_USER_CAN_EDIT) {
+			print_header($this->getTitle());
 
-		$stories=WT_DB::prepare(
-			"SELECT block_id, xref".
-			" FROM ##block b".
-			" WHERE module_name=?".
-			" AND gedcom_id=?".
-			" ORDER BY xref"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+			$stories=WT_DB::prepare(
+				"SELECT block_id, xref".
+				" FROM ##block b".
+				" WHERE module_name=?".
+				" AND gedcom_id=?".
+				" ORDER BY xref"
+			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
-		echo '<table class="list_table">';
-		echo '<tr><td class="list_label" colspan="3">';
-		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add story'), '</a>';
-		echo help_link('add_story', $this->getName());
-		echo '</td></tr>';
-		foreach ($stories as $story) {
-			$indi=Person::getInstance($story->xref);
-			if ($indi) {
-				$name=$indi->getFullName();
-			} else {
-				$name=$story->xref;
+			echo '<table class="list_table">';
+			echo '<tr><td class="list_label" colspan="4">';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add story'), '</a>';
+			echo help_link('add_story', $this->getName());
+			echo '</td></tr>';
+			if (count($stories)>0) {
+				echo '<tr><td class="optionbox center width20">', i18n::translate('Story title'), help_link('story_title', $this->getName());
+				echo '</td><td class="optionbox center width20">', i18n::translate('Person');
+				echo '</td><td class="optionbox center width20">', i18n::translate('Edit story'), help_link('edit_story', $this->getName());
+				echo '</td><td class="optionbox center width20">', i18n::translate('Delete'), help_link('delete_story', $this->getName()), '</tr>';
 			}
-			echo '<tr><td class="optionbox center width20">';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a>';
-			echo help_link('edit_story', $this->getName());
-			echo '</td><td class="optionbox center width20">';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
-			echo help_link('delete_story', $this->getName());
-			echo '</td>';
-			echo '<td class="list_value_wrap">', $name, '</td></tr>';
+			foreach ($stories as $story) {
+				$indi=Person::getInstance($story->xref);
+				if ($indi) {
+					$id='';
+					if ($SHOW_ID_NUMBERS) {
+						if ($TEXT_DIRECTION=='rtl') {
+							$id="&nbsp;&nbsp;".getRLM()."(".$story->xref.")".getRLM();
+						} else {
+							$id="&nbsp;&nbsp;(".$story->xref.")";
+						}
+					}
+					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName().$id."</a>";
+				} else {
+					$name=$story->xref;
+				}
+				echo '<tr><td class="optionbox center width20">';
+				echo get_block_setting($story->block_id, 'title');
+				echo '<td class="list_value_wrap">', $name, '</td>';
+				echo '<td class="optionbox center width20"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a></td>';
+				echo '<td class="optionbox center width20"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
+				echo '</td></tr>';
+			}
+			echo '</table>';
+			print_footer();
+		} else {
+			header("Location: index.php");
+			exit;
 		}
-		echo '</table>';
-
-		print_footer();
 	}
 }

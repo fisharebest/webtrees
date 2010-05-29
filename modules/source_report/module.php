@@ -46,7 +46,7 @@ class source_report_WT_Module extends WT_Module implements WT_Module_Report {
 
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_NONE;
+		return WT_PRIV_USER;
 	}
 
 	// Implement WT_Module_Report - a module can provide many reports
