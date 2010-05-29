@@ -101,7 +101,7 @@ if ($action=='ajax') {
 }
 
 if ($ctype=='user') {
-	$helpindex = 'index_myged_help';
+	$helpindex = 'mypage_portal';
 	print_header(i18n::translate('My Page'));
 } else {
 	print_header(get_gedcom_setting(WT_GED_ID, 'title'));
