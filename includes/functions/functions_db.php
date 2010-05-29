@@ -2422,16 +2422,23 @@ function get_user_blocks($user_id) {
 	if ($rows) {
 		return $blocks;
 	} else {
-		WT_DB::prepare(
-			"REPLACE INTO ##block (user_id, location, block_order, module_name) VALUES ".
-			"(?, 'main', 0, 'todays_events'),".
-			"(?, 'main', 1, 'user_messages'),".
-			"(?, 'main', 2, 'user_favorites'),".
-			"(?, 'side', 0, 'user_welcome'),".
-			"(?, 'side', 1, 'random_media'),".
-			"(?, 'side', 2, 'upcoming_events'),".
-			"(?, 'side', 3, 'logged_in')"
-		)->execute(array($user_id, $user_id, $user_id, $user_id, $user_id, $user_id, $user_id));
+		$active_blocks=WT_Module::getActiveBlocks();
+		foreach (array('todays_events', 'user_messages', 'user_favorites') as $n=>$block) {
+			if (array_key_exists($block, $active_blocks)) {
+				WT_DB::prepare(
+					"INSERT INTO ##block (user_id, location, block_order, module_name) VALUES ".
+					"(?, 'main', ?, ?)"
+				)->execute(array($user_id, $n, $block));
+			}
+		}
+		foreach (array('user_welcome', 'random_media', 'upcoming_events', 'logged_in') as $n=>$block) {
+			if (array_key_exists($block, $active_blocks)) {
+				WT_DB::prepare(
+					"INSERT INTO ##block (user_id, location, block_order, module_name) VALUES ".
+					"(?, 'side', ?, ?)"
+				)->execute(array($user_id, $n, $block));
+			}
+		}
 		return get_user_blocks($user_id);
 	}
 }
@@ -2450,17 +2457,23 @@ function get_gedcom_blocks($gedcom_id) {
 	if ($rows) {
 		return $blocks;
 	} else {
-		WT_DB::prepare(
-			"REPLACE INTO ##block (gedcom_id, location, block_order, module_name) VALUES ".
-			"(?, 'main', 0, 'gedcom_stats'),".
-			"(?, 'main', 1, 'gedcom_news'),".
-			"(?, 'main', 2, 'gedcom_favorites'),".
-			"(?, 'main', 3, 'review_changes'),".
-			"(?, 'side', 0, 'gedcom_block'),".
-			"(?, 'side', 1, 'random_media'),".
-			"(?, 'side', 2, 'todays_events'),".
-			"(?, 'side', 3, 'logged_in')"
-		)->execute(array($gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id, $gedcom_id));
+		$active_blocks=WT_Module::getActiveBlocks();
+		foreach (array('gedcom_stats', 'gedcom_news', 'gedcom_favorites', 'review_changes') as $n=>$block) {
+			if (array_key_exists($block, $active_blocks)) {
+				WT_DB::prepare(
+					"INSERT INTO ##block (gedcom_id, location, block_order, module_name) VALUES ".
+					"(?, 'main', ?, ?)"
+				)->execute(array($gedcom_id, $n, $block));
+			}
+		}
+		foreach (array('gedcom_block', 'random_media', 'todays_events', 'logged_in') as $n=>$block) {
+			if (array_key_exists($block, $active_blocks)) {
+				WT_DB::prepare(
+					"INSERT INTO ##block (gedcom_id, location, block_order, module_name) VALUES ".
+					"(?, 'side', ?, ?)"
+				)->execute(array($gedcom_id, $n, $block));
+			}
+		}
 		return get_gedcom_blocks($gedcom_id);
 	}
 }
