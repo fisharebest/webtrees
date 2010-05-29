@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8488 2010-05-28 10:13:14Z rob $
+* $Id: ash.css 8516 2010-05-29 11:45:27Z rob $
 */
 
 .something {
@@ -1630,6 +1630,10 @@ dt {
 #indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
 	float:left;
 	margin-right:15px;
+}
+
+#mainfacts {
+white-space: nowrap;
 }
 
 #hitcounter {

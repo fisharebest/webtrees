@@ -1632,6 +1632,10 @@ dt {
 	margin-right:15px;
 }
 
+#mainfacts {
+white-space: nowrap;
+}
+
 #hitcounter {
 	display: block;
 	width: 100%;
