@@ -36,6 +36,11 @@ case 'add_story':
 	$text='';
 	break;
 
+case 'story_title':
+	$title='';
+	$text='';
+	break;
+
 case 'delete_story':
 	$title='';
 	$text='';

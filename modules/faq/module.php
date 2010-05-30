@@ -102,6 +102,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Action from the configuration page
 	private function edit() {
+		global $TEXT_DIRECTION;
+
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		$useCK = file_exists(WT_ROOT.'modules/ckeditor/ckeditor.php');
@@ -206,7 +208,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
 			echo '<tr><td class="descriptionbox wrap width33">';
 			echo i18n::translate('Show this block for which languages?');
-			echo '</td><td class="optionbox">';
+			echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 			echo edit_language_checkboxes('lang_', $languages);
 			echo '</td></tr>';
 
@@ -391,7 +393,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo help_link('add_faq_item', $this->getName());
 		echo '</td></tr>';
 		if (empty($faqs)) {
-			echo '<tr><td class="error center">', i18n::translate('The FAQ list is empty.'), '</td></tr>';
+			echo '<tr><td class="error center">', i18n::translate('The FAQ list is empty.'), '</td></tr></table>';
 		} else {
 			foreach ($faqs as $faq) {
 				echo '<tr>';
@@ -433,7 +435,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			}
 			echo '</table>';
 		}
-
 		print_footer();
 	}
 }

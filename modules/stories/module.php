@@ -147,7 +147,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Action from the configuration page
 	private function edit() {
-		global $TEXT_DIRECTION;
+		global $TEXT_DIRECTION, $ENABLE_AUTOCOMPLETE;
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
@@ -200,7 +200,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					$gedcom_id=WT_GED_ID;
 					$xref='';
 				}
-
+				?>
+				<script language="JavaScript" type="text/javascript">
+					var pastefield;
+					function paste_id(value) {
+						pastefield.value=value;
+					}
+				</script>
+				<?php
+				if ($ENABLE_AUTOCOMPLETE) {
+					require WT_ROOT.'/js/autocomplete.js.htm';
+				}
 				echo '<form name="story" method="post" action="#">';
 				echo '<input type="hidden" name="save" value="1" />';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
@@ -218,9 +228,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<tr><td class="descriptionbox">';
 				echo i18n::translate('Person');
 				echo '</td><td class="optionbox">';
-				echo '<input name="xref" size="4" value="'.$xref.'" tabindex="3"/>';
+				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
+				print_findindi_link("xref", "pid");
 				echo '</td></tr>';
-
 				$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
 				echo '<tr><td class="descriptionbox wrap width33">';
 				echo i18n::translate('Show this block for which languages?');
