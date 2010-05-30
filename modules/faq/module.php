@@ -104,9 +104,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	private function edit() {
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$useFCK = file_exists(WT_ROOT.'modules/fck_editor/fckeditor.php');
-		if($useFCK){
-			require WT_ROOT.'modules/fck_editor/fckeditor.php';
+		$useCK = file_exists(WT_ROOT.'modules/ckeditor/ckeditor.php');
+		if($useCK){
+			require WT_ROOT.'modules/ckeditor/ckeditor.php';
 		}
 		
 		if (safe_POST_bool('save')) {
@@ -130,7 +130,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				$block_id=WT_DB::getInstance()->lastInsertId();
 			}
 			set_block_setting($block_id, 'header', safe_POST('header'));
-			set_block_setting($block_id, 'body',   safe_POST('body', WT_REGEX_UNSAFE)); // allow html
+			set_block_setting($block_id, 'faqbody',   safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
 			$languages=array();
 			foreach (i18n::installed_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
@@ -147,7 +147,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			if ($block_id) {
 				print_header(i18n::translate('Edit FAQ item'));
 				$header=get_block_setting($block_id, 'header');
-				$body=get_block_setting($block_id, 'body');
+				$faqbody=get_block_setting($block_id, 'faqbody');
 				$block_order=WT_DB::prepare(
 					"SELECT block_order FROM ##block WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
@@ -157,7 +157,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			} else {
 				print_header(i18n::translate('Add FAQ item'));
 				$header='';
-				$body='';
+				$faqbody='';
 				$block_order=WT_DB::prepare(
 					"SELECT IFNULL(MAX(block_order)+1, 0) FROM ##block WHERE module_name=?"
 				)->execute(array($this->getName()))->fetchOne();
@@ -175,7 +175,22 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
 			echo '<tr><td class="descriptionbox" colspan="2">';
 			echo i18n::translate('FAQ body'), help_link('add_faq_body', $this->getName());
-			echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
+			echo '</td></tr><tr><td class="optionbox" colspan="2">';
+			if($useCK) {
+			// use CKeditor module
+				require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
+				$oCKeditor = new CKEditor();
+				$oCKeditor->basePath =  './modules/ckeditor/';
+				$oCKeditor->config['width'] = 900;
+				$oCKeditor->config['height'] = 400;
+				$oCKeditor->config['AutoDetectLanguage'] = false ;
+				$oCKeditor->config['DefaultLanguage'] = 'en';
+				$oCKeditor->editor('faqbody', $faqbody);
+			} else {
+			//use standard textarea
+			echo '<textarea name="faqbody" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
+			}
+			echo '</td></tr>';
 			echo '<tr><td class="descriptionbox">';
 			echo i18n::translate('FAQ position'), help_link('add_faq_order', $this->getName());
 			echo '</td><td class="descriptionbox">';
@@ -281,7 +296,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			" JOIN ##block_setting bs2 USING (block_id)".
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
-			" AND bs2.setting_name='body'".
+			" AND bs2.setting_name='faqbody'".
 			" AND (gedcom_id IS NULL OR gedcom_id=?)".
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
@@ -305,7 +320,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
 			return;
 		}
-			if ($faq->header && $faq->body) {
+			if ($faq->header && $faq->faqbody) {
 				$row_color = ($row_count % 2) ? 'odd' : 'even'; 
 				echo '';
 					// NOTE: Print the header of the current item
@@ -326,7 +341,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
 				return;
 			}
-			if ($faq->header && $faq->body) {
+			if ($faq->header && $faq->faqbody) {
 				// NOTE: Print the body text of the current item, with its header
 				echo '<div class="faq_title" id="faq', $id, '">',
 					$faq->header;
@@ -335,7 +350,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					echo '</div>';
 				echo '</div>';
 				echo '<div class="faq_body">',
-					substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body);
+					substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody);
 				echo '</div>';
 				echo '<hr />';
 			}
@@ -351,13 +366,13 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		print_header($this->getTitle());
 
 		$faqs=WT_DB::prepare(
-			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS body".
+			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody".
 			" FROM ##block b".
 			" JOIN ##block_setting bs1 USING (block_id)".
 			" JOIN ##block_setting bs2 USING (block_id)".
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
-			" AND bs2.setting_name='body'".
+			" AND bs2.setting_name='faqbody'".
 			" AND (gedcom_id IS NULL OR gedcom_id=?)".
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
@@ -414,7 +429,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				echo help_link('delete_faq_item', $this->getName());
 				echo '</td>';
 				// NOTE: Print the body text of the current item
-				echo '<td class="list_value_wrap">', substr($faq->body, 0, 1)=='<' ? $faq->body : nl2br($faq->body), '</td></tr>';
+				echo '<td class="list_value_wrap">', substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody), '</td></tr>';
 			}
 			echo '</table>';
 		}
