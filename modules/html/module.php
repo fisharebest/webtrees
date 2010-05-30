@@ -182,9 +182,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$useFCK = file_exists(WT_ROOT.'modules/fck_editor/fckeditor.php');
-		if($useFCK){
-			require WT_ROOT.'modules/fck_editor/fckeditor.php';
+		$useCK = file_exists(WT_ROOT.'modules/ckeditor/ckeditor.php');
+		if($useCK){
+			require WT_ROOT.'modules/ckeditor/ckeditor.php';
 		}
 
 		$templates=array(
@@ -313,7 +313,7 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 			.help_link('index_htmlplus_template')
 			."</td><td class=\"optionbox\">"
 		;
-		if($useFCK)
+		if($useCK)
 		{
 			print "\t\t\t<script language=\"JavaScript\" type=\"text/javascript\">\n"
 				."\t\t\t<!--\n"
@@ -372,18 +372,17 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 			."<br /><br /></td>"
 			."<td class=\"optionbox\">"
 		;
-		if($useFCK)
+		if($useCK)
 		{
-			// use FCKeditor module
-			require_once WT_ROOT.'modules/fck_editor/fckeditor.php';
-			$oFCKeditor = new FCKeditor('html') ;
-			$oFCKeditor->BasePath = './modules/fck_editor/';
-			$oFCKeditor->Value = $html;
-			$oFCKeditor->Width = 700;
-			$oFCKeditor->Height = 250;
-			$oFCKeditor->Config['AutoDetectLanguage'] = false ;
-			$oFCKeditor->Config['DefaultLanguage'] = WT_LOCALE;
-			$oFCKeditor->Create() ;
+			// use CKeditor module
+			require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
+			$oCKeditor = new CKEditor();
+			$oCKeditor->basePath =  './modules/ckeditor/';
+			$oCKeditor->config['width'] = 700;
+			$oCKeditor->config['height'] = 400;
+			$oCKeditor->config['AutoDetectLanguage'] = false ;
+			$oCKeditor->config['DefaultLanguage'] = 'en';
+			$oCKeditor->editor('html', $html);
 		}
 		else
 		{
