@@ -138,6 +138,11 @@ $WT_IMAGES["sexf"]["large"] = "female.gif";
 $WT_IMAGES["sexn"]["large"] = "fe_male.gif";
 $WT_IMAGES["edit_source"]["large"] = "small/edit_sour.gif";
 
+$WT_IMAGES["edit_fam"]["large"] = "edit_fam.gif";
+$WT_IMAGES["edit_indi"]["large"] = "edit_indi.gif";
+$WT_IMAGES["edit_sour"]["large"] = "edit_sour.gif";
+$WT_IMAGES["edit_repo"]["large"] = "Sedit_repo.gif";
+
 //- PGV small icons
 $WT_IMAGES["admin"]["small"] = "small/admin.gif";
 $WT_IMAGES["ancestry"]["small"] = "small/ancestry.gif";
@@ -147,7 +152,6 @@ $WT_IMAGES["childless"]["small"] = "small/childless.gif";
 $WT_IMAGES["clippings"]["small"] = "small/clippings.gif";
 $WT_IMAGES["descendant"]["small"] = "small/descendancy.gif";
 $WT_IMAGES["edit_fam"]["small"] = "small/edit_fam.gif";
-$WT_IMAGES["edit_indi"]["small"] = "small/edit_indi.gif";
 $WT_IMAGES["edit_sour"]["small"] = "small/edit_sour.gif";
 $WT_IMAGES["edit_repo"]["small"] = "small/edit_repo.gif";
 $WT_IMAGES["fambook"]["small"] = "small/fambook.gif";
