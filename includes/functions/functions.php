@@ -766,46 +766,7 @@ function breakConts($newline) {
 		if ($k>0) {
 			$newlines[$k] = "{$level} CONT ".$newlines[$k];
 		}
-		if (strlen($newlines[$k])>255) {
-			if ($WORD_WRAPPED_NOTES) {
-				while (strlen($newlines[$k])>255) {
-					// Make sure this piece ends on a blank, because one blank will be
-					// added automatically when everything is put back together
-					$lastBlank = strrpos(substr($newlines[$k], 0, 255), " ");
-					$thisPiece = rtrim(substr($newlines[$k], 0, $lastBlank+1));
-					$newged .= $thisPiece."\n";
-					$newlines[$k] = substr($newlines[$k], (strlen($thisPiece)+1));
-					$newlines[$k] = "{$level} CONC ".$newlines[$k];
-				}
-			} else {
-				while (strlen($newlines[$k])>255) {
-					// Make sure this piece doesn't end on a blank
-					// (Blanks belong at the start of the next piece)
-					$thisPiece = rtrim(substr($newlines[$k], 0, 255));
-					// Make sure this piece doesn't end in the middle of a UTF-8 character
-					$nextPieceFirstChar = substr($newlines[$k], strlen($thisPiece), 1);
-					if (($nextPieceFirstChar&"\xC0") == "\x80") {
-						// Include all of the UTF-8 character in next piece
-						while (true) {
-							// Find the start of the UTF-8 encoded character
-							$nextPieceFirstChar = substr($thisPiece, -1);
-							$thisPiece = substr($thisPiece, 0, -1);
-							if (($nextPieceFirstChar&"\xC0") != "\x80") {
-								break;
-							}
-						}
-						// Make sure we didn't back up to a blank
-						$thisPiece = rtrim($thisPiece);
-					}
-					$newged .= $thisPiece."\n";
-					$newlines[$k] = substr($newlines[$k], strlen($thisPiece));
-					$newlines[$k] = "{$level} CONC ".$newlines[$k];
-				}
-			}
-			$newged .= trim($newlines[$k])."\n";
-		} else {
-			$newged .= trim($newlines[$k])."\n";
-		}
+		$newged .= trim($newlines[$k])."\n";
 	}
 	return $newged;
 }
