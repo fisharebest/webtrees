@@ -590,7 +590,7 @@ class IndividualControllerRoot extends BaseController {
 			$ff="";
 		}
 		//-- main edit menu
-		$menu = new Menu(i18n::translate('Edit'));
+		$menu = new Menu(i18n::translate('Edt'));
 		if (!empty($WT_IMAGES["edit_indi"]["large"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["large"]);
 		}
