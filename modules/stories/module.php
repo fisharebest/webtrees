@@ -115,7 +115,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$languages=get_block_setting($block_id, 'languages');
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				$html.='<div class="news_title center">'.get_block_setting($block_id, 'title').'</div>';
-				$html.='<div>'.get_block_setting($block_id, 'body').'</div><br />';
+				$html.='<div>'.get_block_setting($block_id, 'story_body').'</div><br />';
 				if (WT_USER_CAN_EDIT) {
 					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&amp;block_id='.$block_id.'">';
 					$html.=i18n::translate('Edit story').'</a></div><br />';
@@ -151,6 +151,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
+			$useCK = file_exists(WT_ROOT.'modules/ckeditor/ckeditor.php');
+			if($useCK) {
+				require WT_ROOT.'modules/ckeditor/ckeditor.php';
+			}
 			if (safe_POST_bool('save')) {
 				$block_id=safe_POST('block_id');
 				if ($block_id) {
@@ -168,8 +172,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					));
 					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-				set_block_setting($block_id, 'title',  safe_POST('title', WT_REGEX_UNSAFE)); // allow html
-				set_block_setting($block_id, 'body',   safe_POST('body',  WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'title',		safe_POST('title',		WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'story_body',  safe_POST('story_body', WT_REGEX_UNSAFE)); // allow html
 				$languages=array();
 				foreach (i18n::installed_languages() as $code=>$name) {
 					if (safe_POST_bool('lang_'.$code)) {
@@ -186,7 +190,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if ($block_id) {
 					print_header(i18n::translate('Edit story'));
 					$title=get_block_setting($block_id, 'title');
-					$body=get_block_setting($block_id, 'body');
+					$story_body=get_block_setting($block_id, 'story_body');
 					$gedcom_id=WT_DB::prepare(
 						"SELECT gedcom_id FROM ##block WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
@@ -196,7 +200,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				} else {
 					print_header(i18n::translate('Add story'));
 					$title='';
-					$body='';
+					$story_body='';
 					$gedcom_id=WT_GED_ID;
 					$xref='';
 				}
@@ -224,7 +228,22 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td></tr>';
 				echo '<tr><td class="descriptionbox" colspan="2">';
 				echo i18n::translate('Story'), help_link('add_story', $this->getName());
-				echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="body" rows="10" cols="90" tabindex="2">', htmlspecialchars($body), '</textarea></td></tr>';
+				echo '</td></tr><tr><td class="optionbox" colspan="2">';
+				if($useCK) {
+				// use CKeditor module
+					require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
+					$oCKeditor = new CKEditor();
+					$oCKeditor->basePath =  './modules/ckeditor/';
+					$oCKeditor->config['width'] = 900;
+					$oCKeditor->config['height'] = 400;
+					$oCKeditor->config['AutoDetectLanguage'] = false ;
+					$oCKeditor->config['DefaultLanguage'] = 'en';
+					$oCKeditor->editor('story_body', $story_body);
+				} else {
+				//use standard textarea
+					echo '<textarea name="story_body" rows="10" cols="90" tabindex="2">', htmlspecialchars($story_body), '</textarea>';
+				}
+				echo '</td></tr>';
 				echo '<tr><td class="descriptionbox">';
 				echo i18n::translate('Person');
 				echo '</td><td class="optionbox">';
