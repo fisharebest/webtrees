@@ -90,13 +90,24 @@ function checkbox_with_value($name, $is_checked='', $checked_value='1', $uncheck
 
 // Print a set of edit controls to select languages
 function edit_language_checkboxes($field_prefix, $languages) {
+	echo '<table>';
+	$i=0;
 	foreach (i18n::installed_languages() as $code=>$name) {
-		echo '<input type="checkbox" name="'.$field_prefix.$code.'"';
+		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
 		if (strpos("@{$languages}@", $code)!==false) {
-			echo 'checked="checked"';
+			$content .= 'checked="checked"';
 		}
-		echo '> ', $name, '<br/>';
+		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';
+		// print in two columns
+		if (($i % 2)==0) {
+			echo '<tr><td>', $content, '</td>';
+		} else {
+			echo '<td>', $content, '</td></tr>';
+		}
+		$i++;
 	}
+	if (($i % 2)!=0) echo '</tr>';
+	echo '</table>';
 }
 
 // Print an edit control for access level

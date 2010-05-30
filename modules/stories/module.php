@@ -246,7 +246,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</td></tr>';
 				echo '<tr><td class="descriptionbox">';
 				echo i18n::translate('Person');
-				echo '</td><td class="optionbox">';
+				echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
 				print_findindi_link("xref", "pid");
 				echo '</td></tr>';
