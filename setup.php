@@ -598,14 +598,14 @@ try {
 		" import_offset INTEGER UNSIGNED                              NOT NULL,".
 		" PRIMARY KEY     (gedcom_id),".
 		" UNIQUE  KEY ux1 (gedcom_name)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}site_setting (".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY (setting_name)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}gedcom_setting (".
@@ -614,7 +614,7 @@ try {
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, setting_name),".
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user (".
@@ -626,7 +626,7 @@ try {
 		" PRIMARY KEY     (user_id),".
 		" UNIQUE  KEY ux1 (user_name),".
 		" UNIQUE  KEY ux2 (email)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user_setting (".
@@ -635,7 +635,7 @@ try {
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, setting_name),".
 		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user_gedcom_setting (".
@@ -646,7 +646,7 @@ try {
 		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
 		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE CASCADE */,".
 		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}log (".
@@ -663,7 +663,7 @@ try {
 		"         KEY ix3 (ip_address),".
 		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE SET NULL */,".
 		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE SET NULL */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}change (".
@@ -679,7 +679,7 @@ try {
 		"         KEY ix1 (gedcom_id, status, xref),".
 		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE RESTRICT */,".
 		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}message (".
@@ -692,7 +692,7 @@ try {
 		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" PRIMARY KEY     (message_id),".
 		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user (user_id) /* ON DELETE RESTRICT */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}individuals (".
@@ -704,7 +704,7 @@ try {
 		" i_gedcom LONGTEXT            NOT NULL,".
 		" PRIMARY KEY     (i_id, i_file),".
 		" UNIQUE  KEY ux1 (i_file, i_id)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}families (".
@@ -719,7 +719,7 @@ try {
 		" UNIQUE  KEY ux1 (f_file, f_id),".
 		"         KEY ix1 (f_husb),".
 		"         KEY ix2 (f_wife)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}places (".
@@ -735,7 +735,7 @@ try {
 		"         KEY ix2 (p_level),".
 		"         KEY ix3 (p_parent_id),".
 		"         KEY ix4 (p_file)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}placelinks (".
@@ -746,7 +746,7 @@ try {
 		"         KEY ix1 (pl_p_id),".
 		"         KEY ix2 (pl_gid),".
 		"         KEY ix3 (pl_file)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}dates (".
@@ -770,7 +770,7 @@ try {
 		" KEY ix8 (d_file),".
 		" KEY ix9 (d_type),".
 		" KEY ix10 (d_fact, d_gid)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}media (".
@@ -783,7 +783,7 @@ try {
 		" m_gedrec  LONGTEXT                   NULL,".
 		" PRIMARY KEY (m_id),".
 		"         KEY ix1 (m_media, m_gedfile)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}remotelinks (".
@@ -793,7 +793,7 @@ try {
 		" KEY ix1 (r_gid),".
 		" KEY ix2 (r_linkid),".
 		" KEY ix3 (r_file)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}media_mapping (".
@@ -807,7 +807,7 @@ try {
 		"         KEY ix1 (mm_media, mm_gedfile),".
 		"         KEY ix2 (mm_gid, mm_gedfile),".
 		"         KEY ix3 (mm_gedfile)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}next_id (".
@@ -816,7 +816,7 @@ try {
 		" next_id     INTEGER     NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, record_type),".
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}other (".
@@ -826,7 +826,7 @@ try {
 		" o_gedcom LONGTEXT        NULL,".
 		" PRIMARY KEY     (o_id, o_file),".
 		" UNIQUE  KEY ux1 (o_file, o_id)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}sources (".
@@ -839,7 +839,7 @@ try {
 		" UNIQUE  KEY ux1 (s_file, s_id),".
 		"         KEY ix1 (s_name),".
 		"         KEY ix2 (s_dbid)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}link (".
@@ -849,7 +849,7 @@ try {
 		" l_to      VARCHAR(20) NOT NULL,".
 		" PRIMARY KEY      (l_from, l_file, l_type, l_to),".
 		" UNIQUE INDEX ux1 (l_to, l_file, l_type, l_from)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}name (".
@@ -871,7 +871,7 @@ try {
 		" PRIMARY KEY (n_id, n_file, n_num),".
 		"         KEY ix1 (n_full, n_id, n_file),".
 		"         KEY ix2 (n_file, n_surn)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module (".
@@ -881,7 +881,7 @@ try {
 		" menu_order    INTEGER                         NULL, ".
 		" sidebar_order INTEGER                         NULL,".
 		" PRIMARY KEY (module_name)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_setting (".
@@ -890,7 +890,7 @@ try {
 		" setting_value TEXT        NOT NULL,".
 		" PRIMARY KEY     (module_name, setting_name),".
 		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_privacy (".
@@ -901,7 +901,7 @@ try {
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
 		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */,".
 		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)   /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block (".
@@ -916,7 +916,7 @@ try {
 		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  ), /* ON DELETE CASCADE */".
 		" FOREIGN KEY fk2 (user_id    ) REFERENCES {$TBLPREFIX}user   (user_id    ), /* ON DELETE CASCADE */".
 		" FOREIGN KEY fk3 (module_name) REFERENCES {$TBLPREFIX}module (module_name)  /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block_setting (".
@@ -925,7 +925,7 @@ try {
 		" setting_value TEXT        NOT NULL,".
 		" PRIMARY KEY     (block_id, setting_name),".
 		" FOREIGN KEY fk1 (block_id) REFERENCES {$TBLPREFIX}block (block_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}hit_counter (".
@@ -935,7 +935,7 @@ try {
 		" page_count     INTEGER     NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, page_name, page_parameter),".
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}ip_address (".
@@ -943,7 +943,7 @@ try {
 		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL,".
 		" comment    VARCHAR(255)                               NOT NULL,".
 		" PRIMARY KEY (ip_address)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		") COLLATE utf8_unicode_ci ENGINE=MyISAM"
 	);
 
 	$dbh->exec(

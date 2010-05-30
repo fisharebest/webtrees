@@ -29,9 +29,9 @@
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
-$useFCK = file_exists(WT_ROOT.'modules/FCKeditor/fckeditor.php');
-if($useFCK){
-	require WT_ROOT.'modules/FCKeditor/fckeditor.php';
+$useCK = file_exists(WT_ROOT.'modules/ckeditor/ckeditor.php');
+if($useCK){
+	require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
 }
 
 print_simple_header(i18n::translate('Add/edit journal/news entry'));
@@ -61,7 +61,7 @@ if ($action=="compose") {
 				document.messageform.title.focus();
 				return false;
 			}
-			<?php if (! $useFCK) { //will be empty for FCK. FIXME, use FCK API to check for content.
+			<?php if (! $useCK) { //will be empty for FCK. FIXME, use FCK API to check for content.
 			?>
 			if (frm.text.value=="") {
 				alert('<?php print i18n::translate('Please enter some text for this News or Journal entry.'); ?>');
@@ -90,22 +90,21 @@ if ($action=="compose") {
 	print "<tr><td align=\"right\">".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>\n";
 	print "<tr><td valign=\"top\" align=\"right\">".i18n::translate('Entry Text:')."<br /></td>";
 	print "<td>";
-	if ($useFCK) { // use FCKeditor module
+	if ($useCK) { // use CKeditor module
 		$trans = get_html_translation_table(HTML_SPECIALCHARS);
 		$trans = array_flip($trans);
 		$news["text"] = strtr($news["text"], $trans);
 		$news["text"] = nl2br($news["text"]);
 
-		$oFCKeditor = new FCKeditor('text') ;
-		$oFCKeditor->BasePath =  './modules/FCKeditor/';
-		$oFCKeditor->Value = $news["text"];
-		$oFCKeditor->Width = 700;
-		$oFCKeditor->Height = 250;
-		$oFCKeditor->Config['AutoDetectLanguage'] = false ;
-		$oFCKeditor->Config['DefaultLanguage'] = WT_LOCALE;
-		$oFCKeditor->Create() ;
+		$oCKeditor = new CKEditor();
+		$oCKeditor->basePath =  './modules/ckeditor/';
+		$oCKeditor->config['width'] = 700;
+		$oCKeditor->config['height'] = 250;
+		$oCKeditor->config['AutoDetectLanguage'] = false ;
+		$oCKeditor->config['DefaultLanguage'] = 'en';
+		$oCKeditor->editor('text', $news["text"]);
 	} else { //use standard textarea
-		print "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
+		 print "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
 	}
 	print "<br /></td></tr>\n";
 	print "<tr><td></td><td><input type=\"submit\" value=\"".i18n::translate('Save')."\" /></td></tr>\n";
