@@ -198,8 +198,12 @@ class RepositoryControllerRoot extends BaseController {
 		$menu = new Menu(i18n::translate('Edit Repository'));
 		if ($SHOW_GEDCOM_RECORD || WT_USER_IS_ADMIN)
 			$menu->addOnclick('return edit_raw(\''.$this->rid.'\');');
-		if (!empty($WT_IMAGES["edit_repo"]["small"]))
-			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['edit_repo']['small']}");
+		if (!empty($WT_IMAGES["edit_repo"]["large"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_repo"]["large"]);
+		}
+		else if (!empty($WT_IMAGES["edit_repo"]["small"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_repo"]["small"]);
+		}
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
 		// edit repository / edit_raw
