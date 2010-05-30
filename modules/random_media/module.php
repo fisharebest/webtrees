@@ -167,31 +167,37 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			if (!$disp) {
 				return false;
 			}
+			$id=$this->getName().$block_id;
+			$title='';
+			$content = '';
+			if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
+				if ($ctype=="gedcom") {
+					$name = WT_GEDCOM;
+				} else {
+					$name = WT_USER_NAME;
+				}
+				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
+				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
+			}
+			$title .= i18n::translate('Random Picture');
+			$title .= help_link('index_media');
+			$content = "<div id=\"random_picture_container$block_id\">";
+			if ($controls) {
+				if ($start) {
+					$image = "stop";
+				} else {
+					$image = "rarrow";
+				}
+				$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['rdarrow']['other']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
 
-				$id=$this->getName().$block_id;
-				$title='';
-				$content = "";
-				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">"
-			."<img class=\"adminicon\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
-				$title .= i18n::translate('Random Picture');
-				$title .= help_link('index_media');
-				$content = "<div id=\"random_picture_container$block_id\">";
-				if ($controls) {
-					if ($start) {
-						$image = "stop";
-					} else {
-						$image = "rarrow";
-					}
-					$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['rdarrow']['other']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
-
-						$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
-						if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
-						$content .= "<a href=\"javascript: ".i18n::translate('Play')."/".i18n::translate('Stop')."\" onclick=\"togglePlay(); return false;\">";
-						if (isset($WT_IMAGES[$image]['other'])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES[$image]['other']}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
-						else $content .= i18n::translate('Play')."/".i18n::translate('Stop');
-						$content .= "</a>";
-						if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
-						$content .= '
+				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
+				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
+				$content .= "<a href=\"javascript: ".i18n::translate('Play')."/".i18n::translate('Stop')."\" onclick=\"togglePlay(); return false;\">";
+				if (isset($WT_IMAGES[$image]['other'])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES[$image]['other']}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
+				else $content .= i18n::translate('Play')."/".i18n::translate('Stop');
+				$content .= "</a>";
+				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
+				$content .= '
 					</div>
 					<script language="JavaScript" type="text/javascript">
 					<!--
@@ -221,9 +227,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 					//-->
 					</script>';
-				}
-				if ($start) {
-						$content .= '
+			}
+			if ($start) {
+				$content .= '
 					<script language="JavaScript" type="text/javascript">
 					<!--
 						play = true;
@@ -232,15 +238,15 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 						window.setTimeout("playSlideShow()", 6000);
 					//-->
 					</script>';
-				}
-					$content .= "<div class=\"center\" id=\"random_picture_content$block_id\">";
+			}
+			$content .= "<div class=\"center\" id=\"random_picture_content$block_id\">";
 			$imgsize = findImageSize($medialist[$value]["FILE"]);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
-				$content .= "<table id=\"random_picture_box\" width=\"100%\"><tr><td valign=\"top\"";
+			$content .= "<table id=\"random_picture_box\" width=\"100%\"><tr><td valign=\"top\"";
 
-				if ($block) $content .= " align=\"center\" class=\"details1\"";
-				else $content .= " class=\"details2\"";
+			if ($block) $content .= " align=\"center\" class=\"details1\"";
+			else $content .= " class=\"details2\"";
 			$mediaid = $medialist[$value]["XREF"];
 
 //LBox --------  change for Lightbox Album --------------------------------------------
