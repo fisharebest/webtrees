@@ -778,7 +778,7 @@ try {
 		" m_media   VARCHAR(20)            NOT NULL,".
 		" m_ext     VARCHAR(6)                 NULL,".
 		" m_titl    VARCHAR(255)               NULL,".
-		" m_file    VARCHAR(255)               NULL,".
+		" m_file    VARCHAR(512)               NULL,".
 		" m_gedfile INTEGER                NOT NULL,".
 		" m_gedrec  LONGTEXT                   NULL,".
 		" PRIMARY KEY (m_id),".
