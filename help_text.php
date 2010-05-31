@@ -4882,11 +4882,6 @@ case 'welcome_new':
 	$text=i18n::translate('Since you are seeing this page, you have successfully installed webtrees on your server and are ready to begin configuring it to your requirements.<br />This Help page will guide you through the configuration process.  As you enter different fields, this window will provide you with help information about the field you are in.  You may close this window; to open it again click on one of the "?" question marks next to the field label.');
 	break;
 
-case 'yahrzeit':
-	$title=i18n::translate('Yahrzeiten block');
-	$text=i18n::translate('This block shows you Yahrzeiten that are coming up in the near future.<br /><br />Yahrzeiten (singular: Yahrzeit) are anniversaries of a person\'s death.  These anniversaries are observed in the Jewish tradition; they are no longer in common use in other traditions.  «Yahrzeit» can also be spelled «Jahrzeit» or «Yartzeit».<br /><br />The Administrator determines how far ahead the block will look.  You can further refine the block\'s display of upcoming Yahrzeiten through configuration options.');
-	break;
-
 case 'zip':
 	$title=i18n::translate('Zip clippings');
 	$text=i18n::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank">http://www.winzip.com</a>.');

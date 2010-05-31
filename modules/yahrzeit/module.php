@@ -61,7 +61,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$title='';
 		}
-		$title.= i18n::translate('Upcoming Yahrzeiten').help_link('yahrzeit');
+		$title.= i18n::translate('Upcoming Yahrzeiten').help_link('yahrzeit', $this->getName());
 		$content='';
 
 		// The standard anniversary rules cover most of the Yahrzeit rules, we just
