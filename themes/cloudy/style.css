@@ -1862,3 +1862,35 @@ div.faq_body {
 	font-size: 90%;
 	padding: 0 10px;
 }
+/* Use CSS menus based on nested <ul> */
+.makeMenu li {
+	display:inline;
+	position:relative;
+	white-space:nowrap;
+}
+
+.makeMenu li ul {
+	display:none;
+	position:absolute;
+	left:0px;
+	top:1.1em;
+	background-color:#FFF;
+	border:thin solid #AAA;
+	z-index:999;
+}
+
+.makeMenu li ul li {
+	padding: 2px;
+	display:block;
+	text-align:left;
+}
+
+.makeMenu, .makeMenu li ul {
+	list-style:none;
+	margin:0;
+	padding:1px;
+}
+
+.makeMenu li:hover > ul {
+	display:block;
+}

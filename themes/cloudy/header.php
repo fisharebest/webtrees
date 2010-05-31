@@ -125,9 +125,6 @@ $menubar = new MenuBar();
 						<td>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 								<tr>
-									<td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
-										<?php print_theme_dropdown(); ?>
-									</td>
 									<td style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
 										<form action="search.php" method="post">
 											<input type="hidden" name="action" value="general" />
@@ -138,11 +135,6 @@ $menubar = new MenuBar();
 											<input type="image" src="<?php echo $WT_IMAGE_DIR; ?>/go.gif" align="top" title="<?php echo i18n::translate('Search'); ?>
 											" />
 										</form>
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
-										<?php print_favorite_selector(0); ?>
 									</td>
 								</tr>
 							</table>
@@ -245,9 +237,16 @@ $menubar = new MenuBar();
 							&nbsp;
 						</td>
 						<?php if (empty($SEARCH_SPIDER)) { ?>
-						<td width="120">
-							<div align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
-								<?php print_lang_form(1); ?>
+						<td>
+							<div class="makeMenu" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
+								<?php
+									echo MenuBar::getFavoritesMenu()->getMenuAsList();
+									global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES;
+										if ($ALLOW_THEME_DROPDOWN && $ALLOW_USER_THEMES) {
+											echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+										}
+									echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+								?>
 							</div>
 						</td>
 						<?php } ?>
