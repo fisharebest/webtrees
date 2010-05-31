@@ -31,6 +31,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/classes/class_module.php';
+require_once WT_ROOT.'includes/classes/class_stats.php';
 
 class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
@@ -81,14 +82,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 	 	* Initiate the stats object.
 	 	*/
-		if (get_block_setting($block_id, 'compat')) {
-			require_once WT_ROOT.'includes/classes/class_stats_compat.php';
-			$stats = new stats_compat($GEDCOM);
-		} elseif(get_block_setting($block_id, 'ui')) {
-			require_once WT_ROOT.'includes/classes/class_stats_ui.php';
+		if(get_block_setting($block_id, 'ui')) {
 			$stats = new stats_ui($GEDCOM);
 		} else {
-			require_once WT_ROOT.'includes/classes/class_stats.php';
 			$stats = new stats($GEDCOM);
 		}
 
