@@ -3682,4 +3682,74 @@ class stats {
 	}
 }
 
+/*
+ * This class provides access to additional non-stats features of webtrees
+ * for use in the HTML block (Extended interaface enabled).
+ */
+class stats_ui extends stats
+{
+///////////////////////////////////////////////////////////////////////////////
+// Favorites												    //
+///////////////////////////////////////////////////////////////////////////////
+
+	static function _getFavorites($isged=true) {
+		global $GEDCOM;
+
+		ob_start();
+		if ($isged) {
+			$class_name = 'gedcom_favorites_WT_Module';
+			$block = new $class_name;
+			$content = $block->getBlock($GEDCOM);
+		}
+		else if (WT_USER_ID) {
+			$class_name = 'user_favorites_WT_Module';
+			$block = new $class_name;
+			$content = $block->getBlock($GEDCOM);
+		}
+		return ob_get_clean();
+	}
+
+	static function gedcomFavorites(){return self::_getFavorites(true);}
+	static function userFavorites(){return self::_getFavorites(false);}
+
+	static function totalGedcomFavorites(){return count(gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM));}
+	static function totalUserFavorites(){return count(user_favorites_WT_Module::getUserFavorites(WT_USER_NAME));}
+
+///////////////////////////////////////////////////////////////////////////////
+// Other blocks												    //
+// example of use: #callBlock:block_name#							    //
+///////////////////////////////////////////////////////////////////////////////
+
+	static function callBlock($params=null) {
+		if ($params === null){return '';}
+		if (isset($params[0]) && $params[0] != ''){$block = $params[0];}else{return '';}
+		if ($block=='html') return '#callBlock:html#';
+		ob_start();
+		$class_name = $block.'_WT_Module';
+		$block = new $class_name;
+		$block_id=safe_GET('block_id');
+		$content = $block->getBlock($block_id);
+		return ob_get_clean();
+	}
+
+	function totalUserMessages(){return count(getUserMessages(WT_USER_NAME));}
+	function totalUserJournal(){ return count(getUserNews(WT_USER_ID));}
+	function totalGedcomNews(){  return count(getUserNews(WT_GEDCOM));}
+
+///////////////////////////////////////////////////////////////////////////////
+// System													    //
+// Only allowed in GEDCOM Home Page, not user portals for security.			    //
+///////////////////////////////////////////////////////////////////////////////
+
+	static function includeFile($params=null) {
+		if(!isset($_GET['ctype']) || $_GET['ctype'] != 'gedcom'){return '';}
+		if($params === null){$params = array();}
+		if(isset($params[0]) && $params[0] != ''){$fn = $params[0];}else{return '';}
+
+		if(!file_exists($fn) || stristr($fn, 'config.php')){return '';}
+		ob_start();
+		include filename_decode(real_path($fn));
+		return trim(ob_get_clean());
+	}
+}
 ?>

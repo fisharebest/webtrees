@@ -4115,9 +4115,9 @@ case 'index_gedcom_news':
 	$text=i18n::translate('The News block is like a bulletin board for this GEDCOM.  The site administrator can place important announcements or interesting news messages here.<br /><br />If you have something interesting to display, please contact the site administrator;  he can put your message on this bulletin board.');
 	break;
 
-case 'index_htmlplus_compat':
-	$title=i18n::translate('Advanced HTML compatability mode');
-	$text=i18n::translate('Enable compatibility with older versions of this block.  When checked, both old and new keywords will be recognized and acted upon.<br /><br />For example, the text <b>&#35;TOTAL_FAM&#35;</b> will be recognized as being equivalent to <b>&#35;totalFamilies&#35;</b>, <b>&#35;FIRST_DEATH_PLACE&#35;</b> to <b>&#35;firstDeathPlace&#35;</b>, <b>&#35;TOP10_BIGFAM&#35;</b> to <b>&#35;topTenLargestFamily&#35;</b>, etc.<br /><br />Unless absolutely necessary, you should not use Compatibility mode.');
+case 'index_htmlplus_ui':
+	$title=i18n::translate('Extended Interface');
+	$text=i18n::translate('When the extended interaface is enabled you can call other block using a keyword <b>&#35;callBlock:block_name&#35;</b>, where instead of block_name you should use the real block name. For example, <b>&#35;callBlock:gedcom_stats&#35;</b> displays the GEDCOM statistics block.');
 	break;
 
 case 'index_htmlplus_content':
