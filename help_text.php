@@ -4145,11 +4145,6 @@ case 'index_htmlplus_title':
 	$text=i18n::translate('This text should be blank or very brief.  When blank, the Advanced HTML block will show on the Index or Portal page as a plain block, just like the HTML block does.  When there is text, the Advanced HTML block will show like all the other blocks, complete with a block title bar containing the text you enter here.');
 	break;
 
-case 'index_loggedin':
-	$title=i18n::translate('Logged in users block');
-	$text=i18n::translate('This block will show you the users currently logged in.<br /><br />If you are not an administrator, your view of logged-in users is restricted to those who have elected to be visible while on-line.  For this to work, you must also elect to be visible while on-line.  On-line users who are invisible to you are counted as being anonymous.');
-	break;
-
 case 'index_login':
 	$title=i18n::translate('Login block');
 	$text=i18n::translate('You can login on almost every page of this program. You will usually do so on the first page, since you can only access privileged information when you are logged in.<br /><br />You can login by typing your <b>username</b> and <b>password</b> and then clicking the Login button.');
