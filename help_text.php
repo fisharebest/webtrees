@@ -4757,26 +4757,6 @@ case 'timeline_control':
 	$text=i18n::translate('Click the drop down menu to change the speed at which the timeline scrolls.<br/><br/>~Begin Year~<br/>Enter the starting year of the range.<br/><br/>~End Year~<br/>Enter the ending year of the range.<br/><br/>~Search~<br/>Click the Search button to begin searching for events that occurred within the range identified by the Begin Year and End Year fields.');
 	break;
 
-case 'todo':
-	$title=i18n::translate('"To Do" block');
-	$text=i18n::translate('This block helps you keep track of <b>_TODO</b> tasks in the database.<br /><br />To add &quot;To Do&quot; tasks to your records, you may first need amend the GEDCOM configuration so that the <b>_TODO</b> fact is in the list of facts that can be added to the records of individuals, families, sources, and repositories.  Each of these lists, which you will find in the Edit Options section of the GEDCOM configuration, is independent.  The order of the list entries is not important; you can add the new entries at the beginning of each list.');
-	break;
-
-case 'todo_show_future':
-	$title=i18n::translate('Show future tasks');
-	$text=i18n::translate('Show &quot;To Do&quot; tasks that have a date in the future.  Otherwise only items with a date in the past are shown.');
-	break;
-
-case 'todo_show_other':
-	$title=i18n::translate('Show other users\' tasks');
-	$text=i18n::translate('Show &quot;To Do&quot; tasks assigned to other users');
-	break;
-
-case 'todo_show_unassigned':
-	$title=i18n::translate('Show unassigned tasks');
-	$text=i18n::translate('Show &quot;To Do&quot; tasks that are not assigned to any user');
-	break;
-
 case 'upload_media_file':
 	$title=i18n::translate('Media file to upload');
 	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.<br /><br />The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.<br /><br />If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b>.  In this case, the media file will be uploaded to the directory <b>%s</b>.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
