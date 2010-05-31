@@ -84,14 +84,14 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
 			$record=GedcomRecord::getInstance($todo['id']);
 			if ($record && $record->canDisplayDetails()) {
-				$wt_user=get_gedcom_value('_WT_USER', 2, $todo['factrec']);
-				if ($wt_user==WT_USER_NAME || !$wt_user && $show_unassigned || $wt_user && $show_other) {
+				$user_name=get_gedcom_value('_WT_USER', 2, $todo['factrec']);
+				if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
 					$content.='<tr valign="top">';
 					$content.='<td class="list_value_wrap">'.str_replace('<a', '<a name="'.$todo['date']->MinJD().'"', $todo['date']->Display(false)).'</td>';
 					$name=$record->getListName();
 					$content.='<td class="list_value_wrap" align="'.get_align(WT_GEDCOM).'"><a href="'.encode_url($record->getLinkUrl()).'">'.PrintReady($name).'</a></td>';
 					if ($show_unassigned || $show_other) {
-						$content.='<td class="list_value_wrap">'.$wt_user.'</td>';
+						$content.='<td class="list_value_wrap">'.$user_name.'</td>';
 					}
 					$text=get_gedcom_value('_TODO', 1, $todo['factrec']);
 					$content.='<td class="list_value_wrap" align="'.get_align($text).'">'.PrintReady($text).'</td>';
