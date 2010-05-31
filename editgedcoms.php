@@ -237,7 +237,7 @@ case 'importform':
 
 // List the gedcoms available to this user
 foreach ($gedcoms as $gedcom) {
-	if (userGedcomAdmin(WT_USER_ID, $gedcom->gedcom_id)) {
+	if (WT_USER_GEDCOM_ADMIN) {
 
 		echo
 			'<table class="gedcom_table" width="100%">',

@@ -35,7 +35,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (empty($ged)) $ged = $GEDCOM;
 
-if (!userGedcomAdmin(WT_USER_ID, $ged)) {
+if (!WT_USER_GEDCOM_ADMIN) {
 	header('Location: editgedcoms.php');
 	exit;
 }
