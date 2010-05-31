@@ -184,10 +184,10 @@ if (!$SEARCH_SPIDER) {
 	if ($alpha!='@' && $alpha!=',' && !$surname) {
 		if ($surname_sublist=='yes') {
 			echo '<a href="', $url, '&amp;surname_sublist=no">', i18n::translate('Skip surname lists'), '</a>';
-			echo help_link('skip_sublist', 'qm', 'skip_surnames');
+			echo help_link('skip_sublist');
 		} else {
 			echo '<a href="', $url, '&amp;surname_sublist=yes">', i18n::translate('Show surname lists'), '</a>';
-			echo help_link('skip_sublist', 'qm', 'show_surnames');
+			echo help_link('skip_sublist');
 		}
 		echo '&nbsp;&nbsp;&nbsp;';
 	}
