@@ -185,7 +185,7 @@ function checkFactEdit($gedrec) {
 if (!empty($pid)) {
 	if (($pid!="newsour") && ($pid!="newrepo") && ($noteid!="newnote")) {
 		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
-		$ct = preg_match("/0 @$pid@ (.*)/", $gedrec, $match);
+		$ct = preg_match("/^0 @$pid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
 			$disp = displayDetailsById($pid, $type);
@@ -200,7 +200,7 @@ if (!empty($pid)) {
 else if (!empty($famid)) {
 	if ($famid != "new") {
 		$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
-		$ct = preg_match("/0 @$famid@ (.*)/", $gedrec, $match);
+		$ct = preg_match("/^0 @$famid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
 			$disp = displayDetailsById($famid, $type);
