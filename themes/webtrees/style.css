@@ -677,6 +677,14 @@ a:hover .nameZoom {
 	padding: 1px;
 }
 
+.blockcontent {
+	margin-left:auto;
+	margin-right:5px;
+	margin-bottom:10px;
+	font-size: 13px;
+	overflow:auto;
+}
+
 #index_main_blocks {
 	clear: none;
 	width: 66%;

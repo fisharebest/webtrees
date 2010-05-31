@@ -66,6 +66,7 @@ ul {
 	margin-right: 5px;
 	margin-bottom: 10px;
 	font-size: 12px;
+	overflow:auto;
 }
 
 #content {
