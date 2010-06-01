@@ -2110,29 +2110,6 @@ function handle_updates($newged, $levelOverride="no") {
 
 	for($j=0; $j<count($glevels); $j++) {
 
-// BH These following lines destroyed the Shared Note
-// Therefore they have been removed for now
-/*
-		//-- update external note records first
-		if (($islink[$j])&&($tag[$j]=="NOTE")) {
-			if (empty($NOTE[$text[$j]])) {
-				delete_gedrec($text[$j], WT_GED_ID);
-				$text[$j] = '';
-			} else {
-				$noterec = find_gedcom_record($text[$j], WT_GED_ID);
-				$newnote = "0 @$text[$j]@ NOTE\n";
-				$newline = "1 CONC ".rtrim(stripLRMRLM($NOTE[$text[$j]]));
-				$newnote .= breakConts($newline);
-				if (WT_DEBUG) {
-					echo "<pre>$newnote</pre>";
-				}
-				replace_gedrec($text[$j], WT_GED_ID, $newnote);
-			}
-		} //-- end of external note handling code
-*/
-
-		//echo $glevels[$j], ' ', $tag[$j];
-
 		// Look for empty SOUR reference with non-empty sub-records.
 		// This can happen when the SOUR entry is deleted but its sub-records
 		// were incorrectly left intact.
@@ -2260,12 +2237,6 @@ function create_add_form($fact) {
 	global $tags, $FULL_SOURCES;
 
 	$tags = array();
-	
-	// GEDFact_assistant ================================================
-	if ($fact=="CENS" && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php') ) {
-		require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php';
-	}
-	// ==================================================================
 
 	// handle  MARRiage TYPE
 	if (substr($fact, 0, 5)=="MARR_") {
@@ -2326,12 +2297,6 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 	$type = trim($fields[1]);
 	$level1type = $type;
-	
-	// GEDFact_assistant ================================================
-	if ($type=="CENS" && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php') ) {
-			require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_query_2a.php';
-	}
-	// ==================================================================
 	
 	if (count($fields)>2) {
 		$ct = preg_match("/@.*@/", $fields[2]);
