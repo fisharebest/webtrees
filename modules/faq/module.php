@@ -318,11 +318,13 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo '<table class="faq">';
 		// List of titles
 		foreach($faqs as $id => $faq) {
-		$languages=get_block_setting($faq->block_id, 'languages');
-		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
-			return;
-		}
-			if ($faq->header && $faq->faqbody) {
+			$header = get_block_setting($faq->block_id, 'header');
+			$faqbody = get_block_setting($faq->block_id, 'faqbody');
+			$languages=get_block_setting($faq->block_id, 'languages');
+			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
+				return;
+			}
+			if ($header && $faqbody) {
 				$row_color = ($row_count % 2) ? 'odd' : 'even'; 
 				echo '';
 					// NOTE: Print the header of the current item
@@ -339,11 +341,13 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		// Detailed entries
 		echo '<table>';
 		foreach($faqs as $id => $faq) {
+			$header = get_block_setting($faq->block_id, 'header');
+			$faqbody = get_block_setting($faq->block_id, 'faqbody');
 			$languages=get_block_setting($faq->block_id, 'languages');
 			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
 				return;
 			}
-			if ($faq->header && $faq->faqbody) {
+			if ($header && $faqbody) {
 				// NOTE: Print the body text of the current item, with its header
 				echo '<div class="faq_title" id="faq', $id, '">',
 					$faq->header;
@@ -352,7 +356,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					echo '</div>';
 				echo '</div>';
 				echo '<div class="faq_body">',
-					substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody);
+					substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody);
 				echo '</div>';
 				echo '<hr />';
 			}
