@@ -2237,6 +2237,13 @@ function create_add_form($fact) {
 	global $tags, $FULL_SOURCES;
 
 	$tags = array();
+	
+	// GEDFact_assistant ================================================
+	if ($fact=="CENS") {
+		global $TEXT_DIRECTION, $CensDate;
+		$CensDate="yes";
+	}
+	// ==================================================================
 
 	// handle  MARRiage TYPE
 	if (substr($fact, 0, 5)=="MARR_") {
@@ -2297,6 +2304,13 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 	$type = trim($fields[1]);
 	$level1type = $type;
+	
+	// GEDFact_assistant ================================================
+	if ($type=="CENS") {
+		global $TEXT_DIRECTION, $CensDate;
+		$CensDate="yes";
+	}
+	// ==================================================================
 	
 	if (count($fields)>2) {
 		$ct = preg_match("/@.*@/", $fields[2]);
