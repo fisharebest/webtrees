@@ -390,7 +390,6 @@ require WT_ROOT.'includes/functions/functions_privacy.php';
 define('WT_USER_NAME',         getUserName());
 define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
 define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
-define('WT_ADMIN_USER_EXISTS', WT_USER_IS_ADMIN     || adminUserExists());
 define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_ACCEPT',   WT_USER_GEDCOM_ADMIN || userCanAccept  (WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));

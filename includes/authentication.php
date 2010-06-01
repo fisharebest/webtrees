@@ -231,19 +231,9 @@ function userCanAccept($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 	}
 }
 
-/**
- * Should user's changed automatically be accepted
- */
+// Should user's changed automatically be accepted
 function userAutoAccept($user_id=WT_USER_ID) {
 	return get_user_setting($user_id, 'auto_accept')=='Y';
-}
-
-/**
- * Does an admin user exist?  Used to redirect to install/config page
- * during initial setup.
- */
-function adminUserExists() {
-	return admin_user_exists();
 }
 
 // Get the full name for a user
