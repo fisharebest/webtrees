@@ -195,9 +195,13 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$submenu_hoverclass		=	"submenuitem_hover";
 		}
 		$menu = new Menu();
-		// Truncate media title to 13 chars and add ellipsis
+		// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
 		$mtitle = $rawTitle;
-		if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 13).i18n::translate('…');
+		if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
+			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 45).i18n::translate('…');
+		} else {
+			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 13).i18n::translate('…');		
+		}
 		$mtitle = PrintReady(htmlspecialchars($mtitle));
 
 		// Continue menu construction
@@ -276,8 +280,13 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				$imgwidth = $imgsize[0]+40;
 				$imgheight = $imgsize[1]+150;
 
-				// Start Thumbnail Enclosure table
-				print "<table width=\"10px\" class=\"pic\" border=\"0\"><tr>" . "\n";
+				// Start Thumbnail Enclosure table ---------------------------------------------
+				// Pull table up 90px if media object is a "streetview"
+				if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
+					print "<table width=\"10px\" style=\"margin-top:-90px;\" class=\"pic\" border=\"0\"><tr>" . "\n";
+				} else {
+					print "<table width=\"10px\" class=\"pic\" border=\"0\"><tr>" . "\n";
+				}
 				print "<td align=\"center\" rowspan=\"2\" >";
 				print "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
 				print "</td>". "\n";
@@ -291,19 +300,19 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				$item++;
 
 				print "<td colspan=\"3\" valign=\"middle\" align=\"center\" >". "\n";
-				// If not reordering, enable Lightbox or popup and show thumbnail tooltip ----------
+				// If not reordering, enable Lightbox or popup and show thumbnail tooltip ------
 				if (!$reorder) {
 					echo '<a href="', $mediaInfo['url'], '">';
 				}
 			}
 
-			// Now finally print the thumbnail ----------------------------------
+			// Now finally print the thumbnail -----------------------------------------------------
 			$height = 78;
 			$size = findImageSize($mediaInfo['thumb']);
 			if ($size[1]<$height) $height = $size[1];
 			print "<img src=\"{$mediaInfo['thumb']}\" border=\"0\" height=\"{$height}\"" ;
 
-			// print browser tooltips associated with image ----------------------------------------------
+			// print browser tooltips associated with image ----------------------------------------
 			print " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\"  />";
 
 			// Close anchor --------------------------------------------------------------

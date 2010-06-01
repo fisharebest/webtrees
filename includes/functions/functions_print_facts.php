@@ -609,18 +609,28 @@ function print_media_links($factrec, $level, $pid='') {
 						require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 						$name = trim($row["m_titl"]);
 						echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
+					// extra for Streetview ----------------------------------------
+					} else if (WT_USE_LIGHTBOX && strpos($row["m_file"], 'http://maps.google.')===0) {
+						echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
 					// --------------------------------------------------------------------------------------
 					} else if ($USE_MEDIA_VIEWER) {
 						echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
 					} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
 						echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
+					// extra for Streetview ----------------------------------------
+					} else if (strpos($row["m_file"], 'http://maps.google.')===0) {
+						echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
 					} else {
 						echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
 					}
 
 					echo "<img src=\"", $thumbnail, "\" border=\"0\" align=\"" , $TEXT_DIRECTION== "rtl"?"right": "left" , "\" class=\"thumbnail\"";
-					if ($isExternal) echo " width=\"", $THUMBNAIL_WIDTH, "\"";
-					echo " alt=\"" . PrintReady($mediaTitle) . "\"";
+					if (strpos($mainMedia, 'http://maps.google.')===0) {
+						// Do not print Streetview title here (PF&D tab)
+					} else {
+						if ($isExternal) echo " width=\"", $THUMBNAIL_WIDTH, "\"";
+						echo " alt=\"" . PrintReady($mediaTitle) . "\"";
+					}
 					//LBox --------  change for Lightbox Album --------------------------------------------
 					if ($row["m_titl"]) {
 						echo " title=\"" . $row["m_titl"] . "\"";
@@ -1510,7 +1520,11 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		//-- Thumbnail field
 		echo '<a href="', $mediaInfo['url'], '">';
 		echo '<img src="', $mediaInfo['thumb'], '" border="none" align="', $TEXT_DIRECTION=="rtl" ? "right":"left", '" class="thumbnail"', $mediaInfo['width'];
-		echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
+		if (strpos($mainMedia, 'http://maps.google.')===0) {
+			//
+		} else {
+			echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
+		}
 
 		if(empty($SEARCH_SPIDER)) {
 			echo "<a href=\"", encode_url("mediaviewer.php?mid={$rowm['m_media']}"), "\">";
