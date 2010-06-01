@@ -262,7 +262,7 @@ class Media extends GedcomRecord {
 	 */
 	static function in_obje_list($obje) {
 		return
-			WT_DB::prepare("SELECT m_media FROM ##media WHERE m_file=? AND m_titl LIKE ? AND m_gedfile=?")
+			WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file=? AND m_titl LIKE ? AND m_gedfile=?")
 			->execute(array($obje->file, $obje->title, WT_GED_ID))
 			->fetchOne();
 	}

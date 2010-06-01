@@ -203,7 +203,7 @@ class AdvancedSearchController extends SearchController {
 			if ($parts[0]=="NAME") {
 				// The pgv_name table contains both names and soundex values
 				if (!$namesTable) {
-					$sqltables.=" JOIN ##name ON (i_file=n_file AND i_id=n_id) ";
+					$sqltables.=" JOIN `##name` ON (i_file=n_file AND i_id=n_id) ";
 					$namesTable = true;
 				}
 				switch (end($parts)) {
@@ -281,7 +281,7 @@ class AdvancedSearchController extends SearchController {
 			//-- handle dates
 			else if (isset($parts[1]) && $parts[1]=="DATE") {
 				if (!$datesTable) {
-					$sqltables.=", ##dates";
+					$sqltables.=", `##dates`";
 					$sqlwhere .= " AND ".$prefix."_file=d_file AND ".$prefix."_id=d_gid";
 					$datesTable = true;
 				}
@@ -304,7 +304,7 @@ class AdvancedSearchController extends SearchController {
 			//-- handle places
 			else if (isset($parts[1]) && $parts[1]=="PLAC") {
 				if (!$placesTable) {
-					$sqltables.=", ##places, ##placelinks";
+					$sqltables.=", `##places`, `##placelinks`";
 					$sqlwhere .= " AND ".$prefix."_file=p_file AND p_file=pl_file AND ".$prefix."_id=pl_gid AND pl_p_id=p_id";
 					$placesTable = true;
 				}
@@ -332,7 +332,7 @@ class AdvancedSearchController extends SearchController {
 			//-- handle parent/spouse names
 			else if ($parts[0]=='FAMS') {
 				if (!$famsTable) {
-					$sqltables.=", ##families as FAMS";
+					$sqltables.=", `##families` as FAMS";
 					$sqlwhere .= " AND i_file=FAMS.f_file";
 					$famsTable = true;
 				}
@@ -359,7 +359,7 @@ class AdvancedSearchController extends SearchController {
 			}
 			else if ($parts[0]=='FAMC') {
 				if (!$famcTable) {
-					$sqltables.=", ##families as FAMC";
+					$sqltables.=", `##families` as FAMC";
 					$sqlwhere .= " AND i_file=FAMC.f_file";
 					$famcTable = true;
 				}
@@ -386,7 +386,7 @@ class AdvancedSearchController extends SearchController {
 			}
 			else if ($parts[0]=='HUSB' || $parts[0]=='WIFE') {
 				if (!$famsTable) {
-					$sqltables.=", ##individuals";
+					$sqltables.=", `##individuals`";
 					$sqlwhere .= " AND i_file=f_file";
 					$famsTable = true;
 				}

@@ -43,7 +43,7 @@ exit;
 define('WT_FV_DB_SCHEMA_0_1', '');
 
 WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS ##favorites (".
+	"CREATE TABLE IF NOT EXISTS `##favorites` (".
 	" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
  	" fv_username VARCHAR(32)            NOT NULL,".
 	" fv_gid      VARCHAR(20)                NULL,".

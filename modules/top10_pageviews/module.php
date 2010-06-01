@@ -70,7 +70,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 			// load the lines from the file
 			$top10=WT_DB::prepareLimit(
 				"SELECT page_parameter, page_count".
-				" FROM ##hit_counter".
+				" FROM `##hit_counter`".
 				" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
 				" ORDER BY page_count DESC",
 				$num

@@ -218,8 +218,8 @@ function newConnection() {
 function checkChangeTime($pid, $gedrec, $last_time) {
 	$change=WT_DB::prepare(
 		"SELECT UNIX_TIMESTAMP(change_time) AS change_time, user_name".
-		" FROM ##change".
-		" JOIN ##user USING (user_id)".
+		" FROM `##change`".
+		" JOIN `##user` USING (user_id)".
 		" WHERE status<>'rejected' AND gedcom_id=? AND xref=? AND change_time>?".
 		" ORDER BY change_id DESC".
 		" LIMIT 1"
@@ -281,7 +281,7 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 		$old_gedrec=find_gedcom_record($gid, $ged_id, true);
 		if ($old_gedrec!=$gedrec) {
 			WT_DB::prepare(
-				"INSERT INTO ##change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 			)->execute(array(
 				$ged_id,
 				$gid,
@@ -314,7 +314,7 @@ function append_gedrec($gedrec, $ged_id) {
 		$gedrec=preg_replace("/^0 @(.*)@/", "0 @$xref@", $gedrec);
 
 		WT_DB::prepare(
-			"INSERT INTO ##change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 		)->execute(array(
 			$ged_id,
 			$xref,
@@ -337,7 +337,7 @@ function append_gedrec($gedrec, $ged_id) {
 //-- the given $xref
 function delete_gedrec($xref, $ged_id) {
 	WT_DB::prepare(
-		"INSERT INTO ##change (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
+		"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
 		$ged_id,
 		$xref,

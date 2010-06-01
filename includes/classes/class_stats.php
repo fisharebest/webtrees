@@ -277,7 +277,7 @@ class stats {
 
 	function gedcomUpdated() {
 		$row=
-			WT_DB::prepareLimit("SELECT d_year, d_month, d_day FROM ##dates WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type", 1)
+			WT_DB::prepareLimit("SELECT d_year, d_month, d_day FROM `##dates` WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type", 1)
 			->execute(array($this->_ged_id, 'CHAN'))
 			->fetchOneRow();
 		if ($row) {
@@ -374,13 +374,13 @@ class stats {
 
 	function totalIndividuals() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
 	function totalIndisWithSources() {
-		$rows=self::_runSQL("SELECT COUNT(DISTINCT i_id) AS tot FROM ##link, ##individuals WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
+		$rows=self::_runSQL("SELECT COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
 		return $rows[0]['tot'];
 	}
 
@@ -413,13 +413,13 @@ class stats {
 
 	function totalFamilies() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##families WHERE f_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##families` WHERE f_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
 	function totalFamsWithSources() {
-		$rows=self::_runSQL("SELECT COUNT(DISTINCT f_id) AS tot FROM ##link, ##families WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
+		$rows=self::_runSQL("SELECT COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
 		return $rows[0]['tot'];
 	}
 
@@ -452,7 +452,7 @@ class stats {
 
 	function totalSources() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##sources WHERE s_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##sources` WHERE s_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -463,7 +463,7 @@ class stats {
 
 	function totalNotes() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##other WHERE o_type=? AND o_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type=? AND o_file=?")
 			->execute(array('NOTE', $this->_ged_id))
 			->fetchOne();
 	}
@@ -474,7 +474,7 @@ class stats {
 
 	function totalOtherRecords() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##other WHERE o_type<>? AND o_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type<>? AND o_file=?")
 			->execute(array('NOTE', $this->_ged_id))
 			->fetchOne();
 	}
@@ -496,7 +496,7 @@ class stats {
 		}
 		$vars[]=$this->_ged_id;
 		return (int)
-			WT_DB::prepare("SELECT COUNT({$distinct} n_surn) FROM ##name WHERE n_surn {$opt} AND n_file=?")
+			WT_DB::prepare("SELECT COUNT({$distinct} n_surn) FROM `##name` WHERE n_surn {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
 	}
@@ -514,13 +514,13 @@ class stats {
 		}
 		$vars[]=$this->_ged_id;
 		return (int)
-			WT_DB::prepare("SELECT COUNT({$distinct} n_givn) FROM ##name WHERE n_givn {$opt} AND n_file=?")
+			WT_DB::prepare("SELECT COUNT({$distinct} n_givn) FROM `##name` WHERE n_givn {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
 	}
 
 	function totalEvents($params = null) {
-		$sql="SELECT COUNT(*) AS tot FROM ##dates WHERE d_file=?";
+		$sql="SELECT COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
 		$vars=array($this->_ged_id);
 
 		$no_types=array('HEAD', 'CHAN');
@@ -587,7 +587,7 @@ class stats {
 
 	function totalSexMales() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_sex=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'M'))
 			->fetchOne();
 	}
@@ -598,7 +598,7 @@ class stats {
 
 	function totalSexFemales() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_sex=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'F'))
 			->fetchOne();
 	}
@@ -609,7 +609,7 @@ class stats {
 
 	function totalSexUnknown() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_sex=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'U'))
 			->fetchOne();
 	}
@@ -655,7 +655,7 @@ class stats {
 
 	function totalLiving() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_isdead=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_isdead=?")
 			->execute(array($this->_ged_id, 0))
 			->fetchOne();
 	}
@@ -666,7 +666,7 @@ class stats {
 
 	function totalDeceased() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_isdead=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_isdead=?")
 			->execute(array($this->_ged_id, 1))
 			->fetchOne();
 	}
@@ -677,7 +677,7 @@ class stats {
 
 	function totalMortalityUnknown() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##individuals WHERE i_file=? AND i_isdead=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_isdead=?")
 			->execute(array($this->_ged_id, -1))
 			->fetchOne();
 	}
@@ -687,7 +687,7 @@ class stats {
 	}
 
 	function mortalityUnknown() {
-		$rows=self::_runSQL("SELECT i_id AS id FROM ##individuals WHERE i_file={$this->_ged_id} AND i_isdead=-1");
+		$rows=self::_runSQL("SELECT i_id AS id FROM `##individuals` WHERE i_file={$this->_ged_id} AND i_isdead=-1");
 		if (!isset($rows[0])) {return '';}
 		return $rows;
 	}
@@ -749,7 +749,7 @@ class stats {
 		if (!$MULTI_MEDIA || !in_array($type, self::$_media_types) && $type != 'all' && $type != 'unknown') {
 			return 0;
 		}
-		$sql="SELECT COUNT(*) AS tot FROM ##media WHERE m_gedfile=?";
+		$sql="SELECT COUNT(*) AS tot FROM `##media` WHERE m_gedfile=?";
 		$vars=array($this->_ged_id);
 
 		if ($type != 'all') {
@@ -877,7 +877,7 @@ class stats {
 		}
 		$rows=self::_runSQL(''
 			."SELECT d_year, d_type, d_fact, d_gid"
-			." FROM ##dates"
+			." FROM `##dates`"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0"
 			." ORDER BY d_julianday1 {$life_dir}, d_type",
 			1
@@ -891,7 +891,7 @@ class stats {
 				.' d2.d_fact,'
 				.' d2.d_gid'
 			.' FROM'
-				." ##dates AS d2"
+				." `##dates` AS d2"
 			.' WHERE'
 				." d2.d_file={$this->_ged_id} AND"
 				." d2.d_fact IN ({$query_field}) AND"
@@ -899,12 +899,12 @@ class stats {
 					.' SELECT'
 						." {$dmod}(d_julianday1)"
 					.' FROM'
-						." ##dates"
+						." `##dates`"
 					.' JOIN ('
 						.' SELECT'
 							.' d1.d_gid, MIN(d1.d_julianday1) as date'
 						.' FROM'
-							."  ##dates AS d1"
+							."  `##dates` AS d1"
 						.' WHERE'
 							." d1.d_fact IN ({$query_field}) AND"
 							." d1.d_file={$this->_ged_id} AND"
@@ -959,13 +959,13 @@ class stats {
 		if ($fact) {
 			if ($what=='INDI') {
 				$rows=
-					WT_DB::prepare("SELECT i_gedcom AS ged FROM ##individuals WHERE i_file=?")
+					WT_DB::prepare("SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
 			else if ($what=='FAM') {
 				$rows=
-					WT_DB::prepare("SELECT f_gedcom AS ged FROM ##families WHERE f_file=?")
+					WT_DB::prepare("SELECT f_gedcom AS ged FROM `##families` WHERE f_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
@@ -992,10 +992,10 @@ class stats {
 		// used by placehierarchy googlemap module
 		else if ($parent>0) {
 			if ($what=='INDI') {
-				$join = " JOIN ##individuals ON pl_file = i_file AND pl_gid = i_id";
+				$join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
 			}
 			else if ($what=='FAM') {
-				$join = " JOIN ##families ON pl_file = f_file AND pl_gid = f_id";
+				$join = " JOIN `##families` ON pl_file = f_file AND pl_gid = f_id";
 			}
 			else {
 				$join = "";
@@ -1005,8 +1005,8 @@ class stats {
 				.' p_place AS place,'
 				.' COUNT(*) AS tot'
 				.' FROM'
-					." ##places"
-				." JOIN ##placelinks ON pl_file=p_file AND p_id=pl_p_id"
+					." `##places`"
+				." JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id"
 				.$join
 				.' WHERE'
 					." p_id={$parent} AND"
@@ -1018,10 +1018,10 @@ class stats {
 		}
 		else {
 			if ($what=='INDI') {
-				$join = " JOIN ##individuals ON pl_file = i_file AND pl_gid = i_id";
+				$join = " JOIN `##individuals` ON pl_file = i_file AND pl_gid = i_id";
 			}
 			else if ($what=='FAM') {
-				$join = " JOIN ##families ON pl_file = f_file AND pl_gid = f_id";
+				$join = " JOIN `##families` ON pl_file = f_file AND pl_gid = f_id";
 			}
 			else {
 				$join = "";
@@ -1031,8 +1031,8 @@ class stats {
 						.' p_place AS country,'
 						.' COUNT(*) AS tot'
 					.' FROM'
-						." ##places"
-					." JOIN ##placelinks ON pl_file=p_file AND p_id=pl_p_id"
+						." `##places`"
+					." JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id"
 					.$join
 					.' WHERE'
 						." p_file={$this->_ged_id}"
@@ -1046,7 +1046,7 @@ class stats {
 
 	function totalPlaces() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM ##places WHERE p_file=?")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -1232,21 +1232,21 @@ class stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='BIRT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else if ($sex) {
-			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM ##dates "
-					."JOIN ##individuals ON d_file = i_file AND d_gid = i_id "
+			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` "
+					."JOIN `##individuals` ON d_file = i_file AND d_gid = i_id "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='BIRT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='BIRT' AND "
@@ -1290,21 +1290,21 @@ class stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='DEAT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else if ($sex) {
-			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM ##dates "
-					."JOIN ##individuals ON d_file = i_file AND d_gid = i_id "
+			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` "
+					."JOIN `##individuals` ON d_file = i_file AND d_gid = i_id "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='DEAT' AND "
 						."d_type='@#DGREGORIAN@'";
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='DEAT' AND "
@@ -1391,9 +1391,9 @@ class stats {
 				.' death.d_gid AS id,'
 				.' death.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
-				." ##dates AS death,"
-				." ##dates AS birth,"
-				." ##individuals AS indi"
+				." `##dates` AS death,"
+				." `##dates` AS birth,"
+				." `##individuals` AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' birth.d_gid=death.d_gid AND'
@@ -1416,17 +1416,17 @@ class stats {
 				.' death.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
 				.' (SELECT d_gid, d_file, MIN(d_julianday1) AS birth_jd'
-					.' FROM ##date'
+					.' FROM `##date`'
 					." WHERE d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND d_julianday1>0"
 					.' GROUP BY d_gid, d_file'
 				.' ) AS birth'
 			.' JOIN ('
 				.' SELECT d_gid, d_file, MIN(d_julianday1) AS death_jd'
-					.' FROM ##date'
+					.' FROM `##date`'
 					." WHERE d_fact IN ('DEAT', 'BURI', 'CREM') AND d_julianday1>0"
 					.' GROUP BY d_gid, d_file'
 				.' ) AS death USING (d_gid, d_file)'
-			.' JOIN ##individuals ON (d_gid=i_id AND d_file=i_file)'
+			.' JOIN `##individuals` ON (d_gid=i_id AND d_file=i_file)'
 			.' WHERE'
 				." i_file={$this->_ged_id} AND"
 				.$sex_search
@@ -1480,9 +1480,9 @@ class stats {
 				.' MAX(death.d_julianday2-birth.d_julianday1) AS age,'
 				.' death.d_gid AS deathdate'
 			.' FROM'
-				." ##dates AS death,"
-				." ##dates AS birth,"
-				." ##individuals AS indi"
+				." `##dates` AS death,"
+				." `##dates` AS birth,"
+				." `##individuals` AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' birth.d_gid=death.d_gid AND'
@@ -1552,8 +1552,8 @@ class stats {
 				.' birth.d_gid AS id,'
 				.' MIN(birth.d_julianday1) AS age'
 			.' FROM'
-				." ##dates AS birth,"
-				." ##individuals AS indi"
+				." `##dates` AS birth,"
+				." `##individuals` AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' indi.i_isdead=0 AND'
@@ -1612,9 +1612,9 @@ class stats {
 			.' SELECT'
 				.' AVG(death.d_julianday2-birth.d_julianday1) AS age'
 			.' FROM'
-				." ##dates AS death,"
-				." ##dates AS birth,"
-				." ##individuals AS indi"
+				." `##dates` AS death,"
+				." `##dates` AS birth,"
+				." `##individuals` AS indi"
 			.' WHERE'
 				.' indi.i_id=birth.d_gid AND'
 				.' birth.d_gid=death.d_gid AND'
@@ -1654,9 +1654,9 @@ class stats {
 					.' ROUND((death.d_year+49.1)/100) AS century,'
 					.' i_sex AS sex'
 				.' FROM'
-					." ##dates AS death,"
-					." ##dates AS birth,"
-					." ##individuals AS indi"
+					." `##dates` AS death,"
+					." `##dates` AS birth,"
+					." `##individuals` AS indi"
 				.' WHERE'
 					.' indi.i_id=birth.d_gid AND'
 					.' birth.d_gid=death.d_gid AND'
@@ -1736,9 +1736,9 @@ class stats {
 				.' SELECT'
 					.' death.d_julianday2-birth.d_julianday1 AS age'
 				.' FROM'
-					." ##dates AS death,"
-					." ##dates AS birth,"
-					." ##individuals AS indi"
+					." `##dates` AS death,"
+					." `##dates` AS birth,"
+					." `##individuals` AS indi"
 				.' WHERE'
 					.' indi.i_id=birth.d_gid AND'
 					.' birth.d_gid=death.d_gid AND'
@@ -1821,7 +1821,7 @@ class stats {
 				.' d_fact AS fact,'
 				.' d_type AS type'
 			.' FROM'
-				." ##dates"
+				." `##dates`"
 			.' WHERE'
 				." d_file={$this->_ged_id} AND"
 				." d_gid<>'HEAD' AND"
@@ -1919,13 +1919,13 @@ class stats {
 				.' married.d_julianday2-birth.d_julianday1 AS age,'
 				.' indi.i_id AS i_id'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
+				." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id}"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' birth.d_gid = indi.i_id AND'
 				.' married.d_gid = fam.f_id AND'
@@ -1946,15 +1946,15 @@ class stats {
 				.' married.d_julianday2-birth.d_julianday1 AS age,'
 				.' indi.i_id AS i_id'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS birth ON birth.d_file = {$this->_ged_id} AND birth.d_fact = 'BIRT'"
+				." `##dates` AS birth ON birth.d_file = {$this->_ged_id} AND birth.d_fact = 'BIRT'"
 			.' LEFT JOIN'
-				." ##dates AS birth_act ON birth_act.d_file = {$this->_ged_id} AND birth_act.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM')"
+				." `##dates` AS birth_act ON birth_act.d_file = {$this->_ged_id} AND birth_act.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM')"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id} AND married.d_fact = 'MARR'"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id} AND married.d_fact = 'MARR'"
 			.' LEFT JOIN'
-				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' birth.d_gid = indi.i_id AND'
 				.' birth_act.d_gid = indi.i_id AND'
@@ -2013,11 +2013,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.' MIN(husbdeath.d_julianday2-married.d_julianday1) AS age'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id}"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##dates AS husbdeath ON husbdeath.d_file = {$this->_ged_id}"
+				." `##dates` AS husbdeath ON husbdeath.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbdeath.d_gid = fam.f_husb AND'
@@ -2035,11 +2035,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.' MIN(wifedeath.d_julianday2-married.d_julianday1) AS age'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id}"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##dates AS wifedeath ON wifedeath.d_file = {$this->_ged_id}"
+				." `##dates` AS wifedeath ON wifedeath.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' wifedeath.d_gid = fam.f_wife AND'
@@ -2057,11 +2057,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.' MIN(divorced.d_julianday2-married.d_julianday1) AS age'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id}"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##dates AS divorced ON divorced.d_file = {$this->_ged_id}"
+				." `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' married.d_gid = fam.f_id AND'
@@ -2153,11 +2153,11 @@ class stats {
 				.' fam.f_id AS family,'
 				.$query1
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS wifebirth ON wifebirth.d_file = {$this->_ged_id}"
+				." `##dates` AS wifebirth ON wifebirth.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##dates AS husbbirth ON husbbirth.d_file = {$this->_ged_id}"
+				." `##dates` AS husbbirth ON husbbirth.d_file = {$this->_ged_id}"
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbbirth.d_gid = fam.f_husb AND'
@@ -2214,13 +2214,13 @@ class stats {
 				.' parentfamily.l_to AS id,'
 				.' childbirth.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
-				." ##link AS parentfamily"
+				." `##link` AS parentfamily"
 			.' JOIN'
-				." ##link AS childfamily ON childfamily.l_file = {$this->_ged_id}"
+				." `##link` AS childfamily ON childfamily.l_file = {$this->_ged_id}"
 			.' JOIN'
-				." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
+				." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
 			.' JOIN'
-				." ##dates AS childbirth ON childbirth.d_file = {$this->_ged_id}"
+				." `##dates` AS childbirth ON childbirth.d_file = {$this->_ged_id}"
 			.' WHERE'
 				.' birth.d_gid = parentfamily.l_to AND'
 				.' childfamily.l_to = childbirth.d_gid AND'
@@ -2273,7 +2273,7 @@ class stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -2296,11 +2296,11 @@ class stats {
 				.' married.d_month AS month,'
 				.' indi.i_id AS indi'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id}"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' married.d_gid = fam.f_id AND'
 				." fam.f_file = {$this->_ged_id} AND"
@@ -2310,7 +2310,7 @@ class stats {
 				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
 			.' ORDER BY fams, indi, age ASC';
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 				."WHERE "
 				."d_file={$this->_ged_id} AND "
 				."d_fact='MARR'";
@@ -2349,7 +2349,7 @@ class stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -2372,11 +2372,11 @@ class stats {
 				.' divorced.d_month AS month,'
 				.' indi.i_id AS indi'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS divorced ON divorced.d_file = {$this->_ged_id}"
+				." `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
+				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
 			.' WHERE'
 				.' divorced.d_gid = fam.f_id AND'
 				." fam.f_file = {$this->_ged_id} AND"
@@ -2386,7 +2386,7 @@ class stats {
 				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
 			.' ORDER BY fams, indi, age ASC';
 		} else {
-			$sql = "SELECT d_month, COUNT(*) AS total FROM ##dates "
+			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 				."WHERE "
 				."d_file={$this->_ged_id} AND "
 				."d_fact IN ('DIV', 'ANUL', '_SEPR')";
@@ -2457,13 +2457,13 @@ class stats {
 					.' ROUND((married.d_year+49.1)/100) AS century,'
 					.' indi.i_sex AS sex'
 				.' FROM'
-					." ##families AS fam"
+					." `##families` AS fam"
 				.' LEFT JOIN'
-					." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
+					." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." ##dates AS married ON married.d_file = {$this->_ged_id}"
+					." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
+					." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
 				.' WHERE'
 					.' birth.d_gid = indi.i_id AND'
 					.' married.d_gid = fam.f_id AND'
@@ -2562,13 +2562,13 @@ class stats {
 					.' married.d_julianday2-birth.d_julianday1 AS age,'
 					.' indi.i_id AS indi'
 				.' FROM'
-					." ##families AS fam"
+					." `##families` AS fam"
 				.' LEFT JOIN'
-					." ##dates AS birth ON birth.d_file = {$this->_ged_id}"
+					." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." ##dates AS married ON married.d_file = {$this->_ged_id}"
+					." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 				.' LEFT JOIN'
-					." ##individuals AS indi ON indi.i_file = {$this->_ged_id}"
+					." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
 				.' WHERE'
 					.' birth.d_gid = indi.i_id AND'
 					.' married.d_gid = fam.f_id AND'
@@ -2647,7 +2647,7 @@ class stats {
 	function oldestFatherAge($show_years=false) {return $this->_parentsQuery('age', 'DESC', 'M', $show_years);}
 
 	function totalMarriedMales() {
-		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM ##families WHERE f_file=?")
+		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM `##families` WHERE f_file=?")
 				->execute(array($this->_ged_id))
 				->fetchAll();
 		$husb = array();
@@ -2661,7 +2661,7 @@ class stats {
 	}
 
 	function totalMarriedFemales() {
-		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_wife AS wife FROM ##families WHERE f_file=?")
+		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_wife AS wife FROM `##families` WHERE f_file=?")
 				->execute(array($this->_ged_id))
 				->fetchAll();
 		$wife = array();
@@ -2684,7 +2684,7 @@ class stats {
 				.' f_numchil AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." ##families"
+				." `##families`"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
@@ -2721,7 +2721,7 @@ class stats {
 				.' f_numchil AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." ##families"
+				." `##families`"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
@@ -2766,13 +2766,13 @@ class stats {
 				.' link2.l_to AS ch2,'
 				.' child1.d_julianday2-child2.d_julianday2 AS age'
 			.' FROM'
-				." ##link AS link1"
+				." `##link` AS link1"
 			.' LEFT JOIN'
-				." ##dates AS child1 ON child1.d_file = {$this->_ged_id}"
+				." `##dates` AS child1 ON child1.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##dates AS child2 ON child2.d_file = {$this->_ged_id}"
+				." `##dates` AS child2 ON child2.d_file = {$this->_ged_id}"
 			.' LEFT JOIN'
-				." ##link AS link2 ON link2.l_file = {$this->_ged_id}"
+				." `##link` AS link2 ON link2.l_file = {$this->_ged_id}"
 			.' WHERE'
 				." link1.l_file = {$this->_ged_id} AND"
 				.' link1.l_from = link2.l_from AND'
@@ -2884,7 +2884,7 @@ class stats {
 				.' f_numchil AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." ##families"
+				." `##families`"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
@@ -2914,14 +2914,14 @@ class stats {
 	}
 
 	function totalChildren() {
-		$rows=self::_runSQL("SELECT SUM(f_numchil) AS tot FROM ##families WHERE f_file={$this->_ged_id}");
+		$rows=self::_runSQL("SELECT SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->_ged_id}");
 		$row=$rows[0];
 		return $row['tot'];
 	}
 
 
 	function averageChildren() {
-		$rows=self::_runSQL("SELECT AVG(f_numchil) AS tot FROM ##families WHERE f_file={$this->_ged_id}");
+		$rows=self::_runSQL("SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->_ged_id}");
 		$row=$rows[0];
 		return sprintf('%.2f', $row['tot']);
 	}
@@ -2936,9 +2936,9 @@ class stats {
 					.' ROUND(AVG(f_numchil),2) AS num,'
 					.' ROUND((married.d_year+49.1)/100) AS century'
 				.' FROM'
-					." ##families AS fam"
+					." `##families` AS fam"
 				.' LEFT JOIN'
-					." ##dates AS married ON married.d_file = {$this->_ged_id}"
+					." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 				.' WHERE'
 					.' married.d_gid = fam.f_id AND'
 					." fam.f_file = {$this->_ged_id} AND"
@@ -2969,26 +2969,26 @@ class stats {
 		} else {
 			if ($sex=='M') {
 				$sql = "SELECT num, COUNT(*) AS total FROM "
-						."(SELECT count(i_sex) AS num FROM ##link "
-							."LEFT OUTER JOIN ##individuals "
+						."(SELECT count(i_sex) AS num FROM `##link` "
+							."LEFT OUTER JOIN `##individuals` "
 							."ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' "
-							."JOIN ##families ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
+							."JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
 						.") boys"
 						." GROUP BY num ORDER BY num ASC";
 			}
 			else if ($sex=='F') {
 				$sql = "SELECT num, COUNT(*) AS total FROM "
-						."(SELECT count(i_sex) AS num FROM ##link "
-							."LEFT OUTER JOIN ##individuals "
+						."(SELECT count(i_sex) AS num FROM `##link` "
+							."LEFT OUTER JOIN `##individuals` "
 							."ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' "
-							."JOIN ##families ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
+							."JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
 						.") girls"
 						." GROUP BY num ORDER BY num ASC";
 			}
 			else {
-				$sql = "SELECT f_numchil, COUNT(*) AS total FROM ##families ";
+				$sql = "SELECT f_numchil, COUNT(*) AS total FROM `##families` ";
 				if ($year1>=0 && $year2>=0) {
-					$sql .= "AS fam LEFT JOIN ##dates AS married ON married.d_file = {$this->_ged_id}"
+					$sql .= "AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}"
 						.' WHERE'
 						.' married.d_gid = fam.f_id AND'
 						." fam.f_file = {$this->_ged_id} AND"
@@ -3017,7 +3017,7 @@ class stats {
 			.' SELECT'
 				.' COUNT(*) AS tot'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' WHERE'
 				.' f_numchil = 0 AND'
 				." fam.f_file = {$this->_ged_id}");
@@ -3032,7 +3032,7 @@ class stats {
 			.' SELECT'
 				.' f_id AS family'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' WHERE'
 				.' f_numchil = 0 AND'
 				." fam.f_file = {$this->_ged_id}");
@@ -3077,9 +3077,9 @@ class stats {
 				.' COUNT(*) AS count,'
 				.' ROUND((married.d_year+49.1)/100) AS century'
 			.' FROM'
-				." ##families AS fam"
+				." `##families` AS fam"
 			.' LEFT JOIN'
-				." ##dates AS married ON married.d_file = {$this->_ged_id}"
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
 			.' WHERE'
 				.' f_numchil = 0 AND'
 				.' married.d_gid = fam.f_id AND'
@@ -3137,13 +3137,13 @@ class stats {
 				.' COUNT(*) AS tot,'
 				.' f_id AS id'
 			.' FROM'
-				." ##families"
+				." `##families`"
 			.' JOIN'
-				." ##link AS children ON children.l_file = {$this->_ged_id}"
+				." `##link` AS children ON children.l_file = {$this->_ged_id}"
 			.' JOIN'
-				." ##link AS mchildren ON mchildren.l_file = {$this->_ged_id}"
+				." `##link` AS mchildren ON mchildren.l_file = {$this->_ged_id}"
 			.' JOIN'
-				." ##link AS gchildren ON gchildren.l_file = {$this->_ged_id}"
+				." `##link` AS gchildren ON gchildren.l_file = {$this->_ged_id}"
 			.' WHERE'
 				." f_file={$this->_ged_id} AND"
 				." children.l_from=f_id AND"
@@ -3325,7 +3325,7 @@ class stats {
 		}
 		$ged_id=get_id_from_gedcom($GEDCOM);
 
-		$rows=WT_DB::prepare("SELECT n_givn, COUNT(*) AS num FROM ##name JOIN ##individuals ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
+		$rows=WT_DB::prepare("SELECT n_givn, COUNT(*) AS num FROM `##name` JOIN `##individuals` ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
 			->fetchAll();
 		$nameList=array();
 		foreach ($rows as $row) {

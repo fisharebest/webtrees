@@ -1004,7 +1004,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 
 	//-- find all of the media items for a person
 	$media=
-		WT_DB::prepare("SELECT m_media, m_file, m_gedrec, mm_gedrec FROM ##media, ##media_mapping WHERE m_media=mm_media AND m_gedfile=mm_gedfile AND m_gedfile=? AND mm_gid=? ORDER BY mm_order")
+		WT_DB::prepare("SELECT m_media, m_file, m_gedrec, mm_gedrec FROM `##media`, `##media_mapping` WHERE m_media=mm_media AND m_gedfile=mm_gedfile AND m_gedfile=? AND mm_gid=? ORDER BY mm_order")
 		->execute(array($ged_id, $pid))
 		->fetchAll(PDO::FETCH_NUM);
 
@@ -2825,7 +2825,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
 	}
 
 	$num=
-		WT_DB::prepare("SELECT next_id FROM ##next_id WHERE record_type=? AND gedcom_id=?")
+		WT_DB::prepare("SELECT next_id FROM `##next_id` WHERE record_type=? AND gedcom_id=?")
 		->execute(array($type, $ged_id))
 		->fetchOne();
 
@@ -2835,7 +2835,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
 
 	if (is_null($num)) {
 		$num = 1;
-		WT_DB::prepare("INSERT INTO ##next_id (gedcom_id, record_type, next_id) VALUES(?, ?, 1)")
+		WT_DB::prepare("INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(?, ?, 1)")
 			->execute(array($ged_id, $type));
 	}
 
@@ -2854,7 +2854,7 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
 	$key = $prefix.$num;
 
 	//-- update the next id number in the DB table
-	WT_DB::prepare("UPDATE ##next_id SET next_id=? WHERE record_type=? AND gedcom_id=?")
+	WT_DB::prepare("UPDATE `##next_id` SET next_id=? WHERE record_type=? AND gedcom_id=?")
 		->execute(array($num+1, $type, $ged_id));
 	return $key;
 }

@@ -215,7 +215,7 @@ function load_ancestors_array($xref, $sosa=1) {
 function indis_array($surn, $soundex_std, $soundex_dm) {
 	$sql=
 		"SELECT DISTINCT n_id".
-		" FROM ##name".
+		" FROM `##name`".
 		" WHERE n_file=?".
 		" AND n_type!=?".
 		" AND (n_surn=? OR n_surname=?";

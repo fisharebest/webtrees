@@ -315,7 +315,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	 */
 	public static function deleteFavorite($fv_id) {
 		return (bool)
-			WT_DB::prepare("DELETE FROM ##favorites WHERE fv_id=?")
+			WT_DB::prepare("DELETE FROM `##favorites` WHERE fv_id=?")
 			->execute(array($fv_id));
 	}
 
@@ -329,7 +329,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			return false;
 
 		//-- make sure this is not a duplicate entry
-		$sql = "SELECT 1 FROM ##favorites WHERE";
+		$sql = "SELECT 1 FROM `##favorites` WHERE";
 		if (!empty($favorite["gid"])) {
 			$sql.=" fv_gid=?";
 			$vars=array($favorite["gid"]);
@@ -347,7 +347,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	
 		//-- add the favorite to the database
 		return (bool)
-			WT_DB::prepare("INSERT INTO ##favorites (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,? ,?)")
+			WT_DB::prepare("INSERT INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,? ,?)")
 				->execute(array(get_next_id("favorites", "fv_id"), $favorite["username"], $favorite["gid"], $favorite["type"], $favorite["file"], $favorite["url"], $favorite["title"], $favorite["note"]));
 	}
 
@@ -358,7 +358,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	 */
 	public static function getUserFavorites($username) {
 		$rows=
-			WT_DB::prepare("SELECT * FROM ##favorites WHERE fv_username=?")
+			WT_DB::prepare("SELECT * FROM `##favorites` WHERE fv_username=?")
 			->execute(array($username))
 			->fetchAll();
 	

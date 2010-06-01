@@ -574,7 +574,7 @@ function print_media_links($factrec, $level, $pid='') {
 		$media_id = str_replace("@", "", trim($omatch[$objectNum][1]));
 		if (displayDetailsById($media_id, "OBJE")) {
 			$row=
-				WT_DB::prepare("SELECT m_titl, m_file, m_gedrec FROM ##media where m_media=? AND m_gedfile=?")
+				WT_DB::prepare("SELECT m_titl, m_file, m_gedrec FROM `##media` where m_media=? AND m_gedfile=?")
 				->execute(array($media_id, WT_GED_ID))
 				->fetchOneRow(PDO::FETCH_ASSOC);
 
@@ -1279,7 +1279,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 
 	$media_found = false;
 	$sqlmm = "SELECT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping where ";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` where ";
 	$sqlmm .= "mm_gid IN (";
 	$vars=array();
 	$i=0;

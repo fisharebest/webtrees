@@ -891,7 +891,7 @@ class MenuBar
 		$submenu->addOnclick("return helpPopup('help_contents_help');");
 		$menu->addSubmenu($submenu);
 		//-- faq sub menu
-		if (array_key_exists('faq', WT_Module::getActiveBlocks()) && WT_DB::prepare("SELECT COUNT(*) FROM ##block WHERE module_name='faq'")->fetchOne()) {
+		if (array_key_exists('faq', WT_Module::getActiveBlocks()) && WT_DB::prepare("SELECT COUNT(*) FROM `##block` WHERE module_name='faq'")->fetchOne()) {
 
 			$submenu = new Menu(i18n::translate('FAQ'), "module.php?mod=faq&mod_action=show");
 			if (!empty($WT_IMAGES["menu_help"]["small"]))

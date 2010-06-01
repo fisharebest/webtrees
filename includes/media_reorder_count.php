@@ -60,7 +60,7 @@ if ($ct>0) {
 	}
 	// Use database to get details of indi related items ---------------------------------------------
 	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping WHERE ";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` WHERE ";
 	$sqlmm .= "mm_gid IN (";
 	$vars=array();
 	$i=0;

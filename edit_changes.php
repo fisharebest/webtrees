@@ -63,11 +63,11 @@ echo '<div class="center"><span class="subheaders">', i18n::translate('Review GE
 
 switch ($action) {
 case 'undo':
-	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM ##change WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =WT_DB::prepare("SELECT xref      FROM ##change WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Undo a change, and subsequent changes to the same record
 	WT_DB::prepare(
-		"UPDATE ##change".
+		"UPDATE `##change`".
 		" SET   status     = 'rejected'".
 		" WHERE status     = 'pending'".
 		"	AND   gedcom_id  = ?".
@@ -77,13 +77,13 @@ case 'undo':
 	echo '<b>', i18n::translate('Undo successful'), '</b>';
 	break;
 case 'accept':
-	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM ##change WHERE change_id=?")->execute(array($change_id))->fetchOne();
-	$xref     =WT_DB::prepare("SELECT xref      FROM ##change WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$gedcom_id=WT_DB::prepare("SELECT gedcom_id FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
+	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Accept a change, and all previous changes to the same record
 	$changes=WT_DB::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, new_gedcom".
-		" FROM  ##change c".
-		" JOIN  ##gedcom g USING (gedcom_id)".
+		" FROM  `##change` c".
+		" JOIN  `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status   = 'pending'".
 		"	AND   gedcom_id  = ?".
 		"	AND   xref       = ?".
@@ -92,14 +92,14 @@ case 'accept':
 	)->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
 	foreach ($changes as $change) {
 		update_record($change->new_gedcom, $change->gedcom_id, empty($change->new_gedcom));
-		WT_DB::prepare("UPDATE ##change SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
 	}
 	echo '<b>', i18n::translate('Changes successfully accepted into database'), '</b>';
 	break;
 case 'undoall':
 	WT_DB::prepare(
-		"UPDATE ##change".
+		"UPDATE `##change`".
 		" SET status='rejected'".
 		" WHERE status='pending' AND gedcom_id=?"
 	)->execute(array(get_id_from_gedcom($ged)));
@@ -108,14 +108,14 @@ case 'undoall':
 case 'acceptall':
 	$changes=WT_DB::prepare(
 		"SELECT change_id, gedcom_id, gedcom_name, xref, new_gedcom".
-		" FROM ##change c".
-		" JOIN ##gedcom g USING (gedcom_id)".
+		" FROM `##change` c".
+		" JOIN `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status='pending' AND gedcom_id=?".
 		" ORDER BY change_id"
 	)->execute(array(get_id_from_gedcom($ged)))->fetchAll();
 	foreach ($changes as $change) {
 		update_record($change->new_gedcom, $change->gedcom_id, empty($change->new_gedcom));
-		WT_DB::prepare("UPDATE ##change SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
+		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
 	}
 	echo '<b>', i18n::translate('Changes successfully accepted into database'), '</b>';
@@ -124,8 +124,8 @@ case 'acceptall':
 
 $changed_gedcoms=WT_DB::prepare(
 	"SELECT g.gedcom_name".
-	" FROM ##change c".
-	" JOIN ##gedcom g USING (gedcom_id)".
+	" FROM `##change` c".
+	" JOIN `##gedcom` g USING (gedcom_id)".
 	" WHERE c.status='pending'".
 	" GROUP BY g.gedcom_name"
 )->fetchOneColumn();
@@ -135,9 +135,9 @@ if (!$changed_gedcoms) {
 } else {
 	$changes=WT_DB::prepare(
 		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name".
-		" FROM ##change c".
-		" JOIN ##user   u USING (user_id)".
-		" JOIN ##gedcom g USING (gedcom_id)".
+		" FROM `##change` c".
+		" JOIN `##user`   u USING (user_id)".
+		" JOIN `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status='pending'".
 		" ORDER BY gedcom_id, c.xref, c.change_id"
 	)->fetchAll();

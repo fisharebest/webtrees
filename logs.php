@@ -34,8 +34,8 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-$earliest=WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM ##log")->execute(array())->fetchOne();
-$latest  =WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM ##log")->execute(array())->fetchOne();
+$earliest=WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$latest  =WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
 
 // Filtering
 $from=safe_GET('from', '\d\d\d\d-\d\d-\d\d', $earliest);
@@ -85,15 +85,15 @@ if ($gedc) {
 
 $sql1=
 	"SELECT COUNT(*)".
-	" FROM ##log".
-	" LEFT JOIN ##user   USING (user_id)".   // user may be deleted
-	" LEFT JOIN ##gedcom USING (gedcom_id)"; // gedcom may be deleted
+	" FROM `##log`".
+	" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
+	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
 $sql2=
 	"SELECT log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name".
-	" FROM ##log".
-	" LEFT JOIN ##user   USING (user_id)".   // user may be deleted
-	" LEFT JOIN ##gedcom USING (gedcom_id)"; // gedcom may be deleted
+	" FROM `##log`".
+	" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
+	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 
 if ($query) {
 	$sql1.=" WHERE ".implode(' AND ', $query);
@@ -120,9 +120,9 @@ if (safe_GET('export', 'yes')=='yes') {
 
 if (safe_GET('delete', 'yes')=='yes') {
 	$sql3=
-		"DELETE ##log FROM ##log".
-		" LEFT JOIN ##user   USING (user_id)".   // user may be deleted
-		" LEFT JOIN ##gedcom USING (gedcom_id)"; // gedcom may be deleted
+		"DELETE `##log` FROM `##log`".
+		" LEFT JOIN `##user`   USING (user_id)".   // user may be deleted
+		" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
 	if ($query) {
 		$sql3.=" WHERE ".implode(' AND ', $query);
 	}

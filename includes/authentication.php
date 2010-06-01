@@ -238,22 +238,22 @@ function userAutoAccept($user_id=WT_USER_ID) {
 
 // Get the full name for a user
 function getUserFullName($user_id) {
-	return WT_DB::prepare("SELECT real_name FROM ##user WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return WT_DB::prepare("SELECT real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the full name for a user
 function setUserFullName($user_id, $real_name) {
-	return WT_DB::prepare("UPDATE ##user SET real_name=? WHERE user_id=?")->execute(array($real_name, $user_id));
+	return WT_DB::prepare("UPDATE `##user` SET real_name=? WHERE user_id=?")->execute(array($real_name, $user_id));
 }
 
 // Get the email for a user
 function getUserEmail($user_id) {
-	return WT_DB::prepare("SELECT email FROM ##user WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return WT_DB::prepare("SELECT email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the email for a user
 function setUserEmail($user_id, $email) {
-	return WT_DB::prepare("UPDATE ##user SET email=? WHERE user_id=?")->execute(array($email, $user_id));
+	return WT_DB::prepare("UPDATE `##user` SET email=? WHERE user_id=?")->execute(array($email, $user_id));
 }
 
 // Get the root person for this gedcom
@@ -281,7 +281,7 @@ function AddToLog($log_message, $log_type='error') {
 	global $argc;
 
 	WT_DB::prepare(
-		"INSERT INTO ##log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
+		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
 		$log_type,
 		$log_message,
@@ -297,7 +297,7 @@ function AddToSearchLog($log_message, $geds) {
 	$all_geds=get_all_gedcoms();
 	foreach ($geds as $ged_id=>$ged_name) {
 		WT_DB::prepare(
-			"INSERT INTO ##log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
+			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
 			(count($all_geds)==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
 			$_SERVER['REMOTE_ADDR'],
@@ -311,7 +311,7 @@ function AddToSearchLog($log_message, $geds) {
 //-- requires a string to add into the changelog-file
 function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
 	WT_DB::prepare(
-		"INSERT INTO ##log (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('change', ?, ?, ?, ?)"
+		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('change', ?, ?, ?, ?)"
 	)->execute(array(
 		$log_message,
 		$_SERVER['REMOTE_ADDR'],
@@ -412,7 +412,7 @@ function addMessage($message) {
 	if (empty($message["created"]))
 		$message["created"] = gmdate ("D, d M Y H:i:s T");
 	if ($WT_STORE_MESSAGES && ($message["method"]!="messaging3" && $message["method"]!="mailto" && $message["method"]!="none")) {
-		WT_DB::prepare("INSERT INTO ##message (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
+		WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 			->execute(array($message["from"], $_SERVER['REMOTE_ADDR'], get_user_id($message["to"]), $message["subject"], $message["body"]));
 	}
 	if ($message["method"]!="messaging") {
@@ -449,14 +449,14 @@ function addMessage($message) {
 //----------------------------------- deleteMessage
 //-- deletes a message in the database
 function deleteMessage($message_id) {
-	return (bool)WT_DB::prepare("DELETE FROM ##message WHERE message_id=?")->execute(array($message_id));
+	return (bool)WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 }
 
 //----------------------------------- getUserMessages
 //-- Return an array of a users messages
 function getUserMessages($user_id) {
 	$rows=
-		WT_DB::prepare("SELECT message_id, sender, subject, body, created FROM ##message WHERE user_id=? ORDER BY message_id DESC")
+		WT_DB::prepare("SELECT message_id, sender, subject, body, created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
 		->execute(array($user_id))
 		->fetchAll();
 
@@ -483,15 +483,15 @@ function getUserMessages($user_id) {
  * @param boolean $setdefault	if true tells the program to also set these blocks as the blocks for the defaultuser
  */
 function setBlocks($username, $ublocks, $setdefault=false) {
-	WT_DB::prepare("DELETE FROM ##blocks WHERE b_username=? AND b_name!=?")
+	WT_DB::prepare("DELETE FROM `##blocks` WHERE b_username=? AND b_name!=?")
 		->execute(array($username, 'faq'));
 
 	if ($setdefault) {
-		WT_DB::prepare("DELETE FROM ##blocks WHERE b_username=?")
+		WT_DB::prepare("DELETE FROM `##blocks` WHERE b_username=?")
 			->execute(array('defaultuser'));
 	}
 
-	$statement=WT_DB::prepare("INSERT INTO ##blocks (b_id, b_username, b_location, b_order, b_name, b_config) VALUES (?, ?, ?, ?, ?, ?)");
+	$statement=WT_DB::prepare("INSERT INTO `##blocks` (b_id, b_username, b_location, b_order, b_name, b_config) VALUES (?, ?, ?, ?, ?, ?)");
 
 	foreach($ublocks["main"] as $order=>$block) {
 		$statement->execute(array(get_next_id("blocks", "b_id"), $username, 'main', $order, $block[0], serialize($block[1])));
@@ -526,22 +526,22 @@ function addNews($news) {
 		// In case news items are added from usermigrate, it will also contain an ID.
 		// So we check first if the ID exists in the database. If not, insert instead of update.
 		$exists=
-			WT_DB::prepare("SELECT 1 FROM ##news where n_id=?")
+			WT_DB::prepare("SELECT 1 FROM `##news` where n_id=?")
 			->execute(array($news["id"]))
 			->fetchOne();
 
 		if (!$exists) {
 			return (bool)
-				WT_DB::prepare("INSERT INTO ##news (n_id, n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,? ,?)")
+				WT_DB::prepare("INSERT INTO `##news` (n_id, n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,? ,?)")
 				->execute(array($news["id"], $news["username"], $news["date"], $news["title"], $news["text"]));
 		} else {
 			return (bool)
-				WT_DB::prepare("UPDATE ##news SET n_date=?, n_title=? , n_text=? WHERE n_id=?")
+				WT_DB::prepare("UPDATE `##news` SET n_date=?, n_title=? , n_text=? WHERE n_id=?")
 				->execute(array($news["date"], $news["title"], $news["text"], $news["id"]));
 		}
 	} else {
 		return (bool)
-			WT_DB::prepare("INSERT INTO ##news (n_id, n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,? ,?)")
+			WT_DB::prepare("INSERT INTO `##news` (n_id, n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,? ,?)")
 			->execute(array(get_next_id("news", "n_id"), $news["username"], $news["date"], $news["title"], $news["text"]));
 	}
 }
@@ -553,7 +553,7 @@ function addNews($news) {
  * @param int $news_id the id number of the news item to delete
  */
 function deleteNews($news_id) {
-	return (bool)WT_DB::prepare("DELETE FROM ##news WHERE n_id=?")->execute(array($news_id));
+	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE n_id=?")->execute(array($news_id));
 }
 
 /**
@@ -563,7 +563,7 @@ function deleteNews($news_id) {
  */
 function getUserNews($username) {
 	$rows=
-		WT_DB::prepare("SELECT * FROM ##news WHERE n_username=? ORDER BY n_date DESC")
+		WT_DB::prepare("SELECT * FROM `##news` WHERE n_username=? ORDER BY n_date DESC")
 		->execute(array($username))
 		->fetchAll();
 
@@ -588,7 +588,7 @@ function getUserNews($username) {
  */
 function getNewsItem($news_id) {
 	$row=
-		WT_DB::prepare("SELECT * FROM ##news WHERE n_id=?")
+		WT_DB::prepare("SELECT * FROM `##news` WHERE n_id=?")
 		->execute(array($news_id))
 		->fetchOneRow();
 

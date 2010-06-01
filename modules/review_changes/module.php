@@ -49,7 +49,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$changes=WT_DB::prepare(
 			"SELECT 1".
-			" FROM ##change".
+			" FROM `##change`".
 			" WHERE status='pending'".
 			" LIMIT 1"
 		)->fetchOne();
@@ -112,7 +112,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$changes=WT_DB::prepare(
 					"SELECT xref".
-					" FROM  ##change".
+					" FROM  `##change`".
 					" WHERE status='pending'".
 					" AND   gedcom_id=?".
 					" GROUP BY xref"

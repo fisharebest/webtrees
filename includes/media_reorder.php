@@ -116,7 +116,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	$media_found = false;
 
 	$sqlmm = "SELECT DISTINCT ";
-	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM ##media, ##media_mapping WHERE ";
+	$sqlmm .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` WHERE ";
 	$sqlmm .= "mm_gid IN (";
 	$i=0;
 	$vars=array();

@@ -281,7 +281,7 @@ function get_lati_long_placelocation ($place) {
 		$placelist = create_possible_place_names($parent[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT pl_id FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $place_id, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;
@@ -291,7 +291,7 @@ function get_lati_long_placelocation ($place) {
 	}
 
 	$row=
-		WT_DB::prepare("SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM ##placelocation WHERE pl_id=? ORDER BY pl_place")
+		WT_DB::prepare("SELECT pl_lati, pl_long, pl_zoom, pl_icon, pl_level FROM `##placelocation` WHERE pl_id=? ORDER BY pl_place")
 		->execute(array($place_id))
 		->fetchOneRow();
 	if ($row) {

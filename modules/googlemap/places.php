@@ -56,7 +56,7 @@ if (!isset($display)) $display="";
 // NB This function exists in both places.php and places_edit.php
 function place_id_to_hierarchy($id) {
 	$statement=
-		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM ##placelocation WHERE pl_id=?");
+		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
 	$arr=array();
 	while ($id!=0) {
 		$row=$statement->execute(array($id))->fetchOneRow();
@@ -68,11 +68,11 @@ function place_id_to_hierarchy($id) {
 
 // NB This function exists in both places.php and places_edit.php
 function getHighestIndex() {
-	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM ##placelocation")->fetchOne();
+	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne();
 }
 
 function getHighestLevel() {
-	return (int)WT_DB::prepare("SELECT MAX(pl_level) FROM ##placelocation")->fetchOne();
+	return (int)WT_DB::prepare("SELECT MAX(pl_level) FROM `##placelocation`")->fetchOne();
 }
 
 /**
@@ -81,15 +81,15 @@ function getHighestLevel() {
 function get_place_list_loc($parent_id, $display='') {
 	if ($display=="inactive") {
 		$rows=
-			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM ##placelocation WHERE pl_parent_id=? ORDER BY pl_place")
+			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 			->execute(array($parent_id))
 			->fetchAll();
 	} else {
 		$rows=
 			WT_DB::prepare(
 				"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
-				" FROM ##placelocation".
-				" INNER JOIN ##places ON ##placelocation.pl_place=##places.p_place AND ##placelocation.pl_level=##places.p_level".
+				" FROM `##placelocation`".
+				" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place AND `##placelocation`.pl_level=`##places`.p_level".
 				" WHERE pl_parent_id=? ORDER BY pl_place"
 			)
 			->execute(array($parent_id))
@@ -115,7 +115,7 @@ function outputLevel($parent_id) {
 	$level=count($tmp);
 
 	$rows=
-		WT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM ##placelocation WHERE pl_parent_id=? ORDER BY pl_place")
+		WT_DB::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 		->execute(array($parent_id))
 		->fetchAll();
 
@@ -190,11 +190,11 @@ if ($action=="ImportGedcom") {
 	$j=0;
 	if ($mode=="all") {
 		$statement=
-			WT_DB::prepare("SELECT i_gedcom FROM ##individuals UNION ALL SELECT f_gedcom FROM ##families")
+			WT_DB::prepare("SELECT i_gedcom FROM `##individuals` UNION ALL SELECT f_gedcom FROM `##families`")
 			->execute();
 	} else {
 		$statement=
-			WT_DB::prepare("SELECT i_gedcom FROM ##individuals WHERE i_file=? UNION ALL SELECT f_gedcom FROM ##families WHERE f_file=?")
+			WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
 			->execute(array(WT_GED_ID, WT_GED_ID));
 	}
 	while ($gedrec=$statement->fetchColumn()) {
@@ -274,14 +274,14 @@ if ($action=="ImportGedcom") {
 				$escparent = "Unknown";
 			}
 			$row=
-				WT_DB::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?")
+				WT_DB::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?")
 				->execute(array($i, $parent_id, $escparent))
 				->fetchOneRow();
 			if ($i < count($parent)-1) {
 				// Create higher-level places, if necessary
 				if (empty($row)) {
 					$highestIndex++;
-					WT_DB::prepare("INSERT INTO ##placelocation (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom) VALUES (?, ?, ?, ?, ?)")
+					WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom) VALUES (?, ?, ?, ?, ?)")
 						->execute(array($highestIndex, $parent_id, $i, $escparent, $default_zoom_level[$i]));
 					echo htmlspecialchars($escparent), '<br />';
 					$parent_id=$highestIndex;
@@ -292,12 +292,12 @@ if ($action=="ImportGedcom") {
 				// Create lowest-level place, if necessary
 				if (empty($row->pl_id)) {
 					$highestIndex++;
-					WT_DB::prepare("INSERT INTO ##placelocation (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom) VALUES (?, ?, ?, ?, ?, ?, ?)")
+					WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom) VALUES (?, ?, ?, ?, ?, ?, ?)")
 						->execute(array($highestIndex, $parent_id, $i, $escparent, $place["long"], $place["lati"], $default_zoom_level[$i]));
 					echo htmlspecialchars($escparent), '<br />';
 				} else {
 					if (empty($row->pl_long) && empty($row->pl_lati) && $place['lati']!="0" && $place['long']!="0") {
-						WT_DB::prepare("UPDATE ##placelocation SET pl_lati=?, pl_long=? WHERE pl_id=?")
+						WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
 							->execute(array($place["lati"], $place["long"], $row->pl_id));
 						echo htmlspecialchars($escparent), '<br />';
 					}
@@ -361,7 +361,7 @@ if ($action=="ImportFile2") {
 		$country_names[$key]=i18n::translate($key);
 	}
 	if (isset($_POST["cleardatabase"])) {
-		WT_DB::exec("DELETE FROM ##placelocation WHERE 1=1");
+		WT_DB::exec("DELETE FROM `##placelocation` WHERE 1=1");
 	}
 	if (!empty($_FILES["placesfile"]["tmp_name"])) {
 		$lines = file($_FILES["placesfile"]["tmp_name"]);
@@ -447,7 +447,7 @@ if ($action=="ImportFile2") {
 				$escparent = "Unknown";
 			}
 			$row=
-				WT_DB::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom, pl_icon FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				WT_DB::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $parent_id, $escparent))
 				->fetchOneRow();
 			if (empty($row)) {       // this name does not yet exist: create entry
@@ -461,7 +461,7 @@ if ($action=="ImportFile2") {
 						$zoomlevel = $GOOGLEMAP_MAX_ZOOM;
 					}
 					if (($place["lati"] == "0") || ($place["long"] == "0") || (($i+1) < count($parent))) {
-						WT_DB::prepare("INSERT INTO ##placelocation (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?)")
+						WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?)")
 							->execute(array($highestIndex, $parent_id, $i, $escparent, $zoomlevel, $place["icon"]));
 					} else {
 						//delete leading zero
@@ -477,7 +477,7 @@ if ($action=="ImportFile2") {
 						} elseif ($pl_long < 0) {
 							$place["long"] = "W".abs($pl_long);
 						}
-						WT_DB::prepare("INSERT INTO ##placelocation (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+						WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
 							->execute(array($highestIndex, $parent_id, $i, $escparent, $place["long"], $place["lati"], $zoomlevel, $place["icon"]));
 					}
 					$parent_id = $highestIndex;
@@ -485,15 +485,15 @@ if ($action=="ImportFile2") {
 			} else {
 				$parent_id = $row->pl_id;
 				if ((isset($_POST["overwritedata"])) && ($i+1 == count($parent))) {
-					WT_DB::prepare("UPDATE ##placelocation SET pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?")
+					WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?")
 						->execute(array($place["lati"], $place["long"], $place["zoom"], $place["icon"], $parent_id));
 				} else {
 					if ((($row->pl_long == "0") || ($row->pl_long == null)) && (($row->pl_lati == "0") || ($row->pl_lati == null))) {
-						WT_DB::prepare("UPDATE ##placelocation SET pl_lati=?, pl_long=? WHERE pl_id=?")
+						WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
 							->execute(array($place["lati"], $place["long"], $parent_id));
 					}
 					if (empty($row->pl_icon) && !empty($place['icon'])) {
-						WT_DB::prepare("UPDATE ##placelocation SET pl_icon=? WHERE pl_id=?")
+						WT_DB::prepare("UPDATE `##placelocation` SET pl_icon=? WHERE pl_id=?")
 							->execute(array($place["icon"], $parent_id));
 					}
 				}
@@ -505,12 +505,12 @@ if ($action=="ImportFile2") {
 
 if ($action=="DeleteRecord") {
 	$exists=
-		WT_DB::prepare("SELECT 1 FROM ##placelocation WHERE pl_parent_id=?")
+		WT_DB::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
 		->execute(array($deleteRecord))
 		->fetchOne();
 	
 	if (!$exists) {
-		WT_DB::prepare("DELETE FROM ##placelocation WHERE pl_id=?")
+		WT_DB::prepare("DELETE FROM `##placelocation` WHERE pl_id=?")
 			->execute(array($deleteRecord));
 	} else {
 		echo "<table class=\"facts_table\"><tr><td class=\"optionbox\">".i18n::translate('Location not removed: this location contains sub-locations')."</td></tr></table>";
@@ -611,7 +611,7 @@ foreach ($placelist as $place) {
 	echo "</td>";
 	echo "<td class=\"optionbox\"><a href=\"javascript:;\" onclick=\"edit_place_location({$place['place_id']});return false;\">", i18n::translate('Edit'), "</a></td>";
 	$noRows=
-		WT_DB::prepare("SELECT COUNT(pl_id) FROM ##placelocation WHERE pl_parent_id=?")
+		WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
 		->execute(array($place["place_id"]))
 		->fetchOne();
 	if ($noRows==0) { ?>

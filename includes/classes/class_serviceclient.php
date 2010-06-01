@@ -628,7 +628,7 @@ class ServiceClient extends GedcomRecord {
 		//-- check if the link already exists
 		$gid=get_remote_id($remote);
 		if (empty($gid)) {
-			WT_DB::prepare("INSERT INTO ##remotelinks (r_gid, r_linkid, r_file) VALUES (? ,? ,?)")
+			WT_DB::prepare("INSERT INTO `##remotelinks` (r_gid, r_linkid, r_file) VALUES (? ,? ,?)")
 				->execute(array($local, $remote, get_id_from_gedcom($GEDCOM)));
 		}
 	}

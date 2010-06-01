@@ -104,16 +104,16 @@ if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $
 	if (validIP($address)) {
 		// Even if we are adding a new record, we must delete the existing one first.
 		WT_DB::prepare(
-			"DELETE FROM ##ip_address WHERE ip_address=?"
+			"DELETE FROM `##ip_address` WHERE ip_address=?"
 		)->execute(array($address));
 		if ($action=='addBanned') {
 			WT_DB::prepare(
-				"INSERT INTO ##ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
+				"INSERT INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)"
 			)->execute(array($address, 'banned', $comment));
 		}
 		if ($action=='addSearch') {
 			WT_DB::prepare(
-				"INSERT INTO ##ip_address (ip_address, category, comment) VALUES (?, ?, ?)"
+				"INSERT INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)"
 			)->execute(array($address, 'search-engine', $comment));
 		}
 	} else {
@@ -227,7 +227,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 		'<td class="facts_value">',
 			'<table align="center">';
 
-			$sql="SELECT ip_address, comment FROM ##ip_address WHERE category='search-engine' ORDER BY INET_ATON(ip_address)";
+			$sql="SELECT ip_address, comment FROM `##ip_address` WHERE category='search-engine' ORDER BY INET_ATON(ip_address)";
 			$index=0;
 			$search_engines=WT_DB::prepare($sql)->fetchAssoc();
 			foreach ($search_engines as $ip_address=>$ip_comment) {
@@ -275,7 +275,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 		<td class="facts_value">
 			<table align="center">
 <?php
-	$sql="SELECT ip_address, comment FROM ##ip_address WHERE category='banned' ORDER BY INET_ATON(ip_address)";
+	$sql="SELECT ip_address, comment FROM `##ip_address` WHERE category='banned' ORDER BY INET_ATON(ip_address)";
 	$banned=WT_DB::prepare($sql)->fetchAssoc();
 	foreach ($banned as $ip_address=>$ip_comment) {
 		echo '<tr><td>';

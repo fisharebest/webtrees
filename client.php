@@ -351,30 +351,30 @@ case 'getxref':
 		switch($type) {
 			case "INDI":
 				$statement=
-					WT_DB::prepare("SELECT i_id FROM ##individuals WHERE i_file=? ORDER BY i_id")
+					WT_DB::prepare("SELECT i_id FROM `##individuals` WHERE i_file=? ORDER BY i_id")
 					->execute(array($GED_ID));
 				break;
 			case "FAM":
 				$statement=
-					WT_DB::prepare("SELECT f_id FROM ##families WHERE f_file=? ORDER BY f_id")
+					WT_DB::prepare("SELECT f_id FROM `##families` WHERE f_file=? ORDER BY f_id")
 					->execute(array($GED_ID));
 				break;
 			case "SOUR":
 				$statement=
-					WT_DB::prepare("SELECT s_id FROM ##sources WHERE s_file=? ORDER BY s_id")
+					WT_DB::prepare("SELECT s_id FROM `##sources` WHERE s_file=? ORDER BY s_id")
 					->execute(array($GED_ID));
 			case "OBJE":
 				$statement=
-					WT_DB::prepare("SELECT m_media FROM ##media WHERE m_gedfile=? ORDER BY m_media")
+					WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_gedfile=? ORDER BY m_media")
 					->execute(array($GED_ID));
 			case "OTHER":
 				$statement=
-					WT_DB::prepare("SELECT o_id FROM ##other WHERE o_file=? AND o_type NOT IN ('REPO', 'NOTE') ORDER BY o_id")
+					WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_file=? AND o_type NOT IN ('REPO', 'NOTE') ORDER BY o_id")
 					->execute(array($GED_ID));
 				break;
 			default:
 				$statement=
-					WT_DB::prepare("SELECT o_id FROM ##other WHERE o_file=? AND o_type=? ORDER BY o_id")
+					WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_file=? AND o_type=? ORDER BY o_id")
 					->execute(array($GED_ID, $type));
 		}
 		print "SUCCESS\n";

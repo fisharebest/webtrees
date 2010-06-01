@@ -49,15 +49,15 @@ function get_place_list_loc($parent_id, $inactive=false) {
 	global $display;
 	if ($inactive) {
 		$rows=
-			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM ##placelocation WHERE pl_parent_id=? ORDER BY pl_place")
+			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 			->execute(array($parent_id))
 			->fetchAll();
 	} else {
 		$rows=
 			WT_DB::prepare(
 				"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
-				" FROM ##placelocation".
-				" INNER JOIN ##places ON ##placelocation.pl_place=##places.p_place AND ##placelocation.pl_level=##places.p_level".
+				" FROM `##placelocation`".
+				" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place AND `##placelocation`.pl_level=`##places`.p_level".
 				" WHERE pl_parent_id=? ORDER BY pl_place"
 			)
 			->execute(array($parent_id))
@@ -73,7 +73,7 @@ function get_place_list_loc($parent_id, $inactive=false) {
 
 function place_id_to_hierarchy($id) {
 	$statement=
-		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM ##placelocation WHERE pl_id=?");
+		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
 	$arr=array();
 	while ($id!=0) {
 		$row=$statement->execute(array($id))->fetchOneRow();
@@ -94,7 +94,7 @@ function get_placeid($place) {
 			$placelist = create_possible_place_names($par[$i], $i+1);
 			foreach ($placelist as $key => $placename) {
 				$pl_id=
-					WT_DB::prepare("SELECT pl_id FROM ##placelocation WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+					WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 					->execute(array($i, $place_id, $placename))
 					->fetchOne();
 				if (!empty($pl_id)) break;
@@ -115,7 +115,7 @@ function get_p_id($place) {
 		$placelist = create_possible_place_names($par[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT p_id FROM ##places WHERE p_level=? AND p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
+				WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_level=? AND p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
 				->execute(array($i, $place_id, WT_GED_ID, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;

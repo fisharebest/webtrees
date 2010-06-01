@@ -234,7 +234,7 @@ class RemoteLinkController extends BaseController {
 		//-- check for recent additions
 		return WT_DB::prepare(
 			"SELECT xref".
-			" FROM ##change".
+			" FROM `##change`".
 			" WHERE status='pending' AND gedcom_id=? AND new_gedcom LIKE CONCAT('%\n1 _DBID ', ?, '%')".
 			" ORDER BY change_id DESC".
 			" LIMIT 1"

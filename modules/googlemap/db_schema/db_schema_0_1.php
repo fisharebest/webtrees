@@ -43,27 +43,24 @@ exit;
 define('WT_GM_DB_SCHEMA_0_1', '');
 
 // Create all of the tables needed for this module
-if (!WT_DB::table_exists("##placelocation")) {
-	WT_DB::exec(
-		"CREATE TABLE ##placelocation (".
-		" pl_id        INTEGER         NOT NULL,".
-		" pl_parent_id INTEGER             NULL,".
-		" pl_level     INTEGER             NULL,".
-		" pl_place     VARCHAR(255)     NULL,".
-		" pl_long      VARCHAR(30)      NULL,".
-		" pl_lati      VARCHAR(30)      NULL,".
-		" pl_zoom      INTEGER             NULL,".
-		" pl_icon      VARCHAR(255)     NULL,".
-		" PRIMARY KEY (pl_id)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	self::exec("CREATE INDEX ##pl_level     ON ##placelocation (pl_level    )");
-	self::exec("CREATE INDEX ##pl_long      ON ##placelocation (pl_long     )");
-	self::exec("CREATE INDEX ##pl_lati      ON ##placelocation (pl_lati     )");
-	self::exec("CREATE INDEX ##pl_name      ON ##placelocation (pl_place    )");
-	self::exec("CREATE INDEX ##pl_parent_id ON ##placelocation (pl_parent_id)");
-
-}
+WT_DB::exec(
+	"CREATE TABLE IF NOT EXISTS `##placelocation` (".
+	" pl_id        INTEGER      NOT NULL,".
+	" pl_parent_id INTEGER          NULL,".
+	" pl_level     INTEGER          NULL,".
+	" pl_place     VARCHAR(255)     NULL,".
+	" pl_long      VARCHAR(30)      NULL,".
+	" pl_lati      VARCHAR(30)      NULL,".
+	" pl_zoom      INTEGER          NULL,".
+	" pl_icon      VARCHAR(255)     NULL,".
+	" PRIMARY KEY     (pl_id),".
+	"         KEY ix1 (pl_level),"
+	"         KEY ix2 (pl_long),"
+	"         KEY ix3 (pl_lati),"
+	"         KEY ix4 (pl_place),"
+	"         KEY ix5 (pl_parent_id)"
+	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+);
 
 // Update the version to indicate sucess
 set_site_setting($schema_name, $next_version);

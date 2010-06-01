@@ -104,7 +104,7 @@ abstract class WT_Module {
 	final static public function getActiveModules() {
 		$module_names=WT_DB::prepare(
 			"SELECT module_name".
-			" FROM ##module".
+			" FROM `##module`".
 			" WHERE status='enabled'".
 			" ORDER BY module_name"
 		)->fetchOneColumn();
@@ -117,8 +117,8 @@ abstract class WT_Module {
 			} else {
 				// Module has been deleted from disk?  Remove it from the database.
 				AddToLog("Module {$module_name} has been deleted from disk - deleting from database", 'config');
-				WT_DB::prepare("DELETE FROM ##module_privacy WHERE module_name=?")->execute(array($module_name));
-				WT_DB::prepare("DELETE FROM ##module WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##module` WHERE module_name=?")->execute(array($module_name));
 			}
 		}
 		return $array;
@@ -127,8 +127,8 @@ abstract class WT_Module {
 	final static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
 		$module_names=WT_DB::prepare(
 			"SELECT module_name".
-			" FROM ##module".
-			" JOIN ##module_privacy USING (module_name)".
+			" FROM `##module`".
+			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".
 			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE module_name END"
 		)->execute(array($ged_id, $component, $access_level))->fetchOneColumn();
@@ -141,8 +141,8 @@ abstract class WT_Module {
 			} else {
 				// Module has been deleted from disk?  Remove it from the database.
 				AddToLog("Module {$module_name} has been deleted from disk - deleting from database", 'config');
-				WT_DB::prepare("DELETE FROM ##module_privacy WHERE module_name=?")->execute(array($module_name));
-				WT_DB::prepare("DELETE FROM ##module WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##module` WHERE module_name=?")->execute(array($module_name));
 			}
 		}
 		if ($component!='menu' && $component!='sidebar' && $component!='tab') {
@@ -259,7 +259,7 @@ abstract class WT_Module {
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Menu) {
 				$module->sort=WT_DB::prepare(
-					"SELECT menu_order FROM ##module WHERE module_name=?"
+					"SELECT menu_order FROM `##module` WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
 				$modules[$name]=$module;
 			}
@@ -285,7 +285,7 @@ abstract class WT_Module {
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Sidebar) {
 				$module->sort=WT_DB::prepare(
-					"SELECT sidebar_order FROM ##module WHERE module_name=?"
+					"SELECT sidebar_order FROM `##module` WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
 				$modules[$name]=$module;
 			}
@@ -300,7 +300,7 @@ abstract class WT_Module {
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Tab) {
 				$module->sort=WT_DB::prepare(
-					"SELECT tab_order FROM ##module WHERE module_name=?"
+					"SELECT tab_order FROM `##module` WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
 				$modules[$name]=$module;
 			}
@@ -323,7 +323,7 @@ abstract class WT_Module {
 	//
 	final static public function setDefaultAccess($ged_id) {
 		foreach (self::getInstalledModules() as $module) {
-			WT_DB::prepare("INSERT IGNORE INTO ##module (module_name, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?)")
+			WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?)")
 				->execute(array(
 					$module->getName(),
 					$module instanceof WT_Module_Menu    ? $module->defaultMenuOrder   () : null,
@@ -331,40 +331,40 @@ abstract class WT_Module {
 					$module instanceof WT_Module_Tab     ? $module->defaultTabOrder    () : null
 				));
 		}
-		WT_DB::prepare("DELETE FROM ##module_privacy WHERE gedcom_id=?")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM `##module_privacy` WHERE gedcom_id=?")->execute(array($ged_id));
 		foreach (self::getInstalledMenus() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 		foreach (self::getInstalledSidebars() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 		foreach (self::getInstalledTabs() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 		foreach (self::getInstalledBlocks() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 		foreach (self::getInstalledCharts() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'charts', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'charts', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 		foreach (self::getInstalledReports() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 		foreach (self::getInstalledThemes() as $module) {
 			WT_DB::prepare(
-				"INSERT INTO ##module_privacy (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
+				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
 		}
 	}

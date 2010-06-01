@@ -247,23 +247,23 @@ class batch_update {
 		foreach ($this->PLUGIN->getRecordTypesToUpdate() as $type) {
 			switch ($type) {
 			case 'INDI':
-				$sql[]="SELECT i_id, 'INDI' FROM ##individuals WHERE i_file=?";
+				$sql[]="SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
 				$vars[]=WT_GED_ID;
 				break;
 			case 'FAM':
-				$sql[]="SELECT f_id, 'FAM' FROM ##families WHERE f_file=?";
+				$sql[]="SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
 				$vars[]=WT_GED_ID;
 				break;
 			case 'SOUR':
-				$sql[]="SELECT s_id, 'SOUR' FROM ##sources WHERE s_file=?";
+				$sql[]="SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
 				$vars[]=WT_GED_ID;
 				break;
 			case 'OBJE':
-				$sql[]="SELECT m_media, 'OBJE' FROM ##media WHERE m_gedfile=?";
+				$sql[]="SELECT m_media, 'OBJE' FROM `##media` WHERE m_gedfile=?";
 				$vars[]=WT_GED_ID;
 				break;
 			default:
-				$sql[]="SELECT o_id, ? FROM ##other WHERE o_type=? AND o_file=?";
+				$sql[]="SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
 				$vars[]=$type;
 				$vars[]=$type;
 				$vars[]=WT_GED_ID;

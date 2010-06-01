@@ -71,7 +71,7 @@ default:
 }
 if ($page_parameter) {
 	$hitCount=WT_DB::prepare(
-		"SELECT page_count FROM ##hit_counter".
+		"SELECT page_count FROM `##hit_counter`".
 		" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 	)->execute(array(WT_GED_ID, WT_SCRIPT_NAME, $page_parameter))->fetchOne();
 	
@@ -81,12 +81,12 @@ if ($page_parameter) {
 		if (is_null($hitCount)) {
 			$hitCount=1;
 			WT_DB::prepare(
-				"INSERT INTO ##hit_counter (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)"
+				"INSERT INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)"
 			)->execute(array(WT_GED_ID, WT_SCRIPT_NAME, $page_parameter, $hitCount));
 		} else {
 			$hitCount++;
 			WT_DB::prepare(
-				"UPDATE ##hit_counter SET page_count=?".
+				"UPDATE `##hit_counter` SET page_count=?".
 				" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 			)->execute(array($hitCount, WT_GED_ID, WT_SCRIPT_NAME, $page_parameter));
 		}
