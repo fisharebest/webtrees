@@ -3574,7 +3574,7 @@ class stats {
 				return getUserFullName($user_id);
 			case 'regdate':
 				if(is_array($params) && isset($params[0]) && $params[0] != ''){$datestamp = $params[0];}else{$datestamp = $DATE_FORMAT;}
-				return date($datestamp, get_user_setting($user_id, 'reg_timestamp'));
+				return timestamp_to_gedcom_date(get_user_setting($user_id, 'reg_timestamp'))->Display(false, $datestamp);
 			case 'regtime':
 				if(is_array($params) && isset($params[0]) && $params[0] != ''){$datestamp = $params[0];}else{$datestamp = str_replace('%', '', $TIME_FORMAT);}
 				return date($datestamp, get_user_setting($user_id, 'reg_timestamp'));

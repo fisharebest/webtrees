@@ -75,12 +75,12 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			//List Female names
 			$totals=$stats->commonGivenFemaleTotals($params);
 			if ($totals) {
-				$content.='<b>'.i18n::translate('Female').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
+				$content.='<b>'.i18n::translate('Females').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
 			}
 			//List Male names
 			$totals=$stats->commonGivenMaleTotals($params);
 			if ($totals) {
-				$content.='<b>'.i18n::translate('Male').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
+				$content.='<b>'.i18n::translate('Males').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
 			}
 			//List Unknown names
 			$totals=$stats->commonGivenUnknownTotals($params);
