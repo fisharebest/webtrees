@@ -751,7 +751,7 @@ function update_places($gid, $ged_id, $gedrec) {
 			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
 		);
 		$sql_insert_places=WT_DB::prepare(
-			"INSERT INTO `##places` (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?,?,?)"
+			"INSERT INTO `##places` (p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?,?)"
 		);
 		$sql_select_places=WT_DB::prepare(
 			"SELECT p_id FROM `##places` WHERE p_level=? AND p_file=? AND p_parent_id=? AND p_place LIKE ?"
@@ -811,8 +811,8 @@ function update_places($gid, $ged_id, $gedrec) {
 			if (!$search) {
 				$std_soundex = soundex_std($place);
 				$dm_soundex = soundex_dm($place);
-				$p_id = get_next_id("places", "p_id");
-				$sql_insert_places->execute(array($p_id, $place, $level, $parent_id, $ged_id, $std_soundex, $dm_soundex));
+				$sql_insert_places->execute(array($place, $level, $parent_id, $ged_id, $std_soundex, $dm_soundex));
+				$p_id=WT_DB::getInstance()->lastInsertId();
 			}
 
 			$sql_insert_placelinks->execute(array($p_id, $gid, $ged_id));
