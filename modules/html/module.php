@@ -155,7 +155,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'compat',         safe_POST_bool('compat'));
 			set_block_setting($block_id, 'ui',             safe_POST_bool('ui'));
 			set_block_setting($block_id, 'gedcom',         safe_POST('gedcom'));
 			set_block_setting($block_id, 'title',          $_POST['title']);
@@ -381,16 +380,6 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 		}
 
 		print "\n\t\t</td>\n\t</tr>\n";
-
-		// compatibility mode
-		$compat=get_block_setting($block_id, 'compat', false);
-		if($compat == 1){$compat = ' checked="checked"';}else{$compat = '';}
-		print "\t<tr>\n\t\t<td class=\"descriptionbox wrap width33\">"
-			.i18n::translate('Compatibility Mode')
-			.help_link('index_htmlplus_compat')
-			."</td>\n<td class=\"optionbox\"><input type=\"checkbox\" name=\"compat\" value=\"1\"{$compat} /></td>\n"
-			."\t</tr>\n"
-		;
 
 		// extended features
 		$ui=get_block_setting($block_id, 'ui', false);
