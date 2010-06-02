@@ -92,8 +92,8 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 	if ($TEXT_DIRECTION=="rtl") $iconsStyleAdd="float: left; ";
 
 	$disp=$person->canDisplayDetails();
-
-	$boxID = $pid.".".$personcount.".".$count;
+	$uniqueID = floor(microtime() * 1000000);
+	$boxID = $pid.".".$personcount.".".$count.".".$uniqueID;
 	$mouseAction1 = "onmouseover=\"clear_family_box_timeout('".$boxID."');\" onmouseout=\"family_box_timeout('".$boxID."');\"";
 	$mouseAction2 = " onmouseover=\"expandbox('".$boxID."', $style); return false;\" onmouseout=\"restorebox('".$boxID."', $style); return false;\"";
 	$mouseAction3 = " onmousedown=\"expandbox('".$boxID."', $style); return false;\" onmouseup=\"restorebox('".$boxID."', $style); return false;\"";
