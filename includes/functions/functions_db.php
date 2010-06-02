@@ -1705,28 +1705,6 @@ function get_top_surnames($ged_id, $min, $max) {
 }
 
 /**
-* get next unique id for the given table
-* @param string $table  the name of the table
-* @param string $field the field to get the next number for
-* @return int the new id
-*/
-function get_next_id($table, $field) {
-	global $TABLE_IDS;
-
-	if (!isset($TABLE_IDS)) {
-		$TABLE_IDS = array();
-	}
-	if (isset($TABLE_IDS[$table][$field])) {
-		$TABLE_IDS[$table][$field]++;
-		return $TABLE_IDS[$table][$field];
-	}
-	$newid=WT_DB::prepare("SELECT MAX({$field}) FROM ##{$table}")->fetchOne();
-	$newid++;
-	$TABLE_IDS[$table][$field] = $newid;
-	return $newid;
-}
-
-/**
 * get a list of remote servers
 */
 function get_server_list($ged_id=WT_GED_ID){
