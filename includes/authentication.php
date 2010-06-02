@@ -484,30 +484,9 @@ function getUserMessages($user_id) {
  * @param array $news a news item array
  */
 function addNews($news) {
-	if (!isset($news["date"]))
-		$news["date"] = client_time();
-	if (!empty($news["id"])) {
-		// In case news items are added from usermigrate, it will also contain an ID.
-		// So we check first if the ID exists in the database. If not, insert instead of update.
-		$exists=
-			WT_DB::prepare("SELECT 1 FROM `##news` where n_id=?")
-			->execute(array($news["id"]))
-			->fetchOne();
-
-		if (!$exists) {
-			return (bool)
-				WT_DB::prepare("INSERT INTO `##news` (n_id, n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,? ,?)")
-				->execute(array($news["id"], $news["username"], $news["date"], $news["title"], $news["text"]));
-		} else {
-			return (bool)
-				WT_DB::prepare("UPDATE `##news` SET n_date=?, n_title=? , n_text=? WHERE n_id=?")
-				->execute(array($news["date"], $news["title"], $news["text"], $news["id"]));
-		}
-	} else {
-		return (bool)
-			WT_DB::prepare("INSERT INTO `##news` (n_id, n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,? ,?)")
-			->execute(array(get_next_id("news", "n_id"), $news["username"], $news["date"], $news["title"], $news["text"]));
-	}
+	return (bool)
+		WT_DB::prepare("INSERT INTO `##news` (n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,?)")
+		->execute(array($news["username"], $news["date"], $news["title"], $news["text"]));
 }
 
 /**
