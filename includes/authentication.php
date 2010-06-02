@@ -474,42 +474,6 @@ function getUserMessages($user_id) {
 }
 
 /**
- * Set Blocks
- *
- * Sets the blocks for a gedcom or user portal
- * the $setdefault parameter tells the program to also store these blocks as the blocks used by default
- * @param String $username the username or gedcom name to update the blocks for
- * @param array $ublocks the new blocks to set for the user or gedcom
- * @param boolean $setdefault	if true tells the program to also set these blocks as the blocks for the defaultuser
- */
-function setBlocks($username, $ublocks, $setdefault=false) {
-	WT_DB::prepare("DELETE FROM `##blocks` WHERE b_username=? AND b_name!=?")
-		->execute(array($username, 'faq'));
-
-	if ($setdefault) {
-		WT_DB::prepare("DELETE FROM `##blocks` WHERE b_username=?")
-			->execute(array('defaultuser'));
-	}
-
-	$statement=WT_DB::prepare("INSERT INTO `##blocks` (b_id, b_username, b_location, b_order, b_name, b_config) VALUES (?, ?, ?, ?, ?, ?)");
-
-	foreach($ublocks["main"] as $order=>$block) {
-		$statement->execute(array(get_next_id("blocks", "b_id"), $username, 'main', $order, $block[0], serialize($block[1])));
-
-		if ($setdefault) {
-			$statement->execute(array(get_next_id("blocks", "b_id"), 'defaultuser', 'main', $order, $block[0], serialize($block[1])));
-		}
-	}
-	foreach($ublocks["right"] as $order=>$block) {
-		$statement->execute(array(get_next_id("blocks", "b_id"), $username, 'right', $order, $block[0], serialize($block[1])));
-
-		if ($setdefault) {
-			$statement->execute(array(get_next_id("blocks", "b_id"), 'defaultuser', 'right', $order, $block[0], serialize($block[1])));
-		}
-	}
-}
-
-/**
  * Adds a news item to the database
  *
  * This function adds a news item represented by the $news array to the database.
