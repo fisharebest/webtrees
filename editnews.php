@@ -29,12 +29,6 @@
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 		
-// check ckeditor module status
-$useCK = WT_DB::prepare("SELECT status FROM `##module` WHERE module_name='ckeditor' LIMIT 1")->fetchOne();	
-if($useCK == 'enabled') {
-	require WT_ROOT.'modules/ckeditor/ckeditor.php';
-}
-			
 print_simple_header(i18n::translate('Add/edit journal/news entry'));
 
 if (!WT_USER_ID) {
@@ -62,7 +56,8 @@ if ($action=="compose") {
 				document.messageform.title.focus();
 				return false;
 			}
-			<?php if ($useCK == 'disabled') { //will be empty for FCK. FIXME, use FCK API to check for content. ?? is this comment still relevant to CKEditor (Nigel)
+			<?php if (!array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+			//will be empty for FCK. FIXME, use FCK API to check for content. ?? is this comment still relevant to CKEditor (Nigel)
 			?>
 			if (frm.text.value=="") {
 				alert('<?php print i18n::translate('Please enter some text for this News or Journal entry.'); ?>');
@@ -91,7 +86,7 @@ if ($action=="compose") {
 	print "<tr><td align=\"right\">".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>\n";
 	print "<tr><td valign=\"top\" align=\"right\">".i18n::translate('Entry Text:')."<br /></td>";
 	print "<td>";
-	if ($useCK == 'enabled') { // use CKeditor module
+	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		$trans = get_html_translation_table(HTML_SPECIALCHARS);
 		$trans = array_flip($trans);
 		$news["text"] = strtr($news["text"], $trans);

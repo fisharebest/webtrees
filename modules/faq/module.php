@@ -106,9 +106,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		// check ckeditor module status
-		$useCK = WT_DB::prepare("SELECT status FROM `##module` WHERE module_name='ckeditor' LIMIT 1")->fetchOne();	
-
 		if (safe_POST_bool('save')) {
 			$block_id=safe_POST('block_id');
 			if ($block_id) {
@@ -176,7 +173,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '<tr><td class="descriptionbox" colspan="2">';
 			echo i18n::translate('FAQ body'), help_link('add_faq_body', $this->getName());
 			echo '</td></tr><tr><td class="optionbox" colspan="2">';
-			if($useCK == 'enabled') {
+			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			// use CKeditor module
 				require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
 				$oCKeditor = new CKEditor();

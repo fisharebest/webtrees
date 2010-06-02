@@ -152,12 +152,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
 		
-			// check ckeditor module status
-			$useCK = WT_DB::prepare("SELECT status FROM `##module` WHERE module_name='ckeditor' LIMIT 1")->fetchOne();	
-			if($useCK == 'enabled') {
-				require WT_ROOT.'modules/ckeditor/ckeditor.php';
-			}
-			
 			if (safe_POST_bool('save')) {
 				$block_id=safe_POST('block_id');
 				if ($block_id) {
@@ -232,7 +226,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<tr><td class="descriptionbox" colspan="2">';
 				echo i18n::translate('Story'), help_link('add_story', $this->getName());
 				echo '</td></tr><tr><td class="optionbox" colspan="2">';
-				if($useCK == 'enabled') {
+				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 				// use CKeditor module
 					require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
 					$oCKeditor = new CKEditor();
