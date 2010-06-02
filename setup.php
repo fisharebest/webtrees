@@ -797,12 +797,12 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}media_mapping (".
-		" mm_id      INTEGER     NOT NULL,".
-		" mm_media   VARCHAR(20) NOT NULL,".
-		" mm_gid     VARCHAR(20) NOT NULL,".
-		" mm_order   INTEGER     NOT NULL DEFAULT '0',".
-		" mm_gedfile INTEGER     NOT NULL,".
-		" mm_gedrec  LONGTEXT    NOT NULL,".
+		" mm_id      INTEGER AUTO_INCREMENT NOT NULL,".
+		" mm_media   VARCHAR(20)            NOT NULL,".
+		" mm_gid     VARCHAR(20)            NOT NULL,".
+		" mm_order   INTEGER                NOT NULL DEFAULT '0',".
+		" mm_gedfile INTEGER                NOT NULL,".
+		" mm_gedrec  LONGTEXT               NOT NULL,".
 		" PRIMARY KEY (mm_id),".
 		"         KEY ix1 (mm_media, mm_gedfile),".
 		"         KEY ix2 (mm_gid, mm_gedfile),".
