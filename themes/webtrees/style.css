@@ -330,14 +330,15 @@ a:hover .nameZoom {
 	color: #333;
 	font: bold 16px tahoma, arial, helvetica, sans-serif;
 	letter-spacing: .2px;
+	line-height:	2;
+	padding: 0 5px;
 }
 
 .date {
 	color: #333377;
 }
 
-.label, .field {
-	font: 11px tahoma, arial, helvetica, sans-serif;
+.field {
 }
 
 .label {
@@ -364,6 +365,7 @@ a:hover .nameZoom {
 
 .indent {
 	padding-left: 7px;
+/*	position: absolute;*/
 }
 
 .indent_rtl {
@@ -1432,42 +1434,55 @@ text-align: center;
 }
 
 dl {
-	margin-bottom:20px;
+	/*margin-top:10px;*/
+	margin: 0;
 }
 
 dt {
 	float:left; 
 	font-weight:bold;
-	margin-right:10px;
-	clear:both; 
+	margin-right:10px; 
+	clear:both;
+}
+
+#indi_top {
+}
+
+#indi_name {
+	vertical-align:	top;
+	width: 45%;
+}
+
+#indi_name a {
+	color: #333377;
+}
+
+#indi_details {
+	display: block;
+/*	white-space: nowrap;*/
+margin-left: 15px;
 }
 
 #indi_details dt:after { content: ":"; }
+
+
+#indi_mainimage, #nameparts, #sex, #mainfacts {
+	margin-right:25px;
+	vertical-align:	top;
+}
+
+#hitcounter {
+	display: block;
+	margin-bottom:10px;
+}
 
 #facts_content dd {
 	float:left;
 	width: 70%;
 }
 
-#indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
-	float:left;
-	margin-right:15px;
-	max-width:	25%;
-}
-
-#hitcounter {
-	display: block;
-	width: 100%;
-	margin-bottom:10px;
-}
-
 .clearfloat {
 	clear: both;
-}
-
-#indi_details {
-	display: block;
-	width: 100%;
 }
 
 /* tables for Module Admin tab */

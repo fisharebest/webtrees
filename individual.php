@@ -111,22 +111,19 @@ jQuery(document).ready(function(){
 }
 </style>
 <div id="indi_main_blocks">
-<div id="indi_top">
-		<div id="indi_mainimage">
-		<?php if ($controller->canShowHighlightedObject()) {
-			echo $controller->getHighlightedObject();
-		} ?>
-		</div>
-		<div id="indi_name">
+<?php
+	if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", i18n::translate('Changes successfully accepted into database'), "</b><br />";
+	if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; 
+	if (strlen($controller->indi->getAddName()) > 0) echo "<span class=\"name_head\">", PrintReady($controller->indi->getAddName()), "</span><br />";
+?>
+<table id="indi_top">
+	<tr><td class="name_head" colspan="3" align="left">
 		<?php
-		if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", i18n::translate('Changes successfully accepted into database'), "</b><br />";
-		if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; 
-		?>
-		<span class="name_head"><?php
-		if ($TEXT_DIRECTION=="rtl") echo "&nbsp;";
-			echo PrintReady($controller->indi->getFullName());
-			echo "&nbsp;&nbsp;";
-			echo PrintReady("(".$controller->pid.")");
+			if ($TEXT_DIRECTION=="rtl") echo "&nbsp;"; {
+				echo PrintReady($controller->indi->getFullName());
+			}
+//			echo "&nbsp;&nbsp;";
+//			echo PrintReady("(".$controller->pid.")");
 			if (WT_USER_IS_ADMIN) {
 				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
 				if ($user_id) {
@@ -135,74 +132,85 @@ jQuery(document).ready(function(){
 					echo printReady("(<a href=\"useradmin.php?action=edituser&amp;username={$user_name}\">{$user_name}</a>)");
 				}
 			}
-		?></span><br /><br />
-		<?php if (strlen($controller->indi->getAddName()) > 0) echo "<span class=\"name_head\">", PrintReady($controller->indi->getAddName()), "</span><br />"; ?>
-		
-		<div id="indi_details">
-		<?php if ($controller->indi->canDisplayDetails()) { ?>
-		<?php
-			$col=0; $maxcols=7; // 4 with data and 3 spacers
-			$globalfacts=$controller->getGlobalFacts();
-			$nameSex = array('NAME', 'SEX');
-			foreach ($globalfacts as $key=>$value) {
-				$fact = $value->getTag();
-				if (in_array($fact, $nameSex)) {
-						if ($col>0) {
-							++$col;
-						}
-					if ($fact=="SEX") $controller->print_sex_record($value);
-					if ($fact=="NAME") $controller->print_name_record($value);
-						++$col;
-						if ($col==$maxcols) {
-							echo '</div><div id="indi_eventdetails">';
-							$col=0;
+		?>
+	</td></tr>
+	<tr>
+		<td id="indi_mainimage">
+			<?php if ($controller->canShowHighlightedObject()) {
+				echo $controller->getHighlightedObject();
+			} ?>
+		</td>
+		<td id="indi_name">
+		<div style="height: 150px;overflow:auto;">	
+			<?php 
+				//Display name details
+				if ($controller->indi->canDisplayDetails()) { 
+					$globalfacts=$controller->getGlobalFacts();
+					$nameSex = array('NAME', 'SEX');
+					foreach ($globalfacts as $key=>$value) {
+						$fact = $value->getTag();
+						if (in_array($fact, $nameSex)) {
+							if ($fact=="NAME") $controller->print_name_record($value);
 						}
 					}
-			}
-			// Display summary birth/death info.
-			$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
-			if (!($controller->indi->isDead())) {
-				// If alive display age
-				$bdate=$controller->indi->getBirthDate();
-				$age = GedcomDate::GetAgeGedcom($bdate);
-				if ($age!="")
-					$summary.= "<dt class=\"label\">".i18n::translate('Age')."</dt><dd class=\"field\">".get_age_at_event($age, true)."</dd>";
-			}
-			$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
-			if ($SHOW_LDS_AT_GLANCE) {
-				$summary.='<b>'.get_lds_glance($controller->indi->getGedcomRecord()).'</b>';
-			}
-			if ($summary) {
-				++$col;
-				echo '<div id="mainfacts">', "\n\t<dl>\n", $summary, "\n\t</dl>\n</div>\n";
-			}
-		?>
+				}
+			?>
 		</div>
-	</div><div class="clearfloat"></div>
-		<div id="hitcounter">
+		</td>
+		<td id="indi_details">
+			<?php 
+				//Display gender details
+				if ($controller->indi->canDisplayDetails()) { 
+					$globalfacts=$controller->getGlobalFacts();
+					$nameSex = array('NAME', 'SEX');
+					foreach ($globalfacts as $key=>$value) {
+						$fact = $value->getTag();
+						if (in_array($fact, $nameSex)) {
+							if ($fact=="SEX") $controller->print_sex_record($value);
+						}
+					}
+				}
+				// Display summary birth/death info.
+				$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
+				if (!($controller->indi->isDead())) {
+					// If alive display age
+					$bdate=$controller->indi->getBirthDate();
+					$age = GedcomDate::GetAgeGedcom($bdate);
+					if ($age!="")
+						$summary.= "<dt class=\"label\">".i18n::translate('Age')."</dt><dd class=\"field\">".get_age_at_event($age, true)."</dd>";
+				}
+				$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
+				if ($SHOW_LDS_AT_GLANCE) {
+					$summary.='<b>'.get_lds_glance($controller->indi->getGedcomRecord()).'</b>';
+				}
+				if ($summary) {
+					echo '<div id="mainfacts">', "\n\t<dl>\n", $summary, "\n\t</dl>\n</div>\n";
+				}
+			?>
+		</td>
+	</tr>
+</table>
+	<div id="hitcounter">
 		<?php
-		if($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-			//print indi counter only if displaying a non-private person
-			require WT_ROOT.'includes/hitcount.php';
-			echo i18n::translate('Hit Count:'), " ", $hitCount;
-		}
-		// if individual is a remote individual
-		// if information for this information is based on a remote site
-		if ($controller->indi->isRemote())
-		{
-			?><br />
-			<?php echo i18n::translate('The information for this individual was linked from a remote site.'); ?><!--<br />--><!--take this out if you want break the remote site and the fact that it was remote into two separate lines-->
-			<a href="<?php echo encode_url($controller->indi->getLinkUrl()); ?>"><?php echo $controller->indi->getLinkTitle(); ?></a>
-			<?php
-		}
-		// if indivual is not a remote individual
-		// if information for this individual is based on this local site
-		// this is not need to be printed, but may be uncommented if desired
-		/*else
-			echo("This is a local individual.");*/
-	}
-	?>
-	</div>
+			if($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
+				//print indi counter only if displaying a non-private person
+				require WT_ROOT.'includes/hitcount.php';
+				echo i18n::translate('Hit Count:'), " ", $hitCount;
+			}
+			// if individual is a remote individual
+			// if information for this information is based on a remote site
+			if ($controller->indi->isRemote()) {
+				echo '<br />';
+				echo i18n::translate('The information for this individual was linked from a remote site.');//<br />--><!--take this out if you want break the remote site and the fact that it was remote into two separate lines
+				echo '<a href="', encode_url($controller->indi->getLinkUrl()), '">', $controller->indi->getLinkTitle(), '</a>';
+			}
+			// if indivual is not a remote individual
+			// if information for this individual is based on this local site
+			// this is not need to be printed, but may be uncommented if desired
+			/*else
+				echo("This is a local individual.");
+			}*/
+		?>
 	</div>
 	
 <?php // -- Sidebar --
