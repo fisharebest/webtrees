@@ -177,12 +177,13 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-
-		$useCK = file_exists(WT_ROOT.'modules/ckeditor/ckeditor.php');
-		if($useCK){
+		
+		// check ckeditor module status
+		$useCK = WT_DB::prepare("SELECT status FROM `##module` WHERE module_name='ckeditor' LIMIT 1")->fetchOne();	
+		if($useCK == 'enabled') {
 			require WT_ROOT.'modules/ckeditor/ckeditor.php';
 		}
-
+			
 		$templates=array(
 			i18n::translate('Keyword examples')=>
 '<table id="keywords" class="sortable list_table center">
@@ -309,7 +310,7 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 			.help_link('index_htmlplus_template')
 			."</td><td class=\"optionbox\">"
 		;
-		if($useCK)
+		if($useCK == 'enabled')
 		{
 			print "\t\t\t<script language=\"JavaScript\" type=\"text/javascript\">\n"
 				."\t\t\t<!--\n"
@@ -368,7 +369,7 @@ i18n::translate('Narrative description')=>/* I18N: do not translate the #keyword
 			."<br /><br /></td>"
 			."<td class=\"optionbox\">"
 		;
-		if($useCK)
+		if($useCK == 'enabled')
 		{
 			// use CKeditor module
 			require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
