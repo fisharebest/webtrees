@@ -87,11 +87,6 @@ if ($action=="compose") {
 	print "<td>";
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
-		$trans = get_html_translation_table(HTML_SPECIALCHARS);
-		$trans = array_flip($trans);
-		$news["text"] = strtr($news["text"], $trans);
-		$news["text"] = nl2br($news["text"]);
-		//if (strip_tags($news["text"])==$news["text"]) {$news["text"]=nl2br($news["text"]); }
 		$oCKeditor = new CKEditor();
 		$oCKeditor->basePath =  './modules/ckeditor/';
 		$oCKeditor->config['width'] = 700;
