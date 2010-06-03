@@ -44,7 +44,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $ctype, $SHOW_ID_NUMBERS, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS, $DAYS_TO_SHOW_LIMIT, $SHOW_MARRIED_NAMES, $THEME_DIR;
 
 		$days=get_block_setting($block_id, 'days', $DAYS_TO_SHOW_LIMIT);
@@ -213,11 +213,14 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		}
 
-		$block=get_block_setting($block_id, 'block', true);
-		if ($block) {
-			require $THEME_DIR.'templates/block_small_temp.php';
+		if ($template) {
+			if (get_block_setting($block_id, 'block', true)) {
+				require $THEME_DIR.'templates/block_small_temp.php';
+			} else {
+				require $THEME_DIR.'templates/block_main_temp.php';
+			}
 		} else {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			return $content;
 		}
 	}
 

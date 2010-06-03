@@ -44,7 +44,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $ctype, $WT_IMAGE_DIR, $TEXT_DIRECTION, $WT_IMAGES, $THEME_DIR;
 
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
@@ -163,11 +163,14 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$content .= "</form>";
 
-		$block=get_block_setting($block_id, 'block', true);
-		if ($block) {
-			require $THEME_DIR.'templates/block_small_temp.php';
+		if ($template) {
+			if (get_block_setting($block_id, 'block', true)) {
+				require $THEME_DIR.'templates/block_small_temp.php';
+			} else {
+				require $THEME_DIR.'templates/block_main_temp.php';
+			}
 		} else {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			return $content;
 		}
 	}
 

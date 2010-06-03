@@ -78,7 +78,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 	}
 
 	// Implement class WT_Module_Block

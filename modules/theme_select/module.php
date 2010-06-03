@@ -44,14 +44,18 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
 		$title=i18n::translate('Change theme').help_link('change_theme');
 		$content='<br /><div class="center theme_form">'.MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';
 
-		require $THEME_DIR.'templates/block_main_temp.php';
+		if ($template) {
+			require $THEME_DIR.'templates/block_main_temp.php';
+		} else {
+			return $content;
+		}
 	}
 
 	// Implement class WT_Module_Block

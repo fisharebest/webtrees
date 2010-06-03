@@ -45,10 +45,10 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $ctype, $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 		global $MEDIA_EXTERNAL, $MEDIA_DIRECTORY, $SHOW_SOURCES;
-		global $MEDIATYPE, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $WT_IMAGE_DIR, $WT_IMAGES;
+		global $MEDIATYPE, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $THEME_DIR;;
 
 		if (!$MULTI_MEDIA) return;
 
@@ -313,8 +313,11 @@ function openPic(filename, width, height) {
 			$content .= "</td></tr></table>";
 			$content .= "</div>"; // random_picture_content
 			$content .= "</div>"; // random_picture_container
-			global $THEME_DIR;
-			require $THEME_DIR.'templates/block_main_temp.php';
+			if ($template) {
+				require $THEME_DIR.'templates/block_main_temp.php';
+			} else {
+				return $content;
+			}
 		}
 	}
 

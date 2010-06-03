@@ -44,8 +44,8 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
-		global $COMMON_NAMES_ADD, $COMMON_NAMES_REMOVE, $COMMON_NAMES_THRESHOLD, $WT_BLOCKS, $ctype, $WT_IMAGES, $WT_IMAGE_DIR, $SURNAME_LIST_STYLE;
+	public function getBlock($block_id, $template=true) {
+		global $COMMON_NAMES_ADD, $COMMON_NAMES_REMOVE, $COMMON_NAMES_THRESHOLD, $WT_BLOCKS, $ctype, $WT_IMAGES, $WT_IMAGE_DIR, $SURNAME_LIST_STYLE, $THEME_DIR;
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
@@ -121,11 +121,14 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		}
 
-		global $THEME_DIR;
-		if ($block) {
-			require $THEME_DIR.'templates/block_small_temp.php';
+		if ($template) {
+			if ($block) {
+				require $THEME_DIR.'templates/block_small_temp.php';
+			} else {
+				require $THEME_DIR.'templates/block_main_temp.php';
+			}
 		} else {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			return $content;
 		}
 	}
 

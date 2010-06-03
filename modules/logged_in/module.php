@@ -44,7 +44,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $WT_SESSION_TIME, $TEXT_DIRECTION, $THEME_DIR;
 
 		// Log out inactive users
@@ -88,8 +88,12 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 		$content .= "</table>";
-
-		require $THEME_DIR.'templates/block_main_temp.php';
+		
+		if ($template) {
+			require $THEME_DIR.'templates/block_main_temp.php';
+		} else {
+			return $content;
+		}
 	}
 
 	// Implement class WT_Module_Block

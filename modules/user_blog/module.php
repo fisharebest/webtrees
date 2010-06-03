@@ -52,7 +52,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $ctype, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $THEME_DIR;
 
 		switch (safe_GET('action')) {
@@ -89,11 +89,14 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<br /><a href=\"javascript:;\" onclick=\"addnews('".WT_USER_ID."'); return false;\">".i18n::translate('Add a new Journal entry')."</a>";
 		}
 
-		$block=get_block_setting($block_id, 'block', true);
-		if ($block) {
-			require $THEME_DIR.'templates/block_small_temp.php';
+		if ($template) {
+			if (get_block_setting($block_id, 'block', true)) {
+				require $THEME_DIR.'templates/block_small_temp.php';
+			} else {
+				require $THEME_DIR.'templates/block_main_temp.php';
+			}
 		} else {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			return $content;
 		}
 	}
 

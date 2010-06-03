@@ -3724,12 +3724,11 @@ class stats_ui extends stats
 		if ($params === null){return '';}
 		if (isset($params[0]) && $params[0] != ''){$block = $params[0];}else{return '';}
 		if ($block=='html') return '#callBlock:html#';
-		ob_start();
 		$class_name = $block.'_WT_Module';
 		$block = new $class_name;
 		$block_id=safe_GET('block_id');
-		$content = $block->getBlock($block_id);
-		return ob_get_clean();
+		$content = $block->getBlock($block_id, false);
+		return $content;
 	}
 
 	function totalUserMessages(){return count(getUserMessages(WT_USER_NAME));}

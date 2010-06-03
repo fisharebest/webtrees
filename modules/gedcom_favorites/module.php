@@ -52,8 +52,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $ctype, $TEXT_DIRECTION;
+	public function getBlock($block_id, $template=true) {
+		global $WT_IMAGE_DIR, $WT_IMAGES, $ctype, $TEXT_DIRECTION, $THEME_DIR;
 		global $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $ENABLE_AUTOCOMPLETE;
 
 		$action=safe_GET('action');
@@ -263,11 +263,14 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "\n</form></div>\n";
 		}
 
-		global $THEME_DIR;
-		if ($block) {
-			require $THEME_DIR.'templates/block_small_temp.php';
+		if ($template) {
+			if ($block) {
+				require $THEME_DIR.'templates/block_small_temp.php';
+			} else {
+				require $THEME_DIR.'templates/block_main_temp.php';
+			}
 		} else {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			return $content;
 		}
 		// Restore GEDCOM configuration
 		unset($show_full);

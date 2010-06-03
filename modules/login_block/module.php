@@ -44,7 +44,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $QUERY_STRING, $USE_REGISTRATION_MODULE, $TEXT_DIRECTION, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
@@ -148,7 +148,11 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "</form></div>";
 		}
 
-		require $THEME_DIR.'templates/block_main_temp.php';
+		if ($template) {
+			require $THEME_DIR.'templates/block_main_temp.php';
+		} else {
+			return $content;
+		}
 	}
 
 	// Implement class WT_Module_Block

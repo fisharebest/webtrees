@@ -44,7 +44,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $WT_IMAGE_DIR, $WT_IMAGES, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
@@ -65,7 +65,11 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= "<br />".format_timestamp(client_time());
 		$content .= "</td></tr></table>";
 
-		require $THEME_DIR.'templates/block_main_temp.php';
+		if ($template) {
+			require $THEME_DIR.'templates/block_main_temp.php';
+		} else {
+			return $content;
+		}
 	}
 
 	// Implement class WT_Module_Block

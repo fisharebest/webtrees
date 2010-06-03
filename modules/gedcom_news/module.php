@@ -52,7 +52,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id) {
+	public function getBlock($block_id, $template=true) {
 		global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $ctype, $THEME_DIR;
 
 		switch (safe_GET('action')) {
@@ -149,7 +149,11 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= help_link('gedcom_news_archive').'<br />';
 		}
 
-		require $THEME_DIR.'templates/block_main_temp.php';
+		if ($template) {
+			require $THEME_DIR.'templates/block_main_temp.php';
+		} else {
+			return $content;
+		}
 	}
 
 	// Implement class WT_Module_Block
