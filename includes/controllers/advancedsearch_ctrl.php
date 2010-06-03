@@ -189,7 +189,7 @@ class AdvancedSearchController extends SearchController {
 		$sql = '';
 		if ($justSql) $sqlfields = "SELECT DISTINCT {$prefix}_id, {$prefix}_file";
 		else $sqlfields = "SELECT i_id, i_gedcom, i_isdead, i_file, i_sex";
-		$sqltables = " FROM ##".$table;
+		$sqltables = " FROM `##".$table."`";
 		$sqlwhere = " WHERE ".$prefix."_file=".WT_GED_ID;
 		$keepfields = $this->fields;
 		for($i=0; $i<$fct; $i++) {
