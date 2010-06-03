@@ -54,11 +54,11 @@ WT_DB::exec(
 	" pl_zoom      INTEGER          NULL,".
 	" pl_icon      VARCHAR(255)     NULL,".
 	" PRIMARY KEY     (pl_id),".
-	"         KEY ix1 (pl_level),"
-	"         KEY ix2 (pl_long),"
-	"         KEY ix3 (pl_lati),"
-	"         KEY ix4 (pl_place),"
-	"         KEY ix5 (pl_parent_id)"
+	"         KEY ix1 (pl_level),".
+	"         KEY ix2 (pl_long),".
+	"         KEY ix3 (pl_lati),".
+	"         KEY ix4 (pl_place),".
+	"         KEY ix5 (pl_parent_id)".
 	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 );
 
