@@ -43,29 +43,9 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/classes/class_module.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts[] = "FAMS";
-$nonfacts[] = "FAMC";
-$nonfacts[] = "MAY";
-$nonfacts[] = "BLOB";
-$nonfacts[] = "CHIL";
-$nonfacts[] = "HUSB";
-$nonfacts[] = "WIFE";
-$nonfacts[] = "RFN";
-$nonfacts[] = "_WT_OBJE_SORT";
-$nonfacts[] = "_WT_OBJE_SORT";
-$nonfacts[] = "";
+$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "CHIL", "HUSB", "WIFE", "RFN", "_WT_OBJE_SORT", "");
 
-//$nonfamfacts[] = "NCHI"; // Turning back on NCHI display for the indi page.
-$nonfamfacts[] = "UID";
-$nonfamfacts[] = "";
-
-// SET Family Navigator for each Tab as necessary  - SHOW/HIDE ===============
-$NAV_FACTS	 = "SHOW";		// Facts and Details Tab Navigator
-$NAV_NOTES	 = "SHOW";		// Notes Tab Navigator
-$NAV_SOURCES = "SHOW";		// Sources Tab Navigator
-$NAV_MEDIA	 = "SHOW";		// Media Tab Navigator
-$NAV_ALBUM	 = "SHOW";		// Album Tab Navigator
-// ========================================================================
+$nonfamfacts = array(/*"NCHI",*/ "UID", "");
 
 /**
 * Main controller class for the individual page.
@@ -1050,8 +1030,6 @@ class IndividualControllerRoot extends BaseController {
 // -----------------------------------------------------------------------------
 // End GedFact Assistant Functions
 // -----------------------------------------------------------------------------
-
-
 
 }
 // -- end of class
