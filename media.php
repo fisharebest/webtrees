@@ -864,33 +864,113 @@ if (check_media_structure()) {
 
 		// Start of media directory table
 		print "<table class=\"list_table width50 $TEXT_DIRECTION\">";
-
 		// Tell the user where he is
 		print "<tr>";
-			print "<td class=\"topbottombar\" colspan=\"2\">";
-				print i18n::translate('Current directory');
-				print "<br />";
-				print PrintReady(substr($directory, 0, -1));
-
-				print "<br /><br />";
-				print "<form name=\"blah2\" action=\"media.php\" method=\"post\">";
-				print "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
-				print "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
-				print "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\" />";
-				print "<input type=\"hidden\" name=\"action\" value=\"\" />";
-				print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-				print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-			if ($USE_MEDIA_FIREWALL) {
-				print "<input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.action.value='movedirstandard';\" />";
-				print "<input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
-				print help_link('move_mediadirs');
-				print "<br />";
+		print "<td class=\"topbottombar\" colspan=\"2\">";
+			print i18n::translate('Current directory');
+			print "<br />";
+			print PrintReady(substr($directory, 0, -1));
+			print "<br />";
+				
+			// Calculation to determine whether files are protected or not -------------------------
+			// Check if media directory and thumbs directory are empty
+			$clean = false;
+			$files = array();
+			$thumbfiles = array();
+			$files_fw = array();
+			$thumbfiles_fw = array();
+			$resdir = false;
+			$resthumb = false;
+			// Media directory check
+			if (@is_dir(filename_decode($directory))) {
+				$handle = opendir(filename_decode($directory));
+				$files = array();
+				while (false !== ($file = readdir($handle))) {
+					if (!in_array($file, $BADMEDIA)) $files[] = $file;
+				}
+			} else {
+				print "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
+				AddToLog('Directory does not exist.'.$directory, 'media');
+			}		
+			// Thumbs directory check
+			if (@is_dir(filename_decode($thumbdir))) {
+				$handle = opendir(filename_decode($thumbdir));
+				$thumbfiles = array();
+				while (false !== ($file = readdir($handle))) {
+					if (!in_array($file, $BADMEDIA)) $thumbfiles[] = $file;
+				}
+				closedir($handle);
 			}
-				print "<input type=\"submit\" value=\"".i18n::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
-				print help_link('setperms');
+			// Media Firewall Media directory check
+			if (@is_dir(filename_decode($directory_fw))) {
+				$handle = opendir(filename_decode($directory_fw));
+				$files_fw = array();
+				while (false !== ($file = readdir($handle))) {
+					if (!in_array($file, $BADMEDIA)) $files_fw[] = $file;
+				}
+			}
+			// Media Firewall Thumbs directory check
+			if (@is_dir(filename_decode($thumbdir_fw))) {
+				$handle = opendir(filename_decode($thumbdir_fw));
+				$thumbfiles_fw = array();
+				while (false !== ($file = readdir($handle))) {
+					if (!in_array($file, $BADMEDIA)) $thumbfiles_fw[] = $file;
+				}
+				closedir($handle);
+			}		
+			$protected_files = count($files_fw);
+			$standard_files = count($files);	
+			
+			print "<br />";
+			if ($protected_files > $standard_files) {
+				echo i18n::translate('The default directory for Media files is the Protected directory').'<br />';
+			} else {
+				echo i18n::translate('The default directory for Media files is the Standard directory').'<br />';
+			}
+			print "<br />";
+			print "<form name=\"blah3\" action=\"media.php\" method=\"post\">";
+			print "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
+			print "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
+			print "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\" />";
+			print "<input type=\"hidden\" name=\"action\" value=\"\" />";
+			print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
+			print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
+			
+			if ($USE_MEDIA_FIREWALL) {
+				if ($protected_files < $standard_files) {
+					echo '<div class="error">';
+					echo i18n::translate('The media Firewall is ENABLED but your media may still be located in the Standard Media Firewall Directory').'<br />';
+					echo i18n::translate('Choose either').'<br />';
+					echo i18n::translate('(a) Click the "Move to Protected" button to move your media to the protected directory').'<br />';
+					echo i18n::translate('OR').'<br />';
+					echo i18n::translate('(b) Disable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
+					echo '</div>';		
+				}
+					print "<input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+					print "<input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+					print help_link('move_mediadirs');
+					print "<br />";	
+			}
+			
+			if ( !$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY) ) {
+				if ($protected_files > $standard_files) {
+					echo '<div class="error">';
+					echo i18n::translate('The media Firewall is DISABLED but your media may still be located in the Protected Media Firewall Directory').'<br />';
+					echo i18n::translate('Choose either').'<br />';
+					echo i18n::translate('(a) Click the "Move to Standard" button to move your media to the standard directory').'<br />';
+					echo i18n::translate('OR').'<br />';
+					echo i18n::translate('(b) Re-enable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
+					echo '</div>';
+					print "<input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+					print "<input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+					print help_link('move_mediadirs');
+					print "<br />";		
+				}	
+			}
 
-				print "</form>";
-
+			print "<input type=\"submit\" value=\"".i18n::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
+			print help_link('setperms');
+			print "</form>";
 			print "</td>";
 		print "</tr>";
 
