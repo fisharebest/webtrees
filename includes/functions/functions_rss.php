@@ -388,9 +388,6 @@ function getRecentChanges() {
 			if ($record && $record->canDisplayDetails()) {
 				$recentText.='<li>';
 				$recentText.='<a href="'.encode_url($record->getAbsoluteLinkUrl()).'"><b>'.PrintReady($record->getFullName()).'</b>';
-				if ($SHOW_ID_NUMBERS) {
-					$recentText .= ' '.WT_LPARENS.$gid.WT_RPARENS;
-				}
 				$recentText.='</a> '.translate_fact('CHAN').' - '.$record->LastChangeTimestamp(false).'</li>';
 			}
 		}
