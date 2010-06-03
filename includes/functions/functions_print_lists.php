@@ -1635,7 +1635,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
-	$private = 0;
 
 	$return = '';
 
@@ -1665,7 +1664,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		// Privacy
 		if (!$record->canDisplayDetails() || !showFactDetails($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
-			$private ++;
 			continue;
 		}
 		//-- Counter
@@ -1770,55 +1768,29 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	$summary = "";
 	if ($endjd==client_jd()) {
 		// We're dealing with the Today's Events block
-		if ($private!=0) {
-			// We lost some output due to Privacy restrictions
-			if ($output!=0) {
-				$summary = i18n::translate('More events exist for today, but privacy restrictions prevent you from seeing them.');
-			} else {
-				$summary = i18n::translate('Events exist for today, but privacy restrictions prevent you from seeing them.');
-			}
-		} else if ($filter!=0) {
-			// We lost some output due to filtering for living people
-			if ($output==0) {
-				$summary = i18n::translate('No events for living people exist for today.');
-			}
-		} else {
-			if ($output==0) {
+		if ($output==0) {
+			if ($filter==0) {
 				$summary = i18n::translate('No events exist for today.');
+			} else {
+				$summary = i18n::translate('No events for living people exist for today.');
 			}
 		}
 	} else {
 		// We're dealing with the Upcoming Events block
-		if ($private!=0) {
-			// We lost some output due to Privacy restrictions
-			if ($output!=0) {
-				if ($endjd==$startjd) {
-					$summary = i18n::translate('More events exist for tomorrow, but privacy restrictions prevent you from seeing them.');
-				} else {
-					$summary = i18n::translate('More events exist for the next %s days, but privacy restrictions prevent you from seeing them.', $endjd-$startjd+1);
-				}
-			} else {
-				if ($endjd==$startjd) {
-					$summary = i18n::translate('Events exist for tomorrow, but privacy restrictions prevent you from seeing them.');
-				} else {
-					$summary = i18n::translate('Events exist for the next %s days, but privacy restrictions prevent you from seeing them.', $endjd-$startjd+1);
-				}
-			}
-		} else if ($filter!=0) {
-			// We lost some output due to filtering for living people
-			if ($output==0) {
-				if ($endjd==$startjd) {
-					$summary = i18n::translate('No events for living people exist for tomorrow.');
-				} else {
-					$summary = i18n::translate('No events for living people exist for the next %s days.', $endjd-$startjd+1);
-				}
-			}
-		} else {
-			if ($output==0) {
+		if ($output==0) {
+			if ($filter==0) {
 				if ($endjd==$startjd) {
 					$summary = i18n::translate('No events exist for tomorrow.');
 				} else {
-					$summary = i18n::translate('No events exist for the next %s days.', $endjd-$startjd+1);
+					// I18N: tanslation for %d==1 is unsed; it is translated separately as tomorrow
+					$summary = i18n::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
+				}
+			} else {
+				if ($endjd==$startjd) {
+					$summary = i18n::translate('No events for living people exist for tomorrow.');
+				} else {
+					// I18N: tanslation for %d==1 is unsed; it is translated separately as tomorrow
+					$summary = i18n::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
 				}
 			}
 		}
@@ -1841,7 +1813,6 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
-	$private = 0;
 
 	$return = '';
 
@@ -1871,7 +1842,6 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 
 		// Privacy
 		if (!$record->canDisplayDetails() || !showFactDetails($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
-			$private ++;
 			continue;
 		}
 		$output ++;
@@ -1906,60 +1876,34 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	$summary = "";
 	if ($endjd==client_jd()) {
 		// We're dealing with the Today's Events block
-		if ($private!=0) {
-			// We lost some output due to Privacy restrictions
-			if ($output!=0) {
-				$summary = i18n::translate('More events exist for today, but privacy restrictions prevent you from seeing them.');
-			} else {
-				$summary = i18n::translate('Events exist for today, but privacy restrictions prevent you from seeing them.');
-			}
-		} else if ($filter!=0) {
-			// We lost some output due to filtering for living people
-			if ($output==0) {
-				$summary = i18n::translate('No events for living people exist for today.');
-			}
-		} else {
-			if ($output==0) {
+		if ($output==0) {
+			if ($filter==0) {
 				$summary = i18n::translate('No events exist for today.');
+			} else {
+				$summary = i18n::translate('No events for living people exist for today.');
 			}
 		}
 	} else {
 		// We're dealing with the Upcoming Events block
-		if ($private!=0) {
-			// We lost some output due to Privacy restrictions
-			if ($output!=0) {
-				if ($endjd==$startjd) {
-					$summary = i18n::translate('More events exist for tomorrow, but privacy restrictions prevent you from seeing them.');
-				} else {
-					$summary = i18n::translate('More events exist for the next %s days, but privacy restrictions prevent you from seeing them.', $endjd-$startjd+1);
-				}
-			} else {
-				if ($endjd==$startjd) {
-					$summary = i18n::translate('Events exist for tomorrow, but privacy restrictions prevent you from seeing them.');
-				} else {
-					$summary = i18n::translate('Events exist for the next %s days, but privacy restrictions prevent you from seeing them.', $endjd-$startjd+1);
-				}
-			}
-		} else if ($filter!=0) {
-			// We lost some output due to filtering for living people
-			if ($output==0) {
-				if ($endjd==$startjd) {
-					$summary = i18n::translate('No events for living people exist for tomorrow.');
-				} else {
-					$summary = i18n::translate('No events for living people exist for the next %s days.', $endjd-$startjd+1);
-				}
-			}
-		} else {
-			if ($output==0) {
+		if ($output==0) {
+			if ($filter==0) {
 				if ($endjd==$startjd) {
 					$summary = i18n::translate('No events exist for tomorrow.');
 				} else {
-					$summary = i18n::translate('No events exist for the next %s days.', $endjd-$startjd+1);
+					// I18N: tanslation for %d==1 is unsed; it is translated separately as tomorrow
+					$summary = i18n::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
+				}
+			} else {
+				if ($endjd==$startjd) {
+					$summary = i18n::translate('No events for living people exist for tomorrow.');
+				} else {
+					// I18N: tanslation for %d==1 is unsed; it is translated separately as tomorrow
+					$summary = i18n::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
 				}
 			}
 		}
 	}
-	if ($summary!="") {
+	if ($summary) {
 		$return .= "<b>". $summary. "</b>";
 	}
 
