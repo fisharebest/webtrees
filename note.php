@@ -76,9 +76,6 @@ if ($controller->accept_success) {
 	echo '<b>', i18n::translate('Changes successfully accepted into database'), '</b><br />';
 }
 echo '<span class="name_head">', PrintReady(htmlspecialchars($controller->note->getFullName()));
-if ($SHOW_ID_NUMBERS) {
-	echo ' ', getLRM(), '(', $controller->nid, ')', getLRM();
-}
 echo '</span><br />';
 echo '<table class="facts_table">';
 echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';

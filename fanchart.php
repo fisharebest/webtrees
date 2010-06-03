@@ -98,7 +98,7 @@ function split_align_text($data, $maxlen) {
  */
 function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style;
-	global $name, $SHOW_ID_NUMBERS, $view, $TEXT_DIRECTION;
+	global $name, $view, $TEXT_DIRECTION;
 	global $stylesheet, $print_stylesheet;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $LINK_ICONS, $GEDCOM;
 	global $fanChart;
@@ -281,8 +281,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$ty=round($cy - $mr * -sin($rad));
 				$imagemap .= "$tx, $ty";
 				// add action url
-				$tempURL = "javascript://".htmlspecialchars(strip_tags($name));
-				if ($SHOW_ID_NUMBERS) $tempURL .= " (".$pid.")";
+				$tempURL = $person->getLinkUrl();
 				$imagemap .= "\" href=\"$tempURL\" ";
 				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}";
 				if (!empty($view)) $tempURL .= "&view={$view}";

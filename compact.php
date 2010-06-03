@@ -33,7 +33,6 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 // Extract form variables
 $rootid    =safe_GET_xref('rootid');
-$showids   =safe_GET('showids' ,   '1', '0');
 $showthumbs=safe_GET('showthumbs', '1', '0');
 
 // Validate form variables
@@ -91,17 +90,6 @@ if ($view != "preview") {
 	echo "<td class=\"facts_label03\" rowspan=\"3\">";
 	echo "<input type=\"submit\" value=\"".i18n::translate('View')."\" />";
 	echo "</td>\n</tr>\n";
-
-	if ($SHOW_ID_NUMBERS) {
-		echo "<tr>\n";
-		echo "<td class=\"descriptionbox\">";
-		echo i18n::translate('Show ID numbers next to names'), help_link('SHOW_ID_NUMBERS');
-		echo "</td>\n";
-		echo "<td class=\"optionbox\">\n";
-		echo "<input name=\"showids\" type=\"checkbox\" value=\"1\"";
-		if ($showids) echo " checked=\"checked\"";
-		echo " /></td>\n</tr>\n";
-	}
 
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		echo "<tr>\n";
@@ -303,7 +291,7 @@ print_footer();
 function print_td_person($n) {
 	global $treeid, $WT_IMAGE_DIR, $WT_IMAGES;
 	global $TEXT_DIRECTION, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE, $WT_IMAGES;
-	global $showids, $showthumbs;
+	global $showthumbs;
 
 	$text = "";
 	$pid = $treeid[$n];
@@ -380,12 +368,6 @@ function print_td_person($n) {
 		$text .= PrintReady(htmlspecialchars(strip_tags($name),ENT_QUOTES,'UTF-8'));
 		if ($addname) $text .= "<br />" . PrintReady($addname);
 		$text .= "</a>";
-		if ($showids) {
-			$text .= " <span class='details1' ";
-			if ($TEXT_DIRECTION=="ltr") $text .= "dir=\"ltr\">";
-			else $text .= "dir=\"rtl\">";
- 			$text .= "(".$pid.")</span>";
-		}
 		$text .= "<br />";
 		if ($indi->canDisplayDetails()) {
 			$text.="<span class='details1'>";
@@ -428,7 +410,7 @@ function print_td_person($n) {
 
 function print_arrow_person($n, $arrow_dir) {
 	global $treeid;
-	global $view, $showids, $showthumbs;
+	global $view, $showthumbs;
 	global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 
 	$pid = $treeid[$n];
@@ -454,7 +436,6 @@ function print_arrow_person($n, $arrow_dir) {
 	$text = "";
 	if ($pid) {
 		$text .= "<a href=\"?rootid=".$pid;
-		if ($showids) $text .="&amp;showids=".$showids;
 		if ($showthumbs) $text .= "&amp;showthumbs=".$showthumbs;
 		if ($view) $text .="&amp;view=".$view;
 		$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" >";
