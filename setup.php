@@ -69,7 +69,7 @@ if (version_compare(PHP_VERSION, '5.2')<0) {
 	echo
 		'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 		'<html xmlns="http://www.w3.org/1999/xhtml">',
-		'<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />',
+		'<head>',
 		'<title>webtrees setup wizard</title>',
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
@@ -98,7 +98,7 @@ define('WT_LOCALE', i18n::init(safe_POST('lang', '[@a-zA-Z_]+')));
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
-	'<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />',
+	'<head>',
 	'<title>webtrees setup wizard</title>',
 	'<style type="text/css">
 		body { 	color: black; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif;	padding:10px; }
