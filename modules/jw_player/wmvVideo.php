@@ -35,8 +35,8 @@
 	<META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980 1:00:00 GMT">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<title>JW Player for Windows Media Videos</title>
-	<script type="text/javascript" src="modules/jw_player/silverlight.js"></script>
-	<script type="text/javascript" src="modules/jw_player/wmvplayer.js"></script>
+	<script type="text/javascript" src="js/jw_player/silverlight.js"></script>
+	<script type="text/javascript" src="js/jw_player/wmvplayer.js"></script>
 </head>
 <body bgcolor="#000000">
 <center>
@@ -51,11 +51,11 @@ $wmvVideo=decrypt(safe_GET('wmvVideo'));
 
 <script type="text/javascript">
 	var elm = document.getElementById("myplayer");
-	var src = 'modules/jw_player/wmvplayer.xaml';
+	var src = 'js/jw_player/wmvplayer.xaml';
 	var cfg = {
 		file:'<?php echo $wmvVideo; ?>',
 		<?php if (preg_match("/\.mp3$/i", $wmvVideo)) { ?>
-			logo:'modules/jw_player/audio.png',
+			logo:'js/jw_player/audio.png',
 		<?php } ?>
 		autostart:'true',
 		overstretch:'true',
