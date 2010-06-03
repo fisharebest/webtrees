@@ -79,8 +79,11 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<div class=\"person_box\">";
 			$content .= "<span class=\"news_title\">".embed_globals($news["title"])."</span><br />";
 			$content .= "<span class=\"news_date\">".format_timestamp($news["date"])."</span><br /><br />";
-			$news["text"] = nl2br($news["text"], embed_globals($news["text"]));
-			$content .= PrintReady($news["text"])."<br /><br />";
+			if ($news["text"]==strip_tags($news["text"])) {
+				// No HTML?
+				$news["text"]=nl2br($news["text"]);
+			}
+			$content .= embed_globals($news["text"])."<br /><br />";
 			$content .= "<a href=\"javascript:;\" onclick=\"editnews('$key'); return false;\">".i18n::translate('Edit')."</a> | ";
 			$content .= "<a href=\"".encode_url("index.php?action=deletenews&news_id={$key}&ctype={$ctype}")."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this Journal entry?')."');\">".i18n::translate('Delete')."</a><br />";
 			$content .= "</div><br />";

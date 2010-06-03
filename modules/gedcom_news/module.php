@@ -120,16 +120,12 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			// Look for $GLOBALS substitutions in the News title
 			$newsTitle = embed_globals($news['title']);
 			$content .= "<span class=\"news_title\">".PrintReady($newsTitle)."</span><br />\n";
-			$content .= "<span class=\"news_date\">".format_timestamp($news['date'])."</span><br /><br />\n";
-
-			// Look for $GLOBALS substitutions in the News text
-			$newsText = embed_globals($news['text']);
-			$trans = get_html_translation_table(HTML_SPECIALCHARS);
-			$trans = array_flip($trans);
-			$newsText = strtr($newsText, $trans);
-			$newsText = nl2br($newsText);
-			$content .= PrintReady($newsText)."<br />\n";
-
+			$content .= "<span class=\"news_date\">".format_timestamp($news['date'])."</span><br /><br />";
+			if ($news["text"]==strip_tags($news["text"])) {
+				// No HTML?
+				$news["text"]=nl2br($news["text"]);
+			}
+			$content .= embed_globals($news["text"])."<br /><br />";
 			// Print Admin options for this News item
 			if(WT_USER_GEDCOM_ADMIN) {
 				$content .= "<hr size=\"1\" />"
