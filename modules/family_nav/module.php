@@ -125,7 +125,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		
 	 // Start Family Nav Table ----------------------------
 		echo "<table class=\"nav_content\" cellpadding=\"0\">"; 
-		global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES, $WT_MENUS_AS_LISTS;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $WT_MENUS_AS_LISTS;
 		global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
 		global $TEXT_DIRECTION;
 
@@ -142,7 +142,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				<td style="padding-bottom:4px;" align="center" colspan="2">
 				<?php
 				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
-				echo "<b>".$label."&nbsp;&nbsp;</b><span class=\"age\">(".$famid.")</span>";
+				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
 				</td>
@@ -285,7 +285,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php				 
 				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\"href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
-				echo "<b>".$label."&nbsp;&nbsp;</b><span class=\"age\">(".$famid.")</span>";
+				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
 				</td>
@@ -427,11 +427,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php
 				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
-				echo "<b>".i18n::translate('Immediate Family')."&nbsp;&nbsp;</b><span class=\"age\">(".$famid.")</span>";
+				echo "<b>".i18n::translate('Immediate Family')."</b>";
 				echo "</a>";
-				//echo "<a href=\"family.php?famid=".$famid."\">";
-				//echo "<b>".i18n::translate('Immediate Family')."&nbsp;&nbsp;</b><span class=\"age\">(".$famid.")</span>";
-				//echo "</a>";
 				?>
 				</td>
 			</tr>
@@ -580,7 +577,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $SCRIPT_NAME, $GEDCOM;
-	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_ID_NUMBERS, $SHOW_PEDIGREE_PLACES;
+	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;

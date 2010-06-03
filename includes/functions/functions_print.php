@@ -52,7 +52,7 @@ require_once WT_ROOT.'includes/classes/class_menubar.php';
 */
 function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $view, $GEDCOM;
-	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_ID_NUMBERS, $SHOW_PEDIGREE_PLACES;
+	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 	global $USE_SILHOUETTE, $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
@@ -353,10 +353,6 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 	}
 	if ($PEDIGREE_SHOW_GENDER)
 		$genderImage = " ".$person->getSexImage('small', "box-$boxID-gender");
-	if ($SHOW_ID_NUMBERS) {
-		if ($TEXT_DIRECTION=="ltr") $showid .= "<span class=\"details$style\">" . getLRM() . "($pid)" . getLRM() . " </span>";
-		else $showid .= "<span class=\"details$style\">" . getRLM() . "($pid)" . getRLM() . " </span>";
-	}
 	if (strlen($addname) > 0) {
 		$tempStyle = $style;
 		if (hasRTLText($addname) && $style=='1') $tempStyle = '2';
@@ -868,7 +864,7 @@ function contact_menus($ged_id=WT_GED_ID) {
 
 //-- print user favorites
 function print_favorite_selector($option=0) {
-	global $GEDCOM, $SHOW_ID_NUMBERS, $INDEX_DIRECTORY, $QUERY_STRING;
+	global $GEDCOM, $INDEX_DIRECTORY, $QUERY_STRING;
 	global $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
 	global $controller; // Pages with a controller can be added to the favorites
 
@@ -944,13 +940,6 @@ function print_favorite_selector($option=0) {
 					if ($record && $record->canDisplayName()) {
 						$submenu->addLink(encode_url($record->getLinkUrl()));
 						$slabel = PrintReady($record->getFullName());
-						if ($SHOW_ID_NUMBERS) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$slabel .= " (".$record->getXref().")";
-							} else {
-								$slabel .= " " . getRLM() . "(".$record->getXref().")" . getRLM();
-							}
-						}
 						$submenu->addLabel($slabel,  "right");
 						$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 						$menu->addSubMenu($submenu);
@@ -978,13 +967,6 @@ function print_favorite_selector($option=0) {
 					if ($record && $record->canDisplayName()) {
 						$submenu->addLink(encode_url($record->getLinkUrl()));
 						$slabel = PrintReady($record->getFullName());
-						if ($SHOW_ID_NUMBERS) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$slabel .= " (".$record->getXref().")";
-							} else {
-								$slabel .= " " . getRLM() . "(".$record->getXref().")" . getRLM();
-							}
-						}
 						$submenu->addLabel($slabel,  "right");
 						$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 						$menu->addSubMenu($submenu);
@@ -1034,13 +1016,6 @@ function print_favorite_selector($option=0) {
 					}
 					if ($record && $record->canDisplayName()) {
 						$name=$record->getFullName();
-						if ($SHOW_ID_NUMBERS) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$name.=' ('.$record->getXref().')';
-							} else {
-								$name.=' '.getRLM().'('.$record->getXref().')'.getRLM();
-							}
-						}
 						echo "<option value=\"", encode_url($record->getLinkUrl()), "\">", $name, "</option>";
 					}
 				}
@@ -1059,13 +1034,6 @@ function print_favorite_selector($option=0) {
 					$record=GedcomRecord::getInstance($favorite["gid"]);
 					if ($record && $record->canDisplayName()) {
 						$name=$record->getFullName();
-						if ($SHOW_ID_NUMBERS) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$name.=' ('.$record->getXref().')';
-							} else {
-								$name.=' '.getRLM().'('.$record->getXref().')'.getRLM();
-							}
-						}
 						echo "<option value=\"", encode_url($record->getLinkUrl()), "\">", $name, "</option>";
 					}
 				}
@@ -1551,7 +1519,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 * @param string $linebr optional linebreak
 */
 function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
-	global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES;
+	global $WT_IMAGE_DIR, $WT_IMAGES;
 
 	// Level 1 ASSO
 	if (preg_match('/^1 ASSO @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $factrec, $amatch)) {
@@ -1593,9 +1561,6 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 		} else {
 			$name=$amatch[1];
 			$relationship='';
-		}
-		if ($SHOW_ID_NUMBERS) {
-			$name.=' ('.$amatch[1].')';
 		}
 		if (preg_match('/\n2 RELA (.+)/', $amatch[2], $rmatch)) {
 			$label='<br /><span class="label">'.i18n::translate('Relationship').':</span> '.translate_rela($rmatch[1], $sex);
@@ -1655,9 +1620,6 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 					}
 				}
 				break;
-			}
-			if ($SHOW_ID_NUMBERS) {
-				$name.=' ('.$amatch[1].')';
 			}
 			echo '<br/>', $label, '<a href="', $person->getLinkUrl().'">', $name, '</a>', $relationship;
 		} else {

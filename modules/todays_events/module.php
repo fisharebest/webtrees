@@ -45,7 +45,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $DAYS_TO_SHOW_LIMIT, $THEME_DIR;
+		global $ctype, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $DAYS_TO_SHOW_LIMIT, $THEME_DIR;
 
 		$filter       =get_block_setting($block_id, 'filter', true);
 		$onlyBDM      =get_block_setting($block_id, 'onlyBDM', true);

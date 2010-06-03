@@ -199,7 +199,6 @@ if (safe_POST('action')=='update') {
 	$configtext = preg_replace('/\$SHOW_FACT_ICONS\s*=\s*.*;/', "\$SHOW_FACT_ICONS = ".$boolarray[$_POST["NEW_SHOW_FACT_ICONS"]].";", $configtext);
 	$configtext = preg_replace('/\$SHOW_GEDCOM_RECORD\s*=\s*.*;/', "\$SHOW_GEDCOM_RECORD = ".$boolarray[$_POST["NEW_SHOW_GEDCOM_RECORD"]].";", $configtext);
 	$configtext = preg_replace('/\$SHOW_HIGHLIGHT_IMAGES\s*=\s*.*;/', "\$SHOW_HIGHLIGHT_IMAGES = ".$boolarray[$_POST["NEW_SHOW_HIGHLIGHT_IMAGES"]].";", $configtext);
-	$configtext = preg_replace('/\$SHOW_ID_NUMBERS\s*=\s*.*;/', "\$SHOW_ID_NUMBERS = ".$boolarray[$_POST["NEW_SHOW_ID_NUMBERS"]].";", $configtext);
 	$configtext = preg_replace('/\$SHOW_LAST_CHANGE\s*=\s*.*;/', "\$SHOW_LAST_CHANGE = ".$boolarray[$_POST["NEW_SHOW_LAST_CHANGE"]].";", $configtext);
 	$configtext = preg_replace('/\$SHOW_EST_LIST_DATES\s*=\s*.*;/', "\$SHOW_EST_LIST_DATES = ".$boolarray[$_POST["NEW_SHOW_EST_LIST_DATES"]].";", $configtext);
 	$configtext = preg_replace('/\$SHOW_LDS_AT_GLANCE\s*=\s*.*;/', "\$SHOW_LDS_AT_GLANCE = ".$boolarray[$_POST["NEW_SHOW_LDS_AT_GLANCE"]].";", $configtext);
@@ -868,14 +867,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_yes_no('NEW_UNDERLINE_NAME_QUOTES', $UNDERLINE_NAME_QUOTES, 'tabindex="'.(++$i).'"'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox wrap width20">
-							<?php echo i18n::translate('Show ID numbers next to names'), help_link('SHOW_ID_NUMBERS'); ?>
-						</td>
-						<td class="optionbox">
-							<?php echo edit_field_yes_no('NEW_SHOW_ID_NUMBERS', $SHOW_ID_NUMBERS, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>

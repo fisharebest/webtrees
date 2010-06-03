@@ -289,7 +289,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function config() {
-		global $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_ID_NUMBERS, $TEXT_DIRECTION;
+		global $WT_IMAGES, $WT_IMAGE_DIR, $TEXT_DIRECTION;
 
 		if (WT_USER_CAN_EDIT) {
 			print_header($this->getTitle());
@@ -316,15 +316,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($stories as $story) {
 				$indi=Person::getInstance($story->xref);
 				if ($indi) {
-					$id='';
-					if ($SHOW_ID_NUMBERS) {
-						if ($TEXT_DIRECTION=='rtl') {
-							$id="&nbsp;&nbsp;".getRLM()."(".$story->xref.")".getRLM();
-						} else {
-							$id="&nbsp;&nbsp;(".$story->xref.")";
-						}
-					}
-					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName().$id."</a>";
+					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
 					$name=$story->xref;
 				}

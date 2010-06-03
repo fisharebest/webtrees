@@ -77,7 +77,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	global $GEDCOM, $RESN_CODES;
 	global $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION;
-	global $HIDE_GEDCOM_ERRORS, $SHOW_ID_NUMBERS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
+	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $view;
 	global $n_chil, $n_gchi, $n_ggch;
 	global $SEARCH_SPIDER;
@@ -259,12 +259,8 @@ function print_fact(&$eventObj, $noedit=false) {
 			if ($view!="preview" && $spouse) echo " - ";
 			if ($view!="preview" && empty($SEARCH_SPIDER)) {
 				echo "<a href=\"", encode_url("family.php?famid={$pid}"), "\">";
-				if ($TEXT_DIRECTION == "ltr") echo " ", getLRM();
-				else echo " ", getRLM();
-				echo "[", i18n::translate('View Family');
-				if ($SHOW_ID_NUMBERS) echo " ", getLRM(), "($pid)", getLRM();
-				if ($TEXT_DIRECTION == "ltr") echo getLRM(), "]</a>\n";
-				else echo getRLM(), "]</a>\n";
+				echo i18n::translate('View Family');
+				echo "</a>";
 				echo "<br />";
 			}
 		}
@@ -562,7 +558,7 @@ function print_media_links($factrec, $level, $pid='') {
 	global $SEARCH_SPIDER, $view;
 	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
-	global $GEDCOM, $SHOW_ID_NUMBERS, $MEDIA_TYPES;
+	global $GEDCOM, $MEDIA_TYPES;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	if (!$MULTI_MEDIA) return;
 	$nlevel = $level+1;
@@ -696,9 +692,8 @@ function print_media_links($factrec, $level, $pid='') {
 						if ($ct>0) {
 							$famid = trim($match[1]);
 							if(empty($SEARCH_SPIDER)) {
-								echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">[", i18n::translate('View Family');
-								if ($SHOW_ID_NUMBERS) echo " " . getLRM() . "($famid)" . getLRM();
-								echo "]</a>\n";
+								echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
+								echo "</a>\n";
 							}
 						}
 					}
@@ -1430,7 +1425,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
  */
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGE_DIR, $WT_IMAGES, $view, $TEXT_DIRECTION;
-	global $SHOW_ID_NUMBERS, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
+	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER, $MEDIA_TYPES;
 
 	if (!displayDetailsById($rowm['m_media'], 'OBJE') || FactViewRestricted($rowm['m_media'], $rowm['m_gedrec'])) {
@@ -1597,9 +1592,8 @@ function print_main_media_row($rtype, $rowm, $pid) {
 				if ($view!="preview" && $spouse) echo " - ";
 				if ($view!="preview") {
 						$famid = $rowm['mm_gid'];
-						echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">[", i18n::translate('View Family');
-						if ($SHOW_ID_NUMBERS) echo " " . getLRM() . "($famid)" . getLRM();
-						echo "]</a>\n";
+						echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
+						echo "</a>\n";
 				}
 			}
 			echo "<br />\n";

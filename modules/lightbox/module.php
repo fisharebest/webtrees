@@ -76,7 +76,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $MULTI_MEDIA, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
+		global $MULTI_MEDIA, $MEDIA_EXTERNAL;
 		global $GEDCOM, $MEDIATYPE;
 		global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $is_media;
 		global $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec ;

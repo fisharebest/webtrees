@@ -67,7 +67,7 @@ if (WT_USE_LIGHTBOX) {
 <table width="70%">
 	<tr>
 		<td class="name_head" colspan="2">
-			<?php print PrintReady($controller->mediaobject->getFullName()); if ($SHOW_ID_NUMBERS && !empty($controller->pid)) print "&nbsp;&nbsp;&nbsp;" . getLRM() . "(".$controller->pid.")" . getLRM(); ?>
+			<?php print PrintReady($controller->mediaobject->getFullName()); ?>
 			<?php print PrintReady($controller->mediaobject->getAddName()); ?> <br /><br />
 			<?php if ($controller->mediaobject->isMarkedDeleted()) print "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
 		</td>

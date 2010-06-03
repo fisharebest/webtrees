@@ -250,7 +250,7 @@ class TreeNav {
 	* @param Person $person the person to print the details for
 	*/
 	function getDetails(&$person) {
-		global $SHOW_ID_NUMBERS, $USE_SILHOUETTE, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
+		global $USE_SILHOUETTE, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $TEXT_DIRECTION;
 
 		if (empty($person)) $person = $this->rootPerson;
@@ -284,8 +284,6 @@ class TreeNav {
 		}
 
 		$name = $person->getFullName();
-		if ($SHOW_ID_NUMBERS)
-		$name.=" (".$person->getXref().")";
 
 		?>
 		<span class="name1">
@@ -326,8 +324,6 @@ class TreeNav {
 			if (!empty($family)) $spouse = $family->getSpouse($person);
 			if (!empty($spouse)) {
 				$name = $spouse->getFullName();
-				if ($SHOW_ID_NUMBERS)
-				$name.=" (".$spouse->getXref().")";
 				?>
 				<?php $thumb = $this->getThumbnail($spouse); 
 				if (!empty($thumb)) {
@@ -447,7 +443,7 @@ class TreeNav {
 	* @param int $state Whether we are going up or down the tree, -1 for descendents +1 for ancestors
 	*/
 	function drawPersonAllSpouses(&$person, $gen, $state) {
-		global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 
 		if ($gen<0) {
 			return;
@@ -580,7 +576,7 @@ class TreeNav {
 	* @param Family $pfamily
 	*/
 	function drawPerson(&$person, $gen, $state, &$pfamily) {
-		global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 
 		$gen++;
 		if ($gen<0) {

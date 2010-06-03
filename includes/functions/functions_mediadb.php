@@ -1529,8 +1529,7 @@ function findImageSize($file) {
 */
 
 function PrintMediaLinks($links, $size = "small") {
-	;
-	global $SHOW_ID_NUMBERS, $TEXT_DIRECTION;
+	global $TEXT_DIRECTION;
 
 	if (count($links) == 0)
 		return false;
@@ -1594,25 +1593,7 @@ function PrintMediaLinks($links, $size = "small") {
 			break;
 		}
 		echo ' -- ';
-		$name=$record->getFullname();
-		if (begRTLText($name) && $TEXT_DIRECTION == 'ltr') {
-			if ($SHOW_ID_NUMBERS) {
-				echo '(', $record->getXref(), ')&nbsp;&nbsp;';
-			}
-			echo PrintReady($name);
-		} else {
-			echo PrintReady($name);
-			if ($SHOW_ID_NUMBERS) {
-				echo '&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=='rtl') {
-					echo getRLM();
-				}
-				echo "(" , $record->getXref(), ')';
-				if ($TEXT_DIRECTION=='rtl') {
-					echo getRLM();
-				}
-			}
-		}
+		echo $record->getFullname();
 		echo '</a>';
 		$prev_record=$record;
 	}

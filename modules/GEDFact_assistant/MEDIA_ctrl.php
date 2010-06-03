@@ -38,7 +38,7 @@ global $USE_THUMBS_MAIN, $mediacnt, $tabno;
 global $linkToID;
 global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 
-		global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_AGE_DIFF;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_AGE_DIFF;
 		global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 		global $show_full; 
 		global $famid, $censyear, $censdate;

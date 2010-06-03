@@ -89,7 +89,6 @@ $SURNAME_LIST_STYLE = "style2";			// -- Surname list style.  "style2"=sortable t
 
 $SHOW_MARRIED_NAMES = true;			// -- Option to show the married name for females in the indilist
 
-$SHOW_ID_NUMBERS = true;				// -- Show gedcom id numbers on charts next to  names
 $SHOW_LAST_CHANGE = false;				// -- Show gedcom record last change on lists
 $SHOW_EST_LIST_DATES = false;		// -- Show estimated birth/death dates on individual lists
 $SHOW_PEDIGREE_PLACES = "9";			// -- What level to show the birth and death places next to the birth and death dates on the pedigree and descendency charts.

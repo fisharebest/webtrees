@@ -51,14 +51,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	
 	function printFamilyHeader($famid, $label) {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_ID_NUMBERS, $SEARCH_SPIDER;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
 	?>
 		<table>
 			<tr>
 				<td><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["cfamily"]["small"]; ?>" border="0" class="icon" alt="" /></td>
 				<td><span class="subheaders"><?php print PrintReady($label); ?></span>
 				<?php if ((!$this->controller->isPrintPreview())&&(empty($SEARCH_SPIDER))) { ?>
-					- <a href="family.php?famid=<?php print $famid; ?>">[<?php print i18n::translate('View Family'); ?><?php if ($SHOW_ID_NUMBERS) print " " . getLRM() . "($famid)" . getLRM(); ?>]</a>
+					- <a href="family.php?famid=<?php print $famid; ?>"><?php print i18n::translate('View Family'); ?></a>
 				<?php }?>
 				</td>
 			</tr>
@@ -334,7 +334,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SHOW_ID_NUMBERS, $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_AGE_DIFF;
+		global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_AGE_DIFF;
 		global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 		global $show_full, $personcount;
 

@@ -40,7 +40,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	print "<br /><b>".i18n::translate('Re-order media')."</b>";
 	print "&nbsp --- &nbsp;" . i18n::translate('Click a row, then drag-and-drop to re-order media ');
 
-	global $MULTI_MEDIA, $SHOW_ID_NUMBERS, $MEDIA_EXTERNAL;
+	global $MULTI_MEDIA, $MEDIA_EXTERNAL;
 	global $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;

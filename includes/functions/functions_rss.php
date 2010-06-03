@@ -64,7 +64,7 @@ function iso8601_date($time) {
 * $dataArray[2] = data
 */
 function getUpcomingEvents() {
-	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
+	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $ctype, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS;
 	global $DAYS_TO_SHOW_LIMIT;
 
@@ -101,7 +101,7 @@ function getUpcomingEvents() {
 * $dataArray[2] = data
 */
 function getTodaysEvents() {
-	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
+	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $ctype, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS;
 	global $DAYS_TO_SHOW_LIMIT;
 
@@ -302,7 +302,7 @@ function getTop10Surnames() {
 * @TODO use date of most recent change instead of curent time
 */
 function getRecentChanges() {
-	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $SHOW_ID_NUMBERS, $ctype, $TEXT_DIRECTION;
+	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $ctype, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $ASC, $IGNORE_FACTS, $IGNORE_YEAR, $LAST_QUERY, $WT_BLOCKS, $SHOW_SOURCES;
 	global $objectlist;
 

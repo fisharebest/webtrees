@@ -48,7 +48,7 @@ require_once WT_ROOT.'includes/cssparser.inc.php';
  * @param string $legend optional legend of the fieldset
  */
 function print_indi_table($datalist, $legend="", $option="") {
-	global $GEDCOM, $SHOW_ID_NUMBERS, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER, $SHOW_EST_LIST_DATES, $MAX_ALIVE_AGE;
 
 	if ($option=="MARR_PLAC") return;
@@ -108,7 +108,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table\">";
 	echo "<thead><tr>";
 	echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
 	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', translate_fact('NAME'), '</a></th>';
 	echo "<th class=\"list_label\" style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
@@ -159,9 +158,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Counter
 		echo "<tr>";
 		echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
-		//-- Gedcom ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $person->getXrefLink("_blank"), '</td>';
 		//-- Indi name(s)
 		$tdclass = "list_value_wrap";
 		if (!$person->isDead()) $tdclass .= " alive";
@@ -389,7 +385,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 	//-- table footer
 	echo "<tfoot><tr class=\"sortbottom\">";
 	echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // INDI:ID
 	echo "<td class=\"list_label\">"; // NAME
 	if (count($unique_indis)>1) {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
@@ -441,7 +436,7 @@ function print_indi_table($datalist, $legend="", $option="") {
  * @param string $legend optional legend of the fieldset
  */
 function print_fam_table($datalist, $legend="", $option="") {
-	global $GEDCOM, $SHOW_ID_NUMBERS, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
 
 	if ($option=="BIRT_PLAC" || $option=="DEAT_PLAC") return;
@@ -494,12 +489,9 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<thead><tr>";
 	echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">FAM</th>";
-	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
 	echo "<th class=\"list_label\">", translate_fact('NAME'), "</th>";
 	echo "<th style=\"display:none\">HUSB:GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
-	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">INDI</th>";
 	echo "<th class=\"list_label\">", translate_fact('NAME'), "</th>";
 	echo "<th style=\"display:none\">WIFE:GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
@@ -544,12 +536,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 		//-- Counter
 		echo "<tr>";
 		echo "<td class=\"list_value_wrap rela list_item\">", ++$num, "</td>";
-		//-- Family ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $family->getXrefLink("_blank"), '</td>';
-		//-- Husband ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $husb->getXrefLink("_blank"), '</td>';
 		//-- Husband name(s)
 		list($husb_name, $wife_name)=explode(' + ', $family->getSortName());
 		$names=$husb->getAllNames();
@@ -597,9 +583,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 			echo '&nbsp;';
 		}
 		echo "</td>";
-		//-- Wife ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $wife->getXrefLink("_blank"), '</td>';
 		//-- Wife name(s)
 		$names=$wife->getAllNames();
 		// The husband's primary/secondary name might not be the family's primary name
@@ -767,8 +750,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 	//-- table footer
 	echo "<tfoot><tr class=\"sortbottom\">";
 	echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // FAM:ID
-	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // HUSB:ID
 	echo "<td class=\"list_label\">"; // HUSB:NAME
 	if ($num>1) {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
@@ -779,7 +760,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "</td>";
 	echo "<td style=\"display:none\">HUSB:GIVN</td>";
 	echo "<td></td>"; // HUSB:AGE
-	if ($SHOW_ID_NUMBERS) echo "<td></td>"; // WIFE:ID
 	echo "<td class=\"list_label\" style=\"vertical-align: top;\">"; // WIFE:NAME
 	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
 	echo "</td>";
@@ -816,7 +796,7 @@ function print_fam_table($datalist, $legend="", $option="") {
  * @param string $legend optional legend of the fieldset
  */
 function print_sour_table($datalist, $legend=null) {
-	global $SHOW_ID_NUMBERS, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
 
 	if (count($datalist)<1) {
@@ -835,9 +815,6 @@ function print_sour_table($datalist, $legend=null) {
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
-	if ($SHOW_ID_NUMBERS) {
-		echo '<th class="list_label rela">SOUR</th>';
-	}
 	echo '<th class="list_label">', translate_fact('TITL'), '</th>';
 	echo '<td class="list_label t2" style="display:none;">', translate_fact('TITL'), ' 2</td>';
 	echo '<th class="list_label">', translate_fact('AUTH'), '</th>';
@@ -878,10 +855,6 @@ function print_sour_table($datalist, $legend=null) {
 		$link_url=encode_url($source->getLinkUrl());
 		//-- Counter
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
-		//-- Source ID
-		if ($SHOW_ID_NUMBERS) {
-			echo '<td class="list_value_wrap rela">', $source->getXrefLink(), '</td>';
-		}
 		//-- Source name(s)
 		$tmp=$source->getFullName();
 		echo '<td class="list_value_wrap" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
@@ -920,9 +893,6 @@ function print_sour_table($datalist, $legend=null) {
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
-	if ($SHOW_ID_NUMBERS) {
-		echo '<td></td>';
-	}
 	echo '<td class="list_label">', i18n::translate('Total Sources'), ' : ', $n,  '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td><td></td>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<td></td>';
@@ -953,7 +923,7 @@ T2;
  * @param string $legend optional legend of the fieldset
  */
 function print_note_table($datalist, $legend=null) {
-	global $SHOW_ID_NUMBERS, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
 
 	if (count($datalist)<1) {
@@ -976,9 +946,6 @@ function print_note_table($datalist, $legend=null) {
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center" ><tr><td></td>';
-	if ($SHOW_ID_NUMBERS) {
-		echo '<th class="list_label rela">NOTE</th>';
-	}
 	echo '<th class="list_label">', translate_fact('TITL'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Families'), '</th>';
@@ -997,10 +964,6 @@ function print_note_table($datalist, $legend=null) {
 		$link_url=encode_url($note->getLinkUrl());
 		//-- Counter
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
-		//-- Shared Note ID
-		if ($SHOW_ID_NUMBERS) {
-			echo '<td class="list_value_wrap rela">', $note->getXrefLink(), '</td>';
-		}
 		//-- Shared Note name(s)
 		$tmp=$note->getFullName();
 		echo '<td class="list_value_wrap" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady($tmp), '</a></td>';
@@ -1024,9 +987,6 @@ function print_note_table($datalist, $legend=null) {
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
-	if ($SHOW_ID_NUMBERS) {
-		echo '<td></td>';
-	}
 	echo '<td class="list_label">', i18n::translate('Total Shared Notes'), ' : ', $n,  '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<td></td>';
@@ -1041,7 +1001,7 @@ function print_note_table($datalist, $legend=null) {
  * @param string $legend optional legend of the fieldset
  */
 function print_repo_table($repos, $legend='') {
-	global $SHOW_ID_NUMBERS, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
 
 	if (!$repos) {
@@ -1060,9 +1020,6 @@ function print_repo_table($repos, $legend='') {
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
-	if ($SHOW_ID_NUMBERS) {
-		echo '<th class="list_label rela">REPO</th>';
-	}
 	echo '<th class="list_label">', translate_fact('NAME'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
@@ -1074,9 +1031,6 @@ function print_repo_table($repos, $legend='') {
 	foreach ($repos as $repo) {
 		//-- Counter
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
-		//-- REPO ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $repo->getXrefLink(), '</td>';
 		//-- Repository name(s)
 		$name = $repo->getFullName();
 		echo '<td class="list_value_wrap" align="', get_align($name), '"><a href="', encode_url($repo->getLinkUrl()), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
@@ -1104,7 +1058,7 @@ function print_repo_table($repos, $legend='') {
  * @param string $legend optional legend of the fieldset
  */
 function print_media_table($datalist, $legend="") {
-	global $SHOW_ID_NUMBERS, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_MEDIA_FILENAME;
 
 	if (count($datalist)<1) return;
@@ -1119,7 +1073,6 @@ function print_media_table($datalist, $legend="") {
 	echo "<table width=\"100%\" id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
 	echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">OBJE</th>";
 	echo "<th class=\"list_label\">", translate_fact('TITL'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Individuals'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Families'), "</th>";
@@ -1139,9 +1092,6 @@ function print_media_table($datalist, $legend="") {
 		//-- Counter
 		echo "<tr>";
 		echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
-		//-- Object ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $media->getXrefLink(), '</td>';
 		//-- Object name(s)
 		$name = $media->getFullName();
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
@@ -1171,7 +1121,6 @@ function print_media_table($datalist, $legend="") {
 			  if ($v!=$rectype) continue;
 				$record = GedcomRecord::getInstance($k);
 				$txt = $record->getListName();
-				if ($SHOW_ID_NUMBERS) $txt .= " (".$k.")";
 				$resu[] = $txt;
 			}
 			sort($resu);
@@ -1513,7 +1462,7 @@ function format_surname_list($surnames, $style, $totals) {
  * @param array $datalist contain records that were extracted from the database.
  */
 function print_changes_table($datalist, $showChange=true, $total='', $show_WT_USER=true) {
-	global $SHOW_ID_NUMBERS, $SHOW_MARRIED_NAMES, $TEXT_DIRECTION;
+	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION;
 	if (count($datalist)<1) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
@@ -1524,7 +1473,6 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
 	//echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<th class=\"list_label rela\">", i18n::translate('ID'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Record'), "</th>";
 	echo "<th style=\"display:none\">GIVN</th>";
 	if ($showChange) {
@@ -1556,9 +1504,6 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 		echo "<tr>";
 		//echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
 		++$n;
-		//-- Record ID
-		if ($SHOW_ID_NUMBERS)
-			echo '<td class="list_value_wrap rela">', $record->getXrefLink(), '</td>';
 		//-- Record name(s)
 		$name = $record->getFullName();
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
@@ -1600,7 +1545,6 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 	//-- table footer
 	echo "<tr class=\"sortbottom\">";
 	//echo "<td></td>";
-	if ($SHOW_ID_NUMBERS) echo "<td></td>";
 	echo "<td class=\"list_label\">";
 	if ($n>1 && $indi) {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';

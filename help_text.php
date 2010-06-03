@@ -2666,11 +2666,6 @@ case 'SHOW_HIGHLIGHT_IMAGES':
 	$text=i18n::translate('If you have enabled multimedia in your site, you can have <b>webtrees</b> display a thumbnail image next to the person\'s name in charts and boxes.<br /><br />Currently, <b>webtrees</b> uses the first multimedia object listed in the GEDCOM record as the highlight image.  For people with multiple images, you should arrange the multimedia objects such that the one you wish to be highlighted appears first, before any others.<br /><br />See the Multimedia section in the <a href="readme.txt">readme.txt</a> file for more information about including media in your site.');
 	break;
 
-case 'SHOW_ID_NUMBERS':
-	$title=i18n::translate('Show ID numbers next to names');
-	$text=i18n::translate('This option controls whether or not to show ID numbers in parentheses after names on charts and lists.');
-	break;
-
 case 'SHOW_LAST_CHANGE':
 	$title=i18n::translate('Show GEDCOM record last change date on lists');
 	$text=i18n::translate('This option controls whether or not to show GEDCOM record last change date on lists.');

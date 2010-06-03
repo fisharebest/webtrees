@@ -630,8 +630,6 @@ class GedcomRecord {
 	// $name allows us to use something other than the record name.
 	//////////////////////////////////////////////////////////////////////////////
 	function format_list($tag='li', $find=false, $name=null) {
-		global $SHOW_ID_NUMBERS;
-
 		if (is_null($name)) {
 			$name=($tag=='li') ? $this->getListName() : $this->getFullName();
 		}

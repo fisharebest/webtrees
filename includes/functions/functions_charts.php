@@ -99,7 +99,7 @@ function print_family_header($famid) {
  */
 function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
 	global $view, $show_full, $show_famlink;
-	global $TEXT_DIRECTION, $SHOW_EMPTY_BOXES, $SHOW_ID_NUMBERS;
+	global $TEXT_DIRECTION, $SHOW_EMPTY_BOXES;
 	global $pbwidth, $pbheight;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
 	global $show_changes, $GEDCOM;
@@ -194,8 +194,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	print "</tr></table>\n\n";
 	if ($sosa!=0) {
 		print "<a href=\"family.php?famid=$famid\" class=\"details1\">";
-		if ($SHOW_ID_NUMBERS) print getLRM() . "($famid)" . getLRM() . "&nbsp;&nbsp;";
-		else print str_repeat("&nbsp;", 10);
+		print str_repeat("&nbsp;", 10);
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			$marriage->print_simple_fact();
@@ -278,7 +277,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
 	global $pbwidth, $pbheight, $view, $show_famlink, $show_cousins;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $GEDCOM, $SHOW_ID_NUMBERS, $TEXT_DIRECTION;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family=Family::getInstance($famid);
@@ -396,7 +395,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						if ($famid) {
 							print "<br />";
 							print "<a class=\"details1\" href=\"family.php?famid=$famid\">";
-							if ($SHOW_ID_NUMBERS) print getLRM() . "&nbsp;($famid)&nbsp;" . getLRM();
+							// TODO: shouldn't there be something inside this <a></a>
 							print "</a>";
 						}
 						print "</td>\n";
@@ -468,7 +467,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 function print_family_facts(&$family, $sosa = 0) {
 	global $pbwidth, $pbheight, $view;
 	global $nonfacts;
-	global $TEXT_DIRECTION, $GEDCOM, $SHOW_ID_NUMBERS;
+	global $TEXT_DIRECTION, $GEDCOM;
 	global $show_changes;
 	global $linkToID;
 
@@ -485,7 +484,6 @@ function print_family_facts(&$family, $sosa = 0) {
 		if (count($indifacts) > 0) {
 			sort_facts($indifacts);
 			print "\n\t<span class=\"subheaders\">" . i18n::translate('Family Group Information');
-			if ($SHOW_ID_NUMBERS and $famid != "") print "&nbsp;&nbsp;&nbsp;($famid)";
 			print "</span><br />\n\t<table class=\"facts_table\">";
 			/* @var $value Event */
 			foreach ($indifacts as $key => $value) {
@@ -512,7 +510,6 @@ function print_family_facts(&$family, $sosa = 0) {
 		else {
 			if ($sosa==0) {
 				print "\n\t<span class=\"subheaders\">" . i18n::translate('Family Group Information');
-				if ($SHOW_ID_NUMBERS and $famid != "") print "&nbsp;&nbsp;&nbsp;($famid)";
 				print "</span><br />\n\t";
 			}
 			print "<table class=\"facts_table\">";
