@@ -104,21 +104,20 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	<tr><td colspan="2">
 	
 	<div id="tabs" class="width100">
+	<!-- Tabs -->
 	<ul>
 		<li><a href="#info"><span><?php echo i18n::translate('Other Administration')?></span></a></li>
-<!--		<?php if (WT_USER_CAN_EDIT) { ?>
-			<li><a href="#unlinked"><span><?php echo i18n::translate('Unlinked Records')?></span></a></li>
-		<?php } ?>
-		<?php if (WT_USER_IS_ADMIN) { ?>-->
-		<li><a href="#site"><span><?php echo i18n::translate('Site administration')?></span></a></li>
+		<?php if (WT_USER_IS_ADMIN) { ?>
+			<li><a href="#site"><span><?php echo i18n::translate('Site administration')?></span></a></li>
 		<?php } ?>
 		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration')?></span></a></li>
 		<?php 
-		$modules = WT_Module::getInstalledModules();
-		if (WT_USER_IS_ADMIN || count($modules)>0) {?>
-			<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration')?></span></a></li>
+			$modules = WT_Module::getInstalledModules();
+			if (WT_USER_IS_ADMIN || count($modules)>0) {?>
+				<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration')?></span></a></li>
 		<?php } ?>
 	</ul>
+	<!-- Other admin -->
 	<div id="info">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
 			<tr>                                                                                                                                             
@@ -159,29 +158,9 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</div>
 		<?php 
 	} 
-	?>
-	
-	<div id="gedcom">
-		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
-			<tr>                                                                                                                                             
-	            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Data and GEDCOM administration'); ?></td>                            
-	    	</tr>
-			<tr>
-				<td class="optionbox width50"><a
-					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration');?></a><?php echo help_link('edit_gedcoms'); ?></td>
-				<td class="optionbox width50"><a
-					href="edit_merge.php"><?php echo i18n::translate('Merge records'); ?></a><?php echo help_link('help_edit_merge.php'); ?></td>
-			</tr>
-			<tr>
-				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup Index directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
-				<td class="optionbox width50"><?php echo $d_wt_changes; ?></td>
-			</tr>
-		</table>
-	</div>
-	
-	<?php
 	if (WT_USER_IS_ADMIN) { 
 		?>
+		<!-- Site admin -->		
 		<div id="site">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
 		<tr>                                                                                                                                             
@@ -201,16 +180,38 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</table>
 		</div>
 		<?php
-	} 
-
-	if (WT_USER_IS_ADMIN || count($modules)>0) {
+	} ?>
+	<!-- GEDCOM admin -->	
+	<div id="gedcom">
+		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
+			<tr>                                                                                                                                             
+	            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Data and GEDCOM administration'); ?></td>                            
+	    	</tr>
+			<tr>
+				<td class="optionbox width50"><a
+					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration');?></a><?php echo help_link('edit_gedcoms'); ?></td>
+				<td class="optionbox width50"><a
+					href="edit_merge.php"><?php echo i18n::translate('Merge records'); ?></a><?php echo help_link('help_edit_merge.php'); ?></td>
+			</tr>
+			<tr>
+				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup Index directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
+				<td class="optionbox width50"><?php if (WT_USER_CAN_EDIT) {  echo '<a href="module.php?mod=batch_update&mod_action=batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php'); } ?></td>
+			</tr>
+			<?php if ($pending_changes) { ?>
+				<tr>                                                                                                                                             
+					<td colspan="2" class="optionbox" style="text-align:center; "><?php echo $d_wt_changes; ?></td>                            
+				</tr>
+			<?php } ?>
+		</table>
+	</div>
+	<!-- Module admin -->
+	<?php if (WT_USER_IS_ADMIN || count($modules)>0) {
 		echo '<div id="modules">';
 			// Added by BH ------------------------
 			echo i18n::translate('Loading...'); 
 			// ------------------------------------
 		echo '</div>';
 	} ?>
-
 </div>
 </td>
 </tr></table>
