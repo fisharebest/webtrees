@@ -484,9 +484,13 @@ function getUserMessages($user_id) {
  * @param array $news a news item array
  */
 function addNews($news) {
-	return (bool)
+	if (array_key_exists('id', $news)) {
+		WT_DB::prepare("UPDATE `##news` SET n_date=?, n_title=?, n_text=? WHERE n_id=?")
+		->execute(array($news["date"], $news["title"], $news["text"], $news['id']));
+	} else {
 		WT_DB::prepare("INSERT INTO `##news` (n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,?)")
 		->execute(array($news["username"], $news["date"], $news["title"], $news["text"]));
+	}
 }
 
 /**
