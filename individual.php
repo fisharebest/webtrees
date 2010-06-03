@@ -254,13 +254,13 @@ if (!$controller->indi->canDisplayDetails()) {
 			// Unfortunately, this shows in a tool-tip.  How to improve this?
 			if ($tab->getName()==$controller->default_tab) {
 				// Default tab loads immediately
-				echo '<li class="ui-state-default ui-corner-top ui-tabs-selected"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+				echo '<li class="ui-state-default ui-corner-top ui-tabs-selected"><a title="', $tab->getTitle(), '" href="#', $tab->getName(), '">';
 			} elseif ($tab->canLoadAjax()) {
 				// AJAX tabs load later
-				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="individual.php?action=ajax&amp;module=', $tab->getName(), '&amp;pid=', $controller->pid, '">';
+				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getTitle(), '" href="individual.php?action=ajax&amp;module=', $tab->getName(), '&amp;pid=', $controller->pid, '">';
 			} else {
 				// Non-AJAX tabs load immediately (search engines don't load ajax)
-				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getTitle(), '" href="#', $tab->getName(), '">';
 			} 
 			echo '<span>', $tab->getTitle(), '</span></a></li>';
 		}
