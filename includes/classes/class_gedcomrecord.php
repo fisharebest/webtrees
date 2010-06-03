@@ -636,15 +636,11 @@ class GedcomRecord {
 			$name=($tag=='li') ? $this->getListName() : $this->getFullName();
 		}
 		$dir=begRTLText($name) ? 'rtl' : 'ltr';
+		$html='<a href="'.$this->getLinkUrl().'"';
 		if ($find) {
-			$href='javascript:;" onclick="pasteid(\''.$this->getXref().'\', \''.addslashes(strip_tags($this->getFullName())).'\'); return false;';
-		} else {
-			$href=encode_url($this->getLinkUrl());
+			$html.=' onclick="pasteid(\''.$this->getXref().'\');"';
 		}
-		$html='<a href="'.$href.'" class="list_item"><b>'.PrintReady($name).'</b>';
-		if ($SHOW_ID_NUMBERS) {
-			$html.=' '.WT_LPARENS.$this->getXref().WT_RPARENS;
-		}
+		$html.=' class="list_item"><b>'.$name.'</b>';
 		$html.=$this->format_list_details();
 		$html='<'.$tag.' class="'.$dir.'" dir="'.$dir.'">'.$html.'</a></'.$tag.'>';
 		return $html;

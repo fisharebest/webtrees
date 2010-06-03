@@ -879,9 +879,7 @@ if ($action=="filter") {
 		if ($repo_list) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			foreach ($repo_list as $repo) {
-				echo "<li><a href=\"javascript:;\" onclick=\"pasteid('", $repo->getXref(), "');\"><span class=\"list_item\">", $repo->getListName(), "&nbsp;&nbsp;&nbsp;";
-				echo WT_LPARENS, $repo->getXref(), WT_RPARENS;
-				echo "</span></a></li>";
+				echo '<li><a href="', $repo->getLinkUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getListName(),'</span></a></li>';
 			}
 			echo "</ul></td></tr>";
 			echo "<tr><td class=\"list_label\">", i18n::translate('Repositories found'), " ", count($repo_list);
@@ -907,7 +905,7 @@ if ($action=="filter") {
 			usort($mynotelist, array('GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mynotelist as $note) {
-				echo '<li><a href="javascript:;" onclick="pasteid(\'', $note->getXref(), "', '", preg_replace("/(['\"])/", "\\$1", PrintReady($note->getListName())), '\'); return false;"><span class="list_item">', PrintReady($note->getListName()), '</span></a></li>';
+				echo '<li><a href="', $note->getLinkUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getListName(),'</span></a></li>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Shared Notes found'), ' ', count($mynotelist), '</td></tr>';
 		}
@@ -929,7 +927,7 @@ if ($action=="filter") {
 			usort($mysourcelist, array('GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mysourcelist as $source) {
-				echo '<li><a href="javascript:;" onclick="pasteid(\'', $source->getXref(), "', '", preg_replace("/(['\"])/", "\\$1", PrintReady($source->getFullName())), '\'); return false;"><span class="list_item">', PrintReady($source->getFullName()), '</span></a></li>';
+				echo '<li><a href="', $source->getLinkUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total Sources'), ' ', count($mysourcelist), '</td></tr>';
 		}
