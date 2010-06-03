@@ -28,6 +28,7 @@
 </style>
 </head><body>
 <a name="top"><h1><b>webtrees</b> ReadMe File [NOT YET COMPLETED]</h1></a>
+<p><b>Note: </b> This information is also available at <a href="http://wiki.webtrees.net/">the <b>webtrees</b> WIKI</a></p>
 <h2>CONTENTS</h2>
 <ol>
 	<li><a href="#licence">LICENSE</a></li>
@@ -37,15 +38,15 @@
 	<li><a href="#upgrade">UPGRADING</li>
 	<li><a href="#gedcom">GEDCOM (family tree) FILES</li>
 	<li><a href="#security">SECURITY</li>
-	<li><a href="#">THEMES</li>
-	<li><a href="#">MULTIMEDIA OBJECTS</li>
-	<li><a href="#">RSS FEED</li>
-	<li><a href="#">DATABASE TABLE LAYOUT</li>
-	<li><a href="#">MANUAL CONFIGURATION</li>
-	<li><a href="#">LANGUAGES</li>
-	<li><a href="#">NON-STANDARD GEDCOM CODES</li>
-	<li><a href="#">LANGUAGE EXTENSION FILES</li>
-	<li><a href="#">BACKUP</li>
+	<li><a href="#backup">BACKUP</li>
+	<li><a style="color:silver;" href="#">THEMES</li>
+	<li><a style="color:silver;" href="#">MULTIMEDIA OBJECTS</li>
+	<li><a style="color:silver;" href="#">RSS FEED</li>
+	<li><a style="color:silver;" href="#">DATABASE TABLE LAYOUT</li>
+	<li><a style="color:silver;" href="#">MANUAL CONFIGURATION</li>
+	<li><a style="color:silver;" href="#">LANGUAGES</li>
+	<li><a style="color:silver;" href="#">NON-STANDARD GEDCOM CODES</li>
+	<li><a style="color:silver;" href="#">LANGUAGE EXTENSION FILES</li>
 </ol>
 <hr width="100%">
 <!-- LICENSE -->
@@ -178,6 +179,19 @@ You will have <b>two</b> data directories:
 	<li>/home/username/private/data - contains everything else</li>
 </ul>
 <hr width="100%">
+<!-- BACKUP -->
+<div style="float:left;"><a name="backup"><h3>BACKUP</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+It is always important to keep backups of your data away from your web server environment.
+<br /><br />
+Doing this has been made very straightforward in <b>webtrees</b> by its use of database tables for storing all information.
+<br /><br />
+We therefore recommend that you <b>REGULARLY</b> use a database backup tool, such as the export/import options from phpMyAdmin most people have as part of their web server account.
+<br />
+This will safeguard "ALL" your information, not just your family history data, including user profiles and settings, news blocks, favorites, module configurations. 
+<br />
+The only things NOT included are any media items you uploaded to the server. You should also always keep copies of these, by using FTP to download copies of the media folders from your web server.
+<br /><br />
+[<b>NOTE:</b> for beta versions of <b>webtrees</b> there are two files in the webtrees/data folder (<b><i>yourGEDCOM</i>.ged_conf.php</b> and <b><i>yourGEDCOM</i>.ged_priv.php</b>) that you should also backup using FTP. These will be transferred to the database in released versions]
 <br /><br />
 </body>
 </html>
