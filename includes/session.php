@@ -482,17 +482,6 @@ if ($SHOW_COUNTER && !$SEARCH_SPIDER) {
 	$hitCount='';
 }
 
-// Characters with weak-directionality can confuse the browser's BIDI algorithm.
-// Make sure that they follow the directionality of the page, not that of the
-// enclosed text.
-if ($TEXT_DIRECTION=='ltr') {
-	define ('WT_LPARENS', '&lrm;(');
-	define ('WT_RPARENS', ')&lrm;');
-} else {
-	define ('WT_LPARENS', '&rlm;(');
-	define ('WT_RPARENS', ')&rlm;');
-}
-
 // define constants to be used when setting permissions after creating files/directories
 if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by owner
 	define('WT_PERM_EXE',  0755);  // to be used on directories, php files and htaccess files

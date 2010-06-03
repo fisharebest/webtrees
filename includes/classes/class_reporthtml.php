@@ -573,7 +573,7 @@ class ReportBaseHTML extends ReportBase {
 			}
 		}
 		$htmlcode .= ">$text</span>";
-		$htmlcode = str_replace(array("(", ")", "\n", "> ", " <", "+", ","), array(WT_LPARENS, WT_RPARENS, "<br />", ">&nbsp;", "&nbsp;<", $this->entityRTL."+", $this->entityRTL.","), $htmlcode);
+		$htmlcode = str_replace(array("\n", "> ", " <", "+", ","), array("<br />", ">&nbsp;", "&nbsp;<", $this->entityRTL."+", $this->entityRTL.","), $htmlcode);
 		echo $htmlcode;
 	}
 
