@@ -45,7 +45,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ALLOW_CHANGE_GEDCOM, $ctype, $COMMON_NAMES_THRESHOLD, $WT_IMAGE_DIR, $WT_IMAGES, $MULTI_MEDIA, $top10_block_present, $THEME_DIR;
+		global $ctype, $COMMON_NAMES_THRESHOLD, $WT_IMAGE_DIR, $WT_IMAGES, $MULTI_MEDIA, $top10_block_present, $THEME_DIR;
 
 		$show_common_surnames=get_block_setting($block_id, 'show_common_surnames', true);
 		$stat_indi           =get_block_setting($block_id, 'stat_indi',            true);

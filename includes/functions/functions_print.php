@@ -624,7 +624,7 @@ function print_simple_header($title) {
 // -- print the html to close the page
 function print_footer() {
 	global $view;
-	global $SHOW_STATS, $QUERY_STRING, $footerfile, $print_footerfile, $ALLOW_CHANGE_GEDCOM, $printlink;
+	global $SHOW_STATS, $QUERY_STRING, $footerfile, $print_footerfile, $printlink;
 	global $WT_IMAGE_DIR, $theme_name, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
 	$view = safe_get('view');

@@ -129,7 +129,7 @@ function getTodaysEvents() {
 * @TODO does not print the family with most children due to the embedded html in that function.
 */
 function getGedcomStats() {
-	global $day, $month, $year, $WT_BLOCKS, $ALLOW_CHANGE_GEDCOM, $ctype, $COMMON_NAMES_THRESHOLD, $RTLOrd;
+	global $day, $month, $year, $WT_BLOCKS, $ctype, $COMMON_NAMES_THRESHOLD, $RTLOrd;
 
 	if (empty($config)) $config = $WT_BLOCKS["print_gedcom_stats"]["config"];
 	if (!isset($config['stat_indi'])) $config = $WT_BLOCKS["print_gedcom_stats"]["config"];

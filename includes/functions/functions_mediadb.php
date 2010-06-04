@@ -179,7 +179,7 @@ function check_media_structure() {
 
 function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
-	global $level, $dirs, $ALLOW_CHANGE_GEDCOM, $MEDIA_DIRECTORY;
+	global $level, $dirs, $MEDIA_DIRECTORY;
 	global $MEDIA_EXTERNAL, $USE_MEDIA_FIREWALL;
 
 	// Create the medialist array of media in the DB and on disk
