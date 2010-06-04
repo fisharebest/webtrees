@@ -346,7 +346,7 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $global_facts, $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
 	global $PRIVACY_CHECKS, $SHOW_SOURCES, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
-	global $GEDCOM;
+
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
@@ -677,7 +677,6 @@ if (!function_exists("showFact")) {
 * @return boolean return true to show the fact, return false to keep it private
 */
 function showFact($fact, $pid, $type='INDI') {
-	global $GEDCOM;
 	global $global_facts, $person_facts, $SHOW_SOURCES;
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
@@ -728,7 +727,6 @@ if (!function_exists("showFactDetails")) {
 * @return boolean return true to show the fact details, return false to keep it private
 */
 function showFactDetails($fact, $pid) {
-	global $GEDCOM;
 	global $global_facts, $person_facts;
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
@@ -761,7 +759,7 @@ function showFactDetails($fact, $pid) {
 * @return string the privatized gedcom record
 */
 function privatize_gedcom($gedrec) {
-	global $GEDCOM, $SHOW_PRIVATE_RELATIONSHIPS, $pgv_private_records;
+	global $SHOW_PRIVATE_RELATIONSHIPS, $pgv_private_records;
 	global $global_facts, $person_facts;
 
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')(.*)/', $gedrec, $match)) {
