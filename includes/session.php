@@ -234,7 +234,6 @@ $INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
 $USE_REGISTRATION_MODULE        =get_site_setting('USE_REGISTRATION_MODULE');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
 $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
-$WT_SESSION_SAVE_PATH           =get_site_setting('SESSION_SAVE_PATH');
 $WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
 
@@ -279,8 +278,8 @@ session_set_cookie_params(date('D M j H:i:s T Y', time()+$WT_SESSION_TIME), WT_S
 if ($WT_SESSION_TIME>0) {
 	session_cache_expire($WT_SESSION_TIME/60);
 }
-if (!empty($WT_SESSION_SAVE_PATH)) {
-	session_save_path($WT_SESSION_SAVE_PATH);
+if (get_site_setting('SESSION_SAVE_PATH')) {
+	session_save_path(get_site_setting('SESSION_SAVE_PATH'));
 }
 if (isset($MANUAL_SESSION_START) && !empty($SID)) {
 	session_id($SID);
