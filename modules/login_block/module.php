@@ -45,7 +45,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $QUERY_STRING, $USE_REGISTRATION_MODULE, $TEXT_DIRECTION, $THEME_DIR;
+		global $QUERY_STRING, $TEXT_DIRECTION, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
 		if (WT_USER_ID) {
@@ -63,7 +63,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$i = 0;			// Initialize tab index
 			$title = i18n::translate('Login');
-			if ($USE_REGISTRATION_MODULE) {
+			if (get_site_setting('USE_REGISTRATION_MODULE')) {
 				$title.=help_link('index_login_register');
 			} else {
 				$title.=help_link('index_login');
@@ -111,7 +111,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<input type=\"submit\" tabindex=\"{$i}\" value=\"".i18n::translate('Login')."\" />&nbsp;";
 			$content .= "</td></tr>";
 
-			if ($USE_REGISTRATION_MODULE) {
+			if (get_site_setting('USE_REGISTRATION_MODULE')) {
 
 				// Row 4: "Request Account" link
 				$i++;

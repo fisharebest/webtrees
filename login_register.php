@@ -155,7 +155,7 @@ switch ($action) {
 
 	case "register" :
 		$_SESSION["good_to_send"] = true;
-		if (!$USE_REGISTRATION_MODULE) {
+		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
 		header("Location: index.php");
 		exit;
 	}
@@ -303,7 +303,7 @@ switch ($action) {
 		}
 
 	case "registernew" :
-		if (!$USE_REGISTRATION_MODULE) {
+		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
 			header("Location: index.php");
 			exit;
 		}
@@ -437,7 +437,7 @@ switch ($action) {
 		break;
 
 	case "userverify" :
-		if (!$USE_REGISTRATION_MODULE) {
+		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
 			header("Location: index.php");
 			exit;
 		}
@@ -468,7 +468,7 @@ switch ($action) {
 		break;
 
 	case "verify_hash" :
-		if (!$USE_REGISTRATION_MODULE) {
+		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
 			header("Location: index.php");
 			exit;
 		}

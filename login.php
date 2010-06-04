@@ -213,7 +213,7 @@ $tab=0;		// initialize tab index
 $sessname = session_name();
 if (!isset($_COOKIE[$sessname])) print "<center><div class=\"error width50\">".i18n::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.')."</div></center><br /><br />";
 
-if ($USE_REGISTRATION_MODULE) { ?>
+if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
 	<table class="center facts_table width50">
 	<tr><td class="topbottombar" colspan="2"><?php print i18n::translate('Account Information'); ?></td></tr>
 	<tr><td class="descriptionbox <?php print $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('No account?'), help_link('new_user'); ?></td>

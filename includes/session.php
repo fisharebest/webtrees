@@ -231,7 +231,6 @@ try {
 
 // We'll tidy these up later.  Some of them are used infrequently.
 $INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
-$USE_REGISTRATION_MODULE        =get_site_setting('USE_REGISTRATION_MODULE');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
 $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
 $WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
