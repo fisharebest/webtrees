@@ -791,7 +791,7 @@ if ($action == "createform") {
 			<td class="descriptionbox wrap"><?php echo i18n::translate('Preferred contact method'), help_link('useradmin_user_contact');  ?></td>
 			<td class="optionbox wrap">
 	<?php
-		echo edit_field_contact('new_contact_method', $WT_STORE_MESSAGES ? 'messaging2' : 'messaging3', 'tabindex="'.(++$tab).'"');
+		echo edit_field_contact('new_contact_method', get_site_setting('STORE_MESSAGES') ? 'messaging2' : 'messaging3', 'tabindex="'.(++$tab).'"');
 	?>
 			</td>
 		</tr>

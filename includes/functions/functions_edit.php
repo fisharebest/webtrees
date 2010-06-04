@@ -136,7 +136,6 @@ function edit_field_log_frequency($name, $selected='', $extra='') {
 
 // Print an edit control for a contact method field
 function edit_field_contact($name, $selected='', $extra='') {
-	global $WT_STORE_MESSAGES;
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
 		'messaging' =>i18n::translate('webtrees internal messaging'),
@@ -145,7 +144,7 @@ function edit_field_contact($name, $selected='', $extra='') {
 		'mailto'    =>i18n::translate('Mailto link'),
 		'none'      =>i18n::translate('No contact'),
 	);
-	if (!$WT_STORE_MESSAGES) {
+	if (!get_site_setting('STORE_MESSAGES')) {
 		unset($CONTACT_METHODS['messaging'], $CONTACT_METHODS['messaging2']);
 	}
 	return select_edit_control($name, $CONTACT_METHODS, null, $selected, $extra);

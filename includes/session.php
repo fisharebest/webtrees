@@ -231,7 +231,6 @@ try {
 
 // We'll tidy these up later.  Some of them are used infrequently.
 $INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
-$WT_STORE_MESSAGES              =get_site_setting('STORE_MESSAGES');
 $USE_REGISTRATION_MODULE        =get_site_setting('USE_REGISTRATION_MODULE');
 $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');

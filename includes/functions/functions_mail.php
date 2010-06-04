@@ -50,7 +50,7 @@ function webtreesMail($to, $from, $subject, $message) {
 	$SMTP_AUTH_USER=get_site_setting('SMTP_AUTH_USER');
 	$SMTP_AUTH_PASS=get_site_setting('SMTP_AUTH_PASS');
 	$SMTP_SSL      =get_site_setting('SMTP_SSL');
-	global $WT_STORE_MESSAGES, $TEXT_DIRECTION;
+	global $TEXT_DIRECTION;
 	$mailFormat = "plain";
 	//$mailFormat = "html";
 	//$mailFormat = "multipart";
