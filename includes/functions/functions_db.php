@@ -1655,17 +1655,13 @@ function find_rin_id($rin) {
 * @param string $ged  the filename of the gedcom to delete
 */
 function delete_gedcom($ged_id) {
-	$ged=get_gedcom_from_id($ged_id);
-
 	// Don't delete the logs.
 	WT_DB::prepare("UPDATE `##log` SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($ged_id));
 
 	WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##news`                WHERE n_username=?")->execute(array($ged   ));
 	WT_DB::prepare("DELETE FROM `##dates`               WHERE d_file    =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##families`            WHERE f_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##favorites`           WHERE fv_file   =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file    =?")->execute(array($ged_id));
@@ -1683,7 +1679,7 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id =?")->execute(array($ged_id));
 
-	if (get_site_setting('DEFAULT_GEDCOM')==$ged) {
+	if (get_site_setting('DEFAULT_GEDCOM')==get_gedcom_from_id($ged_id)) {
 		set_site_setting('DEFAULT_GEDCOM', '');
 	}
 }
@@ -2207,8 +2203,6 @@ function create_user($username, $realname, $email, $password) {
 
 function rename_user($old_username, $new_username) {
 	WT_DB::prepare("UPDATE `##user`      SET user_name=?   WHERE user_name  =?")->execute(array($new_username, $old_username));
-	WT_DB::prepare("UPDATE `##favorites` SET fv_username=? WHERE fv_username=?")->execute(array($new_username, $old_username));
-	WT_DB::prepare("UPDATE `##news`      SET n_username =? WHERE n_username =?")->execute(array($new_username, $old_username));
 }
 
 function delete_user($user_id) {
@@ -2217,10 +2211,8 @@ function delete_user($user_id) {
 	WT_DB::prepare("DELETE FROM `##block`               WHERE user_id=?"    )->execute(array($user_id));
 	WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?"    )->execute(array($user_id));
 	WT_DB::prepare("DELETE FROM `##user_setting`        WHERE user_id=?"    )->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##message`             WHERE user_id=?"    )->execute(array($user_name, $user_name));
+	WT_DB::prepare("DELETE FROM `##message`             WHERE user_id=?"    )->execute(array($user_id));
 	WT_DB::prepare("DELETE FROM `##user`                WHERE user_id=?"    )->execute(array($user_id));
-	WT_DB::prepare("DELETE FROM `##favorites`           WHERE fv_username=?")->execute(array($user_name));
-	WT_DB::prepare("DELETE FROM `##news`                WHERE n_username =?")->execute(array($user_name));
 }
 
 function get_all_users($order='ASC', $key='realname') {
