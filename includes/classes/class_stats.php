@@ -3435,9 +3435,8 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function _usersLoggedIn($type='nolist') {
-		global $WT_SESSION_TIME;
 		// Log out inactive users
-		foreach (get_idle_users(time() - $WT_SESSION_TIME) as $user_id=>$user_name) {
+		foreach (get_idle_users(time() - get_site_setting('SESSION_TIME')) as $user_id=>$user_name) {
 			if ($user_id != WT_USER_ID) {
 				userLogout($user_id);
 			}
@@ -3503,9 +3502,7 @@ class stats {
 	}
 
 	static function _usersLoggedInTotal($type='all') {
-		global $WT_SESSION_TIME;
-
-		foreach (get_idle_users(time() - $WT_SESSION_TIME) as $user_id=>$user_name) {
+		foreach (get_idle_users(time() - get_site_setting('SESSION_TIME')) as $user_id=>$user_name) {
 			if ($user_id != WT_USER_ID) {
 				userLogout($user_id);
 			}

@@ -233,7 +233,6 @@ try {
 $INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
 $ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
 $ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
-$WT_SESSION_TIME                =get_site_setting('SESSION_TIME');
 $SERVER_URL                     =get_site_setting('SERVER_URL');
 
 // If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
@@ -271,20 +270,24 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 require WT_ROOT.'includes/session_spider.php';
 
 // Start the php session
-session_name('WTSESSION');
-session_set_cookie_params(date('D M j H:i:s T Y', time()+$WT_SESSION_TIME), WT_SCRIPT_PATH);
+$session_time=get_site_setting('SESSION_TIME');
+$session_save_path=get_site_setting('SESSION_SAVE_PATH');
 
-if ($WT_SESSION_TIME>0) {
-	session_cache_expire($WT_SESSION_TIME/60);
+session_name('WTSESSION');
+session_set_cookie_params(date('D M j H:i:s T Y', time()+$session_time), WT_SCRIPT_PATH);
+
+if ($session_time>0) {
+	session_cache_expire($session_time/60);
 }
-if (get_site_setting('SESSION_SAVE_PATH')) {
-	session_save_path(get_site_setting('SESSION_SAVE_PATH'));
+if ($session_save_path) {
+	session_save_path($session_save_path);
 }
 if (isset($MANUAL_SESSION_START) && !empty($SID)) {
 	session_id($SID);
 }
 
 session_start();
+unset($session_time, $session_save_path, $MANUAL_SESSION_START, $SID);
 
 if (!$SEARCH_SPIDER && !isset($_SESSION['initiated'])) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
