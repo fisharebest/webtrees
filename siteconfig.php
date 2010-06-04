@@ -40,10 +40,6 @@ case 'update':
 	if ($data_directory && is_dir($data_directory) && is_readable($data_directory) && is_writable($data_directory) && file_exists($data_directory.DIRECTORY_SEPARATOR.'config.ini.php') && is_readable($data_directory.DIRECTORY_SEPARATOR.'config.ini.php')) {
 		set_site_setting('INDEX_DIRECTORY', $data_directory);
 	}
-	$authentication_module=safe_POST('authentication_module');
-	if (file_exists($authentication_module) && is_readable($authentication_module) && substr_compare($authentication_module, '.php', -4, 4)==0) {
-		set_site_setting('AUTHENTICATION_MODULE',           safe_POST('authentication_module'));
-	}
 	set_site_setting('STORE_MESSAGES',                  safe_POST('store_messages'));
 	set_site_setting('USE_REGISTRATION_MODULE',         safe_POST('use_registration_module'));
 	set_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION', safe_POST('require_admin_auth_registration'));
@@ -91,9 +87,6 @@ echo
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('PHP time limit'), help_link('MAX_EXECUTION_TIME'), '</td>',
 	'<td class="optionbox wrap"><input type="text" name="max_execution_time" value="', get_site_setting('MAX_EXECUTION_TIME'), '" /></td>',
-	'</tr><tr>',
-	'<td class="descriptionbox width20 wrap">', i18n::translate('Authentication module'), help_link('AUTHENTICATION_MODULE'), '</td>',
-	'<td class="optionbox wrap"><input type="text" name="authentication_module" value="', get_site_setting('AUTHENTICATION_MODULE'), '" size="50" /></td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow messages to be stored online'), help_link('STORE_MESSAGES'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('store_messages', get_site_setting('STORE_MESSAGES')), '</td>',

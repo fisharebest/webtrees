@@ -982,7 +982,6 @@ try {
 		"INSERT IGNORE INTO {$TBLPREFIX}site_setting (setting_name, setting_value) VALUES ".
 		"('WT_SCHEMA_VERSION',               '1'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
-		"('AUTHENTICATION_MODULE',           'includes/authentication.php'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
 		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".

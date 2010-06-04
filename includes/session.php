@@ -255,9 +255,7 @@ if (!ini_get('safe_mode')) {
 	set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
 }
 
-// default: include/authentication.php
-// Maybe Joomla/Drupal/etc. systems will provide their own?
-require get_site_setting('AUTHENTICATION_MODULE');
+require 'includes/authentication.php';
 
 // Determine browser type
 $BROWSERTYPE = 'other';
