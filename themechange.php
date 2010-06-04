@@ -42,7 +42,7 @@ foreach (get_theme_names() as $themename=>$themedir) {
 	if ($themedir==$mytheme) {
 		$_SESSION['theme_dir']=$mytheme;
 		// Make the change permanent, if allowed
-		if (get_user_setting(WT_USER_ID, 'editaccount')=='Y') {
+		if (get_user_setting(WT_USER_ID, 'editaccount')) {
 			set_user_setting(WT_USER_ID, 'theme', $mytheme);
 		}
 		break;

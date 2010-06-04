@@ -57,7 +57,7 @@ if ($pending_changes) {
 $verify_msg = false;
 $warn_msg = false;
 foreach(get_all_users() as $user_id=>$user_name) {
-	if (get_user_setting($user_id, 'verified_by_admin')!='yes' && get_user_setting($user_id, 'verified')=='yes')  {
+	if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified'))  {
 		$verify_msg = true;
 	}
 	$comment_exp=get_user_setting($user_id, 'comment_exp');

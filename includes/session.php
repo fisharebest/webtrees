@@ -460,7 +460,7 @@ if (WT_USER_ID) {
 if (isset($_SESSION['theme_dir'])) {
 	$THEME_DIR = $_SESSION['theme_dir'];
 	if (WT_USER_ID) {
-		if (get_user_setting(WT_USER_ID, 'editaccount')=='Y') unset($_SESSION['theme_dir']);
+		if (get_user_setting(WT_USER_ID, 'editaccount')) unset($_SESSION['theme_dir']);
 	}
 }
 

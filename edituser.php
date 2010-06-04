@@ -35,7 +35,7 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // prevent users with editing account disabled from being able to edit their account
-if (get_user_setting(WT_USER_ID, 'editaccount')!='Y') {
+if (!get_user_setting(WT_USER_ID, 'editaccount')) {
 	header('Location: index.php?ctype=user');
 	exit;
 }
@@ -58,7 +58,7 @@ $form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS);
 $form_language      =safe_POST('form_language',       array_keys(i18n::installed_languages()), WT_LOCALE          );
 $form_contact_method=safe_POST('form_contact_method');
 $form_default_tab   =safe_POST('form_default_tab',    array_keys(WT_Module::getActiveTabs()),  $GEDCOM_DEFAULT_TAB);
-$form_visible_online=safe_POST('form_visible_online', 'Y', 'N');
+$form_visible_online=safe_POST_bool('form_visible_online');
 
 // Respond to form action
 if ($form_action=='update') {
@@ -217,12 +217,10 @@ echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'con
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</td><td class="optionbox">';
-echo '<input type="checkbox" name="form_visible_online" tabindex="', ++$tab, '" value="Y"';
-if (get_user_setting(WT_USER_ID, 'visibleonline')=='Y') {
-	echo ' checked="checked"';
-}
-echo ' /></td></tr>';
+echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline');
+echo '</td><td class="optionbox">';
+echo checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline'), 'tabindex="'.(++$tab).'"');
+echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Default Tab to show on Individual Information page'), help_link('edituser_user_default_tab'), '</td><td class="optionbox">';

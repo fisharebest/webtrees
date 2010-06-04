@@ -85,14 +85,12 @@ function checkbox($name, $is_checked=false, $extra='') {
 // By default, a checkbox is either set, or not sent.
 // This function gives us a three options, set, unset or not sent.
 // Useful for dynamically generated forms where we don't know what elements are present.
-function two_state_checkbox($name, $is_checked=false, $checked_value='1', $unchecked_value='0', $extra='') {
-	$checked_value=htmlspecialchars($checked_value);
-	$unchecked_value=htmlspecialchars($unchecked_value);
+function two_state_checkbox($name, $is_checked=0, $extra='') {
 	return
-		'<input type="hidden" id="'.$name.'" name="'.$name.'" value="'.($is_checked?$checked_value:$unchecked_value).'" />'.
-		'<input type="checkbox" name="'.$name.'-GUI-ONLY" value="'.$checked_value.'"'.
+		'<input type="hidden" id="'.$name.'" name="'.$name.'" value="'.($is_checked?1:0).'" />'.
+		'<input type="checkbox" name="'.$name.'-GUI-ONLY" value="1"'.
 		($is_checked ? ' checked="checked"' : '').
-		' onclick="document.getElementById(\''.$name.'\').value=(this.checked?\''.$checked_value.'\':\''.$unchecked_value.'\'); " '.$extra.' />';
+		' onclick="document.getElementById(\''.$name.'\').value=(this.checked?1:0);" '.$extra.' />';
 }
 
 // Print a set of edit controls to select languages

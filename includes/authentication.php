@@ -61,8 +61,8 @@ function authenticateUser($user_name, $password, $basic=false) {
 	if ($user_id=get_user_id($user_name)) {
 		$dbpassword=get_user_password($user_id);
 		if (crypt($password, $dbpassword)==$dbpassword) {
-			if (get_user_setting($user_id, 'verified')=='yes' && get_user_setting($user_id, 'verified_by_admin')=='yes' || get_user_setting($user_id, 'canadmin')=='Y') {
-				set_user_setting($user_id, 'loggedin', 'Y');
+			if (get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin') || get_user_setting($user_id, 'canadmin')) {
+				set_user_setting($user_id, 'loggedin', true);
 				//-- reset the user's session
 				$_SESSION = array();
 				$_SESSION['wt_user'] = $user_id;
@@ -105,10 +105,8 @@ function basicHTTPAuthenticateUser() {
  * @param string $user_id	logout a specific user
  */
 function userLogout($user_id) {
-	set_user_setting($user_id, 'loggedin', 'N');
-if ($user_id != "Anonymous" and $user_id != "") {
+	set_user_setting($user_id, 'loggedin', false);
 	AddToLog('Logout '.getUserName($user_id), 'auth');
-	}
 	// If we are logging ourself out, then end our session too.
 	if (WT_USER_ID==$user_id) {
 		session_destroy();
@@ -157,7 +155,7 @@ function getUserName() {
  */
 function userIsAdmin($user_id=WT_USER_ID) {
 	if ($user_id) {
-		return get_user_setting($user_id, 'canadmin')=='Y';
+		return get_user_setting($user_id, 'canadmin');
 	} else {
 		return false;
 	}
@@ -233,7 +231,7 @@ function userCanAccept($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 
 // Should user's changed automatically be accepted
 function userAutoAccept($user_id=WT_USER_ID) {
-	return get_user_setting($user_id, 'auto_accept')=='Y';
+	return get_user_setting($user_id, 'auto_accept');
 }
 
 // Get the full name for a user

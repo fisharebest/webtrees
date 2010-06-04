@@ -83,13 +83,13 @@ $new_default_tab         =safe_POST('new_default_tab',          array_keys(WT_Mo
 $new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
 $new_comment_exp         =safe_POST('new_comment_exp'           );
 $new_max_relation_path   =safe_POST_integer('new_max_relation_path', 1, $MAX_RELATION_PATH_LENGTH, 2);
-$new_relationship_privacy=safe_POST('new_relationship_privacy', 'Y',   'N');
-$new_auto_accept         =safe_POST('new_auto_accept',          'Y',   'N');
-$canadmin                =safe_POST('canadmin',                 'Y',   'N');
-$visibleonline           =safe_POST('visibleonline',            'Y',   'N');
-$editaccount             =safe_POST('editaccount',              'Y',   'N');
-$verified                =safe_POST('verified',                 'yes', 'no');
-$verified_by_admin       =safe_POST('verified_by_admin',        'yes', 'no');
+$new_relationship_privacy=safe_POST_bool('new_relationship_privacy');
+$new_auto_accept         =safe_POST_bool('new_auto_accept');
+$canadmin                =safe_POST_bool('canadmin');
+$visibleonline           =safe_POST_bool('visibleonline');
+$editaccount             =safe_POST_bool('editaccount');
+$verified                =safe_POST_bool('verified');
+$verified_by_admin       =safe_POST_bool('verified_by_admin');
 
 if (empty($ged)) {
 	$ged=$GEDCOM;
@@ -148,7 +148,7 @@ if ($action=='createuser' || $action=='edituser2') {
 			}
 				// Create/change settings that can be updated in the user's gedcom record?
 			$email_changed=($emailaddress!=getUserEmail($user_id));
-			$newly_verified=($verified_by_admin=='yes' && get_user_setting($user_id, 'verified_by_admin')!='yes');
+			$newly_verified=($verified_by_admin && !get_user_setting($user_id, 'verified_by_admin'));
 			// Create/change other settings
 			setUserFullName ($user_id, $realname);
 			setUserEmail    ($user_id, $emailaddress);
@@ -325,17 +325,10 @@ if ($action=="edituser") {
 	<tr>
 	<td class="descriptionbox wrap"><?php echo i18n::translate('User can administer'), help_link('useradmin_can_admin'); ?></td>
 	<?php
-	// Forms won't send the value of checkboxes if they are disabled :-(  Instead, create a hidden field
-	if ($user_id==WT_USER_ID) {
-		?>
-		<td class="optionbox wrap"><input type="checkbox" name="dummy" <?php if (get_user_setting($user_id, 'canadmin')=='Y') echo "checked=\"checked\""; ?> disabled="disabled" /></td>
-		<input type="hidden" name="canadmin" value="<?php echo get_user_setting($user_id, 'canadmin'); ?>" />
-		<?php
-	} else {
-		?>
-		<td class="optionbox wrap"><input type="checkbox" name="canadmin" tabindex="<?php echo ++$tab; ?>" value="Y" <?php if (get_user_setting($user_id, 'canadmin')=='Y') echo "checked=\"checked\""; ?> /></td>
-		<?php
-	}
+		// Forms won't send the value of checkboxes if they are disabled, so use a hidden field
+		echo '<td class="optionbox wrap">';
+		echo two_state_checkbox('canadmin', get_user_setting($user_id, 'canadmin'), ($user_id==WT_USER_ID) ? 'disabled="disabled"' : '');
+		echo '</td>';
 	?>
 
 	</tr>
@@ -363,14 +356,14 @@ if ($action=="edituser") {
 	</td>
 	</tr>
 	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Automatically accept changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
-	<td class="optionbox wrap"><input type="checkbox" name="new_auto_accept" tabindex="<?php echo ++$tab; ?>" value="Y" <?php if (get_user_setting($user_id, 'auto_accept')=='Y') echo "checked=\"checked\""; ?> /></td></tr>
+	<td class="optionbox wrap"><input type="checkbox" name="new_auto_accept" tabindex="<?php echo ++$tab; ?>" value="1" <?php if (get_user_setting($user_id, 'auto_accept')) echo "checked=\"checked\""; ?> /></td></tr>
 	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Limit access to related people'), help_link('useradmin_relation_priv'); ?></td>
-	<td class="optionbox wrap"><input type="checkbox" name="new_relationship_privacy" tabindex="<?php echo ++$tab; ?>" value="Y" <?php if (get_user_setting($user_id, 'relationship_privacy')=="Y") echo "checked=\"checked\""; ?> /></td></tr>
+	<td class="optionbox wrap"><input type="checkbox" name="new_relationship_privacy" tabindex="<?php echo ++$tab; ?>" value="1" <?php if (get_user_setting($user_id, 'relationship_privacy')) echo "checked=\"checked\""; ?> /></td></tr>
 	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Max relationship privacy path length'), help_link('useradmin_path_length'); ?></td>
 	<td class="optionbox wrap"><input type="text" name="new_max_relation_path" tabindex="<?php echo ++$tab; ?>" value="<?php echo get_user_setting($user_id, 'max_relation_path'); ?>" size="5" /></td></tr>
 	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Email address'), help_link('useradmin_email'); ?></td><td class="optionbox wrap"><input type="text" name="emailaddress" tabindex="<?php echo ++$tab; ?>" dir="ltr" value="<?php echo getUserEmail($user_id); ?>" size="50" /></td></tr>
-	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User verified himself'), help_link('useradmin_verified'); ?></td><td class="optionbox wrap"><input type="checkbox" name="verified" tabindex="<?php echo ++$tab; ?>" value="yes" <?php if (get_user_setting($user_id, 'verified')=="yes") echo "checked=\"checked\""; ?> /></td></tr>
-	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin'); ?></td><td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" tabindex="<?php echo ++$tab; ?>" value="yes" <?php if (get_user_setting($user_id, 'verified_by_admin')=="yes") echo "checked=\"checked\""; ?> /></td></tr>
+	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User verified himself'), help_link('useradmin_verified'); ?></td><td class="optionbox wrap"><input type="checkbox" name="verified" tabindex="<?php echo ++$tab; ?>" value="1" <?php if (get_user_setting($user_id, 'verified')) echo "checked=\"checked\""; ?> /></td></tr>
+	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin'); ?></td><td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" tabindex="<?php echo ++$tab; ?>" value="1" <?php if (get_user_setting($user_id, 'verified_by_admin')) echo "checked=\"checked\""; ?> /></td></tr>
 	<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('edituser_change_lang'); ?></td><td class="optionbox wrap" valign="top">
 	<?php
 		echo edit_field_language('user_language', get_user_setting($user_id, 'language'), 'tabindex="'.(++$tab).'"');
@@ -405,11 +398,11 @@ if ($action=="edituser") {
 	</tr>
 	<tr>
 	<td class="descriptionbox wrap"><?php echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
-	<td class="optionbox wrap"><input type="checkbox" name="visibleonline" tabindex="<?php echo ++$tab; ?>" value="Y" <?php if (get_user_setting($user_id, 'visibleonline')=='Y') echo "checked=\"checked\""; ?> /></td>
+	<td class="optionbox wrap"><input type="checkbox" name="visibleonline" tabindex="<?php echo ++$tab; ?>" value="1" <?php if (get_user_setting($user_id, 'visibleonline')) echo "checked=\"checked\""; ?> /></td>
 	</tr>
 	<tr>
 	<td class="descriptionbox wrap"><?php echo i18n::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
-	<td class="optionbox wrap"><input type="checkbox" name="editaccount" tabindex="<?php echo ++$tab; ?>" value="Y" <?php if (get_user_setting($user_id, 'editaccount')=='Y') echo "checked=\"checked\""; ?> /></td>
+	<td class="optionbox wrap"><input type="checkbox" name="editaccount" tabindex="<?php echo ++$tab; ?>" value="1" <?php if (get_user_setting($user_id, 'editaccount')) echo "checked=\"checked\""; ?> /></td>
 	</tr>
 	<tr>
 	<td class="descriptionbox wrap"><?php echo i18n::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
@@ -468,16 +461,16 @@ if ($action == "listusers") {
 			if (get_user_setting($user_id, 'comment_exp')) {
 				if ((strtotime(get_user_setting($user_id, 'comment_exp')) == "-1") || (strtotime(get_user_setting($user_id, 'comment_exp')) >= time("U"))) unset($users[$user_id]);
 			}
-			else if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) <= 604800) || (get_user_setting($user_id, 'verified')=="yes")) unset($users[$user_id]);
+			else if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) <= 604800) || get_user_setting($user_id, 'verified')) unset($users[$user_id]);
 		}
 		else if ($filter == "adminusers") {
-			if (get_user_setting($user_id, 'canadmin')!='Y') unset($users[$user_id]);
+			if (!get_user_setting($user_id, 'canadmin')) unset($users[$user_id]);
 		}
 		else if ($filter == "usunver") {
-			if (get_user_setting($user_id, 'verified') == "yes") unset($users[$user_id]);
+			if (get_user_setting($user_id, 'verified')) unset($users[$user_id]);
 		}
 		else if ($filter == "admunver") {
-			if ((get_user_setting($user_id, 'verified_by_admin') == "yes") || (get_user_setting($user_id, 'verified') != "yes")) {
+			if ((get_user_setting($user_id, 'verified_by_admin')) || (!get_user_setting($user_id, 'verified'))) {
 				unset($users[$user_id]);
 			}
 		}
@@ -574,7 +567,7 @@ if ($action == "listusers") {
 		if ($showprivs == false) echo "none\">";
 		else echo "block\">";
 		echo "<ul>";
-		if (get_user_setting($user_id, 'canadmin')=='Y') {
+		if (get_user_setting($user_id, 'canadmin')) {
 			echo "<li class=\"warning\">", i18n::translate('User can administer'), "</li>\n";
 		}
 		foreach ($all_gedcoms as $ged_id=>$ged_name) {
@@ -597,7 +590,7 @@ if ($action == "listusers") {
 		echo "</div>";
 		$k++;
 		echo "</td>\n";
-		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && (get_user_setting($user_id, 'verified')!="yes")) echo "\t<td class=\"optionbox red\">";
+		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) echo "\t<td class=\"optionbox red\">";
 		else echo "\t<td class=\"optionbox wrap\">";
 		echo format_timestamp((int)get_user_setting($user_id, 'reg_timestamp'));
 		echo "</td>\n";
@@ -609,11 +602,11 @@ if ($action == "listusers") {
 		}
 		echo "</td>\n";
 		echo "\t<td class=\"optionbox wrap\">";
-		if (get_user_setting($user_id, 'verified')=="yes") echo i18n::translate('Yes');
+		if (get_user_setting($user_id, 'verified')) echo i18n::translate('Yes');
 		else echo i18n::translate('No');
 		echo "</td>\n";
 		echo "\t<td class=\"optionbox wrap\">";
-		if (get_user_setting($user_id, 'verified_by_admin')=="yes") echo i18n::translate('Yes');
+		if (get_user_setting($user_id, 'verified_by_admin')) echo i18n::translate('Yes');
 		else echo i18n::translate('No');
 		echo "</td>\n";
 		if ($view != "preview") {
@@ -736,7 +729,7 @@ if ($action == "createform") {
 		echo "</table>";
 		?>
 		</td></tr>
-		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User can administer'), help_link('useradmin_can_admin'); ?></td><td class="optionbox wrap"><input type="checkbox" name="canadmin" tabindex="<?php echo ++$tab; ?>" value="Y" /></td></tr>
+		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User can administer'), help_link('useradmin_can_admin'); ?></td><td class="optionbox wrap"><input type="checkbox" name="canadmin" tabindex="<?php echo ++$tab; ?>" value="1" /></td></tr>
 		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></td><td class="optionbox wrap">
 		<table class="<?php echo $TEXT_DIRECTION; ?>">
 		<?php
@@ -761,14 +754,14 @@ if ($action == "createform") {
 		</table>
 		</td></tr>
 		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Automatically accept changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
-			<td class="optionbox wrap"><input type="checkbox" name="new_auto_accept" tabindex="<?php echo ++$tab; ?>" value="Y" /></td></tr>
+			<td class="optionbox wrap"><input type="checkbox" name="new_auto_accept" tabindex="<?php echo ++$tab; ?>" value="1" /></td></tr>
 		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Limit access to related people'), help_link('useradmin_relation_priv'); ?></td>
-			<td class="optionbox wrap"><input type="checkbox" name="new_relationship_privacy" tabindex="<?php echo ++$tab; ?>" value="Y" /></td></tr>
+			<td class="optionbox wrap"><input type="checkbox" name="new_relationship_privacy" tabindex="<?php echo ++$tab; ?>" value="1" /></td></tr>
 		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Max relationship privacy path length'), help_link('useradmin_path_length');  ?></td>
 			<td class="optionbox wrap"><input type="text" name="new_max_relation_path" tabindex="<?php echo ++$tab; ?>" value="0" size="5" /></td></tr>
 		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Email address'), help_link('useradmin_email');  ?></td><td class="optionbox wrap"><input type="text" name="emailaddress" tabindex="<?php echo ++$tab; ?>" value="" size="50" /></td></tr>
-		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User verified himself'), help_link('useradmin_verified'); ?></td><td class="optionbox wrap"><input type="checkbox" name="verified" tabindex="<?php echo ++$tab; ?>" value="yes" checked="checked" /></td></tr>
-		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin');  ?></td><td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" tabindex="<?php echo ++$tab; ?>" value="yes" checked="checked" /></td></tr>
+		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User verified himself'), help_link('useradmin_verified'); ?></td><td class="optionbox wrap"><input type="checkbox" name="verified" tabindex="<?php echo ++$tab; ?>" value="1" checked="checked" /></td></tr>
+		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin');  ?></td><td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" tabindex="<?php echo ++$tab; ?>" value="1" checked="checked" /></td></tr>
 		<tr><td class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('useradmin_change_lang'); ?></td><td class="optionbox wrap" valign="top"><?php
 
 		$tab++;
@@ -797,11 +790,11 @@ if ($action == "createform") {
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap"><?php echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
-			<td class="optionbox wrap"><input type="checkbox" name="visibleonline" tabindex="<?php echo ++$tab; ?>" value="Y" <?php echo "checked=\"checked\""; ?> /></td>
+			<td class="optionbox wrap"><input type="checkbox" name="visibleonline" tabindex="<?php echo ++$tab; ?>" value="1" <?php echo "checked=\"checked\""; ?> /></td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap"><?php echo i18n::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
-			<td class="optionbox wrap"><input type="checkbox" name="editaccount" tabindex="<?php echo ++$tab; ?>" value="Y" <?php echo "checked=\"checked\""; ?> /></td>
+			<td class="optionbox wrap"><input type="checkbox" name="editaccount" tabindex="<?php echo ++$tab; ?>" value="1" <?php echo "checked=\"checked\""; ?> /></td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap"><?php echo i18n::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
@@ -864,63 +857,32 @@ if ($action == "cleanup") {
 			$datelogin = (int)get_user_setting($user_id, 'reg_timestamp');
 		else
 			$datelogin = (int)get_user_setting($user_id, 'sessiontime');
-		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && (get_user_setting($user_id, 'verified') == "yes") && (get_user_setting($user_id, 'verified_by_admin') == "yes")) {
+		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
 			?><tr><td class="descriptionbox"><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", i18n::translate('User\'s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
-			?></td><td class="optionbox"><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="yes" /></td></tr><?php
+			?></td><td class="optionbox"><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
 		}
 	}
 
 	// Check unverified users
 	foreach(get_all_users() as $user_id=>$user_name) {
-		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && (get_user_setting($user_id, 'verified')!="yes")) {
+		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
 			$userName = getUserFullName($user_id);
 			?><tr><td class="descriptionbox"><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", i18n::translate('User didn\'t verify within 7 days.');
 			$ucnt++;
-			?></td><td class="optionbox"><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="yes" /></td></tr><?php
+			?></td><td class="optionbox"><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
 		}
 	}
 
 	// Check users not verified by admin
 	foreach(get_all_users() as $user_id=>$user_name) {
-		if ((get_user_setting($user_id, 'verified_by_admin')!="yes") && (get_user_setting($user_id, 'verified') == "yes")) {
+		if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
 			$userName = getUserFullName($user_id);
 			?><tr><td  class="descriptionbox"><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", i18n::translate('User not verified by administrator.');
-			?></td><td class="optionbox"><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="yes" /></td></tr><?php
+			?></td><td class="optionbox"><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
 			$ucnt++;
 		}
-	}
-
-	// Then check obsolete gedcom rights
-	$gedrights = array();
-	foreach(get_all_users() as $user_id=>$user_name) {
-		if (get_user_setting($user_id, 'verified_by_admin')=="yes") {
-			$tempArray = unserialize(get_user_setting($user_id, 'canedit'));
-			if (is_array($tempArray)) {
-				foreach($tempArray as $gedid=>$data) {
-					if (!get_id_from_gedcom($gedid) && !in_array($gedid, $gedrights)) $gedrights[] = $gedid;
-				}
-			}
-			$tempArray = unserialize(get_user_setting($user_id, 'gedcomid'));
-			if (is_array($tempArray)) {
-				foreach($tempArray as $gedid=>$data) {
-					if (!get_id_from_gedcom($gedid) && !in_array($gedid, $gedrights)) $gedrights[] = $gedid;
-				}
-			}
-			$tempArray = unserialize(get_user_setting($user_id, 'rootid'));
-			if (is_array($tempArray)) {
-				foreach($tempArray as $gedid=>$data) {
-					if (!get_id_from_gedcom($gedid) && !in_array($gedid, $gedrights)) $gedrights[] = $gedid;
-				}
-			}
-		}
-	}
-	ksort($gedrights);
-	foreach($gedrights as $key=>$ged) {
-		?><tr><td class="descriptionbox"><?php echo $ged, ":&nbsp;&nbsp;", i18n::translate('GEDCOM no longer active, remove user references.');
-		?></td><td class="optionbox"><input type="checkbox" checked="checked" name="<?php echo "delg_", str_replace(array(".", "-", " "), array("_", "_", "_"), $ged); ?>" value="yes" /></td></tr><?php
-		$ucnt++;
 	}
 	if ($ucnt == 0) {
 		echo "<tr><td class=\"warning\">";
@@ -942,7 +904,7 @@ if ($action == "cleanup") {
 if ($action == "cleanup2") {
 	foreach(get_all_users() as $user_id=>$user_name) {
 		$var = "del_".str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name);
-		if (safe_POST($var)=='yes') {
+		if (safe_POST($var)=='1') {
 			delete_user($user_id);
 			AddToLog("deleted user ->{$user_name}<-", 'auth');
 			echo i18n::translate('Deleted user: '); echo $user_name, "<br />";
@@ -951,7 +913,7 @@ if ($action == "cleanup2") {
 			if (is_array($tempArray)) {
 				foreach ($tempArray as $gedid=>$data) {
 					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
-					if (safe_POST($var)=='yes' && get_user_gedcom_setting($user_id, $gedid, 'canedit')) {
+					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'canedit')) {
 						set_user_gedcom_setting($user_id, $gedid, 'canedit', null);
 						echo $gedid, ":&nbsp;&nbsp;", i18n::translate('Unset GEDCOM rights for '), $user_name, "<br />";
 					}
@@ -961,7 +923,7 @@ if ($action == "cleanup2") {
 			if (is_array($tempArray)) {
 				foreach ($tempArray as $gedid=>$data) {
 					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
-					if (safe_POST($var)=='yes' && get_user_gedcom_setting($user_id, $gedid, 'rootid')) {
+					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'rootid')) {
 						set_user_gedcom_setting($user_id, $gedid, 'rootid', null);
 						echo $gedid, ":&nbsp;&nbsp;", i18n::translate('Unset root ID for '), $user_name, "<br />";
 					}
@@ -971,7 +933,7 @@ if ($action == "cleanup2") {
 			if (is_array($tempArray)) {
 				foreach ($tempArray as $gedid=>$data) {
 					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
-					if (safe_POST($var)=='yes' && get_user_gedcom_setting($user_id, $gedid, 'gedcomid')) {
+					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'gedcomid')) {
 						set_user_gedcom_setting($user_id, $gedid, 'gedcomid', null);
 						echo $gedid, ":&nbsp;&nbsp;", i18n::translate('Unset GEDCOM ID for '), $user_name, "<br />";
 					}
@@ -1019,19 +981,19 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	$gedadmin = array();	// Array for gedcom admins
 	foreach(get_all_users() as $user_id=>$user_name) {
 		$totusers = $totusers + 1;
-		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && (get_user_setting($user_id, 'verified')!="yes")) $warnusers++;
+		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) $warnusers++;
 		else {
 			if (get_user_setting($user_id, 'comment_exp')) {
 				if ((strtotime(get_user_setting($user_id, 'comment_exp')) != "-1") && (strtotime(get_user_setting($user_id, 'comment_exp')) < time("U"))) $warnusers++;
 			}
 		}
-		if ((get_user_setting($user_id, 'verified_by_admin') != "yes") && (get_user_setting($user_id, 'verified') == "yes")) {
+		if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
 			$nverusers++;
 		}
-		if (get_user_setting($user_id, 'verified') != "yes") {
+		if (!get_user_setting($user_id, 'verified')) {
 			$applusers++;
 		}
-		if (get_user_setting($user_id, 'canadmin')=='Y') {
+		if (get_user_setting($user_id, 'canadmin')) {
 			$adminusers++;
 		}
 		foreach ($all_gedcoms as $ged_id=>$ged_name) {

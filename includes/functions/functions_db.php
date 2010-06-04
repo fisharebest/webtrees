@@ -2245,14 +2245,14 @@ function get_user_count() {
 function get_admin_user_count() {
 	return
 		WT_DB::prepare("SELECT COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=?")
-		->execute(array('canadmin', 'Y'))
+		->execute(array('canadmin', '1'))
 		->fetchOne();
 }
 
 function get_non_admin_user_count() {
 	return
 		WT_DB::prepare("SELECT COUNT(*) FROM `##user_setting` WHERE  setting_name=? AND setting_value<>?")
-		->execute(array('canadmin', 'Y'))
+		->execute(array('canadmin', '1'))
 		->fetchOne();
 }
 
@@ -2265,7 +2265,7 @@ function get_logged_in_users() {
 			" JOIN `##user_setting` us USING (user_id)".
 			" WHERE setting_name=? AND setting_value=?"
 		)
-		->execute(array('loggedin', 'Y'))
+		->execute(array('loggedin', '1'))
 		->fetchAssoc();
 }
 
@@ -2280,7 +2280,7 @@ function get_idle_users($time) {
 			" WHERE us1.setting_name=? AND us1.setting_value=? AND us2.setting_name=?".
 			" AND CAST(us2.setting_value AS UNSIGNED) BETWEEN 1 AND ?"
 		)
-		->execute(array('loggedin', 'Y', 'sessiontime', $time))
+		->execute(array('loggedin', '1', 'sessiontime', $time))
 		->fetchAssoc();
 }
 

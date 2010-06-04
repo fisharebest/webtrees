@@ -166,25 +166,25 @@ function createTempUser($userID, $rights, $gedcom) {
 	$tempUserID=create_user($userID, "Dummy User", "dummy@email", md5(rand()));
 	if (!$tempUserID) return false;
 
-	set_user_setting($tempUserID, 'relationship_privacy', 'N');
+	set_user_setting($tempUserID, 'relationship_privacy', '0');
 	set_user_setting($tempUserID, 'max_relation_path', '0');
-	set_user_setting($tempUserID, 'visibleonline', 'N');
+	set_user_setting($tempUserID, 'visibleonline', '0');
 	set_user_setting($tempUserID, 'contactmethod', 'none');
 	switch ($rights) {
 	case 'admin':
-		set_user_setting($tempUserID, 'canadmin', 'Y');
+		set_user_setting($tempUserID, 'canadmin', '1');
 		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'admin');
 	case 'gedadmin':
-		set_user_setting($tempUserID, 'canadmin', 'N');
+		set_user_setting($tempUserID, 'canadmin', '0');
 		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'admin');
 		break;
 	case 'user':
-		set_user_setting($tempUserID, 'canadmin', 'N');
+		set_user_setting($tempUserID, 'canadmin', '0');
 		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'access');
 		break;
 	case 'visitor':
 	default:
-		set_user_setting($tempUserID, 'canadmin', 'N');
+		set_user_setting($tempUserID, 'canadmin', '0');
 		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'none');
 		break;
 	}

@@ -952,7 +952,7 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'canadmin', 'Y')"
+		" (1, 'canadmin', '1')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
@@ -960,23 +960,23 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'verified', 'yes')"
+		" (1, 'verified', '1')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'verified_by_admin', 'yes')"
+		" (1, 'verified_by_admin', '1')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'editaccount', 'Y')"
+		" (1, 'editaccount', '1')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'auto_accept', 'N')"
+		" (1, 'auto_accept', '0')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'visibleonline', 'Y')"
+		" (1, 'visibleonline', '1')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO {$TBLPREFIX}site_setting (setting_name, setting_value) VALUES ".

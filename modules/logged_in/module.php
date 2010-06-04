@@ -58,7 +58,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		$NumAnonymous = 0;
 		$loggedusers = array ();
 		foreach (get_logged_in_users() as $user_id=>$user_name) {
-			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')=='Y') {
+			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {
 				$loggedusers[$user_id]=$user_name;
 			} else {
 				$NumAnonymous++;

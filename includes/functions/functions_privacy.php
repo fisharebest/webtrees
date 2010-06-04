@@ -440,7 +440,7 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 			if ($type=="INDI") {
 				$gedrec = find_person_record($pid, $ged_id);
 				$isdead = is_dead($gedrec);
-				if ($USE_RELATIONSHIP_PRIVACY || get_user_setting($pgv_USER_ID, 'relationship_privacy')=="Y") {
+				if ($USE_RELATIONSHIP_PRIVACY || get_user_setting($pgv_USER_ID, 'relationship_privacy')) {
 					if ($isdead) {
 						if ($SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
 							if ($PRIVACY_BY_YEAR && $SHOW_DEAD_PEOPLE==$pgv_USER_ACCESS_LEVEL) {
