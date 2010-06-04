@@ -339,13 +339,19 @@ class WT_DBStatement {
 			if ($this->executed) {
 				trigger_error('WT_DBStatement::execute() called twice.', E_USER_ERROR);
 			} else {
+				if ($params) {
+					$this->bind_variables=$params[0];
+					foreach ($params[0] as &$param) {
+						if ($param===false) {
+							// For consistency, otherwise true=>'1' and false=>''
+							$param=0;
+						}
+					}
+				}
 				$start=microtime(true);
 				$result=call_user_func_array(array($this->pdostatement, $function), $params);
 				$end=microtime(true);
 				$this->executed=!preg_match('/^(insert|delete|update|create|alter) /i', $this->pdostatement->queryString);
-				if ($params) {
-					$this->bind_variables=$params[0];
-				}
 				WT_DB::logQuery($this->pdostatement->queryString, $this->pdostatement->rowCount(), $end-$start, $this->bind_variables);
 				return $this;
 			}
