@@ -29,7 +29,7 @@ clean:
 # Create a ZIP archives
 ################################################################################
 $(LABEL).zip: $(LABEL) $(MO)
-	zip -qr language-$(L10NVERSION).zip $(LABEL)/language
+	#zip -qr language-$(L10NVERSION).zip $(LABEL)/language
 	zip -qr $@ $(LABEL)
 	rm -R $(LABEL)
 
