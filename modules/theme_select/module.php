@@ -45,7 +45,7 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $THEME_DIR;
+		global $THEME_DIR;
 
 		$id=$this->getName().$block_id;
 		$title=i18n::translate('Change theme').help_link('change_theme');
