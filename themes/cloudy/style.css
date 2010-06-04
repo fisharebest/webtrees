@@ -1127,7 +1127,8 @@ th {
 .news_date {
 	font-family: tahoma, arial, helvetica, sans-serif;
 	color: black;
-	font-size: 12px;
+	font-size: .9em;
+	margin-bottom: 12px;
 }
 
 .timeline_table {

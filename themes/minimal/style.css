@@ -611,12 +611,11 @@ table.center{
 
 .news_title {
 	font: bold 14px tahoma, arial, helvetica, sans-serif;
-	color: black;
 }
 
 .news_date {
-	font: 12px tahoma, arial, helvetica, sans-serif;
-	color: black;
+	font: normal 12px tahoma, arial, helvetica, sans-serif;
+	margin-bottom: 12px;
 }
 
 .current_day {

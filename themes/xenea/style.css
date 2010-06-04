@@ -713,6 +713,7 @@ a:hover .nameZoom {
 .news_date {
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	color: black;
+	margin-bottom: 12px;
 }
 
 .menuitem a {

@@ -119,8 +119,8 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 			// Look for $GLOBALS substitutions in the News title
 			$newsTitle = embed_globals($news['title']);
-			$content .= "<span class=\"news_title\">".PrintReady($newsTitle)."</span><br />\n";
-			$content .= "<span class=\"news_date\">".format_timestamp($news['date'])."</span><br /><br />";
+			$content .= "<div class=\"news_title\">".PrintReady($newsTitle)."</div>\n";
+			$content .= "<div class=\"news_date\">".format_timestamp($news['date'])."</div>";
 			if ($news["text"]==strip_tags($news["text"])) {
 				// No HTML?
 				$news["text"]=nl2br($news["text"]);
