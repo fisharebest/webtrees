@@ -35,6 +35,8 @@ define('WT_SCRIPT_NAME', 'login_register.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+$REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
+
 $action         =safe_POST('action');
 $user_realname  =safe_POST('user_realname');
 $url            =safe_POST('url',             WT_REGEX_URL, 'index.php');
