@@ -247,7 +247,7 @@ function load_privacy_file($ged_id=WT_GED_ID) {
 	global $SHOW_DEAD_PEOPLE, $SHOW_LIVING_NAMES, $SHOW_SOURCES, $MAX_ALIVE_AGE, $SHOW_MULTISITE_SEARCH;
 	global $USE_RELATIONSHIP_PRIVACY, $MAX_RELATION_PATH_LENGTH, $CHECK_MARRIAGE_RELATIONS;
 	global $PRIVACY_BY_YEAR, $SHOW_PRIVATE_RELATIONSHIPS;
-	global $person_privacy, $user_privacy, $global_facts, $person_facts;
+	global $person_privacy, $global_facts, $person_facts;
 
 	// Load default settings
 	require WT_ROOT.'privacy.php';

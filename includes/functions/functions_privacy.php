@@ -344,7 +344,7 @@ function checkPrivacyByYear($pid) {
 */
 function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
-	global $global_facts, $person_privacy, $user_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
+	global $global_facts, $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
 	global $PRIVACY_CHECKS, $SHOW_SOURCES, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
@@ -401,24 +401,6 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 
 	//-- start of user specific privacy checks
 	if ($pgv_USER_ID) {
-		if (isset($user_privacy[$pgv_USER_NAME]["all"])) {
-			if ($user_privacy[$pgv_USER_NAME]["all"] >= $pgv_USER_ACCESS_LEVEL) {
-				if ($cache_privacy) $privacy_cache[$pkey] = true;
-				return true;
-			} else {
-				if ($cache_privacy) $privacy_cache[$pkey] = false;
-				return false;
-			}
-		}
-		if (isset($user_privacy[$pgv_USER_NAME][$pid])) {
-			if ($user_privacy[$pgv_USER_NAME][$pid] >= $pgv_USER_ACCESS_LEVEL) {
-				if ($cache_privacy) $privacy_cache[$pkey] = true;
-				return true;
-			} else {
-				if ($cache_privacy) $privacy_cache[$pkey] = false;
-				return false;
-			}
-		}
 
 		if (isset($person_privacy[$pid])) {
 			if ($person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL) {
@@ -658,30 +640,17 @@ if (!function_exists("showLivingNameById")) {
 * @return boolean return true to show the person's name, return false to keep it private
 */
 function showLivingNameById($pid) {
-	global $GEDCOM;
-	global $SHOW_LIVING_NAMES, $person_privacy, $user_privacy;
+	global $SHOW_LIVING_NAMES, $person_privacy;
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
-		$pgv_USER_NAME			= WT_USER_NAME;
-		$pgv_USER_ACCESS_LEVEL	= WT_USER_ACCESS_LEVEL;
+		$pgv_USER_ACCESS_LEVEL = WT_USER_ACCESS_LEVEL;
 	} else {
 		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_USER_NAME			= $_SESSION["pgv_USER_NAME"];
-		$pgv_USER_ACCESS_LEVEL	= $_SESSION["pgv_USER_ACCESS_LEVEL"];
+		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
 	}
 
 	if (displayDetailsById($pid)) return true;
-	if (!empty($pgv_USER_NAME)) {
-		if (isset($user_privacy[$pgv_USER_NAME]["all"])) {
-			if ($user_privacy[$pgv_USER_NAME]["all"] >= $pgv_USER_ACCESS_LEVEL) return true;
-			else return false;
-		}
-		if (isset($user_privacy[$pgv_USER_NAME][$pid])) {
-			if ($user_privacy[$pgv_USER_NAME][$pid] >= $pgv_USER_ACCESS_LEVEL) return true;
-			else return false;
-		}
-	}
 
 	if (isset($person_privacy[$pid])) {
 		if ($person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL) return true;

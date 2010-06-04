@@ -189,25 +189,6 @@ if ($action=="update") {
 	}
 	$configtext = $configtext_beg . $person_privacy_text . $configtext_end;
 
-	//-- Update the "User Privacy" section
-	$configtext_beg = substr($configtext, 0, strpos($configtext, "//-- start user privacy --//"));
-	$configtext_end = substr($configtext, strpos($configtext, "//-- end user privacy --//"));
-	$person_privacy_text = "//-- start user privacy --//\n\$user_privacy = array();\n";
-	if (!isset($v_user_privacy) || !is_array($v_user_privacy)) $v_user_privacy = array();
-	foreach ($user_privacy as $key=>$value) {
-		foreach ($value as $id=>$setting) {
-			if (isset($v_user_privacy_del[$key][$id]) || ($key==$v_new_user_privacy_username && $id==$v_new_user_privacy_access_ID)) continue;
-			if (isset($v_user_privacy[$key][$id])) $person_privacy_text .= "\$user_privacy['$key']['$id'] = ".$v_user_privacy[$key][$id].";\n";
-			else $person_privacy_text .= "\$user_privacy['$key']['$id'] = ".$PRIVACY_CONSTANTS[$setting].";\n";
-		}
-	}
-	if ($v_new_user_privacy_username && $v_new_user_privacy_access_ID && $v_new_user_privacy_access_option) {
-		$gedobj = new GedcomRecord(find_gedcom_record($v_new_user_privacy_access_ID, WT_GED_ID));
-		$v_new_user_privacy_access_ID = $gedobj->getXref();
-		if ($v_new_user_privacy_access_ID) $person_privacy_text .= "\$user_privacy['$v_new_user_privacy_username']['$v_new_user_privacy_access_ID'] = ".$v_new_user_privacy_access_option.";\n";
-	}
-	$configtext = $configtext_beg . $person_privacy_text . $configtext_end;
-
 	//-- Update the "Global Facts Privacy" section
 	$configtext_beg = substr($configtext, 0, strpos($configtext, "//-- start global facts privacy --//"));
 	$configtext_end = substr($configtext, strpos($configtext, "//-- end global facts privacy --//"));
@@ -529,46 +510,6 @@ if ($action=="update") {
 			</td>
 		</tr>
 	</table>
-	<?php if (count($user_privacy) > 0) { ?>
-	<table class="facts_table">
-		<tr>
-			<td class="topbottombar" colspan="5">
-				<?php print i18n::translate('Edit existing settings for User Privacy'); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox"><?php print i18n::translate('Delete'); ?></td>
-			<td class="descriptionbox"><?php print i18n::translate('Username'); ?></td>
-			<td class="descriptionbox"><?php print i18n::translate('ID'); ?></td>
-			<td class="descriptionbox"><?php print i18n::translate('Full Name'); ?></td>
-			<td class="descriptionbox"><?php print i18n::translate('Show?'); ?></td>
-		</tr>
-
-		<?php
-		foreach ($user_privacy as $key=>$value) {
-			foreach ($value as $id=>$setting) {
-		?>
-		<tr class="<?php print $TEXT_DIRECTION; ?>">
-			<td class="optionbox">
-				<input type="checkbox" name="v_user_privacy_del[<?php print $key; ?>][<?php print $id; ?>]" value="1" />
-			</td>
-			<td class="optionbox">
-				<?php echo $key, '<br />', getLRM(), '(', getUserFullName($key), ')', getLRM(); ?>
-			</td>
-			<td class="optionbox">
-				<?php print $id; ?>
-			</td>
-			<td class="optionbox">
-				<?php search_ID_details($id, 2); ?>
-			</td>
-			<td class="optionbox">
-				<?php echo edit_field_access_level("v_user_privacy[{$key}][{$id}]", $setting); ?>
-			</td>
-		</tr>
-
-		<?php } } ?>
-	</table>
-	<?php } ?>
 	</div>
 	<!-- -------------- global_facts -----------------------------------
 

@@ -175,22 +175,6 @@ $SHOW_PRIVATE_RELATIONSHIPS = false;
 $person_privacy = array();
 //-- end person privacy --//
 /**
- * User Privacy Array
- *
- * The user_privacy array provides administrators the ability to override default
- * privacy settings for individuals, families, and sources in the gedcom based on the username
- * of the person attempting to access the record.  The first index in the array is the username that
- * the settings should apply to.  The second index is the GEDCOM XRef ID to apply the setting to.
- *
- * For example, setting <code>$user_privacy["john"]["I100"] = WT_PRIV_NONE;</code> would prevent the
- * user with username "john" from accessing the gedcom record for "I100" unless "john" is an admin
- * user.
- * @global array $user_privacy
- */
-//-- start user privacy --//
-$user_privacy = array();
-//-- end user privacy --//
-/**
  * Global Facts Array
  *
  * The global_facts array defines facts on a global level that should be hidden for all
