@@ -89,10 +89,10 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', $software, $date);
 		} elseif ($software) {
 			// I18N: %s = software program
-			$content .= i18n::translate('This GEDCOM was created using <b>%s</b>,', $software);
+			$content .= i18n::translate('This GEDCOM was created using <b>%s</b>.', $software);
 		} elseif ($date) {
 			// I18N: %s = date
-			$content .= i18n::translate('This GEDCOM was created on <b>%s</b>', $date);
+			$content .= i18n::translate('This GEDCOM was created on <b>%s</b>.', $date);
 		}
 		
 		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';

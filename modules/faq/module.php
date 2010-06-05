@@ -40,7 +40,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('A list of Frequenty Asked Questions.');
+		return i18n::translate('A list of frequently asked questions');
 	}
 
 	// Extend WT_Module
