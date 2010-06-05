@@ -1912,7 +1912,7 @@ function GedcomSHandler($attrs) {
 				} else {
 					$temp = explode(" ", trim($tgedrec));
 					$level = $temp[0] + 1;
-					if (showFact($tag, $id) && showFactDetails($tag, $id)) {
+					if (showFact($tag, $id)) {
 						$newgedrec = get_sub_record($level, "$level $tag", $tgedrec);
 						$tgedrec = $newgedrec;
 					} else {
@@ -2231,7 +2231,7 @@ function GedcomValueSHandler($attrs) {
 	$tag = $attrs["tag"];
 	if (!empty($tag)) {
 		if ($tag=="@desc") {
-			if (showFact($fact, $id) or showFactDetails($fact, $id)) {
+			if (showFact($fact, $id)) {
 				$value = $desc;
 			} else {
 				$value = "";
@@ -2260,12 +2260,12 @@ function GedcomValueSHandler($attrs) {
 			//-- check all tags for privacy
 			foreach($tags as $subtag) {
 				if (!empty($subtag)) {
-					if (!showFact($subtag, $id) or !showFactDetails($subtag, $id)) {
+					if (!showFact($subtag, $id)) {
 						return;
 					}
 				}
 			}
-			if (showFact($fact, $id) or showFactDetails($fact, $id)) {
+			if (showFact($fact, $id)) {
 				$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
 				if ($useBreak == "1") {
 					// Insert <br /> when multiple dates exist.
@@ -2313,7 +2313,7 @@ function RepeatTagSHandler($attrs) {
 	}
 	if (!empty($tag)) {
 		if ($tag=="@desc") {
-			if (showFact($fact, $id) and showFactDetails($fact, $id)) {
+			if (showFact($fact, $id)) {
 				$value = $desc;
 			} else {
 				$value = "";
@@ -2335,7 +2335,7 @@ function RepeatTagSHandler($attrs) {
 			while ($i < $count) {
 				$t = $tags[$i];
 				if (!empty($t)) {
-					if (($level==1) && (strpos("CHIL,FAMS,FAMC", $t)===false) and (!showFact($t, $id) or !showFactDetails($t, $id))) {
+					if (($level==1) && (strpos("CHIL,FAMS,FAMC", $t)===false) and (!showFact($t, $id))) {
 						return;
 					}
 					if ($i < ($count-1)) {
@@ -2353,12 +2353,12 @@ function RepeatTagSHandler($attrs) {
 				$i++;
 			}
 			$level--;
-			if ( (($level > 0) or (strpos("CHIL,FAMS,FAMC", $t) !== false)) or ((showFact($t, $id)) or (showFactDetails($t, $id))) ) {
+			if ( (($level > 0) or (strpos("CHIL,FAMS,FAMC", $t) !== false)) or ((showFact($t, $id))) ) {
 				$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 				$i = 0;
 				while ($i < $count) {
 					// Check for privacy
-					if (showFact($t, $id) and showFactDetails($t, $id)) {
+					if (showFact($t, $id)) {
 						$rec = get_sub_record($level, "$level $t", $subrec, $i + 1);
 						$repeats[] = trim($rec);
 					}

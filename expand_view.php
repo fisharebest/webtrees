@@ -43,7 +43,7 @@ sort_facts($subfacts);
 $f2 = 0;
 /* @var $event Event */
 foreach($subfacts as $indexval => $event) {
-	if ($event->canShowDetails()) {
+	if ($event->canShow()) {
 			if ($f2>0) print "<br />\n";
 			$f2++;
 			// handle ASSO record

@@ -1945,7 +1945,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 						} else {
 							$plac='';
 						}
-						if (showFactDetails($row['d_fact'], $row['xref']) && !FactViewRestricted($row['xref'], $factrec)) {
+						if (showFact($row['d_fact'], $row['xref']) && !FactViewRestricted($row['xref'], $factrec)) {
 							$found_facts[]=array(
 								'record'=>$record,
 								'id'=>$row['xref'],
@@ -2027,7 +2027,7 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 					} else {
 						$plac='';
 					}
-					if (showFactDetails($row[7], $row[0]) && !FactViewRestricted($row[0], $factrec)) {
+					if (showFact($row[7], $row[0]) && !FactViewRestricted($row[0], $factrec)) {
 						$found_facts[]=array(
 							'id'=>$row[0],
 							'objtype'=>$row[2],

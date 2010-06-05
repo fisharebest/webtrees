@@ -75,7 +75,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 
 
     // NOTE Get the title of the media
-    if (showFactDetails("OBJE", $pid)) {
+    if (showFact("OBJE", $pid)) {
         $mediaTitle = $rowm["m_titl"];
         $subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
 

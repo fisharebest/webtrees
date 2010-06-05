@@ -269,7 +269,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Number of children
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap\">";
-			if (showFactDetails('NCHI', $person->getXref(), 'INDI')) {
+			if (showFact('NCHI', $person->getXref(), 'INDI')) {
 				if($SEARCH_SPIDER) {
 					echo $person->getNumberOfChildren();
 				} else {
@@ -695,7 +695,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		//-- Number of children
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap\">";
-			if (showFactDetails('NCHI', $family->getXref(), 'FAM')) {
+			if (showFact('NCHI', $family->getXref(), 'FAM')) {
 				if($SEARCH_SPIDER) {
 					echo $family->getNumberOfChildren();
 				} else {
@@ -1607,7 +1607,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 
 		// Privacy
-		if (!$record->canDisplayDetails() || !showFactDetails($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
+		if (!$record->canDisplayDetails() || !showFact($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
 			continue;
 		}
 		//-- Counter
@@ -1785,7 +1785,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		}
 
 		// Privacy
-		if (!$record->canDisplayDetails() || !showFactDetails($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
+		if (!$record->canDisplayDetails() || !showFact($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
 			continue;
 		}
 		$output ++;

@@ -712,44 +712,6 @@ function showFact($fact, $pid, $type='INDI') {
 }
 }
 
-//-- allow users to overide functions in privacy file
-if (!function_exists("showFactDetails")) {
-/**
-* check if the details of given GEDCOM fact for the given individual, family, or source XRef ID should be shown
-*
-* This function uses the settings in the global variables above to determine if the current user
-* has sufficient privileges to access the GEDCOM resource.  It first checks the $global_facts array
-* for admin override settings for the fact.
-*
-* @author yalnifj
-* @param string $fact the GEDCOM fact tag to check the privacy settings
-* @param string $pid the GEDCOM XRef ID for the entity to check privacy settings
-* @return boolean return true to show the fact details, return false to keep it private
-*/
-function showFactDetails($fact, $pid) {
-	global $global_facts, $person_facts;
-
-	if ($_SESSION["wt_user"]==WT_USER_ID) {
-		// Normal operation
-		$pgv_USER_ACCESS_LEVEL	= WT_USER_ACCESS_LEVEL;
-	} else {
-		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_USER_ACCESS_LEVEL	= $_SESSION["pgv_USER_ACCESS_LEVEL"];
-	}
-
-	//-- first check the global facts array
-	if (isset($global_facts[$fact]["details"])) {
-		if ($pgv_USER_ACCESS_LEVEL>$global_facts[$fact]["details"]) return false;
-	}
-	//-- check the person facts array
-	if (isset($person_facts[$pid][$fact]["details"])) {
-		if ($pgv_USER_ACCESS_LEVEL>$person_facts[$pid][$fact]["details"]) return false;
-	}
-
-	return showFact($fact, $pid);
-}
-}
-
 /**
 * remove all private information from a gedcom record
 *
@@ -788,7 +750,7 @@ function privatize_gedcom($gedrec) {
 					} else {
 						$tag=$match[1];
 					}
-					if (!FactViewRestricted($gid, $match[0]) && showFact($tag, $gid) && showFactDetails($tag, $gid)) {
+					if (!FactViewRestricted($gid, $match[0]) && showFact($tag, $gid)) {
 						$newrec.=$match[0];
 					} else {
 						$private_record.=$match[0];

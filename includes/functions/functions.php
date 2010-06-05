@@ -424,7 +424,7 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 			$pos2 = strlen($gedrec);
 		}
 		if (empty($ignore) || strpos($ignore, $fact)===false) {
-			if (!$ApplyPriv || (showFact($fact, $id)&& showFactDetails($fact, $id))) {
+			if (!$ApplyPriv || (showFact($fact, $id))) {
 				if (isset($prev_tags[$fact])) {
 					$prev_tags[$fact]++;
 				} else {
@@ -436,7 +436,7 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 						$tt = preg_match("/2 TYPE (.*)/", $subrec, $tmatch);
 						if ($tt>0) {
 							$type = trim($tmatch[1]);
-							if (!$ApplyPriv || (showFact($type, $id)&&showFactDetails($type, $id))) {
+							if (!$ApplyPriv || (showFact($type, $id))) {
 								$repeats[] = trim($subrec)."\n";
 							}
 						} else
@@ -466,7 +466,7 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 			for ($i=0; $i<$ct; $i++) {
 				$fact = trim($match[$i][1]);
 				if (empty($ignore) || strpos($ignore, $fact)===false) {
-					if (!$ApplyPriv || (showFact($fact, $id)&&showFactDetails($fact, $id))) {
+					if (!$ApplyPriv || (showFact($fact, $id))) {
 						if (isset($prev_tags[$fact])) {
 							$prev_tags[$fact]++;
 						} else {
@@ -478,7 +478,7 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 							$ct = preg_match("/2 TYPE (.*)/", $subrec, $tmatch);
 							if ($ct>0) {
 								$type = trim($tmatch[1]);
-								if (!$ApplyPriv or (showFact($type, $id)&&showFactDetails($type, $id))) {
+								if (!$ApplyPriv or (showFact($type, $id))) {
 									$repeats[] = trim($subrec)."\n";
 								}
 							} else {
@@ -910,7 +910,7 @@ function find_visible_families_in_record($indirec, $tag) {
 function find_highlighted_object($pid, $ged_id, $indirec) {
 	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_EXTERNAL;
 
-	if (!showFactDetails("OBJE", $pid)) {
+	if (!showFact("OBJE", $pid)) {
 		return false;
 	}
 	$media = array();

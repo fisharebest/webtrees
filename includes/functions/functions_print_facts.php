@@ -226,13 +226,13 @@ function print_fact(&$eventObj, $noedit=false) {
 	$align = "";
 	echo "<td class=\"optionbox $styleadd wrap\" $align>";
 	//echo "<td class=\"facts_value facts_value$styleadd\">";
-	if ((showFactDetails($factref, $pid)) && (FactViewRestricted($pid, $factrec))) {
+	if ((showFact($factref, $pid)) && (FactViewRestricted($pid, $factrec))) {
 		if (isset($resn_value)) {
 			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
 			echo help_link('RESN');
 		}
 	}
-	if ((showFactDetails($factref, $pid)) && (!FactViewRestricted($pid, $factrec))) {
+	if ((showFact($factref, $pid)) && (!FactViewRestricted($pid, $factrec))) {
 		// -- first print TYPE for some facts
 		if ($fact!="EVEN" && $fact!="FACT") {
 			if (preg_match("/2 TYPE (.*)/", $factrec, $match)) {
@@ -592,7 +592,7 @@ function print_media_links($factrec, $level, $pid='') {
 			$imgsize = findImageSize($mainMedia);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
-			if (showFactDetails("OBJE", $pid)) {
+			if (showFact("OBJE", $pid)) {
 				if ($objectNum > 0) echo "<br clear=\"all\" />";
 				echo "<table><tr><td>";
 				if ($isExternal || media_exists($thumbnail)) {
@@ -904,7 +904,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "\n\t\t\t<td class=\"optionbox $styleadd wrap\">";
 			//echo "\n\t\t\t<td class=\"facts_value$styleadd\">";
 			$source=Source::getInstance($sid);
-			if ($source && showFactDetails("SOUR", $pid)) {
+			if ($source && showFact("SOUR", $pid)) {
 				echo "<a href=\"", encode_url($source->getLinkUrl()), "\">", PrintReady($source->getFullName()), "</a>";
 				// PUBL
 				$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
@@ -1201,7 +1201,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			if ($TEXT_DIRECTION=="ltr" && !hasLTRText($text) && hasRTLText($text)) $align=" align=\"right\"";
 		}
 		echo " </td>\n<td class=\"optionbox $styleadd wrap\" $align>";
-		if (showFactDetails("NOTE", $pid)) {
+		if (showFact("NOTE", $pid)) {
 			echo $text;
 			if (!empty($noterec)) print_fact_sources($noterec, 1);
 			// See if RESN tag prevents display or edit/delete
@@ -1469,7 +1469,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	// NOTE Print the title of the media
 	echo "</td><td class=\"optionbox wrap $styleadd\"><span class=\"field\">";
-	if (showFactDetails("OBJE", $pid)) {
+	if (showFact("OBJE", $pid)) {
 		$mediaTitle = $rowm["m_titl"];
 		$subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
 		if (!empty($subtitle)) $mediaTitle = $subtitle;

@@ -445,7 +445,7 @@ class IndividualControllerRoot extends BaseController {
 	function print_name_record(&$event) {
 		global $UNDERLINE_NAME_QUOTES;
 
-		if (!$event->canShowDetails()) {
+		if (!$event->canShow()) {
 			return false;
 		}
 		$factrec = $event->getGedComRecord();
@@ -516,7 +516,7 @@ class IndividualControllerRoot extends BaseController {
 	function print_sex_record(&$event) {
 		global $sex;
 
-		if (!$event->canShowDetails()) return false;
+		if (!$event->canShow()) return false;
 		$factrec = $event->getGedComRecord();
 		$sex = $event->getDetail();
 		if (empty($sex)) $sex = 'U';

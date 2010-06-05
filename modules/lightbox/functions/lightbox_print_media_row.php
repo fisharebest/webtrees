@@ -126,7 +126,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$linenum = 0;
 
 	// If Fact details can be shown --------------------------------------------------------------------------------------------
-	if (showFactDetails("OBJE", $pid)) {
+	if (showFact("OBJE", $pid)) {
 
 		//  Get the title of the media
 		$media=Media::getInstance($rowm["m_media"]);
