@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8516 2010-05-29 11:45:27Z rob $
+* $Id: ash.css 8517 2010-05-29 12:26:54Z rob $
 */
 
 .something {
@@ -86,7 +86,7 @@ color:#333333;
 }
 
 a:hover { 
-color: #ff5500;
+color: red;
 text-decoration: none;
 }
 
@@ -1058,6 +1058,7 @@ font-weight: bold;
 .news_date {
 color: black;
 font-size: 12px;
+margin-bottom: 12px;
 }
 
 .timeline_table {

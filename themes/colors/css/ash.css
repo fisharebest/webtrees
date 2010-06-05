@@ -86,7 +86,7 @@ color:#333333;
 }
 
 a:hover { 
-color: #ff5500;
+color: red;
 text-decoration: none;
 }
 
@@ -1058,6 +1058,7 @@ font-weight: bold;
 .news_date {
 color: black;
 font-size: 12px;
+margin-bottom: 12px;
 }
 
 .timeline_table {
