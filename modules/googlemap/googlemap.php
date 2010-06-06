@@ -420,6 +420,7 @@ function create_indiv_buttons() {
 		return new GControlPosition(G_ANCHOR_TOP_RIGHT, new GSize(2, 2));
 	}
 	var map_type;
+	-->
 	</script>
 	<?php
 }
@@ -442,8 +443,8 @@ function build_indiv_map($indifacts, $famids) {
 		echo "\n\t</table>\n<br />";
 		?>
 		<script type="text/javascript">
-			document.getElementById("googlemap_left").innerHTML = document.getElementById("googlemap_content").innerHTML;
-			document.getElementById("googlemap_content").innerHTML = "";
+			document.getElementById("googlemap_left").innerHTML = document.getElementById("map_content").innerHTML;
+			document.getElementById("map_content").innerHTML = "";
 		</script>
 		<?php
 		return;

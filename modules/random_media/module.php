@@ -273,7 +273,7 @@ function openPic(filename, width, height) {
 				// $content .= " ><a href=\"javascript:;\" onclick=\"return openImage('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
 				// $content .= "><a href=\"" . $medialist[$value]["FILE"] . "\" rel=\"clearbox[general_4]\" title=\"" . $mediaid . "\">" . "\n";
 				$content .= " ><a href=\"mediaviewer.php?mid=".$mediaid."\">";
-				}else
+			}else
 // ---------------------------------------------------------------------------------------------
 
 

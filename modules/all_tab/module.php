@@ -55,7 +55,7 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		
-		$out = "<div id=\"all_content\">";
+		$out = '<div id="'.$this->getName().'_content">';
 		$out .= "<!-- all tab doesn't have it's own content -->";
 		$out .= "</div>";
 		return $out;
@@ -85,7 +85,7 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		$out.=
 			' jQuery("#tabs > div").each(function() {'.
-			' 	if (this.name!="all_tab") {'.
+			' 	if (this.name!="'.$this->getName().'") {'.
 			'   jQuery(this).removeClass("ui-tabs-hide");'.
 			'  }'.
 			' });'.

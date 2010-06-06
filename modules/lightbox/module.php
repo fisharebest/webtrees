@@ -87,8 +87,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		ob_start();
 		$mediacnt = $this->get_media_count();
 		require_once 'modules/lightbox/functions/lb_head.php';
-		echo "<div id=\"lightbox2_content\">";
-
+		
 		$media_found = false;
 		if (!$this->controller->indi->canDisplayDetails()) {
 			print "<table class=\"facts_table\" cellpadding=\"0\">\n";
@@ -101,12 +100,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 				include_once('modules/lightbox/album.php');
 			}
 		}
-		echo "</div>";
-
-		$out = ob_get_contents();
-		ob_end_clean();
-		$out .= "</div>";
-		return $out;
+		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 
 	// Implement WT_Module_Tab
