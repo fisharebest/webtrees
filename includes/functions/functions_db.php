@@ -2207,7 +2207,13 @@ function rename_user($old_username, $new_username) {
 }
 
 function delete_user($user_id) {
-	$user_name=get_user_name($user_id);
+	// Don't delete the logs.
+	WT_DB::prepare("UPDATE `##log` SET user_id=NULL   WHERE user_id =?")->execute(array($user_id));
+	// Take over the user's pending changes.
+	// TODO: perhaps we should prevent deletion of users with pending changes?
+	WT_DB::prepare("DELETE FROM `##change` WHERE user_id=? AND status='accepted'")->execute(array($user_id));
+	WT_DB::prepare("UPDATE `##change` SET user_id=? WHERE user_id=?")->execute(array(WT_USER_ID, $user_id));
+
 	WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array($user_id));
 	WT_DB::prepare("DELETE FROM `##block`               WHERE user_id=?"    )->execute(array($user_id));
 	WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=?"    )->execute(array($user_id));
