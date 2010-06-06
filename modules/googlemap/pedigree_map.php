@@ -274,41 +274,34 @@ echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\">";
 echo "  <tr>";
 echo "	<td valign=\"top\">";
 // print summary statistics
-	if (isset($curgen)){
-		$total=pow(2,$curgen)-1;
-		$miss=$total-$count-$priv;
-		echo i18n::plural(
-			'%1$d individual displayed, out of the normal total of %2$d, from %3$d generations.',
-			'%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations.',
-			$count,
-			$count, $total, $curgen
-		), '<br/>';
-		echo "</td>\n";
-		echo "  </tr>\n";
-		echo "  <tr>\n";
-		echo "	<td valign=\"top\">\n";
-		if ($priv) {
-			echo i18n::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br/>';
-		}
-		if ($count+$priv != $total) {
-			if ($miscount == 1) {
-				echo "<strong>".$miscount."</strong> ";
-				echo " ".i18n::translate('individual is missing birth place map coordinates:')."<br />\n";
-			} else if ($miscount > 1 && $miscount < 5) {
-				echo "<strong>".$miscount."</strong> ";
-				echo " ".i18n::translate('individuals are missing birth place map coordinates:')."<br />\n";
-			} else if ($miscount > 21 && substr($miscount, -1, 1) > 1 && substr($miscount, -1, 1) < 5 && substr($miscount, -2, 1) != 1) {
-				echo "<strong>".$miscount."</strong> ";
-				echo " ".i18n::translate('individuals are missing birth place map coordinates:')."<br />\n";
-			} else if ($miscount == 0) {
-				echo " ".i18n::translate('No ancestors in the database.')."<br />\n";
-			} else {
-				echo "<strong>".$miscount."</strong> ";
-				echo " ".i18n::translate('individuals are missing birth place map coordinates:')."<br />\n";
-			}
-			echo $missing . "<br />\n";
+if (isset($curgen)){
+	$total=pow(2,$curgen)-1;
+	$miss=$total-$count-$priv;
+	echo i18n::plural(
+		'%1$d individual displayed, out of the normal total of %2$d, from %3$d generations.',
+		'%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations.',
+		$count,
+		$count, $total, $curgen
+	), '<br/>';
+	echo "</td>\n";
+	echo "  </tr>\n";
+	echo "  <tr>\n";
+	echo "	<td valign=\"top\">\n";
+	if ($priv) {
+		echo i18n::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br/>';
+	}
+	if ($count+$priv != $total) {
+		if ($miscount == 0) {
+			echo i18n::translate('No ancestors in the database.'), "<br />\n";
+		} else {
+			echo " ".i18n::plural(
+				'%d individual is missing birth place map coordinates:',
+				'%d individuals are missing birth place map coordinates:',
+				$miscount, $miscount),
+				" ", $missing, "<br />\n";
 		}
 	}
+}
 echo "	</td>\n";
 echo "  </tr>\n";
 echo "</table>\n";
