@@ -329,7 +329,7 @@ if ($type == "place") {
 }
 
 // Show repo and hide the rest
-if ($type == "repo" && $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) {
+if ($type == "repo") {
 	echo "<div align=\"center\">";
 	echo "<form name=\"filterrepo\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
 	echo "<input type=\"hidden\" name=\"action\" value=\"filter\" />";
@@ -371,7 +371,7 @@ if ($type == "note") {
 }
 
 // Show source and hide the rest
-if ($type == "source" && $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) {
+if ($type == "source") {
 	echo "<div align=\"center\">";
 	echo "<form name=\"filtersource\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
 	echo "<input type=\"hidden\" name=\"action\" value=\"filter\" />";

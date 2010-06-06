@@ -484,7 +484,7 @@ class MenuBar
 	*/
 	static function getListsMenu($surname="") {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
-		global $SHOW_SOURCES, $MULTI_MEDIA, $SEARCH_SPIDER;
+		global $MULTI_MEDIA, $SEARCH_SPIDER;
 		global $ALLOW_CHANGE_GEDCOM;
 		global $controller;
 		
@@ -554,8 +554,8 @@ class MenuBar
 		$menuList["individual"] = i18n::translate('Individuals');
 		if (file_exists(WT_ROOT.'famlist.php')) $menuList["family"] = i18n::translate('Families');
 		if (file_exists(WT_ROOT.'branches.php')) $menuList["branches"] = i18n::translate('Branches');
-		if ($style=="top" && file_exists(WT_ROOT.'sourcelist.php') && $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) $menuList["source"] = i18n::translate('Sources');
-		if ($style=="top" && file_exists(WT_ROOT.'notelist.php') && $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) $menuList["note"] = i18n::translate('Shared Notes');
+		if ($style=="top" && file_exists(WT_ROOT.'sourcelist.php')) $menuList["source"] = i18n::translate('Sources');
+		if ($style=="top" && file_exists(WT_ROOT.'notelist.php')) $menuList["note"] = i18n::translate('Shared Notes');
 		if ($style=="top" && file_exists(WT_ROOT.'repolist.php')) $menuList["repository"] = i18n::translate('Repositories');
 		if ($style=="top" && file_exists(WT_ROOT.'placelist.php')) $menuList["places"] = i18n::translate('Place hierarchy');
 		if ($style=="top" && file_exists(WT_ROOT.'medialist.php') && $MULTI_MEDIA) $menuList["media"] = i18n::translate('Multimedia');

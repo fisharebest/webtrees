@@ -480,11 +480,11 @@ function print_repository_record($sid) {
  * @param boolean $return	whether to return the data or print the data
  */
 function print_fact_sources($factrec, $level, $return=false) {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_SOURCES, $EXPAND_SOURCES;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $EXPAND_SOURCES;
 	$printDone = false;
 	$data = "";
 	$nlevel = $level+1;
-	if ($SHOW_SOURCES<WT_USER_ACCESS_LEVEL) return "";
+
 	// -- Systems not using source records [ 1046971 ]
 	$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for($j=0; $j<$ct; $j++) {
@@ -835,8 +835,7 @@ function print_address_structure($factrec, $level) {
 
 function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 	global $view, $RESN_CODES;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_SOURCES;
-	if ($SHOW_SOURCES<WT_USER_ACCESS_LEVEL) return;
+	global $WT_IMAGE_DIR, $WT_IMAGES;
 
 	$nlevel = $level+1;
 	$styleadd="";

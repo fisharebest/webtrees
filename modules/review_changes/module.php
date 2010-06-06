@@ -45,7 +45,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ctype, $QUERY_STRING, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $SHOW_SOURCES, $WEBTREES_EMAIL, $THEME_DIR;
+		global $ctype, $QUERY_STRING, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION, $WEBTREES_EMAIL, $THEME_DIR;
 
 		$changes=WT_DB::prepare(
 			"SELECT 1".
@@ -119,7 +119,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				)->execute(array(WT_GED_ID))->fetchAll();
 				foreach ($changes as $change) {
 					$record=GedcomRecord::getInstance($change->xref);
-					if ($record->getType()!='SOUR' || $SHOW_SOURCES>=WT_USER_ACCESS_LEVEL) {
+					if ($record->canDisplayDetails()) {
 						$content.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM();
 						switch ($record->getType()) {
 						case 'INDI':

@@ -43,7 +43,6 @@ define('WT_TRANSLATORS_URL', 'https://launchpad.net/webtrees');
 // Enable debugging output?
 define('WT_DEBUG',      false);
 define('WT_DEBUG_SQL',  false);
-define('WT_DEBUG_PRIV', false);
 
 // Error reporting
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
@@ -312,35 +311,25 @@ if (isset($_REQUEST['ged'])) {
 	$GEDCOM='';
 }
 
-require WT_ROOT.'config_gedcom.php'; // Load default gedcom settings
-
-// Missing/invalid gedcom - pick any one!
-try {
-	// Does the requested GEDCOM exist?
+// Does the requested GEDCOM exist?
+$ged_id=get_id_from_gedcom($GEDCOM);
+if (!$ged_id) {
+	// Try the site default
+	$GEDCOM=get_site_setting('DEFAULT_GEDCOM');
 	$ged_id=get_id_from_gedcom($GEDCOM);
+	// Try any one
 	if (!$ged_id) {
-		// Try the site default
-		$GEDCOM=get_site_setting('DEFAULT_GEDCOM');
-		$ged_id=get_id_from_gedcom($GEDCOM);
-		// Try any one
-		if (!$ged_id) {
-			foreach (get_all_gedcoms() as $ged_id=>$GEDCOM) {
-				if (get_gedcom_setting($ged_id, 'imported')) {
-					break;
-				}
+		foreach (get_all_gedcoms() as $ged_id=>$GEDCOM) {
+			if (get_gedcom_setting($ged_id, 'imported')) {
+				break;
 			}
 		}
 	}
-	define('WT_GEDCOM', $GEDCOM);
-	define('WT_GED_ID', $ged_id);
-	load_privacy_file(WT_GED_ID);
-	require get_config_file(WT_GED_ID); // Load current gedcom settings
-} catch (PDOException $ex) {
-	// No DB available?
-	require 'privacy.php';
-	define('WT_GEDCOM', '');
-	define('WT_GED_ID', 0);
 }
+define('WT_GEDCOM', $GEDCOM);
+define('WT_GED_ID', $ged_id);
+
+load_gedcom_settings(WT_GED_ID);
 
 // Set our gedcom selection as a default for the next page
 $_SESSION['GEDCOM']=WT_GEDCOM;

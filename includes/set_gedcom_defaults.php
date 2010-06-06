@@ -30,33 +30,168 @@ if (!defined('WT_WEBTREES') || empty($ged_id) || empty($ged_name)) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Configuration and privacy files
-////////////////////////////////////////////////////////////////////////////////
-$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-if (!file_exists($INDEX_DIRECTORY.$ged_name.'_conf.php')) {
-	copy('config_gedcom.php', $INDEX_DIRECTORY.$ged_name.'_conf.php');
-}
-if (!file_exists($INDEX_DIRECTORY.$ged_name.'_priv.php')) {
-	copy('privacy.php', $INDEX_DIRECTORY.$ged_name.'_priv.php');
-}
-set_gedcom_setting($ged_id, 'config',  $INDEX_DIRECTORY.$ged_name.'_conf.php');
-set_gedcom_setting($ged_id, 'privacy', $INDEX_DIRECTORY.$ged_name.'_priv.php');
-
-////////////////////////////////////////////////////////////////////////////////
 // Module privacy
 ////////////////////////////////////////////////////////////////////////////////
 require_once WT_ROOT.'includes/classes/class_module.php';
 WT_Module::setDefaultAccess($ged_id);
 
 ////////////////////////////////////////////////////////////////////////////////
-// General settings
+// Gedcom and privacy settings
+////////////////////////////////////////////////////////////////////////////////
+set_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS',      false);
+set_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS',          'NICK,_AKA');
+set_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS',          '');
+set_gedcom_setting($ged_id, 'ALLOW_EDIT_GEDCOM',            true);
+set_gedcom_setting($ged_id, 'ALLOW_THEME_DROPDOWN',         true);
+set_gedcom_setting($ged_id, 'AUTO_GENERATE_THUMBS',         true);
+set_gedcom_setting($ged_id, 'CALENDAR_FORMAT',              'gregorian');
+set_gedcom_setting($ged_id, 'CHART_BOX_TAGS',               '');
+set_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS',     true);
+set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             '');
+set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          '');
+set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       '40');
+set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              1);
+set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              WT_USER_ID);
+set_gedcom_setting($ged_id, 'DAYS_TO_SHOW_LIMIT',           '7');
+set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', '4');
+set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM',    true);
+set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_THOUSANDS',     false);
+set_gedcom_setting($ged_id, 'EDIT_AUTOCLOSE',               true);
+set_gedcom_setting($ged_id, 'ENABLE_AUTOCOMPLETE',          true);
+set_gedcom_setting($ged_id, 'ENABLE_RSS',                   true);
+set_gedcom_setting($ged_id, 'EXPAND_NOTES',                 false);
+set_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS',      false);
+set_gedcom_setting($ged_id, 'EXPAND_SOURCES',               false);
+set_gedcom_setting($ged_id, 'FAM_FACTS_ADD',                'CENS,MARR,RESI,SLGS,MARR_CIVIL,MARR_RELIGIOUS,MARR_PARTNERS');
+set_gedcom_setting($ged_id, 'FAM_FACTS_QUICK',              'MARR,DIV,_NMR');
+set_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE',             'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS');
+set_gedcom_setting($ged_id, 'FAM_ID_PREFIX',                'F');
+set_gedcom_setting($ged_id, 'FAVICON',                      'images/favicon.ico');
+set_gedcom_setting($ged_id, 'FULL_SOURCES',                 false);
+set_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB',           'personal_facts');
+set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             'I');
+set_gedcom_setting($ged_id, 'GENERATE_UIDS',                false);
+set_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS',           true);
+set_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE',             true);
+set_gedcom_setting($ged_id, 'HOME_SITE_TEXT',               'webtrees');
+set_gedcom_setting($ged_id, 'HOME_SITE_URL',                'http://webtrees.net');
+set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               'ADDR,AFN,BIRT,CHR,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,EMAIL,FAX,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,CAST,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO');
+set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             'BIRT,BURI,CHR,CENS,DEAT,OCCU,RESI');
+set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            '');
+set_gedcom_setting($ged_id, 'LANGUAGE',                     'en');
+set_gedcom_setting($ged_id, 'LINK_ICONS',                   'click');
+set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                120);
+set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
+set_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS',     '10');
+set_gedcom_setting($ged_id, 'MAX_RELATION_PATH_LENGTH',     3);
+set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY',              'media/');
+set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS',       '0');
+set_gedcom_setting($ged_id, 'MEDIA_EXTERNAL',               true);
+set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR',       get_site_setting('INDEX_DIRECTORY'));
+set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_THUMBS',        false);
+set_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX',              'M');
+set_gedcom_setting($ged_id, 'META_AUDIENCE',                'All');
+set_gedcom_setting($ged_id, 'META_AUTHOR',                  '');
+set_gedcom_setting($ged_id, 'META_COPYRIGHT',               '');
+set_gedcom_setting($ged_id, 'META_DESCRIPTION',             '');
+set_gedcom_setting($ged_id, 'META_KEYWORDS',                'ancestry, genealogy, pedigree tree');
+set_gedcom_setting($ged_id, 'META_PAGE_TOPIC',              '');
+set_gedcom_setting($ged_id, 'META_PAGE_TYPE',               'Private Homepage');
+set_gedcom_setting($ged_id, 'META_PUBLISHER',               '');
+set_gedcom_setting($ged_id, 'META_REVISIT',                 '10 days');
+set_gedcom_setting($ged_id, 'META_ROBOTS',                  'index, follow');
+set_gedcom_setting($ged_id, 'META_TITLE',                   '');
+set_gedcom_setting($ged_id, 'MULTI_MEDIA',                  true);
+set_gedcom_setting($ged_id, 'NOTE_FACTS_ADD',               'ASSO,SOUR,NOTE,REPO');
+set_gedcom_setting($ged_id, 'NOTE_FACTS_QUICK',             '');
+set_gedcom_setting($ged_id, 'NOTE_FACTS_UNIQUE',            '');
+set_gedcom_setting($ged_id, 'NOTE_ID_PREFIX',               'N');
+set_gedcom_setting($ged_id, 'NO_UPDATE_CHAN',               false);
+set_gedcom_setting($ged_id, 'PAGE_AFTER_LOGIN',             'mypage');
+set_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS',        true);
+set_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT',              true);
+set_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID',             '');
+set_gedcom_setting($ged_id, 'PEDIGREE_SHOW_GENDER',         false);
+set_gedcom_setting($ged_id, 'POSTAL_CODE',                  true);
+set_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES',        '1');
+set_gedcom_setting($ged_id, 'PRIVACY_BY_YEAR',              false);
+set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS',         'BIRT,DEAT');
+set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS',      'MARR');
+set_gedcom_setting($ged_id, 'REPO_FACTS_ADD',               'PHON,EMAIL,FAX,WWW,NOTE,SHARED_NOTE');
+set_gedcom_setting($ged_id, 'REPO_FACTS_QUICK',             '');
+set_gedcom_setting($ged_id, 'REPO_FACTS_UNIQUE',            'NAME,ADDR');
+set_gedcom_setting($ged_id, 'REPO_ID_PREFIX',               'R');
+set_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION',       false);
+set_gedcom_setting($ged_id, 'RSS_FORMAT',                   'ATOM');
+set_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE',         false);
+set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         false);
+set_gedcom_setting($ged_id, 'SEARCH_FACTS_DEFAULT',         'NAME:GIVN:SDX,NAME:SURN:SDX,BIRT:DATE,BIRT:PLAC,FAMS:MARR:DATE,FAMS:MARR:PLAC,DEAT:DATE,DEAT:PLAC');
+set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                false);
+set_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP',            true);
+set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 true);
+set_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE',             WT_PRIV_PUBLIC);
+set_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES',             true);
+set_gedcom_setting($ged_id, 'SHOW_EST_LIST_DATES',          false);
+set_gedcom_setting($ged_id, 'SHOW_FACT_ICONS',              true);
+set_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD',           false);
+set_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES',        true);
+set_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE',           false);
+set_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES',            true);
+set_gedcom_setting($ged_id, 'SHOW_LIST_PLACES',             '1');
+set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            WT_PRIV_PUBLIC);
+set_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES',           true);
+set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          false);
+set_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME',          false);
+set_gedcom_setting($ged_id, 'SHOW_MULTISITE_SEARCH',        WT_PRIV_NONE);
+set_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK',            WT_PRIV_USER);
+set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             true);
+set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         '9');
+set_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS',   false);
+set_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION',        true);
+set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        '_BIRT_CHIL,_BIRT_GCHI,_BIRT_HSIB,_BIRT_SIBL,_DEAT_CHIL,_DEAT_COUS,_DEAT_FATH,_DEAT_GCHI,_DEAT_GPAR,_DEAT_GGPA,_DEAT_MOTH,_DEAT_SIBL,_DEAT_SPOU,_MARR_CHIL,_MARR_FATH,_MARR_GCHI,_MARR_MOTH,_FAMC_EMIG');
+set_gedcom_setting($ged_id, 'SHOW_SPIDER_TAGLINE',          true);
+set_gedcom_setting($ged_id, 'SHOW_STATS',                   false);
+set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             'S');
+set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               'NOTE,OBJE,REPO,SHARED_NOTE');
+set_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK',             'WWW,EMAIL,NOTE');
+set_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE',            'AUTH,ABBR,TITL,PUBL,TEXT');
+set_gedcom_setting($ged_id, 'SPLIT_PLACES',                 false);
+set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F',            '200');
+set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            '200');
+set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           'style2');
+set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            'paternal');
+set_gedcom_setting($ged_id, 'THEME_DIR',                    'themes/webtrees/');
+set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              '100');
+set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        true);
+set_gedcom_setting($ged_id, 'USE_GEONAMES',                 false);
+set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           false);
+set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             true);
+set_gedcom_setting($ged_id, 'USE_RELATIONSHIP_PRIVACY',     false);
+set_gedcom_setting($ged_id, 'USE_RIN',                      false);
+set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               true);
+set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              true);
+set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              false);
+set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            1);
+set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
+set_gedcom_setting($ged_id, 'WEBTREES_EMAIL',               '');
+set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       '1');
+set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_4',     '');
+set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       false);
+set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           false);
+set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   'click');
+set_gedcom_setting($ged_id, 'imported',                     0);
+set_gedcom_setting($ged_id, 'title',                        i18n::translate('Genealogy from [%s]', $ged_name));
+
+////////////////////////////////////////////////////////////////////////////////
+// Default restriction settings
 ////////////////////////////////////////////////////////////////////////////////
 $statement=WT_DB::prepare(
-	"INSERT IGNORE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, ?)");
+	"INSERT IGNORE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULL, ?, ?)"
+);
+$statement->execute(array($ged_id, 'SSN',  'confidential'));
+$statement->execute(array($ged_id, 'SOUR', 'privacy'));
+$statement->execute(array($ged_id, 'REPO', 'privacy'));
+$statement->execute(array($ged_id, 'SUBM', 'confidential'));
+$statement->execute(array($ged_id, 'SUBN', 'confidential'));
 
-$statement->execute(array($ged_id, 'title', i18n::translate('Genealogy from [%s]', $ged_name)));
-$statement->execute(array($ged_id, 'imported', 0));
-$statement->execute(array($ged_id, 'CONTACT_USER_ID', WT_USER_ID));
-$statement->execute(array($ged_id, 'WEBMASTER_USER_ID', WT_USER_ID));
 
-// Eventually, all the settings in config_gedcom.php and privacy.php will be here...

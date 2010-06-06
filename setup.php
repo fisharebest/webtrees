@@ -695,6 +695,18 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS wt_default_resn (".
+		" default_resn_id INTEGER AUTO_INCREMENT                             NOT NULL,".
+		" gedcom_id       INTEGER                                            NOT NULL,".
+		" xref            VARCHAR(20)                                            NULL,".
+		" tag_type        VARCHAR(15)                                            NULL,".
+		" resn            ENUM ('none', 'privacy', 'confidential', 'hidden') NOT NULL,".
+		" PRIMARY KEY     (default_resn_id),".
+		" UNIQUE  KEY ux1 (gedcom_id, xref, tag_type),".
+		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES wt_gedcom (gedcom_id)".
+		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
+	);
+	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}individuals (".
 		" i_id     VARCHAR(20)         NOT NULL,".
 		" i_file   INTEGER             NOT NULL,".

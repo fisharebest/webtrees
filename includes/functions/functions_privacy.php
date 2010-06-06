@@ -344,8 +344,8 @@ function checkPrivacyByYear($pid) {
 */
 function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
-	global $global_facts, $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
-	global $PRIVACY_CHECKS, $SHOW_SOURCES, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
+	global $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
+	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -371,254 +371,96 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 		$pgv_USER_GEDCOM_ID    = $_SESSION["pgv_USER_GEDCOM_ID"];
 	}
 
-	static $privacy_cache = array();
-
-	if (!$HIDE_LIVE_PEOPLE) return true;
-	if (empty($pid)) return true;
-
-	$pkey = $GEDCOM.$pid;
-	//-- check if the privacy has been cached and use it
-	if (isset($privacy_cache[$pkey])) {
-		return $privacy_cache[$pkey];
+	// Missing data or broken link?
+	if (!$pid) {
+		return true;
 	}
 
 	//-- keep a count of how many times we have checked for privacy
-	if (!isset($PRIVACY_CHECKS)) $PRIVACY_CHECKS = 1;
-	else $PRIVACY_CHECKS++;
-
-	if (WT_DEBUG_PRIV) {
-		$fp = fopen($INDEX_DIRECTORY."/priv_log.txt", "a");
-		$backtrace = debug_backtrace();
-		$temp = "";
-		if (isset($backtrace[2])) $temp .= basename($backtrace[2]["file"])." (".$backtrace[2]["line"].")";
-		if (isset($backtrace[1])) $temp .= basename($backtrace[1]["file"])." (".$backtrace[1]["line"].")";
-		$temp .= basename($backtrace[0]["file"])." (".$backtrace[0]["line"].")";
-		fwrite($fp, date("Y-m-d H:i:s")."\t".WT_SCRIPT_NAME."\t".$temp."\t".$PRIVACY_CHECKS."- checking privacy for ".$type." ".$pid.WT_EOL);
-		fclose($fp);
+	if (!isset($PRIVACY_CHECKS)) {
+		$PRIVACY_CHECKS = 1;
+	} else {
+		$PRIVACY_CHECKS++;
 	}
 
-	$cache_privacy = true;
-
-	//-- start of user specific privacy checks
-	if ($pgv_USER_ID) {
-
-		if (isset($person_privacy[$pid])) {
-			if ($person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL) {
-				if ($cache_privacy) $privacy_cache[$pkey] = true;
-				return true;
-			}
-			else {
-				if ($cache_privacy) $privacy_cache[$pkey] = false;
-				return false;
-			}
-		}
-		if ($pgv_USER_GEDCOM_ADMIN) {
-			if ($cache_privacy) $privacy_cache[$pkey] = true;
-			return true;
-		}
-
-		//-- look for an Ancestral File RESN (restriction) tag
-		$gedrec = find_gedcom_record($pid, $ged_id);
-		$resn = get_gedcom_value("RESN", 1, $gedrec);
-		if (!empty($resn)) {
-			if ($resn == "confidential") {
-				$ret = false;
-			} elseif ($resn=="privacy" && $pgv_USER_GEDCOM_ID != $pid) {
-				$ret = false;
-			} else {
-				$ret = true;
-			}
-			if (!$ret) {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = $ret;
-				}
-				return $ret;
-			}
-		}
-
-		if ($pgv_USER_CAN_ACCESS) {
-			if ($type=="INDI") {
-				$gedrec = find_person_record($pid, $ged_id);
-				$isdead = is_dead($gedrec);
-				if ($USE_RELATIONSHIP_PRIVACY || get_user_setting($pgv_USER_ID, 'relationship_privacy')) {
-					if ($isdead) {
-						if ($SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
-							if ($PRIVACY_BY_YEAR && $SHOW_DEAD_PEOPLE==$pgv_USER_ACCESS_LEVEL) {
-								if (!checkPrivacyByYear($pid)) {
-									if ($cache_privacy) $privacy_cache[$pkey] = false;
-									return false;
-								}
-							}
-							if ($cache_privacy) $privacy_cache[$pkey] = true;
-							return true;
-						} else {
-							if ($cache_privacy) $privacy_cache[$pkey] = false;
-							return false;
-						}
-					} else {
-						$my_id=$pgv_USER_GEDCOM_ID;
-						if (empty($my_id)) {
-							if ($cache_privacy) $privacy_cache[$pkey] = false;
-							return false;
-						}
-						if ($my_id==$pid) {
-							if ($cache_privacy) $privacy_cache[$pkey] = true;
-							return true;
-						}
-						if (get_user_setting($pgv_USER_ID, 'max_relation_path')>0) {
-							$path_length = get_user_setting($pgv_USER_ID, 'max_relation_path');
-						} else {
-							$path_length = $MAX_RELATION_PATH_LENGTH;
-						}
-						$relationship = get_relationship($pgv_USER_GEDCOM_ID, $pid, $CHECK_MARRIAGE_RELATIONS, $path_length);
-						if ($relationship!==false) {
-							if ($cache_privacy) $privacy_cache[$pkey] = true;
-							return true;
-						} else {
-							if ($cache_privacy) $privacy_cache[$pkey] = false;
-							return false;
-						}
-					}
-				} else {
-					if ($isdead) {
-						if ($SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
-							if ($cache_privacy) $privacy_cache[$pkey] = true;
-							return true;
-						} else {
-							if ($cache_privacy) $privacy_cache[$pkey] = false;
-							return false;
-						}
-					} else {
-						if ($SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL) {
-							if ($cache_privacy) $privacy_cache[$pkey] = true;
-							return true;
-						} else {
-							if ($cache_privacy) $privacy_cache[$pkey] = false;
-							return false;
-						}
-					}
-				}
-			}
-		}
-	} //-- end the user specif privacy settings
-
-	//-- check the person privacy array for an exception
-	if (isset($person_privacy[$pid])) {
-		if ($person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL) {
-			if ($cache_privacy) {
-				$privacy_cache[$pkey] = true;
-			}
-			return true;
-		} else {
-			if ($cache_privacy) {
-				$privacy_cache[$pkey] = false;
-			}
-			return false;
-		}
-	}
-
-	//-- look for an Ancestral File RESN (restriction) tag
-	$gedrec = find_gedcom_record($pid, $ged_id);
-	$resn = get_gedcom_value("RESN", 1, $gedrec);
-	if ($resn == "none") {
-		if ($cache_privacy) $privacy_cache[$pkey] = true;
+	// This setting would better be called "ENABLE_PRIVACY"
+	if (!$HIDE_LIVE_PEOPLE) {
 		return true;
-	} else if (!empty($resn)) {
-		if ($cache_privacy) $privacy_cache[$pkey] = false;
+	}
+
+	// We should always be able to see our own record
+	if ($pid==$pgv_USER_GEDCOM_ID) {
+		return true;
+	}
+
+	// Need to examine the raw gedcom record
+	$gedrec = find_person_record($pid, $ged_id);
+
+	// Does this record have a RESN?
+	if (strpos($gedrec, "\n1 RESN none")) {
+		return true;
+	}
+	if (strpos($gedrec, "\n1 RESN privacy")) {
+		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
+	}
+	if (strpos($gedrec, "\n1 RESN confidential")) {
+		return WT_PRIV_NONE>=$pgv_USER_ACCESS_LEVEL;
+	}
+
+	// Does this record have a default RESN?
+	if (isset($person_privacy[$pid])) {
+		return $person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL;
+	}
+
+	// Privacy rules do not apply to admins
+	if ($pgv_USER_GEDCOM_ADMIN) {
+		return true;
+	}
+
+	// Different types of record have different privacy rules
+	switch ($type) {
+	case 'INDI':
+		// Dead people...
+		if (is_dead($gedrec) && $SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
+			if (!$PRIVACY_BY_YEAR || checkPrivacyByYear($pid)) {
+				return true;
+			}
+		}
+		// Consider relationship privacy
+		if ($pgv_USER_GEDCOM_ID && get_user_setting($pgv_USER_ID, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY)) {
+			$path_length=get_user_setting($pgv_USER_ID, 'max_relation_path', $MAX_RELATION_PATH_LENGTH);
+			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $pid, $CHECK_MARRIAGE_RELATIONS, $path_length);
+			return $relationship!==false;
+		}
+		// No reason to make this record visible, so it must be private
 		return false;
-	}
-
-	if ($type=="INDI") {
-		//-- option to keep person living if they haven't been dead very long
-		if ($PRIVACY_BY_YEAR) {
-			if (!checkPrivacyByYear($pid)) {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = false;
-				}
+	case 'FAM':
+		// Hide a family if either spouse is private
+		$parents=find_parents($pid);
+		return displayDetailsById($parents["HUSB"]) && displayDetailsById($parents["WIFE"]);
+	case 'OBJE':
+		// Hide media objects that are linked to private records
+		foreach (get_media_relations($pid) as $gid=>$type) {
+			if (!displayDetailsById($gid, $type)) {
 				return false;
 			}
 		}
-
-		$gedrec = find_person_record($pid, $ged_id);
-		$disp = is_dead($gedrec, "", false, $sitemap);
-		if ($disp) {
-			if ($SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = true;
-				}
-				return true;
-			} else {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = false;
-				}
-				return false;
-			}
-		} else {
-			if (empty($pgv_USER_ID)) {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = false;
-				}
-				return false;
-			}
-			if ($SHOW_LIVING_NAMES>$pgv_USER_ACCESS_LEVEL) {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = true;
-				}
-				return true;
-			} else {
-				if ($cache_privacy) {
-					$privacy_cache[$pkey] = false;
-				}
-				return false;
-			}
-		}
-	}
-	if ($type=="FAM") {
-		//-- check if we can display both parents
-		$parents = find_parents($pid);
-		$display = displayDetailsById($parents["HUSB"]) && displayDetailsById($parents["WIFE"]);
-		$privacy_cache[$pkey] = $display;
-		return $display;
-	}
-	if ($type=="SOUR") {
-		if ($SHOW_SOURCES>=$pgv_USER_ACCESS_LEVEL) {
-			$disp = true;
-			$sourcerec = find_source_record($pid, $ged_id);
-			if (!empty($sourcerec)) {
-				$repoid = get_gedcom_value("REPO", 1, $sourcerec);
-				$disp = displayDetailsById($repoid, "REPO");
-			}
-			$privacy_cache[$pkey] = $disp;
-			return $disp;
-		} else {
-			$privacy_cache[$pkey] = false;
+		break;
+	case 'SOUR':
+		// Hide sources if they are attached to private repositories.
+		$repoid = get_gedcom_value("REPO", 1, find_source_record($pid, $ged_id));
+		if (!displayDetailsById($repoid, "REPO")) {
 			return false;
 		}
+		break;
 	}
-	if ($type=="REPO") {
-		if ($SHOW_SOURCES>=$pgv_USER_ACCESS_LEVEL) {
-			$privacy_cache[$pkey] = true;
-			return true;
-		} else {
-			$privacy_cache[$pkey] = false;
-			return false;
-		}
+
+	// SOUR, REPO, SUBM, SUBN, etc. are controlled by global tag settings
+	if (isset($global_facts[$type])) {
+		return $pgv_USER_ACCESS_LEVEL>$global_facts[$fact];
 	}
-	if ($type=="OBJE") {
-		//-- for media privacy check all of the links to the media
-		$links = get_media_relations($pid);
-		$disp = true;
-		foreach($links as $gid=>$type) {
-			$disp = $disp && displayDetailsById($gid, $type);
-			if (!$disp) {
-				$privacy_cache[$pkey] = false;
-				return false;
-			}
-		}
-		$privacy_cache[$pkey] = $disp;
-		return $disp;
-	}
-	$privacy_cache[$pkey] = true;
+	
+	// No restriction found - the record must be public:
 	return true;
 }
 }
@@ -640,7 +482,7 @@ if (!function_exists("showLivingNameById")) {
 * @return boolean return true to show the person's name, return false to keep it private
 */
 function showLivingNameById($pid) {
-	global $SHOW_LIVING_NAMES, $person_privacy;
+	global $SHOW_LIVING_NAMES;
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
@@ -652,12 +494,8 @@ function showLivingNameById($pid) {
 
 	if (displayDetailsById($pid)) return true;
 
-	if (isset($person_privacy[$pid])) {
-		if ($person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL) return true;
-		else return false;
-	}
-
 	if ($SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL) return true;
+
 	return false;
 }
 }
@@ -677,7 +515,7 @@ if (!function_exists("showFact")) {
 * @return boolean return true to show the fact, return false to keep it private
 */
 function showFact($fact, $pid, $type='INDI') {
-	global $global_facts, $person_facts, $SHOW_SOURCES;
+	global $global_facts, $person_facts;
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
@@ -687,20 +525,16 @@ function showFact($fact, $pid, $type='INDI') {
 		$pgv_USER_ACCESS_LEVEL	= $_SESSION["pgv_USER_ACCESS_LEVEL"];
 	}
 
-	//-- first check the global facts array
-	if (isset($global_facts[$fact]["show"])) {
-		if ($pgv_USER_ACCESS_LEVEL>$global_facts[$fact]["show"])
-			return false;
-	}
 	//-- check the person facts array
-	if (isset($person_facts[$pid][$fact]["show"])) {
-		if ($pgv_USER_ACCESS_LEVEL>$person_facts[$pid][$fact]["show"])
-			return false;
+	if (isset($person_facts[$pid][$fact])) {
+		return $pgv_USER_ACCESS_LEVEL>$person_facts[$pid][$fact];
 	}
-	if ($fact=="SOUR") {
-		if ($SHOW_SOURCES<$pgv_USER_ACCESS_LEVEL)
-			return false;
+
+	//-- check the global facts array
+	if (isset($global_facts[$fact])) {
+		return $pgv_USER_ACCESS_LEVEL>$global_facts[$fact];
 	}
+
 	if ($fact!="NAME") {
 		return displayDetailsById($pid, $type);
 	} else {

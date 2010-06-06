@@ -2741,11 +2741,6 @@ case 'SHOW_RELATIVES_EVENTS':
 	$text=i18n::translate('Births, marriages, and deaths of relatives are important events in one\'s life. This option controls whether or not to show these events on the <i>Personal facts and details</i> tab on the Individual page.<br /><br />The events affected by this option are:<ul><li>Death of spouse</li><li>Birth and death of children</li><li>Death of parents</li><li>Birth and death of siblings</li><li>Death of grand-parents</li><li>Birth and death of parents\' siblings</li></ul>');
 	break;
 
-case 'SHOW_SOURCES':
-	$title=i18n::translate('Show sources');
-	$text=i18n::translate('Set the privacy access level for all Sources.  If the user does not have access to Sources, the Source list will be removed from the Lists menu and the Sources tab will not be shown on the Individual Details page.');
-	break;
-
 case 'SHOW_SPIDER_TAGLINE':
 	$title=i18n::translate('Show spider tagline');
 	$text=i18n::translate('On pages generated for search engines, display as the last line the particular search engine the page detected.  If this option is on, it can bias Google&reg; AdSense towards search engine optimization tools.');

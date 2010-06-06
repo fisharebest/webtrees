@@ -45,7 +45,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ctype, $INDEX_DIRECTORY, $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_COUNTER, $SHOW_SOURCES, $TEXT_DIRECTION, $THEME_DIR;
+		global $ctype, $INDEX_DIRECTORY, $WT_IMAGES, $WT_IMAGE_DIR, $SHOW_COUNTER, $TEXT_DIRECTION, $THEME_DIR;
 
 		$count_placement=get_block_setting($block_id, 'count_placement', 'before');
 		$num=get_block_setting($block_id, 'num', 10);

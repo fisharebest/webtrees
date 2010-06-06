@@ -202,60 +202,167 @@ function file_upload_error_text($error_code) {
 	}
 }
 
-/**
- * get gedcom configuration file
- *
- * this function returns the path to the currently active GEDCOM configuration file
- * @return string path to gedcom.ged_conf.php configuration file
- */
-function get_config_file($ged_id=WT_GED_ID) {
-	global $INDEX_DIRECTORY;
+function load_gedcom_settings($ged_id=WT_GED_ID) {
+	// Load the configuration settings into global scope
+	// TODO: some of these are used infrequently - just load them when we need them
+	global $ABBREVIATE_CHART_LABELS;      $ABBREVIATE_CHART_LABELS      =get_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS');
+	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          =get_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS');
+	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          =get_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS');
+	global $ALLOW_EDIT_GEDCOM;            $ALLOW_EDIT_GEDCOM            =get_gedcom_setting($ged_id, 'ALLOW_EDIT_GEDCOM');
+	global $ALLOW_THEME_DROPDOWN;         $ALLOW_THEME_DROPDOWN         =get_gedcom_setting($ged_id, 'ALLOW_THEME_DROPDOWN');
+	global $AUTO_GENERATE_THUMBS;         $AUTO_GENERATE_THUMBS         =get_gedcom_setting($ged_id, 'AUTO_GENERATE_THUMBS');
+	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              =get_gedcom_setting($ged_id, 'CALENDAR_FORMAT');
+	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               =get_gedcom_setting($ged_id, 'CHART_BOX_TAGS');
+	global $CHECK_MARRIAGE_RELATIONS;     $CHECK_MARRIAGE_RELATIONS     =get_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS');
+	global $COMMON_NAMES_ADD;             $COMMON_NAMES_ADD             =get_gedcom_setting($ged_id, 'COMMON_NAMES_ADD');
+	global $COMMON_NAMES_REMOVE;          $COMMON_NAMES_REMOVE          =get_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE');
+	global $COMMON_NAMES_THRESHOLD;       $COMMON_NAMES_THRESHOLD       =get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');
+	global $CONTACT_USER_ID;              $CONTACT_USER_ID              =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
+	global $DAYS_TO_SHOW_LIMIT;           $DAYS_TO_SHOW_LIMIT           =get_gedcom_setting($ged_id, 'DAYS_TO_SHOW_LIMIT');
+	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS =get_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS');
+	global $DISPLAY_JEWISH_GERESHAYIM;    $DISPLAY_JEWISH_GERESHAYIM    =get_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM');
+	global $DISPLAY_JEWISH_THOUSANDS;     $DISPLAY_JEWISH_THOUSANDS     =get_gedcom_setting($ged_id, 'DISPLAY_JEWISH_THOUSANDS');
+	global $EDIT_AUTOCLOSE;               $EDIT_AUTOCLOSE               =get_gedcom_setting($ged_id, 'EDIT_AUTOCLOSE');
+	global $ENABLE_AUTOCOMPLETE;          $ENABLE_AUTOCOMPLETE          =get_gedcom_setting($ged_id, 'ENABLE_AUTOCOMPLETE');
+	global $ENABLE_RSS;                   $ENABLE_RSS                   =get_gedcom_setting($ged_id, 'ENABLE_RSS');
+	global $EXPAND_NOTES;                 $EXPAND_NOTES                 =get_gedcom_setting($ged_id, 'EXPAND_NOTES');
+	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      =get_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS');
+	global $EXPAND_SOURCES;               $EXPAND_SOURCES               =get_gedcom_setting($ged_id, 'EXPAND_SOURCES');
+	global $FAM_FACTS_ADD;                $FAM_FACTS_ADD                =get_gedcom_setting($ged_id, 'FAM_FACTS_ADD');
+	global $FAM_FACTS_QUICK;              $FAM_FACTS_QUICK              =get_gedcom_setting($ged_id, 'FAM_FACTS_QUICK');
+	global $FAM_FACTS_UNIQUE;             $FAM_FACTS_UNIQUE             =get_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE');
+	global $FAM_ID_PREFIX;                $FAM_ID_PREFIX                =get_gedcom_setting($ged_id, 'FAM_ID_PREFIX');
+	global $FAVICON;                      $FAVICON                      =get_gedcom_setting($ged_id, 'FAVICON');
+	global $FULL_SOURCES;                 $FULL_SOURCES                 =get_gedcom_setting($ged_id, 'FULL_SOURCES');
+	global $GEDCOM_DEFAULT_TAB;           $GEDCOM_DEFAULT_TAB           =get_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB');
+	global $GEDCOM_ID_PREFIX;             $GEDCOM_ID_PREFIX             =get_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX');
+	global $GENERATE_UIDS;                $GENERATE_UIDS                =get_gedcom_setting($ged_id, 'GENERATE_UIDS');
+	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           =get_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS');
+	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             =get_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE');
+	global $HOME_SITE_TEXT;               $HOME_SITE_TEXT               =get_gedcom_setting($ged_id, 'HOME_SITE_TEXT');
+	global $HOME_SITE_URL;                $HOME_SITE_URL                =get_gedcom_setting($ged_id, 'HOME_SITE_URL');
+	global $INDI_FACTS_ADD;               $INDI_FACTS_ADD               =get_gedcom_setting($ged_id, 'INDI_FACTS_ADD');
+	global $INDI_FACTS_QUICK;             $INDI_FACTS_QUICK             =get_gedcom_setting($ged_id, 'INDI_FACTS_QUICK');
+	global $INDI_FACTS_UNIQUE;            $INDI_FACTS_UNIQUE            =get_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE');
+	global $LANGUAGE;                     $LANGUAGE                     =get_gedcom_setting($ged_id, 'LANGUAGE');
+	global $LINK_ICONS;                   $LINK_ICONS                   =get_gedcom_setting($ged_id, 'LINK_ICONS');
+	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                =get_gedcom_setting($ged_id, 'MAX_ALIVE_AGE');
+	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  =get_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS');
+	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     =get_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS');
+	global $MAX_RELATION_PATH_LENGTH;     $MAX_RELATION_PATH_LENGTH     =get_gedcom_setting($ged_id, 'MAX_RELATION_PATH_LENGTH');
+	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY');
+	global $MEDIA_DIRECTORY_LEVELS;       $MEDIA_DIRECTORY_LEVELS       =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS');
+	global $MEDIA_EXTERNAL;               $MEDIA_EXTERNAL               =get_gedcom_setting($ged_id, 'MEDIA_EXTERNAL');
+	global $MEDIA_FIREWALL_ROOTDIR;       $MEDIA_FIREWALL_ROOTDIR       =get_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR');
+	global $MEDIA_FIREWALL_THUMBS;        $MEDIA_FIREWALL_THUMBS        =get_gedcom_setting($ged_id, 'MEDIA_FIREWALL_THUMBS');
+	global $MEDIA_ID_PREFIX;              $MEDIA_ID_PREFIX              =get_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX');
+	global $META_AUDIENCE;                $META_AUDIENCE                =get_gedcom_setting($ged_id, 'META_AUDIENCE');
+	global $META_AUTHOR;                  $META_AUTHOR                  =get_gedcom_setting($ged_id, 'META_AUTHOR');
+	global $META_COPYRIGHT;               $META_COPYRIGHT               =get_gedcom_setting($ged_id, 'META_COPYRIGHT');
+	global $META_DESCRIPTION;             $META_DESCRIPTION             =get_gedcom_setting($ged_id, 'META_DESCRIPTION');
+	global $META_KEYWORDS;                $META_KEYWORDS                =get_gedcom_setting($ged_id, 'META_KEYWORDS');
+	global $META_PAGE_TOPIC;              $META_PAGE_TOPIC              =get_gedcom_setting($ged_id, 'META_PAGE_TOPIC');
+	global $META_PAGE_TYPE;               $META_PAGE_TYPE               =get_gedcom_setting($ged_id, 'META_PAGE_TYPE');
+	global $META_PUBLISHER;               $META_PUBLISHER               =get_gedcom_setting($ged_id, 'META_PUBLISHER');
+	global $META_REVISIT;                 $META_REVISIT                 =get_gedcom_setting($ged_id, 'META_REVISIT');
+	global $META_ROBOTS;                  $META_ROBOTS                  =get_gedcom_setting($ged_id, 'META_ROBOTS');
+	global $META_TITLE;                   $META_TITLE                   =get_gedcom_setting($ged_id, 'META_TITLE');
+	global $MULTI_MEDIA;                  $MULTI_MEDIA                  =get_gedcom_setting($ged_id, 'MULTI_MEDIA');
+	global $NOTE_FACTS_ADD;               $NOTE_FACTS_ADD               =get_gedcom_setting($ged_id, 'NOTE_FACTS_ADD');
+	global $NOTE_FACTS_QUICK;             $NOTE_FACTS_QUICK             =get_gedcom_setting($ged_id, 'NOTE_FACTS_QUICK');
+	global $NOTE_FACTS_UNIQUE;            $NOTE_FACTS_UNIQUE            =get_gedcom_setting($ged_id, 'NOTE_FACTS_UNIQUE');
+	global $NOTE_ID_PREFIX;               $NOTE_ID_PREFIX               =get_gedcom_setting($ged_id, 'NOTE_ID_PREFIX');
+	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               =get_gedcom_setting($ged_id, 'NO_UPDATE_CHAN');
+	global $PAGE_AFTER_LOGIN;             $PAGE_AFTER_LOGIN             =get_gedcom_setting($ged_id, 'PAGE_AFTER_LOGIN');
+	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        =get_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS');
+	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              =get_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT');
+	global $PEDIGREE_ROOT_ID;             $PEDIGREE_ROOT_ID             =get_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID');
+	global $PEDIGREE_SHOW_GENDER;         $PEDIGREE_SHOW_GENDER         =get_gedcom_setting($ged_id, 'PEDIGREE_SHOW_GENDER');
+	global $POSTAL_CODE;                  $POSTAL_CODE                  =get_gedcom_setting($ged_id, 'POSTAL_CODE');
+	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        =get_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES');
+	global $PRIVACY_BY_YEAR;              $PRIVACY_BY_YEAR              =get_gedcom_setting($ged_id, 'PRIVACY_BY_YEAR');
+	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         =get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS');
+	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      =get_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS');
+	global $REPO_FACTS_ADD;               $REPO_FACTS_ADD               =get_gedcom_setting($ged_id, 'REPO_FACTS_ADD');
+	global $REPO_FACTS_QUICK;             $REPO_FACTS_QUICK             =get_gedcom_setting($ged_id, 'REPO_FACTS_QUICK');
+	global $REPO_FACTS_UNIQUE;            $REPO_FACTS_UNIQUE            =get_gedcom_setting($ged_id, 'REPO_FACTS_UNIQUE');
+	global $REPO_ID_PREFIX;               $REPO_ID_PREFIX               =get_gedcom_setting($ged_id, 'REPO_ID_PREFIX');
+	global $REQUIRE_AUTHENTICATION;       $REQUIRE_AUTHENTICATION       =get_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION');
+	global $RSS_FORMAT;                   $RSS_FORMAT                   =get_gedcom_setting($ged_id, 'RSS_FORMAT');
+	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         =get_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE');
+	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         =get_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB');
+	global $SEARCH_FACTS_DEFAULT;         $SEARCH_FACTS_DEFAULT         =get_gedcom_setting($ged_id, 'SEARCH_FACTS_DEFAULT');
+	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                =get_gedcom_setting($ged_id, 'SHOW_AGE_DIFF');
+	global $SHOW_CONTEXT_HELP;            $SHOW_CONTEXT_HELP            =get_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP');
+	global $SHOW_COUNTER;                 $SHOW_COUNTER                 =get_gedcom_setting($ged_id, 'SHOW_COUNTER');
+	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             =get_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE');
+	global $SHOW_EMPTY_BOXES;             $SHOW_EMPTY_BOXES             =get_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES');
+	global $SHOW_EST_LIST_DATES;          $SHOW_EST_LIST_DATES          =get_gedcom_setting($ged_id, 'SHOW_EST_LIST_DATES');
+	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              =get_gedcom_setting($ged_id, 'SHOW_FACT_ICONS');
+	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           =get_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD');
+	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        =get_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES');
+	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           =get_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE');
+	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            =get_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES');
+	global $SHOW_LIST_PLACES;             $SHOW_LIST_PLACES             =get_gedcom_setting($ged_id, 'SHOW_LIST_PLACES');
+	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            =get_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES');
+	global $SHOW_MARRIED_NAMES;           $SHOW_MARRIED_NAMES           =get_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES');
+	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD');
+	global $SHOW_MEDIA_FILENAME;          $SHOW_MEDIA_FILENAME          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME');
+	global $SHOW_MULTISITE_SEARCH;        $SHOW_MULTISITE_SEARCH        =get_gedcom_setting($ged_id, 'SHOW_MULTISITE_SEARCH');
+	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            =get_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK');
+	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             =get_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE');
+	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         =get_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES');
+	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   =get_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS');
+	global $SHOW_REGISTER_CAUTION;        $SHOW_REGISTER_CAUTION        =get_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION');
+	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        =get_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS');
+	global $SHOW_SPIDER_TAGLINE;          $SHOW_SPIDER_TAGLINE          =get_gedcom_setting($ged_id, 'SHOW_SPIDER_TAGLINE');
+	global $SHOW_STATS;                   $SHOW_STATS                   =get_gedcom_setting($ged_id, 'SHOW_STATS');
+	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             =get_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX');
+	global $SOUR_FACTS_ADD;               $SOUR_FACTS_ADD               =get_gedcom_setting($ged_id, 'SOUR_FACTS_ADD');
+	global $SOUR_FACTS_QUICK;             $SOUR_FACTS_QUICK             =get_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK');
+	global $SOUR_FACTS_UNIQUE;            $SOUR_FACTS_UNIQUE            =get_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE');
+	global $SPLIT_PLACES;                 $SPLIT_PLACES                 =get_gedcom_setting($ged_id, 'SPLIT_PLACES');
+	global $SUBLIST_TRIGGER_F;            $SUBLIST_TRIGGER_F            =get_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F');
+	global $SUBLIST_TRIGGER_I;            $SUBLIST_TRIGGER_I            =get_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I');
+	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           =get_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE');
+	global $SURNAME_TRADITION;            $SURNAME_TRADITION            =get_gedcom_setting($ged_id, 'SURNAME_TRADITION');
+	global $THEME_DIR;                    $THEME_DIR                    =get_gedcom_setting($ged_id, 'THEME_DIR');
+	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              =get_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH');
+	global $UNDERLINE_NAME_QUOTES;        $UNDERLINE_NAME_QUOTES        =get_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES');
+	global $USE_GEONAMES;                 $USE_GEONAMES                 =get_gedcom_setting($ged_id, 'USE_GEONAMES');
+	global $USE_MEDIA_FIREWALL;           $USE_MEDIA_FIREWALL           =get_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL');
+	global $USE_MEDIA_VIEWER;             $USE_MEDIA_VIEWER             =get_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER');
+	global $USE_RELATIONSHIP_PRIVACY;     $USE_RELATIONSHIP_PRIVACY     =get_gedcom_setting($ged_id, 'USE_RELATIONSHIP_PRIVACY');
+	global $USE_RIN;                      $USE_RIN                      =get_gedcom_setting($ged_id, 'USE_RIN');
+	global $USE_SILHOUETTE;               $USE_SILHOUETTE               =get_gedcom_setting($ged_id, 'USE_SILHOUETTE');
+	global $USE_THUMBS_MAIN;              $USE_THUMBS_MAIN              =get_gedcom_setting($ged_id, 'USE_THUMBS_MAIN');
+	global $WATERMARK_THUMB;              $WATERMARK_THUMB              =get_gedcom_setting($ged_id, 'WATERMARK_THUMB');
+	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            =get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
+	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               =get_gedcom_setting($ged_id, 'WEBTREES_EMAIL');
+	global $WELCOME_TEXT_AUTH_MODE;       $WELCOME_TEXT_AUTH_MODE       =get_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE');
+	global $WELCOME_TEXT_AUTH_MODE_4;     $WELCOME_TEXT_AUTH_MODE_4     =get_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_4');
+	global $WELCOME_TEXT_CUST_HEAD;       $WELCOME_TEXT_CUST_HEAD       =get_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD');
+	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           =get_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES');
+	global $ZOOM_BOXES;                   $ZOOM_BOXES                   =get_gedcom_setting($ged_id, 'ZOOM_BOXES');
 
-	$config=get_gedcom_setting($ged_id, 'config');
-	// Compatibility with non-php based storage, (PGV 4.3.0 onwards)
-	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY, $config);
+	global $person_privacy; $person_privacy=array();
+	global $person_facts;   $person_facts  =array();
+	global $global_facts;   $global_facts  =array();
 
-	if (!file_exists($config)) {
-		return 'config_gedcom.php';
-	} else {
-		return $config;
-	}
-}
+	$rows=WT_DB::prepare(
+		"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN ? WHEN 'privacy' THEN ? WHEN 'confidential' THEN ? WHEN 'hidden' THEN ? END AS resn FROM `##default_resn` WHERE gedcom_id=?"
+	)->execute(array(WT_PRIV_HIDE, WT_PRIV_NONE, WT_PRIV_USER, WT_PRIV_PUBLIC, $ged_id))->fetchAll();
 
-/**
- * Get the path to the privacy file
- *
- * Get the path to the privacy file for the currently active GEDCOM
- * @return string path to the privacy file
- */
-function get_privacy_file($ged_id=WT_GED_ID) {
-	global $INDEX_DIRECTORY;
-
-	$privfile=get_gedcom_setting($ged_id, 'privacy');
-	// Compatibility with non-php based storage
-	$privfile=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY, $privfile);
-
-	if (!file_exists($privfile)) {
-		return 'privacy.php';
-	} else {
-		return $privfile;
-	}
-}
-
-function load_privacy_file($ged_id=WT_GED_ID) {
-	// Load the privacy settings into global scope
-	global $SHOW_DEAD_PEOPLE, $SHOW_LIVING_NAMES, $SHOW_SOURCES, $MAX_ALIVE_AGE, $SHOW_MULTISITE_SEARCH;
-	global $USE_RELATIONSHIP_PRIVACY, $MAX_RELATION_PATH_LENGTH, $CHECK_MARRIAGE_RELATIONS;
-	global $PRIVACY_BY_YEAR, $SHOW_PRIVATE_RELATIONSHIPS;
-	global $person_privacy, $global_facts, $person_facts;
-
-	// Load default settings
-	require WT_ROOT.'privacy.php';
-
-	// Load settings for the specified gedcom
-	$privacy_file=get_privacy_file($ged_id);
-	if ($privacy_file && file_exists($privacy_file)) {
-		require $privacy_file;
+	foreach ($rows as $row) {
+		if ($row->xref!==null) {
+			if ($row->tag_type!==null) {
+				$person_facts[$row->xref][$row->tag_type]=(int)$row->resn;
+			} else {
+				$person_privacy[$row->xref]=(int)$row->resn;
+			}
+		}	else {
+			$global_facts[$row->tag_type]=(int)$row->resn;
+		}
 	}
 }
 

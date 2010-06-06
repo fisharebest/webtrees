@@ -303,7 +303,7 @@ function getTop10Surnames() {
 */
 function getRecentChanges() {
 	global $month, $year, $day, $HIDE_LIVE_PEOPLE, $ctype, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $ASC, $IGNORE_FACTS, $IGNORE_YEAR, $LAST_QUERY, $WT_BLOCKS, $SHOW_SOURCES;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $ASC, $IGNORE_FACTS, $IGNORE_YEAR, $LAST_QUERY, $WT_BLOCKS;
 	global $objectlist;
 
 	if ($ctype=="user") $filter = "living";
@@ -407,7 +407,7 @@ function getRecentChanges() {
 */
 function getRandomMedia() {
 	global $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
-	global $MEDIA_EXTERNAL, $MEDIA_DIRECTORY, $SHOW_SOURCES;
+	global $MEDIA_EXTERNAL, $MEDIA_DIRECTORY;
 	global $MEDIATYPE, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $WT_BLOCKS, $ctype, $action;
 	global $WT_IMAGE_DIR, $WT_IMAGES;

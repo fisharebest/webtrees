@@ -359,7 +359,7 @@ class SearchControllerRoot extends BaseController {
 	 * prepares the search to do a general search on indi's, fams, and sources.
 	 */
 	function TopSearch() {
-		global $SHOW_SOURCES, $GEDCOM;
+		global $GEDCOM;
 		// first set some required variables. Search only in current gedcom, only in indi's.
 		$this->srindi = "yes";
 
@@ -732,7 +732,7 @@ class SearchControllerRoot extends BaseController {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 		//-- all privacy settings must be global if we are going to load up privacy files
-		global $SHOW_DEAD_PEOPLE,$SHOW_LIVING_NAMES,$SHOW_SOURCES,$MAX_ALIVE_AGE,$USE_RELATIONSHIP_PRIVACY,$MAX_RELATION_PATH_LENGTH;
+		global $SHOW_DEAD_PEOPLE,$SHOW_LIVING_NAMES,$MAX_ALIVE_AGE,$USE_RELATIONSHIP_PRIVACY,$MAX_RELATION_PATH_LENGTH;
 		global $CHECK_MARRIAGE_RELATIONS,$PRIVACY_BY_YEAR,$SHOW_PRIVATE_RELATIONSHIPS;
 		$somethingPrinted = false;	// whether anything printed
 		// ---- section to search and display results on a general keyword search

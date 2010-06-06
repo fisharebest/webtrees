@@ -217,8 +217,8 @@ elseif ($action=="setup") {
 			$report_array["inputs"] = array();
 		}
 		foreach($report_array["inputs"] as $indexval => $input) {
-			if ((($input["name"] == "sources") && ($SHOW_SOURCES >= WT_USER_ACCESS_LEVEL)) || ($input["name"] != "sources")) {
-				if (($input["name"] != "photos") || ($MULTI_MEDIA)) {
+			if ($input["name"] == "sources" || $input["name"] != "sources") {
+				if ($input["name"] != "photos" || $MULTI_MEDIA) {
 					// url forced default value ?
 					if (isset($_REQUEST[$input["name"]])) {
 						$input["default"]=$_REQUEST[$input["name"]];
