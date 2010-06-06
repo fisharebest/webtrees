@@ -294,11 +294,12 @@ if (isset($curgen)){
 		if ($miscount == 0) {
 			echo i18n::translate('No ancestors in the database.'), "<br />\n";
 		} else {
+			// I18N: %1$d is a count of individuals, %2$s is a list of their names
 			echo " ".i18n::plural(
-				'%d individual is missing birth place map coordinates:',
-				'%d individuals are missing birth place map coordinates:',
-				$miscount, $miscount),
-				" ", $missing, "<br />\n";
+				'%1$d individual is missing birthplace map coordinates: %2$s.',
+				'%1$d individuals are missing birthplace map coordinates: %2Ss.',
+				$miscount, $miscount, $missing),
+				'<br />';
 		}
 	}
 }
