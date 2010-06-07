@@ -2103,33 +2103,61 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'parparfat': return i18n::translate_c('parent\'s parent\'s father', 'great-grandfather');
 	case 'parparpar': return i18n::translate_c('parent\'s parent\'s parent', 'great-grandparent');
 
-	case 'motmotsis': return i18n::translate_c('mother\'s mother\'s sister', 'great-aunt');
+	case 'motmotsis': return i18n::translate_c('mother\'s mother\'s sister',  'great-aunt');
 	case 'motmotbro': return i18n::translate_c('mother\'s mother\'s brother', 'great-uncle');
 	case 'motmotsib': return i18n::translate_c('mother\'s mother\'s sibling', 'great-aunt/uncle');
-	case 'motfatsis': return i18n::translate_c('mother\'s father\'s sister', 'great-aunt');
+	case 'motfatsis': return i18n::translate_c('mother\'s father\'s sister',  'great-aunt');
 	case 'motfatbro': return i18n::translate_c('mother\'s father\'s brother', 'great-uncle');
 	case 'motfatsib': return i18n::translate_c('mother\'s father\'s sibling', 'great-aunt/uncle');
-	case 'motparsis': return i18n::translate_c('mother\'s parent\'s sister', 'great-aunt');
+	case 'motparsis': return i18n::translate_c('mother\'s parent\'s sister',  'great-aunt');
 	case 'motparbro': return i18n::translate_c('mother\'s parent\'s brother', 'great-uncle');
 	case 'motparsib': return i18n::translate_c('mother\'s parent\'s sibling', 'great-aunt/uncle');
-	case 'fatmotsis': return i18n::translate_c('father\'s mother\'s sister', 'great-aunt');
+	case 'fatmotsis': return i18n::translate_c('father\'s mother\'s sister',  'great-aunt');
 	case 'fatmotbro': return i18n::translate_c('father\'s mother\'s brother', 'great-uncle');
 	case 'fatmotsib': return i18n::translate_c('father\'s mother\'s sibling', 'great-aunt/uncle');
-	case 'fatfatsis': return i18n::translate_c('father\'s father\'s sister', 'great-aunt');
+	case 'fatfatsis': return i18n::translate_c('father\'s father\'s sister',  'great-aunt');
 	case 'fatfatbro': return i18n::translate_c('father\'s father\'s brother', 'great-uncle');
 	case 'fatfatsib': return i18n::translate_c('father\'s father\'s sibling', 'great-aunt/uncle');
-	case 'fatparsis': return i18n::translate_c('father\'s parent\'s sister', 'great-aunt');
+	case 'fatparsis': return i18n::translate_c('father\'s parent\'s sister',  'great-aunt');
 	case 'fatparbro': return i18n::translate_c('father\'s parent\'s brother', 'great-uncle');
 	case 'fatparsib': return i18n::translate_c('father\'s parent\'s sibling', 'great-aunt/uncle');
-	case 'parmotsis': return i18n::translate_c('parent\'s mother\'s sister', 'great-aunt');
+	case 'parmotsis': return i18n::translate_c('parent\'s mother\'s sister',  'great-aunt');
 	case 'parmotbro': return i18n::translate_c('parent\'s mother\'s brother', 'great-uncle');
 	case 'parmotsib': return i18n::translate_c('parent\'s mother\'s sibling', 'great-aunt/uncle');
-	case 'parfatsis': return i18n::translate_c('parent\'s father\'s sister', 'great-aunt');
+	case 'parfatsis': return i18n::translate_c('parent\'s father\'s sister',  'great-aunt');
 	case 'parfatbro': return i18n::translate_c('parent\'s father\'s brother', 'great-uncle');
 	case 'parfatsib': return i18n::translate_c('parent\'s father\'s sibling', 'great-aunt/uncle');
-	case 'parparsis': return i18n::translate_c('parent\'s parent\'s sister', 'great-aunt');
+	case 'parparsis': return i18n::translate_c('parent\'s parent\'s sister',  'great-aunt');
 	case 'parparbro': return i18n::translate_c('parent\'s parent\'s brother', 'great-uncle');
 	case 'parparsib': return i18n::translate_c('parent\'s parent\'s sibling', 'great-aunt/uncle');
+
+	case 'brosonson': return i18n::translate_c('brother\'s son\'s son',           'great-nephew');
+	case 'brosondau': return i18n::translate_c('brother\'s son\'s daughter',      'great-niece');
+	case 'brosonchi': return i18n::translate_c('brother\'s son\'s child',         'great-nephew/niece');
+	case 'brodauson': return i18n::translate_c('brother\'s daughter\'s son',      'great-nephew');
+	case 'brodaudau': return i18n::translate_c('brother\'s daughter\'s daughter', 'great-niece');
+	case 'brodauchi': return i18n::translate_c('brother\'s daughter\'s child',    'great-nephew/niece');
+	case 'brochison': return i18n::translate_c('brother\'s child\'s son',         'great-nephew');
+	case 'brochidau': return i18n::translate_c('brother\'s child\'s daughter',    'great-niece');
+	case 'brochichi': return i18n::translate_c('brother\'s child\'s child',       'great-nephew/niece');
+	case 'sissonson': return i18n::translate_c('sister\'s son\'s son',            'great-nephew');
+	case 'sissondau': return i18n::translate_c('sister\'s son\'s daughter',       'great-niece');
+	case 'sissonchi': return i18n::translate_c('sister\'s son\'s child',          'great-nephew/niece');
+	case 'sisdauson': return i18n::translate_c('sister\'s daughter\'s son',       'great-nephew');
+	case 'sisdaudau': return i18n::translate_c('sister\'s daughter\'s daughter',  'great-niece');
+	case 'sisdauchi': return i18n::translate_c('sister\'s daughter\'s child',     'great-nephew/niece');
+	case 'sischison': return i18n::translate_c('sister\'s child\'s son',          'great-nephew');
+	case 'sischidau': return i18n::translate_c('sister\'s child\'s daughter',     'great-niece');
+	case 'sischichi': return i18n::translate_c('sister\'s child\'s child',        'great-nephew/niece');
+	case 'sibsonson': return i18n::translate_c('sibling\'s son\'s son',           'great-nephew');
+	case 'sibsondau': return i18n::translate_c('sibling\'s son\'s daughter',      'great-niece');
+	case 'sibsonchi': return i18n::translate_c('sibling\'s son\'s child',         'great-nephew/niece');
+	case 'sibdauson': return i18n::translate_c('sibling\'s daughte\'s sonr',      'great-nephew');
+	case 'sibdaudau': return i18n::translate_c('sibling\'s daughter\'s daughter', 'great-niece');
+	case 'sibdauchi': return i18n::translate_c('sibling\'s daughter\'s child',    'great-nephew/niece');
+	case 'sibchison': return i18n::translate_c('sibling\'s child\'s son',         'great-nephew');
+	case 'sibchidau': return i18n::translate_c('sibling\'s child\'s daughter',    'great-niece');
+	case 'sibchichi': return i18n::translate_c('sibling\'s child\'s child',       'great-nephew/niece');
 
 	case 'daudaudau': return i18n::translate_c('daughter\'s daughter\'s daughter', 'great-granddaughter');
 	case 'daudauson': return i18n::translate_c('daughter\'s daughter\'s son', 'great-grandson');
@@ -2230,7 +2258,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	// TODO: these are heavily based on english relationship names.
 	// We need feedback from other languages to improve this.
 	// Dutch has special names for 8 generations of great-great-..., so these need explicit naming
-	if (preg_match('/^((?:mot|fat|par)*)(bro|sis|sib)$/', $path, $match)) {
+	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
 		switch ($up) {
@@ -2301,6 +2329,62 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				            return i18n::translate('great x%d uncle', $up-2);
 				case 'sis': return i18n::translate('great x%d aunt', $up-2);
 				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-2);
+				}
+			}
+		}
+	}
+	if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
+		$down=strlen($match[1])/3+1; // Add one,as we count generations from the common ancestor
+		$last=substr($path, -3, 3);
+		switch ($down) {
+		case 4:
+			switch ($last) {
+			case 'son': return i18n::translate('great-great-nephew');
+			case 'dau': return i18n::translate('great-great-niece');
+			case 'chi': return i18n::translate('great-great-nephew/niece');
+			}
+		case 5:
+			switch ($last) {
+			case 'son': return i18n::translate('great-great-great-nephew');
+			case 'dau': return i18n::translate('great-great-great-niece');
+			case 'chi': return i18n::translate('great-great-great-nephew/niece');
+			}
+		case 6:
+			switch ($last) {
+			case 'son': return i18n::translate('great-great-great-great-nephew');
+			case 'dau': return i18n::translate('great-great-great-great-niece');
+			case 'chi': return i18n::translate('great-great-great-great-nephew/niece');
+			}
+		case 7:
+			switch ($last) {
+			case 'son': return i18n::translate('great-great-great-great-great-nephew');
+			case 'dau': return i18n::translate('great-great-great-great-great-niece');
+			case 'chi': return i18n::translate('great-great-great-great-great-nephew/niece');
+			}
+		default:
+			// Different languages have different rules for naming generations.
+			//
+			// Need to find out which languages use which rules.
+			switch (WT_LOCALE) {
+			case 'da': // Not confirmed - simply based on existing rules.
+			case 'it': // Source: Michele Locati.
+				switch ($last) {
+				case 'son': // I18N: only used in italian and danish translations
+				            return i18n::translate('great x%d grand-nephew', $down-3);
+				case 'dau': // I18N: only used in italian and danish translations
+				            return i18n::translate('great x%d grand-niece', $down-3);
+				case 'chi': // I18N: only used in italian and danish translations
+				            return i18n::translate('great x%d grand-nephew/niece', $down-3);
+				}
+			case 'en':
+			default:
+				switch ($last) {
+				case 'son': // I18N: used in all translations except italian and danish
+				            return i18n::translate('great x%d nephew', $down-2);
+				case 'dau': // I18N: used in all translations except italian and danish
+				            return i18n::translate('great x%d niece', $down-2);
+				case 'chi': // I18N: used in all translations except italian and danish
+				            return i18n::translate('great x%d nephew/niece', $down-2);
 				}
 			}
 		}
