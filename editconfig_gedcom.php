@@ -1489,7 +1489,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php
 							$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
 							foreach (get_all_users() as $user_id=>$user_name) {
-								if (get_user_setting($user_id, 'verified_by_admin')=="yes") {
+								if (get_user_setting($user_id, 'verified_by_admin')==true) {
 									print "<option value=\"".$user_id."\"";
 									if ($CONTACT_USER_ID==$user_id) print " selected=\"selected\"";
 									print ">".getUserFullName($user_id)." - ".$user_name."</option>\n";
