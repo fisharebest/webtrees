@@ -241,14 +241,14 @@ foreach ($rows as $row) {
 		} else {
 			$name=i18n::translate('this record does not exist');
 		}
-		// I18N: "Record ID I1234 (John DOE)
+		// I18N: e.g. John DOE (I1234)
 		echo i18n::translate('%1$s (%2$s)', $name, $row->xref);
 	} else {
 		echo '&nbsp;';
 	}
 	echo '</td><td class="optionbox" width="*">';
 	if ($row->tag_type) {
-		// I18N: "Record type SOUR (Source)
+		// I18N: e.g. Marriage (MARR)
 		echo i18n::translate('%1$s [%2$s]', translate_fact($row->tag_type), $row->tag_type);
 	} else {
 		echo '&nbsp;';
