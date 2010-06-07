@@ -125,7 +125,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				// No HTML?
 				$news["text"]=nl2br($news["text"]);
 			}
-			$content .= embed_globals($news["text"])."<br /><br />";
+			$content .= embed_globals($news["text"]);
 			// Print Admin options for this News item
 			if(WT_USER_GEDCOM_ADMIN) {
 				$content .= "<hr size=\"1\" />"
