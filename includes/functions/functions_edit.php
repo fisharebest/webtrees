@@ -69,6 +69,23 @@ function select_edit_control($name, $values, $empty, $selected, $extra) {
 	return '<select name="'.$name.'" '.$extra.'>'.$html.'</select>';
 }
 
+// Create a set of radio buttons for a form
+// $name     - the ID for the form element
+// $values   - array of value=>display items
+// $selected - the currently selected item (if any)
+// $extra    - extra markup for field (e.g. tab key sequence)
+function radio_buttons($name, $values, $selected, $extra) {
+	$html='';
+	foreach ($values as $key=>$value) {
+		$html.='<input type="radio" name="'.$name.'" value="'.htmlspecialchars($key).'"';
+		if ($key==$selected) {
+			$html.=' checked';
+		}
+		$html.='>'.htmlspecialchars($value).'<br/>';
+	}
+	return $html;
+}
+
 // Print an edit control for a Yes/No field
 function edit_field_yes_no($name, $selected='', $extra='') {
 	return select_edit_control(

@@ -523,6 +523,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</td>
 					<td class="optionbox">
 						<?php echo edit_field_yes_no('NEW_USE_RIN', $USE_RIN, 'tabindex="'.(++$i).'"'); ?>
+						<?php /* echo radio_buttons('NEW_USE_RIN', array(false=>'No',true=>'Yes'), $USE_RIN, 'tabindex="'.(++$i).'"'); */ ?>
 					</td>
 				</tr>
 				<tr>
