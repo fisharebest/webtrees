@@ -144,8 +144,8 @@ jQuery(document).ready(function(){
 						$globalfacts=$controller->getGlobalFacts();
 						$nameSex = array('NAME', 'SEX');
 						foreach ($globalfacts as $key=>$value) {
-							// First name
 							if ($key == 0) {
+							// First name
 								$fact = $value->getTag();
 								if (in_array($fact, $nameSex)) {
 									if ($fact=="NAME") $controller->print_name_record($value);
@@ -153,8 +153,6 @@ jQuery(document).ready(function(){
 								//Display facts
 									echo '<div id="indi_facts">';
 									//Display gender
-									$globalfacts=$controller->getGlobalFacts();
-									$nameSex = array('NAME', 'SEX');
 									foreach ($globalfacts as $key=>$value) {
 										$fact = $value->getTag();
 										if (in_array($fact, $nameSex)) {
@@ -179,9 +177,7 @@ jQuery(document).ready(function(){
 								// 2nd and more names
 								$fact = $value->getTag();
 								if (in_array($fact, $nameSex)) {
-									if ($fact=="NAME") {
-										$controller->print_name_record($value);
-									}
+									if ($fact=="NAME") $controller->print_name_record($value);
 								}
 							}
 						}

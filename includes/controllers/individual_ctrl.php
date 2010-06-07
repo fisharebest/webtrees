@@ -462,33 +462,35 @@ class IndividualControllerRoot extends BaseController {
 		echo ">";
 		$dummy=new Person($factrec);
 		$dummy->setPrimaryName(0);
-		echo '<dl>';
-		echo '<dt class="label">', i18n::translate('Name'), '</dt>';
-		echo '<span class="field">', PrintReady($dummy->getFullName()), '</span>';
+		echo '<div id="name1">';
+			echo '<dt class="label">', i18n::translate('Name'), '</dt>';
+			echo '<span class="field">', PrintReady($dummy->getFullName());
 				if (!$this->isPrintPreview() && $this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
-					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>";
-							echo help_link('delete_name');
+					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>", help_link('delete_name');
 				}
+			echo '</span>';
+		echo '</div>';
 		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
 		for($i=0; $i<$ct; $i++) {
-			$fact = trim($nmatch[$i][1]);
-			if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")) {
-				echo '<dt class="label">', translate_fact($fact, $this->indi), '</dt>';
-				echo '<span class="field">';
-				if (isset($nmatch[$i][2])) {
-					$name = trim($nmatch[$i][2]);
-					$name = preg_replace("'/,'", ",", $name);
-					$name = preg_replace("'/'", " ", $name);
-					if ($UNDERLINE_NAME_QUOTES) {
-						$name=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $name);
-					}
-					$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
-					echo PrintReady($name);
-				}
+			echo '<div>';
+				$fact = trim($nmatch[$i][1]);
+				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")) {
+					echo '<dt class="label">', translate_fact($fact, $this->indi), '</dt>';
+					echo '<span class="field">';
+						if (isset($nmatch[$i][2])) {
+							$name = trim($nmatch[$i][2]);
+							$name = preg_replace("'/,'", ",", $name);
+							$name = preg_replace("'/'", " ", $name);
+							if ($UNDERLINE_NAME_QUOTES) {
+								$name=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $name);
+							}
+							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
+							echo PrintReady($name);
+						}
 					echo '</span>';
-			}
-			echo '</dl>';
+				}
+			echo '</div>';
 		}
 		if (preg_match("/\d (NOTE)|(SOUR)/", $factrec)>0) {
 			// -- find sources for this name

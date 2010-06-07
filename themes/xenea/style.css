@@ -1521,7 +1521,7 @@ dt {
 	clear: left;
 }
 
-#nameparts1 dl, #nameparts2 dl, #nameparts3 dl, #nameparts4 dl, #nameparts5 dl, #nameparts6  dl {
+#name1 {
 	line-height:	1.6;
 	padding-bottom:	2px;
 }
