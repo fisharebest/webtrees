@@ -337,9 +337,7 @@ table.center{
 	font-weight: bold;
 }
 
-.label, .field {
-	color: black;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+.field {
 }
 
 .label {
@@ -1317,7 +1315,7 @@ ul.clist {
 }
 
 dl {
-	margin-bottom:20px;
+	margin:0;
 }
 
 dt {
@@ -1327,32 +1325,70 @@ dt {
 	clear:both; 
 }
 
-#indi_details dt:after { content: ":"; }
+.clearfloat {
+	clear: both;
+}
+/* Classes for the INDI page header */
 
-#facts_content dd {
-	float:left;
-	width: 70%;
+#indi_header h1 {
+	font-size: 2em;
+	padding: 0 .5em;
+	margin: 0.25em 0 0 0;
 }
 
-#indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
+#indi_mainimage {
+	margin-right:	15px;
+	vertical-align:	top;
+	float: 			left;
+}
+
+#indi_name_details {
+	vertical-align:	top;
+	float: left;
+	margin: 10px 0 0 0;
+	width: 85%;
+}
+
+#indi_name_details a {
+	color: #333377;
+}
+
+#indi_name_details dt:after { content: ":"; }
+
+#indi_note {
+	margin:	0 0 5px 0;
+}
+
+#nameparts1 {
+	float: left;
+	margin-right: 20px;
+}
+
+#nameparts2, #nameparts3, #nameparts4, #nameparts5, #nameparts6  {
+	clear: left;
+}
+
+#nameparts1 dl, #nameparts2 dl, #nameparts3 dl, #nameparts4 dl, #nameparts5 dl, #nameparts6 dl {
+	line-height: 1;
+	padding-bottom:	2px;
+}
+
+#indi_facts {
 	float:left;
-	margin-right:15px;
+	padding: 0 15px 0 0;
+	width: 45%;
+}
+
+#sex, #mainfacts {
+	vertical-align:	top;
 }
 
 #hitcounter {
 	display: block;
-	width: 100%;
 	margin-bottom:10px;
+	padding-left: 10px;
 }
-
-.clearfloat {
-	clear: both;
-}
-
-#indi_details {
-	display: block;
-	width: 100%;
-}
+/* =================================== */
 
 /* tables for Module Admin tab */
 table.tablesorter {

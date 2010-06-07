@@ -452,7 +452,7 @@ class IndividualControllerRoot extends BaseController {
 		$linenum = $event->getLineNumber();
 
 		$this->name_count++;
-		echo '<div id="nameparts"';//, $this->name_count, '"';
+		echo '<div id="nameparts', $this->name_count, '"';
 		if (strpos($factrec, "WT_OLD")!==false) {
 			echo " class=\"namered\"";
 		}
@@ -460,18 +460,21 @@ class IndividualControllerRoot extends BaseController {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
-		if (!preg_match("/^2 (SURN)|(GIVN)/m", $factrec)) {
-			$dummy=new Person($factrec);
-			$dummy->setPrimaryName(0);
-			echo '<span class="label">', i18n::translate('Name'), ': </span>';
-			echo PrintReady($dummy->getFullName()), '<br />';
-		}
-		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
+		$dummy=new Person($factrec);
+		$dummy->setPrimaryName(0);
 		echo '<dl>';
+		echo '<dt class="label">', i18n::translate('Name'), '</dt>';
+		echo '<span class="field">', PrintReady($dummy->getFullName()), '</span>';
+				if (!$this->isPrintPreview() && $this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
+					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
+					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>";
+							echo help_link('delete_name');
+				}
+		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
 		for($i=0; $i<$ct; $i++) {
 			$fact = trim($nmatch[$i][1]);
-			if (($fact!="SOUR")&&($fact!="NOTE")) {
-				echo '<dt class="label">', translate_fact($fact, $this->indi), ':&nbsp;</dt>';
+			if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")) {
+				echo '<dt class="label">', translate_fact($fact, $this->indi), '</dt>';
 				echo '<span class="field">';
 				if (isset($nmatch[$i][2])) {
 					$name = trim($nmatch[$i][2]);
@@ -483,25 +486,17 @@ class IndividualControllerRoot extends BaseController {
 					$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 					echo PrintReady($name);
 				}
-				if ($i == 0 && !$this->isPrintPreview() && $this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
-					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
-					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>";
-						if ($this->name_count==2) {
-							echo help_link('delete_name');
-					}
-				}
-					echo '</span><br />';
+					echo '</span>';
 			}
 			echo '</dl>';
 		}
 		if (preg_match("/\d (NOTE)|(SOUR)/", $factrec)>0) {
 			// -- find sources for this name
-			echo "<div class=\"indent\">";
+			echo '<div id="indi_note" class="clearfloat">';
 				print_fact_sources($factrec, 2);
 				//-- find the notes for this name
-				//echo "&nbsp;&nbsp;&nbsp;";
 				print_fact_notes($factrec, 2);
-			echo "</div><br />";
+			echo '</div>';
 		}
 		echo '</div>';
 	}

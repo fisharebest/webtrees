@@ -1102,7 +1102,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		}
 
 		$brpos = strpos($text, "<br />");
-		$data .= "<br /><span class=\"label\">";
+		$data .= "<span class=\"label\">";
 		if ($brpos !== false) {
 			if ($EXPAND_NOTES) $plusminus="minus"; else $plusminus="plus";
 			$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES[$plusminus]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
