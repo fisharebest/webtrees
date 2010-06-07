@@ -869,6 +869,9 @@ if (check_media_structure()) {
 		print "<td class=\"topbottombar\" colspan=\"2\">";
 			print i18n::translate('Current directory');
 			print "<br />";
+			if ($USE_MEDIA_FIREWALL) {
+				echo $MEDIA_FIREWALL_ROOTDIR;
+			}
 			print PrintReady(substr($directory, 0, -1));
 			print "<br />";
 				
@@ -919,14 +922,8 @@ if (check_media_structure()) {
 				closedir($handle);
 			}		
 			$protected_files = count($files_fw);
-			$standard_files = count($files);	
+			$standard_files = count($files);
 			
-			print "<br />";
-			if ($protected_files > $standard_files) {
-				echo i18n::translate('The default directory for Media files is the Protected directory').'<br />';
-			} else {
-				echo i18n::translate('The default directory for Media files is the Standard directory').'<br />';
-			}
 			print "<br />";
 			print "<form name=\"blah3\" action=\"media.php\" method=\"post\">";
 			print "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
@@ -939,15 +936,15 @@ if (check_media_structure()) {
 			if ($USE_MEDIA_FIREWALL) {
 				if ($protected_files < $standard_files) {
 					echo '<div class="error">';
-					echo i18n::translate('The media Firewall is ENABLED but your media may still be located in the Standard Media Firewall Directory').'<br />';
+					echo i18n::translate('The media Firewall is ENABLED but your media may still be located in the Standard Media Directory').'<br />';
 					echo i18n::translate('Choose either').'<br />';
-					echo i18n::translate('(a) Click the "Move to Protected" button to move your media to the protected directory').'<br />';
+					echo i18n::translate('(a) Click the "Move ALL to Protected" button to move your media to the protected directory').'<br />';
 					echo i18n::translate('OR').'<br />';
 					echo i18n::translate('(b) Disable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
 					echo '</div>';		
 				}
-					print "<input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-					print "<input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
 					print help_link('move_mediadirs');
 					print "<br />";	
 			}
@@ -955,14 +952,14 @@ if (check_media_structure()) {
 			if ( !$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY) ) {
 				if ($protected_files > $standard_files) {
 					echo '<div class="error">';
-					echo i18n::translate('The media Firewall is DISABLED but your media may still be located in the Protected Media Firewall Directory').'<br />';
+					echo i18n::translate('The media Firewall is DISABLED but your media may still be located in the Protected Media Directory').'<br />';
 					echo i18n::translate('Choose either').'<br />';
-					echo i18n::translate('(a) Click the "Move to Standard" button to move your media to the standard directory').'<br />';
+					echo i18n::translate('(a) Click the "Move ALL to Standard" button to move your media to the standard directory').'<br />';
 					echo i18n::translate('OR').'<br />';
 					echo i18n::translate('(b) Re-enable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
 					echo '</div>';
-					print "<input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-					print "<input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
 					print help_link('move_mediadirs');
 					print "<br />";		
 				}	
