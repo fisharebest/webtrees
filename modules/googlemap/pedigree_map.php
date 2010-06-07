@@ -297,7 +297,7 @@ if (isset($curgen)){
 			// I18N: %1$d is a count of individuals, %2$s is a list of their names
 			echo " ".i18n::plural(
 				'%1$d individual is missing birthplace map coordinates: %2$s.',
-				'%1$d individuals are missing birthplace map coordinates: %2Ss.',
+				'%1$d individuals are missing birthplace map coordinates: %2$s.',
 				$miscount, $miscount, $missing),
 				'<br />';
 		}
