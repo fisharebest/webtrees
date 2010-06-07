@@ -119,7 +119,7 @@ class stats {
 			$alignRes = 'right';
 		}
 		foreach ($examples as $tag=>$v) {
-			$out .= "\t<tr class=\"vevent\">"
+			$out .= "\t<tr>"
 				."<td class=\"list_value_wrap\" align=\"{$alignVar}\" valign=\"top\" style=\"padding:3px\">{$tag}</td>"
 				."<td class=\"list_value_wrap\" align=\"{$alignRes}\" valign=\"top\">{$v}</td>"
 				."</tr>\n"

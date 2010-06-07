@@ -53,7 +53,6 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
-		$allowDownload=WT_USER_ID && get_block_setting($block_id, 'allowDownload', true);
 
 		$startjd=client_jd()+1;
 		$endjd=client_jd()+$days;
@@ -76,7 +75,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		case "table":
 			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
 			ob_start();
-			$content.=print_events_table($startjd, $endjd, $onlyBDM?'BIRT MARR DEAT':'', $filter, $allowDownload, 'style2');
+			$content.=print_events_table($startjd, $endjd, $onlyBDM?'BIRT MARR DEAT':'', $filter, 'style2');
 			$content.=ob_get_clean();
 			break;
 		}
@@ -117,7 +116,6 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'onlyBDM',       safe_POST_bool('onlyBDM'));
 			set_block_setting($block_id, 'infoStyle',     safe_POST('infoStyle', array('list', 'table'), 'table'));
 			set_block_setting($block_id, 'sortStyle',     safe_POST('sortStyle', array('alpha', 'anniv'), 'alpha'));
-			set_block_setting($block_id, 'allowDownload', safe_POST_bool('allowDownload'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
@@ -158,13 +156,6 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		echo i18n::translate('Sort Style'), help_link('sort_style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array('alpha'=>i18n::translate('Alphabetically'), 'anniv'=>i18n::translate('By Anniversary')), null, $sortStyle, '');
-		echo '</td></tr>';
-
-		$allowDownload=get_block_setting($block_id, 'allowDownload', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Allow calendar events download?'), help_link('cal_dowload');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('allowDownload', $allowDownload);
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);

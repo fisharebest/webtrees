@@ -49,7 +49,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$days=get_block_setting($block_id, 'days', $DAYS_TO_SHOW_LIMIT);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		$allowDownload=WT_USER_ID && get_block_setting($block_id, 'allowDownload', true);
 		$block=get_block_setting($block_id, 'block', true);
 
 		$startjd=server_jd();
@@ -68,7 +67,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		// need to handle a few special cases.
 		// Fetch normal anniversaries...
 		$yahrzeits=array();
-		$hidden=0;
 		for ($jd=$startjd-1; $jd<=$endjd+30;++$jd) {
 			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
 				// Extract hebrew dates only
@@ -76,8 +74,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					// Apply privacy
 					if (displayDetailsById($fact['id']) && showFact($fact['fact'], $fact['id']) && !FactViewRestricted($fact['id'], $fact['factrec'])) {
 						$yahrzeits[]=$fact;
-					} else {
-						++$hidden;
 					}
 				}
 			}
@@ -139,7 +135,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$days) {
 					++$count;
 					$ind=person::GetInstance($yahrzeit['id']);
-					$content .= "<tr class=\"vevent\">"; // hCalendar:vevent
+					$content .= "<tr>";
 					// Record name(s)
 					$name=$ind->getFullName();
 					$url=$ind->getLinkUrl();
@@ -174,12 +170,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					} else {
 						$content .= "<a name=\"{$anniv}\">{$anniv}</a>";
 					}
-					if ($allowDownload) {
-						// hCalendar:dtstart and hCalendar:summary
-						//TODO does this work??
-						$content .= "<abbr class=\"dtstart\" title=\"".strip_tags($yahrzeit['date']->Display(false,'Ymd',array()))."\"></abbr>";
-						$content .= "<abbr class=\"summary\" title=\"".i18n::translate('Anniversary')." #$anniv ".i18n::translate($yahrzeit['fact'])." : ".PrintReady(strip_tags($ind->getFullName()))."\"></abbr>";
-					}
 
 					// upcomming yahrzeit dates
 					$content .= "<td class=\"list_value_wrap\">";
@@ -195,20 +185,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<td class=\"list_label\">";
 			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="images/topdown.gif" alt="" border="0" /> '.translate_fact('GIVN').'</a><br />';
 			$content .= i18n::translate('Total Names').": ".$count;
-			if ($hidden) {
-				$content .= "<br /><span class=\"warning\">".i18n::translate('Hidden')." : {$hidden}</span>";
-			}
-			$content .= "</td>";
-			$content .= "<td style=\"display:none\">GIVN</td>";
-			$content .= "<td>";
-			if ($allowDownload) {
-				$uri = WT_SERVER_NAME.WT_SCRIPT_PATH.basename($_SERVER['REQUEST_URI']);
-				$alt = i18n::translate('Download file %s', 'hCal-events.ics');
-				if (count($yahrzeits)) {
-					$content .= "<a href=\"http://feeds.technorati.com/events/{$uri}\"><img src=\"images/hcal.png\" border=\"0\" alt=\"{$alt}\" title=\"{$alt}\" /></a>";
-				}
-			}
-			$content .= '</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
+			$content .= '</td>';
+			$content .= '<td style="display:none">GIVN</td>';
+			$content .= '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
 			$content .= '</table>';
 			break;
 		}
@@ -246,7 +225,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'days', safe_POST_integer('days', 1, $DAYS_TO_SHOW_LIMIT, $DAYS_TO_SHOW_LIMIT));
 			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table'), 'table'));
-			set_block_setting($block_id, 'allowDownload', safe_POST_bool('allowDownload'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
@@ -266,13 +244,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		echo i18n::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
-		echo '</td></tr>';
-
-		$allowDownload=get_block_setting($block_id, 'allowDownload', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Allow calendar events download?'), help_link('cal_dowload');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('allowDownload', $allowDownload);
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);

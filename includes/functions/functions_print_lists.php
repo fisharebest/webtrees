@@ -1570,7 +1570,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
  *
  * @param array $datalist contain records that were extracted from the database.
  */
-function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $allow_download=false, $sort_by_event=false) {
+function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
 	global $TEXT_DIRECTION;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
@@ -1643,7 +1643,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	}
 
 	foreach($filtered_events as $value) {
-		$return .= "<tr class=\"vevent\">"; // hCalendar:vevent
+		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
 		if ($value['record']->getType()=="FAM") {
@@ -1675,15 +1675,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$anniv = $value['anniv'];
 		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
 		else $return .= "<a name=\"{$anniv}\">{$anniv}</a>";
-		if ($allow_download) {
-			// hCalendar:dtstart and hCalendar:summary
-			$return .= "<abbr class=\"dtstart\" title=\"".strip_tags($value['date']->Display(false, 'Ymd', array()))."\"></abbr>";
-			$return .= "<abbr class=\"summary\" title=\"".i18n::translate('Anniversary')." #$anniv ".i18n::translate($value['fact'])." : ".PrintReady(strip_tags($record->getFullName()))."\"></abbr>";
-		}
 		$return .= "</td>";
 		//-- Event name
 		$return .= "<td class=\"list_value_wrap\">";
-		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item url\">".translate_fact($value['fact'])."</a>"; // hCalendar:url
+		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item\">".translate_fact($value['fact'])."</a>";
 		$return .= "&nbsp;</td>";
 
 		$return .= "</tr>\n";
@@ -1696,11 +1691,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".i18n::translate('Show parents')."</label><br />";
 		$return .= "</td><td class=\"list_label\" colspan=\"3\">";
 		$return .= i18n::translate('Total events').": ".$output;
-		if ($allow_download) {
-			$uri = WT_SERVER_NAME.WT_SCRIPT_PATH.basename($_SERVER["REQUEST_URI"]);
-			$title = i18n::translate('Download file %s', 'hCal-events.ics');
-			$return .= "<br /><a href=\"".encode_url("http://feeds.technorati.com/events/{$uri}")."\"><img src=\"images/hcal.png\" border=\"0\" alt=\"".$title."\" title=\"".$title."\" /></a>";
-		}
 		$return .= "</td>";
 		$return .= "<td></td>";
 		$return .= "<td></td>";
