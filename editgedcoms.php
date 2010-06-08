@@ -264,10 +264,6 @@ foreach ($gedcoms as $gedcom) {
 			'<td><a href="editconfig_gedcom.php?ged=', urlencode($gedcom->gedcom_name), '">', i18n::translate('Configuration'), '</a>',
 			help_link('gedcom_configfile'),
 			'</td>',
-			// privacy
-			'<td><a href="edit_privacy.php?ged=', urlencode($gedcom->gedcom_name), '">', i18n::translate('Privacy'), '</a>',
-			help_link('edit_privacy'),
-			'</td>',
 			// export
 			'<td><a href="javascript:" onclick="window.open(\'', encode_url("export_gedcom.php?export={$gedcom->gedcom_name}"), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', i18n::translate('Export'), '</a>',
 			help_link('export_gedcom.php'),

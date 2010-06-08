@@ -81,7 +81,47 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 $errors=false;
 $error_msg='';
 
-if (safe_POST('action')=='update') {
+$PRIVACY_CONSTANTS=array(
+	'none'        =>i18n::translate('Show to public'),
+	'privacy'     =>i18n::translate('Show only to authenticated users'),
+	'confidential'=>i18n::translate('Show only to admin users'),
+	'hidden'      =>i18n::translate('Hide even from admin users')
+);
+
+$all_tags=array();
+$tags=array_unique(array_merge(
+	explode(',', $INDI_FACTS_ADD),
+	explode(',', $FAM_FACTS_ADD),
+	explode(',', $NOTE_FACTS_ADD),
+	explode(',', $SOUR_FACTS_ADD),
+	explode(',', $REPO_FACTS_ADD),
+	array('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'SUBM', 'SUBN')
+));
+
+foreach ($tags as $tag) {
+	$all_tags[$tag]=translate_fact($tag);
+}
+
+uasort($all_tags, 'utf8_strcasecmp');
+
+switch (safe_POST('action')) {
+case 'delete':
+	WT_DB::prepare(
+		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
+	)->execute(array(safe_POST('default_resn_id')));
+	// Reload the page, so that the new privacy restrictions are reflected in the header
+	header('Location: '.WT_SCRIPT_NAME.'#privacy');
+	exit;
+case 'add':
+	if ((safe_POST('xref') || safe_POST('tag_type')) && safe_POST('resn')) {
+		WT_DB::prepare(
+			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, ?)"
+		)->execute(array(WT_GED_ID, safe_POST('xref'), safe_POST('tag_type'), safe_POST('resn')));
+	}
+	// Reload the page, so that the new privacy restrictions are reflected in the header
+	header('Location: '.WT_SCRIPT_NAME.'#privacy');
+	exit;
+case 'update':
 	$_POST["NEW_MEDIA_DIRECTORY"] = preg_replace('/\\\/', '/', $_POST["NEW_MEDIA_DIRECTORY"]);
 	$ct = preg_match("'/$'", $_POST["NEW_MEDIA_DIRECTORY"]);
 	if ($ct==0) $_POST["NEW_MEDIA_DIRECTORY"] .= "/";
@@ -90,7 +130,6 @@ if (safe_POST('action')=='update') {
 
 	if (!isFileExternal($_POST["NEW_HOME_SITE_URL"])) $_POST["NEW_HOME_SITE_URL"] = "http://".$_POST["NEW_HOME_SITE_URL"];
 
-	set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title'));
 	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      safe_POST_bool('NEW_ABBREVIATE_CHART_LABELS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          safe_POST('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          safe_POST('NEW_ADVANCED_PLAC_FACTS'));
@@ -123,6 +162,7 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             safe_POST('NEW_GEDCOM_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                safe_POST_bool('NEW_GENERATE_UIDS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           safe_POST_bool('NEW_HIDE_GEDCOM_ERRORS'));
+	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             safe_POST_bool('NEW_HIDE_LIVE_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'HOME_SITE_TEXT',               safe_POST('NEW_HOME_SITE_TEXT'));
 	set_gedcom_setting(WT_GED_ID, 'HOME_SITE_URL',                safe_POST('NEW_HOME_SITE_URL'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               safe_POST('NEW_INDI_FACTS_ADD'));
@@ -130,8 +170,10 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            safe_POST('NEW_INDI_FACTS_UNIQUE'));
 	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',                     safe_POST('GEDCOMLANG'));
 	set_gedcom_setting(WT_GED_ID, 'LINK_ICONS',                   safe_POST('NEW_LINK_ICONS'));
+	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
+	set_gedcom_setting(WT_GED_ID, 'MAX_RELATION_PATH_LENGTH',     safe_POST('MAX_RELATION_PATH_LENGTH'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY',              safe_POST('NEW_MEDIA_DIRECTORY'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS',       safe_POST('NEW_MEDIA_DIRECTORY_LEVELS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL',               safe_POST_bool('NEW_MEDIA_EXTERNAL'));
@@ -158,6 +200,7 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_SHOW_GENDER',         safe_POST_bool('NEW_PEDIGREE_SHOW_GENDER'));
 	set_gedcom_setting(WT_GED_ID, 'POSTAL_CODE',                  safe_POST_bool('NEW_POSTAL_CODE'));
 	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',        safe_POST('NEW_PREFER_LEVEL2_SOURCES'));
+	set_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR',              safe_POST('PRIVACY_BY_YEAR'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',         safe_POST('NEW_QUICK_REQUIRED_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',      safe_POST('NEW_QUICK_REQUIRED_FAMFACTS'));
 	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD',               safe_POST('NEW_REPO_FACTS_ADD'));
@@ -171,6 +214,7 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                safe_POST_bool('NEW_SHOW_AGE_DIFF'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP',            safe_POST_bool('NEW_SHOW_CONTEXT_HELP'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',                 safe_POST_bool('NEW_SHOW_COUNTER'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',             safe_POST('SHOW_DEAD_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_EMPTY_BOXES',             safe_POST_bool('NEW_SHOW_EMPTY_BOXES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES',          safe_POST_bool('NEW_SHOW_EST_LIST_DATES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_FACT_ICONS',              safe_POST_bool('NEW_SHOW_FACT_ICONS'));
@@ -180,12 +224,15 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LDS_AT_GLANCE',           safe_POST_bool('NEW_SHOW_LDS_AT_GLANCE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES',            safe_POST_bool('NEW_SHOW_LEVEL2_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LIST_PLACES',             safe_POST('NEW_SHOW_LIST_PLACES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES',            safe_POST('SHOW_LIVING_NAMES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_MARRIED_NAMES',           safe_POST_bool('NEW_SHOW_MARRIED_NAMES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD',          safe_POST_bool('NEW_SHOW_MEDIA_DOWNLOAD'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_FILENAME',          safe_POST_bool('NEW_SHOW_MEDIA_FILENAME'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH',        safe_POST('SHOW_MULTISITE_SEARCH'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',            safe_POST('NEW_SHOW_NO_WATERMARK'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PARENTS_AGE',             safe_POST_bool('NEW_SHOW_PARENTS_AGE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         safe_POST('NEW_SHOW_PEDIGREE_PLACES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION',        safe_POST_bool('NEW_SHOW_REGISTER_CAUTION'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        safe_POST('NEW_SHOW_RELATIVES_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_SPIDER_TAGLINE',          safe_POST_bool('NEW_SHOW_SPIDER_TAGLINE'));
@@ -205,6 +252,7 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 safe_POST_bool('NEW_USE_GEONAMES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL',           safe_POST_bool('NEW_USE_MEDIA_FIREWALL'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER',             safe_POST_bool('NEW_USE_MEDIA_VIEWER'));
+	set_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY',     safe_POST('USE_RELATIONSHIP_PRIVACY'));
 	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      safe_POST_bool('NEW_USE_RIN'));
 	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               safe_POST_bool('NEW_USE_SILHOUETTE'));
 	set_gedcom_setting(WT_GED_ID, 'USE_THUMBS_MAIN',              safe_POST_bool('NEW_USE_THUMBS_MAIN'));
@@ -216,6 +264,7 @@ if (safe_POST('action')=='update') {
 	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD',       safe_POST_bool('NEW_WELCOME_TEXT_CUST_HEAD'));
 	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           safe_POST_bool('NEW_WORD_WRAPPED_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'ZOOM_BOXES',                   safe_POST('NEW_ZOOM_BOXES'));
+	set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title'));
 
 	if (!$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]) {
 		$NEW_MEDIA_FIREWALL_ROOTDIR = $INDEX_DIRECTORY;
@@ -420,6 +469,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="tabs" class="">
 				<ul>
 					<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics')?></span></a></li>
+					<li><a href="#privacy"><span><?php echo i18n::translate('Privacy')?></span></a></li>
 					<li><a href="#config-media"><span><?php echo i18n::translate('Multimedia')?></span></a></li>
 					<li><a href="#access-options"><span><?php echo i18n::translate('Access')?></span></a></li>
 					<li><a href="#layout-options"><span><?php echo i18n::translate('Layout')?></span></a></li>
@@ -638,6 +688,119 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 				</table>
+			</div>
+			<!-- PRIVACY OPTIONS -->
+			<div id="privacy">
+				<table class="facts_table">
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?></td>
+						<td class="optionbox width60"><?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>'Disable',true=>'Enable'), $HIDE_LIVE_PEOPLE, '');  ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?></td>
+						<td class="optionbox"><?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?></td>
+						<td class="optionbox"><?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?></td>
+						<td class="optionbox"><?php echo edit_field_access_level("SHOW_MULTISITE_SEARCH", get_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH')); ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?></td>
+						<td class="optionbox width60"><?php  echo radio_buttons('PRIVACY_BY_YEAR', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR'), '');  ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?></td>
+						<td class="optionbox width60"><?php  echo radio_buttons('SHOW_PRIVATE_RELATIONSHIPS', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS'), '');  ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use relationship privacy'), help_link('USE_RELATIONSHIP_PRIVACY'); ?></td>
+						<td class="optionbox width60"><?php  echo radio_buttons('USE_RELATIONSHIP_PRIVACY', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY'), '');  ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Max. relation path length'), help_link('MAX_RELATION_PATH_LENGTH'); ?></td>
+						<td class="optionbox">
+							<select size="1" name="MAX_RELATION_PATH_LENGTH"><?php
+							for ($y = 1; $y <= 10; $y++) {
+								print "<option";
+								if (get_gedcom_setting(WT_GED_ID, 'MAX_RELATION_PATH_LENGTH') == $y) print " selected=\"selected\"";
+								print ">";
+								print $y;
+								print "</option>";
+							}
+							?></select>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Check marriage relations'), help_link('CHECK_MARRIAGE_RELATIONS'); ?></td>
+						<td class="optionbox width60"><?php  echo radio_buttons('CHECK_MARRIAGE_RELATIONS', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS'), '');  ?></td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?></td>
+						<td class="optionbox"><input type="text" name="MAX_ALIVE_AGE" value="<?php print get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" /></td>
+					</tr>
+				</table>
+				<br />
+				<table class="facts_table">
+					<tr>
+						<td class="topbottombar" colspan="4">
+							<?php echo i18n::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?>
+						</td>
+					</tr>
+			<?php
+			echo '<tr><td class="optionbox" width="*">';
+			echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" />';
+			print_findindi_link("xref","");
+			print_findfamily_link("xref");
+			print_findsource_link("xref");
+			print_findrepository_link("xref");
+			print_findmedia_link("xref", "1media");
+			echo '</td><td class="optionbox" width="*">';
+			echo select_edit_control('tag_type', $all_tags, '', null, null);
+			echo '</td><td class="optionbox" width="1">';
+			echo select_edit_control('resn', $PRIVACY_CONSTANTS, null, 'privacy', null);
+			echo '</td><td class="optionbox" width="1">';
+			echo '<input type="button" value="', i18n::translate('Add'), '" onClick="document.configform.elements[\'action\'].value=\'add\';document.configform.submit();" />';
+			echo '<input type="hidden" name="default_resn_id" value="">'; // value set by JS
+			echo '</td></tr>';
+			$rows=WT_DB::prepare(
+				"SELECT default_resn_id, tag_type, xref, resn".
+				" FROM `##default_resn`".
+				" WHERE gedcom_id=?".
+				" ORDER BY xref IS NULL, tag_type IS NULL, xref, tag_type"
+			)->execute(array(WT_GED_ID))->fetchAll();
+			foreach ($rows as $row) {
+				echo '<tr><td class="optionbox" width="*">';
+				if ($row->xref) {
+					$record=GedcomRecord::getInstance($row->xref);
+					if ($record) {
+						$name=$record->getFullName();
+					} else {
+						$name=i18n::translate('this record does not exist');
+					}
+					// I18N: e.g. John DOE (I1234)
+					echo i18n::translate('%1$s (%2$s)', $name, $row->xref);
+				} else {
+					echo '&nbsp;';
+				}
+				echo '</td><td class="optionbox" width="*">';
+				if ($row->tag_type) {
+					// I18N: e.g. Marriage (MARR)
+					echo i18n::translate('%1$s [%2$s]', translate_fact($row->tag_type), $row->tag_type);
+				} else {
+					echo '&nbsp;';
+				}
+				echo '</td><td class="optionbox" width="1">';
+				echo $PRIVACY_CONSTANTS[$row->resn];
+				echo '</td><td class="optionbox" width="1">';
+				echo '<input type="button" value="', i18n::translate('Delete'), '" onClick="document.configform.elements[\'action\'].value=\'delete\';document.configform.elements[\'default_resn_id\'].value=\''.$row->default_resn_id.'\';document.configform.submit();" />';
+				echo '</td></tr>';
+			}
+			echo '</table>';
+			?>
 			</div>
 			<!--  MULTIMEDIA -->
 			<div id="config-media">

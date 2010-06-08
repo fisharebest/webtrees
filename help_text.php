@@ -2962,11 +2962,6 @@ case 'edit_merge.php':
 	$text=i18n::translate('This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br /><br />This is useful for people who have merged GEDCOMs and now have many people, families, and sources that are the same.<br /><br />The page consists of three steps.<br /><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br />In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br />In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent.');
 	break;
 
-case 'edit_privacy.php':
-	$title=i18n::translate('Edit GEDCOM privacy settings');
-	$text=i18n::translate('On this page you can make all the Privacy settings for the selected GEDCOM.<br /><br />You can check under the page title to see that you are editing the correct privacy file.  It is displayed like this: (path/nameofyourgedcom_priv.php)<br /><br />If you need more settings, you can make changes to the privacy file manually. You can read more about this on the <b>webtrees</b> web site.');
-	break;
-	
 case 'editconfig_gedcom.php':
 	$title=i18n::translate('GEDCOM configuration');
 	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.<br /><br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.<br /><br /><br />See <a href="readme.txt" target="_blank"><b>Readme.txt</b></a> for more information.');
