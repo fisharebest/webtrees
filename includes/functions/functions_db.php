@@ -2096,7 +2096,7 @@ function get_site_setting($setting_name, $default_value=null) {
 
 function set_site_setting($setting_name, $setting_value) {
 	if (get_site_setting($setting_name)!=$setting_value) {
-		AddToLog("Site setting {$setting_name} set to {$setting_value}", 'config');
+		AddToLog('Site setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
 	}
 	if (is_null($setting_value)) {
 		WT_DB::prepare("DELETE FROM `##site_setting` WHERE setting_name=?")
@@ -2181,7 +2181,7 @@ function get_gedcom_setting($gedcom_id, $setting_name, $default_value=null) {
 
 function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
 	if (get_gedcom_setting($ged_id, $setting_name)!=$setting_value) {
-		AddToLog("Gedcom setting {$setting_name} set to {$setting_value} for ($ged_id)", 'config');
+		AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
 	}
 	if (is_null($setting_value)) {
 		WT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE gedcom_id=? AND setting_name=?")
