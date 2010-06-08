@@ -503,6 +503,10 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td class="optionbox width60">
 							<?php  echo radio_buttons('NEW_GENERATE_UIDS', array(false=>'No',true=>'Yes'), $GENERATE_UIDS, 'tabindex="'.(++$i).'"');  ?></td>
 					</tr>
+					<tr>
+						<td class="descriptionbox nowrap"><?php echo i18n::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?></td>
+						<td class="optionbox width60"><?php echo radio_buttons('NEW_WORD_WRAPPED_NOTES', array(false=>'No',true=>'Yes'), $WORD_WRAPPED_NOTES, 'tabindex="'.(++$i).'"');  ?></td>
+					</tr>
 				</table>
 				<table class="facts_table">
 					<tr>
@@ -1002,10 +1006,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?></td>
 						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>'Hide',true=>'Show'), $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_WORD_WRAPPED_NOTES', array(false=>'No',true=>'Yes'), $WORD_WRAPPED_NOTES, 'tabindex="'.(++$i).'"');  ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?></td>

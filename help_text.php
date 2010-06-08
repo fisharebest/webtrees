@@ -2878,7 +2878,7 @@ case 'WELCOME_TEXT_AUTH_MODE':
 
 case 'WORD_WRAPPED_NOTES':
 	$title=i18n::translate('Add spaces where notes were wrapped');
-	$text=i18n::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM.');
+	$text=i18n::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.');
 	break;
 
 case 'ZOOM_BOXES':
