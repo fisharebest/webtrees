@@ -994,9 +994,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?></td>
-						<td class="optionbox width60">
-							<input type="text" size="50" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" />
-						</td>
+						<td class="optionbox width60"><input type="text" size="50" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_CHART_BOX_TAGS", $GEDCOM); ?></td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2"><?php print i18n::translate('On individual pages');?></td>
