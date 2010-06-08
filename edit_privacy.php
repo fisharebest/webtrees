@@ -61,6 +61,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY',   safe_POST('USE_RELATIONSHIP_PRIVACY'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_RELATION_PATH_LENGTH',   safe_POST('MAX_RELATION_PATH_LENGTH'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS', safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
+	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',           safe_POST_bool('NEW_HIDE_LIVE_PEOPLE'));
 	header('Location: editgedcoms.php');
 	exit;
 }
@@ -117,68 +118,38 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 	<table class="facts_table">
 		<tr>
-			<td class="topbottombar" colspan="2">
-				<?php echo i18n::translate('General privacy settings'); ?>
-			</td>
+			<td class="subbar" colspan="2"><?php echo i18n::translate('General privacy settings'); ?></td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width20">
-				<?php echo i18n::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?>
-			</td>
-			<td class="optionbox">
-					<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?></td>
+			<td class="optionbox width60"><?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>'Disable',true=>'Enable'), $HIDE_LIVE_PEOPLE, '');  ?></td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
-			</td>
-			<td class="optionbox">
-					<?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?></td>
+			<td class="optionbox"><?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?></td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?>
-			</td>
-			<td class="optionbox">
-					<?php echo edit_field_access_level("SHOW_MULTISITE_SEARCH", get_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH')); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?></td>
+			<td class="optionbox"><?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?></td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?>
-			</td>
-			<td class="optionbox">
-				<?php echo edit_field_yes_no('PRIVACY_BY_YEAR', get_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR')); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?></td>
+			<td class="optionbox"><?php echo edit_field_access_level("SHOW_MULTISITE_SEARCH", get_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH')); ?></td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?>
-			</td>
-			<td class="optionbox">
-				<?php echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS')); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?></td>
+			<td class="optionbox width60"><?php  echo radio_buttons('PRIVACY_BY_YEAR', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR'), '');  ?></td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Use relationship privacy'), help_link('USE_RELATIONSHIP_PRIVACY'); ?>
-			</td>
-			<td class="optionbox">
-				<?php echo edit_field_yes_no('USE_RELATIONSHIP_PRIVACY', get_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY')); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?></td>
+			<td class="optionbox width60"><?php  echo radio_buttons('SHOW_PRIVATE_RELATIONSHIPS', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS'), '');  ?></td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Max. relation path length'), help_link('MAX_RELATION_PATH_LENGTH'); ?>
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Use relationship privacy'), help_link('USE_RELATIONSHIP_PRIVACY'); ?></td>
+			<td class="optionbox width60"><?php  echo radio_buttons('USE_RELATIONSHIP_PRIVACY', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY'), '');  ?></td>
+		</tr>
+		<tr>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Max. relation path length'), help_link('MAX_RELATION_PATH_LENGTH'); ?></td>
 			<td class="optionbox">
 				<select size="1" name="MAX_RELATION_PATH_LENGTH"><?php
 				for ($y = 1; $y <= 10; $y++) {
@@ -191,28 +162,16 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 				?></select>
 			</td>
 		</tr>
-
 		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Check marriage relations'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
-			</td>
-			<td class="optionbox">
-				<?php echo edit_field_yes_no('CHECK_MARRIAGE_RELATIONS', get_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS')); ?>
-			</td>
-		</tr>
-
-		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo i18n::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?>
-			</td>
-			<td class="optionbox">
-				<input type="text" name="MAX_ALIVE_AGE" value="<?php print get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" />
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Check marriage relations'), help_link('CHECK_MARRIAGE_RELATIONS'); ?></td>
+			<td class="optionbox width60"><?php  echo radio_buttons('CHECK_MARRIAGE_RELATIONS', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS'), '');  ?></td>
 		</tr>
 		<tr>
-			<td class="topbottombar" colspan="2">
-				<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
-			</td>
+			<td class="descriptionbox nowrap"><?php echo i18n::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?></td>
+			<td class="optionbox"><input type="text" name="MAX_ALIVE_AGE" value="<?php print get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" /></td>
+		</tr>
+		<tr>
+			<td class="subbar" colspan="2"><input type="submit" value="<?php echo i18n::translate('Save'); ?>" /></td>
 		</tr>
 	</table>
 	</form>

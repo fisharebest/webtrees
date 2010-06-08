@@ -81,7 +81,7 @@ function radio_buttons($name, $values, $selected, $extra) {
 		if ($key==$selected) {
 			$html.=' checked';
 		}
-		$html.='>'.htmlspecialchars($value).'<br/>';
+		$html.='>'.htmlspecialchars($value);
 	}
 	return $html;
 }
