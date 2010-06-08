@@ -2432,9 +2432,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				}
 			case 'it': // Source: Michele Locati
 				switch ($last) {
-				case 'mot': return i18n::translate('great x%d grandmother', $up-1);
-				case 'fat': return i18n::translate('great x%d grandfather', $up-1);
-				case 'par': return i18n::translate('great x%d grandparent', $up-1);
+				case 'mot': return i18n::translate('great x%d grandmother', $up);
+				case 'fat': return i18n::translate('great x%d grandfather', $up);
+				case 'par': return i18n::translate('great x%d grandparent', $up);
 				}
 			case 'en':
 			default:
