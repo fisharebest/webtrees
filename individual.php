@@ -162,9 +162,11 @@ jQuery(document).ready(function(){
 									// Display summary birth/death info.
 									$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
 									// If alive display age
-									$bdate=$controller->indi->getBirthDate();
-									$age = GedcomDate::GetAgeGedcom($bdate);
-									if ($age!="") $summary.= "<dl><dt class=\"label\">".i18n::translate('Age')."</dt><span class=\"field\">".get_age_at_event($age, true)."</span></dl>";
+									if (!$controller->indi->isDead()) {
+										$bdate=$controller->indi->getBirthDate();
+										$age = GedcomDate::GetAgeGedcom($bdate);
+										if ($age!="") $summary.= "<dl><dt class=\"label\">".i18n::translate('Age')."</dt><span class=\"field\">".get_age_at_event($age, true)."</span></dl>";
+									}
 									$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
 									if ($SHOW_LDS_AT_GLANCE) { 
 										$summary.="<dl><span><b>".get_lds_glance($controller->indi->getGedcomRecord())."</b></span></dl>";
