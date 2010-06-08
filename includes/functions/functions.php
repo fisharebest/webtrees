@@ -2360,6 +2360,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			// Different languages have different rules for naming generations.
 			//
 			// Need to find out which languages use which rules.
+			switch (WT_LOCALE) {
 			case 'it': // Source: Michele Locati.
 			case 'en':
 			default:
