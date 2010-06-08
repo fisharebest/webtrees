@@ -623,7 +623,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Enable RSS'), help_link('ENABLE_RSS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php  echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>'No',true=>'Yes'), $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"');  ?>
+							<?php  echo radio_buttons('NEW_ENABLE_RSS', array(false=>'No',true=>'Yes'), $ENABLE_RSS, 'tabindex="'.(++$i).'"');  ?>
 						</td>
 					</tr>
 					<tr>
