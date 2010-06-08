@@ -1455,15 +1455,21 @@ dt {
 
 /* Classes for the INDI page header */
 
-#indi_header {
- width: 98%
-}
-
 #indi_header h1 {
 	color: #555555;
 	font-size: 2em;
 	padding: 0 .5em;
 	margin: 0.25em 0 0 0;
+}
+
+#indi_header a {
+	color: #333377;
+	font-size: .75em;
+	font-weight: normal;
+}
+
+#indi_header a:hover {
+	color: red;
 }
 
 #indi_mainimage {

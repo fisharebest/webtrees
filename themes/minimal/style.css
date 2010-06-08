@@ -1336,6 +1336,16 @@ dt {
 	margin: 0.25em 0 0 0;
 }
 
+#indi_header a {
+	color: #333377;
+	font-size: .75em;
+	font-weight: normal;
+}
+
+#indi_header a:hover {
+	color: red;
+}
+
 #indi_mainimage {
 	margin-right:	15px;
 	vertical-align:	top;
