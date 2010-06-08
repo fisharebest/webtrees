@@ -186,7 +186,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<a href=\"".$favorite["url"]."\">".PrintReady($favorite["title"])."</a>";
 					$content .= "<br />".PrintReady($favorite["note"]);
 				} else {
-					require $INDEX_DIRECTORY.$GEDCOM.'_conf.php';
+					load_gedcom_settings(get_id_from_gedcom($GEDCOM));
 					$indirec = find_gedcom_record($favorite["gid"], WT_GED_ID);
 					if ($favorite["type"]=="INDI") {
 						$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box";
@@ -214,8 +214,8 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</div>";
 				$content .= "</td></tr>";
 				$GEDCOM = $mygedcom;
-				require $INDEX_DIRECTORY.$GEDCOM.'_conf.php';
 			}
+			load_gedcom_settings(WT_GED_ID);
 			$content .= "</table>";
 		}
 		$content .= '
