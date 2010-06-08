@@ -1610,46 +1610,88 @@ padding-top: 12px;
 text-align: center;
 } 
 
+.clearfloat {
+	clear: both;
+}
+
 dl {
-	margin-bottom:20px;
+	margin: 0;
 }
 
 dt {
 	float:left; 
 	font-weight:bold;
-	margin-right:10px;
-	clear:both; 
+	margin-right:10px; 
+	clear:both;
+}
+
+/* Classes for the INDI page header */
+
+#indi_top {
+white-space:nowrap;
+}
+
+#indi_name {
+	vertical-align:	top;
+	width: 35%;
+}
+
+#indi_name a {
+	color: #333377;
+}
+
+#indi_name_details {
+	vertical-align:	top;
+	float: left;
+	margin: 10px 0 0 0;
+	width: 85%;
 }
 
 #indi_details dt:after { content: ":"; }
+
+#indi_mainimage, #nameparts, #sex, #mainfacts {
+	margin-right:25px;
+	vertical-align:	top;
+}
 
 #facts_content dd {
 	float:left;
 	width: 70%;
 }
 
-#indi_mainimage, #nameparts1, #nameparts2, #nameparts3, #nameparts4, #sex, #mainfacts {
-	float:left;
-	margin-right:15px;
+#indi_mainimage {
+	margin-right:	15px;
+	vertical-align:	top;
+	float: 			left;
 }
 
-#mainfacts {
-white-space: nowrap;
+#indi_details {
+	display: block;
+	width: 100%;
+}
+#indi_facts {
+	float:left;
+	padding: 0 15px 0 0;
+	width: 45%;
+}
+#nameparts1 {
+	float: left;
+	margin-right: 20px;
+}
+
+#name1 {
+	line-height:	2;
+	padding-bottom:	2px;
+}
+
+#sex, #mainfacts {
+	vertical-align:	top;
 }
 
 #hitcounter {
 	display: block;
 	width: 100%;
 	margin-bottom:10px;
-}
-
-.clearfloat {
-	clear: both;
-}
-
-#indi_details {
-	display: block;
-	width: 100%;
 }
 
 /* tables for Module Admin tab */
