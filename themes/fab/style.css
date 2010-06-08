@@ -961,6 +961,7 @@ dt {
 #nameparts1 {
 	float: left;
 	margin-right: 20px;
+	max-width:50%;
 }
 
 #nameparts2, #nameparts3, #nameparts4, #nameparts5, #nameparts6  {
