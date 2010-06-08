@@ -2317,11 +2317,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-4);
 				}
 			case 'it': // Source: Michele Locati
-				switch ($last) {
-				case 'bro': return i18n::translate('great x%d uncle', $up-3);
-				case 'sis': return i18n::translate('great x%d aunt', $up-3);
-				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-3);
-				}
 			case 'en':
 			default:
 				switch ($last) {
@@ -2365,26 +2360,14 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			// Different languages have different rules for naming generations.
 			//
 			// Need to find out which languages use which rules.
-			switch (WT_LOCALE) {
-			case 'da': // Not confirmed - simply based on existing rules.
 			case 'it': // Source: Michele Locati.
-				switch ($last) {
-				case 'son': // I18N: only used in italian and danish translations
-				            return i18n::translate('great x%d grand-nephew', $down-3);
-				case 'dau': // I18N: only used in italian and danish translations
-				            return i18n::translate('great x%d grand-niece', $down-3);
-				case 'chi': // I18N: only used in italian and danish translations
-				            return i18n::translate('great x%d grand-nephew/niece', $down-3);
-				}
 			case 'en':
 			default:
 				switch ($last) {
-				case 'son': // I18N: used in all translations except italian and danish
+				case 'son': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
 				            return i18n::translate('great x%d nephew', $down-2);
-				case 'dau': // I18N: used in all translations except italian and danish
-				            return i18n::translate('great x%d niece', $down-2);
-				case 'chi': // I18N: used in all translations except italian and danish
-				            return i18n::translate('great x%d nephew/niece', $down-2);
+				case 'dau': return i18n::translate('great x%d niece', $down-2);
+				case 'chi': return i18n::translate('great x%d nephew/niece', $down-2);
 				}
 			}
 		}
