@@ -157,7 +157,7 @@ echo
 	i18n::translate('From %s to %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" />', '<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('Type'), ' ', select_edit_control('type', array(''=>'', 'auth'=>'auth','change'=>'change','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
+	i18n::translate('Type'), ' ', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
 	i18n::translate('Message'), ' <input name="text" size="12" value="', htmlspecialchars($text), '" /> ',

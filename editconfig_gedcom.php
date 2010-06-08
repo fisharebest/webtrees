@@ -383,7 +383,6 @@ case 'update':
 	require_once WT_ROOT.'includes/index_cache.php';
 	clearCache();
 
-	$logline = AddToLog("Gedcom configuration ".$INDEX_DIRECTORY.WT_GEDCOM."_conf.php"." updated", 'config');
 	if (!$errors) {
 		$gednews = getUserNews(WT_GEDCOM);
 		if (count($gednews)==0) {
