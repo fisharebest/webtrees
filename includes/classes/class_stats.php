@@ -117,10 +117,10 @@ class stats {
 			$alignVar = 'left';
 			$alignRes = 'left';
 		}
-		$out = "<table>
+		$out = "<table id=\"keywords\">
 					<tr>
 						<th align=\"{$alignVar}\" class=\"list_label_wrap\">".i18n::translate('Embedded variable')."</th>
-						<th align=\"{$alignVar}\" class=\"list_label_wrap \">".i18n::translate('Resulting value')."</th>
+						<th style=\"text-align:{$alignVar};\" class=\"list_label_wrap \">".i18n::translate('Resulting value')."</th>
 					</tr>";
 					foreach ($examples as $tag=>$v) {
 						$out .= "\t<tr>";
