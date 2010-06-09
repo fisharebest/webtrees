@@ -527,12 +527,12 @@ function showFact($fact, $pid, $type='INDI') {
 
 	//-- check the person facts array
 	if (isset($person_facts[$pid][$fact])) {
-		return $pgv_USER_ACCESS_LEVEL>$person_facts[$pid][$fact];
+		return $pgv_USER_ACCESS_LEVEL>=$person_facts[$pid][$fact];
 	}
 
 	//-- check the global facts array
 	if (isset($global_facts[$fact])) {
-		return $pgv_USER_ACCESS_LEVEL>$global_facts[$fact];
+		return $pgv_USER_ACCESS_LEVEL>=$global_facts[$fact];
 	}
 
 	if ($fact!="NAME") {
