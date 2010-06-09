@@ -465,13 +465,13 @@ if (check_media_structure()) {
 					if (!$media["THUMBEXISTS"]) {
 						if (generate_thumbnail($media["FILE"], $thumbnail)) {
 							echo i18n::translate('Thumbnail %s generated automatically.', $thumbnail);
-							AddToChangeLog("Thumbnail {$thumbnail} generated automatically.");
+							AddToLog("Thumbnail {$thumbnail} generated automatically.", 'edit');
 						}
 						else {
 							echo "<span class=\"error\">";
 							echo i18n::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
 							echo "</span>";
-							AddToChangeLog("Thumbnail {$thumbnail} could not be generated automatically.");
+							AddToLog("Thumbnail {$thumbnail} could not be generated automatically.", 'edit');
 						}
 						echo "<br />";
 					}
@@ -483,13 +483,13 @@ if (check_media_structure()) {
 				$thumbnail = str_replace("$MEDIA_DIRECTORY", $MEDIA_DIRECTORY."thumbs/", check_media_depth($filename, "NOTRUNC"));
 				if (generate_thumbnail($filename, $thumbnail)) {
 					echo i18n::translate('Thumbnail %s generated automatically.', $thumbnail);
-					AddToChangeLog("Thumbnail {$thumbnail} generated automatically.");
+					AddToLog("Thumbnail {$thumbnail} generated automatically.", 'edit');
 				}
 				else {
 					echo "<span class=\"error\">";
 					echo i18n::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
 					echo "</span>";
-					AddToChangeLog("Thumbnail {$thumbnail} could not be generated automatically.");
+					AddToLog("Thumbnail {$thumbnail} could not be generated automatically.", 'edit');
 				}
 			}
 		}
@@ -647,11 +647,11 @@ if (check_media_structure()) {
 				if (file_exists($server_filename) && $allowDelete) {
 					if (@unlink($server_filename)) {
 						print i18n::translate('Media file successfully deleted.')."<br />";
-						AddToChangeLog($server_filename." -- ".i18n::translate('Media file successfully deleted.'));
+						AddToLog($server_filename." -- ".i18n::translate('Media file successfully deleted.'), 'edit');
 					} else {
 						$finalResult = false;
 						print "<span class=\"error\">".i18n::translate('Media file could not be deleted.')."</span><br />";
-						AddToChangeLog($server_filename." -- ".i18n::translate('Media file could not be deleted.'));
+						AddToLog($server_filename." -- ".i18n::translate('Media file could not be deleted.'), 'edit');
 					}
 				}
 
@@ -661,11 +661,11 @@ if (check_media_structure()) {
 				if (file_exists($server_thumbnail) && $allowDelete) {
 					if (@unlink($server_thumbnail)) {
 						print i18n::translate('Thumbnail file successfully deleted.')."<br />";
-						AddToChangeLog($server_thumbnail." -- ".i18n::translate('Thumbnail file successfully deleted.'));
+						AddToLog($server_thumbnail." -- ".i18n::translate('Thumbnail file successfully deleted.'), 'edit');
 					} else {
 						$finalResult = false;
 						print "<span class=\"error\">".i18n::translate('Thumbnail file could not be deleted.')."</span><br />";
-						AddToChangeLog($server_thumbnail." -- ".i18n::translate('Thumbnail file could not be deleted.'));
+						AddToLog($server_thumbnail." -- ".i18n::translate('Thumbnail file could not be deleted.'), 'edit');
 					}
 				}
 			}

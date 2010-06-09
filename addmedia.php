@@ -430,11 +430,11 @@ if ($action=="newentry") {
 		$mediaid = Media::in_obje_list($media_obje);
 		if (!$mediaid) $mediaid = append_gedrec($newged, WT_GED_ID);
 		if ($mediaid) {
-			AddToChangeLog("Media ID ".$mediaid." successfully added.");
+			AddToLog("Media ID ".$mediaid." successfully added.", 'edit');
 			if ($linktoid!="") $link = linkMedia($mediaid, $linktoid, $level);
 			else $link = false;
 			if ($link) {
-				AddToChangeLog("Media ID ".$media_id." successfully added to $linktoid.");
+				AddToLog("Media ID ".$media_id." successfully added to $linktoid.", 'edit');
 			} else {
 				echo "<a href=\"javascript://OBJE $mediaid\" onclick=\"openerpasteid('$mediaid'); return false;\">", i18n::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br /><br />\n";
 				echo WT_JS_START;
@@ -613,7 +613,7 @@ if ($action == "update") {
 		if ($pid && $linktoid!="") {
 			$link = linkMedia($pid, $linktoid, $level);
 			if ($link) {
-				AddToChangeLog("Media ID ".$pid." successfully added to $linktoid.");
+				AddToLog("Media ID ".$pid." successfully added to $linktoid.", 'edit');
 			}
 		}
 	}
@@ -625,7 +625,7 @@ if ($action == "update") {
 // **** begin action "delete"
 if ($action=="delete") {
 	if (delete_gedrec($pid, WT_GED_ID)) {
-		AddToChangeLog("Media ID ".$pid." successfully deleted.");
+		AddToLog("Media ID ".$pid." successfully deleted.", 'edit');
 		print i18n::translate('Update successful');
 	}
 }

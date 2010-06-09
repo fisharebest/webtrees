@@ -305,19 +305,6 @@ function AddToSearchLog($log_message, $geds) {
 	}
 }
 
-//----------------------------------- AddToChangeLog
-//-- requires a string to add into the changelog-file
-function AddToChangeLog($log_message, $ged_id=WT_GED_ID) {
-	WT_DB::prepare(
-		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('change', ?, ?, ?, ?)"
-	)->execute(array(
-		$log_message,
-		$_SERVER['REMOTE_ADDR'],
-		WT_USER_ID ? WT_USER_ID : null,
-		$ged_id
-	));
-}
-
 //----------------------------------- addMessage
 //-- stores a new message in the database
 function addMessage($message) {

@@ -294,7 +294,7 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 					$gedrec = preg_replace("/0 @(.*)@/", "0 @".$oldgid."@", $gedrec);
 					$gid = $oldgid;
 				} else {
-					AddToChangeLog("Warning: $oldgid was changed to $gid");
+					AddToLog("Warning: $oldgid was changed to $gid", 'edit');
 				}
 			}
 		}
@@ -344,7 +344,7 @@ function append_gedrec($gedrec, $ged_id) {
 			WT_USER_ID
 		));
 
-		AddToChangeLog("Appending new $type record $xref");
+		AddToLog("Appending new $type record $xref", 'edit');
 
 		if (WT_USER_AUTO_ACCEPT) {
 			accept_all_changes($xref, WT_GED_ID);
@@ -367,7 +367,7 @@ function delete_gedrec($xref, $ged_id) {
 		WT_USER_ID
 	));
 
-	AddToChangeLog("Deleting gedcom record $xref");
+	AddToLog("Deleting gedcom record $xref", 'edit');
 
 	if (WT_USER_AUTO_ACCEPT) {
 		accept_all_changes($xref, WT_GED_ID);
@@ -381,7 +381,7 @@ function check_gedcom($gedrec, $chan=true) {
 	$ct = preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
 	if ($ct==0) {
 		echo "ERROR 20: Invalid GEDCOM format";
-		AddToChangeLog("ERROR 20: Invalid GEDCOM format.->" . WT_USER_NAME ."<-");
+		AddToLog("ERROR 20: Invalid GEDCOM format:\n".$gedrec, 'edit');
 		if (WT_DEBUG) {
 			echo "<pre>$gedrec</pre>\n";
 			echo debug_print_backtrace();
