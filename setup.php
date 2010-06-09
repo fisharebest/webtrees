@@ -695,7 +695,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS wt_default_resn (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}default_resn` (".
 		" default_resn_id INTEGER AUTO_INCREMENT                             NOT NULL,".
 		" gedcom_id       INTEGER                                            NOT NULL,".
 		" xref            VARCHAR(20)                                            NULL,".
