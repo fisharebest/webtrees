@@ -49,6 +49,8 @@ define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
+$SUBLIST_TRIGGER_I=get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I');
+
 // We show three different lists:
 $alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 $surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "

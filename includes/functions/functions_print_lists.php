@@ -49,7 +49,9 @@ require_once WT_ROOT.'includes/cssparser.inc.php';
  */
 function print_indi_table($datalist, $legend="", $option="") {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER, $SHOW_EST_LIST_DATES, $MAX_ALIVE_AGE;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE;
+
+	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 
 	if ($option=="MARR_PLAC") return;
 	if (count($datalist)<1) return;
