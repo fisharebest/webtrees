@@ -226,7 +226,7 @@ case 'importform':
 		}
 	}
 	echo '<br /><br /><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
-	echo i18n::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then tick this box to merge the current media objects with the new GEDCOM.');
+	echo i18n::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
 	echo '<br /><br /><input type="submit" value="', i18n::translate('Save'), '" /></form>';
 	echo '</form>';
 	echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', i18n::translate('Cancel'), '" /></form>';
