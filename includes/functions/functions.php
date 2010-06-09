@@ -164,23 +164,6 @@ function trim_recursive($var) {
 	}
 }
 
-// Update the variable definitions in a PHP config file, such as config.php
-function update_config(&$text, $var, $value) {
-	// NULL values probably wouldn't hurt, but empty strings are probably better
-	if (is_null($value)) {
-		$value='';
-	}
-	$regex='/^[ \t]*[$]'.$var.'[ \t]*=.*;[ \t]*/m';
-	$assign='$'.$var.'='.var_export($value, true).'; ';
-	if (preg_match($regex, $text)) {
-		// Variable found in file - update it
-		$text=preg_replace($regex, $assign, $text);
-	} else {
-		// Variable not found in file - insert it
-		$text=preg_replace('/^(.*[\r\n]+)([ \t]*[$].*)$/s', '$1'.$assign." // new config variable\n".'$2', $text);
-	}
-}
-
 // Convert a file upload PHP error code into user-friendly text
 function file_upload_error_text($error_code) {
 	switch ($error_code) {
