@@ -2366,49 +2366,9 @@ case 'MEMORY_LIMIT':
 	$text=i18n::translate('The maximum amount of memory that can be consumed by <b>webtrees</b> scripts.  The default is 32 Mb.  Many hosts disable this option in their PHP configuration; changing this value may not actually affect the current maximum memory setting.');
 	break;
 
-case 'META_AUDIENCE':
-	$title=i18n::translate('Audience META tag');
-	$text=i18n::translate('The value to place in the Audience meta tag in the HTML page header.');
-	break;
-
-case 'META_AUTHOR':
-	$title=i18n::translate('Author META tag');
-	$text=i18n::translate('The value to place in the Author meta tag in the HTML page header.  Leave this field empty to use the full name of the Genealogy contact.');
-	break;
-
-case 'META_COPYRIGHT':
-	$title=i18n::translate('Copyright META tag');
-	$text=i18n::translate('The value to place in the Copyright meta tag in the HTML page header.  Leave this field empty to use the full name of the Genealogy contact.');
-	break;
-
 case 'META_DESCRIPTION':
 	$title=i18n::translate('Description META tag');
 	$text=i18n::translate('The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database.');
-	break;
-
-case 'META_KEYWORDS':
-	$title=i18n::translate('Keywords META tag');
-	$text=i18n::translate('The value to place in the Keywords meta tag in the HTML page header.  Some search engines will use the Keywords meta tag to help index your page.<br /><br />The Most Common Surnames list that appears in the GEDCOM Statistics block on your Home Page can also be added to anything you enter here.');
-	break;
-
-case 'META_PAGE_TOPIC':
-	$title=i18n::translate('Page-topic META tag');
-	$text=i18n::translate('The value to place in the Page-topic meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database.');
-	break;
-
-case 'META_PAGE_TYPE':
-	$title=i18n::translate('Page-type META tag');
-	$text=i18n::translate('The value to place in the Page-type meta tag in the HTML page header.');
-	break;
-
-case 'META_PUBLISHER':
-	$title=i18n::translate('Publisher META tag');
-	$text=i18n::translate('The value to place in the Publisher meta tag in the HTML page header.  Leave this field empty to use the full name of the Genealogy contact.');
-	break;
-
-case 'META_REVISIT':
-	$title=i18n::translate('How often should crawlers revisit META tag');
-	$text=i18n::translate('The value to place in the Revisit meta tag in the HTML page header.  Some web crawlers ignore this value.');
 	break;
 
 case 'META_ROBOTS':

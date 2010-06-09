@@ -65,16 +65,8 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	'<meta name="author" content="', htmlspecialchars($META_AUTHOR), '" />',
-	'<meta name="publisher" content="', htmlspecialchars($META_PUBLISHER), '" />',
-	'<meta name="copyright" content="', htmlspecialchars($META_COPYRIGHT), '" />',
 	'<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />',
-	'<meta name="page-topic" content="', htmlspecialchars($META_PAGE_TOPIC), '" />',
-	'<meta name="audience" content="', htmlspecialchars($META_AUDIENCE), '" />',
-	'<meta name="page-type" content="', htmlspecialchars($META_PAGE_TYPE), '" />',
 	'<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />',
-	'<meta name="revisit-after" content="', htmlspecialchars($META_REVISIT), '" />',
-	'<meta name="keywords" content="', htmlspecialchars($META_KEYWORDS), '" />',
 	'<meta name="generator" content="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" />';
 
 echo

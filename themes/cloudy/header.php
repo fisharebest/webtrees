@@ -70,16 +70,8 @@ $menubar = new MenuBar();
 	</style>
 	<?php }
 	if ($view!="simple") { ?>
-		<?php if (!empty($META_AUTHOR)) { ?><meta name="author" content="<?php echo htmlspecialchars($META_AUTHOR); ?>" /><?php } ?>
-		<?php if (!empty($META_PUBLISHER)) { ?><meta name="publisher" content="<?php echo htmlspecialchars($META_PUBLISHER); ?>" /><?php } ?>
-		<?php if (!empty($META_COPYRIGHT)) { ?><meta name="copyright" content="<?php echo ($META_COPYRIGHT); ?>" /><?php } ?>
-		<meta name="keywords" content="<?php echo htmlspecialchars($META_KEYWORDS); ?>" />
 		<?php if (!empty($META_DESCRIPTION)) { ?><meta name="description" content="<?php echo htmlspecialchars($META_DESCRIPTION); ?>" /><?php } ?>
-		<?php if (!empty($META_PAGE_TOPIC)) { ?><meta name="page-topic" content="<?php echo htmlspecialchars($META_PAGE_TOPIC); ?>" /><?php } ?>
-		<?php if (!empty($META_AUDIENCE)) { ?><meta name="audience" content="<?php echo htmlspecialchars($META_AUDIENCE); ?>" /><?php } ?>
-		<?php if (!empty($META_PAGE_TYPE)) { ?><meta name="page-type" content="<?php echo htmlspecialchars($META_PAGE_TYPE); ?>" /><?php } ?>
 		<?php if (!empty($META_ROBOTS)) { ?><meta name="robots" content="<?php echo htmlspecialchars($META_ROBOTS); ?>" /><?php } ?>
-		<?php if (!empty($META_REVISIT)) { ?><meta name="revisit-after" content="<?php echo htmlspecialchars($META_REVISIT); ?>" /><?php } ?>
 		<meta name="generator" content="<?php echo WT_WEBTREES, ' - ', WT_WEBTREES_URL; ?>" />
 	<?php } ?>
 	<?php echo $javascript; ?>

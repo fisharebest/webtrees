@@ -179,15 +179,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL',               safe_POST_bool('NEW_MEDIA_EXTERNAL'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS',        safe_POST_bool('NEW_MEDIA_FIREWALL_THUMBS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              safe_POST('NEW_MEDIA_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'META_AUDIENCE',                safe_POST('NEW_META_AUDIENCE'));
-	set_gedcom_setting(WT_GED_ID, 'META_AUTHOR',                  safe_POST('NEW_META_AUTHOR'));
-	set_gedcom_setting(WT_GED_ID, 'META_COPYRIGHT',               safe_POST('NEW_META_COPYRIGHT'));
 	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             safe_POST('NEW_META_DESCRIPTION'));
-	set_gedcom_setting(WT_GED_ID, 'META_KEYWORDS',                safe_POST('NEW_META_KEYWORDS'));
-	set_gedcom_setting(WT_GED_ID, 'META_PAGE_TOPIC',              safe_POST('NEW_META_PAGE_TOPIC'));
-	set_gedcom_setting(WT_GED_ID, 'META_PAGE_TYPE',               safe_POST('NEW_META_PAGE_TYPE'));
-	set_gedcom_setting(WT_GED_ID, 'META_PUBLISHER',               safe_POST('NEW_META_PUBLISHER'));
-	set_gedcom_setting(WT_GED_ID, 'META_REVISIT',                 safe_POST('NEW_META_REVISIT'));
 	set_gedcom_setting(WT_GED_ID, 'META_ROBOTS',                  safe_POST('NEW_META_ROBOTS'));
 	set_gedcom_setting(WT_GED_ID, 'META_TITLE',                   safe_POST('NEW_META_TITLE'));
 	set_gedcom_setting(WT_GED_ID, 'MULTI_MEDIA',                  safe_POST_bool('NEW_MULTI_MEDIA'));
