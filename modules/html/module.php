@@ -182,113 +182,111 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		
 		$templates=array(
 			i18n::translate('Keyword examples')=>
-'<table id="keywords" class="sortable list_table center">
- <tr>
-   <th class="list_label">'.i18n::translate('Embedded variable').'</th>
-   <th class="list_label sorttable_nosort">'.i18n::translate('Resulting value').'</th>
- </tr>
- #getAllTagsTable#
-</table>',
-i18n::translate('Narrative description')=>/* I18N: do not translate the #keywords# */ i18n::translate('This site was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br /><br />If you have any comments or feedback please contact #contactWebmaster#.'),
-			i18n::translate('GEDCOM statistics')=>'<div class="gedcom_stats">
-<span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br />
-'.i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', '#gedcomCreatedSoftware#', '#gedcomDate#').'
-<table>
- <tr>
-  <td valign="top" class="width20">
-   <table cellspacing="1" cellpadding="0">
-    <tr>
-     <td class="facts_label">'.i18n::translate('Individuals').'</td>
-     <td class="facts_value">&nbsp;<a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Total surnames').'</td>
-     <td class="facts_value">&nbsp;<a href="indilist.php?surname_sublist=yes">#totalSurnames#</a></td>
-    </tr>
-    <tr>
-     <td class="facts_label">'. i18n::translate('Families').'</td>
-     <td class="facts_value">&nbsp;<a href="famlist.php">#totalFamilies#</a></td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Sources').'</td>
-     <td class="facts_value">&nbsp;<a href="sourcelist.php">#totalSources#</a></td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Media objects').'</td>
-     <td class="facts_value">&nbsp;#totalMedia#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Other records').'</td>
-     <td class="facts_value">&nbsp;#totalOtherRecords#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Total events').'</td>
-     <td class="facts_value">&nbsp;#totalEvents#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Males').'</td>
-     <td class="facts_value">&nbsp;#totalSexMales# [#totalSexMalesPercentage#%]</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Females').'</td>
-     <td class="facts_value">&nbsp;#totalSexFemales#  [#totalSexFemalesPercentage#%]</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Total users').'</td>
-     <td class="facts_value">&nbsp;#totalUsers#</td>
-    </tr>
-   </table>
-  </td>
-  <td><br /></td>
-  <td valign="top">
-   <table cellspacing="1" cellpadding="0" border="0">
-    <tr>
-     <td class="facts_label">'.i18n::translate('Earliest birth year').'</td>
-     <td class="facts_value">&nbsp;#firstBirthYear#&nbsp;</td>
-     <td class="facts_value">#firstBirth#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Latest birth year').'</td>
-     <td class="facts_value">&nbsp;#lastBirthYear#&nbsp;</td>
-     <td class="facts_value">#lastBirth#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Earliest death year').'</td>
-     <td class="facts_value">&nbsp;#firstDeathYear#&nbsp;</td>
-     <td class="facts_value">#firstDeath#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Latest death year').'</td>
-     <td class="facts_value">&nbsp;#lastDeathYear#&nbsp;</td>
-     <td class="facts_value">#lastDeath#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Person who lived the longest').'</td>
-     <td class="facts_value">&nbsp;#longestLifeAge#&nbsp;</td>
-     <td class="facts_value">#longestLife#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Average age at death').'</td>
-     <td class="facts_value">&nbsp;#averageLifespan#&nbsp;</td>
-     <td class="facts_value"></td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Family with the most children').'</td>
-     <td class="facts_value">&nbsp;#largestFamilySize#&nbsp;</td>
-     <td class="facts_value">#largestFamily#</td>
-    </tr>
-    <tr>
-     <td class="facts_label">'.i18n::translate('Average number of children per family').'</td>
-     <td class="facts_value">&nbsp;#averageChildren#</td>
-     <td class="facts_value"></td>
-    </tr>
-   </table>
-  </td>
- </tr>
-</table><br />
-<span style="font-weight: bold">'.i18n::translate('Most Common Surnames').'</span><br />
-#commonSurnames#
-</div>'
+			'#getAllTagsTable#',
+
+			i18n::translate('Narrative description')=>
+			/* I18N: do not translate the #keywords# */ i18n::translate('This site was last updated on #gedcomUpdated#. There are #totalSurnames# surnames in this family tree. The earliest recorded event is the #firstEventType# of #firstEventName# in #firstEventYear#. The most recent event is the #lastEventType# of #lastEventName# in #lastEventYear#.<br /><br />If you have any comments or feedback please contact #contactWebmaster#.'),
+
+			i18n::translate('GEDCOM statistics')=>
+			'<div class="gedcom_stats">
+				<span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br />
+				'.i18n::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', '#gedcomCreatedSoftware#', '#gedcomDate#').'
+				<table id="keywords">
+					<tr>
+						<td valign="top" class="width20">
+							<table cellspacing="1" cellpadding="0">
+								<tr>
+									<td class="facts_label">'.i18n::translate('Individuals').'</td>
+									<td class="facts_value">&nbsp;<a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Total surnames').'</td>
+									<td class="facts_value">&nbsp;<a href="indilist.php?surname_sublist=yes">#totalSurnames#</a></td>
+								</tr>
+								<tr>
+									<td class="facts_label">'. i18n::translate('Families').'</td>
+									<td class="facts_value">&nbsp;<a href="famlist.php">#totalFamilies#</a></td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Sources').'</td>
+									<td class="facts_value">&nbsp;<a href="sourcelist.php">#totalSources#</a></td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Media objects').'</td>
+									<td class="facts_value">&nbsp;#totalMedia#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Other records').'</td>
+									<td class="facts_value">&nbsp;#totalOtherRecords#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Total events').'</td>
+									<td class="facts_value">&nbsp;#totalEvents#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Males').'</td>
+									<td class="facts_value">&nbsp;#totalSexMales# [#totalSexMalesPercentage#%]</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Females').'</td>
+									<td class="facts_value">&nbsp;#totalSexFemales#  [#totalSexFemalesPercentage#%]</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Total users').'</td>
+									<td class="facts_value">&nbsp;#totalUsers#</td>
+								</tr>
+							</table>
+						</td>
+						<td><br /></td>
+						<td valign="top">
+							<table cellspacing="1" cellpadding="0" border="0">
+								<tr>
+									<td class="facts_label">'.i18n::translate('Earliest birth year').'</td>
+									<td class="facts_value">&nbsp;#firstBirthYear#&nbsp;</td>
+									<td class="facts_value">#firstBirth#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Latest birth year').'</td>
+									<td class="facts_value">&nbsp;#lastBirthYear#&nbsp;</td>
+									<td class="facts_value">#lastBirth#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Earliest death year').'</td>
+									<td class="facts_value">&nbsp;#firstDeathYear#&nbsp;</td>
+									<td class="facts_value">#firstDeath#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Latest death year').'</td>
+									<td class="facts_value">&nbsp;#lastDeathYear#&nbsp;</td>
+									<td class="facts_value">#lastDeath#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Person who lived the longest').'</td>
+									<td class="facts_value">&nbsp;#longestLifeAge#&nbsp;</td>
+									<td class="facts_value">#longestLife#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Average age at death').'</td>
+									<td class="facts_value">&nbsp;#averageLifespan#&nbsp;</td>
+									<td class="facts_value"></td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Family with the most children').'</td>
+									<td class="facts_value">&nbsp;#largestFamilySize#&nbsp;</td>
+									<td class="facts_value">#largestFamily#</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.i18n::translate('Average number of children per family').'</td>
+									<td class="facts_value">&nbsp;#averageChildren#</td>
+									<td class="facts_value"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table><br />
+				<span style="font-weight: bold">'.i18n::translate('Most Common Surnames').'</span><br />
+				#commonSurnames#
+			</div>'
 		);
 
 		$title=get_block_setting($block_id, 'title');

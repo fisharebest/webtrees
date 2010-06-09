@@ -110,21 +110,25 @@ class stats {
 				$examples[$methods[$i]]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$methods[$i]]);
 			}
 		}
-		$out = '';
-		if ($TEXT_DIRECTION=='ltr') {
+		if ($TEXT_DIRECTION=='rtl') {
 			$alignVar = 'right';
-			$alignRes = 'left';
+			$alignRes = 'right';
 		} else {
 			$alignVar = 'left';
-			$alignRes = 'right';
+			$alignRes = 'left';
 		}
-		foreach ($examples as $tag=>$v) {
-			$out .= "\t<tr>"
-				."<td class=\"list_value_wrap\" align=\"{$alignVar}\" valign=\"top\" style=\"padding:3px\">{$tag}</td>"
-				."<td class=\"list_value_wrap\" align=\"{$alignRes}\" valign=\"top\">{$v}</td>"
-				."</tr>\n"
-			;
-		}
+		$out = "<table>
+					<tr>
+						<th align=\"{$alignVar}\" class=\"list_label_wrap\">".i18n::translate('Embedded variable')."</th>
+						<th align=\"{$alignVar}\" class=\"list_label_wrap \">".i18n::translate('Resulting value')."</th>
+					</tr>";
+					foreach ($examples as $tag=>$v) {
+						$out .= "\t<tr>";
+						$out .= "<td class=\"list_value_wrap\" align=\"{$alignVar}\" valign=\"top\" style=\"padding:3px\">{$tag}</td>";
+						$out .= "<td class=\"list_value_wrap\" align=\"{$alignRes}\" valign=\"top\">{$v}</td>";
+						$out .= "</tr>\n";
+					}
+		$out .=	'</table>';
 		return $out;
 	}
 
