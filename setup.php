@@ -591,7 +591,7 @@ try {
 	// These shouldn't fail.
 	$TBLPREFIX=$_POST['tblpfx'];
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}gedcom (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom` (".
 		" gedcom_id     INTEGER AUTO_INCREMENT                        NOT NULL,".
 		" gedcom_name   VARCHAR(255)                                  NOT NULL,".
 		" import_gedcom LONGBLOB                                      NOT NULL,".
@@ -601,23 +601,23 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}site_setting (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}site_setting` (".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY (setting_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}gedcom_setting (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom_setting` (".
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}user` (".
 		" user_id   INTEGER AUTO_INCREMENT NOT NULL,".
 		" user_name VARCHAR(32)            NOT NULL,".
 		" real_name VARCHAR(64)            NOT NULL,".
@@ -629,27 +629,27 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user_setting (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}user_setting` (".
 		" user_id       INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id) REFERENCES {$TBLPREFIX}user (user_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (user_id) REFERENCES `{$TBLPREFIX}user` (user_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}user_gedcom_setting (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}user_gedcom_setting` (".
 		" user_id       INTEGER      NOT NULL,".
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE CASCADE */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user`   (user_id)   /* ON DELETE CASCADE */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}log (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}log` (".
 		" log_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" log_type    ENUM('auth', 'config', 'debug', 'edit', 'error', 'media', 'search') NOT NULL,".
@@ -661,12 +661,12 @@ try {
 		"         KEY ix1 (log_time),".
 		"         KEY ix2 (log_type),".
 		"         KEY ix3 (ip_address),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE SET NULL */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE SET NULL */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user`   (user_id)   /* ON DELETE SET NULL */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE SET NULL */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}change (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}change` (".
 		" change_id      INTEGER AUTO_INCREMENT                  NOT NULL,".
 		" change_time    TIMESTAMP                               NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" status         ENUM('accepted', 'pending', 'rejected') NOT NULL DEFAULT 'pending',".
@@ -677,12 +677,12 @@ try {
 		" user_id        INTEGER                                 NOT NULL,".
 		" PRIMARY KEY     (change_id),".
 		"         KEY ix1 (gedcom_id, status, xref),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user   (user_id)   /* ON DELETE RESTRICT */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user`   (user_id)   /* ON DELETE RESTRICT */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}message (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}message` (".
 		" message_id INTEGER AUTO_INCREMENT NOT NULL,".
 		" sender     VARCHAR(64)            NOT NULL,". // username or email address
 		" ip_address VARCHAR(40)            NOT NULL,". // long enough for IPv6
@@ -691,7 +691,7 @@ try {
 		" body       TEXT                   NOT NULL,".
 		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" PRIMARY KEY     (message_id),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES {$TBLPREFIX}user (user_id) /* ON DELETE RESTRICT */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user` (user_id) /* ON DELETE RESTRICT */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -703,11 +703,11 @@ try {
 		" resn            ENUM ('none', 'privacy', 'confidential', 'hidden') NOT NULL,".
 		" PRIMARY KEY     (default_resn_id),".
 		" UNIQUE  KEY ux1 (gedcom_id, xref, tag_type),".
-		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES wt_gedcom (gedcom_id)".
+		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id)".
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}individuals (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}individuals` (".
 		" i_id     VARCHAR(20)         NOT NULL,".
 		" i_file   INTEGER             NOT NULL,".
 		" i_rin    VARCHAR(20)         NOT NULL,".
@@ -719,7 +719,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}families (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}families` (".
 		" f_id      VARCHAR(20)  NOT NULL,".
 		" f_file    INTEGER      NOT NULL,".
 		" f_husb    VARCHAR(20)      NULL,".
@@ -734,7 +734,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}places (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}places` (".
 		" p_id          INTEGER AUTO_INCREMENT NOT NULL,".
 		" p_place       VARCHAR(150)               NULL,".
 		" p_level       INTEGER                    NULL,".
@@ -750,7 +750,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}placelinks (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}placelinks` (".
 		" pl_p_id INTEGER NOT NULL,".
 		" pl_gid  VARCHAR(20)  NOT NULL,".
 		" pl_file INTEGER  NOT NULL,".
@@ -761,7 +761,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}dates (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}dates` (".
 		" d_day        TINYINT     NOT NULL,".
 		" d_month      CHAR(5)         NULL,".
 		" d_mon        TINYINT     NOT NULL,".
@@ -785,7 +785,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}media (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}media` (".
 		" m_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" m_media   VARCHAR(20)            NOT NULL,".
 		" m_ext     VARCHAR(6)                 NULL,".
@@ -798,7 +798,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}remotelinks (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}remotelinks` (".
 		" r_gid    VARCHAR(20)  NOT NULL,".
 		" r_linkid VARCHAR(255)     NULL,".
 		" r_file   INTEGER      NOT NULL,".
@@ -808,7 +808,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}media_mapping (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}media_mapping` (".
 		" mm_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" mm_media   VARCHAR(20)            NOT NULL,".
 		" mm_gid     VARCHAR(20)            NOT NULL,".
@@ -822,16 +822,16 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}next_id (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}next_id` (".
 		" gedcom_id   INTEGER     NOT NULL,".
 		" record_type VARCHAR(15) NOT NULL,".
 		" next_id     INTEGER     NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, record_type),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}other (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}other` (".
 		" o_id     VARCHAR(20) NOT NULL,".
 		" o_file   INTEGER     NOT NULL,".
 		" o_type   VARCHAR(15) NOT NULL,".
@@ -841,7 +841,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}sources (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}sources` (".
 		" s_id     VARCHAR(20)    NOT NULL,".
 		" s_file   INTEGER        NOT NULL,".
 		" s_name   VARCHAR(255)   NOT NULL,".
@@ -854,7 +854,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}link (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}link` (".
 		" l_file    INTEGER     NOT NULL,".
 		" l_from    VARCHAR(20) NOT NULL,".
 		" l_type    VARCHAR(15) NOT NULL,".
@@ -864,7 +864,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}name (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}name` (".
 		" n_file             INTEGER      NOT NULL,".
 		" n_id               VARCHAR(20)  NOT NULL,".
 		" n_num              INTEGER      NOT NULL,".
@@ -886,7 +886,7 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module` (".
 		" module_name   VARCHAR(32)                 NOT NULL,".
 		" status        ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
 		" tab_order     INTEGER                         NULL, ".
@@ -896,27 +896,27 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_setting (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module_setting` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
 		" setting_value TEXT        NOT NULL,".
 		" PRIMARY KEY     (module_name, setting_name),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}module_privacy (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module_privacy` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" gedcom_id     INTEGER     NOT NULL,".
 		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme') NOT NULL,".
 		" access_level  TINYINT     NOT NULL,".
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES {$TBLPREFIX}module (module_name) /* ON DELETE CASCADE */,".
-		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id)   /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name) /* ON DELETE CASCADE */,".
+		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id)   /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}block` (".
 		" block_id    INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_id   INTEGER                    NULL,".
 		" user_id     INTEGER                    NULL,".
@@ -925,32 +925,32 @@ try {
 	 	" block_order INTEGER                NOT NULL,".
 		" module_name VARCHAR(32)            NOT NULL,".
 		" PRIMARY KEY     (block_id),".
-		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES {$TBLPREFIX}gedcom (gedcom_id  ), /* ON DELETE CASCADE */".
-		" FOREIGN KEY fk2 (user_id    ) REFERENCES {$TBLPREFIX}user   (user_id    ), /* ON DELETE CASCADE */".
-		" FOREIGN KEY fk3 (module_name) REFERENCES {$TBLPREFIX}module (module_name)  /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id  ), /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk2 (user_id    ) REFERENCES `{$TBLPREFIX}user`   (user_id    ), /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk3 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name)  /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}block_setting (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}block_setting` (".
 		" block_id      INTEGER     NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
 		" setting_value TEXT        NOT NULL,".
 		" PRIMARY KEY     (block_id, setting_name),".
-		" FOREIGN KEY fk1 (block_id) REFERENCES {$TBLPREFIX}block (block_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (block_id) REFERENCES `{$TBLPREFIX}block` (block_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}hit_counter (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}hit_counter` (".
 		" gedcom_id      INTEGER     NOT NULL,".
 		" page_name      VARCHAR(32) NOT NULL,".
 		" page_parameter VARCHAR(32) NOT NULL,".
 		" page_count     INTEGER     NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, page_name, page_parameter),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES {$TBLPREFIX}gedcom (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS {$TBLPREFIX}ip_address (".
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}ip_address` (".
 		" ip_address VARCHAR(40)                                NOT NULL,". // long enough for IPv6
 		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL,".
 		" comment    VARCHAR(255)                               NOT NULL,".
@@ -959,39 +959,39 @@ try {
 	);
 
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user (user_id, user_name, real_name, email, password) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
 		" (1, '".addcslashes($_POST['wtuser'], "'")."', '".addcslashes($_POST['wtname'], "'")."', '".addcslashes($_POST['wtemail'], "'")."', '".crypt($_POST['wtpass'])."')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'canadmin', '1')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'language', '".Zend_Registry::get('Zend_Locale')."')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'verified', '1')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'verified_by_admin', '1')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'editaccount', '1')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'auto_accept', '0')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}user_setting (user_id, setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'visibleonline', '1')"
 	);
 	$dbh->exec(
-		"INSERT IGNORE INTO {$TBLPREFIX}site_setting (setting_name, setting_value) VALUES ".
+		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
 		"('WT_SCHEMA_VERSION',               '1'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
