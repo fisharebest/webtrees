@@ -276,14 +276,14 @@ function getUserGedcomId($user_id, $ged_id) {
  * add a message into the log-file
  */
 function AddToLog($log_message, $log_type='error') {
-	global $argc;
+	global $argc, $argv;
 
 	WT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
 		$log_type,
 		$log_message,
-		$argc ? 'cli' : $_SERVER['REMOTE_ADDR'],
+		$_SERVER['REMOTE_ADDR'],
 		getUserId() ? getUserId() : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null // logs raised before we select the gedcom won't have this.
 	));
