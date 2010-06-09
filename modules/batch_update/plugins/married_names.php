@@ -48,7 +48,7 @@ class married_names_bu_plugin extends base_plugin {
 	}
 
 	function updateRecord($xref, $gedrec) {
-		global $SURNAME_TRADITION;
+		$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
 		$wife_name=$match[1];

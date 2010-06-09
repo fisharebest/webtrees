@@ -306,7 +306,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SOUR_FACTS_UNIQUE;            $SOUR_FACTS_UNIQUE            =get_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE');
 	global $SPLIT_PLACES;                 $SPLIT_PLACES                 =get_gedcom_setting($ged_id, 'SPLIT_PLACES');
 	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           =get_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE');
-	global $SURNAME_TRADITION;            $SURNAME_TRADITION            =get_gedcom_setting($ged_id, 'SURNAME_TRADITION');
 	global $THEME_DIR;                    $THEME_DIR                    =get_gedcom_setting($ged_id, 'THEME_DIR');
 	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              =get_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH');
 	global $UNDERLINE_NAME_QUOTES;        $UNDERLINE_NAME_QUOTES        =get_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES');
