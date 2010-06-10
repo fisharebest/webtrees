@@ -38,7 +38,7 @@ define('WT_VERSION_RELEASE', 'svn'); // 'svn', 'beta', 'rc1', '', etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 define('WT_WEBTREES_URL',    'http://webtrees.net');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net');
-define('WT_TRANSLATORS_URL', 'https://launchpad.net/webtrees');
+define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees');
 
 // Enable debugging output?
 define('WT_DEBUG',      false);
