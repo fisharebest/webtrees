@@ -124,7 +124,7 @@ class stats {
 					</tr>";
 					foreach ($examples as $tag=>$v) {
 						$out .= "\t<tr>";
-						$out .= "<td class=\"list_value_wrap\" align=\"{$alignVar}\" valign=\"top\" style=\"padding:3px\">{$tag}</td>";
+						$out .= "<td class=\"list_value_wrap\" align=\"{$alignVar}\" valign=\"top\">{$tag}</td>";
 						$out .= "<td class=\"list_value_wrap\" align=\"{$alignRes}\" valign=\"top\">{$v}</td>";
 						$out .= "</tr>\n";
 					}
