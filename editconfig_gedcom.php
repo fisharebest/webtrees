@@ -646,6 +646,13 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_HOME_SITE_TEXT" value="<?php print htmlspecialchars($HOME_SITE_TEXT, ENT_COMPAT, 'UTF-8'); ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
+						</td>
+						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php print $META_TITLE; ?>" tabindex="<?php echo ++$i; ?>" /><br />
+						</td>
+					</tr>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
 						</td>
