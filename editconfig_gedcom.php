@@ -473,31 +473,40 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="file-options">
 				<table class="facts_table">
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('GEDCOM title'), help_link('gedcom_title'); ?></td>
-						<td class="optionbox width60"><input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('GEDCOM title'), help_link('gedcom_title'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Language'), help_link('LANGUAGE'); ?></td>
 						<td class="optionbox width60"><?php echo edit_field_language('GEDCOMLANG', $LANGUAGE, 'dir="ltr" tabindex="'.(++$i).'"');?></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Default person for pedigree and descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?></td>
-					<td class="optionbox width60 wrap"><input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
-						<?php
-							print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
-							if ($PEDIGREE_ROOT_ID) {
-								$person=Person::getInstance($PEDIGREE_ROOT_ID);
-								if ($person) {
-									echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
-								} else {
-									echo ' <span class="error">', i18n::translate('Unable to find record with ID'), '</span>';
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Default person for pedigree and descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
+						</td>
+						<td class="optionbox width60 wrap">
+							<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+							<?php
+								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
+								if ($PEDIGREE_ROOT_ID) {
+									$person=Person::getInstance($PEDIGREE_ROOT_ID);
+									if ($person) {
+										echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
+									} else {
+										echo ' <span class="error">', i18n::translate('Unable to find record with ID'), '</span>';
+									}
 								}
-							}
-						?>
+							?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?>
+						</td>
 						<td class="optionbox width60">
 							<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT" tabindex="<?php echo ++$i; ?>" onchange="show_jewish();">
 							<?php
@@ -998,11 +1007,11 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print $SUBLIST_TRIGGER_I; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="optionbox width60"><input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print $SUBLIST_TRIGGER_F; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="optionbox width60"><input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2"><?php print i18n::translate('Charts');?></td>
@@ -1188,7 +1197,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>'Hide',true=>'Show'), $SHOW_EST_LIST_DATES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>'Hide',true=>'Show'), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES'), 'tabindex="'.(++$i).'"');  ?></td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2"><?php print i18n::translate('General');?></td>
@@ -1334,7 +1343,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 								'none'=>i18n::translate_c('Surname tradition', 'None')
 							) as $value=>$desc) {
 								print '<option value="'.$value.'"';
-								if ($SURNAME_TRADITION==$value) print ' selected="selected"';
+								if (get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')==$value) print ' selected="selected"';
 								print '>'.$desc.'</option>';
 							}
 						?>
