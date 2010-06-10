@@ -478,7 +478,7 @@ class SearchControllerRoot extends BaseController {
 	{
 		global $GEDCOM, $manual_save, $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS;
 
-		$this->sgeds = array($GEDCOM);
+		$this->sgeds = array(WT_GED_ID=>WT_GEDCOM);
 		$this->srindi = "yes";
 		$this->srfams = "yes";
 		$this->srsour = "yes";
