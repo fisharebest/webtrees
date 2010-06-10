@@ -153,7 +153,7 @@ if ($view!="preview") {
 	<form name="people" method="get" action="relationship.php">
 	<input type="hidden" name="path_to_find" value="<?php print $path_to_find ?>" />
 
-	<table class="list_table <?php print $TEXT_DIRECTION ?>" style="align:<?php print ($TEXT_DIRECTION=="ltr"?"left":"right");?>; margin:0;">
+	<table class="list_table <?php print $TEXT_DIRECTION ?>" style="text-align:<?php print ($TEXT_DIRECTION=="ltr"?"left":"right");?>; margin:0;">
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">
