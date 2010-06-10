@@ -3056,17 +3056,17 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 			switch ($type) {
 			case 'url_flv':
-				$url = encode_url('js/jw_player&mod_action=flvVideo&flvVideo='.encrypt($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
 			case 'local_flv':
-				$url = encode_url('js/jw_player&mod_action=flvVideo&flvVideo='.encrypt(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
 			case 'url_wmv':
-				$url = encode_url('js/jw_player&mod_action=wmvVideo&wmvVideo='.encrypt($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
 			case 'local_audio':
 			case 'local_wmv':
-				$url = encode_url('js/jw_player&mod_action=wmvVideo&wmvVideo='.encrypt(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
 			case 'url_image':
 			case 'local_image':
@@ -3090,17 +3090,17 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 		// Lightbox is not installed or Lightbox is not appropriate for this media type
 		switch ($type) {
 		case 'url_flv':
-			$url = "javascript:;\" onclick=\" var winflv = window.open('".encode_url('js/jw_player&mod_action=flvVideo&flvVideo='.encrypt($fileName)) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
+			$url = "javascript:;\" onclick=\" var winflv = window.open('".encode_url('js/jw_player/flvVideo.php?flvVideo='.($fileName)) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
 			break 2;
 		case 'local_flv':
-			$url = "javascript:;\" onclick=\" var winflv = window.open('".encode_url('js/jw_player&mod_action=flvVideo&flvVideo='.encrypt(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
+			$url = "javascript:;\" onclick=\" var winflv = window.open('".encode_url('js/jw_player/flvVideo.php?flvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
 			break 2;
 		case 'url_wmv':
-			$url = "javascript:;\" onclick=\" var winwmv = window.open('".encode_url('js/jw_player&mod_action=wmvVideo&wmvVideo='.encrypt($fileName)) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
+			$url = "javascript:;\" onclick=\" var winwmv = window.open('".encode_url('js/jw_player/wmvVideo.php?wmvVideo='.($fileName)) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
 			break 2;
 		case 'local_wmv':
 		case 'local_audio':
-			$url = "javascript:;\" onclick=\" var winwmv = window.open('".encode_url('js/jw_player&mod_action=wmvVideo&wmvVideo='.encrypt(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
+			$url = "javascript:;\" onclick=\" var winwmv = window.open('".encode_url('js/jw_player/wmvVideo.php?wmvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
 			break 2;
 		case 'url_image':
 			$imgsize = findImageSize($fileName);

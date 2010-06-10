@@ -30,13 +30,13 @@
  * @author Brian Holland
  */
  ?>
-<html xmlns="http://www.w3.org/1999/xhtml" <?php echo i18n::html_markup(); ?>>
+<html xmlns="http://www.w3.org/1999/xhtml" <?php // echo i18n::html_markup(); ?>>
 <head>
 	<META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980 1:00:00 GMT">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<title>JW Player for Windows Media Videos</title>
-	<script type="text/javascript" src="js/jw_player/silverlight.js"></script>
-	<script type="text/javascript" src="js/jw_player/wmvplayer.js"></script>
+	<script type="text/javascript" src="silverlight.js"></script>
+	<script type="text/javascript" src="wmvplayer.js"></script>
 </head>
 <body bgcolor="#000000">
 <center>
@@ -44,18 +44,19 @@
 <?php
 global $pid, $GEDCOM ;
 global $wmvVideo;
-$wmvVideo=decrypt(safe_GET('wmvVideo'));
+// $wmvVideo=decrypt(safe_GET('wmvVideo'));
+$wmvVideo=$_GET['wmvVideo'];
 ?>
 
 <div id="myplayer">The player will be placed here</div>
 
 <script type="text/javascript">
 	var elm = document.getElementById("myplayer");
-	var src = 'js/jw_player/wmvplayer.xaml';
+	var src = 'wmvplayer.xaml';
 	var cfg = {
 		file:'<?php echo $wmvVideo; ?>',
 		<?php if (preg_match("/\.mp3$/i", $wmvVideo)) { ?>
-			logo:'js/jw_player/audio.png',
+			logo:'audio.png',
 		<?php } ?>
 		autostart:'true',
 		overstretch:'true',

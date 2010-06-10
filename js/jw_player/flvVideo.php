@@ -30,12 +30,12 @@
  * @author Brian Holland
  */
  ?>
-<html xmlns="http://www.w3.org/1999/xhtml" <?php echo i18n::html_markup(); ?>>
+<html xmlns="http://www.w3.org/1999/xhtml" <?php // echo i18n::html_markup(); ?>>
 <head>
 	<META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980 1:00:00 GMT">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<title>JW Player for Flash</title>
-	<script type="text/javascript" src="js/jw_player/swfobject.js"></script>
+	<script type="text/javascript" src="swfobject.js"></script>
 </head>
 <body bgcolor="#000000">
 <center>
@@ -43,7 +43,8 @@
 <?php
 global $pid, $GEDCOM ;
 global $flvVideo;
-$flvVideo="../../".decrypt(safe_GET('flvVideo'));
+// $flvVideo="../../".decrypt(safe_GET('flvVideo'));
+$flvVideo=$_GET['flvVideo'];
 $preview="";
 // echo "<font color=white>".$flvVideo."</font>";
 ?>
@@ -75,7 +76,7 @@ $preview="";
 	<script type="text/javascript">
 		var video 	= "<?php print $flvVideo; ?>";
 		var preview = "<?php print $preview; ?>";
-		var s1 = new SWFObject("js/jw_player/player.swf","ply","480","365","9","#000000");
+		var s1 = new SWFObject("player.swf","ply","480","365","9","#000000");
 		s1.addParam("allowfullscreen","true");
 		s1.addParam("allowscriptaccess","always");
 		s1.addParam("stretching","fill");
