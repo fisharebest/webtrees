@@ -126,8 +126,8 @@ if ($view!='simple') {
 		}
 			echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
 			echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
-			global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES;
-			if ($ALLOW_THEME_DROPDOWN && $ALLOW_USER_THEMES) {
+			global $ALLOW_THEME_DROPDOWN;
+			if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 				echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 			}
 		echo

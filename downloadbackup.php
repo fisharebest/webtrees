@@ -30,6 +30,8 @@
 define('WT_SCRIPT_NAME', 'downloadbackup.php');
 require './includes/session.php';
 
+$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
+
 $fname=safe_GET('fname');
 
 if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {

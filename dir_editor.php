@@ -35,6 +35,8 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
+$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
+
 function full_rmdir($dir) {
 	if (!is_writable($dir)) {
 		if (!@chmod($dir, WT_PERM_EXE)) {
@@ -134,7 +136,6 @@ function warnuser(cbox) {
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
 					print "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
 					print "<span class=\"name2\">".$entry."</span>";
-					print "&nbsp;&nbsp;".i18n::translate('Associated files:')."<i>&nbsp;&nbsp;".str_replace($path, "", get_gedcom_setting($ged_id, 'privacy'));
 					print "&nbsp;&nbsp;".str_replace($path, "", get_gedcom_setting($ged_id, 'config'))."</i>";
 				}
 				else if (in_array($entry, $locked_by_context)) {

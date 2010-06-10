@@ -518,7 +518,7 @@ if ($controller->action == "multisite") {
 if ($controller->action == "general" || $controller->action == "soundex") {
 	$all_gedcoms=get_all_gedcoms();
 	// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-	if ((count($all_gedcoms) > 1) && ($ALLOW_CHANGE_GEDCOM)) {
+	if ((count($all_gedcoms) > 1) && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 ?>
 	<tr>
 		<td class="list_label" style="padding: 5px;">

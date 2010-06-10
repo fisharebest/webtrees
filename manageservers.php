@@ -50,14 +50,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-$banned = array();
-if (file_exists($INDEX_DIRECTORY.'banned.php')) {
-	require($INDEX_DIRECTORY.'banned.php');
-}
-$search_engines = array();
-if (file_exists($INDEX_DIRECTORY."search_engines.php")) {
-	require($INDEX_DIRECTORY.'search_engines.php');
-}
 $remoteServers = get_server_list();
 
 $action = safe_GET('action');

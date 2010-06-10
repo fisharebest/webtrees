@@ -112,7 +112,7 @@ class SearchControllerRoot extends BaseController {
 	 * Initialization function
 	 */
 	function init() {
-		global $ALLOW_CHANGE_GEDCOM, $GEDCOM;
+		global $GEDCOM;
 
 		if ($this->action=='') {
 			$this->action='general';
@@ -159,7 +159,7 @@ class SearchControllerRoot extends BaseController {
 
 		// Retrieve the gedcoms to search in
 		$all_gedcoms=get_all_gedcoms();
-		if ($ALLOW_CHANGE_GEDCOM && count($all_gedcoms)>1) {
+		if (count($all_gedcoms)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 			foreach ($all_gedcoms as $ged_id=>$gedcom) {
 				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
 				if (isset ($_REQUEST["$str"]) || isset ($this->topsearch)) {

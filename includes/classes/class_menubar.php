@@ -60,7 +60,7 @@ class MenuBar
 	* @return Menu the menu item
 	*/
 	static function getGedcomMenu() {
-		global $ALLOW_CHANGE_GEDCOM, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 
 		if ($TEXT_DIRECTION=='rtl') $ff='_rtl'; else $ff='';
 		//-- main menu
@@ -70,7 +70,7 @@ class MenuBar
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", 'icon_large_gedcom');
 		//-- gedcom list
 		$gedcom_titles=get_gedcom_titles();
-		if ($ALLOW_CHANGE_GEDCOM && count($gedcom_titles)>1) {
+		if (count($gedcom_titles)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 			foreach ($gedcom_titles as $gedcom_title) {
 				$submenu = new Menu(PrintReady($gedcom_title->gedcom_title, true), encode_url('index.php?ctype=gedcom&ged='.$gedcom_title->gedcom_name));
 				if (!empty($WT_IMAGES['gedcom']['small'])) {
@@ -485,7 +485,6 @@ class MenuBar
 	static function getListsMenu($surname="") {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 		global $MULTI_MEDIA, $SEARCH_SPIDER;
-		global $ALLOW_CHANGE_GEDCOM;
 		global $controller;
 		
 		$style = "top";
@@ -522,7 +521,7 @@ class MenuBar
 			}
 
 			//-- gedcom list
-			if ($ALLOW_CHANGE_GEDCOM) {
+			if (get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 				foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 					$submenu = new Menu(i18n::translate('Individuals')." - ".PrintReady(get_gedcom_setting($ged_id, 'title')), encode_url('indilist.php?ged='.$gedcom));
 					if (!empty($WT_IMAGES["gedcom"]["small"]))
@@ -944,7 +943,7 @@ class MenuBar
 	* @return Menu the menu item
 	*/
 	static function getThemeMenu() {
-		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $THEME_DIR;
+		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN, $THEME_DIR;
 
 		$current=get_user_setting(WT_USER_ID, 'theme');
 		$all_themes=get_theme_names();
@@ -952,7 +951,7 @@ class MenuBar
 			$current=$THEME_DIR;		
 		}
 
-		if ($ALLOW_THEME_DROPDOWN && $ALLOW_USER_THEMES && !$SEARCH_SPIDER) {
+		if ($ALLOW_THEME_DROPDOWN && !$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES')) {
 			isset($_SERVER["QUERY_STRING"]) == true?$tqstring = "?".$_SERVER["QUERY_STRING"]:$tqstring = "";
 			$frompage = WT_SCRIPT_NAME.decode_url($tqstring);
 			if (isset($_REQUEST['mod'])) {

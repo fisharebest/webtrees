@@ -42,7 +42,7 @@ print_header(i18n::translate('GEDCOM checker').' - '.$GEDCOM);
 ////////////////////////////////////////////////////////////////////////////////
 // Scan all the gedcom directories for gedcom files
 ////////////////////////////////////////////////////////////////////////////////
-$all_dirs=array($INDEX_DIRECTORY=>'');
+$all_dirs=array(get_site_setting('INDEX_DIRECTORY')=>'');
 foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 	$all_dirs[dirname(get_gedcom_setting($ged_id, 'path')).'/']='';
 }

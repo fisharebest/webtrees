@@ -430,7 +430,7 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	global $HOME_SITE_URL, $HOME_SITE_TEXT;
 	global $BROWSERTYPE, $SEARCH_SPIDER;
 	global $view, $cart;
-	global $WT_IMAGE_DIR, $GEDCOM, $GEDCOM_TITLE, $COMMON_NAMES_THRESHOLD, $INDEX_DIRECTORY;
+	global $WT_IMAGE_DIR, $GEDCOM, $GEDCOM_TITLE, $COMMON_NAMES_THRESHOLD;
 	global $QUERY_STRING, $action, $query, $theme_name;
 	global $FAVICON, $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION, $ENABLE_RSS, $RSS_FORMAT;
@@ -846,7 +846,7 @@ function contact_menus($ged_id=WT_GED_ID) {
 
 //-- print user favorites
 function print_favorite_selector($option=0) {
-	global $GEDCOM, $INDEX_DIRECTORY, $QUERY_STRING;
+	global $GEDCOM, $QUERY_STRING;
 	global $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
 	global $controller; // Pages with a controller can be added to the favorites
 
@@ -1291,9 +1291,9 @@ function write_align_with_textdir_check($t_dir, $return=false)
 }
 //-- print theme change dropdown box
 function print_theme_dropdown($style=0) {
-	global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES;
+	global $ALLOW_THEME_DROPDOWN;
 
-	if ($ALLOW_THEME_DROPDOWN && $ALLOW_USER_THEMES) {
+	if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 		echo '<div class="theme_form">';
 		$theme_menu=MenuBar::getThemeMenu();
 		switch ($style) {

@@ -345,7 +345,7 @@ function checkPrivacyByYear($pid) {
 function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
-	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES, $INDEX_DIRECTORY;
+	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 

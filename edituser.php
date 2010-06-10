@@ -195,7 +195,7 @@ echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Email address'), help_link('edituser_email'), '</td><td class="optionbox" valign="top">';
 echo '<input type="text" name="form_email" tabindex="', ++$tab, '" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
 
-if ($ALLOW_USER_THEMES) {
+if (get_site_setting('ALLOW_USER_THEMES')) {
 	echo '<tr><td class="descriptionbox wrap">';
 	echo i18n::translate('My Theme'), help_link('edituser_user_theme'), '</td><td class="optionbox" valign="top">';
 	echo '<select name="form_theme" tabindex="', ++$tab, '">';

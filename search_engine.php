@@ -55,7 +55,7 @@ echo '</div><br />';
 
 // List of indis from each gedcom
 $all_gedcoms=get_all_gedcoms();
-if ($ALLOW_CHANGE_GEDCOM && count($all_gedcoms)>1) {
+if (get_site_setting('ALLOW_CHANGE_GEDCOM') && count($all_gedcoms)>1) {
 	foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		$title=i18n::translate('Home page').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
 		echo '<a href="', encode_url("index.php?ged={$gedcom}"), '"><b>', $title, '</b></a><br />';

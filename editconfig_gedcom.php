@@ -36,6 +36,8 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
+$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
+
 /**
  * find the name of the first GEDCOM file in a zipfile
  * @param string $zipfile	the path and filename

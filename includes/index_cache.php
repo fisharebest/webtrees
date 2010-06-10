@@ -41,7 +41,8 @@ define('WT_INDEX_CACHE_PHP', '');
  * @return boolean  returns false if the block could not be loaded from cache
  */
 function loadCachedBlock($block, $index) {
-	global $WT_BLOCKS, $INDEX_DIRECTORY, $theme_name, $GEDCOM;
+	global $WT_BLOCKS, $theme_name, $GEDCOM;
+	$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
 	//-- ignore caching when DEBUG is set
 	//-- ignore caching for logged in users
@@ -77,7 +78,8 @@ function loadCachedBlock($block, $index) {
  * @return boolean  returns false if the block could not be saved to cache
  */
 function saveCachedBlock($block, $index, $content) {
-	global $WT_BLOCKS, $INDEX_DIRECTORY, $theme_name, $GEDCOM;
+	global $WT_BLOCKS, $theme_name, $GEDCOM;
+	$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
 	//-- ignore caching when DEBUG is set
 	//-- ignore caching for logged in users
@@ -146,7 +148,7 @@ function removeDir($dir) {
  * clears the cache files
  */
 function clearCache() {
-	global $INDEX_DIRECTORY;
+	$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
 	removeDir("{$INDEX_DIRECTORY}/cache");
 }

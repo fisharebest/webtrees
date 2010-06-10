@@ -371,7 +371,7 @@ if ($action=="edituser") {
 	?>
 	</td></tr>
 	<?php
-	if ($ALLOW_USER_THEMES) {
+	if (get_site_setting('ALLOW_USER_THEMES')) {
 		?>
 		<tr><td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('My Theme'), help_link('useradmin_user_theme'); ?></td><td class="optionbox wrap" valign="top">
 		<select name="user_theme" tabindex="<?php echo ++$tab; ?>" dir="ltr">
@@ -767,7 +767,7 @@ if ($action == "createform") {
 		$tab++;
 		echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language'), 'tabindex="'.$tab.'"');
 		?></td></tr>
-		<?php if ($ALLOW_USER_THEMES) { ?>
+		<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>
 			<tr><td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('My Theme'), help_link('useradmin_user_theme'); ?></td><td class="optionbox wrap" valign="top">
 			<select name="new_user_theme" tabindex="<?php echo ++$tab; ?>">
 			<option value="" selected="selected"><?php echo i18n::translate('Site Default'); ?></option>

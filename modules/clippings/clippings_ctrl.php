@@ -452,7 +452,7 @@ class ClippingsControllerRoot extends BaseController {
 	 */
 	function zip_cart()
 	{
-		global $INDEX_DIRECTORY;
+		$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
 		switch ($this->filetype) {
 		case 'gedcom':

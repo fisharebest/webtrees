@@ -34,9 +34,9 @@ if (!defined('WT_WEBTREES')) {
 
 //-- print color theme sub type change dropdown box
 function color_theme_dropdown($style=0) {
-	global $ALLOW_THEME_DROPDOWN, $ALLOW_USER_THEMES, $COLOR_THEME_LIST;
+	global $ALLOW_THEME_DROPDOWN, $COLOR_THEME_LIST;
 
-	if ($ALLOW_THEME_DROPDOWN && $ALLOW_USER_THEMES) {
+	if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 		switch ($style) {
 		case 0:
 			return '<div class="color_form">'.MenuBar::getColorMenu($COLOR_THEME_LIST)->getMenuAsDropdown().'</div>';

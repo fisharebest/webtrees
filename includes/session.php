@@ -228,16 +228,11 @@ try {
 	exit;
 }
 
-// We'll tidy these up later.  Some of them are used infrequently.
-$INDEX_DIRECTORY                =get_site_setting('INDEX_DIRECTORY');
-$ALLOW_USER_THEMES              =get_site_setting('ALLOW_USER_THEMES');
-$ALLOW_CHANGE_GEDCOM            =get_site_setting('ALLOW_CHANGE_GEDCOM');
-$SERVER_URL                     =get_site_setting('SERVER_URL');
-
 // If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
 // www.isp.com/~example), then redirect to it.
-if (!empty($SERVER_URL) && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
-	header('Location: '.$SERVER_URL);
+$SERVER_URL=get_site_setting('SERVER_URL');
+if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
+	header('Location: '.get_site_setting('SERVER_URL'));
 	exit;
 }
 
