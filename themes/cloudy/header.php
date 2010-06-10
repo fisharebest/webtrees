@@ -123,8 +123,7 @@ $menubar = new MenuBar();
 											<input type="text" class="formbut" name="query" size="15" value="<?php echo i18n::translate('Search'); ?>"
 												onfocus="if (this.value == '<?php echo i18n::translate('Search'); ?>') this.value=''; focusHandler();"
 												onblur="if (this.value == '') this.value='<?php echo i18n::translate('Search'); ?>';" />
-											<input type="image" src="<?php echo $WT_IMAGE_DIR; ?>/go.gif" align="top" title="<?php echo i18n::translate('Search'); ?>
-											" />
+											<input type="image" src="<?php echo $WT_IMAGE_DIR,"/".$WT_IMAGES['search']['small'];?>" height="17" align="top" title="<?php echo i18n::translate('Search');?>">		
 										</form>
 									</td>
 								</tr>
