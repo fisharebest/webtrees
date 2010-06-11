@@ -928,7 +928,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_USE_MEDIA_VIEWER', array(false=>'No',true=>'Yes'), $USE_MEDIA_VIEWER, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -936,7 +936,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Show file name in media viewer'), help_link('SHOW_MEDIA_FILENAME'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_MEDIA_FILENAME', array(false=>'No',true=>'Yes'), $SHOW_MEDIA_FILENAME, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_FILENAME', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_FILENAME'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -944,7 +944,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_MEDIA_DOWNLOAD', array(false=>'No',true=>'Yes'), $SHOW_MEDIA_DOWNLOAD, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -957,7 +957,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Use media firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_USE_MEDIA_FIREWALL', array(false=>'No',true=>'Yes'), $USE_MEDIA_FIREWALL, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -974,7 +974,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Protect thumbnails of protected images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_MEDIA_FIREWALL_THUMBS', array(false=>'No',true=>'Yes'), $MEDIA_FIREWALL_THUMBS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_MEDIA_FIREWALL_THUMBS', get_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -990,7 +990,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_WATERMARK_THUMB', array(false=>'No',true=>'Yes'), $WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -998,7 +998,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Store watermarked full size images on server?'), help_link('SAVE_WATERMARK_IMAGE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SAVE_WATERMARK_IMAGE', array(false=>'No',true=>'Yes'), $SAVE_WATERMARK_IMAGE, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1006,7 +1006,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Store watermarked thumbnails on server?'), help_link('SAVE_WATERMARK_THUMB'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SAVE_WATERMARK_THUMB', array(false=>'No',true=>'Yes'), $SAVE_WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 				</table>
@@ -1024,7 +1024,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_REQUIRE_AUTHENTICATION', array(false=>'No',true=>'Yes'), $REQUIRE_AUTHENTICATION, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1056,7 +1056,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_WELCOME_TEXT_CUST_HEAD', array(false=>'No',true=>'Yes'), $WELCOME_TEXT_CUST_HEAD, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_WELCOME_TEXT_CUST_HEAD', get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1072,7 +1072,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_REGISTER_CAUTION', array(false=>'No',true=>'Yes'), $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', get_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1127,7 +1127,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Underline names in quotes'), help_link('UNDERLINE_NAME_QUOTES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_UNDERLINE_NAME_QUOTES', array(false=>'No',true=>'Yes'), $UNDERLINE_NAME_QUOTES, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_UNDERLINE_NAME_QUOTES', get_gedcom_setting(WT_GED_ID, 'UNDERLINE_NAME_QUOTES'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1135,7 +1135,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Show married names on individual list'), help_link('SHOW_MARRIED_NAMES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_MARRIED_NAMES', array(false=>'No',true=>'Yes'), $SHOW_MARRIED_NAMES, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SHOW_MARRIED_NAMES', get_gedcom_setting(WT_GED_ID, 'SHOW_MARRIED_NAMES'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 						<td class="descriptionbox nowrap">
@@ -1279,7 +1279,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_EXPAND_RELATIVES_EVENTS', array(false=>'No',true=>'Yes'), $EXPAND_RELATIVES_EVENTS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1378,7 +1378,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_ABBREVIATE_CHART_LABELS', array(false=>'No',true=>'Yes'), $ABBREVIATE_CHART_LABELS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', get_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1439,7 +1439,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_EXPAND_NOTES', array(false=>'No',true=>'Yes'), $EXPAND_NOTES, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1447,7 +1447,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_EXPAND_SOURCES', array(false=>'No',true=>'Yes'), $EXPAND_SOURCES, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', get_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1455,7 +1455,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_LEVEL2_NOTES', array(false=>'No',true=>'Yes'), $SHOW_LEVEL2_NOTES, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1484,7 +1484,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_GEDCOM_RECORD', array(false=>'No',true=>'Yes'), $SHOW_GEDCOM_RECORD, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1710,7 +1710,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Autoclose edit window'), help_link('EDIT_AUTOCLOSE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<?php echo radio_buttons('NEW_EDIT_AUTOCLOSE', array(false=>'No',true=>'Yes'), $EDIT_AUTOCLOSE, 'tabindex="'.(++$i).'"'); ?>
+						<?php echo edit_field_yes_no('NEW_EDIT_AUTOCLOSE', get_gedcom_setting(WT_GED_ID, 'EDIT_AUTOCLOSE'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1718,7 +1718,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?>
 					</td>
 					<td class="optionbox width60">
-						<?php echo radio_buttons('NEW_SPLIT_PLACES', array(false=>'No',true=>'Yes'), $SPLIT_PLACES, 'tabindex="'.(++$i).'"'); ?>
+						<?php echo edit_field_yes_no('NEW_SPLIT_PLACES', get_gedcom_setting(WT_GED_ID, 'SPLIT_PLACES'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1749,7 +1749,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Use full source citations'), help_link('FULL_SOURCES'); ?>
 					</td>
 					<td class="optionbox width60">
-						<?php echo radio_buttons('NEW_FULL_SOURCES', array(false=>'No',true=>'Yes'), $FULL_SOURCES, 'tabindex="'.(++$i).'"'); ?>
+						<?php echo edit_field_yes_no('NEW_FULL_SOURCES', get_gedcom_setting(WT_GED_ID, 'FULL_SOURCES'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1776,7 +1776,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 					<td class="descriptionbox nowrap">
 						<?php echo i18n::translate('Use GeoNames database for autocomplete on places'), help_link('USE_GEONAMES'); ?>
 					</td>
-					<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_GEONAMES', array(false=>'No',true=>'Yes'), $USE_GEONAMES, 'tabindex="'.(++$i).'"'); ?>
+					<td class="optionbox width60">
+						<?php echo edit_field_yes_no('NEW_USE_GEONAMES', get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1784,7 +1785,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN'); ?>
 					</td>
 					<td class="optionbox width60">
-						<?php echo radio_buttons('NEW_NO_UPDATE_CHAN', array(false=>'No',true=>'Yes'), $NO_UPDATE_CHAN, 'tabindex="'.(++$i).'"'); ?>
+						<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 			  </table>
