@@ -52,11 +52,6 @@ try {
 
 // TODO: it will be more efficient to fetch all LB_% settings in a single DB query
 
-$mediatab=get_module_setting('lightbox', 'LB_ENABLED', '1');  // Individual Page Media Tab
-          // Set to  0 to hide Media Tab on Indi page from All Users,
-          // Set to  1 to show Media Tab on Indi page to All Users,  [Default]
-
-
 $LB_AL_HEAD_LINKS=get_module_setting('lightbox', 'LB_AL_HEAD_LINKS', 'both');   // Album Tab Page Header Links.
           // Set to 'icon' to view icon links.
           // Set to 'text' to view text links

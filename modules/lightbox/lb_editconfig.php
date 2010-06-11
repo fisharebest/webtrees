@@ -58,7 +58,6 @@ if (!WT_USER_IS_ADMIN) {
 }
 
 if ($action=='update' && !isset($security_user)) {
-	set_module_setting('lightbox', 'LB_ENABLED',        $_POST['NEW_mediatab']);
 	set_module_setting('lightbox', 'LB_AL_HEAD_LINKS',  $_POST['NEW_LB_AL_HEAD_LINKS']);
 	set_module_setting('lightbox', 'LB_AL_THUMB_LINKS', $_POST['NEW_LB_AL_THUMB_LINKS']);
 	set_module_setting('lightbox', 'LB_TT_BALLOON',     $_POST['NEW_LB_TT_BALLOON']);
@@ -81,20 +80,6 @@ $i = 0;
 <input type="hidden" name="action" value="update" />
 
 	<table class="facts_table">
-
-		<tr >
-		<td class="descriptionbox" width="400"><b><?php print i18n::translate('Individual Page - Media Tab');?></b><?php echo help_link('mediatab', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('Appearance');?></td>
-		<td class="optionbox">
-			<select name="NEW_mediatab" tabindex="<?php $i++; print $i?>">
-				<option value="1" <?php if ($mediatab==1) print "selected=\"selected\""; ?>><?php print i18n::translate('Show');?></option>
-				<option value="0" <?php if ($mediatab==0) print "selected=\"selected\""; ?>><?php print i18n::translate('Hide');?></option>
-			</select>
-		&nbsp;&nbsp;&nbsp; <?php print i18n::translate('Show');?>&nbsp;&nbsp;<?php print i18n::translate('Hide');?>
-		</td>
-		</tr>
-	<tr><td><br>
-	</td></tr>
-
 
 		<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Individual Page - Album Tab Header');?></b><?php echo help_link('lb_al_head_links', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('Link appearance');?></td>

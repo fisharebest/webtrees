@@ -39,29 +39,10 @@ global $reorder, $GEDCOM, $LB_AL_HEAD_LINKS;
 
 $reorder=safe_get('reorder', '1', '0');
 
-/*
-if (!file_exists("modules/googlemap/defaultconfig.php")) {
-	$tabno = "7";
-}else{
-	$tabno = "8";
-}
-*/
-$tabno=safe_get('tab');
-
-// The following is temporary, until the handling of the Lightbox Help system
-// is adjusted to match the usual webtrees practice
-$lbHelpFile = "modules/lightbox/languages/help.".WT_LOCALE.".php";
-if (!file_exists($lbHelpFile)) $lbHelpFile = "modules/lightbox/languages/help_text.en.php";
-
 ?>
 
 <script language="javascript" type="text/javascript">
 <!--
-	function album_help(OPTS) {
-		var win01 = window.open("<?php print $lbHelpFile;?>?"+OPTS, "win01", "resizable=1, scrollbars=1, HEIGHT=780, WIDTH=500 ");
-		win01.focus()
-	}
-
 	function reorder_media() {
 	var win02 = window.open(
 	"edit_interface.php?action=reorder_media&pid=<?php print $pid; ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
@@ -81,7 +62,7 @@ if (!file_exists($lbHelpFile)) $lbHelpFile = "modules/lightbox/languages/help_te
 	}
 	
 	function goto_config_lightbox() {
-		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php print $pid; ?>&gedcom=<?php print $GEDCOM; ?>&tab="+selectedTab;
+		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php print $pid; ?>&gedcom=<?php print $GEDCOM; ?>#lightbox";
 	}
 -->
 </script>
@@ -113,7 +94,6 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
         if (WT_USER_IS_ADMIN) {
 			if ($LB_AL_HEAD_LINKS == "both") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				// print "<a href=\"".encode_url("module.php?mod=lightbox&mod_action=lb_editconfig&pid={$pid}&gedcom={$GEDCOM}&tab=4")."\">";
 				print "<a href=\"javascript:goto_config_lightbox()\">";
 				print "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" /><br />" ;
 				print "" . i18n::translate('Lightbox-Album Configuration') . "&nbsp;";
