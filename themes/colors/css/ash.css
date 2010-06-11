@@ -269,7 +269,7 @@ color:#f50;
 }
 
 /* Tabs ----------------------------------*/
-.ui-widget-header { border: 1px solid #fff; background: #9DA5B4 !important;  opacity: 0.67;}
+.ui-widget-header { border: 1px solid #fff; background: #9DA5B4 !important;  opacity: 0.67;  filter: alpha(opacity = 67);}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff;}
