@@ -404,14 +404,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 </script>
 <script language="JavaScript" type="text/javascript">
 <!--
-	function show_jewish() {
-		var cal=document.getElementById('NEW_CALENDAR_FORMAT');
-		if (cal.options[cal.selectedIndex].value.match(/jewish|hebrew/)) {
-			document.getElementById('hebrew-cal' ).style.display='block';
-		} else {
-			document.getElementById('hebrew-cal' ).style.display='none';
-		}
-	}
 	var pastefield;
 	function paste_id(value) {
 		pastefield.value=value;
@@ -432,19 +424,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 				echo i18n::translate('Return to the GEDCOM management menu');
 				echo "</b></a><br /><br />";
 			?>
-
-			<script language="javascript" type="text/javascript">
-			<!--
-
-			/* Function that shows or hides Hebrew calendar options */
-			function show_hebrew(){
-				var calendar = document.getElementById("NEW_CALENDAR_FORMAT");
-				if (calendar != undefined)
-					show_jewish(calendar, "hebrew-cal");
-			}
-
-			//-->
-			</script>
 		</td>
 	</tr>
 </table>
@@ -531,33 +510,45 @@ print_header(i18n::translate('GEDCOM configuration'));
 							?>
 						</select></td>
 					</tr>
-				</table>
-					<div id="hebrew-cal" style="display: none">
-						<table class="facts_table">
-							<tr>
-								<td class="descriptionbox nowrap"><?php echo i18n::translate('Display Hebrew thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?></td>
-								<td class="optionbox width60"><?php  echo radio_buttons('NEW_DISPLAY_JEWISH_THOUSANDS', array(false=>'No',true=>'Yes'), $DISPLAY_JEWISH_THOUSANDS, 'tabindex="'.(++$i).'"');  ?></td>
-							</tr>
-							<tr>
-								<td class="descriptionbox nowrap"><?php echo i18n::translate('Display Hebrew gershayim'), help_link('DISPLAY_JEWISH_GERESHAYIM'); ?></td>
-								<td class="optionbox width60"><?php  echo radio_buttons('NEW_DISPLAY_JEWISH_GERESHAYIM', array(false=>'No',true=>'Yes'), $DISPLAY_JEWISH_GERESHAYIM, 'tabindex="'.(++$i).'"');  ?></td>
-							</tr>
-						</table>
-					</div>
-				<table class="facts_table">
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Display Hebrew thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?>
+						</td>
 						<td class="optionbox width60">
-							<?php  echo radio_buttons('NEW_USE_RIN', array(false=>'No',true=>'Yes'), $USE_RIN, 'tabindex="'.(++$i).'"');  ?></td>
+							<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_THOUSANDS', get_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_THOUSANDS'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Automatically create globally unique IDs'), help_link('GENERATE_GUID'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Display Hebrew gershayim'), help_link('DISPLAY_JEWISH_GERESHAYIM'); ?>
+						</td>
 						<td class="optionbox width60">
-							<?php  echo radio_buttons('NEW_GENERATE_UIDS', array(false=>'No',true=>'Yes'), $GENERATE_UIDS, 'tabindex="'.(++$i).'"');  ?></td>
+							<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_GERESHAYIM', get_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_GERESHAYIM'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_WORD_WRAPPED_NOTES', array(false=>'No',true=>'Yes'), $WORD_WRAPPED_NOTES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_USE_RIN', get_gedcom_setting(WT_GED_ID, 'USE_RIN'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Automatically create globally unique IDs'), help_link('GENERATE_GUID'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', get_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 				</table>
 				<table class="facts_table">
@@ -565,15 +556,21 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td colspan="6" class="subbar" colspan="2"><?php print i18n::translate('ID settings'); ?></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?>
+						</td>
 						<td class="optionbox">
 							<input type="text" name="NEW_GEDCOM_ID_PREFIX" dir="ltr" value="<?php print $GEDCOM_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 						</td>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?>
+						</td>
 						<td class="optionbox">
 							<input type="text" name="NEW_FAM_ID_PREFIX" dir="ltr" value="<?php print $FAM_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 						</td>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?>
+						</td>
 						<td class="optionbox">
 							<input type="text" name="NEW_SOURCE_ID_PREFIX" dir="ltr" value="<?php print $SOURCE_ID_PREFIX; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 						</td>
@@ -682,7 +679,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Enable RSS'), help_link('ENABLE_RSS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php  echo radio_buttons('NEW_ENABLE_RSS', array(false=>'No',true=>'Yes'), $ENABLE_RSS, 'tabindex="'.(++$i).'"');  ?>
+							<?php echo edit_field_yes_no('NEW_ENABLE_RSS', get_gedcom_setting(WT_GED_ID, 'ENABLE_RSS'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -702,32 +699,60 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="privacy">
 				<table class="facts_table">
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>'Disable',true=>'Enable'), $HIDE_LIVE_PEOPLE, '');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>'Disable',true=>'Enable'), $HIDE_LIVE_PEOPLE, ''); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?></td>
-						<td class="optionbox"><?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?>
+						</td>
+						<td class="optionbox">
+							<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?></td>
-						<td class="optionbox"><?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
+						</td>
+						<td class="optionbox">
+							<?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?></td>
-						<td class="optionbox"><?php echo edit_field_access_level("SHOW_MULTISITE_SEARCH", get_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH')); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show multi-site search'), help_link('SHOW_MULTISITE_SEARCH'); ?>
+						</td>
+						<td class="optionbox">
+							<?php echo edit_field_access_level("SHOW_MULTISITE_SEARCH", get_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH')); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('PRIVACY_BY_YEAR', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR'), '');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php  echo edit_field_yes_no('PRIVACY_BY_YEAR', get_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('SHOW_PRIVATE_RELATIONSHIPS', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS'), '');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php  echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use relationship privacy'), help_link('USE_RELATIONSHIP_PRIVACY'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('USE_RELATIONSHIP_PRIVACY', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY'), '');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Use relationship privacy'), help_link('USE_RELATIONSHIP_PRIVACY'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php  echo edit_field_yes_no('USE_RELATIONSHIP_PRIVACY', get_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Max. relation path length'), help_link('MAX_RELATION_PATH_LENGTH'); ?></td>
@@ -744,12 +769,20 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Check marriage relations'), help_link('CHECK_MARRIAGE_RELATIONS'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('CHECK_MARRIAGE_RELATIONS', array(false=>'No',true=>'Yes'), get_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS'), '');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Check marriage relations'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php  echo edit_field_yes_no('CHECK_MARRIAGE_RELATIONS', get_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?></td>
-						<td class="optionbox"><input type="text" name="MAX_ALIVE_AGE" value="<?php print get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?>
+						</td>
+						<td class="optionbox">
+							<input type="text" name="MAX_ALIVE_AGE" value="<?php print get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" />
+						</td>
 					</tr>
 				</table>
 				<br />
@@ -815,89 +848,166 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="config-media">
 				<table class="facts_table">
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Enable multimedia features'), help_link('MULTI_MEDIA'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('NEW_MULTI_MEDIA', array(false=>'No',true=>'Yes'), $MULTI_MEDIA, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Enable multimedia features'), help_link('MULTI_MEDIA'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php  echo edit_field_yes_no('NEW_MULTI_MEDIA', get_gedcom_setting(WT_GED_ID, 'MULTI_MEDIA'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2"><?php print i18n::translate('General'); ?></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Keep links'), help_link('MEDIA_EXTERNAL'); ?></td>
-						<td class="optionbox width60"><?php  echo radio_buttons('NEW_MEDIA_EXTERNAL', array(false=>'No',true=>'Yes'), $MEDIA_EXTERNAL, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Multimedia directory'), help_link('MEDIA_DIRECTORY'); ?></td>
-						<td class="optionbox width60"><input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php print $MEDIA_DIRECTORY; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" />
-							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) print "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>\n";?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Multi-Media directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php print $MEDIA_DIRECTORY_LEVELS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php print $THUMBNAIL_WIDTH; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Automatically generate thumbnails'), help_link('AUTO_GENERATE_THUMBS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_AUTO_GENERATE_THUMBS', array(false=>'No',true=>'Yes'), $AUTO_GENERATE_THUMBS, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use thumbnail'), help_link('USE_THUMBS_MAIN'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_THUMBS_MAIN', array(false=>'No',true=>'Yes'), $USE_THUMBS_MAIN, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use silhouettes'), help_link('USE_SILHOUETTE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_SILHOUETTE', array(false=>'No',true=>'Yes'), $USE_SILHOUETTE, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_HIGHLIGHT_IMAGES', array(false=>'No',true=>'Yes'), $SHOW_HIGHLIGHT_IMAGES, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_MEDIA_VIEWER', array(false=>'No',true=>'Yes'), $USE_MEDIA_VIEWER, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show file name in media viewer'), help_link('SHOW_MEDIA_FILENAME'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_MEDIA_FILENAME', array(false=>'No',true=>'Yes'), $SHOW_MEDIA_FILENAME, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_MEDIA_DOWNLOAD', array(false=>'No',true=>'Yes'), $SHOW_MEDIA_DOWNLOAD, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Media Firewall');?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Use media firewall'), help_link('USE_MEDIA_FIREWALL'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_MEDIA_FIREWALL', array(false=>'No',true=>'Yes'), $USE_MEDIA_FIREWALL, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php print ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" tabindex="<?php echo ++$i; ?>" /><br />
-						<?php echo i18n::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Protect thumbnails of protected images'), help_link('MEDIA_FIREWALL_THUMBS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_MEDIA_FIREWALL_THUMBS', array(false=>'No',true=>'Yes'), $MEDIA_FIREWALL_THUMBS, 'tabindex="'.(++$i).'"');  ?></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Keep links'), help_link('MEDIA_EXTERNAL'); ?>
+						</td>
 						<td class="optionbox width60">
-							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?></td>
+							<?php  echo edit_field_yes_no('NEW_MEDIA_EXTERNAL', get_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_WATERMARK_THUMB', array(false=>'No',true=>'Yes'), $WATERMARK_THUMB, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Multimedia directory'), help_link('MEDIA_DIRECTORY'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php print $MEDIA_DIRECTORY; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" />
+							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) print "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>\n";?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Store watermarked full size images on server?'), help_link('SAVE_WATERMARK_IMAGE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SAVE_WATERMARK_IMAGE', array(false=>'No',true=>'Yes'), $SAVE_WATERMARK_IMAGE, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Multi-Media directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php print $MEDIA_DIRECTORY_LEVELS; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Store watermarked thumbnails on server?'), help_link('SAVE_WATERMARK_THUMB'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SAVE_WATERMARK_THUMB', array(false=>'No',true=>'Yes'), $SAVE_WATERMARK_THUMB, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php print $THUMBNAIL_WIDTH; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Automatically generate thumbnails'), help_link('AUTO_GENERATE_THUMBS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_AUTO_GENERATE_THUMBS', get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Use thumbnail'), help_link('USE_THUMBS_MAIN'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_USE_THUMBS_MAIN', get_gedcom_setting(WT_GED_ID, 'USE_THUMBS_MAIN'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Use silhouettes'), help_link('USE_SILHOUETTE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', get_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', get_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_USE_MEDIA_VIEWER', array(false=>'No',true=>'Yes'), $USE_MEDIA_VIEWER, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show file name in media viewer'), help_link('SHOW_MEDIA_FILENAME'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_MEDIA_FILENAME', array(false=>'No',true=>'Yes'), $SHOW_MEDIA_FILENAME, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_MEDIA_DOWNLOAD', array(false=>'No',true=>'Yes'), $SHOW_MEDIA_DOWNLOAD, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('Media Firewall');?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Use media firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_USE_MEDIA_FIREWALL', array(false=>'No',true=>'Yes'), $USE_MEDIA_FIREWALL, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php print ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" tabindex="<?php echo ++$i; ?>" /><br />
+						<?php echo i18n::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Protect thumbnails of protected images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_MEDIA_FIREWALL_THUMBS', array(false=>'No',true=>'Yes'), $MEDIA_FIREWALL_THUMBS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_WATERMARK_THUMB', array(false=>'No',true=>'Yes'), $WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Store watermarked full size images on server?'), help_link('SAVE_WATERMARK_IMAGE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SAVE_WATERMARK_IMAGE', array(false=>'No',true=>'Yes'), $SAVE_WATERMARK_IMAGE, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Store watermarked thumbnails on server?'), help_link('SAVE_WATERMARK_THUMB'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SAVE_WATERMARK_THUMB', array(false=>'No',true=>'Yes'), $SAVE_WATERMARK_THUMB, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -905,145 +1015,233 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="access-options">
 			  <table class="facts_table">
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Visitor options'); ?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('Visitor options'); ?>
+						</td>
 					</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_REQUIRE_AUTHENTICATION', array(false=>'No',true=>'Yes'), $REQUIRE_AUTHENTICATION, 'tabindex="'.(++$i).'"');  ?></td>
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Page to show after login'), help_link('PAGE_AFTER_LOGIN'); ?></td>
-					<td class="optionbox width60"><select name="NEW_PAGE_AFTER_LOGIN" tabindex="<?php echo ++$i; ?>">
-							<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') print " selected=\"selected\""; ?>><?php print i18n::translate('Home'); ?></option>
-							<option value="mypage" <?php if ($PAGE_AFTER_LOGIN=='mypage') print " selected=\"selected\""; ?>><?php print i18n::translate('My Page'); ?></option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?></td>
-					<td class="optionbox width60"><select name="NEW_WELCOME_TEXT_AUTH_MODE" tabindex="<?php echo ++$i; ?>">
-							<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') print "selected=\"selected\""; ?>><?php print i18n::translate('No predefined text'); ?></option>
-							<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states all users can request a user account'); ?></option>
-							<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
-							<option value="3" <?php if ($WELCOME_TEXT_AUTH_MODE=='3') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states only family members can request a user account'); ?></option>
-							<option value="4" <?php if ($WELCOME_TEXT_AUTH_MODE=='4') print "selected=\"selected\""; ?>><?php print i18n::translate('Choose user defined welcome text typed below'); ?></option>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?></td>
-					<td class="optionbox width60"><?php echo radio_buttons('NEW_WELCOME_TEXT_CUST_HEAD', array(false=>'No',true=>'Yes'), $WELCOME_TEXT_CUST_HEAD, 'tabindex="'.(++$i).'"');  ?></td>
-					</td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?></td>
-					<td class="optionbox width60"><textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" rows="5" cols="60" dir="ltr" tabindex="<?php echo ++$i; ?>"><?php print  $WELCOME_TEXT_AUTH_MODE_4; ?></textarea></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_REGISTER_CAUTION', array(false=>'No',true=>'Yes'), $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'"');  ?></td>
-					</td>
-				</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('User options'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_REQUIRE_AUTHENTICATION', array(false=>'No',true=>'Yes'), $REQUIRE_AUTHENTICATION, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Contextual Help links'), help_link('SHOW_CONTEXT_HELP'); ?></td>
-					<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>'Hide',true=>'Show'), $SHOW_CONTEXT_HELP, 'tabindex="'.(++$i).'"');  ?></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?></td>
-					<td class="optionbox width60"><?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>'Hide',true=>'Show'), $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"');  ?></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Default Theme'), help_link('THEME'); ?></td>
-					<td class="optionbox width60">
-						<select name="NEW_THEME_DIR" dir="ltr" tabindex="<?php echo ++$i; ?>">
-							<?php
-								foreach (get_theme_names() as $themename=>$themedir) {
-									print "<option value=\"".$themedir."\"";
-									if ($themedir == $THEME_DIR) print " selected=\"selected\"";
-									print ">".$themename."</option>\n";
-								}
-							?>
-						</select>
-					</td>
-				</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Page to show after login'), help_link('PAGE_AFTER_LOGIN'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_PAGE_AFTER_LOGIN" tabindex="<?php echo ++$i; ?>">
+								<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') print " selected=\"selected\""; ?>><?php print i18n::translate('Home'); ?></option>
+								<option value="mypage" <?php if ($PAGE_AFTER_LOGIN=='mypage') print " selected=\"selected\""; ?>><?php print i18n::translate('My Page'); ?></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
+						</td>
+						<td class="optionbox width60"><select name="NEW_WELCOME_TEXT_AUTH_MODE" tabindex="<?php echo ++$i; ?>">
+								<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') print "selected=\"selected\""; ?>><?php print i18n::translate('No predefined text'); ?></option>
+								<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states all users can request a user account'); ?></option>
+								<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
+								<option value="3" <?php if ($WELCOME_TEXT_AUTH_MODE=='3') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states only family members can request a user account'); ?></option>
+								<option value="4" <?php if ($WELCOME_TEXT_AUTH_MODE=='4') print "selected=\"selected\""; ?>><?php print i18n::translate('Choose user defined welcome text typed below'); ?></option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_WELCOME_TEXT_CUST_HEAD', array(false=>'No',true=>'Yes'), $WELCOME_TEXT_CUST_HEAD, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
+						</td>
+						<td class="optionbox width60">
+							<textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" rows="5" cols="60" dir="ltr" tabindex="<?php echo ++$i; ?>"><?php print  $WELCOME_TEXT_AUTH_MODE_4; ?></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_REGISTER_CAUTION', array(false=>'No',true=>'Yes'), $SHOW_REGISTER_CAUTION, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('User options'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Contextual Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>'Hide',true=>'Show'), $SHOW_CONTEXT_HELP, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>'Hide',true=>'Show'), $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Default Theme'), help_link('THEME'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_THEME_DIR" dir="ltr" tabindex="<?php echo ++$i; ?>">
+								<?php
+									foreach (get_theme_names() as $themename=>$themedir) {
+										print "<option value=\"".$themedir."\"";
+										if ($themedir == $THEME_DIR) print " selected=\"selected\"";
+										print ">".$themename."</option>\n";
+									}
+								?>
+							</select>
+						</td>
+					</tr>
 			  </table>
 			</div>
 			<!-- LAYOUT -->
 			<div id="layout-options">
 				<table class="facts_table">
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Names');?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('Names');?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Underline names in quotes'), help_link('UNDERLINE_NAME_QUOTES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_UNDERLINE_NAME_QUOTES', array(false=>'No',true=>'Yes'), $UNDERLINE_NAME_QUOTES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Underline names in quotes'), help_link('UNDERLINE_NAME_QUOTES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_UNDERLINE_NAME_QUOTES', array(false=>'No',true=>'Yes'), $UNDERLINE_NAME_QUOTES, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show married names on individual list'), help_link('SHOW_MARRIED_NAMES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_MARRIED_NAMES', array(false=>'No',true=>'Yes'), $SHOW_MARRIED_NAMES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show married names on individual list'), help_link('SHOW_MARRIED_NAMES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_MARRIED_NAMES', array(false=>'No',true=>'Yes'), $SHOW_MARRIED_NAMES, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php print $COMMON_NAMES_THRESHOLD; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php print $COMMON_NAMES_THRESHOLD; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php print $COMMON_NAMES_ADD; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php print $COMMON_NAMES_ADD; ?>" size="50" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Surname list style'), help_link('SURNAME_LIST_STYLE'); ?></td>
-						<td class="optionbox width60"><select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>">
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Surname list style'), help_link('SURNAME_LIST_STYLE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>">
 								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('Table'); ?></option>
 								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('Tag cloud'); ?></option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Charts');?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('Charts');?>
+						</td>
 					</tr>
 					<tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Default pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?></td>
-						<td class="optionbox width60"><select name="NEW_PEDIGREE_LAYOUT" tabindex="<?php echo ++$i; ?>">
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Default pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_PEDIGREE_LAYOUT" tabindex="<?php echo ++$i; ?>">
 								<option value="yes" <?php if ($PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Landscape'); ?></option>
 								<option value="no" <?php if (!$PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Portrait'); ?></option>
 							</select>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Default pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php print $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Default pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php print $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php print $MAX_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php print $MAX_PEDIGREE_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php print $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php print $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?></td>
-						<td class="optionbox width60"><input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php print $SHOW_PEDIGREE_PLACES; ?>" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php print $SHOW_PEDIGREE_PLACES; ?>" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Zoom boxes on charts'), help_link('ZOOM_BOXES'); ?></td>
-						<td class="optionbox width60"><select name="NEW_ZOOM_BOXES" tabindex="<?php echo ++$i; ?>">
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Zoom boxes on charts'), help_link('ZOOM_BOXES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_ZOOM_BOXES" tabindex="<?php echo ++$i; ?>">
 								<option value="disabled" <?php if ($ZOOM_BOXES=='disabled') print "selected=\"selected\""; ?>><?php print i18n::translate('Disabled'); ?></option>
 								<option value="mouseover" <?php if ($ZOOM_BOXES=='mouseover') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Over'); ?></option>
 								<option value="mousedown" <?php if ($ZOOM_BOXES=='mousedown') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Down'); ?></option>
@@ -1052,8 +1250,11 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('PopUp links on charts'), help_link('LINK_ICONS'); ?></td>
-						<td class="optionbox width60"><select name="NEW_LINK_ICONS" tabindex="<?php echo ++$i; ?>">
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('PopUp links on charts'), help_link('LINK_ICONS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_LINK_ICONS" tabindex="<?php echo ++$i; ?>">
 								<option value="disabled" <?php if ($LINK_ICONS=='disabled') print "selected=\"selected\""; ?>><?php print i18n::translate('Disabled'); ?></option>
 								<option value="mouseover" <?php if ($LINK_ICONS=='mouseover') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Over'); ?></option>
 								<option value="click" <?php if ($LINK_ICONS=='click') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Click'); ?></option>
@@ -1061,76 +1262,94 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Individual pages');?></td>
-						</tr>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('Individual pages');?>
+						</td>
+					</tr>
 					<tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Default tab to show on individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Default tab to show on individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
+						</td>
 						<td class="optionbox width60">
-						<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'"'); ?></td>
+							<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_EXPAND_RELATIVES_EVENTS', array(false=>'No',true=>'Yes'), $EXPAND_RELATIVES_EVENTS, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_EXPAND_RELATIVES_EVENTS', array(false=>'No',true=>'Yes'), $EXPAND_RELATIVES_EVENTS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show events of close relatives on individual page'), help_link('SHOW_RELATIVES_EVENTS'); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show events of close relatives on individual page'), help_link('SHOW_RELATIVES_EVENTS'); ?>
+						</td>
 						<td class="optionbox width60">
 							<input type="hidden" name="NEW_SHOW_RELATIVES_EVENTS" value="<?php echo $SHOW_RELATIVES_EVENTS; ?>" />
 							<table>
-				<?php
-				$rel_events=array(
-					array(null,         null,         '_DEAT_SPOU'),
-					array('_BIRT_CHIL', '_MARR_CHIL', '_DEAT_CHIL'),
-					array('_BIRT_GCHI', '_MARR_GCHI', '_DEAT_GCHI'),
-					array('_BIRT_GGCH', '_MARR_GGCH', '_DEAT_GGCH'),
-					array(null,         '_MARR_FATH', '_DEAT_FATH'),
-					array(null,         '_MARR_FAMC', null),
-					array(null,         '_MARR_MOTH', '_DEAT_MOTH'),
-					array('_BIRT_SIBL', '_MARR_SIBL', '_DEAT_SIBL'),
-					array('_BIRT_HSIB', '_MARR_HSIB', '_DEAT_HSIB'),
-					array('_BIRT_NEPH', '_MARR_NEPH', '_DEAT_NEPH'),
-					array(null,         null,         '_DEAT_GPAR'),
-					array(null,         null,         '_DEAT_GGPA'),
-					array('_BIRT_FSIB', '_MARR_FSIB', '_DEAT_FSIB'),
-					array('_BIRT_MSIB', '_MARR_MSIB', '_DEAT_MSIB'),
-					array('_BIRT_COUS', '_MARR_COUS', '_DEAT_COUS'),
-					array('_FAMC_EMIG', null,         null),
-					array('_FAMC_RESI', null,         null),
-				);
-				foreach ($rel_events as $row) {
-					echo '<tr>';
-					foreach ($row as $col) {
-						echo '<td>';
-						if (is_null($col)) {
-							echo '&nbsp;';
-						} else {
-							echo "<input type=\"checkbox\" name=\"SHOW_RELATIVES_EVENTS_checkbox\" value=\"".$col."\"";
-							if (strstr($SHOW_RELATIVES_EVENTS, $col)) {
-								echo " checked=\"checked\"";
-							}
-							echo " onchange=\"var old=document.configform.NEW_SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.NEW_SHOW_RELATIVES_EVENTS.value=old\" /> ";
-							echo translate_fact($col);
-						}
-						echo '</td>';
-					}
-					echo '</td>';
-				}
-				?>
+								<?php
+								$rel_events=array(
+									array(null,         null,         '_DEAT_SPOU'),
+									array('_BIRT_CHIL', '_MARR_CHIL', '_DEAT_CHIL'),
+									array('_BIRT_GCHI', '_MARR_GCHI', '_DEAT_GCHI'),
+									array('_BIRT_GGCH', '_MARR_GGCH', '_DEAT_GGCH'),
+									array(null,         '_MARR_FATH', '_DEAT_FATH'),
+									array(null,         '_MARR_FAMC', null),
+									array(null,         '_MARR_MOTH', '_DEAT_MOTH'),
+									array('_BIRT_SIBL', '_MARR_SIBL', '_DEAT_SIBL'),
+									array('_BIRT_HSIB', '_MARR_HSIB', '_DEAT_HSIB'),
+									array('_BIRT_NEPH', '_MARR_NEPH', '_DEAT_NEPH'),
+									array(null,         null,         '_DEAT_GPAR'),
+									array(null,         null,         '_DEAT_GGPA'),
+									array('_BIRT_FSIB', '_MARR_FSIB', '_DEAT_FSIB'),
+									array('_BIRT_MSIB', '_MARR_MSIB', '_DEAT_MSIB'),
+									array('_BIRT_COUS', '_MARR_COUS', '_DEAT_COUS'),
+									array('_FAMC_EMIG', null,         null),
+									array('_FAMC_RESI', null,         null),
+								);
+								foreach ($rel_events as $row) {
+									echo '<tr>';
+									foreach ($row as $col) {
+										echo '<td>';
+										if (is_null($col)) {
+											echo '&nbsp;';
+										} else {
+											echo "<input type=\"checkbox\" name=\"SHOW_RELATIVES_EVENTS_checkbox\" value=\"".$col."\"";
+											if (strstr($SHOW_RELATIVES_EVENTS, $col)) {
+												echo " checked=\"checked\"";
+											}
+											echo " onchange=\"var old=document.configform.NEW_SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.NEW_SHOW_RELATIVES_EVENTS.value=old\" /> ";
+											echo translate_fact($col);
+										}
+										echo '</td>';
+									}
+									echo '</td>';
+								}
+								?>
 							</table>
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Other');?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('Other');?>
+						</td>
 					</tr>
 					<tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Place levels to show on lists'), help_link('SHOW_LIST_PLACES'); ?></td>
-						<td class="optionbox width60"><input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php print $SHOW_LIST_PLACES; ?>" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Place levels to show on lists'), help_link('SHOW_LIST_PLACES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php print $SHOW_LIST_PLACES; ?>" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Postal code position'), help_link('POSTAL_CODE'); ?></td>
-						<td class="optionbox width60"><select name="NEW_POSTAL_CODE" tabindex="<?php echo ++$i; ?>">
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Postal code position'), help_link('POSTAL_CODE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<select name="NEW_POSTAL_CODE" tabindex="<?php echo ++$i; ?>">
 								<option value="yes" <?php if ($POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('after')); ?></option>
 								<option value="no" <?php if (!$POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('before')); ?></option>
 							</select>
@@ -1142,93 +1361,179 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="hide-show">
 				<table class="facts_table">
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('On charts');?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('On charts');?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Empty boxes on pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_EMPTY_BOXES', array(false=>'Hide',true=>'Show'), $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Empty boxes on pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_EMPTY_BOXES', array(false=>'Hide',true=>'Show'), $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_ABBREVIATE_CHART_LABELS', array(false=>'No',true=>'Yes'), $ABBREVIATE_CHART_LABELS, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_ABBREVIATE_CHART_LABELS', array(false=>'No',true=>'Yes'), $ABBREVIATE_CHART_LABELS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Birth and death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_PEDIGREE_FULL_DETAILS', array(false=>'Hide',true=>'Show'), $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Birth and death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_PEDIGREE_FULL_DETAILS', array(false=>'Hide',true=>'Show'), $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>'Hide',true=>'Show'), $PEDIGREE_SHOW_GENDER, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>'Hide',true=>'Show'), $PEDIGREE_SHOW_GENDER, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>'Hide',true=>'Show'), $SHOW_PARENTS_AGE, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>'Hide',true=>'Show'), $SHOW_PARENTS_AGE, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>'Hide',true=>'Show'), $SHOW_LDS_AT_GLANCE, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>'Hide',true=>'Show'), $SHOW_LDS_AT_GLANCE, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?></td>
-						<td class="optionbox width60"><input type="text" size="50" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_CHART_BOX_TAGS", $GEDCOM); ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" size="50" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_CHART_BOX_TAGS", $GEDCOM); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('On individual pages');?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('On individual pages');?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>'Hide',true=>'Show'), $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>'Hide',true=>'Show'), $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_EXPAND_NOTES', array(false=>'No',true=>'Yes'), $EXPAND_NOTES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_EXPAND_NOTES', array(false=>'No',true=>'Yes'), $EXPAND_NOTES, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_EXPAND_SOURCES', array(false=>'No',true=>'Yes'), $EXPAND_SOURCES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_EXPAND_SOURCES', array(false=>'No',true=>'Yes'), $EXPAND_SOURCES, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_LEVEL2_NOTES', array(false=>'No',true=>'Yes'), $SHOW_LEVEL2_NOTES, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_LEVEL2_NOTES', array(false=>'No',true=>'Yes'), $SHOW_LEVEL2_NOTES, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>'Hide',true=>'Show'), $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>'Hide',true=>'Show'), $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>'Hide',true=>'Show'), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES'), 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>'Hide',true=>'Show'), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES'), 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('General');?></td>
+						<td class="subbar" colspan="2">
+							<?php print i18n::translate('General');?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_GEDCOM_RECORD', array(false=>'No',true=>'Yes'), $SHOW_GEDCOM_RECORD, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_GEDCOM_RECORD', array(false=>'No',true=>'Yes'), $SHOW_GEDCOM_RECORD, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>'Hide',true=>'Show'), $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>'Hide',true=>'Show'), $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Upcoming events block day limit'), help_link('DAYS_TO_SHOW_LIMIT'); ?></td>
-						<td class="optionbox width60"><input type="text" name="NEW_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" size="2" tabindex="<?php echo ++$i; ?>" /></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Upcoming events block day limit'), help_link('DAYS_TO_SHOW_LIMIT'); ?>
+						</td>
+						<td class="optionbox width60">
+							<input type="text" name="NEW_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" size="2" tabindex="<?php echo ++$i; ?>" />
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Hit counters'), help_link('SHOW_COUNTER'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>'Hide',true=>'Show'), $SHOW_COUNTER, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>'Hide',true=>'Show'), $SHOW_COUNTER, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Spider tagline'), help_link('SHOW_SPIDER_TAGLINE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_SPIDER_TAGLINE', array(false=>'Hide',true=>'Show'), $SHOW_SPIDER_TAGLINE, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Spider tagline'), help_link('SHOW_SPIDER_TAGLINE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_SPIDER_TAGLINE', array(false=>'Hide',true=>'Show'), $SHOW_SPIDER_TAGLINE, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Execution statistics'), help_link('SHOW_STATS'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_STATS', array(false=>'Hide',true=>'Show'), $SHOW_STATS, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>'Hide',true=>'Show'), $SHOW_STATS, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('GEDCOM record last change date on lists'), help_link('SHOW_LAST_CHANGE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>'Hide',true=>'Show'), $SHOW_LAST_CHANGE, 'tabindex="'.(++$i).'"');  ?></td>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('GEDCOM record last change date on lists'), help_link('SHOW_LAST_CHANGE'); ?>
+						</td>
+						<td class="optionbox width60">
+							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>'Hide',true=>'Show'), $SHOW_LAST_CHANGE, 'tabindex="'.(++$i).'"'); ?>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -1236,103 +1541,192 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<div id="edit-options">
 			  <table class="facts_table">
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>'Disable',true=>'Enable'), $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'"');  ?></td>
-				</tr>
-				<tr>
-					<td class="subbar" colspan="2"><?php print i18n::translate('Facts for Individual records');?></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('All facts'), help_link('INDI_FACTS_ADD'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FACTS'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?></td>
-				</tr>
-				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
+					</td>
+					<td class="optionbox width60"><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>'Disable',true=>'Enable'), $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'"'); ?>
+					</td>
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Facts for Family records');?></td>
+						<?php print i18n::translate('Facts for Individual records');?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('All facts'), help_link('FAM_FACTS_ADD'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FAMFACTS'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FACTS'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2"><?php print i18n::translate('Facts for Source records');?></td>
+					<td class="subbar" colspan="2">
+						<?php print i18n::translate('Facts for Family records') ;?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('All facts'), help_link('FAM_FACTS_ADD'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2"><?php print i18n::translate('Facts for Repository records');?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('All facts'), help_link('REPO_FACTS_ADD'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?></td>
+					<td class="subbar" colspan="2">
+						<?php print i18n::translate('Facts for Source records');?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Unique facts'), help_link('REPO_FACTS_UNIQUE'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Quick facts'), help_link('REPO_FACTS_QUICK'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2"><?php print i18n::translate('Advanced fact settings');?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_ADVANCED_NAME_FACTS" name="NEW_ADVANCED_NAME_FACTS" value="<?php print $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_ADVANCED_NAME_FACTS", $GEDCOM); ?></td>
+					<td class="subbar" colspan="2">
+						<?php print i18n::translate('Facts for Repository records');?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?></td>
-					<td class="optionbox width60"><input type="text" id="NEW_ADVANCED_PLAC_FACTS" name="NEW_ADVANCED_PLAC_FACTS" value="<?php print $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_ADVANCED_PLAC_FACTS", $GEDCOM); ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('All facts'), help_link('REPO_FACTS_ADD'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2"><?php print i18n::translate('Other settings');?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Unique facts'), help_link('REPO_FACTS_UNIQUE'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Autoclose edit window'), help_link('EDIT_AUTOCLOSE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_EDIT_AUTOCLOSE', array(false=>'No',true=>'Yes'), $EDIT_AUTOCLOSE, 'tabindex="'.(++$i).'"');  ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Quick facts'), help_link('REPO_FACTS_QUICK'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_SPLIT_PLACES', array(false=>'No',true=>'Yes'), $SPLIT_PLACES, 'tabindex="'.(++$i).'"');  ?></td>
+					<td class="subbar" colspan="2">
+						<?php print i18n::translate('Advanced fact settings');?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?></td>
-					<td class="optionbox width60"><select name="NEW_SURNAME_TRADITION" tabindex="<?php echo ++$i; ?>">
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_ADVANCED_NAME_FACTS" name="NEW_ADVANCED_NAME_FACTS" value="<?php print $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_ADVANCED_NAME_FACTS", $GEDCOM); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?>
+					</td>
+					<td class="optionbox width60">
+						<input type="text" id="NEW_ADVANCED_PLAC_FACTS" name="NEW_ADVANCED_PLAC_FACTS" value="<?php print $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_ADVANCED_PLAC_FACTS", $GEDCOM); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="subbar" colspan="2">
+						<?php print i18n::translate('Other settings'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Autoclose edit window'), help_link('EDIT_AUTOCLOSE'); ?>
+					</td>
+					<td class="optionbox width60">
+						<?php echo radio_buttons('NEW_EDIT_AUTOCLOSE', array(false=>'No',true=>'Yes'), $EDIT_AUTOCLOSE, 'tabindex="'.(++$i).'"'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?>
+					</td>
+					<td class="optionbox width60">
+						<?php echo radio_buttons('NEW_SPLIT_PLACES', array(false=>'No',true=>'Yes'), $SPLIT_PLACES, 'tabindex="'.(++$i).'"'); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
+					</td>
+					<td class="optionbox width60">
+						<select name="NEW_SURNAME_TRADITION" tabindex="<?php echo ++$i; ?>">
 						<?php
 							foreach (array(
 								'paternal'=>i18n::translate_c('Surname tradition', 'Paternal'),
@@ -1351,12 +1745,19 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Use full source citations'), help_link('FULL_SOURCES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_FULL_SOURCES', array(false=>'No',true=>'Yes'), $FULL_SOURCES, 'tabindex="'.(++$i).'"');  ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Use full source citations'), help_link('FULL_SOURCES'); ?>
+					</td>
+					<td class="optionbox width60">
+						<?php echo radio_buttons('NEW_FULL_SOURCES', array(false=>'No',true=>'Yes'), $FULL_SOURCES, 'tabindex="'.(++$i).'"'); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?></td>
-					<td class="optionbox width60"><select name="NEW_PREFER_LEVEL2_SOURCES" tabindex="<?php echo ++$i; ?>">
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?>
+					</td>
+					<td class="optionbox width60">
+						<select name="NEW_PREFER_LEVEL2_SOURCES" tabindex="<?php echo ++$i; ?>">
 							<option value="0" <?php if ($PREFER_LEVEL2_SOURCES==='0') print " selected=\"selected\""; ?>><?php print i18n::translate('None'); ?></option>
 							<option value="1" <?php if ($PREFER_LEVEL2_SOURCES==='1' || $PREFER_LEVEL2_SOURCES===true) print " selected=\"selected\""; ?>><?php print i18n::translate('Facts'); ?></option>
 							<option value="2" <?php if ($PREFER_LEVEL2_SOURCES==='2' || $PREFER_LEVEL2_SOURCES===false) print " selected=\"selected\""; ?>><?php print i18n::translate('Record'); ?></option>
@@ -1364,16 +1765,27 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_ENABLE_AUTOCOMPLETE', array(false=>'Disable',true=>'Enable'), $ENABLE_AUTOCOMPLETE, 'tabindex="'.(++$i).'"');  ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
+					</td>
+					<td class="optionbox width60">
+						<?php echo radio_buttons('NEW_ENABLE_AUTOCOMPLETE', array(false=>'Disable',true=>'Enable'), $ENABLE_AUTOCOMPLETE, 'tabindex="'.(++$i).'"'); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Use GeoNames database for autocomplete on places'), help_link('USE_GEONAMES'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_GEONAMES', array(false=>'No',true=>'Yes'), $USE_GEONAMES, 'tabindex="'.(++$i).'"');  ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Use GeoNames database for autocomplete on places'), help_link('USE_GEONAMES'); ?>
+					</td>
+					<td class="optionbox width60"><?php echo radio_buttons('NEW_USE_GEONAMES', array(false=>'No',true=>'Yes'), $USE_GEONAMES, 'tabindex="'.(++$i).'"'); ?>
+					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap"><?php echo i18n::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN'); ?></td>
-						<td class="optionbox width60"><?php echo radio_buttons('NEW_NO_UPDATE_CHAN', array(false=>'No',true=>'Yes'), $NO_UPDATE_CHAN, 'tabindex="'.(++$i).'"');  ?></td>
+					<td class="descriptionbox nowrap">
+						<?php echo i18n::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN'); ?>
+					</td>
+					<td class="optionbox width60">
+						<?php echo radio_buttons('NEW_NO_UPDATE_CHAN', array(false=>'No',true=>'Yes'), $NO_UPDATE_CHAN, 'tabindex="'.(++$i).'"'); ?>
+					</td>
 				</tr>
 			  </table>
 			</div>
@@ -1382,11 +1794,13 @@ print_header(i18n::translate('GEDCOM configuration'));
 	<tr>
 		<td>
 			<table class="facts_table" border="0">
-			<tr><td style="padding: 5px" class="topbottombar">
-			<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
-			&nbsp;&nbsp;
-			<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
-			</td></tr>
+				<tr>
+					<td style="padding: 5px" class="topbottombar">
+						<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
+						&nbsp;&nbsp;
+						<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
+					</td>
+				</tr>
 			</table>
 		</td>
 	</tr>

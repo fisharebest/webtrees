@@ -87,10 +87,13 @@ function radio_buttons($name, $values, $selected, $extra) {
 }
 
 // Print an edit control for a Yes/No field
-function edit_field_yes_no($name, $selected='', $extra='') {
-	return select_edit_control(
-		$name, array(true=>i18n::translate('Yes'), false=>i18n::translate('No')), null, $selected, $extra
+function edit_field_yes_no($name, $selected=false, $extra='') {
+	return radio_buttons(
+		$name, array(false=>'No',true=>'Yes'), $selected, $extra
 	);
+	//return select_edit_control(
+	//	$name, array(true=>i18n::translate('Yes'), false=>i18n::translate('No')), null, $selected, $extra
+	//);
 }
 
 // Print an edit control for a checkbox
