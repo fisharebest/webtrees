@@ -72,7 +72,7 @@ if (!function_exists("is_dead")) {
 * @param string $indirec the raw gedcom record
 * @return bool true if dead false if alive
 */
-function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
+function is_dead($indirec, $current_year='', $import=false) {
 	global $MAX_ALIVE_AGE, $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -87,11 +87,7 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 	if (empty($current_year)) {
 		// If we're not redefining this, then we can do a quick check for undated deaths
 		if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 PLAC )/', $indirec)) {
-			if (!$sitemap) {
-				return update_isdead($pid, WT_GED_ID, true);
-			} else {
-				return true;
-			}
+			return update_isdead($pid, WT_GED_ID, true);
 		}
 		// Base the calculations against the current year
 		$current_year=date('Y');
@@ -103,11 +99,7 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 		$date=new GedcomDate($date_match);
 		if ($date->isOK()) {
 			$death_year=$date->gregorianYear();
-			if (!$sitemap) {
-				return update_isdead($pid, WT_GED_ID, $death_year<=$current_year);
-			} else {
-				return $death_year<=$current_year;
-			}
+			return update_isdead($pid, WT_GED_ID, $death_year<=$current_year);
 		}
 	}
 
@@ -118,11 +110,7 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 		if ($date->isOK()) {
 			$event_year=$date->gregorianYear();
 			if ($current_year-$event_year >= $MAX_ALIVE_AGE) {
-				if (!$sitemap) {
-					return update_isdead($pid, WT_GED_ID, true);
-				} else {
-					return true;
-				}
+				return update_isdead($pid, WT_GED_ID, true);
 			}
 		}
 	}
@@ -133,141 +121,113 @@ function is_dead($indirec, $current_year='', $import=false, $sitemap=false) {
 	}
 
 	// If we found no dates then check the dates of close relatives.
-		// Check parents (birth and adopted)
-		preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $indirec, $famc_matches);
-		foreach ($famc_matches[1] as $famc_match) {
-			$parents=find_parents($famc_match);
-			if ($parents) {
-				if (!empty($parents['HUSB'])) {
-					preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['HUSB'], $ged_id), $date_matches);
-					foreach ($date_matches[1] as $date_match) {
-						$date=new GedcomDate($date_match);
-						if ($date->isOK()) {
-							$event_year=$date->gregorianYear();
-							// Assume fathers are no more than 40 years older than their children
-							if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-								if (!$sitemap) {
-									return update_isdead($pid, WT_GED_ID, true);
-								} else {
-									return true;
-								}
-							}
+	// Check parents (birth and adopted)
+	preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $indirec, $famc_matches);
+	foreach ($famc_matches[1] as $famc_match) {
+		$parents=find_parents($famc_match);
+		if ($parents) {
+			if (!empty($parents['HUSB'])) {
+				preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['HUSB'], $ged_id), $date_matches);
+				foreach ($date_matches[1] as $date_match) {
+					$date=new GedcomDate($date_match);
+					if ($date->isOK()) {
+						$event_year=$date->gregorianYear();
+						// Assume fathers are no more than 40 years older than their children
+						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
+							return update_isdead($pid, WT_GED_ID, true);
 						}
 					}
 				}
-				if (!empty($parents['WIFE'])) {
-					preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['WIFE'], $ged_id), $date_matches);
-					foreach ($date_matches[1] as $date_match) {
-						$date=new GedcomDate($date_match);
-						if ($date->isOK()) {
-							$event_year=$date->gregorianYear();
-							// Assume fathers are no more than 40 years older than their children
-							if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-								if (!$sitemap) {
-									return update_isdead($pid, WT_GED_ID, true);
-								} else {
-									return true;
-								}
-							}
+			}
+			if (!empty($parents['WIFE'])) {
+				preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['WIFE'], $ged_id), $date_matches);
+				foreach ($date_matches[1] as $date_match) {
+					$date=new GedcomDate($date_match);
+					if ($date->isOK()) {
+						$event_year=$date->gregorianYear();
+						// Assume fathers are no more than 40 years older than their children
+						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
+							return update_isdead($pid, WT_GED_ID, true);
 						}
 					}
 				}
 			}
 		}
-		$children = array();
-		// Check spouses
-		preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $indirec, $fams_matches);
-		foreach ($fams_matches[1] as $fams_match) {
-			$famrec=find_family_record($fams_match, $ged_id);
-			// Check all marriage events
-			preg_match_all('/\n1 (?:'.WT_EVENTS_MARR.')(?:\n[2-9].+)*\n2 DATE (.+)/', $indirec, $date_matches);
+	}
+	$children = array();
+	// Check spouses
+	preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $indirec, $fams_matches);
+	foreach ($fams_matches[1] as $fams_match) {
+		$famrec=find_family_record($fams_match, $ged_id);
+		// Check all marriage events
+		preg_match_all('/\n1 (?:'.WT_EVENTS_MARR.')(?:\n[2-9].+)*\n2 DATE (.+)/', $indirec, $date_matches);
+		foreach ($date_matches[1] as $date_match) {
+			$date=new GedcomDate($date_match);
+			if ($date->isOK()) {
+				$event_year=$date->gregorianYear();
+				// Assume marriage occurs after age of 10
+				if ($current_year-$event_year >= $MAX_ALIVE_AGE-10) {
+					return update_isdead($pid, WT_GED_ID, true);
+				}
+			}
+		}
+		// Check spouse dates
+		$parents = find_parents_in_record($famrec);
+		if ($parents) {
+			if ($parents['HUSB']!=$pid) {
+				$spid = $parents['HUSB'];
+			} else {
+				$spid = $parents['WIFE'];
+			}
+			preg_match_all('/\n2 DATE (.+)/', find_person_record($spid, $ged_id), $date_matches);
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
 				if ($date->isOK()) {
 					$event_year=$date->gregorianYear();
-					// Assume marriage occurs after age of 10
-					if ($current_year-$event_year >= $MAX_ALIVE_AGE-10) {
-						if (!$sitemap) {
-							return update_isdead($pid, WT_GED_ID, true);
-						} else {
-							return true;
-						}
+					// Assume max age difference between spouses of 40 years
+					if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
+						return update_isdead($pid, WT_GED_ID, true);
 					}
 				}
 			}
-			// Check spouse dates
-			$parents = find_parents_in_record($famrec);
-			if ($parents) {
-				if ($parents['HUSB']!=$pid) {
-					$spid = $parents['HUSB'];
-				} else {
-					$spid = $parents['WIFE'];
-				}
-				preg_match_all('/\n2 DATE (.+)/', find_person_record($spid, $ged_id), $date_matches);
-				foreach ($date_matches[1] as $date_match) {
-					$date=new GedcomDate($date_match);
-					if ($date->isOK()) {
-						$event_year=$date->gregorianYear();
-						// Assume max age difference between spouses of 40 years
-						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-							if (!$sitemap) {
-								return update_isdead($pid, WT_GED_ID, true);
-							} else {
-								return true;
-							}
-						}
+		}
+		// Check child dates
+		preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $famrec, $chil_matches);
+		foreach ($chil_matches[1] as $chil_match) {
+			$childrec=find_person_record($chil_match, $ged_id);
+			preg_match_all('/\n2 DATE (.+)/', $childrec, $date_matches);
+			// Assume children born after age of 15
+			foreach ($date_matches[1] as $date_match) {
+				$date=new GedcomDate($date_match);
+				if ($date->isOK()) {
+					$event_year=$date->gregorianYear();
+					if ($current_year-$event_year >= $MAX_ALIVE_AGE-15) {
+						return update_isdead($pid, WT_GED_ID, true);
 					}
 				}
 			}
-			// Check child dates
-			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $famrec, $chil_matches);
-			foreach ($chil_matches[1] as $chil_match) {
-				$childrec=find_person_record($chil_match, $ged_id);
-				preg_match_all('/\n2 DATE (.+)/', $childrec, $date_matches);
-				// Assume children born after age of 15
-				foreach ($date_matches[1] as $date_match) {
-					$date=new GedcomDate($date_match);
-					if ($date->isOK()) {
-						$event_year=$date->gregorianYear();
-						if ($current_year-$event_year >= $MAX_ALIVE_AGE-15) {
-							if (!$sitemap) {
+			// Check grandchildren
+			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $childrec, $fams2_matches);
+			foreach ($fams2_matches[1] as $fams2_match) {
+				preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', find_family_record($fams2_match, $ged_id), $chil2_matches);
+				foreach ($chil2_matches[1] as $chil2_match) {
+					$grandchildrec=find_person_record($chil2_match, $ged_id);
+					preg_match_all('/\n2 DATE (.+)/', $grandchildrec, $date_matches);
+					// Assume grandchildren born after age of 30
+					foreach ($date_matches[1] as $date_match) {
+						$date=new GedcomDate($date_match);
+						if ($date->isOK()) {
+							$event_year=$date->gregorianYear();
+							if ($current_year-$event_year >= $MAX_ALIVE_AGE-30) {
 								return update_isdead($pid, WT_GED_ID, true);
-							} else {
-								return true;
-							}
-						}
-					}
-				}
-				// Check grandchildren
-				preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $childrec, $fams2_matches);
-				foreach ($fams2_matches[1] as $fams2_match) {
-					preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', find_family_record($fams2_match, $ged_id), $chil2_matches);
-					foreach ($chil2_matches[1] as $chil2_match) {
-						$grandchildrec=find_person_record($chil2_match, $ged_id);
-						preg_match_all('/\n2 DATE (.+)/', $grandchildrec, $date_matches);
-						// Assume grandchildren born after age of 30
-						foreach ($date_matches[1] as $date_match) {
-							$date=new GedcomDate($date_match);
-							if ($date->isOK()) {
-								$event_year=$date->gregorianYear();
-								if ($current_year-$event_year >= $MAX_ALIVE_AGE-30) {
-									if (!$sitemap) {
-										return update_isdead($pid, WT_GED_ID, true);
-									} else {
-										return true;
-									}
-								}
 							}
 						}
 					}
 				}
 			}
 		}
-	if (!$sitemap) {
-		return update_isdead($pid, WT_GED_ID, false);
-	} else {
-		return false;
 	}
+	return update_isdead($pid, WT_GED_ID, false);
 }
 }
 
@@ -342,7 +302,7 @@ function checkPrivacyByYear($pid) {
 *          - "REPO" record is a repository
 * @return boolean return true to show the persons details, return false to keep them private
 */
-function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
+function displayDetailsById($pid, $type = "INDI") {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
 	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES;

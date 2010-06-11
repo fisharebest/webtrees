@@ -99,7 +99,7 @@ if ($action=="sendFiles") {
 		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM `##individuals` WHERE i_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
-				if (displayDetailsById($row[0], "INDI", true)) {
+				if (displayDetailsById($row[0], "INDI")) {
 					echo "	<url>\n";
 					echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
@@ -127,7 +127,7 @@ if ($action=="sendFiles") {
 		$statement=WT_DB::prepare("SELECT f_id, f_gedcom FROM `##families` WHERE f_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
-				if (displayDetailsById($row[0], "FAM", true)) {
+				if (displayDetailsById($row[0], "FAM")) {
 					echo "	<url>\n";
 					echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
