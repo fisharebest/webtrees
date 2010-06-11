@@ -117,7 +117,7 @@ function check_media_structure() {
 			if (!mkdir($MEDIA_DIRECTORY))
 				return false;
 			if (!file_exists($MEDIA_DIRECTORY . "index.php")) {
-				$inddata = "<?php\nheader(\"Location: ../medialist.php\");\nexit;\n?>";
+				$inddata = "<?php header('Location: ../medialist.php'); exit; ?>";
 				$fp = @ fopen($MEDIA_DIRECTORY . "index.php", "w+");
 				if (!$fp)
 					print "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
@@ -594,8 +594,9 @@ function filterMedia($media, $filter, $acceptExt) {
 * @return string the location of the thumbnail
 */
 function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
-	global $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $AUTO_GENERATE_THUMBS, $MEDIA_DIRECTORY_LEVELS;
-	global $MEDIA_EXTERNAL;
+	global $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
+
+	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
 	if (strlen($filename) == 0)
 		return false;
@@ -998,8 +999,9 @@ function process_uploadMedia_form() {
 * @param bool   $showthumb the setting of the "show thumbnail" option (required by media.php)
 */
 function show_mediaUpload_form($URL='media.php', $showthumb=false) {
-	global $AUTO_GENERATE_THUMBS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
-	global $TEXT_DIRECTION;
+	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
+
+	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
 	$mediaFolders = get_media_folders();
 
@@ -1125,9 +1127,9 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 * @param int    $line  The line number in the GEDCOM record where this media item belongs
 */
 function show_media_form($pid, $action = "newentry", $filename = "", $linktoid = "", $level = 1, $line = 0) {
-	global $TEXT_DIRECTION, $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS;
-	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
-	global $AUTO_GENERATE_THUMBS, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
+	global $TEXT_DIRECTION, $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
+
+	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
 	// NOTE: add a table and form to easily add new values to the table
 	echo "<form method=\"post\" name=\"newmedia\" action=\"addmedia.php\" enctype=\"multipart/form-data\">\n";
@@ -1479,7 +1481,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	print "</table>\n";
 ?>
 		<script language="JavaScript" type="text/javascript">
-			var formid = '<?php print $formid; ?>';
+			var formid = '<?php echo $formid; ?>';
 			function updateFormat(filename) {
 				var extsearch=/\.([a-zA-Z]{3,4})$/;
 				ext='';
@@ -1869,7 +1871,9 @@ function hasMemoryForImage($serverFilename, $debug_verboseLogging=false) {
 * @param string $thumbnail
 */
 function generate_thumbnail($filename, $thumbnail) {
-	global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $AUTO_GENERATE_THUMBS, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
+	global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
+
+	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
 	if (!$AUTO_GENERATE_THUMBS) return false;
 	if (!is_writable($MEDIA_DIRECTORY."thumbs")) return false;
@@ -1953,5 +1957,3 @@ function generate_thumbnail($filename, $thumbnail) {
 	imagedestroy($new);
 	return true;
 }
-
-?>

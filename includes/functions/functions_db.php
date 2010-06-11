@@ -2090,7 +2090,7 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 function get_site_setting($setting_name, $default_value=null) {
 	return
 		WT_DB::prepare(
-			"SELECT setting_value FROM `##site_setting` WHERE setting_name=?"
+			"SELECT SQL_CACHE setting_value FROM `##site_setting` WHERE setting_name=?"
 		)->execute(array($setting_name))->fetchOne($default_value);
 }
 
@@ -2120,7 +2120,7 @@ function get_all_gedcoms() {
 function get_gedcom_titles() {
 	return
 		WT_DB::prepare(
-			"SELECT g.gedcom_id, g.gedcom_name, COALESCE(gs.setting_value, g.gedcom_name) AS gedcom_title".
+			"SELECT SQL_CACHE g.gedcom_id, g.gedcom_name, COALESCE(gs.setting_value, g.gedcom_name) AS gedcom_title".
 			" FROM `##gedcom` g".
 			" LEFT JOIN `##gedcom_setting` gs ON (g.gedcom_id=gs.gedcom_id AND gs.setting_name=?)".
 			" ORDER BY 3"
@@ -2175,7 +2175,7 @@ function get_id_from_gedcom($ged_name, $create=false) {
 function get_gedcom_setting($gedcom_id, $setting_name, $default_value=null) {
 	return
 		WT_DB::prepare(
-			"SELECT setting_value FROM `##gedcom_setting` WHERE gedcom_id=? AND setting_name=?"
+			"SELECT SQL_CACHE setting_value FROM `##gedcom_setting` WHERE gedcom_id=? AND setting_name=?"
 		)->execute(array($gedcom_id, $setting_name))->fetchOne($default_value);
 }
 
@@ -2257,14 +2257,14 @@ function get_user_count() {
 
 function get_admin_user_count() {
 	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=?")
+		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=?")
 		->execute(array('canadmin', '1'))
 		->fetchOne();
 }
 
 function get_non_admin_user_count() {
 	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##user_setting` WHERE  setting_name=? AND setting_value<>?")
+		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE  setting_name=? AND setting_value<>?")
 		->execute(array('canadmin', '1'))
 		->fetchOne();
 }
@@ -2340,7 +2340,7 @@ function get_user_password($user_id) {
 function get_user_setting($user_id, $setting_name, $default_value=null) {
 	return
 		WT_DB::prepare(
-			"SELECT setting_value FROM `##user_setting` WHERE user_id=? AND setting_name=?"
+			"SELECT SQL_CACHE setting_value FROM `##user_setting` WHERE user_id=? AND setting_name=?"
 		)->execute(array($user_id, $setting_name))->fetchOne($default_value);
 }
 
@@ -2365,7 +2365,7 @@ function admin_user_exists() {
 function get_user_gedcom_setting($user_id, $gedcom_id, $setting_name, $default_value=null) {
 	return
 		WT_DB::prepare(
-			"SELECT setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=? AND setting_name=?"
+			"SELECT SQL_CACHE setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=? AND setting_name=?"
 		)->execute(array($user_id, $gedcom_id, $setting_name))->fetchOne($default_value);
 }
 
@@ -2382,7 +2382,7 @@ function set_user_gedcom_setting($user_id, $ged_id, $setting_name, $setting_valu
 function get_user_from_gedcom_xref($ged_id, $xref) {
 	return
 		WT_DB::prepare(
-			"SELECT user_id FROM `##user_gedcom_setting`".
+			"SELECT SQL_CACHE user_id FROM `##user_gedcom_setting`".
 			" WHERE gedcom_id=? AND setting_name=? AND setting_value=?"
 		)->execute(array($ged_id, 'gedcomid', $xref))->fetchOne();
 }
@@ -2464,7 +2464,7 @@ function get_gedcom_blocks($gedcom_id) {
 function get_block_setting($block_id, $setting_name, $default_value=null) {
 	return
 		WT_DB::prepare(
-			"SELECT setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
+			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
 		)->execute(array($block_id, $setting_name))->fetchOne($default_value);
 
 }
@@ -2482,7 +2482,7 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 function get_module_setting($module_name, $setting_name, $default_value=null) {
 	return
 		WT_DB::prepare(
-			"SELECT setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
+			"SELECT SQL_CACHE setting_value FROM `##module_setting` WHERE module_name=? AND setting_name=?"
 		)->execute(array($module_name, $setting_name))->fetchOne($default_value);
 }
 
