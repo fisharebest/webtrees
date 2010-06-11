@@ -2329,9 +2329,17 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			}
 		default:
 			// Different languages have different rules for naming generations.
+			// An english great x12 nephew is a polish great x11 nephew.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
+			case 'pl': // Source: Lukasz Wilenski
+				switch ($last) {
+				case 'son': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
+				            return i18n::translate('great x%d nephew', $down-1);
+				case 'dau': return i18n::translate('great x%d niece', $down-1);
+				case 'chi': return i18n::translate('great x%d nephew/niece', $down-1);
+				}
 			case 'it': // Source: Michele Locati.
 			case 'en':
 			default:
