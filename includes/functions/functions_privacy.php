@@ -432,8 +432,7 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $pid, $CHECK_MARRIAGE_RELATIONS, $path_length);
 			return $relationship!==false;
 		}
-		// No reason to make this record visible, so it must be private
-		return false;
+		break;
 	case 'FAM':
 		// Hide a family if either spouse is private
 		$parents=find_parents($pid);
@@ -460,8 +459,8 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 		return $pgv_USER_ACCESS_LEVEL>$global_facts[$fact];
 	}
 	
-	// No restriction found - the record must be public:
-	return true;
+	// No restriction found - use global access level:
+	return $pgv_USER_CAN_ACCESS;
 }
 }
 
@@ -657,39 +656,6 @@ function get_last_private_data($gid) {
 
 	if (!isset($pgv_private_records[$gid])) return false;
 	return $pgv_private_records[$gid];
-}
-
-/**
-* Check fact record for editing restrictions
-*
-* Checks if the user is allowed to change fact information,
-* based on the existence of the RESN tag in the fact record.
-*
-* @return int Allowed or not allowed
-*/
-function FactEditRestricted($pid, $factrec) {
-	if (WT_USER_GEDCOM_ADMIN) {
-		return false;
-	}
-
-	if (preg_match("/2 RESN (.*)/", $factrec, $match)) {
-		$match[1] = strtolower(trim($match[1]));
-		if ($match[1] == "privacy" || $match[1]=="locked") {
-			$myindi=WT_USER_GEDCOM_ID;
-			if ($myindi == $pid) {
-				return false;
-			}
-			if (gedcom_record_type($pid, WT_GED_ID)=='FAM') {
-				$famrec = find_family_record($pid, WT_GED_ID);
-				$parents = find_parents_in_record($famrec);
-				if ($myindi == $parents["HUSB"] || $myindi == $parents["WIFE"]) {
-					return false;
-				}
-			}
-			return true;
-		}
-	}
-	return false;
 }
 
 /**

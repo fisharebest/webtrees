@@ -50,7 +50,6 @@ class Event {
 
 	var $lineNumber = null;
 	var $canShow = null;
-	var $canEdit = null;
 	var $state = "";
 	var $type = NULL;
 	var $tag = NULL;
@@ -134,20 +133,9 @@ class Event {
 		return $this->canShow;
 	}
 
-	/**
-	 * check whether or not this fact can be edited
-	 *
-	 * @return boolean
-	 */
-	function canEdit() {
-		if (!$this->canShow()) return false;
-		if (is_null($this->canEdit)) {
-			if (!is_null($this->parentObject)) {
-				$this->canEdit = !FactEditRestricted($this->parentObject->getXref(), $this->gedcomRecord);
-			}
-			else $this->canEdit = true;
-		}
-		return $this->canEdit;
+	// Check whether this fact is protected against edit
+	public function canEdit() {
+		return WT_USER_GEDCOM_ADMIN || strpos($this->gedcomRecord, "\n2 RESN locked")===false;
 	}
 
 	/**
