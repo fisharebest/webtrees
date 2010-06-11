@@ -158,7 +158,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',              safe_POST('NEW_FAM_FACTS_QUICK'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE',             safe_POST('NEW_FAM_FACTS_UNIQUE'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                safe_POST('NEW_FAM_ID_PREFIX'));
-	set_gedcom_setting(WT_GED_ID, 'FAVICON',                      safe_POST('NEW_FAVICON'));
 	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 safe_POST_bool('NEW_FULL_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB',           safe_POST('NEW_GEDCOM_DEFAULT_TAB'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             safe_POST('NEW_GEDCOM_ID_PREFIX'));
