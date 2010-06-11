@@ -439,8 +439,8 @@ function displayDetailsById($pid, $type = "INDI", $sitemap = false) {
 		return displayDetailsById($parents["HUSB"]) && displayDetailsById($parents["WIFE"]);
 	case 'OBJE':
 		// Hide media objects that are linked to private records
-		foreach (get_media_relations($pid) as $gid=>$type) {
-			if (!displayDetailsById($gid, $type)) {
+		foreach (get_media_relations($pid) as $gid=>$type2) {
+			if (!displayDetailsById($gid, $type2)) {
 				return false;
 			}
 		}
