@@ -419,8 +419,8 @@ function displayDetailsById($pid, $type = "INDI") {
 		return $pgv_USER_ACCESS_LEVEL>$global_facts[$fact];
 	}
 	
-	// No restriction found - use global access level:
-	return $pgv_USER_CAN_ACCESS;
+	// No restriction found - the record must be public: // use global access level:
+	return true; // $pgv_USER_CAN_ACCESS;
 }
 }
 
