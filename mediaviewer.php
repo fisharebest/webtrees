@@ -137,16 +137,30 @@ if (WT_USE_LIGHTBOX) {
 	</tr>
 	<tr>
 		<td class="center" colspan="2">
-			<?php
-			$links = get_media_relations($controller->pid);
-			if (isset($links) && !empty($links)){
-			?>
 			<br /><b><?php print i18n::translate('The image relates to:'); ?></b><br /><br />
 			<?php
-				// PrintMediaLinks($links, "");
-				require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-				print_changes_table($links, $SHOW_LAST_CHANGE, i18n::translate('Total links'));
-			}	?>
+
+				// Individuals linked to this media object
+				if ($controller->mediaobject->countLinkedIndividuals()) {
+					print_indi_table($controller->mediaobject->fetchLinkedIndividuals(), $controller->mediaobject->getFullName());
+				}
+
+				// Families linked to this media object
+				if ($controller->mediaobject->countLinkedFamilies()) {
+					print_fam_table($controller->mediaobject->fetchLinkedFamilies(), $controller->mediaobject->getFullName());
+				}
+	
+				// Sources linked to this media object
+				if ($controller->mediaobject->countLinkedSources()) {
+					print_sour_table($controller->mediaobject->fetchLinkedSources(), $controller->mediaobject->getFullName());
+				}
+
+				// Repositories linked to this media object
+				if ($controller->mediaobject->countLinkedMedia()) {
+					print_repo_table($controller->note->fetchLinkedRepositories(), $controller->mediaobject->getFullName());
+				}
+
+			?>
 		</td>
 	</tr>
 </table>

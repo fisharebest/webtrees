@@ -1463,12 +1463,11 @@ function format_surname_list($surnames, $style, $totals) {
  *
  * @param array $datalist contain records that were extracted from the database.
  */
-function print_changes_table($datalist, $showChange=true, $total='', $show_WT_USER=true) {
+function print_changes_table($change_ids) {
 	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION;
-	if (count($datalist)<1) return;
+	if (!$change_ids) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
-	if (empty($total)) $total = i18n::translate('Total changes');
 	$indi = false;
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
@@ -1477,25 +1476,18 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 	//echo "<td></td>";
 	echo "<th class=\"list_label\">", i18n::translate('Record'), "</th>";
 	echo "<th style=\"display:none\">GIVN</th>";
-	if ($showChange) {
-		echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
-		if ($show_WT_USER) {
-			echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
-		}
-	}
+	echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
+	echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
 	echo "</tr>\n";
 	//-- table body
 	$hidden = 0;
 	$n = 0;
 	$NMAX = 1000;
-	foreach($datalist as $key => $value) {
+	foreach ($change_ids as $change_id) {
 		if ($n>=$NMAX) break;
-		$record=GedcomRecord::getInstance($value);
+		$record=GedcomRecord::getInstance($change_id);
 		if (!$record) {
-			$record=GedcomRecord::getInstance($key);
-			if (!$record) {
-				continue;
-			}
+			continue;
 		}
 		// Privacy
 		if (!$record->canDisplayDetails()) {
@@ -1534,14 +1526,10 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 		$exp = explode(",", str_replace('<', ',', $name).",");
 		echo $exp[1];
 		echo "</td>";
-		if ($showChange) {
-			//-- Last change date/time
-			print "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
-			if ($show_WT_USER) {
-				//-- Last change user
-				print "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
-			}
-		}
+		//-- Last change date/time
+		print "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
+		//-- Last change user
+		print "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
 		echo "</tr>\n";
 	}
 	//-- table footer
@@ -1554,7 +1542,7 @@ function print_changes_table($datalist, $showChange=true, $total='', $show_WT_US
 	if ($indi) {
 		echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", i18n::translate('Show parents'), "</label><br />";
 	}
-	echo $total, ": ", $n;
+	echo i18n::translate('Total changes'), ": ", $n;
 	if ($hidden) echo "<br /><span class=\"warning\">", i18n::translate('Hidden'), " : ", $hidden, "</span>";
 	if ($n>=$NMAX) echo "<br /><span class=\"warning\">", i18n::translate('Recent Changes'), " &gt; ", $NMAX, "</span>";
 	echo "</td>";
