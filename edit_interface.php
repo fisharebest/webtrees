@@ -51,6 +51,7 @@ $gender =safe_REQUEST($_REQUEST, 'gender',  WT_REGEX_UNSAFE);
 
 $assist =safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
 $noteid =safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
+$currtab =safe_REQUEST($_REQUEST, 'currtab', WT_REGEX_UNSAFE);
 
 $pid_array  =safe_REQUEST($_REQUEST, 'pid_array', WT_REGEX_XREF);
 $pids_array_add =safe_REQUEST($_REQUEST, 'pids_array_add', WT_REGEX_XREF);
@@ -2061,10 +2062,12 @@ case 'reset_media_update': // Reset sort using popup
 
 //------------------------------------------------------------------------------
 case 'reorder_media_update': // Update sort using popup
+		
 	if (WT_DEBUG) {
 		phpinfo(INFO_VARIABLES);
 	}
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
+    if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
@@ -2080,16 +2083,14 @@ case 'reorder_media_update': // Update sort using popup
 	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
-	// $mediaordsuccess='yes';
-	if ($_COOKIE['lasttabs'][strlen($_COOKIE['lasttabs'])-1]==8) {
-		$link = "individual.php?pid=$pid&tab=7&show_changes=yes";
-	}elseif ($_COOKIE['lasttabs'][strlen($_COOKIE['lasttabs'])-1]==7) {
-		$link = "individual.php?pid=$pid&tab=6&show_changes=yes";
+
+	if ($currtab=="album") {
+		$link = "individual.php?pid=$pid&show_changes=yes&tab=lightbox";
 	}else{
-		$link = "individual.php?pid=$pid&tab=3&show_changes=yes";
+		$link = "individual.php?pid=$pid&show_changes=yes&tab=media";
 	}
 	echo WT_JS_START;
-	echo "edit_close('{$link}');";
+	echo "edit_close('{$link}')";
 	echo WT_JS_END;
 	break;
 

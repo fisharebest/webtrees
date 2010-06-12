@@ -44,7 +44,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	global $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
-	global $edit, $tabno ;
+	global $edit, $tabno, $currtab;
 	global $ids, $pid, $related, $level, $gedrec, $media_data, $order, $order1, $order2, $j ;
 
 	print "\n";
@@ -53,6 +53,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_media_update" />
 		<input type="hidden" name="pid" value="<?php print $pid; ?>" />
+		<input type="hidden" name="currtab" value="<?php print $currtab; ?>" />
 <!--		<input type="hidden" name="option" value="bybirth" /> -->
 
 		<center><p>

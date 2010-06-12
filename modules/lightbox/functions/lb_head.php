@@ -45,7 +45,7 @@ $reorder=safe_get('reorder', '1', '0');
 <!--
 	function reorder_media() {
 	var win02 = window.open(
-	"edit_interface.php?action=reorder_media&pid=<?php print $pid; ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
+	"edit_interface.php?action=reorder_media&pid=<?php print $pid; ?>&currtab=album", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
 	if (window.focus) {win02.focus();}
 	}
 
