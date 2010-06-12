@@ -2890,7 +2890,7 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
  * @param string $type	the type of record, defaults to 'INDI'
  * @return string
  */
-function get_new_xref($type='INDI', $ged_id=WT_GED_ID, $use_cache=false) {
+function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 	global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
 
 	switch ($type) {
