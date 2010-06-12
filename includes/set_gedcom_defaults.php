@@ -78,7 +78,7 @@ set_gedcom_setting($ged_id, 'HOME_SITE_URL',                'http://webtrees.net
 set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               'ADDR,AFN,BIRT,CHR,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,EMAIL,FAX,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,CAST,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO');
 set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             'BIRT,BURI,CHR,CENS,DEAT,OCCU,RESI');
 set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            '');
-set_gedcom_setting($ged_id, 'LANGUAGE',                     'en');
+set_gedcom_setting($ged_id, 'LANGUAGE',                     WT_LOCALE); // Defualt to the current admin's language`
 set_gedcom_setting($ged_id, 'LINK_ICONS',                   'click');
 set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                120);
 set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
@@ -151,7 +151,13 @@ set_gedcom_setting($ged_id, 'SPLIT_PLACES',                 false);
 set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F',            '200');
 set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            '200');
 set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           'style2');
-set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            'paternal');
+switch (WT_LOCALE) {
+case 'es': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'spanish');    break;
+case 'is': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'icelandic');  break;
+case 'pl': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'polish');     break;
+case 'pt': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'portuguese'); break;
+default:   set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'paternal');   break;
+}
 set_gedcom_setting($ged_id, 'THEME_DIR',                    'themes/webtrees/');
 set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              '100');
 set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        true);
@@ -163,7 +169,6 @@ set_gedcom_setting($ged_id, 'USE_RIN',                      false);
 set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               true);
 set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              true);
 set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              false);
-set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            1);
 set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
 set_gedcom_setting($ged_id, 'WEBTREES_EMAIL',               '');
 set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       '1');
