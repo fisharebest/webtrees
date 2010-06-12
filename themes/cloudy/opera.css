@@ -8,3 +8,7 @@
 .block {
 	overflow: hidden;
 }
+
+#sidebar {  
+	margin-top: 12px !important;
+}

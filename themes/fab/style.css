@@ -216,6 +216,20 @@ img {
 	margin-left:3px;
 }
 
+/*-- pedigree chart specific stylesheets --*/
+#pedigree_chart {
+	position: relative;
+	top: -230px;
+	left: 0px;
+}
+
+/*-- pedigree chart rtl specific stylesheets --*/
+#pedigree_chart_rtl {
+	position: relative;
+	top: -230px;
+	right: 10px;
+}
+
 /* Printer friendliness */
 @media print {
 	#header, #footer {

@@ -79,7 +79,12 @@ echo
 	
 ?>
 
-<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
+<?php
+if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
+      <link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
+<?php }?>
+
+<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 
 <?php if ($TEXT_DIRECTION=='rtl') {?>
 	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
