@@ -334,28 +334,50 @@ if ($action=="newentry") {
 					if ($folder!=$oldFolder) $mediaAction = $mediaAction + 2;
 
 					if (!$isMain) {
-						echo i18n::translate('Media file <b>%s</b> does not exist.', $oldFolder.$oldFilename);
+						echo i18n::translate(
+							'Media file %s does not exist.',
+							'<span class="filename">'.$oldFolder.$oldFilename.'</span>'
+						);
 					} else {
 						if ($okMain) {
-							echo i18n::translate('Media file <b>%1$s</b> successfully renamed to <b>%2$s</b>.', $oldFolder.$oldFilename, $folder.$filename);
+							echo i18n::translate(
+								'Media file %1$s successfully renamed to %2$s.',
+								'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
+								'<span class="filename">'.$folder.$filename.'</span>'
+							);
 						} else {
 							$finalResult = false;
 							echo '<span class="error">';
-							echo i18n::translate('Media file <b>%1$s</b> could not be renamed to <b>%2$s</b>.', $oldFolder.$oldFilename, $folder.$filename);
+							echo i18n::translate(
+								'Media file %1$s could not be renamed to %2$s.',
+								'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
+								'<span class="filename">'.$folder.$filename.'</span>'
+							);
 							echo '</span>';
 						}
 					}
 					print "<br />";
 
 					if (!$isThum) {
-						echo i18n::translate('Thumbnail file <b>%s</b> does not exist.', str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename);
+						echo i18n::translate(
+							'Thumbnail file %s does not exist.', 
+							'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>'
+						);
 					} else {
 						if ($okThum) {
-							echo i18n::translate('Thumbnail file <b>%1$s</b> successfully renamed to <b>%2$s</b>.', str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename, str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename);
+							echo i18n::translate(
+								'Thumbnail file %1$s successfully renamed to %2$s.',
+								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>',
+								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename.'</span>'
+							);
 						} else {
 							$finalResult = false;
 							echo '<span class="error">';
-							echo i18n::translate('Thumbnail file <b>%1$s</b> could not be renamed to <b>%2$s</b>.', str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename, str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename);
+							echo i18n::translate(
+								'Thumbnail file %1$s could not be renamed to %2$s.',
+								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>',
+								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename.'</span>'
+							);
 							echo '</span>';
 						}
 					}
@@ -478,28 +500,50 @@ if ($action == "update") {
 			if ($folder!=$oldFolder) $mediaAction = $mediaAction + 2;
 
 			if (!$isMain) {
-				echo i18n::translate('Media file <b>%s</b> does not exist.', $oldFolder.$oldFilename);
+				echo i18n::translate(
+					'Media file %s does not exist.',
+					'<span class="filename">'.$oldFolder.$oldFilename.'</span>'
+				);
 			} else {
 				if ($okMain) {
-					echo i18n::translate('Media file <b>%1$s</b> successfully renamed to <b>%2$s</b>.', $oldFolder.$oldFilename, $folder.$filename);
+					echo i18n::translate(
+						'Media file %1$s successfully renamed to %2$s.',
+						'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
+						'<span class="filename">'.$folder.$filename.'</span>'
+					);
 				} else {
 					$finalResult = false;
 					echo '<span class="error">';
-					echo i18n::translate('Media file <b>%1$s</b> could not be renamed to <b>%2$s</b>.', $oldFolder.$oldFilename, $folder.$filename);
+					echo i18n::translate(
+						'Media file %1$s could not be renamed to %2$s.',
+						'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
+						'<span class="filename">'.$folder.$filename.'</span>'
+					);
 					echo '</span>';
 				}
 			}
 			print "<br />";
 
 			if (!$isThum) {
-				echo i18n::translate('Thumbnail file <b>%s</b> does not exist.', str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename);
+				echo i18n::translate(
+					'Thumbnail file %s does not exist.', 
+					'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>'
+				);
 			} else {
 				if ($okThum) {
-					echo i18n::translate('Thumbnail file <b>%1$s</b> successfully renamed to <b>%2$s</b>.', str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename, str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename);
+					echo i18n::translate(
+						'Thumbnail file %1$s successfully renamed to %2$s.',
+						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>',
+						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename.'</span>'
+					);
 				} else {
 					$finalResult = false;
 					echo '<span class="error">';
-					echo i18n::translate('Thumbnail file <b>%1$s</b> could not be renamed to <b>%2$s</b>.', str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename, str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename);
+					echo i18n::translate(
+						'Thumbnail file %1$s could not be renamed to %2$s.',
+						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>',
+						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $folder).$filename.'</span>'
+					);
 					echo '</span>';
 				}
 			}
