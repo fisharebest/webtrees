@@ -260,10 +260,10 @@ class Media extends GedcomRecord {
 	 * @param Media $obje
 	 * @return mixed  returns the ID for the for the matching media or null if not found
 	 */
-	static function in_obje_list($obje) {
+	static function in_obje_list($obje, $ged_id) {
 		return
 			WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file=? AND m_titl LIKE ? AND m_gedfile=?")
-			->execute(array($obje->file, $obje->title, WT_GED_ID))
+			->execute(array($obje->file, $obje->title, $ged_id))
 			->fetchOne();
 	}
 

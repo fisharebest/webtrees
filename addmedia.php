@@ -427,7 +427,7 @@ if ($action=="newentry") {
 
 		require_once WT_ROOT.'includes/classes/class_media.php';
 		$media_obje = new Media($newged);
-		$mediaid = Media::in_obje_list($media_obje);
+		$mediaid = Media::in_obje_list($media_obje, WT_GED_ID);
 		if (!$mediaid) $mediaid = append_gedrec($newged, WT_GED_ID);
 		if ($mediaid) {
 			AddToLog("Media ID ".$mediaid." successfully added.", 'edit');
