@@ -1,17 +1,7 @@
 /*
  * @version $Id:S$
  */
-/* 
- * The following style definitions should be removed when Opera supports the 
- * "opacity" specification.
- */
-#container {
-	padding:10px;
-}
 
-.block {
-	overflow: hidden;
-}
 #sidebar {  
-margin: 18px 21px 15px 15px;
+	margin-top: 19px;
 }
