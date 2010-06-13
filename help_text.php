@@ -3577,11 +3577,6 @@ case 'edit_edit_raw':
 	$text=i18n::translate('This page allows you to edit the raw GEDCOM record.  You should use this page with caution; it requires a good understanding of the GEDCOM 5.5.1 Standard.  For more information on the GEDCOM 5.5.1 Standard, refer to Help topic <b>GEDCOM file</b>.<br /><br /><b>webtrees</b> provides many ways to add and edit information, but there could be occasions when you may want to edit the raw GEDCOM structure.  When possible, you should use the provided forms for adding information, but when that is impossible, you can use this form.  Upon submitting the form, your information will be checked for basic conformance to the Standard and the CHAN record will be updated.');
 	break;
 
-case 'edit_raw_gedcom':
-	$title=i18n::translate('Edit raw gedcom');
-	$text=i18n::translate('When you click this link, a new window will open containing the raw GEDCOM data of the details on this page.<br /><br />Here you can edit the GEDCOM data directly. Be sure to enter valid GEDCOM 5.5.1 data, as no further validity checks will be done.  The changed or added data will be displayed in <b>webtrees</b> as "changes", and have to be accepted by a user with Accept rights.');
-	break;
-
 case 'edit_SOUR_EVEN':
 	$title=i18n::translate('Edit source event');
 	$text=i18n::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br /><br />Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, "Oneida, Idaho, USA" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. "Idaho, USA" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
@@ -3615,11 +3610,6 @@ case 'edituser_gedcomid':
 case 'edituser_realname':
 	$title=i18n::translate('Real name');
 	$text=i18n::translate('In this box you can change your real name.  This is the name that other users see when you are logged in.<br /><br />Although the choice of what to put into this field is yours, you should inform the administrator when you change it.  When others see an unknown person on-line, they might wonder and ask questions.  The admin can find out without having received your notice, but you should save him that unnecessary work.');
-	break;
-
-case 'edituser_my_account':
-	$title=i18n::translate('My account');
-	$text=i18n::translate('Here you can change your settings and preferences.<br /><br />You can change your user name, full name, password, language, email address, theme of the site, and preferred contact method.<br /><br />You cannot change the GEDCOM INDI record ID; that has to be done by an administrator.');
 	break;
 
 case 'edituser_password':
