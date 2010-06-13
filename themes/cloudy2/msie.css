@@ -1,0 +1,16 @@
+/*
+ * @version $Id: msie.css 8716 2010-06-12 11:34:19Z rob $
+ */
+
+/* 
+ * The following style definitions can be removed when IE supports the "opacity" 
+ * specification in place of its proprietary and non-standard method.
+ */
+
+.rela {
+	filter: alpha(opacity=67);
+}
+
+a.showit:hover span {
+	filter: alpha(opacity=85);
+}
