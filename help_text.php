@@ -3801,16 +3801,6 @@ case 'help_editconfig.php':
 	$text=i18n::translate('On this page you configure the global settings for <b>webtrees</b>.  You have to do this after you have installed <b>webtrees</b> and are running it for the first time.<br /><br />You should review the <a href=\"readme.txt\" target=\"_blank\">readme.txt</a> file before continuing to configure <b>webtrees</b>.<br /><br />As these settings are <b>global</b>, they are for the whole program and for all genealogical databases you use with <b>webtrees</b>.<br /><br />Each genealogical database also has additional configuration options that you set after clicking the <b>Click here to administer GEDCOMs</b> link on this page.<br /><br />You can also access the GEDCOM Administration function from the main Admin page, whose link is found under the My Page icon or in the header of most pages.  On the Admin page, the relevant link is called <b>Manage GEDCOMs and edit Privacy.</b>');
 	break;
 	
-case 'help_HS':
-	$title=i18n::translate('Help text');
-	$text=i18n::translate('<dl><dt><b>Search Help Text</b></dt><dd>You can search <b>webtrees</b> Help system.  The Search Help Text feature gives you a high degree of control over the way the search functions; you should be able to find what you are looking for easily.</dd></dl>');
-	break;
-
-case 'help_page':
-	$title=i18n::translate('Help with this page');
-	$text=i18n::translate('<dl><dt><b>Help with this Page</b></dt><dd>For all pages there is a general "Page Help" available.  You can click this item in the menu to get "Page Help", where you will be informed about the items on that very page.<br /><br />Page Help is often brief.  If you need more help or information about a certain item on the page than Page Help provides you can use the "Contextual Help" feature.</dd></dl>');
-	break;
-
 case 'import_gedcom':
 	$title=i18n::translate('Import GEDCOM');
 	$text=i18n::translate('In most cases importing of an externally created GEDCOM file is one step in procedures that result in bulk changes to the genealogical database.<br /><br />These steps are in a logical sequence and need to be completed in the prescribed order so that the genealogical database is usable.<br /><br />If, for some reason, you did not complete these steps in the correct order, you will see a <u>warning</u> message that the GEDCOM is not yet imported. To correct the problem, click the <b>Import GEDCOM</b> link to import the file.<br /><br />Existing GEDCOM configuration settings will not change when you re-import a GEDCOM.  Existing data will, however, be overwritten.');
