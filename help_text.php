@@ -4212,11 +4212,6 @@ case 'menu_charts':
 	$text=i18n::translate('The available charts are:<ol><li><a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a><br />This will link you to the Pedigree chart of this GEDCOM file. The pedigree will start with the person configured by the administrator. When you are logged in the starting person can be whoever you have configured in your Account preferences.</li><li><a href="?help=help_descendancy.php"><b>Descendancy Chart</b></a><br />The Descendancy chart is essentially a <a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a> in reverse order.  This comparison is not quite correct, but while the Pedigree chart shows you all the ancestors of a starting person, the Descendancy chart shows you all the descendants of a starting person.</li><li><a href="?help=help_timeline.php"><b>Timeline Chart</b></a><br />Here you view the events of a person along a time line.  It\'s interesting to compare the events of two or more persons along the same time line.</li><li><a href="?help=help_relationship.php"><b>Relationship Chart</b></a><br />Here you can check the relation of a person to yourself or to another person.</li><li><a href="?help=help_ancestry.php"><b>Ancestry Chart</b></a><br />This chart is very similar to the <a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a>, but with more details and alternate <a href="?help=chart_style"><b>Chart style</b></a> displays.</li><li><a href="?help=help_fanchart.php"><b>Circle Diagram</b></a><br />This chart is very similar to the <a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a>, but in a more graphical way.</li></ol>');
 	break;
 
-case 'menu_clip':
-	$title=i18n::translate('Clippings menu');
-	$text=i18n::translate('You will see this item in the menu bar only when the administrator has enabled this feature.<br /><br />The Clippings Cart allows you to store information about individuals, families, and sources in a temporary file that you can later download in GEDCOM 5.5.1 format.');
-	break;
-
 case 'menu_famtree':
 	$title=i18n::translate('Home page menu');
 	$text=i18n::translate('All of this site\'s available genealogical databases are listed in this menu. Each database has its own customized Home page, like this one.  If there is only one database at this site, there is no sub-menu under the Home page icon.');
