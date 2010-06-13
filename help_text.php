@@ -4253,11 +4253,6 @@ case 'mypage_welcome':
 	$text=i18n::translate('The Welcome block shows you:<ul><li>The current GEDCOM file</li><li>The date and time</li><li>Links to:<ul><li>My Account</li><li>My Pedigree</li><li>My Individual Record</li><li>Customize My Page</li></ul></li></ul><br /><b>Note:</b><br />You will see the links to <b>My Indi</b> and <b>My Pedigree</b> only if you are known to the current GEDCOM file.  You might have a record in one GEDCOM file and therefore see the <b>My Indi</b> and <b>My Pedigree</b> links, while in another GEDCOM file you do not have a record and consequently these links are not displayed.');
 	break;
 
-case 'new_dir':
-	$title=i18n::translate('Media directory structure');
-	$text=i18n::translate('As an admin user you can create the directory structure you require to keep your media files organized. Creating directories from this page ensures that the thumbnail directories are created as well as creating a suitable index.php in each directory.<br /><br />Click on this link to enter the name of the directory you wish to create.');
-	break;
-
 case 'new_password':
 	$title=i18n::translate('Request new password');
 	$text=i18n::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
