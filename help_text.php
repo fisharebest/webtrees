@@ -3345,11 +3345,6 @@ case 'def_gedcom':
 	$text=i18n::translate('A quote from the Introduction to the GEDCOM 5.5.1 Standard:<div class="list_value_wrap">GEDCOM was developed by the Family History Department of The Church of Jesus Christ of Latter-day Saints (LDS Church) to provide a flexible, uniform format for exchanging computerized genealogical data.&nbsp; GEDCOM is an acronym for <i><b>GE</b></i>nealogical <i><b>D</b></i>ata <i><b>Com</b></i>munication.&nbsp; Its purpose is to foster the sharing of genealogical information and the development of a wide range of inter-operable software products to assist genealogists, historians, and other researchers.</div><br />A copy of the GEDCOM 5.5.1 <u>draft</u> Standard, to which <b>webtrees</b> adheres, can be downloaded in PDF format here:&nbsp; <a href="http://www.phpgedview.net/ged551-5.pdf" target="_blank">GEDCOM 5.5.1 Standard</a>  This Standard is only available in English.<br /><br />The GEDCOM file contains all the information about the family. All facts, dates, events, etc. are stored here. GEDCOM files have to follow strict rules because they must be exchangeable between many programs, independent of platforms or operating systems.');
 	break;
 
-case 'def_gramps':
-	$title=i18n::translate('GRAMPS definition');
-	$text=i18n::translate('A quote from GRAMPS Project: <div class="list_value_wrap">GRAMPS helps you track your family tree. It allows you to store, edit, and research genealogical data. GRAMPS attempts to provide all of the common capabilities of other genealogical programs, but, more importantly, to provide an additional capability of integration not common to these programs. This is the ability to input any bits and pieces of information directly into GRAMPS and rearrange/manipulate any/all data events in the entire data base (in any order or sequence) to assist the user in doing research, analysis and correlation with the potential of filling relationship gaps.</div><br />A copy of the GRAMPS XML format v1.1.0 <a href="http://www.gramps-project.org/xml/1.1.0/" target="_blank">can be found here</a> in both RELAX NG Schema format and DTD format.<br /><br />For more information about the GRAMPS Project visit <a href="http://gramps-project.org/" target="_blank">http://gramps-project.org/</a>');
-	break;
-
 case 'def':
 	$title=i18n::translate('Definitions');
 	$text=i18n::translate('Here are some explanations of terms used in this Help text:<ul><li><a href="?help=def_gedcom"><b>GEDCOM</b></a><br /></li><li><a href="?help=def_gedcom_date"><b>Dates</b></a></li><li><a href="?help=def_pdf_format"><b>PDF file format</b></a></li><li><a href="?help=def_pgv"><b>webtrees</b></a></li><li><a href="?help=def_portal"><b>Portal</b></a></li><li><a href="?help=def_theme"><b>Theme</b></a></li></ul>');
@@ -3645,16 +3640,6 @@ case 'header_user_links':
 case 'help':
 	$title=i18n::translate('Help');
 	$text=i18n::translate('Of course, it would be ideal to create a program so simple and easy to use that it doesn\'t need any explanation at all; it should be as simple as reading a book.<br /><br />Although <b>webtrees</b> is very complicated, you should not notice that as you use it; almost everything can be used without explanation.  But, since we may have a lot of visitors and users who are not very experienced with the use of a computer or with the Internet, we offer you some help at certain places.<br /><br />You will find the following items in the Help menu:<dl>	<dt><b>Help with this page</b></dt>		<dd>For all pages there is a general "Page Help" available.  You can click this item in the menu to get "Page Help", where you will be informed about the items on that very page.			<br /><br />Page Help is often brief.  If you need more help or information about a certain item on the page than Page Help provides you can use the "Contextual Help" feature.</dd>	<dt><b>Help contents</b></dt>		<dd>When you click this menu item, you will get a Help page that displays an index of the major Help topics.  The amount of Help information available will be increased as time permits.</dd>	<dt><b>FAQ list</b></dt>		<dd>The FAQ (Frequently Asked Questions) page can contain an overview or a list of questions and answers on the use of this genealogy site.			<br /><br />The use to which the FAQ page is put is entirely up to the site administrator. The site administrator controls the content of each item and also the order in which the items are shown on the page.</dd>	<dt><b>Search help text</b></dt>		<dd>You can search <b>webtrees</b> help system.  The Search Help Text feature gives you a high degree of control over the way the search functions; you should be able to find what you are looking for easily.</dd>	<dt><b>Hide / show contextual help</b></dt>		<dd>This last menu item could be the most useful for you. Clicking this link will either switch on or off the "Contextual Help".			<br /><br />With Contextual Help switched on, you may find a Question Mark or similar icon beside some links, drop-down boxes, or buttons. When you click this icon, a Help screen will pop up.  This Help screen contains information about that object.			<br /><br />Of course, when you click "Hide Contextual Help", all the Question Marks or icons will disappear until you click "Show...." again.</dd></dl>');
-	break;
-
-case 'help_content':
-	$title=i18n::translate('Help contents');
-	$text=i18n::translate('<dl><dt><b>Help Contents</b></dt><dd>When you click this menu item, you will get a Help page that displays an index of the major Help topics.  The amount of Help information available will be increased as time permits.</dd></dl>');
-	break;
-
-case 'help_contents_head':
-	$title=i18n::translate('Help contents');
-	$text='';
 	break;
 
 case 'help_contents_help':
