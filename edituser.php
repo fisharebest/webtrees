@@ -211,7 +211,7 @@ if (get_site_setting('ALLOW_USER_THEMES')) {
 }
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Preferred contact method'), help_link('edituser_user_contact');
+echo i18n::translate('Preferred contact method'), help_link('edituser_contact_meth');
 echo '</td><td class="optionbox">';
 echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod'), 'tabindex="'.(++$tab).'"');
 echo '</td></tr>';
