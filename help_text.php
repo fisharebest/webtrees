@@ -3598,11 +3598,6 @@ case 'edit_edit_raw':
 	$text=i18n::translate('This page allows you to edit the raw GEDCOM record.  You should use this page with caution; it requires a good understanding of the GEDCOM 5.5.1 Standard.  For more information on the GEDCOM 5.5.1 Standard, refer to Help topic <b>GEDCOM file</b>.<br /><br /><b>webtrees</b> provides many ways to add and edit information, but there could be occasions when you may want to edit the raw GEDCOM structure.  When possible, you should use the provided forms for adding information, but when that is impossible, you can use this form.  Upon submitting the form, your information will be checked for basic conformance to the Standard and the CHAN record will be updated.');
 	break;
 
-case 'edit_privacy':
-	$title=i18n::translate('Edit GEDCOM privacy settings');
-	$text=i18n::translate('On this page you can make all the Privacy settings for the selected GEDCOM.<br /><br />You can check under the page title to see that you are editing the correct privacy file.  It is displayed like this: (path/nameofyourgedcom_priv.php)<br /><br />If you need more settings, you can make changes to the privacy file manually. You can read more about this on the <b>webtrees</b> web site.');
-	break;
-
 case 'edit_raw_gedcom':
 	$title=i18n::translate('Edit raw gedcom');
 	$text=i18n::translate('When you click this link, a new window will open containing the raw GEDCOM data of the details on this page.<br /><br />Here you can edit the GEDCOM data directly. Be sure to enter valid GEDCOM 5.5.1 data, as no further validity checks will be done.  The changed or added data will be displayed in <b>webtrees</b> as "changes", and have to be accepted by a user with Accept rights.');
@@ -3820,7 +3815,7 @@ case 'help_contents_help':
 			$text.='<td valign="top"><span class="helpstart">'.i18n::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.i18n::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.i18n::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
 			.i18n::translate('FAQ List: Edit').'</a></li><li><a href="?help=add_gedcom">'.i18n::translate('GEDCOM: Add').'</li><li><a href="?help=add_upload_gedcom">'.i18n::translate('GEDCOM: Add vs Upload').'</a></li><li><a href="?help=edit_gedcoms">'.i18n::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=change_indi2id">'
 			.i18n::translate('GEDCOM: Change Individual ID to ...').'</a></li><li><a href="?help=gedcom_configfile">'.i18n::translate('GEDCOM: Configuration file').'</a></li><li><a href="?help=edit_config_gedcom">'.i18n::translate('GEDCOM: Configure').'</a></li><li><a href="?help=add_new_gedcom">'.i18n::translate('GEDCOM: Create new').'</a></li><li><a href="?help=default_gedcom">'.i18n::translate('GEDCOM: Default').'</a></li><li><a href="?help=delete_gedcom">'.i18n::translate('GEDCOM: Delete').'</a></li><li><a href="?help=download_gedcom">'
-			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=edit_privacy">'.i18n::translate('GEDCOM: Privacy settings').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="?help=readmefile">'.i18n::translate('Readme file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
+			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="?help=readmefile">'.i18n::translate('Readme file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
 		}
 	$text.=('</tr></table>');
 	break;
