@@ -278,7 +278,7 @@ foreach ($gedcoms as $gedcom) {
 			'</td>',
 			// upload
 			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom->gedcom_id, '">', i18n::translate('Upload'), '</a>',
-			help_link('help_uploadgedcom.php'),
+			help_link('upload_gedcom'),
 			'</td>',
 			// delete
 			'<td><a href="editgedcoms.php?action=delete&ged=', urlencode($gedcom->gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(i18n::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom->gedcom_name)),'\');">', i18n::translate('Delete'), '</a>',
