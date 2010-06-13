@@ -3871,11 +3871,6 @@ case 'generate_thumb':
 	$text=i18n::translate('Your system can generate thumbnails for certain types of images automatically.  There may be support for BMP, GIF, JPG, and PNG files.  The types that your system supports are listed beside the checkbox.<br /><br />By clicking this checkbox, you signal the system that you are uploading images of this type and that you want it to try to generate thumbnails for them.  Leave the box unchecked if you want to provide your own thumbnails.');
 	break;
 
-case 'global_facts':
-	$title=i18n::translate('Global fact privacy settings');
-	$text=i18n::translate('These settings define facts on a global level that should be hidden for all individuals in the GEDCOM.  This only applies to level 1 fact records such as BIRT or DEAT that will appear with their own headings on the personal facts and details tab of the individual page.<br /><ul><li>The <b>Name of fact</b> element determines which fact should be hidden.</li><li>The <b>Choice</b> element specifies the fact itself or related details.</li><li>The <b>Show to?</b> element determines at what access level the fact is shown.</li></ul><br />This feature is meant to hide certain facts, identified by GEDCOM tags, for all individuals alive or dead. By default the SSN tag is hidden to public users. This is to prevent people from stealing social security numbers and committing identity theft of dead persons.  This is probably mostly relevant for the USA.<br /><br />If you wanted to hide all marriages from public users in your GEDCOM you could set:<br /><br /><b>Name of fact</b> (MARR) - Marriage<br /><b>Choice</b> "Show fact"<br /><b>Show to?</b> "Show only to authenticated users"<br /><br /><b>Name of fact</b> (MARR) - Marriage<br /><b>Choice</b> "Show fact details"<br /><b>Show to?</b> "Show only to authenticated users"<br /><br />These settings would hide marriages and related details to everyone who wasn\'t an admin.<br /><br />Unlike all other settings, in <b>Edit existing settings for Global Fact Privacy</b> you can hide facts even from admin users. Unwanted facts are completely suppressed.');
-	break;
-
 case 'google_chart_surname':
 	$title=i18n::translate('Surname');
 	$text=i18n::translate('The number of occurrences of the specified name will be shown on the map. If you leave this field empty, the most common surname will be used.');
@@ -4387,16 +4382,6 @@ case 'password':
 	$text=i18n::translate('In this box you type your password.<br /><br /><b>The password is case sensitive.</b>  This means that <b>MyPassword</b> is <u>not</u> the same as <b>mypassword</b> or <b>MYPASSWORD</b>.');
 	break;
 
-case 'person_facts':
-	$title=i18n::translate('Facts privacy settings by ID');
-	$text=i18n::translate('These settings define facts that are hidden for a specific person, family, or source and the level at which they are hidden.  This only applies to level 1 fact records such as BIRT or DEAT that will appear with their own headings on the relevant details page  of the person, family, or source.<br /><br />The first element is the ID of the person, family, or source. The second element is the fact.  The <b>Choice</b> element specifies the fact itself or related details.  The <b>Show to?</b> element determines at what access level the fact is shown.  Not all facts shown in the list are applicable to all types of IDs.  For example, Birth and Death facts are not relevant to Source records.<br /><br />The $person_facts array works the same as the $global_facts array except that you also specify the GEDCOM ID of the person you want to hide facts for. You could, for example, hide the marriage record for a specific person.');
-	break;
-
-case 'person_privacy':
-	$title=i18n::translate('Privacy settings by ID');
-	$text=i18n::translate('These settings allow administrators to override default privacy settings for a particular person, family, source, or media object.<br /><br />Suppose for example you have a child who died in infancy. Normally because the child is dead, its details would be shown to public users. However, you and everyone else in your family are still private. You don\'t want to remove the death record for the child but you want to hide the details and make them private. If this child had the ID of I100 you should enter the following privacy settings:<br />ID: I100<br />Show to: Show only to authenticated users<br /><br />This works the other way as well. If you wanted to make public the details of someone (ID I101) who you know to be dead but don\'t have a death date for, you could add the following:<br />ID: I101<br />Show to: Show to public');
-	break;
-
 case 'phpinfo':
 	$title=i18n::translate('PHP information');
 	$text=i18n::translate('This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server\'s software, as it relates to PHP and <b>webtrees</b>, can be viewed.');
@@ -4725,11 +4710,6 @@ case 'upload_server_folder':
 case 'upload_thumbnail_file':
 	$title=i18n::translate('Thumbnail to upload');
 	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the thumbnail file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.  When this field is filled in, the <b>Automatic thumbnail</b> checkbox is ignored.<br /><br />If the <b>Media file to upload</b> field has been filled in, your uploaded thumbnail file will be named according to the contents of that field, regardless of what it is called on your local computer.  If that field is empty, the uploaded thumbnail file will be copied to two places on the server, once into the server directory mentioned in the <b>Folder on server</b> field, and then again into an identical directory structure starting with <b>%sthumbs/</b>.<br /><br />If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b> where uploaded media files are normally stored.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
-	break;
-
-case 'user_privacy':
-	$title=i18n::translate('User privacy settings');
-	$text=i18n::translate('These settings give administrators the ability to override default privacy settings for individuals in the GEDCOM based on Username.  Suppose you don\'t want the Username <b>John</b> to be able to see any details of ID I100 in the GEDCOM, you could configure it like this:<br />Username: John<br />ID: I100<br />Show?: "Hide"<br /><br />and details for the specified individual would be hidden for the Username "John" only.<br /><br />To show the details of I101 (which usually would be hidden because I101 is still alive) to Username "John" set:<br /><br />Username: John<br />ID: I101<br />Show?: "Show"');
 	break;
 
 case 'useradmin':
