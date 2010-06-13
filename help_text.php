@@ -3147,12 +3147,6 @@ case 'add_media_linkid':
 	$text=i18n::translate('Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages.');
 	break;
 	
-case 'add_new_facts':
-	// This is a general help text for multiple pages
-	$title=i18n::translate('Add a new fact');
-	$text=i18n::translate('<ul><li><a href="?help=add_facts">Add Fact</a></li><li><a href="?help=add_custom_facts">Add Custom Fact</a></li><li><a href="?help=add_from_clipboard">Add from Clipboard</a></li><li><a href="?help=def_gedcom_date">Dates in a GEDCOM File</a></li><li><a href="?help=add_facts_general">General Information about Adding</a></li></ul>');
-	break;
-	
 case 'add_new_gedcom':
 	$title=i18n::translate('Create a new GEDCOM');
 	$text=i18n::translate('You can start a new genealogical database from scratch.<br /><br />This procedure requires only a few simple steps. Step 1 is different from what you know already about uploading and adding. The other steps will be familiar.<ol><li><b>Naming the new GEDCOM</b><br />Type the name of the new GEDCOM <u>without</u> the extension <b>.ged</b>. The new file will be created in the directory named above the box where you enter the name.  Click <b>Add</b>.</li><li><b>Configuration page</b><br />You already know this page;  you configure the settings for your new GEDCOM file.</li><li><b>Validate</b><br />You already know this page;  the new GEDCOM is checked.  Since there is nothing in it, it will be ok.</li><li><b>Importing Records</b><br />Since there will be only one record to import, this will be finished very fast.</li></ol>That\'s it.  Now you can go to the Pedigree chart to see your first person in the new GEDCOM. Click the name of the person and start editing. After that, you can link new individuals to the first person.');
