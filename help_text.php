@@ -3778,16 +3778,6 @@ case 'find_media':
 	$text=i18n::translate('This allows you to search the file structure to find the media item you wish to link to.');
 	break;
 
-case 'firstname_f':
-	$title=i18n::translate('Family name error');
-	$text=i18n::translate('The family name you have chosen has more than %s individuals.<br /><br />To help you find the family you want, the list has been broken into smaller lists according to the first letter of the person\'s given name.  This alphabetical sub-index works the same as the alphabetical index for names.<br /><ul><li>Click a letter to see all of the first names which start with that letter.</li><li>Choose <b>(unknown)</b> to list all of the people with unknown first names.</li><li>Choosing <b>ALL</b> will display a list of all families with the previously chosen surname.</li></ul>Because there are many names, it may take a long time for this list to appear on your screen.', $SUBLIST_TRIGGER_F);
-	break;
-
-case 'firstname_i':
-	$title=i18n::translate('First name error');
-	$text=i18n::translate('The surname you have chosen has more than %s individuals.<br /><br />To help you find the person you want, the list has been broken into smaller lists according to the first letter of the person\'s given name.  This alphabetical sub-index works the same as the alphabetical index for surnames.<br /><ul><li>Click a letter to see all of the first names which start with that letter.</li><li>Choose <b>(unknown)</b> to list all of the persons with unknown first names.</li><li>Choosing <b>ALL</b> will display a list of all persons with the previously chosen surname.</li></ul>Because there are many names, it may take a long time for this list to appear on your screen.', $SUBLIST_TRIGGER_I);
-	break;
-
 case 'follow_spouse':
 	$title=i18n::translate('Check relationships by marriage');
 	$text=i18n::translate('With this check box <b>un</b>checked, the relationships are only checked between blood relatives.  With this check box checked, relationships by marriage are also checked.  You will probably find more relationships by leaving this box checked.');
