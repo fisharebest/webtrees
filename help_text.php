@@ -3595,6 +3595,23 @@ case 'edituser_conf_password':
 case 'edituser_contact_meth':
 	$title=i18n::translate('Preferred contact method');
 	$text=i18n::translate('<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
+	$text.='<br/><br/><dl><dt>';
+	$text.=i18n::translate('Internal messaging');
+	$text.='</dt><dd>';
+	$text.=i18n::translate('With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br /><br />You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
+	$text.='</dd><dt>';
+	$text.=i18n::translate('Internal messaging with emails');
+	$text.='</dt><dd>';
+	$text.=i18n::translate('This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br /><br />This is the default contact method.');
+	$text.='</dd><dt>';
+	$text.=i18n::translate('Mailto link');
+	$text.='</dt><dd>';
+	$text.=i18n::translate('With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page.');
+	$text.='</dd><dt>';
+	$text.=i18n::translate('No contact method');
+	$text.='</dt><dd>';
+	$text.=i18n::translate('With this option, you will not receive any messages.  Even the administrator will not be able to reach you.');
+	$text.='</dd></dl>';
 	break;
 
 case 'edituser_email':
@@ -4004,26 +4021,6 @@ case 'login_buttons_aut':
 case 'login_buttons':
 	$title=i18n::translate('Login buttons');
 	$text=i18n::translate('Here you see two buttons to login to the system.<br /><br />The page you will be taken to or sent back to depends on which button you click after typing your user name and password.<br /><ul><li>The <b>Login</b> button<br />If you click this button, you will return to the page you were just on, but with logged-in access rights.<br /><br />For example, if you click <b>Login</b> when you were at the Pedigree page, you will return to that same page.  If you click this button when you were on the main Home Page, you will be taken to My Page.</li><li>The <b>Admin</b> button<br />If you have Admin rights, you can click this button to go directly to the main Administration page.</li></ul>');
-	break;
-
-case 'mail_option1':
-	$title=i18n::translate('Internal messaging');
-	$text=i18n::translate('With this option, the <b>webtrees</b> internal messaging system will be used and no emails will be sent.<br /><br />You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your personal My Page.  If you have removed this block from your My Page, you will not see any messages.  They will, however, show up as soon as you configure My Page to again have the Message block.');
-	break;
-
-case 'mail_option2':
-	$title=i18n::translate('Internal messaging with emails');
-	$text=i18n::translate('This option is like <b>webtrees</b> internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.<br /><br />This is the default contact method.');
-	break;
-
-case 'mail_option3':
-	$title=i18n::translate('Mailto link');
-	$text=i18n::translate('With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to <b>webtrees</b> will not be used at all, and there will never be any messages in the Message block on your personal My Page.');
-	break;
-
-case 'mail_option4':
-	$title=i18n::translate('No contact method');
-	$text=i18n::translate('With this option, you will not receive any messages.  Even the administrator will not be able to reach you.');
 	break;
 
 case 'manage_media':
