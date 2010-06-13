@@ -4033,41 +4033,6 @@ case 'medialist_recursive':
 	$text=i18n::translate('When this option is selected, the MultiMedia Objects will search not only the directory selected from the Filter list but all its subdirectories as well. When this option is not selected, only the selected directory is searched.<br /><br />The titles of all media objects found are then examined to determine whether they contain the text entered in the Filter.  The result of these two actions determines the multimedia objects to be listed.');
 	break;
 
-case 'menu_charts':
-	$title=i18n::translate('Charts menu');
-	$text=i18n::translate('The available charts are:<ol><li><a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a><br />This will link you to the Pedigree chart of this GEDCOM file. The pedigree will start with the person configured by the administrator. When you are logged in the starting person can be whoever you have configured in your Account preferences.</li><li><a href="?help=help_descendancy.php"><b>Descendancy Chart</b></a><br />The Descendancy chart is essentially a <a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a> in reverse order.  This comparison is not quite correct, but while the Pedigree chart shows you all the ancestors of a starting person, the Descendancy chart shows you all the descendants of a starting person.</li><li><a href="?help=help_timeline.php"><b>Timeline Chart</b></a><br />Here you view the events of a person along a time line.  It\'s interesting to compare the events of two or more persons along the same time line.</li><li><a href="?help=help_relationship.php"><b>Relationship Chart</b></a><br />Here you can check the relation of a person to yourself or to another person.</li><li><a href="?help=help_ancestry.php"><b>Ancestry Chart</b></a><br />This chart is very similar to the <a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a>, but with more details and alternate <a href="?help=chart_style"><b>Chart style</b></a> displays.</li><li><a href="?help=help_fanchart.php"><b>Circle Diagram</b></a><br />This chart is very similar to the <a href="?help=help_pedigree.php"><b>Pedigree Tree</b></a>, but in a more graphical way.</li></ol>');
-	break;
-
-case 'menu_famtree':
-	$title=i18n::translate('Home page menu');
-	$text=i18n::translate('All of this site\'s available genealogical databases are listed in this menu. Each database has its own customized Home page, like this one.  If there is only one database at this site, there is no sub-menu under the Home page icon.');
-	break;
-
-case 'menu_lists':
-	$title=i18n::translate('Lists menu');
-	$text=i18n::translate('The following lists are available:<ol><li><a href="?help=help_indilist.php"><b>Individuals</b></a></li><li><a href="?help=help_famlist.php"><b>Families</b></a><br />In these two lists you can browse alphabetical lists of individuals or families in this GEDCOM.</li><li><a href="?help=help_sourcelist.php"><b>Sources</b></a><br />This item returns a list of all the sources used in the GEDCOM.</li><li><a href="?help=help_placelist.php"><b>Place Hierarchy</b></a><br />Here you can look for people by Place. A two-column list will be returned. Individuals are listed on the left, families on the right.</li><li><a href="?help=help_medialist.php"><b>MultiMedia</b></a><br />You see this menu item only if enabled by the site admin.  This will display links to all multimedia files in this GEDCOM.</li></ol>');
-	break;
-
-case 'menu_myged':
-	$title=i18n::translate('My page menu');
-	$text=i18n::translate('If you are logged in, this menu can include the following items:<ol><li>My Page<br />This takes you to your own customizable Starting page.</li><li>My Account<br />You can edit your personal data here.</li><li>My Pedigree<br />If you have selected a Root person for this GEDCOM, this will take you to the Pedigree chart for that person.</li><li>My Individual Record<br />This link will take you to your Individual Information page, where all genealogical data about yourself and your family is displayed.</li></ol>');
-	break;
-
-case 'menu_search':
-	$title=i18n::translate('Search menu');
-	$text=i18n::translate('The Search page is a more powerful version of the Search box you may find in each page header.');
-	break;
-
-case 'messaging2':
-	$title=i18n::translate('Internal messaging with emails');
-	$text=i18n::translate('When you send this message you will receive a copy sent via email to the address you provided.');
-	break;
-
-case 'more_config':
-	$title=i18n::translate('More help');
-	$text=i18n::translate('More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
 case 'move_mediadirs':
 	$title=i18n::translate('Move media directories');
 	$text=i18n::translate('When the Media Firewall is enabled, Multi-Media files can be stored in a server directory that is not accessible from the Internet.<br /><br />These buttons allow you to easily move an entire Media directory structure between the protected (not web-addressable) <b>%s%s</b> and the normal <b>%s</b> directories.', $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
