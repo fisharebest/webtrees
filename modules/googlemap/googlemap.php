@@ -474,8 +474,8 @@ function build_indiv_map($indifacts, $famids) {
 			if (!empty($placerec)) {
 				$ctla = preg_match("/\d LATI (.*)/", $placerec, $match1);
 				$ctlo = preg_match("/\d LONG (.*)/", $placerec, $match2);
-				$spouserec = get_sub_record(2, "2 _PGVS", $factrec);
-				$ctlp = preg_match("/\d _PGVS @(.*)@/", $spouserec, $spouseid);
+				$spouserec = get_sub_record(2, "2 _WTS", $factrec);
+				$ctlp = preg_match("/\d _WTS @(.*)@/", $spouserec, $spouseid);
 				if ($ctlp>0) {
 					$useThisItem = displayDetailsById($spouseid[1]);
 				} else {

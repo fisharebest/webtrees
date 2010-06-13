@@ -99,7 +99,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
 		// Event of close relative
 		$label_person=Person::getInstance($match[1]);
-	} else if (preg_match('/2 _PGVS @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
+	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
 		// Event of close relative
 		$label_person=Person::getInstance($match[1]);
 	} else if ($parent instanceof Family) {
@@ -245,7 +245,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			}
 		}
 		//-- print spouse name for marriage events
-		if (preg_match("/_PGVS @(.*)@/", $factrec, $match)) {
+		if (preg_match("/_WTS @(.*)@/", $factrec, $match)) {
 			$spouse=Person::getInstance($match[1]);
 			if ($spouse) {
 				echo " <a href=\"", encode_url($spouse->getLinkUrl()), "\">";
@@ -397,7 +397,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			//-- catch all other facts that could be here
 			$special_facts = array("ADDR", "ALIA", "ASSO", "CEME", "CONT", "DATE", "DESC", "EMAIL",
 			"FAMC", "FAMS", "FAX", "NOTE", "OBJE", "PHON", "PLAC", "RESN", "RELA", "SOUR", "STAT", "TEMP",
-			"TIME", "TYPE", "WWW", "_EMAIL", "_WT_USER", "URL", "AGE", "_PGVS", "_PGVFS");
+			"TIME", "TYPE", "WWW", "_EMAIL", "_WT_USER", "URL", "AGE", "_WTS", "_WTFS");
 			$ct = preg_match_all("/\n2 (\w+) (.*)/", $factrec, $match, PREG_SET_ORDER);
 			if ($ct>0) echo "<br />";
 			for($i=0; $i<$ct; $i++) {

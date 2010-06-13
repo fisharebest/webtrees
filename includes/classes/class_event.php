@@ -162,11 +162,11 @@ class Event {
 	}
 
 	function getFamilyId() {
-		return $this->getValue("_PGVFS");
+		return $this->getValue("_WTFS");
 	}
 
 	function getSpouseId() {
-		return $this->getValue("_PGVS");
+		return $this->getValue("_WTS");
 	}
 
 	/**

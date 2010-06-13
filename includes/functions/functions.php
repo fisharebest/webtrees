@@ -1,9 +1,6 @@
 <?php
 /**
- * Core Functions that can be used by any page in PGV
- *
- * The functions in this file are common to all PGV pages and include date conversion
- * routines and sorting functions.
+ * Core Functions
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -549,7 +546,7 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 							$prev_tags[$fact] = 1;
 						}
 						$subrec = get_sub_record(1, "1 $fact", $famrec, $prev_tags[$fact]);
-						$subrec .= "\n2 _PGVS @$spid@\n2 _PGVFS @$famid@\n";
+						$subrec .= "\n2 _WTS @$spid@\n2 _WTFS @$famid@\n";
 						if ($fact=="EVEN") {
 							$ct = preg_match("/2 TYPE (.*)/", $subrec, $tmatch);
 							if ($ct>0) {
@@ -2700,7 +2697,7 @@ function filename_decode($filename) {
  * encode a filename
  *
  * windows doesn't use UTF-8 for its file system so we have to encode the filename
- * before it can be used in PGV
+ * before it can be used
  */
 function filename_encode($filename) {
 	if (DIRECTORY_SEPARATOR=='\\')

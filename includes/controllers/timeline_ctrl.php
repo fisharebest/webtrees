@@ -301,7 +301,7 @@ class TimelineControllerRoot extends BaseController {
 						echo ' <a href="', $spouse->getLinkUrl(), '">', $spouse->getFullName(), '</a>';
 					}
 					else {
-						$ct = preg_match("/2 _PGVFS @(.*)@/", $factrec, $match);
+						$ct = preg_match("/2 _WTFS @(.*)@/", $factrec, $match);
 						if ($ct>0) {
 							print " <a href=\"".encode_url("family.php?famid={$match[1]}&ged={$GEDCOM}")."\">";
 							if (displayDetailsById($match[1])||showLivingNameById($match[1])) print $event->getParentObject()->getFullName();

@@ -908,8 +908,8 @@ class Person extends GedcomRecord {
 				if (($fact!='SOUR') && ($fact!='NOTE') && ($fact!='CHAN') && ($fact!='_UID') && ($fact!='RIN')) {
 					if ((!in_array($fact, $nonfacts))&&(!in_array($fact, $nonfamfacts))) {
 						$factrec = $event->getGedcomRecord();
-						if (!is_null($spouse)) $factrec.="\n2 _PGVS @".$spouse->getXref().'@';
-						$factrec.="\n2 _PGVFS @$famid@\n";
+						if (!is_null($spouse)) $factrec.="\n2 _WTS @".$spouse->getXref().'@';
+						$factrec.="\n2 _WTFS @$famid@\n";
 						$event->gedcomRecord = $factrec;
 						if ($fact!='OBJE') $this->indifacts[] = $event;
 						else $this->otherfacts[]=$event;
