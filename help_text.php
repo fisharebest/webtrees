@@ -4443,11 +4443,6 @@ case 'show_fact_sources':
 	$text=i18n::translate('When this option is checked, you can see all Source or Note records for this person.  When this option is unchecked, Source or Note records that are associated with other facts for this person will not be shown.');
 	break;
 
-case 'show_fam_gedcom':
-	$title=i18n::translate('Show GEDCOM record');
-	$text=i18n::translate('The information about the family, as it is stored in the database, will be displayed when you click this link.  The display will show raw GEDCOM data.');
-	break;
-
 case 'show_fam_timeline':
 	$title=i18n::translate('Show couple on timeline chart');
 	$text=i18n::translate('When you click this link you will jump to the Timeline page, where all facts of the couple will be displayed on a timeline scale.');
