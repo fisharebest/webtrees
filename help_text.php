@@ -3917,7 +3917,7 @@ case 'help_contents_help':
 			.i18n::translate('Family book chart').'</a></li><li><a href="?help=family.php">'.i18n::translate('Family information').'</a></li><li><a href="?help=faq.php">'.i18n::translate('FAQ list').'</a></li><li><a href="?help=gedcom_info">'.i18n::translate('GEDCOM information').'</a></li><li><a href="?help=header">'
 			.i18n::translate('Header').'</a></li><li><a href="?help=help">'.i18n::translate('Help').'</a></li><li><a href="?help=index_portal">'.i18n::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.i18n::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
 			.i18n::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.i18n::translate('Individuals').'</a></li><li><a href="?help=treenav.php">'.i18n::translate('Interactive tree').'</a></li><li><a href="?help=login.php">'
-			.i18n::translate('Login').'</a></li><li><a href="?help=pls_note11">'.i18n::translate('Lost password request').'</a></li><li><a href="?help=menu">'.i18n::translate('Menus').'</a></li><li><a href="?help=medialist.php">'.i18n::translate('Multimedia').'</a></li><li><a href="?help=edituser.php">'
+			.i18n::translate('Login').'</a></li><li><a href="?help=pls_note11">'.i18n::translate('Lost password request').'</a></li><li><a href="?help=medialist.php">'.i18n::translate('Multimedia').'</a></li><li><a href="?help=edituser.php">'
 			.i18n::translate('My account').'</a></li><li><a href="?help=mypage_portal">'.i18n::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.i18n::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.i18n::translate('Pedigree Tree').'</a></li><li><a href="?help=placelist.php">'
 			.i18n::translate('Place hierarchy').'</a></li><li><a href="?help=relationship.php">'.i18n::translate('Relationship chart').'</a></li><li><a href="?help=reportengine.php">'.i18n::translate('Reports').'</a></li><li><a href="?help=login_register.php">'.i18n::translate('Request new user account').'</a></li><li><a href="?help=search">'.i18n::translate('Search').'</a></li><li><a href="?help=source.php">'.i18n::translate('Source').'</a></li><li><a href="?help=sourcelist.php">'
 			.i18n::translate('Sources').'</a></li><li><a href="?help=timeline.php">'.i18n::translate('Timeline chart').'</a></li><li><a href="?help=edituser_username">'.i18n::translate('Username').'</a></li></ul></td>';	
@@ -4205,16 +4205,6 @@ case 'manage_media':
 case 'medialist_recursive':
 	$title=i18n::translate('List files in subdirectories');
 	$text=i18n::translate('When this option is selected, the MultiMedia Objects will search not only the directory selected from the Filter list but all its subdirectories as well. When this option is not selected, only the selected directory is searched.<br /><br />The titles of all media objects found are then examined to determine whether they contain the text entered in the Filter.  The result of these two actions determines the multimedia objects to be listed.');
-	break;
-
-case 'menu':
-	$title=i18n::translate('Menus');
-	$text=i18n::translate('The page headers have drop-down menus associated with each menu icon.<br /><br />When you move your mouse pointer over an icon a sub-menu will appear, if one exists.  When you click on an icon you will be taken to the first item in the sub-menu.<br /><br />The following menu icons are usually available:<ul><li><a href="?help=menu_famtree">Home page</a><br /></li><li><a href="?help=menu_myged">My Page</a><br /></li><li><a href="?help=menu_charts">Charts</a><br /></li><li><a href="?help=menu_lists">Lists</a><br /></li><li><a href="?help=menu_annical">Anniversary calendar</a><br /></li><li><a href="?help=menu_clip">Family tree clippings cart</a><br /></li><li><a href="?help=menu_search">Search</a><br /></li><li><a href="?help=help">Help</a></li></ul>');
-	break;
-
-case 'menu_annical':
-	$title=i18n::translate('Anniversary calendar menu');
-	$text=i18n::translate('The Anniversary Calendar displays the events in a GEDCOM for a given date, month, or year.<ol><li><a href="?help=day_month_help"><b>View Day</b></a></li><li><a href="?help=day_month_help"><b>View Month</b></a></li><li><a href="?help=day_month_help"><b>View Year</b></a><br />These menu items will take you to the Anniversary Calendar to display a list of all the events for the current day, month, or year.</li></ol>');
 	break;
 
 case 'menu_charts':
@@ -4807,12 +4797,6 @@ case 'index':
 case 'index_portal_head':
 	$title=i18n::translate('Index page portal');
 	$text=i18n::translate('<div class="name_head"><center><b>The Home Page</b></center></div>');
-	break;
-
-case 'menu_help':
-// not used? see 'menu'
-	$title=i18n::translate('Menus');
-	$text=i18n::translate('The page headers have drop-down menus associated with each menu icon.<br /><br />When you move your mouse pointer over an icon a sub-menu will appear, if one exists.  When you click on an icon you will be taken to the first item in the sub-menu.<br /><br />The following menu icons are usually available:<ul><li><a href="#menu_fam">Home page</a><br /></li><li><a href="#menu_myged">My Page</a><br /></li><li><a href="#menu_charts">Charts</a><br /></li><li><a href="#menu_lists">Lists</a><br /></li><li><a href="#menu_annical">Anniversary Calendar</a><br /></li><li><a href="#menu_clip">Family Tree Clippings Cart</a><br /></li><li><a href="#menu_search">Search</a><br /></li><li><a href="?help=help">Help</a></li></ul>');
 	break;
 
 case 'multiple':
