@@ -2127,7 +2127,7 @@ case 'CHART_BOX_TAGS':
 	break;
 
 case 'CHECK_MARRIAGE_RELATIONS':
-	$title=i18n::translate('Check marriage relations');
+	$title=i18n::translate('Check relationships by marriage');
 	$text=i18n::translate('Check relationships that are related by marriage.');
 	break;
 
