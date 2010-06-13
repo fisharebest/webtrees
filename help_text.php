@@ -3213,11 +3213,6 @@ case 'add_facts':
 	$text=i18n::translate('Here you can add a fact to the record being edited.<br /><br />First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.');
 	break;
 
-case 'add_fam_clip':
-	$title=i18n::translate('Add family to clippings cart');
-	$text=i18n::translate('You can add all or some of this family\'s information to your Clippings Cart. On the next page you can choose precisely how much information you wish to add:<ol><li>Add just this family record.</li><li>Add parents\' records together with this family record.</li><li>Add parents\' and children\'s records together with this family record.</li><li>Add parents\' and all descendants\' records together with this family record.</li></ol>');
-	break;
-
 case 'add_from_clipboard':
 	$title=i18n::translate('Add from clipboard');
 	$text=i18n::translate('<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
@@ -3281,11 +3276,6 @@ case 'add_person':
 	$text=i18n::translate('You can have several persons on the timeline.<br /><br />Use this box to supply each person\'s ID.  If you don\'t know the ID of the person, you can click the <b>Find ID</b> link next to the box.<br /><br />~Include Immediate Family CheckBox~<br/>Include Immediate Family is checked by default.  Leave checked to view the father, mother, spouse, siblings, and children of the individual being added to the timeline.  Uncheck if you wish to omit the immediate family.');
 	break;
 
-case 'add_repository_clip':
-	$title=i18n::translate('Add repository to clippings cart');
-	$text=i18n::translate('When you click this link you can add the repository, as it is stored in the GEDCOM, to your Clippings Cart.');
-	break;
-
 case 'add_shared_note':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new shared note');
@@ -3300,11 +3290,6 @@ case 'add_sibling':
 case 'add_son_daughter':
 	$title=i18n::translate('Add a new son or daughter');
 	$text=i18n::translate('You can add a child to this family when you click this link.  "This Family", in this case, is the principal person of this screen and his or her spouse.<br /><br />Keep in mind that you are going to add a son or daughter of that person.  Adding a son or daughter is simple: Just click the link, fill out the boxes in the popup screen and that\'s all.<br /><br />If you have to add a brother or sister of the principal person, scroll up a little and click the link in "Family with Parents".');
-	break;
-
-case 'add_source_clip':
-	$title=i18n::translate('Add source to clippings cart');
-	$text=i18n::translate('When you click this link, you can add the source\'s information to your Clippings Cart for later downloading and importing into your own genealogy program.');
 	break;
 
 case 'add_source':
