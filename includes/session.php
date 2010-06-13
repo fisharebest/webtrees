@@ -177,20 +177,6 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 	}
 }
 
-/**
- * Cleanup some variables
- */
-
-if (empty($_SERVER['QUERY_STRING'])) {
-	$QUERY_STRING='';
-} else {
-	$QUERY_STRING=str_replace(
-		array('&','<', 'show_context_help=no', 'show_context_help=yes'),
-		array('&amp;','&lt;', '', ''),
-		$_SERVER['QUERY_STRING']
-	);
-}
-
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_name.php';
@@ -388,12 +374,17 @@ if (WT_USER_ID && safe_GET_bool('logout')) {
 	exit;
 }
 
-$show_context_help = '';
-if (!empty($_REQUEST['show_context_help'])) $show_context_help = $_REQUEST['show_context_help'];
-if (!isset($_SESSION['show_context_help'])) $_SESSION['show_context_help'] = $SHOW_CONTEXT_HELP;
+// Do we show context help on the page?
+if (isset($_GET['show_context_help'])) {
+	$_SESSION['show_context_help']=safe_GET_bool('show_context_help');
+	unset($_GET['show_context_help']);
+} elseif ($SEARCH_SPIDER) {
+	$_SESSION['show_context_help']=false;
+} elseif (!isset($_SESSION['show_context_help'])) {
+	$_SESSION['show_context_help']=get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP');
+}
+
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
-if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='yes') $_SESSION['show_context_help'] = true;
-if (isset($SHOW_CONTEXT_HELP) && $show_context_help==='no') $_SESSION['show_context_help'] = false;
 
 if (WT_SCRIPT_NAME!='help_text.php') {
 	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'logs.php', 'login.php', 'siteconfig.php', 'admin.php', 'addmedia.php', 'client.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php', 'import.php'))) {

@@ -267,7 +267,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         =get_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB');
 	global $SEARCH_FACTS_DEFAULT;         $SEARCH_FACTS_DEFAULT         =get_gedcom_setting($ged_id, 'SEARCH_FACTS_DEFAULT');
 	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                =get_gedcom_setting($ged_id, 'SHOW_AGE_DIFF');
-	global $SHOW_CONTEXT_HELP;            $SHOW_CONTEXT_HELP            =get_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP');
 	global $SHOW_COUNTER;                 $SHOW_COUNTER                 =get_gedcom_setting($ged_id, 'SHOW_COUNTER');
 	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             =get_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE');
 	global $SHOW_EMPTY_BOXES;             $SHOW_EMPTY_BOXES             =get_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES');

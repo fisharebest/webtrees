@@ -196,12 +196,10 @@ $tab=0;		// initialize tab index
 				<td class="topbottombar" colspan="2">
 					<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php print i18n::translate('Login'); ?>" />
 					<?php
-					if ($SHOW_CONTEXT_HELP) {
-						if ($REQUIRE_AUTHENTICATION) {
-							echo help_link('login_buttons_aut');
-						} else {
-							echo help_link('login_buttons');
-						}
+					if ($REQUIRE_AUTHENTICATION) {
+						echo help_link('login_buttons_aut');
+					} else {
+						echo help_link('login_buttons');
 					}
 					?>
 				</td>

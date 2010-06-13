@@ -855,7 +855,7 @@ class MenuBar
 	*/
 	static function getHelpMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
-		global $SHOW_CONTEXT_HELP, $QUERY_STRING, $helpindex, $action;
+		global $QUERY_STRING, $helpindex, $action;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if (!empty($SEARCH_SPIDER)) {
 			$menu = new Menu("", "", "");

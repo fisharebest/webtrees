@@ -1221,13 +1221,13 @@ function print_privacy_error() {
 function help_link($help_topic, $module='') {
 	global $WT_USE_HELPIMG, $WT_IMAGES, $WT_IMAGE_DIR, $SEARCH_SPIDER;
 
-	if ($SEARCH_SPIDER || !$_SESSION['show_context_help']) {
-		return '';
-	} else {
+	if ($_SESSION['show_context_help']) {
 		return
 			'<a class="help" tabindex="0" href="javascript: '.$help_topic.'" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
 			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['help']['small'].'" class="icon" width="15" height="15" alt="" />' : i18n::translate('?')).
 			'&nbsp;</a>';
+	} else {
+		return '';
 	}
 }
 
