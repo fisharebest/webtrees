@@ -3407,16 +3407,6 @@ case 'clip_download':
 	$text=i18n::translate('When you click this link you will be taken to the next page.  If any of the clippings in your cart refer to multimedia items, these items will also be displayed on that page.<br /><br />Simply follow the instructions.');
 	break;
 
-case 'config':
-	$title=i18n::translate('Configuration');
-	$text=i18n::translate('Configuration help');
-	break;
-
-case 'config_help':
-	$title=i18n::translate('Configuration help');
-	$text=i18n::translate('This page collects all of the major topics of Configuration Help into one place.  You can view the information on your screen, or you can print it for later use.');
-	break;
-
 case 'convertPath':
 	$title=i18n::translate('Convert media path to');
 	$text=i18n::translate('This option defines a constant path to be prefixed to all media paths in the output file.<br /><br />For example, if the media directory has been configured to be "/media" and if the media file being exported has a path "/media/pictures/xyz.jpg" and you have entered "c:\my pictures\my family" into this field, the resultant media path will be "c:\my pictures\my family/pictures/xyz.jpg".<br /><br />You will notice in this example:<ul><li>the current media directory name is stripped from the path</li><li>and the resultant path will not have correct folder name separators.</li></ul><br />If you wish to retain the media directory in media file paths of the output file, you will need to include that name in the <b>Convert media path to</b> field.<br /><br />You should also use the <b>Convert media folder separators to</b> option to ensure that the folder name separators are consistent and agree with the requirements of the receiving operating system.<br /><br />Media paths that are actually URLs will not be changed.');
@@ -3722,11 +3712,6 @@ case 'google_chart_surname':
 case 'header_favorites':
 	$title=i18n::translate('Favorites');
 	$text=i18n::translate('The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br /><br />More help about adding Favorites is available in your personalized My Page.');
-	break;
-
-case 'header_general':
-	$title=i18n::translate('General information');
-	$text='';
 	break;
 
 case 'header':
