@@ -3813,11 +3813,6 @@ case 'gen_missing_thumbs':
 	$text=i18n::translate('This option will generate thumbnails for all files in the current directory which don\'t already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br /><br />If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links.');
 	break;
 
-case 'general_privacy':
-	$title=i18n::translate('General privacy settings');
-	$text=i18n::translate('You can have different Privacy settings for each GEDCOM on your <b>webtrees</b> web site.  Check under the page title whether you are editing the correct GEDCOM.<br /><br />You can override these general settings by using the other Privacy forms on the Edit GEDCOM privacy settings page.<br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
 case 'generate_thumb':
 	$title=i18n::translate('Automatic thumbnail');
 	$text=i18n::translate('Your system can generate thumbnails for certain types of images automatically.  There may be support for BMP, GIF, JPG, and PNG files.  The types that your system supports are listed beside the checkbox.<br /><br />By clicking this checkbox, you signal the system that you are uploading images of this type and that you want it to try to generate thumbnails for them.  Leave the box unchecked if you want to provide your own thumbnails.');
