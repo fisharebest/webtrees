@@ -11,11 +11,24 @@
 }
 
 body {
-font-family: tahoma, arial, helvetica, sans-serif;
+	color: #000066;
 	background-color: #c8e7ff;
-	background-image: url('images/background.jpg') repeat-x;
-font-size: 11px;
+	background-image: url('images/background.jpg');
+	background-attachment: fixed;
+	background-position: top left;
+	background-repeat: repeat-x;
+	font: 11px tahoma, arial, helvetica, sans-serif;
 }
+
+#rapcontainer {
+margin-top: 10px;
+margin-bottom: 10px;
+margin-left:10px;
+margin-right: 10px;
+background-color: #fff;
+border: 1px solid #003399;
+}
+
 
 * {
 margin:0px;
@@ -1856,4 +1869,9 @@ padding: 0 10px;
 
 .makeMenu li:hover > ul {
 	display:block;
+}
+#container {
+	border: 1px solid #003399;
+	background: white;
+	padding: 0px;
 }

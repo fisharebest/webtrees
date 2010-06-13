@@ -110,6 +110,8 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 <?php if ($view!='simple') {?>
 
 <!-- begin header section -->
+<div id="rapcontainer">
+
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
 <!-- begin Style code -->
 <table class="header" style="background:url('<?php echo $WT_IMAGE_DIR; ?>/clouds.gif')" >
