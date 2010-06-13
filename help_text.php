@@ -3238,11 +3238,6 @@ case 'add_media_linkid':
 	$text=i18n::translate('Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages.');
 	break;
 	
-case 'add_name':
-	$title=i18n::translate('Add a new name');
-	$text=i18n::translate('This link will allow you to add another name to this individual.  Sometimes people are known by other names or aliases.  This link allows you to add new names to a person without changing the old name.');
-	break;
-
 case 'add_new_facts':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new fact');
@@ -3252,12 +3247,6 @@ case 'add_new_facts':
 case 'add_new_gedcom':
 	$title=i18n::translate('Create a new GEDCOM');
 	$text=i18n::translate('You can start a new genealogical database from scratch.<br /><br />This procedure requires only a few simple steps. Step 1 is different from what you know already about uploading and adding. The other steps will be familiar.<ol><li><b>Naming the new GEDCOM</b><br />Type the name of the new GEDCOM <u>without</u> the extension <b>.ged</b>. The new file will be created in the directory named above the box where you enter the name.  Click <b>Add</b>.</li><li><b>Configuration page</b><br />You already know this page;  you configure the settings for your new GEDCOM file.</li><li><b>Validate</b><br />You already know this page;  the new GEDCOM is checked.  Since there is nothing in it, it will be ok.</li><li><b>Importing Records</b><br />Since there will be only one record to import, this will be finished very fast.</li></ol>That\'s it.  Now you can go to the Pedigree chart to see your first person in the new GEDCOM. Click the name of the person and start editing. After that, you can link new individuals to the first person.');
-	break;
-
-case 'add_new_parent':
-	// This is a general help text for multiple pages
-	$title=i18n::translate('Add a new parent');
-	$text=i18n::translate('There are certainly many individuals in the GEDCOM without a record of a father or mother.<br /><br />In that case, on the <b>Individual Information</b> page, tab sheet <b>Close Relatives</b>, table <b>Family with Parents</b>, you will find links to add a <u>new</u> father or mother to the individual.<br /><br />Please keep in mind that these links are for adding a <u>new</u> father or mother.  If the father or mother already has a record in this database, you have to use the link <b>Link this person to an existing family as a child</b>, which you will find on that <b>Individual Information</b> page below the last table.');
 	break;
 
 case 'add_note':
@@ -3433,11 +3422,6 @@ case 'config_help':
 	$text=i18n::translate('This page collects all of the major topics of Configuration Help into one place.  You can view the information on your screen, or you can print it for later use.');
 	break;
 
-case 'context':
-	$title=i18n::translate('Context');
-	$text=i18n::translate('More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
 case 'convertPath':
 	$title=i18n::translate('Convert media path to');
 	$text=i18n::translate('This option defines a constant path to be prefixed to all media paths in the output file.<br /><br />For example, if the media directory has been configured to be "/media" and if the media file being exported has a path "/media/pictures/xyz.jpg" and you have entered "c:\my pictures\my family" into this field, the resultant media path will be "c:\my pictures\my family/pictures/xyz.jpg".<br /><br />You will notice in this example:<ul><li>the current media directory name is stripped from the path</li><li>and the resultant path will not have correct folder name separators.</li></ul><br />If you wish to retain the media directory in media file paths of the output file, you will need to include that name in the <b>Convert media path to</b> field.<br /><br />You should also use the <b>Convert media folder separators to</b> option to ensure that the folder name separators are consistent and agree with the requirements of the receiving operating system.<br /><br />Media paths that are actually URLs will not be changed.');
@@ -3596,11 +3580,6 @@ case 'edit_edit_raw':
 case 'edit_raw_gedcom':
 	$title=i18n::translate('Edit raw gedcom');
 	$text=i18n::translate('When you click this link, a new window will open containing the raw GEDCOM data of the details on this page.<br /><br />Here you can edit the GEDCOM data directly. Be sure to enter valid GEDCOM 5.5.1 data, as no further validity checks will be done.  The changed or added data will be displayed in <b>webtrees</b> as "changes", and have to be accepted by a user with Accept rights.');
-	break;
-
-case 'edit_sex':
-	$title=i18n::translate('Edit gender');
-	$text=i18n::translate('Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown.');
 	break;
 
 case 'edit_SOUR_EVEN':
