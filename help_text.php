@@ -3598,11 +3598,6 @@ case 'edit_edit_raw':
 	$text=i18n::translate('This page allows you to edit the raw GEDCOM record.  You should use this page with caution; it requires a good understanding of the GEDCOM 5.5.1 Standard.  For more information on the GEDCOM 5.5.1 Standard, refer to Help topic <b>GEDCOM file</b>.<br /><br /><b>webtrees</b> provides many ways to add and edit information, but there could be occasions when you may want to edit the raw GEDCOM structure.  When possible, you should use the provided forms for adding information, but when that is impossible, you can use this form.  Upon submitting the form, your information will be checked for basic conformance to the Standard and the CHAN record will be updated.');
 	break;
 
-case 'edit_name':
-	$title=i18n::translate('Edit name');
-	$text=i18n::translate('This is the most important field in a person\'s Name record.<br /><br />This field should be filled automatically as the other fields are filled in, but it is provided so that you can edit the information according to your personal preference.<br /><br />The name in this field should be entered according to the GEDCOM 5.5.1 standards with the surname surrounded by forward slashes "/".  As an example, the name "John Robert Finlay Jr." should be entered like this: "John Robert /Finlay/ Jr.".');
-	break;
-
 case 'edit_privacy':
 	$title=i18n::translate('Edit GEDCOM privacy settings');
 	$text=i18n::translate('On this page you can make all the Privacy settings for the selected GEDCOM.<br /><br />You can check under the page title to see that you are editing the correct privacy file.  It is displayed like this: (path/nameofyourgedcom_priv.php)<br /><br />If you need more settings, you can make changes to the privacy file manually. You can read more about this on the <b>webtrees</b> web site.');
