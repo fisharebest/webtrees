@@ -291,10 +291,10 @@ foreach ($gedcoms as $gedcom) {
 if (WT_USER_IS_ADMIN) {
 	echo
 		'<br/><table class="gedcom_table"><tr>',
-		'<td class="list_label">', i18n::translate('Default GEDCOM'),      help_link('default_gedcom'),        '</td>',
-		'<td class="list_label">', i18n::translate('Add a new GEDCOM'),    help_link('help_addgedcom.php'),    '</td>',
-		'<td class="list_label">', i18n::translate('Upload a new GEDCOM'), help_link('help_uploadgedcom.php'), '</td>',
-		'<td class="list_label">', i18n::translate('Create a new GEDCOM'), help_link('help_addnewgedcom.php'), '</td>',
+		'<td class="list_label">', i18n::translate('Default GEDCOM'),      help_link('default_gedcom'), '</td>',
+		'<td class="list_label">', i18n::translate('Add a new GEDCOM'),    help_link('add_gedcom'),     '</td>',
+		'<td class="list_label">', i18n::translate('Upload a new GEDCOM'), help_link('upload_gedcom'),  '</td>',
+		'<td class="list_label">', i18n::translate('Create a new GEDCOM'), help_link('add_new_gedcom'), '</td>',
 		'</tr><tr>',
 		'<td class="list_value_wrap">',
 		'<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
