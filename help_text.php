@@ -4262,12 +4262,6 @@ case 'move_mediadirs':
 	$text=i18n::translate('When the Media Firewall is enabled, Multi-Media files can be stored in a server directory that is not accessible from the Internet.<br /><br />These buttons allow you to easily move an entire Media directory structure between the protected (not web-addressable) <b>%s%s</b> and the normal <b>%s</b> directories.', $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
 	break;
 
-case 'mypage_charts':
-// duplicate text. see index_charts
-	$title=i18n::translate('Charts block');
-	$text=i18n::translate('This block allows a pedigree, descendancy, or hourglass chart to appear on My Page or the Home Page.  Because of space limitations, the charts should be placed only on the left side of the page.<br /><br />When this block appears on the Home Page, the root person and the type of chart to be displayed are determined by the administrator.  When this block appears on the user\'s personalized My Page, these options are determined by the user.<br /><br />The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of a person to see more details about them.');
-	break;
-
 case 'mypage_customize':
 	$title=i18n::translate('Customize My Page');
 	$text=i18n::translate('When you entered here for the first time, you already had some blocks on this page.  If you like, you can customize this My Page.<br /><br />When you click this link you will be taken to a form where you can add, move, or delete blocks.  More explanation is available on that form.');
