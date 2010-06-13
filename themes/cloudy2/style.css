@@ -305,6 +305,7 @@ padding:10px;
 background: #fff;
 }
 
+
 #pid {
 color:#333;
 background:#FFC;
@@ -693,7 +694,7 @@ width: 100%;
 }
 
 .facts_label {
-border:1px solid #999;
+border:1px solid #acf;
 font-size: 12px;
 padding:4px;
 width:20%;
@@ -710,7 +711,7 @@ text-align:center;
 
 .facts_value {
 background:#fff;
-border:1pt solid #ddd;
+border:1pt solid #acf;
 font-size: 12px;
 padding:4px;
 }
