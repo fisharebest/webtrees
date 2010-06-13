@@ -71,11 +71,8 @@ ul.clist {
 	position: absolute;
 	right: 0px;
 	width: 0px;
-	margin-top: 11px;
-	margin-right: 22px;
-	margin-bottom: 15px;
-	margin-left:15px;
 	background-color: transparent;
+	margin: 9px 35px 15px 15px;
 
 }
 #sidebar_controls {
