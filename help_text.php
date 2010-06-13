@@ -2927,11 +2927,6 @@ case 'editconfig_gedcom.php':
 	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.<br /><br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.<br /><br /><br />See <a href="readme.txt" target="_blank"><b>Readme.txt</b></a> for more information.');
 	break;
 
-case 'editgedcoms.php':
-	$title=i18n::translate('GEDCOM administration');
-	$text=i18n::translate('The GEDCOM Administration page is the control center for administering all of your genealogical databases.<br /><br /><b>Current GEDCOMs</b><br />At the head of the <b>Current GEDCOMs</b> table, you see an action bar with four links.<ul><li>Add GEDCOM</li><li>Upload GEDCOM</li><li>Create a new GEDCOM</li><li>Return to the Admin menu</li></ul>In the <b>Current GEDCOMs</b> table each genealogical database is listed separately, and you have the following options for each of them:<ul><li>Import</li><li>Delete</li><li>Download</li><li>Edit configuration</li><li>Edit privacy</li><li>SearchLog files</li></ul>Edit privacy appears here because every GEDCOM has its own privacy file.<br /><br />Each line in this table should be self-explanatory.  <b>webtrees</b> can be configured to log all database searches.  The SearchLog files can be inspected through links found on this page.');
-	break;
-
 case 'editnews.php':
 	// no help link
 	$title=i18n::translate('Add/edit journal/news entry');
@@ -3653,12 +3648,6 @@ case 'edit_edit_raw':
 	$text=i18n::translate('This page allows you to edit the raw GEDCOM record.  You should use this page with caution; it requires a good understanding of the GEDCOM 5.5.1 Standard.  For more information on the GEDCOM 5.5.1 Standard, refer to Help topic <b>GEDCOM file</b>.<br /><br /><b>webtrees</b> provides many ways to add and edit information, but there could be occasions when you may want to edit the raw GEDCOM structure.  When possible, you should use the provided forms for adding information, but when that is impossible, you can use this form.  Upon submitting the form, your information will be checked for basic conformance to the Standard and the CHAN record will be updated.');
 	break;
 
-case 'edit_gedcoms':
-// duplicate text. see 'editgedcoms.php'
-	$title=i18n::translate('GEDCOM administration');
-	$text=i18n::translate('The GEDCOM Administration page is the control center for administering all of your genealogical databases.<br /><br /><b>Current GEDCOMs</b><br />At the head of the <b>Current GEDCOMs</b> table, you see an action bar with four links.<ul><li>Add GEDCOM</li><li>Upload GEDCOM</li><li>Create a new GEDCOM</li><li>Return to the Admin menu</li></ul>In the <b>Current GEDCOMs</b> table each genealogical database is listed separately, and you have the following options for each of them:<ul><li>Import</li><li>Delete</li><li>Download</li><li>Edit configuration</li><li>Edit privacy</li><li>SearchLog files</li></ul>Edit privacy appears here because every GEDCOM has its own privacy file.<br /><br />Each line in this table should be self-explanatory.  <b>webtrees</b> can be configured to log all database searches.  The SearchLog files can be inspected through links found on this page.');
-	break;
-
 case 'edit_given_name':
 	$title=i18n::translate('Add given name');
 	$text=i18n::translate('In this field you should enter the given names for the person.  As an example, in the name "John Robert Finlay", the given names that should be entered here are "John Robert"');
@@ -3807,6 +3796,11 @@ case 'follow_spouse':
 case 'ged_filter_description':
 	$title=i18n::translate('Search option text');
 	$text=i18n::translate('This option lets you search the text associated with configuration options.<br /><br />As you type letters, the search will find all configuration options that contain that letter sequence.  The search becomes more precise as you type more letters.');
+	break;
+
+case 'gedcom_administration':
+	$title=i18n::translate('GEDCOM administration');
+	$text=i18n::translate('The GEDCOM Administration page is the control center for administering all of your genealogical databases.<br /><br /><b>Current GEDCOMs</b><br />At the head of the <b>Current GEDCOMs</b> table, you see an action bar with four links.<ul><li>Add GEDCOM</li><li>Upload GEDCOM</li><li>Create a new GEDCOM</li><li>Return to the Admin menu</li></ul>In the <b>Current GEDCOMs</b> table each genealogical database is listed separately, and you have the following options for each of them:<ul><li>Import</li><li>Delete</li><li>Download</li><li>Edit configuration</li><li>Edit privacy</li><li>SearchLog files</li></ul>Edit privacy appears here because every GEDCOM has its own privacy file.<br /><br />Each line in this table should be self-explanatory.  <b>webtrees</b> can be configured to log all database searches.  The SearchLog files can be inspected through links found on this page.');
 	break;
 
 case 'gedcom_configfile':
