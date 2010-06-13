@@ -172,7 +172,6 @@ set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              false);
 set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
 set_gedcom_setting($ged_id, 'WEBTREES_EMAIL',               '');
 set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       '1');
-set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_4',     '');
 set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       false);
 set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           false);
 set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   'click');

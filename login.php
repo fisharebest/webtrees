@@ -163,8 +163,8 @@ case 3:
 	break;
 case 4:
 	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.');
-	if ($WELCOME_TEXT_CUST_HEAD) {
-		echo embed_globals($WELCOME_TEXT_AUTH_MODE_4);
+	if (get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD')) {
+		echo '<p>', get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
 	}
 	break;
 }

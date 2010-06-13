@@ -310,7 +310,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            =get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
 	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               =get_gedcom_setting($ged_id, 'WEBTREES_EMAIL');
 	global $WELCOME_TEXT_AUTH_MODE;       $WELCOME_TEXT_AUTH_MODE       =get_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE');
-	global $WELCOME_TEXT_AUTH_MODE_4;     $WELCOME_TEXT_AUTH_MODE_4     =get_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_4');
 	global $WELCOME_TEXT_CUST_HEAD;       $WELCOME_TEXT_CUST_HEAD       =get_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD');
 	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           =get_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES');
 	global $ZOOM_BOXES;                   $ZOOM_BOXES                   =get_gedcom_setting($ged_id, 'ZOOM_BOXES');
