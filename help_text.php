@@ -3415,11 +3415,6 @@ case 'cache_life':
 	$text=i18n::translate('To improve performance, this webtrees Home Page block is saved as a cache file.  You can control how often this block\'s cache file is refreshed.<br /><br /><ul><li><b>-1</b> means that the cache file is never refreshed automatically.  To get a fresh copy, you need to delete all cache files.  You can do this on the Customize Home Page screen.</li><li><b>0</b> (Zero) means that this block is never cached, and every time the block is displayed on the webtrees Home Page, you see a fresh copy.  This setting is used automatically for blocks that change frequently, such as the Logged In Users and the Random Media blocks.</li><li><b>1</b> (One) means that a fresh copy of this block\'s cache file is created daily, <b>2</b> means that a fresh copy is created every two days, <b>7</b> means that a fresh copy is created weekly, etc.</li></ul>');
 	break;
 
-case 'cal_dowload':
-	$title=i18n::translate('Download calendar');
-	$text=i18n::translate('This option controls whether the button for downloading calendar events is shown to logged-in users. The downloaded calendar file can be imported into compatible programs such as Microsoft Outlook to, for example, generate automatic e-mail reminders of anniversaries.<br /><br />When set to <b>No</b>, the logged-in user will not be able to download the calendar file.  When set to <b>Yes</b>, the Download button will be shown.  This button is never shown when the user is not logged in.');
-	break;
-
 case 'change_indi2id':
 	$title=i18n::translate('Change individual ID to ....');
 	$text=i18n::translate('This tool was designed for users whose Genealogy programs use a different GEDCOM ID for the individuals every time the GEDCOM is exported. For example, the first time the GEDCOM is exported some person\'s ID might be I100 but the next time the GEDCOM is exported that same person\'s ID is changed to I234. These changing IDs make it difficult to administer <b>webtrees</b> because the ID is how people are referenced.<br /><br />Most genealogy programs also use the RIN or REFN tag to give each person a unique identifier that can be used to reference the individual. This tool will replace all of the individual IDs in the GEDCOM file with the whatever field (RIN or REFN) you specify.');
