@@ -224,7 +224,7 @@ $_SESSION['medialist'] = $medialist;
 <!-- // NOTE: Row 1, left: -->
 	<!-- // begin select media folders -->
 		<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
-			<?php echo i18n::translate('Media directory'), help_link('media_dir'); ?></td>
+			<?php echo i18n::translate('Media directory'), help_link('view_server_folder'); ?></td>
 		<td class="optionbox wrap width25">
 			<?php
 				//if ($MEDIA_DIRECTORY_LEVELS > 0) {

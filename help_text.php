@@ -4640,7 +4640,10 @@ case 'utf8_ansi':
 
 case 'view_server_folder':
 	$title=i18n::translate('View server folder');
-	$text=i18n::translate('The administrator has enabled up to %s folder levels below the default <b>%s</b>.  This helps to organize the media files and reduces the possibility of name collisions.<br /><br />In this field, you select the media folder whose contents you wish to view.  When you select <b>ALL</b>, all media files will be shown without regard to the folder in which they are stored.  This can produce a very long list of media items.', $MEDIA_DRECTORY_LEVELS, $MEDIA_DIRECTORY);
+	$text=i18n::translate('The administrator has enabled up to %s folder levels below the default <b>%s</b>.  This helps to organize the media files and reduces the possibility of name collisions.<br /><br />In this field, you select the media folder whose contents you wish to view.  When you select <b>ALL</b>, all media files will be shown without regard to the folder in which they are stored.  This can produce a very long list of media items.',
+		get_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS'),
+		get_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY')
+	);
 	break;
 
 case 'zip':
