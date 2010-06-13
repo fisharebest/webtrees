@@ -329,9 +329,11 @@ if ($view!="preview") {
 				<?php
 				echo "<input class=\"error\" type=\"submit\" value=\"", i18n::translate('Check relationships by marriage'), "\" onclick=\"people.followspouse.checked='checked';\"/>";
 			}
-			echo "</td>";
+			echo '</td>';
 		} else {
-			echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", i18n::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\" /></td>\n";
+			echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", i18n::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\" />";
+			echo help_link('next_path');
+			echo '</td>';
 		}
 		$pass = true;
 	}
