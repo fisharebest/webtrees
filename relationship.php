@@ -299,7 +299,7 @@ if ($view!="preview") {
 
 	<!-- // Check relationships by marriage -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Check relationships by marriage'), help_link('follow_spouse'); ?>
+	<?php echo i18n::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
 	</td>
 	<td class="optionbox" id="followspousebox">
 	<input tabindex="6" type="checkbox" name="followspouse" value="1"

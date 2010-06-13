@@ -2128,7 +2128,7 @@ case 'CHART_BOX_TAGS':
 
 case 'CHECK_MARRIAGE_RELATIONS':
 	$title=i18n::translate('Check relationships by marriage');
-	$text=i18n::translate('Check relationships that are related by marriage.');
+	$text=i18n::translate('When calculating relationships, this option controls whether <b>webtrees</b> will include spouses/partners as well as blood relatives.');
 	break;
 
 case 'COMMON_NAMES_ADD':
@@ -3776,11 +3776,6 @@ case 'file_type':
 case 'find_media':
 	$title=i18n::translate('Find media');
 	$text=i18n::translate('This allows you to search the file structure to find the media item you wish to link to.');
-	break;
-
-case 'follow_spouse':
-	$title=i18n::translate('Check relationships by marriage');
-	$text=i18n::translate('With this check box <b>un</b>checked, the relationships are only checked between blood relatives.  With this check box checked, relationships by marriage are also checked.  You will probably find more relationships by leaving this box checked.');
 	break;
 
 case 'ged_filter_description':
