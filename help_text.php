@@ -2889,11 +2889,6 @@ case 'calendar.php':
 	$text=i18n::translate('The anniversary calendar shows the persons and families who are linked to an event at a certain day or month or during a certain period of time. It has an advanced filtering system to select the right date, period, and events for you.<ul><li><a href="?help=annivers_date_select"><b>Day:</b></a></li><li><a href="?help=annivers_month_select"><b>Month:</b></a></li><li><a href="?help=annivers_year_select"><b>Year:</b></a></li><li><a href="?help=annivers_show"><b>Show / Show events of:</b></a></li><li><a href="?help=annivers_sex"><b>Gender</b></a></li><li><a href="?help=annivers_event"><b>Event</b></a></li><li><a href="?help=day_month"><b>View day / View month / View year</b></a></li><li><a href="?help=annivers_tip"><b>Tip</b></a></li></ul>');
 	break;
 
-case 'clippings.php':
-	$title=i18n::translate('Clippings cart');
-	$text=i18n::translate('The Clippings Cart allows you to take extracts ("clippings") from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br /><ul><li>How to take clippings?<br />This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br />Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
-	break;
-
 case 'compact.php':
 	// no help text
 	$title=i18n::translate('Compact chart');
