@@ -3433,11 +3433,6 @@ case 'clear_cache':
 	$text=i18n::translate('In order to improve performance, several of the blocks on the <b>webtrees</b> Home Page are saved as cache files in the index directory.  The cache files for most blocks are refreshed once each day, but there may be times when you want to refresh them manually.<br /><br />This button allows you to refresh the cache files when necessary.');
 	break;
 
-case 'click_here':
-	$title=i18n::translate('Click here to continue');
-	$text=i18n::translate('Click this button to save your changes.<br /><br />You will be returned to My Page or the Home Page, but your changes may not be shown.  You may need to use the Page Reload function of your browser to view your changes properly.');
-	break;
-
 case 'clip_download':
 	$title=i18n::translate('Download clippings cart');
 	$text=i18n::translate('When you click this link you will be taken to the next page.  If any of the clippings in your cart refer to multimedia items, these items will also be displayed on that page.<br /><br />Simply follow the instructions.');
