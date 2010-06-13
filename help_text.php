@@ -2408,7 +2408,7 @@ case 'PEDIGREE_GENERATIONS':
 
 case 'PEDIGREE_MAP_clustersize':
 	$title=i18n::translate('Cluster size');
-	$text=i18n::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations. The \'trail\' is usually only visable at high zoom values.');
+	$text=i18n::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations. The \'trail\' is usually only visible at high zoom values.');
 	break;
 
 case 'PEDIGREE_MAP_hideflags':
