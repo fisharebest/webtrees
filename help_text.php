@@ -4553,11 +4553,6 @@ case 'upload_media_file':
 	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.<br /><br />The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.<br /><br />If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b>.  In this case, the media file will be uploaded to the directory <b>%s</b>.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
 	break;
 
-case 'upload_media_folder':
-	$title=i18n::translate('Upload media folder');
-	$text=i18n::translate('Your GEDCOM configuration allows up to %s directory levels beyond the default <b>%s</b> where uploaded media files are normally stored. This lets you organize your media files, and you don\'t need to be as concerned about maintaining unique names for each media file.<br /><br />In this field you specify the destination directory on your server where the uploaded media file is to be stored.  Be sure to pay attention to the case (upper or lower case) of what you enter or select here, since file and directory names are case sensitive.<br /><br />If the directory name you enter here does not exist, it will be created automatically. If you enter more than the additional %s directory levels permitted by your GEDCOM configuration, your input will be truncated accordingly.<br /><br />Thumbnails will be uploaded or created in an identical directory structure, starting with <b>%sthumbs/</b>.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY);
-	break;
-
 case 'upload_media':
 	$title=i18n::translate('Upload media files');
 	$text=i18n::translate('Select files from your local computer to upload to your server.  All files will be uploaded to the directory <b>%s</b> or to one of its sub-directories.<br /><br />Folder names you specify will be appended to <b>%s</b>. For example, <b>%smyfamily</b>. If the thumbnail directory does not exist, it is created automatically.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
