@@ -3798,11 +3798,6 @@ case 'gedcom_news_limit':
 	$text=i18n::translate('You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br /><br />This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles.');
 	break;
 
-case 'gedcom_path':
-	$title=i18n::translate('Path and name of GEDCOM on server');
-	$text=i18n::translate('There are two ways of importing your GEDCOM file into <b>webtrees</b>. They are:<ol><li>FTP the file to the server</li><li>Upload within <b>webtrees</b></li></ol>When your file already exists on the server, you engage the <i>Add GEDCOM</i> procedure and fill in the path and name of your GEDCOM file as they exist on the server. The name can be with or without extension. If no extension is given, .ged will be assumed. The path is optional. If no path is given, the value of the <i>Index file directory</i> option, as set in your <b>webtrees</b> site configuration, will be used.  Please note that on most servers, file and path names are case sensitive.<br /><br />When you engage the <i>Upload GEDCOM</i> procedure built into <b>webtrees</b>, you can use the <b>Browse</b> button to locate the desired file on your local computer. This can be a regular GEDCOM file or a ZIP file containing the GEDCOM file. <b>webtrees</b> will automatically extract and then use the GEDCOM file contained in that ZIP file.<br /><br />When uploading a file it is possible to specify an alternative path and/or filename to save it under on the server.<br /><br />See the <a href="readme.txt">Readme.txt</a> file for more information.');
-	break;
-
 case 'gedcom_title':
 	$title=i18n::translate('GEDCOM title');
 	$text=i18n::translate('Enter a descriptive title to be displayed when users are choosing among GEDCOM datasets at your site.');
