@@ -2688,7 +2688,7 @@ case 'SHOW_PEDIGREE_PLACES':
 
 case 'SHOW_PRIVATE_RELATIONSHIPS':
 	$title=i18n::translate('Show private relationships');
-	$text=i18n::translate('This option will retain family links in privatized records.  This means that you will see empty "private" boxes on the pedigree chart and on other charts with private people.<br /><br />This is similar to the behavior of <b>webtrees</b> versions prior to v4.0.<br /><br />This setting is off by default.  It is recommended instead of turning this on, to point your pedigree root person in your GEDCOM configuration to a person who is not private.');
+	$text=i18n::translate('This option will retain family links in private records.  This means that you will see empty "private" boxes on the pedigree chart and on other charts with private people.');
 	break;
 
 case 'SHOW_REGISTER_CAUTION':
@@ -3830,7 +3830,7 @@ case 'link_remote_rel':
 
 case 'link_remote_site':
 	$title=i18n::translate('Site');
-	$text=i18n::translate('In this section you specify the parameters that are required to connect to the remote site hosting the data you are linking to. You have the option of choosing from a list of known sites that you have used before, or entering the Site URL and Database ID for a new one.<br /><br />In the <b>Site URL</b> field, you enter the URL to access the web services description file (WDSL) which tells <b>webtrees</b> how to access the data on the remote site.  For a remote <b>webtrees</b> website, the URL to the WSDL file will look like this: <u>http://www.remotesite.com/webtrees/genservice.php?wsdl</u><br /><br />The <b>Database ID</b> field is used to enter an optional database identifier for remote sites that require one.  For <b>webtrees</b> sites, this is the name of the GEDCOM file. <br /><br />The <b>Username</b> and the <b>Password</b> fields are necessary if the database requires it.<br /><br /><i>Note: Remote <b>webtrees</b> sites must be running version 4.0 or later; earlier versions do not have this capability.</i>');
+	$text=i18n::translate('In this section you specify the parameters that are required to connect to the remote site hosting the data you are linking to. You have the option of choosing from a list of known sites that you have used before, or entering the Site URL and Database ID for a new one.<br /><br />In the <b>Site URL</b> field, you enter the URL to access the web services description file (WDSL) which tells <b>webtrees</b> how to access the data on the remote site.  For a remote <b>webtrees</b> website, the URL to the WSDL file will look like this: <u>http://www.remotesite.com/webtrees/genservice.php?wsdl</u><br /><br />The <b>Database ID</b> field is used to enter an optional database identifier for remote sites that require one.  For <b>webtrees</b> sites, this is the name of the GEDCOM file. <br /><br />The <b>Username</b> and the <b>Password</b> fields are only necessary if the database requires it.');
 	break;
 
 case 'link_wife':

@@ -411,7 +411,7 @@ if (empty($errorServer)) {
 		<tr>
 		<td class="facts_label" colspan="2">
 			<b><?php print i18n::translate('Add new site');?></b>
-			<?php echo help_link('help_remotesites'); ?>
+			<?php echo help_link('link_remote_site'); ?>
 		</td>
 		</tr>
 		<tr>
@@ -424,7 +424,7 @@ if (empty($errorServer)) {
 		</tr>
 		<tr>
 		<td class="facts_label width20">
-			<?php echo i18n::translate('Site URL/IP'), help_link('link_remote_site'); ?>
+			<?php echo i18n::translate('Site URL/IP'); ?>
 		</td>
 		<td class="facts_value">
 			<input type="text" size="66" name="serverURL" value="<?php echo PrintReady($serverURL);?>" />
