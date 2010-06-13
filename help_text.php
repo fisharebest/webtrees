@@ -3119,24 +3119,12 @@ case 'add_child':
 	$text=i18n::translate('You can add a child to this family by clicking this link.<br /><br />Adding a child is simple: Just click the link, fill out the boxes in the pop up screen, and that\'s all.');
 	break;
 
-case 'add_custom_facts':
-	$title=i18n::translate('Add a custom fact');
-	$text=i18n::translate('If you can\'t find the fact that you want to add in the list of GEDCOM facts, you can enter a <b>custom fact</b> as well.<br /><br />Entering a custom fact is just as simple as entering one of the pre-defined ones.  The only difference is that you have to name the fact instead of picking its name from a list. You have to do this in the top field: <b>Type</b>');
-	break;
-
-case 'add_facts_general':
-	$title=i18n::translate('General information about adding');
-	$text=i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
-	break;
-
 case 'add_facts':
 	$title=i18n::translate('Add a fact');
 	$text=i18n::translate('Here you can add a fact to the record being edited.<br /><br />First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.');
-	break;
-
-case 'add_from_clipboard':
-	$title=i18n::translate('Add from clipboard');
-	$text=i18n::translate('<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
+	$text.=i18n::translate('Add from clipboard');
+	$text.='<br/><br/>';
+	$text.=i18n::translate('<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
 	break;
 
 case 'add_gedcom':

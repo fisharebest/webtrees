@@ -2050,7 +2050,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	uasort($tanslated_addfacts, "factsort");
 	echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, "\">";
 	echo i18n::translate('Add new fact');
-	echo help_link('add_new_facts'), "</td>\n";
+	echo help_link('add_facts'), "</td>\n";
 	echo "<td class=\"optionbox wrap ", $TEXT_DIRECTION, "\">";
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
 	echo "<select id=\"newfact\" name=\"newfact\">\n";
