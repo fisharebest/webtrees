@@ -266,7 +266,7 @@ foreach ($gedcoms as $gedcom) {
 			'</td>',
 			// export
 			'<td><a href="javascript:" onclick="window.open(\'', encode_url("export_gedcom.php?export={$gedcom->gedcom_name}"), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', i18n::translate('Export'), '</a>',
-			help_link('export_gedcom.php'),
+			help_link('export_gedcom'),
 			'</td>',
 			// import
 			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom->gedcom_id, '">', i18n::translate('Import'), '</a>',

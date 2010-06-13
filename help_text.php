@@ -2851,15 +2851,8 @@ case 'ZOOM_BOXES':
 	//////////////////////////////////////////////////////////////////////////////
 
 case 'addmedia.php':
-	// no help link
 	$title=i18n::translate('Add a new media item');
 	$text='';
-	break;
-
-case 'addremotelink.php':
-	// not called from pop up function. see link_remote
-	$title=i18n::translate('Add a remote link');
-	$text=i18n::translate('Use this form to link people to other people either from another site or another genealogical database accessible to your copy of webtrees.<br /><br />To add such a link, you must first select the relationship type, then choose a site already known to webtrees or define a new site, and then enter that site\'s ID of the person you want to link to.  <b>webtrees</b> will then automatically download information from the remote site as necessary.  The downloaded information does <u>not</u> become part of your genealogical database; it remains on the original site but is incorporated into the various pages where this remotely linked person is displayed.<br /><br />Refer to the Help link next to each element on the page for more information about that element.  You can also check the online English tutorial for more information: <a href=\"#WT_WEBTREES_WIKI#/en/index.php?title=How_To:Remote_Link_Individuals_Across_Websites_And_Databases\" target=\"_blank\">#WT_WEBTREES_WIKI#</a>.');
 	break;
 
 case 'addsearchlink.php':
@@ -2878,7 +2871,6 @@ case 'ancestry.php':
 	break;
 
 case 'branches.php':
-	// no help text
 	$title=i18n::translate('Branches');
 	$text='';
 	break;
@@ -2890,7 +2882,6 @@ case 'calendar.php':
 	break;
 
 case 'compact.php':
-	// no help text
 	$title=i18n::translate('Compact chart');
 	$text='';
 	break;
@@ -2898,18 +2889,6 @@ case 'compact.php':
 case 'descendancy.php':
 	$title=i18n::translate('Descendancy chart');
 	$text=i18n::translate('This page will show the descendants of a person.<br /><br />You can choose a starting (root) person for this Descendancy chart or you can be linked to this page by clicking the <b>Descendancy Chart</b> link on another page.  Click on Arrow icons to navigate this tree in the direction of the arrow.  Click on the Chart icon in any Person box to change the root of the tree to that person.');
-	break;
-
-case 'edit_changes.php':
-	// no help link
-	$title=i18n::translate('Review GEDCOM changes');
-	$text='';
-	break;
-
-case 'edit_interface.php':
-	// no help link
-	$title=i18n::translate('Edit interface');
-	$text='';
 	break;
 
 case 'edit_merge.php':
@@ -2922,21 +2901,9 @@ case 'editconfig_gedcom.php':
 	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.<br /><br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.<br /><br /><br />See <a href="readme.txt" target="_blank"><b>Readme.txt</b></a> for more information.');
 	break;
 
-case 'editnews.php':
-	// no help link
-	$title=i18n::translate('Add/edit journal/news entry');
-	$text='';
-	break;
-
 case 'edituser.php':
 	$title=i18n::translate('My account');
 	$text=i18n::translate('Here you can change your settings and preferences.<br /><br />You can change your user name, full name, password, language, email address, theme of the site, and preferred contact method.<br /><br />You cannot change the GEDCOM INDI record ID; that has to be done by an administrator.');
-	break;
-
-case 'export_gedcom.php':
-	// no help link
-	$title=i18n::translate('Export');
-	$text='On this page you can export your data to a GEDCOM file in UTF-8 encoding. The file will be saved automatically to the data directory.';
 	break;
 
 case 'family.php':
@@ -2959,39 +2926,14 @@ case 'fanchart.php':
 	$text=i18n::translate('The Circle Diagram is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but in a more graphical way.<br /><br />The Root person is shown in the center, his parents on the first ring, grandparents on the second ring, and so on.<br /><br />Years of birth and death are printed under the name when known.<br /><br />Clicking on a name on the chart will open a links menu specific to that person.  From this menu you can choose to center the diagram on that person or on one of that person\'s close relatives, or you can jump to that person\'s Individual Information page or a different chart for that person.');
 	break;
 
-case 'find.php':
-	// no help link
-	$title=i18n::translate('Find individual ID');
-	$text='';
-	break;
-
 case 'gedcheck.php':
-	// no help text
 	$title=i18n::translate('GEDCOM checker');
-	$text='';
-	break;
-
-case 'gedrecord.php':
-	// no help link
-	$title=i18n::translate('GEDCOM record');
-	$text='';
-	break;
-
-case 'help_text.php':
-	// no help link
-	$title=i18n::translate('Information');
 	$text='';
 	break;
 
 case 'hourglass.php':
 	$title=i18n::translate('Hourglass chart');
 	$text=i18n::translate('The Hourglass chart will show the ancestors and descendants of the selected root person on the same chart.  This chart is a mix between the Descendancy chart and the Pedigree chart.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />If there is a downwards arrow on the screen under the root person, clicking on it will display a list of the root person\'s close family members that you can use the navigate down the chart.  Selecting a name from this list will reload the chart with the selected person as the new root person.');
-	break;
-
-case 'imageview.php':
-	// no help link
-	$title=i18n::translate('Image viewer');
-	$text='';
 	break;
 
 case 'index.php':
@@ -3040,7 +2982,6 @@ case 'manageservers.php':
 	break;
 
 case 'media.php':
-	// no help text
 	$title=i18n::translate('Manage multimedia');
 	$text='';
 	break;
@@ -3050,20 +2991,17 @@ case 'medialist.php':
 	$text=i18n::translate('This page lists all of the Multimedia Objects (MMO) that can be found in this database.<br /><br />For each of the media items you see the title or filename of the item, names of the individuals or families connected to the item, and notes about the item.<br /><br />Clicking the title or filename of the item has the same effect as clicking its thumbnail.  The item will be opened in the image viewer built into <b>webtrees</b> or in the viewer specified in your browser\'s configuration.<br /><br />When you click on the "View" link next to the person or family, you will be taken to the relevant Details page.');
 	break;
 	
-case 'message.php':
-	// no help text
-	$title=i18n::translate('<b>webtrees</b> message');
-	$text='';
-	break;
-
 case 'module_admin.php':
-	// no help text
 	$title=i18n::translate('Module administration');
 	$text='';
 	break;
 
+case 'note.php':
+	$title=i18n::translate('Shared note');
+	$text='';
+	break;
+
 case 'notelist.php':
-	// no help text
 	$title=i18n::translate('Shared notes');
 	$text='';
 	break;
@@ -3098,19 +3036,12 @@ case 'reportengine.php':
 	$text=i18n::translate('The items in the reports menu will generate PDF files for printing.<br /><br />The first step is to choose a report to run.  After you have selected a report to run, you will be asked to provide some information specific to that report, such as which individual or family to start with and whether or not to show photos.  When you are ready to run the report, click the <b>Download report</b> button to download the report to your computer.<br /><br /><br />~Reporting Engine~<br />The <b>webtrees</b> Reporting Engine uses XML template files to automatically generate PDF reports.<br /><br />The reports available in the <b>Select report</b> list are generated from the report XML files found in the "reports" directory.  You can create your own reports by making a copy of any of the templates provided and modifying the template XML.  To add your custom report, just put it in the \"reports\" directory and <b>webtrees</b> will automatically detect it and make it available in the <b>Select report</b> drop-down list.<br /><br /><br />~PDF FILE FORMAT~<br />The <b>webtrees</b> Reporting Engine produces downloadable reports in Adobe&reg; PDF format.  The GEDCOM 5.5.1 Standard specification, mentioned elsewhere in this Help file, is also downloadable as a PDF file.  PDF is an acronym for <b>P</b>ortable <b>D</b>ocument <b>F</b>ormat.<br /><br />PDF files are not viewable or printable by the standard software on your PC.  If you already have Acrobat Reader installed (it\'s often packaged with other softwares), you do not need to replace or upgrade it to deal with report files produced by <b>webtrees</b>.<br /><br />Acrobat Reader, the viewing and printing program for these files, is available free of charge from Adobe Systems Inc.  The free Adobe&reg; Acrobat Reader can be downloaded from the <a href=\"http://www.adobe.com/products/acrobat/readstep2.html\" target=\"_blank\"><b>Adobe Systems Inc.</b></a> web site.  You may find copies of "Acrobat Reader" available for download from other Internet sites, but we strongly advise you to trust <u>only</u> the Adobe Systems Inc. site.<br /><br />Acrobat Reader is available for many different systems, including Microsoft&reg; Windows and Apple&reg; Macintosh, in many languages other than English.  If you have a Windows 95 system, be sure to download Acrobat Reader version 5.0.5.  Versions more recent than this will not install correctly on Windows 95 systems.<br /><br /><a href=\"http://www.adobe.com/products/acrobat/readstep2.html\" target=\"_blank\"><b>Download Adobe Reader here</b></a><br /><br /><br />~Ahnentafel Report~<br />This is a report of the selected person and his ancestors, printed in booklet format.  It starts with the first person and then continues with his or her parents, grand-parents, etc.<br /><br />Note that the ahnentafel report is only available in English at this time.<br /><br /><br />~Birth Date and Place Report~<br />With this report you can list all of the people who were born at a certain time or place.<br /><br /><br />~Relatives Report~<br />This report will list all of the relatives of the selected individual.  You can choose which of the person\'s relatives to show on the report.<ul><li><b>Parents and siblings</b> will show the selected person, his parents, and his brothers and sisters.</li><li><b>Spouse and children</b> will list the person with his or her spouses and their children.</li><li><b>Direct line ancestors</b> will list the person, his parents, grand-parents, great-grand-parents, and continue up the tree listing all of the people who are parents in the person\'s lineage.</li><li><b>Direct line ancestors and their families</b> will list all of the people from the Direct line ancestors list but also include aunts and uncles and great-aunts and great-uncles, so it will include the siblings of all of the ancestors in this person\'s family tree.  It will not list the children of the siblings (cousins).</li><li><b>Descendants</b> will list all of this person\'s descendants (children, grand-children, great-grand children, etc).</li><li><b>ALL</b> this option is a combination of the Descendants and the Direct line ancestors and their families in a single report.</li></ul>');
 	break;
 
-case 'rss.php':
-	// no help text
-	$title=i18n::translate('RSS feed');
-	$text='';
-	break;
-
 case 'search.php':
 	$title=i18n::translate('Search');
 	$text=i18n::translate('Although this page looks very simple, there is a very powerful and complicated search engine behind the two forms.  Most genealogy web sites just let you search for a name.  <b>webtrees</b> lets you search for almost anything.<br /><br />The Search box on the left of the screen is the same as the Search box in each page header.<br /><br />If you are looking for people in connection to a certain year, just type the year. The program will find all connections for you.<br /><br />Looking for a name, or place?  Just type in the name or place, completely or just a part of it, and <b>webtrees</b> does the rest.<br /><br /><b>Soundex search method</b><br />With the search boxes on the right, you can search for names of persons and places, even if you don\'t know precisely how to write the name.<br /><br />When there are several genealogical databases on one site and the administrator has enabled switching between them, your search will return the results for all of them.<br /><br />You will find more help about these two boxes by clicking the <b>?</b> above the boxes.');
 	break;
 
 case 'search_advanced.php':
-	// no help text
 	$title=i18n::translate('Advanced search');
 	$text='';
 	break;
@@ -3632,6 +3563,11 @@ case 'edituser_user_theme':
 case 'edituser_username':
 	$title=i18n::translate('Username');
 	$text=i18n::translate('In this box you can change your user name.  If you no longer like your user name or if have other reasons to change it, you can do so using this form.<br /><br />The username is <u>case sensitive</u>. That means that <b>John</b> is not the same as <b>john</b> or <b>JOHN</b>.<br /><br />You should <u>only</u> use characters from the alphabets that <b>webtrees</b> supports.  You may use uppercase and lower case letters with or without diacritical marks, numbers, dash (-), and underscore (_). Do <u>not</u> use punctuation marks or spaces.');
+	break;
+
+case 'export_gedcom':
+	$title=i18n::translate('Export');
+	$text='On this page you can export your data to a GEDCOM file in UTF-8 encoding. The file will be saved automatically to the data directory.';
 	break;
 
 case 'fambook_descent':
