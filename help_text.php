@@ -2181,11 +2181,6 @@ case 'ENABLE_AUTOCOMPLETE':
 	$text=i18n::translate('This option determines whether Autocomplete should be active while information is being entered into certain fields on input forms.  When this option is set to <b>Yes</b>, text input fields for which Autocomplete is possible are indicated by a differently colored background.<br /><br />When Autocomplete is active, <b>webtrees</b> will search its database for possible matches according to what you have already entered.  As you enter more information, the list of possible matches is refined.  When you see the desired input in the list of matches, you can move the mouse cursor to that line of the list and then click the left mouse button to complete the input.<br /><br />The disadvantages of Autocomplete are that it slows the program, entails significant database activity, and also results in more data being sent to the browser.');
 	break;
 
-case 'ENABLE_MULTI_LANGUAGE':
-	$title=i18n::translate('Allow user to change language');
-	$text=i18n::translate('Set to <b>Yes</b> to allow users to override the site\'s default language.  They can do this through their browser\'s preferred language configuration, configuration options on their Account page, or through links or buttons on most <b>webtrees</b> pages.');
-	break;
-
 case 'ENABLE_RSS':
 	$title=i18n::translate('Enable RSS');
 	$text=i18n::translate('This option lets you disable the RSS feature.<br /><br />RSS lets users monitor your site for changes to the Index page without actually visiting your site periodically.  If too many users make use of this feature or if the refresh frequency set by these users is too high, RSS can use up too much bandwidth or server capacity.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/RSS\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about RSS and the various RSS formats.');
