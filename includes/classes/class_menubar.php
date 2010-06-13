@@ -933,6 +933,8 @@ class MenuBar
 			$submenu = new Menu(i18n::translate('Hide contextual help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=no"));
 		else
 			$submenu = new Menu(i18n::translate('Show contextual help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=yes"));
+		if (!empty($WT_IMAGES["menu_help"]["small"]))
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["menu_help"]["small"]);
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		$menu->addSubmenu($submenu);
 		return $menu;

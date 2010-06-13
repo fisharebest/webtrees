@@ -3947,11 +3947,6 @@ case 'help_useradmin.php':
 	$text=i18n::translate('On this page you can administer the current users and add new users.<br /><br /><b>User List</b><br />In this table the current users, their status, and their rights are displayed.  You can <b>delete</b> or <b>edit</b> users.<br /><br /><b>Add a new user</b><br />This form is almost the same as the one users see on the  <b>My Account</b> page.<br /><br />For several subjects we did not make special Help text for the administrator. In those cases you will see the following message:<br /><br />--- This help text is the same text that site visitors will read. --- <br />--- To save space, we did not make a special admin text for this item. ---<br /><br />Contextual help is available on every screen; make sure that the <b>Show Contextual Help</b> option in the Help menu is on, and click on a <b>?</b> next to the subject.');
 	break;
 
-case 'hide_context':
-	$title=i18n::translate('Hide contextual help');
-	$text=i18n::translate('Hide contextual help');
-	break;
-
 case 'import_gedcom':
 	$title=i18n::translate('Import GEDCOM');
 	$text=i18n::translate('In most cases importing of an externally created GEDCOM file is one step in procedures that result in bulk changes to the genealogical database.<br /><br />These steps are in a logical sequence and need to be completed in the prescribed order so that the genealogical database is usable.<br /><br />If, for some reason, you did not complete these steps in the correct order, you will see a <u>warning</u> message that the GEDCOM is not yet imported. To correct the problem, click the <b>Import GEDCOM</b> link to import the file.<br /><br />Existing GEDCOM configuration settings will not change when you re-import a GEDCOM.  Existing data will, however, be overwritten.');
@@ -4466,11 +4461,6 @@ case 'show_age_marker':
 case 'show_changes':
 	$title=i18n::translate('This record has been updated.  Click here to show changes.');
 	$text=i18n::translate('When you see this message, it means two things:<ol><li>Somebody has made changes to the GEDCOM<br />Records may have been added, deleted, or changed.</li><li>The changes have not yet been accepted by the administrator.<br />Once the changes have been accepted or rejected, you will no longer see this message.</li></ol>You can see what changes have been made when you click the link.  If you notice that a change is not correct, please notify the admin.');
-	break;
-
-case 'show_context':
-	$title=i18n::translate('Show contextual help');
-	$text=i18n::translate('Show contextual help');
 	break;
 
 case 'show_fact_sources':
