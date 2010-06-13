@@ -3761,11 +3761,6 @@ case 'edituser_username':
 	$text=i18n::translate('In this box you can change your user name.  If you no longer like your user name or if have other reasons to change it, you can do so using this form.<br /><br />The username is <u>case sensitive</u>. That means that <b>John</b> is not the same as <b>john</b> or <b>JOHN</b>.<br /><br />You should <u>only</u> use characters from the alphabets that <b>webtrees</b> supports.  You may use uppercase and lower case letters with or without diacritical marks, numbers, dash (-), and underscore (_). Do <u>not</u> use punctuation marks or spaces.');
 	break;
 
-case 'empty_lines_detected':
-	$title=i18n::translate('Empty lines were detected in your GEDCOM file.    On cleanup, these empty lines will be removed.');
-	$text=i18n::translate('<b>webtrees</b> has detected that there are empty lines in your input file. These lines may cause errors and will be removed from the file before it is imported.');
-	break;
-
 case 'fambook_descent':
 	$title=i18n::translate('Descendant generations');
 	$text=i18n::translate('This value determines the number of descendant generations of the root person that will be printed in Hourglass format.');
