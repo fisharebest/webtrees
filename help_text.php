@@ -3936,11 +3936,6 @@ case 'link_child':
 	$text=i18n::translate('You can link this person as a child to an existing family when you click this link.<br /><br />Suppose that at one time the parents of the person were unknown, and you discovered later that the parents have a record in this database.<br /><br />Just click the link, enter the ID of the family, and you have competed the task.  If you don\'t know the family\'s ID, you can search for it.');
 	break;
 
-case 'link_gedcom_id':
-	$title=i18n::translate('GEDCOM ID');
-	$text=i18n::translate('Use this section to select the alternate database identifier that contains the person you are linking to.');
-	break;
-
 case 'link_husband':
 	$title=i18n::translate('Link to an existing family as a husband');
 	$text=i18n::translate('This item will allow you to link the current individual as a husband to a family that is already in the database. By clicking this link you can add this person to an existing family, of which the husband was unknown until now. This person will take the place of the previously unknown husband. All events, marriage information, and children will keep their existing links to the family.<br /><br />Just click the link, enter the ID of the family, and you have competed the task. This is an advanced editing option that should only be used if the family you want to link to already exists.  If you want to add a <u>new</u> family to this individual, use the <b>Add a new wife</b> link.');
