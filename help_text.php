@@ -3623,21 +3623,6 @@ case 'edit_add_unlinked_source':
 	$text=i18n::translate('Use this link to add a new source to your database without linking the source to a source citation in another record.  The new source will appear in the source list, but will not appear on any charts or anywhere else in the program until it is linked up to a source citation.');
 	break;
 
-case 'edit_birth':
-	$title=i18n::translate('Add birth');
-	$text=i18n::translate('This area allows you to enter the birth information.  First enter the date when the person was born in the standard date format for genealogy (1 JAN 2004).  You can click on the Calendar icon for help selecting a date.  Then enter the place where the person was born.  You can use the <b>Find Place</b> link to select a place that already exists in the database.');
-	break;
-
-case 'edit_config_gedcom':
-	$title=i18n::translate('Configure GEDCOM');
-	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.');
-	break;
-
-case 'edit_death':
-	$title=i18n::translate('Add death');
-	$text=i18n::translate('This area allows you to enter Death information.  First enter the date when the person died in the standard date format for genealogy (1 JAN 2004).  You can click on the Calendar icon for help selecting a date.  Then enter the place where the person died.  You can use the <b>Find Place</b> link to select a place that already exists in the database.');
-	break;
-
 case 'edit_edit_raw':
 	$title=i18n::translate('Edit raw GEDCOM record');
 	$text=i18n::translate('This page allows you to edit the raw GEDCOM record.  You should use this page with caution; it requires a good understanding of the GEDCOM 5.5.1 Standard.  For more information on the GEDCOM 5.5.1 Standard, refer to Help topic <b>GEDCOM file</b>.<br /><br /><b>webtrees</b> provides many ways to add and edit information, but there could be occasions when you may want to edit the raw GEDCOM structure.  When possible, you should use the provided forms for adding information, but when that is impossible, you can use this form.  Upon submitting the form, your information will be checked for basic conformance to the Standard and the CHAN record will be updated.');
