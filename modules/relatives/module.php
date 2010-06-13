@@ -301,13 +301,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		if (isset($family) && !$this->controller->isPrintPreview() && $this->controller->canedit) {
 			if ($type == "spouse") {
-				$action  = "add_son_daughter";
 				$child_u = i18n::translate('Add a son or daughter');
 				$child_m = i18n::translate('Son');
 				$child_f = i18n::translate('Daughter');
 			}
 			else {
-				$action  = "add_sibling";
 				$child_u = i18n::translate('Add a brother or sister');
 				$child_m = i18n::translate('Brother');
 				$child_f = i18n::translate('Sister');
@@ -325,7 +323,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<a href="javascript:;" onclick="return addnewchild('<?php print $family->getXref(); ?>','M');"><?php echo Person::sexImage('M', 'small', '', $child_m); ?></a>
 						<a href="javascript:;" onclick="return addnewchild('<?php print $family->getXref(); ?>','F');"><?php echo Person::sexImage('F', 'small', '', $child_f); ?></a>
 					</span>
-					<?php echo help_link($action); ?>
+					<?php
+						if ($type=='spouse') {
+							echo help_link('add_son_daughter');
+						} else {
+							echo help_link('add_sibling');
+						}
+					?>
 				</td>
 			</tr>
 			<?php
