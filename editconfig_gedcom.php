@@ -1084,7 +1084,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Contextual Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>'Hide',true=>'Show'), $SHOW_CONTEXT_HELP, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>'Hide',true=>'Show'), get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
