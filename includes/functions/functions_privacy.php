@@ -304,7 +304,7 @@ function checkPrivacyByYear($pid) {
 */
 function displayDetailsById($pid, $type='', $gedrec='') {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
-	global $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
+	global $person_privacy, $person_facts, $global_facts, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
 	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
@@ -397,7 +397,8 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $pid, $CHECK_MARRIAGE_RELATIONS, $path_length);
 			return $relationship!==false;
 		}
-		break;
+		// No restriction found - show living people to authenticated users only:
+		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
 	case 'FAM':
 		// Hide a family if either spouse is private
 		$parents=find_parents($pid);
@@ -419,13 +420,13 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 		break;
 	}
 
-	// SOUR, REPO, SUBM, SUBN, etc. are controlled by global tag settings
+	// Level 1 tags (except INDI and FAM) can be controlled by global tag settings
 	if (isset($global_facts[$type])) {
-		return $pgv_USER_ACCESS_LEVEL>$global_facts[$fact];
+		return $global_facts[$type]>=$pgv_USER_ACCESS_LEVEL;
 	}
 	
-	// No restriction found - use global access level:
-	return $pgv_USER_CAN_ACCESS;
+	// No restriction found - must be public:
+	return true;
 }
 }
 
