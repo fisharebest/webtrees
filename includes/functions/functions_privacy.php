@@ -350,9 +350,11 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 	}
 
 	// Need to examine the raw gedcom record
+	if (!$type) {
+		$type=gedcom_record_type($pid, $ged_id);
+	}
 	if (!$gedrec) {
 		switch ($type) {
-		case '':     $gedrec=find_gedcom_record($pid, $ged_id); break;
 		case 'INDI': $gedrec=find_person_record($pid, $ged_id); break;
 		case 'FAM':  $gedrec=find_family_record($pid, $ged_id); break;
 		case 'SOUR': $gedrec=find_source_record($pid, $ged_id); break;
@@ -457,11 +459,7 @@ function showLivingNameById($pid) {
 		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
 	}
 
-	if (displayDetailsById($pid)) return true;
-
-	if ($SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL) return true;
-
-	return false;
+	return $SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL || displayDetailsById($pid, 'INDI');
 }
 }
 

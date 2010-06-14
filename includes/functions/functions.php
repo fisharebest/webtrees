@@ -317,7 +317,7 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 
 	$rows=WT_DB::prepare(
 		"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN ? WHEN 'privacy' THEN ? WHEN 'confidential' THEN ? WHEN 'hidden' THEN ? END AS resn FROM `##default_resn` WHERE gedcom_id=?"
-	)->execute(array(WT_PRIV_HIDE, WT_PRIV_NONE, WT_PRIV_USER, WT_PRIV_PUBLIC, $ged_id))->fetchAll();
+	)->execute(array(WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_NONE, WT_PRIV_HIDE, $ged_id))->fetchAll();
 
 	foreach ($rows as $row) {
 		if ($row->xref!==null) {
