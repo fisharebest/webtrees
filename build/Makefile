@@ -23,7 +23,7 @@ default: clean $(LABEL)$(COMPRESSION) webtrees.pot
 	@echo
 
 clean:
-	rm -Rf webtrees* language*
+	rm -Rf webtrees* language* tmp_reports
 
 ################################################################################
 # Create a ZIP archives
