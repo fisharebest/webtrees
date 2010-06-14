@@ -77,11 +77,12 @@ function select_edit_control($name, $values, $empty, $selected, $extra) {
 function radio_buttons($name, $values, $selected, $extra) {
 	$html='';
 	foreach ($values as $key=>$value) {
-		$html.='<input type="radio" name="'.$name.'" value="'.htmlspecialchars($key).'"';
+		$uniqueID = $name.floor(microtime() * 1000000);
+		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.htmlspecialchars($key).'"';
 		if ($key==$selected) {
 			$html.=' checked';
 		}
-		$html.='>'.htmlspecialchars($value);
+		$html.='><label for="'.$uniqueID.'">'.htmlspecialchars($value).'</label>';
 	}
 	return $html;
 }
