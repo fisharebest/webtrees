@@ -486,7 +486,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?>
 						</td>
 						<td class="optionbox width60">
-							<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT" tabindex="<?php echo ++$i; ?>" onchange="show_jewish();">
+							<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT" tabindex="<?php echo ++$i; ?>">
 							<?php
 							foreach (array(
 								'none'=>i18n::translate('No calendar conversion'),
@@ -702,7 +702,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>i18n::translate('Disable'),true=>i18n::translate('Enable')), $HIDE_LIVE_PEOPLE, ''); ?>
+							<?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>i18n::translate('disable'),true=>i18n::translate('enable')), $HIDE_LIVE_PEOPLE, ''); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1084,7 +1084,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Contextual Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP'), 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1092,7 +1092,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $ALLOW_THEME_DROPDOWN, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1166,8 +1166,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>">
-								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('Table'); ?></option>
-								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('Tag cloud'); ?></option>
+								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('table'); ?></option>
+								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('tag cloud'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1369,7 +1369,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Empty boxes on pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_EMPTY_BOXES', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_EMPTY_BOXES', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_EMPTY_BOXES, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1385,7 +1385,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Birth and death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_PEDIGREE_FULL_DETAILS', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_PEDIGREE_FULL_DETAILS', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $PEDIGREE_FULL_DETAILS, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1393,7 +1393,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $PEDIGREE_SHOW_GENDER, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $PEDIGREE_SHOW_GENDER, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1401,7 +1401,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_PARENTS_AGE, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_PARENTS_AGE, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1409,7 +1409,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_LDS_AT_GLANCE, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_LDS_AT_GLANCE, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1430,7 +1430,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_FACT_ICONS, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1462,7 +1462,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_AGE_DIFF, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1470,7 +1470,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES'), 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1491,7 +1491,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1507,7 +1507,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_COUNTER, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_COUNTER, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1515,7 +1515,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Spider tagline'), help_link('SHOW_SPIDER_TAGLINE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_SPIDER_TAGLINE', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_SPIDER_TAGLINE, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_SPIDER_TAGLINE', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_SPIDER_TAGLINE, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1523,7 +1523,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_STATS, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_STATS, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1531,7 +1531,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('GEDCOM record last change date on lists'), help_link('SHOW_LAST_CHANGE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>i18n::translate('Hide'),true=>i18n::translate('Show')), $SHOW_LAST_CHANGE, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $SHOW_LAST_CHANGE, 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 				</table>
@@ -1543,7 +1543,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					<td class="descriptionbox nowrap">
 						<?php echo i18n::translate('Online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
 					</td>
-					<td class="optionbox width60"><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>i18n::translate('Disable'),true=>i18n::translate('Enable')), $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'"'); ?>
+					<td class="optionbox width60"><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>i18n::translate('disable'),true=>i18n::translate('enable')), $ALLOW_EDIT_GEDCOM, 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1556,7 +1556,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1564,7 +1564,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1572,7 +1572,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FACTS'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?>
+						<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1580,7 +1580,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1593,7 +1593,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('FAM_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1601,7 +1601,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1609,7 +1609,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?>
+						<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1617,7 +1617,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1630,7 +1630,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1638,7 +1638,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1646,7 +1646,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1659,7 +1659,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('REPO_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1667,7 +1667,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('REPO_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1675,7 +1675,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('REPO_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="80" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1725,22 +1725,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
 					</td>
 					<td class="optionbox width60">
-						<select name="NEW_SURNAME_TRADITION" tabindex="<?php echo ++$i; ?>">
-						<?php
-							foreach (array(
-								'paternal'=>i18n::translate_c('Surname tradition', 'Paternal'),
-								'spanish'=>i18n::translate_c('Surname tradition', 'Spanish'),
-								'portuguese'=>i18n::translate_c('Surname tradition', 'Portuguese'),
-								'icelandic'=>i18n::translate_c('Surname tradition', 'Icelandic'),
-								'polish'=>i18n::translate_c('Surname tradition', 'Polish'),
-								'none'=>i18n::translate_c('Surname tradition', 'None')
-							) as $value=>$desc) {
-								print '<option value="'.$value.'"';
-								if (get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')==$value) print ' selected="selected"';
-								print '>'.$desc.'</option>';
-							}
-						?>
-						</select>
+						<?php echo select_edit_control('NEW_SURNAME_TRADITION', array('paternal'=>i18n::translate_c('Surname tradition', 'paternal'), 'spanish'=>i18n::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>i18n::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>i18n::translate_c('Surname tradition', 'Icelandic'), 'polish'=>i18n::translate_c('Surname tradition', 'Polish'), 'none'=>i18n::translate_c('Surname tradition', 'none')), null, get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1756,11 +1741,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?>
 					</td>
 					<td class="optionbox width60">
-						<select name="NEW_PREFER_LEVEL2_SOURCES" tabindex="<?php echo ++$i; ?>">
-							<option value="0" <?php if ($PREFER_LEVEL2_SOURCES==='0') print " selected=\"selected\""; ?>><?php print i18n::translate('None'); ?></option>
-							<option value="1" <?php if ($PREFER_LEVEL2_SOURCES==='1' || $PREFER_LEVEL2_SOURCES===true) print " selected=\"selected\""; ?>><?php print i18n::translate('Facts'); ?></option>
-							<option value="2" <?php if ($PREFER_LEVEL2_SOURCES==='2' || $PREFER_LEVEL2_SOURCES===false) print " selected=\"selected\""; ?>><?php print i18n::translate('Record'); ?></option>
-						</select>
+						<?php echo select_edit_control('NEW_PREFER_LEVEL2_SOURCES', array(0=>i18n::translate('none'), 1=>i18n::translate('facts'), 2=>i18n::translate('records')), null, get_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1768,7 +1749,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<?php echo radio_buttons('NEW_ENABLE_AUTOCOMPLETE', array(false=>i18n::translate('Disable'),true=>i18n::translate('Enable')), $ENABLE_AUTOCOMPLETE, 'tabindex="'.(++$i).'"'); ?>
+						<?php echo radio_buttons('NEW_ENABLE_AUTOCOMPLETE', array(false=>i18n::translate('disable'),true=>i18n::translate('enable')), get_gedcom_setting(WT_GED_ID, 'ENABLE_AUTOCOMPLETE'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1796,9 +1777,9 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<table class="facts_table" border="0">
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
-						<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" onclick="closeHelp();" />
+						<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Save configuration'); ?>" />
 						&nbsp;&nbsp;
-						<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" /><br />
+						<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php print i18n::translate('Reset'); ?>" />
 					</td>
 				</tr>
 			</table>
@@ -1807,18 +1788,5 @@ print_header(i18n::translate('GEDCOM configuration'));
 </table>
 </form>
 <br />
-<?php if (!WT_GED_ID) { ?>
-<script language="JavaScript" type="text/javascript">
-	helpPopup('welcome_new_help');
-</script>
-<?php
-}
-
-// NOTE: Put the focus on the GEDCOM title field
-?>
-<script language="JavaScript" type="text/javascript">
-document.configform.gedcom_title.focus();
-</script>
 <?php
 print_footer();
-?>
