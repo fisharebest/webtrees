@@ -119,6 +119,9 @@ border: solid red 2px;
 }
 
 /*	Define lite Text Color 				*/
+.descriptionbox {
+color: #fff;
+}
 
 
 
@@ -206,6 +209,8 @@ text-align: right;
 /*	End Toplinks Section				 */
 
 /*   Edit Facts */
+
+
 td.descriptionbox div a {
 color: white;
 }
@@ -686,6 +691,9 @@ white-space: nowrap;
 }
 
 .list_label_wrap, .list_value_wrap {
+background-color: #ECF5FF;
+border: 1px solid #84BEFF;
+color: #006;
 white-space: normal;
 }
 
@@ -810,6 +818,7 @@ color:#7af;
 }
 
 .name1 {
+color: #006;
 font-size: 11px;
 font-weight: bold;
 }
@@ -863,8 +872,8 @@ letter-spacing: .2px;
 }
 
 .date {
-color: #333;
-/* font-weight: bold; */
+color: #039;
+font-weight: bold;
 }
 
 .label, .field {
@@ -1223,11 +1232,13 @@ padding: 3px;
 }
 
 .optionbox {
-border:solid #999 1px;
-font-size: 12px;
+background-color: #ECF5FF;
+border: 1px solid #84BEFF;
+color: #006;
+font: normal normal normal 11px/normal tahoma, arial, helvetica, sans-serif;
+padding: 3px;
 vertical-align: top;
 white-space: normal;
-padding: 3px;
 }
 
 .vmiddle {

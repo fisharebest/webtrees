@@ -1,11 +1,13 @@
 /* jquery css THEME adjustments */
 
 /* Tabs --------------------------------*/
-.ui-widget-content a:hover 				 { color: red; }
+.ui-widget-content                                         { color:black; border color:#999999;  }
+.ui-widget-content a                                       { color:blue; }
+.ui-widget-content a:hover                                  { color: red; }
 
-.ui-tabs-nav li.ui-tabs-selected 			 { background: #f8f8f8; }
-.ui-tabs-nav li.ui-tabs-selected a	 		 { font-weight:600; color: black; }
-.ui-tabs-nav li.ui-tabs-selected a:hover	 { font-weight:600; color: black; }
+.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color:blue; }
+.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: blue; }
+.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: blue; }
 
 
 /* Navigator and Flyout menu Styles */
