@@ -100,7 +100,7 @@ a {
 
 a.link:link, a.link:visited, a.link:active, a.link:hover, .menuitem a, 
 .nameZoom {
-color:#333333;
+color:#003399;
 }
 
 a:hover { 
@@ -1869,9 +1869,4 @@ padding: 0 10px;
 
 .makeMenu li:hover > ul {
 	display:block;
-}
-#container {
-	border: 1px solid #003399;
-	background: white;
-	padding: 0px;
 }
