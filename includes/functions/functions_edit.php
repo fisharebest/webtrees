@@ -89,10 +89,10 @@ function radio_buttons($name, $values, $selected, $extra) {
 // Print an edit control for a Yes/No field
 function edit_field_yes_no($name, $selected=false, $extra='') {
 	return radio_buttons(
-		$name, array(false=>'No',true=>'Yes'), $selected, $extra
+		$name, array(false=>i18n::translate('no'),true=>i18n::translate('yes')), $selected, $extra
 	);
 	//return select_edit_control(
-	//	$name, array(true=>i18n::translate('Yes'), false=>i18n::translate('No')), null, $selected, $extra
+	//	$name, array(true=>i18n::translate('yes'), false=>i18n::translate('no')), null, $selected, $extra
 	//);
 }
 
