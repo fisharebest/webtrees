@@ -363,7 +363,7 @@ function print_family_book($pid, $descent)
 						$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
 						for($i=0; $i<$ct; $i++) {
 							$chil = trim($match[$i][1]);
-							if (showLivingNameById($chil) || displayDetailsById($chil)) print_family_book($chil, $descent-1);
+							if (showLivingNameById($chil) || displayDetailsById($chil, 'INDI')) print_family_book($chil, $descent-1);
 						}
 				}
 		}

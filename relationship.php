@@ -275,9 +275,9 @@ if ($view!="preview") {
 		print "</td>";
 	} else {
 		if ((!empty($pid1))&&(!empty($pid2))) {
-			if ((!displayDetailsById($pid1))&&(!showLivingNameById($pid1))) {
+			if ((!displayDetailsById($pid1, 'INDI'))&&(!showLivingNameById($pid1))) {
 				$disp = false;
-			} elseif ((!displayDetailsById($pid2))&&(!showLivingNameById($pid2))) {
+			} elseif ((!displayDetailsById($pid2, 'INDI'))&&(!showLivingNameById($pid2))) {
 				$disp = false;
 			}
 			if ($disp) {

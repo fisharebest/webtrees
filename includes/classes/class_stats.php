@@ -1436,7 +1436,7 @@ class stats {
 		switch($type) {
 			default:
 			case 'full':
-				if (displayDetailsById($row['id'])) {
+				if (displayDetailsById($row['id'], 'INDI')) {
 					$result=$person->format_list('span', false, $person->getFullName());
 				} else {
 					$result= i18n::translate('This information is private and cannot be shown.');

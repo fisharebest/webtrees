@@ -538,7 +538,7 @@ class ClippingsControllerRoot extends BaseController {
 		if (!id_in_cart($clipping['id'])) {
 			$clipping['gedcom'] = $GEDCOM;
 			if ($clipping['type'] == "indi") {
-				if (displayDetailsById($clipping['id']) || showLivingNameById($clipping['id'])) {
+				if (displayDetailsById($clipping['id'], 'INDI') || showLivingNameById($clipping['id'])) {
 					$cart[] = $clipping;
 					$this->addCount++;
 				} else {
@@ -548,7 +548,7 @@ class ClippingsControllerRoot extends BaseController {
 			} else
 			if ($clipping['type'] == "fam") {
 				$parents = find_parents($clipping['id']);
-				if ((displayDetailsById($parents['HUSB']) || showLivingNameById($parents['HUSB'])) && (displayDetailsById($parents['WIFE']) || showLivingNameById($parents['WIFE']))) {
+				if ((displayDetailsById($parents['HUSB'], 'INDI') || showLivingNameById($parents['HUSB'])) && (displayDetailsById($parents['WIFE'], 'INDI') || showLivingNameById($parents['WIFE']))) {
 					$cart[] = $clipping;
 					$this->addCount++;
 				} else {
@@ -571,7 +571,7 @@ class ClippingsControllerRoot extends BaseController {
 			$gedrec = find_gedcom_record($clipping['id'], WT_GED_ID);
 			$st = preg_match_all("/\d SOUR @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $st; $i++) {
-				if (displayDetailsById($match[$i][1])) {
+				if (displayDetailsById($match[$i][1], 'SOUR')) {
 					// add SOUR
 					$clipping = array ();
 					$clipping['type'] = "source";
@@ -582,7 +582,7 @@ class ClippingsControllerRoot extends BaseController {
 					$sourec = find_gedcom_record($match[$i][1], WT_GED_ID);
 					$rt = preg_match_all("/\d REPO @(.*)@/", $sourec, $rmatch, PREG_SET_ORDER);
 					for ($j = 0; $j < $rt; $j++) {
-						if (displayDetailsById($rmatch[$j][1])) {
+						if (displayDetailsById($rmatch[$j][1], 'REPO')) {
 							$clipping = array ();
 							$clipping['type'] = "repository";
 							$clipping['id'] = $rmatch[$j][1];
@@ -594,7 +594,7 @@ class ClippingsControllerRoot extends BaseController {
 			}
 			$nt = preg_match_all("/\d NOTE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $nt; $i++) {
-				if (displayDetailsById($match[$i][1])) {
+				if (displayDetailsById($match[$i][1], 'NOTE')) {
 					$clipping = array ();
 					$clipping['type'] = "note";
 					$clipping['id'] = $match[$i][1];
@@ -605,7 +605,7 @@ class ClippingsControllerRoot extends BaseController {
 			if ($MULTI_MEDIA) {
 				$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 				for ($i = 0; $i < $nt; $i++) {
-					if (displayDetailsById($match[$i][1])) {
+					if (displayDetailsById($match[$i][1], 'OBJE')) {
 						$clipping = array ();
 						$clipping['type'] = "obje";
 						$clipping['id'] = $match[$i][1];

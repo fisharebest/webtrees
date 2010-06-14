@@ -109,8 +109,9 @@ define('WT_PRIV_HIDE',   -1); // Hide the item to all users including the admin
 // For performance, it is quicker to refer to files using absolute paths
 define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);
 
-//-- setup execution timer
+// Keep track of time statistics, for the summary in the footer
 $start_time=microtime(true);
+$PRIVACY_CHECKS=0;
 
 ini_set('arg_separator.output', '&amp;');
 ini_set('error_reporting', E_ALL | E_STRICT);

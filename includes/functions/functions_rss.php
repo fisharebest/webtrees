@@ -340,7 +340,7 @@ function getRecentChanges() {
 						if (($filter=="living")&&(is_dead($gedrec)==1)) {
 							$disp = false;
 						} elseif ($HIDE_LIVE_PEOPLE) {
-							$disp = displayDetailsById($gid);
+							$disp = displayDetailsById($gid, 'INDI');
 						}
 						break;
 					case 'FAM':
