@@ -2069,7 +2069,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'sibchi': return i18n::translate_c('sibling\'s child', 'nephew/niece');
 	case 'sibdau': return i18n::translate_c('sibling\'s daughter', 'niece');
 	case 'sibson': return i18n::translate_c('sibling\'s son', 'nephew');
-	case 'sibspo': return i18n::translate_c('sibling\'s wife', 'brother/sister-in-law');
+	case 'sibspo': return i18n::translate_c('sibling\'s spouse', 'brother/sister-in-law');
 	case 'sischi': return i18n::translate_c('sister\'s child', 'nephew/niece');
 	case 'sisdau': return i18n::translate_c('sister\'s daughter', 'niece');
 	case 'sishus': return i18n::translate_c('sister\'s husband', 'brother-in-law');
