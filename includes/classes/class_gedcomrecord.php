@@ -96,10 +96,10 @@ class GedcomRecord {
 		}
 
 		//-- set the gedcom record a privatized version
-		$this->gedrec = privatize_gedcom($this->gedrec);
 		if ($this->xref && $this->type) {
-			$this->disp=displayDetailsById($this->xref, $this->type);
+			$this->disp=displayDetailsById($this->xref, $this->type, $this->gedrec);
 		}
+		$this->gedrec = privatize_gedcom($this->gedrec);
 	}
 
 	// Get an instance of a GedcomRecord.  We either specify

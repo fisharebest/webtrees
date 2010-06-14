@@ -302,7 +302,7 @@ function checkPrivacyByYear($pid) {
 *          - "REPO" record is a repository
 * @return boolean return true to show the persons details, return false to keep them private
 */
-function displayDetailsById($pid, $type='') {
+function displayDetailsById($pid, $type='', $gedrec='') {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $person_privacy, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
 	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES;
@@ -350,13 +350,15 @@ function displayDetailsById($pid, $type='') {
 	}
 
 	// Need to examine the raw gedcom record
-	switch ($type) {
-	case '':     $gedrec=find_gedcom_record($pid, $ged_id); break;
-	case 'INDI': $gedrec=find_person_record($pid, $ged_id); break;
-	case 'FAM':  $gedrec=find_family_record($pid, $ged_id); break;
-	case 'SOUR': $gedrec=find_source_record($pid, $ged_id); break;
-	case 'OBJE': $gedrec=find_media_record ($pid, $ged_id); break;
-	default:     $gedrec=find_other_record ($pid, $ged_id); break;
+	if (!$gedrec) {
+		switch ($type) {
+		case '':     $gedrec=find_gedcom_record($pid, $ged_id); break;
+		case 'INDI': $gedrec=find_person_record($pid, $ged_id); break;
+		case 'FAM':  $gedrec=find_family_record($pid, $ged_id); break;
+		case 'SOUR': $gedrec=find_source_record($pid, $ged_id); break;
+		case 'OBJE': $gedrec=find_media_record ($pid, $ged_id); break;
+		default:     $gedrec=find_other_record ($pid, $ged_id); break;
+		}
 	}
 
 	// Does this record have a RESN?
