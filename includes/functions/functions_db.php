@@ -933,12 +933,6 @@ function update_isdead($xref, $ged_id, $isdead) {
 	return $isdead;
 }
 
-// Reset the i_isdead status for individuals
-// This is necessary when we change the MAX_ALIVE_YEARS value
-function reset_isdead($ged_id=WT_GED_ID) {
-	WT_DB::prepare("UPDATE `##individuals` SET i_isdead=-1 WHERE i_file=?")->execute(array($ged_id));
-}
-
 /**
 * get a list of all the sources
 *
