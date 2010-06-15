@@ -228,7 +228,9 @@ ignore_user_abort(false);
 
 if (!ini_get('safe_mode')) {
 	ini_set('memory_limit', get_site_setting('MEMORY_LIMIT'));
-	set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
+	if (strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
+		set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
+	}
 }
 
 require 'includes/authentication.php';
