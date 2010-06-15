@@ -87,7 +87,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 	if (empty($current_year)) {
 		// If we're not redefining this, then we can do a quick check for undated deaths
 		if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 PLAC )/', $indirec)) {
-			return update_isdead($pid, WT_GED_ID, true);
+			return true;
 		}
 		// Base the calculations against the current year
 		$current_year=date('Y');
@@ -99,7 +99,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 		$date=new GedcomDate($date_match);
 		if ($date->isOK()) {
 			$death_year=$date->gregorianYear();
-			return update_isdead($pid, WT_GED_ID, $death_year<=$current_year);
+			return $death_year<=$current_year;
 		}
 	}
 
@@ -110,7 +110,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 		if ($date->isOK()) {
 			$event_year=$date->gregorianYear();
 			if ($current_year-$event_year >= $MAX_ALIVE_AGE) {
-				return update_isdead($pid, WT_GED_ID, true);
+				return true;
 			}
 		}
 	}
@@ -134,7 +134,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 						$event_year=$date->gregorianYear();
 						// Assume fathers are no more than 40 years older than their children
 						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-							return update_isdead($pid, WT_GED_ID, true);
+							return true;
 						}
 					}
 				}
@@ -147,7 +147,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 						$event_year=$date->gregorianYear();
 						// Assume fathers are no more than 40 years older than their children
 						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-							return update_isdead($pid, WT_GED_ID, true);
+							return true;
 						}
 					}
 				}
@@ -167,7 +167,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 				$event_year=$date->gregorianYear();
 				// Assume marriage occurs after age of 10
 				if ($current_year-$event_year >= $MAX_ALIVE_AGE-10) {
-					return update_isdead($pid, WT_GED_ID, true);
+					return true;
 				}
 			}
 		}
@@ -186,7 +186,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 					$event_year=$date->gregorianYear();
 					// Assume max age difference between spouses of 40 years
 					if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-						return update_isdead($pid, WT_GED_ID, true);
+						return true;
 					}
 				}
 			}
@@ -202,7 +202,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 				if ($date->isOK()) {
 					$event_year=$date->gregorianYear();
 					if ($current_year-$event_year >= $MAX_ALIVE_AGE-15) {
-						return update_isdead($pid, WT_GED_ID, true);
+						return true;
 					}
 				}
 			}
@@ -219,7 +219,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 						if ($date->isOK()) {
 							$event_year=$date->gregorianYear();
 							if ($current_year-$event_year >= $MAX_ALIVE_AGE-30) {
-								return update_isdead($pid, WT_GED_ID, true);
+								return true;
 							}
 						}
 					}
@@ -227,7 +227,7 @@ function is_dead($indirec, $current_year='', $import=false) {
 			}
 		}
 	}
-	return update_isdead($pid, WT_GED_ID, false);
+	return false;
 }
 }
 

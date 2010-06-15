@@ -917,23 +917,6 @@ function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 }
 
 /**
-* update the is_dead status in the database
-*
-* this function will update the is_dead field in the individuals table with the correct value
-* calculated by the is_dead() function.  To improve import performance, the is_dead status is first
-* set to -1 during import.  The first time the is_dead status is retrieved this function is called to update
-* the database.  This makes the first request for a person slower, but will speed up all future requests.
-* @param string $xref id of individual to update
-* @param string $ged_id gedcom to update
-* @param bool $isdead true=dead
-*/
-function update_isdead($xref, $ged_id, $isdead) {
-	$isdead=$isdead ? 1 : 0; // DB uses int, not bool
-	WT_DB::prepare("UPDATE `##individuals` SET i_isdead=? WHERE i_id=? AND i_file=?")->execute(array($isdead, $xref, $ged_id));
-	return $isdead;
-}
-
-/**
 * get a list of all the sources
 *
 * returns an array of all of the sources in the database.
