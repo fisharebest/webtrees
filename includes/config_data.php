@@ -331,7 +331,7 @@ $TEMPLE_CODES = array(
 
 // STAT tags - LDS status codes
 $STATUS_CODES = array(
-	'BIC'      =>i18n::translate('Born in the covenant'),
+	'BIC'      => /* LDS sealing statuses; http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */ i18n::translate('Born in the covenant'),
 	'CANCELLED'=>i18n::translate('Sealing cancelled (divorce)'),
 	'CHILD'    =>i18n::translate('Died as a child: exempt'),
 	'CLEARED'  =>i18n::translate('Cleared but not yet completed'),
