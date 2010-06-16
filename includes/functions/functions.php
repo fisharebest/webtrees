@@ -1897,7 +1897,8 @@ function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':
 		switch ($n) {
-		case  1: return i18n::translate_c('MALE', 'first cousin');
+		case  1: // I18N: Note that for Italian and Polish, "N'th cousins" are different to English "N'th cousins", and the software has already generated the correct "N" for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different to English, please contact the developers.
+		         return i18n::translate_c('MALE', 'first cousin');
 		case  2: return i18n::translate_c('MALE', 'second cousin');
 		case  3: return i18n::translate_c('MALE', 'third cousin');
 		case  4: return i18n::translate_c('MALE', 'fourth cousin');
@@ -2581,18 +2582,18 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		switch (WT_LOCALE) {
 		case 'pl': // Source: Lucasz Wilenski
 			switch ($last) {
-			case 'son': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('MALE', 'cousin of the %s degree',   i18n::ordinal_word($up+$down+2));
-			case 'dau': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('FEMALE', 'cousin of the %s degree', i18n::ordinal_word($up+$down+2));
-			case 'chi': return /* I18N: %s is "first", "second", ... */ i18n::translate('cousin of the %s degree',             i18n::ordinal_word($up+$down+2));
+			case 'son': return cousin_name($up+$down+2, 'M');
+			case 'dau': return cousin_name($up+$down+2, 'F');
+			case 'chi': return cousin_name($up+$down+2, 'U');
 			}
 			break;
 		case 'it':
 			// Source: Michele Locati.  See italian_cousins_names.zip
 			// http://webtrees.net/forums/8-translation/1200-great-xn-grandparent?limit=6&start=6
 			switch ($last) {
-			case 'son': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('MALE', 'cousin of the %s degree',   i18n::ordinal_word($up+$down-3));
-			case 'dau': return /* I18N: %s is "first", "second", ... */ i18n::translate_c('FEMALE', 'cousin of the %s degree', i18n::ordinal_word($up+$down-3));
-			case 'chi': return /* I18N: %s is "first", "second", ... */ i18n::translate('cousin of the %s degree',             i18n::ordinal_word($up+$down-3));
+			case 'son': return cousin_name($up+$down-3, 'M');
+			case 'dau': return cousin_name($up+$down-3, 'F');
+			case 'chi': return cousin_name($up+$down-3, 'U');
 			}
 			break;
 		case 'en': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
