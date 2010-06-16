@@ -333,6 +333,8 @@ if ($MULTI_MEDIA) {
 }
 require WT_ROOT.'includes/functions/functions_date.php';
 
+define('WT_TODAY_JD', server_jd()); // Privacy calculations need to know today's date
+
 if (empty($PEDIGREE_GENERATIONS)) {
 	$PEDIGREE_GENERATIONS=$DEFAULT_PEDIGREE_GENERATIONS;
 }

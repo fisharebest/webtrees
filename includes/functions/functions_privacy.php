@@ -86,13 +86,11 @@ function is_dead($indirec, $gedcom_id) {
 		return true;
 	}
 
-	$current_year=date('Y');
-
 	// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the person is dead
 	preg_match_all('/\n2 DATE (.+)/', $indirec, $date_matches);
 	foreach ($date_matches[1] as $date_match) {
 		$date=new GedcomDate($date_match);
-		if ($date->isOK() && $date->gregorianYear() <= $current_year-$MAX_ALIVE_AGE) {
+		if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*$MAX_ALIVE_AGE) {
 			return true;
 		}
 	}
@@ -107,12 +105,9 @@ function is_dead($indirec, $gedcom_id) {
 				preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['HUSB'], $gedcom_id), $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date=new GedcomDate($date_match);
-					if ($date->isOK()) {
-						$event_year=$date->gregorianYear();
-						// Assume fathers are no more than 40 years older than their children
-						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-							return true;
-						}
+					// Assume fathers are no more than 40 years older than their children
+					if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+						return true;
 					}
 				}
 			}
@@ -120,12 +115,9 @@ function is_dead($indirec, $gedcom_id) {
 				preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['WIFE'], $gedcom_id), $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date=new GedcomDate($date_match);
-					if ($date->isOK()) {
-						$event_year=$date->gregorianYear();
-						// Assume fathers are no more than 40 years older than their children
-						if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-							return true;
-						}
+					// Assume mothers are no more than 40 years older than their children
+					if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+						return true;
 					}
 				}
 			}
@@ -140,12 +132,9 @@ function is_dead($indirec, $gedcom_id) {
 		preg_match_all('/\n1 (?:'.WT_EVENTS_MARR.')(?:\n[2-9].+)*\n2 DATE (.+)/', $indirec, $date_matches);
 		foreach ($date_matches[1] as $date_match) {
 			$date=new GedcomDate($date_match);
-			if ($date->isOK()) {
-				$event_year=$date->gregorianYear();
-				// Assume marriage occurs after age of 10
-				if ($current_year-$event_year >= $MAX_ALIVE_AGE-10) {
-					return true;
-				}
+			// Assume marriage occurs after age of 10
+			if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE-10)) {
+				return true;
 			}
 		}
 		// Check spouse dates
@@ -159,12 +148,9 @@ function is_dead($indirec, $gedcom_id) {
 			preg_match_all('/\n2 DATE (.+)/', find_person_record($spid, $gedcom_id), $date_matches);
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
-				if ($date->isOK()) {
-					$event_year=$date->gregorianYear();
-					// Assume max age difference between spouses of 40 years
-					if ($current_year-$event_year >= $MAX_ALIVE_AGE+40) {
-						return true;
-					}
+				// Assume max age difference between spouses of 40 years
+				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+					return true;
 				}
 			}
 		}
@@ -176,11 +162,8 @@ function is_dead($indirec, $gedcom_id) {
 			// Assume children born after age of 15
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
-				if ($date->isOK()) {
-					$event_year=$date->gregorianYear();
-					if ($current_year-$event_year >= $MAX_ALIVE_AGE-15) {
-						return true;
-					}
+				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE-15)) {
+					return true;
 				}
 			}
 			// Check grandchildren
@@ -193,11 +176,8 @@ function is_dead($indirec, $gedcom_id) {
 					// Assume grandchildren born after age of 30
 					foreach ($date_matches[1] as $date_match) {
 						$date=new GedcomDate($date_match);
-						if ($date->isOK()) {
-							$event_year=$date->gregorianYear();
-							if ($current_year-$event_year >= $MAX_ALIVE_AGE-30) {
-								return true;
-							}
+						if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE-30)) {
+							return true;
 						}
 					}
 				}
