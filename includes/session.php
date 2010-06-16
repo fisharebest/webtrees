@@ -204,6 +204,7 @@ try {
 	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
 	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
 	unset($dbconfig);
+	WT_DB::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
 	try {
 		WT_DB::updateSchema(WT_ROOT.'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 	} catch (PDOException $ex) {
@@ -345,15 +346,6 @@ define('WT_LOCALE', i18n::init());
 
 // Application configuration data - things that aren't (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';
-
-// Tell the database to sort/compare using the language's preferred collatation settings
-try {
-	// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-	WT_DB::exec("SET NAMES utf8 COLLATE '".i18n::$collation."'");
-} catch (PDOException $ex) {
-	// Always set a unicode collation
-	WT_DB::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci'");
-}
 
 //-- load the privacy functions
 require WT_ROOT.'includes/functions/functions_privacy.php';
