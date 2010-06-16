@@ -78,6 +78,8 @@ set_gedcom_setting($ged_id, 'HOME_SITE_URL',                'http://webtrees.net
 set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               'ADDR,AFN,BIRT,CHR,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,EMAIL,FAX,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,CAST,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO');
 set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             'BIRT,BURI,CHR,CENS,DEAT,OCCU,RESI');
 set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            '');
+set_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH',       '');
+set_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH',       '');
 set_gedcom_setting($ged_id, 'LANGUAGE',                     WT_LOCALE); // Defualt to the current admin's language`
 set_gedcom_setting($ged_id, 'LINK_ICONS',                   'click');
 set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                120);
@@ -106,7 +108,6 @@ set_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID',             '');
 set_gedcom_setting($ged_id, 'PEDIGREE_SHOW_GENDER',         false);
 set_gedcom_setting($ged_id, 'POSTAL_CODE',                  true);
 set_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES',        '1');
-set_gedcom_setting($ged_id, 'PRIVACY_BY_YEAR',              false);
 set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS',         'BIRT,DEAT');
 set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS',      'MARR');
 set_gedcom_setting($ged_id, 'REPO_FACTS_ADD',               'PHON,EMAIL,FAX,WWW,NOTE,SHARED_NOTE');
@@ -164,7 +165,6 @@ set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        true);
 set_gedcom_setting($ged_id, 'USE_GEONAMES',                 false);
 set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           false);
 set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             true);
-set_gedcom_setting($ged_id, 'USE_RELATIONSHIP_PRIVACY',     false);
 set_gedcom_setting($ged_id, 'USE_RIN',                      false);
 set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               true);
 set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              true);

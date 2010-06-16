@@ -169,6 +169,8 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               safe_POST('NEW_INDI_FACTS_ADD'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             safe_POST('NEW_INDI_FACTS_QUICK'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            safe_POST('NEW_INDI_FACTS_UNIQUE'));
+	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH',       safe_POST('KEEP_ALIVE_YEARS_BIRTH'));
+	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH',       safe_POST('KEEP_ALIVE_YEARS_DEATH'));
 	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',                     safe_POST('GEDCOMLANG'));
 	set_gedcom_setting(WT_GED_ID, 'LINK_ICONS',                   safe_POST('NEW_LINK_ICONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE'));
@@ -193,7 +195,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_SHOW_GENDER',         safe_POST_bool('NEW_PEDIGREE_SHOW_GENDER'));
 	set_gedcom_setting(WT_GED_ID, 'POSTAL_CODE',                  safe_POST_bool('NEW_POSTAL_CODE'));
 	set_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES',        safe_POST('NEW_PREFER_LEVEL2_SOURCES'));
-	set_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR',              safe_POST('PRIVACY_BY_YEAR'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FACTS',         safe_POST('NEW_QUICK_REQUIRED_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'QUICK_REQUIRED_FAMFACTS',      safe_POST('NEW_QUICK_REQUIRED_FAMFACTS'));
 	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD',               safe_POST('NEW_REPO_FACTS_ADD'));
@@ -715,6 +716,21 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Extend privacy to dead people'), help_link('KEEP_ALIVE'); ?>
+						</td>
+						<td class="optionbox">
+							<?php
+							echo
+							 	/* 'Extend privacy to dead people' ... */
+								i18n::translate(
+									'born in the last %1$s years or died in the last %2$s years',
+									'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" size="5" />',
+									'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH').'" size="5" />'
+								); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
 						</td>
 						<td class="optionbox">
@@ -727,14 +743,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox">
 							<?php echo edit_field_access_level("SHOW_MULTISITE_SEARCH", get_gedcom_setting(WT_GED_ID, 'SHOW_MULTISITE_SEARCH')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Limit privacy by age of event'), help_link('PRIVACY_BY_YEAR'); ?>
-						</td>
-						<td class="optionbox width60">
-							<?php  echo edit_field_yes_no('PRIVACY_BY_YEAR', get_gedcom_setting(WT_GED_ID, 'PRIVACY_BY_YEAR'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>

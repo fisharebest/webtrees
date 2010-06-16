@@ -2291,6 +2291,11 @@ case 'INDI_FACTS_UNIQUE':
 	$text=i18n::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the <i>Individual Add Facts</i> list.');
 	break;
 
+case 'KEEP_ALIVE':
+	$title=i18n::translate('Apply living rules to recently deceased');
+	$text=i18n::translate('In some countries, privacy laws apply not only to living people, but also to those who have died recently.  This option will allow you to extend the privacy rules for living people to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.');
+	break;
+
 case 'LANGUAGE':
 	$title=i18n::translate('Language');
 	$text=i18n::translate('Assign the default language for the site.<br /><br />When the <b>Allow user to change language</b> option is set, users can override this setting through their browser\'s preferred language configuration, configuration options on their Account page, or through links or buttons on most <b>webtrees</b> pages.');
@@ -2514,11 +2519,6 @@ case 'POSTAL_CODE':
 case 'PREFER_LEVEL2_SOURCES':
 	$title=i18n::translate('Source type');
 	$text=i18n::translate('When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default.');
-	break;
-
-case 'PRIVACY_BY_YEAR':
-	$title=i18n::translate('Limit privacy by age of event');
-	$text=i18n::translate('The <b>Limit Privacy by age of event</b> setting will hide the details of people based on how old they were at specific events regardless of whether they are dead or alive.<br /><br />Use this setting along with the <b>Age at which to assume a person is dead</b> setting.  For example, if you made the Age setting 100 and set this option to <b>Yes</b>, all persons, alive or dead, born less than 100 years ago would be set to private.  People who were married less than 85 years ago and people who died less than 75 years ago would also be marked as private.  Please note that using this option will slow down your performance somewhat.');
 	break;
 
 case 'QUICK_REQUIRED_FACTS':

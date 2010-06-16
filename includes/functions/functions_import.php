@@ -677,7 +677,11 @@ function import_record($gedrec, $ged_id, $update) {
 		} else {
 			$rin=$xref;
 		}
-		$sql_insert_indi->execute(array($xref, $ged_id, $rin, is_dead($gedrec, '', true), $record->getSex(), $gedrec));
+		// Death events need a Y or a DATE or a PLAC.  Set the initial value to either
+		// dead (1) or unknown (-1).  We'll do a more detailed analysis when we have
+		// imported the rest of the gedcom.
+		$is_dead=preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (?:PLAC |DATE )/', $indirec) ? 1 : -1;
+		$sql_insert_indi->execute(array($xref, $ged_id, $rin, $is_dead, $record->getSex(), $gedrec));
 		break;
 	case 'FAM':
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {

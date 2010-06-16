@@ -235,57 +235,6 @@ function is_dead($indirec, $current_year='', $import=false) {
 if (!function_exists("displayDetailsById")) {
 
 /**
-* checks if the person has died recently before showing their data
-* @param string $pid the id of the person to check
-* @return boolean
-*/
-function checkPrivacyByYear($pid) {
-	global $MAX_ALIVE_AGE;
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
-
-	$cyear = date("Y");
-	$indirec = find_person_record($pid, $ged_id);
-	//-- check death record
-	$deatrec = get_sub_record(1, "1 DEAT", $indirec);
-	$ct = preg_match("/2 DATE .*(\d\d\d\d).*/", $deatrec, $match);
-	if ($ct>0) {
-		$dyear = $match[1];
-		if (($cyear-$dyear) <= $MAX_ALIVE_AGE-25) {
-			return false;
-		}
-	}
-
-	//-- check marriage records
-	$famids = find_families_in_record($indirec, "FAMS");
-	foreach($famids as $indexval => $famid) {
-		$famrec = find_family_record($famid, $ged_id);
-		//-- check death record
-		$marrrec = get_sub_record(1, "1 MARR", $indirec);
-		$ct = preg_match("/2 DATE .*(\d\d\d\d).*/", $marrrec, $match);
-		if ($ct>0) {
-			$myear = $match[1];
-			if (($cyear-$myear) <= $MAX_ALIVE_AGE-15) {
-				return false;
-			}
-		}
-	}
-
-	//-- check birth record
-	$birtrec = get_sub_record(1, "1 BIRT", $indirec);
-	$ct = preg_match("/2 DATE .*(\d\d\d\d).*/", $birtrec, $match);
-	if ($ct>0) {
-		$byear = $match[1];
-		if (($cyear-$byear) <= $MAX_ALIVE_AGE) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-
-/**
 * check if details for a GEDCOM XRef ID should be shown
 *
 * This function uses the settings in the global variables above to determine if the current user
@@ -304,8 +253,8 @@ function checkPrivacyByYear($pid) {
 */
 function displayDetailsById($pid, $type='', $gedrec='') {
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
-	global $person_privacy, $person_facts, $global_facts, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE, $PRIVACY_BY_YEAR;
-	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES;
+	global $person_privacy, $person_facts, $global_facts, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE;
+	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -389,8 +338,8 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 	case 'INDI':
 		// Dead people...
 		if (is_dead($gedrec) && $SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
-			if (!$PRIVACY_BY_YEAR || checkPrivacyByYear($pid)) {
-				return true;
+			$keep_alive=false;
+			if ($KEEP_ALIVE_YEARS_BIRTH) {				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);				foreach ($matches as $match) {					$date=new GedcomDate($match[1]);					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_BIRTH > date('Y')) {						$keep_alive=true;						break;					}				}			}			if ($KEEP_ALIVE_YEARS_DEATH) {				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);				foreach ($matches as $match) {					$date=new GedcomDate($match[1]);					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_DEATH > date('Y')) {						$keep_alive=true;						break;					}				}			}			if (!$keep_alive) {				return true;
 			}
 		}
 		// Consider relationship privacy
