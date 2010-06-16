@@ -731,21 +731,17 @@ class SearchControllerRoot extends BaseController {
 	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
-		//-- all privacy settings must be global if we are going to load up privacy files
-		global $SHOW_DEAD_PEOPLE,$SHOW_LIVING_NAMES,$MAX_ALIVE_AGE,$USE_RELATIONSHIP_PRIVACY,$MAX_RELATION_PATH_LENGTH;
-		global $CHECK_MARRIAGE_RELATIONS,$PRIVACY_BY_YEAR,$SHOW_PRIVATE_RELATIONSHIPS;
 		$somethingPrinted = false;	// whether anything printed
 		// ---- section to search and display results on a general keyword search
 		if ($this->action=="general" || $this->action=="soundex" || $this->action=="replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				echo '<br />';
 
-				$OLD_GEDCOM=$GEDCOM;
 				// Split individuals by gedcom
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedId()==get_id_from_gedcom($gedcom)) {
+						if ($individual->getGedId()==$ged_id) {
 							$datalist[]=$individual;
 						}
 					}
@@ -753,6 +749,7 @@ class SearchControllerRoot extends BaseController {
 						$somethingPrinted = true;
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
+						load_gedcom_settings($ged_id);
 						print_indi_table($datalist, i18n::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
@@ -760,7 +757,7 @@ class SearchControllerRoot extends BaseController {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedId()==get_id_from_gedcom($gedcom)) {
+						if ($family->getGedId()==$ged_id) {
 							$datalist[]=$family;
 						}
 					}
@@ -768,6 +765,7 @@ class SearchControllerRoot extends BaseController {
 						$somethingPrinted = true;
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
+						load_gedcom_settings($ged_id);
 						print_fam_table($datalist, i18n::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
@@ -775,7 +773,7 @@ class SearchControllerRoot extends BaseController {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedId()==get_id_from_gedcom($gedcom)) {
+						if ($source->getGedId()==$ged_id) {
 							$datalist[]=$source;
 						}
 					}
@@ -783,6 +781,7 @@ class SearchControllerRoot extends BaseController {
 						$somethingPrinted = true;
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
+						load_gedcom_settings($ged_id);
 						print_sour_table($datalist, i18n::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
@@ -790,7 +789,7 @@ class SearchControllerRoot extends BaseController {
 				foreach ($this->sgeds as $ged_id=>$gedcom) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedId()==get_id_from_gedcom($gedcom)) {
+						if ($note->getGedId()==$ged_id) {
 							$datalist[]=$note;
 						}
 					}
@@ -798,10 +797,12 @@ class SearchControllerRoot extends BaseController {
 						$somethingPrinted = true;
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
+						load_gedcom_settings($ged_id);
 						print_note_table($datalist, i18n::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
-				$GEDCOM=$OLD_GEDCOM;
+				$GEDCOM=PGV_GEDCOM;
+				load_gedcom_settings(PGV_GED_ID);
 			} else
 			if (isset ($this->query)) {
 				print "<br /><div class=\"warning\" style=\" text-align: center;\"><i>".i18n::translate('No results found.')."</i><br />";
