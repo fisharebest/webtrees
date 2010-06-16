@@ -14,3 +14,6 @@
 a.showit:hover span {
 	filter: alpha(opacity=85);
 }
+#sidebar {  
+	margin-top:9px;
+}
