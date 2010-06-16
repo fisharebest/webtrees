@@ -122,11 +122,11 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 			<?php print_gedcom_title_link(TRUE);?>
 
 <?php if(empty($SEARCH_SPIDER)) { ?>
-						<td valign="middle" align="center">
-							<div class="blanco" style="COLOR: #6699ff;" >
-								<?php print_user_links(); ?>
-							</div>
-						</td>
+		<td valign="middle" align="center">
+		<div class="blanco" style="COLOR: #6699ff;" >
+			<?php print_user_links(); ?>
+		</div>
+		</td>
 		<td align="<?php echo $TEXT_DIRECTION=="ltr"?"right":"left" ?>">
 			<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
 			<form action="search.php" method="post">
@@ -136,10 +136,7 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 				<input type="image" src="<?php echo $WT_IMAGE_DIR ?>/go.gif" align="top" title="<?php echo i18n::translate('Search')?>" />
 			</form>
 			</div>
-			<div align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
-				<?php } ?>
-					<?php print_favorite_selector(); ?>
-			</div>
+		<?php } ?>
 		</td>
 	</tr>
 </table>
