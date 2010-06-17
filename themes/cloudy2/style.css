@@ -12,7 +12,6 @@
 
 body {
 	color: #000066;
-	background-color: #c8e7ff;
 	background-image: url('images/background.jpg');
 	background-attachment: fixed;
 	background-position: top left;
@@ -28,7 +27,6 @@ margin-right: 10px;
 background-color: #fff;
 border: 1px solid #003399;
 }
-
 
 * {
 margin:0px;
@@ -64,7 +62,7 @@ color: #ffffff;
 /*	Define TopLink Color				*/
 
 #toplinks {
-background:#95B8E0;
+background:#aaccff;
 }
 
 /* Correct icon link problem  */
@@ -138,7 +136,7 @@ body,
 
 #toplinks {
 width:100%;
-height:36px;
+height:26px;
 }
 
 .toplinks_left {
@@ -154,7 +152,7 @@ padding-right: 15px;
 border:none;
 padding-top:1px;
 padding-left:0px;
-padding-right:8pt;
+padding-right:4pt;
 }
 
 /*	Submenu style				*/
@@ -820,6 +818,7 @@ color:#7af;
 .name1 {
 color: #006;
 font-size: 11px;
+color: #006;
 font-weight: bold;
 }
 
@@ -1285,6 +1284,10 @@ font-weight:bold;
 }
 .details_label {
 font-weight:bold;
+}
+
+ul {
+list-style: url(images/li.gif);
 }
 
 form .rtl {
