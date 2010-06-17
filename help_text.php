@@ -2411,21 +2411,6 @@ case 'PEDIGREE_GENERATIONS':
 	$text=i18n::translate('Here you can set the number of generations to display on this page.<br /><br />The right number for you depends of the size of your screen and whether you show details or not.  Processing time will increase as you increase the number of generations.');
 	break;
 
-case 'PEDIGREE_MAP_clustersize':
-	$title=i18n::translate('Cluster size');
-	$text=i18n::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations. The \'trail\' is usually only visible at high zoom values.');
-	break;
-
-case 'PEDIGREE_MAP_hideflags':
-	$title=i18n::translate('Hide flags');
-	$text=i18n::translate('Hide the flags that are configured in the googlemap module. Ususally these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.');
-	break;
-
-case 'PEDIGREE_MAP_hidelines':
-	$title=i18n::translate('Hide lines');
-	$text=i18n::translate('Hide the lines connecting the child to each parent if they exist on the map.');
-	break;
-
 case 'PEDIGREE_LAYOUT':
 	$title=i18n::translate('Default pedigree chart layout');
 	$text=i18n::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
@@ -2917,7 +2902,7 @@ case 'familybook.php':
 	break;
 
 case 'famlist.php':
-	$title=i18n::translate('Familiy list page');
+	$title=i18n::translate('Family list page');
 	$text=i18n::translate('On this page you can display a list of families.  The names will be displayed with surnames first and sorted into alphabetical order.<br /><br />The output of the Name list depends on:<ol><li>The letter you clicked in the Alphabetical index.</li><li>Whether you clicked "Skip" or "Show" Surname List.</li></ol>You can search on the husband\'s or the wife\'s surname;  both are included in the list.<br /><br />More help is available by clicking the <b>?</b> next to items on the page.');
 	break;
 
