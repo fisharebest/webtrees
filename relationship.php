@@ -93,46 +93,28 @@ if (WT_USE_LIGHTBOX) {
 
 if ($pid1) {
 	//-- check if the id is valid
-	$indirec = Person::getInstance($pid1);
-	// Allow entry of i123 instead of I123
-	if (!$indirec && $pid1!=strtoupper($pid1)) {
-		$pid1=strtoupper($pid1);
-		$indirec=Person::getInstance($pid1);
-	}
-	// Allow user to specify person without the prefix
-	if (!$indirec && $GEDCOM_ID_PREFIX) {
-		$pid1=$GEDCOM_ID_PREFIX.$pid1;
-		$indirec=Person::getInstance($pid1);
-	}
-	if ($indirec) {
-		$title_string.=':<br />'.$indirec->getFullName();
+	$person=Person::getInstance($pid1);
+	if ($person) {
+		$title_string.=':<br />'.$person->getFullName();
+		$pid1=$person->getXref(); // i1 => I1
 	} else {
 		$pid1='';
 	}
-	if (!empty($_SESSION["pid1"]) && ($_SESSION["pid1"]!=$pid1)) {
+	if (!empty($_SESSION["pid1"]) && $_SESSION["pid1"]!=$pid1) {
 		unset($_SESSION["relationships"]);
 		$path_to_find=0;
 	}
 }
 if ($pid2) {
 	//-- check if the id is valid
-	$indirec = Person::getInstance($pid2);
-	// Allow entry of i123 instead of I123
-	if (!$indirec && $pid2!=strtoupper($pid2)) {
-		$pid1=strtoupper($pid2);
-		$indirec=Person::getInstance($pid2);
-	}
-	// Allow user to specify person without the prefix
-	if (!$indirec && $GEDCOM_ID_PREFIX) {
-		$pid2=$GEDCOM_ID_PREFIX.$pid2;
-		$indirec = Person::getInstance($pid2);
-	}
-	if ($indirec) {
-		$title_string.=' '.i18n::translate('and').' '.$indirec->getFullName();
+	$person=Person::getInstance($pid2);
+	if ($person) {
+		$title_string.=' '.i18n::translate('and').' '.$person->getFullName();
+		$pid2=$person->getXref(); // i2 => I2
 	} else {
 		$pid2='';
 	}
-	if (!empty($_SESSION["pid2"]) && ($_SESSION["pid2"]!=$pid2)) {
+	if (!empty($_SESSION["pid2"]) && $_SESSION["pid2"]!=$pid2) {
 		unset($_SESSION["relationships"]);
 		$path_to_find=0;
 	}
