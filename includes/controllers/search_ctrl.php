@@ -801,8 +801,8 @@ class SearchControllerRoot extends BaseController {
 						print_note_table($datalist, i18n::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
-				$GEDCOM=PGV_GEDCOM;
-				load_gedcom_settings(PGV_GED_ID);
+				$GEDCOM=WT_GEDCOM;
+				load_gedcom_settings(WT_GED_ID);
 			} else
 			if (isset ($this->query)) {
 				print "<br /><div class=\"warning\" style=\" text-align: center;\"><i>".i18n::translate('No results found.')."</i><br />";
