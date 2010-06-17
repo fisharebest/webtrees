@@ -170,7 +170,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table'), 'tagcloud'=>i18n::translate('Tag cloud')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>i18n::translate('list'), 'table'=>i18n::translate('table'), 'tagcloud'=>i18n::translate('tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', false);
