@@ -99,26 +99,25 @@ function is_dead($indirec, $gedcom_id) {
 	// Check parents (birth and adopted)
 	preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $indirec, $famc_matches);
 	foreach ($famc_matches[1] as $famc_match) {
-		$parents=find_parents($famc_match);
-		if ($parents) {
-			if (!empty($parents['HUSB'])) {
-				preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['HUSB'], $gedcom_id), $date_matches);
-				foreach ($date_matches[1] as $date_match) {
-					$date=new GedcomDate($date_match);
-					// Assume fathers are no more than 40 years older than their children
-					if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
-						return true;
-					}
+		$famrec=find_family_record($famc_match, $gedcom_id);
+		$parents=find_parents_in_record($famrec);
+		if (!empty($parents['HUSB'])) {
+			preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['HUSB'], $gedcom_id), $date_matches);
+			foreach ($date_matches[1] as $date_match) {
+				$date=new GedcomDate($date_match);
+				// Assume fathers are no more than 40 years older than their children
+				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+					return true;
 				}
 			}
-			if (!empty($parents['WIFE'])) {
-				preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['WIFE'], $gedcom_id), $date_matches);
-				foreach ($date_matches[1] as $date_match) {
-					$date=new GedcomDate($date_match);
-					// Assume mothers are no more than 40 years older than their children
-					if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
-						return true;
-					}
+		}
+		if (!empty($parents['WIFE'])) {
+			preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['WIFE'], $gedcom_id), $date_matches);
+			foreach ($date_matches[1] as $date_match) {
+				$date=new GedcomDate($date_match);
+				// Assume mothers are no more than 40 years older than their children
+				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+					return true;
 				}
 			}
 		}
@@ -309,7 +308,7 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
 	case 'FAM':
 		// Hide a family if either spouse is private
-		$parents=find_parents_in_record($pid, $gedrec);
+		$parents=find_parents_in_record($gedrec);
 		return displayDetailsById($parents["HUSB"]) && displayDetailsById($parents["WIFE"]);
 	case 'OBJE':
 		// Hide media objects that are linked to private records
