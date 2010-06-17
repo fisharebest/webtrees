@@ -1,6 +1,6 @@
 <?php
 /**
- * Facility for Census assistant that will allow a user to search for a person id
+ * Facility in Census assistant that will allow a user to search for a person id
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -24,11 +24,10 @@
  *
  * @package webtrees
  * @subpackage Display
- * @version $Id$
+ * @version $Id: census_3_find.php 8638 2010-06-06 20:36:06Z greg $
  */
- 
-define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_CENS/census_3_find.php');
-require '../../../includes/session.php';
+define('WT_SCRIPT_NAME', 'find_census_indi.php');
+require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
