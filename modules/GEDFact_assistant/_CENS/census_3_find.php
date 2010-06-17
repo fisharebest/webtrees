@@ -199,6 +199,10 @@ $options["form"][]= "formnote";
 $options["form"][]= "formsource";
 $options["form"][]= "formspecialchar";
 
+?>
+<link href="<?php echo '../../../'.WT_THEME_DIR.'style.css'; ?>" rel="stylesheet" type="text/css" media="screen" />
+<?php
+
 echo "<div align=\"center\">";
 echo "<table class=\"list_table $TEXT_DIRECTION width90\" border=\"0\">";
 echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
@@ -233,7 +237,7 @@ case "specialchar":
 echo "</td>"; // close column for find text header
 
 	// start column for find options
-	print "</tr><tr><td class=\"list_value\" style=\"padding: 5px;\">";
+	print "</tr><tr><td class=\"list_value\" style=\"padding: 5px; \">";
 
 // Show indi and hide the rest
 if ($type == "indi") {

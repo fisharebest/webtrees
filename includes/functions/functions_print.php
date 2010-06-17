@@ -579,10 +579,10 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	}
 	$bodyOnLoad .= "\"";
 	if ($view!='preview' && $view!='simple') {
-		require $headerfile;
+		require WT_ROOT.$headerfile;
 		$META_DESCRIPTION = $old_META_DESCRIPTION;
 	} else {
-		require $headerfile;
+		require WT_ROOT.$headerfile;
 	}
 }
 

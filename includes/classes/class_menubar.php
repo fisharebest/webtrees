@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
 define('WT_CLASS_MENUBAR_PHP', '');
 
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once 'includes/classes/class_module.php';
+require_once WT_ROOT.'includes/classes/class_module.php';
 
 class MenuBar
 {
