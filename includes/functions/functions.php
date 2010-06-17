@@ -2602,33 +2602,33 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			switch ($removed) {
 			case 0:
 				switch ($last) {
-				case 'son': return cousin_name($up-1, 'M');
-				case 'dau': return cousin_name($up-1, 'F');
-				case 'chi': return cousin_name($up-1, 'U');
+				case 'son': return cousin_name($up, 'M');
+				case 'dau': return cousin_name($up, 'F');
+				case 'chi': return cousin_name($up, 'U');
 				}
 			case 1:
 				switch ($last) {
-				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up-1, 'M'));
-				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up-1, 'F'));
-				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up-1, 'U'));
+				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up, 'M'));
+				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up, 'F'));
+				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up, 'U'));
 				}
 			case 2:
 				switch ($last) {
-				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up-1, 'M'));
-				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up-1, 'F'));
-				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up-1, 'U'));
+				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up, 'M'));
+				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up, 'F'));
+				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up, 'U'));
 				}
 			case 3:
 				switch ($last) {
-				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up-1, 'M'));
-				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up-1, 'F'));
-				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up-1, 'U'));
+				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up, 'M'));
+				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up, 'F'));
+				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up, 'U'));
 				}
 			default:
 				switch ($last) {
-				case 'son': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up-1, 'M'), $removed);
-				case 'dau': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up-1, 'F'), $removed);
-				case 'chi': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up-1, 'U'), $removed);
+				case 'son': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up, 'M'), $removed);
+				case 'dau': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up, 'F'), $removed);
+				case 'chi': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up, 'U'), $removed);
 				}
 			}
 		}
