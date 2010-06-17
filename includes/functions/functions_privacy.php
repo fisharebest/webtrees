@@ -309,7 +309,7 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
 	case 'FAM':
 		// Hide a family if either spouse is private
-		$parents=find_parents($pid);
+		$parents=find_parents_in_record($pid, $gedrec);
 		return displayDetailsById($parents["HUSB"]) && displayDetailsById($parents["WIFE"]);
 	case 'OBJE':
 		// Hide media objects that are linked to private records
