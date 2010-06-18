@@ -438,10 +438,11 @@ if (isset($_SESSION['theme_dir'])) {
 	}
 }
 
-if (empty($THEME_DIR) || !file_exists("{$THEME_DIR}theme.php") && !isset($usertheme)) {
-	$THEME_DIR = 'themes/webtrees/';
-} else {
+
+if (isset($usertheme)) {
 	$THEME_DIR = $usertheme;
+} else if (empty($THEME_DIR) || !file_exists("{$THEME_DIR}theme.php")) {
+	$THEME_DIR = 'themes/webtrees/';
 }
 
 define('WT_THEME_DIR', $THEME_DIR);
