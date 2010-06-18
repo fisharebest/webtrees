@@ -831,18 +831,6 @@ function find_media_record($xref, $ged_id) {
 
 // Find the gedcom data for a record. Optionally include pending changes.
 function find_gedcom_record($xref, $ged_id, $pending=false) {
-	static $statement=null;
-
-	if (is_null($statement)) {
-		$statement=WT_DB::prepare(
-			"SELECT i_gedcom FROM `##individuals` WHERE i_id   =? AND i_file   =? UNION ALL ".
-			"SELECT f_gedcom FROM `##families`    WHERE f_id   =? AND f_file   =? UNION ALL ".
-			"SELECT s_gedcom FROM `##sources`     WHERE s_id   =? AND s_file   =? UNION ALL ".
-			"SELECT m_gedrec FROM `##media`       WHERE m_media=? AND m_gedfile=? UNION ALL ".
-			"SELECT o_gedcom FROM `##other`       WHERE o_id   =? AND o_file   =?"
-		);
-	}
-
 	if ($pending) {
 		// This will return NULL if no record exists, or an empty string if the record has been deleted.
 		$gedcom=find_updated_record($xref, $ged_id);
@@ -851,13 +839,21 @@ function find_gedcom_record($xref, $ged_id, $pending=false) {
 	}
 	
 	if (is_null($gedcom)) {
-		return
-			$statement
-			->execute(array($xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id, $xref, $ged_id))
-			->fetchOne();
-	} else {
-		return $gedcom;
+		$gedcom=find_person_record($xref, $ged_id);
 	}
+	if (is_null($gedcom)) {
+		$gedcom=find_family_record($xref, $ged_id);
+	}
+	if (is_null($gedcom)) {
+		$gedcom=find_source_record($xref, $ged_id);
+	}
+	if (is_null($gedcom)) {
+		$gedcom=find_media_record($xref, $ged_id);
+	}
+	if (is_null($gedcom)) {
+		$gedcom=find_other_record($xref, $ged_id);
+	}
+	return $gedcom;
 }
 
 /**
