@@ -933,7 +933,7 @@ function find_visible_families_in_record($indirec, $tag) {
 	$visiblefams = array();
 	// select only those that are visible to current user
 	foreach ($allfams as $key=>$famid) {
-		if (canDisplayRecord(WT_GED_ID, find_gedcom_record($famid, WT_GED_ID))) {
+		if (canDisplayRecord(WT_GED_ID, find_family_record($famid, WT_GED_ID))) {
 			$visiblefams[] = $famid;
 		}
 	}
