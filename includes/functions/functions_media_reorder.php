@@ -55,7 +55,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	print "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $rowm['m_media'] . "\" >";
 
     //print $rtype." ".$rowm["m_media"]." ".$pid;
-    if (!displayDetailsById($rowm['m_media'], 'OBJE') || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
+    if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
         //print $rowm['m_media']." no privacy ";
         return false;
     }

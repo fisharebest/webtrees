@@ -537,41 +537,21 @@ class ClippingsControllerRoot extends BaseController {
 		
 		if (!id_in_cart($clipping['id'])) {
 			$clipping['gedcom'] = $GEDCOM;
-			if ($clipping['type'] == "indi") {
-				if (displayDetailsById($clipping['id'], 'INDI') || showLivingNameById($clipping['id'])) {
-					$cart[] = $clipping;
-					$this->addCount++;
-				} else {
-					$this->privCount++;
-					return false;
-				}
-			} else
-			if ($clipping['type'] == "fam") {
-				$parents = find_parents($clipping['id']);
-				if ((displayDetailsById($parents['HUSB'], 'INDI') || showLivingNameById($parents['HUSB'])) && (displayDetailsById($parents['WIFE'], 'INDI') || showLivingNameById($parents['WIFE']))) {
-					$cart[] = $clipping;
-					$this->addCount++;
-				} else {
-					$this->privCount++;
-					return false;
-				}
+			$ged_id=get_id_from_gedcom($GEDCOM);
+			$gedrec=find_gedcom_record($clipping['id'], $ged_id);
+			if (canDisplayRecord($ged_id, $gedrec) || showLivingNameById($clipping['id'])) {
+				$cart[] = $clipping;
+				$this->addCount++;
 			} else {
-				if (displayDetailsById($clipping['id'], strtoupper($clipping['type'])))
-				{
-					$cart[] = $clipping;
-					$this->addCount++;
-				}
-				else {
-					$this->privCount++;
-					return false;
-				}
+				$this->privCount++;
+				return false;
 			}
 			//-- look in the gedcom record for any linked SOUR, NOTE, or OBJE and also add them to the
 			//- clippings cart
 			$gedrec = find_gedcom_record($clipping['id'], WT_GED_ID);
 			$st = preg_match_all("/\d SOUR @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $st; $i++) {
-				if (displayDetailsById($match[$i][1], 'SOUR')) {
+				if (canDisplayRecord(WT_GED_ID, find_source_record($match[$i][1], WT_GED_ID))) {
 					// add SOUR
 					$clipping = array ();
 					$clipping['type'] = "source";
@@ -582,7 +562,7 @@ class ClippingsControllerRoot extends BaseController {
 					$sourec = find_gedcom_record($match[$i][1], WT_GED_ID);
 					$rt = preg_match_all("/\d REPO @(.*)@/", $sourec, $rmatch, PREG_SET_ORDER);
 					for ($j = 0; $j < $rt; $j++) {
-						if (displayDetailsById($rmatch[$j][1], 'REPO')) {
+						if (canDisplayRecord(WT_GED_ID, find_other_record($rmatch[$j][1], WT_GED_ID))) {
 							$clipping = array ();
 							$clipping['type'] = "repository";
 							$clipping['id'] = $rmatch[$j][1];
@@ -594,7 +574,7 @@ class ClippingsControllerRoot extends BaseController {
 			}
 			$nt = preg_match_all("/\d NOTE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $nt; $i++) {
-				if (displayDetailsById($match[$i][1], 'NOTE')) {
+				if (canDisplayRecord(WT_GED_ID, find_other_record($match[$i][1], WT_GED_ID))) {
 					$clipping = array ();
 					$clipping['type'] = "note";
 					$clipping['id'] = $match[$i][1];
@@ -605,7 +585,7 @@ class ClippingsControllerRoot extends BaseController {
 			if ($MULTI_MEDIA) {
 				$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 				for ($i = 0; $i < $nt; $i++) {
-					if (displayDetailsById($match[$i][1], 'OBJE')) {
+					if (canDisplayRecord(WT_GED_ID, find_media_record($match[$i][1], WT_GED_ID))) {
 						$clipping = array ();
 						$clipping['type'] = "obje";
 						$clipping['id'] = $match[$i][1];

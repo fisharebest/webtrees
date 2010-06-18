@@ -154,7 +154,7 @@ function print_descendency($pid, $count) {
 	if ($count==0) {
 		$indirec = find_person_record($pid, WT_GED_ID);
 		// NOTE: If statement OK
-		if (displayDetailsById($pid, 'INDI') || showLivingNameById($pid)) {
+		if (canDisplayRecord($pid, $indirec) || showLivingNameById($pid)) {
 			// -- print left arrow for decendants so that we can move down the tree
 			$famids = find_sfamily_ids($pid);
 			//-- make sure there is more than 1 child in the family with parents
@@ -363,7 +363,7 @@ function print_family_book($pid, $descent)
 						$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
 						for($i=0; $i<$ct; $i++) {
 							$chil = trim($match[$i][1]);
-							if (showLivingNameById($chil) || displayDetailsById($chil, 'INDI')) print_family_book($chil, $descent-1);
+							if (showLivingNameById($chil) || canDisplayRecord(WT_GED_ID, $famrec)) print_family_book($chil, $descent-1);
 						}
 				}
 		}

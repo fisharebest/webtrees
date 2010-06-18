@@ -2828,7 +2828,7 @@ function FootnoteSHandler($attrs) {
 		$tag = $match[1];
 		$id = $match[2];
 	}
-	if (displayDetailsById($id, $tag)) {
+	if (canDisplayRecord(WT_GED_ID, $gedrec)) {
 		array_push($printDataStack, $printData);
 		$printData = true;
 		$style = "";

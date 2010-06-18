@@ -187,7 +187,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<br />".PrintReady($favorite["note"]);
 					$content .= "</div>\n";
 				} else {
-					if (displayDetailsById($favorite["gid"], $favorite["type"])) {
+					$record=GedcomRecord::getInstance($favorite['gid']);
+					if ($record && $record->canDisplayDetails()) {
 						if ($favorite["type"]=="INDI") {
 							$indirec = find_person_record($favorite["gid"], WT_GED_ID);
 							$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box";

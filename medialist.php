@@ -169,24 +169,12 @@ if ($build == "yes") {
 	//-- remove all private media objects
 	foreach($medialist as $key => $media) {
 			echo " ";
-
 			// Display when user has Edit rights or when object belongs to current GEDCOM
 			$disp = WT_USER_CAN_EDIT || $media["GEDFILE"]==WT_GED_ID;
 			// Display when Media objects aren't restricted by global privacy
-			$disp &= displayDetailsById($media["XREF"], "OBJE");
+			$disp &= canDisplayRecord($media["GEDFILE"], $media["GEDCOM"]);
 			// Display when this Media object isn't restricted
 			$disp &= canDisplayFact($media["XREF"], $media["GEDFILE"], $media["GEDCOM"]);
-			/** -- already included in the displayDetailsById() function
-		if ($disp) {
-				$links = $media["LINKS"];
-				//-- make sure that only media with links are shown
-			if (count($links) != 0) {
-						foreach($links as $id=>$type) {
-							$disp &= displayDetailsById($id, $type);
-						}
-				}
-		}
-		*/
 		if (!$disp) unset($medialist[$key]);
 
 	}

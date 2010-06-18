@@ -135,7 +135,7 @@ case 'get':
 				if ($gedrec) {
 					preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
 					$type = trim($match[2]);
-					if (!displayDetailsById($xref1, $type)) {
+					if (!canDisplayRecord($GED_ID, $gedrec)) {
 						//-- do not have full access to this record, so privatize it
 						$gedrec = privatize_gedcom($gedrec);
 					}
@@ -191,9 +191,9 @@ case 'update':
 	if ($xref) {
 		$gedrec=safe_REQUEST($_REQUEST,'gedrec', WT_REGEX_UNSAFE); // raw data may contain any characters
 		if ($gedrec) {
-			if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && displayDetailsById($xref)) {
+			if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && canDisplayRecord($GED_ID, $gedrec)) {
 				$gedrec = preg_replace(array("/\\\\+r/","/\\\\+n/"), array("\r","\n"), $gedrec);
-				replace_gedrec($xref, WT_GED_ID, $gedrec);
+				replace_gedrec($xref, $GED_ID, $gedrec);
 				print "SUCCESS\n";
 			} else {
 				addToLog($action." xref=$xref ERROR 11: No write privileges for this record.", 'debug');
@@ -213,7 +213,7 @@ case 'append':
 	if ($gedrec) {
 		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT) {
 			$gedrec = preg_replace(array("/\\\\+r/","/\\\\+n/"), array("\r","\n"), $gedrec);
-			$xref = append_gedrec($gedrec, WT_GED_ID);
+			$xref = append_gedrec($gedrec, $GED_ID);
 			if ($xref) {
 				addToLog($action." gedrec=$gedrec SUCCESS\n$xref", 'debug');
 				print "SUCCESS\n$xref\n";
@@ -230,8 +230,8 @@ case 'append':
 case 'delete':
 	$xref=safe_REQUEST($_REQUEST,'xref', WT_REGEX_XREF);
 	if ($xref) {
-		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && displayDetailsById($xref)) {
-			$success = delete_gedrec($xref, WT_GED_ID);
+		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && canDisplayRecord($GED_ID, find_gedcom_record($xref, $GED_ID))) {
+			$success = delete_gedrec($xref, $GED_ID);
 			if ($success) {
 				addToLog($action." xref=$xref SUCCESS", 'debug');
 				print "SUCCESS\n";
@@ -250,7 +250,7 @@ case 'getnext':
 	if ($xref) {
 		$xref1 = get_next_xref($xref, $GED_ID);
 		$gedrec = find_gedcom_record($xref1, $GED_ID, true);
-		if (!displayDetailsById($xref1)) {
+		if (!canDisplayRecord($GED_ID, $gedrec)) {
 			//-- do not have full access to this record, so privatize it
 			$gedrec = privatize_gedcom($gedrec);
 		}
@@ -266,7 +266,7 @@ case 'getprev':
 	if ($xref) {
 		$xref1 = get_prev_xref($xref, $GED_ID);
 		$gedrec = find_gedcom_record($xref1, $GED_ID, true);
-		if (!displayDetailsById($xref1)) {
+		if (!canDisplayRecord($GED_ID, $gedrec)) {
 			//-- do not have full access to this record, so privatize it
 			$gedrec = privatize_gedcom($gedrec);
 		}
@@ -280,7 +280,7 @@ case 'getprev':
 case 'search':
 	$query=safe_REQUEST($_REQUEST,'query');
 	if ($query) {
-		$sindilist=search_indis(array($query), array(WT_GED_ID), 'AND', true);
+		$sindilist=search_indis(array($query), array($GED_ID), 'AND', true);
 		print "SUCCESS\n";
 		addToLog($action." query=$query SUCCESS", 'debug');
 		foreach($sindilist as $indi) {
@@ -298,7 +298,7 @@ case 'soundex':
 	$soundex=safe_REQUEST($_REQUEST,'soundex', '\w+', 'Russell');
 
 	if ($lastname || $firstname) {
-		$sindilist=search_indis_soundex($soundex, $lastname, $firstname, $place, array(WT_GED_ID));
+		$sindilist=search_indis_soundex($soundex, $lastname, $firstname, $place, array($GED_ID));
 		print "SUCCESS\n";
 		addToLog($action." lastname=$lastname firstname=$firstname SUCCESS", 'debug');
 		foreach($sindilist as $indi) {
@@ -386,7 +386,7 @@ case 'getxref':
 	case 'new':
 		if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT) {
 			$gedrec = "0 @REF@ $type";
-			$xref = append_gedrec($gedrec, WT_GED_ID);
+			$xref = append_gedrec($gedrec, $GED_ID);
 			if ($xref) {
 				addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
 				print "SUCCESS\n$xref\n";

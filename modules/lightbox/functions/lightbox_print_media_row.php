@@ -84,7 +84,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// Else Media files are present in "media" directory
 	} else {
 		//If media is linked to a 'private' person
-		if (!displayDetailsById($rowm['m_media'], 'OBJE') || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
+		if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
 			return false;
 		} else {
 			// Media is NOT linked to private person
@@ -243,7 +243,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$submenu->addClass($submenu_class, $submenu_hoverclass);
 			$menu->addSubMenu($submenu);
 			//View Source
-			if (strpos($rowm['m_gedrec'], "\n1 SOUR") && displayDetailsById($sour, "SOUR")) {
+			if (strpos($rowm['m_gedrec'], "\n1 SOUR") && canDisplayRecord(WT_GED_ID, find_source_record($sour, WT_GED_ID))) {
 				$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('View Source') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid=" . $sour, "right");
 				$submenu->addClass($submenu_class, $submenu_hoverclass);
 				$menu->addSubMenu($submenu);

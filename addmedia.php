@@ -63,13 +63,13 @@ $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {
 	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
-	$disp = displayDetailsById($pid, "OBJE");
+	$disp = canDisplayRecord(WT_GED_ID, $gedrec);
 }
 if ($action=="update" || $action=="newentry") {
 	if (!isset($linktoid) || $linktoid=="new") $linktoid="";
 	if (empty($linktoid) && !empty($gid)) $linktoid = $gid;
 	if (!empty($linktoid)) {
-		$disp = displayDetailsById($linktoid);
+		$disp = canDisplayRecord(WT_GED_ID, find_gedcom_record($linktoid, WT_GED_ID));
 	}
 }
 

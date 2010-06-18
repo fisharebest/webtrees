@@ -67,7 +67,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 //-- check for admin
 //$paramok =  WT_USER_CAN_EDIT;
 $paramok =  WT_USER_GEDCOM_ADMIN;
-if (!empty($linktoid)) $paramok = displayDetailsById($linktoid);
+if (!empty($linktoid)) $paramok = canDisplayRecord(WT_GED_ID, find_gedcom_record($linktoid), WT_GED_ID);
 
 if ($action == "choose" && $paramok) {
 

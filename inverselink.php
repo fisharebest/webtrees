@@ -73,7 +73,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 
 	//-- check for admin
 	$paramok =  WT_USER_CAN_EDIT;
-	if (!empty($linktoid)) $paramok = displayDetailsById($linktoid);
+	if (!empty($linktoid)) $paramok = canDisplayRecord(WT_GED_ID, find_gedcom_record($linktoid, WT_GED_ID));
 
 	if ($action == "choose" && $paramok) {
 		?>

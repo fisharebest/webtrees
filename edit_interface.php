@@ -189,7 +189,7 @@ if (!empty($pid)) {
 		$ct = preg_match("/^0 @$pid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
-			$disp = displayDetailsById($pid, $type);
+			$disp = canDisplayRecord(WT_GED_ID, $gedrec);
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($pid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
@@ -204,7 +204,7 @@ else if (!empty($famid)) {
 		$ct = preg_match("/^0 @$famid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
-			$disp = displayDetailsById($famid, $type);
+			$disp = canDisplayRecord(WT_GED_ID, $gedrec);
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($famid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));

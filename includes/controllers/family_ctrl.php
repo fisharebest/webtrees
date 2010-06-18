@@ -99,7 +99,7 @@ class FamilyRoot extends BaseController {
 		}
 
 		$this->famrec = $this->family->getGedcomRecord();
-		$this->display = displayDetailsById($this->famid, 'FAM');
+		$this->display = $this->family->canDisplayName();
 
 		//-- if the user can edit and there are changes then get the new changes
 		if ($this->show_changes && WT_USER_CAN_EDIT && find_updated_record($this->famid, WT_GED_ID)!==null) {

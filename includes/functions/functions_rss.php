@@ -340,7 +340,7 @@ function getRecentChanges() {
 						if (($filter=="living")&&(is_dead($gedrec, WT_GED_ID)==1)) {
 							$disp = false;
 						} elseif ($HIDE_LIVE_PEOPLE) {
-							$disp = displayDetailsById($gid, 'INDI');
+							$disp = canDisplayRecord(WT_GED_ID, $gedrec);
 						}
 						break;
 					case 'FAM':
@@ -361,11 +361,11 @@ function getRecentChanges() {
 								}
 							}
 						} else {
-							if ($HIDE_LIVE_PEOPLE) $disp = displayDetailsById($gid, "FAM");
+							if ($HIDE_LIVE_PEOPLE) $disp = canDisplayRecord(WT_GED_ID, $gedrec);
 						}
 						break;
 					default:
-						$disp = displayDetailsById($gid, $type);
+						$disp = canDisplayRecord(WT_GED_ID, $gedrec);
 						break;
 				}
 				if ($disp) {
@@ -436,7 +436,7 @@ function getRandomMedia() {
 			$value = array_rand($medialist);
 			$links = $medialist[$value]["LINKS"];
 			$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
-			$disp &= displayDetailsById($value["XREF"], "OBJE");
+			$disp &= canDisplayRecord($value["GEDFILE"], $value["GEDCOM");
 			$disp &= canDisplayFact($value["XREF"], $value["GEDFILE"], $value["GEDCOM"]);
 
 			$isExternal = isFileExternal($medialist[$value]["FILE"]);
@@ -453,7 +453,7 @@ function getRandomMedia() {
 					$disp &= !empty($gedrec);
 					//-- source privacy is now available through the display details by id method
 					// $disp &= $type!="SOUR";
-					$disp &= displayDetailsById($key, $type);
+					$disp &= canDisplayRecord(WT_GED_ID, $gedrec);
 				}
 				if ($disp && $filter!="all") {
 					// Apply filter criteria

@@ -933,7 +933,7 @@ function find_visible_families_in_record($indirec, $tag) {
 	$visiblefams = array();
 	// select only those that are visible to current user
 	foreach ($allfams as $key=>$famid) {
-		if (displayDetailsById($famid, "FAM")) {
+		if (canDisplayRecord(WT_GED_ID, find_gedcom_record($famid, WT_GED_ID))) {
 			$visiblefams[] = $famid;
 		}
 	}
@@ -991,7 +991,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 		->fetchAll(PDO::FETCH_NUM);
 
 	foreach ($media as $i=>$row) {
-		if (displayDetailsById($row[0], 'OBJE') && canDisplayFact($row[0], $row[1], $row[2])) {
+		if (canDisplayRecord($ged_id, $row[2]) && canDisplayFact($row[0], $ged_id, $row[3])) {
 			$level=0;
 			$ct = preg_match("/(\d+) OBJE/", $row[3], $match);
 			if ($ct>0) {

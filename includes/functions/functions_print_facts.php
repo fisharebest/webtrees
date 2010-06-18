@@ -452,8 +452,8 @@ function print_repository_record($sid) {
 	global $TEXT_DIRECTION;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
-	if (displayDetailsById($sid, "REPO")) {
-		$source = find_other_record($sid, $ged_id);
+	$source = find_other_record($sid, $ged_id);
+	if (canDisplayRecord($ged_id, $source)) {
 		$ct = preg_match("/1 NAME (.*)/", $source, $match);
 		if ($ct > 0) {
 			$ct2 = preg_match("/0 @(.*)@/", $source, $rmatch);
@@ -500,7 +500,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	$spos2 = 0;
 	for($j=0; $j<$ct; $j++) {
 		$sid = $match[$j][1];
-		if (displayDetailsById($sid, "SOUR")) {
+		if (canDisplayRecord(WT_GED_ID, find_source_record($sid, WT_GED_ID))) {
 			$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
 			$spos2 = strpos($factrec, "\n$level", $spos1);
 			if (!$spos2) $spos2 = strlen($factrec);
@@ -567,12 +567,11 @@ function print_media_links($factrec, $level, $pid='') {
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
 		$media_id = str_replace("@", "", trim($omatch[$objectNum][1]));
-		if (displayDetailsById($media_id, "OBJE")) {
-			$row=
-				WT_DB::prepare("SELECT m_titl, m_file, m_gedrec FROM `##media` where m_media=? AND m_gedfile=?")
-				->execute(array($media_id, WT_GED_ID))
-				->fetchOneRow(PDO::FETCH_ASSOC);
-
+		$row=
+			WT_DB::prepare("SELECT m_titl, m_file, m_gedrec FROM `##media` where m_media=? AND m_gedfile=?")
+			->execute(array($media_id, WT_GED_ID))
+			->fetchOneRow(PDO::FETCH_ASSOC);
+		if (canDisplayRecord(WT_GED_ID, $row['m_gedrec'])) {
 			// A new record, pending acceptance?
 			if (!$row && WT_USER_CAN_EDIT) {
 				$mediarec = find_updated_record($media_id, $ged_id);
@@ -851,7 +850,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 		$spos2 = strpos($factrec, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($factrec);
 		$srec = substr($factrec, $spos1, $spos2-$spos1);
-		if (displayDetailsById($sid, "SOUR")) {
+		if (canDisplayRecord(WT_GED_ID, find_source_record($sid, WT_GED_ID))) {
 			if ($level==2) echo "<tr class=\"row_sour2\">";
 			else echo "<tr>";
 			echo "<td class=\"descriptionbox";
@@ -1426,8 +1425,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER, $MEDIA_TYPES;
 
-	if (!displayDetailsById($rowm['m_media'], 'OBJE') || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
-		//echo $rowm['m_media'], " no privacy ";
+	if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
 		return false;
 	}
 

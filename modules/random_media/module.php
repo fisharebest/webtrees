@@ -109,8 +109,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
 				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";}
 
-				$disp &= displayDetailsById($medialist[$value]["XREF"], "OBJE");
-				$disp &= canDisplayFact($medialist[$value]["XREF"], $medialist[$value]["GEDFILE"], $medialist[$value]["GEDCOM"]);
+				$disp &= canDisplayRecord($medialist[$value]["GEDFILE"], $medialist[$value]["GEDCOM"]);
 
 				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." Failed to pass privacy</span><br />";}
 

@@ -97,7 +97,7 @@ class GedcomRecord {
 
 		//-- set the gedcom record a privatized version
 		if ($this->xref && $this->type) {
-			$this->disp=displayDetailsById($this->xref, $this->type, $this->gedrec);
+			$this->disp=canDisplayRecord($this->ged_id, $this->gedrec);
 		}
 		$this->gedrec = privatize_gedcom($this->gedrec);
 	}

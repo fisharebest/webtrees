@@ -1110,13 +1110,11 @@ class MenuBar
 					case 'FAM':
 					case 'SOUR':
 					case 'OBJE':
-						if (displayDetailsById($fav['gid'], $fav['type'])) {
-							$obj=GedcomRecord::getInstance($fav['gid']);
-							if ($obj) {
-								$submenu=new Menu(PrintReady($obj->getFullName()), encode_url($obj->getLinkUrl()));
-								$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-								$menu->addSubMenu($submenu);
-							}
+						$obj=GedcomRecord::getInstance($fav['gid']);
+						if ($obj && $obj->canDisplayName()) {
+							$submenu=new Menu(PrintReady($obj->getFullName()), encode_url($obj->getLinkUrl()));
+							$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+							$menu->addSubMenu($submenu);
 						}
 						break;
 					}
@@ -1144,13 +1142,11 @@ class MenuBar
 				case 'FAM':
 				case 'SOUR':
 				case 'OBJE':
-					if (displayDetailsById($fav['gid'], $fav['type'])) {
-						$obj=GedcomRecord::getInstance($fav['gid']);
-						if ($obj) {
-							$submenu=new Menu(PrintReady($obj->getFullName()), encode_url($obj->getLinkUrl()));
-							$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-							$menu->addSubMenu($submenu);
-						}
+					$obj=GedcomRecord::getInstance($fav['gid']);
+					if ($obj && $obj->canDisplayName()) {
+						$submenu=new Menu(PrintReady($obj->getFullName()), encode_url($obj->getLinkUrl()));
+						$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+						$menu->addSubMenu($submenu);
 					}
 					break;
 				}

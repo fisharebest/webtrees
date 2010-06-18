@@ -188,31 +188,48 @@ function is_dead($indirec, $gedcom_id) {
 }
 
 //-- allow users to overide functions in privacy file
-if (!function_exists("displayDetailsById")) {
-
+if (!function_exists("showLivingNameById")) {
 /**
-* check if details for a GEDCOM XRef ID should be shown
+* check if the name for a GEDCOM XRef ID should be shown
 *
 * This function uses the settings in the global variables above to determine if the current user
-* has sufficient privileges to access the GEDCOM resource.
+* has sufficient privileges to access the GEDCOM resource.  It first checks the
+* <var>$SHOW_LIVING_NAMES</var> variable to see if names are shown to the public.  If they are
+* then this function will always return true.  If the name is hidden then all relationships
+* connected with the individual are also hidden such that arriving at this record results in a dead
+* end.
 *
 * @author yalnifj
 * @param string $pid the GEDCOM XRef ID for the entity to check privacy settings for
-* @param string $type the GEDCOM type represented by the $pid.  This setting is used so that
-* different gedcom types can be handled slightly different. (ie. a source cannot be dead)
-* The possible values of $type are:
-* - "INDI" record is an individual
-* - "FAM" record is a family
-* - "SOUR" record is a source
-*          - "REPO" record is a repository
-* @return boolean return true to show the persons details, return false to keep them private
+* @return boolean return true to show the person's name, return false to keep it private
 */
-function displayDetailsById($pid, $type='', $gedrec='') {
+function showLivingNameById($pid) {
+	global $SHOW_LIVING_NAMES;
+
+	if ($_SESSION["wt_user"]==WT_USER_ID) {
+		// Normal operation
+		$pgv_GED_ID            = WT_GED_ID;
+		$pgv_USER_ACCESS_LEVEL = WT_USER_ACCESS_LEVEL;
+	} else {
+		// We're in the middle of a Download -- get overriding information from cache
+		$pgv_GED_ID            = $_SESSION["pgv_GED_ID"];
+		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
+	}
+
+	return $SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL || canDisplayRecord($pgv_GED_ID, find_person_record($pid, $pgv_GED_ID));
+}
+}
+
+
+// Can we display a level 0 record?
+function canDisplayRecord($ged_id, $gedrec) {
+	// TODO - use the privacy settings for $ged_id, not the default gedcom.
 	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $person_privacy, $person_facts, $global_facts, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE;
 	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
-	$ged_id=get_id_from_gedcom($GEDCOM);
+	// Only need to check each record once.
+	static $cache; if ($cache===null) {$cache=array();}
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
@@ -236,8 +253,15 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 		$pgv_USER_GEDCOM_ID    = $_SESSION["pgv_USER_GEDCOM_ID"];
 	}
 
-	// Missing data or broken link?
-	if (!$pid) {
+	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+		$xref=$match[1];
+		$type=$match[2];
+		$cache_key="$xref@$ged_id";
+		if (array_key_exists($cache_key, $cache)) {
+			return $cache[$cache_key];
+		}
+	} else {
+		// Missing data or broken link?
 		return true;
 	}
 
@@ -246,128 +270,108 @@ function displayDetailsById($pid, $type='', $gedrec='') {
 
 	// This setting would better be called "$ENABLE_PRIVACY"
 	if (!$HIDE_LIVE_PEOPLE) {
-		return true;
+		return $cache[$cache_key]=true;
 	}
 
 	// We should always be able to see our own record
-	if ($pid==$pgv_USER_GEDCOM_ID) {
-		return true;
-	}
-
-	// Need to examine the raw gedcom record
-	if (!$type) {
-		$type=gedcom_record_type($pid, $ged_id);
-	}
-	if (!$gedrec) {
-		switch ($type) {
-		case 'INDI': $gedrec=find_person_record($pid, $ged_id); break;
-		case 'FAM':  $gedrec=find_family_record($pid, $ged_id); break;
-		case 'SOUR': $gedrec=find_source_record($pid, $ged_id); break;
-		case 'OBJE': $gedrec=find_media_record ($pid, $ged_id); break;
-		default:     $gedrec=find_other_record ($pid, $ged_id); break;
-		}
+	if ($xref==WT_USER_GEDCOM_ID && $ged_id=WT_GED_ID) {
+		return $cache[$cache_key]=true;
 	}
 
 	// Does this record have a RESN?
 	if (strpos($gedrec, "\n1 RESN none")) {
-		return true;
+		return $cache[$cache_key]=true;
 	}
 	if (strpos($gedrec, "\n1 RESN privacy")) {
-		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
+		return $cache[$cache_key]=(WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL);
 	}
 	if (strpos($gedrec, "\n1 RESN confidential")) {
-		return WT_PRIV_NONE>=$pgv_USER_ACCESS_LEVEL;
+		return $cache[$cache_key]=(WT_PRIV_NONE>=$pgv_USER_ACCESS_LEVEL);
 	}
 
 	// Does this record have a default RESN?
-	if (isset($person_privacy[$pid])) {
-		return $person_privacy[$pid]>=$pgv_USER_ACCESS_LEVEL;
+	if (isset($person_privacy[$xref])) {
+		return $cache[$cache_key]=($person_privacy[$xref]>=$pgv_USER_ACCESS_LEVEL);
 	}
 
 	// Privacy rules do not apply to admins
 	if ($pgv_USER_GEDCOM_ADMIN) {
-		return true;
+		return $cache[$cache_key]=true;
 	}
 
 	// Different types of record have different privacy rules
 	switch ($type) {
 	case 'INDI':
 		// Dead people...
-		if (is_dead($gedrec, $ged_id) && $SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL) {
+		if ($SHOW_DEAD_PEOPLE>=$pgv_USER_ACCESS_LEVEL && is_dead($gedrec, $ged_id)) {
 			$keep_alive=false;
-			if ($KEEP_ALIVE_YEARS_BIRTH) {				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);				foreach ($matches as $match) {					$date=new GedcomDate($match[1]);					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_BIRTH > date('Y')) {						$keep_alive=true;						break;					}				}			}			if ($KEEP_ALIVE_YEARS_DEATH) {				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);				foreach ($matches as $match) {					$date=new GedcomDate($match[1]);					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_DEATH > date('Y')) {						$keep_alive=true;						break;					}				}			}			if (!$keep_alive) {				return true;
+			if ($KEEP_ALIVE_YEARS_BIRTH) {
+				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					$date=new GedcomDate($match[1]);
+					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_BIRTH > date('Y')) {
+						$keep_alive=true;
+						break;
+					}
+				}
+			}
+			if ($KEEP_ALIVE_YEARS_DEATH) {
+				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					$date=new GedcomDate($match[1]);
+					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_DEATH > date('Y')) {
+						$keep_alive=true;
+						break;
+					}
+				}
+			}
+			if (!$keep_alive) {
+				return $cache[$cache_key]=true;
 			}
 		}
 		// Consider relationship privacy
 		if ($pgv_USER_GEDCOM_ID && get_user_setting($pgv_USER_ID, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY)) {
 			$path_length=get_user_setting($pgv_USER_ID, 'max_relation_path', $MAX_RELATION_PATH_LENGTH);
-			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $pid, $CHECK_MARRIAGE_RELATIONS, $path_length);
-			return $relationship!==false;
+			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $xref, $CHECK_MARRIAGE_RELATIONS, $path_length);
+			return $cache[$cache_key]=($relationship!==false);
 		}
 		// No restriction found - show living people to authenticated users only:
 		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
 	case 'FAM':
 		// Hide a family if either spouse is private
-		$parents=find_parents_in_record($gedrec);
-		return displayDetailsById($parents["HUSB"]) && displayDetailsById($parents["WIFE"]);
+		if (preg_match_all('/\n2 (?:HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $gedrec, $matches)) {
+			foreach ($matches[1] as $spouse_id) {
+				if (!canDisplayRecord($ged_id, find_person_record($spouse_id, $ged_id))) {
+					return $cache[$cache_key]=false;
+				}
+			}
+		}
+		return true;
 	case 'OBJE':
 		// Hide media objects that are linked to private records
-		foreach (get_media_relations($pid) as $gid=>$type2) {
-			if (!displayDetailsById($gid, $type2)) {
-				return false;
+		foreach (get_media_relations($xref) as $gid=>$type2) {
+			if (!canDisplayRecord($ged_id, find_gedcom_record($gid, $ged_id))) {
+				return $cache[$cache_key]=false;
 			}
 		}
 		break;
 	case 'SOUR':
 		// Hide sources if they are attached to private repositories.
-		$repoid = get_gedcom_value("REPO", 1, find_source_record($pid, $ged_id));
-		if (!displayDetailsById($repoid, "REPO")) {
-			return false;
+		$repoid = get_gedcom_value("REPO", 1, $gedrec);
+		if ($repoid && !canDisplayRecord($ged_id, find_other_record($repoid, $ged_id))) {
+			return $cache[$cache_key]=false;
 		}
 		break;
 	}
 
 	// Level 1 tags (except INDI and FAM) can be controlled by global tag settings
 	if (isset($global_facts[$type])) {
-		return $global_facts[$type]>=$pgv_USER_ACCESS_LEVEL;
+		return $cache[$cache_key]=($global_facts[$type]>=$pgv_USER_ACCESS_LEVEL);
 	}
 	
 	// No restriction found - must be public:
-	return true;
+	return $cache[$cache_key]=true;
 }
-}
-
-//-- allow users to overide functions in privacy file
-if (!function_exists("showLivingNameById")) {
-/**
-* check if the name for a GEDCOM XRef ID should be shown
-*
-* This function uses the settings in the global variables above to determine if the current user
-* has sufficient privileges to access the GEDCOM resource.  It first checks the
-* <var>$SHOW_LIVING_NAMES</var> variable to see if names are shown to the public.  If they are
-* then this function will always return true.  If the name is hidden then all relationships
-* connected with the individual are also hidden such that arriving at this record results in a dead
-* end.
-*
-* @author yalnifj
-* @param string $pid the GEDCOM XRef ID for the entity to check privacy settings for
-* @return boolean return true to show the person's name, return false to keep it private
-*/
-function showLivingNameById($pid) {
-	global $SHOW_LIVING_NAMES;
-
-	if ($_SESSION["wt_user"]==WT_USER_ID) {
-		// Normal operation
-		$pgv_USER_ACCESS_LEVEL = WT_USER_ACCESS_LEVEL;
-	} else {
-		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
-	}
-
-	return $SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL || displayDetailsById($pid, 'INDI');
-}
-}
-
 
 // Can we display a level 1 record?
 // Assume we have already called canDisplayRecord() to check the parent level 0 object
@@ -424,7 +428,7 @@ function privatize_gedcom($gedrec) {
 		$gid = $match[1];
 		$type = $match[2];
 		$data = $match[3];
-		if (displayDetailsById($gid, $type)) {
+		if (canDisplayRecord($gedcom_id, $gedrec)) {
 			// The record is not private, but the individual facts may be.
 			if (
 				!strpos($gedrec, "\n2 RESN") &&
@@ -474,7 +478,7 @@ function privatize_gedcom($gedrec) {
 				// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
 				if (preg_match_all('/\n1 FAM[CS] @('.WT_REGEX_XREF.')@/', $gedrec, $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
-						if ($SHOW_PRIVATE_RELATIONSHIPS || displayDetailsById($match[1], 'FAM')) {
+						if ($SHOW_PRIVATE_RELATIONSHIPS || canDisplayRecord($gedcom_id, find_family_record($match[1], $gedcom_id))) {
 							$newrec.=$match[0];
 						}
 					}
@@ -490,7 +494,7 @@ function privatize_gedcom($gedrec) {
 				// Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
 				if (preg_match_all('/\n1 (CHIL|HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $gedrec, $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
-						if ($SHOW_PRIVATE_RELATIONSHIPS || displayDetailsById($match[1], 'INDI')) {
+						if ($SHOW_PRIVATE_RELATIONSHIPS || canDisplayRecord($gedcom_id, find_person_record($match[1], $gedcom_id))) {
 							$newrec.=$match[0];
 						}
 					}

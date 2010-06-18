@@ -531,7 +531,7 @@ function filterMedia($media, $filter, $acceptExt) {
 	$links = $media["LINKS"];
 	if (count($links) != 0) {
 		foreach ($links as $id => $type) {
-			if (!displayDetailsById($id, $type)) {
+			if (!canDisplayRecord(WT_GED_ID, find_gedcom_record($id, WT_GED_ID))) {
 				return false;
 			}
 		}
