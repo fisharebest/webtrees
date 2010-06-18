@@ -2598,37 +2598,94 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			break;
 		case 'en': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 		default:
+			$cousin=min($up, $down);
 			$removed=abs($down-$up);
 			switch ($removed) {
 			case 0:
 				switch ($last) {
-				case 'son': return cousin_name($up, 'M');
-				case 'dau': return cousin_name($up, 'F');
-				case 'chi': return cousin_name($up, 'U');
+				case 'son': return cousin_name($cousin, 'M');
+				case 'dau': return cousin_name($cousin, 'F');
+				case 'chi': return cousin_name($cousin, 'U');
 				}
 			case 1:
-				switch ($last) {
-				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up, 'M'));
-				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up, 'F'));
-				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, once removed', cousin_name($up, 'U'));
+				if ($up>$down) {
+					switch ($last) {
+					case 'son': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s once removed ascending', cousin_name(1, 'M'));
+					case 'dau': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s once removed ascending', cousin_name(1, 'F'));
+					case 'chi': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s once removed ascending', cousin_name(1, 'U'));
+					}
+				} else {
+					switch ($last) {
+					case 'son': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s once removed descending', cousin_name(1, 'M'));
+					case 'dau': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s once removed descending', cousin_name(1, 'F'));
+					case 'chi': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s once removed descending', cousin_name(1, 'U'));
+					}
 				}
 			case 2:
-				switch ($last) {
-				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up, 'M'));
-				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up, 'F'));
-				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, twice removed', cousin_name($up, 'U'));
+				if ($up>$down) {
+					switch ($last) {
+					case 'son': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s twice removed ascending', cousin_name(2, 'M'));
+					case 'dau': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s twice removed ascending', cousin_name(2, 'F'));
+					case 'chi': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s twice removed ascending', cousin_name(2, 'U'));
+					}
+				} else {
+					switch ($last) {
+					case 'son': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s twice removed descending', cousin_name(2, 'M'));
+					case 'dau': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s twice removed descending', cousin_name(2, 'F'));
+					case 'chi': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s twice removed descending', cousin_name(2, 'U'));
+					}
 				}
 			case 3:
-				switch ($last) {
-				case 'son': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up, 'M'));
-				case 'dau': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up, 'F'));
-				case 'chi': /* I18N: %s="fifth cousin", etc. */ return i18n::translate('%s, thrice removed', cousin_name($up, 'U'));
+				if ($up>$down) {
+					switch ($last) {
+					case 'son': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s thrice removed ascending', cousin_name(3, 'M'));
+					case 'dau': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s thrice removed ascending', cousin_name(3, 'F'));
+					case 'chi': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s thrice removed ascending', cousin_name(3, 'U'));
+					}
+				} else {
+					switch ($last) {
+					case 'son': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s thrice removed descending', cousin_name(3, 'M'));
+					case 'dau': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s thrice removed descending', cousin_name(3, 'F'));
+					case 'chi': /* I18N: %s="fifth cousin", etc. */
+						return i18n::translate('%s thrice removed descending', cousin_name(3, 'U'));
+					}
 				}
 			default:
-				switch ($last) {
-				case 'son': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up, 'M'), $removed);
-				case 'dau': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up, 'F'), $removed);
-				case 'chi': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */ return i18n::translate('%1$s, %2$d times removed', cousin_name($up, 'U'), $removed);
+				if ($up>$down) {
+					switch ($last) {
+					case 'son': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+						return i18n::translate('%1$s %2$d times removed ascending', cousin_name($cousin, 'M'), $removed);
+					case 'dau': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+						return i18n::translate('%1$s %2$d times removed ascending', cousin_name($cousin, 'F'), $removed);
+					case 'chi': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+						return i18n::translate('%1$s %2$d times removed ascending', cousin_name($cousin, 'U'), $removed);
+					}
+				} else {
+					switch ($last) {
+					case 'son': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+						return i18n::translate('%1$s %2$d times removed descending', cousin_name($cousin, 'M'), $removed);
+					case 'dau': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+						return i18n::translate('%1$s %2$d times removed descending', cousin_name($cousin, 'F'), $removed);
+					case 'chi': /* I18N: %1$s="fifth cousin", etc., %2$d>=4 */
+						return i18n::translate('%1$s %2$d times removed descending', cousin_name($cousin, 'U'), $removed);
+					}
 				}
 			}
 		}
