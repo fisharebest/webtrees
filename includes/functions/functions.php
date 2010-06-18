@@ -498,27 +498,14 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 			$pos2 = strlen($gedrec);
 		}
 		if (empty($ignore) || strpos($ignore, $fact)===false) {
-			if (!$ApplyPriv || (showFact($fact, $id))) {
+			$subrec = substr($gedrec, $pos1, $pos2-$pos1);
+			if (!$ApplyPriv || canDisplayFact($id, $ged_id, $subrec)) {
 				if (isset($prev_tags[$fact])) {
 					$prev_tags[$fact]++;
 				} else {
 					$prev_tags[$fact] = 1;
 				}
-				$subrec = substr($gedrec, $pos1, $pos2-$pos1);
-				if (!$ApplyPriv || !$hasResn || !FactViewRestricted($id, $subrec)) {
-					if ($fact=="EVEN") {
-						$tt = preg_match("/2 TYPE (.*)/", $subrec, $tmatch);
-						if ($tt>0) {
-							$type = trim($tmatch[1]);
-							if (!$ApplyPriv || (showFact($type, $id))) {
-								$repeats[] = trim($subrec)."\n";
-							}
-						} else
-							$repeats[] = trim($subrec)."\n";
-					} else {
-						$repeats[] = trim($subrec)."\n";
-					}
-				}
+				$repeats[] = trim($subrec)."\n";
 			}
 		}
 	}
@@ -540,27 +527,15 @@ function get_all_subrecords($gedrec, $ignore="", $families=true, $ApplyPriv=true
 			for ($i=0; $i<$ct; $i++) {
 				$fact = trim($match[$i][1]);
 				if (empty($ignore) || strpos($ignore, $fact)===false) {
-					if (!$ApplyPriv || (showFact($fact, $id))) {
+					$subrec = get_sub_record(1, "1 $fact", $famrec, $prev_tags[$fact]);
+					$subrec .= "\n2 _WTS @$spid@\n2 _WTFS @$famid@\n";
+					if (!$ApplyPriv || canDisplayFact($id, $ged_id, $subrec)) {
 						if (isset($prev_tags[$fact])) {
 							$prev_tags[$fact]++;
 						} else {
 							$prev_tags[$fact] = 1;
 						}
-						$subrec = get_sub_record(1, "1 $fact", $famrec, $prev_tags[$fact]);
-						$subrec .= "\n2 _WTS @$spid@\n2 _WTFS @$famid@\n";
-						if ($fact=="EVEN") {
-							$ct = preg_match("/2 TYPE (.*)/", $subrec, $tmatch);
-							if ($ct>0) {
-								$type = trim($tmatch[1]);
-								if (!$ApplyPriv or (showFact($type, $id))) {
-									$repeats[] = trim($subrec)."\n";
-								}
-							} else {
-								$repeats[] = trim($subrec)."\n";
-							}
-						} else {
-							$repeats[] = trim($subrec)."\n";
-						}
+						$repeats[] = trim($subrec)."\n";
 					}
 				}
 			}
@@ -984,9 +959,6 @@ function find_visible_families_in_record($indirec, $tag) {
 function find_highlighted_object($pid, $ged_id, $indirec) {
 	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_EXTERNAL;
 
-	if (!showFact("OBJE", $pid)) {
-		return false;
-	}
 	$media = array();
 	$objectA = array();
 	$objectB = array();
@@ -1019,7 +991,7 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 		->fetchAll(PDO::FETCH_NUM);
 
 	foreach ($media as $i=>$row) {
-		if (displayDetailsById($row[0], 'OBJE') && !FactViewRestricted($row[0], $row[2])) {
+		if (displayDetailsById($row[0], 'OBJE') && canDisplayFact($row[0], $row[1], $row[2])) {
 			$level=0;
 			$ct = preg_match("/(\d+) OBJE/", $row[3], $match);
 			if ($ct>0) {

@@ -1912,8 +1912,8 @@ function GedcomSHandler($attrs) {
 				} else {
 					$temp = explode(" ", trim($tgedrec));
 					$level = $temp[0] + 1;
-					if (showFact($tag, $id)) {
-						$newgedrec = get_sub_record($level, "$level $tag", $tgedrec);
+					$newgedrec = get_sub_record($level, "$level $tag", $tgedrec);
+					if ($level!=1) {
 						$tgedrec = $newgedrec;
 					} else {
 						$newgedrec = "";
@@ -2231,11 +2231,7 @@ function GedcomValueSHandler($attrs) {
 	$tag = $attrs["tag"];
 	if (!empty($tag)) {
 		if ($tag=="@desc") {
-			if (showFact($fact, $id)) {
-				$value = $desc;
-			} else {
-				$value = "";
-			}
+			$value = $desc;
 			$value = trim($value);
 			$currentElement->addText($value);
 		}
@@ -2257,28 +2253,18 @@ function GedcomValueSHandler($attrs) {
 				$truncate=$attrs["truncate"];
 			}
 			$tags = explode(":", $tag);
-			//-- check all tags for privacy
-			foreach($tags as $subtag) {
-				if (!empty($subtag)) {
-					if (!showFact($subtag, $id)) {
-						return;
-					}
+			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
+			if ($useBreak == "1") {
+				// Insert <br /> when multiple dates exist.
+				// This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
+				$value = str_replace('(', '<br />(', $value);
+				$value = str_replace('<span dir="ltr"><br />', '<br /><span dir="ltr">', $value);
+				$value = str_replace('<span dir="rtl"><br />', '<br /><span dir="rtl">', $value);
+				if (substr($value, 0, 6) == '<br />') {
+					$value = substr($value, 6);
 				}
 			}
-			if (showFact($fact, $id)) {
-				$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
-				if ($useBreak == "1") {
-					// Insert <br /> when multiple dates exist.
-					// This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
-					$value = str_replace('(', '<br />(', $value);
-					$value = str_replace('<span dir="ltr"><br />', '<br /><span dir="ltr">', $value);
-					$value = str_replace('<span dir="rtl"><br />', '<br /><span dir="rtl">', $value);
-					if (substr($value, 0, 6) == '<br />') {
-						$value = substr($value, 6);
-					}
-				}
-				$currentElement->addText($value);
-			}
+			$currentElement->addText($value);
 		}
 	}
 }
@@ -2313,11 +2299,7 @@ function RepeatTagSHandler($attrs) {
 	}
 	if (!empty($tag)) {
 		if ($tag=="@desc") {
-			if (showFact($fact, $id)) {
-				$value = $desc;
-			} else {
-				$value = "";
-			}
+			$value = $desc;
 			$value = trim($value);
 			$currentElement->addText($value);
 		} else {
@@ -2335,9 +2317,6 @@ function RepeatTagSHandler($attrs) {
 			while ($i < $count) {
 				$t = $tags[$i];
 				if (!empty($t)) {
-					if (($level==1) && (strpos("CHIL,FAMS,FAMC", $t)===false) and (!showFact($t, $id))) {
-						return;
-					}
 					if ($i < ($count-1)) {
 						$subrec = get_sub_record($level, "$level $t", $subrec);
 						if (empty($subrec)) {
@@ -2353,15 +2332,11 @@ function RepeatTagSHandler($attrs) {
 				$i++;
 			}
 			$level--;
-			if ( (($level > 0) or (strpos("CHIL,FAMS,FAMC", $t) !== false)) or ((showFact($t, $id))) ) {
+			if ($level > 0) {
 				$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 				$i = 0;
 				while ($i < $count) {
-					// Check for privacy
-					if (showFact($t, $id)) {
-						$rec = get_sub_record($level, "$level $t", $subrec, $i + 1);
-						$repeats[] = trim($rec);
-					}
+					$repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1);;
 					$i++;
 				}
 			}
@@ -2972,25 +2947,23 @@ function HighlightedImageSHandler($attrs) {
 	if (!empty($attrs["width"])) $width = (int)$attrs["width"];
 	if (!empty($attrs["height"])) $height = (int)$attrs["height"];
 
-	if (showFact("OBJE", $id)) {
-		$media = find_highlighted_object($id, WT_GED_ID, $gedrec);
-		if (!empty($media["file"])) {
-			if (preg_match("/(jpg)|(jpeg)|(png)$/i", $media["file"])) {
-				if (file_exists($media["file"])) {
-					$size = findImageSize($media["file"]);
-					if (($width>0) and ($height==0)) {
-						$perc = $width / $size[0];
-						$height= round($size[1]*$perc);
-					} elseif (($height>0) and ($width==0)) {
-						$perc = $height / $size[1];
-						$width= round($size[0]*$perc);
-					} else {
-						$width = $size[0];
-						$height = $size[1];
-					}
-					$image = $ReportRoot->createImage($media["file"], $left, $top, $width, $height, $align, $ln);
-					$wt_report->addElement($image);
+	$media = find_highlighted_object($id, WT_GED_ID, $gedrec);
+	if (!empty($media["file"])) {
+		if (preg_match("/(jpg)|(jpeg)|(png)$/i", $media["file"])) {
+			if (file_exists($media["file"])) {
+				$size = findImageSize($media["file"]);
+				if (($width>0) and ($height==0)) {
+					$perc = $width / $size[0];
+					$height= round($size[1]*$perc);
+				} elseif (($height>0) and ($width==0)) {
+					$perc = $height / $size[1];
+					$width= round($size[0]*$perc);
+				} else {
+					$width = $size[0];
+					$height = $size[1];
 				}
+				$image = $ReportRoot->createImage($media["file"], $left, $top, $width, $height, $align, $ln);
+				$wt_report->addElement($image);
 			}
 		}
 	}

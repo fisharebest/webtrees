@@ -175,7 +175,7 @@ if ($build == "yes") {
 			// Display when Media objects aren't restricted by global privacy
 			$disp &= displayDetailsById($media["XREF"], "OBJE");
 			// Display when this Media object isn't restricted
-			$disp &= !FactViewRestricted($media["XREF"], $media["GEDCOM"]);
+			$disp &= canDisplayFact($media["XREF"], $media["GEDFILE"], $media["GEDCOM"]);
 			/** -- already included in the displayDetailsById() function
 		if ($disp) {
 				$links = $media["LINKS"];

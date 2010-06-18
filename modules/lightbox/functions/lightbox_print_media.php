@@ -62,7 +62,6 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	global $GEDCOM_ID_PREFIX;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	if (!showFact("OBJE", $pid)) return false;
 	$gedrec = find_gedcom_record($pid, $ged_id, WT_USER_CAN_EDIT);
 	$ids = array($pid);
 

@@ -72,7 +72,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				// Extract hebrew dates only
 				if ($fact['date']->date1->CALENDAR_ESCAPE()=='@#DHEBREW@' && $fact['date']->MinJD()==$fact['date']->MaxJD()) {
 					// Apply privacy
-					if (displayDetailsById($fact['id'], 'INDI') && showFact($fact['fact'], $fact['id']) && !FactViewRestricted($fact['id'], $fact['factrec'])) {
+					if (displayDetailsById($fact['id'], 'INDI') && canDisplayFact($fact['id'], WT_GED_ID, $fact['factrec'])) {
 						$yahrzeits[]=$fact;
 					}
 				}

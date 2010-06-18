@@ -308,44 +308,27 @@ function print_td_person($n) {
 		$addname=$indi->getAddName();
 
 		if ($showthumbs && $MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
-			if (showFact("OBJE", $pid)) {
-				$object = find_highlighted_object($pid, WT_GED_ID, $indi->gedrec);
-				if (!empty($object)) {
-					$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
-					$size = findImageSize($whichFile);
-					$class = "pedigree_image_portrait";
-					if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
-					if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-					// NOTE: IMG ID
-					$imgsize = findImageSize($object["file"]);
-					$imgwidth = $imgsize[0]+50;
-					$imgheight = $imgsize[1]+150;
-					if (WT_USE_LIGHTBOX) {
-						$text .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general]\" rev=\"" . $object['mid'] . "::" . WT_GEDCOM . "::" . PrintReady(htmlspecialchars($name,ENT_QUOTES,'UTF-8')) . "\">" . "\n";
-					} else {
-						$text .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."',$imgwidth, $imgheight);\">";
-					}
-					$birth_date=$indi->getBirthDate();
-					$death_date=$indi->getDeathDate();
-					$text .= "<img id=\"box-$pid\" src=\"".$whichFile."\"vspace=\"0\" hspace=\"0\" class=\"$class\" alt =\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))." - ".strip_tags(html_entity_decode($birth_date->Display(false)." - ".$death_date->Display(false),ENT_QUOTES,'UTF-8'))."\"";
-					if ($imgsize) $text .= " /></a>\n";
-					else $text .= " />\n";
-				} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) {
-					$class = "pedigree_image_portrait";
-					if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-					$sex = $indi->getSex();
-					$text = "<img src=\"";
-					if ($sex == 'F') {
-						$text .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_F"]["other"];
-					}
-					else if ($sex == 'M') {
-						$text .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_M"]["other"];
-					}
-					else {
-						$text .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_U"]["other"];
-					} 
-					$text .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
+			$object = find_highlighted_object($pid, WT_GED_ID, $indi->gedrec);
+			if (!empty($object)) {
+				$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
+				$size = findImageSize($whichFile);
+				$class = "pedigree_image_portrait";
+				if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
+				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
+				// NOTE: IMG ID
+				$imgsize = findImageSize($object["file"]);
+				$imgwidth = $imgsize[0]+50;
+				$imgheight = $imgsize[1]+150;
+				if (WT_USE_LIGHTBOX) {
+					$text .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general]\" rev=\"" . $object['mid'] . "::" . WT_GEDCOM . "::" . PrintReady(htmlspecialchars($name,ENT_QUOTES,'UTF-8')) . "\">" . "\n";
+				} else {
+					$text .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."',$imgwidth, $imgheight);\">";
 				}
+				$birth_date=$indi->getBirthDate();
+				$death_date=$indi->getDeathDate();
+				$text .= "<img id=\"box-$pid\" src=\"".$whichFile."\"vspace=\"0\" hspace=\"0\" class=\"$class\" alt =\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))." - ".strip_tags(html_entity_decode($birth_date->Display(false)." - ".$death_date->Display(false),ENT_QUOTES,'UTF-8'))."\"";
+				if ($imgsize) $text .= " /></a>\n";
+				else $text .= " />\n";
 			} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) {
 				$class = "pedigree_image_portrait";
 				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";

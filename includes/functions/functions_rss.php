@@ -437,7 +437,7 @@ function getRandomMedia() {
 			$links = $medialist[$value]["LINKS"];
 			$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
 			$disp &= displayDetailsById($value["XREF"], "OBJE");
-			$disp &= !FactViewRestricted($value["XREF"], $value["GEDCOM"]);
+			$disp &= canDisplayFact($value["XREF"], $value["GEDFILE"], $value["GEDCOM"]);
 
 			$isExternal = isFileExternal($medialist[$value]["FILE"]);
 

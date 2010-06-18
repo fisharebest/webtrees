@@ -271,15 +271,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Number of children
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap\">";
-			if (showFact('NCHI', $person->getXref(), 'INDI')) {
-				if($SEARCH_SPIDER) {
-					echo $person->getNumberOfChildren();
-				} else {
-					echo "<a href=\"", encode_url($person->getLinkUrl()), "\" class=\"list_item\" name=\"", $person->getNumberOfChildren(), "\">", $person->getNumberOfChildren(), "</a>";
-				}
-			} else {
-				echo '&nbsp;';
-			}
+			echo "<a href=\"", encode_url($person->getLinkUrl()), "\" class=\"list_item\" name=\"", $person->getNumberOfChildren(), "\">", $person->getNumberOfChildren(), "</a>";
 			echo "</td>";
 		}
 		//-- Death date
@@ -697,15 +689,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		//-- Number of children
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap\">";
-			if (showFact('NCHI', $family->getXref(), 'FAM')) {
-				if($SEARCH_SPIDER) {
-					echo $family->getNumberOfChildren();
-				} else {
-					echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\" name=\"", $family->getNumberOfChildren(), "\">", $family->getNumberOfChildren(), "</a>";
-				}
-			} else {
-				echo '&nbsp;';
-			}
+			echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\" name=\"", $family->getNumberOfChildren(), "\">", $family->getNumberOfChildren(), "</a>";
 			echo "</td>";
 		}
 		//-- Last change
@@ -1597,7 +1581,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 
 		// Privacy
-		if (!$record->canDisplayDetails() || !showFact($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
+		if (!$record->canDisplayDetails() || !canDisplayFact($record->getXref(), $record->getGedId(), $value['factrec'])) {
 			continue;
 		}
 		//-- Counter
@@ -1765,7 +1749,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		}
 
 		// Privacy
-		if (!$record->canDisplayDetails() || !showFact($value['fact'], $value['id']) || FactViewRestricted($value['id'], $value['factrec'])) {
+		if (!$record->canDisplayDetails() || !canDisplayFact($record->getXref(), $record->getGedId(), $value['factrec'])) {
 			continue;
 		}
 		$output ++;

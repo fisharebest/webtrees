@@ -84,7 +84,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// Else Media files are present in "media" directory
 	} else {
 		//If media is linked to a 'private' person
-		if (!displayDetailsById($rowm['m_media'], 'OBJE') || FactViewRestricted($rowm['m_media'], $rowm['m_gedrec'])) {
+		if (!displayDetailsById($rowm['m_media'], 'OBJE') || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
 			return false;
 		} else {
 			// Media is NOT linked to private person
@@ -126,7 +126,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	$linenum = 0;
 
 	// If Fact details can be shown --------------------------------------------------------------------------------------------
-	if (showFact("OBJE", $pid)) {
+	if (canDisplayFact($pid, $rowm['m_file'], $rowm['mm_gedrec'])) {
 
 		//  Get the title of the media
 		$media=Media::getInstance($rowm["m_media"]);
@@ -270,7 +270,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 
 		// Check if allowed to View media
-		if ($isExternal || media_exists($thumbnail) && !FactViewRestricted($rowm['m_media'], $rowm['m_gedrec'])) {
+		if ($isExternal || media_exists($thumbnail) && canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
 			$mainFileExists = false;
 
 			// Get Media info

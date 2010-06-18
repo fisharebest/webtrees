@@ -67,7 +67,6 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	<?php
 	print "\n";
 
-	if (!showFact("OBJE", $pid)) return false;
 	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 
 	//related=true means show related items
@@ -175,7 +174,6 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 				$rows['normal'] = $rowm;
 				if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
 				foreach($rows as $rtype => $rowm) {
-					// if  (FactViewRestricted($rowm['m_media'], $rowm['m_gedrec']) == "true")
 					$res = media_reorder_row($rtype, $rowm, $pid);
 					$media_found = $media_found || $res;
 					$foundObjs[$rowm['m_media']] = true;

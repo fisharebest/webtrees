@@ -124,11 +124,13 @@ class Event {
 	 */
 	function canShow() {
 		if (is_null($this->canShow)) {
-			if (empty($this->gedcomRecord)) $this->canShow = false;
-			else if (!is_null($this->parentObject)) {
-				$this->canShow = showFact($this->tag, $this->parentObject->getXref()) && !FactViewRestricted($this->parentObject->getXref(), $this->gedcomRecord);
+			if (empty($this->gedcomRecord)) {
+				$this->canShow = false;
+			} elseif (!is_null($this->parentObject)) {
+				$this->canShow = canDisplayFact($this->parentObject->getXref(), $this->parentObject->getGedId(), $this->gedcomRecord);
+			} else {
+				$this->canShow = true;
 			}
-			else $this->canShow = true;
 		}
 		return $this->canShow;
 	}

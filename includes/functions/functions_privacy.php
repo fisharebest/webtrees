@@ -368,50 +368,43 @@ function showLivingNameById($pid) {
 }
 }
 
-//-- allow users to overide functions in privacy file
-if (!function_exists("showFact")) {
-/**
-* check if the given GEDCOM fact for the given individual, family, or source XRef ID should be shown
-*
-* This function uses the settings in the global variables above to determine if the current user
-* has sufficient privileges to access the GEDCOM resource.  It first checks the $global_facts array
-* for admin override settings for the fact.
-*
-* @author yalnifj
-* @param string $fact the GEDCOM fact tag to check the privacy settings
-* @param string $pid the GEDCOM XRef ID for the entity to check privacy settings
-* @return boolean return true to show the fact, return false to keep it private
-*/
-function showFact($fact, $pid, $type='INDI') {
-	global $global_facts, $person_facts;
 
-	if ($_SESSION["wt_user"]==WT_USER_ID) {
-		// Normal operation
-		$pgv_USER_ACCESS_LEVEL	= WT_USER_ACCESS_LEVEL;
-	} else {
-		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_USER_ACCESS_LEVEL	= $_SESSION["pgv_USER_ACCESS_LEVEL"];
+// Can we display a level 1 record?
+// Assume we have already called canDisplayRecord() to check the parent level 0 object
+function canDisplayFact($xref, $ged_id, $gedrec) {
+	// TODO - use the privacy settings for $ged_id, not the default gedcom.
+	global $HIDE_LIVE_PEOPLE, $person_facts;
+
+	// This setting would better be called "$ENABLE_PRIVACY"
+	if (!$HIDE_LIVE_PEOPLE) {
+		return true;
+	}
+	// We should always be able to see details of our own record
+	if ($xref==WT_USER_GEDCOM_ID && $ged_id=WT_GED_ID) {
+		return true;
 	}
 
-	//-- check the person facts array
-	if (isset($person_facts[$pid][$fact])) {
-		return $pgv_USER_ACCESS_LEVEL>=$person_facts[$pid][$fact];
+	// Does this record have a RESN?
+	if (strpos($gedrec, "\n2 RESN none")) {
+		return true;
+	}
+	if (strpos($gedrec, "\n2 RESN privacy")) {
+		return WT_PRIV_USER>=WT_USER_ACCESS_LEVEL;
+	}
+	if (strpos($gedrec, "\n2 RESN confidential")) {
+		return WT_PRIV_NONE>=WT_USER_ACCESS_LEVEL;
 	}
 
-	//-- check the global facts array
-	if (isset($global_facts[$fact])) {
-		return $pgv_USER_ACCESS_LEVEL>=$global_facts[$fact];
+	// Does this record have a default RESN?
+	if (preg_match('/^1 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+		$tag=$match[1];
+		if (isset($person_facts[$xref][$tag])) {
+			return $person_facts[$xref][$tag]>=WT_USER_ACCESS_LEVEL;
+		}
 	}
 
-	if ($fact!="NAME") {
-		return displayDetailsById($pid, $type);
-	} else {
-		if (!displayDetailsById($pid, $type))
-			return showLivingNameById($pid);
-		else
-			return true;
-	}
-}
+	// No restrictions - it must be public
+	return true;
 }
 
 /**
@@ -424,7 +417,8 @@ function showFact($fact, $pid, $type='INDI') {
 */
 function privatize_gedcom($gedrec) {
 	global $SHOW_PRIVATE_RELATIONSHIPS, $pgv_private_records;
-	global $global_facts, $person_facts;
+	global $global_facts, $person_facts, $GEDCOM;
+	$gedcom_id=get_id_from_gedcom($GEDCOM);
 
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')(.*)/', $gedrec, $match)) {
 		$gid = $match[1];
@@ -452,7 +446,7 @@ function privatize_gedcom($gedrec) {
 					} else {
 						$tag=$match[1];
 					}
-					if (!FactViewRestricted($gid, $match[0]) && showFact($tag, $gid)) {
+					if (canDisplayFact($gid, $gedcom_id, $match[0])) {
 						$newrec.=$match[0];
 					} else {
 						$private_record.=$match[0];
@@ -559,53 +553,3 @@ function FactEditRestricted($pid, $factrec) {
 	}
 	return false;
 }
-
-/**
-* Check fact record for viewing restrictions
-*
-* Checks if the user is allowed to view fact information,
-* based on the existence of the RESN tag in the fact record.
-*
-* @return int Allowed or not allowed
-*/
-function FactViewRestricted($pid, $factrec) {
-	if ($_SESSION['wt_user']==WT_USER_ID) {
-		// Normal operation
-		$pgv_GED_ID				= WT_GED_ID;
-		$pgv_USER_GEDCOM_ADMIN	= WT_USER_GEDCOM_ADMIN;
-		$pgv_USER_GEDCOM_ID		= WT_USER_GEDCOM_ID;
-	} else {
-		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_GED_ID           =$_SESSION['pgv_GED_ID'];
-		$pgv_USER_GEDCOM_ADMIN=$_SESSION['pgv_USER_GEDCOM_ADMIN'];
-		$pgv_USER_GEDCOM_ID   =$_SESSION['pgv_USER_GEDCOM_ID'];
-	}
-
-	if ($pgv_USER_GEDCOM_ADMIN) {
-		return false;
-	}
-
-	if (preg_match('/2 RESN (.*)/', $factrec, $match)) {
-		$match[1] = strtolower(trim($match[1]));
-		if ($match[1] == 'confidential') {
-			return true;
-		}
-		if ($match[1] == 'privacy') {
-			$myindi=$pgv_USER_GEDCOM_ID;
-			if ($myindi == $pid) {
-				return false;
-			}
-			if (gedcom_record_type($pid, $pgv_GED_ID)=='FAM') {
-				$famrec = find_family_record($pid, $pgv_GED_ID);
-				$parents = find_parents_in_record($famrec);
-				if ($myindi == $parents['WIFE'] || $myindi == $parents['HUSB']) {
-					return false;
-				}
-			}
-			return true;
-		}
-	}
-	return false;
-}
-
-?>

@@ -578,7 +578,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 
 		// add thumbnail image
 		$image = "";
-		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES && showFact("OBJE", $pid)) {
+		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
 			if (!empty($object["thumb"])) {
 				$size = findImageSize($object["thumb"]);

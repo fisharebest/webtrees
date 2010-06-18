@@ -378,15 +378,15 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							print " width=\"3\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."\" alt=\"\" />";
 							print "</td>";
 						}
-						print "<td class=\"details1\" valign=\"middle\" align=\"center\">";
- 						$divrec = "";
-						if (showFact("MARR", $famid)) {
+						print "<td class=\"details1\" valign=\"middle\" align=\"center\">!!!";
+						$famrec = find_family_record($famid, $ged_id);
+ 						$marrec = get_sub_record(1, "1 MARR", $famrec);
+ 						$divrec = get_sub_record(1, "1 DIV",  $famrec);
+						if (canDisplayFact($famid, $ged_id, $marrec)) {
 							// marriage date
-							$famrec = find_family_record($famid, $ged_id);
-							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", get_sub_record(1, "1 MARR", $famrec), $match);
+							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $marrec, $match);
 							if ($ct>0) print "<span class=\"date\">".trim($match[1])."</span>";
 							// divorce date
-							$divrec = get_sub_record(1, "1 DIV", $famrec);
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $divrec, $match);
 							if ($ct>0) print "-<span class=\"date\">".trim($match[1])."</span>";
 						}

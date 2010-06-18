@@ -82,6 +82,10 @@ function print_fact(&$eventObj, $noedit=false) {
 	global $n_chil, $n_gchi, $n_ggch;
 	global $SEARCH_SPIDER;
 
+	if (!$eventObj->canShow()) {
+		return false;
+	}
+	
 	$fact = $eventObj->getTag();
 	$rawEvent = $eventObj->getDetail();
 	$event = htmlspecialchars($rawEvent, ENT_COMPAT, 'UTF-8');
@@ -137,7 +141,6 @@ function print_fact(&$eventObj, $noedit=false) {
 	// -- handle generic facts
 	if ($fact!="EVEN" && $fact!="FACT" && $fact!="OBJE") {
 		$factref = $fact;
-		if (!$eventObj->canShow()) return false;
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
 		echo "\n\t\t<tr class=\"", $rowID, "\">";
@@ -180,12 +183,10 @@ function print_fact(&$eventObj, $noedit=false) {
 		echo "</td>";
 	} else {
 		if ($fact == "OBJE") return false;
-		if (!showFact("EVEN", $pid)) return false;
 		// -- find generic type for each fact
 		$ct = preg_match("/2 TYPE (.*)/", $factrec, $match);
 		if ($ct>0) $factref = trim($match[1]);
 		else $factref = $fact;
-		if (!showFact($factref, $pid)) return false;
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
 		echo "\n\t\t<tr class=\"", $rowID, "\">";
@@ -226,13 +227,11 @@ function print_fact(&$eventObj, $noedit=false) {
 	$align = "";
 	echo "<td class=\"optionbox $styleadd wrap\" $align>";
 	//echo "<td class=\"facts_value facts_value$styleadd\">";
-	if ((showFact($factref, $pid)) && (FactViewRestricted($pid, $factrec))) {
+	if ((canDisplayFact($pid, WT_GED_ID, $factrec))) {
 		if (isset($resn_value)) {
 			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
 			echo help_link('RESN');
 		}
-	}
-	if ((showFact($factref, $pid)) && (!FactViewRestricted($pid, $factrec))) {
 		// -- first print TYPE for some facts
 		if ($fact!="EVEN" && $fact!="FACT") {
 			if (preg_match("/2 TYPE (.*)/", $factrec, $match)) {
@@ -592,117 +591,115 @@ function print_media_links($factrec, $level, $pid='') {
 			$imgsize = findImageSize($mainMedia);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
-			if (showFact("OBJE", $pid)) {
-				if ($objectNum > 0) echo "<br clear=\"all\" />";
-				echo "<table><tr><td>";
-				if ($isExternal || media_exists($thumbnail)) {
+			if ($objectNum > 0) echo "<br clear=\"all\" />";
+			echo "<table><tr><td>";
+			if ($isExternal || media_exists($thumbnail)) {
 
-					//LBox --------  change for Lightbox Album --------------------------------------------
-					if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
-						$name = trim($row["m_titl"]);
-						echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
-					} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
-						require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
-						$name = trim($row["m_titl"]);
-						echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
-					// extra for Streetview ----------------------------------------
-					} else if (WT_USE_LIGHTBOX && strpos($row["m_file"], 'http://maps.google.')===0) {
-						echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
-					// --------------------------------------------------------------------------------------
-					} else if ($USE_MEDIA_VIEWER) {
-						echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
-					} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
-						echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
-					// extra for Streetview ----------------------------------------
-					} else if (strpos($row["m_file"], 'http://maps.google.')===0) {
-						echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
-					} else {
-						echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
-					}
-
-					echo "<img src=\"", $thumbnail, "\" border=\"0\" align=\"" , $TEXT_DIRECTION== "rtl"?"right": "left" , "\" class=\"thumbnail\"";
-					if (strpos($mainMedia, 'http://maps.google.')===0) {
-						// Do not print Streetview title here (PF&D tab)
-					} else {
-						if ($isExternal) echo " width=\"", $THUMBNAIL_WIDTH, "\"";
-						echo " alt=\"" . PrintReady($mediaTitle) . "\"";
-					}
-					//LBox --------  change for Lightbox Album --------------------------------------------
-					if ($row["m_titl"]) {
-						echo " title=\"" . $row["m_titl"] . "\"";
-					} else {
-						echo " title=\"" . basename($row["m_file"]) . "\"";
-					}
-					// ---------------------------------------------------------------------------------------------
-					echo "/>";
-					echo "</a>";
-				}
-				echo "</td><td>";
-				if(empty($SEARCH_SPIDER)) {
+				//LBox --------  change for Lightbox Album --------------------------------------------
+				if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
+					$name = trim($row["m_titl"]);
+					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
+				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
+					require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+					$name = trim($row["m_titl"]);
+					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
+				// extra for Streetview ----------------------------------------
+				} else if (WT_USE_LIGHTBOX && strpos($row["m_file"], 'http://maps.google.')===0) {
+					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
+				// --------------------------------------------------------------------------------------
+				} else if ($USE_MEDIA_VIEWER) {
+					echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
+				} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
+					echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
+				// extra for Streetview ----------------------------------------
+				} else if (strpos($row["m_file"], 'http://maps.google.')===0) {
+					echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
+				} else {
 					echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
 				}
-				if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<i>" , getLRM() ,  PrintReady($mediaTitle), "</i>";
-				else echo "<i>", PrintReady($mediaTitle), "</i><br />";
-				if(empty($SEARCH_SPIDER)) {
+
+				echo "<img src=\"", $thumbnail, "\" border=\"0\" align=\"" , $TEXT_DIRECTION== "rtl"?"right": "left" , "\" class=\"thumbnail\"";
+				if (strpos($mainMedia, 'http://maps.google.')===0) {
+					// Do not print Streetview title here (PF&D tab)
+				} else {
+					if ($isExternal) echo " width=\"", $THUMBNAIL_WIDTH, "\"";
+					echo " alt=\"" . PrintReady($mediaTitle) . "\"";
+				}
+				//LBox --------  change for Lightbox Album --------------------------------------------
+				if ($row["m_titl"]) {
+					echo " title=\"" . $row["m_titl"] . "\"";
+				} else {
+					echo " title=\"" . basename($row["m_file"]) . "\"";
+				}
+				// ---------------------------------------------------------------------------------------------
+				echo "/>";
+				echo "</a>";
+			}
+			echo "</td><td>";
+			if(empty($SEARCH_SPIDER)) {
+				echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
+			}
+			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<i>" , getLRM() ,  PrintReady($mediaTitle), "</i>";
+			else echo "<i>", PrintReady($mediaTitle), "</i><br />";
+			if(empty($SEARCH_SPIDER)) {
+				echo "</a>";
+			}
+			// NOTE: echo the notes of the media
+			echo print_fact_notes($row["m_gedrec"], 1);
+			// NOTE: echo the format of the media
+			if (!empty($row["m_ext"])) {
+				echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $row["m_ext"], "</span>";
+				if($imgsize[2]!==false) {
+					echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">" , $imgsize[0] , ($TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ") , $imgsize[1] , "</span>";
+				}
+			}
+			if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $row["m_gedrec"]), $match)) {
+				$media_date=new GedcomDate($match[1]);
+				$md = $media_date->Display(true);
+				echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
+			}
+			$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row["m_gedrec"], $match);
+			if ($ttype>0) {
+				$mediaType = $match[1];
+				$varName = strtolower($mediaType);
+				if (array_key_exists($varName, $MEDIA_TYPES)) {
+					$mediaType = $MEDIA_TYPES[$varName];
+				} else {
+					$mediaType = i18n::translate('Other');
+				}
+				echo "\n\t\t\t<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
+			}
+			//echo "</span>";
+			echo "<br />\n";
+			//-- print spouse name for marriage events
+			$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
+			if ($ct>0) {
+				$spouse=Person::getInstance($match[1]);
+				if ($spouse) {
+					echo "<a href=\"", encode_url($spouse->getLinkUrl()), "\">";
+					if ($spouse->canDisplayName()) {
+						echo PrintReady($spouse->getFullName());
+					} else {
+						echo i18n::translate('Private');
+					}
 					echo "</a>";
 				}
-				// NOTE: echo the notes of the media
-				echo print_fact_notes($row["m_gedrec"], 1);
-				// NOTE: echo the format of the media
-				if (!empty($row["m_ext"])) {
-					echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $row["m_ext"], "</span>";
-					if($imgsize[2]!==false) {
-						echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">" , $imgsize[0] , ($TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ") , $imgsize[1] , "</span>";
-					}
-				}
-				if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $row["m_gedrec"]), $match)) {
-					$media_date=new GedcomDate($match[1]);
-					$md = $media_date->Display(true);
-					echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
-				}
-				$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row["m_gedrec"], $match);
-				if ($ttype>0) {
-					$mediaType = $match[1];
-					$varName = strtolower($mediaType);
-					if (array_key_exists($varName, $MEDIA_TYPES)) {
-						$mediaType = $MEDIA_TYPES[$varName];
-					} else {
-						$mediaType = i18n::translate('Other');
-					}
-					echo "\n\t\t\t<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
-				}
-				//echo "</span>";
-				echo "<br />\n";
-				//-- print spouse name for marriage events
-				$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
-				if ($ct>0) {
-					$spouse=Person::getInstance($match[1]);
-					if ($spouse) {
-						echo "<a href=\"", encode_url($spouse->getLinkUrl()), "\">";
-						if ($spouse->canDisplayName()) {
-							echo PrintReady($spouse->getFullName());
-						} else {
-							echo i18n::translate('Private');
-						}
-						echo "</a>";
-					}
-					if ($view!="preview" && $spouse && empty($SEARCH_SPIDER)) echo " - ";
-					if ($view != "preview") {
-						$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
-						if ($ct>0) {
-							$famid = trim($match[1]);
-							if(empty($SEARCH_SPIDER)) {
-								echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
-								echo "</a>\n";
-							}
+				if ($view!="preview" && $spouse && empty($SEARCH_SPIDER)) echo " - ";
+				if ($view != "preview") {
+					$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
+					if ($ct>0) {
+						$famid = trim($match[1]);
+						if(empty($SEARCH_SPIDER)) {
+							echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
+							echo "</a>\n";
 						}
 					}
 				}
-				echo "<br />\n";
-				print_fact_notes($row["m_gedrec"], $nlevel);
-				print_fact_sources($row["m_gedrec"], $nlevel);
-				echo "</td></tr></table>\n";
 			}
+			echo "<br />\n";
+			print_fact_notes($row["m_gedrec"], $nlevel);
+			print_fact_sources($row["m_gedrec"], $nlevel);
+			echo "</td></tr></table>\n";
 		}
 		$objectNum ++;
 	}
@@ -837,6 +834,10 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 	global $view, $RESN_CODES;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
 
+	if (!canDisplayFact($pid, WT_GED_ID, $factrec)) {
+		return;
+	}
+
 	$nlevel = $level+1;
 	$styleadd="";
 	if (strpos($factrec, "WT_NEW")!==false) $styleadd="change_new";
@@ -850,7 +851,6 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 		$spos2 = strpos($factrec, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($factrec);
 		$srec = substr($factrec, $spos1, $spos2-$spos1);
-		if (!showFact("SOUR", $pid) || FactViewRestricted($pid, $factrec)) return false;
 		if (displayDetailsById($sid, "SOUR")) {
 			if ($level==2) echo "<tr class=\"row_sour2\">";
 			else echo "<tr>";
@@ -903,7 +903,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "\n\t\t\t<td class=\"optionbox $styleadd wrap\">";
 			//echo "\n\t\t\t<td class=\"facts_value$styleadd\">";
 			$source=Source::getInstance($sid);
-			if ($source && showFact("SOUR", $pid)) {
+			if ($source) {
 				echo "<a href=\"", encode_url($source->getLinkUrl()), "\">", PrintReady($source->getFullName()), "</a>";
 				// PUBL
 				$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
@@ -1097,7 +1097,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for($j=0; $j<$ct; $j++) {
 		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
-		if (!showFact("NOTE", $pid)||FactViewRestricted($pid, $factrec)) return false;
+		if (!canDisplayFact($pid, $ged_id, $factrec)) return false;
 		$nt = preg_match("/\d NOTE @(.*)@/", $match[$j][0], $nmatch);
 		if ($nt>0) {
 			$nid = $nmatch[1];
@@ -1200,7 +1200,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			if ($TEXT_DIRECTION=="ltr" && !hasLTRText($text) && hasRTLText($text)) $align=" align=\"right\"";
 		}
 		echo " </td>\n<td class=\"optionbox $styleadd wrap\" $align>";
-		if (showFact("NOTE", $pid)) {
+		if (canDisplayFact($pid, $ged_id, $noterec)) {
 			echo $text;
 			if (!empty($noterec)) print_fact_sources($noterec, 1);
 			// See if RESN tag prevents display or edit/delete
@@ -1228,7 +1228,6 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	global $GEDCOM, $MEDIATYPE;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	if (!showFact("OBJE", $pid)) return false;
 	$gedrec = find_gedcom_record($pid, $ged_id, true);
 	$ids = array($pid);
 
@@ -1427,7 +1426,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER, $MEDIA_TYPES;
 
-	if (!displayDetailsById($rowm['m_media'], 'OBJE') || FactViewRestricted($rowm['m_media'], $rowm['m_gedrec'])) {
+	if (!displayDetailsById($rowm['m_media'], 'OBJE') || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
 		//echo $rowm['m_media'], " no privacy ";
 		return false;
 	}
@@ -1468,160 +1467,158 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	// NOTE Print the title of the media
 	echo "</td><td class=\"optionbox wrap $styleadd\"><span class=\"field\">";
-	if (showFact("OBJE", $pid)) {
-		$mediaTitle = $rowm["m_titl"];
-		$subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
-		if (!empty($subtitle)) $mediaTitle = $subtitle;
-		$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
-		if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
+	$mediaTitle = $rowm["m_titl"];
+	$subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
+	if (!empty($subtitle)) $mediaTitle = $subtitle;
+	$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
+	if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
 
-		$imgsize = findImageSize($mainMedia);
-		$imgwidth = $imgsize[0]+40;
-		$imgheight = $imgsize[1]+150;
+	$imgsize = findImageSize($mainMedia);
+	$imgwidth = $imgsize[0]+40;
+	$imgheight = $imgsize[1]+150;
 
-		// Check Filetype of media item ( URL, Local or Other )
-		if (preg_match("/^https?:\/\//i", $rowm['m_file'])) {
-			$file_type = 'url_';
+	// Check Filetype of media item ( URL, Local or Other )
+	if (preg_match("/^https?:\/\//i", $rowm['m_file'])) {
+		$file_type = 'url_';
+	} else {
+		$file_type = 'local_';
+	}
+	if (preg_match("/\.flv$/i", $rowm['m_file']) && file_exists(WT_ROOT.'js/jw_player/flvVideo.php')) {
+		$file_type .= 'flv';
+	} elseif (preg_match("/\.(jpg|jpeg|gif|png)$/i", $rowm['m_file'])) {
+		$file_type .= 'image';
+	} elseif (preg_match("/\.(pdf|avi)$/i", $rowm['m_file'])) {
+		$file_type .= 'page';
+	} elseif (preg_match("/\.mp3$/i", $rowm['m_file'])) {
+		$file_type .= 'audio';
+	} else {
+		$file_type = 'other';
+	}
+
+	//Get media item Notes
+	$haystack = $rowm["m_gedrec"];
+	$needle   = "1 NOTE";
+	$before   = substr($haystack, 0, strpos($haystack, $needle));
+	$after    = substr(strstr($haystack, $needle), strlen($needle));
+	$final    = $before.$needle.$after;
+	$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_COMPAT, 'UTF-8'));
+
+	$name = trim($rowm['m_titl']);
+
+	// Get info on how to handle this media file
+	//$mediaInfo = mediaFileInfo($rowm['m_file'], $thumbnail, $rowm['m_media'], $name, $notes);
+	$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_media'], $name, $notes);
+
+	//-- Thumbnail field
+	echo '<a href="', $mediaInfo['url'], '">';
+	echo '<img src="', $mediaInfo['thumb'], '" border="none" align="', $TEXT_DIRECTION=="rtl" ? "right":"left", '" class="thumbnail"', $mediaInfo['width'];
+	if (strpos($mainMedia, 'http://maps.google.')===0) {
+		//
+	} else {
+		echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
+	}
+
+	if(empty($SEARCH_SPIDER)) {
+		echo "<a href=\"", encode_url("mediaviewer.php?mid={$rowm['m_media']}"), "\">";
+	}
+	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
+		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
+	} else {
+		echo "<i>", PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
+	}
+	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["mm_gedrec"]);
+	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
+	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
+	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
+	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["mm_gedrec"]);
+	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
+	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
+	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
+	echo "</i>";
+	if(empty($SEARCH_SPIDER)) {
+		echo "</a>";
+	}
+
+	// NOTE: echo the format of the media
+	if (!empty($rowm["m_ext"])) {
+		echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $rowm["m_ext"], "</span>";
+		if(isset($imgsize) and $imgsize[2]!==false) {
+			echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM(). " ") : " x ", $imgsize[1], "</span>";
+		}
+	}
+	if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $rowm["m_gedrec"]), $match)) {
+		$media_date=new GedcomDate($match[1]);
+		$md = $media_date->Display(true);
+		echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
+	}
+	$ttype = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
+	if ($ttype>0) {
+		$mediaType = trim($match[1]);
+		$varName = strtolower($mediaType);
+		if (array_key_exists($varName, $MEDIA_TYPES)) {
+			$mediaType = $MEDIA_TYPES[$varName];
 		} else {
-			$file_type = 'local_';
+			$mediaType = i18n::translate('Other');
 		}
-		if (preg_match("/\.flv$/i", $rowm['m_file']) && file_exists(WT_ROOT.'js/jw_player/flvVideo.php')) {
-			$file_type .= 'flv';
-		} elseif (preg_match("/\.(jpg|jpeg|gif|png)$/i", $rowm['m_file'])) {
-			$file_type .= 'image';
-		} elseif (preg_match("/\.(pdf|avi)$/i", $rowm['m_file'])) {
-			$file_type .= 'page';
-		} elseif (preg_match("/\.mp3$/i", $rowm['m_file'])) {
-			$file_type .= 'audio';
-		} else {
-			$file_type = 'other';
+		echo "\n\t\t\t<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
+	}
+	echo "</span>";
+	echo "<br />\n";
+	//-- print spouse name for marriage events
+	if ($rowm['mm_gid']!=$pid) {
+		$spouse=null;
+		$parents = find_parents($rowm['mm_gid']);
+		if ($parents) {
+			if (!empty($parents['HUSB']) && $parents['HUSB']!=$pid) {
+				$spouse = Person::getInstance($parents['HUSB']);
+			}
+			if (!empty($parents['WIFE']) && $parents['WIFE']!=$pid) {
+				$spouse = Person::getInstance($parents['WIFE']);
+			}
 		}
-
-		//Get media item Notes
-		$haystack = $rowm["m_gedrec"];
-		$needle   = "1 NOTE";
-		$before   = substr($haystack, 0, strpos($haystack, $needle));
-		$after    = substr(strstr($haystack, $needle), strlen($needle));
-		$final    = $before.$needle.$after;
-		$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_COMPAT, 'UTF-8'));
-
-		$name = trim($rowm['m_titl']);
-
-		// Get info on how to handle this media file
-		//$mediaInfo = mediaFileInfo($rowm['m_file'], $thumbnail, $rowm['m_media'], $name, $notes);
-		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_media'], $name, $notes);
-
-		//-- Thumbnail field
-		echo '<a href="', $mediaInfo['url'], '">';
-		echo '<img src="', $mediaInfo['thumb'], '" border="none" align="', $TEXT_DIRECTION=="rtl" ? "right":"left", '" class="thumbnail"', $mediaInfo['width'];
-		if (strpos($mainMedia, 'http://maps.google.')===0) {
-			//
-		} else {
-			echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
-		}
-
-		if(empty($SEARCH_SPIDER)) {
-			echo "<a href=\"", encode_url("mediaviewer.php?mid={$rowm['m_media']}"), "\">";
-		}
-		if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
-			echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
-		} else {
-			echo "<i>", PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
-		}
-		$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["mm_gedrec"]);
-		if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
-		if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
-		if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
-		$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["mm_gedrec"]);
-		if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
-		if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
-		if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
-		echo "</i>";
-		if(empty($SEARCH_SPIDER)) {
+		if ($spouse) {
+			echo "<a href=\"", $spouse->getLinkUrl(), "\">";
+			if ($spouse->canDisplayName()) {
+				echo PrintReady($spouse->getFullName());
+			} else {
+				echo i18n::translate('Private');
+			}
 			echo "</a>";
 		}
-
-		// NOTE: echo the format of the media
-		if (!empty($rowm["m_ext"])) {
-			echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $rowm["m_ext"], "</span>";
-			if(isset($imgsize) and $imgsize[2]!==false) {
-				echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM(). " ") : " x ", $imgsize[1], "</span>";
+		if(empty($SEARCH_SPIDER)) {
+			if ($view!="preview" && $spouse) echo " - ";
+			if ($view!="preview") {
+					$famid = $rowm['mm_gid'];
+					echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
+					echo "</a>\n";
 			}
 		}
-		if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $rowm["m_gedrec"]), $match)) {
-			$media_date=new GedcomDate($match[1]);
-			$md = $media_date->Display(true);
-			echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
-		}
-		$ttype = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
-		if ($ttype>0) {
-			$mediaType = trim($match[1]);
-			$varName = strtolower($mediaType);
-			if (array_key_exists($varName, $MEDIA_TYPES)) {
-				$mediaType = $MEDIA_TYPES[$varName];
-			} else {
-				$mediaType = i18n::translate('Other');
-			}
-			echo "\n\t\t\t<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
-		}
-		echo "</span>";
 		echo "<br />\n";
-		//-- print spouse name for marriage events
-		if ($rowm['mm_gid']!=$pid) {
-			$spouse=null;
-			$parents = find_parents($rowm['mm_gid']);
-			if ($parents) {
-				if (!empty($parents['HUSB']) && $parents['HUSB']!=$pid) {
-					$spouse = Person::getInstance($parents['HUSB']);
-				}
-				if (!empty($parents['WIFE']) && $parents['WIFE']!=$pid) {
-					$spouse = Person::getInstance($parents['WIFE']);
-				}
-			}
-			if ($spouse) {
-				echo "<a href=\"", $spouse->getLinkUrl(), "\">";
-				if ($spouse->canDisplayName()) {
-					echo PrintReady($spouse->getFullName());
-				} else {
-					echo i18n::translate('Private');
-				}
-				echo "</a>";
-			}
-			if(empty($SEARCH_SPIDER)) {
-				if ($view!="preview" && $spouse) echo " - ";
-				if ($view!="preview") {
-						$famid = $rowm['mm_gid'];
-						echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
-						echo "</a>\n";
-				}
-			}
+	}
+	//-- don't show _PRIM option to regular users
+	if (WT_USER_GEDCOM_ADMIN) {
+		$prim = get_gedcom_value("_PRIM", 2, $rowm["mm_gedrec"]);
+		if (empty($prim)) $prim = get_gedcom_value("_PRIM", 1, $rowm["m_gedrec"]);
+		if (!empty($prim)) {
+			echo "<span class=\"label\">", translate_fact('_PRIM'), ":</span> ";
+			if ($prim=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
 			echo "<br />\n";
 		}
-		//-- don't show _PRIM option to regular users
-		if (WT_USER_GEDCOM_ADMIN) {
-			$prim = get_gedcom_value("_PRIM", 2, $rowm["mm_gedrec"]);
-			if (empty($prim)) $prim = get_gedcom_value("_PRIM", 1, $rowm["m_gedrec"]);
-			if (!empty($prim)) {
-				echo "<span class=\"label\">", translate_fact('_PRIM'), ":</span> ";
-				if ($prim=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
-				echo "<br />\n";
-			}
-		}
-		//-- don't show _THUM option to regular users
-		if (WT_USER_GEDCOM_ADMIN) {
-			$thum = get_gedcom_value("_THUM", 2, $rowm["mm_gedrec"]);
-			if (empty($thum)) $thum = get_gedcom_value("_THUM", 1, $rowm["m_gedrec"]);
-			if (!empty($thum)) {
-				echo "<span class=\"label\">", translate_fact('_THUM'), ":</span> ";
-				if ($thum=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
-				echo "<br />\n";
-			}
-		}
-		print_fact_notes($rowm["m_gedrec"], 1);
-		print_fact_notes($rowm["mm_gedrec"], 2);
-		print_fact_sources($rowm["m_gedrec"], 1);
-		print_fact_sources($rowm["mm_gedrec"], 2);
 	}
+	//-- don't show _THUM option to regular users
+	if (WT_USER_GEDCOM_ADMIN) {
+		$thum = get_gedcom_value("_THUM", 2, $rowm["mm_gedrec"]);
+		if (empty($thum)) $thum = get_gedcom_value("_THUM", 1, $rowm["m_gedrec"]);
+		if (!empty($thum)) {
+			echo "<span class=\"label\">", translate_fact('_THUM'), ":</span> ";
+			if ($thum=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
+			echo "<br />\n";
+		}
+	}
+	print_fact_notes($rowm["m_gedrec"], 1);
+	print_fact_notes($rowm["mm_gedrec"], 2);
+	print_fact_sources($rowm["m_gedrec"], 1);
+	print_fact_sources($rowm["mm_gedrec"], 2);
 	echo "</td></tr>";
 	return true;
 }

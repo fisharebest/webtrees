@@ -278,47 +278,29 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 	//-- find the name
 	$name = $person->getFullName();
 	if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
-		if (showFact("OBJE", $pid)) {
-			$object = $person->findHighlightedMedia();
-			if (!empty($object)) {
-				$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
-				$size = findImageSize($whichFile);
-				$class = "pedigree_image_portrait";
-				if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
-				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-				// NOTE: IMG ID
-				$imgsize = findImageSize($object["file"]);
-				$imgwidth = $imgsize[0]+50;
-				$imgheight = $imgsize[1]+150;
+		$object = $person->findHighlightedMedia();
+		if (!empty($object)) {
+			$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
+			$size = findImageSize($whichFile);
+			$class = "pedigree_image_portrait";
+			if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
+			if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
+			// NOTE: IMG ID
+			$imgsize = findImageSize($object["file"]);
+			$imgwidth = $imgsize[0]+50;
+			$imgheight = $imgsize[1]+150;
 
-				if (WT_USE_LIGHTBOX) {
-					$thumbnail .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general_2]\" rev=\"" . $object['mid'] . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">";
-				} else if (!empty($object['mid']) && $USE_MEDIA_VIEWER) {
-					$thumbnail .= "<a href=\"".encode_url("mediaviewer.php?mid=".$object['mid'])."\" >";
-				} else {
-					$thumbnail .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."', $imgwidth, $imgheight);\">";
-				}
-				$thumbnail .= "<img id=\"box-$boxID-thumb\" src=\"".$whichFile."\" vspace=\"0\" hspace=\"0\" class=\"$class\" alt=\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\"";
-				if (!$show_full) $thumbnail .= " style=\"display: none;\"";
-				if ($imgsize) $thumbnail .= " /></a>";
-				else $thumbnail .= " />";
-			} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) {
-				$class = "pedigree_image_portrait";
-				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-				$sex = $person->getSex();
-				$thumbnail = "<img id=\"box-$boxID-thumb\" src=\"";
-				if ($sex == 'F') {
-					$thumbnail .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_F"]["other"]."\"";
-				}
-				else if ($sex == 'M') {
-					$thumbnail .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_M"]["other"]."\"";
-				}
-				else {
-					$thumbnail .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_U"]["other"]."\"";
-				}
-				if (!$show_full) $thumbnail .= " style=\"display: none;\"";
-				$thumbnail .=" class=\"".$class."\" border=\"none\" alt=\"\" />";
+			if (WT_USE_LIGHTBOX) {
+				$thumbnail .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general_2]\" rev=\"" . $object['mid'] . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">";
+			} else if (!empty($object['mid']) && $USE_MEDIA_VIEWER) {
+				$thumbnail .= "<a href=\"".encode_url("mediaviewer.php?mid=".$object['mid'])."\" >";
+			} else {
+				$thumbnail .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."', $imgwidth, $imgheight);\">";
 			}
+			$thumbnail .= "<img id=\"box-$boxID-thumb\" src=\"".$whichFile."\" vspace=\"0\" hspace=\"0\" class=\"$class\" alt=\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\"";
+			if (!$show_full) $thumbnail .= " style=\"display: none;\"";
+			if ($imgsize) $thumbnail .= " /></a>";
+			else $thumbnail .= " />";
 		} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) {
 			$class = "pedigree_image_portrait";
 			if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";

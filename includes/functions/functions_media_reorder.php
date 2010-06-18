@@ -55,7 +55,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	print "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $rowm['m_media'] . "\" >";
 
     //print $rtype." ".$rowm["m_media"]." ".$pid;
-    if (!displayDetailsById($rowm['m_media'], 'OBJE') || FactViewRestricted($rowm['m_media'], $rowm['m_gedrec'])) {
+    if (!displayDetailsById($rowm['m_media'], 'OBJE') || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['m_gedrec'])) {
         //print $rowm['m_media']." no privacy ";
         return false;
     }
@@ -75,13 +75,12 @@ function media_reorder_row($rtype, $rowm, $pid) {
 
 
     // NOTE Get the title of the media
-    if (showFact("OBJE", $pid)) {
-        $mediaTitle = $rowm["m_titl"];
-        $subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
+    $mediaTitle = $rowm["m_titl"];
+    $subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
 
-        if (!empty($subtitle)) $mediaTitle = $subtitle;
+    if (!empty($subtitle)) $mediaTitle = $subtitle;
 		$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
-        if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
+    if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
 
 		print "\n" . "<table class=\"pic\"><tr>" . "\n";
 		print "<td width=\"80\" valign=\"top\" align=\"center\" >". "\n";
@@ -126,8 +125,6 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		print "</td>" . "\n";
 		print "</tr>";
 		print "</table>" . "\n";
-
-    }
 	if (!isset($j)) {
 		$j=0;
 	}else{

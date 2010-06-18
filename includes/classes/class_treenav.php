@@ -410,7 +410,7 @@ class TreeNav {
 	function getThumbnail(&$person) {
 		global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $TEXT_DIRECTION, $USE_MEDIA_VIEWER;
 		$thumbnail = "";
-		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES && showFact("OBJE", $person->getXref())) {
+		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = $person->findHighlightedMedia();
 			if (!empty($object)) {
 				$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
