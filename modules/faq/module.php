@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Config {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('FAQ');
+		return /* Abbreviation for "Frequently Asked Questions" */ i18n::translate('FAQ');
 	}
 
 	// Extend class WT_Module
