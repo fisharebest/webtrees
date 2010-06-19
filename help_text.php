@@ -3954,11 +3954,6 @@ case 'ppp_view_records':
 	$text=i18n::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
 	break;
 
-case 'preview':
-	$title=i18n::translate('Printer-friendly version');
-	$text=i18n::translate('Clicking the Printer-friendly Version link will remove the items that don\'t look good on a printed page (menus, input boxes, extra links, the question marks for the contextual help, etc.)<br /><br />On the Printer-friendly version of the page, you will get a <b>Print</b> link at the bottom of the page. Just click it and your printer dialog will pop up. After printing, just click the <b>Back</b> link and the screen will be rebuilt normally.<br /><br />Note: Although the "Printer-friendly version" removes many links from the displayed page, the remaining links are still clickable.');
-	break;
-
 case 'random_media_ajax_controls':
 	$title=i18n::translate('Show slideshow controls?');
 	$text=i18n::translate('You can use this setting to show or hide the slideshow controls of the Random Media block.<br /><br />These controls allow the user to jump to another random object or to play through randomly selected media like a slideshow. The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
