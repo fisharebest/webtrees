@@ -339,7 +339,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
 	case 'FAM':
 		// Hide a family if either spouse is private
-		if (preg_match_all('/\n2 (?:HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $gedrec, $matches)) {
+		if (preg_match_all('/\n1 (?:HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $gedrec, $matches)) {
 			foreach ($matches[1] as $spouse_id) {
 				if (!canDisplayRecord($ged_id, find_person_record($spouse_id, $ged_id))) {
 					return $cache[$cache_key]=false;
