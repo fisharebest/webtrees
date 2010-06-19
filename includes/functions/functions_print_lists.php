@@ -1124,112 +1124,6 @@ function print_media_table($datalist, $legend="") {
 	echo "</fieldset>\n";
 }
 
-/**
- * print a tag cloud of surnames
- * print a sortable table of surnames
- *
- * @param array $datalist contain records that were extracted from the database.
- * @param string $target where to go after clicking a surname : INDI page or FAM page
- * @param string $listFormat presentation style: "style2 = sortable list, "style3" = cloud
- */
-function print_surn_table($datalist, $target="INDI", $listFormat="") {
-	global $GEDCOM, $TEXT_DIRECTION, $COMMON_NAMES_THRESHOLD;
-	global $SURNAME_LIST_STYLE;
-	if (count($datalist)<1) return;
-
-	if (empty($listFormat)) $listFormat = $SURNAME_LIST_STYLE;
-
-	if ($listFormat=="style3") {
-	// Requested style is "cloud", where the surnames are a list of names (with links),
-	// and the font size used for each name depends on the number of occurrences of this name
-	// in the database - generally known as a 'tag cloud'.
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
-	//-- table header
-	echo "<table id=\"", $table_id, "\" class=\"tag_cloud_table\">";
-	//-- table body
-	echo "<tr>";
-	echo "<td class=\"tag_cloud\">";
-	//-- Calculate range for font sizing
-	$max_tag = 0;
-	$font_tag = 0;
-	foreach($datalist as $key => $value) {
-		if (!isset($value["name"])) break;
-		if ($value["match"]>$max_tag)
-			$max_tag = $value["match"];
-	}
-	$font_tag = $max_tag / 6;
-	//-- Print each name
-	foreach($datalist as $key => $value) {
-		if (!isset($value["name"])) break;
-		$surn = $value["name"];
-		$url = ($target=="FAM") ? 'fam' : 'indi';
-		$url .= "list.php?ged={$GEDCOM}&surname={$surn}";
-		$url = encode_url($url);
-		if (empty($surn) || trim("@".$surn, "_")=="@" || $surn=="@N.N.") $surn = i18n::translate('(unknown)');
-		$fontsize = ceil($value["match"]/$font_tag);
-		if ($TEXT_DIRECTION=="ltr") {
-			$title = PrintReady($surn." (".$value["match"].")");
-			$tag = PrintReady("<font size=\"".$fontsize."\">".$surn."</font><span class=\"tag_cloud_sub\">&nbsp;(".$value["match"].")</span>");
-		} else {
-			$title = PrintReady("(".$value["match"].") ".$surn);
-			$tag = PrintReady("<span class=\"tag_cloud_sub\">(".$value["match"].")&nbsp;</span><font size=\"".$fontsize."\">".$surn."</font>");
-		}
-
-		echo "<a href=\"{$url}\" class=\"list_item\" title=\"{$title}\">{$tag}</a>&nbsp;&nbsp; ";
-	}
-	echo "</td>";
-	echo "</tr>\n";
-	//-- table footer
-	echo "</table>\n";
-	return;
-	}
-
-	// Requested style isn't "cloud".  In this case, we'll produce a sortable list.
-	require_once WT_ROOT.'js/sorttable.js.htm';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
-	//-- table header
-	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
-	echo "<tr>";
-	echo "<td></td>";
-	echo "<th class=\"list_label\">", translate_fact('SURN'), "</th>";
-	echo "<th class=\"list_label\">";
-	if ($target=="FAM") echo i18n::translate('Spouses'); else echo i18n::translate('Individuals');
-	echo "</th>";
-	echo "</tr>\n";
-	//-- table body
-	$total = 0;
-	$n = 0;
-	foreach($datalist as $key => $value) {
-		if (!isset($value["name"])) break;
-		$surn = $value["name"];
-		$url = ($target=="FAM") ? 'fam' : 'indi';
-		$url .= "list.php?ged={$GEDCOM}&surname={$surn}";
-		$url = encode_url($url);
-		//-- Counter
-		echo "<tr>";
-		echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
-		//-- Surname
-		if (empty($surn) or trim("@".$surn, "_")=="@" or $surn=="@N.N.") $surn = i18n::translate('(unknown)');
-		echo "<td class=\"list_value_wrap\" align=\"", get_align($surn), "\">";
-		echo "<a href=\"", $url, "\" class=\"list_item name1\">", PrintReady($surn), "</a>";
-		echo "&nbsp;</td>";
-		//-- Surname count
-		echo "<td class=\"list_value_wrap\">";
-		echo "<a href=\"{$url}\" class=\"list_item name2\" name=\"{$value['match']}\">{$value["match"]}</a>";
-		echo "</td>";
-		$total += $value["match"];
-
-		echo "</tr>\n";
-	}
-	//-- table footer
-	echo "<tr class=\"sortbottom\">";
-	echo "<td class=\"list_item\">&nbsp;</td>";
-	echo "<td class=\"list_item\">&nbsp;</td>";
-	echo "<td class=\"list_label name2\">", $total, "</td>";
-	echo "</tr>\n";
-	echo "</table>\n";
-}
-
 // Print a table of surnames.
 // @param $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
 // @param $type string, indilist or famlist
@@ -1333,63 +1227,43 @@ function format_surname_table($surnames, $type) {
 // @param $type string, indilist or famlist
 // @param $totals, boolean, show totals after each name
 function format_surname_tagcloud($surnames, $type, $totals) {
-	global $TEXT_DIRECTION, $GEDCOM;
-
-	// Requested style is "cloud", where the surnames are a list of names (with links),
-	// and the font size used for each name depends on the number of occurrences of this name
-	// in the database - generally known as a 'tag cloud'.
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
-	//-- table header
-	$html='<table id="'.$table_id.'" class="tag_cloud_table"><tr><td class="tag_cloud">';
-	//-- Calculate range for font sizing
-	$max_tag = 0;
-	$font_tag = 0;
-
+	$cloud=new Zend_Tag_Cloud(
+		array(
+			'tagDecorator'=>array(
+				'decorator'=>'HtmlTag',
+				'options'=>array(
+					'htmlTags'=>array(),
+					'fontSizeUnit'=>'%',
+					'minFontSize'=>50,
+					'maxFontSize'=>250
+				)
+			),
+			'cloudDecorator'=>array(
+				'decorator'=>'HtmlCloud',
+				'options'=>array(
+					'htmlTags'=>array(
+						'div'=>array(
+							'class'=>'tag_cloud'
+						)
+					)
+				)
+			)
+		)
+	);
 	foreach ($surnames as $surn=>$surns) {
 		foreach ($surns as $spfxsurn=>$indis) {
-			$max_tag=max($max_tag, count($indis));
+			$cloud->appendTag(array(
+				'title'=>$totals ? i18n::translate_c('"name (count)" in a tag cloud', '%1$s&nbsp;(%2$d)', $spfxsurn, count($indis)) :	$spfxsurn,
+				'weight'=>count($indis),
+				'params'=>array(
+					'url'=>$surn ?
+						$type.'.php?surname='.urlencode($surn).'&amp;ged='.urlencode(WT_GEDCOM) :
+						$type.'.php?alpha=,&amp;ged='.urlencode(WT_GEDCOM)
+				)
+			));
 		}
 	}
-	$font_tag = $max_tag / 6;
-	//-- Print each name
-	foreach ($surnames as $surn=>$surns) {
-		// Each surname links back to the indi/fam surname list
-		if ($surn) {
-			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.urlencode($GEDCOM);
-		} else {
-			$url=$type.'.php?alpha=,&amp;ged='.urlencode($GEDCOM);
-		}
-		// If all the surnames are just case variants, then merge them into one
-		// Comment out this block if you want SMITH listed separately from Smith
-		$first_spfxsurn=null;
-		foreach ($surns as $spfxsurn=>$indis) {
-			if ($first_spfxsurn) {
-				if (utf8_strtoupper($spfxsurn)==utf8_strtoupper($first_spfxsurn)) {
-					$surns[$first_spfxsurn]=array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
-					unset ($surns[$spfxsurn]);
-				}
-			} else {
-				$first_spfxsurn=$spfxsurn;
-			}
-		}
-		foreach ($surns as $spfxsurn=>$indis) {
-			$count=count($indis);
-			$fontsize = ceil($count/$font_tag);
-			if ($totals) {
-				$total='('.$count.')';
-			} else {
-				$total='';
-			}
-			if ($TEXT_DIRECTION=="ltr") {
-				$tag = "<font size=\"".$fontsize."\">".PrintReady($spfxsurn)."</font><span class=\"tag_cloud_sub\">&nbsp;".$total."</span>";
-			} else {
-				$tag = PrintReady("<span class=\"tag_cloud_sub\">".getRLM().$total.getRLM()."&nbsp;</span><font size=\"".$fontsize."\">".$spfxsurn."</font>");
-			}
-			$html.='<a href="'.$url.'" class="list_item">'.$tag.'</a> ';
-		}
-	}
-	$html.='</td></tr></table>';
-	return $html;
+	return (string)$cloud;
 }
 
 // Print a list of surnames.

@@ -907,23 +907,9 @@ a.showit:hover span {
 	background: #ddd;
 }
 
-/* Tag Cloud styles*/
-.tag_cloud_table {
-	width:70%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .tag_cloud {
-	text-align: justify;
-	padding: 10px 5px 10px 15px; /* top right bottom left */
+	font-family: tahoma, arial, helvetica, sans-serif;
 }
-
-.tag_cloud_sub {
-	font-size: 8px;
-	color:#808080;
-}
-/* End of Tag Cloud styles*/
 
 .clearfloat {
 	clear: both;

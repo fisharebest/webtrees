@@ -1243,25 +1243,9 @@ a.showit:hover span {
 		background: #ddd;
 	}
 
-/* Tag Cloud styles*/
-.tag_cloud_table {
-	width:70%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .tag_cloud {
 	font-family: tahoma, arial, helvetica, sans-serif;
-	text-align: justify;
-	padding: 10px 5px 10px 15px; /* top right bottom left */
 }
-
-.tag_cloud_sub {
-	font-family: tahoma, arial, helvetica, sans-serif;
-	font-size: 8px;
-	color:#808080;
-}
-/* End of Tag Cloud styles*/
 
 /* Autocomplete styles*/
 .ac_input {
