@@ -1,11 +1,11 @@
 <?php
 /**
- * Header for Cloudy theme
+ * Header for Clouds theme
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
+ * Derived from PhpGedView Cloudy theme
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -89,7 +89,7 @@ if ($TEXT_DIRECTION=='rtl') { ?>
 <?php } 
 
 echo
-	'<link type="text/css" href="themes/cloudy2/modules.css" rel="Stylesheet" />',
+	'<link type="text/css" href="themes/clouds/modules.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 	
 if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>

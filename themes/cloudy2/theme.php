@@ -1,11 +1,11 @@
 <?php
 /**
- * Cloudy theme
+ * Clouds theme
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
+ * Derived from PhpGedView Cloudy theme
  * Copyright (C) 2010  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$theme_name       = "cloudy2";
+$theme_name       = "clouds";
 $stylesheet       = WT_THEME_DIR . "style.css";
 $print_stylesheet = WT_THEME_DIR . "print.css";			//-- CSS level 2 print stylesheet to use
 $headerfile       = WT_THEME_DIR . "header.php";		//-- Header information for the site

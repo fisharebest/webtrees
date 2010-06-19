@@ -1,11 +1,11 @@
 <?php
 /**
- * Footer for Cloudy theme
+ * Footer for Clouds theme
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
+ * Derived from PhpGedView Cloudy theme
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-//start Cloudy unique code
+//start Clouds unique code
 echo "</div>"; // Close table started in toplinks.html
 echo "<br />";echo "<br />";echo "<br />";
 echo "<div id=\"footer\" class=\"$TEXT_DIRECTION\">";

@@ -1,11 +1,11 @@
 <?php
 /**
- * Toplinks for Cloudy theme
+ * Toplinks for Clouds theme
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
+ * Derived from PhpGedView Cloudy theme
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
