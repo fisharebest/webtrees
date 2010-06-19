@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
+global $modules;
 // Definitions to simplify logic on pages with right-to-left languages
 // TODO: merge this into the trunk?
 if ($TEXT_DIRECTION=='ltr') {
@@ -89,7 +89,7 @@ if ($TEXT_DIRECTION=='rtl') { ?>
 <?php } 
 
 echo
-	'<link type="text/css" href="themes/clouds/modules.css" rel="Stylesheet" />',
+	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 	
 if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>

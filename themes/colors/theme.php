@@ -101,6 +101,7 @@ $_SESSION['themecolor']=$subColor;
 
 $theme_name       = "colors";
 $stylesheet       = WT_THEME_DIR . "css/" . $subColor . ".css";
+$modules 		  = WT_THEME_DIR . "modules.css";
 $print_stylesheet = WT_THEME_DIR . "print.css";			//-- CSS level 2 print stylesheet to use
 $headerfile       = WT_THEME_DIR . "header.php";		//-- Header information for the site
 $rtl_stylesheet   = WT_THEME_DIR . "style_rtl.css";		//-- CSS level 2 stylesheet to use
