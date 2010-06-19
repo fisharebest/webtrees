@@ -1,0 +1,162 @@
+/* jquery css THEME adjustments */
+
+/* Tabs --------------------------------*/
+.ui-widget-content                                         { color:black; border color:#999999;  }
+.ui-widget-content a                                       { color:blue; }
+.ui-widget-content a:hover                                  { color: red; }
+
+.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color:blue; }
+.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: blue; }
+.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: blue; }
+
+
+/* Navigator and Flyout menu Styles */
+.nam a:hover{
+color:red;
+}
+.nav_content {
+	width: 235px;
+	margin-left: -15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+}
+.flyout {
+	color:#000000; 
+	text-align: left;
+	margin-top: -20px;
+	right: 210px;
+	padding: 3px;
+}
+.flyout2 {
+	color:#000000;
+	text-align: left;
+	margin-top: -2px;
+	left: 70px;
+	padding: 3px;
+}
+.flyout2 a:hover{
+	color:#ff0000;
+}
+.flyout4 {
+	color:#000000;
+	text-align: left;
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 3px;
+}
+#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
+	background:none;
+	border:none;
+	text-decoration:none;
+	text-align: left;
+	margin-top: 0px;
+	left: 0px;
+	padding: 0px;
+}
+ul.clist {
+	list-style-image: none;
+	text-decoration:none;
+	color:#000000; 
+	margin: 0px;
+	margin-left: 0px;
+}
+/* End of Flyout Menu styles*/
+
+
+/* Sidebar --------------------------------*/
+.ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
+.ui-accordion .ui-accordion-content { padding: 1em 2.2em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: visible; display: none; }
+.ui-accordion .ui-accordion-content-active { display: block; }
+
+#sidebar {
+	position: absolute;
+	right: 0px;
+	width: 0px;
+	background-color: transparent;
+	margin: 9px 35px 15px 15px;
+
+}
+#sidebar_controls {
+	position: absolute;
+	top: 0px;
+	left: -22px;
+	margin: 0;
+	height: 24px; 
+	width: 24px;
+	z-index: 10;
+	border: none;
+	background-color: transparent;
+}
+#sidebar_open {
+	padding: 0;
+}
+#sidebar_open img {
+	position: absolute;
+	padding-top: 1px;
+	padding-bottom: 0px;
+	margin-left: 0px;
+	height: 22px;
+	width: 20px;
+	background: transparent;
+}
+#sidebar_pin {
+	position: absolute;
+	margin-top: 4px;
+	margin-left: 225px;
+	padding-top: 1px;
+	padding-bottom: 0px;
+	background: transparent;
+}
+#sidebar_pin img {
+	padding-right: 4px;
+	padding-left: 4px;
+}
+
+.sb_indi_surname_li, .sb_fam_surname_li {
+	list-style-image: url('images/plus.gif');
+	white-space: nowrap;
+}
+.sb_desc_indi_li {
+	list-style-type: none;
+	white-space: nowrap;
+}
+.desc_tree_div {
+	display: none;
+}
+.desc_tree_div ul {
+	padding: 0px;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-right: 0px;
+}
+#sb_desc_content ul {
+	padding: 0px;
+	margin: 0px;
+}
+.name_tree_div {
+	display: none;
+}
+.name_tree_div li,  .name_tree_div_visible li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	white-space: nowrap;
+}
+
+.name_tree_div ul, .name_tree_div_visible ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+#sb_clippings_content li {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	white-space: nowrap;
+}
+#sb_clippings_content ul {
+	padding: 0px;
+	margin: 0px;
+}
+
