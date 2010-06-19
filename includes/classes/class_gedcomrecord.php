@@ -51,8 +51,8 @@ class GedcomRecord {
 	protected $rfn        =null;
 	protected $facts      =null;
 	protected $changeEvent=null;
-	protected $disp       =true;  // Can we display details of this object
-	protected $dispname   =true;  // Can we display the name of this object
+	public    $disp       =true;  // Can we display details of this object
+	public    $dispname   =true;  // Can we display the name of this object
 	private   $changed    =false; // Is this a new record, pending approval
 
 	// Cached results from various functions.
