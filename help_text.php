@@ -3768,11 +3768,6 @@ case 'keep_media':
 	$text=i18n::translate('Should existing media links be retained in the database when a replacement GEDCOM is being uploaded. The <b>No</b> option removes existing media links from the database, while the <b>Yes</b> option keeps them.<br /><br />This option is useful when you export your GEDCOM from <b>webtrees</b> to an off-line GEDCOM maintenance program that does not handle embedded media pointers properly, and then subsequently re-import that changed GEDCOM into <b>webtrees</b>.  Under such circumstances, the media pointers within the GEDCOM you exported to your off-line editing program are destroyed, and you would have to re-link all of your media files to the proper Person, Family, and Source records after you re-import the GEDCOM into <b>webtrees</b>.<br /><br />The <b>Yes</b> option tells <b>webtrees</b> to keep the existing media links so that you do not have to re-create them after you import the changed GEDCOM, but this requires the off-line editing program to always produce the same Person, Family, and Source identification numbers.<br /><br /><i>Family Tree Maker</i> is one of several off-line editing programs that does <u>not</u> properly handle media object pointers within the GEDCOM.  <i>Legacy</i>, among many others, <u>does</u> handle these properly.');
 	break;
 
-case 'line_up_generations':
-	$title=i18n::translate('Line up the same generations');
-	$text=i18n::translate('When this check box is checked, the chart will be printed with the same generations lining up horizontally on the page.  When it is unchecked, each generation will appear going down the page regardless of the type of relationship.');
-	break;
-
 case 'link_child':
 	$title=i18n::translate('Link to an existing family as a child');
 	$text=i18n::translate('You can link this person as a child to an existing family when you click this link.<br /><br />Suppose that at one time the parents of the person were unknown, and you discovered later that the parents have a record in this database.<br /><br />Just click the link, enter the ID of the family, and you have competed the task.  If you don\'t know the family\'s ID, you can search for it.');
@@ -3911,7 +3906,7 @@ case 'no_update_CHAN':
 
 case 'oldest_top':
 	$title=i18n::translate('Show oldest top');
-	$text=i18n::translate('When this check box is checked, the chart will be printed with oldest people at the top.  When it is unchecked, youngest people will appear at the top.<br /><br />Note: This option works only if <b>Line up the same generations</b> is also checked.');
+	$text=i18n::translate('When this check box is checked, the chart will be printed with oldest people at the top.  When it is unchecked, youngest people will appear at the top.');
 	break;
 
 case 'page':

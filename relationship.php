@@ -38,7 +38,6 @@ $show_full=$PEDIGREE_FULL_DETAILS;
 if (isset($_REQUEST['show_full'])) $show_full = $_REQUEST['show_full'];
 if (!isset($_REQUEST['path_to_find'])) {
 	$path_to_find = 0;
-	$pretty = 1;
 	unset($_SESSION["relationships"]);
 }
 else $path_to_find = $_REQUEST['path_to_find'];
@@ -66,14 +65,11 @@ $pid2=safe_GET_xref('pid2');
 
 if (!isset($_REQUEST['followspouse'])) $followspouse = 0;
 else $followspouse = $_REQUEST['followspouse'];
-if (!isset($_REQUEST['pretty'])) $pretty = 0;
-else $pretty = $_REQUEST['pretty'];
 if (!isset($_REQUEST['asc'])) $asc=1;
 else $asc = $_REQUEST['asc'];
 if ($asc=="") $asc=1;
 if (empty($pid1)) {
 	$followspouse = 1;
-	$pretty = 1;
 }
 $check_node = true;
 $disp = true;
@@ -170,7 +166,6 @@ if ($view!="preview") {
 	<td class="optionbox vmiddle">
 	<input type="hidden" name="show_full" value="<?php print $show_full ?>" />
 		<?php
-	if (!$pretty && $asc==-1) print "<input type=\"hidden\" name=\"asc\" value=\"$asc\" />";
 	print "<input tabindex=\"3\" type=\"checkbox\" name=\"showfull\" value=\"0\"";
 	if ($show_full) print " checked=\"checked\"";
 	print " onclick=\"document.people.show_full.value='".(!$show_full)."';\" />";?>
@@ -189,44 +184,13 @@ if ($view!="preview") {
 	<!-- // Empty space -->
 	<td>&nbsp;</td>
 
-	<!-- // Line up generations -->
-	<td class="descriptionbox">
-	<?php
-	echo i18n::translate('Line up the same generations'), help_link('line_up_generations'); ?>
-	</td>
-	<td class="optionbox">
-	<input tabindex="5" type="checkbox" name="pretty" value="2"
-	<?php
-	if ($pretty) print " checked=\"checked\"";
-	print " onclick=\"expand_layer('oldtop1'); expand_layer('oldtop2');\"" ?> />
-	</td></tr>
-
-	<!-- // Empty line -->
-	<tr><td class="descriptionbox">&nbsp;</td>
-	<td class="optionbox">&nbsp;</td>
-
-	<!-- // Empty space -->
-	<td>&nbsp;</td>
-
 	<!-- // Show oldest top -->
 	<td class="descriptionbox">
-	<div id="oldtop1" style="display:
-	<?php
-	if ($pretty) print "block";
-	else print "none";
-	?>">
 	<?php echo i18n::translate('Show oldest top'), help_link('oldest_top'); ?>
-	</div>
 	</td><td class="optionbox">
-	<div id="oldtop2" style="display:
-	<?php
-	if ($pretty) print "block";
-	else print "none";?>">
 	<input tabindex="4" type="checkbox" name="asc" value="-1"
-	<?php
-	if ($asc==-1) print " checked=\"checked\"";?>
-	/>
-	</div></td></tr>
+	<?php if ($asc==-1) print " checked=\"checked\"";?> />
+	</td></tr>
 
 	<!-- // Show path -->
 	<tr><td class="descriptionbox">
@@ -249,7 +213,7 @@ if ($view!="preview") {
 				$new_path=false;
 			}
 			else {
-				print "<a href=\"".encode_url("relationship.php?pid1={$pid1}&pid2={$pid2}&path_to_find={$i}&followspouse={$followspouse}&pretty={$pretty}&show_full={$show_full}&asc={$asc}")."\">".($i+1)."</a>\n";
+				print "<a href=\"".encode_url("relationship.php?pid1={$pid1}&pid2={$pid2}&path_to_find={$i}&followspouse={$followspouse}&show_full={$show_full}&asc={$asc}")."\">".($i+1)."</a>\n";
 			}
 			$i++;
 		}
@@ -371,29 +335,27 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 			$xs = $Dbxspacing+70;
 			$ys = $Dbyspacing+50;
 			// step1 = tree depth calculation
-			if ($pretty) {
-				$dmin=0;
-				$dmax=0;
-				$depth=0;
-				foreach($node["path"] as $index=>$pid) {
-					if ($node["relations"][$index]=="father" || $node["relations"][$index]=="mother" || $node["relations"][$index]=="parent") {
+			$dmin=0;
+			$dmax=0;
+			$depth=0;
+			foreach($node["path"] as $index=>$pid) {
+				if ($node["relations"][$index]=="father" || $node["relations"][$index]=="mother" || $node["relations"][$index]=="parent") {
 
-					$depth++;
-					if ($depth>$dmax) $dmax=$depth;
-					if ($asc==0) $asc=1; // the first link is a parent link
-					}
-					if ($node["relations"][$index]=="son" || $node["relations"][$index]=="daughter" || $node["relations"][$index]=="child") {
-						$depth--;
-						if ($depth<$dmin) $dmin=$depth;
-						if ($asc==0) $asc=-1; // the first link is a child link
-					}
+				$depth++;
+				if ($depth>$dmax) $dmax=$depth;
+				if ($asc==0) $asc=1; // the first link is a parent link
 				}
-				$depth=$dmax+$dmin;
-				// need more yoffset before the first box ?
-				if ($asc==1) $yoffset -= $dmin*($Dbheight+$ys);
-				if ($asc==-1) $yoffset += $dmax*($Dbheight+$ys);
-				$rowNum = ($asc==-1) ? $depth : 0;
+				if ($node["relations"][$index]=="son" || $node["relations"][$index]=="daughter" || $node["relations"][$index]=="child") {
+					$depth--;
+					if ($depth<$dmin) $dmin=$depth;
+					if ($asc==0) $asc=-1; // the first link is a child link
+				}
 			}
+			$depth=$dmax+$dmin;
+			// need more yoffset before the first box ?
+			if ($asc==1) $yoffset -= $dmin*($Dbheight+$ys);
+			if ($asc==-1) $yoffset += $dmax*($Dbheight+$ys);
+			$rowNum = ($asc==-1) ? $depth : 0;
 			$maxxoffset = -1*$Dbwidth-20;
 			$maxyoffset = $yoffset;
 			if ($TEXT_DIRECTION=="ltr") {
@@ -419,36 +381,33 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 					$lh = 54;
 					$lw = 3;
 					//check for paternal grandparent relationship
-					if ($pretty) {
-						if ($asc==0) $asc=1;
-						if ($asc==-1) $arrow_img = $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];
-						$lh=$ys;
-						$linex=$xoffset+$Dbwidth/2;
-						// put the box up or down ?
-						$yoffset += $asc*($Dbheight+$lh);
-						$rowNum += $asc;
-						if ($asc==1) $liney = $yoffset-$lh; else $liney = $yoffset+$Dbheight;
-						// need to draw a joining line ?
-						if ($previous=="child" and $previous2!="parent") {
-							$joinh = 3;
-							$joinw = $xs/2+2;
-							$xoffset += $Dbwidth+$xs;
-							$colNum ++;
-							//$rowNum is inherited from the box immediately to the left
-							$linex = $xoffset-$xs/2;
-							if ($asc==-1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-$lh;
-							$joinx = $xoffset-$xs;
-							$joiny = $liney-2-($asc-1)/2*$lh;
-							echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["hline"]["other"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>\n";
-							$joinw = $xs/2+2;
-							$joinx = $joinx+$xs/2;
-							$joiny = $joiny+$asc*$lh;
-							echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["hline"]["other"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>\n";
-						}
-						$previous2=$previous;
-						$previous="parent";
+					if ($asc==0) $asc=1;
+					if ($asc==-1) $arrow_img = $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];
+					$lh=$ys;
+					$linex=$xoffset+$Dbwidth/2;
+					// put the box up or down ?
+					$yoffset += $asc*($Dbheight+$lh);
+					$rowNum += $asc;
+					if ($asc==1) $liney = $yoffset-$lh; else $liney = $yoffset+$Dbheight;
+					// need to draw a joining line ?
+					if ($previous=="child" and $previous2!="parent") {
+						$joinh = 3;
+						$joinw = $xs/2+2;
+						$xoffset += $Dbwidth+$xs;
+						$colNum ++;
+						//$rowNum is inherited from the box immediately to the left
+						$linex = $xoffset-$xs/2;
+						if ($asc==-1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-$lh;
+						$joinx = $xoffset-$xs;
+						$joiny = $liney-2-($asc-1)/2*$lh;
+						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["hline"]["other"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>\n";
+						$joinw = $xs/2+2;
+						$joinx = $joinx+$xs/2;
+						$joiny = $joiny+$asc*$lh;
+						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["hline"]["other"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>\n";
 					}
-					else $yoffset += $Dbheight+$Dbyspacing+50;
+					$previous2=$previous;
+					$previous="parent";
 				}
 				if ($node["relations"][$index]=="brother" || $node["relations"][$index]=="sister" || $node["relations"][$index]=="sibling") {
 					$arrow_img = $WT_IMAGE_DIR."/".$rArrow;
@@ -460,13 +419,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 					$liney += $Dbheight/2;
 					$lh = 3;
 					$lw = 70;
-					if ($pretty) {
-						$lw = $xs;
-						$linex = $xoffset-$lw;
-						$liney = $yoffset+$Dbheight/4;
-						$previous2=$previous;
-						$previous="";
-					}
+					$lw = $xs;
+					$linex = $xoffset-$lw;
+					$liney = $yoffset+$Dbheight/4;
+					$previous2=$previous;
+					$previous="";
 				}
 				if ($node["relations"][$index]=="husband" || $node["relations"][$index]=="wife" || $node["relations"][$index]=="spouse") {
 					$arrow_img = $WT_IMAGE_DIR."/".$rArrow;
@@ -478,13 +435,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 					$liney += $Dbheight/2;
 					$lh = 3;
 					$lw = 70;
-					if ($pretty) {
-						$lw = $xs;
-						$linex = $xoffset-$lw;
-						$liney = $yoffset+$Dbheight/4;
-						$previous2=$previous;
-						$previous="";
-					}
+					$lw = $xs;
+					$linex = $xoffset-$lw;
+					$liney = $yoffset+$Dbheight/4;
+					$previous2=$previous;
+					$previous="";
 				}
 				if ($node["relations"][$index]=="son" || $node["relations"][$index]=="daughter" || $node["relations"][$index]=="child") {
 					$line = $WT_IMAGES["vline"]["other"];
@@ -492,36 +447,33 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 					$linex += $Dbwidth/2;
 					$lh = 54;
 					$lw = 3;
-					if ($pretty) {
-						if ($asc==0) $asc=-1;
-						if ($asc==1) $arrow_img = $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];
-						$lh=$ys;
-						$linex = $xoffset+$Dbwidth/2;
-						// put the box up or down ?
-						$yoffset -= $asc*($Dbheight+$lh);
-						$rowNum -= $asc;
-						if ($asc==-1) $liney = $yoffset-$lh; else $liney = $yoffset+$Dbheight;
-						// need to draw a joining line ?
-						if ($previous=="parent" and $previous2!="child") {
-							$joinh = 3;
-							$joinw = $xs/2+2;
-							$xoffset += $Dbwidth+$xs;
-							$colNum ++;
-							//$rowNum is inherited from the box immediately to the left
-							$linex = $xoffset-$xs/2;
-							if ($asc==1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-($lh+$Dbyspacing);
-							$joinx = $xoffset-$xs;
-							$joiny = $liney-2+($asc+1)/2*$lh;
-							print "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>\n";
-							$joinw = $xs/2+2;
-							$joinx = $joinx+$xs/2;
-							$joiny = $joiny-$asc*$lh;
-							print "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>\n";
-						}
-						$previous2=$previous;
-						$previous="child";
+					if ($asc==0) $asc=-1;
+					if ($asc==1) $arrow_img = $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];
+					$lh=$ys;
+					$linex = $xoffset+$Dbwidth/2;
+					// put the box up or down ?
+					$yoffset -= $asc*($Dbheight+$lh);
+					$rowNum -= $asc;
+					if ($asc==-1) $liney = $yoffset-$lh; else $liney = $yoffset+$Dbheight;
+					// need to draw a joining line ?
+					if ($previous=="parent" and $previous2!="child") {
+						$joinh = 3;
+						$joinw = $xs/2+2;
+						$xoffset += $Dbwidth+$xs;
+						$colNum ++;
+						//$rowNum is inherited from the box immediately to the left
+						$linex = $xoffset-$xs/2;
+						if ($asc==1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-($lh+$Dbyspacing);
+						$joinx = $xoffset-$xs;
+						$joiny = $liney-2+($asc+1)/2*$lh;
+						print "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>\n";
+						$joinw = $xs/2+2;
+						$joinx = $joinx+$xs/2;
+						$joiny = $joiny-$asc*$lh;
+						print "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>\n";
 					}
-					else $yoffset += $Dbheight+$Dbyspacing+50;
+					$previous2=$previous;
+					$previous="child";
 				}
 				if ($yoffset > $maxyoffset) $maxyoffset = $yoffset;
 				$plinex = $linex;
@@ -552,11 +504,9 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				// Determine the z-index for this box
 				$boxNum ++;
 				if ($TEXT_DIRECTION=="rtl" && $BROWSERTYPE=="mozilla") {
-					if ($pretty) $zIndex = ($colNum * $depth - $rowNum + $depth);
-						else $zIndex = $boxNum;
+					$zIndex = ($colNum * $depth - $rowNum + $depth);
 				} else {
-					if ($pretty) $zIndex = 200 - ($colNum * $depth + $rowNum);
-					else $zIndex = 200 - $boxNum;
+					$zIndex = 200 - ($colNum * $depth + $rowNum);
 				}
 
 				print "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
