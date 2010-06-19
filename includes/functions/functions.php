@@ -3065,15 +3065,10 @@ function get_new_xref($type='INDI', $ged_id=WT_GED_ID) {
 			->execute(array($ged_id, $type));
 	}
 
-	//-- make sure this number has not already been used
-	if ($num>=2147483647 || $num<=0) { // Popular databases are only 32 bits (signed)
-		$num=1;
-	}
 	while (find_gedcom_record($prefix.$num, $ged_id, true)) {
-		++$num;
-		if ($num>=2147483647 || $num<=0) { // Popular databases are only 32 bits (signed)
-			$num=1;
-		}
+		// Applications such as ancestry.com generate XREFs with numbers larger than
+		// PHP's signed integer.  MySQL can handle large integers.
+		$num=WT_DB::prepare("SELECT 1+?")->execute(array($num))->fetchOne();
 	}
 
 	//-- the key is the prefix and the number

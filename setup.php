@@ -672,8 +672,8 @@ try {
 		" status         ENUM('accepted', 'pending', 'rejected') NOT NULL DEFAULT 'pending',".
 		" gedcom_id      INTEGER                                 NOT NULL,".
 		" xref           VARCHAR(20)                             NOT NULL,".
-		" old_gedcom     LONGTEXT                                NOT NULL,".
-		" new_gedcom     LONGTEXT                                NOT NULL,".
+		" old_gedcom     MEDIUMTEXT                              NOT NULL,".
+		" new_gedcom     MEDIUMTEXT                              NOT NULL,".
 		" user_id        INTEGER                                 NOT NULL,".
 		" PRIMARY KEY     (change_id),".
 		"         KEY ix1 (gedcom_id, status, xref),".
@@ -713,7 +713,7 @@ try {
 		" i_rin    VARCHAR(20)         NOT NULL,".
 		" i_isdead INTEGER             NOT NULL,".
 		" i_sex    ENUM('U', 'M', 'F') NOT NULL,".
-		" i_gedcom LONGTEXT            NOT NULL,".
+		" i_gedcom MEDIUMTEXT          NOT NULL,".
 		" PRIMARY KEY     (i_id, i_file),".
 		" UNIQUE  KEY ux1 (i_file, i_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -725,7 +725,7 @@ try {
 		" f_husb    VARCHAR(20)      NULL,".
 		" f_wife    VARCHAR(20)      NULL,".
 		" f_chil    TEXT             NULL,".
-		" f_gedcom  LONGTEXT     NOT NULL,".
+		" f_gedcom  MEDIUMTEXT   NOT NULL,".
 		" f_numchil INTEGER      NOT NULL,".
 		" PRIMARY KEY     (f_id, f_file),".
 		" UNIQUE  KEY ux1 (f_file, f_id),".
@@ -792,7 +792,7 @@ try {
 		" m_titl    VARCHAR(255)               NULL,".
 		" m_file    VARCHAR(512)               NULL,".
 		" m_gedfile INTEGER                NOT NULL,".
-		" m_gedrec  LONGTEXT                   NULL,".
+		" m_gedrec  MEDIUMTEXT                 NULL,".
 		" PRIMARY KEY (m_id),".
 		"         KEY ix1 (m_media, m_gedfile)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -814,7 +814,7 @@ try {
 		" mm_gid     VARCHAR(20)            NOT NULL,".
 		" mm_order   INTEGER                NOT NULL DEFAULT '0',".
 		" mm_gedfile INTEGER                NOT NULL,".
-		" mm_gedrec  LONGTEXT               NOT NULL,".
+		" mm_gedrec  MEDIUMTEXT             NOT NULL,".
 		" PRIMARY KEY (mm_id),".
 		"         KEY ix1 (mm_media, mm_gedfile),".
 		"         KEY ix2 (mm_gid, mm_gedfile),".
@@ -825,7 +825,7 @@ try {
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}next_id` (".
 		" gedcom_id   INTEGER     NOT NULL,".
 		" record_type VARCHAR(15) NOT NULL,".
-		" next_id     INTEGER     NOT NULL,".
+		" next_id     DECIMAL(20) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, record_type),".
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -835,7 +835,7 @@ try {
 		" o_id     VARCHAR(20) NOT NULL,".
 		" o_file   INTEGER     NOT NULL,".
 		" o_type   VARCHAR(15) NOT NULL,".
-		" o_gedcom LONGTEXT        NULL,".
+		" o_gedcom MEDIUMTEXT      NULL,".
 		" PRIMARY KEY     (o_id, o_file),".
 		" UNIQUE  KEY ux1 (o_file, o_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -845,7 +845,7 @@ try {
 		" s_id     VARCHAR(20)    NOT NULL,".
 		" s_file   INTEGER        NOT NULL,".
 		" s_name   VARCHAR(255)   NOT NULL,".
-		" s_gedcom LONGTEXT       NOT NULL,".
+		" s_gedcom MEDIUMTEXT     NOT NULL,".
 		" s_dbid   ENUM('N', 'Y')     NULL,".
 		" PRIMARY KEY     (s_id, s_file),".
 		" UNIQUE  KEY ux1 (s_file, s_id),".
