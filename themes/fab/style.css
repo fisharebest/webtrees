@@ -911,7 +911,7 @@ a.showit:hover span {
 	font-family: tahoma, arial, helvetica, sans-serif;
 }
 .tag_cloud a {
-	wrap:none;
+	white-space:nowrap;
 }
 
 .clearfloat {
