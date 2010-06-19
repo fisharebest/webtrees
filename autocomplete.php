@@ -293,7 +293,7 @@ function autocomplete_INDI_BURI_CEME($FILTER) {
 		if ($person->canDisplayDetails()) {
 			$i = 1;
 			do {
-				$srec = get_sub_record("BURI", 1, $person->gedrec, $i++);
+				$srec = get_sub_record("BURI", 1, $person->getGedcomRecord(), $i++);
 				$ceme = get_gedcom_value("CEME", 2, $srec);
 				if (stripos($ceme, $FILTER)!==false || empty($FILTER)) {
 					$data[] = $ceme;
@@ -319,7 +319,7 @@ function autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION) {
 			for ($level=1; $level<=2; $level++) {
 				$i = 1;
 				do {
-					$srec = get_sub_record("SOUR @{$OPTION}@", $level, $person->gedrec, $i++);
+					$srec = get_sub_record("SOUR @{$OPTION}@", $level, $person->getGedcomRecord(), $i++);
 					$page = get_gedcom_value("PAGE", $level+1, $srec);
 					if (stripos($page, $FILTER)!==false || empty($FILTER)) {
 						$data[] = $page;
@@ -346,7 +346,7 @@ function autocomplete_FAM_SOUR_PAGE($FILTER, $OPTION) {
 			for ($level=1; $level<=2; $level++) {
 				$i = 1;
 				do {
-					$srec = get_sub_record("SOUR @{$OPTION}@", $level, $family->gedrec, $i++);
+					$srec = get_sub_record("SOUR @{$OPTION}@", $level, $family->getGedcomRecord(), $i++);
 					$page = get_gedcom_value("PAGE", $level+1, $srec);
 					if (stripos($page, $FILTER)!==false || empty($FILTER)) {
 						$data[] = $page;

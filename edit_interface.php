@@ -1544,7 +1544,7 @@ case 'addchildaction':
 			$newchild = Person::getInstance($xref);
 			$family = Family::getInstance($famid);
 			if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
-			$gedrec = $family->gedrec;
+			$gedrec = $family->getGedcomRecord();
 			$done = false;
 			foreach ($family->getChildren() as $key=>$child) {
 				if (GedcomDate::Compare($newchild->getEstimatedBirthDate(), $child->getEstimatedBirthDate())<0) {

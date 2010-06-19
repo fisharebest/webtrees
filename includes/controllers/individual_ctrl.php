@@ -958,7 +958,7 @@ class IndividualControllerRoot extends BaseController {
 				if ($children[$i]->getXref()==$this->pid) {
 					$label = "<img src=\"images/selected.png\" alt=\"\" />";
 				}
-				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->gedrec);
+				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
 				$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
 				if ($pedi) {
 					if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= " (".$PEDI_CODES_F[$pedi].")";

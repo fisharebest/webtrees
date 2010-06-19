@@ -131,7 +131,7 @@ if (!$SHOW_LEVEL2_NOTES) {
 
 	function get_note_count() {
 		if ($this->noteCount===null) {
-			$ct = preg_match_all("/\d NOTE /", $this->controller->indi->gedrec, $match, PREG_SET_ORDER);
+			$ct = preg_match_all("/\d NOTE /", $this->controller->indi->getGedcomRecord(), $match, PREG_SET_ORDER);
 			foreach ($this->controller->indi->getSpouseFamilies() as $k => $sfam)
 			$ct += preg_match("/\d NOTE /", $sfam->getGedcomRecord());
 			$this->noteCount = $ct;

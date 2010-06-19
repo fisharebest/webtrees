@@ -120,7 +120,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	function get_source_count() {
 		if ($this->sourceCount===null) {
-			$ct = preg_match_all("/\d SOUR @(.*)@/", $this->controller->indi->gedrec, $match, PREG_SET_ORDER);
+			$ct = preg_match_all("/\d SOUR @(.*)@/", $this->controller->indi->getGedcomRecord(), $match, PREG_SET_ORDER);
 			foreach ($this->controller->indi->getSpouseFamilies() as $k => $sfam)
 				$ct += preg_match("/\d SOUR /", $sfam->getGedcomRecord());
 			$this->sourceCount = $ct;

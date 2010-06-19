@@ -490,7 +490,7 @@ class HourglassControllerRoot extends BaseController {
 		if ($person->getNumberOfChildren()==0) return $depth-1;
 		$maxdc = $depth;
 		foreach($famids as $famid => $family){
-			$ct = preg_match_all("/1 CHIL @(.*)@/", $family->gedrec, $match, PREG_SET_ORDER);
+			$ct = preg_match_all("/1 CHIL @(.*)@/", $family->getGedcomRecord(), $match, PREG_SET_ORDER);
 			for($i=0; $i<$ct; $i++) {
 				$chil = trim($match[$i][1]);
 				$dc = $this->max_descendency_generations($chil, $depth+1);

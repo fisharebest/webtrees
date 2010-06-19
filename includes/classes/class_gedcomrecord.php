@@ -46,7 +46,7 @@ require_once WT_ROOT.'includes/classes/class_serviceclient.php';
 class GedcomRecord {
 	protected $xref       =null;  // The record identifier
 	protected $type       =null;  // INDI, FAM, etc.
-	protected $ged_id     =null;  // The gedcom file, only set if this record comes from the database
+	public    $ged_id     =null;  // The gedcom file, only set if this record comes from the database
 	protected $gedrec     =null;  // Raw gedcom text (privatised)
 	protected $rfn        =null;
 	protected $facts      =null;

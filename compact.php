@@ -308,7 +308,7 @@ function print_td_person($n) {
 		$addname=$indi->getAddName();
 
 		if ($showthumbs && $MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
-			$object = find_highlighted_object($pid, WT_GED_ID, $indi->gedrec);
+			$object = find_highlighted_object($pid, WT_GED_ID, $indi->getGedcomRecord());
 			if (!empty($object)) {
 				$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
 				$size = findImageSize($whichFile);
