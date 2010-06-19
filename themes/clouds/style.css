@@ -1638,19 +1638,26 @@ padding-top: 12px;
 text-align: center;
 } 
 
+tag_cloud {
+font-family: tahoma, arial, helvetica, sans-serif;
+}
+.tag_cloud a {
+white-space:nowrap;
+}
+
 .clearfloat {
-	clear: both;
+clear: both;
 }
 
 dl {
-	margin:0;
+margin:0;
 }
 
 dt {
-	float:left; 
-	font-weight:bold;
-	margin-right:10px;
-	clear:both; 
+float:left; 
+font-weight:bold;
+margin-right:10px;
+clear:both; 
 }
 
 /* Classes for the INDI page header */
