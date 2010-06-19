@@ -44,24 +44,24 @@ require_once WT_ROOT.'includes/classes/class_event.php';
 require_once WT_ROOT.'includes/classes/class_serviceclient.php';
 
 class GedcomRecord {
-	var $xref       =null;  // The record identifier
-	var $type       =null;  // INDI, FAM, etc.
-	var $ged_id     =null;  // The gedcom file, only set if this record comes from the database
-	var $gedrec     =null;  // Raw gedcom text (privatised)
-	private $changed=false; // Is this a new record, pending approval
-	var $rfn        =null;
-	var $facts      =null;
-	var $changeEvent=null;
-	var $disp       =true;  // Can we display details of this object
-	var $dispname   =true;  // Can we display the name of this object
+	protected $xref       =null;  // The record identifier
+	protected $type       =null;  // INDI, FAM, etc.
+	protected $ged_id     =null;  // The gedcom file, only set if this record comes from the database
+	protected $gedrec     =null;  // Raw gedcom text (privatised)
+	protected $rfn        =null;
+	protected $facts      =null;
+	protected $changeEvent=null;
+	protected $disp       =true;  // Can we display details of this object
+	protected $dispname   =true;  // Can we display the name of this object
+	private   $changed    =false; // Is this a new record, pending approval
 
 	// Cached results from various functions.
-	protected $_getAllNames=null;
-	protected $_getPrimaryName=null;
+	protected $_getAllNames     =null;
+	protected $_getPrimaryName  =null;
 	protected $_getSecondaryName=null;
 
 	// Create a GedcomRecord object from either raw GEDCOM data or a database row
-	function __construct($data, $simple=false) {
+	public function __construct($data, $simple=false) {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			$this->xref  =$data['xref'];
@@ -96,17 +96,15 @@ class GedcomRecord {
 		}
 
 		//-- set the gedcom record a privatized version
-		if ($this->xref && $this->type) {
-			$this->disp=canDisplayRecord($this->ged_id, $this->gedrec);
-		}
-		$this->gedrec = privatize_gedcom($this->gedrec);
+		$this->disp  =canDisplayRecord($this->ged_id, $this->gedrec);
+		$this->gedrec=privatize_gedcom($this->gedrec);
 	}
 
 	// Get an instance of a GedcomRecord.  We either specify
 	// an XREF (in the current gedcom), or we can provide a row
 	// from the database (if we anticipate the record hasn't
 	// been fetched previously).
-	static function &getInstance($data) {
+	static public function &getInstance($data) {
 		global $gedcom_record_cache, $GEDCOM;
 
 		$is_pending=false; // Did this record come from a pending edit
@@ -187,29 +185,27 @@ class GedcomRecord {
 		}
 		switch($type) {
 		case 'INDI':
-			$class_name='Person';
+			$object=new Person($data);
 			break;
 		case 'FAM':
-			$class_name='Family';
+			$object=new Family($data);
 			break;
 		case 'SOUR':
-			$class_name='Source';
+			$object=new Source($data);
 			break;
 		case 'OBJE':
-			$class_name='Media';
+			$object=new Media($data);
 			break;
 		case 'REPO':
-			$class_name='Repository';
+			$object=new Repository($data);
 			break;
 		case 'NOTE':
-			$class_name='Note';
+			$object=new Note($data);
 			break;
 		default:
-			$class_name='GedcomRecord';
+			$object=new GedcomRecord($data);
 			break;
 		}
-
-		$object=new $class_name($data);
 
 		// This is an object from the database, so indicate which gedcom it comes from.
 		$object->ged_id=$ged_id;
@@ -229,47 +225,47 @@ class GedcomRecord {
 	* get the xref
 	* @return string returns the person ID
 	*/
-	function getXref() {
+	public function getXref() {
 		return $this->xref;
 	}
 	/**
 	* get the gedcom file
 	* @return string returns the person ID
 	*/
-	function getGedId() {
+	public function getGedId() {
 		return $this->ged_id;
 	}
 	/**
 	* get the object type
 	* @return string returns the type of this object 'INDI','FAM', etc.
 	*/
-	function getType() {
+	public function getType() {
 		return $this->type;
 	}
 	/**
 	* get gedcom record
 	*/
-	function getGedcomRecord() {
+	public function getGedcomRecord() {
 		return $this->gedrec;
 	}
 	/**
 	* set gedcom record
 	*/
-	function setGedcomRecord($gcRec) {
+	public function setGedcomRecord($gcRec) {
 		$this->gedrec = $gcRec;
 	}
 	/**
 	* set if this is a changed record from the gedcom file
 	* @param boolean $changed
 	*/
-	function setChanged($changed) {
+	public function setChanged($changed) {
 		$this->changed = $changed;
 	}
 	/**
 	* get if this is a changed record from the gedcom file
 	* @return boolean
 	*/
-	function getChanged() {
+	public function getChanged() {
 		return $this->changed;
 	}
 
@@ -277,7 +273,7 @@ class GedcomRecord {
 	* is this person from another server
 	* @return boolean  return true if this person was linked from another server
 	*/
-	function isRemote() {
+	public function isRemote() {
 		if (is_null($this->rfn)) $this->rfn = get_gedcom_value('RFN', 1, $this->gedrec);
 		if (empty($this->rfn) || $this->xref!=$this->rfn) return false;
 
@@ -337,7 +333,7 @@ class GedcomRecord {
 	* Get the title that should be used in the link
 	* @return string
 	*/
-	function getLinkTitle() {
+	public function getLinkTitle() {
 		$title = get_gedcom_setting($this->ged_id, 'title');
 		if ($this->isRemote()) {
 			$parts = explode(':', $this->rfn);
@@ -356,7 +352,7 @@ class GedcomRecord {
 	}
 
 	// Get an HTML link to this object, for use in sortable lists.
-	function getXrefLink($target='') {
+	public function getXrefLink($target='') {
 		global $SEARCH_SPIDER;
 		if (empty($SEARCH_SPIDER)) {
 			if ($target) {
@@ -372,7 +368,7 @@ class GedcomRecord {
 	* return an absolute url for linking to this record from another site
 	*
 	*/
-	function getAbsoluteLinkUrl() {
+	public function getAbsoluteLinkUrl() {
 		return WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getLinkUrl();
 	}
 
@@ -380,7 +376,7 @@ class GedcomRecord {
 	* check if this record has been marked for deletion
 	* @return boolean
 	*/
-	function isMarkedDeleted() {
+	public function isMarkedDeleted() {
 		$tmp=WT_DB::prepare(
 			"SELECT new_gedcom".
 			" FROM `##change`".
@@ -396,7 +392,7 @@ class GedcomRecord {
 	* Can the details of this record be shown?
 	* @return boolean
 	*/
-	function canDisplayDetails() {
+	public function canDisplayDetails() {
 		return $this->disp;
 	}
 
@@ -404,7 +400,7 @@ class GedcomRecord {
 	* Can the name of this record be shown?
 	* @return boolean
 	*/
-	function canDisplayName() {
+	public function canDisplayName() {
 		return $this->dispname;
 	}
 
@@ -461,12 +457,12 @@ class GedcomRecord {
 	}
 
 	// If this object has no name, what do we call it?
-	function getFallBackName() {
+	public function getFallBackName() {
 		return $this->getXref();
 	}
 
 	// Which of the (possibly several) names of this record is the primary one.
-	function getPrimaryName() {
+	public function getPrimaryName() {
 		if (is_null($this->_getPrimaryName)) {
 			// Generally, the first name is the primary one....
 			$this->_getPrimaryName=0;
@@ -520,7 +516,7 @@ class GedcomRecord {
 	}
 
 	// Which of the (possibly several) names of this record is the secondary one.
-	function getSecondaryName() {
+	public function getSecondaryName() {
 		if (is_null($this->_getSecondaryName)) {
 			// Generally, the primary and secondary names are the same
 			$this->_getSecondaryName=$this->getPrimaryName();
@@ -540,7 +536,7 @@ class GedcomRecord {
 	}
 
 	// Allow the choice of primary name to be overidden, e.g. in a search result
-	function setPrimaryName($n) {
+	public function setPrimaryName($n) {
 		$this->_getPrimaryName=$n;
 		$this->_getSecondaryName=null;
 	}
@@ -593,7 +589,7 @@ class GedcomRecord {
 	}
 
 	// Get the three variants of the name
-	function getFullName() {
+	public function getFullName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
 			return $tmp[$this->getPrimaryName()]['full'];
@@ -601,12 +597,12 @@ class GedcomRecord {
 			return i18n::translate('Private');
 		}
 	}
-	function getSortName() {
+	public function getSortName() {
 		// The sortable name is never displayed, no need to call canDisplayName()
 		$tmp=$this->getAllNames();
 		return $tmp[$this->getPrimaryName()]['sort'];
 	}
-	function getListName() {
+	public function getListName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
 			return $tmp[$this->getPrimaryName()]['list'];
@@ -615,7 +611,7 @@ class GedcomRecord {
 		}
 	}
 	// Get the fullname in an alternative character set
-	function getAddName() {
+	public function getAddName() {
 		if ($this->canDisplayName() && $this->getPrimaryName()!=$this->getSecondaryName()) {
 			$all_names=$this->getAllNames();
 			return $all_names[$this->getSecondaryName()]['full'];
@@ -629,7 +625,7 @@ class GedcomRecord {
 	// If $find is set, then we are displaying items from a selection list.
 	// $name allows us to use something other than the record name.
 	//////////////////////////////////////////////////////////////////////////////
-	function format_list($tag='li', $find=false, $name=null) {
+	public function format_list($tag='li', $find=false, $name=null) {
 		if (is_null($name)) {
 			$name=($tag=='li') ? $this->getListName() : $this->getFullName();
 		}
@@ -646,12 +642,12 @@ class GedcomRecord {
 
 	// This function should be redefined in derived classes to show any major
 	// identifying characteristics of this record.
-	function format_list_details() {
+	public function format_list_details() {
 		return '';
 	}
 
 	// Extract/format the first fact from a list of facts.
-	function format_first_major_fact($facts, $style) {
+	public function format_first_major_fact($facts, $style) {
 		foreach ($this->getAllFactsByType(explode('|', $facts)) as $event) {
 			// Only display if it has a date or place (or both)
 			if ($event->getDate() || $event->getPlace()) {
@@ -667,36 +663,36 @@ class GedcomRecord {
 	}
 
 	// Count the number of records that link to this one
-	function countLinkedIndividuals() {
+	public function countLinkedIndividuals() {
 		return count_linked_indi($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function countLinkedFamilies() {
+	public function countLinkedFamilies() {
 		return count_linked_fam($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function countLinkedNotes() {
+	public function countLinkedNotes() {
 		return count_linked_note($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function countLinkedSources() {
+	public function countLinkedSources() {
 		return count_linked_sour($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function countLinkedMedia() {
+	public function countLinkedMedia() {
 		return count_linked_obje($this->getXref(), $this->getType(), $this->ged_id);
 	}
 
 	// Fetch the records that link to this one
-	function fetchLinkedIndividuals() {
+	public function fetchLinkedIndividuals() {
 		return fetch_linked_indi($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function fetchLinkedFamilies() {
+	public function fetchLinkedFamilies() {
 		return fetch_linked_fam($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function fetchLinkedNotes() {
+	public function fetchLinkedNotes() {
 		return fetch_linked_note($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function fetchLinkedSources() {
+	public function fetchLinkedSources() {
 		return fetch_linked_sour($this->getXref(), $this->getType(), $this->ged_id);
 	}
-	function fetchLinkedMedia() {
+	public function fetchLinkedMedia() {
 		return fetch_linked_obje($this->getXref(), $this->getType(), $this->ged_id);
 	}
 
@@ -705,7 +701,7 @@ class GedcomRecord {
 	// Multiple events can exist because of uncertainty in dates, dates in different
 	// calendars, place-names in both latin and hebrew character sets, etc.
 	// It also allows us to combine dates/places from different events in the summaries.
-	function getAllEventDates($event) {
+	public function getAllEventDates($event) {
 		$dates=array();
 		foreach ($this->getAllFactsByType($event) as $event) {
 			if ($event->getDate()->isOK()) {
@@ -714,7 +710,7 @@ class GedcomRecord {
 		}
 		return $dates;
 	}
-	function getAllEventPlaces($event) {
+	public function getAllEventPlaces($event) {
 		$places=array();
 		foreach ($this->getAllFactsByType($event) as $event) {
 			if (preg_match_all('/\n(?:2 PLAC|3 (?:ROMN|FONE|_HEB)) +(.+)/', $event->getGedcomRecord(), $ged_places)) {
@@ -732,7 +728,7 @@ class GedcomRecord {
 	* @param string $fact
 	* @return Event
 	*/
-	function &getFactByType($factType) {
+	public function &getFactByType($factType) {
 		$this->parseFacts();
 		if (empty($this->facts)) {
 			return null;
@@ -751,7 +747,7 @@ class GedcomRecord {
 	* @param mixed $factTypes  may be a single string or an array of strings
 	* @return Event
 	*/
-	function getAllFactsByType($factTypes) {
+	public function getAllFactsByType($factTypes) {
 		$this->parseFacts();
 		if (is_string($factTypes)) {
 			$factTypes = array($factTypes);
@@ -771,7 +767,7 @@ class GedcomRecord {
 	* returns an array of all of the facts
 	* @return Array
 	*/
-	function getFacts($nfacts=NULL) {
+	public function getFacts($nfacts=NULL) {
 		$this->parseFacts($nfacts);
 		return $this->facts;
 	}
@@ -781,7 +777,7 @@ class GedcomRecord {
 	*
 	* @return Event
 	*/
-	function getChangeEvent() {
+	public function getChangeEvent() {
 		if (is_null($this->changeEvent)) {
 			$this->changeEvent = $this->getFactByType('CHAN');
 		}
@@ -791,7 +787,7 @@ class GedcomRecord {
 	/**
 	* Parse the facts from the record
 	*/
-	function parseFacts($nfacts=NULL) {
+	public function parseFacts($nfacts=NULL) {
 		//-- only run this function once
 		if (!is_null($this->facts) && is_array($this->facts)) {
 			return;
@@ -839,7 +835,7 @@ class GedcomRecord {
 	* for generating a diff view
 	* @param GedcomRecord $diff the record to compare facts with
 	*/
-	function diffMerge(&$diff) {
+	public function diffMerge(&$diff) {
 		if (is_null($diff)) {
 			return;
 		}
@@ -879,7 +875,7 @@ class GedcomRecord {
 		}
 	}
 
-	function getEventDate($event) {
+	public function getEventDate($event) {
 		$srec = $this->getAllEvents($event);
 		if (!$srec) {
 			return '';
@@ -887,7 +883,7 @@ class GedcomRecord {
 		$srec = $srec[0];
 		return get_gedcom_value('DATE', 2, $srec);
 	}
-	function getEventSource($event) {
+	public function getEventSource($event) {
 		$srec = $this->getAllEvents($event);
 		if (!$srec) {
 			return '';
@@ -900,7 +896,7 @@ class GedcomRecord {
 	// Get the last-change timestamp for this record - optionally wrapped in a
 	// link to ourself.
 	//////////////////////////////////////////////////////////////////////////////
-	function LastChangeTimestamp($add_url) {
+	public function LastChangeTimestamp($add_url) {
 		global $DATE_FORMAT, $TIME_FORMAT;
 
 		$chan = $this->getChangeEvent();
@@ -927,7 +923,7 @@ class GedcomRecord {
 	//////////////////////////////////////////////////////////////////////////////
 	// Get the last-change user for this record
 	//////////////////////////////////////////////////////////////////////////////
-	function LastchangeUser() {
+	public function LastchangeUser() {
 		$chan = $this->getChangeEvent();
 
 		if (is_null($chan)) {
