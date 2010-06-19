@@ -2666,26 +2666,28 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	// Try to the split the relationship into sub-relationships.  e.g. third-cousin's great-uncle's fourth-cousin.
 	// This next block of code is experimental.  If it doesn't work, we can remove it.....
 	if (preg_match('/^(.*)(hus|wif|spo)(.*)/', $path, $match)) {
+		// TODO: need the actual people
+		$dummy=new Person('');
 		if ($match[1]=='') {
 			return i18n::translate(
 				// I18N: A complex relationship, such as "second cousin's great-uncle"
 				'%1$s\'s %2$s',
-				get_relationship_name_from_path($match[2], null, null), /* EEK! we need the INDI, not NULL ... */
-				get_relationship_name_from_path($match[3], null, null)
+				get_relationship_name_from_path($match[2], $dummy, $dummy),
+				get_relationship_name_from_path($match[3], $dummy, $dummy)
 			);
 		} elseif ($match[3]=='') {
 			return i18n::translate(
 				'%1$s\'s %2$s',
-				get_relationship_name_from_path($match[1], null, null),
-				get_relationship_name_from_path($match[2], null, null)
+				get_relationship_name_from_path($match[1], $dummy, $dummy),
+				get_relationship_name_from_path($match[2], $dummy, $dummy)
 			);
 		} else {
 			return i18n::translate(
 				// I18N: A complex relationship, such as "second cousin's great-uncle's third cousin"
 				'%1$s\'s %2$s\'s %3$s',
-				get_relationship_name_from_path($match[1], null, null),
-				get_relationship_name_from_path($match[2], null, null),
-				get_relationship_name_from_path($match[3], null, null)
+				get_relationship_name_from_path($match[1], $dummy, $dummy),
+				get_relationship_name_from_path($match[2], $dummy, $dummy),
+				get_relationship_name_from_path($match[3], $dummy, $dummy)
 			);
 		}
 	}
