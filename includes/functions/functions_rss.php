@@ -337,10 +337,11 @@ function getRecentChanges() {
 				$disp = true;
 				switch($type) {
 					case 'INDI':
-						if (($filter=="living")&&(is_dead($gedrec, WT_GED_ID)==1)) {
+						$person=Person::getInstance($gid);
+						if ($filter=="living" && $person->isDead()) {
 							$disp = false;
-						} elseif ($HIDE_LIVE_PEOPLE) {
-							$disp = canDisplayRecord(WT_GED_ID, $gedrec);
+						} else {
+							$disp = $person->canDisplayDetails();
 						}
 						break;
 					case 'FAM':
