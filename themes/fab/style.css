@@ -20,7 +20,7 @@
 	display:none;
 }
 @media print {
-	.submenu, .sublinks_table {
+	.submenu, .sublinks_table, .help {
 		display:none;
 	}
 }
