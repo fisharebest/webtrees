@@ -596,8 +596,6 @@ function filterMedia($media, $filter, $acceptExt) {
 function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	global $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
 
-	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
-
 	if (strlen($filename) == 0)
 		return false;
 	if (!isset ($generateThumb))
@@ -634,7 +632,7 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	if (!$overwrite && media_exists($thumbDir . $thumbName))
 		return $thumbDir . $thumbName;
 
-	if ($AUTO_GENERATE_THUMBS && $generateThumb) {
+	if ($generateThumb && get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS')) {
 		if (generate_thumbnail($mainDir . $thumbName, $thumbDir . $thumbName)) {
 			return $thumbDir . $thumbName;
 		}
