@@ -6,7 +6,8 @@
  * Copyright (C) 2010 webtrees development team.
  *
  * Derived from PhpGedView Cloudy theme
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+ * Original author w.a. bastein http://genealogy.bastein.biz
+ * Copyright (C) 2010  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,7 +25,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: header.php 8681 2010-06-09 22:31:45Z greg $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
