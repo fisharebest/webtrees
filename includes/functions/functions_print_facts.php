@@ -1199,7 +1199,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			if ($TEXT_DIRECTION=="ltr" && !hasLTRText($text) && hasRTLText($text)) $align=" align=\"right\"";
 		}
 		echo " </td>\n<td class=\"optionbox $styleadd wrap\" $align>";
-		if (canDisplayFact($pid, $ged_id, $noterec)) {
+		if (!empty($text)) {
 			echo $text;
 			if (!empty($noterec)) print_fact_sources($noterec, 1);
 			// See if RESN tag prevents display or edit/delete
