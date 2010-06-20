@@ -1212,7 +1212,7 @@ padding: 3px;
 border:solid #999 1px;
 font-size: 12px;
 vertical-align: top;
-white-space: normal;
+white-space: nowrap;
 padding: 3px;
 }
 

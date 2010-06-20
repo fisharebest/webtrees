@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8709 2010-06-11 23:35:42Z rob $
+* $Id: ash.css 8898 2010-06-19 23:37:25Z rob $
 */
 
 .something {
@@ -1212,7 +1212,7 @@ padding: 3px;
 border:solid #999 1px;
 font-size: 12px;
 vertical-align: top;
-white-space: normal;
+white-space: nowrap;
 padding: 3px;
 }
 

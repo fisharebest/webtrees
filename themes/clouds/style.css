@@ -1240,7 +1240,7 @@ color: #006;
 font: normal normal normal 11px/normal tahoma, arial, helvetica, sans-serif;
 padding: 3px;
 vertical-align: top;
-white-space: normal;
+white-space: nowrap;
 }
 
 .vmiddle {
