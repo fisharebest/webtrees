@@ -2667,7 +2667,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	// This next block of code is experimental.  If it doesn't work, we can remove it.....
 	if (preg_match('/^(.*)(hus|wif|spo)(.*)/', $path, $match)) {
 		// TODO: need the actual people
-		$dummy=new Person('');
+		$dummy=new Person('0 @this_is_a_dummy@ INDI'); // temporary hack.  We really need to get these indis from somewhere
 		if ($match[1]=='') {
 			return i18n::translate(
 				// I18N: A complex relationship, such as "second cousin's great-uncle"
