@@ -1691,7 +1691,7 @@ class GedcomDate {
 	static function GetAgeYears($d1, $d2=null, $warn_on_negative=true) {
 		if (!is_object($d1)) return;
 		if (!is_object($d2))
-			return $d1->date1->GetAge(false, client_jd(), $warn_on_negative );
+			return $d1->date1->GetAge(false, WT_CLIENT_JD, $warn_on_negative );
 		else
 			return $d1->date1->GetAge(false, $d2->MinJD(), $warn_on_negative);
 	}
@@ -1700,7 +1700,7 @@ class GedcomDate {
 	// Return a gedcom style age string: "1y 2m 3d" (for fact details)
 	static function GetAgeGedcom($d1, $d2=null, $warn_on_negative=true) {
 		if (is_null($d2)) {
-			return $d1->date1->GetAge(true, client_jd(), $warn_on_negative);
+			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {
 			// If dates overlap, then can't calculate age.
 			if (GedcomDate::Compare($d1, $d2)) {

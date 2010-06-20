@@ -51,8 +51,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$block=get_block_setting($block_id, 'block', true);
 
-		$startjd=server_jd();
-		$endjd=$startjd+$days-1;
+		$startjd=WT_CLIENT_JD;
+		$endjd  =WT_CLIENT_JD+$days-1;
 
 		$id=$this->getName().$block_id;
 		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {

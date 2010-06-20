@@ -333,11 +333,10 @@ if ($MULTI_MEDIA) {
 }
 require WT_ROOT.'includes/functions/functions_date.php';
 
-define('WT_TODAY_JD', server_jd()); // Privacy calculations need to know today's date
-
-if (empty($PEDIGREE_GENERATIONS)) {
-	$PEDIGREE_GENERATIONS=$DEFAULT_PEDIGREE_GENERATIONS;
-}
+// Use the server date to calculate privacy, etc.
+// Use the client date to show ages, etc. 
+define('WT_SERVER_JD', timestamp_to_jd(time()));
+define('WT_CLIENT_JD', timestamp_to_jd(client_time()));
 
 // Who are we?
 define('WT_USER_ID', getUserId());

@@ -1558,7 +1558,7 @@ class stats {
 		$top10 = array();
 		foreach ($rows as $row) {
 			$person=Person::getInstance($row['id']);
-			$age = (client_jd()-$row['age']);
+			$age = (WT_CLIENT_JD-$row['age']);
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
 			} else if (floor($age/12)>0) {

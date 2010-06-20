@@ -427,7 +427,7 @@ class Person extends GedcomRecord {
 				if ($tmp->MinJD()) {
 					global $MAX_ALIVE_AGE;
 					$tmp2=$tmp->AddYears($MAX_ALIVE_AGE, 'bef');
-					if ($tmp2->MaxJD()<server_jd()) {
+					if ($tmp2->MaxJD()<WT_SERVER_JD) {
 						$this->_getEstimatedDeathDate=$tmp2;
 					} else {
 						$this->_getEstimatedDeathDate=new GedcomDate(''); // always return a date object

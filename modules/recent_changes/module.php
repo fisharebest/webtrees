@@ -50,7 +50,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$days      =get_block_setting($block_id, 'days', 30);
 		$hide_empty=get_block_setting($block_id, 'hide_empty', false);
 
-		$found_facts=get_recent_changes(client_jd()-$days);
+		$found_facts=get_recent_changes(WT_CLIENT_JD-$days);
 
 		if (empty($found_facts) && $hide_empty) {
 			return;

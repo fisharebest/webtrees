@@ -80,7 +80,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= '</tr>';
 
 		$found=false;
-		$end_jd=$show_future ? 99999999 : client_jd();
+		$end_jd=$show_future ? 99999999 : WT_CLIENT_JD;
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
 			$record=GedcomRecord::getInstance($todo['id']);
 			if ($record && $record->canDisplayDetails()) {

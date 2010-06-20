@@ -52,7 +52,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$infoStyle    =get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle    =get_block_setting($block_id, 'sortStyle',  'alpha');
 
-		$todayjd=client_jd();
+		$todayjd=WT_CLIENT_JD;
 
 		$id=$this->getName().$block_id;
 		$title='';

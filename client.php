@@ -425,7 +425,7 @@ case 'uploadmedia':
 case 'getchanges':
 	$lastdate = new GedcomDate(safe_REQUEST($_REQUEST,'date', '\d\d \w\w\w \d\d\d\d'));
 	if ($lastdate->isOK()) {
-		if ($lastdate->MinJD()<server_jd()-180) {
+		if ($lastdate->MinJD()<WT_SERVER_JD-180) {
 			addToLog($action." ERROR 24: You cannot retrieve updates for more than 180 days.", 'debug');
 			print "ERROR 24: You cannot retrieve updates for more than 180 days.\n";
 		} else {

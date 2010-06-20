@@ -1548,7 +1548,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 	// Print a final summary message about restricted/filtered facts
 	$summary = "";
-	if ($endjd==client_jd()) {
+	if ($endjd==WT_CLIENT_JD) {
 		// We're dealing with the Today's Events block
 		if ($output==0) {
 			if ($filter==0) {
@@ -1656,7 +1656,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 
 	// Print a final summary message about restricted/filtered facts
 	$summary = "";
-	if ($endjd==client_jd()) {
+	if ($endjd==WT_CLIENT_JD) {
 		// We're dealing with the Today's Events block
 		if ($output==0) {
 			if ($filter==0) {

@@ -90,7 +90,7 @@ function is_dead($indirec, $gedcom_id) {
 	preg_match_all('/\n2 DATE (.+)/', $indirec, $date_matches);
 	foreach ($date_matches[1] as $date_match) {
 		$date=new GedcomDate($date_match);
-		if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*$MAX_ALIVE_AGE) {
+		if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
 			return true;
 		}
 	}
@@ -106,7 +106,7 @@ function is_dead($indirec, $gedcom_id) {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
 				// Assume fathers are no more than 40 years older than their children
-				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
 					return true;
 				}
 			}
@@ -116,7 +116,7 @@ function is_dead($indirec, $gedcom_id) {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
 				// Assume mothers are no more than 40 years older than their children
-				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
 					return true;
 				}
 			}
@@ -132,7 +132,7 @@ function is_dead($indirec, $gedcom_id) {
 		foreach ($date_matches[1] as $date_match) {
 			$date=new GedcomDate($date_match);
 			// Assume marriage occurs after age of 10
-			if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE-10)) {
+			if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-10)) {
 				return true;
 			}
 		}
@@ -148,7 +148,7 @@ function is_dead($indirec, $gedcom_id) {
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
 				// Assume max age difference between spouses of 40 years
-				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE+40)) {
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
 					return true;
 				}
 			}
@@ -161,7 +161,7 @@ function is_dead($indirec, $gedcom_id) {
 			// Assume children born after age of 15
 			foreach ($date_matches[1] as $date_match) {
 				$date=new GedcomDate($date_match);
-				if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE-15)) {
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-15)) {
 					return true;
 				}
 			}
@@ -175,7 +175,7 @@ function is_dead($indirec, $gedcom_id) {
 					// Assume grandchildren born after age of 30
 					foreach ($date_matches[1] as $date_match) {
 						$date=new GedcomDate($date_match);
-						if ($date->isOK() && $date->MaxJD() <= WT_TODAY_JD - 365*($MAX_ALIVE_AGE-30)) {
+						if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-30)) {
 							return true;
 						}
 					}

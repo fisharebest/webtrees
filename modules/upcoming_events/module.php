@@ -54,8 +54,8 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 
-		$startjd=client_jd()+1;
-		$endjd=client_jd()+$days;
+		$startjd=WT_CLIENT_JD+1;
+		$endjd  =WT_CLIENT_JD+$days;
 
 		// Output starts here
 		$id=$this->getName().$block_id;
