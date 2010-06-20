@@ -157,6 +157,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK',              safe_POST('NEW_FAM_FACTS_QUICK'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE',             safe_POST('NEW_FAM_FACTS_UNIQUE'));
 	set_gedcom_setting(WT_GED_ID, 'FAM_ID_PREFIX',                safe_POST('NEW_FAM_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'FAVICON',                      safe_POST('NEW_FAVICON'));
 	set_gedcom_setting(WT_GED_ID, 'FULL_SOURCES',                 safe_POST_bool('NEW_FULL_SOURCES'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB',           safe_POST('NEW_GEDCOM_DEFAULT_TAB'));
 	set_gedcom_setting(WT_GED_ID, 'GEDCOM_ID_PREFIX',             safe_POST('NEW_GEDCOM_ID_PREFIX'));
@@ -656,20 +657,26 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php print $META_TITLE; ?>" tabindex="<?php echo ++$i; ?>" /><br />
+						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" tabindex="<?php echo ++$i; ?>" />
 						</td>
 					</tr>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php print $META_DESCRIPTION; ?>" tabindex="<?php echo ++$i; ?>" /><br />
+						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" tabindex="<?php echo ++$i; ?>" /><br />
 						<?php print i18n::translate('Leave this field empty to use the title of the currently active database.'); ?></td>
+					</tr>
+					</tr>
+						<td class="descriptionbox nowrap">
+							<?php echo i18n::translate('Favorites icon'), help_link('FAVICON'); ?>
+						</td>
+						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_FAVICON" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAVICON'); ?>" tabindex="<?php echo ++$i; ?>" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Robots META tag'), help_link('META_ROBOTS'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php print $META_ROBOTS; ?>" tabindex="<?php echo ++$i; ?>" /><br />
+						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_ROBOTS'); ?>" tabindex="<?php echo ++$i; ?>" /><br />
 						</td>
 					</tr>
 				</table>

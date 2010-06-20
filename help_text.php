@@ -2373,7 +2373,7 @@ case 'META_ROBOTS':
 
 case 'META_TITLE':
 	$title=i18n::translate('Add to TITLE header tag');
-	$text=i18n::translate('Anything on this line will be added to the TITLE tag in the HTML page header after the regular page title and before the <b>webtrees</b> credit.');
+	$text=i18n::translate('This text will be appended to each page title.  It will be shown in the browser\'s title bar, bookmarks, etc.');
 	break;
 
 case 'MULTI_MEDIA':
@@ -4273,7 +4273,7 @@ default:
 	break;
 }
 
-print_simple_header(i18n::translate('Help for «%s»', htmlspecialchars($title)));
+print_simple_header(i18n::translate('Help for «%s»', htmlspecialchars(strip_tags($title))));
 echo '<div class="helpheader">', htmlspecialchars($title),'</div>';
 echo '<div class="helpcontent">', nl2br($text),'</div>';
 echo '<div class="helpfooter"><br />';
