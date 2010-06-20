@@ -428,6 +428,7 @@ if (WT_USER_ID) {
 	if ((!empty($_POST['user_theme']))&&(!empty($_POST['oldusername']))&&($_POST['oldusername']==WT_USER_ID)) $usertheme = $_POST['user_theme'];
 	if ((!empty($usertheme)) && (file_exists($usertheme.'theme.php')))  {
 		$THEME_DIR = $usertheme;
+		} else { $THEME_DIR = "themes/webtrees/"; }
 	}
 }
 
