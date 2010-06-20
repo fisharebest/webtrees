@@ -97,9 +97,6 @@ define('WT_JS_END',   "\n//]]>\n</script>\n");
 // Used in Google charts
 define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 
-// Maximum number of results in auto-complete fields
-define('WT_AUTOCOMPLETE_LIMIT', 500);
-
 // Privacy constants
 define('WT_PRIV_PUBLIC',  2); // Allows non-authenticated public visitors to view the marked information
 define('WT_PRIV_USER',    1); // Allows authenticated users to access the marked information
