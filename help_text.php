@@ -4029,11 +4029,6 @@ case 'show_age_marker':
 	$text=i18n::translate('If you check this box, you will see an Age marker.<br /><br />You can slide this Age marker up or down along the time line.  The sliding Age marker is a nice tool to check the age of a person at a certain event.  You can enable or disable the Age marker individually for each person in the chart.');
 	break;
 
-case 'show_changes':
-	$title=i18n::translate('This record has been updated.  Click here to show changes.');
-	$text=i18n::translate('When you see this message, it means two things:<ol><li>Somebody has made changes to the GEDCOM<br />Records may have been added, deleted, or changed.</li><li>The changes have not yet been accepted by the administrator.<br />Once the changes have been accepted or rejected, you will no longer see this message.</li></ol>You can see what changes have been made when you click the link.  If you notice that a change is not correct, please notify the admin.');
-	break;
-
 case 'show_fact_sources':
 	$title=i18n::translate('Show all sources');
 	$text=i18n::translate('When this option is checked, you can see all Source or Note records for this person.  When this option is unchecked, Source or Note records that are associated with other facts for this person will not be shown.');
