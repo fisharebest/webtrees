@@ -429,7 +429,6 @@ if (WT_USER_ID) {
 	if ((!empty($usertheme)) && (file_exists($usertheme.'theme.php')))  {
 		$THEME_DIR = $usertheme;
 		} else { $THEME_DIR = "themes/webtrees/"; }
-	}
 }
 
 if (isset($_SESSION['theme_dir'])) {
