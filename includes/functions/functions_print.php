@@ -445,7 +445,12 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	if ($META_TITLE) {
 		$title.=' - '.$META_TITLE;
 	}
-
+	if ($view=='simple') {
+		// The simple view needs to work without a database - for use during installation
+		$GEDCOM_TITLE=WT_WEBTREES;
+	} else {
+		$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
+	}
 	$javascript = '';
 	$query_string = $QUERY_STRING;
 	if ($view!='simple') {
