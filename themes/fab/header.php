@@ -48,10 +48,6 @@ echo
 	'<link rel="shortcut icon" href="', $FAVICON, '" type="image/x-icon">',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
-if ($ENABLE_RSS && !$REQUIRE_AUTHENTICATION) {
-	echo '<link href="', WT_SERVER_NAME.WT_SCRIPT_PATH.'rss.php?ged='.urlencode($GEDCOM), '" rel="alternate" type="', $applicationType, '" title="', htmlspecialchars($GEDCOM_TITLE), '" />';
-}
-
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
 		echo

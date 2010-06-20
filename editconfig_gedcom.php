@@ -150,7 +150,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_THOUSANDS',     safe_POST_bool('NEW_DISPLAY_JEWISH_THOUSANDS'));
 	set_gedcom_setting(WT_GED_ID, 'EDIT_AUTOCLOSE',               safe_POST_bool('NEW_EDIT_AUTOCLOSE'));
 	set_gedcom_setting(WT_GED_ID, 'ENABLE_AUTOCOMPLETE',          safe_POST_bool('NEW_ENABLE_AUTOCOMPLETE'));
-	set_gedcom_setting(WT_GED_ID, 'ENABLE_RSS',                   safe_POST_bool('NEW_ENABLE_RSS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 safe_POST_bool('NEW_EXPAND_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      safe_POST_bool('NEW_EXPAND_RELATIVES_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               safe_POST_bool('NEW_EXPAND_SOURCES'));
@@ -202,7 +201,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE',            safe_POST('NEW_REPO_FACTS_UNIQUE'));
 	set_gedcom_setting(WT_GED_ID, 'REPO_ID_PREFIX',               safe_POST('NEW_REPO_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION',       safe_POST_bool('NEW_REQUIRE_AUTHENTICATION'));
-	set_gedcom_setting(WT_GED_ID, 'RSS_FORMAT',                   safe_POST('NEW_RSS_FORMAT'));
 	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE',         safe_POST_bool('NEW_SAVE_WATERMARK_IMAGE'));
 	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB',         safe_POST_bool('NEW_SAVE_WATERMARK_THUMB'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                safe_POST_bool('NEW_SHOW_AGE_DIFF'));
@@ -672,25 +670,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Robots META tag'), help_link('META_ROBOTS'); ?>
 						</td>
 						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php print $META_ROBOTS; ?>" tabindex="<?php echo ++$i; ?>" /><br />
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Enable RSS'), help_link('ENABLE_RSS'); ?>
-						</td>
-						<td class="optionbox width60">
-							<?php echo edit_field_yes_no('NEW_ENABLE_RSS', get_gedcom_setting(WT_GED_ID, 'ENABLE_RSS'), 'tabindex="'.(++$i).'"'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('RSS Format'), help_link('RSS_FORMAT'); ?>
-						</td>
-						<td class="optionbox width60"><select name="NEW_RSS_FORMAT" dir="ltr" tabindex="<?php echo ++$i; ?>">
-								<option value="ATOM" <?php if ($RSS_FORMAT=="ATOM") print "selected=\"selected\""; ?>>ATOM 1.0</option>
-								<option value="RSS2.0" <?php if ($RSS_FORMAT=="RSS2.0") print "selected=\"selected\""; ?>>RSS 2.0</option>
-								<option value="RSS1.0" <?php if ($RSS_FORMAT=="RSS1.0") print "selected=\"selected\""; ?>>RSS 1.0</option>
-							</select>
 						</td>
 					</tr>
 				</table>

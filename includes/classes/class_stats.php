@@ -49,7 +49,7 @@ class stats {
 	var $_gedcom;
 	var $_gedcom_url;
 	var $_ged_id;
-	var $_server_url; // Absolute URL for generating external links.  e.g. in RSS feeds
+	var $_server_url; // Absolute URL for generating external links. (TODO: is this really needed?)
 	static $_not_allowed = false;
 	static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
@@ -1519,7 +1519,6 @@ class stats {
 		if ($type == 'list') {
 			return "<ul>\n{$top10}</ul>\n";
 		}
-		// Statstics are used by RSS feeds, etc., so need absolute URLs.
 		return $top10;
 	}
 

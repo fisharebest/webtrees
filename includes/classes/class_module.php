@@ -118,7 +118,10 @@ abstract class WT_Module {
 				// Module has been deleted from disk?  Remove it from the database.
 				AddToLog("Module {$module_name} has been deleted from disk - deleting from database", 'config');
 				WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
-				WT_DB::prepare("DELETE FROM `##module` WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE `##block_setting` FROM `##block` JOIN `##block_setting` USING (block_id) WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##block`          WHERE module_name=?")->execute(array($module_name));
+				WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
 			}
 		}
 		return $array;

@@ -46,9 +46,6 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		<?php if ($FAVICON) { ?><link rel="shortcut icon" href="<?php echo $FAVICON; ?>" type="image/x-icon" /> <?php } ?>
 
 		<title><?php echo $title; ?></title>
-		<?php if ($ENABLE_RSS && !$REQUIRE_AUTHENTICATION){ ?>
-			<link href="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.'rss.php?ged='.urlencode($GEDCOM); ?>" rel="alternate" type="<?php echo $applicationType; ?>" title="<?php echo htmlspecialchars($GEDCOM_TITLE); ?>" />
-		<?php } ?>
 		<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
 		<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
 		<?php if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>

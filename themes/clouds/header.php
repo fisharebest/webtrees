@@ -50,10 +50,6 @@ echo
 	'<title>', htmlspecialchars($GEDCOM_TITLE), '</title>',
 	'<link rel="shortcut icon" href="', $FAVICON, '" type="image/x-icon">';
 
-if ($ENABLE_RSS && !$REQUIRE_AUTHENTICATION) {
-	echo '<link href="', WT_SERVER_NAME.WT_SCRIPT_PATH.'rss.php?ged='.urlencode($GEDCOM), '" rel="alternate" type="', $applicationType, '" title="', htmlspecialchars($GEDCOM_TITLE), '" />';
-}
-
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
 		echo

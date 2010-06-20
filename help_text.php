@@ -2186,11 +2186,6 @@ case 'ENABLE_AUTOCOMPLETE':
 	$text=i18n::translate('This option determines whether Autocomplete should be active while information is being entered into certain fields on input forms.  When this option is set to <b>Yes</b>, text input fields for which Autocomplete is possible are indicated by a differently colored background.<br /><br />When Autocomplete is active, <b>webtrees</b> will search its database for possible matches according to what you have already entered.  As you enter more information, the list of possible matches is refined.  When you see the desired input in the list of matches, you can move the mouse cursor to that line of the list and then click the left mouse button to complete the input.<br /><br />The disadvantages of Autocomplete are that it slows the program, entails significant database activity, and also results in more data being sent to the browser.');
 	break;
 
-case 'ENABLE_RSS':
-	$title=i18n::translate('Enable RSS');
-	$text=i18n::translate('This option lets you disable the RSS feature.<br /><br />RSS lets users monitor your site for changes to the Index page without actually visiting your site periodically.  If too many users make use of this feature or if the refresh frequency set by these users is too high, RSS can use up too much bandwidth or server capacity.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/RSS\' target=\'_blank\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about RSS and the various RSS formats.');
-	break;
-
 case 'EXPAND_NOTES':
 	$title=i18n::translate('Automatically expand notes');
 	$text=i18n::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.');
@@ -2544,11 +2539,6 @@ case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
 case 'REQUIRE_AUTHENTICATION':
 	$title=i18n::translate('Require visitor authentication');
 	$text=i18n::translate('Enabling this option will force all visitors to login before they can view any data on the site.');
-	break;
-
-case 'RSS_FORMAT':
-	$title=i18n::translate('RSS Format');
-	$text=i18n::translate('The format to be used as the default feed format for the site. The numeric suffixes <u>do not</u> indicate version: they identify formats.  For example, RSS 2.0 is not newer than RSS 1.0, but a different format. Feed readers should be able to read any format.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/RSS\' target=\'_blank\'title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about RSS and the various RSS formats.');
 	break;
 
 case 'SAVE_WATERMARK_IMAGE':
@@ -4007,11 +3997,6 @@ case 'review_changes':
 case 'rootid':
 	$title=i18n::translate('Pedigree chart root person');
 	$text=i18n::translate('If you want to display a chart with a new starting (root) person, the ID of that new starting person is typed here.<br /><br />If you don\'t know the ID of that person, use the <b>Find ID</b> link.<br /><br /><b>ID NUMBER</b><br />The ID numbers used inside <b>webtrees</b> are <u>not</u> the identification numbers issued by various governments (driving permit or passport numbers, for instance).  The ID number referred to here is simply a number used within the database to uniquely identify each individual; it was assigned by the ancestry program that created the GEDCOM file which was imported into <b>webtrees</b>.');
-	break;
-
-case 'rss_feed':
-	$title=i18n::translate('RSS feed settings');
-	$text=i18n::translate('The ATOM/RSS feed available in <b>webtrees</b> allows anyone to view, using a suitable feed aggregator, the contents of your site\'s Home Page without visiting the site. Most aggregators will pop up a notice letting the user know when something has changed on a page being monitored. This essentially allows anyone to monitor your <b>webtrees</b> site without needing to visit it regularly.<br /><br />The Feed block is used to customize the link to the feed, allowing specific feed types (most readers can deal with most types so this can usually be left at the default), and the specific module you would like in your feed. The language of the feed and the GEDCOM used will be based on the language and GEDCOM active in <b>webtrees</b> when you select the feed.<br /><br />The types of feed that can be generated include ATOM, RSS 2.0, RSS 1.0, RSS 0.92, HTML and JavaScript. The first four types are for feed aggregators, while JavaScript and HTML are meant to enable inclusion of the feeds in other web pages.  Note that the numbers of the RSS feed indicate different styles, not a different version.<br /><br />There is an option to select authentication that will log the user in, and allow the user to view, using a suitable RSS aggregator, any information that he could normally view if logged in. Basic Authentication uses <i>Basic HTTP Authentication</i> to log the user in. Future enhancements might allow <i>Digest Authentication</i>.<br /><br />This <a href=\'http://en.wikipedia.org/wiki/RSS_(file_format)\' target=\'_blank\' alt=\'Wikipedia article\' title=\'Wikipedia article\'><b>Wikipedia article</b></a> contains comprehensive information and links about RSS and the various RSS formats. <i>Basic HTTP Authentication</i> is discussed in this <a href=\'http://en.wikipedia.org/wiki/Basic_authentication_scheme\' target=\'_blank\' alt=\'Wikipedia article\' title=\'Wikipedia article\'><b>Wikipedia article</b></a>, while <i>Digest Authentication</i> is discussed in this <a href=\'http://en.wikipedia.org/wiki/Digest_access_authentication\' target=\'_blank\' alt=\'Wikipedia article\' title=\'Wikipedia article\'><b>Wikipedia article</b></a>.');
 	break;
 
 case 'search':
