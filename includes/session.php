@@ -252,6 +252,16 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 //-- load up the code to check for spiders
 require WT_ROOT.'includes/session_spider.php';
 
+// Search engines are only allowed to see certain pages.
+if ($SEARCH_SPIDER && !array_key_exists(WT_SCRIPT_NAME , array(
+	'family.php', 'famlist.php', 'index.php', 'indilist.php', 'individual.php',
+	'media.php', 'medialist.php', 'note.php', 'notelist.php', 'repo.php', 'repolist.php',
+	'search_engine.php', 'site-unavailable.php', 'source.php', 'sourcelist.php'
+))) {
+	header("Location: search_engine.php");
+	exit;
+}
+
 // Start the php session
 $session_time=get_site_setting('SESSION_TIME');
 $session_save_path=get_site_setting('SESSION_SAVE_PATH');
