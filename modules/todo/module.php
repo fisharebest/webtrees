@@ -158,14 +158,14 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Show unassigned tasks'), help_link('todo_show_unassigned', $this->getName());
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_other', $show_unassigned);
+		echo edit_field_yes_no('show_unassigned', $show_unassigned);
 		echo '</td></tr>';
 
 		$show_future=get_block_setting($block_id, 'show_future', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Show future tasks'), help_link('todo_show_future', $this->getName());
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_other', $show_future);
+		echo edit_field_yes_no('show_future', $show_future);
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
