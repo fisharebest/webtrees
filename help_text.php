@@ -2262,7 +2262,7 @@ case 'HOME_SITE_URL':
 	break;
 
 case 'INDEX_DIRECTORY':
-	$title=i18n::translate('Index file directory');
+	$title=i18n::translate('Data file directory');
 	$text=i18n::translate('The path to a readable and writable directory where <b>webtrees</b> should store index files (include the trailing "/").  <b>webtrees</b> does not require this directory\'s name to be "index".  You can choose any name you like.<br /><br />For security, this directory should be placed somewhere in the server\'s file space that is not accessible from the Internet. An example of such a structure follows:<br /><b>webtrees:</b> dir1/dir2/dir3/webtrees<br /><b>Index:</b> dir1/dir4/dir5/dir6/index<br /><br />For the example shown, you would enter <b>../../dir4/dir5/dir6/index/</b> in this field.');
 	break;
 
@@ -2343,7 +2343,7 @@ case 'MEDIA_EXTERNAL':
 
 case 'MEDIA_FIREWALL_ROOTDIR':
 	$title=i18n::translate('Media firewall root directory');
-	$text=i18n::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY);
+	$text=i18n::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.', get_site_setting('INDEX_DIRECTORY'));
 	break;
 
 case 'MEDIA_FIREWALL_THUMBS':
