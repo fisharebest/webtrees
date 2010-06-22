@@ -2245,45 +2245,58 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
+		$bef_last=substr($path, -6, 3);
 		switch ($up) {
 		case 3:
 			switch ($last) {
-			case 'bro': return i18n::translate('great-great-uncle');
+			case 'bro':
+				if ($bef_last=='fat') return i18n::translate_c('great-grandfather\'s brother', 'great-great-uncle');
+				else return i18n::translate_c('great-grandmother\'s brother', 'great-great-uncle');
 			case 'sis': return i18n::translate('great-great-aunt');
 			case 'sib': return i18n::translate('great-great-aunt/uncle');
 			}
 			break;
 		case 4:
 			switch ($last) {
-			case 'bro': return i18n::translate('great-great-great-uncle');
+			case 'bro':
+				if ($bef_last=='fat') return i18n::translate_c('great-great-grandfather\'s brother', 'great-great-great-uncle');
+				else return i18n::translate_c('great-great-grandmother\'s brother', 'great-great-great-uncle');
 			case 'sis': return i18n::translate('great-great-great-aunt');
 			case 'sib': return i18n::translate('great-great-great-aunt/uncle');
 			}
 			break;
 		case 5:
 			switch ($last) {
-			case 'bro': return i18n::translate('great x4 uncle');
+			case 'bro':
+				if ($bef_last=='fat') return i18n::translate_c('great-great-great-grandfather\'s brother', 'great x4 uncle');
+				else return i18n::translate_c('great-great-great-grandmother\'s brother', 'great x4 uncle');
 			case 'sis': return i18n::translate('great x4 aunt');
 			case 'sib': return i18n::translate('great x4 aunt/uncle');
 			}
 			break;
 		case 6:
 			switch ($last) {
-			case 'bro': return i18n::translate('great x5 uncle');
+			case 'bro':
+				if ($bef_last=='fat') return i18n::translate_c('great x4 grandfather\'s brother', 'great x5 uncle');
+				else return i18n::translate_c('great x4 grandmother\'s brother', 'great x5 uncle');
 			case 'sis': return i18n::translate('great x5 aunt');
 			case 'sib': return i18n::translate('great x5 aunt/uncle');
 			}
 			break;
 		case 7:
 			switch ($last) {
-			case 'bro': return i18n::translate('great x6 uncle');
+			case 'bro':
+				if ($bef_last=='fat') return i18n::translate_c('great x5 grandfather\'s brother', 'great x6 uncle');
+				else return i18n::translate_c('great x5 grandmother\'s brother', 'great x6 uncle');
 			case 'sis': return i18n::translate('great x6 aunt');
 			case 'sib': return i18n::translate('great x6 aunt/uncle');
 			}
 			break;
 		case 8:
 			switch ($last) {
-			case 'bro': return i18n::translate('great x7 uncle');
+			case 'bro':
+				if ($bef_last=='fat') return i18n::translate_c('great x6 grandfather\'s brother', 'great x7 uncle');
+				else return i18n::translate_c('great x6 grandmother\'s brother', 'great x7 uncle');
 			case 'sis': return i18n::translate('great x7 aunt');
 			case 'sib': return i18n::translate('great x7 aunt/uncle');
 			}
@@ -2302,9 +2315,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				}
 			case 'pl':
 				switch ($last) {
-				case 'bro': return i18n::translate('great x%d uncle', $up-3);
-				case 'sis': return i18n::translate('great x%d aunt', $up-3);
-				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-3);
+				case 'bro':
+					if ($bef_last=='fat') return i18n::translate_c('great xX grandfather\'s brother', 'great x%d uncle', $up-2);
+					else return i18n::translate_c('great xX grandmother\'s brother', 'great x%d uncle', $up-2);
+				case 'sis': return i18n::translate('great x%d aunt', $up-2);
+				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-2);
 				}
 			case 'it': // Source: Michele Locati
 			case 'en':
