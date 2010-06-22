@@ -47,7 +47,7 @@ echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
 	'<head>',
-	'<title>', htmlspecialchars($title), '</title>',
+	'<title>', htmlspecialchars($GEDCOM_TITLE), '</title>',
 	'<link rel="shortcut icon" href="', $FAVICON, '" type="image/x-icon">';
 
 if (WT_USE_LIGHTBOX) {
