@@ -70,7 +70,7 @@ function full_rmdir($dir) {
 // Vars
 $ajaxdeleted = false;
 $elements = Array();
-$locked_by_context = array("readme.txt", "index.php", "gedcoms.php", 'config.ini.php');
+$locked_by_context = array('index.php', 'config.ini.php');
 
 // If we are storing the media in the index directory (this is the
 // default for the media firewall), then don't delete it.
@@ -132,13 +132,7 @@ function warnuser(cbox) {
 		foreach ($entryList as $entry) {
 			//echo $entry, "\n";
 			if ($entry{0} != '.') {
-				if ($ged_id=get_id_from_gedcom($entry)) {
-					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
-					print "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
-					print "<span class=\"name2\">".$entry."</span>";
-					print "&nbsp;&nbsp;".str_replace($path, "", get_gedcom_setting($ged_id, 'config'))."</i>";
-				}
-				else if (in_array($entry, $locked_by_context)) {
+				if (in_array($entry, $locked_by_context)) {
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
 					print "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
 					print "<span class=\"name2\">".$entry."</span>";
