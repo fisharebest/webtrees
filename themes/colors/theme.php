@@ -88,12 +88,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 			$subColor = get_site_setting('DEFAULT_COLOR_PALETTE','ash');
 		}
 	} else {
-		// Default color set here
-		$test_value=get_site_setting('DEFAULT_COLOR_PALETTE');
-		if (empty($test_value)) {
-			set_site_setting('DEFAULT_COLOR_PALETTE','ash');
-		}
-		$subColor=get_site_setting('DEFAULT_COLOR_PALETTE');
+		$subColor=get_site_setting('DEFAULT_COLOR_PALETTE','ash');
 	}
 }
 
