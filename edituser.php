@@ -147,8 +147,6 @@ echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
 
 echo '<tr><td class="topbottombar" colspan="2"><h2>', i18n::translate('My account'), '</h2></td></tr>';
 
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', i18n::translate('Update MyAccount'), '" /></td></tr>';
-
 echo '<tr><td class="descriptionbox width20 wrap">';
 echo i18n::translate('User name'), help_link('edituser_username'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_username" tabindex="', ++$tab, '" value="', WT_USER_NAME, '" />';
@@ -227,7 +225,7 @@ echo i18n::translate('Default Tab to show on Individual Information page'), help
 echo edit_field_default_tab('form_default_tab', get_user_setting(WT_USER_ID, 'defaulttab'), 'tabindex="'.(++$tab).'"');
 echo '</td></tr>';
 
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', i18n::translate('Update MyAccount'), '" /></td></tr>';
+echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', i18n::translate('Save'), '" /></td></tr>';
 
 echo '</table></form>';
 
