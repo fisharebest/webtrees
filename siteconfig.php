@@ -166,10 +166,10 @@ echo
 	'</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('From email address'), help_link('SMTP_FROM_NAME'), '</td>',
-	'<td class="optionbox wrap"><input type="text" name="smtp_from_name" value="', get_site_setting('SMTP_FROM_NAME'), '" ', $smtp_active=='external' ? '' : 'disabled', '/></td>',
+	'<td class="optionbox wrap"><input type="text" name="smtp_from_name" size="50" value="', get_site_setting('SMTP_FROM_NAME'), '" ', $smtp_active=='external' ? '' : 'disabled', '/></td>',
 	'</tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Sender email address'), help_link('SMTP_HELO'), '</td>',
-	'<td class="optionbox wrap"><input type="text" name="smtp_helo" value="', get_site_setting('SMTP_HELO'), '" ', $smtp_active=='external' ? '' : 'disabled', '/></td>',
+	'<td class="optionbox wrap"><input type="text" name="smtp_helo" size="50" value="', get_site_setting('SMTP_HELO'), '" ', $smtp_active=='external' ? '' : 'disabled', '/></td>',
 	'</tr><tr>',
 	'<td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Save'), '" /></td>',
 	'</tr></table></form>';
