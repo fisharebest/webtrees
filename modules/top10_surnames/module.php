@@ -150,7 +150,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'num',    safe_POST_integer('num', 1, 10000));
+			set_block_setting($block_id, 'num',    safe_POST_integer('num', 1, 10000, 10));
 			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table', 'tagcloud'), 'table'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
