@@ -422,6 +422,11 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
 	$META_ROBOTS=get_gedcom_setting(WT_GED_ID, 'META_ROBOTS');
 	$META_TITLE=get_gedcom_setting(WT_GED_ID, 'META_TITLE');
+
+	// The title often includes the names of records, which may have markup
+	// that cannot be used in the page title.
+	$title=html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
+
 	if ($META_TITLE) {
 		$title.=' - '.$META_TITLE;
 	}
