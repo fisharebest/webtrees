@@ -149,6 +149,8 @@ if (!ini_get('date.timezone')) {
 // WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
 // WT_SCRIPT_NAME  = script.php  (already defined in the calling script)
 // WT_QUERY_STRING = ?var=value  (generate as needed from $_GET.  lang=xx and theme=yy are removed as used.)
+// TODO: we ought to generate this dynamically, but lots of code currently relies on this global
+$QUERY_STRING=isset($_SERVER['QUERY_STRING']) ? $_SERVER['QUERY_STRING'] : '';
 
 define('WT_SERVER_NAME',
 	(empty($_SERVER['HTTPS']) || !in_array($_SERVER['HTTPS'], array('1', 'on', 'On', 'ON')) ?  'http://' : 'https://').
