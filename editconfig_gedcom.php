@@ -92,16 +92,18 @@ $PRIVACY_CONSTANTS=array(
 
 $all_tags=array();
 $tags=array_unique(array_merge(
-	explode(',', $INDI_FACTS_ADD),
-	explode(',', $FAM_FACTS_ADD),
-	explode(',', $NOTE_FACTS_ADD),
-	explode(',', $SOUR_FACTS_ADD),
-	explode(',', $REPO_FACTS_ADD),
+	explode(',', $INDI_FACTS_ADD), explode(',', $INDI_FACTS_UNIQUE),
+	explode(',', $FAM_FACTS_ADD ), explode(',', $FAM_FACTS_UNIQUE ),
+	explode(',', $NOTE_FACTS_ADD), explode(',', $NOTE_FACTS_UNIQUE),
+	explode(',', $SOUR_FACTS_ADD), explode(',', $SOUR_FACTS_UNIQUE),
+	explode(',', $REPO_FACTS_ADD), explode(',', $REPO_FACTS_UNIQUE),
 	array('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'SUBM', 'SUBN')
 ));
 
 foreach ($tags as $tag) {
-	$all_tags[$tag]=translate_fact($tag);
+	if ($tag) {
+		$all_tags[$tag]=translate_fact($tag);
+	}
 }
 
 uasort($all_tags, 'utf8_strcasecmp');
