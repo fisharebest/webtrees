@@ -2958,7 +2958,7 @@ case 'media.php':
 
 case 'medialist.php':
 	$title=i18n::translate('Multimedia object list');
-	$text=i18n::translate('This page lists all of the Multimedia Objects (MMO) that can be found in this database.<br /><br />For each of the media items you see the title or filename of the item, names of the individuals or families connected to the item, and notes about the item.<br /><br />Clicking the title or filename of the item has the same effect as clicking its thumbnail.  The item will be opened in the image viewer built into <b>webtrees</b> or in the viewer specified in your browser\'s configuration.<br /><br />When you click on the "View" link next to the person or family, you will be taken to the relevant Details page.');
+	$text=i18n::translate('This page lists all of the multimedia objects available for this GEDCOM (family tree) file.<br /><br />To display the list, first make your selections from the range of filtering options displayed at the top of the page. On the basis of those settings, after clicking "Search" you will see thumbnails, descriptions, and links for each media object.<br /><br />For each item you can then choose to view a full sized, image, its details, or go to one of the people of families it is linked to');
 	break;
 	
 case 'module_admin.php':
