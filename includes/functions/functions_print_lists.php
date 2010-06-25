@@ -1338,18 +1338,12 @@ function print_changes_table($change_ids) {
 	echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
 	echo "</tr>\n";
 	//-- table body
-	$hidden = 0;
 	$n = 0;
 	$NMAX = 1000;
 	foreach ($change_ids as $change_id) {
 		if ($n>=$NMAX) break;
 		$record=GedcomRecord::getInstance($change_id);
-		if (!$record) {
-			continue;
-		}
-		// Privacy
-		if (!$record->canDisplayDetails()) {
-			$hidden++;
+		if (!$record || !$record->canDisplayDetails()) {
 			continue;
 		}
 		//-- Counter
@@ -1401,7 +1395,6 @@ function print_changes_table($change_ids) {
 		echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", i18n::translate('Show parents'), "</label><br />";
 	}
 	echo i18n::translate('Total changes'), ": ", $n;
-	if ($hidden) echo "<br /><span class=\"warning\">", i18n::translate('Hidden'), " : ", $hidden, "</span>";
 	if ($n>=$NMAX) echo "<br /><span class=\"warning\">", i18n::translate('Recent Changes'), " &gt; ", $NMAX, "</span>";
 	echo "</td>";
 	echo "<td style=\"display:none\">GIVN</td>";
