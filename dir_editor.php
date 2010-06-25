@@ -69,7 +69,7 @@ function full_rmdir($dir) {
 
 // Vars
 $ajaxdeleted = false;
-$elements = Array();
+$elements = array();
 $locked_by_context = array('index.php', 'config.ini.php');
 
 // If we are storing the media in the index directory (this is the
@@ -141,7 +141,7 @@ function warnuser(cbox) {
 					print "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
 					print "<input type=\"checkbox\" name=\"to_delete[]\" value=\"".$entry."\" />\n";
 					print $entry;
-					$element[] = "li_".$entry;
+					$elements[] = "li_".$entry;
 				}
 				print "</li>";
 			}
@@ -166,7 +166,7 @@ function warnuser(cbox) {
 	new Effect.BlindDown('reorder_list', {duration: 1});
 
 		<?php
-		foreach($element as $key=>$val)
+		foreach($elements as $key=>$val)
 		{
 			print "new Draggable('".$val."', {revert:true});";
 		}
