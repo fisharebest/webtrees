@@ -1332,6 +1332,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 		if ($newrec=find_updated_record($rowm["m_media"], $ged_id)) {
 			$row = array();
 			$row['m_media'] = $rowm["m_media"];
+			$row['m_gedfile']=$rowm["m_gedfile"];
 			$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
 			$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 			if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
@@ -1377,6 +1378,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 				if (!is_null($client)) {
 					$newrec = $client->getRemoteRecord($match[2]);
 					$row['m_media'] = $media_id;
+					$row['m_gedfile']=$ged_id;
 					$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
 					$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 					if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
@@ -1394,6 +1396,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 				$row = array();
 				$newrec = find_gedcom_record($media_id, $ged_id, true);
 				$row['m_media'] = $media_id;
+				$row['m_gedfile']=$ged_id;
 				$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
 				$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 				if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
