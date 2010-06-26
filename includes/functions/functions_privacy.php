@@ -377,7 +377,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 // Assume we have already called canDisplayRecord() to check the parent level 0 object
 function canDisplayFact($xref, $ged_id, $gedrec) {
 	// TODO - use the privacy settings for $ged_id, not the default gedcom.
-	global $HIDE_LIVE_PEOPLE, $person_facts;
+	global $HIDE_LIVE_PEOPLE, $person_facts, $global_facts;
 
 	// This setting would better be called "$ENABLE_PRIVACY"
 	if (!$HIDE_LIVE_PEOPLE) {
@@ -404,6 +404,9 @@ function canDisplayFact($xref, $ged_id, $gedrec) {
 		$tag=$match[1];
 		if (isset($person_facts[$xref][$tag])) {
 			return $person_facts[$xref][$tag]>=WT_USER_ACCESS_LEVEL;
+		}
+		if (isset($global_facts[$tag])) {
+			return $global_facts[$tag]>=WT_USER_ACCESS_LEVEL;
 		}
 	}
 
