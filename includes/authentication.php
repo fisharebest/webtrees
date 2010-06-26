@@ -293,8 +293,6 @@ function getUserGedcomId($user_id, $ged_id) {
  * add a message into the log-file
  */
 function AddToLog($log_message, $log_type='error') {
-	global $argc, $argv;
-
 	WT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
 	)->execute(array(
