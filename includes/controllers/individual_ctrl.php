@@ -71,13 +71,6 @@ class IndividualControllerRoot extends BaseController {
 	var $globalfacts = null;
 
 	/**
-	* constructor
-	*/
-	function IndividualControllerRoot() {
-		parent::BaseController();
-	}
-
-	/**
 	* Initialization function
 	*/
 	function init() {
@@ -290,10 +283,6 @@ class IndividualControllerRoot extends BaseController {
 				echo WT_DB::getQueryLog();
 			}
 			exit;
-		}
-		
-		if (WT_USER_CAN_EDIT) {
-			
 		}
 	}
 	//-- end of init function

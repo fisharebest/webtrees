@@ -86,12 +86,6 @@ class DescendancyControllerRoot extends BaseController {
 	var $show_cousins;
 
 	/**
-	 * constructor
-	 */
-	function DescendancyRootController() {
-		parent::BaseController();
-	}
-	/**
 	 * Initialization function
 	 */
 	function init() {

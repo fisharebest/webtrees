@@ -54,7 +54,6 @@ $nonfamfacts[] = "";
  */
 class AncestryControllerRoot extends BaseController {
 	var $pid = "";
-
 	var $user = false;
 	var $accept_success = false;
 	var $visibility = "visible";
@@ -69,12 +68,6 @@ class AncestryControllerRoot extends BaseController {
 	var $show_full;
 	var $cellwidth;
 
-	/**
-	 * constructor
-	 */
-	function AncestryControllerRoot() {
-		parent::BaseController();
-	}
 	/**
 	 * Initialization function
 	 */

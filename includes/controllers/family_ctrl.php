@@ -58,13 +58,6 @@ class FamilyRoot extends BaseController {
 	var $family = null;
 	var $difffam = null;
 
-	/**
-	* constructor
-	*/
-	function FamilyRoot() {
-		parent::BaseController();
-	}
-
 	function init() {
 		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM, $show_famlink;
 		$bwidth = $Dbwidth;

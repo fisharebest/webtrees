@@ -56,12 +56,7 @@ class TimelineControllerRoot extends BaseController {
 	var $scale = 2;
 	// GEDCOM elements that may have DATE data, but should not be displayed
 	var $nonfacts = array("BAPL","ENDL","SLGC","SLGS","_TODO","CHAN");
-	/**
-	* constructor
-	*/
-	function TimelineRootController() {
-		parent::BaseController();
-	}
+
 	/**
 	* Initialization function
 	*/

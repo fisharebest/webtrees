@@ -54,13 +54,6 @@ class NoteControllerRoot extends BaseController {
 	var $canedit = false;
 
 	/**
-	* constructor
-	*/
-	function NoteRootController() {
-		parent::BaseController();
-	}
-
-	/**
 	* initialize the controller
 	*/
 	function init() {

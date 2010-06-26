@@ -78,12 +78,6 @@ class HourglassControllerRoot extends BaseController {
 	///////////////////////////////////////
 
 	/**
-	 * constructor
-	 */
-	function HourglassControllerRoot() {
-		parent::BaseController();
-	}
-	/**
 	 * Initialization function
 	 */
 	function init($rootid='', $show_full=1, $generations=3) {

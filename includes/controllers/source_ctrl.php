@@ -46,19 +46,11 @@ $nonfacts = array();
 */
 class SourceControllerRoot extends BaseController {
 	var $sid;
-	/* @var Source */
 	var $source = null;
 	var $uname = "";
 	var $diffsource = null;
 	var $accept_success = false;
 	var $canedit = false;
-
-	/**
-	* constructor
-	*/
-	function SourceRootController() {
-		parent::BaseController();
-	}
 
 	/**
 	* initialize the controller

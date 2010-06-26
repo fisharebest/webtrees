@@ -82,12 +82,6 @@ class LifespanControllerRoot extends BaseController {
 	var $endDate;
 	var $startDate;
 	var $currentsex;
-	/**
-	* constructor
-	*/
-	function TimelineRootController() {
-		parent :: BaseController();
-	}
 
 	/**
 	* Initialization function

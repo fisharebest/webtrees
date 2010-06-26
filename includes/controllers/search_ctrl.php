@@ -103,12 +103,6 @@ class SearchControllerRoot extends BaseController {
 	var $printplace = array();
 
 	/**
-	 * constructor
-	 */
-	function SearchControllerRoot() {
-		parent :: BaseController();
-	}
-	/**
 	 * Initialization function
 	 */
 	function init() {
