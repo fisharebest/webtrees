@@ -1640,7 +1640,7 @@ padding-top: 12px;
 text-align: center;
 } 
 
-tag_cloud {
+.tag_cloud {
 font-family: tahoma, arial, helvetica, sans-serif;
 }
 .tag_cloud a {
