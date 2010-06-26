@@ -57,9 +57,6 @@ class HourglassControllerRoot extends BaseController {
 	var $pid = "";
 
 	var $accept_success = false;
-	var $visibility = "visible";
-	var $position = "relative";
-	var $display = "block";
 	var $canedit = false;
 	var $name_count = 0;
 	var $total_names = 0;
@@ -126,10 +123,6 @@ class HourglassControllerRoot extends BaseController {
 		//Checks how many generations of descendency is for the person for formatting purposes
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
-
-		$this->visibility = "hidden";
-		$this->position = "absolute";
-		$this->display = "none";
 	}
 
 	/**

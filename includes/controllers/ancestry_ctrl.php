@@ -56,9 +56,6 @@ class AncestryControllerRoot extends BaseController {
 	var $pid = "";
 	var $user = false;
 	var $accept_success = false;
-	var $visibility = "visible";
-	var $position = "relative";
-	var $display = "block";
 	var $show_cousins;
 	var $rootid;
 	var $name;
@@ -112,10 +109,6 @@ class AncestryControllerRoot extends BaseController {
 
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);
-
-		$this->visibility = "hidden";
-		$this->position = "absolute";
-		$this->display = "none";
 	}
 
 	/**

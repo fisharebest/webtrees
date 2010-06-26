@@ -61,9 +61,6 @@ class DescendancyControllerRoot extends BaseController {
 	var $diffindi = null;
 	var $NAME_LINENUM = 1;
 	var $accept_success = false;
-	var $visibility = "visible";
-	var $position = "relative";
-	var $display = "block";
 	var $canedit = false;
 	var $name_count = 0;
 	var $total_names = 0;
@@ -142,9 +139,6 @@ class DescendancyControllerRoot extends BaseController {
 		exit;
 	}
 	*/
-	$this->visibility = "hidden";
-	$this->position = "absolute";
-	$this->display = "none";
 	}
 
 	/**
