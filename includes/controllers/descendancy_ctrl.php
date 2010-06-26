@@ -142,11 +142,9 @@ class DescendancyControllerRoot extends BaseController {
 		exit;
 	}
 	*/
-	if (!$this->isPrintPreview()) {
-		$this->visibility = "hidden";
-		$this->position = "absolute";
-		$this->display = "none";
-	}
+	$this->visibility = "hidden";
+	$this->position = "absolute";
+	$this->display = "none";
 	}
 
 	/**

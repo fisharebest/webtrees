@@ -94,7 +94,7 @@ if (!$this->controller->indi->canDisplayDetails()) {
 	}
 	if ($this->get_note_count()==0) print "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Notes for this individual.')."</td></tr>\n";
 	//-- New Note Link
-	if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+	if ($this->controller->canedit) {
 		?>
 	<tr>
 		<td class="facts_label"><?php echo i18n::translate('Add Note'), help_link('add_note'); ?></td>

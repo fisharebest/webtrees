@@ -71,9 +71,6 @@ class PedigreeControllerRoot extends BaseController {
 		global $TEXT_DIRECTION, $BROWSER_TYPE, $show_full, $talloffset;
 
 		$this->log2 = log(2);
-		if ($this->isPrintPreview()) {
-			$this->show_famlink = false;
-		}
 
 		$this->rootid    =safe_GET_xref('rootid');
 		$this->show_full =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
@@ -159,10 +156,6 @@ class PedigreeControllerRoot extends BaseController {
 				}
 			}
 		}
-		//-- adjustments for preview
-		if ($this->isPrintPreview() && $this->talloffset<2) {
-			$baseyoffset -= 230;
-		}
 		// -- this next section will create and position the DIV layers for the pedigree tree
 		$this->curgen = 1;			// -- variable to track which generation the algorithm is currently working on
 		$this->yoffset=0;				// -- used to offset the position of each box as it is generated
@@ -237,12 +230,10 @@ class PedigreeControllerRoot extends BaseController {
 			else if ($this->talloffset==2) {
 				if ($this->show_full) $this->xoffset = ($this->curgen) * (($this->pbwidth+$bxspacing) / 2)+($this->curgen)*10+136.5;
 				else $this->xoffset = ($this->curgen) * (($this->pbwidth+$bxspacing) / 4)+($this->curgen)*10+215.75;
-				if ($this->isPrintPreview()) $this->xoffset -= 260;
 			}
 			else {
 				if ($this->show_full) $this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth+$bxspacing) / 2)+260;
 				else $this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth+$bxspacing) / 4)+270;
-				if ($this->isPrintPreview()) $this->xoffset -= 260;
 			}
 			if ($this->curgen == 1 && $this->talloffset==1) $this->xoffset += 10;
 			$this->offsetarray[$i]["x"]=$this->xoffset;
@@ -266,9 +257,6 @@ class PedigreeControllerRoot extends BaseController {
 
 		$ydiff = $baseyoffset+35-$minyoffset;
 		$this->adjust_subtree(0, $ydiff);
-
-		//-- if no father keep the tree off of the pedigree form
-		if (($this->isPrintPreview())&&($this->offsetarray[0]["y"]+$baseyoffset<300)) $this->adjust_subtree(0, 300-($this->offsetarray[0]["y"]+$baseyoffset));
 	}
 
 	/**

@@ -91,7 +91,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			if ($this->get_source_count()==0) print "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Source citations for this individual.')."</td></tr>\n";
 			//-- New Source Link
-			if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+			if ($this->controller->canedit) {
 			?>
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add Source Citation'), help_link('add_source'); ?></td>
@@ -146,5 +146,4 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getJSCallback() {
 		return '';
 	}
-	
 }

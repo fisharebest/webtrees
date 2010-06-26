@@ -141,7 +141,7 @@ if ($view!="preview") {
 		echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 	}
 } ?>
-<div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") print "_rtl"; ?>" <?php if ($controller->isPrintPreview()) print " style=\"top: 1px;\""; else print "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
+<div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") print "_rtl"; ?>" <?php print "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
 <table cellspacing="0" cellpadding="0" border="0"><tr>
 <!-- // descendancy -->
 <td valign="middle">
@@ -163,4 +163,3 @@ sizeLines();
 </script>
 <?php
 print_footer();
-?>

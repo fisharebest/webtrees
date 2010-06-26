@@ -83,7 +83,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			$media_found = print_main_media($this->controller->pid, 0, true);
 			if (!$media_found) print "<tr><td id=\"no_tab4\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no media objects for this individual.')."</td></tr>\n";
 			//-- New Media link
-			if (!$this->controller->isPrintPreview() && WT_USER_CAN_EDIT && $this->controller->indi->canDisplayDetails()) {
+			if (WT_USER_CAN_EDIT && $this->controller->indi->canDisplayDetails()) {
 		?>
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>

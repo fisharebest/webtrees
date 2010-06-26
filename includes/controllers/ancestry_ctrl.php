@@ -113,11 +113,9 @@ class AncestryControllerRoot extends BaseController {
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);
 
-		if (!$this->isPrintPreview()) {
-			$this->visibility = "hidden";
-			$this->position = "absolute";
-			$this->display = "none";
-		}
+		$this->visibility = "hidden";
+		$this->position = "absolute";
+		$this->display = "none";
 	}
 
 	/**

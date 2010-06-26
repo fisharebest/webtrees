@@ -114,7 +114,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		//-- new fact link
-		if ((!$this->controller->isPrintPreview()) && $this->controller->canedit) {
+		if ($this->controller->canedit) {
 			print_add_new_fact($this->controller->pid, $indifacts, "INDI");
 		}
 		?>

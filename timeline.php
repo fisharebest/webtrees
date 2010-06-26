@@ -250,7 +250,7 @@ document.onmouseup = MU;
 //-->
 </script>
 <h2><?php echo i18n::translate('Timeline chart'); ?></h2>
-<?php if (!$controller->isPrintPreview()) { ?><form name="people" action="timeline.php"><?php } ?>
+<form name="people" action="timeline.php">
 <?php
 $controller->checkPrivacy();
 ?>
@@ -263,9 +263,7 @@ $controller->checkPrivacy();
 	if ($count>5) {
 		$half = ceil($count/2);
 	}
-	if (!$controller->isPrintPreview()) {
-		$half++;
-	}
+	$half++;
 	foreach($controller->people as $p=>$indi) {
 		$pid = $indi->getXref();
 		$col = $p % 6;
@@ -289,8 +287,6 @@ $controller->checkPrivacy();
  			<?php $addname = $indi->getAddName(); if (strlen($addname) > 0) echo PrintReady($addname); ?>
 			</a>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlentities($pid, ENT_COMPAT, 'UTF-8'); ?>" />
-			<?php if (!$controller->isPrintPreview()) {
-				?>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >
 				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
@@ -299,24 +295,20 @@ $controller->checkPrivacy();
 				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="showhide('agebox<?php echo $p; ?>', this);" />
 				</span>
 			<?php }
-			} ?>
+			?>
 			<br />
 		<?php
 		} else {
 			print_privacy_error();
 			?>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlentities($pid, ENT_COMPAT, 'UTF-8'); ?>" />
-			<?php if (!$controller->isPrintPreview()) {
-				echo "<br />";
-				?>
+				<br />
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >
 				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
-			<?php } ?>
 			<br />
 		<?php } ?>
 		</td>
 	<?php }
-	if (!$controller->isPrintPreview()) {
 		if (!isset($col)) $col = 0;
 		?>
 		<td class="person<?php print $col; ?>" style="padding: 5px" valign="top">
@@ -327,8 +319,8 @@ $controller->checkPrivacy();
 			<br />
 			<div style="text-align: center"><input type="submit" value="<?php print i18n::translate('Show'); ?>" /></div>
 		</td>
-	<?php }
-	if ((count($controller->people)>0)&&(!$controller->isPrintPreview())) {
+	<?php
+	if (count($controller->people)>0) {
 		$scalemod = round($controller->scale*.2) + 1;
 		?>
 		<td class="list_value" style="padding: 5px">
@@ -339,13 +331,11 @@ $controller->checkPrivacy();
 	<?php } ?>
 	</tr>
 </table>
-<?php if (!$controller->isPrintPreview()) { ?>
 <br /><a href="lifespan.php"><b><?php print i18n::translate('Show Lifespan chart'); ?></b></a>
-</form><?php } ?>
+</form>
 <?php
 if (count($controller->people)>0) {
 	?>
-	<?php if ($controller->isPrintPreview()) print "\n\t".i18n::translate('In most recent browsers you can click and drag the boxes around on the chart.')."<br /><br />"; ?>
 <div id="timeline_chart">
 	<!-- print the timeline line image -->
 	<div id="line" style="position:absolute; <?php print $TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+22):"right: ".($basexoffset+22); ?>px; top: <?php print $baseyoffset; ?>px; ">

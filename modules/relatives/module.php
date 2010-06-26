@@ -57,7 +57,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["cfamily"]["small"]; ?>" border="0" class="icon" alt="" /></td>
 				<td><span class="subheaders"><?php print PrintReady($label); ?></span>
-				<?php if ((!$this->controller->isPrintPreview())&&(empty($SEARCH_SPIDER))) { ?>
+				<?php if (empty($SEARCH_SPIDER)) { ?>
 					- <a href="family.php?famid=<?php print $famid; ?>"><?php print i18n::translate('View Family'); ?></a>
 				<?php }?>
 				</td>
@@ -85,7 +85,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_labelblue"><?php print $people["newhusb"]->getLabel(); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($people["newhusb"]); ?>">
-					<?php print_pedigree_person($people["newhusb"]->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++); ?>
+					<?php print_pedigree_person($people["newhusb"]->getXref(), 2, true, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -97,7 +97,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label<?php print $styleadd; ?>"><?php print $people["husb"]->getLabel(); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($people["husb"]); ?>">
-					<?php print_pedigree_person($people["husb"]->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++); ?>
+					<?php print_pedigree_person($people["husb"]->getXref(), 2, true, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -105,7 +105,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing father
 		if ($type=="parents" && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+			if ($this->controller->canedit) {
 				?>
 				<tr>
 					<td class="facts_label"><?php print i18n::translate('Add a new father'); ?></td>
@@ -116,7 +116,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing husband
 		if ($type=="spouse" && $this->controller->indi->equals($people["wife"]) && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+			if ($this->controller->canedit) {
 				?>
 				<tr>
 					<td class="facts_label"><?php print i18n::translate('Add husband'); ?></td>
@@ -133,7 +133,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_labelblue"><?php print $people["newwife"]->getLabel($elderdate); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($people["newwife"]); ?>">
-					<?php print_pedigree_person($people["newwife"]->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++); ?>
+					<?php print_pedigree_person($people["newwife"]->getXref(), 2, true, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -144,14 +144,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label<?php print $styleadd; ?>"><?php print $people["wife"]->getLabel($elderdate); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($people["wife"]); ?>">
-					<?php print_pedigree_person($people["wife"]->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++); ?>
+					<?php print_pedigree_person($people["wife"]->getXref(), 2, true, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
 		}
 		//-- missing mother
 		if ($type=="parents" && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+			if ($this->controller->canedit) {
 				?>
 				<tr>
 					<td class="facts_label"><?php print i18n::translate('Add a new mother'); ?></td>
@@ -162,7 +162,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing wife
 		if ($type=="spouse" && $this->controller->indi->equals($people["husb"]) && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+			if ($this->controller->canedit) {
 				?>
 				<tr>
 					<td class="facts_label"><?php print i18n::translate('Add wife'); ?></td>
@@ -259,7 +259,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label<?php print $styleadd; ?>"><?php if ($styleadd=="red") print $child->getLabel(); else print $child->getLabel($elderdate, $key+1); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($child); ?>">
 				<?php
-				print_pedigree_person($child->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++);
+				print_pedigree_person($child->getXref(), 2, true, 0, $personcount++);
 				?>
 				</td>
 			</tr>
@@ -275,7 +275,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label<?php print $styleadd; ?>"><?php if ($styleadd=="red") print $child->getLabel(); else print $child->getLabel($elderdate, $key+1); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($child); ?>">
 				<?php
-				print_pedigree_person($child->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++);
+				print_pedigree_person($child->getXref(), 2, true, 0, $personcount++);
 				?>
 				</td>
 			</tr>
@@ -291,7 +291,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label<?php print $styleadd; ?>"><?php if ($styleadd=="red") print $child->getLabel(); else print $child->getLabel($elderdate, $key+1); ?></td>
 				<td class="<?php print $this->controller->getPersonStyle($child); ?>">
 				<?php
-				print_pedigree_person($child->getXref(), 2, !$this->controller->isPrintPreview(), 0, $personcount++);
+				print_pedigree_person($child->getXref(), 2, true, 0, $personcount++);
 				?>
 				</td>
 			</tr>
@@ -299,7 +299,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$elderdate = $child->getBirthDate();
 			++$key;
 		}
-		if (isset($family) && !$this->controller->isPrintPreview() && $this->controller->canedit) {
+		if (isset($family) && $this->controller->canedit) {
 			if ($type == "spouse") {
 				$child_u = i18n::translate('Add a son or daughter');
 				$child_m = i18n::translate('Son');
@@ -349,18 +349,16 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$ABBREVIATE_CHART_LABELS = false; // Override GEDCOM configuration
 		
 		ob_start();
-		if (!$this->controller->isPrintPreview()) {
 		?>
 		<table class="facts_table"><tr><td style="width:20%; padding:4px"></td><td class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="toggleByClassName('DIV', 'elderdate');" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\"";?>/>
 		<label for="checkbox_elder"><?php echo i18n::translate('Show date differences'), help_link('age_differences'); ?></label>
 		</td></tr></table>
 		<?php
-		}
 		$personcount=0;
 		$families = $this->controller->indi->getChildFamilies();
 		if (count($families)==0) {
-			if (/**!$this->controller->isPrintPreview() &&**/ $this->controller->canedit) {
+			if ($this->controller->canedit) {
 				?>
 				<table class="facts_table">
 					<tr>
@@ -424,7 +422,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		</script>
 		<br />
 		<?php
-		if (!$this->controller->isPrintPreview() && $this->controller->canedit) {
+		if ($this->controller->canedit) {
 		?>
 		<table class="facts_table">
 		<?php if (count($families)>1) { ?>

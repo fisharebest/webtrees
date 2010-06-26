@@ -94,7 +94,6 @@ echo "<h2>" . i18n::translate('Pedigree Map') . " " . i18n::translate('for') . "
 echo PrintReady($controller->getPersonName())."</h2>";
 
 // -- print the form to change the number of displayed generations
-if (!$controller->isPrintPreview()) {
 ?>
 <script language="JavaScript" type="text/javascript">
 	<!--
@@ -187,7 +186,6 @@ if (!$controller->isPrintPreview()) {
 	</td></tr>
 </table>
 	
-<?php } ?>
 <!-- end of form -->
 
 <!-- count records by type -->
@@ -795,8 +793,4 @@ document.getElementById("side_bar").innerHTML = side_bar_html;
 //]]>
 </script>
 <?php
-if ($controller->isPrintPreview()) {
-	echo "<br /><br /><br />\n";
-}
 print_footer();
-?>

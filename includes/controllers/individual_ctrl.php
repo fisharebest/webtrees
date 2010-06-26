@@ -84,8 +84,6 @@ class IndividualControllerRoot extends BaseController {
 
 		$this->pid = safe_GET_xref('pid');
 
-		$show_famlink = $this->view!='preview';
-
 		$pid = $this->pid;
 
 		$this->default_tab = $GEDCOM_DEFAULT_TAB;
@@ -142,11 +140,9 @@ class IndividualControllerRoot extends BaseController {
 			exit;
 		}
 		*/
-		if (!$this->isPrintPreview()) {
-			$this->visibility = "hidden";
-			$this->position = "absolute";
-			$this->display = "none";
-		}
+		$this->visibility = "hidden";
+		$this->position = "absolute";
+		$this->display = "none";
 		//-- perform the desired action
 		switch($this->action) {
 			case "addfav":
@@ -454,7 +450,7 @@ class IndividualControllerRoot extends BaseController {
 		echo '<div id="name1">';
 			echo '<dt class="label">', i18n::translate('Name'), '</dt>';
 			echo '<span class="field">', PrintReady($dummy->getFullName());
-				if (!$this->isPrintPreview() && $this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
+				if ($this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>", help_link('delete_name');
 				}
@@ -525,7 +521,7 @@ class IndividualControllerRoot extends BaseController {
 						echo Person::sexImage('U', 'small', '', i18n::translate('unknown'));
 					}
 					if ($this->SEX_COUNT>1) {
-						if ((!$this->isPrintPreview()) && ($this->userCanEdit()) && (strpos($factrec, "WT_OLD")===false)) {
+						if ($this->userCanEdit() && strpos($factrec, "WT_OLD")===false) {
 							if ($event->getLineNumber()=="new") {
 								echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".i18n::translate('Edit')."</a>";
 							} else {
@@ -1031,5 +1027,3 @@ else
 	{
 	}
 }
-
-?>

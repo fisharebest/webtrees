@@ -51,19 +51,14 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-if ($controller->isPrintPreview()) {
-	echo "<h2>", i18n::translate('%s Generation Pedigree Chart', $PEDIGREE_GENERATIONS), ":";
-} else {
-	echo "<h2>", i18n::translate('Pedigree Tree'), ":";
-}
+echo "<h2>", i18n::translate('Pedigree Tree'), ":";
 echo '<br />', PrintReady($controller->name);
 if ($controller->addname!="") {
 	echo '<br />', PrintReady($controller->addname);
 }
 echo '</h2>';
 // -- echo the form to change the number of displayed generations
-if (!$controller->isPrintPreview()) {
-	?>
+?>
 	<script language="JavaScript" type="text/javascript">
 	<!--
 	var pastefield;
@@ -146,12 +141,11 @@ if (!$controller->isPrintPreview()) {
 	if ($show_full==0) {
 		echo '<span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 	}
-} ?>
+?>
 	</td></tr>
 </table>
 <div id="pedigree_chart<?php if ($TEXT_DIRECTION=="rtl") echo '_rtl'; ?>" <?php
-	if ($controller->isPrintPreview()) echo ' style="top: 1px;"';
-	else echo 'style="z-index: 1;"'; ?> >
+	echo 'style="z-index: 1;"'; ?> >
 <?php
 //-- echo the boxes
 $curgen = 1;
@@ -426,6 +420,4 @@ $maxyoffset+=30;
 	<?php } ?>
 </script>
 <?php
-if ($controller->isPrintPreview()) echo '<br /><br /><br />';
 print_footer();
-?>

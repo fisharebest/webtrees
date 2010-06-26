@@ -127,11 +127,9 @@ class HourglassControllerRoot extends BaseController {
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
 
-		if (!$this->isPrintPreview()) {
-			$this->visibility = "hidden";
-			$this->position = "absolute";
-			$this->display = "none";
-		}
+		$this->visibility = "hidden";
+		$this->position = "absolute";
+		$this->display = "none";
 	}
 
 	/**

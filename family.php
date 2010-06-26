@@ -74,7 +74,7 @@ $show_full = "1";
 //-->
 </script>
 <?php
-if (empty($SEARCH_SPIDER) && !$controller->isPrintPreview() && $controller->accept_success) {
+if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 	print "<b>".i18n::translate('Changes successfully accepted into database')."</b><br />";
 }
 ?>
@@ -101,7 +101,7 @@ if (empty($SEARCH_SPIDER) && !$controller->isPrintPreview() && $controller->acce
 						<table><tr><td> <!--//parents pedigree chart //-->
 						<?php
 						echo print_family_parents($controller->getFamilyID());
-						if (!$controller->isPrintPreview() && $controller->display && WT_USER_CAN_EDIT) {
+						if ($controller->display && WT_USER_CAN_EDIT) {
 							$husb = $controller->getHusband();
 							if (empty($husb)) { ?>
 			<a href="javascript <?php echo i18n::translate('Add a new father'); ?>" onclick="return addnewparentfamily('', 'HUSB', '<?php echo $controller->famid; ?>');"><?php echo i18n::translate('Add a new father'), help_link('edit_add_parent'); ?></a><br />

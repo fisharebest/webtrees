@@ -35,7 +35,6 @@ if (!defined('WT_WEBTREES')) {
 define('WT_BASECONTROL_PHP', '');
 
 class BaseController {
-	var $view        =null;
 	var $action      =null;
 	var $show_changes=null;
 
@@ -43,16 +42,7 @@ class BaseController {
 	 * constructor for this class
 	 */
 	function BaseController() {
-		$this->view        =safe_GET('view', 'preview');
 		$this->action      =safe_GET('action');
 		$this->show_changes=safe_GET('show_changes', 'no', 'yes')=='yes'; // if not specified, then default to "yes"
 	}
-
-	/**
-	 * check if this controller should be in print preview mode
-	 */
-	function isPrintPreview() {
-		return $this->view=='preview';
-	}
 }
-?>

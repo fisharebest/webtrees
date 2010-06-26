@@ -60,7 +60,6 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 <?php
 //This is the box that adds one person at a time.  Not sure if we want to keep this functionality.
-if (!$controller->isPrintPreview()) {
 		if (!isset($col)) $col = 0;
 		?>
 	<table>
@@ -75,7 +74,6 @@ if (!$controller->isPrintPreview()) {
 		</td></tr>
 	</table>
 	<?php if (count($controller->pids)<11) { ?><br /><a href="timeline.php"><b><?php print i18n::translate('Show Timeline chart'); ?></b></a><br /><br /><?php } ?>
-	<?php }?>
 
 </form>
 <script type="text/javascript">
@@ -296,7 +294,6 @@ var oldMx = 0;
 //-->
 </script>
 </td><td>
-<?php if (!$controller->isPrintPreview()) { ?>
 <form name="buttons" action="lifespan.php" method="get">
 
 	<table>
@@ -327,16 +324,14 @@ var oldMx = 0;
 	print "<br /><b>".i18n::plural('%d Individual', '%d Individuals', $people, $people)."</b>";
 	?>
 </form>
-<?php } ?>
 </td></tr></table>
-<div dir="ltr" id="outerDiv" class="lifespan_outer" <?php if ($controller->isPrintPreview()) { ?>style="overflow: visible; border: none;"<?php } ?>>
+<div dir="ltr" id="outerDiv" class="lifespan_outer">
 	<div dir="ltr" id="topInner"  class="lifespan_timeline" onmousedown="pandiv(); return false;">
 	<?php $controller->PrintTimeline($controller->timelineMinYear,$controller->timelineMaxYear); ?>
 	</div>
 		<div id="inner" class="lifespan_people" onmousedown="pandiv(); return false;">
 		<?php $maxY = $controller->fillTL($controller->people,$controller->minYear,$controller->YrowLoc); ?>
 	</div>
-	<?php if (!$controller->isPrintPreview()) { ?>
 	<!--  Floating div controls START -->
 <div dir="ltr" style="position:relative; z-index: 100; filter: alpha(opacity=67); -moz-opacity: 0.67;  opacity: 0.67; width:180px; top: 80px;">
 		<table style="margin-left: 20px" dir="ltr" border="0" cellpadding="0">
@@ -359,7 +354,6 @@ var oldMx = 0;
 	</table>
 </div>
 	<!--  Floating div controls END-->
-	<?php } ?>
 </div>
 <script language="JavaScript" type="text/javascript">
 <!--
@@ -369,4 +363,4 @@ var maxX = <?php if(!isset($maxX)) $maxX = 0; print $maxX; ?>;  // Sets the boun
 //-->
 </script>
 
-<?php print_footer(); ?>
+<?php print_footer();

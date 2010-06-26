@@ -133,7 +133,7 @@ if (!defined('WT_WEBTREES')) {
 				}
 				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel() . "&nbsp;". "\n");
 				// $menu->addClass("", "", "submenu");
-				$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+				$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 				$slabel .= $parentlinks;
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -220,7 +220,7 @@ if (!defined('WT_WEBTREES')) {
 				
 				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel() . "&nbsp;". "\n");
 				//$menu->addClass("", "", "submenu");
-				$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+				$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 				$slabel .= $parentlinks;
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -317,7 +317,7 @@ if (!defined('WT_WEBTREES')) {
 					
 					$menu = new Menu("&nbsp;" . $child->getLabel() . "&nbsp;". "\n");
 					//$menu->addClass("", "", "submenu");
-					$slabel  = print_pedigree_person_nav2($child->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+					$slabel  = print_pedigree_person_nav2($child->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $spouselinks;
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -441,7 +441,7 @@ if (!defined('WT_WEBTREES')) {
 					$menu->addLabel("&nbsp;" . $people["husb"]->getLabel() . "&nbsp;". "\n");
 				}
 				//$menu->addClass("", "", "submenu");
-				$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+				$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 				$slabel .= $parentlinks;
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -535,7 +535,7 @@ if (!defined('WT_WEBTREES')) {
 					$menu->addLabel("&nbsp;" . $people["wife"]->getLabel() . "&nbsp;". "\n");
 				}
 				//$menu->addClass("", "", "submenu");
-				$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+				$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 				$slabel .= $parentlinks;
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -633,7 +633,7 @@ if (!defined('WT_WEBTREES')) {
 					}
 					$menu = new Menu("&nbsp;" . $child->getLabel() . "\n");
 					//$menu->addClass("", "", "submenu");
-					$slabel  = print_pedigree_person_nav2($child->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+					$slabel  = print_pedigree_person_nav2($child->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $spouselinks;
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);								if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($child->getDeathYear()); }
@@ -728,7 +728,7 @@ if (!defined('WT_WEBTREES')) {
 				}
 				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel() . "&nbsp;". "\n");
 				//$menu->addClass("", "", "submenu");
-				$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+				$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 				$slabel .= $parentlinks;
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -826,7 +826,7 @@ if (!defined('WT_WEBTREES')) {
 				}
 				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel() . "&nbsp;". "\n");
 				//$menu->addClass("", "", "submenu");
-				$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $currpid, $censyear);
+				$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, true, 0, $personcount++, $currpid, $censyear);
 				$slabel .= $parentlinks;
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -934,7 +934,7 @@ if (!defined('WT_WEBTREES')) {
 					}
 					$menu = new Menu("&nbsp;" . $child->getLabel() . "&nbsp;". "\n");
 					//$menu->addClass("", "", "submenu");
-					$slabel = print_pedigree_person_nav2($child->getXref(), 2, !$this->isPrintPreview(), 0, $personcount++, $child->getLabel(), $censyear);
+					$slabel = print_pedigree_person_nav2($child->getXref(), 2, true, 0, $personcount++, $child->getLabel(), $censyear);
 					$slabel .= $spouselinks;
 					$submenu = new Menu($slabel);
 					$menu->addSubmenu($submenu);
