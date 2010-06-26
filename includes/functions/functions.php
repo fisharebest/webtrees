@@ -2344,9 +2344,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			case 'pl':
 				switch ($last) {
 				case 'bro':
-					if ($bef_last=='fat')		return i18n::translate_c('great xX grandfather\'s brother', 'great x%d uncle', $up-2);
-					else if ($bef_last=='mot')	return i18n::translate_c('great xX grandmother\'s brother', 'great x%d uncle', $up-2);
-					else						return i18n::translate_c('great xX grandparent\'s brother', 'great x%d uncle', $up-2);
+					if ($bef_last=='fat')		return i18n::translate_c('great xN grandfather\'s brother', 'great x%d uncle', $up-2);
+					else if ($bef_last=='mot')	return i18n::translate_c('great xN grandmother\'s brother', 'great x%d uncle', $up-2);
+					else						return i18n::translate_c('great xN grandparent\'s brother', 'great x%d uncle', $up-2);
 				case 'sis': return i18n::translate('great x%d aunt', $up-2);
 				case 'sib': return i18n::translate('great x%d aunt/uncle', $up-2);
 				}
@@ -2461,22 +2461,22 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				switch ($last) {
 				case 'son':
 					if ($first=='bro' && $sex1=='M') {
-							return i18n::translate_c('brother\'s great xX grandson', 'great x%d nephew', $down-3);
+							return i18n::translate_c('brother\'s great xN grandson', 'great x%d nephew', $down-3);
 					} else if ($first=='sis' && $sex1=='M') {
-							return i18n::translate_c('sister\'s great xX grandson',  'great x%d nephew', $down-3);
+							return i18n::translate_c('sister\'s great xN grandson',  'great x%d nephew', $down-3);
 					} else 	// I18N: if you need a different number for %d, contact the developers, as a code-change is required
 							return i18n::translate('great x%d nephew', $down-3);
 				case 'dau':
 					if ($first=='bro' && $sex1=='M') {
-							return i18n::translate_c('brother\'s great xX granddaughter', 'great x%d niece', $down-3);
+							return i18n::translate_c('brother\'s great xN granddaughter', 'great x%d niece', $down-3);
 					} else if ($first=='sis' && $sex1=='M') {
-							return i18n::translate_c('sister\'s great xX granddaughter',  'great x%d niece', $down-3);
+							return i18n::translate_c('sister\'s great xN granddaughter',  'great x%d niece', $down-3);
 					} else	return i18n::translate('great x%d niece', $down-3);
 				case 'chi':
 				if ($first=='bro' && $sex1=='M') {
-						return i18n::translate_c('brother\'s great xX grandchild', 'great x%d nephew/niece', $down-3);
+						return i18n::translate_c('brother\'s great xN grandchild', 'great x%d nephew/niece', $down-3);
 				} else if ($first=='sis' && $sex1=='M') {
-						return i18n::translate_c('sister\'s great xX grandchild',  'great x%d nephew/niece', $down-3);
+						return i18n::translate_c('sister\'s great xN grandchild',  'great x%d nephew/niece', $down-3);
 				} else	return i18n::translate('great x%d nephew/niece', $down-3);
 				}
 			case 'it': // Source: Michele Locati.
