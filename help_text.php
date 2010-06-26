@@ -2718,7 +2718,7 @@ case 'SUBLIST_TRIGGER_I':
 
 case 'SURNAME_LIST_STYLE':
 	$title=i18n::translate('Surname list style');
-	$text=i18n::translate('Lists of surnames, as they appear in the Top 10 Surnames block, the Individuals, and the Families, can be shown in different styles.<ul><li><b>Table</b>&nbsp;&nbsp;&nbsp;In this style, the surnames are shown in a table that can be sorted either by surname or by count.</li><li><b>Tagcloud</b>&nbsp;&nbsp;&nbsp;In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.  The list is not sortable.</li></ul>');
+	$text=i18n::translate('<p>Lists of surnames, as they appear in the Top 10 Surnames block, the Individual lists, and the Families lists, can be shown in different styles.</p><dl><dt>Table</dt><dd>In this style, the surnames are shown in a table that can be sorted either by surname or by count.</dd><dt>Tag cloud</dt><dd>In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.  The list is not sortable.</dd></dt></dl>');
 	break;
 
 case 'SURNAME_TRADITION':
