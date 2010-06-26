@@ -349,6 +349,7 @@ case 'update':
 			} else {
 				fwrite($fp, $httext);
 				fclose($fp);
+				chmod($whichFile, 0644); // Make sure apache can read this file
 			}
 		}
 	} elseif ($_POST["NEW_USE_MEDIA_FIREWALL"]==false) {
@@ -369,6 +370,7 @@ case 'update':
 			} else {
 				fwrite($fp, $httext);
 				fclose($fp);
+				chmod($whichFile, 0644); // Make sure apache can read this file
 			}
 		}
 
