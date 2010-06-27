@@ -30,7 +30,7 @@
 define('WT_SCRIPT_NAME', 'imageview.php');
 require './includes/session.php';
 
-$filename=decrypt(safe_GET('filename'));
+$filename=safe_GET('filename');
 
 print_simple_header(i18n::translate('Image viewer'));
 
@@ -180,7 +180,7 @@ if (!$isExternal && !media_exists($filename) ) {
 	print "<center><font size=\"6\"><a href=\"javascript:;\" onclick=\"zoomin(); return false;\">+</a> <a href=\"javascript:;\" onclick=\"zoomout();\">&ndash;</a> </font>";
 	print "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%\n";
 	print "<input type=\"button\" value=\"".i18n::translate('Reset')."\" onclick=\"resetimage(); return false;\" />\n";
-	print "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".encrypt(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".i18n::translate('View image details')."</a>\n";
+	print "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".urlencode(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".i18n::translate('View image details')."</a>\n";
 	print "</center>\n";
 	$imgsize = findImageSize($filename);
 	$imgwidth = $imgsize[0]+2;

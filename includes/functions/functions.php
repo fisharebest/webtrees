@@ -3226,58 +3226,6 @@ function isFileExternal($file) {
 }
 
 /*
- * Encrypt the input string
- *
- * This function is used when a file name needs to be passed to another script by means of the
- * GET method.  This method passes parameters to the script through the URL that launches the
- * script.
- *
- * File names could themselves be legitimate URLs.  These legitimate URLs would normally be
- * killed by the hacker detection code in "includes/session_spider.php".  This method avoids
- * that problem.
- *
- */
-function encrypt($string, $key='') {
-	if (empty($key)) $key = session_id();
-	$result = '';
-
-	for($i=0; $i<strlen($string); $i++) {
-		$char = substr($string, $i, 1);
-		$keychar = substr($key, ($i % strlen($key))-1, 1);
-		$newOrd = ord($char) + ord($keychar);
-		if ($newOrd > 255) $newOrd -= 256;		// Make sure we stay within the 8-bit code table
-		$result .= chr($newOrd);
-	}
-	$result = '*'.strtr(base64_encode($result), '+/=', '-_#');		// Avoid characters that mess up URLs
-
-	return $result;
-}
-
-/*
- * Decrypt the input string
- *
- * See above.
- *
- */
-function decrypt($string, $key='') {
-	if (empty($key)) $key = session_id();
-
-	if (substr($string, 0, 1)!='*') return $string;		// Input is not a valid encrypted string
-	$string = base64_decode(strtr(substr($string, 1), '-_#', '+/='));
-
-	$result = '';
-	for($i=0; $i<strlen($string); $i++) {
-		$char = substr($string, $i, 1);
-		$keychar = substr($key, ($i % strlen($key))-1, 1);
-		$newOrd = ord($char) - ord($keychar);
-		if ($newOrd < 0) $newOrd += 256;		// Make sure we stay within the 8-bit code table
-		$result .= chr($newOrd);
-	}
-
-	return $result;
-}
-
-/*
  * Get useful information on how to handle this media file
  */
 function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyViewerOption=true) {
@@ -3389,7 +3337,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			$imgsize = findImageSize($fileName);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
-			$url = "javascript:;\" onclick=\"return openImage('".encode_url(encrypt($fileName))."', $imgwidth, $imgheight);";
+			$url = "javascript:;\" onclick=\"return openImage('".urlencode($fileName)."', $imgwidth, $imgheight);";
 		}
 		break;
 	}

@@ -386,7 +386,7 @@ class IndividualControllerRoot extends BaseController {
 					if (WT_USE_LIGHTBOX) {
 						print "<a href=\"" . $firstmediarec["file"] . "\" rel=\"clearbox[general_1]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">" . "\n";
 					} else if (!$USE_MEDIA_VIEWER && $imgsize) {
-						$result .= "<a href=\"javascript:;\" onclick=\"return openImage('".encode_url(encrypt($firstmediarec["file"]))."', $imgwidth, $imgheight);\">";
+						$result .= "<a href=\"javascript:;\" onclick=\"return openImage('".urlencode($firstmediarec["file"])."', $imgwidth, $imgheight);\">";
 					} else {
 						$result .= "<a href=\"mediaviewer.php?mid={$mid}\">";
 					}

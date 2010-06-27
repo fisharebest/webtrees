@@ -44,7 +44,6 @@
 <?php
 global $pid, $GEDCOM ;
 global $wmvVideo;
-// $wmvVideo=decrypt(safe_GET('wmvVideo'));
 $wmvVideo=$_GET['wmvVideo'];
 ?>
 

@@ -412,12 +412,6 @@ $maxyoffset+=30;
 	if (content_div) {
 		content_div.style.height = <?php echo $maxyoffset; ?> + "px";
 	}
-	<?php if ($view=="preview") { ?>
-	pedigree_div = document.getElementById("pedigree_chart");
-	if (pedigree_div) {
-		pedigree_div.style.height = <?php echo $maxyoffset; ?> + "px";
-	}
-	<?php } ?>
 </script>
 <?php
 print_footer();
