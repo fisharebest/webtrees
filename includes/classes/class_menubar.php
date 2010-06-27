@@ -1000,7 +1000,7 @@ class MenuBar
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
 		$menu=new Menu(i18n::translate('Language'), '#', 'down');
-		$menu->addClass("langmenuitem$ff", "langmenuitem_hover$ff", "submenu$ff");
+		$menu->addClass("langmenuitem$ff", "langmenuitem_hover$ff", "submenu$ff", "icon_language");
 
 		foreach (i18n::installed_languages() as $lang=>$name) {
 			$submenu=new Menu($name, WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING.'&amp;lang='.$lang));
