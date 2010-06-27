@@ -684,14 +684,17 @@ if (check_media_structure()) {
 					echo i18n::translate('Record %s successfully updated.', $pid), '<br />';
 				}
 
-				// Record changes to the Media object
-				accept_all_changes($xref, WT_GED_ID);
-				$objerec = find_gedcom_record($xref, WT_GED_ID);
-	
 				// Remove media object from gedcom
 				delete_gedrec($xref, WT_GED_ID);
 				echo i18n::translate('Record %s successfully removed from GEDCOM.', $xref), '<br />';
 
+/* I've commented this out, as I have no idea what it is supposed to do.  We've just deleted a
+ * file, so why are we creating a new media object for it???
+ 
+				// Record changes to the Media object
+				accept_all_changes($xref, WT_GED_ID);
+				$objerec = find_gedcom_record($xref, WT_GED_ID);
+	
 				// Add the same file as a new object
 				if ($finalResult && !$removeObject && $objerec!="") {
 					$xref = get_new_xref("OBJE");
@@ -706,6 +709,7 @@ if (check_media_structure()) {
 					}
 					print "<br />";
 				}
+*/
 			}
 		}
 		if ($finalResult) print i18n::translate('Update successful');
