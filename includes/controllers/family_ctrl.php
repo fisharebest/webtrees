@@ -64,7 +64,7 @@ class FamilyRoot extends BaseController {
 		$pbwidth = $bwidth + 12;
 		$pbheight = $bheight + 14;
 
-		$show_famlink = $this->view!='preview';
+		$show_famlink = true;
 
 		$this->famid = safe_GET_xref('famid');
 
