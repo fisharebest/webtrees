@@ -2484,7 +2484,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 			if ($key=="TYPE") {
 				add_simple_tag("2 TYPE ".$type_val);
 			} elseif ($level1tag=='_TODO' && $key=='DATE') {
-				add_simple_tag("2 ".$key.' '.strtoupper(date('d F Y')));
+				add_simple_tag("2 ".$key.' '.strtoupper(date('d M Y')));
 			} elseif ($level1tag=='_TODO' && $key=='_WT_USER') {
 				add_simple_tag("2 ".$key.' '.WT_USER_NAME);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
