@@ -71,6 +71,7 @@ $WT_IMAGES["sexn"]["large"] = "fe_male.gif";
 $WT_IMAGES["edit_indi"]["large"] = "edit_indi.png";
 $WT_IMAGES["edit_fam"]["large"] = "edit_fam.png";
 $WT_IMAGES["edit_source"]["large"] = "edit_source.png";
+$WT_IMAGES["edit_repo"]["large"] = "edit_repo.png";
 
 //- PGV small icons
 $WT_IMAGES["admin"]["small"] = "small/admin.png";
@@ -82,7 +83,7 @@ $WT_IMAGES["descendant"]["small"] = "small/descendancy.png";
 $WT_IMAGES["favorites"]["small"] = "small/favorites.png";
 $WT_IMAGES["edit_indi"]["small"] = "small/edit_indi.gif";
 $WT_IMAGES["edit_sour"]["small"] = "small/edit_source.png";
-$WT_IMAGES["edit_repo"]["small"] = "small/edit_repo.gif";
+$WT_IMAGES["edit_repo"]["small"] = "small/edit_repo.png";
 $WT_IMAGES["fambook"]["small"] = "small/fambook.png";
 $WT_IMAGES["fanchart"]["small"] = "small/fanchart.png";
 $WT_IMAGES["gedcom"]["small"] = "small/tree.png";
@@ -101,7 +102,7 @@ $WT_IMAGES["pedigree"]["small"] = "small/pedigree.png";
 $WT_IMAGES["place"]["small"] = "small/place.png";
 $WT_IMAGES["relationship"]["small"] = "small/relationship.gif";
 $WT_IMAGES["reports"]["small"] = "small/reports.gif";
-$WT_IMAGES["repository"]["small"] = "small/repository.gif";
+$WT_IMAGES["repository"]["small"] = "small/repository.png";
 $WT_IMAGES["search"]["small"] = "small/search.png";
 $WT_IMAGES["sex"]["small"] = "small/male.gif";
 $WT_IMAGES["sexf"]["small"] = "small/female.gif";
