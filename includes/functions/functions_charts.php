@@ -98,7 +98,7 @@ function print_family_header($famid) {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
-	global $view, $show_full;
+	global $show_full;
 	global $TEXT_DIRECTION, $SHOW_EMPTY_BOXES;
 	global $pbwidth, $pbheight;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
@@ -276,7 +276,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $pbwidth, $pbheight, $view, $show_cousins;
+	global $pbwidth, $pbheight, $show_cousins;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -465,7 +465,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
  * @param int $sosa optional child sosa number
  */
 function print_family_facts(&$family, $sosa = 0) {
-	global $pbwidth, $pbheight, $view;
+	global $pbwidth, $pbheight;
 	global $nonfacts;
 	global $TEXT_DIRECTION, $GEDCOM;
 	global $show_changes;
@@ -577,7 +577,7 @@ function print_family_facts(&$family, $sosa = 0) {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gparid="", $personcount="1") {
-	global $pbwidth, $pbheight, $view;
+	global $pbwidth, $pbheight;
 
 	print "<hr />";
 	print "\r\n\r\n<p style='page-break-before:always' />\r\n";
@@ -674,7 +674,6 @@ function ancestry_array($rootid, $maxgen=0) {
  * @param string $dir arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
 function print_url_arrow($id, $url, $label, $dir=2) {
-	global $view;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
 	global $TEXT_DIRECTION;
 

@@ -1693,7 +1693,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
  */
 function print_chart_by_age($data, $title) {
 	global $GEDCOM;
-	global $view, $stylesheet;
+	global $stylesheet;
 
 	$css = new cssparser(false);
 	$css->Parse($stylesheet);
@@ -1766,7 +1766,7 @@ function print_chart_by_age($data, $title) {
  * @param string $title
  */
 function print_chart_by_decade($data, $title) {
-	global $view, $stylesheet;
+	global $stylesheet;
 
 	$css = new cssparser(false);
 	$css->Parse($stylesheet);

@@ -58,7 +58,7 @@ $name  =$person->getFullName();
 
 function print_descendency($pid, $count) {
 	global $show_spouse, $dgenerations, $bwidth, $bheight, $bhalfheight;
-	global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $generations, $box_width, $view, $show_full;
+	global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $generations, $box_width, $show_full;
 	if ($count>=$dgenerations) return 0;
 	print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n";
 	print "<tr>";

@@ -391,7 +391,7 @@ function print_td_person($n) {
 
 function print_arrow_person($n, $arrow_dir) {
 	global $treeid;
-	global $view, $showthumbs;
+	global $showthumbs;
 	global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
 
 	$pid = $treeid[$n];
@@ -418,7 +418,6 @@ function print_arrow_person($n, $arrow_dir) {
 	if ($pid) {
 		$text .= "<a href=\"?rootid=".$pid;
 		if ($showthumbs) $text .= "&amp;showthumbs=".$showthumbs;
-		if ($view) $text .="&amp;view=".$view;
 		$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" >";
 		$text .= $arrow_img."</a>";
 	}

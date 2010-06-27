@@ -78,7 +78,6 @@ function print_fact(&$eventObj, $noedit=false) {
 	global $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION;
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
-	global $view;
 	global $n_chil, $n_gchi, $n_ggch;
 	global $SEARCH_SPIDER;
 
@@ -554,7 +553,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 //-- Print the links to multi-media objects
 function print_media_links($factrec, $level, $pid='') {
 	global $MULTI_MEDIA, $TEXT_DIRECTION;
-	global $SEARCH_SPIDER, $view;
+	global $SEARCH_SPIDER;
 	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
 	global $GEDCOM, $MEDIA_TYPES;
@@ -828,7 +827,7 @@ function print_address_structure($factrec, $level) {
 }
 
 function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $view, $RESN_CODES;
+	global $RESN_CODES;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
 
 	if (!canDisplayFact($pid, WT_GED_ID, $factrec)) {
@@ -1082,7 +1081,6 @@ function getSourceStructure($srec) {
  */
 function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 	global $GEDCOM, $RESN_CODES;
-	global $view;
 	global $WT_IMAGE_DIR;
 	global $WT_IMAGES;
 	global $TEXT_DIRECTION;
@@ -1422,7 +1420,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
  * @param string $pid	The record id this media item was attached to
  */
 function print_main_media_row($rtype, $rowm, $pid) {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $view, $TEXT_DIRECTION;
+	global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
 	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER, $MEDIA_TYPES;
 

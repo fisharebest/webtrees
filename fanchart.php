@@ -98,7 +98,7 @@ function split_align_text($data, $maxlen) {
  */
 function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style;
-	global $name, $view, $TEXT_DIRECTION;
+	global $name, $TEXT_DIRECTION;
 	global $stylesheet;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $LINK_ICONS, $GEDCOM;
 	global $fanChart;
@@ -284,7 +284,6 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$tempURL = $person->getLinkUrl();
 				$imagemap .= "\" href=\"$tempURL\" ";
 				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}";
-				if (!empty($view)) $tempURL .= "&view={$view}";
 				$count=0;
 				$lbwidth=200;
 				echo "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute; >";

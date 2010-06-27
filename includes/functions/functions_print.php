@@ -50,7 +50,7 @@ require_once WT_ROOT.'includes/classes/class_menubar.php';
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
 function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
-	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $view, $GEDCOM;
+	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 	global $USE_SILHOUETTE, $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
@@ -527,11 +527,8 @@ function print_simple_header($title) {
 
 // -- print the html to close the page
 function print_footer() {
-	global $view;
 	global $SHOW_STATS, $QUERY_STRING, $footerfile, $printlink;
 	global $WT_IMAGE_DIR, $theme_name, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
-
-	$view = safe_get('view');
 
 	if (!isset($footer_count)) $footer_count = 1;
 	else $footer_count++;
