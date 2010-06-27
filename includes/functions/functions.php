@@ -2678,60 +2678,60 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				if ($up>$down) {
 					switch ($last) {
 					case 'son': /* I18N: %s="fifth cousin", etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-						return i18n::translate('%s once removed ascending', cousin_name(1, 'M'));
+						return i18n::translate('%s once removed ascending', cousin_name($cousin, 'M'));
 					case 'dau':
-						return i18n::translate('%s once removed ascending', cousin_name(1, 'F'));
+						return i18n::translate('%s once removed ascending', cousin_name($cousin, 'F'));
 					case 'chi':
-						return i18n::translate('%s once removed ascending', cousin_name(1, 'U'));
+						return i18n::translate('%s once removed ascending', cousin_name($cousin, 'U'));
 					}
 				} else {
 					switch ($last) {
 					case 'son': /* I18N: %s="fifth cousin", etc. http://www.ancestry.com/learn/library/article.aspx?article=2856 */
-						return i18n::translate('%s once removed descending', cousin_name(1, 'M'));
+						return i18n::translate('%s once removed descending', cousin_name($cousin, 'M'));
 					case 'dau':
-						return i18n::translate('%s once removed descending', cousin_name(1, 'F'));
+						return i18n::translate('%s once removed descending', cousin_name($cousin, 'F'));
 					case 'chi':
-						return i18n::translate('%s once removed descending', cousin_name(1, 'U'));
+						return i18n::translate('%s once removed descending', cousin_name($cousin, 'U'));
 					}
 				}
 			case 2:
 				if ($up>$down) {
 					switch ($last) {
 					case 'son': /* I18N: %s="fifth cousin", etc. */
-						return i18n::translate('%s twice removed ascending', cousin_name(2, 'M'));
+						return i18n::translate('%s twice removed ascending', cousin_name($cousin, 'M'));
 					case 'dau':
-						return i18n::translate('%s twice removed ascending', cousin_name(2, 'F'));
+						return i18n::translate('%s twice removed ascending', cousin_name($cousin, 'F'));
 					case 'chi':
-						return i18n::translate('%s twice removed ascending', cousin_name(2, 'U'));
+						return i18n::translate('%s twice removed ascending', cousin_name($cousin, 'U'));
 					}
 				} else {
 					switch ($last) {
 					case 'son': /* I18N: %s="fifth cousin", etc. */
-						return i18n::translate('%s twice removed descending', cousin_name(2, 'M'));
+						return i18n::translate('%s twice removed descending', cousin_name($cousin, 'M'));
 					case 'dau':
-						return i18n::translate('%s twice removed descending', cousin_name(2, 'F'));
+						return i18n::translate('%s twice removed descending', cousin_name($cousin, 'F'));
 					case 'chi':
-						return i18n::translate('%s twice removed descending', cousin_name(2, 'U'));
+						return i18n::translate('%s twice removed descending', cousin_name($cousin, 'U'));
 					}
 				}
 			case 3:
 				if ($up>$down) {
 					switch ($last) {
 					case 'son': /* I18N: %s="fifth cousin", etc. */
-						return i18n::translate('%s thrice removed ascending', cousin_name(3, 'M'));
+						return i18n::translate('%s thrice removed ascending', cousin_name($cousin, 'M'));
 					case 'dau':
-						return i18n::translate('%s thrice removed ascending', cousin_name(3, 'F'));
+						return i18n::translate('%s thrice removed ascending', cousin_name($cousin, 'F'));
 					case 'chi':
-						return i18n::translate('%s thrice removed ascending', cousin_name(3, 'U'));
+						return i18n::translate('%s thrice removed ascending', cousin_name($cousin, 'U'));
 					}
 				} else {
 					switch ($last) {
 					case 'son': /* I18N: %s="fifth cousin", etc. */
-						return i18n::translate('%s thrice removed descending', cousin_name(3, 'M'));
+						return i18n::translate('%s thrice removed descending', cousin_name($cousin, 'M'));
 					case 'dau':
-						return i18n::translate('%s thrice removed descending', cousin_name(3, 'F'));
+						return i18n::translate('%s thrice removed descending', cousin_name($cousin, 'F'));
 					case 'chi':
-						return i18n::translate('%s thrice removed descending', cousin_name(3, 'U'));
+						return i18n::translate('%s thrice removed descending', cousin_name($cousin, 'U'));
 					}
 				}
 			default:
