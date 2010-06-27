@@ -1928,7 +1928,10 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		// TODO: Update all the "3 RELA " values in class_person
 		return '<span class="error">'.$path.'</span>';
 	}
-	$sex1=Person::GetInstance($pid1)->getSex();
+	$person1=Person::GetInstance($pid1);
+	$person2=Person::GetInstance($pid2);
+	$sex1=$person1 ? $person1->getSex() : 'U';
+
 	switch ($path) {
 	case '': return i18n::translate('self');
 	
@@ -1943,8 +1946,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'dau': return i18n::translate('daughter');
 	case 'chi': return i18n::translate('child');
 	case 'bro':
-		$person1=Person::GetInstance($pid1);
-		$person2=Person::GetInstance($pid2);
 		if ($person1 && $person2) {
 			$dob1=$person1->getBirthDate();
 			$dob2=$person2->getBirthDate();
