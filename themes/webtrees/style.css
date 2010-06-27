@@ -1660,7 +1660,7 @@ div.faq_body {
 	display:none;
 	font-weight: normal;
 	position:absolute;
-	left:0px;
+	right:0px;
 	top:1.1em;
 	background-color:#FFF;
 	border:thin solid #AAA;
