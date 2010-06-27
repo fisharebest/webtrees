@@ -431,8 +431,6 @@ if ($action=="edituser") {
 
 //-- echo out a list of the current users
 if ($action == "listusers") {
-	$showprivs=($view=="preview"); // expand gedcom privs by default in print-preview
-
 	switch ($sort) {
 		case "sortllgn":
 			$users = get_all_users("desc", "sessiontime");
@@ -493,16 +491,14 @@ if ($action == "listusers") {
 	?>
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
-	<?php if ($view!="preview") { ?>
 	<td colspan="5" class="topbottombar rtl"><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
-	<?php } ?>
-	<td colspan="<?php if ($view == "preview") echo "8"; else echo "5"; ?>" class="topbottombar rtl"><a href="useradmin.php"><?php if ($view != "preview") echo i18n::translate('Back to User Administration'); else echo "&nbsp;"; ?></a></td>
+	<td colspan="5" class="topbottombar rtl"><a href="useradmin.php"><?php echo i18n::translate('Back to User Administration'); ?></a></td>
 	</tr>
 	<tr>
-	<?php if ($view != "preview") {
+	<?php 
 	echo "<td class=\"descriptionbox wrap\">";
 	echo i18n::translate('Send Message'), "</td>";
-	} ?>
+	?>
 	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortrealname&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('Real name'); ?></a></td>
 	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortusername&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('User name'); ?></a></td>
 	<td class="descriptionbox wrap"><?php echo i18n::translate(' Languages'); ?></td>
@@ -510,12 +506,9 @@ if ($action == "listusers") {
 	$k = 1;
 	for ($i=1, $max=count($users)+1; $i<=$max; $i++) echo "expand_layer('user-geds", $i, "'); ";
 	echo " return false;\"><img id=\"user-geds", $k, "_img\" src=\"", $WT_IMAGE_DIR, "/";
-	if ($showprivs == false) echo $WT_IMAGES["plus"]["other"];
-	else echo $WT_IMAGES["minus"]["other"];
+	echo $WT_IMAGES["plus"]["other"];
 	echo "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
-	echo "<div id=\"user-geds", $k, "\" style=\"display: ";
-	if ($showprivs == false) echo "none\">";
-	else echo "block\">";
+	echo "<div id=\"user-geds", $k, "\" style=\"display:none\">";
 	echo "</div>&nbsp;";
 	echo i18n::translate('Privileges'); ?>
 	</td>
@@ -523,24 +516,22 @@ if ($action == "listusers") {
 	<td class="descriptionbox wrap width20"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortllgn&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('Last logged in'); ?></a></td>
 	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortver&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('User verified himself'); ?></a></td>
 	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortveradmin&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('User approved by admin'); ?></a></td>
-	<?php if ($view != "preview") {
+	<?php
 	echo "<td class=\"descriptionbox wrap\">";
 	echo i18n::translate('Delete'), "</td>";
-	} ?>
+	?>
 	</tr>
 	<?php
 	$k++;
 	foreach($users as $user_id=>$user_name) {
 		echo "<tr>\n";
-		if ($view != "preview") {
-			echo "\t<td class=\"optionbox wrap\">";
-			if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'contactmethod')!='none') {
-				echo "<a href=\"javascript:;\" onclick=\"return message('", $user_name, "');\">", i18n::translate('Send Message'), "</a>";
-			} else {
-				echo '&nbsp;';
-			}
-			echo '</td>';
+		echo "\t<td class=\"optionbox wrap\">";
+		if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'contactmethod')!='none') {
+			echo "<a href=\"javascript:;\" onclick=\"return message('", $user_name, "');\">", i18n::translate('Send Message'), "</a>";
+		} else {
+			echo '&nbsp;';
 		}
+		echo '</td>';
 		$userName = getUserFullName($user_id);
 		echo "\t<td class=\"optionbox wrap\"><a class=\"edit_link\" href=\"", encode_url("useradmin.php?action=edituser&username={$user_name}&sort={$sort}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" title=\"", i18n::translate('Edit'), "\">", $userName;
 		if ($TEXT_DIRECTION=="ltr") echo getLRM();
@@ -559,13 +550,10 @@ if ($action == "listusers") {
 		echo "\t<td class=\"optionbox wrap\">", Zend_Locale::getTranslation(get_user_setting($user_id, 'language'), 'language', WT_LOCALE), "</td>\n";
 		echo "\t<td class=\"optionbox\">";
 		echo "<a href=\"javascript: ", i18n::translate('Privileges'), "\" onclick=\"expand_layer('user-geds", $k, "'); return false;\"><img id=\"user-geds", $k, "_img\" src=\"", $WT_IMAGE_DIR, "/";
-		if ($showprivs == false) echo $WT_IMAGES["plus"]["other"];
-		else echo $WT_IMAGES["minus"]["other"];
+		echo $WT_IMAGES["plus"]["other"];
 		echo "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" />";
 		echo "</a>";
-		echo "<div id=\"user-geds", $k, "\" style=\"display: ";
-		if ($showprivs == false) echo "none\">";
-		else echo "block\">";
+		echo "<div id=\"user-geds", $k, "\" style=\"display:none\">";
 		echo "<ul>";
 		if (get_user_setting($user_id, 'canadmin')) {
 			echo "<li class=\"warning\">", i18n::translate('User can administer'), "</li>\n";
@@ -609,19 +597,15 @@ if ($action == "listusers") {
 		if (get_user_setting($user_id, 'verified_by_admin')) echo i18n::translate('Yes');
 		else echo i18n::translate('No');
 		echo "</td>\n";
-		if ($view != "preview") {
-			echo "\t<td class=\"optionbox wrap\">";
-			if (WT_USER_ID!=$user_id) echo "<a href=\"", encode_url("useradmin.php?action=deleteuser&username={$user_name}&sort={$sort}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" onclick=\"return confirm('", i18n::translate('Are you sure you want to delete the user'), " $user_name');\">", i18n::translate('Delete'), "</a>";
-			echo "</td>\n";
-		}
+		echo "\t<td class=\"optionbox wrap\">";
+		if (WT_USER_ID!=$user_id) echo "<a href=\"", encode_url("useradmin.php?action=deleteuser&username={$user_name}&sort={$sort}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" onclick=\"return confirm('", i18n::translate('Are you sure you want to delete the user'), " $user_name');\">", i18n::translate('Delete'), "</a>";
+		echo "</td>\n";
 		echo "</tr>\n";
 	}
 	?>
 	<tr>
-		<?php if ($view!="preview") { ?>
 		<td colspan="6" class="topbottombar rtl"><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
-		<?php } ?>
-		<td colspan="<?php if ($view == "preview") echo "8"; else echo "5"; ?>" class="topbottombar rtl"><a href="useradmin.php"><?php  if ($view != "preview") echo i18n::translate('Back to User Administration'); else echo "&nbsp;"; ?></a></td>
+		<td colspan="5" class="topbottombar rtl"><a href="useradmin.php"><?php echo i18n::translate('Back to User Administration'); ?></a></td>
 	</tr>
 	</table>
 	<?php

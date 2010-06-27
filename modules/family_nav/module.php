@@ -156,7 +156,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}else{
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
-				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -191,7 +191,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}else{
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
-				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -230,7 +230,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}else{
 						$menu->addClass("", "", "submenu flyout2rtl");
 					}
-					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, true, 0, $personcount++);
+					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= $spouselinks."<a>";
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -306,7 +306,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}else{
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
-				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -350,7 +350,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}else{
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
-				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -388,7 +388,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}else{
 						$menu->addClass("", "", "submenu flyout2rtl");
 					}
-					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, true, 0, $personcount++);
+					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= $spouselinks."<a>";
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -450,7 +450,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}else{
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
-				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -490,7 +490,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}else{
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
-				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -532,7 +532,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}else{
 						$menu->addClass("", "", "submenu flyout2rtl");
 					}
-					$slabel = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, true, 0, $personcount++);
+					$slabel = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= $spouselinks."<a>";
 					$submenu = new Menu($slabel);
 					$menu->addSubmenu($submenu);
@@ -575,7 +575,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		
 	} // End public function getTabContent()
 
-function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
+function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $SCRIPT_NAME, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
@@ -609,7 +609,7 @@ function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0,
 	$disp=$person->canDisplayDetails();
 
 	if ($person->canDisplayName()) {
-		if ($show_famlink && (empty($SEARCH_SPIDER))) {
+		if (empty($SEARCH_SPIDER)) {
 			if ($LINK_ICONS!="disabled") {
 				//-- draw a box for the family flyout
 				$parentlinks 		.= "<span class=\"flyout4\"><b>".i18n::translate('Parents')."</b></span><br />";

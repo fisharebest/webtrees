@@ -47,10 +47,9 @@ require_once WT_ROOT.'includes/classes/class_menubar.php';
 * find and print a given individuals information for a pedigree chart
 * @param string $pid the Gedcom Xref ID of the   to print
 * @param int $style the style to print the box in, 1 for smaller boxes, 2 for larger boxes
-* @param boolean $show_famlink set to true to show the icons for the popup links and the zoomboxes
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
-function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
+function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $view, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
@@ -99,7 +98,7 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 	$mouseAction3 = " onmousedown=\"expandbox('".$boxID."', $style); return false;\" onmouseup=\"restorebox('".$boxID."', $style); return false;\"";
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
 	if ($person->canDisplayName()) {
-		if ($show_famlink && (empty($SEARCH_SPIDER))) {
+		if (empty($SEARCH_SPIDER)) {
 			if ($LINK_ICONS!="disabled") {
 				//-- draw a box for the family popup
 				// NOTE: Start div I.$pid.$personcount.$count.links
@@ -195,7 +194,7 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 			if (($ZOOM_BOXES!="disabled")&&(!$show_full)) {
 				if ($ZOOM_BOXES=="mouseover") $outBoxAdd .= $mouseAction2;
 				if ($ZOOM_BOXES=="mousedown") $outBoxAdd .= $mouseAction3;
-				if (($ZOOM_BOXES=="click")&&($view!="preview")) $outBoxAdd .= $mouseAction4;
+				if (($ZOOM_BOXES=="click")) $outBoxAdd .= $mouseAction4;
 			}
 			// NOTE: Zoom
 			if (($ZOOM_BOXES!="disabled")&&($show_full)) {
@@ -262,7 +261,7 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 			if (($ZOOM_BOXES!="disabled")&&(empty($SEARCH_SPIDER))) {
 				if ($ZOOM_BOXES=="mouseover") $outBoxAdd .= $mouseAction2;
 				if ($ZOOM_BOXES=="mousedown") $outBoxAdd .= $mouseAction3;
-				if (($ZOOM_BOXES=="click")&&($view!="preview")) $outBoxAdd .= $mouseAction4;
+				if (($ZOOM_BOXES=="click")) $outBoxAdd .= $mouseAction4;
 			}
 		}
 	}
@@ -433,29 +432,6 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	}
 	$javascript = '';
 	$query_string = $QUERY_STRING;
-	if ($view!='simple') {
-
-/*		$javascript .='<script language="JavaScript" type="text/javascript">
-	<!--
-	function hidePrint() {
-		var printlink = document.getElementById("printlink");
-		var printlinktwo = document.getElementById("printlinktwo");
-		if (printlink) {
-			printlink.style.display="none";
-			printlinktwo.style.display="none";
-		}
-	}
-	function showBack() {
-		var printlink = document.getElementById("printlink");
-		var printlinktwo = document.getElementById("printlinktwo");
-		if (printlink) {
-			printlink.style.display="inline";
-			printlinktwo.style.display="inline";
-		}
-	}
-	//-->
-	</script>'; */
-	}
 	$javascript.=WT_JS_START.'
 		/* setup some javascript variables */
 		var query = "'.$query_string.'";
@@ -523,7 +499,6 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	//-->
 	'.WT_JS_END.'<script src="js/webtrees.js" language="JavaScript" type="text/javascript"></script>';
 	$bodyOnLoad = '';
-	if ($view=="preview") $bodyOnLoad .= " onbeforeprint=\"hidePrint();\" onafterprint=\"showBack();\"";
 	$bodyOnLoad .= " onload=\"";
 	if (!empty($ONLOADFUNCTION)) $bodyOnLoad .= $ONLOADFUNCTION;
 	if ($TEXT_DIRECTION=="rtl") {
@@ -553,7 +528,7 @@ function print_simple_header($title) {
 // -- print the html to close the page
 function print_footer() {
 	global $view;
-	global $SHOW_STATS, $QUERY_STRING, $footerfile, $print_footerfile, $printlink;
+	global $SHOW_STATS, $QUERY_STRING, $footerfile, $printlink;
 	global $WT_IMAGE_DIR, $theme_name, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
 	$view = safe_get('view');
@@ -561,19 +536,7 @@ function print_footer() {
 	if (!isset($footer_count)) $footer_count = 1;
 	else $footer_count++;
 	echo "<!-- begin footer -->";
-	if ($view!="preview") {
-		require $footerfile;
-	} else {
-		require $print_footerfile;
-		echo "<div id=\"backprint\" style=\"text-align: center; width: 95%\">";
-		$backlink = WT_SCRIPT_NAME."?".get_query_string();
-		if (!$printlink) {
-			echo "<br /><a id=\"printlink\" href=\"javascript:;\" onclick=\"print(); return false;\">", i18n::translate('Print'), "</a><br />";
-			echo " <a id=\"printlinktwo\" href=\"javascript:;\" onclick=\"window.location='", $backlink, "'; return false;\">", i18n::translate('Back to normal view'), "</a><br />";
-		}
-		$printlink = true;
-		echo "</div>";
-	}
+	require $footerfile;
 	if (function_exists("load_behaviour")) {
 		load_behaviour();  // @see function_print_lists.php
 	}

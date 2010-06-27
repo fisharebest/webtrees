@@ -105,18 +105,16 @@ if ($cal_date->d>$days_in_month && $action=='today')
 print_header(i18n::translate('Anniversary calendar'));
 echo '<div style="text-align: center;" id="calendar_page">';
 
-if ($view!='preview') {
-	// Calendar form
-	echo '<form name="dateform" method="get" action="calendar.php">';
-	echo "<input type=\"hidden\" name=\"cal\"      value=\"{$cal}\"         />";
-	echo "<input type=\"hidden\" name=\"day\"      value=\"{$cal_date->d}\" />";
-	echo "<input type=\"hidden\" name=\"month\"    value=\"{$cal_month}\"   />";
-	echo "<input type=\"hidden\" name=\"year\"     value=\"{$cal_date->y}\" />";
-	echo "<input type=\"hidden\" name=\"action\"   value=\"{$action}\"      />";
-	echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\"    />";
-	echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\"    />";
-	echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\"    />";
-}
+// Calendar form
+echo '<form name="dateform" method="get" action="calendar.php">';
+echo "<input type=\"hidden\" name=\"cal\"      value=\"{$cal}\"         />";
+echo "<input type=\"hidden\" name=\"day\"      value=\"{$cal_date->d}\" />";
+echo "<input type=\"hidden\" name=\"month\"    value=\"{$cal_month}\"   />";
+echo "<input type=\"hidden\" name=\"year\"     value=\"{$cal_date->y}\" />";
+echo "<input type=\"hidden\" name=\"action\"   value=\"{$action}\"      />";
+echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\"    />";
+echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\"    />";
+echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\"    />";
 echo '<table class="facts_table '.$TEXT_DIRECTION.' width100">';
 echo '<tr><td class="facts_label" colspan="8"><h2>';
 
@@ -133,181 +131,179 @@ case 'year':
 }
 echo '</h2></td></tr>';
 
-if ($view!='preview') {
-	// Day selector
-	echo '<tr><td class="descriptionbox vmiddle">';
-	echo i18n::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="7" class="optionbox">';
-	for($d=1; $d<=$days_in_month; $d++) {
-		// Format the day number using the calendar
-		$tmp=new GedcomDate($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
-		if ($d==$cal_date->d)
-			echo "<span class=\"error\">{$d_fmt}</span>";
-		else
-			echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$d_fmt}</a>";
-		echo ' | ';
-	}
-	$tmp=new GedcomDate($today->Format('%@ %A %O %E')); // Need a GedcomDate object to get localisation
-	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(true, NULL, array()).'</b></a>';
-	// Month selector
-	echo '<tr><td class="descriptionbox vmiddle">';
-	echo i18n::translate('Month'), help_link('annivers_month_select'), '</td>';
-	echo '<td class="optionbox" colspan="7">';
-	for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
-		$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
-		$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
-		if ($n==$cal_date->m)
-			$month_name="<span class=\"error\">{$month_name}</span>";
-		echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$m}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$month_name}</a>";
-		echo ' | ';
-	}
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day=".min($cal_date->d, $today->DaysInMonth())."&month={$today_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
-	// Year selector
-	echo '<tr><td class="descriptionbox vmiddle">';
-	echo i18n::translate('Year'), help_link('annivers_year_select'), '</td>';
-	echo "<td class=\"optionbox vmiddle\">";
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year=".($cal_date->y==1?-1:$cal_date->y-1)."&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">-1</a>";
-	echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"7\" /> ";
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year=".($cal_date->y==-1?1:$cal_date->y+1)."&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">+1</a>";
-	echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%Y')."</b></a>";
-	echo "</td> ";
-	// Filtering options
-	echo "<td class=\"descriptionbox vmiddle\">";
-	echo i18n::translate('Show'), help_link('annivers_show'), '</td>';
-	echo "<td class=\"optionbox vmiddle\">";
-	echo "<select class=\"list_value\" name=\"filterof\" onchange=\"document.dateform.submit();\">";
-	echo "<option value=\"all\"";
-	if ($filterof == "all") echo " selected=\"selected\"";
-	echo ">".i18n::translate('All People')."</option>";
-	if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
-		echo "<option value=\"living\"";
-		if ($filterof == "living") echo " selected=\"selected\"";
-		echo ">".i18n::translate('Living People')."</option>";
-	}
-	echo "<option value=\"recent\"";
-	if ($filterof == "recent") echo " selected=\"selected\"";
-	echo ">".i18n::translate('Recent Years (&lt; 100 yrs)')."</option>";
-	echo "</select>";
+// Day selector
+echo '<tr><td class="descriptionbox vmiddle">';
+echo i18n::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="7" class="optionbox">';
+for($d=1; $d<=$days_in_month; $d++) {
+	// Format the day number using the calendar
+	$tmp=new GedcomDate($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
+	if ($d==$cal_date->d)
+		echo "<span class=\"error\">{$d_fmt}</span>";
+	else
+		echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$d_fmt}</a>";
+	echo ' | ';
+}
+$tmp=new GedcomDate($today->Format('%@ %A %O %E')); // Need a GedcomDate object to get localisation
+echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(true, NULL, array()).'</b></a>';
+// Month selector
+echo '<tr><td class="descriptionbox vmiddle">';
+echo i18n::translate('Month'), help_link('annivers_month_select'), '</td>';
+echo '<td class="optionbox" colspan="7">';
+for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
+	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
+	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
+	if ($n==$cal_date->m)
+		$month_name="<span class=\"error\">{$month_name}</span>";
+	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$m}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$month_name}</a>";
+	echo ' | ';
+}
+echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day=".min($cal_date->d, $today->DaysInMonth())."&month={$today_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
+// Year selector
+echo '<tr><td class="descriptionbox vmiddle">';
+echo i18n::translate('Year'), help_link('annivers_year_select'), '</td>';
+echo "<td class=\"optionbox vmiddle\">";
+echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year=".($cal_date->y==1?-1:$cal_date->y-1)."&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">-1</a>";
+echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"7\" /> ";
+echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year=".($cal_date->y==-1?1:$cal_date->y+1)."&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">+1</a>";
+echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%Y')."</b></a>";
+echo "</td> ";
+// Filtering options
+echo "<td class=\"descriptionbox vmiddle\">";
+echo i18n::translate('Show'), help_link('annivers_show'), '</td>';
+echo "<td class=\"optionbox vmiddle\">";
+echo "<select class=\"list_value\" name=\"filterof\" onchange=\"document.dateform.submit();\">";
+echo "<option value=\"all\"";
+if ($filterof == "all") echo " selected=\"selected\"";
+echo ">".i18n::translate('All People')."</option>";
+if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
+	echo "<option value=\"living\"";
+	if ($filterof == "living") echo " selected=\"selected\"";
+	echo ">".i18n::translate('Living People')."</option>";
+}
+echo "<option value=\"recent\"";
+if ($filterof == "recent") echo " selected=\"selected\"";
+echo ">".i18n::translate('Recent Years (&lt; 100 yrs)')."</option>";
+echo "</select>";
 
-	echo "</td>";
-	echo "<td class=\"descriptionbox vmiddle\">";
-	echo i18n::translate('Gender'), help_link('annivers_sex'), '</td>';
-	echo "<td class=\"optionbox vmiddle\">";
-	if ($filtersx=="") {
-		echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('All People'));
-		echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('All People')), ' | ';
-	} else {
-		echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=&action={$action}")."\">";
-		echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('All People'));
-		echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('All People')), '</a> | ';
-	}
-	if ($filtersx=="M") {
-		echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('Males')), ' | ';
-	} else {
-		echo "<a href=\"", encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=M&action={$action}"), "\">";
-		echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), '</a> | ';
-	}
-	if ($filtersx=="F")
-		echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('Females')), ' | ';
-	else {
-		echo "<a href=\"", encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=F&action={$action}"), "\">";
-		echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), '</a>';
-	}
-	echo "</td>";
-	echo "<td class=\"descriptionbox vmiddle\">";
-	echo i18n::translate('Show events of'), help_link('annivers_event'), '</td>';
-	echo "<td class=\"optionbox\">";
-	echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
-	echo "<select class=\"list_value\" name=\"filterev\" onchange=\"document.dateform.submit();\">";
-	echo "<option value=\"bdm\"";
-	if ($filterev == "bdm") echo " selected=\"selected\"";
-	echo ">".i18n::translate('Births, Deaths, Marriages')."</option>";
-	echo "<option value=\"all\"";
-	if ($filterev == "all") echo " selected=\"selected\"";
-	echo ">".i18n::translate('All')."</option>";
-	echo "<option value=\"BIRT\"";
-	if ($filterev == "BIRT") echo " selected=\"selected\"";
-	echo ">".translate_fact('BIRT')."</option>";
-	echo "<option value=\"CHR\"";
-	if ($filterev == "CHR") echo " selected=\"selected\"";
-	echo ">".translate_fact('CHR')."</option>";
-	echo "<option value=\"CHRA\"";
-	if ($filterev == "CHRA") echo " selected=\"selected\"";
-	echo ">".translate_fact('CHRA')."</option>";
-	echo "<option value=\"BAPM\"";
-	if ($filterev == "BAPM") echo " selected=\"selected\"";
-	echo ">".translate_fact('BAPM')."</option>";
-	echo "<option value=\"_COML\"";
-	if ($filterev == "_COML") echo " selected=\"selected\"";
-	echo ">".translate_fact('_COML')."</option>";
-	echo "<option value=\"MARR\"";
-	if ($filterev == "MARR") echo " selected=\"selected\"";
-	echo ">".translate_fact('MARR')."</option>";
-	echo "<option value=\"_SEPR\"";
-	if ($filterev == "_SEPR") echo " selected=\"selected\"";
-	echo ">".translate_fact('_SEPR')."</option>";
-	echo "<option value=\"DIV\"";
-	if ($filterev == "DIV") echo " selected=\"selected\"";
-	echo ">".translate_fact('DIV')."</option>";
-	echo "<option value=\"DEAT\"";
-	if ($filterev == "DEAT") echo " selected=\"selected\"";
-	echo ">".translate_fact('DEAT')."</option>";
-	echo "<option value=\"BURI\"";
-	if ($filterev == "BURI") echo " selected=\"selected\"";
-	echo ">".translate_fact('BURI')."</option>";
-	echo "<option value=\"IMMI\"";
-	if ($filterev == "IMMI") echo " selected=\"selected\"";
-	echo ">".translate_fact('IMMI')."</option>";
-	echo "<option value=\"EMIG\"";
-	if ($filterev == "EMIG") echo " selected=\"selected\"";
-	echo ">".translate_fact('EMIG')."</option>";
-	echo "<option value=\"EVEN\"";
-	if ($filterev == "EVEN") echo " selected=\"selected\"";
-	echo ">".i18n::translate('Custom Event')."</option>";
-	echo "</select>";
-	echo "</td></tr>";
-	// Day/Month/Year and calendar selector
-	echo '<tr><td class="topbottombar" colspan="4">';
-	if ($action=='today') {
-		echo "<span class=\"error\">", i18n::translate('View Day'), "</span>";
-	} else {
-		echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=today")."\">", i18n::translate('View Day'), "</a>";
-	}
-	if ($action=='calendar') {
-		echo " | <span class=\"error\">", i18n::translate('View Month'), "</span>";
-	} else {
-		echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=calendar")."\">", i18n::translate('View Month'), "</a>";
-	}
-	if ($action=='year') {
-		echo " | <span class=\"error\">", i18n::translate('View Year'), "</span>";
-	} else {
-		echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=year")."\">", i18n::translate('View Year'), "</a>";
-	}
-	echo help_link('day_month');
-	echo '</td><td class="topbottombar" colspan="4">';
-	$n=0;
-	foreach (array(
-		'gregorian'=>i18n::translate('Gregorian'),
-		'julian'=>i18n::translate('Julian'),
-		'jewish'=>i18n::translate('Jewish'),
-		'french'=>i18n::translate('French'),
-		'hijri'=>i18n::translate('Hijri')
-	) as $newcal=>$cal_name) {
-		$tmp=$cal_date->convert_to_cal($newcal);
-		if ($tmp->InValidRange()) {
-			if ($n++) {
-				echo ' | ';
-			}
-			if ($tmp->CALENDAR_ESCAPE()==$cal_date->CALENDAR_ESCAPE()) {
-				echo "<span class=\"error\">{$cal_name}</span>";
-			} else {
-				$newcalesc=urlencode($tmp->CALENDAR_ESCAPE());
-				$tmpmonth=$tmp->FormatGedcomMonth();
-				echo "<a href=\"".encode_url("calendar.php?cal={$newcalesc}&day={$tmp->d}&month={$tmpmonth}&year={$tmp->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$cal_name}</a>";
-			}
+echo "</td>";
+echo "<td class=\"descriptionbox vmiddle\">";
+echo i18n::translate('Gender'), help_link('annivers_sex'), '</td>';
+echo "<td class=\"optionbox vmiddle\">";
+if ($filtersx=="") {
+	echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('All People'));
+	echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('All People')), ' | ';
+} else {
+	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=&action={$action}")."\">";
+	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('All People'));
+	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('All People')), '</a> | ';
+}
+if ($filtersx=="M") {
+	echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('Males')), ' | ';
+} else {
+	echo "<a href=\"", encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=M&action={$action}"), "\">";
+	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), '</a> | ';
+}
+if ($filtersx=="F")
+	echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('Females')), ' | ';
+else {
+	echo "<a href=\"", encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=F&action={$action}"), "\">";
+	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), '</a>';
+}
+echo "</td>";
+echo "<td class=\"descriptionbox vmiddle\">";
+echo i18n::translate('Show events of'), help_link('annivers_event'), '</td>';
+echo "<td class=\"optionbox\">";
+echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
+echo "<select class=\"list_value\" name=\"filterev\" onchange=\"document.dateform.submit();\">";
+echo "<option value=\"bdm\"";
+if ($filterev == "bdm") echo " selected=\"selected\"";
+echo ">".i18n::translate('Births, Deaths, Marriages')."</option>";
+echo "<option value=\"all\"";
+if ($filterev == "all") echo " selected=\"selected\"";
+echo ">".i18n::translate('All')."</option>";
+echo "<option value=\"BIRT\"";
+if ($filterev == "BIRT") echo " selected=\"selected\"";
+echo ">".translate_fact('BIRT')."</option>";
+echo "<option value=\"CHR\"";
+if ($filterev == "CHR") echo " selected=\"selected\"";
+echo ">".translate_fact('CHR')."</option>";
+echo "<option value=\"CHRA\"";
+if ($filterev == "CHRA") echo " selected=\"selected\"";
+echo ">".translate_fact('CHRA')."</option>";
+echo "<option value=\"BAPM\"";
+if ($filterev == "BAPM") echo " selected=\"selected\"";
+echo ">".translate_fact('BAPM')."</option>";
+echo "<option value=\"_COML\"";
+if ($filterev == "_COML") echo " selected=\"selected\"";
+echo ">".translate_fact('_COML')."</option>";
+echo "<option value=\"MARR\"";
+if ($filterev == "MARR") echo " selected=\"selected\"";
+echo ">".translate_fact('MARR')."</option>";
+echo "<option value=\"_SEPR\"";
+if ($filterev == "_SEPR") echo " selected=\"selected\"";
+echo ">".translate_fact('_SEPR')."</option>";
+echo "<option value=\"DIV\"";
+if ($filterev == "DIV") echo " selected=\"selected\"";
+echo ">".translate_fact('DIV')."</option>";
+echo "<option value=\"DEAT\"";
+if ($filterev == "DEAT") echo " selected=\"selected\"";
+echo ">".translate_fact('DEAT')."</option>";
+echo "<option value=\"BURI\"";
+if ($filterev == "BURI") echo " selected=\"selected\"";
+echo ">".translate_fact('BURI')."</option>";
+echo "<option value=\"IMMI\"";
+if ($filterev == "IMMI") echo " selected=\"selected\"";
+echo ">".translate_fact('IMMI')."</option>";
+echo "<option value=\"EMIG\"";
+if ($filterev == "EMIG") echo " selected=\"selected\"";
+echo ">".translate_fact('EMIG')."</option>";
+echo "<option value=\"EVEN\"";
+if ($filterev == "EVEN") echo " selected=\"selected\"";
+echo ">".i18n::translate('Custom Event')."</option>";
+echo "</select>";
+echo "</td></tr>";
+// Day/Month/Year and calendar selector
+echo '<tr><td class="topbottombar" colspan="4">';
+if ($action=='today') {
+	echo "<span class=\"error\">", i18n::translate('View Day'), "</span>";
+} else {
+	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=today")."\">", i18n::translate('View Day'), "</a>";
+}
+if ($action=='calendar') {
+	echo " | <span class=\"error\">", i18n::translate('View Month'), "</span>";
+} else {
+	echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=calendar")."\">", i18n::translate('View Month'), "</a>";
+}
+if ($action=='year') {
+	echo " | <span class=\"error\">", i18n::translate('View Year'), "</span>";
+} else {
+	echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=year")."\">", i18n::translate('View Year'), "</a>";
+}
+echo help_link('day_month');
+echo '</td><td class="topbottombar" colspan="4">';
+$n=0;
+foreach (array(
+	'gregorian'=>i18n::translate('Gregorian'),
+	'julian'=>i18n::translate('Julian'),
+	'jewish'=>i18n::translate('Jewish'),
+	'french'=>i18n::translate('French'),
+	'hijri'=>i18n::translate('Hijri')
+) as $newcal=>$cal_name) {
+	$tmp=$cal_date->convert_to_cal($newcal);
+	if ($tmp->InValidRange()) {
+		if ($n++) {
+			echo ' | ';
+		}
+		if ($tmp->CALENDAR_ESCAPE()==$cal_date->CALENDAR_ESCAPE()) {
+			echo "<span class=\"error\">{$cal_name}</span>";
+		} else {
+			$newcalesc=urlencode($tmp->CALENDAR_ESCAPE());
+			$tmpmonth=$tmp->FormatGedcomMonth();
+			echo "<a href=\"".encode_url("calendar.php?cal={$newcalesc}&day={$tmp->d}&month={$tmpmonth}&year={$tmp->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$cal_name}</a>";
 		}
 	}
-	echo "</td></tr>";
-} // print preview
+}
+echo "</td></tr>";
 echo "</table>\n</form>\n";
 
 // Convert event filter option to a list of gedcom event codes
@@ -507,33 +503,6 @@ case 'calendar':
 	}
 	echo '</table>';
 	break;
-}
-
-if ($view=="preview") {
-	// Print details of any filtering
-	$filters=array();
-	if ($filterof=='living') {
-		$filters[]=i18n::translate('Living People');
-	}
-	if ($filterof=='recent') {
-		$filters[]=i18n::translate('Recent Years (&lt; 100 yrs)');
-	}
-	if ($filtersx=='M') {
-		$filters[]=i18n::translate('Male');
-	}
-	if ($filtersx=='F') {
-		$filters[]=i18n::translate('Female');
-	}
-	if ($filterev=='bdm') {
-		$filters[]=i18n::translate('Births, Deaths, Marriages');
-	} elseif ($filterev!='all') {
-			$filters[].=i18n::translate($filterev);
-	}
-	$filtertext=implode(' - ', $filters);
-	if (!empty($filters)) {
-		$filtertext="(".i18n::translate('Filter').": {$filtertext})";
-	}
-	echo '<br />', get_gedcom_setting(WT_GED_ID, 'title'), ' ', $filtertext;
 }
 echo "</div><br />";
 print_footer();

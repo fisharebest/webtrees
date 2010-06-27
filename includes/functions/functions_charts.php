@@ -98,7 +98,7 @@ function print_family_header($famid) {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
-	global $view, $show_full, $show_famlink;
+	global $view, $show_full;
 	global $TEXT_DIRECTION, $SHOW_EMPTY_BOXES;
 	global $pbwidth, $pbheight;
 	global $WT_IMAGE_DIR, $WT_IMAGES;
@@ -142,10 +142,10 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	else if ($sosa > 0) print_sosa_number($sosa * 2);
 	if (isset($newparents) && $husb->getXref() != $newparents["HUSB"]) {
 		print "\n\t<td valign=\"top\" class=\"facts_valueblue\">";
-		print_pedigree_person($newparents['HUSB'], 1, $show_famlink, 2, $personcount);
+		print_pedigree_person($newparents['HUSB'], 1, 2, $personcount);
 	} else {
 		print "\n\t<td valign=\"top\">";
-		print_pedigree_person($husb->getXref(), 1, $show_famlink, 2, $personcount);
+		print_pedigree_person($husb->getXref(), 1, 2, $personcount);
 	}
 	print "</td></tr></table>";
 	print "</td>\n";
@@ -170,12 +170,12 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 			if ($sosa > 0) print_sosa_number($sosa * 4, $hparents['HUSB'], "down");
 			if (!empty($gparid) and $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			print "\n\t<td valign=\"top\">";
-			print_pedigree_person($hparents['HUSB'], 1, $show_famlink, 4, $personcount);
+			print_pedigree_person($hparents['HUSB'], 1, 4, $personcount);
 			print "</td></tr></table>";
 		}
 		print "</td>";
 	}
-	if (!empty($upfamid) and ($sosa!=-1) and ($view != "preview")) {
+	if (!empty($upfamid) and ($sosa!=-1)) {
 		print "<td valign=\"middle\" rowspan=\"2\">";
 		print_url_arrow($upfamid, ($sosa==0 ? "?famid=$upfamid&amp;show_full=$show_full" : "#$upfamid"), "$upfamid", 1);
 		print "</td>\n";
@@ -187,7 +187,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hparents['WIFE'], "down");
 		if (!empty($gparid) and $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 		print "\n\t<td valign=\"top\">";
-		print_pedigree_person($hparents['WIFE'], 1, $show_famlink, 5, $personcount);
+		print_pedigree_person($hparents['WIFE'], 1, 5, $personcount);
 		print "</td></tr></table>";
 		print "</td>\n";
 	}
@@ -215,10 +215,10 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	else if ($sosa > 0) print_sosa_number($sosa * 2 + 1);
 	if (isset($newparents) && $wife->getXref() != $newparents["WIFE"]) {
 		print "\n\t<td valign=\"top\" class=\"facts_valueblue\">";
-		print_pedigree_person($newparents['WIFE'], 1, $show_famlink, 3, $personcount);
+		print_pedigree_person($newparents['WIFE'], 1, 3, $personcount);
 	} else {
 		print "\n\t<td valign=\"top\">";
-		print_pedigree_person($wife->getXref(), 1, $show_famlink, 3, $personcount);
+		print_pedigree_person($wife->getXref(), 1, 3, $personcount);
 	}
 	print "</td></tr></table>";
 	print "</td>\n";
@@ -243,12 +243,12 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 			if ($sosa > 0) print_sosa_number($sosa * 4 + 2, $hparents['HUSB'], "down");
 			if (!empty($gparid) and $hparents['HUSB']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 			print "\n\t<td valign=\"top\">";
-			print_pedigree_person($hparents['HUSB'], 1, $show_famlink, 6, $personcount);
+			print_pedigree_person($hparents['HUSB'], 1, 6, $personcount);
 			print "</td></tr></table>";
 		}
 		print "</td>\n";
 	}
-	if (!empty($upfamid) and ($sosa!=-1) and ($view != "preview")) {
+	if (!empty($upfamid) and ($sosa!=-1)) {
 		print "<td valign=\"middle\" rowspan=\"2\">";
 		print_url_arrow($upfamid, ($sosa==0 ? "?famid=$upfamid&amp;show_full=$show_full" : "#$upfamid"), "$upfamid", 1);
 		print "</td>\n";
@@ -260,7 +260,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hparents['WIFE'], "down");
 		if (!empty($gparid) and $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
 		print "\n\t<td valign=\"top\">";
-		print_pedigree_person($hparents['WIFE'], 1, $show_famlink, 7, $personcount);
+		print_pedigree_person($hparents['WIFE'], 1, 7, $personcount);
 		print "</td></tr></table>\n";
 		print "</td>\n";
 	}
@@ -276,7 +276,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $pbwidth, $pbheight, $view, $show_famlink, $show_cousins;
+	global $pbwidth, $pbheight, $view, $show_cousins;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -297,7 +297,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	echo ')', getLRM(), '</span>';
 	print "<br />";
 	// moved to top of list, changed from style to class, and font12 added by Nigel
-	if ($view!="preview" && $sosa==0 && WT_USER_CAN_EDIT) {
+	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		print "<br />";
 		print "<span class='nowrap font12'>";
 		print "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . i18n::translate('Add a child to this family') . "</a>";
@@ -351,7 +351,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 					}
 				}
 				echo "<td valign=\"middle\" >";
-				print_pedigree_person($chil, 1, $show_famlink, 8, $personcount);
+				print_pedigree_person($chil, 1, 8, $personcount);
 				$personcount++;
 				echo "</td>";
 				if ($sosa != 0) {
@@ -401,9 +401,9 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						print "</td>\n";
 						// spouse information
 						print "<td style=\"vertical-align: center;";
-						if (!empty($divrec) and ($view != "preview")) print " filter:alpha(opacity=40);-moz-opacity:0.4\">";
+						if (!empty($divrec)) print " filter:alpha(opacity=40);-moz-opacity:0.4\">";
 						else print "\">";
-						print_pedigree_person($spouse, 1, $show_famlink, 9, $personcount);
+						print_pedigree_person($spouse, 1, 9, $personcount);
 						$personcount++;
 						print "</td>\n";
 						// cousins
@@ -419,14 +419,14 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		foreach($newchildren as $indexval => $chil) {
 			print "<tr >";
 			print "<td valign=\"top\" class=\"facts_valueblue\" style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\">\n";
-			print_pedigree_person($chil, 1, $show_famlink, 0, $personcount);
+			print_pedigree_person($chil, 1, 0, $personcount);
 			$personcount++;
 			print "</td></tr>\n";
 		}
 		foreach($oldchildren as $indexval => $chil) {
 			print "<tr >";
 			print "<td valign=\"top\" class=\"facts_valuered\" style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\">\n";
-			print_pedigree_person($chil, 1, $show_famlink, 0, $personcount);
+			print_pedigree_person($chil, 1, 0, $personcount);
 			$personcount++;
 			print "</td></tr>\n";
 		}
@@ -452,7 +452,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	   print "<tr>\n";
 	   print_sosa_number($sosa, $childid);
 	   print "<td valign=\"top\">";
-	   print_pedigree_person($childid, 1, $show_famlink, 0, $personcount);
+	   print_pedigree_person($childid, 1, 0, $personcount);
 	   $personcount++;
 	   print "</td></tr>\n";
    }
@@ -520,7 +520,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			}
 		}
 		// -- new fact link
-		if ($view!="preview" && $sosa==0 && WT_USER_CAN_EDIT) {
+		if ($sosa==0 && WT_USER_CAN_EDIT) {
 			print_add_new_fact($famid, $indifacts, "FAM");
 			
 			// -- new note
@@ -579,7 +579,7 @@ function print_family_facts(&$family, $sosa = 0) {
 function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gparid="", $personcount="1") {
 	global $pbwidth, $pbheight, $view;
 
-	if ($view != "preview") print "<hr />";
+	print "<hr />";
 	print "\r\n\r\n<p style='page-break-before:always' />\r\n";
 	if (!empty($famid)) print"<a name=\"{$famid}\"></a>\r\n";
 	print_family_parents($famid, $sosa, $label, $parid, $gparid, $personcount);
@@ -679,7 +679,6 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	global $TEXT_DIRECTION;
 
 	if ($id=="" or $url=="") return;
-	if ($view=="preview") return;
 
 	// arrow direction
 	$adir=$dir;
@@ -775,7 +774,7 @@ function print_cousins($famid, $personcount="1") {
 			if ($TEXT_DIRECTION=="ltr") print "right";
 			else print "left";
 			print ": 2px;\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
-			print_pedigree_person($fchil, 1 , false, 0, $personcount);
+			print_pedigree_person($fchil, 1 , 0, $personcount);
 			$personcount++;
 			print "</td></tr>";
 			if ($i < $ctkids) {

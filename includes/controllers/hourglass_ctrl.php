@@ -354,12 +354,9 @@ class HourglassControllerRoot extends BaseController {
 				if ($num>0) {
 					print "\n\t\t<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
 					print " style=\"position:absolute; width:".$bwidth."px; \">";
-					if ($this->view!="preview") {
-						print "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
-						print "<img id=\"larrow\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"]."\" border=\"0\" alt=\"\" />";
-						print "</a><br />";
-
-					}
+					print "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
+					print "<img id=\"larrow\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"]."\" border=\"0\" alt=\"\" />";
+					print "</a><br />";
 					print "\n\t\t<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 					print "\n\t\t\t<table class=\"person_box\"><tr><td>";
 

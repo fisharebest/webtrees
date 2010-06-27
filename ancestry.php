@@ -48,133 +48,126 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-if ($view=="preview") {
-	echo '<h2>', i18n::translate('%s Generation Ancestry Chart', $PEDIGREE_GENERATIONS) , ':';
-} else {
-	echo '<h2>', i18n::translate('Ancestry chart'), ':';
-}
+echo '<h2>', i18n::translate('Ancestry chart'), ':';
 echo '<br />', PrintReady($controller->name);
 if ($controller->addname!="") {
 	echo '<br />', PrintReady($controller->addname);
 }
 echo '</h2>';
 // -- print the form to change the number of displayed generations
-if ($view!="preview") {
-	$show_famlink=true;
-	echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
-	?>
-	</td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
-	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
-	<input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>" />
-	<table class="list_table <?php echo $TEXT_DIRECTION; ?>">
+echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
+?>
+</td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
+<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
+<input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>" />
+<table class="list_table <?php echo $TEXT_DIRECTION; ?>">
 
-		<!-- // NOTE: Root ID -->
-	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Root Person ID'), help_link('rootid'); ?></td>
-	<td class="optionbox">
-	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlentities($controller->rootid, ENT_COMPAT, 'UTF-8'); ?>" />
-	<?php print_findindi_link("rootid", ""); ?>
-	</td>
+	<!-- // NOTE: Root ID -->
+<tr>
+	<td class="descriptionbox"><?php echo i18n::translate('Root Person ID'), help_link('rootid'); ?></td>
+<td class="optionbox">
+<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlentities($controller->rootid, ENT_COMPAT, 'UTF-8'); ?>" />
+<?php print_findindi_link("rootid", ""); ?>
+</td>
 
-	<!-- // NOTE: Box width -->
-	<td class="descriptionbox"><?php echo i18n::translate('Box width'), help_link('box_width'); ?></td>
-	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlentities($box_width, ENT_COMPAT, 'UTF-8'); ?>" /> <b>%</b>
-	</td>
+<!-- // NOTE: Box width -->
+<td class="descriptionbox"><?php echo i18n::translate('Box width'), help_link('box_width'); ?></td>
+<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlentities($box_width, ENT_COMPAT, 'UTF-8'); ?>" /> <b>%</b>
+</td>
 
-	<!-- // NOTE: chart style -->
-	<td rowspan="2" class="descriptionbox"><?php echo i18n::translate('Layout'), help_link('chart_style'); ?></td>
-	<td rowspan="2" class="optionbox">
-	<input type="radio" name="chart_style" value="0"
-	<?php
-	if ($controller->chart_style=="0") {
-		echo ' checked="checked"';
-	}
-	echo ' onclick="statusDisable(\'cousins\');';
-	echo '" />', i18n::translate('List');
-	echo '<br /><input type="radio" name="chart_style" value="1"';
-	if ($controller->chart_style=="1") {
-		echo ' checked="checked"';
-	}
-	echo ' onclick="statusEnable(\'cousins\');';
-	echo '" />', i18n::translate('Booklet');
-	?>
+<!-- // NOTE: chart style -->
+<td rowspan="2" class="descriptionbox"><?php echo i18n::translate('Layout'), help_link('chart_style'); ?></td>
+<td rowspan="2" class="optionbox">
+<input type="radio" name="chart_style" value="0"
+<?php
+if ($controller->chart_style=="0") {
+	echo ' checked="checked"';
+}
+echo ' onclick="statusDisable(\'cousins\');';
+echo '" />', i18n::translate('List');
+echo '<br /><input type="radio" name="chart_style" value="1"';
+if ($controller->chart_style=="1") {
+	echo ' checked="checked"';
+}
+echo ' onclick="statusEnable(\'cousins\');';
+echo '" />', i18n::translate('Booklet');
+?>
 
-	<!-- // NOTE: show cousins -->
-	<br />
-	<?php
-	echo '<input ';
-	if ($controller->chart_style=="0") {
-		echo 'disabled="disabled" ';
-	}
-	echo 'id="cousins" type="checkbox" value="';
-	if ($controller->show_cousins) {
-		echo '1" checked="checked" onclick="document.people.show_cousins.value=\'0\';"';
-	} else {
-		echo '0" onclick="document.people.show_cousins.value=\'1\';"';
-	}
-	echo ' />';
-	echo i18n::translate('Show cousins'), help_link('show_cousins');
+<!-- // NOTE: show cousins -->
+<br />
+<?php
+echo '<input ';
+if ($controller->chart_style=="0") {
+	echo 'disabled="disabled" ';
+}
+echo 'id="cousins" type="checkbox" value="';
+if ($controller->show_cousins) {
+	echo '1" checked="checked" onclick="document.people.show_cousins.value=\'0\';"';
+} else {
+	echo '0" onclick="document.people.show_cousins.value=\'1\';"';
+}
+echo ' />';
+echo i18n::translate('Show cousins'), help_link('show_cousins');
 
-	echo '<br /><input type="radio" name="chart_style" value="2"';
-	if ($controller->chart_style=="2") {
-		echo ' checked="checked" ';
-	}
-	echo ' onclick="statusDisable(\'cousins\');"';
-	echo ' />', i18n::translate('Individuals');
-	echo '<br /><input type="radio" name="chart_style" value="3"';
-	echo ' onclick="statusDisable(\'cousins\');"';
-	if ($controller->chart_style=="3") {
-		echo ' checked="checked" ';
-	}
-	echo ' />', i18n::translate('Families');
-	?>
-	</td>
+echo '<br /><input type="radio" name="chart_style" value="2"';
+if ($controller->chart_style=="2") {
+	echo ' checked="checked" ';
+}
+echo ' onclick="statusDisable(\'cousins\');"';
+echo ' />', i18n::translate('Individuals');
+echo '<br /><input type="radio" name="chart_style" value="3"';
+echo ' onclick="statusDisable(\'cousins\');"';
+if ($controller->chart_style=="3") {
+	echo ' checked="checked" ';
+}
+echo ' />', i18n::translate('Families');
+?>
+</td>
 
-	<!-- // NOTE: submit -->
-	<td rowspan="2" class="facts_label03">
-	<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
-	</td></tr>
+<!-- // NOTE: submit -->
+<td rowspan="2" class="facts_label03">
+<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
+</td></tr>
 
-	<!-- // NOTE: generations -->
-	<tr><td class="descriptionbox">
-	<?php
-	echo i18n::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?></td>
+<!-- // NOTE: generations -->
+<tr><td class="descriptionbox">
+<?php
+echo i18n::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?></td>
 
-	<td class="optionbox">
-	<select name="PEDIGREE_GENERATIONS">
-	<?php
-	for ($i=2; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-	echo '<option value="', $i, '"';
-	if ($i==$OLD_PGENS) {
-		echo ' selected="selected"';
-	}
-		echo '>', $i, '</option>';
-	}?>
-	</select>
+<td class="optionbox">
+<select name="PEDIGREE_GENERATIONS">
+<?php
+for ($i=2; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
+echo '<option value="', $i, '"';
+if ($i==$OLD_PGENS) {
+	echo ' selected="selected"';
+}
+	echo '>', $i, '</option>';
+}?>
+</select>
 
-	</td>
+</td>
 
-	<!-- // NOTE: show full -->
+<!-- // NOTE: show full -->
 
-	<td class="descriptionbox">
-	<?php
-	echo i18n::translate('Show Details'), help_link('show_full');
-	?>
-	</td>
-	<td class="optionbox">
-	<input type="checkbox" value="
-	<?php
-	if ($controller->show_full) {
-		echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
-	} else {
-		echo '0" onclick="document.people.show_full.value=\'1\';';
-	}
-	?>"
-	/>
-	</td></tr>
-	</table>
-	</form>
-<?php } ?>
+<td class="descriptionbox">
+<?php
+echo i18n::translate('Show Details'), help_link('show_full');
+?>
+</td>
+<td class="optionbox">
+<input type="checkbox" value="
+<?php
+if ($controller->show_full) {
+	echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
+} else {
+	echo '0" onclick="document.people.show_full.value=\'1\';';
+}
+?>"
+/>
+</td></tr>
+</table>
+</form>
 
 </td></tr></table>
 
@@ -198,7 +191,7 @@ case 1:
 
 	// Booklet
 	// first page : show indi facts
-	print_pedigree_person($controller->rootid, 2, false, 1);
+	print_pedigree_person($controller->rootid, 2, 1);
 	// expand the layer
 	echo WT_JS_START, 'expandbox("', $controller->rootid, '.1", 2);', WT_JS_END;
 	// process the tree

@@ -1693,14 +1693,10 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
  */
 function print_chart_by_age($data, $title) {
 	global $GEDCOM;
-	global $view, $stylesheet, $print_stylesheet;
+	global $view, $stylesheet;
 
 	$css = new cssparser(false);
-	if ($view=="preview") {
-		$css->Parse($print_stylesheet);
-	} else {
-		$css->Parse($stylesheet);
-	}
+	$css->Parse($stylesheet);
 	$color = $css->Get("body", "background-color");
 	$color = str_replace("#", "", $color);
 	switch(strtoupper($color)) {
@@ -1770,11 +1766,10 @@ function print_chart_by_age($data, $title) {
  * @param string $title
  */
 function print_chart_by_decade($data, $title) {
-	global $view, $stylesheet, $print_stylesheet;
+	global $view, $stylesheet;
 
 	$css = new cssparser(false);
-	if ($view=="preview") $css->Parse($print_stylesheet);
-	else $css->Parse($stylesheet);
+	$css->Parse($stylesheet);
 	$color = $css->Get("body", "background-color");
 	$color = str_replace("#", "", $color);
 	switch(strtoupper($color)) {

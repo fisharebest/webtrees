@@ -1408,20 +1408,3 @@ function include_js(file) {
         curtop += obj.y;
     return curtop;
   }
-
-	function hidePrint() {
-		var printlink = document.getElementById("printlink");
-		var printlinktwo = document.getElementById("printlinktwo");
-		if (printlink) {
-			printlink.style.display="none";
-			printlinktwo.style.display="none";
-		}
-	}
-	function showBack() {
-		var printlink = document.getElementById("printlink");
-		var printlinktwo = document.getElementById("printlinktwo");
-		if (printlink) {
-			printlink.style.display="inline";
-			printlinktwo.style.display="inline";
-		}
-	}

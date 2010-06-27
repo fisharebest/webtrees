@@ -171,11 +171,9 @@ function print_descendency($pid, $count) {
 			if ($famids||($num>1)) {
 				print "\n\t\t<div class=\"center\" id=\"childarrow.$pid\" dir=\"".$TEXT_DIRECTION."\"";
 				print " style=\"position:absolute; width:".$bwidth."px; \">";
-				if ($view!="preview") {
-					print "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"return togglechildrenbox('$pid');\" onmouseover=\"swap_image('larrow.$pid',3);\" onmouseout=\"swap_image('larrow.$pid',3);\">";
-					print "<img id=\"larrow.$pid\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"]."\" border=\"0\" alt=\"\" />";
-					print "</a>";
-				}
+				print "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"return togglechildrenbox('$pid');\" onmouseover=\"swap_image('larrow.$pid',3);\" onmouseout=\"swap_image('larrow.$pid',3);\">";
+				print "<img id=\"larrow.$pid\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"]."\" border=\"0\" alt=\"\" />";
+				print "</a>";
 				print "\n\t\t<div id=\"childbox.$pid\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 				print "\n\t\t\t<table class=\"person_box\"><tr><td>";
 				for($f=0; $f<count($famids); $f++) {
@@ -382,13 +380,9 @@ if (WT_USE_LIGHTBOX) {
 }
 // ==========================================================================================
 
-if ($view=="preview") {
-	print "<h2 style=\"text-align: center\">".i18n::translate('Family book chart').":&nbsp;&nbsp;&nbsp;".PrintReady($name)."</h2>";
-} else {
-	print "<!-- // NOTE: Start table header -->";
-	print "<table><tr><td valign=\"top\">";
-	print "<h2>".i18n::translate('Family book chart').":<br />".PrintReady($name)."</h2>";
-}
+print "<!-- // NOTE: Start table header -->";
+print "<table><tr><td valign=\"top\">";
+print "<h2>".i18n::translate('Family book chart').":<br />".PrintReady($name)."</h2>";
 ?>
 
 <script language="JavaScript" type="text/javascript">
@@ -406,95 +400,94 @@ if ($view=="preview") {
 
 <?php
 $gencount=0;
-if ($view!="preview") {
 ?>
 <!--	// NOTE: Start form and table -->
-	</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">
-	<table><tr>
+</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">
+<table><tr>
 
-	<!-- // NOTE: Root ID -->
-	<td class="descriptionbox">
-		<?php echo i18n::translate('Root Person ID'), help_link('desc_rootid'); ?>
-	</td>
-	<td class="optionbox">
-		<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php print $pid ?>"	/>
-		<?php print_findindi_link("pid","");?>
-	</td>
+<!-- // NOTE: Root ID -->
+<td class="descriptionbox">
+	<?php echo i18n::translate('Root Person ID'), help_link('desc_rootid'); ?>
+</td>
+<td class="optionbox">
+	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php print $pid ?>"	/>
+	<?php print_findindi_link("pid","");?>
+</td>
 
-	<!-- // NOTE: Show Details -->
-	<td class="descriptionbox">
-	<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
-	</td>
-	<td class="optionbox">
-	<input type="hidden" name="show_full" value="<?php print $show_full;?>" />
-	<input type="checkbox" value="<?php
-		if ($show_full) print "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-	else print "0\" onclick=\"document.people.show_full.value='1';";?>" />
-	</td>
+<!-- // NOTE: Show Details -->
+<td class="descriptionbox">
+<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
+</td>
+<td class="optionbox">
+<input type="hidden" name="show_full" value="<?php print $show_full;?>" />
+<input type="checkbox" value="<?php
+	if ($show_full) print "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
+else print "0\" onclick=\"document.people.show_full.value='1';";?>" />
+</td>
 
-	<!-- // NOTE: Submit button -->
-	<td rowspan="4" class="topbottombar vmiddle">
-	<input type="submit" value="<?php print i18n::translate('View') ?>" />
-	</td></tr>
+<!-- // NOTE: Submit button -->
+<td rowspan="4" class="topbottombar vmiddle">
+<input type="submit" value="<?php print i18n::translate('View') ?>" />
+</td></tr>
 
-	<!-- // NOTE: Generations -->
-	<tr><td class="descriptionbox">
-	<?php echo i18n::translate('Generations'), help_link('desc_generations'); ?>
-	</td>
-	<td class="optionbox">
-	<select name="generations">
-	<?php
-	for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
-		print "<option value=\"".$i."\"" ;
-		if ($i == $generations) print " selected=\"selected\"";
-		print ">".$i."</option>";
-	}
-	?>
-	</select>
-	</td>
-
-	<!-- // NOTE: Show spouses -->
-	<td class="descriptionbox">
-		<?php echo i18n::translate('Show spouses'), help_link('show_spouse'); ?>
-	</td>
-	<td class="optionbox">
-	<input type="checkbox" value="1" name="show_spouse"
-	<?php
-	if ($show_spouse) print " checked=\"checked\""; ?> />
-	</td></tr>
-
-	<!-- // NOTE: Box width -->
-	<tr><td class="descriptionbox">
-		<?php echo i18n::translate('Box width'), help_link('box_width'); ?>
-	</td>
-	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php print $box_width; ?>" />
-	<b>%</b>
-	</td>
-
-	<!-- // NOTE: Empty field -->
-	<td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
-
-	<!-- // NOTE: Descent steps -->
-	<tr><td class="descriptionbox">
-		<?php echo i18n::translate('Descent Steps'), help_link('fambook_descent'); ?>
-	</td>
-	<td class="optionbox"><input type="text" size="3" name="descent" value="<?php print $descent;?>" />
-	</td>
-
-	<!-- // NOTE: Empty field -->
-	<td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
-
-	<!-- // NOTE: End table and form -->
-	</table></form>
-
-	<!-- // NOTE: Close table header -->
-	</td></tr></table>
+<!-- // NOTE: Generations -->
+<tr><td class="descriptionbox">
+<?php echo i18n::translate('Generations'), help_link('desc_generations'); ?>
+</td>
+<td class="optionbox">
+<select name="generations">
 <?php
-	if ($show_full==0) {
-		echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
-	}
-} ?>
-<div id="familybook_chart<?php print ($TEXT_DIRECTION=="ltr")?"":"_rtl"; ?>" style="<?php if ($view=="preview") print "top: 1px;"; else print "width:98%; direction:".$TEXT_DIRECTION."; z-index:1;";?>" >
+for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
+	print "<option value=\"".$i."\"" ;
+	if ($i == $generations) print " selected=\"selected\"";
+	print ">".$i."</option>";
+}
+?>
+</select>
+</td>
+
+<!-- // NOTE: Show spouses -->
+<td class="descriptionbox">
+	<?php echo i18n::translate('Show spouses'), help_link('show_spouse'); ?>
+</td>
+<td class="optionbox">
+<input type="checkbox" value="1" name="show_spouse"
+<?php
+if ($show_spouse) print " checked=\"checked\""; ?> />
+</td></tr>
+
+<!-- // NOTE: Box width -->
+<tr><td class="descriptionbox">
+	<?php echo i18n::translate('Box width'), help_link('box_width'); ?>
+</td>
+<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php print $box_width; ?>" />
+<b>%</b>
+</td>
+
+<!-- // NOTE: Empty field -->
+<td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
+
+<!-- // NOTE: Descent steps -->
+<tr><td class="descriptionbox">
+	<?php echo i18n::translate('Descent Steps'), help_link('fambook_descent'); ?>
+</td>
+<td class="optionbox"><input type="text" size="3" name="descent" value="<?php print $descent;?>" />
+</td>
+
+<!-- // NOTE: Empty field -->
+<td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
+
+<!-- // NOTE: End table and form -->
+</table></form>
+
+<!-- // NOTE: Close table header -->
+</td></tr></table>
+<?php
+if ($show_full==0) {
+	echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+}
+?>
+<div id="familybook_chart<?php print ($TEXT_DIRECTION=="ltr")?"":"_rtl"; ?>" style="<?php print "width:98%; direction:".$TEXT_DIRECTION."; z-index:1;";?>" >
 <?php
 
 print_family_book($pid, $descent);

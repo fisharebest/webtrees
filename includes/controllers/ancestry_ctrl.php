@@ -133,7 +133,7 @@ class AncestryControllerRoot extends BaseController {
 			print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" height=\"3\" width=\"2\" border=\"0\" alt=\"\" />";
 			print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" height=\"3\" width=\"".($Dindent-2)."\" border=\"0\" alt=\"\" /></td><td>\n";
 		}
-		print_pedigree_person($pid, 1, true);
+		print_pedigree_person($pid, 1);
 		print "</td>";
 		print "<td>";
 		if ($TEXT_DIRECTION=="ltr") {

@@ -42,7 +42,6 @@ require_once WT_ROOT.'includes/classes/class_person.php';
  */
 class PedigreeControllerRoot extends BaseController {
 	var $log2;
-	var $show_famlink = true;
 	var $rootid;
 	var $name;
 	var $addname;

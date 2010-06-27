@@ -59,12 +59,10 @@ class FamilyRoot extends BaseController {
 	var $difffam = null;
 
 	function init() {
-		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM, $show_famlink;
+		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM;
 		$bwidth = $Dbwidth;
 		$pbwidth = $bwidth + 12;
 		$pbheight = $bheight + 14;
-
-		$show_famlink = true;
 
 		$this->famid = safe_GET_xref('famid');
 

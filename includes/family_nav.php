@@ -96,7 +96,7 @@ if (isset($_COOKIE['lastclick'])) {
 				}else{
 					$menu->addClass("", "", "submenu flyoutrtl");
 				}
-				$slabel  = "</a>".print_pedigree_person_nav($people["husb"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= PrintReady($parentlinks)."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -130,7 +130,7 @@ if (isset($_COOKIE['lastclick'])) {
 				}else{
 					$menu->addClass("", "", "submenu flyoutrtl");
 				}
-				$slabel  = "</a>".print_pedigree_person_nav($people["wife"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= PrintReady($parentlinks)."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -168,7 +168,7 @@ if (isset($_COOKIE['lastclick'])) {
 					}else{
 						$menu->addClass("", "", "submenu flyoutrtl");
 					}
-					$slabel  = "</a>".print_pedigree_person_nav($child->getXref(), 2, true, 0, $personcount++);
+					$slabel  = "</a>".print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= PrintReady($spouselinks)."<a>";
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -243,7 +243,7 @@ if (isset($_COOKIE['lastclick'])) {
 				}else{
 					$menu->addClass("", "", "submenu flyoutrtl");
 				}
-				$slabel  = "</a>".print_pedigree_person_nav($people["husb"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= PrintReady($parentlinks)."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -286,7 +286,7 @@ if (isset($_COOKIE['lastclick'])) {
 				}else{
 					$menu->addClass("", "", "submenu flyoutrtl");
 				}
-				$slabel  = "</a>".print_pedigree_person_nav($people["wife"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= PrintReady($parentlinks)."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -323,7 +323,7 @@ if (isset($_COOKIE['lastclick'])) {
 					}else{
 						$menu->addClass("", "", "submenu flyoutrtl");
 					}
-					$slabel  = "</a>".print_pedigree_person_nav($child->getXref(), 2, true, 0, $personcount++);
+					$slabel  = "</a>".print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= PrintReady($spouselinks)."<a>";
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
@@ -384,7 +384,7 @@ if (isset($_COOKIE['lastclick'])) {
 				}else{
 					$menu->addClass("", "", "submenu flyoutrtl");
 				}
-				$slabel  = "</a>".print_pedigree_person_nav($people["husb"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= PrintReady($parentlinks)."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -423,7 +423,7 @@ if (isset($_COOKIE['lastclick'])) {
 				}else{
 					$menu->addClass("", "", "submenu flyoutrtl");
 				}
-				$slabel  = "</a>".print_pedigree_person_nav($people["wife"]->getXref(), 2, true, 0, $personcount++);
+				$slabel  = "</a>".print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= PrintReady($parentlinks)."<a>";
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
@@ -464,7 +464,7 @@ if (isset($_COOKIE['lastclick'])) {
 					}else{
 						$menu->addClass("", "", "submenu flyoutrtl");
 					}
-					$slabel = "</a>".print_pedigree_person_nav($child->getXref(), 2, true, 0, $personcount++);
+					$slabel = "</a>".print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= PrintReady($spouselinks)."<a>";
 					$submenu = new Menu($slabel);
 					$menu->addSubmenu($submenu);
@@ -513,7 +513,7 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 * @param boolean $show_famlink set to true to show the icons for the popup links and the zoomboxes
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
-function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0, $personcount="1") {
+function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
@@ -547,7 +547,7 @@ function print_pedigree_person_nav($pid, $style=1, $show_famlink=true, $count=0,
 	$disp=$person->canDisplayDetails();
 
 	if ($person->canDisplayName()) {
-		if ($show_famlink && (empty($SEARCH_SPIDER))) {
+		if (empty($SEARCH_SPIDER)) {
 			if ($LINK_ICONS!="disabled") {
 				//-- draw a box for the family popup
 				$spouselinks .= "<span class=\"flyout\"><b>".i18n::translate('Family')."</b></span><br />";

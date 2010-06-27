@@ -99,7 +99,7 @@ function split_align_text($data, $maxlen) {
 function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style;
 	global $name, $view, $TEXT_DIRECTION;
-	global $stylesheet, $print_stylesheet;
+	global $stylesheet;
 	global $WT_IMAGE_DIR, $WT_IMAGES, $LINK_ICONS, $GEDCOM;
 	global $fanChart;
 
@@ -421,74 +421,67 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
-if ($view == "preview") echo "<h2>" . i18n::translate('%s Generation Circle Diagram', $PEDIGREE_GENERATIONS) . ":";
-else echo "<h2>" . i18n::translate('Circle diagram') . ":";
+echo "<h2>" . i18n::translate('Circle diagram') . ":";
 echo "<br />".PrintReady($name);
 if ($addname != "") echo "<br />" . PrintReady($addname);
 echo "</h2>";
 
 // -- print the form to change the number of displayed generations
-if ($view != "preview") {
-	echo WT_JS_START;
-	echo "var pastefield; function paste_id(value) { pastefield.value=value; }";
-	echo WT_JS_END;
-	echo "</td><td><form name=\"people\" method=\"get\" action=\"?\">";
-	echo "<table class=\"list_table $TEXT_DIRECTION\"><tr>";
+echo WT_JS_START;
+echo "var pastefield; function paste_id(value) { pastefield.value=value; }";
+echo WT_JS_END;
+echo "</td><td><form name=\"people\" method=\"get\" action=\"?\">";
+echo "<table class=\"list_table $TEXT_DIRECTION\"><tr>";
 
-	// NOTE: rootid
-	echo "<td class=\"descriptionbox\">";
-	echo i18n::translate('Root Person ID'), help_link('rootid');
-	echo "</td><td class=\"optionbox\">";
-	echo "<input class=\"pedigree_form\" type=\"text\" name=\"rootid\" id=\"rootid\" size=\"3\" value=\"$rootid\" />";
-	print_findindi_link("rootid","");
-	echo "</td>";
+// NOTE: rootid
+echo "<td class=\"descriptionbox\">";
+echo i18n::translate('Root Person ID'), help_link('rootid');
+echo "</td><td class=\"optionbox\">";
+echo "<input class=\"pedigree_form\" type=\"text\" name=\"rootid\" id=\"rootid\" size=\"3\" value=\"$rootid\" />";
+print_findindi_link("rootid","");
+echo "</td>";
 
-	// NOTE: fan style
-	echo "<td rowspan=\"3\" class=\"descriptionbox\">";
-	echo i18n::translate('Circle diagram'), help_link('fan_style');
-	echo "</td><td rowspan=\"3\" class=\"optionbox\">";
-	echo "<input type=\"radio\" name=\"fan_style\" value=\"2\"";
-	if ($fan_style==2) echo " checked=\"checked\"";
-	echo " /> 1/2";
-	echo "<br /><input type=\"radio\" name=\"fan_style\" value=\"3\"";
-	if ($fan_style==3) echo " checked=\"checked\"";
-	echo " /> 3/4";
-	echo "<br /><input type=\"radio\" name=\"fan_style\" value=\"4\"";
-	if ($fan_style==4) echo " checked=\"checked\"";
-	echo " /> 4/4";
+// NOTE: fan style
+echo "<td rowspan=\"3\" class=\"descriptionbox\">";
+echo i18n::translate('Circle diagram'), help_link('fan_style');
+echo "</td><td rowspan=\"3\" class=\"optionbox\">";
+echo "<input type=\"radio\" name=\"fan_style\" value=\"2\"";
+if ($fan_style==2) echo " checked=\"checked\"";
+echo " /> 1/2";
+echo "<br /><input type=\"radio\" name=\"fan_style\" value=\"3\"";
+if ($fan_style==3) echo " checked=\"checked\"";
+echo " /> 3/4";
+echo "<br /><input type=\"radio\" name=\"fan_style\" value=\"4\"";
+if ($fan_style==4) echo " checked=\"checked\"";
+echo " /> 4/4";
 
-	// NOTE: submit
-	echo "</td><td rowspan=\"3\" class=\"topbottombar vmiddle\">";
-	echo "<input type=\"submit\" value=\"" . i18n::translate('View') . "\" />";
-	echo "</td></tr>";
+// NOTE: submit
+echo "</td><td rowspan=\"3\" class=\"topbottombar vmiddle\">";
+echo "<input type=\"submit\" value=\"" . i18n::translate('View') . "\" />";
+echo "</td></tr>";
 
-	// NOTE: generations
-	echo "<tr><td class=\"descriptionbox\">";
-	echo i18n::translate('Generations'), help_link('PEDIGREE_GENERATIONS');
-	echo "</td><td class=\"optionbox\">";
-	echo "<select name=\"PEDIGREE_GENERATIONS\">";
-	// Can only show 9 generations (256 ancestors) as graphics library has integer degree resolution
-	for ($i=2; $i<=min(9,$MAX_PEDIGREE_GENERATIONS); $i++) {
-	echo "<option value=\"".$i."\"" ;
-	if ($i == $PEDIGREE_GENERATIONS) echo "selected=\"selected\" ";
-		echo ">".$i."</option>";
-	}
-	echo "</select>";
-	echo "</td>";
-	echo "</tr><tr>";
-	// NOTE: fan width
-	echo "<td class=\"descriptionbox\">";
-	echo i18n::translate('Width'), help_link('fan_width');
-	echo "</td><td class=\"optionbox\">";
-	echo "<input type=\"text\" size=\"3\" name=\"fan_width\" value=\"$fan_width\" /> <b>%</b> ";
-	echo "</td>";
-	echo "</tr></table>";
-	echo "</form><br />";
-} else {
-	echo "<script language='JavaScript' type='text/javascript'>";
-	echo "if (IE) document.write('<span class=\"warning\">".str_replace("'", "\'", i18n::translate('This Fanchart image cannot be printed directly by your browser. Use right-click then save and print.'))."</span>');";
-	echo "</script>";
+// NOTE: generations
+echo "<tr><td class=\"descriptionbox\">";
+echo i18n::translate('Generations'), help_link('PEDIGREE_GENERATIONS');
+echo "</td><td class=\"optionbox\">";
+echo "<select name=\"PEDIGREE_GENERATIONS\">";
+// Can only show 9 generations (256 ancestors) as graphics library has integer degree resolution
+for ($i=2; $i<=min(9,$MAX_PEDIGREE_GENERATIONS); $i++) {
+echo "<option value=\"".$i."\"" ;
+if ($i == $PEDIGREE_GENERATIONS) echo "selected=\"selected\" ";
+	echo ">".$i."</option>";
 }
+echo "</select>";
+echo "</td>";
+echo "</tr><tr>";
+// NOTE: fan width
+echo "<td class=\"descriptionbox\">";
+echo i18n::translate('Width'), help_link('fan_width');
+echo "</td><td class=\"optionbox\">";
+echo "<input type=\"text\" size=\"3\" name=\"fan_width\" value=\"$fan_width\" /> <b>%</b> ";
+echo "</td>";
+echo "</tr></table>";
+echo "</form><br />";
 echo "</td></tr></table>";
 
 $treeid = ancestry_array($rootid);

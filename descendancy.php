@@ -52,67 +52,64 @@ echo 'var pastefield; function paste_id(value) {pastefield.value=value;}';
 echo WT_JS_END;
 
 $gencount=0;
-if ($view!="preview") {
-	$show_famlink = true;
-	echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
-	echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
-	echo '<table class="list_table ', $TEXT_DIRECTION, '">';
-	echo '<tr><td class="descriptionbox">';
-	echo i18n::translate('Root Person ID'), help_link('desc_rootid'), '</td>';
-	echo '<td class="optionbox">';
-	echo '<input class="pedigree_form" type="text" id="pid" name="pid" size="3" value="', $controller->pid, '" />';
-	print_findindi_link("pid", "");
-	echo '</td>';
-	echo '<td class="descriptionbox">';
-	echo i18n::translate('Box width'), help_link('box_width'), '</td>';
-	echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '" />';
-	echo '<b>%</b></td>';
-	echo '<td rowspan="2" class="descriptionbox">';
-	echo i18n::translate('Layout'), help_link('chart_style');
-	echo '</td><td rowspan="2" class="optionbox">';
-	echo '<input type="radio" name="chart_style" value="0"';
-	if ($controller->chart_style==0) {
-		echo ' checked="checked"';
-	}
-	echo '/>', i18n::translate('List');
-	echo '<br /><input type="radio" name="chart_style" value="1"';
-	if ($controller->chart_style==1) {
-		echo ' checked="checked"';
-	}
-	echo '/>', i18n::translate('Booklet');
-	echo '<br /><input type="radio" name="chart_style" value="2"';
-	if ($controller->chart_style==2) {
-		echo ' checked="checked"';
-	}
-	echo ' />', i18n::translate('Individuals');
-	echo '<br /><input type="radio" name="chart_style" value="3"';
-	if ($controller->chart_style==3) {
-		echo ' checked="checked"';
-	}
-	echo ' />', i18n::translate('Families');
-	echo '</td><td rowspan="2" class="topbottombar">';
-	echo '<input type="submit" value="', i18n::translate('View'), '" />';
-	echo '</td></tr>';
-	echo '<tr><td class="descriptionbox">';
-	echo i18n::translate('Generations'), help_link('desc_generations'), '</td>';
-	echo '<td class="optionbox"><select name="generations">';
-	for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
-		echo '<option value="', $i, '"';
-		if ($i==$controller->generations) {
-			echo ' selected="selected"';
-		}
-		echo '>', $i, '</option>';
-	}
-	echo '</select></td><td class="descriptionbox">';
-	echo i18n::translate('Show Details'), help_link('show_full');
-	echo '</td><td class="optionbox"><input type="checkbox" value="';
-	if ($controller->show_full) {
-		echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"';
-	} else {
-		echo '0" onclick="document.people.show_full.value=\'1\';"';
-	}
-	echo '/></td></tr></table></form>';
+echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
+echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
+echo '<table class="list_table ', $TEXT_DIRECTION, '">';
+echo '<tr><td class="descriptionbox">';
+echo i18n::translate('Root Person ID'), help_link('desc_rootid'), '</td>';
+echo '<td class="optionbox">';
+echo '<input class="pedigree_form" type="text" id="pid" name="pid" size="3" value="', $controller->pid, '" />';
+print_findindi_link("pid", "");
+echo '</td>';
+echo '<td class="descriptionbox">';
+echo i18n::translate('Box width'), help_link('box_width'), '</td>';
+echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '" />';
+echo '<b>%</b></td>';
+echo '<td rowspan="2" class="descriptionbox">';
+echo i18n::translate('Layout'), help_link('chart_style');
+echo '</td><td rowspan="2" class="optionbox">';
+echo '<input type="radio" name="chart_style" value="0"';
+if ($controller->chart_style==0) {
+	echo ' checked="checked"';
 }
+echo '/>', i18n::translate('List');
+echo '<br /><input type="radio" name="chart_style" value="1"';
+if ($controller->chart_style==1) {
+	echo ' checked="checked"';
+}
+echo '/>', i18n::translate('Booklet');
+echo '<br /><input type="radio" name="chart_style" value="2"';
+if ($controller->chart_style==2) {
+	echo ' checked="checked"';
+}
+echo ' />', i18n::translate('Individuals');
+echo '<br /><input type="radio" name="chart_style" value="3"';
+if ($controller->chart_style==3) {
+	echo ' checked="checked"';
+}
+echo ' />', i18n::translate('Families');
+echo '</td><td rowspan="2" class="topbottombar">';
+echo '<input type="submit" value="', i18n::translate('View'), '" />';
+echo '</td></tr>';
+echo '<tr><td class="descriptionbox">';
+echo i18n::translate('Generations'), help_link('desc_generations'), '</td>';
+echo '<td class="optionbox"><select name="generations">';
+for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
+	echo '<option value="', $i, '"';
+	if ($i==$controller->generations) {
+		echo ' selected="selected"';
+	}
+	echo '>', $i, '</option>';
+}
+echo '</select></td><td class="descriptionbox">';
+echo i18n::translate('Show Details'), help_link('show_full');
+echo '</td><td class="optionbox"><input type="checkbox" value="';
+if ($controller->show_full) {
+	echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"';
+} else {
+	echo '0" onclick="document.people.show_full.value=\'1\';"';
+}
+echo '/></td></tr></table></form>';
 echo '</td></tr></table>';
 if (is_null($controller->descPerson)) {
 	echo '<span class="error">', i18n::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';

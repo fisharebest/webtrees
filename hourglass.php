@@ -43,13 +43,9 @@ print_header(PrintReady($controller->name)." ".i18n::translate('Hourglass chart'
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-if ($controller->view=="preview") {
-	print "<h2 style=\"text-align: center\">".i18n::translate('Hourglass chart').":&nbsp;&nbsp;&nbsp;".PrintReady($controller->name)."</h2>";
-} else {
-	print "<!-- // NOTE: Start table header -->";
-	print "<table><tr><td valign=\"top\">";
-	print "<h2>".i18n::translate('Hourglass chart').":<br />".PrintReady($controller->name)."</h2>";
-}
+print "<!-- // NOTE: Start table header -->";
+print "<table><tr><td valign=\"top\">";
+print "<h2>".i18n::translate('Hourglass chart').":<br />".PrintReady($controller->name)."</h2>";
 
 $controller->setupJavascript();
 
@@ -61,7 +57,6 @@ if (WT_USE_LIGHTBOX) {
 // ==========================================================================================
 
 $gencount=0;
-if ($view!="preview") {
 ?>
 <!--	// NOTE: Start form and table -->
 	</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">
@@ -140,7 +135,7 @@ if ($view!="preview") {
 	if ($show_full==0) {
 		echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 	}
-} ?>
+?>
 <div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") print "_rtl"; ?>" <?php print "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
 <table cellspacing="0" cellpadding="0" border="0"><tr>
 <!-- // descendancy -->

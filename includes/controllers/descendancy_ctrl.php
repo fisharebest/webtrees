@@ -102,7 +102,6 @@ class DescendancyControllerRoot extends BaseController {
 	// This is passed as a global.  A parameter would be better...
 	$show_full=$this->show_full;
 
-	if (!isset($this->view)) $this->view="";
 	if (!isset($this->personcount)) $this->personcount = 1;
 
 	$this->Dbwidth*=$this->box_width/100;
@@ -183,7 +182,7 @@ function print_child_descendancy(&$person, $depth) {
 		print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
 		print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>\n";
 	}
-	print_pedigree_person($person->getXref(), 1, $this->view!="preview",'',$personcount);
+	print_pedigree_person($person->getXref(), 1, 0, $personcount);
 	print "</td>";
 
 	// check if child has parents and add an arrow
@@ -269,7 +268,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		print "<ul style=\"list-style: none; display: block;\" id=\"".$famid.$personcount."\">";
 		print "<li>";
 		print "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-		print_pedigree_person($id, 1, $this->view!="preview",''.$personcount);
+		print_pedigree_person($id, 1, 0, $personcount);
 		print "</td>";
 
 		// check if spouse has parents and add an arrow

@@ -126,7 +126,6 @@ function paste_id(value) {
 <h2><?php print PrintReady($title_string);?></h2><br />
 <!-- // Print the form to change the number of displayed generations -->
 <?php
-if ($view!="preview") {
 	$Dbaseyoffset += 110; ?>
 	<form name="people" method="get" action="relationship.php">
 	<input type="hidden" name="path_to_find" value="<?php print $path_to_find ?>" />
@@ -296,13 +295,6 @@ if ($view!="preview") {
 
 
 	</table></form>
-	<?php
-}
-else {
-	$Dbaseyoffset=55;
-	$Dbasexoffset=10;
-}
-?>
 </div>
 <?php
 if ($show_full==0) {
@@ -510,7 +502,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				}
 
 				print "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
-				print_pedigree_person($pid, 1, ($view!="preview"));
+				print_pedigree_person($pid, 1);
 				print "</td></tr></table></div>\n";
 			}
 
