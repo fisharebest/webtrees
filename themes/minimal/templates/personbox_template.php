@@ -43,7 +43,7 @@ if (!defined('WT_WEBTREES')) {
 <div id="out-<?php print $boxID; ?>" <?php print $outBoxAdd; ?>>
 <!--  table helps to maintain spacing -->
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">
-		<div id="icons-<?php print $boxID; ?>"
+		<div class="noprint" id="icons-<?php print $boxID; ?>"
 			style="<?php print $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php print $icons; ?>
 		</div>
 		<?php print $thumbnail; ?>

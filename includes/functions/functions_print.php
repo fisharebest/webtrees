@@ -197,11 +197,6 @@ function print_pedigree_person($pid, $style=1, $show_famlink=true, $count=0, $pe
 				if ($ZOOM_BOXES=="mousedown") $outBoxAdd .= $mouseAction3;
 				if (($ZOOM_BOXES=="click")&&($view!="preview")) $outBoxAdd .= $mouseAction4;
 			}
-			//-- links and zoom icons
-			// NOTE: Start div icons-$personcount.$pid.$count
-			if ($show_full) $iconsStyleAdd .= " display: block;";
-			else $iconsStyleAdd .= " display: none;";
-			//echo "\">";
 			// NOTE: Zoom
 			if (($ZOOM_BOXES!="disabled")&&($show_full)) {
 				$icons .= "<a href=\"javascript:;\"";

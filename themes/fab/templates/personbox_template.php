@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 echo
 	'<div id="I', $boxID, 'links" style="position:absolute;left:0px;top:0px;width:', $lbwidth, 'px;visibility:hidden;z-index:100;">', $personlinks, '</div>',
 	'<div id="out-', $boxID, '" ', $outBoxAdd, '>',
-		'<div id="icons-', $boxID, '" style="', $iconsStyleAdd, 'width:25px;height:50px;">', $icons, '</div>',
+		'<div class="noprint" id="icons-', $boxID, '" style="', $iconsStyleAdd, 'width:25px;height:50px;">', $icons, '</div>',
 		$thumbnail,
 		'<a class="name', $style, ' ', $classfacts, '" onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', WT_GEDCOM, '">', $name.$addname, '</a>',
 		'<div id="inout2-', $boxID, '" class="details', $style, '" style="display:block;">', $BirthDeath, '</div>',
