@@ -5,9 +5,9 @@
 .ui-widget-content a                                       { color:#003399; }
 .ui-widget-content a:hover                                  { color: red; }
 
-.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color:blue; }
-.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: blue; }
-.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: blue; }
+.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color: #003399; }
+.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: #003399; }
+.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: #003399; }
 
 
 /* Navigator and Flyout menu Styles */
