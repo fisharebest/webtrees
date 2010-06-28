@@ -2264,34 +2264,34 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 //case 'wifsibspo': return i18n::translate_c('wife\'s sibling\'s spouse',        'brother/sister-in-law');
 	case 'wifsishus': return i18n::translate_c('wife\'s sister\'s husband',        'brother-in-law');
 
-	// Some level Four relationships
-	case 'fatfatbrowif': return i18n::translate_c('father\'s father\'s brother\'s wife',    'great-aunt');
-	case 'fatfatsibspo': return i18n::translate_c('father\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'fatfatsishus': return i18n::translate_c('father\'s father\'s sister\'s housband', 'great-uncle');
-	case 'fatmotbrowif': return i18n::translate_c('father\'s mother\'s brother\'s wife',    'great-aunt');
-	case 'fatmotsibspo': return i18n::translate_c('father\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'fatmotsishus': return i18n::translate_c('father\'s mother\'s sister\'s housband', 'great-uncle');
-	case 'fatparbrowif': return i18n::translate_c('father\'s parent\'s brother\'s wife',    'great-aunt');
-	case 'fatparsibspo': return i18n::translate_c('father\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'fatparsishus': return i18n::translate_c('father\'s parent\'s sister\'s housband', 'great-uncle');
-	case 'motfatbrowif': return i18n::translate_c('mother\'s father\'s brother\'s wife',    'great-aunt');
-	case 'motfatsibspo': return i18n::translate_c('mother\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'motfatsishus': return i18n::translate_c('mother\'s father\'s sister\'s housband', 'great-uncle');
-	case 'motmotbrowif': return i18n::translate_c('mother\'s mother\'s brother\'s wife',    'great-aunt');
-	case 'motmotsibspo': return i18n::translate_c('mother\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'motmotsishus': return i18n::translate_c('mother\'s mother\'s sister\'s housband', 'great-uncle');
-	case 'motparbrowif': return i18n::translate_c('mother\'s parent\'s brother\'s wife',    'great-aunt');
-	case 'motparsibspo': return i18n::translate_c('mother\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'motparsishus': return i18n::translate_c('mother\'s parent\'s sister\'s housband', 'great-uncle');
-	case 'parfatbrowif': return i18n::translate_c('parent\'s father\'s brother\'s wife',    'great-aunt');
-	case 'parfatsibspo': return i18n::translate_c('parent\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'parfatsishus': return i18n::translate_c('parent\'s father\'s sister\'s housband', 'great-uncle');
-	case 'parmotbrowif': return i18n::translate_c('parent\'s mother\'s brother\'s wife',    'great-aunt');
-	case 'parmotsibspo': return i18n::translate_c('parent\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'parmotsishus': return i18n::translate_c('parent\'s mother\'s sister\'s housband', 'great-uncle');
-	case 'parparbrowif': return i18n::translate_c('parent\'s parent\'s brother\'s wife',    'great-aunt');
-	case 'parparsibspo': return i18n::translate_c('parent\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
-	case 'parparsishus': return i18n::translate_c('parent\'s parent\'s sister\'s housband', 'great-uncle');
+	// Some "special case" level four relationships that have specific names in certain languages
+	case 'fatfatbrowif': return i18n::translate_c('father\'s father\'s brother\'s wife',   'great-aunt');
+	case 'fatfatsibspo': return i18n::translate_c('father\'s father\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'fatfatsishus': return i18n::translate_c('father\'s father\'s sister\'s husband', 'great-uncle');
+	case 'fatmotbrowif': return i18n::translate_c('father\'s mother\'s brother\'s wife',   'great-aunt');
+	case 'fatmotsibspo': return i18n::translate_c('father\'s mother\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'fatmotsishus': return i18n::translate_c('father\'s mother\'s sister\'s husband', 'great-uncle');
+	case 'fatparbrowif': return i18n::translate_c('father\'s parent\'s brother\'s wife',   'great-aunt');
+	case 'fatparsibspo': return i18n::translate_c('father\'s parent\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'fatparsishus': return i18n::translate_c('father\'s parent\'s sister\'s husband', 'great-uncle');
+	case 'motfatbrowif': return i18n::translate_c('mother\'s father\'s brother\'s wife',   'great-aunt');
+	case 'motfatsibspo': return i18n::translate_c('mother\'s father\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'motfatsishus': return i18n::translate_c('mother\'s father\'s sister\'s husband', 'great-uncle');
+	case 'motmotbrowif': return i18n::translate_c('mother\'s mother\'s brother\'s wife',   'great-aunt');
+	case 'motmotsibspo': return i18n::translate_c('mother\'s mother\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'motmotsishus': return i18n::translate_c('mother\'s mother\'s sister\'s husband', 'great-uncle');
+	case 'motparbrowif': return i18n::translate_c('mother\'s parent\'s brother\'s wife',   'great-aunt');
+	case 'motparsibspo': return i18n::translate_c('mother\'s parent\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'motparsishus': return i18n::translate_c('mother\'s parent\'s sister\'s husband', 'great-uncle');
+	case 'parfatbrowif': return i18n::translate_c('parent\'s father\'s brother\'s wife',   'great-aunt');
+	case 'parfatsibspo': return i18n::translate_c('parent\'s father\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'parfatsishus': return i18n::translate_c('parent\'s father\'s sister\'s husband', 'great-uncle');
+	case 'parmotbrowif': return i18n::translate_c('parent\'s mother\'s brother\'s wife',   'great-aunt');
+	case 'parmotsibspo': return i18n::translate_c('parent\'s mother\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'parmotsishus': return i18n::translate_c('parent\'s mother\'s sister\'s husband', 'great-uncle');
+	case 'parparbrowif': return i18n::translate_c('parent\'s parent\'s brother\'s wife',   'great-aunt');
+	case 'parparsibspo': return i18n::translate_c('parent\'s parent\'s sibling\'s spouse', 'great-aunt/uncle');
+	case 'parparsishus': return i18n::translate_c('parent\'s parent\'s sister\'s husband', 'great-uncle');
 	}
 
 	// Look for generic/pattern relationships.
