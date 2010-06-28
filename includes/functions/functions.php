@@ -1961,28 +1961,32 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 		return i18n::translate('brother');
 	case 'sis':
-		$dob1=Person::GetInstance($pid1)->getBirthDate();
-		$dob2=Person::GetInstance($pid2)->getBirthDate();
-		if ($dob1->isOK() && $dob2->isOK()) {
-			if (abs($dob1->JD()-$dob2->JD())<2) {
-				return i18n::translate('twin sister');
-			} else if ($dob1->JD()<$dob2->JD()) {
-				return i18n::translate('younger sister');
-			} else {
-				return i18n::translate('elder sister');
+		if ($person1 && $person2) {
+			$dob1=$person1->getBirthDate();
+			$dob2=$person2->getBirthDate();
+			if ($dob1->isOK() && $dob2->isOK()) {
+				if (abs($dob1->JD()-$dob2->JD())<2) {
+					return i18n::translate('twin sister');
+				} else if ($dob1->JD()<$dob2->JD()) {
+					return i18n::translate('younger sister');
+				} else {
+					return i18n::translate('elder sister');
+				}
 			}
 		}
 		return i18n::translate('sister');
 	case 'sib':
-		$dob1=Person::GetInstance($pid1)->getBirthDate();
-		$dob2=Person::GetInstance($pid2)->getBirthDate();
-		if ($dob1->isOK() && $dob2->isOK()) {
-			if (abs($dob1->JD()-$dob2->JD())<2) {
-				return i18n::translate('twin sibling');
-			} else if ($dob1->JD()<$dob2->JD()) {
-				return i18n::translate('younger sibling');
-			} else {
-				return i18n::translate('elder sibling');
+		if ($person1 && $person2) {
+			$dob1=$person1->getBirthDate();
+			$dob2=$person2->getBirthDate();
+			if ($dob1->isOK() && $dob2->isOK()) {
+				if (abs($dob1->JD()-$dob2->JD())<2) {
+					return i18n::translate('twin sibling');
+				} else if ($dob1->JD()<$dob2->JD()) {
+					return i18n::translate('younger sibling');
+				} else {
+					return i18n::translate('elder sibling');
+				}
 			}
 		}
 		return i18n::translate('sibling');
