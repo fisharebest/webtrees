@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8898 2010-06-19 23:37:25Z rob $
+* $Id: ash.css 8910 2010-06-20 12:04:23Z rob $
 */
 
 .something {
@@ -89,6 +89,11 @@ a:hover {
 color: red;
 text-decoration: none;
 }
+a.icon_small_theme:link {color: #707070;}
+a.icon_large_gedcom:link {color: #707070;}
+a.icon_language:link {color: #707070;}
+a.icon_color {color: #707070;}
+
 
 /*	Define Alert Color					*/
 
@@ -122,7 +127,7 @@ padding-left: 10px;
 }
 
 .toplinks_right {
-padding-right: 15px;
+padding-right: 13px;
 } 
 
 .icon, .adminicon {
@@ -1635,7 +1640,7 @@ clear:both;
 /* Classes for the INDI page header */
 
 #indi_header h1 {
-	color: #00066;
+	color: #000066;
 	font-size: 2em;
 	padding: 0 .5em;
 	margin: 0.25em 0 0 0;
@@ -1832,4 +1837,36 @@ font-style: italic;
 font-weight: bold;
 font-size: 90%;
 padding: 0 10px;
+}
+
+/* Use CSS menus based on nested <ul> */
+.makeMenu li {
+	display:inline;
+	position:relative;
+	white-space:nowrap;
+}
+
+.makeMenu li ul {
+	display:none;
+	position:absolute;
+	left:0px;
+	background-color:#EEE;
+	border:thin solid #AAA;
+	z-index:999;
+}
+
+.makeMenu li ul li {
+	display:block;
+	text-align:left;
+}
+
+.makeMenu, .makeMenu li ul {
+    color: #fff;
+	list-style:none;
+	margin:0;
+	padding:1px;
+}
+
+.makeMenu li:hover > ul {
+	display:block;
 }

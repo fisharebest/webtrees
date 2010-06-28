@@ -117,23 +117,49 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 			<?php print_gedcom_title_link(TRUE);?>
 		</div>
 		</td>
+		<td>
 
-<?php if(empty($SEARCH_SPIDER)) { ?>
-
-		<td align="<?php echo $TEXT_DIRECTION=="ltr"?"right":"left" ?>">
-			<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
-			<form action="search.php" method="post">
-				<input type="hidden" name="action" value="general" />
-				<input type="hidden" name="topsearch" value="yes" />
-				<input type="text" class="formbut" name="query" size="15" value="<?php echo i18n::translate('Search')?>" onfocus="if (this.value == '<?php echo i18n::translate('Search')?>') this.value=''; focusHandler();" onblur="if (this.value == '') this.value='<?php echo i18n::translate('Search')?>';" />
-				<input type="image" src="<?php echo $WT_IMAGE_DIR ?>/go.gif" align="top" title="<?php echo i18n::translate('Search')?>" />
-			</form>
-			</div>
-			<div align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
-				<?php } ?>
-					<?php print_favorite_selector(); ?>
-			</div>
-		</td>
+<?php if(empty($SEARCH_SPIDER)) { 
+		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
+		if (WT_USER_ID) {
+			echo
+				'<li><a href="edituser.php" class="icon_color">', getUserFullName(WT_USER_ID), '</a></li>',
+				' | <li><a href="index.php?logout=1" class="icon_color">', i18n::translate('Logout'), '</a></li>';
+			if (WT_USER_GEDCOM_ADMIN) {
+				echo ' | <li><a href="admin.php" class="icon_color">', i18n::translate('Admin'), '</a></li>';
+			}
+			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending Changes'), '</a></li>';
+			}
+		} else {
+			$LOGIN_URL=get_site_setting('LOGIN_URL');
+			if (WT_SCRIPT_NAME==$LOGIN_URL) {
+				echo '<li><a class="icon_color" href="', $LOGIN_URL, '">', i18n::translate('Login'), '</a></li>';
+			} else {
+				$QUERY_STRING = normalize_query_string($QUERY_STRING.'&amp;logout=');
+				echo '<li><a class="icon_color" href="', $LOGIN_URL, '?url=', WT_SCRIPT_PATH, WT_SCRIPT_NAME, decode_url(normalize_query_string($QUERY_STRING.'&amp;ged='.WT_GEDCOM)), '">', i18n::translate('Login'), '</a></li>';
+			}
+		}
+			echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
+			echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+			global $ALLOW_THEME_DROPDOWN;
+			if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+				echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+			}
+		echo
+			'</span> | <form style="display:inline;" action="search.php" method="get">',
+			'<input type="hidden" name="action" value="general" />',
+			'<input type="hidden" name="topsearch" value="yes" />',
+			'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />';
+?>
+			<input type="image" src="<?php echo $WT_IMAGE_DIR ?>/go.gif" align="top" title="<?php echo i18n::translate('Search')?>" />
+<?php
+		echo
+			'</form>',
+			'</ul></div>'; 
+		}
+?>
+</td>
 	</tr>
 </table>
 </div>

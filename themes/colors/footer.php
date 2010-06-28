@@ -31,27 +31,15 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-//start colors unique code
+
 echo "</div>"; // Close table started in toplinks.html
-echo "<br />";echo "<br />";echo "<br />";
+echo "<br />";
 echo "<div id=\"footer\" class=\"$TEXT_DIRECTION\">";
 echo "\n\t<br /><div align=\"center\" style=\"width:99%;\">";
-
-
-if(empty($SEARCH_SPIDER)) { ?>
-  <div class="blanco" ><?php print_user_links(); ?></div>
-  <div>
-    <?php print_theme_dropdown(); ?>
-    <?php print_lang_form(); ?>
-  </div><br />
-<?php 
-}
-
 echo contact_links();
 echo "\n\t<br />";
 echo '<br /><a href="', WT_WEBTREES_URL, '" target="_blank"><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['webtrees']['other'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" /></a><br />';
 echo "\n\t<br />";
-
 
 if ($SHOW_STATS || WT_DEBUG) {
     echo execution_stats();
