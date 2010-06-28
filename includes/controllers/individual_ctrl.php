@@ -40,11 +40,6 @@ require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-// -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "CHIL", "HUSB", "WIFE", "RFN", "_WT_OBJE_SORT", "");
-
-$nonfamfacts = array(/*"NCHI",*/ "UID", "");
-
 class IndividualControllerRoot extends BaseController {
 	var $pid = "";
 	var $default_tab = 0;

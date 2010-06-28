@@ -35,6 +35,11 @@ require WT_ROOT.'includes/controllers/individual_ctrl.php';
 
 $showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 
+// -- array of GEDCOM elements that will be found but should not be displayed
+$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "CHIL", "HUSB", "WIFE", "RFN", "_WT_OBJE_SORT", "");
+
+$nonfamfacts = array(/*"NCHI",*/ "UID", "");
+
 $controller=new IndividualController();
 $controller->init();
 
