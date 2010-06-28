@@ -1,6 +1,6 @@
 <?php
 /**
-* Controller for the shared note page view
+* Controller for the Shared Note Page
 *
 * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -23,7 +23,6 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
 * @package webtrees
-* @subpackage Charts
 * @version $Id$
 */
 
@@ -36,26 +35,20 @@ define('WT_NOTE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/classes/class_note.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
+require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 $nonfacts = array();
-/**
-* Main controller class for the shared note page.
-*/
+
 class NoteControllerRoot extends BaseController {
 	var $nid;
-	/* @var Note */
 	var $note = null;
 	var $uname = "";
 	var $diffnote = null;
 	var $accept_success = false;
 	var $canedit = false;
 
-	/**
-	* initialize the controller
-	*/
 	function init() {
 		$this->nid = safe_GET_xref('nid');
 

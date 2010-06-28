@@ -1,12 +1,12 @@
 <?php
 /**
-* Controller for the source page view
+* Controller for the Source Page
 *
 * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
  * Derived from PhpGedView
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+* Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
 * @package webtrees
-* @subpackage Charts
 * @version $Id$
 */
 
@@ -36,14 +35,12 @@ define('WT_SOURCE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/classes/class_source.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
+require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 $nonfacts = array();
-/**
-* Main controller class for the source page.
-*/
+
 class SourceControllerRoot extends BaseController {
 	var $sid;
 	var $source = null;
@@ -52,9 +49,6 @@ class SourceControllerRoot extends BaseController {
 	var $accept_success = false;
 	var $canedit = false;
 
-	/**
-	* initialize the controller
-	*/
 	function init() {
 		$this->sid = safe_GET_xref('sid');
 

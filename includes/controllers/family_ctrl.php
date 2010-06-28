@@ -1,8 +1,6 @@
 <?php
 /**
-* Parses gedcom file and gives access to information about a family.
-*
-* You must supply a $famid value with the identifier for the family.
+* Controller for the Family Page
 *
 * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -25,7 +23,6 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
 * @package webtrees
-* @subpackage Controllers
 * @version $Id$
 */
 
@@ -38,10 +35,11 @@ define('WT_FAMILY_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/classes/class_family.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
+require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
+require_once WT_ROOT.'includes/functions/functions_charts.php';
+
 
 class FamilyRoot extends BaseController {
 	var $user = null;

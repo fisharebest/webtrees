@@ -10,8 +10,6 @@
  * Derived from PhpGedView
 * Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
 *
-* Modifications Copyright (c) 2010 Greg Roach
-*
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
 * the Free Software Foundation; either version 2 of the License, or
@@ -26,9 +24,7 @@
 * along with this program; if not, write to the Free Software
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 *
-*
 * @package webtrees
-* @subpackage Charts
 * @version $Id$
 */
 
@@ -40,11 +36,10 @@ if (!defined('WT_WEBTREES')) {
 define('WT_MEDIA_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/controllers/individual_ctrl.php';
-require_once WT_ROOT.'includes/classes/class_media.php';
+require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class MediaControllerRoot extends IndividualController{
-
 	var $mid;
 	var $mediaobject;
 	var $show_changes=true;

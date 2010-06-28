@@ -23,7 +23,6 @@
 * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 *
 * @package webtrees
-* @subpackage Charts
 * @version $Id$
 */
 
@@ -37,8 +36,7 @@ define('WT_INDIVIDUAL_CTRL_PHP', '');
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once WT_ROOT.'includes/classes/class_person.php';
-require_once WT_ROOT.'includes/classes/class_family.php';
+require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/classes/class_module.php';
 
@@ -47,9 +45,6 @@ $nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "CHIL", "HUSB", "WIFE", "RFN", 
 
 $nonfamfacts = array(/*"NCHI",*/ "UID", "");
 
-/**
-* Main controller class for the individual page.
-*/
 class IndividualControllerRoot extends BaseController {
 	var $pid = "";
 	var $default_tab = 0;
@@ -67,9 +62,6 @@ class IndividualControllerRoot extends BaseController {
 	var $SEX_LINENUM = null;
 	var $globalfacts = null;
 
-	/**
-	* Initialization function
-	*/
 	function init() {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $GEDCOM_DEFAULT_TAB;
 		global $USE_QUICK_UPDATE, $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
