@@ -2263,6 +2263,35 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'wifbrowif': return i18n::translate_c('wife\'s brother\'s wife',          'sister-in-law');
 //case 'wifsibspo': return i18n::translate_c('wife\'s sibling\'s spouse',        'brother/sister-in-law');
 	case 'wifsishus': return i18n::translate_c('wife\'s sister\'s husband',        'brother-in-law');
+
+	// Some level Four relationships
+	case 'fatfatbrowif': return i18n::translate_c('father\'s father\'s brother\'s wife',    'great-aunt');
+	case 'fatfatsibspo': return i18n::translate_c('father\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'fatfatsishus': return i18n::translate_c('father\'s father\'s sister\'s housband', 'great-uncle');
+	case 'fatmotbrowif': return i18n::translate_c('father\'s mother\'s brother\'s wife',    'great-aunt');
+	case 'fatmotsibspo': return i18n::translate_c('father\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'fatmotsishus': return i18n::translate_c('father\'s mother\'s sister\'s housband', 'great-uncle');
+	case 'fatparbrowif': return i18n::translate_c('father\'s parent\'s brother\'s wife',    'great-aunt');
+	case 'fatparsibspo': return i18n::translate_c('father\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'fatparsishus': return i18n::translate_c('father\'s parent\'s sister\'s housband', 'great-uncle');
+	case 'motfatbrowif': return i18n::translate_c('mother\'s father\'s brother\'s wife',    'great-aunt');
+	case 'motfatsibspo': return i18n::translate_c('mother\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'motfatsishus': return i18n::translate_c('mother\'s father\'s sister\'s housband', 'great-uncle');
+	case 'motmotbrowif': return i18n::translate_c('mother\'s mother\'s brother\'s wife',    'great-aunt');
+	case 'motmotsibspo': return i18n::translate_c('mother\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'motmotsishus': return i18n::translate_c('mother\'s mother\'s sister\'s housband', 'great-uncle');
+	case 'motparbrowif': return i18n::translate_c('mother\'s parent\'s brother\'s wife',    'great-aunt');
+	case 'motparsibspo': return i18n::translate_c('mother\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'motparsishus': return i18n::translate_c('mother\'s parent\'s sister\'s housband', 'great-uncle');
+	case 'parfatbrowif': return i18n::translate_c('parent\'s father\'s brother\'s wife',    'great-aunt');
+	case 'parfatsibspo': return i18n::translate_c('parent\'s father\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'parfatsishus': return i18n::translate_c('parent\'s father\'s sister\'s housband', 'great-uncle');
+	case 'parmotbrowif': return i18n::translate_c('parent\'s mother\'s brother\'s wife',    'great-aunt');
+	case 'parmotsibspo': return i18n::translate_c('parent\'s mother\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'parmotsishus': return i18n::translate_c('parent\'s mother\'s sister\'s housband', 'great-uncle');
+	case 'parparbrowif': return i18n::translate_c('parent\'s parent\'s brother\'s wife',    'great-aunt');
+	case 'parparsibspo': return i18n::translate_c('parent\'s parent\'s sibling\'s spouse',  'great-aunt/uncle');
+	case 'parparsishus': return i18n::translate_c('parent\'s parent\'s sister\'s housband', 'great-uncle');
 	}
 
 	// Look for generic/pattern relationships.
@@ -2679,11 +2708,68 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		//
 		// Need to find out which languages use which rules.
 		switch (WT_LOCALE) {
-		case 'pl': // Source: Lucasz Wilenski
+		case 'pl': // Source: Lukasz Wilenski
+			$grandparent=substr($path, 3, 3);
+			$sbiling=substr($path, 6, 3);
+			switch ($path) {
+			/* for review
+			case 'fatfatbrodau': return i18n::translate_c('father\'s father\'s brother\'s daughter','ciotka stryjeczna');
+			case 'fatfatbroson': return i18n::translate_c('father\'s father\'s brother\'s son',     'stryj stryjeczny');
+			case 'fatfatbrosib': return i18n::translate_c('father\'s father\'s brother\'s sibling', 'stryj stryjeczny/ciotka stryjeczna');
+			case 'fatfatsisdau': return i18n::translate_c('father\'s father\'s sister\'s daughter', 'ciotka cioteczna');
+			case 'fatfatsisson': return i18n::translate_c('father\'s father\'s sister\'s son',      'stryj cioteczny');
+			case 'fatfatsissib': return i18n::translate_c('father\'s father\'s sister\'s sibling',  'stryj cioteczny/ciotka cioteczna');
+			case 'fatmotbrodau': return i18n::translate_c('father\'s mother\'s brother\'s daughter','ciotka wujeczna');
+			case 'fatmotbroson': return i18n::translate_c('father\'s mother\'s brother\'s son',     'stryj wujeczny');
+			case 'fatmotbrosib': return i18n::translate_c('father\'s mother\'s brother\'s sibling', 'stryj wujeczny/ciotka wujeczna');
+			case 'fatmotsisdau': return i18n::translate_c('father\'s mother\'s sister\'s daughter', 'ciotka cioteczna');
+			case 'fatmotsisson': return i18n::translate_c('father\'s mother\'s sister\'s son',      'stryj cioteczny');
+			case 'fatmotsissib': return i18n::translate_c('father\'s mother\'s sister\'s sibling',  'stryj cioteczny/ciotka cioteczna');
+			case 'motfatbrodau': return i18n::translate_c('mother\'s father\'s brother\'s daughter','ciotka stryjeczna');
+			case 'motfatbroson': return i18n::translate_c('mother\'s father\'s brother\'s son',     'wuj stryjeczny');
+			case 'motfatbrosib': return i18n::translate_c('mother\'s father\'s brother\'s sibling', 'wuj stryjeczny/ciotka stryjeczna');
+			case 'motfatsisdau': return i18n::translate_c('mother\'s father\'s sister\'s daughter', 'ciotka cioteczna');
+			case 'motfatsisson': return i18n::translate_c('mother\'s father\'s sister\'s son',      'wuj cioteczny');
+			case 'motfatsissib': return i18n::translate_c('mother\'s father\'s sister\'s sibling',  'wuj cioteczny/ciotka cioteczna');
+			case 'motmotbrodau': return i18n::translate_c('mother\'s mother\'s brother\'s daughter','ciotka wujeczna');
+			case 'motmotbroson': return i18n::translate_c('mother\'s mother\'s brother\'s son',     'wuj wujeczny');
+			case 'motmotbrosib': return i18n::translate_c('mother\'s mother\'s brother\'s sibling', 'wuj wujeczny/ciotka wujeczna');
+			case 'motmotsisdau': return i18n::translate_c('mother\'s mother\'s sister\'s daughter', 'ciotka cioteczna');
+			case 'motmotsisson': return i18n::translate_c('mother\'s mother\'s sister\'s son',      'wuj cioteczny');
+			case 'motmotsissib': return i18n::translate_c('mother\'s mother\'s sister\'s sibling',  'wuj cioteczny/ciotka cioteczna');
+			}
 			switch ($last) {
-			case 'son': return cousin_name($up+$down+2, 'M');
-			case 'dau': return cousin_name($up+$down+2, 'F');
-			case 'chi': return cousin_name($up+$down+2, 'U');
+			case 'son':
+				if ($up==2 && $down==2) {
+					if ($grandparent=='fat' && $sbiling=='bro') {
+						return i18n::translate_c('grandfather\'s brother\'s grandson',       'brat prastryjeczny');
+					} else if ($grandparent=='mot' && $sbiling=='bro') {
+						return i18n::translate_c('grandmother\'s brother\'s grandson',       'brat prawujeczny');
+					} else {
+						return i18n::translate_c('grandparent\'s sister\'s grandson',        'brat pracioteczny');
+					}
+				} else return cousin_name($up+$down+2, 'M');
+			case 'dau':
+				if ($up==2 && $down==2) {
+					if ($grandparent=='fat' && $sbiling=='bro') {
+						return i18n::translate_c('grandfather\'s brother\'s granddaughter',  'siostra prastryjeczna');
+					} else if ($grandparent=='mot' && $sbiling=='bro') {
+						return i18n::translate_c('grandmother\'s brother\'s granddaughter',  'siostra prawujeczna');
+					} else {
+						return i18n::translate_c('grandparent\'s sister\'s granddaughter',   'siostra pracioteczna');
+					}
+				} else return cousin_name($up+$down+2, 'F');
+			case 'chi':
+				if ($up==2 && $down==2) {
+					if ($grandparent=='fat' && $sbiling=='bro') {
+						return i18n::translate_c('grandfather\'s brother\'s grandchild',     'rodzeństwo prastryjeczne');
+					} else if ($grandparent=='mot' && $sbiling=='bro') {
+						return i18n::translate_c('grandmother\'s brother\'s grandchild',     'rodzeństwo prawujeczne');
+					} else {
+						return i18n::translate_c('grandparent\'s sister\'s grandchild',      'rodzeństwo pracioteczne');
+					}
+				} else cousin_name($up+$down+2, 'U');
+			*/
 			}
 			break;
 		case 'it':
