@@ -37,9 +37,7 @@ define('WT_TIMELINE_CTRL_PHP', '');
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_person.php';
-/**
-* Main controller class for the timeline page.
-*/
+
 class TimelineControllerRoot extends BaseController {
 	var $bheight = 30;
 	var $placements = array();

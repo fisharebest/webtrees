@@ -34,6 +34,19 @@ require './includes/session.php';
 require WT_ROOT.'includes/controllers/ancestry_ctrl.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
+// -- array of GEDCOM elements that will be found but should not be displayed
+$nonfacts[] = "FAMS";
+$nonfacts[] = "FAMC";
+$nonfacts[] = "MAY";
+$nonfacts[] = "BLOB";
+$nonfacts[] = "CHIL";
+$nonfacts[] = "HUSB";
+$nonfacts[] = "WIFE";
+$nonfacts[] = "RFN";
+$nonfacts[] = "";
+$nonfamfacts[] = "UID";
+$nonfamfacts[] = "";
+
 $controller=new AncestryController();
 $controller->init();
 

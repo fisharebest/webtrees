@@ -39,8 +39,6 @@ require_once WT_ROOT.'includes/classes/class_menu.php';
 require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-$nonfacts = array();
-
 class SourceControllerRoot extends BaseController {
 	var $sid;
 	var $source = null;

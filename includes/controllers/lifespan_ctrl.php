@@ -43,14 +43,6 @@ function compare_people($a, $b) {
 	return GedcomDate::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 }
 
-
-// GEDCOM elements that will be found but should not be displayed
-$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "OBJE", "SEX", "NAME", "SOUR", "NOTE", "BAPL", "ENDL", "SLGC", "SLGS", "_TODO", "_WT_OBJE_SORT", "CHAN", "HUSB", "WIFE", "CHIL", "BIRT", "DEAT", "BURI");// DEATH OF SIBLING:  DEATH OF HALF SIBLING DEATH OF MOTHER DEATH OF FATHER DEATH OF CHILD
-$nonfamfacts = array("CHAN", "HUSB", "WIFE", "CHIL");
-
-/**
-* Main controller class for the timeline page.
-*/
 class LifespanControllerRoot extends BaseController {
 	var $pids = array ();
 	var $people = array();
@@ -582,8 +574,8 @@ class LifespanControllerRoot extends BaseController {
 }
 // -- end of class
 //-- load a user extended class if one exists
-if (file_exists(WT_ROOT.'includes/controllers/timeline_ctrl_user.php')) {
-	require_once WT_ROOT.'includes/controllers/timeline_ctrl_user.php';
+if (file_exists(WT_ROOT.'includes/controllers/lifespan_ctrl_user.php')) {
+	require_once WT_ROOT.'includes/controllers/lifespan_ctrl_user.php';
 } else {
 	class LifespanController extends LifespanControllerRoot {
 	}

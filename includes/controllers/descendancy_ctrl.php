@@ -39,21 +39,6 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 require_once WT_ROOT.'includes/classes/class_person.php';
 
-// -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts[] = "FAMS";
-$nonfacts[] = "FAMC";
-$nonfacts[] = "MAY";
-$nonfacts[] = "BLOB";
-$nonfacts[] = "CHIL";
-$nonfacts[] = "HUSB";
-$nonfacts[] = "WIFE";
-$nonfacts[] = "RFN";
-$nonfacts[] = "";
-$nonfamfacts[] = "UID";
-$nonfamfacts[] = "";
-/**
- * Main controller class for the individual page.
- */
 class DescendancyControllerRoot extends BaseController {
 	var $pid = "";
 	var $descPerson = null;

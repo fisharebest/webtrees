@@ -35,6 +35,8 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 // We have finished writing to $_SESSION, so release the lock
 session_write_close();
 
+$nonfacts = array();
+
 $controller=new SourceController();
 $controller->init();
 
