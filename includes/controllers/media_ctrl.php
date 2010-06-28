@@ -1,8 +1,6 @@
 <?php
 /**
 * Controller for the Media Menu
-* Extends the IndividualController class and overrides the getEditMenu() function
-* Menu options are changed to apply to a media object instead of an individual
 *
 * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -35,11 +33,13 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_MEDIA_CTRL_PHP', '');
 
-require_once WT_ROOT.'includes/controllers/individual_ctrl.php';
+require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+require_once WT_ROOT.'includes/controllers/basecontrol.php';
+require_once WT_ROOT.'includes/classes/class_menu.php';
 require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class MediaControllerRoot extends IndividualController{
+class MediaControllerRoot extends BaseController{
 	var $mid;
 	var $mediaobject;
 	var $show_changes=true;
