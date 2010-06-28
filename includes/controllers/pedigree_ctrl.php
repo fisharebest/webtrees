@@ -1,30 +1,25 @@
 <?php
-/**
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Charts
- * @version $Id$
- */
+// webtrees: Web based Family History software
+// Copyright (C) 2010 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -37,10 +32,7 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_person.php';
 
-/**
- * Main controller class for the Ancestry page.
- */
-class PedigreeControllerRoot extends BaseController {
+class PedigreeController extends BaseController {
 	var $log2;
 	var $rootid;
 	var $name;
@@ -325,15 +317,3 @@ class PedigreeControllerRoot extends BaseController {
 		return $diff;
 	}
 }
-
-// -- end of class
-//-- load a user extended class if one exists
-if (file_exists(WT_ROOT.'includes/controllers/pedigree_ctrl_user.php')) {
-	require_once WT_ROOT.'includes/controllers/pedigree_ctrl_user.php';
-} else {
-	class PedigreeController extends PedigreeControllerRoot
-	{
-	}
-}
-
-?>
