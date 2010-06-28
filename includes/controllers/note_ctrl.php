@@ -171,7 +171,7 @@ class NoteControllerRoot extends BaseController {
 	* get edit menut
 	* @return Menu
 	*/
-	function &getEditMenu() {
+	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
@@ -254,7 +254,7 @@ class NoteControllerRoot extends BaseController {
 	* get the other menu
 	* @return Menu
 	*/
-	function &getOtherMenu() {
+	function getOtherMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";

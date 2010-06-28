@@ -728,7 +728,7 @@ class GedcomRecord {
 	* @param string $fact
 	* @return Event
 	*/
-	public function &getFactByType($factType) {
+	public function getFactByType($factType) {
 		$this->parseFacts();
 		if (empty($this->facts)) {
 			return null;

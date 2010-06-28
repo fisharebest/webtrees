@@ -214,7 +214,7 @@ class FamilyRoot extends BaseController {
 	* get the family page charts menu
 	* @return Menu
 	*/
-	function &getChartsMenu() {
+	function getChartsMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
@@ -293,7 +293,7 @@ class FamilyRoot extends BaseController {
 	* @deprecated This function has been deprecated by the getReportsMenu function in menu.php
 	* @return Menu
 	*/
-	function &getReportsMenu() {
+	function getReportsMenu() {
 	/**
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
@@ -320,7 +320,7 @@ class FamilyRoot extends BaseController {
 	/**
 	* get the family page edit menu
 	*/
-	function &getEditMenu() {
+	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
@@ -449,7 +449,7 @@ class FamilyRoot extends BaseController {
 	* get the other menu
 	* @return Menu
 	*/
-	function &getOtherMenu() {
+	function getOtherMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";

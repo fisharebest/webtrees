@@ -819,7 +819,7 @@ class Person extends GedcomRecord {
 	* return a new person object for it
 	* @return Person
 	*/
-	function &getUpdatedPerson() {
+	function getUpdatedPerson() {
 		if ($this->getChanged()) {
 			return null;
 		}

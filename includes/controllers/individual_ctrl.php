@@ -530,7 +530,7 @@ class IndividualControllerRoot extends BaseController {
 	* get the edit menu
 	* @return Menu
 	*/
-	function &getEditMenu() {
+	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $USE_QUICK_UPDATE;
 		if ($TEXT_DIRECTION=="rtl") {
@@ -638,7 +638,7 @@ class IndividualControllerRoot extends BaseController {
 	* get the "other" menu
 	* @return Menu
 	*/
-	function &getOtherMenu() {
+	function getOtherMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";

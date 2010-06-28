@@ -180,7 +180,7 @@ class MediaControllerRoot extends IndividualController{
 	* get the edit menu
 	* @return Menu
 	*/
-	function &getEditMenu() {
+	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $TOTAL_NAMES;
 		global $NAME_LINENUM, $SEX_LINENUM;
 		global $SHOW_GEDCOM_RECORD;
@@ -296,7 +296,7 @@ class MediaControllerRoot extends IndividualController{
 	* get the "other" menu
 	* @return Menu
 	*/
-	function &getOtherMenu() {
+	function getOtherMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $THEME_DIR, $SHOW_GEDCOM_RECORD;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";

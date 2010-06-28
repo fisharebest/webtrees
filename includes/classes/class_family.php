@@ -145,7 +145,7 @@ class Family extends GedcomRecord {
 	 * @param string $pid
 	 * @return string
 	 */
-	function &getSpouseId($pid) {
+	function getSpouseId($pid) {
 		if (is_null($this->wife) or is_null($this->husb)) return null;
 		if ($this->wife->getXref()==$pid) return $this->husb->getXref();
 		if ($this->husb->getXref()==$pid) return $this->wife->getXref();
@@ -216,7 +216,7 @@ class Family extends GedcomRecord {
 	 * If there is an updated family record in the gedcom file
 	 * return a new family object for it
 	 */
-	function &getUpdatedFamily() {
+	function getUpdatedFamily() {
 		if ($this->getChanged()) {
 			return $this;
 		}

@@ -854,7 +854,7 @@ class ServiceClient extends GedcomRecord {
 	* @param integer $start - the start index of the results to return
 	* @param integer $max - the maximum number of results to return
 	*/
-	function &search($query, $start=0, $max=100) {
+	function search($query, $start=0, $max=100) {
 		$this->authenticate();
 		$result = $this->soapClient->search($this->SID, $query, $start, $max);
 		return $result;
