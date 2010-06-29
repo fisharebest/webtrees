@@ -428,7 +428,7 @@ class IndividualController extends BaseController {
 		echo '<div id="name1">';
 			echo '<dt class="label">', i18n::translate('Name'), '</dt>';
 			echo '<span class="field">', PrintReady($dummy->getFullName());
-				if ($this->userCanEdit() && !strpos($factrec, 'WT_OLD')) {
+				if ($this->userCanEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>", help_link('delete_name');
 				}
