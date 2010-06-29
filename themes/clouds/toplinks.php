@@ -123,10 +123,11 @@ $menubar = new MenuBar();
 		<div class="makeMenu" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
 		<?php echo MenuBar::getFavoritesMenu()->getMenuAsList();
 		global $ALLOW_THEME_DROPDOWN;
+				echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 		}
-		echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+
 		?>
 		</div>
 		</td>
