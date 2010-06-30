@@ -880,15 +880,13 @@ class stats {
 			$life_dir = 'DESC';
 		}
 		$rows=self::_runSQL(''
+		/*//old
 			."SELECT d_year, d_type, d_fact, d_gid"
 			." FROM `##dates`"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0"
-			." ORDER BY d_julianday1 {$life_dir}, d_type",
-			1
-		);
+			." ORDER BY d_julianday1 {$life_dir}, d_type"
+		*/
 		//testing
-		/*
-		$rows=self::_runSQL(''
 			.' SELECT'
 				.' d2.d_year,'
 				.' d2.d_type,'
@@ -923,8 +921,7 @@ class stats {
 				.' )'
 			.' ORDER BY'
 				." d_julianday1 {$life_dir}, d_type"
-		);
-		*/
+		, 1);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
 		$record=GedcomRecord::getInstance($row['d_gid']);
@@ -945,7 +942,8 @@ class stats {
 				$result="<a href=\"".$record->getLinkUrl()."\">".$record->getFullName()."</a>";
 				break;
 			case 'place':
-				$result=format_fact_place(GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']), true, true, true);
+				$fact=GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
+				$result=format_fact_place($fact, true, true, true);
 				break;
 		}
 		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
@@ -1383,6 +1381,7 @@ class stats {
 		}
 
 		$rows=self::_runSQL(''
+		/*//old
 			.' SELECT'
 				.' death.d_gid AS id,'
 				.' death.d_julianday2-birth.d_julianday1 AS age'
@@ -1403,25 +1402,23 @@ class stats {
 				.$sex_search
 			.' ORDER BY'
 				.' age DESC'
-		, 1);
+		*/
 		//testing
-		/*
-		$rows=self::_runSQL(''
 			.' SELECT'
 				.' i_id AS id,'
-				.' death.d_julianday2-birth.d_julianday1 AS age'
+				.' death.death_jd-birth.birth_jd AS age'
 			.' FROM'
+				.' (SELECT d_gid, d_file, MIN(d_julianday2) AS death_jd'
+					.' FROM `##dates`'
+					." WHERE d_fact IN ('DEAT', 'BURI', 'CREM') AND d_julianday2>0"
+					.' GROUP BY d_gid, d_file'
+				.' ) AS death'
+			.' JOIN'
 				.' (SELECT d_gid, d_file, MIN(d_julianday1) AS birth_jd'
-					.' FROM `##date`'
+					.' FROM `##dates`'
 					." WHERE d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND d_julianday1>0"
 					.' GROUP BY d_gid, d_file'
-				.' ) AS birth'
-			.' JOIN ('
-				.' SELECT d_gid, d_file, MIN(d_julianday1) AS death_jd'
-					.' FROM `##date`'
-					." WHERE d_fact IN ('DEAT', 'BURI', 'CREM') AND d_julianday1>0"
-					.' GROUP BY d_gid, d_file'
-				.' ) AS death USING (d_gid, d_file)'
+				.' ) AS birth USING (d_gid, d_file)'
 			.' JOIN `##individuals` ON (d_gid=i_id AND d_file=i_file)'
 			.' WHERE'
 				." i_file={$this->_ged_id} AND"
@@ -1429,7 +1426,6 @@ class stats {
 			.' ORDER BY'
 				.' age DESC'
 		, 1);
-		*/
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
 		$person=Person::getInstance($row['id']);
@@ -1844,7 +1840,8 @@ class stats {
 				$result="<a href=\"".encode_url($record->getLinkUrl())."\">".PrintReady($record->getFullName())."</a>";
 				break;
 			case 'place':
-				$result=format_fact_place($record->getFactByType($row['fact']), true, true, true);
+				$fact=$record->getFactByType($row['fact']);
+				$result=format_fact_place($fact, true, true, true);
 				break;
 		}
 		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
@@ -1892,6 +1889,7 @@ class stats {
 		if ($sex == 'F') {$sex_field = 'f_wife';}else{$sex_field = 'f_husb';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$rows=self::_runSQL(''
+		/* //old
 			.' SELECT'
 				.' fam.f_id AS famid,'
 				." fam.{$sex_field},"
@@ -1917,8 +1915,8 @@ class stats {
 				." i_sex='{$sex}'"
 			.' ORDER BY'
 				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
-			//testing
-			/*
+		*/
+		//testing
 			. 'SELECT'
 				.' fam.f_id AS famid,'
 				." fam.{$sex_field},"
@@ -1946,7 +1944,6 @@ class stats {
 				." i_sex='{$sex}'"
 			.' ORDER BY'
 				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
-			*/
 		, 1);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
