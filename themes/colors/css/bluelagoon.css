@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 8910 2010-06-20 12:04:23Z rob $
+* $Id: ash.css 8993 2010-06-28 23:46:13Z rob $
 */
 
 .something {
@@ -89,11 +89,9 @@ a:hover {
 color: red;
 text-decoration: none;
 }
-a.icon_small_theme:link {color: #ffffff;}
-a.icon_large_gedcom:link {color: #ffffff;}
-a.icon_language:link {color: #ffffff;}
-a.icon_color {color: #ffffff;}
 
+a.icon_small_theme:link, a.icon_large_gedcom:link, a.icon_language:link, a.icon_color  {color: #ffffff;}
+a.icon_small_theme:hover, a.icon_large_gedcom:hover, a.icon_language:hover, a.icon_color:hover  {color: red;}
 
 /*	Define Alert Color					*/
 
