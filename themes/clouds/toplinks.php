@@ -118,17 +118,16 @@ $menubar = new MenuBar();
 		</table>
 		</td>
 
-<?php if (empty($SEARCH_SPIDER)) { ?>
-		<td class="toplinks_right">
-		<div class="makeMenu" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
-		<?php echo MenuBar::getFavoritesMenu()->getMenuAsList();
+<?php if (empty($SEARCH_SPIDER)) {
+		echo '<td class="toplinks_right">';
+		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
+        echo MenuBar::getFavoritesMenu()->getMenuAsList();
 		global $ALLOW_THEME_DROPDOWN;
-				echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+		echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 		}
-
-		?>
+?>
 		</div>
 		</td>
 <?php } ?>
