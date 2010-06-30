@@ -149,6 +149,8 @@ padding-left: 10px;
 
 .toplinks_right {
 padding-right: 18px;
+white-space: nowrap;
+
 } 
 
 .icon, .adminicon {
