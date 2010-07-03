@@ -1,6 +1,7 @@
 /*
  * @version $Id: opera.css 4197 2008-10-30 12:24:13Z fisharebest $
  */
-#sidebar {  
-	margin-top: 12px !important;
-}
+
+#sidebar_pin img, #sidebar_open img {margin-top: 9px!important;}
+.ui-accordion .ui-accordion-header { margin-top: 10px!important; }
+
