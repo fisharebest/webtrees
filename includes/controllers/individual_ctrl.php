@@ -426,20 +426,21 @@ class IndividualController extends BaseController {
 		$dummy=new Person($factrec);
 		$dummy->setPrimaryName(0);
 		echo '<div id="name1">';
-			echo '<dt class="label">', i18n::translate('Name'), '</dt>';
+			echo '<dl><dt class="label">', i18n::translate('Name'), '</dt>';
 			echo '<span class="field">', PrintReady($dummy->getFullName());
 				if ($this->userCanEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>", help_link('delete_name');
 				}
 			echo '</span>';
+			echo '</dl>';
 		echo '</div>';
 		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
 		for($i=0; $i<$ct; $i++) {
 			echo '<div>';
 				$fact = trim($nmatch[$i][1]);
 				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")) {
-					echo '<dt class="label">', translate_fact($fact, $this->indi), '</dt>';
+					echo '<dl><dt class="label">', translate_fact($fact, $this->indi), '</dt>';
 					echo '<span class="field">';
 						if (isset($nmatch[$i][2])) {
 							$name = trim($nmatch[$i][2]);
@@ -452,6 +453,7 @@ class IndividualController extends BaseController {
 							echo PrintReady($name);
 						}
 					echo '</span>';
+					echo '</dl>';
 				}
 			echo '</div>';
 		}
@@ -488,8 +490,7 @@ class IndividualController extends BaseController {
 				echo ' class="nameblue"';
 			}
 			echo '>';
-			echo '<dl>';
-				echo '<dt class="label">', i18n::translate('Gender'), '</dt>';
+				echo '<dl><dt class="label">', i18n::translate('Gender'), '</dt>';
 				echo '<span class="field">', $this->sexarray[$sex];
 					if ($sex=='M') {
 						echo Person::sexImage('M', 'small', '', i18n::translate('Male'));
