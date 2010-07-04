@@ -128,6 +128,7 @@ $menubar = new MenuBar();
 			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 		}
 ?>
+		</ul>
 		</div>
 		</td>
 <?php } ?>

@@ -146,7 +146,7 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 			if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 				echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 			}
-		echo
+		echo 
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
@@ -156,7 +156,7 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 <?php
 		echo
 			'</form>',
-			'</ul></div>'; 
+			'</ui></div>'; 
 		}
 ?>
 </td>
