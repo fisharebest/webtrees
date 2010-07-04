@@ -1,16 +1,7 @@
 /*
  * @version $Id: mozilla.css 7170 2010-03-05 21:35:28Z rob $$
  */
-#pedigree_chart_rtl{
-	position:absolute;
-	right:20px;
-	top:120px;
-}
-.door dd {
-	-moz-border-radius-topleft: 0.6em;
-	-moz-border-radius-topright: 0.6em;
-}
 
 #sidebar {  
-	margin-top: 8px !important;
+	margin-top: 21px !important;
 }
