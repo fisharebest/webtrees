@@ -1164,6 +1164,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_SURNAME_LIST_STYLE" tabindex="<?php echo ++$i; ?>">
+								<option value="style1" <?php if ($SURNAME_LIST_STYLE=="style1") print "selected=\"selected\""; ?>><?php print i18n::translate('list'); ?></option>
 								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('table'); ?></option>
 								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('tag cloud'); ?></option>
 							</select>

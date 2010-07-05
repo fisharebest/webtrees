@@ -1234,7 +1234,7 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 				'options'=>array(
 					'htmlTags'=>array(),
 					'fontSizeUnit'=>'%',
-					'minFontSize'=>50,
+					'minFontSize'=>80,
 					'maxFontSize'=>250
 				)
 			),
@@ -1268,7 +1268,7 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 
 // Print a list of surnames.
 // @param $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
-// @param $style, 1=bullet list, 2=semicolon-separated list
+// @param $style, 1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
 // @param $totals, boolean, show totals after each name
 function format_surname_list($surnames, $style, $totals) {
 	global $TEXT_DIRECTION, $GEDCOM;
@@ -1311,6 +1311,29 @@ function format_surname_list($surnames, $style, $totals) {
 		return '<ul><li>'.implode('</li><li>', $html).'</li></ul>';
 	case 2:
 		return implode('; ', $html);
+	case 3:
+		$i = 0;
+		$count = count($html);
+		$count_indi = 0;
+		$col = 1;
+		if ($count>36) $col=4;
+		else if ($count>18) $col=3;
+		else if ($count>6) $col=2;
+		$newcol=ceil($count/$col);
+		$html2 ='<table class="list_table"><tr>';
+		$html2.='<td class="list_value" style="padding: 14px;">';
+		
+		foreach ($html as $surn=>$surns) {
+			$html2.= $surns.'<br />';
+			$i++;
+			if ($i==$newcol && $i<$count) {
+				$html2.='</td><td class="list_value" style="padding: 14px;">';
+				$newcol=$i+ceil($count/$col);
+			}
+		}
+		$html2.='</td></tr></table>';
+		
+		return $html2;
 	}
 }
 

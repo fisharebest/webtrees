@@ -210,6 +210,9 @@ if ($showList) {
 	if ($surname_sublist=='yes') {
 		// Show the surname list
 		switch ($SURNAME_LIST_STYLE) {
+		case 'style1';
+			echo format_surname_list($surns, 3, true);
+			break;
 		case 'style3':
 			echo format_surname_tagcloud($surns, 'indilist', true);
 			break;
