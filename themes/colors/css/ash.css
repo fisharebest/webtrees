@@ -91,7 +91,7 @@ text-decoration: none;
 }
 
 a.icon_small_theme:link, a.icon_large_gedcom:link, a.icon_language:link, a.icon_color  {color: #ffffff;}
-a.icon_small_theme:hover, a.icon_large_gedcom:hover, a.icon_language:hover, a.icon_color:hover  {color: red;}
+a.icon_small_theme:hover, a.icon_large_gedcom:hover, a.icon_language:hover, a.icon_color:hover  {color: #ff0000;}
 
 /*	Define Alert Color					*/
 
