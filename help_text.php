@@ -2250,7 +2250,7 @@ case 'HIDE_LIVE_PEOPLE':
         $title=i18n::translate('Enable privacy');
         $text=i18n::translate('This option will enable all privacy settings and hide the details of living people, as defined or modified on the Privacy tab of each GEDCOM\'s configuration page.');
         $text .= '<p>';
-		$text .= i18n::translate('Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth. ', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
+		$text .= i18n::plural('Note: "living" is defined (if no death or burial is known) as ending %d year after birth or estimated birth. ','Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth. ', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'),get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
 		$text .= i18n::translate('The length of time after birth can be set on the Privacy configuration tab option "Age at which to assume a person is dead". ');
 		$text .= i18n::translate('The detailed calculation of "estimated birth" can be read at <a href="http://wiki.webtrees.net/Privacy#Estimating_date_of_death">WIKI:Estimating age at death.</a>');
 		$text .= '</p>';
