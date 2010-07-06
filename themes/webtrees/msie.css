@@ -1,6 +1,11 @@
 /*
  * @version $Id: msie.css 4197 2008-10-30 12:24:13Z fisharebest $
  */
+ 
+ form { 
+	margin-top: 0px; margin-bottom: 0px;
+}
+
 .small_inner_block {
 	height: expression( this.scrollHeight > 199 ? "200px" : "auto" ); 
 }

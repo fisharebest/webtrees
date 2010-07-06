@@ -83,10 +83,6 @@ function showchanges() {
 }
 <?php } ?>
 
-//]]>
-</script>
-<script type="text/javascript">
-//<![CDATA[
 var tabCache = new Array();
 var pinned = false;
 
@@ -107,14 +103,15 @@ jQuery(document).ready(function(){
 	?>
 	});
 });
-
 //]]>
 </script>
+
 <style type="text/css">
 #pin {
 	float: <?php echo $TEXT_DIRECTION=='rtl'?'left':'right';?>;
 }
 </style>
+
 <div id="indi_main_blocks">
 	<?php
 		if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", i18n::translate('Changes successfully accepted into database'), "</b><br />";
