@@ -37,7 +37,7 @@ echo
 	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
 	'<head>',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="shortcut icon" href="', $FAVICON, '" type="image/x-icon">',
+	'<link rel="shortcut icon" href="', $FAVICON, '" type="image/x-icon" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
 
@@ -131,7 +131,7 @@ if ($view!='simple') {
 						'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '"',
 							'onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();"',
 							'onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-						'<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['search']['small'], '" height="17" align="top" title="', i18n::translate('Search'), '" />',	
+						'<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['search']['small'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',	
 					'</form>';
 				}
 			echo '</td>',
