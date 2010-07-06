@@ -1,6 +1,6 @@
 <?php
 /**
- * Footer for Standard theme
+ * Footer for webtrees theme
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -32,26 +32,29 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo "</div> <!-- closing div id=\"content\" -->";
-?>
-<div id="footer" class="<?php echo $TEXT_DIRECTION; ?>">
-<?php echo contact_links(); ?>
+echo '</div>';
+// closing div id=\"content\"
+echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
+	echo contact_links();
+	echo
+		'<br />',
+		'<div align="center" style="width:99%;">',
+			'<br />',
+			'<a href="', WT_WEBTREES_URL, ' target="_blank">',
+			'<img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['webtrees']['other'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"',
+				'title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" , '" /></a><br />',
+			'<br />';
 
-<br /><div align="center" style="width:99%;">
-<br />
-<a href="<?php echo WT_WEBTREES_URL; ?>" target="_blank">
-	<img src="<?php echo $WT_IMAGE_DIR, '/', $WT_IMAGES['webtrees']['other']; ?>" width="100" border="0" alt="<?php echo WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): ""; ?>"
-		title="<?php echo WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" ;?>" /></a><br />
-<br />
-<?php
-if ($SHOW_STATS || WT_DEBUG) {
-	echo execution_stats();
-}
-if (exists_pending_change()) {?>
-	<br />
-	<?php echo i18n::translate('Changes have been made to this GEDCOM.'); ?>
-	<a href="javascript:;" onclick="window.open('edit_changes.php', '_blank', 'width=600, height=500, resizable=1, scrollbars=1'); return false;">
-	<?php echo i18n::translate('Accept / Reject Changes'); ?></a>
-<?php } ?>
-</div>
-</div> <!-- close div id=\"footer\" -->
+			if ($SHOW_STATS || WT_DEBUG) {
+						echo execution_stats();
+			}
+			if (exists_pending_change()) {
+				echo '<br />';
+				echo i18n::translate('Changes have been made to this GEDCOM.');
+				echo '<a href="javascript:;" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+				echo i18n::translate('Accept / Reject Changes');
+				echo '</a>';
+			}
+	echo '</div>',
+'</div>'; // close div id=\"footer\"
+?>
