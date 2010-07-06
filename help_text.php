@@ -2247,10 +2247,15 @@ case 'HIDE_GEDCOM_ERRORS':
 	break;
 
 case 'HIDE_LIVE_PEOPLE':
-	$title=i18n::translate('Enable privacy');
-	$text=i18n::translate('This option will enable all privacy settings and hide the details of living people.<br /><br />Living people are defined to be those who do not have an event more recent than the number of years specified in variable $MAX_ALIVE_AGE.  For this purpose, births of children are considered to be such events as well.');
-	break;
-
+        $title=i18n::translate('Enable privacy');
+        $text=i18n::translate('This option will enable all privacy settings and hide the details of living people, as defined or modified on the Privacy tab of each GEDCOM\'s configuration page.');
+        $text .= '<p>';
+		$text .= i18n::translate('Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth. ', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
+		$text .= i18n::translate('The length of time after birth can be set on the Privacy configuration tab option "Age at which to assume a person is dead". ');
+		$text .= i18n::translate('The detailed calculation of "estimated birth" can be read at "WIKI PAGE URL".');
+		$text .= '<p>';
+        break;
+	
 case 'HOME_SITE_TEXT':
 	$title=i18n::translate('Main website text');
 	$text=i18n::translate('The legend used to identify the link to your main Home page.');
