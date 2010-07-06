@@ -2252,8 +2252,8 @@ case 'HIDE_LIVE_PEOPLE':
         $text .= '<p>';
 		$text .= i18n::translate('Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth. ', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
 		$text .= i18n::translate('The length of time after birth can be set on the Privacy configuration tab option "Age at which to assume a person is dead". ');
-		$text .= i18n::translate('The detailed calculation of "estimated birth" can be read at "WIKI PAGE URL".');
-		$text .= '<p>';
+		$text .= i18n::translate('The detailed calculation of "estimated birth" can be read at <a href="http://wiki.webtrees.net/Privacy#Estimating_date_of_death">WIKI:Estimating age at death.</a>');
+		$text .= '</p>';
         break;
 	
 case 'HOME_SITE_TEXT':
