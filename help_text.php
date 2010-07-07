@@ -2250,7 +2250,7 @@ case 'HIDE_LIVE_PEOPLE':
         $title=i18n::translate('Enable privacy');
         $text=i18n::translate('This option will enable all privacy settings and hide the details of living people, as defined or modified on the Privacy tab of each GEDCOM\'s configuration page.');
         $text .= '<p>';
-		$text .= i18n::plural('Note: "living" is defined (if no death or burial is known) as ending %d year after birth or estimated birth. ','Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'), get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
+		$text .= i18n::plural('Note: "living" is defined (if no death or burial is known) as ending %d year after birth or estimated birth.','Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'), get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
 		$text .= ' ';
 		$text .= i18n::translate('The length of time after birth can be set on the Privacy configuration tab option "Age at which to assume a person is dead".');
 		$text .= ' ';
@@ -2725,7 +2725,7 @@ case 'SUBLIST_TRIGGER_I':
 
 case 'SURNAME_LIST_STYLE':
 	$title=i18n::translate('Surname list style');
-	$text=i18n::translate('<p>Lists of surnames, as they appear in the Top 10 Surnames block, the Individual lists, and the Family lists, can be shown in different styles.</p><dl><dt>Table</dt><dd>In this style, the surnames are shown in a table that can be sorted either by surname or by count.</dd><dt>Tag cloud</dt><dd>In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.  The list is not sortable.</dd><dt>List</dt><dd>This is a simple list of names, with a count of each name , in a tabulated format of up to four columns</dd></dl>');
+	$text=i18n::translate('<p>Lists of surnames, as they appear in the Top 10 Surnames block, the Individual lists, and the Family lists, can be shown in different styles.</p><dl><dt>Table</dt><dd>In this style, the surnames are shown in a table that can be sorted either by surname or by count.</dd><dt>Tag cloud</dt><dd>In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.  The list is not sortable.</dd><dt>List</dt><dd>This is a simple list of names, with a count of each name, in a tabulated format of up to four columns</dd></dl>');
 	break;
 
 case 'SURNAME_TRADITION':
