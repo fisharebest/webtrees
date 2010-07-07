@@ -202,15 +202,19 @@ class MediaController extends BaseController{
 		
 		if (WT_USER_CAN_EDIT) {
 			//- plain edit option
-			$submenu = new Menu(i18n::translate('Edit'));
+			$submenu = new Menu(i18n::translate('Edit media'));
 			$click_link = "window.open('addmedia.php?action=editmedia&pid={$this->pid}&linktoid={$linktoid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')";
 			$submenu->addOnclick($click_link);
+			if (!empty($WT_IMAGES["edit_media"]["small"]))
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 
 			if ($SHOW_GEDCOM_RECORD || WT_USER_IS_ADMIN) {
 				$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 				$submenu->addOnclick("return edit_raw('".$this->pid."');");
+				if (!empty($WT_IMAGES["edit_media"]["small"]))
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 				$menu->addSubmenu($submenu);
 			}
@@ -220,6 +224,8 @@ class MediaController extends BaseController{
 				$submenu = new Menu(i18n::translate('Remove object'));
 				$submenu->addLink(encode_url("media.php?action=removeobject&xref=".$this->pid));
 				$submenu->addOnclick("return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."')");
+				if (!empty($WT_IMAGES["edit_media"]["small"]))
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 				$menu->addSubmenu($submenu);
 			}
@@ -234,7 +240,9 @@ class MediaController extends BaseController{
 			// GEDFact assistant Add Media Links =======================
 			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','manage');");
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+				if (!empty($WT_IMAGES["edit_media"]["small"]))
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
+					$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 				// Do not print ssubmunu
 			} else {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','person');");
