@@ -86,16 +86,10 @@ $WT_IMAGES["tree"]["small"] = "small/gedcom.gif";
 
 //- PGV buttons for data entry pages
 $WT_IMAGES["addmedia"]["button"] = "buttons/addmedia.gif";
-// $WT_IMAGES["addrepository"]["button"] = "buttons/addrepository.gif";
 $WT_IMAGES["addsource"]["button"] = "buttons/addsource.gif";
 $WT_IMAGES["addnote"]["button"] = "buttons/addnote.gif";
-// $WT_IMAGES["calendar"]["button"] = "buttons/calendar.gif";
-// $WT_IMAGES["family"]["button"] = "buttons/family.gif";
-// $WT_IMAGES["indi"]["button"] = "buttons/indi.gif";
 $WT_IMAGES["keyboard"]["button"] = "buttons/keyboard.gif";
 $WT_IMAGES["media"]["button"] = "buttons/media.gif";
-// $WT_IMAGES["place"]["button"] = "buttons/place.gif";
-// $WT_IMAGES["repository"]["button"] = "buttons/repository.gif";
 $WT_IMAGES["source"]["button"] = "buttons/source.gif";
 $WT_IMAGES["note"]["button"] = "buttons/note.gif";
 $WT_IMAGES["head"]["button"] = "buttons/head.gif";

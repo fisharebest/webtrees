@@ -192,9 +192,14 @@ class MediaController extends BaseController{
 		$menu = new Menu(i18n::translate('Edit'));
 		$click_link = "window.open('addmedia.php?action=editmedia&pid={$this->pid}&linktoid={$linktoid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')";
 		$menu->addOnclick($click_link);
-		if (!empty($WT_IMAGES["edit_indi"]["small"]))
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+		if (!empty($WT_IMAGES["edit_media"]["large"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["large"]);
+		}
+		else if (!empty($WT_IMAGES["edit_media"]["small"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
+		}
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+		
 		if (WT_USER_CAN_EDIT) {
 			//- plain edit option
 			$submenu = new Menu(i18n::translate('Edit'));

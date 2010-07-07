@@ -180,20 +180,24 @@ class NoteController extends BaseController {
 		}
 
 		// edit shared note menu
-		$menu = new Menu(i18n::translate('Edit Shared Note'));
+		$menu = new Menu(i18n::translate('Edit'));
 		if ($SHOW_GEDCOM_RECORD || WT_USER_IS_ADMIN)
 			$menu->addOnclick('return edit_note(\''.$this->nid.'\');');
-		if (!empty($WT_IMAGES["notes"]["small"]))
-			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		if (!empty($WT_IMAGES["edit_note"]["large"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_note"]["large"]);
+		}
+		else if (!empty($WT_IMAGES["edit_note"]["small"])) {
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_note"]["small"]);
+		}
+		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 
 		// edit shared note / edit_raw
 		if ($SHOW_GEDCOM_RECORD || WT_USER_IS_ADMIN) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->nid."');");
 			if (!empty($WT_IMAGES["notes"]["small"]))
-				$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 			$menu->addSubmenu($submenu);
 		}
 
@@ -201,8 +205,8 @@ class NoteController extends BaseController {
 		$submenu = new Menu(i18n::translate('Delete this Shared Note'));
 		$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Shared Note?')."')) return deletenote('".$this->nid."'); else return false;");
 		if (!empty($WT_IMAGES["notes"]["small"]))
-			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
-		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
+		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 		$menu->addSubmenu($submenu);
 
 		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
@@ -217,15 +221,15 @@ class NoteController extends BaseController {
 				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), encode_url("note.php?nid={$this->nid}&show_changes=yes"));
 				if (!empty($WT_IMAGES["notes"]["small"]))
 					$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 				$menu->addSubmenu($submenu);
 			}
 			else
 			{
 				$submenu = new Menu(i18n::translate('Click here to hide changes.'), encode_url("note.php?nid={$this->nid}&show_changes=no"));
 				if (!empty($WT_IMAGES["notes"]["small"]))
-					$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
+				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 				$menu->addSubmenu($submenu);
 			}
 
@@ -235,12 +239,12 @@ class NoteController extends BaseController {
 				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("note.php?nid={$this->nid}&action=undo"));
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 				if (!empty($WT_IMAGES["notes"]["small"]))
-					$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
 				$menu->addSubmenu($submenu);
 				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("note.php?nid={$this->nid}&action=accept"));
 				if (!empty($WT_IMAGES["notes"]["small"]))
-					$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['notes']['small']}");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
+				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 				$menu->addSubmenu($submenu);
 			}
 		}

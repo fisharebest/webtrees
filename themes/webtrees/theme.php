@@ -70,6 +70,8 @@ $WT_IMAGES["sexf"]["large"] = "female.gif";
 $WT_IMAGES["sexn"]["large"] = "fe_male.gif";
 $WT_IMAGES["edit_indi"]["large"] = "edit_indi.png";
 $WT_IMAGES["edit_fam"]["large"] = "edit_fam.png";
+$WT_IMAGES["edit_media"]["large"] = "edit_media.png";
+$WT_IMAGES["edit_note"]["large"] = "edit_note.png";
 $WT_IMAGES["edit_source"]["large"] = "edit_source.png";
 $WT_IMAGES["edit_repo"]["large"] = "edit_repo.png";
 

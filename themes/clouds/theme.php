@@ -75,6 +75,8 @@ $WT_IMAGES["edit_source"]["large"] = "small/edit_sour.gif";
 
 $WT_IMAGES["edit_fam"]["large"] = "edit_fam.gif";
 $WT_IMAGES["edit_indi"]["large"] = "edit_indi.gif";
+$WT_IMAGES["edit_media"]["large"] = "edit_indi.gif";
+$WT_IMAGES["edit_note"]["large"] = "edit_indi.gif";
 $WT_IMAGES["edit_sour"]["large"] = "edit_sour.gif";
 $WT_IMAGES["edit_repo"]["large"] = "Sedit_repo.gif";
 
