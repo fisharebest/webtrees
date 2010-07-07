@@ -2102,9 +2102,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'browifsis': return i18n::translate_c('brother\'s wife\'s sister',        'sister-in-law');
 	case 'chichichi': return i18n::translate_c('child\'s child\'s child',          'great-grandchild');
 	case 'chichidau': return i18n::translate_c('child\'s child\'s daughter',       'great-granddaughter');
-	case 'chichihus': return i18n::translate_c('child\'s child\'s husband',        'grandchild\'s husband');
 	case 'chichison': return i18n::translate_c('child\'s child\'s son',            'great-grandson');
-	case 'chichiwif': return i18n::translate_c('child\'s child\'s wife',           'grandchild\'s wife');
 	case 'chidauchi': return i18n::translate_c('child\'s daughter\'s child',       'great-grandchild');
 	case 'chidaudau': return i18n::translate_c('child\'s daughter\'s daughter',    'great-granddaughter');
 	case 'chidauhus': return i18n::translate_c('child\'s daughter\'s husband',     'granddaughter\'s husband');
@@ -2118,9 +2116,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 //case 'chispopar': return i18n::translate_c('child\'s spouse\'s parent',        'daughter/son-in-law\'s parent');
 	case 'dauchichi': return i18n::translate_c('daughter\'s child\'s child',       'great-grandchild');
 	case 'dauchidau': return i18n::translate_c('daughter\'s child\'s daughter',    'great-granddaughter');
-	case 'dauchihus': return i18n::translate_c('daughter\'s child\'s husband',     'grandchild\'s husband');
 	case 'dauchison': return i18n::translate_c('daughter\'s child\'s son',         'great-grandson');
-	case 'dauchiwif': return i18n::translate_c('daughter\'s child\'s wife',        'grandchild\'s wife');
 	case 'daudauchi': return i18n::translate_c('daughter\'s daughter\'s child',    'great-grandchild');
 	case 'daudaudau': return i18n::translate_c('daughter\'s daughter\'s daughter', 'great-granddaughter');
 	case 'daudauhus': return i18n::translate_c('daughter\'s daughter\'s husband',  'granddaughter\'s husband');
@@ -2255,9 +2251,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'sissonwif': return i18n::translate_c('sisters\'s son\'s wife',           'niece-in-law');
 	case 'sonchichi': return i18n::translate_c('son\'s child\'s child',            'great-grandchild');
 	case 'sonchidau': return i18n::translate_c('son\'s child\'s daughter',         'great-granddaughter');
-	case 'sonchihus': return i18n::translate_c('son\'s child\'s husband',          'grandchild\'s husband');
 	case 'sonchison': return i18n::translate_c('son\'s child\'s son',              'great-grandson');
-	case 'sonchiwif': return i18n::translate_c('son\'s child\'s wife',             'grandchild\'s wife');
 	case 'sondauchi': return i18n::translate_c('son\'s daughter\'s child',         'great-grandchild');
 	case 'sondaudau': return i18n::translate_c('son\'s daughter\'s daughter',      'great-granddaughter');
 	case 'sondauhus': return i18n::translate_c('son\'s daughter\'s husband',       'granddaughter\'s husband');
