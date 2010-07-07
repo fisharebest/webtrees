@@ -361,7 +361,7 @@ class AdvancedSearchController extends SearchController {
 					}
 					else $this->fields[$j] = preg_replace("/^".$parts[0].":/","", $this->fields[$j]);
 				}
-				$sqlwhere .= " AND (FAMC.f_chil LIKE CONCAT('%',i_id,';%'))";
+				$sqlwhere .= " AND (FAMC.f_gedcom LIKE CONCAT('%1 CHIL @',i_id,'@%'))";
 				$subsql = $this->advancedSearch(true,"families","f");
 				$sqlwhere .= " AND ROW(FAMC.f_id, FAMC.f_file) IN (".$subsql.")";
 				$this->fields = $oldfields;

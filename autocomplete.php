@@ -594,7 +594,7 @@ function get_autocomplete_FAM($FILTER, $ids, $ged_id=WT_GED_ID) {
 	$vars[]=$ged_id;
 	return
 		WT_DB::prepare(
-			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil".
+			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil".
 			" FROM `##families`".
 			" WHERE {$where} AND f_file=?".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
@@ -666,7 +666,7 @@ function get_autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 function get_autocomplete_FAM_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare(
-			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil".
+			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil".
 			" FROM `##families`".
 			" WHERE f_gedcom LIKE ? AND f_file=?".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT

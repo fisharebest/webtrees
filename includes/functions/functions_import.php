@@ -592,7 +592,7 @@ function import_record($gedrec, $ged_id, $update) {
 			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom) VALUES (?,?,?,?,?,?)"
 		);
 		$sql_insert_fam=WT_DB::prepare(
-			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_chil, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?,?)"
+			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?)"
 		);
 		$sql_insert_sour=WT_DB::prepare(
 			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom, s_dbid) VALUES (?,?,?,?,?)"
@@ -702,7 +702,7 @@ function import_record($gedrec, $ged_id, $update) {
 		if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
 			$nchi=max($nchi, $match[1]);
 		}
-		$sql_insert_fam->execute(array($xref, $ged_id, $husb, $wife, $chil, $gedrec, $nchi));
+		$sql_insert_fam->execute(array($xref, $ged_id, $husb, $wife, $gedrec, $nchi));
 		break;
 	case 'SOUR':
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {

@@ -236,7 +236,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$vars=array_merge($vars, $ids, $ids);
 		}
 
-		$sql="SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_chil, f_numchil FROM `##families` WHERE {$where} AND f_file=?";
+		$sql="SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` WHERE {$where} AND f_file=?";
 		$vars[]=WT_GED_ID;
 		$rows=
 		WT_DB::prepareLimit($sql, WT_AUTOCOMPLETE_LIMIT)

@@ -724,7 +724,6 @@ try {
 		" f_file    INTEGER      NOT NULL,".
 		" f_husb    VARCHAR(20)      NULL,".
 		" f_wife    VARCHAR(20)      NULL,".
-		" f_chil    TEXT             NULL,".
 		" f_gedcom  MEDIUMTEXT   NOT NULL,".
 		" f_numchil INTEGER      NOT NULL,".
 		" PRIMARY KEY     (f_id, f_file),".

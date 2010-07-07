@@ -57,8 +57,8 @@ class Family extends GedcomRecord {
 			if ($data['f_wife']) {
 				$this->wife=Person::getInstance($data['f_wife']);
 			}
-			if (strpos($data['f_chil'], ';')) {
-				$this->childrenIds=explode(';', trim($data['f_chil'], ';'));
+			if (preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $data['gedrec'], $matches)) {
+				$this->childrenIds=$matches[1];
 			}
 			$this->numChildren=$data['f_numchil'];
 			// Check for divorce, etc. *before* we privatize the data so
