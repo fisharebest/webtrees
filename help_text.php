@@ -2171,10 +2171,10 @@ case 'DISPLAY_JEWISH_THOUSANDS':
 	$text=i18n::translate('Show Alafim in Hebrew calendars.<br /><br />Setting this to <b>Yes</b> will display the year 1969 as <span lang="he-IL" dir=\'rtl\'>&#1492;\'&#160;&#1514;&#1513;&#1499;&quot;&#1496;</span>&lrm; while setting it to <b>No</b> will display the year as <span lang="he-IL" dir=\'rtl\'>&#1514;&#1513;&#1499;&quot;&#1496;</span>&lrm;.  This has no impact on the Jewish year setting.  The year will display as 5729 regardless of this setting.<br /><br />Note: This setting is similar to the PHP 5.0 Calendar constant CAL_JEWISH_ADD_ALAFIM.');
 	break;
 
-case 'EDIT_AUTOCLOSE':
-	$title=i18n::translate('Autoclose edit window');
-	$text=i18n::translate('This option controls whether or not to automatically close the Edit window after a successful update.');
-	break;
+//case 'EDIT_AUTOCLOSE':
+//	$title=i18n::translate('Autoclose edit window');
+//	$text=i18n::translate('This option controls whether or not to automatically close the Edit window after a successful update.');
+//	break;
 
 case 'ENABLE_AUTOCOMPLETE':
 	$title=i18n::translate('Enable autocomplete');

@@ -150,7 +150,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', safe_POST('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_GERESHAYIM',    safe_POST_bool('NEW_DISPLAY_JEWISH_GERESHAYIM'));
 	set_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_THOUSANDS',     safe_POST_bool('NEW_DISPLAY_JEWISH_THOUSANDS'));
-	set_gedcom_setting(WT_GED_ID, 'EDIT_AUTOCLOSE',               safe_POST_bool('NEW_EDIT_AUTOCLOSE'));
+	//set_gedcom_setting(WT_GED_ID, 'EDIT_AUTOCLOSE',               safe_POST_bool('NEW_EDIT_AUTOCLOSE'));
 	set_gedcom_setting(WT_GED_ID, 'ENABLE_AUTOCOMPLETE',          safe_POST_bool('NEW_ENABLE_AUTOCOMPLETE'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 safe_POST_bool('NEW_EXPAND_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      safe_POST_bool('NEW_EXPAND_RELATIVES_EVENTS'));
@@ -1703,14 +1703,14 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php print i18n::translate('Other settings'); ?>
 					</td>
 				</tr>
-				<tr>
+<!--				<tr>
 					<td class="descriptionbox nowrap">
-						<?php echo i18n::translate('Autoclose edit window'), help_link('EDIT_AUTOCLOSE'); ?>
+						<?php //echo i18n::translate('Autoclose edit window'), help_link('EDIT_AUTOCLOSE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<?php echo edit_field_yes_no('NEW_EDIT_AUTOCLOSE', get_gedcom_setting(WT_GED_ID, 'EDIT_AUTOCLOSE'), 'tabindex="'.(++$i).'"'); ?>
+						<?php //echo edit_field_yes_no('NEW_EDIT_AUTOCLOSE', get_gedcom_setting(WT_GED_ID, 'EDIT_AUTOCLOSE'), 'tabindex="'.(++$i).'"'); ?>
 					</td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td class="descriptionbox nowrap">
 						<?php echo i18n::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?>

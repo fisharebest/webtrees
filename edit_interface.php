@@ -1480,7 +1480,8 @@ case 'update':
 		}
 		
 		replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
-		echo "<br /><br />", i18n::translate('Update successful'), " - ", $pid;
+		$success = true;
+		//echo "<br /><br />", i18n::translate('Update successful'), " - ", $pid;
 	} // end foreach $cens_pids  -------------
 	break;
 
@@ -2661,8 +2662,8 @@ if (empty($goto) || empty($link)) {
 	$link='';
 }
 
-// autoclose window when update successful  ==== 
-if ($success && $EDIT_AUTOCLOSE && !WT_DEBUG ) {
+// autoclose window when update successful unless debug on
+if ($success && !WT_DEBUG ) {
 	echo WT_JS_START;
 	if ($action=="copy") {
 		echo "window.close();";
@@ -2675,7 +2676,7 @@ if ($success && $EDIT_AUTOCLOSE && !WT_DEBUG ) {
 	echo WT_JS_END;
 }
 
-// Decide whether to print footer or not ================================================
+// Decide whether to print footer or not
 if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	// Do not print footer.
 	echo "<br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div>\n";

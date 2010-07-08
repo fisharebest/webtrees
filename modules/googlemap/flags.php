@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-global $countries, $EDIT_AUTOCLOSE;
+global $countries;
 $action=safe_REQUEST($_REQUEST, 'action');
 
 if (isset($_REQUEST['countrySelected'])) $countrySelected = $_REQUEST['countrySelected'];
@@ -92,7 +92,8 @@ if ($action == "ChangeFlag") {
 	//-->
 	</script>
 <?php
-	if ($EDIT_AUTOCLOSE && !WT_DEBUG) {
+	// autoclose window when update successful unless debug on
+	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", i18n::translate('Close Window'), "</a></div><br />\n";

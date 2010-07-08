@@ -35,7 +35,6 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-global $EDIT_AUTOCLOSE;
 $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
@@ -101,7 +100,8 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 		$statement->execute(array(getHighestIndex()+1, $placeid, $level, stripLRMRLM($_POST['NEW_PLACE_NAME']), $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 	}
 
-	if ($EDIT_AUTOCLOSE && !WT_DEBUG) {
+	// autoclose window when update successful unless debug on
+	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
@@ -119,7 +119,8 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 		$statement->execute(array(stripLRMRLM($_POST['NEW_PLACE_NAME']), $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 	}
 
-	if ($EDIT_AUTOCLOSE && !WT_DEBUG) {
+	// autoclose window when update successful unless debug on
+	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
