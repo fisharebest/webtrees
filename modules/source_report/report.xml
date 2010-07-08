@@ -99,7 +99,7 @@
 						</if>
 
 						<!-- Name of the fact that contains the source -->
-						<Cell style="list_value" width="$fact"><var var="i18n::translate('@fact')"/></Cell>
+						<Cell style="list_value" width="$fact"><var var="@fact" /></Cell>
 						<!-- Date of the fact -->
 						<Cell style="list_value" width="$dateevent"><GedcomValue tag="@fact:DATE"/></Cell>
 						<!-- Detailed source text -->
@@ -180,7 +180,7 @@
 							<if condition="@fact=='MARR'">
 								<!-- Print different type of marriages -->
 								<if condition="@MARR:TYPE==''">
-									<var var="i18n::translate('@fact')"/>
+									<var var="@fact" />
 								</if>
 								<if condition="@MARR:TYPE=='Religious'">
 									<var var="i18n::translate('Religious marriage')" />
@@ -193,7 +193,7 @@
 								</if>
 							</if>
 							<if condition="@fact!='MARR'">
-								<var var="i18n::translate('@fact')"/>
+								<var var="@fact" />
 							</if>
 						</Cell>
 

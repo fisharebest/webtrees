@@ -81,7 +81,7 @@
 					<TextBox height="12" width="$datewidth">
 						<Facts ignore="CHAN" families="0" diff="true">
 							<Text style="text">
-								<var var="i18n::translate('@fact')" /> <GedcomValue tag="@fact:DATE" /><br />
+								<var var="@fact" /> <GedcomValue tag="@fact:DATE" /><br />
 							</Text>
 						</Facts>
 					</TextBox>

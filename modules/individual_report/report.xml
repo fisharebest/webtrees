@@ -94,7 +94,7 @@
 				</TextBox>
 				<Facts ignore="$ignore" families="1">
 					<TextBox border="1" width="$dwidth" height="16">
-						<Text style="pagenum"><var var="i18n::translate('@fact')" />  </Text>
+						<Text style="pagenum"><var var="@fact" />  </Text>
 						<Text style="text"><GedcomValue tag="@fact:DATE" /> </Text>
 						<!-- look for fact level 2 sources -->
 						<if condition="$sources==1">

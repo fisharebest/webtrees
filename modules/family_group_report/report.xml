@@ -198,7 +198,7 @@
 					<!-- print all of the other facts -->
 					<Facts ignore="$ignore">
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('@fact')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="@fact:SOUR">
@@ -311,7 +311,7 @@
 						<!-- print all of the other family facts -->
 						<Facts ignore="$ignore">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('@fact')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="@fact:SOUR">
@@ -447,7 +447,7 @@
 					<!-- print all of the other facts -->
 					<Facts ignore="$ignore">
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('@fact')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="@fact:SOUR">
@@ -681,7 +681,7 @@
 						<!-- print the rest of the facts -->
 						<Facts ignore="$ignore">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('@fact')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="@fact" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="@fact:SOUR">
