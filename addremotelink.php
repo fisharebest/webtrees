@@ -274,7 +274,7 @@ if (!$success) {
 }
 
 // autoclose window when update successful unless debug on
-if ($success !WT_DEBUG ) {
+if ($success && !WT_DEBUG ) {
 	echo WT_JS_START, 'edit_close();', WT_JS_END;
 } else {
 	echo '<div class="center"><a href="javascript://', i18n::translate('Close Window'), '" onclick="edit_close();">', i18n::translate('Close Window'), '</a></div>';
