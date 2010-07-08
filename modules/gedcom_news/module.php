@@ -173,7 +173,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		if (empty ($config)) $config = $WT_BLOCKS["print_gedcom_news"]["config"];
 		if (!isset ($config["limit"])) $config["limit"] = "nolimit";
 		if (!isset ($config["flag"])) $config["flag"] = 0;
-		if (!isset($config["cache"])) $config["cache"] = $WT_BLOCKS["print_gedcom_news"]["config"]["cache"];
 
 		// Limit Type
 		echo
@@ -190,14 +189,5 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Limit:'), help_link('gedcom_news_flag');
 		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$config['flag'].'" /></td></tr>';
-
-		// Cache file life
-		if ($ctype=="gedcom") {
-			echo '<tr><td class="descriptionbox wrap width33">';
-			echo i18n::translate('Cache file life'), help_link('cache_life');
-			echo '</td><td class="optionbox">';
-			echo '<input type="text" name="cache" size="2" value="', $config['cache'], '" />';
-			echo "</td></tr>";
-		}
 	}
 }

@@ -32,7 +32,6 @@
 
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/index_cache.php';
 
 $ctype=safe_REQUEST($_REQUEST, 'ctype', array('user', 'gedcom'));
 
@@ -136,12 +135,6 @@ if ($action=='update') {
 	exit;
 }
 
-if ($action=="clearcache") {
-	clearCache();
-	echo "<span class=\"warning\">".i18n::translate('The cache files have been removed.')."</span><br /><br />";
-}
-
-//var_dump($blocks);die("eek");
 if ($action=="configure") {
 	if (array_key_exists($block_id, $blocks['main'])) {
 		$block_name=$blocks['main'][$block_id];
@@ -418,10 +411,6 @@ if ($action=="configure") {
 		echo help_link('block_default_portal');
 	} else {
 		echo help_link('block_default_index');
-	}
-	if (WT_USER_GEDCOM_ADMIN && $ctype!="user") {
-		echo "<input type =\"button\" value=\"".i18n::translate('Clear cache files')."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=clearcache&amp;name=".str_replace("'", "\'", $name)."';\" />";
-		echo help_link('clear_cache');
 	}
 	echo "&nbsp;&nbsp;";
 	echo "<input type=\"button\" value=\"".i18n::translate('Save')."\" onclick=\"select_options(); save_form();\" />\n";

@@ -37,7 +37,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_IMPORT_PHP', '');
 
-require_once WT_ROOT.'includes/index_cache.php';
 require_once WT_ROOT.'includes/classes/class_media.php';
 require_once WT_ROOT.'includes/functions/functions_lang.php';
 require_once WT_ROOT.'includes/functions/functions_export.php';
@@ -1179,9 +1178,6 @@ function empty_database($ged_id, $keepmedia) {
 		WT_DB::prepare("DELETE FROM `##media`         WHERE m_gedfile =?")->execute(array($ged_id));
 		WT_DB::prepare("DELETE FROM `##media_mapping` WHERE mm_gedfile=?")->execute(array($ged_id));
 	}
-
-	//-- clear all of the cache files for this gedcom
-	clearCache();
 }
 
 // Accept all pending changes for a specified record

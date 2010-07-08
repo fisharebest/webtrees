@@ -375,10 +375,6 @@ case 'update':
 
 	}
 
-	//-- delete the cache files for the Home Page blocks
-	require_once WT_ROOT.'includes/index_cache.php';
-	clearCache();
-
 	if (!$errors) {
 		$gednews = getUserNews(WT_GEDCOM);
 		if (count($gednews)==0) {

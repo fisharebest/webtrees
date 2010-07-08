@@ -30,7 +30,6 @@
 
 define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/index_cache.php';
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 if (isset($_REQUEST['ctype'])) $ctype = $_REQUEST['ctype'];
@@ -61,12 +60,6 @@ if ($ctype=='user') {
 	$blocks=get_user_blocks(WT_USER_ID);
 } else {
 	$blocks=get_gedcom_blocks(WT_GED_ID);
-}
-
-//-- clear the GEDCOM cache files
-if (!empty($_SESSION['clearcache'])) {
-	$_SESSION['clearcache'] = false;
-	clearCache();
 }
 
 // We have finished writing to $_SESSION, so release the lock

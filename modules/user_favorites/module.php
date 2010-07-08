@@ -82,7 +82,6 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					}
 					if ($favtype=='gedcom') {
 						$favtype = $GEDCOM;
-						$_SESSION['clearcache'] = true;
 					}
 					else $favtype=WT_USER_NAME;
 					$favorite['username'] = $favtype;
@@ -105,7 +104,6 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				if ($favtype=='gedcom') {
 					$favtype = $GEDCOM;
-					$_SESSION['clearcache'] = true;
 				}
 				else $favtype=WT_USER_NAME;
 				$favorite['username'] = $favtype;

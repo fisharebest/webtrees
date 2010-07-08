@@ -110,7 +110,6 @@ if ($action=="compose") {
 		$message["id"]=$news_id;
 	}
 	$message["username"] = $username;
-	if ($username==$GEDCOM) $_SESSION['clearcache'] = true;
 	$message["date"]=$date;
 	$message["title"] = $title;
 	$message["text"] = $text;
