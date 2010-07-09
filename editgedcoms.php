@@ -351,11 +351,14 @@ if (WT_USER_IS_ADMIN) {
 		'</tr></table><br/>';
 		
 		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-		if (count($gedcoms) == 0) {//needs to check no. of users = 1 as well
-			echo '<div class="center">';
-				echo '<a style="color:green; font-weight:bold;" href="pgv_to_wt.php">', i18n::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'), '</a>' ,help_link('PGV_WIZARD');
-			echo '</div>';
-		}
-		
+		if (count($gedcoms)==0 && get_user_count()==1) {
+			echo
+				'<div class="center">',
+				'<a style="color:green; font-weight:bold;" href="pgv_to_wt.php">',
+				i18n::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
+				'</a>',
+				help_link('PGV_WIZARD'),
+				'</div>';
+		}		
 }
 print_footer();
