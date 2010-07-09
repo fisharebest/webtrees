@@ -43,7 +43,7 @@ print_header(i18n::translate('PGV to webtrees transfer wizard'));
 echo
 	'<style type="text/css">
 		#container {width: 70%; margin:15px auto; border: 1px solid gray; padding: 10px;}
-		#container dl {margin:0 0 50px 25px;}
+		#container dl {margin:0 0 40px 25px;}
 		#container dt {display:inline; width: 320px; font-weight:normal;}
 		#container dd {color: #81A9CB; margin-bottom:20px;font-weight:bold;}
 		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;
@@ -58,24 +58,24 @@ echo '<div id="container">';
 	echo '<h2>', i18n::translate('PGV to webtrees transfer wizard'), '</h2>';
 	// Check pre-requisites
 	echo
-		'<p>', i18n::translate('Minimum requirements:'), '</p>',
+		'<p>', i18n::translate('Minimum requirements (tick box to confirm):'), '</p>',
 		'<dl>',
 			'<dt>', i18n::translate('<b>webtrees</b> database must be on the same server as PGV\'s'), '</dt>',
-				'<dd>', edit_field_yes_no('K', get_gedcom_setting(WT_GED_ID, 'L')),'</dd>',
+				'<dd>', checkbox('server', get_user_setting(WT_USER_ID, 'server')),'</dd>',
 			'<dt>', i18n::translate('PGV must be version 4.2.3, or any SVN up to #6973'), '</dt>',
-				'<dd>', edit_field_yes_no('A', get_gedcom_setting(WT_GED_ID, 'B')),'</dd>',
+				'<dd>', checkbox('version', get_gedcom_setting(WT_GED_ID, 'version')),'</dd>',
 			'<dt>', i18n::translate('All changes in PGV must be accepted'), '</dt>',
-				'<dd>', edit_field_yes_no('C', get_gedcom_setting(WT_GED_ID, 'D')), '</dd>',
+				'<dd>', checkbox('changes', get_gedcom_setting(WT_GED_ID, 'changes')), '</dd>',
 			'<dt>', i18n::translate('You must export your latest GEDCOM data'), '</dt>',
-				'<dd>', edit_field_yes_no('E', get_gedcom_setting(WT_GED_ID, 'F')), '</dd>',
+				'<dd>', checkbox('export', get_gedcom_setting(WT_GED_ID, 'export')), '</dd>',
 			'<dt>', i18n::translate('The current <b>webtrees</b> admin username must be the same as an existing PGV admin username'), '</dt>',
-				'<dd>', edit_field_yes_no('G', get_gedcom_setting(WT_GED_ID, 'H')), '</dd>',
+				'<dd>', checkbox('user', get_gedcom_setting(WT_GED_ID, 'user')), '</dd>',
 			'<dt>', i18n::translate('All existing PGV users must have distinct email addresses'), '</dt>',
-				'<dd>', edit_field_yes_no('I', get_gedcom_setting(WT_GED_ID, 'J')), '</dd>',
+				'<dd>', checkbox('email', get_gedcom_setting(WT_GED_ID, 'email')), '</dd>',
 		'</dl>';
 	// Get basic details
 	echo
-		'<p>', i18n::translate('Essential details:'), '</p>',
+		'<p>', i18n::translate('Essential details (change as necessary):'), '</p>',
 		'<dl>',
 			'<dt>',i18n::translate('PGV Database name'), '</dt>',
 				'<dd><input type="text" name="dbname" value="phpgedview"><dd>',
@@ -86,15 +86,15 @@ echo '<div id="container">';
 		'</dl>';
 	// Get media options
 	echo
-		'<p>', i18n::translate('Media item options:'), '</p>',
+		'<p>', i18n::translate('Media item options (select one):'), '</p>',
 		'<dl>',
 			'<dt>',i18n::translate('Use existing PGV media directory for <b>webtrees</b>'), '</dt>',
-				'<dd>', edit_field_yes_no('M', get_gedcom_setting(WT_GED_ID, 'N')), '</dd>',
+				'<dd>', edit_field_yes_no('media', get_gedcom_setting(WT_GED_ID, 'media')), '</dd>',
 			'<dt>',i18n::translate('Copy media from PGV media directory to <b>webtrees</b> media directory'), '</dt>',
-				'<dd>', edit_field_yes_no('O', get_gedcom_setting(WT_GED_ID, 'P')), '</dd>',
+				'<dd>', edit_field_yes_no('media', get_gedcom_setting(WT_GED_ID, 'media')), '</dd>',
 			'<dt>',i18n::translate('Move media from PGV media directory to <b>webtrees</b> media directory'), '</dt>',
-				'<dd>', edit_field_yes_no('Q', get_gedcom_setting(WT_GED_ID, 'R')), '</dd>',
+				'<dd>', edit_field_yes_no('media', get_gedcom_setting(WT_GED_ID, 'media')), '</dd>',
 		'</dl>';
 	// Finish
-	echo '<input type="submit" value="'.i18n::translate('Finish').'">';
+	echo '<div class="center"><input type="submit" value="'.i18n::translate('Finish').'"></div>';
 echo '</div>';
