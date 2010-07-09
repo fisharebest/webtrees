@@ -531,4 +531,120 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
+echo '<p>pgv_dates => wt_dates ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##dates` (d_day, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type)".
+	" SELECT d_day, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM {$DBNAME}.{$TBLPREFIX}dates"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_families => wt_families ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil)".
+	" SELECT f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil FROM {$DBNAME}.{$TBLPREFIX}families"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_individuals => wt_individuals ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom)".
+	" SELECT i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom FROM {$DBNAME}.{$TBLPREFIX}individuals"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_link => wt_link ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##link` (l_file, l_from, l_type, l_to)".
+	" SELECT l_file, l_from, l_type, l_to FROM {$DBNAME}.{$TBLPREFIX}link"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_media => wt_media ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##media` (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec)".
+	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec FROM {$DBNAME}.{$TBLPREFIX}media"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_media_mapping => wt_media_mapping ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##media_mapping` (mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec)".
+	" SELECT mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec FROM {$DBNAME}.{$TBLPREFIX}media_mapping"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_name => wt_name ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)".
+	" SELECT n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM {$DBNAME}.{$TBLPREFIX}name"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_other => wt_other ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##other` (o_id, o_file, o_type, o_gedcom)".
+	" SELECT o_id, o_file, o_type, o_gedcom FROM {$DBNAME}.{$TBLPREFIX}other"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_placelinks => wt_placelinks ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##placelinks` (pl_p_id, pl_gid, pl_file)".
+	" SELECT pl_p_id, pl_gid, pl_file FROM {$DBNAME}.{$TBLPREFIX}placelinks"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+try {
+	echo '<p>pgv_placelocation => wt_placelocation ...</p>'; flush();
+	WT_DB::prepare(
+		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
+		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM {$DBNAME}.{$TBLPREFIX}placelocation"
+	)->execute();
+} catch (PDOexception $ex) {
+	// This table will only exist if the gm module is installed in PGV
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_places => wt_places ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##places` (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex)".
+	" SELECT p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex FROM {$DBNAME}.{$TBLPREFIX}places"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_remotelinks => wt_remotelinks ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##remotelinks` (r_gid, r_linkid, r_file)".
+	" SELECT r_gid, r_linkid, r_file FROM {$DBNAME}.{$TBLPREFIX}remotelinks"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_sources => wt_sources ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_gedcom, s_dbid)".
+	" SELECT s_id, s_file, s_name, s_gedcom, s_dbid FROM {$DBNAME}.{$TBLPREFIX}sources"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
+echo '<p>pgv_messages => wt_message ...</p>'; flush();
+WT_DB::prepare(
+	"REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)".
+	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, m_created FROM {$DBNAME}.{$TBLPREFIX}messages JOIN {$DBNAME}.{$TBLPREFIX}user ON (m_to=user_name)"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
 echo '<p>Done!</p>';
