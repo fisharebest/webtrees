@@ -404,7 +404,151 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
-	
+}
+
+foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
+	$config=get_gedcom_setting($ged_id, 'config');
+	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY, $config);
+	if (is_readable($config)) {
+		require $config;
+	}
+	$privacy=get_gedcom_setting($ged_id, 'config');
+	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY, $privacy);
+	if (is_readable($privacy)) {
+		require $privacy;
+	}
+
+	@set_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS',      $ABBREVIATE_CHART_LABELS);
+	@set_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS',          $ADVANCED_NAME_FACTS);
+	@set_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS',          $ADVANCED_PLAC_FACTS);
+	@set_gedcom_setting($ged_id, 'ALLOW_EDIT_GEDCOM',            $ALLOW_EDIT_GEDCOM);
+	@set_gedcom_setting($ged_id, 'ALLOW_THEME_DROPDOWN',         $ALLOW_THEME_DROPDOWN);
+	@set_gedcom_setting($ged_id, 'AUTO_GENERATE_THUMBS',         $AUTO_GENERATE_THUMBS);
+	@set_gedcom_setting($ged_id, 'CALENDAR_FORMAT',              $CALENDAR_FORMAT);
+	@set_gedcom_setting($ged_id, 'CHART_BOX_TAGS',               $CHART_BOX_TAGS);
+	@set_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS',     $CHECK_MARRIAGE_RELATIONS);
+	@set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             $COMMON_NAMES_ADD);
+	@set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE);
+	@set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD);
+	@set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              WT_USER_ID);
+	@set_gedcom_setting($ged_id, 'DAYS_TO_SHOW_LIMIT',           $DAYS_TO_SHOW_LIMIT);
+	@set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS);
+	@set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM',    $DISPLAY_JEWISH_GERESHAYIM);
+	@set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_THOUSANDS',     $DISPLAY_JEWISH_THOUSANDS);
+	@set_gedcom_setting($ged_id, 'ENABLE_AUTOCOMPLETE',          $ENABLE_AUTOCOMPLETE);
+	@set_gedcom_setting($ged_id, 'EXPAND_NOTES',                 $EXPAND_NOTES);
+	@set_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS',      $EXPAND_RELATIVES_EVENTS);
+	@set_gedcom_setting($ged_id, 'EXPAND_SOURCES',               $EXPAND_SOURCES);
+	@set_gedcom_setting($ged_id, 'FAM_FACTS_ADD',                $FAM_FACTS_ADD);
+	@set_gedcom_setting($ged_id, 'FAM_FACTS_QUICK',              $FAM_FACTS_QUICK);
+	@set_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE',             $FAM_FACTS_UNIQUE);
+	@set_gedcom_setting($ged_id, 'FAM_ID_PREFIX',                $FAM_ID_PREFIX);
+	@set_gedcom_setting($ged_id, 'FAVICON',                      $FAVICON);
+	@set_gedcom_setting($ged_id, 'FULL_SOURCES',                 $FULL_SOURCES);
+	@set_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB',           $GEDCOM_DEFAULT_TAB);
+	@set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             $GEDCOM_ID_PREFIX);
+	@set_gedcom_setting($ged_id, 'GENERATE_UIDS',                $GENERATE_UIDS);
+	@set_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS',           $HIDE_GEDCOM_ERRORS);
+	@set_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE',             $HIDE_LIVE_PEOPLE);
+	@set_gedcom_setting($ged_id, 'HOME_SITE_TEXT',               $HOME_SITE_TEXT);
+	@set_gedcom_setting($ged_id, 'HOME_SITE_URL',                $HOME_SITE_URL);
+	@set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               $INDI_FACTS_ADD);
+	@set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             $INDI_FACTS_QUICK);
+	@set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            $INDI_FACTS_UNIQUE);
+	@set_gedcom_setting($ged_id, 'LANGUAGE',                     WT_LOCALE);
+	@set_gedcom_setting($ged_id, 'LINK_ICONS',                   $LINK_ICONS);
+	@set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                $MAX_ALIVE_AGE);
+	@set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  $MAX_DESCENDANCY_GENERATIONS);
+	@set_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS',     $MAX_PEDIGREE_GENERATIONS);
+	@set_gedcom_setting($ged_id, 'MAX_RELATION_PATH_LENGTH',     $MAX_RELATION_PATH_LENGTH);
+	@set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY',              'media/');
+	@set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS',       $MEDIA_DIRECTORY_LEVELS);
+	@set_gedcom_setting($ged_id, 'MEDIA_EXTERNAL',               $MEDIA_EXTERNAL);
+	@set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR',       $MEDIA_FIREWALL_ROOTDIR);
+	@set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_THUMBS',        $MEDIA_FIREWALL_THUMBS);
+	@set_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX',              $MEDIA_ID_PREFIX);
+	@set_gedcom_setting($ged_id, 'META_DESCRIPTION',             $META_DESCRIPTION);
+	@set_gedcom_setting($ged_id, 'META_ROBOTS',                  $META_ROBOTS);
+	@set_gedcom_setting($ged_id, 'META_TITLE',                   $META_TITLE);
+	@set_gedcom_setting($ged_id, 'MULTI_MEDIA',                  $MULTI_MEDIA);
+	@set_gedcom_setting($ged_id, 'NOTE_FACTS_ADD',               $NOTE_FACTS_ADD);
+	@set_gedcom_setting($ged_id, 'NOTE_FACTS_QUICK',             $NOTE_FACTS_QUICK);
+	@set_gedcom_setting($ged_id, 'NOTE_FACTS_UNIQUE',            $NOTE_FACTS_UNIQUE);
+	@set_gedcom_setting($ged_id, 'NOTE_ID_PREFIX',               'N');
+	@set_gedcom_setting($ged_id, 'NO_UPDATE_CHAN',               $NO_UPDATE_CHAN);
+	@set_gedcom_setting($ged_id, 'PAGE_AFTER_LOGIN',             'mypage');
+	@set_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS',        $PEDIGREE_FULL_DETAILS);
+	@set_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT',              $PEDIGREE_LAYOUT);
+	@set_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID',             $PEDIGREE_ROOT_ID);
+	@set_gedcom_setting($ged_id, 'PEDIGREE_SHOW_GENDER',         $PEDIGREE_SHOW_GENDER);
+	@set_gedcom_setting($ged_id, 'POSTAL_CODE',                  $POSTAL_CODE);
+	@set_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES',        $PREFER_LEVEL2_SOURCES);
+	@set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS',         $QUICK_REQUIRED_FACTS);
+	@set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS',      $QUICK_REQUIRED_FAMFACTS);
+	@set_gedcom_setting($ged_id, 'REPO_FACTS_ADD',               $REPO_FACTS_ADD);
+	@set_gedcom_setting($ged_id, 'REPO_FACTS_QUICK',             $REPO_FACTS_QUICK);
+	@set_gedcom_setting($ged_id, 'REPO_FACTS_UNIQUE',            $REPO_FACTS_UNIQUE);
+	@set_gedcom_setting($ged_id, 'REPO_ID_PREFIX',               $REPO_ID_PREFIX);
+	@set_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION',       $REQUIRE_AUTHENTICATION);
+	@set_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE',         $SAVE_WATERMARK_IMAGE);
+	@set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         $SAVE_WATERMARK_THUMB);
+	@set_gedcom_setting($ged_id, 'SEARCH_FACTS_DEFAULT',         $SEARCH_FACTS_DEFAULT);
+	@set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                $SHOW_AGE_DIFF);
+	@set_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP',            $SHOW_CONTEXT_HELP);
+	@set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 $SHOW_COUNTER);
+	@set_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE',             $SHOW_DEAD_PEOPLE);
+	@set_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES',             $SHOW_EMPTY_BOXES);
+	@set_gedcom_setting($ged_id, 'SHOW_EST_LIST_DATES',          $SHOW_EST_LIST_DATES);
+	@set_gedcom_setting($ged_id, 'SHOW_FACT_ICONS',              $SHOW_FACT_ICONS);
+	@set_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD',           $SHOW_GEDCOM_RECORD);
+	@set_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES',        $SHOW_HIGHLIGHT_IMAGES);
+	@set_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE',           $SHOW_LDS_AT_GLANCE);
+	@set_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES',            $SHOW_LEVEL2_NOTES);
+	@set_gedcom_setting($ged_id, 'SHOW_LIST_PLACES',             $SHOW_LIST_PLACES);
+	@set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            $SHOW_LIVING_NAMES);
+	@set_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES',           $SHOW_MARRIED_NAMES);
+	@set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          $SHOW_MEDIA_DOWNLOAD);
+	@set_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME',          $SHOW_MEDIA_FILENAME);
+	@set_gedcom_setting($ged_id, 'SHOW_MULTISITE_SEARCH',        $SHOW_MULTISITE_SEARCH);
+	@set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             $SHOW_PARENTS_AGE);
+	@set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         $SHOW_PEDIGREE_PLACES);
+	@set_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS',   $SHOW_PRIVATE_RELATIONSHIPS);
+	@set_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION',        $SHOW_REGISTER_CAUTION);
+	@set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        $SHOW_RELATIVES_EVENTS);
+	@set_gedcom_setting($ged_id, 'SHOW_SPIDER_TAGLINE',          $SHOW_SPIDER_TAGLINE);
+	@set_gedcom_setting($ged_id, 'SHOW_STATS',                   $SHOW_STATS);
+	@set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             $SOURCE_ID_PREFIX);
+	@set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               $SOUR_FACTS_ADD);
+	@set_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK',             $SOUR_FACTS_QUICK);
+	@set_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE',            $SOUR_FACTS_UNIQUE);
+	@set_gedcom_setting($ged_id, 'SPLIT_PLACES',                 $SPLIT_PLACES);
+	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F',            $SUBLIST_TRIGGER_F);
+	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            $SUBLIST_TRIGGER_I);
+	@set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);
+	@set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            $SURNAME_TRADITION);
+	@set_gedcom_setting($ged_id, 'THEME_DIR',                    'themes/webtrees/');
+	@set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);
+	@set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        $UNDERLINE_NAME_QUOTES);
+	@set_gedcom_setting($ged_id, 'USE_GEONAMES',                 $USE_GEONAMES);
+	@set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           $USE_MEDIA_FIREWALL);
+	@set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             $USE_MEDIA_VIEWER);
+	@set_gedcom_setting($ged_id, 'USE_RIN',                      $USE_RIN);
+	@set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               $USE_SILHOUETTE);
+	@set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              $USE_THUMBS_MAIN);
+	@set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              $WATERMARK_THUMB);
+	@set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
+	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       $WELCOME_TEXT_AUTH_MODE);
+	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD);
+	@set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES);
+	@set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   $ZOOM_BOXES);
+
+	// TODO import whatever privacy settings as are compatible with the new system
+
+	set_gedcom_setting($ged_id, 'config',   null);
+	set_gedcom_setting($ged_id, 'privacy',  null);
+	set_gedcom_setting($ged_id, 'path',     null);
+	set_gedcom_setting($ged_id, 'pgv_ver',  null);
+	set_gedcom_setting($ged_id, 'imported', null);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
