@@ -406,14 +406,23 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 }
 
+define('PGV_PHPGEDVIEW', true);
+define('PGV_PRIV_PUBLIC', WT_PRIV_PUBLIC);
+define('PGV_PRIV_USER', WT_PRIV_USER);
+define('PGV_PRIV_NONE', WT_PRIV_NONE);
+define('PGV_PRIV_HIDE', WT_PRIV_HIDE);
+$PRIV_PUBLIC=WT_PRIV_PUBLIC;
+$PRIV_USER=WT_PRIV_USER;
+$PRIV_NONE=WT_PRIV_NONE;
+$PRIV_HIDE=WT_PRIV_HIDE;
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	$config=get_gedcom_setting($ged_id, 'config');
-	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY, $config);
+	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $config);
 	if (is_readable($config)) {
 		require $config;
 	}
 	$privacy=get_gedcom_setting($ged_id, 'config');
-	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY, $privacy);
+	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $privacy);
 	if (is_readable($privacy)) {
 		require $privacy;
 	}
@@ -548,7 +557,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	set_gedcom_setting($ged_id, 'privacy',  null);
 	set_gedcom_setting($ged_id, 'path',     null);
 	set_gedcom_setting($ged_id, 'pgv_ver',  null);
-	set_gedcom_setting($ged_id, 'imported', null);
+	set_gedcom_setting($ged_id, 'imported', 1);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
