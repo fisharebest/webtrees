@@ -50,7 +50,6 @@ set_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS',     true);
 set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             '');
 set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          '');
 set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       '40');
-set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              1);
 set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              WT_USER_ID);
 set_gedcom_setting($ged_id, 'DAYS_TO_SHOW_LIMIT',           '7');
 set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', '4');
