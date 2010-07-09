@@ -283,12 +283,13 @@ elseif ($action=="setup") {
 						echo "<select name=\"vars[", $input["name"], "]\" id=\"", $input["name"], "_var\">\n";
 						$options = preg_split("/[|]+/", $input["options"]);
 						foreach($options as $indexval => $option) {
-							list($value, $display)=explode('=>', $option);
+							$opt = explode('=>', $option);
+							list($value, $display)=$opt;
 							if (substr($display, 0, 6)=='i18n::') {
 								eval("\$display=$display;");
 							}
 							echo "\t<option value=\"", htmlspecialchars($value), "\"";
-							if ($option==$input["default"]) {
+							if ($opt[0]==$input["default"]) {
 								echo " selected=\"selected\"";
 							}
 							echo '>', $display, '</option>';
