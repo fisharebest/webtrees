@@ -26,7 +26,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: theme.php 7126 2010-03-03 17:39:06Z greg $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
