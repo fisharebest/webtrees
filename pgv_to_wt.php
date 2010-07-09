@@ -184,19 +184,28 @@ WT_DB::prepare(
 if ($PGV_SCHEMA_VERSION>=12) {
 	echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 	WT_DB::prepare(
-		"INSERT IGNORE INTO `##gedcom` (gedcom_id, gedcom_name)".
+		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
 		" SELECT gedcom_id, gedcom_name FROM {$DBNAME}.{$TBLPREFIX}gedcom"
 	)->execute();
 
 	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; flush();
 	WT_DB::prepare(
-		"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
+		"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
 		" SELECT gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting"
 	)->execute();
 
 	echo '<p>pgv_user => wt_user ...</p>'; flush();
 	WT_DB::prepare(
-		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
+		"DELETE FROM `##block`"
+	)->execute();
+	WT_DB::prepare(
+		"DELETE FROM `##user_setting`"
+	)->execute();
+	WT_DB::prepare(
+		"DELETE FROM `##user`"
+	)->execute();
+	WT_DB::prepare(
+		"INSERT INTO `##user` (user_id, user_name, real_name, email, password)".
 		" SELECT user_id, user_name, CONCAT(us1.setting_value, ' ', us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
 		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
 		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
@@ -208,14 +217,14 @@ if ($PGV_SCHEMA_VERSION>=12) {
 
 	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; flush();
 	WT_DB::prepare(
-		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
+		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting".
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
 
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; flush();
 	WT_DB::prepare(
-		"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
+		"INSERT INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
 		" SELECT user_id, gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_gedcom_setting"
 	)->execute();
 
@@ -226,7 +235,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
 			foreach ($GEDCOMS as $array) {
 				try {
-					self::prepare("REPLACE `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
+					self::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
 						->execute(array($array['id'], $array['gedcom']));
 				} catch (PDOException $ex) {
 					// Ignore duplicates
@@ -235,7 +244,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 				foreach ($array as $key=>$value) {
 					if ($key!='id' && $key!='gedcom' && $key!='commonsurnames') {
 						try {
-							self::prepare("REPLACE `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
+							self::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
 								->execute(array($array['id'], $key, $value));
 						} catch (PDOException $ex) {
 							// Ignore duplicates
@@ -248,7 +257,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
 	try {
-		self::exec("REPLACE INTO `##user` (user_name, password) SELECT u_username, u_password FROM {$TBLPREFIX}users");
+		self::exec("INSERT INTO `##user` (user_name, password) SELECT u_username, u_password FROM {$TBLPREFIX}users");
 	} catch (PDOException $ex) {
 		// This could only fail if;
 		// a) we've already done it (upgrade)
@@ -257,7 +266,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	
 	try {
 		self::exec(
-			"REPLACE INTO `##user_setting` (user_id, setting_name, setting_value)".
+			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 			"	SELECT user_id, 'firstname', u_firstname".
 			" FROM {$TBLPREFIX}users".
 			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
@@ -412,7 +421,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 if ($PGV_SCHEMA_VERSION>=13) {
 	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>'; flush();
 	WT_DB::prepare(
-		"INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
+		"REPLACE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
 		" SELECT gedcom_id, page_name, page_parameter, page_count FROM {$DBNAME}.{$TBLPREFIX}hit_counter"
 	)->execute();
 } else {
