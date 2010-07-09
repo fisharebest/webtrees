@@ -157,7 +157,7 @@ echo '<p>config.php => wt_site_setting ...</p>'; flush();
 // Don't copy $SERVER_URL - it will not be applicable!
 // Don't copy $LOGIN_URL - it will not be applicable!
 // $MAX_VIEWS and $MAX_VIEW_TIME are no longer used
-@set_site_setting('MEMORY_LIMIT',                    $PGV_MEMORY_LIMIT);
+// Don't copy $MEMORY_LIMIT - use the value from setup.php
 // Don't copy $COMMIT_COMMAND - it will not be applicable!
 @set_site_setting('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE);
 @set_site_setting('SMTP_HOST',                       $PGV_SMTP_HOST);
@@ -196,16 +196,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 
 	echo '<p>pgv_user => wt_user ...</p>'; flush();
 	WT_DB::prepare(
-		"DELETE FROM `##block`"
-	)->execute();
-	WT_DB::prepare(
-		"DELETE FROM `##user_setting`"
-	)->execute();
-	WT_DB::prepare(
-		"DELETE FROM `##user`"
-	)->execute();
-	WT_DB::prepare(
-		"INSERT INTO `##user` (user_id, user_name, real_name, email, password)".
+		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
 		" SELECT user_id, user_name, CONCAT(us1.setting_value, ' ', us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
 		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
 		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
@@ -217,7 +208,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 
 	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; flush();
 	WT_DB::prepare(
-		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
+		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting".
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
@@ -506,6 +497,10 @@ if ($PGV_SCHEMA_VERSION>=14) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
+	WT_Module::setDefaultAccess($ged_id);
+}
+
 echo '<p>pgv_site_setting => wt_module_setting ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##module_setting` (module_name, setting_name, setting_value)".
@@ -521,21 +516,6 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_favorites => wt_favorites ...</p>'; flush();
-// This is an (optional) module.  The table may not exist
-WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##favorites` (".
-	" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
- 	" fv_username VARCHAR(32)            NOT NULL,".
-	" fv_gid      VARCHAR(20)                NULL,".
-	" fv_type     VARCHAR(15)                NULL,".
-	" fv_file     VARCHAR(100)               NULL,".
-	" fv_url      VARCHAR(255)               NULL,".
- 	" fv_title    VARCHAR(255)               NULL,".
-	" fv_note     TEXT                       NULL,".
-	" PRIMARY KEY (fv_id),".
-	"         KEY ix1 (fv_username)".
-	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-);
 WT_DB::prepare(
 	"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
 	" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM {$DBNAME}.{$TBLPREFIX}favorites"
@@ -544,18 +524,6 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_news => wt_news ...</p>'; flush();
-// This is an (optional) module.  The table may not exist
-WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##news` (".
-	" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
-	" n_username VARCHAR(100)           NOT NULL,".
-	" n_date     INTEGER                NOT NULL,".
-	" n_title    VARCHAR(255)           NOT NULL,".
-	" n_text     TEXT                   NOT NULL,".
-	" PRIMARY KEY     (n_id),".
-	"         KEY ix1 (n_username)".
-	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-);
 WT_DB::prepare(
 	"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
 	" SELECT n_id, n_username, n_date, n_title, n_text FROM {$DBNAME}.{$TBLPREFIX}news"
