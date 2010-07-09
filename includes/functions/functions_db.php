@@ -1628,6 +1628,10 @@ function find_rin_id($rin) {
 * @param string $ged  the filename of the gedcom to delete
 */
 function delete_gedcom($ged_id) {
+	// If this is the current default, then unset it
+	if (get_site_setting('DEFAULT_GEDCOM')==get_gedcom_from_id($ged_id)) {
+		set_site_setting('DEFAULT_GEDCOM', '');
+	}
 	// Don't delete the logs.
 	WT_DB::prepare("UPDATE `##log` SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($ged_id));
 
@@ -1652,10 +1656,6 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id =?")->execute(array($ged_id));
-
-	if (get_site_setting('DEFAULT_GEDCOM')==get_gedcom_from_id($ged_id)) {
-		set_site_setting('DEFAULT_GEDCOM', '');
-	}
 }
 
 /**
