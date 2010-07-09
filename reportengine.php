@@ -347,6 +347,12 @@ elseif ($action=="setup") {
 }
 //-- run the report
 elseif ($action=="run") {
+	if (strstr($report, "report_singlepage.xml")!==false){
+		$DEBUG=false;
+		$db = new pedigree_report_WT_Module();
+		$pedigree=$db->setup();
+		exit;
+	}
 	//-- load the report generator
 	switch ($output) {
 		case "HTML":

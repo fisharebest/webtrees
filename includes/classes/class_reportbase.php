@@ -60,7 +60,7 @@ if (!isset($embed_fonts)) {
 }
 
 /**
- * Main PGV Report Class
+ * Main Report Class
  *
  * Document wide functions and variable defaults that will be inherited of the report modules
  * @package webtrees
