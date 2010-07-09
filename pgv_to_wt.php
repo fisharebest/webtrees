@@ -86,12 +86,12 @@ if ($PGV_PATH) {
 		} else {
 			unset($wt_config);
 			try {
-				$PGV_VERSION=WT_DB::prepare(
+				$PGV_SCHEMA_VERSION=WT_DB::prepare(
 					"SELECT site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting WHERE site_setting_name='PGV_SCHEMA_VERSION'"
 				)->fetchOne();
-				if ($PGV_VERSION<10) {
+				if ($PGV_SCHEMA_VERSION<10) {
 					$error=i18n::translate('The version of %s is too old', 'PhpGedView');
-				} elseif ($PGV_VERSION>14) {
+				} elseif ($PGV_SCHEMA_VERSION>14) {
 					$error=i18n::translate('The version of %s is too new', 'PhpGedView');
 				} else {
 					$IS_ADMIN=WT_DB::prepare(
@@ -140,9 +140,6 @@ if ($error || empty($PGV_PATH)) {
 	exit;
 }
 
-// We have the info we need, and it has been validated.
-WT_DB::prepare("START TRANSACTION")->execute();
-
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>config.php => wt_site_setting ...</p>'; flush();
@@ -172,6 +169,7 @@ echo '<p>config.php => wt_site_setting ...</p>'; flush();
 @set_site_setting('SMTP_SSL',                        $PGV_SMTP_SSL);
 @set_site_setting('SMTP_FROM_NAME',                  $PGV_SMTP_FROM_NAME);
 
+
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_site_setting => wt_site_setting ...</p>'; flush();
@@ -180,6 +178,322 @@ WT_DB::prepare(
 	" SELECT site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
 	" WHERE site_setting_name IN ('DEFAULT_GEDCOM', 'LAST_CHANGE_EMAIL')"
 )->execute();
+	
+////////////////////////////////////////////////////////////////////////////////
+
+if ($PGV_SCHEMA_VERSION>=12) {
+	echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##gedcom` (gedcom_id, gedcom_name)".
+		" SELECT gedcom_id, gedcom_name FROM {$DBNAME}.{$TBLPREFIX}gedcom"
+	)->execute();
+
+	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; flush();
+	WT_DB::prepare(
+		"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
+		" SELECT gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting"
+	)->execute();
+
+	echo '<p>pgv_user => wt_user ...</p>'; flush();
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
+		" SELECT user_id, user_name, CONCAT(us1.setting_value, ' ', us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
+		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
+		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
+		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us3 USING (user_id)".
+		" WHERE us1.setting_name='firstname'".
+		" AND us2.setting_name='lastname'".
+		" AND us3.setting_name='email'"
+	)->execute();
+
+	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; flush();
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
+		" SELECT user_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting".
+		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
+	)->execute();
+
+	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; flush();
+	WT_DB::prepare(
+		"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
+		" SELECT user_id, gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_gedcom_setting"
+	)->execute();
+
+} else {
+	// Copied from PGV's db_schema_11_12
+	if (file_exists("{$INDEX_DIRECTORY}gedcoms.php")) {
+		require_once "{$INDEX_DIRECTORY}gedcoms.php";
+		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
+			foreach ($GEDCOMS as $array) {
+				try {
+					self::prepare("REPLACE `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
+						->execute(array($array['id'], $array['gedcom']));
+				} catch (PDOException $ex) {
+					// Ignore duplicates
+				}
+				// insert gedcom
+				foreach ($array as $key=>$value) {
+					if ($key!='id' && $key!='gedcom' && $key!='commonsurnames') {
+						try {
+							self::prepare("REPLACE `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
+								->execute(array($array['id'], $key, $value));
+						} catch (PDOException $ex) {
+							// Ignore duplicates
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
+	try {
+		self::exec("REPLACE INTO `##user` (user_name, password) SELECT u_username, u_password FROM {$TBLPREFIX}users");
+	} catch (PDOException $ex) {
+		// This could only fail if;
+		// a) we've already done it (upgrade)
+		// b) it doesn't exist (new install)
+	}
+	
+	try {
+		self::exec(
+			"REPLACE INTO `##user_setting` (user_id, setting_name, setting_value)".
+			"	SELECT user_id, 'firstname', u_firstname".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'lastname', u_lastname".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'canadmin', u_canadmin".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'email', u_email".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'verified', u_verified".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'verified_by_admin', u_verified_by_admin".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'language', u_language".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'pwrequested', u_pwrequested".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'reg_timestamp', u_reg_timestamp".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'reg_hashcode', u_reg_hashcode".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'theme', u_theme".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'loggedin', u_loggedin".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'sessiontime', u_sessiontime".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'contactmethod', u_contactmethod".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'visibleonline', u_visibleonline".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'editaccount', u_editaccount".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'defaulttab', u_defaulttab".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'comment', u_comment".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'comment_exp', u_comment_exp".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'sync_gedcom', u_sync_gedcom".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'relationship_privacy', u_relationship_privacy".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'max_relation_path', u_max_relation_path".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'auto_accept', u_auto_accept".
+			" FROM {$TBLPREFIX}users".
+			" JOIN {$TBLPREFIX}user ON (user_name=u_username)"
+		);
+	} catch (PDOException $ex) {
+		// This could only fail if;
+		// a) we've already done it (upgrade)
+		// b) it doesn't exist (new install)
+	}
+	
+	try {
+		$user_gedcom_settings=
+			self::prepare(
+				"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
+				" FROM {$TBLPREFIX}users".
+				" JOIN {$TBLPREFIX}user ON (user_name=u_username)"
+			)->fetchAll();
+		foreach ($user_gedcom_settings as $setting) {
+			@$array=unserialize($setting->u_gedcomid);
+			if (is_array($array)) {
+				foreach ($array as $gedcom=>$value) {
+					$id=get_id_from_gedcom($gedcom);
+					if ($id) {
+						// Allow for old/invalid gedcom values in array
+						set_user_gedcom_setting($setting->user_id, $id, 'gedcomid', $value);
+					}
+				}
+			}
+			@$array=unserialize($setting->u_rootid);
+			if (is_array($array)) {
+				foreach ($array as $gedcom=>$value) {
+					$id=get_id_from_gedcom($gedcom);
+					if ($id) {
+						// Allow for old/invalid gedcom values in array
+					 	set_user_gedcom_setting($setting->user_id, $id, 'rootid', $value);
+					}
+				}
+			}
+			@$array=unserialize($setting->u_canedit);
+			if (is_array($array)) {
+				foreach ($array as $gedcom=>$value) {
+					$id=get_id_from_gedcom($gedcom);
+					if ($id) {
+						// Allow for old/invalid gedcom values in array
+					 	set_user_gedcom_setting($setting->user_id, $id, 'canedit', $value);
+					}
+				}
+			}
+		}
+	
+		// TODO: Uncomment this lines before the next release
+		//self::exec("DROP TABLE {$TBLPREFIX}users");
+	
+	} catch (PDOException $ex) {
+		// This could only fail if;
+		// a) we've already done it (upgrade)
+		// b) it doesn't exist (new install)
+	}
+	
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+if ($PGV_SCHEMA_VERSION>=13) {
+	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>'; flush();
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
+		" SELECT gedcom_id, page_name, page_parameter, page_count FROM {$DBNAME}.{$TBLPREFIX}hit_counter"
+	)->execute();
+} else {
+	// Copied from PGV's db_schema_12_13
+	$statement=PGV_DB::prepare("REPLACE INTO {$TBLPREFIX}hit_counter (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
+
+	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+		// Caution these files might be quite large...
+		$file=$INDEX_DIRECTORY.$ged_name.'pgv_counters.txt';
+		echo '<p>', $file, ' => wt_hit_counter ...</p>'; flush();
+		if (file_exists($file)) {
+			foreach (file($file) as $line) {
+				if (preg_match('/(@('.PGV_REGEX_XREF.')@ )?(\d+)/', $line, $match)) {
+					if ($match[2]) {
+						$page_name='individual.php';
+						$page_parameter=$match[2];
+					} else {
+						$page_name='index.php';
+						$page_parameter='gedcom:'.$ged_id;
+					}
+					try {
+						$statement->execute(array($ged_id, $page_name, $page_parameter, $match[3]));
+					} catch (PDOException $ex) {
+						// Primary key violation?  Ignore?
+					}
+				}
+			}
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+if ($PGV_SCHEMA_VERSION>=14) {
+	echo '<p>pgv_ip_address => wt_ip_address ...</p>'; flush();
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##ip_address` (ip_address, category, comment)".
+		" SELECT ip_address, category, comment FROM {$DBNAME}.{$TBLPREFIX}ip_address"
+	)->execute();
+} else {
+	// Copied from PGV's db_schema_13_14
+	$statement=PGV_DB::prepare("REPLACE INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)");
+	echo '<p>banned.php => wt_ip_address ...</p>'; flush();
+	if (is_readable($INDEX_DIRECTORY.'/banned.php')) {
+		@require $INDEX_DIRECTORY.'/banned.php';
+		if (!empty($banned) && is_array($banned)) {
+			foreach ($banned as $value) {
+				try {
+					if (is_array($value)) {
+						// New format: array(ip, comment)
+						$statement->execute(array($value[0], 'banned', $value[1]));
+					} else {
+						// Old format: string(ip)
+						$statement->execute(array($value, 'banned', ''));
+					}
+				} catch (PDOException $ex) {
+					echo $ex, '<br/>';
+				}
+			}
+		}
+	}
+	echo '<p>search_engines.php => wt_ip_address ...</p>'; flush();
+	if (is_readable($INDEX_DIRECTORY.'/search_engines.php')) {
+		@require $INDEX_DIRECTORY.'/search_engines.php';
+		if (!empty($search_engines) && is_array($search_engines)) {
+			foreach ($search_engines as $value) {
+				try {
+					if (is_array($value)) {
+						// New format: array(ip, comment)
+						$statement->execute(array($value[0], 'search-engine', $value[1]));
+					} else {
+						// Old format: string(ip)
+						$statement->execute(array($value, 'search-engine', ''));
+					}
+				} catch (PDOException $ex) {
+					echo $ex, '<br/>';
+				}
+			}
+		}
+	}
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -193,14 +507,6 @@ WT_DB::prepare(
 	"REPLACE INTO `##module_setting` (module_name, setting_name, setting_value)".
 	" SELECT 'lightbox', site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
 	" WHERE site_setting_name LIKE 'LB_%'"
-)->execute();
-
-////////////////////////////////////////////////////////////////////////////////
-
-echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
-WT_DB::prepare(
-	"REPLACE INTO `##gedcom` (gedcom_id, gedcom_name)".
-	" SELECT gedcom_id, gedcom_name FROM {$DBNAME}.{$TBLPREFIX}gedcom"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -228,7 +534,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_favorites => wt_favorites ...</p>'; flush();
+echo '<p>pgv_news => wt_news ...</p>'; flush();
 // This is an (optional) module.  The table may not exist
 WT_DB::exec(
 	"CREATE TABLE IF NOT EXISTS `##news` (".
@@ -245,8 +551,6 @@ WT_DB::prepare(
 	"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
 	" SELECT n_id, n_username, n_date, n_title, n_text FROM {$DBNAME}.{$TBLPREFIX}news"
 )->execute();
-
-WT_DB::prepare("ROLLBACK")->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
 
