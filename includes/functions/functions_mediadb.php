@@ -1411,7 +1411,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 					add_simple_tag($sourceLevel ." SOUR ". $sourceSOUR);
 					add_simple_tag(($sourceLevel+1) ." PAGE ". $sourcePAGE);
 					add_simple_tag(($sourceLevel+2) ." TEXT ". $sourceTEXT);
-					add_simple_tag(($sourceLevel+2) ." DATE ". $sourceDATE, "", i18n::translate('DATA:DATE'));
+					add_simple_tag(($sourceLevel+2) ." DATE ". $sourceDATE, "", translate_fact('DATA:DATE'));
 					add_simple_tag(($sourceLevel+1) ." QUAY ". $sourceQUAY);
 					$sourceSOUR = "";
 				}
@@ -1459,7 +1459,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			add_simple_tag($sourceLevel ." SOUR ". $sourceSOUR);
 			add_simple_tag(($sourceLevel+1) ." PAGE ". $sourcePAGE);
 			add_simple_tag(($sourceLevel+2) ." TEXT ". $sourceTEXT);
-			add_simple_tag(($sourceLevel+2) ." DATE ". $sourceDATE, "", i18n::translate('DATA:DATE'));
+			add_simple_tag(($sourceLevel+2) ." DATE ". $sourceDATE, "", translate_fact('DATA:DATE'));
 			add_simple_tag(($sourceLevel+1) ." QUAY ". $sourceQUAY);
 		}
 	}
