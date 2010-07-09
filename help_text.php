@@ -3871,7 +3871,25 @@ case 'password':
 	$text=i18n::translate('In this box you type your password.<br /><br /><b>The password is case sensitive.</b>  This means that <b>MyPassword</b> is <u>not</u> the same as <b>mypassword</b> or <b>MYPASSWORD</b>.');
 	break;
 
-case 'phpinfo':
+case 'PGV_WIZARD':
+	$title=i18n::translate('PhpGedView to webtrees transfer wizard');
+	$text =i18n::translate('This link will start the PGV to <b>webtrees</b> wizard. This is an automated process to assist administrators making the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other databse information directly to your new <b>webtrees</b> database. The following requirements are necessary:');
+	$text .= '<ul><li>';
+	$text .= i18n::translate('webtrees database must be on the same server as PGV\'s');
+	$text .= '</li><li>';
+	$text .= i18n::translate('PGV must be version 4.2.3, or any SVN up to #6973');
+	$text .= '</li><li>';
+	$text .= i18n::translate('All changes in PGV must be accepted');
+	$text .= '</li><li>';
+	$text .= i18n::translate('You must export your latest GEDCOM data');
+	$text .= '</li><li>';
+	$text .= i18n::translate('The current webtrees admin username must be the same as an existing PGV admin username');
+	$text .= '</li><li>';
+	$text .= i18n::translate('All existing PGV users must have distinct email addresses');
+	$text .= '</li></ul>';	
+	break;
+
+	case 'phpinfo':
 	$title=i18n::translate('PHP information');
 	$text=i18n::translate('This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server\'s software, as it relates to PHP and <b>webtrees</b>, can be viewed.');
 	break;
