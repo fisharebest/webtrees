@@ -247,13 +247,13 @@ echo '</tr>',
 	 '</td>';
     if(empty($SEARCH_SPIDER)) { 
 		echo '<td class="toplinks_right">',
-			 '<div align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
-		     'color_theme_dropdown()',
-		     '</div>',
+			 '<div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">';
+	    echo color_theme_dropdown();
+        echo '</div>',
 		     '</td>';
     }
-echo '<tr>',
-	 '</table>';
+        echo '<tr>',
+	         '</table>';
 } ?>
 <!-- end menu section -->
 <!-- begin content section -->
