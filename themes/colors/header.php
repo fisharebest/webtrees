@@ -105,21 +105,19 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 ?>
 
 <!-- Remove header for edit windows -->
-<?php if ($view!='simple') {?>
-
 <!-- begin header section -->
-<div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
-<!-- begin colors code -->
-<table class="header">
-	<tr>
-		<td align="<?php echo $TEXT_DIRECTION=="ltr"?"left":"right" ?>">
-		<div class="title">
-			<?php print_gedcom_title_link(TRUE);?>
-		</div>
-		</td>
-		<td>
-
-<?php if(empty($SEARCH_SPIDER)) { 
+<?php 
+if ($view!='simple') {
+	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
+         '<table class="header">',
+	     '<tr>',
+		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >',
+		 '<div class="title">';
+		 print_gedcom_title_link(TRUE);
+	echo '</div>',
+		 '</td>',
+		 '<td>';
+    if(empty($SEARCH_SPIDER)) { 
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
 		if (WT_USER_ID) {
 			echo
@@ -150,21 +148,114 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />';
-?>
-			<input type="image" src="<?php echo $WT_IMAGE_DIR ?>/go.gif" align="top" title="<?php echo i18n::translate('Search')?>" />
-<?php
-		echo
+			'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
+            '<input type="image" src="', $WT_IMAGE_DIR, '/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
 			'</form>',
 			'</ui></div>'; 
 		}
+
+        echo '</td>',
+	         '</tr>',
+             '</table>',
+             '</div>';
 ?>
-</td>
-	</tr>
-</table>
-</div>
-<!--end colors code -->
-<?php include($toplinks);
+<!--end header section -->
+<!--begin menu section -->
+<?php 
+
+$menubar = new MenuBar();
+echo '<table id="toplinks">',
+     '<tr>',
+	 '<td class="toplinks_left">',
+	 '<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
+	 '<tr>';
+	$menu = $menubar->getGedcomMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getMyPageMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getChartsMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getListsMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getCalendarMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getReportsMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getSearchMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menu = $menubar->getOptionalMenu(); 
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+	$menus = $menubar->getModuleMenus();
+		foreach($menus as $m=>$menu) { 
+			if($menu->link != "") {
+				echo "<td>";
+				$menu->addLabel("", "none");
+				$menu->printMenu();
+				echo "</td>";
+			}
+		}
+	$menu = $menubar->getHelpMenu();
+	if($menu->link != "") {
+		echo "<td>";
+		$menu->addLabel("", "none");
+		$menu->printMenu();
+		echo "</td>";
+	}
+
+echo '</tr>',
+	 '</table>',
+	 '</td>';
+    if(empty($SEARCH_SPIDER)) { 
+		echo '<td class="toplinks_right">',
+			 '<div align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
+		     'color_theme_dropdown()',
+		     '</div>',
+		     '</td>';
+    }
+echo '<tr>',
+	 '</table>';
 } ?>
-<!-- end header section -->
+<!-- end menu section -->
 <!-- begin content section -->
+<div id="content">
+

@@ -33,13 +33,12 @@ if (!defined('WT_WEBTREES')) {
 }
 
 $menubar = new MenuBar();
-?>
-<table id="toplinks">
-	<tr>
-		<td class="toplinks_left">
-		<table align="<?php print $TEXT_DIRECTION=="ltr"?"left":"right" ?>">
-			<tr> 
-<?php
+
+echo '<table id="toplinks">',
+     '<tr>',
+	 '<td class="toplinks_left">',
+	 '<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
+	 '<tr>';
 	$menu = $menubar->getGedcomMenu();
 	if($menu->link != "") {
 		echo "<td>";
@@ -112,19 +111,16 @@ $menubar = new MenuBar();
 		$menu->printMenu();
 		echo "</td>";
 	}
-?>
-			</tr>
-		</table>
-		</td>
-<?php if(empty($SEARCH_SPIDER)) { ?>
-		<td class="toplinks_right">
-		<div align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>" >
-		<?php echo color_theme_dropdown(); ?>
-		</div>
-		</td>
-<?php } ?>
-	</tr>
-	</table>
 
-<!-- close div for div id="header" -->
-<div id="content">
+echo '</tr>',
+	 '</table>',
+	 '</td>';
+    if(empty($SEARCH_SPIDER)) { 
+		echo '<td class="toplinks_right">',
+			 '<div align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
+		     'color_theme_dropdown()',
+		     '</div>',
+		     '</td>';
+    }
+echo '<tr>',
+	 '</table>';
