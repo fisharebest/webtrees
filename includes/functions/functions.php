@@ -197,7 +197,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $COMMON_NAMES_REMOVE;          $COMMON_NAMES_REMOVE          =get_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE');
 	global $COMMON_NAMES_THRESHOLD;       $COMMON_NAMES_THRESHOLD       =get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');
 	global $CONTACT_USER_ID;              $CONTACT_USER_ID              =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
-	global $DAYS_TO_SHOW_LIMIT;           $DAYS_TO_SHOW_LIMIT           =get_gedcom_setting($ged_id, 'DAYS_TO_SHOW_LIMIT');
 	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS =get_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS');
 	global $DISPLAY_JEWISH_GERESHAYIM;    $DISPLAY_JEWISH_GERESHAYIM    =get_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM');
 	global $DISPLAY_JEWISH_THOUSANDS;     $DISPLAY_JEWISH_THOUSANDS     =get_gedcom_setting($ged_id, 'DISPLAY_JEWISH_THOUSANDS');

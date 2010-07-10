@@ -2151,11 +2151,6 @@ case 'CONTACT_USER_ID':
 	$text=i18n::translate('The person to contact about the genealogical data on this site.');
 	break;
 
-case 'DAYS_TO_SHOW_LIMIT':
-	$title=i18n::translate('Upcoming events block day limit');
-	$text=i18n::translate('Enter the maximum number of days to show in Upcoming Events blocks.  This number cannot be greater than 30. If you enter a larger value, 30 will be used.<br /><br />The value you enter here determines how far ahead <b>webtrees</b> looks when searching for upcoming events.  The results of this search, done once daily, are copied into a temporary file.<br /><br />No Upcoming Events blocks on Index or Portal pages can request more days than this value.  The larger you make this, the longer it will take to build the daily database extract, and the longer it will take to display the block, even when you request to display a number of days less than this setting.');
-	break;
-
 case 'DEFAULT_PEDIGREE_GENERATIONS':
 	$title=i18n::translate('Pedigree generations');
 	$text=i18n::translate('Set the default number of generations to display on Descendancy and Pedigree charts.');
@@ -3284,7 +3279,7 @@ case 'day_month':
 
 case 'days_to_show':
 	$title=i18n::translate('Number of days to show');
-	$text=i18n::translate('Enter the number of days to show.  This number cannot be greater than <b>#DAYS_TO_SHOW_LIMIT#</b>.  If you enter a larger value, that limit will be used.<br /><br />The limit shown is set by the administrator in the GEDCOM configuration, Display and Layout section, Hide &amp; Show sub-section.');
+	$text=i18n::translate('This is the number of days that <b>webtrees</b> should use when searching for events.  This number cannot be greater than %d.', 30);
 	break;
 
 case 'def_gedcom_date':

@@ -146,7 +146,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          safe_POST('NEW_COMMON_NAMES_REMOVE'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       safe_POST('NEW_COMMON_NAMES_THRESHOLD'));
 	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              safe_POST('NEW_CONTACT_USER_ID'));
-	set_gedcom_setting(WT_GED_ID, 'DAYS_TO_SHOW_LIMIT',           safe_POST('NEW_DAYS_TO_SHOW_LIMIT'));
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', safe_POST('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_GERESHAYIM',    safe_POST_bool('NEW_DISPLAY_JEWISH_GERESHAYIM'));
 	set_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_THOUSANDS',     safe_POST_bool('NEW_DISPLAY_JEWISH_THOUSANDS'));
@@ -427,7 +426,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 </table>
 
 <input type="hidden" name="action" value="update" />
-<input type="hidden" name="old_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" />
 <?php
 	if (!empty($error_msg)) print "<br /><span class=\"error\">".$error_msg."</span><br />\n";
 	$i = 0;
@@ -1486,14 +1484,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>i18n::translate('hide'),true=>i18n::translate('show')), $HIDE_GEDCOM_ERRORS, 'tabindex="'.(++$i).'"'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Upcoming events block day limit'), help_link('DAYS_TO_SHOW_LIMIT'); ?>
-						</td>
-						<td class="optionbox width60">
-							<input type="text" name="NEW_DAYS_TO_SHOW_LIMIT" value="<?php print $DAYS_TO_SHOW_LIMIT; ?>" size="2" tabindex="<?php echo ++$i; ?>" />
 						</td>
 					</tr>
 					<tr>

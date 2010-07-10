@@ -45,9 +45,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ctype, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS, $DAYS_TO_SHOW_LIMIT, $SHOW_MARRIED_NAMES, $THEME_DIR;
+		global $ctype, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $WT_BLOCKS, $SHOW_MARRIED_NAMES, $THEME_DIR;
 
-		$days=get_block_setting($block_id, 'days', $DAYS_TO_SHOW_LIMIT);
+		$days=get_block_setting($block_id, 'days', 7);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$block=get_block_setting($block_id, 'block', true);
 
@@ -220,10 +220,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $DAYS_TO_SHOW_LIMIT;
-
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'days', safe_POST_integer('days', 1, $DAYS_TO_SHOW_LIMIT, $DAYS_TO_SHOW_LIMIT));
+			set_block_setting($block_id, 'days', safe_POST_integer('days', 1, 30, 7));
 			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table'), 'table'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
@@ -232,7 +230,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		$days=get_block_setting($block_id, 'days', $DAYS_TO_SHOW_LIMIT);
+		$days=get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Number of days to show'), help_link('days_to_show');
 		echo '</td><td class="optionbox">';

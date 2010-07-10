@@ -440,7 +440,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE);
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD);
 	@set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              WT_USER_ID);
-	@set_gedcom_setting($ged_id, 'DAYS_TO_SHOW_LIMIT',           $DAYS_TO_SHOW_LIMIT);
 	@set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS);
 	@set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM',    $DISPLAY_JEWISH_GERESHAYIM);
 	@set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_THOUSANDS',     $DISPLAY_JEWISH_THOUSANDS);

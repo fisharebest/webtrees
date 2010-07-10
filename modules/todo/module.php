@@ -134,8 +134,6 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $DAYS_TO_SHOW_LIMIT;
-
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'show_other',      safe_POST_bool('show_other'));
 			set_block_setting($block_id, 'show_unassigned', safe_POST_bool('show_unassigned'));
