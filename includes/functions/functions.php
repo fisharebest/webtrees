@@ -1383,20 +1383,20 @@ function gedcomsort($a, $b) {
 	return utf8_strcasecmp($a["title"], $b["title"]);
 }
 
-// ************************************************* START OF MISCELLANIOUS FUNCTIONS ********************************* //
+// ************************************************* START OF MISCELLANEOUS FUNCTIONS ********************************* //
 /**
  * Get relationship between two individuals in the gedcom
  *
- * function to calculate the relationship between two people it uses hueristics based on the
- * individuals birthdate to try and calculate the shortest path between the two individuals
- * it uses a node cache to help speed up calculations when using relationship privacy
- * this cache is indexed using the string "$pid1-$pid2"
- * @param string $pid1 the ID of the first person to compute the relationship from
- * @param string $pid2 the ID of the second person to compute the relatiohip to
- * @param bool $followspouse whether to add spouses to the path
- * @param int $maxlenght the maximim length of path
- * @param bool $ignore_cache enable or disable the relationship cache
- * @param int $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ * function to calculate the relationship between two people.  It uses heuristics based on the
+ * individual's birthyears to try and calculate the shortest path between the two individuals.
+ * It uses a node cache to help speed up calculations when using relationship privacy.
+ * This cache is indexed using the string "$pid1-$pid2"
+ * @param string $pid1 - the ID of the first person to compute the relationship from
+ * @param string $pid2 - the ID of the second person to compute the relatiohip to
+ * @param bool $followspouse = whether to add spouses to the path
+ * @param int $maxlength - the maximum length of path
+ * @param bool $ignore_cache - enable or disable the relationship cache
+ * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
 function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignore_cache=false, $path_to_find=0) {
 	global $start_time, $NODE_CACHE, $NODE_CACHE_LENGTH, $USE_RELATIONSHIP_PRIVACY;
@@ -1553,14 +1553,14 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		if (($maxlength==0)||(count($node["path"])<=$maxlength)) {
 			if ($node["pid"]==$pid2) {
 			} else {
-				//-- hueristic values
+				//-- heuristic values
 				$fatherh = 1;
 				$motherh = 1;
 				$siblingh = 2;
 				$spouseh = 2;
 				$childh = 3;
 
-				//-- generate heuristic values based of the birthdates of the current node and p2
+				//-- generate heuristic values based on the birthdates of the current node and p2
 				$indirec = find_gedcom_record($node["pid"], WT_GED_ID, WT_USER_CAN_EDIT);
 				$byear1 = -1;
 				$birthrec = get_sub_record(1, "1 BIRT", $indirec);
@@ -1863,7 +1863,7 @@ function cousin_name($n, $sex) {
 	switch ($sex) {
 	case 'M':
 		switch ($n) {
-		case  1: // I18N: Note that for Italian and Polish, "N'th cousins" are different to English "N'th cousins", and the software has already generated the correct "N" for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different to English, please contact the developers.
+		case  1: // I18N: Note that for Italian and Polish, "N'th cousins" are different from English "N'th cousins", and the software has already generated the correct "N" for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 		         return i18n::translate_c('MALE', 'first cousin');
 		case  2: return i18n::translate_c('MALE', 'second cousin');
 		case  3: return i18n::translate_c('MALE', 'third cousin');
@@ -2384,7 +2384,10 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	// TODO: these are heavily based on english relationship names.
 	// We need feedback from other languages to improve this.
 	// Dutch has special names for 8 generations of great-great-..., so these need explicit naming
+	// Spanish has special names for four but also has two different numbering patterns
+
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
+	    // siblings of direct ancestors
 		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
 		$bef_last=substr($path, -6, 3);
@@ -2483,6 +2486,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
+	    // direct descendants of siblings
 		$down=strlen($match[1])/3+1; // Add one, as we count generations from the common ancestor
 		$last=substr($path, -3, 3);
 		$first=substr($path, 0, 3);
@@ -2640,6 +2644,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
+	    // direct ancestors
 		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
 		switch ($up) {
@@ -2698,6 +2703,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'par': return i18n::translate('great x%d grandparent', $up-3);
 				}
 			case 'it': // Source: Michele Locati
+			case 'es': // Source: Wes Groleau
 				switch ($last) {
 				case 'mot': return i18n::translate('great x%d grandmother', $up);
 				case 'fat': return i18n::translate('great x%d grandfather', $up);
@@ -2715,6 +2721,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^((?:son|dau|chi)*)$/', $path, $match)) {
+        // direct descendants
 		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
 		switch ($up) {
@@ -2774,6 +2781,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				}
 			case 'en':
 			case 'it': // Source: Michele Locati
+			case 'es': // Source: Wes Groleau (adding doesn't change behavior, but needs to be better researched)
 			default:
 				switch ($last) {
 					
@@ -2786,9 +2794,13 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
+	    // cousins in English
 		$up  =strlen($match[1])/3;
 		$down=strlen($match[2])/3;
 		$last=substr($path, -3, 3);
+		$cousin=min($up, $down);  // Moved out of switch--en/default case--so that
+		$removed=abs($down-$up);  // Spanish (and other languages) can use it, too
+
 		// Different languages have different rules for naming cousins.  For example,
 		// an english "second cousin once removed" is a polish "cousin of 7th degree".
 		//
@@ -2812,8 +2824,6 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			break;
 		case 'en': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
 		default:
-			$cousin=min($up, $down);
-			$removed=abs($down-$up);
 			switch ($removed) {
 			case 0:
 				switch ($last) {
@@ -2905,25 +2915,26 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 
-	// Try to the split the relationship into sub-relationships.  e.g. third-cousin's great-uncle's fourth-cousin.
+	// Try to split the relationship into sub-relationships, e.g., third-cousin's wife's fourth-cousin.
 	// This next block of code is experimental.  If it doesn't work, we can remove it.....
 	if (preg_match('/^(.*)(hus|wif|spo)(.*)/', $path, $match)) {
 		if ($match[1]=='') {
 			return i18n::translate(
-				// I18N: A complex relationship, such as "second cousin's great-uncle"
+				// I18N: A complex relationship, such as "husband's great-uncle"
 				'%1$s\'s %2$s',
 				get_relationship_name_from_path($match[2], null, null), // TODO: need the actual people
 				get_relationship_name_from_path($match[3], null, null)
 			);
 		} elseif ($match[3]=='') {
 			return i18n::translate(
+			    // I18N: A complex relationship, such as "second cousin's wife"
 				'%1$s\'s %2$s',
 				get_relationship_name_from_path($match[1], null, null),
 				get_relationship_name_from_path($match[2], null, null)
 			);
 		} else {
 			return i18n::translate(
-				// I18N: A complex relationship, such as "second cousin's great-uncle's third cousin"
+				// I18N: A complex relationship, such as "second cousin's husband's third cousin"
 				'%1$s\'s %2$s\'s %3$s',
 				get_relationship_name_from_path($match[1], null, null),
 				get_relationship_name_from_path($match[2], null, null),
@@ -2935,7 +2946,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	// We don't have a specific name for this relationship, and we can't match it with a pattern.
 	// Just spell it out.
 
-	// TODO: long relationships are a bit ridiculous - although tecnically correct.
+	// TODO: long relationships are a bit ridiculous - although technically correct.
 	// Perhaps translate long paths as "a distant blood relative", or "a distant relative by marriage"
 	switch (substr($path, -3, 3)) {
 	case 'mot': $relationship=i18n::translate('mother'  ); break;
@@ -3126,7 +3137,7 @@ function get_query_string() {
 }
 
 //This function works with a specified generation limit.  It will completely fill
-//the pdf witout regard to if a known person exists in each generation.
+//the pdf without regard to whether a known person exists in each generation.
 //ToDo: If a known individual is found in a generation, add prior empty positions
 //and add remaining empty spots automatically.
 function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_empty=false) {
