@@ -15,6 +15,10 @@ html {
 	direction: rtl;
 	white-space: normal;
 }
+
+.toplinks_left {
+padding-right: 10px;
+}
 #footer {
 	text-align: center;
 }
