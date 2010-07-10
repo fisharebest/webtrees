@@ -11,6 +11,9 @@ body {
 	direction: rtl;
 	text-align: right;
 }
+.toplinks_left {
+padding-right: 10px;
+}
 html {
 	direction: rtl;
 	white-space: normal;
