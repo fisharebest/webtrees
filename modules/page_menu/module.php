@@ -63,22 +63,21 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 		} else {
 			$ff = '';
 		}
-		if (method_exists($controller, 'getOtherMenu')) {	
-			$menu = $controller->getOtherMenu();
+		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
+			$menu = $controller->getEditMenu();
 			if ($menu) {
 				$menu->addClass('menuitem'.$ff, 'menuitem_hover'.$ff, 'submenu'.$ff, 'icon_large_gedcom');
 				$menu->addLabel($menu->label, 'down');
+				$menu->addIcon($menu->icon);
 			}
 		}
-		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
-			$editmenu = $controller->getEditMenu();
+		if (method_exists($controller, 'getOtherMenu')) {	
+			$othermenu = $controller->getOtherMenu();
 			if ($menu==null) {
-				$menu = $editmenu;
+				$menu = $othermenu;
 			} else {
-				$menu->addLabel($editmenu->label, 'down');
-				$menu->addIcon($editmenu->icon);
 				$menu->addSeparator();
-				foreach ($editmenu->submenus as $sub) {
+				foreach ($othermenu->submenus as $sub) {
 					$menu->addSubMenu($sub);
 				}
 			}
