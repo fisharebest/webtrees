@@ -704,7 +704,7 @@ case 'addnewsource':
 			<td class="optionbox wrap"><input tabindex="<?php echo $tabkey; ?>" type="text" name="TITL" id="TITL" value="" size="60" /> <?php print_specialchar_link("TITL", false); ?></td></tr>
 			<?php $tabkey++; ?>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
-			<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo i18n::translate('_HEB'), help_link('_HEB'); ?></td>
+			<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo translate_fact('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input tabindex="<?php echo $tabkey; ?>" type="text" name="_HEB" id="_HEB" value="" size="60" /> <?php print_specialchar_link("_HEB", false); ?></td></tr>
 			<?php $tabkey++; ?>
 			<?php } ?>
@@ -1167,7 +1167,7 @@ case 'addnewrepository':
 			<td class="optionbox wrap"><input tabindex="<?php echo $tabkey; ?>" type="text" name="NAME" id="NAME" value="" size="40" maxlength="255" /> <?php print_specialchar_link("NAME", false); ?></td></tr>
 			<?php $tabkey++; ?>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
-			<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo i18n::translate('_HEB'), help_link('_HEB'); ?></td>
+			<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo translate_fact('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input tabindex="<?php echo $tabkey; ?>" type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255" /> <?php print_specialchar_link("_HEB", false); ?></td></tr>
 			<?php $tabkey++; ?>
 			<?php } ?>

@@ -1547,7 +1547,7 @@ function format_parents_age($pid, $birth_date=null) {
 						// Highlight mothers who die in childbirth or shortly afterwards
 						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
 							$class='parentdeath';
-							$title=i18n::translate('_DEAT_MOTH');
+							$title=translate_fact('_DEAT_MOTH');
 						} else {
 							$title=i18n::translate('Mother\'s age');
 						}
@@ -1556,7 +1556,7 @@ function format_parents_age($pid, $birth_date=null) {
 						// Highlight fathers who die before the birth
 						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
 							$class='parentdeath';
-							$title=i18n::translate('_DEAT_FATH');
+							$title=translate_fact('_DEAT_FATH');
 						} else {
 							$title=i18n::translate('Father\'s age');
 						}
@@ -1816,7 +1816,7 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 			$html.='<br />'.i18n::translate('Status').': '.trim($match[1]);
 			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
 				$date=new GedcomDate($match[1]);
-				$html.=', '.i18n::translate('STAT:DATE').': '.$date->Display(false);
+				$html.=', '.translate_fact('STAT:DATE').': '.$date->Display(false);
 			}
 		}
 	}
