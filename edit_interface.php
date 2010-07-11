@@ -1266,7 +1266,7 @@ case 'updateraw':
 	$newgedrec = trim($newgedrec);
 	if (!empty($newgedrec)) {
 		replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-		echo "<br /><br />", i18n::translate('Update successful');
+		$success = true;
 	}
 	break;
 	
@@ -1481,7 +1481,6 @@ case 'update':
 		
 		replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
 		$success = true;
-		//echo "<br /><br />", i18n::translate('Update successful'), " - ", $pid;
 	} // end foreach $cens_pids  -------------
 	break;
 
@@ -2492,7 +2491,7 @@ case 'changefamily_update':
 
 	if ($updated) {
 		replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
-		echo "<br /><br />", i18n::translate('Update successful');
+		$success = true;
 	}
 	break;
 //------------------------------------------------------------------------------
