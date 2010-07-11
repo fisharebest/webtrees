@@ -53,11 +53,11 @@ if (!WT_USER_IS_ADMIN) {
 <link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
 <script type="text/javascript">
 <!--
-function edit_close() {
-	if (window.opener.showchanges) window.opener.showchanges();
+function edit_close(newurl) {
+	if (newurl) window.opener.location=newurl;
+	else if (window.opener.showchanges) window.opener.showchanges();
 	window.close();
 }
-
 function showchanges() {
 	updateMap();
 }
@@ -89,6 +89,7 @@ function getHighestIndex() {
 
 $where_am_i=place_id_to_hierarchy($placeid);
 $level=count($where_am_i);
+$link = 'module.php?mod=googlemap&mod_action=places&parent='.$placeid;
 
 if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 	$statement=
@@ -102,9 +103,9 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
+		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('{$link}');\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
@@ -121,9 +122,9 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
+		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('{$link}');\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
@@ -662,15 +663,6 @@ if ($action=="add") {
 		language_filter = lang;
 		magnify = mag;
 	}
-
-	function edit_close(newurl) {
-		if (newurl)
-			window.opener.location=newurl;
-		else
-			if (window.opener.showchanges)
-				window.opener.showchanges();
-		window.close();
-	}
 	//-->
 </script>
 
@@ -785,7 +777,6 @@ if ($action=="add") {
 	<input name="save2" type="submit" value="<?php echo i18n::translate('Save');?>" /><br />
 </form>
 <?php
-$link = 'module.php?mod=googlemap&mod_action=places&parent='.$placeid;
 echo "<center><br /><br /><br /><a href=\"javascript:;\" onclick=\"edit_close('{$link}')\">", i18n::translate('Close Window'), "</a><br /></center>\n";
 
 print_simple_footer();
