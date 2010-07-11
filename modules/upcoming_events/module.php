@@ -123,9 +123,10 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$days=get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Number of days to show'), help_link('days_to_show');
+		echo i18n::translate('Number of days to show'); //help_link('days_to_show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '" />';
+		echo ' <i>', i18n::translate('(Cannot be greater than 30)') ,'</i>';
 		echo '</td></tr>';
 
 		$filter=get_block_setting($block_id, 'filter',     true);
@@ -137,21 +138,21 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show only Births, Deaths, and Marriages?'), help_link('basic_or_all');
+		echo i18n::translate('Show only Births, Deaths, and Marriages?'); // help_link('basic_or_all');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation style'), help_link('style');
+		echo i18n::translate('Presentation style'); // help_link('style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Sort Style'), help_link('sort_style');
+		echo i18n::translate('Sort Style'); // help_link('sort_style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array('alpha'=>i18n::translate('Alphabetically'), 'anniv'=>i18n::translate('By Anniversary')), null, $sortStyle, '');
 		echo '</td></tr>';
