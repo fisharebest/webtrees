@@ -69,9 +69,9 @@ class i18n {
 					$prefs=array();
 				}
 				if (WT_GED_ID) {
-					// TODO: this value isn't currently stored in the DB!
+					// Add the gedcom's default language as a low-priority
 					$locale=get_gedcom_setting(WT_GED_ID, 'language');
-					if (array_key_exists($locale, $installed_languages)) {
+					if (!array_key_exists($locale, $installed_languages)) {
 						$prefs[]=$locale.';q=0.2';
 					}
 				}
@@ -82,7 +82,7 @@ class i18n {
 				}
 				// Ensure there is a fallback.  en is always available
 				if (!array_key_exists('en', $prefs2)) {
-					$prefs2['en']=0.0;
+					$prefs2['en']=0.01;
 				}
 				arsort($prefs2);
 				foreach (array_keys($prefs2) as $pref) {
