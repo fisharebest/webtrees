@@ -623,7 +623,7 @@ class IndividualController extends BaseController {
 	*/
 	function canShowOtherMenu() {
 		global $SHOW_GEDCOM_RECORD;
-		if ($this->indi->canDisplayDetails() && ($SHOW_GEDCOM_RECORD || array_key_exists('clippings', WT_Module::getActiveModules())))
+		if ($this->indi->canDisplayDetails() && $SHOW_GEDCOM_RECORD)
 			return true;
 		return false;
 	}
@@ -638,26 +638,15 @@ class IndividualController extends BaseController {
 		else $ff="";
 		//-- main other menu item
 		$menu = new Menu(i18n::translate('Other'));
+		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 		if ($SHOW_GEDCOM_RECORD) {
 			if (!empty($WT_IMAGES["gedcom"]["small"])) $menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["large"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
 			else $menu->addOnclick("return show_gedcom_record('');");
-		} else {
-			if (!empty($WT_IMAGES["clippings"]["small"])) $menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
-			$menu->addLink(encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=indi"));
-		}
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
-		if ($SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
 			if (!empty($WT_IMAGES["gedcom"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) $submenu->addOnclick("return show_gedcom_record('new');");
 			else $submenu->addOnclick("return show_gedcom_record();");
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
-			$menu->addSubmenu($submenu);
-		}
-		if ($this->indi->canDisplayDetails() && array_key_exists('clippings', WT_Module::getActiveModules())) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=indi"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}

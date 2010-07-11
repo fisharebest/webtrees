@@ -451,7 +451,7 @@ class FamilyController extends BaseController {
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 
-			// other menu
+		// other menu
 		$menu = new Menu(i18n::translate('Other'));
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		if ($SHOW_GEDCOM_RECORD) {
@@ -461,32 +461,16 @@ class FamilyController extends BaseController {
 			} else {
 				$menu->addLink("javascript:show_gedcom_record();");
 			}
-		} else {
-			if (!empty($WT_IMAGES["clippings"]["small"])) {
-				$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['clippings']['small']}");
+			// other / view_gedcom
+			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
+			if ($this->show_changes && WT_USER_CAN_EDIT) {
+				$submenu->addLink("javascript:show_gedcom_record('new');");
+			} else {
+				$submenu->addLink("javascript:show_gedcom_record();");
 			}
-			$menu->addLink(encode_url('module.php?mod=clippings&mod_action=index&action=add&id='.$this->getFamilyID().'&type=fam'));
-		}
-		if ($SHOW_GEDCOM_RECORD) {
-				// other / view_gedcom
-				$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-				if ($this->show_changes && WT_USER_CAN_EDIT) {
-					$submenu->addLink("javascript:show_gedcom_record('new');");
-				} else {
-					$submenu->addLink("javascript:show_gedcom_record();");
-				}
-				$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
-				$menu->addSubmenu($submenu);
-		}
-		if (array_key_exists('clippings', WT_Module::getActiveModules())) {
-				// other / add_to_cart
-				$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url('module.php?mod=clippings&mod_action=index&action=add&id='.$this->getFamilyID().'&type=fam'));
-				if (!empty($WT_IMAGES["clippings"]["small"])) {
-					$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['clippings']['small']}");
-				}
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
-				$menu->addSubmenu($submenu);
+			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+			$menu->addSubmenu($submenu);
 		}
 		if ($this->display && WT_USER_ID) {
 			// other / add_to_my_favorites

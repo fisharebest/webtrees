@@ -297,7 +297,7 @@ class MediaController extends BaseController{
 	*/
 	function canShowOtherMenu() {
 		global $SHOW_GEDCOM_RECORD;
-		if ($this->mediaobject->canDisplayDetails() && ($SHOW_GEDCOM_RECORD || array_key_exists('clippings', WT_Module::getActiveModules())))
+		if ($this->mediaobject->canDisplayDetails() && $SHOW_GEDCOM_RECORD)
 			return true;
 		return false;
 	}
@@ -321,11 +321,6 @@ class MediaController extends BaseController{
 			else
 				$menu->addOnclick("return show_gedcom_record('');");
 		}
-		else {
-			if (!empty($WT_IMAGES["clippings"]["small"]))
-				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
-			$menu->addLink(encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=obje"));
-		}
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 		if ($this->canShowGedcomRecord()) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
@@ -333,13 +328,6 @@ class MediaController extends BaseController{
 				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) $submenu->addOnclick("return show_gedcom_record('new');");
 			else $submenu->addOnclick("return show_gedcom_record();");
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
-			$menu->addSubmenu($submenu);
-		}
-		if ($this->mediaobject->canDisplayDetails() && array_key_exists('clippings', WT_Module::getActiveModules())) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->pid}&type=obje"));
-			if (!empty($WT_IMAGES["clippings"]["small"]))
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}

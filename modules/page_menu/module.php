@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -75,7 +75,7 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 			$othermenu = $controller->getOtherMenu();
 			if ($menu==null) {
 				$menu = $othermenu;
-			} else {
+			} else if ($othermenu) {
 				$menu->addSeparator();
 				foreach ($othermenu->submenus as $sub) {
 					$menu->addSubMenu($sub);

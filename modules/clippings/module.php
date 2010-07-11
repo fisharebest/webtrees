@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -32,6 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 require_once WT_ROOT.'includes/classes/class_module.php';
+require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	// Extend class WT_Module
@@ -66,7 +67,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	
 	// Implement WT_Module_Menu
 	public function getMenu() { 
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER, $controller;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ($SEARCH_SPIDER) {
@@ -78,7 +79,37 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["large"]);
 		}
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_clippings");
-
+		if (isset($controller->indi) && $controller->indi->canDisplayDetails()) {
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->pid}&type=indi"));
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$menu->addSubmenu($submenu);
+		} else if (isset($controller->family) && $controller->family->canDisplayDetails()) {
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->famid}&type=fam"));
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$menu->addSubmenu($submenu);
+		} else if (isset($controller->mediaobject) && $controller->mediaobject->canDisplayDetails()) {
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->mid}&type=obje"));
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$menu->addSubmenu($submenu);
+		} else if (isset($controller->source) && $controller->source->canDisplayDetails()) {
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->sid}&type=sour"));
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$menu->addSubmenu($submenu);
+		} else if (isset($controller->note) && $controller->note->canDisplayDetails()) {
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->nid}&type=note"));
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$menu->addSubmenu($submenu);
+		} else if (isset($controller->repository) && $controller->repository->canDisplayDetails()) {
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->nid}&type=repo"));
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$menu->addSubmenu($submenu);
+		}
 		return $menu;
 	}
 
@@ -94,7 +125,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarContent() {
-		require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 		global $WT_IMAGE_DIR, $WT_IMAGES;
 		global $cart, $GEDCOM;
 
@@ -134,7 +164,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	// Impelement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		global $GEDCOM, $cart;
-		require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 		$controller = new ClippingsController();
 		$this->controller = $controller;
 		$add = safe_GET_xref('add','');
