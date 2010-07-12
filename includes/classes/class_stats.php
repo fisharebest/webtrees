@@ -864,14 +864,18 @@ class stats {
 	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
 		global $listDir, $TEXT_DIRECTION;
 		if ($birth_death == 'MARR') {
-			$query_field = "'".str_replace('|', "','", WT_EVENTS_MARR)."'";
+			//$query_field = "'".str_replace('|', "','", WT_EVENTS_MARR)."'";
+			$query_field = "'MARR'";
 		} else if ($birth_death == 'DIV') {
-			$query_field = "'".str_replace('|', "','", WT_EVENTS_DIV)."'";
+			//$query_field = "'".str_replace('|', "','", WT_EVENTS_DIV)."'";
+			$query_field = "'DIV'";
 		} else if ($birth_death == 'BIRT') {
-			$query_field = "'".str_replace('|', "','", WT_EVENTS_BIRT)."'";
+			//$query_field = "'".str_replace('|', "','", WT_EVENTS_BIRT)."'";
+			$query_field = "'BIRT'";
 		} else {
 			$birth_death = 'DEAT';
-			$query_field = "'".str_replace('|', "','", WT_EVENTS_DEAT)."'";
+			//$query_field = "'".str_replace('|', "','", WT_EVENTS_DEAT)."'";
+			$query_field = "'DEAT'";
 		}
 		if ($life_dir == 'ASC') {
 			$dmod = 'MIN';
@@ -880,13 +884,11 @@ class stats {
 			$life_dir = 'DESC';
 		}
 		$rows=self::_runSQL(''
-		/*//old
 			."SELECT d_year, d_type, d_fact, d_gid"
 			." FROM `##dates`"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0"
 			." ORDER BY d_julianday1 {$life_dir}, d_type"
-		*/
-		//testing
+		/*//testing - too slow
 			.' SELECT'
 				.' d2.d_year,'
 				.' d2.d_type,'
@@ -921,6 +923,7 @@ class stats {
 				.' )'
 			.' ORDER BY'
 				." d_julianday1 {$life_dir}, d_type"
+		*/
 		, 1);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
@@ -1402,8 +1405,7 @@ class stats {
 				.$sex_search
 			.' ORDER BY'
 				.' age DESC'
-		*/
-		//testing
+		//testing - too slow
 			.' SELECT'
 				.' i_id AS id,'
 				.' death.death_jd-birth.birth_jd AS age'
@@ -1422,6 +1424,28 @@ class stats {
 			.' JOIN `##individuals` ON (d_gid=i_id AND d_file=i_file)'
 			.' WHERE'
 				." i_file={$this->_ged_id} AND"
+				.$sex_search
+			.' ORDER BY'
+				.' age DESC'
+		*/
+		// use only BIRT and DEAT
+			.' SELECT'
+				.' death.d_gid AS id,'
+				.' death.d_julianday2-birth.d_julianday1 AS age'
+			.' FROM'
+				." `##dates` AS death,"
+				." `##dates` AS birth,"
+				." `##individuals` AS indi"
+			.' WHERE'
+				.' indi.i_id=birth.d_gid AND'
+				.' birth.d_gid=death.d_gid AND'
+				." death.d_file={$this->_ged_id} AND"
+				.' birth.d_file=death.d_file AND'
+				.' birth.d_file=indi.i_file AND'
+				." birth.d_fact='BIRT' AND"
+				." death.d_fact='DEAT' AND"
+				.' birth.d_julianday1<>0 AND'
+				.' death.d_julianday1>birth.d_julianday2 AND'
 				.$sex_search
 			.' ORDER BY'
 				.' age DESC'
@@ -1915,8 +1939,7 @@ class stats {
 				." i_sex='{$sex}'"
 			.' ORDER BY'
 				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
-		*/
-		//testing
+		//testing - too slow
 			. 'SELECT'
 				.' fam.f_id AS famid,'
 				." fam.{$sex_field},"
@@ -1941,6 +1964,33 @@ class stats {
 				.' ((birth.d_julianday1 <> 0) OR (birth_act.d_julianday1 <> 0)) AND'
 				.' ((married.d_julianday2 > birth.d_julianday1) OR (married.d_julianday2 > birth_act.d_julianday1)) AND'
 				.' birth.d_julianday1 <= birth_act.d_julianday1 AND'
+				." i_sex='{$sex}'"
+			.' ORDER BY'
+				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
+		*/
+		// use only BIRT and MARR
+			.' SELECT'
+				.' fam.f_id AS famid,'
+				." fam.{$sex_field},"
+				.' married.d_julianday2-birth.d_julianday1 AS age,'
+				.' indi.i_id AS i_id'
+			.' FROM'
+				." `##families` AS fam"
+			.' LEFT JOIN'
+				." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
+			.' LEFT JOIN'
+				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
+			.' LEFT JOIN'
+				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
+			.' WHERE'
+				.' birth.d_gid = indi.i_id AND'
+				.' married.d_gid = fam.f_id AND'
+				." indi.i_id = fam.{$sex_field} AND"
+				." fam.f_file = {$this->_ged_id} AND"
+				." birth.d_fact = 'BIRT' AND"
+				." married.d_fact = 'MARR' AND"
+				.' birth.d_julianday1 <> 0 AND'
+				.' married.d_julianday2 > birth.d_julianday1 AND'
 				." i_sex='{$sex}'"
 			.' ORDER BY'
 				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
