@@ -40,7 +40,7 @@ case 'yahrzeit':
 	$text.='</li><li>';
 	$text.=i18n::translate('Presentation style: Either a simple text "List"or a "Table" format.');
 	$text.='</li><li>';
-	$text.=i18n::translate('Add a scrollbar when block contents grow: If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set your theme\'s style sheet, with scroll bars to view long lists  ');
+	$text.=i18n::translate('Add a scrollbar when block contents grow: If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height in set your theme\'s style sheet, with scroll bars to view long lists  ');
 	$text.='</li></ul>';
 	break;
 }

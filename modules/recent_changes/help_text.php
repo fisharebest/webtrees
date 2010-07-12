@@ -40,7 +40,7 @@ case 'recent_changes':
 	$text.='</li><li>';
 	$text.=i18n::translate('Should this block be hidden when it is empty?: Provides the option to hide the block if there are no changes to display.');
 	$text.='</li><li>';
-	$text.=i18n::translate('Add a scrollbar when block contents grow: If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set your theme\'s style sheet, with scroll bars to view long lists  ');
+	$text.=i18n::translate('Add a scrollbar when block contents grow: If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists  ');
 	$text.='</li></ul>';
 	break;
 }

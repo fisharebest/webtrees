@@ -4231,7 +4231,7 @@ default:
 	$title=i18n::translate('Help');
 	$text=i18n::translate('The help text has not been written for this item.');
 	// If we've been called from a module, allow the module to provide the help text
-	$mod=safe_GET('mod', WT_REGEX_ALPHANUM);
+	$mod=safe_GET('mod', '[A-Za-z0-9_]+');
 	if (file_exists(WT_ROOT.'modules/'.$mod.'/help_text.php')) {
 		require WT_ROOT.'modules/'.$mod.'/help_text.php';
 	}
