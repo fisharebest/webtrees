@@ -34,5 +34,13 @@ switch ($help) {
 case 'yahrzeit':
 	$title=i18n::translate('Yahrzeiten block');
 	$text=i18n::translate('This block shows you Yahrzeiten that are coming up in the near future.<br /><br />Yahrzeiten (singular: Yahrzeit) are anniversaries of a person\'s death.  These anniversaries are observed in the Jewish tradition; they are no longer in common use in other traditions.  «Yahrzeit» can also be spelled «Jahrzeit» or «Yartzeit».<br /><br />The Administrator determines how far ahead the block will look.  You can further refine the block\'s display of upcoming Yahrzeiten through configuration options.');
+	$text.='<ul><li>';
+	$text.=i18n::translate('Number of days to show: This is the number of days that <b>webtrees</b> should use when searching for events');
+	$text.=' (<i>'.i18n::plural('maximum %d day', 'maximum %d days', 30, 30).'</i>).';
+	$text.='</li><li>';
+	$text.=i18n::translate('Presentation style: Either a simple text "List"or a "Table" format.');
+	$text.='</li><li>';
+	$text.=i18n::translate('Add a scrollbar when block contents grow: If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set your theme\'s style sheet, with scroll bars to view long lists  ');
+	$text.='</li></ul>';
 	break;
 }
