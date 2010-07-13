@@ -257,9 +257,10 @@ class NoteController extends BaseController {
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 		//-- main other menu item
-		$menu = new Menu(i18n::translate('Other'));
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		$menu = null;
 		if ($SHOW_GEDCOM_RECORD) {
+			$menu = new Menu(i18n::translate('Other'));
+			$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
 			if ($this->show_changes && $this->userCanEdit()) {
 				$menu->addLink("javascript:show_gedcom_record('new');");
@@ -278,6 +279,10 @@ class NoteController extends BaseController {
 			$menu->addSubmenu($submenu);
 		}
 		if ($this->note->canDisplayDetails() && !empty($this->uname)) {
+			if (!$SHOW_GEDCOM_RECORD) {
+				$menu = new Menu(i18n::translate('Other'));
+				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			}
 			// other / add_to_my_favorites
 			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("note.php?action=addfav&nid={$this->nid}&gid={$this->nid}"));
 			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");

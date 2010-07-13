@@ -450,11 +450,11 @@ class FamilyController extends BaseController {
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
-
-		// other menu
-		$menu = new Menu(i18n::translate('Other'));
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		//-- main other menu item
+		$menu = null;
 		if ($SHOW_GEDCOM_RECORD) {
+			$menu = new Menu(i18n::translate('Other'));
+			$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$menu->addLink("javascript:show_gedcom_record('new');");
@@ -473,6 +473,10 @@ class FamilyController extends BaseController {
 			$menu->addSubmenu($submenu);
 		}
 		if ($this->display && WT_USER_ID) {
+			if (!$SHOW_GEDCOM_RECORD) {
+				$menu = new Menu(i18n::translate('Other'));
+				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			}
 			// other / add_to_my_favorites
 			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url('family.php?action=addfav&famid='.$this->getFamilyID().'&gid='.$this->getFamilyID()));
 			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");

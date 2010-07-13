@@ -637,9 +637,10 @@ class IndividualController extends BaseController {
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 		//-- main other menu item
-		$menu = new Menu(i18n::translate('Other'));
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+		$menu = null;
 		if ($SHOW_GEDCOM_RECORD) {
+			$menu = new Menu(i18n::translate('Other'));
+			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
 			if (!empty($WT_IMAGES["gedcom"]["small"])) $menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["large"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
 			else $menu->addOnclick("return show_gedcom_record('');");
@@ -651,6 +652,10 @@ class IndividualController extends BaseController {
 			$menu->addSubmenu($submenu);
 		}
 		if ($this->indi->canDisplayDetails() && WT_USER_NAME) {
+			if (!$SHOW_GEDCOM_RECORD) {
+				$menu = new Menu(i18n::translate('Other'));
+				$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+			}
 			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url($this->indi->getLinkUrl()."&action=addfav&gid={$this->pid}"));
 			if (!empty($WT_IMAGES["favorites"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");

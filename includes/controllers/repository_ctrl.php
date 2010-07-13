@@ -254,9 +254,10 @@ class RepositoryController extends BaseController {
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 		//-- main other menu item
-		$menu = new Menu(i18n::translate('Other'));
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		$menu = null;
 		if ($SHOW_GEDCOM_RECORD) {
+			$menu = new Menu(i18n::translate('Other'));
+			$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
 			if ($this->show_changes && $this->userCanEdit()) {
 				$menu->addLink("javascript:show_gedcom_record('new');");
@@ -274,15 +275,11 @@ class RepositoryController extends BaseController {
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 			$menu->addSubmenu($submenu);
 		}
-		if (array_key_exists('clippings', WT_Module::getActiveModules())) {
-			// other / add_to_cart
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$this->rid}&type=repo"));
-			if (!empty($WT_IMAGES["clippings"]["small"]))
-				$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['clippings']['small']}");
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
-			$menu->addSubmenu($submenu);
-		}
 		if ($this->repository->canDisplayDetails() && !empty($this->uname)) {
+			if (!$SHOW_GEDCOM_RECORD) {
+				$menu = new Menu(i18n::translate('Other'));
+				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			}
 			// other / add_to_my_favorites
 			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("repo.php?action=addfav&rid={$this->rid}&gid={$this->rid}"));
 			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
