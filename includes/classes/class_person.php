@@ -544,7 +544,7 @@ class Person extends GedcomRecord {
 			}
 		}
 		// I18N: This is an abbreviation for a number.  i.e. #7 means number 7
-		if ($counter) $label .= '<div class="'.strrev($TEXT_DIRECTION).'">'.i18n::translate('#%d', $counter).'</div>';
+		if ($counter) $label .= '<div class="'.$TEXT_DIRECTION.'">'.i18n::translate('#%d', $counter).'</div>';
 		$label .= $this->label;
 		if ($gap!=0 && $counter<1) $label .= '<br />&nbsp;';
 		return $label;
