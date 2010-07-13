@@ -3853,7 +3853,7 @@ case 'password':
 
 case 'PGV_WIZARD':
 	$title=i18n::translate('PhpGedView to webtrees transfer wizard');
-	$text =i18n::translate('This link will start the PGV to <b>webtrees</b> wizard. This is an automated process to assist administrators making the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other databse information directly to your new <b>webtrees</b> database. The following requirements are necessary:');
+	$text =i18n::translate('The PGV to <b>webtrees</b> wizard is an automated process to assist administrators make the move from a PGV installation to a new <b>webtrees</b> one. It will transfer all PGV GEDCOM and other databse information directly to your new <b>webtrees</b> database. The following requirements are necessary:');
 	$text .= '<ul><li>';
 	$text .= i18n::translate('webtrees database must be on the same server as PGV\'s');
 	$text .= '</li><li>';
@@ -3866,7 +3866,9 @@ case 'PGV_WIZARD':
 	$text .= i18n::translate('The current webtrees admin username must be the same as an existing PGV admin username');
 	$text .= '</li><li>';
 	$text .= i18n::translate('All existing PGV users must have distinct email addresses');
-	$text .= '</li></ul>';	
+	$text .= '</li></ul><p>';	
+	$text .= i18n::translate('<b>Important Note:</b> The transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.');
+	$text .= '</p>';	
 	break;
 
 	case 'phpinfo':

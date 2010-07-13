@@ -111,7 +111,11 @@ if ($PGV_PATH) {
 if ($error || empty($PGV_PATH)) {
 	// Prompt for location of PhpGedView installation
 	echo '<div id="container">';
-	echo '<h2>', i18n::translate('PhpGedView to <b>webtrees</b> transfer wizard'), '</h2>';
+	echo 
+		'<h2>',
+		i18n::translate('PhpGedView to <b>webtrees</b> transfer wizard'),
+		help_link('PGV_WIZARD'),
+		'</h2>';
 	if ($error) {
 		echo '<p class="bad">', $error, '</p>';
 	}
@@ -121,17 +125,6 @@ if ($error || empty($PGV_PATH)) {
 		'<dl>',
 		'<dt>',i18n::translate('Installation directory'), '</dt>',
 		'<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($PGV_PATH).'"><dd>',
-		'</dl>';
-	// Get media options
-	echo
-		'<p>', i18n::translate('Media item options (select one):'), '</p>',
-		'<dl>',
-		'<dt>',i18n::translate('Use existing PGV media directory for <b>webtrees</b>'), '</dt>',
-		'<dd>', edit_field_yes_no('media', get_gedcom_setting(WT_GED_ID, 'media')), '</dd>',
-		'<dt>',i18n::translate('Copy media from PGV media directory to <b>webtrees</b> media directory'), '</dt>',
-		'<dd>', edit_field_yes_no('media', get_gedcom_setting(WT_GED_ID, 'media')), '</dd>',
-		'<dt>',i18n::translate('Move media from PGV media directory to <b>webtrees</b> media directory'), '</dt>',
-		'<dd>', edit_field_yes_no('media', get_gedcom_setting(WT_GED_ID, 'media')), '</dd>',
 		'</dl>';
 	// Finish
 	echo '<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>';
