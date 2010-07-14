@@ -1087,7 +1087,7 @@ function print_media_table($datalist, $legend="") {
 		//echo "<br />", $media->getFiletype();
 		//echo "&nbsp;&nbsp;", $media->width, "x", $media->height;
 		//echo "&nbsp;&nbsp;", $media->getFilesize(), "kB";
-		print_fact_notes("1 NOTE ".$media->getNote(), 1);
+		if ($media->getNote()) echo "<br />", print_fact_notes("1 NOTE ".$media->getNote(), 1);
 		echo "</td>";
 
 		//-- Linked INDIs
