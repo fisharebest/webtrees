@@ -162,11 +162,11 @@ class MediaController extends BaseController{
 	* @return string the title of the page to go in the <title> tags
 	*/
 	function getPageTitle() {
-		if (!is_null($this->mediaobject)) {
-			$name = $this->mediaobject->getFullName();
-			return $name." - ".$this->mediaobject->getXref();
+		if ($this->mediaobject) {
+			return $this->mediaobject->getFullName()." - ".$this->mediaobject->getXref();
+		} else {
+			return i18n::translate('Unable to find record with ID');
 		}
-		else return i18n::translate('Unable to find record with ID');
 	}
 
 	function canDisplayDetails() {
@@ -178,17 +178,18 @@ class MediaController extends BaseController{
 	* @return Menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $TOTAL_NAMES;
-		global $NAME_LINENUM, $SEX_LINENUM;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
 		global $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
+
 		$links = get_media_relations($this->pid);
 		$linktoid = "new";
 		foreach ($links as $linktoid => $type) {
 			break; // we're only interested in the key of the first list entry
 		}
-		//-- main edit menu
+
+		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
 		$click_link = "window.open('addmedia.php?action=editmedia&pid={$this->pid}&linktoid={$linktoid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')";
 		$menu->addOnclick($click_link);
@@ -316,31 +317,33 @@ class MediaController extends BaseController{
 		if ($SHOW_GEDCOM_RECORD) {
 			$menu = new Menu(i18n::translate('Other'));
 			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
-			if (!empty($WT_IMAGES["gedcom"]["small"]))
-				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			if ($this->show_changes && WT_USER_CAN_EDIT)
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$menu->addOnclick("return show_gedcom_record('new');");
-			else
+			} else {
 				$menu->addOnclick("return show_gedcom_record('');");
+			}
 		}
 		if ($this->canShowGedcomRecord()) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-			if (!empty($WT_IMAGES["gedcom"]["small"]))
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			if ($this->show_changes && WT_USER_CAN_EDIT) $submenu->addOnclick("return show_gedcom_record('new');");
-			else $submenu->addOnclick("return show_gedcom_record();");
+			if ($this->show_changes && WT_USER_CAN_EDIT) {
+				$submenu->addOnclick("return show_gedcom_record('new');");
+			} else {
+				$submenu->addOnclick("return show_gedcom_record();");
+			}
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}
 		if ($this->mediaobject->canDisplayDetails() && WT_USER_ID) {
 			if (!$SHOW_GEDCOM_RECORD) {
 				$menu = new Menu(i18n::translate('Other'));
-				$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			}
-			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("mediaviewer.php?action=addfav&mid={$this->pid}&gid={$this->pid}"));
-			if (!empty($WT_IMAGES["gedcom"]["small"]))
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			// other / add_to_my_favorites
+			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("source.php?action=addfav&mid={$this->mid}&gid={$this->mid}"));
+			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 		return $menu;
