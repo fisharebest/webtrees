@@ -639,11 +639,21 @@ class IndividualController extends BaseController {
 		//-- main other menu item
 		$menu = null;
 		if ($SHOW_GEDCOM_RECORD) {
-			$menu = new Menu(i18n::translate('Other'));
-			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
-			if (!empty($WT_IMAGES["gedcom"]["small"])) $menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["large"]);
-			if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
-			else $menu->addOnclick("return show_gedcom_record('');");
+			$menu = new Menu(i18n::translate('Other'), "#", "down");
+			if (!empty($WT_IMAGES["gedcom"]["small"])) {
+				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_small_gedcom");
+				if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
+					else $menu->addOnclick("return show_gedcom_record('');");
+				} else {
+			if (!empty($WT_IMAGES["other"]["large"])) {
+				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["other"]["large"]);
+				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_other");
+				if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
+					else $menu->addOnclick("return show_gedcom_record('');");
+				}
+			}
+
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
 			if (!empty($WT_IMAGES["gedcom"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) $submenu->addOnclick("return show_gedcom_record('new');");
