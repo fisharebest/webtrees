@@ -2,6 +2,6 @@
  * @version $Id$
  */
 
-#sidebar_pin img, #sidebar_open img {margin-top: 9px!important;}
-.ui-accordion .ui-accordion-header { margin-top: 10px!important; }
+#sidebar_pin img, #sidebar_open img {margin-top: 11px!important;}
+.ui-accordion .ui-accordion-header { margin-top: 11px!important; }
 
