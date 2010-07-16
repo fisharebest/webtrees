@@ -22,7 +22,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -177,10 +177,11 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$sendmail=get_block_setting($block_id, 'sendmail', true);
 		$days=get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		print i18n::translate('Send out reminder emails?');
+		echo i18n::translate('Send out reminder emails?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('sendmail', $sendmail);
-		print i18n::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2' />";
+		echo '<br />';
+		echo i18n::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2' />";
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
