@@ -94,66 +94,52 @@ class MediaController extends BaseController{
 
 		//-- perform the desired action
 		switch($this->action) {
-			case "addfav":
-				$this->addFavorite();
-				break;
-			case "accept":
-				if (WT_USER_CAN_ACCEPT) {
-					accept_all_changes($this->pid, WT_GED_ID);
-					$this->show_changes=false;
-					$this->accept_success=true;
-					$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
-					//-- check if we just deleted the record and redirect to index
-					if (empty($mediarec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->mediaobject = new Media($mediarec);
+		case 'addfav':
+			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+				$favorite = array(
+					'username' => WT_USER_NAME,
+					'gid'      => $_REQUEST['gid'],
+					'type'     => 'OBJE',
+					'file'     => WT_GEDCOM,
+					'url'      => '',
+					'note'     => '',
+					'title'    => ''
+				);
+				user_favorites_WT_Module::addFavorite($favorite);
+			}
+			break;
+		case 'accept':
+			if (WT_USER_CAN_ACCEPT) {
+				accept_all_changes($this->pid, WT_GED_ID);
+				$this->show_changes=false;
+				$this->accept_success=true;
+				$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
+				//-- check if we just deleted the record and redirect to index
+				if (empty($mediarec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
-				break;
-			case "undo":
-				if (WT_USER_CAN_ACCEPT) {
-					reject_all_changes($this->pid, WT_GED_ID);
-					$this->show_changes=false;
-					$this->accept_success=true;
-					$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
-					//-- check if we just deleted the record and redirect to index
-					if (empty($mediarec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->mediaobject = new Media($mediarec);
+				$this->mediaobject = new Media($mediarec);
+			}
+			break;
+		case 'undo':
+			if (WT_USER_CAN_ACCEPT) {
+				reject_all_changes($this->pid, WT_GED_ID);
+				$this->show_changes=false;
+				$this->accept_success=true;
+				$mediarec = find_media_record($this->pid, WT_GED_ID);
+				//-- check if we just deleted the record and redirect to index
+				if (empty($mediarec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
-				break;
+				$this->mediaobject = new Media($mediarec);
+			}
+			break;
 		}
 
 		if ($this->mediaobject->canDisplayDetails()) {
 			$this->canedit = WT_USER_CAN_EDIT;
-		}
-	}
-
-	/**
-	* Add a new favorite for the action user
-	*/
-	function addFavorite() {
-		global $GEDCOM;
-		if (!WT_USER_ID) {
-			return;
-		}
-		if (!empty($_REQUEST["gid"]) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$gid = strtoupper($_REQUEST["gid"]);
-			$mediarec = find_media_record($gid, get_id_from_gedcom($GEDCOM));
-			if ($mediarec) {
-				$favorite = array();
-				$favorite["username"] = WT_USER_NAME;
-				$favorite["gid"] = $gid;
-				$favorite["type"] = "OBJE";
-				$favorite["file"] = $GEDCOM;
-				$favorite["url"] = "";
-				$favorite["note"] = "";
-				$favorite["title"] = "";
-				user_favorites_WT_Module::addFavorite($favorite);
-			}
 		}
 	}
 
@@ -174,8 +160,7 @@ class MediaController extends BaseController{
 	}
 
 	/**
-	* get the edit menu
-	* @return Menu
+	* get edit menu
 	*/
 	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
@@ -219,9 +204,8 @@ class MediaController extends BaseController{
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 				$menu->addSubmenu($submenu);
 			}
-			//- end plain edit option
+			//  delete
 			if (WT_USER_GEDCOM_ADMIN) {
-				//- remove object option
 				$submenu = new Menu(i18n::translate('Remove object'));
 				$submenu->addLink(encode_url("media.php?action=removeobject&xref=".$this->pid));
 				$submenu->addOnclick("return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."')");
@@ -304,7 +288,7 @@ class MediaController extends BaseController{
 	}
 
 	/**
-	* get the "other" menu
+	* get the other menu
 	* @return Menu
 	*/
 	function getOtherMenu() {

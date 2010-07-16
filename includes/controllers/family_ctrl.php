@@ -103,46 +103,52 @@ class FamilyController extends BaseController {
 			$this->showLivingWife = showLivingNameById($this->parents['WIFE']);
 		}
 
-		//-- add favorites action
-		if ($this->action=='addfav' && !empty($_REQUEST['gid']) && WT_USER_NAME && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$_REQUEST['gid'] = strtoupper($_REQUEST['gid']);
-			$indirec = find_family_record($_REQUEST['gid'], WT_GED_ID);
-			if ($indirec) {
+		//-- perform the desired action
+		switch($this->action) {
+		case 'addfav':
+			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 				$favorite = array(
 					'username' => WT_USER_NAME,
-					'gid' => $_REQUEST['gid'],
-					'type' => 'FAM',
-					'file' => $GEDCOM,
-					'url' => '',
-					'note' => '',
-					'title' => ''
+					'gid'      => $_REQUEST['gid'],
+					'type'     => 'FAM',
+					'file'     => WT_GEDCOM,
+					'url'      => '',
+					'note'     => '',
+					'title'    => ''
 				);
 				user_favorites_WT_Module::addFavorite($favorite);
 			}
-		}
-
-		if (WT_USER_CAN_ACCEPT) {
-			if ($this->action=='accept') {
+			break;
+		case 'accept':
+			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->famid, WT_GED_ID);
 				$this->show_changes = false;
 				$this->accept_success = true;
 				//-- check if we just deleted the record and redirect to index
-				$famrec = find_family_record($this->famid, WT_GED_ID);
-				if (empty($famrec)) {
+				$gedrec = find_family_record($this->famid, WT_GED_ID);
+				if (empty($gedrec)) {
 					header("Location: index.php?ctype=gedcom");
 					exit;
 				}
-				$this->family = new Family($famrec);
+				$this->family = new Family($gedrec);
 				$this->parents = find_parents($_REQUEST['famid']);
-			}
-
-			if ($this->action=='undo') {
+				}
+			break;
+		case 'undo':
+			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->famid, WT_GED_ID);
 				$this->show_changes = false;
 				$this->accept_success = true;
-				$this->family = new Family($famrec);
+				$gedrec = find_family_record($this->famid, WT_GED_ID);
+				//-- check if we just deleted the record and redirect to index
+				if (empty($gedrec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
+				}
+				$this->family = new Family($gedrec);
 				$this->parents = find_parents($this->famid);
 			}
+			break;
 		}
 
 		//-- make sure we have the true id from the record

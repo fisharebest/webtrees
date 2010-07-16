@@ -69,37 +69,48 @@ class RepositoryController extends BaseController {
 
 		//-- perform the desired action
 		switch($this->action) {
-			case "addfav":
-				$this->addFavorite();
-				break;
-			case "accept":
-				if (WT_USER_CAN_ACCEPT) {
-					accept_all_changes($this->rid, WT_GED_ID);
-					$this->show_changes=false;
-					$this->accept_success=true;
-					$indirec = find_other_record($this->rid, WT_GED_ID);
-					//-- check if we just deleted the record and redirect to index
-					if (empty($indirec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->repository = new Repository($indirec);
+		case 'addfav':
+			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+				$favorite = array(
+					'username' => WT_USER_NAME,
+					'gid'      => $_REQUEST['gid'],
+					'type'     => 'REPO',
+					'file'     => WT_GEDCOM,
+					'url'      => '',
+					'note'     => '',
+					'title'    => ''
+				);
+				user_favorites_WT_Module::addFavorite($favorite);
+			}
+			break;
+		case 'accept':
+			if (WT_USER_CAN_ACCEPT) {
+				accept_all_changes($this->rid, WT_GED_ID);
+				$this->show_changes=false;
+				$this->accept_success=true;
+				//-- check if we just deleted the record and redirect to index
+				$gedrec = find_other_record($this->rid, WT_GED_ID);
+				if (empty($gedrec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
-				break;
-			case "undo":
-				if (WT_USER_CAN_ACCEPT) {
-					reject_all_changes($this->rid, WT_GED_ID);
-					$this->show_changes=false;
-					$this->accept_success=true;
-					$indirec = find_other_record($this->rid, WT_GED_ID);
-					//-- check if we just deleted the record and redirect to index
-					if (empty($indirec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->repository = new Repository($indirec);
+				$this->repository = new Repository($gedrec);
+			}
+			break;
+		case 'undo':
+			if (WT_USER_CAN_ACCEPT) {
+				reject_all_changes($this->rid, WT_GED_ID);
+				$this->show_changes=false;
+				$this->accept_success=true;
+				$gedrec = find_other_record($this->rid, WT_GED_ID);
+				//-- check if we just deleted the record and redirect to index
+				if (empty($gedrec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
-				break;
+				$this->repository = new Repository($gedrec);
+			}
+			break;
 		}
 
 		//-- check for the user
@@ -116,29 +127,6 @@ class RepositoryController extends BaseController {
 
 		if ($this->show_changes && $this->canedit) {
 			$this->repository->diffMerge($this->diffrepository);
-		}
-	}
-
-	/**
-	* Add a new favorite for the action user
-	*/
-	function addFavorite() {
-		global $GEDCOM;
-		if (empty($this->uname)) return;
-		if (!empty($_REQUEST["gid"]) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$gid = strtoupper($_REQUEST["gid"]);
-			$indirec = find_other_record($gid, WT_GED_ID);
-			if ($indirec) {
-				$favorite = array();
-				$favorite["username"] = $this->uname;
-				$favorite["gid"] = $gid;
-				$favorite["type"] = "REPO";
-				$favorite["file"] = $GEDCOM;
-				$favorite["url"] = "";
-				$favorite["note"] = "";
-				$favorite["title"] = "";
-				user_favorites_WT_Module::addFavorite($favorite);
-			}
 		}
 	}
 

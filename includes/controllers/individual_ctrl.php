@@ -68,13 +68,13 @@ class IndividualController extends BaseController {
 		$pid = $this->pid;
 
 		$this->default_tab = $GEDCOM_DEFAULT_TAB;
-		$indirec = find_person_record($this->pid, WT_GED_ID);
+		$gedrec = find_person_record($this->pid, WT_GED_ID);
 
-		if ($USE_RIN && $indirec==false) {
+		if ($USE_RIN && $gedrec==false) {
 			$this->pid = find_rin_id($this->pid);
-			$indirec = find_person_record($this->pid, WT_GED_ID);
+			$gedrec = find_person_record($this->pid, WT_GED_ID);
 		}
-		if (empty($indirec)) {
+		if (empty($gedrec)) {
 			$ct = preg_match('/(\w+):(.+)/', $this->pid, $match);
 			if ($ct>0) {
 				$servid = trim($match[1]);
@@ -83,10 +83,10 @@ class IndividualController extends BaseController {
 				$service = ServiceClient::getInstance($servid);
 				if ($service != null) {
 					$newrec= $service->mergeGedcomRecord($remoteid, "0 @".$this->pid."@ INDI\n1 RFN ".$this->pid, false);
-					$indirec = $newrec;
+					$gedrec = $newrec;
 				}
 			} else {
-				$indirec = "0 @".$this->pid."@ INDI\n";
+				$gedrec = "0 @".$this->pid."@ INDI\n";
 			}
 		}
 		//-- check for the user
@@ -111,7 +111,7 @@ class IndividualController extends BaseController {
 			$this->default_tab = $_REQUEST['tab'];
 		}
 
-		$this->indi = new Person($indirec, false);
+		$this->indi = new Person($gedrec, false);
 		$this->indi->ged_id=WT_GED_ID; // This record is from a file
 
 		//-- if the person is from another gedcom then forward to the correct site
@@ -123,39 +123,48 @@ class IndividualController extends BaseController {
 		*/
 		//-- perform the desired action
 		switch($this->action) {
-			case "addfav":
-				$this->addFavorite();
-				break;
-			case "accept":
-				if (WT_USER_CAN_ACCEPT) {
-					accept_all_changes($this->pid, WT_GED_ID);
-					$this->show_changes=false;
-					$this->accept_success=true;
-					//-- delete the record from the cache and refresh it
-					$indirec = find_person_record($this->pid, WT_GED_ID);
-					//-- check if we just deleted the record and redirect to index
-					if (empty($indirec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->indi = new Person($indirec);
+		case 'addfav':
+			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+				$favorite = array(
+					'username' => WT_USER_NAME,
+					'gid'      => $_REQUEST['gid'],
+					'type'     => 'INDI',
+					'file'     => WT_GEDCOM,
+					'url'      => '',
+					'note'     => '',
+					'title'    => ''
+				);
+				user_favorites_WT_Module::addFavorite($favorite);
+			}
+			break;
+		case 'accept':
+			if (WT_USER_CAN_ACCEPT) {
+				accept_all_changes($this->pid, WT_GED_ID);
+				$this->show_changes=false;
+				$this->accept_success=true;
+				//-- check if we just deleted the record and redirect to index
+				$gedrec = find_person_record($this->pid, WT_GED_ID);
+				if (empty($gedrec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
-				break;
-			case "undo":
-				if (WT_USER_CAN_ACCEPT) {
-					reject_all_changes($this->pid, WT_GED_ID);
-					$this->show_changes=false;
-					$this->accept_success=true;
-					//-- delete the record from the cache and refresh it
-					$indirec = find_person_record($this->pid, WT_GED_ID);
-					//-- check if we just deleted the record and redirect to index
-					if (empty($indirec)) {
-						header("Location: index.php?ctype=gedcom");
-						exit;
-					}
-					$this->indi = new Person($indirec);
+				$this->indi = new Person($gedrec);
+			}
+			break;
+		case 'undo':
+			if (WT_USER_CAN_ACCEPT) {
+				reject_all_changes($this->pid, WT_GED_ID);
+				$this->show_changes=false;
+				$this->accept_success=true;
+				$gedrec = find_person_record($this->pid, WT_GED_ID);
+				//-- check if we just deleted the record and redirect to index
+				if (empty($gedrec)) {
+					header("Location: index.php?ctype=gedcom");
+					exit;
 				}
-				break;
+				$this->indi = new Person($gedrec);
+			}
+			break;
 		}
 
 		//-- if the user can edit and there are changes then get the new changes
@@ -166,7 +175,7 @@ class IndividualController extends BaseController {
 				//print("jkdsakjhdkjsadkjsakjdhsakd".$newrec);
 				$remoterfn = get_gedcom_value("RFN", 1, $newrec);
 			} else {
-				$remoterfn = get_gedcom_value("RFN", 1, $indirec);
+				$remoterfn = get_gedcom_value("RFN", 1, $gedrec);
 			}
 			// print "remoterfn=".$remoterfn;
 			//-- get an updated record from the web service
@@ -180,12 +189,12 @@ class IndividualController extends BaseController {
 						$serviceClient = ServiceClient::getInstance($servid);
 						if (!is_null($serviceClient)) {
 							if (!empty($newrec)) $mergerec = $serviceClient->mergeGedcomRecord($aliaid, $newrec, true);
-							else $mergerec = $serviceClient->mergeGedcomRecord($aliaid, $indirec, true);
+							else $mergerec = $serviceClient->mergeGedcomRecord($aliaid, $gedrec, true);
 							if ($serviceClient->type=="remote") {
 								$newrec = $mergerec;
 							}
 							else {
-								$indirec = $mergerec;
+								$gedrec = $mergerec;
 							}
 						}
 					}
@@ -194,7 +203,7 @@ class IndividualController extends BaseController {
 			if (!empty($newrec)) {
 				$this->diffindi = new Person($newrec, false);
 				$this->diffindi->setChanged(true);
-				$indirec = $newrec;
+				$gedrec = $newrec;
 			}
 		}
 
@@ -260,27 +269,6 @@ class IndividualController extends BaseController {
 		}
 	}
 	//-- end of init function
-	/**
-	* Add a new favorite for the action user
-	*/
-	function addFavorite() {
-		global $GEDCOM;
-		if (WT_USER_ID && !empty($_REQUEST["gid"]) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$gid = strtoupper($_REQUEST["gid"]);
-			$indirec = find_person_record($gid, WT_GED_ID);
-			if ($indirec) {
-				$favorite = array();
-				$favorite["username"] = WT_USER_NAME;
-				$favorite["gid"] = $gid;
-				$favorite["type"] = "INDI";
-				$favorite["file"] = $GEDCOM;
-				$favorite["url"] = "";
-				$favorite["note"] = "";
-				$favorite["title"] = "";
-				user_favorites_WT_Module::addFavorite($favorite);
-			}
-		}
-	}
 
 	/**
 	* return the title of this page
