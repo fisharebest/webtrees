@@ -511,7 +511,7 @@ class IndividualController extends BaseController {
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {
@@ -521,17 +521,16 @@ class IndividualController extends BaseController {
 		$menu = new Menu(i18n::translate('Edit'));
 		if (!empty($WT_IMAGES["edit_indi"]["large"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["large"]);
-		}
-		else if (!empty($WT_IMAGES["edit_indi"]["small"])) {
+		} elseif (!empty($WT_IMAGES["edit_indi"]["small"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
 		}
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
 		if (WT_USER_CAN_EDIT) {
 			if (count($this->indi->getSpouseFamilyIds())>1) {
 				$submenu = new Menu(i18n::translate('Reorder families'));
 				$submenu->addOnclick("return reorder_families('".$this->pid."');");
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
@@ -540,28 +539,28 @@ class IndividualController extends BaseController {
 			if ($this->total_names<2) {
 				$submenu = new Menu(i18n::translate('Edit name'));
 				$submenu->addOnclick("return edit_name('".$this->pid."', $this->NAME_LINENUM);");
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
 			$submenu = new Menu(i18n::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
 				$submenu = new Menu(i18n::translate('Edit gender'));
 				if ($this->SEX_LINENUM=="new") $submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
 				else $submenu->addOnclick("return edit_record('".$this->pid."', $this->SEX_LINENUM);");
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
 			$menu->addSeparator();
 		}
 
+		// show/hide changes
 		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
-			// show/hide changes
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
 				$link = $this->indi->getLinkUrl()."&show_changes=yes";
@@ -570,32 +569,55 @@ class IndividualController extends BaseController {
 				$link = $this->indi->getLinkUrl()."&show_changes=no";
 			}
 			$submenu = new Menu($label, encode_url($link));
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url($this->indi->getLinkUrl()."&action=undo"));
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
 				$menu->addSubmenu($submenu);
 				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url($this->indi->getLinkUrl()."&action=accept"));
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
 			$menu->addSeparator();
 		}
 
+		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $this->canShowGedcomRecord()) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$menu->addSubmenu($submenu);
+		} elseif ($SHOW_GEDCOM_RECORD) {
+			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			if ($this->show_changes && WT_USER_CAN_EDIT) {
+				$submenu->addOnclick("return show_gedcom_record('new');");
+			} else {
+				$submenu->addOnclick("return show_gedcom_record();");
+			}
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// delete
-		$submenu = new Menu(i18n::translate('Delete this individual'));
-		$submenu->addOnclick("return deleteperson('".$this->pid."');");
-		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+		if (WT_USER_CAN_EDIT) {
+			$submenu = new Menu(i18n::translate('Delete this individual'));
+			$submenu->addOnclick("return deleteperson('".$this->pid."');");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$menu->addSubmenu($submenu);
+		}
+
+		// add to favorites
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url($this->indi->getLinkUrl()."&action=addfav&gid={$this->pid}"));
+		$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
+		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);
 
 		//-- get the link for the first submenu and set it as the link for the main menu
@@ -606,62 +628,6 @@ class IndividualController extends BaseController {
 		return $menu;
 	}
 
-	/**
-	* check if we can show the other menu
-	* @return boolean
-	*/
-	function canShowOtherMenu() {
-		global $SHOW_GEDCOM_RECORD;
-		if ($this->indi->canDisplayDetails() && $SHOW_GEDCOM_RECORD)
-			return true;
-		return false;
-	}
-	/**
-	* get the "other" menu
-	* @return Menu
-	*/
-	function getOtherMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
-
-		if ($TEXT_DIRECTION=="rtl") {
-			$ff="_rtl";
-		} else {
-			$ff="";
-		}
-		//-- main other menu item
-		$menu = null;
-		if ($SHOW_GEDCOM_RECORD) {
-			$menu = new Menu(i18n::translate('Other'), "#", "down");
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
-				$menu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$menu->addOnclick("return show_gedcom_record();");
-			}
-
-			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
-				$submenu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$submenu->addOnclick("return show_gedcom_record();");
-			}
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
-			$menu->addSubmenu($submenu);
-		}
-		if ($this->indi->canDisplayDetails() && WT_USER_ID) {
-			if (!$SHOW_GEDCOM_RECORD) {
-				$menu = new Menu(i18n::translate('Other'));
-				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-			}
-			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url($this->indi->getLinkUrl()."&action=addfav&gid={$this->pid}"));
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
-			$menu->addSubmenu($submenu);
-		}
-		return $menu;
-	}
 	/**
 	* get global facts
 	* global facts are NAME and SEX

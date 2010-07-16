@@ -163,10 +163,12 @@ class MediaController extends BaseController{
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		global $SHOW_GEDCOM_RECORD;
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
-		else $ff="";
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+		if ($TEXT_DIRECTION=="rtl") {
+			$ff="_rtl";
+		} else {
+			$ff="";
+		}
 
 		$links = get_media_relations($this->pid);
 		$linktoid = "new";
@@ -176,24 +178,18 @@ class MediaController extends BaseController{
 
 		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
-		$click_link = "window.open('addmedia.php?action=editmedia&pid={$this->pid}&linktoid={$linktoid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')";
-		$menu->addOnclick($click_link);
 		if (!empty($WT_IMAGES["edit_media"]["large"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["large"]);
-		}
-		else if (!empty($WT_IMAGES["edit_media"]["small"])) {
+		} elseif (!empty($WT_IMAGES["edit_media"]["small"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
 		}
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		
 		if (WT_USER_CAN_EDIT) {
-			//- plain edit option
 			$submenu = new Menu(i18n::translate('Edit media'));
-			$click_link = "window.open('addmedia.php?action=editmedia&pid={$this->pid}&linktoid={$linktoid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')";
-			$submenu->addOnclick($click_link);
-			if (!empty($WT_IMAGES["edit_media"]["small"]))
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->pid}&linktoid={$linktoid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if ($SHOW_GEDCOM_RECORD || WT_USER_IS_ADMIN) {
@@ -201,17 +197,7 @@ class MediaController extends BaseController{
 				$submenu->addOnclick("return edit_raw('".$this->pid."');");
 				if (!empty($WT_IMAGES["edit_media"]["small"]))
 					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
-				$menu->addSubmenu($submenu);
-			}
-			//  delete
-			if (WT_USER_GEDCOM_ADMIN) {
-				$submenu = new Menu(i18n::translate('Remove object'));
-				$submenu->addLink(encode_url("media.php?action=removeobject&xref=".$this->pid));
-				$submenu->addOnclick("return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."')");
-				if (!empty($WT_IMAGES["edit_media"]["small"]))
-					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
@@ -227,108 +213,98 @@ class MediaController extends BaseController{
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','manage');");
 				if (!empty($WT_IMAGES["edit_media"]["small"]))
 					$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
-					$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+					$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				// Do not print ssubmunu
 			} else {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','person');");
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
 				$ssubmenu = new Menu(i18n::translate('To Person'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','person');");
-				$ssubmenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new Menu(i18n::translate('To Family'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','family');");
-				$ssubmenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new Menu(i18n::translate('To Source'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','source');");
-				$ssubmenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addSubMenu($ssubmenu);
 			}
 			$menu->addSubmenu($submenu);
-		}
-		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
+
 			$menu->addSeparator();
+		}
+
+		// show/hide changes
+		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
 				$link = "mediaviewer.php?mid={$this->pid}&show_changes=yes";
-			}
-			else {
+			} else {
 				$label = i18n::translate('Click here to hide changes.');
 				$link = "mediaviewer.php?mid={$this->pid}&show_changes=no";
 			}
 			$submenu = new Menu($label, encode_url($link));
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("mediaviewer.php?mid={$this->pid}&action=undo"));
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
 				$menu->addSubmenu($submenu);
 				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("mediaviewer.php?mid={$this->pid}&action=accept"));
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["notes"]["small"]);
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
+
+			$menu->addSeparator();
 		}
-		return $menu;
-	}
 
-	/**
-	* check if we can show the other menu
-	* @return boolean
-	*/
-	function canShowOtherMenu() {
-		global $SHOW_GEDCOM_RECORD;
-		if ($this->mediaobject->canDisplayDetails() && $SHOW_GEDCOM_RECORD)
-			return true;
-		return false;
-	}
-
-	/**
-	* get the other menu
-	* @return Menu
-	*/
-	function getOtherMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $THEME_DIR, $SHOW_GEDCOM_RECORD;
-
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
-		else $ff="";
-		//-- main other menu item
-		$menu = null;
-		if ($SHOW_GEDCOM_RECORD) {
-			$menu = new Menu(i18n::translate('Other'));
-			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
-				$menu->addOnclick("return show_gedcom_record('new');");
-			} else {
-				$menu->addOnclick("return show_gedcom_record('');");
-			}
-		}
-		if ($this->canShowGedcomRecord()) {
+		// edit/view raw gedcom
+		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
+			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
+			$submenu->addOnclick("return edit_raw('".$this->pid."');");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$menu->addSubmenu($submenu);
+		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
-		if ($this->mediaobject->canDisplayDetails() && WT_USER_ID) {
-			if (!$SHOW_GEDCOM_RECORD) {
-				$menu = new Menu(i18n::translate('Other'));
-				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-			}
-			// other / add_to_my_favorites
-			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("source.php?action=addfav&mid={$this->mid}&gid={$this->mid}"));
-			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['gedcom']['small']}");
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
+
+		// delete
+		if (WT_USER_GEDCOM_ADMIN) {
+			$submenu = new Menu(i18n::translate('Remove object'));
+			$submenu->addLink(encode_url("media.php?action=removeobject&xref=".$this->pid));
+			$submenu->addOnclick("return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."')");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_media"]["small"]);
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
+		}
+
+		// add to favorites
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("mediaviewer.php?action=addfav&mid={$this->mid}&gid={$this->mid}"));
+		$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
+		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		$menu->addSubmenu($submenu);
+
+		//-- get the link for the first submenu and set it as the link for the main menu
+		if (isset($menu->submenus[0])) {
+			$link = $menu->submenus[0]->onclick;
+			$menu->addOnclick($link);
 		}
 		return $menu;
 	}

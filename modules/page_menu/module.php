@@ -71,17 +71,6 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 				$menu->addIcon($menu->icon);
 			}
 		}
-		if (method_exists($controller, 'getOtherMenu')) {	
-			$othermenu = $controller->getOtherMenu();
-			if ($menu==null) {
-				$menu = $othermenu;
-			} else if ($othermenu) {
-				$menu->addSeparator();
-				foreach ($othermenu->submenus as $sub) {
-					$menu->addSubMenu($sub);
-				}
-			}
-		}
 		return $menu;
 	}
 }

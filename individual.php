@@ -227,18 +227,16 @@ if (!$controller->indi->canDisplayDetails()) {
 	print_privacy_error();
 	print "</td></tr></table>";
 } else {
-	if (method_exists($controller, 'getOtherMenu')) {	
-		require './sidebar.php';
-		
-		// Initially hide the sidebar controls & pin ======
-		?>
-		<script type="text/javascript">
-			jQuery('#sidebar_controls').hide();
-			jQuery('#sidebar_pin').hide();
-		</script>
-		<?php
-		// =====================================
-	}
+	require './sidebar.php';
+	
+	// Initially hide the sidebar controls & pin ======
+	?>
+	<script type="text/javascript">
+		jQuery('#sidebar_controls').hide();
+		jQuery('#sidebar_pin').hide();
+	</script>
+	<?php
+	// =====================================
 
 	echo '<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
 	echo '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
