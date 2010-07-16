@@ -56,7 +56,7 @@ class IndividualController extends BaseController {
 
 	function init() {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $GEDCOM_DEFAULT_TAB;
-		global $USE_QUICK_UPDATE, $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
+		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
 		global $Fam_Navigator;
 
 		$this->sexarray["M"] = i18n::translate('Male');
@@ -508,18 +508,16 @@ class IndividualController extends BaseController {
 		echo '</div>';
 	}
 	/**
-	* get the edit menu
-	* @return Menu
+	* get edit menu
 	*/
 	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		global $USE_QUICK_UPDATE;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {
 			$ff="";
 		}
-		//-- main edit menu
+		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
 		if (!empty($WT_IMAGES["edit_indi"]["large"])) {
 			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["large"]);
@@ -563,6 +561,7 @@ class IndividualController extends BaseController {
 		}
 
 		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
+			// show/hide changes
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
 				$link = $this->indi->getLinkUrl()."&show_changes=yes";
@@ -593,6 +592,7 @@ class IndividualController extends BaseController {
 			$menu->addSubmenu($submenu);
 		}
 
+		// delete
 		$submenu = new Menu(i18n::translate('Delete this individual'));
 		$submenu->addOnclick("return deleteperson('".$this->pid."');");
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
@@ -605,6 +605,7 @@ class IndividualController extends BaseController {
 		}
 		return $menu;
 	}
+
 	/**
 	* check if we can show the other menu
 	* @return boolean
@@ -620,43 +621,43 @@ class IndividualController extends BaseController {
 	* @return Menu
 	*/
 	function getOtherMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		global $SHOW_GEDCOM_RECORD;
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
-		else $ff="";
+		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+
+		if ($TEXT_DIRECTION=="rtl") {
+			$ff="_rtl";
+		} else {
+			$ff="";
+		}
 		//-- main other menu item
 		$menu = null;
 		if ($SHOW_GEDCOM_RECORD) {
 			$menu = new Menu(i18n::translate('Other'), "#", "down");
-			if (!empty($WT_IMAGES["gedcom"]["small"])) {
-				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_small_gedcom");
-				if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
-					else $menu->addOnclick("return show_gedcom_record('');");
-				} else {
-			if (!empty($WT_IMAGES["other"]["large"])) {
-				$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["other"]["large"]);
-				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_other");
-				if ($this->show_changes && WT_USER_CAN_EDIT) $menu->addOnclick("return show_gedcom_record('new');");
-					else $menu->addOnclick("return show_gedcom_record('');");
-				}
+			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			if ($this->show_changes && WT_USER_CAN_EDIT) {
+				$menu->addOnclick("return show_gedcom_record('new');");
+			} else {
+				$menu->addOnclick("return show_gedcom_record();");
 			}
 
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-			if (!empty($WT_IMAGES["gedcom"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
-			if ($this->show_changes && WT_USER_CAN_EDIT) $submenu->addOnclick("return show_gedcom_record('new');");
-			else $submenu->addOnclick("return show_gedcom_record();");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			if ($this->show_changes && WT_USER_CAN_EDIT) {
+				$submenu->addOnclick("return show_gedcom_record('new');");
+			} else {
+				$submenu->addOnclick("return show_gedcom_record();");
+			}
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}
-		if ($this->indi->canDisplayDetails() && WT_USER_NAME) {
+		if ($this->indi->canDisplayDetails() && WT_USER_ID) {
 			if (!$SHOW_GEDCOM_RECORD) {
 				$menu = new Menu(i18n::translate('Other'));
-				$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff");
+				$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			}
 			$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url($this->indi->getLinkUrl()."&action=addfav&gid={$this->pid}"));
-			if (!empty($WT_IMAGES["favorites"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
+			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 		return $menu;
