@@ -87,11 +87,11 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 
 		if ($record->getType()=='INDI') {
 			?>
-			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['family_button']; ?>" alt="<?php echo i18n::translate('Open Family Navigator'); ?>" title="<?php echo i18n::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $link; ?>');" /></a></td>
+			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo i18n::translate('Open Family Navigator'); ?>" title="<?php echo i18n::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $link; ?>');" /></a></td>
 			<?php
 		} elseif ($record->getType()=='FAM') {
 			?>
-			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['family_button']; ?>" alt="<?php echo i18n::translate('Open Family Navigator'); ?>" title="<?php echo i18n::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $head; ?>');" /></a></td>
+			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo i18n::translate('Open Family Navigator'); ?>" title="<?php echo i18n::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $head; ?>');" /></a></td>
 			<?php
 		} else { 
 			echo '<td></td>';

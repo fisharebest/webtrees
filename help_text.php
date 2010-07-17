@@ -3056,7 +3056,7 @@ case 'treenav.php':
 		'<br />'.
 		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['gedcom'].'" width="15px" height="15px" alt="">').
 		'<br />'.
-		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['family_button'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['button_family'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Toggle Spouses').'</b><br />'.
 		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Large Tree').'</b>'.

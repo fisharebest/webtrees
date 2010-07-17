@@ -89,9 +89,9 @@ if (!defined('WT_WEBTREES')) {
 			<td align="center" colspan=3 class="descriptionbox wrap font9">
 				<?php
 				// Header text with "Head" button =================================================
-				if (isset($WT_IMAGES["head_button"])) {
-					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["head_button"]."\" />";
-					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["head_button"]."\" alt=\"".i18n::translate('Click to choose person as Head of family.')."\" title=\"".i18n::translate('Click to choose person as Head of family.')."\" />";
+				if (isset($WT_IMAGES["button_head"])) {
+					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" />";
+					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".i18n::translate('Click to choose person as Head of family.')."\" title=\"".i18n::translate('Click to choose person as Head of family.')."\" />";
 				} else {
 					$headImg  = "<img class=\"headimg vmiddle\" src=\"images/buttons/head.gif\" />";
 					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"images/buttons/head.gif\" alt=\"".i18n::translate('Click to choose person as Head of family.')."\" title=\"".i18n::translate('Click to choose person as Head of family.')."\" />";

@@ -162,25 +162,25 @@ $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
 //- PGV buttons for data entry pages
-$WT_IMAGES['addmedia_button'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
-$WT_IMAGES['addrepository_button'] = WT_THEME_DIR.'images/buttons/addrepository.gif';
-$WT_IMAGES['addsource_button'] = WT_THEME_DIR.'images/buttons/addsource.gif';
-$WT_IMAGES['addnote_button'] = WT_THEME_DIR.'images/buttons/addnote.gif';
-$WT_IMAGES['autocomplete_button'] = WT_THEME_DIR.'images/buttons/autocomplete.gif';
-$WT_IMAGES['calendar_button'] = WT_THEME_DIR.'images/buttons/calendar.gif';
-$WT_IMAGES['family_button'] = WT_THEME_DIR.'images/buttons/family.gif';
-$WT_IMAGES['head_button'] = WT_THEME_DIR.'images/buttons/head.gif';
-$WT_IMAGES['indi_button'] = WT_THEME_DIR.'images/buttons/indi.gif';
-$WT_IMAGES['keyboard_button'] = WT_THEME_DIR.'images/buttons/keyboard.gif';
-$WT_IMAGES['media_button'] = WT_THEME_DIR.'images/buttons/media.gif';
-$WT_IMAGES['note_button'] = WT_THEME_DIR.'images/buttons/note.gif';
-$WT_IMAGES['place_button'] = WT_THEME_DIR.'images/buttons/place.gif';
-$WT_IMAGES['refresh_button'] = WT_THEME_DIR.'images/buttons/refresh.gif';
-$WT_IMAGES['repository_button'] = WT_THEME_DIR.'images/buttons/repository.gif';
-$WT_IMAGES['source_button'] = WT_THEME_DIR.'images/buttons/source.gif';
-$WT_IMAGES['note_button'] = WT_THEME_DIR.'images/buttons/note.gif';
-$WT_IMAGES['head_button'] = WT_THEME_DIR.'images/buttons/head.gif';
-$WT_IMAGES['find_facts_button'] = WT_THEME_DIR.'images/buttons/find_facts.png';
+$WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
+$WT_IMAGES['button_addrepository'] = WT_THEME_DIR.'images/buttons/addrepository.gif';
+$WT_IMAGES['button_addsource'] = WT_THEME_DIR.'images/buttons/addsource.gif';
+$WT_IMAGES['button_addnote'] = WT_THEME_DIR.'images/buttons/addnote.gif';
+$WT_IMAGES['button_autocomplete'] = WT_THEME_DIR.'images/buttons/autocomplete.gif';
+$WT_IMAGES['button_calendar'] = WT_THEME_DIR.'images/buttons/calendar.gif';
+$WT_IMAGES['button_family'] = WT_THEME_DIR.'images/buttons/family.gif';
+$WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
+$WT_IMAGES['button_indi'] = WT_THEME_DIR.'images/buttons/indi.gif';
+$WT_IMAGES['button_keyboard'] = WT_THEME_DIR.'images/buttons/keyboard.gif';
+$WT_IMAGES['button_media'] = WT_THEME_DIR.'images/buttons/media.gif';
+$WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
+$WT_IMAGES['button_place'] = WT_THEME_DIR.'images/buttons/place.gif';
+$WT_IMAGES['button_refresh'] = WT_THEME_DIR.'images/buttons/refresh.gif';
+$WT_IMAGES['button_repository'] = WT_THEME_DIR.'images/buttons/repository.gif';
+$WT_IMAGES['button_source'] = WT_THEME_DIR.'images/buttons/source.gif';
+$WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
+$WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
+$WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
 
 // Media images
 $WT_IMAGES['media_audio'] = WT_THEME_DIR.'images/media/audio.png';

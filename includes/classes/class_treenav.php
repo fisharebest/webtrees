@@ -354,7 +354,7 @@ class TreeNav {
 						echo '<b>', abbreviate_fact('BIRT'), '</b> ', $spouse->getBirthDate()->Display(), ' ', PrintReady($spouse->getBirthPlace()), '<br />';
 						echo '<b>', abbreviate_fact('MARR'), '</b> ', $family->getMarriageDate()->Display(), ' ', $family->getMarriagePlace();
 					?>
-					<a href="family.php?famid=<?php print $family->getXref(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;"><img id="d_<?php print $family->getXref(); ?>" alt="<?php print $family->getXref(); ?>" class="draggable" src="<?php print WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['family_button']; ?>" border="0" /></a><br />
+					<a href="family.php?famid=<?php print $family->getXref(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;"><img id="d_<?php print $family->getXref(); ?>" alt="<?php print $family->getXref(); ?>" class="draggable" src="<?php print WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['button_family']; ?>" border="0" /></a><br />
 					<?php
 						if ($spouse->isDead()) {
 							echo '<b>', abbreviate_fact('DEAT'), '</b> ', $spouse->getDeathDate()->Display(), ' ', PrintReady($spouse->getDeathPlace()), '<br />';

@@ -308,8 +308,8 @@ elseif ($action=="setup") {
 							print_findsource_link($input["name"]);
 						} elseif ($input["lookup"]=="DATE") {
 							$text = i18n::translate('Select a date');
-							if (isset($WT_IMAGES["calendar_button"])) {
-								$Link = "<img src=\"".$WT_IMAGES["calendar_button"]."\" name=\"a_".$input["name"]."\" id=\"a_".$input["name"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+							if (isset($WT_IMAGES["button_calendar"])) {
+								$Link = "<img src=\"".$WT_IMAGES["button_calendar"]."\" name=\"a_".$input["name"]."\" id=\"a_".$input["name"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 							} else {
 								$Link = $text;
 							}

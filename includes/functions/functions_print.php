@@ -2016,7 +2016,7 @@ function print_findindi_link($element_id, $indiname, $asString=false, $multiple=
 
 	$text = i18n::translate('Find individual ID');
 	if (empty($ged)) $ged=$GEDCOM;
-	if (isset($WT_IMAGES["indi_button"])) $Link = "<img src=\"".$WT_IMAGES["indi_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_indi"])) $Link = "<img src=\"".$WT_IMAGES["button_indi"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findIndi(document.getElementById('".$element_id."'), document.getElementById('".$indiname."'), '".$multiple."', '".$ged."', '".$filter."'); findtype='individual'; return false;\">";
 	$out .= $Link;
@@ -2030,7 +2030,7 @@ function print_findplace_link($element_id, $ged='', $asString=false) {
 
 	if (empty($ged)) $ged=$GEDCOM;
 	$text = i18n::translate('Find Place');
-	if (isset($WT_IMAGES["place_button"])) $Link = "<img src=\"".$WT_IMAGES["place_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_place"])) $Link = "<img src=\"".$WT_IMAGES["button_place"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findPlace(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
 	$out .= $Link;
@@ -2044,7 +2044,7 @@ function print_findfamily_link($element_id, $ged='', $asString=false) {
 
 	if (empty($ged)) $ged=$GEDCOM;
 	$text = i18n::translate('Find Family ID');
-	if (isset($WT_IMAGES["family_button"])) $Link = "<img src=\"".$WT_IMAGES["family_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_family"])) $Link = "<img src=\"".$WT_IMAGES["button_family"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findFamily(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
 	$out .= $Link;
@@ -2057,7 +2057,7 @@ function print_specialchar_link($element_id, $vert, $asString=false) {
 	global $WT_IMAGES;
 
 	$text = i18n::translate('Find Special Characters');
-	if (isset($WT_IMAGES["keyboard_button"])) $Link = "<img id=\"".$element_id."_spec\" name=\"".$element_id."_spec\" src=\"".$WT_IMAGES["keyboard_button"]."\"  alt=\"".$text."\"  title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_keyboard"])) $Link = "<img id=\"".$element_id."_spec\" name=\"".$element_id."_spec\" src=\"".$WT_IMAGES["button_keyboard"]."\"  alt=\"".$text."\"  title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findSpecialChar(document.getElementById('".$element_id."')); updatewholename(); return false;\">";
 	$out .= $Link;
@@ -2084,7 +2084,7 @@ function print_findsource_link($element_id, $sourcename="", $asString=false, $ge
 
 	if (empty($ged)) $ged=$GEDCOM;
 	$text = i18n::translate('Find Source ID');
-	if (isset($WT_IMAGES["source_button"])) $Link = "<img src=\"".$WT_IMAGES["source_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_source"])) $Link = "<img src=\"".$WT_IMAGES["button_source"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findSource(document.getElementById('".$element_id."'), document.getElementById('".$sourcename."'), '".$ged."'); findtype='source'; return false;\">";
 	$out .= $Link;
@@ -2098,7 +2098,7 @@ function print_findnote_link($element_id, $notename="", $asString=false, $ged=''
 
 	if (empty($ged)) $ged=$GEDCOM;
 	$text = i18n::translate('Find Shared Note');
-	if (isset($WT_IMAGES["note_button"])) $Link = "<img src=\"".$WT_IMAGES["note_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_note"])) $Link = "<img src=\"".$WT_IMAGES["button_note"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findnote(document.getElementById('".$element_id."'), document.getElementById('".$notename."'), '".$ged."'); findtype='note'; return false;\">";
 	$out .= $Link;
@@ -2112,7 +2112,7 @@ function print_findrepository_link($element_id, $ged='', $asString=false) {
 
 	if (empty($ged)) $ged=$GEDCOM;
 	$text = i18n::translate('Find Repository');
-	if (isset($WT_IMAGES["repository_button"])) $Link = "<img src=\"".$WT_IMAGES["repository_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_repository"])) $Link = "<img src=\"".$WT_IMAGES["button_repository"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findRepository(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
 	$out .= $Link;
@@ -2126,7 +2126,7 @@ function print_findmedia_link($element_id, $choose="", $ged='', $asString=false)
 
 	if (empty($ged)) $ged=$GEDCOM;
 	$text = i18n::translate('Find media');
-	if (isset($WT_IMAGES["media_button"])) $Link = "<img src=\"".$WT_IMAGES["media_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+	if (isset($WT_IMAGES["button_media"])) $Link = "<img src=\"".$WT_IMAGES["button_media"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findMedia(document.getElementById('".$element_id."'), '".$choose."', '".$ged."'); return false;\">";
 	$out .= $Link;
@@ -2140,7 +2140,7 @@ function print_findfact_link($element_id, $ged='', $asString=false) {
 
 	$text = i18n::translate('Find fact tag');
 	if (empty($ged)) $ged=$GEDCOM;
-	if (isset($WT_IMAGES["find_facts_button"])) $Link = "<img src=\"".$WT_IMAGES["find_facts_button"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"top\" />";
+	if (isset($WT_IMAGES["button_find_facts"])) $Link = "<img src=\"".$WT_IMAGES["button_find_facts"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"top\" />";
 	else $Link = $text;
 	$out = " <a href=\"javascript:;\" onclick=\"findFact(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
 	$out .= $Link;

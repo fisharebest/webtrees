@@ -76,15 +76,15 @@ $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.gif';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 
 //- PGV buttons for data entry pages
-$WT_IMAGES['addmedia_button'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
-$WT_IMAGES['addsource_button'] = WT_THEME_DIR.'images/buttons/addsource.gif';
-$WT_IMAGES['addnote_button'] = WT_THEME_DIR.'images/buttons/addnote.gif';
-$WT_IMAGES['keyboard_button'] = WT_THEME_DIR.'images/buttons/keyboard.gif';
-$WT_IMAGES['media_button'] = WT_THEME_DIR.'images/buttons/media.gif';
-$WT_IMAGES['source_button'] = WT_THEME_DIR.'images/buttons/source.gif';
-$WT_IMAGES['note_button'] = WT_THEME_DIR.'images/buttons/note.gif';
-$WT_IMAGES['head_button'] = WT_THEME_DIR.'images/buttons/head.gif';
-$WT_IMAGES['find_facts_button'] = WT_THEME_DIR.'images/buttons/find_facts.png';
+$WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
+$WT_IMAGES['button_addsource'] = WT_THEME_DIR.'images/buttons/addsource.gif';
+$WT_IMAGES['button_addnote'] = WT_THEME_DIR.'images/buttons/addnote.gif';
+$WT_IMAGES['button_keyboard'] = WT_THEME_DIR.'images/buttons/keyboard.gif';
+$WT_IMAGES['button_media'] = WT_THEME_DIR.'images/buttons/media.gif';
+$WT_IMAGES['button_source'] = WT_THEME_DIR.'images/buttons/source.gif';
+$WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
+$WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
+$WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
 
 // Media images
 $WT_IMAGES['media_audio'] = WT_THEME_DIR.'images/../../../images/media/audio.png';
