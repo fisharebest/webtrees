@@ -1431,7 +1431,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 						if (!$relationship1) {
 							$relationship1=i18n::translate('Relationship Chart');
 						}
-						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship1.'<img src="'.$WT_IMAGES['sex']['small'].'" class="gender_image" /></a>';
+						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship1.'<img src="'.$WT_IMAGES['sexm']['small'].'" class="gender_image" /></a>';
 					}
 					if ($parents["WIFE"]) {
 						$relationship2=get_relationship_name(get_relationship($parents["WIFE"], $amatch[1], true, 4));
@@ -1494,7 +1494,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 						if (!$relationship1) {
 							$relationship1=i18n::translate('Relationship Chart');
 						}
-						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship1.'<img src="'.$WT_IMAGES['sex']['small'].'" class="gender_image" /></a>';
+						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship1.'<img src="'.$WT_IMAGES['sexm']['small'].'" class="gender_image" /></a>';
 					}
 					if ($parents["WIFE"]) {
 						$relationship2=get_relationship_name(get_relationship($parents["WIFE"], $amatch[1], true, 4));

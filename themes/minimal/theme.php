@@ -54,6 +54,9 @@ $WT_IMAGES['reports']['large'] = WT_THEME_DIR.'images/report.gif';
 $WT_IMAGES['search']['large'] = WT_THEME_DIR.'images/search.gif';
 $WT_IMAGES['sfamily']['large'] = WT_THEME_DIR.'images/sfamily.gif';
 $WT_IMAGES['source']['large'] = WT_THEME_DIR.'images/source.gif';
+$WT_IMAGES['sexm']['large'] = 'images/sex_m_15x15.gif';
+$WT_IMAGES['sexf']['large'] = 'images/sex_f_15x15.gif';
+$WT_IMAGES['sexu']['large'] = 'images/sex_u_15x15.gif';
 
 //- PGV small icons
 $WT_IMAGES['admin']['small'] = WT_THEME_DIR.'images/small/admin.gif';
@@ -79,6 +82,9 @@ $WT_IMAGES['sfamily']['small'] = WT_THEME_DIR.'images/sfamily.gif';
 $WT_IMAGES['source']['small'] = WT_THEME_DIR.'images/small/source.gif';
 $WT_IMAGES['timeline']['small'] = WT_THEME_DIR.'images/small/timeline.gif';
 $WT_IMAGES['tree']['small'] = WT_THEME_DIR.'images/small/gedcom.gif';
+$WT_IMAGES['sexm']['small'] = 'images/sex_m_9x9.gif';
+$WT_IMAGES['sexf']['small'] = 'images/sex_f_9x9.gif';
+$WT_IMAGES['sexu']['small'] = 'images/sex_u_9x9.gif';
 
 //- PGV buttons for data entry pages
 $WT_IMAGES['addmedia']['button'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
