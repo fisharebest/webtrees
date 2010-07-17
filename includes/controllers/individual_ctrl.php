@@ -535,19 +535,25 @@ class IndividualController extends BaseController {
 			if ($this->total_names<2) {
 				$submenu = new Menu(i18n::translate('Edit name'));
 				$submenu->addOnclick("return edit_name('".$this->pid."', $this->NAME_LINENUM);");
+				$submenu->addIcon('edit_indi');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
 			$submenu = new Menu(i18n::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
+			$submenu->addIcon('edit_indi');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
 				$submenu = new Menu(i18n::translate('Edit gender'));
-				if ($this->SEX_LINENUM=="new") $submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
-				else $submenu->addOnclick("return edit_record('".$this->pid."', $this->SEX_LINENUM);");
+				if ($this->SEX_LINENUM=="new") {
+					$submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
+				} else {
+					$submenu->addOnclick("return edit_record('".$this->pid."', $this->SEX_LINENUM);");
+				}
+				$submenu->addIcon('edit_indi');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}

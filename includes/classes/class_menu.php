@@ -91,19 +91,11 @@ class Menu {
 
 		if (isset($WT_IMAGES[$icon])) {
 			$this->icon = $WT_IMAGES[$icon];
-		} elseif (isset($WT_IMAGES[$icon]['large'])) {
-			$this->icon = $WT_IMAGES[$icon]['large'];
-		} elseif (isset($WT_IMAGES[$icon]['small'])) {
-			$this->icon = $WT_IMAGES[$icon]['small'];
 		} else {
 			$this->icon = null;
 		}
 		if (isset($WT_IMAGES[$hovericon])) {
 			$this->hovericon = $WT_IMAGES[$hovericon];
-		} elseif (isset($WT_IMAGES[$hovericon]['large'])) {
-			$this->hovericon = $WT_IMAGES[$hovericon]['large'];
-		} elseif (isset($WT_IMAGES[$hovericon]['small'])) {
-			$this->hovericon = $WT_IMAGES[$hovericon]['small'];
 		} else {
 			$this->hovericon = null;
 		}

@@ -440,7 +440,9 @@ class MenuBar
 				$link = "module.php?ged=".WT_GEDCOM."&mod=googlemap&mod_action=pedigree_map";
 				if ($rootid) $link .= "&rootid=".$rootid;
 				$submenu = new Menu(i18n::translate('Pedigree Map'), encode_url($link));
-				$submenu->addIcon('modules/googlemap/images/pedigree_map.gif');
+				global $WT_IMAGES;
+				$WT_IMAGES['pedigree_map']='modules/googlemap/images/pedigree_map.gif';
+				$submenu->addIcon('pedigree_map');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 				$menu->addSubmenu($submenu);
 				break;

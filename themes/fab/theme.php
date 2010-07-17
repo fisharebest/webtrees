@@ -45,6 +45,12 @@ $WT_USE_HELPIMG   = false;
 $WT_MENU_LOCATION = 'top';
 
 //-- variables for image names
+$WT_IMAGES['sex_m_9x9'] = 'images/sex_m_9x9.gif';
+$WT_IMAGES['sex_f_9x9'] = 'images/sex_f_9x9.gif';
+$WT_IMAGES['sex_u_9x9'] = 'images/sex_u_9x9.gif';
+$WT_IMAGES['sex_m_15x15'] = 'images/sex_m_15x15.gif';
+$WT_IMAGES['sex_f_15x15'] = 'images/sex_f_15x15.gif';
+$WT_IMAGES['sex_u_15x15'] = 'images/sex_u_15x15.gif';
 //- PGV main icons
 $WT_IMAGES['calendar']['large'] = WT_THEME_DIR.'images/calendar.gif';
 $WT_IMAGES['clippings']['large'] = WT_THEME_DIR.'images/clippings.gif';
@@ -59,9 +65,6 @@ $WT_IMAGES['repository']['large'] = WT_THEME_DIR.'images/repository.gif';
 $WT_IMAGES['search']['large'] = WT_THEME_DIR.'images/search.gif';
 $WT_IMAGES['sfamily']['large'] = WT_THEME_DIR.'images/sfamily.gif';
 $WT_IMAGES['source']['large'] = WT_THEME_DIR.'images/source.gif';
-$WT_IMAGES['sexm']['large'] = 'images/sex_m_15x15.gif';
-$WT_IMAGES['sexf']['large'] = 'images/sex_f_15x15.gif';
-$WT_IMAGES['sexu']['large'] = 'images/sex_u_15x15.gif';
 
 //- PGV main icons for optional modules
 $WT_IMAGES['menu_gallery']['large'] = WT_THEME_DIR.'images/menu_gallery.gif';
@@ -102,9 +105,6 @@ $WT_IMAGES['relationship']['small'] = WT_THEME_DIR.'images/small/relationship.gi
 $WT_IMAGES['reports']['small'] = WT_THEME_DIR.'images/small/reports.gif';
 $WT_IMAGES['repository']['small'] = WT_THEME_DIR.'images/small/repository.gif';
 $WT_IMAGES['search']['small'] = WT_THEME_DIR.'images/small/search.gif';
-$WT_IMAGES['sexm']['small'] = 'images/sex_m_9x9.gif';
-$WT_IMAGES['sexf']['small'] = 'images/sex_f_9x9.gif';
-$WT_IMAGES['sexu']['small'] = 'images/sex_u_9x9.gif';
 $WT_IMAGES['sfamily']['small'] = WT_THEME_DIR.'images/small/sfamily.gif';
 $WT_IMAGES['source']['small'] = WT_THEME_DIR.'images/small/source.gif';
 $WT_IMAGES['statistic']['small'] = WT_THEME_DIR.'images/small/statistic.gif';
