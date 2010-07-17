@@ -73,6 +73,7 @@ $WT_IMAGES['indis'] = WT_THEME_DIR.'images/indis.gif';
 $WT_IMAGES['media'] = WT_THEME_DIR.'images/media.gif';
 $WT_IMAGES['menu_help'] = WT_THEME_DIR.'images/menu_help.gif';
 $WT_IMAGES['menu_media'] = WT_THEME_DIR.'images/menu_media.gif';
+$WT_IMAGES['menu_note'] = WT_THEME_DIR.'images/menu_note.gif';
 $WT_IMAGES['menu_repository'] = WT_THEME_DIR.'images/menu_repository.gif';
 $WT_IMAGES['menu_source'] = WT_THEME_DIR.'images/menu_source.gif';
 $WT_IMAGES['mypage'] = WT_THEME_DIR.'images/mypage.gif';
