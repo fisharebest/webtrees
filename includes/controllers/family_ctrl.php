@@ -291,35 +291,6 @@ class FamilyController extends BaseController {
 	}
 
 	/**
-	* get the family page reports menu
-	* @deprecated This function has been deprecated by the getReportsMenu function in menu.php
-	* @return Menu
-	*/
-	function getReportsMenu() {
-	/**
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM;
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
-		else $ff="";
-
-		$menu = new Menu(i18n::translate('Reports'), encode_url('reportengine.php?action=setup&report=reports/familygroup.xml&famid='.$this->getFamilyID()));
-		if (!empty($WT_IMAGES["reports"]["small"])) {
-			$menu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['reports']['small']}");
-		}
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-
-		// reports / family_group_report
-		$submenu = new Menu(i18n::translate('Family Group Report'), encode_url('reportengine.php?action=setup&report=reports/familygroup.xml&famid='.$this->getFamilyID()));
-		if (!empty($WT_IMAGES["reports"]["small"])) {
-			$submenu->addIcon("{$WT_IMAGE_DIR}/{$WT_IMAGES['reports']['small']}");
-		}
-		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-		$menu->addSubmenu($submenu);
-
-		return $menu;
-		**/
-	}
-
-	/**
 	* get edit menu
 	*/
 	function getEditMenu() {
