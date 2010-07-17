@@ -327,19 +327,19 @@ function print_td_person($n) {
 				$text .= "<img id=\"box-$pid\" src=\"".$whichFile."\"vspace=\"0\" hspace=\"0\" class=\"$class\" alt =\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))." - ".strip_tags(html_entity_decode($birth_date->Display(false)." - ".$death_date->Display(false),ENT_QUOTES,'UTF-8'))."\"";
 				if ($imgsize) $text .= " /></a>\n";
 				else $text .= " />\n";
-			} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) {
+			} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
 				$class = "pedigree_image_portrait";
 				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
 				$sex = $indi->getSex();
 				$text = "<img src=\"";
 				if ($sex == 'F') {
-					$text .= $WT_IMAGES["default_image_F"]["other"];
+					$text .= $WT_IMAGES["default_image_F"];
 				}
 				else if ($sex == 'M') {
-					$text .= $WT_IMAGES["default_image_M"]["other"];
+					$text .= $WT_IMAGES["default_image_M"];
 				}
 				else {
-					$text .= $WT_IMAGES["default_image_U"]["other"];
+					$text .= $WT_IMAGES["default_image_U"];
 				} 
 				$text .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			}
@@ -409,8 +409,8 @@ function print_arrow_person($n, $arrow_dir) {
 	} else {
 		$title = $pid." :".i18n::translate('Compact Chart');
 	}
-	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]["other"]."' border='0' align='middle' alt='$title' title='$title' />";
-	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]["other"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";
+	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
+	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";
 
 	$text = "";
 	if ($pid) {

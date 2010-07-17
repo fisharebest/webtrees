@@ -121,7 +121,7 @@ $menubar = new MenuBar();
 	?>
 	</tr>
 </table>
-<img src="<?php print $WT_IMAGES["hline"]["other"]; ?>" width="100%" height="3" alt="" />
+<img src="<?php print $WT_IMAGES["hline"]; ?>" width="100%" height="3" alt="" />
 </div>
 <!-- close div for div id="header" -->
 

@@ -209,7 +209,7 @@ class Menu {
 		$id = $menucount.rand();
 		if ($this->separator) {
 			$output = "<div id=\"menu{$id}\" class=\"menu_separator center\">"
-			."<img src=\"{$WT_IMAGES['hline']['other']}\" alt=\"\" />"
+			."<img src=\"{$WT_IMAGES['hline']}\" alt=\"\" />"
 			."</div>";
 			return $output;
 		}

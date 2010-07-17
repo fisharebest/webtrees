@@ -310,7 +310,7 @@ class IndividualController extends BaseController {
 			$firstmediarec = $this->indi->findHighlightedMedia();
 			if ($firstmediarec) return true;
 		}
-		if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) { return true; }
+		if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) { return true; }
 		return false;
 	}
 	/**
@@ -369,16 +369,16 @@ class IndividualController extends BaseController {
 				}
 			}
 		}
-		if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"]["other"])) {
+		if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
 			$class = "\" width=\"".$THUMBNAIL_WIDTH;
 			$sex = $this->indi->getSex();
 			$result = "<img src=\"";
 			if ($sex == 'F') {
-				$result .= $WT_IMAGES["default_image_F"]["other"];
+				$result .= $WT_IMAGES["default_image_F"];
 			} elseif ($sex == 'M') {
-				$result .= $WT_IMAGES["default_image_M"]["other"];
+				$result .= $WT_IMAGES["default_image_M"];
 			} else {
-				$result .= $WT_IMAGES["default_image_U"]["other"];
+				$result .= $WT_IMAGES["default_image_U"];
 			} 
 			$result .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			return $result;

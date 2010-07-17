@@ -740,7 +740,7 @@ case 'addnewsource':
 			}
 		?>
 		</table>
-			<a href="#"  onclick="return expand_layer('events');"><img id="events_img" src="<?php echo $WT_IMAGES["plus"]["other"]; ?>" border="0" width="11" height="11" alt="" title="" />
+			<a href="#"  onclick="return expand_layer('events');"><img id="events_img" src="<?php echo $WT_IMAGES["plus"]; ?>" border="0" width="11" height="11" alt="" title="" />
 			<?php echo i18n::translate('Associate events with this source'); ?></a><?php echo help_link('edit_SOUR_EVEN'); ?>
 			<div id="events" style="display: none;">
 			<table class="facts_table">

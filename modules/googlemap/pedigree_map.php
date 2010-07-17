@@ -589,9 +589,9 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
 				$sex = $person->getSex();
 				$image = "<img src=\'./";
-				if ($sex == 'F') { $image .= $WT_IMAGES["default_image_F"]["other"]; }
-				elseif ($sex == 'M') { $image .= $WT_IMAGES["default_image_M"]["other"]; }
-				else { $image .= $WT_IMAGES["default_image_U"]["other"]; }
+				if ($sex == 'F') { $image .= $WT_IMAGES["default_image_F"]; }
+				elseif ($sex == 'M') { $image .= $WT_IMAGES["default_image_M"]; }
+				else { $image .= $WT_IMAGES["default_image_U"]; }
 				$image .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
 			}
 		}

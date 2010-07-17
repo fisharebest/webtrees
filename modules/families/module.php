@@ -109,7 +109,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					  success: function(html){
 					    jQuery("#sb_fam_"+surname+" div").html(html);
 					    jQuery("#sb_fam_"+surname+" div").show();
-					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus']['other'].')");
+					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
 					    famloadedNames[surname]=2;
 					  }
 					});
@@ -117,12 +117,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
 					jQuery("#sb_fam_"+surname+" div").show();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus']['other'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
 				}
 				else {
 					famloadedNames[surname]=1;
 					jQuery("#sb_fam_"+surname+" div").hide();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus']['other'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus'].')");
 				}
 				return false;
 			});

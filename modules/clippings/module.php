@@ -325,7 +325,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 							$out .= '</a>';
 						}
 						$out .= '<a	class="remove_cart" href="sidebar.php?sb_action=clippings&amp;remove='.$i.'">
-						<img src="'. $WT_IMAGES["remove"]["other"].'" border="0" alt="'.i18n::translate('Remove').'" title="'.i18n::translate('Remove').'" /></a>';
+						<img src="'. $WT_IMAGES["remove"].'" border="0" alt="'.i18n::translate('Remove').'" title="'.i18n::translate('Remove').'" /></a>';
 						$out .='</li>';
 					}
 				}

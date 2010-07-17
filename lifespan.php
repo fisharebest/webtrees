@@ -341,18 +341,18 @@ var oldMx = 0;
 		<table style="margin-left: 20px" dir="ltr" border="0" cellpadding="0">
 		<tr>
 			<td></td>
-			<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsuparrow"]["other"]; ?>" border="0" alt="" /></a></td>
+			<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsuparrow"]; ?>" border="0" alt="" /></a></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><a href="#" onclick="return false;" onmousedown="startScroll('right')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsltarrow"]["other"]; ?>" border="0" alt="" /></a></td>
-			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('increase')"><img src="<?php print $WT_IMAGES["zoomin"]["other"]; ?>" border="0" alt="" /></a> --></td>
-			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('decrease')"><img src="<?php print $WT_IMAGES["zoomout"]["other"]; ?>" border="0" alt="" /></a> --></td>
-			<td><a href="#" onclick="return false;" onmousedown="startScroll('left')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsrtarrow"]["other"]; ?>" border="0" alt="" /></a></td>
+			<td><a href="#" onclick="return false;" onmousedown="startScroll('right')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsltarrow"]; ?>" border="0" alt="" /></a></td>
+			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('increase')"><img src="<?php print $WT_IMAGES["zoomin"]; ?>" border="0" alt="" /></a> --></td>
+			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('decrease')"><img src="<?php print $WT_IMAGES["zoomout"]; ?>" border="0" alt="" /></a> --></td>
+			<td><a href="#" onclick="return false;" onmousedown="startScroll('left')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsrtarrow"]; ?>" border="0" alt="" /></a></td>
 		</tr>
 		<tr>
 		<td> </td>
-		<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('up')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsdnarrow"]["other"]; ?>" border="0" alt="" /></a></td>
+		<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('up')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsdnarrow"]; ?>" border="0" alt="" /></a></td>
 	<td> </td>
 	</tr>
 	</table>

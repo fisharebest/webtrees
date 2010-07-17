@@ -224,8 +224,8 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 			$search_engines=WT_DB::prepare($sql)->fetchAssoc();
 			foreach ($search_engines as $ip_address=>$ip_comment) {
 				echo '<tr><td>';
-				if (isset($WT_IMAGES["remove"]["other"])) {
-					echo '<input type="image" src="', $WT_IMAGES["remove"]["other"], '" alt="', i18n::translate('Delete'), '" name="deleteSearch" value="', $ip_address, '">';
+				if (isset($WT_IMAGES["remove"])) {
+					echo '<input type="image" src="', $WT_IMAGES["remove"], '" alt="', i18n::translate('Delete'), '" name="deleteSearch" value="', $ip_address, '">';
 				} else {
 					echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', i18n::translate('Remove'), '</button>';
 				}
@@ -233,8 +233,8 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 				echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
 			}
 			echo '<tr><td valign="top"><input name="action" type="hidden" value="addSearch"/>';
-			if (isset($WT_IMAGES["add"]["other"])) {
-				echo '<input type="image" src="', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), '">';
+			if (isset($WT_IMAGES["add"])) {
+				echo '<input type="image" src="', $WT_IMAGES["add"], '" alt="', i18n::translate('Add'), '">';
 			} else {
 				echo '<input type="submit" value="', i18n::translate('Add'), '" />';
 			}
@@ -271,8 +271,8 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	$banned=WT_DB::prepare($sql)->fetchAssoc();
 	foreach ($banned as $ip_address=>$ip_comment) {
 		echo '<tr><td>';
-		if (isset($WT_IMAGES["remove"]["other"])) {
-			echo '<input type="image" src="', $WT_IMAGES["remove"]["other"], '" alt="', i18n::translate('Delete'), '" name="deleteBanned" value="', $ip_address, '">';
+		if (isset($WT_IMAGES["remove"])) {
+			echo '<input type="image" src="', $WT_IMAGES["remove"], '" alt="', i18n::translate('Delete'), '" name="deleteBanned" value="', $ip_address, '">';
 		} else {
 			echo '<button name="deleteBanned" value="', $ip_address, '" type="submit">', i18n::translate('Remove'), '</button>';
 		}
@@ -280,8 +280,8 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 		echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td></tr>';
 	}
 	echo '<tr><td valign="top"><input name="action" type="hidden" value="addBanned"/>';
-	if (isset($WT_IMAGES["add"]["other"])) {
-		echo '<input type="image" src="', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), '">';
+	if (isset($WT_IMAGES["add"])) {
+		echo '<input type="image" src="', $WT_IMAGES["add"], '" alt="', i18n::translate('Add'), '">';
 	} else {
 		echo '<input type="submit" value="', i18n::translate('Add'), '" />';
 	}

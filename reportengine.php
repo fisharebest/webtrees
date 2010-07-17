@@ -308,8 +308,8 @@ elseif ($action=="setup") {
 							print_findsource_link($input["name"]);
 						} elseif ($input["lookup"]=="DATE") {
 							$text = i18n::translate('Select a date');
-							if (isset($WT_IMAGES["calendar"]["button"])) {
-								$Link = "<img src=\"".$WT_IMAGES["calendar"]["button"]."\" name=\"a_".$input["name"]."\" id=\"a_".$input["name"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
+							if (isset($WT_IMAGES["calendar_button"])) {
+								$Link = "<img src=\"".$WT_IMAGES["calendar_button"]."\" name=\"a_".$input["name"]."\" id=\"a_".$input["name"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 							} else {
 								$Link = $text;
 							}
@@ -330,8 +330,8 @@ elseif ($action=="setup") {
 		<tr><td class="descriptionbox width30 wrap"></td>
 		<td class="optionbox">
 		<table><tr>
-		<td><img src="<?php echo isset($WT_IMAGES["media"]["pdf"]) ? $WT_IMAGES["media"]["pdf"] : "images/media/pdf.gif";?>" alt="PDF" title="PDF" /></td>
-		<td><img src="<?php echo isset($WT_IMAGES["media"]["html"]) ? $WT_IMAGES["media"]["html"] : "images/media/html.gif";?>" alt="HTML" title="HTML" /></td>
+		<td><img src="<?php echo isset($WT_IMAGES["media_pdf"]) ? $WT_IMAGES["media_pdf"] : "images/media/pdf.gif";?>" alt="PDF" title="PDF" /></td>
+		<td><img src="<?php echo isset($WT_IMAGES["media_html"]) ? $WT_IMAGES["media_html"] : "images/media/html.gif";?>" alt="HTML" title="HTML" /></td>
 		</tr><tr>
 		<td><center><input type="radio" name="output" value="PDF" checked="checked" /></center></td>
 		<td><center><input type="radio" name="output" value="HTML" <?php if ($output=="HTML") echo " checked=\"checked\"";?> /></center></td>

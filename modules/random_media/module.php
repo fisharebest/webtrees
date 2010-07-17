@@ -187,12 +187,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$image = "rarrow";
 				}
-				$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']['other']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
+				$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
 
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
 				$content .= "<a href=\"javascript: ".i18n::translate('Play')."/".i18n::translate('Stop')."\" onclick=\"togglePlay(); return false;\">";
-				if (isset($WT_IMAGES[$image]['other'])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]['other']}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
+				if (isset($WT_IMAGES[$image])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
 				else $content .= i18n::translate('Play')."/".i18n::translate('Stop');
 				$content .= "</a>";
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
@@ -205,13 +205,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 							if (play) {
 								play = false;
 								imgid = document.getElementById("play_stop");
-								imgid.src = \''.$WT_IMAGES["rarrow"]['other'].'\';
+								imgid.src = \''.$WT_IMAGES["rarrow"].'\';
 							}
 							else {
 								play = true;
 								playSlideShow();
 								imgid = document.getElementById("play_stop");
-								imgid.src = \''.$WT_IMAGES["stop"]['other'].'\';
+								imgid.src = \''.$WT_IMAGES["stop"].'\';
 							}
 						}
 
@@ -233,7 +233,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					<!--
 						play = true;
 						imgid = document.getElementById("play_stop");
-						imgid.src = \''.$WT_IMAGES["stop"]['other'].'\';
+						imgid.src = \''.$WT_IMAGES["stop"].'\';
 						window.setTimeout("playSlideShow()", 6000);
 					//-->
 					</script>';

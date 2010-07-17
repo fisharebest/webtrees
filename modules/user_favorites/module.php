@@ -226,7 +226,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		<br />
 		';
 		$uniqueID = floor(microtime() * 1000000);
-		$content .= "<b><a href=\"javascript: ".i18n::translate('Add a new favorite')." \" onclick=\"expand_layer('add_user_fav{$uniqueID}'); return false;\"><img id=\"add_user_fav_img\" src=\"".$WT_IMAGES["plus"]["other"]."\" border=\"0\" alt=\"\" />&nbsp;".i18n::translate('Add a new favorite')."</a></b>";
+		$content .= "<b><a href=\"javascript: ".i18n::translate('Add a new favorite')." \" onclick=\"expand_layer('add_user_fav{$uniqueID}'); return false;\"><img id=\"add_user_fav_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"\" />&nbsp;".i18n::translate('Add a new favorite')."</a></b>";
 		$content .= help_link('index_add_favorites');
 		$content .= "<br /><div id=\"add_user_fav{$uniqueID}\" style=\"display: none;\">";
 		$content .= "<form name=\"addufavform\" method=\"get\" action=\"index.php\">";

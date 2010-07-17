@@ -642,19 +642,19 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	// Return an icon image instead
 	switch ($thumbExt) {
 		case "pdf" :
-			$which = "pdf";
+			$which = "_pdf";
 			break;
 		case "doc" :
 		case "txt" :
-			$which = "doc";
+			$which = "_doc";
 			break;
 		case "ged" :
-			$which = "ged";
+			$which = "_ged";
 			break;
 		default :
-			$which = "large";
+			$which = "";
 	}
-	return $WT_IMAGES["media"][$which];
+	return $WT_IMAGES["media{$which}"];
 }
 
 /**

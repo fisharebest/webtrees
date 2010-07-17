@@ -110,7 +110,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					  success: function(html){
 					    jQuery("#sb_indi_"+surname+" div").html(html);
 					    jQuery("#sb_indi_"+surname+" div").show();
-					    jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus']['other'].')");
+					    jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
 					    loadedNames[surname]=2;
 					  }
 					});
@@ -118,12 +118,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (loadedNames[surname]==1) {
 					loadedNames[surname]=2;
 					jQuery("#sb_indi_"+surname+" div").show();
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus']['other'].')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
 				}
 				else {
 					loadedNames[surname]=1;
 					jQuery("#sb_indi_"+surname+" div").hide();
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus']['other'].')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus'].')");
 				}
 				return false;
 			});

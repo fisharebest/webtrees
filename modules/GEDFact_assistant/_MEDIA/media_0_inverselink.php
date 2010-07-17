@@ -180,8 +180,8 @@ if ($action == "choose" && $paramok) {
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';
-		if (isset($WT_IMAGES["add"]["other"])) { 
-			echo '<a href="#"><img style="border-style:none;" src="', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), ' "title="', i18n::translate('Add'), '" align="middle" name="addLink" value="" onClick="javascript:blankwin(); return false;" />';
+		if (isset($WT_IMAGES["add"])) { 
+			echo '<a href="#"><img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', i18n::translate('Add'), ' "title="', i18n::translate('Add'), '" align="middle" name="addLink" value="" onClick="javascript:blankwin(); return false;" />';
 			} else {
 			echo '<button name="addLink" value="" type="button" onClick="javascript:blankwin(); return false;">', i18n::translate('Add'), '</button>';
 		}

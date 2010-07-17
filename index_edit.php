@@ -68,12 +68,12 @@ if (!isset($index)) $index=1;
 $block_id=safe_REQUEST($_REQUEST, 'block_id');
 
 // Define all the icons we're going to use
-$IconUarrow = "<img src=\"".$WT_IMAGES['uarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconDarrow = "<img src=\"".$WT_IMAGES['darrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconRarrow = "<img src=\"".$WT_IMAGES['rarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconLarrow = "<img src=\"".$WT_IMAGES['larrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconRDarrow = "<img src=\"".$WT_IMAGES['rdarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
-$IconLDarrow = "<img src=\"".$WT_IMAGES['ldarrow']['other']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconUarrow = "<img src=\"".$WT_IMAGES['uarrow']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconDarrow = "<img src=\"".$WT_IMAGES['darrow']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconRarrow = "<img src=\"".$WT_IMAGES['rarrow']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconLarrow = "<img src=\"".$WT_IMAGES['larrow']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconRDarrow = "<img src=\"".$WT_IMAGES['rdarrow']."\" width=\"20\" height=\"20\" alt=\"\" />";
+$IconLDarrow = "<img src=\"".$WT_IMAGES['ldarrow']."\" width=\"20\" height=\"20\" alt=\"\" />";
 
 $all_blocks=array();
 foreach (WT_Module::getActiveBlocks() as $name=>$block) {

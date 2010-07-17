@@ -3481,30 +3481,30 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 	$width = '';
 	switch ($type) {
 		case 'url_flv':
-			$thumb = isset($WT_IMAGES["media"]["flashrem"]) ? $WT_IMAGES["media"]["flashrem"] : 'images/media/flashrem.png';
+			$thumb = isset($WT_IMAGES["media_flashrem"]) ? $WT_IMAGES["media_flashrem"] : 'images/media/flashrem.png';
 			break;
 		case 'local_flv':
-			$thumb = isset($WT_IMAGES["media"]["flash"]) ? $WT_IMAGES["media"]["flash"] : 'images/media/flash.png';
+			$thumb = isset($WT_IMAGES["media_flash"]) ? $WT_IMAGES["media_flash"] : 'images/media/flash.png';
 			break;
 		case 'url_wmv':
-			$thumb = isset($WT_IMAGES["media"]["wmvrem"]) ? $WT_IMAGES["media"]["wmvrem"] : 'images/media/wmvrem.png';
+			$thumb = isset($WT_IMAGES["media_wmvrem"]) ? $WT_IMAGES["media_wmvrem"] : 'images/media/wmvrem.png';
 			break;
 		case 'local_wmv':
-			$thumb = isset($WT_IMAGES["media"]["wmv"]) ? $WT_IMAGES["media"]["wmv"] : 'images/media/wmv.png';
+			$thumb = isset($WT_IMAGES["media_wmv"]) ? $WT_IMAGES["media_wmv"] : 'images/media/wmv.png';
 			break;
 		case 'url_picasa':
-			$thumb = isset($WT_IMAGES["media"]["picasa"]) ? $WT_IMAGES["media"]["picasa"] : 'images/media/picasa.png';
+			$thumb = isset($WT_IMAGES["media_picasa"]) ? $WT_IMAGES["media_picasa"] : 'images/media/picasa.png';
 			break;
 		case 'url_page':
 		case 'url_other':
-			$thumb = isset($WT_IMAGES["media"]["globe"]) ? $WT_IMAGES["media"]["globe"] : 'images/media/globe.png';
+			$thumb = isset($WT_IMAGES["media_globe"]) ? $WT_IMAGES["media_globe"] : 'images/media/globe.png';
 			break;
 		case 'local_page':
-			$thumb = ($WT_IMAGES["media"]["doc"]) ? $WT_IMAGES["media"]["doc"] : 'images/media/doc.gif';
+			$thumb = ($WT_IMAGES["media_doc"]) ? $WT_IMAGES["media_doc"] : 'images/media/doc.gif';
 			break;
 		case 'url_audio':
 		case 'local_audio':
-			$thumb = isset($WT_IMAGES["media"]["audio"]) ? $WT_IMAGES["media"]["audio"] : 'images/media/audio.png';
+			$thumb = isset($WT_IMAGES["media_audio"]) ? $WT_IMAGES["media_audio"] : 'images/media/audio.png';
 			break;
 		case 'url_streetview':
 			$thumb = null;
