@@ -45,7 +45,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $TEXT_DIRECTION, $WT_BLOCKS, $ctype, $WT_IMAGES, $WT_IMAGE_DIR, $THEME_DIR;
+		global $TEXT_DIRECTION, $WT_BLOCKS, $ctype, $WT_IMAGES, $THEME_DIR;
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
@@ -59,7 +59,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$title='';
 		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title .= "<img class=\"adminicon\" src=\"$WT_IMAGE_DIR/".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]["small"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 		}
 		// I18N: There are separate lists of male/female names, containing %d names each
 		$title .= i18n::plural('Top Given Name', 'Top %d Given Names', $num, $num);

@@ -43,7 +43,7 @@ if (!defined('WT_WEBTREES')) {
  */
 function lightbox_print_media_row($rtype, $rowm, $pid) {
 
-	global $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
+	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
 	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER;
 	global $t, $n, $item, $items, $p, $edit, $reorder, $LB_AL_THUMB_LINKS, $note;

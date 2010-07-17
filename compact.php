@@ -287,7 +287,7 @@ print "<br />";
 print_footer();
 
 function print_td_person($n) {
-	global $treeid, $WT_IMAGE_DIR, $WT_IMAGES;
+	global $treeid, $WT_IMAGES;
 	global $TEXT_DIRECTION, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE, $WT_IMAGES;
 	global $showthumbs;
 
@@ -333,13 +333,13 @@ function print_td_person($n) {
 				$sex = $indi->getSex();
 				$text = "<img src=\"";
 				if ($sex == 'F') {
-					$text .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_F"]["other"];
+					$text .= $WT_IMAGES["default_image_F"]["other"];
 				}
 				else if ($sex == 'M') {
-					$text .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_M"]["other"];
+					$text .= $WT_IMAGES["default_image_M"]["other"];
 				}
 				else {
-					$text .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_U"]["other"];
+					$text .= $WT_IMAGES["default_image_U"]["other"];
 				} 
 				$text .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			}
@@ -390,9 +390,7 @@ function print_td_person($n) {
 }
 
 function print_arrow_person($n, $arrow_dir) {
-	global $treeid;
-	global $showthumbs;
-	global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
+	global $treeid, $showthumbs, $TEXT_DIRECTION, $WT_IMAGES;
 
 	$pid = $treeid[$n];
 
@@ -411,8 +409,8 @@ function print_arrow_person($n, $arrow_dir) {
 	} else {
 		$title = $pid." :".i18n::translate('Compact Chart');
 	}
-	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGE_DIR."/".$WT_IMAGES[$arrow_dir."arrow"]["other"]."' border='0' align='middle' alt='$title' title='$title' />";
-	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGE_DIR."/".$WT_IMAGES[$arrow_dir."arrow"]["other"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";
+	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]["other"]."' border='0' align='middle' alt='$title' title='$title' />";
+	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]["other"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";
 
 	$text = "";
 	if ($pid) {

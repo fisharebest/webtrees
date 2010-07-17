@@ -307,7 +307,7 @@ if ($display=="hierarchy") {
 				echo "colspan=\"2\"";
 			}
 			echo ">&nbsp;";
-			echo "<img src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["place"]["small"], "\" border=\"0\" title=\"", i18n::translate('Place'), "\" alt=\"", i18n::translate('Place'), "\" />&nbsp;&nbsp;";
+			echo "<img src=\"", $WT_IMAGES["place"]["small"], "\" border=\"0\" title=\"", i18n::translate('Place'), "\" alt=\"", i18n::translate('Place'), "\" />&nbsp;&nbsp;";
 			if ($level>0) {
 				echo " ", i18n::translate('Place Hierarchy after'), ": ";
 				echo PrintReady($num_place);
@@ -429,7 +429,7 @@ if ($display=="list") {
 		echo ">\n\t\t<tr>\n\t\t<td class=\"list_label\" ";
 		$ct = count($placelist);
 		echo " colspan=\"", $ct>20 ? "3" : "2", "\">&nbsp;";
-		echo "<img src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["place"]["small"], "\" border=\"0\" title=\"", i18n::translate('Place'), "\" alt=\"", i18n::translate('Place'), "\" />&nbsp;&nbsp;";
+		echo "<img src=\"", $WT_IMAGES["place"]["small"], "\" border=\"0\" title=\"", i18n::translate('Place'), "\" alt=\"", i18n::translate('Place'), "\" />&nbsp;&nbsp;";
 		echo i18n::translate('Place List');
 		echo help_link('ppp_placelist');
 		echo "</td></tr><tr><td class=\"list_value_wrap\"><ul>";

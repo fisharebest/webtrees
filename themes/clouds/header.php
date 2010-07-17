@@ -109,7 +109,7 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 	echo '<div id="rapcontainer">',
 		 '<div id="header" class="', $TEXT_DIRECTION, '">';
 ?>
-<table class="header" style="background:url('<?php echo $WT_IMAGE_DIR; ?>/clouds.gif')" >
+<table class="header" style="background:url('<?php echo WT_THEME_DIR; ?>images/clouds.gif')" >
 <?php
 	echo '<tr>',
 		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >',
@@ -130,7 +130,7 @@ if(empty($SEARCH_SPIDER)) {
 		 '<input type="hidden" name="action" value="general" />',
 		 '<input type="hidden" name="topsearch" value="yes" />',
 		 '<input type="text" class="formbut" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-		 '<input type="image" src="', $WT_IMAGE_DIR, '/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />', 
+		 '<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />', 
 		 '</form>',
 		 '</div>';
 }

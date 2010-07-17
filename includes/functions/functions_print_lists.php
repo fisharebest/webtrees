@@ -48,8 +48,7 @@ require_once WT_ROOT.'includes/cssparser.inc.php';
  * @param string $legend optional legend of the fieldset
  */
 function print_indi_table($datalist, $legend="", $option="") {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE;
 
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 
@@ -73,7 +72,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		$legend=translate_fact(substr($option, 0, 4))." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Individuals');
-	$legend = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["indis"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	$legend = "<img src=\"".$WT_IMAGES["indis"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
@@ -430,8 +429,7 @@ function print_indi_table($datalist, $legend="", $option="") {
  * @param string $legend optional legend of the fieldset
  */
 function print_fam_table($datalist, $legend="", $option="") {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 
 	if ($option=="BIRT_PLAC" || $option=="DEAT_PLAC") return;
 	if (count($datalist)<1) return;
@@ -451,7 +449,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$legend=translate_fact('MARR')." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Families');
-	$legend = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["sfamily"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	$legend = "<img src=\"".$WT_IMAGES["sfamily"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
@@ -782,8 +780,7 @@ function print_fam_table($datalist, $legend="", $option="") {
  * @param string $legend optional legend of the fieldset
  */
 function print_sour_table($datalist, $legend=null) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
 	if (count($datalist)<1) {
 		return;
@@ -791,7 +788,7 @@ function print_sour_table($datalist, $legend=null) {
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_source.php';
 
-	echo '<fieldset><legend><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['source']['small'], '" align="middle" alt="" /> ';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['source']['small'], '" align="middle" alt="" /> ';
 	if ($legend) {
 		echo $legend;
 	} else {
@@ -909,8 +906,7 @@ T2;
  * @param string $legend optional legend of the fieldset
  */
 function print_note_table($datalist, $legend=null) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
 	if (count($datalist)<1) {
 		return;
@@ -919,9 +915,9 @@ function print_note_table($datalist, $legend=null) {
 	require_once WT_ROOT.'includes/classes/class_note.php';
 
 	if (!empty($WT_IMAGES["menu_note"]["small"])) {
-		echo '<fieldset><legend><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["menu_note"]["small"], '" align="middle" alt="" /> ';
+		echo '<fieldset><legend><img src="', $WT_IMAGES["menu_note"]["small"], '" align="middle" alt="" /> ';
 	} else {
-		echo '<fieldset><legend><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['notes']['small'], '" align="middle" alt="" /> ';
+		echo '<fieldset><legend><img src="', $WT_IMAGES['notes']['small'], '" align="middle" alt="" /> ';
 	}
 	if ($legend) {
 		echo $legend;
@@ -987,8 +983,7 @@ function print_note_table($datalist, $legend=null) {
  * @param string $legend optional legend of the fieldset
  */
 function print_repo_table($repos, $legend='') {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 
 	if (!$repos) {
 		return;
@@ -996,7 +991,7 @@ function print_repo_table($repos, $legend='') {
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_repository.php';
 
-	echo '<fieldset><legend><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['repository']['small'], '" align="middle" alt="" />';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['repository']['small'], '" align="middle" alt="" />';
 	if ($legend) {
 		echo htmlspecialchars($legend);
 	} else {
@@ -1044,15 +1039,14 @@ function print_repo_table($repos, $legend='') {
  * @param string $legend optional legend of the fieldset
  */
 function print_media_table($datalist, $legend="") {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_MEDIA_FILENAME;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MEDIA_FILENAME;
 
 	if (count($datalist)<1) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_media.php';
 
 	if ($legend == "") $legend = i18n::translate('Media');
-	$legend = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["media"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	$legend = "<img src=\"".$WT_IMAGES["media"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header

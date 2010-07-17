@@ -63,7 +63,7 @@
 	var ifamily			= "<?php echo i18n::translate('Open Family Navigator');		?>";
 	var remove			= "<?php echo i18n::translate('Remove');			?>";
 	var linkExists		= "<?php echo i18n::translate('This link already exists');		?>";
-	var imageDir		= "<?php echo $WT_IMAGE_DIR;				?>";
+	var imageDir		= "<?php echo WT_THEME_DIR.'images/';				?>";
 </script>
 
 <?php

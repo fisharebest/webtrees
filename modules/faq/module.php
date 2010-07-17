@@ -362,7 +362,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	}
 
 	private function config() {
-		global $WT_IMAGES, $WT_IMAGE_DIR;
+		global $WT_IMAGES;
 
 		print_header($this->getTitle());
 
@@ -412,14 +412,14 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				if ($faq->block_order==$min_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["uarrow"]["other"], '" border="0" alt="" /></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["uarrow"]["other"], '" border="0" alt="" /></a>';
 					echo help_link('moveup_faq_item', $this->getName());
 				}
 				echo '</td><td class="optionbox center">';
 				if ($faq->block_order==$max_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["darrow"]["other"], '" border="0" alt="" /></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["darrow"]["other"], '" border="0" alt="" /></a>';
 					echo help_link('movedown_faq_item', $this->getName());
 				}
 				echo '</td><td class="optionbox center">';

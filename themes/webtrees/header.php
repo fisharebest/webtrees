@@ -94,7 +94,7 @@ if ($view!='simple') {
 	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
 	'<table width="100%">',
 		'<tr>',
-			'<td><img src="', $WT_IMAGE_DIR, '/header.jpg" width="281" height="50" alt="" /></td>',
+			'<td><img src="', WT_THEME_DIR, 'images/header.jpg" width="281" height="50" alt="" /></td>',
 			'<td>',
 				'<table width="100%">',
 				'<tr>',
@@ -131,7 +131,7 @@ if ($view!='simple') {
 						'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '"',
 							'onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();"',
 							'onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-						'<input type="image" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['search']['small'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',	
+						'<input type="image" src="', $WT_IMAGES['search']['small'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',	
 					'</form>';
 				}
 			echo '</td>',
@@ -140,7 +140,7 @@ if ($view!='simple') {
 	$menubar = new MenuBar();
 
 	echo '<div>',
-		'<img src="', $WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"], '" width="100%" height="3" alt="" />',
+		'<img src="', $WT_IMAGES["hline"]["other"], '" width="100%" height="3" alt="" />',
 		'<table id="topMenu">',
 			'<tr>';
 				$menu = $menubar->getGedcomMenu();
@@ -211,7 +211,7 @@ if ($view!='simple') {
 				}
 			echo '</tr>',
 		'</table>',
-		'<img align="middle" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["hline"]["other"], '" width="100%" height="3" alt="" />',
+		'<img align="middle" src="', $WT_IMAGES["hline"]["other"], '" width="100%" height="3" alt="" />',
 	'</div>',
 '</div>',
 // end header section -->

@@ -424,10 +424,10 @@ if ($show == "yes") {
 
 	$currentPage = ((int) ($start / $max)) + 1;
 	$lastPage = (int) (($ct + $max - 1) / $max);
-	$IconRarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["rarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
-	$IconLarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["larrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
-	$IconRDarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["rdarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
-	$IconLDarrow = "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["ldarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
+	$IconRarrow = "<img src=\"".$WT_IMAGES["rarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
+	$IconLarrow = "<img src=\"".$WT_IMAGES["larrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
+	$IconRDarrow = "<img src=\"".$WT_IMAGES["rdarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
+	$IconLDarrow = "<img src=\"".$WT_IMAGES["ldarrow"]["other"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 
 	print"\n\t<table class=\"list_table\">\n";
 

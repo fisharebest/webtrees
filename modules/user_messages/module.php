@@ -45,7 +45,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ctype, $WT_IMAGE_DIR, $TEXT_DIRECTION, $WT_IMAGES, $THEME_DIR;
+		global $ctype, $TEXT_DIRECTION, $WT_IMAGES, $THEME_DIR;
 
 		require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
@@ -109,7 +109,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\" /></td>";
 				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message["subject"]));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
-				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" alt=\"".i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
+				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES["plus"]["other"]."\" border=\"0\" alt=\"".i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
 				$content .= "<td class=\"list_value_wrap\">".$message["created"]."</td>";
 				$content .= "<td class=\"list_value_wrap\">";
 				$user_id=get_user_id($message["from"]);

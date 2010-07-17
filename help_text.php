@@ -2770,7 +2770,7 @@ case 'USE_RIN':
 
 case 'USE_SILHOUETTE':
 	$title=i18n::translate('Use silhouettes');
-	$text=i18n::translate('Use silhouette images when no highlighted image for that person has been specified.  The images used are specific to the gender of the person in question.<br /><br /><table><tr><td wrap valign="middle">This image might be used when the gender of the person is unknown:')." </td><td><img src=\"$WT_IMAGE_DIR/".$WT_IMAGES["default_image_U"]["other"]."\" width=\"40\" alt=\"Silhouette image\" title=\"Silhouette image\" /></td></tr></table>";
+	$text=i18n::translate('Use silhouette images when no highlighted image for that person has been specified.  The images used are specific to the gender of the person in question.<br /><br /><table><tr><td wrap valign="middle">This image might be used when the gender of the person is unknown:')." </td><td><img src=\"".$WT_IMAGES["default_image_U"]["other"]."\" width=\"40\" alt=\"Silhouette image\" title=\"Silhouette image\" /></td></tr></table>";
 	break;
 	
 case 'USE_THUMBS_MAIN':
@@ -3054,16 +3054,16 @@ case 'treenav.php':
 		'<br /></li><li><b>'.i18n::translate('Expanding Details').'</b><br />'.
 		i18n::translate('Clicking on any box will expand the box and display a more detailed view.  While in expanded mode, clicking on a person\'s name will open their Individual Information page.').
 		'<br />'.
-		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['gedcom']['small'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['gedcom']['small'].'" width="15px" height="15px" alt="">').
 		'<br />'.
-		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['family']['button'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['family']['button'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Toggle Spouses').'</b><br />'.
-		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['sfamily']['small'].'" width="15px" height="15px" alt="">').
+		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily']['small'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Large Tree').'</b>'.
 		'<br />'.
 		i18n::translate('The Interactive Tree is available from many different pages including the Tree tab on the Individual Information page and the Charts block on the Home Page.  When viewing the tree from one of these other pages, you will also have a Tree icon under the Zoom icons.').
 		'<br />'.
-		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['gedcom']['small'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['gedcom']['small'].'" width="15px" height="15px" alt="">').
 		'</li></ul>';
 	break;
 
@@ -4244,7 +4244,7 @@ print_simple_header(i18n::translate('Help for «%s»', htmlspecialchars(strip_ta
 echo '<div class="helpheader">', htmlspecialchars($title),'</div>';
 echo '<div class="helpcontent">', nl2br($text),'</div>';
 echo '<div class="helpfooter"><br />';
-echo '<a href="javascript:;" onclick="window.history.go(-1)">',"<img src=\"$WT_IMAGE_DIR/".$WT_IMAGES["larrow"]["other"]."\" alt=\"<\"><br />";
+echo '<a href="javascript:;" onclick="window.history.go(-1)">',"<img src=\"".$WT_IMAGES["larrow"]["other"]."\" alt=\"<\"><br />";
 echo '<a href="help_text.php?help=help_contents_help"><b>', i18n::translate('Help Contents'), '</b></a><br />';
 echo '<a href="javascript:;" onclick="window.close();"><b>', i18n::translate('Close Window'), '</b></a>';
 echo '</div>';

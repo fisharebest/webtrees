@@ -44,8 +44,7 @@ require_once WT_ROOT.'includes/classes/class_person.php';
  * @param string $arrowDirection   direction of link arrow
  */
 function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
-	global $pbwidth, $pbheight;
-	global $WT_IMAGE_DIR, $WT_IMAGES;
+	global $pbwidth, $pbheight, $WT_IMAGES;
 
 	if (substr($sosa,-1,1)==".") {
 		$personLabel = substr($sosa,0,-1);
@@ -98,11 +97,8 @@ function print_family_header($famid) {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
-	global $show_full;
-	global $TEXT_DIRECTION, $SHOW_EMPTY_BOXES;
-	global $pbwidth, $pbheight;
-	global $WT_IMAGE_DIR, $WT_IMAGES;
-	global $show_changes, $GEDCOM;
+	global $show_full, $TEXT_DIRECTION, $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $show_changes, $GEDCOM;
+
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family = Family::getInstance($famid);
@@ -154,8 +150,8 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	$hparents = false;
 	$upfamid = "";
 	if (count($hfams) > 0 or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
-		print "<td rowspan=\"2\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
-		print "<td><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
+		print "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]["other"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
+		print "<td><img src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
 		$hparents = false;
 		foreach($hfams as $hfamid=>$hfamily) {
 			if (!is_null($hfamily)) {
@@ -182,7 +178,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	}
 	if ($hparents or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 		// husband's mother
-		print "</tr><tr><td><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
+		print "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
 		print "\n\t<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\" border=\"0\"><tr>";
 		if ($sosa > 0) print_sosa_number($sosa * 4 + 1, $hparents['WIFE'], "down");
 		if (!empty($gparid) and $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
@@ -227,8 +223,8 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	$hparents = false;
 	$upfamid = "";
 	if (count($hfams) > 0 or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
-		print "<td rowspan=\"2\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
-		print "<td><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
+		print "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]["other"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
+		print "<td><img src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
 		$j = 0;
 		foreach($hfams as $hfamid=>$hfamily) {
 			if (!is_null($hfamily)) {
@@ -255,7 +251,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	}
 	if ($hparents or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 		// wife's mother
-		print "</tr><tr><td><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
+		print "</tr><tr><td><img src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
 		print "\n\t<table style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\"><tr>";
 		if ($sosa > 0) print_sosa_number($sosa * 4 + 3, $hparents['WIFE'], "down");
 		if (!empty($gparid) and $hparents['WIFE']==$gparid) print_sosa_number(trim(substr($label,0,-3),".").".");
@@ -276,8 +272,8 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $pbwidth, $pbheight, $show_cousins;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
+	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
+
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family=Family::getInstance($famid);
@@ -375,7 +371,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							//else print "<img height=\"100%\"";
 							if ($f==$maxfam) print "<img height=\"".($pbheight/2-3)."px\"";
 							else print "<img height=\"".$pbheight."px\"";
-							print " width=\"3\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."\" alt=\"\" />";
+							print " width=\"3\" src=\"".$WT_IMAGES["vline"]["other"]."\" alt=\"\" />";
 							print "</td>";
 						}
 						print "<td class=\"details1\" valign=\"middle\" align=\"center\">!!!";
@@ -390,7 +386,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $divrec, $match);
 							if ($ct>0) print "-<span class=\"date\">".trim($match[1])."</span>";
 						}
-						print "<br /><img width=\"100%\" height=\"3\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" />";
+						print "<br /><img width=\"100%\" height=\"3\" src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" />";
 						// family link
 						if ($famid) {
 							print "<br />";
@@ -674,8 +670,7 @@ function ancestry_array($rootid, $maxgen=0) {
  * @param string $dir arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
 function print_url_arrow($id, $url, $label, $dir=2) {
-	global $WT_IMAGE_DIR, $WT_IMAGES;
-	global $TEXT_DIRECTION;
+	global $WT_IMAGES, $TEXT_DIRECTION;
 
 	if ($id=="" or $url=="") return;
 
@@ -688,7 +683,7 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
 	$astyle=$array_style[$adir];
 
-	print "<a href=\"$url\" onmouseover=\"swap_image('".$astyle.$id."',$adir); window.status ='" . $label . "'; return true; \" onmouseout=\"swap_image('".$astyle.$id."',$adir); window.status=''; return true; \"><img id=\"".$astyle.$id."\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES[$astyle]["other"]."\" hspace=\"0\" vspace=\"0\" border=\"0\" alt=\"$label\" title=\"$label\" /></a>";
+	print "<a href=\"$url\" onmouseover=\"swap_image('".$astyle.$id."',$adir); window.status ='" . $label . "'; return true; \" onmouseout=\"swap_image('".$astyle.$id."',$adir); window.status=''; return true; \"><img id=\"".$astyle.$id."\" src=\"".$WT_IMAGES[$astyle]["other"]."\" hspace=\"0\" vspace=\"0\" border=\"0\" alt=\"$label\" title=\"$label\" /></a>";
 }
 
 /**
@@ -747,9 +742,8 @@ function find_last_spouse($pid) {
  * @param string $famid family ID
  */
 function print_cousins($famid, $personcount="1") {
-	global $show_full, $bheight, $bwidth;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
-	global $GEDCOM;
+	global $show_full, $bheight, $bwidth, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
+
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family=Family::getInstance($famid);
@@ -765,14 +759,14 @@ function print_cousins($famid, $personcount="1") {
 	print "<td valign=\"middle\" height=\"100%\">";
 	if ($kids) {
 		print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" ><tr valign=\"middle\">";
-		if ($kids>1) print "<td rowspan=\"".$kids."\" valign=\"middle\" align=\"right\"><img width=\"3px\" height=\"". (($bheight+5) * ($kids-1)) ."px\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."\" alt=\"\" /></td>";
+		if ($kids>1) print "<td rowspan=\"".$kids."\" valign=\"middle\" align=\"right\"><img width=\"3px\" height=\"". (($bheight+5) * ($kids-1)) ."px\" src=\"".$WT_IMAGES["vline"]["other"]."\" alt=\"\" /></td>";
 		$ctkids = count($fchildren);
 		$i = 1;
 		foreach ($fchildren as $indexval => $fchil) {
 			print "<td><img width=\"10px\" height=\"3px\" style=\"padding-";
 			if ($TEXT_DIRECTION=="ltr") print "right";
 			else print "left";
-			print ": 2px;\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
+			print ": 2px;\" src=\"".$WT_IMAGES["hline"]["other"]."\" alt=\"\" /></td><td>";
 			print_pedigree_person($fchil, 1 , 0, $personcount);
 			$personcount++;
 			print "</td></tr>";

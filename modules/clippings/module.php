@@ -67,7 +67,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	
 	// Implement WT_Module_Menu
 	public function getMenu() { 
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER, $controller;
+		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER, $controller;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ($SEARCH_SPIDER) {
@@ -76,37 +76,37 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		//-- main clippings menu item
 		$menu = new Menu($this->getTitle(), encode_url('module.php?mod=clippings&mod_action=index&amp;ged='.$GEDCOM), "down");
 		if (!empty($WT_IMAGES["clippings"]["large"])) {
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["large"]);
+			$menu->addIcon($WT_IMAGES["clippings"]["large"]);
 		}
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_clippings");
 		if (isset($controller->indi) && $controller->indi->canDisplayDetails()) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->pid}&type=indi"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->family) && $controller->family->canDisplayDetails()) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->famid}&type=fam"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->mediaobject) && $controller->mediaobject->canDisplayDetails()) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->mid}&type=obje"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->source) && $controller->source->canDisplayDetails()) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->sid}&type=sour"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->note) && $controller->note->canDisplayDetails()) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->nid}&type=note"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->repository) && $controller->repository->canDisplayDetails()) {
 			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->rid}&type=repo"));
-			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["clippings"]["small"]);
+			if (!empty($WT_IMAGES["clippings"]["small"])) $submenu->addIcon($WT_IMAGES["clippings"]["small"]);
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		}
@@ -125,8 +125,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
-		global $cart, $GEDCOM;
+		global $WT_IMAGES, $cart, $GEDCOM;
 
 		$out = '';
 
@@ -148,7 +147,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$root = GedcomRecord::getInstance($this->controller->pid);
 				if ($root && $root->canDisplayDetails()) 
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$root->getXref().'" class="add_cart">
-					<img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['clippings']['small'].'" width="20" /> '.i18n::translate('Add %s to cart', $root->getListName()).'</a>';
+					<img src="'.$WT_IMAGES['clippings']['small'].'" width="20" /> '.i18n::translate('Add %s to cart', $root->getListName()).'</a>';
 			}
 			else if ($this->controller->famid && !id_in_cart($this->controller->pid)) {
 				$fam = Family::getInstance($this->controller->famid);
@@ -292,8 +291,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	}
 
 	public function getCartList() {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
-		global $cart, $GEDCOM;
+		global $WT_IMAGES, $cart, $GEDCOM;
+
 		$out ='<ul>';
 		$ct = count($cart);
 		if ($ct==0) $out .= '<br /><br />'.i18n::translate('Your Clippings Cart is empty.').'<br /><br />';
@@ -314,7 +313,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					if (!empty($icon)) {
 						$out .= '<li>';
 						if (!empty($icon)) {
-							$out .= '<img src="'.$WT_IMAGE_DIR."/".$WT_IMAGES[$icon]["small"].'" border="0" alt="'.$tag.'" title="'.$tag.'" width="20" />';
+							$out .= '<img src="'.$WT_IMAGES[$icon]["small"].'" border="0" alt="'.$tag.'" title="'.$tag.'" width="20" />';
 						}
 						$record=GedcomRecord::getInstance($clipping['id']);
 						if ($record) {
@@ -328,7 +327,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 							$out .= '</a>';
 						}
 						$out .= '<a	class="remove_cart" href="sidebar.php?sb_action=clippings&amp;remove='.$i.'">
-						<img src="'. $WT_IMAGE_DIR. "/". $WT_IMAGES["remove"]["other"].'" border="0" alt="'.i18n::translate('Remove').'" title="'.i18n::translate('Remove').'" /></a>';
+						<img src="'. $WT_IMAGES["remove"]["other"].'" border="0" alt="'.i18n::translate('Remove').'" title="'.i18n::translate('Remove').'" /></a>';
 						$out .='</li>';
 					}
 				}

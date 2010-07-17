@@ -42,7 +42,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 	global $MULTI_MEDIA, $MEDIA_EXTERNAL;
 	global $MEDIATYPE;
-	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
+	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
 	global $edit, $tabno, $currtab;
 	global $ids, $pid, $related, $level, $gedrec, $media_data, $order, $order1, $order2, $j ;

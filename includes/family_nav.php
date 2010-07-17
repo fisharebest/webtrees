@@ -66,7 +66,7 @@ if (isset($_COOKIE['lastclick'])) {
 
 //     Start Family Nav Table ----------------------------
 	echo "<table class=\"facts_table\" width='230' cellpadding=\"0\">";
-		global $WT_IMAGE_DIR, $WT_IMAGES, $WT_MENUS_AS_LISTS;
+		global $WT_IMAGES, $WT_MENUS_AS_LISTS;
 		global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
 		global $TEXT_DIRECTION;
 
@@ -517,7 +517,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
+	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;

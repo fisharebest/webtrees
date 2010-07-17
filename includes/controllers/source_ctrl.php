@@ -153,7 +153,8 @@ class SourceController extends BaseController {
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {
@@ -162,16 +163,16 @@ class SourceController extends BaseController {
 		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
 		if (!empty($WT_IMAGES["edit_source"]["large"])) {
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_source"]["large"]);
+			$menu->addIcon($WT_IMAGES["edit_source"]["large"]);
 		} elseif (!empty($WT_IMAGES["edit_source"]["small"])) {
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_source"]["small"]);
+			$menu->addIcon($WT_IMAGES["edit_source"]["small"]);
 		}
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(i18n::translate('Edit Source'));
 			$submenu->addOnclick('return edit_source(\''.$this->sid.'\');');
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_sour"]["small"]);
+			$submenu->addIcon($WT_IMAGES["edit_sour"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
@@ -180,10 +181,10 @@ class SourceController extends BaseController {
 		if (find_updated_record($this->sid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), encode_url("source.php?sid={$this->sid}&show_changes=yes"));
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_sour"]["small"]);
+				$submenu->addIcon($WT_IMAGES["edit_sour"]["small"]);
 			} else {
 				$submenu = new Menu(i18n::translate('Click here to hide changes.'), encode_url("source.php?sid={$this->sid}&show_changes=no"));
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_sour"]["small"]);
+				$submenu->addIcon($WT_IMAGES["edit_sour"]["small"]);
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
@@ -191,10 +192,10 @@ class SourceController extends BaseController {
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("source.php?sid={$this->sid}&action=undo"));
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_sour"]["small"]);
+				$submenu->addIcon($WT_IMAGES["edit_sour"]["small"]);
 				$menu->addSubmenu($submenu);
 				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("source.php?sid={$this->sid}&action=accept"));
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_sour"]["small"]);
+				$submenu->addIcon($WT_IMAGES["edit_sour"]["small"]);
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
@@ -206,12 +207,12 @@ class SourceController extends BaseController {
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->sid."');");
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			$submenu->addIcon($WT_IMAGES["gedcom"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			$submenu->addIcon($WT_IMAGES["gedcom"]["small"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
@@ -225,14 +226,14 @@ class SourceController extends BaseController {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(i18n::translate('Delete this Source'));
 			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Source?')."')) return deletesource('".$this->sid."'); else return false;");
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_sour"]["small"]);
+			$submenu->addIcon($WT_IMAGES["edit_sour"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
 		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("source.php?action=addfav&sid={$this->sid}&gid={$this->sid}"));
-		$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
+		$submenu->addIcon($WT_IMAGES["favorites"]["small"]);
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);
 

@@ -71,7 +71,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $WT_IMAGES;
 
 		$out = '<script type="text/javascript">
 		<!--
@@ -98,18 +98,18 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (!dloadedNames[pid]) {
 					jQuery("#sb_desc_"+pid+" div").load(this.href);
 					jQuery("#sb_desc_"+pid+" div").show();
-					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGE_DIR."/".$WT_IMAGES['minus']['other'].'");
+					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGES['minus']['other'].'");
 					dloadedNames[pid]=2;
 				}
 				else if (dloadedNames[pid]==1) {
 					dloadedNames[pid]=2;
 					jQuery("#sb_desc_"+pid+" div").show();
-					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGE_DIR."/".$WT_IMAGES['minus']['other'].'");
+					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGES['minus']['other'].'");
 				}
 				else {
 					dloadedNames[pid]=1;
 					jQuery("#sb_desc_"+pid+" div").hide();
-					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGE_DIR."/".$WT_IMAGES['plus']['other'].'");
+					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGES['plus']['other'].'");
 				}
 				return false;
 			});
@@ -141,17 +141,18 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 	
 	public function getPersonLi(&$person, $generations=0) {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $WT_IMAGES;
+
 		$out = '';
 		$out .= '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="sidebar.php?sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
-		if ($generations>0) $out .= '<img src="'.$WT_IMAGE_DIR."/".$WT_IMAGES['minus']['other'].'" border="0" class="plusminus" />';
-		else $out .= '<img src="'.$WT_IMAGE_DIR."/".$WT_IMAGES['plus']['other'].'" border="0" class="plusminus" />';
+		if ($generations>0) $out .= '<img src="'.$WT_IMAGES['minus']['other'].'" border="0" class="plusminus" />';
+		else $out .= '<img src="'.$WT_IMAGES['plus']['other'].'" border="0" class="plusminus" />';
 		$out .= $person->getSexImage().' '.$person->getListName().' ';
 		if ($person->canDisplayDetails()) {
 			$bd = $person->getBirthDeathYears(false,'');
 			if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
 		}
-		$out .= '</a> <a href="'.encode_url($person->getLinkUrl()).'"><img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['indi']['button'].'" border="0" alt="indi" /></a>';
+		$out .= '</a> <a href="'.encode_url($person->getLinkUrl()).'"><img src="'.$WT_IMAGES['indi']['button'].'" border="0" alt="indi" /></a>';
 		if ($generations>0) {
 			$out .= '<div class="desc_tree_div_visible">';
 			$out .= $this->loadSpouses($person->getXref());
@@ -165,18 +166,19 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 	
 	public function getFamilyLi(&$family, &$person, $generations=0) {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $WT_IMAGES;
+
 		$out = '';
 		$out .= '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="sidebar.php?sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
-		$out .= '<img src="'.$WT_IMAGE_DIR."/".$WT_IMAGES['minus']['other'].'" border="0" class="plusminus" />';
+		$out .= '<img src="'.$WT_IMAGES['minus']['other'].'" border="0" class="plusminus" />';
 		$out .= $person->getSexImage().$person->getListName();
 		
 		$marryear = $family->getMarriageYear();
 		if (!empty($marryear)) {
 			$out .= ' ('.translate_fact('MARR').' '.$marryear.')';
 		}
-		$out .= '</a> <a href="'.encode_url($person->getLinkUrl()).'"><img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['indi']['button'].'" border="0" alt="indi" /></a>';
-		$out .= '<a href="'.encode_url($family->getLinkUrl()).'"><img src="'.$WT_IMAGE_DIR.'/'.$WT_IMAGES['family']['button'].'" border="0" alt="family" /></a>';
+		$out .= '</a> <a href="'.encode_url($person->getLinkUrl()).'"><img src="'.$WT_IMAGES['indi']['button'].'" border="0" alt="indi" /></a>';
+		$out .= '<a href="'.encode_url($family->getLinkUrl()).'"><img src="'.$WT_IMAGES['family']['button'].'" border="0" alt="family" /></a>';
 		$out .= '<div class="desc_tree_div_visible">';
 		$out .= $this->loadChildren($family->getXref(), $generations);
 		$out .= '</div><script type="text/javascript">dloadedNames["'.$family->getXref().'"]=2;</script>';
@@ -185,7 +187,8 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function search($query) {
-		global $WT_IMAGES, $WT_IMAGE_DIR;
+		global $WT_IMAGES;
+
 		if (strlen($query)<2) return '';
 		$sql=
 		"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".

@@ -950,7 +950,7 @@ function find_visible_families_in_record($indirec, $tag) {
  * @return array an object array with indexes "thumb" and "file" for thumbnail and filename
  */
 function find_highlighted_object($pid, $ged_id, $indirec) {
-	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_EXTERNAL;
+	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $WT_IMAGES, $MEDIA_EXTERNAL;
 
 	$media = array();
 	$objectA = array();
@@ -3358,7 +3358,7 @@ function isFileExternal($file) {
  * Get useful information on how to handle this media file
  */
 function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyViewerOption=true) {
-	global $THUMBNAIL_WIDTH, $WT_IMAGE_DIR, $WT_IMAGES;
+	global $THUMBNAIL_WIDTH, $WT_IMAGES;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
 	global $GEDCOM, $USE_MEDIA_VIEWER, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
 
@@ -3481,30 +3481,30 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 	$width = '';
 	switch ($type) {
 		case 'url_flv':
-			$thumb = isset($WT_IMAGES["media"]["flashrem"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["flashrem"] : 'images/media/flashrem.png';
+			$thumb = isset($WT_IMAGES["media"]["flashrem"]) ? $WT_IMAGES["media"]["flashrem"] : 'images/media/flashrem.png';
 			break;
 		case 'local_flv':
-			$thumb = isset($WT_IMAGES["media"]["flash"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["flash"] : 'images/media/flash.png';
+			$thumb = isset($WT_IMAGES["media"]["flash"]) ? $WT_IMAGES["media"]["flash"] : 'images/media/flash.png';
 			break;
 		case 'url_wmv':
-			$thumb = isset($WT_IMAGES["media"]["wmvrem"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["wmvrem"] : 'images/media/wmvrem.png';
+			$thumb = isset($WT_IMAGES["media"]["wmvrem"]) ? $WT_IMAGES["media"]["wmvrem"] : 'images/media/wmvrem.png';
 			break;
 		case 'local_wmv':
-			$thumb = isset($WT_IMAGES["media"]["wmv"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["wmv"] : 'images/media/wmv.png';
+			$thumb = isset($WT_IMAGES["media"]["wmv"]) ? $WT_IMAGES["media"]["wmv"] : 'images/media/wmv.png';
 			break;
 		case 'url_picasa':
-			$thumb = isset($WT_IMAGES["media"]["picasa"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["picasa"] : 'images/media/picasa.png';
+			$thumb = isset($WT_IMAGES["media"]["picasa"]) ? $WT_IMAGES["media"]["picasa"] : 'images/media/picasa.png';
 			break;
 		case 'url_page':
 		case 'url_other':
-			$thumb = isset($WT_IMAGES["media"]["globe"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["globe"] : 'images/media/globe.png';
+			$thumb = isset($WT_IMAGES["media"]["globe"]) ? $WT_IMAGES["media"]["globe"] : 'images/media/globe.png';
 			break;
 		case 'local_page':
-			$thumb = ($WT_IMAGES["media"]["doc"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["doc"] : 'images/media/doc.gif';
+			$thumb = ($WT_IMAGES["media"]["doc"]) ? $WT_IMAGES["media"]["doc"] : 'images/media/doc.gif';
 			break;
 		case 'url_audio':
 		case 'local_audio':
-			$thumb = isset($WT_IMAGES["media"]["audio"]) ? $WT_IMAGE_DIR.'/'.$WT_IMAGES["media"]["audio"] : 'images/media/audio.png';
+			$thumb = isset($WT_IMAGES["media"]["audio"]) ? $WT_IMAGES["media"]["audio"] : 'images/media/audio.png';
 			break;
 		case 'url_streetview':
 			$thumb = null;
@@ -3533,12 +3533,12 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 	$realThumb = $thumb;
 	if (substr($type, 0, 6)=='local_' && !file_exists($thumb)) {
 		if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) {
-			$thumb = $WT_IMAGE_DIR.'/'.$WT_IMAGES['media']['large'];
+			$thumb = $WT_IMAGES['media']['large'];
 			$realThumb = $thumb;
 		} else {
 			$realThumb = get_media_firewall_path($thumb);
 			if (!file_exists($realThumb)) {
-				$thumb = $WT_IMAGE_DIR.'/'.$WT_IMAGES['media']['large'];
+				$thumb = $WT_IMAGES['media']['large'];
 				$realThumb = $thumb;
 			}
 		}

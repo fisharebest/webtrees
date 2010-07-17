@@ -861,7 +861,7 @@ if (check_media_structure()) {
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= "</a>\n";
 
-			$uplink2 = "<a href=\"".encode_url("media.php?directory={$pdir}&sortby={$sortby}&level=".($level-1).$thumbget)."\"><img class=\"icon\" src=\"".$WT_IMAGE_DIR."/";
+			$uplink2 = "<a href=\"".encode_url("media.php?directory={$pdir}&sortby={$sortby}&level=".($level-1).$thumbget)."\"><img class=\"icon\" src=\"";
 			$uplink2 .= $WT_IMAGES["larrow"]["other"];
 			$uplink2 .= "\" alt=\"\" /></a>\n";
 		}
@@ -1002,7 +1002,7 @@ if (check_media_structure()) {
 						print "<input type=\"hidden\" name=\"action\" value=\"\" />";
 						print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
 						print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-						print "<input type=\"image\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["remove"]["other"]."\" alt=\"".i18n::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".i18n::translate('Are you sure you want to delete this folder?')."');\" />";
+						print "<input type=\"image\" src=\"".$WT_IMAGES["remove"]["other"]."\" alt=\"".i18n::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".i18n::translate('Are you sure you want to delete this folder?')."');\" />";
 						if ($USE_MEDIA_FIREWALL) {
 							print "<br /><input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" />";
 							print "<br /><input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" />";

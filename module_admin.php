@@ -339,7 +339,7 @@ print_header(i18n::translate('Module administration'));
 							"SELECT status FROM `##module` WHERE module_name=?"
 						)->execute(array($module->getName()))->fetchOne();
 						echo '<tr><td>', two_state_checkbox('status-'.$module->getName(), $status=='enabled'), '</td><td>';
-						if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
+						if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
 						<td><?php echo $module->getTitle()?></td>
 						<td><?php echo $module->getDescription()?></td>
 						<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
@@ -359,11 +359,11 @@ print_header(i18n::translate('Module administration'));
 		</form>
 		<div id="pager" class="pager">
 			<form>
-				<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/first.png" class="first"/>
-				<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/prev.png" class="prev"/>
+				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
+				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
 				<input type="text" class="pagedisplay"/>
-				<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/next.png" class="next"/>
-				<img src="<?php echo $WT_IMAGE_DIR; ?>/jquery/last.png" class="last"/>
+				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
+				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
 				<select class="pagesize">
 					<option value="10">10</option>
 					<option selected="selected"  value="15">15</option>
@@ -394,10 +394,10 @@ print_header(i18n::translate('Module administration'));
 					<tr class="sortme">
 						<td class="list_value"><?php echo $module->getTitle()?></td>
 						<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName() ?>" />
-							<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
-							<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["udarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
-							<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
-							<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["ddarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
+							<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
+							<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
+							<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
+							<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
 						</td>
 						<td class="list_value_wrap">
 							 <table>
@@ -445,10 +445,10 @@ print_header(i18n::translate('Module administration'));
 					<tr class="sortme">
 						<td class="list_value"><?php echo $module->getTitle()?></td>
 						<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName() ?>" />
-							<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
-							<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["udarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
-							<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
-							<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["ddarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
+							<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
+							<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
+							<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
+							<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
 						</td>
 						<td class="list_value_wrap">
 						<table>
@@ -496,10 +496,10 @@ print_header(i18n::translate('Module administration'));
 						<tr class="sortme">
 							<td class="list_value"><?php echo $module->getTitle()?></td>
 							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName() ?>" />
-								<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["uarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
-							<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["udarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
-							<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
-							<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES["ddarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
+								<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
+							<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
+							<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
+							<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"]["other"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
 							</td>
 							<td class="list_value_wrap">
 								<table>

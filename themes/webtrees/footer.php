@@ -41,7 +41,7 @@ echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 		'<div align="center" style="width:99%;">',
 			'<br />',
 			'<a href="', WT_WEBTREES_URL, '" target="_blank">',
-			'<img src="', $WT_IMAGE_DIR, '/', $WT_IMAGES['webtrees']['other'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"',
+			'<img src="', $WT_IMAGES['webtrees']['other'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"',
 				'title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" , '" /></a><br />',
 			'<br />';
 

@@ -46,7 +46,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $ctype, $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
+		global $ctype, $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGES;
 		global $MEDIA_EXTERNAL, $MEDIA_DIRECTORY;
 		global $MEDIATYPE, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $THEME_DIR;;
 
@@ -176,7 +176,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					$name = WT_USER_NAME;
 				}
 				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
+				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']['small']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
 			}
 			$title .= i18n::translate('Random Picture');
 			$title .= help_link('index_media');
@@ -187,12 +187,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$image = "rarrow";
 				}
-				$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['rdarrow']['other']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
+				$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']['other']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
 
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
 				$content .= "<a href=\"javascript: ".i18n::translate('Play')."/".i18n::translate('Stop')."\" onclick=\"togglePlay(); return false;\">";
-				if (isset($WT_IMAGES[$image]['other'])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES[$image]['other']}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
+				if (isset($WT_IMAGES[$image]['other'])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]['other']}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
 				else $content .= i18n::translate('Play')."/".i18n::translate('Stop');
 				$content .= "</a>";
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
@@ -205,13 +205,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 							if (play) {
 								play = false;
 								imgid = document.getElementById("play_stop");
-								imgid.src = \''.$WT_IMAGE_DIR."/".$WT_IMAGES["rarrow"]['other'].'\';
+								imgid.src = \''.$WT_IMAGES["rarrow"]['other'].'\';
 							}
 							else {
 								play = true;
 								playSlideShow();
 								imgid = document.getElementById("play_stop");
-								imgid.src = \''.$WT_IMAGE_DIR."/".$WT_IMAGES["stop"]['other'].'\';
+								imgid.src = \''.$WT_IMAGES["stop"]['other'].'\';
 							}
 						}
 
@@ -233,7 +233,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					<!--
 						play = true;
 						imgid = document.getElementById("play_stop");
-						imgid.src = \''.$WT_IMAGE_DIR."/".$WT_IMAGES["stop"]['other'].'\';
+						imgid.src = \''.$WT_IMAGES["stop"]['other'].'\';
 						window.setTimeout("playSlideShow()", 6000);
 					//-->
 					</script>';

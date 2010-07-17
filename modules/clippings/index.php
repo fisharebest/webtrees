@@ -32,8 +32,7 @@
 
 require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 
-global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM;
-global $WT_IMAGE_DIR, $WT_IMAGES;
+global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM, $WT_IMAGES;
 
 $controller = new ClippingsController();
 $controller->init();
@@ -307,7 +306,7 @@ if ($ct==0) {
 			if ($tag=='OBJE') $icon = "media";
 			?>
 			<tr><td class="list_value">
-				<?php if (!empty($icon)) { ?><img src="<?php echo $WT_IMAGE_DIR, "/", $WT_IMAGES[$icon]["small"];?>" border="0" alt="<?php echo $tag;?>" title="<?php echo $tag;?>" /><?php } ?>
+				<?php if (!empty($icon)) { ?><img src="<?php echo $WT_IMAGES[$icon]["small"];?>" border="0" alt="<?php echo $tag;?>" title="<?php echo $tag;?>" /><?php } ?>
 			</td>
 			<td class="list_value ltr"><?php echo $clipping['id']?></td>
 			<td class="list_value">
@@ -316,7 +315,7 @@ if ($ct==0) {
 			if ($record) echo '<a href="', encode_url($record->getLinkUrl()), '">', PrintReady($record->getListName()), '</a>';
 			?>
 			</td>
-			<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;item=<?php echo $i;?>"><img src="<?php echo $WT_IMAGE_DIR, "/", $WT_IMAGES["remove"]["other"];?>" border="0" alt="<?php echo i18n::translate('Remove')?>" title="<?php echo i18n::translate('Remove');?>" /></a></td>
+			<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;item=<?php echo $i;?>"><img src="<?php echo $WT_IMAGES["remove"]["other"];?>" border="0" alt="<?php echo i18n::translate('Remove')?>" title="<?php echo i18n::translate('Remove');?>" /></a></td>
 		</tr>
 		<?php
 		}

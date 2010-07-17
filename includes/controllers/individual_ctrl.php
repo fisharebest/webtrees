@@ -334,7 +334,8 @@ class IndividualController extends BaseController {
 	* @return string HTML string for the <img> tag
 	*/
 	function getHighlightedObject() {
-		global $USE_THUMBS_MAIN, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $GEDCOM, $WT_IMAGE_DIR, $WT_IMAGES, $USE_SILHOUETTE, $sex;
+		global $USE_THUMBS_MAIN, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $GEDCOM, $WT_IMAGES, $USE_SILHOUETTE, $sex;
+
 		if ($this->canShowHighlightedObject()) {
 			$firstmediarec = $this->indi->findHighlightedMedia();
 			if (!empty($firstmediarec)) {
@@ -373,13 +374,11 @@ class IndividualController extends BaseController {
 			$sex = $this->indi->getSex();
 			$result = "<img src=\"";
 			if ($sex == 'F') {
-				$result .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_F"]["other"];
-			} 
-			else if ($sex == 'M') {
-				$result .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_M"]["other"];
-			}
-			else {
-				$result .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_U"]["other"];
+				$result .= $WT_IMAGES["default_image_F"]["other"];
+			} elseif ($sex == 'M') {
+				$result .= $WT_IMAGES["default_image_M"]["other"];
+			} else {
+				$result .= $WT_IMAGES["default_image_U"]["other"];
 			} 
 			$result .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			return $result;
@@ -511,7 +510,8 @@ class IndividualController extends BaseController {
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {
@@ -520,9 +520,9 @@ class IndividualController extends BaseController {
 		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
 		if (!empty($WT_IMAGES["edit_indi"]["large"])) {
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["large"]);
+			$menu->addIcon($WT_IMAGES["edit_indi"]["large"]);
 		} elseif (!empty($WT_IMAGES["edit_indi"]["small"])) {
-			$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+			$menu->addIcon($WT_IMAGES["edit_indi"]["small"]);
 		}
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
@@ -569,17 +569,17 @@ class IndividualController extends BaseController {
 				$link = $this->indi->getLinkUrl().'&show_changes=no';
 			}
 			$submenu = new Menu($label, encode_url($link));
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url($this->indi->getLinkUrl()."&action=undo"));
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+				$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
 				$menu->addSubmenu($submenu);
 				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url($this->indi->getLinkUrl()."&action=accept"));
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+				$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
@@ -591,12 +591,12 @@ class IndividualController extends BaseController {
 		if (WT_USER_IS_ADMIN || $this->canShowGedcomRecord()) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["gedcom"]["small"]);
+			$submenu->addIcon($WT_IMAGES["gedcom"]["small"]);
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
@@ -610,14 +610,14 @@ class IndividualController extends BaseController {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(i18n::translate('Delete this individual'));
 			$submenu->addOnclick("return deleteperson('".$this->pid."');");
-			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
 		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url($this->indi->getLinkUrl()."&action=addfav&gid={$this->pid}"));
-		$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["favorites"]["small"]);
+		$submenu->addIcon($WT_IMAGES["favorites"]["small"]);
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);
 

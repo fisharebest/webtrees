@@ -59,7 +59,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $WT_IMAGES;
 
 		$out = '<div id="sb_family_nav_content">';
 
@@ -125,9 +125,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		
 	 // Start Family Nav Table ----------------------------
 		echo "<table class=\"nav_content\" cellpadding=\"0\">"; 
-		global $WT_IMAGE_DIR, $WT_IMAGES, $WT_MENUS_AS_LISTS;
-		global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
-		global $TEXT_DIRECTION;
+		global $WT_IMAGES, $WT_MENUS_AS_LISTS, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION;
 
 		$personcount=0;
 		$families = $this->controller->indi->getChildFamilies();
@@ -579,7 +577,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $SCRIPT_NAME, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
+	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;

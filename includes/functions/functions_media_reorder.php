@@ -41,11 +41,10 @@ if (!defined('WT_WEBTREES')) {
  * @param string $pid        The record id this media item was attached to
  */
 function media_reorder_row($rtype, $rowm, $pid) {
-
-    global $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
-    global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
-    global $SEARCH_SPIDER;
-    global $t, $n, $item, $items, $p, $edit, $reorder, $LB_AL_THUMB_LINKS, $note, $rowm;
+	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
+	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
+	global $SEARCH_SPIDER;
+	global $t, $n, $item, $items, $p, $edit, $reorder, $LB_AL_THUMB_LINKS, $note, $rowm;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT, $order1, $mediaType;
 	global $MEDIA_TYPES;
 

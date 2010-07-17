@@ -42,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'includes/controllers/pedigree_ctrl.php';
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $WT_IMAGE_DIR, $GEDCOM;
+global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $GEDCOM;
 
 // Default is show for both of these.
 $hideflags = safe_GET('hideflags');
@@ -589,9 +589,9 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
 				$sex = $person->getSex();
 				$image = "<img src=\'./";
-				if ($sex == 'F') { $image .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_F"]["other"]; }
-				elseif ($sex == 'M') { $image .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_M"]["other"]; }
-				else { $image .= $WT_IMAGE_DIR."/".$WT_IMAGES["default_image_U"]["other"]; }
+				if ($sex == 'F') { $image .= $WT_IMAGES["default_image_F"]["other"]; }
+				elseif ($sex == 'M') { $image .= $WT_IMAGES["default_image_M"]["other"]; }
+				else { $image .= $WT_IMAGES["default_image_U"]["other"]; }
 				$image .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
 			}
 		}

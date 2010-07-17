@@ -51,8 +51,7 @@ function get_plac_label() {
 }
 
 function setup_place_subfields($element_id) {
-	global $WT_PLACES_SETUP;
-	global $WT_IMAGE_DIR, $WT_IMAGES;
+	global $WT_PLACES_SETUP, $WT_IMAGES;
 
 	if (!empty($WT_PLACES_SETUP)) return;
 	$WT_PLACES_SETUP = true;
@@ -282,14 +281,14 @@ function setup_place_subfields($element_id) {
  * @param string $element_id	id of PLAC input element in the form
  */
 function print_place_subfields($element_id) {
-	global $iso3166, $WT_IMAGE_DIR, $WT_IMAGES;
+	global $iso3166, $WT_IMAGES;
 
 	//if ($element_id=="DEAT_PLAC") return; // known bug - waiting for a patch
 	$plac_label = get_plac_label();
 	print "<div id='mapdata'></div>";
 
 	$cols=40;
-	print "&nbsp;<a href=\"javascript:;\" onclick=\"expand_layer('".$element_id."_div'); toggleplace('".$element_id."'); return false;\"><img id=\"".$element_id."_div_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" />&nbsp;</a>";
+	print "&nbsp;<a href=\"javascript:;\" onclick=\"expand_layer('".$element_id."_div'); toggleplace('".$element_id."'); return false;\"><img id=\"".$element_id."_div_img\" src=\"".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" />&nbsp;</a>";
 	print "<br /><div id=\"".$element_id."_div\" style=\"display: none; border-width:thin; border-style:none; padding:0px\">\n";
 	// subtags creation : _0 _1 _2 etc...
 	$icountry=-1;

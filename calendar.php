@@ -397,8 +397,8 @@ case 'year':
 case 'today':
 	echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
 	// Table headings
-	echo "<td class=\"descriptionbox center width50\"><img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['indis']['small']}\" border=\"0\" title=\"", i18n::translate('Individuals'), "\" alt=\"", i18n::translate('Individuals'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Individuals'), "</td>";
-	echo "<td class=\"descriptionbox center width50\"><img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['cfamily']['small']}\" border=\"0\" title=\"", i18n::translate('Families'), "\" alt=\"", i18n::translate('Families'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Families'), "</td>";
+	echo "<td class=\"descriptionbox center width50\"><img src=\"{$WT_IMAGES['indis']['small']}\" border=\"0\" title=\"", i18n::translate('Individuals'), "\" alt=\"", i18n::translate('Individuals'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Individuals'), "</td>";
+	echo "<td class=\"descriptionbox center width50\"><img src=\"{$WT_IMAGES['cfamily']['small']}\" border=\"0\" title=\"", i18n::translate('Families'), "\" alt=\"", i18n::translate('Families'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Families'), "</td>";
 	echo "</tr><tr>";
 	// Table rows
 	$males=0;
@@ -562,8 +562,8 @@ function calendar_fact_text($fact, $show_places) {
 // Format a list of facts for display
 ////////////////////////////////////////////////////////////////////////////////
 function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
-	global $WT_IMAGE_DIR, $WT_IMAGES;
-	global $males, $females;
+	global $WT_IMAGES, $males, $females;
+
 	foreach ($list as $id=>$facts) {
 		$tmp=GedcomRecord::GetInstance($id);
 		echo "{$tag1}<a href=\"".encode_url($tmp->getLinkUrl())."\">".PrintReady($tmp->getFullName())."</a>&nbsp;";

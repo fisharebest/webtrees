@@ -51,11 +51,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	
 	function printFamilyHeader($famid, $label) {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $SEARCH_SPIDER;
+		global $WT_IMAGES, $SEARCH_SPIDER;
 	?>
 		<table>
 			<tr>
-				<td><img src="<?php print $WT_IMAGE_DIR."/".$WT_IMAGES["cfamily"]["small"]; ?>" border="0" class="icon" alt="" /></td>
+				<td><img src="<?php print $WT_IMAGES["cfamily"]["small"]; ?>" border="0" class="icon" alt="" /></td>
 				<td><span class="subheaders"><?php print PrintReady($label); ?></span>
 				<?php if (empty($SEARCH_SPIDER)) { ?>
 					- <a href="family.php?famid=<?php print $famid; ?>"><?php print i18n::translate('View Family'); ?></a>
@@ -74,8 +74,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printParentsRows(&$family, &$people, $type) {
-		global $personcount;
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $personcount, $WT_IMAGES;
+
 		$elderdate = "";
 		//-- new father/husband
 		$styleadd = "";
@@ -247,8 +247,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printChildrenRows(&$family, &$people, $type) {
-		global $personcount;
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $personcount, $WT_IMAGES;
+
 		$elderdate = $family->getMarriageDate();
 		$key=0;
 		foreach($people["children"] as $child) {
@@ -338,9 +338,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_AGE_DIFF;
-		global $GEDCOM, $ABBREVIATE_CHART_LABELS;
-		global $show_full, $personcount;
+		global $WT_IMAGES, $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;

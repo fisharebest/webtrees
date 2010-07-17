@@ -77,7 +77,7 @@ if (!defined('WT_WEBTREES')) {
 
 	<?php
 	//-- Add Family Members to Census  -------------------------------------------
-	global $WT_IMAGE_DIR, $WT_IMAGES, $WT_MENUS_AS_LISTS;
+	global $WT_IMAGES, $WT_MENUS_AS_LISTS;
 	global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
 	global $TEXT_DIRECTION, $GEDCOM, $censyear, $censdate; 
 	// echo "CENS = " . $censyear;
@@ -90,8 +90,8 @@ if (!defined('WT_WEBTREES')) {
 				<?php
 				// Header text with "Head" button =================================================
 				if (isset($WT_IMAGES["head"]["button"])) {
-					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["head"]["button"]."\" />";
-					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["head"]["button"]."\" alt=\"".i18n::translate('Click to choose person as Head of family.')."\" title=\"".i18n::translate('Click to choose person as Head of family.')."\" />";
+					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["head"]["button"]."\" />";
+					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["head"]["button"]."\" alt=\"".i18n::translate('Click to choose person as Head of family.')."\" title=\"".i18n::translate('Click to choose person as Head of family.')."\" />";
 				} else {
 					$headImg  = "<img class=\"headimg vmiddle\" src=\"images/buttons/head.gif\" />";
 					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"images/buttons/head.gif\" alt=\"".i18n::translate('Click to choose person as Head of family.')."\" title=\"".i18n::translate('Click to choose person as Head of family.')."\" />";
@@ -1035,7 +1035,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
+	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;

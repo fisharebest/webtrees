@@ -53,7 +53,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $WT_IMAGE_DIR, $WT_IMAGES, $ctype, $TEXT_DIRECTION, $THEME_DIR;
+		global $WT_IMAGES, $ctype, $TEXT_DIRECTION, $THEME_DIR;
 		global $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $ENABLE_AUTOCOMPLETE;
 
 		$action=safe_GET('action');
@@ -231,7 +231,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			<br />
 			';
 			$uniqueID = floor(microtime() * 1000000);
-			$content .= "<b><a href=\"javascript://".i18n::translate('Add a new favorite')." \" onclick=\"expand_layer('add_ged_fav{$uniqueID}'); return false;\"><img id=\"add_ged_fav_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" alt=\"\" />&nbsp;".i18n::translate('Add a new favorite')."</a></b>";
+			$content .= "<b><a href=\"javascript://".i18n::translate('Add a new favorite')." \" onclick=\"expand_layer('add_ged_fav{$uniqueID}'); return false;\"><img id=\"add_ged_fav_img\" src=\"".$WT_IMAGES["plus"]["other"]."\" border=\"0\" alt=\"\" />&nbsp;".i18n::translate('Add a new favorite')."</a></b>";
 			$content .= help_link('index_add_favorites');
 			$content .= "<br /><div id=\"add_ged_fav{$uniqueID}\" style=\"display: none;\">\n";
 			$content .= "<form name=\"addgfavform\" method=\"get\" action=\"index.php\">\n";

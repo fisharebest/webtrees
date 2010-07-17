@@ -51,7 +51,7 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 
 	// Implement WT_Module_Report - a module can provide many reports
 	public function getReportMenus() {
-		global $controller, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
+		global $controller, $WT_IMAGES, $TEXT_DIRECTION;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
@@ -66,7 +66,7 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 		
 		$menus=array();
 		$menu=new Menu($this->getTitle(), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
-		$menu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES['cfamily']['small']);
+		$menu->addIcon($WT_IMAGES['cfamily']['small']);
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menus[]=$menu;
 

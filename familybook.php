@@ -58,7 +58,7 @@ $name  =$person->getFullName();
 
 function print_descendency($pid, $count) {
 	global $show_spouse, $dgenerations, $bwidth, $bheight, $bhalfheight;
-	global $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES, $generations, $box_width, $show_full;
+	global $TEXT_DIRECTION, $WT_IMAGES, $generations, $box_width, $show_full;
 	if ($count>=$dgenerations) return 0;
 	print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\n";
 	print "<tr>";
@@ -89,18 +89,18 @@ function print_descendency($pid, $count) {
 				print "</td>\n";
 				$twidth = 7;
 				if ($ct==1) $twidth+=3;
-				print "<td rowspan=\"$rowspan\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>\n";
+				print "<td rowspan=\"$rowspan\"><img src=\"".$WT_IMAGES["hline"]["other"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>\n";
 				if ($ct>1) {
 					if ($i==0) {
-						print "<td height=\"".($bhalfheight+3)."\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n";
-						print "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
+						print "<td height=\"".($bhalfheight+3)."\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n";
+						print "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
 					}
 					else if ($i==$ct-1) {
-						print "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n";
-						print "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
+						print "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n";
+						print "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
 					}
 					else {
-						print "<td style=\"background: url('".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
+						print "<td style=\"background: url('".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
 					}
 				}
 				print "</tr>\n";
@@ -172,7 +172,7 @@ function print_descendency($pid, $count) {
 				print "\n\t\t<div class=\"center\" id=\"childarrow.$pid\" dir=\"".$TEXT_DIRECTION."\"";
 				print " style=\"position:absolute; width:".$bwidth."px; \">";
 				print "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"return togglechildrenbox('$pid');\" onmouseover=\"swap_image('larrow.$pid',3);\" onmouseout=\"swap_image('larrow.$pid',3);\">";
-				print "<img id=\"larrow.$pid\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["darrow"]["other"]."\" border=\"0\" alt=\"\" />";
+				print "<img id=\"larrow.$pid\" src=\"".$WT_IMAGES["darrow"]["other"]."\" border=\"0\" alt=\"\" />";
 				print "</a>";
 				print "\n\t\t<div id=\"childbox.$pid\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 				print "\n\t\t\t<table class=\"person_box\"><tr><td>";
@@ -291,7 +291,7 @@ function max_descendency_generations($pid, $depth) {
 }
 
 function print_person_pedigree($pid, $count) {
-	global $generations, $SHOW_EMPTY_BOXES, $WT_IMAGE_DIR, $WT_IMAGES, $bheight, $bhalfheight;
+	global $generations, $SHOW_EMPTY_BOXES, $WT_IMAGES, $bheight, $bhalfheight;
 	if ($count>=$generations) return;
 	$famids = find_family_ids($pid);
 	$hheight = ($bhalfheight+3) * pow(2,($generations-$count-1));
@@ -301,8 +301,8 @@ function print_person_pedigree($pid, $count) {
 		$height="100%";
 		print "<tr>";
 		if ($count<$generations-1) {
-			print "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
-			print "<td rowspan=\"2\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>\n";
+			print "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>\n";
+			print "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]["other"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>\n";
 		}
 		print "<td rowspan=\"2\">\n";
 		print_pedigree_person($parents["HUSB"]);
@@ -311,11 +311,11 @@ function print_person_pedigree($pid, $count) {
 		print_person_pedigree($parents["HUSB"], $count+1);
 		print "</td>\n";
 		print "</tr>\n<tr>\n<td height=\"".$hheight."\"";
-		if ($count<$generations-1) print " style=\"background: url('".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."');\" ";
-		print "><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n<tr>\n";
+		if ($count<$generations-1) print " style=\"background: url('".$WT_IMAGES["vline"]["other"]."');\" ";
+		print "><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n<tr>\n";
 		if ($count<$generations-1) {
-			print "<td height=\"".$hheight."\" style=\"background: url('".$WT_IMAGE_DIR."/".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>";
-			print "<td rowspan=\"2\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>\n";
+			print "<td height=\"".$hheight."\" style=\"background: url('".$WT_IMAGES["vline"]["other"]."');\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td>";
+			print "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]["other"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>\n";
 		}
 		print "<td rowspan=\"2\">\n";
 		print_pedigree_person($parents["WIFE"]);
@@ -324,7 +324,7 @@ function print_person_pedigree($pid, $count) {
 		print_person_pedigree($parents["WIFE"], $count+1);
 		print "</td>\n";
 		print "</tr>\n";
-		if ($count<$generations-1) print "<tr>\n<td height=\"".$hheight."\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n";
+		if ($count<$generations-1) print "<tr>\n<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]["other"]."\" width=\"3\" alt=\"\" /></td></tr>\n";
 		print "</table>\n";
 	}
 }

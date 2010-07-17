@@ -88,7 +88,6 @@ var pinned = false;
 
 jQuery(document).ready(function(){
 	// TODO: change images directory when the common images will be deleted.
-	// jQuery('#tabs').tabs({ spinner: '<img src=\"<?php echo $WT_IMAGE_DIR; ?>/loading.gif\" height=\"18\" border=\"0\" />' });
 	jQuery('#tabs').tabs({ spinner: '<img src=\"images/loading.gif\" height=\"18\" border=\"0\" alt=\"\" />' });
 	jQuery("#tabs").tabs({ cache: true });
 	var $tabs = jQuery('#tabs');

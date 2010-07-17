@@ -32,124 +32,120 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$theme_name = "minimal";		//-- the name of this theme
-
-$stylesheet = WT_THEME_DIR."style.css";	//-- CSS level 2 stylesheet to use
-$rtl_stylesheet = WT_THEME_DIR."style_rtl.css";	//-- CSS level 2 stylesheet to use
-$print_stylesheet = WT_THEME_DIR."print.css";	//-- CSS level 2 print stylesheet to use
-$toplinks = WT_THEME_DIR."toplinks.php";	//-- File to display the icons and links to different sections
-$headerfile = WT_THEME_DIR."header.php";	//-- Header information for the site
-$footerfile = WT_THEME_DIR."footer.php";	//-- Footer information for the site
-
-$WT_USE_HELPIMG = false;		// set to true to use image for help questionmark, set to false to use i18n::translate('?')
-
-$WT_IMAGE_DIR = WT_THEME_DIR."images";        //-- directory to look for images
-$FAVICON=$WT_IMAGE_DIR."/favicon.ico";
+$theme_name       = "minimal"; // need double quotes, as file is scanned/parsed by script
+$stylesheet       = WT_THEME_DIR.'style.css';
+$rtl_stylesheet   = WT_THEME_DIR.'style_rtl.css';
+$print_stylesheet = WT_THEME_DIR.'print.css';
+$toplinks         = WT_THEME_DIR.'toplinks.php';
+$headerfile       = WT_THEME_DIR.'header.php';
+$footerfile       = WT_THEME_DIR.'footer.php';
+$FAVICON          = WT_THEME_DIR.'images/favicon.ico';
+$WT_USE_HELPIMG   = false;
 
 //-- variables for image names
 //- PGV main icons
-$WT_IMAGES["gedcom"]["large"] = "gedcom.gif";
-$WT_IMAGES["help"]["large"] = "help.gif";
-$WT_IMAGES["indis"]["large"] = "indis.gif";
-$WT_IMAGES["media"]["large"] = "media.gif";
-$WT_IMAGES["notes"]["large"] = "notes.gif";
-$WT_IMAGES["pedigree"]["large"] = "pedigree.gif";
-$WT_IMAGES["reports"]["large"] = "report.gif";
-$WT_IMAGES["search"]["large"] = "search.gif";
-$WT_IMAGES["sfamily"]["large"] = "sfamily.gif";
-$WT_IMAGES["source"]["large"] = "source.gif";
+$WT_IMAGES['gedcom']['large'] = WT_THEME_DIR.'images/gedcom.gif';
+$WT_IMAGES['help']['large'] = WT_THEME_DIR.'images/help.gif';
+$WT_IMAGES['indis']['large'] = WT_THEME_DIR.'images/indis.gif';
+$WT_IMAGES['media']['large'] = WT_THEME_DIR.'images/media.gif';
+$WT_IMAGES['notes']['large'] = WT_THEME_DIR.'images/notes.gif';
+$WT_IMAGES['pedigree']['large'] = WT_THEME_DIR.'images/pedigree.gif';
+$WT_IMAGES['reports']['large'] = WT_THEME_DIR.'images/report.gif';
+$WT_IMAGES['search']['large'] = WT_THEME_DIR.'images/search.gif';
+$WT_IMAGES['sfamily']['large'] = WT_THEME_DIR.'images/sfamily.gif';
+$WT_IMAGES['source']['large'] = WT_THEME_DIR.'images/source.gif';
 
 //- PGV small icons
-$WT_IMAGES["admin"]["small"] = "small/admin.gif";
-$WT_IMAGES["ancestry"]["small"] = "small/ancestry.gif";
-$WT_IMAGES["calendar"]["small"] = "small/calendar.gif";
-$WT_IMAGES["cfamily"]["small"] = "small/cfamily.gif";
-$WT_IMAGES["clippings"]["small"] = "small/clippings.gif";
-$WT_IMAGES["descendant"]["small"] = "small/descendancy.gif";
-$WT_IMAGES["fambook"]["small"] = "small/fambook.gif";
-$WT_IMAGES["fanchart"]["small"] = "small/fanchart.gif";
-$WT_IMAGES["gedcom"]["small"] = "small/gedcom.gif";
-$WT_IMAGES["help"]["small"] = "small/help.gif";
-$WT_IMAGES["indis"]["small"] = "small/indis.gif";
-$WT_IMAGES["media"]["small"] = "small/media.gif";
-$WT_IMAGES["mypage"]["small"] = "small/mypage.gif";
-$WT_IMAGES["notes"]["small"] = "small/notes.gif";
-$WT_IMAGES["patriarch"]["small"] = "small/patriarch.gif";
-$WT_IMAGES["pedigree"]["small"] = "small/pedigree.gif";
-$WT_IMAGES["place"]["small"] = "small/place.gif";
-$WT_IMAGES["repository"]["small"] = "small/repository.gif";
-$WT_IMAGES["search"]["small"] = "small/search.gif";
-$WT_IMAGES["sfamily"]["small"] = "sfamily.gif";
-$WT_IMAGES["source"]["small"] = "small/source.gif";
-$WT_IMAGES["timeline"]["small"] = "small/timeline.gif";
-$WT_IMAGES["tree"]["small"] = "small/gedcom.gif";
+$WT_IMAGES['admin']['small'] = WT_THEME_DIR.'images/small/admin.gif';
+$WT_IMAGES['ancestry']['small'] = WT_THEME_DIR.'images/small/ancestry.gif';
+$WT_IMAGES['calendar']['small'] = WT_THEME_DIR.'images/small/calendar.gif';
+$WT_IMAGES['cfamily']['small'] = WT_THEME_DIR.'images/small/cfamily.gif';
+$WT_IMAGES['clippings']['small'] = WT_THEME_DIR.'images/small/clippings.gif';
+$WT_IMAGES['descendant']['small'] = WT_THEME_DIR.'images/small/descendancy.gif';
+$WT_IMAGES['fambook']['small'] = WT_THEME_DIR.'images/small/fambook.gif';
+$WT_IMAGES['fanchart']['small'] = WT_THEME_DIR.'images/small/fanchart.gif';
+$WT_IMAGES['gedcom']['small'] = WT_THEME_DIR.'images/small/gedcom.gif';
+$WT_IMAGES['help']['small'] = WT_THEME_DIR.'images/small/help.gif';
+$WT_IMAGES['indis']['small'] = WT_THEME_DIR.'images/small/indis.gif';
+$WT_IMAGES['media']['small'] = WT_THEME_DIR.'images/small/media.gif';
+$WT_IMAGES['mypage']['small'] = WT_THEME_DIR.'images/small/mypage.gif';
+$WT_IMAGES['notes']['small'] = WT_THEME_DIR.'images/small/notes.gif';
+$WT_IMAGES['patriarch']['small'] = WT_THEME_DIR.'images/small/patriarch.gif';
+$WT_IMAGES['pedigree']['small'] = WT_THEME_DIR.'images/small/pedigree.gif';
+$WT_IMAGES['place']['small'] = WT_THEME_DIR.'images/small/place.gif';
+$WT_IMAGES['repository']['small'] = WT_THEME_DIR.'images/small/repository.gif';
+$WT_IMAGES['search']['small'] = WT_THEME_DIR.'images/small/search.gif';
+$WT_IMAGES['sfamily']['small'] = WT_THEME_DIR.'images/sfamily.gif';
+$WT_IMAGES['source']['small'] = WT_THEME_DIR.'images/small/source.gif';
+$WT_IMAGES['timeline']['small'] = WT_THEME_DIR.'images/small/timeline.gif';
+$WT_IMAGES['tree']['small'] = WT_THEME_DIR.'images/small/gedcom.gif';
 
 //- PGV buttons for data entry pages
-$WT_IMAGES["addmedia"]["button"] = "buttons/addmedia.gif";
-$WT_IMAGES["addsource"]["button"] = "buttons/addsource.gif";
-$WT_IMAGES["addnote"]["button"] = "buttons/addnote.gif";
-$WT_IMAGES["keyboard"]["button"] = "buttons/keyboard.gif";
-$WT_IMAGES["media"]["button"] = "buttons/media.gif";
-$WT_IMAGES["source"]["button"] = "buttons/source.gif";
-$WT_IMAGES["note"]["button"] = "buttons/note.gif";
-$WT_IMAGES["head"]["button"] = "buttons/head.gif";
-$WT_IMAGES["find_facts"]["button"] = "buttons/find_facts.png";
+$WT_IMAGES['addmedia']['button'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
+$WT_IMAGES['addsource']['button'] = WT_THEME_DIR.'images/buttons/addsource.gif';
+$WT_IMAGES['addnote']['button'] = WT_THEME_DIR.'images/buttons/addnote.gif';
+$WT_IMAGES['keyboard']['button'] = WT_THEME_DIR.'images/buttons/keyboard.gif';
+$WT_IMAGES['media']['button'] = WT_THEME_DIR.'images/buttons/media.gif';
+$WT_IMAGES['source']['button'] = WT_THEME_DIR.'images/buttons/source.gif';
+$WT_IMAGES['note']['button'] = WT_THEME_DIR.'images/buttons/note.gif';
+$WT_IMAGES['head']['button'] = WT_THEME_DIR.'images/buttons/head.gif';
+$WT_IMAGES['find_facts']['button'] = WT_THEME_DIR.'images/buttons/find_facts.png';
 
 // Media images
-$WT_IMAGES["media"]["audio"] = "../../../images/media/audio.png";
-$WT_IMAGES["media"]["doc"] = "../../../images/media/doc.gif";
-$WT_IMAGES["media"]["flash"] = "../../../images/media/flash.png";
-$WT_IMAGES["media"]["flashrem"] = "../../../images/media/flashrem.png";
-$WT_IMAGES["media"]["ged"] = "../../../images/media/ged.gif";
-$WT_IMAGES["media"]["globe"] = "../../../images/media/globe.png";
-$WT_IMAGES["media"]["html"] = "../../../images/media/html.gif";
-$WT_IMAGES["media"]["picasa"] = "../../../images/media/picasa.png";
-$WT_IMAGES["media"]["pdf"] = "../../../images/media/pdf.gif";
-$WT_IMAGES["media"]["tex"] = "../../../images/media/tex.gif";
-$WT_IMAGES["media"]["wmv"] = "../../../images/media/wmv.png";
-$WT_IMAGES["media"]["wmvrem"] = "../../../images/media/wmvrem.png";
+$WT_IMAGES['media']['audio'] = WT_THEME_DIR.'images/../../../images/media/audio.png';
+$WT_IMAGES['media']['doc'] = WT_THEME_DIR.'images/../../../images/media/doc.gif';
+$WT_IMAGES['media']['flash'] = WT_THEME_DIR.'images/../../../images/media/flash.png';
+$WT_IMAGES['media']['flashrem'] = WT_THEME_DIR.'images/../../../images/media/flashrem.png';
+$WT_IMAGES['media']['ged'] = WT_THEME_DIR.'images/../../../images/media/ged.gif';
+$WT_IMAGES['media']['globe'] = WT_THEME_DIR.'images/../../../images/media/globe.png';
+$WT_IMAGES['media']['html'] = WT_THEME_DIR.'images/../../../images/media/html.gif';
+$WT_IMAGES['media']['picasa'] = WT_THEME_DIR.'images/../../../images/media/picasa.png';
+$WT_IMAGES['media']['pdf'] = WT_THEME_DIR.'images/../../../images/media/pdf.gif';
+$WT_IMAGES['media']['tex'] = WT_THEME_DIR.'images/../../../images/media/tex.gif';
+$WT_IMAGES['media']['wmv'] = WT_THEME_DIR.'images/../../../images/media/wmv.png';
+$WT_IMAGES['media']['wmvrem'] = WT_THEME_DIR.'images/../../../images/media/wmvrem.png';
 
 //- other images
-$WT_IMAGES["add"]["other"] = "add.gif";
-$WT_IMAGES["darrow"]["other"] = "darrow.gif";
-$WT_IMAGES["darrow2"]["other"] = "darrow2.gif";
-$WT_IMAGES["ddarrow"]["other"] = "ddarrow.gif";
-$WT_IMAGES["dline"]["other"] = "dline.gif";
-$WT_IMAGES["dline2"]["other"] = "dline2.gif";
-$WT_IMAGES["webtrees"]["other"] = "webtrees.gif";
-$WT_IMAGES["hline"]["other"] = "hline.gif";
-$WT_IMAGES["larrow"]["other"] = "larrow.gif";
-$WT_IMAGES["larrow2"]["other"] = "larrow2.gif";
-$WT_IMAGES["ldarrow"]["other"] = "ldarrow.gif";
-$WT_IMAGES["minus"]["other"] = "minus.gif";
-$WT_IMAGES["note"]["other"] = "notes.gif";
-$WT_IMAGES["plus"]["other"] = "plus.gif";
-$WT_IMAGES["rarrow"]["other"] = "rarrow.gif";
-$WT_IMAGES["rarrow2"]["other"] = "rarrow2.gif";
-$WT_IMAGES["rdarrow"]["other"] = "rdarrow.gif";
-$WT_IMAGES["remove"]["other"]	= "remove.gif";
-$WT_IMAGES["spacer"]["other"] = "spacer.gif";
-$WT_IMAGES["uarrow"]["other"] = "uarrow.gif";
-$WT_IMAGES["uarrow2"]["other"] = "uarrow2.gif";
-$WT_IMAGES["uarrow3"]["other"] = "uarrow3.gif";
-$WT_IMAGES["udarrow"]["other"] = "udarrow.gif";
-$WT_IMAGES["vline"]["other"] = "vline.gif";
-$WT_IMAGES["zoomin"]["other"] = "zoomin.gif";
-$WT_IMAGES["zoomout"]["other"] = "zoomout.gif";
-$WT_IMAGES["stop"]["other"] = "stop.gif";
-$WT_IMAGES["pin-out"]["other"] = "pin-out.png";
-$WT_IMAGES["pin-in"]["other"] = "pin-in.png";
-$WT_IMAGES["default_image_M"]["other"] = "silhouette_male.gif";
-$WT_IMAGES["default_image_F"]["other"] = "silhouette_female.gif";
-$WT_IMAGES["default_image_U"]["other"] = "silhouette_unknown.gif";
-$WT_IMAGES['slide_open']['other'] = "open.png";
-$WT_IMAGES['slide_close']['other'] = "close.png";
+$WT_IMAGES['add']['other'] = WT_THEME_DIR.'images/add.gif';
+$WT_IMAGES['darrow']['other'] = WT_THEME_DIR.'images/darrow.gif';
+$WT_IMAGES['darrow2']['other'] = WT_THEME_DIR.'images/darrow2.gif';
+$WT_IMAGES['ddarrow']['other'] = WT_THEME_DIR.'images/ddarrow.gif';
+$WT_IMAGES['dline']['other'] = WT_THEME_DIR.'images/dline.gif';
+$WT_IMAGES['dline2']['other'] = WT_THEME_DIR.'images/dline2.gif';
+$WT_IMAGES['webtrees']['other'] = WT_THEME_DIR.'images/webtrees.gif';
+$WT_IMAGES['hline']['other'] = WT_THEME_DIR.'images/hline.gif';
+$WT_IMAGES['larrow']['other'] = WT_THEME_DIR.'images/larrow.gif';
+$WT_IMAGES['larrow2']['other'] = WT_THEME_DIR.'images/larrow2.gif';
+$WT_IMAGES['ldarrow']['other'] = WT_THEME_DIR.'images/ldarrow.gif';
+$WT_IMAGES['minus']['other'] = WT_THEME_DIR.'images/minus.gif';
+$WT_IMAGES['note']['other'] = WT_THEME_DIR.'images/notes.gif';
+$WT_IMAGES['plus']['other'] = WT_THEME_DIR.'images/plus.gif';
+$WT_IMAGES['rarrow']['other'] = WT_THEME_DIR.'images/rarrow.gif';
+$WT_IMAGES['rarrow2']['other'] = WT_THEME_DIR.'images/rarrow2.gif';
+$WT_IMAGES['rdarrow']['other'] = WT_THEME_DIR.'images/rdarrow.gif';
+$WT_IMAGES['remove']['other']	= WT_THEME_DIR.'images/remove.gif';
+$WT_IMAGES['spacer']['other'] = WT_THEME_DIR.'images/spacer.gif';
+$WT_IMAGES['uarrow']['other'] = WT_THEME_DIR.'images/uarrow.gif';
+$WT_IMAGES['uarrow2']['other'] = WT_THEME_DIR.'images/uarrow2.gif';
+$WT_IMAGES['uarrow3']['other'] = WT_THEME_DIR.'images/uarrow3.gif';
+$WT_IMAGES['udarrow']['other'] = WT_THEME_DIR.'images/udarrow.gif';
+$WT_IMAGES['vline']['other'] = WT_THEME_DIR.'images/vline.gif';
+$WT_IMAGES['zoomin']['other'] = WT_THEME_DIR.'images/zoomin.gif';
+$WT_IMAGES['zoomout']['other'] = WT_THEME_DIR.'images/zoomout.gif';
+$WT_IMAGES['stop']['other'] = WT_THEME_DIR.'images/stop.gif';
+$WT_IMAGES['pin-out']['other'] = WT_THEME_DIR.'images/pin-out.png';
+$WT_IMAGES['pin-in']['other'] = WT_THEME_DIR.'images/pin-in.png';
+$WT_IMAGES['default_image_M']['other'] = WT_THEME_DIR.'images/silhouette_male.gif';
+$WT_IMAGES['default_image_F']['other'] = WT_THEME_DIR.'images/silhouette_female.gif';
+$WT_IMAGES['default_image_U']['other'] = WT_THEME_DIR.'images/silhouette_unknown.gif';
+$WT_IMAGES['slide_open']['other'] = WT_THEME_DIR.'images/open.png';
+$WT_IMAGES['slide_close']['other'] = WT_THEME_DIR.'images/close.png';
 
 // - lifespan chart arrows
-$WT_IMAGES["lsltarrow"]["other"] = "lsltarrow.gif";
-$WT_IMAGES["lsrtarrow"]["other"] = "lsrtarrow.gif";
-$WT_IMAGES["lsdnarrow"]["other"] = "lsdnarrow.gif";
-$WT_IMAGES["lsuparrow"]["other"] = "lsuparrow.gif";
+$WT_IMAGES['lsltarrow']['other'] = WT_THEME_DIR.'images/lsltarrow.gif';
+$WT_IMAGES['lsrtarrow']['other'] = WT_THEME_DIR.'images/lsrtarrow.gif';
+$WT_IMAGES['lsdnarrow']['other'] = WT_THEME_DIR.'images/lsdnarrow.gif';
+$WT_IMAGES['lsuparrow']['other'] = WT_THEME_DIR.'images/lsuparrow.gif';
 
 //-- Variables for the Fan chart
 $fanChart = array(
@@ -195,8 +191,4 @@ $WT_STATS_CHART_COLOR2 = "555555";
 $WT_STATS_CHART_COLOR3 = "cccccc";
 
 // Arrow symbol or icon for up-page links on Help pages
-// This icon is referred to in Help text by: #GLOBALS[UpArrow]#
-if (file_exists($WT_IMAGE_DIR."/uarrow3.gif")) $UpArrow = "<img src=\"{$WT_IMAGE_DIR}/uarrow3.gif\" class=\"icon\" border=\"0\" alt=\"^\" />";
-else $UpArrow = "<b>^^&nbsp;&nbsp;</b>";
-
-?>
+$UpArrow = "<b>^^&nbsp;&nbsp;</b>";

@@ -465,23 +465,24 @@ class Person extends GedcomRecord {
 	}
 
 	static function sexImage($sex, $size='small', $style='', $title='') {
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $WT_IMAGES;
+
 		switch ($sex) {
 		case 'M':
 			if (isset($WT_IMAGES['sex'][$size])) {
-				return "<img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['sex'][$size]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
+				return "<img src=\"{$WT_IMAGES['sex'][$size]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
 			} else {
 				return '<span style="size:'.$size.'">'.WT_UTF8_MALE.'</span>';
 			}
 		case 'F':
 			if (isset($WT_IMAGES['sex'][$size])) {
-				return "<img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['sexf'][$size]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
+				return "<img src=\"{$WT_IMAGES['sexf'][$size]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
 			} else {
 				return '<span style="size:'.$size.'">'.WT_UTF8_FEMALE.'</span>';
 			}
 		default:
 			if (isset($WT_IMAGES['sex'][$size])) {
-				return "<img src=\"{$WT_IMAGE_DIR}/{$WT_IMAGES['sexn'][$size]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
+				return "<img src=\"{$WT_IMAGES['sexn'][$size]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
 			} else {
 				return '<span style="size:'.$size.'">?</span>';
 			}

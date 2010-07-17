@@ -167,9 +167,8 @@ class TimelineController extends BaseController {
 	}
 
 	function print_time_fact($event) {
-		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION;
-		global $WT_IMAGE_DIR, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements;
-		global $familyfacts, $GEDCOM;
+		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements, $familyfacts, $GEDCOM;
+
 		/* @var $event Event */
 		$factrec = $event->getGedComRecord();
 			$fact = $event->getTag();
@@ -216,7 +215,7 @@ class TimelineController extends BaseController {
 
 				print "\n\t\t<div id=\"fact$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($xoffset):"right: ".($xoffset))."px; top:".($yoffset)."px; font-size: 8pt; height: ".($this->bheight)."px; \" onmousedown=\"factMD(this, '".$factcount."', ".($yoffset-$tyoffset).");\">\n";
 				print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>\n";
-				print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" hspace=\"0\" width=\"10\" vspace=\"0\" alt=\"\" style=\"padding-";
+				print "<img src=\"".$WT_IMAGES["hline"]["other"]."\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" hspace=\"0\" width=\"10\" vspace=\"0\" alt=\"\" style=\"padding-";
 				if ($TEXT_DIRECTION=="ltr") print "left";
 				else print "right";
 				print ": 3px;\" />\n";
@@ -323,7 +322,7 @@ class TimelineController extends BaseController {
 				}
 				//-- print the diagnal line
 				print "\n\t\t<div id=\"dbox$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+25):"right: ".($basexoffset+25))."px; top:".($dyoffset)."px; font-size: 8pt; height: ".(abs($tyoffset))."px; width: ".(abs($tyoffset))."px;";
-				print " background-image: url('".$WT_IMAGE_DIR."/".$WT_IMAGES[$img]["other"]."');";
+				print " background-image: url('".$WT_IMAGES[$img]["other"]."');";
 				print " background-position: 0% $ypos; \" >\n";
 				print "</div>\n";
 	}

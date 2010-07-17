@@ -716,7 +716,8 @@ class SearchController extends BaseController {
 
 	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGE_DIR, $WT_IMAGES;
+		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGES;
+
 		$somethingPrinted = false;	// whether anything printed
 		// ---- section to search and display results on a general keyword search
 		if ($this->action=="general" || $this->action=="soundex" || $this->action=="replace") {
@@ -853,7 +854,7 @@ class SearchController extends BaseController {
 										if (!$displayed_once) {
 											if (!$no_results_found) {
 												$no_results_found = true;
-												print "<tr><td class=\"list_label\" colspan=\"2\" width=\"100%\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["indis"]["large"]."\" border=\"0\" width=\"25\" alt=\"\" /> ".i18n::translate('People')."</td></tr>";
+												print "<tr><td class=\"list_label\" colspan=\"2\" width=\"100%\"><img src=\"".$WT_IMAGES["indis"]["large"]."\" border=\"0\" width=\"25\" alt=\"\" /> ".i18n::translate('People')."</td></tr>";
 												print "<tr><td><table id=\"multiResultsInTbl\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" ><tr>";
 											}
 											$displayed_once = true;

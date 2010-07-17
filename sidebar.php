@@ -77,7 +77,7 @@ if ($sb_action!='none') {
 				<h3 title="<?php echo $mod->getName()?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
 				<div id="sb_content_<?php echo $mod->getName()?>">
 				<?php if ($counter==0) echo $mod->getSidebarContent();
-				else {?><img src="<?php echo $WT_IMAGE_DIR ?>/loading.gif" /><?php }?>
+				else {?><img src="<?php echo WT_THEME_DIR ?>images/loading.gif" /><?php }?>
 				</div>
 				<?php 
 				$counter++;
@@ -164,13 +164,13 @@ jQuery(document).ready(function() {
 	// Sidebar Pin Function 
 	jQuery('#sidebar_pin').toggle(
    		   	function() {
-   	   		   	jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGE_DIR.'/'.$WT_IMAGES['pin-in']['other'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
+   	   		   	jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in']['other'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
    	   			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
    	   			pinned = true;
    		   	},
    		   	
    		   	function() {
-   		   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGE_DIR.'/'.$WT_IMAGES['pin-out']['other'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
+   		   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out']['other'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
    		   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
    		   		pinned = false;
    		   	});
@@ -184,7 +184,7 @@ jQuery(document).ready(function() {
 	// Sidebar Open/Close Function 
 	// Sidebar Open 
 	jQuery('#sidebar_open').toggle(function() {
-		jQuery('#sidebar_open img').attr('style', 'margin-left:255px;' ).attr('src', '<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_close']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Close');?>');
+		jQuery('#sidebar_open img').attr('style', 'margin-left:255px;' ).attr('src', '<?php echo $WT_IMAGES['slide_close']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Close');?>');
 		jQuery('#sidebar').animate({
 			right: "0px",
 			width: "260px"
@@ -222,7 +222,7 @@ jQuery(document).ready(function() {
 		
 	// Sidebar Close 
 	}, function() {
-		jQuery('#sidebar_open img').attr('style', 'margin-left:0px;' ).attr('src', '<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
+		jQuery('#sidebar_open img').attr('style', 'margin-left:0px;' ).attr('src', '<?php echo $WT_IMAGES['slide_open']['other'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
 		jQuery('#sidebar').css('left', '');
 		jQuery('#sidebar').animate({
 			right: "4px",
@@ -268,15 +268,15 @@ jQuery(document).ready(function() {
 	if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] && $sidebar_state == "open") {
 	?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
-			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_close']['other'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a> 
-			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['pin-out']['other'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a> 
+			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_close']['other'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a> 
+			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out']['other'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a> 
 		</div>
 	<?php
 	} else {
 	?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
-			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['slide_open']['other'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a> 
-			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGE_DIR."/".$WT_IMAGES['pin-out']['other'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a> 
+			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_open']['other'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a> 
+			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out']['other'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a> 
 		</div>
 	<?php
 	}

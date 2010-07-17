@@ -72,14 +72,9 @@ function expand_urls($text) {
  * @param boolean $noedit	Hide or show edit links
  */
 function print_fact(&$eventObj, $noedit=false) {
-	global $nonfacts;
-	global $WT_IMAGE_DIR, $WT_MENUS_AS_LISTS;
-	global $GEDCOM, $RESN_CODES;
-	global $WORD_WRAPPED_NOTES;
-	global $TEXT_DIRECTION;
-	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
-	global $n_chil, $n_gchi, $n_ggch;
-	global $SEARCH_SPIDER;
+	global $nonfacts, $WT_MENUS_AS_LISTS, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
+	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
+	global $n_chil, $n_gchi, $n_ggch, $SEARCH_SPIDER;
 
 	if (!$eventObj->canShow()) {
 		return false;
@@ -328,9 +323,9 @@ function print_fact(&$eventObj, $noedit=false) {
 		// -- print BURIal -> CEMEtery
 		$ct = preg_match("/2 CEME (.*)/", $factrec, $match);
 		if ($ct>0) {
-			if ($SHOW_FACT_ICONS && file_exists($WT_IMAGE_DIR."/facts/CEME.gif"))
+			if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/CEME.gif"))
 				//echo $eventObj->Icon(), ' '; // echo incorrect fact icon !!!
-				echo "<img src=\"{$WT_IMAGE_DIR}/facts/CEME.gif\" alt=\"".translate_fact('CEME')."\" title=\"".translate_fact('CEME')."\" align=\"middle\" /> ";
+				echo "<img src=\"".WT_THEME_DIR."images/facts/CEME.gif\" alt=\"".translate_fact('CEME')."\" title=\"".translate_fact('CEME')."\" align=\"middle\" /> ";
 			echo "<b>", translate_fact('CEME'), ":</b> ", $match[1], "<br />\n";
 		}
 		//-- print address structure
@@ -402,9 +397,9 @@ function print_fact(&$eventObj, $noedit=false) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
 					$label = translate_fact($fact.':'.$factref, $label_person);
-					if ($SHOW_FACT_ICONS && file_exists($WT_IMAGE_DIR."/facts/".$factref.".gif"))
+					if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$factref.".gif"))
 						//echo $eventObj->Icon(), ' '; // print incorrect fact icon !!!
-						echo "<img src=\"{$WT_IMAGE_DIR}/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
+						echo "<img src=\"".WT_THEME_DIR."images/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
 					else echo "<span class=\"label\">", $label, ": </span>";
 					echo htmlspecialchars($match[$i][2], ENT_COMPAT, 'UTF-8');
 					echo "<br />";
@@ -478,7 +473,8 @@ function print_repository_record($sid) {
  * @param boolean $return	whether to return the data or print the data
  */
 function print_fact_sources($factrec, $level, $return=false) {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $EXPAND_SOURCES;
+	global $WT_IMAGES, $EXPAND_SOURCES;
+
 	$printDone = false;
 	$data = "";
 	$nlevel = $level+1;
@@ -510,7 +506,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$elementID = $sid."-".floor(microtime()*1000000);
 			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
 			if ($lt>0) {
-				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES[$plusminus]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
+				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
 				if ($plusminus=="plus") $data .= i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /></a> ";
 				else $data .= i18n::translate('Hide Details')."\" title=\"".i18n::translate('Hide Details')."\" /></a> ";
 			}
@@ -827,8 +823,7 @@ function print_address_structure($factrec, $level) {
 }
 
 function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $RESN_CODES;
-	global $WT_IMAGE_DIR, $WT_IMAGES;
+	global $RESN_CODES, $WT_IMAGES;
 
 	if (!canDisplayFact($pid, WT_GED_ID, $factrec)) {
 		return;
@@ -853,7 +848,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "<td class=\"descriptionbox";
 			if ($level==2) echo " rela";
 			echo " $styleadd center width20\">";
-			if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["source"]["small"], "\" alt=\"\" /><br />";
+			if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGES["source"]["small"], "\" alt=\"\" /><br />";
 			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
@@ -1080,10 +1075,8 @@ function getSourceStructure($srec) {
  * @param boolean $noedit	Whether or not to allow this fact to be edited
  */
 function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $GEDCOM, $RESN_CODES;
-	global $WT_IMAGE_DIR;
-	global $WT_IMAGES;
-	global $TEXT_DIRECTION;
+	global $GEDCOM, $RESN_CODES, $WT_IMAGES, $TEXT_DIRECTION;
+
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$styleadd="";
 	if (strpos($factrec, "WT_NEW")!==false) $styleadd="change_new";
@@ -1108,7 +1101,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		if ($level>=2) echo " rela";
 		echo " $styleadd center width20\">";
 		if ($level<2) {
-			echo "<img class=\"icon\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["notes"]["small"], "\" alt=\"\" />";
+			echo "<img class=\"icon\" src=\"", $WT_IMAGES["notes"]["small"], "\" alt=\"\" />";
 			if (strstr($factrec, "1 NOTE @" )) {
 				echo "<br />", translate_fact('SHARED_NOTE');
 			} else {
@@ -1420,9 +1413,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
  * @param string $pid	The record id this media item was attached to
  */
 function print_main_media_row($rtype, $rowm, $pid) {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
-	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
-	global $SEARCH_SPIDER, $MEDIA_TYPES;
+	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER, $MEDIA_TYPES;
 
 	if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
 		return false;
@@ -1436,7 +1427,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$isExternal = isFileExternal($thumbnail);
 
 	$linenum = 0;
-	echo "\n\t\t<tr><td class=\"descriptionbox $styleadd center width20\"><img class=\"icon\" src=\"", $WT_IMAGE_DIR, "/", $WT_IMAGES["media"]["small"], "\" alt=\"\" /><br />", translate_fact('OBJE');
+	echo "\n\t\t<tr><td class=\"descriptionbox $styleadd center width20\"><img class=\"icon\" src=\"", $WT_IMAGES["media"]["small"], "\" alt=\"\" /><br />", translate_fact('OBJE');
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($rowm['m_media'], $rowm['m_gedrec'])) && ($styleadd!="change_old")) {
 		$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
 		$menu->addOnclick("return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');");

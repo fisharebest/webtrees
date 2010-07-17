@@ -154,7 +154,7 @@ function warnuser(cbox) {
 
 		print "<div style=\"margin-bottom:2px;\">";
 		print "<table><tr><td>";
-		if (isset($WT_IMAGES["trashcan"]["medium"])) print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["trashcan"]["medium"]."\" align=\"left\" alt=\"\" />";
+		if (isset($WT_IMAGES["trashcan"]["medium"])) print "<img src=\"".$WT_IMAGES["trashcan"]["medium"]."\" align=\"left\" alt=\"\" />";
 		else print "<img src=\"images/trashcan.gif\" align=\"left\" alt=\"\" />";
 		print "</td>";
 		print "<td valign=\"top\"><ul id=\"trashlist\">";

@@ -594,7 +594,7 @@ function filterMedia($media, $filter, $acceptExt) {
 * @return string the location of the thumbnail
 */
 function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
-	global $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
+	global $MEDIA_DIRECTORY, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
 
 	if (strlen($filename) == 0)
 		return false;
@@ -654,7 +654,7 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 		default :
 			$which = "large";
 	}
-	return $WT_IMAGE_DIR . "/" . $WT_IMAGES["media"][$which];
+	return $WT_IMAGES["media"][$which];
 }
 
 /**

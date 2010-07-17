@@ -181,7 +181,7 @@ if ($action == "choose" && $paramok) {
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';
 		if (isset($WT_IMAGES["add"]["other"])) { 
-			echo '<a href="#"><img style="border-style:none;" src="', $WT_IMAGE_DIR, '/', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), ' "title="', i18n::translate('Add'), '" align="middle" name="addLink" value="" onClick="javascript:blankwin(); return false;" />';
+			echo '<a href="#"><img style="border-style:none;" src="', $WT_IMAGES["add"]["other"], '" alt="', i18n::translate('Add'), ' "title="', i18n::translate('Add'), '" align="middle" name="addLink" value="" onClick="javascript:blankwin(); return false;" />';
 			} else {
 			echo '<button name="addLink" value="" type="button" onClick="javascript:blankwin(); return false;">', i18n::translate('Add'), '</button>';
 		}

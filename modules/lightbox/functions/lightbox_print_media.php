@@ -53,7 +53,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 	global $MULTI_MEDIA, $MEDIA_EXTERNAL;
 	global $GEDCOM, $MEDIATYPE;
-	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGE_DIR, $WT_IMAGES, $TEXT_DIRECTION;
+	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION;
 
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
 	global $res, $typ2b, $edit, $tabno, $n, $item, $items, $p, $note, $rowm, $note_text, $reorder;

@@ -151,17 +151,16 @@ class DescendancyController extends BaseController {
  * @param int $depth the descendancy depth to show
  */
 function print_child_descendancy(&$person, $depth) {
-	global $WT_IMAGE_DIR, $WT_IMAGES, $Dindent;
-	global $personcount;
+	global $WT_IMAGES, $Dindent, $personcount;
 
 	if (is_null($person)) return;
 	//print_r($person);
 	print "<li>";
 	print "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-	if ($depth==$this->generations) print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>\n";
+	if ($depth==$this->generations) print "<img src=\"".$WT_IMAGES["spacer"]["other"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>\n";
 	else {
-		print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
-		print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["hline"]["other"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>\n";
+		print "<img src=\"".$WT_IMAGES["spacer"]["other"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
+		print "<img src=\"".$WT_IMAGES["hline"]["other"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>\n";
 	}
 	print_pedigree_person($person->getXref(), 1, 0, $personcount);
 	print "</td>";
@@ -218,7 +217,7 @@ function print_child_descendancy(&$person, $depth) {
  * @param int $depth the descendancy depth to show
  */
 function print_family_descendancy(&$person, &$family, $depth) {
-	global $GEDCOM, $WT_IMAGE_DIR, $WT_IMAGES, $Dindent, $personcount;
+	global $GEDCOM, $WT_IMAGES, $Dindent, $personcount;
 
 	if (is_null($family)) return;
 	if (is_null($person)) return;
@@ -234,9 +233,9 @@ function print_family_descendancy(&$person, &$family, $depth) {
 
 		// print marriage info
 		print "<li>";
-		print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\" />";
+		print "<img src=\"".$WT_IMAGES["spacer"]["other"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\" />";
 		print "<span class=\"details1\" style=\"white-space: nowrap; \" >";
-		print "<a href=\"#\" onclick=\"expand_layer('".$famid.$personcount."'); return false;\" class=\"top\"><img id=\"".$famid.$personcount."_img\" src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["minus"]["other"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
+		print "<a href=\"#\" onclick=\"expand_layer('".$famid.$personcount."'); return false;\" class=\"top\"><img id=\"".$famid.$personcount."_img\" src=\"".$WT_IMAGES["minus"]["other"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			echo ' <a href="', encode_url($family->getLinkUrl()), '" class="details1">';

@@ -86,7 +86,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SEARCH_SPIDER, $SESSION_HIDE_GOOGLEMAP, $WT_IMAGE_DIR, $WT_IMAGES;
+		global $SEARCH_SPIDER, $SESSION_HIDE_GOOGLEMAP, $WT_IMAGES;
 		global $GOOGLEMAP_ENABLED, $GOOGLEMAP_API_KEY, $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
 		global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
 		global $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD, $GOOGLEMAP_PH_CONTROLS;
@@ -118,11 +118,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$tNew = str_replace("&", "&amp;", $tNew);
 			if($SESSION_HIDE_GOOGLEMAP=="true") {
 				print "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false#".$this->getName()."\">";
-				print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Activate')."\" title=\"".i18n::translate('Activate')."\" />";
+				print "<img src=\"".$WT_IMAGES["plus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Activate')."\" title=\"".i18n::translate('Activate')."\" />";
 				print " ".i18n::translate('Activate')."</a></span>\n";
 			} else {
 				print "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"" .$tNew."&amp;HIDE_GOOGLEMAP=true#".$this->getName()."\">";
-				print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["minus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Deactivate')."\" title=\"".i18n::translate('Deactivate')."\" />";
+				print "<img src=\"".$WT_IMAGES["minus"]["other"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Deactivate')."\" title=\"".i18n::translate('Deactivate')."\" />";
 				print " ".i18n::translate('Deactivate')."</a></span>\n";
 			}
 
@@ -174,7 +174,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 		}
 		// start
-		print "<img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["spacer"]["other"]."\" id=\"marker6\" width=\"1\" height=\"1\" alt=\"\" />";
+		print "<img src=\"".$WT_IMAGES["spacer"]["other"]."\" id=\"marker6\" width=\"1\" height=\"1\" alt=\"\" />";
 		// end
 		?>
 		</td>

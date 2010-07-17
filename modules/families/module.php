@@ -70,8 +70,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $SHOW_MARRIED_NAMES;
-		global $WT_IMAGE_DIR, $WT_IMAGES;
+		global $SHOW_MARRIED_NAMES, $WT_IMAGES;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials=get_indilist_salpha($SHOW_MARRIED_NAMES, false, WT_GED_ID);
@@ -110,7 +109,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					  success: function(html){
 					    jQuery("#sb_fam_"+surname+" div").html(html);
 					    jQuery("#sb_fam_"+surname+" div").show();
-					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGE_DIR."/".$WT_IMAGES['minus']['other'].')");
+					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus']['other'].')");
 					    famloadedNames[surname]=2;
 					  }
 					});
@@ -118,12 +117,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				else if (famloadedNames[surname]==1) {
 					famloadedNames[surname]=2;
 					jQuery("#sb_fam_"+surname+" div").show();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGE_DIR."/".$WT_IMAGES['minus']['other'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus']['other'].')");
 				}
 				else {
 					famloadedNames[surname]=1;
 					jQuery("#sb_fam_"+surname+" div").hide();
-					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGE_DIR."/".$WT_IMAGES['plus']['other'].')");
+					jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['plus']['other'].')");
 				}
 				return false;
 			});

@@ -299,8 +299,6 @@ class Event {
  * Examples: 1900_CENS.gif 1910_CENS.gif 1900_OCCU_FARM.gif 1800_OCCU_FARM.gif
  */
  function Icon() {
-		global $WT_IMAGE_DIR;
-
 		// Need the gregorian century/decade
 		$date=$this->getDate();
 
@@ -313,7 +311,7 @@ class Event {
 		$decade=floor($gdate->y/10).'0';
 
 		$tag=$this->getTag();
-		$dir="{$WT_IMAGE_DIR}/facts";
+		$dir=WT_THEME_DIR."images/facts";
 
 		// Which era (century/decade)
 		$eras=array("{$decade}_", "{$century}_", '');

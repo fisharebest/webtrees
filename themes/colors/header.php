@@ -149,7 +149,7 @@ if ($view!='simple') {
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
 			'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-            '<input type="image" src="', $WT_IMAGE_DIR, '/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
+            '<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
 			'</form>',
 			'</ui></div>'; 
 		}

@@ -97,21 +97,18 @@ function split_align_text($data, $maxlen) {
  * @param int $fandeg fan size in deg (default=270)
  */
 function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
-	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style;
-	global $name, $TEXT_DIRECTION;
-	global $stylesheet;
-	global $WT_IMAGE_DIR, $WT_IMAGES, $LINK_ICONS, $GEDCOM;
-	global $fanChart;
+	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style, $name, $TEXT_DIRECTION;
+	global $stylesheet, $WT_IMAGES, $LINK_ICONS, $GEDCOM, $fanChart;
 
 	// check for GD 2.x library
 	if (!defined("IMG_ARC_PIE")) {
 		echo "<span class=\"error\">".i18n::translate('PHP server misconfiguration: GD 2.x library required to use image functions.')."</span>";
-		echo " <a href=\"" . i18n::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["help"]["small"]."\" class=\"icon\" alt=\"\" /></a><br /><br />";
+		echo " <a href=\"" . i18n::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGES["help"]["small"]."\" class=\"icon\" alt=\"\" /></a><br /><br />";
 		return false;
 	}
 	if (!function_exists("ImageTtfBbox")) {
 		echo "<span class=\"error\">".i18n::translate('PHP server misconfiguration: FreeType library required to use TrueType fonts.')."</span>";
-		echo " <a href=\"" . i18n::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGE_DIR."/".$WT_IMAGES["help"]["small"]."\" class=\"icon\" alt=\"\" /></a><br /><br />";
+		echo " <a href=\"" . i18n::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGES["help"]["small"]."\" class=\"icon\" alt=\"\" /></a><br /><br />";
 		return false;
 	}
 
