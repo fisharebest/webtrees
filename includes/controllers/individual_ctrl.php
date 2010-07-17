@@ -563,12 +563,13 @@ class IndividualController extends BaseController {
 		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
-				$link = $this->indi->getLinkUrl()."&show_changes=yes";
+				$link = $this->indi->getLinkUrl().'&show_changes=yes';
 			} else {
 				$label = i18n::translate('Click here to hide changes.');
-				$link = $this->indi->getLinkUrl()."&show_changes=no";
+				$link = $this->indi->getLinkUrl().'&show_changes=no';
 			}
 			$submenu = new Menu($label, encode_url($link));
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_indi"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 

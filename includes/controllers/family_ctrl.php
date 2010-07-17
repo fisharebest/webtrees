@@ -354,14 +354,14 @@ class FamilyController extends BaseController {
 		// show/hide changes
 		if (find_updated_record($this->getFamilyID(), WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), encode_url('family.php?famid='.$this->getFamilyID().'&show_changes=yes'));
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_fam"]["small"]);
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$menu->addSubmenu($submenu);
+				$label = i18n::translate('This record has been updated.  Click here to show changes.');
+				$link = $this->family->getLinkUrl().'&show_changes=yes';
 			} else {
-				$submenu = new Menu(i18n::translate('Click here to hide changes.'), encode_url('family.php?famid='.$this->getFamilyID().'&show_changes=no'));
-				$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_fam"]["small"]);
+				$label = i18n::translate('Click here to hide changes.');
+				$link = $this->family->getLinkUrl().'&show_changes=no';
 			}
+			$submenu = new Menu($label, encode_url($link));
+			$submenu->addIcon($WT_IMAGE_DIR."/".$WT_IMAGES["edit_fam"]["small"]);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
