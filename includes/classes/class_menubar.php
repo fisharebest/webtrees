@@ -333,7 +333,7 @@ class MenuBar
 							// charts / parents_timeline
 							$submenu = new Menu(i18n::translate('Show couple on timeline chart'), encode_url('timeline.php?pids[0]='.$controller->getHusband().'&pids[1]='.$controller->getWife()));
 							if (!empty($WT_IMAGES["timeline"])) {
-								$submenu->addIcon(timeline);
+								$submenu->addIcon('timeline');
 							}
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);
