@@ -42,8 +42,11 @@ if (!defined('WT_WEBTREES')) {
 	 * @param string $mediaid
 	 */
 //	function print_link_menu2($mediaid) {
-        $mediaid=$media["XREF"];
-		global $TEXT_DIRECTION;
+    $mediaid=$media["XREF"];
+		global $TEXT_DIRECTION, $WT_IMAGES;
+		if (!isset($WT_IMAGES['image_link'])) {
+			$WT_IMAGES['image_link']='modules/lightbox/images/image_link.gif';
+		}
 
 		$classSuffix = "";
 		if ($TEXT_DIRECTION=="rtl") $classSuffix = "_rtl";
@@ -51,7 +54,7 @@ if (!defined('WT_WEBTREES')) {
 		// main link displayed on page
 		$menu = new Menu();
 		if ($LB_ML_THUMB_LINKS == "icon" || $LB_ML_THUMB_LINKS == "both") {
-			$menu->addIcon("modules/lightbox/images/image_link.gif");
+			$menu->addIcon('image_link');
 		}
 		if ($LB_ML_THUMB_LINKS == "both") {
 			$menu->addLabel(i18n::translate('Set link'), "down");

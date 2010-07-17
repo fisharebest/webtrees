@@ -68,7 +68,6 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 			if ($menu) {
 				$menu->addClass('menuitem'.$ff, 'menuitem_hover'.$ff, 'submenu'.$ff, 'icon_large_gedcom');
 				$menu->addLabel($menu->label, 'down');
-				$menu->addIcon($menu->icon);
 			}
 		}
 		return $menu;

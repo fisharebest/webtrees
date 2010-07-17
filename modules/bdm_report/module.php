@@ -57,7 +57,7 @@ class bdm_report_WT_Module extends WT_Module implements WT_Module_Report {
 
 		$menus=array();
 		$menu=new Menu($this->getTitle(), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml');
-		$menu->addIcon($WT_IMAGES['place']['small']);
+		$menu->addIcon('place');
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menus[]=$menu;
 

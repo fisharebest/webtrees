@@ -519,12 +519,8 @@ class IndividualController extends BaseController {
 		}
 		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
-		if (!empty($WT_IMAGES["edit_indi"]["large"])) {
-			$menu->addIcon($WT_IMAGES["edit_indi"]["large"]);
-		} elseif (!empty($WT_IMAGES["edit_indi"]["small"])) {
-			$menu->addIcon($WT_IMAGES["edit_indi"]["small"]);
-		}
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		$menu->addIcon('edit_indi');
+		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
 			if (count($this->indi->getSpouseFamilyIds())>1) {
@@ -569,17 +565,17 @@ class IndividualController extends BaseController {
 				$link = $this->indi->getLinkUrl().'&show_changes=no';
 			}
 			$submenu = new Menu($label, encode_url($link));
-			$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addIcon('edit_indi');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url($this->indi->getLinkUrl()."&action=undo"));
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
+				$submenu->addIcon('edit_indi');
 				$menu->addSubmenu($submenu);
 				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url($this->indi->getLinkUrl()."&action=accept"));
-				$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
+				$submenu->addIcon('edit_indi');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
@@ -591,12 +587,12 @@ class IndividualController extends BaseController {
 		if (WT_USER_IS_ADMIN || $this->canShowGedcomRecord()) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
-			$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addIcon('edit_indi');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
-			$submenu->addIcon($WT_IMAGES["gedcom"]["small"]);
+			$submenu->addIcon('gedcom');
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
@@ -610,14 +606,14 @@ class IndividualController extends BaseController {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(i18n::translate('Delete this individual'));
 			$submenu->addOnclick("return deleteperson('".$this->pid."');");
-			$submenu->addIcon($WT_IMAGES["edit_indi"]["small"]);
+			$submenu->addIcon('edit_indi');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
 		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url($this->indi->getLinkUrl()."&action=addfav&gid={$this->pid}"));
-		$submenu->addIcon($WT_IMAGES["favorites"]["small"]);
+		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);
 

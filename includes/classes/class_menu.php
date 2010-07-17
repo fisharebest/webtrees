@@ -86,12 +86,23 @@ class Menu {
 		$this->onclick = $onclick;
 	}
 
-	function addIcon($icon, $hovericon=null)
-	{
-		if (file_exists($icon)) $this->icon = $icon;
-		else $this->icon = null;
-		if (file_exists($hovericon)) $this->hovericon = $hovericon;
-		else $this->hovericon = null;
+	function addIcon($icon, $hovericon=null) {
+		global $WT_IMAGES;
+
+		if (isset($WT_IMAGES[$icon]['large'])) {
+			$this->icon = $WT_IMAGES[$icon]['large'];
+		} elseif (isset($WT_IMAGES[$icon]['small'])) {
+			$this->icon = $WT_IMAGES[$icon]['small'];
+		} else {
+			$this->icon = null;
+		}
+		if (isset($WT_IMAGES[$hovericon]['large'])) {
+			$this->hovericon = $WT_IMAGES[$hovericon]['large'];
+		} elseif (isset($WT_IMAGES[$hovericon]['small'])) {
+			$this->hovericon = $WT_IMAGES[$hovericon]['small'];
+		} else {
+			$this->hovericon = null;
+		}
 	}
 
 	function addFlyout($flyout='down')
