@@ -1540,7 +1540,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "\" />";
 		echo "<span id=\"", $element_id, "_display\">", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "</span>";
 		echo " <a href=\"#edit_name\" onclick=\"convertHidden('", $element_id, "'); return false;\"> ";
-		if (isset($WT_IMAGES["edit_indi"]["small"])) echo "<img src=\"", $WT_IMAGES["edit_indi"]["small"], "\" border=\"0\" width=\"20\" alt=\"", i18n::translate('Edit name'), "\" align=\"top\" />";
+		if (isset($WT_IMAGES["edit_indi"])) echo "<img src=\"", $WT_IMAGES["edit_indi"], "\" border=\"0\" width=\"20\" alt=\"", i18n::translate('Edit name'), "\" align=\"top\" />";
 		else echo "<span class=\"age\">[", i18n::translate('Edit name'), "]</span>";
 		echo "</a>";
 	} else {

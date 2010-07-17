@@ -145,7 +145,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$root = GedcomRecord::getInstance($this->controller->pid);
 				if ($root && $root->canDisplayDetails()) 
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$root->getXref().'" class="add_cart">
-					<img src="'.$WT_IMAGES['clippings']['small'].'" width="20" /> '.i18n::translate('Add %s to cart', $root->getListName()).'</a>';
+					<img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.i18n::translate('Add %s to cart', $root->getListName()).'</a>';
 			}
 			else if ($this->controller->famid && !id_in_cart($this->controller->pid)) {
 				$fam = Family::getInstance($this->controller->famid);
@@ -311,7 +311,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					if (!empty($icon)) {
 						$out .= '<li>';
 						if (!empty($icon)) {
-							$out .= '<img src="'.$WT_IMAGES[$icon]["small"].'" border="0" alt="'.$tag.'" title="'.$tag.'" width="20" />';
+							$out .= '<img src="'.$WT_IMAGES[$icon].'" border="0" alt="'.$tag.'" title="'.$tag.'" width="20" />';
 						}
 						$record=GedcomRecord::getInstance($clipping['id']);
 						if ($record) {

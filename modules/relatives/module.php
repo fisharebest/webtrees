@@ -55,7 +55,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	?>
 		<table>
 			<tr>
-				<td><img src="<?php print $WT_IMAGES["cfamily"]["small"]; ?>" border="0" class="icon" alt="" /></td>
+				<td><img src="<?php print $WT_IMAGES["cfamily"]; ?>" border="0" class="icon" alt="" /></td>
 				<td><span class="subheaders"><?php print PrintReady($label); ?></span>
 				<?php if (empty($SEARCH_SPIDER)) { ?>
 					- <a href="family.php?famid=<?php print $famid; ?>"><?php print i18n::translate('View Family'); ?></a>

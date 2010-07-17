@@ -3054,16 +3054,16 @@ case 'treenav.php':
 		'<br /></li><li><b>'.i18n::translate('Expanding Details').'</b><br />'.
 		i18n::translate('Clicking on any box will expand the box and display a more detailed view.  While in expanded mode, clicking on a person\'s name will open their Individual Information page.').
 		'<br />'.
-		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['gedcom']['small'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['gedcom'].'" width="15px" height="15px" alt="">').
 		'<br />'.
 		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['family']['button'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Toggle Spouses').'</b><br />'.
-		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily']['small'].'" width="15px" height="15px" alt="">').
+		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Large Tree').'</b>'.
 		'<br />'.
 		i18n::translate('The Interactive Tree is available from many different pages including the Tree tab on the Individual Information page and the Charts block on the Home Page.  When viewing the tree from one of these other pages, you will also have a Tree icon under the Zoom icons.').
 		'<br />'.
-		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['gedcom']['small'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['gedcom'].'" width="15px" height="15px" alt="">').
 		'</li></ul>';
 	break;
 

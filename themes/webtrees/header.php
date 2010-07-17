@@ -131,7 +131,7 @@ if ($view!='simple') {
 						'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '"',
 							'onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();"',
 							'onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-						'<input type="image" src="', $WT_IMAGES['search']['small'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',	
+						'<input type="image" src="', $WT_IMAGES['search'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',	
 					'</form>';
 				}
 			echo '</td>',

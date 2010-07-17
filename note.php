@@ -91,8 +91,8 @@ if ($nt==1) {
 }
 echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 	echo '<center>';
-	if (!empty($WT_IMAGES["notes"]["small"]) && $SHOW_FACT_ICONS)
-		echo '<img src="', $WT_IMAGES["notes"]["small"], '" alt="', i18n::translate('Shared note'), '" title="', i18n::translate('Shared note'), '" align="middle" /> ';
+	if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS)
+		echo '<img src="', $WT_IMAGES["notes"], '" alt="', i18n::translate('Shared note'), '" title="', i18n::translate('Shared note'), '" align="middle" /> ';
 	echo i18n::translate('Shared note'), "</center>";
 	echo '<br /><br />';
 	if (WT_USER_CAN_EDIT) {

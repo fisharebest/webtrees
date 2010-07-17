@@ -49,7 +49,7 @@ class MenuBar
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		//-- main home menu item
 		$menu = new Menu($HOME_SITE_TEXT, $HOME_SITE_URL, "down");
-		if (!empty($WT_IMAGES["home"]["large"]))
+		if (!empty($WT_IMAGES["home"]))
 			$menu->addIcon('home');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_home");
 		return $menu;
@@ -65,7 +65,7 @@ class MenuBar
 		if ($TEXT_DIRECTION=='rtl') $ff='_rtl'; else $ff='';
 		//-- main menu
 		$menu = new Menu(i18n::translate('Home page'), 'index.php?ctype=gedcom', 'down');
-		if (!empty($WT_IMAGES['gedcom']['large']))
+		if (!empty($WT_IMAGES['gedcom']))
 			$menu->addIcon('gedcom');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", 'icon_large_gedcom');
 		//-- gedcom list
@@ -73,7 +73,7 @@ class MenuBar
 		if (count($gedcom_titles)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 			foreach ($gedcom_titles as $gedcom_title) {
 				$submenu = new Menu(PrintReady($gedcom_title->gedcom_title, true), encode_url('index.php?ctype=gedcom&ged='.$gedcom_title->gedcom_name));
-				if (!empty($WT_IMAGES['gedcom']['small'])) {
+				if (!empty($WT_IMAGES['gedcom'])) {
 					$submenu->addIcon('gedcom');
 				}
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", '', 'icon_small_gedcom');
@@ -126,7 +126,7 @@ class MenuBar
 		if (WT_USER_GEDCOM_ID) {
 			//-- my_pedigree submenu
 			$submenu = new Menu(i18n::translate('My Pedigree'), encode_url("pedigree.php?rootid=".WT_USER_GEDCOM_ID."&show_full={$showFull}&talloffset={$showLayout}"));
-			if (!empty($WT_IMAGES["pedigree"]["small"]))
+			if (!empty($WT_IMAGES["pedigree"]))
 				$submenu->addIcon('pedigree');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_pedigree");
 			$menu->addSubmenu($submenu);
@@ -332,8 +332,8 @@ class MenuBar
 						case "parentTimeLine":
 							// charts / parents_timeline
 							$submenu = new Menu(i18n::translate('Show couple on timeline chart'), encode_url('timeline.php?pids[0]='.$controller->getHusband().'&pids[1]='.$controller->getWife()));
-							if (!empty($WT_IMAGES["timeline"]["small"])) {
-								$submenu->addIcon("{$WT_IMAGES['timeline']['small']}");
+							if (!empty($WT_IMAGES["timeline"])) {
+								$submenu->addIcon(timeline);
 							}
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);
@@ -342,8 +342,8 @@ class MenuBar
 						case "childTimeLine":
 							// charts / children_timeline
 							$submenu = new Menu(i18n::translate('Show children on timeline chart'), encode_url('timeline.php?'.$controller->getChildrenUrlTimeline()));
-							if (!empty($WT_IMAGES["timeline"]["small"])) {
-								$submenu->addIcon("{$WT_IMAGES['timeline']['small']}");
+							if (!empty($WT_IMAGES["timeline"])) {
+								$submenu->addIcon('timeline');
 							}
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);
@@ -352,8 +352,8 @@ class MenuBar
 						case "familyTimeLine":
 							// charts / family_timeline
 							$submenu = new Menu(i18n::translate('Show family on timeline chart'), encode_url('timeline.php?pids[0]='.$controller->getHusband().'&pids[1]='.$controller->getWife().'&'.$controller->getChildrenUrlTimeline(2)));
-							if (!empty($WT_IMAGES["timeline"]["small"])) {
-								$submenu->addIcon("{$WT_IMAGES['timeline']['small']}");
+							if (!empty($WT_IMAGES["timeline"])) {
+								$submenu->addIcon('timeline');
 							}
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);

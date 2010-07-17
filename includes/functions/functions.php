@@ -3533,12 +3533,12 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 	$realThumb = $thumb;
 	if (substr($type, 0, 6)=='local_' && !file_exists($thumb)) {
 		if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) {
-			$thumb = $WT_IMAGES['media']['large'];
+			$thumb = $WT_IMAGES['media'];
 			$realThumb = $thumb;
 		} else {
 			$realThumb = get_media_firewall_path($thumb);
 			if (!file_exists($realThumb)) {
-				$thumb = $WT_IMAGES['media']['large'];
+				$thumb = $WT_IMAGES['media'];
 				$realThumb = $thumb;
 			}
 		}

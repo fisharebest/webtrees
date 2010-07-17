@@ -848,7 +848,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "<td class=\"descriptionbox";
 			if ($level==2) echo " rela";
 			echo " $styleadd center width20\">";
-			if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGES["source"]["small"], "\" alt=\"\" /><br />";
+			if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGES["source"], "\" alt=\"\" /><br />";
 			$temp = preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
@@ -1101,7 +1101,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		if ($level>=2) echo " rela";
 		echo " $styleadd center width20\">";
 		if ($level<2) {
-			echo "<img class=\"icon\" src=\"", $WT_IMAGES["notes"]["small"], "\" alt=\"\" />";
+			echo "<img class=\"icon\" src=\"", $WT_IMAGES["notes"], "\" alt=\"\" />";
 			if (strstr($factrec, "1 NOTE @" )) {
 				echo "<br />", translate_fact('SHARED_NOTE');
 			} else {
@@ -1427,7 +1427,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$isExternal = isFileExternal($thumbnail);
 
 	$linenum = 0;
-	echo "\n\t\t<tr><td class=\"descriptionbox $styleadd center width20\"><img class=\"icon\" src=\"", $WT_IMAGES["media"]["small"], "\" alt=\"\" /><br />", translate_fact('OBJE');
+	echo "\n\t\t<tr><td class=\"descriptionbox $styleadd center width20\"><img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" /><br />", translate_fact('OBJE');
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($rowm['m_media'], $rowm['m_gedrec'])) && ($styleadd!="change_old")) {
 		$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
 		$menu->addOnclick("return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');");

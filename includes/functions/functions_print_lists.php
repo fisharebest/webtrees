@@ -72,7 +72,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		$legend=translate_fact(substr($option, 0, 4))." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Individuals');
-	$legend = "<img src=\"".$WT_IMAGES["indis"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	$legend = "<img src=\"".$WT_IMAGES["indis"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
@@ -449,7 +449,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$legend=translate_fact('MARR')." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Families');
-	$legend = "<img src=\"".$WT_IMAGES["sfamily"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	$legend = "<img src=\"".$WT_IMAGES["sfamily"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
@@ -788,7 +788,7 @@ function print_sour_table($datalist, $legend=null) {
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_source.php';
 
-	echo '<fieldset><legend><img src="', $WT_IMAGES['source']['small'], '" align="middle" alt="" /> ';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['source'], '" align="middle" alt="" /> ';
 	if ($legend) {
 		echo $legend;
 	} else {
@@ -914,10 +914,10 @@ function print_note_table($datalist, $legend=null) {
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_note.php';
 
-	if (!empty($WT_IMAGES["menu_note"]["small"])) {
-		echo '<fieldset><legend><img src="', $WT_IMAGES["menu_note"]["small"], '" align="middle" alt="" /> ';
+	if (!empty($WT_IMAGES["menu_note"])) {
+		echo '<fieldset><legend><img src="', $WT_IMAGES["menu_note"], '" align="middle" alt="" /> ';
 	} else {
-		echo '<fieldset><legend><img src="', $WT_IMAGES['notes']['small'], '" align="middle" alt="" /> ';
+		echo '<fieldset><legend><img src="', $WT_IMAGES['notes'], '" align="middle" alt="" /> ';
 	}
 	if ($legend) {
 		echo $legend;
@@ -991,7 +991,7 @@ function print_repo_table($repos, $legend='') {
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_repository.php';
 
-	echo '<fieldset><legend><img src="', $WT_IMAGES['repository']['small'], '" align="middle" alt="" />';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['repository'], '" align="middle" alt="" />';
 	if ($legend) {
 		echo htmlspecialchars($legend);
 	} else {
@@ -1046,7 +1046,7 @@ function print_media_table($datalist, $legend="") {
 	require_once WT_ROOT.'includes/classes/class_media.php';
 
 	if ($legend == "") $legend = i18n::translate('Media');
-	$legend = "<img src=\"".$WT_IMAGES["media"]["small"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	$legend = "<img src=\"".$WT_IMAGES["media"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header

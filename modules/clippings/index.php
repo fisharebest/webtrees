@@ -306,7 +306,7 @@ if ($ct==0) {
 			if ($tag=='OBJE') $icon = "media";
 			?>
 			<tr><td class="list_value">
-				<?php if (!empty($icon)) { ?><img src="<?php echo $WT_IMAGES[$icon]["small"];?>" border="0" alt="<?php echo $tag;?>" title="<?php echo $tag;?>" /><?php } ?>
+				<?php if (!empty($icon)) { ?><img src="<?php echo $WT_IMAGES[$icon];?>" border="0" alt="<?php echo $tag;?>" title="<?php echo $tag;?>" /><?php } ?>
 			</td>
 			<td class="list_value ltr"><?php echo $clipping['id']?></td>
 			<td class="list_value">

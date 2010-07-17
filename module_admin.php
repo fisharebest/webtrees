@@ -339,7 +339,7 @@ print_header(i18n::translate('Module administration'));
 							"SELECT status FROM `##module` WHERE module_name=?"
 						)->execute(array($module->getName()))->fetchOne();
 						echo '<tr><td>', two_state_checkbox('status-'.$module->getName(), $status=='enabled'), '</td><td>';
-						if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGES["admin"]["small"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
+						if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGES["admin"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
 						<td><?php echo $module->getTitle()?></td>
 						<td><?php echo $module->getDescription()?></td>
 						<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>

@@ -544,7 +544,7 @@ if ($action == "listusers") {
 		else echo "\t<td class=\"optionbox wrap\">", $user_name;
 		if (get_user_setting($user_id, "comment")) {
 			$tempTitle = PrintReady(get_user_setting($user_id, "comment"));
-			echo "<br /><img class=\"adminicon\" align=\"top\" alt=\"{$tempTitle}\" title=\"{$tempTitle}\" src=\"{$WT_IMAGES['notes']['small']}\" />";
+			echo "<br /><img class=\"adminicon\" align=\"top\" alt=\"{$tempTitle}\" title=\"{$tempTitle}\" src=\"{$WT_IMAGES['notes']}\" />";
 		}
 		echo "</td>\n";
 		echo "\t<td class=\"optionbox wrap\">", Zend_Locale::getTranslation(get_user_setting($user_id, 'language'), 'language', WT_LOCALE), "</td>\n";

@@ -854,7 +854,7 @@ class SearchController extends BaseController {
 										if (!$displayed_once) {
 											if (!$no_results_found) {
 												$no_results_found = true;
-												print "<tr><td class=\"list_label\" colspan=\"2\" width=\"100%\"><img src=\"".$WT_IMAGES["indis"]["large"]."\" border=\"0\" width=\"25\" alt=\"\" /> ".i18n::translate('People')."</td></tr>";
+												print "<tr><td class=\"list_label\" colspan=\"2\" width=\"100%\"><img src=\"".$WT_IMAGES["indis"]."\" border=\"0\" width=\"25\" alt=\"\" /> ".i18n::translate('People')."</td></tr>";
 												print "<tr><td><table id=\"multiResultsInTbl\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" ><tr>";
 											}
 											$displayed_once = true;
