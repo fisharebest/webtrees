@@ -65,8 +65,8 @@ class MenuBar
 		if ($TEXT_DIRECTION=='rtl') $ff='_rtl'; else $ff='';
 		//-- main menu
 		$menu = new Menu(i18n::translate('Home page'), 'index.php?ctype=gedcom', 'down');
-		if (!empty($WT_IMAGES['gedcom']))
-			$menu->addIcon('gedcom');
+		if (!empty($WT_IMAGES['home']))
+			$menu->addIcon('home');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", 'icon_large_gedcom');
 		//-- gedcom list
 		$gedcom_titles=get_gedcom_titles();
@@ -481,12 +481,12 @@ class MenuBar
 			if ($style=="sub") {
 				$link .= "&surname={$surname}";
 				$menu = new Menu(i18n::translate('Lists'), encode_url($link));
-				$menu->addIcon('indis');
+				$menu->addIcon('lists');
 				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_small_indis");
 			}
 			else {
 				$menu = new Menu(i18n::translate('Lists'), encode_url($link), "down");
-				$menu->addIcon('indis');
+				$menu->addIcon('lists');
 				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_indis");
 			}
 
@@ -506,12 +506,12 @@ class MenuBar
 		if ($style=="sub") {
 			$link .= "&surname=".$surname;
 			$menu = new Menu(i18n::translate('Lists'), encode_url($link));
-			$menu->addIcon('indis');
+			$menu->addIcon('lists');
 			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_indis");
 		}
 		else {
 			$menu = new Menu(i18n::translate('Lists'), $link, "down");
-			$menu->addIcon('indis');
+			$menu->addIcon('lists');
 			$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_indis");
 		}
 
