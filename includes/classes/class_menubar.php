@@ -788,7 +788,7 @@ class MenuBar
 			}
 		//-- main help menu item
 		$menu = new Menu(i18n::translate('Help'), "#", "down");
-		$menu->addIcon('help');
+		$menu->addIcon('menu_help');
 		if (empty($helpindex))
 			$menu->addOnclick("return helpPopup('".WT_SCRIPT_NAME."');");
 		else
@@ -797,7 +797,7 @@ class MenuBar
 
 		//-- help_for_this_page sub menu
 		$submenu = new Menu(i18n::translate('Help with this page'), "#");
-		$submenu->addIcon('menu_help');
+		$submenu->addIcon('help');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		if (empty($helpindex))
 			$submenu->addOnclick("return helpPopup('".WT_SCRIPT_NAME."');");
@@ -806,7 +806,7 @@ class MenuBar
 		$menu->addSubmenu($submenu);
 		//-- help_contents sub menu
 		$submenu = new Menu(i18n::translate('Help Contents'), "#");
-		$submenu->addIcon('menu_help');
+		$submenu->addIcon('help');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		$submenu->addOnclick("return helpPopup('help_contents_help');");
 		$menu->addSubmenu($submenu);
@@ -814,7 +814,7 @@ class MenuBar
 		if (array_key_exists('faq', WT_Module::getActiveModules()) && WT_DB::prepare("SELECT COUNT(*) FROM `##block` WHERE module_name='faq'")->fetchOne()) {
 
 			$submenu = new Menu(i18n::translate('FAQ'), "module.php?mod=faq&mod_action=show");
-			$submenu->addIcon('menu_help');
+			$submenu->addIcon('help');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 			$menu->addSubmenu($submenu);
 		}
@@ -851,7 +851,7 @@ class MenuBar
 			$submenu = new Menu(i18n::translate('Hide contextual help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=no"));
 		else
 			$submenu = new Menu(i18n::translate('Show contextual help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=yes"));
-		$submenu->addIcon('menu_help');
+		$submenu->addIcon('help');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		$menu->addSubmenu($submenu);
 		return $menu;
