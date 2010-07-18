@@ -1721,3 +1721,7 @@ div.faq_body {
 .makeMenu li:hover > ul {
 	display:block;
 }
+
+.makeMenu li ul {
+        margin-left:-40px;
+}
