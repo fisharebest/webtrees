@@ -83,6 +83,13 @@ legend img {
 	width: 20px;
 }
 
+a img {
+	height: 20px;
+	vertical-align: middle;
+	width: 20px;
+}
+
+
 .edit_link:after {
 	content: url(images/small/edit.png);
 }
