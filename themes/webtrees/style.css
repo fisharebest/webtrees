@@ -83,7 +83,8 @@ legend img {
 	width: 20px;
 }
 
-a img {
+img.block{
+	border: none;
 	height: 20px;
 	vertical-align: middle;
 }

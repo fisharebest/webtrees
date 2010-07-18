@@ -701,6 +701,12 @@ table.center{
 	overflow:auto;
 }
 
+img.block{
+	border: none;
+	height: 20px;
+	vertical-align: middle;
+}
+
 #index_main_blocks {
 	clear: none;
 	width: 66%;

@@ -52,6 +52,12 @@ fieldset,
 	-webkit-border-radius:3px;
 }
 
+img.block{
+	border: none;
+	height: 20px;
+	vertical-align: middle;
+}
+
 legend {
 	font-weight:bold;
 }
