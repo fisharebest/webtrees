@@ -136,6 +136,7 @@ $WT_IMAGES['help'] = WT_THEME_DIR.'images/help.gif';
 $WT_IMAGES['home'] = WT_THEME_DIR.'images/home.gif';
 $WT_IMAGES['hourglass'] = WT_THEME_DIR.'images/hourglass.gif';
 $WT_IMAGES['indis'] = WT_THEME_DIR.'images/indis.gif';
+$WT_IMAGES['indis'] = WT_THEME_DIR.'images/indis.gif';
 $WT_IMAGES['lists'] = WT_THEME_DIR.'images/lists.gif';
 $WT_IMAGES['media'] = WT_THEME_DIR.'images/media.gif';
 $WT_IMAGES['menu_help'] = WT_THEME_DIR.'images/menu_help.gif';
