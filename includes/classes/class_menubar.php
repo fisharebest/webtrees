@@ -208,13 +208,13 @@ class MenuBar
 		if ($rootid) $link .= "&rootid={$rootid}";
 		if ($style=="sub") {
 			$menu = new Menu(i18n::translate('Charts'), encode_url($link));
-			$menu->addIcon('pedigree');
+			$menu->addIcon('charts');
 			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "", "icon_small_pedigree");
 		}
 		else {
 			// top menubar
 			$menu = new Menu(i18n::translate('Charts'), encode_url($link), "down");
-			$menu->addIcon('pedigree');
+			$menu->addIcon('charts');
 			$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_pedigree");
 		}
 

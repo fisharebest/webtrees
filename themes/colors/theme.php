@@ -117,6 +117,7 @@ $WT_IMAGES['admin'] = WT_THEME_DIR.'images/admin.gif';
 $WT_IMAGES['ancestry'] = WT_THEME_DIR.'images/ancestry.gif';
 $WT_IMAGES['calendar'] = WT_THEME_DIR.'images/calendar.gif';
 $WT_IMAGES['cfamily'] = WT_THEME_DIR.'images/cfamily.gif';
+$WT_IMAGES['charts'] = WT_THEME_DIR.'images/pedigree.gif';
 $WT_IMAGES['childless'] = WT_THEME_DIR.'images/childless.gif';
 $WT_IMAGES['clippings'] = WT_THEME_DIR.'images/clippings.gif';
 $WT_IMAGES['descendant'] = WT_THEME_DIR.'images/descendancy.gif';

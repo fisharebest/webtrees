@@ -78,14 +78,14 @@ img {
 }
 
 legend img {
-	height: 20px;
+	height: 25px;
 	vertical-align: middle;
-	width: 20px;
+	width: 25px;
 }
 
 img.block{
 	border: none;
-	height: 20px;
+	height: 25px;
 	vertical-align: middle;
 }
 
