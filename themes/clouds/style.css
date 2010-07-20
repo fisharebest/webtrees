@@ -310,6 +310,11 @@ color: #003399;
 
 /*	Start Standard Code					*/
 
+table {
+margin-left: auto;
+margin-right: auto;
+}
+
 .blockcontent {
 margin-left:auto;
 border:1pt solid #999;

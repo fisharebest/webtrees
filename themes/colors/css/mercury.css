@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9000 2010-06-30 19:39:16Z rob $
+* $Id: ash.css 9013 2010-07-05 11:46:48Z rob $
 */
 
 .something {
@@ -293,6 +293,11 @@ color: #707070;
 }
 
 /*	Start Standard Code					*/
+
+table {
+margin-left: auto;
+margin-right: auto;
+}
 
 .blockcontent {
 margin-left:auto;
