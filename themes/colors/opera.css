@@ -5,4 +5,6 @@
 .ui-accordion .ui-accordion-header a { margin-top: 10px; }
 #sidebar_pin img, #sidebar_open img {margin-top: 9px;}
 
-
+select {
+background: #f0ebe2;
+}
