@@ -95,15 +95,16 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 $_SESSION['themecolor']=$subColor;
 
 $theme_name       = "colors"; // need double quotes, as file is scanned/parsed by script
-$stylesheet       = WT_THEME_DIR . 'css/' . $subColor . '.css';
+$FAVICON          = WT_THEME_DIR . 'images/favicon.ico';
+$footerfile       = WT_THEME_DIR . 'footer.php';
+$headerfile       = WT_THEME_DIR . 'header.php';
 $modules          = WT_THEME_DIR . 'modules.css';
 $print_stylesheet = WT_THEME_DIR . 'print.css';
-$headerfile       = WT_THEME_DIR . 'header.php';
 $rtl_stylesheet   = WT_THEME_DIR . 'style_rtl.css';
-$footerfile       = WT_THEME_DIR . 'footer.php';
-$FAVICON          = WT_THEME_DIR . 'images/favicon.ico';
-$WT_USE_HELPIMG   = true;
+$stylesheet       = WT_THEME_DIR . 'css/' . $subColor . '.css';
 $WT_MENU_LOCATION = 'top';
+$WT_USE_HELPIMG   = true;
+
 
 //-- variables for image names
 $WT_IMAGES['sex_m_9x9'] = 'images/sex_m_9x9.gif';
@@ -112,12 +113,13 @@ $WT_IMAGES['sex_u_9x9'] = 'images/sex_u_9x9.gif';
 $WT_IMAGES['sex_m_15x15'] = 'images/sex_m_15x15.gif';
 $WT_IMAGES['sex_f_15x15'] = 'images/sex_f_15x15.gif';
 $WT_IMAGES['sex_u_15x15'] = 'images/sex_u_15x15.gif';
+
 //- WT main icons
 $WT_IMAGES['admin'] = WT_THEME_DIR.'images/admin.gif';
 $WT_IMAGES['ancestry'] = WT_THEME_DIR.'images/ancestry.gif';
 $WT_IMAGES['calendar'] = WT_THEME_DIR.'images/calendar.gif';
 $WT_IMAGES['cfamily'] = WT_THEME_DIR.'images/cfamily.gif';
-$WT_IMAGES['charts'] = WT_THEME_DIR.'images/pedigree.gif';
+$WT_IMAGES['charts'] = WT_THEME_DIR.'images/charts.gif';
 $WT_IMAGES['childless'] = WT_THEME_DIR.'images/childless.gif';
 $WT_IMAGES['clippings'] = WT_THEME_DIR.'images/clippings.gif';
 $WT_IMAGES['descendant'] = WT_THEME_DIR.'images/descendancy.gif';
@@ -127,16 +129,13 @@ $WT_IMAGES['edit_media'] = WT_THEME_DIR.'images/edit_media.gif';
 $WT_IMAGES['edit_note'] = WT_THEME_DIR.'images/edit_note.gif';
 $WT_IMAGES['edit_repo'] = WT_THEME_DIR.'images/edit_repo.gif';
 $WT_IMAGES['edit_sour'] = WT_THEME_DIR.'images/edit_sour.gif';
-$WT_IMAGES['edit_source'] = WT_THEME_DIR.'images/edit_sour.gif';
 $WT_IMAGES['fambook'] = WT_THEME_DIR.'images/fambook.gif';
 $WT_IMAGES['fanchart'] = WT_THEME_DIR.'images/fanchart.gif';
-$WT_IMAGES['favorite'] = WT_THEME_DIR.'images/fav.gif';
-$WT_IMAGES['favorites'] = WT_THEME_DIR.'images/gedcom.gif';
+$WT_IMAGES['favorites'] = WT_THEME_DIR.'images/favorites.gif';
 $WT_IMAGES['gedcom'] = WT_THEME_DIR.'images/gedcom.gif';
 $WT_IMAGES['help'] = WT_THEME_DIR.'images/help.gif';
 $WT_IMAGES['home'] = WT_THEME_DIR.'images/home.gif';
 $WT_IMAGES['hourglass'] = WT_THEME_DIR.'images/hourglass.gif';
-$WT_IMAGES['indis'] = WT_THEME_DIR.'images/indis.gif';
 $WT_IMAGES['indis'] = WT_THEME_DIR.'images/indis.gif';
 $WT_IMAGES['lists'] = WT_THEME_DIR.'images/lists.gif';
 $WT_IMAGES['media'] = WT_THEME_DIR.'images/media.gif';
@@ -150,7 +149,6 @@ $WT_IMAGES['notes'] = WT_THEME_DIR.'images/notes.gif';
 $WT_IMAGES['patriarch'] = WT_THEME_DIR.'images/patriarch.gif';
 $WT_IMAGES['pedigree'] = WT_THEME_DIR.'images/pedigree.gif';
 $WT_IMAGES['place'] = WT_THEME_DIR.'images/place.gif';
-$WT_IMAGES['printer'] = WT_THEME_DIR.'images/printer.gif';
 $WT_IMAGES['relationship'] = WT_THEME_DIR.'images/relationship.gif';
 $WT_IMAGES['reports'] = WT_THEME_DIR.'images/report.gif';
 $WT_IMAGES['repository'] = WT_THEME_DIR.'images/repository.gif';
@@ -165,24 +163,24 @@ $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
 //- PGV buttons for data entry pages
 $WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
+$WT_IMAGES['button_addnote'] = WT_THEME_DIR.'images/buttons/addnote.gif';
 $WT_IMAGES['button_addrepository'] = WT_THEME_DIR.'images/buttons/addrepository.gif';
 $WT_IMAGES['button_addsource'] = WT_THEME_DIR.'images/buttons/addsource.gif';
-$WT_IMAGES['button_addnote'] = WT_THEME_DIR.'images/buttons/addnote.gif';
 $WT_IMAGES['button_autocomplete'] = WT_THEME_DIR.'images/buttons/autocomplete.gif';
 $WT_IMAGES['button_calendar'] = WT_THEME_DIR.'images/buttons/calendar.gif';
 $WT_IMAGES['button_family'] = WT_THEME_DIR.'images/buttons/family.gif';
+$WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
+$WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
 $WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
 $WT_IMAGES['button_indi'] = WT_THEME_DIR.'images/buttons/indi.gif';
 $WT_IMAGES['button_keyboard'] = WT_THEME_DIR.'images/buttons/keyboard.gif';
 $WT_IMAGES['button_media'] = WT_THEME_DIR.'images/buttons/media.gif';
 $WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
+$WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
 $WT_IMAGES['button_place'] = WT_THEME_DIR.'images/buttons/place.gif';
 $WT_IMAGES['button_refresh'] = WT_THEME_DIR.'images/buttons/refresh.gif';
 $WT_IMAGES['button_repository'] = WT_THEME_DIR.'images/buttons/repository.gif';
 $WT_IMAGES['button_source'] = WT_THEME_DIR.'images/buttons/source.gif';
-$WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
-$WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
-$WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
 
 // Media images
 $WT_IMAGES['media_audio'] = WT_THEME_DIR.'images/media/audio.png';
@@ -203,36 +201,37 @@ $WT_IMAGES['add'] = WT_THEME_DIR.'images/add.gif';
 $WT_IMAGES['darrow'] = WT_THEME_DIR.'images/darrow.gif';
 $WT_IMAGES['darrow2'] = WT_THEME_DIR.'images/darrow2.gif';
 $WT_IMAGES['ddarrow'] = WT_THEME_DIR.'images/ddarrow.gif';
+$WT_IMAGES['default_image_F'] = WT_THEME_DIR.'images/silhouette_female.gif';
+$WT_IMAGES['default_image_M'] = WT_THEME_DIR.'images/silhouette_male.gif';
+$WT_IMAGES['default_image_U'] = WT_THEME_DIR.'images/silhouette_unknown.gif';
 $WT_IMAGES['dline'] = WT_THEME_DIR.'images/dline.gif';
 $WT_IMAGES['dline2'] = WT_THEME_DIR.'images/dline2.gif';
-$WT_IMAGES['webtrees'] = WT_THEME_DIR.'images/webtrees.png';
 $WT_IMAGES['hline'] = WT_THEME_DIR.'images/hline.gif';
 $WT_IMAGES['larrow'] = WT_THEME_DIR.'images/larrow.gif';
 $WT_IMAGES['larrow2'] = WT_THEME_DIR.'images/larrow2.gif';
 $WT_IMAGES['ldarrow'] = WT_THEME_DIR.'images/ldarrow.gif';
 $WT_IMAGES['minus'] = WT_THEME_DIR.'images/minus.gif';
 $WT_IMAGES['note'] = WT_THEME_DIR.'images/notes.gif';
+$WT_IMAGES['pin-in'] = WT_THEME_DIR.'images/pin-in.png';
+$WT_IMAGES['pin-out'] = WT_THEME_DIR.'images/pin-out.png';
 $WT_IMAGES['plus'] = WT_THEME_DIR.'images/plus.gif';
 $WT_IMAGES['rarrow'] = WT_THEME_DIR.'images/rarrow.gif';
 $WT_IMAGES['rarrow2'] = WT_THEME_DIR.'images/rarrow2.gif';
 $WT_IMAGES['rdarrow'] = WT_THEME_DIR.'images/rdarrow.gif';
 $WT_IMAGES['remove'] = WT_THEME_DIR.'images/remove.gif';
+$WT_IMAGES['slide_close'] = WT_THEME_DIR.'images/close.png';
+$WT_IMAGES['slide_open'] = WT_THEME_DIR.'images/open.png';
 $WT_IMAGES['spacer'] = WT_THEME_DIR.'images/spacer.gif';
+$WT_IMAGES['stop'] = WT_THEME_DIR.'images/stop.gif';
 $WT_IMAGES['uarrow'] = WT_THEME_DIR.'images/uarrow.gif';
 $WT_IMAGES['uarrow2'] = WT_THEME_DIR.'images/uarrow2.gif';
 $WT_IMAGES['uarrow3'] = WT_THEME_DIR.'images/uarrow3.gif';
 $WT_IMAGES['udarrow'] = WT_THEME_DIR.'images/udarrow.gif';
 $WT_IMAGES['vline'] = WT_THEME_DIR.'images/vline.gif';
+$WT_IMAGES['webtrees'] = WT_THEME_DIR.'images/webtrees.png';
 $WT_IMAGES['zoomin'] = WT_THEME_DIR.'images/zoomin.gif';
 $WT_IMAGES['zoomout'] = WT_THEME_DIR.'images/zoomout.gif';
-$WT_IMAGES['stop'] = WT_THEME_DIR.'images/stop.gif';
-$WT_IMAGES['pin-out'] = WT_THEME_DIR.'images/pin-out.png';
-$WT_IMAGES['pin-in'] = WT_THEME_DIR.'images/pin-in.png';
-$WT_IMAGES['default_image_M'] = WT_THEME_DIR.'images/silhouette_male.gif';
-$WT_IMAGES['default_image_F'] = WT_THEME_DIR.'images/silhouette_female.gif';
-$WT_IMAGES['default_image_U'] = WT_THEME_DIR.'images/silhouette_unknown.gif';
-$WT_IMAGES['slide_open'] = WT_THEME_DIR.'images/open.png';
-$WT_IMAGES['slide_close'] = WT_THEME_DIR.'images/close.png';
+
 
 // - lifespan chart arrows
 $WT_IMAGES['lsltarrow'] = WT_THEME_DIR.'images/lsltarrow.gif';
