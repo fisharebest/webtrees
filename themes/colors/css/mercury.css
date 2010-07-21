@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9013 2010-07-05 11:46:48Z rob $
+* $Id: ash.css 9128 2010-07-20 23:57:58Z rob $
 */
 
 .something {
@@ -283,6 +283,11 @@ color:#f50;
 /* Colors specific changes                     */
 /* Location and behavior of Right Site Tab in/out pin-------*/
 
+table.width66{
+margin-left: auto;
+margin-right: auto;
+}
+
 /* Navigator and Flyout menu Styles -----------*/
 
 .nav_content #spouse {
@@ -293,12 +298,6 @@ color: #707070;
 }
 
 /*	Start Standard Code					*/
-
-table {
-margin-left: auto;
-margin-right: auto;
-}
-
 .blockcontent {
 margin-left:auto;
 border:1pt solid #999;
@@ -680,7 +679,10 @@ vertical-align:top;
 white-space: nowrap;
 }
 
-.list_label_wrap, .list_value_wrap {
+.list_label_wrap, .list_value_wrap {table.width66{
+margin-left: auto;
+margin-right: auto;
+}
 white-space: normal;
 }
 
