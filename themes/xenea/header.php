@@ -130,8 +130,103 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 					<div id="favdate" class="blanco" align="right" ><?php echo $displayDate; ?></div>
 				</td>
 				<td width="10"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td></tr></table>
-		<?php } ?>
-<?php include($toplinks);
-} ?>
-<!-- end header section -->
+		<?php } 
+$menubar = new MenuBar(); ?>
+
+<!-- Begin Toplinks menu section" -->
+<table width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#FFFFFF" style="border: 1px solid #84beff">
+  <tr>
+    <td>
+      <div align="center">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+	  <tr>
+		<td width="10">
+			&nbsp;
+		</td>
+		<?php
+		$menu = $menubar->getGedcomMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getMyPageMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getChartsMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getListsMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getCalendarMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getReportsMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getSearchMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menu = $menubar->getOptionalMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		$menus = $menubar->getModuleMenus();
+		foreach($menus as $m=>$menu) {
+			if($menu->link != "") {
+				print "\t<td width=\"7%\" valign=\"top\">\n";
+				$menu->printMenu();
+				print "\t</td>\n";
+			}
+		}
+		$menu = $menubar->getHelpMenu();
+		if($menu->link != "") {
+			print "\t<td width=\"7%\" valign=\"top\">\n";
+			$menu->printMenu();
+			print "\t</td>\n";
+		}
+		?>
+		<td width="10">
+			&nbsp;
+		</td>
+	  </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+</td></tr></table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-image:url('<?php print WT_THEME_DIR; ?>images/sombra.gif'); height:4px;">
+	<tr>
+		<td><img src="<?php print WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td>
+	</tr>
+</table>
+<br />
+<!-- close div for div id="header" -->
+</div>
+<?php } ?>
+<!-- end toplinks menu section -->
 <!-- begin content section -->
+<div id="content"

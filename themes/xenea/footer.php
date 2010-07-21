@@ -35,6 +35,7 @@ if (!defined('WT_WEBTREES')) {
 echo "</div> <!-- closing div id=\"content\" -->\n";//FIXME uncomment as soon as ready
 echo "<div id=\"footer\" class=\"$TEXT_DIRECTION\">";
 echo "\n\t<div align=\"center\" style=\"width:99%;\">";
+echo "<br />";
 echo contact_links();
 echo '<br /><a href="', WT_WEBTREES_URL, '" target="_blank"><img src="', $WT_IMAGES['webtrees'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" /></a><br />';
 echo "\n\t<br />";
