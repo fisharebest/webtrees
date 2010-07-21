@@ -33,7 +33,7 @@ require_once 'includes/controllers/individual_ctrl.php';
 $controller = new IndividualController(); 
 $controller->init(); 
 
-global $USE_THUMBS_MAIN, $mediacnt, $tabno;
+global $USE_THUMBS_MAIN, $tabno;
 global $linkToID;
 global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 

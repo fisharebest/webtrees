@@ -108,7 +108,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		// function family_nav() {
 		// ------------------------------------------------------------------------------
 
-		global $edit, $tabno, $mediacnt, $GEDCOM, $pid;
+		global $edit, $tabno, $GEDCOM, $pid;
 		$edit=$edit;
 		global $show_full, $tabno;
 		$show_full="1";

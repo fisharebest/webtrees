@@ -34,7 +34,7 @@ $controller = new IndividualController();
 $controller->init(); 
 echo "<link href =\"modules/GEDFact_assistant/css/gf_styles.css\" 	rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />";
 
-global $USE_THUMBS_MAIN, $mediacnt, $tabno;
+global $USE_THUMBS_MAIN, $tabno;
 global $linkToID;
 global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 

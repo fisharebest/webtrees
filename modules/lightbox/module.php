@@ -85,7 +85,6 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		global $Fam_Navigator, $NAV_ALBUM;
 
 		ob_start();
-		$mediacnt = $this->get_media_count();
 		require_once 'modules/lightbox/functions/lb_head.php';
 		
 		$media_found = false;

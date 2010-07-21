@@ -44,7 +44,7 @@ define('WT_FAMILY_NAV_PHP', '');
 // function family_nav() {
 // ------------------------------------------------------------------------------
 
-global $edit, $tabno, $mediacnt, $GEDCOM, $pid;
+global $edit, $tabno, $GEDCOM, $pid;
 $edit=$edit;
 global $show_full, $tabno;
 $show_full="1";

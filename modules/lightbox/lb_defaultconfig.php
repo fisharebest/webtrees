@@ -30,27 +30,13 @@
  * @author Brian Holland
  */
 
-// -------------------------------------------------------
-// Configuration parameters for Lightbox Album
-// -------------------------------------------------------
-
 if (!defined('WT_WEBTREES')) {
  header('HTTP/1.0 403 Forbidden');
  exit;
 }
 
-global $mediatab,$LB_AL_HEAD_LINKS,$LB_AL_THUMB_LINKS,$LB_ML_THUMB_LINKS,$LB_SS_SPEED;
+global $LB_AL_HEAD_LINKS,$LB_AL_THUMB_LINKS,$LB_ML_THUMB_LINKS,$LB_SS_SPEED;
 global $LB_MUSIC_FILE,$LB_TRANSITION,$LB_URL_WIDTH,$LB_URL_HEIGHT,$LB_TT_BALLOON,$GEDCOM;
-
-// Create LB tables, if not already present
-try {
-	WT_DB::updateSchema('./modules/lightbox/db_schema/', 'LB_SCHEMA_VERSION', 1);
-} catch (PDOException $ex) {
-	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	die($ex);
-}
-
-// TODO: it will be more efficient to fetch all LB_% settings in a single DB query
 
 $LB_AL_HEAD_LINKS=get_module_setting('lightbox', 'LB_AL_HEAD_LINKS', 'both');   // Album Tab Page Header Links.
           // Set to 'icon' to view icon links.
@@ -83,9 +69,3 @@ $LB_ML_THUMB_LINKS = get_module_setting('lightbox', 'LB_ML_THUMB_LINKS', 'text')
           // Set to 'text' to view text links. [Default]
           // Set to 'both' to view both.
           // Set to 'none' to view neither.
-
-// End Configuration Parameters -------------------------------------------------
-
-// Tab id no for Lightbox
-$tabno=get_module_setting('lightbox', 'GM_ENABLED') ? 8 : 7;
-?>
