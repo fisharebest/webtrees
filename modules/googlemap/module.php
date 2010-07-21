@@ -33,7 +33,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/classes/class_module.php';
-require_once WT_ROOT.'modules/googlemap/googlemap.php';
 
 class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
@@ -57,6 +56,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		case 'places':
 		case 'places_edit':
 			// TODO: these files should be methods in this class
+			require_once WT_ROOT.'modules/googlemap/googlemap.php';
+			require_once WT_ROOT.'modules/googlemap/defaultconfig.php';
 			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
 			break;
 		}
@@ -75,6 +76,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
+		require_once WT_ROOT.'modules/googlemap/googlemap.php';
+		require_once WT_ROOT.'modules/googlemap/defaultconfig.php';
 		setup_map();
 		return ob_get_clean();
 	}
@@ -93,11 +96,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX, $GM_POSTFIX, $GM_PRE_POST_MODE;
 
 		ob_start();
+		require_once WT_ROOT.'modules/googlemap/googlemap.php';
+		require_once WT_ROOT.'modules/googlemap/defaultconfig.php';
 		?>
 <table border="0" width="100%">
 	<tr>
 		<td><?php 
-		if (!$GOOGLEMAP_ENABLED) {
+		if (!array_key_exists('googlemap', WT_Module::getActiveModules())) {
 			print "<table class=\"facts_table\">\n";
 			print "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>\n";
 			if (WT_USER_IS_ADMIN) {
@@ -188,7 +193,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	public function hasTabContent() {
 		global $GOOGLEMAP_ENABLED, $SEARCH_SPIDER;
 
-		return !$SEARCH_SPIDER && ($GOOGLEMAP_ENABLED || WT_USER_IS_ADMIN);
+		return !$SEARCH_SPIDER && (array_key_exists('googlemap', WT_Module::getActiveModules()) || WT_USER_IS_ADMIN);
 	}
 
 	// Implement WT_Module_Tab

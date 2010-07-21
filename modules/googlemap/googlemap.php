@@ -35,8 +35,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/defaultconfig.php';
-
 global $SESSION_HIDE_GOOGLEMAP;
 $SESSION_HIDE_GOOGLEMAP = "empty";
 if ((isset($_REQUEST["HIDE_GOOGLEMAP"])) && (empty($SEARCH_SPIDER))) {
@@ -428,27 +426,7 @@ function create_indiv_buttons() {
 function build_indiv_map($indifacts, $famids) {
 	global $GOOGLEMAP_API_KEY, $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
 	global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
-	global $GOOGLEMAP_ENABLED, $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD;
-
-	if (!$GOOGLEMAP_ENABLED) {
-		echo "<table class=\"facts_table\">\n";
-		echo "<tr><td colspan=\"2\" class=\"facts_value\">", i18n::translate('GoogleMap module disabled'), "<script language=\"JavaScript\" type=\"text/javascript\">tabstyles[5]='tab_cell_inactive_empty'; document.getElementById('pagetab5').className='tab_cell_inactive_empty';</script></td></tr>\n";
-		echo "<script type=\"text/javascript\">\n";
-		echo "function ResizeMap ()\n{\n}\nfunction SetMarkersAndBounds ()\n{\n}\n</script>\n";
-		if (WT_USER_IS_ADMIN) {
-			echo "<tr><td align=\"center\" colspan=\"2\">\n";
-			echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
-			echo "</td></tr>\n";
-		}
-		echo "\n\t</table>\n<br />";
-		?>
-		<script type="text/javascript">
-			document.getElementById("googlemap_left").innerHTML = document.getElementById("map_content").innerHTML;
-			document.getElementById("map_content").innerHTML = "";
-		</script>
-		<?php
-		return;
-	}
+	global $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD;
 
 	$markers=array();
 
