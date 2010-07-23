@@ -748,12 +748,12 @@ case 'addnewsource':
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo i18n::translate('Select Events'), help_link('edit_SOUR_EVEN'); ?></td>
 				<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 					<?php
-					$parts = explode(',', $INDI_FACTS_ADD);
+					$parts = explode(',', get_gedcom_setting('INDI_FACTS_ADD'));
 					foreach ($parts as $p=>$key) {
 						?><option value="<?php echo $key; ?>"><?php echo i18n::translate($key). " ($key)"; ?></option>
 					<?php
 					}
-					$parts = explode(',', $FAM_FACTS_ADD);
+					$parts = explode(',', get_gedcom_setting('FAM_FACTS_ADD'));
 					foreach ($parts as $p=>$key) {
 						?><option value="<?php echo $key; ?>"><?php echo i18n::translate($key). " ($key)"; ?></option>
 					<?php
@@ -1034,7 +1034,7 @@ case 'editsource':
 
 	echo "<table class=\"facts_table\">";
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
-	$uniquefacts = preg_split("/[, ;:]+/", $SOUR_FACTS_UNIQUE, -1, PREG_SPLIT_NO_EMPTY);
+	$uniquefacts = preg_split("/[, ;:]+/", get_gedcoom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
 	$usedfacts = array();
 	$lines = count($gedlines);
 	if ($lines==1) {
