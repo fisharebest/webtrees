@@ -45,7 +45,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $COMMON_NAMES_ADD, $COMMON_NAMES_REMOVE, $COMMON_NAMES_THRESHOLD, $WT_BLOCKS, $ctype, $WT_IMAGES, $SURNAME_LIST_STYLE, $THEME_DIR;
+		global $WT_BLOCKS, $ctype, $WT_IMAGES, $SURNAME_LIST_STYLE, $THEME_DIR;
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
@@ -60,6 +60,9 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		// Insert from the "Add Names" list if not already in there
+		$COMMON_NAMES_ADD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
+		$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
+		$COMMON_NAMES_THRESHOLD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
 		if ($COMMON_NAMES_ADD) {
 			foreach (preg_split('/[,; ]+/', $COMMON_NAMES_ADD) as $addname) {
 				$ADDNAME=utf8_strtoupper($addname);
