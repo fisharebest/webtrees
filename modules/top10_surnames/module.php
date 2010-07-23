@@ -45,7 +45,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $WT_BLOCKS, $ctype, $WT_IMAGES, $SURNAME_LIST_STYLE, $THEME_DIR;
+		global $ctype, $WT_IMAGES, $SURNAME_LIST_STYLE, $THEME_DIR;
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');

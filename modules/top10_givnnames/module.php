@@ -45,7 +45,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
-		global $TEXT_DIRECTION, $WT_BLOCKS, $ctype, $WT_IMAGES, $THEME_DIR;
+		global $TEXT_DIRECTION, $ctype, $WT_IMAGES, $THEME_DIR;
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');

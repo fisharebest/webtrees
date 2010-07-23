@@ -68,11 +68,11 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$limit='nolimit';
 			$flag=0;
 		} else {
-			$flag=get_block_setting($block_id, 'flag');
+			$flag=get_block_setting($block_id, 'flag', 0);
 			if ($flag==0) {
 				$limit='nolimit';
 			} else {
-				$limit=get_block_setting($block_id, 'limit');
+				$limit=get_block_setting($block_id, 'limit', 'nolimit');
 			}
 		}
 
@@ -169,25 +169,32 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $ctype, $WT_BLOCKS;
-		if (empty ($config)) $config = $WT_BLOCKS["print_gedcom_news"]["config"];
-		if (!isset ($config["limit"])) $config["limit"] = "nolimit";
-		if (!isset ($config["flag"])) $config["flag"] = 0;
+		if (safe_POST_bool('save')) {
+			set_block_setting($block_id, 'limit', safe_POST('limit'));
+			set_block_setting($block_id, 'flag',  safe_POST('flag'));
+			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
+			exit;
+		}
+
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+
 
 		// Limit Type
+		$limit=get_block_setting($block_id, 'limit', 'nolimit');
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
 			i18n::translate('Limit display by:'), help_link('gedcom_news_limit'),
 			'</td><td class="optionbox"><select name="limit"><option value="nolimit"',
-			($config['limit'] == 'nolimit'?' selected="selected"':'').">",
+			($limit == 'nolimit'?' selected="selected"':'').">",
 			i18n::translate('No limit')."</option>",
-			'<option value="date"'.($config['limit'] == 'date'?' selected="selected"':'').">".i18n::translate('Age of item')."</option>",
-			'<option value="count"'.($config['limit'] == 'count'?' selected="selected"':'').">".i18n::translate('Number of items')."</option>",
+			'<option value="date"'.($limit == 'date'?' selected="selected"':'').">".i18n::translate('Age of item')."</option>",
+			'<option value="count"'.($limit == 'count'?' selected="selected"':'').">".i18n::translate('Number of items')."</option>",
 			'</select></td></tr>';
 
 		// Flag to look for
+		$flag=get_block_setting($block_id, 'flag', 0);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Limit:'), help_link('gedcom_news_flag');
-		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$config['flag'].'" /></td></tr>';
+		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$flag.'" /></td></tr>';
 	}
 }
