@@ -62,7 +62,6 @@ set_gedcom_setting($ged_id, 'FAM_FACTS_ADD',                'CENS,MARR,RESI,SLGS
 set_gedcom_setting($ged_id, 'FAM_FACTS_QUICK',              'MARR,DIV,_NMR');
 set_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE',             'NCHI,MARL,DIV,ANUL,DIVF,ENGA,MARB,MARC,MARS');
 set_gedcom_setting($ged_id, 'FAM_ID_PREFIX',                'F');
-set_gedcom_setting($ged_id, 'FAVICON',                      'images/favicon.ico');
 set_gedcom_setting($ged_id, 'FULL_SOURCES',                 false);
 set_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB',           'personal_facts');
 set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             'I');

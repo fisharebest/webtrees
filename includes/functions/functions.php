@@ -202,7 +202,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      =get_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS');
 	global $EXPAND_SOURCES;               $EXPAND_SOURCES               =get_gedcom_setting($ged_id, 'EXPAND_SOURCES');
 	global $FAM_ID_PREFIX;                $FAM_ID_PREFIX                =get_gedcom_setting($ged_id, 'FAM_ID_PREFIX');
-	global $FAVICON;                      $FAVICON                      =get_gedcom_setting($ged_id, 'FAVICON');
 	global $FULL_SOURCES;                 $FULL_SOURCES                 =get_gedcom_setting($ged_id, 'FULL_SOURCES');
 	global $GEDCOM_DEFAULT_TAB;           $GEDCOM_DEFAULT_TAB           =get_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB');
 	global $GEDCOM_ID_PREFIX;             $GEDCOM_ID_PREFIX             =get_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX');

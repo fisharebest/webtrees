@@ -40,7 +40,6 @@ $theme_name       = "F.A.B."; // need double quotes, as file is scanned/parsed b
 $stylesheet       = WT_THEME_DIR.'style.css';
 $headerfile       = WT_THEME_DIR.'header.php';
 $footerfile       = WT_THEME_DIR.'footer.php';
-$FAVICON          = WT_THEME_DIR.'images/favicon.ico';
 $WT_USE_HELPIMG   = false;
 $WT_MENU_LOCATION = 'top';
 

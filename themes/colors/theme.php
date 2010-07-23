@@ -95,7 +95,6 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 $_SESSION['themecolor']=$subColor;
 
 $theme_name       = "colors"; // need double quotes, as file is scanned/parsed by script
-$FAVICON          = WT_THEME_DIR . 'images/favicon.ico';
 $footerfile       = WT_THEME_DIR . 'footer.php';
 $headerfile       = WT_THEME_DIR . 'header.php';
 $modules          = WT_THEME_DIR . 'modules.css';

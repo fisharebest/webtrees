@@ -40,7 +40,6 @@ $print_stylesheet = WT_THEME_DIR . 'print.css';
 $headerfile       = WT_THEME_DIR . 'header.php';
 $rtl_stylesheet   = WT_THEME_DIR . 'style_rtl.css';
 $footerfile       = WT_THEME_DIR . 'footer.php';
-$FAVICON          = WT_THEME_DIR . 'images/favicon.ico';
 $WT_USE_HELPIMG   = true;
 $WT_MENU_LOCATION = 'top';
 

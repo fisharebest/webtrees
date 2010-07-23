@@ -2206,11 +2206,6 @@ case 'FAM_ID_PREFIX':
 	$text=i18n::translate('When a new family record is added online in <b>webtrees</b>, a new ID for that family will be generated automatically. The family ID will have this prefix.');
 	break;
 
-case 'FAVICON':
-	$title=i18n::translate('Favorites icon');
-	$text=i18n::translate('Change this to point to the icon you want to display in peoples\' favorites menu when they bookmark your site.');
-	break;
-
 case 'FULL_SOURCES':
 	$title=i18n::translate('Use full source citations');
 	$text=i18n::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don\'t use these fields, you can disable them when creating new source citations.');

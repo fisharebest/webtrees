@@ -444,7 +444,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'FAM_FACTS_QUICK',              $FAM_FACTS_QUICK);
 	@set_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE',             $FAM_FACTS_UNIQUE);
 	@set_gedcom_setting($ged_id, 'FAM_ID_PREFIX',                $FAM_ID_PREFIX);
-	@set_gedcom_setting($ged_id, 'FAVICON',                      $FAVICON);
 	@set_gedcom_setting($ged_id, 'FULL_SOURCES',                 $FULL_SOURCES);
 	@set_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB',           $GEDCOM_DEFAULT_TAB);
 	@set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             $GEDCOM_ID_PREFIX);

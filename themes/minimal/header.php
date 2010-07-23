@@ -39,7 +39,7 @@ if (!defined('WT_WEBTREES')) {
 		<?php if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") { ?>
 			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php } 
 		?>
-		<?php if ($FAVICON) { ?><link rel="shortcut icon" href="<?php echo $FAVICON; ?>" type="image/x-icon" /> <?php } ?>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
 		<title><?php htmlspecialchars($title); ?></title>
 		<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />

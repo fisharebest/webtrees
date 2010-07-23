@@ -49,7 +49,7 @@ echo
 	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
 	'<head>',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="shortcut icon" href="', $FAVICON, '" type="image/x-icon">';
+	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">';
 
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {

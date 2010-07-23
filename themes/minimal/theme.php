@@ -38,7 +38,6 @@ $rtl_stylesheet   = WT_THEME_DIR.'style_rtl.css';
 $print_stylesheet = WT_THEME_DIR.'print.css';
 $headerfile       = WT_THEME_DIR.'header.php';
 $footerfile       = WT_THEME_DIR.'footer.php';
-$FAVICON          = WT_THEME_DIR.'images/favicon.ico';
 $WT_USE_HELPIMG   = false;
 
 //-- variables for image names

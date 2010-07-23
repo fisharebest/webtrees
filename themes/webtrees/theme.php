@@ -41,7 +41,6 @@ $print_stylesheet = WT_THEME_DIR.'print.css';
 $toplinks         = WT_THEME_DIR.'toplinks.php';
 $headerfile       = WT_THEME_DIR.'header.php';
 $footerfile       = WT_THEME_DIR.'footer.php';
-$FAVICON          = WT_THEME_DIR.'images/favicon.ico';
 $WT_USE_HELPIMG   = true;
 $WT_MENU_LOCATION = 'top';
 

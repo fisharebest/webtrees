@@ -404,7 +404,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 function print_header($title, $head="", $use_alternate_styles=true) {
 	global $bwidth, $HOME_SITE_URL, $HOME_SITE_TEXT, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $QUERY_STRING, $action, $query, $theme_name;
-	global $FAVICON, $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
+	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION;
 
 	header("Content-Type: text/html; charset=UTF-8");
