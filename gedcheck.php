@@ -151,17 +151,6 @@ $XREF_LINK=array(
 	'AUTH'=>'INDI'  // This is not valid gedcom, but it is not an error if used.
 );
 
-// Use the global settings for these (if they exist)
-if (isset($FAM_FACTS_UNIQUE))
-	$fam_facts_unique =preg_split('/[, ;:]+/', $FAM_FACTS_UNIQUE,  -1, PREG_SPLIT_NO_EMPTY);
-else
-	$fam_facts_unique=array();
-
-if (isset($INDI_FACTS_UNIQUE))
-	$indi_facts_unique=preg_split('/[, ;:]+/', $INDI_FACTS_UNIQUE, -1, PREG_SPLIT_NO_EMPTY);
-else
-	$indi_facts_unique=array();
-
 // Match end of line in DOS/UNIX/MAC format
 $EOL='[\n\r]+';
 
