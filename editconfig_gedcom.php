@@ -90,24 +90,6 @@ $PRIVACY_CONSTANTS=array(
 	'hidden'      =>i18n::translate('Hide even from admin users')
 );
 
-$all_tags=array();
-$tags=array_unique(array_merge(
-	explode(',', $INDI_FACTS_ADD), explode(',', $INDI_FACTS_UNIQUE),
-	explode(',', $FAM_FACTS_ADD ), explode(',', $FAM_FACTS_UNIQUE ),
-	explode(',', $NOTE_FACTS_ADD), explode(',', $NOTE_FACTS_UNIQUE),
-	explode(',', $SOUR_FACTS_ADD), explode(',', $SOUR_FACTS_UNIQUE),
-	explode(',', $REPO_FACTS_ADD), explode(',', $REPO_FACTS_UNIQUE),
-	array('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'SUBM', 'SUBN')
-));
-
-foreach ($tags as $tag) {
-	if ($tag) {
-		$all_tags[$tag]=translate_fact($tag);
-	}
-}
-
-uasort($all_tags, 'utf8_strcasecmp');
-
 switch (safe_POST('action')) {
 case 'delete':
 	WT_DB::prepare(
@@ -776,6 +758,25 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 			<?php
+				
+			$all_tags=array();
+			$tags=array_unique(array_merge(
+				explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE')),
+				explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD' )), explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE' )),
+				explode(',', get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_UNIQUE')),
+				explode(',', get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE')),
+				explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE')),
+				array('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'SUBM', 'SUBN')
+			));
+
+			foreach ($tags as $tag) {
+				if ($tag) {
+					$all_tags[$tag]=translate_fact($tag);
+				}
+			}
+
+			uasort($all_tags, 'utf8_strcasecmp');
+				
 			echo '<tr><td class="optionbox" width="*">';
 			echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" />';
 			print_findindi_link("xref","");
@@ -1125,7 +1126,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php print $COMMON_NAMES_THRESHOLD; ?>" size="5" tabindex="<?php echo ++$i; ?>" />
+							<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'); ?>" size="5" tabindex="<?php echo ++$i; ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -1133,7 +1134,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php print $COMMON_NAMES_ADD; ?>" size="50" tabindex="<?php echo ++$i; ?>" />
+							<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD'); ?>" size="50" tabindex="<?php echo ++$i; ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -1141,7 +1142,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php print $COMMON_NAMES_REMOVE; ?>" size="50" tabindex="<?php echo ++$i; ?>" />
+							<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE'); ?>" size="50" tabindex="<?php echo ++$i; ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -1533,7 +1534,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php print $INDI_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1541,7 +1542,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php print $INDI_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1557,7 +1558,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php print $INDI_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1570,7 +1571,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('FAM_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php print $FAM_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1578,7 +1579,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php print $FAM_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1594,7 +1595,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php print $FAM_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1607,7 +1608,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php print $SOUR_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1615,7 +1616,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php print $SOUR_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1623,7 +1624,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php print $SOUR_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1636,7 +1637,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('All facts'), help_link('REPO_FACTS_ADD'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php print $REPO_FACTS_ADD; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?>
+						<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1644,7 +1645,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Unique facts'), help_link('REPO_FACTS_UNIQUE'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php print $REPO_FACTS_UNIQUE; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?>
+						<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1652,7 +1653,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Quick facts'), help_link('REPO_FACTS_QUICK'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php print $REPO_FACTS_QUICK; ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?>
+						<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'); ?>" size="60" dir="ltr" tabindex="<?php echo ++$i; ?>" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
