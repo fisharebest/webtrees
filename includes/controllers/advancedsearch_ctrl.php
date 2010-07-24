@@ -94,7 +94,7 @@ class AdvancedSearchController extends SearchController {
 			"FAMS:SLGS:DATE","FAMS:SLGS:PLAC","FAMS:SLGS:TEMP"
 		);
 		// Allow (some of) the user-specified fields to be selected
-		foreach (explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD') as $fact) {
+		foreach (explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')) as $fact) {
 			if (
 				$fact!='BIRT' &&
 				$fact!='DEAT' &&
