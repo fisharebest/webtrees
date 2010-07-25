@@ -202,7 +202,9 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; flush();
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
-		" SELECT user_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting".
+		" SELECT user_id, setting_name,".
+		" CASE WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
+		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
 		" JOIN `##user` USING (user_id)".
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
