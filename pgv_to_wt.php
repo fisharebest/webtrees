@@ -190,9 +190,9 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	echo '<p>pgv_user => wt_user ...</p>'; flush();
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
-		" SELECT user_id, user_name, CONCAT(us1.setting_value, ' ', us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
-		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
-		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
+		" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
+		" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
+		" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
 		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us3 USING (user_id)".
 		" WHERE us1.setting_name='firstname'".
 		" AND us2.setting_name='lastname'".
@@ -203,13 +203,15 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting".
+		" JOIN `##user` USING (user_id)".
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
 
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; flush();
 	WT_DB::prepare(
 		"INSERT INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
-		" SELECT user_id, gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_gedcom_setting"
+		" SELECT user_id, gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_gedcom_setting".
+		" JOIN `##user` USING (user_id)"
 	)->execute();
 
 } else {
@@ -786,7 +788,9 @@ WT_DB::prepare(
 echo '<p>pgv_messages => wt_message ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)".
-	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, m_created FROM {$DBNAME}.{$TBLPREFIX}messages JOIN {$DBNAME}.{$TBLPREFIX}user ON (m_to=user_name)"
+	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, m_created".
+	" FROM {$DBNAME}.{$TBLPREFIX}messages".
+	" JOIN `##user` ON (m_to=user_name)"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
