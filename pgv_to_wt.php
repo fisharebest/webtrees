@@ -697,7 +697,8 @@ echo '<p>pgv_individuals => wt_individuals ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom)".
 	" SELECT i_id, i_file, i_rin, i_isdead, i_sex, ".
-	" REPLACE(i_gedcom, '\n1 _PGV', '\n1 _WT') FROM {$DBNAME}.{$TBLPREFIX}individuals"
+	" REPLACE(REPLACE(i_gedcom, '\n1 _PGVU ', '\n1 _WT_USER '), '\n1 _PGV_OBJS ', '\n1 _WT_OBJE_SORT ')".
+	" FROM {$DBNAME}.{$TBLPREFIX}individuals"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
