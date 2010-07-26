@@ -189,14 +189,6 @@ class MediaController extends BaseController{
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
-			if ($SHOW_GEDCOM_RECORD || WT_USER_IS_ADMIN) {
-				$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
-				$submenu->addOnclick("return edit_raw('".$this->pid."');");
-				$submenu->addIcon('edit_media');
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$menu->addSubmenu($submenu);
-			}
-
 			// main link displayed on page
 			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 				$submenu = new Menu(i18n::translate('Manage links'));
@@ -265,7 +257,7 @@ class MediaController extends BaseController{
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
-			$submenu->addIcon('gedcom');
+			$submenu->addIcon('edit_media');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
