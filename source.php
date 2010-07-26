@@ -69,7 +69,7 @@ echo ' window.location="source.php?sid=', $controller->sid, '&show_changes=yes"'
 echo '}';
 echo WT_JS_END;
 
-echo '<table class="list_table"><tr><td>';
+echo '<table width="70%" class="list_table"><tr><td>';
 if ($controller->accept_success) {
 	echo '<b>', i18n::translate('Changes successfully accepted into database'), '</b><br />';
 }
