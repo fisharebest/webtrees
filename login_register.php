@@ -347,7 +347,7 @@ switch ($action) {
 					set_user_setting($user_id, 'reg_timestamp',        date('U'));
 					set_user_setting($user_id, 'reg_hashcode',         md5(crypt($user_name)));
 					set_user_setting($user_id, 'contactmethod',        "messaging2");
-					set_user_setting($user_id, 'defaulttab',           $GEDCOM_DEFAULT_TAB);
+					set_user_setting($user_id, 'defaulttab',           get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 					set_user_setting($user_id, 'visibleonline',        1);
 					set_user_setting($user_id, 'editaccount',          1);
 					set_user_setting($user_id, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY);

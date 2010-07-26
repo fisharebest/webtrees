@@ -1256,7 +1256,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Default tab to show on individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
 						</td>
 						<td class="optionbox width60">
-							<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$i).'"'); ?>
+							<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'), 'tabindex="'.(++$i).'"'); ?>
 						</td>
 					</tr>
 					<tr>

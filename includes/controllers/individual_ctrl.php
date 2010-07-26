@@ -38,11 +38,12 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/classes/class_module.php';
 
 class IndividualController extends BaseController {
-	var $pid = "";
-	var $default_tab = 0;
+	var $pid = '';
 	var $indi = null;
 	var $diffindi = null;
 	var $accept_success = false;
+	var $default_tab = 0;
+
 	var $canedit = false;
 	var $name_count = 0;
 	var $total_names = 0;
@@ -55,7 +56,7 @@ class IndividualController extends BaseController {
 	var $globalfacts = null;
 
 	function init() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $GEDCOM_DEFAULT_TAB;
+		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM;
 		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
 		global $Fam_Navigator;
 
@@ -67,7 +68,6 @@ class IndividualController extends BaseController {
 
 		$pid = $this->pid;
 
-		$this->default_tab = $GEDCOM_DEFAULT_TAB;
 		$gedrec = find_person_record($this->pid, WT_GED_ID);
 
 		if ($USE_RIN && $gedrec==false) {
@@ -92,6 +92,8 @@ class IndividualController extends BaseController {
 		//-- check for the user
 		if (WT_USER_ID) {
 			$this->default_tab=get_user_setting(WT_USER_ID, 'defaulttab');
+		} else {
+			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
 		}
 
 		//-- check for a cookie telling what the last tab was when they were last

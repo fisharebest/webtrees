@@ -79,7 +79,7 @@ $emailaddress            =safe_POST('emailaddress', WT_REGEX_EMAIL);
 $user_theme              =safe_POST('user_theme',               $ALL_THEME_DIRS);
 $user_language           =safe_POST('user_language',            array_keys(i18n::installed_languages()), WT_LOCALE);
 $new_contact_method      =safe_POST('new_contact_method');
-$new_default_tab         =safe_POST('new_default_tab',          array_keys(WT_Module::getActiveTabs()), $GEDCOM_DEFAULT_TAB);
+$new_default_tab         =safe_POST('new_default_tab',          array_keys(WT_Module::getActiveTabs()), get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 $new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
 $new_comment_exp         =safe_POST('new_comment_exp'           );
 $new_max_relation_path   =safe_POST_integer('new_max_relation_path', 1, $MAX_RELATION_PATH_LENGTH, 2);
@@ -783,7 +783,7 @@ if ($action == "createform") {
 		<tr>
 			<td class="descriptionbox wrap"><?php echo i18n::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
 			<td class="optionbox wrap">
-			<?php echo edit_field_default_tab('new_default_tab', $GEDCOM_DEFAULT_TAB, 'tabindex="'.(++$tab).'"'); ?>
+			<?php echo edit_field_default_tab('new_default_tab', get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'), 'tabindex="'.(++$tab).'"'); ?>
 			</td>
 		</tr>
 		<?php if (WT_USER_IS_ADMIN) { ?>

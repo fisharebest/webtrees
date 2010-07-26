@@ -57,7 +57,7 @@ $form_rootid        =safe_POST('form_rootid',         WT_REGEX_XREF,            
 $form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS);
 $form_language      =safe_POST('form_language',       array_keys(i18n::installed_languages()), WT_LOCALE          );
 $form_contact_method=safe_POST('form_contact_method');
-$form_default_tab   =safe_POST('form_default_tab',    array_keys(WT_Module::getActiveTabs()),  $GEDCOM_DEFAULT_TAB);
+$form_default_tab   =safe_POST('form_default_tab',    array_keys(WT_Module::getActiveTabs()),  get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 $form_visible_online=safe_POST_bool('form_visible_online');
 
 // Respond to form action

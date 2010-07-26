@@ -38,19 +38,19 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 class FamilyController extends BaseController {
+	var $famid = '';
+	var $family = null;
+	var $difffam = null;
+	var $accept_success = false;
 	var $user = null;
 	var $showLivingHusb = true;
 	var $showLivingWife = true;
 	var $parents = '';
 	var $display = false;
-	var $accept_success = false;
 	var $show_changes = true;
 	var $famrec = '';
 	var $link_relation = 0;
 	var $title = '';
-	var $famid = '';
-	var $family = null;
-	var $difffam = null;
 
 	function init() {
 		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight, $GEDCOM;
