@@ -428,7 +428,7 @@ class IndividualController extends BaseController {
 		for($i=0; $i<$ct; $i++) {
 			echo '<div>';
 				$fact = trim($nmatch[$i][1]);
-				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")) {
+				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")&&($fact!="SPFX")) {
 					echo '<dl><dt class="label">', translate_fact($fact, $this->indi), '</dt>';
 					echo '<span class="field">';
 						if (isset($nmatch[$i][2])) {
