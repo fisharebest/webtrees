@@ -168,7 +168,7 @@ class NoteController extends BaseController {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(i18n::translate('Edit note'));
 			$submenu->addOnclick('return edit_note(\''.$this->nid.'\');');
-			$submenu->addIcon('notes');
+			$submenu->addIcon('edit_note');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 			
@@ -179,10 +179,10 @@ class NoteController extends BaseController {
 		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), encode_url("note.php?nid={$this->nid}&show_changes=yes"));
-				$submenu->addIcon('notes');
+				$submenu->addIcon('edit_note');
 			} else {
 				$submenu = new Menu(i18n::translate('Click here to hide changes.'), encode_url("note.php?nid={$this->nid}&show_changes=no"));
-				$submenu->addIcon('notes');
+				$submenu->addIcon('edit_note');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
@@ -224,7 +224,7 @@ class NoteController extends BaseController {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(i18n::translate('Delete this Shared Note'));
 			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Shared Note?')."')) return deletenote('".$this->nid."'); else return false;");
-			$submenu->addIcon('notes');
+			$submenu->addIcon('edit_note');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
