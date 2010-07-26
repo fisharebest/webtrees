@@ -90,6 +90,20 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			'  }'.
 			' });'.
 			'}';
+		if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
+			global $GOOGLEMAP_PH_CONTROLS;
+			$out.='if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {'.
+				' loadMap();';
+			if ($GOOGLEMAP_PH_CONTROLS) {
+				$out.=' GEvent.addListener(map,"mouseout", function() { map.hideControls(); });'.
+					' GEvent.addListener(map,"mouseover",function() { map.showControls(); });'.
+					' GEvent.trigger    (map,"mouseout");';
+			}
+			$out.=' map.setMapType(GOOGLEMAP_MAP_TYPE);'.
+				' SetMarkersAndBounds();'.
+				' ResizeMap();'.
+				'}';
+		}
 		return $out;
 	}
 }
