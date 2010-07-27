@@ -429,7 +429,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		// message 'no children' except for sosa
    }
    else if ($sosa<1) {
-		print "<tr><td></td><td valign=\"top\" >";
+		print "<tr><td valign=\"top\" >";
 
 		$nchi = "";
 		$famrec = find_gedcom_record($famid, $ged_id, true);
