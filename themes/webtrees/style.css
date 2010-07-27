@@ -83,12 +83,11 @@ legend img {
 	width: 25px;
 }
 
-img.block {
+img.block, #biglink img {
 	border: none;
 	height: 25px;
 	vertical-align: middle;
 }
-
 
 .edit_link:after  {
 	content: url(images/edit_sm.png);
