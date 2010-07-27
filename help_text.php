@@ -430,12 +430,12 @@ case 'DIVF':
 	break;
 
 case 'DSCR':	
-	$title=translate_fact('Description');
+	$title=translate_fact('DSCR');
 	$text='';
 	break;
 
 case 'EDUC':	
-	$title=translate_fact('Education');
+	$title=translate_fact('EDUC');
 	$text='';
 	break;
 
