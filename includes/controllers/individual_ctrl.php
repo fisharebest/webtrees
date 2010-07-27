@@ -525,13 +525,6 @@ class IndividualController extends BaseController {
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
-			if (count($this->indi->getSpouseFamilyIds())>1) {
-				$submenu = new Menu(i18n::translate('Reorder families'));
-				$submenu->addOnclick("return reorder_families('".$this->pid."');");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$menu->addSubmenu($submenu);
-			}
-
 			//--make sure the totals are correct
 			$this->getGlobalFacts();
 			if ($this->total_names<2) {
@@ -556,6 +549,14 @@ class IndividualController extends BaseController {
 					$submenu->addOnclick("return edit_record('".$this->pid."', $this->SEX_LINENUM);");
 				}
 				$submenu->addIcon('edit_indi');
+				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$menu->addSubmenu($submenu);
+			}
+
+			if (count($this->indi->getSpouseFamilyIds())>1) {
+				$submenu = new Menu(i18n::translate('Reorder families'));
+				$submenu->addOnclick("return reorder_families('".$this->pid."');");
+				$submenu->addIcon('edit_fam');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
