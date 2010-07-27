@@ -42,7 +42,7 @@ class IndividualController extends BaseController {
 	var $indi = null;
 	var $diffindi = null;
 	var $accept_success = false;
-	var $default_tab = 0;
+	var $default_tab = '';
 
 	var $canedit = false;
 	var $name_count = 0;
@@ -89,28 +89,13 @@ class IndividualController extends BaseController {
 				$gedrec = "0 @".$this->pid."@ INDI\n";
 			}
 		}
-		//-- check for the user
+
 		if (WT_USER_ID) {
+			// Start with the user's default tab
 			$this->default_tab=get_user_setting(WT_USER_ID, 'defaulttab');
 		} else {
+			// Start with the gedcom's default tab
 			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
-		}
-
-		//-- check for a cookie telling what the last tab was when they were last
-		//-- visiting this individual
-		if($this->default_tab == -2)
-		{
-			if (isset($_COOKIE['lasttabs'])) {
-				$ct = preg_match("/".$this->pid."=(\d+)/", $_COOKIE['lasttabs'], $match);
-				if ($ct>0) {
-					$this->default_tab = $match[1]-1;
-				}
-			}
-		}
-
-		//-- set the default tab from a request parameter
-		if (isset($_REQUEST['tab'])) {
-			$this->default_tab = $_REQUEST['tab'];
 		}
 
 		$this->indi = new Person($gedrec, false);
@@ -285,22 +270,6 @@ class IndividualController extends BaseController {
 		}
 	}
 
-	/**
-	* gets a string used for setting the value of a cookie using javascript
-	*/
-	function getCookieTabString() {
-		$str = "";
-		if (isset($_COOKIE['lasttabs'])) {
-			$parts = explode(':', $_COOKIE['lasttabs']);
-			foreach($parts as $i=>$val) {
-				$inner = explode('=', $val);
-				if (count($inner)>1) {
-					if ($inner[0]!=$this->pid) $str .= $val.":";
-				}
-			}
-		}
-		return $str;
-	}
 	/**
 	* check if we can show the highlighted media object
 	* @return boolean
