@@ -288,6 +288,10 @@ margin-left: auto;
 margin-right: auto;
 }
 
+.edit_link:after  {
+	content: url(../images/edit_sm.png);
+}
+
 /* Navigator and Flyout menu Styles -----------*/
 
 .nav_content #spouse {
