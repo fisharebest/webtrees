@@ -48,7 +48,6 @@ class IndividualController extends BaseController {
 	var $name_count = 0;
 	var $total_names = 0;
 	var $SEX_COUNT = 0;
-	var $sexarray = array();
 	var $tabs;
 	var $Fam_Navigator = 'YES';
 	var $NAME_LINENUM = 1;
@@ -59,10 +58,6 @@ class IndividualController extends BaseController {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM;
 		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
 		global $Fam_Navigator;
-
-		$this->sexarray["M"] = i18n::translate('Male');
-		$this->sexarray["F"] = i18n::translate('Female');
-		$this->sexarray["U"] = i18n::translate('unknown');
 
 		$this->pid = safe_GET_xref('pid');
 
@@ -101,13 +96,6 @@ class IndividualController extends BaseController {
 		$this->indi = new Person($gedrec, false);
 		$this->indi->ged_id=WT_GED_ID; // This record is from a file
 
-		//-- if the person is from another gedcom then forward to the correct site
-		/*
-		if ($this->indi->isRemote()) {
-			header('Location: '.encode_url(decode_url($this->indi->getLinkUrl()), false));
-			exit;
-		}
-		*/
 		//-- perform the desired action
 		switch($this->action) {
 		case 'addfav':
@@ -448,26 +436,30 @@ class IndividualController extends BaseController {
 				echo ' class="nameblue"';
 			}
 			echo '>';
-				echo '<dl><dt class="label">', i18n::translate('Gender'), '</dt>';
-				echo '<span class="field">', $this->sexarray[$sex];
-					if ($sex=='M') {
-						echo Person::sexImage('M', 'small', '', i18n::translate('Male'));
-					} elseif ($sex=='F') {
-						echo Person::sexImage('F', 'small', '', i18n::translate('Female'));
+			echo '<dl><dt class="label">', i18n::translate('Gender'), '</dt>';
+			echo '<span class="field">';
+			switch ($sex) {
+			case 'M':
+				echo i18n::translate('Male'), Person::sexImage('M', 'small', '', i18n::translate('Male'));
+				break;
+			case 'F':
+				echo i18n::translate('Female'), Person::sexImage('F', 'small', '', i18n::translate('Female'));
+				break;
+			case 'U':
+				echo i18n::translate('unknown'), Person::sexImage('U', 'small', '', i18n::translate('unknown'));
+				break;
+			}
+			if ($this->SEX_COUNT>1) {
+				if ($this->userCanEdit() && strpos($factrec, "WT_OLD")===false) {
+					if ($event->getLineNumber()=="new") {
+						echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".i18n::translate('Edit')."</a>";
 					} else {
-						echo Person::sexImage('U', 'small', '', i18n::translate('unknown'));
+							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"edit_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".i18n::translate('Edit')."</a> | ";
+							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".i18n::translate('Delete')."</a>\n";
 					}
-					if ($this->SEX_COUNT>1) {
-						if ($this->userCanEdit() && strpos($factrec, "WT_OLD")===false) {
-							if ($event->getLineNumber()=="new") {
-								echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".i18n::translate('Edit')."</a>";
-							} else {
-									echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"edit_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".i18n::translate('Edit')."</a> | ";
-									echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".i18n::translate('Delete')."</a>\n";
-							}
-						}
-					}
-				echo '</span>';
+				}
+			}
+			echo '</span>';
 			echo '</dl>';
 			// -- find sources
 	//		print "&nbsp;&nbsp;&nbsp;";

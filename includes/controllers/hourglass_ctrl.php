@@ -55,7 +55,6 @@ class HourglassController extends BaseController {
 	var $name_count = 0;
 	var $total_names = 0;
 	var $SEX_COUNT = 0;
-	var $sexarray = array();
 	var $show_full = 0;
 	var $show_spouse = 0;
 	var $generations;

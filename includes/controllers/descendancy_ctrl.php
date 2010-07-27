@@ -48,7 +48,6 @@ class DescendancyController extends BaseController {
 	var $SEX_COUNT = 0;
 	var $show_full;
 	var $chart_style;
-	var $sexarray = array();
 	var $generations;
 	var $personcount;
 	var $box_width;
@@ -68,10 +67,6 @@ class DescendancyController extends BaseController {
 	 */
 	function init() {
 	global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
-
-	$this->sexarray["M"] = i18n::translate('Male');
-	$this->sexarray["F"] = i18n::translate('Female');
-	$this->sexarray["U"] = i18n::translate('unknown');
 
 	// Extract parameters from form
 	$this->pid        =safe_GET_xref('pid');
