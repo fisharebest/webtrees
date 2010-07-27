@@ -101,6 +101,9 @@ img {
 	color: red;
 	font-weight: bold;
 }
+.edit_link:after  {
+	content: url(images/edit_sm.png);
+}
 
 /* Fact labels */
 .label {

@@ -95,6 +95,10 @@ th {
 	width: 60px;
 }
 
+.edit_link:after  {
+	content: url(images/edit_sm.png);
+}
+
 .gedcom_table {
 	border: 1px solid #84BEFF;
 	margin: 0;

@@ -285,6 +285,10 @@ margin-left: auto;
 margin-right: auto;
 }
 
+.edit_link:after  {
+	content: url(images/edit_sm.png);
+}
+
 /* Override js/jquery-ui.custom.css            */
 
 /* Flyout changes */
