@@ -90,8 +90,8 @@ img.block {
 }
 
 
-.edit_link:after {
-	content: url(images/small/edit.png);
+.edit_link:after  {
+	content: url(images/edit_sm.png);
 }
 
 .button {
