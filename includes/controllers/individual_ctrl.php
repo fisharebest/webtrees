@@ -243,7 +243,6 @@ class IndividualController extends BaseController {
 			exit;
 		}
 	}
-	//-- end of init function
 
 	/**
 	* return the title of this page
@@ -251,8 +250,7 @@ class IndividualController extends BaseController {
 	*/
 	function getPageTitle() {
 		if ($this->indi) {
-			$name = $this->indi->getFullName();
-			return $name." - ".$this->indi->getXref()." - ".i18n::translate('Individual information');
+			return $this->indi->getFullName();
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
