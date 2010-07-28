@@ -32,13 +32,14 @@
 <h2>CONTENTS</h2>
 <ol>
 	<li><a href="#licence">LICENSE</a></li>
-	<li><a href="#intro">INTRODUCTION</li>
-	<li><a href="#system">SYSTEM REQUIREMENTS</li>
-	<li><a href="#install">INSTALLATION</li>
-	<li><a href="#upgrade">UPGRADING</li>
-	<li><a href="#gedcom">GEDCOM (family tree) FILES</li>
-	<li><a href="#security">SECURITY</li>
-	<li><a href="#backup">BACKUP</li>
+	<li><a href="#intro">INTRODUCTION</a></li>
+	<li><a href="#system">SYSTEM REQUIREMENTS</a></li>
+	<li><a href="#install">INSTALLATION</a></li>
+	<li><a href="#upgrade">UPGRADING</a></li>
+	<li><a href="#gedcom">GEDCOM (family tree) FILES</a></li>
+	<li><a href="#security">SECURITY</a></li>
+	<li><a href="#backup">BACKUP</a></li>
+	<li><a href="#convert">CONVERTING from PHPGEDVIEW</a></li>
 </ol>
 <hr width="100%">
 <!-- LICENSE -->
@@ -96,7 +97,8 @@ The following instructions will guide you through a basic installation of <b>web
 	<ul>
 		<li>UPLOAD a GEDCOM file from your local machine, or</li>
 		<li>IMPORT a GEDCOM file from your server, if you have previously uploaded it to the webtrees/data folder, or</li>
-		<li>CREATE a new, empty GEDCOM file.</li>
+		<li>CREATE a new, empty GEDCOM file, or</li>
+		<li>Transfer your existing PGV data straight into webtrees, using the webtrees pgv-to-wt wizard described in section 9 below here: <a href="#convert">CONVERTING from PHPGEDVIEW</a></li>
 	</ul>
 </ol>
 Once all these steps are completed you can check that everything is in place, then consider looking at more advanced configuration options.	
@@ -184,6 +186,21 @@ This will safeguard "ALL" your information, not just your family history data, i
 The only things NOT included are any media items you uploaded to the server. You should also always keep copies of these, by using FTP to download copies of the media folders from your web server.
 <br /><br />
 [<b>NOTE:</b> for beta versions of <b>webtrees</b> there are two files in the webtrees/data folder (<b><i>yourGEDCOM</i>.ged_conf.php</b> and <b><i>yourGEDCOM</i>.ged_priv.php</b>) that you should also backup using FTP. These will be transferred to the database in released versions]
+<hr width="100%">
+<!-- CONVERSION -->
+<div style="float:left;"><a name="convert"><h3>CONVERTING from PHPGEDVIEW</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
+If you are moving to <b>webtrees</b> from an existing PhpGedView ("PGV") setup, and your PGV install meets certain requirements, <b>webtrees</b> has provided a "wizard" to help make the transfer of the majority of your data a relatively quick and painless operation. See exceptions noted below. Please note that we have designed this wizard so as to not disturb your existing PGV installation, leaving all those settings, data and your website intact and fully functional.
 <br /><br />
+The requirements are:
+<ul>
+	<li>The PGV database and index directory must be on the same server as <b>webtrees</b></li>
+	<li>PGV must be version 4.2.3, or any SVN up to #6973 (later versions will probably work too, provided the data structures haven't changed)</li>
+	<li>All changes in PGV must be accepted (as pending edits will not be transfered)</li>
+	<li>Your new webtrees admin username must be set to an identical, existing PGV admin username</li>
+	<li>All existing PGV users must have distinct email addresses (PGV allows users to delete their email address, or have the same email address as other users;  <b>webtrees</b> requires that all users have their own unique email address)</li>
+</ul>
+<p><b>Important Note:</b> This transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.'</p>
+<p>Immediately after the PGV-to-<b>webtrees</b> transfer is complete, you should check your GEDCOM and privacy settings to confirm they are as you intended. It will not be necessary to re-import your GEDCOM since the new <b>webtrees</b> database tables have been populated with your PGV data. Due to differences in internal data formats, the following settings are not yet transfered: block configuration, FAQs, HTML blocks, favorites, and news/blog articles.  We hope to add these to the wizard in a future release.</p>
+<p>The transfer wizard is accessed in <b>webtrees</b> from the bottom of the "Manage GEDCOM's" page to which you will be automatically directed once you have completed the initial <b>webtrees</b> installation steps (section 4 above: <a href="#install">INSTALLATION</a>)
 </body>
 </html>
