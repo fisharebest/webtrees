@@ -683,10 +683,12 @@ vertical-align:top;
 white-space: nowrap;
 }
 
-.list_label_wrap, .list_value_wrap {table.width66{
+table.width66 {
 margin-left: auto;
 margin-right: auto;
 }
+
+.list_label_wrap, .list_value_wrap {
 white-space: normal;
 }
 
