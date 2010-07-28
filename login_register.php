@@ -338,8 +338,10 @@ switch ($action) {
 			if (get_user_id($user_name)) {
 				print "<span class=\"warning\">".i18n::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.')."</span><br /><br />";
 				print "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
-			}
-			else if ($user_password01 == $user_password02) {
+			} elseif (get_user_by_email($user_email)) {
+				print "<span class=\"warning\">".i18n::translate('Duplicate email address.  A user with that email already exists.')."</span><br /><br />";
+				print "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
+			} elseif ($user_password01 == $user_password02) {
 				if ($user_id=create_user($user_name, $user_realname, $user_email, crypt($user_password01))) {
 					set_user_setting($user_id, 'language',            $user_language);
 					set_user_setting($user_id, 'verified',             0);

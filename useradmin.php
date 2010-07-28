@@ -71,7 +71,8 @@ $sort                    =safe_GET('sort',     WT_REGEX_NOSCRIPT,               
 $ged                     =safe_GET('ged',      WT_REGEX_NOSCRIPT,                      $ged);
 
 // Extract form variables
-$oldusername             =safe_POST('oldusername',  WT_REGEX_USERNAME);
+$oldusername             =safe_POST('oldusername',     WT_REGEX_USERNAME);
+$oldemailaddress         =safe_POST('oldemailaddress', WT_REGEX_EMAIL);
 $realname                =safe_POST('realname'   );
 $pass1                   =safe_POST('pass1',        WT_REGEX_PASSWORD);
 $pass2                   =safe_POST('pass2',        WT_REGEX_PASSWORD);
@@ -118,6 +119,9 @@ if ($action=='createuser' || $action=='edituser2') {
 	if (($action=='createuser' || $action=='edituser2' && $username!=$oldusername) && get_user_id($username)) {
 		print_header(i18n::translate('User administration'));
 		echo "<span class=\"error\">", i18n::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), "</span><br />";
+	} elseif (($action=='createuser' || $action=='edituser2' && $emailaddress!=$oldemailaddress) && get_user_by_email($emailaddress)) {
+		print_header(i18n::translate('User administration'));
+		echo "<span class=\"error\">", i18n::translate('Duplicate email address.  A user with that email already exists.'), "</span><br />";
 	} else {
 		if ($pass1!=$pass2) {
 			print_header(i18n::translate('User administration'));
@@ -253,6 +257,7 @@ if ($action=="edituser") {
 		<input type="hidden" name="sort" value="<?php echo $sort; ?>" />
 		<input type="hidden" name="usrlang" value="<?php echo $usrlang; ?>" />
 		<input type="hidden" name="oldusername" value="<?php echo $username; ?>" />
+		<input type="hidden" name="oldemailaddress" value="<?php echo $emailaddress; ?>" />
 		<?php $tab=0; ?>
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr><td class="topbottombar" colspan="2">

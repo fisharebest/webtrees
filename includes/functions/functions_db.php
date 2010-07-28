@@ -2228,6 +2228,13 @@ function get_user_count() {
 			->fetchOne();
 }
 
+function get_user_by_email($email) {
+	return
+		WT_DB::prepare("SELECT user_id FROM `##user` WHERE email=?")
+		->execute(array($email))
+		->fetchOne();
+}
+
 function get_admin_user_count() {
 	return
 		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=?")
