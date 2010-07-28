@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once("includes/classes/class_module.php");
+require_once WT_ROOT.'includes/classes/class_module.php';
 
 class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Extend WT_Module
