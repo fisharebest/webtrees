@@ -93,12 +93,12 @@ class IndividualController extends BaseController {
 			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
 		}
 		
-		if (find_updated_record($this->pid, WT_GED_ID)!==null){
+		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null){
 				$this->indi = new Person($gedrec, false);
 				$this->indi->ged_id=WT_GED_ID; // This record is from a file
-			} else if (!$this->indi){
-				return false;
-			}
+		} else if (!$this->indi){
+			return false;
+		}
 
 		//-- perform the desired action
 		switch($this->action) {
