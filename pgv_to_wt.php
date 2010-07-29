@@ -681,8 +681,8 @@ WT_DB::prepare(
 
 echo '<p>pgv_dates => wt_dates ...</p>'; flush();
 WT_DB::prepare(
-	"REPLACE INTO `##dates` (d_day, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type)".
-	" SELECT d_day, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM {$DBNAME}.{$TBLPREFIX}dates"
+	"REPLACE INTO `##dates` (d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type)".
+	" SELECT d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM {$DBNAME}.{$TBLPREFIX}dates"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
