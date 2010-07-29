@@ -418,7 +418,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	if (is_readable($config)) {
 		require $config;
 	}
-	$privacy=get_gedcom_setting($ged_id, 'config');
+	$privacy=get_gedcom_setting($ged_id, 'privacy');
 	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $privacy);
 	if (is_readable($privacy)) {
 		require $privacy;
