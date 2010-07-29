@@ -155,6 +155,7 @@ class SourceController extends BaseController {
 	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
+		if (!$this->source) return null;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {

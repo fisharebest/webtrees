@@ -78,7 +78,7 @@ class FamilyController extends BaseController {
 			if (find_updated_record($this->famid, WT_GED_ID)!==null){
 				$this->famrec = "0 @".$this->famid."@ FAM\n";
 				$this->family = new Family($this->famrec);
-			} else if (empty($this->family)){
+			} else if (!$this->family){
 				return false;
 			}
 		}
@@ -181,12 +181,14 @@ class FamilyController extends BaseController {
 
 	function getHusband() {
 		if (!is_null($this->difffam)) return $this->difffam->getHusbId();
-		return $this->parents['HUSB'];
+		if ($this->family) return $this->parents['HUSB'];
+		return null;
 	}
 
 	function getWife() {
 		if (!is_null($this->difffam)) return $this->difffam->getWifeId();
-		return $this->parents['WIFE'];
+		if ($this->family) return $this->parents['WIFE'];
+		return null;
 	}
 
 	function getChildren() {
@@ -221,6 +223,7 @@ class FamilyController extends BaseController {
 	function getChartsMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM;
 
+		if (!$this->family) return null;
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl";
 		else $ff="";
 
@@ -291,6 +294,7 @@ class FamilyController extends BaseController {
 	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
+		if (!$this->family) return null;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {

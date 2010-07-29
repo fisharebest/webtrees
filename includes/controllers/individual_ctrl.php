@@ -92,9 +92,13 @@ class IndividualController extends BaseController {
 			// Start with the gedcom's default tab
 			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
 		}
-
-		$this->indi = new Person($gedrec, false);
-		$this->indi->ged_id=WT_GED_ID; // This record is from a file
+		
+		if (find_updated_record($this->pid, WT_GED_ID)!==null){
+				$this->indi = new Person($gedrec, false);
+				$this->indi->ged_id=WT_GED_ID; // This record is from a file
+			} else if (!$this->indi){
+				return false;
+			}
 
 		//-- perform the desired action
 		switch($this->action) {
@@ -473,6 +477,7 @@ class IndividualController extends BaseController {
 	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
+		if (!$this->indi) return null;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {

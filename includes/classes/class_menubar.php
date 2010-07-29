@@ -318,7 +318,7 @@ class MenuBar
 				$submenu->addIcon('timeline');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_timeline");
 				$menu->addSubmenu($submenu);
-				if (isset($controller) && !empty($controller->famid)) {
+				if (isset($controller) && !empty($controller->family)) {
 					// Build a sortable list of submenu items and then sort it in localized name order
 					$menuList = array();
 					$menuList["parentTimeLine"] = i18n::translate('Show couple on timeline chart');
@@ -396,21 +396,32 @@ class MenuBar
 				foreach (array_unique($from) as $pid1) {
 					foreach (array_unique($to) as $pid2) {
 						if ($pid1!=$pid2 || $pid1=='' || $pid2=='') {
-							$person=Person::getInstance($pid2);
-							if ($person instanceof Person) {
-								$submenu = new Menu(
-									i18n::translate('Relationship Chart').': '.PrintReady($person->getFullName()),
-									encode_url("relationship.php?pid1={$pid2}&pid2={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
-								);
+							if (isset($controller) && !empty($controller->indi)) {
+								$person=Person::getInstance($pid2);
+								if ($person instanceof Person) {
+									$submenu = new Menu(
+										i18n::translate('Relationship Chart').': '.PrintReady($person->getFullName()),
+										encode_url("relationship.php?pid1={$pid2}&pid2={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+									);
+								} else {
+									$submenu = new Menu(
+										i18n::translate('Relationship Chart'),
+										encode_url("relationship.php?pid1={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+									);
+								}
+								$submenu->addIcon('relationship');
+								$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_relationship");
+								$menu->addSubmenu($submenu);
 							} else {
 								$submenu = new Menu(
-									i18n::translate('Relationship Chart'),
-									encode_url("relationship.php?pid1={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
-								);
+										i18n::translate('Relationship Chart'),
+										encode_url("relationship.php?pid1={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+									);
+								$submenu->addIcon('relationship');
+								$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_relationship");
+								$menu->addSubmenu($submenu);
+								break;
 							}
-							$submenu->addIcon('relationship');
-							$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_relationship");
-							$menu->addSubmenu($submenu);
 						}
 					}
 				}
