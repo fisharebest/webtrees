@@ -664,18 +664,26 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_favorites => wt_favorites ...</p>'; flush();
-WT_DB::prepare(
-	"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
-	" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM {$DBNAME}.{$TBLPREFIX}favorites"
-)->execute();
+try {
+	WT_DB::prepare(
+		"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
+		" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM {$DBNAME}.{$TBLPREFIX}favorites"
+	)->execute();
+} catch (PDOException $ex) {
+	// This table will only exist if the favorites module is installed in WT
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_news => wt_news ...</p>'; flush();
-WT_DB::prepare(
-	"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
-	" SELECT n_id, n_username, n_date, n_title, n_text FROM {$DBNAME}.{$TBLPREFIX}news"
-)->execute();
+try {
+	WT_DB::prepare(
+		"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
+		" SELECT n_id, n_username, n_date, n_title, n_text FROM {$DBNAME}.{$TBLPREFIX}news"
+	)->execute();
+} catch (PDOException $ex) {
+	// This table will only exist if the news/blog module is installed in WT
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -760,7 +768,7 @@ try {
 		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM {$DBNAME}.{$TBLPREFIX}placelocation"
 	)->execute();
 } catch (PDOexception $ex) {
-	// This table will only exist if the gm module is installed in PGV
+	// This table will only exist if the gm module is installed in PGV/WT
 }
 
 ////////////////////////////////////////////////////////////////////////////////
