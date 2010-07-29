@@ -86,22 +86,28 @@ The following instructions will guide you through a basic installation of <b>web
 <hr width="100%">
 <!-- INSTALLATION -->
 <div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-The following instructions will guide you through a basic installation of <b>webtrees</b> . We recommend this approach initially, and that on completion you check your site is working correctly before looking at the more advanced configuration options available.
+Once you have checked the <a href="#system">SYSTEM REQUIREMENTS</a> above, installing webtrees is really easy.
 <br /><br />
 <ol>
 	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
 	<li>Unzip the files and upload them to an empty directory on your web server.</li>
 	<li>Open your web browser and type the URL for your <b>webtrees</b> site (for example, http://www.yourserver.com/webtrees) into the address bar.</li>
-	<li>The <b>webtrees</b> setup wizard will start automatically. Follow the steps described there, reading all notes, and any red warning messages you receive carefully as you proceed through each step.</li>
+	<li>The <b>webtrees</b> setup wizard will start automatically. This will ask you a few questions about your server, and then generate a configuration file for you. At the end of the setup you will be asked to upload the configuration file to the webserver. This is a security check to make sure only the site owner can configure it.</li>
+</ol>
+<p>That's it!</p>
+<p>However, before you can use <b>webtrees</b>, you need one (or possibly more) GEDCOM (family tree) files. If you have been doing your research using a desktop program such as Family Tree Maker, you can use it's "save as GEDCOM" function to create a GEDCOM file. If you are starting from scratch, then <b>webtrees</b> can create a GEDCOM file for you. Alternatively, you can import data directly from PhpGedView.
+<br /><br />
+So, after installation, you'll be directed to the GEDCOM (family tree) administration page, where you'll need to select one of the following options:
+<ol>
 	<li>On successful completion of all steps you will be taken to the GEDCOM (family tree) administration page where you can:</li>
 	<ul>
-		<li>UPLOAD a GEDCOM file from your local machine, or</li>
-		<li>IMPORT a GEDCOM file from your server, if you have previously uploaded it to the webtrees/data folder, or</li>
-		<li>CREATE a new, empty GEDCOM file, or</li>
-		<li>Transfer your existing PGV data straight into webtrees, using the webtrees pgv-to-wt wizard described in section 9 below here: <a href="#convert">CONVERTING from PHPGEDVIEW</a></li>
+		<li>UPLOAD a GEDCOM file from your local machine</li>
+		<li>IMPORT a GEDCOM file from your server, (if your GEDCOM file is too large to upload, you can copy it to the webtrees/data folder, and load it from there)</li>
+		<li>CREATE a new, empty GEDCOM file</li>
+		<li>TRANSFER your existing PGV data straight into <b>webtrees</b>, using the PGV-to-<b>webtrees</b> wizard described in section 9 below: <a href="#convert">CONVERTING from PHPGEDVIEW</a></li>
 	</ul>
 </ol>
-Once all these steps are completed you can check that everything is in place, then consider looking at more advanced configuration options.	
+There are lots of configuration options. You'll probably want to review the privacy settings first. Don't worry too much about all the other options - the defaults are good for most people. If you get stuck, there's lots of built-in help and you can get friendly advice from the <a href="http://webtrees.net/forums">help</a> forum.
 <hr width="100%">
 <div style="float:left;"><a name="upgrade"><h3>UPGRADING</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
 <b>IMPORTANT NOTE: The following instructions do NOT apply to beta versions of <b>webtrees</b>. If you are testing beta versions they will have specific, usually more complex upgrade instructions, often requiring a completely fresh installation. Please read the latest Release Notes for any beta version.</b>
