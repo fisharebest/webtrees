@@ -1034,7 +1034,7 @@ case 'editsource':
 
 	echo "<table class=\"facts_table\">";
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
-	$uniquefacts = preg_split("/[, ;:]+/", get_gedcoom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
+	$uniquefacts = preg_split("/[, ;:]+/", get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
 	$usedfacts = array();
 	$lines = count($gedlines);
 	if ($lines==1) {
