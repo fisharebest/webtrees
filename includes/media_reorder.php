@@ -40,15 +40,13 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	print "<br /><b>".i18n::translate('Re-order media')."</b>";
 	print "&nbsp --- &nbsp;" . i18n::translate('Click a row, then drag-and-drop to re-order media ');
 
-	global $MULTI_MEDIA, $MEDIA_EXTERNAL;
-	global $MEDIATYPE;
+	global $MULTI_MEDIA, $MEDIA_EXTERNAL, $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
 	global $edit, $tabno, $currtab;
-	global $ids, $pid, $related, $level, $gedrec, $media_data, $order, $order1, $order2, $j ;
+	global $ids, $pid, $related, $level, $gedrec, $media_data, $order, $order1, $order2, $j;
 
 	print "\n";
-
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_media_update" />
@@ -56,17 +54,14 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 		<input type="hidden" name="currtab" value="<?php print $currtab; ?>" />
 <!--		<input type="hidden" name="option" value="bybirth" /> -->
 
-		<center><p>
+		<p><center>
 		<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>"><?php print i18n::translate('Save');?></button>
 		<button type="submit" title="<?php print i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php print i18n::translate('Reset');?></button>
 		<button type="submit" title="<?php print i18n::translate('Quit and return');?>" onclick="window.close();"><?php print i18n::translate('Cancel');?></button>
 		</center>
-
 <ul id="reorder_media_list">
-
 	<?php
 	print "\n";
-
 	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 
 	//related=true means show related items
@@ -144,77 +139,80 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	$rows=WT_DB::prepare($sqlmm)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 
 	$foundObjs = array();
-
-			foreach ($rows as $rowm) {
-
-				if (isset($foundObjs[$rowm['m_media']])) {
-					if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
-					continue;
-				}
-
-				// NOTE: Determine the size of the mediafile
-				$imgwidth = 300+40;
-				$imgheight = 300+150;
-				if (preg_match("'://'", $rowm["m_file"])) {
-					if (in_array($rowm["m_ext"], $MEDIATYPE)) {
-						$imgwidth = 400+40;
-						$imgheight = 500+150;
-					} else {
-						$imgwidth = 800+40;
-						$imgheight = 400+150;
-					}
-				}
-				else if (file_exists(filename_decode(check_media_depth($rowm["m_file"], "NOTRUNC")))) {
-					$imgsize = findImageSize(check_media_depth($rowm["m_file"], "NOTRUNC"));
-					$imgwidth = $imgsize[0]+40;
-					$imgheight = $imgsize[1]+150;
-				}
-				$rows = array();
-
-				$rows['normal'] = $rowm;
-				if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
-				foreach($rows as $rtype => $rowm) {
-					$res = media_reorder_row($rtype, $rowm, $pid);
-					$media_found = $media_found || $res;
-					$foundObjs[$rowm['m_media']] = true;
-
-					print "\n\n";
-				$j++;
-				}
-			}
-
-			?>
-			</ul>
-<?php
-
-print "\n";
-?>
-<script type="text/javascript" language="javascript">
-// <![CDATA[
-	new Effect.BlindDown('reorder_media_list', {duration: .5});
-	Sortable.create('reorder_media_list',
-		{
-			scroll:window,
-			onUpdate : function() {
-				inputs = $('reorder_media_list').getElementsByTagName('input');
-				for (var i = 0; i < inputs.length; i++) {
-					inputs[i].value = i;
-				}
+	foreach ($rows as $rowm) {
+		if (isset($foundObjs[$rowm['m_media']])) {
+			if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
+			continue;
+		}
+		// NOTE: Determine the size of the mediafile
+		$imgwidth = 300+40;
+		$imgheight = 300+150;
+		if (preg_match("'://'", $rowm["m_file"])) {
+			if (in_array($rowm["m_ext"], $MEDIATYPE)) {
+				$imgwidth = 400+40;
+				$imgheight = 500+150;
+			} else {
+				$imgwidth = 800+40;
+				$imgheight = 400+150;
 			}
 		}
-	);
-// ]]>
-</script>
-
-		<center>
-		<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>"><?php print i18n::translate('Save');?></button>
-		<button type="submit" title="<?php print i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php print i18n::translate('Reset');?></button>
-		<button type="submit" title="<?php print i18n::translate('Quit and return');?>" onclick="window.close();"><?php print i18n::translate('Cancel');?></button>
-		</center><p>
-
-	</form>
-	<?php
-
-
+		else if (file_exists(filename_decode(check_media_depth($rowm["m_file"], "NOTRUNC")))) {
+			$imgsize = findImageSize(check_media_depth($rowm["m_file"], "NOTRUNC"));
+			$imgwidth = $imgsize[0]+40;
+			$imgheight = $imgsize[1]+150;
+		}
+		$rows = array();
+		$rows['normal'] = $rowm;
+		if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
+		foreach($rows as $rtype => $rowm) {
+			$res = media_reorder_row($rtype, $rowm, $pid);
+			$media_found = $media_found || $res;
+			$foundObjs[$rowm['m_media']] = true;
+			print "\n\n";
+			$j++;
+		}
+	}
+	?>
+</ul>
+<?php
+print "\n";
 ?>
-
+	<script type="text/javascript" language="javascript">
+	// <![CDATA[
+		new Effect.BlindDown('reorder_media_list', {duration: .5});
+		Sortable.create('reorder_media_list',
+			{
+				scroll:window,
+				onUpdate : function() {
+					inputs = $('reorder_media_list').getElementsByTagName('input');
+					for (var i = 0; i < inputs.length; i++) {
+						inputs[i].value = i;
+					}
+				}
+			}
+		);
+	// ]]>
+	</script>
+	<center>
+	<?php
+	if (WT_USER_IS_ADMIN) {
+		echo "<table width=97%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">\n";
+		if ($NO_UPDATE_CHAN) {
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+		} else {
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+		}
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+		echo format_fact_date($event, false, true);
+		echo "</td></tr></table><br />\n";
+	}
+	?>
+	<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>"><?php print i18n::translate('Save');?></button>
+	<button type="submit" title="<?php print i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php print i18n::translate('Reset');?></button>
+	<button type="submit" title="<?php print i18n::translate('Quit and return');?>" onclick="window.close();"><?php print i18n::translate('Cancel');?></button>
+	</center></p>
+	</form>
+<?php
+?>

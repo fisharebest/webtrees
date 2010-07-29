@@ -189,7 +189,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 			}
 			// NOTE: Start div out-$pid.$personcount.$count
 			if ($style==1) $outBoxAdd .= " class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; padding: 2px; overflow: hidden; z-index:-1;\"";
-			else $outBoxAdd .= " style=\"padding: 2px;\"";
+			else $outBoxAdd .= " class=\"person_box$isF\" style=\"padding: 2px;\"";
 			// NOTE: Zoom
 			if (($ZOOM_BOXES!="disabled")&&(!$show_full)) {
 				if ($ZOOM_BOXES=="mouseover") $outBoxAdd .= $mouseAction2;

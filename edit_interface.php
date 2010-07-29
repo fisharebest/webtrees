@@ -2190,7 +2190,7 @@ case 'reorder_children':
 			$i=0;
 			$show_full = 1; // Force details to show for each child
 			foreach ($children as $id=>$child) {
-				echo "<li style=\"cursor:move;margin-bottom:2px;\"";
+				echo "<li style=\"cursor:move; margin-bottom:2px;\"";
 				if (!in_array($id, $ids)) echo " class=\"facts_valueblue\"";
 				echo " id=\"li_$id\" >";
 				print_pedigree_person($id, 2);
@@ -2211,11 +2211,26 @@ case 'reorder_children':
 					}
 				}
 			);
-		<?php echo WT_JS_END; ?>
+		<?php echo WT_JS_END; 
+		if (WT_USER_IS_ADMIN) {
+			echo "<center><table width=93%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
+			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">\n";
+			if ($NO_UPDATE_CHAN) {
+				echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			} else {
+				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			}
+			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+			$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+			echo format_fact_date($event, false, true);
+			echo "</td></tr></table></center><br />\n";
+		}
+		?>
 		<button type="submit"><?php echo i18n::translate('Save'); ?></button>
 		<button type="submit" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo i18n::translate('Sort by birth dates'); ?></button>
 		<button type="submit" onclick="window.close();"><?php echo i18n::translate('Cancel'); ?></button>
 	</form>
+	<br />
 	<?php
 	break;
 //------------------------------------------------------------------------------
