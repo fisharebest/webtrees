@@ -542,6 +542,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              $WATERMARK_THUMB);
 	@set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       $WELCOME_TEXT_AUTH_MODE);
+	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, $WELCOME_TEXT_AUTH_MODE_4);
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD);
 	@set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES);
 	@set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   $ZOOM_BOXES);
