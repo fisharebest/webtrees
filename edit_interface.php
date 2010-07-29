@@ -2510,53 +2510,6 @@ case 'changefamily_update':
 	}
 	break;
 //------------------------------------------------------------------------------
-//-- edit a fact record in a form
-case 'edit_family':
-	init_calendar_popup();
-	echo "<form method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />\n";
-	echo "<input type=\"hidden\" name=\"famid\" value=\"$famid\" />\n";
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
-	echo "<table class=\"facts_table\">";
-
-	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
-	$empty = true;
-	for ($i=$linenum; $i<count($gedlines); $i++) {
-		$fields = explode(' ', $gedlines[$i]);
-		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1]!="HUSB" && $fields[1]!="WIFE" && $fields[1]!="CHIL" && $fields[1]!="CHAN") {
-			$level1type = create_edit_form($gedrec, $i, $level0type);
-			echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />\n";
-			$empty = false;
-		}
-	}
-	if ($empty) {
-		$linenum=count($gedlines);
-		create_add_form("MARR");
-		echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />\n";
-	}
-	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
-		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
-		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
-		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
-		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
-		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
-	}
-	echo "</table>";
-	print_add_layer("NOTE");
-	print_add_layer("SHARED_NOTE");
-	print_add_layer("OBJE");
-	//-- RESN missing in new structure, RESN can be added to all level 1 tags
-	if (!in_array("RESN", $tags)) print_add_layer("RESN");
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
-	echo "</form>\n";
-	break;
-//------------------------------------------------------------------------------
 case 'reorder_update':
 	if (WT_DEBUG) {
 		phpinfo(INFO_VARIABLES);

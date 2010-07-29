@@ -455,11 +455,6 @@ function deletenote(pid) {
 	 return false;
 }
 
-function edit_family(famid) {
-	window.open('edit_interface.php?famid='+famid+'&linenum=1&'+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime+"&action=edit_family", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
-	return false;
-}
-
 function change_family_members(famid) {
 	window.open('edit_interface.php?famid='+famid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime+"&action=changefamily", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
