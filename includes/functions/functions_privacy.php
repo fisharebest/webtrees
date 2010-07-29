@@ -82,7 +82,7 @@ function is_dead($indirec, $gedcom_id) {
 	}
 	
 	// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
-	if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (PLAC|PLAC) )/', $indirec)) {
+	if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $indirec)) {
 		return true;
 	}
 
