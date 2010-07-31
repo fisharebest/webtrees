@@ -3217,9 +3217,10 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function _commonSurnamesQuery($type='list', $show_tot=false, $params=null) {
-		global $TEXT_DIRECTION, $SURNAME_LIST_STYLE;
+		global $TEXT_DIRECTION, $SURNAME_LIST_STYLE, $GEDCOM;
 
-		if (is_array($params) && isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);}else{$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
+		$ged_id=get_id_from_gedcom($GEDCOM);
+		if (is_array($params) && isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);}else{$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');}
 		if(is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0){$maxtoshow = strtolower($params[1]);}else{$maxtoshow = false;}
 		if(is_array($params) && isset($params[2]) && $params[2] != ''){$sorting = strtolower($params[2]);}else{$sorting = 'alpha';}
 		$surname_list = get_common_surnames($threshold);
