@@ -152,7 +152,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 			$hidden++;
 			continue;
 		}
-		$unique_indis[$person->getXref()]=true;
 		//-- place filtering
 		if ($option=="BIRT_PLAC" && strstr($person->getBirthPlace(), $filter)===false) continue;
 		if ($option=="DEAT_PLAC" && strstr($person->getDeathPlace(), $filter)===false) continue;
@@ -225,7 +224,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 					echo '<div>', str_replace('<a', '<a name="'.$birth_date->MinJD().'"', $birth_date->Display(!$SEARCH_SPIDER)), '</div>';
 				}
 			}
-			if ($birth_dates[0]->gregorianYear()>=1550 && $birth_dates[0]->gregorianYear()<2030) {
+			if ($birth_dates[0]->gregorianYear()>=1550 && $birth_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
 				$birt_by_decade[floor($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
@@ -283,7 +282,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 					echo '<div>', str_replace('<a', '<a name="'.$death_date->MinJD().'"', $death_date->Display(!$SEARCH_SPIDER)), '</div>';
 				}
 			}
-			if ($death_dates[0]->gregorianYear()>=1550 && $death_dates[0]->gregorianYear()<2030) {
+			if ($death_dates[0]->gregorianYear()>=1550 && $death_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
 				$deat_by_decade[floor($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
@@ -314,7 +313,9 @@ function print_indi_table($datalist, $legend="", $option="") {
 			$age = GedcomDate::GetAgeYears($birth_dates[0], $death_dates[0]);
 			$age_jd = $death_dates[0]->MinJD()-$birth_dates[0]->MinJD();
 			echo '<a name="', $age_jd, '" class="list_item age">', $age, '</a>';
-			$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
+			if (!isset($unique_indis[$person->getXref()])) {
+				$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
+			}
 		} else {
 			echo '<a name="-1">&nbsp;</a>';
 		}
@@ -373,6 +374,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		}
 		echo "</td>";
 		echo "</tr>\n";
+		$unique_indis[$person->getXref()]=true;
 	}
 	echo "</tbody>";
 	//-- table footer
