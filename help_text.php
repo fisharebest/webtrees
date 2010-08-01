@@ -3050,7 +3050,7 @@ case 'treenav.php':
 		'<br /></li><li><b>'.i18n::translate('Expanding Details').'</b><br />'.
 		i18n::translate('Clicking on any box will expand the box and display a more detailed view.  While in expanded mode, clicking on a person\'s name will open their Individual Information page.').
 		'<br />'.
-		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['gedcom'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
 		'<br />'.
 		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['button_family'].'" width="15px" height="15px" alt="">').
 		'<br /></li><li><b>'.i18n::translate('Toggle Spouses').'</b><br />'.
@@ -3059,7 +3059,7 @@ case 'treenav.php':
 		'<br />'.
 		i18n::translate('The Interactive Tree is available from many different pages including the Tree tab on the Individual Information page and the Charts block on the Home Page.  When viewing the tree from one of these other pages, you will also have a Tree icon under the Zoom icons.').
 		'<br />'.
-		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['gedcom'].'" width="15px" height="15px" alt="">').
+		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
 		'</li></ul>';
 	break;
 
