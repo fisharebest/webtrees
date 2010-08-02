@@ -4243,7 +4243,7 @@ default:
 }
 
 print_simple_header(i18n::translate('Help for «%s»', htmlspecialchars(strip_tags($title))));
-echo '<div class="helpheader">', htmlspecialchars($title), '</div>';
+echo '<div class="helpheader">', nl2br($title), '</div>';
 echo '<div class="helpcontent">', nl2br($text),'</div>';
 echo '<div class="helpfooter"><br />';
 echo '<a href="javascript:;" onclick="window.history.go(-1)">','<img src="', $WT_IMAGES["larrow"], '" alt="<"><br />';
