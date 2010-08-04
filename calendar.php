@@ -397,8 +397,8 @@ case 'year':
 case 'today':
 	echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
 	// Table headings
-	echo "<td class=\"descriptionbox center width50\"><img src=\"{$WT_IMAGES['indis']}\" border=\"0\" title=\"", i18n::translate('Individuals'), "\" alt=\"", i18n::translate('Individuals'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Individuals'), "</td>";
-	echo "<td class=\"descriptionbox center width50\"><img src=\"{$WT_IMAGES['cfamily']}\" border=\"0\" title=\"", i18n::translate('Families'), "\" alt=\"", i18n::translate('Families'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Families'), "</td>";
+	echo "<td class=\"descriptionbox center width50\"><img id=\"calendar_img\" src=\"{$WT_IMAGES['indis']}\" border=\"0\" title=\"", i18n::translate('Individuals'), "\" alt=\"", i18n::translate('Individuals'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Individuals'), "</td>";
+	echo "<td class=\"descriptionbox center width50\"><img id=\"calendar_img\" src=\"{$WT_IMAGES['cfamily']}\" border=\"0\" title=\"", i18n::translate('Families'), "\" alt=\"", i18n::translate('Families'), "\" />&nbsp;&nbsp;&nbsp;", i18n::translate('Families'), "</td>";
 	echo "</tr><tr>";
 	// Table rows
 	$males=0;

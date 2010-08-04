@@ -83,7 +83,7 @@ legend img {
 	width: 25px;
 }
 
-img.block, #biglink img {
+img.block, #calendar_img, #biglink img {
 	border: none;
 	height: 25px;
 	vertical-align: middle;
