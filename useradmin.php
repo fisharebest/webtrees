@@ -257,7 +257,7 @@ if ($action=="edituser") {
 		<input type="hidden" name="sort" value="<?php echo $sort; ?>" />
 		<input type="hidden" name="usrlang" value="<?php echo $usrlang; ?>" />
 		<input type="hidden" name="oldusername" value="<?php echo $username; ?>" />
-		<input type="hidden" name="oldemailaddress" value="<?php echo $emailaddress; ?>" />
+		<input type="hidden" name="oldemailaddress" value="<?php echo getUserEmail($user_id); ?>" />
 		<?php $tab=0; ?>
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr><td class="topbottombar" colspan="2">
