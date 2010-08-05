@@ -374,7 +374,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							print " width=\"3\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\" />";
 							print "</td>";
 						}
-						print "<td class=\"details1\" valign=\"middle\" align=\"center\">!!!";
+						print "<td class=\"details1\" valign=\"middle\" align=\"center\">";
 						$famrec = find_family_record($famid, $ged_id);
  						$marrec = get_sub_record(1, "1 MARR", $famrec);
  						$divrec = get_sub_record(1, "1 DIV",  $famrec);
