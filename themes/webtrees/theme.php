@@ -44,7 +44,7 @@ $footerfile       = WT_THEME_DIR.'footer.php';
 $WT_USE_HELPIMG   = true;
 $WT_MENU_LOCATION = 'top';
 
-//- PGV main icons
+//- main icons
 $WT_IMAGES['admin'] = WT_THEME_DIR.'images/admin.png';
 $WT_IMAGES['ancestry'] = WT_THEME_DIR.'images/ancestry.png';
 $WT_IMAGES['calendar'] = WT_THEME_DIR.'images/calendar.png';
@@ -95,7 +95,7 @@ $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.png';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/tree.png';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
-//- PGV buttons for data entry pages
+//- buttons for data entry pages
 $WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
 $WT_IMAGES['button_addrepository'] = WT_THEME_DIR.'images/buttons/addrepository.gif';
 $WT_IMAGES['button_addsource'] = WT_THEME_DIR.'images/buttons/addsource.gif';
@@ -112,7 +112,7 @@ $WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
 $WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
 $WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
 
-// Media images
+// media images
 $WT_IMAGES['media_audio'] = WT_THEME_DIR.'images/media/audio.png';
 $WT_IMAGES['media_doc'] = WT_THEME_DIR.'images/media/doc.gif';
 $WT_IMAGES['media_flash'] = WT_THEME_DIR.'images/media/flash.png';
@@ -168,7 +168,7 @@ $WT_IMAGES['lsrtarrow'] = WT_THEME_DIR.'images/lsrtarrow.gif';
 $WT_IMAGES['lsdnarrow'] = WT_THEME_DIR.'images/lsdnarrow.gif';
 $WT_IMAGES['lsuparrow'] = WT_THEME_DIR.'images/lsuparrow.gif';
 
-//-- Variables for the Fan chart
+//-- variables for the fan chart
 $fanChart = array(
 	'font'		=> WT_ROOT.'includes/fonts/DejaVuSans.ttf',
 	'size'		=> '7px',
@@ -178,7 +178,7 @@ $fanChart = array(
 	'bgFColor'	=> '#e9daf1'
 );
 
-//-- This section defines variables for the pedigree chart
+//-- pedigree chart variables
 $bwidth = 225;		// -- width of boxes on pedigree chart
 $bheight = 80;		// -- height of boxes on pedigree chart
 $baseyoffset = 10;	// -- position the entire pedigree tree relative to the top of the page
@@ -187,7 +187,7 @@ $bxspacing = 0;		// -- horizontal spacing between boxes on the pedigree chart
 $byspacing = 5;		// -- vertical spacing between boxes on the pedigree chart
 $brborder = 1;		// -- box right border thickness
 
-// -- global variables for the descendancy chart
+// -- descendancy chart variables 
 $Dbaseyoffset = 0;	// -- position the entire descendancy tree relative to the top of the page
 $Dbasexoffset = 0;		// -- position the entire descendancy tree relative to the left of the page
 $Dbxspacing = 0;		// -- horizontal spacing between boxes
