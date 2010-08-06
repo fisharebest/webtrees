@@ -59,7 +59,7 @@ class AdvancedSearchController extends SearchController {
 			$this->advancedSearch();
 		}
 		if (count($this->fields)==0) {
-			$this->fields = explode(",",get_gedcom_settting(WT_GED_ID, 'SEARCH_FACTS_DEFAULT'));
+			$this->fields = explode(",",get_gedcom_setting(WT_GED_ID, 'SEARCH_FACTS_DEFAULT'));
 			$this->fields[] = "FAMC:HUSB:NAME:GIVN:SDX";
 			$this->fields[] = "FAMC:HUSB:NAME:SURN:SDX";
 			$this->fields[] = "FAMC:WIFE:NAME:GIVN:SDX";
