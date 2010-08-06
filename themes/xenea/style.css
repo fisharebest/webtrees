@@ -49,6 +49,10 @@ legend {
 	font-weight: bold;
 }
 
+img {
+	border: none;
+}
+
 a.link:link, a.link:active, a.link:visited {
 	color: white;
 	font-family: tahoma, arial, helvetica, sans-serif;
