@@ -42,7 +42,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a sidebar which allows for easy navigation of indiviuals in a descendants tree-view format.');
+		return i18n::translate('Adds a sidebar which allows for easy navigation of individuals in a descendants tree-view format.');
 	}
 
 	// Implement WT_Module_Sidebar
