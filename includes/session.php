@@ -446,8 +446,7 @@ if (isset($_SESSION['theme_dir'])) {
 	}
 }
 
-
-if (isset($usertheme)) {
+if (isset($usertheme) && file_exists("{$usertheme}theme.php")) {
 	$THEME_DIR = $usertheme;
 } else if (empty($THEME_DIR) || !file_exists("{$THEME_DIR}theme.php")) {
 	$THEME_DIR = 'themes/webtrees/';
