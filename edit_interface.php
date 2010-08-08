@@ -2085,9 +2085,9 @@ case 'reorder_media_update': // Update sort using popup
 	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
 
 	if ($currtab=="album") {
-		$link = "individual.php?pid=$pid&show_changes=yes&tab=lightbox";
+		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
 	}else{
-		$link = "individual.php?pid=$pid&show_changes=yes&tab=media";
+		$link = "individual.php?pid=$pid&show_changes=yes#media";
 	}
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";
@@ -2096,6 +2096,7 @@ case 'reorder_media_update': // Update sort using popup
 
 //------------------------------------------------------------------------------
 case 'al_reset_media_update': // Reset sort using Album Page
+    if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
@@ -2105,13 +2106,13 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
-	if (!file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
-		$tabno = "7";
+	if ($currtab=="album") {
+		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
 	}else{
-		$tabno = "8";
+		$link = "individual.php?pid=$pid&show_changes=yes#media";
 	}
 	echo WT_JS_START;
-	echo "location.href='individual.php?pid={$pid}&tab={$tabno}'";
+	echo "edit_close('{$link}')";
 	echo WT_JS_END;
 	break;
 
@@ -2121,7 +2122,7 @@ case 'al_reorder_media_update': // Update sort using Album Page
 		phpinfo(INFO_VARIABLES);
 	}
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
-
+    if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	function SwapArray($Array){
 		$Values = array();
 		while (list($Key, $Val) = each($Array))
@@ -2145,13 +2146,13 @@ case 'al_reorder_media_update': // Update sort using Album Page
 		echo "<pre>$newgedrec</pre>";
 	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-	if (!file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
-		$tabno = "7";
-	} else {
-		$tabno = "8";
+	if ($currtab=="album") {
+		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
+	}else{
+		$link = "individual.php?pid=$pid&show_changes=yes#media";
 	}
 	echo WT_JS_START;
-	echo "location.href='individual.php?pid={$pid}&tab={$tabno}'";
+	echo "edit_close('{$link}')";
 	echo WT_JS_END;
 	break;
 
