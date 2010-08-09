@@ -20,7 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @version $Id: pgv_to_wt.php 9030 2010-07-07 21:54:31Z greg $
+ * @version $Id$
  */
 
 define('WT_SCRIPT_NAME', 'pgv_to_wt.php');
