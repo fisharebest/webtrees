@@ -715,7 +715,9 @@ WT_DB::prepare(
 echo '<p>pgv_families => wt_families ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil)".
-	" SELECT f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil FROM {$DBNAME}.{$TBLPREFIX}families"
+	" SELECT f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil".
+	" REPLACE(REPLACE(f_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '), '\n1 _PGV_OBJS ', '\n1 _WT_OBJE_SORT ')".
+	" FROM {$DBNAME}.{$TBLPREFIX}families"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -741,7 +743,9 @@ WT_DB::prepare(
 echo '<p>pgv_media => wt_media ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##media` (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec)".
-	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec FROM {$DBNAME}.{$TBLPREFIX}media"
+	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec".
+	" REPLACE(REPLACE(m_gedrec, '\n2 _PGVU ', '\n2 _WT_USER '))".
+	" FROM {$DBNAME}.{$TBLPREFIX}media"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -765,7 +769,9 @@ WT_DB::prepare(
 echo '<p>pgv_other => wt_other ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##other` (o_id, o_file, o_type, o_gedcom)".
-	" SELECT o_id, o_file, o_type, o_gedcom FROM {$DBNAME}.{$TBLPREFIX}other"
+	" SELECT o_id, o_file, o_type, o_gedcom".
+	" REPLACE(REPLACE(o_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '))".
+	" FROM {$DBNAME}.{$TBLPREFIX}other"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -809,7 +815,9 @@ WT_DB::prepare(
 echo '<p>pgv_sources => wt_sources ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_gedcom, s_dbid)".
-	" SELECT s_id, s_file, s_name, s_gedcom, s_dbid FROM {$DBNAME}.{$TBLPREFIX}sources"
+	" SELECT s_id, s_file, s_name, s_gedcom, s_dbid".
+	" REPLACE(REPLACE(s_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '))".
+	" FROM {$DBNAME}.{$TBLPREFIX}sources"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
