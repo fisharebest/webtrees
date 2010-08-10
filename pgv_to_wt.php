@@ -93,6 +93,13 @@ if ($PGV_PATH) {
 					$error=i18n::translate('The version of %s is too old', 'PhpGedView');
 				} elseif ($PGV_SCHEMA_VERSION>14) {
 					$error=i18n::translate('The version of %s is too new', 'PhpGedView');
+				} elseif ($PGV_SCHEMA_VERSION>=10 && $PGV_SCHEMA_VERSION<12) {
+					$IS_ADMIN=WT_DB::prepare(
+						"SELECT u_canadmin FROM {$DBNAME}.{$TBLPREFIX}users WHERE u_canadmin='Y' AND u_username=?"
+					)->execute(array(WT_USER_NAME))->fetchOne();
+					if (!$IS_ADMIN) {
+						$error='Your username must exist in PhpGedView as an administrator';
+					}
 				} else {
 					$IS_ADMIN=WT_DB::prepare(
 						"SELECT setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting JOIN {$DBNAME}.{$TBLPREFIX}user USING (user_id) WHERE setting_name='canadmin' AND user_name=?"
@@ -218,12 +225,12 @@ if ($PGV_SCHEMA_VERSION>=12) {
 
 } else {
 	// Copied from PGV's db_schema_11_12
-	if (file_exists("{$INDEX_DIRECTORY}gedcoms.php")) {
-		require_once "{$INDEX_DIRECTORY}gedcoms.php";
+	if (file_exists("{$INDEX_DIRECTORY}/gedcoms.php")) {
+		require_once "{$INDEX_DIRECTORY}/gedcoms.php";
 		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
 			foreach ($GEDCOMS as $array) {
 				try {
-					self::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
+					WT_DB::prepare("INSERT INTO `##gedcom` (gedcom_id, gedcom_name) VALUES (?,?)")
 						->execute(array($array['id'], $array['gedcom']));
 				} catch (PDOException $ex) {
 					// Ignore duplicates
@@ -232,7 +239,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 				foreach ($array as $key=>$value) {
 					if ($key!='id' && $key!='gedcom' && $key!='commonsurnames') {
 						try {
-							self::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
+							WT_DB::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?, ?)")
 								->execute(array($array['id'], $key, $value));
 						} catch (PDOException $ex) {
 							// Ignore duplicates
@@ -245,7 +252,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
 	try {
-		self::exec("INSERT INTO `##user` (user_name, password) SELECT u_username, u_password FROM {$TBLPREFIX}users");
+		WT_DB::prepare("INSERT INTO `##user` (user_name, password) SELECT u_username, u_password FROM {$TBLPREFIX}users")->execute();
 	} catch (PDOException $ex) {
 		// This could only fail if;
 		// a) we've already done it (upgrade)
@@ -253,7 +260,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 	
 	try {
-		self::exec(
+		WT_DB::prepare(
 			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 			"	SELECT user_id, 'firstname', u_firstname".
 			" FROM {$TBLPREFIX}users".
@@ -346,7 +353,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			"	SELECT user_id, 'auto_accept', u_auto_accept".
 			" FROM {$TBLPREFIX}users".
 			" JOIN {$TBLPREFIX}user ON (user_name=u_username)"
-		);
+		)->execute();
 	} catch (PDOException $ex) {
 		// This could only fail if;
 		// a) we've already done it (upgrade)
@@ -355,7 +362,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	
 	try {
 		$user_gedcom_settings=
-			self::prepare(
+			WT_DB::prepare(
 				"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
 				" FROM {$TBLPREFIX}users".
 				" JOIN {$TBLPREFIX}user ON (user_name=u_username)"
@@ -414,12 +421,21 @@ $PRIV_NONE=WT_PRIV_NONE;
 $PRIV_HIDE=WT_PRIV_HIDE;
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	$config=get_gedcom_setting($ged_id, 'config');
+	if ($PGV_SCHEMA_VERSION>=12) {
 	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $config);
+	} else {
+		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.'/', $config);
+	}
+echo "config = ".$config."<br />";//debug code
 	if (is_readable($config)) {
 		require $config;
 	}
 	$privacy=get_gedcom_setting($ged_id, 'privacy');
+	if ($PGV_SCHEMA_VERSION>=12) {
 	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $privacy);
+	} else {
+		$privacy=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.'/', $privacy);
+	}
 	if (is_readable($privacy)) {
 		require $privacy;
 	}
@@ -566,7 +582,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 	)->execute();
 } else {
 	// Copied from PGV's db_schema_12_13
-	$statement=PGV_DB::prepare("REPLACE INTO {$TBLPREFIX}hit_counter (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
+	$statement=WT_DB::prepare("REPLACE INTO {$TBLPREFIX}hit_counter (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
 
 	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 		// Caution these files might be quite large...
@@ -603,7 +619,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 	)->execute();
 } else {
 	// Copied from PGV's db_schema_13_14
-	$statement=PGV_DB::prepare("REPLACE INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)");
+	$statement=WT_DB::prepare("REPLACE INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)");
 	echo '<p>banned.php => wt_ip_address ...</p>'; flush();
 	if (is_readable($INDEX_DIRECTORY.'/banned.php')) {
 		@require $INDEX_DIRECTORY.'/banned.php';
