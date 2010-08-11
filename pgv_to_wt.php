@@ -182,7 +182,7 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=12) {
-	echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
+echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
 		" SELECT gedcom_id, gedcom_name FROM {$DBNAME}.{$TBLPREFIX}gedcom"
@@ -195,16 +195,20 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	)->execute();
 
 	echo '<p>pgv_user => wt_user ...</p>'; flush();
-	WT_DB::prepare(
-		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
-		" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
-		" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
-		" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
-		" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us3 USING (user_id)".
-		" WHERE us1.setting_name='firstname'".
-		" AND us2.setting_name='lastname'".
-		" AND us3.setting_name='email'"
-	)->execute();
+	try {
+		WT_DB::prepare(
+			"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
+			" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
+			" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
+			" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
+			" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us3 USING (user_id)".
+			" WHERE us1.setting_name='firstname'".
+			" AND us2.setting_name='lastname'".
+			" AND us3.setting_name='email'"
+		)->execute();
+	} catch (PDOException $ex) {
+		// Ignore duplicates
+	}
 
 	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; flush();
 	WT_DB::prepare(
@@ -227,6 +231,8 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	// Copied from PGV's db_schema_11_12
 	if (file_exists("{$INDEX_DIRECTORY}/gedcoms.php")) {
 		require_once "{$INDEX_DIRECTORY}/gedcoms.php";
+		$file=$INDEX_DIRECTORY.'/gedcoms.php';
+		echo '<p>', $file, ' => wt_gedcom ...</p>'; flush();
 		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
 			foreach ($GEDCOMS as $array) {
 				try {
@@ -251,121 +257,133 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 	
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
-	try {
-		WT_DB::prepare("INSERT INTO `##user` (user_name, password) SELECT u_username, u_password FROM {$TBLPREFIX}users")->execute();
-	} catch (PDOException $ex) {
-		// This could only fail if;
-		// a) we've already done it (upgrade)
-		// b) it doesn't exist (new install)
-	}
-	
+	echo '<p>pgv_users => wt_user ...</p>'; flush();
 	try {
 		WT_DB::prepare(
-			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
-			"	SELECT user_id, 'firstname', u_firstname".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'lastname', u_lastname".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'canadmin', u_canadmin".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'email', u_email".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'verified', u_verified".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'verified_by_admin', u_verified_by_admin".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'language', u_language".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'pwrequested', u_pwrequested".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'reg_timestamp', u_reg_timestamp".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'reg_hashcode', u_reg_hashcode".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'theme', u_theme".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'loggedin', u_loggedin".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'sessiontime', u_sessiontime".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'contactmethod', u_contactmethod".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'visibleonline', u_visibleonline".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'editaccount', u_editaccount".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'defaulttab', u_defaulttab".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'comment', u_comment".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'comment_exp', u_comment_exp".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'sync_gedcom', u_sync_gedcom".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'relationship_privacy', u_relationship_privacy".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'max_relation_path', u_max_relation_path".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'auto_accept', u_auto_accept".
-			" FROM {$TBLPREFIX}users".
-			" JOIN {$TBLPREFIX}user ON (user_name=u_username)"
+			"INSERT IGNORE INTO `##user` (user_name, real_name, email, password)".
+			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM {$DBNAME}.{$TBLPREFIX}users"
 		)->execute();
 	} catch (PDOException $ex) {
 		// This could only fail if;
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
-	
+	echo '<p>pgv_users => wt_user_setting ...</p>'; flush();
+	try {
+		WT_DB::prepare(
+			"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
+			"	SELECT user_id, 'canadmin', ".
+			" CASE WHEN u_canadmin IN ('Y', 'yes') THEN 1 WHEN u_canadmin IN ('N', 'no') THEN 0 ELSE u_canadmin END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'verified', ".
+			" CASE WHEN u_verified IN ('Y', 'yes') THEN 1 WHEN u_verified IN ('N', 'no') THEN 0 ELSE u_verified END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'verified_by_admin', ".
+			" CASE WHEN u_verified_by_admin IN ('Y', 'yes') THEN 1 WHEN u_verified_by_admin IN ('N', 'no') THEN 0 ELSE u_verified_by_admin END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'language', ".
+			" CASE WHEN u_language IN ('Y', 'yes') THEN 1 WHEN u_language IN ('N', 'no') THEN 0 ELSE u_language END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'pwrequested', ".
+			" CASE WHEN u_pwrequested IN ('Y', 'yes') THEN 1 WHEN u_pwrequested IN ('N', 'no') THEN 0 ELSE u_pwrequested END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'reg_timestamp', ".
+			" CASE WHEN u_reg_timestamp IN ('Y', 'yes') THEN 1 WHEN u_reg_timestamp IN ('N', 'no') THEN 0 ELSE u_reg_timestamp END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'reg_hashcode', ".
+			" CASE WHEN u_reg_hashcode IN ('Y', 'yes') THEN 1 WHEN u_reg_hashcode IN ('N', 'no') THEN 0 ELSE u_reg_hashcode END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'theme', ".
+			" CASE WHEN u_theme IN ('Y', 'yes') THEN 1 WHEN u_theme IN ('N', 'no') THEN 0 ELSE u_theme END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'loggedin', ".
+			" CASE WHEN u_loggedin IN ('Y', 'yes') THEN 1 WHEN u_loggedin IN ('N', 'no') THEN 0 ELSE u_loggedin END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'sessiontime', ".
+			" CASE WHEN u_sessiontime IN ('Y', 'yes') THEN 1 WHEN u_sessiontime IN ('N', 'no') THEN 0 ELSE u_sessiontime END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'contactmethod', ".
+			" CASE WHEN u_contactmethod IN ('Y', 'yes') THEN 1 WHEN u_contactmethod IN ('N', 'no') THEN 0 ELSE u_contactmethod END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'visibleonline', ".
+			" CASE WHEN u_visibleonline IN ('Y', 'yes') THEN 1 WHEN u_visibleonline IN ('N', 'no') THEN 0 ELSE u_visibleonline END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'editaccount', ".
+			" CASE WHEN u_editaccount IN ('Y', 'yes') THEN 1 WHEN u_editaccount IN ('N', 'no') THEN 0 ELSE u_editaccount END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'defaulttab', ".
+			" CASE WHEN u_defaulttab IN ('Y', 'yes') THEN 1 WHEN u_defaulttab IN ('N', 'no') THEN 0 ELSE u_defaulttab END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'comment', ".
+			" CASE WHEN u_comment IN ('Y', 'yes') THEN 1 WHEN u_comment IN ('N', 'no') THEN 0 ELSE u_comment END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'comment_exp', ".
+			" CASE WHEN u_comment_exp IN ('Y', 'yes') THEN 1 WHEN u_comment_exp IN ('N', 'no') THEN 0 ELSE u_comment_exp END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'sync_gedcom', ".
+			" CASE WHEN u_sync_gedcom IN ('Y', 'yes') THEN 1 WHEN u_sync_gedcom IN ('N', 'no') THEN 0 ELSE u_sync_gedcom END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'relationship_privacy', ".
+			" CASE WHEN u_relationship_privacy IN ('Y', 'yes') THEN 1 WHEN u_relationship_privacy IN ('N', 'no') THEN 0 ELSE u_relationship_privacy END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'max_relation_path', ".
+			" CASE WHEN u_max_relation_path IN ('Y', 'yes') THEN 1 WHEN u_max_relation_path IN ('N', 'no') THEN 0 ELSE u_max_relation_path END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)".
+			" UNION ALL".
+			"	SELECT user_id, 'auto_accept', ".
+			" CASE WHEN u_auto_accept IN ('Y', 'yes') THEN 1 WHEN u_auto_accept IN ('N', 'no') THEN 0 ELSE u_auto_accept END".
+			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" JOIN ##user ON (user_name=u_username)"
+		)->execute();
+	} catch (PDOException $ex) {
+		// This could only fail if;
+		// a) we've already done it (upgrade)
+		// b) it doesn't exist (new install)
+	}
+	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>'; flush();
 	try {
 		$user_gedcom_settings=
 			WT_DB::prepare(
 				"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
-				" FROM {$TBLPREFIX}users".
-				" JOIN {$TBLPREFIX}user ON (user_name=u_username)"
+				" FROM {$DBNAME}.{$TBLPREFIX}users".
+				" JOIN ##user ON (user_name=u_username)"
 			)->fetchAll();
 		foreach ($user_gedcom_settings as $setting) {
 			@$array=unserialize($setting->u_gedcomid);
@@ -399,10 +417,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 				}
 			}
 		}
-	
-		// TODO: Uncomment this lines before the next release
-		//self::exec("DROP TABLE {$TBLPREFIX}users");
-	
+
 	} catch (PDOException $ex) {
 		// This could only fail if;
 		// a) we've already done it (upgrade)
@@ -426,7 +441,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	} else {
 		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.'/', $config);
 	}
-echo "config = ".$config."<br />";//debug code
 	if (is_readable($config)) {
 		require $config;
 	}
@@ -586,7 +600,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 
 	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 		// Caution these files might be quite large...
-		$file=$INDEX_DIRECTORY.$ged_name.'pgv_counters.txt';
+		$file=$INDEX_DIRECTORY.'/'.$ged_name.'pgv_counters.txt';
 		echo '<p>', $file, ' => wt_hit_counter ...</p>'; flush();
 		if (file_exists($file)) {
 			foreach (file($file) as $line) {
@@ -714,8 +728,8 @@ WT_DB::prepare(
 
 echo '<p>pgv_families => wt_families ...</p>'; flush();
 WT_DB::prepare(
-	"REPLACE INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil)".
-	" SELECT f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil".
+	"REPLACE INTO `##families` (f_id, f_file, f_husb, f_wife, f_numchil, f_gedcom)".
+	" SELECT f_id, f_file, f_husb, f_wife, f_numchil, ".
 	" REPLACE(REPLACE(f_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '), '\n1 _PGV_OBJS ', '\n1 _WT_OBJE_SORT ')".
 	" FROM {$DBNAME}.{$TBLPREFIX}families"
 )->execute();
@@ -743,8 +757,8 @@ WT_DB::prepare(
 echo '<p>pgv_media => wt_media ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##media` (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec)".
-	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec".
-	" REPLACE(REPLACE(m_gedrec, '\n2 _PGVU ', '\n2 _WT_USER '))".
+	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, ".
+	" REPLACE(m_gedrec, '\n2 _PGVU ', '\n2 _WT_USER ')".
 	" FROM {$DBNAME}.{$TBLPREFIX}media"
 )->execute();
 
@@ -769,8 +783,8 @@ WT_DB::prepare(
 echo '<p>pgv_other => wt_other ...</p>'; flush();
 WT_DB::prepare(
 	"REPLACE INTO `##other` (o_id, o_file, o_type, o_gedcom)".
-	" SELECT o_id, o_file, o_type, o_gedcom".
-	" REPLACE(REPLACE(o_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '))".
+	" SELECT o_id, o_file, o_type, ".
+	" REPLACE(o_gedcom, '\n2 _PGVU ', '\n2 _WT_USER ')".
 	" FROM {$DBNAME}.{$TBLPREFIX}other"
 )->execute();
 
@@ -814,9 +828,9 @@ WT_DB::prepare(
 
 echo '<p>pgv_sources => wt_sources ...</p>'; flush();
 WT_DB::prepare(
-	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_gedcom, s_dbid)".
-	" SELECT s_id, s_file, s_name, s_gedcom, s_dbid".
-	" REPLACE(REPLACE(s_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '))".
+	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_dbid, s_gedcom)".
+	" SELECT s_id, s_file, s_name, s_dbid, ".
+	" REPLACE(s_gedcom, '\n2 _PGVU ', '\n2 _WT_USER ')".
 	" FROM {$DBNAME}.{$TBLPREFIX}sources"
 )->execute();
 
