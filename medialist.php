@@ -728,6 +728,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 	echo "</table><br />";
 }
 echo "\n</div>\n";
+}
 // ************************  END = 'Print the medialist array' ************************
 print_footer();
 ?>
