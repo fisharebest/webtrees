@@ -173,7 +173,7 @@ if ($action=='update_mods') {
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
 				)->execute(array($module_name, $ged_id, $value));
 			}
-	}
+		}
 
 		$value = safe_POST('menuorder-'.$module_name);
 		if ($value) {
@@ -300,22 +300,23 @@ print_header(i18n::translate('Module administration'));
 	<p><?php echo "<h2>".i18n::translate('Module administration')."</h2>"; ?></p>
 	<p><?php echo i18n::translate('Below is the list of all the modules installed in this instance of webtrees.  Modules are installed by placing them in the <i>modules</i> directory.  Here you can set the access level per GEDCOM for each module.  If a module includes tabs for the individual page or menus for the menu bar, you can also set the access level and order of each of them.')?></p>
 	<p><input TYPE="button" VALUE="<?php echo i18n::translate('Return to Administration page');?>" onclick="javascript:window.location='admin.php'" /></p>
-	<!-- page tabs -->
-	<div id="tabs">
-		<ul>
-			<li><a href="#installed_tab"><span><?php echo i18n::translate('All modules')?></span></a></li>
-			<li><a href="#menus_tab"><span><?php echo i18n::translate('Menus')?></span></a></li>
-			<li><a href="#tabs_tab"><span><?php echo i18n::translate('Tabs')?></span></a></li>
-			<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebar')?></span></a></li>
-			<li><a href="#blocks_tab"><span><?php echo i18n::translate('Blocks')?></span></a></li>
-			<li><a href="#charts_tab"><span><?php echo i18n::translate('Charts')?></span></a></li>
-			<li><a href="#reports_tab"><span><?php echo i18n::translate('Reports')?></span></a></li>
-			<li><a href="#themes_tab"><span><?php echo i18n::translate('Themes')?></span></a></li>
-		</ul>
-	<!-- installed -->
-	<div id="installed_tab">
-		<form class="tablesorter" method="post" action="module_admin.php"> 
-			<input type="hidden" name="action" value="update_mods" />
+	<form method="post" action="module_admin.php"> 
+		<input type="hidden" name="action" value="update_mods" />
+		<!-- page tabs -->
+		<div id="tabs">
+			<ul>
+				<li><a href="#installed_tab"><span><?php echo i18n::translate('All modules')?></span></a></li>
+				<li><a href="#menus_tab"><span><?php echo i18n::translate('Menus')?></span></a></li>
+				<li><a href="#tabs_tab"><span><?php echo i18n::translate('Tabs')?></span></a></li>
+				<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebar')?></span></a></li>
+				<li><a href="#blocks_tab"><span><?php echo i18n::translate('Blocks')?></span></a></li>
+				<li><a href="#charts_tab"><span><?php echo i18n::translate('Charts')?></span></a></li>
+				<li><a href="#reports_tab"><span><?php echo i18n::translate('Reports')?></span></a></li>
+				<li><a href="#themes_tab"><span><?php echo i18n::translate('Themes')?></span></a></li>
+			</ul>
+		</div)
+		<!-- installed -->
+		<div id="installed_tab">
 			<table id="installed_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 				  <tr>
@@ -355,30 +356,26 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-		<div id="pager" class="pager">
-			<form>
-				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
-				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
-				<input type="text" class="pagedisplay"/>
-				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
-				<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
-				<select class="pagesize">
-					<option value="10">10</option>
-					<option selected="selected"  value="15">15</option>
-					<option value="30">30</option>
-					<option value="40">40</option>
-					<option  value="50">50</option>
-					<option  value="100">100</option>
-				</select>
-			</form>
+			<div id="pager" class="pager">
+				<form>
+					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
+					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
+					<input type="text" class="pagedisplay"/>
+					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
+					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
+					<select class="pagesize">
+						<option value="10">10</option>
+						<option selected="selected"  value="15">15</option>
+						<option value="30">30</option>
+						<option value="40">40</option>
+						<option  value="50">50</option>
+						<option  value="100">100</option>
+					</select>
+				</form>
+			</div>
 		</div>
-	</div>
-	<!-- menus -->
-	<div id="menus_tab">
-		<form method="post" action="module_admin.php#menus_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		<!-- menus -->
+		<div id="menus_tab">
 			<table id="menus_table" class="list_table">
 				<thead>
 				  <tr>
@@ -423,13 +420,9 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
-	<!-- tabs -->
-	<div id="tabs_tab">
-		<form method="post" action="module_admin.php#tabs_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		</div>
+		<!-- tabs -->
+		<div id="tabs_tab">
 			<table id="tabs_table" class="list_table">
 				<thead>
 				  <tr>
@@ -474,13 +467,9 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
-	<!-- sidebars -->
-	<div id="sidebars_tab">
-		<form method="post" action="module_admin.php#sidebars_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		</div>
+		<!-- sidebars -->
+		<div id="sidebars_tab">
 			<table id="sidebars_table" class="list_table">
 				<thead>
 				  <tr>
@@ -525,13 +514,9 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
-	<!-- blocks -->
-	<div id="blocks_tab">
-		<form method="post" action="module_admin.php#blocks_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		</div>
+		<!-- blocks -->
+		<div id="blocks_tab">
 			<table id="blocks_table" class="list_table">
 				<thead>
 				  <tr>
@@ -569,13 +554,9 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
-	<!-- charts -->
-	<div id="charts_tab">
-		<form method="post" action="module_admin.php#charts_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		</div>
+		<!-- charts -->
+		<div id="charts_tab">
 			<table id="charts_table" class="list_table">
 				<thead>
 				  <tr>
@@ -613,13 +594,9 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
-	<!-- reports -->
-	<div id="reports_tab">
-		<form method="post" action="module_admin.php#reports_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		</div>
+		<!-- reports -->
+		<div id="reports_tab">
 			<table id="reports_table" class="list_table">
 				<thead>
 				  <tr>
@@ -657,13 +634,9 @@ print_header(i18n::translate('Module administration'));
 						?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
-	<!-- themes -->
-	<div id="themes_tab">
-		<form method="post" action="module_admin.php#themes_tab"> 
-			<input type="hidden" name="action" value="update_mods" />
+		</div>
+		<!-- themes -->
+		<div id="themes_tab">
 			<table id="themes_table" class="list_table">
 				<thead>
 				  <tr>
@@ -701,9 +674,9 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
-		</form>
-	</div>
+		</div>
+		<input type="submit" value="<?php echo i18n::translate('Save')?>" />
+	</form>
 </div>
 <?php
 print_footer();
