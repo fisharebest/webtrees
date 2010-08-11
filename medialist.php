@@ -728,13 +728,6 @@ Plus other Media Options - MediaViewer page') . "\" />";
 	echo "</table><br />";
 }
 echo "\n</div>\n";
-// -- load up the slideshow code
-if (!WT_USE_LIGHTBOX) {
-	if (file_exists(WT_ROOT.'modules/slideshow/slideshow.php')) {
-		require_once WT_ROOT.'modules/slideshow/slideshow.php';
-		}
-	}	
-}
 // ************************  END = 'Print the medialist array' ************************
 print_footer();
 ?>

@@ -24,7 +24,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @author PGV Development Team
  * @package webtrees
  * @subpackage Display
  * @version $Id$
@@ -215,8 +214,6 @@ $media=safe_REQUEST($_REQUEST, 'media');
 $filter=safe_REQUEST($_REQUEST, 'filter', WT_REGEX_NOSCRIPT);
 $sortby=safe_REQUEST($_REQUEST, 'sortby', 'file', 'title');
 $level=safe_REQUEST($_REQUEST, 'level', WT_REGEX_INTEGER, 0);
-$start=safe_REQUEST($_REQUEST, 'start', WT_REGEX_INTEGER, 0);
-$max=safe_REQUEST($_REQUEST, 'max', WT_REGEX_INTEGER, 20);
 
 $showthumb=safe_REQUEST($_REQUEST, 'showthumb');
 
@@ -815,8 +812,13 @@ if (check_media_structure()) {
 	<td class="optionbox wrap"><a href="javascript: <?php echo i18n::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo i18n::translate('Add a new media item'); ?></a></td></tr>
 
 	<!-- // NOTE: Row 3 left: Show thumbnails -->
-	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Show thumbnails'), help_link('show_thumb'); ?></td>
-	<td class="optionbox wrap"><input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) print "checked=\"checked\""; ?> onclick="submit();" /></td>
+	<tr>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+		<?php echo i18n::translate('Show thumbnails'), help_link('show_thumb'); ?>
+	</td>
+	<td class="optionbox wrap width25">
+		<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) print "checked=\"checked\""; ?> onclick="submit();" />
+	</td>
 
 	<!-- // NOTE: Row 3 right: Generate missing thumbnails -->
 	<?php
@@ -829,6 +831,23 @@ if (check_media_structure()) {
 	<td class="optionbox wrap"><a href="<?php print encode_url($tempURL);?>"><?php print i18n::translate('Create missing thumbnails');?></a></td></tr>
 	</table>
 </form>
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready(function(){
+// Table pageing
+	jQuery("#media_table")
+		.tablesorter({
+			sortList: [[<?php if ($showthumb) echo '2'; else echo '1'; ?>,0]], widgets: ['zebra'],
+			headers: { 0: { sorter: false }}
+		})
+		.tablesorterPager({
+			container: jQuery("#pager"),
+			positionFixed: false,
+			size: 15
+		});
+});
+//]]>
+</script>
 <?php
 
 	if (!empty($savedOutput)) print $savedOutput;		// Print everything we have saved up
@@ -865,7 +884,6 @@ if (check_media_structure()) {
 			$uplink2 .= $WT_IMAGES["larrow"];
 			$uplink2 .= "\" alt=\"\" /></a>\n";
 		}
-
 		// Start of media directory table
 		print "<table class=\"list_table width50 $TEXT_DIRECTION\">";
 		// Tell the user where he is
@@ -1037,7 +1055,21 @@ if (check_media_structure()) {
 			if ($sortby=='file') uasort($sortedMediaList, 'filesort');
 
 			// Set up for two passes, the first showing URLs, the second normal files
-			print "\n\t<table class=\"list_table width100\">";
+			?>
+<div align="center">
+	<form class="tablesorter" method="post" action="media.php"> 
+		<table id="media_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+			<thead>
+			  <tr>
+			  <th><?php echo i18n::translate('Edit options'); ?></th>
+			  <?php if ($showthumb) { ?>
+			  <th><?php echo i18n::translate('Media'); ?></th>
+			   <?php } ?>
+			  <th><?php echo i18n::translate('Description'); ?></th>
+			  </tr>
+			</thead>
+			<tbody>
+<?php
 			if ($directory==$MEDIA_DIRECTORY) {
 				$httpFilter = "http";
 				$passStart = 1;
@@ -1263,12 +1295,30 @@ if (check_media_structure()) {
 				}
 				if ($passCount==1 && $printDone) print "<tr><td class=\"optionbox\" colspan=\"3\">&nbsp;</td></tr>";
 			}
-			print "\n\t</table><br />";
+			?>
+		</tbody>
+	</table>
+	</form><br />
+	<div id="pager" class="pager">
+		<form>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
+			<input type="text" class="pagedisplay"/>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
+			<select class="pagesize">
+				<option value="10">10</option>
+				<option selected="selected"  value="15">15</option>
+				<option value="30">30</option>
+				<option value="40">40</option>
+				<option  value="50">50</option>
+				<option  value="100">100</option>
+			</select>
+		</form>
+	</div> <?php
 		}
 	}
-
-	?>
-<?php
+	?> </div> <?php
 }
 else print i18n::translate('The media folder is corrupted.');
 print_footer();
