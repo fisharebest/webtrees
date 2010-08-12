@@ -799,11 +799,32 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
-	echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
-	WT_DB::prepare(
-		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
-		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM {$DBNAME}.{$TBLPREFIX}placelocation"
-	)->execute();
+	if ($DBNAME.$TBLPREFIX.'placelocation'){
+		echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
+		WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##placelocation` (".
+		" pl_id        INTEGER      NOT NULL,".
+		" pl_parent_id INTEGER          NULL,".
+		" pl_level     INTEGER          NULL,".
+		" pl_place     VARCHAR(255)     NULL,".
+		" pl_long      VARCHAR(30)      NULL,".
+		" pl_lati      VARCHAR(30)      NULL,".
+		" pl_zoom      INTEGER          NULL,".
+		" pl_icon      VARCHAR(255)     NULL,".
+		" PRIMARY KEY     (pl_id),".
+		"         KEY ix1 (pl_level),".
+		"         KEY ix2 (pl_long),".
+		"         KEY ix3 (pl_lati),".
+		"         KEY ix4 (pl_place),".
+		"         KEY ix5 (pl_parent_id)".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+		);
+
+		WT_DB::prepare(
+			"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
+			" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM {$DBNAME}.{$TBLPREFIX}placelocation"
+		)->execute();
+	}
 } catch (PDOexception $ex) {
 	// This table will only exist if the gm module is installed in PGV/WT
 }
@@ -845,5 +866,5 @@ WT_DB::prepare(
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
-ob_end_flush();
+
 echo '<p>Done!</p>';
