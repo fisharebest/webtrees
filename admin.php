@@ -194,7 +194,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 					href="edit_merge.php"><?php echo i18n::translate('Merge records'); ?></a><?php echo help_link('help_edit_merge.php'); ?></td>
 			</tr>
 			<tr>
-				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup Index directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
+				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup data directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
 				<td class="optionbox width50"><?php if (WT_USER_CAN_EDIT) {  echo '<a href="module.php?mod=batch_update&mod_action=batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php'); } ?></td>
 			</tr>
 			<?php if ($pending_changes) { ?>

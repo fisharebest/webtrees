@@ -72,7 +72,7 @@ $ajaxdeleted = false;
 $elements = array();
 $locked_by_context = array('index.php', 'config.ini.php');
 
-// If we are storing the media in the index directory (this is the
+// If we are storing the media in the data directory (this is the
 // default for the media firewall), then don't delete it.
 if (
 	$USE_MEDIA_FIREWALL &&
@@ -82,11 +82,11 @@ if (
 	$locked_by_context[]=trim($MEDIA_DIRECTORY, '/');
 }
 
-print_header(i18n::translate('Cleanup Index directory'));
+print_header(i18n::translate('Cleanup data directory'));
 echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
-	 '<h2 class="center">', i18n::translate('Cleanup Index directory'), '</h2>';
+	 '<h2 class="center">', i18n::translate('Cleanup data directory'), '</h2>';
 
-echo i18n::translate('To delete a file or subdirectory from the Index directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.<br /><br />Files marked with <img src="./images/RESN_confidential.gif" alt="" /> are required for proper operation and cannot be removed.<br />Files marked with <img src="./images/RESN_locked.gif" alt="" /> have important settings or pending change data and should only be deleted if you are sure you know what you are doing.');
+echo i18n::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.<br /><br />Files marked with <img src="./images/RESN_confidential.gif" alt="" /> are required for proper operation and cannot be removed.<br />Files marked with <img src="./images/RESN_locked.gif" alt="" /> have important settings or pending change data and should only be deleted if you are sure you know what you are doing.');
 
 //post back
 if(isset($_REQUEST["to_delete"])) {
