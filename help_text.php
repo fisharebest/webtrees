@@ -2255,7 +2255,7 @@ case 'HOME_SITE_URL':
 
 case 'INDEX_DIRECTORY':
 	$title=i18n::translate('Data file directory');
-	$text=i18n::translate('The path to a readable and writable directory where <b>webtrees</b> should store index files (include the trailing "/").  <b>webtrees</b> does not require this directory\'s name to be "index".  You can choose any name you like.<br /><br />For security, this directory should be placed somewhere in the server\'s file space that is not accessible from the Internet. An example of such a structure follows:<br /><b>webtrees:</b> dir1/dir2/dir3/webtrees<br /><b>Index:</b> dir1/dir4/dir5/dir6/index<br /><br />For the example shown, you would enter <b>../../dir4/dir5/dir6/index/</b> in this field.');
+	$text=i18n::translate('The path to a readable and writable directory where <b>webtrees</b> should store data files (include the trailing "/").  <b>webtrees</b> does not require this directory\'s name to be "data".  You can choose any name you like.<br /><br />For security, this directory should be placed somewhere in the server\'s file space that is not accessible from the Internet. An example of such a structure follows:<br /><b>webtrees:</b> dir1/dir2/dir3/webtrees<br /><b>Index:</b> dir1/dir4/dir5/dir6/data<br /><br />For the example shown, you would enter <b>../../dir4/dir5/dir6/data/</b> in this field.');
 	break;
 
 case 'INDI_FACTS_ADD':
@@ -2410,7 +2410,7 @@ case 'PEDIGREE_SHOW_GENDER':
 
 case 'SESSION_SAVE_PATH':
 	$title=i18n::translate('Session save path');
-	$text=i18n::translate('The path to store <b>webtrees</b> session files.<br /><br />Some hosts do not have PHP configured properly and sessions are not maintained between page requests.  This option lets site administrators overcome that problem by saving files in one of their local directories.  The ./index/ directory is a good choice if you need to change this.  The default is to leave the field empty, which will use the Save path as configured in <i>php.ini</i>.');
+	$text=i18n::translate('The path to store <b>webtrees</b> session files.<br /><br />Some hosts do not have PHP configured properly and sessions are not maintained between page requests.  This option lets site administrators overcome that problem by saving files in one of their local directories.  The ./data/ directory is a good choice if you need to change this.  The default is to leave the field empty, which will use the Save path as configured in <i>php.ini</i>.');
 	break;
 
 case 'SESSION_TIME':
