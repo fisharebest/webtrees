@@ -141,7 +141,7 @@ if ($error || empty($PGV_PATH)) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-ob_start();
+if (ob_get_level() == 0) ob_start(); 
 echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @set_site_setting('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
