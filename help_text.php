@@ -3458,7 +3458,7 @@ case 'edituser_password':
 
 case 'edituser_rootid':
 	$title=i18n::translate('Pedigree chart root ID');
-	$text=i18n::translate('This is the starting (Root) person of all your charts.<br /><br />If, for example, you were to click the link to the Pedigree, you would see this root person in the leftmost box.  This root person does not have to be you; you can start with any person (your grandfather or your mother\'s aunt, for instance), as long you have the rights to see that person.<br /><br />The changes the default Root person for most charts.  You can change the Root person on many charts, but that is just for that page at that particular invocation.');
+	$text=i18n::translate('This is the starting (Root) person of all your charts.<br /><br />If, for example, you were to click the link to the Pedigree, you would see this root person in the leftmost box.  This root person does not have to be you; you can start with any person (your grandfather or your mother\'s aunt, for instance), as long you have the rights to see that person.<br /><br />This changes the default Root person for most charts.  You can change the Root person on many charts, but that is just for that page at that particular invocation.');
 	break;
 
 case 'edituser_user_default_tab':
