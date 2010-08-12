@@ -3624,7 +3624,7 @@ case 'index_common_given_names':
 
 case 'index_common_names':
 	$title=i18n::translate('Most common surnames block');
-	$text=i18n::translate('This block displays a list of frequently occurring surnames from this database. A surname must occur at least %s times before it will appear in this list.  The administrator has control over this threshold.<br /><br />When you click on a surname in this list, you will be taken to the Individuals, where you will get more details about that name.', $COMMON_NAMES_THRESHOLD);
+	$text=i18n::translate('This block displays a list of frequently occurring surnames from this database. A surname must occur at least %s times before it will appear in this list.  The administrator has control over this threshold.<br /><br />When you click on a surname in this list, you will be taken to the Individuals, where you will get more details about that name.', get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
 	break;
 
 case 'index_favorites':
