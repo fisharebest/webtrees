@@ -141,8 +141,8 @@ if ($error || empty($PGV_PATH)) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-
-echo '<p>config.php => wt_site_setting ...</p>'; flush();
+ob_start();
+echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @set_site_setting('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
 @set_site_setting('SMTP_SIMPLE_MAIL',                $PGV_SIMPLE_MAIL);
@@ -172,7 +172,7 @@ echo '<p>config.php => wt_site_setting ...</p>'; flush();
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_site_setting => wt_site_setting ...</p>'; flush();
+echo '<p>pgv_site_setting => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##site_setting` (setting_name, setting_value)".
 	" SELECT site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
@@ -182,19 +182,19 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=12) {
-echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
+echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
 		" SELECT gedcom_id, gedcom_name FROM {$DBNAME}.{$TBLPREFIX}gedcom"
 	)->execute();
 
-	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; flush();
+	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
 		" SELECT gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting"
 	)->execute();
 
-	echo '<p>pgv_user => wt_user ...</p>'; flush();
+	echo '<p>pgv_user => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
@@ -210,7 +210,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 		// Ignore duplicates
 	}
 
-	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; flush();
+	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name,".
@@ -220,7 +220,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
 
-	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; flush();
+	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
 		" SELECT user_id, gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_gedcom_setting".
@@ -232,7 +232,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 	if (file_exists("{$INDEX_DIRECTORY}/gedcoms.php")) {
 		require_once "{$INDEX_DIRECTORY}/gedcoms.php";
 		$file=$INDEX_DIRECTORY.'/gedcoms.php';
-		echo '<p>', $file, ' => wt_gedcom ...</p>'; flush();
+		echo '<p>', $file, ' => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
 			foreach ($GEDCOMS as $array) {
 				try {
@@ -257,7 +257,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 	}
 	
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
-	echo '<p>pgv_users => wt_user ...</p>'; flush();
+	echo '<p>pgv_users => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user` (user_name, real_name, email, password)".
@@ -268,7 +268,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
-	echo '<p>pgv_users => wt_user_setting ...</p>'; flush();
+	echo '<p>pgv_users => wt_user_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
@@ -377,7 +377,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; flush();
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
-	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>'; flush();
+	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		$user_gedcom_settings=
 			WT_DB::prepare(
@@ -589,7 +589,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=13) {
-	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>'; flush();
+	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"REPLACE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
 		" SELECT gedcom_id, page_name, page_parameter, page_count FROM {$DBNAME}.{$TBLPREFIX}hit_counter"
@@ -601,7 +601,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 		// Caution these files might be quite large...
 		$file=$INDEX_DIRECTORY.'/'.$ged_name.'pgv_counters.txt';
-		echo '<p>', $file, ' => wt_hit_counter ...</p>'; flush();
+		echo '<p>', $file, ' => wt_hit_counter ...</p>'; ob_flush(); flush(); usleep(50000);
 		if (file_exists($file)) {
 			foreach (file($file) as $line) {
 				if (preg_match('/(@('.PGV_REGEX_XREF.')@ )?(\d+)/', $line, $match)) {
@@ -626,7 +626,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=14) {
-	echo '<p>pgv_ip_address => wt_ip_address ...</p>'; flush();
+	echo '<p>pgv_ip_address => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##ip_address` (ip_address, category, comment)".
 		" SELECT ip_address, category, comment FROM {$DBNAME}.{$TBLPREFIX}ip_address"
@@ -634,7 +634,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 } else {
 	// Copied from PGV's db_schema_13_14
 	$statement=WT_DB::prepare("REPLACE INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)");
-	echo '<p>banned.php => wt_ip_address ...</p>'; flush();
+	echo '<p>banned.php => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
 	if (is_readable($INDEX_DIRECTORY.'/banned.php')) {
 		@require $INDEX_DIRECTORY.'/banned.php';
 		if (!empty($banned) && is_array($banned)) {
@@ -653,7 +653,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 			}
 		}
 	}
-	echo '<p>search_engines.php => wt_ip_address ...</p>'; flush();
+	echo '<p>search_engines.php => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
 	if (is_readable($INDEX_DIRECTORY.'/search_engines.php')) {
 		@require $INDEX_DIRECTORY.'/search_engines.php';
 		if (!empty($search_engines) && is_array($search_engines)) {
@@ -680,7 +680,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	WT_Module::setDefaultAccess($ged_id);
 }
 
-echo '<p>pgv_site_setting => wt_module_setting ...</p>'; flush();
+echo '<p>pgv_site_setting => wt_module_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##module_setting` (module_name, setting_name, setting_value)".
 	" SELECT 'googlemap', site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
@@ -694,7 +694,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_favorites => wt_favorites ...</p>'; flush();
+echo '<p>pgv_favorites => wt_favorites ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
 	WT_DB::prepare(
 		"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
@@ -706,7 +706,7 @@ try {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_news => wt_news ...</p>'; flush();
+echo '<p>pgv_news => wt_news ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
 	WT_DB::prepare(
 		"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
@@ -718,7 +718,7 @@ try {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_dates => wt_dates ...</p>'; flush();
+echo '<p>pgv_dates => wt_dates ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##dates` (d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type)".
 	" SELECT d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM {$DBNAME}.{$TBLPREFIX}dates"
@@ -726,7 +726,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_families => wt_families ...</p>'; flush();
+echo '<p>pgv_families => wt_families ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##families` (f_id, f_file, f_husb, f_wife, f_numchil, f_gedcom)".
 	" SELECT f_id, f_file, f_husb, f_wife, f_numchil, ".
@@ -736,7 +736,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_individuals => wt_individuals ...</p>'; flush();
+echo '<p>pgv_individuals => wt_individuals ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom)".
 	" SELECT i_id, i_file, i_rin, i_isdead, i_sex, ".
@@ -746,7 +746,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_link => wt_link ...</p>'; flush();
+echo '<p>pgv_link => wt_link ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##link` (l_file, l_from, l_type, l_to)".
 	" SELECT l_file, l_from, l_type, l_to FROM {$DBNAME}.{$TBLPREFIX}link"
@@ -754,7 +754,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_media => wt_media ...</p>'; flush();
+echo '<p>pgv_media => wt_media ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##media` (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec)".
 	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, ".
@@ -764,7 +764,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_media_mapping => wt_media_mapping ...</p>'; flush();
+echo '<p>pgv_media_mapping => wt_media_mapping ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##media_mapping` (mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec)".
 	" SELECT mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec FROM {$DBNAME}.{$TBLPREFIX}media_mapping"
@@ -772,7 +772,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_name => wt_name ...</p>'; flush();
+echo '<p>pgv_name => wt_name ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)".
 	" SELECT n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM {$DBNAME}.{$TBLPREFIX}name"
@@ -780,7 +780,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_other => wt_other ...</p>'; flush();
+echo '<p>pgv_other => wt_other ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##other` (o_id, o_file, o_type, o_gedcom)".
 	" SELECT o_id, o_file, o_type, ".
@@ -790,7 +790,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_placelinks => wt_placelinks ...</p>'; flush();
+echo '<p>pgv_placelinks => wt_placelinks ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##placelinks` (pl_p_id, pl_gid, pl_file)".
 	" SELECT pl_p_id, pl_gid, pl_file FROM {$DBNAME}.{$TBLPREFIX}placelinks"
@@ -799,7 +799,7 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
-	echo '<p>pgv_placelocation => wt_placelocation ...</p>'; flush();
+	echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
 		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM {$DBNAME}.{$TBLPREFIX}placelocation"
@@ -810,7 +810,7 @@ try {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_places => wt_places ...</p>'; flush();
+echo '<p>pgv_places => wt_places ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##places` (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex)".
 	" SELECT p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex FROM {$DBNAME}.{$TBLPREFIX}places"
@@ -818,7 +818,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_remotelinks => wt_remotelinks ...</p>'; flush();
+echo '<p>pgv_remotelinks => wt_remotelinks ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##remotelinks` (r_gid, r_linkid, r_file)".
 	" SELECT r_gid, r_linkid, r_file FROM {$DBNAME}.{$TBLPREFIX}remotelinks"
@@ -826,7 +826,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_sources => wt_sources ...</p>'; flush();
+echo '<p>pgv_sources => wt_sources ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_dbid, s_gedcom)".
 	" SELECT s_id, s_file, s_name, s_dbid, ".
@@ -836,7 +836,7 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_messages => wt_message ...</p>'; flush();
+echo '<p>pgv_messages => wt_message ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)".
 	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, m_created".
