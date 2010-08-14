@@ -60,14 +60,12 @@ $action                  =safe_POST('action',  $ALL_ACTIONS);
 $usrlang                 =safe_POST('usrlang', array_keys(i18n::installed_languages()));
 $username                =safe_POST('username', WT_REGEX_USERNAME);
 $filter                  =safe_POST('filter'   );
-$sort                    =safe_POST('sort'     );
 $ged                     =safe_POST('ged'      );
 
 $action                  =safe_GET('action',   $ALL_ACTIONS,                            $action);
 $usrlang                 =safe_GET('usrlang',  array_keys(i18n::installed_languages()), $usrlang);
 $username                =safe_GET('username', WT_REGEX_USERNAME,                      $username);
 $filter                  =safe_GET('filter',   WT_REGEX_NOSCRIPT,                      $filter);
-$sort                    =safe_GET('sort',     WT_REGEX_NOSCRIPT,                      $sort);
 $ged                     =safe_GET('ged',      WT_REGEX_NOSCRIPT,                      $ged);
 
 // Extract form variables
@@ -254,7 +252,6 @@ if ($action=="edituser") {
 	<form name="editform" method="post" action="useradmin.php" onsubmit="return checkform(this);" autocomplete="off">
 		<input type="hidden" name="action" value="edituser2" />
 		<input type="hidden" name="filter" value="<?php echo $filter; ?>" />
-		<input type="hidden" name="sort" value="<?php echo $sort; ?>" />
 		<input type="hidden" name="usrlang" value="<?php echo $usrlang; ?>" />
 		<input type="hidden" name="oldusername" value="<?php echo $username; ?>" />
 		<input type="hidden" name="oldemailaddress" value="<?php echo getUserEmail($user_id); ?>" />
@@ -262,7 +259,7 @@ if ($action=="edituser") {
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr><td class="topbottombar" colspan="2">
 	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Update user account'); ?>" />
-	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&sort={$sort}&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
+	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
 	</td></tr>
 	<tr>
 	<td class="descriptionbox width20 wrap"><?php echo i18n::translate('User name'), help_link('useradmin_username'); ?></td>
@@ -425,7 +422,7 @@ if ($action=="edituser") {
 	</tr>
 	<tr><td class="topbottombar" colspan="2">
 	<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Update user account'); ?>" />
-	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&sort={$sort}&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
+	<input type="button" tabindex="<?php echo ++$tab; ?>" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
 	</td></tr>
 	</table>
 	</form>
@@ -436,27 +433,7 @@ if ($action=="edituser") {
 
 //-- echo out a list of the current users
 if ($action == "listusers") {
-	switch ($sort) {
-		case "sortllgn":
-			$users = get_all_users("desc", "sessiontime");
-			break;
-		case "sortreg":
-			$users = get_all_users("desc", "reg_timestamp");
-			break;
-		case "sortver":
-			$users = get_all_users("asc", "verified");
-			break;
-		case "sortveradmin":
-			$users = get_all_users("asc", "verified_by_admin");
-			break;
-		case "sortusername":
-			$users = get_all_users("asc", "username");
-			break;
-		case "sortrealname":
-		default:
-			$users = get_all_users("asc", "realname");
-			break;
-	}
+	$users = get_all_users("asc", "realname");
 
 	// First filter the users, otherwise the javascript to unfold priviledges gets disturbed
 	foreach($users as $user_id=>$user_name) {
@@ -488,7 +465,27 @@ if ($action == "listusers") {
 			}
 		}
 	}
-
+?>
+<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready(function(){
+// Table pageing
+	jQuery("#user_table")
+		.tablesorter({
+			sortList: [[2,0],[1,0]], widgets: ['zebra'],
+			headers: { 0: { sorter: false }}
+		})
+		.tablesorterPager({
+			container: jQuery("#pager"),
+			positionFixed: false,
+			size: 15
+		});
+});
+//]]>
+</script>
+<?php
 	// Then show the users
 	
 	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
@@ -496,18 +493,18 @@ if ($action == "listusers") {
 	?>
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
-	<td colspan="5" class="topbottombar rtl"><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
-	<td colspan="5" class="topbottombar rtl"><a href="useradmin.php"><?php echo i18n::translate('Back to User Administration'); ?></a></td>
+	<td class="descriptionbox"><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
+	<td class="descriptionbox"><a href="useradmin.php"><?php echo i18n::translate('Back to User Administration'); ?></a></td>
 	</tr>
-	<tr>
-	<?php 
-	echo "<td class=\"descriptionbox wrap\">";
-	echo i18n::translate('Send Message'), "</td>";
-	?>
-	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortrealname&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('Real name'); ?></a></td>
-	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortusername&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('User name'); ?></a></td>
-	<td class="descriptionbox wrap"><?php echo i18n::translate(' Languages'); ?></td>
-	<td class="descriptionbox" style="padding-left:2px"><a href="javascript: <?php echo i18n::translate('Privileges'); ?>" onclick="<?php
+	</table>
+	<div class="width80 list_table">
+	<table id="user_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+	<thead><tr>
+	<th><?php echo i18n::translate('Send Message'); ?></th>
+	<th><?php echo i18n::translate('Real name'); ?></th>
+	<th><?php echo i18n::translate('User name'); ?></th>
+	<th><?php echo i18n::translate('Language'); ?></th>
+	<th><a href="javascript: <?php echo i18n::translate('Privileges'); ?>" onclick="<?php
 	$k = 1;
 	for ($i=1, $max=count($users)+1; $i<=$max; $i++) echo "expand_layer('user-geds", $i, "'); ";
 	echo " return false;\"><img id=\"user-geds", $k, "_img\" src=\"";
@@ -515,17 +512,15 @@ if ($action == "listusers") {
 	echo "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
 	echo "<div id=\"user-geds", $k, "\" style=\"display:none\">";
 	echo "</div>&nbsp;";
-	echo i18n::translate('Privileges'); ?>
-	</td>
-	<td class="descriptionbox wrap width10"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortreg&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('Date registered'); ?></a></td>
-	<td class="descriptionbox wrap width20"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortllgn&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('Last logged in'); ?></a></td>
-	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortver&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('User verified himself'); ?></a></td>
-	<td class="descriptionbox wrap"><a href="<?php echo encode_url("useradmin.php?action=listusers&sort=sortveradmin&filter={$filter}&usrlang={$usrlang}&ged={$ged}"); ?>"><?php echo i18n::translate('User approved by admin'); ?></a></td>
-	<?php
-	echo "<td class=\"descriptionbox wrap\">";
-	echo i18n::translate('Delete'), "</td>";
-	?>
+	echo i18n::translate('Privileges'); ?></th>
+	<th><?php echo i18n::translate('Date registered'); ?></th>
+	<th><?php echo i18n::translate('Last logged in'); ?></th>
+	<th><?php echo i18n::translate('User verified himself'); ?></th>
+	<th><?php echo i18n::translate('User approved by admin'); ?></th>
+	<th><?php echo i18n::translate('Delete'); ?></th>
 	</tr>
+	</thead>
+	<tbody>
 	<?php
 	$k++;
 	foreach($users as $user_id=>$user_name) {
@@ -538,7 +533,7 @@ if ($action == "listusers") {
 		}
 		echo '</td>';
 		$userName = getUserFullName($user_id);
-		echo "\t<td class=\"optionbox\"><a class=\"edit_link\" href=\"", encode_url("useradmin.php?action=edituser&username={$user_name}&sort={$sort}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" title=\"", i18n::translate('Edit'), "\">", $userName;
+		echo "\t<td class=\"optionbox\"><a class=\"edit_link\" href=\"", encode_url("useradmin.php?action=edituser&username={$user_name}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" title=\"", i18n::translate('Edit'), "\">", $userName;
 		if ($TEXT_DIRECTION=="ltr") echo getLRM();
 		else                        echo getRLM();
 		echo "</a></td>\n";
@@ -603,16 +598,32 @@ if ($action == "listusers") {
 		else echo i18n::translate('No');
 		echo "</td>\n";
 		echo "\t<td class=\"optionbox wrap\">";
-		if (WT_USER_ID!=$user_id) echo "<a href=\"", encode_url("useradmin.php?action=deleteuser&username={$user_name}&sort={$sort}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" onclick=\"return confirm('", i18n::translate('Are you sure you want to delete the user'), " $user_name');\">", i18n::translate('Delete'), "</a>";
+		if (WT_USER_ID!=$user_id) echo "<a href=\"", encode_url("useradmin.php?action=deleteuser&username={$user_name}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" onclick=\"return confirm('", i18n::translate('Are you sure you want to delete the user'), " $user_name');\">", i18n::translate('Delete'), "</a>";
 		echo "</td>\n";
 		echo "</tr>\n";
 	}
 	?>
-	<tr>
-		<td colspan="6" class="topbottombar rtl"><a href="useradmin.php?action=createform"><?php echo i18n::translate('Add a new user'); ?></a></td>
-		<td colspan="5" class="topbottombar rtl"><a href="useradmin.php"><?php echo i18n::translate('Back to User Administration'); ?></a></td>
-	</tr>
-	</table>
+	
+	</tbody>
+	</table><br />
+	<div id="pager" class="pager">
+		<form>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
+			<input type="text" class="pagedisplay"/>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
+			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
+			<select class="pagesize">
+				<option value="10">10</option>
+				<option selected="selected"  value="15">15</option>
+				<option value="30">30</option>
+				<option value="40">40</option>
+				<option  value="50">50</option>
+				<option  value="100">100</option>
+			</select>
+		</form>
+	</div>
+	</div>
 	<?php
 	print_footer();
 	exit;
