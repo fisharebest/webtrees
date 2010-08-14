@@ -260,7 +260,7 @@ class i18n {
 		case 0:
 			return '';
 		case 1:
-			return $array(0);
+			return $array[0];
 		default:
 			return implode(self::$list_separator, array_slice($array, 0, $n-1)).self::$list_separator_last.$array[$n-1];
 		}
