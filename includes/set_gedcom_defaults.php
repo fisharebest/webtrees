@@ -125,7 +125,7 @@ set_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES',        true);
 set_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE',           false);
 set_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES',            true);
 set_gedcom_setting($ged_id, 'SHOW_LIST_PLACES',             '1');
-set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            WT_PRIV_PUBLIC);
+set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            WT_PRIV_USER);
 set_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES',           true);
 set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          false);
 set_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME',          false);
