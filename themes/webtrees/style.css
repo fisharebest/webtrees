@@ -724,7 +724,7 @@ a:hover .nameZoom {
 /*-- pedigree chart specific stylesheets --*/
 #pedigree_chart {
 	position: relative;
-	top: -250px;
+	top: -200px;
 	left: 0px;
 }
 
