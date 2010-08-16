@@ -22,7 +22,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @version $Id: help_text.php 8554 2010-05-31 16:51:39Z greg $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
@@ -40,7 +40,9 @@ case 'recent_changes':
 	$text.='</li><li>';
 	$text.=i18n::translate('Should this block be hidden when it is empty?: Provides the option to hide the block if there are no changes to display.');
 	$text.='</li><li>';
-	$text.=i18n::translate('Add a scrollbar when block contents grow: If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists  ');
+	$text.=i18n::translate('Add a scrollbar when block contents grow: ');
+	$text.=i18n::translate('If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists.');
 	$text.='</li></ul>';
 	break;
 }
+?>

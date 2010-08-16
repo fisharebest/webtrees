@@ -51,3 +51,4 @@ case 'todo_show_unassigned':
 	$text=i18n::translate('Show &quot;To Do&quot; tasks that are not assigned to any user');
 	break;
 }
+?>
