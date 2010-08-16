@@ -40,8 +40,7 @@ if (!defined('WT_WEBTREES')) {
 			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php } 
 		?>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
-		<title><?php htmlspecialchars($title); ?></title>
+		<title><?php echo htmlspecialchars($title); ?></title>
 		<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
 		<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
 		<?php if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
