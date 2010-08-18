@@ -201,7 +201,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Add a scrollbar when block contents grow: ');
+		echo i18n::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
