@@ -88,7 +88,9 @@ if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
 
 <?php
 echo
-	'</head><body id="body" ', $bodyOnLoad, '>';
+	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
+	'</head>',
+	'<body id="body" ',$bodyOnLoad, '>';
 flush(); // Allow the browser to start fetching external stylesheets, javascript, etc.
 
 echo '<div id="header" class="block">'; // Every page has a header
