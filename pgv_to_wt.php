@@ -860,7 +860,7 @@ WT_DB::prepare(
 echo '<p>pgv_messages => wt_message ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)".
-	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, m_created".
+	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, str_to_date(m_created,'%a, %d %M %Y %H:%i:%s')".
 	" FROM {$DBNAME}.{$TBLPREFIX}messages".
 	" JOIN `##user` ON (m_to=user_name)"
 )->execute();
