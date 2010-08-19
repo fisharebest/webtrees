@@ -229,4 +229,4 @@ $menubar = new MenuBar(); ?>
 <?php } ?>
 <!-- end toplinks menu section -->
 <!-- begin content section -->
-<div id="content"
+<div id="content">
