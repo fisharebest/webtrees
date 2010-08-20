@@ -475,7 +475,7 @@ jQuery(document).ready(function(){
 	jQuery("#user_table")
 		.tablesorter({
 			sortList: [[2,0],[1,0]], widgets: ['zebra'],
-			headers: { 0: { sorter: false }}
+			headers: { 0: { sorter: false }, 9: { sorter: false }}
 		})
 		.tablesorterPager({
 			container: jQuery("#pager"),
@@ -580,12 +580,15 @@ jQuery(document).ready(function(){
 		echo "</td>\n";
 		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) echo "\t<td class=\"optionbox red\">";
 		else echo "\t<td class=\"optionbox wrap\">";
+		echo '<div style="display:none">', (int)get_user_setting($user_id, 'reg_timestamp'), '</div>';
 		echo format_timestamp((int)get_user_setting($user_id, 'reg_timestamp'));
 		echo "</td>\n";
 		echo "\t<td class=\"optionbox wrap\">";
 		if ((int)get_user_setting($user_id, 'reg_timestamp') > (int)get_user_setting($user_id, 'sessiontime')) {
+			echo '<div style="display:none">', (int)get_user_setting($user_id, 'reg_timestamp') - time(), '</div>';
 			echo i18n::translate('Never'), '<br />', i18n::time_ago(time() - (int)get_user_setting($user_id, 'reg_timestamp'));
 		} else {
+			echo '<div style="display:none">', (int)get_user_setting($user_id, 'sessiontime'), '</div>';
 			echo format_timestamp((int)get_user_setting($user_id, 'sessiontime')), '<br />', i18n::time_ago(time() - (int)get_user_setting($user_id, 'sessiontime'));
 		}
 		echo "</td>\n";
