@@ -41,6 +41,7 @@ $footerfile       = WT_THEME_DIR.'footer.php';
 $WT_USE_HELPIMG   = false;
 
 //-- variables for image names
+$WT_IMAGES['selected'] = 'images/selected.png';
 $WT_IMAGES['sex_m_9x9'] = 'images/sex_m_9x9.gif';
 $WT_IMAGES['sex_f_9x9'] = 'images/sex_f_9x9.gif';
 $WT_IMAGES['sex_u_9x9'] = 'images/sex_u_9x9.gif';

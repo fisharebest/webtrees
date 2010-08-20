@@ -82,6 +82,7 @@ $WT_IMAGES['relationship'] = WT_THEME_DIR.'images/relationship.png';
 $WT_IMAGES['reports'] = WT_THEME_DIR.'images/reports.png';
 $WT_IMAGES['repository'] = WT_THEME_DIR.'images/repository.png';
 $WT_IMAGES['search'] = WT_THEME_DIR.'images/search.png';
+$WT_IMAGES['selected'] = 'images/selected.png';
 $WT_IMAGES['sex_f_15x15'] = 'images/sex_f_15x15.gif';
 $WT_IMAGES['sex_f_9x9'] = 'images/sex_f_9x9.gif';
 $WT_IMAGES['sex_m_15x15'] = 'images/sex_m_15x15.gif';

@@ -667,7 +667,7 @@ class IndividualController extends BaseController {
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/
 	function buildFamilyList(&$family, $type) {
-		global $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M;
+		global $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $WT_IMAGES;
 
 		$people = array();
 		if (!is_object($family)) return $people;
@@ -750,7 +750,7 @@ class IndividualController extends BaseController {
 			if ($sex=="M") {
 				$label = $labels["father"];
 			}
-			if ($husb->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
+			if ($husb->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$husb->setLabel($label);
 		}
 		//-- set the label for the wife
@@ -763,7 +763,7 @@ class IndividualController extends BaseController {
 			if ($sex=="M") {
 				$label = $labels["father"];
 			}
-			if ($wife->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
+			if ($wife->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$wife->setLabel($label);
 		}
 		if ($this->show_changes) {
@@ -780,7 +780,7 @@ class IndividualController extends BaseController {
 					if ($sex=="M") {
 						$label = $labels["father"];
 					}
-					if ($newhusb->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
+					if ($newhusb->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 					$newhusb->setLabel($label);
 				}
 				else $newhusb = null;
@@ -795,7 +795,7 @@ class IndividualController extends BaseController {
 					if ($sex=="M") {
 						$label = $labels["father"];
 					}
-					if ($newwife->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
+					if ($newwife->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 					$newwife->setLabel($label);
 				}
 				else $newwife = null;
@@ -849,7 +849,7 @@ class IndividualController extends BaseController {
 					$label = $labels["brother"];
 				}
 				if ($children[$i]->getXref()==$this->pid) {
-					$label = "<img src=\"images/selected.png\" alt=\"\" />";
+					$label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 				}
 				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
 				$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
@@ -871,7 +871,7 @@ class IndividualController extends BaseController {
 			if ($sex=="M") {
 				$label = $labels["brother"];
 		}
-			if ($newchildren[$i]->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
+			if ($newchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
 			if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= " (".$PEDI_CODES_F[$pedi].")";
 			else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= " (".$PEDI_CODES_M[$pedi].")";
@@ -888,7 +888,7 @@ class IndividualController extends BaseController {
 			if ($sex=="M") {
 				$label = $labels["brother"];
 			}
-			if ($delchildren[$i]->getXref()==$this->pid) $label = "<img src=\"images/selected.png\" alt=\"\" />";
+			if ($delchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
 			if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= " (".$PEDI_CODES_F[$pedi].")";
 			else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= " (".$PEDI_CODES_M[$pedi].")";
