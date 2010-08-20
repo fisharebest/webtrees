@@ -35,12 +35,13 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action=safe_REQUEST($_REQUEST, 'action');
 
-function print_level_config_table($level) {
+function print_level_config_table($level, $i) {
 	global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX;
-	global $GM_POSTFIX, $GM_PRE_POST_MODE, $GM_MAX_NOF_LEVELS, $i;
+	global $GM_POSTFIX, $GM_PRE_POST_MODE, $GM_MAX_NOF_LEVELS;
 ?>
 	<div id="level<?php echo $level;?>" style="display:<?php if ($GM_MAX_NOF_LEVELS >= $level) {echo "block";} else {echo "none";}?>">
 		<table class="facts_table">
@@ -54,7 +55,7 @@ function print_level_config_table($level) {
 					<?php echo i18n::translate('Prefix'), help_link('GM_NAME_PREFIX','googlemap'); ?>
 				</td>
 				<td>
-					<input type="text" name="NEW_GM_PREFIX_<?php echo $level;?>" value="<?php echo $GM_PREFIX[$level];?>" size="20" tabindex="<?php $i++; echo $i?>" />
+					<input type="text" name="NEW_GM_PREFIX_<?php echo $level;?>" value="<?php echo $GM_PREFIX[$level];?>" size="20" tabindex="<?php echo $i; ?>" />
 				</td>
 			</tr>
 			<tr>
@@ -62,7 +63,7 @@ function print_level_config_table($level) {
 					<?php echo i18n::translate('Postfix'), help_link('GM_NAME_POSTFIX','googlemap'); ?>
 				</td>
 				<td>
-					<input type="text" name="NEW_GM_POSTFIX_<?php echo $level;?>" value="<?php echo $GM_POSTFIX[$level];?>" size="20" tabindex="<?php $i++; echo $i?>" />
+					<input type="text" name="NEW_GM_POSTFIX_<?php echo $level;?>" value="<?php echo $GM_POSTFIX[$level];?>" size="20" tabindex="<?php echo $i; ?>" />
 				</td>
 			</tr>
 			<tr>
@@ -70,7 +71,7 @@ function print_level_config_table($level) {
 					<?php echo i18n::translate('Prefix / Postfix order'), help_link('GM_NAME_PRE_POST','googlemap'); ?>
 				</td>
 				<td>
-					<select name="NEW_GM_PRE_POST_MODE_<?php echo $level;?>" dir="ltr" tabindex="<?php $i++; echo $i?>" onchange="showSelectedLevels()">
+					<select name="NEW_GM_PRE_POST_MODE_<?php echo $level;?>" dir="ltr" tabindex="<?php echo $i; ?>" onchange="showSelectedLevels()">
 						<option value="0"<?php if ($GM_PRE_POST_MODE[$level] == 0) echo ' selected="selected"';?>><?php echo i18n::translate('No pre/postfix');?></option>
 						<option value="1"<?php if ($GM_PRE_POST_MODE[$level] == 1) echo ' selected="selected"';?>><?php echo i18n::translate('Normal, prefix, postfix, both');?></option>
 						<option value="2"<?php if ($GM_PRE_POST_MODE[$level] == 2) echo ' selected="selected"';?>><?php echo i18n::translate('Normal, postfix, prefix, both');?></option>
@@ -197,22 +198,27 @@ $i = 0;
 
 <table class="facts_table">
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Enable GoogleMap'), help_link('GOOGLEMAP_ENABLE','googlemap'); ?></td>
-		<td class="optionbox">
-			<select name="NEW_GM_ENABLE" tabindex="<?php $i++; echo $i?>">
-				<option value="0" <?php if ($GOOGLEMAP_ENABLED=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GOOGLEMAP_ENABLED=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="descriptionbox nowrap">
+			<?php echo i18n::translate('Enable GoogleMap'), help_link('GOOGLEMAP_ENABLE','googlemap'); ?>
+		</td>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_ENABLE', $GOOGLEMAP_ENABLED, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('GoogleMap API key'), help_link('GOOGLEMAP_API_KEY','googlemap'); ?></td>
-		<td class="optionbox"><input type="text" name="NEW_GM_API_KEY" value="<?php echo $GOOGLEMAP_API_KEY;?>" size="60" tabindex="<?php $i++; echo $i?>" /></td>
+		<td class="descriptionbox nowrap">
+			<?php echo i18n::translate('GoogleMap API key'), help_link('GOOGLEMAP_API_KEY','googlemap'); ?>
+		</td>
+		<td class="optionbox width60">
+			<input type="text" name="NEW_GM_API_KEY" value="<?php echo $GOOGLEMAP_API_KEY;?>" size="60" tabindex="<?php echo ++$i; ?>" />
+		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Default map type'), help_link('GOOGLEMAP_MAP_TYPE','googlemap'); ?></td>
-		<td class="optionbox">
-			<select name="NEW_GM_MAP_TYPE" tabindex="<?php $i++; echo $i?>">
+		<td class="descriptionbox nowrap">
+			<?php echo i18n::translate('Default map type'), help_link('GOOGLEMAP_MAP_TYPE','googlemap'); ?>
+		</td>
+		<td class="optionbox width60">
+			<select name="NEW_GM_MAP_TYPE" tabindex="<?php echo ++$i; ?>">
 				<option value="G_NORMAL_MAP" <?php if ($GOOGLEMAP_MAP_TYPE=="G_NORMAL_MAP") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Map');?></option>
 				<option value="G_SATELLITE_MAP" <?php if ($GOOGLEMAP_MAP_TYPE=="G_SATELLITE_MAP") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Satellite');?></option>
 				<option value="G_HYBRID_MAP" <?php if ($GOOGLEMAP_MAP_TYPE=="G_HYBRID_MAP") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Hybrid');?></option>
@@ -221,111 +227,97 @@ $i = 0;
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Size of map (in pixels)'), help_link('GOOGLEMAP_MAP_SIZE','googlemap'); ?></td>
-		<td class="optionbox">
+		<td class="descriptionbox nowrap">
+			<?php echo i18n::translate('Size of map (in pixels)'), help_link('GOOGLEMAP_MAP_SIZE','googlemap'); ?>
+		</td>
+		<td class="optionbox width60">
 			<?php echo i18n::translate('Width'); ?>
-			<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE;?>" size="10" tabindex="<?php $i++; echo $i?>" />
+			<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE;?>" size="10" tabindex="<?php echo ++$i; ?>" />
 			<?php echo i18n::translate('Height'); ?>
-			<input type="text" name="NEW_GM_YSIZE" value="<?php echo $GOOGLEMAP_YSIZE;?>" size="10" tabindex="<?php $i++; echo $i?>" />
+			<input type="text" name="NEW_GM_YSIZE" value="<?php echo $GOOGLEMAP_YSIZE;?>" size="10" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Use Googlemap for Place Hierarchy'), help_link('GOOGLEMAP_PH','googlemap'); ?></td>
-		<td class="optionbox">
-			<select name="NEW_GM_PLACE_HIERARCHY" tabindex="<?php $i++; echo $i?>;">
-				<option value="0" <?php if ($GOOGLEMAP_PLACE_HIERARCHY=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GOOGLEMAP_PLACE_HIERARCHY=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="descriptionbox nowrap">
+			<?php echo i18n::translate('Use Googlemap for Place Hierarchy'), help_link('GOOGLEMAP_PH','googlemap'); ?>
+		</td>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', $GOOGLEMAP_PLACE_HIERARCHY, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Size of Place Hierarchy map (in pixels)'), help_link('GOOGLEMAP_PH_MAP_SIZE','googlemap'); ?>
 		</td>
-		<td class="optionbox">
+		<td class="optionbox width60">
 			<?php echo i18n::translate('Width'); ?>
-			<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE;?>" size="10" tabindex="<?php $i++; echo $i?>" />
+			<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE;?>" size="10" tabindex="<?php echo ++$i; ?>" />
 			<?php echo i18n::translate('Height'); ?>
-			<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $GOOGLEMAP_PH_YSIZE;?>" size="10" tabindex="<?php $i++; echo $i?>" />
+			<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $GOOGLEMAP_PH_YSIZE;?>" size="10" tabindex="<?php echo ++$i; ?>" />
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Type of place markers in Place Hierarchy'), help_link('GOOGLEMAP_PH_MARKER','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<select name="NEW_GM_PH_MARKER" tabindex="<?php $i++; echo $i?>;">
+		<td class="optionbox width60">
+			<select name="NEW_GM_PH_MARKER" tabindex="<?php echo ++$i; ?>">
 				<option value="G_DEFAULT_ICON" <?php if ($GOOGLEMAP_PH_MARKER=="G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Standard');?></option>
 				<option value="G_FLAG" <?php if ($GOOGLEMAP_PH_MARKER=="G_FLAG") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Flag');?></option>
 			</select>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<select name="NEW_GM_DISP_SHORT_PLACE" tabindex="<?php $i++; echo $i?>;">
-				<option value="0" <?php if ($GM_DISP_SHORT_PLACE=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GM_DISP_SHORT_PLACE=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $GM_DISP_SHORT_PLACE, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Display indis and families count'), help_link('GM_DISP_COUNT','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<select name="NEW_GM_DISP_COUNT" tabindex="<?php $i++; echo $i?>;">
-				<option value="0" <?php if ($GM_DISP_COUNT=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GM_DISP_COUNT=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_DISP_COUNT', $GM_DISP_COUNT, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Use mouse wheel for zoom'), help_link('GOOGLEMAP_PH_WHEEL','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<select name="NEW_GM_PH_WHEEL" tabindex="<?php $i++; echo $i?>;">
-				<option value="0" <?php if ($GOOGLEMAP_PH_WHEEL=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GOOGLEMAP_PH_WHEEL=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_PH_WHEEL', $GOOGLEMAP_PH_WHEEL, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Hide map controls'), help_link('GOOGLEMAP_PH_CONTROLS','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<select name="NEW_GM_PH_CONTROLS" tabindex="<?php $i++; echo $i?>;">
-				<option value="0" <?php if ($GOOGLEMAP_PH_CONTROLS=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GOOGLEMAP_PH_CONTROLS=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_PH_CONTROLS', $GOOGLEMAP_PH_CONTROLS, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Display Map Co-ordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<select name="NEW_GM_COORD" tabindex="<?php $i++; echo $i?>">
-				<option value="0" <?php if ($GOOGLEMAP_COORD=="0") echo "selected=\"selected\""; ?>><?php echo i18n::translate('No');?></option>
-				<option value="1" <?php if ($GOOGLEMAP_COORD=="1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('Yes');?></option>
-			</select>
+		<td class="optionbox width60">
+			<?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD, 'tabindex="'.(++$i).'"'); ?>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?>
 		</td>
-		<td class="optionbox">
-			<?php echo i18n::translate('minimum');?>: <select name="NEW_GM_MIN_ZOOM" tabindex="<?php $i++; echo $i?>">
+		<td class="optionbox width60">
+			<?php echo i18n::translate('minimum');?>: <select name="NEW_GM_MIN_ZOOM" tabindex="<?php echo ++$i; ?>">
 			<?php for ($j=1; $j < 15; $j++) { ?>
 			<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MIN_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 			<?php } ?>
 			</select>
-			<?php echo i18n::translate('maximum');?>: <select name="NEW_GM_MAX_ZOOM" tabindex="<?php $i++; echo $i?>">
+			<?php echo i18n::translate('maximum');?>: <select name="NEW_GM_MAX_ZOOM" tabindex="<?php echo ++$i; ?>">
 			<?php for ($j=1; $j < 15; $j++) { ?>
 			<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MAX_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 			<?php } ?>
@@ -333,14 +325,14 @@ $i = 0;
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Precision'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?>
 		</td>
-		<td class="optionbox">
+		<td class="optionbox width60">
 			<table>
 				<tr>
 					<td><?php echo i18n::translate('Country');?>&nbsp;&nbsp;</td>
-					<td><select name="NEW_GM_PRECISION_0" tabindex="<?php $i++; echo $i?>">
+					<td><select name="NEW_GM_PRECISION_0" tabindex="<?php echo ++$i; ?>">
 						<?php for ($j=0; $j < 10; $j++) { ?>
 						<option value="<?php echo $j;?>"<?php if ($GOOGLEMAP_PRECISION_0==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 						<?php } ?>
@@ -349,7 +341,7 @@ $i = 0;
 				</tr>
 				<tr>
 					<td><?php echo i18n::translate('State');?>&nbsp;&nbsp;</td>
-					<td><select name="NEW_GM_PRECISION_1" tabindex="<?php $i++; echo $i?>">
+					<td><select name="NEW_GM_PRECISION_1" tabindex="<?php echo ++$i; ?>">
 						<?php for ($j=0; $j < 10; $j++) { ?>
 						<option value="<?php echo $j;?>"<?php if ($GOOGLEMAP_PRECISION_1==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 						<?php } ?>
@@ -358,7 +350,7 @@ $i = 0;
 				</tr>
 				<tr>
 					<td><?php echo i18n::translate('City');?>&nbsp;&nbsp;</td>
-					<td><select name="NEW_GM_PRECISION_2" tabindex="<?php $i++; echo $i?>">
+					<td><select name="NEW_GM_PRECISION_2" tabindex="<?php echo ++$i; ?>">
 						<?php for ($j=0; $j < 10; $j++) { ?>
 						<option value="<?php echo $j;?>"<?php if ($GOOGLEMAP_PRECISION_2==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 						<?php } ?>
@@ -366,7 +358,7 @@ $i = 0;
 					</td>
 				</tr>
 				<tr><td><?php echo i18n::translate('Neighborhood');?>&nbsp;&nbsp;</td>
-					<td><select name="NEW_GM_PRECISION_3" tabindex="<?php $i++; echo $i?>">
+					<td><select name="NEW_GM_PRECISION_3" tabindex="<?php echo ++$i; ?>">
 						<?php for ($j=0; $j < 10; $j++) { ?>
 						<option value="<?php echo $j;?>"<?php if ($GOOGLEMAP_PRECISION_3==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 						<?php } ?>
@@ -374,7 +366,7 @@ $i = 0;
 					</td>
 				</tr>
 				<tr><td><?php echo i18n::translate('House');?>&nbsp;&nbsp;</td>
-					<td><select name="NEW_GM_PRECISION_4" tabindex="<?php $i++; echo $i?>">
+					<td><select name="NEW_GM_PRECISION_4" tabindex="<?php echo ++$i; ?>">
 						<?php for ($j=0; $j < 10; $j++) { ?>
 						<option value="<?php echo $j;?>"<?php if ($GOOGLEMAP_PRECISION_4==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 						<?php } ?>
@@ -382,7 +374,7 @@ $i = 0;
 					</td>
 				</tr>
 				<tr><td><?php echo i18n::translate('Max');?>&nbsp;&nbsp;</td>
-					<td><select name="NEW_GM_PRECISION_5" tabindex="<?php $i++; echo $i?>">
+					<td><select name="NEW_GM_PRECISION_5" tabindex="<?php echo ++$i; ?>">
 						<?php for ($j=0; $j < 10; $j++) { ?>
 						<option value="<?php echo $j;?>"<?php if ($GOOGLEMAP_PRECISION_5==$j) echo " selected=\"selected\""; echo ">", $j;?></option>
 						<?php } ?>
@@ -393,13 +385,13 @@ $i = 0;
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Default top level value'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></td>
-		<td class="optionbox"><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE;?>" size="20" tabindex="<?php $i++; echo $i?>" /></td>
+		<td class="descriptionbox nowrap"><?php echo i18n::translate('Default top level value'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></td>
+		<td class="optionbox width60"><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE;?>" size="20" tabindex="<?php echo ++$i; ?>" /></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo i18n::translate('Number of levels'), help_link('GM_NOF_LEVELS','googlemap'); ?></td>
-		<td class="optionbox">
-			<select name="NEW_GM_LEVEL_COUNT" dir="ltr" tabindex="<?php $i++; echo $i?>" onchange="showSelectedLevels()">
+		<td class="descriptionbox nowrap"><?php echo i18n::translate('Number of levels'), help_link('GM_NOF_LEVELS','googlemap'); ?></td>
+		<td class="optionbox width60">
+			<select name="NEW_GM_LEVEL_COUNT" dir="ltr" tabindex="<?php echo ++$i; ?>" onchange="showSelectedLevels()">
 				<option value="1"<?php if ($GM_MAX_NOF_LEVELS == 1) echo " selected=\"selected\"";?>>1</option>
 				<option value="2"<?php if ($GM_MAX_NOF_LEVELS == 2) echo " selected=\"selected\"";?>>2</option>
 				<option value="3"<?php if ($GM_MAX_NOF_LEVELS == 3) echo " selected=\"selected\"";?>>3</option>
@@ -413,20 +405,20 @@ $i = 0;
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox">
+		<td class="descriptionbox nowrap">
 			<?php echo i18n::translate('Configuration per level');?>
 		</td>
-		<td class="optionbox">
+		<td class="optionbox width60">
 			<?php
-				print_level_config_table(1, $i);
-				print_level_config_table(2, $i);
-				print_level_config_table(3, $i);
-				print_level_config_table(4, $i);
-				print_level_config_table(5, $i);
-				print_level_config_table(6, $i);
-				print_level_config_table(7, $i);
-				print_level_config_table(8, $i);
-				print_level_config_table(9, $i);
+				print_level_config_table(1, ++$i);
+				print_level_config_table(2, ++$i);
+				print_level_config_table(3, ++$i);
+				print_level_config_table(4, ++$i);
+				print_level_config_table(5, ++$i);
+				print_level_config_table(6, ++$i);
+				print_level_config_table(7, ++$i);
+				print_level_config_table(8, ++$i);
+				print_level_config_table(9, ++$i);
 			?>
 		</td>
 	</tr>
@@ -438,9 +430,9 @@ $i = 0;
 		</td>
 	<tr>
 		<td class="descriptionbox" colspan="2" align="center">
-			<input type="submit" tabindex="<?php $i++; echo $i?>" value="<?php echo i18n::translate('Save configuration');?>" onclick="closeHelp();" />
+			<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php echo i18n::translate('Save configuration');?>" onclick="closeHelp();" />
 			&nbsp;&nbsp;
-			<input type="reset" tabindex="<?php $i++; echo $i?>" value="<?php echo i18n::translate('Reset');?>" />
+			<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php echo i18n::translate('Reset');?>" />
 		</td>
 	</tr>
 </table>
