@@ -98,7 +98,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			$toarray = array();
 			foreach (get_all_users() as $user_id=>$user_name) {
 				// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
-				if (get_user_setting($user_id,'verified_by_admin')=="yes" && get_user_setting($user_id, 'reg_timestamp') > get_user_setting($user_id, 'sessiontime')) {
+				if (get_user_setting($user_id,'verified_by_admin') && get_user_setting($user_id, 'reg_timestamp') > get_user_setting($user_id, 'sessiontime')) {
 					$toarray[$user_id] = $user_name;
 				}
 			}
@@ -112,7 +112,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 					$toarray[$user_id] = $user_name;
 				}
 				//-- not verified by registration past 6 months
-				else if (get_user_setting($user_id, 'verified_by_admin')!="yes" && (time() - get_user_setting($user_id, 'reg_timestamp') > $sixmos)) {
+				else if (!get_user_setting($user_id, 'verified_by_admin') && (time() - get_user_setting($user_id, 'reg_timestamp') > $sixmos)) {
 					$toarray[$user_id] = $user_name;
 				}
 			}
