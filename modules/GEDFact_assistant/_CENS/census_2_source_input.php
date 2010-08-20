@@ -780,7 +780,7 @@ global $TEXT_DIRECTION;
 				flip_27 = "";
 				flip_28 = "";
 				flip_29 = "";
-				flip_30 = "";
+			//	flip_30 = "";
 				flip_31 = "";
 				flip_32 = "";
 				flip_34 = "";
