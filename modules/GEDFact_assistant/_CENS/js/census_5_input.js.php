@@ -1565,8 +1565,8 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			var txtInp_assets = document.createElement('input');
 				txtInp_assets.setAttribute('type', 'text');
 				txtInp_assets.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_6');
-				txtInp_assets.setAttribute('size', '7');
-				txtInp_assets.setAttribute('maxlength', '9');
+				txtInp_assets.setAttribute('size', '11');
+				txtInp_assets.setAttribute('maxlength', '15');
 				txtInp_assets.setAttribute('value', '');
 				txtInp_assets.style.color=txtcolor;
 				txtInp_assets.style.fontSize="10px";
