@@ -149,7 +149,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "<option value=\"last_6mo\">".i18n::translate('Send message to users who have not logged in for 6 months')."</option>";
 			}
 			foreach (get_all_users() as $user_id=>$user_name) {
-				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin')=='yes' && get_user_setting($user_id, 'contactmethod')!='none') {
+				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
 					$content .= "<option value=\"".$user_name."\">".PrintReady(getUserFullName($user_id))." ";
 					if ($TEXT_DIRECTION=="ltr") {
 						$content .= stripLRMRLM(getLRM()." - ".$user_name.getLRM());
