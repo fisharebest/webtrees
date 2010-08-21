@@ -205,14 +205,15 @@ If you are moving to <b>webtrees</b> from an existing PhpGedView ("PGV") setup, 
 <br /><br />
 The requirements are:
 <ul>
-	<li>The PGV database and index directory must be on the same server as <b>webtrees</b></li>
-	<li>PGV must be version 4.2.3, or any SVN up to #6973 (later versions will probably work too, provided the data structures haven't changed)</li>
+	<li>The PGV database and index directory must be on the same server as <b>webtrees</b>;</li>
+	<li>Your <b>webtrees</b> database user must either be the same as your PGV username and password, or if you created a new user for <b>webtrees</b>, that new user must also have full privileges to access your PGV database;</li>
+	<li>PGV must be version 4.2.3, or any SVN up to #6973 (later versions will probably work too, provided the data structures haven't changed);</li>
 	<li>All changes in PGV must be accepted (as pending edits will not be transfered)</li>
-	<li>Your new webtrees admin username must be set to an identical, existing PGV admin username</li>
+	<li>Your new webtrees admin username must be set to an identical, existing PGV admin username;</li>
 	<li>All existing PGV users must have distinct email addresses (PGV allows users to delete their email address, or have the same email address as other users;  <b>webtrees</b> requires that all users have their own unique email address)</li>
 </ul>
 <p><b>Important Note:</b> This transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished.'</p>
 <p>Immediately after the PGV-to-<b>webtrees</b> transfer is complete, you should check your <b>privacy settings</b> and your GEDCOM to confirm they are as you intended. It will not be necessary to re-import your GEDCOM since the new <b>webtrees</b> database tables have been populated with your PGV data. Due to differences in internal data formats, the following settings are not yet transfered: custom privacy restrictions, block configuration, FAQs, HTML blocks, favorites, and news/blog articles.  We hope to add these to the wizard in a future release.</p>
-<p>The transfer wizard is accessed in <b>webtrees</b> from the bottom of the "Manage GEDCOM's" page to which you will be automatically directed once you have completed the initial <b>webtrees</b> installation steps (section 4 above: <a href="#install">INSTALLATION</a>)
+<p>The transfer wizard is accessed in <b>webtrees</b> from the bottom of the "Manage GEDCOM's" page to which you will be automatically directed once you have completed the initial <b>webtrees</b> installation steps (section 4 above: <a href="#install">INSTALLATION</a>).This option is only available on a new, empty <b>webtrees</b> installation; once you have created a GEDCOM (family tree) or added user accounts, it will no longer be available.</p>
 </body>
 </html>
