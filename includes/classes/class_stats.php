@@ -638,13 +638,13 @@ class stats {
 		} else if ($tot_u > 0) {
 			$chd = self::_array_to_extended_encoding(array($tot_u, $tot_f, $tot_m));
 			$chl =
-				i18n::translate_c('unknown gender', 'Unknown').' - '.round($tot_u,1).'%|'.
+				i18n::translate_c('unknown people', 'Unknown').' - '.round($tot_u,1).'%|'.
 				i18n::translate('Females').' - '.round($tot_f,1).'%|'.
 				i18n::translate('Males').' - '.round($tot_m,1).'%';
 			$chart_title =
 				i18n::translate('Males').' ['.round($tot_m,1).'%], '.
 				i18n::translate('Females').' ['.round($tot_f,1).'%], '.
-				i18n::translate_c('unknown gender', 'Unknown').' ['.round($tot_u,1).'%]';
+				i18n::translate_c('unknown people', 'Unknown').' ['.round($tot_u,1).'%]';
 			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_f, $tot_m));
