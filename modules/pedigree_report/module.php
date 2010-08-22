@@ -80,7 +80,7 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		$menu->addIcon('pedigree');
 		$menus[]=$menu;
 
-		$menu=new Menu($this->getTitle().' - '.i18n::translate('Singlepage'), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_singlepage.xml'.$pid);
+		$menu=new Menu($this->getTitle().' - '.i18n::translate('Single page'), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_singlepage.xml'.$pid);
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menu->addIcon('pedigree');
 		$menus[]=$menu;
