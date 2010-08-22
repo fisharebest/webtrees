@@ -32,10 +32,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 require_once WT_ROOT.'includes/classes/class_module.php';
-require_once WT_ROOT.'includes/functions/functions_date.php';
-require_once WT_ROOT.'includes/functions/functions_places.php';
-require_once WT_ROOT.'library/tcpdf/config/lang/eng.php';
-require_once WT_ROOT.'library/tcpdf/tcpdf.php';
 
 class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
@@ -56,8 +52,6 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Implement WT_Module_Report - a module can provide many reports
 	public function getReportMenus() {
 		global $controller, $WT_IMAGES, $TEXT_DIRECTION;
-		
-		require_once WT_ROOT.'modules/'.$this->getName().'/class_pedigree.php';
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
@@ -76,11 +70,6 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		$menus[]=$menu;
 
 		$menu=new Menu($this->getTitle().' - '.i18n::translate('Landscape'), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_landscape.xml'.$pid);
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
-		$menu->addIcon('pedigree');
-		$menus[]=$menu;
-
-		$menu=new Menu($this->getTitle().' - '.i18n::translate('Single page'), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_singlepage.xml'.$pid);
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menu->addIcon('pedigree');
 		$menus[]=$menu;
