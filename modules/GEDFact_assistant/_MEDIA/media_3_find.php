@@ -30,7 +30,9 @@
  * @subpackage Display
  * @version $Id$
  */
-
+ 
+define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_MEDIA/media_3_find.php');
+require '../../../includes/session.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');

@@ -29,6 +29,9 @@
  * @version $Id$
  */
 
+define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_MEDIA/media_query_3a.php');
+require '../../../includes/session.php';
+
 $iid2		= safe_GET('iid');
 
 print_simple_header(i18n::translate('Link media'));

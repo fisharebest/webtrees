@@ -102,7 +102,8 @@ if ($action == "choose" && $paramok) {
 			alert(id_empty);
 		}else{
 			var iid = document.getElementById('gid').value;
-			var winblank = window.open('module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_query_3a&iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
+			//var winblank = window.open('module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_query_3a&iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
+			var winblank = window.open('modules/GEDFact_assistant/_MEDIA/media_query_3a.php?iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
 		}
 	}
 	
@@ -150,8 +151,7 @@ if ($action == "choose" && $paramok) {
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		$filename = str_replace(" ", "%20", $filename);
-		// $thumbnail = thumbnail_file($filename, false, false);
-		$thumbnail = str_replace("media/", "media/thumbs/", $filename);
+		$thumbnail = thumbnail_file($filename, false);
 		echo '<img src = ', $thumbnail, ' class="thumbheight" />';
 		echo '</td></tr></table>';
 		echo '</td></tr>';
@@ -203,7 +203,11 @@ if ($action == "choose" && $paramok) {
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 		echo i18n::translate('Admin Option'), "</td><td class=\"optionbox wrap\">\n";
-		echo "<input type=\"checkbox\" name=\"preserve_last_changed\" value=\"no_change\"/ >\n";
+		if ($NO_UPDATE_CHAN) {
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+		} else {
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+		}
 		echo i18n::translate('Do not update the CHAN (Last Change) records'), help_link('no_update_CHAN'), '<br /><br />';
 		echo "</td></tr>\n";
 	}
