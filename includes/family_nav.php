@@ -723,15 +723,14 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 				}
 
 				if ($persons != "Yes") {
-					$spouselinks  .= "&nbsp;(".i18n::translate('None').")\n\t\t";
+					$spouselinks  .= "&nbsp;(".i18n::translate('none').")\n\t\t";
 				}
 				if ($person_parent != "Yes") {
-					$parentlinks .= "&nbsp;(".i18n::translate('unknown').")\n\t\t";
+					$parentlinks .= "&nbsp;(".i18n::translate_c('unknown family', 'unknown').")\n\t\t";
 				}
 				if ($person_step != "Yes") {
-					$step_parentlinks .= "&nbsp;(".i18n::translate('unknown').")\n\t\t";
+					$step_parentlinks .= "&nbsp;(".i18n::translate_c('unknown family', 'unknown').")\n\t\t";
 				}
-
 			}
 		}
 	}

@@ -178,7 +178,7 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo "<b>", str_replace("Unknown", i18n::translate('Unknown'), PrintReady(implode(', ', array_reverse($where_am_i, true)))), "</b><br />\n";
+	echo "<b>", str_replace("Unknown", i18n::translate('unknown'), PrintReady(implode(', ', array_reverse($where_am_i, true)))), "</b><br />\n";
 }
 
 if ($action=="add") {
@@ -224,10 +224,10 @@ if ($action=="add") {
 	$show_marker = false;
 	$success = false;
 
-	if (!isset($place_name) || $place_name=="") echo "<b>", i18n::translate('Unknown');
+	if (!isset($place_name) || $place_name=="") echo "<b>", i18n::translate('unknown');
 	else echo "<b>", $place_name;
 	if (count($where_am_i)>0)
-		echo ", ", str_replace("Unknown", i18n::translate('Unknown'), PrintReady(implode(', ', array_reverse($where_am_i, true)))), "</b><br />\n";
+		echo ", ", str_replace("Unknown", i18n::translate('unknown'), PrintReady(implode(', ', array_reverse($where_am_i, true)))), "</b><br />\n";
 	echo "</b><br />";
 }
 

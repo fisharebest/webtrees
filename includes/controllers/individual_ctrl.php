@@ -448,7 +448,7 @@ class IndividualController extends BaseController {
 				echo i18n::translate('Female'), Person::sexImage('F', 'small', '', i18n::translate('Female'));
 				break;
 			case 'U':
-				echo i18n::translate('unknown'), Person::sexImage('U', 'small', '', i18n::translate('unknown'));
+				echo i18n::translate_c('unknown gender', 'Unknown'), Person::sexImage('U', 'small', '', i18n::translate_c('unknown gender', 'Unknown'));
 				break;
 			}
 			if ($this->SEX_COUNT>1) {

@@ -1521,7 +1521,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if ($value=="F") echo " selected=\"selected\"";
 		echo ">", i18n::translate('Female'), "</option>\n<option value=\"U\"";
 		if ($value=="U" || empty($value)) echo " selected=\"selected\"";
-		echo ">", i18n::translate('unknown'), "</option>\n</select>\n";
+		echo ">", i18n::translate_c('unknown gender', 'Unknown'), "</option>\n</select>\n";
 	}
 	else if ($fact == "TYPE" && $level == '3') {
 		//-- Build the selector for the Media "TYPE" Fact

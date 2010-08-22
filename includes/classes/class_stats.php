@@ -638,13 +638,13 @@ class stats {
 		} else if ($tot_u > 0) {
 			$chd = self::_array_to_extended_encoding(array($tot_u, $tot_f, $tot_m));
 			$chl =
-				i18n::translate('Unknown').' - '.round($tot_u,1).'%|'.
+				i18n::translate_c('unknown gender', 'Unknown').' - '.round($tot_u,1).'%|'.
 				i18n::translate('Females').' - '.round($tot_f,1).'%|'.
 				i18n::translate('Males').' - '.round($tot_m,1).'%';
 			$chart_title =
 				i18n::translate('Males').' ['.round($tot_m,1).'%], '.
 				i18n::translate('Females').' ['.round($tot_f,1).'%], '.
-				i18n::translate('Unknown').' ['.round($tot_u,1).'%]';
+				i18n::translate_c('unknown gender', 'Unknown').' ['.round($tot_u,1).'%]';
 			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_f, $tot_m));
@@ -712,13 +712,13 @@ class stats {
 		} else if ($tot_u > 0) {
 			$chd = self::_array_to_extended_encoding(array($tot_u, $tot_l, $tot_d));
 			$chl =
-				i18n::translate('Unknown').' - '.round($tot_u,1).'%|'.
+				i18n::translate_c('unknown people', 'Unknown').' - '.round($tot_u,1).'%|'.
 				i18n::translate('Living').' - '.round($tot_l,1).'%|'.
 				i18n::translate('Dead').' - '.round($tot_d,1).'%';
 			$chart_title =
 				i18n::translate('Living').' ['.round($tot_l,1).'%], '.
 				i18n::translate('Dead').' ['.round($tot_d,1).'%], '.
-				i18n::translate('Unknown').' ['.round($tot_u,1).'%]';
+				i18n::translate_c('unknown people', 'Unknown').' ['.round($tot_u,1).'%]';
 			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_l, $tot_d));
@@ -3134,7 +3134,7 @@ class stats {
 		$counts[] = round(4095*$unknown/($max+1));
 		$chd = self::_array_to_extended_encoding($counts);
 		$chm .= 't'.$unknown.',000000,0,'.$i.',11,1';
-		$chxl .= i18n::translate('unknown')."|1:||".i18n::translate('century')."|2:|0|";
+		$chxl .= i18n::translate_c('unknown century', 'unknown')."|1:||".i18n::translate('century')."|2:|0|";
 		$step = $max+1;
 		for ($d=floor($max+1); $d>0; $d--) {
 			if (($max+1)<($d*10+1) && fmod(($max+1),$d)==0) {
@@ -3405,7 +3405,7 @@ class stats {
 		if ($common) {
 			switch ($type) {
 			case 'table':
-				$lookup=array('M'=>i18n::translate('Male'), 'F'=>i18n::translate('Female'), 'U'=>i18n::translate('unknown'), 'B'=>i18n::translate('All'));
+				$lookup=array('M'=>i18n::translate('Male'), 'F'=>i18n::translate('Female'), 'U'=>i18n::translate_c('unknown gender', 'Unknown'), 'B'=>i18n::translate('All'));
 				return '<table><tr><td colspan="2" class="descriptionbox center">'.$lookup[$sex].'</td></tr><tr><td class="descriptionbox center">'.i18n::translate('Names').'</td><td class="descriptionbox center">'.i18n::translate('Count').'</td></tr>'.join('', $common).'</table>';
 			case 'list':
 				return "<ul>\n".join("\n", $common)."</ul>\n";

@@ -280,7 +280,7 @@ $controller->checkPrivacy();
 			} elseif ($indi->getSex()=="F") {
 				echo $indi->getSexImage('large', '', i18n::translate('Female'));
 			} else {
-				echo $indi->getSexImage('large', '', i18n::translate('unknown'));
+				echo $indi->getSexImage('large', '', i18n::translate_c('unknown gender', 'Unknown'));
 			}
 		?>
  			<a href="individual.php?pid=<?php echo $pid; ?>">&nbsp;<?php echo PrintReady($indi->getFullName()); ?><br /><br />

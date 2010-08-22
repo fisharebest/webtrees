@@ -85,7 +85,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			//List Unknown names
 			$totals=$stats->commonGivenUnknownTotals($params);
 			if ($totals && $showUnknown) {
-				$content.='<b>'.i18n::translate('unknown').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
+				$content.='<b>'.i18n::translate('Unknown').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
 			}
 			break;
 		case "table":	// Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page

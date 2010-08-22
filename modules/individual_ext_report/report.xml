@@ -292,7 +292,7 @@
 								<!-- Unknown gender for Sibling -->
 								<if condition="(@SEX=='U') or (@SEX=='')">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
-										<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate('Unknown')"/>  </Text>
+										<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
 										<if condition="($sources==1) and (@SOUR!='')">
 											<RepeatTag tag="SOUR">
@@ -419,7 +419,7 @@
 								<!-- Unknown gender for Child -->
 								<if condition="(@SEX=='U') or (@SEX=='')">
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
-										<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate('Unknown')"/>  </Text>
+										<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
 										<if condition="($sources==1) and (@SOUR!='')">
 											<RepeatTag tag="SOUR">

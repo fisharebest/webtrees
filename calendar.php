@@ -578,7 +578,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 				++$females;
 				break;
 			default:
-				echo Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate('unknown'));
+				echo Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate_c('unknown gender', 'Unknown'));
 				break;
 			}
 			echo "<div class=\"indent\">".$facts."</div>{$tag2}";

@@ -129,8 +129,8 @@ echo "<table align='right'>";
 echo "<tr><td colspan='4' align='center' class='descriptionbox'><strong>", i18n::translate('Key to colors used below'), "</strong></td></tr>";
 echo "<tr><td class='facts_value error'>", translate_fact('PLAC'), "</td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place and its coordinates do not exist in the GoogleMap tables.'), "</font></td></tr>";
 echo "<tr><td class='facts_value'><a>", translate_fact('PLAC'), "</a></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place exists in the GoogleMap tables, but has no coordinates.'), "</font></td></tr>";
-echo "<tr><td class='facts_value'><strong>".i18n::translate('Unknown')."</font></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.'), "</font></td></tr>";
-echo "<tr><td class='facts_value'><a>".i18n::translate('Unknown')."</a></td><td class='facts_value' align='center'>N55.0</td><td align='center' class='facts_value'>W75.0</td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.'), "</font></td></tr>";
+echo "<tr><td class='facts_value'><strong>".i18n::translate('unknown')."</font></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.'), "</font></td></tr>";
+echo "<tr><td class='facts_value'><a>".i18n::translate('unknown')."</a></td><td class='facts_value' align='center'>N55.0</td><td align='center' class='facts_value'>W75.0</td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.'), "</font></td></tr>";
 echo "</table>";
 echo "</td>";
 echo "</tr>";
@@ -288,7 +288,7 @@ case 'go':
 					$matched[$x]++;
 			} else {
 				if ($levels[$z]=="unknown") {
-					$placestr2=$mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(i18n::translate('Unknown')))."</strong>".$mapstr8;$matched[$x]++;
+					$placestr2=$mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(i18n::translate('unknown')))."</strong>".$mapstr8;$matched[$x]++;
 				} else {
 					$placestr2=$mapstr_add.$id."&amp;place_name=".urlencode($levels[$z])."&amp;level=".$level.$mapstr3.$mapstr7.'<span class="error">'.rtrim(ltrim($levels[$z])).'</span>'.$mapstr8;$matched[$x]++;
 				}

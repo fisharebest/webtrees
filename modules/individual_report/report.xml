@@ -226,7 +226,7 @@
 									</if>
 									<!-- Unknown gender -->
 									<if condition="(@SEX=='U') or (@SEX=='')">
-										<Text style="label1"><var var="i18n::translate('Gender')" /> <var var="i18n::translate('Unknown')"/>  </Text>
+										<Text style="label1"><var var="i18n::translate('Gender')" /> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
 									</if>
 									<Text style="name"> <GetPersonName id="" /> </Text>
 									<if condition="$sources==1">
@@ -309,7 +309,7 @@
 									</if>
 									<!-- Unknown gender -->
 									<if condition="(@SEX=='U') or (@SEX=='')">
-										<Text style="label1"><var var="i18n::translate('Gender')"/> <var var="i18n::translate('Unknown')"/>  </Text>
+										<Text style="label1"><var var="i18n::translate('Gender')"/> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
 									</if>
 									<Text style="name"> <GetPersonName id="" /> </Text>
 									<if condition="$sources==1">

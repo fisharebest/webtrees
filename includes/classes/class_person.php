@@ -784,13 +784,13 @@ class Person extends GedcomRecord {
 					if ($mother->getSex()=='M') $label = i18n::translate('Father\'s Family with ');
 					else $label = i18n::translate('Mother\'s Family with ');
 					if (!is_null($father)) $label .= $father->getFullName();
-					else $label .= i18n::translate('unknown');
+					else $label .= i18n::translate('unknown person');
 				}
 				else if ((is_null($wife) || !$wife->equals($mother)) && (is_null($husb)||$husb->equals($father))) {
 					if ($father->getSex()=='F') $label = i18n::translate('Mother\'s Family with ');
 					else $label = i18n::translate('Father\'s Family with ');
 					if (!is_null($mother)) $label .= $mother->getFullName();
-					else $label .= i18n::translate('unknown');
+					else $label .= i18n::translate('unknown person');
 				}
 				if ($label!='Unknown Family') return $label;
 			}
@@ -804,7 +804,7 @@ class Person extends GedcomRecord {
 	*/
 	function getSpouseFamilyLabel($family) {
 		if (is_null($family)) {
-			$spouse=i18n::translate('unknown');
+			$spouse=i18n::translate('unknown person');
 		} else {
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
@@ -813,7 +813,7 @@ class Person extends GedcomRecord {
 			} elseif ($this->equals($wife) && !is_null($husb)) {
 				$spouse = $husb->getFullName();
 			} else {
-				$spouse = i18n::translate('unknown');
+				$spouse = i18n::translate('unknown person');
 			}
 		}
 		// I18N: %s is the spouse name

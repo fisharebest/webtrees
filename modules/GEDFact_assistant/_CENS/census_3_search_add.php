@@ -2250,19 +2250,19 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 					}
 				}
 				if ($persons != "Yes") {
-					$spouselinks  .= "(" . i18n::translate('None') . ")</td></tr></table>\n\t\t";
+					$spouselinks  .= "(" . i18n::translate('none') . ")</td></tr></table>\n\t\t";
 				}else{
 					$spouselinks  .= "</td></tr></table>\n\t\t";
 				}
 				
 				if ($person_parent != "Yes") {
-					$parentlinks .= "(" . i18n::translate('unknown') . ")</td></tr></table>\n\t\t";
+					$parentlinks .= "(" . i18n::translate_c('unknown family', 'unknown') . ")</td></tr></table>\n\t\t";
 				}else{
 					$parentlinks .= "</td></tr></table>\n\t\t";
 				}
 				
 				if ($person_step != "Yes") {
-					$step_parentlinks .= "(" . i18n::translate('unknown') . ")</td></tr></table>\n\t\t";
+					$step_parentlinks .= "(" . i18n::translate_c('unknown family', 'unknown') . ")</td></tr></table>\n\t\t";
 				}else{
 					$step_parentlinks .= "</td></tr></table>\n\t\t";
 				}

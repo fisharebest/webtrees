@@ -552,14 +552,14 @@ foreach (array_reverse($where_am_i, true) as $id=>$place) {
 		if ($place != "Unknown") {
 			echo PrintReady($place);
 		} else {
-			echo i18n::translate('Unknown');
+			echo i18n::translate('unknown');
 		}
 	} else {
 		echo "<a href=\"module.php?mod=googlemap&mod_action=places&parent={$id}&display={$display}\">";
 		if ($place != "Unknown") {
 			echo PrintReady($place), "</a>";
 		} else {
-			echo i18n::translate('Unknown'), "</a>";
+			echo i18n::translate('unknown'), "</a>";
 		}
 	}
 	echo " - ";
@@ -591,7 +591,7 @@ foreach ($placelist as $place) {
 	if ($place["place"] != "Unknown")
 			echo PrintReady($place["place"]), "</a></td>";
 		else
-			echo i18n::translate('Unknown'), "</a></td>";
+			echo i18n::translate('unknown'), "</a></td>";
 	echo "<td class=\"optionbox\">{$place['lati']}</td>";
 	echo "<td class=\"optionbox\">{$place['long']}</td>";
 	echo "<td class=\"optionbox\">{$place['zoom']}</td>";

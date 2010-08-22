@@ -261,7 +261,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo i18n::translate('Unknown');
+					echo i18n::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -274,9 +274,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == "Unknown") {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo PrintReady(addslashes(i18n::translate('Unknown').$placelevels));
+					echo PrintReady(addslashes(i18n::translate('unknown').$placelevels));
 				} else {
-					echo i18n::translate('Unknown');
+					echo i18n::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -345,7 +345,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo i18n::translate('Unknown');
+					echo i18n::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -358,9 +358,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == "Unknown"){
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo PrintReady(addslashes(i18n::translate('Unknown').$placelevels));
+					echo PrintReady(addslashes(i18n::translate('unknown').$placelevels));
 				} else {
-					echo i18n::translate('Unknown');
+					echo i18n::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -596,7 +596,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				}
 			}
 			else if ($level>0){ //if unknown place display the upper level place
-				$placelevels = ", ".i18n::translate('Unknown').$placelevels;
+				$placelevels = ", ".i18n::translate('unknown').$placelevels;
 				$linklevels .= "&amp;parent[".$level."]=";
 				$break = false;
 				for ($i=1;$i<=$GM_MAX_NOF_LEVELS;$i++) {

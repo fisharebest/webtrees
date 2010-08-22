@@ -670,7 +670,7 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='', $convert=true) {
 					} elseif ($value=="F") {
 						$value = utf8_substr(i18n::translate('Female'), 0, 1);
 					} else {
-						$value = utf8_substr(i18n::translate('unknown'), 0, 1);
+						$value = utf8_substr(i18n::translate_c('unknown gender', 'Unknown'), 0, 1);
 					}
 				} else {
 					if (!empty($truncate)) {
