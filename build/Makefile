@@ -2,7 +2,8 @@ COMPRESSION=.zip # Choose one of: .zip .tar.gz .tar.bz2
 L10NVERSION=$(shell date +%Y-%m-%d -r $(LANGUAGE_ARCHIVE))
 LABEL=$(PACKAGE)-$(SVNVERSION)
 LANGUAGE_ARCHIVE=launchpad-export.tar.gz
-LANGUAGES=$(shell tar tf $(LANGUAGE_ARCHIVE) | grep /LC_MESSAGES/webtrees.mo | cut -d / -f 1)
+#LANGUAGES=en_US $(shell tar tf $(LANGUAGE_ARCHIVE) | grep /LC_MESSAGES/webtrees.mo | cut -d / -f 1)
+LANGUAGES=en_US en_GB pl it es fi fr de da pt he et ca tr nl sk nn sl hu sv ru
 MO=$(patsubst %,$(LABEL)/language/%.mo,$(LANGUAGES))
 PACKAGE=webtrees
 POT=$(PACKAGE).pot
@@ -17,7 +18,6 @@ default: clean $(LABEL)$(COMPRESSION) webtrees.pot
 	@echo
 	@echo "Build successful. Now upload the files to launchpad.net:"
 	@echo
-	@echo "language-$(L10NVERSION)$(COMPRESSION) => https://launchpad.net/webtrees/trunk/snapshot"
 	@echo "$(LABEL)$(COMPRESSION) => https://launchpad.net/webtrees/trunk/snapshot"
 	@echo "webtrees.pot => https://translations.launchpad.net/webtrees/trunk/+translations-upload"
 	@echo
@@ -29,7 +29,6 @@ clean:
 # Create a ZIP archives
 ################################################################################
 $(LABEL).zip: $(LABEL) $(MO)
-	#zip -qr language-$(L10NVERSION).zip $(LABEL)/language
 	zip -qr $@ $(LABEL)
 	rm -R $(LABEL)
 
@@ -37,7 +36,6 @@ $(LABEL).zip: $(LABEL) $(MO)
 # Create a TAR.GZ archives
 ################################################################################
 $(LABEL).tar.gz: $(LABEL) $(MO)
-	tar cfz language-$(L10NVERSION).tar $(LABEL)/language
 	tar cfz $(LABEL).tar $(LABEL)
 	rm -R $(LABEL)
 
@@ -45,7 +43,6 @@ $(LABEL).tar.gz: $(LABEL) $(MO)
 # Create a TAR.BZ2 archives
 ################################################################################
 $(LABEL).tar.bz2: $(LABEL) $(MO)
-	tar cfg language-$(L10NVERSION).tar $(LABEL)/language
 	tar cfg $(LABEL).tar $(LABEL)
 	rm -R $(LABEL)
 
@@ -63,7 +60,8 @@ $(LABEL): $(PHP)
 # Extract a language file from the downloaded archive file, and rename it
 ################################################################################
 %.mo: $(LANGUAGE_ARCHIVE)
-	tar xfzO $(LANGUAGE_ARCHIVE) $(*F)/LC_MESSAGES/webtrees.mo > $@
+	# en_US is maintained locally - others are maintained in launchpad
+	if [ $(@F) = en_US.mo ]; then msgfmt -o $(LABEL)/language/en_US.mo en_US.po; else tar xfzO $(LANGUAGE_ARCHIVE) $(*F)/LC_MESSAGES/webtrees.mo > $@; fi
 
 ################################################################################
 # We cannot make this file - we download it from launchpad.net

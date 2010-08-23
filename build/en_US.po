@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Webtrees\n"
+"Report-Msgid-Bugs-To: i18n@webtrees.net\n"
+"POT-Creation-Date: 2010-08-22 14:49+0000\n"
+"PO-Revision-Date: 2010-08-23 18:07-0000\n"
+"Last-Translator: Greg Roach <greg@subaqua.co.uk>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: en\n"
+"X-Poedit-Country: US\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. I18N: This is the format string for full dates.  See http://php.net/date for codes
+#: ../includes/classes/class_i18n.php:106
+msgid "%j %F %Y"
+msgstr "%F %j, %Y"
+
