@@ -204,7 +204,7 @@ if ($action=='createuser' || $action=='edituser2') {
 } else {
 	print_header(i18n::translate('User administration'));
 
-	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+//	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 }
 
 // Print the form to edit a user
