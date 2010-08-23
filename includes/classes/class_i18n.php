@@ -161,7 +161,9 @@ class i18n {
 			if (empty($_SESSION['installed_languages'])) {
 				die('There are no lanuages installed.  You must include at least one xx.mo file in /language/');
 			}
-			uasort($_SESSION['installed_languages'], 'utf8_strcasecmp');
+			// Sort by either language code or language name...
+			//uasort($_SESSION['installed_languages'], 'utf8_strcasecmp');
+			ksort($_SESSION['installed_languages']);
 			return $_SESSION['installed_languages'];
 		}
 	}
