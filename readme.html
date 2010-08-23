@@ -65,21 +65,21 @@ See the file GPL.txt included with this software for more detailed licensing inf
 	<li>It works from standard GEDCOM files, and is therefore compatible with every major desktop application.</li>
 	<li>It aims to to be efficient and effective by using the right combination of third-party tools, design techniques and open standards.</li>
 </ul>
-<b>webtrees</b> allows you to view and edit your genealogy on your website. It has full editing capabilities, full privacy functions, and supports multimedia like photos and document images. As an on line program, it fosters extended family participation and good ancestral recording habits, as it simplifies the process of collaborating with others working on your family lines. Your latest information is always on your web site and available for others to see, defined by viewing rules you set. For more information and to see working demos, visit http://webtrees.net/ 
+<b>webtrees</b> allows you to view and edit your genealogy on your website. It has full editing capabilities, full privacy functions, and supports multimedia like photos and document images. As an on line program, it fosters extended family participation and good ancestral recording habits, as it simplifies the process of collaborating with others working on your family lines. Your latest information is always on your web site and available for others to see, defined by viewing rules you set. For more information and to see working demos, visit <a href="http://webtrees.net/">http://webtrees.net/ </a>. 
 <br /><br />
 <b>webtrees</b> is Open Source software that has been produced by people from many countries freely donating their time and talents to the project. All service, support, and future development is dependent on the time developers are willing to donate to the project, often at the expense of work, recreation, and family. Beyond the few donations received from users, developers receive no compensation for the time they spend working on the project. There is also no outside source of revenue to support the project. Please consider these circumstances when making support requests and consider volunteering your own time and skills to make the project even stronger and better.
 <br /><br />
 <hr width="100%">
 <!-- SYSTEM REQUIREMENTS -->
 <div style="float:left;"><a name="system"><h3>SYSTEM REQUIREMENTS</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-The following instructions will guide you through a basic installation of <b>webtrees</b>. Initially, we recommend this approach, and that on completion of your new <b>webtrees</b> installation, you confirm your site is working correctly before considering the many advanced configuration options available.
-<br /><br />
+To install <b>webtrees</b>, you need:
+<br />
 <ul>
 	<li>A webserver. Apache and IIS are the most common types. There are no requirements to use a specific type or version.</li>
-	<li>Approximately 65MB of disk space for the application files, plus whatever is needed for your multi-media files, gedcom files and database.</li>
+	<li>Approximately 65MB of disk space for the application files, plus whatever is needed for your multi-media files, GEDCOM files and database.</li>
 	<li>PHP 5.2.3 or later. Note that many web hosts offer *both* PHP4 and PHP5, typically with PHP4 as the default. If this is the case, you can usually switch between the two using a control panel or a configuration file. Refer to your web host&#39;s support documentation for details.</li>
 	 <ul>
-		<li>The PHP/PDO library for MySQL. This is a server configuration option. It is enabled by default on most hosts. See http://php.net/pdo</li>
+		<li>The PHP/PDO library for MySQL. This is a server configuration option. It is enabled by default on most hosts. See <a href="http://php.net/pdo">http://php.net/pdo</a></li>
 		<li>PHP should be configured to allow sufficient server resources (memory and execution time) for the size of your system. Typical requirements are:</li>
 			<ul>
 				<li>Small systems (500 individuals): 16-32MB, 10-20 seconds</li>
@@ -87,8 +87,9 @@ The following instructions will guide you through a basic installation of <b>web
 				<li>Large systems (50000 individuals): 64-128MB, 40-80 seconds</li>
 			</ul>
 	</ul>
-	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration. 
-</ul>
+	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration.</li>
+	<li>If you are using MySQL 5.1.31 or later, the setting MAX_ALLOWED_PACKET must be larger than your largest gedcom file. If you run your own server, you can set this in my.ini. Otherwise, you may need to ask your web-host to increase it. <a href="https://bugs.launchpad.net/webtrees/+bug/622194">This is a known bug</a>.</li>
+	</ul>
 <hr width="100%">
 <!-- INSTALLATION -->
 <div style="float:left;"><a name="install"><h3>INSTALLATION</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
