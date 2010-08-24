@@ -80,9 +80,9 @@ class i18n {
 					list($l, $q)=explode(';q=', $pref.';q=1.0');
 					$prefs2[$l]=(float)$q;
 				}
-				// Ensure there is a fallback.  en is always available
-				if (!array_key_exists('en', $prefs2)) {
-					$prefs2['en']=0.01;
+				// Ensure there is a fallback.
+				if (!array_key_exists('en_US', $prefs2)) {
+					$prefs2['en_US']=0.01;
 				}
 				arsort($prefs2);
 				foreach (array_keys($prefs2) as $pref) {
