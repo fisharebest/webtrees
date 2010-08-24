@@ -231,12 +231,12 @@ case 'BURI:SOUR':
 
 case 'CALN':	
 	$title=translate_fact('CALN');
-	$text='The number used by a repository to identify the specific items in its collections.';
+	$text=i18n::translate('The number used by a repository to identify the specific items in its collections.');
 	break;
 
 case 'CAST':	
 	$title=translate_fact('CAST');
-	$text='The name of an individual\'s rank or status in society which is sometimes based on racial or religious differences, or differences in wealth, inherited rank, profession, occupation, etc.';
+	$text=i18n::translate('The name of an individual\'s rank or status in society which is sometimes based on racial or religious differences, or differences in wealth, inherited rank, profession, occupation, etc.');
 	break;
 
 case 'CAUS':	
@@ -310,12 +310,12 @@ case 'COMM':
 	break;
 
 case 'CONC':	
-	$title=translate_fact('Concatenation');
+	$title=translate_fact('CONC');
 	$text='';
 	break;
 
 case 'CONT':	
-	$title=translate_fact('Continued');
+	$title=translate_fact('CONT');
 	$text='';
 	break;
 
@@ -351,12 +351,12 @@ case 'COPR':
 
 case 'CORP':	
 	$title=translate_fact('CORP');
-	$text='A name of an institution, agency, corporation, or company.';
+	$text=i18n::translate('A name of an institution, agency, corporation, or company.');
 	break;
 
 case 'CREM':	
 	$title=translate_fact('CREM');
-	$text='Disposal of the remains of a person\'s body by fire.';
+	$text=i18n::translate('Disposal of the remains of a person\'s body by fire.');
 	break;
 
 case 'CTRY':	
@@ -406,7 +406,7 @@ case 'DEAT:SOUR':
 
 case 'DESC':	
 	$title=translate_fact('DESC');
-	$text='Pertaining to offspring of an individual.';
+	$text=i18n::translate('Pertaining to offspring of an individual.');
 	break;
 
 case 'DESI':	
@@ -3452,7 +3452,7 @@ case 'edituser_username':
 
 case 'export_gedcom':
 	$title=i18n::translate('Export');
-	$text='On this page you can export your data to a GEDCOM file in UTF-8 encoding. The file will be saved automatically to the data directory.';
+	$text=i18n::translate('On this page you can export your data to a GEDCOM file in UTF-8 encoding. The file will be saved automatically to the data directory.');
 	break;
 
 case 'fambook_descent':
