@@ -287,6 +287,15 @@ try {
 		if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
 			echo '<p class="bad">', i18n::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
 		} else {
+			if (version_compare($row->value, '5.1.31', '>=')) {
+				foreach ($dbh->query("SELECT @@max_allowed_packet AS max_allowed_packet") as $row2) {
+					$max_allowed_packet=$row2->max_allowed_packet;
+					echo
+						'<p class="indifferent">',
+						i18n::translate('This database can only import GEDCOM files smaller than the MySQL setting <b>max_allowed_packet</b>.  This is currently set to %d KB.  To import GEDCOM files larger than this, ask your server\'s administrator to increase this setting.', $max_allowed_packet/1024),
+						'</p>';
+				}
+			}
 			$db_version_ok=true;
 		}
 	}
