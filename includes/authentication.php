@@ -289,9 +289,9 @@ function getUserGedcomId($user_id, $ged_id) {
 	}
 }
 
-/**
- * add a message into the log-file
- */
+// add a message into the log-file
+// Note that while transfering data from PGV to WT, we delete the WT users and
+// replace with PGV users.  Hence the current user_id is not always available.
 function AddToLog($log_message, $log_type='error') {
 	WT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"
@@ -299,7 +299,7 @@ function AddToLog($log_message, $log_type='error') {
 		$log_type,
 		$log_message,
 		$_SERVER['REMOTE_ADDR'],
-		getUserId() ? getUserId() : null,
+		getUserId() && WT_SCRIPT_NAME!='pgv_to_wt.php' ? getUserId() : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null // logs raised before we select the gedcom won't have this.
 	));
 }
