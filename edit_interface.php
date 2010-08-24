@@ -748,12 +748,12 @@ case 'addnewsource':
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width25"><?php echo i18n::translate('Select Events'), help_link('edit_SOUR_EVEN'); ?></td>
 				<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 					<?php
-					$parts = explode(',', get_gedcom_setting('INDI_FACTS_ADD'));
+					$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
 					foreach ($parts as $p=>$key) {
 						?><option value="<?php echo $key; ?>"><?php echo i18n::translate($key). " ($key)"; ?></option>
 					<?php
 					}
-					$parts = explode(',', get_gedcom_setting('FAM_FACTS_ADD'));
+					$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'));
 					foreach ($parts as $p=>$key) {
 						?><option value="<?php echo $key; ?>"><?php echo i18n::translate($key). " ($key)"; ?></option>
 					<?php
