@@ -93,20 +93,6 @@ if ($PGV_PATH) {
 					$error=i18n::translate('The version of %s is too old', 'PhpGedView');
 				} elseif ($PGV_SCHEMA_VERSION>14) {
 					$error=i18n::translate('The version of %s is too new', 'PhpGedView');
-				} elseif ($PGV_SCHEMA_VERSION>=10 && $PGV_SCHEMA_VERSION<12) {
-					$IS_ADMIN=WT_DB::prepare(
-						"SELECT u_canadmin FROM {$DBNAME}.{$TBLPREFIX}users WHERE u_canadmin='Y' AND u_username=?"
-					)->execute(array(WT_USER_NAME))->fetchOne();
-					if (!$IS_ADMIN) {
-						$error='Your username must exist in PhpGedView as an administrator';
-					}
-				} else {
-					$IS_ADMIN=WT_DB::prepare(
-						"SELECT setting_value FROM {$DBNAME}.{$TBLPREFIX}user_setting JOIN {$DBNAME}.{$TBLPREFIX}user USING (user_id) WHERE setting_name='canadmin' AND user_name=?"
-					)->execute(array(WT_USER_NAME))->fetchOne();
-					if (!$IS_ADMIN) {
-						$error='Your username must exist in PhpGedView as an administrator';
-					}
 				}
 			} catch (PDOException $ex) {
 				$error=i18n::translate('The PhpGedView database configuration settings are bad: '.$ex);
@@ -140,6 +126,21 @@ if ($error || empty($PGV_PATH)) {
 	exit;
 }
 
+// Run in a transaction
+WT_DB::exec("START TRANSACTION");
+
+// Delete the existing user accounts, and any information associated with it
+WT_DB::exec("UPDATE `##log` SET user_id=NULL");
+WT_DB::exec("DELETE FROM `##change`");
+WT_DB::exec("DELETE FROM `##block_setting`");
+WT_DB::exec("DELETE FROM `##block`");
+WT_DB::exec("DELETE FROM `##user_gedcom_setting`");
+WT_DB::exec("DELETE FROM `##user_setting`");
+WT_DB::exec("DELETE FROM `##message`");
+WT_DB::exec("DELETE FROM `##user`");
+WT_DB::exec("DELETE FROM `##user_setting`");
+WT_DB::exec("DELETE FROM `##user`");
+
 ////////////////////////////////////////////////////////////////////////////////
 if (ob_get_level() == 0) ob_start(); 
 echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -169,7 +170,6 @@ echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(500
 @set_site_setting('SMTP_SSL',                        $PGV_SMTP_SSL);
 @set_site_setting('SMTP_FROM_NAME',                  $PGV_SMTP_FROM_NAME);
 
-
 ////////////////////////////////////////////////////////////////////////////////
 
 echo '<p>pgv_site_setting => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -196,6 +196,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 
 	echo '<p>pgv_user => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
+		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
 			" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
@@ -212,7 +213,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 
 	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
-		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
+		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name,".
 		" CASE WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
 		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
@@ -259,6 +260,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
 	echo '<p>pgv_users => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
+		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user` (user_name, real_name, email, password)".
 			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM {$DBNAME}.{$TBLPREFIX}users"
@@ -271,7 +273,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	echo '<p>pgv_users => wt_user_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		WT_DB::prepare(
-			"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value)".
+			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 			"	SELECT user_id, 'canadmin', ".
 			" CASE WHEN u_canadmin IN ('Y', 'yes') THEN 1 WHEN u_canadmin IN ('N', 'no') THEN 0 ELSE u_canadmin END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
@@ -425,6 +427,11 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// Our user ID will have changed.  Switch to the PGV user with the same name.
+// If this does not exist, we'll get logged out by session.php on the next page.
+$_SESSION['wt_user']=get_user_id(WT_USER_NAME);
+
 define('PGV_PHPGEDVIEW', true);
 define('PGV_PRIV_PUBLIC', WT_PRIV_PUBLIC);
 define('PGV_PRIV_USER', WT_PRIV_USER);
@@ -466,7 +473,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             $COMMON_NAMES_ADD);
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE);
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD);
-	@set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              WT_USER_ID);
+	@set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              get_user_id($CONTACT_EMAIL));
 	@set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS);
 	@set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM',    $DISPLAY_JEWISH_GERESHAYIM);
 	@set_gedcom_setting($ged_id, 'DISPLAY_JEWISH_THOUSANDS',     $DISPLAY_JEWISH_THOUSANDS);
@@ -570,7 +577,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               $USE_SILHOUETTE);
 	@set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              $USE_THUMBS_MAIN);
 	@set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              $WATERMARK_THUMB);
-	@set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
+	@set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            get_user_id($WEBMASTER_EMAIL));
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       $WELCOME_TEXT_AUTH_MODE);
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, $WELCOME_TEXT_AUTH_MODE_4);
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD);
@@ -867,4 +874,6 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>Done!</p>';
+WT_DB::exec("COMMIT");
+
+echo '<p><b><a href="index.php">', i18n::translate('Click here to continue'), '</a></b></p>';
