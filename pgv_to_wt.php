@@ -611,7 +611,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 		echo '<p>', $file, ' => wt_hit_counter ...</p>'; ob_flush(); flush(); usleep(50000);
 		if (file_exists($file)) {
 			foreach (file($file) as $line) {
-				if (preg_match('/(@('.PGV_REGEX_XREF.')@ )?(\d+)/', $line, $match)) {
+				if (preg_match('/(@([A-Za-z0-9:_-]+)@ )?(\d+)/', $line, $match)) {
 					if ($match[2]) {
 						$page_name='individual.php';
 						$page_parameter=$match[2];
