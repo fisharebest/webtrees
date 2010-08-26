@@ -65,7 +65,7 @@ if ($form_action=='update') {
 	if ($form_username!=WT_USER_NAME && get_user_id($form_username)) {
 		print_header(i18n::translate('User administration'));
 		echo '<span class="error">', i18n::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</span><br />';
-	} elseif ($form_email!=get_user_setting(WT_USER_ID, 'email') && get_user_by_email($form_email)) {
+	} elseif ($form_email!=getUserEmail(WT_USER_ID) && get_user_by_email($form_email)) {
 		print_header(i18n::translate('User administration'));
 		echo '<span class="error">', i18n::translate('Duplicate email address.  A user with that email already exists.'), '</span><br />';
 	} else {
