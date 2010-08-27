@@ -218,7 +218,38 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		" CASE WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
 		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
 		" JOIN `##user` USING (user_id)".
-		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
+		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname', 'language')"
+	)->execute();
+	WT_DB::prepare(
+		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
+		" SELECT user_id, setting_name,".
+		" CASE setting_value".
+		"  WHEN 'catalan'    THEN 'ca'".
+		"  WHEN 'english'    THEN 'en_US'".
+		"  WHEN 'english-uk' THEN 'en_GB'". // PGV had the config for en_GB, but no language files
+		"  WHEN 'polish'     THEN 'pl'".
+		"  WHEN 'italian'    THEN 'it'".
+		"  WHEN 'spanish'    THEN 'es'".
+		"  WHEN 'finnish'    THEN 'fi'".
+		"  WHEN 'french'     THEN 'fr'".
+		"  WHEN 'german'     THEN 'de'".
+		"  WHEN 'danish'     THEN 'da'".
+		"  WHEN 'portuguese' THEN 'pt'".
+		"  WHEN 'hebrew'     THEN 'he'".
+		"  WHEN 'estonian'   THEN 'et'".
+		"  WHEN 'turkish'    THEN 'tr'".
+		"  WHEN 'dutch'      THEN 'nl'".
+		"  WHEN 'slovak'     THEN 'sk'".
+		"  WHEN 'norwegian'  THEN 'nn'".
+		"  WHEN 'slovenian'  THEN 'sl'".
+		"  WHEN 'hungarian'  THEN 'hu'".
+		"  WHEN 'swedish'    THEN 'sv'".
+		"  WHEN 'russian'    THEN 'ru'".
+		"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
+		" END".
+		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
+		" JOIN `##user` USING (user_id)".
+		" WHERE setting_name IN ('language')"
 	)->execute();
 
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -290,7 +321,30 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
 			"	SELECT user_id, 'language', ".
-			" CASE WHEN u_language IN ('Y', 'yes') THEN 1 WHEN u_language IN ('N', 'no') THEN 0 ELSE u_language END".
+			" CASE u_language".
+			"  WHEN 'catalan'    THEN 'ca'".
+			"  WHEN 'english'    THEN 'en_US'".
+			"  WHEN 'english-uk' THEN 'en_GB'". // PGV had the config for en_GB, but no language files
+			"  WHEN 'polish'     THEN 'pl'".
+			"  WHEN 'italian'    THEN 'it'".
+			"  WHEN 'spanish'    THEN 'es'".
+			"  WHEN 'finnish'    THEN 'fi'".
+			"  WHEN 'french'     THEN 'fr'".
+			"  WHEN 'german'     THEN 'de'".
+			"  WHEN 'danish'     THEN 'da'".
+			"  WHEN 'portuguese' THEN 'pt'".
+			"  WHEN 'hebrew'     THEN 'he'".
+			"  WHEN 'estonian'   THEN 'et'".
+			"  WHEN 'turkish'    THEN 'tr'".
+			"  WHEN 'dutch'      THEN 'nl'".
+			"  WHEN 'slovak'     THEN 'sk'".
+			"  WHEN 'norwegian'  THEN 'nn'".
+			"  WHEN 'slovenian'  THEN 'sl'".
+			"  WHEN 'hungarian'  THEN 'hu'".
+			"  WHEN 'swedish'    THEN 'sv'".
+			"  WHEN 'russian'    THEN 'ru'".
+			"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
+			" END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
