@@ -400,13 +400,13 @@ switch ($action) {
 
 				$mail_body = "";
 				$mail_body .= i18n::translate('Hello Administrator ...') . "\r\n\r\n";
-				$mail_body .= i18n::translate('A prospective user registered himself with webtrees at %s.', WT_SERVER_NAME.WT_SCRIPT_PATH) . "\r\n\r\n";
+				$mail_body .= i18n::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME.WT_SCRIPT_PATH) . "\r\n\r\n";
 				$mail_body .= i18n::translate('User name') . " " . $user_name . "\r\n";
 				$mail_body .= i18n::translate('Real name') . " " . $user_realname . "\r\n\r\n";
 				$mail_body .= i18n::translate('Comments').": " . $user_comments . "\r\n\r\n";
-				$mail_body .= i18n::translate('The user received an email with the information necessary to confirm his access request.') . "\r\n\r\n";
-				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) $mail_body .= i18n::translate('You will be informed by email when this prospective user has confirmed his request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
-				else $mail_body .= i18n::translate('You will be informed by email when this prospective user has confirmed his request.  After this, the user will be able to login without any action on your part.') . "\r\n";
+				$mail_body .= i18n::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . "\r\n\r\n";
+				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) $mail_body .= i18n::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
+				else $mail_body .= i18n::translate('You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part.') . "\r\n";
 
 				$message = array();
 				$message["to"]=get_user_name($webmaster_user_id);
@@ -506,7 +506,7 @@ switch ($action) {
 
 				$mail_body = "";
 				$mail_body .= i18n::translate('Hello Administrator ...') . "\r\n\r\n";
-				$mail_body .= i18n::translate('User %s (%s) has confirmed his request for an account.', $user_name, getUserFullName($user_id)) . "\r\n\r\n";
+				$mail_body .= i18n::translate('User %s (%s) has confirmed their request for an account.', $user_name, getUserFullName($user_id)) . "\r\n\r\n";
 				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) $mail_body .= i18n::translate('Please click on the link below to login to your site.  You must Edit the user to activate the account so that he can login to your site.') . "\r\n";
 				else $mail_body .= i18n::translate('You do not have to take any action; the user can now login.') . "\r\n";
 
