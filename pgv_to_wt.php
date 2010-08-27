@@ -657,7 +657,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 	)->execute();
 } else {
 	// Copied from PGV's db_schema_12_13
-	$statement=WT_DB::prepare("REPLACE INTO {$TBLPREFIX}hit_counter (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
+	$statement=WT_DB::prepare("INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
 
 	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 		// Caution these files might be quite large...
