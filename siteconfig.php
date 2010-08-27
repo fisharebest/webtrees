@@ -37,7 +37,7 @@ if (!WT_USER_IS_ADMIN) {
 switch (safe_POST('action')) {
 case 'update':
 	$data_directory= safe_POST('data_directory');
-	if ($data_directory && is_dir($data_directory) && is_readable($data_directory) && is_writable($data_directory) && file_exists($data_directory.DIRECTORY_SEPARATOR.'config.ini.php') && is_readable($data_directory.DIRECTORY_SEPARATOR.'config.ini.php')) {
+	if ($data_directory && is_dir($data_directory) && is_readable($data_directory) && is_writable($data_directory)) {
 		set_site_setting('INDEX_DIRECTORY', $data_directory);
 	}
 	set_site_setting('STORE_MESSAGES',                  safe_POST('store_messages'));
