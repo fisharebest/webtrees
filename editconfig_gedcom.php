@@ -124,6 +124,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS',         safe_POST_bool('NEW_AUTO_GENERATE_THUMBS'));
 	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              safe_POST('NEW_CALENDAR_FORMAT'));
 	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               safe_POST('NEW_CHART_BOX_TAGS'));
+	set_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS',     safe_POST_bool('CHECK_MARRIAGE_RELATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             safe_POST('NEW_COMMON_NAMES_ADD'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          safe_POST('NEW_COMMON_NAMES_REMOVE'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       safe_POST('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
