@@ -278,7 +278,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		//-- We will print them too, and put any "Extra Items not in DB" into a new Row.
 		
 		// Firstly, get count of Items in Database for this Individual
-		$indiobjs = "SELECT DISTINCT ";
+		$indiobjs = "SELECT ";
 		$indiobjs .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` where ";
 		$indiobjs .= "mm_gid=? ";
 		$indiobjs .= "AND mm_gedfile=? AND mm_media=m_media AND mm_gedfile=m_gedfile ";
