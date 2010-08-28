@@ -133,7 +133,7 @@ abstract class WT_Module {
 			" FROM `##module`".
 			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".
-			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE module_name END"
+			" ORDER BY CAST(CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE module_name END AS UNSIGNED)"
 		)->execute(array($ged_id, $component, $access_level))->fetchOneColumn();
 		$array=array();
 		foreach ($module_names as $module_name) {
