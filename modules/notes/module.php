@@ -141,7 +141,7 @@ if (!$SHOW_LEVEL2_NOTES) {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return $this->get_note_count()>=0;
+		return WT_USER_CAN_EDIT || $this->get_note_count()>0;
 	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
