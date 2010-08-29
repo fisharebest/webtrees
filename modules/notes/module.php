@@ -92,7 +92,7 @@ if (!$this->controller->indi->canDisplayDetails()) {
 			print_main_notes($factrec->getGedcomRecord(), $i, $this->controller->pid, $factrec->getLineNumber(), true);
 		}
 	}
-	if ($this->get_note_count()==0) print "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Notes for this individual.')."</td></tr>\n";
+	if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Notes for this individual.')."</td></tr>\n";
 	//-- New Note Link
 	if ($this->controller->canedit) {
 		?>
@@ -141,7 +141,7 @@ if (!$SHOW_LEVEL2_NOTES) {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return $this->get_note_count()>0;
+		return $this->get_note_count()>=0;
 	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
