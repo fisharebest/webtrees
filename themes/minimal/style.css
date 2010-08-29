@@ -79,6 +79,10 @@ ul {
 	margin: 8px;
 }
 
+img {
+	border: none;
+}
+
 .button {
 	width: 60px
 }
@@ -1316,6 +1320,11 @@ dt {
 	font-weight:bold;
 	margin-right:10px;
 	clear:both; 
+}
+
+dd {
+	display: inline;
+	margin: 0;
 }
 
 .clearfloat {

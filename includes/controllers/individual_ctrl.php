@@ -375,12 +375,12 @@ class IndividualController extends BaseController {
 		$dummy->setPrimaryName(0);
 		echo '<div id="name1">';
 			echo '<dl><dt class="label">', i18n::translate('Name'), '</dt>';
-			echo '<span class="field">', PrintReady($dummy->getFullName());
+			echo '<dd class="field">', PrintReady($dummy->getFullName());
 				if ($this->userCanEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>", help_link('delete_name');
 				}
-			echo '</span>';
+			echo '</dd>';
 			echo '</dl>';
 		echo '</div>';
 		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
@@ -389,7 +389,7 @@ class IndividualController extends BaseController {
 				$fact = trim($nmatch[$i][1]);
 				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")&&($fact!="SPFX")) {
 					echo '<dl><dt class="label">', translate_fact($fact, $this->indi), '</dt>';
-					echo '<span class="field">';
+					echo '<dd class="field">';
 						if (isset($nmatch[$i][2])) {
 							$name = trim($nmatch[$i][2]);
 							$name = preg_replace("'/,'", ",", $name);
@@ -400,7 +400,7 @@ class IndividualController extends BaseController {
 							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 							echo PrintReady($name);
 						}
-					echo '</span>';
+					echo '</dd>';
 					echo '</dl>';
 				}
 			echo '</div>';
@@ -439,7 +439,7 @@ class IndividualController extends BaseController {
 			}
 			echo '>';
 			echo '<dl><dt class="label">', i18n::translate('Gender'), '</dt>';
-			echo '<span class="field">';
+			echo '<dd class="field">';
 			switch ($sex) {
 			case 'M':
 				echo i18n::translate('Male'), Person::sexImage('M', 'small', '', i18n::translate('Male'));
@@ -461,7 +461,7 @@ class IndividualController extends BaseController {
 					}
 				}
 			}
-			echo '</span>';
+			echo '</dd>';
 			echo '</dl>';
 			// -- find sources
 	//		print "&nbsp;&nbsp;&nbsp;";

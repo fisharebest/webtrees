@@ -1445,8 +1445,13 @@ dl {
 dt {
 	float:left; 
 	font-weight:bold;
-	margin-right:10px; 
+	margin-right:10px;
 	clear:both;
+}
+
+dd {
+	display: inline;
+	margin: 0;
 }
 
 #facts_content dd {
