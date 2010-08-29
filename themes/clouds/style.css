@@ -1299,10 +1299,11 @@ font-weight:bold;
 .details_label {
 font-weight:bold;
 }
-
+/*  removed for IE7 
 ul {
 list-style: url(images/li.gif);
 }
+*/
 
 form .rtl {
 text-align:right;
@@ -1671,6 +1672,11 @@ float:left;
 font-weight:bold;
 margin-right:10px;
 clear:both; 
+}
+
+dd {
+display: inline;
+margin: 0;
 }
 
 /* Classes for the INDI page header */
