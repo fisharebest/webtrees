@@ -231,8 +231,16 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			$media["LINKS"] = array ();
 			$media["CHANGE"] = "";
 			// Extract Format and Type from GEDCOM record
-			$media["FORM"] = strtolower(get_gedcom_value("FORM", 2, $row->m_gedrec));
-			$media["TYPE"] = strtolower(get_gedcom_value("FORM:TYPE", 2, $row->m_gedrec));
+			if (preg_match('/\n\d FORM (.+)/', $row->m_gedrec, $match)) {
+				$media['FORM']=$match[1];
+			} else {
+				$media['FORM']='';
+			}
+			if (preg_match('/\n\d TYPE (.+)/', $row->m_gedrec, $match)) {
+				$media['TYPE']=$match[1];
+			} else {
+				$media['TYPE']='';
+			}
 
 			// Build a sortable key for the medialist
 			$firstChar = substr($media["XREF"], 0, 1);
