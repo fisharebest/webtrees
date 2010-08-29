@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9130 2010-07-21 01:17:44Z rob $
+* $Id: ash.css 9198 2010-07-28 23:30:32Z rob $
 */
 
 .something {
@@ -1646,6 +1646,11 @@ float:left;
 font-weight:bold;
 margin-right:10px;
 clear:both; 
+}
+
+dd {
+display: inline;
+margin: 0;
 }
 
 /* Classes for the INDI page header */

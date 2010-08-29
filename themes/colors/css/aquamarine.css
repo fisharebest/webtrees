@@ -1648,6 +1648,11 @@ margin-right:10px;
 clear:both; 
 }
 
+dd {
+display: inline;
+margin: 0;
+}
+
 /* Classes for the INDI page header */
 
 #indi_header h1 {
