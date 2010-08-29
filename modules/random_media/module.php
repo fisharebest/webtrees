@@ -119,9 +119,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." thumbnail file could not be found</span><br />";}
 
 				// Filter according to format and type  (Default: unless configured otherwise, don't filter)
-				if (!array_key_exists($medialist[$value]["FORM"], $filters)) {
+				if ($medialist[$value]['FORM']!='' && !array_key_exists($medialist[$value]['FORM'], $filters)) {
 					$disp=false;
-				} elseif (!array_key_exists($medialist[$value]["TYPE"], $filters)) {
+				} elseif ($medialist[$value]['TYPE']!='' && !array_key_exists($medialist[$value]['TYPE'], $filters)) {
 					$disp=false;
 				} elseif (!empty($medialist[$value]["FORM"]) && !$filters[$medialist[$value]["FORM"]]) {
 					$disp=false;
