@@ -94,7 +94,7 @@ if ($view!='simple') {
 	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
 	'<table width="100%">',
 		'<tr>',
-			'<td><img src="', WT_THEME_DIR, 'images/header.jpg" width="281" height="50" alt="" />',$BROWSERTYPE, '</td>',
+			'<td><img src="', WT_THEME_DIR, 'images/header.jpg" width="281" height="50" alt="" /></td>',
 			'<td>',
 				'<table width="100%">',
 				'<tr>',
