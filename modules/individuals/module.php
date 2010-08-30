@@ -206,17 +206,20 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function search($query) {
-		if (strlen($query)<2) return '';
-		$sql=
-		"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
-		" FROM `##individuals`, `##name`".
-		" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
-		" AND i_id=n_id AND i_file=n_file AND i_file=?".
-		" ORDER BY n_sort";
+		if (strlen($query)<2) {
+			return '';
+		}
 		$rows=
-		WT_DB::prepareLimit($sql, WT_AUTOCOMPLETE_LIMIT)
-		->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
-		->fetchAll(PDO::FETCH_ASSOC);
+			WT_DB::prepare(
+				"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+				" FROM `##individuals`, `##name`".
+				" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
+				" AND i_id=n_id AND i_file=n_file AND i_file=?".
+				" ORDER BY n_sort COLLATE '".i18n::$collation."'".
+				" LIMIT 50"
+			)
+			->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
 		$private_count = 0;
