@@ -559,7 +559,7 @@ function fetch_linked_indi($xref, $link, $ged_id) {
 		" JOIN `##link` ON (i_file=l_file AND i_id=l_from)".
 		" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)".
 		" WHERE i_file=? AND l_type=? AND l_to=?".
-		" ORDER BY n_sort"
+		" ORDER BY n_sort COLLATE '".i18n::$collation."'"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -575,7 +575,7 @@ function fetch_linked_fam($xref, $link, $ged_id) {
 		" JOIN `##link` ON (f_file=l_file AND f_id=l_from)".
 		" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)".
 		" WHERE f_file=? AND l_type=? AND l_to=?".
-		" ORDER BY n_sort"
+		" ORDER BY n_sort" // n_sort is not used for families.  Sorting here has no effect???
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -591,7 +591,7 @@ function fetch_linked_note($xref, $link, $ged_id) {
 		" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
 		" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
 		" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?".
-		" ORDER BY n_sort"
+		" ORDER BY n_sort COLLATE '".i18n::$collation."'"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -607,7 +607,7 @@ function fetch_linked_sour($xref, $link, $ged_id) {
 			" JOIN `##link` ON (s_file=l_file AND s_id=l_from)".
 			" LEFT JOIN `##name` ON (s_file=n_file AND s_id=n_id AND n_num=0)".
 			" WHERE s_file=? AND l_type=? AND l_to=?".
-			" ORDER BY n_sort"
+			" ORDER BY n_sort COLLATE '".i18n::$collation."'"
 		)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -623,7 +623,7 @@ function fetch_linked_obje($xref, $link, $ged_id) {
 		" JOIN `##link` ON (m_gedfile=l_file AND m_media=l_from)".
 		" LEFT JOIN `##name` ON (m_gedfile=n_file AND m_media=n_id AND n_num=0)".
 		" WHERE m_gedfile=? AND l_type=? AND l_to=?".
-		" ORDER BY n_sort"
+		" ORDER BY n_sort COLLATE '".i18n::$collation."'"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
