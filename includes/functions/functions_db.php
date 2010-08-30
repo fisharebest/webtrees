@@ -341,7 +341,7 @@ function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
 		$where[]="n_surn <> ''";
 	}
 
-	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn";
+	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn COLLATE '".i18n::$collation."'";
 
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll();
@@ -380,7 +380,7 @@ function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
 		$where[]="n_surn <> ''";
 	}
 
-	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn";
+	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn COLLATE '".i18n::$collation."'";
 
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll();
@@ -447,7 +447,7 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 		// Match all individuals
 	}
 
-	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn";
+	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".i18n::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".i18n::$collation."'";
 
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
