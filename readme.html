@@ -45,11 +45,12 @@
 <hr width="100%">
 <!-- LICENSE -->
 <div style="float:left;"><a name="licence"><h3>LICENSE</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-webtrees: Web based Family History software<br />
+ * <b>webtrees: Web based Family History software</b><br />
  * Copyright (C) 2010 webtrees development team.<br />
  *<br />
- * Derived from PhpGedView<br />
-Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Derived from PhpGedView - Copyright (C) 2002 to 2010  PGV Development Team.<br />
+ * <br />
+ * All rights reserved.
 <br /><br />
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 <br /><br />
@@ -116,16 +117,17 @@ So, after installation, you'll be directed to the GEDCOM (family tree) administr
 </ol>
 There are lots of configuration options. You'll probably want to review the privacy settings first. Don't worry too much about all the other options - the defaults are good for most people. If you get stuck, there's lots of built-in help and you can get friendly advice from the <a href="http://webtrees.net/forums">help</a> forum.
 <hr width="100%">
+<!-- UPGRADING -->
 <div style="float:left;"><a name="upgrade"><h3>UPGRADING</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-<b>IMPORTANT NOTE: The following instructions do NOT apply to beta versions of <b>webtrees</b>. If you are testing beta versions they will have specific, usually more complex upgrade instructions, often requiring a completely fresh installation. Please read the latest Release Notes for any beta version.</b>
+<b>IMPORTANT NOTE: These instructions apply to stable releases, such as webtrees-1.0.1. If you testing a beta version, such as webtrees-9876, it is best to do a fresh install, rather than upgrade.</b>
 <br /><br />
-<b>webtrees</b> has been designed to make upgrading to a new version of the software as straightforward as possible. Just follow these simple steps:
+Upgrading <b>webtrees</b> is quick and easy. You are recommened to upgrade whenever a new version is available. 
 <ol>
-	<li>Ensure you first have a good backup of your entire system, including all files and the database.</li>
+	<li>Now would be a good time to make a <a href="#backup">backup</a>. </li>
 	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
-	<li>Upload the files to your web server, copying all the new files directly over the existing ones.</li>
-	<li>If any other requirements exist for the specific upgrade you are doing, you will be advised on screen as soon as you go to your site URL. This may occasionally include a requirement to re-import your GEDCOM (family tree) file.</li>
+	<li>Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.</li>
 </ol>
+If you have any problems or questions, help is available on the <a href="http://webtrees.net/forums">webtrees forum</a>.
 <hr width="100%">
 <!-- GEDCOM FILES -->
 <div style="float:left;"><a name="gedcom"><h3>GEDCOM (family tree) FILES</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
@@ -188,17 +190,15 @@ You will have <b>two</b> data directories:
 <hr width="100%">
 <!-- BACKUP -->
 <div style="float:left;"><a name="backup"><h3>BACKUP</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-It is always important to keep backups of your data away from your web server environment.
+Backups are good. Whatever problem you have, it can always be fixed from a good backup.
 <br /><br />
-Doing this has been made very straightforward in <b>webtrees</b> by its use of database tables for storing all information.
-<br /><br />
-We therefore recommend that you <b>REGULARLY</b> use a database backup tool, such as the export/import options from phpMyAdmin most people have as part of their web server account.
-<br />
-This will safeguard "ALL" your information, not just your family history data, including user profiles and settings, news blocks, favorites, module configurations. 
-<br />
-The only things NOT included are any media items you uploaded to the server. You should also always keep copies of these, by using FTP to download copies of the media folders from your web server.
-<br /><br />
-[<b>NOTE:</b> for beta versions of <b>webtrees</b> there are two files in the webtrees/data folder (<b><i>yourGEDCOM</i>.ged_conf.php</b> and <b><i>yourGEDCOM</i>.ged_priv.php</b>) that you should also backup using FTP. These will be transferred to the database in released versions]
+To make a backup of webtrees, you need to make a copy of the following
+<ol>
+   <li>The files in the webtrees/data directory.</li>
+   <li>The files in the webtrees/media directory.</li>
+   <li>The tables in the database. Freely available tools such as phpMyAdmin allow you to do this in one click.</li> 
+</ol>
+Remember that most web hosting services do NOT backup your data, and this is your responsibility.
 <hr width="100%">
 <!-- CONVERSION -->
 <div style="float:left;"><a name="convert"><h3>CONVERTING from PHPGEDVIEW</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
