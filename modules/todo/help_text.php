@@ -50,5 +50,14 @@ case 'todo_show_unassigned':
 	$title=i18n::translate('Show unassigned tasks');
 	$text=i18n::translate('Show &quot;To Do&quot; tasks that are not assigned to any user');
 	break;
+
+case 'scrollbars':
+	$title=i18n::translate('Scrollbars');
+	$text ='<dl><dt>';
+	$text.=i18n::translate('Add a scrollbar when block contents grow: ');
+	$text.='</dt><dd>';
+	$text.=i18n::translate('If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists.');
+	$text.='</dd></dl>';
+	break;
 }
 ?>

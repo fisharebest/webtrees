@@ -46,49 +46,40 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true) {
 		global $ctype, $WT_IMAGES, $SURNAME_LIST_STYLE, $THEME_DIR;
-
+		
+		$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
+		$COMMON_NAMES_THRESHOLD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
+		
+		$threshold = max($COMMON_NAMES_THRESHOLD, 1);
 		$num=get_block_setting($block_id, 'num', 10);
+		$num2 = $num;
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$block=get_block_setting($block_id, 'block', false);
 
+		// Adjust number for removed names found in the "Remove Names" list
+		if ($COMMON_NAMES_REMOVE) {
+			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
+				if (
+						$delname != i18n::translate('Unknown') &&
+						$delname != i18n::translate('unknown') &&
+						count(get_indilist_surns($delname, '', false, false, WT_GED_ID)) >= $threshold
+					)
+					$num2 = $num2+1;
+			}
+		}
+
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames=get_top_surnames(WT_GED_ID, 1, $num);
+		$top_surnames=get_top_surnames(WT_GED_ID, $threshold, $num2);
 
 		$all_surnames=array();
 		foreach (array_keys($top_surnames) as $top_surname) {
 			$all_surnames=array_merge($all_surnames, get_indilist_surns($top_surname, '', false, false, WT_GED_ID));
 		}
 
-		// Insert from the "Add Names" list if not already in there
-		$COMMON_NAMES_ADD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
-		$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
-		$COMMON_NAMES_THRESHOLD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
-		if ($COMMON_NAMES_ADD) {
-			foreach (preg_split('/[,; ]+/', $COMMON_NAMES_ADD) as $addname) {
-				$ADDNAME=utf8_strtoupper($addname);
-				if (isset($all_surnames[$ADDNAME])) {
-					$SURNAME=$ADDNAME;
-					foreach (array_keys($all_surnames[$ADDNAME]) as $surname) {
-						if ($SURNAME!=$surname && $SURNAME==utf8_strtoupper($surname)) {
-							$all_surnames[$ADDNAME][$SURNAME]=$all_surnames[$ADDNAME][$surname];
-							unset ($all_surnames[$ADDNAME][$surname]);
-						}
-					}
-					if (isset($all_surnames[$ADDNAME][$SURNAME])) {
-						$n=count($all_surnames[$ADDNAME][$SURNAME]);
-						$all_surnames[$ADDNAME][$SURNAME]=array_fill(0, max($n, $COMMON_NAMES_THRESHOLD), true);
-					} else {
-						$all_surnames[$ADDNAME][$SURNAME]=array_fill(0, $COMMON_NAMES_THRESHOLD, true);
-					}
-				} else {
-					$all_surnames[$ADDNAME][$ADDNAME]=array_fill(0, $COMMON_NAMES_THRESHOLD, true);
-				}
-			}
-		}
-
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
 			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
+				if (count(get_indilist_surns($delname, '', false, false, WT_GED_ID)) >= $threshold)
 				unset($all_surnames[utf8_strtoupper($delname)]);
 			}
 		}
@@ -106,7 +97,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		// I18N: There are separate lists of male/female names, containing %d names each
 		$title .= i18n::plural('Top surname', 'Top %d surnames', $num, $num);
-		$title .= help_link('index_common_names');
+		$title .= help_link('top10_surnames', $this->getName());
 
 		switch ($infoStyle) {
 		case 'tagcloud':
@@ -114,6 +105,10 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$content=format_surname_tagcloud($all_surnames, 'indilist', true);
 			break;
 		case 'list':
+			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
+			$content=format_surname_list($all_surnames, '1', true);
+			break;
+		case 'array':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
 			$content=format_surname_list($all_surnames, '2', true);
 			break;
@@ -154,7 +149,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'num',    safe_POST_integer('num', 1, 10000, 10));
-			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table', 'tagcloud'), 'table'));
+			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'array', 'table', 'tagcloud'), 'table'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
@@ -171,14 +166,14 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation style'), help_link('style');
+		echo i18n::translate('Presentation style'), help_link('style', $this->getName());
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>i18n::translate('list'), 'table'=>i18n::translate('table'), 'tagcloud'=>i18n::translate('tag cloud')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>i18n::translate('list'), 'array'=>i18n::translate('array'), 'table'=>i18n::translate('table'), 'tagcloud'=>i18n::translate('tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Add a scrollbar when block contents grow');
+		echo i18n::translate('Add a scrollbar when block contents grow'), help_link('scrollbars', $this->getName());
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

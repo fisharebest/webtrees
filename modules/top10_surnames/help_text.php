@@ -31,16 +31,43 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 }
 
 switch ($help) {
-case 'recent_changes':
-	$title=i18n::translate('Top 10 Surnames');
-	$text=i18n::translate('This block shows a table of the 10 most frequently occurring surnames in the database.  The actual number of surnames shown in this block is configurable.  You can configure the GEDCOM to remove names from this list.');
-	$text.='<ul><li>';
+case 'top10_surnames':
+	$title=i18n::translate('Top surnames block');
+	$text =i18n::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable.  You can also configure the GEDCOM to remove names from this list.');
+	$text.='<p>';
+	$text.=i18n::translate('The configuration settings for this block allow changes to the number of names displayed, the presentaion style, and an option to use scroll bars with long lists.');
+	$text.='</p>';
+	break;
 
-	// TODO: Other options of this block
+case 'style':
+	$title=i18n::translate('Presentation style');
+	$text =i18n::translate('Choose from one of these styles: ');
+	$text.='<br /><br /><dl><dt>';
+	$text.='List: ';
+	$text.='</dt><dd>';
+	$text.=i18n::translate('A vertical, bulleted list of names');
+	$text.='</dd><br /><dt>';
+	$text.='Array: ';
+	$text.='</dt><dd>';
+	$text.=i18n::translate('A simple list of names separated by semi-colons. Useful where vertical space is limited.');
+	$text.='</dd><br /><dt>';
+	$text.='Table: ';
+	$text.='</dt><dd>';
+	$text.=i18n::translate('A tabular structure, including sequence numbers, and separate indication of similar names like "van" and "Van".');
+	$text.='</dd><br /><dt>';
+	$text.='Tag cloud: ';
+	$text.='</dt><dd>';
+	$text.=i18n::translate('In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.');
+	$text.='</dd></dl>';
+	break;
 
+case 'scrollbars':
+	$title=i18n::translate('Scrollbars');
+	$text ='<dl><dt>';
 	$text.=i18n::translate('Add a scrollbar when block contents grow: ');
+	$text.='</dt><dd>';
 	$text.=i18n::translate('If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists.');
-	$text.='</li></ul>';
+	$text.='</dd></dl>';
 	break;
 }
 ?>
