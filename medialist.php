@@ -68,14 +68,14 @@ if ($reset == "Reset") {
 	$filter1 = "";
 	$filter2 = "";
 	$action = "";
-	unset($_SESSION['medialist']);
-	unset($_SESSION['filtered_medialist']);
+	unset($_SESSION['Medialist']);
+	unset($_SESSION['Filtered_medialist']);
 }
   
-if (empty($_SESSION['medialist_ged'])) $_SESSION['medialist_ged'] = WT_GEDCOM;
-if ($_SESSION['medialist_ged'] != WT_GEDCOM) {
-	$_SESSION['medialist_ged'] = WT_GEDCOM;
-	unset($_SESSION['medialist']);
+if (empty($_SESSION['Medialist_ged'])) $_SESSION['Medialist_ged'] = WT_GEDCOM;
+if ($_SESSION['Medialist_ged'] != WT_GEDCOM) {
+	$_SESSION['Medialist_ged'] = WT_GEDCOM;
+	unset($_SESSION['Medialist']);
 }
 
 // If the $folder is empty this is a new visit, a return, or a reset
@@ -86,7 +86,7 @@ if (empty($folder)) {
 }
 
 // If SESSION_medialist then it's a return
-if (isset($_SESSION['medialist'])) {
+if (isset($_SESSION['Medialist'])) {
 	$show = "yes";
 	$search = "yes";
 		
@@ -94,33 +94,33 @@ if (isset($_SESSION['medialist'])) {
 	// Not if $action <> filter (ie It's either a layout/page change or a return visit)
 	// Load up the session variables	
 	if ($action != "filter") {
-		$medialist = ($_SESSION['filtered_medialist']);
-		$folder=($_SESSION['medialist_folder']);		
-		$filter1=($_SESSION['medialist_filter1']);
-		$filter2=($_SESSION['medialist_filter2']);
-		$filter_type=($_SESSION['filter_type']);
-		$sortby=($_SESSION['medialist_sortby']);
-		$max=($_SESSION['medialist_max']);
-		$columns=($_SESSION['medialist_columns']);
-		$currentdironly=($_SESSION['medialist_currentdironly']);
-		$show_thumbnail=($_SESSION['medialist_thumbnail']);
-		$exclude_links=($_SESSION['medialist_links']);
+		$medialist = ($_SESSION['Filtered_medialist']);
+		$folder=($_SESSION['Medialist_folder']);		
+		$filter1=($_SESSION['Medialist_filter1']);
+		$filter2=($_SESSION['Medialist_filter2']);
+		$filter_type=($_SESSION['Filter_type']);
+		$sortby=($_SESSION['Medialist_sortby']);
+		$max=($_SESSION['Medialist_max']);
+		$columns=($_SESSION['Medialist_columns']);
+		$currentdironly=($_SESSION['Medialist_currentdironly']);
+		$show_thumbnail=($_SESSION['Medialist_thumbnail']);
+		$exclude_links=($_SESSION['Medialist_links']);
 	
 	} else {		
 		// This is a return visit and the FILTER button was used
 			// Check if the subdirectory and folder have changed
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
-				if ($folder != $_SESSION['medialist_folder']) $build = "yes";
-				if ($currentdironly != $_SESSION['medialist_currentdironly']) $build ="yes";				
+				if ($folder != $_SESSION['Medialist_folder']) $build = "yes";
+				if ($currentdironly != $_SESSION['Medialist_currentdironly']) $build ="yes";				
 			}
 			// Check if the 'Include media links' option has changed
-			if ($exclude_links != $_SESSION['medialist_links']) $build ="yes";
+			if ($exclude_links != $_SESSION['Medialist_links']) $build ="yes";
 			// if same subdirectory and folder then use an existing medialist
 			if ($build != "yes") {
-				if (($filter1 == $_SESSION['medialist_filter1']) && ($filter2 == $_SESSION['medialist_filter2']) && ($filter_type == $_SESSION['filter_type'])) {
-					$medialist = $_SESSION['filtered_medialist'];
+				if (($filter1 == $_SESSION['Medialist_filter1']) && ($filter2 == $_SESSION['Medialist_filter2']) && ($filter_type == $_SESSION['Filter_type'])) {
+					$medialist = $_SESSION['Filtered_medialist'];
 					$action = false;
-				} else $medialist = $_SESSION['medialist'];
+				} else $medialist = $_SESSION['Medialist'];
 			}			
 		}
 } else {
@@ -181,7 +181,7 @@ if ($build == "yes") {
 	
 	usort($medialist, "mediasort"); // Reset numbering of medialist array
 // save the array
-$_SESSION['medialist'] = $medialist;
+$_SESSION['Medialist'] = $medialist;
 }
 
 // ************************  END = 'Build the medialist array' ************************
@@ -388,17 +388,17 @@ $filter_type = $temp_filter;
 // *****************************  BEGIN Set SESSION variables ********************************************
 
 if ($search=="yes") {
-	if ($filtered_medialist) $_SESSION["filtered_medialist"] = $filtered_medialist;
-	$_SESSION['filter_type']=$filter_type;
-	$_SESSION['medialist_filter1']=$filter1;
-	$_SESSION['medialist_filter2']=$filter2;
-	$_SESSION['medialist_folder']=$folder;
-	$_SESSION['medialist_sortby']=$sortby;
-	$_SESSION['medialist_max']=$max;
-	$_SESSION['medialist_columns']=$columns;
-	$_SESSION['medialist_currentdironly']=$currentdironly;
-	$_SESSION['medialist_thumbnail']=$show_thumbnail;	
-	$_SESSION['medialist_links']=$exclude_links;
+	if ($filtered_medialist) $_SESSION["Filtered_medialist"] = $filtered_medialist;
+	$_SESSION['Filter_type']=$filter_type;
+	$_SESSION['Medialist_filter1']=$filter1;
+	$_SESSION['Medialist_filter2']=$filter2;
+	$_SESSION['Medialist_folder']=$folder;
+	$_SESSION['Medialist_sortby']=$sortby;
+	$_SESSION['Medialist_max']=$max;
+	$_SESSION['Medialist_columns']=$columns;
+	$_SESSION['Medialist_currentdironly']=$currentdironly;
+	$_SESSION['Medialist_thumbnail']=$show_thumbnail;	
+	$_SESSION['Medialist_links']=$exclude_links;
 }
 
 // *****************************  End Set SESSION variables ********************************************
