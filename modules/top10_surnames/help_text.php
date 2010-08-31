@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 switch ($help) {
 case 'top10_surnames':
 	$title=i18n::translate('Top surnames block');
-	$text =i18n::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable.  You can also configure the GEDCOM to remove names from this list.');
+	$text =i18n::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable. Using the GEDCOM administration function, you can also configure names to remove from this list.');
 	$text.='<p>';
 	$text.=i18n::translate('The configuration settings for this block allow changes to the number of names displayed, the presentaion style, and an option to use scroll bars with long lists.');
 	$text.='</p>';
