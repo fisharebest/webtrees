@@ -185,8 +185,6 @@ require WT_ROOT.'includes/classes/class_wt_db.php';
 
 set_error_handler('wt_error_handler');
 
-// Connect to the database
-try {
 	// Load our configuration file, so we can connect to the database
 	if (file_exists(WT_ROOT.'data/config.ini.php')) {
 		$dbconfig=parse_ini_file(WT_ROOT.'data/config.ini.php');
@@ -200,6 +198,10 @@ try {
 		header('Location: setup.php');
 		exit;
 	}
+
+// Connect to the database
+
+try {
 	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
 	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
 	unset($dbconfig);
