@@ -61,6 +61,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($COMMON_NAMES_REMOVE) {
 			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
 				unset($top_surnames[$delname]);
+				unset($top_surnames[utf8_strtoupper($delname)]);
 			}
 		}
 
