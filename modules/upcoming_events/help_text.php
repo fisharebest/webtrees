@@ -45,9 +45,6 @@ case 'upcoming_events':
 	$text.=i18n::translate('Presentation style: Either a simple text "List"or a "Table" format.');
 	$text.='</li><li>';
 	$text.=i18n::translate('Sort style: "Alphabetically", or "By Anniversary" showing results in date order with the most recent first.');
-	$text.='</li><li>';
-	$text.=i18n::translate('Add a scrollbar when block contents grow: ');
-	$text.=i18n::translate('If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists.');
 	$text.='</li></ul>';
 	break;
 }

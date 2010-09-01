@@ -31,11 +31,11 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 }
 
 switch ($help) {
-case 'top10_surnames':
+case 'top_surnames':
 	$title=i18n::translate('Top surnames block');
 	$text =i18n::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable. Using the GEDCOM administration function, you can also configure names to remove from this list.');
 	$text.='<p>';
-	$text.=i18n::translate('The configuration settings for this block allow changes to the number of names displayed, the presentaion style, and an option to use scroll bars with long lists.');
+	$text.=i18n::translate('The configuration settings for this block allow changes to the number of names displayed, the presentation style, and an option to use scroll bars with long lists.');
 	$text.='</p>';
 	break;
 
@@ -58,15 +58,6 @@ case 'style':
 	$text.='Tag cloud: ';
 	$text.='</dt><dd>';
 	$text.=i18n::translate('In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.');
-	$text.='</dd></dl>';
-	break;
-
-case 'scrollbars':
-	$title=i18n::translate('Scrollbars');
-	$text ='<dl><dt>';
-	$text.=i18n::translate('Add a scrollbar when block contents grow: ');
-	$text.='</dt><dd>';
-	$text.=i18n::translate('If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists.');
 	$text.='</dd></dl>';
 	break;
 }

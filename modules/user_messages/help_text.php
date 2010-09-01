@@ -38,8 +38,6 @@ case 'recent_changes':
 
 	// TODO: Other options of this block
 
-	$text.=i18n::translate('Add a scrollbar when block contents grow: ');
-	$text.=i18n::translate('If set to "no" the block will expand vertically to display the full list. If set to "yes" the block will be the height set in your theme\'s style sheet, with scroll bars to view long lists.');
 	$text.='</li></ul>';
 	break;
 }
