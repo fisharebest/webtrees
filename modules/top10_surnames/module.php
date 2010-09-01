@@ -35,12 +35,12 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Top 10 Surnames');
+		return i18n::translate('Top Surnames');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('This block shows a table of the 10 most frequently occurring surnames in the database.  The actual number of surnames shown in this block is configurable.  You can configure the GEDCOM to remove names from this list.');
+		return i18n::translate('This block shows a table of the most frequently occurring surnames in the database.  The actual number of surnames shown is configurable.  You can configure the GEDCOM to remove names from this list.');
 	}
 
 	// Implement class WT_Module_Block
@@ -50,38 +50,25 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
 		$COMMON_NAMES_THRESHOLD=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD');
 		
-		$threshold = max($COMMON_NAMES_THRESHOLD, 1);
 		$num=get_block_setting($block_id, 'num', 10);
-		$num2 = $num;
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$block=get_block_setting($block_id, 'block', false);
 
-		// Adjust number for removed names found in the "Remove Names" list
-		if ($COMMON_NAMES_REMOVE) {
-			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
-				if (
-						$delname != i18n::translate('Unknown') &&
-						$delname != i18n::translate('unknown') &&
-						count(get_indilist_surns($delname, '', false, false, WT_GED_ID)) >= $threshold
-					)
-					$num2 = $num2+1;
-			}
-		}
-
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames=get_top_surnames(WT_GED_ID, $threshold, $num2);
-
-		$all_surnames=array();
-		foreach (array_keys($top_surnames) as $top_surname) {
-			$all_surnames=array_merge($all_surnames, get_indilist_surns($top_surname, '', false, false, WT_GED_ID));
-		}
+		$top_surnames=get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, '');
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
 			foreach (preg_split("/[,; ]+/", $COMMON_NAMES_REMOVE) as $delname) {
-				if (count(get_indilist_surns($delname, '', false, false, WT_GED_ID)) >= $threshold)
-				unset($all_surnames[utf8_strtoupper($delname)]);
+				unset($top_surnames[$delname]);
 			}
+		}
+
+		$all_surnames=array();
+		$i=0;
+		foreach (array_keys($top_surnames) as $top_surname) {
+			$all_surnames=array_merge($all_surnames, get_indilist_surns($top_surname, '', false, false, WT_GED_ID));
+			if (++$i == $num) break;
 		}
 
 		$id=$this->getName().$block_id;
@@ -98,7 +85,6 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		// I18N: There are separate lists of male/female names, containing %d names each
 		$title .= i18n::plural('Top surname', 'Top %d surnames', $num, $num);
 		$title .= help_link('top10_surnames', $this->getName());
-
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames,'utf8_strcasecmp');
@@ -173,7 +159,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$block=get_block_setting($block_id, 'block', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Add a scrollbar when block contents grow'), help_link('scrollbars', $this->getName());
+		echo i18n::translate('Add a scrollbar when block contents grow'), help_link('scrollbars');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
