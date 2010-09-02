@@ -88,6 +88,9 @@ class batch_update {
 		}
 		$html.='</td></tr>';
 
+		if (!get_user_setting(WT_USER_ID, 'auto_accept')) 
+			$html.='<tr><td colspan="2" class="error">'.i18n::translate('Your user profile is not set to "Automatically accept changes made by this user". Batch update can only be used to change one record at a time. You can either continue on that basis, or change your user profile and return here.').'</td></tr>';
+
 		// If a plugin is selected, display the details
 		if ($this->PLUGIN) {
 			$html.=$this->PLUGIN->getOptionsForm();
@@ -354,10 +357,16 @@ class base_plugin {
 
 	// Default buttons are update and update_all
 	function getActionButtons($xref) {
-		return array(
-			batch_update::createSubmitButton(i18n::translate('Update'),     $xref, 'update'),
-			batch_update::createSubmitButton(i18n::translate('Update all'), $xref, 'update_all')
-		);
+		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
+			return array(
+				batch_update::createSubmitButton(i18n::translate('Update'),     $xref, 'update'),
+				batch_update::createSubmitButton(i18n::translate('Update all'), $xref, 'update_all')
+			);
+		} else {
+			return array(
+				batch_update::createSubmitButton(i18n::translate('Update'),     $xref, 'update')
+			);
+		}
 	}
 
 	// Default previewer for plugins with no custom preview.
