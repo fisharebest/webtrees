@@ -81,9 +81,15 @@ if ($PGV_PATH) {
 		}
 		$wt_config=parse_ini_file(WT_ROOT.'data/config.ini.php');
 		if ($DBHOST!=$wt_config['dbhost'] || $DBHOST!=$wt_config['dbhost']) {
-			$error=i18n::translate('PhpGedView must use the same database as <b>webtrees</b>');
+			$error=i18n::translate('Error - the PhpGedView database must use the same host as <b>webtrees</b> database');
 			unset($wt_config);
-		} else {
+		} elseif ($DBUSER!=$wt_config['dbuser'] || $DBUSER!=$wt_config['dbuser']) {
+			$error=i18n::translate('Error - the PhpGedView SQL DBUSER does not match the <b>webtrees</b> DBUSER');
+			unset($wt_config);
+			} elseif ($DBPASS!=$wt_config['dbpass'] || $DBPASS!=$wt_config['dbpass']) {
+				$error=i18n::translate('Error - the PhpGedView SQL DBPASS does not match the <b>webtrees</b> DBPASS');
+				unset($wt_config);
+				} else {
 			unset($wt_config);
 			try {
 				$PGV_SCHEMA_VERSION=WT_DB::prepare(
@@ -95,7 +101,7 @@ if ($PGV_PATH) {
 					$error=i18n::translate('The version of %s is too new', 'PhpGedView');
 				}
 			} catch (PDOException $ex) {
-				$error=i18n::translate('The PhpGedView database configuration settings are bad: '.$ex);
+				$error=i18n::translate('Unable to connect to the PhpGedView database:  '.$ex);
 			}
 		}
 	}
