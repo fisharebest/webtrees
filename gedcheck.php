@@ -165,7 +165,7 @@ function too_few ($text) { return i18n::translate('too few') .' &lrm;'.$text.' &
 function no_link ($text) { return '&lrm;'.$text.'&lrm; '.i18n::translate('does not link back');}
 
 ////////////////////////////////////////////////////////////////////////////////
-// Create a link to a PGV object
+// Create a link to a WT object
 ////////////////////////////////////////////////////////////////////////////////
 $WT_LINK=array(
 	'INDI'=>'individual.php?pid=',
@@ -175,7 +175,7 @@ $WT_LINK=array(
 	'OBJE'=>'mediaviewer.php?mid='
 );
 $target=($openinnew==1 ? ' target="_new"' : '');
-function pgv_href($tag, $xref, $name='')
+function wt_href($tag, $xref, $name='')
 {
 	global $WT_LINK, $target, $ged;
 	$text=($name=='' ? "$tag $xref" : "$name ($xref)");
@@ -838,7 +838,7 @@ foreach ($gedfile as $num=>$value) {
 			         ($tag=='HUSB' || $tag=='WIFE') && !isset($xref_links[$tag_data.'FAMS'.$curr_xref]) ||
 			         ($tag=='CHIL'                ) && !isset($xref_links[$tag_data.'FAMC'.$curr_xref])
 			        ))
-				$err=no_link(pgv_href($XREF_LINK[$tag], $tag_data));
+				$err=no_link(wt_href($XREF_LINK[$tag], $tag_data));
 		}
 		if ($err_level>=$error && $err=='') { // ERROR CHECKS - tags
 			if (!preg_match('/^[1-9]?[0-9]$/', $tag_level))
@@ -930,7 +930,7 @@ foreach ($gedfile as $num=>$value) {
 			for ($i=max(0,$num-$context_lines); $i<$num; ++$i)
 				printf("%07d  %s\n", $i+1, $gedfile[$i]);
 		}
-		printf("<b><font color='red'>&lrm;%07d[[</font><b>%s</b><font color='red'>]]&lrm;  %s; ".i18n::translate('see')." %s</font></b>\n", $num+1, htmlspecialchars($gedfile[$num]), $err, pgv_href($curr_l0tag, $curr_xref));
+		printf("<b><font color='red'>&lrm;%07d[[</font><b>%s</b><font color='red'>]]&lrm;  %s; ".i18n::translate('see')." %s</font></b>\n", $num+1, htmlspecialchars($gedfile[$num]), $err, wt_href($curr_l0tag, $curr_xref));
 		flush();
 		$last_err_num=$num;
 	} else
