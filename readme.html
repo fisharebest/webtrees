@@ -207,8 +207,8 @@ If you are moving to <b>webtrees</b> from an existing PhpGedView ("PGV") setup, 
 The requirements are:
 <ul>
 	<li>The PGV database and index directory must be on the same server as <b>webtrees</b>;</li>
-	<li>Your <b>webtrees</b> database user must either be the same as your PGV username and password, or if you created a new user for <b>webtrees</b>, that new user must also have full privileges to access your PGV database;</li>
-	<li>PGV must be version 4.2.3, or any SVN up to #6973 (later versions will probably work too, provided the data structures haven't changed);</li>
+	<li>Your <b>webtrees</b> MySQL database username and password must either be the same as your PGV username and password, or if you created a new user for <b>webtrees</b>, that new user must also have full privileges to access your PGV database;</li>
+	<li>PGV must be version 4.2.3, or any SVN up to #6976 (schema versions 10-14 are supported, later versions will probably work too, provided the data structures haven't changed); </li>
 	<li>All changes in PGV must be accepted (as pending edits will not be transfered)</li>
 	<li>All existing PGV users must have distinct email addresses (PGV allows users to delete their email address, or have the same email address as other users;  <b>webtrees</b> requires that all users have their own unique email address)</li>
 </ul>
