@@ -52,7 +52,7 @@ class Menu {
 
 	/**
 	* Constructor for the menu class
-	* @param string $label the label for the menu item (usually a pgv_lang variable)
+	* @param string $label the label for the menu item (usually a wt_lang variable)
 	* @param string $link The link that the user should be taken to when clicking on the menuitem
 	* @param string $pos The position of the label relative to the icon (right, left, top, bottom)
 	* @param string $flyout The direction where any submenus should appear relative to the menu item (right, down)

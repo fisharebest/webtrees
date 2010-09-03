@@ -2,7 +2,7 @@
 /**
  * JW Player module for phpGedView
  *
- * Display flv video media Items using JW Player in PGV
+ * Display flv video media Items using JW Player in webtrees
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.

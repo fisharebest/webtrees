@@ -59,7 +59,7 @@ class MediaController extends BaseController{
 				$requestedfile = rawurldecode($requestedfile);
 				// make sure the requested file is in the media directory
 				if (strpos($requestedfile, $MEDIA_DIRECTORY) !== false) {
-					// strip off the pgv directory and media directory from the requested url so just the image information is left
+					// strip off the wt directory and media directory from the requested url so just the image information is left
 					$filename = substr($requestedfile, strpos($requestedfile, $MEDIA_DIRECTORY) + strlen($MEDIA_DIRECTORY) - 1);
 					// if user requested a thumbnail, lookup permissions based on the original image
 					$filename = str_replace('/thumbs', '', $filename);

@@ -1693,7 +1693,7 @@ class Person extends GedcomRecord {
 			}
 		}
 
-		// Convert 'user-defined' unknowns into PGV unknowns
+		// Convert 'user-defined' unknowns into WT unknowns
 		$full=preg_replace('/\/(_+|\?+|-+)\//',            '/@N.N./', $full);
 		$full=preg_replace('/(?<= |^)(_+|\?+|-+)(?= |$)/', '@P.N.',   $full);
 		$surn=preg_replace('/^(_+|\?+|-+)$/',              '@N.N.',   $surn);
@@ -1760,7 +1760,7 @@ class Person extends GedcomRecord {
 
 			$this->_getAllNames[]=array(
 				'type'=>$type, 'full'=>$full, 'list'=>$list, 'sort'=>$surn.','.$givn,
-				// These extra parts used to populate the pgv_name table and the indi list
+				// These extra parts used to populate the wt_name table and the indi list
 				// For these, we don't want to translate the @N.N. into local text
 				'fullNN'=>$fullNN,
 				'listNN'=>$listNN,

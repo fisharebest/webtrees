@@ -45,7 +45,7 @@ require_once WT_ROOT."includes/classes/class_reportbase.php";
 require_once WT_ROOT."library/tcpdf/tcpdf.php";
 
 /**
-* Main PGV Report Class for PDF
+* Main WT Report Class for PDF
 *
 * @package webtrees
 * @subpackage Reports
@@ -78,7 +78,7 @@ class ReportBasePDF extends ReportBase {
 	function setup() {
 		parent::setup();
 
-		// Setup the PDF class with custom size pages because PGV supports more page sizes. If PGV sends an unknown size name then the default would be A4
+		// Setup the PDF class with custom size pages because WT supports more page sizes. If WT sends an unknown size name then the default would be A4
 		$this->pdf = new PDF($this->orientation, parent::unit, array($this->pagew, $this->pageh), self::unicode, $this->charset, self::diskcache);
 
 		// Setup the PDF margins
@@ -267,7 +267,7 @@ class ReportBasePDF extends ReportBase {
 } //-- end Report
 
 /**
-* PGV Report PDF Class
+* WT Report PDF Class
 *
 * This class inherits from the TCPDF class and is used to generate the PDF document
 * @package webtrees

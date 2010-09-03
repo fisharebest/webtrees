@@ -34,7 +34,7 @@
  * this is not the case (e.g. England prior to 1752), we need to use modified
  * years or the OS/NS notation "4 FEB 1750/51".
  *
- * NOTE: PGV should only be using the GedcomDate class.  The other classes
+ * NOTE: WT should only be using the GedcomDate class.  The other classes
  * are all for internal use only.
  */
 
@@ -600,7 +600,7 @@ class CalendarDate {
 		return $tmp;
 	}
 
-	// Create a URL that links this date to the PGV calendar
+	// Create a URL that links this date to the WT calendar
 	function CalendarURL($date_fmt="") {
 		global $DATE_FORMAT;
 		if (empty($date_fmt))
@@ -1504,7 +1504,7 @@ class GedcomDate {
 				$cal='@#dfrench r@';
 			} else {
 				if (preg_match('/^(muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah)$/', $m)) {
-					$cal='@#dhijri@'; // This is a PGV extension
+					$cal='@#dhijri@'; // This is a WT extension
 				} elseif (preg_match('/^\d+( b ?c)|\d\d\d\d \/ \d{1,4}$/', $y)) {
 					$cal='@#djulian@';
 				}
@@ -1771,7 +1771,7 @@ class GedcomDate {
 	}
 
 	// Calculate the gregorian year for a date.  This should NOT be used internally
-	// within PGV - we should keep the code "calendar neutral" to allow support for
+	// within WT - we should keep the code "calendar neutral" to allow support for
 	// jewish/arabic users.  This is only for interfacing with external entities,
 	// such as the ancestry.com search interface or the dated fact icons.
 	function gregorianYear() {

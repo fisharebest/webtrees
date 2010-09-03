@@ -1,6 +1,6 @@
 <?php
 /**
-* Date Functions that can be used by any page in PGV
+* Date Functions that can be used by any page in webtrees
 *
 * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.

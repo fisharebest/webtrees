@@ -1,9 +1,9 @@
 <?php
 /**
- * Turkish Date Functions that can be used by any page in PGV
+ * Turkish Date Functions that can be used by any page in webtrees
  * Other functions that are specific to Turkish can be added here too
  *
- * The functions in this file are common to all PGV pages and include date conversion
+ * The functions in this file are common to all webtrees pages and include date conversion
  * routines and sorting functions.
  *
  * webtrees: Web based Family History software

@@ -39,7 +39,7 @@ define('WT_CLASS_REPORTHTML_PHP', '');
 require_once WT_ROOT."includes/classes/class_reportbase.php";
 
 /**
-* Main PGV Report Class for HTML
+* Main WT Report Class for HTML
 *
 * @package webtrees
 * @subpackage Reports
