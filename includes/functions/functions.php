@@ -3053,7 +3053,7 @@ function getfilesize($bytes) {
  * @param array $array1
  * @param array $array2
  */
-function pgv_array_merge($array1, $array2) {
+function wt_array_merge($array1, $array2) {
 	foreach ($array2 as $key=>$value) {
 		$array1[$key] = $value;
 	}

@@ -662,7 +662,7 @@ if ($action=="filter") {
 		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr>";
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
-		$myfamlist = pgv_array_merge(
+		$myfamlist = wt_array_merge(
 			search_fams_names($filter_array, array(WT_GED_ID), 'AND'),
 			search_fams($filter_array, array(WT_GED_ID), 'AND', true)
 		);
