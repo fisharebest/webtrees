@@ -47,10 +47,10 @@ echo
 		#container dl {margin:0 0 40px 25px;}
 		#container dt {display:inline; width: 320px; font-weight:normal;}
 		#container dd {color: #81A9CB; margin-bottom:20px;font-weight:bold;}
-		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;
+		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
 		h2 {color: #81A9CB;}
 		.good {color: green;}
-		.bad {color: red; font-weight: bold;}
+		.bad {color: red !important;}
 		.indifferent {color: blue;}
 	</style>';
 
@@ -95,7 +95,12 @@ if ($PGV_PATH) {
 					$error=i18n::translate('The version of %s is too new', 'PhpGedView');
 				}
 			} catch (PDOException $ex) {
-				$error=i18n::translate('Error: webtrees could not connect to the PhpGedView database');
+				$error=
+					/* I18N: %s is a database name/identifier */
+					i18n::translate('<b>webtrees</b> cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
+					'<br/>'.
+					/* I18N: %s is an error message */
+					i18n::translate('MySQL gave the error: %s', $ex->getMessage());
 			}
 		}
 	}
@@ -930,4 +935,4 @@ WT_DB::prepare(
 
 WT_DB::exec("COMMIT");
 
-echo '<p><b><a href="index.php">', i18n::translate('Click here to continue'), '</a></b></p>';
+echo '<p><b><a href="editgedcoms.php">', i18n::translate('Click here to continue'), '</a></b></p>';
