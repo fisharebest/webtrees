@@ -185,19 +185,19 @@ require WT_ROOT.'includes/classes/class_wt_db.php';
 
 set_error_handler('wt_error_handler');
 
-	// Load our configuration file, so we can connect to the database
-	if (file_exists(WT_ROOT.'data/config.ini.php')) {
-		$dbconfig=parse_ini_file(WT_ROOT.'data/config.ini.php');
-		// Invalid/unreadable config file?
-		if (!is_array($dbconfig)) {
-			header('Location: site-unavailable.php');
-			exit;
-		}
-	} else {
-		// No config file. Set one up.
-		header('Location: setup.php');
+// Load our configuration file, so we can connect to the database
+if (file_exists(WT_ROOT.'data/config.ini.php')) {
+	$dbconfig=parse_ini_file(WT_ROOT.'data/config.ini.php');
+	// Invalid/unreadable config file?
+	if (!is_array($dbconfig)) {
+		header('Location: site-unavailable.php');
 		exit;
 	}
+} else {
+	// No config file. Set one up.
+	header('Location: setup.php');
+	exit;
+}
 
 // Connect to the database
 
