@@ -1407,7 +1407,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 	global $WT_IMAGES;
 
 	// Level 1 ASSO
-	if (preg_match('/^1 ASSO @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $factrec, $amatch)) {
+	if (preg_match('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $factrec, $amatch)) {
 		$person=Person::getInstance($amatch[1]);
 		$sex='';
 		if ($person) {
