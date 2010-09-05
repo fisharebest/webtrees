@@ -438,7 +438,7 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 		/* keep the session id when opening new windows */
 		var sessionid = "'.session_id().'";
 		var sessionname = "'.session_name().'";
-		var accesstime = "'.time().'";
+		var accesstime = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
 		var plusminus = new Array();
 		plusminus[0] = new Image();
 		plusminus[0].src = "'.$WT_IMAGES["plus"].'";
