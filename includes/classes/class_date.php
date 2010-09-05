@@ -400,7 +400,8 @@ class CalendarDate {
 	function Format($format, $qualifier='') {
 		// Don't show exact details for inexact dates
 		if (!$this->d) {
-			$format=str_replace(array('%d', '%j', '%l', '%D', '%N', '%S', '%w', '%z'), '', $format);
+			// The comma is for US "M D, Y" dates
+			$format=preg_replace('/%[djlDNSwz][,]?/', '', $format);
 		}
 		if (!$this->m) {
 			$format=str_replace(array('%F', '%m', '%M', '%n', '%t'), '', $format);
