@@ -2995,7 +2995,7 @@ case 'repolist.php':
 
 case 'reportengine.php':
 	$title=i18n::translate('Reports');
-	$text=i18n::translate('This page allows you to generate reports, which can be saved on your computer for later viewing.  You can view these reports at a later time, without being connected to <b>webtrees</b> or the internet.  Reports are available in two formats: PDF (for printing) and HTML (for viewing on screen).').
+	$text=i18n::translate('This page allows you to generate reports, which can be saved on your computer.  You can view these reports at a later time, without being connected to <b>webtrees</b> or the internet.  Reports are available in two formats: PDF (for printing) and HTML (for viewing on screen).').
 		'<br/><br/>'.
 		i18n::translate('Since reports can contain private data, some may only be available when you are logged in.  The site administrator can configure access levels using the module administration page.');
 	break;
