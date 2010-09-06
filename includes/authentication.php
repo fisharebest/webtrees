@@ -391,7 +391,10 @@ function addMessage($message) {
 				$header2 = $to;
 			}
 			if (!empty($header2)) {
-				webtreesMail($from, $header2, $subject2, $email2);
+				if (!webtreesMail($from, $header2, $subject2, $email2)) {
+					i18n::init(WT_LOCALE);
+					return false;
+				}
 			}
 		}
 	}
@@ -436,8 +439,12 @@ function addMessage($message) {
 			else
 				$to = getUserEmail($user_id_to);
 		}
-		if (getUserEmail($user_id_to))
-			webtreesMail($to, $from, $subject1, $email1);
+		if (getUserEmail($user_id_to)) {
+			if (!webtreesMail($to, $from, $subject1, $email1)) {
+				i18n::init(WT_LOCALE);
+				return false;
+			}
+		}
 	}
 
 	i18n::init(WT_LOCALE); // restore language settings if needed

@@ -129,7 +129,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		require_once WT_ROOT.'library/phpmailer/class.phpmailer.php';
 		$mail_object = new PHPMailer();
 		$mail_object->IsSMTP();
-		$mail_object->SetLanguage('en','languages/');
+		$mail_object->SetLanguage(WT_LOCALE, WT_ROOT.'library/phpmailer/language/');
 		if ( $SMTP_AUTH && ( $SMTP_AUTH_USER && $SMTP_AUTH_PASS ) ) {
 			$mail_object->SMTPAuth = $SMTP_AUTH;
 			$mail_object->Username = $SMTP_AUTH_USER;
@@ -165,12 +165,12 @@ function webtreesMail($to, $from, $subject, $message) {
 		$mail_object->Body = $message;
 		// attempt to send mail
 		if ( ! $mail_object->Send() ) {
-			echo 'Message was not sent.<br />';
-			echo 'Mailer error: ' . $mail_object->ErrorInfo . '<br />';
-			return;
+			echo i18n::translate('Message was not sent'), '<br />';
+			echo i18n::translate('Mailer error:'), ' ',  $mail_object->ErrorInfo, '<br />';
+			return false;
 		} else {
 			// SMTP OK
-			return;
+			return true;
 		}
 	} elseif ($SMTP_ACTIVE=='internal') {
 		// use original PHP mail sending function	
