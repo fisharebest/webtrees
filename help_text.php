@@ -3618,8 +3618,8 @@ case 'index_htmlplus_ui':
 	break;
 
 case 'index_htmlplus_content':
-	$title=i18n::translate('Advanced HTML content');
-	$text=i18n::translate('Unlike the HTML, GEDCOM News, and GEDCOM Statistics blocks, you have full control over the appearance of your block.  You can use HTML tags, and the block uses the CSS style sheets from the currently active theme.  References to information from the currently active genealogical database can be included in the text.<br /><br />Database references are signaled in the text by enclosing keywords within paired <b>&#35;</b> symbols.  For example, <b>&#35;totalFamilies&#35;</b> represents the number of families in the database.  On occasion, you may wish to use a database reference as text instead of its true meaning.  To do so, you need to replace the <b>&#35;</b> symbols enclosing the keyword by their symbolic equivalent.  For example, if your text contains <b>&amp;&#35;35;totalFamilies&amp;&#35;35;</b> it will print as <b>&#35;totalFamilies&#35;</b> instead of becoming a database reference.<br /><br />For a full example of the use of this block, please examine the &quot;GEDCOM Statistics&quot; template found in the blocks/ directory, it uses most of the styles of tags, including language and help text links.<br /><br />The <b>Keyword Examples (English only)</b> template contains a full list of all supported keywords.');
+	$title=i18n::translate('HTML content');
+	$text=i18n::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.');
 	break;
 
 case 'index_htmlplus_gedcom':
