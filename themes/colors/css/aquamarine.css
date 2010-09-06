@@ -11,9 +11,9 @@
 }
 
 body {
-font-family: tahoma, arial, helvetica, sans-serif;
+font: 12px tahoma, arial, helvetica, sans-serif;
 background:#fff;
-font-size: 11px;
+
 }
 
 * {

@@ -2,8 +2,8 @@
  * @version $Id:S$
  */
 
-.ui-accordion .ui-accordion-header a { margin-top: 10px; }
-#sidebar_pin img, #sidebar_open img {margin-top: 9px;}
+.ui-accordion .ui-accordion-header a { margin-top: 12px; }
+#sidebar_pin img, #sidebar_open img {margin-top: 12px;}
 
 select {
 background: #f0ebe2;
