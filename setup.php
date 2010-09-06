@@ -287,7 +287,11 @@ try {
 		if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
 			echo '<p class="bad">', i18n::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
 		} else {
-			if (version_compare($row->value, '5.1.31', '>=')) {
+			if (
+				version_compare($row->value, '5.1.31', '>=') ||
+				version_compare($row->value, '5.0.84', '>=') && version_compare($row->value, '5.0', '<')
+			) {
+				// MAX_ALLOWED_PACKET became read-only in MYSQL 5.1.31 and 5.0.84
 				foreach ($dbh->query("SELECT @@max_allowed_packet AS max_allowed_packet") as $row2) {
 					$max_allowed_packet=$row2->max_allowed_packet;
 					echo
