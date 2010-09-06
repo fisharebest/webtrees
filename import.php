@@ -70,7 +70,7 @@ $max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
 try {
 	WT_DB::exec("SET @@max_allowed_packet=".max($row->import_total*2, $max_allowed_packet));		
 } catch (PDOException $ex) {
-	// We can only set this on MySQL 5.1.30 or earlier
+	// We can only set this on MySQL 5.1.30/5.0.83 or earlier
 }
 
 if ($row->import_offset==0 || $row->import_total==0) {
