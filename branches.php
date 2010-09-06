@@ -147,6 +147,8 @@ function print_fams($person, $famid=null) {
 		$person->getBirthDeathYears()." {$sosa}"; 
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
+		$famcrec = get_sub_record(1, "1 FAMC @".$famid."@", $person->getGedcomRecord());
+		$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
 		if ($sex=="F" && isset($PEDI_CODES_F[$pedi]))		$label = $PEDI_CODES_F[$pedi];
 		else if ($sex=="M" && isset($PEDI_CODES_M[$pedi]))	$label = $PEDI_CODES_M[$pedi];
 		else if (isset($PEDI_CODES[$pedi]))					$label = $PEDI_CODES[$pedi];
