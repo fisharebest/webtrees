@@ -147,8 +147,8 @@ function print_fams($person, $famid=null) {
 		$person->getBirthDeathYears()." {$sosa}"; 
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
-		if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label = $PEDI_CODES_F[$pedi];
-		else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label = $PEDI_CODES_M[$pedi];
+		if ($sex=="F" && isset($PEDI_CODES_F[$pedi]))		$label = $PEDI_CODES_F[$pedi];
+		else if ($sex=="M" && isset($PEDI_CODES_M[$pedi]))	$label = $PEDI_CODES_M[$pedi];
 		else if (isset($PEDI_CODES[$pedi]))					$label = $PEDI_CODES[$pedi];
 		$current = "<span class='red'>".$label."</span> ".$current;
 	}
