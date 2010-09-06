@@ -38,7 +38,7 @@ case 'yahrzeit':
 	$text.=i18n::translate('Number of days to show: This is the number of days that <b>webtrees</b> should use when searching for events');
 	$text.=' (<i>'.i18n::plural('maximum %d day', 'maximum %d days', 30, 30).'</i>).';
 	$text.='</li><li>';
-	$text.=i18n::translate('Presentation style: Either a simple text "List"or a "Table" format.');
+	$text.=i18n::translate('Presentation style: Either a simple text "List" or a "Table" format.');
 	$text.='</li></ul>';
 	break;
 }
