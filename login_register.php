@@ -296,7 +296,7 @@ switch ($action) {
 				</form>
 			</div>
 			<script language="JavaScript" type="text/javascript">
-				document.registerform.user_name.focus();
+				document.registerform.user_realname.focus();
 			</script>
 			<?php
 			break;
@@ -345,7 +345,7 @@ switch ($action) {
 				if ($user_id=create_user($user_name, $user_realname, $user_email, crypt($user_password01))) {
 					set_user_setting($user_id, 'language',            $user_language);
 					set_user_setting($user_id, 'verified',             0);
-					set_user_setting($user_id, 'verified_by_admin',    $REQUIRE_ADMIN_AUTH_REGISTRATION);
+					set_user_setting($user_id, 'verified_by_admin',    !$REQUIRE_ADMIN_AUTH_REGISTRATION);
 					set_user_setting($user_id, 'reg_timestamp',        date('U'));
 					set_user_setting($user_id, 'reg_hashcode',         md5(crypt($user_name)));
 					set_user_setting($user_id, 'contactmethod',        "messaging2");
@@ -410,7 +410,7 @@ switch ($action) {
 
 				$message = array();
 				$message["to"]=get_user_name($webmaster_user_id);
-				$message["from"]=$WEBTREES_EMAIL;
+				$message["from"]=$user_email;
 				$message["subject"] = i18n::translate('New registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
@@ -464,7 +464,7 @@ switch ($action) {
 		</form>
 		</div>
 		<script language="JavaScript" type="text/javascript">
-			document.verifyform.user_name.focus();
+			document.verifyform.user_password.focus();
 		</script>
 		<?php
 		break;

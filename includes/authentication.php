@@ -391,7 +391,7 @@ function addMessage($message) {
 				$header2 = $to;
 			}
 			if (!empty($header2)) {
-				if (!webtreesMail($from, $header2, $subject2, $email2)) {
+				if (!webtreesMail($header2, $from, $subject2, $email2)) {
 					i18n::init(WT_LOCALE);
 					return false;
 				}
