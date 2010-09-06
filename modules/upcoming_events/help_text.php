@@ -42,7 +42,7 @@ case 'upcoming_events':
 	$text.='</li><li>';
 	$text.=i18n::translate('Show only births, deaths and marriages?: This option lets you eliminate some dated events.  For example, Divorce, Cremation, Graduation, Bar Mitzvah, First Communion, etc. should all be dated. When you select "Yes", only Births, Deaths, and Marriages will be shown. When you select "No", all dated events will be shown.');
 	$text.='</li><li>';
-	$text.=i18n::translate('Presentation style: Either a simple text "List"or a "Table" format.');
+	$text.=i18n::translate('Presentation style: Either a simple text "List" or a "Table" format.');
 	$text.='</li><li>';
 	$text.=i18n::translate('Sort style: "Alphabetically", or "By Anniversary" showing results in date order with the most recent first.');
 	$text.='</li></ul>';
