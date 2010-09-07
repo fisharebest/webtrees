@@ -56,6 +56,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		case 'config':
 			$this->config();
 			break;
+		case 'show_list':
+			$this->show_list();
+			break;
 		default:
 			die("Internal error - unknown action: $mod_action");
 		}
@@ -308,10 +311,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			echo help_link('add_story', $this->getName());
 			echo '</td></tr>';
 			if (count($stories)>0) {
-				echo '<tr><td class="optionbox center width20">', i18n::translate('Story title'), help_link('story_title', $this->getName());
-				echo '</td><td class="optionbox center width20">', i18n::translate('Person');
-				echo '</td><td class="optionbox center width20">', i18n::translate('Edit story'), help_link('edit_story', $this->getName());
-				echo '</td><td class="optionbox center width20">', i18n::translate('Delete'), help_link('delete_story', $this->getName()), '</tr>';
+				echo '<tr><td class="list_label center width50">', i18n::translate('Story title'), help_link('story_title', $this->getName());
+				echo '</td><td class="list_label center width30">', i18n::translate('Person');
+				echo '</td><td class="list_label center width10">', i18n::translate('Edit story'), help_link('edit_story', $this->getName());
+				echo '</td><td class="list_label center width10">', i18n::translate('Delete'), help_link('delete_story', $this->getName()), '</tr>';
 			}
 			foreach ($stories as $story) {
 				$indi=Person::getInstance($story->xref);
@@ -320,11 +323,11 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				} else {
 					$name=$story->xref;
 				}
-				echo '<tr><td class="optionbox center width20">';
+				echo '<tr><td class="optionbox center">';
 				echo get_block_setting($story->block_id, 'title');
 				echo '<td class="list_value_wrap">', $name, '</td>';
-				echo '<td class="optionbox center width20"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a></td>';
-				echo '<td class="optionbox center width20"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
+				echo '<td class="optionbox center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a></td>';
+				echo '<td class="optionbox center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
 				echo '</td></tr>';
 			}
 			echo '</table>';
@@ -334,4 +337,39 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			exit;
 		}
 	}
+	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=show_list"
+	// No privacy restrictions included here though - so use with care!
+	private function show_list() { 
+		global $WT_IMAGES, $TEXT_DIRECTION;
+
+			print_header($this->getTitle());
+
+			$stories=WT_DB::prepare(
+				"SELECT block_id, xref".
+				" FROM `##block` b".
+				" WHERE module_name=?".
+				" AND gedcom_id=?".
+				" ORDER BY xref"
+			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+
+			echo '<table class="list_table width90">';
+			if (count($stories)>0) {
+				echo '<tr><td class="list_label">', i18n::translate('Story title');
+				echo '</td><td class="list_label">', i18n::translate('Person');
+			}
+			foreach ($stories as $story) {
+				$indi=Person::getInstance($story->xref);
+				if ($indi) {
+					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName()."</a>";
+				} else {
+					$name=$story->xref;
+				}
+				echo '<tr><td class="list_value">';
+				echo get_block_setting($story->block_id, 'title');
+				echo '<td class="list_value_wrap">', $name, '</td>';
+				echo '</td></tr>';
+			}
+			echo '</table>';
+			print_footer();
+	}	
 }
