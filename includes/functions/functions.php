@@ -3479,7 +3479,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			$thumb = isset($WT_IMAGES["media_globe"]) ? $WT_IMAGES["media_globe"] : 'images/media/globe.png';
 			break;
 		case 'local_page':
-			$thumb = ($WT_IMAGES["media_doc"]) ? $WT_IMAGES["media_doc"] : 'images/media/doc.gif';
+			$thumb = isset($WT_IMAGES["media_doc"]) ? $WT_IMAGES["media_doc"] : 'images/media/doc.gif';
 			break;
 		case 'url_audio':
 		case 'local_audio':
