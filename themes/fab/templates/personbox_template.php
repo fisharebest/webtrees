@@ -2,7 +2,7 @@
 // Template for drawing person boxes
 //
 // This template expects that the following variables will be set
-//  $pid, $boxID, $personlinks, $icons, $title, $GEDCOM, $style,
+//  $pid, $boxID, $personlinks, $icons, $GEDCOM, $style,
 // $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
 // $addname, $showid, $float
 //

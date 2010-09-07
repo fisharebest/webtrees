@@ -572,18 +572,8 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 						// Husband ------------------------------
 						if ($husb || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = i18n::translate('Family book chart').": ".$famid;
-							}else{
-								$title = $famid." :".i18n::translate('Family book chart');
-							}
 							if ($husb) {
 								$person_parent="Yes";
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = i18n::translate('Individual information').": ".$husb->getXref();
-								}else{
-									$title = $husb->getXref()." :".i18n::translate('Individual information');
-								}
 								$parentlinks .= "<a href=\"".encode_url($husb->getLinkUrl()."&amp;tab={$tabno}")."\">";
 								$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 								$parentlinks .= "</a>";
@@ -594,18 +584,8 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 						// Wife ------------------------------
 						if ($wife || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = i18n::translate('Family book chart').": ".$famid;
-							}else{
-								$title = $famid." :".i18n::translate('Family book chart');
-							}
 							if ($wife) {
 								$person_parent="Yes";
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = i18n::translate('Individual information').": ".$wife->getXref();
-								}else{
-									$title = $wife->getXref()." :".i18n::translate('Individual information');
-								}
 								$parentlinks .= "<a href=\"".encode_url($wife->getLinkUrl()."&amp;tab={$tabno}")."\">";
 								$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 								$parentlinks .= "</a>";
@@ -630,18 +610,8 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						}else{
 							// Husband -----------------------
 							if ($husb || $num>0) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = i18n::translate('Family book chart').": ".$famid;
-								}else{
-									$title = $famid." :".i18n::translate('Family book chart');
-								}
 								if ($husb) {
 									$person_step="Yes";
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = i18n::translate('Individual information').": ".$husb->getXref();
-									}else{
-										$title = $husb->getXref()." :".i18n::translate('Individual information');
-									}
 									$parentlinks .= "<a href=\"".encode_url($husb->getLinkUrl()."&amp;tab={$tabno}")."\">";
 									$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 									$parentlinks .= "</a>";
@@ -654,18 +624,8 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						}else{
 							// Wife ----------------------------
 							if ($wife || $num>0) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = i18n::translate('Family book chart').": ".$famid;
-								}else{
-									$title = $famid." :".i18n::translate('Family book chart');
-								}
 								if ($wife) {
 									$person_step="Yes";
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = i18n::translate('Individual information').": ".$wife->getXref();
-									}else{
-										$title = $wife->getXref()." :".i18n::translate('Individual information');
-									}
 									$parentlinks .= "<a href=\"".encode_url($wife->getLinkUrl()."&amp;tab={$tabno}")."\">";
 									$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 									$parentlinks .= "</a>";
@@ -686,17 +646,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 						// Spouse ------------------------------
 						if ($spouse || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = i18n::translate('Family book chart').": ".$famid;
-							}else{
-								$title = $famid." :".i18n::translate('Family book chart');
-							}
 							if ($spouse) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = i18n::translate('Individual information').": ".$spouse->getXref();
-								}else{
-									$title = $spouse->getXref()." :".i18n::translate('Individual information');
-								}
 								$spouselinks .= "<a href=\"".encode_url($spouse->getLinkUrl()."&amp;tab={$tabno}")."\">";
 								$spouselinks .= "&nbsp;".PrintReady($spouse->getFullName());
 								$spouselinks .= "</a>";
@@ -710,7 +660,6 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						foreach($children as $c=>$child) {
 							if ($child) {
 								$persons="Yes";
-									$title = i18n::translate('Individual information').": ".$child->getXref();
 									$spouselinks .= "<li>";
 									$spouselinks .= "<a href=\"".encode_url($child->getLinkUrl()."&amp;tab={$tabno}")."\">";
 									$spouselinks .= PrintReady($child->getFullName());

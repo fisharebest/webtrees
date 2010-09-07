@@ -2,7 +2,7 @@
 /**
  * Template for drawing person boxes
  * This template expects that the following variables will be set
- *  $pid, $boxID, $personlinks, $icons, $title, $GEDCOM, $style,
+ *  $pid, $boxID, $personlinks, $icons, $GEDCOM, $style,
  * $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
  * $addname, $showid, $float
  *
@@ -47,9 +47,7 @@ if (!defined('WT_WEBTREES')) {
 			style="<?php print $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php print $icons; ?>
 		</div>
 		<?php print $thumbnail; ?>
-		<a onclick="event.cancelBubble = true;"
-			href="individual.php?pid=<?php print $pid; ?>&amp;ged=<?php print $GEDCOM; ?>"
-			title="<?php print $title; ?>">
+		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php print $pid; ?>&amp;ged=<?php print $GEDCOM; ?>">
 		<span id="namedef-<?php print $boxID; ?>" class="name<?php print $style; ?> <?php print $classfacts; ?>">
 			<?php print $name.$addname; ?>
 		</span>
