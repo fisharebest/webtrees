@@ -33,32 +33,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 switch ($help) {
 case 'top_surnames':
 	$title=i18n::translate('Top surnames block');
-	$text =i18n::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable. Using the GEDCOM administration function, you can also configure names to remove from this list.');
-	$text.='<p>';
-	$text.=i18n::translate('The configuration settings for this block allow changes to the number of names displayed, the presentation style, and an option to use scroll bars with long lists.');
+	$text =i18n::translate('This block displays the most frequently occurring surnames in the database.  The configuration settings for this block allow changes to the number of names displayed, the presentation style, and the use of scroll bars with long lists.  By using the GEDCOM administration function, an administrator can also configure names to remove from this list.');
 	$text.='</p>';
-	break;
-
-case 'style':
-	$title=i18n::translate('Presentation style');
-	$text =i18n::translate('Choose from one of these styles: ');
-	$text.='<br /><br /><dl><dt>';
-	$text.='List: ';
-	$text.='</dt><dd>';
-	$text.=i18n::translate('A vertical, bulleted list of names');
-	$text.='</dd><br /><dt>';
-	$text.='Array: ';
-	$text.='</dt><dd>';
-	$text.=i18n::translate('A simple list of names separated by semi-colons. Useful where vertical space is limited.');
-	$text.='</dd><br /><dt>';
-	$text.='Table: ';
-	$text.='</dt><dd>';
-	$text.=i18n::translate('A tabular structure, including sequence numbers, and separate indication of similar names like "van" and "Van".');
-	$text.='</dd><br /><dt>';
-	$text.='Tag cloud: ';
-	$text.='</dt><dd>';
-	$text.=i18n::translate('In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.');
-	$text.='</dd></dl>';
 	break;
 }
 ?>

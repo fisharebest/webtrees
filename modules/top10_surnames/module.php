@@ -85,7 +85,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		// I18N: There are separate lists of male/female names, containing %d names each
 		$title .= i18n::plural('Top surname', 'Top %d surnames', $num, $num);
-		$title .= help_link('top10_surnames', $this->getName());
+		$title .= help_link('top_surnames', $this->getName());
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames,'utf8_strcasecmp');
@@ -153,9 +153,9 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation style'), help_link('style', $this->getName());
+		echo i18n::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>i18n::translate('list'), 'array'=>i18n::translate('array'), 'table'=>i18n::translate('table'), 'tagcloud'=>i18n::translate('tag cloud')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>i18n::translate('bullet list'), 'array'=>i18n::translate('compact list'), 'table'=>i18n::translate('table'), 'tagcloud'=>i18n::translate('tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', false);
