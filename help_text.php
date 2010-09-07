@@ -321,7 +321,7 @@ case 'CONC':
 
 case 'CONT':
 	$title=translate_fact('CONT');
-	$text=i18n::translate('An indicator that additional data belongs to the superior value.  The information from the CONT value is to be connected to the value of the superior preceding line with a carriage return and/or new line character.  Leading spaces could be important to the formatting of the resultant text.  When importing values from CONT lines the reader should assume only one delimiter character following the CONT tag.  Assume that the rest of the leading spaces are to be a part of the value.');
+	$text=''; //('An indicator that additional data belongs to the superior value.  The information from the CONT value is to be connected to the value of the superior preceding line with a carriage return and/or new line character.  Leading spaces could be important to the formatting of the resultant text.  When importing values from CONT lines the reader should assume only one delimiter character following the CONT tag.  Assume that the rest of the leading spaces are to be a part of the value.');
 	break;
 
 case 'CONF':
