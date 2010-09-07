@@ -52,18 +52,19 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	function printFamilyHeader($famid, $label) {
 		global $WT_IMAGES, $SEARCH_SPIDER;
-	?>
-		<table>
-			<tr>
-				<td><img src="<?php print $WT_IMAGES["cfamily"]; ?>" border="0" class="icon" alt="" /></td>
-				<td><span class="subheaders"><?php print PrintReady($label); ?></span>
-				<?php if (empty($SEARCH_SPIDER)) { ?>
-					- <a href="family.php?famid=<?php print $famid; ?>"><?php print i18n::translate('View Family'); ?></a>
-				<?php }?>
-				</td>
+	
+		echo '<table>
+			<tr>';
+			if (isset($WT_IMAGES["cfamily"])) {
+				echo '<td><img src="', $WT_IMAGES["cfamily"], '" border="0" class="icon" alt="" /></td>';
+			}
+			echo '<td><span class="subheaders">', PrintReady($label), '</span>';
+			if (empty($SEARCH_SPIDER)) { 
+				echo ' - <a href="family.php?famid=', $famid, '">', i18n::translate('View Family'), '</a>';
+			 }
+			echo '</td>
 			</tr>
-		</table>
-	<?php
+		</table>';
 	}
 
 	/**
