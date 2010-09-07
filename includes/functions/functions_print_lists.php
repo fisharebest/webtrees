@@ -1079,7 +1079,7 @@ function print_media_table($datalist, $legend="") {
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
 		echo "<a href=\"", encode_url($media->getLinkUrl()), "\" class=\"list_item name2\">";
 		if ($media->canDisplayDetails())
-			echo '<img src=', thumbnail_file($media->file, false), ' height="15" /> ';
+			echo '<img src="', thumbnail_file($media->file, false), '" height="15" /> ';
 		echo PrintReady($name), "</a>";
 		if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
 			echo "<br /><a href=\"", encode_url($media->getLinkUrl()), "\">", basename($media->file), "</a>";
