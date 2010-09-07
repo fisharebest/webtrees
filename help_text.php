@@ -56,12 +56,12 @@ case 'ADDR':
 
 case 'ADR1':
 	$title=translate_fact('ADR1');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'ADR2':
 	$title=translate_fact('ADR2');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'ADOP':
@@ -302,7 +302,7 @@ case 'CHRA':
 case 'CITN':
     // This tag is not in the 5.5.1 spec
 	$title=translate_fact('CITN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'CITY':
@@ -313,7 +313,7 @@ case 'CITY':
 case 'COMM':
     // This tag is not in the 5.5.1 spec
 	$title=translate_fact('COMM');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'CONC':
@@ -520,62 +520,62 @@ case 'FAMC':
 
 case 'FAMC:HUSB:BIRT:PLAC':
 	$title=translate_fact('FAMC:HUSB:BIRT:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:HUSB:FAMC:HUSB:GIVN':
 	$title=translate_fact('FAMC:HUSB:FAMC:HUSB:GIVN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:HUSB:FAMC:WIFE:GIVN':
 	$title=translate_fact('FAMC:HUSB:FAMC:WIFE:GIVN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:HUSB:GIVN':
 	$title=translate_fact('FAMC:HUSB:GIVN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:HUSB:OCCU':
 	$title=translate_fact('FAMC:HUSB:OCCU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:HUSB:OCCU':
 	$title=translate_fact('FAMC:HUSB:OCCU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:MARR:PLAC':
 	$title=translate_fact('FAMC:MARR:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:MARR:PLAC':
 	$title=translate_fact('FAMC:MARR:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:WIFE:FAMC:HUSB:GIVN':
 	$title=translate_fact('FAMC:WIFE:FAMC:HUSB:GIVN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:WIFE:FAMC:WIFE:GIVN':
 	$title=translate_fact('FAMC:WIFE:FAMC:WIFE:GIVN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:WIFE:GIVN':
 	$title=translate_fact('FAMC:WIFE:GIVN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMC:WIFE:SURN':
 	$title=translate_fact('FAMC:WIFE:SURN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMF':
@@ -590,67 +590,67 @@ case 'FAMS':
 
 case 'FAMS:CENS:DATE':
 	$title=translate_fact('FAMS:CENS:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:CENS:PLAC':
 	$title=translate_fact('FAMS:CENS:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:CHIL:BIRT:PLAC':
 	$title=translate_fact('FAMS:CHIL:BIRT:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:DIV:DATE':
 	$title=translate_fact('FAMS:DIV:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:DIV:PLAC':
 	$title=translate_fact('FAMS:DIV:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:MARR:DATE':
 	$title=translate_fact('FAMS:MARR:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:MARR:PLAC':
 	$title=translate_fact('FAMS:MARR:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:NOTE':
 	$title=translate_fact('FAMS:NOTE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:SLGS:DATE':
 	$title=translate_fact('FAMS:SLGS:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:SLGS:PLAC':
 	$title=translate_fact('FAMS:SLGS:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:SLGS:TEMP':
 	$title=translate_fact('FAMS:SLGS:TEMP');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:SPOUSE:BIRT:PLAC':
 	$title=translate_fact('FAMS:SPOUSE:BIRT:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAMS:SPOUSE:DEAT:PLAC':
 	$title=translate_fact('FAMS:SPOUSE:DEAT:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'FAX':
@@ -724,127 +724,127 @@ case 'HUSB':
 
 case 'IDNO':
 	$title=translate_fact('IDNO');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'IMMI':
 	$title=translate_fact('IMMI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'INDI':
 	$title=translate_fact('INDI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'INFL':
 	$title=translate_fact('INFL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'LANG':
 	$title=translate_fact('LANG');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'LATI':
 	$title=translate_fact('LATI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'LEGA':
 	$title=translate_fact('LEGA');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'LONG':
 	$title=translate_fact('LONG');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MAP':
 	$title=translate_fact('MAP');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARB':
 	$title=translate_fact('MARB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARB:DATE':
 	$title=translate_fact('MARB:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARB:PLAC':
 	$title=translate_fact('MARB:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARB:SOUR':
 	$title=translate_fact('MARB:SOUR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARC':
 	$title=translate_fact('MARC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARL':
 	$title=translate_fact('MARL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR':
 	$title=translate_fact('MARR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR:':
 	$title=translate_fact('MARR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR:PLAC':
 	$title=translate_fact('MARR:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR:SOUR':
 	$title=translate_fact('MARR:SOUR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR_CIVIL':
 	$title=translate_fact('MARR_CIVIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR_PARTNERS':
 	$title=translate_fact('MARR_PARTNERS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR_RELIGIOUS':
 	$title=translate_fact('MARR_RELIGIOUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARR_UNKNOWN':
 	$title=translate_fact('MARR_UNKNOWN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MARS':
 	$title=translate_fact('MARS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'MEDI':
 	$title=translate_fact('MEDI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'NAME':
@@ -854,22 +854,22 @@ case 'NAME':
 
 case 'NAME:FONE':
 	$title=translate_fact('NAME:FONE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'NAME:_HEB':
 	$title=translate_fact('NAME:_HEB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'NATI':
 	$title=translate_fact('NATI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'NATU':
 	$title=translate_fact('NATU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'NCHI':
@@ -884,7 +884,7 @@ case 'NICK':
 
 case 'NMR':
 	$title=translate_fact('NMR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'NOTE':
@@ -904,22 +904,22 @@ case 'NSFX':
 
 case 'OBJE':
 	$title=translate_fact('OBJE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'OCCU':
 	$title=translate_fact('OCCU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'ORDI':
 	$title=translate_fact('ORDI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'ORDN':
 	$title=translate_fact('ORDN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'PAGE':
@@ -944,37 +944,37 @@ case 'PLAC':
 
 case 'PLAC:FONE':
 	$title=translate_fact('PLAC:FONE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'PLAC:ROMN':
 	$title=translate_fact('PLAC:ROMN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'PLAC:_HEB':
 	$title=translate_fact('PLAC:_HEB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'POST':
 	$title=translate_fact('POST');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'PROB':
 	$title=translate_fact('PROB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'PROP':
 	$title=translate_fact('PROP');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'PUBL':
 	$title=translate_fact('PUBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'QUAY':
@@ -984,7 +984,7 @@ case 'QUAY':
 
 case 'REFN':
 	$title=translate_fact('REFN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'RELA':
@@ -994,17 +994,17 @@ case 'RELA':
 
 case 'RELI':
 	$title=translate_fact('RELI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'REPO':
 	$title=translate_fact('REPO');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'RESI':
 	$title=translate_fact('RESI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'RESN':
@@ -1027,22 +1027,22 @@ case 'RESN':
 
 case 'RETI':
 	$title=translate_fact('RETI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'RFN':
 	$title=translate_fact('RFN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'RIN':
 	$title=translate_fact('RIN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'ROLE':
 	$title=translate_fact('ROLE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'ROMN':
@@ -1052,7 +1052,7 @@ case 'ROMN':
 
 case 'SERV':
 	$title=translate_fact('SERV');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'SEX':
@@ -1067,12 +1067,12 @@ case 'SHARED_NOTE':
 
 case 'SLGC':
 	$title=translate_fact('SLGC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'SLGS':
 	$title=translate_fact('SLGS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'SOUR':
@@ -1087,12 +1087,12 @@ case 'SPFX':
 
 case 'SSN':
 	$title=translate_fact('SSN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'STAE':
 	$title=translate_fact('STAE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'STAT':
@@ -1102,17 +1102,17 @@ case 'STAT':
 
 case 'STAT:DATE':
 	$title=translate_fact('STAT:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'SUBM':
 	$title=translate_fact('SUBM');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'SUBN':
 	$title=translate_fact('SUBN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'SURN':
@@ -1147,22 +1147,22 @@ case 'TITL':
 
 case 'TITL:FONE':
 	$title=translate_fact('TITL:FONE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'TITL:ROMN':
 	$title=translate_fact('TITL:ROMN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'TITL:_HEB':
 	$title=translate_fact('TITL:_HEB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'TRLR':
 	$title=translate_fact('TRLR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'TYPE':
@@ -1177,578 +1177,578 @@ case 'URL':
 
 case 'VERS':
 	$title=translate_fact('VERS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'WIFE':
 	$title=translate_fact('WIFE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'WILL':
 	$title=translate_fact('WILL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'WWW':
 	$title=translate_fact('WWW');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_CHIL':
 	$title=translate_fact('_ADOP_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_COUS':
 	$title=translate_fact('_ADOP_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_FSIB':
 	$title=translate_fact('_ADOP_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_GCHI':
 	$title=translate_fact('_ADOP_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_GGCH':
 	$title=translate_fact('_ADOP_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_HSIB':
 	$title=translate_fact('_ADOP_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_MSIB':
 	$title=translate_fact('_ADOP_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_NEPH':
 	$title=translate_fact('_ADOP_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADOP_SIBL':
 	$title=translate_fact('_ADOP_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADPF':
 	$title=translate_fact('_ADPF');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_ADPM':
 	$title=translate_fact('_ADPM');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_AKA':
 case '_AKAN':
 	$title=translate_fact('_AKA');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_CHIL':
 	$title=translate_fact('_BAPM_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_COUS':
 	$title=translate_fact('_BAPM_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_FSIB':
 	$title=translate_fact('_BAPM_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_GCHI':
 	$title=translate_fact('_BAPM_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_GGCH':
 	$title=translate_fact('_BAPM_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_HSIB':
 	$title=translate_fact('_BAPM_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_MSIB':
 	$title=translate_fact('_BAPM_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_NEPH':
 	$title=translate_fact('_BAPM_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BAPM_SIBL':
 	$title=translate_fact('_BAPM_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIBL':
 	$title=translate_fact('_BIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_CHIL':
 	$title=translate_fact('_BIRT_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_COUS':
 	$title=translate_fact('_BIRT_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_FSIB':
 	$title=translate_fact('_BIRT_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_GCHI':
 	$title=translate_fact('_BIRT_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_GGCH':
 	$title=translate_fact('_BIRT_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_HSIB':
 	$title=translate_fact('_BIRT_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_MSIB':
 	$title=translate_fact('_BIRT_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_NEPH':
 	$title=translate_fact('_BIRT_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BIRT_SIBL':
 	$title=translate_fact('_BIRT_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BRTM':
 	$title=translate_fact('_BRTM');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BRTM:DATE':
 	$title=translate_fact('_BRTM:DATE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BRTM:PLAC':
 	$title=translate_fact('_BRTM:PLAC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BRTM:SOUR':
 	$title=translate_fact('_BRTM:SOUR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_CHIL':
 	$title=translate_fact('_BURI_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_COUS':
 	$title=translate_fact('_BURI_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_FATH':
 	$title=translate_fact('_BURI_FATH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_FSIB':
 	$title=translate_fact('_BURI_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_GCHI':
 	$title=translate_fact('_BURI_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_GGCH':
 	$title=translate_fact('_BURI_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_GGPA':
 	$title=translate_fact('_BURI_GGPA');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_GPAR':
 	$title=translate_fact('_BURI_GPAR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_HSIB':
 	$title=translate_fact('_BURI_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_MOTH':
 	$title=translate_fact('_BURI_MOTH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_MSIB':
 	$title=translate_fact('_BURI_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_NEPH':
 	$title=translate_fact('_BURI_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_SIBL':
 	$title=translate_fact('_BURI_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_BURI_SPOU':
 	$title=translate_fact('_BURI_SPOU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_CHIL':
 	$title=translate_fact('_CHR_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_COUS':
 	$title=translate_fact('_CHR_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_FSIB':
 	$title=translate_fact('_CHR_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_GCHI':
 	$title=translate_fact('_CHR_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_GGCH':
 	$title=translate_fact('_CHR_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_HSIB':
 	$title=translate_fact('_CHR_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_MSIB':
 	$title=translate_fact('_CHR_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_NEPH':
 	$title=translate_fact('_CHR_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CHR_SIBL':
 	$title=translate_fact('_CHR_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_COML':
 	$title=translate_fact('_COML');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_CHIL':
 	$title=translate_fact('_CREM_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_COUS':
 	$title=translate_fact('_CREM_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_FATH':
 	$title=translate_fact('_CREM_FATH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_FSIB':
 	$title=translate_fact('_CREM_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_GCHI':
 	$title=translate_fact('_CREM_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_GGCH':
 	$title=translate_fact('_CREM_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_GGPA':
 	$title=translate_fact('_CREM_GGPA');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_GPAR':
 	$title=translate_fact('_CREM_GPAR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_HSIB':
 	$title=translate_fact('_CREM_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_MOTH':
 	$title=translate_fact('_CREM_MOTH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_MSIB':
 	$title=translate_fact('_CREM_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_NEPH':
 	$title=translate_fact('_CREM_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_SIBL':
 	$title=translate_fact('_CREM_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_CREM_SPOU':
 	$title=translate_fact('_CREM_SPOU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DBID':
 	$title=translate_fact('_DBID');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_CHIL':
 	$title=translate_fact('_DEAT_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_COUS':
 	$title=translate_fact('_DEAT_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_FATH':
 	$title=translate_fact('_DEAT_FATH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_FSIB':
 	$title=translate_fact('_DEAT_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_GCHI':
 	$title=translate_fact('_DEAT_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_GGCH':
 	$title=translate_fact('_DEAT_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_GGPA':
 	$title=translate_fact('_DEAT_GGPA');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_GPAR':
 	$title=translate_fact('_DEAT_GPAR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_HSIB':
 	$title=translate_fact('_DEAT_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_MOTH':
 	$title=translate_fact('_DEAT_MOTH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_MSIB':
 	$title=translate_fact('_DEAT_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_NEPH':
 	$title=translate_fact('_DEAT_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_SIBL':
 	$title=translate_fact('_DEAT_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEAT_SPOU':
 	$title=translate_fact('_DEAT_SPOU');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DEG':
 	$title=translate_fact('_DEG');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_DETS':
 	$title=translate_fact('_DETS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_EMAIL':
 	$title=translate_fact('_EMAIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_EYEC':
 	$title=translate_fact('_EYEC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA1':
 	$title=translate_fact('_FA1');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA2':
 	$title=translate_fact('_FA2');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA3':
 	$title=translate_fact('_FA3');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA4':
 	$title=translate_fact('_FA4');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA5':
 	$title=translate_fact('_FA5');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA6':
 	$title=translate_fact('_FA6');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA7':
 	$title=translate_fact('_FA7');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA8':
 	$title=translate_fact('_FA8');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA9':
 	$title=translate_fact('_FA9');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA10':
 	$title=translate_fact('_FA10');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA11':
 	$title=translate_fact('_FA11');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA12':
 	$title=translate_fact('_FA12');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FA13':
 	$title=translate_fact('_FA13');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FAMC_EMIG':
 	$title=translate_fact('_FAMC_EMIG');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FAMC_RESI':
 	$title=translate_fact('_FAMC_RESI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FNRL':
 	$title=translate_fact('_FNRL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_FREL':
 	$title=translate_fact('_FREL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_GEDF':
 	$title=translate_fact('_GEDF');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_HAIR':
 	$title=translate_fact('_HAIR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_HEB':
@@ -1758,87 +1758,87 @@ case '_HEB':
 
 case '_HEIG':
 	$title=translate_fact('_HEIG');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_HNM':
 	$title=translate_fact('_HNM');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_HOL':
 	$title=translate_fact('_HOL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_INTE':
 	$title=translate_fact('_INTE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_CHIL':
 	$title=translate_fact('_MARB_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_COUS':
 	$title=translate_fact('_MARB_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_FAMC':
 	$title=translate_fact('_MARB_FAMC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_FATH':
 	$title=translate_fact('_MARB_FATH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_FSIB':
 	$title=translate_fact('_MARB_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_GCHI':
 	$title=translate_fact('_MARB_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_GGCH':
 	$title=translate_fact('_MARB_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_HSIB':
 	$title=translate_fact('_MARB_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_MOTH':
 	$title=translate_fact('_MARB_MOTH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_MSIB':
 	$title=translate_fact('_MARB_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_NEPH':
 	$title=translate_fact('_MARB_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARB_SIBL':
 	$title=translate_fact('_MARB_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARI':
 	$title=translate_fact('_MARI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARNM':
@@ -1848,132 +1848,132 @@ case '_MARNM':
 
 case '_MARNM_SURN':
 	$title=translate_fact('_MARNM_SURN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_CHIL':
 	$title=translate_fact('_MARR_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_COUS':
 	$title=translate_fact('_MARR_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_FAMC':
 	$title=translate_fact('_MARR_FAMC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_FATH':
 	$title=translate_fact('_MARR_FATH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_FSIB':
 	$title=translate_fact('_MARR_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_GCHI':
 	$title=translate_fact('_MARR_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_GGCH':
 	$title=translate_fact('_MARR_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_HSIB':
 	$title=translate_fact('_MARR_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_MOTH':
 	$title=translate_fact('_MARR_MOTH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_MSIB':
 	$title=translate_fact('_MARR_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_NEPH':
 	$title=translate_fact('_MARR_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MARR_SIBL':
 	$title=translate_fact('_MARR_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MBON':
 	$title=translate_fact('_MBON');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MDCL':
 	$title=translate_fact('_MDCL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MEDC':
 	$title=translate_fact('_MEDC');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MEND':
 	$title=translate_fact('_MEND');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MILI':
 	$title=translate_fact('_MILI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MILT':
 	$title=translate_fact('_MILT');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MREL':
 	$title=translate_fact('_MREL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_MSTAT':
 	$title=translate_fact('_MSTAT');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_NAME':
 	$title=translate_fact('_NAME');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_NAMS':
 	$title=translate_fact('_NAMS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_NLIV':
 	$title=translate_fact('_NLIV');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_NMAR':
 	$title=translate_fact('_NMAR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_NMR':
 	$title=translate_fact('_NMR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_PRIM':
@@ -1983,37 +1983,37 @@ case '_PRIM':
 
 case '_WT_USER':
 	$title=translate_fact('_WT_USER');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_PRMN':
 	$title=translate_fact('_PRMN');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_SCBK':
 	$title=translate_fact('_SCBK');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_SEPR':
 	$title=translate_fact('_SEPR');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_SSHOW':
 	$title=translate_fact('_SSHOW');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_STAT':
 	$title=translate_fact('_STAT');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_SUBQ':
 	$title=translate_fact('_SUBQ');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_THUM':
@@ -2023,77 +2023,77 @@ case '_THUM':
 
 case '_TODO':
 	$title=translate_fact('_TODO');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_TYPE':
 	$title=translate_fact('_TYPE');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_UID':
 	$title=translate_fact('_UID');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_URL':
 	$title=translate_fact('_URL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_WEIG':
 	$title=translate_fact('_WEIG');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '_YART':
 	$title=translate_fact('_YART');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_CHIL':
 	$title=translate_fact('__BRTM_CHIL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_COUS':
 	$title=translate_fact('__BRTM_COUS');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_FSIB':
 	$title=translate_fact('__BRTM_FSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_GCHI':
 	$title=translate_fact('__BRTM_GCHI');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_GGCH':
 	$title=translate_fact('__BRTM_GGCH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_HSIB':
 	$title=translate_fact('__BRTM_HSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_MSIB':
 	$title=translate_fact('__BRTM_MSIB');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_NEPH':
 	$title=translate_fact('__BRTM_NEPH');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case '__BRTM_SIBL':
 	$title=translate_fact('__BRTM_SIBL');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 
@@ -2840,12 +2840,12 @@ case 'ZOOM_BOXES':
 
 case 'addmedia.php':
 	$title=i18n::translate('Add a new media item');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'addsearchlink.php':
 	$title=i18n::translate('Add a local link');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'admin.php':
@@ -2860,7 +2860,7 @@ case 'ancestry.php':
 
 case 'branches.php':
 	$title=i18n::translate('Branches');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'calendar.php':
@@ -2871,7 +2871,7 @@ case 'calendar.php':
 
 case 'compact.php':
 	$title=i18n::translate('Compact chart');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'descendancy.php':
@@ -2916,7 +2916,7 @@ case 'fanchart.php':
 
 case 'gedcheck.php':
 	$title=i18n::translate('GEDCOM checker');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'hourglass.php':
@@ -2960,7 +2960,7 @@ case 'login_register.php':
 
 case 'logs.php':
 	$title=i18n::translate('Logs');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'manageservers.php':
@@ -2970,7 +2970,7 @@ case 'manageservers.php':
 
 case 'media.php':
 	$title=i18n::translate('Manage multimedia');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'medialist.php':
@@ -2980,17 +2980,17 @@ case 'medialist.php':
 
 case 'module_admin.php':
 	$title=i18n::translate('Module administration');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'note.php':
 	$title=i18n::translate('Shared note');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'notelist.php':
 	$title=i18n::translate('Shared notes');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'pedigree.php':
@@ -3032,7 +3032,7 @@ case 'search.php':
 
 case 'search_advanced.php':
 	$title=i18n::translate('Advanced search');
-	$text=i18n::translate('');
+	$text='';
 	break;
 
 case 'search_engine.php':
