@@ -40,7 +40,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('This block shows a table of the most frequently occurring surnames in the database.  The actual number of surnames shown is configurable.  You can configure the GEDCOM to remove names from this list.');
+		return i18n::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable. Using the GEDCOM administration function, you can also configure names to remove from this list.');
 	}
 
 	// Implement class WT_Module_Block
