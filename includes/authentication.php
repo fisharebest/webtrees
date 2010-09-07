@@ -331,7 +331,7 @@ function addMessage($message) {
 		return false;
 	}
 
-	$user_id_from=get_user_id($message['from']);
+	$user_id_from=get_user_by_email($message['from']);
 	$user_id_to  =get_user_id($message['to']);
 
 	require_once WT_ROOT.'includes/functions/functions_mail.php';
@@ -362,9 +362,9 @@ function addMessage($message) {
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
 		if (!get_site_setting('SMTP_SIMPLE_MAIL'))
-			$from = hex4email($fromFullName, 'UTF-8'). " <".getUserEmail($user_id_from).">";
+			$from = hex4email($fromFullName, 'UTF-8'). " <".$message['from'].">";
 		else
-			$from = getUserEmail($user_id_from);
+			$from = $message['from'];
 		$email2 = i18n::translate('You sent the following message to a webtrees user:')."\r\n\r\n".$email2;
 
 	}

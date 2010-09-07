@@ -402,7 +402,8 @@ switch ($action) {
 				$mail_body .= i18n::translate('Hello Administrator ...') . "\r\n\r\n";
 				$mail_body .= i18n::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME.WT_SCRIPT_PATH) . "\r\n\r\n";
 				$mail_body .= i18n::translate('User name') . " " . $user_name . "\r\n";
-				$mail_body .= i18n::translate('Real name') . " " . $user_realname . "\r\n\r\n";
+				$mail_body .= i18n::translate('Real name') . " " . $user_realname . "\r\n";
+				$mail_body .= i18n::translate('Email Address:') . " " . $user_email . "\r\n\r\n";
 				$mail_body .= i18n::translate('Comments').": " . $user_comments . "\r\n\r\n";
 				$mail_body .= i18n::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . "\r\n\r\n";
 				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) $mail_body .= i18n::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') . "\r\n";
