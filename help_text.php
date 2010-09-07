@@ -56,27 +56,27 @@ case 'ADDR':
 
 case 'ADR1':
 	$title=translate_fact('ADR1');
-	$text==i18n::translate('');
+	$text=i18n::translate('');
 	break;
 
 case 'ADR2':
 	$title=translate_fact('ADR2');
-	$text==i18n::translate('');
+	$text=i18n::translate('');
 	break;
 
 case 'ADOP':
 	$title=translate_fact('ADOP');
-	$text==i18n::translate('Pertaining to creation of a legally approved child-parent relationship that does not exist biologically.');
+	$text=i18n::translate('Pertaining to creation of a legally approved child-parent relationship that does not exist biologically.');
 	break;
 
 case 'AFN':
 	$title=translate_fact('AFN');
-	$text==i18n::translate('A unique permanent record file number of an individual record stored in Ancestral File.');
+	$text=i18n::translate('A unique permanent record file number of an individual record stored in Ancestral File.');
 	break;
 
 case 'AGE':
 	$title=translate_fact('AGE');
-	$text==i18n::translate('The age of the individual at the time an event occurred, or the age listed in the document.');
+	$text=i18n::translate('The age of the individual at the time an event occurred, or the age listed in the document.');
 	break;
 
 case 'AGNC':
@@ -86,22 +86,22 @@ case 'AGNC':
 
 case 'ALIA':
 	$title=translate_fact('ALIA');
-	$text==i18n::translate('An indicator to link different record descriptions of a person who may be the same person.');
+	$text=i18n::translate('An indicator to link different record descriptions of a person who may be the same person.');
 	break;
 
 case 'ANCE':
 	$title=translate_fact('ANCE');
-	$text==i18n::translate('Pertaining to forbearers of an individual.');
+	$text=i18n::translate('Pertaining to forbearers of an individual.');
 	break;
 
 case 'ANCI':
 	$title=translate_fact('ANCI');
-	$text==i18n::translate('Indicates an interest in additional research for ancestors of this individual.');
+	$text=i18n::translate('Indicates an interest in additional research for ancestors of this individual.');
 	break;
 
 case 'ANUL':
 	$title=translate_fact('ANUL');
-	$text==i18n::translate('Declaring a marriage void from the beginning (never existed).');
+	$text=i18n::translate('Declaring a marriage void from the beginning (never existed).');
 	break;
 
 case 'ASSO':
@@ -111,17 +111,17 @@ case 'ASSO':
 
 case 'AUTH':
 	$title=translate_fact('AUTH');
-	$text==i18n::translate('The name of the individual who created or compiled information.');
+	$text=i18n::translate('The name of the individual who created or compiled information.');
 	break;
 
 case 'BAPL':
 	$title=translate_fact('BAPL');
-	$text==i18n::translate('The event of baptism performed at age eight or later by priesthood authority of the LDS Church.');
+	$text=i18n::translate('The event of baptism performed at age eight or later by priesthood authority of the LDS Church.');
 	break;
 
 case 'BAPM':
 	$title=translate_fact('BAPM');
-	$text==i18n::translate('The event of baptism, performed in infancy or later.');
+	$text=i18n::translate('The event of baptism, performed in infancy or later.');
 	// I omitted "(not LDS)" since many people choose to use this
 	// for all baptisms, rather than treat LDS as a special case.
 	// (Wes Groleau)
@@ -129,108 +129,108 @@ case 'BAPM':
 
 case 'BAPM:DATE':
 	$title=translate_fact('BAPM:DATE');
-	$text==i18n::translate('Date of baptism.');
+	$text=i18n::translate('Date of baptism.');
 	break;
 
 case 'BAPM:PLAC':
 	$title=translate_fact('BAPM:PLAC');
-	$text==i18n::translate('Place of bptism');
+	$text=i18n::translate('Place of baptism');
 	break;
 
 case 'BAPM:SOUR':
 	$title=translate_fact('BAPM:SOUR');
-	$text==i18n::translate('Source for baptism');
+	$text=i18n::translate('Source for baptism');
 	break;
 
 case 'BARM':
 	$title=translate_fact('BARM');
-	$text==i18n::translate('The ceremonial event held when a Jewish boy reaches age 13.');
+	$text=i18n::translate('The ceremonial event held when a Jewish boy reaches age 13.');
 	break;
 
 case 'BARM:DATE':
 	$title=translate_fact('BARM:DATE');
-	$text==i18n::translate('Date of bar mitzvah');
+	$text=i18n::translate('Date of bar mitzvah');
 	break;
 
 case 'BARM:PLAC':
 	$title=translate_fact('BARM:PLAC');
-	$text==i18n::translate('Place of bar mitzvah');
+	$text=i18n::translate('Place of bar mitzvah');
 	break;
 
 case 'BARM:SOUR':
 	$title=translate_fact('BARM:SOUR');
-	$text==i18n::translate('Source for bar mitzvah');
+	$text=i18n::translate('Source for bar mitzvah');
 	break;
 
 case 'BASM':
 	$title=translate_fact('BASM');
-	$text==i18n::translate('The ceremonial event held when a Jewish girl reaches age 13, also known as "Bat Mitzvah."');
+	$text=i18n::translate('The ceremonial event held when a Jewish girl reaches age 13, also known as "Bat Mitzvah."');
 	break;
 
 case 'BASM:DATE':
 	$title=translate_fact('BASM:DATE');
-	$text==i18n::translate('Date of bas mitzvah');
+	$text=i18n::translate('Date of bas mitzvah');
 	break;
 
 case 'BASM:PLAC':
 	$title=translate_fact('BASM:PLAC');
-	$text==i18n::translate('Place of bas mitzvah');
+	$text=i18n::translate('Place of bas mitzvah');
 	break;
 
 case 'BASM:SOUR':
 	$title=translate_fact('BASM:SOUR');
-	$text==i18n::translate('Source for bas mitzvah');
+	$text=i18n::translate('Source for bas mitzvah');
 	break;
 
 case 'BIRT':
 	$title=translate_fact('BIRT');
-	$text==i18n::translate('The event of entering into life.');
+	$text=i18n::translate('The event of entering into life.');
 	break;
 
 case 'BIRT:DATE':
 	$title=translate_fact('BIRT:DATE');
-	$text==i18n::translate('Date of birth');
+	$text=i18n::translate('Date of birth');
 	break;
 
 case 'BIRT:PLAC':
 	$title=translate_fact('BIRT:PLAC');
-	$text==i18n::translate('Place of birth');
+	$text=i18n::translate('Place of birth');
 	break;
 
 case 'BIRT:SOUR':
 	$title=translate_fact('BIRT:SOUR');
-	$text==i18n::translate('Source for birth');
+	$text=i18n::translate('Source for birth');
 	break;
 
 case 'BLES':
 	$title=translate_fact('BLES');
-	$text==i18n::translate('A religious event of bestowing divine care or intercession.  ');
+	$text=i18n::translate('A religious event of bestowing divine care or intercession.  ');
 	$text.=i18n::translate('Sometimes given in connection with a naming ceremony.');
 	break;
 
 case 'BLOB':
 	$title=translate_fact('BLOB');
-	$text==i18n::translate('"Binary Large OBject"--No longer used in GEDCOM 5.5.1');
+	$text=i18n::translate('"Binary Large OBject"--No longer used in GEDCOM 5.5.1');
 	break;
 
 case 'BURI':
 	$title=translate_fact('BURI');
-	$text==i18n::translate('The event of the proper disposing of the mortal remains of a deceased person.');
+	$text=i18n::translate('The event of the proper disposing of the mortal remains of a deceased person.');
 	break;
 
 case 'BURI:DATE':
 	$title=translate_fact('BURI:DATE');
-	$text==i18n::translate('Date of burial');
+	$text=i18n::translate('Date of burial');
 	break;
 
 case 'BURI:PLAC':
 	$title=translate_fact('BURI:PLAC');
-	$text==i18n::translate('Place of burial');
+	$text=i18n::translate('Place of burial');
 	break;
 
 case 'BURI:SOUR':
 	$title=translate_fact('BURI:SOUR');
-	$text==i18n::translate('Source for burial');
+	$text=i18n::translate('Source for burial');
 	break;
 
 case 'CALN':
@@ -3020,7 +3020,9 @@ case 'repolist.php':
 
 case 'reportengine.php':
 	$title=i18n::translate('Reports');
-	$text=i18n::translate('The items in the reports menu will generate PDF files for printing.<br /><br />The first step is to choose a report to run.  After you have selected a report to run, you will be asked to provide some information specific to that report, such as which individual or family to start with and whether or not to show photos.  When you are ready to run the report, click the <b>Download report</b> button to download the report to your computer.<br /><br /><br />~Reporting Engine~<br />The <b>webtrees</b> Reporting Engine uses XML template files to automatically generate PDF reports.<br /><br />The reports available in the <b>Select report</b> list are generated from the report XML files found in the "reports" directory.  You can create your own reports by making a copy of any of the templates provided and modifying the template XML.  To add your custom report, just put it in the "reports" directory and <b>webtrees</b> will automatically detect it and make it available in the <b>Select report</b> drop-down list.<br /><br /><br />~PDF FILE FORMAT~<br />The <b>webtrees</b> Reporting Engine produces downloadable reports in Adobe&reg; PDF format.  The GEDCOM 5.5.1 Standard specification, mentioned elsewhere in this Help file, is also downloadable as a PDF file.  PDF is an acronym for <b>P</b>ortable <b>D</b>ocument <b>F</b>ormat.<br /><br />PDF files are not viewable or printable by the standard software on your PC.  If you already have Adobe Reader installed (it\'s often packaged with other software), you do not need to replace or upgrade it to deal with report files produced by <b>webtrees</b>.<br /><br />Adobe Reader, the viewing and printing program for these files, is available free of charge from Adobe Systems Inc.  The free Adobe&reg; Reader can be downloaded from the <a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank"><b>Adobe Systems Inc.</b></a> web site.  You may find copies of "Adobe Reader" available for download from other Internet sites, but we strongly advise you to trust <u>only</u> the Adobe Systems Inc. site.<br /><br />Adobe Reader is available for many different systems, including Microsoft&reg; Windows and Apple&reg; Macintosh, in many languages other than English.  If you have a Windows 95 system, be sure to download Acrobat Reader version 5.0.5.  Versions more recent than this will not install correctly on Windows 95 systems.<br /><br /><a href="http://www.adobe.com/products/acrobat/readstep2.html" target="_blank"><b>Download Adobe Reader here</b></a><br /><br /><br />~Ahnentafel Report~<br />This is a report of the selected person and his ancestors, printed in booklet format.  It starts with the first person and then continues with his or her parents, grand-parents, etc.<br /><br />Note that the ahnentafel report is only available in English at this time.<br /><br /><br />~Birth Date and Place Report~<br />With this report you can list all of the people who were born at a certain time or place.<br /><br /><br />~Relatives Report~<br />This report will list all of the relatives of the selected individual.  You can choose which of the person\'s relatives to show on the report.<ul><li><b>Parents and siblings</b> will show the selected person, his parents, and his brothers and sisters.</li><li><b>Spouse and children</b> will list the person with his or her spouses and their children.</li><li><b>Direct line ancestors</b> will list the person, his parents, grand-parents, great-grand-parents, and continue up the tree listing all of the people who are parents in the person\'s lineage.</li><li><b>Direct line ancestors and their families</b> will list all of the people from the Direct line ancestors list but also include aunts and uncles and great-aunts and great-uncles, so it will include the siblings of all of the ancestors in this person\'s family tree.  It will not list the children of the siblings (cousins).</li><li><b>Descendants</b> will list all of this person\'s descendants (children, grand-children, great-grand children, etc).</li><li><b>ALL</b> this option is a combination of the Descendants and the Direct line ancestors and their families in a single report.</li></ul>');
+	$text=i18n::translate('This page allows you to generate reports, which can be saved on your computer.  You can view these reports at a later time, without being connected to <b>webtrees</b> or the internet.  Reports are available in two formats: PDF (for printing) and HTML (for viewing on screen).').
+		'<br/><br/>'.
+		i18n::translate('Since reports can contain private data, some may only be available when you are logged in.  The site administrator can configure access levels using the module administration page.');
 	break;
 
 case 'search.php':
@@ -3502,7 +3504,7 @@ case 'file_type':
 
 case 'gedcom_administration':
 	$title=i18n::translate('GEDCOM administration');
-	$text=i18n::translate('The GEDCOM Administration page is the control center for administering all of your genealogical databases.<br /><br /><b>Current GEDCOMs</b><br />At the head of the <b>Current GEDCOMs</b> table, you see an action bar with four links.<ul><li>Add GEDCOM</li><li>Upload GEDCOM</li><li>Create a new GEDCOM</li><li>Return to the Admin menu</li></ul>In the <b>Current GEDCOMs</b> table each genealogical database is listed separately, and you have the following options for each of them:<ul><li>Import</li><li>Delete</li><li>Download</li><li>Edit configuration</li><li>Edit privacy</li><li>SearchLog files</li></ul>Edit privacy appears here because every GEDCOM has its own privacy file.<br /><br />Each line in this table should be self-explanatory.  <b>webtrees</b> can be configured to log all database searches.  The SearchLog files can be inspected through links found on this page.');
+	$text=i18n::translate('The GEDCOM Administration page is the control center for administering all of your genealogical databases.');
 	break;
 
 case 'gedcom_configfile':
@@ -3641,8 +3643,8 @@ case 'index_htmlplus_ui':
 	break;
 
 case 'index_htmlplus_content':
-	$title=i18n::translate('Advanced HTML content');
-	$text=i18n::translate('Unlike the HTML, GEDCOM News, and GEDCOM Statistics blocks, you have full control over the appearance of your block.  You can use HTML tags, and the block uses the CSS style sheets from the currently active theme.  References to information from the currently active genealogical database can be included in the text.<br /><br />Database references are signaled in the text by enclosing keywords within paired <b>&#35;</b> symbols.  For example, <b>&#35;totalFamilies&#35;</b> represents the number of families in the database.  On occasion, you may wish to use a database reference as text instead of its true meaning.  To do so, you need to replace the <b>&#35;</b> symbols enclosing the keyword by their symbolic equivalent.  For example, if your text contains <b>&amp;&#35;35;totalFamilies&amp;&#35;35;</b> it will print as <b>&#35;totalFamilies&#35;</b> instead of becoming a database reference.<br /><br />For a full example of the use of this block, please examine the &quot;GEDCOM Statistics&quot; template found in the blocks/ directory, it uses most of the styles of tags, including language and help text links.<br /><br />The <b>Keyword Examples (English only)</b> template contains a full list of all supported keywords.');
+	$title=i18n::translate('HTML content');
+	$text=i18n::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.');
 	break;
 
 case 'index_htmlplus_gedcom':
