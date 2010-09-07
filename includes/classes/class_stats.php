@@ -3134,7 +3134,7 @@ class stats {
 		$counts[] = round(4095*$unknown/($max+1));
 		$chd = self::_array_to_extended_encoding($counts);
 		$chm .= 't'.$unknown.',000000,0,'.$i.',11,1';
-		$chxl .= i18n::translate_c('unknown century', 'unknown')."|1:||".i18n::translate('century')."|2:|0|";
+		$chxl .= i18n::translate_c('unknown century', 'Unknown')."|1:||".i18n::translate('century')."|2:|0|";
 		$step = $max+1;
 		for ($d=floor($max+1); $d>0; $d--) {
 			if (($max+1)<($d*10+1) && fmod(($max+1),$d)==0) {
