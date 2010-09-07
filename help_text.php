@@ -2253,7 +2253,7 @@ case 'GENERATE_GUID':
 
 case 'HIDE_GEDCOM_ERRORS':
 	$title=i18n::translate('Hide GEDCOM errors');
-	$text=i18n::translate('Setting this to <b>Yes</b> will hide error messages produced by <b>webtrees</b> when it doesn\'t understand a tag in your GEDCOM file.  <b>webtrees</b> makes every effort to conform to the GEDCOM 5.5.1 standard, but many genealogy software programs include their own custom tags.  See the <a href="readme.txt">readme.txt</a> file for more information.');
+	$text=i18n::translate('Setting this to <b>Yes</b> will hide error messages produced by <b>webtrees</b> when it doesn\'t understand a tag in your GEDCOM file.  <b>webtrees</b> makes every effort to conform to the GEDCOM 5.5.1 standard, but many genealogy software programs include their own custom tags.  See the <a href="readme.html">readme.html</a> file for more information.');
 	break;
 
 case 'HIDE_LIVE_PEOPLE':
@@ -2395,7 +2395,7 @@ case 'META_TITLE':
 
 case 'MULTI_MEDIA':
 	$title=i18n::translate('Enable multimedia features');
-	$text=i18n::translate('GEDCOM 5.5.1 allows you to link pictures, videos, and other multimedia objects into your GEDCOM.  If you do not include multimedia objects in your GEDCOM, you can disable the multimedia features by setting this value to <b>No</b>.<br /><br />See the Multimedia section in the <a href="readme.txt">readme.txt</a> file for more information about including media in your site.');
+	$text=i18n::translate('GEDCOM 5.5.1 allows you to link pictures, videos, and other multimedia objects into your GEDCOM.  If you do not include multimedia objects in your GEDCOM, you can disable the multimedia features by setting this value to <b>No</b>.<br /><br />See the Multimedia section in the <a href="readme.html">readme.html</a> file for more information about including media in your site.');
 	break;
 
 case 'NOTE_ID_PREFIX':
@@ -2610,7 +2610,7 @@ case 'SHOW_GEDCOM_RECORD':
 
 case 'SHOW_HIGHLIGHT_IMAGES':
 	$title=i18n::translate('Show highlight images in people boxes');
-	$text=i18n::translate('If you have enabled multimedia in your site, you can have <b>webtrees</b> display a thumbnail image next to the person\'s name in charts and boxes.<br /><br />Currently, <b>webtrees</b> uses the first multimedia object listed in the GEDCOM record as the highlight image.  For people with multiple images, you should arrange the multimedia objects such that the one you wish to be highlighted appears first, before any others.<br /><br />See the Multimedia section in the <a href="readme.txt">readme.txt</a> file for more information about including media in your site.');
+	$text=i18n::translate('If you have enabled multimedia in your site, you can have <b>webtrees</b> display a thumbnail image next to the person\'s name in charts and boxes.<br /><br />Currently, <b>webtrees</b> uses the first multimedia object listed in the GEDCOM record as the highlight image.  For people with multiple images, you should arrange the multimedia objects such that the one you wish to be highlighted appears first, before any others.<br /><br />See the Multimedia section in the <a href="readme.html">readme.html</a> file for more information about including media in your site.');
 	break;
 
 case 'SHOW_LAST_CHANGE':
@@ -2745,7 +2745,7 @@ case 'SURNAME_TRADITION':
 
 case 'THEME':
 	$title=i18n::translate('Theme');
-	$text=i18n::translate('The directory where your <b>webtrees</b> theme files are kept.<br /><br />You may customize any of the standard themes that come with <b>webtrees</b> to give your site a unique look and feel.  See the Theme Customization section of the <a href="readme.txt">readme.txt</a> file for more information.');
+	$text=i18n::translate('The directory where your <b>webtrees</b> theme files are kept.<br /><br />You may customize any of the standard themes that come with <b>webtrees</b> to give your site a unique look and feel.  See the Theme Customization section of the <a href="readme.html">readme.html</a> file for more information.');
 	break;
 
 case 'THUMBNAIL_WIDTH':
@@ -2850,7 +2850,7 @@ case 'addsearchlink.php':
 
 case 'admin.php':
 	$title=i18n::translate('Administration');
-	$text=i18n::translate('On this page you will find links to the configuration pages, administration pages, documentation, and log files.<br /><br /><b>Current Server Time:</b>, just below the page title, shows the time of the server on which your site is hosted. This means that if the server is located in New York while you\'re in France, the time shown will be six hours less than your local time, unless, of course, the server is running on Greenwich Mean Time (GMT).  The time shown is the server time when you opened or refreshed this page.<br /><br /><b>WARNING</b><br />When you see a red warning message under the system time, it means that your <i>config.php</i> is still writeable.  After configuring your site, you should, for <b>security</b>, set the permissions of this file back to read-only.  You have to do this <u>manually</u>, since <b>webtrees</b> cannot do this for you.<br /><br /><br /><br />See <a href="readme.txt" target="_blank"><b>Readme.txt</b></a> for more information.');
+	$text=i18n::translate('On this page you will find links to the configuration pages, administration pages, documentation, and log files.<br /><br /><b>Current Server Time:</b>, just below the page title, shows the time of the server on which your site is hosted. This means that if the server is located in New York while you\'re in France, the time shown will be six hours less than your local time, unless, of course, the server is running on Greenwich Mean Time (GMT).  The time shown is the server time when you opened or refreshed this page.<br /><br /><b>WARNING</b><br />When you see a red warning message under the system time, it means that your <i>config.php</i> is still writeable.  After configuring your site, you should, for <b>security</b>, set the permissions of this file back to read-only.  You have to do this <u>manually</u>, since <b>webtrees</b> cannot do this for you.<br /><br /><br /><br />See <a href="readme.html" target="_blank"><b>ReadMe.html</b></a> for more information.');
 	break;
 
 case 'ancestry.php':
@@ -2886,7 +2886,7 @@ case 'edit_merge.php':
 
 case 'editconfig_gedcom.php':
 	$title=i18n::translate('GEDCOM configuration');
-	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.<br /><br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.<br /><br /><br />See <a href="readme.txt" target="_blank"><b>Readme.txt</b></a> for more information.');
+	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.<br /><br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.<br /><br /><br />See <a href="readme.html" target="_blank"><b>ReadMe.html</b></a> for more information.');
 	break;
 
 case 'edituser.php':
@@ -3089,7 +3089,7 @@ case 'treenav.php':
 
 case 'uploadmedia.php':
 	$title=i18n::translate('Upload media files');
-	$text=i18n::translate('Uploading media files is quite straightforward.  Here is a little additional information.<br /><br /><b>Thumbnails</b><br />Thumbnails should have a size somewhere around 100px width.  The thumbnail <u>must</u> be named identically to the full-size version.  If your system can generate thumbnails automatically, you will see a notice to that effect on the Upload Media page.<br /><br /><b>Uploading</b><br />Files will be uploaded automatically to the directory <b>#GLOBALS[MEDIA_DIRECTORY]#</b> for the full-sized version and to <b>#GLOBALS[MEDIA_DIRECTORY]#thumbs/</b> for the thumbnails.<br /><br />See <a href=\"readme.txt\" target=\"_blank\"><b>Readme.txt</b></a> for more information.');
+	$text=i18n::translate('Uploading media files is quite straightforward.  Here is a little additional information.<br /><br /><b>Thumbnails</b><br />Thumbnails should have a size somewhere around 100px width.  The thumbnail <u>must</u> be named identically to the full-size version.  If your system can generate thumbnails automatically, you will see a notice to that effect on the Upload Media page.<br /><br /><b>Uploading</b><br />Files will be uploaded automatically to the directory <b>#GLOBALS[MEDIA_DIRECTORY]#</b> for the full-sized version and to <b>#GLOBALS[MEDIA_DIRECTORY]#thumbs/</b> for the thumbnails.<br /><br />See <a href=\"readme.html\" target=\"_blank\"><b>ReadMe.html</b></a> for more information.');
 	break;
 
 case 'useradmin.php':
@@ -3923,7 +3923,7 @@ case 'random_media_start_slide':
 
 case 'readmefile':
 	$title=i18n::translate('Readme file');
-	$text=i18n::translate('See <a href="readme.txt" target="_blank"><b>Readme.txt</b></a> for more information.');
+	$text=i18n::translate('See <a href="readme.html" target="_blank"><b>ReadMe.html</b></a> for more information.');
 	break;
 
 case 'register_comments':
