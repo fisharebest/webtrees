@@ -89,7 +89,7 @@ class batch_update {
 		$html.='</td></tr>';
 
 		if (!get_user_setting(WT_USER_ID, 'auto_accept')) 
-			$html.='<tr><td colspan="2" class="error">'.i18n::translate('Your user profile is not set to "Automatically accept changes made by this user". Batch update can only be used to change one record at a time. You can either continue on that basis, or change your user profile and return here.').'</td></tr>';
+			$html.='<tr><td colspan="2" class="error">'.i18n::translate('Your user account is not set to "Automatically accept changes made by this user". Batch update can only be used to change one record at a time. You can either continue on that basis, or change your user account setting and return here.').'</td></tr>';
 
 		// If a plugin is selected, display the details
 		if ($this->PLUGIN) {
