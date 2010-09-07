@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Module help text.
  *
