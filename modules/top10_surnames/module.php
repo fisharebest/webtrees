@@ -71,7 +71,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$all_surnames=array_merge($all_surnames, get_indilist_surns($top_surname, '', false, false, WT_GED_ID));
 			if (++$i == $num) break;
 		}
-
+		if ($i < $num) $num=$i;
 		$id=$this->getName().$block_id;
 		$title='';
 		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
