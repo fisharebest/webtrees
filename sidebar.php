@@ -142,7 +142,7 @@ function closeCallback() {
 		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
 		pinned = false;
 	}
-
+	loadMap();
 }
 
 function openCallback() {
@@ -163,25 +163,25 @@ jQuery(document).ready(function() {
 	
 	// Sidebar Pin Function 
 	jQuery('#sidebar_pin').toggle(
-   		   	function() {
-   	   		   	jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
-   	   			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
-   	   			pinned = true;
-   		   	},
-   		   	
-   		   	function() {
-   		   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
-   		   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
-   		   		pinned = false;
-   		   	});
-	   	<?php if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { ?>
-	   		jQuery('#sidebar_pin').click();
-	  	<?php } ?>
-   	// 
+   	   	function() {
+   	   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
+   	   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
+   	   		pinned = true;
+   		},
+   		function() {
+   		   	jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
+   		   	jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
+   		   	pinned = false;
+   		}
+   	);
+	<?php if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { ?>
+	    jQuery('#sidebar_pin').click();
+	<?php } ?>
+   	// ---------------------
    	
 	var modsLoaded = false;
 	
-	// Sidebar Open/Close Function 
+	// Sidebar Open/Close Function
 	// Sidebar Open 
 	jQuery('#sidebar_open').toggle(function() {
 		jQuery('#sidebar_open img').attr('style', 'margin-left:255px;' ).attr('src', '<?php echo $WT_IMAGES['slide_close'];?>').attr('title', '<?php echo i18n::translate('Sidebar Close');?>');
@@ -204,8 +204,8 @@ jQuery(document).ready(function() {
    	   		jQuery('#tabs > div').css('width', newwidth+'px');
 		// 
   		<?php if ($sidebar_state == "open" ) { ?>
-  			jQuery('#sidebar_pin').click();
-  		<?php } ?>		
+			jQuery('#sidebar_pin').click();
+  		<?php } ?>
 
 		<?php if ($sidebar_state == "open") { ?>
 			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true&sb_closed=false');
@@ -219,7 +219,6 @@ jQuery(document).ready(function() {
 			<?php } ?>
 		<?php } ?>
 		sb_open=true;
-		
 	// Sidebar Close 
 	}, function() {
 		jQuery('#sidebar_open img').attr('style', 'margin-left:0px;' ).attr('src', '<?php echo $WT_IMAGES['slide_open'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
@@ -238,7 +237,7 @@ jQuery(document).ready(function() {
 		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false&sb_closed=true');
 		sb_open=false;
 	});	
-	// 
+	// -----------------------------
 	
 	<?php if  ( $sidebar_state == "open" ) { ?>
  		<?php if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || !isset($_SESSION['WT_sb_closed']) ) { ?>
