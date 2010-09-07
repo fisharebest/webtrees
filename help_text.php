@@ -2263,8 +2263,6 @@ case 'HIDE_LIVE_PEOPLE':
 		$text .= i18n::plural('Note: "living" is defined (if no death or burial is known) as ending %d year after birth or estimated birth.','Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'), get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
 		$text .= ' ';
 		$text .= i18n::translate('The length of time after birth can be set on the Privacy configuration tab option "Age at which to assume a person is dead".');
-		$text .= ' ';
-		$text .= i18n::translate('The detailed calculation of "estimated birth" can be read at <a href="http://wiki.webtrees.net/Privacy#Estimating_date_of_death">WIKI:Estimating age at death.</a>');
 		$text .= '</p>';
         break;
 
@@ -2765,7 +2763,7 @@ case 'USE_GEONAMES':
 
 case 'USE_MEDIA_FIREWALL':
 	$title=i18n::translate('Use media firewall');
-	$text=i18n::translate('See the Wiki for a description of how to use the Media Firewall. <a href="#WT_WEBTREES_WIKI#/en/index.php?title=Media_Firewall" target="_blank">#WT_WEBTREES_WIKI#</a>');
+	$text=''; // TODO: the original help text refered to the PGV wiki page (http://wiki.phpgedview.net/en/index.php?title=Media_Firewall), which is out-of-date.  We should either write an equivalent page for webtrees, or put some help inline.
 	break;
 
 case 'USE_MEDIA_VIEWER':
@@ -3091,7 +3089,8 @@ case 'treenav.php':
 
 case 'uploadmedia.php':
 	$title=i18n::translate('Upload media files');
-	$text=i18n::translate('Uploading media files is quite straightforward.  Here is a little additional information.<br /><br /><b>Thumbnails</b><br />Thumbnails should have a size somewhere around 100px width.  The thumbnail <u>must</u> be named identically to the full-size version.  If your system can generate thumbnails automatically, you will see a notice to that effect on the Upload Media page.<br /><br /><b>Uploading</b><br />Files will be uploaded automatically to the directory <b>#GLOBALS[MEDIA_DIRECTORY]#</b> for the full-sized version and to <b>#GLOBALS[MEDIA_DIRECTORY]#thumbs/</b> for the thumbnails.<br /><br />See <a href=\"readme.html\" target=\"_blank\"><b>ReadMe.html</b></a> for more information.');
+	$text=''; // TODO: This text is broken - you cannot embed variables like this.  Use %s instead.  But it probably wants completely rewriting and splitting into paragraphs.
+	// 'Uploading media files is quite straightforward.  Here is a little additional information.<br /><br /><b>Thumbnails</b><br />Thumbnails should have a size somewhere around 100px width.  The thumbnail <u>must</u> be named identically to the full-size version.  If your system can generate thumbnails automatically, you will see a notice to that effect on the Upload Media page.<br /><br /><b>Uploading</b><br />Files will be uploaded automatically to the directory <b>#GLOBALS[MEDIA_DIRECTORY]#</b> for the full-sized version and to <b>#GLOBALS[MEDIA_DIRECTORY]#thumbs/</b> for the thumbnails.<br /><br />See <a href=\"readme.html\" target=\"_blank\"><b>ReadMe.html</b></a> for more information.';
 	break;
 
 case 'useradmin.php':
@@ -3729,7 +3728,7 @@ case 'link_person_id':
 
 case 'link_remote':
 	$title=i18n::translate('Link remote person');
-	$text=i18n::translate('Use this form to link people to other people either from another site or another genealogical database accessible to your copy of <b>webtrees</b>.<br /><br />To add such a link, you must first select the relationship type, then choose a site already known to <b>webtrees</b> or define a new site, and then enter that site\'s ID of the person you want to link to.  <b>webtrees</b> will then automatically download information from the remote site as necessary.  The downloaded information does <u>not</u> become part of your genealogical database; it remains on the original site but is incorporated into the various pages where this remotely linked person is displayed.<br /><br />Refer to the Help link next to each element on the page for more information about that element.  You can also check the online English tutorial for more information: <a href="#WT_WEBTREES_WIKI#/en/index.php?title=How_To:Remote_Link_Individuals_Across_Websites_And_Databases" target="_blank">#WT_WEBTREES_WIKI#</a>.');
+	$text=''; // TODO: The original help text refered to the PGV wiki site (http://wiki.phpgedview.net/en/index.php?title=How_To:Remote_Link_Individuals_Across_Websites_And_Databases).  We should write an equivalent page for WT.
 	break;
 
 case 'link_remote_location':
