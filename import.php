@@ -202,7 +202,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			// TODO: fisharebest has written a mysql stored procedure that converts ANSEL to UTF-8
 		default:
 			WT_DB::exec("ROLLBACK");
-			echo '<span class="error">',  i18n::translate('Error: cannot convert GEDCOM file from %s encoding to UTF-8 encoding.', $charset), '</span>';
+			echo '<span class="error">',  i18n::translate('Error: converting GEDCOM file from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
 			echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
