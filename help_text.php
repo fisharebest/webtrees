@@ -66,17 +66,17 @@ case 'ADR2':
 
 case 'ADOP':
 	$title=translate_fact('ADOP');
-	$text=i18n::translate('Pertaining to creation of a legally approved child-parent relationship that does not exist biologically.');
+	$text=''; //('Pertaining to creation of a legally approved child-parent relationship that does not exist biologically.');
 	break;
 
 case 'AFN':
 	$title=translate_fact('AFN');
-	$text=i18n::translate('A unique permanent record file number of an individual record stored in Ancestral File.');
+	$text=''; //('A unique permanent record file number of an individual record stored in Ancestral File.');
 	break;
 
 case 'AGE':
 	$title=translate_fact('AGE');
-	$text=i18n::translate('The age of the individual at the time an event occurred, or the age listed in the document.');
+	$text=''; //('The age of the individual at the time an event occurred, or the age listed in the document.');
 	break;
 
 case 'AGNC':
@@ -86,22 +86,22 @@ case 'AGNC':
 
 case 'ALIA':
 	$title=translate_fact('ALIA');
-	$text=i18n::translate('An indicator to link different record descriptions of a person who may be the same person.');
+	$text=''; //('An indicator to link different record descriptions of a person who may be the same person.');
 	break;
 
 case 'ANCE':
 	$title=translate_fact('ANCE');
-	$text=i18n::translate('Pertaining to forbearers of an individual.');
+	$text=''; //('Pertaining to forbearers of an individual.');
 	break;
 
 case 'ANCI':
 	$title=translate_fact('ANCI');
-	$text=i18n::translate('Indicates an interest in additional research for ancestors of this individual.');
+	$text=''; //('Indicates an interest in additional research for ancestors of this individual.');
 	break;
 
 case 'ANUL':
 	$title=translate_fact('ANUL');
-	$text=i18n::translate('Declaring a marriage void from the beginning (never existed).');
+	$text=''; //('Declaring a marriage void from the beginning (never existed).');
 	break;
 
 case 'ASSO':
@@ -111,17 +111,17 @@ case 'ASSO':
 
 case 'AUTH':
 	$title=translate_fact('AUTH');
-	$text=i18n::translate('The name of the individual who created or compiled information.');
+	$text=''; //('The name of the individual who created or compiled information.');
 	break;
 
 case 'BAPL':
 	$title=translate_fact('BAPL');
-	$text=i18n::translate('The event of baptism performed at age eight or later by priesthood authority of the LDS Church.');
+	$text=''; //('The event of baptism performed at age eight or later by priesthood authority of the LDS Church.');
 	break;
 
 case 'BAPM':
 	$title=translate_fact('BAPM');
-	$text=i18n::translate('The event of baptism, performed in infancy or later.');
+	$text=''; //('The event of baptism, performed in infancy or later.');
 	// I omitted "(not LDS)" since many people choose to use this
 	// for all baptisms, rather than treat LDS as a special case.
 	// (Wes Groleau)
@@ -129,119 +129,117 @@ case 'BAPM':
 
 case 'BAPM:DATE':
 	$title=translate_fact('BAPM:DATE');
-	$text=i18n::translate('Date of baptism.');
+	$text=''; //('Date of baptism.');
 	break;
 
 case 'BAPM:PLAC':
 	$title=translate_fact('BAPM:PLAC');
-	$text=i18n::translate('Place of baptism');
+	$text=''; //('Place of baptism');
 	break;
 
 case 'BAPM:SOUR':
 	$title=translate_fact('BAPM:SOUR');
-	$text=i18n::translate('Source for baptism');
+	$text=''; //('Source for baptism');
 	break;
 
 case 'BARM':
 	$title=translate_fact('BARM');
-	$text=i18n::translate('The ceremonial event held when a Jewish boy reaches age 13.');
+	$text=''; //('The ceremonial event held when a Jewish boy reaches age 13.');
 	break;
 
 case 'BARM:DATE':
 	$title=translate_fact('BARM:DATE');
-	$text=i18n::translate('Date of bar mitzvah');
+	$text=''; //('Date of bar mitzvah');
 	break;
 
 case 'BARM:PLAC':
 	$title=translate_fact('BARM:PLAC');
-	$text=i18n::translate('Place of bar mitzvah');
+	$text=''; //('Place of bar mitzvah');
 	break;
 
 case 'BARM:SOUR':
 	$title=translate_fact('BARM:SOUR');
-	$text=i18n::translate('Source for bar mitzvah');
+	$text=''; //('Source for bar mitzvah');
 	break;
 
 case 'BASM':
 	$title=translate_fact('BASM');
-	$text=i18n::translate('The ceremonial event held when a Jewish girl reaches age 13, also known as "Bat Mitzvah."');
+	$text=''; //('The ceremonial event held when a Jewish girl reaches age 13, also known as "Bat Mitzvah."');
 	break;
 
 case 'BASM:DATE':
 	$title=translate_fact('BASM:DATE');
-	$text=i18n::translate('Date of bas mitzvah');
+	$text=''; //('Date of bas mitzvah');
 	break;
 
 case 'BASM:PLAC':
 	$title=translate_fact('BASM:PLAC');
-	$text=i18n::translate('Place of bas mitzvah');
+	$text=''; //('Place of bas mitzvah');
 	break;
 
 case 'BASM:SOUR':
 	$title=translate_fact('BASM:SOUR');
-	$text=i18n::translate('Source for bas mitzvah');
+	$text=''; //('Source for bas mitzvah');
 	break;
 
 case 'BIRT':
 	$title=translate_fact('BIRT');
-	$text=i18n::translate('The event of entering into life.');
+	$text=''; //('The event of entering into life.');
 	break;
 
 case 'BIRT:DATE':
 	$title=translate_fact('BIRT:DATE');
-	$text=i18n::translate('Date of birth');
+	$text=''; //('Date of birth');
 	break;
 
 case 'BIRT:PLAC':
 	$title=translate_fact('BIRT:PLAC');
-	$text=i18n::translate('Place of birth');
+	$text=''; //('Place of birth');
 	break;
 
 case 'BIRT:SOUR':
 	$title=translate_fact('BIRT:SOUR');
-	$text=i18n::translate('Source for birth');
+	$text=''; //('Source for birth');
 	break;
 
 case 'BLES':
 	$title=translate_fact('BLES');
-	$text=i18n::translate('A religious event of bestowing divine care or intercession.  ');
-	$text.=i18n::translate('Sometimes given in connection with a naming ceremony.');
+	$text=''; //('A religious event of bestowing divine care or intercession.  'Sometimes given in connection with a naming ceremony.');
 	break;
 
 case 'BLOB':
 	$title=translate_fact('BLOB');
-	$text=i18n::translate('"Binary Large OBject"--No longer used in GEDCOM 5.5.1');
+	$text=''; //('"Binary Large OBject"--No longer used in GEDCOM 5.5.1');
 	break;
 
 case 'BURI':
 	$title=translate_fact('BURI');
-	$text=i18n::translate('The event of the proper disposing of the mortal remains of a deceased person.');
+	$text=''; //('The event of the proper disposing of the mortal remains of a deceased person.');
 	break;
 
 case 'BURI:DATE':
 	$title=translate_fact('BURI:DATE');
-	$text=i18n::translate('Date of burial');
+	$text=''; //('Date of burial');
 	break;
 
 case 'BURI:PLAC':
 	$title=translate_fact('BURI:PLAC');
-	$text=i18n::translate('Place of burial');
+	$text=''; //('Place of burial');
 	break;
 
 case 'BURI:SOUR':
 	$title=translate_fact('BURI:SOUR');
-	$text=i18n::translate('Source for burial');
+	$text=''; //('Source for burial');
 	break;
 
 case 'CALN':
 	$title=translate_fact('CALN');
-	$text=i18n::translate('The number used by a repository to identify the specific items in its collections.');
+	$text=''; //('The number used by a repository to identify the specific items in its collections.');
 	break;
 
 case 'CAST':
 	$title=translate_fact('CAST');
-	$text=i18n::translate('The name of an individual\'s rank or status in society which is sometimes based on racial or religious
-differences, or differences in wealth, inherited rank, profession, occupation, etc.');
+	$text=''; //('The name of an individual\'s rank or status in society which is sometimes based on racial or religious differences, or differences in wealth, inherited rank, profession, occupation, etc.');
 	break;
 
 case 'CAUS':
@@ -256,206 +254,197 @@ case 'CEME':
 
 case 'CENS':
 	$title=translate_fact('CENS');
-	$text=i18n::translate('The event of the periodic count of the population for a designated locality, such as a national or state Census.');
+	$text=''; //('The event of the periodic count of the population for a designated locality, such as a national or state Census.');
 	break;
 
 case 'CHAN':
 	$title=translate_fact('CHAN');
-	$text=i18n::translate('Indicates a change, correction, or modification. Typically used in connection with a DATE to specify when a change in information occurred.');
+	$text=''; //('Indicates a change, correction, or modification. Typically used in connection with a DATE to specify when a change in information occurred.');
 	break;
 
 case 'CHAR':
 	$title=translate_fact('CHAR');
-	$text=i18n::translate('An indicator of the character set used in writing this automated information.');
+	$text=''; //('An indicator of the character set used in writing this automated information.');
 	break;
 
 case 'CHIL':
 	$title=translate_fact('CHIL');
-	$text=i18n::translate('The natural, adopted, or sealed (LDS) child of a father and a mother.');
+	$text=''; //('The natural, adopted, or sealed (LDS) child of a father and a mother.');
 	break;
 
 case 'CHR':
 	$title=translate_fact('CHR');
-	$text=i18n::translate('The religious event of baptizing and/or naming a child.');
+	$text=''; //('The religious event of baptizing and/or naming a child.');
 	break;
 
 case 'CHR:DATE':
 	$title=translate_fact('CHR:DATE');
-	$text=i18n::translate('Date of christening');
+	$text=''; //('Date of christening');
 	break;
 
 case 'CHR:PLAC':
 	$title=translate_fact('CHR:PLAC');
-	$text=i18n::translate('Place of christening');
+	$text=''; //('Place of christening');
 	break;
 
 case 'CHR:SOUR':
 	$title=translate_fact('CHR:SOUR');
-	$text=i18n::translate('Source for christening');
+	$text=''; //('Source for christening');
 	break;
 
 case 'CHRA':
 	$title=translate_fact('CHRA');
-	$text=i18n::translate('The religious event of baptizing and/or naming an adult person.');
+	$text=''; //('The religious event of baptizing and/or naming an adult person.');
 	break;
 
 case 'CITN':
-    // This tag is not in the 5.5.1 spec
+	// This tag is not in the 5.5.1 spec
 	$title=translate_fact('CITN');
 	$text='';
 	break;
 
 case 'CITY':
 	$title=translate_fact('CITY');
-	$text=i18n::translate('A lower level jurisdictional unit. Normally an incorporated municipal unit.');
+	$text=''; //('A lower level jurisdictional unit. Normally an incorporated municipal unit.');
 	break;
 
 case 'COMM':
-    // This tag is not in the 5.5.1 spec
+	// This tag is not in the 5.5.1 spec
 	$title=translate_fact('COMM');
 	$text='';
 	break;
 
 case 'CONC':
 	$title=translate_fact('CONC');
-	$text=i18n::translate('An indicator that additional data belongs to the superior value.  ');
-	$text.=i18n::translate('The information from the CONC value is to be connected to the value of the superior preceding line without a space and without a carriage return and/or new line character.  ');
-	$text.=i18n::translate('Values that are split for a CONC tag must always be split at a non- space.  ');
-	$text.=i18n::translate('If the value is split on a space the space will be lost when concatenation takes place.  ');
-	$text.=i18n::translate('This is because of the treatment that spaces get as a GEDCOM delimiter, many GEDCOM values are trimmed
-of trailing spaces and some systems look for the first non-space starting after the tag to determine the beginning of the value.');
+	$text=''; //('An indicator that additional data belongs to the superior value.  The information from the CONC value is to be connected to the value of the superior preceding line without a space and without a carriage return and/or new line character.  Values that are split for a CONC tag must always be split at a non- space.  If the value is split on a space the space will be lost when concatenation takes place.  This is because of the treatment that spaces get as a GEDCOM delimiter, many GEDCOM values are trimmed of trailing spaces and some systems look for the first non-space starting after the tag to determine the beginning of the value.');
 	break;
 
 case 'CONT':
 	$title=translate_fact('CONT');
-	$text=i18n::translate('An indicator that additional data belongs to the superior value.  ');
-	$text.=i18n::translate('The information from the CONT value is to be connected to the value of the superior preceding line with a carriage return and/or new line character.  ');
-	$text.=i18n::translate('Leading spaces could be important to the formatting of the resultant text.  ');
-	$text.=i18n::translate('When importing values from CONT lines the reader should assume only one delimiter character following the CONT tag.  ');
-	$text.=i18n::translate('Assume that the rest of the leading spaces are to be a part of the value.');
+	$text=i18n::translate('An indicator that additional data belongs to the superior value.  The information from the CONT value is to be connected to the value of the superior preceding line with a carriage return and/or new line character.  Leading spaces could be important to the formatting of the resultant text.  When importing values from CONT lines the reader should assume only one delimiter character following the CONT tag.  Assume that the rest of the leading spaces are to be a part of the value.');
 	break;
 
 case 'CONF':
 	$title=translate_fact('CONF');
-	$text=i18n::translate('The religious event of conferring the gift of the Holy Ghost and, among protestants, full church membership.');
+	$text=''; //('The religious event of conferring the gift of the Holy Ghost and, among protestants, full church membership.');
 	break;
 
 case 'CONF:DATE':
 case 'CONL:DATE':
 	$title=translate_fact('CONF:DATE');
-	$text=i18n::translate('Date of confirmation');
+	$text=''; //('Date of confirmation');
 	break;
 
 case 'CONF:PLAC':
 case 'CONL:PLAC':
 	$title=translate_fact('CONF:PLAC');
-	$text=i18n::translate('Place of confirmation');
+	$text=''; //('Place of confirmation');
 	break;
 
 case 'CONF:SOUR':
 case 'CONL:SOUR':
 	$title=translate_fact('CONF:SOUR');
-	$text=i18n::translate('Source for confirmation');
+	$text=''; //('Source for confirmation');
 	break;
 
 case 'CONL':
 	$title=translate_fact('CONL');
-	$text=i18n::translate('The religious event by which a person receives membership in the LDS Church.');
+	$text=''; //('The religious event by which a person receives membership in the LDS Church.');
 	break;
 
 case 'COPR':
 	$title=translate_fact('COPR');
-	$text=i18n::translate('A statement that accompanies data to protect it from unlawful duplication and distribution.');
+	$text=''; //('A statement that accompanies data to protect it from unlawful duplication and distribution.');
 	break;
 
 case 'CORP':
 	$title=translate_fact('CORP');
-	$text=i18n::translate('A name of an institution, agency, corporation, or company.');
+	$text=''; //('A name of an institution, agency, corporation, or company.');
 	break;
 
 case 'CREM':
 	$title=translate_fact('CREM');
-	$text=i18n::translate('Disposal of the remains of a person\'s body by fire.');
+	$text=''; //('Disposal of the remains of a person\'s body by fire.');
 	break;
 
 case 'CTRY':
 	$title=translate_fact('CTRY');
-	$text=i18n::translate('The name or code of the country.');
+	$text=''; //('The name or code of the country.');
 	break;
 
 case 'DATA':
 	$title=translate_fact('DATA');
-	$text=i18n::translate('Pertaining to stored automated information.');
+	$text=''; //('Pertaining to stored automated information.');
 	break;
 
 case 'DATA:DATE':
 	$title=translate_fact('DATA:DATE');
-	$text=i18n::translate('Date of these data.');
+	$text=''; //('Date of these data.');
 	break;
 
 case 'DATE':
 	$title=translate_fact('DATE');
-	$text=i18n::translate('The time of an event in a calendar format.');
+	$text=''; //('The time of an event in a calendar format.');
 	break;
 
 case 'DEAT':
 	$title=translate_fact('DEAT');
-	$text=i18n::translate('The event when mortal life terminates.');
+	$text=''; //('The event when mortal life terminates.');
 	break;
 
 case 'DEAT:CAUS':
 	$title=translate_fact('DEAT:CAUS');
-	$text=i18n::translate('Cause of death');
+	$text=''; //('Cause of death');
 	break;
 
 case 'DEAT:DATE':
 	$title=translate_fact('DEAT:DATE');
-	$text=i18n::translate('Date of death');
+	$text=''; //('Date of death');
 	break;
 
 case 'DEAT:PLAC':
 	$title=translate_fact('DEAT:PLAC');
-	$text=i18n::translate('Place of death');
+	$text=''; //('Place of death');
 	break;
 
 case 'DEAT:SOUR':
 	$title=translate_fact('DEAT:SOUR');
-	$text=i18n::translate('Source for death');
+	$text=''; //('Source for death');
 	break;
 
 case 'DESC':
 	$title=translate_fact('DESC');
-	$text=i18n::translate('Pertaining to offspring of an individual.');
+	$text=''; //('Pertaining to offspring of an individual.');
 	break;
 
 case 'DESI':
 	$title=translate_fact('DESI');
-	$text=i18n::translate('Indicates an interest in research to identify additional descendants of this individual.');
+	$text=''; //('Indicates an interest in research to identify additional descendants of this individual.');
 	break;
 
 case 'DEST':
 	$title=translate_fact('DEST');
-	$text=i18n::translate('A system receiving data.');
+	$text=''; //('A system receiving data.');
 	break;
 
 case 'DIV':
 	$title=translate_fact('DIV');
-	$text=i18n::translate('An event of dissolving a marriage through civil action.');
+	$text=''; //('An event of dissolving a marriage through civil action.');
 	break;
 
 case 'DIVF':
 	$title=translate_fact('DIVF');
-	$text=i18n::translate('An event of filing for a divorce by a spouse.');
+	$text=''; //('An event of filing for a divorce by a spouse.');
 	break;
 
 case 'DSCR':
 	$title=translate_fact('DSCR');
-	$text=i18n::translate('The physical characteristics of a person, place, or thing.');
+	$text=''; //('The physical characteristics of a person, place, or thing.');
 	break;
 
 case 'EDUC':
 	$title=translate_fact('EDUC');
-	$text=i18n::translate('Indicator of a level of education attained.');
+	$text=''; //('Indicator of a level of education attained.');
 	break;
 
 case 'EMAI':
@@ -468,54 +457,52 @@ case '_EMAIL':
 
 case 'EMIG':
 	$title=translate_fact('EMIG');
-	$text=i18n::translate('An event of leaving one\'s homeland with the intent of residing elsewhere.');
+	$text=''; //('An event of leaving one\'s homeland with the intent of residing elsewhere.');
 	break;
 
 case 'ENDL':
 	$title=translate_fact('ENDL');
-	$text=i18n::translate('A religious event where an endowment ordinance for an individual was performed by priesthood authority in an LDS temple.');
+	$text=''; //('A religious event where an endowment ordinance for an individual was performed by priesthood authority in an LDS temple.');
 	break;
 
 case 'ENGA':
 	$title=translate_fact('ENGA');
-	$text=i18n::translate('An event of recording or announcing an agreement between two people to become married.');
+	$text=''; //('An event of recording or announcing an agreement between two people to become married.');
 	break;
 
 case 'ENGA:DATE':
 	$title=translate_fact('ENGA:DATE');
-	$text=i18n::translate('Date of engagement.');
+	$text=''; //('Date of engagement.');
 	break;
 
 case 'ENGA:PLAC':
 	$title=translate_fact('ENGA:PLAC');
-	$text=i18n::translate('Place of engagement.');
+	$text=''; //('Place of engagement.');
 	break;
 
 case 'ENGA:SOUR':
 	$title=translate_fact('ENGA:SOUR');
-	$text=i18n::translate('Source for engagement.');
+	$text=''; //('Source for engagement.');
 	break;
 
 case 'EVEN':
 	$title=translate_fact('EVEN');
-	$text=i18n::translate('Pertaining to a noteworthy happening related to an individual, a group, or an organization.  ');
-	$text=i18n::translate('An EVENt structure is usually qualified or classified by a subordinate use of the TYPE tag.');
+	$text=''; //('Pertaining to a noteworthy happening related to an individual, a group, or an organization.  An EVENt structure is usually qualified or classified by a subordinate use of the TYPE tag.');
 	break;
 
 case 'FACT':
 	$title=translate_fact('FACT');
-	$text=i18n::translate('Pertaining to a noteworthy attribute or fact concerning an individual, a group, or an organization.  ');
-	$text=i18n::translate('A FACT structure is usually qualified or classified by a subordinate use of the TYPE tag.');
+	$text=''; //('Pertaining to a noteworthy attribute or fact concerning an individual, a group, or an organization.  A FACT structure is usually qualified or classified by a subordinate use of the TYPE tag.');
 	break;
 
 case 'FAM':
 	$title=translate_fact('FAM');
-	$text=i18n::translate('Identifies a legal, common law, or other customary relationship of man and woman and their children, if any, or a family created by virtue of the birth of a child to its biological father and mother.');
+	$text=''; //('Identifies a legal, common law, or other customary relationship of man and woman and their children, if any, or a family created by virtue of the birth of a child to its biological father and mother.');
 	break;
 
 case 'FAMC':
 	$title=translate_fact('FAMC');
-	$text=i18n::translate('Identifies the family in which an individual appears as a child.');
+	$text=''; //('Identifies the family in which an individual appears as a child.');
 	break;
 
 case 'FAMC:HUSB:BIRT:PLAC':
@@ -580,12 +567,12 @@ case 'FAMC:WIFE:SURN':
 
 case 'FAMF':
 	$title=translate_fact('FAMF');
-	$text=i18n::translate('Pertaining to, or the name of, a family file. Names stored in a file that are assigned to a family for doing temple ordinance work.');
+	$text=''; //('Pertaining to, or the name of, a family file. Names stored in a file that are assigned to a family for doing temple ordinance work.');
 	break;
 
 case 'FAMS':
 	$title=translate_fact('FAMS');
-	$text=i18n::translate('Identifies the family in which an individual appears as a spouse.');
+	$text=''; //('Identifies the family in which an individual appears as a spouse.');
 	break;
 
 case 'FAMS:CENS:DATE':
@@ -660,36 +647,32 @@ case 'FAX':
 
 case 'FCOM':
 	$title=translate_fact('FCOM');
-	$text=i18n::translate('A religious rite, the first act of sharing in the Lord\'s supper as part of church worship.');
+	$text=''; //('A religious rite, the first act of sharing in the Lord\'s supper as part of church worship.');
 	break;
 
 case 'FCOM:DATE':
 	$title=translate_fact('FCOM:DATE');
-	$text=i18n::translate('Date of First Communion');
+	$text=''; //('Date of First Communion');
 	break;
 
 case 'FCOM:PLAC':
 	$title=translate_fact('FCOM:PLAC');
-	$text=i18n::translate('Place of First Communion');
+	$text=''; //('Place of First Communion');
 	break;
 
 case 'FCOM:SOUR':
 	$title=translate_fact('FCOM:SOUR');
-	$text=i18n::translate('Source for First Communion');
+	$text=''; //('Source for First Communion');
 	break;
 
 case 'FILE':
 	$title=translate_fact('FILE');
-	$text=i18n::translate('This is the most important field in the multimedia object record.  It indicates which file to use.  ');
-	$text=i18n::translate('At the very minimum, you need to enter the file\'s name.  ');
-	$text=i18n::translate('Depending on your settings, more information about the file\'s location may be helpful.');
-	$text.='<br /><br />';
-	$text=i18n::translate('You can use the <b>Find Media</b> link to help you locate media items that have already been uploaded to the site.');
+	$text=''; //('This is the most important field in the multimedia object record.  It indicates which file to use.  At the very minimum, you need to enter the file\'s name.  Depending on your settings, more information about the file\'s location may be helpful.<br /><br />You can use the <b>Find Media</b> link to help you locate media items that have already been uploaded to the site.');
 	break;
 
 case 'FONE':
 	$title=translate_fact('FONE');
-	$text=i18n::translate('A phonetic variation of a superior text string');
+	$text=''; //('A phonetic variation of a superior text string');
 	break;
 
 case 'FORM':
@@ -699,7 +682,7 @@ case 'FORM':
 
 case 'GEDC':
 	$title=translate_fact('GEDC');
-	$text=i18n::translate('Information about the use of GEDCOM in a transmission.');
+	$text=''; //('Information about the use of GEDCOM in a transmission.');
 	break;
 
 case 'GIVN':
@@ -709,17 +692,17 @@ case 'GIVN':
 
 case 'GRAD':
 	$title=translate_fact('GRAD');
-	$text=i18n::translate('An event of awarding educational diplomas or degrees to individuals.');
+	$text=''; //('An event of awarding educational diplomas or degrees to individuals.');
 	break;
 
 case 'HEAD':
 	$title=translate_fact('HEAD');
-	$text=i18n::translate('Identifies information pertaining to an entire GEDCOM transmission.');
+	$text=''; //('Identifies information pertaining to an entire GEDCOM transmission.');
 	break;
 
 case 'HUSB':
 	$title=translate_fact('HUSB');
-	$text=i18n::translate('An individual in the family role of a married man or father.');
+	$text=''; //('An individual in the family role of a married man or father.');
 	break;
 
 case 'IDNO':
