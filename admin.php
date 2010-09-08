@@ -126,7 +126,6 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 			<tr>
 				<td class="optionbox width50">
 					<a href="readme.html" target="manual" title="<?php echo i18n::translate('View readme.html file'); ?>"><?php echo i18n::translate('README documentation'); ?></a>
-					<?php echo help_link('readmefile'); ?>
 				</td>
 				<td class="optionbox width50">
 					<a href="wtinfo.php?action=phpinfo" title="<?php echo i18n::translate('Show PHP information page'); ?>"><?php echo i18n::translate('PHP information'); ?></a>

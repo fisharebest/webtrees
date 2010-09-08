@@ -3569,7 +3569,7 @@ case 'help_contents_help':
 		if (WT_USER_IS_ADMIN) {
 			$text.='<td valign="top"><span class="helpstart">'.i18n::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.i18n::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.i18n::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
 			.i18n::translate('FAQ List: Edit').'</a></li><li><a href="?help=add_gedcom">'.i18n::translate('GEDCOM: Add').'</li><li><a href="?help=edit_gedcoms">'.i18n::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=gedcom_configfile">'.i18n::translate('GEDCOM: Configuration file').'</a></li><li><a href="?help=edit_config_gedcom">'.i18n::translate('GEDCOM: Configure').'</a></li><li><a href="?help=add_new_gedcom">'.i18n::translate('GEDCOM: Create new').'</a></li><li><a href="?help=default_gedcom">'.i18n::translate('GEDCOM: Default').'</a></li><li><a href="?help=delete_gedcom">'.i18n::translate('GEDCOM: Delete').'</a></li><li><a href="?help=download_gedcom">'
-			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="?help=readmefile">'.i18n::translate('Readme file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
+			.i18n::translate('GEDCOM: Download').'<a/></li><li><a href="?help=import_gedcom">'.i18n::translate('GEDCOM: Import').'</a></li><li><a href="?help=upload_gedcom">'.i18n::translate('GEDCOM: Upload').'</a></li><li><a href="readme.html">'.i18n::translate('View readme.html file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
 		}
 	$text.=('</tr></table>');
 	break;
@@ -3903,11 +3903,6 @@ case 'random_media_persons_or_all':
 case 'random_media_start_slide':
 	$title=i18n::translate('Start slideshow on page load?');
 	$text=i18n::translate('Should the slideshow start automatically when the page is loaded.<br /><br />The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
-	break;
-
-case 'readmefile':
-	$title=i18n::translate('Readme file');
-	$text=i18n::translate('See <a href="readme.html" target="_blank"><b>ReadMe.html</b></a> for more information.');
 	break;
 
 case 'register_comments':
