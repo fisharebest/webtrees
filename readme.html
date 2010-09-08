@@ -89,7 +89,7 @@ To install <b>webtrees</b>, you need:
 			</ul>
 	</ul>
 	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration.</li>
-	<li>If you are using MySQL 5.1.31 or later, or 5.0.85 or later, the setting MAX_ALLOWED_PACKET must be larger than your largest gedcom file. If you run your own server, you can set this in my.ini. Otherwise, you may need to ask your web-host to increase it. <a href="https://bugs.launchpad.net/webtrees/+bug/622194">This is a known bug</a>.</li>
+	<li>If you are using MySQL 5.1.31 or later, or 5.0.85 or later, the setting MAX_ALLOWED_PACKET must be larger than your largest GEDCOM file. If you run your own server you can set this in my.ini. Otherwise you may need to ask your web-host to increase it. <a href="https://bugs.launchpad.net/webtrees/+bug/622194">This is a known bug</a>.</li>
 	</ul>
 <hr width="100%">
 <!-- INSTALLATION -->
@@ -97,7 +97,7 @@ To install <b>webtrees</b>, you need:
 Once you have checked the <a href="#system">SYSTEM REQUIREMENTS</a> above, installing webtrees is really easy.
 <br /><br />
 <ol>
-	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
+	<li>Download the latest version of <b>webtrees</b> available from <a href="http://launchpad.net/webtrees">http://launchpad.net/webtrees</a></li>
 	<li>Unzip the files and upload them to an empty directory on your web server.</li>
 	<li>Open your web browser and type the URL for your <b>webtrees</b> site (for example, http://www.yourserver.com/webtrees) into the address bar.</li>
 	<li>The <b>webtrees</b> setup wizard will start automatically. This will ask you a few questions about your server, and then generate a configuration file for you. At the end of the setup you will be asked to upload the configuration file to the webserver. This is a security check to make sure only the site owner can configure it.</li>
@@ -115,18 +115,17 @@ So, after installation, you'll be directed to the GEDCOM (family tree) administr
 		<li>TRANSFER your existing PGV data straight into <b>webtrees</b>, using the PGV-to-<b>webtrees</b> wizard described in section 9 below: <a href="#convert">CONVERTING from PHPGEDVIEW</a></li>
 	</ul>
 </ol>
-There are lots of configuration options. You'll probably want to review the privacy settings first. Don't worry too much about all the other options - the defaults are good for most people. If you get stuck, there's lots of built-in help and you can get friendly advice from the <a href="http://webtrees.net/forums">help</a> forum.
+There are <i>lots</i> of configuration options. You'll probably want to review the privacy settings first. Don't worry too much about all the other options - the defaults are good for most people. If you get stuck, there's lots of built-in help and you can get friendly advice from the <a href="http://webtrees.net/forums">help</a> forum.
 <hr width="100%">
 <!-- UPGRADING -->
 <div style="float:left;"><a name="upgrade"><h3>UPGRADING</h3></a></div><div class="back"><a href="#top">back to top</a></div><div style="clear:both;"></div>
-<b>IMPORTANT NOTE: These instructions apply to stable releases, such as webtrees-1.0.1. If you testing a beta version, such as webtrees-9876, it is best to do a fresh install, rather than upgrade.</b>
-<br /><br />
 Upgrading <b>webtrees</b> is quick and easy. You are recommened to upgrade whenever a new version is available. 
 <ol>
 	<li>Now would be a good time to make a <a href="#backup">backup</a>. </li>
-	<li>Download the latest version of <b>webtrees</b> available from http://launchpad.net/webtrees</li>
+	<li>Download the latest version of <b>webtrees</b> available from <a href="http://launchpad.net/webtrees">http://launchpad.net/webtrees</a></li>
 	<li>Unzip the .ZIP file, and upload the files to your web server, overwriting the existing files.</li>
 </ol>
+<p><i>NOTE for Macintosh users. Step 3 assumes you are using a copy tool that merges directories rather than replaces them. (Merge is standard behaviour on Windows and Linux.) If you use the Macintosh Finder or other similar tool to perform step 3, it will replace  your configuration, media and other directories with the empty/default ones from the installation. This would be very bad (but you did take a backup in step 1, didn't you!). Futher details and recommendations for suitable tools can be found by searching <a href="http://google.com">google.com</a></i></p>
 If you have any problems or questions, help is available on the <a href="http://webtrees.net/forums">webtrees forum</a>.
 <hr width="100%">
 <!-- GEDCOM FILES -->
