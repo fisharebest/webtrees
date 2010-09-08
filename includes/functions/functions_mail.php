@@ -166,7 +166,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		// attempt to send mail
 		if ( ! $mail_object->Send() ) {
 			echo i18n::translate('Message was not sent'), '<br />';
-			echo i18n::translate('Mailer error:'), ' ',  $mail_object->ErrorInfo, '<br />';
+			echo /* I18N: %s is an error message */ i18n::translate('Mailer error: %s',  $mail_object->ErrorInfo), '<br />';
 			return false;
 		} else {
 			// SMTP OK
