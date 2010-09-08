@@ -181,10 +181,10 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	}
 	// Recommended extensions
 	foreach (array(
-		'calendar'=>i18n::translate('jewish calendar'),
-		'gd'      =>i18n::translate('creating thumbnails of images'),
-		'dom'     =>i18n::translate('exporting data in xml format'),
-		'xml'     =>i18n::translate('reporting'),
+		'calendar'=>/* I18N: a program feature */ i18n::translate('jewish calendar'),
+		'gd'      =>/* I18N: a program feature */ i18n::translate('creating thumbnails of images'),
+		'dom'     =>/* I18N: a program feature */ i18n::translate('exporting data in xml format'),
+		'xml'     =>/* I18N: a program feature */ i18n::translate('reporting'),
 	) as $extension=>$features) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', i18n::translate('PHP extension "%1$s" is disabled.  Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $extension, $features), '</p>';
@@ -193,8 +193,8 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	}
 	// Settings
 	foreach (array(
-		'file_uploads'=>i18n::translate('file upload capability'),
-		'date.timezone'=>i18n::translate('the correct date and time in logs and messages'),
+		'file_uploads'=>/* I18N: a program feature */ i18n::translate('file upload capability'),
+		'date.timezone'=>/* I18N: a program feature */ i18n::translate('the correct date and time in logs and messages'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', i18n::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
