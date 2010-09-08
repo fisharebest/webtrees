@@ -2376,7 +2376,7 @@ case 'META_TITLE':
 
 case 'MULTI_MEDIA':
 	$title=i18n::translate('Enable multimedia features');
-	$text=i18n::translate('GEDCOM 5.5.1 allows you to link pictures, videos, and other multimedia objects into your GEDCOM.  If you do not include multimedia objects in your GEDCOM, you can disable the multimedia features by setting this value to <b>No</b>.<br /><br />See the Multimedia section in the <a href="readme.html">readme.html</a> file for more information about including media in your site.');
+	$text=i18n::translate('<b>webtrees</b> allows you to link pictures, videos, and other multimedia objects to your GEDCOM.  If you do not use multimedia, you can disable the multimedia features.');
 	break;
 
 case 'NOTE_ID_PREFIX':
