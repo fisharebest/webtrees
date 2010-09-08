@@ -193,8 +193,8 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	}
 	// Settings
 	foreach (array(
-		'file_uploads'=>i18n::translate('upload files'),
-		'date.timezone'=>i18n::translate('correct date and time in logs and messages'),
+		'file_uploads'=>i18n::translate('file upload capability'),
+		'date.timezone'=>i18n::translate('the correct date and time in logs and messages'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', i18n::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
@@ -561,11 +561,11 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</select></td><td>',
 		i18n::translate('Most servers do not use secure connections.'),
 		'</td></tr><tr><td>',
-		i18n::translate('From email address'), '</td><td>',
+		/* I18N: the "From:" header in an email */ i18n::translate('From email address'), '</td><td>',
 		'<input type="text" name="smtpfrom" size="40" value="', htmlspecialchars($_POST['smtpfrom']), '"', $_POST['smtpuse']=='exernal' ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is used in the "From:" header when sending mails.'),
 		'</td></tr><tr><td>',
-		i18n::translate('Sender email address'), '</td><td>',
+		/* I18N: the "Sender:" header in an email */ i18n::translate('Sender email address'), '</td><td>',
 		'<input type="text" name="smtpsender" size="40" value="', htmlspecialchars($_POST['smtpsender']), '"', $_POST['smtpuse']=='exernal' ? '' : 'disabled', ' /></td><td>',
 		i18n::translate('This is used in the "Sender:" header when sending mails.  It is often the same as the "From:" header.'),
 		'</td></tr><tr><td>',
@@ -1041,7 +1041,7 @@ try {
 	}
 	echo
 		'<input type="hidden" name="action" value="download">',
-		'<input type="submit" value="'. /* I18N: %s is a filename */ i18n::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.contform.contbtn.disabled=false; return true;">',
+		'<input type="submit" value="'. /* I18N: Button label/action: %s is a filename */ i18n::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.contform.contbtn.disabled=false; return true;">',
 		'</form>',
 		'<p>', i18n::translate('After you have copied this file to the webserver and set the access permissions, click here to continue'), '</p>',
 		'<form name="contform" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', i18n::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
