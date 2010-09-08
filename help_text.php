@@ -2831,7 +2831,7 @@ case 'addsearchlink.php':
 
 case 'admin.php':
 	$title=i18n::translate('Administration');
-	$text=i18n::translate('On this page you will find links to the configuration pages, administration pages, documentation, and log files.<br /><br /><b>Current Server Time:</b>, just below the page title, shows the time of the server on which your site is hosted. This means that if the server is located in New York while you\'re in France, the time shown will be six hours less than your local time, unless, of course, the server is running on Greenwich Mean Time (GMT).  The time shown is the server time when you opened or refreshed this page.<br /><br /><b>WARNING</b><br />When you see a red warning message under the system time, it means that your <i>config.php</i> is still writeable.  After configuring your site, you should, for <b>security</b>, set the permissions of this file back to read-only.  You have to do this <u>manually</u>, since <b>webtrees</b> cannot do this for you.<br /><br /><br /><br />See <a href="readme.html" target="_blank"><b>ReadMe.html</b></a> for more information.');
+	$text=/* I18N: do not translate this text - it will be updated very soon */i18n::translate('On this page you will find links to the configuration pages, administration pages, documentation, and log files.<br /><br /><b>Current Server Time:</b>, just below the page title, shows the time of the server on which your site is hosted. This means that if the server is located in New York while you\'re in France, the time shown will be six hours less than your local time, unless, of course, the server is running on Greenwich Mean Time (GMT).  The time shown is the server time when you opened or refreshed this page.');
 	break;
 
 case 'ancestry.php':
