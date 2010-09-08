@@ -2726,7 +2726,7 @@ case 'SURNAME_TRADITION':
 
 case 'THEME':
 	$title=i18n::translate('Theme');
-	$text=i18n::translate('The directory where your <b>webtrees</b> theme files are kept.<br /><br />You may customize any of the standard themes that come with <b>webtrees</b> to give your site a unique look and feel.  See the Theme Customization section of the <a href="readme.html">readme.html</a> file for more information.');
+	$text=i18n::translate('You can change the appearance of <b>webtrees</b> using "themes".  Each theme has a different style, layout, color scheme, etc.');
 	break;
 
 case 'THUMBNAIL_WIDTH':
