@@ -2236,7 +2236,7 @@ case 'GENERATE_GUID':
 
 case 'HIDE_GEDCOM_ERRORS':
 	$title=i18n::translate('Hide GEDCOM errors');
-	$text=i18n::translate('Setting this to <b>Yes</b> will hide error messages produced by <b>webtrees</b> when it doesn\'t understand a tag in your GEDCOM file.  <b>webtrees</b> makes every effort to conform to the GEDCOM 5.5.1 standard, but many genealogy software programs include their own custom tags.  See the <a href="readme.html">readme.html</a> file for more information.');
+	$text=i18n::translate('Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
 	break;
 
 case 'HIDE_LIVE_PEOPLE':
