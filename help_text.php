@@ -2867,7 +2867,7 @@ case 'edit_merge.php':
 
 case 'editconfig_gedcom.php':
 	$title=i18n::translate('GEDCOM configuration');
-	$text=i18n::translate('Every genealogical database used with <b>webtrees</b> has its own <b>Configuration file</b>.<br /><br />On this form you configure many options such as database title, language, calendar format, email options, logging of database searches, HTML META headers, removal of surnames from the database\'s Frequent Surnames list, etc.<br /><br /><br /><b>More help</b><br />More help is available by clicking the <b>?</b> next to items on the page.<br /><br /><br />See <a href="readme.html" target="_blank"><b>ReadMe.html</b></a> for more information.');
+	$text=i18n::translate('Each genealogical database is configured independently, and this form allows you to change the settings for the current GEDCOM.');
 	break;
 
 case 'edituser.php':
