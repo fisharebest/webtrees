@@ -119,7 +119,7 @@ case 'new_ged':
 			"UPDATE `##gedcom`".
 			" SET import_gedcom=?, import_offset=1".
 			" WHERE gedcom_id=?"
-		)->execute(array("0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 1 JAN 1850\n2 NOTE {$note}\n0 TRLR\n", $gedcom_id));
+		)->execute(array("0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n", $gedcom_id));
 	}
 	break;
 case 'upload_ged':
