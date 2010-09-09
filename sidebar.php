@@ -142,7 +142,12 @@ function closeCallback() {
 		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
 		pinned = false;
 	}
-	loadMap();
+	if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title") == "googlemap") {
+		loadMap();
+		map.setMapType(<?php echo $GOOGLEMAP_MAP_TYPE; ?>);
+		SetMarkersAndBounds();
+		ResizeMap();
+	}	
 }
 
 function openCallback() {
@@ -157,6 +162,12 @@ function openCallback() {
 			}
 		}
 	});
+	if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title") == "googlemap") {
+		loadMap();
+		map.setMapType(<?php echo $GOOGLEMAP_MAP_TYPE; ?>);
+		SetMarkersAndBounds();
+		ResizeMap(); 
+	}	
 }
 
 jQuery(document).ready(function() {
@@ -194,6 +205,7 @@ jQuery(document).ready(function() {
 			modsLoaded=true;
 		} else {
 			jQuery("#sidebarAccordion").accordion("resize");
+			openCallback();
 		}
 		jQuery('#sidebarAccordion').show();
 		jQuery('#sidebar_pin').show();
