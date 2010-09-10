@@ -220,15 +220,9 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name,".
-		" CASE WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
-		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
-		" JOIN `##user` USING (user_id)".
-		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname', 'language')"
-	)->execute();
-	WT_DB::prepare(
-		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
-		" SELECT user_id, setting_name,".
-		" CASE setting_value".
+		" CASE setting_name".
+		" WHEN 'language' THEN ".
+		"  CASE setting_value".
 		"  WHEN 'catalan'    THEN 'ca'".
 		"  WHEN 'english'    THEN 'en_US'".
 		"  WHEN 'english-uk' THEN 'en_GB'". // PGV had the config for en_GB, but no language files
@@ -251,10 +245,25 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		"  WHEN 'swedish'    THEN 'sv'".
 		"  WHEN 'russian'    THEN 'ru'".
 		"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
+		"  END".
+		" WHEN 'theme' THEN".
+		"  CASE setting_value".
+		"  WHEN ''                    THEN ''".
+		"  WHEN 'themes/cloudy/'      THEN 'themes/clouds/'".
+		"  WHEN 'themes/minimal/'     THEN 'themes/minimal/'".
+		"  WHEN 'themes/simplyblue/'  THEN 'themes/colors/'".
+		"  WHEN 'themes/simplygreen/' THEN 'themes/colors/'".
+		"  WHEN 'themes/simplyred/'   THEN 'themes/colors/'".
+		"  WHEN 'themes/xenea/'       THEN 'themes/xenea/'".
+		"  ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
+		" END".
+		" ELSE".
+		"  CASE".
+		"  WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
 		" END".
 		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
 		" JOIN `##user` USING (user_id)".
-		" WHERE setting_name IN ('language')"
+		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
 
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -358,33 +367,37 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'reg_timestamp', ".
-			" CASE WHEN u_reg_timestamp IN ('Y', 'yes') THEN 1 WHEN u_reg_timestamp IN ('N', 'no') THEN 0 ELSE u_reg_timestamp END".
+			"	SELECT user_id, 'reg_timestamp', u_reg_timestamp".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'reg_hashcode', ".
-			" CASE WHEN u_reg_hashcode IN ('Y', 'yes') THEN 1 WHEN u_reg_hashcode IN ('N', 'no') THEN 0 ELSE u_reg_hashcode END".
+			"	SELECT user_id, 'reg_hashcode', u_reg_hashcode".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
 			"	SELECT user_id, 'theme', ".
-			" CASE WHEN u_theme IN ('Y', 'yes') THEN 1 WHEN u_theme IN ('N', 'no') THEN 0 ELSE u_theme END".
+			" CASE u_theme".
+			"  WHEN ''                    THEN ''".
+			"  WHEN 'themes/cloudy/'      THEN 'themes/clouds/'".
+			"  WHEN 'themes/minimal/'     THEN 'themes/minimal/'".
+			"  WHEN 'themes/simplyblue/'  THEN 'themes/colors/'".
+			"  WHEN 'themes/simplygreen/' THEN 'themes/colors/'".
+			"  WHEN 'themes/simplyred/'   THEN 'themes/colors/'".
+			"  WHEN 'themes/xenea/'       THEN 'themes/xenea/'".
+			"  ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
+			" END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'loggedin', ".
-			" CASE WHEN u_loggedin IN ('Y', 'yes') THEN 1 WHEN u_loggedin IN ('N', 'no') THEN 0 ELSE u_loggedin END".
+			"	SELECT user_id, 'loggedin', 0".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'sessiontime', ".
-			" CASE WHEN u_sessiontime IN ('Y', 'yes') THEN 1 WHEN u_sessiontime IN ('N', 'no') THEN 0 ELSE u_sessiontime END".
+			"	SELECT user_id, 'sessiontime', u_sessiontime".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'contactmethod', ".
-			" CASE WHEN u_contactmethod IN ('Y', 'yes') THEN 1 WHEN u_contactmethod IN ('N', 'no') THEN 0 ELSE u_contactmethod END".
+			"	SELECT user_id, 'contactmethod', u_contactmethod".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
@@ -403,18 +416,11 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'comment', ".
-			" CASE WHEN u_comment IN ('Y', 'yes') THEN 1 WHEN u_comment IN ('N', 'no') THEN 0 ELSE u_comment END".
+			"	SELECT user_id, 'comment', u_comment".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'comment_exp', ".
-			" CASE WHEN u_comment_exp IN ('Y', 'yes') THEN 1 WHEN u_comment_exp IN ('N', 'no') THEN 0 ELSE u_comment_exp END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
-			" JOIN ##user ON (user_name=u_username)".
-			" UNION ALL".
-			"	SELECT user_id, 'sync_gedcom', ".
-			" CASE WHEN u_sync_gedcom IN ('Y', 'yes') THEN 1 WHEN u_sync_gedcom IN ('N', 'no') THEN 0 ELSE u_sync_gedcom END".
+			"	SELECT user_id, 'comment_exp', u_comment_exp".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
@@ -423,8 +429,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
-			"	SELECT user_id, 'max_relation_path', ".
-			" CASE WHEN u_max_relation_path IN ('Y', 'yes') THEN 1 WHEN u_max_relation_path IN ('N', 'no') THEN 0 ELSE u_max_relation_path END".
+			"	SELECT user_id, 'max_relation_path', u_max_relation_path".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username)".
 			" UNION ALL".
