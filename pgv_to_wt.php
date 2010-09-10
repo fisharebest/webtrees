@@ -196,7 +196,46 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
-		" SELECT gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting"
+		" SELECT gedcom_id, setting_name,".
+		"  CASE setting NAME".
+		"  WHEN 'THEME_DIR' THEN".
+		"   CASE setting_value".
+		"   WHEN ''                    THEN ''".
+		"   WHEN 'themes/cloudy/'      THEN 'themes/clouds/'".
+		"   WHEN 'themes/minimal/'     THEN 'themes/minimal/'".
+		"   WHEN 'themes/simplyblue/'  THEN 'themes/colors/'".
+		"   WHEN 'themes/simplygreen/' THEN 'themes/colors/'".
+		"   WHEN 'themes/simplyred/'   THEN 'themes/colors/'".
+		"   WHEN 'themes/xenea/'       THEN 'themes/xenea/'".
+		"   ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
+		"  END".
+		"  WHEN 'LANGUAGE'".
+		"   WHEN 'catalan'    THEN 'ca'".
+		"   WHEN 'english'    THEN 'en_US'".
+		"   WHEN 'english-uk' THEN 'en_GB'". // PGV had the config for en_GB, but no language files
+		"   WHEN 'polish'     THEN 'pl'".
+		"   WHEN 'italian'    THEN 'it'".
+		"   WHEN 'spanish'    THEN 'es'".
+		"   WHEN 'finnish'    THEN 'fi'".
+		"   WHEN 'french'     THEN 'fr'".
+		"   WHEN 'german'     THEN 'de'".
+		"   WHEN 'danish'     THEN 'da'".
+		"   WHEN 'portuguese' THEN 'pt'".
+		"   WHEN 'hebrew'     THEN 'he'".
+		"   WHEN 'estonian'   THEN 'et'".
+		"   WHEN 'turkish'    THEN 'tr'".
+		"   WHEN 'dutch'      THEN 'nl'".
+		"   WHEN 'slovak'     THEN 'sk'".
+		"   WHEN 'norwegian'  THEN 'nn'".
+		"   WHEN 'slovenian'  THEN 'sl'".
+		"   WHEN 'hungarian'  THEN 'hu'".
+		"   WHEN 'swedish'    THEN 'sv'".
+		"   WHEN 'russian'    THEN 'ru'".
+		"   ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
+		"  END".
+		"  ELSE setting_value".
+		"  END".
+		" FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting"
 	)->execute();
 
 	echo '<p>pgv_user => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -560,7 +599,29 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               $INDI_FACTS_ADD);
 	@set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             $INDI_FACTS_QUICK);
 	@set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            $INDI_FACTS_UNIQUE);
-	@set_gedcom_setting($ged_id, 'LANGUAGE',                     WT_LOCALE);
+	switch ($LANGUAGE) {
+	case 'catalan':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'ca'); break;
+	case 'english-uk': @set_gedcom_setting($ged_id, 'LANGUAGE', 'en_GB'); break;
+	case 'polish':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'pl'); break;
+	case 'italian':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'it'); break;
+	case 'spanish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'es'); break;
+	case 'finnish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'fi'); break;
+	case 'french':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'fr'); break;
+	case 'german':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'de'); break;
+	case 'danish':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'da'); break;
+	case 'portuguese': @set_gedcom_setting($ged_id, 'LANGUAGE', 'pt'); break;
+	case 'hebrew':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'he'); break;
+	case 'estonian':   @set_gedcom_setting($ged_id, 'LANGUAGE', 'et'); break;
+	case 'turkish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'tr'); break;
+	case 'dutch':      @set_gedcom_setting($ged_id, 'LANGUAGE', 'nl'); break;
+	case 'slovak':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'sk'); break;
+	case 'norwegian':  @set_gedcom_setting($ged_id, 'LANGUAGE', 'nn'); break;
+	case 'slovenian':  @set_gedcom_setting($ged_id, 'LANGUAGE', 'sl'); break;
+	case 'hungarian':  @set_gedcom_setting($ged_id, 'LANGUAGE', 'hu'); break;
+	case 'swedish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'sv'); break;
+	case 'russian':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'ru'); break;
+	default:           @set_gedcom_setting($ged_id, 'LANGUAGE', 'en_US'); break;
+	}
 	@set_gedcom_setting($ged_id, 'LINK_ICONS',                   $LINK_ICONS);
 	@set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                $MAX_ALIVE_AGE);
 	@set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  $MAX_DESCENDANCY_GENERATIONS);
@@ -631,7 +692,16 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            $SUBLIST_TRIGGER_I);
 	@set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);
 	@set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            $SURNAME_TRADITION);
-	@set_gedcom_setting($ged_id, 'THEME_DIR',                    'themes/webtrees/');
+	switch ($THEME_DIR) {
+	case '':	                 @set_gedcom_setting($ged_id, 'THEME_DIR', '');
+	case 'themes/cloudy/':     @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/clouds/');
+	case 'themes/minimal/':	   @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/minimal/');
+	case 'themes/simplyblue/':
+	case 'themes/simplygreen/':
+	case 'themes/simplyred/':  @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/colors/');
+	case 'themes/xenea/':	     @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/xenea/');
+	default:                   @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/webtrees/');
+	}
 	@set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);
 	@set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        $UNDERLINE_NAME_QUOTES);
 	@set_gedcom_setting($ged_id, 'USE_GEONAMES',                 $USE_GEONAMES);
