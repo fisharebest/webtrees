@@ -114,8 +114,6 @@ case 'update':
 	if (substr($_POST["NEW_MEDIA_DIRECTORY"], 0, 2)=="./") $_POST["NEW_MEDIA_DIRECTORY"] = substr($_POST["NEW_MEDIA_DIRECTORY"], 2);
 	if (preg_match("/.*[a-zA-Z]{1}:.*/", $_POST["NEW_MEDIA_DIRECTORY"])>0) $errors = true;
 
-	if (!isFileExternal($_POST["NEW_HOME_SITE_URL"])) $_POST["NEW_HOME_SITE_URL"] = "http://".$_POST["NEW_HOME_SITE_URL"];
-
 	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      safe_POST_bool('NEW_ABBREVIATE_CHART_LABELS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          safe_POST('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          safe_POST('NEW_ADVANCED_PLAC_FACTS'));
@@ -146,8 +144,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS',                safe_POST_bool('NEW_GENERATE_UIDS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS',           safe_POST_bool('NEW_HIDE_GEDCOM_ERRORS'));
 	set_gedcom_setting(WT_GED_ID, 'HIDE_LIVE_PEOPLE',             safe_POST_bool('NEW_HIDE_LIVE_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'HOME_SITE_TEXT',               safe_POST('NEW_HOME_SITE_TEXT'));
-	set_gedcom_setting(WT_GED_ID, 'HOME_SITE_URL',                safe_POST('NEW_HOME_SITE_URL'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD',               safe_POST('NEW_INDI_FACTS_ADD'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK',             safe_POST('NEW_INDI_FACTS_QUICK'));
 	set_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE',            safe_POST('NEW_INDI_FACTS_UNIQUE'));
@@ -619,19 +615,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 					<tr>
 						<td class="subbar" colspan="2"><?php print i18n::translate('Web Site and META Tag Settings'); ?></td>
 					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Main website URL'), help_link('HOME_SITE_URL'); ?>
-						</td>
-						<td class="optionbox width60"><input type="text" name="NEW_HOME_SITE_URL" value="<?php print $HOME_SITE_URL; ?>" size="50" dir="ltr" tabindex="<?php echo ++$i; ?>" /></td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Main website text'), help_link('HOME_SITE_TEXT'); ?>
-						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_HOME_SITE_TEXT" value="<?php print htmlspecialchars($HOME_SITE_TEXT, ENT_COMPAT, 'UTF-8'); ?>" size="50" tabindex="<?php echo ++$i; ?>" /></td>
-					</tr>
-					<tr>
 					<tr>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>

@@ -236,7 +236,8 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		"  END".
 		"  ELSE setting_value".
 		"  END".
-		" FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting"
+		" FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting".
+		" WHERE setting_name NOT IN ('HOME_SITE_TEXT', 'HOME_SITE_URL')"
 	)->execute();
 
 	echo '<p>pgv_user => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -595,8 +596,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'GENERATE_UIDS',                $GENERATE_UIDS);
 	@set_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS',           $HIDE_GEDCOM_ERRORS);
 	@set_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE',             $HIDE_LIVE_PEOPLE);
-	@set_gedcom_setting($ged_id, 'HOME_SITE_TEXT',               $HOME_SITE_TEXT);
-	@set_gedcom_setting($ged_id, 'HOME_SITE_URL',                $HOME_SITE_URL);
 	@set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               $INDI_FACTS_ADD);
 	@set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             $INDI_FACTS_QUICK);
 	@set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            $INDI_FACTS_UNIQUE);

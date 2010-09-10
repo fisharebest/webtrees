@@ -41,21 +41,6 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class MenuBar
 {
 	/**
-	* get the home menu
-	* @return Menu the menu item
-	*/
-	static function getHomeMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $HOME_SITE_URL, $HOME_SITE_TEXT;
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
-		//-- main home menu item
-		$menu = new Menu($HOME_SITE_TEXT, $HOME_SITE_URL, "down");
-		if (!empty($WT_IMAGES["home"]))
-			$menu->addIcon('home');
-		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_home");
-		return $menu;
-	}
-
-	/**
 	* get the menu with links to the gedcom portals
 	* @return Menu the menu item
 	*/

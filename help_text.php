@@ -2249,16 +2249,6 @@ case 'HIDE_LIVE_PEOPLE':
 		$text .= '</p>';
         break;
 
-case 'HOME_SITE_TEXT':
-	$title=i18n::translate('Main website text');
-	$text=i18n::translate('The legend used to identify the link to your main Home page.');
-	break;
-
-case 'HOME_SITE_URL':
-	$title=i18n::translate('Main website URL');
-	$text=i18n::translate('Each <b>webtrees</b> page includes a link to your main Home page.  The appearance of this link is controlled by the theme being used.  You enter the actual URL to your Home site here.');
-	break;
-
 case 'INDEX_DIRECTORY':
 	$title=i18n::translate('Data file directory');
 	$text=i18n::translate('The path to a readable and writable directory where <b>webtrees</b> should store data files (include the trailing "/").  <b>webtrees</b> does not require this directory\'s name to be "data".  You can choose any name you like.<br /><br />For security, this directory should be placed somewhere in the server\'s file space that is not accessible from the Internet. An example of such a structure follows:<br /><b>webtrees:</b> dir1/dir2/dir3/webtrees<br /><b>Index:</b> dir1/dir4/dir5/dir6/data<br /><br />For the example shown, you would enter <b>../../dir4/dir5/dir6/data/</b> in this field.');

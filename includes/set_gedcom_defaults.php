@@ -68,8 +68,6 @@ set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             'I');
 set_gedcom_setting($ged_id, 'GENERATE_UIDS',                false);
 set_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS',           true);
 set_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE',             true);
-set_gedcom_setting($ged_id, 'HOME_SITE_TEXT',               'webtrees');
-set_gedcom_setting($ged_id, 'HOME_SITE_URL',                'http://webtrees.net');
 set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               'ADDR,AFN,BIRT,CHR,DEAT,BURI,CREM,ADOP,BAPM,BARM,BASM,BLES,CHRA,CONF,EMAIL,FAX,FCOM,ORDN,NATU,EMIG,IMMI,CENS,PROB,WILL,GRAD,RETI,CAST,DSCR,EDUC,IDNO,NATI,NCHI,NMR,OCCU,PROP,RELI,RESI,SSN,TITL,BAPL,CONL,ENDL,SLGC,_MILI,ASSO');
 set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             'BIRT,BURI,CHR,CENS,DEAT,OCCU,RESI');
 set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            '');

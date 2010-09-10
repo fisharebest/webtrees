@@ -95,7 +95,7 @@ class ClippingsControllerRoot extends BaseController {
 	}
 	//----------------beginning of function definitions for ClippingsControllerRoot
 	function init() {
-		global $SCRIPT_NAME, $HOME_SITE_TEXT, $HOME_SITE_URL, $MEDIA_DIRECTORY;
+		global $SCRIPT_NAME, $MEDIA_DIRECTORY;
 		global $GEDCOM, $cart;
 
 		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
@@ -396,9 +396,6 @@ class ClippingsControllerRoot extends BaseController {
 				if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
 					$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
 				}
-				$filetext .= "1 TITL " . $HOME_SITE_TEXT . "\n";
-				$filetext .= "1 ABBR " . $HOME_SITE_TEXT . "\n";
-				$filetext .= "1 PUBL " . $HOME_SITE_URL . "\n";
 				$filetext .= "0 TRLR\n";
 				//-- make sure the preferred line endings are used
 				$filetext = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
