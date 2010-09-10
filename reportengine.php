@@ -201,7 +201,7 @@ elseif ($action=="setup") {
 			}
 			<?php
 		echo WT_JS_END;
-		
+
 		init_calendar_popup();
 		echo "<form name=\"setupreport\" method=\"get\" target=\"_blank\" action=\"reportengine.php\">\n";
 		echo "<input type=\"hidden\" name=\"action\" value=\"run\" />\n";

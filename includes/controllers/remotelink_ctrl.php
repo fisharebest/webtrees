@@ -87,7 +87,7 @@ class RemoteLinkController extends BaseController {
 		$this->form_txtPassword      =safe_POST('txtPassword', WT_REGEX_PASSWORD);
 		$this->form_cbExistingServers=safe_POST('cbExistingServers', array_keys($this->server_list));
 		$this->form_txtCB_Title      =safe_POST('txtCB_Title', '[^<>"%{};]+');
-		$this->form_txtCB_GID        =safe_POST('txtCB_GID', $this->gedcom_list);			
+		$this->form_txtCB_GID        =safe_POST('txtCB_GID', $this->gedcom_list);
 		$this->form_txtFS_URL        =safe_POST('txtFS_URL', WT_REGEX_URL);
 		$this->form_txtFS_Title      =safe_POST('txtFS_Title', '[^<>"%{};]+');
 		$this->form_txtFS_GID        =safe_POST('txtFS_GID', $this->gedcom_list);
@@ -96,7 +96,7 @@ class RemoteLinkController extends BaseController {
 
 		if (is_null($this->form_location)) {
 			if ($this->server_list) {
-				$this->form_location='existing';			
+				$this->form_location='existing';
 			} else {
 				$this->form_location='remote';
 			}
@@ -126,7 +126,7 @@ class RemoteLinkController extends BaseController {
 		if (!$url || !$gedcom_id || !$username || !$password) {
 			return null;
 		}
-			
+
 		if (preg_match('/\?wsdl$/', $url)==0) {
 			$url.="?wsdl";
 		}
@@ -275,16 +275,16 @@ class RemoteLinkController extends BaseController {
 		$relation_type=$this->form_cbRelationship;
 		if ($serverID && $link_pid) {
 			$indirec=find_gedcom_record($this->pid, WT_GED_ID, true);
-	
+
 			switch ($relation_type) {
 			case "father":
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
 				$stub_id=append_gedrec($indistub, WT_GED_ID);
 				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
-	
+
 				$gedcom_fam="0 @new@ FAM\n1 HUSB @{$stub_id}@\n1 CHIL @{$this->pid}@";
 				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
-	
+
 				$indirec.= "\n1 FAMC @{$fam_id}@";
 				replace_gedrec($this->pid, WT_GED_ID, $indirec);
 
@@ -297,13 +297,13 @@ class RemoteLinkController extends BaseController {
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
 				$stub_id=append_gedrec($indistub, WT_GED_ID);
 				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
-	
+
 				$gedcom_fam="0 @new@ FAM\n1 WIFE @{$stub_id}@\n1 CHIL @{$this->pid}@";
 				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
-	
+
 				$indirec.="\n1 FAMC @{$fam_id}@";
 				replace_gedrec($this->pid, WT_GED_ID, $indirec);
-	
+
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMS @".$fam_id."@";
@@ -313,13 +313,13 @@ class RemoteLinkController extends BaseController {
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
 				$stub_id=append_gedrec($indistub, WT_GED_ID);
 				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
-	
+
 				$gedcom_fam="0 @new@ FAM\n1 MARR Y\n1 WIFE @{$this->pid}@\n1 HUSB @{$stub_id}@\n";
 				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
-	
+
 				$indirec.="\n1 FAMS @{$fam_id}@";
 				replace_gedrec($this->pid, WT_GED_ID, $indirec);
-	
+
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 			$indistub.="\n1 FAMS @{$fam_id}@";
@@ -332,10 +332,10 @@ class RemoteLinkController extends BaseController {
 
 				$gedcom_fam="0 @new@ FAM\n1 MARR Y\n1 WIFE @{$stub_id}@\n1 HUSB @{$this->pid}@";
 				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
-	
+
 				$indirec.="\n1 FAMS @{$fam_id}@";
 				replace_gedrec($this->pid, WT_GED_ID, $indirec);
-	
+
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMS @{$fam_id}@\n";
@@ -346,7 +346,7 @@ class RemoteLinkController extends BaseController {
 				$indistub="0 @new@ INDI\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}\n1 RFN {$serverID}:{$link_pid}";
 				$stub_id=append_gedrec($indistub, WT_GED_ID);
 				$indistub=find_gedcom_record($stub_id, WT_GED_ID, true);
-	
+
 				if (get_gedcom_value('SEX', 1, $indirec, '', false)=='F') {
 					$gedcom_fam="0 @new@ FAM\n1 WIFE @{$this->pid}@\n1 CHIL @{$stub_id}@";
 				} else {
@@ -355,7 +355,7 @@ class RemoteLinkController extends BaseController {
 				$fam_id=append_gedrec($gedcom_fam, WT_GED_ID);
 				$indirec.="\n1 FAMS @{$fam_id}@";
 				replace_gedrec($this->pid, WT_GED_ID, $indirec);
-	
+
 				$serviceClient=ServiceClient::getInstance($serverID);
 				$indistub=$serviceClient->mergeGedcomRecord($link_pid, $indistub, true, true);
 				$indistub.="\n1 FAMC @".$fam_id."@";
@@ -363,7 +363,7 @@ class RemoteLinkController extends BaseController {
 				break;
 			case 'current_person':
 				$indirec.="\n1 RFN {$serverID}:{$link_pid}\n1 SOUR @{$serverID}@\n2 PAGE {$link_pid}";
-	
+
 				$serviceClient = ServiceClient::getInstance($serverID);
 				if (!is_null($serviceClient)) {
 					//-- get rid of change date

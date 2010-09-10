@@ -100,9 +100,9 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		}
 		?></td>
 	</tr>
-	
+
 	<tr><td colspan="2">
-	
+
 	<div id="tabs" class="width100">
 	<!-- Tabs -->
 	<ul>
@@ -111,7 +111,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 			<li><a href="#site"><span><?php echo i18n::translate('Site administration')?></span></a></li>
 		<?php } ?>
 		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration')?></span></a></li>
-		<?php 
+		<?php
 			$modules = WT_Module::getInstalledModules();
 			if (WT_USER_IS_ADMIN || count($modules)>0) {?>
 				<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration')?></span></a></li>
@@ -120,8 +120,8 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	<!-- Other admin -->
 	<div id="info">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
-			<tr>                                                                                                                                             
-	            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Informational'); ?></td>                            
+			<tr>
+	            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Informational'); ?></td>
 	    	</tr>
 			<tr>
 				<td class="optionbox width50">
@@ -132,10 +132,10 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 					<?php echo help_link('phpinfo'); ?>
 				</td>
 			</tr>
-	<?php if (WT_USER_CAN_EDIT) { 
+	<?php if (WT_USER_CAN_EDIT) {
 		?>
-		<tr>                                                                                                                                             
-			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Unlinked Records'); ?></td>                            
+		<tr>
+			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Unlinked Records'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox with50">
@@ -155,15 +155,15 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</tr>
 		</table>
 		</div>
-		<?php 
-	} 
-	if (WT_USER_IS_ADMIN) { 
+		<?php
+	}
+	if (WT_USER_IS_ADMIN) {
 		?>
-		<!-- Site admin -->		
+		<!-- Site admin -->
 		<div id="site">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
-		<tr>                                                                                                                                             
-            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Site administration'); ?></td>                            
+		<tr>
+            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Site administration'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
@@ -180,12 +180,12 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		</div>
 		<?php
 	} ?>
-	<!-- GEDCOM admin -->	
+	<!-- GEDCOM admin -->
 	<div id="gedcom">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
-			<tr>                                                                                                                                             
-	            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Data and GEDCOM administration'); ?></td>                            
-	    	</tr>
+			<tr>
+			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Data and GEDCOM administration'); ?></td>
+			</tr>
 			<tr>
 				<td class="optionbox width50"><a
 					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration');?></a><?php echo help_link('gedcom_administration'); ?></td>
@@ -197,8 +197,8 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 				<td class="optionbox width50"><?php if (WT_USER_CAN_EDIT) {  echo '<a href="module.php?mod=batch_update&mod_action=batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php'); } ?></td>
 			</tr>
 			<?php if ($pending_changes) { ?>
-				<tr>                                                                                                                                             
-					<td colspan="2" class="optionbox" style="text-align:center; "><?php echo $d_wt_changes; ?></td>                            
+				<tr>
+					<td colspan="2" class="optionbox" style="text-align:center; "><?php echo $d_wt_changes; ?></td>
 				</tr>
 			<?php } ?>
 		</table>
@@ -207,14 +207,14 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	<?php if (WT_USER_IS_ADMIN || count($modules)>0) {
 		echo '<div id="modules">';
 			// Added by BH ------------------------
-			echo i18n::translate('Loading...'); 
+			echo i18n::translate('Loading...');
 			// ------------------------------------
 		echo '</div>';
 	} ?>
 </div>
 </td>
 </tr></table>
-	<?php 
+	<?php
 	echo WT_JS_START;
 	echo 'function manageservers() {';
 	echo ' window.open("manageservers.php", "", "top=50,left=50,width=700,height=500,scrollbars=1,resizable=1");';

@@ -71,7 +71,7 @@ if ($reset == "Reset") {
 	unset($_SESSION['Medialist']);
 	unset($_SESSION['Filtered_medialist']);
 }
-  
+
 if (empty($_SESSION['Medialist_ged'])) $_SESSION['Medialist_ged'] = WT_GEDCOM;
 if ($_SESSION['Medialist_ged'] != WT_GEDCOM) {
 	$_SESSION['Medialist_ged'] = WT_GEDCOM;
@@ -89,13 +89,13 @@ if (empty($folder)) {
 if (isset($_SESSION['Medialist'])) {
 	$show = "yes";
 	$search = "yes";
-		
+
 	// Build a new array?
 	// Not if $action <> filter (ie It's either a layout/page change or a return visit)
-	// Load up the session variables	
+	// Load up the session variables
 	if ($action != "filter") {
 		$medialist = ($_SESSION['Filtered_medialist']);
-		$folder=($_SESSION['Medialist_folder']);		
+		$folder=($_SESSION['Medialist_folder']);
 		$filter1=($_SESSION['Medialist_filter1']);
 		$filter2=($_SESSION['Medialist_filter2']);
 		$filter_type=($_SESSION['Filter_type']);
@@ -105,13 +105,13 @@ if (isset($_SESSION['Medialist'])) {
 		$currentdironly=($_SESSION['Medialist_currentdironly']);
 		$show_thumbnail=($_SESSION['Medialist_thumbnail']);
 		$exclude_links=($_SESSION['Medialist_links']);
-	
-	} else {		
+
+	} else {
 		// This is a return visit and the FILTER button was used
 			// Check if the subdirectory and folder have changed
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				if ($folder != $_SESSION['Medialist_folder']) $build = "yes";
-				if ($currentdironly != $_SESSION['Medialist_currentdironly']) $build ="yes";				
+				if ($currentdironly != $_SESSION['Medialist_currentdironly']) $build ="yes";
 			}
 			// Check if the 'Include media links' option has changed
 			if ($exclude_links != $_SESSION['Medialist_links']) $build ="yes";
@@ -121,7 +121,7 @@ if (isset($_SESSION['Medialist'])) {
 					$medialist = $_SESSION['Filtered_medialist'];
 					$action = false;
 				} else $medialist = $_SESSION['Medialist'];
-			}			
+			}
 		}
 } else {
 	// This is the first visit to the medialist page
@@ -178,7 +178,7 @@ if ($build == "yes") {
 		if (!$disp) unset($medialist[$key]);
 
 	}
-	
+
 	usort($medialist, "mediasort"); // Reset numbering of medialist array
 // save the array
 $_SESSION['Medialist'] = $medialist;
@@ -194,7 +194,7 @@ $_SESSION['Medialist'] = $medialist;
 
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter" />
-	<input type="hidden" name="search" value="yes" />	
+	<input type="hidden" name="search" value="yes" />
 	<table class="list-table center width75 <?php echo $TEXT_DIRECTION; ?>">
 	<?php
 	if ($TEXT_DIRECTION=='ltr') {
@@ -344,7 +344,7 @@ $_SESSION['Medialist'] = $medialist;
 				<input type="checkbox" id="exclude_links" name="exclude_links"
 				<?php if ($exclude_links) { ?>checked="checked"<?php } ?> />
 			<?php } ?>
-							</td>	
+							</td>
 	<!-- // end thumbnail option -->
 	</tr></table>
 </form>
@@ -368,7 +368,7 @@ if ($action=="filter" && (!empty($filtered_medialist))) {
 			usort($filtered_medialist, "mediasort"); // Reset numbering of medialist array
 		// If either of the filters is empty use the "and" filter
 		} else $filter_type = $and;
-	} 
+	}
 
 	if ($filter_type == $and) {
 		if ((strlen($filter1) > 1) || (strlen($filter2)) > 1) {
@@ -397,7 +397,7 @@ if ($search=="yes") {
 	$_SESSION['Medialist_max']=$max;
 	$_SESSION['Medialist_columns']=$columns;
 	$_SESSION['Medialist_currentdironly']=$currentdironly;
-	$_SESSION['Medialist_thumbnail']=$show_thumbnail;	
+	$_SESSION['Medialist_thumbnail']=$show_thumbnail;
 	$_SESSION['Medialist_links']=$exclude_links;
 }
 
@@ -432,7 +432,7 @@ if ($show == "yes") {
 	print"\n\t<table class=\"list_table\">\n";
 
 	// echo page back, page number, page forward controls
-	
+
 	echo "\n<tr><td colspan=\"2\">\n";
 	echo "\n\t<table class=\"list_table width100\">\n";
 
@@ -465,9 +465,9 @@ if ($show == "yes") {
 	}
 
 	echo "</td>";
-	
+
 	echo "<td align=\"center\">", i18n::translate('Page %s of %s', $currentPage, $lastPage), "</td>";
-	
+
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"right":"left", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
@@ -495,9 +495,9 @@ if ($show == "yes") {
 		}
 	}
 	echo "</td>";
-	
+
 	echo "</tr>\n</table></td></tr>";
-	
+
 	// -- echo the array
 	echo "\n<tr>\n";
 
@@ -533,7 +533,7 @@ if ($show == "yes") {
 
 		// Get info on how to handle this media file
 		$mediaInfo = mediaFileInfo($media["FILE"], $media["THUMB"], $media["XREF"], $name, $notes);
-		
+
 		//-- Thumbnail field
 		if ($show_thumbnail) {
 		echo '<a href="', $mediaInfo['url'], '">';
@@ -591,7 +591,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 				echo "<br />";
 			}
 		}
-		
+
 	}
 		// -- new naming structure ---------
 		if ($sortby == 'title'){
@@ -619,9 +619,9 @@ Plus other Media Options - MediaViewer page') . "\" />";
 				echo "(", $media["XREF"], ")";
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
-			
+
 			echo "</a>";
-			
+
 		if ($showFile) {
 				echo "<br /><br /><sub><span dir=\"ltr\"><b>", PrintReady($name_disp4), ": </b>", PrintReady($name_disp2), "</span></sub>";
 				echo "<br /><sub><span dir=\"ltr\"><b>", i18n::translate('Location'), ": </b>", PrintReady($name_disp3), "</span></sub>";
@@ -667,8 +667,8 @@ Plus other Media Options - MediaViewer page') . "\" />";
 
 	// echo page back, page number, page forward controls
 	echo "\n<tr><td colspan=\"2\">\n";
-	
-	print"\n\t<table class=\"list_table width100\">\n";	
+
+	print"\n\t<table class=\"list_table width100\">\n";
 	echo "\n<tr>\n";
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
 	if ($TEXT_DIRECTION=="ltr") {

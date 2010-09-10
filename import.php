@@ -68,7 +68,7 @@ header('Content-type: text/html; charset=UTF-8');
 // See http://bugs.mysql.com/bug.php?id=22853
 $max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
 try {
-	WT_DB::exec("SET @@max_allowed_packet=".max($row->import_total*2, $max_allowed_packet));		
+	WT_DB::exec("SET @@max_allowed_packet=".max($row->import_total*2, $max_allowed_packet));
 } catch (PDOException $ex) {
 	// We can only set this on MySQL 5.1.30/5.0.83 or earlier
 }
@@ -81,7 +81,7 @@ if ($row->import_offset==0 || $row->import_total==0) {
 		'jQuery("#import',  $gedcom_id, '").toggle();',
 		'jQuery("#actions', $gedcom_id, '").toggle();',
 		WT_JS_END;
-	exit;	
+	exit;
 }
 
 // Calculate progress so far
@@ -145,7 +145,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING ascii) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
-			break;				
+			break;
 		case 'IBMPC':   // IBMPC and MS_DOS could be anything.  Mostly it means CP850.
 		case 'MS-DOS':
 		case 'CP437':
@@ -156,10 +156,10 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING cp850) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
-			break;				
+			break;
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
 			echo
-				WT_JS_START, 
+				WT_JS_START,
 				'alert("', /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ i18n::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");',
 				WT_JS_END;
 		case 'CP1252':
@@ -173,7 +173,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin1) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
-			break;				
+			break;
 		case 'CP1250':
 		case 'ISO8859-2':
 		case 'ISO-8859-2':
@@ -185,7 +185,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin2) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
-			break;				
+			break;
 		case 'MACINTOSH':
 			// Convert from MAC Roman to UTF8.
 			WT_DB::prepare(
@@ -193,7 +193,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING macroman) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
-			break;				
+			break;
 		case 'UTF8':
 		case 'UTF-8':
 			// Already UTF-8 so nothing to do!

@@ -1318,7 +1318,7 @@ class FootnoteHTML extends Footnote {
 	* @param ReportBaseHTML &$html
 	*/
 	function renderFootnote(&$html) {
-		
+
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
 		}
@@ -1355,7 +1355,7 @@ class FootnoteHTML extends Footnote {
 	/**
 	* Get the width of text
 	* Breaks up a text into lines if needed
-	* 
+	*
 	* @param ReportBaseHTML &$html
 	* @return array
 	*/

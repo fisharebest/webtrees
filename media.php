@@ -687,11 +687,11 @@ if (check_media_structure()) {
 
 /* I've commented this out, as I have no idea what it is supposed to do.  We've just deleted a
  * file, so why are we creating a new media object for it???
- 
+
 				// Record changes to the Media object
 				accept_all_changes($xref, WT_GED_ID);
 				$objerec = find_gedcom_record($xref, WT_GED_ID);
-	
+
 				// Add the same file as a new object
 				if ($finalResult && !$removeObject && $objerec!="") {
 					$xref = get_new_xref("OBJE");
@@ -727,7 +727,7 @@ if (check_media_structure()) {
 
 		// main link displayed on page
 		$menu = new Menu();
-		
+
 		// GEDFact assistant Add Media Links =======================
 		if (file_exists('modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 			$menu->addLabel(i18n::translate('Manage links'));
@@ -735,7 +735,7 @@ if (check_media_structure()) {
 			$menu->addClass("", "", "submenu");
 			$menu->addFlyout("left");
 			// Do not print submunu
-			
+
 		} else {
 			$menu->addLabel(i18n::translate('Set link'));
 			$menu->addOnclick("return ilinkitem('$mediaid', 'person')");
@@ -858,7 +858,7 @@ jQuery(document).ready(function(){
 			$showExternal = ($directory == $MEDIA_DIRECTORY) ? true : false;
 			$medialist=get_medialist(true, $directory, false, false, $showExternal);
 
-		
+
 		// Get the list of media items
 /**
  * This is the default action for the page
@@ -896,7 +896,7 @@ jQuery(document).ready(function(){
 			}
 			print PrintReady(substr($directory, 0, -1));
 			print "<br />";
-				
+
 			// Calculation to determine whether files are protected or not -------------------------
 			// Check if media directory and thumbs directory are empty
 			$clean = false;
@@ -916,7 +916,7 @@ jQuery(document).ready(function(){
 			} else {
 				print "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
 				AddToLog('Directory does not exist.'.$directory, 'media');
-			}		
+			}
 			// Thumbs directory check
 			if (@is_dir(filename_decode($thumbdir))) {
 				$handle = opendir(filename_decode($thumbdir));
@@ -942,10 +942,10 @@ jQuery(document).ready(function(){
 					if (!in_array($file, $BADMEDIA)) $thumbfiles_fw[] = $file;
 				}
 				closedir($handle);
-			}		
+			}
 			$protected_files = count($files_fw);
 			$standard_files = count($files);
-			
+
 			print "<br />";
 			print "<form name=\"blah3\" action=\"media.php\" method=\"post\">";
 			print "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
@@ -954,7 +954,7 @@ jQuery(document).ready(function(){
 			print "<input type=\"hidden\" name=\"action\" value=\"\" />";
 			print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
 			print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-			
+
 			if ($USE_MEDIA_FIREWALL) {
 				if ($protected_files < $standard_files) {
 					echo '<div class="error">';
@@ -963,14 +963,14 @@ jQuery(document).ready(function(){
 					echo i18n::translate('(a) Click the "Move ALL to Protected" button to move your media to the protected directory').'<br />';
 					echo i18n::translate('OR').'<br />';
 					echo i18n::translate('(b) Disable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
-					echo '</div>';		
+					echo '</div>';
 				}
 					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
 					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
 					print help_link('move_mediadirs');
-					print "<br />";	
+					print "<br />";
 			}
-			
+
 			if ( !$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY) ) {
 				if ($protected_files > $standard_files) {
 					echo '<div class="error">';
@@ -983,8 +983,8 @@ jQuery(document).ready(function(){
 					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
 					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
 					print help_link('move_mediadirs');
-					print "<br />";		
-				}	
+					print "<br />";
+				}
 			}
 
 			print "<input type=\"submit\" value=\"".i18n::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
@@ -1057,7 +1057,7 @@ jQuery(document).ready(function(){
 			// Set up for two passes, the first showing URLs, the second normal files
 			?>
 <div align="center">
-	<form class="tablesorter" method="post" action="media.php"> 
+	<form class="tablesorter" method="post" action="media.php">
 		<table id="media_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
 			<thead>
 			  <tr>

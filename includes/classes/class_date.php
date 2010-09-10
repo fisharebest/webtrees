@@ -922,7 +922,7 @@ class HebrewDate extends JewishDate {
 	const GERSHAYIM="״";
 	const GERSH="׳";
 	const ALAFIM="אלפים";
-	
+
 	function FormatDayZeros() {
 		return $this->NumToHebrew($this->d);
 	}
@@ -972,17 +972,17 @@ class HebrewDate extends JewishDate {
 		// Hebrew does not have genitive forms
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
-	
+
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		// Hebrew does not have locative forms
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
-	
+
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		// Hebrew does not have instrumental forms
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
-	
+
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
@@ -1375,12 +1375,12 @@ class ArabicDate extends HijriDate {
 		// Arabic does not have locative forms
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
-	
+
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		// Arabic does not have instrumental forms
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
-	
+
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
 		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);

@@ -151,7 +151,7 @@ if (WT_USE_LIGHTBOX) {
 				if ($controller->mediaobject->countLinkedFamilies()) {
 					print_fam_table($controller->mediaobject->fetchLinkedFamilies(), $controller->mediaobject->getFullName());
 				}
-	
+
 				// Sources linked to this media object
 				if ($controller->mediaobject->countLinkedSources()) {
 					print_sour_table($controller->mediaobject->fetchLinkedSources(), $controller->mediaobject->getFullName());

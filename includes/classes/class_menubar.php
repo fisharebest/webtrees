@@ -184,7 +184,7 @@ class MenuBar
 		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 		global $controller;
-		
+
 		$style = "top";
 		if ($rootid) $style = "sub";
 		if (isset($controller)) {
@@ -325,7 +325,7 @@ class MenuBar
 					$menuList["childTimeLine"] = i18n::translate('Show children on timeline chart');
 					$menuList["familyTimeLine"] = i18n::translate('Show family on timeline chart');
 					asort($menuList);
-			
+
 					// Produce the submenus in localized name order
 					foreach($menuList as $menuType => $menuName) {
 						switch ($menuType) {
@@ -338,7 +338,7 @@ class MenuBar
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);
 							break;
-			
+
 						case "childTimeLine":
 							// charts / children_timeline
 							$submenu = new Menu(i18n::translate('Show children on timeline chart'), encode_url('timeline.php?'.$controller->getChildrenUrlTimeline()));
@@ -348,7 +348,7 @@ class MenuBar
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);
 							break;
-			
+
 						case "familyTimeLine":
 							// charts / family_timeline
 							$submenu = new Menu(i18n::translate('Show family on timeline chart'), encode_url('timeline.php?pids[0]='.$controller->getHusband().'&pids[1]='.$controller->getWife().'&'.$controller->getChildrenUrlTimeline(2)));
@@ -358,11 +358,11 @@ class MenuBar
 							$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}");
 							$menu->addSubmenu($submenu);
 							break;
-			
+
 						}
 					}
 				}
-				
+
 				break;
 
 			case "lifespan":
@@ -469,7 +469,7 @@ class MenuBar
 	*/
 	static function getListsMenu($surname="") {
 		global $TEXT_DIRECTION, $WT_IMAGES, $MULTI_MEDIA, $SEARCH_SPIDER, $controller;
-		
+
 		$style = "top";
 		if ($surname) $style = "sub";
 		if (isset($controller)) {
@@ -483,7 +483,7 @@ class MenuBar
 				}
 			}
 		}
-		
+
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
 		if (!empty($SEARCH_SPIDER)) { // Only want the indi list for search engines.
@@ -670,8 +670,8 @@ class MenuBar
 				if (isset($controller->famid)) $famid = $controller->famid;
 			}
 		}
-		
-		
+
+
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ((!file_exists(WT_ROOT.'reportengine.php')) || (!empty($SEARCH_SPIDER))) {
 			$menu = new Menu("", "", "");
@@ -878,7 +878,7 @@ class MenuBar
 		$current=get_user_setting(WT_USER_ID, 'theme');
 		$all_themes=get_theme_names();
 		if (!array_key_exists($current, $all_themes)) {
-			$current=$THEME_DIR;		
+			$current=$THEME_DIR;
 		}
 
 		if ($ALLOW_THEME_DROPDOWN && !$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES')) {

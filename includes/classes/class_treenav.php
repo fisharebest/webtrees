@@ -287,7 +287,7 @@ class TreeNav {
 
 		?>
 		<span class="name1">
-		<?php $thumb = $this->getThumbnail($person); 
+		<?php $thumb = $this->getThumbnail($person);
 		if (!empty($thumb)) {
 			echo $thumb;
 		} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
@@ -303,7 +303,7 @@ class TreeNav {
 			}
 			else {
 				$thumbnail .= $WT_IMAGES["default_image_U"];
-			} 
+			}
 			$thumbnail .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			echo $thumbnail;
 		} ?>
@@ -325,7 +325,7 @@ class TreeNav {
 			if (!empty($spouse)) {
 				$name = $spouse->getFullName();
 				?>
-				<?php $thumb = $this->getThumbnail($spouse); 
+				<?php $thumb = $this->getThumbnail($spouse);
 				if (!empty($thumb)) {
 					echo $thumb;
 				} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
@@ -341,7 +341,7 @@ class TreeNav {
 					}
 					else {
 						$thumbnail .= $WT_IMAGES["default_image_U"];
-					} 
+					}
 					$thumbnail .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 					echo $thumbnail;
 				} ?>

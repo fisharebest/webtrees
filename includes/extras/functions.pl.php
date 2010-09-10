@@ -43,7 +43,7 @@ function getFirstRelationsName_pl($pid) {
 		$fname='';
 	}
 	//return $fname;
-	
+
 	// tested
 	$pname='';
 	$sex = Person::getInstance($pid)->getSex();

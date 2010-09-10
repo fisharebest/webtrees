@@ -42,11 +42,11 @@ if (!isset($action)) $action = "";
 if ($action == "phpinfo") {
 	$helpindex = "phpinfo_help";
 	print_header(i18n::translate('PHP information'));
-	
+
 	echo '<div class="center">';
 	echo '<p><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
 	echo '<p><h2>', i18n::translate('PHP information'), '</h2></p>';
-	
+
 	ob_start();
 
 	phpinfo();

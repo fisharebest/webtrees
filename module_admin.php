@@ -212,14 +212,14 @@ print_header(i18n::translate('Module administration'));
 </style>
 <script type="text/javascript">
 //<![CDATA[
-           
+
   function reindexMods(id) {
 	  jQuery('#'+id+' input').each(
 	  	function (index, value) {
 	    	value.value = index+1;
 	  	});
   }
-  
+
   jQuery(document).ready(function(){
 	//-- tabs
     jQuery("#tabs").tabs();
@@ -230,19 +230,19 @@ print_header(i18n::translate('Module administration'));
     //-- update the order numbers after drag-n-drop sorting is complete
     jQuery('#menus_table').bind('sortupdate', function(event, ui) {
 			var id = jQuery(this).attr('id');
-			reindexMods(id);  		
+			reindexMods(id);
   	  });
 
     jQuery('#tabs_table').bind('sortupdate', function(event, ui) {
 		var id = jQuery(this).attr('id');
-		reindexMods(id);  		
+		reindexMods(id);
 	  });
 
     jQuery('#sidebars_table').bind('sortupdate', function(event, ui) {
 		var id = jQuery(this).attr('id');
-		reindexMods(id);  		
+		reindexMods(id);
 	  });
-    
+
     //-- enable the arrows buttons
     jQuery(".uarrow").click(function() {
         var curr = jQuery(this).parent().parent().get(0);
@@ -279,9 +279,9 @@ print_header(i18n::translate('Module administration'));
 	    reindexMods('tabs_table');
 	    reindexMods('sidebars_table');
 	});
-	
+
 	// Table sorting and pageing
-	jQuery("#installed_table") 
+	jQuery("#installed_table")
 		.tablesorter({
 			sortList: [[2,0], [3,0]], widgets: ['zebra'],
 			headers: { 0: { sorter: false }}
@@ -301,7 +301,7 @@ print_header(i18n::translate('Module administration'));
 	<p><?php echo i18n::translate('Below is the list of all the modules installed in this instance of webtrees.  Modules are installed by placing them in the <i>modules</i> directory.  Here you can set the access level per GEDCOM for each module.  If a module includes tabs for the individual page or menus for the menu bar, you can also set the access level and order of each of them.')?></p>
 	<p><input TYPE="button" VALUE="<?php echo i18n::translate('Return to Administration page');?>" onclick="javascript:window.location='admin.php'" /></p>
 	<div id="tabs">
-		<form method="post" action="module_admin.php"> 
+		<form method="post" action="module_admin.php">
 			<input type="hidden" name="action" value="update_mods" />
 			<!-- page tabs -->
 				<ul>
@@ -350,7 +350,7 @@ print_header(i18n::translate('Module administration'));
 							<td><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 							<td><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
 							</tr>
-						<?php 
+						<?php
 						}
 						?>
 					</tbody>
@@ -408,13 +408,13 @@ print_header(i18n::translate('Module administration'));
 											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
-										} 
+										}
 									?>
 								</table>
 							</td>
 						</tr>
 						<?php
-						$order++; 
+						$order++;
 						}
 						?>
 					</tbody>
@@ -455,13 +455,13 @@ print_header(i18n::translate('Module administration'));
 									}
 									echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 									echo edit_field_access_level($varname, $access_level);
-								} 
+								}
 								?>
 							</table>
 							</td>
 						</tr>
 						<?php
-						$order++; 
+						$order++;
 						}
 						?>
 					</tbody>
@@ -502,13 +502,13 @@ print_header(i18n::translate('Module administration'));
 											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
-										} 
+										}
 										?>
 									</table>
 								</td>
 							</tr>
 						<?php
-						$order++; 
+						$order++;
 						}
 						?>
 					</tbody>
@@ -542,13 +542,13 @@ print_header(i18n::translate('Module administration'));
 										}
 										echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 										echo edit_field_access_level($varname, $access_level);
-									} 
+									}
 								?>
 								</table>
 							</td>
 						</tr>
 						<?php
-						$order++; 
+						$order++;
 						}
 						?>
 					</tbody>
@@ -582,13 +582,13 @@ print_header(i18n::translate('Module administration'));
 											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
-										} 
+										}
 										?>
 									</table>
 								</td>
 							</tr>
 							<?php
-						$order++; 
+						$order++;
 						}
 						?>
 					</tbody>
@@ -622,13 +622,13 @@ print_header(i18n::translate('Module administration'));
 											}
 											echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 											echo edit_field_access_level($varname, $access_level);
-										} 
+										}
 										?>
 									</table>
 								</td>
 							</tr>
 							<?php
-							$order++; 
+							$order++;
 							}
 							?>
 					</tbody>
@@ -662,13 +662,13 @@ print_header(i18n::translate('Module administration'));
 										}
 										echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
 										echo edit_field_access_level($varname, $access_level);
-									} 
+									}
 									?>
 								</table>
 							</td>
 						</tr>
 						<?php
-						$order++; 
+						$order++;
 						}
 						?>
 					</tbody>

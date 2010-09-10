@@ -209,7 +209,7 @@ class PedigreeController extends BaseController {
 						if ($i%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * $temp);
 						else $this->yoffset=$this->yoffset + (($boxspacing/2) * $temp);
 					}
-					
+
 				}
 				$this->yoffset-=(($boxspacing/2)*pow(2,($this->PEDIGREE_GENERATIONS-2))-($boxspacing/2));
 			}
@@ -217,7 +217,7 @@ class PedigreeController extends BaseController {
 				$this->xoffset = 10 + $basexoffset + (($this->PEDIGREE_GENERATIONS - $this->curgen) * ($this->pbwidth+$bxspacing));
 				if ($this->curgen == $this->PEDIGREE_GENERATIONS) $this->xoffset += 10;
 				if ($this->PEDIGREE_GENERATIONS<4)	$this->xoffset += 60;
-			} 
+			}
 			else if ($this->talloffset==2) {
 				if ($this->show_full) $this->xoffset = ($this->curgen) * (($this->pbwidth+$bxspacing) / 2)+($this->curgen)*10+136.5;
 				else $this->xoffset = ($this->curgen) * (($this->pbwidth+$bxspacing) / 4)+($this->curgen)*10+215.75;

@@ -466,7 +466,6 @@ function nuch() {
 			}
 			$zstart=$boundary+1;
 		}
-		
 	}
 }
 

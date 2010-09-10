@@ -172,7 +172,7 @@ class NoteController extends BaseController {
 			$submenu->addIcon('edit_note');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
-			
+
 			$menu->addSeparator();
 		}
 

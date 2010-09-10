@@ -357,7 +357,7 @@ if ($action=="newentry") {
 
 					if (!$isThum) {
 						echo i18n::translate(
-							'Thumbnail file %s does not exist.', 
+							'Thumbnail file %s does not exist.',
 							'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>'
 						);
 					} else {
@@ -523,7 +523,7 @@ if ($action == "update") {
 
 			if (!$isThum) {
 				echo i18n::translate(
-					'Thumbnail file %s does not exist.', 
+					'Thumbnail file %s does not exist.',
 					'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $oldFolder).$oldFilename.'</span>'
 				);
 			} else {

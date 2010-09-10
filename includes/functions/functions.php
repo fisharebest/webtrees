@@ -1769,7 +1769,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		//echo execution_stats();
 		//echo "-->\n";
 	}
-	
+
 	// Convert "generic" relationships into sex-specific ones.
 	foreach ($resnode['path'] as $n=>$pid) {
 		switch ($resnode['relations'][$n]) {
@@ -1911,7 +1911,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 
 	switch ($path) {
 	case '': return i18n::translate('self');
-	
+
 	//  Level One relationships
 	case 'mot': return i18n::translate('mother');
 	case 'fat': return i18n::translate('father');
@@ -1967,7 +1967,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			}
 		}
 		return i18n::translate('sibling');
-	
+
 	// Level Two relationships
 	case 'brochi': return i18n::translate_c('brother\'s child', 'nephew/niece');
 	case 'brodau': return i18n::translate_c('brother\'s daughter', 'niece');
@@ -2762,7 +2762,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			case 'es': // Source: Wes Groleau (adding doesn't change behavior, but needs to be better researched)
 			default:
 				switch ($last) {
-					
+
 				case 'son': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
 				            return i18n::translate('great x%d grandson',      $up-2);
 				case 'dau': return i18n::translate('great x%d granddaughter', $up-2);
@@ -3359,8 +3359,8 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 	} else if (preg_match('/\.wmv$/i', $fileName)) {
 		$type .= 'wmv';
 	} else if (strpos($fileName, 'http://maps.google.')===0) {
-		$type .= 'streetview';	
-	} else { 
+		$type .= 'streetview';
+	} else {
 		$type .= 'other';
 	}
 	// $type is now: (url | local) _ (flv | picasa | image | page | audio | wmv | streetview |other)
@@ -3397,7 +3397,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 				$url = encode_url($fileName) . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
 				break 2;
 			case 'url_streetview':
-				if (WT_SCRIPT_NAME != "media.php") {				
+				if (WT_SCRIPT_NAME != "media.php") {
 					echo  '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'. $fileName. '&amp;output=svembed"></iframe>';
 				}
 				break 2;

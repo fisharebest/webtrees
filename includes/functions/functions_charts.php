@@ -518,7 +518,7 @@ function print_family_facts(&$family, $sosa = 0) {
 		// -- new fact link
 		if ($sosa==0 && WT_USER_CAN_EDIT) {
 			print_add_new_fact($famid, $indifacts, "FAM");
-			
+
 			// -- new note
 			print "<tr><td class=\"descriptionbox\">";
 			print i18n::translate('Add Note');
@@ -527,7 +527,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','NOTE');\">" . i18n::translate('Add a new note') . "</a>";
 			print "<br />\n";
 			print "</td></tr>\n";
-			
+
 			// -- new shared note
 			print "<tr><td class=\"descriptionbox\">";
 			print i18n::translate('Add Shared Note');
@@ -536,7 +536,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			print "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">" . i18n::translate('Add a new shared note') . "</a>";
 			print "<br />\n";
 			print "</td></tr>\n";
-			
+
 			// -- new media
 			print "<tr><td class=\"descriptionbox\">";
 			print i18n::translate('Add media');
@@ -546,7 +546,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			print "<br />\n";
 			print "<a href=\"javascript:;\" onclick=\"window.open('inverselink.php?linktoid={$famid}&linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Link to an existing Media item')."</a>";
 			print "</td></tr>\n";
-			
+
 			// -- new source citation
 			print "<tr><td class=\"descriptionbox\">";
 			print i18n::translate('Add Source Citation');

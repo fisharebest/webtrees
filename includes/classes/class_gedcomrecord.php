@@ -382,7 +382,7 @@ class GedcomRecord {
 			" FROM `##change`".
 			" WHERE status='pending' AND gedcom_id=? AND xref=?".
 			" ORDER BY change_id desc".
-			" LIMIT 1"	
+			" LIMIT 1"
 		)->execute(array($this->ged_id, $this->xref))->fetchOne();
 
 		return $tmp==='';

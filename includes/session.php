@@ -345,7 +345,7 @@ if ($MULTI_MEDIA) {
 require WT_ROOT.'includes/functions/functions_date.php';
 
 // Use the server date to calculate privacy, etc.
-// Use the client date to show ages, etc. 
+// Use the client date to show ages, etc.
 define('WT_SERVER_JD', timestamp_to_jd(time()));
 define('WT_CLIENT_JD', timestamp_to_jd(client_time()));
 

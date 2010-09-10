@@ -315,7 +315,7 @@ class i18n {
 				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
 				return i18n::translate('(aged more than %s)', $age);
 			} else {
-				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged 43 years)			
+				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
 				return i18n::translate('(aged %s)', $age);
 			}
 		} else {

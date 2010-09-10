@@ -334,13 +334,11 @@ function print_td_person($n) {
 				$text = "<img src=\"";
 				if ($sex == 'F') {
 					$text .= $WT_IMAGES["default_image_F"];
-				}
-				else if ($sex == 'M') {
+				} else if ($sex == 'M') {
 					$text .= $WT_IMAGES["default_image_M"];
-				}
-				else {
+				} else {
 					$text .= $WT_IMAGES["default_image_U"];
-				} 
+				}
 				$text .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			}
 		}

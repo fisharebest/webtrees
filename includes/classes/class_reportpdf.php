@@ -239,7 +239,7 @@ class ReportBasePDF extends ReportBase {
 	* @param int $w Image width
 	* @param int $h Image height
 	* @param string $align L:left, C:center, R:right or empty to use x/y
-	* @param string $ln T:same line, N:next line 
+	* @param string $ln T:same line, N:next line
 	* @return ImagePDF
 	*/
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
@@ -320,7 +320,7 @@ class PDF extends TCPDF {
 	* @var int
 	*/
 	public $lastpicpage = 0;
-	
+
 	public $wt_report;
 
 	/**
@@ -518,7 +518,7 @@ class PDF extends TCPDF {
 		$this->SetX($x);
 		return $x;
 	}
-	
+
 	/**
 	* Get the maximum line width to draw from the curren position -PDF
 	* RTL supported
@@ -532,7 +532,7 @@ class PDF extends TCPDF {
 			return ($this->getRemainingWidth() + $m["left"]);
 		}
 	}
-	
+
 	function getFootnotesHeight() {
 		$h=0;
 		foreach($this->printedfootnotes as $element) {
@@ -578,7 +578,7 @@ class PDF extends TCPDF {
 		$this->printedfootnotes[] = $footnote;
 		return false;
 	}
-	
+
 	/**
 	* Used this function instead of AddPage()
 	* This function will make sure that images will not be overwritten
@@ -590,11 +590,11 @@ class PDF extends TCPDF {
 		$this->AddPage();
 	}
 
-	
+
 	/*******************************************
 	* TCPDF protected functions
 	*******************************************/
-	
+
 	/**
 	* Add a page if needed -PDF
 	* @param $height Cell height. Default value: 0
@@ -611,7 +611,7 @@ class PDF extends TCPDF {
 	function getRemainingWidthPDF() {
 		return $this->getRemainingWidth();
 	}
-	
+
 } //-- END PDF
 
 /**
@@ -662,7 +662,7 @@ class CellPDF extends Cell {
 		* This is the bugfree version
 		*/
 		$cX = 0;	// Class Left
-		
+
 		// Set up the text style
 		if (($pdf->getCurrentStyle()) != ($this->styleName)) {
 			$pdf->setCurrentStyle($this->styleName);
@@ -1085,7 +1085,7 @@ class TextBoxPDF extends TextBox {
 		}
 		// Save the current page number
 		$cPN = $pdf->getPage();
-		
+
 		// Render the elements (write text, print picture...)
 		foreach($this->elements as $element) {
 			if (is_object($element)) {
@@ -1180,7 +1180,7 @@ class TextPDF extends Text {
 
 	/**
 	* Splits the text into lines if necessary to fit into a giving cell
-	* 
+	*
 	* @param PDF &$pdf
 	* @return array
 	*/
@@ -1329,7 +1329,7 @@ class FootnotePDF extends Footnote {
 	/**
 	* Splits the text into lines to fit into a giving cell
 	* and returns the last lines width
-	* 
+	*
 	* @param PDF &$pdf
 	* @return array
 	*/
@@ -1483,7 +1483,7 @@ class ImagePDF extends Image {
 		} else {
 			$pdf->SetY($this->y);
 		}
-		
+
 		$pdf->Image($this->file, $this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
 		$lastpicpage = $pdf->PageNo();
 		$pdf->lastpicpage = $pdf->getPage();

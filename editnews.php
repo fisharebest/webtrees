@@ -28,7 +28,7 @@
 
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
-		
+
 print_simple_header(i18n::translate('Add/edit journal/news entry'));
 
 if (!WT_USER_ID) {
@@ -56,7 +56,7 @@ if ($action=="compose") {
 				document.messageform.title.focus();
 				return false;
 			}
-			<?php if (!array_key_exists('ckeditor', WT_Module::getActiveModules())) { //will be empty for FCK. FIXME, use FCK API to check for content. 
+			<?php if (!array_key_exists('ckeditor', WT_Module::getActiveModules())) { //will be empty for FCK. FIXME, use FCK API to check for content.
 			?>
 			if (frm.text.value=="") {
 				alert('<?php print i18n::translate('Please enter some text for this News or Journal entry.'); ?>');

@@ -109,7 +109,7 @@ if ($PGV_PATH) {
 if ($error || empty($PGV_PATH)) {
 	// Prompt for location of PhpGedView installation
 	echo '<div id="container">';
-	echo 
+	echo
 		'<h2>',
 		i18n::translate('PhpGedView to <b>webtrees</b> transfer wizard'),
 		help_link('PGV_WIZARD'),
@@ -147,7 +147,7 @@ WT_DB::exec("DELETE FROM `##user_setting`");
 WT_DB::exec("DELETE FROM `##user`");
 
 ////////////////////////////////////////////////////////////////////////////////
-if (ob_get_level() == 0) ob_start(); 
+if (ob_get_level() == 0) ob_start();
 echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @set_site_setting('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
@@ -183,7 +183,7 @@ WT_DB::prepare(
 	" SELECT site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
 	" WHERE site_setting_name IN ('DEFAULT_GEDCOM', 'LAST_CHANGE_EMAIL')"
 )->execute();
-	
+
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=12) {
@@ -341,7 +341,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			}
 		}
 	}
-	
+
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
 	echo '<p>pgv_users => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {

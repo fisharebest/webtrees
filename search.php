@@ -527,7 +527,7 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 		<td class="list_value" style="padding: 5px;" colspan="2">
 			<?php
 
-		//-- sorting menu by gedcom filename 
+		//-- sorting menu by gedcom filename
 		asort($all_gedcoms);
 		foreach ($all_gedcoms as $ged_id=>$gedcom) {
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);

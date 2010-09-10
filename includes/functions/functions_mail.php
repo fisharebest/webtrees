@@ -173,7 +173,7 @@ function webtreesMail($to, $from, $subject, $message) {
 			return true;
 		}
 	} elseif ($SMTP_ACTIVE=='internal') {
-		// use original PHP mail sending function	
+		// use original PHP mail sending function
 		mail($to, hex4email($subject, 'UTF-8'), $message, $extraHeaders);
 	}
 }

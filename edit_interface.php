@@ -941,11 +941,11 @@ case 'addnoteaction':
 	}
 	// $xref = "Test";
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-	
+
 	// Not sure if next line is needed ?? BH ?? --------
 	// $link = "note.php?nid=$xref&show_changes=yes";
 	// -------------------------------------------------
-	
+
 	if ($xref != "none") {
 		echo "<br /><br />\n".i18n::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
 		echo "<a href=\"javascript://NOTE $xref\" onclick=\"openerpasteid('$xref'); return false;\">".i18n::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>\n";
@@ -958,7 +958,7 @@ case 'addnoteaction':
 case 'addnewnote_assisted':
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
-	
+
 	echo WT_JS_START;
 	?>
 		function check_form(frm) {
@@ -974,7 +974,7 @@ case 'addnewnote_assisted':
 	<?php
 	echo WT_JS_END;
 	?>
-	
+
 	<div class="center font11" style="width:100%;">
 		<b><?php echo i18n::translate('Create a new Shared Note using Assistant'); $tabkey = 1; ?></b>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
@@ -995,7 +995,7 @@ case 'addnewnote_assisted':
 case 'addnoteaction_assisted':
 	require WT_ROOT.'modules/GEDFact_assistant/_CENS/addnoteaction_assisted.php';
 	break;
-	
+
 //-- add new Media Links
 case 'addmedia_links':
 	global $pid;
@@ -1014,9 +1014,9 @@ case 'addmedia_links':
 	?>
 	<!-- <form method="post" action="edit_interface.php" onsubmit="return check_form(this);"> -->
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
-		<input type="hidden" name="action" value="addmedia_links" /> 	
-		<input type="hidden" name="noteid" value="newnote" />			
-	<!--	<input type="hidden" name="pid" value="<?php // echo $pid; ?>" />		--> 
+		<input type="hidden" name="action" value="addmedia_links" />
+		<input type="hidden" name="noteid" value="newnote" />
+	<!--	<input type="hidden" name="pid" value="<?php // echo $pid; ?>" />		-->
 		<?php
 		require WT_ROOT.'modules/GEDFact_assistant/MEDIA_ctrl.php';
 		?>
@@ -1059,7 +1059,7 @@ case 'editsource':
 		$level1type = create_edit_form($gedrec, $lines++, $level0type);
 		echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />\n";
 	}
-	
+
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
@@ -1120,7 +1120,7 @@ case 'editnote':
 					?></textarea><br /><?php print_specialchar_link("NOTE", true); ?>
 				</td>
 			</tr>
-			<?php $tabkey++; 
+			<?php $tabkey++;
 			if (WT_USER_IS_ADMIN) {
 			echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
@@ -1269,14 +1269,14 @@ case 'updateraw':
 		$success = true;
 	}
 	break;
-	
+
 //----------------------------------------------------------------------------------
 //-- reconstruct the gedcom from the incoming fields and store it in the file
 case 'update':
 	/* -----------------------------------------------------------------------------
-	 * $pids_array is a text file passed via js from the CENS GEDFact Assistant 
+	 * $pids_array is a text file passed via js from the CENS GEDFact Assistant
 	 * to the hidden field id=\"pids_array\" in the case 'add'.
-	 * The subsequent array ($cens_pids), after exploding this text file, 
+	 * The subsequent array ($cens_pids), after exploding this text file,
 	 * is an array of indi id's within the Census Transcription
 	 * If $cens_pids is set, then this allows the array to "copy" the new CENS event
 	 * using the foreach loop to these id's
@@ -1305,7 +1305,7 @@ case 'update':
 		} else if (isset($famid)) {
 			$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
 		}
-		
+
 		if (WT_DEBUG) {
 			phpinfo(INFO_VARIABLES);
 			echo "<pre>$gedrec</pre>";
@@ -1467,18 +1467,18 @@ case 'update':
 
 				if (!empty($_AKA)) $newged .= "2 _AKA $_AKA\n";
 				if (!empty($_MARNM)) $newged .= "2 _MARNM $_MARNM\n";
-				
+
 				$newged = handle_updates($newged);
 				$current = $editline;
 				break;
 			}
-			
+
 		}
 		if (WT_DEBUG) {
 			echo "<br /><br />";
 			echo "<pre>$newged</pre>";
 		}
-		
+
 		replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
 		$success = true;
 	} // end foreach $cens_pids  -------------
@@ -2062,7 +2062,7 @@ case 'reset_media_update': // Reset sort using popup
 
 //------------------------------------------------------------------------------
 case 'reorder_media_update': // Update sort using popup
-		
+
 	if (WT_DEBUG) {
 		phpinfo(INFO_VARIABLES);
 	}
@@ -2212,7 +2212,7 @@ case 'reorder_children':
 					}
 				}
 			);
-		<?php echo WT_JS_END; 
+		<?php echo WT_JS_END;
 		if (WT_USER_IS_ADMIN) {
 			echo "<center><table width=93%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">\n";
@@ -2620,7 +2620,7 @@ case 'mod_edit_fact':
 
 
 // Redirect to new record, if requested
-if (isset($_REQUEST['goto'])) { 
+if (isset($_REQUEST['goto'])) {
 	$goto = $_REQUEST['goto'];
 }
 if (isset($_REQUEST['link'])) {

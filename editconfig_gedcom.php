@@ -759,7 +759,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 			<?php
-				
+
 			$all_tags=array();
 			$tags=array_unique(array_merge(
 				explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE')),
@@ -777,7 +777,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 			}
 
 			uasort($all_tags, 'utf8_strcasecmp');
-				
+
 			echo '<tr><td class="optionbox" width="*">';
 			echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" />';
 			print_findindi_link("xref","");

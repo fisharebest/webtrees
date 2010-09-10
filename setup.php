@@ -1068,5 +1068,4 @@ function to_mb($str) {
 	if (substr($str, -1, 1)=='G') {
 		return floor(1024*substr($str, 0, strlen($str)-1));
 	}
-	
 }

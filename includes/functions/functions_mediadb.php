@@ -359,8 +359,8 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			}
 		}
 	}
-*/	
-	
+*/
+
 if (!$excludeLinks) {
 	foreach ($medialist as $key=>$media) {
 		foreach (fetch_linked_indi($media["XREF"], 'OBJE', WT_GED_ID) as $indi) {
@@ -1346,7 +1346,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			$gedtitl = "TITL";
 	}
 	add_simple_tag("2 $gedtitl");
-	
+
 	if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) {
 		// 3 _HEB
 		if ($gedrec == "")

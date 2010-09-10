@@ -837,7 +837,7 @@ function find_gedcom_record($xref, $ged_id, $pending=false) {
 	} else {
 		$gedcom=null;
 	}
-	
+
 	if (is_null($gedcom)) {
 		$gedcom=find_person_record($xref, $ged_id);
 	}
@@ -1262,7 +1262,7 @@ function search_indis_dates($day, $month, $year, $facts) {
 function search_indis_daterange($start, $end, $facts) {
 	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex FROM `##individuals` JOIN `##dates` ON i_id=d_gid AND i_file=d_file WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?";
 	$vars=array(WT_GED_ID, $start, $end);
-	
+
 	if ($facts) {
 		$facts=explode(',', $facts);
 		foreach ($facts as $key=>$value) {
@@ -1472,7 +1472,7 @@ function search_notes($query, $geds, $match, $skip) {
 	$querysql=array();
 	// Convert the query into a regular expression
 	$queryregex=array();
-	
+
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
 		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";

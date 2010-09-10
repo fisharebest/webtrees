@@ -53,7 +53,7 @@ class WT_DB {
 	public final function __clone() {
 		trigger_error('WT_DB::clone() is not allowed.', E_USER_ERROR);
 	}
- 	
+
 	// Prevent instantiation via serialize()
 	public final function __wakeup() {
 		trigger_error('WT_DB::unserialize() is not allowed.', E_USER_ERROR);
@@ -262,7 +262,7 @@ class WT_DB {
 		}
 		return new WT_DBStatement(self::$pdo->prepare($statement));
 	}
-	
+
 	// Map all other functions onto the base PDO object
 	public function __call($function, $params) {
 		return call_user_func_array(array(self::$pdo, $function), $params);

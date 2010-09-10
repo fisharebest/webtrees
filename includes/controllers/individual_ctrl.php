@@ -92,7 +92,7 @@ class IndividualController extends BaseController {
 			// Start with the gedcom's default tab
 			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
 		}
-		
+
 		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null){
 				$this->indi = new Person($gedrec, false);
 				$this->indi->ged_id=WT_GED_ID; // This record is from a file
@@ -199,19 +199,19 @@ class IndividualController extends BaseController {
 		$this->tabs = WT_Module::getActiveTabs();
 		foreach($this->tabs as $mod) {
 			$mod->setController($this);
-			if ($mod->hasTabContent()) {		
+			if ($mod->hasTabContent()) {
 				if (empty($this->default_tab)) {
 					$this->default_tab=$mod->getName();
 				}
 			}
 		}
-		
+
 		if (!isset($_SESSION['WT_pin']) && $DEFAULT_PIN_STATE)
 			 $_SESSION['WT_pin'] = true;
-			 
+
 		if (!isset($_SESSION['WT_sb_closed']) && $DEFAULT_SB_CLOSED_STATE)
 			 $_SESSION['WT_sb_closed'] = true;
-			 
+
 		//-- handle ajax calls
 		if ($this->action=="ajax") {
 			$tab = 0;
@@ -229,17 +229,17 @@ class IndividualController extends BaseController {
 					echo WT_JS_END;
 				}
 			}
-			
+
 			if (isset($_REQUEST['pin'])) {
 				if ($_REQUEST['pin']=='true') $_SESSION['WT_pin'] = true;
 				else $_SESSION['WT_pin'] = false;
 			}
-			
+
 			if (isset($_REQUEST['sb_closed'])) {
 				if ($_REQUEST['sb_closed']=='true') $_SESSION['WT_sb_closed'] = true;
 				else $_SESSION['WT_sb_closed'] = false;
 			}
-			
+
 			//-- only get the requested tab and then exit
 			if (WT_DEBUG_SQL) {
 				echo WT_DB::getQueryLog();
@@ -340,7 +340,7 @@ class IndividualController extends BaseController {
 				$result .= $WT_IMAGES["default_image_M"];
 			} else {
 				$result .= $WT_IMAGES["default_image_U"];
-			} 
+			}
 			$result .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			return $result;
 		}
@@ -637,7 +637,7 @@ class IndividualController extends BaseController {
 		$otherfacts = $this->indi->getOtherFacts();
 		return $otherfacts;
 	}
-	
+
 	/**
 	* get the person box stylesheet class
 	* for the given person
@@ -659,7 +659,7 @@ class IndividualController extends BaseController {
 		}
 		return "person_box".$isf;
 	}
-	
+
 	/**
 	* build an array of Person that will be used to build a list
 	* of family members on the close relatives tab

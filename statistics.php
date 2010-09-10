@@ -417,7 +417,7 @@ if (isset($content) && $content==1) {
 	  <div id="pagetab3" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
 		<legend><?php echo i18n::translate('Create your own chart'); ?></legend>
-		<?php 
+		<?php
 		require_once WT_ROOT.'includes/functions/functions_places.php';
 
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
@@ -728,7 +728,7 @@ if (isset($content) && $content==1) {
 		</fieldset>
 		<br />
 	  </div>
-	<?php } 
+	<?php }
 } else {
 	print_header(i18n::translate('Statistics'));
 	$ble = false;
@@ -736,7 +736,7 @@ if (isset($content) && $content==1) {
 	<h2 class="center"><?php echo i18n::translate('Statistics'); ?></h2>
 	<?php global $TEXT_DIRECTION;
 	if ($TEXT_DIRECTION=='rtl') $align='right';
-	else $align='left';	
+	else $align='left';
 	?>
 	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>

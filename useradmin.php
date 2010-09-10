@@ -96,7 +96,7 @@ if (empty($ged)) {
 
 // Load all available gedcoms
 $all_gedcoms = get_all_gedcoms();
-//-- sorting by gedcom filename 
+//-- sorting by gedcom filename
 asort($all_gedcoms);
 
 // Delete a user
@@ -487,7 +487,7 @@ jQuery(document).ready(function(){
 </script>
 <?php
 	// Then show the users
-	
+
 	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
 		 '<h2 class="center">', i18n::translate('User List'), '</h2>';
 	?>
@@ -606,7 +606,7 @@ jQuery(document).ready(function(){
 		echo "</tr>\n";
 	}
 	?>
-	
+
 	</tbody>
 	</table><br />
 	<div id="pager" class="pager">

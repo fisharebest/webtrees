@@ -80,7 +80,7 @@ function is_dead($indirec, $gedcom_id) {
 	} else {
 		return false;
 	}
-	
+
 	// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
 	if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $indirec)) {
 		return true;
@@ -368,7 +368,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 	if (isset($global_facts[$type])) {
 		return $cache[$cache_key]=($global_facts[$type]>=$pgv_USER_ACCESS_LEVEL);
 	}
-	
+
 	// No restriction found - must be public:
 	return $cache[$cache_key]=true;
 }

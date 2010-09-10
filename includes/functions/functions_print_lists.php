@@ -1321,7 +1321,7 @@ function format_surname_list($surnames, $style, $totals) {
 		$newcol=ceil($count/$col);
 		$html2 ='<table class="list_table"><tr>';
 		$html2.='<td class="list_value" style="padding: 14px;">';
-		
+
 		foreach ($html as $surn=>$surns) {
 			$html2.= $surns.'<br />';
 			$i++;
@@ -1331,7 +1331,7 @@ function format_surname_list($surnames, $style, $totals) {
 			}
 		}
 		$html2.='</td></tr></table>';
-		
+
 		return $html2;
 	}
 }

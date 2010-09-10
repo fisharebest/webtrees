@@ -446,7 +446,7 @@ if ($type == "facts") {
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label $TEXT_DIRECTION\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
 	getPreselectedTags($preselDefault, $preselCustom);
-	?> 
+	?>
 	<?php echo WT_JS_START; ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
@@ -464,9 +464,9 @@ if ($type == "facts") {
 			o=null;
 			if(document.all) {
 				 //Old IEs handle the creation of a checkbox already checked, as far as I know, only in this way
-				try { 
-					o=document.createElement("<input type='checkbox' id='tag"+this._counter+"' "+(this.selected?"checked='checked'":"")+" />"); 
-				} catch(e) { 
+				try {
+					o=document.createElement("<input type='checkbox' id='tag"+this._counter+"' "+(this.selected?"checked='checked'":"")+" />");
+				} catch(e) {
 					o=null;
 				}
 			}

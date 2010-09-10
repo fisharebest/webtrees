@@ -323,7 +323,7 @@ var oldMx = 0;
 		<td><input type="button" value="<?php print i18n::translate('Clear Chart'); ?>" onclick="window.location = 'lifespan.php?clear=1';" /></td>
 		</tr>
 	</table>
-	<?php 
+	<?php
 	$people = count($controller->people);
 	print "<br /><b>".i18n::plural('%d Individual', '%d Individuals', $people, $people)."</b>";
 	?>

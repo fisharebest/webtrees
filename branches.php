@@ -144,7 +144,7 @@ function print_fams($person, $famid=null) {
 	}
 	$current = $person->getSexImage().
 		"<a target=\"_blank\" class=\"{$class}\" title=\"".$person->getXref()."\" href=\"{$person->getLinkUrl()}\">".PrintReady($person_name)."</a> ".
-		$person->getBirthDeathYears()." {$sosa}"; 
+		$person->getBirthDeathYears()." {$sosa}";
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
 		$famcrec = get_sub_record(1, "1 FAMC @".$famid."@", $person->getGedcomRecord());

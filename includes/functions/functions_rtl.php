@@ -103,8 +103,8 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	$endLTR		= '</LTR>';		// This will become '</span>' at the end
 	$startRTL	= '<RTL>';		// This will become '<span dir="rtl">' at the end
 	$endRTL		= '</RTL>';		// This will become '</span>' at the end
-	$lenStart	= strlen($startLTR);	// RTL version MUST have same length		
-	$lenEnd		= strlen($endLTR);		// RTL version MUST have same length		
+	$lenStart	= strlen($startLTR);	// RTL version MUST have same length
+	$lenEnd		= strlen($endLTR);		// RTL version MUST have same length
 
 	$previousState = '';
 	$currentState = strtoupper($TEXT_DIRECTION);
@@ -376,7 +376,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 
 	// Lastly, do some more cleanups
 	if ($debug) {echo '<b>Interim Output:</b>'; DumpString($result);}
-	
+
 	// Move leading RTL numeric strings to following LTR text
 	// (this happens when the page direction is RTL and the original text begins with a number and is followed by LTR text)
 	while (substr($result, 0, $lenStart+3) == $startRTL.WT_UTF8_LRE) {
@@ -392,12 +392,12 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		$result = $startLTR . substr($result, $lenStart, $spanEnd-$lenStart) . substr($result, $spanEnd+$lenStart+$lenEnd);
 		break;
 	}
-	
+
 	// On RTL pages, put trailing "." in RTL numeric strings into its own RTL span
 	if ($TEXT_DIRECTION == 'rtl') {
 		$result = str_replace(WT_UTF8_PDF.'.'.$endRTL, WT_UTF8_PDF.$endRTL.$startRTL.'.'.$endRTL, $result);
 	}
-	
+
 	// Trim trailing blanks preceding <br /> in LTR text
 	while ($previousState != 'RTL') {
 		if (strpos($result, ' <LTRbr />') !== false) {

@@ -114,7 +114,7 @@ jQuery(document).ready(function(){
 <div id="indi_main_blocks">
 	<?php
 		if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", i18n::translate('Changes successfully accepted into database'), "</b><br />";
-		if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; 
+		if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>";
 		if (strlen($controller->indi->getAddName()) > 0) echo "<span class=\"name_head\">", PrintReady($controller->indi->getAddName()), "</span><br />";
 	?>
 	<div id="indi_header">
@@ -139,9 +139,9 @@ jQuery(document).ready(function(){
 				} ?>
 			</div>
 			<div id="indi_name_details">
-				<?php 
+				<?php
 					//Display name details
-					if ($controller->indi->canDisplayDetails()) { 
+					if ($controller->indi->canDisplayDetails()) {
 						$globalfacts=$controller->getGlobalFacts();
 						$nameSex = array('NAME', 'SEX');
 						foreach ($globalfacts as $key=>$value) {
@@ -169,7 +169,7 @@ jQuery(document).ready(function(){
 										if ($age!="") $summary.= "<dl><dt class=\"label\">".i18n::translate('Age')."</dt><span class=\"field\">".get_age_at_event($age, true)."</span></dl>";
 									}
 									$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
-									if ($SHOW_LDS_AT_GLANCE) { 
+									if ($SHOW_LDS_AT_GLANCE) {
 										$summary.="<dl><span><b>".get_lds_glance($controller->indi->getGedcomRecord())."</b></span></dl>";
 									}
 									if ($summary) {
@@ -210,13 +210,13 @@ jQuery(document).ready(function(){
 			}*/
 		?>
 	</div>
-	
+
 <?php
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
-} 
+}
 ?>
-<?php 
+<?php
 	$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 ?>
 </div>
@@ -227,7 +227,7 @@ if (!$controller->indi->canDisplayDetails()) {
 	print "</td></tr></table>";
 } else {
 	require './sidebar.php';
-	
+
 	// Initially hide the sidebar controls & pin ======
 	?>
 	<script type="text/javascript">
@@ -252,7 +252,7 @@ if (!$controller->indi->canDisplayDetails()) {
 			} else {
 				// Non-AJAX tabs load immediately (search engines don't load ajax)
 				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
-			} 
+			}
 			echo '<span>', $tab->getTitle(), '</span></a></li>';
 		}
 	}

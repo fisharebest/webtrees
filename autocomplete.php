@@ -712,7 +712,7 @@ function get_autocomplete_OBJE($FILTER, $ged_id=WT_GED_ID) {
 }
 
 function get_autocomplete_SURN($FILTER, $ged_id=WT_GED_ID) {
-	return 
+	return
 		WT_DB::prepare(
 			"SELECT DISTINCT n_surname".
 			" FROM `##name`".
@@ -724,7 +724,7 @@ function get_autocomplete_SURN($FILTER, $ged_id=WT_GED_ID) {
 }
 
 function get_autocomplete_GIVN($FILTER, $ged_id=WT_GED_ID) {
-	return 
+	return
 		WT_DB::prepare(
 			"SELECT DISTINCT n_givn".
 			" FROM `##name`".
@@ -736,8 +736,7 @@ function get_autocomplete_GIVN($FILTER, $ged_id=WT_GED_ID) {
 }
 
 function get_autocomplete_PLAC($FILTER, $ged_id=WT_GED_ID) {
-
-	return 
+	return
 		WT_DB::prepare(
 		"SELECT p1.p_place".
 		" FROM `##places` p1".

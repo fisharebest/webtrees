@@ -53,7 +53,7 @@ function expand_urls($text) {
 	// This matches far too much while a "precise" regex is several pages long.
 	// This is a compromise.
 	$URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
-	
+
 	return preg_replace_callback(
 		'/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
 		create_function( // Insert soft hyphens into the replaced string
@@ -79,7 +79,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	if (!$eventObj->canShow()) {
 		return false;
 	}
-	
+
 	$fact = $eventObj->getTag();
 	$rawEvent = $eventObj->getDetail();
 	$event = htmlspecialchars($rawEvent, ENT_COMPAT, 'UTF-8');
@@ -168,10 +168,10 @@ function print_fact(&$eventObj, $noedit=false) {
 				echo " <div style=\"width:25px;\">";
 				$menu->printMenu();
 				echo "</div>";
-			} else { 
+			} else {
 				echo " <ul>";
 				$menu->printMenu();
-				echo "</ul>";					
+				echo "</ul>";
 			}
 		}
 		echo "</td>";
@@ -223,7 +223,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	//echo "<td class=\"facts_value facts_value$styleadd\">";
 	if ((canDisplayFact($pid, WT_GED_ID, $factrec))) {
 		if (isset($resn_value)) {
-			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
+			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
 			echo help_link('RESN');
 		}
 		// -- first print TYPE for some facts
@@ -342,7 +342,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($ct>0) echo " - ", translate_fact('_WT_USER'), ": ", $match[1];
 		// -- Find RESN tag
 		if (isset($resn_value)) {
-			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
+			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
 			echo help_link('RESN');
 		}
 		if (preg_match("/\n2 FAMC @(.+)@/", $factrec, $match)) {
@@ -907,7 +907,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 				if ($resn_tag > 0) $resn_value = strtolower(trim($rmatch[1]));
 				// -- Find RESN tag
 				if (isset($resn_value)) {
-					echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
+					echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
 					echo help_link('RESN');
 				}
 				$cs = preg_match("/$nlevel EVEN (.*)/", $srec, $cmatch);
@@ -988,7 +988,7 @@ function printSourceStructure($textSOUR) {
 		}
 		foreach($textSOUR["TEXT"] as $text) {
 			$data.="<br />&nbsp;&nbsp;<span class=\"label\">".translate_fact('TEXT').":&nbsp;</span><span class=\"field\">".PrintReady(expand_urls($text))."</span>";
-			if (!empty($text) && !empty($note_data)) $data.="<br />";	 
+			if (!empty($text) && !empty($note_data)) $data.="<br />";
 			$data.=$note_data;
 		}
 	}
@@ -1178,10 +1178,10 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			if ( strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php') ) {
 				require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
 			}else{
-				$text = $centitl."".$text; 
+				$text = $centitl."".$text;
 			}
 		}
-		
+
 		$align = "";
 		if (!empty($text)) {
 			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($text) && hasLTRText($text)) $align=" align=\"left\"";
@@ -1196,7 +1196,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			if ($resn_tag > 0) $resn_value = strtolower(trim($rmatch[1]));
 			// -- Find RESN tag
 			if (isset($resn_value)) {
-				echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />'; 
+				echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
 				echo help_link('RESN');
 			}
 			echo "<br />\n";
