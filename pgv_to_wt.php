@@ -197,7 +197,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
 		" SELECT gedcom_id, setting_name,".
-		"  CASE setting NAME".
+		"  CASE setting_name".
 		"  WHEN 'THEME_DIR' THEN".
 		"   CASE setting_value".
 		"   WHEN ''                    THEN ''".
@@ -209,7 +209,8 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		"   WHEN 'themes/xenea/'       THEN 'themes/xenea/'".
 		"   ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
 		"  END".
-		"  WHEN 'LANGUAGE'".
+		"  WHEN 'LANGUAGE' THEN".
+		"   CASE setting_value".
 		"   WHEN 'catalan'    THEN 'ca'".
 		"   WHEN 'english'    THEN 'en_US'".
 		"   WHEN 'english-uk' THEN 'en_GB'". // PGV had the config for en_GB, but no language files
