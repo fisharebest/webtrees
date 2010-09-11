@@ -49,8 +49,6 @@ if ($USE_RELATIONSHIP_PRIVACY) {
 	$NODE_CACHE = array();
 }
 
-//-- allow users to overide functions in privacy file
-if (!function_exists("is_dead")) {
 /**
 * check if a person is dead
 *
@@ -185,10 +183,7 @@ function is_dead($indirec, $gedcom_id) {
 	}
 	return false;
 }
-}
 
-//-- allow users to overide functions in privacy file
-if (!function_exists("showLivingNameById")) {
 /**
 * check if the name for a GEDCOM XRef ID should be shown
 *
@@ -217,7 +212,6 @@ function showLivingNameById($pid) {
 	}
 
 	return $SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL || canDisplayRecord($pgv_GED_ID, find_person_record($pid, $pgv_GED_ID));
-}
 }
 
 
