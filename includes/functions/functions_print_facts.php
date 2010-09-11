@@ -348,7 +348,11 @@ function print_fact(&$eventObj, $noedit=false) {
 		if (preg_match("/\n2 FAMC @(.+)@/", $factrec, $match)) {
 			echo "<br/><span class=\"label\">", translate_fact('FAMC'), ":</span> ";
 			$family=Family::getInstance($match[1]);
-			echo "<a href=\"", encode_url($family->getLinkUrl()), "\">", $family->getFullName(), "</a>";
+			if ($family) { // May be a pointer to a non-existant record
+				echo '<a href="', $family->getLinkUrl(), '">', $family->getFullName(), '</a>';
+			} else {
+				echo '<span class="error">', $match[1], '</span>';
+			}
 			if (preg_match("/\n3 ADOP (HUSB|WIFE|BOTH)/", utf8_strtoupper($factrec), $match)) {
 				echo '<br/><span class="indent"><span class="label">', translate_fact('ADOP'), ':</span> ';
 				echo '<span class="field">';
