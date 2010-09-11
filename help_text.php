@@ -3227,11 +3227,6 @@ case 'box_width':
 	$text=i18n::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 	break;
 
-case 'change_indi2id':
-	$title=i18n::translate('Change individual ID to ....');
-	$text=i18n::translate('This tool was designed for users whose Genealogy programs use a different GEDCOM ID for the individuals every time the GEDCOM is exported. For example, the first time the GEDCOM is exported some person\'s ID might be I100 but the next time the GEDCOM is exported that same person\'s ID is changed to I234. These changing IDs make it difficult to administer <b>webtrees</b> because the ID is how people are referenced.<br /><br />Most genealogy programs also use the RIN or REFN tag to give each person a unique identifier that can be used to reference the individual. This tool will replace all of the individual IDs in the GEDCOM file with the whatever field (RIN or REFN) you specify.');
-	break;
-
 case 'chart_area':
 	$title=i18n::translate('Chart area');
 	$text=i18n::translate('Select the geographical area that you want to see on the map. You can choose:<p style="padding-left: 25px"><b>World</b>&nbsp;&nbsp;shows all continents.<br /><b>Europe</b>&nbsp;&nbsp;shows Europe.<br /><b>South America</b>&nbsp;&nbsp;shows South America.<br /><b>Asia</b>&nbsp;&nbsp;shows Asia.<br /><b>Middle East</b>&nbsp;&nbsp;shows the Middle East.<br /><b>Africa</b>&nbsp;&nbsp;shows Africa.</p>');
@@ -3245,16 +3240,6 @@ case 'chart_style':
 case 'chart_type':
 	$title=i18n::translate('Chart type');
 	$text=i18n::translate('Select what you want to see on the map chart. You can choose:<p style="padding-left: 25px"><b>Individual distribution chart</b>&nbsp;&nbsp;shows the countries in which persons from this database occur.<br /><b>Surname distribution chart</b>&nbsp;&nbsp;shows the countries in which the specified surname occurs.</p>');
-	break;
-
-case 'cleanup_places':
-	$title=i18n::translate('Cleanup places');
-	$text=i18n::translate('<b>webtrees</b> detected that your GEDCOM file uses places on GEDCOM tags that should not have places.<br /><br />Many genealogy programs, such as Family Tree Maker, will create this type of GEDCOM file. <b>webtrees</b> will work with these GEDCOM files, but some invalid places will show up in your place hierarchy. <br /><br />For example, your GEDCOM might have the following encoding<br />1 SSN<br />2 PLAC 123-45-6789<br />1 OCCU<br />2 PLAC Computer Programmer<br /><br />According to the GEDCOM 5.5.1 Standard this should really be shown as<br />1 SSN 123-45-6789<br />1 OCCU Computer Programmer<br /><br />If you select <b>Yes</b>, <b>webtrees</b> will automatically correct these encoding errors.');
-	break;
-
-case 'clip_download':
-	$title=i18n::translate('Download clippings cart');
-	$text=i18n::translate('When you click this link you will be taken to the next page.  If any of the clippings in your cart refer to multimedia items, these items will also be displayed on that page.<br /><br />Simply follow the instructions.');
 	break;
 
 case 'convertPath':
@@ -3527,21 +3512,6 @@ case 'google_chart_surname':
 case 'header_favorites':
 	$title=i18n::translate('Favorites');
 	$text=i18n::translate('The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br /><br />More help about adding Favorites is available in your personalized My Page.');
-	break;
-
-case 'header_search':
-	$title=i18n::translate('Search box');
-	$text=i18n::translate('This Search box is small but powerful.  You can have <b>webtrees</b> search almost anything for you. When you click the <b>&gt;</b> or <b>Search</b> button, you will be linked to the Search page to see the results of your search.  You will find extensive help about searching options on the Search page.');
-	break;
-
-case 'header_theme':
-	$title=i18n::translate('Change theme');
-	$text=i18n::translate('When enabled by the site administrator, the Change Theme drop-down list shows you a list of the themes that you can use to view the site.<br /><br />You can change the appearance of the site by selecting a theme from the drop-down list.  If you are logged in, it will also change your user theme to the one that you have chosen so that your next login will automatically select that same theme.');
-	break;
-
-case 'header_user_links':
-	$title=i18n::translate('User links');
-	$text=i18n::translate('The User Links is a small block with useful links that can be found in the same place on every page.  The location of these links varies according to the theme currently in effect.<br /><br />When not logged in, you will only see the <b>Login</b> link.  After you have logged in, you will see:<ul><li><b>Logged in as (your user name)</b>. Clicking that link will take you to your Account page.</li><li>Click <b>Log out</b> to Log out.</li><li>If you have admin rights, you will also see <b>Admin</b>. Clicking this link will take you directly to the main Administration page.</li></ul>');
 	break;
 
 case 'help_contents_help':
@@ -3940,12 +3910,7 @@ case 'rootid':
 	$text=i18n::translate('If you want to display a chart with a new starting (root) person, the ID of that new starting person is typed here.<br /><br />If you don\'t know the ID of that person, use the <b>Find ID</b> link.<br /><br /><b>ID NUMBER</b><br />The ID numbers used inside <b>webtrees</b> are <u>not</u> the identification numbers issued by various governments (driving permit or passport numbers, for instance).  The ID number referred to here is simply a number used within the database to uniquely identify each individual; it was assigned by the ancestry program that created the GEDCOM file which was imported into <b>webtrees</b>.');
 	break;
 
-case 'search':
-	$title=i18n::translate('Search information');
-	$text=i18n::translate('This search box is small but powerful.  You can have <b>webtrees</b> search almost anything for you. When you click the <b>&gt;</b> or <b>Search</b> button, you will be linked to the Search page to see the results of your search.  You will find extensive help about searching options on the Search page.<ul><li><a href="?help=search.php">Search page</a></li><li><a href="?help=search_enter_terms">Enter search terms</a></li><li><a href="?help=soundex_search">Soundex search</a></li><li><a href="?help=search_replace">Search and replace</a></li></ul>');
-	break;
-
-	case 'search_enter_terms':
+case 'search_enter_terms':
 	$title=i18n::translate('Enter search terms');
 	$text=i18n::translate('In this Search box you can enter criteria such as dates, given names, surnames, places, multimedia, etc.<br /><br /><b>Wildcards</b><br />Wildcards, as you probably know them (like * or ?), are not allowed, but the program will automatically assume wildcards.<br /><br />Suppose you type in the Search box the following: <b>Pete</b>.  The result could be, assuming the names are in the database:<div style="padding-left:30px;"><b>Pete</b> Smith<br /><b>Pete</b>r Johnes<br />Will <b>Pete</b>rson<br />somebody --Born 01 January 1901 <b>Pete</b>rsburg<br />etc.</div><br /><b>Dates</b><br />Typing a year in the Search box will result in a list of individuals who are somehow connected to that year.<br /><br />If you type <b>1950</b>, the result will be all individuals with an event that occurred in 1950.  These events could be births, deaths, marriages, Bar Mitzvahs, LDS Sealings, etc.<br /><br />If you type <b>4 Dec</b>, all persons connected to an event that occurred on 4 December of whatever year will be listed.  Persons connected to an event on 14 or 24 December will be listed as well.  As you see, wildcards are always assumed, so you do not have to type them.  Sometimes, the results can be surprising.<br /><br /><b>Proper dates</b><br /><b>webtrees</b> searches for data, as they are stored in the GEDCOM file.  If, for example, you want to search for an event on December 14, you should type <b>14&nbsp;dec</b> because this is how the date is stored in the database.<br /><br />If you were to type <b>dec&nbsp;14</b>, the result could be a person connected to an event on 08&nbsp;<b>dec</b>ember&nbsp;18<b>14</b>.  Again, the results can be surprising.<br /><br />You can use regular expressions in your search if you are familiar with them.  For example, if you wanted to find all of the people who have dates in the 20th century, you could enter the search <b>19[0-9][0-9]</b> and you would get all of the people with dates from 1900-1999.<br /><br />If you need more help with this searching system, please let us know, so that we can extend this Help file as well.<br /><br />~Search the way you think the name is written (Soundex)~<br /><br />Soundex is a method of coding words according to their pronunciation.  This allows you to search the database for names and places when you don\'t know precisely how they are written.  <b>webtrees</b> supports two different Soundex algorithms that produce vastly different results.<ul><li><b>Basic</b><br />This method, patented in 1918 by Russell, is very simple and can be done by hand.<br /><br />Because the Basic method retains the first letter of the name as part of the resultant code, it is not very helpful when you are unsure of that first letter.  The Basic algorithm is not well suited to names that were originally in languages other than English, and even with English names the results are very surprising.  For example, a Basic Soundex search for <b>Smith</b> will return not only <b>Smith, Smid, Smit, Schmidt, Smyth, Smithe, Smithee, Schmitt</b>, all of which are clearly variations of <b>Smith</b>, but also <b>Smead, Sneed, Smoote, Sammett, Shand,</b> and <b>Snoddy</b>.  <br /><br /></li><li><b>Daitch-Mokotoff</b><br />This method, developed in 1985, is much more complex than the Basic method and is not easily done by hand.<br /><br />A Soundex search using this method produces much more accurate results.</li></ul>For details on both Soundex algorithms, visit this <a href="http://www.jewishgen.org/infofiles/soundex.html" target=_blank><b>Jewish Genealogical Society</b></a> web page.<br /><br /> ~Search and Replace~<br /><br />Here, you can search for a misspelling or other inaccurate information and replace it with correct information.<br /><br /><b>Searching</b><br />This feature performs searching just like a <a href="help_text.php?help=search_enter_terms_help">normal search</a>.<br /><br /><b>Replacing</b><br />All instances of the search term that are found are replaced by the replacement term in the database.<br /><br /><b>For Example...</b><br />Suppose you accidentally misspell your great-grandpa Michael\'s name.  You accidentally entered \'Micheal.\' <br /><br />You would type <b>Micheal</b> in the Search box, and <b>Michael</b> in the Replace box.<br />Every instance of "Micheal" would then be replaced by "Michael"<br /><br /><b>Search for...</b><br />Select the scope of the search.  You can limit the search to names or places, or apply no limit (search everything).  The <i>Whole words only</i> option will only search for your term in the place field as a whole word.  This means that searching for <i>UT</i> would only match <b>UT</b> and not <i>UT</i> in the other words such as Connectic<b>ut</b>.<br /><br />Don\'t worry if you accidentally replace something where you don\'t want to.  Just click the "Accept/Reject Changes" link at the bottom of the page to accept the changes you want, and reject the changes you don\'t want.<br /><br />If you need more help with this searching system, please let us know, so that we can improve this Help file as well.');
 	break;
