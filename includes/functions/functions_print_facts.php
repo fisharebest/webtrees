@@ -442,24 +442,12 @@ function print_submitter_info($sid) {
  * find and print repository information attached to a source
  * @param string $sid  the Gedcom Xref ID of the repository to print
  */
-function print_repository_record($sid) {
-	global $TEXT_DIRECTION;
-	global $GEDCOM;
-	$ged_id=get_id_from_gedcom($GEDCOM);
-	$source = find_other_record($sid, $ged_id);
-	if (canDisplayRecord($ged_id, $source)) {
-		$ct = preg_match("/1 NAME (.*)/", $source, $match);
-		if ($ct > 0) {
-			$ct2 = preg_match("/0 @(.*)@/", $source, $rmatch);
-			if ($ct2>0) $rid = trim($rmatch[1]);
-			echo "<span class=\"field\"><a href=\"", encode_url("repo.php?rid={$rid}"), "\"><b>", PrintReady($match[1]), "</b>&nbsp;&nbsp;&nbsp;";
-			if ($TEXT_DIRECTION=="rtl") echo getRLM();
-			echo "(", $sid, ")";
-			if ($TEXT_DIRECTION=="rtl") echo getRLM();
-			echo "</a></span><br />";
-		}
-		print_address_structure($source, 1);
-		print_fact_notes($source, 1);
+function print_repository_record($xref) {
+	$repository=Repository::getInstance($xref);
+	if ($repository && $repository->canDisplayDetails()) {
+		echo '<a class="field" href="', $repository->getLinkUrl(), '">', $repository->getFullName(), '</a>';
+		print_address_structure($repository->getGedcomRecord(), 1);
+		print_fact_notes($repository->getGedcomRecord(), 1);
 	}
 }
 
