@@ -191,12 +191,8 @@ function createTempUser($userID, $rights, $gedcom) {
 	AddToLog("created dummy user -> {$userID} <- with level {$rights} to GEDCOM {$gedcom}", 'auth');
 
 	// Save things in cache
-	$_SESSION["pgv_GEDCOM"]				= $gedcom;
 	$_SESSION["pgv_GED_ID"]				= $ged_id;
 	$_SESSION["pgv_USER_ID"]			= $userID;
-	$_SESSION["pgv_USER_NAME"]			= 'Not Relevant';
-	$_SESSION["pgv_USER_GEDCOM_ADMIN"]	= userGedcomAdmin   ($_SESSION["pgv_USER_ID"], $_SESSION["pgv_GED_ID"]);
-	$_SESSION["pgv_USER_CAN_ACCESS"]	= userCanAccess     ($_SESSION["pgv_USER_ID"], $_SESSION["pgv_GED_ID"]);
 	$_SESSION["pgv_USER_ACCESS_LEVEL"]	= getUserAccessLevel($_SESSION["pgv_USER_ID"], $_SESSION["pgv_GED_ID"]);
 	$_SESSION["pgv_USER_GEDCOM_ID"]		= get_user_gedcom_setting($_SESSION["pgv_USER_ID"], $_SESSION["pgv_GED_ID"], 'gedcomid');
 

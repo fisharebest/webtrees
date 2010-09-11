@@ -233,22 +233,14 @@ function canDisplayRecord($ged_id, $gedrec) {
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
-		$pgv_GEDCOM            = WT_GEDCOM;
 		$pgv_GED_ID            = WT_GED_ID;
 		$pgv_USER_ID           = WT_USER_ID;
-		$pgv_USER_NAME         = WT_USER_NAME;
-		$pgv_USER_GEDCOM_ADMIN = WT_USER_GEDCOM_ADMIN;
-		$pgv_USER_CAN_ACCESS   = WT_USER_CAN_ACCESS;
 		$pgv_USER_ACCESS_LEVEL = WT_USER_ACCESS_LEVEL;
 		$pgv_USER_GEDCOM_ID    = WT_USER_GEDCOM_ID;
 	} else {
 		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_GEDCOM            = $_SESSION["pgv_GEDCOM"];
 		$pgv_GED_ID            = $_SESSION["pgv_GED_ID"];
 		$pgv_USER_ID           = $_SESSION["pgv_USER_ID"];
-		$pgv_USER_NAME         = $_SESSION["pgv_USER_NAME"];
-		$pgv_USER_GEDCOM_ADMIN = $_SESSION["pgv_USER_GEDCOM_ADMIN"];
-		$pgv_USER_CAN_ACCESS   = $_SESSION["pgv_USER_CAN_ACCESS"];
 		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
 		$pgv_USER_GEDCOM_ID    = $_SESSION["pgv_USER_GEDCOM_ID"];
 	}
@@ -295,7 +287,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 	}
 
 	// Privacy rules do not apply to admins
-	if ($pgv_USER_GEDCOM_ADMIN) {
+	if (WT_PRIV_NONE>=$pgv_USER_ACCESS_LEVEL) {
 		return $cache[$cache_key]=true;
 	}
 
