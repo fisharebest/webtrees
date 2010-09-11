@@ -54,66 +54,69 @@ $pid   =check_rootid($pid);
 $person=Person::getInstance($pid);
 $name  =$person->getFullName();
 
-function print_descendency($pid, $count) {
+function print_descendency($person, $count) {
 	global $show_spouse, $dgenerations, $bwidth, $bheight, $bhalfheight;
 	global $TEXT_DIRECTION, $WT_IMAGES, $generations, $box_width, $show_full;
 
 	if ($count>=$dgenerations) {
 		return 0;
 	}
+
+	$pid=$person->getXref();
 	
 	echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 	echo "<tr>";
 	echo "<td width=\"".($bwidth-2)."\">";
 	$numkids = 0;
-	$famids = find_sfamily_ids($pid);
-	if (count($famids)>0) {
+	$sfamilies=$person->getSpouseFamilies();
+	if (count($sfamilies)>0) {
 		$firstkids = 0;
-		foreach($famids as $indexval => $famid) {
-			$famrec = find_family_record($famid, WT_GED_ID);
-			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
-			if ($ct>0) {
-			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
-			for($i=0; $i<$ct; $i++) {
-				$rowspan = 2;
-				if (($i>0)&&($i<$ct-1)) $rowspan=1;
-				$chil = trim($match[$i][1]);
-				echo "<tr><td rowspan=\"$rowspan\" width=\"$bwidth\" style=\"padding-top: 2px;\">";
-				if ($count < $dgenerations-1) {
-					$kids = print_descendency($chil, $count+1);
-					if ($i==0) $firstkids = $kids;
-					$numkids += $kids;
-				}
-				else {
-					print_pedigree_person($chil);
-					$numkids++;
-				}
-				echo "</td>";
-				$twidth = 7;
-				if ($ct==1) $twidth+=3;
-				echo "<td rowspan=\"$rowspan\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>";
-				if ($ct>1) {
-					if ($i==0) {
-						echo "<td height=\"".($bhalfheight+3)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
-						echo "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+		foreach ($sfamilies as $family) {
+			$children=$family->getChildren();
+			if (count($children)>0) {
+				echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
+				foreach ($children as $i=>$child) {
+					$rowspan = 2;
+					if ($i>0 && $i<count($children)-1) {
+						$rowspan=1;
 					}
-					else if ($i==$ct-1) {
-						echo "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
-						echo "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+					echo "<tr><td rowspan=\"$rowspan\" width=\"$bwidth\" style=\"padding-top: 2px;\">";
+					if ($count < $dgenerations-1) {
+						$kids = print_descendency($child, $count+1);
+						if ($i==0) $firstkids = $kids;
+						$numkids += $kids;
+					} else {
+						print_pedigree_person($child->getXref());
+						$numkids++;
 					}
-					else {
-						echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+					echo "</td>";
+					$twidth = 7;
+					if (count($children)==1) {
+						$twidth+=3;
 					}
+					echo "<td rowspan=\"$rowspan\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>";
+					if (count($children)>1) {
+						if ($i==0) {
+							echo "<td height=\"".($bhalfheight+3)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
+							echo "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+						}
+						else if ($i==count($children)-1) {
+							echo "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
+							echo "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+						}
+						else {
+							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+						}
+					}
+					echo "</tr>";
 				}
-				echo "</tr>";
-			}
-			echo "</table>";
+				echo "</table>";
 			}
 		}
 		echo "</td>";
 		echo "<td width=\"$bwidth\">";
 	}
-	// NOTE: If statement OK
+
 	if ($numkids==0) {
 		$numkids = 1;
 		$tbwidth = $bwidth+16;
@@ -123,173 +126,22 @@ function print_descendency($pid, $count) {
 	}
 	//-- add offset divs to make things line up better
 	if ($show_spouse) {
-		foreach($famids as $indexval => $famid) {
-			$famrec = find_family_record($famid, WT_GED_ID);
-			if (!empty($famrec)) {
-				$marrec = get_sub_record(1, "1 MARR", $famrec);
-				if (!empty($marrec)) {
-					echo "<br />";
-				}
-				echo "<div style=\"height: ".$bheight."px; width: ".$bwidth."px;\"><br /></div>";
-			}
+		foreach ($sfamilies as $family) {
+			echo '<br /><div style="height:', $bheight, 'px;width:', $bwidth, 'px;"><br /></div>';
 		}
 	}
 	print_pedigree_person($pid);
-	// NOTE: If statement OK
+
 	if ($show_spouse) {
-		foreach($famids as $indexval => $famid) {
-			$famrec = find_family_record($famid, WT_GED_ID);
-			if (!empty($famrec)) {
-				$parents = find_parents_in_record($famrec);
-				$marrec = get_sub_record(1, "1 MARR", $famrec);
-				if (!empty($marrec)) {
-					echo "<br />";
-					$marriage = new Event($marrec);
-					$marriage->print_simple_fact();
-				}
-				if ($parents["HUSB"]!=$pid) print_pedigree_person($parents["HUSB"]);
-				else print_pedigree_person($parents["WIFE"]);
-			}
+		foreach ($sfamilies as $family) {
+			echo '<br/>', $family->getMarriage()->print_simple_fact();
+			print_pedigree_person($family->getSpouseId($pid));
 		}
 	}
-	// NOTE: If statement OK
-	if ($count==0) {
-		$indirec = find_person_record($pid, WT_GED_ID);
-		// NOTE: If statement OK
-		if (canDisplayRecord($pid, $indirec) || showLivingNameById($pid)) {
-			// -- print left arrow for decendants so that we can move down the tree
-			$famids = find_sfamily_ids($pid);
-			//-- make sure there is more than 1 child in the family with parents
-			$cfamids = find_family_ids($pid);
-			$num=0;
-			// NOTE: For statement OK
-			for($f=0; $f<count($cfamids); $f++) {
-				$famrec = find_family_record($cfamids[$f], WT_GED_ID);
-				if ($famrec) {
-					$num += preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
-				}
-			}
-			// NOTE: If statement OK
-			if ($famids||($num>1)) {
-				echo "<div class=\"center\" id=\"childarrow.$pid\" dir=\"".$TEXT_DIRECTION."\"";
-				echo " style=\"position:absolute; width:".$bwidth."px; \">";
-				echo "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"return togglechildrenbox('$pid');\" onmouseover=\"swap_image('larrow.$pid',3);\" onmouseout=\"swap_image('larrow.$pid',3);\">";
-				echo "<img id=\"larrow.$pid\" src=\"".$WT_IMAGES["darrow"]."\" border=\"0\" alt=\"\" />";
-				echo "</a>";
-				echo "<div id=\"childbox.$pid\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
-				echo "<table class=\"person_box\"><tr><td>";
-				for($f=0; $f<count($famids); $f++) {
-					$famrec = find_family_record(trim($famids[$f]), WT_GED_ID);
-					if ($famrec) {
-						$parents = find_parents($famids[$f]);
-						if($parents) {
-							if($pid!=$parents["HUSB"]) $spid=$parents["HUSB"];
-							else $spid=$parents["WIFE"];
-							$spouse=Person::getInstance($spid);
-							if ($spouse) {
-								$name=$spouse->getFullName();
-								echo "<a href=\"".encode_url("familybook.php?pid={$spid}&show_spouse={$show_spouse}&show_full={$show_full}&generations={$generations}&box_width={$box_width}")."\"><span class=\"";
-								if (hasRTLText($name)) echo "name2";
-									else echo "name1";
-									echo "\">";
-								echo PrintReady($name);
-								echo "<br /></span></a>";
-							}
-						}
-						$num = preg_match_all("/\n1 CHIL @(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
-						for($i=0; $i<$num; $i++) {
-							//-- add the following line to stop a bad PHP bug
-							if ($i>=$num) break;
-							$cid = $smatch[$i][1];
-							$child=Person::getInstance($cid);
-							$name=$child->getFullName();
-							echo "&nbsp;&nbsp;<a href=\"".encode_url("familybook.php?pid={$cid}&show_spouse={$show_spouse}&show_full={$show_full}&generations={$generations}&box_width={$box_width}")."\"><span class=\"";
-							if (hasRTLText($name)) echo "name2";
-							else echo "name1";
-							echo "\">&lt; ";
-							echo PrintReady($name);
-							echo "<br /></span></a>";
-						}
-					}
-				}
-				//-- print the siblings
-				for($f=0; $f<count($cfamids); $f++) {
-					$famrec = find_family_record($cfamids[$f], WT_GED_ID);
-					if ($famrec) {
-						$parents = find_parents($cfamids[$f]);
-						if($parents) {
-							echo "<span class=\"name1\"><br />".i18n::translate('Parents')."<br /></span>";
-							if (!empty($parents["HUSB"])) {
-								$spid = $parents["HUSB"];
-								$spouse=Person::getInstance($spid);
-								$name=$spouse->getFullName();
-								echo "&nbsp;&nbsp;<a href=\"".encode_url("familybook.php?pid={$spid}&show_spouse={$show_spouse}&show_full={$show_full}&generations={$generations}&box_width={$box_width}")."\"><span class=\"";
-								if (hasRTLText($name)) echo "name2";
-							else echo "name1";
-							echo "\">";
-								echo PrintReady($name);
-								echo "<br /></span></a>";
-							}
-							if (!empty($parents["WIFE"])) {
-								$spid = $parents["WIFE"];
-								$spouse=Person::getInstance($spid);
-								$name=$spouse->getFullName();
-								echo "&nbsp;&nbsp;<a href=\"".encode_url("familybook.php?pid={$spid}&show_spouse={$show_spouse}&show_full={$show_full}&generations={$generations}&box_width={$box_width}")."\"><span class=\"";
-								if (hasRTLText($name)) echo "name2";
-							else echo "name1";
-							echo "\">";
-								echo PrintReady($name);
-								echo "<br /></span></a>";
-							}
-						}
-						$num = preg_match_all("/\n1 CHIL @(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
-						if ($num>2) echo "<span class=\"name1\"><br />".i18n::translate('Siblings')."<br /></span>";
-						if ($num==2) echo "<span class=\"name1\"><br />".i18n::translate('Sibling')."<br /></span>";
-						for($i=0; $i<$num; $i++) {
-							//-- add the following line to stop a bad PHP bug
-							if ($i>=$num) break;
-							$cid = $smatch[$i][1];
-							if ($cid!=$pid) {
-								$child=Person::getInstance($cid);
-								$name=$child->getFullName();
-								echo "&nbsp;&nbsp;<a href=\"familybook.php?pid=$cid&amp;show_spouse=$show_spouse&amp;show_full=$show_full&amp;generations=$generations&amp;box_width=$box_width\"><span class=\"";
-								if (hasRTLText($name)) echo "name2";
-								else echo "name1";
-								echo "\"> ";
-								echo PrintReady($name);
-								echo "<br /></span></a>";
-							}
-						}
-					}
-				}
-				echo "</td></tr></table>";
-				echo "</div>";
-				echo "</div>";
-			}
-		}
-	}
+
 	echo "</td></tr>";
 	echo "</table>";
 	return $numkids;
-}
-
-function max_descendency_generations($pid, $depth) {
-	global $generations;
-	if ($depth >= $generations) return $depth;
-	$famids = find_sfamily_ids($pid);
-	$maxdc = $depth;
-	foreach($famids as $indexval => $famid) {
-		$famrec = find_family_record($famid, WT_GED_ID);
-		$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
-			$chil = trim($match[$i][1]);
-			$dc = max_descendency_generations($chil, $depth+1);
-			if ($dc >= $generations) return $dc;
-			if ($dc > $maxdc) $maxdc = $dc;
-		}
-	}
-	if ($maxdc==0) $maxdc++;
-	return $maxdc;
 }
 
 function print_person_pedigree($pid, $count) {
@@ -349,7 +201,7 @@ function print_family_book($person, $descent) {
 			/* I18N: A title/heading. %s is a person's name */ i18n::translate('Family of %s', $person->getFullName()),
 			'</h2><table cellspacing="0" cellpadding="0" border="0"><tr><td valign="middle">';
 		$dgenerations = $generations;
-		print_descendency($person->getXref(), 1);
+		print_descendency($person, 1);
 		echo '</td><td valign="middle">';
 		print_person_pedigree($person->getXref(), 1);
 		echo '</td></tr></table><br /><br /><hr style="page-break-after:always;"/><br /><br />';
