@@ -25,7 +25,7 @@ $s = $soap->ServiceInfo();
 var_dump($s);
 print "After ServiceInfo()<br />";
 
-$result = $soap->Authenticate('', '', '', '', 'GEDCOM');
+$result = $soap->Authenticate('', '', '', '');
 var_dump($result);
 
 print "After Authenticate<br />";
@@ -38,16 +38,6 @@ $res = $soap->getGedcomRecord($result->SID, "I2");
 var_dump($res);
 print "After getGedcomRecord<br />";
 
-//$person = $soap->getPersonByID($result->SID, "I1");
-//print_r($person);
-//require_once WT_ROOT.'includes/classes/class_grampsexport.php';
-//$ge= new GrampsExport();
-//$ge->begin_xml();
-//$ge->create_family(find_family_record("F1", WT_GED_ID), "F1", 1);
-////$ge->create_person(find_person_record("I1", WT_GED_ID), "I1", 1);
-//$xml = $ge->dom->saveXML();
-//print htmlentities($xml);
-//
 //$family = $soap->getFamilyByID($result->SID, "F1");
 //print_r($family);
 

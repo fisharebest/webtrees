@@ -164,16 +164,6 @@ if ($ct==0) {
 		<input type="hidden" name="action" value="download" />
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2><?php print i18n::translate('File Information') ?></h2></td></tr>
-		<tr>
-		<td class="descriptionbox width50 wrap"><?php echo i18n::translate('File Type'), help_link('file_type'); ?></td>
-		<td class="optionbox">
-		<?php if ($TEXT_DIRECTION=='ltr') { ?>
-			<input type="radio" name="filetype" checked="checked" value="gedcom" />&nbsp;GEDCOM<br/><input type="radio" name="filetype" value="gramps" DISABLED />&nbsp;Gramps XML <!-- GRAMPS doesn't work right now -->
-		<?php } else { ?>
-			GEDCOM&nbsp;<?php print getLRM();?><input type="radio" name="filetype" checked="checked" value="gedcom" /><?php print getLRM();?><br />Gramps XML&nbsp;<?php print getLRM();?><input type="radio" name="filetype" value="gramps" /><?php print getLRM();?>
-		<?php } ?>
-		</td></tr>
-
 		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Zip File(s)'), help_link('zip'); ?></td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked" /></td></tr>
 

@@ -423,17 +423,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<input type="hidden" name="action" value="download" />
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2>'.i18n::translate('File Information').'</h2></td></tr>
-		<tr>
-		<td class="descriptionbox width50 wrap">'.i18n::translate('File Type').help_link('file_type').'</td>
-		<td class="optionbox">';
-		if ($TEXT_DIRECTION=='ltr') {
-			$out .= '<input type="radio" name="filetype" checked="checked" value="gedcom" />&nbsp;GEDCOM<br/><input type="radio" name="filetype" value="gramps" DISABLED />&nbsp;Gramps XML <!-- GRAMPS doesn\'t work right now -->';
-		} else {
-			$out .= 'GEDCOM&nbsp;'.getLRM().'<input type="radio" name="filetype" checked="checked" value="gedcom" />'.getLRM().'<br />Gramps XML&nbsp;'.getLRM().'<input type="radio" name="filetype" value="gramps" />'.getLRM();
-		}
-		$out .= '
-		</td></tr>
-
 		<tr><td class="descriptionbox width50 wrap">'.i18n::translate('Zip File(s)').help_link('zip').'</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked" /></td></tr>
 
