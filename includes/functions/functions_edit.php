@@ -1029,7 +1029,7 @@ function print_calendar_popup($id, $asString=false) {
 	if (isset($WT_IMAGES["button_calendar"])) $Link = "<img src=\"".$WT_IMAGES["button_calendar"]."\" name=\"img".$id."\" id=\"img".$id."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = ' ';
-	$out .= "<a href=\"javascript: ".$text."\" onclick=\"cal_toggleDate('caldiv".$id."', '".$id."'); return false;\">";
+	$out .= "<a href=\"javascript: ".$text."\" onclick=\"cal_toggleDate('caldiv".$id."', '".$id."'); return false;\" tabindex=\"-1\">";
 	$out .= $Link;
 	$out .= "</a>\n";
 	$out .= "<div id=\"caldiv".$id."\" style=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;\"></div>\n";
@@ -1143,7 +1143,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEMPLE_CODES;
 	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $tabkey, $STATUS_CODES, $SPLIT_PLACES, $pid, $gender, $linkToID;
+	global $STATUS_CODES, $SPLIT_PLACES, $pid, $gender, $linkToID;
 	global $bdm, $RESN_CODES;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
@@ -1206,8 +1206,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	if (!isset($noClose) || $noClose!="NOCLOSE") $noClose = '';
 	if (!isset($readOnly) || $readOnly!="READONLY") $readOnly = '';
-
-	if (!isset($tabkey)) $tabkey = 1;
 
 	if (empty($linkToID)) $linkToID = $pid;
 
@@ -1433,7 +1431,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	}
 	else if ($fact=="TEMP") {
-		echo "<select tabindex=\"", $tabkey, "\" name=\"", $element_name, "\" >\n";
+		echo "<select name=\"", $element_name, "\" >\n";
 		echo "<option value=''>", i18n::translate('No Temple - Living Ordinance'), "</option>\n";
 		foreach($TEMPLE_CODES as $code=>$temple) {
 			echo "<option value=\"$code\"";
@@ -1443,13 +1441,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "</select>\n";
 	}
 	else if ($fact=="ADOP") {
-		echo edit_field_adop($element_name, $value, 'tabindex="'.$tabkey.'"');
+		echo edit_field_adop($element_name, $value);
 	} else if ($fact=="PEDI") {
-		if ($gender=="F")		echo edit_field_pedi_f($element_name, $value, 'tabindex="'.$tabkey.'"');
-		else if ($gender=="M")	echo edit_field_pedi_m($element_name, $value, 'tabindex="'.$tabkey.'"');
-		else					echo edit_field_pedi($element_name, $value, 'tabindex="'.$tabkey.'"');
+		if ($gender=="F")		echo edit_field_pedi_f($element_name, $value);
+		else if ($gender=="M")	echo edit_field_pedi_m($element_name, $value);
+		else					echo edit_field_pedi($element_name, $value);
 	} else if ($fact=="STAT") {
-		echo "<select tabindex=\"", $tabkey, "\" name=\"", $element_name, "\" >\n";
+		echo "<select name=\"", $element_name, "\" >\n";
 		echo "<option value=''>No special status</option>\n";
 		foreach($STATUS_CODES as $code=>$status) {
 			echo "<option value=\"$code\"";
@@ -1459,10 +1457,10 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "</select>\n";
 	}
 	else if ($fact=="RELA") {
-		echo edit_field_rela($element_name, strtolower($value), 'tabindex="'.$tabkey.'"');
+		echo edit_field_rela($element_name, strtolower($value));
 	} else if ($fact=="_WT_USER") {
 		$text=strtolower($value);
-		echo "<select tabindex=\"", $tabkey, "\" id=\"", $element_id, "\" name=\"", $element_name, "\" >\n";
+		echo "<select id=\"", $element_id, "\" name=\"", $element_name, "\" >\n";
 		echo '<option value=""';
 		if (''==$text) echo ' selected="selected"';
 		echo ">-</option>\n";
@@ -1493,7 +1491,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "<table><tr valign=\"top\">\n";
 		foreach ($RESN_CODES as $resn_val => $text) {
 			if ($resn_val=="none") $resnv=""; else $resnv=$resn_val;
-			echo "<td><input tabindex=\"", $tabkey, "\" type=\"radio\" name=\"RESN_radio\" onclick=\"update_RESN_img('", $resn_val, "')\"";
+			echo "<td><input type=\"radio\" name=\"RESN_radio\" onclick=\"update_RESN_img('", $resn_val, "')\"";
 			echo " value=\"", $resnv, "\"";
 			if ($value==$resnv) echo " checked=\"checked\"";
 			echo " /><small>", $text, "</small>";
@@ -1504,7 +1502,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "</tr></table>\n";
 	}
 	else if ($fact=="_PRIM" or $fact=="_THUM") {
-		echo "<select tabindex=\"", $tabkey, "\" id=\"", $element_id, "\" name=\"", $element_name, "\" >\n";
+		echo "<select id=\"", $element_id, "\" name=\"", $element_name, "\" >\n";
 		echo "<option value=\"\"></option>\n";
 		echo "<option value=\"Y\"";
 		if ($value=="Y") echo " selected=\"selected\"";
@@ -1515,7 +1513,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "</select>\n";
 	}
 	else if ($fact=="SEX") {
-		echo "<select tabindex=\"", $tabkey, "\" id=\"", $element_id, "\" name=\"", $element_name, "\">\n<option value=\"M\"";
+		echo "<select id=\"", $element_id, "\" name=\"", $element_name, "\">\n<option value=\"M\"";
 		if ($value=="M") echo " selected=\"selected\"";
 		echo ">", i18n::translate('Male'), "</option>\n<option value=\"F\"";
 		if ($value=="F") echo " selected=\"selected\"";
@@ -1525,7 +1523,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	else if ($fact == "TYPE" && $level == '3') {
 		//-- Build the selector for the Media "TYPE" Fact
-		echo "<select tabindex=\"", $tabkey, "\" name=\"text[]\">";
+		echo "<select name=\"text[]\">";
 		if ($value=='') echo "<option selected=\"selected\" value=\"\" > ", i18n::translate('Choose: '), " </option>";
 		$selectedValue = strtolower($value);
 		foreach ($MEDIA_TYPES as $typeName => $typeValue) {
@@ -1545,14 +1543,14 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "</a>";
 	} else {
 		// textarea
-		if ($rows>1) echo "<textarea tabindex=\"", $tabkey, "\" id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, "\">", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "</textarea><br />\n";
+		if ($rows>1) echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, "\">", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "</textarea><br />\n";
 		else {
 			// text
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
-				echo "<input tabindex=\"", $tabkey, "\" type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value,ENT_COMPAT,'UTF-8')), "\" style=\"width:4.1em;\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value,ENT_COMPAT,'UTF-8')), "\" style=\"width:4.1em;\" dir=\"ltr\"";
 			}else{
-				echo "<input tabindex=\"", $tabkey, "\" type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value,ENT_COMPAT,'UTF-8')), "\" size=\"", $cols, "\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value,ENT_COMPAT,'UTF-8')), "\" size=\"", $cols, "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
 			echo " autocomplete=\"off\"";
@@ -1585,7 +1583,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "<script type='text/javascript'>";
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo "</script>";
-		echo "<select tabindex=\"", $tabkey, "\" id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >\n";
+		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >\n";
 		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
 			else echo "<option value=\"", $key, "\"";
@@ -1749,7 +1747,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	if ($noClose != "NOCLOSE") echo "</td></tr>\n";
 
-	$tabkey++;
 	return $element_id;
 }
 
