@@ -1434,7 +1434,7 @@ function print_changes_table($change_ids) {
  * @param array $datalist contain records that were extracted from the database.
  */
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
-	global $TEXT_DIRECTION;
+	global $TEXT_DIRECTION, $WT_IMAGES;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
