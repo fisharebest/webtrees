@@ -45,7 +45,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 // $empty    - if not null, then add an entry ""=>$empty
 // $selected - the currently selected item (if any)
 // $extra    - extra markup for field (e.g. tab key sequence)
-function select_edit_control($name, $values, $empty, $selected, $extra) {
+function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	if (is_null($empty)) {
 		$html='';
 	} else {
@@ -74,7 +74,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra) {
 // $values   - array of value=>display items
 // $selected - the currently selected item (if any)
 // $extra    - extra markup for field (e.g. tab key sequence)
-function radio_buttons($name, $values, $selected, $extra) {
+function radio_buttons($name, $values, $selected, $extra='') {
 	$html='';
 	foreach ($values as $key=>$value) {
 		$uniqueID = $name.floor(microtime() * 1000000);

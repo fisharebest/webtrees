@@ -1035,10 +1035,9 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 	echo '<tr><td class="topbottombar" colspan="2">';
 		echo i18n::translate('Upload media files'), '<br />', i18n::translate('Maximum upload size: '), $filesize;
 	echo '</td></tr>';
-	$tab = 1;
 	// Print the Submit button for uploading the media
 	echo '<tr><td class="topbottombar" colspan="2">';
-		echo '<input type="submit" value="', i18n::translate('Upload'), '" tabindex="', $tab++, '" />';
+		echo '<input type="submit" value="', i18n::translate('Upload'), '" />';
 	echo '</td></tr>';
 
 	// Print 5 forms for uploading images
@@ -1047,7 +1046,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 			echo i18n::translate('Media file to upload'), help_link('upload_media_file');
 			echo '</td>';
 			echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
-			echo '<input name="mediafile', $i, '" type="file" size="40" tabindex="', $tab++, '" />';
+			echo '<input name="mediafile', $i, '" type="file" size="40" />';
 			if ($i==1) echo '<br /><sub>', i18n::translate('Use the &laquo;Browse&raquo; button to search your local computer for the desired file.'), '</sub>';
 		echo '</td></tr>';
 
@@ -1055,7 +1054,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 			echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
 				echo i18n::translate('Automatic thumbnail'), help_link('generate_thumb');
 				echo '</td><td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
-				echo '<input type="checkbox" name="genthumb', $i, '" value="yes" checked="checked" tabindex="', $tab++, '" />';
+				echo '<input type="checkbox" name="genthumb', $i, '" value="yes" checked="checked" />';
 				echo '&nbsp;&nbsp;&nbsp;', i18n::translate('Generate thumbnail automatically from '), $thumbSupport;
 			echo '</td></tr>';
 		}
@@ -1064,7 +1063,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 			echo i18n::translate('Thumbnail to upload'), help_link('upload_thumbnail_file');
 			echo '</td>';
 			echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
-			echo '<input name="thumbnail', $i, '" type="file" tabindex="', $tab++, '" size="40" />';
+			echo '<input name="thumbnail', $i, '" type="file" size="40" />';
 			if ($i==1) echo '<br /><sub>', i18n::translate('Use the &laquo;Browse&raquo; button to search your local computer for the desired file.'), '</sub>';
 		echo '</td></tr>';
 
@@ -1073,7 +1072,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 				echo i18n::translate('File name on server'), help_link('upload_server_file');
 				echo '</td>';
 				echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
-				echo '<input name="filename', $i, '" type="text" tabindex="', $tab++, '" size="40" />';
+				echo '<input name="filename', $i, '" type="text" size="40" />';
 				if ($i==1) echo "<br /><sub>", i18n::translate('Do not change to keep original file name.'), "</sub>";
 			echo '</td></tr>';
 		} else {
@@ -1101,7 +1100,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 				}
 				print "</select></span>\n";
 				if (WT_USER_IS_ADMIN) {
-					echo '<br /><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value="" tabindex="', $tab++, '" onblur="checkpath(this)" /></span>';
+					echo '<br /><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value="" onblur="checkpath(this)" /></span>';
 					if ($i==1) echo '<br /><sub>', i18n::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
 				} else echo '<input name="folder', $i, '" type="hidden" value="" />';
 			echo '</td></tr>';
@@ -1116,7 +1115,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 
 	// Print the Submit button for uploading the media
 	echo '<tr><td class="topbottombar" colspan="2">';
-		echo '<input type="submit" value="', i18n::translate('Upload'), '" tabindex="', $tab++, '" />';
+		echo '<input type="submit" value="', i18n::translate('Upload'), '" />';
 	echo '</td></tr>';
 
 	echo '</table></form>';

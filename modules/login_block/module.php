@@ -51,17 +51,14 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		if (WT_USER_ID) {
 			$title = i18n::translate('Logout');
 
-			$i = 0;			// Initialize tab index
 
 			$content = '<div class="center"><form method="post" action="index.php?logout=1" name="logoutform" onsubmit="return true;">';
 			$content .= '<br /><a href="edituser.php" class="name2">'.i18n::translate('Logged in as ').' ('.WT_USER_NAME.')</a><br /><br />';
 
-			$i++;
-			$content .= "<input type=\"submit\" tabindex=\"{$i}\" value=\"".i18n::translate('Logout')."\" />";
+			$content .= "<input type=\"submit\" value=\"".i18n::translate('Logout')."\" />";
 
 			$content .= "<br /><br /></form></div>";
 		} else {
-			$i = 0;			// Initialize tab index
 			$title = i18n::translate('Login');
 			if (get_site_setting('USE_REGISTRATION_MODULE')) {
 				$title.=help_link('index_login_register');
@@ -82,7 +79,6 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<table class=\"center tabs_table\">";
 
 			// Row 1: Userid
-			$i++;
 			$content .= "<tr><td ";
 			$content .= write_align_with_textdir_check("right", true);
 			$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
@@ -90,11 +86,10 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= help_link('username');
 			$content .= "</td><td ";
 			$content .= write_align_with_textdir_check("left", true);
-			$content .= " class=\"{$TEXT_DIRECTION}\"><input type=\"text\" tabindex=\"{$i}\" name=\"username\"  size=\"20\" class=\"formField\" />";
+			$content .= " class=\"{$TEXT_DIRECTION}\"><input type=\"text\" name=\"username\"  size=\"20\" class=\"formField\" />";
 			$content .= "</td></tr>";
 
 			// Row 2: Password
-			$i++;
 			$content .= "<tr><td ";
 			$content .= write_align_with_textdir_check("right", true);
 			$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
@@ -102,19 +97,17 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= help_link('password');
 			$content .= "</td><td ";
 			$content .= write_align_with_textdir_check("left", true);
-			$content .= " class=\"{$TEXT_DIRECTION}\"><input type=\"password\" tabindex=\"{$i}\" name=\"password\"  size=\"20\" class=\"formField\" />";
+			$content .= " class=\"{$TEXT_DIRECTION}\"><input type=\"password\" name=\"password\"  size=\"20\" class=\"formField\" />";
 			$content .= "</td></tr>";
 
 			// Row 3: "Login" link
-			$i++;
 			$content .= "<tr><td colspan=\"2\" class=\"center\">";
-			$content .= "<input type=\"submit\" tabindex=\"{$i}\" value=\"".i18n::translate('Login')."\" />&nbsp;";
+			$content .= "<input type=\"submit\" value=\"".i18n::translate('Login')."\" />&nbsp;";
 			$content .= "</td></tr>";
 
 			if (get_site_setting('USE_REGISTRATION_MODULE')) {
 
 				// Row 4: "Request Account" link
-				$i++;
 				$content .= "<tr><td ";
 				$content .= write_align_with_textdir_check("right", true);
 				$content .= " class=\"{$TEXT_DIRECTION} wrap width50\"><br />";
@@ -123,13 +116,12 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td><td ";
 				$content .= write_align_with_textdir_check("left", true);
 				$content .= " class=\"{$TEXT_DIRECTION}\"><br />";
-				$content .= "<a href=\"login_register.php?action=register\" tabindex=\"{$i}\">";
+				$content .= "<a href=\"login_register.php?action=register\">";
 				$content .= i18n::translate('Request new user account');
 				$content .= "</a>";
 				$content .= "</td></tr>";
 
 				// Row 5: "Lost Password" link
-				$i++;
 				$content .= "<tr><td ";
 				$content .= write_align_with_textdir_check("right", true);
 				$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
@@ -138,7 +130,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td><td ";
 				$content .= write_align_with_textdir_check("left", true);
 				$content .= " class=\"{$TEXT_DIRECTION}\">";
-				$content .= "<a href=\"login_register.php?action=pwlost\" tabindex=\"{$i}\">";
+				$content .= "<a href=\"login_register.php?action=pwlost\">";
 				$content .= i18n::translate('Request new password');
 				$content .= "</a>";
 				$content .= "</td></tr>";

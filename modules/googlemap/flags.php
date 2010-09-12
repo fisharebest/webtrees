@@ -156,7 +156,7 @@ else {
 		<tr>
 			<td class="optionbox" colspan="4">
 				<?php echo help_link('PLE_FLAGS','googlemap'); ?>
-				<select name="COUNTRYSELECT" dir="ltr" tabindex="0" onchange="selectCountry()">
+				<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
 					<option value="Countries"><?php echo i18n::translate('Countries'); ?></option>
 					<?php foreach ($countryList as $country_key=>$country_name) {
 						echo "<option value=\"", $country_key, "\"";
@@ -171,13 +171,13 @@ else {
 	$j = 1;
 	for ($i = 0; $i < count($flags); $i++) {
 		if ($countrySelected == "Countries") {
-			$tempstr = "<td><input type=\"radio\" dir=\"ltr\" tabindex=\"".($i+1)."\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"places/flags/".$flags[$i].".gif\" alt=\"".$flags[$i]."\"  title=\"";
+			$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"places/flags/".$flags[$i].".gif\" alt=\"".$flags[$i]."\"  title=\"";
 			if ($flags[$i]!='blank') $tempstr.=i18n::translate($countries[$flags[$i]]);
 			else $tempstr.=i18n::translate($countries['???']);
 			echo $tempstr, "\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 		}
 		else {
-			echo "<td><input type=\"radio\" dir=\"ltr\" tabindex=\"", ($i+1), "\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"places/", $countrySelected, "/flags/", $flags[$i], ".gif\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
+			echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"places/", $countrySelected, "/flags/", $flags[$i], ".gif\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 		}
 		if ($j == 4) {
 			echo "</tr><tr>\n";

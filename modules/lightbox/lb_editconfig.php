@@ -73,8 +73,6 @@ if ($action=='update' && !isset($security_user)) {
 	require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 }
 
-$i = 0;
-
 ?>
 <form method="post" name="configform" action="<?php print encode_url("module.php?mod=lightbox&mod_action=lb_editconfig&pid={$pid}"); ?>">
 <input type="hidden" name="action" value="update" />
@@ -84,7 +82,7 @@ $i = 0;
 		<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Individual Page - Album Tab Header');?></b><?php echo help_link('lb_al_head_links', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('Link appearance');?></td>
 		<td class="optionbox">
-			<select name="NEW_LB_AL_HEAD_LINKS" tabindex="<?php $i++; print $i?>">
+			<select name="NEW_LB_AL_HEAD_LINKS">
 				<option value="icon" <?php if ($LB_AL_HEAD_LINKS=="icon") print "selected=\"selected\""; ?>><?php print i18n::translate('Icon');?></option>
 				<option value="text" <?php if ($LB_AL_HEAD_LINKS=="text") print "selected=\"selected\""; ?>><?php print i18n::translate('Text');?></option>
 				<option value="both" <?php if ($LB_AL_HEAD_LINKS=="both") print "selected=\"selected\""; ?>><?php print i18n::translate('Both');?></option>
@@ -98,7 +96,7 @@ $i = 0;
 
 		<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Individual Page - Album Tab Thumbnail - Notes Tooltip');?></b><?php echo help_link('lb_tt_balloon', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('Notes - Tooltip appearance');?></td>
-		<td class="optionbox"><select name="NEW_LB_TT_BALLOON" tabindex="<?php $i++; print $i?>">
+		<td class="optionbox"><select name="NEW_LB_TT_BALLOON">
 				<option value="true"  <?php if ($LB_TT_BALLOON=="true")  print "selected=\"selected\""; ?>><?php print i18n::translate('Balloon');?></option>
 				<option value="false" <?php if ($LB_TT_BALLOON=="false") print "selected=\"selected\""; ?>><?php print i18n::translate('Normal');?></option>
 			</select>
@@ -111,7 +109,7 @@ $i = 0;
 
 		<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Individual Page - Album Tab Thumbnails');?></b><?php echo help_link('lb_al_thumb_links', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('Link appearance');?></td>
-		<td class="optionbox"><select name="NEW_LB_AL_THUMB_LINKS" tabindex="<?php $i++; print $i?>">
+		<td class="optionbox"><select name="NEW_LB_AL_THUMB_LINKS">
 				<option value="icon" <?php if ($LB_AL_THUMB_LINKS=="icon") print "selected=\"selected\""; ?>><?php print i18n::translate('Icon');?></option>
 				<option value="text" <?php if ($LB_AL_THUMB_LINKS=="text") print "selected=\"selected\""; ?>><?php print i18n::translate('Text');?></option>
 			</select>
@@ -124,7 +122,7 @@ $i = 0;
 
 	<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Slide Show speed');?></b><?php echo help_link('lb_ss_speed', $this->getName()); ?></td>
-		<td class="optionbox"><select name="NEW_LB_SS_SPEED" tabindex="<?php $i++; print $i?>">
+		<td class="optionbox"><select name="NEW_LB_SS_SPEED">
 				<option value= "2" <?php if ($LB_SS_SPEED == 2)  print "selected=\"selected\""; ?>><?php print  "2";?></option>
 				<option value= "3" <?php if ($LB_SS_SPEED == 3)  print "selected=\"selected\""; ?>><?php print  "3";?></option>
 				<option value= "4" <?php if ($LB_SS_SPEED == 4)  print "selected=\"selected\""; ?>><?php print  "4";?></option>
@@ -148,7 +146,7 @@ $i = 0;
 	<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Slideshow sound track'); ?></b><?php echo help_link('lb_music_file', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('(mp3 only)'); ?></td>
 		<td class="optionbox">
-			<input type="text" name="NEW_LB_MUSIC_FILE" value="<?php print $LB_MUSIC_FILE;?>" size="60" tabindex="<?php $i++; print $i?>" /><br />
+			<input type="text" name="NEW_LB_MUSIC_FILE" value="<?php print $LB_MUSIC_FILE;?>" size="60" /><br />
 		<?php print i18n::translate('Location of sound track file (Leave blank for no sound track)');?>
 		</td>
 		</tr>
@@ -157,7 +155,7 @@ $i = 0;
 
 		<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Image Transition speed');?></b><?php echo help_link('lb_transition', $this->getName()); ?></td>
-		<td class="optionbox"><select name="NEW_LB_TRANSITION" tabindex="<?php $i++; print $i?>">
+		<td class="optionbox"><select name="NEW_LB_TRANSITION">
 				<option value="none"   <?php if ($LB_TRANSITION=="none")   print "selected=\"selected\""; ?>><?php print i18n::translate('None');?></option>
 				<option value="normal" <?php if ($LB_TRANSITION=="normal") print "selected=\"selected\""; ?>><?php print i18n::translate('Normal');?></option>
 				<option value="double" <?php if ($LB_TRANSITION=="double") print "selected=\"selected\""; ?>><?php print i18n::translate('Double');?></option>
@@ -172,10 +170,10 @@ $i = 0;
 	<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('URL Window dimensions');?><b><?php echo help_link('lb_url_dimensions', $this->getName()); ?></td>
 		<td class="optionbox">
-			<input type="text" name="NEW_LB_URL_WIDTH"  value="<?php print $LB_URL_WIDTH;?>"  size="4" tabindex="<?php $i++; print $i?>" />
+			<input type="text" name="NEW_LB_URL_WIDTH"  value="<?php print $LB_URL_WIDTH;?>"  size="4" />
 			<?php print i18n::translate('Width');?>
 			&nbsp;&nbsp;&nbsp;
-			<input type="text" name="NEW_LB_URL_HEIGHT" value="<?php print $LB_URL_HEIGHT;?>" size="4" tabindex="<?php $i++; print $i?>" />
+			<input type="text" name="NEW_LB_URL_HEIGHT" value="<?php print $LB_URL_HEIGHT;?>" size="4" />
 			<?php print i18n::translate('Height');?><br />
 		<?php print i18n::translate('Width and height of URL window in pixels');?>
 		</td>
@@ -188,7 +186,7 @@ $i = 0;
 	<tr>
 		<td class="descriptionbox"><b><?php print i18n::translate('Multimedia Page - Thumbnails');?></b><?php echo help_link('lb_ml_thumb_links', $this->getName()); ?><br />&nbsp;&nbsp;&nbsp;&nbsp;<?php print i18n::translate('Link appearance');?></td>
 		<td class="optionbox">
-			<select name="NEW_LB_ML_THUMB_LINKS" tabindex="<?php $i++; print $i?>">
+			<select name="NEW_LB_ML_THUMB_LINKS">
 				<option value= "none" <?php if ($LB_ML_THUMB_LINKS == "none")  print "selected=\"selected\""; ?>><?php print  i18n::translate('None');?></option>
 				<option value= "text" <?php if ($LB_ML_THUMB_LINKS == "text")  print "selected=\"selected\""; ?>><?php print  i18n::translate('Text');?></option>
 				<option value= "icon" <?php if ($LB_ML_THUMB_LINKS == "icon")  print "selected=\"selected\""; ?>><?php print  i18n::translate('Icon');?></option>
@@ -210,9 +208,9 @@ $i = 0;
 		 <tr>
 
 				<td class="descriptionbox" colspan="2" align="center">
-						<input type="submit" tabindex="<?php $i++; print $i?>" value="<?php print i18n::translate('Save configuration');?>" onclick="closeHelp();" />
+						<input type="submit" value="<?php print i18n::translate('Save configuration');?>" onclick="closeHelp();" />
 						&nbsp;&nbsp;
-						<input type="reset" tabindex="<?php $i++; print $i?>" value="<?php print i18n::translate('Reset');?>" />
+						<input type="reset" value="<?php print i18n::translate('Reset');?>" />
 						&nbsp;&nbsp;
 			<?php if ($pid){ ?>
 				<INPUT TYPE="button" VALUE="<?php print i18n::translate('Return to Album page');?>" 		onclick="javascript:window.location='individual.php?pid=<?php echo $pid;?>&gedcom=<?php echo $GEDCOM;?>&tab=lightbox'" />

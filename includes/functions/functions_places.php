@@ -323,7 +323,6 @@ function print_place_subfields($element_id) {
 		}
 		print "</small><br />";
 		print "<input type=\"text\" id=\"".$subtagid."\" name=\"".$subtagname."\" value=\"\" size=\"".$cols."\"";
-		print " tabindex=\"".($i+1)."\" ";
 		print " onblur=\"updatewholeplace('".$element_id."'); splitplace('".$element_id."');\" ";
 		print " onchange=\"updatewholeplace('".$element_id."'); splitplace('".$element_id."');\" ";
 		print " onmouseout=\"updatewholeplace('".$element_id."'); splitplace('".$element_id."');\" ";
