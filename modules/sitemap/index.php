@@ -259,7 +259,6 @@ if ($action=="generate") {
 }
 
 if ($action=="") {
-	$i = 0;
 ?>
 
 <h3><?php echo i18n::translate('Generate Sitemap files'), help_link('SITEMAP','sitemap'); ?></h3>
@@ -272,7 +271,7 @@ if ($action=="") {
 			<td class="optionbox" colspan="3">
 <?php
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-		echo "				<input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" tabindex=\"", $i++, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
+		echo "				<input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
 	}
 ?>
 			</td>
@@ -281,7 +280,7 @@ if ($action=="") {
 			<td class="descriptionbox wrap width30">
 			</td>
 			<td class="optionbox" colspan="3">
-				<input type="checkbox" name="GEDCOM_Privacy" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('No links to private information');?>
+				<input type="checkbox" name="GEDCOM_Privacy" checked><?php echo i18n::translate('No links to private information');?>
 			</td>
 		</tr>
 		<tr>
@@ -294,10 +293,10 @@ if ($action=="") {
 		</tr>
 		<tr>
 			<td class="optionbox">
-				<input type="checkbox" name="welcome_page" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Home page');?>
+				<input type="checkbox" name="welcome_page" checked><?php echo i18n::translate('Home page');?>
 			</td>
 			<td class="optionbox">
-				<select name="welcome_priority" tabindex="<?php $i++; echo $i?>">
+				<select name="welcome_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
 					<option value="3">0.3</option>
@@ -310,7 +309,7 @@ if ($action=="") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select name="welcome_update" tabindex="<?php $i++; echo $i?>">
+				<select name="welcome_update">
 					<option value="always"><?php echo i18n::translate('always');?></option>
 					<option value="hourly"><?php echo i18n::translate('hourly');?></option>
 					<option value="daily"><?php echo i18n::translate('daily');?></option>
@@ -322,9 +321,9 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_recs" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Individual information');?></td>
+			<td class="optionbox"><input type="checkbox" name="indi_recs" checked><?php echo i18n::translate('Individual information');?></td>
 			<td class="optionbox">
-				<select name="indirec_priority" tabindex="<?php $i++; echo $i?>">
+				<select name="indirec_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
 					<option value="3">0.3</option>
@@ -337,7 +336,7 @@ if ($action=="") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select name="indirec_update" tabindex="<?php $i++; echo $i?>">
+				<select name="indirec_update">
 					<option value="always"><?php echo i18n::translate('always');?></option>
 					<option value="hourly"><?php echo i18n::translate('hourly');?></option>
 					<option value="daily"><?php echo i18n::translate('daily');?></option>
@@ -349,9 +348,9 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_list" tabindex="<?php $i++; echo $i?>"><?php echo i18n::translate('Individual List');?></td>
+			<td class="optionbox"><input type="checkbox" name="indi_list"><?php echo i18n::translate('Individual List');?></td>
 			<td class="optionbox">
-				<select name="indilist_priority" tabindex="<?php $i++; echo $i?>">
+				<select name="indilist_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
 					<option value="3" selected="selected">0.3</option>
@@ -364,7 +363,7 @@ if ($action=="") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select name="indilist_update" tabindex="<?php $i++; echo $i?>">
+				<select name="indilist_update">
 					<option value="always"><?php echo i18n::translate('always');?></option>
 					<option value="hourly"><?php echo i18n::translate('hourly');?></option>
 					<option value="daily"><?php echo i18n::translate('daily');?></option>
@@ -376,9 +375,9 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_recs" tabindex="<?php $i++; echo $i?>" checked><?php echo i18n::translate('Family information');?></td>
+			<td class="optionbox"><input type="checkbox" name="fam_recs" checked><?php echo i18n::translate('Family information');?></td>
 			<td class="optionbox">
-				<select name="famrec_priority" tabindex="<?php $i++; echo $i?>">
+				<select name="famrec_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
 					<option value="3">0.3</option>
@@ -391,7 +390,7 @@ if ($action=="") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select name="famrec_update" tabindex="<?php $i++; echo $i?>">
+				<select name="famrec_update">
 					<option value="always"><?php echo i18n::translate('always');?></option>
 					<option value="hourly"><?php echo i18n::translate('hourly');?></option>
 					<option value="daily"><?php echo i18n::translate('daily');?></option>
@@ -403,9 +402,9 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_list" tabindex="<?php $i++; echo $i?>"><?php echo i18n::translate('Family List');?></td>
+			<td class="optionbox"><input type="checkbox" name="fam_list"><?php echo i18n::translate('Family List');?></td>
 			<td class="optionbox">
-				<select name="famlist_priority" tabindex="<?php $i++; echo $i?>">
+				<select name="famlist_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
 					<option value="3" selected="selected">0.3</option>
@@ -418,7 +417,7 @@ if ($action=="") {
 				</select>
 			</td>
 			<td class="optionbox">
-				<select name="famlist_update" tabindex="<?php $i++; echo $i?>">
+				<select name="famlist_update">
 					<option value="always"><?php echo i18n::translate('always');?></option>
 					<option value="hourly"><?php echo i18n::translate('hourly');?></option>
 					<option value="daily"><?php echo i18n::translate('daily');?></option>
