@@ -83,10 +83,13 @@ legend img {
 	width: 25px;
 }
 
-img.block, #calendar_img, #biglink img {
-	border: none;
+img.block, #calendar_img, #biglink img, #mycart img  {
 	height: 25px;
 	vertical-align: middle;
+}
+
+#mycart a img  {
+	height: 15px;
 }
 
 .edit_link:after  {
