@@ -121,9 +121,12 @@ require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 
 // Check configuration issues that affect various versions of PHP
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-	// magic quotes were deprecated in PHP5.3 and removed in PHP6.0
-	set_magic_quotes_runtime(0);
+if (version_compare(PHP_VERSION, '6.0', '<')) {
+	if (get_magic_quotes_runtime()) {
+		// Magic quotes were deprecated in PHP5.3 and removed in PHP6.0
+		// Disabling them on PHP5.3 will cause a strict-warning, so ignore errors.
+		@set_magic_quotes_runtime(false);
+	}
 	// magic_quotes_gpc can't be disabled at run-time, so clean them up as necessary.
 	if (get_magic_quotes_gpc() || ini_get('magic_quotes_sybase') && strtolower(ini_get('magic_quotes_sybase'))!='off') {
 		$in = array(&$_GET, &$_POST, &$_REQUEST, &$_COOKIE);
