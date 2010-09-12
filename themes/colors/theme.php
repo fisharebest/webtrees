@@ -231,7 +231,8 @@ $WT_IMAGES['vline'] = WT_THEME_DIR.'images/vline.gif';
 $WT_IMAGES['webtrees'] = WT_THEME_DIR.'images/webtrees.png';
 $WT_IMAGES['zoomin'] = WT_THEME_DIR.'images/zoomin.gif';
 $WT_IMAGES['zoomout'] = WT_THEME_DIR.'images/zoomout.gif';
-
+$WT_IMAGES['reminder'] = 'images/reminder.gif';
+$WT_IMAGES['children'] = 'images/children.gif';
 
 // - lifespan chart arrows
 $WT_IMAGES['lsltarrow'] = WT_THEME_DIR.'images/lsltarrow.gif';

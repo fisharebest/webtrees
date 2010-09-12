@@ -134,6 +134,8 @@ $WT_IMAGES['default_image_F'] = WT_THEME_DIR.'images/silhouette_female.gif';
 $WT_IMAGES['default_image_U'] = WT_THEME_DIR.'images/silhouette_unknown.gif';
 $WT_IMAGES['slide_open'] = WT_THEME_DIR.'images/open.png';
 $WT_IMAGES['slide_close'] = WT_THEME_DIR.'images/close.png';
+$WT_IMAGES['reminder'] = 'images/reminder.gif';
+$WT_IMAGES['children'] = 'images/children.gif';
 
 // - lifespan chart arrows
 $WT_IMAGES['lsltarrow'] = WT_THEME_DIR.'images/lsltarrow.gif';

@@ -114,11 +114,11 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
 	if ($option=="sosa") echo "<th class=\"list_label\">Sosa</th>";
 	echo "<th class=\"list_label\">", translate_fact('BIRT'), "</th>";
-	if ($tiny) echo "<td class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
+	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
 	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
-	if ($tiny) echo "<th class=\"list_label\"><img src=\"./images/children.gif\" alt=\"", i18n::translate('Children'), "\" title=\"", i18n::translate('Children'), "\" border=\"0\" /></th>";
+	if ($tiny) echo "<th class=\"list_label\"><img src=\"".$WT_IMAGES["children"]."\" alt=\"", i18n::translate('Children'), "\" title=\"", i18n::translate('Children'), "\" border=\"0\" /></th>";
 	echo "<th class=\"list_label\">", translate_fact('DEAT'), "</th>";
-	if ($tiny) echo "<td class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
+	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
 	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
 	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
 	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
@@ -490,9 +490,9 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<th style=\"display:none\">WIFE:GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
 	echo "<th class=\"list_label\">", translate_fact('MARR'), "</th>";
-	if ($tiny) echo "<td class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
+	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
 	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
-	if ($tiny) echo "<th class=\"list_label\"><img src=\"./images/children.gif\" alt=\"", i18n::translate('Children'), "\" title=\"", i18n::translate('Children'), "\" border=\"0\" /></th>";
+	if ($tiny) echo "<th class=\"list_label\"><img src=\"".$WT_IMAGES["children"]."\" alt=\"", i18n::translate('Children'), "\" title=\"", i18n::translate('Children'), "\" border=\"0\" /></th>";
 	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
 	echo "<th style=\"display:none\">MARR</th>";
 	echo "<th style=\"display:none\">DEAT</th>";
@@ -1079,7 +1079,7 @@ function print_media_table($datalist, $legend="") {
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
 		echo "<a href=\"", encode_url($media->getLinkUrl()), "\" class=\"list_item name2\">";
 		if ($media->canDisplayDetails())
-			echo '<img src="', thumbnail_file($media->file, false), '" height="15" /> ';
+			echo '<img src=', thumbnail_file($media->file, false), ' height="15" /> ';
 		echo PrintReady($name), "</a>";
 		if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
 			echo "<br /><a href=\"", encode_url($media->getLinkUrl()), "\">", basename($media->file), "</a>";
@@ -1321,7 +1321,7 @@ function format_surname_list($surnames, $style, $totals) {
 		$newcol=ceil($count/$col);
 		$html2 ='<table class="list_table"><tr>';
 		$html2.='<td class="list_value" style="padding: 14px;">';
-
+		
 		foreach ($html as $surn=>$surns) {
 			$html2.= $surns.'<br />';
 			$i++;
@@ -1331,7 +1331,7 @@ function format_surname_list($surnames, $style, $totals) {
 			}
 		}
 		$html2.='</td></tr></table>';
-
+		
 		return $html2;
 	}
 }
@@ -1483,7 +1483,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<th class=\"list_label\">".i18n::translate('Record')."</th>";
 			$return .= "<th style=\"display:none\">GIVN</th>";
 			$return .= "<th class=\"list_label\">".translate_fact('DATE')."</th>";
-			$return .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"".i18n::translate('Anniversary')."\" title=\"".i18n::translate('Anniversary')."\" border=\"0\" /></th>";
+			$return .= "<th class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".i18n::translate('Anniversary')."\" title=\"".i18n::translate('Anniversary')."\" border=\"0\" /></th>";
 			$return .= "<th class=\"list_label\">".translate_fact('EVEN')."</th>";
 			$return .= "</tr>\n";
 		}
