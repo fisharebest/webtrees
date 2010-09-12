@@ -169,7 +169,6 @@ case 4:
 	break;
 }
 echo '</td></tr></table><br /><br />';
-$tab=0;		// initialize tab index
 	?>
 	<form name="loginform" method="post" action="<?php print get_site_setting('LOGIN_URL'); ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login" />
@@ -186,15 +185,15 @@ $tab=0;		// initialize tab index
 			<tr><td class="topbottombar" colspan="2"><?php print i18n::translate('Login'); ?></td></tr>
 			<tr>
 				<td class="descriptionbox <?php print $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('User name'), help_link('username'); ?></td>
-				<td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="text" tabindex="<?php echo ++$tab; ?>" name="username" value="<?php print htmlentities($username,ENT_COMPAT,'UTF-8'); ?>" size="20" class="formField" /></td>
+				<td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="text" name="username" value="<?php print htmlentities($username,ENT_COMPAT,'UTF-8'); ?>" size="20" class="formField" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox <?php print $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('Password'), help_link('password'); ?></td>
-				<td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="password" tabindex="<?php echo ++$tab; ?>" name="password" size="20" class="formField" /></td>
+				<td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="password" name="password" size="20" class="formField" /></td>
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="2">
-					<input type="submit" tabindex="<?php echo ++$tab; ?>" value="<?php print i18n::translate('Login'); ?>" />
+					<input type="submit" value="<?php print i18n::translate('Login'); ?>" />
 					<?php
 					if ($REQUIRE_AUTHENTICATION) {
 						echo help_link('login_buttons_aut');

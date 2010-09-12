@@ -152,12 +152,12 @@ echo '<tr><td class="topbottombar" colspan="2"><h2>', i18n::translate('My accoun
 
 echo '<tr><td class="descriptionbox width20 wrap">';
 echo i18n::translate('User name'), help_link('edituser_username'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_username" tabindex="', ++$tab, '" value="', WT_USER_NAME, '" />';
+echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus />';
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Real name'), help_link('edituser_realname'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_realname" tabindex="', ++$tab, '" value="', getUserFullName(WT_USER_ID), '" />';
+echo '<input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '" />';
 echo '</td></tr>';
 
 $person=Person::getInstance(WT_USER_GEDCOM_ID);
@@ -171,7 +171,7 @@ if ($person) {
 $person=Person::getInstance(WT_USER_ROOT_ID);
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Pedigree chart root person'), help_link('edituser_rootid'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_rootid" id="rootid" tabindex="', ++$tab, '" value="', WT_USER_ROOT_ID, '" />';
+echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '" />';
 echo print_findindi_link('rootid', '', true), '<br/>';
 if ($person) {
 	echo $person->format_list('span');
@@ -180,26 +180,26 @@ echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Password'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass1" tabindex="', ++$tab, '" /> ', i18n::translate('Leave password blank if you want to keep the current password.'), help_link('edituser_password'), '</td></tr>';
+echo '<input type="password" name="form_pass1" /> ', i18n::translate('Leave password blank if you want to keep the current password.'), help_link('edituser_password'), '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Confirm password'), help_link('edituser_conf_password'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass2" tabindex="', ++$tab, '" /></td></tr>';
+echo '<input type="password" name="form_pass2" /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Change language'), help_link('edituser_change_lang');
 echo '</td><td class="optionbox" valign="top">';
-echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language'), 'tabindex="'.(++$tab).'"');
+echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language'));
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Email address'), help_link('edituser_email'), '</td><td class="optionbox" valign="top">';
-echo '<input type="text" name="form_email" tabindex="', ++$tab, '" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
+echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
 
 if (get_site_setting('ALLOW_USER_THEMES')) {
 	echo '<tr><td class="descriptionbox wrap">';
 	echo i18n::translate('My Theme'), help_link('edituser_user_theme'), '</td><td class="optionbox" valign="top">';
-	echo '<select name="form_theme" tabindex="', ++$tab, '">';
+	echo '<select name="form_theme">';
 		echo '<option value="">', i18n::translate('Site Default'), '</option>';
 		foreach (get_theme_names() as $themename=>$themedir) {
 			echo '<option value="', $themedir, '"';
@@ -214,21 +214,21 @@ if (get_site_setting('ALLOW_USER_THEMES')) {
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Preferred contact method'), help_link('edituser_contact_meth');
 echo '</td><td class="optionbox">';
-echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod'), 'tabindex="'.(++$tab).'"');
+echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod'));
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline');
 echo '</td><td class="optionbox">';
-echo checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline'), 'tabindex="'.(++$tab).'"');
+echo checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline'));
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Default Tab to show on Individual Information page'), help_link('edituser_user_default_tab'), '</td><td class="optionbox">';
-echo edit_field_default_tab('form_default_tab', get_user_setting(WT_USER_ID, 'defaulttab'), 'tabindex="'.(++$tab).'"');
+echo edit_field_default_tab('form_default_tab', get_user_setting(WT_USER_ID, 'defaulttab'));
 echo '</td></tr>';
 
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" tabindex="', ++$tab, '" value="', i18n::translate('Save'), '" /></td></tr>';
+echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Save'), '" /></td></tr>';
 
 echo '</table></form>';
 
