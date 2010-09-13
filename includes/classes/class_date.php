@@ -1142,7 +1142,7 @@ class FrenchRDate extends CalendarDate {
 	}
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
-		return $this->NUM_TO_MONTH_NOMINATIVE($n);
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	static function NUM_TO_GEDCOM_MONTH($n, $leap_year) {
 		switch ($n) {
