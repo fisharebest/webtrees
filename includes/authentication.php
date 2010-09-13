@@ -331,7 +331,7 @@ function addMessage($message) {
 		return false;
 	}
 
-	$user_id_from=get_user_by_email($message['from']);
+	$user_id_from=get_user_id($message['from']);
 	$user_id_to  =get_user_id($message['to']);
 
 	require_once WT_ROOT.'includes/functions/functions_mail.php';
@@ -362,9 +362,9 @@ function addMessage($message) {
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
 		if (!get_site_setting('SMTP_SIMPLE_MAIL'))
-			$from = hex4email($fromFullName, 'UTF-8'). " <".$message['from'].">";
+			$from = hex4email($fromFullName, 'UTF-8'). " <".getUserEmail($user_id_from).">";
 		else
-			$from = $message['from'];
+			$from = getUserEmail($user_id_from);
 		$email2 = i18n::translate('You sent the following message to a webtrees user:')."\r\n\r\n".$email2;
 
 	}
@@ -391,10 +391,7 @@ function addMessage($message) {
 				$header2 = $to;
 			}
 			if (!empty($header2)) {
-				if (!webtreesMail($header2, $from, $subject2, $email2)) {
-					i18n::init(WT_LOCALE);
-					return false;
-				}
+				webtreesMail($from, $header2, $subject2, $email2);
 			}
 		}
 	}
@@ -421,10 +418,11 @@ function addMessage($message) {
 		$subject1 = "[".i18n::translate('webtrees Message').($TEXT_DIRECTION=="ltr"?"] ":" [").$message["subject"];
 		if (!$user_id_from) {
 			$email1 = i18n::translate('The following message has been sent to your webtrees user account from ');
-			if (!empty($message["from_name"]))
+			if (!empty($message["from_name"])) {
 				$email1 .= $message["from_name"]."\r\n\r\n".$message["body"];
-			else
+			} else {
 				$email1 .= $from."\r\n\r\n".$message["body"];
+			}
 		} else {
 			$email1 = i18n::translate('The following message has been sent to your webtrees user account from ');
 			$email1 .= $fromFullName."\r\n\r\n".$message["body"];
@@ -440,10 +438,7 @@ function addMessage($message) {
 				$to = getUserEmail($user_id_to);
 		}
 		if (getUserEmail($user_id_to)) {
-			if (!webtreesMail($to, $from, $subject1, $email1)) {
-				i18n::init(WT_LOCALE);
-				return false;
-			}
+			webtreesMail($to, $from, $subject1, $email1);
 		}
 	}
 

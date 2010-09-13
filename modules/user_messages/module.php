@@ -116,9 +116,9 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($user_id) {
 					$content .= PrintReady(getUserFullName($user_id));
 					if ($TEXT_DIRECTION=="ltr") {
-						$content .= " " . getLRM() . " - ".htmlspecialchars($user_id,ENT_COMPAT,'UTF-8') . getLRM();
+						$content .= " " . getLRM() . " - ".htmlspecialchars(getUserEmail($user_id),ENT_COMPAT,'UTF-8') . getLRM();
 					} else {
-						$content .= " " . getRLM() . " - ".htmlspecialchars($user_id,ENT_COMPAT,'UTF-8') . getRLM();
+						$content .= " " . getRLM() . " - ".htmlspecialchars(getUserEmail($user_id),ENT_COMPAT,'UTF-8') . getRLM();
 					}
 				} else {
 					$content .= "<a href=\"mailto:".$message["from"]."\">".str_replace("@","@<span style=\"font-size:1px;\"> </span>",$message["from"])."</a>";

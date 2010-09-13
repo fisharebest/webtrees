@@ -156,10 +156,10 @@ switch ($action) {
 	case "register" :
 		$_SESSION["good_to_send"] = true;
 		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
-		header("Location: index.php");
-		exit;
-	}
-	$message = "";
+			header("Location: index.php");
+			exit;
+		}
+		$message = "";
 		if (!$user_name) {
 			$message .= i18n::translate('You must enter a user name.')."<br />";
 			$user_name_false = true;
@@ -410,7 +410,7 @@ switch ($action) {
 
 				$message = array();
 				$message["to"]=get_user_name($webmaster_user_id);
-				$message["from"]=$user_email;
+				$message["from"]=$user_name;
 				$message["subject"] = i18n::translate('New registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
@@ -520,7 +520,7 @@ switch ($action) {
 
 				$message = array();
 				$message["to"]=get_user_name($webmaster_user_id);
-				$message["from"]=$WEBTREES_EMAIL;
+				$message["from"]=$user_name;
 				$message["subject"] = i18n::translate('New user at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$message["body"] = $mail_body;
 				$message["created"] = $time;
