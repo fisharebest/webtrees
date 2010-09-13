@@ -1112,19 +1112,21 @@ case 'editnote':
 					?></textarea><br /><?php print_specialchar_link("NOTE", true); ?>
 				</td>
 			</tr>
-			if (WT_USER_IS_ADMIN) {
-			echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
-			if ($NO_UPDATE_CHAN) {
-				echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
-			} else {
-				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
-			}
-			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
-			$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
-			echo format_fact_date($event, false, true);
-			echo "</td></tr>\n";
-			} ?>
+			<?php
+				if (WT_USER_IS_ADMIN) {
+					echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
+					echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+					if ($NO_UPDATE_CHAN) {
+						echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+					} else {
+						echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+					}
+					echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+					$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+					echo format_fact_date($event, false, true);
+					echo "</td></tr>\n";
+				} 
+			?>
 		</table>
 		<br /><br />
 		<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
