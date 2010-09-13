@@ -245,7 +245,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if ($private>0) $out .= '<li class="sb_desc_indi_li">'.i18n::translate('Private').' ('.$private.')</li>';
 			}
 			else {
-				$out .= "No children";
+				$out .= i18n::translate('No children');
 			}
 		}
 		$out .= "</ul>";
