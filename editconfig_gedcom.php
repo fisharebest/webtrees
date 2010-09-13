@@ -658,12 +658,12 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Extend privacy to dead people'), help_link('KEEP_ALIVE'); ?>
+							<?php /* I18N: ... [who were] born in the last XX years or died in the last YY years */ echo i18n::translate('Extend privacy to dead people'), help_link('KEEP_ALIVE'); ?>
 						</td>
 						<td class="optionbox">
 							<?php
 							echo
-							 	/* I18N: 'Extend privacy to dead people' ... */
+							 	/* I18N: Extend privacy to dead people [who were] ... */
 								i18n::translate(
 									'born in the last %1$s years or died in the last %2$s years',
 									'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" size="5" />',
