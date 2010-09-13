@@ -380,7 +380,7 @@ if ($action=="edituser") {
 		foreach(get_theme_names() as $themename=>$themedir) {
 		echo "<option value=\"", $themedir, "\"";
 		if ($themedir == get_user_setting($user_id, 'theme')) echo " selected=\"selected\"";
-		echo ">", $themename, "</option>\n";
+		echo ">", $themename, "</option>";
 		}
 		?></select>
 		</td>
@@ -522,8 +522,8 @@ jQuery(document).ready(function(){
 	<?php
 	$k++;
 	foreach($users as $user_id=>$user_name) {
-		echo "<tr>\n";
-		echo "\t<td class=\"optionbox wrap\">";
+		echo "<tr>";
+		echo "<td class=\"optionbox wrap\">";
 		if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'contactmethod')!='none') {
 			echo "<a href=\"javascript:;\" onclick=\"return message('", $user_name, "');\">", i18n::translate('Send Message'), "</a>";
 		} else {
@@ -531,22 +531,22 @@ jQuery(document).ready(function(){
 		}
 		echo '</td>';
 		$userName = getUserFullName($user_id);
-		echo "\t<td class=\"optionbox\"><a class=\"edit_link\" href=\"", encode_url("useradmin.php?action=edituser&username={$user_name}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" title=\"", i18n::translate('Edit'), "\">", $userName;
+		echo "<td class=\"optionbox\"><a class=\"edit_link\" href=\"", encode_url("useradmin.php?action=edituser&username={$user_name}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" title=\"", i18n::translate('Edit'), "\">", $userName;
 		if ($TEXT_DIRECTION=="ltr") echo getLRM();
 		else                        echo getRLM();
-		echo "</a></td>\n";
+		echo "</a></td>";
 		if (get_user_setting($user_id, "comment_exp")) {
-			if ((strtotime(get_user_setting($user_id, "comment_exp")) != "-1") && (strtotime(get_user_setting($user_id, "comment_exp")) < time("U"))) echo "\t<td class=\"optionbox red\">", $user_name;
-			else echo "\t<td class=\"optionbox wrap\">", $user_name;
+			if ((strtotime(get_user_setting($user_id, "comment_exp")) != "-1") && (strtotime(get_user_setting($user_id, "comment_exp")) < time("U"))) echo "<td class=\"optionbox red\">", $user_name;
+			else echo "<td class=\"optionbox wrap\">", $user_name;
 		}
-		else echo "\t<td class=\"optionbox wrap\">", $user_name;
+		else echo "<td class=\"optionbox wrap\">", $user_name;
 		if (get_user_setting($user_id, "comment")) {
 			$tempTitle = PrintReady(get_user_setting($user_id, "comment"));
 			echo "<br /><img class=\"adminicon\" align=\"top\" alt=\"{$tempTitle}\" title=\"{$tempTitle}\" src=\"{$WT_IMAGES['notes']}\" />";
 		}
-		echo "</td>\n";
-		echo "\t<td class=\"optionbox wrap\">", Zend_Locale::getTranslation(get_user_setting($user_id, 'language'), 'language', WT_LOCALE), "</td>\n";
-		echo "\t<td class=\"optionbox\">";
+		echo "</td>";
+		echo "<td class=\"optionbox wrap\">", Zend_Locale::getTranslation(get_user_setting($user_id, 'language'), 'language', WT_LOCALE), "</td>";
+		echo "<td class=\"optionbox\">";
 		echo "<a href=\"javascript: ", i18n::translate('Privileges'), "\" onclick=\"expand_layer('user-geds", $k, "'); return false;\"><img id=\"user-geds", $k, "_img\" src=\"";
 		echo $WT_IMAGES["plus"];
 		echo "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" />";
@@ -554,7 +554,7 @@ jQuery(document).ready(function(){
 		echo "<div id=\"user-geds", $k, "\" style=\"display:none\">";
 		echo "<ul>";
 		if (get_user_setting($user_id, 'canadmin')) {
-			echo "<li class=\"warning\">", i18n::translate('User can administer'), "</li>\n";
+			echo "<li class=\"warning\">", i18n::translate('User can administer'), "</li>";
 		}
 		foreach ($all_gedcoms as $ged_id=>$ged_name) {
 			switch (get_user_gedcom_setting($user_id, $ged_id, 'canedit')) {
@@ -575,34 +575,32 @@ jQuery(document).ready(function(){
 		echo "</ul>";
 		echo "</div>";
 		$k++;
-		echo "</td>\n";
-		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) echo "\t<td class=\"optionbox red\">";
-		else echo "\t<td class=\"optionbox wrap\">";
+		echo "</td>";
+		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) echo "<td class=\"optionbox red\">";
+		else echo "<td class=\"optionbox wrap\">";
 		echo '<div style="display:none">', (int)get_user_setting($user_id, 'reg_timestamp'), '</div>';
 		echo format_timestamp((int)get_user_setting($user_id, 'reg_timestamp'));
-		echo "</td>\n";
-		echo "\t<td class=\"optionbox wrap\">";
+		echo "</td>";
+		echo "<td class=\"optionbox wrap\">";
 		if ((int)get_user_setting($user_id, 'reg_timestamp') > (int)get_user_setting($user_id, 'sessiontime')) {
 			echo '<div style="display:none">', (int)get_user_setting($user_id, 'reg_timestamp') - time(), '</div>';
-			echo i18n::translate('Never'), '<br />', i18n::time_ago(time() - (int)get_user_setting($user_id, 'reg_timestamp'));
+			echo i18n::translate('Never');
 		} else {
 			echo '<div style="display:none">', (int)get_user_setting($user_id, 'sessiontime'), '</div>';
 			echo format_timestamp((int)get_user_setting($user_id, 'sessiontime')), '<br />', i18n::time_ago(time() - (int)get_user_setting($user_id, 'sessiontime'));
 		}
-		echo "</td>\n";
-		echo "\t<td class=\"optionbox wrap\">";
-		if (get_user_setting($user_id, 'verified')) echo i18n::translate('Yes');
-		else echo i18n::translate('No');
-		echo "</td>\n";
-		echo "\t<td class=\"optionbox wrap\">";
-		if (get_user_setting($user_id, 'verified_by_admin')) echo i18n::translate('Yes');
-		else echo i18n::translate('No');
-		echo "</td>\n";
-		echo "\t<td class=\"optionbox wrap\">";
-		if (WT_USER_ID!=$user_id) echo "<a href=\"", encode_url("useradmin.php?action=deleteuser&username={$user_name}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" onclick=\"return confirm('", i18n::translate('Are you sure you want to delete the user'), " $user_name');\">", i18n::translate('Delete'), "</a>";
-		echo "</td>\n";
-		echo "</tr>\n";
-	}
+		echo '</td><td class="optionbox wrap">';
+		echo get_user_setting($user_id, 'verified') ? i18n::translate('Yes') : i18n::translate('No');
+		echo '</td><td class="optionbox wrap">';
+		echo get_user_setting($user_id, 'verified_by_admin') ? i18n::translate('Yes') : i18n::translate('No');
+		echo '</td><td class="optionbox wrap">';
+		if (WT_USER_ID!=$user_id) { // You cannot delete yourself
+			echo '<a href="useradmin.php?action=deleteuser&amp;username=', urlencode($user_name), '&amp;filter=', urlencode($filter), '&amp;usrlang=', urlencode($usrlang), '&amp;ged=', urlencode($ged), '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete the user'), ' ', htmlspecialchars($user_name), '\');">', i18n::translate('Delete'), '</a>';
+		} else {
+			echo '&nbsp;';
+		}
+		echo '</td></tr>';
+		}
 	?>
 
 	</tbody>
@@ -722,9 +720,9 @@ if ($action == "createform") {
 			<tr>
 			<td><?php echo $ged_name; ?>:&nbsp;&nbsp;</td>
 			<td><input type="text" name="<?php echo $varname; ?>" id="<?php echo $varname; ?>" value="<?php
-			echo "\" />\n";
+			echo "\" />";
 			print_findindi_link($varname, "", false, false, $ged_name);
-			echo "</td></tr>\n";
+			echo "</td></tr>";
 		}
 		echo "</table>";
 		?>
@@ -736,18 +734,18 @@ if ($action == "createform") {
 		foreach ($all_gedcoms as $ged_id=>$ged_name) {
 			$varname='canedit'.$ged_id;
 			echo "<tr><td>{$ged_name}:&nbsp;&nbsp;</td><td>";
-			echo "<select name=\"$varname\">\n";
+			echo "<select name=\"$varname\">";
 			echo "<option value=\"none\" selected=\"selected\"";
-			echo ">", i18n::translate('None'), "</option>\n";
+			echo ">", i18n::translate('None'), "</option>";
 			echo "<option value=\"access\"";
-			echo ">", i18n::translate('Access'), "</option>\n";
+			echo ">", i18n::translate('Access'), "</option>";
 			echo "<option value=\"edit\"";
-			echo ">", i18n::translate('Edit'), "</option>\n";
+			echo ">", i18n::translate('Edit'), "</option>";
 			echo "<option value=\"accept\"";
-			echo ">", i18n::translate('Accept'), "</option>\n";
+			echo ">", i18n::translate('Accept'), "</option>";
 			echo "<option value=\"admin\"";
-			echo ">", i18n::translate('Admin GEDCOM'), "</option>\n";
-			echo "</select></td></tr>\n";
+			echo ">", i18n::translate('Admin GEDCOM'), "</option>";
+			echo "</select></td></tr>";
 		}
 		?>
 		</table>
@@ -772,7 +770,7 @@ if ($action == "createform") {
 			<?php
 			foreach(get_theme_names() as $themename=>$themedir) {
 				echo "<option value=\"", $themedir, "\"";
-				echo ">", $themename, "</option>\n";
+				echo ">", $themename, "</option>";
 			}
 			?>
 			</select>
