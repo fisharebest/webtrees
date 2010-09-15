@@ -134,7 +134,7 @@ if (!$changed_gedcoms) {
 	echo '<br /><br /><b>', i18n::translate('There are currently no changes to be reviewed.'), '</b>';
 } else {
 	$changes=WT_DB::prepare(
-		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name".
+		"SELECT c.*, u.user_name, u.real_name, g.gedcom_name, IF(new_gedcom='', old_gedcom, new_gedcom) AS gedcom".
 		" FROM `##change` c".
 		" JOIN `##user`   u USING (user_id)".
 		" JOIN `##gedcom` g USING (gedcom_id)".
@@ -155,6 +155,14 @@ if (!$changed_gedcoms) {
 			$output.='<tr><td class="list_value '.$TEXT_DIRECTION.'">';
 			$GEDCOM=$change->gedcom_name;
 			$record=GedcomRecord::getInstance($change->xref);
+			if (!$record) {
+				// When a record has been both added and deleted, then
+				// neither the original nor latest version will exist.
+				// This prevents us from displaying it...
+				// This generates a record of some sorts from the last-but-one
+				// version of the record.
+				$record=new GedcomRecord($change->gedcom);
+			}
 			$output.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM().'<br />';
 			$output.='<a href="javascript:;" onclick="return show_diff(\''.encode_url($record->getLinkUrl().'&show_changes=yes').'\');">'.i18n::translate('View Change Diff').'</a> | ';
 			$output.="<a href=\"javascript:show_gedcom_record('".$change->xref."');\">".i18n::translate('View GEDCOM Record')."</a> | ";
