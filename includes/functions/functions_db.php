@@ -2181,8 +2181,8 @@ function create_user($username, $realname, $email, $password) {
 		->execute(array($username))->fetchOne();
 }
 
-function rename_user($old_username, $new_username) {
-	WT_DB::prepare("UPDATE `##user`      SET user_name=?   WHERE user_name  =?")->execute(array($new_username, $old_username));
+function rename_user($user_id, $new_username) {
+	WT_DB::prepare("UPDATE `##user`      SET user_name=?   WHERE user_id  =?")->execute(array($new_username, $user_id));
 }
 
 function delete_user($user_id) {
