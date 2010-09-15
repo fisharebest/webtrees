@@ -232,7 +232,7 @@ function print_fact(&$eventObj, $noedit=false) {
 				if ($fact=="MARR") {
 					echo translate_fact("MARR_".strtoupper($match[1]), $label_person);
 				} else {
-					echo translate_fact(strtoupper($match[1]), $label_person);
+					echo $match[1];
 				}
 				echo "<br />";
 			}
