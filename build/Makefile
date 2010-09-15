@@ -1,7 +1,7 @@
 L10NVERSION=$(shell date +%Y-%m-%d -r $(LANGUAGE_ARCHIVE))
 LABEL=$(PACKAGE)-$(SVNVERSION)
 LANGUAGE_ARCHIVE=launchpad-export.tar.gz
-LANGUAGES=en_US $(shell tar tf $(LANGUAGE_ARCHIVE) | grep /LC_MESSAGES/webtrees.mo | cut -d / -f 1)
+LANGUAGES=en_US $(shell tar tf $(LANGUAGE_ARCHIVE) | grep /LC_MESSAGES/webtrees.mo | grep -v ^en/ | cut -d / -f 1)
 LANGUAGES_RELEASE=en_US en_GB pl it es fi fr de da pt he et ca tr nl sk nn sl hu sv ru
 MO=$(patsubst %,$(LABEL)/language/%.mo,$(LANGUAGES))
 PACKAGE=webtrees
