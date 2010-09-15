@@ -3411,7 +3411,7 @@ case 'edituser_realname':
 
 case 'edituser_password':
 	$title=i18n::translate('Password');
-	$text=i18n::translate('It is a good practice to change your password regularly.  You have to keep in mind that anyone who knows your user name and your password will have access to your data.<br /><br />Make the password at least 6 characters long, the longer the better. You may use uppercase and lower case letters with or without diacritical marks, numbers, dash (-), and underscore (_). Do <u>not</u> use punctuation marks or spaces.  Use a combination of upper and lower case, numbers, and other characters. For example: <b>5Z_q$P4=r9</b>.<br /><br />Like the user name, the password is <u>case sensitive</u>.  That means that <b>Secret.Password!#13</b> is not the same as <b>secret.password!#13</b> or <b>SECRET.PASSWORD!#13</b>.');
+	$text=i18n::translate('Passwords must be at least 6 characters long and are case-sensitive, so that "s3CR#t" is different to "S3CR#t".'); 
 	break;
 
 case 'edituser_rootid':
@@ -3431,7 +3431,7 @@ case 'edituser_user_theme':
 
 case 'edituser_username':
 	$title=i18n::translate('Username');
-	$text=i18n::translate('In this box you can change your user name.  If you no longer like your user name or if have other reasons to change it, you can do so using this form.<br /><br />The username is <u>case sensitive</u>. That means that <b>John</b> is not the same as <b>john</b> or <b>JOHN</b>.<br /><br />You should <u>only</u> use characters from the alphabets that <b>webtrees</b> supports.  You may use uppercase and lower case letters with or without diacritical marks, numbers, dash (-), and underscore (_). Do <u>not</u> use punctuation marks or spaces.');
+	$text=i18n::translate('You can change your username by updating it here.  Usernames are case insensitive and ignore accented letters, so that "chloe", "chlo&euml;" and "CHLOE" are considered to be the same.  Usernames may not contain the following characters: &lt;&gt;"%%{};');
 	break;
 
 case 'export_gedcom':

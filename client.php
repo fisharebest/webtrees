@@ -50,8 +50,8 @@ if (count(get_all_gedcoms())==0) {
 $gedcom=safe_REQUEST($_REQUEST,'GEDCOM');
 if ($gedcom) {
 	if (!in_array($gedcom, get_all_gedcoms())) {
-		addToLog("ERROR 21: Invalid GEDCOM specified.  Remember that the GEDCOM is case sensitive.", 'debug');
-		print "ERROR 21: Invalid GEDCOM specified.  Remember that the GEDCOM is case sensitive.\n";
+		addToLog("ERROR 21: Invalid GEDCOM specified.", 'debug');
+		print "ERROR 21: Invalid GEDCOM specified.\n";
 		exit;
 	}
 	$GEDCOM=$gedcom;
