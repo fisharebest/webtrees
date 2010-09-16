@@ -44,7 +44,7 @@ case 'GOOGLEMAP_ENABLE':
 
 case 'GOOGLEMAP_API_KEY':
 	$title=i18n::translate('Google-map API key');
-	$text=i18n::translate('Insert your Google Map API key here.  You can request a key here: <a target=\"_blank\" href=\"http://www.google.com/apis/maps/\">http://www.google.com/apis/maps/</a>');
+	$text=/* I18N: %s is a URL */ i18n::translate('Insert your Google Map API key here.  You can request a key from %s', '<a target="_blank" href="http://code.google.com/apis/maps/signup.html">http://code.google.com/apis/maps/signup.html</a>');
 	break;
 
 case 'GOOGLEMAP_MAP_TYPE':
