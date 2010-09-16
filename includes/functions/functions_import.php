@@ -991,7 +991,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 	if (isset($m_media)) {
 		//-- add the entry to the media_mapping table
 		$sql_insert_media_mapping->execute(array($m_media, $gid, $count, $ged_id, $objref));
-		return $objref;
+		return "{$objlevel} OBJE @{$m_media}@\n";
 	} else {
 		print "Media reference error ".$objrec;
 		return "";
@@ -1075,18 +1075,16 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 	//-- if there aren't any media records then don't look for them just return
 	$pt = preg_match("/\d OBJE/", $gedrec, $match);
 	if ($pt > 0) {
-	//-- go through all of the lines and replace any local
-	//--- OBJE to referenced OBJEs
-	$newrec = "";
-	$lines = explode("\n", $gedrec);
-	$ct_lines = count($lines);
-	$inobj = false;
-	$processed = false;
-	$objlevel = 0;
-	$objrec = "";
-	$count = 1;
-	foreach ($lines as $key => $line) {
-		if (!empty ($line)) {
+		//-- go through all of the lines and replace any local
+		//--- OBJE to referenced OBJEs
+		$newrec = "";
+		$lines = explode("\n", $gedrec);
+		$inobj = false;
+		$processed = false;
+		$objlevel = 0;
+		$objrec = "";
+		$count = 1;
+		foreach ($lines as $key => $line) {
 			// NOTE: Match lines that resemble n OBJE @0000@
 			// NOTE: Renumber the old ID to a new ID and save the old ID
 			// NOTE: in case there are more references to it
@@ -1103,42 +1101,37 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 				$objlevel = 0;
 				$inobj = false;
 			}
-			if (preg_match("/[1-9] OBJE @(.*)@/", $line, $match) != 0) {
-					// NOTE: Set object level
-					$objlevel = $level;
-					$inobj = true;
-						$objrec = $line . "\n";
-			} elseif (preg_match("/[1-9] OBJE/", $line, $match)) {
+			if (preg_match("/^[1-9] OBJE @(.*)@/", $line, $match) != 0) {
+				// NOTE: Set object level
+				$objlevel = $level;
+				$inobj = true;
+				$objrec = $line . "\n";
+			} elseif (preg_match("/^[1-9] OBJE/", $line, $match)) {
 				// NOTE: Set the details for the next media record
 				$objlevel = $level;
 				$inobj = true;
-					$objrec = $line . "\n";
+				$objrec = $line . "\n";
 			} else {
-				$ct = preg_match("/(\d+) (\w+)(.*)/", $line, $match);
-				if ($ct > 0) {
-					if ($inobj) {
-						$objrec .= $line . "\n";
-					} else {
-						$newrec .= $line . "\n";
-					}
+				if ($inobj) {
+					$objrec .= $line . "\n";
 				} else {
 					$newrec .= $line . "\n";
 				}
 			}
 		}
-	}
-	//-- make sure the last line gets handled
-	if ($inobj) {
-		$objref = insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count);
-		$count++;
-		$newrec .= $objref;
+		//-- make sure the last line gets handled
+		if ($inobj) {
+			$objref = insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count);
+			$count++;
+			$newrec .= $objref;
 
-		// NOTE: Set the details for the next media record
-		$objlevel = 0;
-		$inobj = false;
+			// NOTE: Set the details for the next media record
+			$objlevel = 0;
+			$inobj = false;
+		}
+	}	else {
+		$newrec = $gedrec;
 	}
-	}
-	else $newrec = $gedrec;
 
 	if ($keepmedia) {
 		$newrec = trim($newrec)."\n";

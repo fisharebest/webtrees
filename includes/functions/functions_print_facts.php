@@ -1407,7 +1407,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER, $MEDIA_TYPES;
 
-	if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
+	if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec'])) {
 		return false;
 	}
 
@@ -1448,8 +1448,6 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	// NOTE Print the title of the media
 	echo "</td><td class=\"optionbox wrap $styleadd\"><span class=\"field\">";
 	$mediaTitle = $rowm["m_titl"];
-	$subtitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
-	if (!empty($subtitle)) $mediaTitle = $subtitle;
 	$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
 	if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
 
@@ -1506,12 +1504,10 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	} else {
 		echo "<i>", PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
 	}
-	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["mm_gedrec"]);
-	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
+	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
 	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
-	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["mm_gedrec"]);
-	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
+	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
 	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
 	echo "</i>";
@@ -1575,8 +1571,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	//-- don't show _PRIM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
-		$prim = get_gedcom_value("_PRIM", 2, $rowm["mm_gedrec"]);
-		if (empty($prim)) $prim = get_gedcom_value("_PRIM", 1, $rowm["m_gedrec"]);
+		$prim = get_gedcom_value("_PRIM", 1, $rowm["m_gedrec"]);
 		if (!empty($prim)) {
 			echo "<span class=\"label\">", translate_fact('_PRIM'), ":</span> ";
 			if ($prim=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
@@ -1585,8 +1580,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	//-- don't show _THUM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
-		$thum = get_gedcom_value("_THUM", 2, $rowm["mm_gedrec"]);
-		if (empty($thum)) $thum = get_gedcom_value("_THUM", 1, $rowm["m_gedrec"]);
+		$thum = get_gedcom_value("_THUM", 1, $rowm["m_gedrec"]);
 		if (!empty($thum)) {
 			echo "<span class=\"label\">", translate_fact('_THUM'), ":</span> ";
 			if ($thum=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
@@ -1594,9 +1588,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		}
 	}
 	print_fact_notes($rowm["m_gedrec"], 1);
-	print_fact_notes($rowm["mm_gedrec"], 2);
 	print_fact_sources($rowm["m_gedrec"], 1);
-	print_fact_sources($rowm["mm_gedrec"], 2);
 	echo "</td></tr>";
 	return true;
 }
