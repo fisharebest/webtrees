@@ -507,6 +507,9 @@ function privatize_gedcom($gedrec) {
 			case 'OBJE':
 				$newrec="0 @{$gid}@ OBJE\n1 NOTE ".i18n::translate('Details about this media are private. Media details will not be included.');
 				break;
+			case 'NOTE':
+				$newrec="0 @{$gid}@ NOTE ".i18n::translate('Details about this note are private. Note details will not be included.');
+				break;
 			default:
 				$newrec="0 @{$gid}@ {$type}\n1 NOTE ".i18n::translate('Private');
 			}

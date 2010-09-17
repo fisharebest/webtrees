@@ -60,6 +60,14 @@ else if ($controller->note->isMarkedDeleted()) {
 	echo '<span class="error">', i18n::translate('This record has been marked for deletion upon admin approval.'), '</span>';
 }
 
+$noterec = find_gedcom_record($controller->nid, WT_GED_ID);
+$pnoterec = privatize_gedcom(find_gedcom_record($controller->nid, WT_GED_ID));
+if ($noterec!=$pnoterec) {
+	print_privacy_error();
+	print_footer();
+	exit;
+}
+
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
 echo ' var recwin=window.open("gedrecord.php?pid=', $controller->nid, '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
@@ -82,7 +90,6 @@ echo '</span><br />';
 echo '<table class="facts_table">';
 echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 // Shared Note details ---------------------
-$noterec = find_gedcom_record($controller->nid, WT_GED_ID);
 $nt = preg_match("/0 @$controller->nid@ NOTE(.*)/", $noterec, $n1match);
 if ($nt==1) {
 	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true);
