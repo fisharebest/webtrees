@@ -1503,9 +1503,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		echo "<a href=\"", encode_url("mediaviewer.php?mid={$rowm['m_media']}"), "\">";
 	}
 	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
-		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
+		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8'));
 	} else {
-		echo "<i>", PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8')."&nbsp;&nbsp;({$rowm['m_media']})");
+		echo "<i>", PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8'));
 	}
 	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
