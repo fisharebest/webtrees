@@ -417,6 +417,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		//-- find multimedia objects
 		print_media_links($factrec, 2, $pid);
 	}
+	echo "<br />";
 	echo "</td>";
 	echo "\n\t\t</tr>";
 }
@@ -493,7 +494,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			if (!$spos2) $spos2 = strlen($factrec);
 			$srec = substr($factrec, $spos1, $spos2-$spos1);
 			$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
-			$data .= "<br />";
+//			$data .= "<br />";
 			$data .= "\n\t\t<span class=\"label\">";
 			$elementID = $sid."-".floor(microtime()*1000000);
 			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
@@ -536,6 +537,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	if ($printDone) $data .= "<br />";
 	if (!$return) echo $data;
 	else return $data;
+	echo "<br />";
 }
 
 //-- Print the links to multi-media objects
@@ -1152,7 +1154,8 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			//-- print linked note records
 			$noterec = find_gedcom_record($nid, $ged_id, true);
 			$nt = preg_match("/0 @$nid@ NOTE (.*)/", $noterec, $n1match);
-			$text ="";
+			$text = "";
+			$centitl = "";
 			if ($nt>0) {
 				// If Census assistant installed, enable hotspot link on shared note title ---------------------
 				if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
