@@ -43,7 +43,7 @@ $convert			= safe_GET('convert',			'yes', 'no');
 $zip				= safe_GET('zip',				'yes', 'no');
 $conv_path			= safe_GET('conv_path',			WT_REGEX_NOSCRIPT,				$_SESSION['exportConvPath']);
 $conv_slashes		= safe_GET('conv_slashes',		array('forward', 'backward'),	$_SESSION['exportConvSlashes']);
-$privatize_export	= safe_GET('privatize_export',	array('none', 'visitor', 'user', 'gedadmin', 'admin'));
+$privatize_export	= safe_GET('privatize_export',	array('none', 'visitor', 'user', 'gedadmin'));
 
 $conv_path = stripLRMRLM($conv_path);
 $_SESSION['exportConvPath'] = $conv_path;		// remember this for the next Download
@@ -136,7 +136,6 @@ print_header(i18n::translate('Download GEDCOM'));
 		<?php } ?>
 		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php print i18n::translate('Authenticated user'); ?><br />
 		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php print i18n::translate('GEDCOM administrator'); ?><br />
-		<input type="radio" name="privatize_export" value="admin"<?php if (!WT_USER_IS_ADMIN) print " DISABLED"; ?> />&nbsp;&nbsp;<?php print i18n::translate('Site administrator'); ?>
 		</td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>
