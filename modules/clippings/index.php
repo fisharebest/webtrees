@@ -204,8 +204,7 @@ if ($ct==0) {
 		<input type="radio" name="privatize_export" value="none" <?php print $radioPrivatizeNone; ?>/>&nbsp;<?php print i18n::translate('None'); ?><br />
 		<input type="radio" name="privatize_export" value="visitor" <?php print $radioPrivatizeVisitor; ?>/>&nbsp;<?php print i18n::translate('Visitor'); ?><br />
 		<input type="radio" name="privatize_export" value="user" <?php print $radioPrivatizeUser; ?>/>&nbsp;<?php print i18n::translate('Authenticated user'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" <?php print $radioPrivatizeGedadmin; ?>/>&nbsp;<?php print i18n::translate('GEDCOM administrator'); ?><br />
-		<input type="radio" name="privatize_export" value="admin" <?php print $radioPrivatizeAdmin; ?>/>&nbsp;<?php print i18n::translate('Site administrator'); ?>
+		<input type="radio" name="privatize_export" value="gedadmin" <?php print $radioPrivatizeGedadmin; ?>/>&nbsp;<?php print i18n::translate('GEDCOM administrator'); ?>
 		</td></tr>
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>

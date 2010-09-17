@@ -107,7 +107,7 @@ class ClippingsControllerRoot extends BaseController {
 		$this->IncludeMedia = safe_GET('IncludeMedia');
 		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
 		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $_SESSION['exportConvSlashes']);
-		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin', 'admin'));
+		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 		$this->level1 = safe_GET('level1');
 		$this->level2 = safe_GET('level2');
 		$this->level3 = safe_GET('level3');
