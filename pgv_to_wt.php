@@ -117,19 +117,9 @@ if ($error || empty($PGV_PATH)) {
 	if ($error) {
 		echo '<p class="bad">', $error, '</p>';
 	}
-	echo
-		'<form action="', WT_SCRIPT_NAME, '" method="post">',
-		'<p>', i18n::translate('Where is your PhpGedView installation?'), '</p>',
-		'<dl>',
-		'<dt>',i18n::translate('Installation directory'), '</dt>',
-		'<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($PGV_PATH).'"><dd>',
-		'</dl>';
-	// Finish
-	echo '<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>';
-	echo '</form>';
 
 	// Look for PGV in some nearby directories
-	$pgv_dirs=array();
+	$pgv_dirs='';
 	$dir=opendir(realpath('..'));
 	while (($subdir=readdir($dir))!==false) {
 		if (is_dir('../'.$subdir) && preg_match('/pgv|gedview/i', $subdir) && file_exists('../'.$subdir.'/config.php')) {
@@ -137,16 +127,23 @@ if ($error || empty($PGV_PATH)) {
 		}
 	}
 	closedir($dir);
-	if ($pgv_dirs) {
-		echo '<hr/><p>', i18n::translate('The following directories might contain a PhpGedView installation'), '</p>';
-		echo '<pre>';
-		foreach ($pgv_dirs as $pgv_dir) {
-			echo '<br/>', $pgv_dir;
-		}
-		echo '</pre>';
-	}
 
-	echo '</div>';
+	echo
+		'<form action="', WT_SCRIPT_NAME, '" method="post">',
+		'<p>', i18n::translate('Where is your PhpGedView installation?'), '</p>',
+		'<dl>',
+		'<dt>',i18n::translate('Installation directory'), '</dt>',
+		'<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($PGV_PATH).'">',
+		'</dd>';
+	if ($pgv_dirs) {
+		echo '<dt>', /* find better english before translating */'PhpGedView might be found in these locations', '</dt>';
+		echo '<dd>', implode('<br/>', $pgv_dirs), '</dd>';
+	}
+	echo
+		'</dl>',
+		'<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>',
+		'</form>',
+		'</div>';
 	exit;
 }
 
