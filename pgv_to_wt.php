@@ -127,6 +127,25 @@ if ($error || empty($PGV_PATH)) {
 	// Finish
 	echo '<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>';
 	echo '</form>';
+
+	// Look for PGV in some nearby directories
+	$pgv_dirs=array();
+	$dir=opendir(realpath('..'));
+	while (($subdir=readdir($dir))!==false) {
+		if (is_dir('../'.$subdir) && preg_match('/pgv|gedview/i', $subdir) && file_exists('../'.$subdir.'/config.php')) {
+			$pgv_dirs[]='../'.$subdir;
+		}
+	}
+	closedir($dir);
+	if ($pgv_dirs) {
+		echo '<hr/><p>', i18n::translate('The following directories might contain a PhpGedView installation'), '</p>';
+		echo '<pre>';
+		foreach ($pgv_dirs as $pgv_dir) {
+			echo '<br/>', $pgv_dir;
+		}
+		echo '</pre>';
+	}
+
 	echo '</div>';
 	exit;
 }
