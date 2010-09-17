@@ -4047,9 +4047,11 @@ case 'upload_gedcom':
 
 case 'upload_media_file':
 	$title=i18n::translate('Media file to upload');
-	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.').'<br /><br />'
-		.i18n::translate('The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.').'<br /><br />'
-		.i18n::translate('If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%1$s</b>.  In this case, the media file will be uploaded to the directory <b>%2$s</b>.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY);
+	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.');
+	$text .= '<br /><br />';
+	$text .= i18n::translate('The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.');
+	$text .= '<br /><br />';
+	$text .= i18n::translate('If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%1$s</b>.  In this case, the media file will be uploaded to the directory <b>%2$s</b>.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY);
 	break;
 
 case 'upload_media':
@@ -4069,7 +4071,11 @@ case 'upload_server_folder':
 
 case 'upload_thumbnail_file':
 	$title=i18n::translate('Thumbnail to upload');
-	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the thumbnail file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.  When this field is filled in, the <b>Automatic thumbnail</b> checkbox is ignored.<br /><br />If the <b>Media file to upload</b> field has been filled in, your uploaded thumbnail file will be named according to the contents of that field, regardless of what it is called on your local computer.  If that field is empty, the uploaded thumbnail file will be copied to two places on the server, once into the server directory mentioned in the <b>Folder on server</b> field, and then again into an identical directory structure starting with <b>%sthumbs/</b>.<br /><br />If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b> where uploaded media files are normally stored.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
+	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the thumbnail file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.  When this field is filled in, the <b>Automatic thumbnail</b> checkbox is ignored.');
+	$text .= '<br /><br />';
+	$text .= i18n::translate('If the <b>Media file to upload</b> field has been filled in, your uploaded thumbnail file will be named according to the contents of that field, regardless of what it is called on your local computer.  If that field is empty, the uploaded thumbnail file will be copied to two places on the server, once into the server directory mentioned in the <b>Folder on server</b> field, and then again into an identical directory structure starting with <b>%sthumbs/</b>.', $MEDIA_DIRECTORY);
+	$text .= '<br /><br />';
+	$text .= i18n::translate('If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b> where uploaded media files are normally stored.', $MEDIA_DIRECTORY_LEVELS);
 	break;
 
 case 'useradmin_auto_accept':
