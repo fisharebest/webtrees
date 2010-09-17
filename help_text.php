@@ -4047,7 +4047,9 @@ case 'upload_gedcom':
 
 case 'upload_media_file':
 	$title=i18n::translate('Media file to upload');
-	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.<br /><br />The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.<br /><br />If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b>.  In this case, the media file will be uploaded to the directory <b>%s</b>.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
+	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.').'<br /><br />'
+		.i18n::translate('The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.').'<br /><br />'
+		.i18n::translate('If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%1$s</b>.  In this case, the media file will be uploaded to the directory <b>%2$s</b>.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY);
 	break;
 
 case 'upload_media':
