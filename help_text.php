@@ -3209,7 +3209,7 @@ case 'annivers_year_select':
 
 case 'apply_privacy':
 	$title=i18n::translate('Apply privacy settings?');
-	$text=i18n::translate('This option will remove private data from the downloaded GEDCOM file.  Data will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page.');
+	$text=i18n::translate('This option will remove private data from the downloaded GEDCOM file.  The file will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page.');
 	break;
 
 case 'block_move_right':
