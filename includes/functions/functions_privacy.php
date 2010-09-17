@@ -348,6 +348,17 @@ function canDisplayRecord($ged_id, $gedrec) {
 			return $cache[$cache_key]=false;
 		}
 		break;
+	case 'NOTE':
+		// Hide notes if they are attached to private records
+		$linked_gids=WT_DB::prepare(
+			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
+		)->execute(array($xref, $ged_id))->fetchOneColumn();
+		foreach ($linked_gids as $linked_gid) {
+			$linked_record=GedcomRecord::getInstance($linked_gid);
+			if (!$linked_record->canDisplayDetails()) {
+				return $cache[$cache_key]=false;
+			}
+		}
 	}
 
 	// Level 1 tags (except INDI and FAM) can be controlled by global tag settings
