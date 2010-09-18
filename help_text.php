@@ -4047,16 +4047,15 @@ case 'upload_gedcom':
 
 case 'upload_media_file':
 	$title=i18n::translate('Media file to upload');
-	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the media file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.');
-	$text .= '<br /><br />';
-	$text .= i18n::translate('The uploaded file will have the same name on the server, and it will be uploaded to the directory specified in the <b>Folder on server</b> field.');
-	$text .= '<br /><br />';
-	$text .= i18n::translate('If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%1$s</b>.  In this case, the media file will be uploaded to the directory <b>%2$s</b>.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY);
+	$text=
+		i18n::translate('Select the media file that you want to upload.  If a file already exists with the same name, it will be overwritten.').
+		'<br/><br/>'.
+		i18n::translate('It is easier to manage your media files if you choose a consistent format for the filenames.  To organise media files into folders, you must first set the number of levels in the GEDCOM administration page.');
 	break;
 
 case 'upload_media':
 	$title=i18n::translate('Upload media files');
-	$text=i18n::translate('Select files from your local computer to upload to your server.  All files will be uploaded to the directory <b>%s</b> or to one of its sub-directories.<br /><br />Folder names you specify will be appended to <b>%s</b>. For example, <b>%smyfamily</b>. If the thumbnail directory does not exist, it is created automatically.', $MEDIA_DIRECTORY, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
+	$text=i18n::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.');
 	break;
 
 case 'upload_server_file':
@@ -4071,11 +4070,7 @@ case 'upload_server_folder':
 
 case 'upload_thumbnail_file':
 	$title=i18n::translate('Thumbnail to upload');
-	$text=i18n::translate('In this field you specify the location and name, on your local computer, of the thumbnail file you wish to upload to the server.  You can use the <b>Browse</b> button to search your local computer for the desired file.  When this field is filled in, the <b>Automatic thumbnail</b> checkbox is ignored.');
-	$text .= '<br /><br />';
-	$text .= i18n::translate('If the <b>Media file to upload</b> field has been filled in, your uploaded thumbnail file will be named according to the contents of that field, regardless of what it is called on your local computer.  If that field is empty, the uploaded thumbnail file will be copied to two places on the server, once into the server directory mentioned in the <b>Folder on server</b> field, and then again into an identical directory structure starting with <b>%sthumbs/</b>.', $MEDIA_DIRECTORY);
-	$text .= '<br /><br />';
-	$text .= i18n::translate('If you do not see the <b>Folder on server</b> field or cannot change it, you do not have sufficient permissions or your GEDCOM configuration has been set to allow no directory levels beyond the default <b>%s</b> where uploaded media files are normally stored.', $MEDIA_DIRECTORY_LEVELS);
+	$text=i18n::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the person who made an audio recording.');
 	break;
 
 case 'useradmin_auto_accept':
