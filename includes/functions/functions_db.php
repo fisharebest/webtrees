@@ -2379,7 +2379,7 @@ function get_user_blocks($user_id, $gedcom_id=WT_GED_ID) {
 		" JOIN  `##module` USING (module_name)".
 		" JOIN  `##module_privacy` USING (module_name)".
 		" WHERE user_id=? AND `##module_privacy`.gedcom_id=?".
-		" AND   status='enabled' AND access_level>?".
+		" AND   status='enabled' AND access_level>=?".
 		" ORDER BY location, block_order"
 	)->execute(array($user_id, $gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
 	foreach ($rows as $row) {
@@ -2417,7 +2417,7 @@ function get_gedcom_blocks($gedcom_id) {
 		" JOIN  `##module` USING (module_name)".
 		" JOIN  `##module_privacy` USING (module_name, gedcom_id)".
 		" WHERE gedcom_id=?".
-		" AND   status='enabled' AND access_level>?".
+		" AND   status='enabled' AND access_level>=?".
 		" ORDER BY location, block_order"
 	)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
 	foreach ($rows as $row) {
