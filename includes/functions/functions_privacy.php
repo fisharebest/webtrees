@@ -487,7 +487,6 @@ function privatize_gedcom($gedrec) {
 				if (preg_match('/\n1 SEX [MFU]/', $gedrec, $match)) {
 					$newrec.=$match[0];
 				}
-				$newrec .= "\n1 NOTE ".i18n::translate('Details about this person are private. Personal details will not be included.');
 				break;
 			case 'FAM':
 				$newrec="0 @{$gid}@ FAM";
@@ -499,18 +498,23 @@ function privatize_gedcom($gedrec) {
 						}
 					}
 				}
-				$newrec .= "\n1 NOTE ".i18n::translate('Details about this family are private. Family details will not be included.');
-				break;
-			case 'SOUR':
-				$newrec="0 @{$gid}@ SOUR\n1 TITL ".i18n::translate('Private');
-				break;
-			case 'OBJE':
-				$newrec="0 @{$gid}@ OBJE\n1 NOTE ".i18n::translate('Details about this media are private. Media details will not be included.');
 				break;
 			case 'NOTE':
-				$newrec="0 @{$gid}@ NOTE ".i18n::translate('Details about this note are private. Note details will not be included.');
+				$newrec="0 @{$gid}@ {$type} ".i18n::translate('Private');
 				break;
+			case 'SOUR':
+				$newrec="0 @{$gid}@ {$type}\n1 TITL ".i18n::translate('Private');
+				break;
+			case 'REPO':
+			case 'SUBM':
+				$newrec="0 @{$gid}@ {$type}\n1 NAME ".i18n::translate('Private');
+				break;
+			case 'SUBN':
+				$newrec="0 @{$gid}@ {$type}\n1 FAMF ".i18n::translate('Private');
+				break;
+			case 'OBJE':
 			default:
+				// Other objects have no name/title, so add an inline note
 				$newrec="0 @{$gid}@ {$type}\n1 NOTE ".i18n::translate('Private');
 			}
 			return $newrec;

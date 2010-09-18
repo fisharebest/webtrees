@@ -296,11 +296,8 @@ class ClippingsControllerRoot extends BaseController {
 //						$record = preg_replace("|(\d FILE )" . addslashes($match[$k][1]) . "|", "$1" . $filename, $record);
 						}
 						$filetext .= trim($record) . "\n";
-						$filetext .= "1 SOUR @SPGV1@\n";
-						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "individual.php?pid=" . $clipping['id'] . "\n";
-						$filetext .= "2 DATA\n";
-						$filetext .= "3 TEXT " . i18n::translate('This Individual was downloaded from:') . "\n";
-						$filetext .= "4 CONT " . WT_SERVER_NAME.WT_SCRIPT_PATH . "individual.php?pid=" . $clipping['id'] . "\n";
+						$filetext .= "1 SOUR @WEBTREES@\n";
+						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH."individual.php?pid={$clipping['id']}&ged={$clipping['gedcom']}\n";
 						break;
 
 					case 'fam':
@@ -339,11 +336,8 @@ class ClippingsControllerRoot extends BaseController {
 						}
 
 						$filetext .= trim($record) . "\n";
-						$filetext .= "1 SOUR @SPGV1@\n";
-						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid=" . $clipping['id'] . "\n";
-						$filetext .= "2 DATA\n";
-						$filetext .= "3 TEXT " . i18n::translate('This Family was downloaded from:') . "\n";
-						$filetext .= "4 CONT " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid=" . $clipping['id'] . "\n";
+						$filetext .= "1 SOUR @WEBTREES@\n";
+						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid={$clipping['id']}&ged={$clipping['gedcom']}\n";
 						break;
 
 					case 'source':
@@ -357,8 +351,7 @@ class ClippingsControllerRoot extends BaseController {
 //							$record = preg_replace("|(\d FILE )" . addslashes($match[$k][1]) . "|", "$1" . $filename, $record);
 						}
 						$filetext .= trim($record) . "\n";
-						$filetext .= "1 NOTE " . i18n::translate('This Source was downloaded from:') . "\n";
-						$filetext .= "2 CONT " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid=" . $clipping['id'] . "\n";
+						$filetext .= "1 NOTE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid={$clipping['id']}&ged={$clipping['gedcom']}\n";
 						break;
 
 					default:
@@ -387,7 +380,7 @@ class ClippingsControllerRoot extends BaseController {
 			{
 				$this->media_list = $media;
 			}
-			$filetext .= "0 @SPGV1@ SOUR\n";
+			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
 			if ($user_id=get_gedcom_setting(WT_GED_ID, 'CONTACT_EMAIL')) {
 				$filetext .= "1 AUTH " . getUserFullName($user_id) . "\n";
 			}
