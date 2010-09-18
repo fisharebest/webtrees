@@ -28,10 +28,10 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
-if (WT_GED_ID || get_user_count()>1) {
-	header('Location: index.php');
-	exit;
-}
+//if (WT_GED_ID || get_user_count()>1) {
+//	header('Location: index.php');
+//	exit;
+//}
 
 // Must be logged in as an admin
 if (!WT_USER_IS_ADMIN) {
@@ -45,13 +45,14 @@ echo
 	'<style type="text/css">
 		#container {width: 70%; margin:15px auto; border: 1px solid gray; padding: 10px;}
 		#container dl {margin:0 0 40px 25px;}
-		#container dt {display:inline; width: 320px; font-weight:normal;}
+		#container dt {display:inline; width: 320px; font-weight:normal; margin: 0 0 15px 0;}
 		#container dd {color: #81A9CB; margin-bottom:20px;font-weight:bold;}
 		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}
 		h2 {color: #81A9CB;}
 		.good {color: green;}
 		.bad {color: red !important;}
 		.indifferent {color: blue;}
+		#container p.pgv  {color: black; font-size: 12px; font-style: normal; font-weight:normal; padding:0; margin:10px 0 0 320px}
 	</style>';
 
 $error='';
@@ -135,10 +136,13 @@ if ($error || empty($PGV_PATH)) {
 		'<dt>',i18n::translate('Installation directory'), '</dt>',
 		'<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($PGV_PATH).'">',
 		'</dd>';
-	if ($pgv_dirs) {
-		echo '<dt>', /* find better english before translating */'PhpGedView might be found in these locations', '</dt>';
-		echo '<dd>', implode('<br/>', $pgv_dirs), '</dd>';
-	}
+		echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
+		echo '<dd>';
+			foreach ($pgv_dirs as $pgvpath) {
+				echo '<p class="pgv">', $pgvpath, '</p>';
+			}
+		echo '</dd>';
+		
 	echo
 		'</dl>',
 		'<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>',
