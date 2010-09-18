@@ -355,16 +355,19 @@ case 'editraw':
 		}
 		print_simple_footer();
 		exit;
-	}
-	else {
+	} else {
 		echo "<br /><b>", i18n::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
 		echo "<form method=\"post\" action=\"edit_interface.php\">\n";
 		echo "<input type=\"hidden\" name=\"action\" value=\"updateraw\" />\n";
 		echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
 		echo "<input id=\"savebutton2\" type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
-		print_specialchar_link("newgedrec", true);
-		echo "<br />\n";
-		echo "<textarea name=\"newgedrec\" id=\"newgedrec\" rows=\"20\" cols=\"80\" dir=\"ltr\">", $gedrec, "</textarea>\n<br />";
+		// Remove the first line of the gedrec - things go wrong when users
+		// change either the TYPE or XREF
+		// Notes are special - they may contain data on the first line
+		$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
+		list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
+		echo '<textarea name="newgedrec1" rows="1"  cols="80" readonly="yes">', $gedrec1, '</textarea><br />';
+		echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br />";
 		if (WT_USER_IS_ADMIN) {
 			echo "<table class=\"facts_table\">\n";
 			echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
@@ -380,7 +383,8 @@ case 'editraw':
 			echo "</td></tr>\n";
 			echo "</table>";
 		}
-
+		print_specialchar_link("newgedrec", true);
+		echo "<br />\n";
 		echo "<input id=\"savebutton\" type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
 		echo "</form>";
 		echo WT_JS_START;
@@ -1243,13 +1247,8 @@ case 'addrepoaction':
 //------------------------------------------------------------------------------
 //-- get the new incoming raw gedcom record and store it in the file
 case 'updateraw':
-	if (isset($_REQUEST['newgedrec'])) $newgedrec = $_REQUEST['newgedrec'];
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-		echo "<pre>$newgedrec</pre>";
-	}
-	$newgedrec = trim($newgedrec);
-	if (!empty($newgedrec)) {
+	if (isset($_POST['newgedrec1']) && isset($_POST['newgedrec2'])) {
+		$newgedrec = $_POST['newgedrec1']."\n".$_POST['newgedrec2'];
 		replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 		$success = true;
 	}
