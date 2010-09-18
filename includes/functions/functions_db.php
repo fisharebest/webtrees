@@ -2371,14 +2371,17 @@ function get_user_from_gedcom_xref($ged_id, $xref) {
 // Functions to access the WT_BLOCK table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_user_blocks($user_id) {
+function get_user_blocks($user_id, $gedcom_id=WT_GED_ID) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
 		"SELECT location, block_id, module_name".
-		" FROM `##block`".
-		" WHERE user_id=?".
+		" FROM  `##block`".
+		" JOIN  `##module` USING (module_name)".
+		" JOIN  `##module_privacy` USING (module_name)".
+		" WHERE user_id=? AND `##module_privacy`.gedcom_id=?".
+		" AND   status='enabled' AND access_level>?".
 		" ORDER BY location, block_order"
-	)->execute(array($user_id))->fetchAll();
+	)->execute(array($user_id, $gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
@@ -2410,10 +2413,13 @@ function get_gedcom_blocks($gedcom_id) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
 		"SELECT location, block_id, module_name".
-		" FROM `##block`".
+		" FROM  `##block`".
+		" JOIN  `##module` USING (module_name)".
+		" JOIN  `##module_privacy` USING (module_name, gedcom_id)".
 		" WHERE gedcom_id=?".
+		" AND   status='enabled' AND access_level>?".
 		" ORDER BY location, block_order"
-	)->execute(array($gedcom_id))->fetchAll();
+	)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
