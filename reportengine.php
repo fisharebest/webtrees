@@ -348,6 +348,11 @@ elseif ($action=="setup") {
 }
 //-- run the report
 elseif ($action=="run") {
+	if (strstr($report, "report_singlepage.xml")!==false){
+		$DEBUG=false;
+		$pedigree=new ReportPedigree();
+		exit;
+	}
 	//-- load the report generator
 	switch ($output) {
 		case "HTML":
