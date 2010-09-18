@@ -494,7 +494,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			if (!$spos2) $spos2 = strlen($factrec);
 			$srec = substr($factrec, $spos1, $spos2-$spos1);
 			$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
-//			$data .= "<br />";
+			$data .= "<br />";
 			$data .= "\n\t\t<span class=\"label\">";
 			$elementID = $sid."-".floor(microtime()*1000000);
 			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
