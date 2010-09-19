@@ -858,33 +858,18 @@ class MenuBar
 	* @return Menu the menu item
 	*/
 	static function getThemeMenu() {
-		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN, $THEME_DIR;
-
-		$current=get_user_setting(WT_USER_ID, 'theme');
-		$all_themes=get_theme_names();
-		if (!array_key_exists($current, $all_themes)) {
-			$current=$THEME_DIR;
-		}
+		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN;
 
 		if ($ALLOW_THEME_DROPDOWN && !$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES')) {
-			isset($_SERVER["QUERY_STRING"]) == true?$tqstring = "?".$_SERVER["QUERY_STRING"]:$tqstring = "";
-			$frompage = WT_SCRIPT_NAME.decode_url($tqstring);
-			if (isset($_REQUEST['mod'])) {
-				if (!strstr($frompage, "?")) {
-					if (!strstr($frompage, "%3F")) ;
-					else $frompage .= "?";
-				}
-				if (!strstr($frompage, "&mod") || !strstr($frompage, "?mod")) $frompage .= "&mod=".$_REQUEST['mod'];
+			$url=WT_SCRIPT_NAME.'?';
+			foreach ($_GET as $key=>$value) {
+				$url.=urlencode($key).'='.urlencode($value).'&amp;';
 			}
-			if (substr($frompage,-1) == "?") $frompage = substr($frompage,0,-1);
-			if (substr($frompage,-1) == "&") $frompage = substr($frompage,0,-1);
-			// encode frompage address in other case we lost the all variables on theme change
-			$frompage = base64_encode($frompage);
 			$menu=new Menu(i18n::translate('Theme'));
 			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
-			foreach ($all_themes as $themename=>$themedir) {
-				$submenu=new Menu($themename, encode_url("themechange.php?frompage={$frompage}&mytheme={$themedir}"));
-				if ($themedir==$current) {
+			foreach (get_theme_names() as $themename=>$themedir) {
+				$submenu=new Menu($themename, $url.'theme='.$themedir);
+				if ($themedir==WT_THEME_DIR) {
 					$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 				} else {
 					$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');

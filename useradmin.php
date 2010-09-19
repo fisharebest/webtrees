@@ -373,9 +373,9 @@ if ($action=="edituser") {
 	<?php
 	if (get_site_setting('ALLOW_USER_THEMES')) {
 		?>
-		<tr><td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('My Theme'), help_link('useradmin_user_theme'); ?></td><td class="optionbox wrap" valign="top">
+		<tr><td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('Theme'), help_link('THEME'); ?></td><td class="optionbox wrap" valign="top">
 		<select name="user_theme" dir="ltr">
-		<option value=""><?php echo i18n::translate('Site Default'); ?></option>
+		<option value=""><?php echo i18n::translate('&lt;default theme&gt;'); ?></option>
 		<?php
 		foreach(get_theme_names() as $themename=>$themedir) {
 		echo "<option value=\"", $themedir, "\"";
@@ -764,7 +764,7 @@ if ($action == "createform") {
 		echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language'));
 		?></td></tr>
 		<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>
-			<tr><td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('My Theme'), help_link('useradmin_user_theme'); ?></td><td class="optionbox wrap" valign="top">
+			<tr><td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('Theme'), help_link('THEME'); ?></td><td class="optionbox wrap" valign="top">
 			<select name="new_user_theme">
 			<option value="" selected="selected"><?php echo i18n::translate('Site Default'); ?></option>
 			<?php

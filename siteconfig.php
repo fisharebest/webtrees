@@ -100,6 +100,18 @@ echo
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow users to select their own theme'), help_link('ALLOW_USER_THEMES'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('allow_user_themes', get_site_setting('ALLOW_USER_THEMES')), '</td>',
 	'</tr><tr>',
+	'<td class="descriptionbox width20 wrap">', i18n::translate('Default Theme'), help_link('THEME'), '</td>',
+	'<td class="optionbox wrap"><select name="THEME_DIR">';
+$current_themedir=get_site_setting('THEME_DIR', 'themes/webtrees/');
+foreach (get_theme_names() as $themename=>$themedir) {
+	echo '<option value="', $themedir, '"';
+	if ($themedir==$current_themedir) {
+		echo ' selected="selected"';
+	}
+	echo '>', $themename, '</option>';
+}
+echo
+	'</select></tr><tr>',
 	'<td class="descriptionbox width20 wrap">', i18n::translate('Allow GEDCOM switching'), help_link('ALLOW_CHANGE_GEDCOM'), '</td>',
 	'<td class="optionbox wrap">', edit_field_yes_no('allow_change_gedcom', get_site_setting('ALLOW_CHANGE_GEDCOM')), '</td>',
 	'</tr><tr>',

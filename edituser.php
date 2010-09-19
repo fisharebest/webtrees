@@ -196,20 +196,18 @@ echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Email address'), help_link('edituser_email'), '</td><td class="optionbox" valign="top">';
 echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
 
-if (get_site_setting('ALLOW_USER_THEMES')) {
-	echo '<tr><td class="descriptionbox wrap">';
-	echo i18n::translate('My Theme'), help_link('edituser_user_theme'), '</td><td class="optionbox" valign="top">';
-	echo '<select name="form_theme">';
-		echo '<option value="">', i18n::translate('Site Default'), '</option>';
-		foreach (get_theme_names() as $themename=>$themedir) {
-			echo '<option value="', $themedir, '"';
-			if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {
-				echo ' selected="selected"';
-			}
-			echo '>', $themename, '</option>';
-		}
-		echo '</select></td></tr>';
+echo '<tr><td class="descriptionbox wrap">';
+echo i18n::translate('Theme'), help_link('THEME'), '</td><td class="optionbox" valign="top">';
+echo '<select name="form_theme">';
+echo '<option value="">', /* I18N: default option in list of themes */ i18n::translate('&lt;default theme&gt;'), '</option>';
+foreach (get_theme_names() as $themename=>$themedir) {
+	echo '<option value="', $themedir, '"';
+	if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {
+		echo ' selected="selected"';
+	}
+	echo '>', $themename, '</option>';
 }
+echo '</select></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Preferred contact method'), help_link('edituser_contact_meth');

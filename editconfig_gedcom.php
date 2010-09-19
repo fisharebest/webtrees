@@ -1071,6 +1071,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td class="optionbox width60">
 							<select name="NEW_THEME_DIR">
 								<?php
+									echo '<option value="">', i18n::translate('&lt;default theme&gt;'), '</option>';
 									$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 									foreach (get_theme_names() as $themename=>$themedir) {
 										echo '<option value="', $themedir, '"';

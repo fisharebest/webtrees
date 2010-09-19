@@ -2716,7 +2716,10 @@ case 'SURNAME_TRADITION':
 
 case 'THEME':
 	$title=i18n::translate('Theme');
-	$text=i18n::translate('You can change the appearance of <b>webtrees</b> using "themes".  Each theme has a different style, layout, color scheme, etc.');
+	$text=
+		i18n::translate('You can change the appearance of <b>webtrees</b> using "themes".  Each theme has a different style, layout, color scheme, etc.').
+		'<br/><br/>'.
+		i18n::translate('Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting "default theme" at user level will give the setting for the current GEDCOM.  Selecting "default theme" at GEDCOM level will give the site setting.');
 	break;
 
 case 'THUMBNAIL_WIDTH':
@@ -3422,11 +3425,6 @@ case 'edituser_rootid':
 case 'edituser_user_default_tab':
 	$title=i18n::translate('Default tab setting');
 	$text=i18n::translate('This setting allows you to specify which tab is opened automatically when you access the Individual Information page.');
-	break;
-
-case 'edituser_user_theme':
-	$title=i18n::translate('Theme');
-	$text=i18n::translate('This site can have several different looks or appearances.  Other programs may call them "skins", but here they\'re "themes".<br /><br />Every theme will display the same data, but its presentation or even its location on the screen may vary.  This is like putting a picture into a different frame and hanging it in a different room as well. The picture does not change, but the way you look at it is completely different.<br /><br />Just give it a try. Set it to another theme. Look at it, try another. Change back to the one that suits you the best. Whenever you log in, you will see the theme you last used; you don\'t even have to get to this configuration page to change your preferred theme.');
 	break;
 
 case 'edituser_username':

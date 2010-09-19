@@ -2967,21 +2967,24 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
  * @return array and array of theme names and their corresponding directory
  */
 function get_theme_names() {
-	$themes = array();
-	$d = dir("themes");
-	while (false !== ($entry = $d->read())) {
-		if ($entry{0}!="." && $entry!="CVS" && !stristr($entry, "svn") && is_dir(WT_ROOT.'themes/'.$entry) && file_exists(WT_ROOT.'themes/'.$entry.'/theme.php')) {
-			$themefile = implode("", file(WT_ROOT.'themes/'.$entry.'/theme.php'));
-			$tt = preg_match("/theme_name\s*=\s*\"(.*)\";/", $themefile, $match);
-			if ($tt>0)
-				$themename = trim($match[1]);
-			else
-				$themename = "themes/$entry";
-			$themes[$themename] = "themes/$entry/";
+	static $themes;
+	if ($themes===null) {
+		$themes = array();
+		$d = dir("themes");
+		while (false !== ($entry = $d->read())) {
+			if ($entry{0}!="." && $entry!="CVS" && !stristr($entry, "svn") && is_dir(WT_ROOT.'themes/'.$entry) && file_exists(WT_ROOT.'themes/'.$entry.'/theme.php')) {
+				$themefile = implode("", file(WT_ROOT.'themes/'.$entry.'/theme.php'));
+				$tt = preg_match("/theme_name\s*=\s*\"(.*)\";/", $themefile, $match);
+				if ($tt>0)
+					$themename = trim($match[1]);
+				else
+					$themename = "themes/$entry";
+				$themes[$themename] = "themes/$entry/";
+			}
 		}
+		$d->close();
+		uksort($themes, "utf8_strcasecmp");
 	}
-	$d->close();
-	uksort($themes, "utf8_strcasecmp");
 	return $themes;
 }
 

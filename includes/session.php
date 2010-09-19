@@ -430,35 +430,45 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 	}
 }
 
-//-- load the user specific theme
 if (WT_USER_ID) {
 	//-- update the login time every 5 minutes
 	if (!isset($_SESSION['activity_time']) || (time()-$_SESSION['activity_time'])>300) {
 		userUpdateLogin(WT_USER_ID);
 		$_SESSION['activity_time'] = time();
 	}
-
-	$usertheme = get_user_setting(WT_USER_ID, 'theme');
-	if ((!empty($_POST['user_theme']))&&(!empty($_POST['oldusername']))&&($_POST['oldusername']==WT_USER_ID)) $usertheme = $_POST['user_theme'];
-	if ((!empty($usertheme)) && (file_exists($usertheme.'theme.php')))  {
-		$THEME_DIR = $usertheme;
-		} else { $THEME_DIR = "themes/webtrees/"; }
 }
 
-if (isset($_SESSION['theme_dir'])) {
-	$THEME_DIR = $_SESSION['theme_dir'];
-	if (WT_USER_ID) {
-		if (get_user_setting(WT_USER_ID, 'editaccount')) unset($_SESSION['theme_dir']);
+// Set the theme
+if (get_site_setting('ALLOW_USER_THEMES')) {
+	// Requested change of theme?
+	$THEME_DIR=safe_GET('theme', get_theme_names());
+	unset($_GET['theme']);
+	// Last theme used?
+	if (!$THEME_DIR && isset($_SESSION['theme_dir']) && in_array($_SESSION['theme_dir'], get_theme_names())) {
+		$THEME_DIR=$_SESSION['theme_dir'];
 	}
 }
-
-if (isset($usertheme) && file_exists("{$usertheme}theme.php")) {
-	$THEME_DIR = $usertheme;
-} else if (empty($THEME_DIR) || !file_exists("{$THEME_DIR}theme.php")) {
-	$THEME_DIR = 'themes/webtrees/';
+if (!$THEME_DIR) {
+	// User cannot choose (or has not chosen) a theme.
+	// 1) gedcom setting
+	// 2) site setting
+	// 3) webtrees
+	// 4) first one found
+	$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+	if (!in_array($THEME_DIR, get_theme_names())) {
+		$THEME_DIR=get_site_setting('THEME_DIR', 'themes/webtrees/');
+	}
+	if (!in_array($THEME_DIR, get_theme_names())) {
+		$THEME_DIR='themes/webtrees/';
+	}
+	if (!in_array($THEME_DIR, get_theme_names())) {
+		list($THEME_DIR)=get_theme_names();
+	}
 }
-
 define('WT_THEME_DIR', $THEME_DIR);
+
+// Remember this setting
+$_SESSION['theme_dir']=WT_THEME_DIR;
 
 require WT_ROOT.WT_THEME_DIR.'theme.php';
 
