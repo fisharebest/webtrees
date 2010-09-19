@@ -145,9 +145,8 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			echo i18n::translate('Enter Individual ID'), "</td>";
 			echo '<td class="optionbox wrap">';
 			if ($linktoid=="") {
-				 echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '" />';
-				 print_findindi_link("linktopid", "");
-
+				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '" />';
+				print_findindi_link("linktopid", "");
 			} else {
 				$record=Person::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
@@ -235,5 +234,3 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 	}
 
 }
-
-?>

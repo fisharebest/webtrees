@@ -121,8 +121,8 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	<div id="info">
 		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
 			<tr>
-	            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Informational'); ?></td>
-	    	</tr>
+				<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Informational'); ?></td>
+			</tr>
 			<tr>
 				<td class="optionbox width50">
 					<a href="readme.html" target="manual" title="<?php echo i18n::translate('View readme.html file'); ?>"><?php echo i18n::translate('README documentation'); ?></a>
@@ -222,4 +222,3 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	echo WT_JS_END;
 echo '<br /><br />';
 print_footer();
-?>

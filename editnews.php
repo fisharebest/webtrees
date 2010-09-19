@@ -95,7 +95,7 @@ if ($action=="compose") {
 		$oCKeditor->config['DefaultLanguage'] = 'en';
 		$oCKeditor->editor('text', $news["text"]);
 	} else { //use standard textarea
-		 print "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
+		print "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
 	}
 	print "<br /></td></tr>\n";
 	print "<tr><td></td><td><input type=\"submit\" value=\"".i18n::translate('Save')."\" /></td></tr>\n";
@@ -122,4 +122,3 @@ if ($action=="compose") {
 print "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".i18n::translate('Close Window')."</a><br /></center>";
 
 print_simple_footer();
-?>

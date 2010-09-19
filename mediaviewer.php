@@ -107,7 +107,7 @@ if (WT_USE_LIGHTBOX) {
 						print "<br /><br /><a href=\"".$filename."\">".i18n::translate('Download File')."</a><br/>";
 					}
 
-				 // else the file is not external and does not exist
+					// else the file is not external and does not exist
 				} else {
 					?>
 					<img src="<?php print $controller->mediaobject->getThumbnail(); ?>" border="0" width="100" alt="<?php print $controller->mediaobject->getFullName(); ?>" title="<?php print PrintReady(htmlspecialchars($controller->mediaobject->getFullName(), ENT_COMPAT, 'UTF-8')); ?>" />
@@ -209,5 +209,3 @@ function ilinkitem(mediaid, type) {
 <br /><br /><br />
 <?php
 print_footer();
-?>
-

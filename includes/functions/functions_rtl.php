@@ -1220,7 +1220,7 @@ function hasRTLText($text) {
 	//--- What if gedcom in ANSI?
 	// if (!(strpos($text, chr(215))=== false)) return true;  // OK?
 	for ($i=0; $i<strlen($text); $i++) {
-	  if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd)) return true;
+		if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd)) return true;
 	}
 	return false;
 
@@ -1239,14 +1239,14 @@ function hasLTRText($text) {
 
 	for ($i=0; $i<strlen($text); $i++) {
 		if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd) || in_array(ord(substr(trim($text),$i-1,2)),$RTLOrd)) $i++;
-	  	else {
-		  	if (substr($text,$i,26)=='<span class="starredname">') $i+=25;
-		  	else if (substr($text,$i,7)=="</span>") $i+=6;
-		  	else {
+		else {
+			if (substr($text,$i,26)=='<span class="starredname">') $i+=25;
+			else if (substr($text,$i,7)=="</span>") $i+=6;
+			else {
 				$byte = substr(trim($text),$i,1);
-		    	if (!in_array($byte,$SpecialChar) && !in_array($byte,$SpecialPar) && !in_array($byte,$SpecialNum)) return true;
-	    	}
-	    }
+				if (!in_array($byte,$SpecialChar) && !in_array($byte,$SpecialPar) && !in_array($byte,$SpecialNum)) return true;
+			}
+		}
 	}
 	return false;
 }
@@ -1295,5 +1295,3 @@ function reverseText($text) {
 	$reversedText = $numbers.$reversedText;		// emit any waiting LTR numbers now
 	return $reversedText;
 }
-
-?>

@@ -174,19 +174,19 @@ jQuery(document).ready(function() {
 
 	// Sidebar Pin Function
 	jQuery('#sidebar_pin').toggle(
-   	   	function() {
-   	   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
-   	   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
-   	   		pinned = true;
-   		},
-   		function() {
-   		   	jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
-   		   	jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
-   		   	pinned = false;
-   		}
-   	);
+   	function() {
+   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
+   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
+   		pinned = true;
+   	},
+   	function() {
+   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
+   	jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
+   	pinned = false;
+   	}
+	);
 	<?php if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { ?>
-	    jQuery('#sidebar_pin').click();
+		jQuery('#sidebar_pin').click();
 	<?php } ?>
    	// ---------------------
 
@@ -210,10 +210,10 @@ jQuery(document).ready(function() {
 		jQuery('#sidebarAccordion').show();
 		jQuery('#sidebar_pin').show();
 		// Shift content
-   	   		var newwidth = 310;
-	   		newwidth = jQuery('#tabs').width() - newwidth;
-			// NOTE: REM next line to avoid the "page shift" when Navigator is opened. (Purely a preference choice)
-   	   		jQuery('#tabs > div').css('width', newwidth+'px');
+   	var newwidth = 310;
+		newwidth = jQuery('#tabs').width() - newwidth;
+		// NOTE: REM next line to avoid the "page shift" when Navigator is opened. (Purely a preference choice)
+   	jQuery('#tabs > div').css('width', newwidth+'px');
 		//
   		<?php if ($sidebar_state == "open" ) { ?>
 			jQuery('#sidebar_pin').click();
@@ -253,7 +253,7 @@ jQuery(document).ready(function() {
 
 	<?php if  ( $sidebar_state == "open" ) { ?>
  		<?php if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || !isset($_SESSION['WT_sb_closed']) ) { ?>
-		   	jQuery('#sidebar_open').click();
+			jQuery('#sidebar_open').click();
 			jQuery('#sidebar_controls').show();
 			if ( pinned == false ) {
 				jQuery('#sidebar_pin').click();
@@ -297,4 +297,3 @@ jQuery(document).ready(function() {
 </div>
 <div id="debug">
 </div>
-

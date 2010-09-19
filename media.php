@@ -1060,13 +1060,13 @@ jQuery(document).ready(function(){
 	<form class="tablesorter" method="post" action="media.php">
 		<table id="media_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
 			<thead>
-			  <tr>
-			  <th><?php echo i18n::translate('Edit options'); ?></th>
-			  <?php if ($showthumb) { ?>
-			  <th><?php echo i18n::translate('Media'); ?></th>
-			   <?php } ?>
-			  <th><?php echo i18n::translate('Description'); ?></th>
-			  </tr>
+				<tr>
+				<th><?php echo i18n::translate('Edit options'); ?></th>
+				<?php if ($showthumb) { ?>
+				<th><?php echo i18n::translate('Media'); ?></th>
+				<?php } ?>
+				<th><?php echo i18n::translate('Description'); ?></th>
+				</tr>
 			</thead>
 			<tbody>
 <?php
@@ -1322,4 +1322,3 @@ jQuery(document).ready(function(){
 }
 else print i18n::translate('The media folder is corrupted.');
 print_footer();
-?>

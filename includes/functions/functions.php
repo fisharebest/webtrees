@@ -2462,7 +2462,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
-	    // direct descendants of siblings
+		// direct descendants of siblings
 		$down=strlen($match[1])/3+1; // Add one, as we count generations from the common ancestor
 		$last=substr($path, -3, 3);
 		$first=substr($path, 0, 3);
@@ -2620,7 +2620,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)*)$/', $path, $match)) {
-	    // direct ancestors
+		// direct ancestors
 		$up=strlen($match[1])/3;
 		$last=substr($path, -3, 3);
 		switch ($up) {
@@ -2770,7 +2770,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
-	    // cousins in English
+		// cousins in English
 		$up  =strlen($match[1])/3;
 		$down=strlen($match[2])/3;
 		$last=substr($path, -3, 3);
@@ -2903,7 +2903,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			);
 		} elseif ($match[3]=='') {
 			return i18n::translate(
-			    // I18N: A complex relationship, such as "second cousin's wife"
+				// I18N: A complex relationship, such as "second cousin's wife"
 				'%1$s\'s %2$s',
 				get_relationship_name_from_path($match[1], null, null),
 				get_relationship_name_from_path($match[2], null, null)
@@ -3565,5 +3565,3 @@ function pathinfo_utf($path) {
 if (file_exists(WT_ROOT.'includes/functions.extra.php')) {
 	require WT_ROOT.'includes/functions.extra.php';
 }
-
-?>

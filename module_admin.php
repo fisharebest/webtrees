@@ -214,10 +214,10 @@ print_header(i18n::translate('Module administration'));
 //<![CDATA[
 
   function reindexMods(id) {
-	  jQuery('#'+id+' input').each(
-	  	function (index, value) {
-	    	value.value = index+1;
-	  	});
+		jQuery('#'+id+' input').each(
+			function (index, value) {
+				value.value = index+1;
+			});
   }
 
   jQuery(document).ready(function(){
@@ -231,17 +231,17 @@ print_header(i18n::translate('Module administration'));
     jQuery('#menus_table').bind('sortupdate', function(event, ui) {
 			var id = jQuery(this).attr('id');
 			reindexMods(id);
-  	  });
+  	});
 
     jQuery('#tabs_table').bind('sortupdate', function(event, ui) {
 		var id = jQuery(this).attr('id');
 		reindexMods(id);
-	  });
+		});
 
     jQuery('#sidebars_table').bind('sortupdate', function(event, ui) {
 		var id = jQuery(this).attr('id');
 		reindexMods(id);
-	  });
+		});
 
     //-- enable the arrows buttons
     jQuery(".uarrow").click(function() {
@@ -272,12 +272,12 @@ print_header(i18n::translate('Module administration'));
     });
 
     jQuery(".ddarrow").click(function() {
-	    var curr = jQuery(this).parent().parent().get(0);
-	    var prev = jQuery(curr).parent().children(":last").get(0);
-	    if (prev) jQuery(curr).insertAfter(prev);
-	    reindexMods('menus_table');
-	    reindexMods('tabs_table');
-	    reindexMods('sidebars_table');
+			var curr = jQuery(this).parent().parent().get(0);
+			var prev = jQuery(curr).parent().children(":last").get(0);
+			if (prev) jQuery(curr).insertAfter(prev);
+			reindexMods('menus_table');
+			reindexMods('tabs_table');
+			reindexMods('sidebars_table');
 	});
 
 	// Table sorting and pageing
@@ -318,19 +318,19 @@ print_header(i18n::translate('Module administration'));
 			<div id="installed_tab">
 				<table id="installed_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
 					<thead>
-					  <tr>
-					  <th><?php echo i18n::translate('Enabled'); ?></th>
-					  <th><?php echo i18n::translate('Configuration'); ?></th>
-					  <th><?php echo i18n::translate('Module Name'); ?></th>
-					  <th><?php echo i18n::translate('Description'); ?></th>
-					  <th><?php echo i18n::translate('Menu'); ?></th>
-					  <th><?php echo i18n::translate('Tab'); ?></th>
-					  <th><?php echo i18n::translate('Sidebar'); ?></th>
-					  <th><?php echo i18n::translate('Block'); ?></th>
-					  <th><?php echo i18n::translate('Chart'); ?></th>
-					  <th><?php echo i18n::translate('Report'); ?></th>
-					  <th><?php echo i18n::translate('Theme'); ?></th>
-					  </tr>
+						<tr>
+						<th><?php echo i18n::translate('Enabled'); ?></th>
+						<th><?php echo i18n::translate('Configuration'); ?></th>
+						<th><?php echo i18n::translate('Module Name'); ?></th>
+						<th><?php echo i18n::translate('Description'); ?></th>
+						<th><?php echo i18n::translate('Menu'); ?></th>
+						<th><?php echo i18n::translate('Tab'); ?></th>
+						<th><?php echo i18n::translate('Sidebar'); ?></th>
+						<th><?php echo i18n::translate('Block'); ?></th>
+						<th><?php echo i18n::translate('Chart'); ?></th>
+						<th><?php echo i18n::translate('Report'); ?></th>
+						<th><?php echo i18n::translate('Theme'); ?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -377,11 +377,11 @@ print_header(i18n::translate('Module administration'));
 			<div id="menus_tab">
 				<table id="menus_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Order')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Order')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -396,7 +396,7 @@ print_header(i18n::translate('Module administration'));
 								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
 							</td>
 							<td class="list_value_wrap">
-								 <table>
+								<table>
 									<?php
 										foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 											$varname = 'menuaccess-'.$module->getName().'-'.$ged_id;
@@ -424,11 +424,11 @@ print_header(i18n::translate('Module administration'));
 			<div id="tabs_tab">
 				<table id="tabs_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Order')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Order')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -471,11 +471,11 @@ print_header(i18n::translate('Module administration'));
 			<div id="sidebars_tab">
 				<table id="sidebars_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Order')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Order')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -518,10 +518,10 @@ print_header(i18n::translate('Module administration'));
 			<div id="blocks_tab">
 				<table id="blocks_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -558,10 +558,10 @@ print_header(i18n::translate('Module administration'));
 			<div id="charts_tab">
 				<table id="charts_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -598,10 +598,10 @@ print_header(i18n::translate('Module administration'));
 			<div id="reports_tab">
 				<table id="reports_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -638,10 +638,10 @@ print_header(i18n::translate('Module administration'));
 			<div id="themes_tab">
 				<table id="themes_table" class="list_table">
 					<thead>
-					  <tr>
-					  <th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-					  <th class="list_label"><?php echo i18n::translate('Access level')?></th>
-					  </tr>
+						<tr>
+						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						</tr>
 					</thead>
 					<tbody>
 						<?php
@@ -680,4 +680,3 @@ print_header(i18n::translate('Module administration'));
 </div>
 <?php
 print_footer();
-?>

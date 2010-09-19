@@ -119,7 +119,7 @@ if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	echo '<p class="good">', i18n::translate('The configuration file has been successfully uploaded to the server.'), '</p>';
 	echo '<p>', i18n::translate('Checking the access permissions...'), '</p>';
 	if (!is_readable(WT_DATA_DIR)) {
-	 	echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR), '</p>';
+		echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR), '</p>';
 		$error=true;
 	} elseif (!is_writable(WT_DATA_DIR)) {
 		echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_DATA_DIR), '</p>';
@@ -131,13 +131,13 @@ if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 		echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have write permission.  You must change this.', WT_MEDIA_DIR), '</p>';
 		$error=true;
 	} elseif (!is_readable(WT_MEDIA_DIR)) {
-	 	echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_MEDIA_DIR), '</p>';
+		echo '<p class="bad">', i18n::translate('The directory <b>%s</b> does not have read permission.  You must change this.', WT_MEDIA_DIR), '</p>';
 		$error=true;
 	} else {
 		echo '<p class="good">', i18n::translate('The directory <b>%s</b> has read-write permission.  Good.', WT_MEDIA_DIR), '</p>';
 	}
 	if (!is_readable(WT_DATA_DIR.WT_CONFIG_FILE)) {
-	 	echo '<p class="bad">', i18n::translate('The file <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
+		echo '<p class="bad">', i18n::translate('The file <b>%s</b> does not have read permission.  You must change this.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
 		$error=true;
 	} elseif (is_writable(WT_DATA_DIR.WT_CONFIG_FILE) && DIRECTORY_SEPARATOR=='/') {
 		echo '<p class="indifferent">', i18n::translate('The file <b>%s</b> has write permission.  This will work, but for better security, you should make it read only.', WT_DATA_DIR.WT_CONFIG_FILE), '</p>';
@@ -413,7 +413,7 @@ if (!$dbname_ok) {
 		'<table border="0"><tr><td>',
 		i18n::translate('Database name'), '</td><td>',
 		'<input type="text" name="dbname" value="', htmlspecialchars($_POST['dbname']), '"></td><td>',
-		 i18n::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
+		i18n::translate('This is case sensitive. If a database with this name does not already exist webtrees will attempt to create one for you. Success will depend on permissions set for your web server, but you will be notified if this fails.'),
 		'</td></tr><tr><td>',
 		i18n::translate('Table prefix'), '</td><td>',
 		'<input type="text" name="tblpfx" value="', htmlspecialchars($_POST['tblpfx']), '"></td><td>',
@@ -934,7 +934,7 @@ try {
 		" user_id     INTEGER                    NULL,".
 		" xref        VARCHAR(20)                NULL,".
 		" location    ENUM('main', 'side')       NULL,".
-	 	" block_order INTEGER                NOT NULL,".
+		" block_order INTEGER                NOT NULL,".
 		" module_name VARCHAR(32)            NOT NULL,".
 		" PRIMARY KEY     (block_id),".
 		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id  ), /* ON DELETE CASCADE */".

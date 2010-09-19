@@ -1049,7 +1049,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 		}
 		/*
 		if($closeSpan){
-		    if ($j==$ct-1 || $textOnly==false) {
+			if ($j==$ct-1 || $textOnly==false) {
 				$data .= "</span>";
 			} else {
 				$data .= "</span><br /><br />";
@@ -2318,4 +2318,3 @@ function DumpString($input) {
 	echo '</span></code>';
 	return true;
 }
-?>

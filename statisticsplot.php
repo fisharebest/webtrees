@@ -822,14 +822,14 @@ if ($action=="update") {
 	if (isset($_POST["z-as"])) $z_as = $_POST["z-as"];
 	else $z_as = 300;
 	$xgl = $_POST["xas-grenzen-leeftijden"];
-	$xglm = $_POST["xas-grenzen-leeftijden_m"];
+	$xglm= $_POST["xas-grenzen-leeftijden_m"];
 	$xgm = $_POST["xas-grenzen-maanden"];
 	$xga = $_POST["xas-grenzen-aantallen"];
 	if (isset($_POST["zas-grenzen-periode"])) $zgp = $_POST["zas-grenzen-periode"];
 	else $zgp = 0;
 	$chart_shows = $_POST["chart_shows"];
 	$chart_type  = $_POST["chart_type"];
-	$surname	 = $_POST["SURN"];
+	$surname     = $_POST["SURN"];
 
 	$_SESSION[$GEDCOM."statTicks"]["xasGrLeeftijden"] = $xgl;
 	$_SESSION[$GEDCOM."statTicks"]["xasGrLeeftijden_m"] = $xglm;
@@ -901,7 +901,7 @@ $g_xas = "1,2,3,4,5,6,7,8,9,10,11,12"; //should not be needed. but just for mont
 
 switch ($x_as) {
 case '11':
-	//---------		nr,  type,	  xgiven,	zgiven,	title,				xtitle,		ytitle,	boundaries_x, boundaries-z, function
+	//---------	nr, type, xgiven,	zgiven,	title, xtitle, ytitle, boundaries_x, boundaries-z, function
 	set_params(11, "IND", true, 	false, i18n::translate('Month of birth'),  i18n::translate('month'), 	$y_as, 	$g_xas, 	$zgp, "bimo");
 	break;
 case '12':
@@ -958,4 +958,3 @@ echo "<br /><div class =\"center noprint\">";
 echo "<input type=\"button\" value=\"", i18n::translate('Close Window'), "\" onclick=\"window.close()\" /><br /><br />";
 echo "</div>\n";
 print_simple_footer();
-?>

@@ -404,12 +404,12 @@ class AdvancedSearchController extends SearchController {
 				$ct = count($parts);
 				$liketmp='';
 				for($j=0; $j<$ct; $j++) {
-					 $liketmp.= "%".($j+1)." ".$parts[$j]." %";
-//					 if ($j<$ct-1) {
-//					 	$sqlwhere .= "%";
-//					 } else {
-					 	$liketmp .= "%{$value}%";
-//					 }
+					$liketmp.= "%".($j+1)." ".$parts[$j]." %";
+//					if ($j<$ct-1) {
+//						$sqlwhere .= "%";
+//					} else {
+						$liketmp .= "%{$value}%";
+//				}
 				}
 				$sqlwhere .= WT_DB::quote($liketmp);
 			}

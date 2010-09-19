@@ -1328,8 +1328,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	if (!empty($label)) {
 		if ($label=="Note" && $islink){
 			echo i18n::translate('Shared note');
-		}else{
-			 echo $label;
+		} else {
+			echo $label;
 		}
 	} else {
 		if ($fact=="NOTE" && $islink){

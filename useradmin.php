@@ -487,7 +487,7 @@ jQuery(document).ready(function(){
 	// Then show the users
 
 	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
-		 '<h2 class="center">', i18n::translate('User List'), '</h2>';
+		'<h2 class="center">', i18n::translate('User List'), '</h2>';
 	?>
 	<table class="center list_table width80 <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
@@ -943,7 +943,7 @@ if ($action == "cleanup2") {
 // Print main menu
 // NOTE: WORKING
 echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
-	 '<h2 class="center">', i18n::translate('User administration'), '</h2>';
+	'<h2 class="center">', i18n::translate('User administration'), '</h2>';
 ?>
 <table class="center list_table width40 <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
@@ -1056,4 +1056,3 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	?>
 <?php
 print_footer();
-?>

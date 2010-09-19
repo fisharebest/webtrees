@@ -71,7 +71,7 @@ function place_cleanup()
 //            '2 PLAC #chars'
 // and replaces the 1 level #chars with the PLAC #chars and blanks out the PLAC
 $fcontents = preg_replace("/^1 (CAST|DSCR|IDNO|NATI|NCHI|NMR|OCCU|PROP|RELI|SSN|TITL|_FA1|_FA2|_FA3|_FA4|_FA5|_FA6)(\s*)$[\s]+(^2 TYPE(.*)[\s]+)?(^2 DATE(.*)[\s]+)?^2 PLAC (.*)$/m",
-					 fixreplaceval('$1','$7','$3','$5'),$fcontents);
+				fixreplaceval('$1','$7','$3','$5'),$fcontents);
 return true;
 }
 

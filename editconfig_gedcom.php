@@ -663,7 +663,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td class="optionbox">
 							<?php
 							echo
-							 	/* I18N: Extend privacy to dead people [who were] ... */
+								/* I18N: Extend privacy to dead people [who were] ... */
 								i18n::translate(
 									'born in the last %1$s years or died in the last %2$s years',
 									'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="'.get_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH').'" size="5" />',
@@ -981,7 +981,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 			</div>
 			<!-- ACCESS -->
 			<div id="access-options">
-			  <table class="facts_table">
+				<table class="facts_table">
 					<tr>
 						<td class="subbar" colspan="2">
 							<?php print i18n::translate('Visitor options'); ?>
@@ -1080,7 +1080,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							</select>
 						</td>
 					</tr>
-			  </table>
+				</table>
 			</div>
 			<!-- LAYOUT -->
 			<div id="layout-options">
@@ -1500,7 +1500,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 			</div>
 			<!-- EDIT -->
 			<div id="edit-options">
-			  <table class="facts_table">
+				<table class="facts_table">
 				<tr>
 					<td class="descriptionbox nowrap">
 						<?php echo i18n::translate('Online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
@@ -1722,7 +1722,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>
 					</td>
 				</tr>
-			  </table>
+				</table>
 			</div>
 		</td>
 	</tr>

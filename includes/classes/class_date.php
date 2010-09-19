@@ -421,7 +421,7 @@ class CalendarDate {
 			case '':
 			case 'int':
 			case 'est':
-	 		case 'cal': $case='NOMINATIVE'; break;
+			case 'cal': $case='NOMINATIVE'; break;
 			case 'to':
 			case 'abt':
 			case 'from': $case='GENITIVE'; break;
@@ -1528,19 +1528,19 @@ class GedcomDate {
 		case '@#dgregorian@':
 			return new GregorianDate(array($y, $m, $d));
 		case '@#djulian@':
-	 		return new JulianDate(array($y, $m, $d));
+			return new JulianDate(array($y, $m, $d));
 		case '@#dhebrew@':
 			if (WT_LOCALE=='he')
-	 			return new HebrewDate(array($y, $m, $d));
+				return new HebrewDate(array($y, $m, $d));
 			else
-	 			return new JewishDate(array($y, $m, $d));
+				return new JewishDate(array($y, $m, $d));
 		case '@#dhijri@':
 			if (WT_LOCALE=='ar')
 				return new ArabicDate(array($y, $m, $d));
 			else
 				return new HijriDate(array($y, $m, $d));
 		case '@#dfrench r@':
-		 	return new FrenchRDate(array($y, $m, $d));
+			return new FrenchRDate(array($y, $m, $d));
 		case '@#droman@':
 			return new RomanDate(array($y, $m, $d));
 		}
@@ -1788,4 +1788,3 @@ class GedcomDate {
 // Localise a date.  This is a default function, and may be overridden in extras.xx.php
 function DefaultDateLocalisation(&$q1, &$d1, &$q2, &$d2, &$q3) {
 }
-?>

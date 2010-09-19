@@ -529,7 +529,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 					$id=get_id_from_gedcom($gedcom);
 					if ($id) {
 						// Allow for old/invalid gedcom values in array
-					 	set_user_gedcom_setting($setting->user_id, $id, 'rootid', $value);
+						set_user_gedcom_setting($setting->user_id, $id, 'rootid', $value);
 					}
 				}
 			}
@@ -539,7 +539,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 					$id=get_id_from_gedcom($gedcom);
 					if ($id) {
 						// Allow for old/invalid gedcom values in array
-					 	set_user_gedcom_setting($setting->user_id, $id, 'canedit', $value);
+						set_user_gedcom_setting($setting->user_id, $id, 'canedit', $value);
 					}
 				}
 			}
@@ -713,13 +713,13 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);
 	@set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            $SURNAME_TRADITION);
 	switch ($THEME_DIR) {
-	case '':	                 @set_gedcom_setting($ged_id, 'THEME_DIR', '');
+	case '':                   @set_gedcom_setting($ged_id, 'THEME_DIR', '');
 	case 'themes/cloudy/':     @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/clouds/');
-	case 'themes/minimal/':	   @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/minimal/');
+	case 'themes/minimal/':    @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/minimal/');
 	case 'themes/simplyblue/':
 	case 'themes/simplygreen/':
 	case 'themes/simplyred/':  @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/colors/');
-	case 'themes/xenea/':	     @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/xenea/');
+	case 'themes/xenea/':      @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/xenea/');
 	default:                   @set_gedcom_setting($ged_id, 'THEME_DIR', 'themes/webtrees/');
 	}
 	@set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);

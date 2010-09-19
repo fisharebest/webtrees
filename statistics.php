@@ -53,7 +53,7 @@ if (isset($content) && $content==1) {
 	$stats = new stats($GEDCOM);
 
 	if ($tab==0) { ?>
-	  <div id="pagetab0" class="<?php echo $TEXT_DIRECTION; ?>">
+		<div id="pagetab0" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
 			<legend><?php echo i18n::translate('Total individuals'), ': ', $stats->totalIndividuals();?></legend>
 				<table class="facts_table">
@@ -179,10 +179,10 @@ if (isset($content) && $content==1) {
 				</table>
 			</fieldset>
 		<br />
-	  </div>
+		</div>
 	<?php }
 	if ($tab==1) { ?>
-	  <div id="pagetab1" class="<?php echo $TEXT_DIRECTION; ?>">
+		<div id="pagetab1" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
 			<legend><?php echo i18n::translate('Total families'), ': ', $stats->totalFamilies();?></legend>
 				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Events');?></b></div>
@@ -324,10 +324,10 @@ if (isset($content) && $content==1) {
 				</table>
 		</fieldset>
 		<br />
-	  </div>
+		</div>
 	<?php }
 	else if ($tab==2) { ?>
-	  <div id="pagetab2" class="<?php echo $TEXT_DIRECTION; ?>">
+		<div id="pagetab2" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
 			<legend><?php echo i18n::translate('Records'), ': ', $stats->totalRecords();?></legend>
 				<table class="facts_table">
@@ -411,10 +411,10 @@ if (isset($content) && $content==1) {
 			</table>
 		</fieldset>
 		<br />
-	  </div>
+		</div>
 	<?php }
 	else if ($tab==3) { ?>
-	  <div id="pagetab3" class="<?php echo $TEXT_DIRECTION; ?>">
+		<div id="pagetab3" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
 		<legend><?php echo i18n::translate('Create your own chart'); ?></legend>
 		<?php
@@ -727,7 +727,7 @@ if (isset($content) && $content==1) {
 		?>
 		</fieldset>
 		<br />
-	  </div>
+		</div>
 	<?php }
 } else {
 	print_header(i18n::translate('Statistics'));
@@ -747,10 +747,10 @@ if (isset($content) && $content==1) {
 	<?php }?>
 	<script type="text/javascript">
 	//<![CDATA[
-	  jQuery.noConflict();
-	  jQuery(document).ready(function(){
-	  jQuery("#tabbar").tabs();
-	  });
+		jQuery.noConflict();
+		jQuery(document).ready(function(){
+		jQuery("#tabbar").tabs();
+		});
 	//]]>
 	</script>
 	<script type="text/javascript">
@@ -776,7 +776,7 @@ if (isset($content) && $content==1) {
 	//]]>
 	</script>
 	<div class="width90" style="margin:0 auto;">
-	  <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 			<li class="ui-state-default ui-corner-top">
 				<a name="pagetab0" title="<?php echo i18n::translate('Individuals');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=0"><span>
@@ -795,11 +795,10 @@ if (isset($content) && $content==1) {
 					<?php echo i18n::translate('Own charts');?></span></a>
 			</li>
 		</ul>
-	  </div> <!-- tabs -->
+		</div> <!-- tabs -->
 	</div> <!--  end -->
 	<?php
 	$ble = true;
 	echo "<br/><br/>";
 	print_footer();
 }
-?>

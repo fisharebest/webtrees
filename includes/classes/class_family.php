@@ -424,9 +424,7 @@ class Family extends GedcomRecord {
 	// selection items or favorites.
 	function format_list_details() {
 		return
-		  $this->format_first_major_fact(WT_EVENTS_MARR, 1).
-		  $this->format_first_major_fact(WT_EVENTS_DIV, 1);
+			$this->format_first_major_fact(WT_EVENTS_MARR, 1).
+			$this->format_first_major_fact(WT_EVENTS_DIV, 1);
 	}
-
 }
-?>

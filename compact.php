@@ -353,7 +353,7 @@ function print_td_person($n) {
 			$text.=$indi->getBirthYear().'-'.$indi->getDeathYear();
 			$age=GedcomDate::GetAgeYears($indi->getBirthDate(), $indi->getDeathDate());
 			if ($age) {
-	 			$text.=" <span class=\"age\">".PrintReady("({$age})")."</span>";
+				$text.=" <span class=\"age\">".PrintReady("({$age})")."</span>";
 			}
 			$text.="</span>";
 		}
@@ -421,4 +421,3 @@ function print_arrow_person($n, $arrow_dir) {
 	else $text = $hideArrow;
 	print $text;
 }
-?>

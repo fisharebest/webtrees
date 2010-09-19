@@ -3713,7 +3713,7 @@ class stats {
 class stats_ui extends stats
 {
 ///////////////////////////////////////////////////////////////////////////////
-// Favorites												    //
+// Favorites                                                                 //
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function _getFavorites($isged=true) {
@@ -3740,8 +3740,8 @@ class stats_ui extends stats
 	static function totalUserFavorites(){return count(user_favorites_WT_Module::getUserFavorites(WT_USER_NAME));}
 
 ///////////////////////////////////////////////////////////////////////////////
-// Other blocks												    //
-// example of use: #callBlock:block_name#							    //
+// Other blocks                                                              //
+// example of use: #callBlock:block_name#                                    //
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function callBlock($params=null) {
@@ -3771,8 +3771,8 @@ class stats_ui extends stats
 	function totalGedcomNews(){  return count(getUserNews(WT_GEDCOM));}
 
 ///////////////////////////////////////////////////////////////////////////////
-// System													    //
-// Only allowed in GEDCOM Home Page, not user portals for security.			    //
+// System                                                                    //
+// Only allowed in GEDCOM Home Page, not user portals for security.          //
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function includeFile($params=null) {
@@ -3786,4 +3786,3 @@ class stats_ui extends stats
 		return trim(ob_get_clean());
 	}
 }
-?>

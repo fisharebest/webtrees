@@ -307,8 +307,8 @@ class SearchController extends BaseController {
 
 	/**
 	 * setRequestValues - Checks if the variable names ($varNames) are in
-	 * 					  the $_REQUEST and if so assigns their values to
-	 * 					  $this based on the variable name ($this->$varName).
+	 * the $_REQUEST and if so assigns their values to
+	 * $this based on the variable name ($this->$varName).
 	 *
 	 * @param array $varNames - Array of variable names(strings).
 	 */
@@ -330,7 +330,7 @@ class SearchController extends BaseController {
 
 	/**
 	 * setRequestValues - Prints out all of the variable names and their
-	 * 					  values based on the variable name ($this->$varName).
+	 * values based on the variable name ($this->$varName).
 	 *
 	 * @param array $varNames - Array of variable names(strings).
 	 */

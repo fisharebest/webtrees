@@ -136,8 +136,8 @@ class ReportBase {
 	/**
 	* An array of the Styles elements found in the document
 	* @see StyleSHandler()
-	 * @var array
-	 */
+	* @var array
+	*/
 	public $Styles = array();
 	/**
 	* The default Report font name
@@ -815,8 +815,8 @@ class TextBox extends Element {
 	/**
 	* @var array $borderstyle Border style of rectangle. Array with keys among the following:
 	* <ul>
-	*	 <li>all: Line style of all borders. Array like for {@link SetLineStyle SetLineStyle}.</li>
-	*	 <li>L, T, R, B or combinations: Line style of left, top, right or bottom border. Array like for {@link SetLineStyle SetLineStyle}.</li>
+	* <li>all: Line style of all borders. Array like for {@link SetLineStyle SetLineStyle}.</li>
+	* <li>L, T, R, B or combinations: Line style of left, top, right or bottom border. Array like for {@link SetLineStyle SetLineStyle}.</li>
 	* </ul>
 	* Not yet in use
 	var $borderstyle;
@@ -833,13 +833,13 @@ class TextBox extends Element {
 	*/
 	public $width;
 	/**
-	 * Use cell padding or not
-	 * @var boolean $padding
-	 */
+	* Use cell padding or not
+	* @var boolean $padding
+	*/
 	public $padding;
 	/**
-	 * Resets this box last height after it's done
-	 */
+	* Resets this box last height after it's done
+	*/
 	public $reseth;
 
 	/**
@@ -3230,7 +3230,7 @@ function ListSHandler($attrs) {
 							$sql_order_by[]="{$attr}.n_sort";
 						}
 						unset($attrs[$attr]); // This filter has been fully processed
-	 				} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+					} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
 						$sql_join[]="JOIN `##places` AS {$attr}a ON ({$attr}a.p_file={$sql_col_prefix}file)";
 						$sql_join[]="JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid={$sql_col_prefix}id)";
 						$sql_where[]="{$attr}a.p_place LIKE ".WT_DB::quote(utf8_strtoupper("%{$match[1]}%"));
@@ -3242,7 +3242,7 @@ function ListSHandler($attrs) {
 					* Also, do not unset() these two filters. These are just the first primary filters to reduce the returned list from the DB
 					*/
 					elseif (($listname=="individual") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))){
-	 					$query = "";
+						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
 						// Level 2 tag
@@ -3252,7 +3252,7 @@ function ListSHandler($attrs) {
 						$sql_where[] = "i_gedcom LIKE ".WT_DB::quote(utf8_strtoupper($query));
 						unset($query);
 					} elseif (($listname=="family") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))){
-	 					$query = "";
+						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
 						// Level 2 tag
@@ -3902,4 +3902,3 @@ function DescriptionEHandler() {
 	global $reportDescription;
 	$reportDescription = false;
 }
-?>

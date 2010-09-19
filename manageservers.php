@@ -207,7 +207,7 @@ function showSite(siteID) {
 <?php
 // Search Engine IP address table
 echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
-	 '<h2 class="center">', i18n::translate('Manage sites'), '</h2>',
+	'<h2 class="center">', i18n::translate('Manage sites'), '</h2>',
 	'<table class="width66" align="center">',
 	'<tr><td>',
 	'<form name="searchengineform" action="manageservers.php" method="post">',
@@ -476,4 +476,3 @@ if (empty($errorServer)) {
 </form>
 <?php
 	print_footer();
-?>

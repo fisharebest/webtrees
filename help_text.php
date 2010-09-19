@@ -2762,7 +2762,7 @@ case 'USE_RIN':
 case 'USE_SILHOUETTE':
 	$title=i18n::translate('Use silhouettes');
 	$text=i18n::translate('Use silhouette images when no highlighted image for that person has been specified.  The images used are specific to the gender of the person in question.<br /><br /><table><tr><td wrap valign="middle">This image might be used when the gender of the person is unknown:')
-	      . " </td><td><img src=\"".$WT_IMAGES["default_image_U"]."\" width=\"40\" alt=\"\" title=\"\" /></td></tr></table>";
+	." </td><td><img src=\"".$WT_IMAGES["default_image_U"]."\" width=\"40\" alt=\"\" title=\"\" /></td></tr></table>";
 	break;
 
 case 'USE_THUMBS_MAIN':
@@ -3117,8 +3117,8 @@ case 'add_note':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new note');
 	$text=i18n::translate('If you have a note to add to this record, this is the place to do so.<br /><br />Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that\'s all.')
-	    . '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
-	    . i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
+	. '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
+	. i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
 	break;
 
 case 'add_opf_child':
@@ -3135,8 +3135,8 @@ case 'add_shared_note':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new shared note');
 	$text=i18n::translate('When you click the <b>Add a new Shared Note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.')
-	    . '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
-	    . i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
+	. '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
+	. i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
 	break;
 
 case 'add_sibling':
@@ -3153,8 +3153,8 @@ case 'add_source':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new source citation');
 	$text=i18n::translate('Here you can add a source <b>Citation</b> to this record.<br /><br />Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br /><br />Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.')
-	    . '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
-	    . i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
+	. '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
+	. i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
 	break;
 
 case 'add_wife':
@@ -4176,4 +4176,3 @@ echo '<a href="help_text.php?help=help_contents_help"><b>', i18n::translate('Hel
 echo '<a href="javascript:;" onclick="window.close();"><b>', i18n::translate('Close Window'), '</b></a>';
 echo '</div>';
 print_simple_footer();
-?>

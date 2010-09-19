@@ -84,7 +84,7 @@ if (
 
 print_header(i18n::translate('Cleanup data directory'));
 echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
-	 '<h2 class="center">', i18n::translate('Cleanup data directory'), '</h2>';
+	'<h2 class="center">', i18n::translate('Cleanup data directory'), '</h2>';
 
 echo i18n::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'), '<br /><br />', i18n::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'), '<br />', i18n::translate('Files marked with %s have important settings or pending change data and should only be deleted if you are sure you know what you are doing.', '<img src="./images/RESN_locked.gif" alt="" />');
 
@@ -216,4 +216,4 @@ function removeAll() {
 	</tr>
 </table>
 </form>
-<?php print_footer(); ?>
+<?php print_footer();

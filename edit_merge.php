@@ -204,7 +204,7 @@ if ($action!="choose") {
 						}
 						WT_DB::prepare(
 							"DELETE FROM `##hit_counter`".
-						 	" WHERE gedcom_id=? AND page_parameter=?"
+							" WHERE gedcom_id=? AND page_parameter=?"
 						)->execute(array(WT_GED_ID, $gid2));
 					}
 					$newgedrec = "0 @$gid1@ $type1\n";
@@ -313,4 +313,3 @@ if ($action=="choose") {
 }
 
 print_footer();
-?>

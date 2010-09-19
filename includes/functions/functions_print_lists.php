@@ -1103,7 +1103,7 @@ function print_media_table($datalist, $legend="") {
 		foreach (array("INDI", "FAM", "SOUR") as $rectype) {
 			$resu = array();
 			foreach ($value["LINKS"] as $k=>$v) {
-			  if ($v!=$rectype) continue;
+				if ($v!=$rectype) continue;
 				$record = GedcomRecord::getInstance($k);
 				$txt = $record->getListName();
 				$resu[] = $txt;
@@ -1922,5 +1922,3 @@ function load_behaviour() {
 	</script>
 <?php
 }
-
-?>

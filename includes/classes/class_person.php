@@ -1016,7 +1016,7 @@ class Person extends GedcomRecord {
 					}
 					foreach ($parent->getSpouseFamilies() as $sfamid=>$sfamily) {
 						if ($sfamid==$famid) {
-						 	if ($parent->getSex()=='F') {
+							if ($parent->getSex()=='F') {
 								// show current family marriage only once
 								continue;
 							}
@@ -1132,11 +1132,11 @@ class Person extends GedcomRecord {
 				if ($option=='_NEPH') {
 					$rela='sibchi';
 					$parent_sex = Person::getInstance($except)->getSex();
-					if ($sex=='F') {		   $rela='sibdau';
+					if ($sex=='F') {         $rela='sibdau';
 						if ($parent_sex=='F'){ $rela='sisdau';  $op='_NIE1';}
 						if ($parent_sex=='M'){ $rela='brodau';  $op='_NIE2';}
 					}
-					if ($sex=='M') {		   $rela='sibson';
+					if ($sex=='M')         { $rela='sibson';
 						if ($parent_sex=='F'){ $rela='sisson';  $op='_NEP1';}
 						if ($parent_sex=='M'){ $rela='broson';  $op='_NEP2';}
 					}
@@ -1784,6 +1784,4 @@ class Person extends GedcomRecord {
 		$this->format_first_major_fact(WT_EVENTS_BIRT, 1).
 		$this->format_first_major_fact(WT_EVENTS_DEAT, 1);
 	}
-
 }
-?>

@@ -445,12 +445,12 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		print "</td></tr>";
    }
    else {
-	   print "<tr>\n";
-	   print_sosa_number($sosa, $childid);
-	   print "<td valign=\"top\">";
-	   print_pedigree_person($childid, 1, 0, $personcount);
-	   $personcount++;
-	   print "</td></tr>\n";
+		print "<tr>\n";
+		print_sosa_number($sosa, $childid);
+		print "<td valign=\"top\">";
+		print_pedigree_person($childid, 1, 0, $personcount);
+		$personcount++;
+		print "</td></tr>\n";
    }
    print "</table><br />";
 }
@@ -679,7 +679,7 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	if ($TEXT_DIRECTION=="rtl" and $dir==0) $adir=1;
 	if ($TEXT_DIRECTION=="rtl" and $dir==1) $adir=0;
 
-	// arrow style		0		  1 		2		  3
+	// arrow style     0         1       		2        3
 	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
 	$astyle=$array_style[$adir];
 
@@ -791,4 +791,3 @@ function print_cousins($famid, $personcount="1") {
 	}
 	print "</td>\n";
 }
-?>

@@ -207,10 +207,10 @@ class IndividualController extends BaseController {
 		}
 
 		if (!isset($_SESSION['WT_pin']) && $DEFAULT_PIN_STATE)
-			 $_SESSION['WT_pin'] = true;
+			$_SESSION['WT_pin'] = true;
 
 		if (!isset($_SESSION['WT_sb_closed']) && $DEFAULT_SB_CLOSED_STATE)
-			 $_SESSION['WT_sb_closed'] = true;
+			$_SESSION['WT_sb_closed'] = true;
 
 		//-- handle ajax calls
 		if ($this->action=="ajax") {
@@ -922,4 +922,3 @@ class IndividualController extends BaseController {
 // -----------------------------------------------------------------------------
 
 }
-
