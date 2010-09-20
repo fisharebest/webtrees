@@ -68,7 +68,7 @@ function id_in_cart($id) {
 /**
 * Main controller class for the Clippings page.
 */
-class ClippingsControllerRoot extends BaseController {
+class ClippingsController extends BaseController {
 
 	var $download_data;
 	var $media_list = array();
@@ -93,8 +93,7 @@ class ClippingsControllerRoot extends BaseController {
 	}
 	//----------------beginning of function definitions for ClippingsControllerRoot
 	function init() {
-		global $SCRIPT_NAME, $MEDIA_DIRECTORY;
-		global $GEDCOM, $cart;
+		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM, $cart;
 
 		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
 		if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
@@ -286,15 +285,6 @@ class ClippingsControllerRoot extends BaseController {
 								$record = preg_replace("/1 FAMS @" . $match[$k][1] . "@.*/", "", $record);
 							}
 						}
-						$ft = preg_match_all("/\d FILE (.*)/", $savedRecord, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							$filename = $MEDIA_DIRECTORY.extract_filename(trim($match[$k][1]));
-							if (file_exists($filename)) {
-								$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
-								$mediacount++;
-							}
-//						$record = preg_replace("|(\d FILE )" . addslashes($match[$k][1]) . "|", "$1" . $filename, $record);
-						}
 						$filetext .= trim($record) . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
 						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH."individual.php?pid={$clipping['id']}&ged={$clipping['gedcom']}\n";
@@ -325,44 +315,34 @@ class ClippingsControllerRoot extends BaseController {
 							}
 						}
 
-						$ft = preg_match_all("/\d FILE (.*)/", $savedRecord, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							$filename = $MEDIA_DIRECTORY.extract_filename(trim($match[$k][1]));
-							if (file_exists($filename)) {
-								$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
-								$mediacount++;
-							}
-//							$record = preg_replace("|(\d FILE )" . addslashes($match[$k][1]) . "|", "$1" . $filename, $record);
-						}
-
 						$filetext .= trim($record) . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
 						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid={$clipping['id']}&ged={$clipping['gedcom']}\n";
 						break;
 
 					case 'source':
-						$ft = preg_match_all("/\d FILE (.*)/", $savedRecord, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							$filename = $MEDIA_DIRECTORY.extract_filename(trim($match[$k][1]));
-							if (file_exists($filename)) {
-								$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
-								$mediacount++;
-							}
-//							$record = preg_replace("|(\d FILE )" . addslashes($match[$k][1]) . "|", "$1" . $filename, $record);
-						}
 						$filetext .= trim($record) . "\n";
 						$filetext .= "1 NOTE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid={$clipping['id']}&ged={$clipping['gedcom']}\n";
 						break;
 
 					default:
-						$ft = preg_match_all("/\d FILE (.*)/", $savedRecord, $match, PREG_SET_ORDER);
+						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							$filename = $MEDIA_DIRECTORY.extract_filename(trim($match[$k][1]));
+							$filename = $MEDIA_DIRECTORY.extract_filename($match[$k][1]);
 							if (file_exists($filename)) {
 								$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
 								$mediacount++;
+							} else {
+								$filename = $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.extract_filename($match[$k][1]);
+								if (file_exists($filename)) {
+									// Don't include firewall directory in zipfile.  It may start ../
+									$media[$mediacount] = array (
+										PCLZIP_ATT_FILE_NAME => $filename,
+										PCLZIP_ATT_FILE_NEW_FULL_NAME => $MEDIA_DIRECTORY.extract_filename($match[$k][1])
+									);
+									$mediacount++;
+								}
 							}
-//							$record = preg_replace("|(\d FILE )" . addslashes($match[$k][1]) . "|", "$1" . $filename, $record);
 						}
 						$filetext .= trim($record) . "\n";
 						break;
@@ -670,14 +650,3 @@ class ClippingsControllerRoot extends BaseController {
 		}
 	}
 }
-// -- end of class
-
-//-- load a user extended class if one exists
-if (file_exists(WT_ROOT.'includes/controllers/clippings_ctrl_user.php')) {
-	require_once WT_ROOT.'includes/controllers/clippings_ctrl_user.php';
-} else {
-	class ClippingsController extends ClippingsControllerRoot {
-	}
-}
-
-?>
