@@ -299,6 +299,8 @@ function print_fact(&$eventObj, $noedit=false) {
 				echo getLRM(), $event, ' ' , getLRM();
 			} elseif (strstr('FILE ', $fact.' ')) {
 				if ($SHOW_MEDIA_FILENAME || WT_USER_GEDCOM_ADMIN) echo getLRM(), $event, ' ' , getLRM();
+			} elseif ($fact=='RESN' && array_key_exists($event, $RESN_CODES)) {
+				echo $RESN_CODES[$event];
 			} elseif ($event!='Y') {
 				if (!strstr('ADDR _CREM ', substr($fact, 0, 5).' ')) {
 					if ($factref=='file_size' || $factref=='image_size') {
