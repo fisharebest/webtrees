@@ -44,7 +44,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true) {
+	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $QUERY_STRING, $WT_IMAGES, $TEXT_DIRECTION, $WEBTREES_EMAIL, $THEME_DIR;
 
 		$changes=WT_DB::prepare(
@@ -57,6 +57,11 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$days    =get_block_setting($block_id, 'days',     1);
 		$sendmail=get_block_setting($block_id, 'sendmail', true);
 		$block   =get_block_setting($block_id, 'block',    true);
+		if ($cfg) {
+			foreach ($cfg as $name=>$value) {
+				$$name=$value;
+			}
+		}
 
 		if ($changes) {
 			//-- if the time difference from the last email is greater than 24 hours then send out another email

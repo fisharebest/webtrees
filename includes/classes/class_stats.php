@@ -3750,17 +3750,17 @@ class stats_ui extends stats
 		$class_name = $block.'_WT_Module';
 		if (class_exists($class_name) && $block!='html') {
 			// Build the config array
-			//array_shift($params);
-			//$cfg = array();
-			//foreach($params as $config) {
-			//	$bits = explode('=', $config);
-			//	if(count($bits) < 2){continue;}
-			//	$v = array_shift($bits);
-			//	$cfg[$v] = join('=', $bits);
-			//}
+			array_shift($params);
+			$cfg = array();
+			foreach($params as $config) {
+				$bits = explode('=', $config);
+				if(count($bits) < 2){continue;}
+				$v = array_shift($bits);
+				$cfg[$v] = join('=', $bits);
+			}
 			$block = new $class_name;
 			$block_id=safe_GET('block_id');
-			$content = $block->getBlock($block_id, false);
+			$content = $block->getBlock($block_id, false, $cfg);
 			return $content;
 		}
 		return $block;

@@ -44,12 +44,17 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true) {
+	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES, $SHOW_COUNTER, $TEXT_DIRECTION, $THEME_DIR;
 
 		$count_placement=get_block_setting($block_id, 'count_placement', 'before');
 		$num=get_block_setting($block_id, 'num', 10);
 		$block=get_block_setting($block_id, 'block', false);
+		if ($cfg) {
+			foreach ($cfg as $name=>$value) {
+				$$name=$value;
+			}
+		}
 
 		$id=$this->getName().$block_id;
 		$title='';

@@ -45,7 +45,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true) {
+	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES, $THEME_DIR;
 
 		$days=get_block_setting($block_id, 'days', 7);
@@ -53,6 +53,11 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
+		if ($cfg) {
+			foreach ($cfg as $name=>$value) {
+				$$name=$value;
+			}
+		}
 
 		$startjd=WT_CLIENT_JD+1;
 		$endjd  =WT_CLIENT_JD+$days;
