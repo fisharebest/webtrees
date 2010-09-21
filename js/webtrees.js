@@ -317,7 +317,7 @@ function edit_record(pid, linenum) {
 }
 
 function edit_raw(pid) {
-	window.open('edit_interface.php?action=editraw&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=400,height=400,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editraw&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=510,height=520,resizable=1,scrollbars=1');
 	return false;
 }
 
