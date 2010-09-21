@@ -229,7 +229,7 @@ function edit_field_default_tab($name, $selected='', $extra='') {
 //-- and adds it to the connections file
 //-- it returns the connection identifier
 function newConnection() {
-	return session_name()."\t".session_id()."\n";
+	return WT_SESSION_NAME."\t".Zend_Session::getId()."\n";
 }
 
 /**

@@ -34,7 +34,6 @@ require './includes/session.php';
  * we have to manually pull the SID from the SOAP request
  * in order to set the correct session during initialization.
  */
-$SID = "";
 //Only include and set the session if it's not a wsdl request
 if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')===false)
 {
@@ -42,8 +41,7 @@ if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')==
 	//-- set the session id
 	//	<ns4:SID>6ca1b44936bf4zb7202e6bd8ce4bkcbd</ns4:SID>
 		$ct = preg_match("~<\w*:SID>(.*)</\w*:SID>~", $HTTP_RAW_POST_DATA, $match);
-		if ($ct>0) $SID = trim($match[1]);
-		$MANUAL_SESSION_START = true;
+		if ($ct>0) Zend_Session::setId(trim($match[1]));
 
 		//-- set the gedcom id
 		$ct = preg_match("~<\w*:gedcom_id>(.*)</\w*:gedcom_id>~", $HTTP_RAW_POST_DATA, $match);

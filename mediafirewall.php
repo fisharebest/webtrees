@@ -33,8 +33,8 @@ define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/controllers/media_ctrl.php';
 
-// We have finished writing to $_SESSION, so release the lock
-session_write_close();
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 $controller = new MediaController();
 $controller->init();

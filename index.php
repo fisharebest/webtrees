@@ -62,8 +62,8 @@ if ($ctype=='user') {
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
 
-// We have finished writing to $_SESSION, so release the lock
-session_write_close();
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 $all_blocks=WT_Module::getActiveBlocks();
 

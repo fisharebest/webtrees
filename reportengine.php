@@ -32,8 +32,8 @@
 define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
 
-// We have finished writing to $_SESSION, so release the lock
-session_write_close();
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 $famid=safe_GET("famid");
 $pid  =safe_GET("pid");

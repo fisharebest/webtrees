@@ -127,7 +127,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 				$message["from_email"] = $from_email;
 			}
 			$message["subject"] = $subject;
-			$url = preg_replace("/".session_name()."=.*/", "", $url);
+			$url = preg_replace("/".WT_SESSION_NAME."=.*/", "", $url);
 			$message["body"] = $body;
 			$message["created"] = $time;
 			$message["method"] = $method;

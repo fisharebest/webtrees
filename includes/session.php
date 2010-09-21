@@ -270,30 +270,25 @@ if ($SEARCH_SPIDER && !array_key_exists(WT_SCRIPT_NAME , array(
 	exit;
 }
 
-// Start the php session
-$session_time=get_site_setting('SESSION_TIME');
-$session_save_path=get_site_setting('SESSION_SAVE_PATH');
+// Use the Zend_Session object to start the session.
+// This allows all the other Zend Framework components to integrate with the session
+define('WT_SESSION_NAME', 'WT_SESSION');
+Zend_Session::start(array(
+	'name'            => WT_SESSION_NAME,
+	'save_path'       => get_site_setting('SESSION_SAVE_PATH'),
+	'cookie_lifetime' => get_site_setting('SESSION_TIME'),
+	'cookie_path'     => WT_SCRIPT_PATH,
+));
 
-session_name('WTSESSION');
-session_set_cookie_params(date('D M j H:i:s T Y', time()+$session_time), WT_SCRIPT_PATH);
+// Register a session "namespace" to store session data.  This is better than
+// using $_SESSION, as we can avoid clashes with other modules/applications,
+// and problems with servers that have enabled "register_globals".
+$WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 
-if ($session_time>0) {
-	session_cache_expire($session_time/60);
-}
-if ($session_save_path) {
-	session_save_path($session_save_path);
-}
-if (isset($MANUAL_SESSION_START) && !empty($SID)) {
-	session_id($SID);
-}
-
-session_start();
-unset($session_time, $session_save_path, $MANUAL_SESSION_START, $SID);
-
-if (!$SEARCH_SPIDER && !isset($_SESSION['initiated'])) {
+if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
-	session_regenerate_id(true);
-	$_SESSION['initiated']=true;
+	Zend_Session::regenerateId();
+	$WT_SESSION->initiated=true;
 } else {
 	// An existing session
 }

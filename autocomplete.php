@@ -32,8 +32,8 @@ require './includes/session.php';
 
 header('Content-Type: text/plain; charset=UTF-8');
 
-// We have finished writing to $_SESSION, so release the lock
-session_write_close();
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 // Maximum number of results in auto-complete fields
 define('WT_AUTOCOMPLETE_LIMIT', 500);

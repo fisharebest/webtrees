@@ -310,8 +310,7 @@ if(!$real) {
 	}
 	// The SEARCH_SPIDER is set to 70 vetted chars, the session to 26 chars.
 	$SEARCH_SPIDER = $spider_name;
-	$bot_session = gen_spider_session_name($spider_name, "");
-	session_id($bot_session);
+	Zend_Session::setId(gen_spider_session_name($spider_name, ""));
 }
 
 // stop spiders from accessing certain parts of the site
@@ -349,15 +348,14 @@ try {
 			}
 		}
 		$bot_name = 'MAN'.$_SERVER['REMOTE_ADDR'];
-		$bot_session = gen_spider_session_name($bot_name, '');
-		session_id($bot_session);
+		Zend_Session::setId(gen_spider_session_name($bot_name, ''));
 	}
 } catch (PDOException $ex) {
 	// Initial installation?  Site Down?  Fail silently.
 }
 
 if((empty($SEARCH_SPIDER)) && (!empty($_SESSION['last_spider_name']))) // user following a search engine listing in,
-session_regenerate_id();
+Zend_Session::regenerateId();
 
 if(!empty($SEARCH_SPIDER)) {
 	$spidertime = time();

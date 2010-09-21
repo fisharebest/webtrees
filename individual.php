@@ -46,8 +46,9 @@ $controller->init();
 // tell tabs that use jquery that it is already loaded
 define('WT_JQUERY_LOADED', 1);
 
-// We have finished writing to $_SESSION, so release the lock
-session_write_close();
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
+
 print_header($controller->getPageTitle());
 
 if (!$controller->indi){

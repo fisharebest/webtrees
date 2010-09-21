@@ -109,7 +109,7 @@ function userLogout($user_id) {
 	AddToLog('Logout '.getUserName($user_id), 'auth');
 	// If we are logging ourself out, then end our session too.
 	if (WT_USER_ID==$user_id) {
-		session_destroy();
+		Zend_Session::destroy();
 	}
 }
 

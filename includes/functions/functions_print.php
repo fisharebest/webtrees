@@ -410,8 +410,8 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 		var themeName = "'.strtolower($theme_name).'";
 		var SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 		/* keep the session id when opening new windows */
-		var sessionid = "'.session_id().'";
-		var sessionname = "'.session_name().'";
+		var sessionid = "'.Zend_Session::getId().'";
+		var sessionname = "'.WT_SESSION_NAME.'";
 		var accesstime = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
 		var plusminus = new Array();
 		plusminus[0] = new Image();
