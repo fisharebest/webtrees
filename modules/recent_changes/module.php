@@ -49,9 +49,12 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$days=get_block_setting($block_id, 'days', 7);
 		$hide_empty=get_block_setting($block_id, 'hide_empty', false);
+		$block=get_block_setting($block_id, 'block', true);
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('days', 'hide_empty', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 
@@ -88,7 +91,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if (get_block_setting($block_id, 'block', true)) {
+			if ($block) {
 				require $THEME_DIR.'templates/block_small_temp.php';
 			} else {
 				require $THEME_DIR.'templates/block_main_temp.php';

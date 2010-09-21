@@ -53,9 +53,12 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
+		$block=get_block_setting($block_id, 'block', false);
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 
@@ -86,7 +89,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if (get_block_setting($block_id, 'block', true)) {
+			if ($block) {
 				require $THEME_DIR.'templates/block_small_temp.php';
 			} else {
 				require $THEME_DIR.'templates/block_main_temp.php';

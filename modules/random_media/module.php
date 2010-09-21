@@ -56,11 +56,6 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$controls=get_block_setting($block_id, 'controls', true);
 		$start   =get_block_setting($block_id, 'start',    false) || safe_GET_bool('start');
 		$block   =get_block_setting($block_id, 'block',    true);
-		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
-			}
-		}
 
 		$filters=array(
 			'avi'        =>get_block_setting($block_id, 'filter_avi', false),
@@ -93,6 +88,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			'tombstone'  =>get_block_setting($block_id, 'filter_tombstone', true),
 			'video'      =>get_block_setting($block_id, 'filter_video', false),
 		);
+		if ($cfg) {
+			foreach (array('filter', 'controls', 'start', 'filter_avi', 'filter_bmp', 'filter_gif', 'filter_jpeg', 'filter_mp3', 'filter_ole', 'filter_pcx', 'filter_pdf', 'filter_png', 'filter_tiff', 'filter_wav', 'filter_audio', 'filter_book', 'filter_card', 'filter_certificate', 'filter_coat', 'filter_document', 'filter_electronic', 'filter_fiche', 'filter_film', 'filter_magazine', 'filter_manuscript', 'filter_map', 'filter_newspaper', 'filter_other', 'filter_painting', 'filter_photo', 'filter_tombstone', 'filter_video', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
+			}
+		}
 
 		$medialist = array();
 		$foundlist = array();

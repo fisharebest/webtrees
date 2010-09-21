@@ -119,6 +119,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$block=get_block_setting($block_id, 'block', false);
+		if ($cfg) {
+			foreach (array('block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
+			}
+		}
 
 		// Override GEDCOM configuration temporarily
 		if (isset($show_full)) $saveShowFull = $show_full;

@@ -63,7 +63,14 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		}
-
+		$block=get_block_setting($block_id, 'block', true);
+		if ($cfg) {
+			foreach (array('block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
+			}
+		}
 		$usernews = getUserNews(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
@@ -93,7 +100,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if (get_block_setting($block_id, 'block', true)) {
+			if ($block) {
 				require $THEME_DIR.'templates/block_small_temp.php';
 			} else {
 				require $THEME_DIR.'templates/block_main_temp.php';

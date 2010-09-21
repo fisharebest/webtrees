@@ -47,13 +47,16 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $TEXT_DIRECTION, $WT_IMAGES, $THEME_DIR;
 
-		$filter       =get_block_setting($block_id, 'filter', true);
-		$onlyBDM      =get_block_setting($block_id, 'onlyBDM', true);
-		$infoStyle    =get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle    =get_block_setting($block_id, 'sortStyle',  'alpha');
+		$filter       =get_block_setting($block_id, 'filter',   true);
+		$onlyBDM      =get_block_setting($block_id, 'onlyBDM',  true);
+		$infoStyle    =get_block_setting($block_id, 'infoStyle','table');
+		$sortStyle    =get_block_setting($block_id, 'sortStyle','alpha');
+		$block        =get_block_setting($block_id, 'block',    true);
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 
@@ -87,7 +90,7 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			if (get_block_setting($block_id, 'block', true)) {
+			if ($block) {
 				require $THEME_DIR.'templates/block_small_temp.php';
 			} else {
 				require $THEME_DIR.'templates/block_main_temp.php';

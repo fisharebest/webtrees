@@ -58,8 +58,10 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$sendmail=get_block_setting($block_id, 'sendmail', true);
 		$block   =get_block_setting($block_id, 'block',    true);
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('days', 'sendmail', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 

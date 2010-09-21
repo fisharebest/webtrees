@@ -65,11 +65,12 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stat_most_chil      =get_block_setting($block_id, 'stat_most_chil',       true);
 		$stat_avg_chil       =get_block_setting($block_id, 'stat_avg_chil',        true);
 		$stat_link           =get_block_setting($block_id, 'stat_link',            true);
-
-		$block=get_block_setting($block_id, 'block', false);
+		$block               =get_block_setting($block_id, 'block',                false);
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_other', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 

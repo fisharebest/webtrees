@@ -51,8 +51,10 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		$num=get_block_setting($block_id, 'num', 10);
 		$block=get_block_setting($block_id, 'block', false);
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('count_placement', 'num', 'block') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 

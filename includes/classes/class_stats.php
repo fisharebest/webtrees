@@ -3745,25 +3745,30 @@ class stats_ui extends stats
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function callBlock($params=null) {
+		global $ctype;
 		if ($params === null){return '';}
 		if (isset($params[0]) && $params[0] != ''){$block = $params[0];}else{return '';}
-		$class_name = $block.'_WT_Module';
-		if (class_exists($class_name) && $block!='html') {
-			// Build the config array
-			array_shift($params);
-			$cfg = array();
-			foreach($params as $config) {
-				$bits = explode('=', $config);
-				if(count($bits) < 2){continue;}
-				$v = array_shift($bits);
-				$cfg[$v] = join('=', $bits);
+		$all_blocks=array();
+		foreach (WT_Module::getActiveBlocks() as $name=>$active_block) {
+			if ($ctype=='user' && $active_block->isUserBlock() || $ctype=='gedcom' && $active_block->isGedcomBlock()) {
+				$all_blocks[$name]=$active_block;
 			}
-			$block = new $class_name;
-			$block_id=safe_GET('block_id');
-			$content = $block->getBlock($block_id, false, $cfg);
-			return $content;
 		}
-		return $block;
+		if (!array_key_exists($block, $all_blocks) || $block=='html') return '';
+		$class_name = $block.'_WT_Module';
+		// Build the config array
+		array_shift($params);
+		$cfg = array();
+		foreach($params as $config) {
+			$bits = explode('=', $config);
+			if(count($bits) < 2){continue;}
+			$v = array_shift($bits);
+			$cfg[$v] = join('=', $bits);
+		}
+		$block = new $class_name;
+		$block_id=safe_GET('block_id');
+		$content = $block->getBlock($block_id, false, $cfg);
+		return $content;
 	}
 
 	function totalUserMessages(){return count(getUserMessages(WT_USER_NAME));}

@@ -76,8 +76,10 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 		if ($cfg) {
-			foreach ($cfg as $name=>$value) {
-				$$name=$value;
+			foreach (array('limit', 'flag') as $name) {
+				if (array_key_exists($name, $cfg)) {
+					$$name=$cfg[$name];
+				}
 			}
 		}
 
