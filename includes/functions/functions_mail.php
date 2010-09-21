@@ -57,8 +57,8 @@ function webtreesMail($to, $from, $subject, $message) {
 
 	$mailFormatText = "text/plain";
 
-	$boundary = "PGV-123454321-PGV"; //unique identifier for multipart
-	$boundary2 = "PGV-123454321-PGV2";
+	$boundary = "WT-123454321-WT"; //unique identifier for multipart
+	$boundary2 = "WT-123454321-WT2";
 
 	if ($TEXT_DIRECTION == "rtl") { // needed for rtl but we can change this to a global config
 		$mailFormat = "html";
@@ -287,5 +287,3 @@ function RFC2047Encode($string, $charset) {
 		return "=?$charset?Q?$string?=";
 	}
 }
-
-?>
