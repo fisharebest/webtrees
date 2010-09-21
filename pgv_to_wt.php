@@ -185,7 +185,7 @@ echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(500
 // $MAX_VIEWS and $MAX_VIEW_TIME are no longer used
 // Don't copy $MEMORY_LIMIT - use the value from setup.php
 // Don't copy $COMMIT_COMMAND - it will not be applicable!
-@set_site_setting('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE);
+@set_site_setting('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE ? 'external' : 'internal');
 @set_site_setting('SMTP_HOST',                       $PGV_SMTP_HOST);
 @set_site_setting('SMTP_HELO',                       $PGV_SMTP_HELO);
 @set_site_setting('SMTP_PORT',                       $PGV_SMTP_PORT);
