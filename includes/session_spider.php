@@ -313,20 +313,6 @@ if(!$real) {
 	Zend_Session::setId(gen_spider_session_name($spider_name, ""));
 }
 
-// stop spiders from accessing certain parts of the site
-$bots_not_allowed = array(
-'/reports/',
-'/includes/',
-'config',
-'clippings',
-'gedrecord.php'
-);
-if ($SEARCH_SPIDER && in_array(WT_SCRIPT_NAME, $bots_not_allowed)) {
-	header("HTTP/1.0 403 Forbidden");
-	print "Sorry, this page is not available for search engine bots.";
-	exit;
-}
-
 // Manual Search Engine IP Address tagging
 //   Allow an admin to mark IP addresses as known search engines even if
 //   they are not automatically detected above.   Setting his own IP address
