@@ -1525,8 +1525,8 @@ dd {
 	width: 45%;
 }
 
-#sex, #mainfacts {
-	vertical-align:	top;
+#sex {
+	margin-top: 3px;
 }
 
 #hitcounter {
@@ -1706,7 +1706,12 @@ div.faq_body {
 }
 
 /*--- edit links ---*/
-.edit_link:after  {
+.descriptionbox .edit_link {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+
+.edit_link:after {
 	content: " " url(images/edit_sm.png);
 }
 
