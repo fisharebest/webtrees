@@ -287,6 +287,22 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 	}
 
 	if (($gedrec = check_gedcom($gedrec, $chan))!==false) {
+		//-- the following block of code checks if the XREF was changed in this record.
+		//-- if it was changed we add a warning to the change log
+		$ct = preg_match("/0 @(.*)@/", $gedrec, $match);
+		if ($ct>0) {
+			$oldgid = $gid;
+			$gid = trim($match[1]);
+			if ($oldgid!=$gid) {
+				if ($gid=="REF" || $gid=="new" || $gid=="NEW") {
+					$gedrec = preg_replace("/0 @(.*)@/", "0 @".$oldgid."@", $gedrec);
+					$gid = $oldgid;
+				} else {
+					AddToLog("Warning: $oldgid was changed to $gid", 'edit');
+				}
+			}
+		}
+
 		$old_gedrec=find_gedcom_record($gid, $ged_id, true);
 		if ($old_gedrec!=$gedrec) {
 			WT_DB::prepare(
@@ -301,7 +317,7 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 		}
 
 		if (WT_USER_AUTO_ACCEPT) {
-			accept_all_changes($gid, $ged_id);
+			accept_all_changes($gid, WT_GED_ID);
 		}
 		return true;
 	}
