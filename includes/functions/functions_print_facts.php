@@ -171,12 +171,12 @@ function print_fact(&$eventObj, $noedit=false) {
 			else echo $factref;
 		} else 
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && !FactEditRestricted($pid, $factrec)) {
-			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
-				echo "<span class=\"edit_link\">". translate_fact($factref, $label_person). "</span></a>";
-			echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\">";
-				echo "<span class=\"copy_link\">&nbsp;</span></a>";
-			echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\">";
-				echo "<span class=\"delete_link\">&nbsp;</span></a>";
+			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">". translate_fact($factref, $label_person). "</a>";
+			echo "<div class=\"editfacts\">";
+				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><div class=\"editlink\">&nbsp;</div></a>";
+				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><div class=\"copylink\">&nbsp;</div></a>";
+				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><div class=\"deletelink\">&nbsp;</div></a>";
+			echo "</div>";
 		} else {echo translate_fact($factref, $label_person);}
 		echo "</td>";
 	}
@@ -823,13 +823,13 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			} else
 			if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="red") {
 				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
-					echo "<span class=\"edit_link\">";
-						if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGES["source"], "\" alt=\"\" />";
-					echo translate_fact($factname, $parent). "</span></a>";
-				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\">";
-					echo "<span class=\"copy_link\">&nbsp;</span></a>";
-				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\">";
-					echo "<span class=\"delete_link\">&nbsp;</span></a>";
+					if ($level==1) echo "<img class=\"icon\" src=\"", $WT_IMAGES["source"], "\" alt=\"\" />";
+					echo translate_fact($factname, $parent). "</a>";
+				echo "<div class=\"editfacts\">";
+					echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"editlink\">&nbsp;</span></a>";
+					echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"copylink\">&nbsp;</span></a>";
+					echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"deletelink\">&nbsp;</span></a>";
+				echo "</div>";
 			} else {echo translate_fact($factname, $parent);}
 			echo "</td>";
 			echo "\n\t\t\t<td class=\"optionbox $styleadd wrap\">";
@@ -1043,7 +1043,6 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		echo " $styleadd width20\">";
 		if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="change_old") {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
-			echo "<span class=\"edit_link\">";
 			if ($level<2) {
 				echo "<img class=\"icon\" src=\"", $WT_IMAGES["notes"], "\" alt=\"\" />";
 				if (strstr($factrec, "1 NOTE @" )) {
@@ -1051,11 +1050,12 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				} else {
 					echo translate_fact('NOTE');
 				}
-				echo "</span></a>";
-				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\">";
-					echo "<span class=\"copy_link\">&nbsp;</span></a>";
-				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\">";
-					echo "<span class=\"delete_link\">&nbsp;</span></a>";
+				echo "</a>";
+			echo "<div class=\"editfacts\">";
+				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"editlink\">&nbsp;</span></a>";
+				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"copylink\">&nbsp;</span></a>";
+				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"deletelink\">&nbsp;</span></a>";
+			echo "</div>";
 			}
 		} else {
 			if ($level<2) {
@@ -1364,11 +1364,12 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	echo "\n\t\t<tr><td class=\"descriptionbox $styleadd width20\">";
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($rowm['m_media'], $rowm['m_gedrec'])) && ($styleadd!="change_old")) {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
-			echo "<span class=\"edit_link\"><img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". translate_fact('OBJE'). "</span></a>";
-		echo "<a onclick=\"return copy_record('".$rowm['m_media']."', 'media');\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\">";
-			echo "<span class=\"copy_link\">&nbsp;</span></a>";
-		echo "<a onclick=\"return delete_record('$pid', 'OBJE', '".$rowm['m_media']."');\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\">";
-			echo "<span class=\"delete_link\">&nbsp;</span></a>";
+			echo "<img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". translate_fact('OBJE'). "</a>";
+			echo "<div class=\"editfacts\">";
+				echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"editlink\">&nbsp;</span></a>";
+				echo "<a onclick=\"return copy_record('".$rowm['m_media']."', 'media');\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"copylink\">&nbsp;</span></a>";
+				echo "<a onclick=\"return delete_record('$pid', 'OBJE', '".$rowm['m_media']."');\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"deletelink\">&nbsp;</span></a>";
+			echo "</div>";
 		echo "</td>";
 	}
 
