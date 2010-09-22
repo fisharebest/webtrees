@@ -530,7 +530,7 @@ padding-bottom: 0px;
 
 #descendancy_chart_rtl ul {
 background-image:url(../images/vline.gif);
-background-image: url(images/vline.gif);
+background-image: url(../images/vline.gif);
 background-repeat: repeat-y;
 background-position: right top;
 list-style: none;
@@ -1885,14 +1885,34 @@ padding: 0 10px;
 }
 
 /*--- edit links ---*/
-.edit_link:after  {
+
+.edit_link:after { /* used only on the user list */
 	content: " " url(../images/edit_sm.png);
 }
 
-.copy_link:after  {
-	content: url(../images/copy.png);
+td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
+	color: #ffffff;
 }
 
-.delete_link:after  {
-	content: url(../images/delete.png);
+.editfacts { /* a container for the following three links */
+	float: left;
+	margin-top: 15px;
+}
+
+.editlink  {
+	background: url(../images/edit_sm.png) no-repeat left center;
+	width: 20px;
+	float: left;
+}
+
+.copylink  {
+	background: url(../images/copy.png) no-repeat left center;
+	width: 20px;
+	float: left;
+}
+
+.deletelink  {
+	background: url(../images/delete.png) no-repeat left center;
+	width: 20px;
+	float: left;
 }
