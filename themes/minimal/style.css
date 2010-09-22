@@ -1530,3 +1530,16 @@ div.faq_body {
 	font-size: 90%;
 	padding: 0 10px;
 }
+
+/*--- edit links ---*/
+.edit_link:after  {
+	content: " " url(images/edit_sm.png);
+}
+
+.copy_link:after  {
+	content: url(images/copy.png);
+}
+
+.delete_link:after  {
+	content: url(images/delete.png);
+}

@@ -99,10 +99,6 @@ th {
 	width: 60px;
 }
 
-.edit_link:after  {
-	content: url(images/edit_sm.png);
-}
-
 .gedcom_table {
 	border: 1px solid #84BEFF;
 	margin: 0;
@@ -1743,4 +1739,17 @@ div.faq_body {
 
 .makeMenu li ul {
         margin-left:-40px;
+}
+
+/*--- edit links ---*/
+.edit_link:after  {
+	content: " " url(images/edit_sm.png);
+}
+
+.copy_link:after  {
+	content: url(images/copy.png);
+}
+
+.delete_link:after  {
+	content: url(images/delete.png);
 }

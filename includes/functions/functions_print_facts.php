@@ -138,42 +138,20 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
 		echo "\n\t\t<tr class=\"", $rowID, "\">";
-		echo "\n\t\t\t<td class=\"descriptionbox $styleadd center width20\">";
+		echo "\n\t\t\t<td class=\"descriptionbox $styleadd width20\">";
 		if ($SHOW_FACT_ICONS)
-			echo $eventObj->Icon(), ' ';
-		echo translate_fact($factref, $label_person);
+			echo $eventObj->Icon(), ' ';	
+		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
+			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
+				echo "<span class=\"edit_link\">". translate_fact($factref, $label_person). "</span></a>";
+			echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\">";
+				echo "<span class=\"copy_link\">&nbsp;</span></a>";
+			echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\">";
+				echo "<span class=\"delete_link\">&nbsp;</span></a>";
+		} else {echo translate_fact($factref, $label_person);}
 		if ($fact=="_BIRT_CHIL" and isset($n_chil)) echo "<br />", i18n::translate('#%d', $n_chil++);
 		if ($fact=="_BIRT_GCHI" and isset($n_gchi)) echo "<br />", i18n::translate('#%d', $n_gchi++);
 		if ($fact=="_BIRT_GGCH" and isset($n_ggch)) echo "<br />", i18n::translate('#%d', $n_ggch++);
-		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
-			$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
-			$menu->addOnclick("return edit_record('$pid', $linenum);");
-			$menu->addClass("", "", "submenu");
-			$submenu = new Menu(i18n::translate('Edit'), "#", "right");
-			$submenu->addOnclick("return edit_record('$pid', $linenum);");
-			$submenu->addClass("submenuitem", "submenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			$submenu = new Menu(i18n::translate('Copy'), "#", "right");
-			$submenu->addOnclick("return copy_record('$pid', $linenum);");
-			$submenu->addClass("submenuitem", "submenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			$submenu = new Menu(i18n::translate('Delete'), "#", "right");
-			$submenu->addOnclick("return delete_record('$pid', $linenum);");
-			$submenu->addClass("submenuitem", "submenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			if (!$WT_MENUS_AS_LISTS) {
-				echo " <div style=\"width:25px;\">";
-				$menu->printMenu();
-				echo "</div>";
-			} else {
-				echo " <ul>";
-				$menu->printMenu();
-				echo "</ul>";
-			}
-		}
 		echo "</td>";
 	} else {
 		if ($fact == "OBJE") return false;
@@ -184,38 +162,22 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
 		echo "\n\t\t<tr class=\"", $rowID, "\">";
-		echo "<td class=\"descriptionbox $styleadd center width20\">";
+		echo "<td class=\"descriptionbox $styleadd width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
 		if ($ct>0) {
 			if ($factref=='image_size') echo i18n::translate('Image Dimensions');
 			else if ($factref=='file_size') echo i18n::translate('File Size');
 			else echo $factref;
-		} else echo translate_fact($factref, $label_person);
+		} else 
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && !FactEditRestricted($pid, $factrec)) {
-			$menu = new Menu(i18n::translate('Edit'), "#", "right", "down");
-			$menu->addOnclick("return edit_record('$pid', $linenum);");
-			$menu->addClass("", "", "submenu");
-
-			$submenu = new Menu(i18n::translate('Edit'), "#", "right");
-			$submenu->addOnclick("return edit_record('$pid', $linenum);");
-			$submenu->addClass("submenuitem", "submenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			$submenu = new Menu(i18n::translate('Delete'), "#", "right");
-			$submenu->addOnclick("return delete_record('$pid', $linenum);");
-			$submenu->addClass("submenuitem", "submenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			$submenu = new Menu(i18n::translate('Copy'), "#", "right");
-			$submenu->addOnclick("return copy_record('$pid', $linenum);");
-			$submenu->addClass("submenuitem", "submenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			echo " <div style=\"width:25px;\">";
-			$menu->printMenu();
-			echo "</div>";
-		}
+			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
+				echo "<span class=\"edit_link\">". translate_fact($factref, $label_person). "</span></a>";
+			echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\">";
+				echo "<span class=\"copy_link\">&nbsp;</span></a>";
+			echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\">";
+				echo "<span class=\"delete_link\">&nbsp;</span></a>";
+		} else {echo translate_fact($factref, $label_person);}
 		echo "</td>";
 	}
 	$align = "";

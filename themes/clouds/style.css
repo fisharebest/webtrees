@@ -285,10 +285,6 @@ margin-left: auto;
 margin-right: auto;
 }
 
-.edit_link:after  {
-	content: url(images/edit_sm.png);
-}
-
 /* Override js/jquery-ui.custom.css            */
 
 /* Flyout changes */
@@ -1910,4 +1906,17 @@ padding: 0 10px;
 
 .makeMenu li:hover > ul {
 	display:block;
+}
+
+/*--- edit links ---*/
+.edit_link:after  {
+	content: " " url(images/edit_sm.png);
+}
+
+.copy_link:after  {
+	content: url(images/copy.png);
+}
+
+.delete_link:after  {
+	content: url(images/delete.png);
 }
