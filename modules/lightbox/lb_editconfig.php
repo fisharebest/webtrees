@@ -153,9 +153,9 @@ if ($action=='update' && !isset($security_user)) {
 		<td class="descriptionbox"><b><?php echo i18n::translate('Image Transition speed'); ?></b><?php echo help_link('lb_transition', $this->getName()); ?></td>
 		<td class="optionbox"><select name="NEW_LB_TRANSITION">
 				<option value="none"   <?php if ($LB_TRANSITION=="none")   echo 'selected="selected"'; ?>><?php echo i18n::translate('None'); ?></option>
-				<option value="normal" <?php if ($LB_TRANSITION=="normal") echo 'selected="selected"'; ?>><?php echo /* I18N: normal speed */ i18n::translate('Normal'); ?></option>
-				<option value="double" <?php if ($LB_TRANSITION=="double") echo 'selected="selected"'; ?>><?php echo /* I18N: double speed */ i18n::translate('Double'); ?></option>
-				<option value="warp"   <?php if ($LB_TRANSITION=="warp")   echo 'selected="selected"'; ?>><?php echo /* I18N: warp speed (very fast) */ i18n::translate('Warp'); ?></option>
+				<option value="normal" <?php if ($LB_TRANSITION=="normal") echo 'selected="selected"'; ?>><?php echo i18n::translate('Normal'); ?></option>
+				<option value="double" <?php if ($LB_TRANSITION=="double") echo 'selected="selected"'; ?>><?php echo i18n::translate('Double'); ?></option>
+				<option value="warp"   <?php if ($LB_TRANSITION=="warp")   echo 'selected="selected"'; ?>><?php echo i18n::translate('Warp'); ?></option>
 						</select>
 		</td>
 		</tr>
