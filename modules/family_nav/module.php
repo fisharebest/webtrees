@@ -787,7 +787,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						if ($hasChildren == 'Yes') {
 							$spouselinks .= "\n</ul>";
 						} else {
-							$spouselinks .= '<br />';
+							$spouselinks .= "<br /><img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".i18n::translate('This family remained childless');
 						}
 					}
 				}
