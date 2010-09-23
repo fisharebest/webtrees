@@ -120,7 +120,7 @@ if ($error || empty($PGV_PATH)) {
 	}
 
 	// Look for PGV in some nearby directories
-	$pgv_dirs='';
+	$pgv_dirs=array();
 	$dir=opendir(realpath('..'));
 	while (($subdir=readdir($dir))!==false) {
 		if (is_dir('../'.$subdir) && preg_match('/pgv|gedview/i', $subdir) && file_exists('../'.$subdir.'/config.php')) {
