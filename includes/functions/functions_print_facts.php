@@ -169,7 +169,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			if ($factref=='image_size') echo i18n::translate('Image Dimensions');
 			else if ($factref=='file_size') echo i18n::translate('File Size');
 			else echo $factref;
-		} else 
+		}
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && !FactEditRestricted($pid, $factrec)) {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">". translate_fact($factref, $label_person). "</a>";
 			echo "<div class=\"editfacts\">";
