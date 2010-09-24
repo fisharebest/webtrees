@@ -90,6 +90,20 @@ $ADOP_CODES=array(
 	'WIFE'=>i18n::translate('Adopted by mother'),
 );
 
+// GEDCOM ADOP Female codes
+$ADOP_CODES=array(
+	'BOTH'=>i18n::translate_c('FEMALE', 'Adopted by both parents'),
+	'HUSB'=>i18n::translate_c('FEMALE', 'Adopted by father'),
+	'WIFE'=>i18n::translate_c('FEMALE', 'Adopted by mother'),
+);
+
+// GEDCOM ADOP Male codes
+$ADOP_CODES=array(
+	'BOTH'=>i18n::translate_c('MALE', 'Adopted by both parents'),
+	'HUSB'=>i18n::translate_c('MALE', 'Adopted by father'),
+	'WIFE'=>i18n::translate_c('MALE', 'Adopted by mother'),
+);
+
 // GEDCOM PEDI codes
 $PEDI_CODES=array(
 	'birth'  =>i18n::translate_c('Pedigree', 'Birth'),
@@ -1633,8 +1647,8 @@ $FACTS_M=array(
 	'__BRTM_NEP2'=>i18n::translate_c('brother\'s son', 'Brit Mila of a nephew'),
 	'__BRTM_SIBL'=>i18n::translate (        'Brit Mila of a brother'),
 	// this person facts
-	'_ADPF'     =>i18n::translate_c('MALE', 'Adopted by Father'),
-	'_ADPM'     =>i18n::translate_c('MALE', 'Adopted by Mother'),
+	'_ADPF'     =>i18n::translate_c('MALE', 'Adopted by father'),
+	'_ADPM'     =>i18n::translate_c('MALE', 'Adopted by mother'),
 	'_AKA'      =>i18n::translate_c('MALE', 'Also known as'),
 	'_AKAN'     =>i18n::translate_c('MALE', 'Also known as'),
 	'_INTE'     =>i18n::translate_c('MALE', 'Interred'),
@@ -1755,8 +1769,8 @@ $FACTS_F=array(
 	'_MARR_NIE2'=>i18n::translate_c('brother\'s daughter', 'Marriage of a niece'),
 	'_MARR_SIBL'=>i18n::translate  (          'Marriage of a sister'),
 	// this person facts
-	'_ADPF'     =>i18n::translate_c('FEMALE', 'Adopted by Father'),
-	'_ADPM'     =>i18n::translate_c('FEMALE', 'Adopted by Mother'),
+	'_ADPF'     =>i18n::translate_c('FEMALE', 'Adopted by father'),
+	'_ADPM'     =>i18n::translate_c('FEMALE', 'Adopted by mother'),
 	'_AKA'      =>i18n::translate_c('FEMALE', 'Also known as'),
 	'_AKAN'     =>i18n::translate_c('FEMALE', 'Also known as'),
 	'_INTE'     =>i18n::translate_c('FEMALE', 'Interred'),

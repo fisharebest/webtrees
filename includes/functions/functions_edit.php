@@ -187,6 +187,18 @@ function edit_field_adop($name, $selected='', $extra='') {
 	return select_edit_control($name, $ADOP_CODES, null, $selected, $extra);
 }
 
+// Print an edit control for a ADOP female field
+function edit_field_adop_f($name, $selected='', $extra='') {
+	global $ADOP_CODES_F;
+	return select_edit_control($name, $ADOP_CODES_F, null, $selected, $extra);
+}
+
+// Print an edit control for a ADOP male field
+function edit_field_adop_m($name, $selected='', $extra='') {
+	global $ADOP_CODES_M;
+	return select_edit_control($name, $ADOP_CODES_M, null, $selected, $extra);
+}
+
 // Print an edit control for a PEDI field
 function edit_field_pedi($name, $selected='', $extra='') {
 	global $PEDI_CODES;
@@ -1431,7 +1443,11 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, $TEMPLE_CODES, i18n::translate('No Temple - Living Ordinance'), $value);
 	}	else if ($fact=="ADOP") {
-		echo edit_field_adop($element_name, $value);
+		switch ($gender) {
+		case 'M': echo edit_field_adop_m($element_name, $value); break;
+		case 'F': echo edit_field_adop_f($element_name, $value); break;
+		default:  echo edit_field_adop  ($element_name, $value); break;
+		}
 	} else if ($fact=="PEDI") {
 		switch ($gender) {
 		case 'M': echo edit_field_pedi_m($element_name, $value); break;

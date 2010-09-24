@@ -140,7 +140,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		echo "\n\t\t<tr class=\"", $rowID, "\">";
 		echo "\n\t\t\t<td class=\"descriptionbox $styleadd width20\">";
 		if ($SHOW_FACT_ICONS)
-			echo $eventObj->Icon(), ' ';	
+			echo $eventObj->Icon(), ' ';
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">". translate_fact($factref, $label_person). "</a>";
 			echo "<div class=\"editfacts\">";
