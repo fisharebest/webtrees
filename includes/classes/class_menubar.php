@@ -861,14 +861,11 @@ class MenuBar
 		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN;
 
 		if ($ALLOW_THEME_DROPDOWN && !$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES')) {
-			$url=WT_SCRIPT_NAME.'?';
-			foreach ($_GET as $key=>$value) {
-				$url.=urlencode($key).'='.urlencode($value).'&amp;';
-			}
+			$url=WT_SCRIPT_NAME.'?'.get_query_string();
 			$menu=new Menu(i18n::translate('Theme'));
 			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
 			foreach (get_theme_names() as $themename=>$themedir) {
-				$submenu=new Menu($themename, $url.'theme='.$themedir);
+				$submenu=new Menu($themename, $url.'&amp;theme='.$themedir);
 				if ($themedir==WT_THEME_DIR) {
 					$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 				} else {
