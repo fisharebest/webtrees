@@ -35,9 +35,6 @@ header('Content-Type: text/plain; charset=UTF-8');
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
-// Maximum number of results in auto-complete fields
-define('WT_AUTOCOMPLETE_LIMIT', 500);
-
 //-- args
 $FILTER=safe_GET('q', WT_REGEX_UNSAFE); // we can search on '"><& etc.
 $OPTION=safe_GET('option');
