@@ -182,14 +182,17 @@ img {
 /* person boxes are used in various charts */
 .person_box {
 	background-color:#DDF;
+	overflow:auto;
 }
 
 .person_boxF {
 	background-color:#FDD;
+	overflow:auto;
 }
 
 .person_boxNN {
 	background-color:#DFD;
+	overflow:auto;
 }
 
 /* index.php */
