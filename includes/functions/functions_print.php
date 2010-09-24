@@ -1010,7 +1010,6 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$data = "";
-	$printDone = false;
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for($j=0; $j<$ct; $j++) {
@@ -1024,18 +1023,18 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 		if ($nt==0) {
 			//-- print embedded note records
 			$closeSpan = print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
-			$data .= $closeSpan;
+			$data .= $closeSpan."<br />";
 		} else {
 			$noterec = find_gedcom_record($nmatch[1], $ged_id);
 			if (canDisplayRecord($ged_id, $noterec)) {
 				//-- print linked note records
 				$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 				$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
-				$data .= $closeSpan;
+				$data .= $closeSpan."<br />";
 				if (!$textOnly) {
 					if (strpos($noterec, "1 SOUR")!==false) {
-						$data .= "<br />";
 						$data .= print_fact_sources($noterec, 1, true);
+						$data .= "<br />";
 					}
 				}
 			}
@@ -1056,9 +1055,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 			}
 		}
 		*/
-		$printDone = true;
 	}
-	if ($printDone) $data .= "<br />";
 	if (!$return) echo $data;
 	else return $data;
 }
