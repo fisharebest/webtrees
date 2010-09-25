@@ -372,15 +372,14 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 * Popup pages, because of their different format, should invoke function print_simple_header() instead.
 *
 * @param string $title the title to put in the <TITLE></TITLE> header tags
-* @param string $head
 */
-function print_header($title, $head='') {
+function print_header($title) {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $QUERY_STRING, $action, $query, $theme_name;
 	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION;
 
-	header("Content-Type: text/html; charset=UTF-8");
+	header('Content-Type: text/html; charset=UTF-8');
 
 	$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
 	$META_ROBOTS=get_gedcom_setting(WT_GED_ID, 'META_ROBOTS');
@@ -393,20 +392,14 @@ function print_header($title, $head='') {
 	if ($META_TITLE) {
 		$title.=' - '.$META_TITLE;
 	}
-	if ($view=='simple') {
-		// The simple view needs to work without a database - for use during installation
-		$GEDCOM_TITLE=WT_WEBTREES;
-	} else {
-		$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
-	}
-	$javascript = '';
+	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
 	$query_string = $QUERY_STRING;
-	$javascript.=WT_JS_START.'
+	$javascript=WT_JS_START.'
 		/* setup some javascript variables */
 		var query = "'.$query_string.'";
 		var textDirection = "'.$TEXT_DIRECTION.'";
 		var browserType = "'.$BROWSERTYPE.'";
-		var themeName = "'.strtolower($theme_name).'";
+		var themeName = "'.$theme_name.'";
 		var SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 		/* keep the session id when opening new windows */
 		var sessionid = "'.Zend_Session::getId().'";

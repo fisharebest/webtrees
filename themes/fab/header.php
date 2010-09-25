@@ -66,7 +66,7 @@ echo
 	'<meta name="generator" content="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" />';
 
 echo
-	$javascript, $head, 
+	$javascript, 
 	'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>',

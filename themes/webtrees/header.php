@@ -71,10 +71,8 @@ if ($view!="simple") {
 	}
 	echo '<meta name="generator" content="', WT_WEBTREES, ' - ', WT_WEBTREES_URL, '" />';
 }
-echo $javascript;
-
-echo $head; //-- additional header information
 echo
+ 	$javascript,
 	'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>',
