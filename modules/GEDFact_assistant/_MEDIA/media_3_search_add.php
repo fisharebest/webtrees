@@ -78,9 +78,7 @@ if (!defined('WT_WEBTREES')) {
 
 	<?php
 	//-- Add Family Members to Census  -------------------------------------------
-	global $WT_IMAGES, $WT_MENUS_AS_LISTS;
-	global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
-	global $TEXT_DIRECTION, $GEDCOM, $censyear, $censdate; 
+	global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION, $GEDCOM, $censyear, $censdate; 
 	// echo "CENS = " . $censyear;
 	?>
 	<tr>
@@ -145,10 +143,7 @@ if (!defined('WT_WEBTREES')) {
 					?>
 					<td width=75 align="left" class="optionbox">
 						<font size=1>
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</font>
 					</td>
 					<td align="left" class="facts_value" >
@@ -229,10 +224,7 @@ if (!defined('WT_WEBTREES')) {
 				<tr>
 					<td width=75 align="left" class="optionbox">
 						<font size=1>
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</font>
 					</td>
 					<td align="left" class="facts_value">
@@ -332,11 +324,9 @@ if (!defined('WT_WEBTREES')) {
 								<font size=1>
 								<?php 
 								if ($child->getXref()==$pid) {
-									print $child->getLabel();
-								}else{
-									if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-									$menu->printMenu();
-									if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
+									echo $child->getLabel();
+								} else {
+									echo $menu->getMenu();
 								}
 								?>
 								</font>
@@ -452,10 +442,7 @@ if (!defined('WT_WEBTREES')) {
 				<tr>
 					<td width=75 align="left" class="optionbox">
 						<font size=1>
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</font>
 					</td>
 					<td align="left" class="facts_value">
@@ -546,10 +533,7 @@ if (!defined('WT_WEBTREES')) {
 				<tr>
 					<td width=75 align="left" class="optionbox">
 						<font size=1>
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</font>
 					</td>
 					<td align="left" class="facts_value">
@@ -643,10 +627,7 @@ if (!defined('WT_WEBTREES')) {
 					<tr>
 						<td width=75 align="left" class="optionbox">
 							<font size=1>
-							<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-							$menu->printMenu();
-							if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-							?>
+								<?php echo $menu->getMenu(); ?>
 							</font>
 						</td>
 						<td align="left" class="facts_value" >
@@ -741,11 +722,9 @@ if (!defined('WT_WEBTREES')) {
 						<font size=1>
 							<?php
 							if ($people["husb"]->getXref()==$pid) {
-								print "&nbsp" .($people["husb"]->getLabel())." ".i18n::translate('Head of Household:');
-							}else{
-								if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-								$menu->printMenu();
-								if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
+								echo "&nbsp" .($people["husb"]->getLabel())." ".i18n::translate('Head of Household:');
+							} else {
+								echo $menu->getMenu();
 							}
 							?>
 						</font>
@@ -839,11 +818,9 @@ if (!defined('WT_WEBTREES')) {
 						<font size=1>
 							<?php
 							if ($people["wife"]->getXref()==$pid) {
-								print "&nbsp" .($people["wife"]->getLabel())." ".i18n::translate('Head of Household:');
-							}else{
-								if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-								$menu->printMenu();
-								if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
+								echo "&nbsp" .($people["wife"]->getLabel())." ".i18n::translate('Head of Household:');
+							} else {
+								echo $menu->getMenu();
 							}
 							?>
 						</font>
@@ -943,10 +920,7 @@ if (!defined('WT_WEBTREES')) {
 				<tr>
 					<td width=75 align="left" class="optionbox" >
 						<font size=1>
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</font>
 					</td>
 					<td align="left" class="facts_value">
@@ -1481,5 +1455,3 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 		}
 	}
 }
-// ==============================================================
-?>

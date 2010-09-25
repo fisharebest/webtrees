@@ -125,7 +125,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		
 	 // Start Family Nav Table ----------------------------
 		echo "<table class=\"nav_content\" cellpadding=\"0\">"; 
-		global $WT_IMAGES, $WT_MENUS_AS_LISTS, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION;
+		global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION;
 
 		$personcount=0;
 		$families = $this->controller->indi->getChildFamilies();
@@ -164,10 +164,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-							$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]);?> nam">
 						<?php
@@ -199,10 +196,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-							$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
@@ -241,11 +235,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php
 						if ($pid == $child->getXref() ) {
-							print $child->getLabel();
-						}else{
-							if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-								$menu->printMenu();
-							if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
+							echo $child->getLabel();
+						} else {
+							echo $menu->getMenu();
 						}
 						?>
 						</td>
@@ -315,10 +307,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>"  nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
@@ -358,10 +347,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-							$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
@@ -396,10 +382,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					?>
 					<tr>
 						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-							$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
 							<?php
@@ -458,10 +441,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
@@ -498,10 +478,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
@@ -540,10 +517,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					?>
 					<tr>
 						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
 							<?php

@@ -832,7 +832,7 @@ function print_favorite_selector($option=0) {
 				}
 			}
 		}
-		$menu->printMenu();
+		echo $menu->getMenu();
 		break;
 	default:
 		echo '<form class="favorites_form" name="favoriteform" action="', WT_SCRIPT_NAME, '"';

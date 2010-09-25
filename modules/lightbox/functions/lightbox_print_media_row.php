@@ -324,13 +324,13 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			//View Edit Menu ----------------------------------
 			if (!$reorder) {
 				// If not reordering media print View or View-Edit Menu
-				print "<tr>";
-				print "<td width=\"5px\"></td>";
-				print "<td valign=\"bottom\" align=\"center\" nowrap=\"nowrap\">";
-					$menu->printMenu();
-				print "</td>";
-				print "<td width=\"5px\"></td>";
-				print "</tr>" . "\n";
+				echo "<tr>";
+				echo "<td width=\"5px\"></td>";
+				echo "<td valign=\"bottom\" align=\"center\" nowrap=\"nowrap\">";
+				echo $menu->getMenu();
+				echo "</td>";
+				echo "<td width=\"5px\"></td>";
+				echo "</tr>" . "\n";
 			}
 
 			// print "</table>" . "\n";
@@ -343,13 +343,13 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	//if (!media_exists($rowm['m_file'])) {
 	if (!media_exists($mainMedia)) {
 		if (!media_exists($rowm['m_file'])) {
-			print "<tr>";
-			print "<td ></td>";
-			print "<td valign=\"bottom\" align=\"center\" nowrap=\"nowrap\">";
-				$menu->printMenu();
-			print "</td>";
-			print "<td ></td>";
-			print "</tr>" . "\n";
+			echo "<tr>";
+			echo "<td ></td>";
+			echo "<td valign=\"bottom\" align=\"center\" nowrap=\"nowrap\">";
+			echo $menu->getMenu();
+			echo "</td>";
+			echo "<td ></td>";
+			echo "</tr>" . "\n";
 		}
 	}
 
@@ -360,9 +360,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	print "<input type=\"hidden\" name=\"order1[$media_data]\" value=\"$sort_i\" />" . "\n";
 	$sort_i++;
 
-    print "</li>";
-    print "\n\n";
-    return true;
+	print "</li>";
+	print "\n\n";
+	return true;
 
 }
-?>

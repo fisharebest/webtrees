@@ -81,7 +81,7 @@ if (!defined('WT_WEBTREES')) {
 		$submenu->addClass("submenuitem".$classSuffix, "submenuitem".$classSuffix);
 		$menu->addSubMenu($submenu);
 
-		$menu->printMenu();
+		echo $menu->getMenu();
 ?>
 <script language="JavaScript" type="text/javascript">
   function ilinkitem(mediaid, type) {
@@ -97,5 +97,3 @@ if (!defined('WT_WEBTREES')) {
 //	if ($media["XREF"] != "") {
 //		print_link_menu($media2["XREF"]);
 //	}
-
-?>

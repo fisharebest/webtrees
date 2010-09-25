@@ -310,16 +310,6 @@ class Menu {
 		return $output;
 	}
 
-	function printMenu() {
-		global $WT_MENUS_AS_LISTS;
-
-		if ($WT_MENUS_AS_LISTS) {
-			echo $this->getMenuAsList();
-		} else {
-			echo $this->getMenu();
-		}
-	}
-
 	/**
 	* returns the number of submenu's in this menu
 	* @return int
@@ -327,61 +317,4 @@ class Menu {
 	function subCount() {
 		return count($this->submenus);
 	}
-
-	/**
-	* convert an old array style menu to an object
-	* @static
-	*/
-	static function convertMenu($menu) {
-		$conv = array(
-			'label'=>'label',
-			'labelpos'=>'labelpos',
-			'icon'=>'icon',
-			'hovericon'=>'hovericon',
-			'link'=>'link',
-			'class'=>'class',
-			'hoverclass'=>'hoverclass',
-			'flyout'=>'flyout',
-			'submenuclass'=>'submenuclass',
-			'onclick'=>'onclick'
-		);
-		$obj = new Menu();
-		if ($menu == 'separator') {
-			$obj->isSeparator();
-			$obj->printMenu();
-			return;
-		}
-		$items = false;
-		foreach ($menu as $k=>$v) {
-			if ($k == 'items' && is_array($v) && count($v) > 0) $items = $v;
-			else {
-				if (isset($conv[$k])){
-					if ($v != '') {
-						$obj->$conv[$k] = $v;
-					}
-				}
-			}
-		}
-		if ($items !== false) {
-			foreach ($items as $sub) {
-				$sobj = new Menu();
-				if ($sub == 'separator') {
-					$sobj->isSeparator();
-					$obj->addSubmenu($sobj);
-					continue;
-				}
-				foreach ($sub as $k2=>$v2) {
-					if (isset($conv[$k2])) {
-						if ($v2 != '') {
-							$sobj->$conv[$k2] = $v2;
-						}
-					}
-				}
-				$obj->addSubmenu($sobj);
-			}
-		}
-		return $obj;
-	}
 }
-
-?>

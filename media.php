@@ -754,7 +754,7 @@ if (check_media_structure()) {
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'source')");
 			$menu->addSubMenu($submenu);
 		}
-		$menu->printMenu();
+		echo $menu->getMenu();
 	}
 
 	$savedOutput = ob_get_clean();

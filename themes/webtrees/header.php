@@ -144,41 +144,41 @@ if ($view!='simple') {
 			'<tr>';
 				$menu=MenuBar::getGedcomMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getMyPageMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getChartsMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getListsMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getCalendarMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getReportsMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getSearchMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menus=MenuBar::getModuleMenus();
 				foreach ($menus as $m=>$menu) {
 					if ($menu) {
-						echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+						echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 					}
 				}
 				$menu=MenuBar::getHelpMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
+					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 				}
 			echo '</tr>',
 		'</table>',

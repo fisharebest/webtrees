@@ -66,9 +66,7 @@ if (isset($_COOKIE['lastclick'])) {
 
 //     Start Family Nav Table ----------------------------
 	echo "<table class=\"facts_table\" width='230' cellpadding=\"0\">";
-		global $WT_IMAGES, $WT_MENUS_AS_LISTS;
-		global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
-		global $TEXT_DIRECTION;
+		global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION;
 
 		$personcount=0;
 		$families = $this->indi->getChildFamilies();
@@ -106,10 +104,7 @@ if (isset($_COOKIE['lastclick'])) {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->getPersonStyle($people["husb"]); ?>">
 						<?php
@@ -140,10 +135,7 @@ if (isset($_COOKIE['lastclick'])) {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->getPersonStyle($people["wife"]); ?>">
 						<?php
@@ -181,11 +173,9 @@ if (isset($_COOKIE['lastclick'])) {
 						<td class="facts_label<?php print $styleadd; ?>">
 						<?php
 						if ($pid == $child->getXref() ) {
-							print $child->getLabel();
-						}else{
-							if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-								$menu->printMenu();
-							if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
+							echo $child->getLabel();
+						} else {
+							echo $menu->getMenu();
 						}
 						?>
 						</td>
@@ -254,10 +244,7 @@ if (isset($_COOKIE['lastclick'])) {
 
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->getPersonStyle($people["husb"]); ?>" >
 						<?php
@@ -296,10 +283,7 @@ if (isset($_COOKIE['lastclick'])) {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->getPersonStyle($people["wife"]); ?>">
 						<?php
@@ -333,10 +317,7 @@ if (isset($_COOKIE['lastclick'])) {
 					?>
 					<tr>
 						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+							<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php print $this->getPersonStyle($child); ?>">
 							<?php
@@ -394,10 +375,7 @@ if (isset($_COOKIE['lastclick'])) {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->getPersonStyle($people["husb"]); ?>">
 						<?php
@@ -433,10 +411,7 @@ if (isset($_COOKIE['lastclick'])) {
 				?>
 				<tr>
 					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php print $this->getPersonStyle($people["wife"]); ?>">
 						<?php
@@ -474,10 +449,7 @@ if (isset($_COOKIE['lastclick'])) {
 					?>
 					<tr>
 						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
-						<?php if ($WT_MENUS_AS_LISTS) echo "<ul>\n";
-						$menu->printMenu();
-						if ($WT_MENUS_AS_LISTS) echo "</ul>\n";
-						?>
+						<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php print $this->getPersonStyle($child); ?>">
 							<?php
@@ -684,5 +656,3 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 		}
 	}
 }
-// ==============================================================
-?>

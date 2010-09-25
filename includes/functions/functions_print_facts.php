@@ -72,7 +72,7 @@ function expand_urls($text) {
  * @param boolean $noedit	Hide or show edit links
  */
 function print_fact(&$eventObj, $noedit=false) {
-	global $nonfacts, $WT_MENUS_AS_LISTS, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
+	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $n_ggch, $SEARCH_SPIDER;
 
@@ -1543,5 +1543,3 @@ require_once WT_ROOT.'includes/functions/functions_media_reorder.php';
 // -----------------------------------------------------------------------------
 //  End extra print_facts_functions for lightbox and reorder media
 // -----------------------------------------------------------------------------
-
-?>
