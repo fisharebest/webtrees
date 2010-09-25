@@ -373,9 +373,8 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 *
 * @param string $title the title to put in the <TITLE></TITLE> header tags
 * @param string $head
-* @param boolean $use_alternate_styles
 */
-function print_header($title, $head="", $use_alternate_styles=true) {
+function print_header($title, $head='') {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $QUERY_STRING, $action, $query, $theme_name;
 	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
@@ -489,8 +488,7 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 * This function should be called by every page before anything is output on popup pages.
 *
 * @param string $title the title to put in the <TITLE></TITLE> header tags
-* @param string $head
-* @param boolean $use_alternate_styles
+
 */
 function print_simple_header($title) {
 	global $view;

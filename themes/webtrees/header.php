@@ -48,7 +48,7 @@ if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") {
 if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
 	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
 }
-if ($use_alternate_styles && $BROWSERTYPE != "other") {
+if ($BROWSERTYPE!='other') {
 	echo '<link rel="stylesheet" href="', WT_THEME_DIR.$BROWSERTYPE, '.css" type="text/css" media="all" />';
 }
 // Additional css files required (Only if Lightbox installed)

@@ -90,7 +90,7 @@ echo
 	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 	
-if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
+if ($BROWSERTYPE!='other') { ?>
 	<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 <?php 
 }

@@ -73,7 +73,7 @@ echo
 	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>',
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
 	
-if ($use_alternate_styles && $BROWSERTYPE != "other") {
+if ($BROWSERTYPE!='other') {
 	echo '<link type="text/css" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" rel="Stylesheet" />';
 }
 
