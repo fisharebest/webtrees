@@ -103,7 +103,7 @@ try {
 // rest of the file.
 
 global $SEARCH_SPIDER;
-$SEARCH_SPIDER = false;		// set empty at start
+$SEARCH_SPIDER = false; // set empty at start
 
 $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
 
@@ -111,7 +111,7 @@ $worms = array(
 	'oBot',
 	'Indy Library',
 	'XXX',
-//	'robotgenius',
+// 'robotgenius',
 	'Super_Ale',
 	'Wget',
 	'DataCha',
@@ -119,21 +119,21 @@ $worms = array(
 	'LWP::Simple',
 	'lwp-trivial',
 	'MJ.*bot',
-//	'ru.*rv',
+// 'ru.*rv',
 	'DotBot',
 	'HTTrack',
 	'AISearchBot',
 	'panscient.com',
 	'Plonebot',
-//	'Mozilla([^\/])|(\/[\D])',	// legitimate Mozilla-based browsers have something like "Mozilla/5.0"
-	'Mozilla[^\/]',		// legitimate Mozilla-based browsers have something like "Mozilla/5.0"
-	'Mozilla\/[^456]',	// legitimate Mozilla-based browsers have something like "Mozilla/5.0"
-	'^Mozilla\/[456]\.0$',	// legitimate Mozilla-based browsers have something following "Mozilla/5.0"
+// 'Mozilla([^\/])|(\/[\D])', // legitimate Mozilla-based browsers have something like "Mozilla/5.0"
+	'Mozilla[^\/]',  // legitimate Mozilla-based browsers have something like "Mozilla/5.0"
+	'Mozilla\/[^456]', // legitimate Mozilla-based browsers have something like "Mozilla/5.0"
+	'^Mozilla\/[456]\.0$', // legitimate Mozilla-based browsers have something following "Mozilla/5.0"
 	'Speedy.*Spider',
-	'KaloogaBot',		// Image search engines have no business searching a Genealogy site
+	'KaloogaBot',  // Image search engines have no business searching a Genealogy site
 	'DBLBot',
-	'TurnitinBot',		// Plagiarism detectors have no business searching a Genealogy site
-	'(Microsoft)|(Internet)|(Explorer)'		// Internet Explorer self-identifies with "MSIE"
+	'TurnitinBot',  // Plagiarism detectors have no business searching a Genealogy site
+	'(Microsoft)|(Internet)|(Explorer)'  // Internet Explorer self-identifies with "MSIE"
 	);
 
 $quitReason = "";
@@ -259,7 +259,7 @@ if(!$real) {
 			$y++;
 			if ($y > 70) break;
 		}
-		else if ($bot_name{$x} == ' ')	{
+		else if ($bot_name{$x} == ' ') {
 			if($valid_char) {
 				$spider_name{$y} = ' ';
 				$valid_char = false;
@@ -267,7 +267,7 @@ if(!$real) {
 				if ($y > 70) break;
 			}
 		}
-		else if ($bot_name{$x} == '.')	{
+		else if ($bot_name{$x} == '.') {
 			if($valid_char) {
 				$spider_name{$y} = '.';
 				$valid_char = true;
@@ -275,25 +275,25 @@ if(!$real) {
 				if ($y > 70) break;
 			}
 		}
-		else if ($bot_name{$x} == ':')	{
+		else if ($bot_name{$x} == ':') {
 			$spider_name{$y} = ':';
 			$valid_char = true;
 			$y++;
 			if ($y > 70) break;
 		}
-		else if ($bot_name{$x} == '/')	{
+		else if ($bot_name{$x} == '/') {
 			$spider_name{$y} = '/';
 			$valid_char = true;
 			$y++;
 			if ($y > 70) break;
 		}
-		else if ($bot_name{$x} == '-')	{
+		else if ($bot_name{$x} == '-') {
 			$spider_name{$y} = '-';
 			$valid_char = true;
 			$y++;
 			if ($y > 70) break;
 		}
-		else if ($bot_name{$x} == '_')	{
+		else if ($bot_name{$x} == '_') {
 			$spider_name{$y} = '_';
 			$valid_char = true;
 			$y++;
@@ -385,7 +385,5 @@ if(!empty($SEARCH_SPIDER)) {
 	if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 	$_SESSION['last_spider_lang'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
-	$_SESSION['wt_user'] = "";	// Don't allow search engine into user/admin mode.
+	$_SESSION['wt_user'] = ""; // Don't allow search engine into user/admin mode.
 }
-
-?>

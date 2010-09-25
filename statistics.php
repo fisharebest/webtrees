@@ -540,14 +540,14 @@ if (isset($content) && $content==1) {
 			if ($plottype == "15") echo " checked=\"checked\"";
 			echo " onclick=\"{statusChecked('z_none'); statusDisable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
 			echo "\" /><label for=\"stat_15\">", i18n::translate('Month of first marriage'), "</label><br />";
-		//	echo "<input type=\"radio\" id=\"stat_14\" name=\"x-as\" value=\"14\"";
-		//	if ($plottype == "14") echo " checked=\"checked\"";
-		//	echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		//	echo "\" /><label for=\"stat_14\">", i18n::translate('Month of birth of first child in a relation'), "</label><br />";
-		//	echo "<input type=\"radio\" id=\"stat_16\" name=\"x-as\" value=\"16\"";
-		//	if ($plottype == "16") echo " checked=\"checked\"";
-		//	echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusShow('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
-		//	echo "\" /><label for=\"stat_16\">", i18n::translate('Months between marriage and first child'), "</label><br />";
+			//echo "<input type=\"radio\" id=\"stat_14\" name=\"x-as\" value=\"14\"";
+			//if ($plottype == "14") echo " checked=\"checked\"";
+			//echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
+			//echo "\" /><label for=\"stat_14\">", i18n::translate('Month of birth of first child in a relation'), "</label><br />";
+			//echo "<input type=\"radio\" id=\"stat_16\" name=\"x-as\" value=\"16\"";
+			//if ($plottype == "16") echo " checked=\"checked\"";
+			//echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusShow('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
+			//echo "\" /><label for=\"stat_16\">", i18n::translate('Months between marriage and first child'), "</label><br />";
 			echo "<input type=\"radio\" id=\"stat_17\" name=\"x-as\" value=\"17\"";
 			if ($plottype == "17") echo " checked=\"checked\"";
 			echo " onclick=\"{statusEnable('z_sex'); statusShow('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
@@ -788,7 +788,7 @@ if (isset($content) && $content==1) {
 			</li>
 			<li class="ui-state-default ui-corner-top">
 				<a name="pagetab2" title="<?php echo i18n::translate('Others');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=2"><span>
-					<?php echo i18n::translate('Others');?></span>	</a>
+					<?php echo i18n::translate('Others');?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
 				<a name="pagetab3" title="<?php echo i18n::translate('Own charts');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=3"><span>

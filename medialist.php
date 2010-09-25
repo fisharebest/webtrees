@@ -407,7 +407,7 @@ if ($search=="yes") {
 
 if ($show == "yes") {
 	if (!empty($filtered_medialist)) {
-		$sortedMediaList = $filtered_medialist;	// Default sort (by title) has already been done
+		$sortedMediaList = $filtered_medialist; // Default sort (by title) has already been done
 		if ($sortby=='file') usort($sortedMediaList, 'filesort');
 
 		// Count the number of items in the medialist
@@ -509,7 +509,6 @@ if ($show == "yes") {
 		$imgwidth = $imgsize[0]+40;
 		$imgheight = $imgsize[1]+150;
 		$name = basename($media["TITL"]);
-//		$name1 = addslashes($media["TITL"]);
 		$showFile = WT_USER_CAN_EDIT;
 		if ($name=="") {
 			//$showFile = false;
@@ -731,4 +730,3 @@ echo "\n</div>\n";
 }
 // ************************  END = 'Print the medialist array' ************************
 print_footer();
-?>

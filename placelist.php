@@ -138,18 +138,18 @@ if ($display=="hierarchy") {
 					echo "&amp;parent[$j]=", $ppart;
 				}
 			}
- 			echo "\">";
- 			if (trim($parent[$i])=="") {
- 				echo i18n::translate('unknown');
- 			} else {
- 				echo PrintReady($parent[$i]);
- 			}
+			echo "\">";
+			if (trim($parent[$i])=="") {
+				echo i18n::translate('unknown');
+			} else {
+				echo PrintReady($parent[$i]);
+			}
 			echo "</a>";
- 			if ($i>0) {
- 				echo ", ";
- 			} elseif (($TEXT_DIRECTION=="rtl" && hasRtLText($parent[$i])) || ($TEXT_DIRECTION=="ltr" &&  !hasRtLText($parent[$i]))) {
- 				echo ", ";
- 			}
+			if ($i>0) {
+				echo ", ";
+			} elseif (($TEXT_DIRECTION=="rtl" && hasRtLText($parent[$i])) || ($TEXT_DIRECTION=="ltr" &&  !hasRtLText($parent[$i]))) {
+				echo ", ";
+			}
 			if (empty($num_place)) {
 				$num_place=$parent[$i];
 			}
@@ -436,7 +436,7 @@ if ($display=="list") {
 		$i=0;
 		foreach($placelist as $indexval => $revplace) {
 			$linklevels = "";
-			$levels = explode(',', $revplace);	// -- split the place into comma seperated values
+			$levels = explode(',', $revplace); // -- split the place into comma seperated values
 			$level=0;
 			$revplace = "";
 			foreach($levels as $indexval => $place) {
@@ -489,4 +489,3 @@ else {
 echo "<br /><br /></div>";
 if ($use_googlemap && $display=="hierarchy") map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 print_footer();
-?>

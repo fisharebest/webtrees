@@ -283,8 +283,8 @@ $controller->checkPrivacy();
 				echo $indi->getSexImage('large', '', i18n::translate_c('unknown gender', 'Unknown'));
 			}
 		?>
- 			<a href="individual.php?pid=<?php echo $pid; ?>">&nbsp;<?php echo PrintReady($indi->getFullName()); ?><br /><br />
- 			<?php $addname = $indi->getAddName(); if (strlen($addname) > 0) echo PrintReady($addname); ?>
+			<a href="individual.php?pid=<?php echo $pid; ?>">&nbsp;<?php echo PrintReady($indi->getFullName()); ?><br /><br />
+			<?php $addname = $indi->getAddName(); if (strlen($addname) > 0) echo PrintReady($addname); ?>
 			</a>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlentities($pid, ENT_COMPAT, 'UTF-8'); ?>" />
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >

@@ -102,7 +102,7 @@ function basicHTTPAuthenticateUser() {
 
 /**
  * logs a user out of the system
- * @param string $user_id	logout a specific user
+ * @param string $user_id logout a specific user
  */
 function userLogout($user_id) {
 	set_user_setting($user_id, 'loggedin', false);
@@ -117,7 +117,7 @@ function userLogout($user_id) {
  * Updates the login time in the database of the given user
  * The login time is used to automatically logout users who have been
  * inactive for the defined session time
- * @param string $username	the username to update the login info for
+ * @param string $username the username to update the login info for
  */
 function userUpdateLogin($user_id) {
 	set_user_setting($user_id, 'sessiontime', time());
@@ -211,7 +211,7 @@ function userCanEdit($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
  *
  * takes a username and checks if the user has write privileges to
  * change the gedcom data and accept changes
- * @param string $username	the username of the user check privileges
+ * @param string $username the username of the user check privileges
  * @return boolean true if user can accept false if user cannot accept
  */
 function userCanAccept($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
@@ -553,5 +553,3 @@ function getNewsItem($news_id) {
 		return null;
 	}
 }
-
-?>

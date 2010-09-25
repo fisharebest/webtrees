@@ -124,8 +124,8 @@ if (isset($controller)) {
 <?php
 // Sidebar state control
 // NOTE: Need config option for setting $sidebar_state.
-$sidebar_state = "open";	// "open"	= Sidebar initially open, [default]	+ normally auto pinned
-							// "closed" = Sidebar initially closed, 		+ normally auto unpinned
+$sidebar_state = "open"; // "open" = Sidebar initially open, [default] + normally auto pinned
+							// "closed" = Sidebar initially closed, + normally auto unpinned
 //
 ?>
 
@@ -174,21 +174,21 @@ jQuery(document).ready(function() {
 
 	// Sidebar Pin Function
 	jQuery('#sidebar_pin').toggle(
-   	function() {
-   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
-   		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
-   		pinned = true;
-   	},
-   	function() {
-   		jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
-   	jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
-   	pinned = false;
-   	}
+		function() {
+			jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
+			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
+			pinned = true;
+		},
+		function() {
+			jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
+		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
+		pinned = false;
+		}
 	);
 	<?php if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { ?>
 		jQuery('#sidebar_pin').click();
 	<?php } ?>
-   	// ---------------------
+	// ---------------------
 
 	var modsLoaded = false;
 
@@ -210,14 +210,14 @@ jQuery(document).ready(function() {
 		jQuery('#sidebarAccordion').show();
 		jQuery('#sidebar_pin').show();
 		// Shift content
-   	var newwidth = 310;
+		var newwidth = 310;
 		newwidth = jQuery('#tabs').width() - newwidth;
 		// NOTE: REM next line to avoid the "page shift" when Navigator is opened. (Purely a preference choice)
-   	jQuery('#tabs > div').css('width', newwidth+'px');
+		jQuery('#tabs > div').css('width', newwidth+'px');
 		//
-  		<?php if ($sidebar_state == "open" ) { ?>
+			<?php if ($sidebar_state == "open" ) { ?>
 			jQuery('#sidebar_pin').click();
-  		<?php } ?>
+			<?php } ?>
 
 		<?php if ($sidebar_state == "open") { ?>
 			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true&sb_closed=false');
@@ -243,8 +243,8 @@ jQuery(document).ready(function() {
 			jQuery('#tabs div').css('width', '');
 		//
 		<?php if ($sidebar_state == "open" ) { ?>
-  			jQuery('#sidebar_pin').click();
-  		<?php } ?>
+			jQuery('#sidebar_pin').click();
+		<?php } ?>
 
 		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false&sb_closed=true');
 		sb_open=false;
@@ -252,23 +252,23 @@ jQuery(document).ready(function() {
 	// -----------------------------
 
 	<?php if  ( $sidebar_state == "open" ) { ?>
- 		<?php if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || !isset($_SESSION['WT_sb_closed']) ) { ?>
+		<?php if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || !isset($_SESSION['WT_sb_closed']) ) { ?>
 			jQuery('#sidebar_open').click();
 			jQuery('#sidebar_controls').show();
 			if ( pinned == false ) {
 				jQuery('#sidebar_pin').click();
 			}
-  		<?php } else { ?>
-  			jQuery('#sidebar_controls').show();
-  		<?php } ?>
-  	<?php } ?>
+			<?php } else { ?>
+				jQuery('#sidebar_controls').show();
+			<?php } ?>
+		<?php } ?>
 
-  	<?php if ( $sidebar_state == "closed" ) { ?>
-  		if ( pinned == true) {
-  			jQuery('#sidebar_open').click();
-  		}
-  		jQuery('#sidebar_controls').show();
-  	<?php } ?>
+		<?php if ( $sidebar_state == "closed" ) { ?>
+			if ( pinned == true) {
+				jQuery('#sidebar_open').click();
+			}
+			jQuery('#sidebar_controls').show();
+		<?php } ?>
 
 });
 -->

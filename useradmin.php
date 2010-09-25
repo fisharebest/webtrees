@@ -186,7 +186,8 @@ if ($action=='createuser' || $action=='edituser2') {
 				$message["method"]="messaging2";
 				addMessage($message);
 				// and send a copy to the admin
-/*				$message=array();
+				/*
+				$message=array();
 				$message["to"]=WT_USER_NAME;
 				$headers="From: ".$WEBTREES_EMAIL;
 				$message["from"]=$username; // fake the from address - so the admin can "reply" to it.
@@ -204,7 +205,7 @@ if ($action=='createuser' || $action=='edituser2') {
 } else {
 	print_header(i18n::translate('User administration'));
 
-//	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
+// if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 }
 
 // Print the form to edit a user
@@ -832,7 +833,7 @@ if ($action == "cleanup") {
 	</tr>
 	<?php
 	// Check for idle users
-//	if (!isset($month)) $month = 1;
+	//if (!isset($month)) $month = 1;
 	$month = safe_GET_integer('month', 1, 12, 6);
 	echo "<tr><td class=\"descriptionbox\">", i18n::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</td>";
 	echo "<td class=\"optionbox\"><select onchange=\"document.location=options[selectedIndex].value;\">";
@@ -968,13 +969,13 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	<tr>
 	<td class="optionbox" colspan="3">
 	<?php
-	$totusers = 0;			// Total number of users
-	$warnusers = 0;			// Users with warning
-	$applusers = 0;			// Users who have not verified themselves
-	$nverusers = 0;			// Users not verified by admin but verified themselves
-	$adminusers = 0;		// Administrators
-	$userlang = array();	// Array for user languages
-	$gedadmin = array();	// Array for gedcom admins
+	$totusers = 0;       // Total number of users
+	$warnusers = 0;      // Users with warning
+	$applusers = 0;      // Users who have not verified themselves
+	$nverusers = 0;      // Users not verified by admin but verified themselves
+	$adminusers = 0;     // Administrators
+	$userlang = array(); // Array for user languages
+	$gedadmin = array(); // Array for gedcom admins
 	foreach(get_all_users() as $user_id=>$user_name) {
 		$totusers = $totusers + 1;
 		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) $warnusers++;

@@ -24,13 +24,13 @@ define('WT_REPORTHEADER_PHP', '');
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["Report"]["start"]		= "ReportSHandler";
-$elementHandler["var"]["start"]			= "varSHandler";
-$elementHandler["Title"]["start"]		= "TitleSHandler";
-$elementHandler["Title"]["end"]			= "TitleEHandler";
-$elementHandler["Description"]["end"]	= "DescriptionEHandler";
-$elementHandler["Input"]["start"]		= "InputSHandler";
-$elementHandler["Input"]["end"]			= "InputEHandler";
+$elementHandler["Report"]["start"]   ="ReportSHandler";
+$elementHandler["var"]["start"]      ="varSHandler";
+$elementHandler["Title"]["start"]    ="TitleSHandler";
+$elementHandler["Title"]["end"]      ="TitleEHandler";
+$elementHandler["Description"]["end"]="DescriptionEHandler";
+$elementHandler["Input"]["start"]    ="InputSHandler";
+$elementHandler["Input"]["end"]      ="InputEHandler";
 
 $text = "";
 $report_array = array();
@@ -47,7 +47,7 @@ $report_array = array();
  */
 function startElement($parser, $name, $attrs) {
 // @deprecated
-//	global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
+// global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
 	if (($processIfs==0) || ($name=="if")) {
@@ -66,7 +66,7 @@ function startElement($parser, $name, $attrs) {
  */
 function endElement($parser, $name) {
 	// @deprecated
-//	global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
+	// global $elementHandler, $processIfs, $processGedcoms, $processRepeats;
 	global $elementHandler, $processIfs;
 
 	if (($processIfs==0) || ($name=="if")) {
@@ -128,7 +128,7 @@ function varSHandler($attrs) {
 
 function TitleSHandler() {
 	// @deprecated
-//	global $report_array, $text;
+	// global $report_array, $text;
 	global $text;
 
 	$text = "";
@@ -199,5 +199,3 @@ function InputEHandler() {
 	$report_array["inputs"][] = $input;
 	$text = "";
 }
-
-?>

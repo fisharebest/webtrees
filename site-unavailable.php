@@ -47,8 +47,8 @@ echo
 	'<head>',
 	'<title>Site Unavailable - webtrees</title>',
 	'<style type="text/css">
-		body { 	color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif;	padding:10px; }
-		a {	color: #81A9CB; font-weight: bold; text-decoration: none;}
+		body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
+		a {color: #81A9CB; font-weight: bold; text-decoration: none;}
 		a:hover {text-decoration: underline;}
 		h1 {color: #81A9CB; font-weight:normal; text-align:center;}
 		li {line-height:2;}

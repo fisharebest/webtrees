@@ -75,46 +75,46 @@ define('VAV_YOD', 'ױ');
  * function call to achieve the desired transformations.
  *
  * Note about the use of "\x01":
- *		This code, which can't legitimately occur in the kind of text we're dealing with,
- *		is used as a place-holder so that conditional string replacements can be done.
+ * This code, which can't legitimately occur in the kind of text we're dealing with,
+ * is used as a place-holder so that conditional string replacements can be done.
  */
 $transformNameTable = array(
 	// Force Yiddish ligatures to be treated as separate letters
-	array(DOUBLE_VAV,		VAV.VAV),
-	array(DOUBLE_YOD,		YOD.YOD),
-	array(VAV_YOD,			VAV.YOD),
+	array(DOUBLE_VAV,    VAV.VAV),
+	array(DOUBLE_YOD,    YOD.YOD),
+	array(VAV_YOD,       VAV.YOD),
 	// Feature request 1511090, bullet (a)
-	array(BET.VAV,			BET.AYIN),
-	array(PE.VAV,			PE.AYIN),
-	array(VAV.MEM,			AYIN.MEM),
-	array(VAV.FINAL_MEM,	AYIN.FINAL_MEM),
-	array(VAV.NUN,			AYIN.NUN),
-	array(VAV.FINAL_NUN,	AYIN.FINAL_NUN),
+	array(BET.VAV,       BET.AYIN),
+	array(PE.VAV,        PE.AYIN),
+	array(VAV.MEM,       AYIN.MEM),
+	array(VAV.FINAL_MEM, AYIN.FINAL_MEM),
+	array(VAV.NUN,       AYIN.NUN),
+	array(VAV.FINAL_NUN, AYIN.FINAL_NUN),
 	// Feature request 1511090, bullet (b)
-	array(VAV.VAV,			BET),
+	array(VAV.VAV,       BET),
 	// Feature request 1511090, bullet (c)
-	array("\x01",			''),
-	array(YOD.YOD.HE.'$',	"\x01".HE),
-	array(YOD.YOD.AYIN.'$',	"\x01".AYIN),
-	array(YOD.YOD,			AYIN),
-	array("\x01",			YOD.YOD)
+	array("\x01",        ''),
+	array(YOD.YOD.HE.'$', "\x01".HE),
+	array(YOD.YOD.AYIN.'$', "\x01".AYIN),
+	array(YOD.YOD,       AYIN),
+	array("\x01",        YOD.YOD)
 	);
 
-$maxchar = 7;		// Max. table key length (in ASCII bytes -- NOT in UTF-8 characters!)
+$maxchar = 7; // Max. table key length (in ASCII bytes -- NOT in UTF-8 characters!)
 
 /**
  * The DM sound coding table is organized this way:
- *		key:	a variable-length string that corresponds to the UTF-8 character sequence
- *				represented by the table entry.  Currently, that string can be up to 7
- *				bytes long.  This maximum length is defined by the value of global variable
- *				$maxchar.
- *		value:	an array as follows:
- *				[0]:  zero if not a vowel
- *				[1]:  sound value when this string is at the beginning of the word
- *				[2]:  sound value when this string is followed by a vowel
- *				[3]:  sound value for other cases
- *				[1],[2],[3] can be repeated several times to create branches in the code
- *				an empty sound value means "ignore in this state"
+ * key: a variable-length string that corresponds to the UTF-8 character sequence
+ *  represented by the table entry.  Currently, that string can be up to 7
+ *  bytes long.  This maximum length is defined by the value of global variable
+ *  $maxchar.
+ * value: an array as follows:
+ *  [0]:  zero if not a vowel
+ *  [1]:  sound value when this string is at the beginning of the word
+ *  [2]:  sound value when this string is followed by a vowel
+ *  [3]:  sound value for other cases
+ *  [1],[2],[3] can be repeated several times to create branches in the code
+ *  an empty sound value means "ignore in this state"
  */
 $dmsounds = array();
 
@@ -498,7 +498,7 @@ $dmsounds[HE.GIMEL] = array('0',   '54','54','54',   '55','55','55');
 $dmsounds[HE.KAF] = array('0',   '55','55','55');
 $dmsounds[HE.HET] = array('0',   '55','55','55');
 $dmsounds[HE.QOF] = array('0',   '55','55','55',   '5','5','5');
-$dmsounds[HE.HE] = array('0',   '5','5','',   '55','55','');	// -- added by GK
+$dmsounds[HE.HE] = array('0',   '5','5','',   '55','55',''); // -- added by GK
 $dmsounds[HE] = array('0',   '5','5','');
 $dmsounds[VAV.YOD] = array('1',   '','','',   '7','7','7');
 $dmsounds[VAV] = array('1',   '7','7','7',   '7','','');
@@ -525,15 +525,15 @@ $dmsounds[TET.SHIN] = array('0',   '4','4','4');
 $dmsounds[TET.DALET] = array('0',   '33','33','33');
 $dmsounds[TET.YOD] = array('0',   '3','3','3',   '4','4','4',   '3','3','34');
 $dmsounds[TET.TAV] = array('0',   '33','33','33');
-$dmsounds[TET.TET] = array('0',   '3','3','3',   '33','33','33');	// -- added by GK
+$dmsounds[TET.TET] = array('0',   '3','3','3',   '33','33','33'); // -- added by GK
 $dmsounds[TET] = array('0',   '3','3','3');
 $dmsounds[YOD] = array('1',   '1','','');
 $dmsounds[YOD.ALEF] = array('1',   '1','','',   '1','1','1');
 $dmsounds[KAF.GIMEL] = array('0',   '55','55','55',   '54','54','54');
 $dmsounds[KAF.SHIN] = array('0',   '5','54','54');
 $dmsounds[KAF.SAMEKH] = array('0',   '5','54','54');
-$dmsounds[KAF.KAF] = array('0',   '5','5','5',   '55','55','55');	// == added by GK
-$dmsounds[KAF.FINAL_KAF] = array('0',   '5','5','5',   '55','55','55');	// == added by GK
+$dmsounds[KAF.KAF] = array('0',   '5','5','5',   '55','55','55'); // == added by GK
+$dmsounds[KAF.FINAL_KAF] = array('0',   '5','5','5',   '55','55','55'); // == added by GK
 $dmsounds[KAF] = array('0',   '5','5','5');
 $dmsounds[KAF.HET] = array('0',   '55','55','55',   '5','5','5');
 $dmsounds[FINAL_KAF] = array('0',   '','5','5');
@@ -543,14 +543,14 @@ $dmsounds[MEM.NUN] = array('0',   '66','66','66');
 $dmsounds[MEM.FINAL_NUN] = array('0',   '66','66','66');
 //$dmsounds[MEM.MEM] = array('0',   '66','66','66');
 $dmsounds[MEM.MEM] = array('0',   '6','6','6',   '66','66','66');
-$dmsounds[MEM.FINAL_MEM] = array('0',   '6','6','6',   '66','66','66');	// -- added by GK
+$dmsounds[MEM.FINAL_MEM] = array('0',   '6','6','6',   '66','66','66'); // -- added by GK
 $dmsounds[MEM] = array('0',   '6','6','6');
 $dmsounds[FINAL_MEM] = array('0',   '','6','6');
 $dmsounds[NUN.MEM] = array('0',   '66','66','66');
 $dmsounds[NUN.FINAL_MEM] = array('0',   '66','66','66');
 //$dmsounds[NUN.NUN] = array('0',   '66','66','66');
 $dmsounds[NUN.NUN] = array('0',   '6','6','6',   '66','66','66');
-$dmsounds[NUN.FINAL_NUN] = array('0',   '6','6','6',   '66','66','66');	// -- added by GK
+$dmsounds[NUN.FINAL_NUN] = array('0',   '6','6','6',   '66','66','66'); // -- added by GK
 $dmsounds[NUN] = array('0',   '6','6','6');
 $dmsounds[FINAL_NUN] = array('0',   '','6','6');
 $dmsounds[SAMEKH.TAV.SHIN] = array('0',   '2','4','4');
@@ -572,7 +572,7 @@ $dmsounds[AYIN] = array('1',   '0','','');
 $dmsounds[PE.BET] = array('0',   '7','7','7',   '77','77','77');
 $dmsounds[PE.VAV.VAV] = array('0',   '7','7','7',   '77','77','77');
 $dmsounds[PE.PE] = array('0',   '7','7','7',   '77','77','77');
-$dmsounds[PE.FINAL_PE] = array('0',   '7','7','7',   '77','77','77');	// -- added by GK
+$dmsounds[PE.FINAL_PE] = array('0',   '7','7','7',   '77','77','77'); // -- added by GK
 $dmsounds[PE] = array('0',   '7','7','7');
 $dmsounds[FINAL_PE] = array('0',   '','7','7');
 $dmsounds[TSADI.GIMEL] = array('0',   '44','44','44',   '45','45','45');
@@ -653,5 +653,3 @@ $dmsounds["آ"] = array('0',   '1','','');
 $dmsounds["ة"] = array('0',   '','','3');
 $dmsounds["ی"] = array('0',   '1','','');
 $dmsounds["ى"] = array('1',   '1','','');
-
-?>

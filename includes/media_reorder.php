@@ -52,7 +52,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 		<input type="hidden" name="action" value="reorder_media_update" />
 		<input type="hidden" name="pid" value="<?php print $pid; ?>" />
 		<input type="hidden" name="currtab" value="<?php print $currtab; ?>" />
-<!--		<input type="hidden" name="option" value="bybirth" /> -->
+<!-- <input type="hidden" name="option" value="bybirth" /> -->
 
 		<p><center>
 		<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>"><?php print i18n::translate('Save');?></button>
@@ -214,5 +214,3 @@ print "\n";
 	<button type="submit" title="<?php print i18n::translate('Quit and return');?>" onclick="window.close();"><?php print i18n::translate('Cancel');?></button>
 	</center></p>
 	</form>
-<?php
-?>

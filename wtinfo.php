@@ -76,12 +76,8 @@ if ($action == "phpinfo") {
 	$php_info = substr($php_info, $offset);
 
 	echo $php_info;
-
 	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
 	echo '</div>';
-
-	//	exit;
 }
 
 print_footer();
-?>

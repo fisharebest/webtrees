@@ -148,7 +148,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 <h2 class="center"><?php print $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->printResults(); ?>
-<!--	/*************************************************** Search Form Outer Table **************************************************/ -->
+<!-- /*************************************************** Search Form Outer Table **************************************************/ -->
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php">
 <input type="hidden" name="action" value="<?php print $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
@@ -160,7 +160,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 <table class="list_table $TEXT_DIRECTION" width="35%" border="0">
 	<tr>
 
-<!--	/**************************************************** General Search Form *************************************************************/ -->
+<!-- /**************************************************** General Search Form *************************************************************/ -->
 			<?php if($controller->action == "general") { ?>
 				<td colspan="3" class="facts_label03" style="text-align:center;">
 					<?php echo i18n::translate('General Search'), help_link('search_enter_terms'); ?>
@@ -369,7 +369,7 @@ if ($controller->action == "soundex") {
 	<!-- Individuals' names to print options (Names with hit, All names) -->
 	<!-- <tr>
 		<td class="list_label">
-			<?php 	print i18n::translate('Individuals\'<br />names to print:'); ?>
+			<?php  print i18n::translate('Individuals\'<br />names to print:'); ?>
 		</td>
 		<td class="list_value">
 			<input type="radio" name="nameprt" value="hit"
@@ -642,4 +642,3 @@ if (($controller->action != "multisite") && !$somethingPrinted ) {
 }
 
 print_footer();
-?>

@@ -242,7 +242,7 @@ case "de": // Deutsch
 	break;
 case "en": // English  -- limited copy of the default case (Western European set)
    $ucspecialchars = array(
-   		"&#192;" => "À",
+    "&#192;" => "À",
 		"&#193;" => "Á",
 		"&#194;" => "Â",
 		"&#195;" => "Ã",
@@ -1298,4 +1298,3 @@ $otherspecialchars = array(
 	"&#176;" => "°",  // degree symbol
 	"&#182;" => "¶",
 );
-?>

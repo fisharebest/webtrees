@@ -101,8 +101,8 @@ echo
 	'<head>',
 	'<title>webtrees setup wizard</title>',
 	'<style type="text/css">
-		body { 	color: black; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif;	padding:10px; }
-		a {	color: black; font-weight: normal; text-decoration: none;}
+		body {color: black; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
+		a {color: black; font-weight: normal; text-decoration: none;}
 		a:hover {color: #81A9CB;}
 		h1 {color: #81A9CB; font-weight:normal;}
 		legend {color:#81A9CB; font-style: italic; font-weight:bold; padding: 0 5px 5px; align: top;}

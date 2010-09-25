@@ -361,10 +361,10 @@ $STATUS_CODES = array(
 
 // RESN tags - restriction status
 $RESN_CODES = array(
-	'none'			=>i18n::translate_c('Restriction status', 'None'),
-	'locked'		=>i18n::translate_c('Restriction status', 'Do not change'),
-	'privacy'		=>i18n::translate_c('Restriction status', 'Privacy'),
-	'confidential'	=>i18n::translate_c('Restriction status', 'Confidential')
+	'none'        =>i18n::translate_c('Restriction status', 'None'),
+	'locked'      =>i18n::translate_c('Restriction status', 'Do not change'),
+	'privacy'     =>i18n::translate_c('Restriction status', 'Privacy'),
+	'confidential'=>i18n::translate_c('Restriction status', 'Confidential')
 );
 
 // NPFX tags - name prefixes

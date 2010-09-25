@@ -7,7 +7,7 @@
  * Copyright (C) 2010 webtrees development team.
  *
  * Derived from PhpGedView
- * Copyright (C) 2002 to 2009	PGV Development Team. All rights reserved.
+ * Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -136,7 +136,7 @@ print_header(i18n::translate('Advanced search'));
 
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->PrintResults(); ?>
-<!--	/*************************************************** Search Form Outer Table **************************************************/ -->
+<!-- /*************************************************** Search Form Outer Table **************************************************/ -->
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
@@ -159,8 +159,8 @@ print_header(i18n::translate('Advanced search'));
 		</td>
 		<td id="vcell<?php print $i; ?>" class="list_value">
 			<?php
-			$currentFieldSearch = $controller->getField($i);		// Get this field's name and the search criterion
-			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':'));		// Get the actual field name
+			$currentFieldSearch = $controller->getField($i); // Get this field's name and the search criterion
+			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
 			<input tabindex="<?php print $i+1; ?>" type="text" id="value<?php print $i; ?>" name="values[<?php print $i; ?>]" value="<?php print $controller->getValue($i); ?>" />
 			<?php if (preg_match("/^NAME:/", $currentFieldSearch)>0) {
@@ -195,7 +195,7 @@ print_header(i18n::translate('Advanced search'));
 			$motherSurnOption = 'SDX';
 			for($k=0; $k<$fct; $k++) {
 				$searchField = $controller->getField($k);
-				$searchOption = substr($searchField, 20);	// Assume we have something like "FAMC:HUSB:NAME:GIVN:foo"
+				$searchOption = substr($searchField, 20); // Assume we have something like "FAMC:HUSB:NAME:GIVN:foo"
 				switch (substr($searchField, 0, 20)) {
 				case 'FAMC:HUSB:NAME:GIVN:':
 					$fatherGivnOption = $searchOption;
@@ -320,4 +320,3 @@ if (!$somethingPrinted ) {
 //-- somewhere the session gedcom gets changed, so we will change it back
 $_SESSION['GEDCOM'] = $GEDCOM;
 print_footer();
-?>

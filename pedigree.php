@@ -150,12 +150,12 @@ echo '</h2>';
 //-- echo the boxes
 $curgen = 1;
 $xoffset = 0;
-$yoffset = 0;			// -- used to offset the position of each box as it is generated
-$prevxoffset = 0;		// -- used to track the x position of the previous box
-$prevyoffset = 0;		// -- used to track the y position of the previous box
+$yoffset = 0;     // -- used to offset the position of each box as it is generated
+$prevxoffset = 0; // -- used to track the x position of the previous box
+$prevyoffset = 0; // -- used to track the y position of the previous box
 $maxyoffset = 0;
 $linesize = 3;
-if (!isset($brborder)) $brborder = 1;	// Avoid errors from old custom themes
+if (!isset($brborder)) $brborder = 1; // Avoid errors from old custom themes
 for($i=($controller->treesize-1); $i>=0; $i--) {
 	// -- check to see if we have moved to the next generation
 	if ($i < floor($controller->treesize / (pow(2, $curgen)))) {
@@ -222,7 +222,7 @@ for($i=($controller->treesize-1); $i>=0; $i--) {
 		// Work around a bug in FireFox that mis-places some boxes in Portrait RTL, resulting in
 		// vertical lines that themselves appear to be mis-placed.
 		if ($TEXT_DIRECTION=="rtl" && $BROWSERTYPE=="mozilla" && ($curgen <= 2)) $xoffset += 10;
-		if ($TEXT_DIRECTION=="rtl") $xoffset += $brborder;		// Account for thickness of right box border
+		if ($TEXT_DIRECTION=="rtl") $xoffset += $brborder; // Account for thickness of right box border
 
 		if ($yoffset>$maxyoffset) $maxyoffset=$yoffset;
 		$widthadd = 0;
@@ -313,7 +313,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			echo $addxoffset, "px; top:", $yoffset, "px; width:10px; height:10px; \">";
 		}
 		else if ($talloffset == 1) {
-			if ($PEDIGREE_GENERATIONS<4)	$basexoffset += 60;
+			if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 			echo $basexoffset, "px; top:", $yoffset, "px; width:10px; height:10px; \">";
 		}
 		else if ($talloffset==3) {

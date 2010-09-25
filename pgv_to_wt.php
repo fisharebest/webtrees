@@ -380,22 +380,22 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		WT_DB::prepare(
 			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
-			"	SELECT user_id, 'canadmin', ".
+			" SELECT user_id, 'canadmin', ".
 			" CASE WHEN u_canadmin IN ('Y', 'yes') THEN 1 WHEN u_canadmin IN ('N', 'no') THEN 0 ELSE u_canadmin END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'verified', ".
+			" SELECT user_id, 'verified', ".
 			" CASE WHEN u_verified IN ('Y', 'yes') THEN 1 WHEN u_verified IN ('N', 'no') THEN 0 ELSE u_verified END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'verified_by_admin', ".
+			" SELECT user_id, 'verified_by_admin', ".
 			" CASE WHEN u_verified_by_admin IN ('Y', 'yes') THEN 1 WHEN u_verified_by_admin IN ('N', 'no') THEN 0 ELSE u_verified_by_admin END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'language', ".
+			" SELECT user_id, 'language', ".
 			" CASE u_language".
 			"  WHEN 'catalan'    THEN 'ca'".
 			"  WHEN 'english'    THEN 'en_US'".
@@ -423,20 +423,20 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'pwrequested', ".
+			" SELECT user_id, 'pwrequested', ".
 			" CASE WHEN u_pwrequested IN ('Y', 'yes') THEN 1 WHEN u_pwrequested IN ('N', 'no') THEN 0 ELSE u_pwrequested END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'reg_timestamp', u_reg_timestamp".
+			" SELECT user_id, 'reg_timestamp', u_reg_timestamp".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'reg_hashcode', u_reg_hashcode".
+			" SELECT user_id, 'reg_hashcode', u_reg_hashcode".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'theme', ".
+			" SELECT user_id, 'theme', ".
 			" CASE u_theme".
 			"  WHEN ''                    THEN ''".
 			"  WHEN 'themes/cloudy/'      THEN 'themes/clouds/'".
@@ -450,51 +450,51 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'loggedin', 0".
+			" SELECT user_id, 'loggedin', 0".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'sessiontime', u_sessiontime".
+			" SELECT user_id, 'sessiontime', u_sessiontime".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'contactmethod', u_contactmethod".
+			" SELECT user_id, 'contactmethod', u_contactmethod".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'visibleonline', ".
+			" SELECT user_id, 'visibleonline', ".
 			" CASE WHEN u_visibleonline IN ('Y', 'yes') THEN 1 WHEN u_visibleonline IN ('N', 'no') THEN 0 ELSE u_visibleonline END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'editaccount', ".
+			" SELECT user_id, 'editaccount', ".
 			" CASE WHEN u_editaccount IN ('Y', 'yes') THEN 1 WHEN u_editaccount IN ('N', 'no') THEN 0 ELSE u_editaccount END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'defaulttab', ".
+			" SELECT user_id, 'defaulttab', ".
 			" CASE WHEN u_defaulttab IN ('Y', 'yes') THEN 1 WHEN u_defaulttab IN ('N', 'no') THEN 0 ELSE u_defaulttab END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'comment', u_comment".
+			" SELECT user_id, 'comment', u_comment".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'comment_exp', u_comment_exp".
+			" SELECT user_id, 'comment_exp', u_comment_exp".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'relationship_privacy', ".
+			" SELECT user_id, 'relationship_privacy', ".
 			" CASE WHEN u_relationship_privacy IN ('Y', 'yes') THEN 1 WHEN u_relationship_privacy IN ('N', 'no') THEN 0 ELSE u_relationship_privacy END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'max_relation_path', u_max_relation_path".
+			" SELECT user_id, 'max_relation_path', u_max_relation_path".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			"	SELECT user_id, 'auto_accept', ".
+			" SELECT user_id, 'auto_accept', ".
 			" CASE WHEN u_auto_accept IN ('Y', 'yes') THEN 1 WHEN u_auto_accept IN ('N', 'no') THEN 0 ELSE u_auto_accept END".
 			" FROM {$DBNAME}.{$TBLPREFIX}users".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)"
