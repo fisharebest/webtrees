@@ -298,10 +298,10 @@ color: #ffffff;
 }
 
 /*	Start Standard Code					*/
-.blockcontent {
+div.blockcontent {
 margin-left:auto;
-border:1pt solid #999;
-margin-right:5px;
+border:1px solid #999;
+margin-right:auto;
 margin-bottom:10px;
 font-size: 13px;
 overflow:auto;
@@ -1054,10 +1054,10 @@ color:#000;
 .block {
 color: #030303;
 vertical-align: top;
+
 }
 
 .news_box {
-border: 1px solid #000;
 padding: 3pt;
 }
 

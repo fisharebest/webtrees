@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9320 2010-08-29 12:30:00Z rob $
+* $Id: ash.css 9516 2010-09-22 22:38:58Z nigel $
 */
 
 .something {
@@ -298,10 +298,10 @@ color: #707070;
 }
 
 /*	Start Standard Code					*/
-.blockcontent {
+div.blockcontent {
 margin-left:auto;
-border:1pt solid #999;
-margin-right:5px;
+border:1px solid #999;
+margin-right:auto;
 margin-bottom:10px;
 font-size: 13px;
 overflow:auto;
@@ -1054,10 +1054,10 @@ color:#000;
 .block {
 color: #030303;
 vertical-align: top;
+
 }
 
 .news_box {
-border: 1px solid #000;
 padding: 3pt;
 }
 
@@ -1891,7 +1891,7 @@ padding: 0 10px;
 }
 
 td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
-	color: #ffffff;
+	color: #707070;
 }
 
 .editfacts { /* a container for the following three links */
