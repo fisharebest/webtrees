@@ -476,6 +476,9 @@ function print_header($title, $head="", $use_alternate_styles=true) {
 	}
 	$bodyOnLoad .= "\"";
 	require WT_ROOT.$headerfile;
+	
+	// Allow the browser to format the header/menus while we generate the page
+	flush();
 }
 
 /**

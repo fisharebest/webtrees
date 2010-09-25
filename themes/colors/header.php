@@ -99,9 +99,7 @@ if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
 if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?> 
 	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> 
 <?php }
-	echo
-	'</head><body id="body" ', $bodyOnLoad, '>';
-flush(); // Allow the browser to start fetching external stylesheets, javascript, etc.
+	echo '</head><body id="body" ', $bodyOnLoad, '>';
 ?>
 
 <!-- Remove header for edit windows -->

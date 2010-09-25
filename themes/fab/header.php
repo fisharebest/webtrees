@@ -91,7 +91,6 @@ echo
 	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
 	'</head>',
 	'<body id="body" ',$bodyOnLoad, '>';
-flush(); // Allow the browser to start fetching external stylesheets, javascript, etc.
 
 echo '<div id="header" class="block">'; // Every page has a header
 if ($view!='simple') {
@@ -171,4 +170,3 @@ if ($view!='simple') {
 	echo '</ul></div>';
 }
 echo '</div><div id="content">';
-flush(); // Allow the browser to format the header/menus while we generate the page
