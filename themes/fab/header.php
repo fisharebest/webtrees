@@ -141,11 +141,11 @@ if ($view!='simple') {
 			MenuBar::getCalendarMenu(),
 			MenuBar::getReportsMenu(),
 			MenuBar::getSearchMenu(),
-			MenuBar::getHelpMenu()
 		);
 		foreach (MenuBar::getModuleMenus() as $menu) {
 			$menu_items[]=$menu;
 		}
+		$menu_items[]=MenuBar::getHelpMenu();
 
 		echo
 			'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',
