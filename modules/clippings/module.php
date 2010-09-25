@@ -64,9 +64,9 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function defaultMenuOrder() {
 		return 20;
 	}
-	
+
 	// Implement WT_Module_Menu
-	public function getMenu() { 
+	public function getMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER, $controller;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
@@ -115,7 +115,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function defaultSidebarOrder() {
 		return 50;
 	}
-	
+
 	// Impelement WT_Module_Sidebar
 	public function hasSidebarContent() {
 		return true;
@@ -143,7 +143,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$root = null;
 			if ($this->controller->pid && !id_in_cart($this->controller->pid)) {
 				$root = GedcomRecord::getInstance($this->controller->pid);
-				if ($root && $root->canDisplayDetails()) 
+				if ($root && $root->canDisplayDetails())
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$root->getXref().'" class="add_cart">
 					<img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.i18n::translate('Add %s to cart', $root->getListName()).'</a>';
 			}
@@ -407,7 +407,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		else return $this->getSidebarContent();
 		return $out;
 	}
-	
+
 	public function downloadForm() {
 		global $TEXT_DIRECTION;
 		$controller = $this->controller;
@@ -429,7 +429,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr><td class="descriptionbox width50 wrap">'.i18n::translate('Include media (automatically zips files)').help_link('include_media').'</td>
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked="checked" /></td></tr>
 		';
-		
+
 		// Determine the Privatize options available to this user
 		if (WT_USER_IS_ADMIN) {
 			$radioPrivatizeNone = 'checked="checked" ';
@@ -475,7 +475,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<input type="button" value="'.i18n::translate('Cancel').'" onclick="cancelDownload();" />
 		<input type="submit" value="'.i18n::translate('Download Now').'" />
 		</form>';
-		
+
 		return $out;
 	}
 

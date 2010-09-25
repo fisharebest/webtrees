@@ -327,8 +327,8 @@ if ($action=="ImportFile") {
 				<select name="localfile">
 					<option></option>
 					<?php foreach($placefiles as $p=>$placefile) { ?>
-					<option value="<?php echo htmlspecialchars($placefile); ?>"><?php 
-						if (substr($placefile, 0, 1)=="/") echo substr($placefile, 1); 
+					<option value="<?php echo htmlspecialchars($placefile); ?>"><?php
+						if (substr($placefile, 0, 1)=="/") echo substr($placefile, 1);
 						else echo $placefile; ?></option>
 					<?php } ?>
 				</select>
@@ -508,7 +508,7 @@ if ($action=="DeleteRecord") {
 		WT_DB::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
 		->execute(array($deleteRecord))
 		->fetchOne();
-	
+
 	if (!$exists) {
 		WT_DB::prepare("DELETE FROM `##placelocation` WHERE pl_id=?")
 			->execute(array($deleteRecord));

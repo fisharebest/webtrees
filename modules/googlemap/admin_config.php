@@ -62,10 +62,9 @@ if (WT_USER_IS_ADMIN) { ?>
 	  </td>
    </tr>
 </table>
-<?php 
+<?php
 print_footer();
 } else {
 	header("Location: login.php?url=module.php?mod=googlemap&mod_action=admin_config");
 	exit;
 }
-?>

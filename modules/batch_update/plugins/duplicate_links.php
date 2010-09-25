@@ -40,7 +40,7 @@ class duplicate_links_bu_plugin extends base_plugin {
 	static function getDescription() {
 		return i18n::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
 	}
-	
+
 	// Default is to operate on INDI records
 	function getRecordTypesToUpdate() {
 		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');

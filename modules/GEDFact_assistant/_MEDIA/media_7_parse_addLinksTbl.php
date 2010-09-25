@@ -36,7 +36,7 @@ function parseAddLinks() {
 	var tbl = document.getElementById('addlinkQueue');
 	for(var i=1; i<tbl.rows.length; i++){ // start at i=1 because we need to avoid header
 		var tr = tbl.rows[i];
-		var strRow = ''; 
+		var strRow = '';
 		for(var j=1; j<tr.cells.length; j++){ // Start at col 1 (j=1)
 			if (j>=2) {
 				// dont show  col 0 index
@@ -63,7 +63,7 @@ function parseRemLinks() {
 	var tbl = document.getElementById('existLinkTbl');
 	for(var i=1; i<tbl.rows.length; i++){ // start at i=1 because we need to avoid header
 		var remtr = tbl.rows[i];
-		var remstrRow = ''; 
+		var remstrRow = '';
 		for(var j=1; j<remtr.cells.length; j++){ // Start at col 1 (j=1)
 			if (j!=4 ) {
 				// dont show col 0 index
@@ -94,7 +94,7 @@ function shiftlinks() {
 	if (remstr) {
 		document.link.exist_links.value = remstr;
 	}
-	
+
 	parseAddLinks();
 	// alert('string = '+ str);
 	if (str) {

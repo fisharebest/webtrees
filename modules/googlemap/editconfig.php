@@ -436,12 +436,10 @@ if ($action=="update" && !isset($security_user)) {
 </table>
 </form>
 <?php
-				
+
 if (empty($SEARCH_SPIDER)) {
 	print_footer();
 } else {
 	echo i18n::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
 	echo "</div></body></html>";
 }
-
-?>

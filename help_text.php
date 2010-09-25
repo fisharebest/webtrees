@@ -3414,7 +3414,7 @@ case 'edituser_realname':
 
 case 'edituser_password':
 	$title=i18n::translate('Password');
-	$text=i18n::translate('Passwords must be at least 6 characters long and are case-sensitive, so that "s3CR#t" is different to "S3CR#t".'); 
+	$text=i18n::translate('Passwords must be at least 6 characters long and are case-sensitive, so that "s3CR#t" is different to "S3CR#t".');
 	break;
 
 case 'edituser_rootid':

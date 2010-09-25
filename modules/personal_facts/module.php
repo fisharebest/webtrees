@@ -49,7 +49,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function defaultTabOrder() {
 		return 10;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $FACT_COUNT, $WT_IMAGES, $EXPAND_RELATIVES_EVENTS;
@@ -131,7 +131,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		return true;
@@ -146,10 +146,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 		return '';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return '';
 	}
-	
+
 }

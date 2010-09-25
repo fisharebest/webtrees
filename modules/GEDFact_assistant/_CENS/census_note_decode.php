@@ -28,10 +28,10 @@
  * @subpackage Census Assistant
  * @version $Id$
  */
- 
+
 	$text = "xCxAx<table cellpadding=\"0\"><tr><td>" . $text;
 	$text = str_replace("<br />.start_formatted_area.<br />", "</td></tr></table><table cellpadding=\"0\"><tr><td class=\"notecell\">&nbsp;", $text);
-	
+
 		// -- Create View Header Tooltip explanations (Use embolden) -----------
 		$text = str_replace(".b.".'Name',   "<span class=\"note2\" alt=\"".'Full Name or Married name if married'."\"   title=\"".'Full Name or Married name if married'."\">  <b>".'Name'."</span>",   $text);
 		$text = str_replace(".b.".'Relation',   "<span class=\"note1\" alt=\"".'Relationship to Head of Household'."\"   title=\"".'Relationship to Head of Household'."\">  <b>".'Relation'."</span>",   $text);
@@ -87,15 +87,13 @@
 
 
 		// Regular Field Highlighting (Use embolden) ------------
-		$text = str_replace(".b.", "<b>", $text); 
-		
+		$text = str_replace(".b.", "<b>", $text);
+
 		// Replace "pipe" with </td><td> ------------------------
 		$text = str_replace("|", "&nbsp;&nbsp;</td><td class=\"notecell\">", $text);
-		
+
 	$text = str_replace(".end_formatted_area.<br />", "</td></tr></table><table cellpadding=\"0\"><tr><td>", $text);
 	$text = str_replace("<br />", "</td></tr><tr><td class=\"notecell\">&nbsp;", $text);
 	$text = $text . "</td></tr></table>";
 	$text = str_replace("xCxAx", $centitl."<br />", $text);
 	$text = str_replace("Notes:", "<b>Notes:</b>", $text);
-
-?>

@@ -198,7 +198,7 @@ $Darrowwidth=15; // additional width to include for the up arrows
 $CHARTS_CLOSE_HTML=true; // should the charts, pedigree, descendacy, etc close the HTML on the page
 
 // The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
-$WT_STATS_S_CHART_X=440; 
+$WT_STATS_S_CHART_X=440;
 $WT_STATS_S_CHART_Y=125;
 $WT_STATS_L_CHART_X=900;
 

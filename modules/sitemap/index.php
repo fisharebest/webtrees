@@ -76,10 +76,10 @@ if ($action=="sendFiles") {
 
 	echo "<?xml version='1.0' encoding='UTF-8'?>\n";
 	echo "<?xml-stylesheet type=\"text/xsl\" href=\"", WT_SERVER_NAME.WT_SCRIPT_PATH, "modules/sitemap/gss.xsl\"?>\n";
-	echo "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n"; 
-	echo " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"; 
-	echo " xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9\n"; 
-	echo " http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\">\n"; 
+	echo "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n";
+	echo " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
+	echo " xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9\n";
+	echo " http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\">\n";
 
 	if (isset($welcome)) {
 		echo " <url>\n";
@@ -193,7 +193,7 @@ if ($action=="sendIndex") {
 	echo "url=\"http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd\"\n";
 	echo "xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n";
 
-	
+
 	if (isset($filenames)) {
 		foreach($filenames as $ged_index=>$ged_name) {
 			$xml_name = str_ireplace(".ged",".xml", $ged_name);

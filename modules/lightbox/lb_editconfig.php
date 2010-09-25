@@ -211,7 +211,7 @@ if ($action=='update' && !isset($security_user)) {
 			<?php }else{ ?>
 				<INPUT TYPE="button" VALUE="<?php echo i18n::translate('Return to Admin Page'); ?>" onclick="javascript:window.location='module_admin.php'" />
 			<?php } ?>
-			
+
 			</td>
 
 		</tr>

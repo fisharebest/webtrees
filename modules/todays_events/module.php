@@ -128,14 +128,14 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		
+
 		$filter=get_block_setting($block_id, 'filter', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Show only events of living people?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
-		
+
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo i18n::translate('Show only Births, Deaths, and Marriages?');

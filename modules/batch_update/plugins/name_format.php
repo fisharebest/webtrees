@@ -40,7 +40,7 @@ class name_format_bu_plugin extends base_plugin {
 	static function getDescription() {
 		return i18n::translate('Correct NAME records of the form \'John/DOE/\' or \'John /DOE\', as produced by older genealogy programs.');
 	}
-	
+
 	static function doesRecordNeedUpdate($xref, $gedrec) {
 		return
 			preg_match('/^(?:1 NAME|2 _MARNM|2 _AKA) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||

@@ -59,17 +59,17 @@ $preview="";
 			type="application/x-shockwave-flash"
 			id="player2"
 			name="player2"
-			src="player.swf" 
-			width="400" 
+			src="player.swf"
+			width="400"
 			height="315"
-			allowscriptaccess="always" 
+			allowscriptaccess="always"
 			allowfullscreen="true"
 			flashvars="file=http://www.youtube.com/watch?v=TF6cnLnEARo"
 		/>
 	</object>
 	-->
 	<!-- END OF THE PLAYER EMBEDDING -->
-	
+
 
 	<div id="container"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</div>
 	<script type="text/javascript">
@@ -81,7 +81,7 @@ $preview="";
 		s1.addParam("stretching","fill");
 		s1.addParam("flashvars","file=" +video+ "&image=" +preview+ "&autostart=true" );
 		s1.write("container");
-  </script> 
+  </script>
 
 
 

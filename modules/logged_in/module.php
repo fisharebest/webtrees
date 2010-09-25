@@ -88,7 +88,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 		$content .= "</table>";
-		
+
 		if ($template) {
 			require $THEME_DIR.'templates/block_main_temp.php';
 		} else {

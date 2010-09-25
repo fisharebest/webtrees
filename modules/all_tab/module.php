@@ -51,26 +51,26 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function hasTabContent() {
 		return true;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		
+
 		$out = '<div id="'.$this->getName().'_content">';
 		$out .= "<!-- all tab doesn't have it's own content -->";
 		$out .= "</div>";
 		return $out;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		return true;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		return '';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		$out='if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {';

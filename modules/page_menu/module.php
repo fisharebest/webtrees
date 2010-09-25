@@ -49,9 +49,9 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 	public function defaultMenuOrder() {
 		return 10;
 	}
-	
+
 	// Implement WT_Module_Menu
-	public function getMenu() { 
+	public function getMenu() {
 		global $TEXT_DIRECTION, $controller;
 
 		$menu = null;

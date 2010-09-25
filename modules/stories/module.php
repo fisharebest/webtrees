@@ -159,7 +159,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
-		
+
 			if (safe_POST_bool('save')) {
 				$block_id=safe_POST('block_id');
 				if ($block_id) {
@@ -350,7 +350,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=show_list"
 	// No privacy restrictions included here though - so use with care!
-	private function show_list() { 
+	private function show_list() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
 			print_header($this->getTitle());

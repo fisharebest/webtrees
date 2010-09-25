@@ -261,7 +261,7 @@ function create_possible_place_names ($placename, $level) {
 
 function abbreviate($text) {
 	if (utf8_strlen($text)>13) {
-		if (trim(utf8_substr($text, 10, 1))!="") 
+		if (trim(utf8_substr($text, 10, 1))!="")
 			$desc = utf8_substr($text, 0, 11).".";
 		else $desc = trim(utf8_substr($text, 0, 11));
 	}
@@ -655,7 +655,7 @@ function build_indiv_map($indifacts, $famids) {
 
 				if ($multimarker == 0) {        // Only one location with this long/lati combination
 					$markers[$j]["placed"] = "yes";
-					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) { 
+					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) {
 						echo "var Marker{$j}_flag = new GIcon();\n";
 						echo " Marker{$j}_flag.image = \"modules/googlemap/images/marker_yellow.png\";\n";
 						echo " Marker{$j}_flag.shadow = \"modules/googlemap/images/shadow50.png\";\n";

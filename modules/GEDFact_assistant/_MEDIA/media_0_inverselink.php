@@ -76,7 +76,7 @@ if ($action == "choose" && $paramok) {
 	<!--
 	// Javascript variables
 	var id_empty = "<?php echo i18n::translate('When adding a Link, the ID field cannot be empty.'); ?>";
-	
+
 	var pastefield;
 	var language_filter, magnify;
 	language_filter = "";
@@ -96,7 +96,7 @@ if ($action == "choose" && $paramok) {
 		language_filter = lang;
 		magnify = mag;
 	}
-	
+
 	function blankwin() {
 		if (document.getElementById('gid').value == "" || document.getElementById('gid').value.length<=1) {
 			alert(id_empty);
@@ -106,7 +106,7 @@ if ($action == "choose" && $paramok) {
 			var winblank = window.open('modules/GEDFact_assistant/_MEDIA/media_query_3a.php?iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
 		}
 	}
-	
+
 	var GEDFact_assist = "installed";
 //-->
 	</script>
@@ -160,9 +160,9 @@ if ($action == "choose" && $paramok) {
 		require 'modules/GEDFact_assistant/_MEDIA/media_query_1a.php';
 		echo '</td></tr>';
 	}
-	
+
 	if (!isset($linktoid)) { $linktoid = ""; }
-	
+
 	echo '<tr><td class="descriptionbox wrap">';
 	echo i18n::translate('Add links');
 	echo '<td class="optionbox wrap ">';
@@ -180,7 +180,7 @@ if ($action == "choose" && $paramok) {
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';
-		if (isset($WT_IMAGES["add"])) { 
+		if (isset($WT_IMAGES["add"])) {
 			echo '<a href="#"><img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', i18n::translate('Add'), ' "title="', i18n::translate('Add'), '" align="middle" name="addLink" value="" onClick="javascript:blankwin(); return false;" />';
 			} else {
 			echo '<button name="addLink" value="" type="button" onClick="javascript:blankwin(); return false;">', i18n::translate('Add'), '</button>';
@@ -194,7 +194,7 @@ if ($action == "choose" && $paramok) {
 	echo '</td></tr></table>';
 	print "<sub>" . i18n::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.') . "</sub>";
 
-	
+
 	echo '<br /><br />';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID" />';
 	require 'modules/GEDFact_assistant/_MEDIA/media_query_2a.php';
@@ -224,11 +224,11 @@ if ($action == "choose" && $paramok) {
 	echo '</form>';
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', i18n::translate('Close Window'), '</a><br /></center>';
 	// print_simple_footer();
-	
+
 } elseif ($action == "update" && $paramok) {
 
 	echo "<b>", $mediaid, "</b><br/><br />";
-	
+
 	// Unlink records indicated by radio button =========
 	if (isset($exist_links) && $exist_links!="No_Values") {
 		$exist_links = substr($exist_links, 0, -1);
@@ -248,7 +248,7 @@ if ($action == "choose" && $paramok) {
 	}else{
 		// echo nothing and do nothing
 	}
-	
+
 	// Add new Links ====================================
 	if (isset($more_links) && $more_links!="No_Values" && $more_links!=",") {
 		$more_links = substr($more_links, 0, -1);
@@ -271,15 +271,15 @@ if ($action == "choose" && $paramok) {
 		//echo $mediaid, $pgv_lang["media_now_linked to"], '(', $gid, ')<br />';
 		//linkMedia($mediaid, $gid);
 	}
-	
+
 	if ($update_CHAN=='no_change') {
 		echo i18n::translate('No CHAN (Last Change) records were updated');
 		echo '<br />';
 	}
-	
+
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', i18n::translate('Close Window'), '</a><br /></center>';
 	print_simple_footer();
-		
+
 } else {
 	// echo '<center>You must be logged in as an Administrator<center>';
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', i18n::translate('Close Window'), '</a><br /></center>';

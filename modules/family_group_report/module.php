@@ -60,7 +60,7 @@ class family_group_report_WT_Module extends WT_Module implements WT_Module_Repor
 		} else {
 			$pid='';
 		}
-		
+
 		$menus=array();
 		$menu=new Menu($this->getTitle(), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
 		$menu->addIcon('sfamily');

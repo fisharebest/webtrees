@@ -41,7 +41,7 @@ echo
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
 
-if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") { 
+if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") {
 	echo '<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />';
 }
 
@@ -86,8 +86,8 @@ echo
 	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
 	'</head>',
 	'<body id="body" ',$bodyOnLoad, '>';
-	
-// begin header section 
+
+// begin header section
 if ($view!='simple') {
 	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
 	'<table width="100%">',

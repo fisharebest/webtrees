@@ -383,7 +383,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD){
 			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
-		} else { 
+		} else {
 			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";
 		}
 	}

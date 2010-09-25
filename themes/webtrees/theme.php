@@ -192,7 +192,7 @@ $bxspacing=0;    // -- horizontal spacing between boxes on the pedigree chart
 $byspacing=5;    // -- vertical spacing between boxes on the pedigree chart
 $brborder=1;     // -- box right border thickness
 
-// -- descendancy chart variables 
+// -- descendancy chart variables
 $Dbaseyoffset=0; // -- position the entire descendancy tree relative to the top of the page
 $Dbasexoffset=0; // -- position the entire descendancy tree relative to the left of the page
 $Dbxspacing=0;   // -- horizontal spacing between boxes

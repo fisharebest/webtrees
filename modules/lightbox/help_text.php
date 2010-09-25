@@ -42,9 +42,9 @@ case 'lb_tt_balloon':
 	$title=i18n::translate('Album Tab Thumbnail - Notes Link Tooltip');
 	$text=i18n::translate('This option lets you determine whether the \'View Notes\' link should show a \'Balloon\' Tooltip or \'Normal\' Tooltip when clicked. <br /><br />The link shown here show you the Notes associated with a Media item (if available).<br />');
 	break;
-	
-// VERSION 4.1.3 
-	
+
+// VERSION 4.1.3
+
 case 'mediatab':
 	$title=i18n::translate('Media Tab Appearance');
 	$text=i18n::translate('This option lets you determine whether the Media tab should be shown on the Individual Information page.<br /><br />When this option is set to <b>Hide</b>, only the <b>Lightbox</b> tab will be shown.<br />');

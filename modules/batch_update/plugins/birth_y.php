@@ -40,7 +40,7 @@ class birth_y_bu_plugin extends base_plugin {
 	static function getDescription() {
 		return i18n::translate('You can improve the performance of PGV by ensuring that all individuals have a &laquo;start of life&raquo; event.');
 	}
-	
+
 	static function doesRecordNeedUpdate($xref, $gedrec) {
 		return !preg_match('/^1\s+'.WT_EVENTS_BIRT.'\b/m', $gedrec);
 	}

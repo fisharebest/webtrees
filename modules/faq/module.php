@@ -320,7 +320,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				return;
 			}
 			if ($header && $faqbody) {
-				$row_color = ($row_count % 2) ? 'odd' : 'even'; 
+				$row_color = ($row_count % 2) ? 'odd' : 'even';
 				echo '';
 					// NOTE: Print the header of the current item
 						echo '<tr class="', $row_color, '"><td style="padding: 5px;">';

@@ -46,9 +46,8 @@ if (WT_USER_IS_ADMIN) { ?>
 		</a><?php echo help_link('LIGHTBOX_CONFIG', $this->getName()); ?>
 	  </td>
       <td class="optionbox">
-		
+
 	  </td>
    </tr>
 
 <?php }
-?>

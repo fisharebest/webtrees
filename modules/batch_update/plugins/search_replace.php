@@ -47,7 +47,7 @@ class search_replace_bu_plugin extends base_plugin {
 	static function getDescription() {
 		return i18n::translate('Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching.');
 	}
-	
+
 	// Default is to operate on INDI records
 	function getRecordTypesToUpdate() {
 		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');

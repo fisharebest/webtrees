@@ -26,7 +26,7 @@
  * @subpackage Display
  * @version $Id$
  */
- 
+
 define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_CENS/census_3_find.php');
 require '../../../includes/session.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -464,17 +464,17 @@ if ($action=="filter") {
 					if (!is_null($family)) {
 						$father = $family->getHusband();
 						$mother = $family->getWife();
-						if (!is_null($father)) { 
-							$FBP = $father->getBirthPlace(); 
+						if (!is_null($father)) {
+							$FBP = $father->getBirthPlace();
 						}
-						if (!is_null($mother)) { 
-							$MBP = $mother->getBirthPlace(); 
+						if (!is_null($mother)) {
+							$MBP = $mother->getBirthPlace();
 						}
-					} 
+					}
 				}
 				if (!isset($FBP)) { $FBP = "UNK, UNK, UNK, UNK"; }
 				if (!isset($MBP)) { $MBP = "UNK, UNK, UNK, UNK"; }
-				
+
 				//-- Build Indi Spouse Family to get marriage Date ----------
 				$families = $indi->getSpouseFamilies();
 				foreach($families as $famid=>$family) {
@@ -506,13 +506,13 @@ if ($action=="filter") {
 				} else {
 					$chBLDarray = '';
 				}
-				
+
 				echo "<li>";
 					// ==============================================================================================================================
 					// NOTES = is equivalent to= function pasterow(id, nam, mnam, label, gend, cond, dom, dob, age, dod, occu, birthpl, fbirthpl, mbirthpl, chilBLD) {
 					// ==============================================================================================================================
 					echo "<a href=\"javascript:;\" onclick=\"window.opener.insertRowToTable(";
-						echo "'".$indi->getXref()."', "; // id        - Indi Id 
+						echo "'".$indi->getXref()."', "; // id        - Indi Id
 						echo "'".addslashes(strip_tags($fulln))."', "; // nam       - Name
 						echo "'".addslashes(strip_tags($fulmn))."', "; // mnam      - Married Name
 						echo "'-', "; // label     - Relation to Head of Household

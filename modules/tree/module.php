@@ -50,7 +50,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function defaultTabOrder() {
 		return 70;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return
@@ -62,7 +62,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			' outdiv.style.width = (parent.offsetWidth-30) + "px";'.
 			'}';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		ob_start();
@@ -72,7 +72,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		$inav->drawViewport('treetab', "auto", "500px");
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		return true;

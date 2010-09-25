@@ -180,12 +180,12 @@ case 'go':
 		}
 	}
 	$place_list=preg_grep('/'.$filter.'/', $place_list);
-	
+
 	//sort the array, limit to unique values, and count them
 	$place_parts=array();
 	usort($place_list, "utf8_strcasecmp");
 	$i=count($place_list);
-	
+
 	//calculate maximum no. of levels to display
 	$x=0;
 	$max=0;
@@ -195,7 +195,7 @@ case 'go':
 		if ($parts>$max) $max=$parts;
 	$x++;}
 	$x=0;
-	
+
 	//scripts for edit, add and refresh
 	?>
 	<script language="JavaScript" type="text/javascript">
@@ -204,7 +204,7 @@ case 'go':
 		window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=680, height=550, resizable=1, scrollbars=1');
 		return false;
 	}
-	
+
 	function add_place_location(placeid) {
 		window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=680, height=550, resizable=1, scrollbars=1');
 		return false;
@@ -215,7 +215,7 @@ case 'go':
 	//-->
 	</script>
 	<?php
-	
+
 	//start to produce the display table
 	$cols=0;
 	$span=$max*3+3;
@@ -264,9 +264,9 @@ case 'go':
 		while ($z<$parts) {
 			if ($levels[$z]==' ' || $levels[$z]=='')
 				$levels[$z]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
-	
+
 			$levels[$z]=rtrim(ltrim($levels[$z]));
-	
+
 			$placelist=create_possible_place_names($levels[$z], $z+1); // add the necessary prefix/postfix values to the place name
 			foreach ($placelist as $key=>$placename) {
 				$row=
@@ -281,7 +281,7 @@ case 'go':
 			if ($row['pl_id']!='') {
 				$id=$row['pl_id'];
 			}
-	
+
 			if ($row['pl_place']!='') {
 				$placestr2=$mapstr_edit.$id."&amp;level=".$level.$mapstr3.$mapstr5.i18n::translate('Zoom=').$row['pl_zoom'].$mapstr6.$row['pl_placerequested'].$mapstr8;
 				if ($row['pl_place']=='unknown')
@@ -333,7 +333,7 @@ case 'go':
 		}
 		$x++;
 	}
-	
+
 	// echo final row of table
 	echo "<tr><td colspan=\"2\" class=\"list_label\">", i18n::translate('Total unique places'), ": ", $countrows, "</td></tr></table><br /><br />";
 	break;

@@ -50,7 +50,7 @@ function color_theme_dropdown($style=0) {
 /**
  *  Define the default palette to be used.  Set $subColor
  *  to one of the collowing values to determine the default:
- *  
+ *
  */
 
 $COLOR_THEME_LIST=array(

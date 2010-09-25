@@ -49,13 +49,13 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function defaultTabOrder() {
 		return 30;
 	}
-	
+
 	protected $sourceCount = null;
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_SOURCES;
-		
+
 		/*if (isset($_COOKIE['row_sour2'])) $SHOW_LEVEL2_SOURCES = ($_COOKIE['row_sour2']);
 		else*/ $SHOW_LEVEL2_SOURCES = $SHOW_LEVEL2_NOTES;
 
@@ -74,7 +74,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="descriptionbox rela">
 					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_SOURCES) echo " checked=\"checked\""?> onclick="toggleByClassName('TR', 'row_sour2');" />
 					<label for="checkbox_sour2"><?php echo i18n::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
-					
+
 				</td>
 			</tr>
 			<?php
@@ -141,7 +141,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 		return '';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return '';

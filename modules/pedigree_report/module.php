@@ -62,7 +62,7 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		} else {
 			$pid='';
 		}
-		
+
 		$menus=array();
 		$menu=new Menu($this->getTitle().' - '.i18n::translate('Portrait'), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_portrait.xml'.$pid);
 		$menu->addIcon('pedigree');
@@ -77,4 +77,3 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		return $menus;
 	}
 }
-?>

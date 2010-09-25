@@ -40,7 +40,7 @@ class tmglatlon_bu_plugin extends base_plugin {
 	static function getDescription() {
 		return i18n::translate('Converts The Master Genealogist\'s proprietary lat/lon format to the GEDCOM 5.5.1 standard that PGV can read.  Note: changes are not highlighted in the final output shown below.');
 	}
-	
+
 	// the default getActionPreview crashes on certain records, override the preview to just show the "after" results instead of the changes
 	// try removing this when bug 2177311 is fixed
 	function getActionPreview($xref, $gedrec) {

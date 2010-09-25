@@ -136,14 +136,13 @@ if ($error || empty($PGV_PATH)) {
 		'<dt>',i18n::translate('Installation directory'), '</dt>',
 		'<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($PGV_PATH).'">',
 		'</dd>';
-		echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
-		echo '<dd>';
-			foreach ($pgv_dirs as $pgvpath) {
-				echo '<p class="pgv">', $pgvpath, '</p>';
-			}
-		echo '</dd>';
-		
+	echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
+	echo '<dd>';
+	foreach ($pgv_dirs as $pgvpath) {
+		echo '<p class="pgv">', $pgvpath, '</p>';
+	}
 	echo
+		'</dd>',
 		'</dl>',
 		'<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>',
 		'</form>',

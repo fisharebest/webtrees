@@ -60,7 +60,7 @@ $reorder=safe_get('reorder', '1', '0');
 		"inverselink.php?linktoid=<?php print $pid; ?>&linkto=person", "win04", "resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ");
 		win04.focus()
 	}
-	
+
 	function goto_config_lightbox() {
 		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php print $pid; ?>&gedcom=<?php print $GEDCOM; ?>#lightbox";
 	}
@@ -242,4 +242,3 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 
 		print "</tr></table>";
 	}
-?>

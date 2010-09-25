@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-global $theme_name; 
+global $theme_name;
 ?>
 
 <script>
@@ -70,7 +70,3 @@ function help_window2(frm)  {
 		</center>
 	</div>
 </div>
-
-
-
-

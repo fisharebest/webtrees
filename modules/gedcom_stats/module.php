@@ -100,7 +100,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			// I18N: %s = date
 			$content .= i18n::translate('This GEDCOM was created on <b>%s</b>.', $date);
 		}
-		
+
 		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'.encode_url("indilist.php?surname_sublist=no&ged=".WT_GEDCOM).'">'.$stats->totalIndividuals().'</a></div></td></tr>';

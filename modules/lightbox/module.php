@@ -73,7 +73,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		global $MULTI_MEDIA;
 		return $MULTI_MEDIA && (WT_USER_CAN_EDIT || $this->get_media_count()>0);
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $MULTI_MEDIA, $MEDIA_EXTERNAL;
@@ -86,7 +86,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 		ob_start();
 		require_once 'modules/lightbox/functions/lb_head.php';
-		
+
 		$media_found = false;
 		if (!$this->controller->indi->canDisplayDetails()) {
 			print "<table class=\"facts_table\" cellpadding=\"0\">\n";
@@ -111,16 +111,16 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 	public function getPreLoadContent() {
 		ob_start();
 		require_once WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
-		return ob_get_clean(); 
+		return ob_get_clean();
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return 'CB_Init();';
 	}
 
 	protected $mediaCount = null;
-	
+
 	private function get_media_count() {
 		if ($this->mediaCount===null) {
 			$ct = preg_match("/\d OBJE/", $this->controller->indi->getGedcomRecord());

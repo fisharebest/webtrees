@@ -179,7 +179,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
-		
+
 		$templates=array(
 			i18n::translate('Keyword examples')=>
 			'#getAllTagsTable#',

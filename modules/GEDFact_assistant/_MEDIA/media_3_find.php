@@ -30,7 +30,7 @@
  * @subpackage Display
  * @version $Id$
  */
- 
+
 define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_MEDIA/media_3_find.php');
 require '../../../includes/session.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
@@ -442,21 +442,21 @@ if ($action=="filter") {
 				//echo $indi->format_list('li', true);
 				$nam = htmlspecialchars($indi->getFullName());
 				echo "<li><a href=\"javascript:;\" onclick=\"pasterow(
-					'".$indi->getXref()."' , 
+					'".$indi->getXref()."' ,
 					'".$nam."' ,
 					'".$indi->getSex()."' ,
 					'".$indi->getbirthyear()."' ,
 					'".(1901-$indi->getbirthyear())."' ,
 					'".$indi->getbirthplace()."'); return false;\">
 					<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";
-					
+
 					if ($ABBREVIATE_CHART_LABELS) {
 						$born=abbreviate_fact('BIRT');
 					} else {
 						$born=translate_fact('BIRT');
 					}
 
-				
+
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
 
 			echo "<hr />";

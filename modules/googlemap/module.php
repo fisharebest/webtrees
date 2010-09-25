@@ -72,7 +72,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	public function defaultTabOrder() {
 		return 80;
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
@@ -101,7 +101,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		?>
 <table border="0" width="100%">
 	<tr>
-		<td><?php 
+		<td><?php
 		if (!array_key_exists('googlemap', WT_Module::getActiveModules())) {
 			print "<table class=\"facts_table\">\n";
 			print "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>\n";

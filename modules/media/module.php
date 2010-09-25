@@ -49,7 +49,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function defaultTabOrder() {
 		return 50;
 	}
-	
+
 	protected $mediaCount = null;
 
 	// Implement WT_Module_Tab
@@ -57,11 +57,11 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $MULTI_MEDIA;
 		return $MULTI_MEDIA && (WT_USER_CAN_EDIT || $this->get_media_count()>0);
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $MULTI_MEDIA, $NAV_MEDIA;
-		
+
 		ob_start();
 		// For Reorder media ------------------------------------
 		if (WT_USER_CAN_EDIT) {
@@ -101,7 +101,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
-	
+
 	/**
 	* get the number of media items for this person
 	* @return int
@@ -125,10 +125,10 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 		return '';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return '';
 	}
-	
+
 }

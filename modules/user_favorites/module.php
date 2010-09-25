@@ -310,7 +310,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 	}
-	
+
 	/**
 	 * deleteFavorite
 	 * deletes a favorite in the database
@@ -343,11 +343,11 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$sql.=" AND fv_file=? AND fv_username=?";
 		$vars[]=$favorite["file"];
 		$vars[]=$favorite["username"];
-	
+
 		if (WT_DB::prepare($sql)->execute($vars)->fetchOne()) {
 			return false;
 		}
-	
+
 		//-- add the favorite to the database
 		return (bool)
 			WT_DB::prepare("INSERT INTO `##favorites` (fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,?)")
@@ -364,7 +364,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			WT_DB::prepare("SELECT * FROM `##favorites` WHERE fv_username=?")
 			->execute(array($username))
 			->fetchAll();
-	
+
 		$favorites = array();
 		foreach ($rows as $row) {
 			if (get_id_from_gedcom($row->fv_file)) { // If gedcom exists

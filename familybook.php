@@ -63,7 +63,7 @@ function print_descendency($person, $count) {
 	}
 
 	$pid=$person->getXref();
-	
+
 	echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 	echo "<tr>";
 	echo "<td width=\"".($bwidth-2)."\">";
@@ -189,7 +189,7 @@ function print_person_pedigree($pid, $count) {
 
 function print_family_book($person, $descent) {
 	global $generations, $dgenerations, $firstrun;
-	
+
 	if ($descent==0 || !$person->canDisplayName()) {
 		return;
 	}
@@ -316,7 +316,7 @@ if ($show_spouse) echo " checked=\"checked\""; ?> />
 </td></tr></table>
 
 <?php
-	
+
 echo
 	'<div id="familybook_chart',
 	($TEXT_DIRECTION=="ltr")?"":"_rtl",

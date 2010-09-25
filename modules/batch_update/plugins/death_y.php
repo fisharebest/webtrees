@@ -40,7 +40,7 @@ class death_y_bu_plugin extends base_plugin {
 	static function getDescription() {
 		return i18n::translate('You can improve the performance of PGV by ensuring that all individuals have (where appropriate) an &laquo;end of life&raquo; event.');
 	}
-	
+
 	static function doesRecordNeedUpdate($xref, $gedrec) {
 		return !preg_match('/^1\s+'.WT_EVENTS_DEAT.'\b/m', $gedrec) && Person::getInstance($xref)->isDead();
 	}

@@ -1128,7 +1128,7 @@ case 'editnote':
 					$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 					echo format_fact_date($event, false, true);
 					echo "</td></tr>\n";
-				} 
+				}
 			?>
 		</table>
 		<br /><br />

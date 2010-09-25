@@ -37,7 +37,7 @@ if (!defined('WT_WEBTREES')) {
 <html xmlns="http://www.w3.org/1999/xhtml" <?php echo i18n::html_markup(); ?>>
 	<head>
 		<?php if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") { ?>
-			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php } 
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php }
 		?>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<title><?php echo htmlspecialchars($title); ?></title>

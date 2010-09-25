@@ -434,7 +434,7 @@ class ClippingsController extends BaseController {
 		global $cart, $MULTI_MEDIA, $GEDCOM;
 		if (($clipping['id'] == false) || ($clipping['id'] == ""))
 		return false;
-		
+
 		if (!id_in_cart($clipping['id'])) {
 			$clipping['gedcom'] = $GEDCOM;
 			$ged_id=get_id_from_gedcom($GEDCOM);

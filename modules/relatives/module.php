@@ -49,17 +49,17 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function defaultTabOrder() {
 		return 20;
 	}
-	
+
 	function printFamilyHeader($famid, $label) {
 		global $WT_IMAGES, $SEARCH_SPIDER;
-	
+
 		echo '<table>
 			<tr>';
 			if (isset($WT_IMAGES["cfamily"])) {
 				echo '<td><img src="', $WT_IMAGES["cfamily"], '" border="0" class="icon" alt="" /></td>';
 			}
 			echo '<td><span class="subheaders">', PrintReady($label), '</span>';
-			if (empty($SEARCH_SPIDER)) { 
+			if (empty($SEARCH_SPIDER)) {
 				echo ' - <a href="family.php?famid=', $famid, '">', i18n::translate('View Family'), '</a>';
 			 }
 			echo '</td>
@@ -336,7 +336,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<?php
 		}
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $WT_IMAGES, $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount;
@@ -346,7 +346,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		$saved_ABBREVIATE_CHART_LABELS = $ABBREVIATE_CHART_LABELS;
 		$ABBREVIATE_CHART_LABELS = false; // Override GEDCOM configuration
-		
+
 		ob_start();
 		?>
 		<table class="facts_table"><tr><td style="width:20%; padding:4px"></td><td class="descriptionbox rela">
@@ -519,10 +519,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 		return '';
 	}
-	
+
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		return '';
 	}
-	
+
 }

@@ -468,7 +468,7 @@ function print_header($title) {
 	}
 	$bodyOnLoad .= "\"";
 	require WT_ROOT.$headerfile;
-	
+
 	// Allow the browser to format the header/menus while we generate the page
 	flush();
 }

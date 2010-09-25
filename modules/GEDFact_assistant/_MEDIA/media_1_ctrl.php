@@ -28,14 +28,14 @@
  * @subpackage Census Assistant
  * @version $Id$
  */
- 
+
  if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 global $summary, $theme_name, $TEXT_DIRECTION, $censyear, $censdate;
- 
+
 $pid = safe_get('pid');
 
 // echo $pid;
@@ -77,7 +77,7 @@ if ($pid=="") {
 	//echo i18n::translate('Add Family, and Search links');
 	//echo '</td>';
 	echo '<td valign="top" width=400>';
-	//-- Search  and Add Family Members Area ========================================= 
+	//-- Search  and Add Family Members Area =========================================
 		include('modules/GEDFact_assistant/_MEDIA/media_3_search_add.php');
 	echo '</td>';
 	echo '</tr>';

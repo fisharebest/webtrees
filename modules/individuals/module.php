@@ -79,14 +79,14 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '<script type="text/javascript">
 		<!--
 		var loadedNames = new Array();
-		
+
 		function searchQ() {
 			var query = jQuery("#sb_indi_name").attr("value");
 			if (query.length>1) {
 				jQuery("#sb_indi_content").load("sidebar.php?sb_action=individuals&search="+query);
 			}
 		}
-		
+
 		jQuery(document).ready(function(){
 			jQuery("#sb_indi_name").focus(function(){this.select();});
 			jQuery("#sb_indi_name").blur(function(){if (this.value=="") this.value="'.i18n::translate('Search').'";});
@@ -102,7 +102,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			jQuery(".sb_indi_surname").live("click", function() {
 				var surname = jQuery(this).attr("title");
 				var alpha = jQuery(this).attr("alt");
-				
+
 				if (!loadedNames[surname]) {
 					jQuery.ajax({
 					  url: "sidebar.php?sb_action=individuals&alpha="+alpha+"&surname="+surname,
@@ -151,7 +151,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out .= '</p>';
 		$out .= '<div id="sb_indi_content">';
-		
+
 		if (isset($_SESSION['sb_individuals_last'])) {
 			$last = $_SESSION['sb_individuals_last'];
 			$alpha = $last['alpha'];
@@ -160,7 +160,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (!empty($search)) $out.= $this->search($search);
 			else if (!empty($alpha)) $out.= $this->getAlphaSurnames($alpha, $surname);
 		}
-		
+
 		$out .= '</div></form>';
 		return $out;
 	}
@@ -177,7 +177,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '</div>';
 			}
 			else
-				$out .= '<div class="name_tree_div"></div>'; 
+				$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}
 		$out .= '</ul>';

@@ -28,14 +28,14 @@
  * @subpackage Census Assistant
  * @version $Id$
  */
- 
+
  if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
 global $summary, $theme_name, $censyear, $censdate;
- 
+
 $pid = safe_get('pid');
 
 $censdate  = new GedcomDate("31 MAR 1901");
@@ -65,7 +65,7 @@ $currpid=$pid;
 <?php
 	echo WT_JS_START;
 		 echo "var TheCenYear = opener.document.getElementById('setyear').value;";
-		 echo "var TheCenCtry = opener.document.getElementById('setctry').value;"; 
+		 echo "var TheCenCtry = opener.document.getElementById('setctry').value;";
 	echo WT_JS_END;
 
 
@@ -79,9 +79,9 @@ $currpid=$pid;
 				echo "<div class=\"cens_header_right\"/>". $summary. "</div>";
 			}
 	echo "</div>";
-	
 
-	//-- Census & Source Information Area ============================================= 
+
+	//-- Census & Source Information Area =============================================
 	echo "<div class=\" cens_container\">";
 		echo "<span >";
 			include('modules/GEDFact_assistant/_CENS/census_2_source_input.php');
@@ -91,13 +91,13 @@ $currpid=$pid;
 			include('modules/GEDFact_assistant/_CENS/census_4_text.php');
 		echo "</span>";
 	echo "</div>";
-	
-	//-- Search  and Add Family Members Area ========================================== 
+
+	//-- Search  and Add Family Members Area ==========================================
 	echo "<div class=\"optionbox cens_search\" style=\"overflow:-moz-scrollbars-horizontal;overflow-x:hidden;overflow-y:scroll;\">";
 		?><!--[if lte IE 7]><style>.cens_search{margin-top:-0.7em;}</style><![EndIf]--><?php
 		include('modules/GEDFact_assistant/_CENS/census_3_search_add.php');
 	echo "</div>";
-	
+
 	//-- Census Text Input Area =======================================================
 	?>
 	<div class="optionbox cens_textinput">
@@ -109,14 +109,14 @@ $currpid=$pid;
 			<input  type="radio" name="totallyrad" value="0" checked="checked" />
 		</div>
 	<?php
-	
+
 	//-- Census Add Rows Area =========================================================
 		echo "<div class=\"cens_addrows\">";
 			include('modules/GEDFact_assistant/_CENS/census_5_input.php');
 		echo "</div>";
-		?> 
+		?>
 	</div>
-	
+
 
 <script>
 

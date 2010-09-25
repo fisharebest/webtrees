@@ -44,7 +44,7 @@ if (!defined('WT_WEBTREES')) {
 	function getGroupOrder() {
 		// var sections = document.getElementsByClassName('section');
 		var sections = $$('.section');
-		
+
 		var alerttext = '';
 		var order = '';
 

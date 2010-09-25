@@ -69,11 +69,11 @@ global $TEXT_DIRECTION;
 		} else if (cenyear == 1940) { var cendate = new Date(1940, 3, 01);    // 01 APR 1940
 		// Default Date
 		} else {
-			var cendate = new Date(1901, 2, 31); 
+			var cendate = new Date(1901, 2, 31);
 		}
 		return cendate;
 	}
-	
+
 	function getPrevCenDate(cenyear) {
 		// UK PREVIOUS CENSUS DATES
 		       if (prevcenyear == 1841) { var prevcendate = new Date(1841, 5, 06);    // 06 JUN 1841
@@ -105,7 +105,7 @@ global $TEXT_DIRECTION;
 		} else if (prevcenyear == 1940) { var prevcendate = new Date(1940, 3, 01);    // 01 APR 1940
 		// Default Date
 		} else {
-			var prevcendate = new Date(1901, 2, 31); 
+			var prevcendate = new Date(1901, 2, 31);
 		}
 		return prevcendate;
 	}
@@ -138,7 +138,7 @@ global $TEXT_DIRECTION;
 				window.opener.showchanges();
 		window.close();
 	}
-	
+
 	function changeCtry() {
 		// Change Year field Colour ----------------------------------------------
 		if (document.getElementById('censYear').value=="choose") {
@@ -150,7 +150,7 @@ global $TEXT_DIRECTION;
 	}
 
 	function changeYear(cenyear) {
-	
+
 		var cenctry=document.getElementById('censCtry').value;
 			// alert("Set Date is in the "+TheCenCtry+" --- "+"Now in "+cenctry);
 
@@ -173,7 +173,7 @@ global $TEXT_DIRECTION;
 		changeMC(cenyear);
 		changeChBorn(cenyear)
 		preview();
-		
+
 		// Toggle Countries when the preset UK Cens Date has been been used -------------
 		if (TheCenCtry=="UK") {
 			if (cenyear!=TheCenYear && cenctry!=TheCenCtry) {
@@ -227,7 +227,7 @@ global $TEXT_DIRECTION;
 
 
 	}
-	
+
 	// Change Marital Condition and Years Married based on Census Year ======================
 	function changeMC(cenyear) {
 		var cendate = getCenDate(cenyear);
@@ -236,7 +236,7 @@ global $TEXT_DIRECTION;
 		for(var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 			var tr = tbl.rows[i];
 			for(var j=2; j<tr.cells.length; j++){
-				if (j!=4 && j!=15) { 
+				if (j!=4 && j!=15) {
 					// 4 and 15 are the marital condition columns (fields)
 					// therefore miss out all cols except these marital condition cols
 					continue;
@@ -253,7 +253,7 @@ global $TEXT_DIRECTION;
 					var one_day   = 1000*60*60*24;
 					var one_month = (365.26*one_day)/12;
 					var one_year  = 365.26*one_day;
-					
+
 					// Date of Birth (dob) - passed as Julian Date String
 					if (dob>1721060) {
 						IJD = Math.floor(dob);
@@ -269,7 +269,7 @@ global $TEXT_DIRECTION;
 						I = 100*(N - 49) + I + L;
 						dob = (I+', '+J+', '+K);
 					}
-					// Create Date of Birth object from passed string dob 
+					// Create Date of Birth object from passed string dob
 					var jsdob = Date.parseString(dob, 'y, M, d');
 
 					// Date of Marriage (dom) - passed as Julian Date String
@@ -287,9 +287,9 @@ global $TEXT_DIRECTION;
 						I = 100*(N - 49) + I + L;
 						dom = (I+', '+J+', '+K);
 					}
-					// Create Date of Marriage object from passed string dom 
+					// Create Date of Marriage object from passed string dom
 					var jsdom = Date.parseString(dom, 'y, M, d');
-					
+
 					// Date of Death (dod) - passed as Julian Date String
 					if (dod>1721060) {
 						IJD = Math.floor(dod);
@@ -305,7 +305,7 @@ global $TEXT_DIRECTION;
 						I = 100*(N - 49) + I + L;
 						dod = (I+', '+J+', '+K);
 					}
-					// Create Date of Marriage object from passed string dom 
+					// Create Date of Marriage object from passed string dom
 					var jsdod = Date.parseString(dod, 'y, M, d');
 
 					if (cendate > jsdom) {
@@ -325,22 +325,22 @@ global $TEXT_DIRECTION;
 
 				tr.cells[j].childNodes[0].value = marrcond;
 				tr.cells[16].childNodes[0].value = yrsmarr;
-				
+
 				//-- If single and USA 1930, set Years married to "-" ------------------
 				if (marrcond=="S" && cenyear=="1930") {
 					tr.cells[20].childNodes[0].value = "-";
 				}
 				//-- If married or widowed set name to married name --------------------
 				if (marrcond=="M" || marrcond=="W") {
-					tr.cells[2].childNodes[0].value = marrnam; 
+					tr.cells[2].childNodes[0].value = marrnam;
 				}
 				//-- If single or unmarried set name to birth (full) name --------------
 				if (marrcond=="S" || marrcond=="U") {
 					tr.cells[2].childNodes[0].value = fullnam;
 				}
-				
+
 				var age = (tr.cells[7].childNodes[0].value);  // Age
-				
+
 			}
 		}
 	}
@@ -352,13 +352,13 @@ global $TEXT_DIRECTION;
 		for(var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 			var tr = tbl.rows[i];
 			for(var j=2; j<tr.cells.length; j++){
-				if (j!=73) { 
+				if (j!=73) {
 					// 73 is the Chil born array column
 					// therefore miss out all cols except this column's cells
 					continue;
 				} else {
 					// Calculate Children Born, Living, Died --------------------------
-					var chilBLD = (tr.cells[73].childNodes[0].value); 
+					var chilBLD = (tr.cells[73].childNodes[0].value);
 					chBLDarray = chilBLD.split('::');
 					var cdat   = calculateJD(cendate);
 					// Variables to be used ---------
@@ -376,11 +376,11 @@ global $TEXT_DIRECTION;
 						var y;
 						for (y = 0; y<chBLDarray2.length; y++) {
 							chBLD[x][y] = chBLDarray2[y];
-							if (y==2 && (cdat>(chBLD[x][1]) && chBLD[x][1]!=0) && (chBLD[x][2]==0 || cdat<(chBLD[x][2]))) { 
+							if (y==2 && (cdat>(chBLD[x][1]) && chBLD[x][1]!=0) && (chBLD[x][2]==0 || cdat<(chBLD[x][2]))) {
 								ALIVE=ALIVE+1;
-							} else if (y==2 && cdat>(chBLD[x][2]) && (chBLD[x][2])!=0) { 
+							} else if (y==2 && cdat>(chBLD[x][2]) && (chBLD[x][2])!=0) {
 								DEAD=DEAD+1;
-							} else if (y==2) { 
+							} else if (y==2) {
 								NOTBORN=NOTBORN+1;
 							}
 						}
@@ -413,9 +413,9 @@ global $TEXT_DIRECTION;
 		if (prevyr.value !="") {
 			var prevcenyear=prevyr.value;
 		} else {
-			// alert("cenyear = "+cenyear+" ... prevcenyear = base_"+base1901); 
+			// alert("cenyear = "+cenyear+" ... prevcenyear = base_"+base1901);
 		}
-		
+
 		var cendate = getCenDate(cenyear);
 
 		var one_day   = 1000*60*60*24;
@@ -468,11 +468,11 @@ global $TEXT_DIRECTION;
 						I = 100*(N - 49) + I + L;
 						dage = (I+', '+J+', '+K);
 					}
-					
+
 					// Caculate Age (or if Dead) on the selected Census Date ===================
 					var bage2 = Date.parseString(bage, 'y, M, d');
 					var dage2 = Date.parseString(dage, 'y, M, d');
-					
+
 					if (cendate > dage2) {
 						newage = "-";
 					} else if (bage2 != "Invalid Date") {
@@ -497,7 +497,7 @@ global $TEXT_DIRECTION;
 						newage = "-";
 					}
 					tr.cells[j].childNodes[0].value=newage;
-					
+
 					// Highlight in Pink the Name field and Age fields for any person not born or who died before census date -----
 					if (newage != "-") {
 						tr.cells[2].childNodes[0].style.background  = '#ffffff';
@@ -523,11 +523,11 @@ global $TEXT_DIRECTION;
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
-	
+
 	// Add or Remove columns ===========================
 	function changeCols(cenyear) {
 		var cens_ctry = document.getElementById('censCtry').value;
-		
+
 		var cols_0 = document.getElementsByName('col_0');
 		var cols_1 = document.getElementsByName('col_1');
 		var cols_2 = document.getElementsByName('col_2');
@@ -665,10 +665,10 @@ global $TEXT_DIRECTION;
 		var flip_66 = "none";
 		var flip_67 = "none";
 		// var flip_68 = "none";
-		
+
 		if (cens_ctry=="UK") {
-		
-			if (cenyear=="1911" || cenyear=="1921" || cenyear=="1931") { 
+
+			if (cenyear=="1911" || cenyear=="1921" || cenyear=="1931") {
 				flip_3 = "";
 				flip_4 = "";
 				flip_7 = "";
@@ -683,8 +683,8 @@ global $TEXT_DIRECTION;
 				flip_42 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else 
-			if (cenyear=="1901") { 
+			}else
+			if (cenyear=="1901") {
 				flip_3 = "";
 				flip_4 = "";
 				flip_7 = "";
@@ -694,8 +694,8 @@ global $TEXT_DIRECTION;
 				flip_42 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else 
-			if (cenyear=="1891") { 
+			}else
+			if (cenyear=="1891") {
 				flip_3 = "";
 				flip_4 = "";
 				flip_7 = "";
@@ -706,8 +706,8 @@ global $TEXT_DIRECTION;
 				flip_43 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else 
-			if (cenyear=="1881" || cenyear=="1871" || cenyear=="1861" || cenyear=="1851") { 
+			}else
+			if (cenyear=="1881" || cenyear=="1871" || cenyear=="1861" || cenyear=="1851") {
 				flip_3 = "";
 				flip_4 = "";
 				flip_7 = "";
@@ -715,17 +715,17 @@ global $TEXT_DIRECTION;
 				flip_35 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else 
-			if (cenyear=="1841") { 
+			}else
+			if (cenyear=="1841") {
 				flip_7 = "";
 				flip_9 = "";
 				flip_35 = "";
 				flip_52 = "";
 				flip_53 = "";
 			}
-			
+
 		} else if (cens_ctry=="USA") {
-			if (cenyear=="1930") { 
+			if (cenyear=="1930") {
 				flip_3 = "";
 				flip_6 = "";
 				flip_9 = "";
@@ -747,7 +747,7 @@ global $TEXT_DIRECTION;
 				flip_65 = "";
 				flip_66 = "";
 			}else
-			if (cenyear=="1920") { 
+			if (cenyear=="1920") {
 				flip_3 = "";
 				flip_5 = "";
 				flip_9 = "";
@@ -767,7 +767,7 @@ global $TEXT_DIRECTION;
 				flip_61 = "";
 				flip_62 = "";
 			}else
-			if (cenyear=="1910") { 
+			if (cenyear=="1910") {
 				flip_3 = "";
 				flip_9 = "";
 				flip_10 = "";
@@ -794,7 +794,7 @@ global $TEXT_DIRECTION;
 				flip_65 = "";
 				flip_67 = "";
 			}else
-			if (cenyear=="1900") { 
+			if (cenyear=="1900") {
 				flip_3 = "";
 				flip_8 = "";
 				flip_9 = "";
@@ -817,7 +817,7 @@ global $TEXT_DIRECTION;
 				flip_48 = "";
 				flip_49 = "";
 			}else
-			if (cenyear=="1890") { 
+			if (cenyear=="1890") {
 				flip_3 = "";
 				flip_8 = "";
 				flip_9 = "";
@@ -840,7 +840,7 @@ global $TEXT_DIRECTION;
 				flip_48 = "";
 				flip_64 = "";
 			}else
-			if (cenyear=="1880") { 
+			if (cenyear=="1880") {
 				flip_8 = "";
 				flip_9 = "";
 				flip_12 = "";
@@ -858,7 +858,7 @@ global $TEXT_DIRECTION;
 				flip_54= "";
 				flip_55 = "";
 			}else
-			if (cenyear=="1870" ) { 
+			if (cenyear=="1870" ) {
 				flip_7 = "";
 				flip_9 = "";
 				flip_10 = "";
@@ -871,7 +871,7 @@ global $TEXT_DIRECTION;
 				flip_47 = "";
 				flip_63 = "";
 			}else
-			if (cenyear=="1860" || cenyear=="1850") { 
+			if (cenyear=="1860" || cenyear=="1850") {
 				flip_7 = "";
 				flip_9 = "";
 				flip_10 = "";
@@ -882,7 +882,7 @@ global $TEXT_DIRECTION;
 				flip_47 = "";
 				flip_63 = "";
 			}
-			
+
 		}
 
 		// Hide or show ===============
@@ -955,7 +955,7 @@ global $TEXT_DIRECTION;
 			//cols_68[i].style.display = flip_68;
 		}
 	}
-	
+
 </script>
 
 <div class="optionbox cens_sour">
@@ -965,7 +965,7 @@ global $TEXT_DIRECTION;
 			<option id="UKOPT" name="UKOPT" value="UK">UK</option>
 			<option id="USOPT" name="USOPT" value="USA">USA</option>
 		</select>
-		
+
 		<script type="text/javascript">
 		if (TheCenYear=='') {
 			var censyear = new DynamicOptionList();
@@ -974,7 +974,7 @@ global $TEXT_DIRECTION;
 			censyear.forValue("USA").addOptions( "choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
 			censyear.forValue("UK").setDefaultOptions("choose");
 			censyear.forValue("USA").setDefaultOptions("choose");
-		} 
+		}
 		else if (TheCenYear!='' && TheCenCtry=='UK') {
 			var censyear = new DynamicOptionList();
 			censyear.addDependentFields("censCtry","censYear");
@@ -984,7 +984,7 @@ global $TEXT_DIRECTION;
 			censyear.forValue("USA").setDefaultOptions("choose");
 			document.getElementById("UKOPT").selected = true;
 			document.getElementById("USOPT").selected = false;
-		} 
+		}
 		else if (TheCenYear!='' && TheCenCtry=='USA') {
 			var censyear = new DynamicOptionList();
 			censyear.addDependentFields("censCtry","censYear");
@@ -1001,7 +1001,7 @@ global $TEXT_DIRECTION;
 			<table><tr><td nowrap="nowrap">
 			<br />
 			<?php
-				// echo "&nbsp;".i18n::translate('Date').":&nbsp;&nbsp;"; 
+				// echo "&nbsp;".i18n::translate('Date').":&nbsp;&nbsp;";
 				echo "<font size=2>";
 			// Input renamed as type=hidden to hide the date field ----- //
 			// Note Input field is still required ---------------------- //
@@ -1027,7 +1027,7 @@ global $TEXT_DIRECTION;
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
-			<div class="cens_sour_2">Title:</div> 
+			<div class="cens_sour_2">Title:</div>
 			<script type="text/javascript">
 				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo "Census Transcription - ".$wholename." - Household";?>" />');
 			</script>

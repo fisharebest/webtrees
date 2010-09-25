@@ -185,7 +185,7 @@ echo PrintReady($controller->getPersonName())."</h2>";
 	  </form>
 	</td></tr>
 </table>
-	
+
 <!-- end of form -->
 
 <!-- count records by type -->
@@ -316,7 +316,7 @@ echo "</div>";
 //<![CDATA[
 
 if (GBrowserIsCompatible()) {
-	
+
 // this variable will collect the html which will eventually be placed in the side_bar
 var side_bar_html = "";
 
@@ -604,7 +604,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		$datamid  .= "</a></span>";
 		$dataright = "<br /><strong>". i18n::translate('Birth:') . "&nbsp;</strong>" .
 				addslashes($bdate->Display(false))."<br />".$bplace;
-	
+
 		$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 		if ($latlongval[$i] != NULL){
 			$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]["lati"]);
@@ -667,7 +667,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				if ($clustersize != 5) echo "&clustersize=". $clustersize; // ignoring the default of 5
 				echo "' title='" . i18n::translate('Pedigree Map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"".$marker_number."\");\n";
 				echo "pm_map.addOverlay(marker);\n";
-	
+
 				if (!$hidelines) {
 					$to_child = (intval(($i-1)/2)); // Draw a line from parent to child
 					if (($to_child > -1) && ($to_child < 127) && (!empty($lat[$to_child]))) {

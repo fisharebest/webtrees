@@ -56,7 +56,7 @@
 	.classy1 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #000000; font-size: 10px; }
 	-->
 	</style>
-<?php } 
+<?php }
 
 // Various JavaScript variables required --------------------------------- ?>
 <script language="javascript" type="text/javascript">

@@ -58,7 +58,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
 	global $res, $typ2b, $edit, $tabno, $n, $item, $items, $p, $note, $rowm, $note_text, $reorder;
 	global $action, $order, $order2, $rownum, $rownum1, $rownum2, $rownum3, $rownum4, $media_data, $sort_i;
-	
+
 	global $GEDCOM_ID_PREFIX;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -270,13 +270,13 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				$foundObjs[$rowm['m_media']]=true;
 			}
 		}
-		
+
 		// =====================================================================================
 		//-- Objects are removed from the $current_objes list as they are printed.
 		//-- Any "Extra" objects left in the list are new objects recently added to the gedcom
-		//-- but not yet accepted into the database.  
+		//-- but not yet accepted into the database.
 		//-- We will print them too, and put any "Extra Items not in DB" into a new Row.
-		
+
 		// Firstly, get count of Items in Database for this Individual
 		$indiobjs = "SELECT ";
 		$indiobjs .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` where ";
@@ -330,7 +330,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 								echo "<tr><td align=\"center\" colspan=\"4\">";
 								echo $row['m_media'];
 								echo "</td></tr>";
-								
+
 								$res =  lightbox_print_media_row('new', $row, $pid);
 								$media_found = $media_found || $res;
 							}
@@ -347,7 +347,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 						$row['m_gedrec'] = $newrec;
 						$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
 						$ext = "";
-						if ($et>0) { 
+						if ($et>0) {
 							$ext = substr(trim($ematch[1]), 1);
 						}
 						$row['m_ext'] = $ext;
@@ -361,7 +361,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 							echo "<tr><td align=\"center\" colspan=\"4\">";
 							echo $row['m_media'];
 							echo "</td></tr>";
-							
+
 							$res =  lightbox_print_media_row('new', $row, $pid);
 							$media_found = $media_found || $res;
 						}
@@ -370,7 +370,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				}
 			}
 		}
-		
+
 		// No "Extra" Media Items ============================
 		if ($kind==5 && $ct==$numindiobjs) {
 		// "Extra" Media Item in GEDCOM but NOT in DB ========
@@ -401,11 +401,10 @@ Requests for commercial publication of these or other UK census images appearing
 			echo '</tr>';
 			echo '</table>' . "\n\n";
 		}
-		
+
 	}
 
 	if ($media_found) return $is_media="YES" ;
 	else return $is_media="NO" ;
 
 }
-?>

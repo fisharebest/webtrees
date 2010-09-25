@@ -29,9 +29,9 @@
  * @version $Id$
  */
 // require_once './config.php';
-require_once 'includes/controllers/individual_ctrl.php'; 
-$controller = new IndividualController(); 
-$controller->init(); 
+require_once 'includes/controllers/individual_ctrl.php';
+$controller = new IndividualController();
+$controller->init();
 
 global $USE_THUMBS_MAIN, $tabno;
 global $linkToID;
@@ -39,7 +39,7 @@ global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 
 		global $WT_IMAGES, $SHOW_AGE_DIFF;
 		global $GEDCOM, $ABBREVIATE_CHART_LABELS;
-		global $show_full; 
+		global $show_full;
 		global $famid;
 
 		$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
@@ -55,4 +55,3 @@ global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 		$controller->census_assistant();
 
 // print_footer();
-?>

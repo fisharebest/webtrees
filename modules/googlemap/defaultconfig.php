@@ -57,7 +57,7 @@ $GOOGLEMAP_MAX_ZOOM    = get_module_setting('googlemap', 'GM_MAX_ZOOM',    '13')
 
 global $GOOGLEMAP_XSIZE;
 $GOOGLEMAP_XSIZE       = get_module_setting('googlemap', 'GM_XSIZE',       '600');      // X-size of Google map
-global $GOOGLEMAP_YSIZE; 
+global $GOOGLEMAP_YSIZE;
 $GOOGLEMAP_YSIZE       = get_module_setting('googlemap', 'GM_YSIZE',       '400');      // Y-size of Google map
 
 global $GOOGLEMAP_PRECISION_0;
@@ -84,7 +84,7 @@ $GOOGLEMAP_COORD       = get_module_setting('googlemap', 'GM_COORD',            
 //Place Hierarchy
 global $GOOGLEMAP_PLACE_HIERARCHY;
 $GOOGLEMAP_PLACE_HIERARCHY=get_module_setting('googlemap', 'GM_PLACE_HIERARCHY',  '1'     ); // Enable or disable Display Map in place herarchy
-global $GOOGLEMAP_PH_XSIZE; 
+global $GOOGLEMAP_PH_XSIZE;
 $GOOGLEMAP_PH_XSIZE       =get_module_setting('googlemap', 'GM_PH_XSIZE',         '500'   ); // X-size of Place Hierarchy Google map
 global $GOOGLEMAP_PH_YSIZE;
 $GOOGLEMAP_PH_YSIZE       =get_module_setting('googlemap', 'GM_PH_YSIZE',         '350'   ); // Y-size of Place Hierarchy Google map
@@ -167,6 +167,3 @@ $GM_MARKER_SIZE  [9]=get_module_setting('googlemap', 'GM_MARKER_SIZE_9',   'Larg
 $GM_PREFIX       [9]=get_module_setting('googlemap', 'GM_PREFIX_9',        ''     );
 $GM_POSTFIX      [9]=get_module_setting('googlemap', 'GM_POSTFIX_9',       ''     );
 $GM_PRE_POST_MODE[9]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_9', '0'    );
-
-
-?>

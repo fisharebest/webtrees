@@ -55,10 +55,10 @@
 	if (isset($_REQUEST['PUBL'])) $PUBL = $_REQUEST['PUBL'];
 	if (isset($_REQUEST['REPO'])) $REPO = $_REQUEST['REPO'];
 	if (isset($_REQUEST['CALN'])) $CALN = $_REQUEST['CALN'];
-	
+
 	if (isset($_REQUEST['pid_array'])) $pid_array = $_REQUEST['pid_array'];
 	if (isset($_REQUEST['pid']))  $pid = $_REQUEST['pid'];
-	
+
 	global $pid;
 
 	if (!empty($NOTE)) {
@@ -108,7 +108,7 @@
 		echo "<div class=indent> No individuals entered, close and try again </div>";
 		echo "<br /><br /><br />";
 	}
-	
+
 	if ($xref != "none") {
 		echo "<br /><br />\n".i18n::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
 		echo "<br /><br />";
