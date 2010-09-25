@@ -139,50 +139,50 @@ if ($view!='simple') {
 	'</table>';
 
 	echo '<div>',
-		'<img src="', $WT_IMAGES["hline"], '" width="100%" height="3" alt="" />',
-		'<table id="topMenu">',
+		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" />',
+		'<table id="topMenu" width="100%">',
 			'<tr>';
 				$menu=MenuBar::getGedcomMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getMyPageMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getChartsMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getListsMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getCalendarMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getReportsMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menu=MenuBar::getSearchMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 				$menus=MenuBar::getModuleMenus();
 				foreach ($menus as $m=>$menu) {
 					if ($menu) {
-						echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+						echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 					}
 				}
 				$menu=MenuBar::getHelpMenu();
 				if ($menu) {
-					echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
 			echo '</tr>',
 		'</table>',
-		'<img align="middle" src="', $WT_IMAGES["hline"], '" width="100%" height="3" alt="" />',
+		'<img align="middle" src="', $WT_IMAGES['hline'], '" width="100%" height="3" />',
 	'</div>',
 '</div>',
 // end header section -->
