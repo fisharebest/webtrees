@@ -315,7 +315,7 @@ color: #003399;
 
 /*	Start Standard Code					*/
 
-.blockcontent {
+div.blockcontent {
 margin-left:auto;
 border:1pt solid #999;
 margin-right:5px;
@@ -1077,7 +1077,6 @@ vertical-align: top;
 }
 
 .news_box {
-border: 1px solid #000;
 padding: 3pt;
 }
 
@@ -1244,7 +1243,7 @@ padding: 3px;
 background-color: #ECF5FF;
 border: 1px solid #84BEFF;
 color: #006;
-font: normal normal normal 11px/normal tahoma, arial, helvetica, sans-serif;
+font: 11px tahoma, arial, helvetica, sans-serif;
 padding: 3px;
 vertical-align: top;
 white-space: nowrap;
