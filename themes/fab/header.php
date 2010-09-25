@@ -42,7 +42,7 @@ if ($TEXT_DIRECTION=='ltr') {
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
 	'<head>',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">',
@@ -77,8 +77,8 @@ echo
 
 <?php
 if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
-      <link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-<?php }?>
+	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
+<?php } ?>
 
 <link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 
@@ -146,7 +146,6 @@ if ($view!='simple') {
 			MenuBar::getCalendarMenu(),
 			MenuBar::getReportsMenu(),
 			MenuBar::getSearchMenu(),
-			MenuBar::getOptionalMenu(),
 			MenuBar::getHelpMenu()
 		);
 		foreach (MenuBar::getModuleMenus() as $menu) {
@@ -161,7 +160,7 @@ if ($view!='simple') {
 	// Print the menu bar
 	echo '<div id="topMenu"><ul class="makeMenu">';
 	foreach ($menu_items as $n=>$menu) {
-		if ($menu && $menu->link) {
+		if ($menu) {
 			if ($n>0) {
 				echo ' | ';
 			}

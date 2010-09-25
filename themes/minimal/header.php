@@ -119,96 +119,60 @@ if (!defined('WT_WEBTREES')) {
 	</tr>
 </table>
 <!-- begin toplinks menu section -->
-
-<?php $menubar = new MenuBar();?>
 <table width="100%" border="1" cellspacing="0">
 	<tr>
 		<?php
-		$menu = $menubar->getGedcomMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getGedcomMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getMyPageMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getMyPageMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getChartsMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getChartsMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getListsMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getListsMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getCalendarMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getCalendarMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getReportsMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getReportsMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getSearchMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getSearchMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-
-		$menu = $menubar->getOptionalMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
-			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
-		}
-
-		$menus = $menubar->getModuleMenus();
-		foreach($menus as $m=>$menu) {
-			if($menu->link != "") {
-				print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menus=MenuBar::getModuleMenus();
+		foreach ($menus as $menu) {
+			if ($menu) {
 				$menu->addIcon(null);
-				$menu->printMenu();
-				print "\t</td>\n";
+				echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 			}
 		}
-
-		$menu = $menubar->getHelpMenu();
-		if ($menu->link != "") {
-			print "\t<td width=\"7%\" valign=\"top\">\n";
+		$menu=MenuBar::getHelpMenu();
+		if ($menu) {
 			$menu->addIcon(null);
-			$menu->printMenu();
-			print "</td>";
+			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
 	?>
 	</tr>
 </table>
-<img src="<?php print $WT_IMAGES["hline"]; ?>" width="100%" height="3" alt="" />
+<img src="<?php echo $WT_IMAGES["hline"]; ?>" width="100%" height="3" alt="" />
 </div>
 <?php } ?>
 <!-- end toplinks menu section -->

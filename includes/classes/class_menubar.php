@@ -87,7 +87,7 @@ class MenuBar {
 		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
 
 		if (!WT_USER_ID) {
-			return new Menu('', '', '');
+			return null;
 		}
 
 		//-- main menu
@@ -169,19 +169,9 @@ class MenuBar {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 		global $controller;
 
-		$style = "top";
-		if ($rootid) $style = "sub";
-		if (isset($controller)) {
-			if (!$rootid) {
-				if (isset($controller->pid)) $rootid = $controller->pid;
-				if (isset($controller->rootid)) $rootid = $controller->rootid;
-			}
-		}
-
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if (!empty($SEARCH_SPIDER)) {
-			$menu = new Menu("", "", "");
-			return $menu;
+			return null;
 		}
 
 		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
@@ -190,17 +180,9 @@ class MenuBar {
 		//-- main charts menu item
 		$link = "pedigree.php?ged=".WT_GEDCOM."&show_full={$showFull}&talloffset={$showLayout}";
 		if ($rootid) $link .= "&rootid={$rootid}";
-		if ($style=="sub") {
-			$menu = new Menu(i18n::translate('Charts'), encode_url($link));
-			$menu->addIcon('charts');
-			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "", "icon_small_pedigree");
-		}
-		else {
-			// top menubar
-			$menu = new Menu(i18n::translate('Charts'), encode_url($link), "down");
-			$menu->addIcon('charts');
-			$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_pedigree");
-		}
+		$menu = new Menu(i18n::translate('Charts'), encode_url($link), "down");
+		$menu->addIcon('charts');
+		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_pedigree");
 
 		// Build a sortable list of submenu items and then sort it in localized name order
 		$menuList = array();
@@ -611,9 +593,8 @@ class MenuBar {
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ((!file_exists(WT_ROOT.'calendar.php')) || (!empty($SEARCH_SPIDER))) {
 			$menu = new Menu("", "", "");
-//			$menu->print_menu = null;
 			return $menu;
-			}
+		}
 		//-- main calendar menu item
 		$menu = new Menu(i18n::translate('Calendar'), encode_url('calendar.php?ged='.WT_GEDCOM), "down");
 		$menu->addIcon('calendar');
@@ -645,7 +626,7 @@ class MenuBar {
 
 		$active_reports=WT_Module::getActiveReports();
 		if ($SEARCH_SPIDER || !$active_reports) {
-			return new Menu('', '', '');
+			return null;
 		}
 
 		if ($TEXT_DIRECTION=="rtl") {
@@ -667,22 +648,6 @@ class MenuBar {
 	}
 
 	/**
-	* get the optional site-specific menu
-	* @return Menu the menu item
-	*/
-	public static function getOptionalMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
-
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
-		if (!file_exists(WT_ROOT.'includes/extras/optional_menu.php') || !empty($SEARCH_SPIDER)) {
-			$menu = new Menu("", "", "");
-			return $menu;
-		}
-		require WT_ROOT.'includes/extras/optional_menu.php';
-		return $menu;
-	}
-
-	/**
 	* get the search menu
 	* @return Menu the menu item
 	*/
@@ -691,9 +656,8 @@ class MenuBar {
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ((!file_exists(WT_ROOT.'search.php')) || (!empty($SEARCH_SPIDER))) {
-			$menu = new Menu("", "", "");
-			return $menu;
-			}
+			return null;
+		}
 		//-- main search menu item
 		$menu = new Menu(i18n::translate('Search'), encode_url('search.php?ged='.WT_GEDCOM), "down");
 		$menu->addIcon('search');
@@ -758,10 +722,8 @@ class MenuBar {
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if (!empty($SEARCH_SPIDER)) {
-			$menu = new Menu("", "", "");
-//			$menu->print_menu = null;
-			return $menu;
-			}
+			return null;
+		}
 		//-- main help menu item
 		$menu = new Menu(i18n::translate('Help'), "#", "down");
 		$menu->addIcon('menu_help');
@@ -845,7 +807,7 @@ class MenuBar {
 			}
 			return $menu;
 		} else {
-			return new Menu('', '');
+			return null;
 		}
 	}
 	/**
@@ -899,7 +861,7 @@ class MenuBar {
 		if (count($menu->submenus)>1) {
 			return $menu;
 		} else {
-			return new Menu('', '');
+			return null;
 		}
 	}
 	/**
@@ -1019,5 +981,3 @@ class MenuBar {
 		return $menu;
 	}
 }
-
-?>

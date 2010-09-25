@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
 	'<head>',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
@@ -137,77 +137,48 @@ if ($view!='simple') {
 			echo '</td>',
 		'</tr>',
 	'</table>';
-	$menubar = new MenuBar();
 
 	echo '<div>',
 		'<img src="', $WT_IMAGES["hline"], '" width="100%" height="3" alt="" />',
 		'<table id="topMenu">',
 			'<tr>';
-				$menu = $menubar->getGedcomMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getGedcomMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-				$menu = $menubar->getMyPageMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getMyPageMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-				$menu = $menubar->getChartsMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getChartsMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-				$menu = $menubar->getListsMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getListsMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-				$menu = $menubar->getCalendarMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getCalendarMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-				$menu = $menubar->getReportsMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getReportsMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-
-				$menu = $menubar->getSearchMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getSearchMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
-
-				$menu = $menubar->getOptionalMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
-				}
-
-				$menus = $menubar->getModuleMenus();
-				foreach($menus as $m=>$menu) {
-					if($menu->link != "") {
-						print "\t<td width=\"7%\" valign=\"top\">\n";
-						$menu->printMenu();
-						print "\t</td>\n";
+				$menus=MenuBar::getModuleMenus();
+				foreach ($menus as $m=>$menu) {
+					if ($menu) {
+						echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 					}
 				}
-
-				$menu = $menubar->getHelpMenu();
-				if($menu->link != "") {
-					print "\t<td width=\"7%\" valign=\"top\">\n";
-					$menu->printMenu();
-					print "\t</td>\n";
+				$menu=MenuBar::getHelpMenu();
+				if ($menu) {
+					echo '<td width="7%" valign="top">', $menu->printMenu(), '</td>';
 				}
 			echo '</tr>',
 		'</table>',

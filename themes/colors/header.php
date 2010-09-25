@@ -46,7 +46,7 @@ if ($TEXT_DIRECTION=='ltr') {
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
 	'<head>',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
@@ -108,16 +108,15 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 <!-- begin header section -->
 <?php 
 if ($view!='simple') {
-	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
-         '<table class="header">',
-	     '<tr>',
-		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >',
-		 '<div class="title">';
-		 print_gedcom_title_link(TRUE);
-	echo '</div>',
-		 '</td>',
-		 '<td>';
-    if(empty($SEARCH_SPIDER)) { 
+	echo
+		'<div id="header" class="', $TEXT_DIRECTION, '">',
+		'<table class="header">',
+		'<tr>',
+		'<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >',
+		'<div class="title">';
+	print_gedcom_title_link(TRUE);
+	echo '</div></td><td>';
+	if (empty($SEARCH_SPIDER)) { 
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
 		if (WT_USER_ID) {
 			echo
@@ -138,124 +137,87 @@ if ($view!='simple') {
 				echo '<li><a class="icon_color" href="', $LOGIN_URL, '?url=', WT_SCRIPT_PATH, WT_SCRIPT_NAME, decode_url(normalize_query_string($QUERY_STRING.'&amp;ged='.WT_GEDCOM)), '">', i18n::translate('Login'), '</a></li>';
 			}
 		}
-			echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
-			echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
-			global $ALLOW_THEME_DROPDOWN;
-			if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-				echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
-			}
+		echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
+		echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+		global $ALLOW_THEME_DROPDOWN;
+		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+		}
 		echo 
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
 			'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-            '<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
+			'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
 			'</form>',
 			'</ui></div>'; 
-		}
+	}
 
-        echo '</td>',
-	         '</tr>',
-             '</table>',
-             '</div>';
+	echo '</td></tr></table></div>';
 ?>
 <!--end header section -->
 <!--begin menu section -->
 <?php 
-
-$menubar = new MenuBar();
-echo '<table id="toplinks">',
-     '<tr>',
-	 '<td class="toplinks_left">',
-	 '<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
-	 '<tr>';
-	$menu = $menubar->getGedcomMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	echo
+		'<table id="toplinks"><tr><td class="toplinks_left">',
+		'<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
+		'<tr>';
+	$menu=MenuBar::getGedcomMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getMyPageMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getMyPageMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getChartsMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getChartsMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getListsMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getListsMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getCalendarMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getCalendarMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getReportsMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getReportsMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getSearchMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getSearchMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getOptionalMenu(); 
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
-	}
-	$menus = $menubar->getModuleMenus();
-		foreach($menus as $m=>$menu) { 
-			if($menu->link != "") {
-				echo "<td>";
-				$menu->addLabel("", "none");
-				$menu->printMenu();
-				echo "</td>";
-			}
+	$menus=MenuBar::getModuleMenus();
+	foreach ($menus as $m=>$menu) { 
+		if ($menu) {
+			$menu->addLabel('', 'none');
+			echo '<td>', $menu->getMenu(), '</td>';
 		}
-	$menu = $menubar->getHelpMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
 	}
-
-echo '</tr>',
-	 '</table>',
-	 '</td>';
-    if(empty($SEARCH_SPIDER)) { 
-		echo '<td class="toplinks_right">',
-			 '<div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">';
-	    echo color_theme_dropdown();
-        echo '</div>',
-		     '</td>';
-    }
-        echo '</tr>',
-	         '</table>';
-} ?>
+	$menu=MenuBar::getHelpMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
+	}
+	echo '</tr></table></td>';
+	if (empty($SEARCH_SPIDER)) { 
+		echo '<td class="toplinks_right"><div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">';
+		echo color_theme_dropdown();
+		echo '</div></td>';
+	}
+	echo '</tr></table>';
+}
+?>
 <!-- end menu section -->
 <!-- begin content section -->
 <div id="content">
-

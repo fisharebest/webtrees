@@ -7,7 +7,7 @@
  *
  * Derived from PhpGedView Cloudy theme
  * Original author w.a. bastein http://genealogy.bastein.biz
- * Copyright (C) 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2010 PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,7 +45,7 @@ if ($TEXT_DIRECTION=='ltr') {
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ',  i18n::html_markup(), '>',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
 	'<head>',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
@@ -98,16 +98,13 @@ if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
 if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?> 
 	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> 
 <?php }
-	echo
-	'</head><body id="body" ', $bodyOnLoad, '>';
+	echo '</head><body id="body" ', $bodyOnLoad, '>';
 flush(); // Allow the browser to start fetching external stylesheets, javascript, etc.
 ?>
 
 <!-- begin header section -->
 <?php if ($view!='simple') {
-
-	echo '<div id="rapcontainer">',
-		 '<div id="header" class="', $TEXT_DIRECTION, '">';
+	echo '<div id="rapcontainer"><div id="header" class="', $TEXT_DIRECTION, '">';
 ?>
 <table class="header" style="background:url('<?php echo WT_THEME_DIR; ?>images/clouds.gif')" >
 <?php
@@ -116,15 +113,15 @@ flush(); // Allow the browser to start fetching external stylesheets, javascript
 		 '<div class="title">';
 	print_gedcom_title_link(TRUE);
 
-if(empty($SEARCH_SPIDER)) { 
+if (empty($SEARCH_SPIDER)) { 
 	echo '<td valign="middle" align="center">',
 		 '<div class="blanco" style="COLOR: #6699ff;" >';
-    print_user_links();
+	print_user_links();
 	echo '</div>',
 		 '</td>',
 		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >';
-		 ?>
-          <div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
+?>
+ 	<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
 <?php
 	echo '<form action="search.php" method="post">',
 		 '<input type="hidden" name="action" value="general" />',
@@ -134,111 +131,77 @@ if(empty($SEARCH_SPIDER)) {
 		 '</form>',
 		 '</div>';
 }
-	echo '</td>',
-		 '</tr>',
-         '</table>',
-         '</div>';
+	echo '</td></tr></table></div>';
 ?>
 <!-- end header section -->
 <!-- begin menu section -->
 <?php
-$menubar = new MenuBar();
 echo '<table id="toplinks">',
 	 '<tr>',
 		'<td class="toplinks_left">',
 		'<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
 			'<tr>';
-	$menu = $menubar->getGedcomMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getGedcomMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getMyPageMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getMyPageMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getChartsMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getChartsMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getListsMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getListsMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getCalendarMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getCalendarMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getReportsMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getReportsMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getSearchMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getSearchMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu = $menubar->getOptionalMenu(); 
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
-	}
-	$menus = $menubar->getModuleMenus();
-		foreach($menus as $m=>$menu) { 
-			if($menu->link != "") {
-				echo "<td>";
-				$menu->addLabel("", "none");
-				$menu->printMenu();
-				echo "</td>";
+	$menus=MenuBar::getModuleMenus();
+		foreach ($menus as $menu) { 
+			if ($menu) {
+				$menu->addLabel('', 'none');
+				echo '<td>', $menu->getMenu(), '</td>';
 			}
 		}
-	$menu = $menubar->getHelpMenu();
-	if($menu->link != "") {
-		echo "<td>";
-		$menu->addLabel("", "none");
-		$menu->printMenu();
-		echo "</td>";
+	$menu=MenuBar::getHelpMenu();
+	if ($menu) {
+		$menu->addLabel('', 'none');
+		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	echo  '</tr>',
-		  '</table>',
-		  '</td>';
+	echo '</tr></table></td>';
 
-   if (empty($SEARCH_SPIDER)) {
+	if (empty($SEARCH_SPIDER)) {
 		echo '<td class="toplinks_right">';
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
-        echo MenuBar::getFavoritesMenu()->getMenuAsList();
+		echo MenuBar::getFavoritesMenu()->getMenuAsList();
 		global $ALLOW_THEME_DROPDOWN;
 		echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 		}
-		echo '</ul>',
-		     '</div>',
-		     '</td>';
-    }
-	echo '</tr>',
-	     '</table>';
+		echo '</ul></div></td>';
+	}
+	echo '</tr></table>';
 }
 ?>
 <!-- end menu section -->
