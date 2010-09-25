@@ -186,7 +186,7 @@ function autocomplete_INDI($FILTER, $OPTION) {
 						continue;
 					} elseif ($husb_birth_jd && $wife_birth_jd && $person_death_jd<$husb_birth_jd && $person_death_jd<$wife_birth_jd) {
 						continue;
-					}	elseif ($husb_birth_jd && $person_death_jd<$husb_birth_jd) {
+					} elseif ($husb_birth_jd && $person_death_jd<$husb_birth_jd) {
 						continue;
 					} elseif ($wife_birth_jd && $person_death_jd<$wife_birth_jd) {
 						continue;

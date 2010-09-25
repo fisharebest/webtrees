@@ -105,7 +105,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 		}
 		if ($to == "last_6mo") {
 			$toarray = array();
-			$sixmos = 60*60*24*30*6;	//-- timestamp for six months
+			$sixmos = 60*60*24*30*6; //-- timestamp for six months
 			foreach (get_all_users() as $user_id=>$user_name) {
 				// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
 				if (get_user_setting($user_id,'sessiontime')>0 && (time() - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
@@ -219,4 +219,3 @@ else if ($action=="delete") {
 print "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".i18n::translate('Close Window')."</a><br /></center>";
 
 print_simple_footer();
-?>

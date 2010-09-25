@@ -1012,7 +1012,6 @@ case 'addmedia_links':
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
 		<input type="hidden" name="action" value="addmedia_links" />
 		<input type="hidden" name="noteid" value="newnote" />
-	<!--	<input type="hidden" name="pid" value="<?php // echo $pid; ?>" />		-->
 		<?php
 		require WT_ROOT.'modules/GEDFact_assistant/MEDIA_ctrl.php';
 		?>
@@ -2640,5 +2639,3 @@ if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 }
-
-?>

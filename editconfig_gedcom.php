@@ -40,9 +40,9 @@ $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
 /**
  * find the name of the first GEDCOM file in a zipfile
- * @param string $zipfile	the path and filename
+ * @param string $zipfile the path and filename
  * @param boolean $extract  true = extract and return filename, false = return filename
- * @return string		the path and filename of the gedcom file
+ * @return string the path and filename of the gedcom file
  */
 function GetGEDFromZIP($zipfile, $extract=true) {
 	GLOBAL $INDEX_DIRECTORY;

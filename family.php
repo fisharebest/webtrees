@@ -56,7 +56,7 @@ if (WT_USE_LIGHTBOX) {
 }
 // LB ======================================================================================
 
-$PEDIGREE_FULL_DETAILS = "1";		// Override GEDCOM configuration
+$PEDIGREE_FULL_DETAILS = "1"; // Override GEDCOM configuration
 $show_full = "1";
 
 ?>

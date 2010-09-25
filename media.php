@@ -30,20 +30,20 @@
  */
 
  /* TODO:
- *	Add check for missing index.php files when creating a directory
- *	Add an option to generate thumbnails for all files on the page
- *	Add filter for correct media like php, gif etc.
- *  Check for URL instead of physical file
- *	Check array buld up use ID_GEDCOM for aray key
+ * Add check for missing index.php files when creating a directory
+ * Add an option to generate thumbnails for all files on the page
+ * Add filter for correct media like php, gif etc.
+ * Check for URL instead of physical file
+ * Check array buld up use ID_GEDCOM for aray key
  */
 
  /* Standard variable convention media.php
- *	$filename = Filename of the media item
- *	$thumbnail = Filename of the thumbnail of the media item
- *	$gedfile = Name of the GEDCOM file
- *	$medialist = Array with all media items
- *  $directory = Current directory, starting with $MEDIA_DIRECTORY.  Has trailing "/".
- *  $dirs = list of subdirectories within current directory.  Built with medialist.
+ * $filename = Filename of the media item
+ * $thumbnail = Filename of the thumbnail of the media item
+ * $gedfile = Name of the GEDCOM file
+ * $medialist = Array with all media items
+ * $directory = Current directory, starting with $MEDIA_DIRECTORY.  Has trailing "/".
+ * $dirs = list of subdirectories within current directory.  Built with medialist.
  */
 
 define('WT_SCRIPT_NAME', 'media.php');
@@ -62,7 +62,7 @@ require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 function dir_is_writable($dir) {
 	$err_write = false;
 	$handle = @fopen(filename_decode($dir."x.y"), "w+");
-	if	($handle) {
+	if ($handle) {
 		$i = fclose($handle);
 		$err_write = true;
 		@unlink(filename_decode($dir."x.y"));
@@ -310,11 +310,11 @@ if (check_media_structure()) {
 		print i18n::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
 		print "</b></span><br />";
 	} else {
-		show_mediaUpload_form('media.php', $showthumb);		// We have the green light to upload media, print the form
+		show_mediaUpload_form('media.php', $showthumb); // We have the green light to upload media, print the form
 	}
 	print "</div><br />";
 
-	ob_start();		// Save output until action table has been printed
+	ob_start(); // Save output until action table has been printed
 
 	if ($action == "deletedir") {
 		print "<table class=\"list_table width100\">";
@@ -850,7 +850,7 @@ jQuery(document).ready(function(){
 </script>
 <?php
 
-	if (!empty($savedOutput)) print $savedOutput;		// Print everything we have saved up
+	if (!empty($savedOutput)) print $savedOutput; // Print everything we have saved up
 
 	if ($action == "filter" && $subclick != "none") {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
@@ -1051,7 +1051,7 @@ jQuery(document).ready(function(){
 			}
 
 			// Sort the media list according to the user's wishes
-			$sortedMediaList = $medialist;	// Default sort (by title) has already been done
+			$sortedMediaList = $medialist; // Default sort (by title) has already been done
 			if ($sortby=='file') uasort($sortedMediaList, 'filesort');
 
 			// Set up for two passes, the first showing URLs, the second normal files
@@ -1120,8 +1120,8 @@ jQuery(document).ready(function(){
 							}
 
 							// Delete File
-							// 		don't delete external files
-							//		don't delete files linked to more than 1 object
+							// don't delete external files
+							// don't delete files linked to more than 1 object
 							$objectCount = 0;
 							if (!$isExternal) {
 								foreach ($medialist as $tempMedia) {
@@ -1149,7 +1149,6 @@ jQuery(document).ready(function(){
 								$tempURL = "media.php?";
 								if (!empty($filter)) $tempURL .= "filter={$filter}&";
 								$tempURL .= "action=removelinks&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".urlencode($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
-							//	print "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove all links to this object?')."');\">".i18n::translate('Remove links')."</a><br />";
 							}
 
 							// Add or Remove Links

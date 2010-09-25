@@ -39,7 +39,7 @@ if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')==
 {
 	if (isset($HTTP_RAW_POST_DATA)) {
 	//-- set the session id
-	//	<ns4:SID>6ca1b44936bf4zb7202e6bd8ce4bkcbd</ns4:SID>
+	// <ns4:SID>6ca1b44936bf4zb7202e6bd8ce4bkcbd</ns4:SID>
 		$ct = preg_match("~<\w*:SID>(.*)</\w*:SID>~", $HTTP_RAW_POST_DATA, $match);
 		if ($ct>0) Zend_Session::setId(trim($match[1]));
 
@@ -59,4 +59,3 @@ require_once './webservice/ServiceLogic.class.php';
 $genealogyServer = new ServiceLogic();
 //-- process the SOAP request
 $server = $genealogyServer->process();
-?>

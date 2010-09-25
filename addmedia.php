@@ -165,7 +165,7 @@ if ($action=="newentry") {
 		$parts = pathinfo_utf($fileName);
 		if (!empty($parts["basename"])) {
 			// User supplied a name to be used on the server
-			$mediaFile = $parts["basename"];	// Use the supplied name
+			$mediaFile = $parts["basename"]; // Use the supplied name
 			if (empty($parts["extension"]) || !in_array(strtolower($parts["extension"]), $MEDIATYPE)) {
 				// Strip invalid extension from supplied name
 				$lastDot = strrpos($mediaFile, '.');
@@ -614,4 +614,3 @@ print "<br />";
 print "<div class=\"center\"><a href=\"#\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">".i18n::translate('Close Window')."</a></div>\n";
 print "<br />";
 print_simple_footer();
-?>

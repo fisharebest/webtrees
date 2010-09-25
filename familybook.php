@@ -254,7 +254,7 @@ $gencount=0;
 	<?php echo i18n::translate('Root Person ID'), help_link('desc_rootid'); ?>
 </td>
 <td class="optionbox">
-	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $pid ?>"	/>
+	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $pid; ?>" />
 	<?php print_findindi_link("pid",""); ?>
 </td>
 

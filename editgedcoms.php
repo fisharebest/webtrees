@@ -42,9 +42,9 @@ function import_gedcom_file($gedcom_id, $file_name) {
 	// Cannot use the stream technique at http://php.net/manual/en/pdo.lobs.php
 	// It doesn't work, probably due to the MySQL bug mentioned below.
 	//WT_DB::prepare(
-	//	"UPDATE `##gedcom`".
-	//	" SET import_gedcom=?, import_offset=1".
-	//	" WHERE gedcom_id=?"
+	// "UPDATE `##gedcom`".
+	// " SET import_gedcom=?, import_offset=1".
+	// " WHERE gedcom_id=?"
 	//)
 	//->bindParam(1, $fp,        PDO::PARAM_LOB)
 	//->bindParam(2, $gedcom_id, PDO::PARAM_INT)

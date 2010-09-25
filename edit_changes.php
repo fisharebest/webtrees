@@ -70,9 +70,9 @@ case 'undo':
 		"UPDATE `##change`".
 		" SET   status     = 'rejected'".
 		" WHERE status     = 'pending'".
-		"	AND   gedcom_id  = ?".
-		"	AND   xref       = ?".
-		"	AND   change_id >= ?"
+		" AND   gedcom_id  = ?".
+		" AND   xref       = ?".
+		" AND   change_id >= ?"
 	)->execute(array($gedcom_id, $xref, $change_id));
 	echo '<b>', i18n::translate('Undo successful'), '</b>';
 	break;
@@ -85,9 +85,9 @@ case 'accept':
 		" FROM  `##change` c".
 		" JOIN  `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status   = 'pending'".
-		"	AND   gedcom_id  = ?".
-		"	AND   xref       = ?".
-		"	AND   change_id <= ?".
+		" AND   gedcom_id  = ?".
+		" AND   xref       = ?".
+		" AND   change_id <= ?".
 		" ORDER BY change_id"
 	)->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
 	foreach ($changes as $change) {
@@ -190,8 +190,8 @@ if (!$changed_gedcoms) {
 		echo "</b></td>";
 		$output .= "<td class=\"list_value $TEXT_DIRECTION\"><a href=\"javascript:;\" onclick=\"return reply('".$change->user_name."', '".i18n::translate('Review GEDCOM Changes')."')\" alt=\"".i18n::translate('Send Message')."\">";
 		$output .= PrintReady($change->real_name);
- 		$output .= PrintReady("&nbsp;(".$change->user_name.")")."</a></td>";
- 		$output .= "<td class=\"list_value $TEXT_DIRECTION\">".$change->change_time."</td>";
+		$output .= PrintReady("&nbsp;(".$change->user_name.")")."</a></td>";
+		$output .= "<td class=\"list_value $TEXT_DIRECTION\">".$change->change_time."</td>";
 		$output .= "<td class=\"list_value $TEXT_DIRECTION\">".$change->gedcom_name."</td>";
 		$output .= "<td class=\"list_value $TEXT_DIRECTION\"><a href=\"".encode_url("edit_changes.php?action=undo&change_id={$change->change_id}")."\">".i18n::translate('Undo')."</a></td>";
 		$output.='</tr>';
@@ -235,4 +235,3 @@ echo '</div>';
 
 echo "<br /><br /><center><a href=\"javascript:;\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", i18n::translate('Close Window'), '</a><br /></center>';
 print_simple_footer();
-?>

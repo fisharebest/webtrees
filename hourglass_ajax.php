@@ -38,7 +38,7 @@ require_once WT_ROOT.'includes/controllers/hourglass_ctrl.php';
 /*
  * The purpose of this page is to build the left half of the Hourglass chart via Ajax.
  * This page only produces a husband and wife with the connecting lines to unite and
- * 	label the pair as a pair.
+ * label the pair as a pair.
  */
 
 $controller = new HourglassController();
@@ -50,4 +50,3 @@ if (isset($_REQUEST['type']) && $_REQUEST['type']=='desc')
 	$controller->print_descendency($controller->pid, 1, false);
 else
 	$controller->print_person_pedigree($controller->pid, 0);
-?>

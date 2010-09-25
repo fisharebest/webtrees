@@ -175,10 +175,10 @@ if (WT_USE_LIGHTBOX) {
 
 // javascript function to open the lightbox view
 function lightboxView(){
-//	var string = "<?php print $tmb; ?>";
-//	alert(string);
-//    	document.write(string);
-//	<?php print $tmb; ?>
+// var string = "<?php print $tmb; ?>";
+// alert(string);
+// document.write(string);
+// <?php print $tmb; ?>
 	return false;
 }
 

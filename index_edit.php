@@ -432,4 +432,4 @@ if ($action=="configure") {
 	echo "</div>\n";
 }
 
-echo "</body></html>";		// Yes! Absolutely NOTHING at page bottom, please.
+echo "</body></html>"; // Yes! Absolutely NOTHING at page bottom, please.

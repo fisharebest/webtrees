@@ -193,7 +193,7 @@ if (!$success) {
 		<td class="optionbox" id="tdUrlText">
 			<div id="existingContent">
 				<?php echo i18n::translate('Existing remote site'); ?><br />
-				<select id="cbExistingServers" name="cbExistingServers"	style="width: 400px;">
+				<select id="cbExistingServers" name="cbExistingServers" style="width: 400px;">
 					<?php
 						foreach ($controller->server_list as $key=>$server) {
 							echo '<option value="', $key, '"';
@@ -280,5 +280,3 @@ if ($success && !WT_DEBUG ) {
 	echo '<div class="center"><a href="javascript://', i18n::translate('Close Window'), '" onclick="edit_close();">', i18n::translate('Close Window'), '</a></div>';
 	print_simple_footer();
 }
-
-?>

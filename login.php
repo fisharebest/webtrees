@@ -104,8 +104,8 @@ if ($action=='login') {
 		}
 
 		$url = str_replace("logout=1", "", $url);
-		$url .= "&";	// Simplify the preg_replace following
-		$url = preg_replace('/(&|\?)ged=.*&/', "$1", html_entity_decode(rawurldecode($url),ENT_COMPAT,'UTF-8'));	// Remove any existing &ged= parameter
+		$url .= "&"; // Simplify the preg_replace following
+		$url = preg_replace('/(&|\?)ged=.*&/', "$1", html_entity_decode(rawurldecode($url),ENT_COMPAT,'UTF-8')); // Remove any existing &ged= parameter
 		if (substr($url, -1)=="&") $url = substr($url, 0, -1);
 		$url .= "&ged=".$ged;
 		$url = str_replace(array("&&", ".php&", ".php?&"), array("&", ".php?", ".php?"), $url);
@@ -226,4 +226,3 @@ print "</div><br /><br />";
 <?php
 if ($type=="full") print_footer();
 else print_simple_footer();
-?>

@@ -231,7 +231,7 @@ print_header(i18n::translate('Module administration'));
     jQuery('#menus_table').bind('sortupdate', function(event, ui) {
 			var id = jQuery(this).attr('id');
 			reindexMods(id);
-  	});
+		});
 
     jQuery('#tabs_table').bind('sortupdate', function(event, ui) {
 		var id = jQuery(this).attr('id');

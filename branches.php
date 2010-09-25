@@ -49,7 +49,7 @@ if (empty($ged)) {
 $rootid = "";
 if (WT_USER_ID) {
 	$rootid = WT_USER_ROOT_ID;
-	if (empty($_SESSION['user_ancestors'])	|| $_SESSION['user_ancestors'][1]!==$rootid) {
+	if (empty($_SESSION['user_ancestors']) || $_SESSION['user_ancestors'][1]!==$rootid) {
 		unset($_SESSION['user_ancestors']);
 		load_ancestors_array($rootid);
 	}
@@ -149,9 +149,9 @@ function print_fams($person, $famid=null) {
 		$sex = $person->getSex();
 		$famcrec = get_sub_record(1, "1 FAMC @".$famid."@", $person->getGedcomRecord());
 		$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
-		if ($sex=="F" && isset($PEDI_CODES_F[$pedi]))		$label = $PEDI_CODES_F[$pedi];
-		else if ($sex=="M" && isset($PEDI_CODES_M[$pedi]))	$label = $PEDI_CODES_M[$pedi];
-		else if (isset($PEDI_CODES[$pedi]))					$label = $PEDI_CODES[$pedi];
+		if ($sex=="F" && isset($PEDI_CODES_F[$pedi])) $label = $PEDI_CODES_F[$pedi];
+		else if ($sex=="M" && isset($PEDI_CODES_M[$pedi])) $label = $PEDI_CODES_M[$pedi];
+		else if (isset($PEDI_CODES[$pedi]))     $label = $PEDI_CODES[$pedi];
 		$current = "<span class='red'>".$label."</span> ".$current;
 	}
 	// spouses and children
@@ -235,7 +235,6 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 		WT_DB::prepare($sql)
 		->execute($args)
 		->fetchAll();
-//	var_dump($sql); var_dump($rows);
 	$data=array();
 	foreach ($rows as $row) {
 		$data[$row->n_id]=Person::getInstance($row->n_id);
@@ -247,4 +246,3 @@ function sosa_gen($sosa) {
 	$gen = (int)log($sosa, 2)+1;
 	return "<sup title=\"".i18n::translate('Generation')."\">{$gen}</sup>";
 }
-?>

@@ -308,7 +308,7 @@ function print_td_person($n) {
 		if ($showthumbs && $MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = find_highlighted_object($pid, WT_GED_ID, $indi->getGedcomRecord());
 			if (!empty($object)) {
-				$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
+				$whichFile = thumb_or_main($object); // Do we send the main image or a thumbnail?
 				$size = findImageSize($whichFile);
 				$class = "pedigree_image_portrait";
 				if ($size[0]>$size[1]) $class = "pedigree_image_landscape";

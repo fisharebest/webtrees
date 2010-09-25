@@ -182,7 +182,7 @@ echo '<br />', join(' | ', $list), '</p>';
 // Search spiders don't get an option to show/hide the surname sublists,
 // nor does it make sense on the all/unknown/surname views
 if (!$SEARCH_SPIDER) {
- 	echo '<p class="center">';
+	echo '<p class="center">';
 	if ($alpha!='@' && $alpha!=',' && !$surname) {
 		if ($surname_sublist=='yes') {
 			echo '<a href="', $url, '&amp;surname_sublist=no">', i18n::translate('Skip surname lists'), '</a>';
@@ -288,5 +288,3 @@ if ($showList) {
 }
 
 print_footer();
-
-?>

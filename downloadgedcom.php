@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Allow an admin user to download the entire gedcom	file.
+ * Allow an admin user to download the entire gedcom file.
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -36,26 +36,26 @@ require_once WT_ROOT.'includes/functions/functions_export.php';
 if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
 if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
 
-$ged				= safe_GET('ged',				get_all_gedcoms());
-$action				= safe_GET('action',			'download');
-$remove				= safe_GET('remove',			'yes', 'no');
-$convert			= safe_GET('convert',			'yes', 'no');
-$zip				= safe_GET('zip',				'yes', 'no');
-$conv_path			= safe_GET('conv_path',			WT_REGEX_NOSCRIPT,				$_SESSION['exportConvPath']);
-$conv_slashes		= safe_GET('conv_slashes',		array('forward', 'backward'),	$_SESSION['exportConvSlashes']);
-$privatize_export	= safe_GET('privatize_export',	array('none', 'visitor', 'user', 'gedadmin'));
+$ged              = safe_GET('ged',              get_all_gedcoms());
+$action           = safe_GET('action',           'download');
+$remove           = safe_GET('remove',           'yes', 'no');
+$convert          = safe_GET('convert',          'yes', 'no');
+$zip              = safe_GET('zip',              'yes', 'no');
+$conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
+$conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'), $_SESSION['exportConvSlashes']);
+$privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 
 $conv_path = stripLRMRLM($conv_path);
-$_SESSION['exportConvPath'] = $conv_path;		// remember this for the next Download
+$_SESSION['exportConvPath'] = $conv_path; // remember this for the next Download
 $_SESSION['exportConvSlashes'] = $conv_slashes;
 
 if (!WT_USER_GEDCOM_ADMIN || !$ged) {
-	header("Location: editgedcoms.php");
+	header('Location: editgedcoms.php');
 	exit;
 }
 
 if ($action == 'download') {
-	$conv_path = rtrim(str_replace('\\', '/', trim($conv_path)), '/').'/';	// make sure we have a trailing slash here
+	$conv_path = rtrim(str_replace('\\', '/', trim($conv_path)), '/').'/'; // make sure we have a trailing slash here
 	if ($conv_path=='/') $conv_path = '';
 
 	$exportOptions = array();

@@ -42,12 +42,12 @@ $directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
 $multiple       =safe_GET_bool('multiple');
 $showthumb      =safe_GET_bool('showthumb');
 $all            =safe_GET_bool('all');
-$subclick		=safe_GET('subclick');
+$subclick       =safe_GET('subclick');
 $choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
 $level          =safe_GET('level', WT_REGEX_INTEGER, 0);
 $language_filter=safe_GET('language_filter');
 $magnify        =safe_GET_bool('magnify');
-$qs				=safe_GET('tags');
+$qs             =safe_GET('tags');
 
 
 
