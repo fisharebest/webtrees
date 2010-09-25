@@ -777,7 +777,7 @@ function print_address_structure($factrec, $level) {
 	if ($ct>0) {
 		for($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
-			$resultText .= "\n\t\t<td><span class=\"label\"><b>".translate_fact('URL').": </b></span></td><td><span class=\"field\">";
+			$resultText .= "\n\t\t<td><span class=\"label\"><b>".translate_fact($omatch[$i][1]).": </b></span></td><td><span class=\"field\">";
 			$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>\n";
 			$resultText .= "</span></td></tr>\n";
 		}
