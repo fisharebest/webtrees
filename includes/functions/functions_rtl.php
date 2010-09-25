@@ -45,8 +45,8 @@ $RTLOrd = array(215,216,217,218,219);
 $openPar  = '([{';
 $closePar = ')]}';
 $numbers = '0123456789';
-$numberPrefix = '+-';				// Treat these like numbers when at beginning or end of numeric strings
-$numberPunctuation = '- ,.:/';		// Treat these like numbers when inside numeric strings
+$numberPrefix = '+-'; // Treat these like numbers when at beginning or end of numeric strings
+$numberPunctuation = '- ,.:/'; // Treat these like numbers when inside numeric strings
 $punctuation = ',.:;?!';
 
 function getLRM(){
@@ -62,8 +62,8 @@ function getRLM(){
  * text that has been passed through the PrintReady() function before that text is stored
  * in the database.  The database should NEVER contain these characters.
  *
- * @param 	string	The string from which the &lrm; and &rlm; characters should be stripped
- * @return	string	The input string, with &lrm; and &rlm; stripped
+ * @param  string The string from which the &lrm; and &rlm; characters should be stripped
+ * @return string The input string, with &lrm; and &rlm; stripped
  */
 function stripLRMRLM($inputText) {
 	return str_replace(array(WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"), "", $inputText);
@@ -73,10 +73,10 @@ function stripLRMRLM($inputText) {
  * This function encapsulates all texts in the input with <span dir='xxx'> and </span>
  * according to the directionality specified.
  *
- * @param 	string	Raw input
- * @param	string	Directionality (LTR, BOTH, RTL) default BOTH
- * @param	string	Additional text to insert into output <span dir="xxx"> (such as 'class="yyy"')
- * @return	string	The string with all texts encapsulated as required
+ * @param  string Raw input
+ * @param string Directionality (LTR, BOTH, RTL) default BOTH
+ * @param string Additional text to insert into output <span dir="xxx"> (such as 'class="yyy"')
+ * @return string The string with all texts encapsulated as required
  */
 function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	global $TEXT_DIRECTION;
@@ -86,29 +86,29 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	global $startLTR, $endLTR, $startRTL, $endRTL, $lenStart, $lenEnd;
 	static $spanNumber = 0;
 
-	if ($inputText == '') return '';		// Nothing to do
+	if ($inputText == '') return ''; // Nothing to do
 
-	$debug = false;		// false for normal operation (no calls of the DumpString function)
+	$debug = false; // false for normal operation (no calls of the DumpString function)
 
 	$spanNumber ++;
 	if ($debug) {echo '<br /><b>Input ', $spanNumber, ':</b>'; DumpString($inputText);}
 
 	$workingText = str_replace("\n", '<br />', $inputText);
-	$workingText = str_replace(array('<span class="starredname"><br />', '<span<br />class="starredname">'), '<br /><span class="starredname">',$workingText);		// Reposition some incorrectly placed line breaks
-	$workingText = stripLRMRLM($workingText);		// Get rid of any existing UTF8 control codes
+	$workingText = str_replace(array('<span class="starredname"><br />', '<span<br />class="starredname">'), '<br /><span class="starredname">',$workingText); // Reposition some incorrectly placed line breaks
+	$workingText = stripLRMRLM($workingText); // Get rid of any existing UTF8 control codes
 
-	$nothing 	= '&zwnj;';		// Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
+	$nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
 
-	$startLTR	= '<LTR>';		// This will become '<span dir="ltr">' at the end
-	$endLTR		= '</LTR>';		// This will become '</span>' at the end
-	$startRTL	= '<RTL>';		// This will become '<span dir="rtl">' at the end
-	$endRTL		= '</RTL>';		// This will become '</span>' at the end
-	$lenStart	= strlen($startLTR);	// RTL version MUST have same length
-	$lenEnd		= strlen($endLTR);		// RTL version MUST have same length
+	$startLTR = '<LTR>'; // This will become '<span dir="ltr">' at the end
+	$endLTR = '</LTR>'; // This will become '</span>' at the end
+	$startRTL = '<RTL>'; // This will become '<span dir="rtl">' at the end
+	$endRTL = '</RTL>'; // This will become '</span>' at the end
+	$lenStart = strlen($startLTR); // RTL version MUST have same length
+	$lenEnd = strlen($endLTR); // RTL version MUST have same length
 
 	$previousState = '';
 	$currentState = strtoupper($TEXT_DIRECTION);
-	$numberState = false;		// Set when we're inside a numeric string
+	$numberState = false; // Set when we're inside a numeric string
 	$result = '';
 	$waitingText = '';
 	$openParDirection = array();
@@ -116,22 +116,22 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	beginCurrentSpan($result);
 
 	while ($workingText != '') {
-		$charArray = getChar($workingText, 0);		// Get the next ASCII or UTF-8 character
+		$charArray = getChar($workingText, 0); // Get the next ASCII or UTF-8 character
 		$currentLetter = $charArray['letter'];
 		$currentLen = $charArray['length'];
 
-		$openParIndex = strpos($openPar, $currentLetter);		// Which opening parenthesis is this?
-		$closeParIndex = strpos($closePar, $currentLetter);		// Which closing parenthesis is this?
+		$openParIndex = strpos($openPar, $currentLetter); // Which opening parenthesis is this?
+		$closeParIndex = strpos($closePar, $currentLetter); // Which closing parenthesis is this?
 
 		switch ($currentLetter) {
 		case '<':
 			// Assume this '<' starts an HTML element
-			$endPos = strpos($workingText, '>');	// look for the terminating '>'
+			$endPos = strpos($workingText, '>'); // look for the terminating '>'
 			if ($endPos === false) $endPos = 0;
 			$currentLen += $endPos;
 			$element = substr($workingText, 0, $currentLen);
 			$temp = strtolower(substr($element, 0, 3));
-			if (strlen($element < 7) && $temp == '<br') {		// assume we have '<br />' or a variant thereof
+			if (strlen($element < 7) && $temp == '<br') { // assume we have '<br />' or a variant thereof
 				if ($numberState) {
 					$numberState = false;
 					$waitingText .= WT_UTF8_PDF;
@@ -146,7 +146,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			break;
 		case '&':
 			// Assume this '&' starts an HTML entity
-			$endPos = strpos($workingText, ';');	// look for the terminating ';'
+			$endPos = strpos($workingText, ';'); // look for the terminating ';'
 			if ($endPos === false) $endPos = 0;
 			$currentLen += $endPos;
 			$entity = substr($workingText, 0, $currentLen);
@@ -170,7 +170,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 				}
 			} else {
 				if (strtolower($entity) == '&nbsp;') {
-					$entity .= '&nbsp;';		// Ensure consistent case for this entity
+					$entity .= '&nbsp;'; // Ensure consistent case for this entity
 				}
 				if ($waitingText == '') {
 					$result .= $entity;
@@ -183,7 +183,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		case '{':
 			if (substr($workingText, 1, 1) == '{') {
 				// Assume this '{{' starts a TCPDF directive
-				$endPos = strpos($workingText, '}}');	// look for the terminating '}}'
+				$endPos = strpos($workingText, '}}'); // look for the terminating '}}'
 				if ($endPos === false) $endPos = 0;
 				$currentLen = $endPos + 2;
 				$directive = substr($workingText, 0, $currentLen);
@@ -197,14 +197,14 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			// and with optional embedded numeric punctuation
 			if ($numberState) {
 				// If we're inside a numeric string, look for reasons to end it
-				$offset = 0;		// Be sure to look at the current character first
+				$offset = 0; // Be sure to look at the current character first
 				$charArray = getChar($workingText."\n", $offset);
 				if (strpos($numbers, $charArray['letter']) === false) {
 					// This is not a digit.  Is it numeric punctuation?
 					if (substr($workingText."\n", $offset, 6) == '&nbsp;') {
-						$offset += 6;		// This could be numeric punctuation
+						$offset += 6; // This could be numeric punctuation
 					} else if (strpos($numberPunctuation, $charArray['letter']) !== false) {
-						$offset += $charArray['length'];	// This could be numeric punctuation
+						$offset += $charArray['length']; // This could be numeric punctuation
 					}
 					// If the next character is a digit, the current character is numeric punctuation
 					$charArray = getChar($workingText."\n", $offset);
@@ -214,7 +214,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 						if (strpos($numberPrefix, $currentLetter) === false) {
 							$currentLetter = WT_UTF8_PDF . $currentLetter;
 						} else {
-							$currentLetter = $currentLetter . WT_UTF8_PDF;		// Include a trailing + or - in the run
+							$currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
 						}
 					}
 				}
@@ -225,11 +225,11 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					$offset = $currentLen;
 					$nextChar = substr($workingText."\n", $offset, 1);
 					if (strpos($numbers, $nextChar) !== false) {
-						$numberState = true;		// We found a digit: the lead-in is therefore numeric
+						$numberState = true; // We found a digit: the lead-in is therefore numeric
 						$currentLetter = WT_UTF8_LRE . $currentLetter;
 					}
 				} else if (strpos($numbers, $currentLetter) !== false) {
-					$numberState = true;		// The current letter is a digit
+					$numberState = true; // The current letter is a digit
 					$currentLetter = WT_UTF8_LRE . $currentLetter;
 				}
 			}
@@ -308,7 +308,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 						break;
 					}
 					$openParDirection[$openParIndex] = '?';
-					break 2;	// double break because we're waiting for more information
+					break 2; // double break because we're waiting for more information
 				}
 
 				// We have a digit or a "normal" special character.
@@ -324,7 +324,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					$result .= $waitingText;
 					$waitingText = '';
 				}
-				break 2;	// double break because we're waiting for more information
+				break 2; // double break because we're waiting for more information
 			}
 			if ($newState != $currentState) {
 				// A direction change has occurred
@@ -416,7 +416,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			$result = str_replace('&nbsp;<br />', '<br />', $result);
 			continue;
 		}
-		break;		// Neither space nor &nbsp; : we're done
+		break; // Neither space nor &nbsp; : we're done
 	}
 
 	// Trim trailing blanks preceding <br /> in RTL text
@@ -429,7 +429,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			$result = str_replace('&nbsp;<RTLbr />', '<RTLbr />', $result);
 			continue;
 		}
-		break;		// Neither space nor &nbsp; : we're done
+		break; // Neither space nor &nbsp; : we're done
 	}
 
 	// Convert '<LTRbr />' and '<RTLbr /'
@@ -465,29 +465,29 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	case 'both':
 		// LTR text: <span dir="ltr"> text </span>
 		// RTL text: <span dir="rtl"> text </span>
-		$sLTR	= '<span dir="ltr" '.$class.'>'.$nothing;
-		$eLTR	= $nothing.'</span>';
-		$sRTL	= '<span dir="rtl" '.$class.'>'.$nothing;
-		$eRTL	= $nothing.'</span>';
+		$sLTR = '<span dir="ltr" '.$class.'>'.$nothing;
+		$eLTR = $nothing.'</span>';
+		$sRTL = '<span dir="rtl" '.$class.'>'.$nothing;
+		$eRTL = $nothing.'</span>';
 		break;
 	case 'LTR':
 	case 'ltr':
 		// LTR text: <span dir="ltr"> text </span>
 		// RTL text: text
-		$sLTR	= '<span dir="ltr" '.$class.'>'.$nothing;
-		$eLTR	= $nothing.'</span>';
-		$sRTL	= '';
-		$eRTL	= '';
+		$sLTR = '<span dir="ltr" '.$class.'>'.$nothing;
+		$eLTR = $nothing.'</span>';
+		$sRTL = '';
+		$eRTL = '';
 		break;
 	case 'RTL':
 	case 'rtl':
 	default:
 		// LTR text: text
 		// RTL text: <span dir="rtl"> text </span>
-		$sLTR	= '';
-		$eLTR	= '';
-		$sRTL	= '<span dir="rtl" '.$class.'>'.$nothing;
-		$eRTL	= $nothing.'</span>';
+		$sLTR = '';
+		$eLTR = '';
+		$sRTL = '<span dir="rtl" '.$class.'>'.$nothing;
+		$eRTL = $nothing.'</span>';
 		break;
 	}
 	$result = str_replace(array($startLTR, $endLTR, $startRTL, $endRTL), array($sLTR, $eLTR, $sRTL, $eRTL), $result);
@@ -510,7 +510,7 @@ function starredName($textSpan, $direction) {
 			if ($starPos === false) break;
 			$trailingText = substr($textSpan, $starPos+1);
 			$textSpan = substr($textSpan, 0, $starPos);
-			$wordStart = strrpos($textSpan, ' ');		// Find the start of the word
+			$wordStart = strrpos($textSpan, ' '); // Find the start of the word
 			if ($wordStart !== false) {
 				$leadingText = substr($textSpan, 0, $wordStart+1);
 				$wordText = substr($textSpan, $wordStart+1);
@@ -541,9 +541,9 @@ function getChar($text, $offset) {
 
 	$char = substr($text, $offset, 1);
 	$length = 1;
-	if ((ord($char) & 0xE0) == 0xC0) $length = 2;		// 2-byte sequence
-	if ((ord($char) & 0xF0) == 0xE0) $length = 3;		// 3-byte sequence
-	if ((ord($char) & 0xF8) == 0xF0) $length = 4;		// 4-byte sequence
+	if ((ord($char) & 0xE0) == 0xC0) $length = 2; // 2-byte sequence
+	if ((ord($char) & 0xF0) == 0xE0) $length = 3; // 3-byte sequence
+	if ((ord($char) & 0xF8) == 0xF0) $length = 4; // 4-byte sequence
 	$letter = substr($text, $offset, $length);
 
 	return array('letter'=>$letter, 'length'=>$length);
@@ -597,14 +597,14 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 	$tempResult = '';
 	while ($textSpan != '') {
 		$posColon = strpos($textSpan, ':');
-		if ($posColon === false) break;		// No more possible time strings
+		if ($posColon === false) break; // No more possible time strings
 		$posLRE = strpos($textSpan, WT_UTF8_LRE);
-		if ($posLRE === false) break;		// No more numeric strings
+		if ($posLRE === false) break; // No more numeric strings
 		$posPDF = strpos($textSpan, WT_UTF8_PDF, $posLRE);
-		if ($posPDF === false) break;		// No more numeric strings
+		if ($posPDF === false) break; // No more numeric strings
 
-		$tempResult .= substr($textSpan, 0, $posLRE+3);					// Copy everything preceding the numeric string
-		$numericString = substr($textSpan, $posLRE+3, $posPDF-$posLRE);	// Separate the entire numeric string
+		$tempResult .= substr($textSpan, 0, $posLRE+3); // Copy everything preceding the numeric string
+		$numericString = substr($textSpan, $posLRE+3, $posPDF-$posLRE); // Separate the entire numeric string
 		$textSpan = substr($textSpan, $posPDF+3);
 		$posColon = strpos($numericString, ':');
 		if ($posColon === false) {
@@ -730,7 +730,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			break;
 		}
 		while (substr($textSpan, -9) == '<LTRbr />') {
-			$trailingBreaks = '<br />' . $trailingBreaks;		// Plain <br /> because it's outside a span
+			$trailingBreaks = '<br />' . $trailingBreaks; // Plain <br /> because it's outside a span
 			$textSpan = substr($textSpan, 0, -9);
 		}
 		if ($trailingBreaks != '') {
@@ -747,7 +747,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 				}
 				break;
 			}
-			$waitingText = $trailingBlanks . $waitingText;		// Put those trailing blanks inside the following span
+			$waitingText = $trailingBlanks . $waitingText; // Put those trailing blanks inside the following span
 		} else {
 			$textSpan = $savedSpan;
 		}
@@ -786,18 +786,18 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 
 			// Remove trailing ID numbers that look like "(xnnn)" for inclusion in a separate LTR span
 			while (true) {
-				if (substr($textSpan, -1) != ')') break;		// There is no trailing ')'
+				if (substr($textSpan, -1) != ')') break; // There is no trailing ')'
 				$posLeftParen = strrpos($textSpan, '(');
-				if ($posLeftParen === false) break;				// There is no leading '('
-				$temp = stripLRMRLM(substr($textSpan, $posLeftParen));		// Get rid of UTF8 control codes
+				if ($posLeftParen === false) break; // There is no leading '('
+				$temp = stripLRMRLM(substr($textSpan, $posLeftParen)); // Get rid of UTF8 control codes
 
 				// If the parenthesized text doesn't look like an ID number,
 				// we don't want to touch it.
 				// This check won't work if somebody uses ID numbers with an unusual format.
 				$offset = 1;
-				$charArray = getchar($temp, $offset);	// Get 1st character of parenthesized text
+				$charArray = getchar($temp, $offset); // Get 1st character of parenthesized text
 				if (strpos($numbers, $charArray['letter']) !== false) break;
-				$offset += $charArray['length'];		// Point at 2nd character of parenthesized text
+				$offset += $charArray['length']; // Point at 2nd character of parenthesized text
 				if (strpos($numbers, substr($temp, $offset, 1)) === false) break;
 				// 1st character of parenthesized text is alpha, 2nd character is a digit; last has to be a digit too
 				if (strpos($numbers, substr($temp, -2, 1)) === false) break;
@@ -860,7 +860,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		}
 
 		// We're done: finish the span
-		$textSpan = starredName($textSpan, 'LTR');		// Wrap starred name in <u> and </u> tags
+		$textSpan = starredName($textSpan, 'LTR'); // Wrap starred name in <u> and </u> tags
 		while (true) {
 			// Remove blanks that precede <LTRbr />
 			if (strpos($textSpan, ' <LTRbr />') !== false) {
@@ -901,11 +901,11 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			break;
 		}
 		while (substr($textSpan, -9) == '<RTLbr />') {
-			$trailingBreaks = '<br />' . $trailingBreaks;		// Plain <br /> because it's outside a span
+			$trailingBreaks = '<br />' . $trailingBreaks; // Plain <br /> because it's outside a span
 			$textSpan = substr($textSpan, 0, -9);
 		}
 		if ($trailingBreaks != '') {
-			$waitingText = $trailingBlanks . $waitingText;		// Put those trailing blanks inside the following span
+			$waitingText = $trailingBlanks . $waitingText; // Put those trailing blanks inside the following span
 		} else {
 			$textSpan = $savedSpan;
 		}
@@ -970,7 +970,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			if ($posDashString === false) break;
 			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr />');
 			if ($posStringStart === false) $posStringStart = 0;
-			else $posStringStart += 9;		// Point to the first char following the last <RTLbr />
+			else $posStringStart += 9; // Point to the first char following the last <RTLbr />
 
 			$textSpan = substr($textSpan, 0, $posStringStart) . ' - ' . substr($textSpan, $posStringStart, $posDashString-$posStringStart) . substr($textSpan, $posDashString+3);
 		}
@@ -1012,7 +1012,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			$posDashString = strlen($textSpan) - 2;
 			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr />');
 			if ($posStringStart === false) $posStringStart = 0;
-			else $posStringStart += 9;		// Point to the first char following the last <RTLbr />
+			else $posStringStart += 9; // Point to the first char following the last <RTLbr />
 
 			$textSpan = substr($textSpan, 0, $posStringStart) . '- ' . substr($textSpan, $posStringStart, $posDashString-$posStringStart) . substr($textSpan, $posDashString+2);
 		}
@@ -1035,7 +1035,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		}
 
 		// We're done: finish the span
-		$textSpan = starredName($textSpan, 'RTL');		// Wrap starred name in <u> and </u> tags
+		$textSpan = starredName($textSpan, 'RTL'); // Wrap starred name in <u> and </u> tags
 		$result = $result . $textSpan . $endRTL;
 	}
 
@@ -1043,7 +1043,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		$result = $result . $textSpan;
 	}
 
-	$result .= $trailingBreaks;		// Get rid of any waiting <br />
+	$result .= $trailingBreaks; // Get rid of any waiting <br />
 
 	return;
 }
@@ -1053,8 +1053,8 @@ function finishCurrentSpan(&$result, $theEnd=false) {
  *
  * original found at http://www.php.net/manual/en/function.get-html-translation-table.php
  * @see http://www.php.net/manual/en/function.get-html-translation-table.php
- * @param string $string	the string to remove the entities from
- * @return string	the string with entities converted
+ * @param string $string the string to remove the entities from
+ * @return string the string with entities converted
  */
 function unhtmlentities($string)  {
 	$trans_tbl=array_flip(get_html_translation_table (HTML_ENTITIES));
@@ -1068,8 +1068,8 @@ function unhtmlentities($string)  {
  *
  * this function will take a text string and reverse it for RTL languages
  * according to bidi rules.
- * @param string $text	String to change
- * @return string	the new bidi string
+ * @param string $text String to change
+ * @return string the new bidi string
  * @todo add other RTL langauges
  */
 function bidi_text($text) {
@@ -1081,7 +1081,7 @@ function bidi_text($text) {
 
 	$found = false;
 	foreach($RTLOrd as $indexval => $ord) {
-    	if (strpos($text, chr($ord))!==false) $found=true;
+		if (strpos($text, chr($ord))!==false) $found=true;
 	}
 	if (!$found) return $text;
 
@@ -1273,16 +1273,16 @@ function reverseText($text) {
 	while ($text!='') {
 		$charLen = 1;
 		$letter = substr($text, 0, 1);
-		if ((ord($letter) & 0xE0) == 0xC0) $charLen = 2;		// 2-byte sequence
-		if ((ord($letter) & 0xF0) == 0xE0) $charLen = 3;		// 3-byte sequence
-		if ((ord($letter) & 0xF8) == 0xF0) $charLen = 4;		// 4-byte sequence
+		if ((ord($letter) & 0xE0) == 0xC0) $charLen = 2; // 2-byte sequence
+		if ((ord($letter) & 0xF0) == 0xE0) $charLen = 3; // 3-byte sequence
+		if ((ord($letter) & 0xF8) == 0xF0) $charLen = 4; // 4-byte sequence
 
 		$letter = substr($text, 0, $charLen);
 		$text = substr($text, $charLen);
 		if (strpos(WT_UTF8_DIGITS, $letter)!==false) {
-			$numbers .= $letter;		// accumulate numbers in LTR mode
+			$numbers .= $letter; // accumulate numbers in LTR mode
 		} else {
-			$reversedText = $numbers.$reversedText;		// emit any waiting LTR numbers now
+			$reversedText = $numbers.$reversedText; // emit any waiting LTR numbers now
 			$numbers = '';
 			if (strpos(WT_UTF8_PARENTHESES1, $letter)!==false) {
 				$reversedText = substr(WT_UTF8_PARENTHESES2, strpos(WT_UTF8_PARENTHESES1, $letter), strlen($letter)).$reversedText;
@@ -1292,6 +1292,6 @@ function reverseText($text) {
 		}
 	}
 
-	$reversedText = $numbers.$reversedText;		// emit any waiting LTR numbers now
+	$reversedText = $numbers.$reversedText; // emit any waiting LTR numbers now
 	return $reversedText;
 }

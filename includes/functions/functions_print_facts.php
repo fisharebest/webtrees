@@ -44,8 +44,8 @@ require_once WT_ROOT.'includes/classes/class_person.php';
  * Turn URLs in text into HTML links.  Insert breaks into long URLs
  * so that the browser can word-wrap.
  *
- * @param string $text	Text that may or may not contain URLs
- * @return string	The text with URLs replaced by HTML links
+ * @param string $text Text that may or may not contain URLs
+ * @return string The text with URLs replaced by HTML links
  */
 function expand_urls($text) {
 	// Some versions of RFC3987 have an appendix B which gives the following regex
@@ -68,8 +68,8 @@ function expand_urls($text) {
  * print a fact record
  *
  * prints a fact record designed for the personal facts and details page
- * @param Event $eventObj	The Event object to print
- * @param boolean $noedit	Hide or show edit links
+ * @param Event $eventObj The Event object to print
+ * @param boolean $noedit Hide or show edit links
  */
 function print_fact(&$eventObj, $noedit=false) {
 	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
@@ -431,9 +431,9 @@ function print_repository_record($xref) {
  *
  * this function is called by the print_fact function and other functions to
  * print any source information attached to the fact
- * @param string $factrec	The fact record to look for sources in
- * @param int $level		The level to look for sources at
- * @param boolean $return	whether to return the data or print the data
+ * @param string $factrec The fact record to look for sources in
+ * @param int $level The level to look for sources at
+ * @param boolean $return whether to return the data or print the data
  */
 function print_fact_sources($factrec, $level, $return=false) {
 	global $WT_IMAGES, $EXPAND_SOURCES;
@@ -664,8 +664,8 @@ function print_media_links($factrec, $level, $pid='') {
  * print an address structure
  *
  * takes a gedcom ADDR structure and prints out a human readable version of it.
- * @param string $factrec	The ADDR subrecord
- * @param int $level		The gedcom line level of the main ADDR record
+ * @param string $factrec The ADDR subrecord
+ * @param int $level The gedcom line level of the main ADDR record
  */
 function print_address_structure($factrec, $level) {
 	global $POSTAL_CODE;
@@ -883,20 +883,20 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 }
 
 /**
- *	Print SOUR structure
+ * Print SOUR structure
  *
  *  This function prints the input array of SOUR sub-records built by the
  *  getSourceStructure() function.
  *
  *  The input array is defined as follows:
- *	$textSOUR["PAGE"] = +1  Source citation
- *	$textSOUR["EVEN"] = +1  Event type
- *	$textSOUR["ROLE"] = +2  Role in event
- *	$textSOUR["DATA"] = +1  place holder (no text in this sub-record)
- *	$textSOUR["DATE"] = +2  Entry recording date
- *	$textSOUR["TEXT"] = +2  (array) Text from source
- *	$textSOUR["QUAY"] = +1  Certainty assessment
- *	$textSOUR["TEXT2"] = +1 (array) Text from source
+ * $textSOUR["PAGE"] = +1  Source citation
+ * $textSOUR["EVEN"] = +1  Event type
+ * $textSOUR["ROLE"] = +2  Role in event
+ * $textSOUR["DATA"] = +1  place holder (no text in this sub-record)
+ * $textSOUR["DATE"] = +2  Entry recording date
+ * $textSOUR["TEXT"] = +2  (array) Text from source
+ * $textSOUR["QUAY"] = +1  Certainty assessment
+ * $textSOUR["TEXT2"] = +1 (array) Text from source
  */
 function printSourceStructure($textSOUR) {
 	global $GEDCOM;
@@ -953,16 +953,16 @@ function printSourceStructure($textSOUR) {
 /**
  * Extract SOUR structure from the incoming Source sub-record
  *
- *  The output array is defined as follows:
- *	$textSOUR["PAGE"] = +1  Source citation
- *	$textSOUR["EVEN"] = +1  Event type
- *	$textSOUR["ROLE"] = +2  Role in event
- *	$textSOUR["DATA"] = +1  place holder (no text in this sub-record)
- *	$textSOUR["DATE"] = +2  Entry recording date
- *	$textSOUR["TEXT"] = +2  (array) Text from source
-	$textSOUR["NOTE"] = +1  Note
- *	$textSOUR["QUAY"] = +1  Certainty assessment
- *	$textSOUR["TEXT2"] = +1 (array) Text from source
+ * The output array is defined as follows:
+ *  $textSOUR["PAGE"] = +1  Source citation
+ *  $textSOUR["EVEN"] = +1  Event type
+ *  $textSOUR["ROLE"] = +2  Role in event
+ *  $textSOUR["DATA"] = +1  place holder (no text in this sub-record)
+ *  $textSOUR["DATE"] = +2  Entry recording date
+ *  $textSOUR["TEXT"] = +2  (array) Text from source
+ *  $textSOUR["NOTE"] = +1  Note
+ *  $textSOUR["QUAY"] = +1  Certainty assessment
+ *  $textSOUR["TEXT2"] = +1 (array) Text from source
  */
 function getSourceStructure($srec) {
 	global $WORD_WRAPPED_NOTES;
@@ -1015,11 +1015,11 @@ function getSourceStructure($srec) {
  * print main note row
  *
  * this function will print a table row for a fact table for a level 1 note in the main record
- * @param string $factrec	the raw gedcom sub record for this note
- * @param int $level		The start level for this note, usually 1
- * @param string $pid		The gedcom XREF id for the level 0 record that this note is a part of
- * @param int $linenum		The line number in the level 0 record where this record was found.  This is used for online editing.
- * @param boolean $noedit	Whether or not to allow this fact to be edited
+ * @param string $factrec the raw gedcom sub record for this note
+ * @param int $level The start level for this note, usually 1
+ * @param string $pid The gedcom XREF id for the level 0 record that this note is a part of
+ * @param int $linenum The line number in the level 0 record where this record was found.  This is used for online editing.
+ * @param boolean $noedit Whether or not to allow this fact to be edited
  */
 function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 	global $GEDCOM, $RESN_CODES, $WT_IMAGES, $TEXT_DIRECTION;
@@ -1150,9 +1150,9 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 
 /**
  * Print the links to multi-media objects
- * @param string $pid	The the xref id of the object to find media records related to
- * @param int $level	The level of media object to find
- * @param boolean $related	Whether or not to grab media from related records
+ * @param string $pid The the xref id of the object to find media records related to
+ * @param int $level The level of media object to find
+ * @param boolean $related Whether or not to grab media from related records
  */
 function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	global $GEDCOM, $MEDIATYPE;
@@ -1351,8 +1351,8 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 /**
  * print a media row in a table
  * @param string $rtype whether this is a 'new', 'old', or 'normal' media row... this is used to determine if the rows should be printed with an outline color
- * @param array $rowm	An array with the details about this media item
- * @param string $pid	The record id this media item was attached to
+ * @param array $rowm An array with the details about this media item
+ * @param string $pid The record id this media item was attached to
  */
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER, $MEDIA_TYPES;

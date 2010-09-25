@@ -250,7 +250,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 	if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 		$object = $person->findHighlightedMedia();
 		if (!empty($object)) {
-			$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
+			$whichFile = thumb_or_main($object); // Do we send the main image or a thumbnail?
 			$size = findImageSize($whichFile);
 			$class = "pedigree_image_portrait";
 			if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
@@ -2254,10 +2254,10 @@ function DumpString($input) {
 					break;
 				}
 			}
-//			$thisLine .= WT_UTF8_LRM;
+			//$thisLine .= WT_UTF8_LRM;
 			$thisLine .= $thisChar;
 		}
-//		echo '&nbsp;&nbsp;UTF8&nbsp;', $thisLine, '<br />';
+		//echo '&nbsp;&nbsp;UTF8&nbsp;', $thisLine, '<br />';
 		echo '&nbsp;&nbsp;UTF8&nbsp;', WT_UTF8_LRO, $thisLine, WT_UTF8_PDF, '<br />';
 
 		// Line 3:  First hexadecimal byte

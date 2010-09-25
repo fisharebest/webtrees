@@ -118,7 +118,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		print "&nbsp;&nbsp;" . $mediaType;
 		print "</b>";
 
- 		print "<br>" . "\n";
+		print "<br>" . "\n";
 		print $mediaTitle . "\n";
 
 		print "</td>" . "\n";
@@ -132,9 +132,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	$media_data = $rowm['m_media'];
 	echo "<input type=\"hidden\" name=\"order1[", $media_data, "]\" value=\"", $j, "\" />";
 
-    echo "</li>";
-    echo "\n\n";
-    return true;
-
+	echo "</li>";
+	echo "\n\n";
+	return true;
 }
-?>

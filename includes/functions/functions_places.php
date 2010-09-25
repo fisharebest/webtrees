@@ -278,7 +278,7 @@ function setup_place_subfields($element_id) {
  *
  * data split/copy is done locally by javascript functions
  *
- * @param string $element_id	id of PLAC input element in the form
+ * @param string $element_id id of PLAC input element in the form
  */
 function print_place_subfields($element_id) {
 	global $iso3166, $WT_IMAGES;
@@ -371,8 +371,8 @@ function get_place_url($gedcom_place) {
 
 /**
  * get the first part of a place record
- * @param string $gedcom_place	The original place to shorten
- * @return string 	a shortened version of the place
+ * @param string $gedcom_place The original place to shorten
+ * @return string  a shortened version of the place
  */
 function get_place_short($gedcom_place) {
 	global $GEDCOM, $SHOW_LIST_PLACES;
@@ -391,8 +391,8 @@ function get_place_short($gedcom_place) {
 
 /**
  * get the last part of a place record
- * @param string $gedcom_place	The original place to country
- * @return string 				a country version of the place
+ * @param string $gedcom_place The original place to country
+ * @return string  a country version of the place
  */
 function getPlaceCountry($gedcom_place) {
 	global $GEDCOM;
@@ -401,4 +401,3 @@ function getPlaceCountry($gedcom_place) {
 	$place = trim($exp[count($exp)-1]);
 	return $place;
 }
-?>

@@ -93,7 +93,7 @@ function edit_field_yes_no($name, $selected=false, $extra='') {
 		$name, array(false=>i18n::translate('no'),true=>i18n::translate('yes')), $selected, $extra
 	);
 	//return select_edit_control(
-	//	$name, array(true=>i18n::translate('yes'), false=>i18n::translate('no')), null, $selected, $extra
+		//$name, array(true=>i18n::translate('yes'), false=>i18n::translate('no')), null, $selected, $extra
 	//);
 }
 
@@ -779,7 +779,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			add_simple_tag("0 SEX M");
 		} elseif ($famtag=="WIFE" || $sextag=="F") {
 			add_simple_tag("0 SEX F");
-		}	else {
+		} else {
 			add_simple_tag("0 SEX");
 		}
 		$bdm = "BD";
@@ -1348,8 +1348,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo translate_fact('SHARED_NOTE');
 			/*
 			if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
-				//	use $label (GEDFact Assistant);
-			}else{
+				// use $label (GEDFact Assistant);
+			} else {
 				echo i18n::translate('Shared note');
 			}
 			*/
@@ -1442,7 +1442,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	} else if ($fact=="TEMP") {
 		echo select_edit_control($element_name, $TEMPLE_CODES, i18n::translate('No Temple - Living Ordinance'), $value);
-	}	else if ($fact=="ADOP") {
+	} else if ($fact=="ADOP") {
 		switch ($gender) {
 		case 'M': echo edit_field_adop_m($element_name, $value); break;
 		case 'F': echo edit_field_adop_f($element_name, $value); break;
@@ -2377,11 +2377,6 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			$text.="\n".$cmatch[1];
 			$i++;
 		}
-
-		// Shared Note -------------
-		//if (eregi("/@N.*@/i", $type)) {
-		//	$type="note";
-		//}
 
 		if ($type=="SOUR") {
 			$inSource = true;

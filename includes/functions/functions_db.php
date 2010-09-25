@@ -858,8 +858,8 @@ function find_gedcom_record($xref, $ged_id, $pending=false) {
 
 /**
  * find and return an updated gedcom record
- * @param string $gid	the id of the record to find
- * @param string $gedfile	the gedcom file to get the record from.. defaults to currently active gedcom
+ * @param string $gid the id of the record to find
+ * @param string $gedfile the gedcom file to get the record from.. defaults to currently active gedcom
  */
 function find_updated_record($xref, $ged_id) {
 	static $statement=null;
@@ -1660,8 +1660,8 @@ function delete_gedcom($ged_id) {
 
 /**
 * get the top surnames
-* @param int $ged_id	fetch surnames from this gedcom
-* @param int $min	only fetch surnames occuring this many times
+* @param int $ged_id fetch surnames from this gedcom
+* @param int $min only fetch surnames occuring this many times
 * @param int $max only fetch this number of surnames (0=all)
 * @return array
 */
@@ -2497,4 +2497,3 @@ function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
 		->execute(array($xref_to, $xref_from, $ged_name))
 		->rowCount();
 }
-

@@ -42,7 +42,7 @@ define('WT_FUNCTIONS_TOOLS_PHP', '');
  * as the event.  For example:<code>1 SSN
  * 2 PLAC 123-45-6789</code> Should really be: <code>1 SSN 123-45-6789</code>
  * this function checks if this exists
- * @return boolean	returns true if the cleanup is needed
+ * @return boolean returns true if the cleanup is needed
  * @see place_cleanup()
  */
 function need_place_cleanup()
@@ -58,7 +58,7 @@ function need_place_cleanup()
 
 /**
  * clean up the bad places found by the need_place_cleanup() function
- * @return boolean	returns true if cleanup was successful
+ * @return boolean returns true if cleanup was successful
  * @see need_place_cleanup()
  */
 function place_cleanup()
@@ -103,7 +103,7 @@ function fixreplaceval($val1,$val7,$val3,$val5)
  * dates in an incorrect format.  This function checks if dates have been entered incorrectly.
  * This function will detect dates in the form YYYY-MM-DD, DD-MM-YYYY, and MM-DD-YYYY.  It will also
  * look for \ / - and . as delimeters.
- * @return boolean	returns true if the cleanup is needed
+ * @return boolean returns true if the cleanup is needed
  * @see date_cleanup()
  */
 function need_date_cleanup()
@@ -160,7 +160,7 @@ function changemonth($monval)
 
 /**
  * clean up the bad dates found by the need_date_cleanup() function
- * @return boolean	returns true if cleanup was successful
+ * @return boolean returns true if cleanup was successful
  * @see need_date_cleanup()
  */
 function date_cleanup($dayfirst=1)
@@ -203,7 +203,7 @@ function date_cleanup($dayfirst=1)
  * but instead use another Identifying tag in the Gedcom record.  This function will allow
  * the admin to replace the XREF IDs with the value of another tag.  So for example you could replace
  * the 0 @I1@ INDI with the value of the RIN tag R101 making the line look like this 0 @R101@ INDI
- * @param String $tag	the alternate tag in the gedcom record to use when replacing the xref id, defaults to RIN
+ * @param String $tag the alternate tag in the gedcom record to use when replacing the xref id, defaults to RIN
  */
 function xref_change($tag="RIN")
 {
@@ -225,12 +225,10 @@ function xref_change($tag="RIN")
 			}
 			else
 				$name = $xref;
-//  		print "Found record $i - $name: ";
 			$rt = preg_match("/1 $tag (.*)/", $indirec, $rmatch);
 			if ($rt>0) {
 				$rin = trim($rmatch[1]);
 				$fcontents = str_replace("@$xref@", "@$rin@", $fcontents);
-//  			print "successfully set to $rin<br />\n";
 			}
 			else   print "<span class=\"error\">No $tag found in record<br /></span>\n";
 		}

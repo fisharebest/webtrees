@@ -1158,19 +1158,6 @@ function format_surname_table($surnames, $type) {
 		$html.='<tr><td class="list_value_wrap rela list_item">'.$row_num.'</td>';
 		// Surname
 		$html.='<td class="list_value_wrap" align="'.get_align($surn).'">';
-		// Uncomment this block if you want SMITH/Smith/smith merged.  Note that when
-		// such case variants exist, the actual one displayed is undefined.
-		//$first_spfxsurn=null;
-		//foreach ($surns as $spfxsurn=>$indis) {
-		//	if ($first_spfxsurn) {
-		//		if (utf8_strtoupper($spfxsurn)==utf8_strtoupper($first_spfxsurn)) {
-		//			$surns[$first_spfxsurn]=array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
-		//			unset ($surns[$spfxsurn]);
-		//		}
-		//	} else {
-		//		$first_spfxsurn=$spfxsurn;
-		//	}
-		//}
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
@@ -1252,7 +1239,7 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 	foreach ($surnames as $surn=>$surns) {
 		foreach ($surns as $spfxsurn=>$indis) {
 			$cloud->appendTag(array(
-				'title'=>$totals ? i18n::translate('%1$s (%2$d)', $spfxsurn, count($indis)) :	$spfxsurn,
+				'title'=>$totals ? i18n::translate('%1$s (%2$d)', $spfxsurn, count($indis)) : $spfxsurn,
 				'weight'=>count($indis),
 				'params'=>array(
 					'url'=>$surn ?

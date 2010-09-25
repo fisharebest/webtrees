@@ -72,8 +72,8 @@ function get_common_surnames($min) {
  * this function strips the prefixes of lastnames
  * get rid of jr. Jr. Sr. sr. II, III and van, van der, de lowercase surname prefixes
  * a . and space must be behind a-z to ensure shortened prefixes and multiple prefixes are removed
- * @param string $lastname	The name to strip
- * @return string	The updated name
+ * @param string $lastname The name to strip
+ * @return string The updated name
  */
 function strip_prefix($lastname){
 	$name = preg_replace(array('/ [jJsS][rR]\.?,/', '/ I+,/', '/^([a-z]{1,4}[\. \_\-\(\[])+/'), array(',',',',''), $lastname);
@@ -84,7 +84,7 @@ function strip_prefix($lastname){
 
 /**
  * This function replaces @N.N. and @P.N. with the language specific translations
- * @param mixed $names	$names could be an array of name parts or it could be a string of the name
+ * @param mixed $names $names could be an array of name parts or it could be a string of the name
  * @return string
  */
 function check_NN($names) {
@@ -155,8 +155,8 @@ function is_utf8($string) {
 
 /**
  * determine the Daitch-Mokotoff Soundex code for a word
- * @param string $name	The name
- * @return array		The array of codes
+ * @param string $name The name
+ * @return array The array of codes
  * @author G. Kroll (canajun2eh), after a previous implementation by Boudewijn Sjouke
  */
 function DMSoundex($name) {
@@ -179,23 +179,23 @@ function DMSoundex($name) {
 	else $noVowels = false;
 	$lastPos = strlen($name) - 1;
 	$currPos = 0;
-	$state = 1;						// 1: start of input string, 2: before vowel, 3: other
-	$result = array();				// accumulate complete 6-digit D-M codes here
-	$partialResult = array();		// accumulate incomplete D-M codes here
-	$partialResult[] = array('!');	// initialize 1st partial result  ('!' stops "duplicate sound" check)
+	$state = 1; // 1: start of input string, 2: before vowel, 3: other
+	$result = array(); // accumulate complete 6-digit D-M codes here
+	$partialResult = array(); // accumulate incomplete D-M codes here
+	$partialResult[] = array('!'); // initialize 1st partial result  ('!' stops "duplicate sound" check)
 
 	// Loop through the input string.
 	// Stop when the string is exhausted or when no more partial results remain
 	while (count($partialResult) !=0  && $currPos <= $lastPos) {
 		// Find the DM coding table entry for the chunk at the current position
-		$thisEntry = substr($name, $currPos, $maxchar);		// Get maximum length chunk
+		$thisEntry = substr($name, $currPos, $maxchar); // Get maximum length chunk
 		while ($thisEntry != '') {
 			if (isset($dmsounds[$thisEntry])) break;
-			$thisEntry = substr($thisEntry, 0, -1);			// Not in table: try a shorter chunk
+			$thisEntry = substr($thisEntry, 0, -1); // Not in table: try a shorter chunk
 		}
 		if ($thisEntry == '') {
-			$currPos ++;			// Not in table: advance pointer to next byte
-			continue;				// and try again
+			$currPos ++; // Not in table: advance pointer to next byte
+			continue; // and try again
 		}
 
 		$soundTableEntry = $dmsounds[$thisEntry];
@@ -203,24 +203,24 @@ function DMSoundex($name) {
 		$partialResult = array();
 		$currPos += strlen($thisEntry);
 
-		if ($state != 1) {			// Not at beginning of input string
+		if ($state != 1) { // Not at beginning of input string
 			if ($currPos <= $lastPos) {
 				// Determine whether the next chunk is a vowel
-				$nextEntry = substr($name, $currPos, $maxchar);		// Get maximum length chunk
+				$nextEntry = substr($name, $currPos, $maxchar); // Get maximum length chunk
 				while ($nextEntry != '') {
 					if (isset($dmsounds[$nextEntry])) break;
-					$nextEntry = substr($nextEntry, 0, -1);			// Not in table: try a shorter chunk
+					$nextEntry = substr($nextEntry, 0, -1); // Not in table: try a shorter chunk
 				}
 			} else $nextEntry = '';
-			if ($nextEntry != '' && $dmsounds[$nextEntry][0] != '0') $state = 2;	// Next chunk is a vowel
+			if ($nextEntry != '' && $dmsounds[$nextEntry][0] != '0') $state = 2; // Next chunk is a vowel
 			else $state = 3;
 		}
 
 		while ($state < count($soundTableEntry)) {
-			if ($soundTableEntry[$state] == '') {		// empty means 'ignore this sound in this state'
+			if ($soundTableEntry[$state] == '') { // empty means 'ignore this sound in this state'
 				foreach($workingResult as $workingEntry) {
 					$tempEntry = $workingEntry;
-					$tempEntry[count($tempEntry)-1] .= '!';		// Prevent false 'doubles'
+					$tempEntry[count($tempEntry)-1] .= '!'; // Prevent false 'doubles'
 					$partialResult[] = $tempEntry;
 				}
 			} else {
@@ -234,7 +234,7 @@ function DMSoundex($name) {
 						// one of the pair with only a single occurrence of the duplicate sound,
 						// the other with both occurrences
 						if ($noVowels) {
-//							$partialResult[] = $workingEntry;
+							//$partialResult[] = $workingEntry;
 							$workingEntry[] = $soundTableEntry[$state];
 						}
 					}
@@ -247,7 +247,7 @@ function DMSoundex($name) {
 					}
 				}
 			}
-			$state = $state + 3;	// Advance to next triplet while keeping the same basic state
+			$state = $state + 3; // Advance to next triplet while keeping the same basic state
 		}
 	}
 
@@ -257,7 +257,7 @@ function DMSoundex($name) {
 		$result[] = substr($tempResult, 0, 6);
 	}
 
-	$result = array_flip(array_flip($result));		// Kill the double results in the array
+	$result = array_flip(array_flip($result)); // Kill the double results in the array
 
 	// We're done.  All that's left is to sort the result
 	sort($result);
@@ -300,5 +300,3 @@ function soundex_dm($text) {
 	$soundex_array=array_slice($soundex_array, 0, 36);
 	return implode(':', array_unique($soundex_array));
 }
-
-?>

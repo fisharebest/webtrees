@@ -1244,59 +1244,59 @@ class Line extends Element {
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["br"]["start"]					= "brSHandler";
-$elementHandler["Body"]["start"]			= "BodySHandler";
-$elementHandler["Cell"]["end"]				= "CellEHandler";
-$elementHandler["Cell"]["start"]			= "CellSHandler";
-$elementHandler["Description"]["end"]		= "DescriptionEHandler";
-$elementHandler["Description"]["start"]		= "DescriptionSHandler";
-$elementHandler["Doc"]["end"]				= "DocEHandler";
-$elementHandler["Doc"]["start"]				= "DocSHandler";
-$elementHandler["Report"]["end"]				= "";
-$elementHandler["Report"]["start"]			= "";
-$elementHandler["Facts"]["end"]				= "FactsEHandler";
-$elementHandler["Facts"]["start"]			= "FactsSHandler";
-$elementHandler["Footer"]["start"]			= "FooterSHandler";
-$elementHandler["Footnote"]["end"]			= "FootnoteEHandler";
-$elementHandler["Footnote"]["start"]		= "FootnoteSHandler";
-$elementHandler["FootnoteTexts"]["start"]	= "FootnoteTextsSHandler";
-$elementHandler["Gedcom"]["end"]			= "GedcomEHandler";
-$elementHandler["Gedcom"]["start"]			= "GedcomSHandler";
-$elementHandler["GedcomValue"]["start"]		= "GedcomValueSHandler";
-$elementHandler["Generation"]["start"]		= "GenerationSHandler";
-$elementHandler["GetPersonName"]["start"]	= "GetPersonNameSHandler";
-$elementHandler["Header"]["start"]			= "HeaderSHandler";
-$elementHandler["HighlightedImage"]["start"]= "HighlightedImageSHandler";
-$elementHandler["if"]["end"]				= "ifEHandler";
-$elementHandler["if"]["start"]				= "ifSHandler";
-$elementHandler["Image"]["start"]			= "ImageSHandler";
-$elementHandler["Input"]["end"]				= "";
-$elementHandler["Input"]["start"]			= "";
-$elementHandler["Line"]["start"]			= "LineSHandler";
-$elementHandler["List"]["end"]				= "ListEHandler";
-$elementHandler["List"]["start"]			= "ListSHandler";
-$elementHandler["ListTotal"]["start"]		= "ListTotalSHandler";
-$elementHandler["NewPage"]["start"]			= "NewPageSHandler";
-$elementHandler["Now"]["start"]				= "NowSHandler";
-$elementHandler["PageHeader"]["end"]		= "PageHeaderEHandler";
-$elementHandler["PageHeader"]["start"]		= "PageHeaderSHandler";
-$elementHandler["PageNum"]["start"]			= "PageNumSHandler";
-$elementHandler["Relatives"]["end"]			= "RelativesEHandler";
-$elementHandler["Relatives"]["start"]		= "RelativesSHandler";
-$elementHandler["RepeatTag"]["end"]			= "RepeatTagEHandler";
-$elementHandler["RepeatTag"]["start"]		= "RepeatTagSHandler";
-$elementHandler["SetVar"]["start"]			= "SetVarSHandler";
-$elementHandler["Style"]["start"]			= "StyleSHandler";
-$elementHandler["Text"]["end"]				= "TextEHandler";
-$elementHandler["Text"]["start"]			= "TextSHandler";
-$elementHandler["TextBox"]["end"]			= "TextBoxEHandler";
-$elementHandler["TextBox"]["start"]			= "TextBoxSHandler";
-$elementHandler["Title"]["end"]				= "TitleEHandler";
-$elementHandler["Title"]["start"]			= "TitleSHandler";
-$elementHandler["TotalPages"]["start"]		= "TotalPagesSHandler";
-$elementHandler["var"]["start"]				= "varSHandler";
-$elementHandler["varLetter"]["start"]		= "varLetterSHandler";
-$elementHandler["sp"]["start"]					= "spSHandler";
+$elementHandler["br"]["start"]               = "brSHandler";
+$elementHandler["Body"]["start"]             = "BodySHandler";
+$elementHandler["Cell"]["end"]               = "CellEHandler";
+$elementHandler["Cell"]["start"]             = "CellSHandler";
+$elementHandler["Description"]["end"]        = "DescriptionEHandler";
+$elementHandler["Description"]["start"]      = "DescriptionSHandler";
+$elementHandler["Doc"]["end"]                = "DocEHandler";
+$elementHandler["Doc"]["start"]              = "DocSHandler";
+$elementHandler["Report"]["end"]             = "";
+$elementHandler["Report"]["start"]           = "";
+$elementHandler["Facts"]["end"]              = "FactsEHandler";
+$elementHandler["Facts"]["start"]            = "FactsSHandler";
+$elementHandler["Footer"]["start"]           = "FooterSHandler";
+$elementHandler["Footnote"]["end"]           = "FootnoteEHandler";
+$elementHandler["Footnote"]["start"]         = "FootnoteSHandler";
+$elementHandler["FootnoteTexts"]["start"]    = "FootnoteTextsSHandler";
+$elementHandler["Gedcom"]["end"]             = "GedcomEHandler";
+$elementHandler["Gedcom"]["start"]           = "GedcomSHandler";
+$elementHandler["GedcomValue"]["start"]      = "GedcomValueSHandler";
+$elementHandler["Generation"]["start"]       = "GenerationSHandler";
+$elementHandler["GetPersonName"]["start"]    = "GetPersonNameSHandler";
+$elementHandler["Header"]["start"]           = "HeaderSHandler";
+$elementHandler["HighlightedImage"]["start"] = "HighlightedImageSHandler";
+$elementHandler["if"]["end"]                 = "ifEHandler";
+$elementHandler["if"]["start"]               = "ifSHandler";
+$elementHandler["Image"]["start"]            = "ImageSHandler";
+$elementHandler["Input"]["end"]              = "";
+$elementHandler["Input"]["start"]            = "";
+$elementHandler["Line"]["start"]             = "LineSHandler";
+$elementHandler["List"]["end"]               = "ListEHandler";
+$elementHandler["List"]["start"]             = "ListSHandler";
+$elementHandler["ListTotal"]["start"]        = "ListTotalSHandler";
+$elementHandler["NewPage"]["start"]          = "NewPageSHandler";
+$elementHandler["Now"]["start"]              = "NowSHandler";
+$elementHandler["PageHeader"]["end"]         = "PageHeaderEHandler";
+$elementHandler["PageHeader"]["start"]       = "PageHeaderSHandler";
+$elementHandler["PageNum"]["start"]          = "PageNumSHandler";
+$elementHandler["Relatives"]["end"]          = "RelativesEHandler";
+$elementHandler["Relatives"]["start"]        = "RelativesSHandler";
+$elementHandler["RepeatTag"]["end"]          = "RepeatTagEHandler";
+$elementHandler["RepeatTag"]["start"]        = "RepeatTagSHandler";
+$elementHandler["SetVar"]["start"]           = "SetVarSHandler";
+$elementHandler["Style"]["start"]            = "StyleSHandler";
+$elementHandler["Text"]["end"]               = "TextEHandler";
+$elementHandler["Text"]["start"]             = "TextSHandler";
+$elementHandler["TextBox"]["end"]            = "TextBoxEHandler";
+$elementHandler["TextBox"]["start"]          = "TextBoxSHandler";
+$elementHandler["Title"]["end"]              = "TitleEHandler";
+$elementHandler["Title"]["start"]            = "TitleSHandler";
+$elementHandler["TotalPages"]["start"]       = "TotalPagesSHandler";
+$elementHandler["var"]["start"]              = "varSHandler";
+$elementHandler["varLetter"]["start"]        = "varLetterSHandler";
+$elementHandler["sp"]["start"]               = "spSHandler";
 
 /**
 * A new object of the currently used element class
@@ -1484,7 +1484,6 @@ function endElement($parser, $name) {
  */
 function characterData($parser, $data) {
 	global $printData, $currentElement, $processGedcoms, $processIfs, $processRepeats, $reportTitle, $wt_report, $reportDescription;
-//	global $processFootnote;
 
 	if ($printData && ($processGedcoms==0) && ($processIfs==0)&&($processRepeats==0)) {
 		$currentElement->addText($data);
@@ -1523,7 +1522,7 @@ function StyleSHandler($attrs) {
 
 	// int The size of the font in points
 	$s["size"] = $wt_report->defaultFontSize;
-	if (!empty($attrs["size"])) $s["size"] = (int)$attrs["size"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (!empty($attrs["size"])) $s["size"] = (int)$attrs["size"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 	// string B: bold, I: italic, U: underline, D: line trough, The default value is regular.
 	$s["style"] = "";
@@ -1547,50 +1546,50 @@ function DocSHandler($attrs) {
 	$parser = $xml_parser;
 
 	// Custom page width
-	if (!empty($attrs["customwidth"])) $wt_report->pagew = (int)$attrs["customwidth"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (!empty($attrs["customwidth"])) $wt_report->pagew = (int)$attrs["customwidth"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 	// Custom Page height
-	if (!empty($attrs["customheight"])) $wt_report->pageh = (int)$attrs["customheight"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (!empty($attrs["customheight"])) $wt_report->pageh = (int)$attrs["customheight"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 	// Left Margin
 	if (isset($attrs["leftmargin"])) {
 		if ($attrs["leftmargin"] === "0") $wt_report->leftmargin = 0;
 		elseif (!empty($attrs["leftmargin"])) {
-			$wt_report->leftmargin = (int)$attrs["leftmargin"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->leftmargin = (int)$attrs["leftmargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Right Margin
 	if (isset($attrs["rightmargin"])) {
 		if ($attrs["rightmargin"] === "0") $wt_report->rightmargin = 0;
 		elseif (!empty($attrs["rightmargin"])) {
-			$wt_report->rightmargin = (int)$attrs["rightmargin"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->rightmargin = (int)$attrs["rightmargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Top Margin
 	if (isset($attrs["topmargin"])) {
 		if ($attrs["topmargin"] === "0") $wt_report->topmargin = 0;
 		elseif (!empty($attrs["topmargin"])) {
-			$wt_report->topmargin = (int)$attrs["topmargin"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->topmargin = (int)$attrs["topmargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Bottom Margin
 	if (isset($attrs["bottommargin"])) {
 		if ($attrs["bottommargin"] === "0") $wt_report->bottommargin = 0;
 		elseif (!empty($attrs["bottommargin"])) {
-			$wt_report->bottommargin = (int)$attrs["bottommargin"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->bottommargin = (int)$attrs["bottommargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Header Margin
 	if (isset($attrs["headermargin"])) {
 		if ($attrs["headermargin"] === "0") $wt_report->headermargin = 0;
 		elseif (!empty($attrs["headermargin"])) {
-			$wt_report->headermargin = (int)$attrs["headermargin"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->headermargin = (int)$attrs["headermargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Footer Margin
 	if (isset($attrs["footermargin"])) {
 		if ($attrs["footermargin"] === "0") $wt_report->footermargin = 0;
 		elseif (!empty($attrs["footermargin"])) {
-			$wt_report->footermargin = (int)$attrs["footermargin"];	// Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->footermargin = (int)$attrs["footermargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 
@@ -1729,7 +1728,7 @@ function CellSHandler($attrs) {
 	}
 
 	$reseth = true;
-	// boolean  	if true reset the last cell height (default true)
+	// boolean   if true reset the last cell height (default true)
 	if (isset($attrs["reseth"])) {
 		if ($attrs["reseth"] === "0") {
 			$reseth = false;
@@ -1742,7 +1741,7 @@ function CellSHandler($attrs) {
 	$border = 0;
 	if (!empty($attrs["border"])) $border = $attrs["border"];
 	// @test Print all borders for testing
-//	$border = 1;
+	// $border = 1;
 	// string Border color in HTML code
 	$bocolor = "";
 	if (!empty($attrs["bocolor"])) $bocolor = $attrs["bocolor"];
@@ -1987,7 +1986,7 @@ function TextBoxSHandler($attrs) {
 		}
 	}
 	// @test Print all borders for testing
-//	$border = true;
+	// $border = true;
 
 	/**
 	* Border style of rectangle. Array with keys among the following
@@ -2068,7 +2067,7 @@ function TextBoxSHandler($attrs) {
 	// string Style of rendering
 	$style = "";
 	// fill and border is enought for now for user input
-//	if (!empty($attrs["style"])) $style = $attrs["style"];
+	//if (!empty($attrs["style"])) $style = $attrs["style"];
 
 	array_push($printDataStack, $printData);
 	$printData = false;
@@ -2276,7 +2275,6 @@ function GedcomValueSHandler($attrs) {
 */
 function RepeatTagSHandler($attrs) {
 	// @deprecated
-//	global $repeats, $repeatsStack, $gedrec, $repeatBytes, $parser, $parserStack, $processRepeats, $fact, $desc;
 	global $repeats, $repeatsStack, $gedrec, $repeatBytes, $parser, $processRepeats, $fact, $desc;
 
 	$processRepeats++;
@@ -2360,8 +2358,8 @@ function RepeatTagEHandler() {
 	if (count($repeats)>0) {
 		// No need to load them if not used...
 		global $parser, $parserStack, $report, $gedrec;
-// @deprecated
-//		$line = xml_get_current_line_number($parser)-1;
+		// @deprecated
+		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
 		foreach($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
@@ -2393,7 +2391,7 @@ function RepeatTagEHandler() {
 		// Save original values
 		array_push($parserStack, $parser);
 		$oldgedrec = $gedrec;
-//		PHP 5.2.3 has a bug with foreach(), so don't use that here, while 5.2.3 is on the market
+		// PHP 5.2.3 has a bug with foreach(), so don't use that here, while 5.2.3 is on the market
 		// while() has the fastest execution speed
 		$count = count($repeats);
 		$i = 0;
@@ -2430,9 +2428,9 @@ function RepeatTagEHandler() {
 * Variable lookup
 *
 * Retrieve predefined variables :
-* @ desc					GEDCOM fact description, example:
-* 								1 EVEN This is a description
-* @ fact					GEDCOM fact tag, such as BIRT, DEAT etc.
+* @ desc GEDCOM fact description, example:
+*        1 EVEN This is a description
+* @ fact GEDCOM fact tag, such as BIRT, DEAT etc.
 * $ i18n::translate('....')
 * $ language_settings[]
 *
@@ -2509,7 +2507,6 @@ function varLetterSHandler($attrs) {
 */
 function FactsSHandler($attrs) {
 	// @deprecated
-//	global $repeats, $repeatsStack, $gedrec, $parser, $parserStack, $repeatBytes, $processRepeats, $vars;
 	global $repeats, $repeatsStack, $gedrec, $parser, $repeatBytes, $processRepeats, $vars;
 
 	$processRepeats++;
@@ -2850,7 +2847,6 @@ function FootnoteSHandler($attrs) {
 */
 function FootnoteEHandler() {
 	// @deprecated
-//	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $wt_report;
 	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $wt_report;
 
 	if ($processFootnote) {
@@ -3478,7 +3474,7 @@ function ListEHandler() {
 	// Check if there is any list
 	if (count($list) > 0) {
 		// @deprecated
-//		$line = xml_get_current_line_number($parser)-1;
+		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
 		foreach($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
@@ -3719,7 +3715,7 @@ function RelativesEHandler() {
 	if (count($list) > 0) {
 
 		// @deprecated
-//		$line = xml_get_current_line_number($parser)-1;
+		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
 		foreach($repeatsStack as $rep) {
 			$lineoffset += $rep[1];

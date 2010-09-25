@@ -1319,12 +1319,12 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 
 	// 3 TYPE
 	if ($gedrec == "")
-		$gedtype = "TYPE photo";		// default to "Photo" unless told otherwise
+		$gedtype = "TYPE photo"; // default to "Photo" unless told otherwise
 	else {
 		$temp = str_replace("\r\n", "\n", $gedrec) . "\n";
 		$types = preg_match("/3 TYPE(.*)\n/", $temp, $matches);
 		if (empty($matches[0]))
-			$gedtype = "TYPE photo";	// default to "Photo" unless told otherwise
+			$gedtype = "TYPE photo"; // default to "Photo" unless told otherwise
 		else
 			$gedtype = "TYPE " . trim($matches[1]);
 	}
@@ -1367,7 +1367,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	}
 
 	//-- don't show _PRIM option to regular users
-//	if (WT_USER_GEDCOM_ADMIN) {
+	//if (WT_USER_GEDCOM_ADMIN) {
 		// 2 _PRIM
 		if ($gedrec == "")
 			$gedprim = "_PRIM";
@@ -1378,10 +1378,10 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 				$gedprim = "_PRIM";
 		}
 		add_simple_tag("1 $gedprim");
-//	}
+	//}
 
 	//-- don't show _THUM option to regular users
-//	if (WT_USER_GEDCOM_ADMIN) {
+	//if (WT_USER_GEDCOM_ADMIN) {
 		// 2 _THUM
 		if ($gedrec == "")
 			$gedthum = "_THUM N";
@@ -1392,7 +1392,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 				$gedthum = "_THUM N";
 		}
 		add_simple_tag("1 $gedthum");
-//	}
+	//}
 
 	//-- print out editing fields for any other data in the media record
 	$sourceSOUR = "";

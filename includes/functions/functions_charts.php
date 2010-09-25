@@ -66,11 +66,10 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 		} elseif ($arrowDirection== "down") {
 			$dir = 3;
 		} else {
-			$dir = 2;		// either "blank" or "up"
+			$dir = 2; // either "blank" or "up"
 		}
 		echo "<br />";
 		print_url_arrow($pid, "#$pid", "$pid", $dir);
-//		print "&nbsp;";
 	}
 	echo "</td>";
 }
@@ -376,8 +375,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						}
 						print "<td class=\"details1\" valign=\"middle\" align=\"center\">";
 						$famrec = find_family_record($famid, $ged_id);
- 						$marrec = get_sub_record(1, "1 MARR", $famrec);
- 						$divrec = get_sub_record(1, "1 DIV",  $famrec);
+						$marrec = get_sub_record(1, "1 MARR", $famrec);
+						$divrec = get_sub_record(1, "1 DIV",  $famrec);
 						if (canDisplayFact($famid, $ged_id, $marrec)) {
 							// marriage date
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $marrec, $match);
@@ -441,7 +440,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 			if ($ct>0) $nchi = $match[1];
 		}
 		if ($nchi=="0") print "<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" title=\"".i18n::translate('This family remained childless')."\" /> ".i18n::translate('This family remained childless');
-//		else print i18n::translate('No children');
+		//else print i18n::translate('No children');
 		print "</td></tr>";
    }
    else {
@@ -470,7 +469,7 @@ function print_family_facts(&$family, $sosa = 0) {
 	$famid=$family->getXref();
 	// -- if both parents are displayable then print the marriage facts
 	if ($family->canDisplayDetails()) {
-		$linkToID = $famid;		// -- Tell addmedia.php what to link to
+		$linkToID = $famid; // -- Tell addmedia.php what to link to
 		// -- array of GEDCOM elements that will be found but should not be displayed
 		$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "HUSB", "WIFE", "CHIL", "");
 
@@ -679,7 +678,7 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	if ($TEXT_DIRECTION=="rtl" and $dir==0) $adir=1;
 	if ($TEXT_DIRECTION=="rtl" and $dir==1) $adir=0;
 
-	// arrow style     0         1       		2        3
+	// arrow style     0         1         2         3
 	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
 	$astyle=$array_style[$adir];
 
