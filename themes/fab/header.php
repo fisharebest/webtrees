@@ -73,20 +73,16 @@ echo
 	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>',
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
 	
-?>
+if ($use_alternate_styles && $BROWSERTYPE != "other") {
+	echo '<link type="text/css" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" rel="Stylesheet" />';
+}
 
-<?php
-if ($use_alternate_styles && $BROWSERTYPE != "other") { ?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-<?php } ?>
+echo '<link rel="stylesheet" href="',  WT_THEME_DIR, $BROWSERTYPE, '.css" type="text/css" media="all" />';
 
-<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
+if ($TEXT_DIRECTION=='rtl') {
+	echo '<link type="text/css" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />';
+}
 
-<?php if ($TEXT_DIRECTION=='rtl') {?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
-<?php }?>
-
-<?php
 echo
 	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
 	'</head>',
@@ -124,12 +120,12 @@ if ($view!='simple') {
 				echo '<li><a href="', $LOGIN_URL, '?url=', WT_SCRIPT_PATH, WT_SCRIPT_NAME, decode_url(normalize_query_string($QUERY_STRING.'&amp;ged='.WT_GEDCOM)), '" class="link">', i18n::translate('Login'), '</a></li>';
 			}
 		}
-			echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
-			echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
-			global $ALLOW_THEME_DROPDOWN;
-			if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-				echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
-			}
+		echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
+		echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+		global $ALLOW_THEME_DROPDOWN;
+		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+		}
 		echo
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
