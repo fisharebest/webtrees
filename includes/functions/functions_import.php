@@ -1129,7 +1129,7 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 			$objlevel = 0;
 			$inobj = false;
 		}
-	}	else {
+	} else {
 		$newrec = $gedrec;
 	}
 
@@ -1193,7 +1193,7 @@ function accept_all_changes($xref, $ged_id) {
 		WT_DB::prepare(
 			"UPDATE `##change`".
 			" SET status='accepted'".
-			"	WHERE status='pending' AND xref=? AND gedcom_id=?"
+			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
 		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
 	}

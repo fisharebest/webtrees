@@ -85,7 +85,7 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		$out.=
 			' jQuery("#tabs > div").each(function() {'.
-			' 	if (this.name!="'.$this->getName().'") {'.
+			'  if (this.name!="'.$this->getName().'") {'.
 			'   jQuery(this).removeClass("ui-tabs-hide");'.
 			'  }'.
 			' });'.

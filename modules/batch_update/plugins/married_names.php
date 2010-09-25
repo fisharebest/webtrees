@@ -111,7 +111,6 @@ class married_names_bu_plugin extends base_plugin {
 			($this->surname=='replace' ? ' selected="selected"' : '').
 			'">'.i18n::translate('Wife\'s surname replaced by husband\'s surname').'</option><option value="add"'.
 			($this->surname=='add' ? ' selected="selected"' : '').
-			'">'.i18n::translate('Wife\'s maiden surname becomes new given name').'</option></select></td></tr>'
-		 	;
+			'">'.i18n::translate('Wife\'s maiden surname becomes new given name').'</option></select></td></tr>';
 	}
 }

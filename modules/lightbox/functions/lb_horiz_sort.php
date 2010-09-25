@@ -85,19 +85,18 @@ if (!defined('WT_WEBTREES')) {
     //sections = [ 'group1','group2' ];
 
 	<?php if ($rownum1>0) { ?>
-		Sortable.create( 'thumblist_1', 	{ tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
+		Sortable.create( 'thumblist_1', { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	<?php } ?>
 	<?php if ($rownum2>0) { ?>
-		Sortable.create( 'thumblist_2', 	{ tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
+		Sortable.create( 'thumblist_2', { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	<?php } ?>
 	<?php if ($rownum3>0) { ?>
-		Sortable.create( "thumblist_3", 	{ tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
+		Sortable.create( "thumblist_3", { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	<?php } ?>
 	<?php if ($rownum4>0) { ?>
-		Sortable.create( "thumblist_4", 	{ tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
+		Sortable.create( "thumblist_4", { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	<?php } ?>
 
-//		Sortable.create( "thumblist", 	{ tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
+// Sortable.create( "thumblist", { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	// ]]>
 </script>
-

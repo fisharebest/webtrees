@@ -42,7 +42,7 @@ $directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
 $multiple       =safe_GET_bool('multiple');
 $showthumb      =safe_GET_bool('showthumb');
 $all            =safe_GET_bool('all');
-$subclick		=safe_GET('subclick');
+$subclick       =safe_GET('subclick');
 $choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
 $level          =safe_GET('level', WT_REGEX_INTEGER, 0);
 $language_filter=safe_GET('language_filter');
@@ -443,14 +443,14 @@ if ($action=="filter") {
 				$nam = $indi->getAllNames();
 				$wholename = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 				$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-				$fulln = str_replace('"', '\'', $fulln);									// Replace double quotes
+				$fulln = str_replace('"', '\'', $fulln); // Replace double quotes
 				$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
 				$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 				$givn  = rtrim($nam[0]['givn'],'*');
 				$surn  = $nam[0]['surname'];
 				if (isset($nam[1])) {
 					$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-					$fulmn = str_replace('"', '\'', $fulmn);								// Replace double quotes
+					$fulmn = str_replace('"', '\'', $fulmn); // Replace double quotes
 					$fulmn = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulmn);
 					$fulmn = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulmn);
 					$marn  = $nam[1]['surname'];
@@ -490,12 +490,12 @@ if ($action=="filter") {
 					foreach ($children as $key=>$child) {
 						$chnam   = $child->getAllNames();
 						$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
-						$chfulln = str_replace('"', "", $chfulln);											// Must remove quotes completely here
+						$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
 						$chfulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $chfulln);
-						$chfulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $chfulln);			// Child's Full Name
-						$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2;		// Child's Date of Birth (Julian)
+						$chfulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $chfulln); // Child's Full Name
+						$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child's Date of Birth (Julian)
 						if (!isset($chdob)) { $chdob = ""; }
-						$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2;		// Child's Date of Death (Julian)
+						$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child's Date of Death (Julian)
 						if (!isset($chdod)) { $chdod = ""; }
 						$chBLD   = ($chfulln.", ".$chdob.", ".$chdod);
 						array_push($chBLDarray, $chBLD);
@@ -512,24 +512,24 @@ if ($action=="filter") {
 					// NOTES = is equivalent to= function pasterow(id, nam, mnam, label, gend, cond, dom, dob, age, dod, occu, birthpl, fbirthpl, mbirthpl, chilBLD) {
 					// ==============================================================================================================================
 					echo "<a href=\"javascript:;\" onclick=\"window.opener.insertRowToTable(";
-						echo "'".$indi->getXref()."', ";															 // id        - Indi Id 
-						echo "'".addslashes(strip_tags($fulln))."', ";												 // nam       - Name
-						echo "'".addslashes(strip_tags($fulmn))."', ";												 // mnam      - Married Name
-						echo "'-', ";																				 // label     - Relation to Head of Household
-						echo "'".$indi->getSex()."', ";																 // gend      - Sex
-						echo "'S', ";																				 // cond      - Marital Condition
-						echo "'".$marrdate."', ";																	 // dom       - Date of Marriage
-						echo "'".(($indi->getBirthDate()->minJD() + $indi->getBirthDate()->maxJD())/2)."' ,";		 // dob       - Date of Birth
-						echo "'".(1901-$indi->getbirthyear())."' ,";												 // ~age~     - Census Date minus YOB (Preliminary)
-						echo "'".(($indi->getDeathDate()->minJD() + $indi->getDeathDate()->maxJD())/2)."' ,";		 // dod       - Date of Death
-						echo "'', ";																				 // occu      - Occupation
-						echo "'".$indi->getbirthplace()."', ";														 // birthpl   - Birthplace
-						echo "'".$FBP."', ";																		 // fbirthpl  - Father's Birthplace
-						echo "'".$MBP."', ";																		 // mbirthpl  - Mother's Birthplace
-						echo "'".$chBLDarray."'";																	 // chilBLD   - Array of Children (name, birthdate, deathdate)
+						echo "'".$indi->getXref()."', "; // id        - Indi Id 
+						echo "'".addslashes(strip_tags($fulln))."', "; // nam       - Name
+						echo "'".addslashes(strip_tags($fulmn))."', "; // mnam      - Married Name
+						echo "'-', "; // label     - Relation to Head of Household
+						echo "'".$indi->getSex()."', "; // gend      - Sex
+						echo "'S', "; // cond      - Marital Condition
+						echo "'".$marrdate."', "; // dom       - Date of Marriage
+						echo "'".(($indi->getBirthDate()->minJD() + $indi->getBirthDate()->maxJD())/2)."' ,"; // dob       - Date of Birth
+						echo "'".(1901-$indi->getbirthyear())."' ,"; // ~age~     - Census Date minus YOB (Preliminary)
+						echo "'".(($indi->getDeathDate()->minJD() + $indi->getDeathDate()->maxJD())/2)."' ,"; // dod       - Date of Death
+						echo "'', "; // occu      - Occupation
+						echo "'".$indi->getbirthplace()."', "; // birthpl   - Birthplace
+						echo "'".$FBP."', "; // fbirthpl  - Father's Birthplace
+						echo "'".$MBP."', "; // mbirthpl  - Mother's Birthplace
+						echo "'".$chBLDarray."'"; // chilBLD   - Array of Children (name, birthdate, deathdate)
 						echo ");";
 						echo "return false;\">";
-						echo "<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";										 // Name Link
+						echo "<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;"; // Name Link
 
 						if ($ABBREVIATE_CHART_LABELS) {
 							$born=abbreviate_fact('BIRT');
@@ -885,5 +885,3 @@ echo "</div>"; // Close div that centers table
 echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
 
 print_simple_footer();
-
-?>

@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 // Create tables, if not already present
 try {
 	WT_DB::updateSchema('./modules/gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 1);
-}	 catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
 }
@@ -165,8 +165,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		} else $content = '';
 
 		if ($block) {
-			$style = 2;		// 1 means "regular box", 2 means "wide box"
-			$tableWidth = ($BROWSERTYPE=="msie") ? "95%" : "99%";	// IE needs to have room for vertical scroll bar inside the box
+			$style = 2; // 1 means "regular box", 2 means "wide box"
+			$tableWidth = ($BROWSERTYPE=="msie") ? "95%" : "99%"; // IE needs to have room for vertical scroll bar inside the box
 			$cellSpacing = "1px";
 		} else {
 			$style = 2;
@@ -320,7 +320,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	/**
 	 * deleteFavorite
 	 * deletes a favorite in the database
-	 * @param int $fv_id	the id of the favorite to delete
+	 * @param int $fv_id the id of the favorite to delete
 	 */
 	public static function deleteFavorite($fv_id) {
 		return (bool)
@@ -330,7 +330,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/**
 	 * stores a new favorite in the database
-	 * @param array $favorite	the favorite array of the favorite to add
+	 * @param array $favorite the favorite array of the favorite to add
 	 */
 	public static function addFavorite($favorite) {
 		// -- make sure a favorite is added
@@ -363,7 +363,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	/**
 	 * Get a user's favorites
 	 * Return an array of a users messages
-	 * @param string $username		the username to get the favorites for
+	 * @param string $username the username to get the favorites for
 	 */
 	public static function getUserFavorites($username) {
 		$rows=
@@ -389,4 +389,3 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		return $favorites;
 	}
 }
-?>

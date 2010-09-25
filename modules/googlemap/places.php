@@ -41,9 +41,9 @@ require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
 global $iso3166;
 $action=safe_REQUEST($_REQUEST, 'action');
-if (isset($_REQUEST['parent']))	 $parent=$_REQUEST['parent'];
+if (isset($_REQUEST['parent'])) $parent=$_REQUEST['parent'];
 if (isset($_REQUEST['display'])) $display=$_REQUEST['display'];
-if (isset($_REQUEST['mode']))	 $mode=$_REQUEST['mode'];
+if (isset($_REQUEST['mode'])) $mode=$_REQUEST['mode'];
 if (isset($_REQUEST['deleteRecord'])) $deleteRecord=$_REQUEST['deleteRecord'];
 
 if (!isset($parent)) $parent=0;
@@ -658,4 +658,3 @@ else {
 	echo i18n::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
 	echo "\n</div>\n\t</body>\n</html>";
 }
-?>

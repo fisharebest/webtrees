@@ -43,7 +43,7 @@
 	}
 	</script>
 
-	<select id="selcensdate" name="selcensdate" onchange =	"if (this.options[this.selectedIndex].value!='') {
+	<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!='') {
 							addDate(this.options[this.selectedIndex].value);
 						}">
 		<option id="defdate" name="defdate" value='' SELECTED>Census Date</option>
@@ -77,7 +77,3 @@
 
 	<input type="hidden" id="setctry" name="setctry" value="" />
 	<input type="hidden" id="setyear" name="setyear" value="" />
-
-
-
-

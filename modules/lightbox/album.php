@@ -42,7 +42,7 @@ $reorder=safe_get('reorder', '1', '0');
 
 // Get Javascript variables from lb_config.php ---------------------------
 require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
-//	require_once WT_ROOT.'modules/lightbox/functions/browser_detection_php_ar.php';
+// require_once WT_ROOT.'modules/lightbox/functions/browser_detection_php_ar.php';
 require_once WT_ROOT.'modules/lightbox/functions/lightbox_print_media.php';
 require_once WT_ROOT.'modules/lightbox/functions/lightbox_print_media_row.php';
 
@@ -125,17 +125,17 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 //------------------------------------------------------------------------------
 // Build Thumbnail Rows
 //------------------------------------------------------------------------------
-//	echo "<td valign=\"top\">";
+// echo "<td valign=\"top\">";
 		echo "<table width=\"100%\" cellpadding=\"0\" border=\"0\"><tr>";
 		echo "<td width=\"100%\" valign=\"top\" >";
-		lightbox_print_media($pid, 0, true, 1);		// map, painting, photo, tombstone)
-		lightbox_print_media($pid, 0, true, 2);		// card, certificate, document, magazine, manuscript, newspaper
-		lightbox_print_media($pid, 0, true, 3);		// electronic, fiche, film
-		lightbox_print_media($pid, 0, true, 4);		// audio, book, coat, video, other
-		lightbox_print_media($pid, 0, true, 5);		// footnotes
+		lightbox_print_media($pid, 0, true, 1); // map, painting, photo, tombstone)
+		lightbox_print_media($pid, 0, true, 2); // card, certificate, document, magazine, manuscript, newspaper
+		lightbox_print_media($pid, 0, true, 3); // electronic, fiche, film
+		lightbox_print_media($pid, 0, true, 4); // audio, book, coat, video, other
+		lightbox_print_media($pid, 0, true, 5); // footnotes
 		echo "</td>";
 		echo "</tr></table>";
-//	echo "</td>";
+// echo "</td>";
 //------------------------------------------------------------------------------
 // End Thumbnail Rows
 //------------------------------------------------------------------------------
@@ -161,6 +161,3 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 // End Main Table
 //------------------------------------------------------------------------------
 //echo "</tr></table>";
-
-
-?>

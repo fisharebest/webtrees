@@ -158,41 +158,41 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		//text alignment for Tooltips
 		if ($TEXT_DIRECTION=="rtl") {
 			$alignm = "right";
-			$left	= "true";
+			$left = "true";
 		} else {
 			$alignm = "left";
-			$left	= "false";
+			$left = "false";
 		}
 
 		// Tooltip Options
-		$tt_opts	 =	", BALLOON," . $LB_TT_BALLOON ;
-		$tt_opts	.=	", LEFT," . $left . "";
-		$tt_opts	.=	", ABOVE, true";
-		$tt_opts	.=	", TEXTALIGN, '" . $alignm . "'";
-		$tt_opts	.=	", WIDTH, -480 ";
-		$tt_opts	.=	", BORDERCOLOR, ''";
-		$tt_opts	.=	", TITLEBGCOLOR, ''";
-		$tt_opts	.=	", CLOSEBTNTEXT, 'X'";
-		$tt_opts	.=	", CLOSEBTN, false";
-		$tt_opts	.=	", CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000']";
-		$tt_opts	.=	", OFFSETX, -30";
-		$tt_opts	.=	", OFFSETY, 110";
-		$tt_opts	.=	", STICKY, true";
-		$tt_opts	.=	", PADDING, 6";
-		$tt_opts	.=	", CLICKCLOSE, true";
-		$tt_opts	.=	", DURATION, 8000";
-		$tt_opts	.=	", BGCOLOR, '#f3f3f3'";
-		$tt_opts	.=	", JUMPHORZ, 'true' ";
-		$tt_opts	.=	", JUMPVERT, 'false' ";
-		$tt_opts	.=	", DELAY, 0";
+		$tt_opts = ", BALLOON," . $LB_TT_BALLOON ;
+		$tt_opts .= ", LEFT," . $left . "";
+		$tt_opts .= ", ABOVE, true";
+		$tt_opts .= ", TEXTALIGN, '" . $alignm . "'";
+		$tt_opts .= ", WIDTH, -480 ";
+		$tt_opts .= ", BORDERCOLOR, ''";
+		$tt_opts .= ", TITLEBGCOLOR, ''";
+		$tt_opts .= ", CLOSEBTNTEXT, 'X'";
+		$tt_opts .= ", CLOSEBTN, false";
+		$tt_opts .= ", CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000']";
+		$tt_opts .= ", OFFSETX, -30";
+		$tt_opts .= ", OFFSETY, 110";
+		$tt_opts .= ", STICKY, true";
+		$tt_opts .= ", PADDING, 6";
+		$tt_opts .= ", CLICKCLOSE, true";
+		$tt_opts .= ", DURATION, 8000";
+		$tt_opts .= ", BGCOLOR, '#f3f3f3'";
+		$tt_opts .= ", JUMPHORZ, 'true' ";
+		$tt_opts .= ", JUMPVERT, 'false' ";
+		$tt_opts .= ", DELAY, 0";
 
 		// Prepare Below Thumbnail  menu ----------------------------------------------------
 		if ($TEXT_DIRECTION== "rtl") {
-			$submenu_class			=	"submenuitem_rtl";
-			$submenu_hoverclass		=	"submenuitem_hover_rtl";
+			$submenu_class = "submenuitem_rtl";
+			$submenu_hoverclass = "submenuitem_hover_rtl";
 		} else {
-			$submenu_class			=	"submenuitem";
-			$submenu_hoverclass		=	"submenuitem_hover";
+			$submenu_class = "submenuitem";
+			$submenu_hoverclass = "submenuitem_hover";
 		}
 		$menu = new Menu();
 		// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
@@ -200,7 +200,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
 			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 45).i18n::translate('…');
 		} else {
-			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 13).i18n::translate('…');		
+			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 13).i18n::translate('…');
 		}
 		$mtitle = PrintReady(htmlspecialchars($mtitle));
 

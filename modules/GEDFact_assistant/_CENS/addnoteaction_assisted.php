@@ -56,8 +56,8 @@
 	if (isset($_REQUEST['REPO'])) $REPO = $_REQUEST['REPO'];
 	if (isset($_REQUEST['CALN'])) $CALN = $_REQUEST['CALN'];
 	
-	if (isset($_REQUEST['pid_array'])) 	$pid_array	 = $_REQUEST['pid_array'];
-	if (isset($_REQUEST['pid'])) 		$pid		 = $_REQUEST['pid'];
+	if (isset($_REQUEST['pid_array'])) $pid_array = $_REQUEST['pid_array'];
+	if (isset($_REQUEST['pid']))  $pid = $_REQUEST['pid'];
 	
 	global $pid;
 
@@ -106,7 +106,7 @@
 		$xref="none";
 		echo "<br /><br /><br />";
 		echo "<div class=indent> No individuals entered, close and try again </div>";
-		echo "<br /><br /><br />";	
+		echo "<br /><br /><br />";
 	}
 	
 	if ($xref != "none") {
@@ -123,24 +123,20 @@
 		if (parent.opener.document.getElementById("pids_array_edit") == null || parent.opener.document.getElementById("pids_array_edit") == 'undefined') {
 			//alert ("EDIT NOT HERE");
 		} else {
-		//	alert("WE ARE EDITING an EVENT");
-		//	alert(parent.opener.document.editform.pids_array_edit.value);
+			//alert("WE ARE EDITING an EVENT");
+			//alert(parent.opener.document.editform.pids_array_edit.value);
 			parent.opener.document.editform.pids_array_edit.value="<?php echo $pid_array; ?>";
-		//	alert(parent.opener.document.editform.pids_array_edit.value);
+			//alert(parent.opener.document.editform.pids_array_edit.value);
 		}
 		if (parent.opener.document.getElementById("pids_array_add") == null || parent.opener.document.getElementById("pids_array_add") == 'undefined') {
 			//alert ("ADD NOT HERE");
 		} else {
-		//	alert("WE ARE ADDING an EVENT");
-		//	alert(parent.opener.document.addform.pids_array_add.value);
+			//alert("WE ARE ADDING an EVENT");
+			//alert(parent.opener.document.addform.pids_array_add.value);
 			parent.opener.document.addform.pids_array_add.value="<?php echo $pid_array; ?>";
-		//	alert(parent.opener.document.addform.pids_array_add.value);
+			//alert(parent.opener.document.addform.pids_array_add.value);
 		}
 		</script>
 		<?php
-
 		echo "<br /><br /><br /><br />";
 	}
-
-
-?>

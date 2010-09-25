@@ -75,7 +75,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
 		switch ($infoStyle) {
-		case "list":	// Output style 1:  Simple list style.  Better suited to left side of page.
+		case "list": // Output style 1:  Simple list style.  Better suited to left side of page.
 			if ($TEXT_DIRECTION=='ltr') $padding = 'padding-left: 15px';
 			else $padding = 'padding-right: 15px';
 			$params=array(1,$num,'rcount');
@@ -95,7 +95,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 				$content.='<b>'.i18n::translate('Unknown').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
 			}
 			break;
-		case "table":	// Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
+		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
 			$params=array(1,$num,'rcount');
 			$content.='<table class="center"><tr valign="top"><td>'.$stats->commonGivenFemaleTable($params).'</td>';
 			$content.='<td>'.$stats->commonGivenMaleTable($params).'</td>';
@@ -175,4 +175,3 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 }
-?>

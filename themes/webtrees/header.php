@@ -72,7 +72,7 @@ if ($view!="simple") {
 	echo '<meta name="generator" content="', WT_WEBTREES, ' - ', WT_WEBTREES_URL, '" />';
 }
 echo
- 	$javascript,
+	$javascript,
 	'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>',
 	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>',
@@ -129,7 +129,7 @@ if ($view!='simple') {
 						'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '"',
 							'onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();"',
 							'onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
-						'<input type="image" src="', $WT_IMAGES['search'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',	
+						'<input type="image" src="', $WT_IMAGES['search'], '" width="17" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
 					'</form>';
 				}
 			echo '</td>',

@@ -116,7 +116,7 @@ class ClippingsController extends BaseController {
 		$this->type = safe_GET('type');
 
 		$this->conv_path = stripLRMRLM($this->conv_path);
-		$_SESSION['exportConvPath'] = $this->conv_path;		// remember this for the next Download
+		$_SESSION['exportConvPath'] = $this->conv_path; // remember this for the next Download
 		$_SESSION['exportConvSlashes'] = $this->conv_slashes;
 
 		if ($this->action == 'add') {
@@ -254,7 +254,7 @@ class ClippingsController extends BaseController {
 			$tempUserID = '#ExPoRt#';
 			if ($this->privatize_export!='none') {
 				// Create a temporary userid
-				$export_user_id = createTempUser($tempUserID, $this->privatize_export, $GEDCOM);	// Create a temporary userid
+				$export_user_id = createTempUser($tempUserID, $this->privatize_export, $GEDCOM); // Create a temporary userid
 
 				// Temporarily become this user
 				$_SESSION["org_user"]=$_SESSION["wt_user"];
@@ -265,7 +265,7 @@ class ClippingsController extends BaseController {
 				$clipping = $cart[$i];
 				if ($clipping['gedcom'] == $GEDCOM) {
 					$record = find_gedcom_record($clipping['id'], WT_GED_ID);
-					$savedRecord = $record;		// Save this for the "does this file exist" check
+					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($clipping['type']=='obje') $record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
 					$record = privatize_gedcom($record);
 					$record = remove_custom_tags($record, $remove);

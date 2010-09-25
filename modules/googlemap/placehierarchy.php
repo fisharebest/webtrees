@@ -238,12 +238,12 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 	global $GOOGLEMAP_COORD, $GOOGLEMAP_PH_MARKER, $GM_DISP_SHORT_PLACE, $GM_DISP_COUNT;
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
 		echo "var icon_type = new GIcon();\n";
-			echo "	icon_type.image = \"modules/googlemap/images/marker_yellow.png\";\n";
-			echo "	icon_type.shadow = \"modules/googlemap/images/shadow50.png\";\n";
-			echo "	icon_type.iconSize = new GSize(20, 34);\n";
-			echo "	icon_type.shadowSize = new GSize(37, 34);\n";
-			echo "	icon_type.iconAnchor = new GPoint(6, 20);\n";
-			echo "	icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
+			echo " icon_type.image = \"modules/googlemap/images/marker_yellow.png\";\n";
+			echo " icon_type.shadow = \"modules/googlemap/images/shadow50.png\";\n";
+			echo " icon_type.iconSize = new GSize(20, 34);\n";
+			echo " icon_type.shadowSize = new GSize(37, 34);\n";
+			echo " icon_type.iconAnchor = new GPoint(6, 20);\n";
+			echo " icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
 		echo "var point = new GLatLng(0, 0);\n";
 		if ($lastlevel)
 			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
@@ -318,12 +318,12 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			echo "var icon_type = new GIcon(G_DEFAULT_ICON);\n";
 		} else {
 			echo "var icon_type = new GIcon();\n";
-			echo "	icon_type.image = \"", $place2['icon'], "\";\n";
-			echo "	icon_type.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-			echo "	icon_type.iconSize = new GSize(25, 15);\n";
-			echo "	icon_type.shadowSize = new GSize(35, 45);\n";
-			echo "	icon_type.iconAnchor = new GPoint(1, 45);\n";
-			echo "	icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
+			echo " icon_type.image = \"", $place2['icon'], "\";\n";
+			echo " icon_type.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
+			echo " icon_type.iconSize = new GSize(25, 15);\n";
+			echo " icon_type.shadowSize = new GSize(35, 45);\n";
+			echo " icon_type.iconAnchor = new GPoint(1, 45);\n";
+			echo " icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
 		}
 		echo "var point = new GLatLng({$lati}, {$long});\n";
 		if ($lastlevel) {
@@ -384,8 +384,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		if (!$GOOGLEMAP_COORD){
 			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
 		} else { 
-			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";	
-		}		
+			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";
+		}
 	}
 	echo "place_map.addOverlay(marker);\n";
 	echo "bounds.extend(point);\n";
@@ -399,7 +399,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	// <![CDATA[
 	if (window.attachEvent) {
 		window.attachEvent("onunload", function() {
-			GUnload();	  // Internet Explorer
+			GUnload(); // Internet Explorer
 		});
 	} else {
 		window.addEventListener("unload", function() {
@@ -446,8 +446,8 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 
 	Map_type.prototype.initialize = function(place_map)
 	{
-		var list 	= document.createElement("ul");
-		list.id	= 'map_type';
+		var list = document.createElement("ul");
+		list.id = 'map_type';
 
 		var button1 = document.createElement('li');
 		var button2 = document.createElement('li');
@@ -523,24 +523,24 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		$levelo=check_were_am_i($numls, $levelm);
 		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))){
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+5);\n";
+			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+5);\n";
 		}
 		else if ($numfound<2 && !isset($levelo[($level-2)])){
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+6);\n";
+			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+6);\n";
 		}
 		else if ($level==2){
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+8);\n";
+			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+8);\n";
 		}
 		else if ($numfound<2 && $level>1){
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
-			echo "	place_map.setCenter(new GLatLng(0, 0), zoomlevel+10);\n";
+			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+10);\n";
 		}
 		else
 			echo "place_map.setCenter(new GLatLng(0, 0), 1);\n";
 		if ($GOOGLEMAP_PH_WHEEL) echo "place_map.enableScrollWheelZoom();\n";
-		echo "	place_map.setMapType($GOOGLEMAP_MAP_TYPE);\n";
+		echo " place_map.setMapType($GOOGLEMAP_MAP_TYPE);\n";
 		?>
 		//create markers
 		<?php
@@ -653,4 +653,3 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	</script>
 	<?php
 }
-?>

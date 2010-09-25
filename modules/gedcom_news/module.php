@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 // Create tables, if not already present
 try {
 	WT_DB::updateSchema('./modules/gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 1);
-}	 catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
 }
@@ -94,7 +94,8 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				$name = WT_USER_NAME;
 			}
 			$title.="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";		}
+			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+		}
 		$title .= i18n::translate('News');
 		if(WT_USER_GEDCOM_ADMIN) {
 			$title .= help_link('index_gedcom_news_adm');
@@ -121,7 +122,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 					break;
 				}
 			}
-			//		print "<div class=\"person_box\" id=\"{$news['anchor']}\">\n";
 			$content .= "<div class=\"news_box\" id=\"{$news['anchor']}\">\n";
 
 			// Look for $GLOBALS substitutions in the News title

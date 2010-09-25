@@ -130,7 +130,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&xref='.$this->controller->indi->getXref().'">';
 			$html.=i18n::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br />';
 		}
-		return $html;		
+		return $html;
 	}
 
 	// Implement class WT_Module_Tab
@@ -177,7 +177,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					));
 					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-				set_block_setting($block_id, 'title',		safe_POST('title',		WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'title', safe_POST('title', WT_REGEX_UNSAFE)); // allow html
 				set_block_setting($block_id, 'story_body',  safe_POST('story_body', WT_REGEX_UNSAFE)); // allow html
 				$languages=array();
 				foreach (i18n::installed_languages() as $code=>$name) {
@@ -382,5 +382,5 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			}
 			echo '</table>';
 			print_footer();
-	}	
+	}
 }

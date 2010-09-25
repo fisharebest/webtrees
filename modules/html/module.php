@@ -55,8 +55,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		/*
-	 	* Select GEDCOM
-	 	*/
+		* Select GEDCOM
+		*/
 		$gedcom=get_block_setting($block_id, 'gedcom');
 		switch($gedcom) {
 		case '__current__':
@@ -80,8 +80,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		/*
-	 	* Initiate the stats object.
-	 	*/
+		* Initiate the stats object.
+		*/
 		if(get_block_setting($block_id, 'ui')) {
 			$stats = new stats_ui($GEDCOM);
 		} else {
@@ -89,17 +89,17 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		/*
-	 	* First Pass.
-	 	* Handle embedded language, fact, global, etc. references
-	 	*   This needs to be done first because the language variables could themselves
-	 	*   contain embedded keywords.
-	 	*/
+		* First Pass.
+		* Handle embedded language, fact, global, etc. references
+		*   This needs to be done first because the language variables could themselves
+		*   contain embedded keywords.
+		*/
 		// Title
 		$title_tmp=embed_globals(get_block_setting($block_id, 'title'));
 		$html =embed_globals(get_block_setting($block_id, 'html'));
 		/*
-	 	* Second Pass.
-	 	*/
+		* Second Pass.
+		*/
 		list($new_tags, $new_values) = $stats->getTags("{$title_tmp} {$html}");
 		// Title
 		if (strstr($title_tmp, '#')){$title_tmp = str_replace($new_tags, $new_values, $title_tmp);}
@@ -107,12 +107,12 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$html = str_replace($new_tags, $new_values, $html);
 
 		/*
-	 	* Restore Current GEDCOM
-	 	*/
+		* Restore Current GEDCOM
+		*/
 		$GEDCOM = WT_GEDCOM;
 
 		/*
-	 	* Start Of Output
+		* Start Of Output
 		*/
 		$id=$this->getName().$block_id;
 		$title='';

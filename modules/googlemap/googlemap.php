@@ -376,8 +376,8 @@ function create_indiv_buttons() {
 
 	Map_type.prototype.initialize = function(place_map)
 	{
-		var list 	= document.createElement("ul");
-		list.id	= 'map_type';
+		var list  = document.createElement("ul");
+		list.id = 'map_type';
 
 		var button1 = document.createElement('li');
 		var button2 = document.createElement('li');
@@ -657,12 +657,12 @@ function build_indiv_map($indifacts, $famids) {
 					$markers[$j]["placed"] = "yes";
 					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) { 
 						echo "var Marker{$j}_flag = new GIcon();\n";
-						echo "	Marker{$j}_flag.image = \"modules/googlemap/images/marker_yellow.png\";\n";
-						echo "	Marker{$j}_flag.shadow = \"modules/googlemap/images/shadow50.png\";\n";
-						echo "	Marker{$j}_flag.iconSize = new GSize(20, 34);\n";
-						echo "	Marker{$j}_flag.shadowSize = new GSize(37, 34);\n";
-						echo "	Marker{$j}_flag.iconAnchor = new GPoint(10, 34);\n";
-						echo "	Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
+						echo " Marker{$j}_flag.image = \"modules/googlemap/images/marker_yellow.png\";\n";
+						echo " Marker{$j}_flag.shadow = \"modules/googlemap/images/shadow50.png\";\n";
+						echo " Marker{$j}_flag.iconSize = new GSize(20, 34);\n";
+						echo " Marker{$j}_flag.shadowSize = new GSize(37, 34);\n";
+						echo " Marker{$j}_flag.iconAnchor = new GPoint(10, 34);\n";
+						echo " Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
 						echo "var Marker{$j} = new GMarker(new GLatLng(0, 0), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});\n";
 					} else if (empty($markers[$j]["icon"])) {
 						echo "var Marker{$j} = new GMarker(new GLatLng({$markers[$j]["lati"]}, {$markers[$j]["lng"]}), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
@@ -882,5 +882,3 @@ function build_indiv_map($indifacts, $famids) {
 
 	return $i;
 }
-
-?>

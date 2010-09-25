@@ -32,10 +32,10 @@
 // GEDFact Media assistant replacement code for inverselink.php: ===========================
 
 //-- extra page parameters and checking
-$more_links		= safe_REQUEST($_REQUEST, 'more_links', WT_REGEX_UNSAFE);
-$exist_links	= safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
-$gid			= safe_GET_xref('gid');
-$update_CHAN	= safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
+$more_links = safe_REQUEST($_REQUEST, 'more_links', WT_REGEX_UNSAFE);
+$exist_links = safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
+$gid = safe_GET_xref('gid');
+$update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
 
 
 if (empty($linktoid) || empty($linkto)) {
@@ -111,7 +111,7 @@ if ($action == "choose" && $paramok) {
 //-->
 	</script>
 	<script src="webtrees.js" language="JavaScript" type="text/javascript"></script>
-	<link href ="modules/GEDFact_assistant/css/media_0_inverselink.css" 	rel="stylesheet" type="text/css" media="screen" />
+	<link href ="modules/GEDFact_assistant/css/media_0_inverselink.css"  rel="stylesheet" type="text/css" media="screen" />
 
 	<?php
 	echo '<form name="link" method="get" action="inverselink.php">';
@@ -268,8 +268,8 @@ if ($action == "choose" && $paramok) {
 	}else if ($more_links==",") {
 		// echo nothing and do nothing
 	}else{
-		//	echo $mediaid, $pgv_lang["media_now_linked to"], '(', $gid, ')<br />';
-		//	linkMedia($mediaid, $gid);
+		//echo $mediaid, $pgv_lang["media_now_linked to"], '(', $gid, ')<br />';
+		//linkMedia($mediaid, $gid);
 	}
 	
 	if ($update_CHAN=='no_change') {
@@ -285,5 +285,3 @@ if ($action == "choose" && $paramok) {
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', i18n::translate('Close Window'), '</a><br /></center>';
 	//print_simple_footer();
 }
-
-?>

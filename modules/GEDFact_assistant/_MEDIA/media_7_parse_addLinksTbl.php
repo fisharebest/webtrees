@@ -39,11 +39,11 @@ function parseAddLinks() {
 		var strRow = ''; 
 		for(var j=1; j<tr.cells.length; j++){ // Start at col 1 (j=1)
 			if (j>=2) {
-				//	dont show 	 col 0	 index
-				//  SHOW		 col 1	 id
-				//	miss out	 col 2	 name
-				//	miss out	 col 3	 relationship
-				//	miss out	 col 4	 delete button
+				// dont show  col 0 index
+				//  SHOW col 1 id
+				// miss out col 2 name
+				// miss out col 3 relationship
+				// miss out col 4 delete button
 				continue;
 			}else{
 				if (IE) {
@@ -66,10 +66,10 @@ function parseRemLinks() {
 		var remstrRow = ''; 
 		for(var j=1; j<remtr.cells.length; j++){ // Start at col 1 (j=1)
 			if (j!=4 ) {
-				//	dont show col	0	index
-				//	miss out  col	2	name
-				//	miss out  col	3	keep radio button
-				//	choose    col	4	remove radio button
+				// dont show col 0 index
+				// miss out  col 2 name
+				// miss out  col 3 keep radio button
+				// choose    col 4 remove radio button
 				continue;
 			}else{
 				 if (remtr.cells[j].childNodes[0].checked)  {
@@ -90,19 +90,19 @@ function preview() {
 function shiftlinks() {
 
 	parseRemLinks();
-	//	alert('remstring = '+ remstr);
+	// alert('remstring = '+ remstr);
 	if (remstr) {
 		document.link.exist_links.value = remstr;
 	}
 	
 	parseAddLinks();
-	//	alert('string = '+ str);
+	// alert('string = '+ str);
 	if (str) {
 		document.link.more_links.value = str;
 	}else{
 		// leave hidden input morelinks as "No Values"
 		var inputField = document.getElementById('gid');
-	//	alert(inputField.value)
+	// alert(inputField.value)
 		if (inputField) {
 			document.link.more_links.value = inputField.value+',';
 		}
@@ -111,6 +111,5 @@ function shiftlinks() {
 		winNav.close();
 	}
 }
-
 
 </script>

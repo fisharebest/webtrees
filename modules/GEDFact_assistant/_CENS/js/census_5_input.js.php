@@ -225,7 +225,7 @@ function preview() {
 				}
 			// UK 1901 ===============
 			} else if (NoteYear.value=="1901") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( j==5 || j==6 || j==8 || (j>=10 && j<=34) || j==36 || j==37 || (j>=39 && j<=41) || (j>=43 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) { 
 							continue;
 					}else{
@@ -238,7 +238,7 @@ function preview() {
 				}
 			// UK 1891 ===============
 			} else if (NoteYear.value=="1891") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=38) || j==41 || j==42 || (j>=44 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) { 
 							continue;
 					}else{
@@ -251,7 +251,7 @@ function preview() {
 				}
 			// UK 1951-1881 ============
 			} else if (NoteYear.value=="1851" || NoteYear.value=="1861" || NoteYear.value=="1871" || NoteYear.value=="1881") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) { 
 							continue;
 					}else{
@@ -264,7 +264,7 @@ function preview() {
 				}
 			// UK 1841 ===============
 			} else if (NoteYear.value=="1841") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=3 && j<=6) || j==8 || (j>=10 && j<=34) || (j>=36 && j<=51) || (j>=54 && j<=73) ) {  
 							continue;
 					}else{
@@ -280,7 +280,7 @@ function preview() {
 		} else if (NoteCtry.value=="USA") {
 			// USA 1930 ===============
 			if (NoteYear.value=="1930") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( j==4 || j==5 || j==7 || j==8 || j==11 || j==13 || j==14 || (j>=16 && j<=19) || (j>=21 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==63 || j==64 || j>=67 && j<=73 ) { 
 							continue;
 					}else{
@@ -295,7 +295,7 @@ function preview() {
 
 			// USA 1920 ===============
 			else if (NoteYear.value=="1920") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( j==4 || (j>=6 && j<=8) || j==11 || j==13 || j==14 || (j>=16 && j<=30) || (j>=34 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==57 || j==58 || (j>=63 && j<=73) ) { 
 							continue;
 					}else{
@@ -310,7 +310,7 @@ function preview() {
 
 			// USA 1910 ===============
 			else if (NoteYear.value=="1910") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=4 && j<=8) || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==30 || j==33 || j==36 || (j>=39 && j<=42) || j==45 || j==47 || j==48 || (j>=50 && j<=64) || j==66 || j>=68 && j<=73 ) { 
 							continue;
 					}else{
@@ -324,7 +324,7 @@ function preview() {
 			}
 			// USA 1900 ===============
 			else if (NoteYear.value=="1900") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=4 && j<=7) || j==10 || j==13 || j==14 || (j>=19 && j<=26) || j==33 || j==34 || (j>=36 && j<=44) || j==47 || (j>=50 && j<=73) ) { 
 							continue;
 					}else{
@@ -338,7 +338,7 @@ function preview() {
 			}
 			// USA 1890 ===============
 			else if (NoteYear.value=="1890") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=4 && j<=7) || j==10 || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==31 || j==33 || j==34 || j==36 || j==37 || j==39 || j==40 || (j>=42 && j<=45) || j==47 || (j>=49 && j<=63) || (j>=65 && j<=73) ) { 
 							continue;
 					}else{
@@ -352,7 +352,7 @@ function preview() {
 			}
 			// USA 1880 ===============
 			else if (NoteYear.value=="1880") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=3 && j<=7) || j==10 || j==11 || (j>=17 && j<=34) || (j>=37 && j<=44) || (j>=40 && j<=42) || j==46 || j==49 || j==50 || j==52 || j==53 || (j>=56 && j<=73) ) { 
 							continue;
 					}else{
@@ -366,7 +366,7 @@ function preview() {
 			}
 			// USA 1870 ===============
 			else if (NoteYear.value=="1870") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73) ) { 
 							continue;
 					}else{
@@ -380,7 +380,7 @@ function preview() {
 			}
 			// USA 1860 or 1850 ===============
 			else if (NoteYear.value=="1860" || NoteYear.value=="1850") {
-				for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 					if ( (j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || j==24 || j==25 || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73) ) {
 							continue;
 					}else{
@@ -403,7 +403,7 @@ function preview() {
 		}
 		
 		// Reset/Check the Pink Highlighting of the Name field and Age fields for any person not born ------------------
-		for(var j=2; j<tr.cells.length-3; j++) {	// == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
+		for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item # 
 			if (i==0) {
 				// Do nothing as this is the header row.
 			}else{
@@ -426,9 +426,9 @@ function preview() {
 		//changeAge(NoteYear.value);
 	
 	// --- Debug only - alert indi id's found --------
-	//	if (i!=0) {
-	//		alert(iid);
-	//	}
+	//if (i!=0) {
+	//alert(iid);
+	//}
 	
 	var mem = document.getElementById('NOTE');
 	if (Notes.value!="" && Notes.value!=null) {
@@ -458,7 +458,7 @@ function fillInRows() {
 }
 
 // myRowObject - an object for storing information about the table rows
-function myRowObject(	zero, one, two, three, four, five, six, seven, eight, nine, 
+function myRowObject( zero, one, two, three, four, five, six, seven, eight, nine, 
 						ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, 
 						twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, 
 						thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, 
@@ -470,84 +470,84 @@ function myRowObject(	zero, one, two, three, four, five, six, seven, eight, nine
 					) 
 {
 						
-	this.zero			 = zero;		 // text object
-	this.one			 = one;			 // input text object
-	this.two			 = two;			 // input text object
-	this.three			 = three;		 // input text object
-	this.four			 = four;		 // input text object
-	this.five			 = five;		 // input text object
-	this.six			 = six;			 // input text object
-	this.seven			 = seven;		 // input text object
-	this.eight			 = eight;		 // input text object
-	this.nine			 = nine;		 // input text object
-	this.ten			 = ten;			 // input text object
-	this.eleven			 = eleven;		 // input text object
-	this.twelve			 = twelve;		 // input text object
-	this.thirteen		 = thirteen;	 // input text object
-	this.fourteen		 = fourteen;	 // input text object
-	this.fifteen		 = fifteen;		 // input text object
-	this.sixteen		 = sixteen;		 // input text object
-	this.seventeen		 = seventeen;	 // input text object
-	this.eighteen		 = eighteen;	 // input text object
-	this.nineteen		 = nineteen;	 // input text object
-	this.twenty			 = twenty;		 // input text object
-	this.twentyone		 = twentyone;	 // input text object
-	this.twentytwo		 = twentytwo;	 // input text object
-	this.twentythree	 = twentythree;	 // input text object
-	this.twentyfour		 = twentyfour;	 // input text object
-	this.twentyfive		 = twentyfive;	 // input text object
-	this.twentysix		 = twentysix;	 // input text object
-	this.twentyseven	 = twentyseven;	 // input text object
-	this.twentyeight	 = twentyeight;	 // input text object
-	this.twentynine		 = twentynine;	 // input text object
-	this.thirty			 = thirty;		 // input text object
-	this.thirtyone		 = thirtyone;	 // input text object
-	this.thirtytwo		 = thirtytwo;	 // input text object
-	this.thirtythree	 = thirtythree;	 // input text object
-	this.thirtyfour		 = thirtyfour;	 // input text object
-	this.thirtyfive		 = thirtyfive;	 // input text object
-	this.thirtysix		 = thirtysix;	 // input text object
-	this.thirtyseven	 = thirtyseven;	 // input text object
-	this.thirtyeight	 = thirtyeight;	 // input text object
-	this.thirtynine		 = thirtynine;	 // input text object
-	this.forty			 = forty;		 // input text object
-	this.fortyone		 = fortyone;	 // input text object
-	this.fortytwo		 = fortytwo;	 // input text object
-	this.fortythree		 = fortythree;	 // input text object
-	this.fortyfour		 = fortyfour;	 // input text object
-	this.fortyfive		 = fortyfive;	 // input text object
-	this.fortysix		 = fortysix;	 // input text object
-	this.fortyseven		 = fortyseven;	 // input text object
-	this.fortyeight		 = fortyeight;	 // input text object
-	this.fortynine		 = fortynine;	 // input text object
-	this.fifty			 = fifty;		 // input text object
-	this.fiftyone		 = fiftyone;	 // input text object
-	this.fiftytwo		 = fiftytwo;	 // input text object
-	this.fiftythree		 = fiftythree;	 // input text object
-	this.fiftyfour		 = fiftyfour;	 // input text object
-	this.fiftyfive		 = fiftyfive;	 // input text object
-	this.fiftysix		 = fiftysix;	 // input text object
-	this.fiftyseven		 = fiftyseven;	 // input text object
-	this.fiftyeight		 = fiftyeight;	 // input text object
-	this.fiftynine		 = fiftynine;	 // input text object
-	this.sixty			 = sixty;		 // input text object
-	this.sixtyone		 = sixtyone;	 // input text object
-	this.sixtytwo		 = sixtytwo;	 // input text object
-	this.sixtythree		 = sixtythree;	 // input text object
-	this.sixtyfour		 = sixtyfour;	 // input text object
-	this.sixtyfive		 = sixtyfive;	 // input text object
-	this.sixtysix		 = sixtysix;	 // input text object
-	this.sixtyseven		 = sixtyseven;	 // input text object
-	this.sixtyeight		 = sixtyeight;	 // input text object
-	this.sixtynine		 = sixtynine;	 // input text object
-	this.seventy		 = seventy;		 // input text object
-	this.seventyone		 = seventyone;	 // input text object
-	this.seventytwo		 = seventytwo;	 // input text object
-	this.seventythree	 = seventythree; // input text object
+	this.zero = zero; // text object
+	this.one = one; // input text object
+	this.two = two; // input text object
+	this.three = three; // input text object
+	this.four = four; // input text object
+	this.five = five; // input text object
+	this.six = six; // input text object
+	this.seven = seven; // input text object
+	this.eight = eight; // input text object
+	this.nine = nine; // input text object
+	this.ten = ten; // input text object
+	this.eleven = eleven; // input text object
+	this.twelve = twelve; // input text object
+	this.thirteen = thirteen; // input text object
+	this.fourteen = fourteen; // input text object
+	this.fifteen = fifteen; // input text object
+	this.sixteen = sixteen; // input text object
+	this.seventeen = seventeen; // input text object
+	this.eighteen = eighteen; // input text object
+	this.nineteen = nineteen; // input text object
+	this.twenty = twenty; // input text object
+	this.twentyone = twentyone; // input text object
+	this.twentytwo = twentytwo; // input text object
+	this.twentythree = twentythree; // input text object
+	this.twentyfour = twentyfour; // input text object
+	this.twentyfive = twentyfive; // input text object
+	this.twentysix = twentysix; // input text object
+	this.twentyseven = twentyseven; // input text object
+	this.twentyeight = twentyeight; // input text object
+	this.twentynine = twentynine; // input text object
+	this.thirty = thirty; // input text object
+	this.thirtyone = thirtyone; // input text object
+	this.thirtytwo = thirtytwo; // input text object
+	this.thirtythree = thirtythree; // input text object
+	this.thirtyfour = thirtyfour; // input text object
+	this.thirtyfive = thirtyfive; // input text object
+	this.thirtysix = thirtysix; // input text object
+	this.thirtyseven = thirtyseven; // input text object
+	this.thirtyeight = thirtyeight; // input text object
+	this.thirtynine = thirtynine; // input text object
+	this.forty = forty; // input text object
+	this.fortyone = fortyone; // input text object
+	this.fortytwo = fortytwo; // input text object
+	this.fortythree = fortythree; // input text object
+	this.fortyfour = fortyfour; // input text object
+	this.fortyfive = fortyfive; // input text object
+	this.fortysix = fortysix; // input text object
+	this.fortyseven = fortyseven; // input text object
+	this.fortyeight = fortyeight; // input text object
+	this.fortynine = fortynine; // input text object
+	this.fifty = fifty; // input text object
+	this.fiftyone = fiftyone; // input text object
+	this.fiftytwo = fiftytwo; // input text object
+	this.fiftythree = fiftythree; // input text object
+	this.fiftyfour = fiftyfour; // input text object
+	this.fiftyfive = fiftyfive; // input text object
+	this.fiftysix = fiftysix; // input text object
+	this.fiftyseven = fiftyseven; // input text object
+	this.fiftyeight = fiftyeight; // input text object
+	this.fiftynine = fiftynine; // input text object
+	this.sixty = sixty; // input text object
+	this.sixtyone = sixtyone; // input text object
+	this.sixtytwo = sixtytwo; // input text object
+	this.sixtythree = sixtythree; // input text object
+	this.sixtyfour = sixtyfour; // input text object
+	this.sixtyfive = sixtyfive; // input text object
+	this.sixtysix = sixtysix; // input text object
+	this.sixtyseven = sixtyseven; // input text object
+	this.sixtyeight = sixtyeight; // input text object
+	this.sixtynine = sixtynine; // input text object
+	this.seventy = seventy; // input text object
+	this.seventyone = seventyone; // input text object
+	this.seventytwo = seventytwo; // input text object
+	this.seventythree = seventythree; // input text object
 	
-	this.cb				 = cb;			 // input checkbox object
-	this.ra				 = ra;			 // input radio object
-	this.index2			 = index2;		 // text object
+	this.cb = cb; // input checkbox object
+	this.ra = ra; // input radio object
+	this.index2 = index2; // text object
 }
 
 function create_header() {
@@ -804,15 +804,15 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		}
 
 		if (iteration == 0) {
-			var cell_tdel = row.insertCell(74);		// text Del
-			var cell_tra  = row.insertCell(75);		// text Radio
+			var cell_tdel = row.insertCell(74); // text Del
+			var cell_tra  = row.insertCell(75); // text Radio
 		}else{
-			var cell_del = row.insertCell(74);		// Onclick = Delete Row
+			var cell_del = row.insertCell(74); // Onclick = Delete Row
 				cell_del.setAttribute('align', 'center');
-			var cell_ra = row.insertCell(75);		// Radio button used for inserting a row, rather than adding at end of table)
+			var cell_ra = row.insertCell(75); // Radio button used for inserting a row, rather than adding at end of table)
 		}
 		
-		var cell_index2 = row.insertCell(76);			// Item Number (#2)
+		var cell_index2 = row.insertCell(76); // Item Number (#2)
 			cell_index2.setAttribute('id', 'index2');
 			cell_index2.setAttribute('name', 'index2');
 			cell_index2.setAttribute('align', 'center');
@@ -1497,7 +1497,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		// 0. Item Number ---------------------------------------------------
 			// var txt_itemNo = document.createTextNode(iteration);
 			var txt_itemNo = document.createElement('div');
-			// 	txt_itemNo.style.display="none";
+			// txt_itemNo.style.display="none";
 		// 1. Indi ID -------------------------------------------------------
 				if ( pid == ''){
 					var txtcolor = "#000000";
@@ -2256,9 +2256,9 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		// Extra Cells for Navigation =========================================
 		// 74. Extra 1. Delete Row Button -----------------------------------------
 			//var btnEl = document.createElement('input');
-			//	btnEl.setAttribute('type', 'button');
-			//	btnEl.setAttribute('value', 'x');
-			//	btnEl.onclick = function () {deleteCurrentRow(this)};
+			// btnEl.setAttribute('type', 'button');
+			// btnEl.setAttribute('value', 'x');
+			// btnEl.onclick = function () {deleteCurrentRow(this)};
 			var btnEl = document.createElement('button');
 			  var btnEltext = document.createTextNode('X');
 				btnEl.style.color='red';
@@ -2285,106 +2285,106 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 
 
 		// **E** Append appropriate Cell elements to each cell ================
-		cell_[0].appendChild(txt_itemNo);			// Item Number
-		cell_[1].appendChild(txtInp_pid);			// Indi ID
-		cell_[2].appendChild(txtInp_nam);			// Name
-		cell_[3].appendChild(txtInp_label);			// Relationship_1
-		cell_[4].appendChild(txtInp_cond);			// Condition_1
-		cell_[5].appendChild(txtInp_tenure);		// Tenure
-		cell_[6].appendChild(txtInp_assets);		// Assets_1
-		cell_[7].appendChild(txtInp_age);			// Age_1
-		cell_[8].appendChild(txtInp_race);			// Race_1
-		cell_[9].appendChild(txtInp_gend);			// Sex
+		cell_[0].appendChild(txt_itemNo); // Item Number
+		cell_[1].appendChild(txtInp_pid); // Indi ID
+		cell_[2].appendChild(txtInp_nam); // Name
+		cell_[3].appendChild(txtInp_label); // Relationship_1
+		cell_[4].appendChild(txtInp_cond); // Condition_1
+		cell_[5].appendChild(txtInp_tenure); // Tenure
+		cell_[6].appendChild(txtInp_assets); // Assets_1
+		cell_[7].appendChild(txtInp_age); // Age_1
+		cell_[8].appendChild(txtInp_race); // Race_1
+		cell_[9].appendChild(txtInp_gend); // Sex
 		
-		cell_[10].appendChild(txtInp_race2);		// Race_2
-		cell_[11].appendChild(txtInp_yob);			// DOB/YOB
-		cell_[12].appendChild(txtInp_age2);			// Age_2
-		cell_[13].appendChild(txtInp_bmth);			// Birth Month
-		cell_[14].appendChild(txtInp_label2);		// Relationship_2
-		cell_[15].appendChild(txtInp_cond2);		// Condition_2
-		cell_[16].appendChild(txtInp_yrsm);			// Years Married
-		cell_[17].appendChild(txtInp_chilB);		// Children Born Alive
-		cell_[18].appendChild(txtInp_chilL);		// Children Still Living
-		cell_[19].appendChild(txtInp_chilD);		// Children who have Died
+		cell_[10].appendChild(txtInp_race2); // Race_2
+		cell_[11].appendChild(txtInp_yob); // DOB/YOB
+		cell_[12].appendChild(txtInp_age2); // Age_2
+		cell_[13].appendChild(txtInp_bmth); // Birth Month
+		cell_[14].appendChild(txtInp_label2); // Relationship_2
+		cell_[15].appendChild(txtInp_cond2); // Condition_2
+		cell_[16].appendChild(txtInp_yrsm); // Years Married
+		cell_[17].appendChild(txtInp_chilB); // Children Born Alive
+		cell_[18].appendChild(txtInp_chilL); // Children Still Living
+		cell_[19].appendChild(txtInp_chilD); // Children who have Died
 		
-		cell_[20].appendChild(txtInp_ageM);			// Age st first marriage
-		cell_[21].appendChild(txtInp_occu);			// Occupation_1
-		cell_[22].appendChild(txtInp_assets2);		// Assets_2
-		cell_[23].appendChild(txtInp_birthpl);		// Place of Birth_1
-		cell_[24].appendChild(txtInp_parent);		// Parentage
-		cell_[25].appendChild(txtInp_bmth2);		// Month if born in Census Year - bmth2
-		cell_[26].appendChild(txtInp_mmth);			// Month if married in Census Year
-		cell_[27].appendChild(txtInp_ibirthpl);		// Indis POB_1
-		cell_[28].appendChild(txtInp_fbirthpl);		// Father FPOB_1
-		cell_[29].appendChild(txtInp_mbirthpl);		// Mother MPOB_1
+		cell_[20].appendChild(txtInp_ageM); // Age st first marriage
+		cell_[21].appendChild(txtInp_occu); // Occupation_1
+		cell_[22].appendChild(txtInp_assets2); // Assets_2
+		cell_[23].appendChild(txtInp_birthpl); // Place of Birth_1
+		cell_[24].appendChild(txtInp_parent); // Parentage
+		cell_[25].appendChild(txtInp_bmth2); // Month if born in Census Year - bmth2
+		cell_[26].appendChild(txtInp_mmth); // Month if married in Census Year
+		cell_[27].appendChild(txtInp_ibirthpl); // Indis POB_1
+		cell_[28].appendChild(txtInp_fbirthpl); // Father FPOB_1
+		cell_[29].appendChild(txtInp_mbirthpl); // Mother MPOB_1
 		
-		cell_[30].appendChild(txtInp_yrsUS);		// Years in USA
-		cell_[31].appendChild(txtInp_yoi1);			// Year of Immigration YOI_1
-		cell_[32].appendChild(txtInp_na1);			// Naturalized or Alien N-A_1
-		cell_[33].appendChild(txtInp_yon);			// Year of Naturalization YON
-		cell_[34].appendChild(txtInp_englang);		// English spoken, if not, Other Language spoken Eng/Lang
-		cell_[35].appendChild(txtInp_occu2);		// Occupation_2
-		cell_[36].appendChild(txtInp_health);		// Health - 5 parameters x--xx etc
-		cell_[37].appendChild(txtInp_ind1);			// Industry ind_1
-		cell_[38].appendChild(txtInp_emp1);			// Employ_1
-		cell_[39].appendChild(txtInp_emR);			// Employer EmR
+		cell_[30].appendChild(txtInp_yrsUS); // Years in USA
+		cell_[31].appendChild(txtInp_yoi1); // Year of Immigration YOI_1
+		cell_[32].appendChild(txtInp_na1); // Naturalized or Alien N-A_1
+		cell_[33].appendChild(txtInp_yon); // Year of Naturalization YON
+		cell_[34].appendChild(txtInp_englang); // English spoken, if not, Other Language spoken Eng/Lang
+		cell_[35].appendChild(txtInp_occu2); // Occupation_2
+		cell_[36].appendChild(txtInp_health); // Health - 5 parameters x--xx etc
+		cell_[37].appendChild(txtInp_ind1); // Industry ind_1
+		cell_[38].appendChild(txtInp_emp1); // Employ_1
+		cell_[39].appendChild(txtInp_emR); // Employer EmR
 		
-		cell_[40].appendChild(txtInp_emD);			// Employed EmD
-		cell_[41].appendChild(txtInp_mnsE);			// Months employed during Census Year 
-		cell_[42].appendChild(txtInp_emH);			// Working At Home WH
-		cell_[43].appendChild(txtInp_emN);			// Not Employed EmN
-		cell_[44].appendChild(txtInp_wksU);			// Weeks unemployed during Census Year 
-		cell_[45].appendChild(txtInp_mnsU);			// Months unemployed during Census Year 
-		cell_[46].appendChild(txtInp_educ);			// Education 3 parameters Sch-Read-Write  -xx
-		cell_[47].appendChild(txtInp_educpre1890);	// Education (pre 1890 Census) - 3 parameters = Sch, Cannot Read, Cannot Write  -xx
-		cell_[48].appendChild(txtInp_eng1);			// English spoken Y/N  eng_1
-		cell_[49].appendChild(txtInp_home);			// Home Ownership x-x-x-xxxx = Owned/Rented - Free/Morgaged - Farm/House - Farm Sched #
+		cell_[40].appendChild(txtInp_emD); // Employed EmD
+		cell_[41].appendChild(txtInp_mnsE); // Months employed during Census Year 
+		cell_[42].appendChild(txtInp_emH); // Working At Home WH
+		cell_[43].appendChild(txtInp_emN); // Not Employed EmN
+		cell_[44].appendChild(txtInp_wksU); // Weeks unemployed during Census Year 
+		cell_[45].appendChild(txtInp_mnsU); // Months unemployed during Census Year 
+		cell_[46].appendChild(txtInp_educ); // Education 3 parameters Sch-Read-Write  -xx
+		cell_[47].appendChild(txtInp_educpre1890); // Education (pre 1890 Census) - 3 parameters = Sch, Cannot Read, Cannot Write  -xx
+		cell_[48].appendChild(txtInp_eng1); // English spoken Y/N  eng_1
+		cell_[49].appendChild(txtInp_home); // Home Ownership x-x-x-xxxx = Owned/Rented - Free/Morgaged - Farm/House - Farm Sched #
 		
-		cell_[50].appendChild(txtInp_birthpl2);		// Birth Place_2
-		cell_[51].appendChild(txtInp_ibirthpl2);	// Indis POB_2
-		cell_[52].appendChild(txtInp_bic);			// Born in County (UK)
-		cell_[53].appendChild(txtInp_boe);			// Born outside England (UK)
-		cell_[54].appendChild(txtInp_fbirthpl2);	// Fathers FPOB_2
-		cell_[55].appendChild(txtInp_mbirthpl2);	// Mothers MPOB_2
-		cell_[56].appendChild(txtInp_lang);			// Mother Tongue lang
-		cell_[57].appendChild(txtInp_yoi2);			// Year of Immigration YOI_2
-		cell_[58].appendChild(txtInp_na2);			// Naturalized or Alien N-A_2
-		cell_[59].appendChild(txtInp_eng2);			// English spoken Y/N  eng_2
+		cell_[50].appendChild(txtInp_birthpl2); // Birth Place_2
+		cell_[51].appendChild(txtInp_ibirthpl2); // Indis POB_2
+		cell_[52].appendChild(txtInp_bic); // Born in County (UK)
+		cell_[53].appendChild(txtInp_boe); // Born outside England (UK)
+		cell_[54].appendChild(txtInp_fbirthpl2); // Fathers FPOB_2
+		cell_[55].appendChild(txtInp_mbirthpl2); // Mothers MPOB_2
+		cell_[56].appendChild(txtInp_lang); // Mother Tongue lang
+		cell_[57].appendChild(txtInp_yoi2); // Year of Immigration YOI_2
+		cell_[58].appendChild(txtInp_na2); // Naturalized or Alien N-A_2
+		cell_[59].appendChild(txtInp_eng2); // English spoken Y/N  eng_2
 		
-		cell_[60].appendChild(txtInp_occu3);		// Occupation_3
-		cell_[61].appendChild(txtInp_ind2);			// Industry ind_2
-		cell_[62].appendChild(txtInp_emp2);			// Employ_2
-	//	cell_[63].appendChild(txtInp_N_ality);		// Nationality (UK 1911) - British, OR Naturalised, OR(French, German, Russian etc)
-		cell_[63].appendChild(txtInp_infirm);		// Infirmaties - up to 5 parameters x--xx etc
-		cell_[64].appendChild(txtInp_situ);			// Health Situation 1890 - Disease, Infimaties, Convict, Pauper etc
-		cell_[65].appendChild(txtInp_vet);			// Veteran ?
-		cell_[66].appendChild(txtInp_war);			// War or expedition 
-		cell_[67].appendChild(txtInp_infirm1910);	// Infirmaties - xx = Blind (both eyes) Y/N/-, Deaf and Dumb Y/N/-
+		cell_[60].appendChild(txtInp_occu3); // Occupation_3
+		cell_[61].appendChild(txtInp_ind2); // Industry ind_2
+		cell_[62].appendChild(txtInp_emp2); // Employ_2
+		//cell_[63].appendChild(txtInp_N_ality); // Nationality (UK 1911) - British, OR Naturalised, OR(French, German, Russian etc)
+		cell_[63].appendChild(txtInp_infirm); // Infirmaties - up to 5 parameters x--xx etc
+		cell_[64].appendChild(txtInp_situ); // Health Situation 1890 - Disease, Infimaties, Convict, Pauper etc
+		cell_[65].appendChild(txtInp_vet); // Veteran ?
+		cell_[66].appendChild(txtInp_war); // War or expedition 
+		cell_[67].appendChild(txtInp_infirm1910); // Infirmaties - xx = Blind (both eyes) Y/N/-, Deaf and Dumb Y/N/-
 
 		// Hidden Cells =======================================================
 		if (iteration > 0) {
-		cell_[68].appendChild(txtInp_DOB);			// Date of Birth
-		cell_[69].appendChild(txtInp_DOM);			// Date of Marriage
-		cell_[70].appendChild(txtInp_FullName);		// Full Name
-		cell_[71].appendChild(txtInp_MarrName);		// Married Name
-		cell_[72].appendChild(txtInp_DOD);			// Date of Death
-		cell_[73].appendChild(txtInp_ChBLD);		// Text Array - Children Born/Living/Died 
+		cell_[68].appendChild(txtInp_DOB); // Date of Birth
+		cell_[69].appendChild(txtInp_DOM); // Date of Marriage
+		cell_[70].appendChild(txtInp_FullName); // Full Name
+		cell_[71].appendChild(txtInp_MarrName); // Married Name
+		cell_[72].appendChild(txtInp_DOD); // Date of Death
+		cell_[73].appendChild(txtInp_ChBLD); // Text Array - Children Born/Living/Died 
 		}
 
 		// Extra Cells ========================================================
 		if (iteration == 0) {
-			cell_tdel.appendChild(txtInp_tdel);		// Text Del
-			cell_tra.appendChild(txtInp_tra);		// Text Ins
+			cell_tdel.appendChild(txtInp_tdel); // Text Del
+			cell_tra.appendChild(txtInp_tra); // Text Ins
 		}else{
-			cell_del.appendChild(btnEl);			// Onclick = Delete Row
-			cell_ra.appendChild(raEl);				// Radio button used for inserting a row, rather than adding at end of table)
+			cell_del.appendChild(btnEl); // Onclick = Delete Row
+			cell_ra.appendChild(raEl); // Radio button used for inserting a row, rather than adding at end of table)
 		}
 
-		// cell_index2.appendChild(txt_itemNo2);			// Text Item Number
+		// cell_index2.appendChild(txt_itemNo2); // Text Item Number
 
 		// **F** Pass in the elements to be referenced later ==================
 		// Store the myRow object in each row
-		row.myRow = new myRowObject(	txt_itemNo, txtInp_pid, txtInp_nam, txtInp_label, txtInp_cond, txtInp_tenure, txtInp_assets, txtInp_age, txtInp_race, txtInp_gend, 
+		row.myRow = new myRowObject( txt_itemNo, txtInp_pid, txtInp_nam, txtInp_label, txtInp_cond, txtInp_tenure, txtInp_assets, txtInp_age, txtInp_race, txtInp_gend, 
 										txtInp_race2, txtInp_yob, txtInp_age2, txtInp_bmth, txtInp_label2, txtInp_cond2, txtInp_yrsm, txtInp_chilB, txtInp_chilL, txtInp_chilD, 
 										txtInp_ageM, txtInp_occu, txtInp_assets2, txtInp_birthpl, txtInp_parent, txtInp_bmth2, txtInp_mmth, txtInp_ibirthpl, txtInp_fbirthpl, txtInp_mbirthpl, 
 										txtInp_yrsUS, txtInp_yoi1, txtInp_na1, txtInp_yon, txtInp_englang, txtInp_occu2, txtInp_health, txtInp_ind1, txtInp_emp1, txtInp_emR, 
@@ -2436,171 +2436,171 @@ function reorderRows(tbl, startingIndex) {
 			var count = startingIndex + ROW_BASE;
 			for (var i=startingIndex; i<tbl.tBodies[0].rows.length; i++) {
 				// CONFIG: next line is affected by myRowObject settings
-				tbl.tBodies[0].rows[i].myRow.zero.data			 = count; // text - (left column item number)
+				tbl.tBodies[0].rows[i].myRow.zero.data = count; // text - (left column item number)
 				
 				// ------------------------------------------------------------
-				tbl.tBodies[0].rows[i].myRow.one.id				 = INPUT_NAME_PREFIX + count + '_1';  // input text
-				tbl.tBodies[0].rows[i].myRow.two.id 			 = INPUT_NAME_PREFIX + count + '_2';  // input text
-				tbl.tBodies[0].rows[i].myRow.three.id			 = INPUT_NAME_PREFIX + count + '_3';  // input text
-				tbl.tBodies[0].rows[i].myRow.four.id			 = INPUT_NAME_PREFIX + count + '_4';  // input text
-				tbl.tBodies[0].rows[i].myRow.five.id			 = INPUT_NAME_PREFIX + count + '_5';  // input text
-				tbl.tBodies[0].rows[i].myRow.six.id				 = INPUT_NAME_PREFIX + count + '_6';  // input text
-				tbl.tBodies[0].rows[i].myRow.seven.id			 = INPUT_NAME_PREFIX + count + '_7';  // input text
-				tbl.tBodies[0].rows[i].myRow.eight.id			 = INPUT_NAME_PREFIX + count + '_8';  // input text
-				tbl.tBodies[0].rows[i].myRow.nine.id			 = INPUT_NAME_PREFIX + count + '_9';  // input text
+				tbl.tBodies[0].rows[i].myRow.one.id = INPUT_NAME_PREFIX + count + '_1';  // input text
+				tbl.tBodies[0].rows[i].myRow.two.id  = INPUT_NAME_PREFIX + count + '_2';  // input text
+				tbl.tBodies[0].rows[i].myRow.three.id = INPUT_NAME_PREFIX + count + '_3';  // input text
+				tbl.tBodies[0].rows[i].myRow.four.id = INPUT_NAME_PREFIX + count + '_4';  // input text
+				tbl.tBodies[0].rows[i].myRow.five.id = INPUT_NAME_PREFIX + count + '_5';  // input text
+				tbl.tBodies[0].rows[i].myRow.six.id = INPUT_NAME_PREFIX + count + '_6';  // input text
+				tbl.tBodies[0].rows[i].myRow.seven.id = INPUT_NAME_PREFIX + count + '_7';  // input text
+				tbl.tBodies[0].rows[i].myRow.eight.id = INPUT_NAME_PREFIX + count + '_8';  // input text
+				tbl.tBodies[0].rows[i].myRow.nine.id = INPUT_NAME_PREFIX + count + '_9';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.ten.id				 = INPUT_NAME_PREFIX + count + '_10'; // input text
-				tbl.tBodies[0].rows[i].myRow.eleven.id			 = INPUT_NAME_PREFIX + count + '_11'; // input text
-				tbl.tBodies[0].rows[i].myRow.twelve.id			 = INPUT_NAME_PREFIX + count + '_12'; // input text
-				tbl.tBodies[0].rows[i].myRow.thirteen.id		 = INPUT_NAME_PREFIX + count + '_13';  // input text
-				tbl.tBodies[0].rows[i].myRow.fourteen.id		 = INPUT_NAME_PREFIX + count + '_14';  // input text
-				tbl.tBodies[0].rows[i].myRow.fifteen.id			 = INPUT_NAME_PREFIX + count + '_15';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixteen.id			 = INPUT_NAME_PREFIX + count + '_16';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventeen.id		 = INPUT_NAME_PREFIX + count + '_17';  // input text
-				tbl.tBodies[0].rows[i].myRow.eighteen.id		 = INPUT_NAME_PREFIX + count + '_18';  // input text
-				tbl.tBodies[0].rows[i].myRow.nineteen.id		 = INPUT_NAME_PREFIX + count + '_19';  // input text
+				tbl.tBodies[0].rows[i].myRow.ten.id = INPUT_NAME_PREFIX + count + '_10'; // input text
+				tbl.tBodies[0].rows[i].myRow.eleven.id = INPUT_NAME_PREFIX + count + '_11'; // input text
+				tbl.tBodies[0].rows[i].myRow.twelve.id = INPUT_NAME_PREFIX + count + '_12'; // input text
+				tbl.tBodies[0].rows[i].myRow.thirteen.id = INPUT_NAME_PREFIX + count + '_13';  // input text
+				tbl.tBodies[0].rows[i].myRow.fourteen.id = INPUT_NAME_PREFIX + count + '_14';  // input text
+				tbl.tBodies[0].rows[i].myRow.fifteen.id = INPUT_NAME_PREFIX + count + '_15';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixteen.id = INPUT_NAME_PREFIX + count + '_16';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventeen.id = INPUT_NAME_PREFIX + count + '_17';  // input text
+				tbl.tBodies[0].rows[i].myRow.eighteen.id = INPUT_NAME_PREFIX + count + '_18';  // input text
+				tbl.tBodies[0].rows[i].myRow.nineteen.id = INPUT_NAME_PREFIX + count + '_19';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.twenty.id			 = INPUT_NAME_PREFIX + count + '_20'; // input text
-				tbl.tBodies[0].rows[i].myRow.twentyone.id		 = INPUT_NAME_PREFIX + count + '_21';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentytwo.id 		 = INPUT_NAME_PREFIX + count + '_22';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentythree.id		 = INPUT_NAME_PREFIX + count + '_23';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyfour.id		 = INPUT_NAME_PREFIX + count + '_24';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyfive.id		 = INPUT_NAME_PREFIX + count + '_25';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentysix.id		 = INPUT_NAME_PREFIX + count + '_26';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyseven.id		 = INPUT_NAME_PREFIX + count + '_27';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyeight.id		 = INPUT_NAME_PREFIX + count + '_28';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentynine.id		 = INPUT_NAME_PREFIX + count + '_29';  // input text
+				tbl.tBodies[0].rows[i].myRow.twenty.id = INPUT_NAME_PREFIX + count + '_20'; // input text
+				tbl.tBodies[0].rows[i].myRow.twentyone.id = INPUT_NAME_PREFIX + count + '_21';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentytwo.id  = INPUT_NAME_PREFIX + count + '_22';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentythree.id = INPUT_NAME_PREFIX + count + '_23';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyfour.id = INPUT_NAME_PREFIX + count + '_24';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyfive.id = INPUT_NAME_PREFIX + count + '_25';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentysix.id = INPUT_NAME_PREFIX + count + '_26';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyseven.id = INPUT_NAME_PREFIX + count + '_27';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyeight.id = INPUT_NAME_PREFIX + count + '_28';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentynine.id = INPUT_NAME_PREFIX + count + '_29';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.thirty.id			 = INPUT_NAME_PREFIX + count + '_30'; // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyone.id		 = INPUT_NAME_PREFIX + count + '_31';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtytwo.id		 = INPUT_NAME_PREFIX + count + '_32';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtythree.id		 = INPUT_NAME_PREFIX + count + '_33';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyfour.id		 = INPUT_NAME_PREFIX + count + '_34';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyfive.id		 = INPUT_NAME_PREFIX + count + '_35';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtysix.id		 = INPUT_NAME_PREFIX + count + '_36';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyseven.id		 = INPUT_NAME_PREFIX + count + '_37';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyeight.id		 = INPUT_NAME_PREFIX + count + '_38';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtynine.id		 = INPUT_NAME_PREFIX + count + '_39';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirty.id = INPUT_NAME_PREFIX + count + '_30'; // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyone.id = INPUT_NAME_PREFIX + count + '_31';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtytwo.id = INPUT_NAME_PREFIX + count + '_32';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtythree.id = INPUT_NAME_PREFIX + count + '_33';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyfour.id = INPUT_NAME_PREFIX + count + '_34';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyfive.id = INPUT_NAME_PREFIX + count + '_35';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtysix.id = INPUT_NAME_PREFIX + count + '_36';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyseven.id = INPUT_NAME_PREFIX + count + '_37';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyeight.id = INPUT_NAME_PREFIX + count + '_38';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtynine.id = INPUT_NAME_PREFIX + count + '_39';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.forty.id			 = INPUT_NAME_PREFIX + count + '_40'; // input text
-				tbl.tBodies[0].rows[i].myRow.fortyone.id		 = INPUT_NAME_PREFIX + count + '_41';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortytwo.id		 = INPUT_NAME_PREFIX + count + '_42';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortythree.id		 = INPUT_NAME_PREFIX + count + '_43';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyfour.id		 = INPUT_NAME_PREFIX + count + '_44';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyfive.id		 = INPUT_NAME_PREFIX + count + '_45';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortysix.id		 = INPUT_NAME_PREFIX + count + '_46';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyseven.id		 = INPUT_NAME_PREFIX + count + '_47';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyeight.id		 = INPUT_NAME_PREFIX + count + '_48';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortynine.id		 = INPUT_NAME_PREFIX + count + '_49';  // input text
+				tbl.tBodies[0].rows[i].myRow.forty.id = INPUT_NAME_PREFIX + count + '_40'; // input text
+				tbl.tBodies[0].rows[i].myRow.fortyone.id = INPUT_NAME_PREFIX + count + '_41';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortytwo.id = INPUT_NAME_PREFIX + count + '_42';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortythree.id = INPUT_NAME_PREFIX + count + '_43';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyfour.id = INPUT_NAME_PREFIX + count + '_44';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyfive.id = INPUT_NAME_PREFIX + count + '_45';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortysix.id = INPUT_NAME_PREFIX + count + '_46';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyseven.id = INPUT_NAME_PREFIX + count + '_47';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyeight.id = INPUT_NAME_PREFIX + count + '_48';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortynine.id = INPUT_NAME_PREFIX + count + '_49';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.fifty.id			 = INPUT_NAME_PREFIX + count + '_50';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyone.id		 = INPUT_NAME_PREFIX + count + '_51';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftytwo.id		 = INPUT_NAME_PREFIX + count + '_52';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftythree.id		 = INPUT_NAME_PREFIX + count + '_53';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyfour.id		 = INPUT_NAME_PREFIX + count + '_54';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyfive.id		 = INPUT_NAME_PREFIX + count + '_55';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftysix.id		 = INPUT_NAME_PREFIX + count + '_56';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyseven.id		 = INPUT_NAME_PREFIX + count + '_57';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyeight.id		 = INPUT_NAME_PREFIX + count + '_58';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftynine.id		 = INPUT_NAME_PREFIX + count + '_59';  // input text
+				tbl.tBodies[0].rows[i].myRow.fifty.id = INPUT_NAME_PREFIX + count + '_50';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyone.id = INPUT_NAME_PREFIX + count + '_51';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftytwo.id = INPUT_NAME_PREFIX + count + '_52';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftythree.id = INPUT_NAME_PREFIX + count + '_53';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyfour.id = INPUT_NAME_PREFIX + count + '_54';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyfive.id = INPUT_NAME_PREFIX + count + '_55';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftysix.id = INPUT_NAME_PREFIX + count + '_56';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyseven.id = INPUT_NAME_PREFIX + count + '_57';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyeight.id = INPUT_NAME_PREFIX + count + '_58';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftynine.id = INPUT_NAME_PREFIX + count + '_59';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.sixty.id			 = INPUT_NAME_PREFIX + count + '_60';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyone.id		 = INPUT_NAME_PREFIX + count + '_61';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtytwo.id		 = INPUT_NAME_PREFIX + count + '_62';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtythree.id		 = INPUT_NAME_PREFIX + count + '_63';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyfour.id		 = INPUT_NAME_PREFIX + count + '_64';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyfive.id		 = INPUT_NAME_PREFIX + count + '_65';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtysix.id		 = INPUT_NAME_PREFIX + count + '_66';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyseven.id		 = INPUT_NAME_PREFIX + count + '_67';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyeight.id		 = INPUT_NAME_PREFIX + count + '_68';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtynine.id		 = INPUT_NAME_PREFIX + count + '_69';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventy.id			 = INPUT_NAME_PREFIX + count + '_70';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventyone.id		 = INPUT_NAME_PREFIX + count + '_71';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventytwo.id		 = INPUT_NAME_PREFIX + count + '_72';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventythree.id	 = INPUT_NAME_PREFIX + count + '_73';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixty.id = INPUT_NAME_PREFIX + count + '_60';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyone.id = INPUT_NAME_PREFIX + count + '_61';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtytwo.id = INPUT_NAME_PREFIX + count + '_62';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtythree.id = INPUT_NAME_PREFIX + count + '_63';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyfour.id = INPUT_NAME_PREFIX + count + '_64';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyfive.id = INPUT_NAME_PREFIX + count + '_65';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtysix.id = INPUT_NAME_PREFIX + count + '_66';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyseven.id = INPUT_NAME_PREFIX + count + '_67';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyeight.id = INPUT_NAME_PREFIX + count + '_68';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtynine.id = INPUT_NAME_PREFIX + count + '_69';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventy.id = INPUT_NAME_PREFIX + count + '_70';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventyone.id = INPUT_NAME_PREFIX + count + '_71';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventytwo.id = INPUT_NAME_PREFIX + count + '_72';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventythree.id = INPUT_NAME_PREFIX + count + '_73';  // input text
 				// ------------------------------------------------------------
 				
 				// ------------------------------------------------------------
-				tbl.tBodies[0].rows[i].myRow.one.name			 = INPUT_NAME_PREFIX + count + '_1';  // input text
-				tbl.tBodies[0].rows[i].myRow.two.name 			 = INPUT_NAME_PREFIX + count + '_2';  // input text
-				tbl.tBodies[0].rows[i].myRow.three.name			 = INPUT_NAME_PREFIX + count + '_3';  // input text
-				tbl.tBodies[0].rows[i].myRow.four.name			 = INPUT_NAME_PREFIX + count + '_4';  // input text
-				tbl.tBodies[0].rows[i].myRow.five.name			 = INPUT_NAME_PREFIX + count + '_5';  // input text
-				tbl.tBodies[0].rows[i].myRow.six.name			 = INPUT_NAME_PREFIX + count + '_6';  // input text
-				tbl.tBodies[0].rows[i].myRow.seven.name			 = INPUT_NAME_PREFIX + count + '_7';  // input text
-				tbl.tBodies[0].rows[i].myRow.eight.name			 = INPUT_NAME_PREFIX + count + '_8';  // input text
-				tbl.tBodies[0].rows[i].myRow.nine.name			 = INPUT_NAME_PREFIX + count + '_9';  // input text
+				tbl.tBodies[0].rows[i].myRow.one.name = INPUT_NAME_PREFIX + count + '_1';  // input text
+				tbl.tBodies[0].rows[i].myRow.two.name  = INPUT_NAME_PREFIX + count + '_2';  // input text
+				tbl.tBodies[0].rows[i].myRow.three.name = INPUT_NAME_PREFIX + count + '_3';  // input text
+				tbl.tBodies[0].rows[i].myRow.four.name = INPUT_NAME_PREFIX + count + '_4';  // input text
+				tbl.tBodies[0].rows[i].myRow.five.name = INPUT_NAME_PREFIX + count + '_5';  // input text
+				tbl.tBodies[0].rows[i].myRow.six.name = INPUT_NAME_PREFIX + count + '_6';  // input text
+				tbl.tBodies[0].rows[i].myRow.seven.name = INPUT_NAME_PREFIX + count + '_7';  // input text
+				tbl.tBodies[0].rows[i].myRow.eight.name = INPUT_NAME_PREFIX + count + '_8';  // input text
+				tbl.tBodies[0].rows[i].myRow.nine.name = INPUT_NAME_PREFIX + count + '_9';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.ten.name			 = INPUT_NAME_PREFIX + count + '_10'; // input text
-				tbl.tBodies[0].rows[i].myRow.eleven.name		 = INPUT_NAME_PREFIX + count + '_11'; // input text
-				tbl.tBodies[0].rows[i].myRow.twelve.name		 = INPUT_NAME_PREFIX + count + '_12'; // input text
-				tbl.tBodies[0].rows[i].myRow.thirteen.name		 = INPUT_NAME_PREFIX + count + '_13';  // input text
-				tbl.tBodies[0].rows[i].myRow.fourteen.name		 = INPUT_NAME_PREFIX + count + '_14';  // input text
-				tbl.tBodies[0].rows[i].myRow.fifteen.name		 = INPUT_NAME_PREFIX + count + '_15';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixteen.name		 = INPUT_NAME_PREFIX + count + '_16';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventeen.name		 = INPUT_NAME_PREFIX + count + '_17';  // input text
-				tbl.tBodies[0].rows[i].myRow.eighteen.name		 = INPUT_NAME_PREFIX + count + '_18';  // input text
-				tbl.tBodies[0].rows[i].myRow.nineteen.name		 = INPUT_NAME_PREFIX + count + '_19';  // input text
+				tbl.tBodies[0].rows[i].myRow.ten.name = INPUT_NAME_PREFIX + count + '_10'; // input text
+				tbl.tBodies[0].rows[i].myRow.eleven.name = INPUT_NAME_PREFIX + count + '_11'; // input text
+				tbl.tBodies[0].rows[i].myRow.twelve.name = INPUT_NAME_PREFIX + count + '_12'; // input text
+				tbl.tBodies[0].rows[i].myRow.thirteen.name = INPUT_NAME_PREFIX + count + '_13';  // input text
+				tbl.tBodies[0].rows[i].myRow.fourteen.name = INPUT_NAME_PREFIX + count + '_14';  // input text
+				tbl.tBodies[0].rows[i].myRow.fifteen.name = INPUT_NAME_PREFIX + count + '_15';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixteen.name = INPUT_NAME_PREFIX + count + '_16';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventeen.name = INPUT_NAME_PREFIX + count + '_17';  // input text
+				tbl.tBodies[0].rows[i].myRow.eighteen.name = INPUT_NAME_PREFIX + count + '_18';  // input text
+				tbl.tBodies[0].rows[i].myRow.nineteen.name = INPUT_NAME_PREFIX + count + '_19';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.twenty.name		 = INPUT_NAME_PREFIX + count + '_20'; // input text
-				tbl.tBodies[0].rows[i].myRow.twentyone.name		 = INPUT_NAME_PREFIX + count + '_21';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentytwo.name		 = INPUT_NAME_PREFIX + count + '_22';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentythree.name	 = INPUT_NAME_PREFIX + count + '_23';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyfour.name	 = INPUT_NAME_PREFIX + count + '_24';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyfive.name	 = INPUT_NAME_PREFIX + count + '_25';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentysix.name		 = INPUT_NAME_PREFIX + count + '_26';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyseven.name	 = INPUT_NAME_PREFIX + count + '_27';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentyeight.name	 = INPUT_NAME_PREFIX + count + '_28';  // input text
-				tbl.tBodies[0].rows[i].myRow.twentynine.name	 = INPUT_NAME_PREFIX + count + '_29';  // input text
+				tbl.tBodies[0].rows[i].myRow.twenty.name = INPUT_NAME_PREFIX + count + '_20'; // input text
+				tbl.tBodies[0].rows[i].myRow.twentyone.name = INPUT_NAME_PREFIX + count + '_21';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentytwo.name = INPUT_NAME_PREFIX + count + '_22';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentythree.name = INPUT_NAME_PREFIX + count + '_23';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyfour.name = INPUT_NAME_PREFIX + count + '_24';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyfive.name = INPUT_NAME_PREFIX + count + '_25';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentysix.name = INPUT_NAME_PREFIX + count + '_26';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyseven.name = INPUT_NAME_PREFIX + count + '_27';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentyeight.name = INPUT_NAME_PREFIX + count + '_28';  // input text
+				tbl.tBodies[0].rows[i].myRow.twentynine.name = INPUT_NAME_PREFIX + count + '_29';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.thirty.name		 = INPUT_NAME_PREFIX + count + '_30'; // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyone.name		 = INPUT_NAME_PREFIX + count + '_31';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtytwo.name 	 = INPUT_NAME_PREFIX + count + '_32';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtythree.name	 = INPUT_NAME_PREFIX + count + '_33';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyfour.name	 = INPUT_NAME_PREFIX + count + '_34';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyfive.name	 = INPUT_NAME_PREFIX + count + '_35';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtysix.name		 = INPUT_NAME_PREFIX + count + '_36';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyseven.name	 = INPUT_NAME_PREFIX + count + '_37';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtyeight.name	 = INPUT_NAME_PREFIX + count + '_38';  // input text
-				tbl.tBodies[0].rows[i].myRow.thirtynine.name	 = INPUT_NAME_PREFIX + count + '_39';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirty.name = INPUT_NAME_PREFIX + count + '_30'; // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyone.name = INPUT_NAME_PREFIX + count + '_31';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtytwo.name  = INPUT_NAME_PREFIX + count + '_32';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtythree.name = INPUT_NAME_PREFIX + count + '_33';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyfour.name = INPUT_NAME_PREFIX + count + '_34';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyfive.name = INPUT_NAME_PREFIX + count + '_35';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtysix.name = INPUT_NAME_PREFIX + count + '_36';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyseven.name = INPUT_NAME_PREFIX + count + '_37';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtyeight.name = INPUT_NAME_PREFIX + count + '_38';  // input text
+				tbl.tBodies[0].rows[i].myRow.thirtynine.name = INPUT_NAME_PREFIX + count + '_39';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.forty.name			 = INPUT_NAME_PREFIX + count + '_40'; // input text
-				tbl.tBodies[0].rows[i].myRow.fortyone.name		 = INPUT_NAME_PREFIX + count + '_41';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortytwo.name 		 = INPUT_NAME_PREFIX + count + '_42';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortythree.name	 = INPUT_NAME_PREFIX + count + '_43';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyfour.name		 = INPUT_NAME_PREFIX + count + '_44';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyfive.name		 = INPUT_NAME_PREFIX + count + '_45';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortysix.name		 = INPUT_NAME_PREFIX + count + '_46';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyseven.name	 = INPUT_NAME_PREFIX + count + '_47';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortyeight.name	 = INPUT_NAME_PREFIX + count + '_48';  // input text
-				tbl.tBodies[0].rows[i].myRow.fortynine.name		 = INPUT_NAME_PREFIX + count + '_49';  // input text
+				tbl.tBodies[0].rows[i].myRow.forty.name = INPUT_NAME_PREFIX + count + '_40'; // input text
+				tbl.tBodies[0].rows[i].myRow.fortyone.name = INPUT_NAME_PREFIX + count + '_41';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortytwo.name  = INPUT_NAME_PREFIX + count + '_42';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortythree.name = INPUT_NAME_PREFIX + count + '_43';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyfour.name = INPUT_NAME_PREFIX + count + '_44';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyfive.name = INPUT_NAME_PREFIX + count + '_45';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortysix.name = INPUT_NAME_PREFIX + count + '_46';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyseven.name = INPUT_NAME_PREFIX + count + '_47';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortyeight.name = INPUT_NAME_PREFIX + count + '_48';  // input text
+				tbl.tBodies[0].rows[i].myRow.fortynine.name = INPUT_NAME_PREFIX + count + '_49';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.fifty.name			 = INPUT_NAME_PREFIX + count + '_50';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyone.name		 = INPUT_NAME_PREFIX + count + '_51';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftytwo.name		 = INPUT_NAME_PREFIX + count + '_52';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftythree.name	 = INPUT_NAME_PREFIX + count + '_53';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyfour.name		 = INPUT_NAME_PREFIX + count + '_54';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyfive.name		 = INPUT_NAME_PREFIX + count + '_55';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftysix.name		 = INPUT_NAME_PREFIX + count + '_56';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyseven.name	 = INPUT_NAME_PREFIX + count + '_57';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftyeight.name	 = INPUT_NAME_PREFIX + count + '_58';  // input text
-				tbl.tBodies[0].rows[i].myRow.fiftynine.name		 = INPUT_NAME_PREFIX + count + '_59';  // input text
+				tbl.tBodies[0].rows[i].myRow.fifty.name = INPUT_NAME_PREFIX + count + '_50';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyone.name = INPUT_NAME_PREFIX + count + '_51';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftytwo.name = INPUT_NAME_PREFIX + count + '_52';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftythree.name = INPUT_NAME_PREFIX + count + '_53';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyfour.name = INPUT_NAME_PREFIX + count + '_54';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyfive.name = INPUT_NAME_PREFIX + count + '_55';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftysix.name = INPUT_NAME_PREFIX + count + '_56';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyseven.name = INPUT_NAME_PREFIX + count + '_57';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftyeight.name = INPUT_NAME_PREFIX + count + '_58';  // input text
+				tbl.tBodies[0].rows[i].myRow.fiftynine.name = INPUT_NAME_PREFIX + count + '_59';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.sixty.name			 = INPUT_NAME_PREFIX + count + '_60';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyone.name		 = INPUT_NAME_PREFIX + count + '_61';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtytwo.name		 = INPUT_NAME_PREFIX + count + '_62';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtythree.name	 = INPUT_NAME_PREFIX + count + '_63';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyfour.name		 = INPUT_NAME_PREFIX + count + '_64';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyfive.name		 = INPUT_NAME_PREFIX + count + '_65';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtysix.name		 = INPUT_NAME_PREFIX + count + '_66';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyseven.name	 = INPUT_NAME_PREFIX + count + '_67';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtyeight.name	 = INPUT_NAME_PREFIX + count + '_68';  // input text
-				tbl.tBodies[0].rows[i].myRow.sixtynine.name		 = INPUT_NAME_PREFIX + count + '_69';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixty.name = INPUT_NAME_PREFIX + count + '_60';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyone.name = INPUT_NAME_PREFIX + count + '_61';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtytwo.name = INPUT_NAME_PREFIX + count + '_62';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtythree.name = INPUT_NAME_PREFIX + count + '_63';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyfour.name = INPUT_NAME_PREFIX + count + '_64';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyfive.name = INPUT_NAME_PREFIX + count + '_65';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtysix.name = INPUT_NAME_PREFIX + count + '_66';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyseven.name = INPUT_NAME_PREFIX + count + '_67';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtyeight.name = INPUT_NAME_PREFIX + count + '_68';  // input text
+				tbl.tBodies[0].rows[i].myRow.sixtynine.name = INPUT_NAME_PREFIX + count + '_69';  // input text
 				
-				tbl.tBodies[0].rows[i].myRow.seventy.name		 = INPUT_NAME_PREFIX + count + '_70';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventyone.name	 = INPUT_NAME_PREFIX + count + '_71';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventytwo.name	 = INPUT_NAME_PREFIX + count + '_72';  // input text
-				tbl.tBodies[0].rows[i].myRow.seventythree.name	 = INPUT_NAME_PREFIX + count + '_73';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventy.name = INPUT_NAME_PREFIX + count + '_70';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventyone.name = INPUT_NAME_PREFIX + count + '_71';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventytwo.name = INPUT_NAME_PREFIX + count + '_72';  // input text
+				tbl.tBodies[0].rows[i].myRow.seventythree.name = INPUT_NAME_PREFIX + count + '_73';  // input text
 				
 				// ------------------------------------------------------------
 				tbl.tBodies[0].rows[i].myRow.ra.value = count; // input radio
@@ -2611,6 +2611,3 @@ function reorderRows(tbl, startingIndex) {
 }
 
 </script>
-
-
-

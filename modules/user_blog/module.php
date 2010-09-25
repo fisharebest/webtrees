@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 // Create tables, if not already present
 try {
 	WT_DB::updateSchema('./modules/user_blog/db_schema/', 'NB_SCHEMA_VERSION', 1);
-}	 catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
 }

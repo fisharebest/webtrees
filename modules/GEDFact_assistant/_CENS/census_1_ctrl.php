@@ -107,7 +107,7 @@ $currpid=$pid;
 		<div class="cens_textinput_right">
 			<?php echo i18n::translate('Add'); ?><br>
 			<input  type="radio" name="totallyrad" value="0" checked="checked" />
-		</div>	
+		</div>
 	<?php
 	
 	//-- Census Add Rows Area =========================================================
@@ -125,4 +125,3 @@ $currpid=$pid;
 <script language="JavaScript" type="text/javascript">
  window.onLoad = initDynamicOptionLists();
 </script>
-

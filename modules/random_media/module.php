@@ -262,9 +262,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 function openPic(filename, width, height) {
 		height=height+50;
 		screenW = screen.width;
-	 	screenH = screen.height;
-	 	if (width>screenW-100) width=screenW-100;
-	 	if (height>screenH-110) height=screenH-120;
+		screenH = screen.height;
+		if (width>screenW-100) width=screenW-100;
+		if (height>screenH-110) height=screenH-120;
 		if ((filename.search(/\.je?pg$/gi)!=-1)||(filename.search(/\.gif$/gi)!=-1)||(filename.search(/\.png$/gi)!=-1)||(filename.search(/\.bmp$/gi)!=-1))
 			win02 = window.open('imageview.php?filename='+filename,'win02','top=50,left=150,height='+height+',width='+width+',scrollbars=1,resizable=1');
 			// win03.resizeTo(winWidth 2,winHeight 30);

@@ -142,9 +142,9 @@ if ($action=="update") {
 		$selected_country = $selected_country[1];
 	else
 		$selected_country = "Countries";
-	$parent_id	= $row->pl_parent_id;
-	$level		= $row->pl_level;
-	$zoomfactor	= $row->pl_zoom;
+	$parent_id = $row->pl_parent_id;
+	$level = $row->pl_level;
+	$zoomfactor = $row->pl_zoom;
 	$parent_lati = "0.0";
 	$parent_long = "0.0";
 	if ($row->pl_lati!==null && $row->pl_long!==null) {
@@ -217,7 +217,7 @@ if ($action=="add") {
 		$parent_long = "0.0";
 		$place_icon  = "";
 		$parent_id   = 0;
-		$level		 = 0;
+		$level = 0;
 		$zoomfactor  = $GOOGLEMAP_MIN_ZOOM;
 	}
 	$selected_country = "Countries";
@@ -237,10 +237,10 @@ if ($action=="add") {
 <!--
 	if (window.attachEvent) {
 		window.attachEvent("onload", function() {
-			loadMap();	   // Internet Explorer
+			loadMap(); // Internet Explorer
 		});
 		window.attachEvent("onunload", function() {
-			GUnload();	   // Internet Explorer
+			GUnload(); // Internet Explorer
 		});
 	} else {
 		window.addEventListener("load", function() {
@@ -356,8 +356,8 @@ if ($action=="add") {
 
 	Map_type.prototype.initialize = function(place_map)
 	{
-		var list 	= document.createElement("ul");
-		list.id	= 'map_type';
+		var list  = document.createElement("ul");
+		list.id = 'map_type';
 
 		var button1 = document.createElement('li');
 		var button2 = document.createElement('li');
@@ -514,13 +514,13 @@ if ($action=="add") {
 						$row->pl_long = "-".abs($pl_long);
 					}
 
-					echo "	 	 	 childplaces.push(new GMarker(new GLatLng(", $row->pl_lati, ", ", $row->pl_long, "), childicon));\n";
-					echo "			 GEvent.addListener(childplaces[", $i, "], \"click\", function() {\n";
+					echo " childplaces.push(new GMarker(new GLatLng(", $row->pl_lati, ", ", $row->pl_long, "), childicon));\n";
+					echo " GEvent.addListener(childplaces[", $i, "], \"click\", function() {\n";
 					echo "             childplaces[", $i, "].openInfoWindowHtml(\"<td width='100%'><div class='iwstyle' style='width: 250px;'><br />", addslashes($row->pl_place), "<br /><br /></div>\")});\n";
-					echo "	 	 	 map.addOverlay(childplaces[", $i, "]);\n";
-					echo "	 	 	 bounds.extend(new GLatLng(", $row->pl_lati, ", ", $row->pl_long, "));\n";
+					echo " map.addOverlay(childplaces[", $i, "]);\n";
+					echo " bounds.extend(new GLatLng(", $row->pl_lati, ", ", $row->pl_long, "));\n";
 					$i++;
-					echo "	 	 	 map.setCenter(bounds.getCenter());\n";
+					echo " map.setCenter(bounds.getCenter());\n";
 				}
 			}
 		}
@@ -535,9 +535,9 @@ if ($action=="add") {
 					icon_type.iconAnchor = new GPoint(10, 34);
 					icon_type.infoWindowAnchor = new GPoint(5, 1);
 					map.addOverlay(new GMarker(new GLatLng(<?php echo $parent_lati, ", ", $parent_long;?>), icon_type));
-<?php			} else { ?>
+<?php } else { ?>
 					map.addOverlay(new GMarker(new GLatLng(<?php echo $place_lati, ", ", $place_long;?>)));
-<?php			}
+<?php }
 			}
 			else { ?>
 			var flagicon = new GIcon();
@@ -547,11 +547,11 @@ if ($action=="add") {
 			flagicon.shadowSize = new GSize(35, 45);
 			flagicon.iconAnchor = new GPoint(1, 45);
 			flagicon.infoWindowAnchor = new GPoint(5, 1);
-<?php			if (($place_lati == null) || ($place_long == null)) {?>
+<?php if (($place_lati == null) || ($place_long == null)) {?>
 			map.addOverlay(new GMarker(new GLatLng(<?php echo $parent_lati, ", ", $parent_long;?>), flagicon));
-<?php			} else { ?>
+<?php } else { ?>
 			map.addOverlay(new GMarker(new GLatLng(<?php echo $place_lati, ", ", $place_long;?>), flagicon));
-<?php			}
+<?php }
 			}
 		} ?>
 			// Our info window content
@@ -621,7 +621,7 @@ if ($action=="add") {
 	   map.clearOverlays();
 	   var bounds = new GLatLngBounds();
 	   if (!response || response.Status.code != 200) {
-	 	 alert("<?php echo i18n::translate('No places found');?>");
+	  alert("<?php echo i18n::translate('No places found');?>");
 	   } else {
 		if(response.Placemark.length>0) {
 			for (i=0;i<response.Placemark.length;i++) {
@@ -694,7 +694,7 @@ if ($action=="add") {
 		<div id="INDI_PLAC_pop" style="display: inline;">
 		<?php print_specialchar_link("NEW_PLACE_NAME", false);?></div>
 		<label for="new_pl_name"><a href="javascript:;" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo i18n::translate('Search on this level')?></a></label>&nbsp;&nbsp;|
-	 	<label for="new_pl_name"><a href="javascript:;" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo i18n::translate('Search all')?></a></label>
+	  <label for="new_pl_name"><a href="javascript:;" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo i18n::translate('Search all')?></a></label>
 		</td>
 	</tr>
 	<tr>
@@ -780,4 +780,3 @@ if ($action=="add") {
 echo "<center><br /><br /><br /><a href=\"javascript:;\" onclick=\"edit_close('{$link}')\">", i18n::translate('Close Window'), "</a><br /></center>\n";
 
 print_simple_footer();
-?>

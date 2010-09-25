@@ -304,10 +304,10 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					$icon='';
 					if ($tag=='INDI') $icon = "indis";
 					if ($tag=='FAM' ) $icon = "sfamily";
-					//	if ($tag=='SOUR') $icon = "source";
-					//	if ($tag=='REPO') $icon = "repository";
-					//	if ($tag=='NOTE') $icon = "notes";
-					//	if ($tag=='OBJE') $icon = "media";
+					//if ($tag=='SOUR') $icon = "source";
+					//if ($tag=='REPO') $icon = "repository";
+					//if ($tag=='NOTE') $icon = "notes";
+					//if ($tag=='OBJE') $icon = "media";
 					if (!empty($icon)) {
 						$out .= '<li>';
 						if (!empty($icon)) {
@@ -324,7 +324,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 							}
 							$out .= '</a>';
 						}
-						$out .= '<a	class="remove_cart" href="sidebar.php?sb_action=clippings&amp;remove='.$i.'">
+						$out .= '<a class="remove_cart" href="sidebar.php?sb_action=clippings&amp;remove='.$i.'">
 						<img src="'. $WT_IMAGES["remove"].'" border="0" alt="'.i18n::translate('Remove').'" title="'.i18n::translate('Remove').'" /></a>';
 						$out .='</li>';
 					}

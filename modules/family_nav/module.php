@@ -216,7 +216,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if ($pid == $child->getXref() ){
 				}else{
 					$menu = new Menu("&nbsp;" . $child->getLabel() . "\n");
-				//	$menu->addClass("", "", "submenu");
+					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") { 
 						$menu->addClass("", "", "submenu flyout2");
 					}else{
@@ -273,7 +273,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			?>
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
-				<?php				 
+				<?php
 				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\"href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
 				echo "<b>".$label."</b>";
 				echo "</a>";
@@ -584,13 +584,13 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 		if (empty($SEARCH_SPIDER)) {
 			if ($LINK_ICONS!="disabled") {
 				//-- draw a box for the family flyout
-				$parentlinks 		.= "<span class=\"flyout4\"><b>".i18n::translate('Parents')."</b></span><br />";
-				$step_parentlinks 	.= "<span class=\"flyout4\"><b>".i18n::translate('Parents')."</b></span><br />";
-				$spouselinks 		.= "<span class=\"flyout4\"><b>".i18n::translate('Family')."</b></span><br />";
+				$parentlinks .= "<span class=\"flyout4\"><b>".i18n::translate('Parents')."</b></span><br />";
+				$step_parentlinks .= "<span class=\"flyout4\"><b>".i18n::translate('Parents')."</b></span><br />";
+				$spouselinks .= "<span class=\"flyout4\"><b>".i18n::translate('Family')."</b></span><br />";
 				
-				$persons 			 = "";
-				$person_parent 		 = "";
-				$person_step 		 = "";
+				$persons = "";
+				$person_parent = "";
+				$person_step = "";
 
 
 

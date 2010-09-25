@@ -48,27 +48,27 @@ if (!WT_USER_IS_ADMIN) {
 
 global $GEDCOM;
 
-$action				= safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
-$welcome			= safe_REQUEST($_REQUEST, 'welcome', WT_REGEX_XREF);
-$gedcom_name		= safe_REQUEST($_REQUEST, 'gedcom_name');
-$filename			= safe_REQUEST($_REQUEST, 'filename');
-$filenames			= safe_REQUEST($_REQUEST, 'filenames');
-$index				= safe_REQUEST($_REQUEST, 'index');
-$welcome_priority	= safe_REQUEST($_REQUEST, 'welcome_priority', WT_REGEX_XREF);
-$welcome_update		= safe_REQUEST($_REQUEST, 'welcome_update', WT_REGEX_XREF);
-$indi_rec			= safe_REQUEST($_REQUEST, 'indi_rec', WT_REGEX_XREF);
-$indirec_priority	= safe_REQUEST($_REQUEST, 'indirec_priority', WT_REGEX_XREF);
-$indirec_update		= safe_REQUEST($_REQUEST, 'indirec_update', WT_REGEX_XREF);
-$indi_lists			= safe_REQUEST($_REQUEST, 'indi_lists', WT_REGEX_XREF);
-$indilist_priority	= safe_REQUEST($_REQUEST, 'indilist_priority', WT_REGEX_XREF);
-$indilist_update	= safe_REQUEST($_REQUEST, 'indilist_update', WT_REGEX_XREF);
-$fam_rec			= safe_REQUEST($_REQUEST, 'fam_rec', WT_REGEX_XREF);
-$famrec_priority	= safe_REQUEST($_REQUEST, 'famrec_priority', WT_REGEX_XREF);
-$famrec_update		= safe_REQUEST($_REQUEST, 'famrec_update', WT_REGEX_XREF);
-$fam_lists			= safe_REQUEST($_REQUEST, 'fam_lists', WT_REGEX_XREF);
-$famlist_priority	= safe_REQUEST($_REQUEST, 'famlist_priority', WT_REGEX_XREF);
-$famlist_update		= safe_REQUEST($_REQUEST, 'famlist_update', WT_REGEX_XREF);
-$no_private_links	= safe_REQUEST($_REQUEST, 'no_private_links', '1', '0');
+$action = safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
+$welcome = safe_REQUEST($_REQUEST, 'welcome', WT_REGEX_XREF);
+$gedcom_name = safe_REQUEST($_REQUEST, 'gedcom_name');
+$filename = safe_REQUEST($_REQUEST, 'filename');
+$filenames = safe_REQUEST($_REQUEST, 'filenames');
+$index = safe_REQUEST($_REQUEST, 'index');
+$welcome_priority = safe_REQUEST($_REQUEST, 'welcome_priority', WT_REGEX_XREF);
+$welcome_update = safe_REQUEST($_REQUEST, 'welcome_update', WT_REGEX_XREF);
+$indi_rec = safe_REQUEST($_REQUEST, 'indi_rec', WT_REGEX_XREF);
+$indirec_priority = safe_REQUEST($_REQUEST, 'indirec_priority', WT_REGEX_XREF);
+$indirec_update = safe_REQUEST($_REQUEST, 'indirec_update', WT_REGEX_XREF);
+$indi_lists = safe_REQUEST($_REQUEST, 'indi_lists', WT_REGEX_XREF);
+$indilist_priority = safe_REQUEST($_REQUEST, 'indilist_priority', WT_REGEX_XREF);
+$indilist_update = safe_REQUEST($_REQUEST, 'indilist_update', WT_REGEX_XREF);
+$fam_rec = safe_REQUEST($_REQUEST, 'fam_rec', WT_REGEX_XREF);
+$famrec_priority = safe_REQUEST($_REQUEST, 'famrec_priority', WT_REGEX_XREF);
+$famrec_update = safe_REQUEST($_REQUEST, 'famrec_update', WT_REGEX_XREF);
+$fam_lists = safe_REQUEST($_REQUEST, 'fam_lists', WT_REGEX_XREF);
+$famlist_priority = safe_REQUEST($_REQUEST, 'famlist_priority', WT_REGEX_XREF);
+$famlist_update = safe_REQUEST($_REQUEST, 'famlist_update', WT_REGEX_XREF);
+$no_private_links = safe_REQUEST($_REQUEST, 'no_private_links', '1', '0');
 
 if ($action=="sendFiles") {
 	header('Content-Type: application/octet-stream');
@@ -77,21 +77,21 @@ if ($action=="sendFiles") {
 	echo "<?xml version='1.0' encoding='UTF-8'?>\n";
 	echo "<?xml-stylesheet type=\"text/xsl\" href=\"", WT_SERVER_NAME.WT_SCRIPT_PATH, "modules/sitemap/gss.xsl\"?>\n";
 	echo "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n"; 
-	echo "		xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"; 
-	echo "		xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9\n"; 
-	echo "						http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\">\n"; 
+	echo " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"; 
+	echo " xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9\n"; 
+	echo " http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd\">\n"; 
 
 	if (isset($welcome)) {
-		echo "	<url>\n";
-		echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "index.php?command=gedcom&amp;ged=", urlencode($gedcom_name), "</loc>\n";
-		echo "		<changefreq>", $welcome_update, "</changefreq>\n";
-		echo "		<priority>0.", $welcome_priority, "</priority>\n";
-		echo "	</url>\n";
+		echo " <url>\n";
+		echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "index.php?command=gedcom&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+		echo " <changefreq>", $welcome_update, "</changefreq>\n";
+		echo " <priority>0.", $welcome_priority, "</priority>\n";
+		echo " </url>\n";
 	}
 	$oldGEDCOM = $GEDCOM;
 	$GEDCOM = $gedcom_name;
 	// Create a temporary userid
-	$sitemap_user_id = createTempUser('#SiteMap#', 'visitor', $gedcom_name);	// Create a temporary userid
+	$sitemap_user_id = createTempUser('#SiteMap#', 'visitor', $gedcom_name); // Create a temporary userid
 	// Temporarily become this user
 	$_SESSION["org_user"]=$_SESSION["wt_user"];
 	$_SESSION["wt_user"]='#SiteMap#';
@@ -100,24 +100,24 @@ if ($action=="sendFiles") {
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
 				if (canDisplayRecord($index, $row[1])) {
-					echo "	<url>\n";
-					echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+					echo " <url>\n";
+					echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
 					if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-						echo "		<lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-					echo "		<changefreq>", $indirec_update, "</changefreq>\n";
-					echo "		<priority>0.", $indirec_priority, "</priority>\n";
-					echo "	</url>\n";
+						echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
+					echo " <changefreq>", $indirec_update, "</changefreq>\n";
+					echo " <priority>0.", $indirec_priority, "</priority>\n";
+					echo " </url>\n";
 				}
 			} else {
-				echo "	<url>\n";
-				echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+				echo " <url>\n";
+				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
 				$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
 				if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-					echo "		<lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-				echo "		<changefreq>", $indirec_update, "</changefreq>\n";
-				echo "		<priority>0.", $indirec_priority, "</priority>\n";
-				echo "	</url>\n";
+					echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
+				echo " <changefreq>", $indirec_update, "</changefreq>\n";
+				echo " <priority>0.", $indirec_priority, "</priority>\n";
+				echo " </url>\n";
 			}
 		}
 		$statement->closeCursor();
@@ -128,24 +128,24 @@ if ($action=="sendFiles") {
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
 				if (canDisplayRecord($index, $row[1])) {
-					echo "	<url>\n";
-					echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+					echo " <url>\n";
+					echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
 					if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-						echo "		<lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-					echo "		<changefreq>", $indirec_update, "</changefreq>\n";
-					echo "		<priority>0.", $indirec_priority, "</priority>\n";
-					echo "	</url>\n";
+						echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
+					echo " <changefreq>", $indirec_update, "</changefreq>\n";
+					echo " <priority>0.", $indirec_priority, "</priority>\n";
+					echo " </url>\n";
 				}
 			} else {
-				echo "	<url>\n";
-				echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+				echo " <url>\n";
+				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
 				$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
 				if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-					echo "		<lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-				echo "		<changefreq>", $indirec_update, "</changefreq>\n";
-				echo "		<priority>0.", $indirec_priority, "</priority>\n";
-				echo "	</url>\n";
+					echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
+				echo " <changefreq>", $indirec_update, "</changefreq>\n";
+				echo " <priority>0.", $indirec_priority, "</priority>\n";
+				echo " </url>\n";
 			}
 		}
 		$statement->closeCursor();
@@ -154,11 +154,11 @@ if ($action=="sendFiles") {
 	if (isset($fam_lists)) {
 		foreach(get_indilist_salpha($SHOW_MARRIED_NAMES, true, $index) as $letter) {
 			if ($letter!='@') {
-				echo "	<url>\n";
-				echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "famlist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
-				echo "		<changefreq>", $famlist_update, "</changefreq>\n";
-				echo "		<priority>0.", $famlist_priority, "</priority>\n";
-				echo "	</url>\n";
+				echo " <url>\n";
+				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "famlist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+				echo " <changefreq>", $famlist_update, "</changefreq>\n";
+				echo " <priority>0.", $famlist_priority, "</priority>\n";
+				echo " </url>\n";
 			}
 		}
 	}
@@ -166,11 +166,11 @@ if ($action=="sendFiles") {
 	if (isset($indi_lists)) {
 		foreach (get_indilist_salpha($SHOW_MARRIED_NAMES, false, $index) as $letter) {
 			if ($letter!='@') {
-				echo "	<url>\n";
-				echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "indilist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
-				echo "		<changefreq>", $indilist_update, "</changefreq>\n";
-				echo "		<priority>0.", $indilist_priority, "</priority>\n";
-				echo "	</url>\n";
+				echo " <url>\n";
+				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "indilist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
+				echo " <changefreq>", $indilist_update, "</changefreq>\n";
+				echo " <priority>0.", $indilist_priority, "</priority>\n";
+				echo " </url>\n";
 			}
 		}
 	}
@@ -197,10 +197,10 @@ if ($action=="sendIndex") {
 	if (isset($filenames)) {
 		foreach($filenames as $ged_index=>$ged_name) {
 			$xml_name = str_ireplace(".ged",".xml", $ged_name);
-			echo "	<sitemap>\n";
-			echo "		<loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "SM_", $xml_name, "</loc>\n";
-			echo "		<lastmod>", date("Y-m-d"), "</lastmod>\n ";
-			echo "	</sitemap>\n";
+			echo " <sitemap>\n";
+			echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "SM_", $xml_name, "</loc>\n";
+			echo " <lastmod>", date("Y-m-d"), "</lastmod>\n ";
+			echo " </sitemap>\n";
 		}
 	}
 	echo "</sitemapindex>\n";
@@ -271,7 +271,7 @@ if ($action=="") {
 			<td class="optionbox" colspan="3">
 <?php
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-		echo "				<input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
+		echo " <input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
 	}
 ?>
 			</td>
@@ -435,4 +435,3 @@ if ($action=="") {
 <?php
 }
 print_footer();
-?>

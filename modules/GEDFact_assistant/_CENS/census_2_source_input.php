@@ -245,10 +245,10 @@ global $TEXT_DIRECTION;
 					var dob      = (tr.cells[11].childNodes[0].value); // DOB Birth date in Julian Format
 					var yrsmarr  = (tr.cells[16].childNodes[0].value); // Years married
 					var agemarr  = (tr.cells[20].childNodes[0].value); // Age at 1st marriage
-					var dom		 = (tr.cells[69].childNodes[0].value); // DOM Marriage date in Julian format
-					var fullnam	 = (tr.cells[70].childNodes[0].value); // Full Name
-					var marrnam	 = (tr.cells[71].childNodes[0].value); // Married Name
-					var dod		 = (tr.cells[72].childNodes[0].value); // DOD Death date in Julian format
+					var dom      = (tr.cells[69].childNodes[0].value); // DOM Marriage date in Julian format
+					var fullnam  = (tr.cells[70].childNodes[0].value); // Full Name
+					var marrnam  = (tr.cells[71].childNodes[0].value); // Married Name
+					var dod      = (tr.cells[72].childNodes[0].value); // DOD Death date in Julian format
 
 					var one_day   = 1000*60*60*24;
 					var one_month = (365.26*one_day)/12;
@@ -339,7 +339,7 @@ global $TEXT_DIRECTION;
 					tr.cells[2].childNodes[0].value = fullnam;
 				}
 				
-				var age		 = (tr.cells[7].childNodes[0].value);  // Age
+				var age = (tr.cells[7].childNodes[0].value);  // Age
 				
 			}
 		}
@@ -387,19 +387,19 @@ global $TEXT_DIRECTION;
 					}
 					var BORN = ALIVE+DEAD;
 					if (BORN == 0) {
-						tr.cells[17].childNodes[0].value = "-";		 // BORN
-						tr.cells[18].childNodes[0].value = "-";		 // ALIVE
-						tr.cells[19].childNodes[0].value = "-";		 // DEAD
+						tr.cells[17].childNodes[0].value = "-"; // BORN
+						tr.cells[18].childNodes[0].value = "-"; // ALIVE
+						tr.cells[19].childNodes[0].value = "-"; // DEAD
 					} else {
-						tr.cells[17].childNodes[0].value = BORN;	 // BORN
-						tr.cells[18].childNodes[0].value = ALIVE;	 // ALIVE
-						tr.cells[19].childNodes[0].value = DEAD;	 // DEAD
+						tr.cells[17].childNodes[0].value = BORN; // BORN
+						tr.cells[18].childNodes[0].value = ALIVE; // ALIVE
+						tr.cells[19].childNodes[0].value = DEAD; // DEAD
 					}
 					if (ALIVE == 0) {
-						tr.cells[18].childNodes[0].value = "-";		 // ALIVE
+						tr.cells[18].childNodes[0].value = "-"; // ALIVE
 					}
 					if (DEAD == 0) {
-						tr.cells[19].childNodes[0].value = "-";		 // DEAD
+						tr.cells[19].childNodes[0].value = "-"; // DEAD
 					}
 				}
 			}
@@ -429,7 +429,7 @@ global $TEXT_DIRECTION;
 			var tr = tbl.rows[i];
 			for(var j=2; j<tr.cells.length; j++){
 				if (j!=7 && j!=12) {
-					//	miss out all cols except age cols
+					// miss out all cols except age cols
 					continue;
 				}else if (tr.cells[j].childNodes[0].value=="") {
 					tr.cells[j].childNodes[0].value=null
@@ -452,7 +452,7 @@ global $TEXT_DIRECTION;
 						bage = (I+', '+J+', '+K);
 					}
 					// Calculate Death Year =======================================
-					var dage	  = (tr.cells[72].childNodes[0].value);
+					var dage = (tr.cells[72].childNodes[0].value);
 					// If valid Julian date used, then use this instead -----------
 					if (dage>1721060) {
 						var IJD = Math.floor(dage);
@@ -776,11 +776,11 @@ global $TEXT_DIRECTION;
 				flip_16 = "";
 				flip_17 = "";
 				flip_18 = "";
-			//	flip_22 = "";
+				//flip_22 = "";
 				flip_27 = "";
 				flip_28 = "";
 				flip_29 = "";
-			//	flip_30 = "";
+				//flip_30 = "";
 				flip_31 = "";
 				flip_32 = "";
 				flip_34 = "";
@@ -804,7 +804,7 @@ global $TEXT_DIRECTION;
 				flip_16 = "";
 				flip_17 = "";
 				flip_18 = "";
-			//	flip_22 = "";
+				//flip_22 = "";
 				flip_27 = "";
 				flip_28 = "";
 				flip_29 = "";
@@ -821,13 +821,13 @@ global $TEXT_DIRECTION;
 				flip_3 = "";
 				flip_8 = "";
 				flip_9 = "";
-			//	flip_11 = "";
+				//flip_11 = "";
 				flip_12 = "";
 				flip_15 = "";
 				flip_16 = "";
 				flip_17 = "";
 				flip_18 = "";
-			//	flip_22 = "";
+				//flip_22 = "";
 				flip_27 = "";
 				flip_28 = "";
 				flip_29 = "";
@@ -850,7 +850,7 @@ global $TEXT_DIRECTION;
 				flip_16 = "";
 				flip_35 = "";
 				flip_36 = "";
-			//	flip_42 = "";
+				//flip_42 = "";
 				flip_45 = "";
 				flip_47= "";
 				flip_48 = "";
@@ -952,7 +952,7 @@ global $TEXT_DIRECTION;
 			cols_65[i].style.display = flip_65;
 			cols_66[i].style.display = flip_66;
 			cols_67[i].style.display = flip_67;
-		//	cols_68[i].style.display = flip_68;
+			//cols_68[i].style.display = flip_68;
 		}
 	}
 	
@@ -1017,7 +1017,7 @@ global $TEXT_DIRECTION;
 	<div class="cens_sour_year">
 		<span><?php echo i18n::translate('Year'); ?><br /></span>
 		<select style = "background:#ffaaaa;";
-				onchange =	"if( this.options[this.selectedIndex].value!='') {
+				onchange = "if( this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
 							}"
 				id="censYear" name="censYear">
@@ -1046,4 +1046,3 @@ global $TEXT_DIRECTION;
 		</div>
 	</div>
 </div>
-			

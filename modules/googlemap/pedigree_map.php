@@ -182,7 +182,7 @@ echo PrintReady($controller->getPersonName())."</h2>";
 				</td>
 			</tr>
 		</table>
- 	  </form>
+	  </form>
 	</td></tr>
 </table>
 	
@@ -270,7 +270,7 @@ echo "</table>\n";
 echo "<hr />";
 echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\">";
 echo "  <tr>";
-echo "	<td valign=\"top\">";
+echo " <td valign=\"top\">";
 // print summary statistics
 if (isset($curgen)){
 	$total=pow(2,$curgen)-1;
@@ -284,7 +284,7 @@ if (isset($curgen)){
 	echo "</td>\n";
 	echo "  </tr>\n";
 	echo "  <tr>\n";
-	echo "	<td valign=\"top\">\n";
+	echo " <td valign=\"top\">\n";
 	if ($priv) {
 		echo i18n::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br/>';
 	}
@@ -301,7 +301,7 @@ if (isset($curgen)){
 		}
 	}
 }
-echo "	</td>\n";
+echo " </td>\n";
 echo "  </tr>\n";
 echo "</table>\n";
 echo "</div>";
@@ -466,8 +466,8 @@ function Map_type() {}
 
 	Map_type.prototype.initialize = function(pm_map)
 	{
-		var list 	= document.createElement("ul");
-		list.id	= 'map_type';
+		var list  = document.createElement("ul");
+		list.id = 'map_type';
 
 		var button1 = document.createElement('li');
 		var button2 = document.createElement('li');
@@ -776,7 +776,7 @@ document.getElementById("side_bar").innerHTML = side_bar_html;
 		<?php
 	}
 	if ($GOOGLEMAP_PH_WHEEL) echo "pm_map.enableScrollWheelZoom();\n";
-	echo "	pm_map.setMapType($GOOGLEMAP_MAP_TYPE);\n";
+	echo " pm_map.setMapType($GOOGLEMAP_MAP_TYPE);\n";
 	?>
 // End context menu creation
 }

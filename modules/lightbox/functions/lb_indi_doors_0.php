@@ -59,10 +59,5 @@ if (!defined('WT_WEBTREES')) {
 	<?php if (file_exists("modules/googlemap/defaultconfig.php")) { ?>
 		<dd id="door8"><a href="javascript:;" onclick="tabswitch(8); if (loadedTabs[8]) {ResizeMap(); ResizeMap();} return false;" ><?php print i18n::translate('Map')?></a></dd>
 	<?php } ?>
-<!--	<dd id="door10"><a href="javascript:;" onclick="tabswitch(10); return false;" ><?php print "Spare Tab" ?></a></dd>  -->
+<!-- <dd id="door10"><a href="javascript:;" onclick="tabswitch(10); return false;" ><?php print "Spare Tab" ?></a></dd>  -->
 	<dd id="door0"><a href="javascript:;" onclick="tabswitch(0); if (loadedTabs[8]) {ResizeMap(); ResizeMap();} return false;" ><?php print i18n::translate('All')?></a></dd> 
-
-
-
-
-

@@ -46,7 +46,7 @@ $directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
 $multiple       =safe_GET_bool('multiple');
 $showthumb      =safe_GET_bool('showthumb');
 $all            =safe_GET_bool('all');
-$subclick		=safe_GET('subclick');
+$subclick       =safe_GET('subclick');
 $choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
 $level          =safe_GET('level', WT_REGEX_INTEGER, 0);
 $language_filter=safe_GET('language_filter');
@@ -439,7 +439,7 @@ if ($action=="filter") {
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 			usort($myindilist, array('GedcomRecord', 'Compare'));
 			foreach($myindilist as $indi) {
-//				echo $indi->format_list('li', true);
+				//echo $indi->format_list('li', true);
 				$nam = htmlspecialchars($indi->getFullName());
 				echo "<li><a href=\"javascript:;\" onclick=\"pasterow(
 					'".$indi->getXref()."' , 
@@ -803,5 +803,3 @@ echo "</div>"; // Close div that centers table
 echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
 
 print_simple_footer();
-
-?>

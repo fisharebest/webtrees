@@ -336,15 +336,14 @@ case 'go':
 	
 	// echo final row of table
 	echo "<tr><td colspan=\"2\" class=\"list_label\">", i18n::translate('Total unique places'), ": ", $countrows, "</td></tr></table><br /><br />";
-	break;	
+	break;
 default:
 	// Do not run until user selects a gedcom/place/etc.
 	// Instead, show some useful help info.
 	echo "<p>", i18n::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</p><hr />";
-	break;	
+	break;
 }
 
 //echo footers
 echo "<hr />";
 print_footer();
-?>

@@ -242,32 +242,32 @@ $WT_IMAGES['lsuparrow'] = WT_THEME_DIR.'images/lsuparrow.gif';
 
 //-- Variables for the Fan chart
 $fanChart = array(
-	'font'		=> WT_ROOT.'includes/fonts/DejaVuSans.ttf',
-	'size'		=> '7px',
-	'color'		=> '#000000',
-	'bgColor'	=> '#eeeeee',
-	'bgMColor'	=> '#b1cff0',
-	'bgFColor'	=> '#e9daf1'
+	'font' => WT_ROOT.'includes/fonts/DejaVuSans.ttf',
+	'size' => '7px',
+	'color' => '#000000',
+	'bgColor' => '#eeeeee',
+	'bgMColor' => '#b1cff0',
+	'bgFColor' => '#e9daf1'
 );
 
 //-- This section defines variables for the pedigree chart
-$bwidth = 225;		// -- width of boxes on pedigree chart
-$bheight = 78;		// -- height of boxes on pedigree chart
-$baseyoffset = -20;	// -- position the entire pedigree tree relative to the top of the page
-$basexoffset = 10;	// -- position the entire pedigree tree relative to the left of the page
-$bxspacing = 4;		// -- horizontal spacing between boxes on the pedigree chart
-$byspacing = 5;	// -- vertical spacing between boxes on the pedigree chart
-$brborder = 1;		// -- box right border thickness
+$bwidth = 225; // -- width of boxes on pedigree chart
+$bheight = 78; // -- height of boxes on pedigree chart
+$baseyoffset = -20; // -- position the entire pedigree tree relative to the top of the page
+$basexoffset = 10; // -- position the entire pedigree tree relative to the left of the page
+$bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart
+$byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
+$brborder = 1; // -- box right border thickness
 
 // -- global variables for the descendancy chart
-$Dbaseyoffset = 20;	// -- position the entire descendancy tree relative to the top of the page
-$Dbasexoffset = 20;	// -- position the entire descendancy tree relative to the left of the page
-$Dbxspacing = 0;	// -- horizontal spacing between boxes
-$Dbyspacing = 10;	// -- vertical spacing between boxes
-$Dbwidth = 250;		// -- width of DIV layer boxes
-$Dbheight = 78;		// -- height of DIV layer boxes
-$Dindent = 15;		// -- width to indent descendancy boxes
-$Darrowwidth = 30;	// -- additional width to include for the up arrows
+$Dbaseyoffset = 20; // -- position the entire descendancy tree relative to the top of the page
+$Dbasexoffset = 20; // -- position the entire descendancy tree relative to the left of the page
+$Dbxspacing = 0; // -- horizontal spacing between boxes
+$Dbyspacing = 10; // -- vertical spacing between boxes
+$Dbwidth = 250; // -- width of DIV layer boxes
+$Dbheight = 78; // -- height of DIV layer boxes
+$Dindent = 15; // -- width to indent descendancy boxes
+$Darrowwidth = 30; // -- additional width to include for the up arrows
 
 $CHARTS_CLOSE_HTML = true;                //-- should the charts, pedigree, descendacy, etc close the HTML on the page
 

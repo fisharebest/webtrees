@@ -239,11 +239,11 @@ class CKEditor
 			$classDetection = "";
 			$js .= "CKEDITOR.replaceAll( function(textarea, config) {\n";
 			if (!empty($className)) {
-				$js .= "	var classRegex = new RegExp('(?:^| )' + '". $className ."' + '(?:$| )');\n";
-				$js .= "	if (!classRegex.test(textarea.className))\n";
-				$js .= "		return false;\n";
+				$js .= " var classRegex = new RegExp('(?:^| )' + '". $className ."' + '(?:$| )');\n";
+				$js .= " if (!classRegex.test(textarea.className))\n";
+				$js .= "  return false;\n";
 			}
-			$js .= "	CKEDITOR.tools.extend(config, ". $this->jsEncode($_config) .", true);";
+			$js .= " CKEDITOR.tools.extend(config, ". $this->jsEncode($_config) .", true);";
 			$js .= "} );";
 
 		}

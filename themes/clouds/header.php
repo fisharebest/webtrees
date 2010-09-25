@@ -120,7 +120,7 @@ if (empty($SEARCH_SPIDER)) {
 		 '</td>',
 		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >';
 ?>
- 	<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
+	<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
 <?php
 	echo '<form action="search.php" method="post">',
 		 '<input type="hidden" name="action" value="general" />',

@@ -82,8 +82,8 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 		$nam = $idrecord->getFullName();
 		echo $nam;
 		echo "</td>";
-		echo "<td align='center'><input alt='", i18n::translate('Keep Link in list'), 		"', title='", i18n::translate('Keep Link in list'), 		"' type='radio' id='", $link, "_off' name='", $link, "' checked /></td>";
-		echo "<td align='center'><input alt='", i18n::translate('Remove Link from list'), 	"', title='", i18n::translate('Remove Link from list'), 	"' type='radio' id='", $link, "_on'  name='", $link, "' /></td>";
+		echo "<td align='center'><input alt='", i18n::translate('Keep Link in list'), "', title='", i18n::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked /></td>";
+		echo "<td align='center'><input alt='", i18n::translate('Remove Link from list'), "', title='", i18n::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "' /></td>";
 
 		if ($record->getType()=='INDI') {
 			?>
@@ -107,6 +107,3 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 
 </body>
 </html>
-
-
-
