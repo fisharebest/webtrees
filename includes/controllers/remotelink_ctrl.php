@@ -142,7 +142,7 @@ class RemoteLinkController extends BaseController {
 			if (!$sid) {
 				echo '<span class="error">failed to authenticate to remote site</span>';
 				$serverID=null;
-			}	else {
+			} else {
 				if (!$title) {
 					$title=$service->getServiceTitle();
 				}

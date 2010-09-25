@@ -343,7 +343,7 @@ class ReportBaseHTML extends ReportBase {
 	* @todo add page break - <p style='page-break-before:always' />
 	*/
 	function AddPage() {
-//		echo("\n\n<p style=\"page-break-before:always;\" /><p/>\n");
+		//echo("\n\n<p style=\"page-break-before:always;\" /><p/>\n");
 		$this->pageN++;
 		// Add a little margin to max Y "between pages"
 		$this->maxY += 10;
@@ -639,8 +639,8 @@ class CellHTML extends Cell {
 		/**
 		* Keep the original values, use these local variables
 		*/
-		$cW = 0;		// Class Width
-		$cP = 0;		// Class Padding
+		$cW = 0; // Class Width
+		$cP = 0; // Class Padding
 
 		// If (Future-feature-enable/disable cell padding)
 		$cP = $html->cPadding;
@@ -954,11 +954,11 @@ class TextBoxHTML extends TextBox {
 		* Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
 		* This is the bugfree version
 		*/
-		$cH = 0;	// Class Height
-		$cX = 0;	// Class Left
+		$cH = 0; // Class Height
+		$cX = 0; // Class Left
 		// Protect height, width, lastheight from padding
-		$cP = 0;	// Class Padding
-		$cW = 0;	// Class Width
+		$cP = 0; // Class Padding
+		$cW = 0; // Class Width
 		// Used with line breaks and cell height calculation within this box only
 		$html->largestFontHeight = 0;
 
@@ -1024,7 +1024,7 @@ class TextBoxHTML extends TextBox {
 				// For anything else but text (images), get the height
 				$eH += $this->elements[$i]->getHeight($html);
 			} else {
-//				if (is_string($element) and $element == "footnotetexts") $html->Footnotes();
+				//if (is_string($element) and $element == "footnotetexts") $html->Footnotes();
 				$fH += abs($html->getFootnotesHeight($cW));
 			}
 		}
@@ -1196,7 +1196,7 @@ class TextHTML extends Text {
 		}
 		$style = $html->getStyle($this->styleName);
 		return ($style["size"] * $ct) * $html->cellHeightRatio;
-//		return 0;
+		//return 0;
 	}
 
 	/**
@@ -1301,13 +1301,11 @@ class FootnoteHTML extends Footnote {
 	*/
 	function render(&$html) {
 		$html->setCurrentStyle("footnotenum");
-//		'vertical-align:super' is not working properly in IE 8
-//		@deprecated
+		// 'vertical-align:super' is not working properly in IE 8
+		// @deprecated
 		echo "<a href=\"#footnote", $this->num, "\"><sup>";
 		// working
 		$html->write($html->entityRTL. $this->num);
-		// Gerrys test code
-//		$html->write($this->num);
 		echo "</sup></a>\n";
 	}
 
@@ -1582,5 +1580,3 @@ class LineHTML extends Line {
 		$html->addMaxY($this->y2);
 	}
 } //-- END Line
-
-?>

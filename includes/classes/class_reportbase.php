@@ -208,7 +208,7 @@ class ReportBase {
 	* @var string
 	* @todo add the author support
 	*/
-//	var $rauthor = "";
+	//var $rauthor = "";
 	/**
 	* Keywords
 	* @see ReportBase::setup()
@@ -261,19 +261,19 @@ class ReportBase {
 			* The C series is used for folders, post cards and envelopes. C series envelope is suitable to insert A series sizes.
 			* ISO also define format series RA and SRA for untrimmed raw paper, where SRA stands for 'supplementary raw format A'.
 			* Japan has adopted the ISO series A sizes, but its series B sizes are slightly different. These sizes are sometimes called JIS B or JB sizes.
-			* 	sun was a unit of length used in Japan and is equal to about 3.03 cm or 1.193 inches
+			*  sun was a unit of length used in Japan and is equal to about 3.03 cm or 1.193 inches
 			* The United States, Canada, and in part Mexico, are today the only industrialized nations in which the ISO standard paper sizes are not yet widely used.
 			*
-			* A0 & A1		Technical drawings, posters
-			* A1 & A2		Flip charts
-			* A2 & A3		Drawings, diagrams, large tables
-			* A4			Letters, magazines, forms, catalogs, laser printer and copying machine output
-			* A5			Note pads
-			* A6			Postcards
-			* B5, A5, B6  A6	Books
-			* C4, C5, C6	Envelopes for A4 letters: unfolded (C4), folded once (C5), folded twice (C6)
-			* B4 & A3		Newspapers, supported by most copying machines in addition to A4
-			* B8 & A8		Playing cards
+			* A0 & A1        Technical drawings, posters
+			* A1 & A2        Flip charts
+			* A2 & A3        Drawings, diagrams, large tables
+			* A4             Letters, magazines, forms, catalogs, laser printer and copying machine output
+			* A5             Note pads
+			* A6             Postcards
+			* B5, A5, B6  A6 Books
+			* C4, C5, C6     Envelopes for A4 letters: unfolded (C4), folded once (C5), folded twice (C6)
+			* B4 & A3        Newspapers, supported by most copying machines in addition to A4
+			* B8 & A8        Playing cards
 			*
 			* 1 inch = 72 points
 			* 1 mm = 2.8346457 points
@@ -282,94 +282,94 @@ class ReportBase {
 			*/
 			switch ($this->pageFormat) {
 				// ISO A series
-				case "4A0":	{$sizes = array(4767.86,6740.79);break;}	// ISO 216, 1682 mm x 2378 mm
-				case "2A0":	{$sizes = array(3370.39,4767.86);break;}	// ISO 216, 1189 mm x 1682 mm
-				case "A0":	{$sizes = array(2383.94,3370.39);break;}	// ISO 216, 841 mm x 1189mm
-				case "A1":	{$sizes = array(1683.78,2383.94);break;}	// ISO 216, 594 mm x 841 mm
-				case "A2":	{$sizes = array(1190.55,1683.78);break;}	// ISO 216, 420 mm x 594 mm
-				case "A3":	{$sizes = array(841.89,1190.55);break;}		// ISO 216, 297 mm x 420 mm
-				case "A4":	default:{									// For unknown Page Size Name
-							$sizes = array(595.28,841.89);				// ISO 216, 210 mm 297 mm
+				case "4A0": {$sizes = array(4767.86,6740.79);break;} // ISO 216, 1682 mm x 2378 mm
+				case "2A0": {$sizes = array(3370.39,4767.86);break;} // ISO 216, 1189 mm x 1682 mm
+				case "A0":  {$sizes = array(2383.94,3370.39);break;} // ISO 216, 841 mm x 1189mm
+				case "A1":  {$sizes = array(1683.78,2383.94);break;} // ISO 216, 594 mm x 841 mm
+				case "A2":  {$sizes = array(1190.55,1683.78);break;} // ISO 216, 420 mm x 594 mm
+				case "A3":  {$sizes = array( 841.89,1190.55);break;} // ISO 216, 297 mm x 420 mm
+				case "A4":  default:{                                // For unknown Page Size Name
+							$sizes = array(595.28,841.89);                 // ISO 216, 210 mm 297 mm
 							$this->pageFormat = "A4";
 							break;}
-				case "A5":	{$sizes = array(419.53,595.28);break;}	// ISO 216, 148 mm x 210 mm
-				case "A6":	{$sizes = array(297.64,419.53);break;}	// ISO 216, 105 mm x 148 mm
-				case "A7":	{$sizes = array(209.76,297.64);break;}	// ISO 216, 74 mm x 105 mm
-				case "A8":	{$sizes = array(147.40,209.76);break;}	// ISO 216, 52 mm x 74 mm
-				case "A9":	{$sizes = array(104.88,147.40);break;}	// ISO 216, 37 mm x 52 mm
-				case "A10":	{$sizes = array(73.70,104.88);break;}	// ISO 216, 26 mm x 37 mm
+				case "A5":  {$sizes = array(419.53,595.28);break;} // ISO 216, 148 mm x 210 mm
+				case "A6":  {$sizes = array(297.64,419.53);break;} // ISO 216, 105 mm x 148 mm
+				case "A7":  {$sizes = array(209.76,297.64);break;} // ISO 216, 74 mm x 105 mm
+				case "A8":  {$sizes = array(147.40,209.76);break;} // ISO 216, 52 mm x 74 mm
+				case "A9":  {$sizes = array(104.88,147.40);break;} // ISO 216, 37 mm x 52 mm
+				case "A10": {$sizes = array( 73.70,104.88);break;} // ISO 216, 26 mm x 37 mm
 				// ISO B series
-				case "B0":	{$sizes = array(2834.65,4008.19);break;}	// ISO 216, 1000 mm x 1414 mm
-				case "B1":	{$sizes = array(2004.09,2834.65);break;}	// ISO 216, 707 mm x 1000 mm
-				case "B2":	{$sizes = array(1417.32,2004.09);break;}	// ISO 216, 500 mm x 707 mm
-				case "B3":	{$sizes = array(1000.63,1417.32);break;}	// ISO 216, 353 mm x 500 mm
-				case "B4":	{$sizes = array(708.66,1000.63);break;}	// ISO 216, 250 mm x 353 mm
-				case "B5":	{$sizes = array(498.90,708.66);break;}	// ISO 216, 176 mm x 250 mm
-				case "B6":	{$sizes = array(354.33,498.90);break;}	// ISO 216, 125 mm x 176 mm
-				case "B7":	{$sizes = array(249.45,354.33);break;}	// ISO 216, 88 mm x 125 mm
-				case "B8":	{$sizes = array(175.75,249.45);break;}	// ISO 216, 62 mm x 88 mm
-				case "B9":	{$sizes = array(124.72,175.75);break;}	// ISO 216, 44 mm x 62 mm
-				case "B10":	{$sizes = array(87.87,124.72);break;}	// ISO 216, 31 mm x 44 mm
+				case "B0":  {$sizes = array(2834.65,4008.19);break;} // ISO 216, 1000 mm x 1414 mm
+				case "B1":  {$sizes = array(2004.09,2834.65);break;} // ISO 216, 707 mm x 1000 mm
+				case "B2":  {$sizes = array(1417.32,2004.09);break;} // ISO 216, 500 mm x 707 mm
+				case "B3":  {$sizes = array(1000.63,1417.32);break;} // ISO 216, 353 mm x 500 mm
+				case "B4":  {$sizes = array( 708.66,1000.63);break;} // ISO 216, 250 mm x 353 mm
+				case "B5":  {$sizes = array( 498.90, 708.66);break;} // ISO 216, 176 mm x 250 mm
+				case "B6":  {$sizes = array( 354.33, 498.90);break;} // ISO 216, 125 mm x 176 mm
+				case "B7":  {$sizes = array( 249.45, 354.33);break;} // ISO 216, 88 mm x 125 mm
+				case "B8":  {$sizes = array( 175.75, 249.45);break;} // ISO 216, 62 mm x 88 mm
+				case "B9":  {$sizes = array( 124.72, 175.75);break;} // ISO 216, 44 mm x 62 mm
+				case "B10": {$sizes = array(  87.87, 124.72);break;} // ISO 216, 31 mm x 44 mm
 				// ISO C series, Envelope
-				case "C0":	{$sizes = array(2599.37,3676.54);break;}	// ISO 269, 917 mm x 1297 mm, For flat A0 sheet
-				case "C1":	{$sizes = array(1836.85,2599.37);break;}	// ISO 269, 648 mm x 917 mm, For flat A1 sheet
-				case "C2":	{$sizes = array(1298.27,1836.85);break;}	// ISO 269, 458 mm x 648 mm, For flat A2 sheet, A1 folded in half
-				case "C3":	{$sizes = array(918.43,1298.27);break;}	// ISO 269, 324 mm x 458 mm, For flat A3 sheet, A2 folded in half
-				case "C4":	{$sizes = array(649.13,918.43);break;}	// ISO 269, 229 mm x 324 mm, For flat A4 sheet, A3 folded in half
-				case "C5":	{$sizes = array(459.21,649.13);break;}	// ISO 269, 162 mm x 229 mm, For flat A5 sheet, A4 folded in half
-				case "C6/5":{$sizes = array(323.15,649.13);break;}	// ISO 269, 114 mm x 229 mm. A5 folded twice = 1/3 A4. Alternative for the DL envelope
-				case "C6":	{$sizes = array(323.15,459.21);break;}	// ISO 269, 114 mm x 162 mm, For A5 folded in half
-				case "C7/6":{$sizes = array(229.61,459.21);break;}	// ISO 269, 81 mm x 162 mm, For A5 sheet folded in thirds
-				case "C7":	{$sizes = array(229.61,323.15);break;}	// ISO 269, 81 mm x 114 mm, For A5 folded in quarters
-				case "C8":	{$sizes = array(161.57,229.61);break;}	// ISO 269, 57 mm x 81 mm
-				case "C9":	{$sizes = array(113.39,161.57);break;}	// ISO 269, 40 mm x 57 mm
-				case "C10":	{$sizes = array(79.37,113.39);break;}	// ISO 269, 28 mm x 40 mm
-				case "DL":	{$sizes = array(311.81,623.62);break;}	// Original DIN 678 but ISO 269 now has this C6/5 , 110 mm x 220 mm, For A4 sheet folded in thirds, A5 in half
+				case "C0":  {$sizes = array(2599.37,3676.54);break;} // ISO 269, 917 mm x 1297 mm, For flat A0 sheet
+				case "C1":  {$sizes = array(1836.85,2599.37);break;} // ISO 269, 648 mm x 917 mm, For flat A1 sheet
+				case "C2":  {$sizes = array(1298.27,1836.85);break;} // ISO 269, 458 mm x 648 mm, For flat A2 sheet, A1 folded in half
+				case "C3":  {$sizes = array( 918.43,1298.27);break;} // ISO 269, 324 mm x 458 mm, For flat A3 sheet, A2 folded in half
+				case "C4":  {$sizes = array( 649.13, 918.43);break;} // ISO 269, 229 mm x 324 mm, For flat A4 sheet, A3 folded in half
+				case "C5":  {$sizes = array( 459.21, 649.13);break;} // ISO 269, 162 mm x 229 mm, For flat A5 sheet, A4 folded in half
+				case "C6/5":{$sizes = array( 323.15, 649.13);break;} // ISO 269, 114 mm x 229 mm. A5 folded twice = 1/3 A4. Alternative for the DL envelope
+				case "C6":  {$sizes = array( 323.15, 459.21);break;} // ISO 269, 114 mm x 162 mm, For A5 folded in half
+				case "C7/6":{$sizes = array( 229.61, 459.21);break;} // ISO 269, 81 mm x 162 mm, For A5 sheet folded in thirds
+				case "C7":  {$sizes = array( 229.61, 323.15);break;} // ISO 269, 81 mm x 114 mm, For A5 folded in quarters
+				case "C8":  {$sizes = array( 161.57, 229.61);break;} // ISO 269, 57 mm x 81 mm
+				case "C9":  {$sizes = array( 113.39, 161.57);break;} // ISO 269, 40 mm x 57 mm
+				case "C10": {$sizes = array(  79.37, 113.39);break;} // ISO 269, 28 mm x 40 mm
+				case "DL":  {$sizes = array( 311.81, 623.62);break;} // Original DIN 678 but ISO 269 now has this C6/5 , 110 mm x 220 mm, For A4 sheet folded in thirds, A5 in half
 				// Untrimmed stock sizes for the ISO-A Series - ISO primary range
-				case "RA0":	{$sizes = array(2437.80,3458.27);break;}	// ISO 478, 860 mm x 1220 mm
-				case "RA1":	{$sizes = array(1729.13,2437.80);break;}	// ISO 478, 610 mm x 860 mm
-				case "RA2":	{$sizes = array(1218.90,1729.13);break;}	// ISO 478, 430 mm x 610 mm
-				case "RA3":	{$sizes = array(864.57,1218.90);break;}	// ISO 478, 305 mm x 430 mm
-				case "RA4":	{$sizes = array(609.45,864.57);break;}	// ISO 478, 215 mm x 305 mm
+				case "RA0": {$sizes = array(2437.80,3458.27);break;} // ISO 478, 860 mm x 1220 mm
+				case "RA1": {$sizes = array(1729.13,2437.80);break;} // ISO 478, 610 mm x 860 mm
+				case "RA2": {$sizes = array(1218.90,1729.13);break;} // ISO 478, 430 mm x 610 mm
+				case "RA3": {$sizes = array( 864.57,1218.90);break;} // ISO 478, 305 mm x 430 mm
+				case "RA4": {$sizes = array( 609.45, 864.57);break;} // ISO 478, 215 mm x 305 mm
 				// Untrimmed stock sizes for the ISO-A Series - ISO supplementary range
-				case "SRA0":	{$sizes = array(2551.18,3628.35);break;}	// ISO 593, 900 mm x 1280 mm
-				case "SRA1":	{$sizes = array(1814.17,2551.18);break;}	// ISO 593, 640 mm x 900 mm
-				case "SRA2":	{$sizes = array(1275.59,1814.17);break;}	// ISO 593, 450 mm x 640 mm
-				case "SRA3":	{$sizes = array(907.09,1275.59);break;}	// ISO 593, 320 mm x 450 mm
-				case "SRA4":	{$sizes = array(637.80,907.09);break;}	// ISO 593, 225 mm x 320 mm
+				case "SRA0": {$sizes = array(2551.18,3628.35);break;} // ISO 593, 900 mm x 1280 mm
+				case "SRA1": {$sizes = array(1814.17,2551.18);break;} // ISO 593, 640 mm x 900 mm
+				case "SRA2": {$sizes = array(1275.59,1814.17);break;} // ISO 593, 450 mm x 640 mm
+				case "SRA3": {$sizes = array( 907.09,1275.59);break;} // ISO 593, 320 mm x 450 mm
+				case "SRA4": {$sizes = array( 637.80, 907.09);break;} // ISO 593, 225 mm x 320 mm
 				// ISO size variations
-				case "A2EXTRA":	{$sizes = array(1261.42,1754.65);break;}	// ISO 216, 445 mm x 619 mm
-				case "A2SUPER":	{$sizes = array(864.57,1440.00);break;}	// ISO 216, 305 mm x 508 mm
-				case "A3EXTRA":	{$sizes = array(912.76,1261.42);break;}	// ISO 216, 322 mm x 445 mm
-				case "SUPERA3":	{$sizes = array(864.57,1380.47);break;}	// ISO 216, 305 mm x 487 mm
-				case "A4EXTRA":	{$sizes = array(666.14,912.76);break;}	// ISO 216, 235 mm x 322 mm
-				case "A4LONG":	{$sizes = array(595.28,986.46);break;}	// ISO 216, 210 mm x 348 mm
-				case "A4SUPER":	{$sizes = array(649.13,912.76);break;}	// ISO 216, 229 mm x 322 mm
-				case "SUPERA4":	{$sizes = array(643.46,1009.13);break;}	// ISO 216, 227 mm x 356 mm
-				case "A5EXTRA":	{$sizes = array(490.39,666.14);break;}	// ISO 216, 173 mm x 235 mm
-				case "SOB5EXTRA":	{$sizes = array(572.60,782.36);break;}	// ISO 216, 202 mm x 276 mm
+				case "A2EXTRA":  {$sizes = array(1261.42,1754.65);break;} // ISO 216, 445 mm x 619 mm
+				case "A2SUPER":  {$sizes = array( 864.57,1440.00);break;} // ISO 216, 305 mm x 508 mm
+				case "A3EXTRA":  {$sizes = array( 912.76,1261.42);break;} // ISO 216, 322 mm x 445 mm
+				case "SUPERA3":  {$sizes = array( 864.57,1380.47);break;} // ISO 216, 305 mm x 487 mm
+				case "A4EXTRA":  {$sizes = array( 666.14, 912.76);break;} // ISO 216, 235 mm x 322 mm
+				case "A4LONG":   {$sizes = array( 595.28, 986.46);break;} // ISO 216, 210 mm x 348 mm
+				case "A4SUPER":  {$sizes = array( 649.13, 912.76);break;} // ISO 216, 229 mm x 322 mm
+				case "SUPERA4":  {$sizes = array( 643.46,1009.13);break;} // ISO 216, 227 mm x 356 mm
+				case "A5EXTRA":  {$sizes = array( 490.39, 666.14);break;} // ISO 216, 173 mm x 235 mm
+				case "SOB5EXTRA":{$sizes = array( 572.60, 782.36);break;} // ISO 216, 202 mm x 276 mm
 				// Japanese version of the ISO 216 B series
-				case "JB0":	{$sizes = array(2919.69,4127.24);break;}	// JIS P 0138-61, 1030 mm x 1456 mm
-				case "JB1":	{$sizes = array(2063.62,2919.69);break;}	// JIS P 0138-61, 728 mm x 1030 mm
-				case "JB2":	{$sizes = array(1459.84,2063.62);break;}	// JIS P 0138-61, 515 mm x 728 mm
-				case "JB3":	{$sizes = array(1031.81,1459.84);break;}	// JIS P 0138-61, 364 mm x 515 mm
-				case "JB4":	{$sizes = array(728.50,1031.81);break;}	// JIS P 0138-61, 257 mm x 364 mm
-				case "JB5":	{$sizes = array(515.91,728.50);break;}	// JIS P 0138-61, 182 mm x 257 mm
-				case "JB6":	{$sizes = array(362.83,515.91);break;}	// JIS P 0138-61, 128 mm x 182 mm
-				case "JB7":	{$sizes = array(257.95,362.83);break;}	// JIS P 0138-61, 91 mm x 128 mm
-				case "JB8":	{$sizes = array(181.42,257.95);break;}	// JIS P 0138-61, 64 mm x 91 mm
-				case "JB9":	{$sizes = array(127.56,181.42);break;}	// JIS P 0138-61, 45 mm x 64 mm
-				case "JB10":{$sizes = array(90.71,127.56);break;}	// JIS P 0138-61, 32 mm x 45 mm
+				case "JB0": {$sizes = array(2919.69,4127.24);break;} // JIS P 0138-61, 1030 mm x 1456 mm
+				case "JB1": {$sizes = array(2063.62,2919.69);break;} // JIS P 0138-61, 728 mm x 1030 mm
+				case "JB2": {$sizes = array(1459.84,2063.62);break;} // JIS P 0138-61, 515 mm x 728 mm
+				case "JB3": {$sizes = array(1031.81,1459.84);break;} // JIS P 0138-61, 364 mm x 515 mm
+				case "JB4": {$sizes = array( 728.50,1031.81);break;} // JIS P 0138-61, 257 mm x 364 mm
+				case "JB5": {$sizes = array( 515.91, 728.50);break;} // JIS P 0138-61, 182 mm x 257 mm
+				case "JB6": {$sizes = array( 362.83, 515.91);break;} // JIS P 0138-61, 128 mm x 182 mm
+				case "JB7": {$sizes = array( 257.95, 362.83);break;} // JIS P 0138-61, 91 mm x 128 mm
+				case "JB8": {$sizes = array( 181.42, 257.95);break;} // JIS P 0138-61, 64 mm x 91 mm
+				case "JB9": {$sizes = array( 127.56, 181.42);break;} // JIS P 0138-61, 45 mm x 64 mm
+				case "JB10":{$sizes = array(  90.71, 127.56);break;} // JIS P 0138-61, 32 mm x 45 mm
 				// US pages
-				case "EXECUTIVE":	{$sizes = array(522.00,756.00);	break;}	// 7.25 in x 10.5 in
-				case "FOLIO":	{$sizes = array(612.00,936.00);		break;}	// 8.5 in x 13 in
-				case "FOOLSCAP":{$sizes = array(972.00,1224.00);	break;}	// 13.5 in x 17 in
-				case "LEDGER":	{$sizes = array(792.00,1224.00);	break;}	// 11 in x 17 in
-				case "LEGAL":	{$sizes = array(612.00,1008.00);	break;}	// 8.5 in x 14 in
-				case "LETTER":	{$sizes = array(612.00,792.00);		break;}	// 8.5 in x 11 in
-				case "QUARTO":	{$sizes = array(609.12,777.5);		break;}	// 8.46 in x 10.8 in
-				case "STATEMENT":	{$sizes = array(396.00,612.00);	break;}	// 5.5 in x 8.5 in
-				case "USGOVT":	{$sizes = array(576.00,792.00);		break;}	// 8 in x 11 in
+				case "EXECUTIVE": {$sizes = array(522.00, 756.00); break;} // 7.25 in x 10.5 in
+				case "FOLIO":     {$sizes = array(612.00, 936.00); break;} // 8.5 in x 13 in
+				case "FOOLSCAP":  {$sizes = array(972.00,1224.00); break;} // 13.5 in x 17 in
+				case "LEDGER":    {$sizes = array(792.00,1224.00); break;} // 11 in x 17 in
+				case "LEGAL":     {$sizes = array(612.00,1008.00); break;} // 8.5 in x 14 in
+				case "LETTER":    {$sizes = array(612.00, 792.00); break;} // 8.5 in x 11 in
+				case "QUARTO":    {$sizes = array(609.12, 777.50); break;} // 8.46 in x 10.8 in
+				case "STATEMENT": {$sizes = array(396.00, 612.00); break;} // 5.5 in x 8.5 in
+				case "USGOVT":    {$sizes = array(576.00, 792.00); break;} // 8 in x 11 in
 			}
 			$this->pagew = $sizes[0];
 			$this->pageh = $sizes[1];
@@ -476,8 +476,8 @@ class Element {
 	* @param &$renderer
 	*/
 	function render(&$renderer) {
-//		print "Nothing rendered.  Something bad happened";
-//		debug_print_backtrace();
+		//print "Nothing rendered.  Something bad happened";
+		//debug_print_backtrace();
 		//-- to be implemented in inherited classes
 		return 0;
 	}
@@ -1037,8 +1037,7 @@ class Footnote extends Element {
 
 	function setNum($n) {
 		$this->num = $n;
-//@@		$this->numText = "$n";
-		$this->numText = "$n "; //@@ source numbers
+		$this->numText = "$n ";
 		return 0;
 	}
 

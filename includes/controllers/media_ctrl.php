@@ -323,7 +323,7 @@ class MediaController extends BaseController{
 
 		$facts = $this->mediaobject->getFacts($ignore);
 		sort_facts($facts);
-//		if ($includeFileName) $facts[] = new Event("1 FILE ".$this->mediaobject->getFilename());
+		//if ($includeFileName) $facts[] = new Event("1 FILE ".$this->mediaobject->getFilename());
 		$mediaType = $this->mediaobject->getMediatype();
 		if (array_key_exists($mediaType, $MEDIA_TYPES)) $facts[] = new Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
 		else $facts[] = new Event("1 TYPE ".i18n::translate('Other'));
@@ -398,6 +398,4 @@ class MediaController extends BaseController{
 	function getServerFilename() {
 		return $this->mediaobject->getServerFilename();
 	}
-
 }
-

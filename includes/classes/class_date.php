@@ -355,7 +355,7 @@ class CalendarDate {
 
 	// Convert a date from one calendar to another.
 	function convert_to_cal($calendar) {
-  	switch ($calendar) {
+		switch ($calendar) {
 		case 'gregorian':
 			return new GregorianDate($this);
 		case 'julian':
@@ -565,7 +565,7 @@ class CalendarDate {
 	// Convert a decimal number to roman numerals
 	static function NumToRoman($num) {
 		static $lookup=array(1000=>'M', '900'=>'CM', '500'=>'D', 400=>'CD', 100=>'C', 90=>'XC', 50=>'L', 40=>'XL', 10=>'X', 9=>'IX', 5=>'V', 4=>'IV', 1=>'I');
-  	if ($num<1) return $num;
+		if ($num<1) return $num;
 		$roman='';
 		foreach ($lookup as $key=>$value)
 			while ($num>=$key) {
@@ -1047,8 +1047,8 @@ class HebrewDate extends JewishDate {
 		if ($singleDigitYear == true) {
 			$sb .= self::GERSH; //append single quote
 		} else { // append double quote before last digit
-        	$pos1 = strlen($sb)-2;
- 			$sb = substr($sb, 0, $pos1) . self::GERSHAYIM . substr($sb, $pos1);
+			$pos1 = strlen($sb)-2;
+			$sb = substr($sb, 0, $pos1) . self::GERSHAYIM . substr($sb, $pos1);
 			$sb = str_replace(self::GERSHAYIM . self::GERSHAYIM, self::GERSHAYIM, $sb); //replace double gershayim with single instance
 		}
 		return $sb;

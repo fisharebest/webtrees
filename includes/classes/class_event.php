@@ -42,11 +42,11 @@ require_once WT_ROOT.'includes/classes/class_date.php';
  *
  */
 class Event {
-//	These objects need further refinement in their implementations and parsing
-//	var $address = null;
-//	var $notes = array(); //[0..*]: string
-//	var $sourceCitations = array(); //[0..*]: SourceCitation
-//	var $multimediaLinks = array(); //[0..*]: MultimediaLink
+// These objects need further refinement in their implementations and parsing
+// var $address = null;
+// var $notes = array(); //[0..*]: string
+// var $sourceCitations = array(); //[0..*]: SourceCitation
+// var $multimediaLinks = array(); //[0..*]: MultimediaLink
 
 	var $lineNumber = null;
 	var $canShow = null;
@@ -263,8 +263,8 @@ class Event {
 	/**
 	 * Print a simple fact version of this event
 	 *
-	 * @param boolean $return	whether to print or return
-	 * @param boolean $anchor	whether to add anchor to date and place
+	 * @param boolean $return whether to print or return
+	 * @param boolean $anchor whether to add anchor to date and place
 	 */
 	function print_simple_fact($return=false, $anchor=false) {
 		global $SHOW_PEDIGREE_PLACES, $ABBREVIATE_CHART_LABELS;
@@ -367,7 +367,6 @@ class Event {
 				$ret = Event::CompareType($a, $b);
 			}
 		}
-//		print "[".$a->getTag().":".$adate->isOK().":".$adate->MinJD()."-".$adate->MaxJD()." ".$b->getTag().":".$bdate->isOK().":".$bdate->MinJD()."-".$bdate->MaxJD()." ".$ret."] ";
 		return $ret;
 	}
 
@@ -480,4 +479,3 @@ class Event {
 		return $ret;
 	}
 }
-?>

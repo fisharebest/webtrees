@@ -137,7 +137,7 @@ class Menu {
 			return "\t".'<li class="separator"><span></span></li>'."\n";
 		}
 		if ($this->link) {
-			if ($this->target !== null)	{
+			if ($this->target !== null) {
 				$link .= ' target="'.$this->target.'"';
 			}
 			if ($this->link=='#') {

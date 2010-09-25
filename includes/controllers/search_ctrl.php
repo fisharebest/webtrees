@@ -5,7 +5,7 @@
 // Copyright (C) 2010 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009	PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ class SearchController extends BaseController {
 	var $multiTotalResults = -1;
 	var $query;
 	var $myquery = "";
-//	var $soundex = "Russell";
+	//var $soundex = "Russell";
 	var $soundex = "DaitchM";
 	var $subaction = "";
 	var $nameprt = "";
@@ -364,7 +364,7 @@ class SearchController extends BaseController {
 	}
 
 	/**
-	 * 	Gathers results for a general search
+	 * Gathers results for a general search
 	 */
 	function GeneralSearch() {
 		global $GEDCOM;
@@ -500,12 +500,12 @@ class SearchController extends BaseController {
 			} else {
 				if($this->replaceNames) {
 					foreach($name_tags as $f=>$tag) {
-						$newRecord = preg_replace("~(\d) ".$tag." (.*)".$oldquery."(.*)~i",	"$1 ".$tag." $2".$this->replace."$3", $newRecord);
+						$newRecord = preg_replace("~(\d) ".$tag." (.*)".$oldquery."(.*)~i", "$1 ".$tag." $2".$this->replace."$3", $newRecord);
 					}
 				}
 				if($this->replacePlaces) {
-					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i',	"$1 PLAC $2$3".$this->replace."$4",$newRecord);
-					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i",	"$1 PLAC $2".$this->replace."$3",$newRecord);
+					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
+					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
@@ -526,8 +526,8 @@ class SearchController extends BaseController {
 			}
 			else {
 				if($this->replacePlaces) {
-					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i',	"$1 PLAC $2$3".$this->replace."$4",$newRecord);
-					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i",	"$1 PLAC $2".$this->replace."$3",$newRecord);
+					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
+					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
@@ -547,18 +547,18 @@ class SearchController extends BaseController {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
 				if($this->replaceNames) {
-					$newRecord = preg_replace("~(\d) TITL (.*)".$oldquery."(.*)~i",	"$1 TITL $2".$this->replace."$3", $newRecord);
-					$newRecord = preg_replace("~(\d) ABBR (.*)".$oldquery."(.*)~i",	"$1 ABBR $2".$this->replace."$3", $newRecord);
+					$newRecord = preg_replace("~(\d) TITL (.*)".$oldquery."(.*)~i", "$1 TITL $2".$this->replace."$3", $newRecord);
+					$newRecord = preg_replace("~(\d) ABBR (.*)".$oldquery."(.*)~i", "$1 ABBR $2".$this->replace."$3", $newRecord);
 				}
 				if($this->replacePlaces) {
-					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i',	"$1 PLAC $2$3".$this->replace."$4",$newRecord);
-					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i",	"$1 PLAC $2".$this->replace."$3",$newRecord);
+					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
+					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if($newRecord != $oldRecord) {
 				replace_gedrec($source->getXref(), WT_GED_ID, $newRecord);
-			}	else {
+			} else {
 				unset($this->mysourcelist[$id]);
 			}
 		}
@@ -574,14 +574,14 @@ class SearchController extends BaseController {
 			//-- if the record changed replace the record otherwise remove it from the search results
 			if($newRecord != $oldRecord) {
 				replace_gedrec($note->getXref(), WT_GED_ID, $newRecord);
-			}	else {
+			} else {
 				unset($this->mynotelist[$id]);
 			}
 		}
 	}
 
 	/**
-	 * 	Gathers results for a soundex search
+	 *  Gathers results for a soundex search
 	 *
 	 *  TODO
 	 *  ====
@@ -718,7 +718,7 @@ class SearchController extends BaseController {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGES;
 
-		$somethingPrinted = false;	// whether anything printed
+		$somethingPrinted = false; // whether anything printed
 		// ---- section to search and display results on a general keyword search
 		if ($this->action=="general" || $this->action=="soundex" || $this->action=="replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
@@ -917,7 +917,7 @@ class SearchController extends BaseController {
 				$this->printPageResultsLinks($this->inputFieldNames, $this->totalResults, $this->multiResultsPerPage);
 			}
 		}
-		return $somethingPrinted;	// whether anything printed
+		return $somethingPrinted; // whether anything printed
 	}
 
 	/************************************************   Helper Methods ****************************************************************/

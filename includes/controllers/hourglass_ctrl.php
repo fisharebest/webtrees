@@ -202,7 +202,6 @@ class HourglassController extends BaseController {
 			$tablealign = "left";
 			$otablealign = "right";
 		}
-		//	print $this->dgenerations;
 		print "<!-- print_descendency for $pid -->";
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
@@ -494,37 +493,37 @@ class HourglassController extends BaseController {
 	}
 
 	// Hourglass control..... Ajax arrows at the end of chart
- 	function ChangeDiv(div_id, ARID, full, spouse, width) {
- 		var divelement = document.getElementById(div_id);
- 		var oXmlHttp = createXMLHttp();
- 		oXmlHttp.open("get", "hourglass_ajax.php?show_full="+full+"&pid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
- 		oXmlHttp.onreadystatechange=function()
- 		{
-  			if (oXmlHttp.readyState==4)
-   			{
-    			divelement.innerHTML = oXmlHttp.responseText;
-    			sizeLines();
-    		}
-   		};
-  		oXmlHttp.send(null);
-  		return false;
+	function ChangeDiv(div_id, ARID, full, spouse, width) {
+		var divelement = document.getElementById(div_id);
+		var oXmlHttp = createXMLHttp();
+		oXmlHttp.open("get", "hourglass_ajax.php?show_full="+full+"&pid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
+		oXmlHttp.onreadystatechange=function()
+		{
+			if (oXmlHttp.readyState==4)
+			{
+				divelement.innerHTML = oXmlHttp.responseText;
+				sizeLines();
+			}
+		};
+		oXmlHttp.send(null);
+		return false;
 	}
 
 	// Hourglass control..... Ajax arrows at the end of descendants chart
 	function ChangeDis(div_id, ARID, full, spouse, width) {
- 		var divelement = document.getElementById(div_id);
- 		var oXmlHttp = createXMLHttp();
- 		oXmlHttp.open("get", "hourglass_ajax.php?type=desc&show_full="+full+"&pid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
- 		oXmlHttp.onreadystatechange=function()
- 		{
-  			if (oXmlHttp.readyState==4)
-   			{
-    				divelement.innerHTML = oXmlHttp.responseText;
-    				sizeLines();
-    		}
-   		};
-  		oXmlHttp.send(null);
-  		return false;
+		var divelement = document.getElementById(div_id);
+		var oXmlHttp = createXMLHttp();
+		oXmlHttp.open("get", "hourglass_ajax.php?type=desc&show_full="+full+"&pid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
+		oXmlHttp.onreadystatechange=function()
+		{
+			if (oXmlHttp.readyState==4)
+			{
+				divelement.innerHTML = oXmlHttp.responseText;
+				sizeLines();
+			}
+		};
+		oXmlHttp.send(null);
+		return false;
 	}
 
 	function sizeLines() {
@@ -557,5 +556,4 @@ class HourglassController extends BaseController {
 </script>
 <?php
 }
-
 }

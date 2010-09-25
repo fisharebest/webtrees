@@ -38,7 +38,7 @@ require_once WT_ROOT.'includes/classes/class_serviceclient.php';
 class LocalClient extends ServiceClient {
 	/**
 	 * constructor
-	 * @param string $gedrec	the gedcom record
+	 * @param string $gedrec the gedcom record
 	 */
 	function __construct($gedrec) {
 		parent::__construct($gedrec);
@@ -54,7 +54,7 @@ class LocalClient extends ServiceClient {
 
 	/**
 	 * Get a record from the remote site
-	 * @param string $remoteid	the id of the record to get
+	 * @param string $remoteid the id of the record to get
 	 */
 	function getRemoteRecord($remoteid) {
 		$rec = find_gedcom_record($remoteid, WT_GED_ID);
@@ -64,10 +64,10 @@ class LocalClient extends ServiceClient {
 
 	/**
 	 * merge a local gedcom record with the information from the remote site
-	 * @param string $xref		the remote ID to merge with
-	 * @param string $localrec	the local gedcom record to merge the remote record with
-	 * @param boolean $isStub	whether or not this is a stub record
-	 * @param boolean $firstLink	is this the first time this record is being linked
+	 * @param string $xref the remote ID to merge with
+	 * @param string $localrec the local gedcom record to merge the remote record with
+	 * @param boolean $isStub whether or not this is a stub record
+	 * @param boolean $firstLink is this the first time this record is being linked
 	 */
 	function mergeGedcomRecord($xref, $localrec, $isStub=false, $firstLink=false) {
 		//-- get the record from the database
@@ -136,4 +136,3 @@ class LocalClient extends ServiceClient {
 		return $return;
 	}
 }
-?>

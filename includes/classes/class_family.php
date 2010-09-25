@@ -154,7 +154,7 @@ class Family extends GedcomRecord {
 
 	/**
 	 * get the children
-	 * @return array 	array of children Persons
+	 * @return array array of children Persons
 	 */
 	function getChildren() {
 		if (!$this->children_loaded) $this->loadChildren();
@@ -163,7 +163,7 @@ class Family extends GedcomRecord {
 
 	/**
 	 * get the children ids
-	 * @return array 	array of children ids
+	 * @return array array of children ids
 	 */
 	function getChildrenIds() {
 		if (!$this->children_loaded) $this->loadChildren();
@@ -199,7 +199,7 @@ class Family extends GedcomRecord {
 
 	/**
 	 * get the number of children in this family
-	 * @return int 	the number of children
+	 * @return int the number of children
 	 */
 	function getNumberOfChildren() {
 

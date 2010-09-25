@@ -53,7 +53,7 @@ class TreeNav {
 	function __construct($rootid='', $name='nav', $zoom=0) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		$SHOW_PRIVATE_RELATIONSHIPS = true;		// Interactive Tree doesn't work if this is "false"
+		$SHOW_PRIVATE_RELATIONSHIPS = true; // Interactive Tree doesn't work if this is "false"
 
 		if ($rootid!='none') {
 			$rootid = check_rootid($rootid);
@@ -413,7 +413,7 @@ class TreeNav {
 		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = $person->findHighlightedMedia();
 			if (!empty($object)) {
-				$whichFile = thumb_or_main($object);	// Do we send the main image or a thumbnail?
+				$whichFile = thumb_or_main($object); // Do we send the main image or a thumbnail?
 				$size = findImageSize($whichFile);
 				$class = "pedigree_image_portrait";
 				if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
@@ -680,4 +680,3 @@ class TreeNav {
 		<?php
 	}
 }
-?>

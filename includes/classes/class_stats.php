@@ -128,7 +128,7 @@ class stats {
 						$out .= "<td class=\"list_value_wrap\" align=\"{$alignRes}\" valign=\"top\">{$v}</td>";
 						$out .= "</tr>\n";
 					}
-		$out .=	'</table>';
+		$out .= '</table>';
 		return $out;
 	}
 

@@ -5,7 +5,7 @@
 // Copyright (C) 2010 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2009	PGV Development Team. All rights reserved.
+// Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -405,17 +405,17 @@ class AdvancedSearchController extends SearchController {
 				$liketmp='';
 				for($j=0; $j<$ct; $j++) {
 					$liketmp.= "%".($j+1)." ".$parts[$j]." %";
-//					if ($j<$ct-1) {
-//						$sqlwhere .= "%";
-//					} else {
+					//if ($j<$ct-1) {
+						//$sqlwhere .= "%";
+					//} else {
 						$liketmp .= "%{$value}%";
-//				}
+					//}
 				}
 				$sqlwhere .= WT_DB::quote($liketmp);
 			}
 		}
 		$sql = $sqlfields.$sqltables.$sqlwhere;
-//		print $sql;
+		//print $sql;
 		if ($justSql) return $sql;
 		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row){

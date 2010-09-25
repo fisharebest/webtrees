@@ -68,7 +68,7 @@ class PedigreeController extends BaseController {
 		$this->talloffset=safe_GET('talloffset', array('0', '1', '2', '3'), $PEDIGREE_LAYOUT);
 		$this->PEDIGREE_GENERATIONS=safe_GET_integer('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
-		if ($this->talloffset==1) $this->talloffset=1;		// Make SURE this is an integer
+		if ($this->talloffset==1) $this->talloffset=1; // Make SURE this is an integer
 		if ($this->talloffset>1 && $this->PEDIGREE_GENERATIONS>8) $this->PEDIGREE_GENERATIONS=8;
 
 		// TODO: some library functions expect this as a global.
@@ -77,7 +77,7 @@ class PedigreeController extends BaseController {
 		$PEDIGREE_GENERATIONS=$this->PEDIGREE_GENERATIONS;
 
 		// This is passed as a global.  A parameter would be better...
-		$this->show_full = ($this->show_full) ? 1 : 0;		// Make SURE this is an integer
+		$this->show_full = ($this->show_full) ? 1 : 0; // Make SURE this is an integer
 		if ($this->talloffset>3) {
 			$this->talloffset=3;
 		} elseif ($this->talloffset<0) {
@@ -148,10 +148,10 @@ class PedigreeController extends BaseController {
 			}
 		}
 		// -- this next section will create and position the DIV layers for the pedigree tree
-		$this->curgen = 1;			// -- variable to track which generation the algorithm is currently working on
-		$this->yoffset=0;				// -- used to offset the position of each box as it is generated
+		$this->curgen = 1;    // -- variable to track which generation the algorithm is currently working on
+		$this->yoffset=0;     // -- used to offset the position of each box as it is generated
 		$this->xoffset=0;
-		$this->prevyoffset=0;		// -- used to track the y position of the previous box
+		$this->prevyoffset=0; // -- used to track the y position of the previous box
 		$this->offsetarray = array();
 		$this->minyoffset = 0;
 		if ($this->treesize<3) $this->treesize=3;
@@ -173,7 +173,7 @@ class PedigreeController extends BaseController {
 				$genoffset = pow(2, $this->curgen-1);
 				$boxspacing = $this->pbwidth+$byspacing;
 			}
-			// -- calculate the yoffset		Position in the generation		Spacing between boxes		put child between parents
+			// -- calculate the yoffset Position in the generation Spacing between boxes put child between parents
 			$this->yoffset = $baseyoffset+($boxpos * ($boxspacing * $genoffset))+(($boxspacing/2)*$genoffset)+($boxspacing * $genoffset);
 			// -- calculate the xoffset
 			if ($this->talloffset==0) {
@@ -216,7 +216,7 @@ class PedigreeController extends BaseController {
 			else if ($this->talloffset==1) {
 				$this->xoffset = 10 + $basexoffset + (($this->PEDIGREE_GENERATIONS - $this->curgen) * ($this->pbwidth+$bxspacing));
 				if ($this->curgen == $this->PEDIGREE_GENERATIONS) $this->xoffset += 10;
-				if ($this->PEDIGREE_GENERATIONS<4)	$this->xoffset += 60;
+				if ($this->PEDIGREE_GENERATIONS<4) $this->xoffset += 60;
 			}
 			else if ($this->talloffset==2) {
 				if ($this->show_full) $this->xoffset = ($this->curgen) * (($this->pbwidth+$bxspacing) / 2)+($this->curgen)*10+136.5;
@@ -252,7 +252,7 @@ class PedigreeController extends BaseController {
 
 	/**
 	 * return the title of this page
-	 * @return string	the title of the page to go in the <title> tags
+	 * @return string the title of the page to go in the <title> tags
 	 */
 	function getPageTitle() {
 		return $this->getPersonName()." ".i18n::translate('Pedigree Tree');

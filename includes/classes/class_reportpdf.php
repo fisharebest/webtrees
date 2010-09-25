@@ -99,7 +99,7 @@ class ReportBasePDF extends ReportBase {
 		}
 		$this->pdf->SetCreator($appversion." (".parent::pgv_url.")");
 		// Not implemented yet - ReportBase::setup()
-//		$this->pdf->SetAuthor($this->rauthor);
+		//$this->pdf->SetAuthor($this->rauthor);
 		$this->pdf->SetTitle($this->title);
 		$this->pdf->SetSubject($this->rsubject);
 		$this->pdf->SetKeywords($this->rkeywords);
@@ -661,7 +661,7 @@ class CellPDF extends Cell {
 		* Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
 		* This is the bugfree version
 		*/
-		$cX = 0;	// Class Left
+		$cX = 0; // Class Left
 
 		// Set up the text style
 		if (($pdf->getCurrentStyle()) != ($this->styleName)) {
@@ -924,10 +924,10 @@ class TextBoxPDF extends TextBox {
 		* Repeted classes would reupdate all their class variables again, Header/Page Header/Footer
 		* This is the bugfree version
 		*/
-		$cH = 0;	// Class Height
-		$cW = 0;	// Class Width
-		$cX = 0;	// Class Left
-		$cY = 0;	// Class Top
+		$cH = 0; // Class Height
+		$cW = 0; // Class Width
+		$cX = 0; // Class Left
+		$cY = 0; // Class Top
 		// Used with line breaks and cell height calculation within this box
 		$pdf->largestFontHeight = 0;
 
@@ -990,14 +990,14 @@ class TextBoxPDF extends TextBox {
 				if ($w > $cWT) {
 					$w = $lw[0];
 				}
-//	Footnote is at the bottom of the page. No need to calculate it's height or wrap the text!
-//	We are changing the margins anyway!
+				// Footnote is at the bottom of the page. No need to calculate it's height or wrap the text!
+				// We are changing the margins anyway!
 				// For anything else but text (images), get the height
 				$eH += $this->elements[$i]->getHeight($pdf);
 			}
-//			else {
-//				$h += $pdf->getFootnotesHeight();
-//			}
+			//else {
+				//$h += $pdf->getFootnotesHeight();
+			//}
 		}
 
 		// Add up what's the final height
@@ -1037,14 +1037,14 @@ class TextBoxPDF extends TextBox {
 		}
 
 		// Setup the border and background color
-		$cS	= "";	// Class Style
-		if ($this->border) $cS = "D";		// D or empty string: Draw (default)
+		$cS = ""; // Class Style
+		if ($this->border) $cS = "D"; // D or empty string: Draw (default)
 		$match = array();
 		// Fill the background
 		if ($this->fill) {
 			if (!empty($this->bgcolor)) {
 				if (preg_match("/#?(..)(..)(..)/", $this->bgcolor, $match)) {
-					$cS .= "F";			// F: Fill the background
+					$cS .= "F"; // F: Fill the background
 					$r = hexdec($match[1]);
 					$g = hexdec($match[2]);
 					$b = hexdec($match[3]);
@@ -1306,7 +1306,7 @@ class FootnotePDF extends Footnote {
 		}
 		$temptext = spanLTRRTL($temptext, "BOTH");
 		$pdf->writeHTML($temptext."<br/>", true, false, true, false, "");
-//		$pdf->Write($pdf->getCurrentStyleHeight(), $this->num.". ".$temptext."\n\n"); //@@ indi list of sources
+		//$pdf->Write($pdf->getCurrentStyleHeight(), $this->num.". ".$temptext."\n\n"); //@@ indi list of sources
 	}
 
 	/**
@@ -1316,13 +1316,13 @@ class FootnotePDF extends Footnote {
 	* @return float $h
 	*/
 	function getFootnoteHeight(&$pdf) {
-//		$style = $pdf->getStyle($this->styleName);
-//		$ct = substr_count($this->numText, "\n");
-//		if ($ct > 0) {
-//			$ct += 1;
-//		}
-//		$h = ($style["size"] * $ct);
-//		return $h;
+		//$style = $pdf->getStyle($this->styleName);
+		//$ct = substr_count($this->numText, "\n");
+		//if ($ct > 0) {
+			//$ct += 1;
+		//}
+		//$h = ($style["size"] * $ct);
+		//return $h;
 		return 0;
 	}
 
@@ -1544,5 +1544,3 @@ class LinePDF extends Line {
 		$pdf->Line($this->x1, $this->y1, $this->x2, $this->y2);
 	}
 }
-
-?>

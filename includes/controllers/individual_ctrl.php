@@ -300,7 +300,7 @@ class IndividualController extends BaseController {
 		if ($this->canShowHighlightedObject()) {
 			$firstmediarec = $this->indi->findHighlightedMedia();
 			if (!empty($firstmediarec)) {
-				$filename = thumb_or_main($firstmediarec);		// Do we send the main image or a thumbnail?
+				$filename = thumb_or_main($firstmediarec); // Do we send the main image or a thumbnail?
 				if (!$USE_THUMBS_MAIN || $firstmediarec["_THUM"]=='Y') {
 					$class = "image";
 				} else {
@@ -464,10 +464,8 @@ class IndividualController extends BaseController {
 			echo '</dd>';
 			echo '</dl>';
 			// -- find sources
-	//		print "&nbsp;&nbsp;&nbsp;";
 			print_fact_sources($event->getGedComRecord(), 2);
 			//-- find the notes
-	//		print "&nbsp;&nbsp;&nbsp;";
 			print_fact_notes($event->getGedComRecord(), 2);
 		echo '</div>';
 	}
@@ -854,9 +852,9 @@ class IndividualController extends BaseController {
 				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
 				$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
 				if ($pedi) {
-					if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= "<br />(".$PEDI_CODES_F[$pedi].")";
-					else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= "<br />(".$PEDI_CODES_M[$pedi].")";
-					else if (isset($PEDI_CODES[$pedi]))					$label .= "<br />(".$PEDI_CODES[$pedi].")";
+					if ($sex=="F" && isset($PEDI_CODES[$pedi]))      $label .= "<br />(".$PEDI_CODES_F[$pedi].")";
+					else if ($sex=="M" && isset($PEDI_CODES[$pedi])) $label .= "<br />(".$PEDI_CODES_M[$pedi].")";
+					else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
 				}
 				$children[$i]->setLabel($label);
 			}
@@ -873,9 +871,9 @@ class IndividualController extends BaseController {
 		}
 			if ($newchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= "<br />(".$PEDI_CODES_F[$pedi].")";
-			else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= "<br />(".$PEDI_CODES_M[$pedi].")";
-			else if (isset($PEDI_CODES[$pedi]))					$label .= "<br />(".$PEDI_CODES[$pedi].")";
+			if ($sex=="F" && isset($PEDI_CODES[$pedi]))      $label .= "<br />(".$PEDI_CODES_F[$pedi].")";
+			else if ($sex=="M" && isset($PEDI_CODES[$pedi])) $label .= "<br />(".$PEDI_CODES_M[$pedi].")";
+			else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
 			$newchildren[$i]->setLabel($label);
 		}
 		$num = count($delchildren);
@@ -890,9 +888,9 @@ class IndividualController extends BaseController {
 			}
 			if ($delchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if ($sex=="F" && isset($PEDI_CODES[$pedi]))			$label .= "<br />(".$PEDI_CODES_F[$pedi].")";
-			else if ($sex=="M" && isset($PEDI_CODES[$pedi]))	$label .= "<br />(".$PEDI_CODES_M[$pedi].")";
-			else if (isset($PEDI_CODES[$pedi]))					$label .= "<br />(".$PEDI_CODES[$pedi].")";
+			if ($sex=="F" && isset($PEDI_CODES[$pedi]))      $label .= "<br />(".$PEDI_CODES_F[$pedi].")";
+			else if ($sex=="M" && isset($PEDI_CODES[$pedi])) $label .= "<br />(".$PEDI_CODES_M[$pedi].")";
+			else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
 			$delchildren[$i]->setLabel($label);
 		}
 		if (!is_null($newhusb)) $people['newhusb'] = $newhusb;
@@ -920,5 +918,4 @@ class IndividualController extends BaseController {
 // -----------------------------------------------------------------------------
 // End GedFact Assistant Functions
 // -----------------------------------------------------------------------------
-
 }

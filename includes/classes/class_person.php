@@ -1003,7 +1003,7 @@ class Person extends GedcomRecord {
 					}
 					if ($parent->getSex()=='M') {
 						$this->add_parents_facts($parent, $sosa*2); // recursive call for father ancestors
-					}	elseif ($parent->getSex()=='F') {
+					} elseif ($parent->getSex()=='F') {
 						$this->add_parents_facts($parent, $sosa*2+1); // recursive call for mother ancestors
 					}
 				}
