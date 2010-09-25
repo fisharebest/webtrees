@@ -298,15 +298,6 @@ color: #ffffff;
 }
 
 /*	Start Standard Code					*/
-div.blockcontent {
-margin-left:auto;
-border:1px solid #999;
-margin-right:auto;
-margin-bottom:10px;
-font-size: 13px;
-overflow:auto;
-}
-
 #content {
 width:auto;
 background:#FFF;
@@ -346,68 +337,25 @@ width:100%;
 color:#333333;
 }
 
-#index_small_blocks .blockheader {
-width:100%;
-caption-side:top;
-margin:0;
-padding:0;
-overflow:hidden;
+.block {
+	color: #030303;
+	font: 12px tahoma, arial, helvetica, sans-serif;
+	vertical-align: top;
+	margin-bottom: 5px;
+	padding: 1px;
 }
-
-#index_small_blocks .blockh2 {
-width:auto;
-}
-
-#index_small_blocks .blockhc .help .icon,
-#index_small_blocks .blockhc .adminicon,
-#index_main_blocks .blockh2 .icon,
-#index_main_blocks .blockh2 .adminicon {
-position:relative;
-text-align:right;
-top:3px;
-}
-
-#index_small_blocks .blockcontent {
-width:auto;
-caption-side: right;  
-margin-right:2px;
-}
-
-#index_main_blocks .blockheader {
-caption-side: left;
-}
-
-#index_main_blocks .blockh2,
-#index_small_blocks .blockhc {
-white-space:nowrap;
-overflow:hidden;
-}
-
-#index_main_blocks .blockcontent {
-padding:5px;
-margin-left:0;
-margin-right:2px;
-}
-
-.small_inner_block {
-overflow:auto;
-font-size: 13px; /* changed from 10 to 13 */
-text-decoration:none;
-max-height:420px;
-width:auto;
-padding:0 5px;
-}
-
-.normal_inner_block {
-overflow: auto;
+	
+div.blockcontent {
+	border: solid #999 1px;
+	margin-left:auto;
+	margin-right:2px;  /* changed from auto for right side match to header */
+	margin-bottom:10px;
+	font-size: 13px;
+	overflow:auto;
+	padding: 5px;
 }
 
 .blockheader {
-table-layout:fixed;
-height:25px;
-max-height:25px;
-line-height:25px;
-vertical-align:top;
 width:100%;
 }
 
@@ -423,28 +371,17 @@ background-image:url(../images/left2.gif);
 background-repeat:repeat-x;
 font-size: 13px;
 font-weight:bold;
-height:24px;
-max-height:24px;
-line-height:25px;
 }
 
 .blockh3 {
 background-image:url(../images/left3.gif);
 background-repeat:no-repeat;
 width:8px;
-height:24px;
+*height:24px;
 }
 
 .blockhc {
-padding-right:15px;
-padding-left:5px;
-overflow:hidden;
-}
-
-.blockhc {
-padding-right:15px;
-padding-left:5px;
-overflow:hidden;
+padding-top: 3px;
 }
 
 #login_block .blockh1 {
@@ -1916,3 +1853,6 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 20px;
 	float: left;
 }
+
+
+
