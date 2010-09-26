@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9557 2010-09-26 02:36:11Z nigel $
+* $Id: ash.css 9563 2010-09-26 20:18:10Z rob $
 */
 
 .something {
@@ -377,7 +377,7 @@ font-weight:bold;
 background-image:url(../images/left3.gif);
 background-repeat:no-repeat;
 width:8px;
-*height:24px;
+height:24px;
 }
 
 .blockhc {
