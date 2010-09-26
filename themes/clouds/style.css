@@ -154,7 +154,7 @@ white-space: nowrap;
 
 .icon, .adminicon {
 border:none;
-padding-top:1px;
+padding-top:0px;
 padding-left:0px;
 padding-right:4pt;
 }
@@ -1138,7 +1138,7 @@ color:#000;
 }
 
 .title {
-font-size: 20px;
+font-size: 30px;
 vertical-align:middle;
 }
 
@@ -1212,10 +1212,6 @@ margin:8px 8px 4px 8px;
 
 fieldset ol, fieldset li {
 margin:2px 0px 0px 5px;
-}
-
-#header td {
-height:3em;
 }
 
 div.blockhc a:hover {
