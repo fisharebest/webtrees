@@ -381,6 +381,7 @@ width:8px;
 }
 
 .blockhc {
+padding-right:15px;
 padding-top: 3px;
 }
 
@@ -1857,3 +1858,6 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 20px;
 	float: left;
 }
+
+
+
