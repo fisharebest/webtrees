@@ -1156,8 +1156,7 @@ div.faq_body {
 	content: " " url(images/edit_sm.png);
 }
 
-td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
-	color: #ffffff;
+td.descriptionbox  a { 
 	float: left;
 }
 
@@ -1166,11 +1165,15 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	padding-top: 15px;
 }
 
+.editfacts  a:hover { 
+	background-color: transparent;
+}
+
 .link_text {
 	visibility : hidden;
 }
 
-.editlink  {
+.editlink, editlink  {
 	background: url(images/edit_sm.png) no-repeat left center;
 	width: 20px;
 	float: left;

@@ -1850,25 +1850,17 @@ padding: 0 10px;
 	content: " " url(images/edit_sm.png);
 }
 
-td.descriptionbox { 
-	text-align: center;
-}
-
-td.rela { /* this keeps the "events of close relatives" link left-aligned */
-	text-align: left;
-}
-
 td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
 	color: #ffffff;
 }
 
-.editfacts { /* a container for the following three links */
-	margin: 10px auto auto;
-	width: 80px;
-}
-
 .link_text {
 	visibility : hidden;
+}
+
+.editfacts { /* a container for the following three links */
+	clear: left;
+	padding-top: 15px;
 }
 
 .editlink  {
