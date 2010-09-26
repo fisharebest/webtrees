@@ -51,11 +51,10 @@ if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')==
 	}
 }
 
-/**
- * load up the service implementation
- */
-require_once './webservice/ServiceLogic.class.php';
+// Our SOAP library uses lots of deprecated features - ignore them
+error_reporting(error_reporting() & ~E_DEPRECATED & ~E_STRICT);
 
-$genealogyServer = new ServiceLogic();
-//-- process the SOAP request
-$server = $genealogyServer->process();
+require_once './webservice/wtServiceLogic.class.php';
+
+$genealogyServer=new wtServiceLogic();
+$genealogyServer->process();
