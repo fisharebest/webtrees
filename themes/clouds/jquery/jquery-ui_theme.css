@@ -1,7 +1,7 @@
 /* jquery css THEME adjustments */
 
 /* Tabs --------------------------------*/
-.ui-widget-content                                         { color:black; border color:#999999;  }
+.ui-widget-content                                         { color:black;  }
 .ui-widget-content a                                       { color:#003399; }
 .ui-widget-content a:hover                                  { color: red; }
 
