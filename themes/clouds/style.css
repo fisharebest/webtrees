@@ -1867,6 +1867,10 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 80px;
 }
 
+.link_text {
+	visibility : hidden;
+}
+
 .editlink  {
 	background: url(images/edit_sm.png) no-repeat left center;
 	width: 20px;

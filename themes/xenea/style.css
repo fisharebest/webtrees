@@ -1753,7 +1753,11 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 
 .editfacts { /* a container for the following three links */
 	float: left;
-	font-size: 80%;
+	padding-top: 5px;
+}
+
+.link_text {
+	visibility : hidden;
 }
 
 .editlink  {

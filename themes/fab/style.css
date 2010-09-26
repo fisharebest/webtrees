@@ -1166,6 +1166,10 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	padding-top: 15px;
 }
 
+.link_text {
+	visibility : hidden;
+}
+
 .editlink  {
 	background: url(images/edit_sm.png) no-repeat left center;
 	width: 20px;

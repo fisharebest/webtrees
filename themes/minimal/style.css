@@ -1543,29 +1543,17 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 
 .editfacts { /* a container for the following three links */
 	clear: left;
+}
+
+.link_text {
 	font-size: 80%;
+}
+
+.link_text:hover {
+	text-decoration: underline;
 }
 
 .editlink, .copylink , .deletelink {
 	float:left;
 	padding: 5px 5px 0 0;
-}
-
-.editlink:hover, .copylink:hover, .deletelink:hover {
-	text-decoration: underline;
-}
-
-.editlink:before  {
-	content: "Edit";
-	float: left;
-}
-
-.copylink:before  {
-	content: "Copy";
-	float: left;
-}
-
-.deletelink:before  {
-	content: "Delete";
-	float: left;
 }
