@@ -137,7 +137,7 @@ if ($view!='simple') {
 	'</table>';
 
 	echo '<div>',
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" />',
+		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
 		'<table id="topMenu" width="100%">',
 			'<tr>';
 				$menu=MenuBar::getGedcomMenu();
@@ -180,7 +180,7 @@ if ($view!='simple') {
 				}
 			echo '</tr>',
 		'</table>',
-		'<img align="middle" src="', $WT_IMAGES['hline'], '" width="100%" height="3" />',
+		'<img align="middle" src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
 	'</div>',
 '</div>',
 // end header section -->
