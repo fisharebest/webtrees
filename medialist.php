@@ -607,19 +607,9 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			$name_disp4 = i18n::translate('Title');
 		}
 
-			echo "<a href=\"mediaviewer.php?mid=".$media["XREF"]."\">";
-
-			if (begRTLText($name_disp1) && $TEXT_DIRECTION=="ltr") {
-				echo "(".$media["XREF"].")&nbsp;&nbsp;&nbsp;";
-				echo "<b>".PrintReady($name_disp1)."</b>";
-			} else {
-				echo "<b>".PrintReady($name_disp1)."</b>&nbsp;&nbsp;&nbsp;";
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo "(", $media["XREF"], ")";
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-			}
-
-			echo "</a>";
+		echo "<a href=\"mediaviewer.php?mid=".$media["XREF"]."\">";
+		echo "<b>".PrintReady($name_disp1)."</b>";
+		echo "</a>";
 
 		if ($showFile) {
 				echo "<br /><br /><sub><span dir=\"ltr\"><b>", PrintReady($name_disp4), ": </b>", PrintReady($name_disp2), "</span></sub>";
