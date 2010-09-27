@@ -94,24 +94,21 @@ if ($view!='simple') {
 	'<table width="100%">',
 		'<tr>',
 			'<td><img src="', WT_THEME_DIR, 'images/header.jpg" width="281" height="50" alt="" /></td>',
-			'<td>',
-				'<table width="100%">',
-				'<tr>',
-					'<td align="center" valign="top">',
+			'<td width="100%">',
+					'<div align="center">',
 						'<b>', print_user_links(), '</b>',
-					'</td>',
-					'<td align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" valign="middle" >',
-						'<div class="makeMenu" align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" >';
+					'</div>',
+					'<div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">',
+						'<ul class="makeMenu" align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" >';
 								echo MenuBar::getFavoritesMenu()->getMenuAsList();
 								global $ALLOW_THEME_DROPDOWN;
 									if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 										echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 									}
 								echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
-						echo '</div>',
-					'</td>',
-				'</tr>',
-				'</table>',
+						echo ' 	</ul>',
+					'</div>',
+			'</td>',
 			'</td>',
 		'</tr>',
 	'</table>'.
