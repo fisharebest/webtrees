@@ -269,9 +269,8 @@ if (!$controller->indi->canDisplayDetails()) {
 	} ?>
 	</div> <!-- tabs -->
 	<?php
-}?>
-</div> <!--  end column 1 -->
-<?php
+}
+
 echo WT_JS_START;
 echo 'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}';
 echo 'if (typeof toggleByClassName == "undefined") {';
