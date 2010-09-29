@@ -3574,7 +3574,7 @@ case 'index_gedcom_news':
 
 case 'index_htmlplus_ui':
 	$title=i18n::translate('Extended Interface');
-	$text=i18n::translate('When the extended interaface is enabled you can call other block using a keyword <b>&#35;callBlock:block_name&#35;</b>, where instead of block_name you should use the real block name. For example, <b>&#35;callBlock:gedcom_stats&#35;</b> displays the GEDCOM statistics block. It is also possible to include other files using a keyword <b>&#35;includeFile:file_name&#35;</b>.');
+	$text=i18n::translate('When the extended interface is enabled you can call another block using a keyword <b>&#35;callBlock:block_name&#35;</b>, where instead of block_name you should use the real block name. For example, <b>&#35;callBlock:gedcom_stats&#35;</b> displays the GEDCOM statistics block. It is also possible to include other files using a keyword <b>&#35;includeFile:file_name&#35;</b>.');
 	break;
 
 case 'index_htmlplus_content':
