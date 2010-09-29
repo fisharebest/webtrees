@@ -81,7 +81,7 @@ case 'accept':
 	$xref     =WT_DB::prepare("SELECT xref      FROM `##change` WHERE change_id=?")->execute(array($change_id))->fetchOne();
 	// Accept a change, and all previous changes to the same record
 	$changes=WT_DB::prepare(
-		"SELECT change_id, gedcom_id, gedcom_name, xref, new_gedcom".
+		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
 		" FROM  `##change` c".
 		" JOIN  `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status   = 'pending'".
@@ -91,7 +91,13 @@ case 'accept':
 		" ORDER BY change_id"
 	)->execute(array($gedcom_id, $xref, $change_id))->fetchAll();
 	foreach ($changes as $change) {
-		update_record($change->new_gedcom, $change->gedcom_id, empty($change->new_gedcom));
+		if (empty($change->new_gedcom)) {
+			// delete
+			update_record($change->old_gedcom, $ged_id, true);
+		} else {
+			// add/update
+			update_record($change->new_gedcom, $ged_id, false);
+		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
 	}
@@ -107,14 +113,20 @@ case 'undoall':
 	break;
 case 'acceptall':
 	$changes=WT_DB::prepare(
-		"SELECT change_id, gedcom_id, gedcom_name, xref, new_gedcom".
+		"SELECT change_id, gedcom_id, gedcom_name, xref, old_gedcom, new_gedcom".
 		" FROM `##change` c".
 		" JOIN `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status='pending' AND gedcom_id=?".
 		" ORDER BY change_id"
 	)->execute(array(get_id_from_gedcom($ged)))->fetchAll();
 	foreach ($changes as $change) {
-		update_record($change->new_gedcom, $change->gedcom_id, empty($change->new_gedcom));
+		if (empty($change->new_gedcom)) {
+			// delete
+			update_record($change->old_gedcom, $ged_id, true);
+		} else {
+			// add/update
+			update_record($change->new_gedcom, $ged_id, false);
+		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
 	}
