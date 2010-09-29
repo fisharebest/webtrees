@@ -82,11 +82,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		* Initiate the stats object.
 		*/
-		if(get_block_setting($block_id, 'ui')) {
-			$stats = new stats_ui($GEDCOM);
-		} else {
-			$stats = new stats($GEDCOM);
-		}
+		$stats = new stats($GEDCOM);
 
 		/*
 		* First Pass.
@@ -158,7 +154,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'ui',             safe_POST_bool('ui'));
 			set_block_setting($block_id, 'gedcom',         safe_POST('gedcom'));
 			set_block_setting($block_id, 'title',          $_POST['title']);
 			set_block_setting($block_id, 'html',           $_POST['html']);
@@ -381,20 +376,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		print "\n\t\t</td>\n\t</tr>\n";
-
-		// extended features
-		$ui=get_block_setting($block_id, 'ui', false);
-		if ($ui == 1) {
-			$ui = ' checked="checked"';
-		} else {
-			$ui = '';
-		}
-		print "\t<tr>\n\t\t<td class=\"descriptionbox wrap width33\">"
-			.i18n::translate('Extended Interface')
-			.help_link('index_htmlplus_ui')
-			."</td><td class=\"optionbox\"><input type=\"checkbox\" name=\"ui\" value=\"1\"{$ui} /></td>\n"
-			."\t</tr>\n"
-		;
 
 		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);
 		echo '<tr><td class="descriptionbox wrap width33">';

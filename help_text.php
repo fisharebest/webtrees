@@ -3572,11 +3572,6 @@ case 'index_gedcom_news':
 	$text=i18n::translate('The News block is like a bulletin board for this GEDCOM.  The site administrator can place important announcements or interesting news messages here.<br /><br />If you have something interesting to display, please contact the site administrator;  he can put your message on this bulletin board.');
 	break;
 
-case 'index_htmlplus_ui':
-	$title=i18n::translate('Extended Interface');
-	$text=i18n::translate('When the extended interface is enabled you can call another block using a keyword <b>&#35;callBlock:block_name&#35;</b>, where instead of block_name you should use the real block name. For example, <b>&#35;callBlock:gedcom_stats&#35;</b> displays the GEDCOM statistics block.');
-	break;
-
 case 'index_htmlplus_content':
 	$title=i18n::translate('HTML content');
 	$text=i18n::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.');
