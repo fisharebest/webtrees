@@ -52,7 +52,11 @@ if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')==
 }
 
 // Our SOAP library uses lots of deprecated features - ignore them
-error_reporting(error_reporting() & ~E_DEPRECATED & ~E_STRICT);
+if (version_compare(PHP_VERSION, '5.3')>0) {
+	error_reporting(error_reporting() & ~E_DEPRECATED & ~E_STRICT);
+} else {
+	error_reporting(error_reporting() & ~E_STRICT);
+}
 
 require_once './webservice/wtServiceLogic.class.php';
 
