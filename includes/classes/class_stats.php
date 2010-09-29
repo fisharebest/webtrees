@@ -3710,8 +3710,7 @@ class stats {
  * This class provides access to additional non-stats features of webtrees
  * for use in the HTML block (Extended interaface enabled).
  */
-class stats_ui extends stats
-{
+class stats_ui extends stats {
 ///////////////////////////////////////////////////////////////////////////////
 // Favorites                                                                 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -3774,20 +3773,4 @@ class stats_ui extends stats
 	function totalUserMessages(){return count(getUserMessages(WT_USER_NAME));}
 	function totalUserJournal(){ return count(getUserNews(WT_USER_ID));}
 	function totalGedcomNews(){  return count(getUserNews(WT_GEDCOM));}
-
-///////////////////////////////////////////////////////////////////////////////
-// System                                                                    //
-// Only allowed in GEDCOM Home Page, not user portals for security.          //
-///////////////////////////////////////////////////////////////////////////////
-
-	static function includeFile($params=null) {
-		if(!isset($_GET['ctype']) || $_GET['ctype'] != 'gedcom'){return '';}
-		if($params === null){$params = array();}
-		if(isset($params[0]) && $params[0] != ''){$fn = $params[0];}else{return '';}
-
-		if(!file_exists($fn) || stristr($fn, 'config.php')){return '';}
-		ob_start();
-		include filename_decode(real_path($fn));
-		return trim(ob_get_clean());
-	}
 }
