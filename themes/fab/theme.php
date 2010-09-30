@@ -91,6 +91,7 @@ $WT_IMAGES=array(
 	'sfamily'=>WT_THEME_DIR.'images/sfamily.gif',
 	'source'=>WT_THEME_DIR.'images/source.gif',
 	'statistic'=>WT_THEME_DIR.'images/statistic.gif',
+	'target'=>'images/buttons/target.gif',
 	'timeline'=>WT_THEME_DIR.'images/timeline.gif',
 	'tree'=>WT_THEME_DIR.'images/gedcom.gif',
 	// buttons for data entry pages

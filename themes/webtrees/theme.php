@@ -93,6 +93,7 @@ $WT_IMAGES=array(
 	'sfamily'=>WT_THEME_DIR.'images/sfamily.png',
 	'source'=>WT_THEME_DIR.'images/source.png',
 	'statistic'=>WT_THEME_DIR.'images/statistic.png',
+	'target'=>'images/buttons/target.gif',
 	'timeline'=>WT_THEME_DIR.'images/timeline.png',
 	'tree'=>WT_THEME_DIR.'images/tree.png',
 	'wiki'=>WT_THEME_DIR.'images/w_22.png',
