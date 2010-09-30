@@ -73,14 +73,18 @@ function expand_urls($text) {
  */
 function print_fact(&$eventObj, $noedit=false) {
 	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
-	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
+	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $n_ggch, $SEARCH_SPIDER;
 
 	if (!$eventObj->canShow()) {
-		return false;
+		return;
 	}
 
 	$fact = $eventObj->getTag();
+	if ($HIDE_GEDCOM_ERRORS && !array_key_exists($fact, $FACTS)) {
+		return;
+	}
+
 	$rawEvent = $eventObj->getDetail();
 	$event = htmlspecialchars($rawEvent, ENT_COMPAT, 'UTF-8');
 	$factrec = $eventObj->getGedcomRecord();
@@ -183,7 +187,9 @@ function print_fact(&$eventObj, $noedit=false) {
 				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><div class=\"copylink\"><span class=\"link_text\">".i18n::translate('Copy')."</span></div></a>";
 				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><div class=\"deletelink\"><span class=\"link_text\">".i18n::translate('Delete')."</span></div></a>";
 			echo "</div>";
-		} else {echo translate_fact($factref, $label_person);}
+		} else {
+			echo translate_fact($factref, $label_person);
+		}
 		echo "</td>";
 	}
 	$align = "";
@@ -280,7 +286,6 @@ function print_fact(&$eventObj, $noedit=false) {
 			}
 			$temp = trim(get_cont(2, $factrec));
 			if (strstr("PHON ADDR ", $fact." ")===false && $temp!="") {
-				if ($WORD_WRAPPED_NOTES) echo " ";
 				echo PrintReady($temp);
 			}
 		}
@@ -371,12 +376,15 @@ function print_fact(&$eventObj, $noedit=false) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
 					$label = translate_fact($fact.':'.$factref, $label_person);
-					if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$factref.".gif"))
-						//echo $eventObj->Icon(), ' '; // print incorrect fact icon !!!
-						echo "<img src=\"".WT_THEME_DIR."images/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
-					else echo "<span class=\"label\">", $label, ": </span>";
-					echo htmlspecialchars($match[$i][2], ENT_COMPAT, 'UTF-8');
-					echo "<br />";
+					if (!$HIDE_GEDCOM_ERRORS || !array_key_exists($fact, $FACTS)) {
+						if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$factref.".gif")) {
+							echo "<img src=\"".WT_THEME_DIR."images/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
+						} else {
+							echo "<span class=\"label\">", $label, ": </span>";
+						}
+						echo htmlspecialchars($match[$i][2], ENT_COMPAT, 'UTF-8');
+						echo "<br />";
+					}
 				}
 			}
 		}
