@@ -169,6 +169,13 @@ class MenuBar {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 		global $controller;
 
+		if (isset($controller)) {
+			if (!$rootid) {
+				if (isset($controller->pid)) $rootid = $controller->pid;
+				if (isset($controller->rootid)) $rootid = $controller->rootid;
+			}
+		}
+
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if (!empty($SEARCH_SPIDER)) {
 			return null;
