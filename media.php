@@ -91,15 +91,15 @@ function move_file($src, $dest) {
 	if (!is_dir($destdir)) {
 		@mkdirs($destdir);
 		if (!is_dir($destdir)) {
-			print "<div class=\"error\">".i18n::translate('Directory could not be created')." [".$destdir."]</div>";
+			echo "<div class=\"error\">".i18n::translate('Directory could not be created')." [".$destdir."]</div>";
 			return false;
 		}
 	}
 	if(!rename($src, $dest)) {
-		print "<div class=\"error\">".i18n::translate('Media file could not be moved.')." [".$src."]</div>";
+		echo "<div class=\"error\">".i18n::translate('Media file could not be moved.')." [".$src."]</div>";
 		return false;
 	}
-	print "<div>".i18n::translate('Media file moved.')." [".$src."]</div>";
+	echo "<div>".i18n::translate('Media file moved.')." [".$src."]</div>";
 	return true;
 }
 
@@ -115,7 +115,7 @@ function move_files($path, $protect) {
 			$exectime = time() - $starttime;
 			if (($timelimit != 0) && ($timelimit - $exectime) < 3) {
 				// bail now to ensure nothing is lost
-				print "<div class=\"error\">".i18n::translate('The execution time limit was reached.  Try the command again to move the rest of the files.')."</div>";
+				echo "<div class=\"error\">".i18n::translate('The execution time limit was reached.  Try the command again to move the rest of the files.')."</div>";
 				return;
 			}
 			// do not move certain files...
@@ -150,7 +150,7 @@ function move_files($path, $protect) {
 				}
 			}
 		}
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 		$action="filter";
 		closedir($dir);
 	}
@@ -172,7 +172,7 @@ function set_perms($path) {
 			$exectime = time() - $starttime;
 			if (($timelimit != 0) && ($timelimit - $exectime) < 3) {
 				// bail now to ensure nothing is lost
-				print "<div class=\"error\">".i18n::translate('The execution time limit was reached.  Try the command again on a smaller directory.')."</div>";
+				echo "<div class=\"error\">".i18n::translate('The execution time limit was reached.  Try the command again on a smaller directory.')."</div>";
 				return;
 			}
 			// do not set perms on certain files...
@@ -180,17 +180,17 @@ function set_perms($path) {
 				$fullpath = $path."/".$element;
 				if (is_dir($fullpath)) {
 					if (@chmod($fullpath, WT_PERM_EXE)) {
-						print "<div>".i18n::translate('Permissions Set')." [".decoct(WT_PERM_EXE)."] [".$fullpath."]</div>";
+						echo "<div>".i18n::translate('Permissions Set')." [".decoct(WT_PERM_EXE)."] [".$fullpath."]</div>";
 					} else {
-						print "<div>".i18n::translate('Permissions Not Set')." [".decoct(WT_PERM_EXE)."] [".$fullpath."]</div>";
+						echo "<div>".i18n::translate('Permissions Not Set')." [".decoct(WT_PERM_EXE)."] [".$fullpath."]</div>";
 					}
 					// call this function recursively on this directory
 					set_perms($fullpath);
 				} else {
 					if (@chmod($fullpath, WT_PERM_FILE)) {
-						print "<div>".i18n::translate('Permissions Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
+						echo "<div>".i18n::translate('Permissions Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
 					} else {
-						print "<div>".i18n::translate('Permissions Not Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
+						echo "<div>".i18n::translate('Permissions Not Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
 					}
 				}
 			}
@@ -252,7 +252,7 @@ if (WT_USER_IS_ADMIN) {
 	$fileaccess = true;
 }
 
-// Print the header of the page
+// echo the header of the page
 print_header(i18n::translate('Manage multimedia'));
 ?>
 <script language="JavaScript" type="text/javascript">
@@ -274,7 +274,7 @@ function checknames(frm) {
 		return true;
 	}
 	else if (frm.filter.value.length < 2) {
-		alert("<?php print i18n::translate('Please enter more than one character'); ?>");
+		alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
 		frm.filter.focus();
 		return false;
 	}
@@ -286,7 +286,7 @@ function checkpath(folder) {
 	if (value.substr(value.length-1, 1) == "/") value = value.substr(0, value.length-1);
 	if (value.substr(0, 1) == "/") value = value.substr(1, value.length-1);
 	result = value.split("/");
-	if (result.length > <?php print $MEDIA_DIRECTORY_LEVELS; ?>) {
+	if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
 		alert('<?php echo i18n::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS); ?>');
 		folder.focus();
 		return false;
@@ -302,23 +302,23 @@ function showchanges() {
 <script src="js/webtrees.js" language="JavaScript" type="text/javascript"></script>
 <?php
 if (check_media_structure()) {
-	print "<div id=\"uploadmedia\" style=\"display:none\">";
+	echo "<div id=\"uploadmedia\" style=\"display:none\">";
 	// Check if Media Directory is writeable or if Media features are enabled
 	// If one of these is not true then do not continue
 	if (!dir_is_writable($MEDIA_DIRECTORY) || !$MULTI_MEDIA) {
-		print "<span class=\"error\"><b>";
-		print i18n::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
-		print "</b></span><br />";
+		echo "<span class=\"error\"><b>";
+		echo i18n::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
+		echo "</b></span><br />";
 	} else {
-		show_mediaUpload_form('media.php', $showthumb); // We have the green light to upload media, print the form
+		show_mediaUpload_form('media.php', $showthumb); // We have the green light to upload media, echo the form
 	}
-	print "</div><br />";
+	echo "</div><br />";
 
 	ob_start(); // Save output until action table has been printed
 
 	if ($action == "deletedir") {
-		print "<table class=\"list_table width100\">";
-		print "<tr><td class=\"messagebox\">";
+		echo "<table class=\"list_table width100\">";
+		echo "<tr><td class=\"messagebox\">";
 		// Check if media directory and thumbs directory are empty
 		$clean = false;
 		$files = array();
@@ -335,7 +335,7 @@ if (check_media_structure()) {
 				if (!in_array($file, $BADMEDIA)) $files[] = $file;
 			}
 		} else {
-			print "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
+			echo "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
 			AddToLog('Directory does not exist.'.$directory, 'media');
 		}
 
@@ -370,22 +370,22 @@ if (check_media_structure()) {
 
 		if (!isset($error)) {
 			if (count($files) > 0 ) {
-				print "<div class=\"error\">".$directory." -- ".i18n::translate('Directory not empty.')."</div>";
+				echo "<div class=\"error\">".$directory." -- ".i18n::translate('Directory not empty.')."</div>";
 				AddToLog($directory." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			if (count($thumbfiles) > 0) {
-				print "<div class=\"error\">".$thumbdir." -- ".i18n::translate('Directory not empty.')."</div>";
+				echo "<div class=\"error\">".$thumbdir." -- ".i18n::translate('Directory not empty.')."</div>";
 				AddToLog($thumbdir." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			if (count($files_fw) > 0 ) {
-				print "<div class=\"error\">".$directory_fw." -- ".i18n::translate('Directory not empty.')."</div>";
+				echo "<div class=\"error\">".$directory_fw." -- ".i18n::translate('Directory not empty.')."</div>";
 				AddToLog($directory_fw." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
 			if (count($thumbfiles_fw) > 0) {
-				print "<div class=\"error\">".$thumbdir_fw." -- ".i18n::translate('Directory not empty.')."</div>";
+				echo "<div class=\"error\">".$thumbdir_fw." -- ".i18n::translate('Directory not empty.')."</div>";
 				AddToLog($thumbdir_fw." -- ".i18n::translate('Directory not empty.'), 'media');
 				$clean = false;
 			}
@@ -407,27 +407,27 @@ if (check_media_structure()) {
 			if (file_exists(filename_decode($thumbdir_fw."index.php"))) @unlink(filename_decode($thumbdir_fw."index.php"));
 			if (@is_dir(filename_decode($thumbdir_fw))) $resthumb_fw = @rmdir(filename_decode(substr($thumbdir_fw, 0, -1)));
 			if ($resdir && $resthumb && $resdir_fw && $resthumb_fw) {
-				print i18n::translate('Media and thumbnail directories successfully removed.');
+				echo i18n::translate('Media and thumbnail directories successfully removed.');
 				AddToLog($directory." -- ".i18n::translate('Media and thumbnail directories successfully removed.'), 'media');
 			} else {
 				if (!$resdir) {
-					print "<div class=\"error\">".i18n::translate('Media directory not removed.')."</div>";
+					echo "<div class=\"error\">".i18n::translate('Media directory not removed.')."</div>";
 					AddToLog($directory." -- ".i18n::translate('Media directory not removed.'), 'media');
 				} else if (!$resdir_fw) {
-					print "<div class=\"error\">".i18n::translate('Media directory not removed.')."</div>";
+					echo "<div class=\"error\">".i18n::translate('Media directory not removed.')."</div>";
 					AddToLog($directory_fw." -- ".i18n::translate('Media directory not removed.'), 'media');
 				} else {
-					print i18n::translate('Media directory successfully removed.');
+					echo i18n::translate('Media directory successfully removed.');
 					AddToLog($directory." -- ".i18n::translate('Media directory successfully removed.'), 'media');
 				}
 				if (!$resthumb) {
-					print "<div class=\"error\">".i18n::translate('Thumbnail directory not removed.')."</div>";
+					echo "<div class=\"error\">".i18n::translate('Thumbnail directory not removed.')."</div>";
 					AddToLog($thumbdir." -- ".i18n::translate('Thumbnail directory not removed.'), 'media');
 				} else if (!$resthumb_fw) {
-					print "<div class=\"error\">".i18n::translate('Thumbnail directory not removed.')."</div>";
+					echo "<div class=\"error\">".i18n::translate('Thumbnail directory not removed.')."</div>";
 					AddToLog($thumbdir_fw." -- ".i18n::translate('Thumbnail directory not removed.'), 'media');
 				} else {
-					print i18n::translate('Thumbnail directory successfully removed.');
+					echo i18n::translate('Thumbnail directory successfully removed.');
 					AddToLog($thumbdir." -- ".i18n::translate('Thumbnail directory successfully removed.'), 'media');
 				}
 
@@ -438,7 +438,7 @@ if (check_media_structure()) {
 		$i = strrpos(substr($directory, 0, -1), '/');
 		$directory = trim(substr($directory, 0, $i), '/').'/';
 		$action="filter";
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 	}
 /**
  * This action generates a thumbnail for the file
@@ -446,8 +446,8 @@ if (check_media_structure()) {
  * @name $action->thumbnail
  */
 	if ($action == "thumbnail") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
 		// TODO: add option to generate thumbnails for all images on page
 		// Cycle through $medialist and skip all exisiting thumbs
 
@@ -496,11 +496,11 @@ if (check_media_structure()) {
 
 	// Move single file and optionally its corresponding thumbnail to protected dir
 	if ($action == "moveprotected") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
-			print "<div class=\"error\">".i18n::translate('Blank name or illegal characters in name')."</div>";
+			echo "<div class=\"error\">".i18n::translate('Blank name or illegal characters in name')."</div>";
 		} else {
 			if (file_exists($filename)) {
 				move_file($filename, get_media_firewall_path($filename));
@@ -512,17 +512,17 @@ if (check_media_structure()) {
 				}
 			}
 		}
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 		$action="filter";
 	}
 
 	// Move single file and its corresponding thumbnail to standard dir
 	if ($action == "movestandard") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
-			print "<div class=\"error\">".i18n::translate('Blank name or illegal characters in name')."</div>";
+			echo "<div class=\"error\">".i18n::translate('Blank name or illegal characters in name')."</div>";
 		} else {
 			if (file_exists(get_media_firewall_path($filename))) {
 				move_file(get_media_firewall_path($filename), $filename);
@@ -532,37 +532,37 @@ if (check_media_structure()) {
 				move_file(get_media_firewall_path($thumbnail), $thumbnail);
 			}
 		}
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 		$action="filter";
 	}
 
 	// Move entire dir and all subdirs to protected dir
 	if ($action == "movedirprotected") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
-		print "<strong>".i18n::translate('Move to protected')."<br />";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
+		echo "<strong>".i18n::translate('Move to protected')."<br />";
 		move_files(substr($directory, 0, -1), true);
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 		$action="filter";
 	}
 
 	// Move entire dir and all subdirs to standard dir
 	if ($action == "movedirstandard") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
-		print "<strong>".i18n::translate('Move to standard')."<br />";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
+		echo "<strong>".i18n::translate('Move to standard')."<br />";
 		move_files(substr(get_media_firewall_path($directory), 0, -1), false);
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 		$action="filter";
 	}
 
 	if ($action == "setpermsfix") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
-		print "<strong>".i18n::translate('Correct read/write/execute permissions')."<br />";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
+		echo "<strong>".i18n::translate('Correct read/write/execute permissions')."<br />";
 		set_perms(substr($directory, 0, -1));
 		set_perms(substr(get_media_firewall_path($directory), 0, -1));
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 		$action="filter";
 	}
 
@@ -591,8 +591,8 @@ if (check_media_structure()) {
 
 	// Delete file
 	if ($action == "deletefile") {
-		print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-		print "<tr><td class=\"messagebox wrap\">";
+		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<tr><td class=\"messagebox wrap\">";
 		$xrefs = array($xref);
 		$onegedcom = true;
 		//-- get all of the XREFS associated with this record
@@ -631,11 +631,11 @@ if (check_media_structure()) {
 		$finalResult = true;
 		if ($allowDelete) {
 			if (!$onegedcom) {
-				print "<span class=\"error\">".i18n::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.')."<br /><br /><b>".i18n::translate('Media file could not be deleted.')."</b></span><br />";
+				echo "<span class=\"error\">".i18n::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.')."<br /><br /><b>".i18n::translate('Media file could not be deleted.')."</b></span><br />";
 				$finalResult = false;
 			}
 			if (isFileExternal($filename)) {
-				print "<span class=\"error\">".i18n::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."<br /><br /><b>".i18n::translate('Media file could not be deleted.')."</b></span><br />";
+				echo "<span class=\"error\">".i18n::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."<br /><br /><b>".i18n::translate('Media file could not be deleted.')."</b></span><br />";
 				$finalResult = false;
 			}
 			if ($finalResult) {
@@ -643,11 +643,11 @@ if (check_media_structure()) {
 				$server_filename = get_server_filename($filename);
 				if (file_exists($server_filename) && $allowDelete) {
 					if (@unlink($server_filename)) {
-						print i18n::translate('Media file successfully deleted.')."<br />";
+						echo i18n::translate('Media file successfully deleted.')."<br />";
 						AddToLog($server_filename." -- ".i18n::translate('Media file successfully deleted.'), 'edit');
 					} else {
 						$finalResult = false;
-						print "<span class=\"error\">".i18n::translate('Media file could not be deleted.')."</span><br />";
+						echo "<span class=\"error\">".i18n::translate('Media file could not be deleted.')."</span><br />";
 						AddToLog($server_filename." -- ".i18n::translate('Media file could not be deleted.'), 'edit');
 					}
 				}
@@ -657,11 +657,11 @@ if (check_media_structure()) {
 				$server_thumbnail = get_server_filename($thumbnail);
 				if (file_exists($server_thumbnail) && $allowDelete) {
 					if (@unlink($server_thumbnail)) {
-						print i18n::translate('Thumbnail file successfully deleted.')."<br />";
+						echo i18n::translate('Thumbnail file successfully deleted.')."<br />";
 						AddToLog($server_thumbnail." -- ".i18n::translate('Thumbnail file successfully deleted.'), 'edit');
 					} else {
 						$finalResult = false;
-						print "<span class=\"error\">".i18n::translate('Thumbnail file could not be deleted.')."</span><br />";
+						echo "<span class=\"error\">".i18n::translate('Thumbnail file could not be deleted.')."</span><br />";
 						AddToLog($server_thumbnail." -- ".i18n::translate('Thumbnail file could not be deleted.'), 'edit');
 					}
 				}
@@ -682,8 +682,13 @@ if (check_media_structure()) {
 				}
 
 				// Remove media object from gedcom
-				delete_gedrec($xref, WT_GED_ID);
-				echo i18n::translate('Record %s successfully removed from GEDCOM.', $xref), '<br />';
+				if (find_gedcom_record($xref, WT_GED_ID)) {
+					delete_gedrec($xref, WT_GED_ID);
+					echo i18n::translate('Record %s successfully removed from GEDCOM.', $xref), '<br />';
+				} else {
+					echo "<span class=\"error\">".i18n::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."</span><br />";
+					$finalResult = false;
+				}
 
 /* I've commented this out, as I have no idea what it is supposed to do.  We've just deleted a
  * file, so why are we creating a new media object for it???
@@ -704,14 +709,14 @@ if (check_media_structure()) {
 						echo i18n::translate('Record %s could not be added to GEDCOM.', $xref);
 						echo "</span>";
 					}
-					print "<br />";
+					echo "<br />";
 				}
 */
 			}
 		}
-		if ($finalResult) print i18n::translate('Update successful');
+		if ($finalResult) echo i18n::translate('Update successful');
 		$action = "filter";
-		print "</td></tr></table>";
+		echo "</td></tr></table>";
 	}
 
 /**
@@ -734,7 +739,7 @@ if (check_media_structure()) {
 			$menu->addOnclick("return ilinkitem('$mediaid', 'manage')");
 			$menu->addClass("", "", "submenu");
 			$menu->addFlyout("left");
-			// Do not print submunu
+			// Do not echo submunu
 
 		} else {
 			$menu->addLabel(i18n::translate('Set link'));
@@ -762,11 +767,11 @@ if (check_media_structure()) {
 ?>
 
 <form name="managemedia" method="post" onsubmit="return checknames(this);" action="media.php">
-	<input type="hidden" name="thumbdir" value="<?php print $thumbdir; ?>" />
-	<input type="hidden" name="level" value="<?php print $level; ?>" />
+	<input type="hidden" name="thumbdir" value="<?php echo $thumbdir; ?>" />
+	<input type="hidden" name="level" value="<?php echo $level; ?>" />
 	<input type="hidden" name="all" value="true" />
 	<input type="hidden" name="subclick" />
-	<table class="facts_table center width75 <?php print $TEXT_DIRECTION; ?>">
+	<table class="facts_table center width75 <?php echo $TEXT_DIRECTION; ?>">
 	<tr><td class="topbottombar" colspan="4"><?php echo i18n::translate('Manage multimedia'), help_link('manage_media'); ?></td></tr>
 	<?php
 	if ($TEXT_DIRECTION=='ltr') $legendAlign = 'align="right"';
@@ -774,18 +779,18 @@ if (check_media_structure()) {
 	?>
 
 	<!-- // NOTE: Row 1 left: Sort sequence -->
-	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Sequence'), help_link('sortby'); ?></td>
+	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Sequence'), help_link('sortby'); ?></td>
 	<td class="optionbox wrap"><select name="sortby">
-		<option value="title" <?php if ($sortby=='title') print "selected=\"selected\"";?>><?php print translate_fact('TITL');?></option>
-		<option value="file" <?php if ($sortby=='file') print "selected=\"selected\"";?>><?php print translate_fact('FILE');?></option>
+		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\"";?>><?php echo translate_fact('TITL');?></option>
+		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\"";?>><?php echo translate_fact('FILE');?></option>
 	</select></td>
 
 	<!-- // NOTE: Row 1 right, Upload media files -->
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Upload media files'), help_link('upload_media'); ?></td>
-	<td class="optionbox wrap"><?php print "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".i18n::translate('Upload media files')."</a>"; ?></td></tr>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Upload media files'), help_link('upload_media'); ?></td>
+	<td class="optionbox wrap"><?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".i18n::translate('Upload media files')."</a>"; ?></td></tr>
 
 	<!-- // NOTE: Row 2 left: Filter options -->
-	<tr><td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Filter'), help_link('simple_filter'); ?></td>
+	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Filter'), help_link('simple_filter'); ?></td>
 	<td class="optionbox wrap">
 		<?php
 			// Directory pick list
@@ -795,20 +800,20 @@ if (check_media_structure()) {
 			}
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				$folders = get_media_folders();
-				print "<span dir=\"ltr\"><select name=\"directory\">\n";
+				echo "<span dir=\"ltr\"><select name=\"directory\">\n";
 				foreach($folders as $f) {
-					print "<option value=\"".$f."\"";
-					if ($directory==$f) print " selected=\"selected\"";
-					print ">{$f}</option>\n";
+					echo "<option value=\"".$f."\"";
+					if ($directory==$f) echo " selected=\"selected\"";
+					echo ">{$f}</option>\n";
 				}
-				print "</select></span><br />";
-			} else print "<input name=\"directory\" type=\"hidden\" value=\"ALL\" />";
+				echo "</select></span><br />";
+			} else echo "<input name=\"directory\" type=\"hidden\" value=\"ALL\" />";
 		// Text field for filter
 		?>
-		<input type="text" name="filter" value="<?php if($filter) print $filter;?>" /><br /><input type="submit" name="search" value="<?php print i18n::translate('Filter');?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php print i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
+		<input type="text" name="filter" value="<?php if($filter) echo $filter;?>" /><br /><input type="submit" name="search" value="<?php echo i18n::translate('Filter');?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php echo i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
 
 	<!-- // NOTE: Row 2 right: Add media -->
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
 	<td class="optionbox wrap"><a href="javascript: <?php echo i18n::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo i18n::translate('Add a new media item'); ?></a></td></tr>
 
 	<!-- // NOTE: Row 3 left: Show thumbnails -->
@@ -817,7 +822,7 @@ if (check_media_structure()) {
 		<?php echo i18n::translate('Show thumbnails'), help_link('show_thumb'); ?>
 	</td>
 	<td class="optionbox wrap width25">
-		<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) print "checked=\"checked\""; ?> onclick="submit();" />
+		<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
 	</td>
 
 	<!-- // NOTE: Row 3 right: Generate missing thumbnails -->
@@ -827,8 +832,8 @@ if (check_media_structure()) {
 		if (!empty($subclick)) $tempURL .= "subclick={$subclick}&";
 		$tempURL .= "action=thumbnail&sortby={$sortby}&all=yes&level={$level}&directory={$directory}".$thumbget;
 		?>
-	<td class="descriptionbox wrap width25" <?php print $legendAlign;?>><?php echo i18n::translate('Missing thumbnails'), help_link('gen_missing_thumbs'); ?></td>
-	<td class="optionbox wrap"><a href="<?php print encode_url($tempURL);?>"><?php print i18n::translate('Create missing thumbnails');?></a></td></tr>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Missing thumbnails'), help_link('gen_missing_thumbs'); ?></td>
+	<td class="optionbox wrap"><a href="<?php echo encode_url($tempURL);?>"><?php echo i18n::translate('Create missing thumbnails');?></a></td></tr>
 	</table>
 </form>
 <script type="text/javascript">
@@ -850,7 +855,7 @@ jQuery(document).ready(function(){
 </script>
 <?php
 
-	if (!empty($savedOutput)) print $savedOutput; // Print everything we have saved up
+	if (!empty($savedOutput)) echo $savedOutput; // echo everything we have saved up
 
 	if ($action == "filter" && $subclick != "none") {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
@@ -885,17 +890,17 @@ jQuery(document).ready(function(){
 			$uplink2 .= "\" alt=\"\" /></a>\n";
 		}
 		// Start of media directory table
-		print "<table class=\"list_table width50 $TEXT_DIRECTION\">";
+		echo "<table class=\"list_table width50 $TEXT_DIRECTION\">";
 		// Tell the user where he is
-		print "<tr>";
-		print "<td class=\"topbottombar\" colspan=\"2\">";
-			print i18n::translate('Current directory');
-			print "<br />";
+		echo "<tr>";
+		echo "<td class=\"topbottombar\" colspan=\"2\">";
+			echo i18n::translate('Current directory');
+			echo "<br />";
 			if ($USE_MEDIA_FIREWALL) {
 				echo $MEDIA_FIREWALL_ROOTDIR;
 			}
-			print PrintReady(substr($directory, 0, -1));
-			print "<br />";
+			echo PrintReady(substr($directory, 0, -1));
+			echo "<br />";
 
 			// Calculation to determine whether files are protected or not -------------------------
 			// Check if media directory and thumbs directory are empty
@@ -914,7 +919,7 @@ jQuery(document).ready(function(){
 					if (!in_array($file, $BADMEDIA)) $files[] = $file;
 				}
 			} else {
-				print "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
+				echo "<div class=\"error\">".$directory." ".i18n::translate('Directory does not exist.')."</div>";
 				AddToLog('Directory does not exist.'.$directory, 'media');
 			}
 			// Thumbs directory check
@@ -946,14 +951,14 @@ jQuery(document).ready(function(){
 			$protected_files = count($files_fw);
 			$standard_files = count($files);
 
-			print "<br />";
-			print "<form name=\"blah3\" action=\"media.php\" method=\"post\">";
-			print "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
-			print "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
-			print "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\" />";
-			print "<input type=\"hidden\" name=\"action\" value=\"\" />";
-			print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-			print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
+			echo "<br />";
+			echo "<form name=\"blah3\" action=\"media.php\" method=\"post\">";
+			echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
+			echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
+			echo "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\" />";
+			echo "<input type=\"hidden\" name=\"action\" value=\"\" />";
+			echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
+			echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
 
 			if ($USE_MEDIA_FIREWALL) {
 				if ($protected_files < $standard_files) {
@@ -965,10 +970,10 @@ jQuery(document).ready(function(){
 					echo i18n::translate('(b) Disable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
 					echo '</div>';
 				}
-					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
-					print help_link('move_mediadirs');
-					print "<br />";
+					echo "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+					echo "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+					echo help_link('move_mediadirs');
+					echo "<br />";
 			}
 
 			if ( !$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY) ) {
@@ -980,67 +985,67 @@ jQuery(document).ready(function(){
 					echo i18n::translate('OR').'<br />';
 					echo i18n::translate('(b) Re-enable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
 					echo '</div>';
-					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-					print "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
-					print help_link('move_mediadirs');
-					print "<br />";
+					echo "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+					echo "<input type=\"submit\" value=\"".i18n::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+					echo help_link('move_mediadirs');
+					echo "<br />";
 				}
 			}
 
-			print "<input type=\"submit\" value=\"".i18n::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
-			print help_link('setperms');
-			print "</form>";
-			print "</td>";
-		print "</tr>";
+			echo "<input type=\"submit\" value=\"".i18n::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
+			echo help_link('setperms');
+			echo "</form>";
+			echo "</td>";
+		echo "</tr>";
 
 		// display the directory list
 		if (count($dirs) || $pdir != '') {
 			sort($dirs);
 			if ($pdir != '') {
-				print "<tr>";
-					print "<td class=\"optionbox center width10\">";
-						print $uplink2;
-					print "</td>";
-					print "<td class=\"descriptionbox $TEXT_DIRECTION\">";
-						print $uplink;
-					print "</td>";
-				print "</tr>";
+				echo "<tr>";
+					echo "<td class=\"optionbox center width10\">";
+						echo $uplink2;
+					echo "</td>";
+					echo "<td class=\"descriptionbox $TEXT_DIRECTION\">";
+						echo $uplink;
+					echo "</td>";
+				echo "</tr>";
 			}
 
 			foreach ($dirs as $indexval => $dir) {
 				if ($dir{0}!=".") {
-				print "<tr>";
-					print "<td class=\"optionbox center width10\">";
+				echo "<tr>";
+					echo "<td class=\"optionbox center width10\">";
 						// directory options
-						print "<form name=\"blah\" action=\"media.php\" method=\"post\">";
-						print "<input type=\"hidden\" name=\"directory\" value=\"".$directory.$dir."/\" />";
-						print "<input type=\"hidden\" name=\"parentdir\" value=\"".$directory."\" />";
-						print "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
-						print "<input type=\"hidden\" name=\"dir\" value=\"".$dir."\" />";
-						print "<input type=\"hidden\" name=\"action\" value=\"\" />";
-						print "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-						print "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-						print "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".i18n::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".i18n::translate('Are you sure you want to delete this folder?')."');\" />";
+						echo "<form name=\"blah\" action=\"media.php\" method=\"post\">";
+						echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory.$dir."/\" />";
+						echo "<input type=\"hidden\" name=\"parentdir\" value=\"".$directory."\" />";
+						echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
+						echo "<input type=\"hidden\" name=\"dir\" value=\"".$dir."\" />";
+						echo "<input type=\"hidden\" name=\"action\" value=\"\" />";
+						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
+						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
+						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".i18n::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".i18n::translate('Are you sure you want to delete this folder?')."');\" />";
 						if ($USE_MEDIA_FIREWALL) {
-							print "<br /><input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" />";
-							print "<br /><input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" />";
+							echo "<br /><input type=\"submit\" value=\"".i18n::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" />";
+							echo "<br /><input type=\"submit\" value=\"".i18n::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" />";
 						}
 
-						print "</form>";
-					print "</td>";
-					print "<td class=\"descriptionbox $TEXT_DIRECTION\">";
-						print "<a href=\"".encode_url("media.php?directory={$directory}{$dir}/&sortby={$sortby}&level=".($level+1).$thumbget)."\">";
-						if ($TEXT_DIRECTION=="rtl") print getRLM();
-						print $dir;
-						if ($TEXT_DIRECTION=="rtl") print getRLM();
-						print "</a>";
-					print "</td>";
-				print "</tr>";
+						echo "</form>";
+					echo "</td>";
+					echo "<td class=\"descriptionbox $TEXT_DIRECTION\">";
+						echo "<a href=\"".encode_url("media.php?directory={$directory}{$dir}/&sortby={$sortby}&level=".($level+1).$thumbget)."\">";
+						if ($TEXT_DIRECTION=="rtl") echo getRLM();
+						echo $dir;
+						if ($TEXT_DIRECTION=="rtl") echo getRLM();
+						echo "</a>";
+					echo "</td>";
+				echo "</tr>";
 				}
 			}
 		}
-		print "</table>";
-		print "<br />";
+		echo "</table>";
+		echo "<br />";
 
 		// display the images
 		if (count($medialist) && ($subclick=='search' || $subclick=='all')) {
@@ -1096,7 +1101,7 @@ jQuery(document).ready(function(){
 
 						// Show column with file operations options
 						$printDone = true;
-						print "<tr><td class=\"optionbox $changeClass $TEXT_DIRECTION width20\">";
+						echo "<tr><td class=\"optionbox $changeClass $TEXT_DIRECTION width20\">";
 
 						if ($media["CHANGE"]!="delete") {
 							// Edit File
@@ -1116,7 +1121,7 @@ jQuery(document).ready(function(){
 
 							// Edit Raw
 							if ($media["XREF"] != "") {
-								print "<a href=\"javascript:".i18n::translate('Edit raw GEDCOM record')."\" onclick=\"return edit_raw('".$media['XREF']."');\">".i18n::translate('Edit raw GEDCOM record')."</a><br />\n";
+								echo "<a href=\"javascript:".i18n::translate('Edit raw GEDCOM record')."\" onclick=\"return edit_raw('".$media['XREF']."');\">".i18n::translate('Edit raw GEDCOM record')."</a><br />\n";
 							}
 
 							// Delete File
@@ -1133,7 +1138,7 @@ jQuery(document).ready(function(){
 								$tempURL = "media.php?";
 								if (!empty($filter)) $tempURL.= "filter={$filter}&";
 								$tempURL .= "action=deletefile&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".urlencode($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
-								print "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this file?')."');\">".i18n::translate('Delete file')."</a><br />";
+								echo "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this file?')."');\">".i18n::translate('Delete file')."</a><br />";
 							}
 
 							// Remove Object
@@ -1141,7 +1146,7 @@ jQuery(document).ready(function(){
 								$tempURL = "media.php?";
 								if (!empty($filter)) $tempURL .= "filter={$filter}&";
 								$tempURL .= "action=removeobject&showthumb={$showthumb}&sortby={$sortby}&filter={$filter}&subclick={$subclick}&filename=".urlencode($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile={$media['GEDFILE']}";
-								print "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."');\">".i18n::translate('Remove object')."</a><br />";
+								echo "<a href=\"".encode_url($tempURL)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."');\">".i18n::translate('Remove object')."</a><br />";
 							}
 
 							// Remove links
@@ -1170,7 +1175,7 @@ jQuery(document).ready(function(){
 									$message=i18n::translate('Move to standard directory');
 								}
 								$tempURL .= "&showthumb={$showthumb}&sortby={$sortby}&filename=".urlencode($media['FILE'])."&directory={$directory}&level={$level}&xref={$media['XREF']}&gedfile=".$media["GEDFILE"];
-								print "<a href=\"".encode_url($tempURL)."\">".$message."</a><br />";
+								echo "<a href=\"".encode_url($tempURL)."\">".$message."</a><br />";
 							}
 
 							// Generate thumbnail
@@ -1181,13 +1186,13 @@ jQuery(document).ready(function(){
 									$tempURL = "media.php?";
 									if (!empty($filter)) $tempURL .= "filter={$filter}&";
 									$tempURL .= "action=thumbnail&all=no&sortby={$sortby}&level={$level}&directory={$directory}&filename=".urlencode($media["FILE"]).$thumbget;
-									print "<a href=\"".encode_url($tempURL)."\">".i18n::translate('Create thumbnail')."</a>";
+									echo "<a href=\"".encode_url($tempURL)."\">".i18n::translate('Create thumbnail')."</a>";
 								}
 							}
 
 						}
 						// NOTE: Close column for file operations
-						print "</td>";
+						echo "</td>";
 
 
 						$name = trim($media["TITL"]);
@@ -1205,7 +1210,7 @@ jQuery(document).ready(function(){
 
 						//-- Thumbnail field
 						if ($showthumb) {
-							print "\n\t\t\t<td class=\"optionbox $changeClass $TEXT_DIRECTION width10\">";
+							echo "\n\t\t\t<td class=\"optionbox $changeClass $TEXT_DIRECTION width10\">";
 							// if Streetview object
 							if (strpos($media["FILE"], 'http://maps.google.')===0) {
 								echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media["FILE"], '&amp;output=svembed"></iframe>';
@@ -1218,23 +1223,23 @@ jQuery(document).ready(function(){
 						}
 
 						//-- name and size field
-						print "\n\t\t\t<td class=\"optionbox $changeClass $TEXT_DIRECTION wrap\">";
+						echo "\n\t\t\t<td class=\"optionbox $changeClass $TEXT_DIRECTION wrap\">";
 						if ($media["TITL"]!="" && begRTLText($media["TITL"]) && $TEXT_DIRECTION=="ltr") {
 							if (!empty($media["XREF"])) {
-								print "(".$media["XREF"].")";
-								print "&nbsp;&nbsp;&nbsp;";
+								echo "(".$media["XREF"].")";
+								echo "&nbsp;&nbsp;&nbsp;";
 							}
-							if ($media["TITL"]!="") print "<b>".PrintReady($media["TITL"])."</b><br />";
+							if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br />";
 						} else {
-							if ($media["TITL"]!="") print "<b>".PrintReady($media["TITL"])."</b>&nbsp;&nbsp;&nbsp;";
+							if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b>&nbsp;&nbsp;&nbsp;";
 							if (!empty($media["XREF"])) {
-								if ($TEXT_DIRECTION=="rtl") print getRLM();
-								print "(".$media["XREF"].")";
-								if ($TEXT_DIRECTION=="rtl") print getRLM();
-								print "<br />";
+								if ($TEXT_DIRECTION=="rtl") echo getRLM();
+								echo "(".$media["XREF"].")";
+								if ($TEXT_DIRECTION=="rtl") echo getRLM();
+								echo "<br />";
 							}
 						}
-						if (!$isExternal && !$media["EXISTS"]) print "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br /><span class=\"error\">".i18n::translate('The filename entered does not exist.')."</span><br />";
+						if (!$isExternal && !$media["EXISTS"]) echo "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br /><span class=\"error\">".i18n::translate('The filename entered does not exist.')."</span><br />";
 						else {
 							if (substr($mediaInfo['type'], 0, 4) == 'url_') $tempText = 'URL';
 							else $tempText = PrintReady($media["FILE"]);
@@ -1245,19 +1250,19 @@ jQuery(document).ready(function(){
 							}
 						}
 						if (substr($mediaInfo['type'], 0, 4) != 'url_' && !empty($imgsize[0])) {
-							print "<sub>&nbsp;&nbsp;".i18n::translate('Image Dimensions')." -- ".$imgsize[0]."x".$imgsize[1]."</sub><br />";
+							echo "<sub>&nbsp;&nbsp;".i18n::translate('Image Dimensions')." -- ".$imgsize[0]."x".$imgsize[1]."</sub><br />";
 						}
 						print_fact_notes($media["GEDCOM"], 1);
 						print_fact_sources($media["GEDCOM"], 1);
 						if ($media["LINKED"]) {
 							PrintMediaLinks($media["LINKS"], "normal");
 						} else {
-							print "<br />".i18n::translate('This media object is not linked to any GEDCOM record.');
+							echo "<br />".i18n::translate('This media object is not linked to any GEDCOM record.');
 						}
 
 
 						if ($USE_MEDIA_FIREWALL) {
-							print "<br /><br />";
+							echo "<br /><br />";
 							if ($media["EXISTS"]) {
 								switch ($media["EXISTS"]) {
 								case 1:
@@ -1288,11 +1293,11 @@ jQuery(document).ready(function(){
 							}
 						}
 
-						print "\n\t\t\t</td></tr>";
+						echo "\n\t\t\t</td></tr>";
 						break;
 					}
 				}
-				if ($passCount==1 && $printDone) print "<tr><td class=\"optionbox\" colspan=\"3\">&nbsp;</td></tr>";
+				if ($passCount==1 && $printDone) echo "<tr><td class=\"optionbox\" colspan=\"3\">&nbsp;</td></tr>";
 			}
 			?>
 		</tbody>
@@ -1319,5 +1324,5 @@ jQuery(document).ready(function(){
 	}
 	?> </div> <?php
 }
-else print i18n::translate('The media folder is corrupted.');
+else echo i18n::translate('The media folder is corrupted.');
 print_footer();
