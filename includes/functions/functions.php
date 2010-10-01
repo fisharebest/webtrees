@@ -2970,7 +2970,7 @@ function get_theme_names() {
 	static $themes;
 	if ($themes===null) {
 		$themes = array();
-		$d = dir("themes");
+		$d = dir(WT_ROOT.'themes');
 		while (false !== ($entry = $d->read())) {
 			if ($entry{0}!="." && $entry!="CVS" && !stristr($entry, "svn") && is_dir(WT_ROOT.'themes/'.$entry) && file_exists(WT_ROOT.'themes/'.$entry.'/theme.php')) {
 				$themefile = implode("", file(WT_ROOT.'themes/'.$entry.'/theme.php'));
