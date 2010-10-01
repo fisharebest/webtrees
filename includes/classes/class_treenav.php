@@ -393,9 +393,13 @@ class TreeNav {
 			$fams = $person->getSpouseFamilies();
 			foreach($fams as $famid=>$family) {
 				$children = $family->getChildren();
+				$indichilds = array();
 				foreach($children as $ci=>$child) {
-					$fam = null;
-					$this->drawPersonAllSpouses($child, $gen-1, -1);
+					if (!in_array($child, $indichilds)) {
+						$fam = null;
+						$this->drawPersonAllSpouses($child, $gen-1, -1);
+						$indichilds[]=$child;
+					}
 				}
 			}
 		}
