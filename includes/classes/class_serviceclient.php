@@ -73,7 +73,7 @@ class ServiceClient extends GedcomRecord {
 	/**
 	* check if the service returned an error
 	*/
-	static function isError(&$result) {
+	static function isError($result) {
 		if (PEAR::isError($result) || isset($result->faultcode) || isset($result->message) || get_class($result)=='SOAP_Fault') {
 			return true;
 		}
