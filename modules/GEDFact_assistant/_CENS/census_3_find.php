@@ -27,9 +27,12 @@
  * @version $Id$
  */
 
-define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_CENS/census_3_find.php');
-require '../../../includes/session.php';
-require WT_ROOT.'includes/functions/functions_print_lists.php';
+// define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_CENS/census_3_find.php');
+// require './includes/session.php';
+
+// require WT_ROOT.'includes/functions/functions_print_lists.php';
+
+global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $TEXT_DIRECTION, $ABBREVIATE_CHART_LABELS; 
 
 $type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
 $filter         =safe_GET('filter');
@@ -47,6 +50,26 @@ $choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
 $level          =safe_GET('level', WT_REGEX_INTEGER, 0);
 $language_filter=safe_GET('language_filter');
 $magnify        =safe_GET_bool('magnify');
+$qs				=safe_GET('tags');
+
+
+
+// Retrives the currently selected tags in the opener window (reading curTags value of the query string)
+// $preselDefault will be set to the array of DEFAULT preselected tags
+// $preselCustom will be set to the array of CUSTOM preselected tags
+function getPreselectedTags(&$preselDefault, &$preselCustom) {
+	global $FACTS, $qs;
+	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
+	$preselDefault = array();
+	$preselCustom = array();
+	foreach($all as $one) {
+		if(array_key_exists($one, $FACTS)) {
+			$preselDefault[] = $one;
+		} else {
+			$preselCustom[] = $one;
+		}
+	}
+}
 
 if ($showthumb) {
 	$thumbget='&showthumb=true';
@@ -123,6 +146,10 @@ case "specialchar":
 	print_simple_header(i18n::translate('Find Special Characters'));
 	$action="filter";
 	break;
+case "facts":
+	$ONLOADFUNCTION = 'initPickFact();';
+	print_simple_header(i18n::translate('Find fact tags'));
+	break;
 }
 
 echo WT_JS_START;
@@ -190,6 +217,7 @@ $options["option"][]= "findrepo";
 $options["option"][]= "findnote";
 $options["option"][]= "findsource";
 $options["option"][]= "findspecialchar";
+$options["option"][]= "findfact";
 $options["form"][]= "formindi";
 $options["form"][]= "formfam";
 $options["form"][]= "formmedia";
@@ -198,10 +226,6 @@ $options["form"][]= "formrepo";
 $options["form"][]= "formnote";
 $options["form"][]= "formsource";
 $options["form"][]= "formspecialchar";
-
-?>
-<link href="<?php echo '../../../'.WT_THEME_DIR.'style.css'; ?>" rel="stylesheet" type="text/css" media="screen" />
-<?php
 
 echo "<div align=\"center\">";
 echo "<table class=\"list_table $TEXT_DIRECTION width90\" border=\"0\">";
@@ -232,12 +256,15 @@ case "source":
 case "specialchar":
 	echo i18n::translate('Find Special Characters');
 	break;
+case "facts":
+	echo i18n::translate('Find fact tags');
+	break;
 }
 
 echo "</td>"; // close column for find text header
 
-	// start column for find options
-	print "</tr><tr><td class=\"list_value\" style=\"padding: 5px; \">";
+// start column for find options
+echo "</tr><tr><td class=\"list_value\" style=\"padding: 5px;\">";
 
 // Show indi and hide the rest
 if ($type == "indi") {
@@ -403,7 +430,7 @@ if ($type == "specialchar") {
 	echo "<form name=\"filterspecialchar\" method=\"get\" action=\"find.php\">";
 	echo "<input type=\"hidden\" name=\"action\" value=\"filter\" />";
 	echo "<input type=\"hidden\" name=\"type\" value=\"specialchar\" />";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"", $callback, "\" />";
+	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"magnify\" value=\"", $magnify, "\" />";
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label\" style=\"padding: 5px;\">";
@@ -416,6 +443,197 @@ if ($type == "specialchar") {
 	$language_options = str_replace("\"$language_filter\"", "\"$language_filter\" selected", $language_options);
 	echo $language_options;
 	echo "</select><br /><a href=\"javascript:;\" onclick=\"setMagnify()\">", i18n::translate('Magnify'), "</a>";
+	echo "</td></tr></table>";
+	echo "</form></div>";
+}
+
+// Show facts
+if ($type == "facts") {
+	echo "<div align=\"center\">";
+	echo "<form name=\"filterfacts\" method=\"get\" action=\"find.php\" >";
+	echo "<input type=\"hidden\" name=\"type\" value=\"facts\" />";
+	echo "<input type=\"hidden\" name=\"tags\" value=\"$qs\" />";
+	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
+	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<tr><td class=\"list_label $TEXT_DIRECTION\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
+	getPreselectedTags($preselDefault, $preselCustom);
+	?>
+	<?php echo WT_JS_START; ?>
+	// A class representing a default tag
+	function DefaultTag(id, name, selected) {
+		this.Id=id;
+		this.Name=name;
+		this.LowerName=name.toLowerCase();
+		this._counter=DefaultTag.prototype._newCounter++;
+		this.selected=!!selected;
+	}
+	DefaultTag.prototype= {
+		_newCounter:0
+		,view:function() {
+			var row=document.createElement("tr"),cell,o;
+			row.appendChild(cell=document.createElement("td"));
+			o=null;
+			if(document.all) {
+				//Old IEs handle the creation of a checkbox already checked, as far as I know, only in this way
+				try {
+					o=document.createElement("<input type='checkbox' id='tag"+this._counter+"' "+(this.selected?"checked='checked'":"")+" />");
+				} catch(e) {
+					o=null;
+				}
+			}
+			if(!o) {
+				o=document.createElement("input");
+				o.setAttribute("id","tag"+this._counter);
+				o.setAttribute("type","checkbox");
+				if(this.selected) o.setAttribute("checked", "checked");
+			}
+			o.DefaultTag=this;
+			o.ParentRow=row;
+			o.onclick=function() {
+				this.DefaultTag.selected=!!this.checked;
+				this.ParentRow.className=this.DefaultTag.selected?"sel":"unsel";
+				Lister.recount();
+			};
+			cell.appendChild(o);
+			row.appendChild(cell=document.createElement("th"));
+			cell.appendChild(o=document.createElement("label"));
+			o.htmlFor="tag"+this._counter;
+			o.appendChild(document.createTextNode(this.Id));
+			row.appendChild(cell=document.createElement("td"));
+			cell.appendChild(document.createTextNode(this.Name));
+			TheList.appendChild(row);
+			row.className=this.selected?"sel":"unsel";
+		}
+	};
+	// Some global variable
+	var DefaultTags=null /*The list of the default tag*/, TheList=null /* The body of the table that will show the default tabs */;
+
+	// A single-instance class that manage the populating of the table
+	var Lister= {
+		_curFilter:null
+		,_timer:null
+		,clear:function() {
+			var n=TheList.childNodes.length;
+			while(n) TheList.removeChild(TheList.childNodes[--n]);
+		}
+		,_clearTimer:function() {
+			if(this._timer!=null) {
+				clearTimeout(this._timer);
+				this._timer=null;
+			}
+		}
+		,askRefresh:function() {
+			this._clearTimer();
+			this._timer=setTimeout("Lister.refreshNow()",200);
+		}
+		,refreshNow:function(force) {
+			this._clearTimer();
+			var s=document.getElementById("tbxFilter").value.toLowerCase().replace(/\s+/g," ").replace(/^ | $/g,""),k;
+			if(force||(typeof(this._curFilter)!="string")||(this._curFilter!=s)) {
+				this._curFilter=s;
+				this.clear();
+				for(k=0;k<DefaultTags.length;k++) {
+					if(DefaultTags[k].LowerName.indexOf(this._curFilter)>=0) DefaultTags[k].view();
+				}
+			}
+		}
+		,recount:function() {
+			var k,n=0;
+			for(k=0;k<DefaultTags.length;k++)
+				if(DefaultTags[k].selected)
+					n++;
+			document.getElementById("layCurSelectedCount").innerHTML=n.toString();
+		}
+		,showSelected:function() {
+			this._clearTimer();
+			this.clear();
+			for(var k=0;k<DefaultTags.length;k++) {
+				if(DefaultTags[k].selected)
+					DefaultTags[k].view();
+			}
+		}
+	};
+
+	function initPickFact() {
+		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach($preselDefault as $p) echo addslashes($p), '\\x01'; ?>";
+
+		DefaultTags=[<?php
+		$firstFact=TRUE;
+		foreach($FACTS as $factId => $factName) {
+			if (preg_match('/^_?[A-Z0-9]+$/', $factId, $matches)) {
+				if($firstFact) $firstFact=FALSE;
+				else echo ',';
+				echo 'new DefaultTag("'.addslashes($factId).'","'.addslashes($factName).'",preselectedDefaultTags.indexOf("\\x01'.addslashes($factId).'\\x01")>=0)';
+			}
+		}
+		?>];
+		//Sort defined tags alphabetically by name
+		n=DefaultTags.length
+		for(i=0;i<(n-1);i++) {
+			for(j=(i+1);j<n;j++) {
+				if(DefaultTags[i].LowerName>DefaultTags[j].LowerName) {
+					tmp=DefaultTags[i];
+					DefaultTags[i]=DefaultTags[j];
+					DefaultTags[j]=tmp;
+				}
+			}
+		}
+		TheList=document.getElementById("tbDefinedTags");
+		i=document.getElementById("tbxFilter");
+		i.onkeypress=i.onchange=i.onkeyup=function() {
+			Lister.askRefresh();
+		};
+		Lister.recount();
+		Lister.refreshNow();
+		document.getElementById("btnOk").disabled=false;
+	}
+	function DoOK() {
+		var result=[],k,linearResult,custom;
+		for(k=0;k<DefaultTags.length;k++) {
+			if(DefaultTags[k].selected) result.push(DefaultTags[k].Id);
+		}
+		linearResult="\x01"+result.join("\x01")+"\x01";
+		custom=document.getElementById("tbxCustom").value.toUpperCase().replace(/\s/g,"").split(",");
+		for(k=0;k<custom.length;k++) {
+			if(linearResult.indexOf("\x01"+custom[k]+"\x01")<0) {
+				linearResult+=custom[k]+"\x01";
+				result.push(custom[k]);
+			}
+		}
+		result = result.join(",")
+		if (result.substring(result.length-1, result.length)==',') {
+			result = result.substring(0, result.length-1);
+		}
+		pasteid(result);
+		window.close();
+		return false;
+	}
+	<?php echo WT_JS_END; ?>
+	<div id="layDefinedTags"><table id="tabDefinedTags">
+		<thead><tr>
+			<th>&nbsp;</th>
+			<th><?php echo i18n::translate('Tag') ?></th>
+			<th><?php echo i18n::translate('Description') ?></th>
+		</tr></thead>
+		<tbody id="tbDefinedTags">
+		</tbody>
+	</table></div>
+
+	<table id="tabDefinedTagsShow"><tbody><tr>
+		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo i18n::translate('Show only selected tags') ?> (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo i18n::translate('Show all tags') ?></a></td>
+	</tr></tbody></table>
+
+	<table id="tabFilterAndCustom"><tbody>
+		<tr><td><?php echo i18n::translate('Filter') ?>:</td><td><input type="text" id="tbxFilter" /></td></tr>
+		<tr><td><?php echo i18n::translate('Custom tags') ?>:</td><td><input type="text" id="tbxCustom" value="<?php echo addslashes(implode(',', $preselCustom)); ?>" /></td></tr>
+	<td><td></tbody></table>
+
+	<table id="tabAction"><tbody><tr>
+		<td><button id="btnOk" disabled="disabled" onclick="if(!this.disabled)DoOK();"><?php echo i18n::translate('Accept') ?></button></td>
+		<td><button onclick="window.close();return false"><?php echo i18n::translate('Cancel') ?></button></td>
+	<tr></tbody></table>
+	<?php
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -439,7 +657,8 @@ if ($action=="filter") {
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 			usort($myindilist, array('GedcomRecord', 'Compare'));
 			foreach($myindilist as $indi ) {
-
+			//	echo $indi->format_list('li', true);
+				
 				$nam = $indi->getAllNames();
 				$wholename = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 				$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -542,6 +761,7 @@ if ($action=="filter") {
 				echo "</li>";
 
 			echo "<hr />";
+			
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total individuals'), ' ', count($myindilist), '</tr></td>';
 		} else {
@@ -684,7 +904,7 @@ if ($action=="filter") {
 						if (!$embed){
 							echo "<a href=\"javascript:;\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
 						}
-						else echo "<a href=\"javascript:;\" onclick=\"pasteid('", $media["XREF"], "','", addslashes($media["TITL"]), "','", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
+						else echo "<a href=\"javascript:;\" onclick=\"pasteid('", $media["XREF"], "', '", addslashes($media["TITL"]), "', '", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
 						echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", i18n::translate('View'), "</a><br />";
 						if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<br /><span class=\"error\">", i18n::translate('The filename entered does not exist.'), "</span><br />";
 						else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
@@ -882,6 +1102,6 @@ if ($action=="filter") {
 echo "</div>"; // Close div that centers table
 
 // Set focus to the input field
-echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
+if ($type!='facts') echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
 
 print_simple_footer();
