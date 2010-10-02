@@ -42,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
 		//-- Search Function ------------------------------------------------------------
 		?>
 		<tr>
-			<td align="center" class="descriptionbox"><font size=1>Search for People to add:</font></td>
+			<td align="center" class="descriptionbox"><font size=1><?php echo i18n::translate('Search for People to add'); ?>:</font></td>
 		</tr>
 		<tr>
 			<td class="optionbox" >
@@ -63,7 +63,7 @@ if (!defined('WT_WEBTREES')) {
 				<?php
 				print "<input id=personid type=\"text\" size=\"20\" STYLE=\"color: #000000;\" value=\"\" />";
 				print "<a href=\"javascript: onclick=findindi()\">" ;
-				print "&nbsp;<font size=\"2\">&nbsp;Find</font>";
+				print "&nbsp;<font size=\"2\">&nbsp;".i18n::translate('Search')."</font>";
 				print '</a>';
 				?>
 			</td>

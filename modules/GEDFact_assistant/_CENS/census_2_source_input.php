@@ -141,7 +141,7 @@ global $TEXT_DIRECTION;
 
 	function changeCtry() {
 		// Change Year field Colour ----------------------------------------------
-		if (document.getElementById('censYear').value=="choose") {
+		if (document.getElementById('censYear').value=="<?php echo i18n::translate('choose'); ?>") {
 			document.getElementById('censYear').style.backgroundColor = "#ffaaaa";
 		} else {
 			document.getElementById('censYear').style.backgroundColor = "#ffffff";
@@ -163,7 +163,7 @@ global $TEXT_DIRECTION;
 		var cdate = cendate.format("dd NNN yyyy");
 		document.getElementById('censDate').value = cdate;
 		// Change Year field Colour ----------------------------------------------
-		if (document.getElementById('censYear').value=="choose") {
+		if (document.getElementById('censYear').value=="<?php echo i18n::translate('choose'); ?>") {
 			document.getElementById('censYear').style.backgroundColor = "#ffaaaa";
 		} else {
 			document.getElementById('censYear').style.backgroundColor = "#ffffff";
@@ -180,9 +180,9 @@ global $TEXT_DIRECTION;
 				// alert('IN THE USA');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
-				censyear.forValue("UK").addOptions("choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-				censyear.forValue("USA").addOptions("choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", cenyear);
-				censyear.forValue("UK").setDefaultOptions("choose");
+				censyear.forValue("UK").addOptions("<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+				censyear.forValue("USA").addOptions("<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", cenyear);
+				censyear.forValue("UK").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 				censyear.forValue("USA").setDefaultOptions(cenyear);
 				initDynamicOptionLists();
 				TheCenYear='';
@@ -191,10 +191,10 @@ global $TEXT_DIRECTION;
 				// alert('IN THE UK');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
-				censyear.forValue("UK").addOptions("choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
-				censyear.forValue("USA").addOptions("choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
+				censyear.forValue("UK").addOptions("<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
+				censyear.forValue("USA").addOptions("<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
 				censyear.forValue("UK").setDefaultOptions(cenyear);
-				censyear.forValue("USA").setDefaultOptions("choose");
+				censyear.forValue("USA").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 				initDynamicOptionLists();
 				TheCenYear='';
 			}
@@ -205,10 +205,10 @@ global $TEXT_DIRECTION;
 				// alert('NOW IN THE UK');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
-				censyear.forValue("UK").addOptions("choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
-				censyear.forValue("USA").addOptions("choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
+				censyear.forValue("UK").addOptions("<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
+				censyear.forValue("USA").addOptions("<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
 				censyear.forValue("UK").setDefaultOptions(cenyear);
-				censyear.forValue("USA").setDefaultOptions("choose");
+				censyear.forValue("USA").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 				initDynamicOptionLists();
 				TheCenYear='';
 			}
@@ -216,9 +216,9 @@ global $TEXT_DIRECTION;
 				// alert('NOW IN THE USA');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
-				censyear.forValue("UK").addOptions("choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-				censyear.forValue("USA").addOptions("choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", cenyear);
-				censyear.forValue("UK").setDefaultOptions("choose");
+				censyear.forValue("UK").addOptions("<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+				censyear.forValue("USA").addOptions("<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", cenyear);
+				censyear.forValue("UK").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 				censyear.forValue("USA").setDefaultOptions(cenyear);
 				initDynamicOptionLists();
 				TheCenYear='';
@@ -516,9 +516,9 @@ global $TEXT_DIRECTION;
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
 		if (cens_ctry =="USA") {
-			document.getElementById('Titl').value = '<?php echo 'Federal Census Transcription - '.$wholename.' - Household';?>';
+			document.getElementById('Titl').value = '<?php echo i18n::translate('Federal Census Transcription'),' - ',$wholename, ' - ', i18n::translate('Household');?>';
 		}else{
-			document.getElementById('Titl').value = '<?php echo 'Census Transcription - '.$wholename.' - Household';?>';
+			document.getElementById('Titl').value = '<?php echo i18n::translate('Census Transcription'),' - ',$wholename, ' - ', i18n::translate('Household');?>';
 		}
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
@@ -970,27 +970,27 @@ global $TEXT_DIRECTION;
 		if (TheCenYear=='') {
 			var censyear = new DynamicOptionList();
 			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-			censyear.forValue("USA").addOptions( "choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
-			censyear.forValue("UK").setDefaultOptions("choose");
-			censyear.forValue("USA").setDefaultOptions("choose");
+			censyear.forValue("UK").addOptions( "<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+			censyear.forValue("USA").addOptions( "<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
+			censyear.forValue("UK").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
+			censyear.forValue("USA").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 		}
 		else if (TheCenYear!='' && TheCenCtry=='UK') {
 			var censyear = new DynamicOptionList();
 			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", TheCenYear);
-			censyear.forValue("USA").addOptions( "choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
+			censyear.forValue("UK").addOptions( "<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", TheCenYear);
+			censyear.forValue("USA").addOptions( "<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930");
 			censyear.forValue("UK").setDefaultOptions(TheCenYear);
-			censyear.forValue("USA").setDefaultOptions("choose");
+			censyear.forValue("USA").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 			document.getElementById("UKOPT").selected = true;
 			document.getElementById("USOPT").selected = false;
 		}
 		else if (TheCenYear!='' && TheCenCtry=='USA') {
 			var censyear = new DynamicOptionList();
 			censyear.addDependentFields("censCtry","censYear");
-			censyear.forValue("UK").addOptions( "choose", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
-			censyear.forValue("USA").addOptions( "choose", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", TheCenYear);
-			censyear.forValue("UK").setDefaultOptions("choose");
+			censyear.forValue("UK").addOptions( "<?php echo i18n::translate('choose'); ?>", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
+			censyear.forValue("USA").addOptions( "<?php echo i18n::translate('choose'); ?>", "1790", "1800", "1810", "1820", "1830", "1840", "1850", "1860", "1870", "1880", "1890", "1900", "1910", "1920", "1930", TheCenYear);
+			censyear.forValue("UK").setDefaultOptions("<?php echo i18n::translate('choose'); ?>");
 			censyear.forValue("USA").setDefaultOptions(TheCenYear);
 			document.getElementById("UKOPT").selected = false;
 			document.getElementById("USOPT").selected = true;
@@ -1027,21 +1027,21 @@ global $TEXT_DIRECTION;
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
-			<div class="cens_sour_2">Title:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Title'); ?>:</div>
 			<script type="text/javascript">
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo "Census Transcription - ".$wholename." - Household";?>" />');
+				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo i18n::translate('Census Transcription'),' - ',$wholename, ' - ', i18n::translate('Household');?>" />');
 			</script>
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2">Reference:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Reference'); ?>:</div>
 			<input id="citation" name="citation" type="text" value="<?php echo "";?>" />
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2">Locality:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Locality'); ?>:</div>
 			<input id="locality" name="locality" type="text" value="<?php echo "";?>" />
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2">Notes:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Notes'); ?>:</div>
 			<input id="notes" name="notes" type="text" value="<?php echo "";?>" />
 		</div>
 	</div>
