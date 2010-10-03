@@ -37,12 +37,12 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class GEDFact_assistant_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Census Assistant');
+		return i18n::translate('Census assistant');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Provides a GUI to quickly generate a shared note linked to multiple indis, then automatically creates the census event for all indis linked to the shared note.');
+		return i18n::translate('The census assistant provides a simple way to enter census transcripts and link them to each person listed in the census.');
 	}
 
 	// Extend WT_Module

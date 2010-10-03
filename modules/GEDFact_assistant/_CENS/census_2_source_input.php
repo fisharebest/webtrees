@@ -515,11 +515,7 @@ global $TEXT_DIRECTION;
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		if (cens_ctry =="USA") {
-			document.getElementById('Titl').value = '<?php echo i18n::translate('Federal Census Transcription'),' - ',$wholename, ' - ', i18n::translate('Household');?>';
-		}else{
-			document.getElementById('Titl').value = '<?php echo i18n::translate('Census Transcription'),' - ',$wholename, ' - ', i18n::translate('Household');?>';
-		}
+		document.getElementById('Titl').value = '<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household');?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
@@ -1027,21 +1023,21 @@ global $TEXT_DIRECTION;
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Title'); ?>:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Title'); ?></div>
 			<script type="text/javascript">
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo i18n::translate('Census Transcription'),' - ',$wholename, ' - ', i18n::translate('Household');?>" />');
+				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household');?>" />');
 			</script>
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Reference'); ?>:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Reference'); ?></div>
 			<input id="citation" name="citation" type="text" value="<?php echo "";?>" />
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Locality'); ?>:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Place'); ?></div>
 			<input id="locality" name="locality" type="text" value="<?php echo "";?>" />
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Notes'); ?>:</div>
+			<div class="cens_sour_2"><?php echo i18n::translate('Notes'); ?></div>
 			<input id="notes" name="notes" type="text" value="<?php echo "";?>" />
 		</div>
 	</div>
