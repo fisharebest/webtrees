@@ -2535,8 +2535,8 @@ case 'SAVE_WATERMARK_THUMB':
 	break;
 
 case 'SERVER_URL':
-	$title=i18n::translate('<b>webtrees</b> URL');
-	$text=i18n::translate('If you use https or a port other than the default, you will need to enter the URL to access your server here.');
+	$title=i18n::translate('Website URL');
+	$text=i18n::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
 	break;
 
 case 'SHOW_AGE_DIFF':
