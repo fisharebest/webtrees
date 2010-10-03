@@ -1029,7 +1029,7 @@ global $TEXT_DIRECTION;
 			</script>
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Reference'); ?></div>
+			<div class="cens_sour_2"><?php echo translate_fact('PAGE'); ?></div>
 			<input id="citation" name="citation" type="text" value="<?php echo "";?>" />
 		</div>
 		<div class="cens_sour_1">
