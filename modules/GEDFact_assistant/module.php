@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: module.php 8245 2010-05-10 18:35:22Z lucasz $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -49,16 +49,9 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case '_CENS/census_3_find':
-			// TODO: these files should be methods in this class
+			// TODO: this file should be a method in this class
 			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
-		//	$mod=new _CENS/census_3_find;
-		//	echo $mod->main();
 			break;
 		}
 	}
-
-	// Implement WT_Module_Config
-	//public function getConfigLink() {
-		// return 'module.php?mod='.$this->getName().'&amp;mod_action=_CENS/census_3_find';
-	//}
 }
