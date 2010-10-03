@@ -2404,11 +2404,6 @@ case 'PEDIGREE_SHOW_GENDER':
 	$text=i18n::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br /><br />Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.');
 	break;
 
-case 'SESSION_SAVE_PATH':
-	$title=i18n::translate('Session save path');
-	$text=i18n::translate('The path to store <b>webtrees</b> session files.<br /><br />Some hosts do not have PHP configured properly and sessions are not maintained between page requests.  This option lets site administrators overcome that problem by saving files in one of their local directories.  The ./data/ directory is a good choice if you need to change this.  The default is to leave the field empty, which will use the Save path as configured in <i>php.ini</i>.');
-	break;
-
 case 'SESSION_TIME':
 	$title=i18n::translate('Session timeout');
 	$text=i18n::translate('The time in seconds that a <b>webtrees</b> session remains active before requiring a login.  The default is 7200, which is 2 hours.');

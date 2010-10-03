@@ -175,15 +175,7 @@ echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(500
 @set_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
 @set_site_setting('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);
 @set_site_setting('ALLOW_CHANGE_GEDCOM',             $ALLOW_CHANGE_GEDCOM);
-// Don't copy $LOGFILE_CREATE - it is no longer used
-// Don't copy $LOG_LANG_ERROR - it is no longer used
-@set_site_setting('SESSION_SAVE_PATH',               $PGV_SESSION_SAVE_PATH);
 @set_site_setting('SESSION_TIME',                    $PGV_SESSION_TIME);
-// Don't copy $SERVER_URL - it will not be applicable!
-// Don't copy $LOGIN_URL - it will not be applicable!
-// $MAX_VIEWS and $MAX_VIEW_TIME are no longer used
-// Don't copy $MEMORY_LIMIT - use the value from setup.php
-// Don't copy $COMMIT_COMMAND - it will not be applicable!
 @set_site_setting('SMTP_ACTIVE',                     $PGV_SMTP_ACTIVE ? 'external' : 'internal');
 @set_site_setting('SMTP_HOST',                       $PGV_SMTP_HOST);
 @set_site_setting('SMTP_HELO',                       $PGV_SMTP_HELO);

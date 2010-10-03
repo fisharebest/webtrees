@@ -969,6 +969,18 @@ try {
 		" PRIMARY KEY (ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
+	self::exec(
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}session` (".
+		" session_id   CHAR(32)    NOT NULL,".
+		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
+		" user_id      INTEGER     NOT NULL,".
+		" ip_address   VARCHAR(32) NOT NULL,".
+		" session_data MEDIUMBLOB  NOT NULL,".
+		" PRIMARY KEY     (session_id),".
+		"         KEY ix1 (session_time),".
+		"         KEY ix2 (user_id, ip_address)"
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
 
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
@@ -1004,14 +1016,13 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '1'),".
+		"('WT_SCHEMA_VERSION',               '2'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
 		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1'),".
 		"('ALLOW_USER_THEMES',               '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
-		"('SESSION_SAVE_PATH',               ''),".
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
 		"('LOGIN_URL',                       'login.php'),".

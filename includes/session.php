@@ -48,7 +48,7 @@ define('WT_DEBUG_SQL',  false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 1);
+define('WT_SCHEMA_VERSION', 2);
 
 // Regular expressions for validating user input, etc.
 define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
@@ -205,8 +205,9 @@ if (file_exists(WT_ROOT.'data/config.ini.php')) {
 	exit;
 }
 
-// Connect to the database
+require WT_ROOT.'includes/authentication.php';
 
+// Connect to the database
 try {
 	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
 	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
@@ -242,8 +243,6 @@ if (!ini_get('safe_mode')) {
 	}
 }
 
-require WT_ROOT.'includes/authentication.php';
-
 // Determine browser type
 $BROWSERTYPE = 'other';
 if (!empty($_SERVER['HTTP_USER_AGENT'])) {
@@ -273,6 +272,39 @@ if ($SEARCH_SPIDER && !array_key_exists(WT_SCRIPT_NAME , array(
 	exit;
 }
 
+// Store our session data in the database.
+session_set_save_handler(
+	function($save_path, $session_name) { // open
+		return true;
+	},
+	function() { // close
+		return true;
+	},
+	function($id) { // read
+		return WT_DB::prepare(
+			"SELECT session_data FROM `##session` WHERE session_id=?"
+		)->execute(array($id))->fetchOne();
+	},
+	function($id, $data) { // write
+		WT_DB::prepare(
+			"REPLACE INTO `##session` (session_id, user_id, ip_address, session_data) VALUES (?,?,?,?)"
+		)->execute(array($id, WT_USER_ID, $_SERVER['REMOTE_ADDR'], $data));
+		return true;
+	},
+	function($id) { // destroy
+		WT_DB::prepare(
+			"DELETE FROM `##session` WHERE session_id=?"
+		)->execute(array($id));
+		return true;
+	},
+	function($maxlifetime) { // gc
+		WT_DB::prepare(
+			"DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), ? SECOND)"
+		)->execute(array($maxlifetime));
+		return true;
+	}
+);
+
 // Use the Zend_Session object to start the session.
 // This allows all the other Zend Framework components to integrate with the session
 define('WT_SESSION_NAME', 'WT_SESSION');
@@ -281,9 +313,6 @@ $cfg=array(
 	'cookie_lifetime' => get_site_setting('SESSION_TIME'),
 	'cookie_path'     => WT_SCRIPT_PATH,
 );
-if (get_site_setting('SESSION_SAVE_PATH')) {
-	$cfg['save_path']=get_site_setting('SESSION_SAVE_PATH');
-}
 Zend_Session::start($cfg);
 
 // Register a session "namespace" to store session data.  This is better than
