@@ -313,8 +313,15 @@ function print_fact(&$eventObj, $noedit=false) {
 		// -- Enhanced ASSOciates > RELAtionship
 		print_asso_rela_record($pid, $factrec, true, gedcom_record_type($pid, get_id_from_gedcom($GEDCOM)));
 		// -- find _WT_USER field
-		$ct = preg_match("/2 _WT_USER (.*)/", $factrec, $match);
-		if ($ct>0) echo " - ", translate_fact('_WT_USER'), ": ", $match[1];
+		if (preg_match("/\n2 _WT_USER (.+)/", $factrec, $match)) {
+			$fullname=getUserFullname(getUserId($match[1])); // may not exist	
+			echo ' - ', translate_fact('_WT_USER'), ': ';
+			if ($fullname) {
+				echo '<span title="'.htmlspecialchars($fullname).'">'.$match[1].'</span>';
+			} else {
+				echo $match[1];
+			}
+		}
 		// -- Find RESN tag
 		if (isset($resn_value)) {
 			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
@@ -383,7 +390,7 @@ function print_fact(&$eventObj, $noedit=false) {
 							echo "<span class=\"label\">", $label, ": </span>";
 						}
 						echo htmlspecialchars($match[$i][2], ENT_COMPAT, 'UTF-8');
-						echo "<br />";
+						echo "!<br />";
 					}
 				}
 			}
