@@ -146,11 +146,6 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td>";
 			}
 			$content .= "</tr></table>";
-			$content .= '<script language="JavaScript" type="text/javascript">
-				<!--
-				if (sizeLines) sizeLines();
-				-->
-				</script>';
 		} else {
 			$content=i18n::translate('You must select an individual and chart type in the block configuration settings.');
 		}
