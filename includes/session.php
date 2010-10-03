@@ -299,7 +299,7 @@ session_set_save_handler(
 	},
 	function($maxlifetime) { // gc
 		WT_DB::prepare(
-			"DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), ? SECOND)"
+			"DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)"
 		)->execute(array($maxlifetime));
 		return true;
 	}
