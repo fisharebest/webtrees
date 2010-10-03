@@ -181,6 +181,18 @@ function edit_field_language($name, $selected='', $extra='') {
 	return select_edit_control($name, i18n::installed_languages(), null, $selected, $extra);
 }
 
+// Print an edit control for a username
+function edit_field_username($name, $selected='', $extra='') {
+	$all_users=WT_DB::prepare(
+		"SELECT user_name, CONCAT_WS(' ', real_name, '-', user_name) FROM `##user` ORDER BY real_name"
+	)->fetchAssoc();
+	// The currently selected user may not exist
+	if ($selected && !array_key_exists($selected, $all_users)) {
+		$all_users[$selected]=$selected;
+	}
+	return select_edit_control($name, $all_users, '-', $selected, $extra);
+}
+
 // Print an edit control for a ADOP field
 function edit_field_adop($name, $selected='', $extra='') {
 	global $ADOP_CODES;
@@ -1459,17 +1471,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	} else if ($fact=="RELA") {
 		echo edit_field_rela($element_name, strtolower($value));
 	} else if ($fact=="_WT_USER") {
-		$text=strtolower($value);
-		echo "<select id=\"", $element_id, "\" name=\"", $element_name, "\" >";
-		echo '<option value=""';
-		if (''==$text) echo ' selected="selected"';
-		echo ">-</option>";
-		foreach (get_all_users('asc', 'username') as $user_id=>$user_name) {
-			echo "<option value=\"", $user_name, "\"";
-			if ($user_name==$text) echo " selected=\"selected\"";
-			echo ">", $user_name, "</option>";
-		}
-		echo "</select>";
+		echo edit_field_username($element_name, $value);
 	} else if ($fact=="RESN") {
 		?>
 		<script type="text/javascript">
