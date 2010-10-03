@@ -62,7 +62,7 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames=get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, '');
+		$top_surnames=get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {

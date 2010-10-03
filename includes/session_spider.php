@@ -79,10 +79,9 @@ function gen_spider_session_name($bot_name, $bot_language) {
 // Convert user-friendly such as '123.45.*.*' into SQL '%' wildcards.
 // Note: you may need to blcok IPv6 addresses as well as IPv4 ones.
 try {
-	$banned_ip=WT_DB::prepareLimit(
+	$banned_ip=WT_DB::prepare(
 		"SELECT ip_address, comment FROM `##ip_address`".
-		" WHERE category='banned' AND ? LIKE REPLACE(ip_address, '*', '%')",
-		1
+		" WHERE category='banned' AND ? LIKE REPLACE(ip_address, '*', '%') LIMIT 1"
 	)->execute(array($_SERVER['REMOTE_ADDR']))->fetchOneRow();
 	if ($banned_ip) {
 		$log_msg='session_spider.php blocked IP Address: '.$_SERVER['REMOTE_ADDR'].' by regex: '.$banned_ip->ip_address;
@@ -320,10 +319,9 @@ if(!$real) {
 //   To return to normal, the admin MUST use a different IP to get to admin
 //   mode or update the table pgv_ip_address directly.
 try {
-	$search_engine=WT_DB::prepareLimit(
+	$search_engine=WT_DB::prepare(
 		"SELECT ip_address, comment FROM `##ip_address`".
-		" WHERE category='search-engine' AND ? LIKE REPLACE(ip_address, '*', '%')",
-		1
+		" WHERE category='search-engine' AND ? LIKE REPLACE(ip_address, '*', '%') LIMIT 1"
 	)->execute(array($_SERVER['REMOTE_ADDR']))->fetchOneRow();
 	if ($search_engine) {
 		if (empty($SEARCH_SPIDER)) {

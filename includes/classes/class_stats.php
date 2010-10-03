@@ -281,7 +281,7 @@ class stats {
 
 	function gedcomUpdated() {
 		$row=
-			WT_DB::prepareLimit("SELECT d_year, d_month, d_day FROM `##dates` WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type", 1)
+			WT_DB::prepare("SELECT d_year, d_month, d_day FROM `##dates` WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type LIMIT 1")
 			->execute(array($this->_ged_id, 'CHAN'))
 			->fetchOneRow();
 		if ($row) {
@@ -887,7 +887,7 @@ class stats {
 			."SELECT d_year, d_type, d_fact, d_gid"
 			." FROM `##dates`"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0"
-			." ORDER BY d_julianday1 {$life_dir}, d_type"
+			." ORDER BY d_julianday1 {$life_dir}, d_type LIMIT 1"
 		/*//testing - too slow
 			.' SELECT'
 				.' d2.d_year,'
@@ -924,7 +924,7 @@ class stats {
 			.' ORDER BY'
 				." d_julianday1 {$life_dir}, d_type"
 		*/
-		, 1);
+		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
 		$record=GedcomRecord::getInstance($row['d_gid']);
@@ -1448,8 +1448,8 @@ class stats {
 				.' death.d_julianday1>birth.d_julianday2 AND'
 				.$sex_search
 			.' ORDER BY'
-				.' age DESC'
-		, 1);
+				.' age DESC LIMIT 1'
+		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
 		$person=Person::getInstance($row['id']);
@@ -1483,6 +1483,7 @@ class stats {
 			$sex_search = '';
 		}
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT '
 				.' MAX(death.d_julianday2-birth.d_julianday1) AS age,'
@@ -1505,8 +1506,8 @@ class stats {
 			.' GROUP BY'
 				.' deathdate'
 			.' ORDER BY'
-				.' age DESC'
-		, $total);
+				.' age DESC LIMIT '.$total
+		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
@@ -1554,6 +1555,7 @@ class stats {
 			$sex_search = '';
 		}
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' birth.d_gid AS id,'
@@ -1572,8 +1574,8 @@ class stats {
 			.' GROUP BY'
 				.' id'
 			.' ORDER BY'
-				.' age ASC'
-		, $total);
+				.' age ASC LIMIT '.$total
+		);
 		if (!isset($rows)) {return 0;}
 		$top10 = array();
 		foreach ($rows as $row) {
@@ -1633,7 +1635,7 @@ class stats {
 				.' birth.d_julianday1<>0 AND'
 				.' death.d_julianday1>birth.d_julianday2'
 				.$sex_search
-		, 1);
+		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
 		$age = $row['age'];
@@ -1835,8 +1837,8 @@ class stats {
 				." d_fact {$fact_query} AND"
 				.' d_julianday1<>0'
 			.' ORDER BY'
-				." d_julianday1 {$direction}, d_type"
-		, 1);
+				." d_julianday1 {$direction}, d_type LIMIT 1"
+		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
 		$record=GedcomRecord::getInstance($row['id']);
@@ -1993,8 +1995,8 @@ class stats {
 				.' married.d_julianday2 > birth.d_julianday1 AND'
 				." i_sex='{$sex}'"
 			.' ORDER BY'
-				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
-		, 1);
+				." married.d_julianday2-birth.d_julianday1 {$age_dir} LIMIT 1"
+		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
 		if (isset($row['famid'])) $family=Family::getInstance($row['famid']);
@@ -2174,8 +2176,9 @@ class stats {
 			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND'
 					 .' wifebirth.d_julianday1 <> 0';
 		}
+		$total=(int)$total;
 		$rows=self::_runSQL(''
-			.' SELECT DISTINCT'
+			.' SELECT'
 				.' fam.f_id AS family,'
 				.$query1
 			.' FROM'
@@ -2194,8 +2197,8 @@ class stats {
 			.' GROUP BY'
 				.' family'
 			.' ORDER BY'
-				." age DESC"
-		,$total);
+				." age DESC LIMIT 1"
+		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $fam) {
@@ -2236,7 +2239,7 @@ class stats {
 		if ($sex == 'F') {$sex_field = 'WIFE';}else{$sex_field = 'HUSB';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$rows=self::_runSQL(''
-			.' SELECT DISTINCT'
+			.' SELECT'
 				.' parentfamily.l_to AS id,'
 				.' childbirth.d_julianday2-birth.d_julianday1 AS age'
 			.' FROM'
@@ -2259,8 +2262,8 @@ class stats {
 				.' birth.d_julianday1 <> 0 AND'
 				.' childbirth.d_julianday2 > birth.d_julianday1'
 			.' ORDER BY'
-				." age {$age_dir}"
-		, 1);
+				." age {$age_dir} LIMIT 1"
+		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
 		if (isset($row['id'])) $person=Person::getInstance($row['id']);
@@ -2714,8 +2717,8 @@ class stats {
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
-				.' tot DESC'
-		, 1);
+				.' tot DESC LIMIT 1'
+		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
 		$family=Family::getInstance($row['id']);
@@ -2742,6 +2745,7 @@ class stats {
 	function _topTenFamilyQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' f_numchil AS tot,'
@@ -2751,8 +2755,8 @@ class stats {
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
-				.' tot DESC'
-		, $total);
+				.' tot DESC LIMIT '.$total
+		);
 		if (!isset($rows[0])) {return '';}
 		if(count($rows) < $total){$total = count($rows);}
 		$top10 = array();
@@ -2785,6 +2789,7 @@ class stats {
 		if ($params === null) {$params = array();}
 		if (isset($params[0])) {$total = $params[0];}else{$total = 10;}
 		if (isset($params[1])) {$one = $params[1];}else{$one = false;} // each family only once if true
+		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT DISTINCT'
 				.' link1.l_from AS family,'
@@ -2812,8 +2817,8 @@ class stats {
 				.' child2.d_julianday2 <> 0 AND'
 				.' child1.d_gid <> child2.d_gid'
 			.' ORDER BY'
-				." age DESC"
-		,$total);
+				." age DESC LIMIT ".$total
+		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		if ($one) $dist = array();
@@ -2905,6 +2910,7 @@ class stats {
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
 		if (isset($params[3]) && $params[3] != '') {$total = strtolower($params[3]);}else{$total = 10;}
 		$sizes = explode('x', $size);
+		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' f_numchil AS tot,'
@@ -2914,8 +2920,8 @@ class stats {
 			.' WHERE'
 				." f_file={$this->_ged_id}"
 			.' ORDER BY'
-				.' tot DESC'
-		, $total);
+				.' tot DESC LIMIT '.$total
+		);
 		if (!isset($rows[0])) {return '';}
 		$tot = 0;
 		foreach ($rows as $row) {$tot += $row['tot'];}
@@ -3158,6 +3164,7 @@ class stats {
 	function _topTenGrandFamilyQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' COUNT(*) AS tot,'
@@ -3181,8 +3188,8 @@ class stats {
 			.' GROUP BY'
 				.' id'
 			.' ORDER BY'
-				.' tot DESC'
-		, $total);
+				.' tot DESC LIMIT '.$total
+		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
@@ -3694,13 +3701,13 @@ class stats {
 		return $b['match']-$a['match'];
 	}
 
-	static function _runSQL($sql, $count=0) {
+	static function _runSQL($sql) {
 		static $cache = array();
-		$id = md5($sql)."_{$count}";
+		$id = md5($sql);
 		if (isset($cache[$id])) {
 			return $cache[$id];
 		}
-		$rows=WT_DB::prepareLimit($sql, $count)->fetchAll(PDO::FETCH_ASSOC);
+		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		$cache[$id]=$rows;
 		return $rows;
 	}

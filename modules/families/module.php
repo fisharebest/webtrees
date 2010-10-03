@@ -208,14 +208,13 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if (strlen($query)<2) return '';
 
 		//-- search for INDI names
-		$sql=
-		"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
-		" FROM `##individuals`, `##name`".
-		" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
-		" AND i_id=n_id AND i_file=n_file AND i_file=?".
-		" ORDER BY n_sort";
-		$rows=
-		WT_DB::prepareLimit($sql, WT_AUTOCOMPLETE_LIMIT)
+		$rows=WT_DB::prepare(
+			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+			" FROM `##individuals`, `##name`".
+			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
+			" AND i_id=n_id AND i_file=n_file AND i_file=?".
+			" ORDER BY n_sort LIMIT ".WT_AUTOCOMPLETE_LIMIT
+		)
 		->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
 		$ids = array();
@@ -235,10 +234,8 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$vars=array_merge($vars, $ids, $ids);
 		}
 
-		$sql="SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` WHERE {$where} AND f_file=?";
 		$vars[]=WT_GED_ID;
-		$rows=
-		WT_DB::prepareLimit($sql, WT_AUTOCOMPLETE_LIMIT)
+		$rows=WT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` WHERE {$where} AND f_file=? LIMIT ".WT_AUTOCOMPLETE_LIMIT)
 		->execute($vars)
 		->fetchAll(PDO::FETCH_ASSOC);
 

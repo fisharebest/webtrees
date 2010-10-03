@@ -1667,10 +1667,11 @@ function delete_gedcom($ged_id) {
 */
 function get_top_surnames($ged_id, $min, $max) {
 	// Use n_surn, rather than n_surname, as it is used to generate url's for
-	// the inid-list, etc.
+	// the indi-list, etc.
+	$max=(int)$max;
 	return
-		WT_DB::prepareLimit("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=".$min." ORDER BY 2 DESC", $max)
-		->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN'))
+		WT_DB::prepare("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC LIMIT ".$max)
+		->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
 		->fetchAssoc();
 }
 
@@ -2292,12 +2293,11 @@ function get_user_name($user_id) {
 }
 
 function get_newest_registered_user() {
-	return WT_DB::prepareLimit(
+	return WT_DB::prepare(
 		"SELECT u.user_id".
 		" FROM `##user` u".
 		" LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name=?) ".
-		" ORDER BY us.setting_value DESC",
-		1
+		" ORDER BY us.setting_value DESC LIMIT 1"
 	)->execute(array('reg_timestamp'))
 		->fetchOne();
 }

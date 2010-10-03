@@ -247,22 +247,6 @@ class WT_DB {
 		return new WT_DBStatement(self::$pdo->prepare($statement));
 	}
 
-	// Limit a query to the first $n rows
-	public static function prepareLimit($statement, $n) {
-		if (!self::$pdo instanceof PDO) {
-			throw new PDOException("No Connection Established");
-		}
-		$statement=str_replace('##', WT_TBLPREFIX, $statement);
-		if ($n) {
-			switch (self::$pdo->getAttribute(PDO::ATTR_DRIVER_NAME)) {
-			case 'mysql':
-				$statement="{$statement} LIMIT {$n}";
-				break;
-			}
-		}
-		return new WT_DBStatement(self::$pdo->prepare($statement));
-	}
-
 	// Map all other functions onto the base PDO object
 	public function __call($function, $params) {
 		return call_user_func_array(array(self::$pdo, $function), $params);

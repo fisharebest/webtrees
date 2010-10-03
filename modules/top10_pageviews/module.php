@@ -48,7 +48,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		global $ctype, $WT_IMAGES, $SHOW_COUNTER, $TEXT_DIRECTION, $THEME_DIR;
 
 		$count_placement=get_block_setting($block_id, 'count_placement', 'before');
-		$num=get_block_setting($block_id, 'num', 10);
+		$num=(int)get_block_setting($block_id, 'num', 10);
 		$block=get_block_setting($block_id, 'block', false);
 		if ($cfg) {
 			foreach (array('count_placement', 'num', 'block') as $name) {
@@ -75,12 +75,11 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		} else {
 			// load the lines from the file
-			$top10=WT_DB::prepareLimit(
+			$top10=WT_DB::prepare(
 				"SELECT page_parameter, page_count".
 				" FROM `##hit_counter`".
 				" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
-				" ORDER BY page_count DESC",
-				$num
+				" ORDER BY page_count DESC LIMIT ".$num
 			)->execute(array(WT_GED_ID))->FetchAssoc();
 
 
