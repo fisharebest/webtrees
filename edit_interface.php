@@ -498,15 +498,15 @@ case 'add':
 	break;
 //------------------------------------------------------------------------------
 case 'addchild':
-	print_indi_form("addchildaction", $famid, "", "", "CHIL", $gender);
+	print_indi_form('addchildaction', $famid, '', '', 'CHIL', $gender);
 	break;
 //------------------------------------------------------------------------------
 case 'addspouse':
-	print_indi_form("addspouseaction", $famid, "", "", $famtag);
+	print_indi_form('addspouseaction', $famid, '', '', $famtag);
 	break;
 //------------------------------------------------------------------------------
 case 'addnewparent':
-	print_indi_form("addnewparentaction", $famid, "", "", $famtag);
+	print_indi_form('addnewparentaction', $famid, '', '', $famtag);
 	break;
 //------------------------------------------------------------------------------
 case 'addopfchild':
@@ -514,38 +514,40 @@ case 'addopfchild':
 	break;
 //------------------------------------------------------------------------------
 case 'addfamlink':
-	echo "<form method=\"post\" name=\"addchildform\" action=\"edit_interface.php\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"linkfamaction\" />\n";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
-	echo "<input type=\"hidden\" name=\"famtag\" value=\"$famtag\" />\n";
-	echo "<table class=\"facts_table\">";
-	echo "<tr><td class=\"facts_label\">", i18n::translate('Family'), "</td>";
-	echo "<td class=\"facts_value\"><input type=\"text\" id=\"famid\" name=\"famid\" size=\"8\" /> ";
-	print_findfamily_link("famid");
-	echo "\n</td></tr>";
+	echo '<form method="post" name="addchildform" action="edit_interface.php">';
+	echo '<input type="hidden" name="action" value="linkfamaction" />';
+	echo '<input type="hidden" name="pid" value="', $pid, '" />';
+	echo '<input type="hidden" name="famtag" value="', $famtag, '" />';
+	echo '<table class="facts_table">';
+	echo '<tr><td class="facts_label">', i18n::translate('Family'), '</td>';
+	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8" />';
+	print_findfamily_link('famid');
+	echo '</td></tr>';
 	if ($famtag=='CHIL') {
-		$sex = Person::getInstance($pid)->getSex();
-		echo '<tr><td class="facts_label">', i18n::translate('Pedigree'), '</td>';
-		if ($sex=='F') echo '<td class="facts_value">', edit_field_pedi_f('pedigree'), '</td></tr>';
-		else if ($sex=='M') echo '<td class="facts_value">', edit_field_pedi_m('pedigree'), '</td></tr>';
-		else echo '<td class="facts_value">', edit_field_pedi_u('pedigree'), '</td></tr>';
+		echo '<tr><td class="facts_label">', i18n::translate('Pedigree'), '</td><td class="facts_value">';
+		switch (Person::getInstance($pid)->getSex()) {
+		case 'M': echo edit_field_pedi_m('pedigree'); break;
+		case 'F': echo edit_field_pedi_f('pedigree'); break;
+		case 'U': echo edit_field_pedi_u('pedigree'); break;
+		}
+		echo '</td></tr>';
 	}
 	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo '<input type="checkbox" checked="checked" name="preserve_last_changed" />';
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo '<input type="checkbox" name="preserve_last_changed" />';
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
-		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), '<br />';
+		$event = new Event(get_sub_record(1, '1 CHAN', $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
+		echo '</td></tr>';
 	}
-	echo "</table>\n";
-	echo "<input type=\"submit\" value=\"", i18n::translate('Set link'), "\" /><br />\n";
-	echo "</form>\n";
+	echo '</table>';
+	echo '<input type="submit" value="', i18n::translate('Set link'), '" /><br />';
+	echo '</form>';
 	break;
 //------------------------------------------------------------------------------
 case 'linkspouse':
