@@ -194,7 +194,7 @@ function edit_field_username($name, $selected='', $extra='') {
 }
 
 // Print an edit control for a ADOP field
-function edit_field_adop($name, $selected='', $extra='') {
+function edit_field_adop_u($name, $selected='', $extra='') {
 	global $ADOP_CODES;
 	return select_edit_control($name, $ADOP_CODES, null, $selected, $extra);
 }
@@ -212,7 +212,7 @@ function edit_field_adop_m($name, $selected='', $extra='') {
 }
 
 // Print an edit control for a PEDI field
-function edit_field_pedi($name, $selected='', $extra='') {
+function edit_field_pedi_u($name, $selected='', $extra='') {
 	global $PEDI_CODES;
 	return select_edit_control($name, $PEDI_CODES, '', $selected, $extra);
 }
@@ -1458,13 +1458,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		switch ($gender) {
 		case 'M': echo edit_field_adop_m($element_name, $value); break;
 		case 'F': echo edit_field_adop_f($element_name, $value); break;
-		default:  echo edit_field_adop  ($element_name, $value); break;
+		default:  echo edit_field_adop_u($element_name, $value); break;
 		}
 	} else if ($fact=="PEDI") {
 		switch ($gender) {
 		case 'M': echo edit_field_pedi_m($element_name, $value); break;
 		case 'F': echo edit_field_pedi_f($element_name, $value); break;
-		default:  echo edit_field_pedi  ($element_name, $value); break;
+		default:  echo edit_field_pedi_u($element_name, $value); break;
 		}
 	} else if ($fact=="STAT") {
 		echo select_edit_control($element_name, $STATUS_CODES, '', $value);

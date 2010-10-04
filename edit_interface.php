@@ -528,7 +528,7 @@ case 'addfamlink':
 		echo '<tr><td class="facts_label">', i18n::translate('Pedigree'), '</td>';
 		if ($sex=='F') echo '<td class="facts_value">', edit_field_pedi_f('pedigree'), '</td></tr>';
 		else if ($sex=='M') echo '<td class="facts_value">', edit_field_pedi_m('pedigree'), '</td></tr>';
-		else echo '<td class="facts_value">', edit_field_pedi_('pedigree'), '</td></tr>';
+		else echo '<td class="facts_value">', edit_field_pedi_u('pedigree'), '</td></tr>';
 	}
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
