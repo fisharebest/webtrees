@@ -193,12 +193,10 @@ if (!empty($pid)) {
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($pid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
-	}
-	else {
+	} else {
 		$disp = true;
 	}
-}
-else if (!empty($famid)) {
+} elseif (!empty($famid)) {
 	if ($famid != "new") {
 		$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
 		$ct = preg_match("/^0 @$famid@ (.*)/i", $gedrec, $match);
@@ -209,13 +207,11 @@ else if (!empty($famid)) {
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($famid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
 	}
-}
-else if (($action!="addchild")&&($action!="addchildaction")&&($action!="addnewsource")&&($action!="mod_edit_fact")&&($action!="addnewnote")&&($action!="addmedia_links")&&($action!="addnoteaction")&&($action!="addnoteaction_assisted")) {
+} elseif (($action!="addchild")&&($action!="addchildaction")&&($action!="addnewsource")&&($action!="mod_edit_fact")&&($action!="addnewnote")&&($action!="addmedia_links")&&($action!="addnoteaction")&&($action!="addnoteaction_assisted")) {
 	echo "<span class=\"error\">The \$pid variable was empty. Unable to perform $action xxx.</span>";
 	print_simple_footer();
 	$disp = true;
-}
-else {
+} else {
 	$disp = true;
 }
 
@@ -242,7 +238,7 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 	if (empty($gedrec)) {
 		echo "<br /><span class=\"error\">", i18n::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), "</span>";
 	}
-	echo "<br /><br /><div class=\"center\"><a href=\"javascript: ", i18n::translate('Close Window'), "\" onclick=\"window.close();\">", i18n::translate('Close Window'), "</a></div>\n";
+	echo "<br /><br /><div class=\"center\"><a href=\"javascript: ", i18n::translate('Close Window'), "\" onclick=\"window.close();\">", i18n::translate('Close Window'), "</a></div>";
 	print_simple_footer();
 	exit;
 }
@@ -261,8 +257,7 @@ $level0type = $type;
 if ($type=="INDI") {
 	$record=Person::getInstance($pid);
 	echo "<b>", PrintReady($record->getFullName()), "</b><br />";
-}
-elseif ($type=="FAM") {
+} elseif ($type=="FAM") {
 	if (!empty($pid)) {
 		$record=Family::getInstance($pid);
 	} else {
@@ -285,31 +280,28 @@ elseif ($type=="FAM") {
 if (strstr($action, "addchild")) {
 	if (empty($famid)) {
 		echo '<b>', i18n::translate('Add an unlinked person'), '</b>', help_link('edit_add_unlinked_person');
-	}
-	else if ($gender=="F") {
+	} elseif ($gender=="F") {
 		echo '<b>', i18n::translate('Add daughter'), '</b>', help_link('edit_add_child');
-	}
-	else if ($gender=="M") {
+	} elseif ($gender=="M") {
 		echo '<b>', i18n::translate('Add son'), '</b>', help_link('edit_add_child');
-	}
-	else {
+	} else {
 		echo '<b>', i18n::translate('Add child'), '</b>', help_link('edit_add_child');
 	}
-} else if (strstr($action, "addspouse")) {
+} elseif (strstr($action, "addspouse")) {
 	if ($famtag=="WIFE") {
 		echo '<b>', i18n::translate('Add wife'), '</b>';
 	} else {
 		echo '<b>', i18n::translate('Add husband'), '</b>';
 	}
 	echo help_link('edit_add_spouse');
-} else if (strstr($action, "addnewparent")) {
+} elseif (strstr($action, "addnewparent")) {
 	if ($famtag=="WIFE") {
 		echo '<b>', i18n::translate('Add a new mother'), '</b>';
 	} else {
 		echo '<b>', i18n::translate('Add a new father'), '</b>';
 	}
 	echo help_link('edit_add_parent');
-}else if (strstr($action, "addopfchild")) {
+} elseif (strstr($action, "addopfchild")) {
 	echo '<b>', i18n::translate('Add a child to create a one-parent family'), '</b>', help_link('edit_add_child');
 } else {
 	echo '<b>', i18n::translate($type), '</b>';
@@ -317,15 +309,11 @@ if (strstr($action, "addchild")) {
 //------------------------------------------------------------------------------
 switch ($action) {
 case 'delete':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	if (!empty($linenum)) {
 		if ($linenum===0) {
 			delete_gedrec($pid, WT_GED_ID);
 			echo i18n::translate('GEDCOM record successfully deleted.');
-		}
-		else {
+		} else {
 			$mediaid='';
 			if (isset($_REQUEST['mediaid'])) {
 				$mediaid = $_REQUEST['mediaid'];
@@ -357,10 +345,10 @@ case 'editraw':
 		exit;
 	} else {
 		echo "<br /><b>", i18n::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
-		echo "<form method=\"post\" action=\"edit_interface.php\">\n";
-		echo "<input type=\"hidden\" name=\"action\" value=\"updateraw\" />\n";
-		echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
-		echo "<input id=\"savebutton2\" type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
+		echo "<form method=\"post\" action=\"edit_interface.php\">";
+		echo "<input type=\"hidden\" name=\"action\" value=\"updateraw\" />";
+		echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />";
+		echo "<input id=\"savebutton2\" type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
 		// Remove the first line of the gedrec - things go wrong when users
 		// change either the TYPE or XREF
 		// Notes are special - they may contain data on the first line
@@ -369,22 +357,22 @@ case 'editraw':
 		echo '<textarea name="newgedrec1" rows="1"  cols="80" readonly="yes">', $gedrec1, '</textarea><br />';
 		echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br />";
 		if (WT_USER_IS_ADMIN) {
-			echo "<table class=\"facts_table\">\n";
+			echo "<table class=\"facts_table\">";
 			echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 			if ($NO_UPDATE_CHAN) {
-				echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+				echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 			} else {
-				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 			}
-			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 			$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 			echo format_fact_date($event, false, true);
-			echo "</td></tr>\n";
+			echo "</td></tr>";
 			echo "</table>";
 		}
 		print_specialchar_link("newgedrec", true);
-		echo "<br />\n";
+		echo "<br />";
 		echo "<input id=\"savebutton\" type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
 		echo "</form>";
 		echo WT_JS_START;
@@ -400,27 +388,27 @@ case 'editraw':
 //-- edit a fact record in a form
 case 'edit':
 	init_calendar_popup();
-	echo "<form name=\"editform\" method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />\n";
-	echo "<input type=\"hidden\" name=\"linenum\" value=\"$linenum\" />\n";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
-	echo "<input type=\"hidden\" id=\"pids_array_edit\" name=\"pids_array_edit\" value=\"no_array\" />\n";
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
+	echo "<form name=\"editform\" method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">";
+	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />";
+	echo "<input type=\"hidden\" name=\"linenum\" value=\"$linenum\" />";
+	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />";
+	echo "<input type=\"hidden\" id=\"pids_array_edit\" name=\"pids_array_edit\" value=\"no_array\" />";
+	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
 
 	echo "<table class=\"facts_table\">";
 	$level1type = create_edit_form($gedrec, $linenum, $level0type);
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
+		echo "</td></tr>";
 	}
 	echo "</table>";
 	if ($level0type=="SOUR" || $level0type=="REPO" || $level0type=="OBJE") {
@@ -440,8 +428,8 @@ case 'edit':
 		}
 	}
 
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
-	echo "</form>\n";
+	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
+	echo "</form>";
 	break;
 //------------------------------------------------------------------------------
 case 'add':
@@ -449,29 +437,29 @@ case 'add':
 	// Start of add section...
 	//
 	init_calendar_popup();
-	echo "<form name=\"addform\" method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />\n";
-	echo "<input type=\"hidden\" name=\"linenum\" value=\"new\" />\n";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
-	echo "<input type=\"hidden\" id=\"pids_array_add\" name=\"pids_array_add\" value=\"no_array\" />\n";
+	echo "<form name=\"addform\" method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">";
+	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />";
+	echo "<input type=\"hidden\" name=\"linenum\" value=\"new\" />";
+	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />";
+	echo "<input type=\"hidden\" id=\"pids_array_add\" name=\"pids_array_add\" value=\"no_array\" />";
 
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Add'), "\" /><br />\n";
+	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Add'), "\" /><br />";
 	echo "<table class=\"facts_table\">";
 
 	create_add_form($fact);
 
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
+		echo "</td></tr>";
 	}
 	echo "</table>";
 
@@ -492,8 +480,8 @@ case 'add':
 	//-- RESN missing in new structure, RESN can be added to all level 1 tags
 	if (!in_array("RESN", $tags)) print_add_layer("RESN");
 
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Add'), "\" /><br />\n";
-	echo "</form>\n";
+	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Add'), "\" /><br />";
+	echo "</form>";
 // }
 	break;
 //------------------------------------------------------------------------------
@@ -552,11 +540,11 @@ case 'addfamlink':
 //------------------------------------------------------------------------------
 case 'linkspouse':
 	init_calendar_popup();
-	echo "<form method=\"post\" name=\"addchildform\" action=\"edit_interface.php\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"linkspouseaction\" />\n";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
-	echo "<input type=\"hidden\" name=\"famid\" value=\"new\" />\n";
-	echo "<input type=\"hidden\" name=\"famtag\" value=\"$famtag\" />\n";
+	echo "<form method=\"post\" name=\"addchildform\" action=\"edit_interface.php\">";
+	echo "<input type=\"hidden\" name=\"action\" value=\"linkspouseaction\" />";
+	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />";
+	echo "<input type=\"hidden\" name=\"famid\" value=\"new\" />";
+	echo "<input type=\"hidden\" name=\"famtag\" value=\"$famtag\" />";
 	echo "<table class=\"facts_table\">";
 	echo "<tr><td class=\"facts_label\">";
 	if ($famtag=="WIFE") {
@@ -567,22 +555,22 @@ case 'linkspouse':
 	echo "</td>";
 	echo "<td class=\"facts_value\"><input id=\"spouseid\" type=\"text\" name=\"spid\" size=\"8\" /> ";
 	print_findindi_link("spouseid", "");
-	echo "\n</td></tr>";
+	echo "</td></tr>";
 	add_simple_tag("0 MARR");
 	add_simple_tag("0 DATE", "MARR");
 	add_simple_tag("0 PLAC", "MARR");
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
+		echo "</td></tr>";
 	}
 	echo "</table>";
 	print_add_layer("ASSO");
@@ -593,16 +581,13 @@ case 'linkspouse':
 	print_add_layer("SHARED_NOTE");
 	print_add_layer("OBJE");
 	print_add_layer("RESN");
-	echo "<input type=\"submit\" value=\"", i18n::translate('Set link'), "\" /><br />\n";
-	echo "</form>\n";
+	echo "<input type=\"submit\" value=\"", i18n::translate('Set link'), "\" /><br />";
+	echo "</form>";
 	break;
 //------------------------------------------------------------------------------
 case 'linkfamaction':
 	// Make sure we have the right ID (f123 vs. F123)
 	$famid=Family::getInstance($famid)->getXref();
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 	if (!empty($famrec)) {
 		$itag = "FAMC";
@@ -643,9 +628,8 @@ case 'linkfamaction':
 				$famrec = trim($famrec) . "\n1 $famtag @$pid@\n";
 				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 			}
-		}
-		//-- if it is adding a husband or wife
-		else {
+		} else {
+			//-- if it is adding a husband or wife
 			//-- check if the family already has a HUSB or WIFE
 			$ct = preg_match("/1 $famtag @(.*)@/", $famrec, $match);
 			if ($ct>0) {
@@ -655,32 +639,24 @@ case 'linkfamaction':
 				if ($spid!=$pid) {
 					//-- change a of the old ids to the new id
 					$famrec = str_replace("1 $famtag @$spid@", "1 $famtag @$pid@", $famrec);
-					if (WT_DEBUG) {
-						echo "<pre>$famrec</pre>";
-					}
 					replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 					//-- remove the FAMS reference from the old husb/wife
 					if (!empty($spid)) {
 						$srec = find_gedcom_record($spid, WT_GED_ID, true);
 						if ($srec) {
 							$srec = str_replace("1 $itag @$famid@", "", $srec);
-							if (WT_DEBUG) {
-								echo "<pre>$srec</pre>";
-							}
 							replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN);
 						}
 					}
 				}
 			} else {
 				$famrec .= "\n1 $famtag @$pid@\n";
-				if (WT_DEBUG) {
-					echo "<pre>$famrec</pre>";
-				}
 				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 			}
 		}
+	} else {
+		echo "Family record not found";
 	}
-	else echo "Family record not found";
 	break;
 //------------------------------------------------------------------------------
 //-- add new source
@@ -728,14 +704,14 @@ case 'addnewsource':
 				echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 				echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 				if ($NO_UPDATE_CHAN) {
-					echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+					echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 				} else {
-					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 				}
-				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 				$event = new Event(get_sub_record(1, "1 CHAN", ""));
 				echo format_fact_date($event, false, true);
-				echo "</td></tr>\n";
+				echo "</td></tr>";
 			}
 		?>
 		</table>
@@ -775,9 +751,6 @@ case 'addnewsource':
 //------------------------------------------------------------------------------
 //-- create a source record from the incoming variables
 case 'addsourceaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	$newgedrec = "0 @XREF@ SOUR\n";
 	if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
 	if (!empty($EVEN) && count($EVEN)>0) {
@@ -815,14 +788,11 @@ case 'addsourceaction':
 		$newgedrec .= "1 REPO @$REPO@\n";
 		if (!empty($CALN)) $newgedrec .= "2 CALN $CALN\n";
 	}
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
-	}
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	$link = "source.php?sid=$xref&show_changes=yes";
 	if ($xref) {
-		echo "<br /><br />\n", i18n::translate('New source created successfully.'), "<br /><br />";
-		echo "<a href=\"javascript://SOUR $xref\" onclick=\"openerpasteid('$xref'); return false;\">", i18n::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$xref</b></a>\n";
+		echo "<br /><br />", i18n::translate('New source created successfully.'), "<br /><br />";
+		echo "<a href=\"javascript://SOUR $xref\" onclick=\"openerpasteid('$xref'); return false;\">", i18n::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$xref</b></a>";
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -858,16 +828,16 @@ case 'addnewnote':
 				echo "</tr>";
 			if (WT_USER_IS_ADMIN) {
 				echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-				echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+				echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 				if ($NO_UPDATE_CHAN) {
-					echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+					echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 				} else {
-					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 				}
-				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 				$event = new Event(get_sub_record(1, "1 CHAN", ""));
 				echo format_fact_date($event, false, true);
-				echo "</td></tr>\n";
+				echo "</td></tr>";
 			}
 			echo "</table>";
 			echo "<br /><br />";
@@ -879,9 +849,6 @@ case 'addnewnote':
 //------------------------------------------------------------------------------
 //-- create a shared note record from the incoming variables
 case 'addnoteaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	$newgedrec  = "0 @XREF@ NOTE\n";
 
 	if (isset($_REQUEST['EVEN'])) $EVEN = $_REQUEST['EVEN'];
@@ -934,9 +901,6 @@ case 'addnoteaction':
 		//$newgedrec .= "1 NOTE @$NOTE@\n";
 		if (!empty($CALN)) $newgedrec .= "2 CALN $CALN\n";
 	}
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
-	}
 	// $xref = "Test";
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 
@@ -945,8 +909,8 @@ case 'addnoteaction':
 	// -------------------------------------------------
 
 	if ($xref != "none") {
-		echo "<br /><br />\n".i18n::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
-		echo "<a href=\"javascript://NOTE $xref\" onclick=\"openerpasteid('$xref'); return false;\">".i18n::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>\n";
+		echo "<br /><br />".i18n::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
+		echo "<a href=\"javascript://NOTE $xref\" onclick=\"openerpasteid('$xref'); return false;\">".i18n::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>";
 		echo "<br /><br /><br /><br />";
 		echo "<br /><br /><br /><br />";
 	}
@@ -1024,10 +988,10 @@ case 'addmedia_links':
 //-- edit source
 case 'editsource':
 	init_calendar_popup();
-	echo "<form method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />\n";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />\n";
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
+	echo "<form method=\"post\" action=\"edit_interface.php\" enctype=\"multipart/form-data\">";
+	echo "<input type=\"hidden\" name=\"action\" value=\"update\" />";
+	echo "<input type=\"hidden\" name=\"pid\" value=\"$pid\" />";
+	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
 
 	echo "<table class=\"facts_table\">";
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
@@ -1044,7 +1008,7 @@ case 'editsource':
 		$fields = explode(' ', $gedlines[$i]);
 		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1]!="CHAN") {
 			$level1type = create_edit_form($gedrec, $i, $level0type);
-			echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />\n";
+			echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />";
 			$usedfacts[]=$fields[1];
 			foreach ($uniquefacts as $key=>$fact) {
 				if ($fact==$fields[1]) unset($uniquefacts[$key]);
@@ -1054,21 +1018,21 @@ case 'editsource':
 	foreach ($uniquefacts as $key=>$fact) {
 		$gedrec.="\n1 ".$fact;
 		$level1type = create_edit_form($gedrec, $lines++, $level0type);
-		echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />\n";
+		echo "<input type=\"hidden\" name=\"linenum[]\" value=\"$i\" />";
 	}
 
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
+		echo "</td></tr>";
 	}
 	echo "</table>";
 	print_add_layer("NOTE");
@@ -1076,8 +1040,8 @@ case 'editsource':
 	print_add_layer("OBJE");
 	//-- RESN missing in new structure, RESN can be added to all level 1 tags
 	if ($tag && !in_array("RESN", $tags)) print_add_layer("RESN");
-	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />\n";
-	echo "</form>\n";
+	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
+	echo "</form>";
 	break;
 //------------------------------------------------------------------------------
 //-- edit a Shared Note
@@ -1120,16 +1084,16 @@ case 'editnote':
 			<?php
 				if (WT_USER_IS_ADMIN) {
 					echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-					echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+					echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 					if ($NO_UPDATE_CHAN) {
-						echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+						echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 					} else {
-						echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+						echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 					}
-					echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+					echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 					$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 					echo format_fact_date($event, false, true);
-					echo "</td></tr>\n";
+					echo "</td></tr>";
 				}
 			?>
 		</table>
@@ -1183,16 +1147,16 @@ case 'addnewrepository':
 		<?php
 			if (WT_USER_IS_ADMIN) {
 				echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-				echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+				echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 				if ($NO_UPDATE_CHAN) {
-					echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+					echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 				} else {
-					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 				}
-				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 				$event = new Event(get_sub_record(1, "1 CHAN", ""));
 				echo format_fact_date($event, false, true);
-				echo "</td></tr>\n";
+				echo "</td></tr>";
 			}
 		?>
 		</table>
@@ -1203,9 +1167,6 @@ case 'addnewrepository':
 //------------------------------------------------------------------------------
 //-- create a repository record from the incoming variables
 case 'addrepoaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	$newgedrec = "0 @XREF@ REPO\n";
 	if (isset($_REQUEST['NAME'])) $NAME = $_REQUEST['NAME'];
 	if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
@@ -1235,14 +1196,11 @@ case 'addrepoaction':
 	if (!empty($EMAIL)) $newgedrec .= "1 EMAIL $EMAIL\n";
 	if (!empty($WWW)) $newgedrec .= "1 WWW $WWW\n";
 
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
-	}
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	$link = "repo.php?rid=$xref&show_changes=yes";
 	if ($xref) {
-		echo "<br /><br />\n", i18n::translate('New Repository created'), "<br /><br />";
-		echo "<a href=\"javascript://REPO $xref\" onclick=\"openerpasteid('$xref'); return false;\">", i18n::translate('Paste the following Repository ID into your editing fields to reference this Repository '), " <b>$xref</b></a>\n";
+		echo "<br /><br />", i18n::translate('New Repository created'), "<br /><br />";
+		echo "<a href=\"javascript://REPO $xref\" onclick=\"openerpasteid('$xref'); return false;\">", i18n::translate('Paste the following Repository ID into your editing fields to reference this Repository '), " <b>$xref</b></a>";
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1278,7 +1236,7 @@ case 'update':
 	if (!isset($cens_pids)){
 		$cens_pids = array($pid);
 		$idnums="";
-	}else{
+	} else {
 		$cens_pids = $cens_pids;
 		$idnums="multi";
 	}
@@ -1287,14 +1245,8 @@ case 'update':
 	foreach ($cens_pids as $pid) {
 		if (isset($pid)) {
 			$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
-		} else if (isset($famid)) {
+		} elseif (isset($famid)) {
 			$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
-		}
-
-		if (WT_DEBUG) {
-			phpinfo(INFO_VARIABLES);
-			echo "<pre>$gedrec</pre>";
-			echo "<br /><br />";
 		}
 
 		// add or remove Y
@@ -1311,8 +1263,7 @@ case 'update':
 					if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder.basename($upload['name']))) {
 						$error .= "<br />".i18n::translate('There was an error uploading your file.')."<br />".file_upload_error_text($upload['error']);
 						$uploaded_files[] = "";
-					}
-					else {
+					} else {
 						$filename = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
 						$uploaded_files[] = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
 						if (!is_dir($MEDIA_DIRECTORY."thumbs/".$folder)) mkdir($MEDIA_DIRECTORY."thumbs/".$folder);
@@ -1322,8 +1273,9 @@ case 'update':
 							echo "<span class=\"error\">", $error, "</span>";
 						}
 					}
+				} else {
+					$uploaded_files[] = "";
 				}
-				else $uploaded_files[] = "";
 			}
 		}
 
@@ -1459,10 +1411,6 @@ case 'update':
 			}
 
 		}
-		if (WT_DEBUG) {
-			echo "<br /><br />";
-			echo "<pre>$newged</pre>";
-		}
 
 		replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
 		$success = true;
@@ -1471,10 +1419,6 @@ case 'update':
 
 //------------------------------------------------------------------------------
 case 'addchildaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
-
 	splitSOUR(); // separate SOUR record from the rest
 
 	$gedrec ="0 @REF@ INDI\n";
@@ -1516,9 +1460,6 @@ case 'addchildaction':
 		$gedrec = updateRest($gedrec);
 	}
 
-	if (WT_DEBUG) {
-		echo "<pre>$gedrec</pre>";
-	}
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref&show_changes=yes";
 	if ($xref) {
@@ -1542,15 +1483,13 @@ case 'addchildaction':
 				}
 			}
 			// new child is the only one
-			if (count($family->getChildren())<1) $gedrec .= "\n1 CHIL @$xref@";
-			else if (!$done) {
+			if (count($family->getChildren())<1) {
+				$gedrec .= "\n1 CHIL @$xref@";
+			} elseif (!$done) {
 				// new child is the youngest or undated : insert after
 				$gedrec = str_replace("1 CHIL @".$child->getXref()."@",
 															"1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
 															$gedrec);
-			}
-			if (WT_DEBUG) {
-				echo "<pre>$gedrec</pre>";
 			}
 			replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
 		}
@@ -1559,10 +1498,6 @@ case 'addchildaction':
 	break;
 //------------------------------------------------------------------------------
 case 'addspouseaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
-
 	splitSOUR(); // separate SOUR record from the rest
 
 	$gedrec ="0 @REF@ INDI\n";
@@ -1580,13 +1515,13 @@ case 'addspouseaction':
 		$gedrec = updateRest($gedrec);
 	}
 
-	if (WT_DEBUG) {
-		echo "<pre>$gedrec</pre>";
-	}
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref&show_changes=yes";
-	if ($xref) echo "<br /><br />", i18n::translate('Update successful');
-	else exit;
+	if ($xref) {
+		echo "<br /><br />", i18n::translate('Update successful');
+	} else {
+		exit;
+	}
 	$spouserec = $gedrec;
 	$success = true;
 	if ($famid=="new") {
@@ -1597,8 +1532,7 @@ case 'addspouseaction':
 		if ($famtag=="HUSB") {
 			$famrec .= "1 HUSB @$xref@\n";
 			$famrec .= "1 WIFE @$pid@\n";
-		}
-		else {
+		} else {
 			$famrec .= "1 WIFE @$xref@\n";
 			$famrec .= "1 HUSB @$pid@\n";
 		}
@@ -1615,12 +1549,8 @@ case 'addspouseaction':
 			$famrec = updateRest($famrec);
 		}
 
-		if (WT_DEBUG) {
-			echo "<pre>$famrec</pre>";
-		}
 		$famid = append_gedrec($famrec, WT_GED_ID);
-	}
-	else if (!empty($famid)) {
+	} elseif (!empty($famid)) {
 		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 		if (!empty($famrec)) {
 			$famrec = trim($famrec) . "\n1 $famtag @$xref@\n";
@@ -1637,44 +1567,30 @@ case 'addspouseaction':
 				$famrec = updateRest($famrec);
 			}
 
-			if (WT_DEBUG) {
-				echo "<pre>$famrec</pre>";
-			}
 			replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
 		$gedrec = $spouserec;
 		$gedrec = trim($gedrec) . "\n1 FAMS @$famid@\n";
-		if (WT_DEBUG) {
-			echo "<pre>$gedrec</pre>";
-		}
 		replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
 	}
 	if (!empty($pid)) {
 		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 		if ($indirec) {
 			$indirec = trim($indirec) . "\n1 FAMS @$famid@\n";
-			if (WT_DEBUG) {
-				echo "<pre>$indirec</pre>";
-			}
 			replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 		}
 	}
 	break;
 //------------------------------------------------------------------------------
 case 'linkspouseaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
-
 	splitSOUR(); // separate SOUR record from the rest
 
 	if (isset($_REQUEST['spid'])) $spid = $_REQUEST['spid'];
 	if (!empty($spid)) {
 		$gedrec = find_gedcom_record($spid, WT_GED_ID, true);
-		$gedrec = trim($gedrec);
-		if (!empty($gedrec)) {
+		if ($gedrec) {
 			if ($famid=="new") {
 				$famrec = "0 @new@ FAM\n";
 				$SEX = get_gedcom_value("SEX", 1, $gedrec, '', false);
@@ -1683,8 +1599,7 @@ case 'linkspouseaction':
 				if ($famtag=="HUSB") {
 					$famrec .= "1 HUSB @$spid@\n";
 					$famrec .= "1 WIFE @$pid@\n";
-				}
-				else {
+				} else {
 					$famrec .= "1 WIFE @$spid@\n";
 					$famrec .= "1 HUSB @$pid@\n";
 				}
@@ -1704,37 +1619,25 @@ case 'linkspouseaction':
 					$famrec = updateRest($famrec);
 				}
 
-				if (WT_DEBUG) {
-					echo "<pre>$famrec</pre>";
-				}
 				$famid = append_gedrec($famrec, WT_GED_ID);
 			}
 			if ((!empty($famid))&&($famid!="new")) {
 				$gedrec .= "\n1 FAMS @$famid@\n";
-				if (WT_DEBUG) {
-					echo "<pre>$gedrec</pre>";
-				}
 				replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN);
 			}
 			if (!empty($pid)) {
 				$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 				if (!empty($indirec)) {
 					$indirec = trim($indirec) . "\n1 FAMS @$famid@\n";
-					if (WT_DEBUG) {
-						echo "<pre>$indirec</pre>";
-					}
 					replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 				}
 			}
+			$success = true;
 		}
 	}
 	break;
 //------------------------------------------------------------------------------
 case 'addnewparentaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
-
 	splitSOUR(); // separate SOUR record from the rest
 
 	$gedrec ="0 @REF@ INDI\n";
@@ -1752,13 +1655,13 @@ case 'addnewparentaction':
 		$gedrec = updateRest($gedrec);
 	}
 
-	if (WT_DEBUG) {
-		echo "<pre>$gedrec</pre>";
-	}
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref&show_changes=yes";
-	if ($xref) echo "<br /><br />", i18n::translate('Update successful');
-	else exit;
+	if ($xref) {
+		echo "<br /><br />", i18n::translate('Update successful');
+	} else {
+		exit;
+	}
 	$spouserec = $gedrec;
 	$success = true;
 	if ($famid=="new") {
@@ -1766,8 +1669,7 @@ case 'addnewparentaction':
 		if ($famtag=="HUSB") {
 			$famrec .= "1 HUSB @$xref@\n";
 			$famrec .= "1 CHIL @$pid@\n";
-		}
-		else {
+		} else {
 			$famrec .= "1 WIFE @$xref@\n";
 			$famrec .= "1 CHIL @$pid@\n";
 		}
@@ -1784,12 +1686,8 @@ case 'addnewparentaction':
 			$famrec = updateRest($famrec);
 		}
 
-		if (WT_DEBUG) {
-			echo "<pre>$famrec</pre>";
-		}
 		$famid = append_gedrec($famrec, WT_GED_ID);
-	}
-	else if (!empty($famid)) {
+	} elseif (!empty($famid)) {
 		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 		if (!empty($famrec)) {
 			$famrec = trim($famrec) . "\n1 $famtag @$xref@\n";
@@ -1806,18 +1704,12 @@ case 'addnewparentaction':
 				$famrec = updateRest($famrec);
 			}
 
-			if (WT_DEBUG) {
-				echo "<pre>$famrec</pre>";
-			}
 			replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
 			$gedrec = $spouserec;
 			$gedrec = trim($gedrec) . "\n1 FAMS @$famid@\n";
-			if (WT_DEBUG) {
-				echo "<pre>$gedrec</pre>";
-			}
 			replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
 	}
 	if (!empty($pid)) {
@@ -1826,9 +1718,6 @@ case 'addnewparentaction':
 		if ($indirec) {
 			if (strpos($indirec, "1 FAMC @$famid@")===false) {
 				$indirec = trim($indirec) . "\n1 FAMC @$famid@\n";
-				if (WT_DEBUG) {
-					echo "<pre>$indirec</pre>";
-				}
 				replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 			}
 		}
@@ -1836,10 +1725,6 @@ case 'addnewparentaction':
 	break;
 //------------------------------------------------------------------------------
 case 'addopfchildaction':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
-
 	splitSOUR(); // separate SOUR record from the rest
 
 	$newindixref=get_new_xref('INDI');
@@ -1869,11 +1754,6 @@ case 'addopfchildaction':
 	$indirec=find_gedcom_record($pid, WT_GED_ID, true);
 	if ($indirec) {
 		$indirec.="\n1 FAMS @{$newfamxref}@";
-		if (WT_DEBUG) {
-			echo "<pre>$gedrec</pre>";
-			echo "<pre>$famrec</pre>";
-			echo "<pre>$indirec</pre>";
-		}
 		replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
 		append_gedrec($gedrec, WT_GED_ID);
 		append_gedrec($famrec, WT_GED_ID);
@@ -1882,33 +1762,22 @@ case 'addopfchildaction':
 	break;
 //------------------------------------------------------------------------------
 case 'deleteperson':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-		echo "<pre>$gedrec</pre>";
-	}
 	if (!checkFactEdit($gedrec)) {
 		echo "<br />", i18n::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) echo "<br />", i18n::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", i18n::translate('You have no access to'), " famid $famid.";
-	}
-	else {
+	} else {
 		if (delete_person($pid, $gedrec)) echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
 	}
 	break;
 //------------------------------------------------------------------------------
 case 'deletefamily':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-		echo "<pre>$gedrec</pre>";
-	}
 	if (!checkFactEdit($gedrec)) {
 		echo "<br />", i18n::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) echo "<br />", i18n::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", i18n::translate('You have no access to'), " famid $famid.";
-	}
-	else
-	{
-		if (delete_family($famid, $gedrec)) echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
+	} elseif (delete_family($famid, $gedrec)) {
+		echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
 	}
 	break;
 
@@ -1923,10 +1792,6 @@ case 'deleterepo':
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-		echo "<pre>$gedrec</pre>";
-	}
 	if (!empty($gedrec)) {
 		$success = true;
 		// Delete links to this record
@@ -1937,22 +1802,19 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 			$skipline = false;
 			$glevel = 0;
 			foreach ($lines as $indexval => $line) {
-				if ((preg_match("/^\d ".WT_REGEX_TAG." @$pid@/", $line)==0)&&(!$skipline)) $newrec .= $line."\n";
-				else {
+				if ((preg_match("/^\d ".WT_REGEX_TAG." @$pid@/", $line)==0)&&(!$skipline)) {
+					$newrec .= $line."\n";
+				} else {
 					if (!$skipline) {
 						$glevel = $line{0};
 						$skipline = true;
-					}
-					else {
+					} else {
 						if ($line{0}<=$glevel) {
 							$skipline = false;
 							$newrec .= $line."\n";
 						}
 					}
 				}
-			}
-			if (WT_DEBUG) {
-				echo "<pre>$newrec</pre>";
 			}
 			replace_gedrec($xref, WT_GED_ID, $newrec, $update_CHAN);
 		}
@@ -1985,8 +1847,7 @@ case 'copy':
 		$factrec = "1 OBJE @".$pid."@";
 		$type="all";
 		echo "<br />";
-	}
-	else {
+	} else {
 		$gedlines = explode("\n", trim($gedrec));
 		$fields = explode(' ', $gedlines[$linenum]);
 		$glevel = $fields[0];
@@ -2007,17 +1868,13 @@ case 'copy':
 		}
 		if (count($_SESSION["clipboard"])>9) array_pop($_SESSION["clipboard"]);
 		$_SESSION["clipboard"][] = array("type"=>$type, "factrec"=>$factrec, "fact"=>$fact);
-		echo "<b>", i18n::translate('Record copied to clipboard'), "</b>\n";
+		echo "<b>", i18n::translate('Record copied to clipboard'), "</b>";
 		$success = true;
 	}
 	break;
 //------------------------------------------------------------------------------
 case 'paste':
 	$gedrec .= "\n".$_SESSION["clipboard"][$fact]["factrec"]."\n";
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-		echo "<pre>$gedrec</pre>";
-	}
 	replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
 	echo "<br /><br />", i18n::translate('Update successful');
 	break;
@@ -2047,10 +1904,6 @@ case 'reset_media_update': // Reset sort using popup
 
 //------------------------------------------------------------------------------
 case 'reorder_media_update': // Update sort using popup
-
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
     if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	$lines = explode("\n", $gedrec);
@@ -2063,15 +1916,12 @@ case 'reorder_media_update': // Update sort using popup
 	foreach ($order1 as $m_media=>$num) {
 		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
 	}
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
-	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
 
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
-	}else{
+	} else {
 		$link = "individual.php?pid=$pid&show_changes=yes#media";
 	}
 	echo WT_JS_START;
@@ -2093,7 +1943,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
-	}else{
+	} else {
 		$link = "individual.php?pid=$pid&show_changes=yes#media";
 	}
 	echo WT_JS_START;
@@ -2103,9 +1953,6 @@ case 'al_reset_media_update': // Reset sort using Album Page
 
 //------------------------------------------------------------------------------
 case 'al_reorder_media_update': // Update sort using Album Page
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
     if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	function SwapArray($Array){
@@ -2127,13 +1974,10 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	foreach ($order2 as $m_media=>$num) {
 		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
 	}
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
-	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
-	}else{
+	} else {
 		$link = "individual.php?pid=$pid&show_changes=yes#media";
 	}
 	echo WT_JS_START;
@@ -2200,16 +2044,16 @@ case 'reorder_children':
 		<?php echo WT_JS_END;
 		if (WT_USER_IS_ADMIN) {
 			echo "<center><table width=93%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">\n";
+			echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">";
 			if ($NO_UPDATE_CHAN) {
-				echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+				echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 			} else {
-				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 			}
-			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 			$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 			echo format_fact_date($event, false, true);
-			echo "</td></tr></table></center><br />\n";
+			echo "</td></tr></table></center><br />";
 		}
 		?>
 		<button type="submit"><?php echo i18n::translate('Save'); ?></button>
@@ -2228,12 +2072,18 @@ case 'changefamily':
 	$children = $family->getChildren();
 	if (count($children)>0) {
 		if (!is_null($father)) {
-			if ($father->getSex()=="F") $father->setLabel(i18n::translate('Mother'));
-			else $father->setLabel(i18n::translate('Father'));
+			if ($father->getSex()=="F") {
+				$father->setLabel(i18n::translate('Mother'));
+			} else {
+				$father->setLabel(i18n::translate('Father'));
+			}
 		}
 		if (!is_null($mother)) {
-			if ($mother->getSex()=="M") $mother->setLabel(i18n::translate('Father'));
-			else $mother->setLabel(i18n::translate('Mother'));
+			if ($mother->getSex()=="M") {
+				$mother->setLabel(i18n::translate('Father'));
+			} else {
+				$mother->setLabel(i18n::translate('Mother'));
+			}
 		}
 		for ($i=0; $i<count($children); $i++) {
 			if (!is_null($children[$i])) {
@@ -2246,8 +2096,7 @@ case 'changefamily':
 				}
 			}
 		}
-	}
-	else {
+	} else {
 		if (!is_null($father)) {
 			if ($father->getSex()=="F") {
 				$father->setLabel(i18n::translate('Wife'));
@@ -2294,8 +2143,7 @@ case 'changefamily':
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>" /></td>
 				<td id="HUSBName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo PrintReady($father->getFullName()); ?></td>
 			<?php
-			}
-			else {
+			} else {
 			?>
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Spouse'); ?></b><input type="hidden" name="HUSB" value="" /></td>
 				<td id="HUSBName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"></td>
@@ -2314,8 +2162,7 @@ case 'changefamily':
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>" /></td>
 				<td id="WIFEName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo PrintReady($mother->getFullName()); ?></td>
 			<?php
-			}
-			else {
+			} else {
 			?>
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Spouse'); ?></b><input type="hidden" name="WIFE" value="" /></td>
 				<td id="WIFEName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"></td>
@@ -2371,9 +2218,11 @@ case 'changefamily_update':
 	//-- add the new father link
 	if (isset($_REQUEST['HUSB'])) $HUSB = $_REQUEST['HUSB'];
 	if (!empty($HUSB) && (is_null($father) || $father->getXref()!=$HUSB)) {
-		if (strstr($gedrec, "1 HUSB")!==false)
+		if (strstr($gedrec, "1 HUSB")!==false) {
 			$gedrec = preg_replace("/1 HUSB @.*@/", "1 HUSB @$HUSB@", $gedrec);
-		else $gedrec .= "\n1 HUSB @$HUSB@\n";
+		} else {
+			$gedrec .= "\n1 HUSB @$HUSB@\n";
+		}
 		$indirec = find_gedcom_record($HUSB, WT_GED_ID, true);
 		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$famid@")===false)) {
 			$indirec .= "\n1 FAMS @$famid@\n";
@@ -2386,8 +2235,11 @@ case 'changefamily_update':
 		$pos1 = strpos($gedrec, "1 HUSB @");
 		if ($pos1!==false) {
 			$pos2 = strpos($gedrec, "\n1", $pos1+5);
-			if ($pos2===false) $pos2 = strlen($gedrec);
-			else $pos2++;
+			if ($pos2===false) {
+				$pos2 = strlen($gedrec);
+			} else {
+				$pos2++;
+			}
 			$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
 		}
 		$updated = true;
@@ -2398,8 +2250,11 @@ case 'changefamily_update':
 		$pos1 = strpos($indirec, "1 FAMS @$famid@");
 		if ($pos1!==false) {
 			$pos2 = strpos($indirec, "\n1", $pos1+5);
-			if ($pos2===false) $pos2 = strlen($indirec);
-			else $pos2++;
+			if ($pos2===false) {
+				$pos2 = strlen($indirec);
+			} else {
+				$pos2++;
+			}
 			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
 			replace_gedrec($father->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 		}
@@ -2407,9 +2262,11 @@ case 'changefamily_update':
 	//-- add the new mother link
 	if (isset($_REQUEST['WIFE'])) $WIFE = $_REQUEST['WIFE'];
 	if (!empty($WIFE) && (is_null($mother) || $mother->getXref()!=$WIFE)) {
-		if (strstr($gedrec, "1 WIFE")!==false)
+		if (strstr($gedrec, "1 WIFE")!==false) {
 			$gedrec = preg_replace("/1 WIFE @.*@/", "1 WIFE @$WIFE@", $gedrec);
-		else $gedrec .= "\n1 WIFE @$WIFE@\n";
+		} else {
+			$gedrec .= "\n1 WIFE @$WIFE@\n";
+		}
 		$indirec = find_gedcom_record($WIFE, WT_GED_ID, true);
 		if (!empty($indirec) && (strpos($indirec, "1 FAMS @$famid@")===false)) {
 			$indirec .= "\n1 FAMS @$famid@\n";
@@ -2422,8 +2279,11 @@ case 'changefamily_update':
 		$pos1 = strpos($gedrec, "1 WIFE @");
 		if ($pos1!==false) {
 			$pos2 = strpos($gedrec, "\n1", $pos1+5);
-			if ($pos2===false) $pos2 = strlen($gedrec);
-			else $pos2++;
+			if ($pos2===false) {
+				$pos2 = strlen($gedrec);
+			} else {
+				$pos2++;
+			}
 			$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
 		}
 		$updated = true;
@@ -2434,8 +2294,11 @@ case 'changefamily_update':
 		$pos1 = strpos($indirec, "1 FAMS @$famid@");
 		if ($pos1!==false) {
 			$pos2 = strpos($indirec, "\n1", $pos1+5);
-			if ($pos2===false) $pos2 = strlen($indirec);
-			else $pos2++;
+			if ($pos2===false) {
+				$pos2 = strlen($indirec);
+			} else {
+				$pos2++;
+			}
 			$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
 			replace_gedrec($mother->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 		}
@@ -2471,8 +2334,11 @@ case 'changefamily_update':
 				$pos1 = strpos($gedrec, "1 CHIL @".$child->getXref()."@");
 				if ($pos1!==false) {
 					$pos2 = strpos($gedrec, "\n1", $pos1+5);
-					if ($pos2===false) $pos2 = strlen($gedrec);
-					else $pos2++;
+					if ($pos2===false) {
+						$pos2 = strlen($gedrec);
+					} else {
+						$pos2++;
+					}
 					$gedrec = substr($gedrec, 0, $pos1) . substr($gedrec, $pos2);
 					$updated = true;
 				}
@@ -2481,8 +2347,11 @@ case 'changefamily_update':
 				$pos1 = strpos($indirec, "1 FAMC @$famid@");
 				if ($pos1!==false) {
 					$pos2 = strpos($indirec, "\n1", $pos1+5);
-					if ($pos2===false) $pos2 = strlen($indirec);
-					else $pos2++;
+					if ($pos2===false) {
+						$pos2 = strlen($indirec);
+					} else {
+						$pos2++;
+					}
 					$indirec = substr($indirec, 0, $pos1) . substr($indirec, $pos2);
 					replace_gedrec($child->getXref(), WT_GED_ID, $indirec, $update_CHAN);
 				}
@@ -2497,9 +2366,6 @@ case 'changefamily_update':
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_update':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	if (isset($_REQUEST['order'])) $order = $_REQUEST['order'];
 	asort($order);
 	reset($order);
@@ -2508,14 +2374,8 @@ case 'reorder_update':
 		// move each child subrecord to the bottom, in the order specified
 		$subrec = get_sub_record(1, "1 CHIL @".$child."@", $gedrec);
 		$subrec = trim($subrec, "\n");
-		if (WT_DEBUG) {
-			echo "<pre>[", $subrec, "]</pre>";
-		}
 		$newgedrec = str_replace($subrec, "", $newgedrec);
 		$newgedrec .= "\n".$subrec."\n";
-	}
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
 	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	echo "<br /><br />", i18n::translate('Update successful');
@@ -2568,9 +2428,6 @@ case 'reorder_fams':
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_fams_update':
-	if (WT_DEBUG) {
-		phpinfo(INFO_VARIABLES);
-	}
 	if (isset($_REQUEST['order'])) $order = $_REQUEST['order'];
 	asort($order);
 	reset($order);
@@ -2583,9 +2440,6 @@ case 'reorder_fams_update':
 	}
 	foreach ($order as $famid=>$num) {
 		$newgedrec .= "1 FAMS @".$famid."@\n";
-	}
-	if (WT_DEBUG) {
-		echo "<pre>$newgedrec</pre>";
 	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	echo "<br /><br />", i18n::translate('Update successful');
@@ -2620,7 +2474,7 @@ if ($success && !WT_DEBUG ) {
 	echo WT_JS_START;
 	if ($action=="copy") {
 		echo "window.close();";
-	} else if (isset($closeparent) && $closeparent=="yes" ) {
+	} elseif (isset($closeparent) && $closeparent=="yes" ) {
 		// echo "window.opener.close(); window.opener.edit_close('{$link}'); window.close(); ";
 		echo "window.close(); ";
 	} else {
@@ -2632,12 +2486,11 @@ if ($success && !WT_DEBUG ) {
 // Decide whether to print footer or not
 if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	// Do not print footer.
-	echo "<br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div>\n";
-}else if (isset($closeparent) && $closeparent=="yes" ) {
-	// echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');window.opener.close();\">", i18n::translate('Close Window'), "</a></div><br />\n";
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div><br />\n";
+	echo "<br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div>";
+} elseif (isset($closeparent) && $closeparent=="yes" ) {
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div><br />";
 	print_simple_footer();
-}else{
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div><br />\n";
+} else {
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", i18n::translate('Close Window'), "</a></div><br />";
 	print_simple_footer();
 }
