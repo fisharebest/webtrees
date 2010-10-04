@@ -99,13 +99,13 @@ if ($nt==1) {
 echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 	if (WT_USER_CAN_EDIT) {
 		echo '<a href="javascript: edit_note()" title="', i18n::translate('Edit'), '">';
-		if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES["notes"], '" alt="" align="middle" />';
+		if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES["notes"], '" alt="" align="top" />';
 		echo i18n::translate('Shared note'), '</a>';
 		echo '<div class="editfacts">';
 			echo '<a href="javascript: edit_note()" title="', i18n::translate('Edit'), '"><div class="editlink"><span class="link_text">', i18n::translate('Edit'), '</span></div></a>';
 		echo '</div>';
 	} else { 
-		if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES["notes"], '" alt="" align="middle" />';
+		if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES["notes"], '" alt="" align="top" />';
 		echo i18n::translate('Shared note');
 	}
 	echo '</td><td class="optionbox wrap width80 ', $TEXT_DIRECTION, '">';
