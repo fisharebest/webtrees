@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
@@ -69,7 +69,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		$inav = new TreeNav($this->controller->pid,'treetab');
 		$inav->generations = 5;
 		$inav->zoomLevel = -1;
-		$inav->drawViewport('treetab', "auto", "500px");
+		$inav->drawViewport('treetab', "auto", "600px");
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 

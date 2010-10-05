@@ -75,7 +75,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printParentsRows(&$family, &$people, $type) {
-		global $personcount, $WT_IMAGES;
+		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES;
 
 		$elderdate = "";
 		//-- new father/husband
@@ -206,7 +206,27 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 							echo $date->Display(false);
 							if (!empty($place)) echo ' -- ';
 						}
-						if (!empty($place)) echo $place;
+						if (!empty($place)) {
+							$html='';
+							$levels = explode(',', $place);
+							$tempURL = "placelist.php?action=show&";
+							foreach(array_reverse($levels) as $pindex=>$ppart) {
+								$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
+								$tempURL .= "parent[{$pindex}]=".PrintReady($ppart).'&';
+							}
+							$tempURL .= 'level='.count($levels);
+							$html .= '<a href="'.encode_url($tempURL).'"> ';
+							for ($level=0; $level<$SHOW_PEDIGREE_PLACES; $level++) {
+								if (!empty($levels[$level])) {
+									if ($level>0) {
+										$html.=", ";
+									}
+									$html.=PrintReady($levels[$level]);
+								}
+							}
+							$html.='</a>';
+							echo $html;
+						}
 					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
 						$husb = $family->getHusband();
 						$wife = $family->getWife();
