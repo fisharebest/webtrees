@@ -1766,8 +1766,8 @@ case 'deleteperson':
 		echo "<br />", i18n::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) echo "<br />", i18n::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", i18n::translate('You have no access to'), " famid $famid.";
-	} else {
-		if (delete_person($pid, $gedrec)) echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
+	} elseif (delete_person($pid, $gedrec)) {
+		$success=true;
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1777,7 +1777,7 @@ case 'deletefamily':
 		if (!empty($pid)) echo "<br />", i18n::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", i18n::translate('You have no access to'), " famid $famid.";
 	} elseif (delete_family($famid, $gedrec)) {
-		echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
+		$success=true;
 	}
 	break;
 
@@ -1793,7 +1793,6 @@ case 'deleterepo':
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 	if (!empty($gedrec)) {
-		$success = true;
 		// Delete links to this record
 		foreach (fetch_all_links($pid, WT_GED_ID) as $xref) {
 			$gedrec=find_gedcom_record($xref, WT_GED_ID, true);
@@ -1820,7 +1819,7 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 		}
 
 		delete_gedrec($pid, WT_GED_ID);
-		echo "<br /><br />".i18n::translate('GEDCOM record successfully deleted.');
+		$success=true;
 	}
 	break;
 //------------------------------------------------------------------------------
