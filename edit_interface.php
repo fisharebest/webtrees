@@ -51,11 +51,11 @@ $gender =safe_REQUEST($_REQUEST, 'gender',  WT_REGEX_UNSAFE);
 
 $assist =safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
 $noteid =safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
-$currtab =safe_REQUEST($_REQUEST, 'currtab', WT_REGEX_UNSAFE);
+$currtab=safe_REQUEST($_REQUEST, 'currtab', WT_REGEX_UNSAFE);
 
-$pid_array  =safe_REQUEST($_REQUEST, 'pid_array', WT_REGEX_XREF);
-$pids_array_add =safe_REQUEST($_REQUEST, 'pids_array_add', WT_REGEX_XREF);
-$pids_array_edit =safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
+$pid_array      =safe_REQUEST($_REQUEST, 'pid_array',       WT_REGEX_XREF);
+$pids_array_add =safe_REQUEST($_REQUEST, 'pids_array_add',  WT_REGEX_XREF);
+$pids_array_edit=safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
 
 $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
@@ -310,7 +310,7 @@ case 'delete':
 	if (!empty($linenum)) {
 		if ($linenum===0) {
 			delete_gedrec($pid, WT_GED_ID);
-			echo i18n::translate('GEDCOM record successfully deleted.');
+			$success=true;
 		} else {
 			$mediaid='';
 			if (isset($_REQUEST['mediaid'])) {
@@ -323,8 +323,9 @@ case 'delete':
 			} else {
 				$newged = remove_subline($gedrec, $linenum);
 			}
-			replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
-			echo "<br /><br />", i18n::translate('GEDCOM record successfully deleted.');
+			if (replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN)) {
+				$success=true;
+			}
 		}
 	}
 	break;
@@ -796,18 +797,6 @@ case 'addsourceaction':
 //------------------------------------------------------------------------------
 //-- add new Shared Note
 case 'addnewnote':
-	echo WT_JS_START;
-	?>
-		function check_form(frm) {
-			if (frm.TITL.value=="") {
-				alert('<?php echo i18n::translate('You must provide a ').translate_fact('TITL'); ?>');
-				frm.TITL.focus();
-				return false;
-			}
-			return true;
-		}
-	<?php
-	echo WT_JS_END;
 	?>
 	<b><?php echo i18n::translate('Create a new Shared Note'); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
@@ -919,22 +908,7 @@ case 'addnewnote_assisted':
 	if (isset($_REQUEST['pid'])) $pid = $_REQUEST['pid'];
 	global $pid;
 
-	echo WT_JS_START;
 	?>
-		function check_form(frm) {
-			/*
-			if (frm.TITL.value=="") {
-				alert('<?php echo i18n::translate('You must provide a ').translate_fact('TITL'); ?>');
-				frm.TITL.focus();
-				return false;
-			}
-			*/
-			return true;
-		}
-	<?php
-	echo WT_JS_END;
-	?>
-
 	<div class="center font11" style="width:100%;">
 		<b><?php echo i18n::translate('Create a new Shared Note using Assistant'); ?></b>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
@@ -959,18 +933,6 @@ case 'addnoteaction_assisted':
 //-- add new Media Links
 case 'addmedia_links':
 	global $pid;
-	echo WT_JS_START;
-	?>
-		function check_form(frm) {
-			if (frm.TITL.value=="") {
-				alert('<?php echo i18n::translate('You must provide a ').translate_fact('TITL'); ?>');
-				frm.TITL.focus();
-				return false;
-			}
-			return true;
-		}
-	<?php
-	echo WT_JS_END;
 	?>
 	<!-- <form method="post" action="edit_interface.php" onsubmit="return check_form(this);"> -->
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
@@ -1044,18 +1006,6 @@ case 'editsource':
 //------------------------------------------------------------------------------
 //-- edit a Shared Note
 case 'editnote':
-	echo WT_JS_START;
-	?>
-		function check_form(frm) {
-			if (frm.TITL.value=="") {
-				alert('<?php echo i18n::translate('You must provide a ').translate_fact('TITL'); ?>');
-				frm.TITL.focus();
-				return false;
-			}
-			return true;
-		}
-	<?php
-	echo WT_JS_END;
 	?>
 	<b><?php echo i18n::translate('Edit Shared Note'), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br /><br />
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
@@ -1872,8 +1822,9 @@ case 'copy':
 //------------------------------------------------------------------------------
 case 'paste':
 	$gedrec .= "\n".$_SESSION["clipboard"][$fact]["factrec"]."\n";
-	replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
-	echo "<br /><br />", i18n::translate('Update successful');
+	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN)) {
+		$success=true;
+	}
 	break;
 
 
@@ -1895,8 +1846,9 @@ case 'reset_media_update': // Reset sort using popup
 			$newgedrec .= $line."\n";
 		}
 	}
-	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-	echo "<br />", i18n::translate('Update successful'), "<br /><br />";
+	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		$success=true;
+	}
 	break;
 
 //------------------------------------------------------------------------------
