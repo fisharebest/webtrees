@@ -1712,7 +1712,6 @@ div.faq_body {
 
 td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
 	color: #ffffff;
-	float: left;
 }
 
 .editfacts { /* a container for the following three links */
