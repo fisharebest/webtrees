@@ -1669,10 +1669,17 @@ function get_top_surnames($ged_id, $min, $max) {
 	// Use n_surn, rather than n_surname, as it is used to generate url's for
 	// the indi-list, etc.
 	$max=(int)$max;
-	return
-		WT_DB::prepare("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC LIMIT ".$max)
-		->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
-		->fetchAssoc();
+	if ($max==0) {
+		return
+			WT_DB::prepare("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC")
+			->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
+			->fetchAssoc();
+	} else {
+		return
+			WT_DB::prepare("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC LIMIT ".$max)
+			->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
+			->fetchAssoc();
+	}
 }
 
 /**

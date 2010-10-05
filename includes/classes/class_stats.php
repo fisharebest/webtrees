@@ -2197,7 +2197,7 @@ class stats {
 			.' GROUP BY'
 				.' family'
 			.' ORDER BY'
-				." age DESC LIMIT 1"
+				." age DESC LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
