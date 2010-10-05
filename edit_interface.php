@@ -251,60 +251,58 @@ if (isset($gedrec)) {
 }
 
 if (!isset($type)) {
-	$type="";
+	$type='';
 }
 $level0type = $type;
-if ($type=="INDI") {
+if ($type=='INDI') {
 	$record=Person::getInstance($pid);
-	echo "<b>", PrintReady($record->getFullName()), "</b><br />";
-} elseif ($type=="FAM") {
+	echo '<b>', PrintReady($record->getFullName()), '</b><br />';
+} elseif ($type=='FAM') {
 	if (!empty($pid)) {
 		$record=Family::getInstance($pid);
 	} else {
 		$record=Family::getInstance($famid);
 	}
-	echo "<b>", PrintReady($record->getFullName()), "</b><br />";
-} elseif ($type=="SOUR") {
+	echo '<b>', PrintReady($record->getFullName()), '</b><br />';
+} elseif ($type=='SOUR') {
 	$record=Source::getInstance($pid);
-	echo "<b>", PrintReady($record->getFullName()), "&nbsp;&nbsp;&nbsp;";
-	if ($TEXT_DIRECTION=="rtl") {
+	echo '<b>', PrintReady($record->getFullName()), '&nbsp;&nbsp;&nbsp;';
+	if ($TEXT_DIRECTION=='rtl') {
 		echo getRLM();
 	}
-	echo "(", $pid, ")";
-	if ($TEXT_DIRECTION=="rtl") {
+	echo '(', $pid, ')';
+	if ($TEXT_DIRECTION=='rtl') {
 		echo getRLM();
 	}
-	echo "</b><br />";
+	echo '</b><br />';
 }
 
-if (strstr($action, "addchild")) {
+if (strstr($action, 'addchild')) {
 	if (empty($famid)) {
 		echo '<b>', i18n::translate('Add an unlinked person'), '</b>', help_link('edit_add_unlinked_person');
-	} elseif ($gender=="F") {
+	} elseif ($gender=='F') {
 		echo '<b>', i18n::translate('Add daughter'), '</b>', help_link('edit_add_child');
-	} elseif ($gender=="M") {
+	} elseif ($gender=='M') {
 		echo '<b>', i18n::translate('Add son'), '</b>', help_link('edit_add_child');
 	} else {
 		echo '<b>', i18n::translate('Add child'), '</b>', help_link('edit_add_child');
 	}
-} elseif (strstr($action, "addspouse")) {
-	if ($famtag=="WIFE") {
+} elseif (strstr($action, 'addspouse')) {
+	if ($famtag=='WIFE') {
 		echo '<b>', i18n::translate('Add wife'), '</b>';
 	} else {
 		echo '<b>', i18n::translate('Add husband'), '</b>';
 	}
 	echo help_link('edit_add_spouse');
-} elseif (strstr($action, "addnewparent")) {
-	if ($famtag=="WIFE") {
+} elseif (strstr($action, 'addnewparent')) {
+	if ($famtag=='WIFE') {
 		echo '<b>', i18n::translate('Add a new mother'), '</b>';
 	} else {
 		echo '<b>', i18n::translate('Add a new father'), '</b>';
 	}
 	echo help_link('edit_add_parent');
-} elseif (strstr($action, "addopfchild")) {
+} elseif (strstr($action, 'addopfchild')) {
 	echo '<b>', i18n::translate('Add a child to create a one-parent family'), '</b>', help_link('edit_add_child');
-} else {
-	echo '<b>', i18n::translate($type), '</b>';
 }
 //------------------------------------------------------------------------------
 switch ($action) {
@@ -1991,7 +1989,7 @@ case 'al_reorder_media_update': // Update sort using Album Page
 case 'reorder_children':
 	require_once WT_ROOT.'js/prototype.js.htm';
 	require_once WT_ROOT.'js/scriptaculous.js.htm';
-	echo "<br /><b>", i18n::translate('Re-order children'), "</b>", help_link('reorder_children');
+	echo '<br /><b>', i18n::translate('Re-order children'), '</b>', help_link('reorder_children');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_update" />
@@ -2371,13 +2369,14 @@ case 'reorder_update':
 	$newgedrec = $gedrec;
 	foreach ($order as $child=>$num) {
 		// move each child subrecord to the bottom, in the order specified
-		$subrec = get_sub_record(1, "1 CHIL @".$child."@", $gedrec);
+		$subrec = get_sub_record(1, '1 CHIL @'.$child.'@', $gedrec);
 		$subrec = trim($subrec, "\n");
-		$newgedrec = str_replace($subrec, "", $newgedrec);
+		$newgedrec = str_replace($subrec, '', $newgedrec);
 		$newgedrec .= "\n".$subrec."\n";
 	}
-	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-	echo "<br /><br />", i18n::translate('Update successful');
+	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		$success=true;
+	}
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_fams':
