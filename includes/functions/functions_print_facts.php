@@ -383,14 +383,14 @@ function print_fact(&$eventObj, $noedit=false) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
 					$label = translate_fact($fact.':'.$factref, $label_person);
-					if (!$HIDE_GEDCOM_ERRORS || !array_key_exists($fact, $FACTS)) {
+					if (!$HIDE_GEDCOM_ERRORS || array_key_exists($fact, $FACTS)) {
 						if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$factref.".gif")) {
 							echo "<img src=\"".WT_THEME_DIR."images/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
 						} else {
 							echo "<span class=\"label\">", $label, ": </span>";
 						}
 						echo htmlspecialchars($match[$i][2], ENT_COMPAT, 'UTF-8');
-						echo "!<br />";
+						echo "<br />";
 					}
 				}
 			}
