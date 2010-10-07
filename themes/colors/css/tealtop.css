@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9563 2010-09-26 20:18:10Z rob $
+* $Id: ash.css 9566 2010-09-26 22:15:23Z rob $
 */
 
 .something {
@@ -335,6 +335,12 @@ width:100%;
 
 #index_small_blocks .name1 {
 color:#333333;
+}
+
+.small_inner_block {
+max-height: 200px;
+overflow: auto;
+font: normal 10px tahoma, arial, helvetica, sans-serif;
 }
 
 .block {

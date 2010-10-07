@@ -345,6 +345,12 @@ width:100%;
 color:#333333;
 }
 
+.small_inner_block {
+max-height: 200px;
+overflow: auto;
+font: normal 10px tahoma, arial, helvetica, sans-serif;
+}
+
 .block {
 color: #030303;
 font: 12px tahoma, arial, helvetica, sans-serif;
