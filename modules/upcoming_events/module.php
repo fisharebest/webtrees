@@ -48,12 +48,12 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES, $THEME_DIR;
 
-		$days=get_block_setting($block_id, 'days', 7);
-		$filter=get_block_setting($block_id, 'filter',     true);
-		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
+		$days     =get_block_setting($block_id, 'days',      7);
+		$filter   =get_block_setting($block_id, 'filter',    true);
+		$onlyBDM  =get_block_setting($block_id, 'onlyBDM',   false);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
-		$block=get_block_setting($block_id, 'block', false);
+		$sortStyle=get_block_setting($block_id, 'sortStyle', 'alpha');
+		$block    =get_block_setting($block_id, 'block',     true);
 		if ($cfg) {
 			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
