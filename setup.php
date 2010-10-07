@@ -978,7 +978,7 @@ try {
 		" session_data MEDIUMBLOB  NOT NULL,".
 		" PRIMARY KEY     (session_id),".
 		"         KEY ix1 (session_time),".
-		"         KEY ix2 (user_id, ip_address)"
+		"         KEY ix2 (user_id, ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 
