@@ -261,13 +261,13 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 			$imgheight = $imgsize[1]+150;
 
 			if (WT_USE_LIGHTBOX) {
-				$thumbnail .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general_2]\" rev=\"" . $object['mid'] . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">";
+				$thumbnail .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general_2]\" rev=\"" . $object['mid'] . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 			} else if (!empty($object['mid']) && $USE_MEDIA_VIEWER) {
 				$thumbnail .= "<a href=\"".encode_url("mediaviewer.php?mid=".$object['mid'])."\" >";
 			} else {
 				$thumbnail .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."', $imgwidth, $imgheight);\">";
 			}
-			$thumbnail .= "<img id=\"box-$boxID-thumb\" src=\"".$whichFile."\" vspace=\"0\" hspace=\"0\" class=\"$class\" alt=\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\"";
+			$thumbnail .= "<img id=\"box-$boxID-thumb\" src=\"".$whichFile."\" vspace=\"0\" hspace=\"0\" class=\"$class\" alt=\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name)))."\"";
 			if (!$show_full) $thumbnail .= " style=\"display: none;\"";
 			if ($imgsize) $thumbnail .= " /></a>";
 			else $thumbnail .= " />";
@@ -291,7 +291,6 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 	}
 	//-- find additional name
 	$addname=$person->getAddName();
-	//$name = PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'));
 	$name = PrintReady($name);
 
 	// add optional CSS style for each fact
@@ -387,7 +386,7 @@ function print_header($title) {
 
 	// The title often includes the names of records, which may have markup
 	// that cannot be used in the page title.
-	$title=html_entity_decode(strip_tags($title), ENT_QUOTES, 'UTF-8');
+	$title=strip_tags($title);
 
 	if ($META_TITLE) {
 		$title.=' - '.$META_TITLE;

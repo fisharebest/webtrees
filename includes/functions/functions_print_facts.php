@@ -86,7 +86,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	}
 
 	$rawEvent = $eventObj->getDetail();
-	$event = htmlspecialchars($rawEvent, ENT_COMPAT, 'UTF-8');
+	$event = htmlspecialchars($rawEvent);
 	$factrec = $eventObj->getGedcomRecord();
 	$linenum = $eventObj->getLineNumber();
 	$parent = $eventObj->getParentObject();
@@ -389,7 +389,7 @@ function print_fact(&$eventObj, $noedit=false) {
 						} else {
 							echo "<span class=\"label\">", $label, ": </span>";
 						}
-						echo htmlspecialchars($match[$i][2], ENT_COMPAT, 'UTF-8');
+						echo htmlspecialchars($match[$i][2]);
 						echo "<br />";
 					}
 				}
@@ -571,11 +571,11 @@ function print_media_links($factrec, $level, $pid='') {
 				//LBox --------  change for Lightbox Album --------------------------------------------
 				if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
 					$name = trim($row["m_titl"]);
-					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
+					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">" . "\n";
 				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
 					require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 					$name = trim($row["m_titl"]);
-					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "\">" . "\n";
+					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">" . "\n";
 				// extra for Streetview ----------------------------------------
 				} else if (WT_USE_LIGHTBOX && strpos($row["m_file"], 'http://maps.google.')===0) {
 					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
@@ -1430,7 +1430,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$before   = substr($haystack, 0, strpos($haystack, $needle));
 	$after    = substr(strstr($haystack, $needle), strlen($needle));
 	$final    = $before.$needle.$after;
-	$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_COMPAT, 'UTF-8'));
+	$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
 
 	$name = trim($rowm['m_titl']);
 
@@ -1444,23 +1444,23 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	if (strpos($mainMedia, 'http://maps.google.')===0) {
 		//
 	} else {
-		echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
+		echo ' alt="', PrintReady(htmlspecialchars($name)), '" title="', PrintReady(htmlspecialchars($name)), '" /></a>';
 	}
 
 	if(empty($SEARCH_SPIDER)) {
 		echo "<a href=\"", encode_url("mediaviewer.php?mid={$rowm['m_media']}"), "\">";
 	}
 	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
-		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8'));
+		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle));
 	} else {
-		echo "<i>", PrintReady(htmlspecialchars($mediaTitle, ENT_COMPAT, 'UTF-8'));
+		echo "<i>", PrintReady(htmlspecialchars($mediaTitle));
 	}
 	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
-	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
+	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle));
 	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
-	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle, ENT_COMPAT, 'UTF-8'));
+	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle));
 	echo "</i>";
 	if(empty($SEARCH_SPIDER)) {
 		echo "</a>";

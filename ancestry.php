@@ -79,13 +79,13 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 <tr>
 	<td class="descriptionbox"><?php echo i18n::translate('Root Person ID'), help_link('rootid'); ?></td>
 <td class="optionbox">
-<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlentities($controller->rootid, ENT_COMPAT, 'UTF-8'); ?>" />
+<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlspecialchars($controller->rootid); ?>" />
 <?php print_findindi_link("rootid", ""); ?>
 </td>
 
 <!-- // NOTE: Box width -->
 <td class="descriptionbox"><?php echo i18n::translate('Box width'), help_link('box_width'); ?></td>
-<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlentities($box_width, ENT_COMPAT, 'UTF-8'); ?>" /> <b>%</b>
+<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>" /> <b>%</b>
 </td>
 
 <!-- // NOTE: chart style -->
@@ -253,4 +253,3 @@ case 3:
 	break;
 }
 print_footer();
-?>

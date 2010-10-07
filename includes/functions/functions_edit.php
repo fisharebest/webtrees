@@ -1532,22 +1532,22 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "</select>";
 	} else if (($fact=="NAME" && $upperlevel!='REPO') || $fact=="_MARNM") {
 		// Populated in javascript from sub-tags
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "\" />";
-		echo "<span id=\"", $element_id, "_display\">", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "</span>";
+		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", PrintReady(htmlspecialchars($value)), "\" />";
+		echo "<span id=\"", $element_id, "_display\">", PrintReady(htmlspecialchars($value)), "</span>";
 		echo " <a href=\"#edit_name\" onclick=\"convertHidden('", $element_id, "'); return false;\"> ";
 		if (isset($WT_IMAGES["edit_indi"])) echo "<img src=\"", $WT_IMAGES["edit_indi"], "\" border=\"0\" width=\"20\" alt=\"", i18n::translate('Edit name'), "\" align=\"top\" />";
 		else echo "<span class=\"age\">[", i18n::translate('Edit name'), "]</span>";
 		echo "</a>";
 	} else {
 		// textarea
-		if ($rows>1) echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, "\">", PrintReady(htmlspecialchars($value, ENT_COMPAT, 'UTF-8')), "</textarea><br />";
+		if ($rows>1) echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, "\">", PrintReady(htmlspecialchars($value)), "</textarea><br />";
 		else {
 			// text
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value,ENT_COMPAT,'UTF-8')), "\" style=\"width:4.1em;\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" style=\"width:4.1em;\" dir=\"ltr\"";
 			}else{
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value,ENT_COMPAT,'UTF-8')), "\" size=\"", $cols, "\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" size=\"", $cols, "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
 			echo " autocomplete=\"off\"";

@@ -1203,7 +1203,7 @@ jQuery(document).ready(function(){
 						$after    = substr(strstr($haystack, $needle), strlen($needle));
 						$worked   = str_replace("1 NOTE", "1 NOTE<br />", $after);
 						$final    = $before.$needle.$worked;
-						$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_COMPAT, 'UTF-8'));
+						$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
 
 						// Get info on how to handle this media file
 						$mediaInfo = mediaFileInfo($media["FILE"], $media["THUMB"], $media["XREF"], $name, $notes);
@@ -1323,6 +1323,7 @@ jQuery(document).ready(function(){
 		}
 	}
 	?> </div> <?php
+} else {
+	echo i18n::translate('The media folder is corrupted.');
 }
-else echo i18n::translate('The media folder is corrupted.');
 print_footer();

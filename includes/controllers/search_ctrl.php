@@ -121,7 +121,7 @@ class SearchController extends BaseController {
 				$this->myquery="";
 			} else {
 				$this->query = $_REQUEST["query"];
-				$this->myquery = htmlspecialchars($this->query,ENT_COMPAT,'UTF-8');
+				$this->myquery = htmlspecialchars($this->query);
 			}
 		}
 		if (isset ($_REQUEST["replace"])) {

@@ -528,7 +528,7 @@ if ($show == "yes") {
 		$after    = substr(strstr($haystack, $needle), strlen($needle));
 		$worked   = str_replace("1 NOTE", "1 NOTE<br />", $after);
 		$final    = $before.$needle.$worked;
-		$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)), ENT_COMPAT, 'UTF-8'));
+		$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
 
 		// Get info on how to handle this media file
 		$mediaInfo = mediaFileInfo($media["FILE"], $media["THUMB"], $media["XREF"], $name, $notes);
@@ -537,7 +537,7 @@ if ($show == "yes") {
 		if ($show_thumbnail) {
 		echo '<a href="', $mediaInfo['url'], '">';
 		echo '<img src="', $mediaInfo['thumb'], '" align="center" class="thumbnail" border="none"', $mediaInfo['width'];
-		echo ' alt="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" title="', PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')), '" /></a>';
+		echo ' alt="', PrintReady(htmlspecialchars($name)), '" title="', PrintReady(htmlspecialchars($name)), '" /></a>';
 
 		echo "</td>\n\t\t", '<td class="list_value_wrap" style="border: none;" width="100%">';
 

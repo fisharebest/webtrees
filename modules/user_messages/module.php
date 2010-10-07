@@ -143,9 +143,9 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($user_id) {
 					$content .= PrintReady(getUserFullName($user_id));
 					if ($TEXT_DIRECTION=="ltr") {
-						$content .= " " . getLRM() . " - ".htmlspecialchars(getUserEmail($user_id),ENT_COMPAT,'UTF-8') . getLRM();
+						$content .= " " . getLRM() . " - ".htmlspecialchars(getUserEmail($user_id)) . getLRM();
 					} else {
-						$content .= " " . getRLM() . " - ".htmlspecialchars(getUserEmail($user_id),ENT_COMPAT,'UTF-8') . getRLM();
+						$content .= " " . getRLM() . " - ".htmlspecialchars(getUserEmail($user_id)) . getRLM();
 					}
 				} else {
 					$content .= "<a href=\"mailto:".$message["from"]."\">".str_replace("@","@<span style=\"font-size:1px;\"> </span>",$message["from"])."</a>";
@@ -153,7 +153,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td>";
 				$content .= "</tr>";
 				$content .= "<tr><td class=\"list_value_wrap\" colspan=\"5\"><div id=\"message$key\" style=\"display: none;\">";
-				$message["body"] = nl2br(htmlspecialchars($message["body"],ENT_COMPAT,'UTF-8'));
+				$message["body"] = nl2br(htmlspecialchars($message["body"]));
 				$message["body"] = expand_urls($message["body"]);
 
 				$content .= PrintReady($message["body"])."<br /><br />";
@@ -214,4 +214,3 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 }
-?>

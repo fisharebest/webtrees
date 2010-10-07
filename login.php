@@ -170,10 +170,10 @@ echo '</td></tr></table><br /><br />';
 	?>
 	<form name="loginform" method="post" action="<?php print get_site_setting('LOGIN_URL'); ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login" />
-		<input type="hidden" name="url" value="<?php print htmlentities($url,ENT_COMPAT,'UTF-8'); ?>" />
-		<input type="hidden" name="ged" value="<?php if (isset($ged)) print htmlentities($ged,ENT_COMPAT,'UTF-8'); else print htmlentities($GEDCOM,ENT_COMPAT,'UTF-8'); ?>" />
-		<input type="hidden" name="pid" value="<?php if (isset($pid)) print htmlentities($pid,ENT_COMPAT,'UTF-8'); ?>" />
-		<input type="hidden" name="type" value="<?php print htmlentities($type,ENT_COMPAT,'UTF-8'); ?>" />
+		<input type="hidden" name="url" value="<?php print htmlspecialchars($url); ?>" />
+		<input type="hidden" name="ged" value="<?php if (isset($ged)) print htmlspecialchars($ged); else print htmlentities($GEDCOM); ?>" />
+		<input type="hidden" name="pid" value="<?php if (isset($pid)) print htmlspecialchars($pid); ?>" />
+		<input type="hidden" name="type" value="<?php print htmlspecialchars($type); ?>" />
 		<input type="hidden" name="usertime" value="" />
 		<?php
 		if (!empty($message)) print "<span class='error'><br /><b>$message</b><br /><br /></span>\r\n";
@@ -183,7 +183,7 @@ echo '</td></tr></table><br /><br />';
 			<tr><td class="topbottombar" colspan="2"><?php print i18n::translate('Login'); ?></td></tr>
 			<tr>
 				<td class="descriptionbox <?php print $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('User name'), help_link('username'); ?></td>
-				<td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="text" name="username" value="<?php print htmlentities($username,ENT_COMPAT,'UTF-8'); ?>" size="20" class="formField" /></td>
+				<td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="text" name="username" value="<?php print htmlspecialchars($username); ?>" size="20" class="formField" /></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox <?php print $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('Password'), help_link('password'); ?></td>
@@ -224,5 +224,8 @@ print "</div><br /><br />";
 	document.loginform.username.focus();
 </script>
 <?php
-if ($type=="full") print_footer();
-else print_simple_footer();
+if ($type=="full") {
+	print_footer();
+} else {
+	print_simple_footer();
+}

@@ -1235,12 +1235,12 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 
 		echo "\n<tr>";
 		echo "<td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">\n";
-		echo "<input name=\"oldFilename\" type=\"hidden\" value=\"" . addslashes($fileName) . "\" />";
+		echo "<input name=\"oldFilename\" type=\"hidden\" value=\"" . htmlspecialchars($fileName) . "\" />";
 		echo i18n::translate('File name on server'), help_link('upload_server_file');
 		echo "</td>\n";
 		echo "<td class=\"optionbox wrap $TEXT_DIRECTION wrap\">";
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo "<input name=\"filename\" type=\"text\" value=\"" . htmlentities($fileName, ENT_COMPAT, 'UTF-8') . "\" size=\"40\"";
+			echo "<input name=\"filename\" type=\"text\" value=\"" . htmlspecialchars($fileName) . "\" size=\"40\"";
 			if ($isExternal)
 				echo " />";
 			else
@@ -1253,7 +1253,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 				print " alt=\"\" title=\"\" />";
 			} */
 			echo $fileName;
-			echo "<input name=\"filename\" type=\"hidden\" value=\"" . htmlentities($fileName, ENT_COMPAT, 'UTF-8') . "\" size=\"40\" />";
+			echo "<input name=\"filename\" type=\"hidden\" value=\"" . htmlspecialchars($fileName) . "\" size=\"40\" />";
 		}
 		echo "</td>";
 		echo "</tr>";

@@ -150,7 +150,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		$before   = substr($haystack, 0, strpos($haystack, $needle));
 		$after    = substr(strstr($haystack, $needle), strlen($needle));
 		$final    = $before.$needle.$after;
-		$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)),ENT_COMPAT,'UTF-8'));
+		$notes    = PrintReady(htmlspecialchars(print_fact_notes($final, 1, true, true)));
 
 		// Get info on how to handle this media file
 		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm["m_media"], $mediaTitle, $notes);
@@ -363,5 +363,4 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	print "</li>";
 	print "\n\n";
 	return true;
-
 }

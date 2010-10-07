@@ -318,13 +318,13 @@ class IndividualController extends BaseController {
 
 					$name = $this->indi->getFullName();
 					if (WT_USE_LIGHTBOX) {
-						print "<a href=\"" . $firstmediarec["file"] . "\" rel=\"clearbox[general_1]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_QUOTES, 'UTF-8')) . "\">" . "\n";
+						print "<a href=\"" . $firstmediarec["file"] . "\" rel=\"clearbox[general_1]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">" . "\n";
 					} else if (!$USE_MEDIA_VIEWER && $imgsize) {
 						$result .= "<a href=\"javascript:;\" onclick=\"return openImage('".urlencode($firstmediarec["file"])."', $imgwidth, $imgheight);\">";
 					} else {
 						$result .= "<a href=\"mediaviewer.php?mid={$mid}\">";
 					}
-					$result .= "<img src=\"$filename\" align=\"left\" class=\"".$class."\" border=\"none\" title=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\" alt=\"".PrintReady(htmlspecialchars(strip_tags($name), ENT_QUOTES, 'UTF-8'))."\" />";
+					$result .= "<img src=\"$filename\" align=\"left\" class=\"".$class."\" border=\"none\" title=\"".PrintReady(htmlspecialchars(strip_tags($name)))."\" alt=\"".PrintReady(htmlspecialchars(strip_tags($name)))."\" />";
 					$result .= "</a>";
 					return $result;
 				}

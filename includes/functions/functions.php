@@ -114,7 +114,7 @@ function encode_url($url, $entities=true) {
 	$url = decode_url($url, $entities); // Make sure we don't do any double conversions
 	$url = str_replace(array(' ', '+', '@#', '"', "'"), array('%20', '%2b', '@%23', '%22', '%27'), $url);
 	if ($entities) {
-		$url = htmlspecialchars($url, ENT_COMPAT, 'UTF-8');
+		$url = htmlspecialchars($url);
 	}
 	return $url;
 }
@@ -3374,28 +3374,28 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 			switch ($type) {
 			case 'url_flv':
-				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'local_flv':
-				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_wmv':
-				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'local_audio':
 			case 'local_wmv':
-				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_image':
 			case 'local_image':
-				$url = encode_url($fileName) . "\" rel=\"clearbox[general]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url($fileName) . "\" rel=\"clearbox[general]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_picasa':
 			case 'url_page':
 			case 'url_other':
 			case 'local_page':
 			// case 'local_other':
-				$url = encode_url($fileName) . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name, ENT_COMPAT, 'UTF-8')) . "::" . htmlspecialchars($notes, ENT_COMPAT, 'UTF-8');
+				$url = encode_url($fileName) . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_streetview':
 				if (WT_SCRIPT_NAME != "media.php") {
