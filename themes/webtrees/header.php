@@ -106,7 +106,7 @@ if ($view!='simple') {
 										echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
 									}
 								echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
-						echo ' 	</ul>',
+					echo '&nbsp;</ul>',
 					'</div>',
 			'</td>',
 			'</td>',
