@@ -81,7 +81,7 @@ if ($PGV_PATH) {
 			$INDEX_DIRECTORY=realpath($PGV_PATH.'/'.$INDEX_DIRECTORY);
 		}
 		$wt_config=parse_ini_file(WT_ROOT.'data/config.ini.php');
-		if ($DBHOST!=$wt_config['dbhost'] || $DBHOST!=$wt_config['dbhost']) {
+		if ($DBHOST!=$wt_config['dbhost']) {
 			$error=i18n::translate('PhpGedView must use the same database as <b>webtrees</b>');
 			unset($wt_config);
 		} else {
