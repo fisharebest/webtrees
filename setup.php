@@ -969,7 +969,7 @@ try {
 		" PRIMARY KEY (ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	self::exec(
+	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}session` (".
 		" session_id   CHAR(32)    NOT NULL,".
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
