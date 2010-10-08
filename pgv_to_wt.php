@@ -133,16 +133,25 @@ if ($error || empty($PGV_PATH)) {
 		'<form action="', WT_SCRIPT_NAME, '" method="post">',
 		'<p>', i18n::translate('Where is your PhpGedView installation?'), '</p>',
 		'<dl>',
-		'<dt>',i18n::translate('Installation directory'), '</dt>',
-		'<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($PGV_PATH).'">',
-		'</dd>';
-	echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
-	echo '<dd>';
-	foreach ($pgv_dirs as $pgvpath) {
-		echo '<p class="pgv">', $pgvpath, '</p>';
+		'<dt>',i18n::translate('Installation directory'), '</dt>';
+	switch (count($pgv_dirs)) {
+	case '0':
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value=""></dd>';
+		break;
+	case '1':
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value="'.htmlspecialchars($pgv_dirs[0]).'"></dd>';
+		break;
+	default:
+		echo '<dd><input type="text" name="PGV_PATH" size="40" value=""></dd>';
+		echo '<dt>', /* find better english before translating */ 'PhpGedView might be found in these locations', '</dt>';
+		echo '<dd>';
+		foreach ($pgv_dirs as $pgvpath) {
+			echo '<p class="pgv">', $pgvpath, '</p>';
+		}
+		echo '</dd>';
+		break;
 	}
 	echo
-		'</dd>',
 		'</dl>',
 		'<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>',
 		'</form>',
