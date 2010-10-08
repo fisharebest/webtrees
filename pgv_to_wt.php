@@ -88,7 +88,7 @@ if ($PGV_PATH) {
 			unset($wt_config);
 			try {
 				$PGV_SCHEMA_VERSION=WT_DB::prepare(
-					"SELECT site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting WHERE site_setting_name='PGV_SCHEMA_VERSION'"
+					"SELECT site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'"
 				)->fetchOne();
 				if ($PGV_SCHEMA_VERSION<10) {
 					$error=i18n::translate('The version of %s is too old', 'PhpGedView');
@@ -191,7 +191,7 @@ echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(500
 echo '<p>pgv_site_setting => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##site_setting` (setting_name, setting_value)".
-	" SELECT site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
+	" SELECT site_setting_name, site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting`".
 	" WHERE site_setting_name IN ('DEFAULT_GEDCOM', 'LAST_CHANGE_EMAIL')"
 )->execute();
 
@@ -201,7 +201,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
-		" SELECT gedcom_id, gedcom_name FROM {$DBNAME}.{$TBLPREFIX}gedcom"
+		" SELECT gedcom_id, gedcom_name FROM `{$DBNAME}`.`{$TBLPREFIX}gedcom`"
 	)->execute();
 
 	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -247,7 +247,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		"  END".
 		"  ELSE setting_value".
 		"  END".
-		" FROM {$DBNAME}.{$TBLPREFIX}gedcom_setting".
+		" FROM `{$DBNAME}`.`{$TBLPREFIX}gedcom_setting`".
 		" WHERE setting_name NOT IN ('HOME_SITE_TEXT', 'HOME_SITE_URL')"
 	)->execute();
 
@@ -256,10 +256,10 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)".
-			" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM {$DBNAME}.{$TBLPREFIX}user".
-			" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us1 USING (user_id)".
-			" LEFT JOIN {$DBNAME}.{$TBLPREFIX}user_setting us2 USING (user_id)".
-			" JOIN {$DBNAME}.{$TBLPREFIX}user_setting us3 USING (user_id)".
+			" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM `{$DBNAME}`.`{$TBLPREFIX}user`".
+			" LEFT JOIN `{$DBNAME}`.`{$TBLPREFIX}user_setting` us1 USING (user_id)".
+			" LEFT JOIN `{$DBNAME}`.`{$TBLPREFIX}user_setting` us2 USING (user_id)".
+			" JOIN `{$DBNAME}`.`{$TBLPREFIX}user_setting` us3 USING (user_id)".
 			" WHERE us1.setting_name='firstname'".
 			" AND us2.setting_name='lastname'".
 			" AND us3.setting_name='email'"
@@ -313,7 +313,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		"  CASE".
 		"  WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
 		" END".
-		" FROM {$DBNAME}.{$TBLPREFIX}user_setting".
+		" FROM `{$DBNAME}`.`{$TBLPREFIX}user_setting`".
 		" JOIN `##user` USING (user_id)".
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
 	)->execute();
@@ -321,7 +321,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
-		" SELECT user_id, gedcom_id, setting_name, setting_value FROM {$DBNAME}.{$TBLPREFIX}user_gedcom_setting".
+		" SELECT user_id, gedcom_id, setting_name, setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}user_gedcom_setting`".
 		" JOIN `##user` USING (user_id)"
 	)->execute();
 
@@ -360,7 +360,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
 		WT_DB::prepare(
 			"INSERT IGNORE INTO `##user` (user_name, real_name, email, password)".
-			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM {$DBNAME}.{$TBLPREFIX}users"
+			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM `{$DBNAME}`.`{$TBLPREFIX}users`"
 		)->execute();
 	} catch (PDOException $ex) {
 		// This could only fail if;
@@ -373,17 +373,17 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 			" SELECT user_id, 'canadmin', ".
 			" CASE WHEN u_canadmin IN ('Y', 'yes') THEN 1 WHEN u_canadmin IN ('N', 'no') THEN 0 ELSE u_canadmin END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'verified', ".
 			" CASE WHEN u_verified IN ('Y', 'yes') THEN 1 WHEN u_verified IN ('N', 'no') THEN 0 ELSE u_verified END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'verified_by_admin', ".
 			" CASE WHEN u_verified_by_admin IN ('Y', 'yes') THEN 1 WHEN u_verified_by_admin IN ('N', 'no') THEN 0 ELSE u_verified_by_admin END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'language', ".
@@ -411,20 +411,20 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			"  WHEN 'russian'    THEN 'ru'".
 			"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
 			" END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'pwrequested', ".
 			" CASE WHEN u_pwrequested IN ('Y', 'yes') THEN 1 WHEN u_pwrequested IN ('N', 'no') THEN 0 ELSE u_pwrequested END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'reg_timestamp', u_reg_timestamp".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'reg_hashcode', u_reg_hashcode".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'theme', ".
@@ -438,56 +438,56 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			"  WHEN 'themes/xenea/'       THEN 'themes/xenea/'".
 			"  ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
 			" END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'loggedin', 0".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'sessiontime', u_sessiontime".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'contactmethod', u_contactmethod".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'visibleonline', ".
 			" CASE WHEN u_visibleonline IN ('Y', 'yes') THEN 1 WHEN u_visibleonline IN ('N', 'no') THEN 0 ELSE u_visibleonline END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'editaccount', ".
 			" CASE WHEN u_editaccount IN ('Y', 'yes') THEN 1 WHEN u_editaccount IN ('N', 'no') THEN 0 ELSE u_editaccount END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'defaulttab', ".
 			" CASE WHEN u_defaulttab IN ('Y', 'yes') THEN 1 WHEN u_defaulttab IN ('N', 'no') THEN 0 ELSE u_defaulttab END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'comment', u_comment".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'comment_exp', u_comment_exp".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'relationship_privacy', ".
 			" CASE WHEN u_relationship_privacy IN ('Y', 'yes') THEN 1 WHEN u_relationship_privacy IN ('N', 'no') THEN 0 ELSE u_relationship_privacy END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'max_relation_path', u_max_relation_path".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'auto_accept', ".
 			" CASE WHEN u_auto_accept IN ('Y', 'yes') THEN 1 WHEN u_auto_accept IN ('N', 'no') THEN 0 ELSE u_auto_accept END".
-			" FROM {$DBNAME}.{$TBLPREFIX}users".
+			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)"
 		)->execute();
 	} catch (PDOException $ex) {
@@ -500,7 +500,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		$user_gedcom_settings=
 			WT_DB::prepare(
 				"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
-				" FROM {$DBNAME}.{$TBLPREFIX}users".
+				" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 				" JOIN ##user ON (user_name=u_username COLLATE utf8_unicode_ci)"
 			)->fetchAll();
 		foreach ($user_gedcom_settings as $setting) {
@@ -744,7 +744,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"REPLACE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
-		" SELECT gedcom_id, page_name, page_parameter, page_count FROM {$DBNAME}.{$TBLPREFIX}hit_counter"
+		" SELECT gedcom_id, page_name, page_parameter, page_count FROM `{$DBNAME}`.`{$TBLPREFIX}hit_counter`"
 	)->execute();
 } else {
 	// Copied from PGV's db_schema_12_13
@@ -781,7 +781,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 	echo '<p>pgv_ip_address => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##ip_address` (ip_address, category, comment)".
-		" SELECT ip_address, category, comment FROM {$DBNAME}.{$TBLPREFIX}ip_address"
+		" SELECT ip_address, category, comment FROM `{$DBNAME}`.`{$TBLPREFIX}ip_address`"
 	)->execute();
 } else {
 	// Copied from PGV's db_schema_13_14
@@ -835,12 +835,12 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 echo '<p>pgv_site_setting => wt_module_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##module_setting` (module_name, setting_name, setting_value)".
-	" SELECT 'googlemap', site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
+	" SELECT 'googlemap', site_setting_name, site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting`".
 	" WHERE site_setting_name LIKE 'GM_%'"
 )->execute();
 WT_DB::prepare(
 	"REPLACE INTO `##module_setting` (module_name, setting_name, setting_value)".
-	" SELECT 'lightbox', site_setting_name, site_setting_value FROM {$DBNAME}.{$TBLPREFIX}site_setting".
+	" SELECT 'lightbox', site_setting_name, site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting`".
 	" WHERE site_setting_name LIKE 'LB_%'"
 )->execute();
 
@@ -850,7 +850,7 @@ echo '<p>pgv_favorites => wt_favorites ...</p>'; ob_flush(); flush(); usleep(500
 try {
 	WT_DB::prepare(
 		"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
-		" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM {$DBNAME}.{$TBLPREFIX}favorites"
+		" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM `{$DBNAME}`.`{$TBLPREFIX}favorites`"
 	)->execute();
 } catch (PDOException $ex) {
 	// This table will only exist if the favorites module is installed in WT
@@ -862,7 +862,7 @@ echo '<p>pgv_news => wt_news ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
 	WT_DB::prepare(
 		"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
-		" SELECT n_id, n_username, n_date, n_title, n_text FROM {$DBNAME}.{$TBLPREFIX}news"
+		" SELECT n_id, n_username, n_date, n_title, n_text FROM `{$DBNAME}`.`{$TBLPREFIX}news`"
 	)->execute();
 } catch (PDOException $ex) {
 	// This table will only exist if the news/blog module is installed in WT
@@ -873,7 +873,7 @@ try {
 echo '<p>pgv_dates => wt_dates ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##dates` (d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type)".
-	" SELECT d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM {$DBNAME}.{$TBLPREFIX}dates"
+	" SELECT d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM `{$DBNAME}`.`{$TBLPREFIX}dates`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -883,7 +883,7 @@ WT_DB::prepare(
 	"REPLACE INTO `##families` (f_id, f_file, f_husb, f_wife, f_numchil, f_gedcom)".
 	" SELECT f_id, f_file, f_husb, f_wife, f_numchil, ".
 	" REPLACE(REPLACE(f_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '), '\n1 _PGV_OBJS ', '\n1 _WT_OBJE_SORT ')".
-	" FROM {$DBNAME}.{$TBLPREFIX}families"
+	" FROM `{$DBNAME}`.`{$TBLPREFIX}families`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -893,7 +893,7 @@ WT_DB::prepare(
 	"REPLACE INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom)".
 	" SELECT i_id, i_file, i_rin, i_isdead, i_sex, ".
 	" REPLACE(REPLACE(i_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '), '\n1 _PGV_OBJS ', '\n1 _WT_OBJE_SORT ')".
-	" FROM {$DBNAME}.{$TBLPREFIX}individuals"
+	" FROM `{$DBNAME}`.`{$TBLPREFIX}individuals`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -901,7 +901,7 @@ WT_DB::prepare(
 echo '<p>pgv_link => wt_link ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##link` (l_file, l_from, l_type, l_to)".
-	" SELECT l_file, l_from, l_type, l_to FROM {$DBNAME}.{$TBLPREFIX}link"
+	" SELECT l_file, l_from, l_type, l_to FROM `{$DBNAME}`.`{$TBLPREFIX}link`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -911,7 +911,7 @@ WT_DB::prepare(
 	"REPLACE INTO `##media` (m_id, m_media, m_ext, m_titl, m_file, m_gedfile, m_gedrec)".
 	" SELECT m_id, m_media, m_ext, m_titl, m_file, m_gedfile, ".
 	" REPLACE(m_gedrec, '\n2 _PGVU ', '\n2 _WT_USER ')".
-	" FROM {$DBNAME}.{$TBLPREFIX}media"
+	" FROM `{$DBNAME}`.`{$TBLPREFIX}media`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -919,7 +919,7 @@ WT_DB::prepare(
 echo '<p>pgv_media_mapping => wt_media_mapping ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##media_mapping` (mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec)".
-	" SELECT mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec FROM {$DBNAME}.{$TBLPREFIX}media_mapping"
+	" SELECT mm_id, mm_media, mm_gid, mm_order, mm_gedfile, mm_gedrec FROM `{$DBNAME}`.`{$TBLPREFIX}media_mapping`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -927,7 +927,7 @@ WT_DB::prepare(
 echo '<p>pgv_name => wt_name ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)".
-	" SELECT n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM {$DBNAME}.{$TBLPREFIX}name"
+	" SELECT n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `{$DBNAME}`.`{$TBLPREFIX}name`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -937,7 +937,7 @@ WT_DB::prepare(
 	"REPLACE INTO `##other` (o_id, o_file, o_type, o_gedcom)".
 	" SELECT o_id, o_file, o_type, ".
 	" REPLACE(o_gedcom, '\n2 _PGVU ', '\n2 _WT_USER ')".
-	" FROM {$DBNAME}.{$TBLPREFIX}other"
+	" FROM `{$DBNAME}`.`{$TBLPREFIX}other`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -945,7 +945,7 @@ WT_DB::prepare(
 echo '<p>pgv_placelinks => wt_placelinks ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##placelinks` (pl_p_id, pl_gid, pl_file)".
-	" SELECT pl_p_id, pl_gid, pl_file FROM {$DBNAME}.{$TBLPREFIX}placelinks"
+	" SELECT pl_p_id, pl_gid, pl_file FROM `{$DBNAME}`.`{$TBLPREFIX}placelinks`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -974,7 +974,7 @@ try {
 
 		WT_DB::prepare(
 			"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
-			" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM {$DBNAME}.{$TBLPREFIX}placelocation"
+			" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
 		)->execute();
 	}
 } catch (PDOexception $ex) {
@@ -986,7 +986,7 @@ try {
 echo '<p>pgv_places => wt_places ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##places` (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex)".
-	" SELECT p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex FROM {$DBNAME}.{$TBLPREFIX}places"
+	" SELECT p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex FROM `{$DBNAME}`.`{$TBLPREFIX}places`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -994,7 +994,7 @@ WT_DB::prepare(
 echo '<p>pgv_remotelinks => wt_remotelinks ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##remotelinks` (r_gid, r_linkid, r_file)".
-	" SELECT r_gid, r_linkid, r_file FROM {$DBNAME}.{$TBLPREFIX}remotelinks"
+	" SELECT r_gid, r_linkid, r_file FROM `{$DBNAME}`.`{$TBLPREFIX}remotelinks`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1004,7 +1004,7 @@ WT_DB::prepare(
 	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_dbid, s_gedcom)".
 	" SELECT s_id, s_file, s_name, s_dbid, ".
 	" REPLACE(s_gedcom, '\n2 _PGVU ', '\n2 _WT_USER ')".
-	" FROM {$DBNAME}.{$TBLPREFIX}sources"
+	" FROM `{$DBNAME}`.`{$TBLPREFIX}sources`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1013,7 +1013,7 @@ echo '<p>pgv_messages => wt_message ...</p>'; ob_flush(); flush(); usleep(50000)
 WT_DB::prepare(
 	"REPLACE INTO `##message` (message_id, sender, ip_address, user_id, subject, body, created)".
 	" SELECT m_id, m_from, '127.0.0.1', user_id, m_subject, m_body, str_to_date(m_created,'%a, %d %M %Y %H:%i:%s')".
-	" FROM {$DBNAME}.{$TBLPREFIX}messages".
+	" FROM `{$DBNAME}`.`{$TBLPREFIX}messages`".
 	" JOIN `##user` ON (m_to COLLATE utf8_unicode_ci=user_name)"
 )->execute();
 
