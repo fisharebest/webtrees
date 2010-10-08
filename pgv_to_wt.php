@@ -857,6 +857,21 @@ WT_DB::prepare(
 
 echo '<p>pgv_favorites => wt_favorites ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##favorites` (".
+		" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
+		" fv_username VARCHAR(32)            NOT NULL,".
+		" fv_gid      VARCHAR(20)                NULL,".
+		" fv_type     VARCHAR(15)                NULL,".
+		" fv_file     VARCHAR(100)               NULL,".
+		" fv_url      VARCHAR(255)               NULL,".
+		" fv_title    VARCHAR(255)               NULL,".
+		" fv_note     TEXT                       NULL,".
+		" PRIMARY KEY (fv_id),".
+		"         KEY ix1 (fv_username)".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+
 	WT_DB::prepare(
 		"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
 		" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM `{$DBNAME}`.`{$TBLPREFIX}favorites`"
@@ -869,6 +884,18 @@ try {
 
 echo '<p>pgv_news => wt_news ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##news` (".
+		" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
+		" n_username VARCHAR(100)           NOT NULL,".
+		" n_date     INTEGER                NOT NULL,".
+		" n_title    VARCHAR(255)           NOT NULL,".
+		" n_text     TEXT                   NOT NULL,".
+		" PRIMARY KEY     (n_id),".
+		"         KEY ix1 (n_username)".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
+
 	WT_DB::prepare(
 		"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
 		" SELECT n_id, n_username, n_date, n_title, n_text FROM `{$DBNAME}`.`{$TBLPREFIX}news`"
