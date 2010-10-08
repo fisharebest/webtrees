@@ -167,7 +167,7 @@ WT_DB::exec("DELETE FROM `##user`");
 
 ////////////////////////////////////////////////////////////////////////////////
 if (ob_get_level() == 0) ob_start();
-echo '<p>config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @set_site_setting('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
 @set_site_setting('SMTP_SIMPLE_MAIL',                $PGV_SIMPLE_MAIL);
@@ -560,18 +560,18 @@ $PRIV_HIDE=WT_PRIV_HIDE;
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	$config=get_gedcom_setting($ged_id, 'config');
 	if ($PGV_SCHEMA_VERSION>=12) {
-	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $config);
+	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	} else {
-		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.'/', $config);
+		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	}
 	if (is_readable($config)) {
 		require $config;
 	}
 	$privacy=get_gedcom_setting($ged_id, 'privacy');
 	if ($PGV_SCHEMA_VERSION>=12) {
-	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.'/', $privacy);
+	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $privacy);
 	} else {
-		$privacy=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.'/', $privacy);
+		$privacy=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $privacy);
 	}
 	if (is_readable($privacy)) {
 		require $privacy;
@@ -786,7 +786,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 } else {
 	// Copied from PGV's db_schema_13_14
 	$statement=WT_DB::prepare("REPLACE INTO `##ip_address` (ip_address, category, comment) VALUES (?, ?, ?)");
-	echo '<p>banned.php => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'banned.php => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
 	if (is_readable($INDEX_DIRECTORY.'/banned.php')) {
 		@require $INDEX_DIRECTORY.'/banned.php';
 		if (!empty($banned) && is_array($banned)) {
@@ -805,7 +805,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 			}
 		}
 	}
-	echo '<p>search_engines.php => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'search_engines.php => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
 	if (is_readable($INDEX_DIRECTORY.'/search_engines.php')) {
 		@require $INDEX_DIRECTORY.'/search_engines.php';
 		if (!empty($search_engines) && is_array($search_engines)) {
