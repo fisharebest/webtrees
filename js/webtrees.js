@@ -536,7 +536,7 @@ function valid_date(datefield) {
 	datestr=datestr.replace(/^([\w ]+)[-/]$/, "AFT $1");
 	datestr=datestr.replace(/^[</-]([\w ]+)$/, "BEF $1");
 	datestr=datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, "BET $1 AND $2");
-	if (datestr.match(/^=([\d ()/+*-]+)$/)) datestr=eval(RegExp.$1);
+	if (datestr.match(/^=([\d ()\/+*-]+)$/)) datestr=eval(RegExp.$1);
 
 	// Americans frequently enter dates as SEPTEMBER 20, 1999
 	// No need to internationalise this, as this is an english-language issue
