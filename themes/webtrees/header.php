@@ -109,7 +109,6 @@ if ($view!='simple') {
 					echo '&nbsp;</ul>',
 					'</div>',
 			'</td>',
-			'</td>',
 		'</tr>',
 	'</table>'.
 	'<table width="100%">',
