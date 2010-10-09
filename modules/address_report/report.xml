@@ -94,9 +94,9 @@
 				</TextBox>
 				<TextBox height="52" border="1" newline="1">
 					<Text style="text">
-						<varLetter var="PHON" />: <GedcomValue tag="PHON" /><br />
-						<varLetter var="FAX" />: <GedcomValue tag="FAX" /><br />
-						<varLetter var="_EMAIL" />: <GedcomValue tag="_EMAIL" /><GedcomValue tag="EMAIL" />
+						<varLetter var="PHON" /> <GedcomValue tag="PHON" /><br />
+						<varLetter var="FAX" /> <GedcomValue tag="FAX" /><br />
+						<varLetter var="EMAIL" /> <GedcomValue tag="_EMAIL" /><GedcomValue tag="EMAIL" />
 					</Text>
 				</TextBox>
 			</List>
