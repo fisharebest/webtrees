@@ -149,7 +149,7 @@ if ($view!='simple') {
 			'<input type="text" name="query" size="15" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
 			'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', i18n::translate('Search'), '" title="', i18n::translate('Search'), '" />',
 			'</form>',
-			'</ui></div>';
+			'</div>';
 	}
 
 	echo '</td></tr></table></div>';
