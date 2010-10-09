@@ -1,4 +1,4 @@
-<!-- @version $Id$ -->
+/* $Id$ */
 var loadingMessage = "<p style=\"margin: 20px 20px 20px 20px\"><img src=\"images/loading.gif\" alt=\"\" title=\"\" /></p>";
 
 function tempNavObj(target, oXmlHttp, callback) {
