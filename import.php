@@ -6,9 +6,9 @@
  * a <div id="importNNN"></div>, where NNN is the gedcom ID.
  * It will then call import.php to load the div's contents using AJAX.
  *
- * We start importing at position wt_gedcom.import_offset and continue
- * for a couple of seconds.  When we've finished we set import_offset to
- * zero to indicate success.
+ * We import small blocks of data from wt_gedcom_chunks, working for
+ * a couple of seconds.  When each block is loaded, we set its status
+ * flag.
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -44,36 +44,29 @@ if (!userGedcomAdmin(WT_USER_ID, $gedcom_id)) {
 	exit;
 }
 
+// AJAX responses require a header
+header('Content-type: text/html; charset=UTF-8');
+
 // Don't allow the user to cancel the request.  We do not want to be left
-// with an incomplete transaction, as this could block another session.
+// with an incomplete transaction.
 ignore_user_abort(true);
 
-// Run in a transaction, and make sure we are the only ones importing this gedcom
+// Run in a transaction
 WT_DB::exec("START TRANSACTION");
+
+// Only allow one process to import each gedcom at a time
+WT_DB::prepare("SELECT * FROM `##gedcom_chunk` WHERE gedcom_id=? FOR UPDATE")->execute(array($gedcom_id));
 
 // What is the current import status?
 $row=WT_DB::prepare(
-	"SELECT import_offset, LENGTH(import_gedcom) AS import_total FROM `##gedcom` WHERE gedcom_id=? FOR UPDATE"
+	"SELECT".
+	" SUM(IF(imported, LENGTH(chunk_data), 0)) AS import_offset,".
+	" SUM(LENGTH(chunk_data))                  AS import_total".
+	" FROM `##gedcom_chunk` WHERE gedcom_id=?"
 )->execute(array($gedcom_id))->fetchOneRow();
 
-if (!$row) {
-	// No such gedcom?  Deleted in another session?  die quietly
-	WT_DB::exec("COMMIT");
-	exit;
-}
-
-header('Content-type: text/html; charset=UTF-8');
-
-// MySQL cannot use string functions on blobs larger than max_allowed_packet
-// See http://bugs.mysql.com/bug.php?id=22853
-$max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
-try {
-	WT_DB::exec("SET @@max_allowed_packet=".max($row->import_total*2, $max_allowed_packet));
-} catch (PDOException $ex) {
-	// We can only set this on MySQL 5.1.30/5.0.83 or earlier
-}
-
-if ($row->import_offset==0 || $row->import_total==0) {
+if ($row->import_offset==$row->import_total) {
+	set_gedcom_setting($gedcom_id, 'imported', true);
 	// Finished?  Show the maintenance links, similar to editgedcoms.php
 	WT_DB::exec("COMMIT");
 	echo
@@ -85,7 +78,7 @@ if ($row->import_offset==0 || $row->import_total==0) {
 }
 
 // Calculate progress so far
-$percent=100*(($row->import_offset-1) / $row->import_total);
+$percent=100*(($row->import_offset) / $row->import_total);
 $status=i18n::translate('Loading data from GEDCOM: %.1f%%', $percent);
 
 echo
@@ -95,9 +88,16 @@ echo
 	WT_JS_END,
 flush();
 
-$first_time=($row->import_offset==1);
+$first_time=($row->import_offset==0);
 // Run for one second.  This keeps the resource requirements low.
 for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
+	$data=WT_DB::prepare(
+		"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
+		" FROM `##gedcom_chunk`".
+		" WHERE gedcom_id=? AND NOT imported".
+		" ORDER BY gedcom_chunk_id".
+		" LIMIT 1"
+	)->execute(array($gedcom_id))->fetchOneRow();
 	// If we are at the start position, do some tidying up
 	if ($first_time) {
 		$keep_media=safe_GET_bool('keep_media');
@@ -106,32 +106,18 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		set_gedcom_setting($gedcom_id, 'imported', false);
 		// Remove any byte-order-mark
 		WT_DB::prepare(
-			"UPDATE `##gedcom`".
-			" SET import_gedcom=TRIM(LEADING ? FROM import_gedcom)".
-			" WHERE gedcom_id=?"
-		)->execute(array(WT_UTF8_BOM, $gedcom_id));
-		// Convert line endings.  Don't convert \r\n - it is very slow.  Just deal
-		// with empty records later.
-		WT_DB::prepare(
-			"UPDATE `##gedcom`".
-			" SET import_gedcom=REPLACE(import_gedcom, '\r', '\n')".
-			" WHERE gedcom_id=?"
-		)->execute(array($gedcom_id));
-		// Fetch the header record
-		$head=WT_DB::prepare(
-			"SELECT SQL_NO_CACHE".
-			" LEFT(import_gedcom, CASE LOCATE('\n0', import_gedcom, 2) WHEN 0 THEN LENGTH(import_gedcom) ELSE LOCATE('\n0', import_gedcom, 2) END)".
-			" FROM `##gedcom`".
-			" WHERE gedcom_id=?"
-		)->execute(array($gedcom_id))->fetchOne();
-		if (substr($head, 0, 6)!='0 HEAD') {
+			"UPDATE `##gedcom_chunk`".
+			" SET chunk_data=TRIM(LEADING ? FROM chunk_data)".
+			" WHERE gedcom_chunk_id=?"
+		)->execute(array(WT_UTF8_BOM, $data->gedcom_chunk_id));
+		if (substr($data->chunk_data, 0, 6)!='0 HEAD') {
 			WT_DB::exec("ROLLBACK");
 			echo i18n::translate('Invalid GEDCOM file - no header record found.');
 			echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
-		if (preg_match('/\n1\s*CHAR(?:ACTER)?\s+(.+)/', $head, $match)) {
+		if (preg_match('/\n1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
 			$charset=strtoupper($match[1]);
 		} else {
 			$charset='ASCII';
@@ -141,8 +127,8 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		switch ($charset) {
 		case 'ASCII':
 			WT_DB::prepare(
-				"UPDATE `##gedcom`".
-				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING ascii) USING utf8)".
+				"UPDATE `##gedcom_chunk`".
+				" SET chunk_data=CONVERT(CONVERT(chunk_data USING ascii) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
@@ -152,8 +138,8 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'CP850':
 			// CP850 has extra letters with diacritics to replace box-drawing chars in CP437.
 			WT_DB::prepare(
-				"UPDATE `##gedcom`".
-				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING cp850) USING utf8)".
+				"UPDATE `##gedcom_chunk`".
+				" SET chunk_data=CONVERT(CONVERT(chunk_data USING cp850) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
@@ -169,8 +155,8 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'LATIN-1':
 			// Convert from ISO-8859-1 (western european) to UTF8.
 			WT_DB::prepare(
-				"UPDATE `##gedcom`".
-				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin1) USING utf8)".
+				"UPDATE `##gedcom_chunk`".
+				" SET chunk_data=CONVERT(CONVERT(chunk_data USING latin1) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
@@ -181,16 +167,16 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		case 'LATIN-2':
 			// Convert from ISO-8859-2 (eastern european) to UTF8.
 			WT_DB::prepare(
-				"UPDATE `##gedcom`".
-				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING latin2) USING utf8)".
+				"UPDATE `##gedcom_chunk`".
+				" SET chunk_data=CONVERT(CONVERT(chunk_data USING latin2) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
 		case 'MACINTOSH':
 			// Convert from MAC Roman to UTF8.
 			WT_DB::prepare(
-				"UPDATE `##gedcom`".
-				" SET import_gedcom=CONVERT(CONVERT(import_gedcom USING macroman) USING utf8)".
+				"UPDATE `##gedcom_chunk`".
+				" SET chunk_data=CONVERT(CONVERT(chunk_data USING macroman) USING utf8)".
 				" WHERE gedcom_id=?"
 			)->execute(array($gedcom_id));
 			break;
@@ -207,58 +193,55 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			exit;
 		}
 		$first_time=false;
+		
+		// Re-fetch the data, now that we have performed character set conversion, etc.
+		$data=WT_DB::prepare(
+			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
+			" FROM `##gedcom_chunk`".
+			" WHERE gedcom_id=? AND NOT imported".
+			" ORDER BY gedcom_chunk_id".
+			" LIMIT 1"
+		)->execute(array($gedcom_id))->fetchOneRow();
 	}
-	// Fetch the next block of data ending on a record boundary.
-	$data=WT_DB::prepare(
-		"SELECT SQL_NO_CACHE".
-		"  CASE LOCATE('\n0', import_gedcom, import_offset+65536)".
-		"   WHEN 0 THEN SUBSTR(import_gedcom FROM import_offset)".
-		"   ELSE SUBSTR(import_gedcom FROM import_offset FOR LOCATE('\n0', import_gedcom, import_offset+65536)-import_offset)".
-		"  END".
-		" FROM `##gedcom`".
-		" WHERE gedcom_id=?"
-	)->execute(array($gedcom_id))->fetchOne();
-	WT_DB::prepare(
-		"UPDATE `##gedcom`".
-		" SET import_offset=import_offset+?".
-		" WHERE gedcom_id=?"
-	)->execute(array(strlen($data), $gedcom_id));
 
-	foreach (preg_split('/\n(?=0)/', $data) as $rec) {
-		if ($rec) {
-			try {
-				import_record(trim($rec), $gedcom_id, false);
-			} catch (PDOException $ex) {
-				// A fatal error.  Nothing we can do.
-				WT_DB::exec("ROLLBACK");
-				echo '<span class="error">', $ex->getMessage(), '</span>';
-				echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
-				exit;
-			}
+	if (!$data) {
+		break;
+	}
+	try {
+		// Import all the records in this chunk of data
+		foreach (preg_split('/\n+(?=0)/', $data->chunk_data) as $rec) {
+			import_record($rec, $gedcom_id, false);
 		}
+		// Mark the chunk as imported
+		WT_DB::prepare(
+			"UPDATE `##gedcom_chunk` SET imported=TRUE WHERE gedcom_chunk_id=?"
+		)->execute(array($data->gedcom_chunk_id));
+	} catch (PDOException $ex) {
+		WT_DB::exec("ROLLBACK");
+		if ($ex->getCode()=='40001') {
+			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
+			// The documentation says that if you get this error, wait and try again.....
+			sleep(1);
+			echo
+				WT_JS_START,
+				'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
+				WT_JS_END;
+		} else {
+			// A fatal error.  Nothing we can do?
+			echo
+				'<span class="error">', $ex->getMessage(), '</span>',
+				WT_JS_START,
+				'jQuery("#actions', $gedcom_id, '").toggle();',
+				WT_JS_END;
+		}
+		exit;
 	}
 }
 
-if ($row->import_offset>$row->import_total) {
-	// Done
-	set_gedcom_setting($gedcom_id, 'imported', true);
-	WT_DB::prepare(
-		"UPDATE `##gedcom`".
-		" SET import_offset=0".
-		" WHERE gedcom_id=?"
-	)->execute(array($gedcom_id));
-	WT_DB::exec("COMMIT");
-	echo
-		WT_JS_START,
-		'jQuery("#import',  $gedcom_id, '").toggle();',
-		'jQuery("#actions', $gedcom_id, '").toggle();',
-		WT_JS_END;
-} else {
-	WT_DB::exec("COMMIT");
-	// Reload.....
-	echo
-		WT_JS_START,
-		'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
-		WT_JS_END;
-}
+WT_DB::exec("COMMIT");
 
+// Reload.....
+echo
+	WT_JS_START,
+	'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
+	WT_JS_END;

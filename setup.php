@@ -287,19 +287,6 @@ try {
 		if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
 			echo '<p class="bad">', i18n::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
 		} else {
-			if (
-				version_compare($row->value, '5.1.31', '>=') ||
-				version_compare($row->value, '5.0.84', '>=') && version_compare($row->value, '5.0', '<')
-			) {
-				// MAX_ALLOWED_PACKET became read-only in MYSQL 5.1.31 and 5.0.84
-				foreach ($dbh->query("SELECT @@max_allowed_packet AS max_allowed_packet") as $row2) {
-					$max_allowed_packet=$row2->max_allowed_packet;
-					echo
-						'<p class="indifferent">',
-						i18n::translate('This database can only import GEDCOM files smaller than the MySQL setting <b>max_allowed_packet</b>.  This is currently set to %d KB.  To import GEDCOM files larger than this, ask your server\'s administrator to increase this setting.', $max_allowed_packet/1024),
-						'</p>';
-				}
-			}
 			$db_version_ok=true;
 		}
 	}
@@ -607,8 +594,6 @@ try {
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom` (".
 		" gedcom_id     INTEGER AUTO_INCREMENT                        NOT NULL,".
 		" gedcom_name   VARCHAR(255)                                  NOT NULL,".
-		" import_gedcom LONGBLOB                                      NOT NULL,".
-		" import_offset INTEGER UNSIGNED                              NOT NULL,".
 		" PRIMARY KEY     (gedcom_id),".
 		" UNIQUE  KEY ux1 (gedcom_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -981,6 +966,17 @@ try {
 		"         KEY ix2 (user_id, ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom_chunk` (".
+		" gedcom_chunk_id INTEGER AUTO_INCREMENT NOT NULL,".
+		" gedcom_id       INTEGER                NOT NULL,".
+		" chunk_data      MEDIUMBLOB             NOT NULL,".
+		" imported        BOOLEAN                NOT NULL DEFAULT FALSE,".
+		" PRIMARY KEY     (gedcom_chunk_id),".
+		"         KEY ix1 (gedcom_id, imported),".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
 
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
@@ -1016,7 +1012,7 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '2'),".
+		"('WT_SCHEMA_VERSION',               '3'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".

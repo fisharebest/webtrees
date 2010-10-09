@@ -34,50 +34,41 @@ if (!WT_USER_GEDCOM_ADMIN) {
 // Which directory contains our data files?
 $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 
+// Don't allow the user to cancel the request.  We do not want to be left
+// with an incomplete transaction.
+ignore_user_abort(true);
+
 function import_gedcom_file($gedcom_id, $file_name) {
-	$file_size=filesize($file_name);
+	// Read the file in blocks of roughly 64K.  Ensure that each block
+	// contains complete gedcom records.  This will ensure we don't split
+	// multi-byte characters, as well as simplifying the code to import
+	// each block.
+
+	$file_data='';
 	$fp=fopen($file_name, 'rb');
+
 	WT_DB::exec("START TRANSACTION");
-
-	// Cannot use the stream technique at http://php.net/manual/en/pdo.lobs.php
-	// It doesn't work, probably due to the MySQL bug mentioned below.
-	//WT_DB::prepare(
-	// "UPDATE `##gedcom`".
-	// " SET import_gedcom=?, import_offset=1".
-	// " WHERE gedcom_id=?"
-	//)
-	//->bindParam(1, $fp,        PDO::PARAM_LOB)
-	//->bindParam(2, $gedcom_id, PDO::PARAM_INT)
-	//->execute();
-
-	$max_allowed_packet=WT_DB::prepare("SELECT @@max_allowed_packet")->fetchOne();
-	WT_DB::prepare(
-		"UPDATE `##gedcom`".
-		" SET import_gedcom='', import_offset=1".
-		" WHERE gedcom_id=?"
-	)->execute(array($gedcom_id));
-
-	// The max_allowed_packet setting in MySQL puts a limit on the size of SQL
-	// statements that can be received over the network.  Due to a bug, it also
-	// limits the size of blobs that can be processed on the server.
-	// Setting this value has no effect on upload limits (so we must still
-	// upload data in chunks smaller than this), but it will allow us to use
-	// CONCAT(import_gedcom, ?)
-	// See http://bugs.mysql.com/bug.php?id=22853 (Scheduled to be fixed in MySQL 6)
-	try {
-		WT_DB::exec("SET @@max_allowed_packet=".max($file_size*2, $max_allowed_packet));
-	} catch (PDOException $ex) {
-		// We can only set this on MySQL 5.1.30 or earlier
-	}
+	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
 
 	while (!feof($fp)) {
-		$data=fread($fp, $max_allowed_packet * 0.75);
-		WT_DB::prepare(
-			"UPDATE `##gedcom`".
-			" SET import_gedcom=CONCAT(import_gedcom, ?)".
-			" WHERE gedcom_id=?"
-		)->execute(array($data, $gedcom_id));
+		$file_data.=fread($fp, 65536);
+		// There is no strrpos() function that searches for substrings :-(
+		for ($pos=strlen($file_data)-1; $pos>0; --$pos) {
+			if ($file_data[$pos]=='0' && ($file_data[$pos-1]=="\n" || $file_data[$pos-1]=="\r")) {
+				// We've found the last record boundary in this chunk of data
+				break;
+			}
+		}
+		if ($pos) {
+			WT_DB::prepare(
+				"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
+			)->execute(array($gedcom_id, substr($file_data, 0, $pos)));
+			$file_data=substr($file_data, $pos);
+		}
 	}
+	WT_DB::prepare(
+		"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
+	)->execute(array($gedcom_id, $file_data));
 
 	WT_DB::exec("COMMIT");
 	fclose($fp);
@@ -115,11 +106,13 @@ case 'new_ged':
 		// I18N: This should be a common/default/placeholder name of a person.  Put slashes around the surname.
 		$john_doe=i18n::translate('John /DOE/');
 		$note=i18n::translate('Edit this individual and replace their details with your own');
+		WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
 		WT_DB::prepare(
-			"UPDATE `##gedcom`".
-			" SET import_gedcom=?, import_offset=1".
-			" WHERE gedcom_id=?"
-		)->execute(array("0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n", $gedcom_id));
+			"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
+		)->execute(array(
+			$gedcom_id,
+			"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
+		));
 	}
 	break;
 case 'upload_ged':
@@ -160,9 +153,7 @@ case 'replace_import':
 }
 
 $gedcoms=WT_DB::prepare(
-	"SELECT gedcom_id, gedcom_name, import_offset".
-	" FROM `##gedcom`".
-	" ORDER BY gedcom_name"
+	"SELECT gedcom_id, gedcom_name FROM `##gedcom` ORDER BY gedcom_name"
 )->fetchAll();
 
 $all_gedcoms=array();
@@ -248,7 +239,10 @@ foreach ($gedcoms as $gedcom) {
 			'</td><td class="list_value">';
 
 		// The third row shows an optional progress bar and a list of maintenance options
-		if ($gedcom->import_offset>0) {
+		$importing=WT_DB::prepare(
+			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=0 LIMIT 1"
+		)->execute(array($gedcom->gedcom_id))->fetchOne();
+		if ($importing) {
 			echo
 				'<div id="import', $gedcom->gedcom_id, '"></div>',
 				WT_JS_START,

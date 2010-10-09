@@ -1655,6 +1655,7 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id =?")->execute(array($ged_id));
 }
 
@@ -2132,7 +2133,7 @@ function get_id_from_gedcom($ged_name, $create=false) {
 
 	if ($create) {
 		try {
-			WT_DB::prepare("INSERT INTO `##gedcom` (gedcom_name, import_gedcom, import_offset) VALUES (?, '', 0)")
+			WT_DB::prepare("INSERT INTO `##gedcom` (gedcom_name) VALUES (?)")
 				->execute(array($ged_name));
 			$ged_id=WT_DB::getInstance()->lastInsertId();
 			require WT_ROOT.'includes/set_gedcom_defaults.php';
