@@ -50,7 +50,7 @@ define('WT_AUTHENTICATION_PHP', '');
  * @param string $user_name the username for the user attempting to login
  * @param string $password the plain text password to test
  * @param boolean $basic true if the userName and password were retrived via Basic HTTP authentication. Defaults to false. At this point, this is only used for logging
- * @return the user_id if sucessful, false otherwise
+ * @return the user_id if successful, false otherwise
  */
 function authenticateUser($user_name, $password, $basic=false) {
 	// If we were already logged in, log out first

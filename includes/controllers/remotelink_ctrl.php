@@ -104,7 +104,7 @@ class RemoteLinkController extends BaseController {
 
 	}
 
-	// Perform the desired action and return true/false sucess.
+	// Perform the desired action and return true/false success.
 	function runAction($action) {
 		switch ($action) {
 		case 'addlink':

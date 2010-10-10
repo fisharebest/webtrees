@@ -57,5 +57,5 @@ WT_DB::exec(
 	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 );
 
-// Update the version to indicate sucess
+// Update the version to indicate success
 set_site_setting($schema_name, $next_version);
