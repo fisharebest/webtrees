@@ -55,7 +55,6 @@ if (!defined('WT_WEBTREES')) {
 						}else{
 							var win02 = window.open(
 								"module.php?mod=GEDFact_assistant&mod_action=_CENS/census_3_find&callback=paste_id&action=filter&type=indi&multiple=&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=400, WIDTH=450 ");
-								// "modules/GEDFact_assistant/_CENS/census_3_find.php?callback=paste_id&action=filter&type=indi&multiple=&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=400, WIDTH=450 ");
 							if (window.focus) {win02.focus();}
 						}
 					}
@@ -77,7 +76,6 @@ if (!defined('WT_WEBTREES')) {
 				<?php
 				//-- Add Family Members to Census  -------------------------------------------
 				global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION, $GEDCOM;
-				// echo "CENS = " . $censyear;
 				?>
 
 				<tr>
@@ -161,9 +159,10 @@ if (!defined('WT_WEBTREES')) {
 							$fulln   = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn    = rtrim($nam[0]['givn'],'*');
 							$surn    = $nam[0]['surname'];
-							if (isset($nam[1])) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-								$marn  = $nam[1]['surname'];
+							for ($i=0; $i<count($nam); $i++) {
+								if ($nam[$i]['type']=='_MARNM') {
+									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+								}									
 							}
 							$menu = new Menu($people["husb"]->getLabel()."\n");
 							$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censdate);
@@ -197,8 +196,8 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
-												echo addslashes($fulmn); // mnam = Full Married Name
+											if (isset($fulmn)){
+												echo addslashes($fulln); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
 											}
@@ -284,19 +283,21 @@ if (!defined('WT_WEBTREES')) {
 							$fulln   = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn    = rtrim($nam[0]['givn'],'*');
 							$surn    = $nam[0]['surname'];
+							$husbnam = null;
 							// Get wifes married name if available
-							if (isset($people["husb"])) {
+							if (isset($people["husb"])){
 								$husbnams = $people["husb"]->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
-									// Husband or his name is not known
+									// if Husband or his name is not known then use wifes birth name
+									$husbnam = $nam[0]['surname'];
 								} else {
-									$husbnam = $people["husb"]->getAllNames();
+									$husbnam = $husbnams[0]['surname'];
 								}
 							}
-							if (isset($nam[1]) && isset($husbnam)) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$husbnam[0]['surname'];
-							}else{
-								$fulmn = $fulln;
+							for ($i=0; $i<count($nam); $i++) {
+								if ($nam[$i]['type']=='_MARNM') {
+									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
+								}									
 							}
 							$menu = new Menu($people["wife"]->getLabel()."\n");
 							$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
@@ -329,7 +330,7 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
+											if (isset($fulmn)){
 												echo addslashes($fulmn); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
@@ -430,9 +431,12 @@ if (!defined('WT_WEBTREES')) {
 								$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 								$givn  = rtrim($nam[0]['givn'],'*');
 								$surn  = $nam[0]['surname'];
-								if (isset($nam[1])) {
-									$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-									$marn  = $nam[1]['surname'];
+								$chfulmn=null;								
+								$chnam = $child->getAllNames();
+								for ($i=0; $i<count($nam); $i++) {
+									if ($chnam[$i]['type']=='_MARNM') {
+										$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];									
+									}									
 								}
 
 								$menu = new Menu($child->getLabel()."\n");
@@ -476,8 +480,8 @@ if (!defined('WT_WEBTREES')) {
 													?>", "<?php
 														echo addslashes($fulln); // nam = Full Name
 													?>", "<?php
-														if (isset($nam[1])){
-															echo addslashes($fulmn); // mnam = Full Married Name
+														if (isset($chfulmn)){
+															echo addslashes($chfulmn); // mnam = Full Married Name
 														}else{
 															echo addslashes($fulln); // mnam = Full Name
 														}
@@ -602,9 +606,10 @@ if (!defined('WT_WEBTREES')) {
 							$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn  = rtrim($nam[0]['givn'],'*');
 							$surn  = $nam[0]['surname'];
-							if (isset($nam[1])) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-								$marn  = $nam[1]['surname'];
+							for ($i=0; $i<count($nam); $i++) {
+								if ($nam[$i]['type']=='_MARNM') {
+									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+								}									
 							}
 							$menu = new Menu();
 							if ($people["husb"]->getLabel() == ".") {
@@ -644,8 +649,8 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
-												echo addslashes($fulmn); // mnam = Full Married Name
+											if (isset($fulmn)){
+												echo addslashes($fulln); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
 											}
@@ -737,19 +742,21 @@ if (!defined('WT_WEBTREES')) {
 							$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn  = rtrim($nam[0]['givn'],'*');
 							$surn  = $nam[0]['surname'];
+							$husbnam = null;
 							// Get wifes married name if available
 							if (isset($people["husb"])){
 								$husbnams = $people["husb"]->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
-									// Husband or his name is not known
+									// if Husband or his name is not known then use wifes birth name
+									$husbnam = $nam[0]['surname'];
 								} else {
-									$husbnam = $people["husb"]->getAllNames();
+									$husbnam = $husbnams[0]['surname'];
 								}
 							}
-							if (isset($nam[1]) && isset($husbnam)) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$husbnam[0]['surname'];
-							}else{
-								$fulmn = $fulln;
+							for ($i=0; $i<count($nam); $i++) {
+								if ($nam[$i]['type']=='_MARNM') {
+									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
+								}									
 							}
 							$menu = new Menu();
 							if ($people["wife"]->getLabel() == ".") {
@@ -789,7 +796,7 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
+											if (isset($fulmn)){
 												echo addslashes($fulmn); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
@@ -886,9 +893,12 @@ if (!defined('WT_WEBTREES')) {
 								$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 								$givn  = rtrim($nam[0]['givn'],'*');
 								$surn  = $nam[0]['surname'];
-								if (isset($nam[1])) {
-									$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-									$marn  = $nam[1]['surname'];
+								$chfulmn=null;
+								$chnam = $child->getAllNames();
+								for ($i=0; $i<count($nam); $i++) {
+									if ($chnam[$i]['type']=='_MARNM') {
+										$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];									
+									}									
 								}
 								$menu = new Menu($child->getLabel()."\n");
 								$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
@@ -923,8 +933,8 @@ if (!defined('WT_WEBTREES')) {
 											?>", "<?php
 												echo addslashes($fulln); // nam = Full Name
 											?>", "<?php
-												if (isset($nam[1])){
-													echo addslashes($fulmn); // mnam = Full Married Name
+												if (isset($chfulmn)){
+													echo addslashes($chfulmn); // mnam = Full Married Name
 												}else{
 													echo addslashes($fulln); // mnam = Full Name
 												}
@@ -1039,9 +1049,10 @@ if (!defined('WT_WEBTREES')) {
 							$fulln   = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn    = rtrim($nam[0]['givn'],'*');
 							$surn    = $nam[0]['surname'];
-							if (isset($nam[1])) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-								$marn  = $nam[1]['surname'];
+							for ($i=0; $i<count($nam); $i++) {
+								if ($nam[$i]['type']=='_MARNM') {
+									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+								}									
 							}
 							$menu = new Menu($people["husb"]->getLabel()."\n");
 							$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censyear);
@@ -1082,8 +1093,8 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
-												echo addslashes($fulmn); // mnam = Full Married Name
+											if (isset($fulmn)){
+												echo addslashes($fulln); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
 											}
@@ -1174,21 +1185,21 @@ if (!defined('WT_WEBTREES')) {
 							$fulln   = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn    = rtrim($nam[0]['givn'],'*');
 							$surn    = $nam[0]['surname'];
+							$husbnam = null;
 							// Get wifes married name if available
 							if (isset($people["husb"])){
 								$husbnams = $people["husb"]->getAllNames();
 								if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
-									// Husband or his name is not known
+									// if Husband or his name is not known then use wifes birth name
+									$husbnam = $nam[0]['surname'];
 								} else {
-									$husbnam = $people["husb"]->getAllNames();
+									$husbnam = $husbnams[0]['surname'];
 								}
 							}
-							if (isset($nam[1]) && isset($husbnam)) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$husbnam[0]['surname'];
-								//$fulmn   = str_replace('"', '\"', $fulmn);
-							}else{
-								$fulmn = $fulln;
-								//$fulmn   = str_replace('"', '\"', $fulmn);
+							for ($i=0; $i<count($nam); $i++) {
+								if ($nam[$i]['type']=='_MARNM') {
+									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
+								}									
 							}
 							$menu = new Menu($people["wife"]->getLabel()."\n");
 							$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
@@ -1229,7 +1240,7 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
+											if (isset($fulmn)){
 												echo addslashes($fulmn); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
@@ -1324,19 +1335,19 @@ if (!defined('WT_WEBTREES')) {
 								}
 							}
 
-							// Get Spouse child's details
-							$nam   = $child->getAllNames();
+							// Get Spouse child's details							
+							$nam   = $child->getAllNames();							
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
 							$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 							$givn  = rtrim($nam[0]['givn'],'*');
-							$surn  = $nam[0]['surname'];
-							if (isset($nam[1])) {
-								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-								$marn  = $nam[1]['surname'];
-							}else{
-								$fulmn = $fulln;
-								$marn  = $surn;
+							$surn  = $nam[0]['surname'];							
+							$chfulmn=null;
+							$chnam = $child->getAllNames();
+							for ($i=0; $i<count($nam); $i++) {
+								if ($chnam[$i]['type']=='_MARNM') {
+									$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];									
+								}									
 							}
 							$menu = new Menu($child->getLabel()."\n");
 							$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
@@ -1369,8 +1380,8 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
-											if (isset($nam[1])){
-												echo addslashes($fulmn); // mnam = Full Married Name
+											if (isset($chfulmn)){
+												echo addslashes($chfulmn); // mnam = Full Married Name
 											}else{
 												echo addslashes($fulln); // mnam = Full Name
 											}
@@ -1580,15 +1591,16 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 									$givn  = rtrim($nam[0]['givn'],'*');
 									$surn  = $nam[0]['surn'];
-									if (isset($nam[1]) ) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surn'];
-										$marn  = $nam[1]['surn'];
+									for ($i=0; $i<count($nam); $i++) {
+										if ($nam[$i]['type']=='_MARNM') {
+											$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+										}									
 									}
 									$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
 									$parentlinks .= "'".PrintReady($husb->getXref())."',"; // pid = PID
 									$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
-									if (isset($nam[1])){
-										$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
+									if (isset($fulmn)){
+										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Married Name
 									} else {
 										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
 									}
@@ -1673,6 +1685,8 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 									$givn  = rtrim($nam[0]['givn'],'*');
 									$surn  = $nam[0]['surname'];
+									$husbnam = null;
+									
 									// Get wifes married name if available
 									if (isset($husb)){
 										$husbnams = $husb->getAllNames();
@@ -1682,15 +1696,16 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$husbnam = $husb->getAllNames();
 										}
 									}
-									if (isset($nam[1]) && isset($husbnam)) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$husbnam[0]['surname'];
-									}else{
-										$fulmn = $fulln;
+									for ($i=0; $i<count($nam); $i++) {
+										if ($nam[$i]['type']=='_MARNM') {
+											$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+										}									
 									}
+									
 									$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
 									$parentlinks .= "'".PrintReady($wife->getXref())."',"; // pid = PID
 									$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
-									if (isset($nam[1])){
+									if (isset($fulmn)){
 										$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
 									} else {
 										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
@@ -1808,56 +1823,57 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										//$fulln = strip_tags($husb->getFullName());
 										$givn  = rtrim($nam[0]['givn'],'*');
 										$surn  = $nam[0]['surname'];
-										if (isset($nam[1])) {
-											$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-											$marn  = $nam[1]['surname'];
+										for ($i=0; $i<count($nam); $i++) {
+											if ($nam[$i]['type']=='_MARNM') {
+												$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+											}									
 										}
-									$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
-									$parentlinks .= "'".PrintReady($husb->getXref())."',"; // pid = PID
-									$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
-									if (isset($nam[1])){
-										$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
-									} else {
-										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
-									}
-									if ($currpid=="Wife" || $currpid=="Husband") {
-										$parentlinks .= "'Step Father-in-Law',"; // label = 1st Gen Male Relationship
-									}else{
-										$parentlinks .= "'Step Grand-Father',"; // label = 2st Gen Male Relationship
-									}
-									$parentlinks .= "'".PrintReady($husb->getSex())."',"; // sex = Gender
-									$parentlinks .= "''".","; // cond = Condition (Married etc)
-									if ($marrdate) {
-										$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
-									}
-									$parentlinks .= "'".(($husb->getBirthDate()->minJD()+$husb->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
-									if ($husb->getbirthyear()>=1) {
-										$parentlinks .= "'".PrintReady($censyear-$husb->getbirthyear())."',"; // age =  Census Year - Year of Birth
-									} else {
-										$parentlinks .= "''".","; // age =  Undefined
-									}
-									$parentlinks .= "'".(($husb->getDeathDate()->minJD()+$husb->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
-									$parentlinks .= "''".","; // occu  = Occupation
-									$parentlinks .= "'".PrintReady($husb->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
-									if (isset($pHusbFBP)) {
-										$parentlinks .= "'".$pHusbFBP."'".","; // fbirthpl = Fathers Birthplace
-									} else {
-										$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace
-									}
-									if (isset($pHusbMBP)) {
-										$parentlinks .= "'".$pHusbMBP."'".","; // mbirthpl = Mothers Birthplace
-									} else {
-										$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace
-									}
-									if (isset($chBLDarray) && $husb->getSex()=="F") {
-										$chBLDarray = implode("::", $chBLDarray);
-										$parentlinks .= "'".$chBLDarray."'"; // Array of Children (name, birthdate, deathdate)
-									} else {
-										$parentlinks .= "''";
-									}
-									$parentlinks .= ");\">";
-									$parentlinks .= PrintReady($husb->getFullName()); // Full Name (Link)
-									$parentlinks .= "</a>";
+										$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
+										$parentlinks .= "'".PrintReady($husb->getXref())."',"; // pid = PID
+										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+										if (isset($fulmn)){
+											$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Married Name
+										} else {
+											$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+										}
+										if ($currpid=="Wife" || $currpid=="Husband") {
+											$parentlinks .= "'Step Father-in-Law',"; // label = 1st Gen Male Relationship
+										}else{
+											$parentlinks .= "'Step Grand-Father',"; // label = 2st Gen Male Relationship
+										}
+										$parentlinks .= "'".PrintReady($husb->getSex())."',"; // sex = Gender
+										$parentlinks .= "''".","; // cond = Condition (Married etc)
+										if ($marrdate) {
+											$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
+										}
+										$parentlinks .= "'".(($husb->getBirthDate()->minJD()+$husb->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
+										if ($husb->getbirthyear()>=1) {
+											$parentlinks .= "'".PrintReady($censyear-$husb->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										} else {
+											$parentlinks .= "''".","; // age =  Undefined
+										}
+										$parentlinks .= "'".(($husb->getDeathDate()->minJD()+$husb->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
+										$parentlinks .= "''".","; // occu  = Occupation
+										$parentlinks .= "'".PrintReady($husb->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
+										if (isset($pHusbFBP)) {
+											$parentlinks .= "'".$pHusbFBP."'".","; // fbirthpl = Fathers Birthplace
+										} else {
+											$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace
+										}
+										if (isset($pHusbMBP)) {
+											$parentlinks .= "'".$pHusbMBP."'".","; // mbirthpl = Mothers Birthplace
+										} else {
+											$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace
+										}
+										if (isset($chBLDarray) && $husb->getSex()=="F") {
+											$chBLDarray = implode("::", $chBLDarray);
+											$parentlinks .= "'".$chBLDarray."'"; // Array of Children (name, birthdate, deathdate)
+										} else {
+											$parentlinks .= "''";
+										}
+										$parentlinks .= ");\">";
+										$parentlinks .= PrintReady($husb->getFullName()); // Full Name (Link)
+										$parentlinks .= "</a>";
 									}else{
 										$parentlinks .= i18n::translate('Private');
 									}
@@ -1904,66 +1920,69 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										//$fulln = strip_tags($wife->getFullName());
 										$givn  = rtrim($nam[0]['givn'],'*');
 										$surn  = $nam[0]['surname'];
-									// Get wifes married name if available
-									if (isset($husb)){
-										$husbnams = $husb->getAllNames();
-										if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
-											// Husband or his name is not known
-										} else {
-											$husbnam = $husb->getAllNames();
+										$husbnam = null;
+										
+										// Get wifes married name if available
+										if (isset($husb)){
+											$husbnams = $husb->getAllNames();
+											if ($husbnams[0]['surname']=="@N.N." || $husbnams[0]['surname']=="") {
+												// Husband or his name is not known
+											} else {
+												$husbnam = $husb->getAllNames();
+											}
 										}
-									}
-									if (isset($nam[1]) && isset($husbnam)) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$husbnam[0]['surname'];
-									}else{
-										$fulmn = $fulln;
-									}
-									$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
-									$parentlinks .= "'".PrintReady($wife->getXref())."',"; // pid = PID
-									$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
-									if (isset($nam[1])){
-										$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
-									} else {
-										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
-									}
-									if ($currpid=="Wife" || $currpid=="Husband") {
-										$parentlinks .= "'Step Mother-in-Law',"; // label = 1st Gen Female Relationship
-									} else {
-										$parentlinks .= "'Step Grand-Mother',"; // label = 2st Gen Female Relationship
-									}
-									$parentlinks .= "'".PrintReady($wife->getSex())."',"; // sex = Gender
-									$parentlinks .= "''".","; // cond = Condition (Married etc)
-									if ($marrdate) {
-										$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
-									}
-									$parentlinks .= "'".(($wife->getBirthDate()->minJD()+$wife->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
-									if ($wife->getbirthyear()>=1) {
-										$parentlinks .= "'".PrintReady($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
-									} else {
-										$parentlinks .= "''".","; // age =  Undefined
-									}
-									$parentlinks .= "'".(($wife->getDeathDate()->minJD()+$wife->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
-									$parentlinks .= "''".","; // occu  = Occupation
-									$parentlinks .= "'".PrintReady($wife->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
-									if (isset($pWifeFBP)) {
-										$parentlinks .= "'".$pWifeFBP."'".","; // fbirthpl = Fathers Birthplace
-									} else {
-										$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
-									}
-									if (isset($pWifeMBP)) {
-										$parentlinks .= "'".$pWifeMBP."'".","; // mbirthpl = Mothers Birthplace
-									} else {
-										$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
-									}
-									if (isset($chBLDarray) && $wife->getSex()=="F") {
-										$chBLDarray = implode("::", $chBLDarray);
-										$parentlinks .= "'".$chBLDarray."'"; // Array of Children (name, birthdate, deathdate)
-									} else {
-										$parentlinks .= "''";
-									}
-									$parentlinks .= ");\">";
-									$parentlinks .= PrintReady($wife->getFullName()); // Full Name (Link)
-									$parentlinks .= "</a>";
+										for ($i=0; $i<count($nam); $i++) {
+											if ($nam[$i]['type']=='_MARNM') {
+												$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+											}									
+										}
+										
+										$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
+										$parentlinks .= "'".PrintReady($wife->getXref())."',"; // pid = PID
+										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
+										if (isset($fulmn)){
+											$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
+										} else {
+											$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
+										}
+										if ($currpid=="Wife" || $currpid=="Husband") {
+											$parentlinks .= "'Step Mother-in-Law',"; // label = 1st Gen Female Relationship
+										} else {
+											$parentlinks .= "'Step Grand-Mother',"; // label = 2st Gen Female Relationship
+										}
+										$parentlinks .= "'".PrintReady($wife->getSex())."',"; // sex = Gender
+										$parentlinks .= "''".","; // cond = Condition (Married etc)
+										if ($marrdate) {
+											$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
+										}
+										$parentlinks .= "'".(($wife->getBirthDate()->minJD()+$wife->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
+										if ($wife->getbirthyear()>=1) {
+											$parentlinks .= "'".PrintReady($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										} else {
+											$parentlinks .= "''".","; // age =  Undefined
+										}
+										$parentlinks .= "'".(($wife->getDeathDate()->minJD()+$wife->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
+										$parentlinks .= "''".","; // occu  = Occupation
+										$parentlinks .= "'".PrintReady($wife->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
+										if (isset($pWifeFBP)) {
+											$parentlinks .= "'".$pWifeFBP."'".","; // fbirthpl = Fathers Birthplace
+										} else {
+											$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // fbirthpl = Fathers Birthplace Not Known
+										}
+										if (isset($pWifeMBP)) {
+											$parentlinks .= "'".$pWifeMBP."'".","; // mbirthpl = Mothers Birthplace
+										} else {
+											$parentlinks .= "'UNK, UNK, UNK, UNK'".","; // mbirthpl = Mothers Birthplace Not Known
+										}
+										if (isset($chBLDarray) && $wife->getSex()=="F") {
+											$chBLDarray = implode("::", $chBLDarray);
+											$parentlinks .= "'".$chBLDarray."'"; // Array of Children (name, birthdate, deathdate)
+										} else {
+											$parentlinks .= "''";
+										}
+										$parentlinks .= ");\">";
+										$parentlinks .= PrintReady($wife->getFullName()); // Full Name (Link)
+										$parentlinks .= "</a>";
 									}else{
 										$parentlinks .= i18n::translate('Private');
 									}
@@ -1982,8 +2001,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$children = $family->getChildren();
 						$num = count($children);
 						$marrdate = $family->getMarriageDate();
-						$married  = GedcomDate::Compare($censdate, $marrdate);
-
+						$married  = GedcomDate::Compare($censdate, $marrdate);						
+						$is_wife = $family->getWife();
+						
 						//-- Get Spouse's Children's Name, DOB, DOD --------------------------
 						if (isset($children)) {
 							$chBLDarray = Array();
@@ -1999,6 +2019,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								array_push($chBLDarray, $chBLD);
 							}
 						}
+						
 						//-- Spouse -----------------------------------------
 						if ($spouse || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
@@ -2035,14 +2056,20 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 									$givn  = rtrim($nam[0]['givn'],'*');
 									$surn  = $nam[0]['surname'];
-									if (isset($nam[1])) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-										$marn  = $nam[1]['surname'];
+									
+									// If spouse is a wife, then get her married name or default to her birth name
+									for ($i=0; $i<count($nam); $i++) {
+										if ($nam[$i]['type']=='_MARNM' && $is_wife) {
+											$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
+										} else {
+											$fulmn = $fulln;
+										}
 									}
+
 									$spouselinks .= "<a href=\"javascript:insertRowToTable(";
 									$spouselinks .= "'".PrintReady($spouse->getXref())."',"; // pid = PID
 									$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
-									if (isset($nam[1])){
+									if (isset($fulmn)){
 										$spouselinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
 									} else {
 										$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
@@ -2143,15 +2170,14 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								// Get Childs marriage status ------------
 								$married="";
 								$marrdate="";
+								$chhusbnam=null;
 								foreach ($child->getSpouseFamilies() as $childfamily) {
 									$marrdate=$childfamily->getMarriageDate();
 									$married = GedcomDate::Compare($censdate, $marrdate);
 									if ($childfamily->getHusband()) {
 										$chhusbnam = $childfamily->getHusband()->getAllNames();
-										$ChHusbName = $chhusbnam[0]['surname'];
 									}
 								}
-
 								// Childs Details -------------------------
 								$title = i18n::translate('Individual information').": ".$cpid;
 								// $spouselinks .= "\n\t\t\t\to&nbsp;&nbsp;";
@@ -2163,15 +2189,28 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
 									$givn  = rtrim($nam[0]['givn'],'*');
 									$surn  = $nam[0]['surname'];
-									if (isset($nam[1]) && isset($ChHusbName)) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$ChHusbName;
+									$husbnam = null;
+									
+									// Get childs married name if available
+									$chfulmn=null;								
+									$chnam = $child->getAllNames();									
+									if ($chhusbnam[0]['surname']=="@N.N." || $chhusbnam[0]['surname']=="") {
+										// if Husband or his name is not known then use wifes birth name
+										$husbnam = $nam[0]['surname'];
+									} else {
+										$husbnam = $chhusbnam[0]['surname'];
+									}
+									for ($i=0; $i<count($nam); $i++) {
+										if ($chnam[$i]['type']=='_MARNM') {
+											$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$husbnam;									
+										}									
 									}
 
 									$spouselinks .= "<a href=\"javascript:insertRowToTable(";
 									$spouselinks .= "'".PrintReady($child->getXref())."',"; // pid = PID
 									$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
-									if (isset($nam[1])){
-										$spouselinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
+									if (isset($chfulmn)){
+										$spouselinks .= "'".addslashes(strip_tags($chfulmn))."',"; // mnam = Full Married Name
 									} else {
 										$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Name
 									}
