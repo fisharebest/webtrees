@@ -43,6 +43,8 @@ $censyear   = $censdate->date1->y;
 
 $ctry       = "UK";
 // $married    = GedcomDate::Compare($censdate, $marrdate);
+
+// === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;
 
 $person=Person::getInstance($pid);
@@ -51,9 +53,9 @@ $nam = $person->getAllNames();
 if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($person->getDeathYear()); }
 if (PrintReady($person->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($person->getBirthYear()); }
 if ($married>=0 && isset($nam[1])){
-	$wholename = rtrim($nam[1]['fullNN']);
+	$wholename = rtrim($nam[1]['full']);
 } else {
-	$wholename = rtrim($nam[0]['fullNN']);
+	$wholename = rtrim($nam[0]['full']);
 }
 
 $currpid=$pid;
