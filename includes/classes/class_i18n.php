@@ -80,7 +80,7 @@ class i18n {
 					list($l, $q)=explode(';q=', $pref.';q=1.0');
 					$l=preg_replace(
 						array('/-/', '/_[a-z][a-z]$/e'),
-						array ('_', 'strtoupper($0)'),
+						array ('_', 'strtoupper("$0")'),
 						$l
 					); // en-gb => en_GB
 					$prefs2[$l]=(float)$q;
