@@ -78,6 +78,11 @@ class i18n {
 				$prefs2=array();
 				foreach ($prefs as $pref) {
 					list($l, $q)=explode(';q=', $pref.';q=1.0');
+					$l=preg_replace(
+						array('/-/', '/_[a-z][a-z]$/e'),
+						array ('_', 'strtoupper($0)'),
+						$l
+					); // en-gb => en_GB
 					$prefs2[$l]=(float)$q;
 				}
 				// Ensure there is a fallback.
