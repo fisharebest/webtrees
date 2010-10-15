@@ -190,7 +190,7 @@ function createTempUser($userID, $rights, $gedcom) {
 
 	// Save things in cache
 	$_SESSION["pgv_GED_ID"]           =$ged_id;
-	$_SESSION["pgv_USER_ID"]          =$userID;
+	$_SESSION["pgv_USER_ID"]          =$tempUserID;
 	$_SESSION["pgv_USER_ACCESS_LEVEL"]=getUserAccessLevel($_SESSION["pgv_USER_ID"], $_SESSION["pgv_GED_ID"]);
 	$_SESSION["pgv_USER_GEDCOM_ID"]   =get_user_gedcom_setting($_SESSION["pgv_USER_ID"], $_SESSION["pgv_GED_ID"], 'gedcomid');
 
@@ -264,7 +264,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 
 		// Temporarily become this user
 		$_SESSION["org_user"]=$_SESSION["wt_user"];
-		$_SESSION["wt_user"]=$tempUserID;
+		$_SESSION["wt_user"]=$export_user_id;
 	}
 
 	$head=gedcom_header($gedcom);

@@ -258,7 +258,7 @@ class ClippingsController extends BaseController {
 
 				// Temporarily become this user
 				$_SESSION["org_user"]=$_SESSION["wt_user"];
-				$_SESSION["wt_user"]=$tempUserID;
+				$_SESSION["wt_user"]=$export_user_id;
 			}
 
 			for ($i = 0; $i < $ct; $i++) {

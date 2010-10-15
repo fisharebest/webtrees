@@ -46,7 +46,7 @@ if (!WT_USER_IS_ADMIN) {
 	}
 }
 
-global $GEDCOM;
+global $GEDCOM, $SHOW_MARRIED_NAMES;
 
 $action = safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
 $welcome = safe_REQUEST($_REQUEST, 'welcome', WT_REGEX_XREF);
@@ -94,7 +94,7 @@ if ($action=="sendFiles") {
 	$sitemap_user_id = createTempUser('#SiteMap#', 'visitor', $gedcom_name); // Create a temporary userid
 	// Temporarily become this user
 	$_SESSION["org_user"]=$_SESSION["wt_user"];
-	$_SESSION["wt_user"]='#SiteMap#';
+	$_SESSION["wt_user"]=$sitemap_user_id;
 	if (isset($indi_rec)) {
 		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM `##individuals` WHERE i_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
@@ -152,7 +152,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($fam_lists)) {
-		foreach(get_indilist_salpha($SHOW_MARRIED_NAMES, true, $index) as $letter) {
+		foreach(get_indilist_salpha($SHOW_MARRIED_NAMES, true, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "famlist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
@@ -164,7 +164,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($indi_lists)) {
-		foreach (get_indilist_salpha($SHOW_MARRIED_NAMES, false, $index) as $letter) {
+		foreach (get_indilist_salpha($SHOW_MARRIED_NAMES, false, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "indilist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
