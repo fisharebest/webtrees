@@ -48,8 +48,8 @@ case 'update':
 	set_site_setting('SESSION_TIME',                    safe_POST('session_time'));
 	set_site_setting('SERVER_URL',                      safe_POST('server_url'));
 	set_site_setting('LOGIN_URL',                       safe_POST('login_url'));
-	set_site_setting('MEMORY_LIMIT',                    safe_POST('memory_limit', '\d+[KMG]?', ini_get('memory_limit')));
-	set_site_setting('MAX_EXECUTION_TIME',              safe_POST('max_execution_time', '\d+', ini_get('max_execution_time')));
+	set_site_setting('MEMORY_LIMIT',                    safe_POST('memory_limit', '\d+[KMG]?'));
+	set_site_setting('MAX_EXECUTION_TIME',              safe_POST('max_execution_time', '\d+'));
 	set_site_setting('SMTP_ACTIVE',                     safe_POST('smtp_active', 'internal|external|disabled', 'internal'));
 	set_site_setting('SMTP_HOST',                       safe_POST('smtp_host'));
 	set_site_setting('SMTP_HELO',                       safe_POST('smtp_helo'));

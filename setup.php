@@ -205,36 +205,12 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 		echo '<p class="good">', i18n::translate('The server configuration is OK.'), '</p>';
 	}
 	echo '<h2>', i18n::translate('Checking server capacity'), '</h2>';
-	// Memory
-	$mem=to_mb(ini_get('memory_limit'));
-	$maxmem=$mem;
-	if (!ini_get('safe_mode')) {
-		for ($i=$mem+1; $i<=1024; ++$i) {
-			ini_set('memory_limit', $i.'M');
-			$newmem=to_mb(ini_get('memory_limit'));
-			if ($newmem>$mem) {
-				$maxmem=$newmem;
-			} else {
-				break;
-			}
-		}
-	}
-	// CPU
-	$cpu=ini_get('max_execution_time');
-	$maxcpu=$cpu;
-	/* Commented out temporarily.  How can we reliably determine the "master value" instead of the "local value"?
-	if (!ini_get('safe_mode')) {
-		for ($i=$cpu+1; $i<=300; ++$i) {
-			set_time_limit('max_execution_time', $i);
-			$newcpu=ini_get('max_execution_time');
-			if ($newcpu>$cpu) {
-				$maxcpu=$newcpu;
-			} else {
-				break;
-			}
-		}
-	}
- */
+	// Previously, we tried to determine the maximum value that we could set for these values.
+	// However, this is unreliable, especially on servers with custom restrictions.
+	// Now, we just show the default values.  These can (hopefully!) be changed using the
+	// site settings page.
+	$maxmem=to_mb(ini_get('memory_limit'));
+	$maxcpu=ini_get('max_execution_time');
 	echo
 		'<p>',
 		i18n::translate('The memory and CPU time requirements depend on the number of individuals in your family tree.'),
@@ -246,14 +222,14 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 		i18n::translate('Medium systems (5000 individuals): 32-64MB, 20-40 seconds'),
 		'<br/>',
 		i18n::translate('Large systems (50000 individuals): 64-128MB, 40-80 seconds'),
-		'</p><p class="good">',
+		'</p>',
+		($maxmem<32 || $maxcpu<20) ? '<p class="bad">' : '<p class="good">',
 		i18n::translate('This server\'s memory limit is %dMB and its CPU time limit is %d seconds.', $maxmem, $maxcpu),
+		'</p><p>',
+		i18n::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
+		'</p><p>',
+		i18n::translate('If your server\'s security policy permits it, you will be able to request increased memory or CPU time using the <b>webtrees</b> administration page.  Otherwise, you will need to contact your server\'s administrator.'),
 		'</p>';
-
-	if ($maxmem<32 || $maxcpu<20) {
-		echo '<p class="bad">', i18n::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'), '</p>';
-	}
-	echo '<p>', i18n::translate('To increase these limits, you should contact your server\'s administrator.'), '</p>';
 	if (!$errors) {
 		echo '<input type="hidden" name="maxcpu" value="'.$maxcpu.'">';
 		echo '<input type="hidden" name="maxmem" value="'.$maxmem.'">';
@@ -266,8 +242,6 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="maxcpu" value="'.$_POST['maxcpu'].'">';
 	echo '<input type="hidden" name="maxmem" value="'.$_POST['maxmem'].'">';
-	@ini_set('max_execution_time', $_POST['maxcpu']);
-	@ini_set('memory_limit', $_POST['maxmem'].'M');
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1022,8 +996,10 @@ try {
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
 		"('LOGIN_URL',                       'login.php'),".
-		"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
-		"('MAX_EXECUTION_TIME',              '".addcslashes($_POST['maxcpu'], "'")."'),".
+		// Don't set these.  On some servers, trying to set them causes problems.
+		// So, the default behaviour is now to use the defaults.
+		//"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
+		//"('MAX_EXECUTION_TIME',              '".addcslashes($_POST['maxcpu'], "'")."'),".
 		"('SMTP_ACTIVE',                     '".addcslashes($_POST['smtpuse'], "'")."'),".
 		"('SMTP_HOST',                       '".addcslashes($_POST['smtpserv'], "'")."'),".
 		"('SMTP_HELO',                       '".addcslashes($_POST['smtpsender'], "'")."'),".
@@ -1051,7 +1027,7 @@ try {
 		'<input type="submit" value="'. /* I18N: Button label/action: %s is a filename */ i18n::translate('Download %s', WT_CONFIG_FILE).'" onclick="document.contform.contbtn.disabled=false; return true;">',
 		'</form>',
 		'<p>', i18n::translate('After you have copied this file to the webserver and set the access permissions, click here to continue'), '</p>',
-		'<form name="contform" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', i18n::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
+		'<form name="contform" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', /* I18N: %s is a filename */ i18n::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
 		'<input type="submit" name="contbtn" value="'.i18n::translate('Continue').'" disabled>',
 		'</form></body></html>';
 	exit;

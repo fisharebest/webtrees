@@ -236,10 +236,15 @@ if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
 //-- allow user to cancel
 ignore_user_abort(false);
 
+// Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
-	ini_set('memory_limit', get_site_setting('MEMORY_LIMIT'));
-	if (strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
-		set_time_limit(get_site_setting('MAX_EXECUTION_TIME'));
+	$memory_limit=get_site_setting('MEMORY_LIMIT');
+	if ($memory_limit) {
+		ini_set('memory_limit', $memory_limit);
+	}
+	$max_execution_time=get_site_setting('MAX_EXECUTION_TIME');
+	if ($max_execution_time && strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
+		set_time_limit($max_execution_time);
 	}
 }
 

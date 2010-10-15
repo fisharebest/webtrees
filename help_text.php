@@ -30,6 +30,7 @@
  */
 
 define('WT_SCRIPT_NAME', 'help_text.php');
+
 require './includes/session.php';
 
 $help=safe_GET('help');
@@ -2300,8 +2301,20 @@ case 'MAX_DESCENDANCY_GENERATIONS':
 	break;
 
 case 'MAX_EXECUTION_TIME':
+	// Find the default value for max_execution_time
+	ini_restore('max_execution_time');
+	$dflt_cpu=ini_get('max_execution_time');
 	$title=i18n::translate('PHP time limit');
-	$text=i18n::translate('The maximum time in seconds that <b>webtrees</b> should be allowed to run.<br /><br />The default is 1 minute.  Depending on the size of your GEDCOM file, you may need to increase this time limit when you need to build the indexes.  Set this value to 0 to allow PHP to run forever.<br /><br />CAUTION: Setting this to 0 or setting it too high could cause your site to hang on certain operating systems until the script finishes.  Setting it to 0 means it may never finish until a server administrator kills the process or restarts the server.  A large Pedigree chart can take a very long time to run; leaving this value as low as possible ensures that someone cannot crash your server by requesting an excessively large chart.');
+	$text=
+		i18n::plural(
+			'By default, your server allows scripts to run for %s second.',
+			'By default, your server allows scripts to run for %s seconds.',
+			$dflt_cpu, $dflt_cpu
+		).
+		' '.
+		i18n::translate('You can request a higher or lower limit, although the server may ignore this request.').
+		' '.
+		i18n::translate('If you leave this setting empty, the default value will be used.');
 	break;
 
 case 'MAX_PEDIGREE_GENERATIONS':
@@ -2345,8 +2358,15 @@ case 'MEDIA_ID_PREFIX':
 	break;
 
 case 'MEMORY_LIMIT':
+	// Find the default value for max_execution_time
+	ini_restore('memory_limit');
+	$dflt_mem=ini_get('memory_limit');
 	$title=i18n::translate('Memory limit');
-	$text=i18n::translate('The maximum amount of memory that can be consumed by <b>webtrees</b> scripts.  The default is 32 Mb.  Many hosts disable this option in their PHP configuration; changing this value may not actually affect the current maximum memory setting.');
+	$text=i18n::translate('By default, your server allows scripts to use %s of memory.', $dflt_mem).
+		' '.
+		i18n::translate('You can request a higher or lower limit, although the server may ignore this request.').
+		' '.
+		i18n::translate('If you leave this setting empty, the default value will be used.');
 	break;
 
 case 'META_DESCRIPTION':
