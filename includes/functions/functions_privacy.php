@@ -228,15 +228,13 @@ function canDisplayRecord($ged_id, $gedrec) {
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
 		$pgv_GED_ID            = WT_GED_ID;
-		$pgv_USER_ID           = WT_USER_ID;
 		$pgv_USER_ACCESS_LEVEL = WT_USER_ACCESS_LEVEL;
 		$pgv_USER_GEDCOM_ID    = WT_USER_GEDCOM_ID;
 	} else {
 		// We're in the middle of a Download -- get overriding information from cache
 		$pgv_GED_ID            = $_SESSION["pgv_GED_ID"];
-		$pgv_USER_ID           = $_SESSION["pgv_USER_ID"];
 		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
-		$pgv_USER_GEDCOM_ID    = $_SESSION["pgv_USER_GEDCOM_ID"];
+		$pgv_USER_GEDCOM_ID    = 0; // dummy users do not have an associated gedcom record
 	}
 
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
@@ -316,8 +314,8 @@ function canDisplayRecord($ged_id, $gedrec) {
 			}
 		}
 		// Consider relationship privacy
-		if ($pgv_USER_GEDCOM_ID && get_user_setting($pgv_USER_ID, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY)) {
-			$path_length=get_user_setting($pgv_USER_ID, 'max_relation_path', $MAX_RELATION_PATH_LENGTH);
+		if ($pgv_USER_GEDCOM_ID && get_user_setting(WT_USER_ID, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY)) {
+			$path_length=get_user_setting(WT_USER_ID, 'max_relation_path', $MAX_RELATION_PATH_LENGTH);
 			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $xref, $CHECK_MARRIAGE_RELATIONS, $path_length);
 			return $cache[$cache_key]=($relationship!==false);
 		}
