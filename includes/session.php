@@ -292,7 +292,8 @@ session_set_save_handler(
 define('WT_SESSION_NAME', 'WT_SESSION');
 $cfg=array(
 	'name'            => WT_SESSION_NAME,
-	'cookie_lifetime' => get_site_setting('SESSION_TIME'),
+	'cookie_lifetime' => 0,
+	'gc_maxlifetime'  => get_site_setting('SESSION_TIME'),
 	'cookie_path'     => WT_SCRIPT_PATH,
 );
 Zend_Session::start($cfg);
