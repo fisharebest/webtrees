@@ -421,7 +421,7 @@ function print_submitter_info($sid) {
 	preg_match("/1 NAME (.*)/", $srec, $match);
 	// PAF creates REPO record without a name
 	// Check here if REPO NAME exists or not
-	if (isset($match[1])) echo "$match[1]<br />";
+	if (isset($match[1])) echo $match[1], "<br />";
 	print_address_structure($srec, 1);
 	print_media_links($srec, 1);
 }
@@ -435,7 +435,7 @@ function print_submitter_info($sid) {
 function print_repository_record($xref) {
 	$repository=Repository::getInstance($xref);
 	if ($repository && $repository->canDisplayDetails()) {
-		echo '<a class="field" href="', $repository->getLinkUrl(), '">', $repository->getFullName(), '</a>';
+		echo '<a class="field" href="', $repository->getLinkUrl(), '">', $repository->getFullName(), '</a><br />';
 		print_address_structure($repository->getGedcomRecord(), 1);
 		print_fact_notes($repository->getGedcomRecord(), 1);
 	}
