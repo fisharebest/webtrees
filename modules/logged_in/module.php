@@ -47,13 +47,6 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $THEME_DIR;
 
-		// Log out inactive users
-		foreach (get_idle_users(time()-get_site_setting('SESSION_TIME')) as $user_id=>$user_name) {
-			if ($user_id!=WT_USER_ID) {
-				userLogout($user_id);
-			}
-		}
-
 		// List active users
 		$NumAnonymous = 0;
 		$loggedusers = array ();

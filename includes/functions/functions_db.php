@@ -2260,29 +2260,14 @@ function get_non_admin_user_count() {
 
 // Get a list of logged-in users
 function get_logged_in_users() {
+	// If the user is logged in on multiple times, this query would fetch
+	// multiple rows.  fetchAssoc() will eliminate the duplicates
 	return
 		WT_DB::prepare(
-			"SELECT u.user_id, user_name".
+			"SELECT user_id, user_name".
 			" FROM `##user` u".
-			" JOIN `##user_setting` us USING (user_id)".
-			" WHERE setting_name=? AND setting_value=?"
+			" JOIN `##session` USING (user_id)"
 		)
-		->execute(array('loggedin', '1'))
-		->fetchAssoc();
-}
-
-// Get a list of logged-in users who haven't been active recently
-function get_idle_users($time) {
-	return
-		WT_DB::prepare(
-			"SELECT u.user_id, user_name".
-			" FROM `##user` u".
-			" JOIN `##user_setting` us1 USING (user_id)".
-			" JOIN `##user_setting` us2 USING (user_id)".
-			" WHERE us1.setting_name=? AND us1.setting_value=? AND us2.setting_name=?".
-			" AND CAST(us2.setting_value AS UNSIGNED) BETWEEN 1 AND ?"
-		)
-		->execute(array('loggedin', '1', 'sessiontime', $time))
 		->fetchAssoc();
 }
 

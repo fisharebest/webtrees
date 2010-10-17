@@ -3493,13 +3493,6 @@ class stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function _usersLoggedIn($type='nolist') {
-		// Log out inactive users
-		foreach (get_idle_users(time() - get_site_setting('SESSION_TIME')) as $user_id=>$user_name) {
-			if ($user_id != WT_USER_ID) {
-				userLogout($user_id);
-			}
-		}
-
 		$content = '';
 		// List active users
 		$NumAnonymous = 0;
@@ -3560,11 +3553,6 @@ class stats {
 	}
 
 	static function _usersLoggedInTotal($type='all') {
-		foreach (get_idle_users(time() - get_site_setting('SESSION_TIME')) as $user_id=>$user_name) {
-			if ($user_id != WT_USER_ID) {
-				userLogout($user_id);
-			}
-		}
 		$anon = 0;
 		$visible = 0;
 		$x = get_logged_in_users();
@@ -3612,7 +3600,7 @@ class stats {
 			case 'loggedin':
 				if(is_array($params) && isset($params[0]) && $params[0] != ''){$yes = $params[0];}else{$yes = i18n::translate('Yes');}
 				if(is_array($params) && isset($params[1]) && $params[1] != ''){$no = $params[1];}else{$no = i18n::translate('No');}
-				return get_user_setting($user_id, 'loggedin') ? $yes : $no;
+				return WT_DB::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user_id))->fetchOne() ? $yes : $no;
 		}
 	}
 

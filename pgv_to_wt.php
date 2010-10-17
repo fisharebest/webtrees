@@ -450,10 +450,6 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			" SELECT user_id, 'loggedin', 0".
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
-			" UNION ALL".
 			" SELECT user_id, 'sessiontime', u_sessiontime".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".

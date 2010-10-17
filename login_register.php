@@ -355,7 +355,6 @@ switch ($action) {
 					set_user_setting($user_id, 'max_relation_path',    $MAX_RELATION_PATH_LENGTH);
 					set_user_setting($user_id, 'auto_accept',          0);
 					set_user_setting($user_id, 'canadmin',             0);
-					set_user_setting($user_id, 'loggedin',             0);
 					set_user_setting($user_id, 'sessiontime',          0);
 					if (!empty($user_gedcomid)) {
 						set_user_gedcom_setting($user_id, $GEDCOM, 'gedcomid', $user_gedcomid);

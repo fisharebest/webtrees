@@ -62,7 +62,6 @@ function authenticateUser($user_name, $password, $basic=false) {
 		$dbpassword=get_user_password($user_id);
 		if (crypt($password, $dbpassword)==$dbpassword) {
 			if (get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin') || get_user_setting($user_id, 'canadmin')) {
-				set_user_setting($user_id, 'loggedin', true);
 				//-- reset the user's session
 				$_SESSION = array();
 				$_SESSION['wt_user'] = $user_id;
@@ -105,7 +104,6 @@ function basicHTTPAuthenticateUser() {
  * @param string $user_id logout a specific user
  */
 function userLogout($user_id) {
-	set_user_setting($user_id, 'loggedin', false);
 	AddToLog('Logout '.getUserName($user_id), 'auth');
 	// If we are logging ourself out, then end our session too.
 	if (WT_USER_ID==$user_id) {
