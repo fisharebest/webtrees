@@ -1131,8 +1131,10 @@ class stats {
 			// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
 			foreach ($m_countries as $place) {
 				$country=trim($place['country']);
-				if (array_key_exists($country, $country_to_iso3166)) {
+				if (!isset($surn_countries[$country_to_iso3166[$country]])) {
 					$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
+				} else {
+					$surn_countries[$country_to_iso3166[$country]]+=$place['tot'];
 				}
 			}
 			break;
@@ -1146,7 +1148,11 @@ class stats {
 			foreach ($a_countries as $place) {
 				$country=trim($place['country']);
 				if (array_key_exists($country, $country_to_iso3166)) {
-					$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
+					if (!isset($surn_countries[$country_to_iso3166[$country]])) {
+						$surn_countries[$country_to_iso3166[$country]]=$place['tot'];
+					} else {
+						$surn_countries[$country_to_iso3166[$country]]+=$place['tot'];
+					}
 				}
 			}
 			break;
@@ -1176,9 +1182,34 @@ class stats {
 		if (!is_array($countries)) return '';
 		$top10 = array();
 		$i = 1;
-		foreach ($countries as $country) {
-			$place = '<a href="'.encode_url(get_place_url($country['country'])).'" class="list_item">'.PrintReady($country['country']).'</a>';
-			$top10[]="\t<li>".$place." ".PrintReady("[".$country['tot']."]")."</li>\n";
+		// Get the country names for each language
+		$country_names=array();
+		foreach (i18n::installed_languages() as $code=>$lang) {
+			i18n::init($code);
+			foreach (get_all_countries() as $country_code=>$country_name) {
+				$country_names[$country_name]=$country_code;
+			}
+		}
+		i18n::init(WT_LOCALE);
+		$all_db_countries=array();
+		foreach ($countries as $place) {
+			$country=trim($place['country']);
+			if (array_key_exists($country, $country_names)) {
+				if (!isset($all_db_countries[$country_names[$country]][$country])) {
+					$all_db_countries[$country_names[$country]][$country]=$place['tot'];
+				} else {
+					$all_db_countries[$country_names[$country]][$country]+=$place['tot'];
+				}
+			}
+		}
+		$all_countries = get_all_countries();
+		foreach ($all_db_countries as $country_code=>$country) {
+			$top10[]="\t<li>";
+			foreach ($country as $country_name=>$tot) {
+				$place = '<a href="'.encode_url(get_place_url($country_name)).'" class="list_item">'.$all_countries[$country_code].'</a>';
+				$top10[].=$place." ".PrintReady("[".$tot."]");
+			}
+			$top10[].="</li>\n";
 			if ($i++==10) break;
 		}
 		$top10=join("\n", $top10);
