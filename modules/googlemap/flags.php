@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-global $countries;
+$countries=get_all_countries();
 $action=safe_REQUEST($_REQUEST, 'action');
 
 if (isset($_REQUEST['countrySelected'])) $countrySelected = $_REQUEST['countrySelected'];
@@ -135,7 +135,7 @@ else {
 				$rep = opendir('./places/'.$country[$i].'/');
 				while ($file = readdir($rep)) {
 					if (stristr($file, "flags")) {
-						$countryList[$country[$i]] = i18n::translate($countries[$country[$i]]);
+						$countryList[$country[$i]] = $countries[$country[$i]];
 					}
 				}
 				closedir($rep);
@@ -172,8 +172,8 @@ else {
 	for ($i = 0; $i < count($flags); $i++) {
 		if ($countrySelected == "Countries") {
 			$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"places/flags/".$flags[$i].".gif\" alt=\"".$flags[$i]."\"  title=\"";
-			if ($flags[$i]!='blank') $tempstr.=i18n::translate($countries[$flags[$i]]);
-			else $tempstr.=i18n::translate($countries['???']);
+			if ($flags[$i]!='blank') $tempstr.=$countries[$flags[$i]];
+			else $tempstr.=$countries['???'];
 			echo $tempstr, "\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 		}
 		else {

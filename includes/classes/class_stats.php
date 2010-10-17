@@ -1049,18 +1049,23 @@ class stats {
 	}
 
 	function chartDistribution($chart_shows='world', $chart_type='', $surname='') {
-		global $iso3166, $countries;
-		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
+		global $iso3166, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
 
-		if ($this->totalPlaces()==0) return '';
-
-		// TODO: add translations from *ALL* languages, not just the current one.
-		// TODO (longer term): use a proper geographic database!
-		$country_to_iso3166=array();
-		foreach ($iso3166 as $three=>$two) {
-			$country_to_iso3166[$three]=$two;
-			$country_to_iso3166[$countries[$three]]=$two;
+		if ($this->totalPlaces()==0) {
+			return '';
 		}
+
+		// Get the country names for each language
+		$country_to_iso3166=array();
+		foreach (i18n::installed_languages() as $code=>$lang) {
+			i18n::init($code);
+			$countries=get_all_countries();
+			foreach ($iso3166 as $three=>$two) {
+				$country_to_iso3166[$three]=$two;
+				$country_to_iso3166[$countries[$three]]=$two;
+			}
+		}
+		i18n::init(WT_LOCALE);
 		switch ($chart_type) {
 		case 'surname_distribution_chart':
 			if ($surname=="") $surname = $this->getCommonSurname();
