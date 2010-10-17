@@ -596,7 +596,7 @@ function print_user_links() {
 	if (WT_USER_ID) {
 		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo "<a href=\"admin.php\" class=\"link\">", i18n::translate('Admin'), "</a> | ";
+			echo "<a href=\"admin.php\" class=\"link\">", i18n::translate('Administration'), "</a> | ";
 		}
 		echo "<a href=\"index.php?logout=1\" class=\"link\">", i18n::translate('Logout'), "</a>";
 	} else {

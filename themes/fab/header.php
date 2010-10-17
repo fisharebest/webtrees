@@ -107,7 +107,7 @@ if ($view!='simple') {
 				'<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li>',
 				' | <li><a href="index.php?logout=1" class="link">', i18n::translate('Logout'), '</a></li>';
 			if (WT_USER_GEDCOM_ADMIN) {
-				echo ' | <li><a href="admin.php" class="link">', i18n::translate('Admin'), '</a></li>';
+				echo ' | <li><a href="admin.php" class="link">', i18n::translate('Administration'), '</a></li>';
 			}
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending Changes'), '</a></li>';

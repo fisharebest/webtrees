@@ -57,7 +57,7 @@ if (empty($linktoid) || empty($linkto)) {
 if (WT_USER_IS_ADMIN) {
 	print_simple_header(i18n::translate('Link media')." ".$toitems);
 }else{
-	print_simple_header(i18n::translate('Admin'));
+	print_simple_header(i18n::translate('Administration'));
 	echo i18n::translate('Unable to authenticate user.');
 }
 

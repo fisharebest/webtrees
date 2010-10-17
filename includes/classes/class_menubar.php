@@ -123,7 +123,7 @@ class MenuBar {
 		if (WT_USER_GEDCOM_ADMIN){
 			$menu->addSeparator();
 			//-- admin submenu
-			$submenu = new Menu(i18n::translate('Admin'), "admin.php");
+			$submenu = new Menu(i18n::translate('Administration'), "admin.php");
 			$submenu->addIcon('admin');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
 			$menu->addSubmenu($submenu);
