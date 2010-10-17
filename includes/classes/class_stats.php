@@ -169,28 +169,26 @@ class stats {
 		/*
 		* Parse block tags.
 		*/
-		for($i=0; $i < $c; $i++)
-		{
+		for ($i=0; $i < $c; $i++) {
 			$full_tag = $tags[$i];
 			// Added for new parameter support
 			$params = explode(':', $tags[$i]);
 			if (count($params) > 1) {
 				$tags[$i] = array_shift($params);
 			} else {
-				$params = null;
+				$params = array();
 			}
 
 			// Skip non-tags and non-allowed tags
-			if ($tags[$i][0] == '_' || in_array($tags[$i], self::$_not_allowed)) {continue;}
+			if ($tags[$i][0] == '_' || in_array($tags[$i], self::$_not_allowed)) {
+				continue;
+			}
 
 			// Generate the replacement value for the tag
-			if (method_exists($this, $tags[$i]))
-			{
+			if (method_exists($this, $tags[$i])) {
 				$new_tags[] = "#{$full_tag}#";
-				$new_values[] = $this->$tags[$i]($params);
-			}
-			elseif ($tags[$i] == 'help')
-			{
+				$new_values[] = call_user_func_array(array(__CLASS__, $tags[$i]), $params);
+			} elseif ($tags[$i] == 'help') {
 				// re-merge, just in case
 				$new_tags[] = "#{$full_tag}#";
 				$new_values[] = help_link(join(':', $params));
@@ -2796,7 +2794,7 @@ class stats {
 		if (!isset($rows[0])) {return '';}
 		if(count($rows) < $total){$total = count($rows);}
 		$top10 = array();
-		for($c = 0; $c < $total; $c++) {
+		for ($c = 0; $c < $total; $c++) {
 			$family=Family::getInstance($rows[$c]['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
@@ -3782,7 +3780,7 @@ class stats {
 		// Build the config array
 		array_shift($params);
 		$cfg = array();
-		foreach($params as $config) {
+		foreach ($params as $config) {
 			$bits = explode('=', $config);
 			if(count($bits) < 2){continue;}
 			$v = array_shift($bits);
