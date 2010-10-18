@@ -52,7 +52,7 @@ if (empty($url)) {
 	// If we came here by means of a URL like http://mysite.com/foo/login.php
 	// we don't have a proper login URL, and session cookies haven't been set yet
 	// We'll re-load the page to properly determine cookie support
-	header("Location: login.php?url=index.php?ctype=user");
+	header("Location: login.php?url=index.php&ctype=user");
 }
 
 $message='';
