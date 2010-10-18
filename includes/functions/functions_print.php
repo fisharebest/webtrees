@@ -570,7 +570,7 @@ function execution_stats() {
 //-- print a form to change the language
 function print_lang_form($option=0) {
 	$language_menu=MenuBar::getLanguageMenu();
-	if (count($language_menu->submenus)<2) {
+	if (empty($language_menu)) {
 		return;
 	}
 	echo '<div class="lang_form">';

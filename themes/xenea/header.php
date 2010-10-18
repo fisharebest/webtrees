@@ -126,7 +126,12 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left" ?>" class="blanco"><?php print_theme_dropdown(1); ?><?php print_favorite_selector(1); ?></div></td>
 				<td><div align="center"><?php print_user_links(); ?></div></td>
 				<td width="120" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>" >
-					<div class="makeMenu"><?php echo MenuBar::getLanguageMenu()->getMenuAsList();?></div>
+					<div class="makeMenu"><?php
+						$language_menu=MenuBar::getLanguageMenu();
+						if ($language_menu) {
+							echo $language_menu->getMenuAsList();
+						}
+						?></div>
 					<div id="favdate" class="blanco" align="right" ><?php echo $displayDate; ?></div>
 				</td>
 				<td width="10"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td></tr></table>

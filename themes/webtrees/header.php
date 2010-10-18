@@ -102,10 +102,13 @@ if ($view!='simple') {
 						'<ul class="makeMenu" align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" >';
 								echo MenuBar::getFavoritesMenu()->getMenuAsList();
 								global $ALLOW_THEME_DROPDOWN;
-									if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-										echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
-									}
-								echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+								if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+									echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+								}
+								$language_menu=MenuBar::getLanguageMenu();
+								if ($language_menu) {
+									echo ' | ', $language_menu->getMenuAsList();
+								}
 					echo '&nbsp;</ul>',
 					'</div>',
 			'</td>',

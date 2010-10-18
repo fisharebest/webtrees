@@ -137,7 +137,10 @@ if ($view!='simple') {
 			}
 		}
 		echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
-		echo ' | ', MenuBar::getLanguageMenu()->getMenuAsList();
+		$language_menu=MenuBar::getLanguageMenu();
+		if ($language_menu) {
+			echo ' | ', $language_menu->getMenuAsList();
+		}
 		global $ALLOW_THEME_DROPDOWN;
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
