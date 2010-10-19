@@ -1103,7 +1103,8 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					} else {
 						echo translate_fact($factname, $parent);
 					}
-				} else {
+				} else if ($factname != "NOTE"){
+					// Note is already printed
 					echo translate_fact($factname, $parent);
 				}
 			}
