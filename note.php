@@ -92,7 +92,7 @@ echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 // Shared Note details ---------------------
 $nt = preg_match("/0 @$controller->nid@ NOTE(.*)/", $noterec, $n1match);
 if ($nt==1) {
-	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true);
+	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
 }else{
 	$note = "No Text";
 }

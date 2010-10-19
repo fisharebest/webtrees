@@ -904,9 +904,10 @@ function print_favorite_selector($option=0) {
 * @param string $nrec the note record to print
 * @param bool $textOnly Don't print the "Note: " introduction
 * @param boolean $return Print the data or return the data
+* @param boolean $npage the data is on note page or not
 * @return boolean
 */
-function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false) {
+function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false, $npage=false) {
 	global $WT_IMAGES, $EXPAND_SOURCES, $EXPAND_NOTES;
 
 	if (!isset($EXPAND_NOTES)) $EXPAND_NOTES = $EXPAND_SOURCES; // FIXME
@@ -919,16 +920,17 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		$centitl  = str_replace("<br />", "", $centitl);
 		if (preg_match("/@N([0-9])+@/", $nrec, $match_nid)) {
 			$nid = str_replace("@", "", $match_nid[0]);
-			$centitl = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
+			if (!$npage) {
+				$centitl = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
+			}
 		}
 		if ($textOnly) {
 			$text = $centitl;
 			return $text;
-		}
-		else {
+		} else {
 			$text = get_cont($nlevel, $nrec);
 		}
-	}else{
+	} else{
 		$text .= get_cont($nlevel, $nrec);
 	}
 	$text = str_replace("~~", "<br />", $text);
@@ -941,7 +943,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php') ) {
 			require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
 		// Else if unformatted Shared Note --------------------------------------------------
-		}else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
+		} else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
 			$text=$centitl.$text;
 		}
 		if ($textOnly) {
@@ -954,28 +956,34 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		}
 
 		$brpos = strpos($text, "<br />");
-		$data .= "<span class=\"label\">";
-		if ($brpos !== false) {
-			if ($EXPAND_NOTES) $plusminus="minus"; else $plusminus="plus";
-			$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
-			if ($plusminus=="plus") $data .= i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /></a> ";
-			else $data .= i18n::translate('Hide Details')."\" title=\"".i18n::translate('Hide Details')."\" /></a> ";
-		}
+		if (!$npage) {
+			$data .= "<span class=\"label\">";
+			if ($brpos !== false) {
+				if ($EXPAND_NOTES) $plusminus="minus"; else $plusminus="plus";
+				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
+				if ($plusminus=="plus") $data .= i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /></a> ";
+				else $data .= i18n::translate('Hide Details')."\" title=\"".i18n::translate('Hide Details')."\" /></a> ";
+			}
 
-		// Check if Shared Note -----------------------------
-		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
-			$data .= i18n::translate('Shared note').": </span> - ";
-		}else{
-			$data .= i18n::translate('Note').": </span>";
+			// Check if Shared Note -----------------------------
+			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
+				$data .= i18n::translate('Shared note').": </span> ";
+			}else{
+				$data .= i18n::translate('Note').": </span>";
+			}
 		}
 
 		if ($brpos !== false) {
 			$data .= substr($text, 0, $brpos);
-			$data .= "<div id=\"$elementID\"";
-			if ($EXPAND_NOTES) $data .= " style=\"display:block\"";
-			$data .= " class=\"note_details font11\">";
-			$data .= substr($text, $brpos + 6);
-			$data .= "</div>";
+			if ($npage) {
+				$data .= "<br />".substr($text, $brpos + 6);
+			} else {
+				$data .= "<div id=\"$elementID\"";
+				if ($EXPAND_NOTES) $data .= " style=\"display:block\"";
+				$data .= " class=\"note_details font11\">";
+				$data .= substr($text, $brpos + 6);
+				$data .= "</div>";
+			}
 		} else {
 			$data .= $text;
 		}
