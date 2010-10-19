@@ -1822,7 +1822,7 @@ case 'copy':
 //------------------------------------------------------------------------------
 case 'paste':
 	$gedrec .= "\n".$_SESSION["clipboard"][$fact]["factrec"]."\n";
-	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN)) {
+	if (replace_gedrec($pid, WT_GED_ID, $gedrec, !$NO_UPDATE_CHAN)) {
 		$success=true;
 	}
 	break;

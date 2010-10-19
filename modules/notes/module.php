@@ -77,6 +77,14 @@ if (!$this->controller->indi->canDisplayDetails()) {
 		</td>
 	</tr>
 	<?php
+	$globalfacts = $this->controller->getGlobalFacts();
+	foreach ($globalfacts as $key => $event) {
+		$fact = $event->getTag();
+		if ($fact=="NAME") {
+			print_main_notes($event->getGedcomRecord(), 2, $this->controller->pid, $event->getLineNumber(), true);
+		}
+		$FACT_COUNT++;
+	}
 	$otherfacts = $this->controller->getOtherFacts();
 	foreach ($otherfacts as $key => $event) {
 		$fact = $event->getTag();

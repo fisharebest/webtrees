@@ -390,6 +390,9 @@ function print_fact(&$eventObj, $noedit=false) {
 							echo "<span class=\"label\">", $label, ": </span>";
 						}
 						echo htmlspecialchars($match[$i][2]);
+						$sub_rec = get_sub_record(2, "2 ".$factref, $factrec, 1);
+						$tmp=new GedcomDate(get_gedcom_value('DATE', 3, $sub_rec, $truncate='', $convert=false));
+						if ($tmp->Display(true)!="&nbsp;") echo " - ".$tmp->Display(true);
 						echo "<br />";
 					}
 				}
