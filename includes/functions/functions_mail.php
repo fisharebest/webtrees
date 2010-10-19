@@ -143,12 +143,27 @@ function webtreesMail($to, $from, $subject, $message) {
 		$mail_object->Host = $SMTP_HOST;
 		$mail_object->Port = $SMTP_PORT;
 		$mail_object->Hostname = $SMTP_HELO;
-		$mail_object->From = $from;
-		if (!empty($SMTP_FROM_NAME) && $from!=$SMTP_AUTH_USER) {
-			$mail_object->FromName = $SMTP_FROM_NAME;
-			$mail_object->AddAddress($to);
+		$from_name = '';
+		if (!get_site_setting('SMTP_SIMPLE_MAIL')) {
+			preg_match('/<(.*)>/', $to, $matches);
+			if (isset($matches[1])) $to = $matches[1];
+			preg_match('/<(.*)>/', $from, $matches);
+			if (isset($matches[1])) {
+				if (($pos = strpos($from, '<')) !== false) $from_name = substr($from, 0, $pos);
+				$from = $matches[1];
+			}
 		}
-		else {
+		$mail_object->From = $from;
+		if ((!empty($SMTP_FROM_NAME) && $from!=$SMTP_AUTH_USER) || !empty($from_name)) {
+			if (!empty($from_name)) {
+				$mail_object->FromName = $from_name.' - '.$SMTP_FROM_NAME;
+			} else {
+				$mail_object->FromName = $SMTP_FROM_NAME;
+			}
+			$mail_object->AddAddress($to);
+		} else if (!empty($from_name)){
+			$mail_object->FromName = $from_name;
+		} else {
 			$mail_object->FromName = $mail_object->AddAddress($to);
 		}
 		$mail_object->Subject = hex4email( $subject, 'UTF-8');
