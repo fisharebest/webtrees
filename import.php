@@ -85,7 +85,7 @@ echo
 	'<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>',
 	WT_JS_START,
 	' jQuery("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
-	WT_JS_END,
+	WT_JS_END;
 flush();
 
 $first_time=($row->import_offset==0);
@@ -110,6 +110,12 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			" SET chunk_data=TRIM(LEADING ? FROM chunk_data)".
 			" WHERE gedcom_chunk_id=?"
 		)->execute(array(WT_UTF8_BOM, $data->gedcom_chunk_id));
+		// Re-fetch the data, now that we have removed the BOM
+		$data=WT_DB::prepare(
+			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
+			" FROM `##gedcom_chunk`".
+			" WHERE gedcom_chunk_id=?"
+		)->execute(array($data->gedcom_chunk_id))->fetchOneRow();
 		if (substr($data->chunk_data, 0, 6)!='0 HEAD') {
 			WT_DB::exec("ROLLBACK");
 			echo i18n::translate('Invalid GEDCOM file - no header record found.');
@@ -194,14 +200,12 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		}
 		$first_time=false;
 		
-		// Re-fetch the data, now that we have performed character set conversion, etc.
+		// Re-fetch the data, now that we have performed character set conversion.
 		$data=WT_DB::prepare(
 			"SELECT gedcom_chunk_id, REPLACE(chunk_data, '\r', '\n') AS chunk_data".
 			" FROM `##gedcom_chunk`".
-			" WHERE gedcom_id=? AND NOT imported".
-			" ORDER BY gedcom_chunk_id".
-			" LIMIT 1"
-		)->execute(array($gedcom_id))->fetchOneRow();
+			" WHERE gedcom_chunk_id=?"
+		)->execute(array($data->gedcom_chunk_id))->fetchOneRow();
 	}
 
 	if (!$data) {
