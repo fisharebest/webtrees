@@ -246,7 +246,7 @@ foreach ($gedcoms as $gedcom) {
 			echo
 				'<div id="import', $gedcom->gedcom_id, '"></div>',
 				WT_JS_START,
-				'$("#import', $gedcom->gedcom_id, '").load("import.php?gedcom_id=', $gedcom->gedcom_id, '&keep_media=', safe_POST('keep_media'.$gedcom->gedcom_id), '");',
+				'jQuery("#import', $gedcom->gedcom_id, '").load("import.php?gedcom_id=', $gedcom->gedcom_id, '&keep_media=', safe_POST('keep_media'.$gedcom->gedcom_id), '");',
 				WT_JS_END,
 				'<table border="0" width="100%" id="actions', $gedcom->gedcom_id, '" style="display:none">';
 		} else {
