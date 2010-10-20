@@ -124,14 +124,13 @@ if (isset($controller)) {
 <?php
 // Sidebar state control
 // NOTE: Need config option for setting $sidebar_state.
-$sidebar_state = "open"; // "open" = Sidebar initially open, [default] + normally auto pinned
-							// "closed" = Sidebar initially closed, + normally auto unpinned
-//
-?>
+// 'open' = Sidebar initially open, [default] + normally auto pinned
+// 'closed' = Sidebar initially closed, + normally auto unpinned
+$sidebar_state = 'open';
 
-<script type="text/javascript" src="js/jquery/jquery.scrollfollow.js"></script>
-<script type="text/javascript">
-<!--
+echo '<script type="text/javascript" src="js/jquery/jquery.scrollfollow.js"></script>';
+echo WT_JS_START;
+?>
 jQuery.noConflict(); // @see http://docs.jquery.com/Using_jQuery_with_Other_Libraries/
 var loadedMods = new Array();
 
@@ -271,25 +270,24 @@ jQuery(document).ready(function() {
 		<?php } ?>
 
 });
--->
-</script>
 
-<div id="sidebar">
-	<?php
+<?php
+	echo WT_JS_END;
+	echo '<div id="sidebar">';
 	if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] && $sidebar_state == "open") {
-	?>
+		?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
 			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_close'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a>
 			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a>
 		</div>
-	<?php
+		<?php
 	} else {
-	?>
+		?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
 			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_open'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a>
 			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a>
 		</div>
-	<?php
+		<?php
 	}
 	?>
 	<div id="sidebarAccordion"></div>
