@@ -84,6 +84,7 @@ legend img {
 }
 
 img.block, #calendar_img, #biglink img, #mycart img  {
+	border: none;
 	height: 25px;
 	vertical-align: middle;
 }
