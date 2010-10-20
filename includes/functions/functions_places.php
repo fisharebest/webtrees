@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Functions for places selection (clickable maps, autocompletion...)
  *
@@ -348,7 +348,7 @@ function print_place_subfields($element_id) {
 		}
 		// clickable map
 		if ($i<$icountry or $i>$icounty) print "<br />\n";
-		else print "<div id='".$subtagname."_div' name='".$subtagname."_div' style='overflow:hidden; height:32px; width:auto; border-width:thin; border-style:none;'><img name='".$subtagname."_img' src='images/spacer.gif' usemap='usemap' border='0' alt='' title='' style='height:inherit; width:inherit;' /></div>";
+		else print "<div id='".$subtagname."_div' name='".$subtagname."_div' style='overflow:hidden; height:32px; width:auto; border-width:thin; border-style:none;'><img name='".$subtagname."_img' src='".$WT_IMAGES["spacer"]."' usemap='usemap' border='0' alt='' title='' style='height:inherit; width:inherit;' /></div>";
 	}
 	print "</div>";
 }
