@@ -52,31 +52,29 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $WT_IMAGES, $EXPAND_RELATIVES_EVENTS;
-		global $n_chil, $n_gchi, $n_ggch;
-		global $EXPAND_RELATIVES_EVENTS;
-		global $NAV_FACTS;
+		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS, $n_chil, $n_gchi, $n_ggch;
 
 		/*if (isset($_COOKIE['row_rela'])) $EXPAND_RELATIVES_EVENTS = ($_COOKIE['row_rela']);
 		if (isset($_COOKIE['row_histo'])) $EXPAND_HISTO_EVENTS = ($_COOKIE['row_histo']);
 		else*/ $EXPAND_HISTO_EVENTS = false;
 
 		//-- only need to add family facts on this tab
-		if (!isset($this->controller->skipFamilyFacts)) $this->controller->indi->add_family_facts();
+		if (!isset($this->controller->skipFamilyFacts)) {
+			$this->controller->indi->add_family_facts();
+		}
 
 		ob_start();
 		?>
-		<table class="facts_table" style="margin-top:-2px; "cellpadding="0">
+		<table class="facts_table" style="margin-top:-2px;" cellpadding="0">
 		<?php if (!$this->controller->indi->canDisplayDetails()) {
-			print "<tr><td class=\"facts_value\" colspan=\"2\">";
+			echo '<tr><td class="facts_value" colspan="2">';
 			print_privacy_error();
-			print "</td></tr>";
-		}
-		else {
+			echo '</td></tr>';
+		} else {
 			$indifacts = $this->controller->getIndiFacts();
 			if (count($indifacts)==0) {?>
 				<tr>
-					<td id="no_tab1" colspan="2" class="facts_value"><?php echo i18n::translate('There are no Facts for this individual.')?>
+					<td id="no_tab1" colspan="2" class="facts_value"><?php echo i18n::translate('There are no Facts for this individual.'); ?>
 					</td>
 				</tr>
 			<?php }
@@ -85,11 +83,11 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr id="row_top">
 				<td valign="top"></td>
 				<td class="descriptionbox rela">
-					<input id="checkbox_rela_facts" type="checkbox" <?php if ($EXPAND_RELATIVES_EVENTS) echo " checked=\"checked\""?> onclick="toggleByClassName('TR', 'row_rela');" />
-					<label for="checkbox_rela_facts"><?php echo i18n::translate('Events of close relatives')?></label>
+					<input id="checkbox_rela_facts" type="checkbox" <?php if ($EXPAND_RELATIVES_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_rela');" />
+					<label for="checkbox_rela_facts"><?php echo i18n::translate('Events of close relatives'); ?></label>
 					<?php if (file_exists("languages/histo.".WT_LOCALE.".php")) {?>
-						<input id="checkbox_histo" type="checkbox" <?php if ($EXPAND_HISTO_EVENTS) echo " checked=\"checked\""?> onclick="toggleByClassName('TR', 'row_histo');" />
-						<label for="checkbox_histo"><?php echo i18n::translate('Historical facts')?></label>
+						<input id="checkbox_histo" type="checkbox" <?php if ($EXPAND_HISTO_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_histo');" />
+						<label for="checkbox_histo"><?php echo i18n::translate('Historical facts'); ?></label>
 					<?php }?>
 				</td>
 			</tr>
@@ -100,35 +98,33 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			$n_gchi=1;
 			$n_ggch=1;
 			foreach ($indifacts as $key => $value) {
-				if ($value->getTag() == "DEAT") $yetdied = true;
-				if ($value->getTag() == "CREM") $yetdied = true;
-				if ($value->getTag() == "BURI") $yetdied = true;
+				if ($value->getTag()=='DEAT' || $value->getTag()=='CREM' || $value->getTag()=='BURI') {
+					$yetdied = true;
+				}
 
 				if (!is_null($value->getFamilyId())) {
 					if (!$yetdied) {
 						print_fact($value, $this->controller->canedit==false);
 					}
+				} else {
+					print_fact($value, $this->controller->canedit==false);
 				}
-				else print_fact($value, $this->controller->canedit==false);
 				$FACT_COUNT++;
 			}
 		}
 		//-- new fact link
 		if ($this->controller->canedit) {
-			print_add_new_fact($this->controller->pid, $indifacts, "INDI");
+			print_add_new_fact($this->controller->pid, $indifacts, 'INDI');
 		}
-		?>
-		</table>
-		<br />
-		<script language="JavaScript" type="text/javascript">
-		<!--
-		<?php
-		if (!$EXPAND_RELATIVES_EVENTS) print "toggleByClassName('TR', 'row_rela');\n";
-		if (!$EXPAND_HISTO_EVENTS) print "toggleByClassName('TR', 'row_histo');\n";
-		?>
-		//-->
-		</script>
-		<?php
+		echo '</table><br />';
+		echo WT_JS_START;
+		if (!$EXPAND_RELATIVES_EVENTS) {
+			echo "toggleByClassName('TR', 'row_rela');";
+		}
+		if (!$EXPAND_HISTO_EVENTS) {
+			echo "toggleByClassName('TR', 'row_histo');";
+		}
+		echo WT_JS_END;
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 
@@ -136,6 +132,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function hasTabContent() {
 		return true;
 	}
+	
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
 		// Don't load this tab using AJAX, otherwise search engines won't see it
@@ -151,5 +148,4 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getJSCallback() {
 		return '';
 	}
-
 }
