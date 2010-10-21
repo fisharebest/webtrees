@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Functions for places selection (clickable maps, autocompletion...)
  *
