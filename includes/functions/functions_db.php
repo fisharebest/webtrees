@@ -310,7 +310,7 @@ function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Get a list of surnames for indilist.php
+// Get a list of surnames for indilist.php / famlist.php
 // $surn - if set, only fetch people with this surname
 // $salpha - if set, only consider surnames starting with this letter
 // $marnm - if set, include married names
@@ -318,74 +318,41 @@ function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
 // $ged_id - only consider individuals from this gedcom
 ////////////////////////////////////////////////////////////////////////////////
 function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
-	$sql="SELECT DISTINCT n_surn, n_surname, n_id FROM `##individuals` JOIN `##name` ON (i_id=n_id AND i_file=n_file)";
-	if ($fams) {
-		$sql.=" JOIN `##link` ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
-	}
-	$where=array("n_file={$ged_id}");
-	if (!$marnm) {
-		$where[]="n_type!='_MARNM'";
-	}
-	if ($surn) {
-		// Match a surname
-		$where[]="n_surn LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
+	$sql=
+		"SELECT n_surn, n_surname, n_id FROM `##name`".
+		($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS')" : "").
+		" WHERE n_file={$ged_id}".
+		($marnm ? "" : " AND n_type!='_MARNM'");
+		
+	if ($surn=='@N.N.') {
+		// Unknown surname
+		$sql.=" AND n_surn='@N.N.'";
 	} elseif ($salpha==',') {
-		// Match a surname-less name
-		$where[]="n_surn = ''";
+		// No surname
+		$sql.=" AND n_surn=''";
+	} elseif ($surn) {
+		// Specific surname
+		$sql.=
+			" AND n_surn LIKE ".WT_DB::quote($surn)." COLLATE '".i18n::$collation."'".
+			" ORDER BY n_surn COLLATE '".i18n::$collation."'";
 	} elseif ($salpha) {
-		// Match a surname initial
-		$where[]="n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'";
+		// Surname initial
+		$sql.=
+			" AND n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'".
+			" ORDER BY n_surn COLLATE '".i18n::$collation."'";
 	} else {
-		// Match all individuals
-		$where[]="n_surn <>'@N.N.'";
-		$where[]="n_surn <> ''";
+		// All surnames
+		$sql.=
+			" AND n_surn NOT IN ('', '@N.N.')".
+			" ORDER BY n_surn COLLATE '".i18n::$collation."'";
 	}
-
-	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn COLLATE '".i18n::$collation."'";
 
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll();
+	// This nested-array structure implements a "DISTINCT" operation more
+	// efficiently than SQL, as there are very many names but few duplicates.
 	foreach ($rows as $row) {
 		$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
-	}
-	return $list;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// Get a list of surnames for indilist.php
-// $surn - if set, only fetch people with this surname
-// $salpha - if set, only consider surnames starting with this letter
-// $marnm - if set, include married names
-// $ged_id - only consider individuals from this gedcom
-////////////////////////////////////////////////////////////////////////////////
-function get_famlist_surns($surn, $salpha, $marnm, $ged_id) {
-	$sql="SELECT DISTINCT n_surn, n_surname, l_to FROM `##individuals` JOIN `##name` ON (i_id=n_id AND i_file=n_file) JOIN `##link` ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
-	$where=array("n_file={$ged_id}");
-	if (!$marnm) {
-		$where[]="n_type!='_MARNM'";
-	}
-
-	if ($surn) {
-		// Match a surname
-		$where[]="n_surn LIKE ".WT_DB::quote("{$surn}")." COLLATE '".i18n::$collation."'";
-	} elseif ($salpha==',') {
-		// Match a surname-less name
-		$where[]="n_surn = ''";
-	} elseif ($salpha) {
-		// Match a surname initial
-		$where[]="n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'";
-	} else {
-		// Match all individuals
-		$where[]="n_surn <> '@N.N.'";
-		$where[]="n_surn <> ''";
-	}
-
-	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY n_surn COLLATE '".i18n::$collation."'";
-
-	$list=array();
-	$rows=WT_DB::prepare($sql)->fetchAll();
-	foreach ($rows as $row) {
-		$list[utf8_strtoupper($row->n_surn)][$row->n_surname][$row->l_to]=true;
 	}
 	return $list;
 }
