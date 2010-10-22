@@ -27,7 +27,7 @@
  *
  * @package webtrees
  * @subpackage Charts
- * @version $Id: index.php 6652 2010-01-01 20:32:39Z yalnifj $
+ * @version $Id$
  */
 
 require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';

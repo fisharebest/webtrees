@@ -28,7 +28,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: personbox_template.php 8345 2010-05-17 11:56:12Z greg $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {

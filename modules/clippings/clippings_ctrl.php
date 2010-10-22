@@ -24,7 +24,7 @@
 *
 * @package webtrees
 * @subpackage Charts
-* @version $Id: clippings_ctrl.php 6607 2009-12-23 17:43:48Z yalnifj $
+* @version $Id$
 */
 
 if (!defined('WT_WEBTREES')) {

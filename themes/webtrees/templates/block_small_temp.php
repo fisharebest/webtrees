@@ -29,7 +29,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: block_small_temp.php 4703 2009-01-07 19:46:30Z canajun2eh $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {

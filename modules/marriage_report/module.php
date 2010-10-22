@@ -24,7 +24,7 @@
  *
  * @package webtrees
  * @subpackage Modules
- * @version $Id: class_media.php 5451 2009-05-05 22:15:34Z fisharebest $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {

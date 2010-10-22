@@ -29,7 +29,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: block_main_temp.php 7697 2010-03-28 20:53:09Z rob $
+ * @version $Id$
  */
 
 if (!defined('WT_WEBTREES')) {
