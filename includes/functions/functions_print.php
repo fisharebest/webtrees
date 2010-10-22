@@ -590,23 +590,21 @@ function print_lang_form($option=0) {
 * this function will print login/logout links and other links based on user privileges
 */
 function print_user_links() {
-	global $QUERY_STRING, $GEDCOM;
-	global $SEARCH_SPIDER;
+	global $QUERY_STRING, $SEARCH_SPIDER;
 
 	if (WT_USER_ID) {
 		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo "<a href=\"admin.php\" class=\"link\">", i18n::translate('Administration'), "</a> | ";
+			echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
 		}
-		echo "<a href=\"index.php?logout=1\" class=\"link\">", i18n::translate('Logout'), "</a>";
+		echo '<a href="index.php?logout=1" class="link">', i18n::translate('Logout'), '</a>';
 	} else {
-		$QUERY_STRING = normalize_query_string($QUERY_STRING.'&amp;logout=');
 		if (empty($SEARCH_SPIDER)) {
 			if (WT_SCRIPT_NAME=='login.php') {
-				echo "<a href=\"#\" class=\"link\">", i18n::translate('Login'), "</a>";
+				echo '<a href="#" class="link">', i18n::translate('Login'), '</a>';
 			} else {
-				$LOGIN_URL=get_site_setting('LOGIN_URL');
-				echo "<a href=\"$LOGIN_URL?url=", rawurlencode(WT_SCRIPT_NAME.decode_url(normalize_query_string($QUERY_STRING."&amp;ged=$GEDCOM"))), "\" class=\"link\">", i18n::translate('Login'), "</a>";
+				$LOGIN_URL=get_site_setting('LOGIN_URL', 'login.php');
+				echo '<a href="', $LOGIN_URL, '?url=', rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING), '" class="link">', i18n::translate('Login'), '</a>';
 			}
 		}
 	}
