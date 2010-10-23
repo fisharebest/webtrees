@@ -46,7 +46,6 @@ set_gedcom_setting($ged_id, 'ALLOW_THEME_DROPDOWN',         true);
 set_gedcom_setting($ged_id, 'AUTO_GENERATE_THUMBS',         true);
 set_gedcom_setting($ged_id, 'CALENDAR_FORMAT',              'gregorian');
 set_gedcom_setting($ged_id, 'CHART_BOX_TAGS',               '');
-set_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS',     true);
 set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             '');
 set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          '');
 set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       '40');
@@ -78,7 +77,6 @@ set_gedcom_setting($ged_id, 'LINK_ICONS',                   'click');
 set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                120);
 set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
 set_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS',     '10');
-set_gedcom_setting($ged_id, 'MAX_RELATION_PATH_LENGTH',     3);
 set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY',              'media/');
 set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS',       '0');
 set_gedcom_setting($ged_id, 'MEDIA_EXTERNAL',               true);
@@ -181,5 +179,3 @@ $statement->execute(array($ged_id, 'SOUR', 'privacy'));
 $statement->execute(array($ged_id, 'REPO', 'privacy'));
 $statement->execute(array($ged_id, 'SUBM', 'confidential'));
 $statement->execute(array($ged_id, 'SUBN', 'confidential'));
-
-

@@ -192,7 +192,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $ALLOW_THEME_DROPDOWN;         $ALLOW_THEME_DROPDOWN         =get_gedcom_setting($ged_id, 'ALLOW_THEME_DROPDOWN');
 	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              =get_gedcom_setting($ged_id, 'CALENDAR_FORMAT');
 	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               =get_gedcom_setting($ged_id, 'CHART_BOX_TAGS');
-	global $CHECK_MARRIAGE_RELATIONS;     $CHECK_MARRIAGE_RELATIONS     =get_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS');
 	global $CONTACT_USER_ID;              $CONTACT_USER_ID              =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
 	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS =get_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS');
 	global $DISPLAY_JEWISH_GERESHAYIM;    $DISPLAY_JEWISH_GERESHAYIM    =get_gedcom_setting($ged_id, 'DISPLAY_JEWISH_GERESHAYIM');
@@ -214,7 +213,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                =get_gedcom_setting($ged_id, 'MAX_ALIVE_AGE');
 	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  =get_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS');
 	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     =get_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS');
-	global $MAX_RELATION_PATH_LENGTH;     $MAX_RELATION_PATH_LENGTH     =get_gedcom_setting($ged_id, 'MAX_RELATION_PATH_LENGTH');
 	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY');
 	global $MEDIA_DIRECTORY_LEVELS;       $MEDIA_DIRECTORY_LEVELS       =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS');
 	global $MEDIA_EXTERNAL;               $MEDIA_EXTERNAL               =get_gedcom_setting($ged_id, 'MEDIA_EXTERNAL');
@@ -270,7 +268,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $USE_GEONAMES;                 $USE_GEONAMES                 =get_gedcom_setting($ged_id, 'USE_GEONAMES');
 	global $USE_MEDIA_FIREWALL;           $USE_MEDIA_FIREWALL           =get_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL');
 	global $USE_MEDIA_VIEWER;             $USE_MEDIA_VIEWER             =get_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER');
-	global $USE_RELATIONSHIP_PRIVACY;     $USE_RELATIONSHIP_PRIVACY     =get_gedcom_setting($ged_id, 'USE_RELATIONSHIP_PRIVACY');
 	global $USE_RIN;                      $USE_RIN                      =get_gedcom_setting($ged_id, 'USE_RIN');
 	global $USE_SILHOUETTE;               $USE_SILHOUETTE               =get_gedcom_setting($ged_id, 'USE_SILHOUETTE');
 	global $USE_THUMBS_MAIN;              $USE_THUMBS_MAIN              =get_gedcom_setting($ged_id, 'USE_THUMBS_MAIN');
@@ -1315,7 +1312,7 @@ function sort_facts(&$arr) {
 	$nondated = array();
 	//-- split the array into dated and non-dated arrays
 	$order = 0;
-	foreach($arr as $event) {
+	foreach ($arr as $event) {
 		$event->sortOrder = $order;
 		$order++;
 		if ($event->getValue("DATE")==NULL || !$event->getDate()->isOk()) $nondated[] = $event;
@@ -1333,7 +1330,7 @@ function sort_facts(&$arr) {
 	$j = 0;
 	$k = 0;
 	// while there is anything in the dated array continue merging
-	while($i<$dc) {
+	while ($i<$dc) {
 		// compare each fact by type to merge them in order
 		if ($j<$nc && Event::CompareType($dated[$i], $nondated[$j])>0) {
 			$arr[$k] = $nondated[$j];
@@ -1347,7 +1344,7 @@ function sort_facts(&$arr) {
 	}
 
 	// get anything that might be left in the nondated array
-	while($j<$nc) {
+	while ($j<$nc) {
 		$arr[$k] = $nondated[$j];
 		$j++;
 		$k++;
@@ -1375,12 +1372,16 @@ function gedcomsort($a, $b) {
  * @param int $path_to_find - which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
  */
 function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignore_cache=false, $path_to_find=0) {
-	global $start_time, $NODE_CACHE, $NODE_CACHE_LENGTH, $USE_RELATIONSHIP_PRIVACY;
+	global $start_time;
+	static $NODE_CACHE, $NODE_CACHE_LENGTH;
+	if (is_null($NODE_CACHE)) {
+		$NODE_CACHE=array();
+	}
 
-	$time_limit=get_site_setting('MAX_EXECUTION_TIME');
+	$time_limit=ini_get('max_execution_time');
 	$indirec = find_gedcom_record($pid2, WT_GED_ID, WT_USER_CAN_EDIT);
 	//-- check the cache
-	if ($USE_RELATIONSHIP_PRIVACY && !$ignore_cache) {
+	if (!$ignore_cache) {
 		if (isset($NODE_CACHE["$pid1-$pid2"])) {
 			if ($NODE_CACHE["$pid1-$pid2"]=="NOT FOUND") return false;
 			if (($maxlength==0)||(count($NODE_CACHE["$pid1-$pid2"]["path"])-1<=$maxlength))
@@ -1631,9 +1632,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 							}
 						} else
 							$visited[$parents["HUSB"]] = true;
-						if ($USE_RELATIONSHIP_PRIVACY) {
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-						}
+						$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 					}
 					if ((!empty($parents["WIFE"]))&&(!isset($visited[$parents["WIFE"]]))) {
 						$node1 = $node;
@@ -1651,9 +1650,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 							}
 						} else
 							$visited[$parents["WIFE"]] = true;
-						if ($USE_RELATIONSHIP_PRIVACY) {
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-						}
+						$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 					}
 					$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
 					for ($i=0; $i<$ct; $i++) {
@@ -1674,9 +1671,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 								}
 							} else
 								$visited[$child] = true;
-							if ($USE_RELATIONSHIP_PRIVACY) {
-								$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-							}
+							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 					}
 				}
@@ -1707,9 +1702,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 								}
 							} else
 								$visited[$parents["HUSB"]] = true;
-							if ($USE_RELATIONSHIP_PRIVACY) {
-								$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-							}
+							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 						if ((!empty($parents["WIFE"]))&&((!in_arrayr($parents["WIFE"], $node1))||(!isset($visited[$parents["WIFE"]])))) {
 							$node1 = $node;
@@ -1727,9 +1720,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 								}
 							} else
 								$visited[$parents["WIFE"]] = true;
-							if ($USE_RELATIONSHIP_PRIVACY) {
-								$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-							}
+							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 					}
 					$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
@@ -1752,9 +1743,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 							} else {
 								$visited[$child] = true;
 							}
-							if ($USE_RELATIONSHIP_PRIVACY) {
-								$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-							}
+							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 					}
 				}
@@ -3173,7 +3162,7 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 				$total_num_skipped++;
 				if ($children) {
 					$childs = $family->getChildren();
-					foreach($childs as $child) {
+					foreach ($childs as $child) {
 						$list[$child->getXref()] = $child;
 						if (isset($list[$id]->generation))
 							$list[$child->getXref()]->generation = $list[$id]->generation;
@@ -3233,7 +3222,7 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 					}
 				}
 				$children = $family->getChildren();
-				foreach($children as $child) {
+				foreach ($children as $child) {
 					if ($child) {
 						$list[$child->getXref()] = $child;
 						if (isset($list[$pid]->generation))
@@ -3243,7 +3232,7 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 					}
 				}
 				if ($generations == -1 || $list[$pid]->generation+1 < $generations) {
-					foreach($children as $child) {
+					foreach ($children as $child) {
 						add_descendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
 					}
 				}

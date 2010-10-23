@@ -188,6 +188,12 @@ if ($action!="choose") {
 							);
 							replace_gedrec($id, WT_GED_ID, $newrec);
 						}
+						// Update any linked user-accounts
+						WT_DB::prepare(
+							"UPDATE `##user_gedcom_setting`".
+							" SET setting_value=?".
+							" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
+						)->execute(array($gid2, WT_GED_ID, $gid1));
 
 						// Merge hit counters
 						$hits=WT_DB::prepare(

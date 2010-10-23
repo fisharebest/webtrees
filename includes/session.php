@@ -390,6 +390,7 @@ define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_I
 define('WT_USER_ACCESS_LEVEL', getUserAccessLevel(WT_USER_ID, WT_GED_ID));
 define('WT_USER_GEDCOM_ID',    getUserGedcomId   (WT_USER_ID, WT_GED_ID));
 define('WT_USER_ROOT_ID',      getUserRootId     (WT_USER_ID, WT_GED_ID));
+define('WT_USER_PATH_LENGTH',  get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'RELATIONSHIP_PATH_LENGTH'));
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 if (WT_USER_ID && safe_GET_bool('logout')) {

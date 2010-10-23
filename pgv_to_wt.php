@@ -207,7 +207,7 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=12) {
-echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
 		" SELECT gedcom_id, gedcom_name FROM `{$DBNAME}`.`{$TBLPREFIX}gedcom`"
@@ -324,7 +324,7 @@ echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
 		" END".
 		" FROM `{$DBNAME}`.`{$TBLPREFIX}user_setting`".
 		" JOIN `##user` USING (user_id)".
-		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname')"
+		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname', 'loggedin')"
 	)->execute();
 
 	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
@@ -590,7 +590,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'AUTO_GENERATE_THUMBS',         $AUTO_GENERATE_THUMBS);
 	@set_gedcom_setting($ged_id, 'CALENDAR_FORMAT',              $CALENDAR_FORMAT);
 	@set_gedcom_setting($ged_id, 'CHART_BOX_TAGS',               $CHART_BOX_TAGS);
-	@set_gedcom_setting($ged_id, 'CHECK_MARRIAGE_RELATIONS',     $CHECK_MARRIAGE_RELATIONS);
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             $COMMON_NAMES_ADD);
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE);
 	@set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD);
@@ -723,6 +722,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'USE_GEONAMES',                 $USE_GEONAMES);
 	@set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           $USE_MEDIA_FIREWALL);
 	@set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             $USE_MEDIA_VIEWER);
+	@set_gedcom_setting($ged_id, 'USE_RELATIONSHIP_PRIVACY',     $USE_RELATIONSHIP_PRIVACY);
 	@set_gedcom_setting($ged_id, 'USE_RIN',                      $USE_RIN);
 	@set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               $USE_SILHOUETTE);
 	@set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              $USE_THUMBS_MAIN);
@@ -742,6 +742,28 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	set_gedcom_setting($ged_id, 'pgv_ver',  null);
 	set_gedcom_setting($ged_id, 'imported', 1);
 }
+
+// webtrees 1.0.5 combines user and gedcom settings for relationship privacy
+// into a combined user-gedcom setting, for more granular control
+WT_DB::exec(
+	"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
+	" SELECT u.user_id, g.gedcom_id, 'RELATIONSHIP_PATH_LENGTH', LEAST(us1.setting_value, gs1.setting_value)".
+	" FROM   `##user` u".
+	" CROSS  JOIN `##gedcom` g".
+	" LEFT   JOIN `##user_setting`   us1 ON (u.user_id  =us1.user_id   AND us1.setting_name='max_relation_path')".
+	" LEFT   JOIN `##user_setting`   us2 ON (u.user_id  =us2.user_id   AND us2.setting_name='relationship_privacy')".
+	" LEFT   JOIN `##gedcom_setting` gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='MAX_RELATION_PATH_LENGTH')".
+	" LEFT   JOIN `##gedcom_setting` gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='USE_RELATIONSHIP_PRIVACY')".
+	" WHERE  us2.setting_value AND gs2.setting_value"
+);
+
+self::exec(
+	"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('MAX_RELATION_PATH_LENGTH', 'USE_RELATIONSHIP_PRIVACY')"
+);
+
+self::exec(
+	"DELETE FROM `##user_setting` WHERE setting_name IN ('relationship_privacy', 'max_relation_path_length')"
+);
 
 ////////////////////////////////////////////////////////////////////////////////
 

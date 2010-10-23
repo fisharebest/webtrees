@@ -122,7 +122,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS',         safe_POST_bool('NEW_AUTO_GENERATE_THUMBS'));
 	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              safe_POST('NEW_CALENDAR_FORMAT'));
 	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               safe_POST('NEW_CHART_BOX_TAGS'));
-	set_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS',     safe_POST_bool('CHECK_MARRIAGE_RELATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_REMOVE')));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       safe_POST('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
@@ -154,7 +153,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MAX_RELATION_PATH_LENGTH',     safe_POST('MAX_RELATION_PATH_LENGTH'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY',              safe_POST('NEW_MEDIA_DIRECTORY'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS',       safe_POST('NEW_MEDIA_DIRECTORY_LEVELS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL',               safe_POST_bool('NEW_MEDIA_EXTERNAL'));
@@ -223,7 +221,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 safe_POST_bool('NEW_USE_GEONAMES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL',           safe_POST_bool('NEW_USE_MEDIA_FIREWALL'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER',             safe_POST_bool('NEW_USE_MEDIA_VIEWER'));
-	set_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY',     safe_POST('USE_RELATIONSHIP_PRIVACY'));
 	set_gedcom_setting(WT_GED_ID, 'USE_RIN',                      safe_POST_bool('NEW_USE_RIN'));
 	set_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE',               safe_POST_bool('NEW_USE_SILHOUETTE'));
 	set_gedcom_setting(WT_GED_ID, 'USE_THUMBS_MAIN',              safe_POST_bool('NEW_USE_THUMBS_MAIN'));
@@ -693,36 +690,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<?php  echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Use relationship privacy'), help_link('USE_RELATIONSHIP_PRIVACY'); ?>
-						</td>
-						<td class="optionbox width60">
-							<?php  echo edit_field_yes_no('USE_RELATIONSHIP_PRIVACY', get_gedcom_setting(WT_GED_ID, 'USE_RELATIONSHIP_PRIVACY')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap"><?php echo i18n::translate('Max. relation path length'), help_link('MAX_RELATION_PATH_LENGTH'); ?></td>
-						<td class="optionbox">
-							<select size="1" name="MAX_RELATION_PATH_LENGTH"><?php
-							for ($y = 1; $y <= 10; $y++) {
-								print "<option";
-								if (get_gedcom_setting(WT_GED_ID, 'MAX_RELATION_PATH_LENGTH') == $y) print " selected=\"selected\"";
-								print ">";
-								print $y;
-								print "</option>";
-							}
-							?></select>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
-						</td>
-						<td class="optionbox width60">
-							<?php  echo edit_field_yes_no('CHECK_MARRIAGE_RELATIONS', get_gedcom_setting(WT_GED_ID, 'CHECK_MARRIAGE_RELATIONS')); ?>
 						</td>
 					</tr>
 					<tr>

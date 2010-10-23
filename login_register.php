@@ -112,7 +112,7 @@ switch ($action) {
 				$passchars = "abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 				$user_new_pw = "";
 				$max = strlen($passchars)-1;
-				for($i=0; $i<8; $i++) {
+				for ($i=0; $i<8; $i++) {
 					$index = rand(0,$max);
 					$user_new_pw .= $passchars{$index};
 				}
@@ -351,8 +351,6 @@ switch ($action) {
 					set_user_setting($user_id, 'defaulttab',           get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 					set_user_setting($user_id, 'visibleonline',        1);
 					set_user_setting($user_id, 'editaccount',          1);
-					set_user_setting($user_id, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY);
-					set_user_setting($user_id, 'max_relation_path',    $MAX_RELATION_PATH_LENGTH);
 					set_user_setting($user_id, 'auto_accept',          0);
 					set_user_setting($user_id, 'canadmin',             0);
 					set_user_setting($user_id, 'sessiontime',          0);
@@ -554,4 +552,3 @@ switch ($action) {
 }
 
 print_footer();
-?>

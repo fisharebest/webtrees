@@ -36,19 +36,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_PRIVACY_PHP', '');
 
-if ($USE_RELATIONSHIP_PRIVACY) {
-	/**
-	* store relationship paths in a cache
-	*
-	* the <var>$NODE_CACHE</var> is an array of nodes that have been previously checked
-	* by the relationship calculator.  This cache greatly speed up the relationship privacy
-	* checking on charts as many relationships on charts are in the same relationship path.
-	*
-	* See the documentation for the get_relationship() function in the functions.php file.
-	*/
-	$NODE_CACHE = array();
-}
-
 /**
 * check if a person is dead
 *
@@ -218,7 +205,6 @@ function showLivingNameById($pid) {
 // Can we display a level 0 record?
 function canDisplayRecord($ged_id, $gedrec) {
 	// TODO - use the privacy settings for $ged_id, not the default gedcom.
-	global $USE_RELATIONSHIP_PRIVACY, $CHECK_MARRIAGE_RELATIONS, $MAX_RELATION_PATH_LENGTH;
 	global $person_privacy, $person_facts, $global_facts, $HIDE_LIVE_PEOPLE, $GEDCOM, $SHOW_DEAD_PEOPLE, $MAX_ALIVE_AGE;
 	global $PRIVACY_CHECKS, $SHOW_LIVING_NAMES, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
 
@@ -314,9 +300,8 @@ function canDisplayRecord($ged_id, $gedrec) {
 			}
 		}
 		// Consider relationship privacy
-		if ($pgv_USER_GEDCOM_ID && get_user_setting(WT_USER_ID, 'relationship_privacy', $USE_RELATIONSHIP_PRIVACY)) {
-			$path_length=get_user_setting(WT_USER_ID, 'max_relation_path', $MAX_RELATION_PATH_LENGTH);
-			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $xref, $CHECK_MARRIAGE_RELATIONS, $path_length);
+		if ($pgv_USER_GEDCOM_ID && WT_USER_PATH_LENGTH) {
+			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $xref, true, WT_USER_PATH_LENGTH);
 			return $cache[$cache_key]=($relationship!==false);
 		}
 		// No restriction found - show living people to authenticated users only:
