@@ -582,7 +582,7 @@ class TreeNav {
 	function drawPerson(&$person, $gen, $state, &$pfamily) {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
-		$gen++;
+
 		if ($gen<0) {
 			return;
 		}
