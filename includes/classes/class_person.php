@@ -1761,7 +1761,9 @@ class Person extends GedcomRecord {
 		foreach ($surns as $n=>$surn) {
 			// Scottish 'Mc and Mac' prefixes both sort under 'Mac'
 			if (strcasecmp(substr($surn, 0, 2), 'Mc')==0) {
-				$surn=substr_replace($surn, 0, 2, 'Mac');
+				$surn=substr_replace($surn, 'Mac', 0, 2);
+			} elseif (strcasecmp(substr($surn, 0, 4), 'Mac ')==0) {
+				$surn=substr_replace($surn, 'Mac', 0, 4);
 			}
 
 			$this->_getAllNames[]=array(
