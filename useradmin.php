@@ -368,7 +368,8 @@ if ($action=="edituser") {
 		echo
 			'<tr><td>', $ged_name, '</td><td>',
 			'<select name="', $varname, '" id="', $varname, '"',
-			get_user_gedcom_setting($user_id, $ged_id, 'gedcomid') ? '' : ' disabled="disabled"',
+			// Commented out, until we can get this dynamically updated when the INDI-ID field is edited
+			//get_user_gedcom_setting($user_id, $ged_id, 'gedcomid') ? '' : ' disabled="disabled"',
 			'>';
 		for ($n=0; $n<=10; ++$n) {
 			echo
