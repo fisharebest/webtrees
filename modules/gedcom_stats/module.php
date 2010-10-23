@@ -53,6 +53,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stat_sour           =get_block_setting($block_id, 'stat_sour',            true);
 		$stat_other          =get_block_setting($block_id, 'stat_other',           true);
 		$stat_media          =get_block_setting($block_id, 'stat_media',           true);
+		$stat_repo           =get_block_setting($block_id, 'stat_repo',            true);
 		$stat_surname        =get_block_setting($block_id, 'stat_surname',         true);
 		$stat_events         =get_block_setting($block_id, 'stat_events',          true);
 		$stat_users          =get_block_setting($block_id, 'stat_users',           true);
@@ -118,6 +119,9 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($stat_media && $MULTI_MEDIA==true) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Media objects').'</td><td class="facts_value"><div dir="rtl"><a href="medialist.php">'.$stats->totalMedia().'</a></div></td></tr>';
+		}
+		if ($stat_repo) {
+			$content .= '<tr><td class="facts_label">'.i18n::translate('Repositories').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalRepositories().'</div></td></tr>';
 		}
 		if ($stat_other) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Other records').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalOtherRecords().'</div></td></tr>';
@@ -253,6 +257,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'stat_sour',            safe_POST_bool('stat_sour'));
 			set_block_setting($block_id, 'stat_other',           safe_POST_bool('stat_other'));
 			set_block_setting($block_id, 'stat_media',           safe_POST_bool('stat_media'));
+			set_block_setting($block_id, 'stat_repo',            safe_POST_bool('stat_repo'));
 			set_block_setting($block_id, 'stat_surname',         safe_POST_bool('stat_surname'));
 			set_block_setting($block_id, 'stat_events',          safe_POST_bool('stat_events'));
 			set_block_setting($block_id, 'stat_users',           safe_POST_bool('stat_users'));
@@ -283,6 +288,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stat_sour           =get_block_setting($block_id, 'stat_sour',            true);
 		$stat_other          =get_block_setting($block_id, 'stat_other',           true);
 		$stat_media          =get_block_setting($block_id, 'stat_media',           true);
+		$stat_repo           =get_block_setting($block_id, 'stat_repo',            true);
 		$stat_surname        =get_block_setting($block_id, 'stat_surname',         true);
 		$stat_events         =get_block_setting($block_id, 'stat_events',          true);
 		$stat_users          =get_block_setting($block_id, 'stat_users',           true);
@@ -341,28 +347,34 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			<?php echo i18n::translate('Person who lived the longest'); ?></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" value="yes" name="stat_other"
-			<?php if ($stat_other) echo ' checked="checked"'; ?> />
-			<?php echo i18n::translate('Other records'); ?></td>
+			<td><input type="checkbox" value="yes" name="stat_repo"
+			<?php if ($stat_repo) echo ' checked="checked"'; ?> />
+			<?php echo i18n::translate('Repositories'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_avg_life"
 			<?php if ($stat_avg_life) echo ' checked="checked"'; ?> />
 			<?php echo i18n::translate('Average age at death'); ?></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" value="yes" name="stat_events"
-			<?php if ($stat_events) echo ' checked="checked"'; ?> />
-			<?php echo i18n::translate('Total events'); ?></td>
+			<td><input type="checkbox" value="yes" name="stat_other"
+			<?php if ($stat_other) echo ' checked="checked"'; ?> />
+			<?php echo i18n::translate('Other records'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_most_chil"
 			<?php if ($stat_most_chil) echo ' checked="checked"'; ?> />
 			<?php echo i18n::translate('Family with the most children'); ?></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" value="yes" name="stat_users"
-			<?php if ($stat_users) echo ' checked="checked"'; ?> />
-			<?php echo i18n::translate('Total users'); ?></td>
+			<td><input type="checkbox" value="yes" name="stat_events"
+			<?php if ($stat_events) echo ' checked="checked"'; ?> />
+			<?php echo i18n::translate('Total events'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_avg_chil"
 			<?php if ($stat_avg_chil) echo ' checked="checked"'; ?> />
 			<?php echo i18n::translate('Average number of children per family'); ?></td>
+		</tr>
+		<tr>
+			<td><input type="checkbox" value="yes" name="stat_users"
+			<?php if ($stat_users) echo ' checked="checked"'; ?> />
+			<?php echo i18n::translate('Total users'); ?></td>
+			<td>&nbsp;</td>
 		</tr>
 	</table>
 	</td>

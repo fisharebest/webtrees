@@ -465,8 +465,8 @@ class stats {
 
 	function totalNotes() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type=? AND o_file=?")
-			->execute(array('NOTE', $this->_ged_id))
+			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
+			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
@@ -474,10 +474,21 @@ class stats {
 		return $this->_getPercentage($this->totalNotes(), 'all', 2);
 	}
 
+	function totalRepositories() {
+		return
+			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
+			->execute(array($this->_ged_id))
+			->fetchOne();
+	}
+
+	function totalRepositoriesPercentage() {
+		return $this->_getPercentage($this->totalRepositories(), 'all', 2);
+	}
+
 	function totalOtherRecords() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type<>? AND o_file=?")
-			->execute(array('NOTE', $this->_ged_id))
+			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type NOT IN ('NOTE', 'REPO') AND o_file=?")
+			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 

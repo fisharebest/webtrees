@@ -211,6 +211,10 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 									<td class="facts_value">&nbsp;#totalMedia#</td>
 								</tr>
 								<tr>
+									<td class="facts_label">'.i18n::translate('Repositories').'</td>
+									<td class="facts_value">&nbsp;#totalRepositories#</td>
+								</tr>
+								<tr>
 									<td class="facts_label">'.i18n::translate('Other records').'</td>
 									<td class="facts_value">&nbsp;#totalOtherRecords#</td>
 								</tr>

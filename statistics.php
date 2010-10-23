@@ -335,12 +335,14 @@ if (isset($content) && $content==1) {
 					<td class="facts_label"><?php echo i18n::translate('Media objects');?></td>
 					<td class="facts_label"><?php echo i18n::translate('Sources');?></td>
 					<td class="facts_label"><?php echo i18n::translate('Notes');?></td>
+					<td class="facts_label"><?php echo i18n::translate('Repositories');?></td>
 					<td class="facts_label"><?php echo i18n::translate('Other records');?></td>
 				</tr>
 				<tr>
 					<td class="facts_value" align="center"><?php echo $stats->totalMedia();?></td>
 					<td class="facts_value" align="center"><?php echo $stats->totalSources();?></td>
 					<td class="facts_value" align="center"><?php echo $stats->totalNotes();?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalRepositories();?></td>
 					<td class="facts_value" align="center"><?php echo $stats->totalOtherRecords();?></td>
 				</tr>
 				</table>
