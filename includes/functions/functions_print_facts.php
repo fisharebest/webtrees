@@ -293,7 +293,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		$ct = preg_match("/2 DESC (.*)/", $factrec, $match);
 		if ($ct>0) echo PrintReady($match[1]);
 		// -- print PLACe, TEMPle and STATus
-		echo format_fact_place($eventObj, true, true, true);
+		echo '<div id="place">', format_fact_place($eventObj, true, true, true), '</div>';
 		if (preg_match("/ (PLAC)|(STAT)|(TEMP)|(SOUR) /", $factrec)>0 || ($event && $fact!="ADDR")) print "<br />\n";
 		// -- print BURIal -> CEMEtery
 		$ct = preg_match("/2 CEME (.*)/", $factrec, $match);
