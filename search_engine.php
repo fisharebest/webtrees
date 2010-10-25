@@ -38,11 +38,8 @@ require './includes/session.php';
 header('Content-Type: text/html; charset=UTF-8');
 
 echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
-echo '<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup, '><head>';
+echo '<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '><head>';
 echo '<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
-if ($rtl_stylesheet && $TEXT_DIRECTION=='rtl') {
-	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
-}
 echo '<meta name="robots" content="noindex,follow" />';
 echo '<meta name="generator" content="', WT_WEBTREES, ' - ', WT_WEBTREES_URL, '" />';
 echo '<title>', i18n::translate('Search Engine Spider Detected'), '</title>';
