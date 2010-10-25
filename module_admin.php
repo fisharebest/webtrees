@@ -33,7 +33,7 @@ require 'includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header("Location: login.php?url=module_admin.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 

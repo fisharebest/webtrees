@@ -858,7 +858,7 @@ if ($action=="update") {
 }
 else {
 	if (!isset($_SESSION[$GEDCOM."statisticsplot"])) {
-		header("Location: statistics.php");
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'statistics.php');
 		exit;
 	}
 	// Recover the saved input variables

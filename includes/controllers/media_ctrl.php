@@ -116,7 +116,7 @@ class MediaController extends BaseController{
 				$mediarec = find_media_record($this->pid, get_id_from_gedcom($GEDCOM));
 				//-- check if we just deleted the record and redirect to index
 				if (empty($mediarec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->mediaobject = new Media($mediarec);
@@ -130,7 +130,7 @@ class MediaController extends BaseController{
 				$mediarec = find_media_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($mediarec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->mediaobject = new Media($mediarec);

@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: module.php?mod=batch_update');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod=batch_update');
 	exit;
 }
 

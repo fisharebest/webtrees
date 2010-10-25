@@ -37,5 +37,5 @@ if ($mod) {
 	$module=$all_modules[$mod];
 	$module->modAction(safe_REQUEST($_REQUEST, 'mod_action'));
 } else {
-	header('Location: index.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 }

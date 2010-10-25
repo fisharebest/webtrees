@@ -43,7 +43,7 @@ if (!isset($action)) $action='';
 // following a link after an inactivity logout.
 if (!WT_USER_ID) {
 	if (!empty($ctype) && $ctype=='user') {
-		header('Location: login.php?url=index.php&ctype=user');
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=index.php&ctype=user');
 		exit;
 	} else {
 		$ctype = 'gedcom';

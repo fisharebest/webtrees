@@ -32,7 +32,7 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header("Location: editgedcoms.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
 	exit;
 }
 
@@ -96,7 +96,7 @@ case 'delete':
 		"DELETE FROM `##default_resn` WHERE default_resn_id=?"
 	)->execute(array(safe_POST('default_resn_id')));
 	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: '.WT_SCRIPT_NAME.'#privacy');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'add':
 	if ((safe_POST('xref') || safe_POST('tag_type')) && safe_POST('resn')) {
@@ -105,7 +105,7 @@ case 'add':
 		)->execute(array(WT_GED_ID, safe_POST('xref'), safe_POST('tag_type'), safe_POST('resn')));
 	}
 	// Reload the page, so that the new privacy restrictions are reflected in the header
-	header('Location: '.WT_SCRIPT_NAME.'#privacy');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'update':
 	$_POST["NEW_MEDIA_DIRECTORY"] = preg_replace('/\\\/', '/', $_POST["NEW_MEDIA_DIRECTORY"]);
@@ -359,7 +359,7 @@ case 'update':
 			$news["date"] = client_time();
 			addNews($news);
 		}
-		header("Location: editgedcoms.php");
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
 		exit;
 	}
 }

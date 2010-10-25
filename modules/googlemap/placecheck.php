@@ -43,7 +43,7 @@ $country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              'XYZ'     )
 
 // Must be an admin user to use this module
 if (!WT_USER_GEDCOM_ADMIN) {
-	header("Location: login.php?url=placelist.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=placelist.php');
 	exit;
 }
 print_header(i18n::translate('Place Check').' - '.WT_GEDCOM);

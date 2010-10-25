@@ -36,7 +36,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 // prevent users with editing account disabled from being able to edit their account
 if (!get_user_setting(WT_USER_ID, 'editaccount')) {
-	header('Location: index.php?ctype=user');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
@@ -94,7 +94,7 @@ if ($form_action=='update') {
 			rename_user(WT_USER_ID, $form_username);
 		}
 		// Reload page to pick up changes such as theme and user_id
-		header('Location: edituser.php');
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 		exit;
 	}
 } else {
@@ -232,4 +232,3 @@ echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i1
 echo '</table></form>';
 
 print_footer();
-?>

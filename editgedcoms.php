@@ -27,7 +27,7 @@ require './includes/session.php';
 
 // The gedcom admin page is for gedcom administrators only!
 if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: login.php?url=editgedcoms.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 
@@ -95,8 +95,8 @@ case 'add_ged':
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
 		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
 	}
-	header('Location: editgedcoms.php');exit;
-	break;
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	exit;
 case 'new_ged':
 	$ged_name=basename(safe_POST('ged_name'));
 	$gedcom_id=get_id_from_gedcom($ged_name);
@@ -127,8 +127,8 @@ case 'upload_ged':
 			}
 		}
 	}
-	header('Location: editgedcoms.php');exit;
-	break;
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	exit;
 case 'replace_upload':
 	$gedcom_id=safe_POST('gedcom_id');
 	// Make sure the gedcom still exists
@@ -139,8 +139,8 @@ case 'replace_upload':
 			}
 		}
 	}
-	header('Location: editgedcoms.php');exit;
-	break;
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	exit;
 case 'replace_import':
 	$gedcom_id=safe_POST('gedcom_id');
 	// Make sure the gedcom still exists
@@ -148,8 +148,8 @@ case 'replace_import':
 		$ged_name=basename(safe_POST('ged_name'));
 		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
 	}
-	header('Location: editgedcoms.php');exit;
-	break;
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	exit;
 }
 
 $gedcoms=WT_DB::prepare(

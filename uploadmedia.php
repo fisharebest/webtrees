@@ -48,7 +48,7 @@ function dir_is_writable($dir) {
 }
 
 if (!WT_USER_CAN_EDIT) {
-	header("Location: login.php?url=uploadmedia.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 

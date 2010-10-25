@@ -110,7 +110,7 @@ class FamilyController extends BaseController {
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				if (empty($gedrec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->family = new Family($gedrec);
@@ -125,7 +125,7 @@ class FamilyController extends BaseController {
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->family = new Family($gedrec);

@@ -50,7 +50,7 @@ $_SESSION['exportConvPath'] = $conv_path; // remember this for the next Download
 $_SESSION['exportConvSlashes'] = $conv_slashes;
 
 if (!WT_USER_GEDCOM_ADMIN || !$ged) {
-	header('Location: editgedcoms.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
 	exit;
 }
 
@@ -94,7 +94,7 @@ if ($action == "download" && $zip == "yes") {
 	else {
 		unlink(filename_decode($gedname));
 		if ($removeTempDir) rmdir(filename_decode($temppath));
-		header("Location: ".encode_url("downloadbackup.php?fname={$zipname}", false));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url("downloadbackup.php?fname={$zipname}", false));
 		exit;
 	}
 	exit;

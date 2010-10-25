@@ -52,7 +52,7 @@ if (empty($url)) {
 	// If we came here by means of a URL like http://mysite.com/foo/login.php
 	// we don't have a proper login URL, and session cookies haven't been set yet
 	// We'll re-load the page to properly determine cookie support
-	header("Location: login.php?url=index.php&ctype=user");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=index.php&ctype=user');
 }
 
 $message='';
@@ -110,7 +110,7 @@ if ($action=='login') {
 		$url .= "&ged=".$ged;
 		$url = str_replace(array("&&", ".php&", ".php?&"), array("&", ".php?", ".php?"), $url);
 
-		header("Location: ".encode_url($url, false));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($url, false));
 		exit;
 	} else {
 		$message = i18n::translate('Unable to authenticate user.');

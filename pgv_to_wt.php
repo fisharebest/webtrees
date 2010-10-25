@@ -29,13 +29,13 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if (WT_GED_ID || get_user_count()>1) {
-	header('Location: index.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
 // Must be logged in as an admin
 if (!WT_USER_IS_ADMIN) {
-	header('Location: login.php?url='.WT_SCRIPT_NAME);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 

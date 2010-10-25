@@ -37,7 +37,7 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 if (!WT_USER_IS_ADMIN) {
 	$LOGIN_URL=get_site_setting('LOGIN_URL');
 	$loginURL = "$LOGIN_URL?url=".urlencode(WT_SCRIPT_NAME."?".$QUERY_STRING);
-	header("Location: $loginURL");
+	header('Location: '.$loginURL);
 	exit;
 }
 
@@ -106,7 +106,7 @@ if ($action=='deleteuser') {
 		AddToLog("deleted user ->{$username}<-", 'auth');
 	}
 	// User data is cached, so reload the page to ensure we're up to date
-	header("Location: useradmin.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	exit;
 }
 
@@ -200,7 +200,7 @@ if ($action=='createuser' || $action=='edituser2') {
 				addMessage($message); */
 			}
 			// Reload the form cleanly, to allow the user to verify their changes
-			header("Location: ".encode_url("useradmin.php?action=edituser&username={$username}&ged={$ged}", false));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url("useradmin.php?action=edituser&username={$username}&ged={$ged}", false));
 			exit;
 		}
 	}

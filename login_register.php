@@ -156,7 +156,7 @@ switch ($action) {
 	case "register" :
 		$_SESSION["good_to_send"] = true;
 		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 		$message = "";
@@ -303,7 +303,7 @@ switch ($action) {
 
 	case "registernew" :
 		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 		if ((stripos($user_name, "SUNTZU")!==false) || (stripos($user_email, "SUNTZU")!==false)) {
@@ -430,14 +430,14 @@ switch ($action) {
 			}
 			print "</div>";
 		} else {
-			header("Location: login.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
 			exit;
 		}
 		break;
 
 	case "userverify" :
 		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 
@@ -468,7 +468,7 @@ switch ($action) {
 
 	case "verify_hash" :
 		if (!get_site_setting('USE_REGISTRATION_MODULE')) {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 		$QUERY_STRING = "";
@@ -547,7 +547,7 @@ switch ($action) {
 		break;
 
 	default :
-		header("Location: ".encode_url($url));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($url));
 		break;
 }
 

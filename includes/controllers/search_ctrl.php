@@ -357,7 +357,7 @@ class SearchController extends BaseController {
 		if (isset ($this->query)) {
 			$record=GedcomRecord::getInstance($this->query);
 			if ($record && $record->canDisplayDetails()) {
-				header("Location: ".encode_url($record->getLinkUrl(), false));
+				header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($record->getLinkUrl(), false));
 				exit;
 			}
 		}
@@ -429,28 +429,28 @@ class SearchController extends BaseController {
 			if (count($this->myindilist)==1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
 				$indi=$this->myindilist[0];
 				if (!count_linked_indi($indi->getXref(), 'ASSO', $indi->getGedId()) && !count_linked_fam($indi->getXref(), 'ASSO', $indi->getGedId()) && $indi->canDisplayName()) {
-					header("Location: ".encode_url($indi->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($indi->getLinkUrl(), false));
 					exit;
 				}
 			}
 			if (!$this->myindilist && count($this->myfamlist)==1 && !$this->mysourcelist && !$this->mynotelist) {
 				$fam=$this->myfamlist[0];
 				if ($fam->canDisplayName()) {
-					header("Location: ".encode_url($fam->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($fam->getLinkUrl(), false));
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist)==1 && !$this->mynotelist) {
 				$sour=$this->mysourcelist[0];
 				if ($sour->canDisplayName()) {
-					header("Location: ".encode_url($sour->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($sour->getLinkUrl(), false));
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist)==1) {
 				$note=$this->mynotelist[0];
 				if ($note->canDisplayName()) {
-					header("Location: ".encode_url($note->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($note->getLinkUrl(), false));
 					exit;
 				}
 			}
@@ -636,7 +636,7 @@ class SearchController extends BaseController {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist)==1 && $this->action!="replace") {
 			$indi=$this->myindilist[0];
-			header("Location: ".encode_url($indi->getLinkUrl(), false));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($indi->getLinkUrl(), false));
 			exit;
 		}
 		usort($this->myindilist, array('GedcomRecord', 'Compare'));

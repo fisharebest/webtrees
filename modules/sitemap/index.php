@@ -38,10 +38,10 @@ if (!defined('WT_WEBTREES')) {
 //-- otherwise have them login again
 if (!WT_USER_IS_ADMIN) {
 	if (WT_USER_ID) {
-		header("Location: index.php");
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 		exit;
 	} else {
-		header("Location: login.php?url=module.php?mod=sitemap");
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=module.php?mod=sitemap');
 		exit;
 	}
 }

@@ -42,7 +42,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 // If we don't have permission to administer any gedcoms, redirect to
 // this page, which will force a login and provide a list.
 if (empty($gedcoms)) {
-	header('Location: editgedcoms.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
 }
 
 // Which gedcom have we requested to export

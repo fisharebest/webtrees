@@ -242,7 +242,7 @@ $thumbdir_fw = get_media_firewall_path($thumbdir);
 
 //-- only allow users with Admin privileges to access script.
 if (!WT_USER_IS_ADMIN || !$ALLOW_EDIT_GEDCOM) {
-	header("Location: login.php?url=media.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 

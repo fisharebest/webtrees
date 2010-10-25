@@ -91,7 +91,7 @@ class SourceController extends BaseController {
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_source_record($this->sid, WT_GED_ID);
 				if (empty($gedrec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->source = new Source($gedrec);
@@ -105,7 +105,7 @@ class SourceController extends BaseController {
 				$gedrec = find_source_record($this->sid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->source = new Source($gedrec);

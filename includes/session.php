@@ -196,12 +196,12 @@ if (file_exists(WT_ROOT.'data/config.ini.php')) {
 	$dbconfig=parse_ini_file(WT_ROOT.'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
-		header('Location: site-unavailable.php');
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-unavailable.php');
 		exit;
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: setup.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'setup.php');
 	exit;
 }
 
@@ -221,7 +221,7 @@ try {
 		die($ex);
 	}
 } catch (PDOException $ex) {
-	header('Location: site-unavailable.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-unavailable.php');
 	exit;
 }
 
@@ -395,7 +395,7 @@ define('WT_USER_PATH_LENGTH',  get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'R
 // If we are logged in, and logout=1 has been added to the URL, log out
 if (WT_USER_ID && safe_GET_bool('logout')) {
 	userLogout(WT_USER_ID);
-	header("Location: ".WT_SERVER_NAME.WT_SCRIPT_PATH);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
 }
 
@@ -413,7 +413,7 @@ if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {
 	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'logs.php', 'login.php', 'siteconfig.php', 'admin.php', 'addmedia.php', 'client.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'pgv_to_wt.php'))) {
-		header('Location: editgedcoms.php');
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
 		exit;
 	}
 

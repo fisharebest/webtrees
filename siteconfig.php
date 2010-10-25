@@ -30,7 +30,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 // Only admin users can access this page
 if (!WT_USER_IS_ADMIN) {
-	header('Location: login.php?url=siteconfig.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 
@@ -62,7 +62,7 @@ case 'update':
 	set_site_setting('SMTP_SIMPLE_MAIL',                safe_POST('smtp_simple_mail'));
 
 	// We've saved the updated values - now return to the admin page
-	header('Location: admin.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
 	exit;
 }
 

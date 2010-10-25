@@ -34,10 +34,10 @@ require './includes/session.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
 	if (WT_USER_ID) {
-		header("Location: index.php");
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 		exit;
 	} else {
-		header("Location: login.php?url=admin.php");
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 		exit;
 	}
 }

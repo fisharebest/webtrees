@@ -31,8 +31,8 @@ define('WT_SCRIPT_NAME', 'wtinfo.php');
 require './includes/session.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header("Location: login.php?url=wtinfo.php?action=".$action);
-exit;
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+	exit;
 }
 
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];

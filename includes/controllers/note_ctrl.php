@@ -91,7 +91,7 @@ class NoteController extends BaseController {
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_other_record($this->nid, WT_GED_ID);
 				if (empty($gedrec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->note = new Note($gedrec);
@@ -105,7 +105,7 @@ class NoteController extends BaseController {
 				$gedrec = find_other_record($this->nid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
-					header("Location: index.php?ctype=gedcom");
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
 				$this->note = new Note($gedrec);
