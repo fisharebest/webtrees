@@ -131,18 +131,11 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	function run() {
-		global $download;
-
 		$this->pdf->Body();
-		header("Expires:");
-		header("Pragma:");
-		header("Cache-control:");
-		if ($download == "") {
-			$this->pdf->Output();
-		} else {
-			$this->pdf->Output("pgv_report_".basename($_REQUEST["report"], ".xml").".pdf", "D");
-		}
-		return;
+		header('Expires:');
+		header('Pragma:');
+		header('Cache-control:');
+		$this->pdf->Output('webtrees_'.basename(dirname($_REQUEST['report'])).'.pdf', 'I');
 	}
 
 	/**

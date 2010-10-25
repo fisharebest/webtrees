@@ -206,7 +206,6 @@ elseif ($action=="setup") {
 		echo "<form name=\"setupreport\" method=\"get\" target=\"_blank\" action=\"reportengine.php\">\n";
 		echo "<input type=\"hidden\" name=\"action\" value=\"run\" />\n";
 		echo "<input type=\"hidden\" name=\"report\" value=\"", $report, "\" />\n";
-		echo "<input type=\"hidden\" name=\"download\" value=\"\" />\n";
 
 		echo "<table class=\"facts_table width50 center ", $TEXT_DIRECTION, " \">";
 		echo "<tr><td class=\"topbottombar\" colspan=\"2\">", i18n::translate('Enter report values'), "</td></tr>";
@@ -339,8 +338,8 @@ elseif ($action=="setup") {
 		</td></tr>
 		<?php
 		echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
-		echo " <input type=\"submit\" value=\"", i18n::translate('Download report'), "\" onclick=\"document.setupreport.elements['download'].value='1';\"/>";
-		echo " <input type=\"submit\" value=\"", i18n::translate('Cancel'), "\" onclick=\"document.setupreport.elements['action'].value='setup';document.setupreport.target='';\"/>";
+		echo " <input type=\"submit\" value=\"", i18n::translate('Download report'), "\" ;\"/>";
+		echo " <input type=\"submit\" value=\"", i18n::translate('Cancel'), "\" onclick=\"document.setupreport.elements['action'].value='setup'; \"/>";
 		echo "</td></tr></table></form><br /><br />\n";
 		echo WT_JS_START, "document.title = \"", $doctitle, "\"", WT_JS_END;
 	}
