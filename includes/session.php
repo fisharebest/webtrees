@@ -273,7 +273,7 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
 	'media.php', 'medialist.php', 'note.php', 'notelist.php', 'repo.php', 'repolist.php',
 	'search_engine.php', 'site-unavailable.php', 'source.php', 'sourcelist.php'
 ))) {
-	header("Location: search_engine.php");
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'search_engine.php');
 	exit;
 }
 
