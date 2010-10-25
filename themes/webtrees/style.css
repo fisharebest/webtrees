@@ -1742,6 +1742,6 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	float: left;
 }
 
-#place {
+.place {
 	padding-top: 5px;
 }
