@@ -60,9 +60,11 @@ a:hover	{
 	color: red;
 	text-decoration: none;
 }
+
 :focus {
   -moz-outline-style: none;
 }
+
 th {
 	font-weight: 100;
 }
@@ -904,6 +906,14 @@ input, button, textarea {
 input, textarea {
 	padding-left: 3px;
 	padding-right: 3px;
+}
+
+input.image {
+	width: 17px;
+	height: 17px;
+	border: none;
+	padding: 0;
+	vertical-align: top;
 }
 
 select {
