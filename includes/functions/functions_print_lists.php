@@ -72,7 +72,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		$legend=translate_fact(substr($option, 0, 4))." @ ".$legend;
 	}
 	if ($legend == "") $legend = i18n::translate('Individuals');
-	$legend = "<img src=\"".$WT_IMAGES["indis"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	if (isset($WT_IMAGES["indis"])) $legend = "<img src=\"".$WT_IMAGES["indis"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
