@@ -367,10 +367,7 @@ if ($action=="edituser") {
 		$varname = 'RELATIONSHIP_PATH_LENGTH'.$ged_id;
 		echo
 			'<tr><td>', $ged_name, '</td><td>',
-			'<select name="', $varname, '" id="', $varname, '"',
-			// Commented out, until we can get this dynamically updated when the INDI-ID field is edited
-			//get_user_gedcom_setting($user_id, $ged_id, 'gedcomid') ? '' : ' disabled="disabled"',
-			'>';
+			'<select name="', $varname, '" id="', $varname, '" class=\"relpath\">';
 		for ($n=0; $n<=10; ++$n) {
 			echo
 				'<option value="', $n, '"',
@@ -700,6 +697,18 @@ if ($action == "createform") {
 		function paste_id(value) {
 			pastefield.value=value;
 		}
+		jQuery(document).ready(function() {
+		    jQuery('.relpath').change(function() {
+			    var fieldIDx = jQuery(this).attr('id');
+				var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
+				var newIDx = "gedcomid"+idNum;
+				if(jQuery('#'+newIDx).val()=='') {
+				    alert("<?php echo i18n::translate('You must enter a GEDCOM INDI record ID before you can set the maximum relationship path length'); ?>");
+					jQuery(this).val('');
+				}
+			});
+		});
+		
 	//-->
 	</script>
 
@@ -784,7 +793,7 @@ if ($action == "createform") {
 	foreach ($all_gedcoms as $ged_id=>$ged_name) {
 		$varname = 'RELATIONSHIP_PATH_LENGTH'.$ged_id;
 		echo "<tr><td>$ged_name</td><td>";
-		echo "<select name=\"{$varname}\" id=\"{$varname}\">";
+		echo "<select name=\"{$varname}\" id=\"{$varname}\" class=\"relpath\">";
 		for ($n=0; $n<=10; ++$n) {
 			echo
 				'<option value="', $n, '">',
