@@ -95,6 +95,10 @@ img.block, #calendar_img, #biglink img, #mycart img  {
 	height: 15px;
 }
 
+.optionbox a img, #imgnew_comment_exp {
+	vertical-align: top;
+}
+
 .button {
 	width: 60px;
 }
