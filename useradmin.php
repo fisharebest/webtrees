@@ -48,11 +48,11 @@ foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
 }
 $ALL_EDIT_OPTIONS=array(
-	'none'=>i18n::translate('None'),
-	'access'=>i18n::translate('Access'),
-	'edit'=>i18n::translate('Edit'),
-	'accept'=>i18n::translate('Accept'),
-	'admin'=>i18n::translate('Admin GEDCOM')
+	'none'=>i18n::translate_c('User access level', 'None'),
+	'access'=>i18n::translate_c('User access level', 'Access'),
+	'edit'=>i18n::translate_c('User access level', 'Edit'),
+	'accept'=>i18n::translate_c('User access level', 'Accept'),
+	'admin'=>i18n::translate_c('User access level', 'Admin GEDCOM')
 );
 
 // Extract form actions (GET overrides POST if both set)
