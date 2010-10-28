@@ -998,6 +998,7 @@ h4 {
 
 .descriptionbox .icon {
 	width: 15px;
+	vertical-align:middle;
 }
 
 /* Style for the optionbox */
