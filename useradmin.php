@@ -168,13 +168,14 @@ if ($action=='createuser' || $action=='edituser2') {
 				set_user_gedcom_setting($user_id, $ged_id, 'gedcomid', safe_POST_xref('gedcomid'.$ged_id));
 				set_user_gedcom_setting($user_id, $ged_id, 'rootid',   safe_POST_xref('rootid'.$ged_id));
 				set_user_gedcom_setting($user_id, $ged_id, 'canedit',  safe_POST('canedit'.$ged_id, array_keys($ALL_EDIT_OPTIONS)));
-				//if (safe_POST_xref('gedcomid'.$ged_id)) {
+				if (safe_POST_xref('gedcomid'.$ged_id)) {
 					set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$ged_id, 0, 10, 0));
-				//} else {
+				} else {
 					// Do not allow a path length to be set if the individual ID is not
-				//	set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', null);
-				//}
+					set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', null);
+				}
 			}
+
 			// If we're verifying a new user, send them a message to let them know
 			if ($newly_verified && $action=='edituser2') {
 				i18n::init($user_language);
