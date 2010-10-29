@@ -204,10 +204,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				else $content .= i18n::translate('Play')."/".i18n::translate('Stop');
 				$content .= "</a>";
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
-				$content .= '
-					</div>
-					<script language="JavaScript" type="text/javascript">
-					<!--
+				$content .= '</div>'.WT_JS_START.'
 					var play = false;
 						function togglePlay() {
 							if (play) {
@@ -229,22 +226,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 							}
 						}
 						function reload_image() {
-							jQuery(\'#block_'.$block_id.'\').load(\'index.php?action=ajax&block_id='.$block_id.'&start=1\');
+							jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1\');
 						}
-
-					//-->
-					</script>';
+					'.WT_JS_END;
 			}
 			if ($start) {
-				$content .= '
-					<script language="JavaScript" type="text/javascript">
-					<!--
-						play = true;
-						imgid = document.getElementById("play_stop");
-						imgid.src = \''.$WT_IMAGES["stop"].'\';
-						window.setTimeout("playSlideShow()", 6000);
-					//-->
-					</script>';
+				$content .= WT_JS_START.'togglePlay();'.WT_JS_END;
 			}
 			$content .= "<div class=\"center\" id=\"random_picture_content$block_id\">";
 			$imgsize = findImageSize($medialist[$value]["FILE"]);
