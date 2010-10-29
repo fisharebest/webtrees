@@ -606,7 +606,7 @@ function print_user_links() {
 }
 
 // Generate a login link
-function login_link() {
+function login_link($extra='') {
 	global $QUERY_STRING;
 
 	if (WT_SCRIPT_NAME=='login.php') {
@@ -617,12 +617,12 @@ function login_link() {
 			$href.= rawurlencode('?'.$QUERY_STRING);
 		}
 	}
-	return '<a href="' . $href . '">' . i18n::translate('Login') . '</a>';
+	return '<a href="' . $href . '" ' . $extra . '>' . i18n::translate('Login') . '</a>';
 }
 
 // Generate a logout link
-function logout_link() {
-	return '<a href="index.php?logout=1">' . i18n::translate('Logout') . '</a>';
+function logout_link($extra='') {
+	return '<a href="index.php?logout=1" ' . $extra . '>' . i18n::translate('Logout') . '</a>';
 }
 
 // Print a link to allow email/messaging contact with a user
