@@ -97,7 +97,7 @@ img {
 }
 
 /* Various text styles */
-.warning .error .largeError {
+.warning, .error, .largeError {
 	color: red;
 	font-weight: bold;
 }
