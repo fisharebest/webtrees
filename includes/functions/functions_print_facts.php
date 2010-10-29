@@ -905,124 +905,83 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
  *
  *  This function prints the input array of SOUR sub-records built by the
  *  getSourceStructure() function.
- *
- *  The input array is defined as follows:
- * $textSOUR["PAGE"] = +1  Source citation
- * $textSOUR["EVEN"] = +1  Event type
- * $textSOUR["ROLE"] = +2  Role in event
- * $textSOUR["DATA"] = +1  place holder (no text in this sub-record)
- * $textSOUR["DATE"] = +2  Entry recording date
- * $textSOUR["TEXT"] = +2  (array) Text from source
- * $textSOUR["QUAY"] = +1  Certainty assessment
- * $textSOUR["TEXT2"] = +1 (array) Text from source
  */
 function printSourceStructure($textSOUR) {
-	global $GEDCOM;
+	$html='';
 
-	$ged_id=get_id_from_gedcom($GEDCOM);
-	$data='';
-	$note_data='';
-	if ($textSOUR["PAGE"]!="") {
-		$data.="<br /><span class=\"label\">".translate_fact('PAGE').":&nbsp;&nbsp;</span><span class=\"field\">".PrintReady(expand_urls($textSOUR["PAGE"]))."</span>";
+	if ($textSOUR['PAGE']) {
+		$html.='<div class="indent"><span class="label">'.translate_fact('PAGE').':</span> <span class="field">'.PrintReady(expand_urls($textSOUR['PAGE'])).'</span></div>';
 	}
 
-	if ($textSOUR["EVEN"]!="") {
-		$data.="<br /><span class=\"label\">".translate_fact('EVEN').":&nbsp;</span><span class=\"field\">".PrintReady($textSOUR["EVEN"])."</span>";
-		if ($textSOUR["ROLE"]!="") {
-			$data.="<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"label\">".translate_fact('ROLE').":&nbsp;</span><span class=\"field\">".PrintReady($textSOUR["ROLE"])."</span>";
+	if ($textSOUR['EVEN']) {
+		$html.='<div class="indent"><span class="label">'.translate_fact('EVEN').': </span><span class="field">'.PrintReady($textSOUR['EVEN']).'</span></div>';
+		if ($textSOUR['ROLE']) {
+			$html.='<div class="indent"><span class="label">'.translate_fact('ROLE').': </span><span class="field">'.PrintReady($textSOUR['ROLE']).'</span></div>';
 		}
 	}
 
-	if (count($textSOUR["NOTE"])!=0) {
-		foreach($textSOUR["NOTE"] as $note) {
-			$noterec = find_gedcom_record(str_replace("@", "", $note), $ged_id);
-			if (!empty($noterec)) {
-				$nt = preg_match("/0 ".$note." NOTE(.*)/", $noterec, $n1match);
-				if ($nt==1) {
-					$note_data.="&nbsp;&nbsp;<span class=\"field\">".print_note_record($n1match[1], 1, $noterec,  true, true)."</span>";
-				}
-			} else {
-				$note_data.="&nbsp;&nbsp;".$note;
-			}
+	if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
+		if ($textSOUR['DATE']) {
+			$date=new GedcomDate($textSOUR['DATE']);
+			$html.='<div class="indent"><span class="label">'.translate_fact('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
-	}
-	if ($textSOUR["DATE"]!="" || count($textSOUR["TEXT"])!=0) {
-		if ($textSOUR["DATE"]!="") {
-			$date=new GedcomDate($textSOUR["DATE"]);
-			$data.="<br />&nbsp;&nbsp;<span class=\"label\">".translate_fact('DATA:DATE').":&nbsp;</span><span class=\"field\">".$date->Display(false)."</span>";
-		}
-		foreach($textSOUR["TEXT"] as $text) {
-			$data.="<br />&nbsp;&nbsp;<span class=\"label\">".translate_fact('TEXT').":&nbsp;</span><span class=\"field\">".PrintReady(expand_urls($text))."</span>";
-			if (!empty($text) && !empty($note_data)) $data.="<br />";
-			$data.=$note_data;
+		foreach($textSOUR['TEXT'] as $text) {
+			$html.='<div class="indent"><span class="label">'.translate_fact('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
 		}
 	}
 
-	if ($textSOUR["QUAY"]!="") {
-		$data.="<br /><span class=\"label\">".translate_fact('QUAY').":&nbsp;</span><span class=\"field\">".PrintReady($textSOUR["QUAY"])."</span>";
+	if ($textSOUR['QUAY']!='') {
+		$html.='<div class="indent"><span class="label">'.translate_fact('QUAY').':</span> <span class="field">'.PrintReady($textSOUR['QUAY']).'</span></div>';
 	}
 
-	foreach($textSOUR["TEXT2"] as $text) {
-		$data.="<br /><span class=\"label\">".translate_fact('TEXT').":&nbsp;</span><span class=\"field\">".PrintReady(expand_urls($text))."</span>";
-	}
-	return $data;
+	return $html;
 }
 
 /**
  * Extract SOUR structure from the incoming Source sub-record
  *
  * The output array is defined as follows:
- *  $textSOUR["PAGE"] = +1  Source citation
- *  $textSOUR["EVEN"] = +1  Event type
- *  $textSOUR["ROLE"] = +2  Role in event
- *  $textSOUR["DATA"] = +1  place holder (no text in this sub-record)
- *  $textSOUR["DATE"] = +2  Entry recording date
- *  $textSOUR["TEXT"] = +2  (array) Text from source
- *  $textSOUR["NOTE"] = +1  Note
- *  $textSOUR["QUAY"] = +1  Certainty assessment
- *  $textSOUR["TEXT2"] = +1 (array) Text from source
+ *  $textSOUR['PAGE'] = Source citation
+ *  $textSOUR['EVEN'] = Event type
+ *  $textSOUR['ROLE'] = Role in event
+ *  $textSOUR['DATA'] = place holder (no text in this sub-record)
+ *  $textSOUR['DATE'] = Entry recording date
+ *  $textSOUR['TEXT'] = (array) Text from source
+ *  $textSOUR['QUAY'] = Certainty assessment
  */
 function getSourceStructure($srec) {
-	global $WORD_WRAPPED_NOTES;
-
 	// Set up the output array
-	$textSOUR = array();
-	$textSOUR["PAGE"] = "";
-	$textSOUR["EVEN"] = "";
-	$textSOUR["ROLE"] = "";
-	$textSOUR["DATA"] = "";
-	$textSOUR["DATE"] = "";
-	$textSOUR["TEXT"] = array();
-	$textSOUR["NOTE"] = array();
-	$textSOUR["QUAY"] = "";
-	$textSOUR["TEXT2"] = array();
+	$textSOUR=array(
+		'PAGE'=>'',
+		'EVEN'=>'',
+		'ROLE'=>'',
+		'DATA'=>'',
+		'DATE'=>'',
+		'TEXT'=>array(),
+		'QUAY'=>'',
+	);
 
-	if ($srec=="") return $textSOUR;
-
-	$subrecords = explode("\n", $srec);
-	$levelSOUR = substr($subrecords[0], 0, 1);
-	for ($i=0; $i<count($subrecords); $i++) {
-		$subrecords[$i] = trim($subrecords[$i]);
-		$level = substr($subrecords[$i], 0, 1);
-		$tag = substr($subrecords[$i], 2, 4);
-		$text = substr($subrecords[$i], 7);
-		$i++;
-		for (; $i<count($subrecords); $i++) {
-			$nextTag = substr($subrecords[$i], 2, 4);
-			if ($nextTag!="CONT") {
-				$i--;
-				break;
+	if ($srec) {
+		$subrecords=explode("\n", $srec);
+		for ($i=0; $i<count($subrecords); $i++) {
+			$level=substr($subrecords[$i], 0, 1);
+			$tag  =substr($subrecords[$i], 2, 4);
+			$text =substr($subrecords[$i], 7);
+			$i++;
+			for (; $i<count($subrecords); $i++) {
+				$nextTag = substr($subrecords[$i], 2, 4);
+				if ($nextTag!='CONT') {
+					$i--;
+					break;
+				}
+				if ($nextTag=='CONT') $text .= '<br />';
+				$text .= rtrim(substr($subrecords[$i], 7));
 			}
-			if ($nextTag=="CONT") $text .= "<br />";
-			$text .= rtrim(substr($subrecords[$i], 7));
-		}
-		if ($tag=="TEXT") {
-			if ($level==($levelSOUR+1)) $textSOUR["TEXT2"][] = $text;
-			else $textSOUR["TEXT"][] = $text;
-		} else if ($tag=="NOTE") {
-			$textSOUR["NOTE"][] = $text;
-		} else {
-			$textSOUR[$tag] = $text;
+			if ($tag=='TEXT') {
+				$textSOUR[$tag][] = $text;
+			} else {
+				$textSOUR[$tag] = $text;
+			}
 		}
 	}
 
