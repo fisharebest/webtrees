@@ -597,17 +597,32 @@ function print_user_links() {
 		if (WT_USER_GEDCOM_ADMIN) {
 			echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
 		}
-		echo '<a href="index.php?logout=1" class="link">', i18n::translate('Logout'), '</a>';
+		echo logout_link();
 	} else {
 		if (empty($SEARCH_SPIDER)) {
-			if (WT_SCRIPT_NAME=='login.php') {
-				echo '<a href="#" class="link">', i18n::translate('Login'), '</a>';
-			} else {
-				$LOGIN_URL=get_site_setting('LOGIN_URL', 'login.php');
-				echo '<a href="', $LOGIN_URL, '?url=', rawurlencode(WT_SCRIPT_NAME.'?'.$QUERY_STRING), '" class="link">', i18n::translate('Login'), '</a>';
-			}
+			echo login_link();
 		}
 	}
+}
+
+// Generate a login link
+function login_link() {
+	global $QUERY_STRING;
+
+	if (WT_SCRIPT_NAME=='login.php') {
+		$href='#';
+	} else {
+		$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.WT_SCRIPT_NAME;
+		if ($QUERY_STRING) {
+			$href.= rawurlencode('?'.$QUERY_STRING);
+		}
+	}
+	return '<a href="' . $href . '" class="link">' . i18n::translate('Login') . '</a>';
+}
+
+// Generate a logout link
+function logout_link() {
+	return '<a href="index.php?logout=1" class="link">' . i18n::translate('Logout') . '</a>';
 }
 
 // Print a link to allow email/messaging contact with a user
