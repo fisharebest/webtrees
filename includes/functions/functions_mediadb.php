@@ -232,12 +232,12 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 			$media["CHANGE"] = "";
 			// Extract Format and Type from GEDCOM record
 			if (preg_match('/\n\d FORM (.+)/', $row->m_gedrec, $match)) {
-				$media['FORM']=$match[1];
+				$media['FORM']=strtolower($match[1]);
 			} else {
 				$media['FORM']='';
 			}
-			if (preg_match('/\n\d TYPE (.+)/', $row->m_gedrec, $match)) {
-				$media['TYPE']=$match[1];
+			if (preg_match('/\n\d _?TYPE (.+)/', $row->m_gedrec, $match)) {
+				$media['TYPE']=strtolower($match[1]);
 			} else {
 				$media['TYPE']='';
 			}

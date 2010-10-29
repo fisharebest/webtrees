@@ -61,6 +61,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			'avi'        =>get_block_setting($block_id, 'filter_avi', false),
 			'bmp'        =>get_block_setting($block_id, 'filter_bmp', true),
 			'gif'        =>get_block_setting($block_id, 'filter_gif', true),
+			'jpg'        =>get_block_setting($block_id, 'filter_jpeg', true),
 			'jpeg'       =>get_block_setting($block_id, 'filter_jpeg', true),
 			'mp3'        =>get_block_setting($block_id, 'filter_mp3', false),
 			'ole'        =>get_block_setting($block_id, 'filter_ole', true),
