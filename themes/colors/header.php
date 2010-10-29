@@ -120,7 +120,7 @@ if ($view!='simple') {
 		if (WT_USER_ID) {
 			echo
 				'<li><a href="edituser.php" class="icon_color">', getUserFullName(WT_USER_ID), '</a></li>',
-				' | <li class="icon_color">', logout_link(), '</li>';
+				' | <li>', logout_link(), '</li>';
 			if (WT_USER_GEDCOM_ADMIN) {
 				echo ' | <li><a href="admin.php" class="icon_color">', i18n::translate('Administration'), '</a></li>';
 			}
@@ -128,7 +128,7 @@ if ($view!='simple') {
 				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending Changes'), '</a></li>';
 			}
 		} else {
-			echo '<li class="icon_color">', login_link(), '</li>';
+			echo '<li>', login_link(), '</li>';
 		}
 		echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
 		$language_menu=MenuBar::getLanguageMenu();
