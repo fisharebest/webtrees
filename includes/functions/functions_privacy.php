@@ -249,14 +249,14 @@ function canDisplayRecord($ged_id, $gedrec) {
 	}
 
 	// Does this record have a RESN?
-	if (strpos($gedrec, "\n1 RESN none")) {
-		return $cache[$cache_key]=true;
+	if (strpos($gedrec, "\n1 RESN confidential")) {
+		return $cache[$cache_key]=(WT_PRIV_NONE>=$pgv_USER_ACCESS_LEVEL);
 	}
 	if (strpos($gedrec, "\n1 RESN privacy")) {
 		return $cache[$cache_key]=(WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL);
 	}
-	if (strpos($gedrec, "\n1 RESN confidential")) {
-		return $cache[$cache_key]=(WT_PRIV_NONE>=$pgv_USER_ACCESS_LEVEL);
+	if (strpos($gedrec, "\n1 RESN none")) {
+		return $cache[$cache_key]=true;
 	}
 
 	// Does this record have a default RESN?
