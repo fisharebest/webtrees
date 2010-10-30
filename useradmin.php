@@ -373,7 +373,7 @@ if ($action=="edituser") {
 				<td colspan="2">
 					<table class="width100">
 						<tr>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM Name'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM name'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM INDI record ID'), help_link('useradmin_gedcomid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></th>
@@ -825,7 +825,7 @@ if ($action == "createform") {
 				<td colspan="2">
 					<table class="width100">
 						<tr>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM Name'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM name'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM INDI record ID'), help_link('useradmin_gedcomid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></th>
