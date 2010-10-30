@@ -779,18 +779,18 @@ if (check_media_structure()) {
 	?>
 
 	<!-- // NOTE: Row 1 left: Sort sequence -->
-	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Sequence'), help_link('sortby'); ?></td>
+	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo i18n::translate('Sequence'), help_link('sortby'); ?></td>
 	<td class="optionbox wrap"><select name="sortby">
-		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\"";?>><?php echo translate_fact('TITL');?></option>
-		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\"";?>><?php echo translate_fact('FILE');?></option>
+		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo translate_fact('TITL'); ?></option>
+		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo translate_fact('FILE'); ?></option>
 	</select></td>
 
 	<!-- // NOTE: Row 1 right, Upload media files -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Upload media files'), help_link('upload_media'); ?></td>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo i18n::translate('Upload media files'), help_link('upload_media'); ?></td>
 	<td class="optionbox wrap"><?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".i18n::translate('Upload media files')."</a>"; ?></td></tr>
 
 	<!-- // NOTE: Row 2 left: Filter options -->
-	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Filter'), help_link('simple_filter'); ?></td>
+	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo i18n::translate('Filter'), help_link('simple_filter'); ?></td>
 	<td class="optionbox wrap">
 		<?php
 			// Directory pick list
@@ -810,15 +810,15 @@ if (check_media_structure()) {
 			} else echo "<input name=\"directory\" type=\"hidden\" value=\"ALL\" />";
 		// Text field for filter
 		?>
-		<input type="text" name="filter" value="<?php if($filter) echo $filter;?>" /><br /><input type="submit" name="search" value="<?php echo i18n::translate('Filter');?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php echo i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
+		<input type="text" name="filter" value="<?php if($filter) echo $filter; ?>" /><br /><input type="submit" name="search" value="<?php echo i18n::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php echo i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
 
 	<!-- // NOTE: Row 2 right: Add media -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
 	<td class="optionbox wrap"><a href="javascript: <?php echo i18n::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo i18n::translate('Add a new media item'); ?></a></td></tr>
 
 	<!-- // NOTE: Row 3 left: Show thumbnails -->
 	<tr>
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
 		<?php echo i18n::translate('Show thumbnails'), help_link('show_thumb'); ?>
 	</td>
 	<td class="optionbox wrap width25">
@@ -832,8 +832,8 @@ if (check_media_structure()) {
 		if (!empty($subclick)) $tempURL .= "subclick={$subclick}&amp;";
 		$tempURL .= "action=thumbnail&amp;sortby={$sortby}&amp;all=yes&amp;level={$level}&amp;directory=".rawurlencode($directory).$thumbget;
 		?>
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign;?>><?php echo i18n::translate('Missing thumbnails'), help_link('gen_missing_thumbs'); ?></td>
-	<td class="optionbox wrap"><a href="<?php echo $tempURL; ?>"><?php echo i18n::translate('Create missing thumbnails');?></a></td></tr>
+	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo i18n::translate('Missing thumbnails'), help_link('gen_missing_thumbs'); ?></td>
+	<td class="optionbox wrap"><a href="<?php echo $tempURL; ?>"><?php echo i18n::translate('Create missing thumbnails'); ?></a></td></tr>
 	</table>
 </form>
 <script type="text/javascript">

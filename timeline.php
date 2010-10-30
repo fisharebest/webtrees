@@ -146,10 +146,10 @@ function MM(e) {
 			}
 			yearform = document.getElementById('yearform'+personnum);
 			ageform = document.getElementById('ageform'+personnum);
-			yearform.innerHTML = year+"      "+month+" <?php echo utf8_substr(i18n::translate('Month:'), 0, 1);?>   "+day+" <?php echo utf8_substr(i18n::translate('Day:'), 0, 1);?>";
+			yearform.innerHTML = year+"      "+month+" <?php echo utf8_substr(i18n::translate('Month:'), 0, 1); ?>   "+day+" <?php echo utf8_substr(i18n::translate('Day:'), 0, 1); ?>";
 			if (ba*yage>1 || ba*yage<-1 || ba*yage==0)
-				ageform.innerHTML = (ba*yage)+" <?php echo utf8_substr(i18n::translate('years'), 0, 1);?>   "+(ba*mage)+" <?php echo utf8_substr(i18n::translate('Month:'), 0, 1);?>   "+(ba*dage)+" <?php echo utf8_substr(i18n::translate('Day:'), 0, 1);?>";
-			else ageform.innerHTML = (ba*yage)+" <?php echo utf8_substr(i18n::translate('Year:'), 0, 1);?>   "+(ba*mage)+" <?php echo utf8_substr(i18n::translate('Month:'), 0, 1);?>   "+(ba*dage)+" <?php echo utf8_substr(i18n::translate('Day:'), 0, 1);?>";
+				ageform.innerHTML = (ba*yage)+" <?php echo utf8_substr(i18n::translate('years'), 0, 1); ?>   "+(ba*mage)+" <?php echo utf8_substr(i18n::translate('Month:'), 0, 1); ?>   "+(ba*dage)+" <?php echo utf8_substr(i18n::translate('Day:'), 0, 1); ?>";
+			else ageform.innerHTML = (ba*yage)+" <?php echo utf8_substr(i18n::translate('Year:'), 0, 1); ?>   "+(ba*mage)+" <?php echo utf8_substr(i18n::translate('Month:'), 0, 1); ?>   "+(ba*dage)+" <?php echo utf8_substr(i18n::translate('Day:'), 0, 1); ?>";
 			var line = document.getElementById('ageline'+personnum);
 			temp = newx-oldx;
 			if (textDirection=='rtl') temp = temp * -1;
@@ -287,7 +287,7 @@ $controller->checkPrivacy();
 			<?php $addname = $indi->getAddName(); if (strlen($addname) > 0) echo PrintReady($addname); ?>
 			</a>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
-				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >
+				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>" >
 				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
 				<span class="details1"><br />
@@ -303,7 +303,7 @@ $controller->checkPrivacy();
 			?>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
 				<br />
-				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid;?>" >
+				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>" >
 				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<br />
 		<?php } ?>
@@ -312,7 +312,7 @@ $controller->checkPrivacy();
 		if (!isset($col)) $col = 0;
 		?>
 		<td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
-			<?php echo i18n::translate('Add another person to chart:<br />Person ID:'), help_link('add_person');?>&nbsp;
+			<?php echo i18n::translate('Add another person to chart:<br />Person ID:'), help_link('add_person'); ?>&nbsp;
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />&nbsp;
 			<?php print_findindi_link("newpid",""); ?>
 			<br />
@@ -391,7 +391,7 @@ if (count($controller->people)>0) {
 									<?php echo $tyear; ?>
 									</span>
 								</td>
-								<td valign="top" width="130">(<?php echo i18n::translate('Age');?>
+								<td valign="top" width="130">(<?php echo i18n::translate('Age'); ?>
 									<span id="ageform<?php echo $p; ?>" class="field"><?php echo $tage; ?></span>)
 								</td>
 							</tr>
@@ -405,7 +405,7 @@ if (count($controller->people)>0) {
 	<script language="JavaScript" type="text/javascript">
 	<!--
 	var bottomy = <?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>-5;
-	var topy = <?php echo $baseyoffset;?>;
+	var topy = <?php echo $baseyoffset; ?>;
 	var baseyear = <?php echo $controller->baseyear-(25/$controller->scale); ?>;
 	var birthyears = new Array();
 	var birthmonths = new Array();
@@ -419,8 +419,8 @@ if (count($controller->people)>0) {
 	}
 	?>
 
-	var bheight=<?php echo $controller->bheight;?>;
-	var scale=<?php echo $controller->scale;?>;
+	var bheight=<?php echo $controller->bheight; ?>;
+	var scale=<?php echo $controller->scale; ?>;
 	//-->
 	</script>
 </div>

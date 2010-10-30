@@ -78,7 +78,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
   });
 //]]>
   </script>
-<table class="center <?php echo $TEXT_DIRECTION ?> width90">
+<table class="center <?php echo $TEXT_DIRECTION; ?> width90">
 	<tr>
 		<td colspan="2" class="center"><?php
 		echo '<h2>', WT_WEBTREES, ' ', WT_VERSION_TEXT, '<br />', i18n::translate('Administration'), '</h2>';
@@ -106,20 +106,20 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	<div id="tabs" class="width100">
 	<!-- Tabs -->
 	<ul>
-		<li><a href="#info"><span><?php echo i18n::translate('Other Administration')?></span></a></li>
+		<li><a href="#info"><span><?php echo i18n::translate('Other Administration'); ?></span></a></li>
 		<?php if (WT_USER_IS_ADMIN) { ?>
-			<li><a href="#site"><span><?php echo i18n::translate('Site administration')?></span></a></li>
+			<li><a href="#site"><span><?php echo i18n::translate('Site administration'); ?></span></a></li>
 		<?php } ?>
-		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration')?></span></a></li>
+		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration'); ?></span></a></li>
 		<?php
 			$modules = WT_Module::getInstalledModules();
-			if (WT_USER_IS_ADMIN || count($modules)>0) {?>
-				<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration')?></span></a></li>
+			if (WT_USER_IS_ADMIN || count($modules)>0) { ?>
+				<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration'); ?></span></a></li>
 		<?php } ?>
 	</ul>
 	<!-- Other admin -->
 	<div id="info">
-		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
+		<table class="center <?php echo $TEXT_DIRECTION; ?> width100">
 			<tr>
 				<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Informational'); ?></td>
 			</tr>
@@ -161,19 +161,19 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		?>
 		<!-- Site admin -->
 		<div id="site">
-		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
+		<table class="center <?php echo $TEXT_DIRECTION; ?> width100">
 		<tr>
             <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Site administration'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
-				href="siteconfig.php"><?php echo i18n::translate('Configuration');?></a><?php echo help_link('help_editconfig.php'); ?></td>
+				href="siteconfig.php"><?php echo i18n::translate('Configuration'); ?></a><?php echo help_link('help_editconfig.php'); ?></td>
 			<td class="optionbox width50"><a
-				href="manageservers.php"><?php echo i18n::translate('Manage sites');?></a><?php echo help_link('help_managesites'); ?></td>
+				href="manageservers.php"><?php echo i18n::translate('Manage sites'); ?></a><?php echo help_link('help_managesites'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox width50"><a
-				href="useradmin.php"><?php echo i18n::translate('User administration');?></a><?php echo help_link('help_useradmin.php'); ?></td>
+				href="useradmin.php"><?php echo i18n::translate('User administration'); ?></a><?php echo help_link('help_useradmin.php'); ?></td>
 				<td class="optionbox width50"><a href="logs.php"><?php echo i18n::translate('Logs'); ?></a><?php echo help_link('logs.php'); ?></td>
 		</tr>
 		</table>
@@ -182,13 +182,13 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 	} ?>
 	<!-- GEDCOM admin -->
 	<div id="gedcom">
-		<table class="center <?php echo $TEXT_DIRECTION ?> width100">
+		<table class="center <?php echo $TEXT_DIRECTION; ?> width100">
 			<tr>
 			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Data and GEDCOM administration'); ?></td>
 			</tr>
 			<tr>
 				<td class="optionbox width50"><a
-					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration');?></a><?php echo help_link('gedcom_administration'); ?></td>
+					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration'); ?></a><?php echo help_link('gedcom_administration'); ?></td>
 				<td class="optionbox width50"><a
 					href="edit_merge.php"><?php echo i18n::translate('Merge records'); ?></a><?php echo help_link('help_edit_merge.php'); ?></td>
 			</tr>

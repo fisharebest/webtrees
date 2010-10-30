@@ -72,16 +72,16 @@ if ($ENABLE_AUTOCOMPLETE) {
 			<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>">
 				<?php echo translate_fact('SURN'), help_link('surname'); ?></td>
 			<td class="optionbox <?php echo $TEXT_DIRECTION; ?>">
-				<input type="text" name="surn" id="SURN" value="<?php echo $surn?>" />
-				<input type="hidden" name="ged" id="ged" value="<?php echo $ged?>" />
+				<input type="text" name="surn" id="SURN" value="<?php echo $surn; ?>" />
+				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
 				<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
 				<input type="submit" value="<?php echo i18n::translate('Random surname'); ?>" onclick="document.surnlist.surn.value='*';" />
 				<p class="details1">
 					<?php echo i18n::translate('Search the way you think the name is written (Soundex)'), help_link('soundex_search'); ?><br />
-					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo " checked=\"checked\"" ?> />
-					<label for="soundex_std"><?php echo i18n::translate('Basic')?></label>
-					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo " checked=\"checked\"" ?> />
-					<label for="soundex_dm"><?php echo i18n::translate('Daitch-Mokotoff')?></label>
+					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo " checked=\"checked\""; ?> />
+					<label for="soundex_std"><?php echo i18n::translate('Basic'); ?></label>
+					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo " checked=\"checked\""; ?> />
+					<label for="soundex_dm"><?php echo i18n::translate('Daitch-Mokotoff'); ?></label>
 				</p>
 			</td>
 		</tr>

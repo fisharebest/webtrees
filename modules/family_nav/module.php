@@ -162,7 +162,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]);?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());

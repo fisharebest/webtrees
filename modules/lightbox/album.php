@@ -98,9 +98,9 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 		<input type="hidden" id="ord2" name="order2" value="" />
 
 		<center>
-		<button type="submit" title="<?php echo i18n::translate('Saves the sorted media to the database');?>" onclick="saveOrder();" ><?php echo i18n::translate('Save');?></button>&nbsp;
-		<button type="submit" title="<?php echo i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php echo i18n::translate('Reset');?></button>&nbsp;
-		<button type="button" title="<?php echo i18n::translate('Quit and return');?>" onClick="location.href='<?php echo WT_SCRIPT_NAME, "?pid=", $pid, "&tab=", $tabno; ?>'"><?php echo i18n::translate('Cancel');?></button>
+		<button type="submit" title="<?php echo i18n::translate('Saves the sorted media to the database'); ?>" onclick="saveOrder();" ><?php echo i18n::translate('Save'); ?></button>&nbsp;
+		<button type="submit" title="<?php echo i18n::translate('Reset to the original order'); ?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php echo i18n::translate('Reset'); ?></button>&nbsp;
+		<button type="button" title="<?php echo i18n::translate('Quit and return'); ?>" onClick="location.href='<?php echo WT_SCRIPT_NAME, "?pid=", $pid, "&tab=", $tabno; ?>'"><?php echo i18n::translate('Cancel'); ?></button>
 <?php
 /*
 		// Debug ---------------------------------------------------------------------------

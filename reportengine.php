@@ -315,7 +315,7 @@ elseif ($action=="setup") {
 
 							?>
 							<a href="javascript: <?php echo $input["name"]; ?>" onclick="cal_toggleDate('div_<?php echo $input["name"]; ?>', '<?php echo $input["name"]; ?>'); return false;">
-							<?php echo $Link;?>
+							<?php echo $Link; ?>
 							</a>
 							<div id="div_<?php echo $input["name"]; ?>" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>
 							<?php
@@ -329,11 +329,11 @@ elseif ($action=="setup") {
 		<tr><td class="descriptionbox width30 wrap"></td>
 		<td class="optionbox">
 		<table><tr>
-		<td><img src="<?php echo isset($WT_IMAGES["media_pdf"]) ? $WT_IMAGES["media_pdf"] : "images/media/pdf.gif";?>" alt="PDF" title="PDF" /></td>
-		<td><img src="<?php echo isset($WT_IMAGES["media_html"]) ? $WT_IMAGES["media_html"] : "images/media/html.gif";?>" alt="HTML" title="HTML" /></td>
+		<td><img src="<?php echo isset($WT_IMAGES["media_pdf"]) ? $WT_IMAGES["media_pdf"] : "images/media/pdf.gif"; ?>" alt="PDF" title="PDF" /></td>
+		<td><img src="<?php echo isset($WT_IMAGES["media_html"]) ? $WT_IMAGES["media_html"] : "images/media/html.gif"; ?>" alt="HTML" title="HTML" /></td>
 		</tr><tr>
 		<td><center><input type="radio" name="output" value="PDF" checked="checked" /></center></td>
-		<td><center><input type="radio" name="output" value="HTML" <?php if ($output=="HTML") echo " checked=\"checked\"";?> /></center></td>
+		<td><center><input type="radio" name="output" value="HTML" <?php if ($output=="HTML") echo " checked=\"checked\""; ?> /></center></td>
 		</tr></table>
 		</td></tr>
 		<?php
@@ -385,5 +385,3 @@ elseif ($action=="run") {
 	}
 	xml_parser_free($xml_parser);
 }
-
-?>

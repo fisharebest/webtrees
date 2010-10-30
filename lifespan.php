@@ -72,7 +72,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />
 			<?php print_findindi_link("newpid",""); ?>
 			<br />
-			<div style="text-align: center"><input type="checkbox" checked="checked" value="yes" name="addFamily"/><?php echo i18n::translate('Include Immediate Family');?></div>
+			<div style="text-align: center"><input type="checkbox" checked="checked" value="yes" name="addFamily"/><?php echo i18n::translate('Include Immediate Family'); ?></div>
 			<br />
 			<div style="text-align: center"><input type="submit" value="<?php echo i18n::translate('Show'); ?>" /></div>
 		</td></tr>
@@ -303,10 +303,10 @@ var oldMx = 0;
 	<table>
 		<tr>
 			<td rowspan="2"><?php echo help_link('timeline_control'); ?></td>
-			<td align="center"><?php echo i18n::translate('Speed');?></td>
-				<td align="center"><?php echo i18n::translate('Begin Year');?></td>
-				<td align="center"><?php echo i18n::translate('End Year');?></td>
-				<td align="center"><?php echo translate_fact('PLAC');?></td>
+			<td align="center"><?php echo i18n::translate('Speed'); ?></td>
+				<td align="center"><?php echo i18n::translate('Begin Year'); ?></td>
+				<td align="center"><?php echo i18n::translate('End Year'); ?></td>
+				<td align="center"><?php echo translate_fact('PLAC'); ?></td>
 		</tr>
 		<tr>
 			<td><select name="speedMenu" size="1">

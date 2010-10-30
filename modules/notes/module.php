@@ -70,7 +70,7 @@ if (!$this->controller->indi->canDisplayDetails()) {
 		<td></td>
 		<td class="descriptionbox rela"><input id="checkbox_note2"
 			type="checkbox"
-			<?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""?>
+			<?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?>
 			onclick="toggleByClassName('TR', 'row_note2');" /> <label
 			for="checkbox_note2"><?php echo i18n::translate('Show all notes'); ?></label>
 			<?php echo help_link('show_fact_sources'); ?>
@@ -165,5 +165,4 @@ if (!$SHOW_LEVEL2_NOTES) {
 	public function getJSCallback() {
 		return '';
 	}
-
 }

@@ -612,26 +612,26 @@ if ($type == "facts") {
 	<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th>&nbsp;</th>
-			<th><?php echo i18n::translate('Tag') ?></th>
-			<th><?php echo i18n::translate('Description') ?></th>
+			<th><?php echo i18n::translate('Tag'); ?></th>
+			<th><?php echo i18n::translate('Description'); ?></th>
 		</tr></thead>
 		<tbody id="tbDefinedTags">
 		</tbody>
 	</table></div>
 
 	<table id="tabDefinedTagsShow"><tbody><tr>
-		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo i18n::translate('Show only selected tags') ?> (<span id="layCurSelectedCount"></span>)</a></td>
-		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo i18n::translate('Show all tags') ?></a></td>
+		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo i18n::translate('Show only selected tags'); ?> (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo i18n::translate('Show all tags'); ?></a></td>
 	</tr></tbody></table>
 
 	<table id="tabFilterAndCustom"><tbody>
-		<tr><td><?php echo i18n::translate('Filter') ?>:</td><td><input type="text" id="tbxFilter" /></td></tr>
-		<tr><td><?php echo i18n::translate('Custom tags') ?>:</td><td><input type="text" id="tbxCustom" value="<?php echo addslashes(implode(',', $preselCustom)); ?>" /></td></tr>
+		<tr><td><?php echo i18n::translate('Filter'); ?>:</td><td><input type="text" id="tbxFilter" /></td></tr>
+		<tr><td><?php echo i18n::translate('Custom tags'); ?>:</td><td><input type="text" id="tbxCustom" value="<?php echo addslashes(implode(',', $preselCustom)); ?>" /></td></tr>
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td><button id="btnOk" disabled="disabled" onclick="if(!this.disabled)DoOK();"><?php echo i18n::translate('Accept') ?></button></td>
-		<td><button onclick="window.close();return false"><?php echo i18n::translate('Cancel') ?></button></td>
+		<td><button id="btnOk" disabled="disabled" onclick="if(!this.disabled)DoOK();"><?php echo i18n::translate('Accept'); ?></button></td>
+		<td><button onclick="window.close();return false"><?php echo i18n::translate('Cancel'); ?></button></td>
 	<tr></tbody></table>
 	<?php
 	echo "</td></tr></table>";

@@ -41,7 +41,7 @@ if (!defined('WT_WEBTREES')) {
 	//-- Search Function ------------------------------------------------------------
 	?>
 	<tr>
-		<td class="descriptionbox font9 center"><?php echo i18n::translate('Search for People to add to Add Links list.');?></td>
+		<td class="descriptionbox font9 center"><?php echo i18n::translate('Search for People to add to Add Links list.'); ?></td>
 	</tr>
 	<tr>
 		<td id="srch" class="optionbox center">

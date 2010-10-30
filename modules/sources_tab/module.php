@@ -72,7 +72,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td></td>
 				<td class="descriptionbox rela">
-					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_SOURCES) echo " checked=\"checked\""?> onclick="toggleByClassName('TR', 'row_sour2');" />
+					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_SOURCES) echo " checked=\"checked\""; ?> onclick="toggleByClassName('TR', 'row_sour2');" />
 					<label for="checkbox_sour2"><?php echo i18n::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 
 				</td>

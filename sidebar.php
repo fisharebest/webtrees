@@ -74,10 +74,10 @@ if ($sb_action!='none') {
 			if (isset($controller)) $mod->setController($controller);
 			if ($mod->hasSidebarContent()) {
 				?>
-				<h3 title="<?php echo $mod->getName()?>"><a href="#"><?php echo $mod->getTitle()?></a></h3>
-				<div id="sb_content_<?php echo $mod->getName()?>">
+				<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo $mod->getTitle(); ?></a></h3>
+				<div id="sb_content_<?php echo $mod->getName(); ?>">
 				<?php if ($counter==0) echo $mod->getSidebarContent();
-				else {?><img src="<?php echo WT_THEME_DIR ?>images/loading.gif" /><?php }?>
+				else { ?><img src="<?php echo WT_THEME_DIR; ?>images/loading.gif" /><?php } ?>
 				</div>
 				<?php
 				$counter++;
@@ -138,7 +138,7 @@ function closeCallback() {
 	jQuery('#sidebarAccordion').hide();
 	jQuery('#sidebar_pin').hide();
 	if (pinned == false) {
-		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
+		jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=false');
 		pinned = false;
 	}
 	if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title") == "googlemap") {
@@ -157,7 +157,7 @@ function openCallback() {
 			loadedMods[ui.oldHeader.attr('title')] = true;
 			var active = ui.newHeader.attr('title');
 			if (!loadedMods[active]) {
-				jQuery('#sb_content_'+active).load('sidebar.php?sb_action=loadmod&mod='+active+'&pid=<?php echo $pid?>&famid=<?php echo $famid?>');
+				jQuery('#sb_content_'+active).load('sidebar.php?sb_action=loadmod&mod='+active+'&pid=<?php echo $pid; ?>&famid=<?php echo $famid; ?>');
 			}
 		}
 	});
@@ -174,13 +174,13 @@ jQuery(document).ready(function() {
 	// Sidebar Pin Function
 	jQuery('#sidebar_pin').toggle(
 		function() {
-			jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in'];?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar');?>');
-			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true');
+			jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-in']; ?>').attr('title', '<?php echo i18n::translate('Unpin Sidebar'); ?>');
+			jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=true');
 			pinned = true;
 		},
 		function() {
-			jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out'];?>').attr('title', '<?php echo i18n::translate('Pin Sidebar');?>');
-		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false');
+			jQuery('#sidebar_pin img').attr('src', '<?php echo $WT_IMAGES['pin-out']; ?>').attr('title', '<?php echo i18n::translate('Pin Sidebar'); ?>');
+		jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=false');
 		pinned = false;
 		}
 	);
@@ -194,13 +194,13 @@ jQuery(document).ready(function() {
 	// Sidebar Open/Close Function
 	// Sidebar Open
 	jQuery('#sidebar_open').toggle(function() {
-		jQuery('#sidebar_open img').attr('style', 'margin-left:255px;' ).attr('src', '<?php echo $WT_IMAGES['slide_close'];?>').attr('title', '<?php echo i18n::translate('Sidebar Close');?>');
+		jQuery('#sidebar_open img').attr('style', 'margin-left:255px;' ).attr('src', '<?php echo $WT_IMAGES['slide_close']; ?>').attr('title', '<?php echo i18n::translate('Sidebar Close'); ?>');
 		jQuery('#sidebar').animate({
 			right: "0px",
 			width: "260px"
 		}, 500);
 		if (!modsLoaded) {
-			jQuery('#sidebarAccordion').load('sidebar.php', 'sb_action=loadMods&pid=<?php echo $pid?>&famid=<?php echo $famid?>', openCallback);
+			jQuery('#sidebarAccordion').load('sidebar.php', 'sb_action=loadMods&pid=<?php echo $pid; ?>&famid=<?php echo $famid; ?>', openCallback);
 			modsLoaded=true;
 		} else {
 			jQuery("#sidebarAccordion").accordion("resize");
@@ -219,20 +219,20 @@ jQuery(document).ready(function() {
 			<?php } ?>
 
 		<?php if ($sidebar_state == "open") { ?>
-			jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true&sb_closed=false');
+			jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=true&sb_closed=false');
 		<?php } ?>
 
 		<?php if ($sidebar_state == "closed") { ?>
 			<?php if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin']) { ?>
-				jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=true&sb_closed=false');
+				jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=true&sb_closed=false');
 			<?php } else { ?>
-				jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false&sb_closed=false');
+				jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=false&sb_closed=false');
 			<?php } ?>
 		<?php } ?>
 		sb_open=true;
 	// Sidebar Close
 	}, function() {
-		jQuery('#sidebar_open img').attr('style', 'margin-left:0px;' ).attr('src', '<?php echo $WT_IMAGES['slide_open'];?>').attr('title', '<?php echo i18n::translate('Sidebar Open');?>');
+		jQuery('#sidebar_open img').attr('style', 'margin-left:0px;' ).attr('src', '<?php echo $WT_IMAGES['slide_open']; ?>').attr('title', '<?php echo i18n::translate('Sidebar Open'); ?>');
 		jQuery('#sidebar').css('left', '');
 		jQuery('#sidebar').animate({
 			right: "4px",
@@ -245,7 +245,7 @@ jQuery(document).ready(function() {
 			jQuery('#sidebar_pin').click();
 		<?php } ?>
 
-		jQuery.get('individual.php?pid=<?php echo $controller->pid;?>&action=ajax&pin=false&sb_closed=true');
+		jQuery.get('individual.php?pid=<?php echo $controller->pid; ?>&action=ajax&pin=false&sb_closed=true');
 		sb_open=false;
 	});
 	// -----------------------------
@@ -277,15 +277,15 @@ jQuery(document).ready(function() {
 	if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] && $sidebar_state == "open") {
 		?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
-			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_close'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a>
-			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a>
+			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_close']; ?>" border="0" title="<?php echo i18n::translate('Sidebar Open'); ?>" alt="" /></a>
+			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out']; ?>" border="0" title="<?php echo i18n::translate('Pin Sidebar'); ?>" alt="" /></a>
 		</div>
 		<?php
 	} else {
 		?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
-			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_open'];?>" border="0" title="<?php echo i18n::translate('Sidebar Open');?>" alt="" /></a>
-			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out'];?>" border="0" title="<?php echo i18n::translate('Pin Sidebar');?>" alt="" /></a>
+			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_open']; ?>" border="0" title="<?php echo i18n::translate('Sidebar Open'); ?>" alt="" /></a>
+			<a id="sidebar_pin" href="#pin"><img src="<?php echo $WT_IMAGES['pin-out']; ?>" border="0" title="<?php echo i18n::translate('Pin Sidebar'); ?>" alt="" /></a>
 		</div>
 		<?php
 	}

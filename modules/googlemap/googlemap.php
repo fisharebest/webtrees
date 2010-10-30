@@ -318,10 +318,10 @@ function setup_map() {
 				GUnload(); // Firefox and standard browsers
 			}, false);
 		}
-	var GOOGLEMAP_MAP_TYPE =<?php echo $GOOGLEMAP_MAP_TYPE;?>;
-	var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
-	var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
-	var startZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
+	var GOOGLEMAP_MAP_TYPE =<?php echo $GOOGLEMAP_MAP_TYPE; ?>;
+	var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM; ?>;
+	var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM; ?>;
+	var startZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM; ?>;
 	//]]>
 	</script>
 	<?php
@@ -385,11 +385,11 @@ function create_indiv_buttons() {
 		var button4 = document.createElement('li');
 		var button5 = document.createElement('li');
 
-		button1.innerHTML = '<?php echo i18n::translate('Redraw map')?>';
-		button2.innerHTML = '<?php echo i18n::translate('Map')?>';
-		button3.innerHTML = '<?php echo i18n::translate('Satellite')?>';
-		button4.innerHTML = '<?php echo i18n::translate('Hybrid')?>';
-		button5.innerHTML = '<?php echo i18n::translate('Terrain')?>';
+		button1.innerHTML = '<?php echo i18n::translate('Redraw map'); ?>';
+		button2.innerHTML = '<?php echo i18n::translate('Map'); ?>';
+		button3.innerHTML = '<?php echo i18n::translate('Satellite'); ?>';
+		button4.innerHTML = '<?php echo i18n::translate('Hybrid'); ?>';
+		button5.innerHTML = '<?php echo i18n::translate('Terrain'); ?>';
 
 		button1.onclick = function() { javascript:ResizeMap(); return false; };
 		button2.onclick = function() { map.setMapType(G_NORMAL_MAP); return false; };

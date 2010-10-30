@@ -122,19 +122,19 @@ function paste_id(value) {
 	pastefield.value=value;
 }
 </script>
-<div id="relationship_chart_options<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl";?>" style="position: relative; z-index:90; width:98%;">
-<h2><?php echo PrintReady($title_string);?></h2><br />
+<div id="relationship_chart_options<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl"; ?>" style="position: relative; z-index:90; width:98%;">
+<h2><?php echo PrintReady($title_string); ?></h2><br />
 <!-- // Print the form to change the number of displayed generations -->
 <?php
 	$Dbaseyoffset += 110; ?>
 	<form name="people" method="get" action="relationship.php">
-	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find ?>" />
+	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find; ?>" />
 
-	<table class="list_table <?php echo $TEXT_DIRECTION ?>" style="text-align:<?php echo ($TEXT_DIRECTION=="ltr"?"left":"right");?>; margin:0;">
+	<table class="list_table <?php echo $TEXT_DIRECTION; ?>" style="text-align:<?php echo ($TEXT_DIRECTION=="ltr"?"left":"right"); ?>; margin:0;">
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">
-	<?php echo i18n::translate('Relationship Chart')?>
+	<?php echo i18n::translate('Relationship Chart'); ?>
 	</td>
 
 	<!-- // Empty space -->
@@ -142,7 +142,7 @@ function paste_id(value) {
 
 	<!-- // Options header -->
 	<td colspan="2" class="topbottombar center">
-	<?php echo i18n::translate('Options:')?>
+	<?php echo i18n::translate('Options:'); ?>
 	</td></tr>
 
 	<!-- // Person 1 -->
@@ -150,9 +150,9 @@ function paste_id(value) {
 	<?php echo i18n::translate('Person 1'), help_link('relationship_id'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>" />
+	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>" />
 	<?php
-	print_findindi_link("pid1","");?>
+	print_findindi_link("pid1",""); ?>
 	</td>
 
 	<!-- // Empty space -->
@@ -163,11 +163,11 @@ function paste_id(value) {
 	<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input type="hidden" name="show_full" value="<?php echo $show_full ?>" />
+	<input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />
 		<?php
 	echo "<input tabindex=\"3\" type=\"checkbox\" name=\"showfull\" value=\"0\"";
 	if ($show_full) echo " checked=\"checked\"";
-	echo " onclick=\"document.people.show_full.value='".(!$show_full)."';\" />";?>
+	echo " onclick=\"document.people.show_full.value='".(!$show_full)."';\" />"; ?>
 	</td></tr>
 
 	<!-- // Person 2 -->
@@ -175,9 +175,9 @@ function paste_id(value) {
 	<?php echo i18n::translate('Person 2'), help_link('relationship_id'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>" />
+	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>" />
 		<?php
-		print_findindi_link("pid2","");?>
+		print_findindi_link("pid2",""); ?>
 	</td>
 
 	<!-- // Empty space -->
@@ -188,7 +188,7 @@ function paste_id(value) {
 	<?php echo i18n::translate('Show oldest top'), help_link('oldest_top'); ?>
 	</td><td class="optionbox">
 	<input tabindex="4" type="checkbox" name="asc" value="-1"
-	<?php if ($asc==-1) echo " checked=\"checked\"";?> />
+	<?php if ($asc==-1) echo " checked=\"checked\""; ?> />
 	</td></tr>
 
 	<!-- // Show path -->
@@ -252,7 +252,7 @@ function paste_id(value) {
 	if ($followspouse) {
 		echo " checked=\"checked\"";
 	}
-	echo " onclick=\"document.people.path_to_find.value='-1';\""?> />
+	echo " onclick=\"document.people.path_to_find.value='-1';\""; ?> />
 	</td>
 	<?php
 	if ((!empty($pid1))&&(!empty($pid2))&&($disp)) {
@@ -283,14 +283,14 @@ function paste_id(value) {
 		$pass = true;
 	}
 
-	if ($pass == false) echo "</tr><tr><td colspan=\"2\" class=\"topbottombar wrap\">&nbsp;</td>";?>
+	if ($pass == false) echo "</tr><tr><td colspan=\"2\" class=\"topbottombar wrap\">&nbsp;</td>"; ?>
 
 	<!-- // Empty space -->
 	<td></td>
 
 	<!-- // View button -->
 	<td class="topbottombar vmiddle center" colspan="2">
-	<input tabindex="7" type="submit" value="<?php echo i18n::translate('View')?>" />
+	<input tabindex="7" type="submit" value="<?php echo i18n::translate('View'); ?>" />
 	</td></tr>
 
 
@@ -301,7 +301,7 @@ if ($show_full==0) {
 	echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 }
 ?>
-<div id="relationship_chart<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl";?>" style="position:relative; z-index:1; width:98%;">
+<div id="relationship_chart<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl"; ?>" style="position:relative; z-index:1; width:98%;">
 <?php
 $maxyoffset = $Dbaseyoffset;
 if ((!empty($pid1))&&(!empty($pid2))) {

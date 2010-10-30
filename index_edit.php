@@ -310,9 +310,9 @@ if ($action=="configure") {
 	<div id="configure" class="tab_page center" style="position: absolute; display: block; top: auto; left: auto; z-index: 1; ">
 	<br />
 	<form name="config_setup" method="post" action="index_edit.php">
-	<input type="hidden" name="ctype" value="<?php echo $ctype;?>" />
+	<input type="hidden" name="ctype" value="<?php echo $ctype; ?>" />
 	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="name" value="<?php echo $name;?>" />
+	<input type="hidden" name="name" value="<?php echo $name; ?>" />
 	<table dir="ltr" border="1" width="400px">
 	<tr><td class="topbottombar" colspan="7">
 	<?php

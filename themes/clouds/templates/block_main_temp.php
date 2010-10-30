@@ -43,12 +43,12 @@ if (!defined('WT_WEBTREES')) {
 		<tr>
 			<td class="blockh1" ></td>
 			<td class="blockh2" >
-				<div class="blockhc"><b><?php echo $title ?></b></div>
+				<div class="blockhc"><b><?php echo $title; ?></b></div>
 			</td>
 			<td class="blockh3"></td>
 		</tr>
 	</table>
 	<div class="blockcontent">
-		<?php echo $content ?>
+		<?php echo $content; ?>
 	</div>
 </div>

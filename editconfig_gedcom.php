@@ -406,18 +406,18 @@ print_header(i18n::translate('GEDCOM configuration'));
 	$i = 0;
 ?>
 
-<table class="center <?php echo $TEXT_DIRECTION ?>">
+<table class="center <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
 		<td colspan="2">
 			<div id="tabs" class="">
 				<ul>
-					<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics')?></span></a></li>
-					<li><a href="#privacy"><span><?php echo i18n::translate('Privacy')?></span></a></li>
-					<li><a href="#config-media"><span><?php echo i18n::translate('Multimedia')?></span></a></li>
-					<li><a href="#access-options"><span><?php echo i18n::translate('Access')?></span></a></li>
-					<li><a href="#layout-options"><span><?php echo i18n::translate('Layout')?></span></a></li>
-					<li><a href="#hide-show"><span><?php echo i18n::translate('Hide &amp; Show')?></span></a></li>
-					<li><a href="#edit-options"><span><?php echo i18n::translate('Edit Options')?></span></a></li>
+					<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics'); ?></span></a></li>
+					<li><a href="#privacy"><span><?php echo i18n::translate('Privacy'); ?></span></a></li>
+					<li><a href="#config-media"><span><?php echo i18n::translate('Multimedia'); ?></span></a></li>
+					<li><a href="#access-options"><span><?php echo i18n::translate('Access'); ?></span></a></li>
+					<li><a href="#layout-options"><span><?php echo i18n::translate('Layout'); ?></span></a></li>
+					<li><a href="#hide-show"><span><?php echo i18n::translate('Hide &amp; Show'); ?></span></a></li>
+					<li><a href="#edit-options"><span><?php echo i18n::translate('Edit Options'); ?></span></a></li>
 				</ul>
 			<!-- GEDCOM BASICS -->
 			<div id="file-options">
@@ -432,7 +432,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Language'), help_link('LANGUAGE'); ?></td>
-						<td class="optionbox width60"><?php echo edit_field_language('GEDCOMLANG', $LANGUAGE);?></td>
+						<td class="optionbox width60"><?php echo edit_field_language('GEDCOMLANG', $LANGUAGE); ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
@@ -807,7 +807,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" />
-							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>";?>
+							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>"; ?>
 						</td>
 					</tr>
 					<tr>
@@ -884,7 +884,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('Media Firewall');?>
+							<?php echo i18n::translate('Media Firewall'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1058,7 +1058,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				<table class="facts_table">
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('Names');?>
+							<?php echo i18n::translate('Names'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1130,7 +1130,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('Charts');?>
+							<?php echo i18n::translate('Charts'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1203,7 +1203,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('Individual pages');?>
+							<?php echo i18n::translate('Individual pages'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1273,7 +1273,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('Other');?>
+							<?php echo i18n::translate('Other'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1302,7 +1302,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				<table class="facts_table">
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('On charts');?>
+							<?php echo i18n::translate('On charts'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1363,7 +1363,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('On individual pages');?>
+							<?php echo i18n::translate('On individual pages'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1416,7 +1416,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php echo i18n::translate('General');?>
+							<?php echo i18n::translate('General'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1481,7 +1481,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php echo i18n::translate('Facts for Individual records');?>
+						<?php echo i18n::translate('Facts for Individual records'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1518,7 +1518,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php echo i18n::translate('Facts for Family records') ;?>
+						<?php echo i18n::translate('Facts for Family records'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1555,7 +1555,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php echo i18n::translate('Facts for Source records');?>
+						<?php echo i18n::translate('Facts for Source records'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1584,7 +1584,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php echo i18n::translate('Facts for Repository records');?>
+						<?php echo i18n::translate('Facts for Repository records'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1613,7 +1613,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php echo i18n::translate('Advanced fact settings');?>
+						<?php echo i18n::translate('Advanced fact settings'); ?>
 					</td>
 				</tr>
 				<tr>

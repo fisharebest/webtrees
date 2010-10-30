@@ -127,7 +127,7 @@ echo '</h2>';
 				<td class="optionbox">
 					<input type="checkbox" value="<?php
 					if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-					else echo "0\" onclick=\"document.people.show_full.value='1';";?>"/>
+					else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>"/>
 				</td>
 			</tr>
 			<tr>

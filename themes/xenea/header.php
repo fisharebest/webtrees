@@ -48,7 +48,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 
 		<title><?php echo htmlspecialchars($title); ?></title>
 		<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
-		<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
+		<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
 		<?php if ($BROWSERTYPE!='other') { ?>
 			<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 		<?php }
@@ -70,8 +70,8 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 	</style>
 	<?php }
 	if ($view!="simple") { ?>
-		<?php if (!empty($META_DESCRIPTION)) {?><meta name="description" content="<?php echo htmlspecialchars($META_DESCRIPTION); ?>" /><?php } ?>
-		<?php if (!empty($META_ROBOTS)) {?><meta name="robots" content="<?php echo htmlspecialchars($META_ROBOTS); ?>" /><?php } ?>
+		<?php if (!empty($META_DESCRIPTION)) { ?><meta name="description" content="<?php echo htmlspecialchars($META_DESCRIPTION); ?>" /><?php } ?>
+		<?php if (!empty($META_ROBOTS)) { ?><meta name="robots" content="<?php echo htmlspecialchars($META_ROBOTS); ?>" /><?php } ?>
 		<meta name="generator" content="<?php echo WT_WEBTREES, ' - ', WT_WEBTREES_URL; ?>" />
 	<?php } ?>
 	<?php echo $javascript; ?>
@@ -80,15 +80,15 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 	<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>
 	<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>
 	<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-	<?php if ($TEXT_DIRECTION=='rtl') {?>
-		<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
-	<?php }?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>modules.css" rel="Stylesheet" />
+	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
+	<?php if ($TEXT_DIRECTION=='rtl') { ?>
+		<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
+	<?php } ?>
+	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>modules.css" rel="Stylesheet" />
 </head>
 <body id="body" <?php echo $bodyOnLoad; ?>>
 <!-- begin header section -->
-<?php if ($view!='simple') {?>
+<?php if ($view!='simple') { ?>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
 <table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#003399">
 	<tr>
@@ -108,7 +108,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				<?php echo PrintReady($GEDCOM_TITLE, true); ?>
 				</font></td>
 		<?php if (empty($SEARCH_SPIDER)) { ?>
-				<td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
+				<td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>">
 				<form action="search.php" method="get">
 				<input type="hidden" name="action" value="general" />
 				<input type="hidden" name="topsearch" value="yes" />
@@ -123,9 +123,9 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#84beff" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/barra.gif');">
 			<tr>
 				<td width="10" height="40"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="18" alt="" /></td>
-				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left" ?>" class="blanco"><?php print_theme_dropdown(1); ?><?php print_favorite_selector(1); ?></div></td>
+				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" class="blanco"><?php print_theme_dropdown(1); ?><?php print_favorite_selector(1); ?></div></td>
 				<td><div align="center"><?php print_user_links(); ?></div></td>
-				<td width="120" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>" >
+				<td width="120" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
 					<div class="makeMenu"><?php
 						$language_menu=MenuBar::getLanguageMenu();
 						if ($language_menu) {

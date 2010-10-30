@@ -112,7 +112,7 @@ if (WT_USE_LIGHTBOX) {
 					?>
 					<img src="<?php echo $controller->mediaobject->getThumbnail(); ?>" border="0" width="100" alt="<?php echo $controller->mediaobject->getFullName(); ?>" title="<?php echo PrintReady(htmlspecialchars($controller->mediaobject->getFullName())); ?>" />
 					<span class="error">
-						<?php echo i18n::translate('File not found.');?>
+						<?php echo i18n::translate('File not found.'); ?>
 					</span>
 					<?php
 				}
@@ -124,7 +124,7 @@ if (WT_USE_LIGHTBOX) {
 			<table width="100%">
 				<tr>
 					<td>
-						<table class="facts_table<?php echo $TEXT_DIRECTION=='ltr'?'':'_rtl';?>">
+						<table class="facts_table<?php echo $TEXT_DIRECTION=='ltr'?'':'_rtl'; ?>">
 							<?php
 								$facts = $controller->getFacts($SHOW_MEDIA_FILENAME);
 								foreach($facts as $f=>$factrec) {
@@ -184,7 +184,7 @@ function lightboxView(){
 
 // javascript function to open the original imageviewer.php page
 function openImageView(){
-	window.open("imageview.php?filename=<?php echo urlencode($filename) ?>", "Image View");
+	window.open("imageview.php?filename=<?php echo urlencode($filename); ?>", "Image View");
 	return false;
 }
 // javascript function to open a window with the raw gedcom in it

@@ -50,7 +50,7 @@ if(isset($pid) && isset($server) && isset($indiName))
 ?>
 
 <br/>
-<center><font size="4"><?php echo $indiName ?></font><center><br/>
+<center><font size="4"><?php echo $indiName; ?></font><center><br/>
 <table align="center">
 	<tr>
 		<td>
@@ -72,7 +72,7 @@ if(isset($pid) && isset($server) && isset($indiName))
 						</td>
 						<td class="optionbox"><input type="text" id="pid" name="pid" size="14"/></td>
 						<td class="optionbox" rowspan="2"><br/>
-							<input type="submit" value="<?php echo i18n::translate('Add Link');?>" id="btnSubmit" name="btnSubmit" value="add"/>
+							<input type="submit" value="<?php echo i18n::translate('Add Link'); ?>" id="btnSubmit" name="btnSubmit" value="add"/>
 						</td>
 					</tr>
 					<tr>
@@ -81,13 +81,13 @@ if(isset($pid) && isset($server) && isset($indiName))
 						</td>
 						<td class="optionbox">
 							<select id="cbRelationship" name="cbRelationship">
-								<option value="self" selected><?php echo i18n::translate('Same as current');?></option>
-								<option value="mother"><?php echo i18n::translate('Mother');?></option>
-								<option value="father"><?php echo i18n::translate('Father');?></option>
-								<option value="husband"><?php echo i18n::translate('Husband');?></option>
-								<option value="wife"><?php echo i18n::translate('Wife');?></option>
-								<option value="son"><?php echo i18n::translate('Son');?></option>
-								<option value="daughter"><?php echo i18n::translate('Daughter');?></option>
+								<option value="self" selected><?php echo i18n::translate('Same as current'); ?></option>
+								<option value="mother"><?php echo i18n::translate('Mother'); ?></option>
+								<option value="father"><?php echo i18n::translate('Father'); ?></option>
+								<option value="husband"><?php echo i18n::translate('Husband'); ?></option>
+								<option value="wife"><?php echo i18n::translate('Wife'); ?></option>
+								<option value="son"><?php echo i18n::translate('Son'); ?></option>
+								<option value="daughter"><?php echo i18n::translate('Daughter'); ?></option>
 							</select>
 						</td>
 					</tr>

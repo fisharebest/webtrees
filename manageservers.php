@@ -194,10 +194,10 @@ function showSite(siteID) {
 	buttonShow = document.getElementById("buttonShow_"+siteID);
 	siteDetails = document.getElementById("siteDetails_"+siteID);
 	if (siteDetails.style.display=='none') {
-		buttonShow.innerHTML='<?php echo i18n::translate('Hide Details');?>';
+		buttonShow.innerHTML='<?php echo i18n::translate('Hide Details'); ?>';
 		siteDetails.style.display='block';
 	} else {
-		buttonShow.innerHTML='<?php echo i18n::translate('Show Details');?>';
+		buttonShow.innerHTML='<?php echo i18n::translate('Show Details'); ?>';
 		siteDetails.style.display='none';
 	}
 }
@@ -259,7 +259,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	<table class="width100" align="center">
 		<tr>
 		<td class="facts_label">
-			<b><?php echo i18n::translate('Ban Sites by IP');?></b>
+			<b><?php echo i18n::translate('Ban Sites by IP'); ?></b>
 			<?php echo help_link('help_banning'); ?>
 		</td>
 		</tr>
@@ -306,7 +306,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	<table class="width100">
 		<tr>
 		<td class="facts_label">
-			<b><?php echo i18n::translate('Remote Servers');?></b>
+			<b><?php echo i18n::translate('Remote Servers'); ?></b>
 		</td>
 		</tr>
 		<tr>
@@ -321,54 +321,54 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 ?>
 			<tr>
 				<td>
-				<button type="submit" onclick="return (confirm('<?php echo i18n::translate('Are you sure you want to delete this Source?');?>'))" name="deleteServer" value="<?php echo $sid;?>"><?php echo i18n::translate('Remove');?></button>
+				<button type="submit" onclick="return (confirm('<?php echo i18n::translate('Are you sure you want to delete this Source?'); ?>'))" name="deleteServer" value="<?php echo $sid; ?>"><?php echo i18n::translate('Remove'); ?></button>
 				&nbsp;&nbsp;
-				<button id="buttonShow_<?php echo $sid;?>" type="button" onclick="showSite('<?php echo $sid;?>');"><?php echo i18n::translate('Show Details');?></button>
+				<button id="buttonShow_<?php echo $sid; ?>" type="button" onclick="showSite('<?php echo $sid; ?>');"><?php echo i18n::translate('Show Details'); ?></button>
 				&nbsp;&nbsp;
-				<button type="button" onclick="window.open('source.php?sid=<?php echo $sid;?>&ged=<?php echo $GEDCOM;?>')"><?php echo i18n::translate('View Connections');?></button>
+				<button type="button" onclick="window.open('source.php?sid=<?php echo $sid; ?>&ged=<?php echo $GEDCOM; ?>')"><?php echo i18n::translate('View Connections'); ?></button>
 				&nbsp;&nbsp;
 				<?php echo PrintReady($serverTitle); ?>
-				<div id="siteDetails_<?php echo $sid;?>" style="display:none">
+				<div id="siteDetails_<?php echo $sid; ?>" style="display:none">
 					<br />
 					<table>
 					<tr>
 						<td class="facts_label width20">
-						<?php echo i18n::translate('ID');?>
+						<?php echo i18n::translate('ID'); ?>
 						</td>
 						<td class="facts_value">
-						<?php echo $sid;?>
+						<?php echo $sid; ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="facts_label width20">
-						<?php echo i18n::translate('Title:');?>
+						<?php echo i18n::translate('Title:'); ?>
 						</td>
 						<td class="facts_value">
-						<?php echo PrintReady($serverTitle);?>
+						<?php echo PrintReady($serverTitle); ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="facts_label width20">
-						<?php echo i18n::translate('Site URL/IP');?>
+						<?php echo i18n::translate('Site URL/IP'); ?>
 						</td>
 						<td class="facts_value">
-						<?php echo PrintReady($serverURL);?>
+						<?php echo PrintReady($serverURL); ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="facts_label width20">
-						<?php echo i18n::translate('Database ID:');?>
+						<?php echo i18n::translate('Database ID:'); ?>
 						</td>
 						<td class="facts_value">
-						<?php echo PrintReady($gedcom_id);?>
+						<?php echo PrintReady($gedcom_id); ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="facts_label width20">
-						<?php echo i18n::translate('Username');?>
+						<?php echo i18n::translate('Username'); ?>
 						</td>
 						<td class="facts_value">
-						<?php echo PrintReady($username);?>
+						<?php echo PrintReady($username); ?>
 						</td>
 					</tr>
 					</table>
@@ -410,16 +410,16 @@ if (empty($errorServer)) {
 	<table class="width100">
 		<tr>
 		<td class="facts_label" colspan="2">
-			<b><?php echo i18n::translate('Add new site');?></b>
+			<b><?php echo i18n::translate('Add new site'); ?></b>
 			<?php echo help_link('link_remote_site'); ?>
 		</td>
 		</tr>
 		<tr>
 		<td class="facts_label width20">
-			<?php echo i18n::translate('Title:');?>
+			<?php echo i18n::translate('Title:'); ?>
 		</td>
 		<td class="facts_value">
-			<input type="text" size="66" name="serverTitle" value="<?php echo PrintReady($serverTitle);?>" />
+			<input type="text" size="66" name="serverTitle" value="<?php echo PrintReady($serverTitle); ?>" />
 		</td>
 		</tr>
 		<tr>
@@ -427,29 +427,29 @@ if (empty($errorServer)) {
 			<?php echo i18n::translate('Site URL/IP'); ?>
 		</td>
 		<td class="facts_value">
-			<input type="text" size="66" name="serverURL" value="<?php echo PrintReady($serverURL);?>" />
-			<br /><?php echo i18n::translate('Example:');?>&nbsp;&nbsp;http://www.remotesite.com/phpGedView/genservice.php?wsdl
+			<input type="text" size="66" name="serverURL" value="<?php echo PrintReady($serverURL); ?>" />
+			<br /><?php echo i18n::translate('Example:'); ?> http://www.remotesite.com/phpGedView/genservice.php?wsdl
 		</td>
 		</tr>
 		<tr>
 		<td class="facts_label width20">
-			<?php echo i18n::translate('Database ID:');?>
+			<?php echo i18n::translate('Database ID:'); ?>
 		</td>
 		<td class="facts_value">
-			<input type="text" name="gedcom_id" value="<?php echo PrintReady($gedcom_id);?>" />
+			<input type="text" name="gedcom_id" value="<?php echo PrintReady($gedcom_id); ?>" />
 		</td>
 		</tr>
 		<tr>
 		<td class="facts_label width20">
-			<?php echo i18n::translate('Username');?>
+			<?php echo i18n::translate('Username'); ?>
 		</td>
 		<td class="facts_value">
-			<input type="text" name="username" value="<?php echo PrintReady($username);?>" />
+			<input type="text" name="username" value="<?php echo PrintReady($username); ?>" />
 		</td>
 		</tr>
 		<tr>
 		<td class="facts_label width20">
-			<?php echo i18n::translate('Password');?>
+			<?php echo i18n::translate('Password'); ?>
 		</td>
 		<td class="facts_value">
 			<input type="password" name="password" />
@@ -457,7 +457,7 @@ if (empty($errorServer)) {
 		</tr>
 		<tr>
 		<td class="facts_value" align="center" colspan="2">
-			<input type="submit" value="<?php echo i18n::translate('Add');?>" />
+			<input type="submit" value="<?php echo i18n::translate('Add'); ?>" />
 			<input name="action" type="hidden" value="addServer"/>
 <?php
 	if (!empty($errorServer)) {

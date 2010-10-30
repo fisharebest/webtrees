@@ -190,8 +190,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label"><br />
 				</td>
-				<td class="facts_value<?php echo $styleadd ?>">
-					<?php //echo "<span class=\"details_label\">".translate_fact('NCHI').": </span>".$family->getNumberOfChildren()."<br />";?>
+				<td class="facts_value<?php echo $styleadd; ?>">
+					<?php //echo "<span class=\"details_label\">".translate_fact('NCHI').": </span>".$family->getNumberOfChildren()."<br />"; ?>
 					<?php $marr_type = strtoupper($family->getMarriageType());
 					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='UNKNOWN') {
 						$marr_fact = translate_fact("MARR_".$marr_type);
@@ -333,9 +333,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 			<tr>
 				<td class="facts_label">
-					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) {?>
+					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
 					<a href="javascript:;" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><img src="images/topdown.gif" alt="" border="0" /> <?php echo i18n::translate('Re-order children'); ?></a>
-					<?php }?>
+					<?php } ?>
 				</td>
 				<td class="facts_value">
 					<a href="javascript:;" onclick="return addnewchild('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
@@ -369,7 +369,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		ob_start();
 		?>
 		<table class="facts_table"><tr><td style="width:20%; padding:4px"></td><td class="descriptionbox rela">
-		<input id="checkbox_elder" type="checkbox" onclick="toggleByClassName('DIV', 'elderdate');" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\"";?>/>
+		<input id="checkbox_elder" type="checkbox" onclick="toggleByClassName('DIV', 'elderdate');" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>/>
 		<label for="checkbox_elder"><?php echo i18n::translate('Show date differences'), help_link('age_differences'); ?></label>
 		</td></tr></table>
 		<?php
@@ -435,7 +435,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<script type="text/javascript">
 		<!--
-			<?php if (!$SHOW_AGE_DIFF) echo "toggleByClassName('DIV', 'elderdate');";?>
+			<?php if (!$SHOW_AGE_DIFF) echo "toggleByClassName('DIV', 'elderdate');"; ?>
 		//-->
 		</script>
 		<br />
@@ -543,5 +543,4 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getJSCallback() {
 		return '';
 	}
-
 }

@@ -52,7 +52,7 @@ if ($record) {
 	function insertId() {
 		if (window.opener.document.getElementById('addlinkQueue')) {
 			// alert('Please move this alert window and examine the contents of the pop-up window, then click OK')
-			window.opener.insertRowToTable("<?php echo $record->getXref(); ?>", "<?php echo htmlSpecialChars($record->getFullName()); ?>", "<?php echo $headjs;?>");
+			window.opener.insertRowToTable("<?php echo $record->getXref(); ?>", "<?php echo htmlSpecialChars($record->getFullName()); ?>", "<?php echo $headjs; ?>");
 			window.close();
 		}
 	}
@@ -63,7 +63,7 @@ if ($record) {
 	?>
 	<script language="JavaScript" type="text/javascript">
 	function insertId() {
-		window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo i18n::translate('Not a valid Individual, Family or Source ID') ?>');
+		window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo i18n::translate('Not a valid Individual, Family or Source ID'); ?>');
 		window.close();
 	}
 	</script>

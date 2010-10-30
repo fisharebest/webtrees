@@ -75,9 +75,9 @@ echo '<script src="modules/GEDFact_assistant/_MEDIA/media_5_input.js" type="text
 		<tr>
 			<th class="topbottombar" width="10"  style="font-weight:100;" align="left">#</th>
 			<th class="topbottombar" width="55"  style="font-weight:100;" align="left">ID:</th>
-			<th class="topbottombar" width="370" style="font-weight:100;" align="left"><?php echo i18n::translate('Name');?></th>
-			<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo i18n::translate('Remove');?></th>
-			<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo i18n::translate('Navigator');?></th>
+			<th class="topbottombar" width="370" style="font-weight:100;" align="left"><?php echo i18n::translate('Name'); ?></th>
+			<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo i18n::translate('Remove'); ?></th>
+			<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo i18n::translate('Navigator'); ?></th>
 		</tr>
 		</thead>
 		<tbody></tbody>

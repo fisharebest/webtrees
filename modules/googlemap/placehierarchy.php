@@ -455,11 +455,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		var button4 = document.createElement('li');
 		var button5 = document.createElement('li');
 
-		button1.innerHTML = '<?php echo i18n::translate('Redraw map')?>';
-		button2.innerHTML = '<?php echo i18n::translate('Map')?>';
-		button3.innerHTML = '<?php echo i18n::translate('Satellite')?>';
-		button4.innerHTML = '<?php echo i18n::translate('Hybrid')?>';
-		button5.innerHTML = '<?php echo i18n::translate('Terrain')?>';
+		button1.innerHTML = '<?php echo i18n::translate('Redraw map'); ?>';
+		button2.innerHTML = '<?php echo i18n::translate('Map'); ?>';
+		button3.innerHTML = '<?php echo i18n::translate('Satellite'); ?>';
+		button4.innerHTML = '<?php echo i18n::translate('Hybrid'); ?>';
+		button5.innerHTML = '<?php echo i18n::translate('Terrain'); ?>';
 
 		button1.onclick = function() { <?php
 			if ($numfound>1) {
@@ -631,7 +631,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	?>
 	//end markers
 	place_map.setCenter(bounds.getCenter());
-	<?php if ($GOOGLEMAP_PH_CONTROLS) {?>
+	<?php if ($GOOGLEMAP_PH_CONTROLS) { ?>
 		// hide controls
 		GEvent.addListener(place_map, 'mouseout', function() {place_map.hideControls();});
 		// show controls

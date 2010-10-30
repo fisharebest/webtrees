@@ -208,9 +208,9 @@ function removeAll() {
 }
 // -->
 </script>
-		<button type="submit"><?php echo i18n::translate('Delete');?></button>
-		<button type="button" onclick="ul_clear(); return false;"><?php echo i18n::translate('Cancel');?></button><br /><br />
-		<button type="button" onclick="removeAll(); return false;"><?php echo i18n::translate('Remove all nonessential files');?></button>
+		<button type="submit"><?php echo i18n::translate('Delete'); ?></button>
+		<button type="button" onclick="ul_clear(); return false;"><?php echo i18n::translate('Cancel'); ?></button><br /><br />
+		<button type="button" onclick="removeAll(); return false;"><?php echo i18n::translate('Remove all nonessential files'); ?></button>
 		</td>
 	</tr>
 </table>

@@ -109,27 +109,27 @@ if ($form_action=='update') {
 <!--
 function checkform(frm) {
 	if (frm.form_username.value=="") {
-		alert("<?php echo i18n::translate('You must enter a user name.');?>");
+		alert("<?php echo i18n::translate('You must enter a user name.'); ?>");
 		frm.form_username.focus();
 		return false;
 	}
 	if (frm.form_realname.value=="") {
-		alert("<?php echo i18n::translate('You must enter a real name.');?>");
+		alert("<?php echo i18n::translate('You must enter a real name.'); ?>");
 		frm.form_realname.focus();
 		return false;
 	}
 	if (frm.form_email.value.indexOf("@")==-1) {
-		alert("<?php echo i18n::translate('You must enter an email address.');?>");
+		alert("<?php echo i18n::translate('You must enter an email address.'); ?>");
 		frm.user_email.focus();
 		return false;
 	}
 	if (frm.form_pass1.value!=frm.form_pass2.value) {
-		alert("<?php echo i18n::translate('Passwords do not match.');?>");
+		alert("<?php echo i18n::translate('Passwords do not match.'); ?>");
 		frm.form_pass1.focus();
 		return false;
 	}
 	if (frm.form_pass1.value.length > 0 && frm.form_pass1.value.length < 6) {
-		alert("<?php echo i18n::translate('Passwords must contain at least 6 characters.');?>");
+		alert("<?php echo i18n::translate('Passwords must contain at least 6 characters.'); ?>");
 		frm.form_pass1.focus();
 		return false;
 	}

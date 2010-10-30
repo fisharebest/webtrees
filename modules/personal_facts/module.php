@@ -72,7 +72,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '</td></tr>';
 		} else {
 			$indifacts = $this->controller->getIndiFacts();
-			if (count($indifacts)==0) {?>
+			if (count($indifacts)==0) { ?>
 				<tr>
 					<td id="no_tab1" colspan="2" class="facts_value"><?php echo i18n::translate('There are no Facts for this individual.'); ?>
 					</td>
@@ -85,10 +85,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="descriptionbox rela">
 					<input id="checkbox_rela_facts" type="checkbox" <?php if ($EXPAND_RELATIVES_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_rela');" />
 					<label for="checkbox_rela_facts"><?php echo i18n::translate('Events of close relatives'); ?></label>
-					<?php if (file_exists("languages/histo.".WT_LOCALE.".php")) {?>
+					<?php if (file_exists("languages/histo.".WT_LOCALE.".php")) { ?>
 						<input id="checkbox_histo" type="checkbox" <?php if ($EXPAND_HISTO_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_histo');" />
 						<label for="checkbox_histo"><?php echo i18n::translate('Historical facts'); ?></label>
-					<?php }?>
+					<?php } ?>
 				</td>
 			</tr>
 			<?php

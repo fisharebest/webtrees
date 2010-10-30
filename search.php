@@ -44,11 +44,11 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 <script language="JavaScript" type="text/javascript">
 <!--
 	function checknames(frm) {
-		action = "<?php echo $controller->action ?>";
+		action = "<?php echo $controller->action; ?>";
 		if (action == "general")
 		{
 			if (frm.query.value.length<2) {
-				alert("<?php echo i18n::translate('Please enter more than one character')?>");
+				alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
 				frm.query.focus();
 				return false;
 			}
@@ -70,7 +70,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 				if (place.length >= 2)
 					message = false;
 				if(message) {
-					alert("<?php echo i18n::translate('Please enter more than one character')?>");
+					alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
 					return false;
 				}
 			}
@@ -85,7 +85,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 				if (place != "")
 					message = false;
 				if (message) {
-					alert("<?php echo i18n::translate('Please enter a Given name, Last name, or Place in addition to Year')?>");
+					alert("<?php echo i18n::translate('Please enter a Given name, Last name, or Place in addition to Year'); ?>");
 					frm.firstname.focus();
 					return false;
 				}
@@ -97,7 +97,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			if(frm.subaction.value=='basic')
 			{
 				if (frm.multiquery.value.length < 2) {
-					alert("<?php echo i18n::translate('Please enter more than one character')?>");
+					alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
 					return false;
 				}
 			}
@@ -126,10 +126,10 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 					<?php if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) { ?>
 					if(gender.length < 1)
 					{
-						alert("<?php echo i18n::translate('Please enter one of the following:  Name, Birth Date, Birth Place, Death Date, Death Place, and Gender ')?>");
+						alert("<?php echo i18n::translate('Please enter one of the following:  Name, Birth Date, Birth Place, Death Date, Death Place, and Gender '); ?>");
 						return false;
 					}
-					alert("<?php echo i18n::translate('Please search again with more information than just gender')?>");
+					alert("<?php echo i18n::translate('Please search again with more information than just gender'); ?>");
 					<?php } ?>
 					return false;
 				}
@@ -177,7 +177,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="4">
-			<input tabindex="2" type="submit" value="<?php echo i18n::translate('Search') ?>" />
+			<input tabindex="2" type="submit" value="<?php echo i18n::translate('Search'); ?>" />
 		</td>
 	</tr>
 	<!-- // Choice where to search -->
@@ -374,7 +374,7 @@ if ($controller->action == "soundex") {
 		<td class="list_value">
 			<input type="radio" name="nameprt" value="hit"
 				<?php if (($controller->nameprt == "hit") || ($controller->nameprt == "")) echo " checked=\"checked\" "; ?> />
-				<?php echo i18n::translate('Names with hit') ?><br />
+				<?php echo i18n::translate('Names with hit'); ?><br />
 			<input type="radio" name="nameprt" value="all"
 				<?php if ($controller->nameprt == "all") echo " checked=\"checked\" "; ?> />
 				<?php echo i18n::translate('All names'); ?>
@@ -446,7 +446,7 @@ if ($controller->action == "multisite") {
 			<?php echo i18n::translate('search'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php echo $i ?>" type="text" name="multiquery" value="<?php echo $controller->mymultiquery; ?>" />
+			<input tabindex="<?php echo $i; ?>" type="text" name="multiquery" value="<?php echo $controller->mymultiquery; ?>" />
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="1">
 			<input tabindex="<?php echo ($i+2); ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>" onclick="document.searchform.subaction.value='basic';"/>

@@ -108,7 +108,7 @@ jQuery(document).ready(function(){
 
 <style type="text/css">
 #pin {
-	float: <?php echo $TEXT_DIRECTION=='rtl'?'left':'right';?>;
+	float: <?php echo $TEXT_DIRECTION=='rtl'?'left':'right'; ?>;
 }
 </style>
 

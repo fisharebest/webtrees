@@ -156,7 +156,8 @@ if ($i==$OLD_PGENS) {
 	echo ' selected="selected"';
 }
 	echo '>', $i, '</option>';
-}?>
+}
+?>
 </select>
 
 </td>

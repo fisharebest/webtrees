@@ -214,7 +214,7 @@ if ($display=="hierarchy") {
 				<script type="text/javascript">
 				<!--
 				//copy php array into js array
-				var places_accept = new Array(<?php foreach ($placelist as $key => $value) echo "'", str_replace("'", "\'", $value), "', "; echo "''";?>)
+				var places_accept = new Array(<?php foreach ($placelist as $key => $value) echo "'", str_replace("'", "\'", $value), "', "; echo "''"; ?>)
 				Array.prototype.in_array = function(val) {
 					for (var i in this) {
 						if (this[i] == val) return true;
@@ -225,46 +225,46 @@ if ($display=="hierarchy") {
 					if (txt=='') return;
 					// search full text [California (CA)]
 					var search = txt;
-					if (places_accept.in_array(search)) return(location.href = '?level=2<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=2<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]="; ?>'+search);
 					// search without optional code [California]
 					txt = txt.replace(/(\/)/,' ('); // case: finnish/swedish ==> finnish (swedish)
 					p=txt.indexOf(' (');
 					if (p>1) search=txt.substring(0, p);
 					else return;
-					if (places_accept.in_array(search)) return(location.href = '?level=2<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=2<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]="; ?>'+search);
 					// search with code only [CA]
 					search=txt.substring(p+2);
 					p=search.indexOf(')');
 					if (p>1) search=search.substring(0, p);
-					if (places_accept.in_array(search)) return(location.href = '?level=2<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=2<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]="; ?>'+search);
 				}
 				function setPlaceCounty(txt) {
 					if (txt=='') return;
 					var search = txt;
-					if (places_accept.in_array(search)) return(location.href = '?level=3<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=3<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]="; ?>'+search);
 					txt = txt.replace(/(\/)/,' (');
 					p=txt.indexOf(' (');
 					if (p>1) search=txt.substring(0, p);
 					else return;
-					if (places_accept.in_array(search)) return(location.href = '?level=3<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=3<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]="; ?>'+search);
 					search=txt.substring(p+2);
 					p=search.indexOf(')');
 					if (p>1) search=search.substring(0, p);
-					if (places_accept.in_array(search)) return(location.href = '?level=3<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=3<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]="; ?>'+search);
 				}
 				function setPlaceCity(txt) {
 					if (txt=='') return;
 					var search = txt;
-					if (places_accept.in_array(search)) return(location.href = '?level=4<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]=", urlencode(@$parent[2]), "&parent[3]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=4<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]=", urlencode(@$parent[2]), "&parent[3]="; ?>'+search);
 					txt = txt.replace(/(\/)/,' (');
 					p=txt.indexOf(' (');
 					if (p>1) search=txt.substring(0, p);
 					else return;
-					if (places_accept.in_array(search)) return(location.href = '?level=4<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]=", urlencode(@$parent[2]), "&parent[3]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=4<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]=", urlencode(@$parent[2]), "&parent[3]="; ?>'+search);
 					search=txt.substring(p+2);
 					p=search.indexOf(')');
 					if (p>1) search=search.substring(0, p);
-					if (places_accept.in_array(search)) return(location.href = '?level=4<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]=", urlencode(@$parent[2]), "&parent[3]="?>'+search);
+					if (places_accept.in_array(search)) return(location.href = '?level=4<?php echo "&parent[0]=", urlencode($parent[0]), "&parent[1]=", urlencode(@$parent[1]), "&parent[2]=", urlencode(@$parent[2]), "&parent[3]="; ?>'+search);
 				}
 				//-->
 				</script>

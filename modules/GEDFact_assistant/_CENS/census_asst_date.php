@@ -35,7 +35,7 @@
 		var ddate = theCensDate.split(', ');
 		document.getElementById('setctry').value = ddate[3];
 		document.getElementById('setyear').value = ddate[0];
-		cal_setDateField('<?php echo $element_id;?>', parseInt(ddate[0]), parseInt(ddate[1]), parseInt(ddate[2])); return false;
+		cal_setDateField('<?php echo $element_id; ?>', parseInt(ddate[0]), parseInt(ddate[1]), parseInt(ddate[2])); return false;
 	}
 	function pasteAsstDate(setcy, setyr) {
 		document.getElementById(setcy+setyr).selected = true;

@@ -141,16 +141,16 @@ print_header(i18n::translate('Download GEDCOM'));
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
 		<td class="list_value"><input type="checkbox" name="remove" value="yes" checked="checked" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media path to'), help_link('convertPath');?></td>
-		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $conv_path, getLRM();?>" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media folder separators to'), help_link('convertSlashes');?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media path to'), help_link('convertPath'); ?></td>
+		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $conv_path, getLRM(); ?>" /></td></tr>
+	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
 		<td class="list_value">
-		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Forward slashes : /');?><br />
-		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Backslashes : \\');?>
+		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Forward slashes : /'); ?><br />
+		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Backslashes : \\'); ?>
 		</td></tr>
 	<tr><td class="facts_label03" colspan="2">
 	<input type="submit" value="<?php echo i18n::translate('Download Now'); ?>" />
-	<input type="button" value="<?php echo i18n::translate('Back');?>" onclick="window.location='editgedcoms.php';"/></td></tr>
+	<input type="button" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='editgedcoms.php';"/></td></tr>
 	</table>
 </form>
 <?php

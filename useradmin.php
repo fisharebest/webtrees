@@ -756,11 +756,11 @@ if ($action == "createform") {
 			</tr>
 			<tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Email address'), help_link('useradmin_email');  ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Email address'), help_link('useradmin_email'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="emailaddress" value="" size="50" /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Preferred contact method'), help_link('useradmin_user_contact');  ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
 				<td class="optionbox wrap">
 					<?php
 						echo edit_field_contact('new_contact_method', get_site_setting('STORE_MESSAGES') ? 'messaging2' : 'messaging3');
@@ -772,7 +772,7 @@ if ($action == "createform") {
 				<td class="optionbox wrap"><input type="checkbox" name="verified" value="1" checked="checked" /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin');  ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" value="1" checked="checked" /></td>
 			</tr>
 			<tr>
@@ -793,7 +793,7 @@ if ($action == "createform") {
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('useradmin_change_lang'); ?></td>
-				<td class="optionbox wrap" valign="top"><?php echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language'));?></td>
+				<td class="optionbox wrap" valign="top"><?php echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language')); ?></td>
 			</tr>
 			<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>
 				<tr>

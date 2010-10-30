@@ -55,126 +55,126 @@ if (isset($content) && $content==1) {
 	if ($tab==0) { ?>
 		<div id="pagetab0" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
-			<legend><?php echo i18n::translate('Total individuals'), ': ', $stats->totalIndividuals();?></legend>
+			<legend><?php echo i18n::translate('Total individuals'), ': ', $stats->totalIndividuals(); ?></legend>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Total males');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Total females');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Total living');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Total dead');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total males'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total females'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total living'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total dead'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalSexMales();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalSexFemales();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalLiving();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalDeceased();?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalSexMales(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalSexFemales(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalLiving(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalDeceased(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartSex();?></td>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartMortality();?></td>
+						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartSex(); ?></td>
+						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartMortality(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Events');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Events'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Total births');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Total deaths');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total births'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total deaths'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalBirths();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalDeaths();?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalBirths(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalDeaths(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Births by century');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Deaths by century');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Births by century'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Deaths by century'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsBirth();?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsDeath();?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->statsBirth(); ?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->statsDeath(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Earliest birth');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Earliest death');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Earliest birth'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Earliest death'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->firstBirth();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->firstDeath();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->firstBirth(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->firstDeath(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Latest birth');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Latest death');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Latest birth'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Latest death'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->lastBirth();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->lastDeath();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->lastBirth(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->lastDeath(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Lifespan');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Lifespan'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Average age at death');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Males');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Females');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Average age at death'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Males'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Females'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->averageLifespan(true);?></td>
-						<td class="facts_value" align="center"><?php echo $stats->averageLifespanMale(true);?></td>
-						<td class="facts_value" align="center"><?php echo $stats->averageLifespanFemale(true);?></td>
+						<td class="facts_value" align="center"><?php echo $stats->averageLifespan(true); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->averageLifespanMale(true); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->averageLifespanFemale(true); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart" colspan="3"><?php echo $stats->statsAge();?></td>
+						<td class="facts_value statistics_chart" colspan="3"><?php echo $stats->statsAge(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Greatest age at death');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Greatest age at death'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Males');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Females');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Males'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Females'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topTenOldestMaleList();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topTenOldestFemaleList();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topTenOldestMaleList(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topTenOldestFemaleList(); ?></td>
 					</tr>
 				</table>
 				<br />
 				<?php
 				if (WT_USER_ID) {
 				?>
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Oldest living people');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Oldest living people'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Males');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Females');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Males'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Females'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topTenOldestMaleListAlive();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topTenOldestFemaleListAlive();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topTenOldestMaleListAlive(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topTenOldestFemaleListAlive(); ?></td>
 					</tr>
 				</table>
 				<br />
 				<?php
 				}
 				?>
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Names');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Names'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Total surnames');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Total given names');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total surnames'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total given names'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalSurnames();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalGivennames();?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalSurnames(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalGivennames(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Top surnames');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Top given names');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Top surnames'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Top given names'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->chartCommonSurnames();?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->chartCommonGiven();?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->chartCommonSurnames(); ?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->chartCommonGiven(); ?></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -184,142 +184,142 @@ if (isset($content) && $content==1) {
 	if ($tab==1) { ?>
 		<div id="pagetab1" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
-			<legend><?php echo i18n::translate('Total families'), ': ', $stats->totalFamilies();?></legend>
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Events');?></b></div>
+			<legend><?php echo i18n::translate('Total families'), ': ', $stats->totalFamilies(); ?></legend>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Events'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Total marriages');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Total divorces');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total marriages'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Total divorces'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalMarriages();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalEventsDivorce();?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalMarriages(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalEventsDivorce(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Marriages by century');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Divorces by century');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Marriages by century'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Divorces by century'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsMarr();?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsDiv();?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->statsMarr(); ?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->statsDiv(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Earliest marriage');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Earliest divorce');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Earliest marriage'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Earliest divorce'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->firstMarriage();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->firstDivorce();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->firstMarriage(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->firstDivorce(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Latest marriage');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Latest divorce');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Latest marriage'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Latest divorce'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->lastMarriage();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->lastDivorce();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->lastMarriage(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->lastDivorce(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Length of marriage');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Length of marriage'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Longest marriage')." - ".$stats->topAgeOfMarriage());?></td>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Shortest marriage')." - ".$stats->minAgeOfMarriage());?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Longest marriage')." - ".$stats->topAgeOfMarriage()); ?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Shortest marriage')." - ".$stats->minAgeOfMarriage()); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topAgeOfMarriageFamily();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->minAgeOfMarriageFamily();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topAgeOfMarriageFamily(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->minAgeOfMarriageFamily(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Age in year of marriage');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Age in year of marriage'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest male')." - ".$stats->youngestMarriageMaleAge(true));?></td>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest female')." - ".$stats->youngestMarriageFemaleAge(true));?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest male')." - ".$stats->youngestMarriageMaleAge(true)); ?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest female')." - ".$stats->youngestMarriageFemaleAge(true)); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->youngestMarriageMale();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->youngestMarriageFemale();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->youngestMarriageMale(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->youngestMarriageFemale(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest male')." - ".$stats->oldestMarriageMaleAge(true));?></td>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest female')." - ".$stats->oldestMarriageFemaleAge(true));?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest male')." - ".$stats->oldestMarriageMaleAge(true)); ?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest female')." - ".$stats->oldestMarriageFemaleAge(true)); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->oldestMarriageMale();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->oldestMarriageFemale();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->oldestMarriageMale(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->oldestMarriageFemale(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->statsMarrAge();?></td>
+						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->statsMarrAge(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Age at birth of child');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Age at birth of child'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest father')." - ".$stats->youngestFatherAge(true));?></td>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest mother')." - ".$stats->youngestMotherAge(true));?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest father')." - ".$stats->youngestFatherAge(true)); ?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Youngest mother')." - ".$stats->youngestMotherAge(true)); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->youngestFather();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->youngestMother();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->youngestFather(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->youngestMother(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest father')." - ".$stats->oldestFatherAge(true));?></td>
-						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest mother')." - ".$stats->oldestMotherAge(true));?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest father')." - ".$stats->oldestFatherAge(true)); ?></td>
+						<td class="facts_label"><?php echo PrintReady(i18n::translate('Oldest mother')." - ".$stats->oldestMotherAge(true)); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->oldestFather();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->oldestMother();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->oldestFather(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->oldestMother(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Children in family');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Children in family'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Average number of children per family');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Number of families without children');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Average number of children per family'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Number of families without children'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->averageChildren();?></td>
-						<td class="facts_value" align="center"><?php echo $stats->noChildrenFamilies();?></td>
+						<td class="facts_value" align="center"><?php echo $stats->averageChildren(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->noChildrenFamilies(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsChildren();?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->chartNoChildrenFamilies();?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->statsChildren(); ?></td>
+						<td class="facts_value statistics_chart"><?php echo $stats->chartNoChildrenFamilies(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Largest families');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Largest number of grandchildren');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Largest families'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Largest number of grandchildren'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topTenLargestFamilyList();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topTenLargestGrandFamilyList();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topTenLargestFamilyList(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topTenLargestGrandFamilyList(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartLargestFamilies();?></td>
+						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartLargestFamilies(); ?></td>
 					</tr>
 				</table>
 				<br />
-				<div align="<?php echo $TEXT_DIRECTION;?>"><b><?php echo i18n::translate('Age difference');?></b></div>
+				<div align="<?php echo $TEXT_DIRECTION; ?>"><b><?php echo i18n::translate('Age difference'); ?></b></div>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Age between siblings');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Greatest age between siblings');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Age between siblings'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Greatest age between siblings'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topAgeBetweenSiblingsList();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->topAgeBetweenSiblingsFullName();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topAgeBetweenSiblingsList(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->topAgeBetweenSiblingsFullName(); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_label"><?php echo i18n::translate('Age between husband and wife');?></td>
-						<td class="facts_label"><?php echo i18n::translate('Age between wife and husband');?></td>
+						<td class="facts_label"><?php echo i18n::translate('Age between husband and wife'); ?></td>
+						<td class="facts_label"><?php echo i18n::translate('Age between wife and husband'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->ageBetweenSpousesMFList();?></td>
-						<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->ageBetweenSpousesFMList();?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->ageBetweenSpousesMFList(); ?></td>
+						<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->ageBetweenSpousesFMList(); ?></td>
 					</tr>
 				</table>
 		</fieldset>
@@ -329,86 +329,86 @@ if (isset($content) && $content==1) {
 	else if ($tab==2) { ?>
 		<div id="pagetab2" class="<?php echo $TEXT_DIRECTION; ?>">
 		<fieldset>
-			<legend><?php echo i18n::translate('Records'), ': ', $stats->totalRecords();?></legend>
+			<legend><?php echo i18n::translate('Records'), ': ', $stats->totalRecords(); ?></legend>
 				<table class="facts_table">
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Media objects');?></td>
-					<td class="facts_label"><?php echo i18n::translate('Sources');?></td>
-					<td class="facts_label"><?php echo i18n::translate('Notes');?></td>
-					<td class="facts_label"><?php echo i18n::translate('Repositories');?></td>
-					<td class="facts_label"><?php echo i18n::translate('Other records');?></td>
+					<td class="facts_label"><?php echo i18n::translate('Media objects'); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Sources'); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Notes'); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Repositories'); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Other records'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value" align="center"><?php echo $stats->totalMedia();?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalSources();?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalNotes();?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalRepositories();?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalOtherRecords();?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalMedia(); ?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalSources(); ?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalNotes(); ?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalRepositories(); ?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalOtherRecords(); ?></td>
 				</tr>
 				</table>
 			</fieldset>
 			<fieldset>
-				<legend><?php echo i18n::translate('Total events'), ': ', $stats->totalEvents();?></legend>
+				<legend><?php echo i18n::translate('Total events'), ': ', $stats->totalEvents(); ?></legend>
 				<table class="facts_table">
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('First event'), ' - ', $stats->firstEventType();?></td>
-					<td class="facts_label"><?php echo i18n::translate('Last event'), ' - ', $stats->lastEventType();?></td>
+					<td class="facts_label"><?php echo i18n::translate('First event'), ' - ', $stats->firstEventType(); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Last event'), ' - ', $stats->lastEventType(); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->firstEvent();?></td>
-					<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->lastEvent();?></td>
+					<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->firstEvent(); ?></td>
+					<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->lastEvent(); ?></td>
 				</tr>
 				</table>
 			</fieldset>
 			<fieldset>
-				<legend><?php echo i18n::translate('Media objects'), ': ', $stats->totalMedia();?></legend>
+				<legend><?php echo i18n::translate('Media objects'), ': ', $stats->totalMedia(); ?></legend>
 				<table class="facts_table">
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Media');?></td>
+					<td class="facts_label"><?php echo i18n::translate('Media'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value statistics_chart"><?php echo $stats->chartMedia();?></td>
+					<td class="facts_value statistics_chart"><?php echo $stats->chartMedia(); ?></td>
 				</tr>
 				</table>
 			</fieldset>
 			<fieldset>
-				<legend><?php echo i18n::translate('Sources'), ': ', $stats->totalSources();?></legend>
+				<legend><?php echo i18n::translate('Sources'), ': ', $stats->totalSources(); ?></legend>
 				<table class="facts_table">
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Individuals with sources'); ?></td>
 					<td class="facts_label"><?php echo i18n::translate('Families with sources'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value" align="center"><?php echo $stats->totalIndisWithSources();?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalFamsWithSources();?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalIndisWithSources(); ?></td>
+					<td class="facts_value" align="center"><?php echo $stats->totalFamsWithSources(); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value statistics_chart"><?php echo $stats->chartIndisWithSources();?></td>
-					<td class="facts_value statistics_chart"><?php echo $stats->chartFamsWithSources();?></td>
+					<td class="facts_value statistics_chart"><?php echo $stats->chartIndisWithSources(); ?></td>
+					<td class="facts_value statistics_chart"><?php echo $stats->chartFamsWithSources(); ?></td>
 				</tr>
 				</table>
 			</fieldset>
 			<fieldset>
-				<legend><?php echo i18n::translate('Places'), ': ', $stats->totalPlaces();?></legend>
+				<legend><?php echo i18n::translate('Places'), ': ', $stats->totalPlaces(); ?></legend>
 				<table class="facts_table">
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Birth places');?></td>
-					<td class="facts_label"><?php echo i18n::translate('Death places');?></td>
+					<td class="facts_label"><?php echo i18n::translate('Birth places'); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Death places'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->commonBirthPlacesList();?></td>
-					<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->commonDeathPlacesList();?></td>
+					<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->commonBirthPlacesList(); ?></td>
+					<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->commonDeathPlacesList(); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Marriage places');?></td>
-					<td class="facts_label"><?php echo i18n::translate('Events in countries');?></td>
+					<td class="facts_label"><?php echo i18n::translate('Marriage places'); ?></td>
+					<td class="facts_label"><?php echo i18n::translate('Events in countries'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->commonMarriagePlacesList();?></td>
-					<td class="facts_value" align="<?php echo $TEXT_DIRECTION;?>"><?php echo $stats->commonCountriesList();?></td>
+					<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->commonMarriagePlacesList(); ?></td>
+					<td class="facts_value" align="<?php echo $TEXT_DIRECTION; ?>"><?php echo $stats->commonCountriesList(); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value" colspan="2"><?php echo $stats->chartDistribution();?></td>
+					<td class="facts_value" colspan="2"><?php echo $stats->chartDistribution(); ?></td>
 				</tr>
 			</table>
 		</fieldset>
@@ -594,11 +594,11 @@ if (isset($content) && $content==1) {
 			?>
 			<br /><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
 				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected"><?php
-					echo i18n::plural('interval %d year', 'interval %d years', 10, 10);?></option>
+					echo i18n::plural('interval %d year', 'interval %d years', 10, 10); ?></option>
 				<option value="5,20,40,60,75,80,85,90"><?php
-					echo i18n::plural('interval %d year', 'interval %d years', 20, 20);?></option>
+					echo i18n::plural('interval %d year', 'interval %d years', 20, 20); ?></option>
 				<option value="10,25,50,75,100"><?php
-					echo i18n::plural('interval %d year', 'interval %d years', 25, 25);?></option>
+					echo i18n::plural('interval %d year', 'interval %d years', 25, 25); ?></option>
 			</select><br />
 			</div>
 			<div id="x_years_m" style="display:none;">
@@ -607,9 +607,9 @@ if (isset($content) && $content==1) {
 			?>
 			<br /><select id="xas-grenzen-leeftijden_m" name="xas-grenzen-leeftijden_m">
 				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected="selected"><?php
-					echo i18n::plural('interval %d year', 'interval %d years', 2, 2);?></option>
+					echo i18n::plural('interval %d year', 'interval %d years', 2, 2); ?></option>
 				<option value="20,25,30,35,40,45,50"><?php
-					echo i18n::plural('interval %d year', 'interval %d years', 5, 5);?></option>
+					echo i18n::plural('interval %d year', 'interval %d years', 5, 5); ?></option>
 			</select><br />
 			</div>
 			<div id="x_months" style="display:none;">
@@ -617,10 +617,10 @@ if (isset($content) && $content==1) {
 			echo i18n::translate('boundaries for month:'), help_link('stat_gwx');
 			?>
 			<br /><select id="xas-grenzen-maanden" name="xas-grenzen-maanden">
-				<option value="0,8,12,15,18,24,48" selected="selected"><?php echo i18n::translate('months after marriage');?></option>
-				<option value="-24,-12,0,8,12,18,24,48"><?php echo i18n::translate('months before and after marriage');?></option>
-				<option value="0,6,9,12,15,18,21,24"><?php echo i18n::translate('quarters after marriage');?></option>
-				<option value="0,6,12,18,24"><?php echo i18n::translate('half-year after marriage');?></option>
+				<option value="0,8,12,15,18,24,48" selected="selected"><?php echo i18n::translate('months after marriage'); ?></option>
+				<option value="-24,-12,0,8,12,18,24,48"><?php echo i18n::translate('months before and after marriage'); ?></option>
+				<option value="0,6,9,12,15,18,21,24"><?php echo i18n::translate('quarters after marriage'); ?></option>
+				<option value="0,6,12,18,24"><?php echo i18n::translate('half-year after marriage'); ?></option>
 			</select><br />
 			</div>
 			<div id="x_numbers" style="display:none;">
@@ -628,8 +628,8 @@ if (isset($content) && $content==1) {
 			echo i18n::translate('boundaries for numbers:'), help_link('stat_gcx');
 			?>
 			<br /><select id="xas-grenzen-aantallen" name="xas-grenzen-aantallen">
-				<option value="1,2,3,4,5,6,7,8,9,10" selected="selected"><?php echo i18n::translate('interval one child');?></option>
-				<option value="2,4,6,8,10,12"><?php echo i18n::translate('interval two children');?></option>
+				<option value="1,2,3,4,5,6,7,8,9,10" selected="selected"><?php echo i18n::translate('interval one child'); ?></option>
+				<option value="2,4,6,8,10,12"><?php echo i18n::translate('interval two children'); ?></option>
 			</select>
 			<br />
 			</div>
@@ -686,17 +686,17 @@ if (isset($content) && $content==1) {
 			<select id="zas-grenzen-periode" name="zas-grenzen-periode">
 				<option value="1700,1750,1800,1850,1900,1950,2000" selected="selected"><?php
 					// I18N: from 1700 interval 50 years
-					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 50, 50, 1700);?></option>
+					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 50, 50, 1700); ?></option>
 				<option value="1800,1840,1880,1920,1950,1970,2000"><?php
-					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 40, 40, 1800);?></option>
+					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 40, 40, 1800); ?></option>
 				<option value="1800,1850,1900,1950,2000"><?php
-					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 50, 50, 1800);?></option>
+					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 50, 50, 1800); ?></option>
 				<option value="1900,1920,1940,1960,1980,1990,2000"><?php
-					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 20, 20, 1900);?></option>
+					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 20, 20, 1900); ?></option>
 				<option value="1900,1925,1950,1975,2000"><?php
-					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 25, 25, 1900);?></option>
+					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 25, 25, 1900); ?></option>
 				<option value="1940,1950,1960,1970,1980,1990,2000"><?php
-					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 10, 10, 1940);?></option>
+					echo i18n::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 10, 10, 1940); ?></option>
 			</select>
 			<br /><br />
 			<?php
@@ -743,10 +743,10 @@ if (isset($content) && $content==1) {
 	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>
 	<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-	<?php if ($TEXT_DIRECTION=='rtl') {?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
-	<?php }?>
+	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
+	<?php if ($TEXT_DIRECTION=='rtl') { ?>
+	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
+	<?php } ?>
 	<script type="text/javascript">
 	//<![CDATA[
 		jQuery.noConflict();
@@ -781,20 +781,20 @@ if (isset($content) && $content==1) {
 		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab0" title="<?php echo i18n::translate('Individuals');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=0"><span>
-					<?php echo i18n::translate('Individuals');?></span></a>
+				<a name="pagetab0" title="<?php echo i18n::translate('Individuals'); ?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=0"><span>
+					<?php echo i18n::translate('Individuals'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab1" title="<?php echo i18n::translate('Families');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=1"><span>
-					<?php echo i18n::translate('Families');?></span></a>
+				<a name="pagetab1" title="<?php echo i18n::translate('Families'); ?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=1"><span>
+					<?php echo i18n::translate('Families'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab2" title="<?php echo i18n::translate('Others');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=2"><span>
-					<?php echo i18n::translate('Others');?></span></a>
+				<a name="pagetab2" title="<?php echo i18n::translate('Others'); ?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=2"><span>
+					<?php echo i18n::translate('Others'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab3" title="<?php echo i18n::translate('Own charts');?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=3"><span>
-					<?php echo i18n::translate('Own charts');?></span></a>
+				<a name="pagetab3" title="<?php echo i18n::translate('Own charts'); ?>" href="statistics.php?ged=<?php echo $GEDCOM; ?>&content=1&tab=3"><span>
+					<?php echo i18n::translate('Own charts'); ?></span></a>
 			</li>
 		</ul>
 		</div> <!-- tabs -->

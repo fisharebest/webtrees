@@ -106,7 +106,7 @@ function setup_place_subfields($element_id) {
 	// called to refresh field PLAC after any subfield change
 	function updatewholeplace(place_tag) {
 		place_value="";
-		for (p=0; p<<?php echo count($plac_label);?>; p++) {
+		for (p=0; p<<?php echo count($plac_label); ?>; p++) {
 			place_subtag=place_tag+'_'+p;
 			if (document.getElementById(place_subtag)) {
 				// clear data after opening bracket : Wales (WLS) ==> Wales
@@ -142,7 +142,7 @@ function setup_place_subfields($element_id) {
 			else if (ctry.length==3) elt.value=ctry;
 			if (ctry=='') ctry='???';
 			<?php global $iso3166; foreach (array_keys($iso3166) as $alpha3) { ?>
-			else if (ctry=='<?php echo addslashes(i18n::translate($alpha3)) ?>') ctry='<?php echo $alpha3 ?>';
+			else if (ctry=='<?php echo addslashes(i18n::translate($alpha3)); ?>') ctry='<?php echo $alpha3; ?>';
 			<?php } ?>
 			else if (ctry.length!=3) ctry=ctry.substr(0,3);
 			pdir='places/'+ctry+'/';

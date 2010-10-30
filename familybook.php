@@ -269,7 +269,7 @@ else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>" />
 </td>
 
 <td rowspan="4" class="topbottombar vmiddle">
-<input type="submit" value="<?php echo i18n::translate('View') ?>" />
+<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
 </td></tr>
 
 <tr><td class="descriptionbox">

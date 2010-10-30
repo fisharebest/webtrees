@@ -81,11 +81,11 @@ if ($action == "ChangeFlag") {
 	<!--
 		function edit_close() {
 <?php if($_POST["selcountry"] == "Countries") { ?>
-			window.opener.document.editplaces.icon.value = "places/flags/<?php echo $flags[$_POST["FLAGS"]];?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/flags/<?php echo $country[$_POST["FLAGS"]];?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag')?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag')?></a>";
+			window.opener.document.editplaces.icon.value = "places/flags/<?php echo $flags[$_POST["FLAGS"]]; ?>.gif";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag'); ?></a>";
 <?php } else { ?>
-			window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]];?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]];?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag')?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag')?></a>";
+			window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag'); ?></a>";
 <?php } ?>
 			window.close();
 		}
@@ -148,10 +148,10 @@ else {
 	}
 ?>
 
-<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $countrySelected;?>">
+<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $countrySelected; ?>">
 	<input type="hidden" name="action" value="ChangeFlag" />
-	<input type="hidden" name="selcountry" value="<?php echo $countrySelected;?>" />
-	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo i18n::translate('Save');?>" /><br />
+	<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>" />
+	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo i18n::translate('Save'); ?>" /><br />
 	<table class="facts_table">
 		<tr>
 			<td class="optionbox" colspan="4">
@@ -188,10 +188,9 @@ else {
 ?>
 		</tr>
 	</table>
-	<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo i18n::translate('Save');?>" /><br />
+	<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo i18n::translate('Save'); ?>" /><br />
 </form>
 <?php
 echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", i18n::translate('Close Window'), "</a></div><br />\n";
 
 print_simple_footer();
-?>

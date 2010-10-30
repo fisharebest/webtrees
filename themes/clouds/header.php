@@ -78,12 +78,12 @@ echo
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
 ?>
 
-<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
+<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
 <link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />
 
 <?php
 if ($TEXT_DIRECTION=='rtl') { ?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
+	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
 <?php }
 
 echo
@@ -96,7 +96,7 @@ if ($BROWSERTYPE!='other') { ?>
 }
 
 
-if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {?>
+if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
 	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" />
 <?php }
 	echo '</head><body id="body" ', $bodyOnLoad, '>';
@@ -121,7 +121,7 @@ if (empty($SEARCH_SPIDER)) {
 		 '</td>',
 		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >';
 ?>
-	<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right" ?>">
+	<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>">
 <?php
 	echo '<form action="search.php" method="post">',
 		 '<input type="hidden" name="action" value="general" />',

@@ -515,7 +515,7 @@ global $TEXT_DIRECTION;
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		document.getElementById('Titl').value = '<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household');?>';
+		document.getElementById('Titl').value = '<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household'); ?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
@@ -1002,7 +1002,7 @@ global $TEXT_DIRECTION;
 			// Input renamed as type=hidden to hide the date field ----- //
 			// Note Input field is still required ---------------------- //
 			?>
-				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo "";?>" READONLY/>
+				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" READONLY/>
 			</font>
 			</td></tr></table>
 		</div>
@@ -1025,20 +1025,20 @@ global $TEXT_DIRECTION;
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo i18n::translate('Title'); ?></div>
 			<script type="text/javascript">
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household');?>" />');
+				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household'); ?>" />');
 			</script>
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo translate_fact('PAGE'); ?></div>
-			<input id="citation" name="citation" type="text" value="<?php echo "";?>" />
+			<input id="citation" name="citation" type="text" value="<?php echo ""; ?>" />
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo i18n::translate('Place'); ?></div>
-			<input id="locality" name="locality" type="text" value="<?php echo "";?>" />
+			<input id="locality" name="locality" type="text" value="<?php echo ""; ?>" />
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo i18n::translate('Notes'); ?></div>
-			<input id="notes" name="notes" type="text" value="<?php echo "";?>" />
+			<input id="notes" name="notes" type="text" value="<?php echo ""; ?>" />
 		</div>
 	</div>
 </div>

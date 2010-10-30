@@ -298,21 +298,21 @@ print_header(i18n::translate('Module administration'));
 
 <div align="center">
 	<p><?php echo "<h2>".i18n::translate('Module administration')."</h2>"; ?></p>
-	<p><?php echo i18n::translate('Below is the list of all the modules installed in this instance of webtrees.  Modules are installed by placing them in the <i>modules</i> directory.  Here you can set the access level per GEDCOM for each module.  If a module includes tabs for the individual page or menus for the menu bar, you can also set the access level and order of each of them.')?></p>
-	<p><input TYPE="button" VALUE="<?php echo i18n::translate('Return to Administration page');?>" onclick="javascript:window.location='admin.php'" /></p>
+	<p><?php echo i18n::translate('Below is the list of all the modules installed in this instance of webtrees.  Modules are installed by placing them in the <i>modules</i> directory.  Here you can set the access level per GEDCOM for each module.  If a module includes tabs for the individual page or menus for the menu bar, you can also set the access level and order of each of them.'); ?></p>
+	<p><input TYPE="button" VALUE="<?php echo i18n::translate('Return to Administration page'); ?>" onclick="javascript:window.location='admin.php'" /></p>
 	<div id="tabs">
 		<form method="post" action="module_admin.php">
 			<input type="hidden" name="action" value="update_mods" />
 			<!-- page tabs -->
 				<ul>
-					<li><a href="#installed_tab"><span><?php echo i18n::translate('All modules')?></span></a></li>
-					<li><a href="#menus_tab"><span><?php echo i18n::translate('Menus')?></span></a></li>
-					<li><a href="#tabs_tab"><span><?php echo i18n::translate('Tabs')?></span></a></li>
-					<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebar')?></span></a></li>
-					<li><a href="#blocks_tab"><span><?php echo i18n::translate('Blocks')?></span></a></li>
-					<li><a href="#charts_tab"><span><?php echo i18n::translate('Charts')?></span></a></li>
-					<li><a href="#reports_tab"><span><?php echo i18n::translate('Reports')?></span></a></li>
-					<li><a href="#themes_tab"><span><?php echo i18n::translate('Themes')?></span></a></li>
+					<li><a href="#installed_tab"><span><?php echo i18n::translate('All modules'); ?></span></a></li>
+					<li><a href="#menus_tab"><span><?php echo i18n::translate('Menus'); ?></span></a></li>
+					<li><a href="#tabs_tab"><span><?php echo i18n::translate('Tabs'); ?></span></a></li>
+					<li><a href="#sidebars_tab"><span><?php echo i18n::translate('Sidebar'); ?></span></a></li>
+					<li><a href="#blocks_tab"><span><?php echo i18n::translate('Blocks'); ?></span></a></li>
+					<li><a href="#charts_tab"><span><?php echo i18n::translate('Charts'); ?></span></a></li>
+					<li><a href="#reports_tab"><span><?php echo i18n::translate('Reports'); ?></span></a></li>
+					<li><a href="#themes_tab"><span><?php echo i18n::translate('Themes'); ?></span></a></li>
 				</ul>
 			<!-- installed -->
 			<div id="installed_tab">
@@ -340,15 +340,15 @@ print_header(i18n::translate('Module administration'));
 							)->execute(array($module->getName()))->fetchOne();
 							echo '<tr><td>', two_state_checkbox('status-'.$module->getName(), $status=='enabled'), '</td><td>';
 							if ($module instanceof WT_Module_Config) echo '<a href="', $module->getConfigLink(), '"><img class="adminicon" src="', $WT_IMAGES["admin"], '" border="0" alt="', $module->getName(), '" /></a>'; ?></td>
-							<td><?php echo $module->getTitle()?></td>
-							<td><?php echo $module->getDescription()?></td>
-							<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-							<td><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-							<td><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-							<td><?php if ($module instanceof WT_Module_Block) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-							<td><?php if ($module instanceof WT_Module_Chart) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-							<td><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
-							<td><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No');?></td>
+							<td><?php echo $module->getTitle(); ?></td>
+							<td><?php echo $module->getDescription(); ?></td>
+							<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+							<td><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+							<td><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+							<td><?php if ($module instanceof WT_Module_Block) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+							<td><?php if ($module instanceof WT_Module_Chart) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+							<td><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+							<td><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
 							</tr>
 						<?php
 						}
@@ -378,22 +378,22 @@ print_header(i18n::translate('Module administration'));
 				<table id="menus_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Order')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Order'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledMenus() as $module) {?>
+						foreach(WT_Module::getInstalledMenus() as $module) { ?>
 						<tr class="sortme">
-							<td class="list_value"><?php echo $module->getTitle()?></td>
-							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName() ?>" />
-								<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
-								<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
-								<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
-								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
+							<td class="list_value"><?php echo $module->getTitle(); ?></td>
+							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
+								<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move up'); ?>" />
+								<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move to top'); ?>" />
+								<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"]; ?>" border="0" title="<?php echo i18n::translate('Move down'); ?>" />
+								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move to bottom'); ?>" />
 							</td>
 							<td class="list_value_wrap">
 								<table>
@@ -425,22 +425,22 @@ print_header(i18n::translate('Module administration'));
 				<table id="tabs_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Order')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Order'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledTabs() as $module) {?>
+						foreach(WT_Module::getInstalledTabs() as $module) { ?>
 						<tr class="sortme">
-							<td class="list_value"><?php echo $module->getTitle()?></td>
-							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName() ?>" />
-								<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
-								<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
-								<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
-								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
+							<td class="list_value"><?php echo $module->getTitle(); ?></td>
+							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName(); ?>" />
+								<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move up'); ?>" />
+								<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move to top'); ?>" />
+								<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"]; ?>" border="0" title="<?php echo i18n::translate('Move down'); ?>" />
+								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move to bottom'); ?>" />
 							</td>
 							<td class="list_value_wrap">
 							<table>
@@ -472,22 +472,22 @@ print_header(i18n::translate('Module administration'));
 				<table id="sidebars_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Order')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Order'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledSidebars() as $module) {?>
+						foreach(WT_Module::getInstalledSidebars() as $module) { ?>
 							<tr class="sortme">
-								<td class="list_value"><?php echo $module->getTitle()?></td>
-								<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName() ?>" />
-									<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"];?>" border="0" title="<?php echo i18n::translate('Move up')?>" />
-								<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"];?>" border="0" title="<?php echo i18n::translate('Move to top')?>" />
-								<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"];?>" border="0" title="<?php echo i18n::translate('Move down')?>" />
-								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"];?>" border="0" title="<?php echo i18n::translate('Move to bottom')?>" />
+								<td class="list_value"><?php echo $module->getTitle(); ?></td>
+								<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>" />
+									<img class="uarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["uarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move up'); ?>" />
+								<img class="udarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["udarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move to top'); ?>" />
+								<img class="darrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["darrow"]; ?>" border="0" title="<?php echo i18n::translate('Move down'); ?>" />
+								<img class="ddarrow" style="vertical-align:bottom;" src="<?php echo $WT_IMAGES["ddarrow"]; ?>" border="0" title="<?php echo i18n::translate('Move to bottom'); ?>" />
 								</td>
 								<td class="list_value_wrap">
 									<table>
@@ -519,16 +519,16 @@ print_header(i18n::translate('Module administration'));
 				<table id="blocks_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledBlocks() as $module) {?>
+						foreach(WT_Module::getInstalledBlocks() as $module) { ?>
 						<tr class="sortme">
-							<td class="list_value"><?php echo $module->getTitle()?></td>
+							<td class="list_value"><?php echo $module->getTitle(); ?></td>
 							<td class="list_value_wrap">
 								<table>
 									<?php
@@ -559,16 +559,16 @@ print_header(i18n::translate('Module administration'));
 				<table id="charts_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledCharts() as $module) {?>
+						foreach(WT_Module::getInstalledCharts() as $module) { ?>
 							<tr class="sortme">
-								<td class="list_value"><?php echo $module->getTitle()?></td>
+								<td class="list_value"><?php echo $module->getTitle(); ?></td>
 								<td class="list_value_wrap">
 									<table>
 										<?php
@@ -599,16 +599,16 @@ print_header(i18n::translate('Module administration'));
 				<table id="reports_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledReports() as $module) {?>
+						foreach(WT_Module::getInstalledReports() as $module) { ?>
 							<tr class="sortme">
-								<td class="list_value"><?php echo $module->getTitle()?></td>
+								<td class="list_value"><?php echo $module->getTitle(); ?></td>
 								<td class="list_value_wrap">
 									<table>
 										<?php
@@ -639,16 +639,16 @@ print_header(i18n::translate('Module administration'));
 				<table id="themes_table" class="list_table">
 					<thead>
 						<tr>
-						<th class="list_label"><?php echo i18n::translate('Module Name')?></th>
-						<th class="list_label"><?php echo i18n::translate('Access level')?></th>
+						<th class="list_label"><?php echo i18n::translate('Module Name'); ?></th>
+						<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledThemes() as $module) {?>
+						foreach(WT_Module::getInstalledThemes() as $module) { ?>
 						<tr class="sortme">
-							<td class="list_value"><?php echo $module->getTitle()?></td>
+							<td class="list_value"><?php echo $module->getTitle(); ?></td>
 							<td class="list_value_wrap">
 								<table>
 									<?php
@@ -674,7 +674,7 @@ print_header(i18n::translate('Module administration'));
 					</tbody>
 				</table>
 			</div>
-			<input type="submit" value="<?php echo i18n::translate('Save')?>" />
+			<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
 		</form>
 	</div>
 </div>

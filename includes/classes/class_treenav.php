@@ -167,13 +167,13 @@ class TreeNav {
 			<?php $parent=null;
 			//if ($this->rootPerson!=null && !$this->rootPerson->canDisplayDetails()) print_privacy_error();
 			if (!$this->allSpouses) $this->drawPerson($this->rootPerson, $this->generations, 0, $parent);
-			else $this->drawPersonAllSpouses($this->rootPerson, $this->generations, 0);?>
+			else $this->drawPersonAllSpouses($this->rootPerson, $this->generations, 0); ?>
 			</div>
 			<div id="controls" style="position: absolute; left: 0px; top: 0px; z-index: 100; background-color: #EEEEEE">
 			<table>
-				<tr><td><a href="#" onclick="<?php echo $this->name; ?>.zoomIn(); return false;"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['zoomin'];?>" border="0" alt="zoomin" /></a></td></tr>
-				<tr><td><a href="#" onclick="<?php echo $this->name; ?>.zoomOut(); return false;"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['zoomout'];?>" border="0" alt="zoomout" /></a></td></tr>
-				<tr><td <?php if (is_null($this->rootPerson) || WT_SCRIPT_NAME=='treenav.php') echo "style=\"display: none;\"";?>><a id="biglink" href="#" onclick="<?php echo $this->name; ?>.loadBigTree('<?php if (!is_null($this->rootPerson)) echo $this->rootPerson->getXref();?>','<?php echo htmlspecialchars($GEDCOM); ?>'); return false;" title="<?php echo i18n::translate('View this tree in the full page interactive tree'); ?>"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['tree'];?>" border="0" alt="" /></a></td></tr>
+				<tr><td><a href="#" onclick="<?php echo $this->name; ?>.zoomIn(); return false;"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['zoomin']; ?>" border="0" alt="zoomin" /></a></td></tr>
+				<tr><td><a href="#" onclick="<?php echo $this->name; ?>.zoomOut(); return false;"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['zoomout']; ?>" border="0" alt="zoomout" /></a></td></tr>
+				<tr><td <?php if (is_null($this->rootPerson) || WT_SCRIPT_NAME=='treenav.php') echo "style=\"display: none;\""; ?>><a id="biglink" href="#" onclick="<?php echo $this->name; ?>.loadBigTree('<?php if (!is_null($this->rootPerson)) echo $this->rootPerson->getXref(); ?>','<?php echo htmlspecialchars($GEDCOM); ?>'); return false;" title="<?php echo i18n::translate('View this tree in the full page interactive tree'); ?>"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['tree']; ?>" border="0" alt="" /></a></td></tr>
 				<tr><td><a href="#" onclick="<?php echo $this->name; ?>.toggleSpouses('<?php if ($this->rootPerson!=null) echo $this->rootPerson->getXref(); ?>'); return false;" title="<?php echo i18n::translate('Show or hide multiple spouses'); ?>"><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['sfamily']; ?>" border="0" alt="" /></a></td></tr>
 				<tr><td><?php echo help_link('treenav.php'); ?></td></tr>
 				<tr><td><img id="<?php echo $this->name; ?>_loading" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH; ?>images/loading.gif" style="display: none;" alt="Loading..." /></td></tr>
@@ -307,8 +307,8 @@ class TreeNav {
 			$thumbnail .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			echo $thumbnail;
 		} ?>
-		<a href="<?php echo $person->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name;?>.collapseBox) return false;"><?php echo $person->getSexImage().PrintReady($name); ?></a>
-		<img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"];?>" border="0" width="15" onclick="<?php echo $this->name;?>.newRoot('<?php echo $person->getXref();?>', <?php echo $this->name;?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
+		<a href="<?php echo $person->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name; ?>.collapseBox) return false;"><?php echo $person->getSexImage().PrintReady($name); ?></a>
+		<img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"]; ?>" border="0" width="15" onclick="<?php echo $this->name; ?>.newRoot('<?php echo $person->getXref(); ?>', <?php echo $this->name; ?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
 		</span><br />
 		<div class="details1 indent">
 			<?php
@@ -345,16 +345,16 @@ class TreeNav {
 					$thumbnail .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 					echo $thumbnail;
 				} ?>
-				<a href="<?php echo $spouse->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name;?>.collapseBox) return false;">
+				<a href="<?php echo $spouse->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name; ?>.collapseBox) return false;">
 				<?php echo $spouse->getSexImage().PrintReady($name); ?></a>
-				<img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"];?>" border="0" width="15" onclick="<?php echo $this->name;?>.newRoot('<?php echo $spouse->getXref();?>', <?php echo $this->name;?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
+				<img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"]; ?>" border="0" width="15" onclick="<?php echo $this->name; ?>.newRoot('<?php echo $spouse->getXref(); ?>', <?php echo $this->name; ?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
 				<br />
 				<div class="details1 indent">
 					<?php
 						echo '<b>', abbreviate_fact('BIRT'), '</b> ', $spouse->getBirthDate()->Display(), ' ', PrintReady($spouse->getBirthPlace()), '<br />';
 						echo '<b>', abbreviate_fact('MARR'), '</b> ', $family->getMarriageDate()->Display(), ' ', $family->getMarriagePlace();
 					?>
-					<a href="family.php?famid=<?php echo $family->getXref(); ?>" onclick="if (!<?php echo $this->name;?>.collapseBox) return false;"><img id="d_<?php echo $family->getXref(); ?>" alt="<?php echo $family->getXref(); ?>" class="draggable" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['button_family']; ?>" border="0" /></a><br />
+					<a href="family.php?famid=<?php echo $family->getXref(); ?>" onclick="if (!<?php echo $this->name; ?>.collapseBox) return false;"><img id="d_<?php echo $family->getXref(); ?>" alt="<?php echo $family->getXref(); ?>" class="draggable" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['button_family']; ?>" border="0" /></a><br />
 					<?php
 						if ($spouse->isDead()) {
 							echo '<b>', abbreviate_fact('DEAT'), '</b> ', $spouse->getDeathDate()->Display(), ' ', PrintReady($spouse->getDeathPlace()), '<br />';
@@ -489,21 +489,21 @@ class TreeNav {
 						$hasChildren = false;
 						if ($person->getNumberOfChildren()>0) $hasChildren = true;
 					?>
-					<td id="ch_<?php echo $person->getXref();?>" align="right" <?php if ($gen==0 && $hasChildren) echo 'id="'.$this->name.'_cload" name="'.$this->name.'_cload" onclick="'.$this->name.'.loadChild(this, \''.$person->getXref().'\');"'; ?>>
+					<td id="ch_<?php echo $person->getXref(); ?>" align="right" <?php if ($gen==0 && $hasChildren) echo 'id="'.$this->name.'_cload" name="'.$this->name.'_cload" onclick="'.$this->name.'.loadChild(this, \''.$person->getXref().'\');"'; ?>>
 						<?php
 							$this->drawAllChildren($person, $gen);
 						?>
 					</td>
 					<?php
-					if ($hasChildren && $person->getNumberOfChildren()>1) { ?><td valign="top"><img style="position: absolute;" id="cline_<?php echo $person->getXref();?>" name="vertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php }
-					else if ($hasChildren) { ?><td valign="top"><img style="position: absolute;" id="cline_<?php echo $person->getXref();?>" name="vertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['hline']; ?>" width="3"  alt=""/></td><?php }
+					if ($hasChildren && $person->getNumberOfChildren()>1) { ?><td valign="top"><img style="position: absolute;" id="cline_<?php echo $person->getXref(); ?>" name="vertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php }
+					else if ($hasChildren) { ?><td valign="top"><img style="position: absolute;" id="cline_<?php echo $person->getXref(); ?>" name="vertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['hline']; ?>" width="3"  alt=""/></td><?php }
 					}
 					if ($state>0) {
 						?><td><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['hline']; ?>" width="8" height="3" alt="" /></td><?php
 					}
 					/* print the person */ ?>
 					<td>
-						<div class="person_box" dir="<?php echo $TEXT_DIRECTION; ?>" id="box_<?php echo $person->getXref();?>" style="text-align: <?php echo $TEXT_DIRECTION=="rtl" ? "right":"left"; ?>; cursor: pointer; font-size: <?php echo 10 + $this->zoomLevel;?>px; width: <?php echo ($this->bwidth+($this->zoomLevel*18));?>px; margin-left: 3px; direction: <?php echo $TEXT_DIRECTION; ?>" onclick="<?php echo $this->name; ?>.expandBox(this, '<?php echo $person->getXref(); ?>', 'all');">
+						<div class="person_box" dir="<?php echo $TEXT_DIRECTION; ?>" id="box_<?php echo $person->getXref(); ?>" style="text-align: <?php echo $TEXT_DIRECTION=="rtl" ? "right":"left"; ?>; cursor: pointer; font-size: <?php echo 10 + $this->zoomLevel; ?>px; width: <?php echo ($this->bwidth+($this->zoomLevel*18)); ?>px; margin-left: 3px; direction: <?php echo $TEXT_DIRECTION; ?>" onclick="<?php echo $this->name; ?>.expandBox(this, '<?php echo $person->getXref(); ?>', 'all');">
 						<?php
 							$name = $person->getFullName();
 
@@ -533,14 +533,14 @@ class TreeNav {
 						$lineid.="_";
 						if (!empty($mother)) $lineid.=$mother->getXref();
 						?>
-					<?php if (!empty($father) && (!empty($mother))) { ?><td><img style="position: absolute;" id="<?php echo $lineid;?>" name="pvertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php } ?>
+					<?php if (!empty($father) && (!empty($mother))) { ?><td><img style="position: absolute;" id="<?php echo $lineid; ?>" name="pvertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php } ?>
 					<td align="left">
 						<table cellpadding="0" cellspacing="0" border="0">
 							<tbody>
 								<tr>
 									<?php /* there is a IE JavaScript bug where the "id" has to be the same as the "name" in order to use the document.getElementsByName() function */ ?>
 									<td <?php if ($gen==0 && !empty($father)) echo 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'f\');"'; ?>>
-										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else echo "<br />";?>
+										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else echo "<br />"; ?>
 									</td>
 								</tr>
 								<?php
@@ -558,7 +558,7 @@ class TreeNav {
 								?>
 								<tr>
 									<td <?php if ($gen==0 && !empty($mother)) echo 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'m\');"'; ?>>
-										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else echo "<br />";?>
+										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else echo "<br />"; ?>
 									</td>
 								</tr>
 								<?php } } ?>
@@ -623,20 +623,20 @@ class TreeNav {
 						$hasChildren = false;
 						if (!empty($family) && $family->getNumberOfChildren()>0) $hasChildren = true;
 					?>
-					<td id="ch_<?php echo $person->getXref();?>" align="right" <?php if ($gen==0 && $hasChildren) echo 'id="'.$this->name.'_cload" name="'.$this->name.'_cload" onclick="'.$this->name.'.loadChild(this, \''.$person->getXref().'\');"'; ?>>
+					<td id="ch_<?php echo $person->getXref(); ?>" align="right" <?php if ($gen==0 && $hasChildren) echo 'id="'.$this->name.'_cload" name="'.$this->name.'_cload" onclick="'.$this->name.'.loadChild(this, \''.$person->getXref().'\');"'; ?>>
 						<?php
 							$this->drawChildren($family, $gen);
 						?>
 					</td>
 					<?php
-					if ($hasChildren && $family->getNumberOfChildren()>1) { ?><td valign="top"><img style="position: absolute;" id="cline_<?php echo $person->getXref();?>" name="vertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php }
+					if ($hasChildren && $family->getNumberOfChildren()>1) { ?><td valign="top"><img style="position: absolute;" id="cline_<?php echo $person->getXref(); ?>" name="vertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php }
 					}
 					if ($state>0) {
 						?><td><img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['hline']; ?>" width="8" height="3" alt="" /></td><?php
 					}
 					/* print the person */ ?>
 					<td>
-						<div class="person_box" dir="<?php echo $TEXT_DIRECTION; ?>" id="box_<?php echo $person->getXref();?>" style="text-align: <?php echo $TEXT_DIRECTION=="rtl" ? "right":"left"; ?>; cursor: pointer; font-size: <?php echo 10 + $this->zoomLevel;?>px; width: <?php echo ($this->bwidth+($this->zoomLevel*18));?>px; direction: <?php echo $TEXT_DIRECTION; ?>" onclick="<?php echo $this->name; ?>.expandBox(this, '<?php echo $person->getXref(); ?>', '<?php if (!empty($pfamily)) echo $pfamily->getXref(); ?>');">
+						<div class="person_box" dir="<?php echo $TEXT_DIRECTION; ?>" id="box_<?php echo $person->getXref(); ?>" style="text-align: <?php echo $TEXT_DIRECTION=="rtl" ? "right":"left"; ?>; cursor: pointer; font-size: <?php echo 10 + $this->zoomLevel; ?>px; width: <?php echo ($this->bwidth+($this->zoomLevel*18)); ?>px; direction: <?php echo $TEXT_DIRECTION; ?>" onclick="<?php echo $this->name; ?>.expandBox(this, '<?php echo $person->getXref(); ?>', '<?php if (!empty($pfamily)) echo $pfamily->getXref(); ?>');">
 						<?php
 							$name = $person->getFullName();
 							echo PrintReady($person->getSexImage('small', $style)." ".$name);
@@ -658,20 +658,20 @@ class TreeNav {
 						$lineid.="_";
 						if (!empty($mother)) $lineid.=$mother->getXref();
 						?>
-					<?php if (!empty($father) && (!empty($mother))) { ?><td><img style="position: absolute;" id="<?php echo $lineid;?>" name="pvertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php } ?>
+					<?php if (!empty($father) && (!empty($mother))) { ?><td><img style="position: absolute;" id="<?php echo $lineid; ?>" name="pvertline" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['vline']; ?>" width="3" alt="" /></td><?php } ?>
 					<td align="left">
 						<table cellpadding="0" cellspacing="0" border="0">
 							<tbody>
 								<tr>
 									<?php /* there is a IE JavaScript bug where the "id" has to be the same as the "name" in order to use the document.getElementsByName() function */ ?>
 									<td <?php if ($gen==0 && !empty($father)) echo 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'f\');"'; ?>>
-										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else echo "<br />";?>
+										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else echo "<br />"; ?>
 									</td>
 								</tr>
 								<tr>
 								<?php /* print the mother */ ?>
 									<td <?php if ($gen==0 && !empty($mother)) echo 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'m\');"'; ?>>
-										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else echo "<br />";?>
+										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else echo "<br />"; ?>
 									</td>
 								</tr>
 							</tbody>
