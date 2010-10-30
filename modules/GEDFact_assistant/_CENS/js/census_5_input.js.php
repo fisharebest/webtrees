@@ -188,7 +188,7 @@ function preview() {
 	var tbl = document.getElementById('tblSample');
 
 
-	for(var i=0; i<tbl.rows.length; i++){
+	for (var i=0; i<tbl.rows.length; i++) {
 		var tr = tbl.rows[i];
 		var strRow = '';
 
@@ -197,10 +197,10 @@ function preview() {
 		// ---------------------------------------------
 
 		// Extract Indi id's from created list --------------------------------------
-		for(var y=1; y<tr.cells.length-3; y++) {
-			if ( y>=2 && y<=73) {
+		for (var y=1; y<tr.cells.length-3; y++) {
+			if (y>=2 && y<=73) {
 					continue;
-			}else{
+			} else {
 				if (i!=0) {
 					// pidList += '\'' + (pidList==''?'':' ') + tr.cells[1].childNodes[0].value + '\'';
 					pidList += (pidList==''?'':' ') + tr.cells[1].childNodes[0].value;
@@ -212,65 +212,65 @@ function preview() {
 		if (NoteCtry.value=="UK") {
 			// UK 1911 or 1921 or 1931 ===============
 			if (NoteYear.value=="1911" || NoteYear.value=="1921" || NoteYear.value=="1931") {
-				for(var j=2; j<tr.cells.length-3; j++) {
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if (j==5 || j==6 || j==8 || (j>=10 && j<=15) || (j>=20 && j<=34) || j==36 || (j>=39 && j<=41) || (j>=43 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
 				}
 			// UK 1901 ===============
 			} else if (NoteYear.value=="1901") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( j==5 || j==6 || j==8 || (j>=10 && j<=34) || j==36 || j==37 || (j>=39 && j<=41) || (j>=43 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if (j==5 || j==6 || j==8 || (j>=10 && j<=34) || j==36 || j==37 || (j>=39 && j<=41) || (j>=43 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
 				}
 			// UK 1891 ===============
 			} else if (NoteYear.value=="1891") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=38) || j==41 || j==42 || (j>=44 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if (j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=38) || j==41 || j==42 || (j>=44 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
 				}
 			// UK 1951-1881 ============
 			} else if (NoteYear.value=="1851" || NoteYear.value=="1861" || NoteYear.value=="1871" || NoteYear.value=="1881") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if (j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
 				}
 			// UK 1841 ===============
 			} else if (NoteYear.value=="1841") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=3 && j<=6) || j==8 || (j>=10 && j<=34) || (j>=36 && j<=51) || (j>=54 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=3 && j<=6) || j==8 || (j>=10 && j<=34) || (j>=36 && j<=51) || (j>=54 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -280,13 +280,13 @@ function preview() {
 		} else if (NoteCtry.value=="USA") {
 			// USA 1930 ===============
 			if (NoteYear.value=="1930") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( j==4 || j==5 || j==7 || j==8 || j==11 || j==13 || j==14 || (j>=16 && j<=19) || (j>=21 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==63 || j==64 || j>=67 && j<=73 ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if (j==4 || j==5 || j==7 || j==8 || j==11 || j==13 || j==14 || (j>=16 && j<=19) || (j>=21 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==63 || j==64 || j>=67 && j<=73) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -295,13 +295,13 @@ function preview() {
 
 			// USA 1920 ===============
 			else if (NoteYear.value=="1920") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( j==4 || (j>=6 && j<=8) || j==11 || j==13 || j==14 || (j>=16 && j<=30) || (j>=34 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==57 || j==58 || (j>=63 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if (j==4 || (j>=6 && j<=8) || j==11 || j==13 || j==14 || (j>=16 && j<=30) || (j>=34 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==57 || j==58 || (j>=63 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -310,13 +310,13 @@ function preview() {
 
 			// USA 1910 ===============
 			else if (NoteYear.value=="1910") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=4 && j<=8) || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==30 || j==33 || j==36 || (j>=39 && j<=42) || j==45 || j==47 || j==48 || (j>=50 && j<=64) || j==66 || j>=68 && j<=73 ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=4 && j<=8) || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==30 || j==33 || j==36 || (j>=39 && j<=42) || j==45 || j==47 || j==48 || (j>=50 && j<=64) || j==66 || j>=68 && j<=73) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -324,13 +324,13 @@ function preview() {
 			}
 			// USA 1900 ===============
 			else if (NoteYear.value=="1900") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=4 && j<=7) || j==10 || j==13 || j==14 || (j>=19 && j<=26) || j==33 || j==34 || (j>=36 && j<=44) || j==47 || (j>=50 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=4 && j<=7) || j==10 || j==13 || j==14 || (j>=19 && j<=26) || j==33 || j==34 || (j>=36 && j<=44) || j==47 || (j>=50 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -338,13 +338,13 @@ function preview() {
 			}
 			// USA 1890 ===============
 			else if (NoteYear.value=="1890") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=4 && j<=7) || j==10 || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==31 || j==33 || j==34 || j==36 || j==37 || j==39 || j==40 || (j>=42 && j<=45) || j==47 || (j>=49 && j<=63) || (j>=65 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=4 && j<=7) || j==10 || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==31 || j==33 || j==34 || j==36 || j==37 || j==39 || j==40 || (j>=42 && j<=45) || j==47 || (j>=49 && j<=63) || (j>=65 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -352,13 +352,13 @@ function preview() {
 			}
 			// USA 1880 ===============
 			else if (NoteYear.value=="1880") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=3 && j<=7) || j==10 || j==11 || (j>=17 && j<=34) || (j>=37 && j<=44) || (j>=40 && j<=42) || j==46 || j==49 || j==50 || j==52 || j==53 || (j>=56 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=3 && j<=7) || j==10 || j==11 || (j>=17 && j<=34) || (j>=37 && j<=44) || (j>=40 && j<=42) || j==46 || j==49 || j==50 || j==52 || j==53 || (j>=56 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -366,13 +366,13 @@ function preview() {
 			}
 			// USA 1870 ===============
 			else if (NoteYear.value=="1870") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
@@ -380,20 +380,20 @@ function preview() {
 			}
 			// USA 1860 or 1850 ===============
 			else if (NoteYear.value=="1860" || NoteYear.value=="1850") {
-				for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
-					if ( (j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || j==24 || j==25 || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73) ) {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ((j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || j==24 || j==25 || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73)) {
 							continue;
-					}else{
+					} else {
 						if (i==0) {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
-						}else{
+						} else {
 							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
 						}
 					}
 				}
 			}
 
-		}else{
+		} else {
 			// Other country stuff
 		}
 
@@ -403,15 +403,15 @@ function preview() {
 		}
 
 		// Reset/Check the Pink Highlighting of the Name field and Age fields for any person not born ------------------
-		for(var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+		for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
 			if (i==0) {
 				// Do nothing as this is the header row.
-			}else{
+			} else {
 				if (tr.cells[7].childNodes[0].value != "-" || tr.cells[12].childNodes[0].value != "-") {
 					tr.cells[2].childNodes[0].style.background  = '#ffffff';
 					tr.cells[7].childNodes[0].style.background  = '#ffffff';
 					tr.cells[12].childNodes[0].style.background = '#ffffff';
-				}else{
+				} else {
 					// alert(tr.cells[2].childNodes[0].value+" - Not Born Yet");
 					tr.cells[2].childNodes[0].style.background  = '#ffaaaa';
 					tr.cells[7].childNodes[0].style.background  = '#ffaaaa';
@@ -592,7 +592,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 	var cyear = document.getElementById('censYear').value;
 	if (cyear!="choose") {
 		cyear=cyear;
-	}else{
+	} else {
 		alert ("You must choose a Census year first")
 		return;
 	}
@@ -686,7 +686,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			birthpl = '-';
 		} else if (birthpl[0]!="England" && birthpl[0]!="Scotland" && birthpl[0]!="Wales" && birthpl[0]!="Northern Ireland" && birthpl[0]!="UK") {
 			birthpl = birthpl[0]+", "+birthpl[1];
-		}else {
+		} else {
 			birthpl = birthpl[1]+", "+birthpl[2];
 		}
 
@@ -782,13 +782,13 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			// Check if Census year filled in -------------
 			if (cyear!="choose") {
 				cyear=cyear;
-			}else{
+			} else {
 				alert ("You must choose a Census year first")
 				return;
 			}
 			var diffage=(1901-cyear);
 			age=(age2-diffage);
-		}else{
+		} else {
 			age="-";
 		}
 
@@ -797,7 +797,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 
 		// **A** Define Cells ===============================================
 		var cell_ = new Array(73);
-		for(var i=0; i<=73; i++){
+		for (var i=0; i<=73; i++) {
 				cell_[i] = row.insertCell(i);
 				cell_[i].setAttribute('id', 'col_'+i);
 				cell_[i].setAttribute('name', 'col_'+i);
@@ -806,7 +806,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		if (iteration == 0) {
 			var cell_tdel = row.insertCell(74); // text Del
 			var cell_tra  = row.insertCell(75); // text Radio
-		}else{
+		} else {
 			var cell_del = row.insertCell(74); // Onclick = Delete Row
 				cell_del.setAttribute('align', 'center');
 			var cell_ra = row.insertCell(75); // Radio button used for inserting a row, rather than adding at end of table)
@@ -820,7 +820,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 
 		// **B** SHOW/HIDE Header Cell elements ===============================
 			// ---- Basic Hidden Columns (miss out 0,1,2 and >68)
-			for(var i=3; i<=69; i++){
+			for (var i=3; i<=69; i++) {
 				cell_[i].style.display = "none";
 			}
 
@@ -1490,7 +1490,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 				txt_itemNo2.setAttribute('type', 'text');
 				txt_itemNo2.style.fontSize="10px";
 
-		}else{
+		} else {
 
 		// **D** Define Cell Elements =======================================
 			var txtcolor = "#0000FF";
@@ -1499,21 +1499,21 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 			var txt_itemNo = document.createElement('div');
 			// txt_itemNo.style.display="none";
 		// 1. Indi ID -------------------------------------------------------
-				if ( pid == ''){
+				if (pid=='') {
 					var txtcolor = "#000000";
 					// This adds a checkbox for adding an indi id  .... to be implemented later
 						var txtInp_pid = document.createElement('input');
 						txtInp_pid.setAttribute('type', 'checkbox');
-						if (txtInp_pid.checked!=''){
+						if (txtInp_pid.checked!='') {
 							txtInp_pid.setAttribute('value', 'no');
-						}else{
+						} else {
 							txtInp_pid.setAttribute('value', 'add');
 						}
 					// -------------------------------------------------------------------------
 					txtInp_pid.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_1');
 					txtInp_pid.setAttribute('size', '1');
 					txtInp_pid.style.fontSize="11px";
-				}else{
+				} else {
 					var txtInp_pid = document.createElement('input');
 						//txtInp_pid.style.border='0px';
 						txtInp_pid.style.background='#bbddff';
@@ -2375,7 +2375,7 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		if (iteration == 0) {
 			cell_tdel.appendChild(txtInp_tdel); // Text Del
 			cell_tra.appendChild(txtInp_tra); // Text Ins
-		}else{
+		} else {
 			cell_del.appendChild(btnEl); // Onclick = Delete Row
 			cell_ra.appendChild(raEl); // Radio button used for inserting a row, rather than adding at end of table)
 		}

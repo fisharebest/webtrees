@@ -185,12 +185,12 @@ class Family extends GedcomRecord {
 		if ($this->children_loaded) return;
 		$this->childrenIds = array();
 		$this->numChildren = preg_match_all('/1\s*CHIL\s*@(.*)@/', $this->gedrec, $smatch, PREG_SET_ORDER);
-		for($i=0; $i<$this->numChildren; $i++) {
+		for ($i=0; $i<$this->numChildren; $i++) {
 			//-- get the childs ids
 			$chil = trim($smatch[$i][1]);
 			$this->childrenIds[] = $chil;
 		}
-		foreach($this->childrenIds as $t=>$chil) {
+		foreach ($this->childrenIds as $t=>$chil) {
 			$child=Person::getInstance($chil);
 			if (!is_null($child)) $this->children[] = $child;
 		}
@@ -249,7 +249,7 @@ class Family extends GedcomRecord {
 	function hasChild(&$person) {
 		if (is_null($person)) return false;
 		$this->loadChildren();
-		foreach($this->children as $key=>$child) {
+		foreach ($this->children as $key=>$child) {
 			if ($person->equals($child)) return true;
 		}
 		return false;
@@ -311,7 +311,7 @@ class Family extends GedcomRecord {
 	 * get the marriage year
 	 * @return string
 	 */
-	function getMarriageYear($est = true, $cal = ''){
+	function getMarriageYear($est = true, $cal = '') {
 		// TODO - change the design to use julian days, not gregorian years.
 		$mdate = $this->getMarriageDate();
 		$mdate = $mdate->MinDate();
@@ -323,7 +323,7 @@ class Family extends GedcomRecord {
 	 * get the marriage month
 	 * @return string
 	 */
-	function getMarriageMonth($est = true, $cal = ''){
+	function getMarriageMonth($est = true, $cal = '') {
 		// TODO - change the design to use julian days, not gregorian years.
 		$mdate = $this->getMarriageDate();
 		$mdate=$mdate->MinDate();

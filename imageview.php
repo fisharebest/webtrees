@@ -101,8 +101,8 @@ print_simple_header(i18n::translate('Image viewer'));
 		msY = e.pageY;
 	}
 	// catch possible negative values in NS4
-	if (msX < 0){msX = 0;}
-	if (msY < 0){msY = 0;}
+	if (msX < 0) {msX = 0;}
+	if (msY < 0) {msY = 0;}
 	if (movei!="") {
 		ileft = parseInt(movei.style.left);
 		itop = parseInt(movei.style.top);
@@ -121,8 +121,8 @@ print_simple_header(i18n::translate('Image viewer'));
 			if (document.images.length == 3) {
 				height=document.images[0].height+80;
 				width=document.images[0].width+20;
-				if(width > screen.width-100) width = screen.width-100;
-				if(height > screen.height-110) height = screen.height-110;
+				if (width > screen.width-100) width = screen.width-100;
+				if (height > screen.height-110) height = screen.height-110;
 				if (document.layers) window.resizeTo(width+20,height+20)
 				else if (document.all) window.resizeTo(width+30,height+50)
 				else if (document.getElementById) window.resizeTo(width+40,height+20)

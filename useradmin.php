@@ -252,7 +252,7 @@ if ($action=="edituser") {
 			var fieldIDx = jQuery(this).attr('id');
 			var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
 			var newIDx = "gedcomid"+idNum;
-			if(jQuery('#'+newIDx).val()=='') {
+			if (jQuery('#'+newIDx).val()=='') {
 				alert("<?php echo i18n::translate('You must enter a GEDCOM INDI record ID before you can set the maximum relationship path length'); ?>");
 				jQuery(this).val('');
 			}
@@ -502,7 +502,7 @@ if ($action == "listusers") {
 <script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>
 <script type="text/javascript">
 //<![CDATA[
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
 // Table pageing
 	jQuery("#user_table")
 		.tablesorter({
@@ -713,7 +713,7 @@ if ($action == "createform") {
 			    var fieldIDx = jQuery(this).attr('id');
 				var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
 				var newIDx = "gedcomid"+idNum;
-				if(jQuery('#'+newIDx).val()=='') {
+				if (jQuery('#'+newIDx).val()=='') {
 				    alert("<?php echo i18n::translate('You must enter a GEDCOM INDI record ID before you can set the maximum relationship path length'); ?>");
 					jQuery(this).val('');
 				}

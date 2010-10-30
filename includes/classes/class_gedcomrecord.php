@@ -809,7 +809,7 @@ class GedcomRecord {
 		$factrec = ''; // -- complete fact record
 		$line = '';   // -- temporary line buffer
 		$linenum=1;
-		for($i=1; $i<=$lct; $i++) {
+		for ($i=1; $i<=$lct; $i++) {
 			if ($i<$lct) {
 				$line = $indilines[$i];
 			} else {
@@ -819,7 +819,7 @@ class GedcomRecord {
 				$line=' ';
 			}
 			if ($i==$lct||$line{0}==1) {
-				if ($i>1){
+				if ($i>1) {
 					$event = new Event($factrec, $linenum);
 					$fact = $event->getTag();
 					if ($nfacts==NULL || !in_array($fact, $nfacts)) {
@@ -847,9 +847,9 @@ class GedcomRecord {
 		$diff->parseFacts();
 
 		//-- update old facts
-		foreach($this->facts as $key=>$event) {
+		foreach ($this->facts as $key=>$event) {
 			$found = false;
-			foreach($diff->facts as $indexval => $newevent) {
+			foreach ($diff->facts as $indexval => $newevent) {
 				$newfact = $newevent->getGedcomRecord();
 				$newfact=preg_replace("/\\\/", '/', $newfact);
 				if (trim($newfact)==trim($event->getGedcomRecord())) {
@@ -862,9 +862,9 @@ class GedcomRecord {
 			}
 		}
 		//-- look for new facts
-		foreach($diff->facts as $key=>$newevent) {
+		foreach ($diff->facts as $key=>$newevent) {
 			$found = false;
-			foreach($this->facts as $indexval => $event) {
+			foreach ($this->facts as $indexval => $event) {
 				$newfact = $newevent->getGedcomRecord();
 				$newfact=preg_replace("/\\\/", '/', $newfact);
 				if (trim($newfact)==trim($event->getGedcomRecord())) {

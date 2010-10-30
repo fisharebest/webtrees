@@ -46,7 +46,7 @@ function get_tag_values($tag) {
 
 	$indexes = $tags[$tag];
 	$vals = array();
-	foreach($indexes as $i) {
+	foreach ($indexes as $i) {
 		$vals[] = $values[$i];
 	}
 	return $vals;
@@ -88,7 +88,7 @@ if (isset($_REQUEST["type"])) {
 
 //-- setup the arrays
 $newvars = array();
-foreach($vars as $name=>$var) {
+foreach ($vars as $name=>$var) {
 	$newvars[$name]["id"] = $var;
 	if (!empty($type[$name]) && (($type[$name]=="INDI") || ($type[$name]=="FAM") || ($type[$name]=="SOUR"))) {
 		$gedcom = find_gedcom_record($var, WT_GED_ID);
@@ -114,7 +114,7 @@ foreach($vars as $name=>$var) {
 $vars = $newvars;
 unset($newvars);
 
-foreach($varnames as $indexval => $name) {
+foreach ($varnames as $indexval => $name) {
 	if (!isset($vars[$name])) {
 		$vars[$name]["id"] = "";
 	}
@@ -146,7 +146,7 @@ if ($action=="choose") {
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\">", i18n::translate('Choose a report to run'), "</td></tr>";
 	echo "<tr><td class=\"descriptionbox wrap width33 vmiddle\">", i18n::translate('Select report'), "</td>";
 	echo "<td class=\"optionbox\"><select onchange=\"this.form.submit();\" name=\"report\">\n";
-	foreach($reports as $file=>$report) {
+	foreach ($reports as $file=>$report) {
 		if ($report["access"] >= WT_USER_ACCESS_LEVEL) {
 			echo "<option value=\"", $file, "\">", $report, "</option>\n";
 		}
@@ -215,7 +215,7 @@ elseif ($action=="setup") {
 		if (!isset($report_array["inputs"])) {
 			$report_array["inputs"] = array();
 		}
-		foreach($report_array["inputs"] as $indexval => $input) {
+		foreach ($report_array["inputs"] as $indexval => $input) {
 			if ($input["name"] == "sources" || $input["name"] != "sources") {
 				if ($input["name"] != "photos" || $MULTI_MEDIA) {
 					// url forced default value ?
@@ -281,7 +281,7 @@ elseif ($action=="setup") {
 					if ($input["type"]=="select") {
 						echo "<select name=\"vars[", $input["name"], "]\" id=\"", $input["name"], "_var\">\n";
 						$options = preg_split("/[|]+/", $input["options"]);
-						foreach($options as $indexval => $option) {
+						foreach ($options as $indexval => $option) {
 							$opt = explode('=>', $option);
 							list($value, $display)=$opt;
 							if (substr($display, 0, 6)=='i18n::') {
@@ -347,7 +347,7 @@ elseif ($action=="setup") {
 }
 //-- run the report
 elseif ($action=="run") {
-	if (strstr($report, "report_singlepage.xml")!==false){
+	if (strstr($report, "report_singlepage.xml")!==false) {
 		$DEBUG=false;
 		$pedigree=new ReportPedigree();
 		exit;

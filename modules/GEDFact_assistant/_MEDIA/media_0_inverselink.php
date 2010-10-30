@@ -56,7 +56,7 @@ if (empty($linktoid) || empty($linkto)) {
 }
 if (WT_USER_IS_ADMIN) {
 	print_simple_header(i18n::translate('Link media')." ".$toitems);
-}else{
+} else {
 	print_simple_header(i18n::translate('Administration'));
 	echo i18n::translate('Unable to authenticate user.');
 }
@@ -100,7 +100,7 @@ if ($action == "choose" && $paramok) {
 	function blankwin() {
 		if (document.getElementById('gid').value == "" || document.getElementById('gid').value.length<=1) {
 			alert(id_empty);
-		}else{
+		} else {
 			var iid = document.getElementById('gid').value;
 			//var winblank = window.open('module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_query_3a&iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
 			var winblank = window.open('modules/GEDFact_assistant/_MEDIA/media_query_3a.php?iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
@@ -245,7 +245,7 @@ if ($action == "choose" && $paramok) {
 			}
 		}
 		echo '<br />';
-	}else{
+	} else {
 		// echo nothing and do nothing
 	}
 
@@ -265,9 +265,9 @@ if ($action == "choose" && $paramok) {
 			echo '<br />';
 		}
 		echo '<br />';
-	}else if ($more_links==",") {
+	} else if ($more_links==",") {
 		// echo nothing and do nothing
-	}else{
+	} else {
 		//echo $mediaid, $pgv_lang["media_now_linked to"], '(', $gid, ')<br />';
 		//linkMedia($mediaid, $gid);
 	}

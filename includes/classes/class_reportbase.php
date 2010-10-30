@@ -49,7 +49,7 @@ $ascii_langs = array("en", "da", "nl", "fr", "he", "hu", "de", "nn", "es");
 
 //-- setup special characters array to force embedded fonts
 $SpecialOrds = $RTLOrd;
-for($i=195; $i<215; $i++) $SpecialOrds[] = $i;
+for ($i=195; $i<215; $i++) $SpecialOrds[] = $i;
 
 if (!isset($embed_fonts)) {
 	if (in_array(WT_LOCALE, $ascii_langs)) {
@@ -493,7 +493,7 @@ class Element {
 	function addText($t) {
 		global $embed_fonts, $SpecialOrds, $wt_report, $reportTitle, $reportDescription;
 
-		foreach($SpecialOrds as $ord) {
+		foreach ($SpecialOrds as $ord) {
 			if (strpos($t, chr($ord))!==false) {
 				$embed_fonts = true;
 			}
@@ -569,7 +569,7 @@ class Html extends Element {
 
 	function getStart() {
 		$str = "<".$this->tag." ";
-		foreach($this->attrs as $key=>$value) {
+		foreach ($this->attrs as $key=>$value) {
 			$str .= $key."=\"".$value."\" ";
 		}
 		$str .= ">";
@@ -1010,7 +1010,7 @@ class Footnote extends Element {
 	function addText($t) {
 		global $embed_fonts, $SpecialOrds;
 
-		foreach($SpecialOrds as $ord) {
+		foreach ($SpecialOrds as $ord) {
 			if (strpos($t, chr($ord))!==false) {
 				$embed_fonts = true;
 			}
@@ -1428,7 +1428,7 @@ function startElement($parser, $name, $attrs) {
 	$newattrs = array();
 	$match = array();
 
-	foreach($attrs as $key=>$value) {
+	foreach ($attrs as $key=>$value) {
 		if (preg_match("/^\\$(\w+)$/", $value, $match)) {
 			if ((isset($vars[$match[1]]["id"]))&&(!isset($vars[$match[1]]["gedcom"]))) {
 				$value = $vars[$match[1]]["id"];
@@ -1890,7 +1890,7 @@ function GedcomSHandler($attrs) {
 	if (empty($newgedrec)) {
 		$tgedrec = $gedrec;
 		$newgedrec = "";
-		foreach($tags as $tag) {
+		foreach ($tags as $tag) {
 			if (preg_match("/\\$(.+)/", $tag, $match)) {
 				if (isset($vars[$match[1]]["gedcom"])) {
 					$newgedrec = $vars[$match[1]]["gedcom"];
@@ -2176,9 +2176,9 @@ function GetPersonNameSHandler($attrs) {
 					$name = preg_replace("/\(.*\) ?/", "", $name); //removes () and text inbetween - what about ", [ and { etc?
 					$words = explode(" ", $name);
 					$name = $words[count($words)-1];
-					for($i=count($words)-2; $i>=0; $i--) {
+					for ($i=count($words)-2; $i>=0; $i--) {
 						$len = utf8_strlen($name);
-						for($j=count($words)-3; $j>=0; $j--) {
+						for ($j=count($words)-3; $j>=0; $j--) {
 							$len += utf8_strlen($words[$j]);
 						}
 						if ($len>$attrs["truncate"]) {
@@ -2361,12 +2361,12 @@ function RepeatTagEHandler() {
 		// @deprecated
 		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
-		foreach($repeatsStack as $rep) {
+		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
 		}
 		//-- read the xml from the file
 		$lines = file($report);
-		while(strpos($lines[$lineoffset + $repeatBytes], "<RepeatTag")===false) {
+		while (strpos($lines[$lineoffset + $repeatBytes], "<RepeatTag")===false) {
 			$lineoffset--;
 		}
 		$lineoffset++;
@@ -2374,7 +2374,7 @@ function RepeatTagEHandler() {
 		$line_nr = $lineoffset + $repeatBytes;
 		// RepeatTag Level counter
 		$count = 1;
-		while(0 < $count) {
+		while (0 < $count) {
 			if (strstr($lines[$line_nr], "<RepeatTag")!==false) {
 				$count++;
 			} elseif (strstr($lines[$line_nr], "</RepeatTag")!==false) {
@@ -2391,11 +2391,11 @@ function RepeatTagEHandler() {
 		// Save original values
 		array_push($parserStack, $parser);
 		$oldgedrec = $gedrec;
-		// PHP 5.2.3 has a bug with foreach(), so don't use that here, while 5.2.3 is on the market
-		// while() has the fastest execution speed
+		// PHP 5.2.3 has a bug with foreach (), so don't use that here, while 5.2.3 is on the market
+		// while () has the fastest execution speed
 		$count = count($repeats);
 		$i = 0;
-		while($i < $count) {
+		while ($i < $count) {
 			$gedrec = $repeats[$i];
 			//-- start the sax parser
 			$repeat_parser = xml_parser_create();
@@ -2544,7 +2544,7 @@ function FactsSHandler($attrs) {
 		}
 		sort_facts($facts);
 		$repeats = array();
-		foreach($facts as $event) {
+		foreach ($facts as $event) {
 			if (strpos($tag.",", $event->getTag())===false) {
 				$repeats[]=$event->getGedComRecord();
 			}
@@ -2599,20 +2599,20 @@ function FactsEHandler() {
 
 		$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
-		foreach($repeatsStack as $rep) {
+		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
 		}
 
 		//-- read the xml from the file
 		$lines = file($report);
-		while(($lineoffset + $repeatBytes > 0) and (strpos($lines[$lineoffset + $repeatBytes], "<Facts ")) === false) {
+		while (($lineoffset + $repeatBytes > 0) and (strpos($lines[$lineoffset + $repeatBytes], "<Facts ")) === false) {
 			$lineoffset--;
 		}
 		$lineoffset++;
 		$reportxml = "<tempdoc>\n";
 		$i = $line + $lineoffset;
 		$line_nr = $repeatBytes + $lineoffset;
-		while($line_nr < $i) {
+		while ($line_nr < $i) {
 			$reportxml .= $lines[$line_nr];
 			$line_nr++;
 		}
@@ -2625,7 +2625,7 @@ function FactsEHandler() {
 		$count = count($repeats);
 		$i = 0;
 		$match = array();
-		while($i < $count) {
+		while ($i < $count) {
 			$gedrec = $repeats[$i];
 			$fact = "";
 			$desc = "";
@@ -2703,7 +2703,7 @@ function SetVarSHandler($attrs) {
 	}
 	$count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
 	$i=0;
-	while($i<$count) {
+	while ($i<$count) {
 		$t = $vars[$match[$i][1]]["id"];
 		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
 		$i++;
@@ -2760,7 +2760,7 @@ function ifSHandler($attrs) {
 	$match = array();
 	$count = preg_match_all("/@([\w:\.]+)/", $condition, $match, PREG_SET_ORDER);
 	$i = 0;
-	while( $i < $count ) {
+	while ( $i < $count ) {
 		$id = $match[$i][1];
 		$value="\"\"";
 		if ($id=="ID") {
@@ -3196,19 +3196,19 @@ function ListSHandler($attrs) {
 							$sql_order_by[]="{$attr}.d_julianday1";
 						}
 						unset($attrs[$attr]); // This filter has been fully processed
-					} elseif (($listname=="individual") && (preg_match('/^NAME CONTAINS (.*)$/', $value, $match))){
+					} elseif (($listname=="individual") && (preg_match('/^NAME CONTAINS (.*)$/', $value, $match))) {
 						// Do nothing, unless you have to
-						if (($match[1] != "") or ($sortby=="NAME")){
+						if (($match[1] != "") or ($sortby=="NAME")) {
 							$sql_join[]="JOIN `##name` AS {$attr} ON (n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
 							// Search the DB only if there is any name supplied
-							if ($match[1] != ""){
+							if ($match[1] != "") {
 								$names = explode(" ", $match[1]);
-								foreach ($names as $name){
+								foreach ($names as $name) {
 									$sql_where[]="{$attr}.n_full LIKE ".WT_DB::quote(utf8_strtoupper("%{$name}%"));
 								}
 							}
 							// Let the DB do the name sorting even when no name was entered
-							if ($sortby=="NAME"){
+							if ($sortby=="NAME") {
 								$sortby="";
 								$sql_order_by[]="{$attr}.n_sort";
 							}
@@ -3236,7 +3236,7 @@ function ListSHandler($attrs) {
 					* Place any other filter before these filters because they will pick up any filters that has not been processed
 					* Also, do not unset() these two filters. These are just the first primary filters to reduce the returned list from the DB
 					*/
-					elseif (($listname=="individual") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))){
+					elseif (($listname=="individual") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))) {
 						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
@@ -3246,7 +3246,7 @@ function ListSHandler($attrs) {
 						if ($match[3] != "") $query .= "%{$match[3]}%";
 						$sql_where[] = "i_gedcom LIKE ".WT_DB::quote(utf8_strtoupper($query));
 						unset($query);
-					} elseif (($listname=="family") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))){
+					} elseif (($listname=="family") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))) {
 						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
@@ -3276,7 +3276,7 @@ function ListSHandler($attrs) {
 	$filters = array();
 	$filters2 = array();
 	if ((isset($attrs["filter1"])) and (count($list) > 0)) {
-		foreach($attrs as $key=>$value) {
+		foreach ($attrs as $key=>$value) {
 			if (preg_match("/filter(\d)/", $key)) {
 				$condition = $value;
 				if (preg_match("/@(\w+)/", $condition, $match)) {
@@ -3311,7 +3311,7 @@ function ListSHandler($attrs) {
 					//-- only limit to a level number if we are specifically looking at a level
 					if (count($tags)>1) {
 						$level = 1;
-						foreach($tags as $t) {
+						foreach ($tags as $t) {
 							if (!empty($searchstr)) {
 								$searchstr.="[^\n]*(\n[2-9][^\n]*)*\n";
 							}
@@ -3361,11 +3361,11 @@ function ListSHandler($attrs) {
 	}
 	if ($filters2) {
 		$mylist = array();
-		foreach($list as $indi) {
+		foreach ($list as $indi) {
 			$key=$indi->getXref();
 			$grec=$indi->getGedcomRecord();
 			$keep = true;
-			foreach($filters2 as $filter) {
+			foreach ($filters2 as $filter) {
 				if ($keep) {
 					$tag = $filter["tag"];
 					$expr = $filter["expr"];
@@ -3476,12 +3476,12 @@ function ListEHandler() {
 		// @deprecated
 		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
-		foreach($repeatsStack as $rep) {
+		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
 		}
 		//-- read the xml from the file
 		$lines = file($report);
-		while((strpos($lines[$lineoffset + $repeatBytes], "<List")===false) && (($lineoffset + $repeatBytes) > 0)) {
+		while ((strpos($lines[$lineoffset + $repeatBytes], "<List")===false) && (($lineoffset + $repeatBytes) > 0)) {
 			$lineoffset--;
 		}
 		$lineoffset++;
@@ -3489,7 +3489,7 @@ function ListEHandler() {
 		$line_nr = $lineoffset + $repeatBytes;
 		// List Level counter
 		$count = 1;
-		while(0 < $count) {
+		while (0 < $count) {
 			if (strpos($lines[$line_nr], "<List")!==false) {
 				$count++;
 			} elseif (strpos($lines[$line_nr], "</List")!==false) {
@@ -3612,7 +3612,7 @@ function RelativesSHandler($attrs) {
 		switch ($group) {
 			case "child-family":
 				$famids = $person->getChildFamilies();
-				foreach($famids as $family) {
+				foreach ($famids as $family) {
 					$husband = $family->getHusband();
 					$wife = $family->getWife();
 					if (!empty($husband)) {
@@ -3622,14 +3622,14 @@ function RelativesSHandler($attrs) {
 						$list[$wife->getXref()] = $wife;
 					}
 					$children = $family->getChildren();
-					foreach($children as $child) {
+					foreach ($children as $child) {
 						if (!empty($child)) $list[$child->getXref()] = $child;
 					}
 				}
 				break;
 			case "spouse-family":
 				$famids = $person->getSpouseFamilies();
-				foreach($famids as $family) {
+				foreach ($famids as $family) {
 				$husband = $family->getHusband();
 					$wife = $family->getWife();
 					if (!empty($husband)) {
@@ -3639,7 +3639,7 @@ function RelativesSHandler($attrs) {
 						$list[$wife->getXref()] = $wife;
 					}
 					$children = $family->getChildren();
-					foreach($children as $child) {
+					foreach ($children as $child) {
 						if (!empty($child)) $list[$child->getXref()] = $child;
 					}
 				}
@@ -3717,12 +3717,12 @@ function RelativesEHandler() {
 		// @deprecated
 		//$line = xml_get_current_line_number($parser)-1;
 		$lineoffset = 0;
-		foreach($repeatsStack as $rep) {
+		foreach ($repeatsStack as $rep) {
 			$lineoffset += $rep[1];
 		}
 		//-- read the xml from the file
 		$lines = file($report);
-		while((strpos($lines[$lineoffset + $repeatBytes], "<Relatives")===false) && (($lineoffset + $repeatBytes) > 0)) {
+		while ((strpos($lines[$lineoffset + $repeatBytes], "<Relatives")===false) && (($lineoffset + $repeatBytes) > 0)) {
 			$lineoffset--;
 		}
 		$lineoffset++;
@@ -3730,7 +3730,7 @@ function RelativesEHandler() {
 		$line_nr = $lineoffset + $repeatBytes;
 		// Relatives Level counter
 		$count = 1;
-		while(0 < $count) {
+		while (0 < $count) {
 			if (strpos($lines[$line_nr], "<Relatives")!==false) {
 				$count++;
 			} elseif (strpos($lines[$line_nr], "</Relatives")!==false) {
@@ -3750,7 +3750,7 @@ function RelativesEHandler() {
 
 		$list_total = count($list);
 		$list_private = 0;
-		foreach($list as $key => $value) {
+		foreach ($list as $key => $value) {
 			if (isset($value->generation)) {
 				$generation = $value->generation;
 			}

@@ -106,7 +106,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$i=0;
 			$disp = false;
 			//-- try up to 40 times to get a media to display
-			while($i<40) {
+			while ($i<40) {
 				$error = false;
 				$value = array_rand($medialist);
 				if (WT_DEBUG) {
@@ -139,13 +139,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." failed Format or Type filters</span><br />";
 				}
 
-				if ($disp && count($links) != 0){
+				if ($disp && count($links) != 0) {
 					if ($disp && $filter!="all") {
 						// Apply filter criteria
 						$ct = preg_match("/0 (@.*@) OBJE/", $medialist[$value]["GEDCOM"], $match);
 						$objectID = $match[1];
 						//-- we could probably use the database for this filter
-						foreach($links as $key=>$type) {
+						foreach ($links as $key=>$type) {
 							$gedrec = find_gedcom_record($key, WT_GED_ID);
 							$ct2 = preg_match("/(\d) OBJE {$objectID}/", $gedrec, $match2);
 							if ($ct2>0) {
@@ -267,7 +267,7 @@ function openPic(filename, width, height) {
 				// $content .= " ><a href=\"javascript:;\" onclick=\"return openImage('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
 				// $content .= "><a href=\"" . $medialist[$value]["FILE"] . "\" rel=\"clearbox[general_4]\" title=\"" . $mediaid . "\">";
 				$content .= " ><a href=\"mediaviewer.php?mid=".$mediaid."\">";
-			}else
+			} else
 // ---------------------------------------------------------------------------------------------
 
 

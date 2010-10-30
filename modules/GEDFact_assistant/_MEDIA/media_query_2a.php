@@ -44,7 +44,7 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 		// iid=document.getElementById('gid').value;
 		if (document.getElementById('gid').value == "") {
 			alert(id_empty);
-		}else{
+		} else {
 			addmedia_links(document.getElementById('gid'), document.getElementById('gid').value, iname );
 			return false;
 		}
@@ -56,7 +56,7 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 			id = id.toUpperCase();
 			winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', 'top=50,left=640,width=300,height=630,resizable=1,scrollbars=1');
 			if (window.focus) {winNav.focus();}
-		}else if (id.match("F")=="F") {
+		} else if (id.match("F")=="F") {
 			id = id.toUpperCase();
 			// TODO --- alert('Opening Navigator with family id entered will come later');
 		}

@@ -53,7 +53,7 @@
             clat = (Boundaries.getNorthEast().lat() + Boundaries.getSouthWest().lat())/2;
             clng = (Boundaries.getNorthEast().lng() + Boundaries.getSouthWest().lng())/2;
             zoomlevel = map.getBoundsZoomLevel(Boundaries);
-            for(i = 0; ((i < 10) && (zoomlevel == 1)); i++) {
+            for (i = 0; ((i < 10) && (zoomlevel == 1)); i++) {
                 zoomlevel = map.getBoundsZoomLevel(Boundaries);
             }
             zoomlevel = zoomlevel-1;

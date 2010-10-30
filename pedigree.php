@@ -156,7 +156,7 @@ $prevyoffset = 0; // -- used to track the y position of the previous box
 $maxyoffset = 0;
 $linesize = 3;
 if (!isset($brborder)) $brborder = 1; // Avoid errors from old custom themes
-for($i=($controller->treesize-1); $i>=0; $i--) {
+for ($i=($controller->treesize-1); $i>=0; $i--) {
 	// -- check to see if we have moved to the next generation
 	if ($i < floor($controller->treesize / (pow(2, $curgen)))) {
 		$curgen++;
@@ -342,11 +342,11 @@ if ($controller->rootPerson->canDisplayDetails()) {
 		else echo "ltr\" style=\"position:absolute; left:";
 		echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
 		echo "<table class=\"person_box\"><tr><td>";
-		foreach($famids as $ind=>$family) {
+		foreach ($famids as $ind=>$family) {
 			if ($family!=null) {
 				$husb = $family->getHusbId();
 				$wife = $family->getWifeId();
-				if($controller->rootid!=$husb) $spid=$family->getHusband();
+				if ($controller->rootid!=$husb) $spid=$family->getHusband();
 				else $spid=$family->getWife();
 				if (!empty($spid)) {
 					echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spid->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
@@ -361,7 +361,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 				}
 
 				$children = $family->getChildren();
-				foreach($children as $ind2=>$child) {
+				foreach ($children as $ind2=>$child) {
 					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					if ($child->canDisplayName()) {
 						$name = $child->getFullName();
@@ -375,12 +375,12 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			}
 		}
 		//-- echo the siblings
-		foreach($cfamids as $ind=>$family) {
+		foreach ($cfamids as $ind=>$family) {
 			if ($family!=null) {
 				$children = $family->getChildren();
 				if (count($children)>2) echo '<span class="name1"><br />', i18n::translate('Siblings'), '<br /></span>';
 				if (count($children)==2) echo '<span class="name1"><br />', i18n::translate('Sibling'), '<br /></span>';
-				foreach($children as $ind2=>$child) {
+				foreach ($children as $ind2=>$child) {
 					if (!$controller->rootPerson->equals($child) && !is_null($child)) {
 						echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 						if ($child->canDisplayName()) {

@@ -43,7 +43,7 @@ if ($record) {
 		$idrecord=Family::getInstance($iid2);
 		if ($idrecord->getHusbId()) {
 			$headjs=$idrecord->getHusbId();
-		}else{
+		} else {
 			$headjs=$idrecord->getWifeId();
 		}
 	}

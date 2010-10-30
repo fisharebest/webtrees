@@ -51,7 +51,7 @@ if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
 }
 
-if (!$controller->note){
+if (!$controller->note) {
 	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
@@ -93,7 +93,7 @@ echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 $nt = preg_match("/0 @$controller->nid@ NOTE(.*)/", $noterec, $n1match);
 if ($nt==1) {
 	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
-}else{
+} else {
 	$note = "No Text";
 }
 echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';

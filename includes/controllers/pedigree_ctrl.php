@@ -118,7 +118,7 @@ class PedigreeController extends BaseController {
 		$this->treesize = pow(2, (int)($this->PEDIGREE_GENERATIONS))-1;
 
 		//-- ancestry_array puts everyone at $i+1
-		for($i=0; $i<$this->treesize; $i++) {
+		for ($i=0; $i<$this->treesize; $i++) {
 			$this->treeid[$i] = $this->treeid[$i+1];
 		}
 
@@ -157,7 +157,7 @@ class PedigreeController extends BaseController {
 		if ($this->treesize<3) $this->treesize=3;
 		// -- loop through all of id's in the array starting at the last and working to the first
 		//-- calculation the box positions
-		for($i=($this->treesize-1); $i>=0; $i--) {
+		for ($i=($this->treesize-1); $i>=0; $i--) {
 			// -- check to see if we have moved to the next generation
 			if ($i < floor($this->treesize / (pow(2, $this->curgen)))) {
 				$this->curgen++;
@@ -191,13 +191,13 @@ class PedigreeController extends BaseController {
 					if ($i%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * ($this->curgen-1));
 					else $this->yoffset=$this->yoffset + (($boxspacing/2) * ($this->curgen-1));
 					$pgen = $this->curgen;
-					while($parent>0) {
+					while ($parent>0) {
 						if ($parent%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * $pgen);
 						else $this->yoffset=$this->yoffset + (($boxspacing/2) * $pgen);
 						$pgen++;
 						if ($pgen>3) {
 							$temp=0;
-							for($j=1; $j<($pgen-2); $j++) $temp += (pow(2, $j)-1);
+							for ($j=1; $j<($pgen-2); $j++) $temp += (pow(2, $j)-1);
 							if ($parent%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * $temp);
 							else $this->yoffset=$this->yoffset + (($boxspacing/2) * $temp);
 						}
@@ -205,7 +205,7 @@ class PedigreeController extends BaseController {
 					}
 					if ($this->curgen>3) {
 						$temp=0;
-							for($j=1; $j<($this->curgen-2); $j++) $temp += (pow(2, $j)-1);
+							for ($j=1; $j<($this->curgen-2); $j++) $temp += (pow(2, $j)-1);
 						if ($i%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * $temp);
 						else $this->yoffset=$this->yoffset + (($boxspacing/2) * $temp);
 					}
@@ -238,7 +238,7 @@ class PedigreeController extends BaseController {
 
 		//-- calculate the smallest yoffset and adjust the tree to that offset
 		$minyoffset = 0;
-		for($i=0; $i<count($this->treeid); $i++) {
+		for ($i=0; $i<count($this->treeid); $i++) {
 			if ($SHOW_EMPTY_BOXES || !empty($treeid[$i])) {
 				if (!empty($offsetarray[$i])) {
 					if (($minyoffset==0)||($minyoffset>$this->offsetarray[$i]["y"]))  $minyoffset = $this->offsetarray[$i]["y"];
@@ -287,7 +287,7 @@ class PedigreeController extends BaseController {
 		if (empty($treeid[$index])) {
 			$pgen=$curgen;
 			$genoffset=0;
-			while($pgen<=$this->PEDIGREE_GENERATIONS) {
+			while ($pgen<=$this->PEDIGREE_GENERATIONS) {
 				$genoffset += pow(2, ($this->PEDIGREE_GENERATIONS-$pgen));
 				$pgen++;
 			}

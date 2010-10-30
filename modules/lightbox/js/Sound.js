@@ -15,19 +15,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     function Sound(options) {
         
         this.options = options;
-        if(this.options == undefined) this.options = new Object();
+        if (this.options == undefined) this.options = new Object();
         
-        if(!this.options.swfLocation) {
+        if (!this.options.swfLocation) {
             this.options.swfLocation = "js/SoundBridge.swf";
         }
     
-        if(Sound.id_count == undefined) {
+        if (Sound.id_count == undefined) {
             Sound.id_count = 1;
         } else {
             Sound.id_count ++;
         }
         
-        if(Sound.instances == undefined) {
+        if (Sound.instances == undefined) {
             Sound.instances = new Object();
         }
         
@@ -59,7 +59,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 		this.so.addParam("allowScriptAccess", "always");
 */		
 		
-        if( document.getElementById('__sound_flash__') == undefined) {
+        if ( document.getElementById('__sound_flash__') == undefined) {
             var element = document.createElement("div");
             element.id = "__sound_flash__";
             document.body.appendChild(element);
@@ -164,8 +164,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     }    
     
     Sound.trace = function(value, isJavascript) {
-        if(document.getElementById('sound_tracer') != undefined) {
-            if(isJavascript == undefined || isJavascript == true) {
+        if (document.getElementById('sound_tracer') != undefined) {
+            if (isJavascript == undefined || isJavascript == true) {
                 document.getElementById('sound_tracer').value += 'Javascript: ' + value + '\n';            
             } else {
                 document.getElementById('sound_tracer').value += value + '\n';            

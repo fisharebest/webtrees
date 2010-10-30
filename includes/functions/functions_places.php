@@ -148,7 +148,7 @@ function setup_place_subfields($element_id) {
 			pdir='places/'+ctry+'/';
 			// select current country in the list
 			sel=document.getElementsByName(place_tag+'_PLAC_CTRY_select')[0];
-			for(i=0;i<sel.length;++i) if (sel.options[i].value==ctry) sel.options[i].selected=true;
+			for (i=0;i<sel.length;++i) if (sel.options[i].value==ctry) sel.options[i].selected=true;
 			// refresh country flag
 			var img=document.getElementsByName(place_tag+'_PLAC_CTRY_flag')[0];
 			var ctryFlag = 'places/flags/'+ctry+'.gif';
@@ -382,7 +382,7 @@ function get_place_short($gedcom_place) {
 	$gedcom_place = trim($gedcom_place, " ,");
 	$exp = explode(",", $gedcom_place);
 	$place = "";
-	for($i=0; $i<$SHOW_LIST_PLACES && $i<count($exp); $i++) {
+	for ($i=0; $i<$SHOW_LIST_PLACES && $i<count($exp); $i++) {
 		if ($i>0) $place .= ", ";
 		$place.=trim($exp[$i]);
 	}

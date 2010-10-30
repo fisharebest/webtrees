@@ -775,8 +775,8 @@ case 'addsourceaction':
 	}
 	if (!empty($AUTH)) $newgedrec .= "1 AUTH $AUTH\n";
 	if (!empty($PUBL)) {
-		foreach (preg_split("/\r?\n/", $PUBL) as $k=>$line){
-			if ( $k==0 ) {
+		foreach (preg_split("/\r?\n/", $PUBL) as $k=>$line) {
+			if ($k==0) {
 				$newgedrec .= "1 PUBL $line\n";
 			} else {
 				$newgedrec .= "2 CONT $line\n";
@@ -877,7 +877,7 @@ case 'addnoteaction':
 	if (!empty($AUTH)) $newgedrec .= "1 AUTH $AUTH\n";
 	if (!empty($PUBL)) {
 		foreach (preg_split("/\r?\n/", $PUBL) as $k=>$line) {
-			if ( $k==0 ) {
+			if ($k==0) {
 				$newgedrec .= "1 PUBL $line\n";
 			} else {
 				$newgedrec .= "2 CONT $line\n";
@@ -1132,7 +1132,7 @@ case 'addrepoaction':
 	}
 	if (!empty($ADDR)) {
 		foreach (preg_split("/\r?\n/", $ADDR) as $k=>$line) {
-			if ( $k==0 ) {
+			if ($k==0) {
 				$newgedrec .= "1 ADDR {$line}\n";
 			} else {
 				$newgedrec .= "2 CONT {$line}\n";
@@ -1181,7 +1181,7 @@ case 'update':
 		$cens_pids=explode(', ', $pids_array);
 	}
 
-	if (!isset($cens_pids)){
+	if (!isset($cens_pids)) {
 		$cens_pids = array($pid);
 		$idnums="";
 	} else {
@@ -1904,7 +1904,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 case 'al_reorder_media_update': // Update sort using Album Page
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
     if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
-	function SwapArray($Array){
+	function SwapArray($Array) {
 		$Values = array();
 		while (list($Key, $Val) = each($Array))
 			$Values[$Val] = $Key;

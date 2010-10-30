@@ -94,9 +94,9 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 			// Else If reorder media has NOT been clicked
 			// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
-			} else if ($rtype=='new'){
+			} else if ($rtype=='new') {
 				echo "<li class=\"li_new\">";
-			} else if ($rtype=='old'){
+			} else if ($rtype=='old') {
 				echo "<li class=\"li_old\">";
 			} else {
 				echo "<li class=\"li_norm\">";

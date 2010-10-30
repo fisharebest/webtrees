@@ -40,12 +40,12 @@ if (!defined('WT_WEBTREES')) {
 	<dd id="door2"><a href="javascript:;" onclick="tabswitch(2); return false;" ><?php echo i18n::translate('Notes'); ?></a></dd>
 	<dd id="door3"><a href="javascript:;" onclick="tabswitch(3); return false;" ><?php echo i18n::translate('Sources'); ?></a></dd>
 <?php
-	if ($MULTI_MEDIA){
+	if ($MULTI_MEDIA) {
 		if (!file_exists("modules/googlemap/defaultconfig.php")) { ?>
 			<?php if (file_exists("modules/lightbox/album.php") ) { ?>
 				<dd id="door8"><a href="javascript:;" onclick="tabswitch(8); return false;" ><?php echo i18n::translate('Album'); ?></a></dd>
 			<?php }
-		}elseif (file_exists("modules/googlemap/defaultconfig.php")) { ?>
+		} elseif (file_exists("modules/googlemap/defaultconfig.php")) { ?>
 			<?php if (file_exists("modules/lightbox/album.php") ) { ?>
 				<dd id="door9"><a href="javascript:;" onclick="tabswitch(9); return false;" ><?php echo i18n::translate('Album'); ?></a></dd>
 			<?php }

@@ -70,7 +70,7 @@ function MM_findObj(n, d) { //v4.01
   var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
     d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
   if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
-  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  for (i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
   if(!x && d.getElementById) x=d.getElementById(n); return x;
 }
 
@@ -754,7 +754,7 @@ function evalAjaxJavascript(text, parentElement) {
 		regex = new RegExp("\\ssrc=\".*\"", "gi");
 		results = scripttag.match(regex);
 		if (results) {
-			for(i=0; i<results.length; i++) {
+			for (i=0; i<results.length; i++) {
 				src = results[i].substring(results[i].indexOf("\"")+1, results[i].indexOf("\"", 6));
 				src = src.replace(/&amp;/gi, "&");
 				jselement.src = src;
@@ -898,7 +898,7 @@ function show_submenu(elementid, parentid, dir) {
 		//-- make sure the submenu is the size of the largest child
 		var maxwidth = 0;
 		var count = element.childNodes.length;
-		for(var i=0; i<count; i++) {
+		for (var i=0; i<count; i++) {
 			var child = element.childNodes[i];
 			if (child.offsetWidth > maxwidth+5) maxwidth = child.offsetWidth;
 		}
@@ -1159,14 +1159,14 @@ var monthLabels = new Array();
   function cal_generateSelectorContent(dateFieldId, dateDivId, date) {
   	var content = '<table border="1"><tr>';
   	content += '<td><select name="'+dateFieldId+'_daySelect" id="'+dateFieldId+'_daySelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
-  	for(i=1; i<32; i++) {
+  	for (i=1; i<32; i++) {
   		content += '<option value="'+i+'"';
   		if (date.getDate()==i) content += ' selected="selected"';
   		content += '>'+i+'</option>';
   	}
   	content += '</select></td>';
   	content += '<td><select name="'+dateFieldId+'_monSelect" id="'+dateFieldId+'_monSelect" onchange="return cal_updateCalendar(\''+dateFieldId+'\', \''+dateDivId+'\');">';
-  	for(i=1; i<13; i++) {
+  	for (i=1; i<13; i++) {
   		content += '<option value="'+i+'"';
   		if (date.getMonth()+1==i) content += ' selected="selected"';
   		content += '>'+monthLabels[i]+'</option>';
@@ -1177,7 +1177,7 @@ var monthLabels = new Array();
   	content += '<table width="100%">';
   	content += '<tr>';
   	j = weekStart;
-	for(i=0; i<7; i++) {
+	for (i=0; i<7; i++) {
 		content += '<td ';
 		content += 'class="descriptionbox"';
 		content += '>';
@@ -1195,9 +1195,9 @@ var monthLabels = new Array();
   	tdate = tdate.getTime() - (day*daymilli) + (daymilli/2);
   	tdate = new Date(tdate);
 
-  	for(j=0; j<6; j++) {
+  	for (j=0; j<6; j++) {
   		content += '<tr>';
-  		for(i=0; i<7; i++) {
+  		for (i=0; i<7; i++) {
   			content += '<td ';
   			if (tdate.getMonth()==date.getMonth()) {
   				if (tdate.getDate()==date.getDate()) content += 'class="descriptionbox"';

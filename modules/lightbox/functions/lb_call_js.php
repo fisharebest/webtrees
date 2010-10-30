@@ -63,14 +63,14 @@ global $tabno, $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
 			<?php if ($TEXT_DIRECTION=="rtl") { ?>
 				var CB_Alignm = "<?php echo "right"; ?>"; // Notes RTL Tooltip Balloon Text align
 				var CB_ImgNotes2 = "<?php echo i18n::translate('Notes'); ?>"; // Notes RTL Tooltip for Full Image
-			<?php }else{ ?>
+			<?php } else { ?>
 				var CB_Alignm = "<?php echo "left"; ?>"; // Notes LTR Tooltip Balloon Text align
 				var CB_ImgNotes2 = "<?php echo i18n::translate('Notes'); ?>"; // Notes LTR Tooltip for Full Image
 			<?php } ?>
 
 			<?php if ($LB_MUSIC_FILE == "") { ?>
 				var myMusic = null;
-			<?php }else{ ?>
+			<?php } else { ?>
 				var myMusic  = '<?php echo $LB_MUSIC_FILE; ?>';   // The music file
 			<?php } ?>
 			var CB_SlShowTime  = '<?php echo $LB_SS_SPEED; ?>'; // Slide show timer
@@ -87,7 +87,7 @@ global $tabno, $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
 		<link href ="modules/lightbox/css/album_page_RTL.css"  rel="stylesheet" type="text/css" media="screen" />
 		<![endif]-->
 
-<?php }else{ ?>
+<?php } else { ?>
 		<script src="modules/lightbox/js/Sound.js"  type="text/javascript"></script>
 		<script src="modules/lightbox/js/clearbox.js"  type="text/javascript"></script>
 
@@ -97,7 +97,7 @@ global $tabno, $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
 		<script src="modules/lightbox/js/tip_centerwindow.js"  type="text/javascript"></script>
 		<?php if ($TEXT_DIRECTION=="rtl") { ?>
 			<script src="modules/lightbox/js/tip_balloon_RTL.js"  type="text/javascript"></script>
-		<?php }else{ ?>
+		<?php } else { ?>
 			<script src="modules/lightbox/js/tip_balloon.js"  type="text/javascript"></script>
 		<?php } ?>
 

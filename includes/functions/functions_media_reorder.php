@@ -126,7 +126,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		echo "</table>";
 	if (!isset($j)) {
 		$j=0;
-	}else{
+	} else {
 		$j=$j;
 	}
 	$media_data = $rowm['m_media'];

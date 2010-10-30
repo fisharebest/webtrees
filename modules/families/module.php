@@ -86,9 +86,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		jQuery(document).ready(function(){
-			jQuery("#sb_fam_name").focus(function(){this.select();});
-			jQuery("#sb_fam_name").blur(function(){if (this.value=="") this.value="'.i18n::translate('Search').'";});
+		jQuery(document).ready(function() {
+			jQuery("#sb_fam_name").focus(function() {this.select();});
+			jQuery("#sb_fam_name").blur(function() {if (this.value=="") this.value="'.i18n::translate('Search').'";});
 			var famtimerid = null;
 			jQuery("#sb_fam_name").keyup(function(e) {
 				if (famtimerid) window.clearTimeout(famtimerid);
@@ -106,7 +106,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					jQuery.ajax({
 					  url: "sidebar.php?sb_action=families&alpha="+alpha+"&surname="+surname,
 					  cache: false,
-					  success: function(html){
+					  success: function(html) {
 					    jQuery("#sb_fam_"+surname+" div").html(html);
 					    jQuery("#sb_fam_"+surname+" div").show();
 					    jQuery("#sb_fam_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
@@ -168,7 +168,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $SHOW_MARRIED_NAMES;
 		$surns=get_indilist_surns('', $alpha, $SHOW_MARRIED_NAMES, true, WT_GED_ID);
 		$out = '<ul>';
-		foreach($surns as $surname=>$surns) {
+		foreach ($surns as $surname=>$surns) {
 			$out .= '<li id="sb_fam_'.$surname.'" class="sb_fam_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_fam_surname">'.$surname.'</a>';
 			if (!empty($surname1) && $surname1==$surname) {
 				$out .= '<div class="name_tree_div_visible">';
@@ -188,7 +188,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$families=get_famlist_fams($surname, $alpha, '', $SHOW_MARRIED_NAMES, WT_GED_ID);
 		$out = '<ul>';
 		$private_count = 0;
-		foreach($families as $family) {
+		foreach ($families as $family) {
 			if ($family->canDisplayName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {

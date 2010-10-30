@@ -70,7 +70,7 @@ if ($sb_action!='none') {
 
 	if ($sb_action=='loadMods') {
 		$counter = 0;
-		foreach($sidebarmods as $mod) {
+		foreach ($sidebarmods as $mod) {
 			if (isset($controller)) $mod->setController($controller);
 			if ($mod->hasSidebarContent()) {
 				?>
@@ -251,10 +251,10 @@ jQuery(document).ready(function() {
 	// -----------------------------
 
 	<?php if  ( $sidebar_state == "open" ) { ?>
-		<?php if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || !isset($_SESSION['WT_sb_closed']) ) { ?>
+		<?php if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] || !isset($_SESSION['WT_sb_closed'])) { ?>
 			jQuery('#sidebar_open').click();
 			jQuery('#sidebar_controls').show();
-			if ( pinned == false ) {
+			if (pinned==false) {
 				jQuery('#sidebar_pin').click();
 			}
 			<?php } else { ?>
@@ -262,8 +262,8 @@ jQuery(document).ready(function() {
 			<?php } ?>
 		<?php } ?>
 
-		<?php if ( $sidebar_state == "closed" ) { ?>
-			if ( pinned == true) {
+		<?php if ($sidebar_state=="closed") { ?>
+			if (pinned==true) {
 				jQuery('#sidebar_open').click();
 			}
 			jQuery('#sidebar_controls').show();
@@ -274,7 +274,7 @@ jQuery(document).ready(function() {
 <?php
 	echo WT_JS_END;
 	echo '<div id="sidebar">';
-	if ( isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] && $sidebar_state == "open") {
+	if (isset($_SESSION['WT_pin']) && $_SESSION['WT_pin'] && $sidebar_state == "open") {
 		?>
 		<div id="sidebar_controls" class="ui-accordion-header ui-helper-reset ui-state-active ui-corner-top ui-state-focus">
 			<a id="sidebar_open" href="#open"><img style="margin-left:0px;" src="<?php echo $WT_IMAGES['slide_close']; ?>" border="0" title="<?php echo i18n::translate('Sidebar Open'); ?>" alt="" /></a>

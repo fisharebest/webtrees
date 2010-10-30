@@ -49,11 +49,11 @@ $numberPrefix = '+-'; // Treat these like numbers when at beginning or end of nu
 $numberPunctuation = '- ,.:/'; // Treat these like numbers when inside numeric strings
 $punctuation = ',.:;?!';
 
-function getLRM(){
+function getLRM() {
 	return "&lrm;";
 }
 
-function getRLM(){
+function getRLM() {
 	return "&rlm;";
 }
 
@@ -338,7 +338,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			$result .= $waitingText;
 			$waitingText = '';
 
-			foreach($openParDirection as $index => $value) {
+			foreach ($openParDirection as $index => $value) {
 				// Since we now know the proper direction, remember it for all waiting opening parentheses
 				if ($value == '?') {
 					$openParDirection[$index] = $currentState;
@@ -1080,7 +1080,7 @@ function bidi_text($text) {
 	//מספר מזהה (SSN)
 
 	$found = false;
-	foreach($RTLOrd as $indexval => $ord) {
+	foreach ($RTLOrd as $indexval => $ord) {
 		if (strpos($text, chr($ord))!==false) $found=true;
 	}
 	if (!$found) return $text;
@@ -1091,7 +1091,7 @@ function bidi_text($text) {
 	$temp = "";
 	$state = 0;
 	$p = 0;
-	for($i=0; $i<strlen($text); $i++) {
+	for ($i=0; $i<strlen($text); $i++) {
 		$letter = $text{$i};
 		//print $letter.ord($letter).",";
 		//-- handle Hebrew chars
@@ -1151,7 +1151,7 @@ function bidi_text($text) {
 
 	//-- loop through and check if parenthesis are correct... if parenthesis were broken by
 	//-- rtl text then they need to be reversed
-	for($i=0; $i<count($parts); $i++) {
+	for ($i=0; $i<count($parts); $i++) {
 		$bef = "";
 		$aft = "";
 		$wt = preg_match("/^(\s*).*(\s*)$/", $parts[$i], $match);

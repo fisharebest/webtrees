@@ -55,7 +55,7 @@ function split_align_text($data, $maxlen) {
 	// do not split hebrew line
 
 	$found = false;
-	foreach($RTLOrd as $indexval => $ord) {
+	foreach ($RTLOrd as $indexval => $ord) {
 		if (strpos($data, chr($ord)) !== false) $found=true;
 	}
 	if ($found) $line=$data;
@@ -341,7 +341,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 								$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
 								if ($num>2) echo "<br /><span class=\"name1\">".i18n::translate('Siblings')."</span>";
 								if ($num==2) echo "<br /><span class=\"name1\">".i18n::translate('Sibling')."</span>";
-								for($i=0; $i<$num; $i++) {
+								for ($i=0; $i<$num; $i++) {
 									$cpid = $smatch[$i][1];
 									if ($cpid!=$pid) {
 										$person=Person::getInstance($cpid);

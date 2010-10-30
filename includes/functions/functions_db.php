@@ -1653,7 +1653,7 @@ function get_top_surnames($ged_id, $min, $max) {
 /**
 * get a list of remote servers
 */
-function get_server_list($ged_id=WT_GED_ID){
+function get_server_list($ged_id=WT_GED_ID) {
 	$sitelist = array();
 
 	$rows=WT_DB::prepare("SELECT s_id, s_name, s_gedcom, s_file FROM `##sources` WHERE s_file=? AND s_dbid=? ORDER BY s_name")

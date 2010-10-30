@@ -162,7 +162,7 @@ class ServiceClient extends GedcomRecord {
 		$this->authenticate();
 		$info = $this->soapClient->ServiceInfo();
 		//print_r($info);
-		foreach($info->gedcoms as $ind=>$gedobj) {
+		foreach ($info->gedcoms as $ind=>$gedobj) {
 			if ($gedobj->ID==$this->gedfile) break;
 		}
 		$this->title = $gedobj->title;
@@ -183,20 +183,20 @@ class ServiceClient extends GedcomRecord {
 
 		$newrecs = array();
 		//-- make sure we don't get circular links
-		foreach($remoterecs as $ind2=>$subrec2) {
+		foreach ($remoterecs as $ind2=>$subrec2) {
 			if (strpos($subrec2, "1 RFN")===false) {
 				$newrecs[] = $subrec2;
 			}
 		}
 
-		foreach($localrecs as $ind=>$subrec) {
+		foreach ($localrecs as $ind=>$subrec) {
 			$found = false;
 			if (strpos($subrec, "1 CHAN")===false) {
 				$subrec = trim($subrec);
 				$orig_subrec = $subrec;
 				$subrec = preg_replace("/\s+/", " ", $subrec);
 
-				foreach($remoterecs as $ind2=>$subrec2) {
+				foreach ($remoterecs as $ind2=>$subrec2) {
 					$subrec2 = trim($subrec2);
 					$subrec2 = preg_replace("/\s+/", " ", $subrec2);
 
@@ -222,7 +222,7 @@ class ServiceClient extends GedcomRecord {
 		$ct = preg_match("/0 @(.*)@ (\w*)/", $record2, $match);
 		if ($ct>0) $localrec = preg_replace("/0 @(.*)@ (\w*)/", "0 @$1@ ".trim($match[2]), $localrec);
 		//-- add all of the new records
-		foreach($newrecs as $ind=>$subrec) {
+		foreach ($newrecs as $ind=>$subrec) {
 			$localrec .= trim($subrec)."\n";
 		}
 		$localrec = trim($localrec);
@@ -252,7 +252,7 @@ class ServiceClient extends GedcomRecord {
 	/**
 	* Updates Family Records such as children, spouse, and parents
 	*/
-	function UpdateFamily($record1,$record2){
+	function UpdateFamily($record1,$record2) {
 		// This makes sure there is a record in both the server and client else it returns the record that
 		// exist if any
 		if (empty($record1)) {
@@ -268,7 +268,7 @@ class ServiceClient extends GedcomRecord {
 		if ($ct>0) {
 			$personId1 = $match[1];
 			$type1 = trim($match[2]);
-			if ($type1!="INDI"){
+			if ($type1!="INDI") {
 				return $record1;
 			}
 		}
@@ -276,7 +276,7 @@ class ServiceClient extends GedcomRecord {
 		if ($ct>0) {
 			$personId2 = $match[1];
 			$type2 = trim($match[2]);
-			if ($type2!="INDI"){
+			if ($type2!="INDI") {
 				return $record1;
 			}
 		}
@@ -297,22 +297,22 @@ class ServiceClient extends GedcomRecord {
 		$firstTimeFamily=true;
 
 		// starting the comparisons for family as child
-		if(empty($List1FamilyChildID)){
+		if (empty($List1FamilyChildID)) {
 			//-- add all remote ids
-			foreach($List2FamilyChildID as $famc=>$famCild2){
+			foreach ($List2FamilyChildID as $famc=>$famCild2) {
 				$FamilyListChild[] = $famCild2;
 			}
-		} elseif(empty($List2FamilyChildID)){
+		} elseif (empty($List2FamilyChildID)) {
 			//-- nothing to do if there are no remote families
 		} else {
 			// Creating the first family
-			foreach($List1FamilyChildID as $famc=>$famCild1){
-				if(!empty($famCild1)){
+			foreach ($List1FamilyChildID as $famc=>$famCild1) {
+				if (!empty($famCild1)) {
 					// Creating the Secound Family
-					foreach($List2FamilyChildID as $famc=>$famCild2){
-						if(!empty($famCild2)){
-							if(!$this->CompairForUpdateFamily($famCild1,$famCild2)){
-								if($firstTimeFamily){
+					foreach ($List2FamilyChildID as $famc=>$famCild2) {
+						if (!empty($famCild2)) {
+							if (!$this->CompairForUpdateFamily($famCild1,$famCild2)) {
+								if ($firstTimeFamily) {
 									$FamilyListChild[] = $famCild2;
 								}
 							} else {
@@ -324,24 +324,24 @@ class ServiceClient extends GedcomRecord {
 			}
 		}
 		// starting the comparisons for family as spouse
-		if(empty($List1FamilySpouseID)){
+		if (empty($List1FamilySpouseID)) {
 			//-- add all remote ids
-			foreach($List2FamilySpouseID as $fams=>$famSpouse2){
-				if(!empty($famSpouse2)){
+			foreach ($List2FamilySpouseID as $fams=>$famSpouse2) {
+				if (!empty($famSpouse2)) {
 					$FamilyListSpouse[] = $famSpouse2;
 				}
 			}
-		} elseif(empty($List2FamilySpouseID)){
+		} elseif (empty($List2FamilySpouseID)) {
 			//-- don't do anything if there are no remote families
 		} else {
 			// Creating the first family
-			foreach($List1FamilySpouseID as $fams=>$famSpouse1){
-				if(!empty($famSpouse1)){
+			foreach ($List1FamilySpouseID as $fams=>$famSpouse1) {
+				if (!empty($famSpouse1)) {
 					// Creating the Secound Family
-					foreach($List2FamilySpouseID as $fams=>$famSpouse2){
-						if(!empty($famSpouse2)){
-							if(!$this->CompairForUpdateFamily($famSpouse1,$famSpouse2)){
-								if($firstTimeFamily){
+					foreach ($List2FamilySpouseID as $fams=>$famSpouse2) {
+						if (!empty($famSpouse2)) {
+							if (!$this->CompairForUpdateFamily($famSpouse1,$famSpouse2)) {
+								if ($firstTimeFamily) {
 									$FamilyListSpouse[] = $famSpouse2;
 								}
 							} else {
@@ -353,15 +353,15 @@ class ServiceClient extends GedcomRecord {
 			}
 		}
 		// This Adds any new familys to the person.
-		if (count($FamilyListChild)>0){
-			for ($i=0;$i<count($FamilyListChild);$i++){
+		if (count($FamilyListChild)>0) {
+			for ($i=0;$i<count($FamilyListChild);$i++) {
 				$record1.="\n1 FAMC @";
 				if (strpos($FamilyListChild[$i], $this->xref)!==0) $record1 .= $this->xref.":";
 				$record1 .= $FamilyListChild[$i]."@";
 			}
 		}
-		if(count($FamilyListSpouse)>0){
-			for($i=0;$i<count($FamilyListSpouse);$i++){
+		if (count($FamilyListSpouse)>0) {
+			for ($i=0;$i<count($FamilyListSpouse);$i++) {
 				$record1.="\n1 FAMS @";
 				if (strpos($FamilyListSpouse[$i], $this->xref)!==0) $record1 .= $this->xref.":";
 				$record1 .= $FamilyListSpouse[$i]."@";
@@ -373,7 +373,7 @@ class ServiceClient extends GedcomRecord {
 	/**
 	* This mergest the the two familys together
 	*/
-	function MergeForUpdateFamily($Family1,$Family2,$Familylist,&$FamilyListReturn){
+	function MergeForUpdateFamily($Family1,$Family2,$Familylist,&$FamilyListReturn) {
 		global $GEDCOM;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -408,40 +408,40 @@ class ServiceClient extends GedcomRecord {
 		$children1=$family1->getChildren();
 		$children2=$family2->getChildren();
 
-		if(count($FamilyListReturn)>0){ // removes the updated family from the list so it does not get added later.
+		if (count($FamilyListReturn)>0) { // removes the updated family from the list so it does not get added later.
 			$index=null;
-			for($i=0; $i<count($FamilyListReturn); $i++){
-				if($FamilyListReturn[$i]==$Family2){
+			for ($i=0; $i<count($FamilyListReturn); $i++) {
+				if ($FamilyListReturn[$i]==$Family2) {
 					$ndex=$i;
 					break;
 				}
 			}
-			if($index!=null){
+			if ($index!=null) {
 					unset($FamilyListReturn[$index]);
 			}
 		}
 
 		$famupdated = false;
 		// Merging starts here, the merging of children.
-		if(empty($children1)) {
+		if (empty($children1)) {
 			$children1=$children2;
-		} elseif(empty($children2)) {
+		} elseif (empty($children2)) {
 		} else {
 			// Children are looped to see if they need to be added or merged to an esisting child
-			foreach($children2 as $childID2=>$Child2){
-				if(!empty($Child2)) {
+			foreach ($children2 as $childID2=>$Child2) {
+				if (!empty($Child2)) {
 					//echo "<br/>child 2 Xref ".$Child2->getXref()."-".$childID2;
 
 					$found = false;
 					//-- compare to children in local family
-					foreach($children1 as $childID1=>$Child1){
-						if(!empty($Child1)){
+					foreach ($children1 as $childID1=>$Child1) {
+						if (!empty($Child1)) {
 							//echo "<br/>child 2 Xref ".$Child2->getXref()." == ".$Child1->getXref();
 							$found=$this->ComparePeople($Child1,$Child2);
 							if ($found) break;
 						}
 					}
-					if($found){
+					if ($found) {
 						$childrec = $Child1->getGedcomRecord();
 						if (strpos($childrec, "1 RFN ".$this->xref.":")===false) {
 							$childrec .= "\n1 RFN ".$Child2->getXref();
@@ -469,15 +469,15 @@ class ServiceClient extends GedcomRecord {
 		}
 
 		// Merge Father basicly they just add the rfn numer and let the merge handle it latter
-		if(empty($father1)){
-			if(!empty($father2)){
+		if (empty($father1)) {
+			if (!empty($father2)) {
 				$father1=$father2;
 				$famrec1 .="\n1 HUSB @".$father1->getXref()."@";
 				//echo "<br/> adding for fahter ".$father1->getXref();
 				replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 			}
-		} elseif(!empty($father2)){
-			if($this->ComparePeople($father1,$father2)){
+		} elseif (!empty($father2)) {
+			if ($this->ComparePeople($father1,$father2)) {
 				$fatherrec = $father1->getGedcomRecord();
 				if (strpos($fatherrec, "1 RFN ".$this->xref.":")===false) {
 					$fatherrec .= "\n1 RFN ".$father2->getXref();
@@ -488,15 +488,15 @@ class ServiceClient extends GedcomRecord {
 			}
 		}
 		// Merge Mother
-		if(empty($mother1)){
-			if(!empty($mother2)){
+		if (empty($mother1)) {
+			if (!empty($mother2)) {
 				$mother1=$mother2;
 				$famrec1 .="\n1 WIFE @".$mother1->getXref()."@";
 				//echo "<br/> adding for mother ".$mother1->getXref();
 				replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 			}
-		} else if(!empty($mother2)){
-			if($this->ComparePeople($mother1,$mother2)){
+		} else if (!empty($mother2)) {
+			if ($this->ComparePeople($mother1,$mother2)) {
 				$motherrec = $mother1->getGedcomRecord();
 				if (strpos($motherrec, "1 RFN ".$this->xref.":")===false) {
 					$motherrec .= "\n1 RFN ".$mother2->getXref();
@@ -544,11 +544,11 @@ class ServiceClient extends GedcomRecord {
 		}
 		$father2 = $family2->getHusband();
 		$CountFamily2+=1.0;
-		if(empty($father1)){
+		if (empty($father1)) {
 			unset($father1);
 			$CountFamily1-=1.0;
 		}
-		if(empty($father2)){
+		if (empty($father2)) {
 			unset($father2);
 			$CountFamily2-=1.0;
 		}
@@ -556,11 +556,11 @@ class ServiceClient extends GedcomRecord {
 		// Creat the mothers if their is some
 		$mother2=$family2->getWife();
 		$CountFamily2+=1.0;
-		if(empty($mother1)){
+		if (empty($mother1)) {
 			unset($mother1);
 			$CountFamily1-=1.0;
 		}
-		if(empty($mother2)){
+		if (empty($mother2)) {
 			unset($mother2);
 			$CountFamily2-=1.0;
 		}
@@ -572,11 +572,11 @@ class ServiceClient extends GedcomRecord {
 		// finds the probablity that they are the same family Bassed of both sites information
 		$CountFamily1 += count($children1);
 		$CountFamily2 += count($children2);
-		foreach($children1 as $childID1=>$Person1){
+		foreach ($children1 as $childID1=>$Person1) {
 			if (!empty($Person1)) {
-				foreach($children2 as $childID2=>$Person2){
-					if(!empty($Person2)){
-						if($this->ComparePeople($Person1,$Person2)){
+				foreach ($children2 as $childID2=>$Person2) {
+					if (!empty($Person2)) {
+						if ($this->ComparePeople($Person1,$Person2)) {
 							$ChanceSameFamily+=1.0;
 							//echo "<br />".$Person1->getXref()." equals ".$Person2->getXref();
 							break;
@@ -586,27 +586,27 @@ class ServiceClient extends GedcomRecord {
 			}
 		}
 
-		if(empty($father1)) {
-		} elseif(empty($father2)){
+		if (empty($father1)) {
+		} elseif (empty($father2)) {
 		} else {
-			if($this->ComparePeople($father1,$father2)){
+			if ($this->ComparePeople($father1,$father2)) {
 				$ChanceSameFamily+=1.0;
 			}
 		}
-		if(empty($mother1)) {
-		} elseif(empty($mother2)) {
+		if (empty($mother1)) {
+		} elseif (empty($mother2)) {
 		} else {
-			if($this->ComparePeople($mother1,$mother2)){
+			if ($this->ComparePeople($mother1,$mother2)) {
 				$ChanceSameFamily+=1.0;
 			}
 		}
-		if($CountFamily1!=0&&$CountFamily2!=0){
+		if ($CountFamily1!=0&&$CountFamily2!=0) {
 			$ChanceSame=(($ChanceSameFamily/$CountFamily1)+($ChanceSameFamily/$CountFamily2))/2;
 			//echo "<br />chancesame=".$ChanceSameFamily." count1=".$CountFamily1." count2=".$CountFamily2." ".$family1->getXref()." compared to ".$family2->getXref()." is ".$ChanceSame;
 		} else
 			return false;
 
-		if($ChanceSame<0.5){ // If the probabilty is less then 0.5 or 50% then the current family is stored here to be added later
+		if ($ChanceSame<0.5) { // If the probabilty is less then 0.5 or 50% then the current family is stored here to be added later
 			return false;
 		} else { return true; }
 	}
@@ -636,7 +636,7 @@ class ServiceClient extends GedcomRecord {
 	* false if they are not. It only compares the name, sex birthdate, and deathdate
 	* of the person
 	*/
-	static function ComparePeople(&$Person1,&$Person2){
+	static function ComparePeople(&$Person1,&$Person2) {
 		$PersonName1=$Person1->getFullName();
 		$PersonSex1=$Person1->getSex();
 		$PersonBirth1=$Person1->getEstimatedBirthDate();
@@ -649,9 +649,9 @@ class ServiceClient extends GedcomRecord {
 
 		$count=0;
 		$Probability=0;
-		if (!empty($PersonName1)&&!empty($PersonName2)){
+		if (!empty($PersonName1)&&!empty($PersonName2)) {
 			$lev = levenshtein(utf8_strtolower($PersonName1), utf8_strtolower($PersonName2));
-			if($lev<4){
+			if ($lev<4) {
 				$Probability+=2;
 			} else
 				$Probability-=2;
@@ -686,7 +686,7 @@ class ServiceClient extends GedcomRecord {
 		}
 
 		$prob=$Probability/$count;
-		if($prob<0.5){
+		if ($prob<0.5) {
 			return false;
 		} else {
 			return true;
@@ -702,7 +702,7 @@ class ServiceClient extends GedcomRecord {
 	function checkIds($gedrec) {
 		$ids_checked = array();
 		$ct = preg_match_all("/@(".$this->xref.":.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$id = trim($match[$i][1]);
 			if (isset($ids_checked[$id])) continue;
 			$ids_checked[$id]=true;
@@ -870,7 +870,7 @@ class ServiceClient extends GedcomRecord {
 		if (isset($namespace[0]) && isset($wsdl->bindings[$namespace[0]]['operations'])) {
 			$operations = array_keys($wsdl->bindings[$namespace[0]]['operations']);
 
-			for($i = 0; $i<count($operations); $i++) {
+			for ($i = 0; $i<count($operations); $i++) {
 				$wsdl->bindings[$namespace[0]]['operations'][$operations[$i]]['input']['use'] = 'literal';
 				$wsdl->bindings[$namespace[0]]['operations'][$operations[$i]]['output']['use'] = 'literal';
 			}

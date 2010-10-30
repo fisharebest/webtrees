@@ -17,7 +17,7 @@ function getElementsByNameIE(tag, name) {
 	var els = new Array();
 	var temps = document.getElementsByTagName(tag);
 	j = 0;
-	for(i=0; i<temps.length; i++) {
+	for (i=0; i<temps.length; i++) {
 		if (temps[i].name==name) {
 			els[j] = temps[i];
 			j++;
@@ -76,13 +76,13 @@ function NavTree(outerId, innerId, name, xref) {
 		var vlines;
 		if (browser.isIE) vlines = getElementsByNameIE("img", "vertline");
 		else vlines = document.getElementsByName("vertline");
-		for(i=0; i<vlines.length; i++) {
+		for (i=0; i<vlines.length; i++) {
 			id = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			outerParent = document.getElementById("ch_"+id);
 			children = outerParent.childNodes;
 			tables = new Array();
 			k=0;
-			for(j=0; j<children.length; j++) {
+			for (j=0; j<children.length; j++) {
 				if (children[j].tagName=='TABLE') {
 					tables[k] = children[j];
 					k++;
@@ -104,7 +104,7 @@ function NavTree(outerId, innerId, name, xref) {
 		//-- parent lines
 		if (browser.isIE) vlines = getElementsByNameIE("img", "pvertline");
 		else vlines = document.getElementsByName("pvertline");
-		for(i=0; i<vlines.length; i++) {
+		for (i=0; i<vlines.length; i++) {
 			ids = vlines[i].id.split("_");
 			var y1 = 0;
 			var y2 = 0;
@@ -276,7 +276,7 @@ function NavTree(outerId, innerId, name, xref) {
 	
 	this.zoomIn = function() {
 		boxes = this.innerPort.getElementsByTagName("div");
-		for(i=0; i<boxes.length; i++) {
+		for (i=0; i<boxes.length; i++) {
 			child = boxes[i];
 			child.style.width = (parseInt(child.style.width) + 18)+'px';
 			child.style.fontSize = (parseInt(child.style.fontSize)+1)+'px';
@@ -290,7 +290,7 @@ function NavTree(outerId, innerId, name, xref) {
 
 	this.zoomOut = function() {
 		boxes = this.innerPort.getElementsByTagName("div");
-		for(i=0; i<boxes.length; i++) {
+		for (i=0; i<boxes.length; i++) {
 			child = boxes[i];
 			child.style.width = (parseInt(child.style.width) - 18)+'px';
 			child.style.fontSize = (parseInt(child.style.fontSize)-1)+'px'; 
@@ -304,7 +304,7 @@ function NavTree(outerId, innerId, name, xref) {
 
 	this.zoomImgs = function(child) {
 		imgs = child.getElementsByTagName("img");
-		for(j=0; j<imgs.length; j++) {
+		for (j=0; j<imgs.length; j++) {
 			if (this.zoom<-1) imgs[j].style.display = 'none';
 			else {
 				imgs[j].style.display = 'inline';
@@ -326,7 +326,7 @@ function NavTree(outerId, innerId, name, xref) {
 		  		//-- prevent the wait from staying on forever
 		  		window.setTimeout(this.name+".restoreCursor()", 2000);
 		  		this.loading.style.display = "block";
-			  	for(i=0; i<chil.length; i++) {
+			  	for (i=0; i<chil.length; i++) {
 			  		if (chil[i] && chil[i].onclick) {
 			  			cell = chil[i];
 			  			y = findPosY(cell);
@@ -353,7 +353,7 @@ function NavTree(outerId, innerId, name, xref) {
 		  		//-- prevent the wait from staying on forever
 		  		window.setTimeout(this.name+".restoreCursor()", 2000);
 		  		this.loading.style.display = "block";
-			  	for(i=0; i<children.length; i++) {
+			  	for (i=0; i<children.length; i++) {
 			  		if (children[i] && children[i].onclick) {
 			  			cell = children[i];
 			  			x = findPosX(cell);

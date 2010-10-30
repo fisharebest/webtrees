@@ -42,7 +42,7 @@ $gedrec = find_gedcom_record($pid, WT_GED_ID);
 $level=0;
 $regexp = "/OBJE @(.*)@/";
 $ct_indi = preg_match_all($regexp, $gedrec, $match, PREG_SET_ORDER);
-for($i=0; $i<$ct_indi; $i++) {
+for ($i=0; $i<$ct_indi; $i++) {
 	if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
 	else $current_objes[$match[$i][1]]++;
 	$obje_links[$match[$i][1]][] = $match[$i][0];
@@ -54,7 +54,7 @@ if ($ct>0) {
 	$related=true;
 	if ($related) {
 		$ct = preg_match_all("/1 FAMS @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$ids[] = trim($match[$i][1]);
 		}
 	}
@@ -64,7 +64,7 @@ if ($ct>0) {
 	$sqlmm .= "mm_gid IN (";
 	$vars=array();
 	$i=0;
-	foreach($ids as $key=>$id) {
+	foreach ($ids as $key=>$id) {
 		if ($i>0) $sqlmm .= ",";
 		$sqlmm .= "?";
 		$vars[]=$id;
@@ -79,7 +79,7 @@ if ($ct>0) {
 	// Get related media item count
 	$ct_db = count($rows);
 	//else if indi not related
-}else{
+} else {
 	// Get related media item count
 	$ct_db = 0;
 }
@@ -87,7 +87,7 @@ if ($ct>0) {
 // Gedcom media count --------------------------------
 if (isset($current_objes)) {
 	$ct_objs = count($current_objes);
-}else{
+} else {
 	$ct_objs = 0;
 }
 //Total Media count

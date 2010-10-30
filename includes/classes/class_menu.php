@@ -300,7 +300,7 @@ class Menu {
 				}
 			}
 			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">\n";
-			foreach($this->submenus as $submenu) {
+			foreach ($this->submenus as $submenu) {
 				$submenu->parentmenu = $submenuid;
 				$output .= $submenu->getMenu();
 			}

@@ -94,7 +94,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			print_privacy_error();
 			echo "</td></tr>";
 			echo "</table>";
-		}else{
+		} else {
 			if (file_exists("modules/lightbox/album.php")) {
 				include_once('modules/lightbox/album.php');
 			}

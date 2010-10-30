@@ -116,7 +116,7 @@ class LifespanController extends BaseController {
 			}
 
 			//-- gets the immediate family for the individual being added if the include immediate family checkbox is checked.
-			if (safe_GET('addFamily', 'yes')=='yes'){
+			if (safe_GET('addFamily', 'yes')=='yes') {
 				if (isset($newpid)) $this->addFamily($newpid);
 			}
 
@@ -204,7 +204,7 @@ class LifespanController extends BaseController {
 					$this->timelineMaxYear=max($this->timelineMaxYear, $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y'));
 				}
 
-				if($this->timelineMaxYear > $this->currentYear){
+				if ($this->timelineMaxYear > $this->currentYear) {
 					$this->timelineMaxYear = $this->currentYear;
 				}
 
@@ -229,31 +229,31 @@ class LifespanController extends BaseController {
 			$this->pids[] = $newpid;
 			$families = $person->getSpouseFamilies();
 			//-- foreach gets the spouse and children of the individual.
-			foreach($families as $famID => $family){
-				if($newpid != $family->getHusbId()) {
+			foreach ($families as $famID => $family) {
+				if ($newpid != $family->getHusbId()) {
 					if ($gen>0) $this->pids[] = addFamily($family->getHusbId(), $gen-1);
 					else $this->pids[] = $family->getHusbId();
 				}
-				if($newpid != $family->getWifeId()) {
+				if ($newpid != $family->getWifeId()) {
 					if ($gen>0) $this->pids[] = addFamily($family->getWifeId(), $gen-1);
 					else $this->pids[] = $family->getWifeId();
 				}
 				$children = $family->getChildren();
-				foreach($children as $childID => $child){
+				foreach ($children as $childID => $child) {
 					if ($gen>0) $this->pids[] = addFamily($child->getXref(), $gen-1);
 					else $this->pids[] = $child->getXref();
 				}
 			}
 			$families = $person->getChildFamilies();
 			//-- foreach gets the father, mother and sibblings of the individual.
-			foreach($families as $famID => $family){
+			foreach ($families as $famID => $family) {
 				if ($gen>0) $this->pids[] = addFamily($family->getHusbId(), $gen-1);
 				else $this->pids[] = $family->getHusbId();
 				if ($gen>0) $this->pids[] = addFamily($family->getWifeId(), $gen-1);
 				else $this->pids[] = $family->getWifeId();
 				$children = $family->getChildren();
-				foreach($children as $childID => $child){
-					if($newpid != $child->getXref()) {
+				foreach ($children as $childID => $child) {
+					if ($newpid != $child->getXref()) {
 						if ($gen>0) $this->pids[] = addFamily($child->getXref(), $gen-1);
 						else $this->pids[] = $child->getXref();
 					}
@@ -269,7 +269,7 @@ class LifespanController extends BaseController {
 			case 1 : //rounds beginning year
 				$this->birthMod = ($year % 5);
 				$year = $year - ($this->birthMod);
-				if($temp == $year){
+				if ($temp == $year) {
 					$this->modTest = 0;
 				}
 				else $this->modTest = 1;
@@ -277,7 +277,7 @@ class LifespanController extends BaseController {
 			case 2 : //rounds end year
 				$this->deathMod = ($year % 5);
 				//Only executed if the year needs to be modified
-				if($this->deathMod > 0) {
+				if ($this->deathMod > 0) {
 					$this->endMod = (5 - ($this->deathMod));
 				}
 				else {
@@ -319,7 +319,7 @@ class LifespanController extends BaseController {
 
 		$rows = array();
 		$modFix = 0;
-		if($this->modTest == 1){
+		if ($this->modTest == 1) {
 			$modFix = (9 * $this->birthMod);
 		}
 		//base case
@@ -329,7 +329,7 @@ class LifespanController extends BaseController {
 		foreach ($ar as $key => $value) {
 			//Creates appropriate color scheme to show relationships
 			$this->currentsex = $value->getSex();
-			if ($this->currentsex == "M"){
+			if ($this->currentsex == "M") {
 				$this->Mcolorindex++;
 				if (!isset($this->malecolorR[$this->Mcolorindex])) $this->Mcolorindex=0;
 				$this->malecolorR[$this->Mcolorindex];
@@ -338,16 +338,16 @@ class LifespanController extends BaseController {
 				$this->malecolorG[$this->Mcolorindex];
 				$red = dechex($this->malecolorR[$this->Mcolorindex]);
 				$green =dechex($this->malecolorR[$this->Mcolorindex]);
-				if(strlen($red)<2){
+				if (strlen($red)<2) {
 					$red = "0".$red;
 				}
-				if(strlen($green)<2){
+				if (strlen($green)<2) {
 					$green = "0".$green;
 				}
 
 				$this->color = "#".$red.$green.dechex($this->malecolorB);
 			}
-			else if($this->currentsex == "F"){
+			else if ($this->currentsex == "F") {
 				$this->Fcolorindex++;
 				if (!isset($this->femalecolorG[$this->Fcolorindex])) $this->Fcolorindex = 0;
 				$this->femalecolorG[$this->Fcolorindex];
@@ -356,7 +356,7 @@ class LifespanController extends BaseController {
 				$this->femalecolorB[$this->Fcolorindex];
 				$this->color = "#".dechex($this->femalecolorR).dechex($this->femalecolorG[$this->Fcolorindex]).dechex($this->femalecolorB[$this->Fcolorindex]);
 			}
-			else{
+			else {
 				$this->color = $this->colors[$this->colorindex];
 			}
 
@@ -400,7 +400,7 @@ class LifespanController extends BaseController {
 				$Y = $top;
 				$Z = $zindex;
 				$ready = false;
-				while(!$ready) {
+				while (!$ready) {
 					if (!isset($rows[$Y])) {
 						$ready = true;
 						$rows[$Y]["x1"] = $startPos;
@@ -437,7 +437,7 @@ class LifespanController extends BaseController {
 
 				$eventinformation = Array();
 				$eventspacing = Array();
-				foreach($unparsedEvents as $index=>$val) {
+				foreach ($unparsedEvents as $index=>$val) {
 					$date = $val->getDate();
 					if (!empty($date)) {
 						$fact = $val->getTag();
@@ -466,7 +466,7 @@ class LifespanController extends BaseController {
 				$ddate=$value->getEstimatedDeathDate();
 				if ($width > ($minlength +110)) {
 					echo "<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
-					foreach($eventinformation as $evtwidth=>$val){
+					foreach ($eventinformation as $evtwidth=>$val) {
 						echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
 						$text = explode("-fact, ", $val);
 						$fact = $text[0];
@@ -494,7 +494,7 @@ class LifespanController extends BaseController {
 				} else {
 					if ($width > $minlength +5) {
 						echo "<div style=\"text-align: left; position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
-						foreach($eventinformation as $evtwidth=>$val){
+						foreach ($eventinformation as $evtwidth=>$val) {
 							echo "<div style=\"position:absolute; left:".$evtwidth." \"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
 							$text = explode("-fact,", $val);
 							$fact = $text[0];
@@ -526,7 +526,7 @@ class LifespanController extends BaseController {
 						echo "<a class=\"showit\" href=\"".$value->getHtmlUrl()."\"><b>";
 						echo abbreviate_fact('BIRT');
 						echo "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."<br/>";
-						foreach($eventinformation as $evtwidth=>$val){
+						foreach ($eventinformation as $evtwidth=>$val) {
 							$text = explode("-fact,", $val);
 							$val = $text[1];
 							echo $val."<br />";

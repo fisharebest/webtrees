@@ -135,7 +135,7 @@ class HourglassController extends BaseController {
 		$families = $person->getChildFamilies();
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-1));
-		foreach($families as $famid => $family) {
+		foreach ($families as $famid => $family) {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$parents = find_parents($famid);
 			$height="100%";
@@ -220,16 +220,16 @@ class HourglassController extends BaseController {
 		$children = array();
 		if ($count < $this->dgenerations) {
 			//-- put all of the children in a common array
-			foreach($families as $famid => $family) {
+			foreach ($families as $famid => $family) {
 				$famNum ++;
 				$chs = $family->getChildren();
-				foreach($chs as $c=>$child) $children[] = $child;
+				foreach ($chs as $c=>$child) $children[] = $child;
 			}
 
 			$ct = count($children);
 			if ($ct>0) {
 				echo "<table style=\"position: relative; top: auto; text-align: $tablealign;\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
-				for($i=0; $i<$ct; $i++) {
+				for ($i=0; $i<$ct; $i++) {
 					if (($i>0)&&($i<$ct-1)) $rowspan=1;
 					/* @var $person2 Person */
 					$person2 = $children[$i];
@@ -273,18 +273,18 @@ class HourglassController extends BaseController {
 		if ($count==$this->dgenerations) {
 			$numkids = 1;
 			$tbwidth = $bwidth+16;
-			for($j=$count; $j<$this->dgenerations; $j++) {
+			for ($j=$count; $j<$this->dgenerations; $j++) {
 				echo "<div style=\"width: ".($tbwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
 			}
 			$kcount = 0;
-			foreach($families as $famid=>$family) $kcount+=$family->getNumberOfChildren();
+			foreach ($families as $famid=>$family) $kcount+=$family->getNumberOfChildren();
 			if ($kcount==0) {
 				echo "<div style=\"width: ".($this->arrwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
 			} else {
 				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\" /></a></div>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
-					foreach($families as $famid => $family) {
+					foreach ($families as $famid => $family) {
 						/* @var $family Family */
 						if (!is_null($family)) {
 							$spouse = $family->getSpouse($person);
@@ -304,7 +304,7 @@ class HourglassController extends BaseController {
 
 		//----- Print the spouse
 		if ($this->show_spouse) {
-			foreach($families as $famid => $family) {
+			foreach ($families as $famid => $family) {
 				/* @var $family Family */
 				if (!is_null($family)) {
 					$spouse = $family->getSpouse($person);
@@ -337,7 +337,7 @@ class HourglassController extends BaseController {
 				//-- make sure there is more than 1 child in the family with parents
 				$cfamids = $person->getChildFamilies();
 				$num=0;
-				foreach($cfamids as $famid=>$family) {
+				foreach ($cfamids as $famid=>$family) {
 					if (!is_null($family)) {
 						$num += $family->getNumberOfChildren();
 					}
@@ -352,7 +352,7 @@ class HourglassController extends BaseController {
 					echo "<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 					echo "<table class=\"person_box\"><tr><td>";
 
-					foreach($famids as $famid=>$family) {
+					foreach ($famids as $famid=>$family) {
 						if (!is_null($family)) {
 							$spouse = $family->getSpouse($person);
 							if (!empty($spouse)) {
@@ -369,7 +369,7 @@ class HourglassController extends BaseController {
 							}
 
 							$children = $family->getChildren();
-							foreach($children as $id=>$child) {
+							foreach ($children as $id=>$child) {
 								$cid = $child->getXref();
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $child->getFullName();
@@ -388,9 +388,9 @@ class HourglassController extends BaseController {
 					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /> ";
 
 					//-- print the siblings
-					foreach($cfamids as $famid=>$family) {
+					foreach ($cfamids as $famid=>$family) {
 						if (!is_null($family)) {
-							if(!is_null($family->getHusband()) || !is_null($family->getWife())) {
+							if (!is_null($family->getHusband()) || !is_null($family->getWife())) {
 								echo "<span class=\"name1\"><br />".i18n::translate('Parents')."<br /></span>";
 								$husb = $family->getHusband();
 								if (!empty($husb)) {
@@ -421,7 +421,7 @@ class HourglassController extends BaseController {
 							$num = $family->getNumberOfChildren();
 							if ($num>2) echo "<span class=\"name1\"><br />".i18n::translate('Siblings')."<br /></span>";
 							if ($num==2) echo "<span class=\"name1\"><br />".i18n::translate('Sibling')."<br /></span>";
-							foreach($children as $id=>$child) {
+							foreach ($children as $id=>$child) {
 								$cid = $child->getXref();
 								if ($cid!=$pid) {
 									echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
@@ -463,9 +463,9 @@ class HourglassController extends BaseController {
 		$famids = $person->getSpouseFamilies();
 		if ($person->getNumberOfChildren()==0) return $depth-1;
 		$maxdc = $depth;
-		foreach($famids as $famid => $family){
+		foreach ($famids as $famid => $family) {
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $family->getGedcomRecord(), $match, PREG_SET_ORDER);
-			for($i=0; $i<$ct; $i++) {
+			for ($i=0; $i<$ct; $i++) {
 				$chil = trim($match[$i][1]);
 				$dc = $this->max_descendency_generations($chil, $depth+1);
 				if ($dc >= $this->generations) return $dc;
@@ -529,7 +529,7 @@ class HourglassController extends BaseController {
 	function sizeLines() {
 		var vlines;
 		vlines = document.getElementsByName("tvertline");
-		for(i=0; i < vlines.length; i++) {
+		for (i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
@@ -538,7 +538,7 @@ class HourglassController extends BaseController {
 		}
 
 		vlines = document.getElementsByName("bvertline");
-		for(i=0; i < vlines.length; i++) {
+		for (i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
@@ -547,7 +547,7 @@ class HourglassController extends BaseController {
 
 		vlines = document.getElementsByName("pvline");
 		//alert(vlines[0].parentNode.parentNode.parentNode);
-		for(i=0; i < vlines.length; i++) {
+		for (i=0; i < vlines.length; i++) {
 			//vlines[i].parentNode.style.height="50%";
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}

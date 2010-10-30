@@ -127,7 +127,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$families = $this->controller->indi->getChildFamilies();
 
 		//-- parent families -------------------------------------------------------------
-		foreach($families as $famid=>$family) {
+		foreach ($families as $famid=>$family) {
 			$label = $this->controller->indi->getChildFamilyLabel($family);
 			$people = $this->controller->buildFamilyList($family, "parents");
 			$styleadd = "";
@@ -147,7 +147,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				// $menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
-				}else{
+				} else {
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
@@ -155,8 +155,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
 
-				if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+				if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
+				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 				<tr>
 					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -179,7 +179,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
-				}else{
+				} else {
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
@@ -187,8 +187,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
 
-				if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+				if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
+				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
 					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -208,14 +208,14 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 			if (isset($people["children"])) {
 				$elderdate = $family->getMarriageDate();
-				foreach($people["children"] as $key=>$child) {
-				if ($pid == $child->getXref() ){
-				}else{
+				foreach ($people["children"] as $key=>$child) {
+				if ($pid == $child->getXref()) {
+				} else {
 					$menu = new Menu("&nbsp;" . $child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
-					}else{
+					} else {
 						$menu->addClass("", "", "submenu flyout2rtl");
 					}
 					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
@@ -223,8 +223,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
 				}
-				if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($child->getDeathYear()); }
-				if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
+				if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($child->getDeathYear()); }
+				if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($child->getBirthYear()); }
 
 					?>
 					<tr>
@@ -242,7 +242,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							if ($pid == $child->getXref()) {
 								echo "<span style=\"font: 12px tahoma, arial, helvetica, sans-serif;\">".PrintReady($child->getFullName())."</span>";
 								echo "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">" . $BirthYr . " - " . $DeathYr . "</span>";
-							}else{
+							} else {
 								echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								echo PrintReady($child->getFullName());
 								echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
@@ -258,10 +258,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		//-- step families ----------------------------------------------------------------
-		foreach($this->controller->indi->getStepFamilies() as $famid=>$family) {
+		foreach ($this->controller->indi->getStepFamilies() as $famid=>$family) {
 			$label = $this->controller->indi->getStepFamilyLabel($family);
 			$people = $this->controller->buildFamilyList($family, "step");
-			if ($people){
+			if ($people) {
 				echo "<tr><td><br /></td><td></td></tr>";
 			}
 			$styleadd = "";
@@ -283,13 +283,13 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu = new Menu();
 				if ($people["husb"]->getLabel() == ".") {
 					$menu->addLabel(i18n::translate('Step-Father'));
-				}else{
+				} else {
 					$menu->addLabel($people["husb"]->getLabel());
 				}
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
-				}else{
+				} else {
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
@@ -297,8 +297,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
 
-				if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+				if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
+				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 
 				<tr>
@@ -324,13 +324,13 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu = new Menu();
 				if ($people["wife"]->getLabel() == ".") {
 					$menu->addLabel(i18n::translate('Step-Mother'));
-				}else{
+				} else {
 					$menu->addLabel($people["wife"]->getLabel());
 				}
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
-				}else{
+				} else {
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
@@ -338,8 +338,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
 
-				if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+				if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
+				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
 					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -360,12 +360,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$styleadd = "";
 			if (isset($people["children"])) {
 				$elderdate = $family->getMarriageDate();
-				foreach($people["children"] as $key=>$child) {
+				foreach ($people["children"] as $key=>$child) {
 					$menu = new Menu($child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
-					}else{
+					} else {
 						$menu->addClass("", "", "submenu flyout2rtl");
 					}
 					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
@@ -373,8 +373,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$submenu = new Menu($slabel);
 					$menu->addSubMenu($submenu);
 
-					if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($child->getDeathYear()); }
-					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
+					if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($child->getDeathYear()); }
+					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($child->getBirthYear()); }
 					?>
 					<tr>
 						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -397,7 +397,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		//-- spouse and children --------------------------------------------------
 		$families = $this->controller->indi->getSpouseFamilies();
-		foreach($families as $famid=>$family) {
+		foreach ($families as $famid=>$family) {
 		echo "<tr><td><br /></td><td></td></tr>";
 		?>
 			<tr>
@@ -413,18 +413,18 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 			//$personcount = 0;
 			$people = $this->controller->buildFamilyList($family, "spouse");
-			if ($this->controller->indi->equals($people["husb"])){
+			if ($this->controller->indi->equals($people["husb"])) {
 				$spousetag = 'WIFE';
-			}else{
+			} else {
 				$spousetag = 'HUSB';
 			}
 			$styleadd = "";
-			if ( isset($people["husb"]) && $spousetag == 'HUSB' ) {
+			if (isset($people["husb"]) && $spousetag == 'HUSB') {
 				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
-				}else{
+				} else {
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
@@ -432,8 +432,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
 
-				if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+				if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
+				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 				<tr>
 					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -444,7 +444,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($pid == $people["husb"]->getXref()) {
 							echo PrintReady($people["husb"]->getFullName());
 							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						}else{
+						} else {
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 							echo PrintReady($people["husb"]->getFullName());
 							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
@@ -456,12 +456,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				<?php
 			}
 
-			if ( isset($people["wife"]) && $spousetag == 'WIFE') {
+			if (isset($people["wife"]) && $spousetag == 'WIFE') {
 				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
-				}else{
+				} else {
 					$menu->addClass("", "", "submenu flyout2rtl");
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
@@ -469,8 +469,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$submenu = new Menu($slabel);
 				$menu->addSubMenu($submenu);
 
-				if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+				if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
+				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
 					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -481,7 +481,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($pid == $people["wife"]->getXref()) {
 							echo PrintReady($people["wife"]->getFullName());
 							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						}else{
+						} else {
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 							echo PrintReady($people["wife"]->getFullName());
 							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
@@ -495,12 +495,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 			$styleadd = "";
 			if (isset($people["children"])) {
-				foreach($people["children"] as $key=>$child) {
+				foreach ($people["children"] as $key=>$child) {
 					$menu = new Menu("&nbsp;" . $child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
-					}else{
+					} else {
 						$menu->addClass("", "", "submenu flyout2rtl");
 					}
 					$slabel = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
@@ -508,8 +508,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$submenu = new Menu($slabel);
 					$menu->addSubmenu($submenu);
 
-					if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($child->getDeathYear()); }
-					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
+					if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($child->getDeathYear()); }
+					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($child->getBirthYear()); }
 					?>
 					<tr>
 						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
@@ -592,7 +592,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 				//-- parent families --------------------------------------
 				$fams = $person->getChildFamilies();
-				foreach($fams as $famid=>$family) {
+				foreach ($fams as $famid=>$family) {
 
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);
@@ -605,14 +605,14 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						if ($husb || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
 								$title = i18n::translate('Family book chart').": ".$famid;
-							}else{
+							} else {
 								$title = $famid." :".i18n::translate('Family book chart');
 							}
 							if ($husb) {
 								$person_parent="Yes";
 								if ($TEXT_DIRECTION=="ltr") {
 									$title = i18n::translate('Individual information').": ".$husb->getXref();
-								}else{
+								} else {
 									$title = $husb->getXref()." :".i18n::translate('Individual information');
 								}
 								$parentlinks .= "<a id=\"phusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
@@ -627,14 +627,14 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						if ($wife || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
 								$title = i18n::translate('Family book chart').": ".$famid;
-							}else{
+							} else {
 								$title = $famid." :".i18n::translate('Family book chart');
 							}
 							if ($wife) {
 								$person_parent="Yes";
 								if ($TEXT_DIRECTION=="ltr") {
 									$title = i18n::translate('Individual information').": ".$wife->getXref();
-								}else{
+								} else {
 									$title = $wife->getXref()." :".i18n::translate('Individual information');
 								}
 								$parentlinks .= "<a id=\"pwife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
@@ -649,7 +649,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 				//-- step families -----------------------------------------
 				$fams = $person->getStepFamilies();
-				foreach($fams as $famid=>$family) {
+				foreach ($fams as $famid=>$family) {
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);
 						$wife = $family->getWife($person);
@@ -658,19 +658,19 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						$num = count($children);
 
 						if ($natdad == "yes") {
-						}else{
+						} else {
 							// Husband -----------------------
 							if ($husb || $num>0) {
 								if ($TEXT_DIRECTION=="ltr") {
 									$title = i18n::translate('Family book chart').": ".$famid;
-								}else{
+								} else {
 									$title = $famid." :".i18n::translate('Family book chart');
 								}
 								if ($husb) {
 									$person_step="Yes";
 									if ($TEXT_DIRECTION=="ltr") {
 										$title = i18n::translate('Individual information').": ".$husb->getXref();
-									}else{
+									} else {
 										$title = $husb->getXref()." :".i18n::translate('Individual information');
 									}
 									$parentlinks .= "<a id=\"shusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
@@ -682,19 +682,19 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						}
 
 						if ($natmom == "yes") {
-						}else{
+						} else {
 							// Wife ----------------------------
 							if ($wife || $num>0) {
 								if ($TEXT_DIRECTION=="ltr") {
 									$title = i18n::translate('Family book chart').": ".$famid;
-								}else{
+								} else {
 									$title = $famid." :".i18n::translate('Family book chart');
 								}
 								if ($wife) {
 									$person_step="Yes";
 									if ($TEXT_DIRECTION=="ltr") {
 										$title = i18n::translate('Individual information').": ".$wife->getXref();
-									}else{
+									} else {
 										$title = $wife->getXref()." :".i18n::translate('Individual information');
 									}
 									$parentlinks .= "<a id=\"swife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
@@ -709,7 +709,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 				// Spouse Families -------------------------------------- @var $family Family
 				$fams = $person->getSpouseFamilies();
-				foreach($fams as $famid=>$family) {
+				foreach ($fams as $famid=>$family) {
 					if (!is_null($family)) {
 						$spouse = $family->getSpouse($person);
 						$children = $family->getChildren();
@@ -719,13 +719,13 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						if ($spouse || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
 								$title = i18n::translate('Family book chart').": ".$famid;
-							}else{
+							} else {
 								$title = $famid." :".i18n::translate('Family book chart');
 							}
 							if ($spouse) {
 								if ($TEXT_DIRECTION=="ltr") {
 									$title = i18n::translate('Individual information').": ".$spouse->getXref();
-								}else{
+								} else {
 									$title = $spouse->getXref()." :".i18n::translate('Individual information');
 								}
 								$spouselinks .= "<a id=\"spouse\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
@@ -740,7 +740,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 
 						// Children ------------------------------   @var $child Person
 						$hasChildren = 'No';
-						foreach($children as $c=>$child) {
+						foreach ($children as $c=>$child) {
 							if ($child) {
 								if ($hasChildren == 'No') {
 									$hasChildren = 'Yes';

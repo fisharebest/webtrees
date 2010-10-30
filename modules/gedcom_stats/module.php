@@ -131,7 +131,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($stat_users) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Total users').'</td><td class="facts_value"><div dir="rtl">';
-				if (WT_USER_GEDCOM_ADMIN){
+				if (WT_USER_GEDCOM_ADMIN) {
 				$content .= '<a href="useradmin.php">'.$stats->totalUsers().'</a>';
 			} else {
 				$content .= $stats->totalUsers();
@@ -152,14 +152,14 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($stat_last_birth) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Latest birth year').'</td><td class="facts_value"><div dir="rtl">'.$stats->lastBirthYear().'</div></td>';
-			if (!$block){
+			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->lastBirth().'</td>';
 			}
 			$content .= '</tr>';
 		}
 		if ($stat_first_death) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Earliest death year').'</td><td class="facts_value"><div dir="rtl">'.$stats->firstDeathYear().'</div></td>';
-			if (!$block){
+			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->firstDeath().'</td>';
 			}
 			$content .= '</tr>';
@@ -167,14 +167,14 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($stat_last_death) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Latest death year').'</td><td class="facts_value"><div dir="rtl">'.$stats->lastDeathYear().'</div>
 	</td>';
-			if (!$block){
+			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->lastDeath().'</td>';
 			}
 			$content .='</tr>';
 		}
 		if ($stat_long_life) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Person who lived the longest').'</td><td class="facts_value"><div dir="rtl">'.$stats->LongestLifeAge().'</div></td>';
-			if (!$block){
+			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->LongestLife().'</td>';
 			}
 			$content .= '</tr>';
@@ -214,7 +214,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= help_link('index_common_names');
 				$content .= '<br />';
 				$i=0;
-				foreach($surnames as $indexval => $surname) {
+				foreach ($surnames as $indexval => $surname) {
 					if (stristr($surname['name'], '@N.N')===false) {
 						if ($i>0) {
 							$content .= ', ';

@@ -51,7 +51,7 @@ Zend_Session::writeClose();
 
 print_header($controller->getPageTitle());
 
-if (!$controller->indi){
+if (!$controller->indi) {
 	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
@@ -74,7 +74,7 @@ function show_gedcom_record(shownew) {
 	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->pid; ?>"+fromfile, "_blank", "top=50,left=50,width=600,height=400,scrollbars=1,scrollable=1,resizable=1");
 }
 <?php if (WT_USER_CAN_EDIT) { ?>
-function open_link_remote(pid){
+function open_link_remote(pid) {
 	window.open("addremotelink.php?pid="+pid, "_blank", "top=50,left=50,width=600,height=500,scrollbars=1,scrollable=1,resizable=1");
 	return false;
 }
@@ -87,7 +87,7 @@ function showchanges() {
 var tabCache = new Array();
 var pinned = false;
 
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
 	// TODO: change images directory when the common images will be deleted.
 	jQuery('#tabs').tabs({ spinner: '<img src=\"images/loading.gif\" height=\"18\" border=\"0\" alt=\"\" />' });
 	jQuery("#tabs").tabs({ cache: true });
@@ -191,7 +191,7 @@ jQuery(document).ready(function(){
 	</div>
 	<div id="hitcounter" class="clearfloat">
 		<?php
-			if($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
+			if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 				//print indi counter only if displaying a non-private person
 				require WT_ROOT.'includes/hitcount.php';
 				echo i18n::translate('Hit Count:'), " ", $hitCount;
@@ -279,7 +279,7 @@ echo '}';
 echo WT_JS_END;
 
 if ($SEARCH_SPIDER) {
-	if($SHOW_SPIDER_TAGLINE)
+	if ($SHOW_SPIDER_TAGLINE)
 		echo i18n::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
 	echo "</div></body></html>";
 } else {

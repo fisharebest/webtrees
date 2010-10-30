@@ -69,7 +69,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 					message = false;
 				if (place.length >= 2)
 					message = false;
-				if(message) {
+				if (message) {
 					alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
 					return false;
 				}
@@ -94,14 +94,14 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		}
 		else if (action == "multisite")
 		{
-			if(frm.subaction.value=='basic')
+			if (frm.subaction.value=='basic')
 			{
 				if (frm.multiquery.value.length < 2) {
 					alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
 					return false;
 				}
 			}
-			else if(frm.subaction.value == 'advanced')
+			else if (frm.subaction.value == 'advanced')
 			{
 				message = true;
 				name = frm.name.value;
@@ -111,9 +111,9 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 				dplace = frm.deathplace.value;
 				gender = frm.gender.value;
 
-				if(name.length > 1)
+				if (name.length > 1)
 					message = false;
-				if(bdate.length > 1)
+				if (bdate.length > 1)
 					message = false;
 				if (bplace.length > 1)
 					message = false;
@@ -121,10 +121,10 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 					message = false;
 				if (dplace.length > 1)
 					message = false;
-				if(message)
+				if (message)
 				{
 					<?php if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) { ?>
-					if(gender.length < 1)
+					if (gender.length < 1)
 					{
 						alert("<?php echo i18n::translate('Please enter one of the following:  Name, Birth Date, Birth Place, Death Date, Death Place, and Gender '); ?>");
 						return false;
@@ -138,7 +138,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		return true;
 	}
 
-	function open_link(server, pid, indiName){
+	function open_link(server, pid, indiName) {
 		window.open("addsearchlink.php?server="+server+"&pid="+pid+"&indiName="+indiName, "_blank", "top=50,left=50,width=600,height=500,scrollbars=1,scrollable=1,resizable=1");
 		return false;
 	}
@@ -161,7 +161,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<tr>
 
 <!-- /**************************************************** General Search Form *************************************************************/ -->
-			<?php if($controller->action == "general") { ?>
+			<?php if ($controller->action == "general") { ?>
 				<td colspan="3" class="facts_label03" style="text-align:center;">
 					<?php echo i18n::translate('General Search'), help_link('search_enter_terms'); ?>
 				</td>
@@ -571,7 +571,7 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 if ($controller->action == "general") {
 	echo "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
 	echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
-	if(WT_USER_CAN_EDIT) {
+	if (WT_USER_CAN_EDIT) {
 		echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 	}
 	if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
@@ -598,7 +598,7 @@ else
 	if ($controller->action == "soundex") {
 		echo "<a href='?action=general'>".i18n::translate('General Search')."</a>";
 		echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
-		if(WT_USER_CAN_EDIT)
+		if (WT_USER_CAN_EDIT)
 		{
 			echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 		}
@@ -611,7 +611,7 @@ else
 	else
 		if ($controller->action == "multisite")
 		{
-			if(WT_USER_CAN_EDIT)
+			if (WT_USER_CAN_EDIT)
 			{
 				echo "<a href='?action=replace'>".i18n::translate('Search and replace')."</a> | ";
 			}

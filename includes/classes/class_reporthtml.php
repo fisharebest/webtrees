@@ -162,7 +162,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	function runPageHeader() {
-		foreach($this->pageHeaderElements as $element) {
+		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -175,8 +175,8 @@ class ReportBaseHTML extends ReportBase {
 
 	function Footnotes() {
 		$this->currentStyle = "";
-		if(!empty($this->printedfootnotes)) {
-			foreach($this->printedfootnotes as $element) {
+		if (!empty($this->printedfootnotes)) {
+			foreach ($this->printedfootnotes as $element) {
 				$element->renderFootnote($this);
 			}
 		}
@@ -205,7 +205,7 @@ class ReportBaseHTML extends ReportBase {
 
 		// Setting up the styles
 		echo "\n<style type=\"text/css\">\n";
-		foreach($this->Styles as $class => $style) {
+		foreach ($this->Styles as $class => $style) {
 			echo ".", $class, "{\n";
 			if ($style["font"]=="dejavusans") {
 				$style["font"] = $this->defaultFont;
@@ -226,7 +226,7 @@ class ReportBaseHTML extends ReportBase {
 </head>\n<body>
 <div id=\"headermargin\" style=\"position:relative; top:auto; height:", $this->headermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
 <div id=\"headerdiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt;\">";
-		foreach($this->headerElements as $element) {
+		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -242,7 +242,7 @@ class ReportBaseHTML extends ReportBase {
 		$this->Y = 0;
 		$this->maxY = 0;
 		$this->runPageHeader();
-		foreach($this->bodyElements as $element) {
+		foreach ($this->bodyElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -259,7 +259,7 @@ class ReportBaseHTML extends ReportBase {
 		$this->Y = 0;
 		$this->X = 0;
 		$this->maxY = 0;
-		foreach($this->footerElements as $element) {
+		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -382,7 +382,7 @@ class ReportBaseHTML extends ReportBase {
 		$ct = count($this->printedfootnotes);
 		$i = 0;
 		$val = $footnote->getValue();
-		while($i < $ct) {
+		while ($i < $ct) {
 			if ($this->printedfootnotes[$i]->getValue() == $val) {
 				// If this footnote already exist then set up the numbers for this object
 				$footnote->setNum($i + 1);
@@ -431,7 +431,7 @@ class ReportBaseHTML extends ReportBase {
 
 	function getFootnotesHeight($cellWidth) {
 		$h = 0;
-		foreach($this->printedfootnotes as $element) {
+		foreach ($this->printedfootnotes as $element) {
 			$h += $element->getFootnoteHeight($this, $cellWidth);
 		}
 		return $h;
@@ -540,7 +540,7 @@ class ReportBaseHTML extends ReportBase {
 		// Line Feed counter
 		$lfct = count($lines);
 		$wraptext = '';
-		foreach($lines as $line) {
+		foreach ($lines as $line) {
 			$wtext = '';
 			$wtext = utf8_wordwrap($line, $lw, "\n", true);
 			$wraptext .= $wtext;
@@ -821,7 +821,7 @@ class HtmlHTML extends Html {
 		if (!empty($this->attrs["pgvrstyle"])) $html->setCurrentStyle($this->attrs["pgvrstyle"]);
 
 		$this->text = $this->getStart(). $this->text;
-		foreach($this->elements as $element) {
+		foreach ($this->elements as $element) {
 			if (is_string($element) && $element=="footnotetexts") {
 				$html->Footnotes();
 			} elseif (is_string($element) && $element=="addpage") {
@@ -872,35 +872,35 @@ class TextBoxHTML extends TextBox {
 		// Element counter
 		$cE = count($this->elements);
 		//-- collapse duplicate elements
-		for($i = 0; $i < $cE; $i++){
+		for ($i = 0; $i < $cE; $i++) {
 			$element = $this->elements[$i];
-			if (is_object($element)){
-				if ($element->get_type() == "Text"){
-					if (!empty($footnote_element)){
+			if (is_object($element)) {
+				if ($element->get_type() == "Text") {
+					if (!empty($footnote_element)) {
 						ksort($footnote_element);
-						foreach ($footnote_element as $links){
+						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
 						$footnote_element = array();
 					}
-					if (empty($lastelement)){
+					if (empty($lastelement)) {
 						$lastelement = $element;
 					} else {
 						// Checking if the Text has the same style
-						if ($element->getStyleName() == $lastelement->getStyleName()){
+						if ($element->getStyleName() == $lastelement->getStyleName()) {
 							$lastelement->addText(str_replace("\n", "<br />", $element->getValue()));
-						} elseif (!empty($lastelement)){
+						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
 							$lastelement = $element;
 						}
 					}
 				}
 				// Collect the Footnote links
-				elseif ($element->get_type() == "Footnote"){
+				elseif ($element->get_type() == "Footnote") {
 					// Check if the Footnote has been set with it's link number
 					$html->checkFootnote($element);
 					// Save first the last element if any
-					if (!empty($lastelement)){
+					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
 						$lastelement = array();
 					}
@@ -908,28 +908,28 @@ class TextBoxHTML extends TextBox {
 					$footnote_element[$element->num] = $element;
 				}
 				//-- do not keep empty footnotes
-				elseif (($element->get_type() != "Footnote") || (trim($element->getValue()) != "")){
-					if (!empty($footnote_element)){
+				elseif (($element->get_type() != "Footnote") || (trim($element->getValue()) != "")) {
+					if (!empty($footnote_element)) {
 						ksort($footnote_element);
-						foreach ($footnote_element as $links){
+						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
 						$footnote_element = array();
 					}
-					if (!empty($lastelement)){
+					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
 						$lastelement = array();
 					}
 					$newelements[] = $element;
 				}
 			} else {
-				if (!empty($lastelement)){
+				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
 					$lastelement = array();
 				}
-				if (!empty($footnote_element)){
+				if (!empty($footnote_element)) {
 					ksort($footnote_element);
-					foreach ($footnote_element as $links){
+					foreach ($footnote_element as $links) {
 						$newelements[] = $links;
 					}
 					$footnote_element = array();
@@ -937,12 +937,12 @@ class TextBoxHTML extends TextBox {
 				$newelements[] = $element;
 			}
 		}
-		if (!empty($lastelement)){
+		if (!empty($lastelement)) {
 			$newelements[] = $lastelement;
 		}
-		if (!empty($footnote_element)){
+		if (!empty($footnote_element)) {
 			ksort($footnote_element);
-			foreach ($footnote_element as $links){
+			foreach ($footnote_element as $links) {
 				$newelements[] = $links;
 			}
 		}
@@ -1003,7 +1003,7 @@ class TextBoxHTML extends TextBox {
 		$lw = array();
 		// Element counter
 		$cE = count($this->elements);
-		for($i = 0; $i < $cE; $i++) {
+		for ($i = 0; $i < $cE; $i++) {
 			if (is_object($this->elements[$i])) {
 				$ew = $this->elements[$i]->setWrapWidth($cW - $w - 2, $cW);
 				if ($ew == $cW)
@@ -1093,7 +1093,7 @@ class TextBoxHTML extends TextBox {
 		$html->SetXY(0, 0);
 
 		// Print the text elements
-		foreach($this->elements as $element) {
+		foreach ($this->elements as $element) {
 			if (is_object($element)) {
 				$element->render($html, $cX, false);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -1228,7 +1228,7 @@ class TextHTML extends Text {
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines = explode("\n", $this->text);
 				// Go throught the text line by line
-				foreach($lines as $line) {
+				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $html->GetStringWidth($line);
 					// If the line has to be wraped
@@ -1236,7 +1236,7 @@ class TextHTML extends Text {
 						$words = explode(" ", $line);
 						$addspace = count($words);
 						$lw = 0;
-						foreach($words as $word) {
+						foreach ($words as $word) {
 							$addspace--;
 							$lw += $html->GetStringWidth($word." ");
 							if ($lw <= $wrapWidthRemaining) {
@@ -1368,7 +1368,7 @@ class FootnoteHTML extends Footnote {
 		}
 
 		// Returns the Object if already numbered else false
-		if (empty($this->num)){
+		if (empty($this->num)) {
 			$html->checkFootnote($this);
 		}
 
@@ -1384,7 +1384,7 @@ class FootnoteHTML extends Footnote {
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines = explode("\n", $this->numText);
 				// Go throught the text line by line
-				foreach($lines as $line) {
+				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $html->GetStringWidth($line);
 					// If the line has to be wraped
@@ -1392,7 +1392,7 @@ class FootnoteHTML extends Footnote {
 						$words = explode(" ", $line);
 						$addspace = count($words);
 						$lw = 0;
-						foreach($words as $word) {
+						foreach ($words as $word) {
 							$addspace--;
 							$lw += $html->GetStringWidth($word." ");
 							if ($lw <= $wrapWidthRemaining) {
@@ -1452,7 +1452,7 @@ class PageHeaderHTML extends PageHeader {
 
 	function render(&$html) {
 		$html->clearPageHeader();
-		foreach($this->elements as $element) {
+		foreach ($this->elements as $element) {
 			$html->addPageHeader($element);
 		}
 	}

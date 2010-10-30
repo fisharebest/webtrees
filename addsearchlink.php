@@ -45,7 +45,7 @@ if (isset($_REQUEST['server'])) $server = $_REQUEST['server'];
 if (isset($_REQUEST['indiName'])) $indiName = $_REQUEST['indiName'];
 
 //To use addsearchlink you should have come from a multisearch result link
-if(isset($pid) && isset($server) && isset($indiName))
+if (isset($pid) && isset($server) && isset($indiName))
 {
 ?>
 

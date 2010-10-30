@@ -89,9 +89,9 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 echo i18n::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'), '<br /><br />', i18n::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'), '<br />', i18n::translate('Files marked with %s have important settings or pending change data and should only be deleted if you are sure you know what you are doing.', '<img src="./images/RESN_locked.gif" alt="" />');
 
 //post back
-if(isset($_REQUEST["to_delete"])) {
+if (isset($_REQUEST["to_delete"])) {
 	echo "<span class=\"error\">", i18n::translate('Deleted files:'), "</span><br/>";
-	foreach($_REQUEST["to_delete"] as $k=>$v) {
+	foreach ($_REQUEST["to_delete"] as $k=>$v) {
 		if (is_dir($INDEX_DIRECTORY.$v)) {
 			full_rmdir($INDEX_DIRECTORY.$v);
 		} elseif (file_exists($INDEX_DIRECTORY.$v)) {
@@ -110,7 +110,7 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 <!--
 function warnuser(cbox) {
 	if (cbox.checked) {
-		if(!confirm('<?php echo i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) cbox.checked = false;
+		if (!confirm('<?php echo i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) cbox.checked = false;
 	}
 }
 //-->
@@ -136,7 +136,7 @@ function warnuser(cbox) {
 					echo "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
 					echo "<span class=\"name2\">".$entry."</span>";
 				}
-				else{
+				else {
 					echo "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
 					echo "<input type=\"checkbox\" name=\"to_delete[]\" value=\"".$entry."\" />";
 					echo $entry;
@@ -165,7 +165,7 @@ function warnuser(cbox) {
 	new Effect.BlindDown('reorder_list', {duration: 1});
 
 		<?php
-		foreach($elements as $key=>$val)
+		foreach ($elements as $key=>$val)
 		{
 			echo "new Draggable('".$val."', {revert:true});";
 		}
@@ -189,7 +189,7 @@ function ul_clear()
 
 	list = document.getElementById('reorder_list');
 	children = list.childNodes;
-	for(i=0; i<children.length; i++) {
+	for (i=0; i<children.length; i++) {
 		node = children[i];
 		if (node.tagName=='li' || node.tagName=='LI') {
 			//node.className='facts_value';
@@ -200,7 +200,7 @@ function ul_clear()
 
 function removeAll() {
 	var elements = document.getElementsByName('to_delete[]');
-	for(i=0; i<elements.length; i++) {
+	for (i=0; i<elements.length; i++) {
 		node = elements[i];
 		if (!node.attributes.warn) node.checked = true;
 	}

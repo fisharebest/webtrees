@@ -76,10 +76,10 @@ $thumbdir = stripcslashes(preg_replace($srch, $repl, $directory));
 
 //-- prevent script from accessing an area outside of the media directory
 //-- and keep level consistency
-if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)){
+if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 	$directory = $MEDIA_DIRECTORY;
 	$level = 0;
-} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0){
+} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0) {
 	$directory = $MEDIA_DIRECTORY;
 	$level = 0;
 }
@@ -138,7 +138,7 @@ echo WT_JS_START;
 	}
 
 	function pasteid(id, name, thumb) {
-		if(thumb) {
+		if (thumb) {
 			window.opener.<?php echo $callback; ?>(id, name, thumb);
 			<?php if (!$multiple) echo "window.close();"; ?>
 		} else {
@@ -150,7 +150,7 @@ echo WT_JS_START;
 				if (id.match("I")=="I") {
 					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', 'top=50, left=600, width=420, height=650, resizable=1, scrollbars=1');
 					if (window.focus) {win01.focus();}
-				}else if (id.match("F")=="F") {
+				} else if (id.match("F")=="F") {
 					// TODO --- alert('Opening Navigator with family id entered will come later');
 				}
 				*/
@@ -302,7 +302,7 @@ if ($type == "media" && $MULTI_MEDIA) {
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" wstyle=\"padding: 5px;\">";
 	echo "<input type=\"checkbox\" name=\"showthumb\" value=\"true\"";
-	if( $showthumb) echo "checked=\"checked\"";
+	if ($showthumb) echo "checked=\"checked\"";
 	echo "onclick=\"javascript: this.form.submit();\" />", i18n::translate('Show thumbnails');
 	echo help_link('show_thumb');
 	echo "</td></tr>";
@@ -410,7 +410,7 @@ if ($type == "specialchar") {
 	echo "<select id=\"language_filter\" name=\"language_filter\" onchange=\"submit();\">";
 	echo "<option value=\"\">", i18n::translate('Change language'), "</option>";
 	$language_options = "";
-	foreach($specialchar_languages as $key=>$value) {
+	foreach ($specialchar_languages as $key=>$value) {
 		$language_options.= "<option value=\"$key\">$value</option>";
 	}
 	$language_options = str_replace("\"$language_filter\"", "\"$language_filter\" selected", $language_options);
@@ -438,7 +438,7 @@ if ($action=="filter") {
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 			usort($myindilist, array('GedcomRecord', 'Compare'));
-			foreach($myindilist as $indi) {
+			foreach ($myindilist as $indi) {
 				//echo $indi->format_list('li', true);
 				$nam = htmlspecialchars($indi->getFullName());
 				echo "<li><a href=\"javascript:;\" onclick=\"pasterow(
@@ -483,7 +483,7 @@ if ($action=="filter") {
 			$curged = $GEDCOM;
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 			usort($myfamlist, array('GedcomRecord', 'Compare'));
-			foreach($myfamlist as $family) {
+			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total families'), ' ', count($myfamlist), '</tr></td>';
@@ -506,10 +506,10 @@ if ($action=="filter") {
 		if ($level>0) {
 			$levels = explode("/", $directory);
 			$pdir = "";
-			for($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i]."/";
+			for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i]."/";
 			$levels = explode("/", $thumbdir);
 			$pthumb = "";
-			for($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
+			for ($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
 			$uplink = "<a href=\"find.php?directory=".rawurlencode($pdir)."&amp;thumbdir=".rawurlencode($pthumb)."&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a><br />";
 		}
 
@@ -528,7 +528,7 @@ if ($action=="filter") {
 		// display the directory list
 		if (count($dirs) || $level) {
 			sort($dirs);
-			if ($level){
+			if ($level) {
 				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
 				echo $uplink, "</td></tr>";
 			}
@@ -571,7 +571,7 @@ if ($action=="filter") {
 						if ($chooseType=="media" && empty($media["XREF"])) $isvalid = false; // skip unlinked media files
 					}
 					if ($isvalid) {
-						if ($media["EXISTS"] && media_filesize($media["FILE"]) != 0){
+						if ($media["EXISTS"] && media_filesize($media["FILE"]) != 0) {
 							$imgsize = findImageSize($media["FILE"]);
 							$imgwidth = $imgsize[0]+40;
 							$imgheight = $imgsize[1]+150;
@@ -599,7 +599,7 @@ if ($action=="filter") {
 							if ($TEXT_DIRECTION=="rtl") echo getRLM();
 							echo "<br />";
 						}
-						if (!$embed){
+						if (!$embed) {
 							echo "<a href=\"javascript:;\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
 						}
 						else echo "<a href=\"javascript:;\" onclick=\"pasteid('", $media["XREF"], "','", addslashes($media["TITL"]), "','", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
@@ -660,7 +660,7 @@ if ($action=="filter") {
 					$levels = array_reverse($levels); // -- reverse the array so that we get the top level first
 					$placetext = "";
 					$j=0;
-					foreach($levels as $indexval => $level) {
+					foreach ($levels as $indexval => $level) {
 						if ($j>0) $placetext .= ", ";
 						$placetext .= trim($level);
 						$j++;
@@ -669,7 +669,7 @@ if ($action=="filter") {
 				}
 				uasort($revplacelist, "utf8_strcasecmp");
 				echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
-				foreach($revplacelist as $place) {
+				foreach ($revplacelist as $place) {
 					echo "<li><a href=\"javascript:;\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
 				}
 				echo "</ul></td></tr>";
@@ -757,7 +757,7 @@ if ($action=="filter") {
 		if ($magnify) {
 			echo '<span class="largechars">';
 		}
-		foreach($lcspecialchars as $key=>$value) {
+		foreach ($lcspecialchars as $key=>$value) {
 			$value = str_replace("'", "\'", $value);
 			echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
 			echo $key;
@@ -771,7 +771,7 @@ if ($action=="filter") {
 		if ($magnify) {
 			echo '<span class="largechars">';
 		}
-		foreach($ucspecialchars as $key=>$value) {
+		foreach ($ucspecialchars as $key=>$value) {
 			$value = str_replace("'", "\'", $value);
 			echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
 			echo $key;
@@ -785,7 +785,7 @@ if ($action=="filter") {
 		if ($magnify) {
 			echo '<span class="largechars">';
 		}
-		foreach($otherspecialchars as $key=>$value) {
+		foreach ($otherspecialchars as $key=>$value) {
 			$value = str_replace("'", "\'", $value);
 			echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
 			echo $key;

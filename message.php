@@ -118,7 +118,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			}
 		}
 		$i = 0;
-		foreach($toarray as $indexval => $to) {
+		foreach ($toarray as $indexval => $to) {
 			$message = array();
 			$message["to"]=$to;
 			$message["from"]=$from;
@@ -133,7 +133,7 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			$message["method"] = $method;
 			$message["url"] = $url.'&amp;ged='.$GEDCOM;
 			if ($i>0) $message["no_from"] = true;
-			if (addMessage($message)){
+			if (addMessage($message)) {
 				$to_user_id=get_user_id($to);
 				if ($to_user_id) {
 					echo i18n::translate('Message successfully sent to %s', "<b>".getUserFullName($to_user_id)."</b>");
@@ -192,13 +192,13 @@ if ($action=="compose") {
 		echo i18n::translate('This user prefers to receive messages in %s', Zend_Locale::getTranslation(get_user_setting($to_user_id, 'language'), 'language', WT_LOCALE))."</td></tr>";
 	}
 
-	if (!WT_USER_ID){
+	if (!WT_USER_ID) {
 		echo "<tr><td valign=\"top\" width=\"15%\" align=\"right\">".i18n::translate('Your Name:')."</td>";
 		echo "<td><input type=\"text\" name=\"from_name\" size=\"40\" value=\"$from_name\" /></td></tr><tr><td valign=\"top\" align=\"right\">".i18n::translate('Email Address:')."</td><td><input type=\"text\" name=\"from_email\" size=\"40\" value=\"$from_email\" /><br />".i18n::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.')."<br /><br /></td></tr>";
 	}
 	echo "<tr><td align=\"right\">".i18n::translate('Subject:')."</td>";
 	echo "<td>";
-	if (WT_USER_ID){
+	if (WT_USER_ID) {
 		echo "<input type=\"hidden\" name=\"from\" value=\"".WT_USER_NAME."\" />";
 	}
 	echo "<input type=\"hidden\" name=\"action\" value=\"send\" />";

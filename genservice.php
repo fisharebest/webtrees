@@ -35,7 +35,7 @@ require './includes/session.php';
  * in order to set the correct session during initialization.
  */
 //Only include and set the session if it's not a wsdl request
-if(!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')===false)
+if (!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')===false)
 {
 	if (isset($HTTP_RAW_POST_DATA)) {
 	//-- set the session id

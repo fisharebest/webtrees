@@ -69,7 +69,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	$ids = array($pid);
 	if ($related) {
 		$ct = preg_match_all("/1 FAMS @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$ids[] = trim($match[$i][1]);
 		}
 	}
@@ -162,7 +162,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 		$rows = array();
 		$rows['normal'] = $rowm;
 		if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
-		foreach($rows as $rtype => $rowm) {
+		foreach ($rows as $rtype => $rowm) {
 			$res = media_reorder_row($rtype, $rowm, $pid);
 			$media_found = $media_found || $res;
 			$foundObjs[$rowm['m_media']] = true;

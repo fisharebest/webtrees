@@ -90,7 +90,7 @@ if ($action!="choose") {
 				$facts2 = array();
 				$prev_tags = array();
 				$ct = preg_match_all('/\n1 (\w+)/', $gedrec1, $match, PREG_SET_ORDER);
-				for($i=0; $i<$ct; $i++) {
+				for ($i=0; $i<$ct; $i++) {
 					$fact = trim($match[$i][1]);
 					if (isset($prev_tags[$fact])) {
 						$prev_tags[$fact]++;
@@ -102,7 +102,7 @@ if ($action!="choose") {
 				}
 				$prev_tags = array();
 				$ct = preg_match_all('/\n1 (\w+)/', $gedrec2, $match, PREG_SET_ORDER);
-				for($i=0; $i<$ct; $i++) {
+				for ($i=0; $i<$ct; $i++) {
 					$fact = trim($match[$i][1]);
 					if (isset($prev_tags[$fact])) {
 						$prev_tags[$fact]++;
@@ -125,8 +125,8 @@ if ($action!="choose") {
 					$skip1 = array();
 					$skip2 = array();
 					echo "<table border=\"1\">\n";
-					foreach($facts1 as $i=>$fact1) {
-						foreach($facts2 as $j=>$fact2) {
+					foreach ($facts1 as $i=>$fact1) {
+						foreach ($facts2 as $j=>$fact2) {
 							if (utf8_strtoupper($fact1["subrec"])==utf8_strtoupper($fact2["subrec"])) {
 								$skip1[] = $i;
 								$skip2[] = $j;
@@ -145,7 +145,7 @@ if ($action!="choose") {
 					echo "<tr><td class=\"list_label\">", i18n::translate('Record'), " ", $gid1, "</td><td class=\"list_label\">", i18n::translate('Record'), " ", $gid2, "</td></tr>\n";
 					echo "<tr><td valign=\"top\" class=\"list_value\">\n";
 					echo "<table border=\"1\">\n";
-					foreach($facts1 as $i=>$fact1) {
+					foreach ($facts1 as $i=>$fact1) {
 						if (($fact1["fact"]!="CHAN")&&(!in_array($i, $skip1))) {
 							echo "<tr><td><input type=\"checkbox\" name=\"keep1[]\" value=\"", $i, "\" checked=\"checked\" /></td>";
 							echo "<td>", nl2br($fact1["subrec"]), "</td></tr>\n";
@@ -154,7 +154,7 @@ if ($action!="choose") {
 					echo "</table>\n";
 					echo "</td><td valign=\"top\" class=\"list_value\">\n";
 					echo "<table border=\"1\">\n";
-					foreach($facts2 as $j=>$fact2) {
+					foreach ($facts2 as $j=>$fact2) {
 						if (($fact2["fact"]!="CHAN")&&(!in_array($j, $skip2))) {
 							echo "<tr><td><input type=\"checkbox\" name=\"keep2[]\" value=\"", $j, "\" checked=\"checked\" /></td>";
 							echo "<td>", nl2br($fact2["subrec"]), "</td></tr>\n";
@@ -214,7 +214,7 @@ if ($action!="choose") {
 						)->execute(array(WT_GED_ID, $gid2));
 					}
 					$newgedrec = "0 @$gid1@ $type1\n";
-					for($i=0; ($i<count($facts1) || $i<count($facts2)); $i++) {
+					for ($i=0; ($i<count($facts1) || $i<count($facts2)); $i++) {
 						if (isset($facts1[$i])) {
 							if (in_array($i, $keep1)) {
 								$newgedrec .= $facts1[$i]["subrec"]."\n";

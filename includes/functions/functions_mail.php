@@ -130,7 +130,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		$mail_object = new PHPMailer();
 		$mail_object->IsSMTP();
 		$mail_object->SetLanguage(WT_LOCALE, WT_ROOT.'library/phpmailer/language/');
-		if ( $SMTP_AUTH && ( $SMTP_AUTH_USER && $SMTP_AUTH_PASS ) ) {
+		if ($SMTP_AUTH && $SMTP_AUTH_USER && $SMTP_AUTH_PASS) {
 			$mail_object->SMTPAuth = $SMTP_AUTH;
 			$mail_object->Username = $SMTP_AUTH_USER;
 			$mail_object->Password = $SMTP_AUTH_PASS;
@@ -161,25 +161,25 @@ function webtreesMail($to, $from, $subject, $message) {
 				$mail_object->FromName = $SMTP_FROM_NAME;
 			}
 			$mail_object->AddAddress($to);
-		} else if (!empty($from_name)){
+		} else if (!empty($from_name)) {
 			$mail_object->FromName = $from_name;
 		} else {
 			$mail_object->FromName = $mail_object->AddAddress($to);
 		}
 		$mail_object->Subject = hex4email( $subject, 'UTF-8');
 		$mail_object->ContentType = $mailFormatText;
-		if ( $mailFormat != "multipart" ) {
+		if ($mailFormat!="multipart") {
 			$mail_object->ContentType = $mailFormatText . '; format="flowed"';
 			$mail_object->CharSet = 'UTF-8';
 			$mail_object->Encoding = '8bit';
 		}
-		if ( $mailFormat == "html" || $mailFormat == "multipart" ) {
+		if ($mailFormat == "html" || $mailFormat == "multipart") {
 			$mail_object->AddCustomHeader( 'Mime-Version: 1.0' );
 			$mail_object->IsHTML(true);
 		}
 		$mail_object->Body = $message;
 		// attempt to send mail
-		if ( ! $mail_object->Send() ) {
+		if (!$mail_object->Send()) {
 			echo i18n::translate('Message was not sent'), '<br />';
 			echo /* I18N: %s is an error message */ i18n::translate('Mailer error: %s',  $mail_object->ErrorInfo), '<br />';
 			return false;

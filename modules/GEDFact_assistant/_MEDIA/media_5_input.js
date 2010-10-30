@@ -75,7 +75,7 @@ function insertRowToTable(pid, nam, head)
 		for (var i=1; i<numrows; i++) {
 			if (IE) {
 				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].innerText;
-			}else{
+			} else {
 				strRow += (strRow==''?'':', ') + links.rows[i].cells[1].textContent;
 			}
 		}
@@ -84,7 +84,7 @@ function insertRowToTable(pid, nam, head)
 		//Check if id exists in Links list =================================
 		if (strRow.match(pid+',')!= pid+',') {
 			// alert('NO MATCH');
-		}else{
+		} else {
 			rowToInsertAt = 'EXIST' ;
 		}
 
@@ -92,7 +92,7 @@ function insertRowToTable(pid, nam, head)
 		for (var i=0; i<tbl.tBodies[0].rows.length; i++) {
 			if (tbl.tBodies[0].rows[i].myRow.one.textContent==pid) {
 				rowToInsertAt = 'EXIST' ;
-			}else
+			} else
 			if (tbl.tBodies[0].rows[i].myRow && tbl.tBodies[0].rows[i].myRow.ra.getAttribute('type') == 'radio' && tbl.tBodies[0].rows[i].myRow.ra.checked) {
 				rowToInsertAt = i;
 				break;
@@ -105,7 +105,7 @@ function insertRowToTable(pid, nam, head)
 			//addRowToTable(rowToInsertAt, pid, nam, label, gend, cond, yob, age, YMD, occu, birthpl);
 			addRowToTable(rowToInsertAt, pid, nam, head);
 			reorderRows(tbl, rowToInsertAt);
-		}else{
+		} else {
 			alert(nam+' ('+pid+') - '+linkExists);
 		}
 		
@@ -114,7 +114,7 @@ function insertRowToTable(pid, nam, head)
 
 function removeHTMLTags(htmlString)
 {
-	if(htmlString) {
+	if (htmlString) {
 		var mydiv = document.createElement("div");
 			mydiv.innerHTML = htmlString;
 		if (document.all) // IE Stuff
@@ -164,15 +164,15 @@ function addRowToTable(num, pid, nam, head)
 			// cell 1 - ID:
 			var cell1 = row.insertCell(1);
 			//	cell1.setAttribute('align', 'left');
-			if ( pid == ''){
+			if (pid=='') {
 				var txtInp1 = document.createElement('div');
 				txtInp1.setAttribute('type', 'checkbox');
-				if (txtInp1.checked!=''){
+				if (txtInp1.checked!='') {
 					txtInp1.setAttribute('value', 'no');
-				}else{
+				} else {
 					txtInp1.setAttribute('value', 'add');
 				}
-			}else{
+			} else {
 				var txtInp1 = document.createElement('div');
 				txtInp1.setAttribute('type', 'text');
 				txtInp1.innerHTML = pid; // Required for IE
@@ -222,7 +222,7 @@ function addRowToTable(num, pid, nam, head)
 					btn2El.setAttribute('title', ifamily);
 					btn2El.onclick = function () {openFamNav(pid)};
 				cellbtn2.appendChild(btn2El);
-			}else if (pid.match("F")=="F" || pid.match("f")=="f") {
+			} else if (pid.match("F")=="F" || pid.match("f")=="f") {
 				var btn2El = document.createElement('img');
 					btn2El.setAttribute('type', 'img');
 					btn2El.setAttribute('src', imageDir+'/buttons/family.gif');
@@ -230,7 +230,7 @@ function addRowToTable(num, pid, nam, head)
 					btn2El.setAttribute('title', ifamily);
 					btn2El.onclick = function () {openFamNav(head)};
 				cellbtn2.appendChild(btn2El);
-			}else{
+			} else {
 				// Show No Icon
 			}
 			

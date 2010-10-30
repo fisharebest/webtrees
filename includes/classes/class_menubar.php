@@ -120,7 +120,7 @@ class MenuBar {
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_indis");
 			$menu->addSubmenu($submenu);
 		}
-		if (WT_USER_GEDCOM_ADMIN){
+		if (WT_USER_GEDCOM_ADMIN) {
 			$menu->addSeparator();
 			//-- admin submenu
 			$submenu = new Menu(i18n::translate('Administration'), "admin.php");
@@ -211,7 +211,7 @@ class MenuBar {
 		asort($menuList);
 
 		// Produce the submenus in localized name order
-		foreach($menuList as $menuType => $menuName) {
+		foreach ($menuList as $menuType => $menuName) {
 			switch ($menuType) {
 			case "pedigree":
 				//-- pedigree
@@ -300,7 +300,7 @@ class MenuBar {
 					asort($menuList);
 
 					// Produce the submenus in localized name order
-					foreach($menuList as $menuType => $menuName) {
+					foreach ($menuList as $menuType => $menuName) {
 						switch ($menuType) {
 						case "parentTimeLine":
 							// charts / parents_timeline
@@ -511,7 +511,7 @@ class MenuBar {
 
 		// Produce the submenus in localized name order
 
-		foreach($menuList as $menuType => $menuName) {
+		foreach ($menuList as $menuType => $menuName) {
 			switch ($menuType) {
 			case "individual":
 				//-- indi list sub menu
@@ -771,7 +771,7 @@ class MenuBar {
 		//-- add contact links to help menu
 		$menu->addSeparator();
 		$menuitems = contact_menus();
-		foreach($menuitems as $menuitem) {
+		foreach ($menuitems as $menuitem) {
 			$submenu = new Menu($menuitem["label"], $menuitem["link"]);
 			$submenu->addIcon('mypage');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_contact");

@@ -79,11 +79,11 @@ function move_file($src, $dest) {
 
 	// sometimes thumbnail files are set to something like "images/media.gif", this ensures we do not move them
 	// check to make sure the src file is in the standard or protected media directories
-	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $src)==0){
+	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $src)==0) {
 		return false;
 	}
 	// check to make sure the dest file is in the standard or protected media directories
-	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $dest)==0){
+	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $dest)==0) {
 		return false;
 	}
 
@@ -95,7 +95,7 @@ function move_file($src, $dest) {
 			return false;
 		}
 	}
-	if(!rename($src, $dest)) {
+	if (!rename($src, $dest)) {
 		echo "<div class=\"error\">".i18n::translate('Media file could not be moved.')." [".$src."]</div>";
 		return false;
 	}
@@ -163,7 +163,7 @@ function move_files($path, $protect) {
 */
 function set_perms($path) {
 	global $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $starttime;
-	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $path."/")==0){
+	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $path."/")==0) {
 		return false;
 	}
 	$timelimit=get_site_setting('MAX_EXECUTION_TIME');
@@ -228,10 +228,10 @@ if ($showthumb) $thumbget = "&amp;showthumb=true";
 
 //-- prevent script from accessing an area outside of the media directory
 //-- and keep level consistency
-if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)){
+if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 	$directory = $MEDIA_DIRECTORY;
 	$level = 0;
-} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0){
+} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0) {
 	$directory = $MEDIA_DIRECTORY;
 	$level = 0;
 }
@@ -610,7 +610,7 @@ if (check_media_structure()) {
 			$k=0;
 			$i=count($rlevels)-1;
 			$j=count($mlevels)-1;
-			while($i>=0 && $j>=0) {
+			while ($i>=0 && $j>=0) {
 				if ($rlevels[$i] != $mlevels[$j]) {
 					$match = false;
 					break;
@@ -669,12 +669,12 @@ if (check_media_structure()) {
 		}
 
 		//-- loop through all of the found xrefs and delete any references to them
-		foreach($xrefs as $ind=>$xref) {
+		foreach ($xrefs as $ind=>$xref) {
 			// Remove references to media file from gedcom and database
 			// Check for XREF
 			if ($xref != "") {
 				$links = get_media_relations($xref);
-				foreach($links as $pid=>$type) {
+				foreach ($links as $pid=>$type) {
 					$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 					$gedrec = remove_subrecord($gedrec, "OBJE", $xref, -1);
 					replace_gedrec($pid, WT_GED_ID, $gedrec);
@@ -701,7 +701,7 @@ if (check_media_structure()) {
 				if ($finalResult && !$removeObject && $objerec!="") {
 					$xref = get_new_xref("OBJE");
 					$objerec = preg_replace("/0 @.*@ OBJE/", "0 @".$xref."@ OBJE", $objerec);
-					if(append_gedrec($objerec, WT_GED_ID)) {
+					if (append_gedrec($objerec, WT_GED_ID)) {
 						echo i18n::translate('Record %s successfully added to GEDCOM.', $xref);
 					} else {
 						$finalResult = false;
@@ -801,7 +801,7 @@ if (check_media_structure()) {
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				$folders = get_media_folders();
 				echo "<span dir=\"ltr\"><select name=\"directory\">";
-				foreach($folders as $f) {
+				foreach ($folders as $f) {
 					echo "<option value=\"".$f."\"";
 					if ($directory==$f) echo " selected=\"selected\"";
 					echo ">{$f}</option>";
@@ -810,7 +810,7 @@ if (check_media_structure()) {
 			} else echo "<input name=\"directory\" type=\"hidden\" value=\"ALL\" />";
 		// Text field for filter
 		?>
-		<input type="text" name="filter" value="<?php if($filter) echo $filter; ?>" /><br /><input type="submit" name="search" value="<?php echo i18n::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php echo i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
+		<input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>" /><br /><input type="submit" name="search" value="<?php echo i18n::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php echo i18n::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
 
 	<!-- // NOTE: Row 2 right: Add media -->
 	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
@@ -838,7 +838,7 @@ if (check_media_structure()) {
 </form>
 <script type="text/javascript">
 //<![CDATA[
-jQuery(document).ready(function(){
+jQuery(document).ready(function() {
 // Table pageing
 	jQuery("#media_table")
 		.tablesorter({
@@ -877,7 +877,7 @@ jQuery(document).ready(function(){
 		// Show link to previous folder
 		$levels = explode('/', $directory);
 		$pdir = '';
-		for($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
+		for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
 		if ($pdir != '') {
 			$uplink = "<a href=\"media.php?directory={$pdir}&amp;amp;sortby={$sortby}&amp;amp;level=".($level-1).$thumbget."\">";
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
@@ -976,7 +976,7 @@ jQuery(document).ready(function(){
 					echo "<br />";
 			}
 
-			if ( !$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY) ) {
+			if (!$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
 				if ($protected_files > $standard_files) {
 					echo '<div class="error">';
 					echo i18n::translate('The media Firewall is DISABLED but your media may still be located in the Protected Media Directory').'<br />';

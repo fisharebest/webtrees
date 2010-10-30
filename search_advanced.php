@@ -68,7 +68,7 @@ print_header(i18n::translate('Advanced search'));
 		};
 
 		// all of the field options
-		<?php foreach($controller->getOtherFields() as $field) { ?>
+		<?php foreach ($controller->getOtherFields() as $field) { ?>
 		opt = document.createElement('option');
 		opt.value='<?php echo $field; ?>';
 		opt.text='<?php echo $controller->getLabel($field); ?>';
@@ -149,7 +149,7 @@ print_header(i18n::translate('Advanced search'));
 	<!-- // search terms -->
 	<?php
 	$fct = count($controller->fields);
-	for($i=0; $i<$fct; $i++) {
+	for ($i=0; $i<$fct; $i++) {
 		if (strpos($controller->getField($i), "FAMC:HUSB:NAME")===0) continue;
 		if (strpos($controller->getField($i), "FAMC:WIFE:NAME")===0) continue;
 	?>
@@ -193,7 +193,7 @@ print_header(i18n::translate('Advanced search'));
 			$fatherSurnOption = 'SDX';
 			$motherGivnOption = 'SDX';
 			$motherSurnOption = 'SDX';
-			for($k=0; $k<$fct; $k++) {
+			for ($k=0; $k<$fct; $k++) {
 				$searchField = $controller->getField($k);
 				$searchOption = substr($searchField, 20); // Assume we have something like "FAMC:HUSB:NAME:GIVN:foo"
 				switch (substr($searchField, 0, 20)) {

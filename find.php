@@ -59,8 +59,8 @@ function getPreselectedTags(&$preselDefault, &$preselCustom) {
 	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
 	$preselDefault = array();
 	$preselCustom = array();
-	foreach($all as $one) {
-		if(array_key_exists($one, $FACTS)) {
+	foreach ($all as $one) {
+		if (array_key_exists($one, $FACTS)) {
 			$preselDefault[] = $one;
 		} else {
 			$preselCustom[] = $one;
@@ -92,10 +92,10 @@ $thumbdir = stripcslashes(preg_replace($srch, $repl, $directory));
 
 //-- prevent script from accessing an area outside of the media directory
 //-- and keep level consistency
-if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)){
+if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 	$directory = $MEDIA_DIRECTORY;
 	$level = 0;
-} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0){
+} elseif (preg_match("'^$MEDIA_DIRECTORY'", $directory)==0) {
 	$directory = $MEDIA_DIRECTORY;
 	$level = 0;
 }
@@ -152,7 +152,7 @@ case "facts":
 echo WT_JS_START;
 ?>
 	function pasteid(id, name, thumb) {
-		if(thumb) {
+		if (thumb) {
 			window.opener.<?php echo $callback; ?>(id, name, thumb);
 			<?php if (!$multiple) echo "window.close();"; ?>
 		} else {
@@ -164,7 +164,7 @@ echo WT_JS_START;
 				if (id.match("I")=="I") {
 					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', 'top=50, left=600, width=420, height=650, resizable=1, scrollbars=1');
 					if (window.focus) {win01.focus();}
-				}else if (id.match("F")=="F") {
+				} else if (id.match("F")=="F") {
 					// TODO --- alert('Opening Navigator with family id entered will come later');
 				}
 				*/
@@ -318,7 +318,7 @@ if ($type == "media" && $MULTI_MEDIA) {
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" wstyle=\"padding: 5px;\">";
 	echo "<input type=\"checkbox\" name=\"showthumb\" value=\"true\"";
-	if( $showthumb) echo "checked=\"checked\"";
+	if ($showthumb) echo "checked=\"checked\"";
 	echo "onclick=\"javascript: this.form.submit();\" />", i18n::translate('Show thumbnails');
 	echo help_link('show_thumb');
 	echo "</td></tr>";
@@ -426,7 +426,7 @@ if ($type == "specialchar") {
 	echo "<select id=\"language_filter\" name=\"language_filter\" onchange=\"submit();\">";
 	echo "<option value=\"\">", i18n::translate('Change language'), "</option>";
 	$language_options = "";
-	foreach($specialchar_languages as $key=>$value) {
+	foreach ($specialchar_languages as $key=>$value) {
 		$language_options.= "<option value=\"$key\">$value</option>";
 	}
 	$language_options = str_replace("\"$language_filter\"", "\"$language_filter\" selected", $language_options);
@@ -462,7 +462,7 @@ if ($type == "facts") {
 			var row=document.createElement("tr"),cell,o;
 			row.appendChild(cell=document.createElement("td"));
 			o=null;
-			if(document.all) {
+			if (document.all) {
 				//Old IEs handle the creation of a checkbox already checked, as far as I know, only in this way
 				try {
 					o=document.createElement("<input type='checkbox' id='tag"+this._counter+"' "+(this.selected?"checked='checked'":"")+" />");
@@ -470,11 +470,11 @@ if ($type == "facts") {
 					o=null;
 				}
 			}
-			if(!o) {
+			if (!o) {
 				o=document.createElement("input");
 				o.setAttribute("id","tag"+this._counter);
 				o.setAttribute("type","checkbox");
-				if(this.selected) o.setAttribute("checked", "checked");
+				if (this.selected) o.setAttribute("checked", "checked");
 			}
 			o.DefaultTag=this;
 			o.ParentRow=row;
@@ -503,10 +503,10 @@ if ($type == "facts") {
 		,_timer:null
 		,clear:function() {
 			var n=TheList.childNodes.length;
-			while(n) TheList.removeChild(TheList.childNodes[--n]);
+			while (n) TheList.removeChild(TheList.childNodes[--n]);
 		}
 		,_clearTimer:function() {
-			if(this._timer!=null) {
+			if (this._timer!=null) {
 				clearTimeout(this._timer);
 				this._timer=null;
 			}
@@ -518,39 +518,39 @@ if ($type == "facts") {
 		,refreshNow:function(force) {
 			this._clearTimer();
 			var s=document.getElementById("tbxFilter").value.toLowerCase().replace(/\s+/g," ").replace(/^ | $/g,""),k;
-			if(force||(typeof(this._curFilter)!="string")||(this._curFilter!=s)) {
+			if (force||(typeof(this._curFilter)!="string")||(this._curFilter!=s)) {
 				this._curFilter=s;
 				this.clear();
-				for(k=0;k<DefaultTags.length;k++) {
-					if(DefaultTags[k].LowerName.indexOf(this._curFilter)>=0) DefaultTags[k].view();
+				for (k=0;k<DefaultTags.length;k++) {
+					if (DefaultTags[k].LowerName.indexOf(this._curFilter)>=0) DefaultTags[k].view();
 				}
 			}
 		}
 		,recount:function() {
 			var k,n=0;
-			for(k=0;k<DefaultTags.length;k++)
-				if(DefaultTags[k].selected)
+			for (k=0;k<DefaultTags.length;k++)
+				if (DefaultTags[k].selected)
 					n++;
 			document.getElementById("layCurSelectedCount").innerHTML=n.toString();
 		}
 		,showSelected:function() {
 			this._clearTimer();
 			this.clear();
-			for(var k=0;k<DefaultTags.length;k++) {
-				if(DefaultTags[k].selected)
+			for (var k=0;k<DefaultTags.length;k++) {
+				if (DefaultTags[k].selected)
 					DefaultTags[k].view();
 			}
 		}
 	};
 
 	function initPickFact() {
-		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach($preselDefault as $p) echo addslashes($p), '\\x01'; ?>";
+		var n,i,j,tmp,preselectedDefaultTags="\x01<?php foreach ($preselDefault as $p) echo addslashes($p), '\\x01'; ?>";
 
 		DefaultTags=[<?php
 		$firstFact=TRUE;
-		foreach($FACTS as $factId => $factName) {
+		foreach ($FACTS as $factId => $factName) {
 			if (preg_match('/^_?[A-Z0-9]+$/', $factId, $matches)) {
-				if($firstFact) $firstFact=FALSE;
+				if ($firstFact) $firstFact=FALSE;
 				else echo ',';
 				echo 'new DefaultTag("'.addslashes($factId).'","'.addslashes($factName).'",preselectedDefaultTags.indexOf("\\x01'.addslashes($factId).'\\x01")>=0)';
 			}
@@ -558,9 +558,9 @@ if ($type == "facts") {
 		?>];
 		//Sort defined tags alphabetically by name
 		n=DefaultTags.length
-		for(i=0;i<(n-1);i++) {
-			for(j=(i+1);j<n;j++) {
-				if(DefaultTags[i].LowerName>DefaultTags[j].LowerName) {
+		for (i=0;i<(n-1);i++) {
+			for (j=(i+1);j<n;j++) {
+				if (DefaultTags[i].LowerName>DefaultTags[j].LowerName) {
 					tmp=DefaultTags[i];
 					DefaultTags[i]=DefaultTags[j];
 					DefaultTags[j]=tmp;
@@ -578,13 +578,13 @@ if ($type == "facts") {
 	}
 	function DoOK() {
 		var result=[],k,linearResult,custom;
-		for(k=0;k<DefaultTags.length;k++) {
-			if(DefaultTags[k].selected) result.push(DefaultTags[k].Id);
+		for (k=0;k<DefaultTags.length;k++) {
+			if (DefaultTags[k].selected) result.push(DefaultTags[k].Id);
 		}
 		linearResult="\x01"+result.join("\x01")+"\x01";
 		custom=document.getElementById("tbxCustom").value.toUpperCase().replace(/\s/g,"").split(",");
-		for(k=0;k<custom.length;k++) {
-			if(linearResult.indexOf("\x01"+custom[k]+"\x01")<0) {
+		for (k=0;k<custom.length;k++) {
+			if (linearResult.indexOf("\x01"+custom[k]+"\x01")<0) {
 				linearResult+=custom[k]+"\x01";
 				result.push(custom[k]);
 			}
@@ -619,7 +619,7 @@ if ($type == "facts") {
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td><button id="btnOk" disabled="disabled" onclick="if(!this.disabled)DoOK();"><?php echo i18n::translate('Accept'); ?></button></td>
+		<td><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();"><?php echo i18n::translate('Accept'); ?></button></td>
 		<td><button onclick="window.close();return false"><?php echo i18n::translate('Cancel'); ?></button></td>
 	<tr></tbody></table>
 	<?php
@@ -645,7 +645,7 @@ if ($action=="filter") {
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 			usort($myindilist, array('GedcomRecord', 'Compare'));
-			foreach($myindilist as $indi) {
+			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total individuals'), ' ', count($myindilist), '</tr></td>';
@@ -670,7 +670,7 @@ if ($action=="filter") {
 			$curged = $GEDCOM;
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 			usort($myfamlist, array('GedcomRecord', 'Compare'));
-			foreach($myfamlist as $family) {
+			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total families'), ' ', count($myfamlist), '</tr></td>';
@@ -693,10 +693,10 @@ if ($action=="filter") {
 		if ($level>0) {
 			$levels = explode("/", $directory);
 			$pdir = "";
-			for($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i]."/";
+			for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i]."/";
 			$levels = explode("/", $thumbdir);
 			$pthumb = "";
-			for($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
+			for ($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
 			$uplink = "<a href=\"find.php?directory={$pdir}&amp;thumbdir={$pthumb}&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a><br />";
 		}
 
@@ -715,7 +715,7 @@ if ($action=="filter") {
 		// display the directory list
 		if (count($dirs) || $level) {
 			sort($dirs);
-			if ($level){
+			if ($level) {
 				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
 				echo $uplink, "</td></tr>";
 			}
@@ -758,7 +758,7 @@ if ($action=="filter") {
 						if ($chooseType=="media" && empty($media["XREF"])) $isvalid = false; // skip unlinked media files
 					}
 					if ($isvalid) {
-						if ($media["EXISTS"] && media_filesize($media["FILE"]) != 0){
+						if ($media["EXISTS"] && media_filesize($media["FILE"]) != 0) {
 							$imgsize = findImageSize($media["FILE"]);
 							$imgwidth = $imgsize[0]+40;
 							$imgheight = $imgsize[1]+150;
@@ -786,7 +786,7 @@ if ($action=="filter") {
 							if ($TEXT_DIRECTION=="rtl") echo getRLM();
 							echo "<br />";
 						}
-						if (!$embed){
+						if (!$embed) {
 							echo "<a href=\"javascript:;\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
 						}
 						else echo "<a href=\"javascript:;\" onclick=\"pasteid('", $media["XREF"], "', '", addslashes($media["TITL"]), "', '", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
@@ -847,7 +847,7 @@ if ($action=="filter") {
 					$levels = array_reverse($levels); // -- reverse the array so that we get the top level first
 					$placetext = "";
 					$j=0;
-					foreach($levels as $indexval => $level) {
+					foreach ($levels as $indexval => $level) {
 						if ($j>0) $placetext .= ", ";
 						$placetext .= trim($level);
 						$j++;
@@ -856,7 +856,7 @@ if ($action=="filter") {
 				}
 				uasort($revplacelist, "utf8_strcasecmp");
 				echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
-				foreach($revplacelist as $place) {
+				foreach ($revplacelist as $place) {
 					echo "<li><a href=\"javascript:;\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
 				}
 				echo "</ul></td></tr>";
@@ -944,7 +944,7 @@ if ($action=="filter") {
 		if ($magnify) {
 			echo '<span class="largechars">';
 		}
-		foreach($lcspecialchars as $key=>$value) {
+		foreach ($lcspecialchars as $key=>$value) {
 			$value = str_replace("'", "\'", $value);
 			echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
 			echo $key;
@@ -958,7 +958,7 @@ if ($action=="filter") {
 		if ($magnify) {
 			echo '<span class="largechars">';
 		}
-		foreach($ucspecialchars as $key=>$value) {
+		foreach ($ucspecialchars as $key=>$value) {
 			$value = str_replace("'", "\'", $value);
 			echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
 			echo $key;
@@ -972,7 +972,7 @@ if ($action=="filter") {
 		if ($magnify) {
 			echo '<span class="largechars">';
 		}
-		foreach($otherspecialchars as $key=>$value) {
+		foreach ($otherspecialchars as $key=>$value) {
 			$value = str_replace("'", "\'", $value);
 			echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
 			echo $key;

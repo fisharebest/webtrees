@@ -102,21 +102,21 @@ function scroll(move)
 	myouterDiv = document.getElementById("outerDiv");
 
 	//compares the direction the timeline is moving and how far it can move in each direction.
-	if(move == "left" && ((maxX+topInnerDiv.offsetLeft+350) > (myouterDiv.offsetLeft+myouterDiv.offsetWidth))){
+	if (move == "left" && ((maxX+topInnerDiv.offsetLeft+350) > (myouterDiv.offsetLeft+myouterDiv.offsetWidth))) {
 		left = (innerDiv.offsetLeft - offSetNum)+"px";
 		innerDiv.style.left = left;
 		topInnerDiv.style.left = left;
 	}
-	else if(move == "right" && topInnerDiv.offsetLeft < (-10)){
+	else if (move == "right" && topInnerDiv.offsetLeft < (-10)) {
 		right = (innerDiv.offsetLeft + offSetNum)+"px";
 		innerDiv.style.left = right;
 		topInnerDiv.style.left = right;
 	}
-	else if(move == "up" && innerDiv.offsetTop > maxY){
+	else if (move == "up" && innerDiv.offsetTop > maxY) {
 		up = (innerDiv.offsetTop - offSetNum)+"px";
 		innerDiv.style.top = up;
 	}
-	else if(move == "down" && innerDiv.offsetTop < -60){
+	else if (move == "down" && innerDiv.offsetTop < -60) {
 		down = (innerDiv.offsetTop + offSetNum)+"px";
 		innerDiv.style.top = down;
 	}
@@ -134,17 +134,17 @@ function startZoom(move)
 	zoom(move);
 }
 
-function zoom(move){
-	if (move == "increase" && numOfIncrease < 5){
+function zoom(move) {
+	if (move == "increase" && numOfIncrease < 5) {
 
 		increase = zoomfactor + 10;
 		numOfIncrease += 1;
 
 		temp = document.getElementById("inner");
 
-		for(i=0; i<temp.childNodes.length; i++) {
+		for (i=0; i<temp.childNodes.length; i++) {
 
-			if(temp.childNodes[i].tagName=="DIV") {
+			if (temp.childNodes[i].tagName=="DIV") {
 				width = temp.childNodes[i].offsetWidth;
 				height = temp.childNodes[i].offsetHeight;
 				left = temp.childNodes[i].offsetLeft;
@@ -155,7 +155,7 @@ function zoom(move){
 				left = left * 1.1;
 				font = font + 0.2;
 
-				if(temp.childNodes[i].offsetTop <= 65){
+				if (temp.childNodes[i].offsetTop <= 65) {
 					top = top;
 				}
 				else {
@@ -170,12 +170,12 @@ function zoom(move){
 			}
 		}
 	}
-	else if(move == "decrease" && numOfIncrease > 0){
+	else if (move == "decrease" && numOfIncrease > 0) {
 		decrease = zoomfactor - 10;
 		numOfIncrease -= 1;
 
-		for(i=0; i<temp.childNodes.length; i++) {
-			if(temp.childNodes[i].tagName=="DIV") {
+		for (i=0; i<temp.childNodes.length; i++) {
+			if (temp.childNodes[i].tagName=="DIV") {
 				width = temp.childNodes[i].offsetWidth;
 				height = temp.childNodes[i].offsetHeight;
 				left = temp.childNodes[i].offsetLeft;
@@ -186,7 +186,7 @@ function zoom(move){
 				left = left * 0.9;
 				font = font - 0.2;
 
-				if(temp.childNodes[i].offsetTop <= 65){
+				if (temp.childNodes[i].offsetTop <= 65) {
 					top = top;
 				}
 				else {
@@ -202,13 +202,13 @@ function zoom(move){
 		}
 	}
 }
-function reset(){
-	if(numOfIncrease >= 5){
+function reset() {
+	if (numOfIncrease >= 5) {
 	temp = document.getElementById("inner");
 
-		for(i=0; i<temp.childNodes.length; i++) {
+		for (i=0; i<temp.childNodes.length; i++) {
 
-			if(temp.childNodes[i].tagName=="DIV") {
+			if (temp.childNodes[i].tagName=="DIV") {
 				width = temp.childNodes[i].offsetWidth;
 				height = temp.childNodes[i].offsetHeight;
 				left = temp.childNodes[i].offsetLeft;
@@ -218,12 +218,12 @@ function reset(){
 		numOfIncrease = 0;
 		zoomfactor = 10;
 	}
-	else if(numOfDecrease >= 5){
+	else if (numOfDecrease >= 5) {
 		temp = document.getElementById("inner");
 
-		for(i=0; i<temp.childNodes.length; i++) {
+		for (i=0; i<temp.childNodes.length; i++) {
 
-			if(temp.childNodes[i].tagName=="DIV") {
+			if (temp.childNodes[i].tagName=="DIV") {
 				width = temp.childNodes[i].offsetWidth;
 				height = temp.childNodes[i].offsetHeight;
 				left = temp.childNodes[i].offsetLeft;
@@ -273,8 +273,8 @@ var oldMx = 0;
 			msY = e.pageY;
 		}
 		// catch possible negative values in NS4
-		if (msX < 0){msX = 0;}
-		if (msY < 0){msY = 0;}
+		if (msX < 0) {msX = 0;}
+		if (msY < 0) {msY = 0;}
 		if (movei1!="") {
 		//ileft = parseInt(movei1.style.left);
 		//itop = parseInt(movei2.style.top);
@@ -362,7 +362,7 @@ var oldMx = 0;
 <script language="JavaScript" type="text/javascript">
 <!--
 var maxY = 80-<?php echo $maxY; ?>; // Sets the boundaries for how far the timeline can move in the up direction
-var maxX = <?php if(!isset($maxX)) $maxX = 0; echo $maxX; ?>;  // Sets the boundaries for how far the timeline can move in the left direction
+var maxX = <?php if (!isset($maxX)) $maxX = 0; echo $maxX; ?>;  // Sets the boundaries for how far the timeline can move in the left direction
 
 //-->
 </script>

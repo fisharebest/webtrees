@@ -107,7 +107,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				<!--
 					function select_all() {
 						';
-			foreach($usermessages as $key=>$message) {
+			foreach ($usermessages as $key=>$message) {
 				if (isset($message["id"])) $key = $message["id"];
 				$content .= '
 							var cb = document.getElementById("cb_message'.$key.'");
@@ -130,7 +130,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<td class=\"list_label\">".i18n::translate('Date Sent:')."</td>";
 			$content .= "<td class=\"list_label\">".i18n::translate('Email Address:')."</td>";
 			$content .= "</tr>";
-			foreach($usermessages as $key=>$message) {
+			foreach ($usermessages as $key=>$message) {
 				if (isset($message["id"])) $key = $message["id"];
 				$content .= "<tr>";
 				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\" /></td>";

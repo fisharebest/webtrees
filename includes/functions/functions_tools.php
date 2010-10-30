@@ -51,7 +51,7 @@ function need_place_cleanup()
 	//$ct = preg_match("/SOUR.+(Family Tree Maker|FTW)/", $fcontents);
 	//if ($ct==0) return false;
 	$ct = preg_match_all ("/^1 (CAST|DSCR|IDNO|NATI|NCHI|NMR|OCCU|PROP|RELI|SSN|TITL|_FA1|_FA2|_FA3|_FA4|_FA5|_FA6)(\s*)$[\s]+(^2 TYPE(.*)[\s]+)?(^2 DATE(.*)[\s]+)?^2 PLAC (.*)$/m",$fcontents,$matches, PREG_SET_ORDER);
-	if($ct>0)
+	if ($ct>0)
 		return $matches[0];
 	return false;
 }
@@ -81,12 +81,12 @@ function fixreplaceval($val1,$val7,$val3,$val5)
 	$val = "1 ".$val1." ".trim($val7)."\n";
 	//trim off trailing spaces
 	$val3 = rtrim($val3);
-	if(!empty($val3))
+	if (!empty($val3))
 		$val = $val.$val3;
 
 	//trim off trailing spaces
 	$val5 = rtrim($val5);
-	if(!empty($val5))
+	if (!empty($val5))
 	{
 		$val = $val.$val5;
 	}
@@ -110,25 +110,25 @@ function need_date_cleanup()
 {
 	global $fcontents;
 	$ct = preg_match_all ("/\n\d DATE[^\d]+(\d\d\d\d)[\/\\\\\-\.](\d\d)[\/\\\\\-\.](\d\d)/",$fcontents,$matches, PREG_SET_ORDER);
-	if($ct>0) {
+	if ($ct>0) {
 			return $matches[0];
 		}
 	else
 	{
 			$ct = preg_match_all ("/\n\d DATE[^\d]+(\d\d)[\/\\\\\-\.](\d\d)[\/\\\\\-\.](\d\d\d\d)/",$fcontents,$matches, PREG_SET_ORDER);
-		if($ct>0) {
+		if ($ct>0) {
 			// The user needs to choose between DMY and MDY
 			$matches[0]["choose"] = true;
 			return $matches[0];
 		}
 		else {
 			$ct = preg_match_all ("/\n\d DATE ([^\d]+) [0-9]{1,2}, (\d\d\d\d)/",$fcontents,$matches, PREG_SET_ORDER);
-			if($ct>0) {
+			if ($ct>0) {
 				return $matches[0];
 			}
 			else {
 				$ct = preg_match_all("/\n\d DATE (\d\d)[^\s]([^\d]+)[^\s](\d\d\d\d)/", $fcontents, $matches, PREG_SET_ORDER);
-				if($ct>0) {
+				if ($ct>0) {
 					return $matches[0];
 				} else {
 					if (preg_match_all("/^\d DATE (BET|FROM) \d\d? (AND|TO) \d\d? \w\w\w \d\d\d\d/m", $fcontents, $matches, PREG_SET_ORDER)) {
@@ -143,18 +143,18 @@ function need_date_cleanup()
 
 function changemonth($monval)
 {
-		if($monval=="01") return "JAN";
-		elseif($monval=="02") return "FEB";
-		elseif($monval=="03") return "MAR";
-		elseif($monval=="04") return "APR";
-		elseif($monval=="05") return "MAY";
-		elseif($monval=="06") return "JUN";
-		elseif($monval=="07") return "JUL";
-		elseif($monval=="08") return "AUG";
-		elseif($monval=="09") return "SEP";
-		elseif($monval=="10") return "OCT";
-		elseif($monval=="11") return "NOV";
-		elseif($monval=="12") return "DEC";
+		if ($monval=="01") return "JAN";
+		elseif ($monval=="02") return "FEB";
+		elseif ($monval=="03") return "MAR";
+		elseif ($monval=="04") return "APR";
+		elseif ($monval=="05") return "MAY";
+		elseif ($monval=="06") return "JUN";
+		elseif ($monval=="07") return "JUL";
+		elseif ($monval=="08") return "AUG";
+		elseif ($monval=="09") return "SEP";
+		elseif ($monval=="10") return "OCT";
+		elseif ($monval=="11") return "NOV";
+		elseif ($monval=="12") return "DEC";
 		return $monval;
 }
 
@@ -213,12 +213,12 @@ function xref_change($tag="RIN")
 
 	//-- find all of the XREFS in the file
 	$ct = preg_match_all("/0 @(.*)@ INDI/", $fcontents, $match, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$xref = trim($match[$i][1]);
 		$indirec = find_gedcom_record($xref, $ged_id, true);
 		if ($indirec) {
 			$rt = preg_match("/1 NAME (.*)/", $indirec, $rmatch);
-			if($rt>0)
+			if ($rt>0)
 			{
 				$name = trim($rmatch[1])." (".$xref.")";
 				$name = str_replace("/","",$name);

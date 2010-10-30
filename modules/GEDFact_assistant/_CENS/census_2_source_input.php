@@ -233,9 +233,9 @@ global $TEXT_DIRECTION;
 		var cendate = getCenDate(cenyear);
 		// Get Married Date from Input Fields and re-calculate Marital Condition ============
 		var tbl = document.getElementById('tblSample');
-		for(var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+		for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 			var tr = tbl.rows[i];
-			for(var j=2; j<tr.cells.length; j++){
+			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=4 && j!=15) {
 					// 4 and 15 are the marital condition columns (fields)
 					// therefore miss out all cols except these marital condition cols
@@ -316,7 +316,7 @@ global $TEXT_DIRECTION;
 						if (yrsmarr == 0) {
 							yrsmarr = "<1";
 						}
-					}else{
+					} else {
 						yrsmarr = "-";
 						agemarr = "-";
 						marrcond = "S";
@@ -349,9 +349,9 @@ global $TEXT_DIRECTION;
 		var cendate = getCenDate(cenyear);
 		// Get Children born Array from Input Fields and re-calculate Born Alive Died Condition ============
 		var tbl = document.getElementById('tblSample');
-		for(var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+		for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 			var tr = tbl.rows[i];
-			for(var j=2; j<tr.cells.length; j++){
+			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=73) {
 					// 73 is the Chil born array column
 					// therefore miss out all cols except this column's cells
@@ -425,15 +425,15 @@ global $TEXT_DIRECTION;
 		// Get Age from Input Fields and re-calculate =======================================
 		var tbl = document.getElementById('tblSample');
 
-		for(var i=1; i<tbl.rows.length; i++){ // start at i=1 because we need to avoid header
+		for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 			var tr = tbl.rows[i];
-			for(var j=2; j<tr.cells.length; j++){
+			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=7 && j!=12) {
 					// miss out all cols except age cols
 					continue;
-				}else if (tr.cells[j].childNodes[0].value=="") {
+				} else if (tr.cells[j].childNodes[0].value=="") {
 					tr.cells[j].childNodes[0].value=null
-				}else{
+				} else {
 					// Calculate Birth Year =======================================
 					var bage  = (tr.cells[68].childNodes[0].value);
 					// If valid Julian date used, then use this instead -----------
@@ -503,7 +503,7 @@ global $TEXT_DIRECTION;
 						tr.cells[2].childNodes[0].style.background  = '#ffffff';
 						tr.cells[7].childNodes[0].style.background  = '#ffffff';
 						tr.cells[12].childNodes[0].style.background = '#ffffff';
-					}else{
+					} else {
 						// alert(tr.cells[2].childNodes[0].value+" - Not Born Yet");
 						tr.cells[2].childNodes[0].style.background  = '#ffaaaa';
 						tr.cells[7].childNodes[0].style.background  = '#ffaaaa';
@@ -679,7 +679,7 @@ global $TEXT_DIRECTION;
 				flip_42 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else
+			} else
 			if (cenyear=="1901") {
 				flip_3 = "";
 				flip_4 = "";
@@ -690,7 +690,7 @@ global $TEXT_DIRECTION;
 				flip_42 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else
+			} else
 			if (cenyear=="1891") {
 				flip_3 = "";
 				flip_4 = "";
@@ -702,7 +702,7 @@ global $TEXT_DIRECTION;
 				flip_43 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else
+			} else
 			if (cenyear=="1881" || cenyear=="1871" || cenyear=="1861" || cenyear=="1851") {
 				flip_3 = "";
 				flip_4 = "";
@@ -711,7 +711,7 @@ global $TEXT_DIRECTION;
 				flip_35 = "";
 				flip_50 = "";
 				flip_63 = "";
-			}else
+			} else
 			if (cenyear=="1841") {
 				flip_7 = "";
 				flip_9 = "";
@@ -742,7 +742,7 @@ global $TEXT_DIRECTION;
 				flip_62 = "";
 				flip_65 = "";
 				flip_66 = "";
-			}else
+			} else
 			if (cenyear=="1920") {
 				flip_3 = "";
 				flip_5 = "";
@@ -762,7 +762,7 @@ global $TEXT_DIRECTION;
 				flip_60 = "";
 				flip_61 = "";
 				flip_62 = "";
-			}else
+			} else
 			if (cenyear=="1910") {
 				flip_3 = "";
 				flip_9 = "";
@@ -789,7 +789,7 @@ global $TEXT_DIRECTION;
 				flip_49 = "";
 				flip_65 = "";
 				flip_67 = "";
-			}else
+			} else
 			if (cenyear=="1900") {
 				flip_3 = "";
 				flip_8 = "";
@@ -812,7 +812,7 @@ global $TEXT_DIRECTION;
 				flip_46 = "";
 				flip_48 = "";
 				flip_49 = "";
-			}else
+			} else
 			if (cenyear=="1890") {
 				flip_3 = "";
 				flip_8 = "";
@@ -835,7 +835,7 @@ global $TEXT_DIRECTION;
 				flip_46 = "";
 				flip_48 = "";
 				flip_64 = "";
-			}else
+			} else
 			if (cenyear=="1880") {
 				flip_8 = "";
 				flip_9 = "";
@@ -853,7 +853,7 @@ global $TEXT_DIRECTION;
 				flip_51 = "";
 				flip_54= "";
 				flip_55 = "";
-			}else
+			} else
 			if (cenyear=="1870" ) {
 				flip_7 = "";
 				flip_9 = "";
@@ -866,7 +866,7 @@ global $TEXT_DIRECTION;
 				flip_26 = "";
 				flip_47 = "";
 				flip_63 = "";
-			}else
+			} else
 			if (cenyear=="1860" || cenyear=="1850") {
 				flip_7 = "";
 				flip_9 = "";
@@ -1013,7 +1013,7 @@ global $TEXT_DIRECTION;
 	<div class="cens_sour_year">
 		<span><?php echo i18n::translate('Year'); ?><br /></span>
 		<select style = "background:#ffaaaa;";
-				onchange = "if( this.options[this.selectedIndex].value!='') {
+				onchange = "if (this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
 							}"
 				id="censYear" name="censYear">

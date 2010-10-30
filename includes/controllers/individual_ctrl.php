@@ -93,10 +93,10 @@ class IndividualController extends BaseController {
 			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
 		}
 
-		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null){
+		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null) {
 				$this->indi = new Person($gedrec, false);
 				$this->indi->ged_id=WT_GED_ID; // This record is from a file
-		} else if (!$this->indi){
+		} else if (!$this->indi) {
 			return false;
 		}
 
@@ -197,7 +197,7 @@ class IndividualController extends BaseController {
 
 		// Initialise tabs
 		$this->tabs = WT_Module::getActiveTabs();
-		foreach($this->tabs as $mod) {
+		foreach ($this->tabs as $mod) {
 			$mod->setController($this);
 			if ($mod->hasTabContent()) {
 				if (empty($this->default_tab)) {
@@ -384,7 +384,7 @@ class IndividualController extends BaseController {
 			echo '</dl>';
 		echo '</div>';
 		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			echo '<div>';
 				$fact = trim($nmatch[$i][1]);
 				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")&&($fact!="SPFX")) {
@@ -678,7 +678,7 @@ class IndividualController extends BaseController {
 			$labels["sister"] = i18n::translate('Sister');
 			$labels["brother"] = i18n::translate('Brother');
 		}
-		if ($type=="step"){
+		if ($type=="step") {
 			$labels["parent"] = i18n::translate('Step-Parent');
 			$labels["mother"] = i18n::translate('Step-Mother');
 			$labels["father"] = i18n::translate('Step-Father');
@@ -733,7 +733,7 @@ class IndividualController extends BaseController {
 		//-- step families : set the label for the common parent
 		if ($type=="step") {
 			$fams = $this->indi->getChildFamilies();
-			foreach($fams as $key=>$fam) {
+			foreach ($fams as $key=>$fam) {
 				if ($fam->hasParent($husb)) $labels["father"] = i18n::translate('Father');
 				if ($fam->hasParent($wife)) $labels["mother"] = i18n::translate('Mother');
 			}
@@ -801,11 +801,11 @@ class IndividualController extends BaseController {
 				$merged_children = array();
 				$new_children = $newfamily->getChildren();
 				$num = count($children);
-				for($i=0; $i<$num; $i++) {
+				for ($i=0; $i<$num; $i++) {
 					$child = $children[$i];
 					if (!is_null($child)) {
 						$found = false;
-						foreach($new_children as $key=>$newchild) {
+						foreach ($new_children as $key=>$newchild) {
 							if (!is_null($newchild)) {
 								if ($child->equals($newchild)) {
 									$found = true;
@@ -817,10 +817,10 @@ class IndividualController extends BaseController {
 						else $merged_children[] = $child;
 					}
 				}
-				foreach($new_children as $key=>$newchild) {
+				foreach ($new_children as $key=>$newchild) {
 					if (!is_null($newchild)) {
 						$found = false;
-						foreach($children as $key1=>$child) {
+						foreach ($children as $key1=>$child) {
 							if (!is_null($child)) {
 								if ($child->equals($newchild)) {
 									$found = true;
@@ -836,7 +836,7 @@ class IndividualController extends BaseController {
 		}
 		//-- set the labels for the children
 		$num = count($children);
-		for($i=0; $i<$num; $i++) {
+		for ($i=0; $i<$num; $i++) {
 			if (!is_null($children[$i])) {
 				$label = $labels["sibling"];
 				$sex = $children[$i]->getSex();
@@ -860,7 +860,7 @@ class IndividualController extends BaseController {
 			}
 		}
 		$num = count($newchildren);
-		for($i=0; $i<$num; $i++) {
+		for ($i=0; $i<$num; $i++) {
 			$label = $labels["sibling"];
 			$sex = $newchildren[$i]->getSex();
 			if ($sex=="F") {
@@ -877,7 +877,7 @@ class IndividualController extends BaseController {
 			$newchildren[$i]->setLabel($label);
 		}
 		$num = count($delchildren);
-		for($i=0; $i<$num; $i++) {
+		for ($i=0; $i<$num; $i++) {
 				$label = $labels["sibling"];
 			$sex = $delchildren[$i]->getSex();
 			if ($sex=="F") {

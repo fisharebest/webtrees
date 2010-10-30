@@ -128,7 +128,7 @@ class DescendancyController extends BaseController {
 		if (is_null($person)) return;
 		$families = $person->getSpouseFamilies();
 		if ($depth<2) return;
-		foreach($families as $famid => $family) {
+		foreach ($families as $famid => $family) {
 			print_sosa_family($family->getXref(), "", -1, $label, $person->getXref(), $gpid, $personcount);
 			$personcount++;
 			$children = $family->getChildren();
@@ -164,7 +164,7 @@ function print_child_descendancy(&$person, $depth) {
 	echo "<td>&nbsp;</td>";
 	echo "<td>";
 	$sfamids = $person->getChildFamilies();
-	foreach($sfamids as $famid => $family) {
+	foreach ($sfamids as $famid => $family) {
 		$parents = find_parents($famid);
 		if ($parents) {
 			$parid=$parents["HUSB"];
@@ -250,7 +250,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		echo "<td>&nbsp;</td>";
 		echo "<td>";
 		$sfamids = find_family_ids($id);
-		foreach($sfamids as $indexval => $sfamid) {
+		foreach ($sfamids as $indexval => $sfamid) {
 			$parents = find_parents($sfamid);
 			if ($parents) {
 				$parid=$parents["HUSB"];

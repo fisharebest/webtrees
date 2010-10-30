@@ -137,7 +137,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 
 				$fams = $person->getSpouseFamilies();
 				/* @var $family Family */
-				foreach($fams as $famid=>$family) {
+				foreach ($fams as $famid=>$family) {
 					if (!is_null($family)) {
 						$spouse = $family->getSpouse($person);
 
@@ -153,7 +153,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 							}
 						}
 						/* @var $child Person */
-						foreach($children as $c=>$child) {
+						foreach ($children as $c=>$child) {
 							$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\" $mouseAction1>";
 							if ($child->canDisplayName()) $personlinks .= PrintReady($child->getFullName());
 							else $personlinks .= i18n::translate('Private');
@@ -297,7 +297,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 	$indirec = $person->getGedcomRecord();
 	$cssfacts = array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
 	"NATI", "NCHI", "NMR", "OCCU", "PROP", "RELI", "RESI", "SSN", "TITL", "BAPL", "CONL", "ENDL", "SLGC", "_MILI");
-	foreach($cssfacts as $indexval => $fact) {
+	foreach ($cssfacts as $indexval => $fact) {
 		if (strpos($indirec, "1 $fact")!==false) $classfacts .= " $fact";
 	}
 	if ($PEDIGREE_SHOW_GENDER)
@@ -792,7 +792,7 @@ function print_favorite_selector($option=0) {
 				$menu->addSubMenu($submenu);
 			}
 
-			foreach($userfavs as $key=>$favorite) {
+			foreach ($userfavs as $key=>$favorite) {
 				$GEDCOM = $favorite["file"];
 				$submenu = new Menu();
 				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
@@ -819,7 +819,7 @@ function print_favorite_selector($option=0) {
 			$submenu = new Menu("<strong>".i18n::translate('This GEDCOM\'s Favorites')."</strong>", "#", "right");
 			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 			$menu->addSubMenu($submenu);
-			foreach($gedcomfavs as $key=>$favorite) {
+			foreach ($gedcomfavs as $key=>$favorite) {
 				$GEDCOM = $favorite["file"];
 				$submenu = new Menu();
 				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
@@ -853,7 +853,7 @@ function print_favorite_selector($option=0) {
 			if ($gid!='') {
 				echo "<option value=\"add\">- ", i18n::translate('Add to My Favorites'), " -</option>";
 			}
-			foreach($userfavs as $key=>$favorite) {
+			foreach ($userfavs as $key=>$favorite) {
 				$GEDCOM = $favorite["file"];
 				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
 					echo "<option value=\"", $favorite["url"], "\">", PrintReady($favorite["title"]);
@@ -891,7 +891,7 @@ function print_favorite_selector($option=0) {
 		}
 		if (count($gedcomfavs)>0) {
 			echo "<optgroup label=\"", i18n::translate('This GEDCOM\'s Favorites'), "\">";
-			foreach($gedcomfavs as $key=>$favorite) {
+			foreach ($gedcomfavs as $key=>$favorite) {
 				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
 					echo "<option value=\"", $favorite["url"], "\">", PrintReady($favorite["title"]);
 					echo "</option>";
@@ -944,7 +944,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		} else {
 			$text = get_cont($nlevel, $nrec);
 		}
-	} else{
+	} else {
 		$text .= get_cont($nlevel, $nrec);
 	}
 	$text = str_replace("~~", "<br />", $text);
@@ -982,7 +982,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			// Check if Shared Note -----------------------------
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
 				$data .= i18n::translate('Shared note').": </span> ";
-			}else{
+			} else {
 				$data .= i18n::translate('Note').": </span>";
 			}
 		}
@@ -1005,7 +1005,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if (!$return) {
 			echo $data;
 			return true;
-		}else{
+		} else {
 			return $data;
 		}
 
@@ -1027,7 +1027,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 	$data = "";
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
-	for($j=0; $j<$ct; $j++) {
+	for ($j=0; $j<$ct; $j++) {
 		$spos1 = strpos($factrec, $match[$j][0]);
 		$spos2 = strpos($factrec."\n$level", "\n$level", $spos1+1);
 		if (!$spos2) $spos2 = strlen($factrec);
@@ -1062,7 +1062,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 			}
 		}
 		/*
-		if($closeSpan){
+		if ($closeSpan) {
 			if ($j==$ct-1 || $textOnly==false) {
 				$data .= "</span>";
 			} else {
@@ -1235,7 +1235,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 			$queries = explode(" ", $query);
 			$newtext = $text;
 			$hasallhits = true;
-			foreach($queries as $index=>$query1) {
+			foreach ($queries as $index=>$query1) {
 				$query1esc=preg_quote($query1, '/');
 				if (@preg_match("/(".$query1esc.")/i", $text)) { // Use @ as user-supplied query might be invalid.
 					$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
@@ -1254,7 +1254,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 					$queries = explode(" ", $firstname);
 					$newtext = $text;
 					$hasallhits = true;
-					foreach($queries as $index=>$query1) {
+					foreach ($queries as $index=>$query1) {
 						$query1esc=preg_quote($query1, '/');
 						if (preg_match("/(".$query1esc.")/i", $text)) {
 							$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
@@ -1273,7 +1273,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 					$queries = explode(" ", $lastname);
 					$newtext = $text;
 					$hasallhits = true;
-					foreach($queries as $index=>$query1) {
+					foreach ($queries as $index=>$query1) {
 						$query1esc=preg_quote($query1, '/');
 						if (preg_match("/(".$query1esc.")/i", $text)) {
 							$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
@@ -1292,7 +1292,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 					$queries = explode(" ", $place);
 					$newtext = $text;
 					$hasallhits = true;
-					foreach($queries as $index=>$query1) {
+					foreach ($queries as $index=>$query1) {
 						$query1esc=preg_quote($query1, '/');
 						if (preg_match("/(".$query1esc.")/i", $text)) {
 							$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
@@ -1311,7 +1311,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 					$queries = explode(" ", $year);
 					$newtext = $text;
 					$hasallhits = true;
-					foreach($queries as $index=>$query1) {
+					foreach ($queries as $index=>$query1) {
 						$query1=preg_quote($query1, '/');
 						if (preg_match("/(".$query1.")/i", $text)) {
 							$newtext = preg_replace("/(".$query1.")/i", "\x01$1\x02", $newtext);
@@ -1716,7 +1716,7 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 			// reverse the array so that we get the top level first
 			$levels = array_reverse($levels);
 			$tempURL = "placelist.php?action=show&amp;";
-			foreach($levels as $pindex=>$ppart) {
+			foreach ($levels as $pindex=>$ppart) {
 				$tempURL .= "parent[{$pindex}]=".rawurlencode($ppart).'&amp;';
 			}
 			$tempURL .= 'level='.count($levels);
@@ -1830,7 +1830,7 @@ function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM"
 * If the fact already exists in the second array, delete it from the first one.
 */
 function CheckFactUnique($uniquefacts, $recfacts, $type) {
-	foreach($recfacts as $indexval => $factarray) {
+	foreach ($recfacts as $indexval => $factarray) {
 		$fact=false;
 		if (is_object($factarray)) {
 			/* @var $factarray Event */
@@ -1865,7 +1865,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	// -- Add from clipboard
 	if (!empty($_SESSION["clipboard"])) {
 		$newRow = true;
-		foreach(array_reverse($_SESSION["clipboard"], true) as $key=>$fact) {
+		foreach (array_reverse($_SESSION["clipboard"], true) as $key=>$fact) {
 			if ($fact["type"]==$type || $fact["type"]=='all') {
 				if ($newRow) {
 					$newRow = false;
@@ -1938,13 +1938,13 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo "<td class=\"optionbox wrap ", $TEXT_DIRECTION, "\">";
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
 	echo "<select id=\"newfact\" name=\"newfact\">";
-	foreach($translated_addfacts as $fact=>$fact_name) {
+	foreach ($translated_addfacts as $fact=>$fact_name) {
 		echo '<option value="', $fact, '">', i18n::translate('%1$s [%2$s]', $fact_name, $fact), '</option>';
 	}
 	if (($type == "INDI") || ($type == "FAM")) echo "<option value=\"EVEN\">", i18n::translate('Custom Event'), " [EVEN]</option>";
 	echo "</select>";
 	echo "&nbsp;&nbsp;<input type=\"button\" value=\"", i18n::translate('Add'), "\" onclick=\"add_record('$id', 'newfact');\" /> ";
-	foreach($quickfacts as $fact) echo "&nbsp;<small><a href='javascript://$fact' onclick=\"add_new_record('$id', '$fact');return false;\">", translate_fact($fact), "</a></small>&nbsp;";
+	foreach ($quickfacts as $fact) echo "&nbsp;<small><a href='javascript://$fact' onclick=\"add_new_record('$id', '$fact');return false;\">", translate_fact($fact), "</a></small>&nbsp;";
 	echo "</form>";
 	echo "</td></tr>";
 }
@@ -2148,7 +2148,7 @@ function get_lds_glance($indirec) {
 	else $text .= "_";
 	$found = false;
 	$ct = preg_match_all("/1 FAMS @(.*)@/", $indirec, $match, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$famrec = find_family_record($match[$i][1], $ged_id);
 		if ($famrec) {
 			$ord = get_sub_record(1, "1 SLGS", $famrec);

@@ -152,7 +152,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
 		echo "<td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td>";
 		$hparents = false;
-		foreach($hfams as $hfamid=>$hfamily) {
+		foreach ($hfams as $hfamid=>$hfamily) {
 			if (!is_null($hfamily)) {
 				$hparents = find_parents_in_record($hfamily->getGedcomRecord());
 				$upfamid = $hfamid;
@@ -225,7 +225,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
 		echo "<td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td>";
 		$j = 0;
-		foreach($hfams as $hfamid=>$hfamily) {
+		foreach ($hfams as $hfamid=>$hfamily) {
 			if (!is_null($hfamily)) {
 				$hparents = find_parents_in_record($hfamily->getGedcomRecord());
 				$upfamid = $hfamid;
@@ -314,17 +314,17 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
 			if ($ct > 0) {
 				$oldchil = array();
-				for($i = 0; $i < $ct; $i++) {
+				for ($i = 0; $i < $ct; $i++) {
 					if (!in_array($match[$i][1], $children)) $newchildren[] = $match[$i][1];
 					else $oldchil[] = $match[$i][1];
 				}
-				foreach($children as $indexval => $chil) {
+				foreach ($children as $indexval => $chil) {
 					if (!in_array($chil, $oldchil)) $oldchildren[] = $chil;
 				}
 				//-- if there are no old or new children then the children were reordered
 				if ((count($newchildren)==0)&&(count($oldchildren)==0)) {
 					$children = array();
-					for($i = 0; $i < $ct; $i++) {
+					for ($i = 0; $i < $ct; $i++) {
 						$children[] = $match[$i][1];
 					}
 				}
@@ -333,7 +333,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	}
 	$nchi=1;
 	if ((count($children) > 0) || (count($newchildren) > 0) || (count($oldchildren) > 0)) {
-		foreach($children as $indexval => $chil) {
+		foreach ($children as $indexval => $chil) {
 			if (!in_array($chil, $oldchildren)) {
 				echo "<tr>";
 				if ($sosa != 0) {
@@ -411,14 +411,14 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 				echo "</tr>";
 			}
 		}
-		foreach($newchildren as $indexval => $chil) {
+		foreach ($newchildren as $indexval => $chil) {
 			echo "<tr >";
 			echo "<td valign=\"top\" class=\"facts_valueblue\" style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\">";
 			print_pedigree_person($chil, 1, 0, $personcount);
 			$personcount++;
 			echo "</td></tr>";
 		}
-		foreach($oldchildren as $indexval => $chil) {
+		foreach ($oldchildren as $indexval => $chil) {
 			echo "<tr >";
 			echo "<td valign=\"top\" class=\"facts_valuered\" style=\"width: " . ($pbwidth) . "px; height: " . $pbheight . "px;\">";
 			print_pedigree_person($chil, 1, 0, $personcount);
@@ -487,7 +487,7 @@ function print_family_facts(&$family, $sosa = 0) {
 			}
 			// do not print otheritems for sosa
 			if ($sosa == 0) {
-				foreach($indifacts as $key => $value) {
+				foreach ($indifacts as $key => $value) {
 					$fact = $value->getTag();
 					// -- handle special source fact case
 					if ($fact == "SOUR") {
@@ -644,7 +644,7 @@ function ancestry_array($rootid, $maxgen=0) {
 	$treeid[0] = "";
 	$treeid[1] = $rootid;
 	// -- fill in the id array
-	for($i = 1; $i < ($treesize / 2); $i++) {
+	for ($i = 1; $i < ($treesize / 2); $i++) {
 		$treeid[($i * 2)] = false; // -- father
 		$treeid[($i * 2) + 1] = false; // -- mother
 		if (!empty($treeid[$i])) {

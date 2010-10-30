@@ -356,7 +356,7 @@ class ClippingsController extends BaseController {
 				AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 			}
 
-			if($this->IncludeMedia == "yes")
+			if ($this->IncludeMedia == "yes")
 			{
 				$this->media_list = $media;
 			}
@@ -380,7 +380,7 @@ class ClippingsController extends BaseController {
 
 		$tempFileName = 'clipping'.rand().'.ged';
 		$fp = fopen($INDEX_DIRECTORY.$tempFileName, "wb");
-		if($fp)
+		if ($fp)
 		{
 			flock($fp,LOCK_EX);
 			fwrite($fp,$this->download_data);
@@ -411,7 +411,7 @@ class ClippingsController extends BaseController {
 	 * Brings up the download dialog box and allows the user to download the file
 	 * based on the options he or she selected
 	 */
-	function download_clipping(){
+	function download_clipping() {
 		if ($this->IncludeMedia == "yes" || $this->Zip == "yes") {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');

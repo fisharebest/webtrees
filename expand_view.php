@@ -42,7 +42,7 @@ sort_facts($subfacts);
 
 $f2 = 0;
 /* @var $event Event */
-foreach($subfacts as $indexval => $event) {
+foreach ($subfacts as $indexval => $event) {
 	if ($event->canShow()) {
 		if ($f2>0) echo "<br />";
 		$f2++;

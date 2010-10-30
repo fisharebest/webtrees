@@ -74,7 +74,7 @@ class Media extends GedcomRecord {
 	 * get the media note
 	 * @return string
 	 */
-	function getNote(){
+	function getNote() {
 		if (is_null($this->note)) {
 			$this->note=get_gedcom_value('NOTE', 1, $this->getGedcomRecord());
 		}
@@ -114,7 +114,7 @@ class Media extends GedcomRecord {
 		if ($this->serverfilename) return $this->serverfilename;
 		$localfilename = $this->getLocalFilename();
 		if (!empty($localfilename)) {
-			if (file_exists($localfilename)){
+			if (file_exists($localfilename)) {
 				// found image in unprotected directory
 				$this->fileexists = 2;
 				$this->serverfilename = $localfilename;
@@ -122,7 +122,7 @@ class Media extends GedcomRecord {
 			}
 			if ($USE_MEDIA_FIREWALL) {
 				$protectedfilename = get_media_firewall_path($localfilename);
-				if (file_exists($protectedfilename)){
+				if (file_exists($protectedfilename)) {
 					// found image in protected directory
 					$this->fileexists = 3;
 					$this->serverfilename = $protectedfilename;

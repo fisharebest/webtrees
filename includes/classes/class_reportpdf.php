@@ -320,7 +320,7 @@ class PDF extends TCPDF {
 	* PDF Header -PDF
 	*/
 	function Header() {
-		foreach($this->headerElements as $element) {
+		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -329,7 +329,7 @@ class PDF extends TCPDF {
 				$this->newPage();
 			}
 		}
-		foreach($this->pageHeaderElements as $element) {
+		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -345,7 +345,7 @@ class PDF extends TCPDF {
 	*/
 	function Body() {
 		$this->AddPage();
-		foreach($this->bodyElements as $key => $element) {
+		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -362,7 +362,7 @@ class PDF extends TCPDF {
 	* PDF Footnotes -PDF
 	*/
 	function Footnotes() {
-		foreach($this->printedfootnotes as $element) {
+		foreach ($this->printedfootnotes as $element) {
 			if (($this->GetY() + $element->getFootnoteHeight($this)) > $this->getPageHeight()) {
 				$this->AddPage();
 			}
@@ -377,7 +377,7 @@ class PDF extends TCPDF {
 	* PDF Footer -PDF
 	*/
 	function Footer() {
-		foreach($this->footerElements as $element) {
+		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
 			} elseif (is_string($element) && $element=="footnotetexts") {
@@ -519,7 +519,7 @@ class PDF extends TCPDF {
 	*/
 	function getMaxLineWidth() {
 		$m = $this->getMargins();
-		if ($this->getRTL()){
+		if ($this->getRTL()) {
 			return ($this->getRemainingWidth() + $m["right"]);
 		} else {
 			return ($this->getRemainingWidth() + $m["left"]);
@@ -528,7 +528,7 @@ class PDF extends TCPDF {
 
 	function getFootnotesHeight() {
 		$h=0;
-		foreach($this->printedfootnotes as $element) {
+		foreach ($this->printedfootnotes as $element) {
 			$h+=$element->getHeight($this);
 		}
 		return $h;
@@ -556,7 +556,7 @@ class PDF extends TCPDF {
 		$ct = count($this->printedfootnotes);
 		$val = $footnote->getValue();
 		$i = 0;
-		while($i < $ct) {
+		while ($i < $ct) {
 			if ($this->printedfootnotes[$i]->getValue() == $val) {
 				// If this footnote already exist then set up the numbers for this object
 				$footnote->setNum($i + 1);
@@ -577,7 +577,7 @@ class PDF extends TCPDF {
 	* This function will make sure that images will not be overwritten
 	*/
 	function newPage() {
-		if ($this->lastpicpage > $this->getPage()){
+		if ($this->lastpicpage > $this->getPage()) {
 			$this->setPage($this->lastpicpage);
 		}
 		$this->AddPage();
@@ -775,7 +775,7 @@ class HtmlPDF extends Html {
 		}
 
 		$this->text = $this->getStart().$this->text;
-		foreach($this->elements as $element) {
+		foreach ($this->elements as $element) {
 			if (is_string($element) && $element=="footnotetexts") {
 				$pdf->Footnotes();
 			} elseif (is_string($element) && $element=="addpage") {
@@ -835,35 +835,35 @@ class TextBoxPDF extends TextBox {
 		// Element counter
 		$cE = count($this->elements);
 		//-- collapse duplicate elements
-		for($i = 0; $i < $cE; $i++){
+		for ($i = 0; $i < $cE; $i++) {
 			$element = $this->elements[$i];
-			if (is_object($element)){
-				if ($element->get_type() == "Text"){
-					if (!empty($footnote_element)){
+			if (is_object($element)) {
+				if ($element->get_type() == "Text") {
+					if (!empty($footnote_element)) {
 						ksort($footnote_element);
-						foreach ($footnote_element as $links){
+						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
 						$footnote_element = array();
 					}
-					if (empty($lastelement)){
+					if (empty($lastelement)) {
 						$lastelement = $element;
 					} else {
 						// Checking if the Text has the same style
-						if ($element->getStyleName() == $lastelement->getStyleName()){
+						if ($element->getStyleName() == $lastelement->getStyleName()) {
 							$lastelement->addText(str_replace("\n", "<br />", $element->getValue()));
-						} elseif (!empty($lastelement)){
+						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
 							$lastelement = $element;
 						}
 					}
 				}
 				// Collect the Footnote links
-				elseif ($element->get_type() == "Footnote"){
+				elseif ($element->get_type() == "Footnote") {
 					// Check if the Footnote has been set with it's link number
 					$pdf->checkFootnote($element);
 					// Save first the last element if any
-					if (!empty($lastelement)){
+					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
 						$lastelement = array();
 					}
@@ -871,28 +871,28 @@ class TextBoxPDF extends TextBox {
 					$footnote_element[$element->num] = $element;
 				}
 				//-- do not keep empty footnotes
-				elseif (($element->get_type() != "Footnote") || (trim($element->getValue()) != "")){
-					if (!empty($footnote_element)){
+				elseif (($element->get_type() != "Footnote") || (trim($element->getValue()) != "")) {
+					if (!empty($footnote_element)) {
 						ksort($footnote_element);
-						foreach ($footnote_element as $links){
+						foreach ($footnote_element as $links) {
 							$newelements[] = $links;
 						}
 						$footnote_element = array();
 					}
-					if (!empty($lastelement)){
+					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
 						$lastelement = array();
 					}
 					$newelements[] = $element;
 				}
 			} else {
-				if (!empty($lastelement)){
+				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
 					$lastelement = array();
 				}
-				if (!empty($footnote_element)){
+				if (!empty($footnote_element)) {
 					ksort($footnote_element);
-					foreach ($footnote_element as $links){
+					foreach ($footnote_element as $links) {
 						$newelements[] = $links;
 					}
 					$footnote_element = array();
@@ -900,12 +900,12 @@ class TextBoxPDF extends TextBox {
 				$newelements[] = $element;
 			}
 		}
-		if (!empty($lastelement)){
+		if (!empty($lastelement)) {
 			$newelements[] = $lastelement;
 		}
-		if (!empty($footnote_element)){
+		if (!empty($footnote_element)) {
 			ksort($footnote_element);
-			foreach ($footnote_element as $links){
+			foreach ($footnote_element as $links) {
 				$newelements[] = $links;
 			}
 		}
@@ -964,7 +964,7 @@ class TextBoxPDF extends TextBox {
 		// Element counter
 		$cE = count($this->elements);
 		//-- calculate the text box height + width
-		for($i = 0; $i < $cE; $i++) {
+		for ($i = 0; $i < $cE; $i++) {
 			if (is_object($this->elements[$i])) {
 				$ew = $this->elements[$i]->setWrapWidth($cWT - $w, $cWT);
 				if ($ew == $cWT) {
@@ -1059,7 +1059,7 @@ class TextBoxPDF extends TextBox {
 		}
 		// Change the margins X, Width
 		if (!$pdf->getRTL()) {
-			if ($this->padding){
+			if ($this->padding) {
 				$pdf->SetLeftMargin($cX + $cM["cell"]);
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM["right"]);
 			}
@@ -1068,7 +1068,7 @@ class TextBoxPDF extends TextBox {
 				$pdf->SetRightMargin($pdf->getRemainingWidthPDF() - $cW + $cM["right"]);
 			}
 		} else {
-			if ($this->padding){
+			if ($this->padding) {
 				$pdf->SetRightMargin($cX + $cM["cell"]);
 				$pdf->SetLeftMargin($pdf->getRemainingWidthPDF() - $cW  + $cM["left"]);
 			} else {
@@ -1080,7 +1080,7 @@ class TextBoxPDF extends TextBox {
 		$cPN = $pdf->getPage();
 
 		// Render the elements (write text, print picture...)
-		foreach($this->elements as $element) {
+		foreach ($this->elements as $element) {
 			if (is_object($element)) {
 				$element->render($pdf);
 			} elseif (is_string($element) and $element == "footnotetexts") {
@@ -1201,7 +1201,7 @@ class TextPDF extends Text {
 				$newtext = "";
 				$lines = explode("\n", $this->text);
 				// Go throught the text line by line
-				foreach($lines as $line) {
+				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $pdf->GetStringWidth($line);
 					// If the line has to be wraped
@@ -1209,7 +1209,7 @@ class TextPDF extends Text {
 						$words = explode(" ", $line);
 						$addspace = count($words);
 						$lw = 0;
-						foreach($words as $word) {
+						foreach ($words as $word) {
 							$addspace--;
 							$lw += $pdf->GetStringWidth($word." ");
 							if ($lw <= $wrapWidthRemaining) {
@@ -1337,7 +1337,7 @@ class FootnotePDF extends Footnote {
 		}
 
 		// Returns the Object if already numbered else false
-		if (empty($this->num)){
+		if (empty($this->num)) {
 			$pdf->checkFootnote($this);
 		}
 
@@ -1354,7 +1354,7 @@ class FootnotePDF extends Footnote {
 				$newtext = "";
 				$lines = explode("\n", $this->numText);
 				// Go throught the text line by line
-				foreach($lines as $line) {
+				foreach ($lines as $line) {
 					// Line width in points
 					$lw = ceil($pdf->GetStringWidth($line));
 					// If the line has to be wraped
@@ -1362,7 +1362,7 @@ class FootnotePDF extends Footnote {
 						$words = explode(" ", $line);
 						$addspace = count($words);
 						$lw = 0;
-						foreach($words as $word) {
+						foreach ($words as $word) {
 							$addspace--;
 							$lw += ceil($pdf->GetStringWidth($word." "));
 							if ($lw < $wrapWidthRemaining) {
@@ -1426,7 +1426,7 @@ class PageHeaderPDF extends PageHeader {
 	*/
 	function render(&$pdf) {
 		$pdf->clearPageHeader();
-		foreach($this->elements as $element) {
+		foreach ($this->elements as $element) {
 			$pdf->addPageHeader($element);
 		}
 	}

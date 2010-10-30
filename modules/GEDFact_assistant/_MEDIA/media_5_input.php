@@ -34,7 +34,7 @@
 	<script>
 	var txtcolor="#ffffff";
 	</script>
-<?php }else{ ?>
+<?php } else { ?>
 	<script>
 	var txtcolor="#000000";
 	</script>
@@ -48,7 +48,7 @@
 	.classy1 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #ffffff; font-size: 10px; }
 	-->
 	</style>
-<?php }else{ ?>
+<?php } else { ?>
 	<style type="text/css">
 	<!--
 	#addlinkQueue td, th { padding: 0.2em; }

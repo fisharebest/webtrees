@@ -460,7 +460,7 @@ if (isset($content) && $content==1) {
 					box.style.display = "none";
 				}
 			}
-			function openPopup(){
+			function openPopup() {
 				window.open("", "_popup", "top=50, left=50, width=950, height=480, scrollbars=0, scrollable=0");
 				return true;
 			}
@@ -750,7 +750,7 @@ if (isset($content) && $content==1) {
 	<script type="text/javascript">
 	//<![CDATA[
 		jQuery.noConflict();
-		jQuery(document).ready(function(){
+		jQuery(document).ready(function() {
 		jQuery("#tabbar").tabs();
 		});
 	//]]>
@@ -760,12 +760,12 @@ if (isset($content) && $content==1) {
 	var selectedTab = "";
 	if (selectedTab != "" && selectedTab != "undefined" && selectedTab != null) {
 		var selectedTab = selectedTab;
-	}else{
+	} else {
 		var selectedTab = <?php echo $tab; ?>;
 	}
 	var tabCache = new Array();
 
-	jQuery(document).ready(function(){
+	jQuery(document).ready(function() {
 		// TODO: change images directory when the common images will be deleted.
 		jQuery('#tabs').tabs({ spinner: '<img src=\"images/loading.gif\" height=\"18\" border=\"0\" />' });
 		jQuery("#tabs").tabs({ cache: true, selected: selectedTab });

@@ -204,10 +204,10 @@ function paste_id(value) {
 			$path_to_find--;
 			$check_node=$node;
 		}
-		foreach($_SESSION["relationships"] as $indexval => $node) {
+		foreach ($_SESSION["relationships"] as $indexval => $node) {
 			if ($i==0) echo i18n::translate('Show path').": </td><td class=\"list_value\" style=\"padding: 3px;\">";
 			if ($i>0) echo " | ";
-			if ($i==$path_to_find){
+			if ($i==$path_to_find) {
 				echo "<span class=\"error\" style=\"valign: middle\">".($i+1)."</span>";
 				$new_path=false;
 			}
@@ -330,7 +330,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 			$dmin=0;
 			$dmax=0;
 			$depth=0;
-			foreach($node["path"] as $index=>$pid) {
+			foreach ($node["path"] as $index=>$pid) {
 				if ($node["relations"][$index]=="father" || $node["relations"][$index]=="mother" || $node["relations"][$index]=="parent") {
 
 				$depth++;
@@ -357,7 +357,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				$rArrow = $WT_IMAGES["larrow"];
 				$lArrow = $WT_IMAGES["rarrow"];
 			}
-			foreach($node["path"] as $index=>$pid) {
+			foreach ($node["path"] as $index=>$pid) {
 				echo "<!-- Node:{$index} -->";
 				$linex = $xoffset;
 				$liney = $yoffset;

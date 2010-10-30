@@ -98,7 +98,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		*/
 		list($new_tags, $new_values) = $stats->getTags("{$title_tmp} {$html}");
 		// Title
-		if (strstr($title_tmp, '#')){$title_tmp = str_replace($new_tags, $new_values, $title_tmp);}
+		if (strstr($title_tmp, '#')) {$title_tmp = str_replace($new_tags, $new_values, $title_tmp);}
 		// Content
 		$html = str_replace($new_tags, $new_values, $html);
 
@@ -322,7 +322,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			echo "<select name=\"template\" onchange=\"document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;\">";
 		}
 		echo "<option value=\"".htmlspecialchars($html)."\">".i18n::translate('Custom')."</option>";
-		foreach($templates as $title=>$template)
+		foreach ($templates as $title=>$template)
 		{
 			echo "<option value=\"".htmlspecialchars($template)."\">{$title}</option>";
 		}
@@ -333,10 +333,10 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		// gedcom
 		$gedcoms = get_all_gedcoms();
 		$gedcom=get_block_setting($block_id, 'gedcom');
-		if(count($gedcoms) > 1)
+		if (count($gedcoms) > 1)
 		{
-			if($gedcom == '__current__'){$sel_current = ' selected="selected"';}else{$sel_current = '';}
-			if($gedcom == '__default__'){$sel_default = ' selected="selected"';}else{$sel_default = '';}
+			if ($gedcom == '__current__') {$sel_current = ' selected="selected"';} else {$sel_current = '';}
+			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
 			echo "<tr><td class=\"descriptionbox wrap width33\">"
 				.i18n::translate('Family Tree')
 				.help_link('index_htmlplus_gedcom')
@@ -345,9 +345,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				."<option value=\"__current__\"{$sel_current}>".i18n::translate('Current')."</option>"
 				."<option value=\"__default__\"{$sel_default}>".i18n::translate('Default')."</option>"
 			;
-			foreach($gedcoms as $ged_id=>$ged_name)
+			foreach ($gedcoms as $ged_id=>$ged_name)
 			{
-				if($ged_name == $gedcom){$sel = ' selected="selected"';}else{$sel = '';}
+				if ($ged_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
 				echo "<option value=\"{$ged_name}\"{$sel}>".PrintReady(get_gedcom_setting($ged_id, 'title'))."</option>";
 			}
 			echo "</select>"

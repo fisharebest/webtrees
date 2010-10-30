@@ -379,7 +379,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			"TIME", "TYPE", "WWW", "_EMAIL", "_WT_USER", "URL", "AGE", "_WTS", "_WTFS");
 			$ct = preg_match_all("/\n2 (\w+) (.*)/", $factrec, $match, PREG_SET_ORDER);
 			if ($ct>0) echo "<br />";
-			for($i=0; $i<$ct; $i++) {
+			for ($i=0; $i<$ct; $i++) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
 					$label = translate_fact($fact.':'.$factref, $label_person);
@@ -462,7 +462,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 
 	// -- Systems not using source records [ 1046971 ]
 	$ct = preg_match_all("/$level SOUR (.*)/", $factrec, $match, PREG_SET_ORDER);
-	for($j=0; $j<$ct; $j++) {
+	for ($j=0; $j<$ct; $j++) {
 		if (strpos($match[$j][1], "@")===false) {
 			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j+1);
 			$srec = substr($srec, 6); // remove "2 SOUR"
@@ -474,7 +474,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	// -- find source for each fact
 	$ct = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
-	for($j=0; $j<$ct; $j++) {
+	for ($j=0; $j<$ct; $j++) {
 		$sid = $match[$j][1];
 		if (canDisplayRecord(WT_GED_ID, find_source_record($sid, WT_GED_ID))) {
 			$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
@@ -612,12 +612,12 @@ function print_media_links($factrec, $level, $pid='') {
 				echo "</a>";
 			}
 			echo "</td><td>";
-			if(empty($SEARCH_SPIDER)) {
+			if (empty($SEARCH_SPIDER)) {
 				echo "<a href=\"mediaviewer.php?mid={$media_id}\">";
 			}
 			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<i>" , getLRM() ,  PrintReady($mediaTitle), "</i>";
 			else echo "<i>", PrintReady($mediaTitle), "</i><br />";
-			if(empty($SEARCH_SPIDER)) {
+			if (empty($SEARCH_SPIDER)) {
 				echo "</a>";
 			}
 			// NOTE: echo the notes of the media
@@ -625,7 +625,7 @@ function print_media_links($factrec, $level, $pid='') {
 			// NOTE: echo the format of the media
 			if (!empty($row["m_ext"])) {
 				echo "<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $row["m_ext"], "</span>";
-				if($imgsize[2]!==false) {
+				if ($imgsize[2]!==false) {
 					echo "<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">" , $imgsize[0] , ($TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ") , $imgsize[1] , "</span>";
 				}
 			}
@@ -664,7 +664,7 @@ function print_media_links($factrec, $level, $pid='') {
 				$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
 				if ($ct>0) {
 					$famid = trim($match[1]);
-					if(empty($SEARCH_SPIDER)) {
+					if (empty($SEARCH_SPIDER)) {
 						echo "<a href=\"family.php?famid={$famid}\">", i18n::translate('View Family');
 						echo "</a>";
 					}
@@ -696,7 +696,7 @@ function print_address_structure($factrec, $level) {
 
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level ADDR(.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = "";
 		if ($level>1) $resultText .= "<span class=\"label\">".translate_fact('ADDR').": </span><br /><div class=\"indent\">";
@@ -766,7 +766,7 @@ function print_address_structure($factrec, $level) {
 	$resultText .= "<table>";
 	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
 			$resultText .= "<td><span class=\"label\"><b>".translate_fact('PHON').": </b></span></td><td><span class=\"field\">";
 			$resultText .= getLRM() . $omatch[$i][1] . getLRM();
@@ -775,7 +775,7 @@ function print_address_structure($factrec, $level) {
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
 			$resultText .= "<td><span class=\"label\"><b>".translate_fact('FAX').": </b></span></td><td><span class=\"field\">";
 			$resultText .= getLRM() . $omatch[$i][1] . getLRM();
@@ -784,7 +784,7 @@ function print_address_structure($factrec, $level) {
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
 			$resultText .= "<td><span class=\"label\"><b>".translate_fact('EMAIL').": </b></span></td><td><span class=\"field\">";
 			$resultText .= "<a href=\"mailto:".$omatch[$i][1]."\">".$omatch[$i][1]."</a>";
@@ -793,7 +793,7 @@ function print_address_structure($factrec, $level) {
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
 			$resultText .= "<td><span class=\"label\"><b>".translate_fact($omatch[$i][1]).": </b></span></td><td><span class=\"field\">";
 			$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>";
@@ -818,7 +818,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 	// -- find source for each fact
 	$ct = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
-	for($j=0; $j<$ct; $j++) {
+	for ($j=0; $j<$ct; $j++) {
 		$sid = $match[$j][1];
 		$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
 		$spos2 = strpos($factrec, "\n$level", $spos1);
@@ -925,7 +925,7 @@ function printSourceStructure($textSOUR) {
 			$date=new GedcomDate($textSOUR['DATE']);
 			$html.='<div class="indent"><span class="label">'.translate_fact('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
-		foreach($textSOUR['TEXT'] as $text) {
+		foreach ($textSOUR['TEXT'] as $text) {
 			$html.='<div class="indent"><span class="label">'.translate_fact('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
 		}
 	}
@@ -1007,7 +1007,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 	if (strpos($factrec, "WT_OLD")!==false) $styleadd="change_old";
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
-	for($j=0; $j<$ct; $j++) {
+	for ($j=0; $j<$ct; $j++) {
 		$nrec = get_sub_record($level, "$level NOTE", $factrec, $j+1);
 		if (!canDisplayFact($pid, $ged_id, $factrec)) return false;
 		$nt = preg_match("/\d NOTE @(.*)@/", $match[$j][0], $nmatch);
@@ -1062,7 +1062,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					} else {
 						echo translate_fact($factname, $parent);
 					}
-				} else if ($factname != "NOTE"){
+				} else if ($factname != "NOTE") {
 					// Note is already printed
 					echo translate_fact($factname, $parent);
 				}
@@ -1087,7 +1087,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 						$centitl  = str_replace("~~", "", trim($n1match[1]));
 						$centitl  = str_replace("<br />", "", $centitl);
 						$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
-					}else{
+					} else {
 						$text = preg_replace("/~~/", "<br />", trim($n1match[1]));
 					}
 				}
@@ -1095,9 +1095,9 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				$text = expand_urls($text);
 				$text = PrintReady($text)." <br />";
 				// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
-				if ( strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php') ) {
+				if (strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
 					require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
-				}else{
+				} else {
 					$text = $centitl."".$text;
 				}
 			}
@@ -1142,7 +1142,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	//-- find all of the related ids
 	if ($related) {
 		$ct = preg_match_all("/1 FAMS @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$ids[] = trim($match[$i][1]);
 		}
 	}
@@ -1152,7 +1152,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	if ($level>0) $sort_regexp = "/".$level." _WT_OBJE_SORT @(.*)@/";
 	else $sort_regexp = "/_WT_OBJE_SORT @(.*)@/";
 	$sort_ct = preg_match_all($sort_regexp, $gedrec, $sort_match, PREG_SET_ORDER);
-	for($i=0; $i<$sort_ct; $i++) {
+	for ($i=0; $i<$sort_ct; $i++) {
 		if (!isset($sort_current_objes[$sort_match[$i][1]])) $sort_current_objes[$sort_match[$i][1]] = 1;
 		else $sort_current_objes[$sort_match[$i][1]]++;
 		$sort_obje_links[$sort_match[$i][1]][] = $sort_match[$i][0];
@@ -1172,7 +1172,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	if ($level>0) $regexp = "/".$level." OBJE @(.*)@/";
 	else $regexp = "/OBJE @(.*)@/";
 	$ct = preg_match_all($regexp, $gedrec, $match, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
 		else $current_objes[$match[$i][1]]++;
 		$obje_links[$match[$i][1]][] = $match[$i][0];
@@ -1184,7 +1184,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	$sqlmm .= "mm_gid IN (";
 	$vars=array();
 	$i=0;
-	foreach($ids as $key=>$id) {
+	foreach ($ids as $key=>$id) {
 		if ($i>0) $sqlmm .= ", ";
 		$sqlmm .= "?";
 		$vars[]=$id;
@@ -1201,7 +1201,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	// LBox --- media sort -------------------------------------
 	if ($sort_ct>0) {
 		$sqlmm .= $orderbylist;
-	}else{
+	} else {
 		$sqlmm .= " ORDER BY mm_gid DESC ";
 	}
 	// ---------------------------------------------------------------
@@ -1265,7 +1265,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 				}
 			}
 		}
-		foreach($rows as $rtype => $rowm) {
+		foreach ($rows as $rtype => $rowm) {
 			$res = print_main_media_row($rtype, $rowm, $pid);
 			$media_found = $media_found || $res;
 			$foundObjs[$rowm['m_media']]=true;
@@ -1276,8 +1276,8 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	//-- objects are removed from the $current_objes list as they are printed
 	//-- any objects left in the list are new objects recently added to the gedcom
 	//-- but not yet accepted into the database.  We will print them too.
-	foreach($current_objes as $media_id=>$value) {
-		while($value>0) {
+	foreach ($current_objes as $media_id=>$value) {
+		while ($value>0) {
 			$objSubrec = array_pop($obje_links[$media_id]);
 			//-- check if we need to get the object from a remote location
 			$ct = preg_match("/(.*):(.*)/", $media_id, $match);
@@ -1410,7 +1410,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		echo ' alt="', PrintReady(htmlspecialchars($name)), '" title="', PrintReady(htmlspecialchars($name)), '" /></a>';
 	}
 
-	if(empty($SEARCH_SPIDER)) {
+	if (empty($SEARCH_SPIDER)) {
 		echo "<a href=\"mediaviewer.php?mid={$rowm['m_media']}\">";
 	}
 	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
@@ -1425,14 +1425,14 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
 	if (!empty($addtitle)) echo "<br />", PrintReady(htmlspecialchars($addtitle));
 	echo "</i>";
-	if(empty($SEARCH_SPIDER)) {
+	if (empty($SEARCH_SPIDER)) {
 		echo "</a>";
 	}
 
 	// NOTE: echo the format of the media
 	if (!empty($rowm["m_ext"])) {
 		echo "<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $rowm["m_ext"], "</span>";
-		if(isset($imgsize) and $imgsize[2]!==false) {
+		if (isset($imgsize) and $imgsize[2]!==false) {
 			echo "<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM(). " ") : " x ", $imgsize[1], "</span>";
 		}
 	}
@@ -1475,7 +1475,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			}
 			echo "</a>";
 		}
-		if(empty($SEARCH_SPIDER)) {
+		if (empty($SEARCH_SPIDER)) {
 			if ($spouse) echo " - ";
 			$famid = $rowm['mm_gid'];
 			echo "<a href=\"family.php?famid={$famid}\">", i18n::translate('View Family');

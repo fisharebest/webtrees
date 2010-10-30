@@ -290,10 +290,10 @@ if ($action=="add") {
 				longitude = longitude * -1;
 				document.editplaces.NEW_PLACE_LONG.value = longitude;
 			}
-			if(document.editplaces.LATI_CONTROL.value == "PL_S") {
+			if (document.editplaces.LATI_CONTROL.value == "PL_S") {
 				latitude = latitude * -1;
 			}
-			if(document.editplaces.LONG_CONTROL.value == "PL_W") {
+			if (document.editplaces.LONG_CONTROL.value == "PL_W") {
 				longitude = longitude * -1;
 			}
 
@@ -336,19 +336,19 @@ if ($action=="add") {
 
 	Map_type.prototype.refresh = function()
 	{
-		if(this.map.getCurrentMapType() != G_NORMAL_MAP)
+		if (this.map.getCurrentMapType() != G_NORMAL_MAP)
 			this.button1.className = 'non_active';
 		else
 			this.button1.className = 'active';
-		if(this.map.getCurrentMapType() != G_SATELLITE_MAP)
+		if (this.map.getCurrentMapType() != G_SATELLITE_MAP)
 			this.button2.className = 'non_active';
 		else
 			this.button2.className = 'active';
-		if(this.map.getCurrentMapType() != G_HYBRID_MAP)
+		if (this.map.getCurrentMapType() != G_HYBRID_MAP)
 			this.button3.className = 'non_active';
 		else
 			this.button3.className = 'active';
-		if(this.map.getCurrentMapType() != G_PHYSICAL_MAP)
+		if (this.map.getCurrentMapType() != G_PHYSICAL_MAP)
 			this.button4.className = 'non_active';
 		else
 			this.button4.className = 'active';
@@ -478,9 +478,9 @@ if ($action=="add") {
 			GEvent.addListener(map, "moveend", function() {
 				document.editplaces.NEW_ZOOM_FACTOR.value = map.getZoom();
 			});
-<?php if(($place_long == null) || ($place_lati == null)) { ?>
+<?php if (($place_long == null) || ($place_lati == null)) { ?>
 			map.setCenter(new GLatLng( <?php echo $parent_lati, ", ", $parent_long, "), ", $zoomfactor; ?>, G_NORMAL_MAP );
-<?php }else { ?>
+<?php } else { ?>
 			map.setCenter(new GLatLng( <?php echo $place_lati, ", ", $place_long, "), ", $zoomfactor; ?>, G_NORMAL_MAP );
 <?php } ?>
 
@@ -623,7 +623,7 @@ if ($action=="add") {
 	   if (!response || response.Status.code != 200) {
 	  alert("<?php echo i18n::translate('No places found'); ?>");
 	   } else {
-		if(response.Placemark.length>0) {
+		if (response.Placemark.length>0) {
 			for (i=0;i<response.Placemark.length;i++) {
 			place = response.Placemark[i];
 			point = new GLatLng(place.Point.coordinates[1], place.Point.coordinates[0]);
@@ -719,17 +719,17 @@ if ($action=="add") {
 			}
 		?>
 		<td class="optionbox">
-			<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if($precision==$GOOGLEMAP_PRECISION_0) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_0; ?>" />
+			<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_0) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_0; ?>" />
 			<label for="new_prec_0"><?php echo i18n::translate('Country'); ?></label>
-			<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if($precision==$GOOGLEMAP_PRECISION_1) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_1; ?>" />
+			<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_1) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_1; ?>" />
 			<label for="new_prec_1"><?php echo i18n::translate('State'); ?></label>
-			<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if($precision==$GOOGLEMAP_PRECISION_2) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_2; ?>" />
+			<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_2) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_2; ?>" />
 			<label for="new_prec_2"><?php echo i18n::translate('City'); ?></label>
-			<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if($precision==$GOOGLEMAP_PRECISION_3) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_3; ?>" />
+			<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_3) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_3; ?>" />
 			<label for="new_prec_3"><?php echo i18n::translate('Neighborhood'); ?></label>
-			<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();"<?php if($precision==$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_4; ?>" />
+			<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision==$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_4; ?>" />
 			<label for="new_prec_4"><?php echo i18n::translate('House'); ?></label>
-			<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();"<?php if($precision>$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_5; ?>" />
+			<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision>$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_5; ?>" />
 			<label for="new_prec_5"><?php echo i18n::translate('Max'); ?></label>
 		</td>
 	</tr>

@@ -81,7 +81,7 @@ class TreeNav {
 				$this->drawViewport($rootid, $w, $h);
 				$output = ob_get_clean();
 				$lines = preg_split("/\r?\n/", $output);
-				foreach($lines as $line)
+				foreach ($lines as $line)
 					echo "document.writeln('".str_replace("'", "\\'", $line)."');";
 				exit;
 			}
@@ -265,7 +265,7 @@ class TreeNav {
 			}
 			else {
 				$fams = $person->getSpouseFamilies();
-				foreach($fams as $fam) {
+				foreach ($fams as $fam) {
 					$families[] = $fam;
 				}
 			}
@@ -273,7 +273,7 @@ class TreeNav {
 		else {
 			if ($this->allSpouses) {
 				$fams = $person->getSpouseFamilies();
-				foreach($fams as $fam) {
+				foreach ($fams as $fam) {
 					$families[] = $fam;
 				}
 			}
@@ -320,7 +320,7 @@ class TreeNav {
 		</div>
 		<br />
 		<span class="name1"><?php
-		foreach($families as $family) {
+		foreach ($families as $family) {
 			if (!empty($family)) $spouse = $family->getSpouse($person);
 			if (!empty($spouse)) {
 				$name = $spouse->getFullName();
@@ -376,7 +376,7 @@ class TreeNav {
 	function drawChildren(&$family, $gen=2) {
 		if (!empty($family) && $gen>0) {
 			$children = $family->getChildren();
-			foreach($children as $ci=>$child) {
+			foreach ($children as $ci=>$child) {
 				$fam = null;
 				$this->drawPerson($child, $gen-1, -1, $fam);
 			}
@@ -391,10 +391,10 @@ class TreeNav {
 	function drawAllChildren(&$person, $gen=2) {
 		if (!empty($person) && $gen>0) {
 			$fams = $person->getSpouseFamilies();
-			foreach($fams as $famid=>$family) {
+			foreach ($fams as $famid=>$family) {
 				$children = $family->getChildren();
 				$indichilds = array();
-				foreach($children as $ci=>$child) {
+				foreach ($children as $ci=>$child) {
 					if (!in_array($child, $indichilds)) {
 						$fam = null;
 						$this->drawPersonAllSpouses($child, $gen-1, -1);
@@ -468,7 +468,7 @@ class TreeNav {
 			$fams = $person->getSpouseFamilies();
 			$fams = array_reverse($fams);
 			//-- find the last spouse family that has a known spouse
-			foreach($fams as $family) {
+			foreach ($fams as $family) {
 				if (!empty($family)) $spouse = $family->getSpouse($person);
 				if (!empty($spouse)) {
 					$mcfamily = $spouse->getPrimaryChildFamily();
@@ -511,7 +511,7 @@ class TreeNav {
 						?><br />
 						<?php
 						$fams = $person->getSpouseFamilies();
-						foreach($fams as $famid=>$family) {
+						foreach ($fams as $famid=>$family) {
 							$spouse = $family->getSpouse($person);
 							if (!is_null($spouse)) {
 								$name = $spouse->getFullName();
@@ -545,7 +545,7 @@ class TreeNav {
 								</tr>
 								<?php
 								$fams = $person->getSpouseFamilies();
-								foreach($fams as $famid=>$family) {
+								foreach ($fams as $famid=>$family) {
 									$spouse = $family->getSpouse($person);
 									$mother = null;
 									if ($spouse!=null) {

@@ -39,7 +39,7 @@ if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
 	exit;
 }
 
-if(ini_get('zlib.output_compression')) @ini_set('zlib.output_compression', 'Off');
+if (ini_get('zlib.output_compression')) @ini_set('zlib.output_compression', 'Off');
 
 header('Pragma: public'); // required
 header('Expires: 0');

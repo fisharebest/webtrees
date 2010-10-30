@@ -116,7 +116,7 @@ echo "<strong>", i18n::translate('List filtering options'), "</strong>", help_li
 echo "</td></tr><tr><td class='descriptionbox'>";
 echo i18n::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
 echo "</td><td class='optionbox'><input type=\"checkbox\" name=\"matching\" value=\"active\"";
-if($matching==1) {
+if ($matching==1) {
 	echo " checked=\"checked\"";
 }
 echo "></td></tr>";
@@ -241,7 +241,7 @@ case 'go':
 		$parts=count($levels);
 		$levels=array_reverse($levels);
 		$placestr.="<a href=\"placelist.php?action=show&amp;";
-		foreach($levels as $pindex=>$ppart) {
+		foreach ($levels as $pindex=>$ppart) {
 			$ppart=urlencode(trim($ppart));
 			$placestr.="parent[$pindex]=".$ppart."&amp;";
 		}
@@ -294,14 +294,14 @@ case 'go':
 				}
 			}
 			$plac[$z]="<td class='facts_value'>".$placestr2."</td>\n";
-			if ($row['pl_lati']=='0'){
+			if ($row['pl_lati']=='0') {
 				$lati[$z]="<td class='facts_value error'><strong>".$row['pl_lati']."</strong></td>";
 			} else if ($row['pl_lati']!='') {
 				$lati[$z]="<td class='facts_value'>".$row['pl_lati']."</td>";
 			} else {
 				$lati[$z]="<td class='facts_value error' align='center'><strong>X</strong></td>";$matched[$x]++;
 			}
-			if ($row['pl_long']=='0'){
+			if ($row['pl_long']=='0') {
 				$long[$z]="<td class='facts_value error'><strong>".$row['pl_long']."</strong></td>";
 			} else if ($row['pl_long']!='') {
 				$long[$z]="<td class='facts_value'>".$row['pl_long']."</td>";

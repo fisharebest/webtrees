@@ -84,7 +84,7 @@ class TimelineController extends BaseController {
 		$remove = safe_GET_xref('remove');
 		//-- cleanup user input
 		$newpids = array();
-		foreach($this->pids as $key=>$value) {
+		foreach ($this->pids as $key=>$value) {
 			if ($value!=$remove) {
 				$newpids[] = $value;
 				$person = Person::getInstance($value);
@@ -94,7 +94,7 @@ class TimelineController extends BaseController {
 		$this->pids = $newpids;
 		$this->pidlinks = "";
 		/* @var $indi Person */
-		foreach($this->people as $p=>$indi) {
+		foreach ($this->people as $p=>$indi) {
 			if (!is_null($indi) && $indi->canDisplayDetails()) {
 				//-- setup string of valid pids for links
 				$this->pidlinks .= "pids[]=".$indi->getXref()."&amp;";
@@ -110,7 +110,7 @@ class TimelineController extends BaseController {
 				}
 				// find all the fact information
 				$indi->add_family_facts(false);
-				foreach($indi->getIndiFacts() as $event) {
+				foreach ($indi->getIndiFacts() as $event) {
 					//-- get the fact type
 					$fact = $event->getTag();
 					if (!in_array($fact, $this->nonfacts)) {
@@ -148,7 +148,7 @@ class TimelineController extends BaseController {
 	*/
 	function checkPrivacy() {
 		$printed = false;
-		for($i=0; $i<count($this->people); $i++) {
+		for ($i=0; $i<count($this->people); $i++) {
 			if (!is_null($this->people[$i])) {
 				if (!$this->people[$i]->canDisplayDetails()) {
 					if ($this->people[$i]->canDisplayName()) {
@@ -198,7 +198,7 @@ class TimelineController extends BaseController {
 				$i=1;
 				$j=0;
 				$tyoffset = 0;
-				while(isset($placements[$place])) {
+				while (isset($placements[$place])) {
 					if ($i==$j) {
 						$tyoffset = $this->bheight * $i;
 						$i++;
@@ -234,7 +234,7 @@ class TimelineController extends BaseController {
 					$husbid=$family->getHusbId();
 					$wifeid=$family->getWifeId();
 					//-- Retrieve husband and wife age
-					for($p=0; $p<count($this->pids); $p++) {
+					for ($p=0; $p<count($this->pids); $p++) {
 						if ($this->pids[$p]==$husbid) {
 							$husb=$family->getHusband();
 							if (is_null($husb)) $husb = new Person('');
@@ -269,7 +269,7 @@ class TimelineController extends BaseController {
 					if ($place!=null) {
 						if ($desc!=null) echo " - ";
 						$plevels = explode(',', $place);
-						for($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
+						for ($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
 							if (!empty($plevels[$plevel])) {
 								if ($plevel>0) echo ", ";
 								echo PrintReady($plevels[$plevel]);
@@ -280,7 +280,7 @@ class TimelineController extends BaseController {
 				//-- print spouse name for marriage events
 				$spouse = Person::getInstance($event->getSpouseId());
 				if ($spouse) {
-					for($p=0; $p<count($this->pids); $p++) {
+					for ($p=0; $p<count($this->pids); $p++) {
 						if ($this->pids[$p]==$spouse->getXref()) break;
 					}
 					if ($p==count($this->pids)) $p = $event->temp;

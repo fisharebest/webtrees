@@ -54,14 +54,14 @@ if ($pid=="") {
 	echo "<br /><br />";
 	echo "<b><font color=\"red\">YOU MUST enter a Base individual ID to be able to \"ADD\" Individual Links</font></b>";
 	echo "<br /><br />";
-}else{
+} else {
 
 	$person=Person::getInstance($pid);
 	// var_dump($person->getAllNames());
 	$nam = $person->getAllNames();
-	if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; }else{ $DeathYr = PrintReady($person->getDeathYear()); }
-	if (PrintReady($person->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($person->getBirthYear()); }
-	if ($married>=0 && isset($nam[1])){
+	if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($person->getDeathYear()); }
+	if (PrintReady($person->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($person->getBirthYear()); }
+	if ($married>=0 && isset($nam[1])) {
 		$wholename = rtrim($nam[1]['fullNN']);
 	} else {
 		$wholename = rtrim($nam[0]['fullNN']);

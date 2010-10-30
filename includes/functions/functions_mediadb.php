@@ -206,7 +206,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	foreach ($rows as $row) {
 		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
 		$isExternal = isFileExternal($fileName);
-		if ( $isExternal && (!$MEDIA_EXTERNAL || !$includeExternal) ) {
+		if ($isExternal && (!$MEDIA_EXTERNAL || !$includeExternal)) {
 			continue;
 		}
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
@@ -885,7 +885,7 @@ function process_uploadMedia_form() {
 
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
 	echo "<tr><td class=\"messagebox wrap\">";
-	for($i=1; $i<6; $i++) {
+	for ($i=1; $i<6; $i++) {
 		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
 			$folderName = trim(trim(safe_POST('folder'.$i, WT_REGEX_NOSCRIPT)), '/');
 			// Validate and correct folder names
@@ -1041,7 +1041,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 	echo '</td></tr>';
 
 	// Print 5 forms for uploading images
-	for($i=1; $i<6; $i++) {
+	for ($i=1; $i<6; $i++) {
 		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
 		echo i18n::translate('Media file to upload'), help_link('upload_media_file');
 		echo '</td>';
@@ -1606,14 +1606,14 @@ function PrintMediaLinks($links, $size = "small") {
 	return true;
 }
 
-function get_media_id_from_file($filename){
+function get_media_id_from_file($filename) {
 	return
 		WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file LIKE ?")
 		->execute(array("%{$filename}"))
 		->fetchOne();
 }
 //returns an array of rows from the database containing the Person ID's for the people associated with this picture
-function get_media_relations($mid){
+function get_media_relations($mid) {
 	global $medialist;
 
 	//-- check in the medialist cache first
@@ -1676,7 +1676,7 @@ function picture_clip($person_id, $image_id, $filename, $thumbDir)
 	return "";
 }
 
-function cropImage($image, $dest_image, $left, $top, $right, $bottom){ //$image is the string location of the original image, $dest_image is the string file location of the new image, $fx is the..., $fy is the...
+function cropImage($image, $dest_image, $left, $top, $right, $bottom) { //$image is the string location of the original image, $dest_image is the string file location of the new image, $fx is the..., $fy is the...
 	global $THUMBNAIL_WIDTH;
 	$ims = @getimagesize($image);
 	$cwidth = ($ims[0]-$right)-$left;
@@ -1734,8 +1734,8 @@ function media_exists($filename) {
 	if (empty($filename)) { return false; }
 	if (isFileExternal($filename)) { return 1; }
 	$filename = filename_decode($filename);
-	if ( file_exists($filename) ) { return 2; }
-	if ( $USE_MEDIA_FIREWALL && file_exists(get_media_firewall_path($filename)) ) { return 3; }
+	if (file_exists($filename)) { return 2; }
+	if ($USE_MEDIA_FIREWALL && file_exists(get_media_firewall_path($filename))) { return 3; }
 	return false;
 }
 
@@ -1751,12 +1751,12 @@ function media_filesize($filename) {
 // returns path to file on server
 function get_server_filename($filename) {
 		global $USE_MEDIA_FIREWALL;
-		if (file_exists($filename)){
+		if (file_exists($filename)) {
 			return($filename);
 		}
 		if ($USE_MEDIA_FIREWALL) {
 			$protectedfilename = get_media_firewall_path($filename);
-			if (file_exists($protectedfilename)){
+			if (file_exists($protectedfilename)) {
 				return($protectedfilename);
 			}
 		}
@@ -1783,13 +1783,13 @@ function get_media_standard_path($path) {
 // recursively make directories
 // taken from http://us3.php.net/manual/en/function.mkdir.php#60861
 function mkdirs($dir, $mode = WT_PERM_EXE, $recursive = true) {
-	if( is_null($dir) || $dir === "" ){
+	if (is_null($dir) || $dir==="") {
 		return FALSE;
 	}
-	if( is_dir($dir) || $dir === "/" ){
+	if (is_dir($dir) || $dir==="/") {
 		return TRUE;
 	}
-	if( mkdirs(dirname($dir), $mode, $recursive) ){
+	if (mkdirs(dirname($dir), $mode, $recursive)) {
 		return mkdir($dir, $mode);
 	}
 	return FALSE;
@@ -1920,7 +1920,7 @@ function generate_thumbnail($filename, $thumbnail) {
 		if ($fp = @fopen(filename_decode($filename), "rb")) {
 			if ($fp===false) return false;
 			$conts = "";
-			while(!feof($fp)) {
+			while (!feof($fp)) {
 				$conts .= fread($fp, 4098);
 			}
 			fclose($fp);

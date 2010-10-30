@@ -134,7 +134,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	$d100y=new GedcomDate(date('Y')-100);  // 100 years ago
 	$dateY = date("Y");
 	$unique_indis=array(); // Don't double-count indis with multiple names.
-	foreach($datalist as $key => $value) {
+	foreach ($datalist as $key => $value) {
 		if (is_object($value)) { // Array of objects
 			$person=$value;
 		} elseif (!is_array($value)) { // Array of IDs
@@ -503,7 +503,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	$hidden = 0;
 	$num = 0;
 	$d100y=new GedcomDate(date('Y')-100);  // 100 years ago
-	foreach($datalist as $key => $value) {
+	foreach ($datalist as $key => $value) {
 		if (is_object($value)) { // Array of objects
 			$family=$value;
 		} elseif (!is_array($value)) { // Array of IDs
@@ -1492,7 +1492,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		uasort($filtered_events, 'event_sort_name');
 	}
 
-	foreach($filtered_events as $value) {
+	foreach ($filtered_events as $value) {
 		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
@@ -1647,7 +1647,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		uasort($filtered_events, 'event_sort_name');
 	}
 
-	foreach($filtered_events as $value) {
+	foreach ($filtered_events as $value) {
 		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($value['name'])."</a>".$value['sex'];
 		$return .= "<br /><div class=\"indent\">";
 		$return .= translate_fact($value['fact']).' - '.$value['date']->Display(true);

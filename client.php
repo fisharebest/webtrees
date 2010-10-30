@@ -113,7 +113,7 @@ case 'listgedcoms':
 	exit;
 default:
 	// All other actions require an authenticated connection
-	if (empty($_SESSION['connected'])){
+	if (empty($_SESSION['connected'])) {
 		addToLog($action." ERROR 12: use 'connect' action to initiate a session.", 'debug');
 		echo "ERROR 12: use 'connect' action to initiate a session.\n";
 		exit;
@@ -146,7 +146,7 @@ case 'get':
 							$head_date = get_sub_record(1, "1 DATE", $head);
 							$lines = explode("\n", $head_date);
 							$head_date = "";
-							foreach($lines as $line) {
+							foreach ($lines as $line) {
 								$num = $line{0};
 								$head_date.=($num+1).substr($line, 1)."\n";
 							}
@@ -160,7 +160,7 @@ case 'get':
 		}
 		if (!safe_REQUEST($_REQUEST,'keepfile')) {
 			$ct = preg_match_all("/ FILE (.*)/", $gedrecords, $match, PREG_SET_ORDER);
-			for($i=0; $i<$ct; $i++) {
+			for ($i=0; $i<$ct; $i++) {
 				$mediaurl = WT_SERVER_NAME.WT_SCRIPT_PATH.$MEDIA_DIRECTORY.extract_filename($match[$i][1]);
 				$gedrecords = str_replace($match[$i][1], $mediaurl, $gedrecords);
 			}
@@ -283,7 +283,7 @@ case 'search':
 		$sindilist=search_indis(array($query), array($GED_ID), 'AND', true);
 		echo "SUCCESS\n";
 		addToLog($action." query=$query SUCCESS", 'debug');
-		foreach($sindilist as $indi) {
+		foreach ($sindilist as $indi) {
 			echo $indi->getXref(), "\n";
 		}
 	} else {
@@ -301,7 +301,7 @@ case 'soundex':
 		$sindilist=search_indis_soundex($soundex, $lastname, $firstname, $place, array($GED_ID));
 		echo "SUCCESS\n";
 		addToLog($action." lastname=$lastname firstname=$firstname SUCCESS", 'debug');
-		foreach($sindilist as $indi) {
+		foreach ($sindilist as $indi) {
 			echo $indi->getXref(), "\n";
 		}
 	} else {
@@ -430,7 +430,7 @@ case 'getchanges':
 			echo "ERROR 24: You cannot retrieve updates for more than 180 days.\n";
 		} else {
 			echo "SUCCESS\n";
-			foreach(get_recent_changes($lastdate->MinJD()) as $xref) {
+			foreach (get_recent_changes($lastdate->MinJD()) as $xref) {
 				echo "{$xref}\n";
 			}
 		}

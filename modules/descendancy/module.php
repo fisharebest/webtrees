@@ -84,9 +84,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		jQuery(document).ready(function(){
-			jQuery("#sb_desc_name").focus(function(){this.select();});
-			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="'.i18n::translate('Search').'";});
+		jQuery(document).ready(function() {
+			jQuery("#sb_desc_name").focus(function() {this.select();});
+			jQuery("#sb_desc_name").blur(function() {if (this.value=="") this.value="'.i18n::translate('Search').'";});
 			var dtimerid = null;
 			jQuery("#sb_desc_name").keyup(function(e) {
 				if (dtimerid) window.clearTimeout(dtimerid);
@@ -157,7 +157,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$out .= '<div class="desc_tree_div_visible">';
 			$out .= $this->loadSpouses($person->getXref());
 			$out .= '</div><script type="text/javascript">dloadedNames["'.$person->getXref().'"]=2;</script>';
-		}else {
+		} else {
 			$out .= '<div class="desc_tree_div">';
 			$out .= '</div>';
 		}
@@ -219,7 +219,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$person = Person::getInstance($pid);
 		if ($person->canDisplayDetails()) {
 			$families = $person->getSpouseFamilies();
-			foreach($families as $family) {
+			foreach ($families as $family) {
 				$spouse = $family->getSpouse($person);
 				if ($spouse) {
 					$out .= $this->getFamilyLi($family, $spouse, $generations-1);
@@ -237,7 +237,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$children = $family->getChildren();
 			if (count($children)>0) {
 				$private = 0;
-				foreach($children as $child) {
+				foreach ($children as $child) {
 					if ($child->canDisplayName()) $out .= $this->getPersonLi($child, $generations-1);
 					else $private++;
 				}

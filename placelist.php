@@ -41,7 +41,7 @@ if (file_exists(WT_ROOT.'modules/googlemap/placehierarchy.php')) {
 }
 
 function case_in_array($value, $array) {
-	foreach($array as $key=>$val) {
+	foreach ($array as $key=>$val) {
 		if (strcasecmp($value, $val)==0) return true;
 	}
 	return false;
@@ -104,7 +104,7 @@ if ($display=="hierarchy") {
 	$tempparent = array_reverse($parent);
 	if (count($tempparent)>0) $squery = "&query=".urlencode($tempparent[0]);
 	else $squery="";
-	for($i=1; $i<$level; $i++) {
+	for ($i=1; $i<$level; $i++) {
 		$squery.=", ".urlencode($tempparent[$i]);
 	}
 
@@ -127,12 +127,12 @@ if ($display=="hierarchy") {
 		echo "<a href=\"?level=0\">";
 		if ($numls>=0 && (($TEXT_DIRECTION=="ltr" && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=="rtl" && !hasRtLText($parent[$numls])))) echo i18n::translate('Top Level'), ", ";
 		echo "</a>";
-			for($i=$numls; $i>=0; $i--) {
+			for ($i=$numls; $i>=0; $i--) {
 			echo "<a href=\"?level=", ($i+1);
 			for ($j=0; $j<=$i; $j++) {
 				$levels = explode(', ', trim($parent[$j]));
 				// Routine for replacing ampersands
-				foreach($levels as $pindex=>$ppart) {
+				foreach ($levels as $pindex=>$ppart) {
 					$ppart = rawurlencode($ppart);
 					$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
 					echo "&amp;parent[$j]=", $ppart;
@@ -280,7 +280,7 @@ if ($display=="hierarchy") {
 		$placelevels="";
 		$place_names=array();
 	}
-	for($j=0; $j<$level; $j++) {
+	for ($j=0; $j<$level; $j++) {
 		$linklevels .= "&amp;parent[$j]=".urlencode($parent[$j]);
 		if ($use_googlemap) {
 			if (trim($parent[$j])=="") {
@@ -330,7 +330,7 @@ if ($display=="hierarchy") {
 		else echo PrintReady($value);
 		if ($use_googlemap) $place_names[$i]=trim($value);
 		echo "</a></li>\n";
-		if ($ct1 > 20){
+		if ($ct1 > 20) {
 			if ($i == floor($ct1 / 3)) {
 				echo "\n\t\t</ul></td>\n\t\t<td class=\"list_value\"><ul>";
 			}
@@ -342,7 +342,7 @@ if ($display=="hierarchy") {
 		}
 		$i++;
 	}
-	if ($i>0){
+	if ($i>0) {
 		echo "\n\t\t</ul></td></tr>";
 		if (($action!="show")&&($level>0)) {
 			echo "<tr>\n\t\t<td class=\"list_label\" ";
@@ -362,7 +362,7 @@ if ($display=="hierarchy") {
 			}
 			echo " style=\"text-align: center;\">";
 			echo "<a href=\"?action=show&amp;level=", $level, "";
-			foreach($parent as $key=>$value) {
+			foreach ($parent as $key=>$value) {
 				echo "&amp;parent[", $key, "]=", urlencode(trim($value));
 			}
 			echo "\"><span class=\"formField\">";
@@ -434,12 +434,12 @@ if ($display=="list") {
 		echo help_link('ppp_placelist');
 		echo "</td></tr><tr><td class=\"list_value_wrap\"><ul>";
 		$i=0;
-		foreach($placelist as $indexval => $revplace) {
+		foreach ($placelist as $indexval => $revplace) {
 			$linklevels = "";
 			$levels = explode(',', $revplace); // -- split the place into comma seperated values
 			$level=0;
 			$revplace = "";
-			foreach($levels as $indexval => $place) {
+			foreach ($levels as $indexval => $place) {
 				$place = trim($place);
 				$linklevels .= "&amp;parent[$level]=".urlencode($place);
 				$level++;
@@ -455,7 +455,7 @@ if ($display=="list") {
 			echo " type=\"square\"><a href=\"?action=show&amp;display=hierarchy&amp;level=", $level, $linklevels, "\">";
 			echo PrintReady($revplace), "</a></li>\n";
 			$i++;
-			if ($ct > 20){
+			if ($ct > 20) {
 				if ($i == floor($ct / 3)) echo "\n\t\t</ul></td>\n\t\t<td class=\"list_value_wrap\"><ul>";
 				if ($i == floor(($ct / 3) * 2)) echo "\n\t\t</ul></td>\n\t\t<td class=\"list_value_wrap\"><ul>";
 			}

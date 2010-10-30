@@ -38,19 +38,19 @@ if (!defined('WT_WEBTREES')) {
 global $SESSION_HIDE_GOOGLEMAP;
 $SESSION_HIDE_GOOGLEMAP = "empty";
 if ((isset($_REQUEST["HIDE_GOOGLEMAP"])) && (empty($SEARCH_SPIDER))) {
-	if(stristr("true", $_REQUEST["HIDE_GOOGLEMAP"])) {
+	if (stristr("true", $_REQUEST["HIDE_GOOGLEMAP"])) {
 		$SESSION_HIDE_GOOGLEMAP = "true";
 	}
-	if(stristr("false", $_REQUEST["HIDE_GOOGLEMAP"])) {
+	if (stristr("false", $_REQUEST["HIDE_GOOGLEMAP"])) {
 		$SESSION_HIDE_GOOGLEMAP = "false";
 	}
 }
 
 // change the session values and store if needed.
-if($SESSION_HIDE_GOOGLEMAP == "true") $_SESSION['hide_googlemap'] = true;
-if($SESSION_HIDE_GOOGLEMAP == "false") $_SESSION['hide_googlemap'] = false;
-if($SESSION_HIDE_GOOGLEMAP == "empty") {
-	if((isset($_SESSION['hide_googlemap'])) && ($_SESSION['hide_googlemap'] == true))
+if ($SESSION_HIDE_GOOGLEMAP == "true") $_SESSION['hide_googlemap'] = true;
+if ($SESSION_HIDE_GOOGLEMAP == "false") $_SESSION['hide_googlemap'] = false;
+if ($SESSION_HIDE_GOOGLEMAP == "empty") {
+	if ((isset($_SESSION['hide_googlemap'])) && ($_SESSION['hide_googlemap'] == true))
 		$SESSION_HIDE_GOOGLEMAP = "true";
 	else
 		$SESSION_HIDE_GOOGLEMAP = "false";
@@ -66,7 +66,7 @@ function print_fact_place_map($factrec) {
 		// reverse the array so that we get the top level first
 		$levels = array_reverse($levels);
 		$retStr .= "<a href=\"placelist.php?action=show&amp;";
-		foreach($levels as $pindex=>$ppart) {
+		foreach ($levels as $pindex=>$ppart) {
 			// routine for replacing ampersands
 			$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
 			$retStr .= "parent[$pindex]=".PrintReady($ppart)."&amp;";
@@ -91,7 +91,7 @@ function print_address_structure_map($factrec, $level) {
 
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level ADDR(.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = "";
 		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
@@ -142,25 +142,25 @@ function print_address_structure_map($factrec, $level) {
 	}
 	$resultText = "<table>";
 	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('PHON').": </b></span></td><td><span class=\"field\">";
 		$resultText .= getLRM() . $omatch[$i][1]. getLRM();
 		$resultText .= "</span></td></tr>";
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('FAX').": </b></span></td><td><span class=\"field\">";
 		$resultText .= getLRM() . $omatch[$i][1] . getLRM();
 		$resultText .= "</span></td></tr>";
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('EMAIL').": </b></span></td><td><span class=\"field\">";
 		$resultText .= "<a href=\"mailto:".$omatch[$i][1]."\">".$omatch[$i][1]."</a>";
 		$resultText .= "</span></td></tr>";
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
-	for($i=0; $i<$ct; $i++) {
+	for ($i=0; $i<$ct; $i++) {
 		$resultText .= "<tr><td><span class=\"label\"><b>".translate_fact('URL').": </b></span></td><td><span class=\"field\">";
 		$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>";
 		$resultText .= "</span></td></tr>";
@@ -273,7 +273,7 @@ function get_lati_long_placelocation ($place) {
 	$parent = explode (",", $place);
 	$parent = array_reverse($parent);
 	$place_id = 0;
-	for($i=0; $i<count($parent); $i++) {
+	for ($i=0; $i<count($parent); $i++) {
 		$parent[$i] = trim($parent[$i]);
 		if (empty($parent[$i])) $parent[$i]="unknown";// GoogleMap module uses "unknown" while GEDCOM uses , ,
 		$placelist = create_possible_place_names($parent[$i], $i+1);
@@ -356,19 +356,19 @@ function create_indiv_buttons() {
 	Map_type.prototype.refresh = function()
 	{
 		this.button1.className = 'non_active';
-		if(this.map.getCurrentMapType() != G_NORMAL_MAP)
+		if (this.map.getCurrentMapType() != G_NORMAL_MAP)
 			this.button2.className = 'non_active';
 		else
 			this.button2.className = 'active';
-		if(this.map.getCurrentMapType() != G_SATELLITE_MAP)
+		if (this.map.getCurrentMapType() != G_SATELLITE_MAP)
 			this.button3.className = 'non_active';
 		else
 			this.button3.className = 'active';
-		if(this.map.getCurrentMapType() != G_HYBRID_MAP)
+		if (this.map.getCurrentMapType() != G_HYBRID_MAP)
 			this.button4.className = 'non_active';
 		else
 			this.button4.className = 'active';
-		if(this.map.getCurrentMapType() != G_PHYSICAL_MAP)
+		if (this.map.getCurrentMapType() != G_PHYSICAL_MAP)
 			this.button5.className = 'non_active';
 		else
 			this.button5.className = 'active';
@@ -529,12 +529,12 @@ function build_indiv_map($indifacts, $famids) {
 	// Add children to the list
 	if (count($famids)>0) {
 		$hparents=false;
-		for($f=0; $f<count($famids); $f++) {
+		for ($f=0; $f<count($famids); $f++) {
 			if (!empty($famids[$f])) {
 				$famrec = find_gedcom_record($famids[$f], WT_GED_ID, true);
 				if ($famrec) {
 					$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
-					for($j=0; $j<$num; $j++) {
+					for ($j=0; $j<$num; $j++) {
 						$person=Person::getInstance($smatch[$j][1]);
 						if ($person->canDisplayDetails()) {
 							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
@@ -619,7 +619,7 @@ function build_indiv_map($indifacts, $famids) {
 		//echo "<script language=\"JavaScript\" type=\"text/javascript\">tabstyles[5]='tab_cell_inactive_empty'; document.getElementById('pagetab5').className='tab_cell_inactive_empty';</script>";
 		echo "</td></tr>";
 		echo "<script type=\"text/javascript\">";
-		echo "function ResizeMap(){}</script>";
+		echo "function ResizeMap() {}</script>";
 		if (WT_USER_IS_ADMIN) {
 			echo "<tr><td align=\"center\" colspan=\"2\">";
 			echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
@@ -649,7 +649,7 @@ function build_indiv_map($indifacts, $famids) {
 			if ($markers[$j]["placed"] == "no") {
 				$multimarker = -1;
 				// Count nr of locations where the long/lati is identical
-				for($k=$j; $k<=$i; $k++)
+				for ($k=$j; $k<=$i; $k++)
 					if (($markers[$j]["lati"] == $markers[$k]["lati"]) && ($markers[$j]["lng"] == $markers[$k]["lng"]))
 						$multimarker = $multimarker + 1;
 
@@ -703,13 +703,13 @@ function build_indiv_map($indifacts, $famids) {
 							echo '<br /><a href=\"module.php?mod=googlemap&mod_action=places&display=inactive\">', i18n::translate('Edit geographic location'), '</a>';
 						echo "\");";
 					}
-					else if (!$GOOGLEMAP_COORD){
+					else if (!$GOOGLEMAP_COORD) {
 						echo "\");";
 					} else {
 						echo "<br /><br />";
-						if ($markers[$j]["lati"]>'0'){echo "N", str_replace('-', '', $markers[$j]["lati"]);}else{ echo str_replace('-', 'S', $markers[$j]["lati"]);}
+						if ($markers[$j]["lati"]>'0') {echo "N", str_replace('-', '', $markers[$j]["lati"]);} else { echo str_replace('-', 'S', $markers[$j]["lati"]);}
 						echo ", ";
-						if ($markers[$j]["lng"]>'0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
+						if ($markers[$j]["lng"]>'0') {echo "E", str_replace('-', '', $markers[$j]["lng"]);} else { echo str_replace('-', 'W', $markers[$j]["lng"]);}
 						echo "\");";
 					}
 					echo "});";
@@ -757,16 +757,16 @@ function build_indiv_map($indifacts, $famids) {
 						$date=new GedcomDate($markers[$j]["date"]);
 						echo "<br />", addslashes($date->Display(true));
 					}
-					if (!$GOOGLEMAP_COORD){
+					if (!$GOOGLEMAP_COORD) {
 						echo "\")";
 					} else {
 						echo "<br /><br />";
-						if ($markers[$j]["lati"]>='0'){echo "N", str_replace('-', '', $markers[$j]["lati"]);}else{ echo str_replace('-', 'S', $markers[$j]["lati"]);}
+						if ($markers[$j]["lati"]>='0') {echo "N", str_replace('-', '', $markers[$j]["lati"]);} else { echo str_replace('-', 'S', $markers[$j]["lati"]);}
 						echo ", ";
-						if ($markers[$j]["lng"]>='0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
+						if ($markers[$j]["lng"]>='0') {echo "E", str_replace('-', '', $markers[$j]["lng"]);} else { echo str_replace('-', 'W', $markers[$j]["lng"]);}
 						echo "\")";
 					}
-					for($k=$j+1; $k<=$i; $k++) {
+					for ($k=$j+1; $k<=$i; $k++) {
 						if (($markers[$j]["lati"] == $markers[$k]["lati"]) && ($markers[$j]["lng"] == $markers[$k]["lng"])) {
 							$markers[$k]["placed"] = "yes";
 							$markers[$k]["index"] = $indexcounter;
@@ -823,13 +823,13 @@ function build_indiv_map($indifacts, $famids) {
 								$date=new GedcomDate($markers[$k]["date"]);
 								echo "<br />", addslashes($date->Display(true));
 							}
-							if (!$GOOGLEMAP_COORD){
+							if (!$GOOGLEMAP_COORD) {
 								echo "\")";
 							} else {
 								echo "<br /><br />";
-								if ($markers[$j]["lati"]>='0'){echo "N", str_replace('-', '', $markers[$j]["lati"]);}else{ echo str_replace('-', 'S', $markers[$j]["lati"]);}
+								if ($markers[$j]["lati"]>='0') {echo "N", str_replace('-', '', $markers[$j]["lati"]);} else { echo str_replace('-', 'S', $markers[$j]["lati"]);}
 								echo ", ";
-								if ($markers[$j]["lng"]>='0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
+								if ($markers[$j]["lng"]>='0') {echo "E", str_replace('-', '', $markers[$j]["lng"]);} else { echo str_replace('-', 'W', $markers[$j]["lng"]);}
 								echo "\")";
 							}
 						}
@@ -850,7 +850,7 @@ function build_indiv_map($indifacts, $famids) {
 		} </script>
 		<?php
 		echo "<div style=\"overflow: auto; overflow-x: hidden; overflow-y: auto; height: {$GOOGLEMAP_YSIZE}px;\"><table class=\"facts_table\">";
-		foreach($markers as $marker) {
+		foreach ($markers as $marker) {
 			echo "<tr><td class=\"facts_label\">";
 			echo "<a href=\"javascript:highlight({$marker["index"]}, {$marker["tabindex"]})\">{$marker["fact"]}</a></td>";
 			echo "<td class=\"{$marker['class']}\" style=\"white-space: normal\">";

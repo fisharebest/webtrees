@@ -389,9 +389,9 @@ class stats {
 	function chartIndisWithSources($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
 		$tot_indi = $this->totalIndividuals();
 		if ($tot_indi==0) {
@@ -428,9 +428,9 @@ class stats {
 	function chartFamsWithSources($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
 		$tot_fam = $this->totalFamilies();
 		$tot_sfam = $this->totalFamsWithSources();
@@ -634,10 +634,10 @@ class stats {
 	function chartSex($params=null) {
 		global $TEXT_DIRECTION, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_female = strtolower($params[1]);}else{$color_female = 'ffd1dc';}
-		if (isset($params[2]) && $params[2] != '') {$color_male = strtolower($params[2]);}else{$color_male = '84beff';}
-		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);}else{$color_unknown = '777777';}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_female = strtolower($params[1]);} else {$color_female = 'ffd1dc';}
+		if (isset($params[2]) && $params[2] != '') {$color_male = strtolower($params[2]);} else {$color_male = '84beff';}
+		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
 		$sizes = explode('x', $size);
 		$tot_f = $this->totalSexFemalesPercentage();
 		$tot_m = $this->totalSexMalesPercentage();
@@ -708,10 +708,10 @@ class stats {
 	function chartMortality($params=null) {
 		global $TEXT_DIRECTION, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_living = strtolower($params[1]);}else{$color_living = 'ffffff';}
-		if (isset($params[2]) && $params[2] != '') {$color_dead = strtolower($params[2]);}else{$color_dead = 'cccccc';}
-		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);}else{$color_unknown = '777777';}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_living = strtolower($params[1]);} else {$color_living = 'ffffff';}
+		if (isset($params[2]) && $params[2] != '') {$color_dead = strtolower($params[2]);} else {$color_dead = 'cccccc';}
+		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
 		$sizes = explode('x', $size);
 		$tot_l = $this->totalLivingPercentage();
 		$tot_d = $this->totalDeceasedPercentage();
@@ -806,9 +806,9 @@ class stats {
 	function chartMedia($params=null) {
 		global $TEXT_DIRECTION, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $MEDIA_TYPES;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
 		$tot = $this->_totalMediaType('all');
 		// Beware divide by zero
@@ -1305,9 +1305,9 @@ class stats {
 		}
 		$rows=self::_runSQL($sql);
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
@@ -1363,9 +1363,9 @@ class stats {
 		}
 		$rows=self::_runSQL($sql);
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
@@ -1527,7 +1527,7 @@ class stats {
 		} else {
 			$sex_search = '';
 		}
-		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT '
@@ -1599,7 +1599,7 @@ class stats {
 		} else {
 			$sex_search = '';
 		}
-		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
@@ -1700,7 +1700,7 @@ class stats {
 
 	function statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '230x250';}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '230x250';}
 			$sizes = explode('x', $size);
 			$rows=self::_runSQL(''
 				.' SELECT'
@@ -1763,7 +1763,7 @@ class stats {
 			} else {
 				$offset = 0;
 				$counter = array();
-				while($offset = strpos($title, " ", $offset + 1)){
+				while ($offset = strpos($title, " ", $offset + 1)) {
 					$counter[] = $offset;
 				}
 				$half = floor(count($counter)/2);
@@ -1957,7 +1957,7 @@ class stats {
 	* Query the database for marriage tags.
 	*/
 	function _marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
-		if ($sex == 'F') {$sex_field = 'f_wife';}else{$sex_field = 'f_husb';}
+		if ($sex == 'F') {$sex_field = 'f_wife';} else {$sex_field = 'f_husb';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$rows=self::_runSQL(''
 		/* //old
@@ -2079,7 +2079,7 @@ class stats {
 
 	function _ageOfMarriageQuery($type='list', $age_dir='ASC', $params=null) {
 		global $TEXT_DIRECTION;
-		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$hrows=self::_runSQL(''
 			.' SELECT DISTINCT'
@@ -2211,7 +2211,7 @@ class stats {
 
 	function _ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null) {
 		global $TEXT_DIRECTION;
-		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir=='DESC') {
 			$query1 = ' MIN(wifebirth.d_julianday2-husbbirth.d_julianday1) AS age';
 			$query2 = ' wifebirth.d_julianday2 >= husbbirth.d_julianday1 AND'
@@ -2281,7 +2281,7 @@ class stats {
 	}
 
 	function _parentsQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
-		if ($sex == 'F') {$sex_field = 'WIFE';}else{$sex_field = 'HUSB';}
+		if ($sex == 'F') {$sex_field = 'WIFE';} else {$sex_field = 'HUSB';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
 		$rows=self::_runSQL(''
 			.' SELECT'
@@ -2396,9 +2396,9 @@ class stats {
 		$rows=self::_runSQL($sql);
 		if (!isset($rows)) {return 0;}
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
@@ -2472,9 +2472,9 @@ class stats {
 		$rows=self::_runSQL($sql);
 		if (!isset($rows)) {return 0;}
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+			if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+			if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 			$sizes = explode('x', $size);
 			$tot = 0;
 			foreach ($rows as $values) {
@@ -2523,7 +2523,7 @@ class stats {
 
 	function statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '200x250';}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '200x250';}
 			$sizes = explode('x', $size);
 			$rows=self::_runSQL(''
 				.' SELECT'
@@ -2607,7 +2607,7 @@ class stats {
 			} else {
 				$offset = 0;
 				$counter = array();
-				while($offset = strpos(i18n::translate('Average age in century of marriage'), " ", $offset + 1)){
+				while ($offset = strpos(i18n::translate('Average age in century of marriage'), " ", $offset + 1)) {
 					$counter[] = $offset;
 				}
 				$half = floor(count($counter)/2);
@@ -2789,7 +2789,7 @@ class stats {
 
 	function _topTenFamilyQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
-		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
@@ -2803,7 +2803,7 @@ class stats {
 				.' tot DESC LIMIT '.$total
 		);
 		if (!isset($rows[0])) {return '';}
-		if(count($rows) < $total){$total = count($rows);}
+		if (count($rows) < $total) {$total = count($rows);}
 		$top10 = array();
 		for ($c = 0; $c < $total; $c++) {
 			$family=Family::getInstance($rows[$c]['id']);
@@ -2832,8 +2832,8 @@ class stats {
 	function _ageBetweenSiblingsQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
 		if ($params === null) {$params = array();}
-		if (isset($params[0])) {$total = $params[0];}else{$total = 10;}
-		if (isset($params[1])) {$one = $params[1];}else{$one = false;} // each family only once if true
+		if (isset($params[0])) {$total = $params[0];} else {$total = 10;}
+		if (isset($params[1])) {$one = $params[1];} else {$one = false;} // each family only once if true
 		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT DISTINCT'
@@ -2950,10 +2950,10 @@ class stats {
 	function chartLargestFamilies($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_L_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$total = strtolower($params[3]);}else{$total = 10;}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_L_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
+		if (isset($params[3]) && $params[3] != '') {$total = strtolower($params[3]);} else {$total = 10;}
 		$sizes = explode('x', $size);
 		$total=(int)$total;
 		$rows=self::_runSQL(''
@@ -2972,7 +2972,7 @@ class stats {
 		foreach ($rows as $row) {$tot += $row['tot'];}
 		$chd = '';
 		$chl = array();
-		foreach ($rows as $row){
+		foreach ($rows as $row) {
 			$family=Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($tot==0) {
@@ -3004,7 +3004,7 @@ class stats {
 
 	function statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
-			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
+			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 			$sizes = explode('x', $size);
 			$max = 0;
 			$rows=self::_runSQL(''
@@ -3139,7 +3139,7 @@ class stats {
 	}
 
 	function chartNoChildrenFamilies($year1=-1, $year2=-1, $params=null) {
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = '220x200';}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 		$sizes = explode('x', $size);
 		if ($year1>=0 && $year2>=0) {
 			$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
@@ -3207,7 +3207,7 @@ class stats {
 
 	function _topTenGrandFamilyQuery($type='list', $params=null) {
 		global $TEXT_DIRECTION;
-		if ($params !== null && isset($params[0])) {$total = $params[0];}else{$total = 10;}
+		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
 		$rows=self::_runSQL(''
 			.' SELECT'
@@ -3271,9 +3271,9 @@ class stats {
 		global $TEXT_DIRECTION, $SURNAME_LIST_STYLE, $GEDCOM;
 
 		$ged_id=get_id_from_gedcom($GEDCOM);
-		if (is_array($params) && isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);}else{$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');}
-		if(is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0){$maxtoshow = strtolower($params[1]);}else{$maxtoshow = false;}
-		if(is_array($params) && isset($params[2]) && $params[2] != ''){$sorting = strtolower($params[2]);}else{$sorting = 'alpha';}
+		if (is_array($params) && isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);} else {$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');}
+		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {$maxtoshow = strtolower($params[1]);} else {$maxtoshow = false;}
+		if (is_array($params) && isset($params[2]) && $params[2] != '') {$sorting = strtolower($params[2]);} else {$sorting = 'alpha';}
 		$surname_list = get_common_surnames($threshold);
 		if (count($surname_list) == 0) return '';
 		uasort($surname_list, array('stats', '_name_total_rsort'));
@@ -3317,11 +3317,11 @@ class stats {
 	function chartCommonSurnames($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);}else{$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
-		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);}else{$maxtoshow = 7;}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
+		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
+		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
 		$tot_indi = $this->totalIndividuals();
 		$surnames = get_common_surnames($threshold);
@@ -3383,9 +3383,9 @@ class stats {
 		static $sort_types = array('count'=>'asort', 'rcount'=>'arsort', 'alpha'=>'ksort', 'ralpha'=>'krsort');
 		static $sort_flags = array('count'=>SORT_NUMERIC, 'rcount'=>SORT_NUMERIC, 'alpha'=>SORT_STRING, 'ralpha'=>SORT_STRING);
 
-		if(is_array($params) && isset($params[0]) && $params[0] != '' && $params[0] >= 0){$threshold = strtolower($params[0]);}else{$threshold = 1;}
-		if(is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0){$maxtoshow = strtolower($params[1]);}else{$maxtoshow = 10;}
-		if(is_array($params) && isset($params[2]) && $params[2] != '' && isset($sort_types[strtolower($params[2])])){$sorting = strtolower($params[2]);}else{$sorting = 'rcount';}
+		if (is_array($params) && isset($params[0]) && $params[0] != '' && $params[0] >= 0) {$threshold = strtolower($params[0]);} else {$threshold = 1;}
+		if (is_array($params) && isset($params[1]) && $params[1] != '' && $params[1] >= 0) {$maxtoshow = strtolower($params[1]);} else {$maxtoshow = 10;}
+		if (is_array($params) && isset($params[2]) && $params[2] != '' && isset($sort_types[strtolower($params[2])])) {$sorting = strtolower($params[2]);} else {$sorting = 'rcount';}
 
 		switch ($sex) {
 		case 'M':
@@ -3426,7 +3426,7 @@ class stats {
 		if ($type=='chart') return $nameList;
 		$common = array();
 		foreach ($nameList as $given=>$total) {
-			if ($maxtoshow !== -1) {if($maxtoshow-- <= 0){break;}}
+			if ($maxtoshow !== -1) {if ($maxtoshow-- <= 0) {break;}}
 			if ($total < $threshold) {break;}
 			if ($show_tot) {
 				$tot = PrintReady("[{$total}]");
@@ -3468,38 +3468,38 @@ class stats {
 		}
 	}
 
-	static function commonGiven($params=array(1,10,'alpha')){return self::_commonGivenQuery('B', 'nolist', false, $params);}
-	static function commonGivenTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('B', 'nolist', true, $params);}
-	static function commonGivenList($params=array(1,10,'alpha')){return self::_commonGivenQuery('B', 'list', false, $params);}
-	static function commonGivenListTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('B', 'list', true, $params);}
-	static function commonGivenTable($params=array(1,10,'rcount')){return self::_commonGivenQuery('B', 'table', false, $params);}
+	static function commonGiven($params=array(1,10,'alpha')) {return self::_commonGivenQuery('B', 'nolist', false, $params);}
+	static function commonGivenTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('B', 'nolist', true, $params);}
+	static function commonGivenList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('B', 'list', false, $params);}
+	static function commonGivenListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('B', 'list', true, $params);}
+	static function commonGivenTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('B', 'table', false, $params);}
 
-	static function commonGivenFemale($params=array(1,10,'alpha')){return self::_commonGivenQuery('F', 'nolist', false, $params);}
-	static function commonGivenFemaleTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('F', 'nolist', true, $params);}
-	static function commonGivenFemaleList($params=array(1,10,'alpha')){return self::_commonGivenQuery('F', 'list', false, $params);}
-	static function commonGivenFemaleListTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('F', 'list', true, $params);}
-	static function commonGivenFemaleTable($params=array(1,10,'rcount')){return self::_commonGivenQuery('F', 'table', false, $params);}
+	static function commonGivenFemale($params=array(1,10,'alpha')) {return self::_commonGivenQuery('F', 'nolist', false, $params);}
+	static function commonGivenFemaleTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('F', 'nolist', true, $params);}
+	static function commonGivenFemaleList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('F', 'list', false, $params);}
+	static function commonGivenFemaleListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('F', 'list', true, $params);}
+	static function commonGivenFemaleTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('F', 'table', false, $params);}
 
-	static function commonGivenMale($params=array(1,10,'alpha')){return self::_commonGivenQuery('M', 'nolist', false, $params);}
-	static function commonGivenMaleTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('M', 'nolist', true, $params);}
-	static function commonGivenMaleList($params=array(1,10,'alpha')){return self::_commonGivenQuery('M', 'list', false, $params);}
-	static function commonGivenMaleListTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('M', 'list', true, $params);}
-	static function commonGivenMaleTable($params=array(1,10,'rcount')){return self::_commonGivenQuery('M', 'table', false, $params);}
+	static function commonGivenMale($params=array(1,10,'alpha')) {return self::_commonGivenQuery('M', 'nolist', false, $params);}
+	static function commonGivenMaleTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('M', 'nolist', true, $params);}
+	static function commonGivenMaleList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('M', 'list', false, $params);}
+	static function commonGivenMaleListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('M', 'list', true, $params);}
+	static function commonGivenMaleTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('M', 'table', false, $params);}
 
-	static function commonGivenUnknown($params=array(1,10,'alpha')){return self::_commonGivenQuery('U', 'nolist', false, $params);}
-	static function commonGivenUnknownTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('U', 'nolist', true, $params);}
-	static function commonGivenUnknownList($params=array(1,10,'alpha')){return self::_commonGivenQuery('U', 'list', false, $params);}
-	static function commonGivenUnknownListTotals($params=array(1,10,'rcount')){return self::_commonGivenQuery('U', 'list', true, $params);}
-	static function commonGivenUnknownTable($params=array(1,10,'rcount')){return self::_commonGivenQuery('U', 'table', false, $params);}
+	static function commonGivenUnknown($params=array(1,10,'alpha')) {return self::_commonGivenQuery('U', 'nolist', false, $params);}
+	static function commonGivenUnknownTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('U', 'nolist', true, $params);}
+	static function commonGivenUnknownList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('U', 'list', false, $params);}
+	static function commonGivenUnknownListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('U', 'list', true, $params);}
+	static function commonGivenUnknownTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('U', 'table', false, $params);}
 
 	function chartCommonGiven($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
-		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);}else{$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
-		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);}else{$color_from = $WT_STATS_CHART_COLOR1;}
-		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);}else{$color_to = $WT_STATS_CHART_COLOR2;}
-		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);}else{$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
-		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);}else{$maxtoshow = 7;}
+		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
+		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
+		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
+		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
+		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
 		$tot_indi = $this->totalIndividuals();
 		$given = self::_commonGivenQuery('B', 'chart');
@@ -3601,11 +3601,11 @@ class stats {
 		$visible = 0;
 		$x = get_logged_in_users();
 		foreach ($x as $user_id=>$user_name) {
-			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {$visible++;}else{$anon++;}
+			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {$visible++;} else {$anon++;}
 		}
 		if ($type == 'anon') {return $anon;}
 		elseif ($type == 'visible') {return $visible;}
-		else{return $visible + $anon;}
+		else {return $visible + $anon;}
 	}
 
 	static function usersLoggedIn() {return self::_usersLoggedIn('nolist');}
@@ -3636,24 +3636,24 @@ class stats {
 			case 'fullname':
 				return getUserFullName($user_id);
 			case 'regdate':
-				if(is_array($params) && isset($params[0]) && $params[0] != ''){$datestamp = $params[0];}else{$datestamp = $DATE_FORMAT;}
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {$datestamp = $params[0];} else {$datestamp = $DATE_FORMAT;}
 				return timestamp_to_gedcom_date(get_user_setting($user_id, 'reg_timestamp'))->Display(false, $datestamp);
 			case 'regtime':
-				if(is_array($params) && isset($params[0]) && $params[0] != ''){$datestamp = $params[0];}else{$datestamp = str_replace('%', '', $TIME_FORMAT);}
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {$datestamp = $params[0];} else {$datestamp = str_replace('%', '', $TIME_FORMAT);}
 				return date($datestamp, get_user_setting($user_id, 'reg_timestamp'));
 			case 'loggedin':
-				if(is_array($params) && isset($params[0]) && $params[0] != ''){$yes = $params[0];}else{$yes = i18n::translate('Yes');}
-				if(is_array($params) && isset($params[1]) && $params[1] != ''){$no = $params[1];}else{$no = i18n::translate('No');}
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {$yes = $params[0];} else {$yes = i18n::translate('Yes');}
+				if (is_array($params) && isset($params[1]) && $params[1] != '') {$no = $params[1];} else {$no = i18n::translate('No');}
 				return WT_DB::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user_id))->fetchOne() ? $yes : $no;
 		}
 	}
 
-	static function latestUserId(){return self::_getLatestUserData('userid');}
-	static function latestUserName(){return self::_getLatestUserData('username');}
-	static function latestUserFullName(){return self::_getLatestUserData('fullname');}
-	static function latestUserRegDate($params=null){return self::_getLatestUserData('regdate', $params);}
-	static function latestUserRegTime($params=null){return self::_getLatestUserData('regtime', $params);}
-	static function latestUserLoggedin($params=null){return self::_getLatestUserData('loggedin', $params);}
+	static function latestUserId() {return self::_getLatestUserData('userid');}
+	static function latestUserName() {return self::_getLatestUserData('username');}
+	static function latestUserFullName() {return self::_getLatestUserData('fullname');}
+	static function latestUserRegDate($params=null) {return self::_getLatestUserData('regdate', $params);}
+	static function latestUserRegTime($params=null) {return self::_getLatestUserData('regtime', $params);}
+	static function latestUserLoggedin($params=null) {return self::_getLatestUserData('loggedin', $params);}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Contact                                                                   //
@@ -3764,11 +3764,11 @@ class stats {
 		return ob_get_clean();
 	}
 
-	static function gedcomFavorites(){return self::_getFavorites(true);}
-	static function userFavorites(){return self::_getFavorites(false);}
+	static function gedcomFavorites() {return self::_getFavorites(true);}
+	static function userFavorites() {return self::_getFavorites(false);}
 
-	static function totalGedcomFavorites(){return count(gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM));}
-	static function totalUserFavorites(){return count(user_favorites_WT_Module::getUserFavorites(WT_USER_NAME));}
+	static function totalGedcomFavorites() {return count(gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM));}
+	static function totalUserFavorites() {return count(user_favorites_WT_Module::getUserFavorites(WT_USER_NAME));}
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Other blocks                                                              //
@@ -3777,8 +3777,8 @@ class stats {
 
 	static function callBlock($params=null) {
 		global $ctype;
-		if ($params === null){return '';}
-		if (isset($params[0]) && $params[0] != ''){$block = $params[0];}else{return '';}
+		if ($params === null) {return '';}
+		if (isset($params[0]) && $params[0] != '') {$block = $params[0];} else {return '';}
 		$all_blocks=array();
 		foreach (WT_Module::getActiveBlocks() as $name=>$active_block) {
 			if ($ctype=='user' && $active_block->isUserBlock() || $ctype=='gedcom' && $active_block->isGedcomBlock()) {
@@ -3792,7 +3792,7 @@ class stats {
 		$cfg = array();
 		foreach ($params as $config) {
 			$bits = explode('=', $config);
-			if(count($bits) < 2){continue;}
+			if (count($bits) < 2) {continue;}
 			$v = array_shift($bits);
 			$cfg[$v] = join('=', $bits);
 		}
@@ -3802,7 +3802,7 @@ class stats {
 		return $content;
 	}
 
-	function totalUserMessages(){return count(getUserMessages(WT_USER_NAME));}
-	function totalUserJournal(){ return count(getUserNews(WT_USER_ID));}
-	function totalGedcomNews(){  return count(getUserNews(WT_GEDCOM));}
+	function totalUserMessages() {return count(getUserMessages(WT_USER_NAME));}
+	function totalUserJournal() { return count(getUserNews(WT_USER_ID));}
+	function totalGedcomNews() {  return count(getUserNews(WT_GEDCOM));}
 }

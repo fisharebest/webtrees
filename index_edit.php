@@ -245,13 +245,13 @@ if ($action=="configure") {
 	function select_options() {
 		section_select = document.getElementById('main_select');
 		if (section_select) {
-			for(i=0; i<section_select.length; i++) {
+			for (i=0; i<section_select.length; i++) {
 				section_select.options[i].selected=true;
 			}
 		}
 		section_select = document.getElementById('right_select');
 		if (section_select) {
-			for(i=0; i<section_select.length; i++) {
+			for (i=0; i<section_select.length; i++) {
 				section_select.options[i].selected=true;
 			}
 		}
@@ -299,7 +299,7 @@ if ($action=="configure") {
 		}
 	}
 
-	function save_form(){
+	function save_form() {
 		document.config_setup.submit();
 	}
 	//-->
@@ -345,7 +345,7 @@ if ($action=="configure") {
 	// NOTE: Row 2 column 2: Left (Main) block list
 	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">\n";
 		echo "<select multiple=\"multiple\" id=\"main_select\" name=\"main[]\" size=\"10\" onchange=\"show_description('main_select');\">\n";
-		foreach($blocks['main'] as $block_id=>$block_name) {
+		foreach ($blocks['main'] as $block_id=>$block_name) {
 			echo "<option value=\"$block_id\">".$all_blocks[$block_name]->getTitle()."</option>\n";
 		}
 		echo "</select>\n";
@@ -364,7 +364,7 @@ if ($action=="configure") {
 	// Row 2 column 4: Middle (Available) block list
 	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
 		echo "<select id=\"available_select\" name=\"available[]\" size=\"10\" onchange=\"show_description('available_select');\">\n";
-		foreach($all_blocks as $block_name=>$block) {
+		foreach ($all_blocks as $block_name=>$block) {
 			echo "<option value=\"$block_name\">".$block->getTitle()."</option>\n";
 		}
 		echo "</select>\n";
@@ -382,7 +382,7 @@ if ($action=="configure") {
 	// NOTE: Row 2 column 6: Right block list
 	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
 		echo "<select multiple=\"multiple\" id=\"right_select\" name=\"right[]\" size=\"10\" onchange=\"show_description('right_select');\">\n";
-		foreach($blocks['side'] as $block_id=>$block_name) {
+		foreach ($blocks['side'] as $block_id=>$block_name) {
 			echo "<option value=\"$block_id\">".$all_blocks[$block_name]->getTitle()."</option>\n";
 		}
 		echo "</select>\n";

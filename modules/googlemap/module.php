@@ -121,7 +121,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		} else {
 			$tNew = str_replace(array("&HIDE_GOOGLEMAP=true", "&HIDE_GOOGLEMAP=false", "action=ajax&module=".$this->getName()."&"), "", $_SERVER["REQUEST_URI"]);
 			$tNew = str_replace("&", "&amp;", $tNew);
-			if($SESSION_HIDE_GOOGLEMAP=="true") {
+			if ($SESSION_HIDE_GOOGLEMAP=="true") {
 				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false#".$this->getName()."\">";
 				echo "<img src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Activate')."\" title=\"".i18n::translate('Activate')."\" />";
 				echo " ".i18n::translate('Activate')."</a></span>";
@@ -138,9 +138,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo "</td></tr>";
 				echo "</table><br />";
 				echo "<script type=\"text/javascript\">";
-				echo "function ResizeMap (){}</script>";
+				echo "function ResizeMap () {}</script>";
 			} else {
-				if($SESSION_HIDE_GOOGLEMAP=="false") {
+				if ($SESSION_HIDE_GOOGLEMAP=="false") {
 					echo "<table width=\"100%\" border=\"0\" class=\"facts_table\">";
 					echo "<tr><td valign=\"top\">";
 					echo "<div id=\"googlemap_left\">";

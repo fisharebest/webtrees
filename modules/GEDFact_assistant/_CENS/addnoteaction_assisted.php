@@ -64,9 +64,9 @@
 	if (!empty($NOTE)) {
 		$newlines = preg_split("/\r?\n/", $NOTE, -1);
 		for ($k=0; $k<count($newlines); $k++) {
-			if ( $k==0 && count($newlines)>1) {
+			if ($k==0 && count($newlines)>1) {
 				$newgedrec = "0 @XREF@ NOTE $newlines[$k]\n";
-			}else if ( $k==0 ) {
+			} else if ($k==0) {
 				$newgedrec = "0 @XREF@ NOTE $newlines[$k]\n1 CONT\n";
 			} else {
 				$newgedrec .= "1 CONT $newlines[$k]\n";
@@ -85,7 +85,7 @@
 	if (!empty($PUBL)) {
 		$newlines = preg_split("/\r?\n/", $PUBL, -1, PREG_SPLIT_NO_EMPTY);
 		foreach ($newlines as $k=>$line) {
-			if ( $k==0 ) {
+			if ($k==0) {
 				$newgedrec .= "1 PUBL $line\n";
 			} else {
 				$newgedrec .= "2 CONT $line\n";

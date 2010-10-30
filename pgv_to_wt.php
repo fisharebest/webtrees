@@ -1005,7 +1005,7 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
-	if ($DBNAME.$TBLPREFIX.'placelocation'){
+	if ($DBNAME.$TBLPREFIX.'placelocation') {
 		echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
 		WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##placelocation` (".

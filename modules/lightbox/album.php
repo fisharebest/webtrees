@@ -65,12 +65,12 @@ function cut_html($string)
 
 if (isset($edit)) {
 	$edit=$edit;
-}else{
+} else {
 	$edit=1;
-	}
+}
 
 // Used when sorting media on album tab page ===============================================
-if ($reorder==1 ){
+if ($reorder==1) {
 
 $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 

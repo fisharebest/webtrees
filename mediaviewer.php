@@ -49,7 +49,7 @@ $filename = $controller->getLocalFilename();
 
 print_header($controller->getPageTitle());
 
-if (!$controller->mediaobject){
+if (!$controller->mediaobject) {
 	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
@@ -127,7 +127,7 @@ if (WT_USE_LIGHTBOX) {
 						<table class="facts_table<?php echo $TEXT_DIRECTION=='ltr'?'':'_rtl'; ?>">
 							<?php
 								$facts = $controller->getFacts($SHOW_MEDIA_FILENAME);
-								foreach($facts as $f=>$factrec) {
+								foreach ($facts as $f=>$factrec) {
 									print_fact($factrec);
 								}
 							?>
@@ -174,7 +174,7 @@ if (WT_USE_LIGHTBOX) {
 <!--
 
 // javascript function to open the lightbox view
-function lightboxView(){
+function lightboxView() {
 // var string = "<?php echo $tmb; ?>";
 // alert(string);
 // document.write(string);
@@ -183,7 +183,7 @@ function lightboxView(){
 }
 
 // javascript function to open the original imageviewer.php page
-function openImageView(){
+function openImageView() {
 	window.open("imageview.php?filename=<?php echo urlencode($filename); ?>", "Image View");
 	return false;
 }

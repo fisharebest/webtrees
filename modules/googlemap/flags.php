@@ -60,7 +60,7 @@ while ($file = readdir($rep)) {
 closedir($rep);
 sort($country);
 
-if($countrySelected == "Countries") {
+if ($countrySelected == "Countries") {
 	$flags = $country;
 }
 else {
@@ -80,7 +80,7 @@ if ($action == "ChangeFlag") {
 	<script type="text/javascript">
 	<!--
 		function edit_close() {
-<?php if($_POST["selcountry"] == "Countries") { ?>
+<?php if ($_POST["selcountry"] == "Countries") { ?>
 			window.opener.document.editplaces.icon.value = "places/flags/<?php echo $flags[$_POST["FLAGS"]]; ?>.gif";
 			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag'); ?></a>";
 <?php } else { ?>

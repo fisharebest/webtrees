@@ -220,7 +220,7 @@ print_header(i18n::translate('Module administration'));
 			});
   }
 
-  jQuery(document).ready(function(){
+  jQuery(document).ready(function() {
 	//-- tabs
     jQuery("#tabs").tabs();
 
@@ -386,7 +386,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledMenus() as $module) { ?>
+						foreach (WT_Module::getInstalledMenus() as $module) { ?>
 						<tr class="sortme">
 							<td class="list_value"><?php echo $module->getTitle(); ?></td>
 							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
@@ -433,7 +433,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledTabs() as $module) { ?>
+						foreach (WT_Module::getInstalledTabs() as $module) { ?>
 						<tr class="sortme">
 							<td class="list_value"><?php echo $module->getTitle(); ?></td>
 							<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName(); ?>" />
@@ -480,7 +480,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledSidebars() as $module) { ?>
+						foreach (WT_Module::getInstalledSidebars() as $module) { ?>
 							<tr class="sortme">
 								<td class="list_value"><?php echo $module->getTitle(); ?></td>
 								<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>" />
@@ -526,7 +526,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledBlocks() as $module) { ?>
+						foreach (WT_Module::getInstalledBlocks() as $module) { ?>
 						<tr class="sortme">
 							<td class="list_value"><?php echo $module->getTitle(); ?></td>
 							<td class="list_value_wrap">
@@ -566,7 +566,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledCharts() as $module) { ?>
+						foreach (WT_Module::getInstalledCharts() as $module) { ?>
 							<tr class="sortme">
 								<td class="list_value"><?php echo $module->getTitle(); ?></td>
 								<td class="list_value_wrap">
@@ -606,7 +606,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledReports() as $module) { ?>
+						foreach (WT_Module::getInstalledReports() as $module) { ?>
 							<tr class="sortme">
 								<td class="list_value"><?php echo $module->getTitle(); ?></td>
 								<td class="list_value_wrap">
@@ -646,7 +646,7 @@ print_header(i18n::translate('Module administration'));
 					<tbody>
 						<?php
 						$order = 1;
-						foreach(WT_Module::getInstalledThemes() as $module) { ?>
+						foreach (WT_Module::getInstalledThemes() as $module) { ?>
 						<tr class="sortme">
 							<td class="list_value"><?php echo $module->getTitle(); ?></td>
 							<td class="list_value_wrap">

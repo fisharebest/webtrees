@@ -167,7 +167,7 @@ if ($build == "yes") {
 	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal, $exclude_links);
 
 	//-- remove all private media objects
-	foreach($medialist as $key => $media) {
+	foreach ($medialist as $key => $media) {
 			echo " ";
 			// Display when user has Edit rights or when object belongs to current GEDCOM
 			$disp = WT_USER_CAN_EDIT || $media["GEDFILE"]==WT_GED_ID;
@@ -222,7 +222,7 @@ $_SESSION['Medialist'] = $medialist;
 				}
 					$folders = array_merge(array("ALL"), get_media_folders());
 					echo "<span dir=\"ltr\"><select name=\"folder\">";
-				foreach($folders as $f) {
+				foreach ($folders as $f) {
 					echo "<option value=\"", $f, "\"";
 					if ($folder==$f) echo " selected=\"selected\"";
 					echo ">";
@@ -361,7 +361,7 @@ if ($action=="filter" && (!empty($filtered_medialist))) {
 	$temp_filter = $filter_type;
 	if ($filter_type == $or) {
 		if ((strlen($filter1) > 1) && (strlen($filter2)) > 1) {
-			foreach($filtered_medialist as $key => $media) {
+			foreach ($filtered_medialist as $key => $media) {
 				if (!filterMedia($media, $filter1, "http") && !filterMedia($media, $filter2, "http"))
 				unset($filtered_medialist[$key]);
 			}
@@ -372,7 +372,7 @@ if ($action=="filter" && (!empty($filtered_medialist))) {
 
 	if ($filter_type == $and) {
 		if ((strlen($filter1) > 1) || (strlen($filter2)) > 1) {
-			foreach($filtered_medialist as $key => $media) {
+			foreach ($filtered_medialist as $key => $media) {
 				if (!filterMedia($media, $filter1, "http")) unset($filtered_medialist[$key]);
 				if (!filterMedia($media, $filter2, "http")) unset($filtered_medialist[$key]);
 			}
@@ -593,7 +593,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 
 	}
 		// -- new naming structure ---------
-		if ($sortby == 'title'){
+		if ($sortby == 'title') {
 			$name_disp1 = $name;
 			$name_disp2 = basename($media['FILE']);
 			if ($isExternal) $name_disp2 = "URL";

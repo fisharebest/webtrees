@@ -140,7 +140,7 @@ class AncestryController extends BaseController {
 		$parents = false;
 		$famrec = "";
 		$famid = "";
-		foreach($famids as $famid=>$family) {
+		foreach ($famids as $famid=>$family) {
 			if (!is_null($family)) {
 				$famrec = $family->getGedcomRecord();
 				$parents = find_parents_in_record($famrec);

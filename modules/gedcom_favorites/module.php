@@ -148,7 +148,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			<script type="text/javascript" src="js/jquery/jquery.ajaxQueue.js"></script>
 			<script type="text/javascript">
 			jQuery.noConflict(); // @see http://docs.jquery.com/Using_jQuery_with_Other_Libraries/
-			jQuery(document).ready(function($){
+			jQuery(document).ready(function($) {
 				$("input[name^=gid]").autocomplete("autocomplete.php", {
 					extraParams: {field:"IFSRO"},
 					formatItem: function(row, i) {
@@ -181,7 +181,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		} else {
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center $TEXT_DIRECTION\">";
-			foreach($userfavs as $key=>$favorite) {
+			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite["id"])) $key=$favorite["id"];
 				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype=$ctype&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".i18n::translate('Remove')."</a><br />";
 				$content .= "<tr><td>";

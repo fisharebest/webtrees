@@ -88,7 +88,7 @@ function get_placeid($place) {
 	$par = array_reverse($par);
 	$place_id = 0;
 	if (check_exist_table()) {
-		for($i=0; $i<count($par); $i++) {
+		for ($i=0; $i<count($par); $i++) {
 			$par[$i] = trim($par[$i]);
 			if (empty($par[$i])) $par[$i]="unknown";
 			$placelist = create_possible_place_names($par[$i], $i+1);
@@ -110,7 +110,7 @@ function get_p_id($place) {
 	$par = explode (",", $place);
 	$par = array_reverse($par);
 	$place_id = 0;
-	for($i=0; $i<count($par); $i++) {
+	for ($i=0; $i<count($par); $i++) {
 		$par[$i] = trim($par[$i]);
 		$placelist = create_possible_place_names($par[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
@@ -234,7 +234,7 @@ function print_how_many_people($level, $parent) {
 	echo "<br /><br />", i18n::translate('Individuals'), ": ", $place_count_indi, ", ", i18n::translate('Families'), ": ", $place_count_fam;
 }
 
-function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false){
+function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false) {
 	global $GOOGLEMAP_COORD, $GOOGLEMAP_PH_MARKER, $GM_DISP_SHORT_PLACE, $GM_DISP_COUNT;
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
 		echo "var icon_type = new GIcon();\n";
@@ -356,7 +356,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		} else {
 			$placename = $place2['place'].$placelevels;
-			if ($place2['place'] == "Unknown"){
+			if ($place2['place'] == "Unknown") {
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo PrintReady(addslashes(i18n::translate('unknown').$placelevels));
 				} else {
@@ -381,7 +381,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		$temp=PrintReady(addslashes($place2['place']));
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
-		if (!$GOOGLEMAP_COORD){
+		if (!$GOOGLEMAP_COORD) {
 			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
 		} else {
 			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";
@@ -422,22 +422,22 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	Map_type.prototype.refresh = function()
 	{
 		this.button1.className = 'non_active';
-		if(this.place_map.getCurrentMapType() != G_NORMAL_MAP) {
+		if (this.place_map.getCurrentMapType() != G_NORMAL_MAP) {
 			this.button2.className = 'non_active';
 		} else {
 			this.button2.className = 'active';
 		}
-		if(this.place_map.getCurrentMapType() != G_SATELLITE_MAP) {
+		if (this.place_map.getCurrentMapType() != G_SATELLITE_MAP) {
 			this.button3.className = 'non_active';
 		} else {
 			this.button3.className = 'active';
 		}
-		if(this.place_map.getCurrentMapType() != G_HYBRID_MAP) {
+		if (this.place_map.getCurrentMapType() != G_HYBRID_MAP) {
 			this.button4.className = 'non_active';
 		} else {
 			this.button4.className = 'active';
 		}
-		if(this.place_map.getCurrentMapType() != G_PHYSICAL_MAP) {
+		if (this.place_map.getCurrentMapType() != G_PHYSICAL_MAP) {
 			this.button5.className = 'non_active';
 		} else {
 			this.button5.className = 'active';
@@ -521,19 +521,19 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		if (isset($levelo[0])) $levelo[0]=0;
 		$numls = count($parent)-1;
 		$levelo=check_were_am_i($numls, $levelm);
-		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))){
+		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
 			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+5);\n";
 		}
-		else if ($numfound<2 && !isset($levelo[($level-2)])){
+		else if ($numfound<2 && !isset($levelo[($level-2)])) {
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
 			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+6);\n";
 		}
-		else if ($level==2){
+		else if ($level==2) {
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
 			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+8);\n";
 		}
-		else if ($numfound<2 && $level>1){
+		else if ($numfound<2 && $level>1) {
 			echo "zoomlevel = place_map.getBoundsZoomLevel(bounds);\n";
 			echo " place_map.setCenter(new GLatLng(0, 0), zoomlevel+10);\n";
 		}
@@ -595,7 +595,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 						print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels);
 				}
 			}
-			else if ($level>0){ //if unknown place display the upper level place
+			else if ($level>0) { //if unknown place display the upper level place
 				$placelevels = ", ".i18n::translate('unknown').$placelevels;
 				$linklevels .= "&amp;parent[".$level."]=";
 				$break = false;

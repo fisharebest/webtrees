@@ -107,12 +107,12 @@ class LocalClient extends ServiceClient {
 		$search_results = search_indis(array($query), array($this->gedfile), 'AND', true);
 
 		// loop thru the returned result of the method call
-		foreach($search_results as $gid=>$indi)
+		foreach ($search_results as $gid=>$indi)
 		{
 			// privatize the gedcoms returned
 			$gedrec = privatize_gedcom($indi["gedcom"]);
 			// set the fields that exist and return all the results that are not private
-			if(preg_match("~".$query."~i",$gedrec)>0)
+			if (preg_match("~".$query."~i",$gedrec)>0)
 			{
 				$person = new SOAP_Value('person', 'person', "");
 				$person->PID = $gid;

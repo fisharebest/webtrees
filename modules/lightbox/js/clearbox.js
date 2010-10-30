@@ -359,8 +359,8 @@
 */
 
 		var CB_Scripts = document.getElementsByTagName('script');
-		for(i=0;i<CB_Scripts.length;i++){
-			if(CB_Scripts[i].src.match('clearbox.js')!=null){
+		for (i=0;i<CB_Scripts.length;i++){
+			if (CB_Scripts[i].src.match('clearbox.js')!=null){
 				var CB_jsdir=CB_Scripts[i].src.substring(0,CB_Scripts[i].src.length-11);
 			}
 		}

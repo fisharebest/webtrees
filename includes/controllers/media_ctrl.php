@@ -68,10 +68,10 @@ class MediaController extends BaseController{
 		}
 
 		//Checks to see if the File Name ($filename) exists
-		if (!empty($filename)){
+		if (!empty($filename)) {
 			//If the File Name ($filename) is set, then it will call the method to get the Media ID ($this->mid) from the File Name ($filename)
 			$this->mid = get_media_id_from_file($filename);
-			if (!$this->mid){
+			if (!$this->mid) {
 				//This will set the Media ID to be false if the File given doesn't match to anything in the database
 				$this->mid = false;
 				// create a very basic gedcom record for this file so that the functions of the media object will work
@@ -81,7 +81,7 @@ class MediaController extends BaseController{
 		}
 
 		//checks to see if the Media ID ($this->mid) is set. If the Media ID isn't set then there isn't any information avaliable for that picture the picture doesn't exist.
-		if ($this->mid){
+		if ($this->mid) {
 			//This creates a Media Object from the getInstance method of the Media Class. It takes the Media ID ($this->mid) and creates the object.
 			$this->mediaobject = Media::getInstance($this->mid);
 			//This sets the controller ID to be the Media ID
@@ -337,9 +337,9 @@ class MediaController extends BaseController{
 			else $newfacts[] = new Event("1 TYPE ".i18n::translate('Other'));
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
-			for($i=0; $i<count($facts); $i++) {
+			for ($i=0; $i<count($facts); $i++) {
 				$found=false;
-				foreach($newfacts as $indexval => $newfact) {
+				foreach ($newfacts as $indexval => $newfact) {
 					if (trim($newfact->gedcomRecord)==trim($facts[$i]->gedcomRecord)) {
 						$found=true;
 						break;
@@ -349,9 +349,9 @@ class MediaController extends BaseController{
 					$facts[$i]->gedcomRecord.="\nWT_OLD\n";
 				}
 			}
-			foreach($newfacts as $indexval => $newfact) {
+			foreach ($newfacts as $indexval => $newfact) {
 				$found=false;
-				foreach($facts as $indexval => $fact) {
+				foreach ($facts as $indexval => $fact) {
 					if (trim($fact->gedcomRecord)==trim($newfact->gedcomRecord)) {
 						$found=true;
 						break;

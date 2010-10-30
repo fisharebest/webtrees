@@ -75,7 +75,7 @@ function get_common_surnames($min) {
  * @param string $lastname The name to strip
  * @return string The updated name
  */
-function strip_prefix($lastname){
+function strip_prefix($lastname) {
 	$name = preg_replace(array('/ [jJsS][rR]\.?,/', '/ I+,/', '/^([a-z]{1,4}[\. \_\-\(\[])+/'), array(',',',',''), $lastname);
 	$name = trim($name);
 	if ($name=='') return $lastname;
@@ -93,7 +93,7 @@ function check_NN($names) {
 
 	$fullname = '';
 
-	if (!is_array($names)){
+	if (!is_array($names)) {
 		$script = utf8_script($names);
 		$NN = $UNKNOWN_NN[$script];
 		$names = preg_replace(array('~ /~','~/,~','~/~'), array(' ', ',', ' '), $names);
@@ -106,10 +106,10 @@ function check_NN($names) {
 		$names = preg_replace('/([^ ]+)\*/', '<span class="starredname">$1</span>', $names);
 		return $names;
 	}
-	if (count($names) == 2 && stristr($names[0], '@N.N') && stristr($names[1], '@N.N')){
+	if (count($names) == 2 && stristr($names[0], '@N.N') && stristr($names[1], '@N.N')) {
 		$fullname = i18n::translate('(unknown)'). ' + '. i18n::translate('(unknown)');
 	} else {
-		for($i=0; $i<count($names); $i++) {
+		for ($i=0; $i<count($names); $i++) {
 			$script = utf8_script($names[$i]);
 			$unknown = false;
 			if (stristr($names[$i], '@N.N')) {
@@ -169,7 +169,7 @@ function DMSoundex($name) {
 
 	// Apply special transformation rules to the input string
 	$name = utf8_strtoupper($name);
-	foreach($transformNameTable as $transformRule) {
+	foreach ($transformNameTable as $transformRule) {
 		$name = str_replace($transformRule[0], $transformRule[1], $name);
 	}
 
@@ -218,13 +218,13 @@ function DMSoundex($name) {
 
 		while ($state < count($soundTableEntry)) {
 			if ($soundTableEntry[$state] == '') { // empty means 'ignore this sound in this state'
-				foreach($workingResult as $workingEntry) {
+				foreach ($workingResult as $workingEntry) {
 					$tempEntry = $workingEntry;
 					$tempEntry[count($tempEntry)-1] .= '!'; // Prevent false 'doubles'
 					$partialResult[] = $tempEntry;
 				}
 			} else {
-				foreach($workingResult as $workingEntry) {
+				foreach ($workingResult as $workingEntry) {
 					if ($soundTableEntry[$state] !== $workingEntry[count($workingEntry)-1]) {
 						// Incoming sound isn't a duplicate of the previous sound
 						$workingEntry[] = $soundTableEntry[$state];

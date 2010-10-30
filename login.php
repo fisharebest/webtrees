@@ -149,7 +149,7 @@ if ($type=="full") {
 echo "<div class=\"center\">";
 
 echo "<table class=\"center width60 ltr\"><tr><td>";
-switch ($WELCOME_TEXT_AUTH_MODE){
+switch ($WELCOME_TEXT_AUTH_MODE) {
 case 1:
 	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
 	break;

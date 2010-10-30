@@ -152,7 +152,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($fam_lists)) {
-		foreach(get_indilist_salpha($SHOW_MARRIED_NAMES, true, $index) as $letter=>$count) {
+		foreach (get_indilist_salpha($SHOW_MARRIED_NAMES, true, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "famlist.php?alpha=", urlencode($letter), "&amp;ged=", urlencode($gedcom_name), "</loc>\n";
@@ -195,7 +195,7 @@ if ($action=="sendIndex") {
 
 
 	if (isset($filenames)) {
-		foreach($filenames as $ged_index=>$ged_name) {
+		foreach ($filenames as $ged_index=>$ged_name) {
 			$xml_name = str_ireplace(".ged",".xml", $ged_name);
 			echo " <sitemap>\n";
 			echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "SM_", $xml_name, "</loc>\n";
@@ -246,7 +246,7 @@ if ($action=="generate") {
 	}
 	if ($filecounter > 1) {
 		echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=index&amp;action=sendIndex";
-		foreach(get_all_gedcoms() as $ged_id=>$gedcom) {
+		foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 			if (isset($_POST["GEDCOM_{$ged_id}"])) {
 				echo "&filenames[", $ged_id, "]=", $gedcom;
 			}

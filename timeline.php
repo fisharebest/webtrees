@@ -264,7 +264,7 @@ $controller->checkPrivacy();
 		$half = ceil($count/2);
 	}
 	$half++;
-	foreach($controller->people as $p=>$indi) {
+	foreach ($controller->people as $p=>$indi) {
 		$pid = $indi->getXref();
 		$col = $p % 6;
 		if ($i==$half) {
@@ -349,7 +349,7 @@ if (count($controller->people)>0) {
 	//-- at a scale of 25 or higher, show every year
 	$mod = 25/$controller->scale;
 	if ($mod<1) $mod = 1;
-	for($i=$controller->baseyear+1; $i<$controller->topyear; $i++) {
+	for ($i=$controller->baseyear+1; $i<$controller->topyear; $i++) {
 		if ($i % $mod == 0)  {
 			echo "<div id=\"scale$i\" style=\"font-family: Arial; position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset")."px; top:".floor($baseyoffset+(($i-$controller->baseyear)*$controller->scale)-$controller->scale/2)."px; font-size: 7pt; text-align:".($TEXT_DIRECTION =="ltr"?"left":"right").";\">";
 			echo $i."--";
@@ -361,13 +361,13 @@ if (count($controller->people)>0) {
 	echo "</div>";
 	sort_facts($controller->indifacts);
 	$factcount=0;
-	foreach($controller->indifacts as $indexval => $fact) {
+	foreach ($controller->indifacts as $indexval => $fact) {
 		$controller->print_time_fact($fact);
 		$factcount++;
 	}
 
 	// print the age boxes
-	foreach($controller->people as $p=>$indi) {
+	foreach ($controller->people as $p=>$indi) {
 		$pid = $indi->getXref();
 		$ageyoffset = $baseyoffset + ($controller->bheight*$p);
 		$col = $p % 6;
@@ -411,7 +411,7 @@ if (count($controller->people)>0) {
 	var birthmonths = new Array();
 	var birthdays = new Array();
 	<?php
-	foreach($controller->people as $c=>$indi) {
+	foreach ($controller->people as $c=>$indi) {
 		$pid = $indi->getXref();
 		if (!empty($controller->birthyears[$pid])) echo "birthyears[".$c."]=".$controller->birthyears[$pid].";";
 		if (!empty($controller->birthmonths[$pid])) echo "birthmonths[".$c."]=".$controller->birthmonths[$pid].";";

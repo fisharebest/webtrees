@@ -51,7 +51,7 @@ if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
 }
 
-if (!$controller->repository){
+if (!$controller->repository) {
 	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;

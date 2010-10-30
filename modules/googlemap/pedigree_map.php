@@ -272,7 +272,7 @@ echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\">";
 echo "  <tr>";
 echo " <td valign=\"top\">";
 // print summary statistics
-if (isset($curgen)){
+if (isset($curgen)) {
 	$total=pow(2,$curgen)-1;
 	$miss=$total-$count-$priv;
 	echo i18n::plural(
@@ -530,11 +530,11 @@ pm_map.addControl(mini);
 
 function wheelevent(e)
 {
-	if (true){//document.getElementById("prevent").checked
-			if (!e){
+	if (true) {//document.getElementById("prevent").checked
+			if (!e) {
 					e = window.event
 			}
-	if (e.preventDefault){
+	if (e.preventDefault) {
 			e.preventDefault()
 	}
 	e.returnValue = false;
@@ -606,7 +606,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				addslashes($bdate->Display(false))."<br />".$bplace;
 
 		$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
-		if ($latlongval[$i] != NULL){
+		if ($latlongval[$i] != NULL) {
 			$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]["lati"]);
 			$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]["long"]);
 			if (!($lat[$i] == NULL && $lon[$i] == NULL) && !($lat[$i] == 0 && $lon[$i] == 0)) {

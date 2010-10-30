@@ -56,7 +56,7 @@ if ($pending_changes) {
 
 $verify_msg = false;
 $warn_msg = false;
-foreach(get_all_users() as $user_id=>$user_name) {
+foreach (get_all_users() as $user_id=>$user_name) {
 	if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified'))  {
 		$verify_msg = true;
 	}
@@ -73,7 +73,7 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 ?>
 <script type="text/javascript">
 //<![CDATA[
-  jQuery(document).ready(function(){
+  jQuery(document).ready(function() {
     jQuery("#tabs").tabs();
   });
 //]]>

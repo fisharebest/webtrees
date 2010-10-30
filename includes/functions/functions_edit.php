@@ -304,7 +304,7 @@ function replace_gedrec($gid, $ged_id, $gedrec, $chan=true) {
 	if (isset($pgv_private_records[$gid])) {
 		$privatedata = trim(get_last_private_data($gid));
 		$subs = get_all_subrecords("\n".$privatedata, '', false, false);
-		foreach($subs as $s=>$sub) {
+		foreach ($subs as $s=>$sub) {
 			if (strstr($gedrec, $sub)===false) $gedrec = trim($gedrec)."\n".$sub;
 		}
 		unset($pgv_private_records[$gid]);
@@ -441,7 +441,7 @@ function check_gedcom($gedrec, $chan=true) {
 	//-- remove any empty lines
 	$lines = explode("\n", $gedrec);
 	$newrec = '';
-	foreach($lines as $ind=>$line) {
+	foreach ($lines as $ind=>$line) {
 		//-- remove any whitespace
 		$line = trim($line);
 		if (!empty($line)) $newrec .= $line."\n";
@@ -467,12 +467,12 @@ function remove_subrecord($oldrecord, $tag, $gid='', $num=0) {
 	$n = 0;
 	$matchstr = $tag;
 	if (!empty($gid)) $matchstr .= " @".$gid."@";
-	for($i=0; $i<count($gedlines); $i++) {
+	for ($i=0; $i<count($gedlines); $i++) {
 		if (preg_match("/".$matchstr."/", $gedlines[$i])>0) {
 			if ($num==-1 || $n==$num) {
 				$glevel = $gedlines[$i]{0};
 				$i++;
-				while((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
+				while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
 				$i--;
 			}
 			else $n++;
@@ -494,7 +494,7 @@ function remove_subline($oldrecord, $linenum) {
 	$newrec = '';
 	$gedlines = explode("\n", $oldrecord);
 
-	for($i=0; $i<$linenum; $i++) {
+	for ($i=0; $i<$linenum; $i++) {
 		if (trim($gedlines[$i])!='') $newrec .= $gedlines[$i]."\n";
 	}
 	if (isset($gedlines[$linenum])) {
@@ -503,8 +503,8 @@ function remove_subline($oldrecord, $linenum) {
 		$i++;
 		if ($i<count($gedlines)) {
 			//-- don't put empty lines in the record
-			while((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
-			while($i<count($gedlines)) {
+			while ((isset($gedlines[$i]))&&(strlen($gedlines[$i])<4 || $gedlines[$i]{0}>$glevel)) $i++;
+			while ($i<count($gedlines)) {
 				if (trim($gedlines[$i])!='') $newrec .= $gedlines[$i]."\n";
 				$i++;
 			}
@@ -759,12 +759,12 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		do {
 			if (!isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
 				$text = '';
-				for($j=2; $j<count($fields); $j++) {
+				for ($j=2; $j<count($fields); $j++) {
 					if ($j>2) $text .= ' ';
 					$text .= $fields[$j];
 				}
 				$iscont = false;
-				while(($i+1<count($gedlines))&&(preg_match("/".($level+1)." (CON[CT]) ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
+				while (($i+1<count($gedlines))&&(preg_match("/".($level+1)." (CON[CT]) ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
 					$iscont=true;
 					if ($cmatch[1]=="CONT") $text.="\n";
 					if ($WORD_WRAPPED_NOTES) $text .= ' ';
@@ -1338,7 +1338,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	if (in_array($fact, $subnamefacts) || $fact=="LATI" || $fact=="LONG") {
 		echo "<td class=\"optionbox $TEXT_DIRECTION wrap width25\">";
-	}else{
+	} else {
 		echo "<td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
 	}
 
@@ -1350,13 +1350,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	// tag name
 	if (!empty($label)) {
-		if ($label=="Note" && $islink){
+		if ($label=="Note" && $islink) {
 			echo i18n::translate('Shared note');
 		} else {
 			echo $label;
 		}
 	} else {
-		if ($fact=="NOTE" && $islink){
+		if ($fact=="NOTE" && $islink) {
 			echo translate_fact('SHARED_NOTE');
 			/*
 			if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
@@ -1374,16 +1374,16 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	// If using GEDFact-assistant window
 	if ($action=="addnewnote_assisted") {
 		// Do not print on GEDFact Assistant window
-	}else{
+	} else {
 		if (!in_array($fact, $emptyfacts)) {
 			if ($fact=="DATE") {
 				echo help_link('def_gedcom_date');
 			} elseif ($fact=="FORM" && $upperlevel!='OBJE') {
 				echo help_link('FORM');
-			} elseif ($fact=="NOTE" && $islink){
+			} elseif ($fact=="NOTE" && $islink) {
 				if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
 					echo help_link('edit_add_GEDFact_ASSISTED');
-				}else{
+				} else {
 					echo help_link('edit_add_SHARED_NOTE');
 				}
 			} else {
@@ -1546,7 +1546,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
 				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" style=\"width:4.1em;\" dir=\"ltr\"";
-			}else{
+			} else {
 				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" size=\"", $cols, "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
@@ -2129,7 +2129,7 @@ function handle_updates($newged, $levelOverride="no") {
 	if ($levelOverride=="no" || count($glevels)==0) $levelAdjust = 0;
 	else $levelAdjust = $levelOverride - $glevels[0];
 
-	for($j=0; $j<count($glevels); $j++) {
+	for ($j=0; $j<count($glevels); $j++) {
 
 		// Look for empty SOUR reference with non-empty sub-records.
 		// This can happen when the SOUR entry is deleted but its sub-records
@@ -2138,7 +2138,7 @@ function handle_updates($newged, $levelOverride="no") {
 		if ($tag[$j]=="SOUR" && ($text[$j]=="@@" || $text[$j]=='')) {
 			$text[$j] = '';
 			$k = $j+1;
-			while(($k<count($glevels))&&($glevels[$k]>$glevels[$j])) {
+			while (($k<count($glevels))&&($glevels[$k]>$glevels[$j])) {
 				$text[$k] = '';
 				$k++;
 			}
@@ -2152,7 +2152,7 @@ function handle_updates($newged, $levelOverride="no") {
 			//-- this section checks if they have subrecords
 			$k=$j+1;
 			$pass=false;
-			while(($k<count($glevels))&&($glevels[$k]>$glevels[$j])) {
+			while (($k<count($glevels))&&($glevels[$k]>$glevels[$j])) {
 				if ($text[$k]!='') {
 					if (($tag[$j]!="OBJE")||($tag[$k]=="FILE")) {
 						$pass=true;
@@ -2243,7 +2243,7 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 	//-- $linenum comes as an OBJE and the $mediaid to delete should be set
 	if (!is_numeric($linenum)) {
 		$newged = remove_subrecord($gedrec, $linenum, $mediaid);
-	}else{
+	} else {
 		$newged = remove_subline($gedrec, $linenum);
 	}
 	replace_gedrec($linktoid, WT_GED_ID, $newged, $chan);
@@ -2370,12 +2370,12 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		$label=implode(':', array_slice($stack, 1, $level));
 
 		$text = '';
-		for($j=2; $j<count($fields); $j++) {
+		for ($j=2; $j<count($fields); $j++) {
 			if ($j>2) $text .= ' ';
 			$text .= $fields[$j];
 		}
 		$text = rtrim($text);
-		while(($i+1<count($gedlines))&&(preg_match("/".($level+1)." CONT ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
+		while (($i+1<count($gedlines))&&(preg_match("/".($level+1)." CONT ?(.*)/", $gedlines[$i+1], $cmatch)>0)) {
 			$text.="\n".$cmatch[1];
 			$i++;
 		}
@@ -2383,7 +2383,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		if ($type=="SOUR") {
 			$inSource = true;
 			$levelSource = $level;
-		} elseif ($levelSource>=$level){
+		} elseif ($levelSource>=$level) {
 			$inSource = false;
 		}
 
@@ -2554,14 +2554,14 @@ function delete_person($pid, $gedrec='') {
 	if (!empty($gedrec)) {
 		$success = true;
 		$ct = preg_match_all("/1 FAM. @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$famid = $match[$i][1];
 			$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 			if (!empty($famrec)) {
 				$lines = explode("\n", $famrec);
 				$newfamrec = '';
 				$lastlevel = -1;
-				foreach($lines as $indexval => $line) {
+				foreach ($lines as $indexval => $line) {
 					$ct = preg_match("/^(\d+)/", $line, $levelmatch);
 					if ($ct>0) $level = $levelmatch[1];
 					else $level = 1;
@@ -2577,7 +2577,7 @@ function delete_person($pid, $gedrec='') {
 				if ($pt<2) {
 					for ($j=0; $j<$pt; $j++) {
 						$xref = $pmatch[$j][1];
-						if($xref!=$pid) {
+						if ($xref!=$pid) {
 							$indirec = find_gedcom_record($xref, WT_GED_ID, true);
 							$indirec = preg_replace("/1.*@$famid@.*/", '', $indirec);
 							if (WT_DEBUG) {
@@ -2608,7 +2608,7 @@ function delete_family($pid, $gedrec='') {
 	if (!empty($gedrec)) {
 		$success = true;
 		$ct = preg_match_all("/1 (\w+) @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
-		for($i=0; $i<$ct; $i++) {
+		for ($i=0; $i<$ct; $i++) {
 			$type = $match[$i][1];
 			$id = $match[$i][2];
 			if (WT_DEBUG) {
@@ -2619,7 +2619,7 @@ function delete_family($pid, $gedrec='') {
 				$lines = explode("\n", $indirec);
 				$newindirec = '';
 				$lastlevel = -1;
-				foreach($lines as $indexval => $line) {
+				foreach ($lines as $indexval => $line) {
 					$lct = preg_match("/^(\d+)/", $line, $levelmatch);
 					if ($lct>0) $level = $levelmatch[1];
 					else $level = 1;

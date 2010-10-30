@@ -57,7 +57,7 @@ $debug_verboseLogging  = 0; // set to 1 for extra logging details
 function sendErrorAndExit($type, $line1, $line2 = false) {
 
 	// line2 contains the information that only an admin/editor should see, such as the full path to a file
-	if(!WT_USER_CAN_EDIT) {
+	if (!WT_USER_CAN_EDIT) {
 		$line2 = false;
 	}
 
@@ -82,7 +82,7 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 	}
 
 	$type = isImageTypeSupported($type);
-	if ( $type ){
+	if ($type) {
 		// width of image is based on the number of characters
 		$width = ($numchars+1) * 6.5;
 		$height = 60;
@@ -500,7 +500,7 @@ if (!$debug_watermark) {
 	header('Content-Disposition: inline; filename="'.basename($serverFilename).'"');
 }
 
-if ( $generatewatermark ) {
+if ($generatewatermark) {
 	// generate the watermarked image
 	$imCreateFunc = 'imagecreatefrom'.$type;
 	$im = @$imCreateFunc($serverFilename);
@@ -512,7 +512,7 @@ if ( $generatewatermark ) {
 
 		$imSendFunc = 'image'.$type;
 		// save the image, if preferences allow
-		if ( ($isThumb && $SAVE_WATERMARK_THUMB) || (!$isThumb && $SAVE_WATERMARK_IMAGE) ) {
+		if (($isThumb && $SAVE_WATERMARK_THUMB) || (!$isThumb && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the directory exists
 			if (!is_dir(dirname($watermarkfile))) {
 				mkdirs(dirname($watermarkfile));
@@ -539,7 +539,7 @@ if ( $generatewatermark ) {
 
 // pass the image through without manipulating it
 
-if ( $usewatermark ) {
+if ($usewatermark) {
 	// the stored watermarked image is good, lets use it
 	$serverFilename = $watermarkfile;
 }

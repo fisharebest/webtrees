@@ -70,7 +70,7 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 			$idrecord=Family::getInstance($link);
 			if ($idrecord->getHusbId()) {
 				$head=$idrecord->getHusbId();
-			}else{
+			} else {
 				$head=$idrecord->getWifeId();
 			}
 		} elseif ($record->getType()=='SOUR') {

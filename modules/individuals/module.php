@@ -87,9 +87,9 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		jQuery(document).ready(function(){
-			jQuery("#sb_indi_name").focus(function(){this.select();});
-			jQuery("#sb_indi_name").blur(function(){if (this.value=="") this.value="'.i18n::translate('Search').'";});
+		jQuery(document).ready(function() {
+			jQuery("#sb_indi_name").focus(function() {this.select();});
+			jQuery("#sb_indi_name").blur(function() {if (this.value=="") this.value="'.i18n::translate('Search').'";});
 			var timerid = null;
 			jQuery("#sb_indi_name").keyup(function(e) {
 				if (timerid) window.clearTimeout(timerid);
@@ -107,7 +107,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					jQuery.ajax({
 					  url: "sidebar.php?sb_action=individuals&alpha="+alpha+"&surname="+surname,
 					  cache: false,
-					  success: function(html){
+					  success: function(html) {
 					    jQuery("#sb_indi_"+surname+" div").html(html);
 					    jQuery("#sb_indi_"+surname+" div").show();
 					    jQuery("#sb_indi_"+surname).css("list-style-image", "url('.$WT_IMAGES['minus'].')");
@@ -169,7 +169,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $SHOW_MARRIED_NAMES;
 		$surns=get_indilist_surns('', $alpha, $SHOW_MARRIED_NAMES, false, WT_GED_ID);
 		$out = '<ul>';
-		foreach($surns as $surname=>$surns) {
+		foreach ($surns as $surname=>$surns) {
 			$out .= '<li id="sb_indi_'.$surname.'" class="sb_indi_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_indi_surname">'.$surname.'</a>';
 			if (!empty($surname1) && $surname1==$surname) {
 				$out .= '<div class="name_tree_div_visible">';
@@ -189,7 +189,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$indis=get_indilist_indis($surname, $alpha, '', $SHOW_MARRIED_NAMES, false, WT_GED_ID);
 		$out = '<ul>';
 		$private_count = 0;
-		foreach($indis as $person) {
+		foreach ($indis as $person) {
 			if ($person->canDisplayName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {

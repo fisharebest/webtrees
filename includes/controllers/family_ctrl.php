@@ -75,10 +75,10 @@ class FamilyController extends BaseController {
 				}
 			}
 			//-- if no record was found create a default empty one
-			if (find_updated_record($this->famid, WT_GED_ID)!==null){
+			if (find_updated_record($this->famid, WT_GED_ID)!==null) {
 				$this->famrec = "0 @".$this->famid."@ FAM\n";
 				$this->family = new Family($this->famrec);
-			} else if (!$this->family){
+			} else if (!$this->family) {
 				return false;
 			}
 		}
@@ -256,7 +256,7 @@ class FamilyController extends BaseController {
 
 		// Produce the submenus in localized name order
 
-		foreach($menuList as $menuType => $menuName) {
+		foreach ($menuList as $menuType => $menuName) {
 			switch ($menuType) {
 			case "parentTimeLine":
 				// charts / parents_timeline

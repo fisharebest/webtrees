@@ -127,10 +127,10 @@ class SearchController extends BaseController {
 		if (isset ($_REQUEST["replace"])) {
 			$this->replace = $_REQUEST["replace"];
 
-			if(isset($_REQUEST["replaceNames"])) $this->replaceNames = true;
-			if(isset($_REQUEST["replacePlaces"])) $this->replacePlaces = true;
-			if(isset($_REQUEST["replacePlacesWord"])) $this->replacePlacesWord = true;
-			if(isset($_REQUEST["replaceAll"])) $this->replaceAll = true;
+			if (isset($_REQUEST["replaceNames"])) $this->replaceNames = true;
+			if (isset($_REQUEST["replacePlaces"])) $this->replacePlaces = true;
+			if (isset($_REQUEST["replacePlacesWord"])) $this->replacePlacesWord = true;
+			if (isset($_REQUEST["replaceAll"])) $this->replaceAll = true;
 		}
 
 		// Aquire all the variables values from the $_REQUEST
@@ -316,9 +316,9 @@ class SearchController extends BaseController {
 		foreach ($varNames as $key => $varName) {
 			if (isset ($_REQUEST[$varName]))
 			{
-				if($varName == "action")
-				if($_REQUEST[$varName] == "replace")
-				if(!WT_USER_CAN_ACCEPT)
+				if ($varName == "action")
+				if ($_REQUEST[$varName] == "replace")
+				if (!WT_USER_CAN_ACCEPT)
 				{
 					$this->action = "general";
 					continue;
@@ -491,47 +491,47 @@ class SearchController extends BaseController {
 		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
 		$name_tags = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
 		$name_tags[] = "_MARNM";
-		foreach($this->myindilist as $id=>$individual) {
+		foreach ($this->myindilist as $id=>$individual) {
 			$indirec=find_gedcom_record($individual->getXref(), WT_GED_ID, true);
 			$oldRecord = $indirec;
 			$newRecord = $indirec;
-			if($this->replaceAll) {
+			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
-				if($this->replaceNames) {
-					foreach($name_tags as $f=>$tag) {
+				if ($this->replaceNames) {
+					foreach ($name_tags as $f=>$tag) {
 						$newRecord = preg_replace("~(\d) ".$tag." (.*)".$oldquery."(.*)~i", "$1 ".$tag." $2".$this->replace."$3", $newRecord);
 					}
 				}
-				if($this->replacePlaces) {
+				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
 					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if($newRecord != $oldRecord) {
+			if ($newRecord != $oldRecord) {
 				replace_gedrec($individual->getXref(), WT_GED_ID, $newRecord);
 			} else {
 				unset($this->myindilist[$id]);
 			}
 		}
 
-		foreach($this->myfamlist as $id=>$family) {
+		foreach ($this->myfamlist as $id=>$family) {
 			$indirec=find_gedcom_record($family->getXref(), WT_GED_ID, true);
 			$oldRecord = $indirec;
 			$newRecord = $indirec;
 
-			if($this->replaceAll) {
+			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			}
 			else {
-				if($this->replacePlaces) {
+				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
 					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if($newRecord != $oldRecord) {
+			if ($newRecord != $oldRecord) {
 				replace_gedrec($family->getXref(), WT_GED_ID, $newRecord);
 			} else {
 				unset($this->myfamlist[$id]);
@@ -546,17 +546,17 @@ class SearchController extends BaseController {
 			if ($this->replaceAll) {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			} else {
-				if($this->replaceNames) {
+				if ($this->replaceNames) {
 					$newRecord = preg_replace("~(\d) TITL (.*)".$oldquery."(.*)~i", "$1 TITL $2".$this->replace."$3", $newRecord);
 					$newRecord = preg_replace("~(\d) ABBR (.*)".$oldquery."(.*)~i", "$1 ABBR $2".$this->replace."$3", $newRecord);
 				}
-				if($this->replacePlaces) {
+				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) $newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])'.$oldquery.'([,\W\s])~i', "$1 PLAC $2$3".$this->replace."$4",$newRecord);
 					else $newRecord = preg_replace("~(\d) PLAC (.*)".$oldquery."(.*)~i", "$1 PLAC $2".$this->replace."$3",$newRecord);
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if($newRecord != $oldRecord) {
+			if ($newRecord != $oldRecord) {
 				replace_gedrec($source->getXref(), WT_GED_ID, $newRecord);
 			} else {
 				unset($this->mysourcelist[$id]);
@@ -572,7 +572,7 @@ class SearchController extends BaseController {
 				$newRecord = preg_replace("~".$oldquery."~i", $this->replace, $newRecord);
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if($newRecord != $oldRecord) {
+			if ($newRecord != $oldRecord) {
 				replace_gedrec($note->getXref(), WT_GED_ID, $newRecord);
 			} else {
 				unset($this->mynotelist[$id]);
@@ -1016,7 +1016,7 @@ class SearchController extends BaseController {
 			}
 		}
 		$tempURL .= "&amp;resultsPageNum={$pageNum}";
-		foreach($this->sgeds as $i=>$key) {
+		foreach ($this->sgeds as $i=>$key) {
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $key);
 			$tempURL .= "&amp;{$str}=yes";
 		}

@@ -286,11 +286,11 @@ var CB_Close_Win		= CB_Close_Win;
 
 	Player.prototype.onTimerEvent = function() {
 		var isDurationOk = false
-		if(!this.paused) {
+		if (!this.paused) {
 			var position = this.sound.getPosition();
-			if(!position) position = 0;
+			if (!position) position = 0;
 
-			if(position != this.position && position != 0) {
+			if (position != this.position && position != 0) {
 				this.onPlaying();
 			} else {
 				this.onBuffering();
@@ -300,25 +300,25 @@ var CB_Close_Win		= CB_Close_Win;
 			var duration = 0;
 			duration = this.sound.getDuration();
 
-			if(!duration) duration = 0;
-			if(duration == this.duration && duration != 0) {
+			if (!duration) duration = 0;
+			if (duration == this.duration && duration != 0) {
 				isDurationOk = true;
 			}
 			this.duration = duration;
 			var progress = position/duration;
-			if(isDurationOk) {
+			if (isDurationOk) {
 				this.setProgressBar(progress);
 			}
 
 			var isBytesTotalOk = false;
 
 			var bytesTotal = this.sound.getBytesTotal();
-			if(bytesTotal == this.bytesTotal) {
+			if (bytesTotal == this.bytesTotal) {
 				isBytesTotalOk = true;
 			}
 			this.bytesTotal = bytesTotal;
 
-			if(isBytesTotalOk) {
+			if (isBytesTotalOk) {
 				var loaded =  this.sound.getBytesLoaded()/bytesTotal;
 				this.setLoadedBar(loaded);
 			}
@@ -338,11 +338,11 @@ var CB_Close_Win		= CB_Close_Win;
 	}
 
 	Player.prototype.setProgressBar = function(progress) {
-		if(!progress) progress = 0;
+		if (!progress) progress = 0;
 	}
 
 	Player.prototype.setLoadedBar = function(loaded) {
-		if(!loaded) loaded = 0;
+		if (!loaded) loaded = 0;
 	}
 
 	Player.prototype.onPlaying = function() {
@@ -357,7 +357,7 @@ var CB_Close_Win		= CB_Close_Win;
 	}
 
 	Player.prototype.onSoundComplete = function() {
-		if(!this.paused) {
+		if (!this.paused) {
 			if (loopMusic) {
 				this.onForward();
 			}
@@ -417,9 +417,9 @@ var CB_Close_Win		= CB_Close_Win;
 	}
 
 	Player.prototype.play = function() {
-		if(this.paused) {
+		if (this.paused) {
 			this.paused = false;
-			if(this.stoped) {
+			if (this.stoped) {
 				this.sound.loadSound(this.track, true);
 			}
 			this.sound.start(this.position/1000, 1);
@@ -1720,7 +1720,7 @@ var CB_Close_Win		= CB_Close_Win;
 			for (i = 1; i < CB_Gallery.length; i++) {
 				CB_preThumbs = new Image;
 				CB_preThumbs.src = CB_Gallery[i][2];
-				a += "<a href=\"javascript:void(0)\" onclick=\"if(CB_SSTimer){CB_SlideShowJump();}CB_LoadImage(" + i + ")\"><img style=\"border: 0; left: " + c + "px;\" \" src=\"" + CB_Gallery[i][2] + "\" height=\"50\" class=\"CB_ThumbsImg\" alt=\"\" /></a>";
+				a += "<a href=\"javascript:void(0)\" onclick=\"if (CB_SSTimer){CB_SlideShowJump();}CB_LoadImage(" + i + ")\"><img style=\"border: 0; left: " + c + "px;\" \" src=\"" + CB_Gallery[i][2] + "\" height=\"50\" class=\"CB_ThumbsImg\" alt=\"\" /></a>";
 				c += Math.round(CB_preThumbs.width / CB_preThumbs.height * 50) + b;
 			}
 			CB_Thm2.style.width = CB_AllThumbsWidth + "px";
@@ -1847,7 +1847,7 @@ var CB_Close_Win		= CB_Close_Win;
 			}
 			if (CB_TextNav == "be") {
 				var a = CB_Txt.innerHTML;
-				CB_Txt.innerHTML = "<a class=\"CB_TextNav\" href=\"javascript:void(0)\" onclick=\"if(CB_SSTimer){CB_SlideShowJump();}CB_LoadImage(" + (CB_ActImgId - 1) + ")\" alt=\"&lt;\">" + CB_NavTextPrv + "</a> " + a;
+				CB_Txt.innerHTML = "<a class=\"CB_TextNav\" href=\"javascript:void(0)\" onclick=\"if (CB_SSTimer){CB_SlideShowJump();}CB_LoadImage(" + (CB_ActImgId - 1) + ")\" alt=\"&lt;\">" + CB_NavTextPrv + "</a> " + a;
 			}
 			CB_Prv.style.display = "block";
 			if (slideshowMusic == null) {
@@ -1868,7 +1868,7 @@ var CB_Close_Win		= CB_Close_Win;
 				PreloadNxt.src = CB_Gallery[CB_ActImgId + 1][0];
 			}
 			if (CB_TextNav == "be") {
-				CB_Txt.innerHTML += " <a class=\"CB_TextNav\" href=\"javascript:void(0)\" onclick=\"if(CB_SSTimer){CB_SlideShowJump();}CB_LoadImage(" + (CB_ActImgId + 1) + ")\" alt=\"&gt;\">" + CB_NavTextNxt + "</a>";
+				CB_Txt.innerHTML += " <a class=\"CB_TextNav\" href=\"javascript:void(0)\" onclick=\"if (CB_SSTimer){CB_SlideShowJump();}CB_LoadImage(" + (CB_ActImgId + 1) + ")\" alt=\"&gt;\">" + CB_NavTextNxt + "</a>";
 			}
 			CB_Nxt.style.display = "block";
 			CB_Nxt.onclick = function () {
@@ -2139,7 +2139,7 @@ dragDrop = {
 	startDrag: function (obj) {
 		if (dragDrop.draggedObject)
 			dragDrop.releaseElement();
-		if(IE){	
+		if (IE){	
 			dragDrop.startX = (obj.offsetLeft+(CB_ImgWidthOld + 2 * (CB_RoundPix + CB_ImgBorder + CB_Padd)) / 2);
 			dragDrop.startY = ((obj.offsetTop-document.documentElement.scrollTop)+(CB_ieRPBug + CB_ImgHeightOld + CB_TextH + 2 * (CB_RoundPix + CB_ImgBorder + CB_Padd)) / 2);
 		}else{

@@ -79,7 +79,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 		if (count($usernews)==0) {
 			$content .= i18n::translate('You have not created any Journal items.').' ';
 		}
-		foreach($usernews as $key=>$news) {
+		foreach ($usernews as $key=>$news) {
 			$day = date("j", $news["date"]);
 			$mon = date("M", $news["date"]);
 			$year = date("Y", $news["date"]);

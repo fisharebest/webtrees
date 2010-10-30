@@ -38,7 +38,7 @@ $controller->init();
 
 print_header($controller->getPageTitle());
 // completely prevent display if privacy dictates so
-if (!$controller->family){
+if (!$controller->family) {
 	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
@@ -127,10 +127,10 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 </table>
 <br />
 <?php
-if(empty($SEARCH_SPIDER))
+if (empty($SEARCH_SPIDER))
 	print_footer();
 else {
-	if($SHOW_SPIDER_TAGLINE)
+	if ($SHOW_SPIDER_TAGLINE)
 		echo i18n::translate('Search Engine Spider Detected').": ".$SEARCH_SPIDER;
 	echo "</div></body></html>";
 }

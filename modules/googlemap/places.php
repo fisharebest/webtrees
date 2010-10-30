@@ -266,7 +266,7 @@ if ($action=="ImportGedcom") {
         $parent=preg_split('/ *, */', $place["place"]);
 		$parent=array_reverse($parent);
 		$parent_id=0;
-		for($i=0; $i<count($parent); $i++) {
+		for ($i=0; $i<count($parent); $i++) {
 			if (!isset($default_zoom_level[$i]))
 				$default_zoom_level[$i]=$default_zoom_level[$i-1];
 			$escparent=$parent[$i];
@@ -326,7 +326,7 @@ if ($action=="ImportFile") {
 			<td class="optionbox">
 				<select name="localfile">
 					<option></option>
-					<?php foreach($placefiles as $p=>$placefile) { ?>
+					<?php foreach ($placefiles as $p=>$placefile) { ?>
 					<option value="<?php echo htmlspecialchars($placefile); ?>"><?php
 						if (substr($placefile, 0, 1)=="/") echo substr($placefile, 1);
 						else echo $placefile; ?></option>
@@ -375,12 +375,12 @@ if ($action=="ImportFile2") {
 	$placelist = array();
 	$j = 0;
 	$maxLevel = 0;
-	foreach ($lines as $p => $placerec){
+	foreach ($lines as $p => $placerec) {
 		$fieldrec = explode(';', $placerec);
-		if($fieldrec[0] > $maxLevel) $maxLevel = $fieldrec[0];
+		if ($fieldrec[0] > $maxLevel) $maxLevel = $fieldrec[0];
 	}
 	$fields = count($fieldrec);
-	foreach ($lines as $p => $placerec){
+	foreach ($lines as $p => $placerec) {
 		$fieldrec = explode(';', $placerec);
 		if (is_numeric($fieldrec[0]) && $fieldrec[0]<=$maxLevel) {
 			$placelist[$j] = array();
@@ -441,7 +441,7 @@ if ($action=="ImportFile2") {
 		$parent = explode(',', $place["place"]);
 		$parent = array_reverse($parent);
 		$parent_id=0;
-		for($i=0; $i<count($parent); $i++) {
+		for ($i=0; $i<count($parent); $i++) {
 			$escparent=$parent[$i];
 			if ($escparent == "") {
 				$escparent = "Unknown";
@@ -652,7 +652,7 @@ foreach ($placelist as $place) {
 	echo i18n::translate('Export all locations to file'), "</a>";
 	echo help_link('PL_EXPORT_ALL_FILE','googlemap');
 	echo "</td></tr></table><br />";
-if(empty($SEARCH_SPIDER))
+if (empty($SEARCH_SPIDER))
 	print_footer();
 else {
 	echo i18n::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;

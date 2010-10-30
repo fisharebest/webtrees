@@ -134,7 +134,7 @@ echo '</h2></td></tr>';
 // Day selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo i18n::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="7" class="optionbox">';
-for($d=1; $d<=$days_in_month; $d++) {
+for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
 	$tmp=new GedcomDate($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
 	if ($d==$cal_date->d)

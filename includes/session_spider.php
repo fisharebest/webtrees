@@ -49,11 +49,11 @@ function gen_spider_session_name($bot_name, $bot_language) {
 	$outname = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
 
 	$bot_limit = strlen($bot_name);
-	if($bot_limit > 27) {
+	if ($bot_limit > 27) {
 		$bot_limit = 27;
 	}
-	for($x=0; $x < $bot_limit; $x++) {
-		if(preg_match('/^[a-zA-Z0-9]+$/', $bot_name{$x})) {
+	for ($x=0; $x < $bot_limit; $x++) {
+		if (preg_match('/^[a-zA-Z0-9]+$/', $bot_name{$x})) {
 			$outname{$x+2} = strtoupper($bot_name{$x});
 		} elseif ($bot_name{$x} == '.') {
 			$outname{$x+2} = 'd';
@@ -213,8 +213,8 @@ $spider_name = '                                                                
 // If you want to disable spider detection, set real to true here.
 $real = false;
 
-if($ua != "") {
-	foreach($real_browsers as $browser_check) {
+if ($ua != "") {
+	foreach ($real_browsers as $browser_check) {
 		if (strpos($ua, $browser_check)!==false) {
 			$real = true;
 			break;
@@ -239,7 +239,7 @@ else {
 	$real = true;
 }
 
-if(!$real) {
+if (!$real) {
 	$bot_name = $ua;
 	// strip out several common strings that clutter the User Agent.
 	$bot_name = preg_replace("/Mozilla\/... \(compatible;/i", "", $bot_name);
@@ -252,15 +252,15 @@ if(!$real) {
 	$y = 0;
 	$valid_char = false;
 	$bot_limit = strlen($bot_name);
-	for($x=0; $x < $bot_limit; $x++) {
-		if(preg_match('/^[a-zA-Z]+$/', $bot_name{$x})) {
+	for ($x=0; $x < $bot_limit; $x++) {
+		if (preg_match('/^[a-zA-Z]+$/', $bot_name{$x})) {
 			$spider_name{$y} = $bot_name{$x};
 			$valid_char = true;
 			$y++;
 			if ($y > 70) break;
 		}
 		else if ($bot_name{$x} == ' ') {
-			if($valid_char) {
+			if ($valid_char) {
 				$spider_name{$y} = ' ';
 				$valid_char = false;
 				$y++;
@@ -268,7 +268,7 @@ if(!$real) {
 			}
 		}
 		else if ($bot_name{$x} == '.') {
-			if($valid_char) {
+			if ($valid_char) {
 				$spider_name{$y} = '.';
 				$valid_char = true;
 				$y++;
@@ -300,7 +300,7 @@ if(!$real) {
 			if ($y > 70) break;
 		}
 		else { // Compress consecutive invalids down to one space char.
-			if($valid_char) {
+			if ($valid_char) {
 				$spider_name{$y} = ' ';
 				$valid_char = false;
 				$y++;
@@ -339,10 +339,10 @@ try {
 	// Initial installation?  Site Down?  Fail silently.
 }
 
-if((empty($SEARCH_SPIDER)) && (!empty($_SESSION['last_spider_name']))) // user following a search engine listing in,
+if ((empty($SEARCH_SPIDER)) && (!empty($_SESSION['last_spider_name']))) // user following a search engine listing in,
 Zend_Session::regenerateId();
 
-if(!empty($SEARCH_SPIDER)) {
+if (!empty($SEARCH_SPIDER)) {
 	$spidertime = time();
 	$spiderdate = date("d.m.Y", $spidertime);
 	// Do we need to log this spider access?
@@ -355,7 +355,7 @@ if(!empty($SEARCH_SPIDER)) {
 			break;
 		}
 	}
-	if(isset($_SESSION['spider_count']))
+	if (isset($_SESSION['spider_count']))
 	$spidercount = $_SESSION['spider_count'] + 1;
 	else {
 		$spidercount = 1;
@@ -365,8 +365,8 @@ if(!empty($SEARCH_SPIDER)) {
 			AddToLog("New search engine encountered: ->".$outstr."<- UA>{$ua}< >{$_SERVER["REQUEST_URI"]}<", 'auth');
 		}
 	}
-	if(isset($_SESSION['last_spider_date'])) {
-		if($spiderdate != $_SESSION['last_spider_date']) {
+	if (isset($_SESSION['last_spider_date'])) {
+		if ($spiderdate != $_SESSION['last_spider_date']) {
 			//adds a message to the log that a new spider session is starting
 			if ($logSpider) {
 				require_once WT_ROOT.'includes/authentication.php';      // -- Loaded early so AddToLog works
@@ -378,10 +378,10 @@ if(!empty($SEARCH_SPIDER)) {
 	}
 	$_SESSION['last_spider_date'] = $spiderdate;
 	$_SESSION['spider_count'] = $spidercount;
-	if(isset($_SERVER['REMOTE_ADDR']))
+	if (isset($_SERVER['REMOTE_ADDR']))
 	$_SESSION['last_spider_ip'] = $_SERVER['REMOTE_ADDR'];
 	$_SESSION['last_spider_name'] = $SEARCH_SPIDER;
-	if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
+	if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']))
 	$_SESSION['last_spider_lang'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
 	$_SESSION['wt_user'] = ""; // Don't allow search engine into user/admin mode.

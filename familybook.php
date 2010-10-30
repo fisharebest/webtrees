@@ -120,7 +120,7 @@ function print_descendency($person, $count) {
 	if ($numkids==0) {
 		$numkids = 1;
 		$tbwidth = $bwidth+16;
-		for($j=$count; $j<$dgenerations; $j++) {
+		for ($j=$count; $j<$dgenerations; $j++) {
 			echo "</td><td width=\"$bwidth\">";
 		}
 	}
@@ -149,7 +149,7 @@ function print_person_pedigree($pid, $count) {
 	if ($count>=$generations) return;
 	$famids = find_family_ids($pid);
 	$hheight = ($bhalfheight+3) * pow(2,($generations-$count-1));
-	foreach($famids as $indexval => $famid) {
+	foreach ($famids as $indexval => $famid) {
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 		$parents = find_parents($famid);
 		$height="100%";
