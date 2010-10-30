@@ -75,7 +75,7 @@ $show_full = "1";
 </script>
 <?php
 if (empty($SEARCH_SPIDER) && $controller->accept_success) {
-	print "<b>".i18n::translate('Changes successfully accepted into database')."</b><br />";
+	echo "<b>".i18n::translate('Changes successfully accepted into database')."</b><br />";
 }
 ?>
 <table align="center" width="95%">
@@ -132,5 +132,5 @@ if(empty($SEARCH_SPIDER))
 else {
 	if($SHOW_SPIDER_TAGLINE)
 		echo i18n::translate('Search Engine Spider Detected').": ".$SEARCH_SPIDER;
-	echo "\n</div>\n\t</body>\n</html>";
+	echo "</div></body></html>";
 }

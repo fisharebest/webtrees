@@ -58,7 +58,7 @@ class ServiceClient extends GedcomRecord {
 		//crate soap client class
 		//authenticate/get/set sid
 		parent::__construct($gedrec);
-		//print "creating new service client ".$this->xref;
+		//echo "creating new service client ".$this->xref;
 		//get the url from the gedcom
 		$this->url = get_gedcom_value("URL",1,$gedrec);
 		$this->gedfile = get_gedcom_value("_DBID", 1, $gedrec);
@@ -226,7 +226,7 @@ class ServiceClient extends GedcomRecord {
 			$localrec .= trim($subrec)."\n";
 		}
 		$localrec = trim($localrec);
-//print "[<pre>$localrec</pre>]";
+//echo "[<pre>$localrec</pre>]";
 		// Update the last change time
 		$pos1 = strpos($localrec, "1 CHAN");
 		if ($pos1!==false) {
@@ -245,7 +245,7 @@ class ServiceClient extends GedcomRecord {
 			$localrec .= $newgedrec;
 		}
 
-		//print "merged record is ".$localrec;
+		//echo "merged record is ".$localrec;
 		return $localrec;
 	}
 
@@ -377,7 +377,7 @@ class ServiceClient extends GedcomRecord {
 		global $GEDCOM;
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-		//print "<br />In MergeForUpdateFamily ".$Family1." ".$Family2;
+		//echo "<br />In MergeForUpdateFamily ".$Family1." ".$Family2;
 		//print_r($Familylist);
 		$FamilyListReturn=$Familylist;
 
@@ -430,13 +430,13 @@ class ServiceClient extends GedcomRecord {
 			// Children are looped to see if they need to be added or merged to an esisting child
 			foreach($children2 as $childID2=>$Child2){
 				if(!empty($Child2)) {
-					//print "<br/>child 2 Xref ".$Child2->getXref()."-".$childID2;
+					//echo "<br/>child 2 Xref ".$Child2->getXref()."-".$childID2;
 
 					$found = false;
 					//-- compare to children in local family
 					foreach($children1 as $childID1=>$Child1){
 						if(!empty($Child1)){
-							//print "<br/>child 2 Xref ".$Child2->getXref()." == ".$Child1->getXref();
+							//echo "<br/>child 2 Xref ".$Child2->getXref()." == ".$Child1->getXref();
 							$found=$this->ComparePeople($Child1,$Child2);
 							if ($found) break;
 						}
@@ -445,14 +445,14 @@ class ServiceClient extends GedcomRecord {
 						$childrec = $Child1->getGedcomRecord();
 						if (strpos($childrec, "1 RFN ".$this->xref.":")===false) {
 							$childrec .= "\n1 RFN ".$Child2->getXref();
-							//print "<br/> repalcing for child ".$Child1->getXref();
+							//echo "<br/> repalcing for child ".$Child1->getXref();
 							replace_gedrec($Child1->getXref(), WT_GED_ID, $childrec);
 							$this->setSameId($Child1->getXref(), $Child2->getXref());
 						}
 					} else {
 						$famupdated = true;
 						$famrec1 .="\n1 CHIL @".$Child2->getXref()."@";
-						//print "<br/> adding for child ".$Child2->getXref();
+						//echo "<br/> adding for child ".$Child2->getXref();
 					}
 				}
 			}
@@ -464,7 +464,7 @@ class ServiceClient extends GedcomRecord {
 			$famupdated = true;
 		}
 		if ($famupdated) {
-			//print "<br /> updating family record ".$family1->getXref();
+			//echo "<br /> updating family record ".$family1->getXref();
 			replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 		}
 
@@ -473,7 +473,7 @@ class ServiceClient extends GedcomRecord {
 			if(!empty($father2)){
 				$father1=$father2;
 				$famrec1 .="\n1 HUSB @".$father1->getXref()."@";
-				//print "<br/> adding for fahter ".$father1->getXref();
+				//echo "<br/> adding for fahter ".$father1->getXref();
 				replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 			}
 		} elseif(!empty($father2)){
@@ -481,7 +481,7 @@ class ServiceClient extends GedcomRecord {
 				$fatherrec = $father1->getGedcomRecord();
 				if (strpos($fatherrec, "1 RFN ".$this->xref.":")===false) {
 					$fatherrec .= "\n1 RFN ".$father2->getXref();
-					//print "<br/> repalcing for father ".$father1->getXref();
+					//echo "<br/> repalcing for father ".$father1->getXref();
 					replace_gedrec($father1->getXref(), WT_GED_ID, $fatherrec);
 					$this->setSameId($father1->getXref(), $father2->getXref());
 				}
@@ -492,7 +492,7 @@ class ServiceClient extends GedcomRecord {
 			if(!empty($mother2)){
 				$mother1=$mother2;
 				$famrec1 .="\n1 WIFE @".$mother1->getXref()."@";
-				//print "<br/> adding for mother ".$mother1->getXref();
+				//echo "<br/> adding for mother ".$mother1->getXref();
 				replace_gedrec($family1->getXref(), WT_GED_ID, $famrec1);
 			}
 		} else if(!empty($mother2)){
@@ -500,7 +500,7 @@ class ServiceClient extends GedcomRecord {
 				$motherrec = $mother1->getGedcomRecord();
 				if (strpos($motherrec, "1 RFN ".$this->xref.":")===false) {
 					$motherrec .= "\n1 RFN ".$mother2->getXref();
-					//print "<br/> repalcing for mother ".$mother1->getXref();
+					//echo "<br/> repalcing for mother ".$mother1->getXref();
 					replace_gedrec($mother1->getXref(), WT_GED_ID, $motherrec);
 					$this->setSameId($mother1->getXref(), $mother2->getXref());
 				}
@@ -578,7 +578,7 @@ class ServiceClient extends GedcomRecord {
 					if(!empty($Person2)){
 						if($this->ComparePeople($Person1,$Person2)){
 							$ChanceSameFamily+=1.0;
-							//print "<br />".$Person1->getXref()." equals ".$Person2->getXref();
+							//echo "<br />".$Person1->getXref()." equals ".$Person2->getXref();
 							break;
 						}
 					}
@@ -602,7 +602,7 @@ class ServiceClient extends GedcomRecord {
 		}
 		if($CountFamily1!=0&&$CountFamily2!=0){
 			$ChanceSame=(($ChanceSameFamily/$CountFamily1)+($ChanceSameFamily/$CountFamily2))/2;
-			//print "<br />chancesame=".$ChanceSameFamily." count1=".$CountFamily1." count2=".$CountFamily2." ".$family1->getXref()." compared to ".$family2->getXref()." is ".$ChanceSame;
+			//echo "<br />chancesame=".$ChanceSameFamily." count1=".$CountFamily1." count2=".$CountFamily2." ".$family1->getXref()." compared to ".$family2->getXref()." is ".$ChanceSame;
 		} else
 			return false;
 
@@ -734,7 +734,7 @@ class ServiceClient extends GedcomRecord {
 			if (PEAR::isError($result) || isset($result->faultcode) || get_class($result)=='SOAP_Fault' || is_object($result)) {
 				if (isset($result->faultstring)) {
 					AddToLog($result->faultstring, 'error');
-					print $result->faultstring;
+					echo $result->faultstring;
 				}
 				return $localrec;
 			}
@@ -760,7 +760,7 @@ class ServiceClient extends GedcomRecord {
 			if (PEAR::isError($result) || isset($result->faultcode) || is_object($result) && get_class($result)=='SOAP_Fault') {
 				if (isset($result->faultstring)) {
 					AddToLog($result->faultstring, 'error');
-					print $result->faultstring;
+					echo $result->faultstring;
 				}
 				return $localrec;
 			}
@@ -904,4 +904,3 @@ class ServiceClient extends GedcomRecord {
 		return null;
 	}
 }
-?>

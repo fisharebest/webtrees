@@ -52,11 +52,9 @@ function cut_html($string)
 
     while ($a = strstr($a, '&'))
     {
-        //echo "'", $a, "'\n";
         $b=strstr($a, ';');
         if (!$b)
         {
-            //echo "couper...\n";
             $nb=strlen($a);
             return substr($string, 0, strlen($string)-$nb);
         }
@@ -96,13 +94,13 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="al_reorder_media_update" />
-		<input type="hidden" name="pid" value="<?php print $pid; ?>" />
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
 		<input type="hidden" id="ord2" name="order2" value="" />
 
 		<center>
-		<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>" onclick="saveOrder();" ><?php print i18n::translate('Save');?></button>&nbsp;
-		<button type="submit" title="<?php print i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php print i18n::translate('Reset');?></button>&nbsp;
-		<button type="button" title="<?php print i18n::translate('Quit and return');?>" onClick="location.href='<?php echo WT_SCRIPT_NAME, "?pid=", $pid, "&tab=", $tabno; ?>'"><?php print i18n::translate('Cancel');?></button>
+		<button type="submit" title="<?php echo i18n::translate('Saves the sorted media to the database');?>" onclick="saveOrder();" ><?php echo i18n::translate('Save');?></button>&nbsp;
+		<button type="submit" title="<?php echo i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php echo i18n::translate('Reset');?></button>&nbsp;
+		<button type="button" title="<?php echo i18n::translate('Quit and return');?>" onClick="location.href='<?php echo WT_SCRIPT_NAME, "?pid=", $pid, "&tab=", $tabno; ?>'"><?php echo i18n::translate('Cancel');?></button>
 <?php
 /*
 		// Debug ---------------------------------------------------------------------------
@@ -120,7 +118,7 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 //------------------------------------------------------------------------------
 // Start Main Table
 //------------------------------------------------------------------------------
-// echo "<table border='0' width='100%' cellpadding=\"0\" ><tr>", "\n\n";
+// echo "<table border='0' width='100%' cellpadding=\"0\" ><tr>";
 
 //------------------------------------------------------------------------------
 // Build Thumbnail Rows
@@ -144,13 +142,13 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 // Build Relatives navigator from includes/controllers/individual_ctrl
 //------------------------------------------------------------------------------
 /*
-	echo '<td valign="top" align="center" width="220px">', "\n" ;
+	echo '<td valign="top" align="center" width="220px">';
 		echo "<table cellpadding=\"0\" style=\"margin-top:2px; margin-left:0px;\" ><tr><td width=\"220px\" class=\"optionbox\" align=\"center\">";
-		echo "<b>", i18n::translate('View Album of ...'), "</b><br /><br />" . "\n" ;
+		echo "<b>", i18n::translate('View Album of ...'), "</b><br /><br />";
 			$controller->fam_nav();
 		echo "<br />";
 		echo "</td></tr></table>";
-	echo "</td>" . "\n\n" ;
+	echo "</td>";
 */
 // -----------------------------------------------------------------------------
 // end Relatives navigator

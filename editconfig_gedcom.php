@@ -72,7 +72,7 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 				unlink($path.$filename);
 			}
 			if ($zip->extract(PCLZIP_OPT_REMOVE_ALL_PATH, PCLZIP_OPT_PATH, $path, PCLZIP_OPT_BY_NAME, $listitem["filename"]) == 0) {
-				print "ERROR cannot extract ZIP";
+				echo "ERROR cannot extract ZIP";
 			}
 			return $filename;
 		}
@@ -243,7 +243,7 @@ case 'update':
 	}
 	if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR)) {
 		$errors = true;
-		$error_msg .= "<span class=\"error\">".i18n::translate('The Media Firewall root directory you requested does not exist.  You must create it first.')."</span><br />\n";
+		$error_msg .= "<span class=\"error\">".i18n::translate('The Media Firewall root directory you requested does not exist.  You must create it first.')."</span><br />";
 	}
 	if (!$errors) {
 		// create the media directory
@@ -254,7 +254,7 @@ case 'update':
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY, WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
 					$errors = true;
-					$error_msg .= "<span class=\"error\">".i18n::translate('The protected media directory could not be created in the Media Firewall root directory.  Please create this directory and make it world-writable.')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />\n";
+					$error_msg .= "<span class=\"error\">".i18n::translate('The protected media directory could not be created in the Media Firewall root directory.  Please create this directory and make it world-writable.')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
 				}
 			}
 		}
@@ -266,7 +266,7 @@ case 'update':
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs", WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
 					$errors = true;
-					$error_msg .= "<span class=\"error\">".i18n::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />\n";
+					$error_msg .= "<span class=\"error\">".i18n::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
 				}
 			}
 		}
@@ -278,7 +278,7 @@ case 'update':
 				@copy($INDEX_DIRECTORY.".htaccess", $NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess");
 				if (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) {
 					$errors = true;
-					$error_msg .= "<span class=\"error\">".i18n::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />\n";
+					$error_msg .= "<span class=\"error\">".i18n::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
 				}
 			}
 		}
@@ -318,7 +318,7 @@ case 'update':
 			$fp = @fopen($whichFile, "wb");
 			if (!$fp) {
 				$errors = true;
-				$error_msg .= "<span class=\"error\">".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />\n";
+				$error_msg .= "<span class=\"error\">".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />";
 			} else {
 				fwrite($fp, $httext);
 				fclose($fp);
@@ -339,7 +339,7 @@ case 'update':
 			$fp = @fopen($whichFile, "wb");
 			if (!$fp) {
 				$errors = true;
-				$error_msg .= "<span class=\"error\">".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />\n";
+				$error_msg .= "<span class=\"error\">".i18n::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />";
 			} else {
 				fwrite($fp, $httext);
 				fclose($fp);
@@ -402,7 +402,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 
 <input type="hidden" name="action" value="update" />
 <?php
-	if (!empty($error_msg)) print "<br /><span class=\"error\">".$error_msg."</span><br />\n";
+	if (!empty($error_msg)) echo "<br /><span class=\"error\">".$error_msg."</span><br />";
 	$i = 0;
 ?>
 
@@ -439,7 +439,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Default person for pedigree and descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
 						</td>
 						<td class="optionbox width60 wrap">
-							<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php print $PEDIGREE_ROOT_ID; ?>" size="5" />
+							<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo $PEDIGREE_ROOT_ID; ?>" size="5" />
 							<?php
 								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
 								if ($PEDIGREE_ROOT_ID) {
@@ -524,43 +524,43 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</table>
 				<table class="facts_table">
 					<tr>
-						<td colspan="6" class="subbar" colspan="2"><?php print i18n::translate('ID settings'); ?></td>
+						<td colspan="6" class="subbar" colspan="2"><?php echo i18n::translate('ID settings'); ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?>
 						</td>
 						<td class="optionbox">
-							<input type="text" name="NEW_GEDCOM_ID_PREFIX" dir="ltr" value="<?php print $GEDCOM_ID_PREFIX; ?>" size="5" />
+							<input type="text" name="NEW_GEDCOM_ID_PREFIX" dir="ltr" value="<?php echo $GEDCOM_ID_PREFIX; ?>" size="5" />
 						</td>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?>
 						</td>
 						<td class="optionbox">
-							<input type="text" name="NEW_FAM_ID_PREFIX" dir="ltr" value="<?php print $FAM_ID_PREFIX; ?>" size="5" />
+							<input type="text" name="NEW_FAM_ID_PREFIX" dir="ltr" value="<?php echo $FAM_ID_PREFIX; ?>" size="5" />
 						</td>
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?>
 						</td>
 						<td class="optionbox">
-							<input type="text" name="NEW_SOURCE_ID_PREFIX" dir="ltr" value="<?php print $SOURCE_ID_PREFIX; ?>" size="5" />
+							<input type="text" name="NEW_SOURCE_ID_PREFIX" dir="ltr" value="<?php echo $SOURCE_ID_PREFIX; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Repository ID prefix'), help_link('REPO_ID_PREFIX'); ?></td>
-						<td class="optionbox"><input type="text" name="NEW_REPO_ID_PREFIX" dir="ltr" value="<?php print $REPO_ID_PREFIX; ?>" size="5" />
+						<td class="optionbox"><input type="text" name="NEW_REPO_ID_PREFIX" dir="ltr" value="<?php echo $REPO_ID_PREFIX; ?>" size="5" />
 						</td>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Media ID prefix'), help_link('MEDIA_ID_PREFIX'); ?></td>
-						<td class="optionbox"><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php print $MEDIA_ID_PREFIX; ?>" size="5" />
+						<td class="optionbox"><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php echo $MEDIA_ID_PREFIX; ?>" size="5" />
 						</td>
 						<td class="descriptionbox nowrap"><?php echo i18n::translate('Note ID prefix'), help_link('NOTE_ID_PREFIX'); ?></td>
-						<td class="optionbox"><input type="text" name="NEW_NOTE_ID_PREFIX" dir="ltr" value="<?php print $NOTE_ID_PREFIX; ?>" size="5" />
+						<td class="optionbox"><input type="text" name="NEW_NOTE_ID_PREFIX" dir="ltr" value="<?php echo $NOTE_ID_PREFIX; ?>" size="5" />
 						</td>
 					</tr>
 				</table>
 				<table class="facts_table">
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Contact Information'); ?></td>
+						<td class="subbar" colspan="2"><?php echo i18n::translate('Contact Information'); ?></td>
 					</tr>
 					<tr>
 						<?php
@@ -571,7 +571,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<td class="descriptionbox nowrap">
 							<?php echo i18n::translate('webtrees reply address'), help_link('WEBTREES_EMAIL'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php print $WEBTREES_EMAIL; ?>" size="50" dir="ltr" /></td>
+						<td class="optionbox width60"><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php echo $WEBTREES_EMAIL; ?>" size="50" dir="ltr" /></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
@@ -582,9 +582,9 @@ print_header(i18n::translate('GEDCOM configuration'));
 							$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
 							foreach (get_all_users() as $user_id=>$user_name) {
 								if (get_user_setting($user_id, 'verified_by_admin')) {
-									print "<option value=\"".$user_id."\"";
-									if ($CONTACT_USER_ID==$user_id) print " selected=\"selected\"";
-									print ">".getUserFullName($user_id)." - ".$user_name."</option>\n";
+									echo "<option value=\"".$user_id."\"";
+									if ($CONTACT_USER_ID==$user_id) echo " selected=\"selected\"";
+									echo ">".getUserFullName($user_id)." - ".$user_name."</option>";
 								}
 							}
 						?>
@@ -600,9 +600,9 @@ print_header(i18n::translate('GEDCOM configuration'));
 							$WEBMASTER_USER_ID=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
 							foreach (get_all_users() as $user_id=>$user_name) {
 								if (userIsAdmin($user_id)) {
-									print "<option value=\"".$user_id."\"";
-									if ($WEBMASTER_USER_ID==$user_id) print " selected=\"selected\"";
-									print ">".getUserFullName($user_id)." - ".$user_name."</option>\n";
+									echo "<option value=\"".$user_id."\"";
+									if ($WEBMASTER_USER_ID==$user_id) echo " selected=\"selected\"";
+									echo ">".getUserFullName($user_id)." - ".$user_name."</option>";
 								}
 							}
 						?>
@@ -610,7 +610,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('Web Site and META Tag Settings'); ?></td>
+						<td class="subbar" colspan="2"><?php echo i18n::translate('Web Site and META Tag Settings'); ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
@@ -623,7 +623,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
 						</td>
 						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" /><br />
-						<?php print i18n::translate('Leave this field empty to use the title of the currently active database.'); ?></td>
+						<?php echo i18n::translate('Leave this field empty to use the title of the currently active database.'); ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
@@ -697,7 +697,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?>
 						</td>
 						<td class="optionbox">
-							<input type="text" name="MAX_ALIVE_AGE" value="<?php print get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" />
+							<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" />
 						</td>
 					</tr>
 				</table>
@@ -791,7 +791,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php print i18n::translate('General'); ?></td>
+						<td class="subbar" colspan="2"><?php echo i18n::translate('General'); ?></td>
 					</tr>
 					<tr>
 						<td class="descriptionbox nowrap">
@@ -806,8 +806,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Multimedia directory'), help_link('MEDIA_DIRECTORY'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php print $MEDIA_DIRECTORY; ?>" dir="ltr" />
-							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) print "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>\n";?>
+							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" />
+							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<span class=\"error\">".i18n::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>";?>
 						</td>
 					</tr>
 					<tr>
@@ -815,7 +815,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Multi-Media directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php print $MEDIA_DIRECTORY_LEVELS; ?>" size="5" />
+							<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php echo $MEDIA_DIRECTORY_LEVELS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
@@ -823,7 +823,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php print $THUMBNAIL_WIDTH; ?>" size="5" />
+							<input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php echo $THUMBNAIL_WIDTH; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
@@ -884,7 +884,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('Media Firewall');?>
+							<?php echo i18n::translate('Media Firewall');?>
 						</td>
 					</tr>
 					<tr>
@@ -900,7 +900,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php print ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" /><br />
+							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php echo ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" /><br />
 						<?php echo i18n::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?>
 						</td>
 					</tr>
@@ -951,7 +951,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				<table class="facts_table">
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('Visitor options'); ?>
+							<?php echo i18n::translate('Visitor options'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -968,8 +968,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_PAGE_AFTER_LOGIN">
-								<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') print " selected=\"selected\""; ?>><?php print i18n::translate('Home'); ?></option>
-								<option value="mypage" <?php if ($PAGE_AFTER_LOGIN=='mypage') print " selected=\"selected\""; ?>><?php print i18n::translate('My Page'); ?></option>
+								<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Home'); ?></option>
+								<option value="mypage" <?php if ($PAGE_AFTER_LOGIN=='mypage') echo " selected=\"selected\""; ?>><?php echo i18n::translate('My Page'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -978,11 +978,11 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
 						</td>
 						<td class="optionbox width60"><select name="NEW_WELCOME_TEXT_AUTH_MODE">
-								<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') print "selected=\"selected\""; ?>><?php print i18n::translate('No predefined text'); ?></option>
-								<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states all users can request a user account'); ?></option>
-								<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
-								<option value="3" <?php if ($WELCOME_TEXT_AUTH_MODE=='3') print "selected=\"selected\""; ?>><?php print i18n::translate('Predefined text that states only family members can request a user account'); ?></option>
-								<option value="4" <?php if ($WELCOME_TEXT_AUTH_MODE=='4') print "selected=\"selected\""; ?>><?php print i18n::translate('Choose user defined welcome text typed below'); ?></option>
+								<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') echo "selected=\"selected\""; ?>><?php echo i18n::translate('No predefined text'); ?></option>
+								<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') echo "selected=\"selected\""; ?>><?php echo i18n::translate('Predefined text that states all users can request a user account'); ?></option>
+								<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') echo "selected=\"selected\""; ?>><?php echo i18n::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
+								<option value="3" <?php if ($WELCOME_TEXT_AUTH_MODE=='3') echo "selected=\"selected\""; ?>><?php echo i18n::translate('Predefined text that states only family members can request a user account'); ?></option>
+								<option value="4" <?php if ($WELCOME_TEXT_AUTH_MODE=='4') echo "selected=\"selected\""; ?>><?php echo i18n::translate('Choose user defined welcome text typed below'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1012,7 +1012,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('User options'); ?>
+							<?php echo i18n::translate('User options'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1058,7 +1058,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				<table class="facts_table">
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('Names');?>
+							<?php echo i18n::translate('Names');?>
 						</td>
 					</tr>
 					<tr>
@@ -1106,9 +1106,9 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_SURNAME_LIST_STYLE">
-								<option value="style1" <?php if ($SURNAME_LIST_STYLE=="style1") print "selected=\"selected\""; ?>><?php print i18n::translate('list'); ?></option>
-								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") print "selected=\"selected\""; ?>><?php print i18n::translate('table'); ?></option>
-								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") print "selected=\"selected\""; ?>><?php print i18n::translate('tag cloud'); ?></option>
+								<option value="style1" <?php if ($SURNAME_LIST_STYLE=="style1") echo "selected=\"selected\""; ?>><?php echo i18n::translate('list'); ?></option>
+								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") echo "selected=\"selected\""; ?>><?php echo i18n::translate('table'); ?></option>
+								<option value="style3" <?php if ($SURNAME_LIST_STYLE=="style3") echo "selected=\"selected\""; ?>><?php echo i18n::translate('tag cloud'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1117,7 +1117,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" />
+							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
@@ -1125,12 +1125,12 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php print get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" />
+							<input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('Charts');?>
+							<?php echo i18n::translate('Charts');?>
 						</td>
 					</tr>
 					<tr>
@@ -1139,8 +1139,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_PEDIGREE_LAYOUT">
-								<option value="yes" <?php if ($PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Landscape'); ?></option>
-								<option value="no" <?php if (!$PEDIGREE_LAYOUT) print "selected=\"selected\""; ?>><?php print i18n::translate('Portrait'); ?></option>
+								<option value="yes" <?php if ($PEDIGREE_LAYOUT) echo "selected=\"selected\""; ?>><?php echo i18n::translate('Landscape'); ?></option>
+								<option value="no" <?php if (!$PEDIGREE_LAYOUT) echo "selected=\"selected\""; ?>><?php echo i18n::translate('Portrait'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1149,7 +1149,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Default pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php print $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" />
+							<input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php echo $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
@@ -1157,7 +1157,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php print $MAX_PEDIGREE_GENERATIONS; ?>" size="5" />
+							<input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
@@ -1165,7 +1165,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php print $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" />
+							<input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php echo $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
@@ -1173,7 +1173,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php print $SHOW_PEDIGREE_PLACES; ?>" />
+							<input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php echo $SHOW_PEDIGREE_PLACES; ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -1182,10 +1182,10 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_ZOOM_BOXES">
-								<option value="disabled" <?php if ($ZOOM_BOXES=='disabled') print "selected=\"selected\""; ?>><?php print i18n::translate('Disabled'); ?></option>
-								<option value="mouseover" <?php if ($ZOOM_BOXES=='mouseover') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Over'); ?></option>
-								<option value="mousedown" <?php if ($ZOOM_BOXES=='mousedown') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Down'); ?></option>
-								<option value="click" <?php if ($ZOOM_BOXES=='click') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Click'); ?></option>
+								<option value="disabled" <?php if ($ZOOM_BOXES=='disabled') echo "selected=\"selected\""; ?>><?php echo i18n::translate('Disabled'); ?></option>
+								<option value="mouseover" <?php if ($ZOOM_BOXES=='mouseover') echo "selected=\"selected\""; ?>><?php echo i18n::translate('On Mouse Over'); ?></option>
+								<option value="mousedown" <?php if ($ZOOM_BOXES=='mousedown') echo "selected=\"selected\""; ?>><?php echo i18n::translate('On Mouse Down'); ?></option>
+								<option value="click" <?php if ($ZOOM_BOXES=='click') echo "selected=\"selected\""; ?>><?php echo i18n::translate('On Mouse Click'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1195,15 +1195,15 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_LINK_ICONS">
-								<option value="disabled" <?php if ($LINK_ICONS=='disabled') print "selected=\"selected\""; ?>><?php print i18n::translate('Disabled'); ?></option>
-								<option value="mouseover" <?php if ($LINK_ICONS=='mouseover') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Over'); ?></option>
-								<option value="click" <?php if ($LINK_ICONS=='click') print "selected=\"selected\""; ?>><?php print i18n::translate('On Mouse Click'); ?></option>
+								<option value="disabled" <?php if ($LINK_ICONS=='disabled') echo "selected=\"selected\""; ?>><?php echo i18n::translate('Disabled'); ?></option>
+								<option value="mouseover" <?php if ($LINK_ICONS=='mouseover') echo "selected=\"selected\""; ?>><?php echo i18n::translate('On Mouse Over'); ?></option>
+								<option value="click" <?php if ($LINK_ICONS=='click') echo "selected=\"selected\""; ?>><?php echo i18n::translate('On Mouse Click'); ?></option>
 							</select>
 						</td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('Individual pages');?>
+							<?php echo i18n::translate('Individual pages');?>
 						</td>
 					</tr>
 					<tr>
@@ -1273,7 +1273,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('Other');?>
+							<?php echo i18n::translate('Other');?>
 						</td>
 					</tr>
 					<tr>
@@ -1281,7 +1281,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Place levels to show on lists'), help_link('SHOW_LIST_PLACES'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php print $SHOW_LIST_PLACES; ?>" />
+							<input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php echo $SHOW_LIST_PLACES; ?>" />
 						</td>
 					</tr>
 					<tr>
@@ -1290,8 +1290,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<select name="NEW_POSTAL_CODE">
-								<option value="yes" <?php if ($POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('after')); ?></option>
-								<option value="no" <?php if (!$POSTAL_CODE) print "selected=\"selected\""; ?>><?php print ucfirst(i18n::translate('before')); ?></option>
+								<option value="yes" <?php if ($POSTAL_CODE) echo "selected=\"selected\""; ?>><?php echo ucfirst(i18n::translate('after')); ?></option>
+								<option value="no" <?php if (!$POSTAL_CODE) echo "selected=\"selected\""; ?>><?php echo ucfirst(i18n::translate('before')); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -1302,7 +1302,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				<table class="facts_table">
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('On charts');?>
+							<?php echo i18n::translate('On charts');?>
 						</td>
 					</tr>
 					<tr>
@@ -1358,12 +1358,12 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php echo i18n::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
 						</td>
 						<td class="optionbox width60">
-							<input type="text" size="50" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php print $CHART_BOX_TAGS; ?>" dir="ltr" /><?php print_findfact_link("NEW_CHART_BOX_TAGS", $GEDCOM); ?>
+							<input type="text" size="50" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php echo $CHART_BOX_TAGS; ?>" dir="ltr" /><?php print_findfact_link("NEW_CHART_BOX_TAGS", $GEDCOM); ?>
 						</td>
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('On individual pages');?>
+							<?php echo i18n::translate('On individual pages');?>
 						</td>
 					</tr>
 					<tr>
@@ -1416,7 +1416,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 					</tr>
 					<tr>
 						<td class="subbar" colspan="2">
-							<?php print i18n::translate('General');?>
+							<?php echo i18n::translate('General');?>
 						</td>
 					</tr>
 					<tr>
@@ -1481,7 +1481,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Facts for Individual records');?>
+						<?php echo i18n::translate('Facts for Individual records');?>
 					</td>
 				</tr>
 				<tr>
@@ -1505,7 +1505,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FACTS'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php print $QUICK_REQUIRED_FACTS; ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?>
+						<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php echo $QUICK_REQUIRED_FACTS; ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1518,7 +1518,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Facts for Family records') ;?>
+						<?php echo i18n::translate('Facts for Family records') ;?>
 					</td>
 				</tr>
 				<tr>
@@ -1542,7 +1542,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('New entry facts'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php print $QUICK_REQUIRED_FAMFACTS; ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?>
+						<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php echo $QUICK_REQUIRED_FAMFACTS; ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1555,7 +1555,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Facts for Source records');?>
+						<?php echo i18n::translate('Facts for Source records');?>
 					</td>
 				</tr>
 				<tr>
@@ -1584,7 +1584,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Facts for Repository records');?>
+						<?php echo i18n::translate('Facts for Repository records');?>
 					</td>
 				</tr>
 				<tr>
@@ -1613,7 +1613,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Advanced fact settings');?>
+						<?php echo i18n::translate('Advanced fact settings');?>
 					</td>
 				</tr>
 				<tr>
@@ -1621,7 +1621,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_ADVANCED_NAME_FACTS" name="NEW_ADVANCED_NAME_FACTS" value="<?php print $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" /><?php print_findfact_link("NEW_ADVANCED_NAME_FACTS", $GEDCOM); ?>
+						<input type="text" id="NEW_ADVANCED_NAME_FACTS" name="NEW_ADVANCED_NAME_FACTS" value="<?php echo $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" /><?php print_findfact_link("NEW_ADVANCED_NAME_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1629,12 +1629,12 @@ print_header(i18n::translate('GEDCOM configuration'));
 						<?php echo i18n::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?>
 					</td>
 					<td class="optionbox width60">
-						<input type="text" id="NEW_ADVANCED_PLAC_FACTS" name="NEW_ADVANCED_PLAC_FACTS" value="<?php print $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" /><?php print_findfact_link("NEW_ADVANCED_PLAC_FACTS", $GEDCOM); ?>
+						<input type="text" id="NEW_ADVANCED_PLAC_FACTS" name="NEW_ADVANCED_PLAC_FACTS" value="<?php echo $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" /><?php print_findfact_link("NEW_ADVANCED_PLAC_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
 					<td class="subbar" colspan="2">
-						<?php print i18n::translate('Other settings'); ?>
+						<?php echo i18n::translate('Other settings'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -1702,9 +1702,9 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<table class="facts_table" border="0">
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
-						<input type="submit" value="<?php print i18n::translate('Save configuration'); ?>" />
+						<input type="submit" value="<?php echo i18n::translate('Save configuration'); ?>" />
 						&nbsp;&nbsp;
-						<input type="reset" value="<?php print i18n::translate('Reset'); ?>" />
+						<input type="reset" value="<?php echo i18n::translate('Reset'); ?>" />
 					</td>
 				</tr>
 			</table>

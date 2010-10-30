@@ -171,12 +171,12 @@ if ($action == "choose" && $paramok) {
 	} else {
 		$record=Person::getInstance($linktoid);
 		echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-		if ($TEXT_DIRECTION=="rtl") print getRLM();
+		if ($TEXT_DIRECTION=="rtl") echo getRLM();
 		echo '(', $linktoid, ')';
-		if ($TEXT_DIRECTION=="rtl") print getRLM();
+		if ($TEXT_DIRECTION=="rtl") echo getRLM();
 	}
 	echo '<table><tr><td>';
-		print "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\" />";
+		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\" />";
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';
@@ -192,7 +192,7 @@ if ($action == "choose" && $paramok) {
 		echo '&nbsp;';
 		print_findsource_link("gid");
 	echo '</td></tr></table>';
-	print "<sub>" . i18n::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.') . "</sub>";
+	echo "<sub>" . i18n::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.') . "</sub>";
 
 
 	echo '<br /><br />';
@@ -202,14 +202,14 @@ if ($action == "choose" && $paramok) {
 	// Admin Option CHAN log update override =======================
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), "</td><td class=\"optionbox wrap\">\n";
+		echo i18n::translate('Admin Option'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) records'), help_link('no_update_CHAN'), '<br /><br />';
-		echo "</td></tr>\n";
+		echo "</td></tr>";
 	}
 	echo '</tr>';
 	echo '<input type="hidden" name="more_links" value="No_Values" />';

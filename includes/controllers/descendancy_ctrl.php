@@ -150,19 +150,19 @@ function print_child_descendancy(&$person, $depth) {
 
 	if (is_null($person)) return;
 	//print_r($person);
-	print "<li>";
-	print "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-	if ($depth==$this->generations) print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>";
+	echo "<li>";
+	echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
+	if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>";
 	else {
-		print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
-		print "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>";
+		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
+		echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>";
 	}
 	print_pedigree_person($person->getXref(), 1, 0, $personcount);
-	print "</td>";
+	echo "</td>";
 
 	// check if child has parents and add an arrow
-	print "<td>&nbsp;</td>";
-	print "<td>";
+	echo "<td>&nbsp;</td>";
+	echo "<td>";
 	$sfamids = $person->getChildFamilies();
 	foreach($sfamids as $famid => $family) {
 		$parents = find_parents($famid);
@@ -178,8 +178,8 @@ function print_child_descendancy(&$person, $depth) {
 
 	// d'Aboville child number
 	$level =$this->generations-$depth;
-	if ($this->show_full) print "<br /><br />&nbsp;";
-	print "<span dir=\"ltr\">"; //needed so that RTL languages will display this properly
+	if ($this->show_full) echo "<br /><br />&nbsp;";
+	echo "<span dir=\"ltr\">"; //needed so that RTL languages will display this properly
 	if (!isset($this->dabo_num[$level])) $this->dabo_num[$level]=0;
 	$this->dabo_num[$level]++;
 	$this->dabo_num[$level+1]=0;
@@ -188,13 +188,13 @@ function print_child_descendancy(&$person, $depth) {
 		$isf=$this->dabo_sex[$i];
 		if ($isf=="M") $isf="";
 		if ($isf=="U") $isf="NN";
-		print "<span class=\"person_box".$isf."\">&nbsp;".$this->dabo_num[$i]."&nbsp;</span>";
+		echo "<span class=\"person_box".$isf."\">&nbsp;".$this->dabo_num[$i]."&nbsp;</span>";
 		if ($i<$level) echo ".";
 	}
-	print "</span>";
-	print "</td></tr>";
-	print "</table>";
-	print "</li>";
+	echo "</span>";
+	echo "</td></tr>";
+	echo "</table>";
+	echo "</li>";
 
 	// loop for each spouse
 	$sfam = $person->getSpouseFamilies();
@@ -227,28 +227,28 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		if ($id==$person->getXref()) $id = $parents["HUSB"];
 
 		// print marriage info
-		print "<li>";
-		print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\" />";
-		print "<span class=\"details1\" style=\"white-space: nowrap; \" >";
-		print "<a href=\"#\" onclick=\"expand_layer('".$famid.$personcount."'); return false;\" class=\"top\"><img id=\"".$famid.$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
+		echo "<li>";
+		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\" />";
+		echo "<span class=\"details1\" style=\"white-space: nowrap; \" >";
+		echo "<a href=\"#\" onclick=\"expand_layer('".$famid.$personcount."'); return false;\" class=\"top\"><img id=\"".$famid.$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
 			$marriage->print_simple_fact();
 			echo '</a>';
 		}
-		print '</span>';
+		echo '</span>';
 
 		// print spouse
-		print "<ul style=\"list-style: none; display: block;\" id=\"".$famid.$personcount."\">";
-		print "<li>";
-		print "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
+		echo "<ul style=\"list-style: none; display: block;\" id=\"".$famid.$personcount."\">";
+		echo "<li>";
+		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
 		print_pedigree_person($id, 1, 0, $personcount);
-		print "</td>";
+		echo "</td>";
 
 		// check if spouse has parents and add an arrow
-		print "<td>&nbsp;</td>";
-		print "<td>";
+		echo "<td>&nbsp;</td>";
+		echo "<td>";
 		$sfamids = find_family_ids($id);
 		foreach($sfamids as $indexval => $sfamid) {
 			$parents = find_parents($sfamid);
@@ -261,31 +261,31 @@ function print_family_descendancy(&$person, &$family, $depth) {
 				}
 			}
 		}
-		if ($this->show_full) print "<br /><br />&nbsp;";
-		print "</td></tr>";
+		if ($this->show_full) echo "<br /><br />&nbsp;";
+		echo "</td></tr>";
 
 		// children
 		$children = $family->getChildren();
-		print "<tr><td colspan=\"3\" class=\"details1\" >&nbsp;&nbsp;";
+		echo "<tr><td colspan=\"3\" class=\"details1\" >&nbsp;&nbsp;";
 		if ($children) {
-			print translate_fact('NCHI').": ".count($children);
+			echo translate_fact('NCHI').": ".count($children);
 		} else {
 			// Distinguish between no children (NCHI 0) and no recorded
 			// children (no CHIL records)
 			if (strpos($family->getGedcomRecord(), "\n1 NCHI 0")) {
-				print translate_fact('NCHI').": ".count($children);
+				echo translate_fact('NCHI').": ".count($children);
 			} else {
-				print i18n::translate('No children');
+				echo i18n::translate('No children');
 			}
 		}
-		print "</td></tr></table>";
-		print "</li>";
+		echo "</td></tr></table>";
+		echo "</li>";
 		if ($depth>1) foreach ($children as $child) {
 			$personcount++;
 			$this->print_child_descendancy($child, $depth-1);
 		}
-		print "</ul>";
-		print "</li>";
+		echo "</ul>";
+		echo "</li>";
 	}
 }
 }

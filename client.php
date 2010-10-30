@@ -43,7 +43,7 @@ $READ_ONLY = ((isset($_SESSION['readonly']))&&($_SESSION['readonly']==true)) ? 1
 // Make sure there is at least one gedcom.
 if (count(get_all_gedcoms())==0) {
 	addToLog($action." ERROR 21: No Gedcoms available on this site.", 'debug');
-	print "ERROR 21: No Gedcoms available on this site.\n";
+	echo "ERROR 21: No Gedcoms available on this site.\n";
 	exit;
 }
 
@@ -51,7 +51,7 @@ $gedcom=safe_REQUEST($_REQUEST,'GEDCOM');
 if ($gedcom) {
 	if (!in_array($gedcom, get_all_gedcoms())) {
 		addToLog("ERROR 21: Invalid GEDCOM specified.", 'debug');
-		print "ERROR 21: Invalid GEDCOM specified.\n";
+		echo "ERROR 21: Invalid GEDCOM specified.\n";
 		exit;
 	}
 	$GEDCOM=$gedcom;
@@ -60,7 +60,7 @@ $GED_ID=get_id_from_gedcom($GEDCOM);
 
 if (!get_gedcom_setting($GED_ID, 'imported')) {
 	addToLog($action." ERROR 22: Gedcom [$GEDCOM] needs to be imported.", 'debug');
-	print "ERROR 22: Gedcom [$GEDCOM] needs to be imported.\n";
+	echo "ERROR 22: Gedcom [$GEDCOM] needs to be imported.\n";
 	exit;
 }
 
@@ -70,11 +70,11 @@ $action=safe_REQUEST($_REQUEST,'action');
 switch ($action) {
 case '':
 	addToLog("ERROR 1: No action specified.", 'debug');
-	print "ERROR 1: No action specified.\n";
+	echo "ERROR 1: No action specified.\n";
 	exit;
 case 'version':
 	addToLog($action." SUCCESS\n".WT_VERSION_TEXT."\n", 'debug');
-	print "SUCCESS\n".WT_VERSION_TEXT."\n";
+	echo "SUCCESS\n".WT_VERSION_TEXT."\n";
 	exit;
 case 'connect':
 	$username=safe_REQUEST($_REQUEST,'username');
@@ -85,18 +85,18 @@ case 'connect':
 			$stat=newConnection();
 			if ($stat!==false) {
 				addToLog($action." username=$username SUCCESS\n".$stat, 'debug');
-				print "SUCCESS\n".$stat;
+				echo "SUCCESS\n".$stat;
 			}
 			$_SESSION['connected']=$user_id;
 		} else {
 			addToLog($action." username=$username ERROR 10: Username and password key failed to authenticate.", 'debug');
-			print "ERROR 10: Username and password key failed to authenticate.\n";
+			echo "ERROR 10: Username and password key failed to authenticate.\n";
 		}
 	} else {
 		$stat=newConnection();
 		if ($stat!==false) {
 			addToLog($action." SUCCESS\n".$stat, 'debug');
-			print "SUCCESS\n".$stat;
+			echo "SUCCESS\n".$stat;
 		}
 		AddToLog('Read-Only Anonymous Client connection.', 'auth');
 		$_SESSION['connected']='Anonymous';
@@ -109,13 +109,13 @@ case 'listgedcoms':
 		$out_msg.="$gedcom\t".get_gedcom_setting($ged_id, 'title')."\n";
 	}
 	addToLog($action." ".$out_msg, 'debug');
-	print $out_msg;
+	echo $out_msg;
 	exit;
 default:
 	// All other actions require an authenticated connection
 	if (empty($_SESSION['connected'])){
 		addToLog($action." ERROR 12: use 'connect' action to initiate a session.", 'debug');
-		print "ERROR 12: use 'connect' action to initiate a session.\n";
+		echo "ERROR 12: use 'connect' action to initiate a session.\n";
 		exit;
 	}
 	break;
@@ -166,10 +166,10 @@ case 'get':
 			}
 		}
 		addToLog($action." xref=$xref ".$gedrecords, 'debug');
-		print "SUCCESS\n".$gedrecords;
+		echo "SUCCESS\n".$gedrecords;
 	} else {
 		addToLog($action." ERROR 3: No gedcom id specified.  Please specify a xref.", 'debug');
-		print "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
+		echo "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
 	}
 	exit;
 case 'getvar':
@@ -177,13 +177,13 @@ case 'getvar':
 	$public_vars = array("READ_ONLY","GEDCOM","PEDIGREE_ROOT_ID");
 	if ($var && in_array($var, $public_vars) && isset($$var)) {
 		addToLog($action." var=$var SUCCESS\n".$$var, 'debug');
-		print "SUCCESS\n".$$var;
+		echo "SUCCESS\n".$$var;
 	} else if (WT_USER_ID && $var && isset($$var) && !in_array($var, $CONFIG_VARS)) {
 		addToLog($action." var=$var SUCCESS\n".$$var, 'debug');
-		print "SUCCESS\n".$$var;
+		echo "SUCCESS\n".$$var;
 	} else {
 		addToLog($action." var=$var ERROR 13: Invalid variable specified.  Please provide a variable.", 'debug');
-		print "ERROR 13: Invalid variable specified.\n";
+		echo "ERROR 13: Invalid variable specified.\n";
 	}
 	exit;
 case 'update':
@@ -194,18 +194,18 @@ case 'update':
 			if (empty($_SESSION['readonly']) && WT_USER_CAN_EDIT && canDisplayRecord($GED_ID, $gedrec)) {
 				$gedrec = preg_replace(array("/\\\\+r/","/\\\\+n/"), array("\r","\n"), $gedrec);
 				replace_gedrec($xref, $GED_ID, $gedrec);
-				print "SUCCESS\n";
+				echo "SUCCESS\n";
 			} else {
 				addToLog($action." xref=$xref ERROR 11: No write privileges for this record.", 'debug');
-				print "ERROR 11: No write privileges for this record.\n";
+				echo "ERROR 11: No write privileges for this record.\n";
 			}
 		} else {
 			addToLog($action." xref=$xref ERROR 8: No gedcom record provided.  Unable to process request.", 'debug');
-			print "ERROR 8: No gedcom record provided.  Unable to process request.\n";
+			echo "ERROR 8: No gedcom record provided.  Unable to process request.\n";
 		}
 	} else {
 		addToLog($action." ERROR 3: No gedcom id specified.  Please specify a xref.", 'debug');
-		print "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
+		echo "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
 	}
 	exit;
 case 'append':
@@ -216,15 +216,15 @@ case 'append':
 			$xref = append_gedrec($gedrec, $GED_ID);
 			if ($xref) {
 				addToLog($action." gedrec=$gedrec SUCCESS\n$xref", 'debug');
-				print "SUCCESS\n$xref\n";
+				echo "SUCCESS\n$xref\n";
 			}
 		} else {
 			addToLog($action." gedrec=$gedrec ERROR 11: No write privileges for this record.", 'debug');
-			print "ERROR 11: No write privileges for this record.\n";
+			echo "ERROR 11: No write privileges for this record.\n";
 		}
 	} else {
 		addToLog($action." ERROR 8: No gedcom record provided.  Unable to process request.", 'debug');
-		print "ERROR 8: No gedcom record provided.  Unable to process request.\n";
+		echo "ERROR 8: No gedcom record provided.  Unable to process request.\n";
 	}
 	exit;
 case 'delete':
@@ -234,15 +234,15 @@ case 'delete':
 			$success = delete_gedrec($xref, $GED_ID);
 			if ($success) {
 				addToLog($action." xref=$xref SUCCESS", 'debug');
-				print "SUCCESS\n";
+				echo "SUCCESS\n";
 			}
 		} else {
 			addToLog($action." xref=$xref ERROR 11: No write privileges for this record.", 'debug');
-			print "ERROR 11: No write privileges for this record.\n";
+			echo "ERROR 11: No write privileges for this record.\n";
 		}
 	} else {
 		addToLog($action." ERROR 3: No gedcom id specified.  Please specify a xref.", 'debug');
-		print "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
+		echo "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
 	}
 	exit;
 case 'getnext':
@@ -255,10 +255,10 @@ case 'getnext':
 			$gedrec = privatize_gedcom($gedrec);
 		}
 		addToLog($action." xref=$xref SUCCESS\n".trim($gedrec), 'debug');
-		print "SUCCESS\n".trim($gedrec);
+		echo "SUCCESS\n".trim($gedrec);
 	} else {
 		addToLog($action." ERROR 3: No gedcom id specified.  Please specify a xref.", 'debug');
-		print "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
+		echo "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
 	}
 	exit;
 case 'getprev':
@@ -271,24 +271,24 @@ case 'getprev':
 			$gedrec = privatize_gedcom($gedrec);
 		}
 		addToLog($action." xref=$xref SUCCESS\n".trim($gedrec), 'debug');
-		print "SUCCESS\n".trim($gedrec);
+		echo "SUCCESS\n".trim($gedrec);
 	} else {
 		addToLog($action." ERROR 3: No gedcom id specified.  Please specify a xref.", 'debug');
-		print "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
+		echo "ERROR 3: No gedcom id specified.  Please specify a xref.\n";
 	}
 	exit;
 case 'search':
 	$query=safe_REQUEST($_REQUEST,'query');
 	if ($query) {
 		$sindilist=search_indis(array($query), array($GED_ID), 'AND', true);
-		print "SUCCESS\n";
+		echo "SUCCESS\n";
 		addToLog($action." query=$query SUCCESS", 'debug');
 		foreach($sindilist as $indi) {
 			echo $indi->getXref(), "\n";
 		}
 	} else {
 		addToLog($action." ERROR 15: No query specified.  Please specify a query.", 'debug');
-		print "ERROR 15: No query specified.  Please specify a query.\n";
+		echo "ERROR 15: No query specified.  Please specify a query.\n";
 	}
 	exit;
 case 'soundex':
@@ -299,14 +299,14 @@ case 'soundex':
 
 	if ($lastname || $firstname) {
 		$sindilist=search_indis_soundex($soundex, $lastname, $firstname, $place, array($GED_ID));
-		print "SUCCESS\n";
+		echo "SUCCESS\n";
 		addToLog($action." lastname=$lastname firstname=$firstname SUCCESS", 'debug');
 		foreach($sindilist as $indi) {
 			echo $indi->getXref(), "\n";
 		}
 	} else {
 		addToLog($action." ERROR 16: No names specified.  Please specify a firstname or a lastname.", 'debug');
-		print "ERROR 16: No names specified.  Please specify a firstname or a lastname.\n";
+		echo "ERROR 16: No names specified.  Please specify a firstname or a lastname.\n";
 	}
 	exit;
 case 'getxref':
@@ -323,29 +323,29 @@ case 'getxref':
 
 	if (!$position || !$type) {
 		addToLog($action." type=$type position=$position ERROR 18: Invalid \$type specification.  Valid types are INDI, FAM, SOUR, REPO, NOTE, OBJE, or OTHER", 'debug');
-		print "ERROR 18: Invalid \$type or \$position specification.  Valid types are INDI, FAM, SOUR, REPO, NOTE, OBJE, or OTHER\n";
+		echo "ERROR 18: Invalid \$type or \$position specification.  Valid types are INDI, FAM, SOUR, REPO, NOTE, OBJE, or OTHER\n";
 		exit;
 	}
 	switch ($position) {
 	case 'first':
 		$xref=get_first_xref($type, $GED_ID);
 		addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
-		print "SUCCESS\n$xref\n";
+		echo "SUCCESS\n$xref\n";
 		break;
 	case 'last':
 		$xref=get_last_xref($type, $GED_ID);
 		addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
-		print "SUCCESS\n$xref\n";
+		echo "SUCCESS\n$xref\n";
 		break;
 	case 'next':
 		$xref=get_next_xref($xref, $GED_ID);
 		addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
-		print "SUCCESS\n$xref\n";
+		echo "SUCCESS\n$xref\n";
 		break;
 	case 'prev':
 		$xref=get_prev_xref($xref, $GED_ID);
 		addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
-		print "SUCCESS\n$xref\n";
+		echo "SUCCESS\n$xref\n";
 		break;
 	case 'all':
 		switch($type) {
@@ -377,9 +377,9 @@ case 'getxref':
 					WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_file=? AND o_type=? ORDER BY o_id")
 					->execute(array($GED_ID, $type));
 		}
-		print "SUCCESS\n";
+		echo "SUCCESS\n";
 		foreach ($statement->fetchOneColumn() as $id) {
-			print "{$id}\n";
+			echo "{$id}\n";
 		}
 		addToLog($action." type=$type position=$position ", 'debug');
 		break;
@@ -389,11 +389,11 @@ case 'getxref':
 			$xref = append_gedrec($gedrec, $GED_ID);
 			if ($xref) {
 				addToLog($action." type=$type position=$position SUCCESS\n$xref", 'debug');
-				print "SUCCESS\n$xref\n";
+				echo "SUCCESS\n$xref\n";
 			}
 		} else {
 			addToLog($action." type=$type position=$position ERROR 11: No write privileges for this record.", 'debug');
-			print "ERROR 11: No write privileges for this record.\n";
+			echo "ERROR 11: No write privileges for this record.\n";
 		}
 		break;
 	}
@@ -416,10 +416,10 @@ case 'uploadmedia':
 	}
 	if (!empty($error)) {
 		addToLog($action." $error", 'debug');
-		print $error."\n";
+		echo $error."\n";
 	} else {
 		addToLog($action." SUCCESS", 'debug');
-		print "SUCCESS\n";
+		echo "SUCCESS\n";
 	}
 	exit;
 case 'getchanges':
@@ -427,20 +427,19 @@ case 'getchanges':
 	if ($lastdate->isOK()) {
 		if ($lastdate->MinJD()<WT_SERVER_JD-180) {
 			addToLog($action." ERROR 24: You cannot retrieve updates for more than 180 days.", 'debug');
-			print "ERROR 24: You cannot retrieve updates for more than 180 days.\n";
+			echo "ERROR 24: You cannot retrieve updates for more than 180 days.\n";
 		} else {
-			print "SUCCESS\n";
+			echo "SUCCESS\n";
 			foreach(get_recent_changes($lastdate->MinJD()) as $xref) {
 				echo "{$xref}\n";
 			}
 		}
 	} else {
 		addToLog($action." ERROR 23: Invalid date parameter.  Please use a valid date in the GEDCOM format DD MMM YYYY.", 'debug');
-		print "ERROR 23: Invalid date parameter.  Please use a valid date in the GEDCOM format DD MMM YYYY.\n";
+		echo "ERROR 23: Invalid date parameter.  Please use a valid date in the GEDCOM format DD MMM YYYY.\n";
 	}
 	exit;
 default:
 	addToLog($action." ERROR 2: Unable to process request.  Unknown action.", 'debug');
-	print "ERROR 2: Unable to process request.  Unknown action.\n";
+	echo "ERROR 2: Unable to process request.  Unknown action.\n";
 }
-?>

@@ -55,31 +55,31 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	// If media file is missing from "media" directory, but is referenced in Gedcom
 	if (!media_exists($mainMedia)) {
 		if (!file_exists($rowm['m_file']) && !isset($rowm['m_file'])) {
-			print "<tr>";
-				print "<td valign=\"top\" rowspan=\"2\" >";
-					print "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"82px\" alt=\"\"></img>";
-				print "</td>". "\n";
-				print "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
-					print "<center><br /><img src=\"themes/" . strtolower($theme_name) . "/images/media.gif\" height=\"30\" border=\"0\" />";
-					print "<font size=\"1\"><br />" . i18n::translate('File not found.') . "</font></center>";
-				print "</td>";
-			print "</tr>". "\n";
+			echo "<tr>";
+				echo "<td valign=\"top\" rowspan=\"2\" >";
+					echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"82px\" alt=\"\"></img>";
+				echo "</td>";
+				echo "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
+					echo "<center><br /><img src=\"themes/" . strtolower($theme_name) . "/images/media.gif\" height=\"30\" border=\"0\" />";
+					echo "<font size=\"1\"><br />" . i18n::translate('File not found.') . "</font></center>";
+				echo "</td>";
+			echo "</tr>";
 		} else if (!file_exists($rowm['m_file'])) {
-			print "<li class=\"li_norm\" >";
-			print "<table class=\"pic\" width=\"50px\" border=\"0\" >";
-			print "<tr>";
-				print "<td valign=\"top\" rowspan=\"2\" >";
-					print "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
-				print "</td>". "\n";
-				print "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
-					print "<center><br /><img src=\"themes/" . strtolower($theme_name) . "/images/media.gif\" height=\"30\" border=\"0\" />";
-					print "<font size=\"1\"><br />" . i18n::translate('File not found.') . "</font></center>";
-				print "</td>";
-				print "</tr>". "\n";
+			echo "<li class=\"li_norm\" >";
+			echo "<table class=\"pic\" width=\"50px\" border=\"0\" >";
+			echo "<tr>";
+				echo "<td valign=\"top\" rowspan=\"2\" >";
+					echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
+				echo "</td>";
+				echo "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
+					echo "<center><br /><img src=\"themes/" . strtolower($theme_name) . "/images/media.gif\" height=\"30\" border=\"0\" />";
+					echo "<font size=\"1\"><br />" . i18n::translate('File not found.') . "</font></center>";
+				echo "</td>";
+				echo "</tr>";
 
 		} else {
-			print "<li class=\"li_norm\" >";
-			print "<table class=\"pic\" width=\"50px\" border=\"0\" >";
+			echo "<li class=\"li_norm\" >";
+			echo "<table class=\"pic\" width=\"50px\" border=\"0\" >";
 		}
 	// Else Media files are present in "media" directory
 	} else {
@@ -90,16 +90,16 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			// Media is NOT linked to private person
 			// If reorder media has been clicked
 			if (isset($reorder) && $reorder==1) {
-				print "<li class=\"facts_value\" style=\"border:0px;\" id=\"li_" . $rowm['m_media'] . "\" >";
+				echo "<li class=\"facts_value\" style=\"border:0px;\" id=\"li_" . $rowm['m_media'] . "\" >";
 
 			// Else If reorder media has NOT been clicked
 			// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
 			} else if ($rtype=='new'){
-				print "<li class=\"li_new\">" . "\n";
+				echo "<li class=\"li_new\">";
 			} else if ($rtype=='old'){
-				print "<li class=\"li_old\">" . "\n";
+				echo "<li class=\"li_old\">";
 			} else {
-				print "<li class=\"li_norm\">" . "\n";
+				echo "<li class=\"li_norm\">";
 			}
 		}
 	}
@@ -207,9 +207,9 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		// Continue menu construction
 		// If media file is missing from "media" directory, but is referenced in Gedcom
 		if (!media_exists($rowm['m_file']) && !media_exists($mainMedia)) {
-			$menu->addLabel("\n<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . i18n::translate('Edit')." (". $rowm["m_media"].")" . "\n", "right");
+			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . i18n::translate('Edit')." (". $rowm["m_media"].")", "right");
 		} else {
-			$menu->addLabel("\n<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . PrintReady($mtitle) . "\n", "right");
+			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . PrintReady($mtitle), "right");
 		}
 		// Next line removed to avoid gallery thumbnail duplication
 		// $menu["link"] = mediaInfo['url'];
@@ -283,23 +283,23 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				// Start Thumbnail Enclosure table ---------------------------------------------
 				// Pull table up 90px if media object is a "streetview"
 				if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
-					print "<table width=\"10px\" style=\"margin-top:-90px;\" class=\"pic\" border=\"0\"><tr>" . "\n";
+					echo "<table width=\"10px\" style=\"margin-top:-90px;\" class=\"pic\" border=\"0\"><tr>";
 				} else {
-					print "<table width=\"10px\" class=\"pic\" border=\"0\"><tr>" . "\n";
+					echo "<table width=\"10px\" class=\"pic\" border=\"0\"><tr>";
 				}
-				print "<td align=\"center\" rowspan=\"2\" >";
-				print "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
-				print "</td>". "\n";
+				echo "<td align=\"center\" rowspan=\"2\" >";
+				echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
+				echo "</td>";
 
 				// Check for Notes associated media item
 				if ($reorder) {
 					// If reorder media has been clicked
-					print "<td width=\"90% align=\"center\"><b><font size=\"2\" style=\"cursor:move;margin-bottom:2px;\">" . $rowm['m_media'] . "</font></b></td>";
-					print "</tr>";
+					echo "<td width=\"90% align=\"center\"><b><font size=\"2\" style=\"cursor:move;margin-bottom:2px;\">" . $rowm['m_media'] . "</font></b></td>";
+					echo "</tr>";
 				}
 				$item++;
 
-				print "<td colspan=\"3\" valign=\"middle\" align=\"center\" >". "\n";
+				echo "<td colspan=\"3\" valign=\"middle\" align=\"center\" >";
 				// If not reordering, enable Lightbox or popup and show thumbnail tooltip ------
 				if (!$reorder) {
 					echo '<a href="', $mediaInfo['url'], '">';
@@ -310,16 +310,16 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$height = 78;
 			$size = findImageSize($mediaInfo['thumb']);
 			if ($size[1]<$height) $height = $size[1];
-			print "<img src=\"{$mediaInfo['thumb']}\" border=\"0\" height=\"{$height}\"" ;
+			echo "<img src=\"{$mediaInfo['thumb']}\" border=\"0\" height=\"{$height}\"" ;
 
 			// print browser tooltips associated with image ----------------------------------------
-			print " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\"  />";
+			echo " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\"  />";
 
 			// Close anchor --------------------------------------------------------------
 			if ($mainFileExists) {
-				print "</a>" . "\n";
+				echo "</a>";
 			}
-			print "</td></tr>" . "\n";
+			echo "</td></tr>";
 
 			//View Edit Menu ----------------------------------
 			if (!$reorder) {
@@ -330,10 +330,10 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				echo $menu->getMenu();
 				echo "</td>";
 				echo "<td width=\"5px\"></td>";
-				echo "</tr>" . "\n";
+				echo "</tr>";
 			}
 
-			// print "</table>" . "\n";
+			// echo "</table>";
 		}
 
 	} // NOTE End If Show fact details
@@ -349,18 +349,17 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo $menu->getMenu();
 			echo "</td>";
 			echo "<td ></td>";
-			echo "</tr>" . "\n";
+			echo "</tr>";
 		}
 	}
 
 	//close off the table
-	print "</table>";
+	echo "</table>";
 
 	$media_data = $rowm['m_media'];
-	print "<input type=\"hidden\" name=\"order1[$media_data]\" value=\"$sort_i\" />" . "\n";
+	echo "<input type=\"hidden\" name=\"order1[$media_data]\" value=\"$sort_i\" />";
 	$sort_i++;
 
-	print "</li>";
-	print "\n\n";
+	echo "</li>";
 	return true;
 }

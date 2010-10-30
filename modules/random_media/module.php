@@ -110,21 +110,21 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$error = false;
 				$value = array_rand($medialist);
 				if (WT_DEBUG) {
-					print "<br />";print_r($medialist[$value]);print "<br />";
-					print "Trying ".$medialist[$value]["XREF"]."<br />";
+					echo "<br />";print_r($medialist[$value]);echo "<br />";
+					echo "Trying ".$medialist[$value]["XREF"]."<br />";
 				}
 				$links = $medialist[$value]["LINKS"];
 				$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
-				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";}
 
 				$disp &= canDisplayRecord($medialist[$value]["GEDFILE"], $medialist[$value]["GEDCOM"]);
 
-				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." Failed to pass privacy</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." Failed to pass privacy</span><br />";}
 
 				$isExternal = isFileExternal($medialist[$value]["FILE"]);
 
 				if ($block && !$isExternal) $disp &= ($medialist[$value]["THUMBEXISTS"]>0);
-				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." thumbnail file could not be found</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." thumbnail file could not be found</span><br />";}
 
 				// Filter according to format and type  (Default: unless configured otherwise, don't filter)
 				if ($medialist[$value]['FORM']!='' && !array_key_exists($medialist[$value]['FORM'], $filters)) {
@@ -136,7 +136,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} elseif (!empty($medialist[$value]["TYPE"]) && !$filters[$medialist[$value]["TYPE"]]) {
 					$disp=false;
 				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." failed Format or Type filters</span><br />";
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." failed Format or Type filters</span><br />";
 				}
 
 				if ($disp && count($links) != 0){
@@ -152,7 +152,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 								$objectRefLevel = $match2[1];
 								if ($filter=="indi" && $objectRefLevel!="1") $disp = false;
 								if ($filter=="event" && $objectRefLevel=="1") $disp = false;
-								if (WT_DEBUG && !$disp && !$error) {$error = true; print "<span class=\"error\">".$medialist[$value]["XREF"]." failed to pass config filter</span><br />";}
+								if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." failed to pass config filter</span><br />";}
 							}
 							else $disp = false;
 						}
@@ -164,7 +164,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				//-- otherwise remove the private media item from the list
 				else {
-					if (WT_DEBUG) print "<span class=\"error\">".$medialist[$value]["XREF"]." Will not be shown</span><br />";
+					if (WT_DEBUG) echo "<span class=\"error\">".$medialist[$value]["XREF"]." Will not be shown</span><br />";
 					unset($medialist[$value]);
 				}
 				//-- if there are no more media items, then try to get some more
@@ -265,7 +265,7 @@ function openPic(filename, width, height) {
 			if (WT_USE_LIGHTBOX) {
 				// $content .= " ><a href=\"javascript:;\" onclick=\"return openPic('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
 				// $content .= " ><a href=\"javascript:;\" onclick=\"return openImage('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
-				// $content .= "><a href=\"" . $medialist[$value]["FILE"] . "\" rel=\"clearbox[general_4]\" title=\"" . $mediaid . "\">" . "\n";
+				// $content .= "><a href=\"" . $medialist[$value]["FILE"] . "\" rel=\"clearbox[general_4]\" title=\"" . $mediaid . "\">";
 				$content .= " ><a href=\"mediaviewer.php?mid=".$mediaid."\">";
 			}else
 // ---------------------------------------------------------------------------------------------
@@ -420,43 +420,43 @@ function openPic(filename, width, height) {
 				<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_avi"
-				<?php if ($filters['avi']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;avi&nbsp;&nbsp;</td>
+				<?php if ($filters['avi']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;avi&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_bmp"
-				<?php if ($filters['bmp']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;bmp&nbsp;&nbsp;</td>
+				<?php if ($filters['bmp']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;bmp&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_gif"
-				<?php if ($filters['gif']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;gif&nbsp;&nbsp;</td>
+				<?php if ($filters['gif']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;gif&nbsp;&nbsp;</td>
 				</tr>
 		<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_jpeg"
-				<?php if ($filters['jpeg']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;jpeg&nbsp;&nbsp;</td>
+				<?php if ($filters['jpeg']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;jpeg&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_mp3"
-				<?php if ($filters['mp3']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;mp3&nbsp;&nbsp;</td>
+				<?php if ($filters['mp3']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;mp3&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_ole"
-				<?php if ($filters['ole']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;ole&nbsp;&nbsp;</td>
+				<?php if ($filters['ole']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;ole&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_pcx"
-				<?php if ($filters['pcx']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;pcx&nbsp;&nbsp;</td>
+				<?php if ($filters['pcx']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;pcx&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_pdf"
-				<?php if ($filters['pdf']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;pdf&nbsp;&nbsp;</td>
+				<?php if ($filters['pdf']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;pdf&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_png"
-				<?php if ($filters['png']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;png&nbsp;&nbsp;</td>
+				<?php if ($filters['png']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;png&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_tiff"
-				<?php if ($filters['tiff']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;tiff&nbsp;&nbsp;</td>
+				<?php if ($filters['tiff']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;tiff&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_wav"
-				<?php if ($filters['wav']) print " checked=\"checked\""; ?> />&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
+				<?php if ($filters['wav']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
 					<td class="width33">&nbsp;</td>
 					<td class="width33">&nbsp;</td>
 				</tr>
@@ -473,11 +473,11 @@ function openPic(filename, width, height) {
 					$i++;
 					if ($i > 3) {
 						$i = 1;
-						print "</tr><tr>";
+						echo "</tr><tr>";
 					}
-					print "<td class=\"width33\"><input type=\"checkbox\" value=\"yes\" name=\"filter_".$typeName."\"";
-					if ($filters[$typeName]) print " checked=\"checked\"";
-					print " />&nbsp;&nbsp;".$typeValue."&nbsp;&nbsp;</td>";
+					echo "<td class=\"width33\"><input type=\"checkbox\" value=\"yes\" name=\"filter_".$typeName."\"";
+					if ($filters[$typeName]) echo " checked=\"checked\"";
+					echo " />&nbsp;&nbsp;".$typeValue."&nbsp;&nbsp;</td>";
 				}
 				?>
 				</tr>

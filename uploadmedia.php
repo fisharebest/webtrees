@@ -61,7 +61,7 @@ print_header(i18n::translate('Upload media files'));
 		if (value.substr(value.length-1,1) == "/") value = value.substr(0, value.length-1);
 		if (value.substr(0,1) == "/") value = value.substr(1, value.length-1);
 		result = value.split("/");
-		if (result.length > <?php print $MEDIA_DIRECTORY_LEVELS; ?>) {
+		if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
 			alert('<?php echo i18n::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS); ?>');
 			folder.focus();
 			return false;
@@ -71,7 +71,7 @@ print_header(i18n::translate('Upload media files'));
 </script>
 <center>
 <?php
-print "<span class=\"subheaders\">".i18n::translate('Upload media files')."</span><br /><br />";
+echo "<span class=\"subheaders\">".i18n::translate('Upload media files')."</span><br /><br />";
 $action = safe_POST('action');
 if ($action == "upload") {
 	process_uploadMedia_form();
@@ -80,9 +80,9 @@ if ($action == "upload") {
 // Check if Media Directory is writeable or if Media features are enabled
 // If one of these is not true then do not continue
 if (!dir_is_writable($MEDIA_DIRECTORY) || !$MULTI_MEDIA) {
-	print "<span class=\"error\"><b>";
-	print i18n::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
-	print "</b></span><br />";
+	echo "<span class=\"error\"><b>";
+	echo i18n::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
+	echo "</b></span><br />";
 } else {
 	show_mediaUpload_form('uploadmedia.php', false); // We have the green light to upload media, print the form
 }

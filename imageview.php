@@ -171,32 +171,31 @@ print_simple_header(i18n::translate('Image viewer'));
 -->
 </script>
 <?php
-print "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
+echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
 $isExternal = isFileExternal($filename);
 if (!$isExternal && !media_exists($filename) ) {
-	print "<span class=\"error\">".i18n::translate('File not found.')."&nbsp;".$filename."</span>";
-	print "<br /><br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".i18n::translate('Close Window')."</a></div>\n";
+	echo "<span class=\"error\">".i18n::translate('File not found.')."&nbsp;".$filename."</span>";
+	echo "<br /><br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".i18n::translate('Close Window')."</a></div>";
 } else {
-	print "<center><font size=\"6\"><a href=\"javascript:;\" onclick=\"zoomin(); return false;\">+</a> <a href=\"javascript:;\" onclick=\"zoomout();\">&ndash;</a> </font>";
-	print "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%\n";
-	print "<input type=\"button\" value=\"".i18n::translate('Reset')."\" onclick=\"resetimage(); return false;\" />\n";
-	print "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".urlencode(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".i18n::translate('View image details')."</a>\n";
-	print "</center>\n";
+	echo "<center><font size=\"6\"><a href=\"javascript:;\" onclick=\"zoomin(); return false;\">+</a> <a href=\"javascript:;\" onclick=\"zoomout();\">&ndash;</a> </font>";
+	echo "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%";
+	echo "<input type=\"button\" value=\"".i18n::translate('Reset')."\" onclick=\"resetimage(); return false;\" />";
+	echo "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".urlencode(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".i18n::translate('View image details')."</a>";
+	echo "</center>";
 	$imgsize = findImageSize($filename);
 	$imgwidth = $imgsize[0]+2;
 	$imgheight = $imgsize[1]+2;
-	print "<script language=\"JavaScript\" type=\"text/javascript\">\n";
-	print "var imgwidth = $imgwidth-5;\n var imgheight = $imgheight-5;\n";
-	print "var landscape = false;\n";
-	print "if (imgwidth > imgheight) landscape = true;\n";
-	print "</script>\n";
-	print '<br /><center><div id="imagecropper" style="position: relative; border: outset white 3px; background-color: black; overflow: auto; vertical-align: middle; text-align: center; width: '.$imgwidth.'px; height: '.$imgheight.'px; ">';
-	print "\n<img id=\"theimage\" src=\"$filename\" style=\"position: absolute; left: 1px; top: 1px; cursor: move;\" onmousedown=\"panimage(); return false;\" alt=\"\" />\n";
-	print '</div></center>';
+	echo "<script language=\"JavaScript\" type=\"text/javascript\">";
+	echo "var imgwidth = $imgwidth-5; var imgheight = $imgheight-5;";
+	echo "var landscape = false;";
+	echo "if (imgwidth > imgheight) landscape = true;";
+	echo "</script>";
+	echo '<br /><center><div id="imagecropper" style="position: relative; border: outset white 3px; background-color: black; overflow: auto; vertical-align: middle; text-align: center; width: '.$imgwidth.'px; height: '.$imgheight.'px; ">';
+	echo "<img id=\"theimage\" src=\"$filename\" style=\"position: absolute; left: 1px; top: 1px; cursor: move;\" onmousedown=\"panimage(); return false;\" alt=\"\" />";
+	echo '</div></center>';
 }
-print "</form>\n";
-print "<div style=\"position: relative; \">\n";
-print "</div>\n";
-print "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".i18n::translate('Close Window')."</a></div><br />\n";
+echo "</form>";
+echo "<div style=\"position: relative; \">";
+echo "</div>";
+echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".i18n::translate('Close Window')."</a></div><br />";
 print_simple_footer();
-?>

@@ -89,11 +89,11 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 		$media_found = false;
 		if (!$this->controller->indi->canDisplayDetails()) {
-			print "<table class=\"facts_table\" cellpadding=\"0\">\n";
-			print "<tr><td class=\"facts_value\">";
+			echo "<table class=\"facts_table\" cellpadding=\"0\">";
+			echo "<tr><td class=\"facts_value\">";
 			print_privacy_error();
-			print "</td></tr>";
-			print "</table>";
+			echo "</td></tr>";
+			echo "</table>";
 		}else{
 			if (file_exists("modules/lightbox/album.php")) {
 				include_once('modules/lightbox/album.php');

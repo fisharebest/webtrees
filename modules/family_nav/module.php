@@ -143,7 +143,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			</tr>
 			<?php
 			if (isset($people["husb"])) {
-				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel() . "&nbsp;". "\n");
+				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel());
 				// $menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -159,15 +159,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]);?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]);?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
-						print PrintReady($people["husb"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+						echo PrintReady($people["husb"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -175,7 +175,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 
 			if (isset($people["wife"])) {
-				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel() . "&nbsp;". "\n");
+				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -191,15 +191,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
-						print PrintReady($people["wife"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+						echo PrintReady($people["wife"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -211,7 +211,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				foreach($people["children"] as $key=>$child) {
 				if ($pid == $child->getXref() ){
 				}else{
-					$menu = new Menu("&nbsp;" . $child->getLabel() . "\n");
+					$menu = new Menu("&nbsp;" . $child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
@@ -228,7 +228,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 					?>
 					<tr>
-						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php
 						if ($pid == $child->getXref() ) {
 							echo $child->getLabel();
@@ -237,16 +237,16 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						}
 						?>
 						</td>
-						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
+						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
 							<?php
 							if ($pid == $child->getXref()) {
-								print "<span style=\"font: 12px tahoma, arial, helvetica, sans-serif;\">".PrintReady($child->getFullName())."</span>";
-								print "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">" . $BirthYr . " - " . $DeathYr . "</span>";
+								echo "<span style=\"font: 12px tahoma, arial, helvetica, sans-serif;\">".PrintReady($child->getFullName())."</span>";
+								echo "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">" . $BirthYr . " - " . $DeathYr . "</span>";
 							}else{
-								print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
-								print PrintReady($child->getFullName());
-								print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-								print "</a>";
+								echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+								echo PrintReady($child->getFullName());
+								echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+								echo "</a>";
 							}
 							?>
 						</td>
@@ -282,9 +282,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (isset($people["husb"]) ) {
 				$menu = new Menu();
 				if ($people["husb"]->getLabel() == ".") {
-					$menu->addLabel(i18n::translate('Step-Father')."\n");
+					$menu->addLabel(i18n::translate('Step-Father'));
 				}else{
-					$menu->addLabel($people["husb"]->getLabel()."\n");
+					$menu->addLabel($people["husb"]->getLabel());
 				}
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
@@ -302,15 +302,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				?>
 
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>"  nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?>"  nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]); ?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
-						print PrintReady($people["husb"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+						echo PrintReady($people["husb"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -323,9 +323,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (isset($people["wife"]) ) {
 				$menu = new Menu();
 				if ($people["wife"]->getLabel() == ".") {
-					$menu->addLabel(i18n::translate('Step-Mother')."\n");
+					$menu->addLabel(i18n::translate('Step-Mother'));
 				}else{
-					$menu->addLabel($people["wife"]->getLabel()."\n");
+					$menu->addLabel($people["wife"]->getLabel());
 				}
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
@@ -342,15 +342,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
-						print PrintReady($people["wife"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+						echo PrintReady($people["wife"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -361,7 +361,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (isset($people["children"])) {
 				$elderdate = $family->getMarriageDate();
 				foreach($people["children"] as $key=>$child) {
-					$menu = new Menu($child->getLabel()."\n");
+					$menu = new Menu($child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
@@ -377,15 +377,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
 					?>
 					<tr>
-						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 							<?php echo $menu->getMenu(); ?>
 						</td>
-						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
+						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
-							print PrintReady($child->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+							echo PrintReady($child->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 							?>
 						</td>
 					</tr>
@@ -420,7 +420,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 			$styleadd = "";
 			if ( isset($people["husb"]) && $spousetag == 'HUSB' ) {
-				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel() . "&nbsp;". "\n");
+				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -436,19 +436,19 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]); ?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
 						if ($pid == $people["husb"]->getXref()) {
-							print PrintReady($people["husb"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo PrintReady($people["husb"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						}else{
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
-							print PrintReady($people["husb"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+							echo PrintReady($people["husb"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 						}
 						?>
 					</td>
@@ -457,7 +457,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 
 			if ( isset($people["wife"]) && $spousetag == 'WIFE') {
-				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel() . "&nbsp;". "\n");
+				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -473,19 +473,19 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
 						if ($pid == $people["wife"]->getXref()) {
-							print PrintReady($people["wife"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo PrintReady($people["wife"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						}else{
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
-							print PrintReady($people["wife"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+							echo PrintReady($people["wife"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 						}
 						?>
 					</td>
@@ -496,7 +496,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$styleadd = "";
 			if (isset($people["children"])) {
 				foreach($people["children"] as $key=>$child) {
-					$menu = new Menu("&nbsp;" . $child->getLabel() . "&nbsp;". "\n");
+					$menu = new Menu("&nbsp;" . $child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
@@ -512,15 +512,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
 					?>
 					<tr>
-						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
 							<?php echo $menu->getMenu(); ?>
 						</td>
-						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
+						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
-							print PrintReady($child->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+							echo PrintReady($child->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 							?>
 						</td>
 					</tr>

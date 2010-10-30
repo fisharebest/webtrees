@@ -164,7 +164,7 @@ if ($quitReason != "") {
 		AddToLog("MSG>{$quitReason}; script terminated. UA>{$ua}< >{$_SERVER["REQUEST_URI"]}<", 'auth');
 	}
 	header("HTTP/1.0 403 Forbidden");
-	print "Hackers are not welcome here.";
+	echo "Hackers are not welcome here.";
 	exit;
 }
 

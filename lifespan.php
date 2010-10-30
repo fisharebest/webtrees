@@ -58,7 +58,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	//-->
 	</script>
 
-<h2><?php print i18n::translate('Lifespan chart'); ?></h2>
+<h2><?php echo i18n::translate('Lifespan chart'); ?></h2>
 <table><tr><td>
 <form name="people" action="lifespan.php">
 
@@ -67,17 +67,17 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		if (!isset($col)) $col = 0;
 		?>
 	<table>
-		<tr><td class="person<?php print $col; ?>" style="padding: 5px" valign="top">
+		<tr><td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
 			<?php echo i18n::translate('Add another person to chart'), help_link('add_person'), '<br />', i18n::translate('Person ID'); ?>
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />
 			<?php print_findindi_link("newpid",""); ?>
 			<br />
-			<div style="text-align: center"><input type="checkbox" checked="checked" value="yes" name="addFamily"/><?php print i18n::translate('Include Immediate Family');?></div>
+			<div style="text-align: center"><input type="checkbox" checked="checked" value="yes" name="addFamily"/><?php echo i18n::translate('Include Immediate Family');?></div>
 			<br />
-			<div style="text-align: center"><input type="submit" value="<?php print i18n::translate('Show'); ?>" /></div>
+			<div style="text-align: center"><input type="submit" value="<?php echo i18n::translate('Show'); ?>" /></div>
 		</td></tr>
 	</table>
-	<?php if (count($controller->pids)<11) { ?><br /><a href="timeline.php"><b><?php print i18n::translate('Show Timeline chart'); ?></b></a><br /><br /><?php } ?>
+	<?php if (count($controller->pids)<11) { ?><br /><a href="timeline.php"><b><?php echo i18n::translate('Show Timeline chart'); ?></b></a><br /><br /><?php } ?>
 
 </form>
 <script type="text/javascript">
@@ -127,7 +127,7 @@ function scroll(move)
 var numOfIncrease = 0;
 var numOfDecrease = 0;
 var font = 12;
-var zoomfactor = <?php print $zoomfactor; ?>;
+var zoomfactor = <?php echo $zoomfactor; ?>;
 
 function startZoom(move)
 {
@@ -303,10 +303,10 @@ var oldMx = 0;
 	<table>
 		<tr>
 			<td rowspan="2"><?php echo help_link('timeline_control'); ?></td>
-			<td align="center"><?php print i18n::translate('Speed');?></td>
-				<td align="center"><?php print i18n::translate('Begin Year');?></td>
-				<td align="center"><?php print i18n::translate('End Year');?></td>
-				<td align="center"><?php print translate_fact('PLAC');?></td>
+			<td align="center"><?php echo i18n::translate('Speed');?></td>
+				<td align="center"><?php echo i18n::translate('Begin Year');?></td>
+				<td align="center"><?php echo i18n::translate('End Year');?></td>
+				<td align="center"><?php echo translate_fact('PLAC');?></td>
 		</tr>
 		<tr>
 			<td><select name="speedMenu" size="1">
@@ -316,16 +316,16 @@ var oldMx = 0;
 				<option value="1">4</option>
 
 				</select></td>
-			<td><input type="text" name="beginYear" size="5" value="<?php if (isset($beginYear)) print $beginYear; ?>" /></td>
-			<td><input type="text" name="endYear" size="5" value="<?php if (isset($endYear)) print $endYear; ?>" /></td>
-			<td><input type="text" name="place" size="15" value="<?php if (isset($place)) print $place; ?>"/></td>
-			<td><input type="submit" name="search" value="<?php print i18n::translate('Search'); ?>" /></td>
-		<td><input type="button" value="<?php print i18n::translate('Clear Chart'); ?>" onclick="window.location = 'lifespan.php?clear=1';" /></td>
+			<td><input type="text" name="beginYear" size="5" value="<?php if (isset($beginYear)) echo $beginYear; ?>" /></td>
+			<td><input type="text" name="endYear" size="5" value="<?php if (isset($endYear)) echo $endYear; ?>" /></td>
+			<td><input type="text" name="place" size="15" value="<?php if (isset($place)) echo $place; ?>"/></td>
+			<td><input type="submit" name="search" value="<?php echo i18n::translate('Search'); ?>" /></td>
+		<td><input type="button" value="<?php echo i18n::translate('Clear Chart'); ?>" onclick="window.location = 'lifespan.php?clear=1';" /></td>
 		</tr>
 	</table>
 	<?php
 	$people = count($controller->people);
-	print "<br /><b>".i18n::plural('%d Individual', '%d Individuals', $people, $people)."</b>";
+	echo "<br /><b>".i18n::plural('%d Individual', '%d Individuals', $people, $people)."</b>";
 	?>
 </form>
 </td></tr></table>
@@ -341,18 +341,18 @@ var oldMx = 0;
 		<table style="margin-left: 20px" dir="ltr" border="0" cellpadding="0">
 		<tr>
 			<td></td>
-			<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsuparrow"]; ?>" border="0" alt="" /></a></td>
+			<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()"><img src="<?php echo $WT_IMAGES["lsuparrow"]; ?>" border="0" alt="" /></a></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><a href="#" onclick="return false;" onmousedown="startScroll('right')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsltarrow"]; ?>" border="0" alt="" /></a></td>
-			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('increase')"><img src="<?php print $WT_IMAGES["zoomin"]; ?>" border="0" alt="" /></a> --></td>
-			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('decrease')"><img src="<?php print $WT_IMAGES["zoomout"]; ?>" border="0" alt="" /></a> --></td>
-			<td><a href="#" onclick="return false;" onmousedown="startScroll('left')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsrtarrow"]; ?>" border="0" alt="" /></a></td>
+			<td><a href="#" onclick="return false;" onmousedown="startScroll('right')" onmouseup="stopScroll()"><img src="<?php echo $WT_IMAGES["lsltarrow"]; ?>" border="0" alt="" /></a></td>
+			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('increase')"><img src="<?php echo $WT_IMAGES["zoomin"]; ?>" border="0" alt="" /></a> --></td>
+			<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom('decrease')"><img src="<?php echo $WT_IMAGES["zoomout"]; ?>" border="0" alt="" /></a> --></td>
+			<td><a href="#" onclick="return false;" onmousedown="startScroll('left')" onmouseup="stopScroll()"><img src="<?php echo $WT_IMAGES["lsrtarrow"]; ?>" border="0" alt="" /></a></td>
 		</tr>
 		<tr>
 		<td> </td>
-		<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('up')" onmouseup="stopScroll()"><img src="<?php print $WT_IMAGES["lsdnarrow"]; ?>" border="0" alt="" /></a></td>
+		<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll('up')" onmouseup="stopScroll()"><img src="<?php echo $WT_IMAGES["lsdnarrow"]; ?>" border="0" alt="" /></a></td>
 	<td> </td>
 	</tr>
 	</table>
@@ -361,8 +361,8 @@ var oldMx = 0;
 </div>
 <script language="JavaScript" type="text/javascript">
 <!--
-var maxY = 80-<?php print $maxY; ?>; // Sets the boundaries for how far the timeline can move in the up direction
-var maxX = <?php if(!isset($maxX)) $maxX = 0; print $maxX; ?>;  // Sets the boundaries for how far the timeline can move in the left direction
+var maxY = 80-<?php echo $maxY; ?>; // Sets the boundaries for how far the timeline can move in the up direction
+var maxX = <?php if(!isset($maxX)) $maxX = 0; echo $maxX; ?>;  // Sets the boundaries for how far the timeline can move in the left direction
 
 //-->
 </script>

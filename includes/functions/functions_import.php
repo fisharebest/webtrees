@@ -993,7 +993,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 		$sql_insert_media_mapping->execute(array($m_media, $gid, $count, $ged_id, $objref));
 		return "{$objlevel} OBJE @{$m_media}@\n";
 	} else {
-		print "Media reference error ".$objrec;
+		echo "Media reference error ".$objrec;
 		return "";
 	}
 }
@@ -1045,7 +1045,7 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 		}
 		**/
 		$new_m_media = $old_m_media;
-		//print "RECORD: old $old_m_media new $new_m_media<br />";
+		//echo "RECORD: old $old_m_media new $new_m_media<br />";
 		$gedrec = str_replace("@" . $old_m_media . "@", "@" . $new_m_media . "@", $gedrec);
 		$media = new Media($gedrec);
 		//--check if we already have a similar object
@@ -1233,7 +1233,7 @@ function update_record($gedrec, $ged_id, $delete) {
 	if (preg_match('/^0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
 		list(,$gid, $type)=$match;
 	} else {
-		print "ERROR: Invalid gedcom record.";
+		echo "ERROR: Invalid gedcom record.";
 		return false;
 	}
 

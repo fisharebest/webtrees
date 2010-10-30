@@ -37,8 +37,8 @@ define('WT_MEDIA_REORDER_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-	print "<br /><b>".i18n::translate('Re-order media')."</b>";
-	print "&nbsp --- &nbsp;" . i18n::translate('Click a row, then drag-and-drop to re-order media ');
+	echo "<br /><b>".i18n::translate('Re-order media')."</b>";
+	echo "&nbsp --- &nbsp;" . i18n::translate('Click a row, then drag-and-drop to re-order media ');
 
 	global $MULTI_MEDIA, $MEDIA_EXTERNAL, $MEDIATYPE;
 	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION;
@@ -46,22 +46,20 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	global $edit, $tabno, $currtab;
 	global $ids, $pid, $related, $level, $gedrec, $media_data, $order, $order1, $order2, $j;
 
-	print "\n";
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="reorder_media_update" />
-		<input type="hidden" name="pid" value="<?php print $pid; ?>" />
-		<input type="hidden" name="currtab" value="<?php print $currtab; ?>" />
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
+		<input type="hidden" name="currtab" value="<?php echo $currtab; ?>" />
 <!-- <input type="hidden" name="option" value="bybirth" /> -->
 
 		<p><center>
-		<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>"><?php print i18n::translate('Save');?></button>
-		<button type="submit" title="<?php print i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php print i18n::translate('Reset');?></button>
-		<button type="submit" title="<?php print i18n::translate('Quit and return');?>" onclick="window.close();"><?php print i18n::translate('Cancel');?></button>
+		<button type="submit" title="<?php echo i18n::translate('Saves the sorted media to the database');?>"><?php echo i18n::translate('Save');?></button>
+		<button type="submit" title="<?php echo i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo i18n::translate('Reset');?></button>
+		<button type="submit" title="<?php echo i18n::translate('Quit and return');?>" onclick="window.close();"><?php echo i18n::translate('Cancel');?></button>
 		</center>
 <ul id="reorder_media_list">
 	<?php
-	print "\n";
 	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 
 	//related=true means show related items
@@ -168,14 +166,12 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 			$res = media_reorder_row($rtype, $rowm, $pid);
 			$media_found = $media_found || $res;
 			$foundObjs[$rowm['m_media']] = true;
-			print "\n\n";
 			$j++;
 		}
 	}
 	?>
 </ul>
 <?php
-print "\n";
 ?>
 	<script type="text/javascript" language="javascript">
 	// <![CDATA[
@@ -197,20 +193,20 @@ print "\n";
 	<?php
 	if (WT_USER_IS_ADMIN) {
 		echo "<table width=97%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">\n";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr></table><br />\n";
+		echo "</td></tr></table><br />";
 	}
 	?>
-	<button type="submit" title="<?php print i18n::translate('Saves the sorted media to the database');?>"><?php print i18n::translate('Save');?></button>
-	<button type="submit" title="<?php print i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php print i18n::translate('Reset');?></button>
-	<button type="submit" title="<?php print i18n::translate('Quit and return');?>" onclick="window.close();"><?php print i18n::translate('Cancel');?></button>
+	<button type="submit" title="<?php echo i18n::translate('Saves the sorted media to the database');?>"><?php echo i18n::translate('Save');?></button>
+	<button type="submit" title="<?php echo i18n::translate('Reset to the original order');?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo i18n::translate('Reset');?></button>
+	<button type="submit" title="<?php echo i18n::translate('Quit and return');?>" onclick="window.close();"><?php echo i18n::translate('Cancel');?></button>
 	</center></p>
 	</form>

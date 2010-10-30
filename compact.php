@@ -56,11 +56,11 @@ if (WT_USE_LIGHTBOX) {
 
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
-print "\n\t<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">\n\t\t";
-print "<h2>" . i18n::translate('Compact Chart') . ":";
-print "<br />".PrintReady($name) ;
-if ($addname != "") print "<br />" . PrintReady($addname);
-print "</h2>";
+echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">";
+echo "<h2>" . i18n::translate('Compact Chart') . ":";
+echo "<br />".PrintReady($name) ;
+if ($addname != "") echo "<br />" . PrintReady($addname);
+echo "</h2>";
 
 // -- print the form
 ?>
@@ -73,8 +73,8 @@ function paste_id(value) {
 //-->
 </script>
 <?php
-echo "\n\t</td><td><form name=\"people\" id=\"people\" method=\"get\" action=\"?\">";
-echo "\n\t\t<table class=\"list_table $TEXT_DIRECTION\">\n\t\t";
+echo "</td><td><form name=\"people\" id=\"people\" method=\"get\" action=\"?\">";
+echo "<table class=\"list_table $TEXT_DIRECTION\">";
 echo "<tr>";
 
 // NOTE: Root ID
@@ -83,26 +83,26 @@ echo i18n::translate('Root Person ID'), help_link('rootid'), "</td>";
 echo "<td class=\"optionbox vmiddle\">";
 echo "<input class=\"pedigree_form\" type=\"text\" name=\"rootid\" id=\"rootid\" size=\"3\" value=\"$rootid\" />";
 print_findindi_link("rootid","");
-print "</td>";
+echo "</td>";
 
 // NOTE: submit
 echo "<td class=\"facts_label03\" rowspan=\"3\">";
 echo "<input type=\"submit\" value=\"".i18n::translate('View')."\" />";
-echo "</td>\n</tr>\n";
+echo "</td></tr>";
 
 if ($SHOW_HIGHLIGHT_IMAGES) {
-	echo "<tr>\n";
+	echo "<tr>";
 	echo "<td class=\"descriptionbox\">";
 	echo i18n::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES');
-	echo "</td>\n";
-	echo "<td class=\"optionbox\">\n";
+	echo "</td>";
+	echo "<td class=\"optionbox\">";
 	echo "<input name=\"showthumbs\" type=\"checkbox\" value=\"1\"";
-	if ($showthumbs) print " checked=\"checked\"";
-	echo " /></td>\n</tr>\n";
+	if ($showthumbs) echo " checked=\"checked\"";
+	echo " /></td></tr>";
 }
 
 echo "</table>";
-echo "</form>\n";
+echo "</form>";
 echo "</td></tr></table>";
 
 // process the tree
@@ -126,163 +126,163 @@ print_td_person(26);
 echo "</tr>";
 
 // 2
-print "<tr>";
-print "<td style='text-align:center;'>"; print_arrow_person(16, "up"); print "</td>";
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(18, "up"); print "</td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(24, "up"); print "</td>";
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(26, "up"); print "</td>";
-print "</tr>";
+echo "<tr>";
+echo "<td style='text-align:center;'>"; print_arrow_person(16, "up"); echo "</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(18, "up"); echo "</td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(24, "up"); echo "</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(26, "up"); echo "</td>";
+echo "</tr>";
 
 // 3
-print "<tr>";
+echo "<tr>";
 print_td_person(8);
-print "<td style='text-align:center;'>"; print_arrow_person(8, "left"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(8, "left"); echo "</td>";
 print_td_person(4);
-print "<td style='text-align:center;'>"; print_arrow_person(9, "right"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(9, "right"); echo "</td>";
 print_td_person(9);
-print "<td></td>";
+echo "<td></td>";
 print_td_person(12);
-print "<td style='text-align:center;'>"; print_arrow_person(12, "left"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(12, "left"); echo "</td>";
 print_td_person(6);
-print "<td style='text-align:center;'>"; print_arrow_person(13, "right"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(13, "right"); echo "</td>";
 print_td_person(13);
-print "</tr>";
+echo "</tr>";
 
 // 4
-print "<tr>";
-print "<td style='text-align:center;'>"; print_arrow_person(17, "down"); print "</td>";
-print "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(4, "up"); print "</td>";
-print "<td style='text-align:center;'>"; print_arrow_person(19, "down"); print "</td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(25, "down"); print "</td>";
-print "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(6, "up"); print "</td>";
-print "<td style='text-align:center;'>"; print_arrow_person(27, "down"); print "</td>";
-print "</tr>";
+echo "<tr>";
+echo "<td style='text-align:center;'>"; print_arrow_person(17, "down"); echo "</td>";
+echo "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(4, "up"); echo "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(19, "down"); echo "</td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(25, "down"); echo "</td>";
+echo "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(6, "up"); echo "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(27, "down"); echo "</td>";
+echo "</tr>";
 
 // 5
-print "<tr>";
+echo "<tr>";
 print_td_person(17);
 print_td_person(19);
-print "<td></td>";
+echo "<td></td>";
 print_td_person(25);
 print_td_person(27);
-print "</tr>";
+echo "</tr>";
 
 // 6
-print "<tr>";
-print "<td></td>";
-print "<td></td>";
-print "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-print "<td></td>";
-print "<td></td>";
-print "</tr>";
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "</tr>";
 
 // 7
-print "<tr>";
-print "<td></td>";
-print "<td></td>";
+echo "<tr>";
+echo "<td></td>";
+echo "<td></td>";
 print_td_person(2);
-print "<td>";
-print "</td>";
+echo "<td>";
+echo "</td>";
 
-print "<td colspan='3'>";
-print "<table width='100%'><tr>";
-print "<td style='text-align:center;' width='25%'>"; print_arrow_person(2, "left"); print "</td>";
+echo "<td colspan='3'>";
+echo "<table width='100%'><tr>";
+echo "<td style='text-align:center;' width='25%'>"; print_arrow_person(2, "left"); echo "</td>";
 print_td_person(1);
-print "<td style='text-align:center;' width='25%'>"; print_arrow_person(3, "right"); print "</td>";
-print "</tr></table>";
-print "</td>";
+echo "<td style='text-align:center;' width='25%'>"; print_arrow_person(3, "right"); echo "</td>";
+echo "</tr></table>";
+echo "</td>";
 
-print "<td>";
-print "</td>";
+echo "<td>";
+echo "</td>";
 print_td_person(3);
-print "<td></td>";
-print "<td></td>";
-print "</tr>";
+echo "<td></td>";
+echo "<td></td>";
+echo "</tr>";
 
 // 8
-print "<tr>";
-print "<td>&nbsp;</td>";
-print "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(5, "down"); print "</td>";
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
-print "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(7, "down"); print "</td>";
-print "<td></td>";
-print "</tr>";
+echo "<tr>";
+echo "<td>&nbsp;</td>";
+echo "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(5, "down"); echo "</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td rowspan='3' colspan='3' style='text-align:center;'>"; print_arrow_person(7, "down"); echo "</td>";
+echo "<td></td>";
+echo "</tr>";
 
 // 9
-print "<tr>";
+echo "<tr>";
 print_td_person(20);
 print_td_person(22);
-print "<td></td>";
+echo "<td></td>";
 print_td_person(28);
 print_td_person(30);
-print "</tr>";
+echo "</tr>";
 
 // 10
-print "<tr>";
-print "<td style='text-align:center;'>"; print_arrow_person(20, "up"); print "</td>";
-print "<td style='text-align:center;'>"; print_arrow_person(22, "up"); print "</td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(28, "up"); print "</td>";
-print "<td style='text-align:center;'>"; print_arrow_person(30, "up"); print "</td>";
-print "</tr>";
+echo "<tr>";
+echo "<td style='text-align:center;'>"; print_arrow_person(20, "up"); echo "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(22, "up"); echo "</td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(28, "up"); echo "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(30, "up"); echo "</td>";
+echo "</tr>";
 
 // 11
-print "<tr>";
+echo "<tr>";
 print_td_person(10);
-print "<td style='text-align:center;'>"; print_arrow_person(10, "left"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(10, "left"); echo "</td>";
 print_td_person(5);
-print "<td style='text-align:center;'>"; print_arrow_person(11, "right"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(11, "right"); echo "</td>";
 print_td_person(11);
-print "<td></td>";
+echo "<td></td>";
 print_td_person(14);
-print "<td style='text-align:center;'>"; print_arrow_person(14, "left"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(14, "left"); echo "</td>";
 print_td_person(7);
-print "<td style='text-align:center;'>"; print_arrow_person(15, "right"); print "</td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(15, "right"); echo "</td>";
 print_td_person(15);
-print "</tr>";
+echo "</tr>";
 
 // 12
-print "<tr>";
-print "<td style='text-align:center;'>"; print_arrow_person(21, "down"); print "</td>";
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(23, "down"); print "</td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(29, "down"); print "</td>";
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
-print "<td style='text-align:center;'>"; print_arrow_person(31, "down"); print "</td>";
-print "</tr>";
+echo "<tr>";
+echo "<td style='text-align:center;'>"; print_arrow_person(21, "down"); echo "</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(23, "down"); echo "</td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(29, "down"); echo "</td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td style='text-align:center;'>"; print_arrow_person(31, "down"); echo "</td>";
+echo "</tr>";
 
 // 13
-print "<tr>";
+echo "<tr>";
 print_td_person(21);
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
 print_td_person(23);
-print "<td></td>";
+echo "<td></td>";
 print_td_person(29);
-print "<td></td>";
-print "<td></td>";
-print "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
+echo "<td></td>";
 print_td_person(31);
-print "</tr>";
+echo "</tr>";
 
-print "</table>";
-print "<br />";
+echo "</table>";
+echo "<br />";
 
 print_footer();
 
@@ -318,15 +318,15 @@ function print_td_person($n) {
 				$imgwidth = $imgsize[0]+50;
 				$imgheight = $imgsize[1]+150;
 				if (WT_USE_LIGHTBOX) {
-					$text .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general]\" rev=\"" . $object['mid'] . "::" . WT_GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">" . "\n";
+					$text .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general]\" rev=\"" . $object['mid'] . "::" . WT_GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				} else {
 					$text .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."',$imgwidth, $imgheight);\">";
 				}
 				$birth_date=$indi->getBirthDate();
 				$death_date=$indi->getDeathDate();
 				$text .= "<img id=\"box-$pid\" src=\"".$whichFile."\"vspace=\"0\" hspace=\"0\" class=\"$class\" alt =\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name)))." - ".strip_tags(html_entity_decode($birth_date->Display(false)." - ".$death_date->Display(false)))."\"";
-				if ($imgsize) $text .= " /></a>\n";
-				else $text .= " />\n";
+				if ($imgsize) $text .= " /></a>";
+				else $text .= " />";
 			} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
 				$class = "pedigree_image_portrait";
 				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
@@ -419,5 +419,5 @@ function print_arrow_person($n, $arrow_dir) {
 	}
 	// -- arrow to empty box does not have a url attached.
 	else $text = $hideArrow;
-	print $text;
+	echo $text;
 }

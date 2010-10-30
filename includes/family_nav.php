@@ -60,7 +60,7 @@ if (isset($_COOKIE['lastclick'])) {
 // Debug only -----------------------------------------
 // echo "Lastclick =" . $_COOKIE['lastclick'];
 //echo "<br />";
-//print "TAB =" . $tabno;
+//echo "TAB =" . $tabno;
 
 // =====================================================================
 
@@ -103,15 +103,15 @@ if (isset($_COOKIE['lastclick'])) {
 				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->getPersonStyle($people["husb"]); ?>">
+					<td align="center" class="<?php echo $this->getPersonStyle($people["husb"]); ?>">
 						<?php
-						print "<a href=\"".$people["husb"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-						print PrintReady($people["husb"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a href=\"".$people["husb"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+						echo PrintReady($people["husb"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -134,15 +134,15 @@ if (isset($_COOKIE['lastclick'])) {
 				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>">
+					<td class="facts_label<?php echo $styleadd; ?>">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->getPersonStyle($people["wife"]); ?>">
+					<td align="center" class="<?php echo $this->getPersonStyle($people["wife"]); ?>">
 						<?php
-						print "<a href=\"".$people["wife"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-						print PrintReady($people["wife"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a href=\"".$people["wife"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+						echo PrintReady($people["wife"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -170,7 +170,7 @@ if (isset($_COOKIE['lastclick'])) {
 
 					?>
 					<tr>
-						<td class="facts_label<?php print $styleadd; ?>">
+						<td class="facts_label<?php echo $styleadd; ?>">
 						<?php
 						if ($pid == $child->getXref() ) {
 							echo $child->getLabel();
@@ -179,16 +179,16 @@ if (isset($_COOKIE['lastclick'])) {
 						}
 						?>
 						</td>
-						<td align="center" class="<?php print $this->getPersonStyle($child); ?>">
+						<td align="center" class="<?php echo $this->getPersonStyle($child); ?>">
 							<?php
 							if ($pid == $child->getXref()) {
-								print PrintReady($child->getFullName());
-								print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+								echo PrintReady($child->getFullName());
+								echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 							}else{
-								print "<a href=\"".$child->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-								print PrintReady($child->getFullName());
-								print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-								print "</a>";
+								echo "<a href=\"".$child->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+								echo PrintReady($child->getFullName());
+								echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+								echo "</a>";
 							}
 							?>
 						</td>
@@ -243,15 +243,15 @@ if (isset($_COOKIE['lastclick'])) {
 				?>
 
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->getPersonStyle($people["husb"]); ?>" >
+					<td align="center" class="<?php echo $this->getPersonStyle($people["husb"]); ?>" >
 						<?php
-						print "<a href=\"".$people["husb"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-						print PrintReady($people["husb"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a href=\"".$people["husb"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+						echo PrintReady($people["husb"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -282,15 +282,15 @@ if (isset($_COOKIE['lastclick'])) {
 				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->getPersonStyle($people["wife"]); ?>">
+					<td align="center" class="<?php echo $this->getPersonStyle($people["wife"]); ?>">
 						<?php
-						print "<a href=\"".$people["wife"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-						print PrintReady($people["wife"]->getFullName());
-						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-						print "</a>";
+						echo "<a href=\"".$people["wife"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+						echo PrintReady($people["wife"]->getFullName());
+						echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+						echo "</a>";
 						?>
 					</td>
 				</tr>
@@ -316,15 +316,15 @@ if (isset($_COOKIE['lastclick'])) {
 					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
 					?>
 					<tr>
-						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 							<?php echo $menu->getMenu(); ?>
 						</td>
-						<td align="center" class="<?php print $this->getPersonStyle($child); ?>">
+						<td align="center" class="<?php echo $this->getPersonStyle($child); ?>">
 							<?php
-							print "<a href=\"".$child->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-							print PrintReady($child->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a href=\"".$child->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+							echo PrintReady($child->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 							?>
 						</td>
 					</tr>
@@ -374,19 +374,19 @@ if (isset($_COOKIE['lastclick'])) {
 				if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->getPersonStyle($people["husb"]); ?>">
+					<td align="center" class="<?php echo $this->getPersonStyle($people["husb"]); ?>">
 						<?php
 						if ($pid == $people["husb"]->getXref()) {
-							print PrintReady($people["husb"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo PrintReady($people["husb"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						}else{
-							print "<a href=\"".$people["husb"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-							print PrintReady($people["husb"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a href=\"".$people["husb"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+							echo PrintReady($people["husb"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 						}
 						?>
 					</td>
@@ -410,19 +410,19 @@ if (isset($_COOKIE['lastclick'])) {
 				if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 				?>
 				<tr>
-					<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 						<?php echo $menu->getMenu(); ?>
 					</td>
-					<td align="center" class="<?php print $this->getPersonStyle($people["wife"]); ?>">
+					<td align="center" class="<?php echo $this->getPersonStyle($people["wife"]); ?>">
 						<?php
 						if ($pid == $people["wife"]->getXref()) {
-							print PrintReady($people["wife"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo PrintReady($people["wife"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						}else{
-							print "<a href=\"".$people["wife"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-							print PrintReady($people["wife"]->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a href=\"".$people["wife"]->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+							echo PrintReady($people["wife"]->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 						}
 						?>
 					</td>
@@ -448,15 +448,15 @@ if (isset($_COOKIE['lastclick'])) {
 					if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; }else{ $BirthYr = PrintReady($child->getBirthYear()); }
 					?>
 					<tr>
-						<td class="facts_label<?php print $styleadd; ?>" nowrap="nowrap">
+						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap">
 						<?php echo $menu->getMenu(); ?>
 						</td>
-						<td align="center" class="<?php print $this->getPersonStyle($child); ?>">
+						<td align="center" class="<?php echo $this->getPersonStyle($child); ?>">
 							<?php
-							print "<a href=\"".$child->getHtmlUrl()."&amp;tab={$tabno}"."\">";
-							print PrintReady($child->getFullName());
-							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
-							print "</a>";
+							echo "<a href=\"".$child->getHtmlUrl()."&amp;tab={$tabno}"."\">";
+							echo PrintReady($child->getFullName());
+							echo "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
+							echo "</a>";
 							?>
 						</td>
 					</tr>

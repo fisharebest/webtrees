@@ -37,27 +37,27 @@ if (!defined('WT_WEBTREES')) {
 }
 
 ?>
-<div id="I<?php print $boxID; ?>links"
-	style="position:absolute; left:0px; top:0px; width:<?php print $lbwidth; ?>px; visibility:hidden; z-index:100;">
-<?php print $personlinks; ?></div>
-<div id="out-<?php print $boxID; ?>" <?php print $outBoxAdd; ?>>
+<div id="I<?php echo $boxID; ?>links"
+	style="position:absolute; left:0px; top:0px; width:<?php echo $lbwidth; ?>px; visibility:hidden; z-index:100;">
+<?php echo $personlinks; ?></div>
+<div id="out-<?php echo $boxID; ?>" <?php echo $outBoxAdd; ?>>
 <!--  table helps to maintain spacing -->
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">
-		<div class="noprint" id="icons-<?php print $boxID; ?>"
-			style="<?php print $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php print $icons; ?>
+		<div class="noprint" id="icons-<?php echo $boxID; ?>"
+			style="<?php echo $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php echo $icons; ?>
 		</div>
-		<?php print $thumbnail; ?>
-		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php print $pid; ?>&amp;ged=<?php print $GEDCOM; ?>">
-		<span id="namedef-<?php print $boxID; ?>" class="name<?php print $style; ?> <?php print $classfacts; ?>">
-			<?php print $name.$addname; ?>
+		<?php echo $thumbnail; ?>
+		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo $GEDCOM; ?>">
+		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
+			<?php echo $name.$addname; ?>
 		</span>
-		<span class="name<?php print $style; ?>"> <?php print $genderImage; ?></span>
-		<?php print $showid; ?> </a>
-		<div id="fontdef-<?php print $boxID; ?>" class="details<?php print $style; ?>">
-			<div id="inout2-<?php print $boxID; ?>" style="display: block;"><?php print $BirthDeath; ?></div>
+		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
+		<?php echo $showid; ?> </a>
+		<div id="fontdef-<?php echo $boxID; ?>" class="details<?php echo $style; ?>">
+			<div id="inout2-<?php echo $boxID; ?>" style="display: block;"><?php echo $BirthDeath; ?></div>
 		</div>
-		<div id="inout-<?php print $boxID; ?>" style="display: none;">
-			<div id="LOADING-inout-<?php print $boxID; ?>"><?php print i18n::translate('Loading...'); ?></div>
+		<div id="inout-<?php echo $boxID; ?>" style="display: none;">
+			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo i18n::translate('Loading...'); ?></div>
 		</div>
 </td></tr></table>
 </div>

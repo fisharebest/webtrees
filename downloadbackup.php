@@ -35,7 +35,7 @@ $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 $fname=safe_GET('fname');
 
 if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
-	print i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	exit;
 }
 
@@ -51,4 +51,3 @@ header('Content-length: '.filesize($INDEX_DIRECTORY.$fname));
 header('Content-Transfer-Encoding: binary');
 readfile($INDEX_DIRECTORY.basename($fname));
 exit();
-?>

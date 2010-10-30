@@ -150,9 +150,9 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			} else {
 				$record=Person::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
 		}
 
@@ -165,9 +165,9 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			} else {
 				$record=Family::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
 		}
 
@@ -180,9 +180,9 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			} else {
 				$record=Source::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
 		}
 		if ($linkto == "repository") {
@@ -193,9 +193,9 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			} else {
 				$record=Repository::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
 		}
 
@@ -207,9 +207,9 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			} else {
 				$record=Note::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") print getRLM();
+				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 			}
 		}
 

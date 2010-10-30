@@ -223,9 +223,9 @@ foreach ($controller->tabs as $tab) {
 </div>
 <?php
 if (!$controller->indi->canDisplayDetails()) {
-	print "<table><tr><td class=\"facts_value\" >";
+	echo "<table><tr><td class=\"facts_value\" >";
 	print_privacy_error();
-	print "</td></tr></table>";
+	echo "</td></tr></table>";
 } else {
 	require './sidebar.php';
 

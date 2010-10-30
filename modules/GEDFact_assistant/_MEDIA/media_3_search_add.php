@@ -149,9 +149,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value" >
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -161,14 +161,14 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($people["husb"]->canDisplayDetails()) ) {
 						?>
 						<a href='javaScript:opener.insertRowToTable("<?php
-								print PrintReady($people["husb"]->getXref()) ; // pid = PID
+								echo PrintReady($people["husb"]->getXref()) ; // pid = PID
 							?>", "<?php
-							// print PrintReady($people["husb"]->getFullName()); // nam = Name
+							// echo PrintReady($people["husb"]->getFullName()); // nam = Name
 								echo PrintReady($fulln);
 							?>", "<?php
-								print PrintReady($people["husb"]->getLabel()); // label = Relationship
+								echo PrintReady($people["husb"]->getLabel()); // label = Relationship
 							?>", "<?php
-								print PrintReady($people["husb"]->getSex()); // gend = Gender
+								echo PrintReady($people["husb"]->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>=0){
 									echo "M"; // cond = Condition (Married)
@@ -176,22 +176,22 @@ if (!defined('WT_WEBTREES')) {
 									echo "S"; // cond = Condition (Single)
 								}
 							?>", "<?php
-								print PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y"; // YMD
+								echo "Y"; // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'><?php
-								 print PrintReady($people["husb"]->getFullName()); // Name
+								 echo PrintReady($people["husb"]->getFullName()); // Name
 							?>
 						</a>
 						<?php
 						} else {
-							print i18n::translate('Private');
+							echo i18n::translate('Private');
 						}
 						?>
 						</font>
@@ -230,9 +230,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -242,18 +242,18 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($people["wife"]->canDisplayDetails()) ) {
 							?>
 						<a href='javaScript:opener.insertRowToTable("<?php
-								print $people["wife"]->getXref() ; // pid = PID
+								echo $people["wife"]->getXref() ; // pid = PID
 							?>", "<?php
 							// if ($married>=0 && isset($nam[1])){
 							// echo PrintReady($fulmn); // nam = Married Name
 							// }else{
-									//print PrintReady($people["wife"]->getFullName()); // nam = Name
+									//echo PrintReady($people["wife"]->getFullName()); // nam = Name
 									echo PrintReady($fulln);
 							// }
 								?>", "<?php
-								print PrintReady($people["wife"]->getLabel()); // label = Relationship
+								echo PrintReady($people["wife"]->getLabel()); // label = Relationship
 							?>", "<?php
-								print PrintReady($people["wife"]->getSex()); // gend = Gender
+								echo PrintReady($people["wife"]->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>=0 && isset($nam[1])){
 									echo "M"; // cond = Condition (Married)
@@ -261,27 +261,27 @@ if (!defined('WT_WEBTREES')) {
 									echo "S"; // cond = Condition (Single)
 								}
 								?>", "<?php
-								print PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y"; // YMD
+								echo "Y"; // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'>
 							<?php
 							//if ($married>=0 && isset($nam[1])){
-							// print PrintReady($fulmn); // Full Married Name
+							// echo PrintReady($fulmn); // Full Married Name
 							//} else {
-								print PrintReady($people["wife"]->getFullName()); // Full Name
+								echo PrintReady($people["wife"]->getFullName()); // Full Name
 							//}
 							?>
 						</a>
 						<?php
 						} else {
-							print i18n::translate('Private');
+							echo i18n::translate('Private');
 						}
 						?>
 						</font>
@@ -334,9 +334,9 @@ if (!defined('WT_WEBTREES')) {
 							<td align="left" class="facts_value">
 								<font size=1>
 									<?php
-									print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+									echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
 									echo $headImg2;
-									print "</a>";
+									echo "</a>";
 									?>
 								</font>
 							</td>
@@ -346,22 +346,22 @@ if (!defined('WT_WEBTREES')) {
 								if ( ($child->canDisplayDetails()) ) {
 									?>
 									<a href='javaScript:opener.insertRowToTable("<?php
-											print $child->getXref() ; // pid = PID
+											echo $child->getXref() ; // pid = PID
 										?>", "<?php
 										//if ($married>=0 && isset($nam[1])){
 										// echo PrintReady($fulmn); // nam = Married Name
 										//}else{
-											//print PrintReady($child->getFullName()); // nam = Full Name
+											//echo PrintReady($child->getFullName()); // nam = Full Name
 											echo PrintReady($fulln);
 										//}
 											?>", "<?php
 											if ($child->getXref()==$pid) {
-												print "Head"; // label = Head
+												echo "Head"; // label = Head
 											}else{
-												print PrintReady($child->getLabel()); // label = Relationship
+												echo PrintReady($child->getLabel()); // label = Relationship
 											}
 										?>", "<?php
-											print PrintReady($child->getSex()); // gend = Gender
+											echo PrintReady($child->getSex()); // gend = Gender
 										?>", "<?php
 											if ($married>0) {
 												echo "M"; // cond = Condition (Married)
@@ -371,26 +371,26 @@ if (!defined('WT_WEBTREES')) {
 												echo ""; // cond = Condition (Not Known)
 											}
 										?>", "<?php
-											print PrintReady($child->getbirthyear()); // yob = Year of Birth
+											echo PrintReady($child->getbirthyear()); // yob = Year of Birth
 										?>", "<?php
-											print PrintReady($censyear-$child->getbirthyear()); // age = Census Date minus YOB
+											echo PrintReady($censyear-$child->getbirthyear()); // age = Census Date minus YOB
 										?>", "<?php
-											print "Y"; // YMD
+											echo "Y"; // YMD
 										?>", "<?php
-											print ""; // occu = Occupation
+											echo ""; // occu = Occupation
 										?>", "<?php
-											print PrintReady($child->getcensbirthplace()); // birthpl = Census Place of Birth
+											echo PrintReady($child->getcensbirthplace()); // birthpl = Census Place of Birth
 										?>");'><?php
 										// if ($married>=0 && isset($nam[1])){
-										// print PrintReady($fulmn); // Full Married Name
+										// echo PrintReady($fulmn); // Full Married Name
 										// } else {
-												print PrintReady($child->getFullName()); // Full Name
+												echo PrintReady($child->getFullName()); // Full Name
 										// }
 										?>
 									</a>
 									<?php
 								} else {
-									print i18n::translate('Private');
+									echo i18n::translate('Private');
 								}
 								?>
 								</font>
@@ -448,9 +448,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -460,18 +460,18 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($people["husb"]->canDisplayDetails()) ) {
 							?>
 							<a href='javaScript:opener.insertRowToTable("<?php
-								print PrintReady($people["husb"]->getXref()) ; // pid = PID
+								echo PrintReady($people["husb"]->getXref()) ; // pid = PID
 							?>", "<?php
-								//print PrintReady($people["husb"]->getFullName()); // nam = Name
+								//echo PrintReady($people["husb"]->getFullName()); // nam = Name
 								echo PrintReady($fulln);
 							?>", "<?php
 							if ($people["husb"]->getLabel() == ".") {
-								print PrintReady(i18n::translate('Step-Father')); // label = Relationship
+								echo PrintReady(i18n::translate('Step-Father')); // label = Relationship
 							}else{
-								print PrintReady($people["husb"]->getLabel()); // label = Relationship
+								echo PrintReady($people["husb"]->getLabel()); // label = Relationship
 							}
 							?>", "<?php
-								print PrintReady($people["husb"]->getSex()); // gend = Gender
+								echo PrintReady($people["husb"]->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>=0){
 									echo "M"; // cond = Condition (Married)
@@ -479,22 +479,22 @@ if (!defined('WT_WEBTREES')) {
 									echo "S"; // cond = Condition (Single)
 								}
 							?>", "<?php
-								print PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y"; // YMD
+								echo "Y"; // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'>
-							<?php print PrintReady($people["husb"]->getFullName()); // Name
+							<?php echo PrintReady($people["husb"]->getFullName()); // Name
 							?>
 							</a>
 							<?php
 						} else {
-							print i18n::translate('Private');
+							echo i18n::translate('Private');
 						}
 						?>
 						</font>
@@ -539,9 +539,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -551,22 +551,22 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($people["wife"]->canDisplayDetails()) ) {
 						?>
 						<a href='javaScript:opener.insertRowToTable("<?php
-								print PrintReady($people["wife"]->getXref()) ; // pid = PID
+								echo PrintReady($people["wife"]->getXref()) ; // pid = PID
 							?>", "<?php
 							// if ($married>=0 && isset($nam[1])){
 							// echo PrintReady($fulmn); // nam = Married Name
 							// }else{
-									//print PrintReady($people["wife"]->getFullName()); // nam = Full Name
+									//echo PrintReady($people["wife"]->getFullName()); // nam = Full Name
 									echo PrintReady($fulln);
 							// }
 							?>", "<?php
 							if ($people["wife"]->getLabel() == ".") {
-								print PrintReady(i18n::translate('Step-Mother')); // label = Relationship
+								echo PrintReady(i18n::translate('Step-Mother')); // label = Relationship
 							}else{
-								print PrintReady($people["wife"]->getLabel()); // label = Relationship
+								echo PrintReady($people["wife"]->getLabel()); // label = Relationship
 							}
 							?>", "<?php
-								print PrintReady($people["wife"]->getSex()); // gend = Gender
+								echo PrintReady($people["wife"]->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>=0 && isset($nam[1])){
 									echo "M"; // cond = Condition (Married)
@@ -574,27 +574,27 @@ if (!defined('WT_WEBTREES')) {
 									echo "S"; // cond = Condition (Single)
 								}
 								?>", "<?php
-								print PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y"; // YMD
+								echo "Y"; // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'>
 							<?php
 							//if ($married>=0 && isset($nam[1])){
-							// print PrintReady($fulmn); // Full Married Name
+							// echo PrintReady($fulmn); // Full Married Name
 							//} else {
-								print PrintReady($people["wife"]->getFullName()); // Full Name
+								echo PrintReady($people["wife"]->getFullName()); // Full Name
 							//}
 							?>
 						</a>
 						<?php
 						} else {
-							print i18n::translate('Private');
+							echo i18n::translate('Private');
 						}
 						?>
 						</font>
@@ -633,9 +633,9 @@ if (!defined('WT_WEBTREES')) {
 						<td align="left" class="facts_value" >
 							<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 							</font>
 						</td>
@@ -645,33 +645,33 @@ if (!defined('WT_WEBTREES')) {
 							if ( ($child->canDisplayDetails()) ) {
 							?>
 							<a href='javaScript:opener.insertRowToTable("<?php
-								print PrintReady($child->getXref()) ; // pid = PID
+								echo PrintReady($child->getXref()) ; // pid = PID
 								?>", "<?php
-									//print PrintReady($child->getFullName()); // nam = Name
+									//echo PrintReady($child->getFullName()); // nam = Name
 									echo PrintReady($fulln);
 								?>", "<?php
-									print PrintReady($child->getLabel()); // label = Relationship
+									echo PrintReady($child->getLabel()); // label = Relationship
 								?>", "<?php
-									print PrintReady($child->getSex()); // gend = Gender
+									echo PrintReady($child->getSex()); // gend = Gender
 								?>", "<?php
-									print ""; // cond = Condition (Married or Single)
+									echo ""; // cond = Condition (Married or Single)
 								?>", "<?php
-									print PrintReady($child->getbirthyear()); // yob = Year of Birth
+									echo PrintReady($child->getbirthyear()); // yob = Year of Birth
 								?>", "<?php
-									print PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
+									echo PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
 								?>", "<?php
-									print "Y"; // YMD
+									echo "Y"; // YMD
 								?>", "<?php
-									print ""; // occu = Occupation
+									echo ""; // occu = Occupation
 								?>", "<?php
-									print PrintReady($child->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo PrintReady($child->getcensbirthplace()); //  birthpl = Census Place of Birth
 								?>");'>
-									<?php print PrintReady($child->getFullName()); // Name
+									<?php echo PrintReady($child->getFullName()); // Name
 								?>
 							</a>
 							<?php
 							} else {
-								print i18n::translate('Private');
+								echo i18n::translate('Private');
 							}
 							?>
 							</font>
@@ -683,7 +683,7 @@ if (!defined('WT_WEBTREES')) {
 			}
 		}
 
-		print "<tr><td><font size=1><br /></font></td></tr>";
+		echo "<tr><td><font size=1><br /></font></td></tr>";
 
 		//-- Build Spouse Family ---------------------------------------------------
 		$families = $this->indi->getSpouseFamilies();
@@ -732,9 +732,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value" >
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -744,18 +744,18 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($people["husb"]->canDisplayDetails()) ) {
 						?>
 						<a href='javaScript:opener.insertRowToTable("<?php
-								print $people["husb"]->getXref() ; // pid = PID
+								echo $people["husb"]->getXref() ; // pid = PID
 							?>", "<?php
-								//print PrintReady($people["husb"]->getFullName()); // nam = Name
+								//echo PrintReady($people["husb"]->getFullName()); // nam = Name
 								echo PrintReady($fulln);
 							?>", "<?php
 								if ($people["husb"]->getXref()==$pid) {
-									print "Head"; // label = Relationship
+									echo "Head"; // label = Relationship
 								}else{
-									print $people["husb"]->getLabel(); // label = Relationship
+									echo $people["husb"]->getLabel(); // label = Relationship
 								}
 							?>", "<?php
-								print PrintReady($people["husb"]->getSex()); // gend = Gender
+								echo PrintReady($people["husb"]->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>=0){
 									echo "M"; // cond = Condition (Married)
@@ -763,23 +763,23 @@ if (!defined('WT_WEBTREES')) {
 									echo "S"; // cond = Condition (Single)
 								}
 							?>", "<?php
-								print PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y"; // YMD
+								echo "Y"; // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'>
 							<?php
-								print PrintReady($people["husb"]->getFullName()); // Name
+								echo PrintReady($people["husb"]->getFullName()); // Name
 							?>
 						</a>
 						<?php
 						} else {
-							print i18n::translate('Private');
+							echo i18n::translate('Private');
 							}
 							?>
 						</font>
@@ -828,9 +828,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -840,22 +840,22 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($people["wife"]->canDisplayDetails()) ) {
 						?>
 							<a href='javaScript:opener.insertRowToTable("<?php
-									print $people["wife"]->getXref() ; // pid = PID
+									echo $people["wife"]->getXref() ; // pid = PID
 							?>", "<?php
 							// if ($married>=0 && isset($nam[1])){
 							// echo PrintReady($fulmn); // nam = Full Married Name
 							// }else{
-									//print PrintReady($people["wife"]->getFullName()); // nam = Full Name
+									//echo PrintReady($people["wife"]->getFullName()); // nam = Full Name
 									echo PrintReady($fulln);
 							// }
 							?>", "<?php
 								if ($people["wife"]->getXref()==$pid) {
-									print "Head"; // label = Head
+									echo "Head"; // label = Head
 								}else{
-									print PrintReady($people["wife"]->getLabel()); // label = Relationship
+									echo PrintReady($people["wife"]->getLabel()); // label = Relationship
 								}
 							?>", "<?php
-								print PrintReady($people["wife"]->getSex()); // gend = Gender
+								echo PrintReady($people["wife"]->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>=0 && isset($nam[1])){
 									echo "M"; // cond = Condition (Married)
@@ -863,27 +863,27 @@ if (!defined('WT_WEBTREES')) {
 									echo "S"; // cond = Condition (Single)
 								}
 							?>", "<?php
-								print PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y";  // YMD
+								echo "Y";  // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'>
 								<?php
 								//if ($married>=0 && isset($nam[1])){
-								// print PrintReady($fulmn); // Full Married Name
+								// echo PrintReady($fulmn); // Full Married Name
 								//} else {
-									print PrintReady($people["wife"]->getFullName()); // Full Name
+									echo PrintReady($people["wife"]->getFullName()); // Full Name
 								//}
 								?>
 							</a>
 							<?php
 						} else {
-							print i18n::translate('Private');
+							echo i18n::translate('Private');
 						}
 						?>
 						</font>
@@ -926,9 +926,9 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							print "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
 							echo $headImg2;
-							print "</a>";
+							echo "</a>";
 							?>
 						</font>
 					</td>
@@ -938,18 +938,18 @@ if (!defined('WT_WEBTREES')) {
 						if ( ($child->canDisplayDetails()) ) {
 						?>
 						<a href='javaScript:opener.insertRowToTable("<?php
-								print $child->getXref() ; // pid = PID
+								echo $child->getXref() ; // pid = PID
 							?>", "<?php
 							// if ($married>0 && isset($nam[1])){
 							// echo PrintReady($fulmn); // nam = Full Married Name
 							// }else{
-									// print PrintReady($child->getFullName()); // nam = Full Name
+									// echo PrintReady($child->getFullName()); // nam = Full Name
 									echo PrintReady($fulln); // nam = Full Name
 							// }
 							?>", "<?php
-								print PrintReady($child->getLabel()); // label = Relationship
+								echo PrintReady($child->getLabel()); // label = Relationship
 							?>", "<?php
-								print PrintReady($child->getSex()); // gend = Gender
+								echo PrintReady($child->getSex()); // gend = Gender
 							?>", "<?php
 								if ($married>0) {
 									echo "M"; // cond = Condition (Married)
@@ -959,27 +959,27 @@ if (!defined('WT_WEBTREES')) {
 									echo ""; // cond = Condition (Not Known)
 								}
 							?>", "<?php
-								print PrintReady($child->getbirthyear()); // yob = Year of Birth
+								echo PrintReady($child->getbirthyear()); // yob = Year of Birth
 							?>", "<?php
-								print PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
+								echo PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
 							?>", "<?php
-								print "Y"; // YMD
+								echo "Y"; // YMD
 							?>", "<?php
-								print ""; // occu = Occupation
+								echo ""; // occu = Occupation
 							?>", "<?php
-								print PrintReady($child->getcensbirthplace()); //  birthpl = Census Place of Birth
+								echo PrintReady($child->getcensbirthplace()); //  birthpl = Census Place of Birth
 							?>");'>
 								<?php
 							// if ($married>=0 && isset($nam[1])){
-							// print PrintReady($fulmn); // Full Married Name
+							// echo PrintReady($fulmn); // Full Married Name
 							// } else {
-									print PrintReady($child->getFullName()); // Full Name
+									echo PrintReady($child->getFullName()); // Full Name
 							// }
 								?>
 						</a>
 						<?php
 					} else {
-						print i18n::translate('Private');
+						echo i18n::translate('Private');
 					}
 					?>
 						</font>
@@ -987,7 +987,7 @@ if (!defined('WT_WEBTREES')) {
 				</tr>
 				<?php
 			}
-			print "<tr><td><font size=1><br /></font></td></tr>";
+			echo "<tr><td><font size=1><br /></font></td></tr>";
 		}
 		?>
 

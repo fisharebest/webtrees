@@ -73,8 +73,8 @@ $preview="";
 
 	<div id="container"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</div>
 	<script type="text/javascript">
-		var video   = "<?php print $flvVideo; ?>";
-		var preview = "<?php print $preview; ?>";
+		var video   = "<?php echo $flvVideo; ?>";
+		var preview = "<?php echo $preview; ?>";
 		var s1 = new SWFObject("player.swf","ply","480","365","9","#000000");
 		s1.addParam("allowfullscreen","true");
 		s1.addParam("allowscriptaccess","always");

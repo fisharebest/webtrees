@@ -1677,7 +1677,7 @@ function delete_fact($linenum, $pid, $gedrec) {
 	if (!empty($linenum)) {
 		if ($linenum==0) {
 			delete_gedrec($pid, WT_GED_ID);
-			print i18n::translate('GEDCOM record successfully deleted.');
+			echo i18n::translate('GEDCOM record successfully deleted.');
 		} else {
 			$gedlines = explode("\n", $gedrec);
 			// NOTE: The array_pop is used to kick off the last empty element on the array

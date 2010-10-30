@@ -199,30 +199,30 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	?>
-		<tr><td class="descriptionbox wrap width33"><?php print i18n::translate('Chart type'); ?></td>
+		<tr><td class="descriptionbox wrap width33"><?php echo i18n::translate('Chart type'); ?></td>
 		<td class="optionbox">
 			<select name="type">
-				<option value="pedigree"<?php if ($type=="pedigree") print " selected=\"selected\""; ?>><?php print i18n::translate('Pedigree Tree'); ?></option>
-				<option value="descendants"<?php if ($type=="descendants") print " selected=\"selected\""; ?>><?php print i18n::translate('Descendancy chart'); ?></option>
-				<option value="hourglass"<?php if ($type=="hourglass") print " selected=\"selected\""; ?>><?php print i18n::translate('Hourglass chart'); ?></option>
+				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Pedigree Tree'); ?></option>
+				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Descendancy chart'); ?></option>
+				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Hourglass chart'); ?></option>
 				<?php if (file_exists(WT_ROOT.'includes/classes/class_treenav.php')) { ?>
-				<option value="treenav"<?php if ($type=="treenav") print " selected=\"selected\""; ?>><?php print i18n::translate('Interactive tree'); ?></option>
+				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Interactive tree'); ?></option>
 				<?php } ?>
 			</select>
 		</td></tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php print i18n::translate('Show Details'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo i18n::translate('Show Details'); ?></td>
 		<td class="optionbox">
 			<select name="details">
-					<option value="no" <?php if (!$details) print " selected=\"selected\""; ?>><?php print i18n::translate('No'); ?></option>
-					<option value="yes" <?php if ($details) print " selected=\"selected\""; ?>><?php print i18n::translate('Yes'); ?></option>
+					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo i18n::translate('No'); ?></option>
+					<option value="yes" <?php if ($details) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Yes'); ?></option>
 			</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php print i18n::translate('Root Person ID'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo i18n::translate('Root Person ID'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="pid" id="pid" value="<?php print $pid; ?>" size="5" />
+				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5" />
 				<?php
 				print_findindi_link('pid','');
 				$root=Person::getInstance($pid);
@@ -244,4 +244,3 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 }
-?>

@@ -42,12 +42,12 @@ print_header(i18n::translate('Advanced search'));
 <script language="JavaScript" type="text/javascript">
 <!--
 	function checknames(frm) {
-		action = "<?php print $controller->action ?>";
+		action = "<?php echo $controller->action ?>";
 
 		return true;
 	}
 
-	var numfields = <?php print count($controller->fields); ?>;
+	var numfields = <?php echo count($controller->fields); ?>;
 	/**
 	 * add a row to the table of fields
 	 */
@@ -70,8 +70,8 @@ print_header(i18n::translate('Advanced search'));
 		// all of the field options
 		<?php foreach($controller->getOtherFields() as $field) { ?>
 		opt = document.createElement('option');
-		opt.value='<?php print $field; ?>';
-		opt.text='<?php print $controller->getLabel($field); ?>';
+		opt.value='<?php echo $field; ?>';
+		opt.text='<?php echo $controller->getLabel($field); ?>';
 		sel.options.add(opt);
 		<?php } ?>
 		label.appendChild(sel);
@@ -140,7 +140,7 @@ print_header(i18n::translate('Advanced search'));
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
-<table id="field_table" class="list_table <?php print $TEXT_DIRECTION; ?>" width="35%" border="0">
+<table id="field_table" class="list_table <?php echo $TEXT_DIRECTION; ?>" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center; ">
 			<?php echo i18n::translate('Advanced search'), help_link('advanced_search'); ?>
@@ -155,32 +155,32 @@ print_header(i18n::translate('Advanced search'));
 	?>
 	<tr>
 		<td class="list_label">
-			<?php print $controller->getLabel($controller->getField($i)); ?>
+			<?php echo $controller->getLabel($controller->getField($i)); ?>
 		</td>
-		<td id="vcell<?php print $i; ?>" class="list_value">
+		<td id="vcell<?php echo $i; ?>" class="list_value">
 			<?php
 			$currentFieldSearch = $controller->getField($i); // Get this field's name and the search criterion
 			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
-			<input tabindex="<?php print $i+1; ?>" type="text" id="value<?php print $i; ?>" name="values[<?php print $i; ?>]" value="<?php print $controller->getValue($i); ?>" />
+			<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo $controller->getValue($i); ?>" />
 			<?php if (preg_match("/^NAME:/", $currentFieldSearch)>0) {
 				?>
-				<select name="fields[<?php print $i ?>]">
-					<option value="<?php print $currentField; ?>:EXACT"<?php if (preg_match("/:EXACT$/", $currentFieldSearch)>0) print " selected=\"selected\""; ?>><?php print i18n::translate('Exact'); ?></option>
-					<option value="<?php print $currentField; ?>:BEGINS"<?php if (preg_match("/:BEGINS$/", $currentFieldSearch)>0) print " selected=\"selected\""; ?>><?php print i18n::translate('Begins with'); ?></option>
-					<option value="<?php print $currentField; ?>:CONTAINS"<?php if (preg_match("/:CONTAINS$/", $currentFieldSearch)>0) print " selected=\"selected\""; ?>><?php print i18n::translate('Contains'); ?></option>
-					<option value="<?php print $currentField; ?>:SDX"<?php if (preg_match("/:SDX$/", $currentFieldSearch)>0) print " selected=\"selected\""; ?>><?php print i18n::translate('Sounds like'); ?></option>
+				<select name="fields[<?php echo $i ?>]">
+					<option value="<?php echo $currentField; ?>:EXACT"<?php if (preg_match("/:EXACT$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
+					<option value="<?php echo $currentField; ?>:BEGINS"<?php if (preg_match("/:BEGINS$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
+					<option value="<?php echo $currentField; ?>:CONTAINS"<?php if (preg_match("/:CONTAINS$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
+					<option value="<?php echo $currentField; ?>:SDX"<?php if (preg_match("/:SDX$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
 				</select>
 			<?php } else { ?>
-			<input type="hidden" name="fields[<?php print $i ?>]" value="<?php print $controller->getField($i); ?>" />
+			<input type="hidden" name="fields[<?php echo $i ?>]" value="<?php echo $controller->getField($i); ?>" />
 			<?php }
 			if (preg_match("/:DATE$/", $currentFieldSearch)>0) {
 				?>
-				<select name="plusminus[<?php print $i ?>]">
-					<option value=""><?php print i18n::translate('Exact date'); ?></option>
-					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) print " selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
-					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) print "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
-					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) print "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
+				<select name="plusminus[<?php echo $i ?>]">
+					<option value=""><?php echo i18n::translate('Exact date'); ?></option>
+					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) echo " selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
+					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) echo "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
+					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) echo "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
 				</select>
 			<?php }?>
 		</td>
@@ -218,7 +218,7 @@ print_header(i18n::translate('Advanced search'));
 					<!--  father -->
 					<tr>
 						<td colspan="2" class="facts_label03" style="text-align:center; ">
-							<?php print i18n::translate('Father'); ?>
+							<?php echo i18n::translate('Father'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -226,12 +226,12 @@ print_header(i18n::translate('Advanced search'));
 							<?php echo translate_fact('GIVN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>" />
-							<select name="fields[<?php print $j ?>]">
-								<option value="FAMC:HUSB:NAME:GIVN:EXACT"<?php if ($fatherGivnOption == 'EXACT') print " selected=\"selected\""; ?>><?php print i18n::translate('Exact'); ?></option>
-								<option value="FAMC:HUSB:NAME:GIVN:BEGINS"<?php if ($fatherGivnOption == 'BEGINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:HUSB:NAME:GIVN:CONTAINS"<?php if ($fatherGivnOption == 'CONTAINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Contains'); ?></option>
-								<option value="FAMC:HUSB:NAME:GIVN:SDX"<?php if ($fatherGivnOption == 'SDX') print " selected=\"selected\""; ?>><?php print i18n::translate('Sounds like'); ?></option>
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>" />
+							<select name="fields[<?php echo $j ?>]">
+								<option value="FAMC:HUSB:NAME:GIVN:EXACT"<?php if ($fatherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:BEGINS"<?php if ($fatherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:CONTAINS"<?php if ($fatherGivnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:SDX"<?php if ($fatherGivnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -241,12 +241,12 @@ print_header(i18n::translate('Advanced search'));
 							<?php echo translate_fact('SURN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>" />
-							<select name="fields[<?php print $j ?>]">
-								<option value="FAMC:HUSB:NAME:SURN:EXACT"<?php if ($fatherSurnOption == 'EXACT') print " selected=\"selected\""; ?>><?php print i18n::translate('Exact'); ?></option>
-								<option value="FAMC:HUSB:NAME:SURN:BEGINS"<?php if ($fatherSurnOption == 'BEGINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:HUSB:NAME:SURN:CONTAINS"<?php if ($fatherSurnOption == 'CONTAINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Contains'); ?></option>
-								<option value="FAMC:HUSB:NAME:SURN:SDX"<?php if ($fatherSurnOption == 'SDX') print " selected=\"selected\""; ?>><?php print i18n::translate('Sounds like'); ?></option>
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>" />
+							<select name="fields[<?php echo $j ?>]">
+								<option value="FAMC:HUSB:NAME:SURN:EXACT"<?php if ($fatherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:BEGINS"<?php if ($fatherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:CONTAINS"<?php if ($fatherSurnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:SDX"<?php if ($fatherSurnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -255,7 +255,7 @@ print_header(i18n::translate('Advanced search'));
 					<tr><td colspan="2">&nbsp;</td></tr>
 					<tr>
 						<td colspan="2" class="facts_label03" style="text-align:center; ">
-							<?php print i18n::translate('Mother'); ?>
+							<?php echo i18n::translate('Mother'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -263,12 +263,12 @@ print_header(i18n::translate('Advanced search'));
 							<?php echo translate_fact('GIVN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>" />
-							<select name="fields[<?php print $j ?>]">
-								<option value="FAMC:WIFE:NAME:GIVN:EXACT"<?php if ($motherGivnOption == 'EXACT') print " selected=\"selected\""; ?>><?php print i18n::translate('Exact'); ?></option>
-								<option value="FAMC:WIFE:NAME:GIVN:BEGINS"<?php if ($motherGivnOption == 'BEGINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:WIFE:NAME:GIVN:CONTAINS"<?php if ($motherGivnOption == 'CONTAINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Contains'); ?></option>
-								<option value="FAMC:WIFE:NAME:GIVN:SDX"<?php if ($motherGivnOption == 'SDX') print " selected=\"selected\""; ?>><?php print i18n::translate('Sounds like'); ?></option>
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>" />
+							<select name="fields[<?php echo $j ?>]">
+								<option value="FAMC:WIFE:NAME:GIVN:EXACT"<?php if ($motherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:BEGINS"<?php if ($motherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:CONTAINS"<?php if ($motherGivnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:SDX"<?php if ($motherGivnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 						<?php $j++; ?>
@@ -278,12 +278,12 @@ print_header(i18n::translate('Advanced search'));
 							<?php echo translate_fact('SURN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php print $j; ?>]" value="<?php print $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>" />
-							<select name="fields[<?php print $j ?>]">
-								<option value="FAMC:WIFE:NAME:SURN:EXACT"<?php if ($motherSurnOption == 'EXACT') print " selected=\"selected\""; ?>><?php print i18n::translate('Exact'); ?></option>
-								<option value="FAMC:WIFE:NAME:SURN:BEGINS"<?php if ($motherSurnOption == 'BEGINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:WIFE:NAME:SURN:CONTAINS"<?php if ($motherSurnOption == 'CONTAINS') print " selected=\"selected\""; ?>><?php print i18n::translate('Contains'); ?></option>
-								<option value="FAMC:WIFE:NAME:SURN:SDX"<?php if ($motherSurnOption == 'SDX') print " selected=\"selected\""; ?>><?php print i18n::translate('Sounds like'); ?></option>
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>" />
+							<select name="fields[<?php echo $j ?>]">
+								<option value="FAMC:WIFE:NAME:SURN:EXACT"<?php if ($motherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:BEGINS"<?php if ($motherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:CONTAINS"<?php if ($motherSurnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:SDX"<?php if ($motherSurnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 						<?php $j++; ?>
@@ -299,8 +299,8 @@ print_header(i18n::translate('Advanced search'));
 	<?php } ?>
 	<tr>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  colspan="10">
-			<a href="#" onclick="addFields();"><?php print i18n::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input tabindex="<?php print $i+1; ?>" type="submit" value="<?php print i18n::translate('Search'); ?>" />
+			<a href="#" onclick="addFields();"><?php echo i18n::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>" />
 		</td>
 	</tr>
 </table>

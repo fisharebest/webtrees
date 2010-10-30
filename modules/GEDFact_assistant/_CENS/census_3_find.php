@@ -157,7 +157,7 @@ echo WT_JS_START;
 
 	function pasterow(id, nam, mnam, label, gend, cond, dom, dob, dod, occu, age, birthpl, fbirthpl, mbirthpl, chilBLD) {
 		window.opener.insertRowToTable(id, nam, mnam, label, gend, cond, dom, dob, dod, occu, age, birthpl, fbirthpl, mbirthpl, chilBLD);
-		<?php if (!$multiple) print "window.close();"; ?>
+		<?php if (!$multiple) echo "window.close();"; ?>
 	}
 
 	function pasteid(id, name, thumb) {

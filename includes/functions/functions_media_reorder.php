@@ -51,11 +51,11 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	if (!isset($rowm)) {
 		$rowm=$row;
 	}
-	print "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $rowm['m_media'] . "\" >";
+	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $rowm['m_media'] . "\" >";
 
-    //print $rtype." ".$rowm["m_media"]." ".$pid;
+    //echo $rtype." ".$rowm["m_media"]." ".$pid;
     if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
-        //print $rowm['m_media']." no privacy ";
+        //echo $rowm['m_media']." no privacy ";
         return false;
     }
 
@@ -81,19 +81,19 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
     if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
 
-		print "\n" . "<table class=\"pic\"><tr>" . "\n";
-		print "<td width=\"80\" valign=\"top\" align=\"center\" >". "\n";
+		echo "<table class=\"pic\"><tr>";
+		echo "<td width=\"80\" valign=\"top\" align=\"center\" >";
 
 		// Get info on how to handle this media file
 		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm["m_media"], $mediaTitle, '');
 
 		//-- Thumbnail field
-		print "<img src=\"".$mediaInfo['thumb']."\" height=\"38\" border=\"0\" " ;
+		echo "<img src=\"".$mediaInfo['thumb']."\" height=\"38\" border=\"0\" " ;
 
-		if ( strpos($rowm['m_gedrec'], "1 SOUR")!==false) {
-			print " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . "\nSource info available\" />";
-		}else{
-			print " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . "\" />";
+		if (strpos($rowm['m_gedrec'], "1 SOUR")!==false) {
+			echo " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . " Source info available\" />";
+		} else {
+			echo " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . "\" />";
 		}
 
 		//print media info
@@ -105,25 +105,25 @@ function media_reorder_row($rtype, $rowm, $pid) {
 			} else {
 				$mediaType = i18n::translate('Other');
 			}
-			// print "<br /><span class=\"label\">".i18n::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
+			// echo "<br /><span class=\"label\">".i18n::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
 		}
 
-		print "\n" . "</td><td>&nbsp;</td>" . "\n";
-		print "<td valign=\"top\" align=\"left\">";
-		//print "<font color=\"blue\">";
-		print $rowm['m_media'];
-		//print "</font>";
+		echo "</td><td>&nbsp;</td>";
+		echo "<td valign=\"top\" align=\"left\">";
+		//echo "<font color=\"blue\">";
+		echo $rowm['m_media'];
+		//echo "</font>";
 
-		print "<b>";
-		print "&nbsp;&nbsp;" . $mediaType;
-		print "</b>";
+		echo "<b>";
+		echo "&nbsp;&nbsp;" . $mediaType;
+		echo "</b>";
 
-		print "<br>" . "\n";
-		print $mediaTitle . "\n";
+		echo "<br>";
+		echo $mediaTitle;
 
-		print "</td>" . "\n";
-		print "</tr>";
-		print "</table>" . "\n";
+		echo "</td>";
+		echo "</tr>";
+		echo "</table>";
 	if (!isset($j)) {
 		$j=0;
 	}else{
@@ -133,6 +133,5 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	echo "<input type=\"hidden\" name=\"order1[", $media_data, "]\" value=\"", $j, "\" />";
 
 	echo "</li>";
-	echo "\n\n";
 	return true;
 }

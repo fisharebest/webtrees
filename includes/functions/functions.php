@@ -1467,7 +1467,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		//-- refer to http://www.php.net/manual/en/features.connection-handling.php for more
 		//-- information about why these lines are included
 		if (headers_sent()) {
-			print " ";
+			echo " ";
 			if ($count%100 == 0)
 				flush();
 		}
@@ -1475,7 +1475,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		$end_time = microtime(true);
 		$exectime = $end_time - $start_time;
 		if (($time_limit>1)&&($exectime > $time_limit-1)) {
-			echo "<span class=\"error\">", i18n::translate('The script timed out before a relationship could be found.'), "</span>\n";
+			echo "<span class=\"error\">", i18n::translate('The script timed out before a relationship could be found.'), "</span>";
 			return false;
 		}
 		if (count($p1nodes)==0) {
@@ -1485,11 +1485,6 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				} elseif ($NODE_CACHE_LENGTH<$maxlength) {
 					$NODE_CACHE_LENGTH = $maxlength;
 				}
-			}
-			if (headers_sent()) {
-				//print "\n<!-- Relationship $pid1-$pid2 NOT FOUND | Visited ".count($visited)." nodes | Required $count iterations.<br />\n";
-				//echo execution_stats();
-				//print "-->\n";
 			}
 			$NODE_CACHE["$pid1-$pid2"] = "NOT FOUND";
 			return false;
@@ -1733,11 +1728,6 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		}
 		unset($p1nodes[$shortest]);
 	} //-- end while loop
-	if (headers_sent()) {
-		//echo "\n<!-- Relationship $pid1-$pid2 | Visited ".count($visited)." nodes | Required $count iterations.<br />\n";
-		//echo execution_stats();
-		//echo "-->\n";
-	}
 
 	// Convert "generic" relationships into sex-specific ones.
 	foreach ($resnode['path'] as $n=>$pid) {

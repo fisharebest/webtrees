@@ -279,7 +279,7 @@ class AdvancedSearchController extends SearchController {
 					else $jd2 = $date->date1->maxJD;
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i]*365;
-						//print $jd1.":".$jd2.":".$adjd;
+						//echo $jd1.":".$jd2.":".$adjd;
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
@@ -415,7 +415,7 @@ class AdvancedSearchController extends SearchController {
 			}
 		}
 		$sql = $sqlfields.$sqltables.$sqlwhere;
-		//print $sql;
+		//echo $sql;
 		if ($justSql) return $sql;
 		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row){
@@ -436,7 +436,7 @@ class AdvancedSearchController extends SearchController {
 			echo '<br /><div class="center">';
 			uasort($this->myindilist, array('GedcomRecord', 'Compare'));
 			print_indi_table($this->myindilist, i18n::translate('Individuals')." @ ".PrintReady(get_gedcom_setting(WT_GEDCOM, 'title'), true));
-			print "</div>";
+			echo "</div>";
 		}
 		else {
 			$ret = false;

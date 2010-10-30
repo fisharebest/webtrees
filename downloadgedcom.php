@@ -79,7 +79,7 @@ if ($action == "download" && $zip == "yes") {
 	if (!is_dir(filename_decode($temppath))) {
 		$res = mkdir(filename_decode($temppath));
 		if ($res !== true) {
-			print "Error : Could not create temporary path!";
+			echo "Error : Could not create temporary path!";
 			exit;
 		}
 		$removeTempDir = true;
@@ -90,7 +90,7 @@ if ($action == "download" && $zip == "yes") {
 	$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on " . date("r") . ".";
 	$archive = new PclZip(filename_decode($zipfile));
 	$v_list = $archive->create(filename_decode($gedname), PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, filename_decode($temppath));
-	if ($v_list == 0) print "Error : " . $archive->errorInfo(true);
+	if ($v_list == 0) echo "Error : " . $archive->errorInfo(true);
 	else {
 		unlink(filename_decode($gedname));
 		if ($removeTempDir) rmdir(filename_decode($temppath));
@@ -116,26 +116,26 @@ if ($action == "download") {
 print_header(i18n::translate('Download GEDCOM'));
 
 ?>
-<div class="center"><h2><?php print i18n::translate('Download GEDCOM'); ?></h2></div>
+<div class="center"><h2><?php echo i18n::translate('Download GEDCOM'); ?></h2></div>
 <br />
 <form name="convertform" method="get">
 	<input type="hidden" name="action" value="download" />
-	<input type="hidden" name="ged" value="<?php print $ged; ?>" />
+	<input type="hidden" name="ged" value="<?php echo $ged; ?>" />
 	<table class="list_table width50" border="0" valign="top">
-	<tr><td colspan="2" class="facts_label03"><?php print i18n::translate('Options:'); ?></td></tr>
+	<tr><td colspan="2" class="facts_label03"><?php echo i18n::translate('Options:'); ?></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Zip File(s)'), help_link('download_zipped'); ?></td>
 		<td class="list_value"><input type="checkbox" name="zip" value="yes" checked="checked" /></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 		<td class="list_value">
 		<?php if (WT_USER_IS_ADMIN) { ?>
-			<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php print i18n::translate('None'); ?><br />
-			<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php print i18n::translate('Visitor'); ?><br />
+			<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo i18n::translate('None'); ?><br />
+			<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
 		<?php } else { ?>
-			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php print i18n::translate('None'); ?><br />
-			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php print i18n::translate('Visitor'); ?><br />
+			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo i18n::translate('None'); ?><br />
+			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
 		<?php } ?>
-		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php print i18n::translate('Authenticated user'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php print i18n::translate('GEDCOM administrator'); ?><br />
+		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo i18n::translate('Authenticated user'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo i18n::translate('GEDCOM administrator'); ?><br />
 		</td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>
@@ -145,12 +145,12 @@ print_header(i18n::translate('Download GEDCOM'));
 		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $conv_path, getLRM();?>" /></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media folder separators to'), help_link('convertSlashes');?></td>
 		<td class="list_value">
-		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') print "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php print i18n::translate('Forward slashes : /');?><br />
-		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') print "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php print i18n::translate('Backslashes : \\');?>
+		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Forward slashes : /');?><br />
+		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Backslashes : \\');?>
 		</td></tr>
 	<tr><td class="facts_label03" colspan="2">
-	<input type="submit" value="<?php print i18n::translate('Download Now'); ?>" />
-	<input type="button" value="<?php print i18n::translate('Back');?>" onclick="window.location='editgedcoms.php';"/></td></tr>
+	<input type="submit" value="<?php echo i18n::translate('Download Now'); ?>" />
+	<input type="button" value="<?php echo i18n::translate('Back');?>" onclick="window.location='editgedcoms.php';"/></td></tr>
 	</table>
 </form>
 <?php

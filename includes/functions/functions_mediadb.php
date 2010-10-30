@@ -120,7 +120,7 @@ function check_media_structure() {
 				$inddata = "<?php header('Location: ../medialist.php'); exit; ?>";
 				$fp = @ fopen($MEDIA_DIRECTORY . "index.php", "w+");
 				if (!$fp)
-					print "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
+					echo "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
 				else {
 					// Write the index.php for the media folder
 					fputs($fp, $inddata);
@@ -131,7 +131,7 @@ function check_media_structure() {
 	}
 	// Check if the thumbs folder exists
 	if (!is_dir($MEDIA_DIRECTORY . "thumbs")) {
-		print $MEDIA_DIRECTORY . "thumbs";
+		echo $MEDIA_DIRECTORY . "thumbs";
 		if (!mkdir($MEDIA_DIRECTORY . "thumbs"))
 			return false;
 		if (file_exists($MEDIA_DIRECTORY . "index.php")) {
@@ -139,7 +139,7 @@ function check_media_structure() {
 			$inddatathumb = str_replace(": ../", ": ../../", $inddata);
 			$fpthumb = @ fopen($MEDIA_DIRECTORY . "thumbs/index.php", "w+");
 			if (!$fpthumb)
-				print "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
+				echo "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs</div>";
 			else {
 				// Write the index.php for the thumbs media folder
 				fputs($fpthumb, $inddatathumb);
@@ -351,7 +351,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 				}
 
 				// Now save this for future use
-				//print $keyMediaList.": "; print_r($media); print "<br/><br/>";
+				//echo $keyMediaList.": "; print_r($media); echo "<br/><br/>";
 				$medialist[$keyMediaList] = $media;
 				$mediaObjects[] = $media["XREF"];
 
@@ -509,15 +509,15 @@ if (!$excludeLinks) {
 		}
 		$d->close();
 	}
-	//print_r($images); print "<br />";
+	//print_r($images); echo "<br />";
 	$dirs = array_unique($dirs); // remove duplicates that were added because we checked both the regular dir and the media firewall dir
 	sort($dirs);
-	//print_r($dirs); print "<br />";
+	//print_r($dirs); echo "<br />";
 	if (count($images) > 0) {
 		ksort($images);
 		$medialist = array_merge($images, $medialist);
 	}
-	//print_r($medialist); print "<br />";
+	//print_r($medialist); echo "<br />";
 	return $medialist;
 }
 /**
@@ -714,7 +714,7 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 
 	// NOTE: Check media depth
 	$parts = pathinfo_utf($filename);
-	//print_r($parts); print "<br />";
+	//print_r($parts); echo "<br />";
 	if (empty($parts["dirname"]) || ($MEDIA_DIRECTORY_LEVELS == 0 && $truncate != "NOTRUNC"))
 		return $MEDIA_DIRECTORY . $parts["basename"];
 
@@ -780,16 +780,16 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 		if (!is_dir(filename_decode($MEDIA_DIRECTORY . $folderName))) {
 			if (!mkdir(filename_decode($MEDIA_DIRECTORY . $folderName))) {
 				if ($noise == "VERBOSE") {
-					print "<div class=\"error\">" . i18n::translate('Directory could not be created') . $MEDIA_DIRECTORY . $folderName . "</div>";
+					echo "<div class=\"error\">" . i18n::translate('Directory could not be created') . $MEDIA_DIRECTORY . $folderName . "</div>";
 				}
 			} else {
 				if ($noise == "VERBOSE") {
-					print i18n::translate('Directory created') . ": " . $MEDIA_DIRECTORY . $folderName . "/<br />";
+					echo i18n::translate('Directory created') . ": " . $MEDIA_DIRECTORY . $folderName . "/<br />";
 				}
 				$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . $folderName . "/index.php"), "w+");
 				if (!$fp) {
 					if ($noise == "VERBOSE") {
-						print "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . $folderName . "</div>";
+						echo "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . $folderName . "</div>";
 					}
 				} else {
 					fwrite($fp, "<?php\r\n");
@@ -803,16 +803,16 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 		if (!is_dir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
 			if (!mkdir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
 				if ($noise == "VERBOSE") {
-					print "<div class=\"error\">" . i18n::translate('Directory could not be created') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+					echo "<div class=\"error\">" . i18n::translate('Directory could not be created') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
 				}
 			} else {
 				if ($noise == "VERBOSE") {
-					print i18n::translate('Directory created') . ": " . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "/<br />";
+					echo i18n::translate('Directory created') . ": " . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "/<br />";
 				}
 				$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName . "/index.php"), "w+");
 				if (!$fp) {
 					if ($noise == "VERBOSE") {
-						print "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+						echo "<div class=\"error\">" . i18n::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
 					}
 				} else {
 					fwrite($fp, "<?php\r\n");
@@ -883,8 +883,8 @@ function process_uploadMedia_form() {
 	global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS, $MEDIATYPE;
 	global $thumbnail, $whichFile1, $whichFile2;
 
-	print "<table class=\"list_table $TEXT_DIRECTION width100\">";
-	print "<tr><td class=\"messagebox wrap\">";
+	echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+	echo "<tr><td class=\"messagebox wrap\">";
 	for($i=1; $i<6; $i++) {
 		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
 			$folderName = trim(trim(safe_POST('folder'.$i, WT_REGEX_NOSCRIPT)), '/');
@@ -976,7 +976,7 @@ function process_uploadMedia_form() {
 								$error .= i18n::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
 							} else {
 								echo i18n::translate('Thumbnail %s generated automatically.', $thumbnail);
-								print "<br />";
+								echo "<br />";
 								AddToLog("Media thumbnail {$thumbnail} generated", 'media');
 							}
 						}
@@ -987,16 +987,16 @@ function process_uploadMedia_form() {
 			if (!empty($error)) echo '<span class="error">', $error, "</span><br />";
 			// No errors found then tell the user all is successful
 			else {
-				print i18n::translate('Upload successful.')."<br /><br />";
+				echo i18n::translate('Upload successful.')."<br /><br />";
 				$imgsize = findImageSize($folderName.$mediaFile);
 				$imgwidth = $imgsize[0]+40;
 				$imgheight = $imgsize[1]+150;
-				print "<a href=\"#\" onclick=\"return openImage('".htmlspecialchars($folderName.$mediaFile)."', $imgwidth, $imgheight);\">".$mediaFile."</a>";
-				print"<br /><br />";
+				echo "<a href=\"#\" onclick=\"return openImage('".htmlspecialchars($folderName.$mediaFile)."', $imgwidth, $imgheight);\">".$mediaFile."</a>";
+				echo "<br /><br />";
 			}
 		}
 	}
-	print "</td></tr></table>";
+	echo "</td></tr></table>";
 }
 
 /**
@@ -1096,7 +1096,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 					echo '>', $f, "</option>";
 				}
 			}
-			print "</select></span>";
+			echo "</select></span>";
 			if (WT_USER_IS_ADMIN) {
 				echo '<br /><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value="" onblur="checkpath(this)" /></span>';
 				if ($i==1) echo '<br /><sub>', i18n::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
@@ -1183,8 +1183,8 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	}
 	if ($gedfile == "FILE") {
 		// Box for user to choose to upload file from local computer
-		print "<tr><td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
-		print i18n::translate('Media file to upload').help_link('upload_media_file')."</td><td class=\"optionbox wrap\"><input type=\"file\" name=\"mediafile\" onchange=\"updateFormat(this.value);\" size=\"40\" /></td></tr>";
+		echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
+		echo i18n::translate('Media file to upload').help_link('upload_media_file')."</td><td class=\"optionbox wrap\"><input type=\"file\" name=\"mediafile\" onchange=\"updateFormat(this.value);\" size=\"40\" /></td></tr>";
 		// Check for thumbnail generation support
 		if (WT_USER_GEDCOM_ADMIN) {
 			$ThumbSupport = "";
@@ -1211,15 +1211,15 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
 			echo i18n::translate('Thumbnail to upload').help_link('upload_thumbnail_file')."</td><td class=\"optionbox wrap\"><input type=\"file\" name=\"thumbnail\" size=\"40\" /></td></tr>";
 		}
-		else print "<input type=\"hidden\" name=\"genthumb\" value=\"yes\" />";
+		else echo "<input type=\"hidden\" name=\"genthumb\" value=\"yes\" />";
 	}
 	// File name on server
 	$isExternal = isFileExternal($gedfile);
 	if ($gedfile == "FILE") {
 		if (WT_USER_GEDCOM_ADMIN) {
 			add_simple_tag("1 $gedfile", "", i18n::translate('File name on server'), "", "NOCLOSE");
-			print "<br /><sub>" . i18n::translate('Do not change to keep original file name.');
-			print "<br />" . i18n::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . "</sub></td></tr>";
+			echo "<br /><sub>" . i18n::translate('Do not change to keep original file name.');
+			echo "<br />" . i18n::translate('You may enter a URL, beginning with &laquo;http://&raquo;.') . "</sub></td></tr>";
 		}
 		$fileName = "";
 		$folder = "";
@@ -1248,9 +1248,9 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		} else {
 /*   $thumbnail = thumbnail_file($fileName, true, false, $pid);
 			if (!empty($thumbnail)) {
-				print "<img src=\"".$thumbnail."\" border=\"0\" align=\"" . ($TEXT_DIRECTION== "rtl"?"right": "left") . "\" class=\"thumbnail\"";
-				if ($isExternal) print " width=\"".$THUMBNAIL_WIDTH."\"";
-				print " alt=\"\" title=\"\" />";
+				echo "<img src=\"".$thumbnail."\" border=\"0\" align=\"" . ($TEXT_DIRECTION== "rtl"?"right": "left") . "\" class=\"thumbnail\"";
+				if ($isExternal) echo " width=\"".$THUMBNAIL_WIDTH."\"";
+				echo " alt=\"\" title=\"\" />";
 			} */
 			echo $fileName;
 			echo "<input name=\"filename\" type=\"hidden\" value=\"" . htmlspecialchars($fileName) . "\" size=\"40\" />";
@@ -1279,7 +1279,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			echo ' value="/"> ', i18n::translate('Choose: '), ' </option>';
 			if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', i18n::translate('Other folder... please type in'), "</option>";
 			foreach ($mediaFolders as $f) {
-				if (!strpos($f, ".svn")) {    //Do not print subversion directories
+				if (!strpos($f, ".svn")) {    //Do not echo subversion directories
 					// Strip $MEDIA_DIRECTORY from the folder name
 					if (substr($f, 0, strlen($MEDIA_DIRECTORY)) == $MEDIA_DIRECTORY) $f = substr($f, strlen($MEDIA_DIRECTORY));
 					if ($f == '') $f = '/';
@@ -1289,7 +1289,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 					echo '>', $f, "</option>";
 				}
 			}
-			print "</select></span>";
+			echo "</select></span>";
 		}
 		else echo $folder;
 		echo '<input name="oldFolder" type="hidden" value="', addslashes($folder), '" />';
@@ -1479,7 +1479,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		echo format_fact_date($event, false, true);
 		echo "</td></tr>";
 	}
-	print "</table>";
+	echo "</table>";
 ?>
 		<script language="JavaScript" type="text/javascript">
 			var formid = '<?php echo $formid; ?>';
@@ -1501,8 +1501,8 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	print_add_layer("NOTE", 1);
 	print_add_layer("SHARED_NOTE", 1);
 	print_add_layer("RESN", 1);
-	print "<input type=\"submit\" value=\"" . i18n::translate('Save') . "\" />";
-	print "</form>";
+	echo "<input type=\"submit\" value=\"" . i18n::translate('Save') . "\" />";
+	echo "</form>";
 }
 
 // looks in both the standard and protected media directories
@@ -1576,7 +1576,7 @@ function PrintMediaLinks($links, $size = "small") {
 	$firstSour = true;
 	$firstObje = true;
 	if ($size == "small")
-		print "<sub>";
+		echo "<sub>";
 	$prev_record=null;
 	foreach ($linkList as $linkItem) {
 		$record=$linkItem['record'];
@@ -1602,7 +1602,7 @@ function PrintMediaLinks($links, $size = "small") {
 	}
 
 	if ($size == "small")
-		print "</sub>";
+		echo "</sub>";
 	return true;
 }
 

@@ -291,43 +291,43 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=get_block_setting($block_id, 'title');
 		$html=get_block_setting($block_id, 'html');
 		// title
-		print "<tr><td class=\"descriptionbox wrap width33\">"
+		echo "<tr><td class=\"descriptionbox wrap width33\">"
 			.translate_fact('TITL')
 			.help_link('index_htmlplus_title')
 			."</td><td class=\"optionbox\"><input type=\"text\" name=\"title\" size=\"30\" value=\"".htmlspecialchars($title)."\" /></td></tr>"
 		;
 
 		// templates
-		print "<tr><td class=\"descriptionbox wrap width33\">"
+		echo "<tr><td class=\"descriptionbox wrap width33\">"
 			.i18n::translate('Templates')
 			.help_link('index_htmlplus_template')
 			."</td><td class=\"optionbox\">"
 		;
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules()))
 		{
-			print "\t\t\t<script language=\"JavaScript\" type=\"text/javascript\">\n"
-				."\t\t\t<!--\n"
-				."\t\t\t\tfunction loadTemplate(html)\n"
-				."\t\t\t\t{\n"
-				."\t\t\t\t\tvar oEditor = CKEDITOR.instances['html'];\n"
-				."\t\t\t\t\toEditor.setData(html);\n"
-				."\t\t\t\t}\n"
-				."\t\t\t-->\n"
-				."\t\t\t</script>\n"
-				."\t\t\t<select name=\"template\" onchange=\"loadTemplate(document.block.template.options[document.block.template.selectedIndex].value);\">\n"
+			echo "<script language=\"JavaScript\" type=\"text/javascript\">\n"
+				."t<!--\n"
+				."function loadTemplate(html)"
+				."{"
+				."var oEditor = CKEDITOR.instances['html'];"
+				."oEditor.setData(html);"
+				."}"
+				."-->\n"
+				."</script>\n"
+				."<select name=\"template\" onchange=\"loadTemplate(document.block.template.options[document.block.template.selectedIndex].value);\">"
 			;
 		}
 		else
 		{
-			print "\t\t\t<select name=\"template\" onchange=\"document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;\">\n";
+			echo "<select name=\"template\" onchange=\"document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;\">";
 		}
-		print "\t\t\t\t<option value=\"".htmlspecialchars($html)."\">".i18n::translate('Custom')."</option>\n";
+		echo "<option value=\"".htmlspecialchars($html)."\">".i18n::translate('Custom')."</option>";
 		foreach($templates as $title=>$template)
 		{
-			print "\t\t\t\t<option value=\"".htmlspecialchars($template)."\">{$title}</option>\n";
+			echo "<option value=\"".htmlspecialchars($template)."\">{$title}</option>";
 		}
-		print "\t\t\t</select>\n"
-			."\t\t</td>\n\t</tr>\n"
+		echo "</select>"
+			."</td></tr>"
 		;
 
 		// gedcom
@@ -337,26 +337,26 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		{
 			if($gedcom == '__current__'){$sel_current = ' selected="selected"';}else{$sel_current = '';}
 			if($gedcom == '__default__'){$sel_default = ' selected="selected"';}else{$sel_default = '';}
-			print "\t<tr>\n\t\t<td class=\"descriptionbox wrap width33\">"
+			echo "<tr><td class=\"descriptionbox wrap width33\">"
 				.i18n::translate('Family Tree')
 				.help_link('index_htmlplus_gedcom')
-				."</td><td class=\"optionbox\">\n"
-				."\t\t\t<select name=\"gedcom\">\n"
-				."\t\t\t\t<option value=\"__current__\"{$sel_current}>".i18n::translate('Current')."</option>\n"
-				."\t\t\t\t<option value=\"__default__\"{$sel_default}>".i18n::translate('Default')."</option>\n"
+				."</td><td class=\"optionbox\">"
+				."<select name=\"gedcom\">"
+				."<option value=\"__current__\"{$sel_current}>".i18n::translate('Current')."</option>"
+				."<option value=\"__default__\"{$sel_default}>".i18n::translate('Default')."</option>"
 			;
 			foreach($gedcoms as $ged_id=>$ged_name)
 			{
 				if($ged_name == $gedcom){$sel = ' selected="selected"';}else{$sel = '';}
-				print "\t\t\t\t<option value=\"{$ged_name}\"{$sel}>".PrintReady(get_gedcom_setting($ged_id, 'title'))."</option>\n";
+				echo "<option value=\"{$ged_name}\"{$sel}>".PrintReady(get_gedcom_setting($ged_id, 'title'))."</option>";
 			}
-			print "\t\t\t</select>\n"
-				."\t\t</td>\n\t</tr>\n"
+			echo "</select>"
+				."</td></tr>"
 			;
 		}
 
 		// html
-		print "\t<tr>\n\t\t<td class=\"descriptionbox wrap width33\">\n"
+		echo "<tr><td class=\"descriptionbox wrap width33\">"
 			.i18n::translate('Content')
 			.help_link('index_htmlplus_content')
 			."<br /><br /></td>"
@@ -376,10 +376,10 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		else
 		{
 			//use standard textarea
-			print "<textarea name=\"html\" rows=\"10\" cols=\"80\">".htmlspecialchars($html)."</textarea>";
+			echo "<textarea name=\"html\" rows=\"10\" cols=\"80\">".htmlspecialchars($html)."</textarea>";
 		}
 
-		print "\n\t\t</td>\n\t</tr>\n";
+		echo "</td></tr>";
 
 		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);
 		echo '<tr><td class="descriptionbox wrap width33">';

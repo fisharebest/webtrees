@@ -64,9 +64,9 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		<table class="facts_table">
 		<?php
 		if (!$this->controller->indi->canDisplayDetails()) {
-			print "<tr><td class=\"facts_value\">";
+			echo "<tr><td class=\"facts_value\">";
 			print_privacy_error();
-			print "</td></tr>";
+			echo "</td></tr>";
 		} else {
 		?>
 			<tr>
@@ -89,7 +89,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			foreach ($this->controller->getIndiFacts() as $key => $factrec) {
 					print_main_sources($factrec->getGedcomRecord(), 2, $this->controller->pid, $factrec->getLineNumber(), true);
 			}
-			if ($this->get_source_count()==0) print "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Source citations for this individual.')."</td></tr>\n";
+			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Source citations for this individual.')."</td></tr>";
 			//-- New Source Link
 			if ($this->controller->canedit) {
 			?>

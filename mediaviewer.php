@@ -69,9 +69,9 @@ if (WT_USE_LIGHTBOX) {
 <table width="70%" class="list_table">
 	<tr>
 		<td class="name_head" colspan="2">
-			<?php print PrintReady($controller->mediaobject->getFullName()); ?>
-			<?php print PrintReady($controller->mediaobject->getAddName()); ?> <br /><br />
-			<?php if ($controller->mediaobject->isMarkedDeleted()) print "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
+			<?php echo PrintReady($controller->mediaobject->getFullName()); ?>
+			<?php echo PrintReady($controller->mediaobject->getAddName()); ?> <br /><br />
+			<?php if ($controller->mediaobject->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
 		</td>
 	</tr>
 	<tr>
@@ -100,19 +100,19 @@ if (WT_USE_LIGHTBOX) {
 					echo '<img src="', $mediaInfo['thumb'], '" border="0" align="', $TEXT_DIRECTION=="rtl" ? "left":"right", '" class="thumbnail"', $mediaInfo['width'];
 
 					// Finish off anchor and tooltips
-					print " alt=\"" . PrintReady(htmlspecialchars($name)) . "\" title=\"" . PrintReady(htmlspecialchars($name)) . "\" /></a>";
+					echo " alt=\"" . PrintReady(htmlspecialchars($name)) . "\" title=\"" . PrintReady(htmlspecialchars($name)) . "\" /></a>";
 
 					// If download
 					if ($SHOW_MEDIA_DOWNLOAD) {
-						print "<br /><br /><a href=\"".$filename."\">".i18n::translate('Download File')."</a><br/>";
+						echo "<br /><br /><a href=\"".$filename."\">".i18n::translate('Download File')."</a><br/>";
 					}
 
 					// else the file is not external and does not exist
 				} else {
 					?>
-					<img src="<?php print $controller->mediaobject->getThumbnail(); ?>" border="0" width="100" alt="<?php print $controller->mediaobject->getFullName(); ?>" title="<?php print PrintReady(htmlspecialchars($controller->mediaobject->getFullName())); ?>" />
+					<img src="<?php echo $controller->mediaobject->getThumbnail(); ?>" border="0" width="100" alt="<?php echo $controller->mediaobject->getFullName(); ?>" title="<?php echo PrintReady(htmlspecialchars($controller->mediaobject->getFullName())); ?>" />
 					<span class="error">
-						<?php print i18n::translate('File not found.');?>
+						<?php echo i18n::translate('File not found.');?>
 					</span>
 					<?php
 				}
@@ -124,7 +124,7 @@ if (WT_USE_LIGHTBOX) {
 			<table width="100%">
 				<tr>
 					<td>
-						<table class="facts_table<?php print $TEXT_DIRECTION=='ltr'?'':'_rtl';?>">
+						<table class="facts_table<?php echo $TEXT_DIRECTION=='ltr'?'':'_rtl';?>">
 							<?php
 								$facts = $controller->getFacts($SHOW_MEDIA_FILENAME);
 								foreach($facts as $f=>$factrec) {
@@ -139,7 +139,7 @@ if (WT_USE_LIGHTBOX) {
 	</tr>
 	<tr>
 		<td class="center" colspan="2">
-			<br /><b><?php print i18n::translate('The image relates to:'); ?></b><br /><br />
+			<br /><b><?php echo i18n::translate('The image relates to:'); ?></b><br /><br />
 			<?php
 
 				// Individuals linked to this media object
@@ -175,27 +175,27 @@ if (WT_USE_LIGHTBOX) {
 
 // javascript function to open the lightbox view
 function lightboxView(){
-// var string = "<?php print $tmb; ?>";
+// var string = "<?php echo $tmb; ?>";
 // alert(string);
 // document.write(string);
-// <?php print $tmb; ?>
+// <?php echo $tmb; ?>
 	return false;
 }
 
 // javascript function to open the original imageviewer.php page
 function openImageView(){
-	window.open("imageview.php?filename=<?php print urlencode($filename) ?>", "Image View");
+	window.open("imageview.php?filename=<?php echo urlencode($filename) ?>", "Image View");
 	return false;
 }
 // javascript function to open a window with the raw gedcom in it
 function show_gedcom_record(shownew) {
 	fromfile="";
 	if (shownew=="yes") fromfile='&fromfile=1';
-	var recwin = window.open("gedrecord.php?pid=<?php print $controller->pid; ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
+	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->pid; ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
 }
 
 function showchanges() {
-	window.location = 'mediaviewer.php?mid=<?php print $controller->pid; ?>&show_changes=yes';
+	window.location = 'mediaviewer.php?mid=<?php echo $controller->pid; ?>&show_changes=yes';
 }
 
 function ilinkitem(mediaid, type) {

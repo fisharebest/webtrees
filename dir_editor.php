@@ -110,7 +110,7 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 <!--
 function warnuser(cbox) {
 	if (cbox.checked) {
-		if(!confirm('<?php print i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) cbox.checked = false;
+		if(!confirm('<?php echo i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) cbox.checked = false;
 	}
 }
 //-->
@@ -130,20 +130,19 @@ function warnuser(cbox) {
 		}
 		sort($entryList);
 		foreach ($entryList as $entry) {
-			//echo $entry, "\n";
 			if ($entry{0} != '.') {
 				if (in_array($entry, $locked_by_context)) {
-					print "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
-					print "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
-					print "<span class=\"name2\">".$entry."</span>";
+					echo "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
+					echo "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
+					echo "<span class=\"name2\">".$entry."</span>";
 				}
 				else{
-					print "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
-					print "<input type=\"checkbox\" name=\"to_delete[]\" value=\"".$entry."\" />\n";
-					print $entry;
+					echo "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
+					echo "<input type=\"checkbox\" name=\"to_delete[]\" value=\"".$entry."\" />";
+					echo $entry;
 					$elements[] = "li_".$entry;
 				}
-				print "</li>";
+				echo "</li>";
 			}
 		}
 		?>
@@ -152,14 +151,14 @@ function warnuser(cbox) {
 		<td valign="top" id="trash" class="facts_value02"><?php
 		$dir->close();
 
-		print "<div style=\"margin-bottom:2px;\">";
-		print "<table><tr><td>";
-		if (isset($WT_IMAGES["trashcan"]["medium"])) print "<img src=\"".$WT_IMAGES["trashcan"]["medium"]."\" align=\"left\" alt=\"\" />";
-		else print "<img src=\"images/trashcan.gif\" align=\"left\" alt=\"\" />";
-		print "</td>";
-		print "<td valign=\"top\"><ul id=\"trashlist\">";
-		print "</ul></td></tr></table>";
-		print "</div>";
+		echo "<div style=\"margin-bottom:2px;\">";
+		echo "<table><tr><td>";
+		if (isset($WT_IMAGES["trashcan"]["medium"])) echo "<img src=\"".$WT_IMAGES["trashcan"]["medium"]."\" align=\"left\" alt=\"\" />";
+		else echo "<img src=\"images/trashcan.gif\" align=\"left\" alt=\"\" />";
+		echo "</td>";
+		echo "<td valign=\"top\"><ul id=\"trashlist\">";
+		echo "</ul></td></tr></table>";
+		echo "</div>";
 
 		?> <script type="text/javascript" language="javascript">
 	<!--
@@ -168,7 +167,7 @@ function warnuser(cbox) {
 		<?php
 		foreach($elements as $key=>$val)
 		{
-			print "new Draggable('".$val."', {revert:true});";
+			echo "new Draggable('".$val."', {revert:true});";
 		}
 		?>
 
@@ -177,7 +176,7 @@ function warnuser(cbox) {
 	onDrop: function(element)
 	{
 		if (element.attributes.warn) {
-			if (!confirm('<?php print i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) return;
+			if (!confirm('<?php echo i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) return;
 		}
 		$('trashlist').innerHTML +=
 			'<li class="facts_value">'+ element.attributes.name.value +'<input type="hidden" name="to_delete[]" value="'+element.attributes.name.value+'"/></li>' ;
@@ -209,9 +208,9 @@ function removeAll() {
 }
 // -->
 </script>
-		<button type="submit"><?php print i18n::translate('Delete');?></button>
-		<button type="button" onclick="ul_clear(); return false;"><?php print i18n::translate('Cancel');?></button><br /><br />
-		<button type="button" onclick="removeAll(); return false;"><?php print i18n::translate('Remove all nonessential files');?></button>
+		<button type="submit"><?php echo i18n::translate('Delete');?></button>
+		<button type="button" onclick="ul_clear(); return false;"><?php echo i18n::translate('Cancel');?></button><br /><br />
+		<button type="button" onclick="removeAll(); return false;"><?php echo i18n::translate('Remove all nonessential files');?></button>
 		</td>
 	</tr>
 </table>

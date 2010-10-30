@@ -45,24 +45,24 @@ $reorder=safe_get('reorder', '1', '0');
 <!--
 	function reorder_media() {
 	var win02 = window.open(
-	"edit_interface.php?action=reorder_media&pid=<?php print $pid; ?>&currtab=album", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
+	"edit_interface.php?action=reorder_media&pid=<?php echo $pid; ?>&currtab=album", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
 	if (window.focus) {win02.focus();}
 	}
 
 	function album_add() {
 		win03 = window.open(
-		"addmedia.php?action=showmediaform&linktoid=<?php print $pid; ?>", "win03", "resizable=1, scrollbars=1, top=50, HEIGHT=780, WIDTH=600 ");
+		"addmedia.php?action=showmediaform&linktoid=<?php echo $pid; ?>", "win03", "resizable=1, scrollbars=1, top=50, HEIGHT=780, WIDTH=600 ");
 		if (window.focus) {win03.focus();}
 	}
 
 	function album_link() {
 		win04 = window.open(
-		"inverselink.php?linktoid=<?php print $pid; ?>&linkto=person", "win04", "resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ");
+		"inverselink.php?linktoid=<?php echo $pid; ?>&linkto=person", "win04", "resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ");
 		win04.focus()
 	}
 
 	function goto_config_lightbox() {
-		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php print $pid; ?>&gedcom=<?php print $GEDCOM; ?>#lightbox";
+		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php echo $pid; ?>&gedcom=<?php echo $GEDCOM; ?>#lightbox";
 	}
 -->
 </script>
@@ -82,86 +82,86 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 
 	}else{
 		//Show Lightbox-Album header Links
-		//print "<br />";
+		//echo "<br />";
 		echo '<table border="0" width="75%"><tr>';
-		// print "<td class=\"width10 center wrap\" valign=\"top\"></td>";
+		// echo "<td class=\"width10 center wrap\" valign=\"top\"></td>";
 
 		if ($LB_AL_HEAD_LINKS == "icon" || (!WT_USER_IS_ADMIN && !WT_USER_CAN_EDIT)) {
-		print "<td>";
+		echo "<td>";
 		}
 
 		// Configuration
         if (WT_USER_IS_ADMIN) {
 			if ($LB_AL_HEAD_LINKS == "both") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"javascript:goto_config_lightbox()\">";
-				print "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" /><br />" ;
-				print "" . i18n::translate('Lightbox-Album Configuration') . "&nbsp;";
-				print "</a>";
-				print "</td>";
-				// print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+				echo "<a href=\"javascript:goto_config_lightbox()\">";
+				echo "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" /><br />" ;
+				echo "" . i18n::translate('Lightbox-Album Configuration') . "&nbsp;";
+				echo "</a>";
+				echo "</td>";
+				// echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"javascript:goto_config_lightbox()\">";
-				print "" . i18n::translate('Lightbox-Album Configuration') . "&nbsp;";
-				print "</a>";
-				print "</td>";
-	        //    print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+				echo "<a href=\"javascript:goto_config_lightbox()\">";
+				echo "" . i18n::translate('Lightbox-Album Configuration') . "&nbsp;";
+				echo "</a>";
+				echo "</td>";
+	        //    echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
-				print "&nbsp;&nbsp;&nbsp;";
-	            print "<a href=\"javascript:goto_config_lightbox()\">";
-				print "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" />" ;
-				print "</a>";
+				echo "&nbsp;&nbsp;&nbsp;";
+	            echo "<a href=\"javascript:goto_config_lightbox()\">";
+				echo "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" />" ;
+				echo "</a>";
 			}
         }
 
 		//Add a new multimedia object
         if (WT_USER_CAN_EDIT) {
 			if ($LB_AL_HEAD_LINKS == "both") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-	            print "<a href=\"javascript: album_add()\"> ";
-				print "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" /><br />" ;
-				print "" . i18n::translate('Add a new Media Object') . "&nbsp;";
-	            print " </a> ";
-	            print "</td>";
-	            //print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+	            echo "<a href=\"javascript: album_add()\"> ";
+				echo "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" /><br />" ;
+				echo "" . i18n::translate('Add a new Media Object') . "&nbsp;";
+	            echo " </a> ";
+	            echo "</td>";
+	            //echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-	            print "<a href=\"javascript: album_add()\"> ";
-				print "" . i18n::translate('Add a new Media Object') . "&nbsp;";
-	            print " </a> ";
-	            print "</td>";
-	            //print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+	            echo "<a href=\"javascript: album_add()\"> ";
+				echo "" . i18n::translate('Add a new Media Object') . "&nbsp;";
+	            echo " </a> ";
+	            echo "</td>";
+	            //echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
-				print "&nbsp;&nbsp;&nbsp;";
-	            print "<a href=\"javascript: album_add()\"> ";
-				print "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" />" ;
-	            print "</a>";
+				echo "&nbsp;&nbsp;&nbsp;";
+	            echo "<a href=\"javascript: album_add()\"> ";
+				echo "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" />" ;
+	            echo "</a>";
 			}
         }
 
 		//Link to an existing item
         if (WT_USER_CAN_EDIT) {
 			if ($LB_AL_HEAD_LINKS == "both") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-	            print "<a href=\"javascript: album_link()\"> ";
-				print "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" /><br />" ;
-				print "" . i18n::translate('Link to an existing Media Object') . "&nbsp;";
-	            print " </a> ";
-	            print "</td>";
-				//    print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+	            echo "<a href=\"javascript: album_link()\"> ";
+				echo "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" /><br />" ;
+				echo "" . i18n::translate('Link to an existing Media Object') . "&nbsp;";
+	            echo " </a> ";
+	            echo "</td>";
+				//    echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-	            print "<a href=\"javascript: album_link()\"> ";
-				print "" . i18n::translate('Link to an existing Media Object') . "&nbsp;";
-	            print " </a> ";
-	            print "</td>";
-				//    print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+	            echo "<a href=\"javascript: album_link()\"> ";
+				echo "" . i18n::translate('Link to an existing Media Object') . "&nbsp;";
+	            echo " </a> ";
+	            echo "</td>";
+				//    echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
-				print "&nbsp;&nbsp;&nbsp;";
-	            print "<a href=\"javascript: album_link()\">";
-				print "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" />" ;
-	            print "</a> ";
+				echo "&nbsp;&nbsp;&nbsp;";
+	            echo "<a href=\"javascript: album_link()\">";
+				echo "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" />" ;
+	            echo "</a> ";
 			}else{
 			}
         }
@@ -169,27 +169,27 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 		// Album Reorder Media -----
 		if (WT_USER_CAN_EDIT) {
 			if ($LB_AL_HEAD_LINKS == "both") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
-				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media')."\" alt=\"".i18n::translate('Re-order media')."\" /><br />" ;
-				print "" . i18n::translate('Re-order media') . "&nbsp;";
-				print '</a>';
-				print "</td>";
-				// print "<input type=\"hidden\" name=\"reorder\" value=\"1\" />";
-				//print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+				echo "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
+				echo "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media')."\" alt=\"".i18n::translate('Re-order media')."\" /><br />" ;
+				echo "" . i18n::translate('Re-order media') . "&nbsp;";
+				echo '</a>';
+				echo "</td>";
+				// echo "<input type=\"hidden\" name=\"reorder\" value=\"1\" />";
+				//echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
-				print "" . i18n::translate('Re-order media') . "&nbsp;";
-				print '</a>';
-				print "</td>";
-				//print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+				echo "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
+				echo "" . i18n::translate('Re-order media') . "&nbsp;";
+				echo '</a>';
+				echo "</td>";
+				//echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
-				print "&nbsp;&nbsp;&nbsp;";
-				print "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
-				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media')."\" alt=\"".i18n::translate('Re-order media')."\" />" ;
-				print '</a>';
-				//print "<td width=\"5%\">&nbsp;</td>";
+				echo "&nbsp;&nbsp;&nbsp;";
+				echo "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
+				echo "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media')."\" alt=\"".i18n::translate('Re-order media')."\" />" ;
+				echo '</a>';
+				//echo "<td width=\"5%\">&nbsp;</td>";
 			}
 		}
 */
@@ -197,35 +197,35 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 		// Popup Reorder Media -----
 		if (WT_USER_CAN_EDIT ) {
 			if ($LB_AL_HEAD_LINKS == "both") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"javascript: reorder_media()\">" ;
-				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media (window)')."\" alt=\"".i18n::translate('Re-order media (window)')."\" /><br />" ;
-				//print "" . i18n::translate('Re-order media (window)') . "&nbsp;";
-				print "" . i18n::translate('Re-order media (window)') . "&nbsp;";
-				print '</a>';
-				print "</td>";
-				//print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+				echo "<a href=\"javascript: reorder_media()\">" ;
+				echo "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media (window)')."\" alt=\"".i18n::translate('Re-order media (window)')."\" /><br />" ;
+				//echo "" . i18n::translate('Re-order media (window)') . "&nbsp;";
+				echo "" . i18n::translate('Re-order media (window)') . "&nbsp;";
+				echo '</a>';
+				echo "</td>";
+				//echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
-				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"javascript: reorder_media()\">" ;
-				// print "" . i18n::translate('Re-order media (window)') . "&nbsp;";
-				print "" . i18n::translate('Re-order media') . "&nbsp;";
-				print '</a>';
-				print "</td>";
-				//print "<td width=\"5%\">&nbsp;</td>";
+				echo "<td class=\"width15 center wrap\" valign=\"top\">";
+				echo "<a href=\"javascript: reorder_media()\">" ;
+				// echo "" . i18n::translate('Re-order media (window)') . "&nbsp;";
+				echo "" . i18n::translate('Re-order media') . "&nbsp;";
+				echo '</a>';
+				echo "</td>";
+				//echo "<td width=\"5%\">&nbsp;</td>";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
-				print "&nbsp;&nbsp;&nbsp;&nbsp;";
-				print "<a href=\"javascript: reorder_media()\">" ;
-				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media (window)')."\" alt=\"".i18n::translate('Re-order media (window)')."\" /><br />" ;
-				print '</a>';
-				//print "<td width=\"5%\">&nbsp;</td>";
+				echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+				echo "<a href=\"javascript: reorder_media()\">" ;
+				echo "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media (window)')."\" alt=\"".i18n::translate('Re-order media (window)')."\" /><br />" ;
+				echo '</a>';
+				//echo "<td width=\"5%\">&nbsp;</td>";
 			}
 		}
 
 
 		if ($LB_AL_HEAD_LINKS == "icon" || (!WT_USER_IS_ADMIN && !WT_USER_CAN_EDIT)) {
-		print "</td>";
+		echo "</td>";
 		}
 
-		print "</tr></table>";
+		echo "</tr></table>";
 	}

@@ -9,34 +9,34 @@ require_once './library/Zend/Soap/Client.php';
 
 //-- put your URL here
 $url = 'http://localhost/phpgedview/gen2service.php?wsdl';
-print "Getting WSDL<br />";
+echo "Getting WSDL<br />";
 
 if (!class_exists('SoapClient')) {
-	print "Using Zend SOAP<br />";
+	echo "Using Zend SOAP<br />";
 	$soap = new Zend_Soap_Client($url,array('soap_version' => SOAP_1_1 ));
 }
 else {
-	print "Using SOAP Extension<br />";
+	echo "Using SOAP Extension<br />";
 	$soap = new SoapClient($url);
 }
 
-print "Getting ServiceInfo<br />\n";
+echo "Getting ServiceInfo<br />";
 $s = $soap->ServiceInfo();
 var_dump($s);
-print "After ServiceInfo()<br />";
+echo "After ServiceInfo()<br />";
 
 $result = $soap->Authenticate('', '', '', '');
 var_dump($result);
 
-print "After Authenticate<br />";
+echo "After Authenticate<br />";
 
 $res = $soap->getPersonById($result->SID, "I2");
 var_dump($res);
-print "After getPersonById<br />";
+echo "After getPersonById<br />";
 
 $res = $soap->getGedcomRecord($result->SID, "I2");
 var_dump($res);
-print "After getGedcomRecord<br />";
+echo "After getGedcomRecord<br />";
 
 //$family = $soap->getFamilyByID($result->SID, "F1");
 //print_r($family);

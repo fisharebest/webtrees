@@ -65,7 +65,7 @@ switch ($action) {
 			function checkform(frm) {
 				/*
 				if (frm.user_email.value == "") {
-					alert("<?php print i18n::translate('You must enter an email address.'); ?>");
+					alert("<?php echo i18n::translate('You must enter an email address.'); ?>");
 					frm.user_email.focus();
 					return false;
 				}
@@ -78,11 +78,11 @@ switch ($action) {
 			<form name="requestpwform" action="login_register.php" method="post" onsubmit="t = new Date(); document.requestpwform.time.value=t.toUTCString(); return checkform(this);">
 			<input type="hidden" name="time" value="" />
 			<input type="hidden" name="action" value="requestpw" />
-			<span class="warning"><?php print $message?></span>
+			<span class="warning"><?php echo $message?></span>
 			<table class="center facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo i18n::translate('Lost password request'), help_link('pls_note11'); ?></td></tr>
-				<tr><td class="descriptionbox wrap <?php print $TEXT_DIRECTION; ?>"><?php print i18n::translate('User name')?></td><td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="" /></td></tr>
-				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php print i18n::translate('Lost password request'); ?>" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('User name')?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="" /></td></tr>
+				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo i18n::translate('Lost password request'); ?>" /></td></tr>
 			</table>
 			</form>
 		</div>
@@ -95,19 +95,19 @@ switch ($action) {
 	case "requestpw" :
 		$QUERY_STRING = "";
 		print_header(i18n::translate('Lost password request'));
-		print "<div class=\"center\">";
+		echo "<div class=\"center\">";
 		$user_id=get_user_id($user_name);
 		if (!$user_id) {
 			AddToLog("New password requests for user ".$user_name." that does not exist", 'auth');
-			print "<span class=\"warning\">";
+			echo "<span class=\"warning\">";
 			echo i18n::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
-			print "</span><br />";
+			echo "</span><br />";
 		} else {
 			if (getUserEmail($user_id)=='') {
 				AddToLog("Unable to send password to user ".$user_name." because they do not have an email address", 'auth');
-				print "<span class=\"warning\">";
+				echo "<span class=\"warning\">";
 				echo i18n::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
-				print "</span><br />";
+				echo "</span><br />";
 			} else {
 				$passchars = "abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 				$user_new_pw = "";
@@ -142,7 +142,7 @@ switch ($action) {
 
 				?>
 				<table class="center facts_table">
-				<tr><td class="wrap <?php print $TEXT_DIRECTION; ?>"><?php print i18n::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', $user_name);?></td></tr>
+				<tr><td class="wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', $user_name);?></td></tr>
 				</table>
 				<?php
 				AddToLog("Password request was sent to user: ".$user_name, 'auth');
@@ -150,7 +150,7 @@ switch ($action) {
 				i18n::init(WT_LOCALE);   // Reset language
 			}
 		}
-		print "</div>";
+		echo "</div>";
 		break;
 
 	case "register" :
@@ -208,46 +208,46 @@ switch ($action) {
 			<!--
 				function checkform(frm) {
 					if (frm.user_name.value == "") {
-						alert("<?php print i18n::translate('You must enter a user name.'); ?>");
+						alert("<?php echo i18n::translate('You must enter a user name.'); ?>");
 						frm.user_name.focus();
 						return false;
 					}
 					if (frm.user_password01.value == "") {
-						alert("<?php print i18n::translate('You must enter a password.'); ?>");
+						alert("<?php echo i18n::translate('You must enter a password.'); ?>");
 						frm.user_password01.focus();
 						return false;
 					}
 					if (frm.user_password02.value == "") {
-						alert("<?php print i18n::translate('You must confirm the password.'); ?>");
+						alert("<?php echo i18n::translate('You must confirm the password.'); ?>");
 						frm.user_password02.focus();
 						return false;
 					}
 					if (frm.user_password01.value != frm.user_password02.value) {
-						alert("<?php print i18n::translate('Passwords do not match.'); ?>");
+						alert("<?php echo i18n::translate('Passwords do not match.'); ?>");
 						frm.user_password01.value = "";
 						frm.user_password02.value = "";
 						frm.user_password01.focus();
 						return false;
 					}
 					if (frm.user_password01.value.length < 6) {
-						alert("<?php print i18n::translate('Passwords must contain at least 6 characters.'); ?>");
+						alert("<?php echo i18n::translate('Passwords must contain at least 6 characters.'); ?>");
 						frm.user_password01.value = "";
 						frm.user_password02.value = "";
 						frm.user_password01.focus();
 						return false;
 					}
 					if (frm.user_realname.value == "") {
-						alert("<?php print i18n::translate('You must enter your real name.'); ?>");
+						alert("<?php echo i18n::translate('You must enter your real name.'); ?>");
 						frm.user_realname.focus();
 						return false;
 					}
 					if ((frm.user_email.value == "")||(frm.user_email.value.indexOf('@')==-1)) {
-						alert("<?php print i18n::translate('You must enter an email address.'); ?>");
+						alert("<?php echo i18n::translate('You must enter an email address.'); ?>");
 						frm.user_email.focus();
 						return false;
 					}
 					if (frm.user_comments.value == "") {
-						alert("<?php print i18n::translate('Please enter your relationship to the data in the Comments field.'); ?>");
+						alert("<?php echo i18n::translate('Please enter your relationship to the data in the Comments field.'); ?>");
 						frm.user_comments.focus();
 						return false;
 					}
@@ -308,14 +308,14 @@ switch ($action) {
 		}
 		if ((stripos($user_name, "SUNTZU")!==false) || (stripos($user_email, "SUNTZU")!==false)) {
 			AddToLog("SUNTZU hacker", 'auth');
-			print "Go Away!";
+			echo "Go Away!";
 			exit;
 		}
 
 			//-- check referer for possible spam attack
 			if (!isset($_SERVER['HTTP_REFERER']) || stristr($_SERVER['HTTP_REFERER'],"login_register.php")===false) {
-				print "<center><br /><span class=\"error\">Invalid page referer.</span>";
-				print "<br /><br /></center>";
+				echo "<center><br /><span class=\"error\">Invalid page referer.</span>";
+				echo "<br /><br /></center>";
 				AddToLog('Invalid page referer while trying to register a user.  Possible spam attack.', 'auth');
 				exit;
 			}
@@ -329,17 +329,17 @@ switch ($action) {
 		$QUERY_STRING = "";
 		if (isset($user_name)) {
 			print_header(i18n::translate('New Account confirmation'));
-			print "<div class=\"center\">";
+			echo "<div class=\"center\">";
 			$user_created_ok = false;
 
 			AddToLog("User registration requested for: ".$user_name, 'auth');
 
 			if (get_user_id($user_name)) {
-				print "<span class=\"warning\">".i18n::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.')."</span><br /><br />";
-				print "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
+				echo "<span class=\"warning\">".i18n::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.')."</span><br /><br />";
+				echo "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
 			} elseif (get_user_by_email($user_email)) {
-				print "<span class=\"warning\">".i18n::translate('Duplicate email address.  A user with that email already exists.')."</span><br /><br />";
-				print "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
+				echo "<span class=\"warning\">".i18n::translate('Duplicate email address.  A user with that email already exists.')."</span><br /><br />";
+				echo "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
 			} elseif ($user_password01 == $user_password02) {
 				if ($user_id=create_user($user_name, $user_realname, $user_email, crypt($user_password01))) {
 					set_user_setting($user_id, 'language',            $user_language);
@@ -360,12 +360,12 @@ switch ($action) {
 					}
 					$user_created_ok = true;
 				} else {
-					print "<span class=\"warning\">".i18n::translate('Unable to add user.  Please try again.')."<br /></span>";
-					print "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
+					echo "<span class=\"warning\">".i18n::translate('Unable to add user.  Please try again.')."<br /></span>";
+					echo "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
 				}
 			} else {
-				print "<span class=\"warning\">".i18n::translate('Passwords do not match.')."</span><br />";
-				print "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
+				echo "<span class=\"warning\">".i18n::translate('Passwords do not match.')."</span><br />";
+				echo "<a href=\"javascript:history.back()\">".i18n::translate('Back')."</a><br />";
 			}
 			if ($user_created_ok) {
 				// switch to the user's language
@@ -418,17 +418,17 @@ switch ($action) {
 				i18n::init($user_language);
 				?>
 				<table class="center facts_table">
-					<tr><td class="wrap <?php print $TEXT_DIRECTION; ?>"><?php print i18n::translate('Hello %s ...<br />Thank you for your registration.', $user_realname); ?><br /><br />
+					<tr><td class="wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Hello %s ...<br />Thank you for your registration.', $user_realname); ?><br /><br />
 					<?php
-					if ($REQUIRE_ADMIN_AUTH_REGISTRATION) print i18n::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email);
-					else print i18n::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password.', $user_email);
+					if ($REQUIRE_ADMIN_AUTH_REGISTRATION) echo i18n::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email);
+					else echo i18n::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password.', $user_email);
 					?>
 					</td></tr>
 				</table>
 				<?php
 				i18n::init(WT_LOCALE); // Reset language
 			}
-			print "</div>";
+			echo "</div>";
 		} else {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
 			exit;
@@ -446,16 +446,16 @@ switch ($action) {
 		i18n::init(get_user_setting($user_id, 'language'));
 
 		print_header(i18n::translate('User verification'));
-		print "<div class=\"center\">";
+		echo "<div class=\"center\">";
 		?>
 		<form name="verifyform" method="post" action="" onsubmit="t = new Date(); document.verifyform.time.value=t.toUTCString();">
 			<input type="hidden" name="action" value="verify_hash" />
 			<input type="hidden" name="time" value="" />
 			<table class="center facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo i18n::translate('User verification'), help_link('pls_note07'); ?></td></tr>
-				<tr><td class="descriptionbox wrap <?php print $TEXT_DIRECTION; ?>"><?php echo i18n::translate('User name'); ?></td><td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="<?php print $user_name; ?>" /></td></tr>
-				<tr><td class="descriptionbox wrap <?php print $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Password'); ?></td><td class="optionbox <?php print $TEXT_DIRECTION; ?>"><input type="password" name="user_password" value="" /></td></tr>
-				<tr><td class="descriptionbox wrap <?php print $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Verification code:'); ?></td><td class="facts_value <?php print $TEXT_DIRECTION; ?>"><input type="text" name="user_hashcode" value="<?php print $user_hashcode; ?>" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('User name'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="<?php echo $user_name; ?>" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" name="user_password" value="" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo i18n::translate('Verification code:'); ?></td><td class="facts_value <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_hashcode" value="<?php echo $user_hashcode; ?>" /></td></tr>
 				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo i18n::translate('Send'); ?>" /></td></tr>
 			</table>
 		</form>
@@ -479,11 +479,11 @@ switch ($action) {
 		i18n::init(get_user_setting($user_id, 'language'));
 
 		print_header(i18n::translate('User verification')); // <-- better verification of authentication code
-		print "<div class=\"center\">";
-		print "<table class=\"center facts_table wrap ".$TEXT_DIRECTION."\">";
-		print "<tr><td class=\"topbottombar\">".i18n::translate('User verification')."</td></tr>";
-		print "<tr><td class=\"optionbox\">";
-		print i18n::translate('The data for the user <b>%s</b> was checked.', $user_name);
+		echo "<div class=\"center\">";
+		echo "<table class=\"center facts_table wrap ".$TEXT_DIRECTION."\">";
+		echo "<tr><td class=\"topbottombar\">".i18n::translate('User verification')."</td></tr>";
+		echo "<tr><td class=\"optionbox\">";
+		echo i18n::translate('The data for the user <b>%s</b> was checked.', $user_name);
 		if ($user_id) {
 			$pw_ok = (get_user_password($user_id) == crypt($user_password, get_user_password($user_id)));
 			$hc_ok = (get_user_setting($user_id, 'reg_hashcode') == $user_hashcode);
@@ -526,24 +526,24 @@ switch ($action) {
 
 				i18n::init(WT_LOCALE); // Reset language
 
-				print "<br /><br />".i18n::translate('You have confirmed your request to become a registered user.')."<br /><br />";
-				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) print i18n::translate('The Administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
-				else print i18n::translate('You can now login with your user name and password.');
-				print "<br /><br /></td></tr>";
+				echo "<br /><br />".i18n::translate('You have confirmed your request to become a registered user.')."<br /><br />";
+				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) echo i18n::translate('The Administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
+				else echo i18n::translate('You can now login with your user name and password.');
+				echo "<br /><br /></td></tr>";
 			} else {
-				print "<br /><br />";
-				print "<span class=\"warning\">";
-				print i18n::translate('Data was not correct, please try again');
-				print "</span><br /><br /></td></tr>";
+				echo "<br /><br />";
+				echo "<span class=\"warning\">";
+				echo i18n::translate('Data was not correct, please try again');
+				echo "</span><br /><br /></td></tr>";
 			}
 		} else {
-			print "<br /><br />";
-			print "<span class=\"warning\">";
-			print i18n::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
-			print "</span><br /><br /></td></tr>";
+			echo "<br /><br />";
+			echo "<span class=\"warning\">";
+			echo i18n::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
+			echo "</span><br /><br /></td></tr>";
 		}
-		print "</table>";
-		print "</div>";
+		echo "</table>";
+		echo "</div>";
 		break;
 
 	default :

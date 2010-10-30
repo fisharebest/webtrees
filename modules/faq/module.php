@@ -244,7 +244,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			"SELECT block_order, block_id".
 			" FROM `##block`".
 			" WHERE block_order=(".
-			"  SELECT MAX(block_order) FROM `##block` WHERE block_order<? AND module_name=?".
+			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < ? AND module_name=?".
 			" )".
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName()))->fetchOneRow();

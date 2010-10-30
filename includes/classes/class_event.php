@@ -280,8 +280,8 @@ class Event {
 		if (!$this->dest)
 			$data .= format_fact_date($this, $anchor, false, true);
 		$data .= format_fact_place($this, $anchor, false, false);
-		$data .= "<br />\n";
-		if (!$return) print $data;
+		$data .= "<br />";
+		if (!$return) echo $data;
 		else return $data;
 	}
 

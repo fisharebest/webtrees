@@ -104,35 +104,35 @@ class AncestryController extends BaseController {
 
 		$person = Person::getInstance($pid);
 		// child
-		print "<li>";
-		print "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td><a name=\"sosa".$sosa."\"></a>";
+		echo "<li>";
+		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td><a name=\"sosa".$sosa."\"></a>";
 		$new=($pid=="" or !isset($pidarr["$pid"]));
-		if ($sosa==1) print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>";
+		if ($sosa==1) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>";
 		else {
-			print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"2\" border=\"0\" alt=\"\" />";
-			print "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-2)."\" border=\"0\" alt=\"\" /></td><td>";
+			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"2\" border=\"0\" alt=\"\" />";
+			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-2)."\" border=\"0\" alt=\"\" /></td><td>";
 		}
 		print_pedigree_person($pid, 1);
-		print "</td>";
-		print "<td>";
+		echo "</td>";
+		echo "<td>";
 		if ($TEXT_DIRECTION=="ltr") {
 			$label = i18n::translate('Ancestry chart').": ".$pid;
 		} else {
 			$label = $pid." :".i18n::translate('Ancestry chart');
 		}
 		if ($sosa>1) print_url_arrow($pid, "?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;show_full={$this->show_full}&amp;box_width={$box_width}&amp;chart_style={$this->chart_style}", $label, 3);
-		print "</td>";
-		print "<td class=\"details1\">&nbsp;<span dir=\"ltr\" class=\"person_box". (($sosa==1)?"NN":(($sosa%2)?"F":"")) . "\">&nbsp;$sosa&nbsp;</span>&nbsp;";
-		print "</td><td class=\"details1\">";
+		echo "</td>";
+		echo "<td class=\"details1\">&nbsp;<span dir=\"ltr\" class=\"person_box". (($sosa==1)?"NN":(($sosa%2)?"F":"")) . "\">&nbsp;$sosa&nbsp;</span>&nbsp;";
+		echo "</td><td class=\"details1\">";
 		$relation ="";
 		if (!$new) $relation = "<br />[=<a href=\"#sosa".$pidarr["$pid"]."\">".$pidarr["$pid"]."</a> - ".get_sosa_name($pidarr["$pid"])."]";
 		else $pidarr["$pid"]=$sosa;
-		print get_sosa_name($sosa).$relation;
-		print "</td>";
-		print "</tr></table>";
+		echo get_sosa_name($sosa).$relation;
+		echo "</td>";
+		echo "</tr></table>";
 
 		if (is_null($person)) {
-			print "</li>";
+			echo "</li>";
 			return;
 		}
 		// parents
@@ -150,21 +150,21 @@ class AncestryController extends BaseController {
 
 		if (($parents || $SHOW_EMPTY_BOXES) && $new && $depth>0) {
 			// print marriage info
-			print "<span class=\"details1\" style=\"white-space: nowrap;\" >";
-			print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"$Dindent\" border=\"0\" align=\"middle\" alt=\"\" /><a href=\"javascript: ".i18n::translate('View Family')."\" onclick=\"expand_layer('sosa_".$sosa."'); return false;\" class=\"top\"><img id=\"sosa_".$sosa."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a> ";
-			print "&nbsp;<span class=\"person_box\">&nbsp;".($sosa*2)."&nbsp;</span>&nbsp;".i18n::translate('and');
-			print "&nbsp;<span class=\"person_boxF\">&nbsp;".($sosa*2+1)." </span>&nbsp;";
+			echo "<span class=\"details1\" style=\"white-space: nowrap;\" >";
+			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"$Dindent\" border=\"0\" align=\"middle\" alt=\"\" /><a href=\"javascript: ".i18n::translate('View Family')."\" onclick=\"expand_layer('sosa_".$sosa."'); return false;\" class=\"top\"><img id=\"sosa_".$sosa."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a> ";
+			echo "&nbsp;<span class=\"person_box\">&nbsp;".($sosa*2)."&nbsp;</span>&nbsp;".i18n::translate('and');
+			echo "&nbsp;<span class=\"person_boxF\">&nbsp;".($sosa*2+1)." </span>&nbsp;";
 			if (!empty($family)) {
 				$marriage = $family->getMarriage();
-				if ($marriage->canShow()) $marriage->print_simple_fact(); else print i18n::translate('Private');
+				if ($marriage->canShow()) $marriage->print_simple_fact(); else echo i18n::translate('Private');
 			}
-			print "</span>";
+			echo "</span>";
 			// display parents recursively
-			print "<ul style=\"list-style: none; display: block;\" id=\"sosa_$sosa\">";
+			echo "<ul style=\"list-style: none; display: block;\" id=\"sosa_$sosa\">";
 			$this->print_child_ascendancy($parents["HUSB"], $sosa*2, $depth-1);
 			$this->print_child_ascendancy($parents["WIFE"], $sosa*2+1, $depth-1);
-			print "</ul>";
+			echo "</ul>";
 		}
-		print "</li>";
+		echo "</li>";
 	}
 }

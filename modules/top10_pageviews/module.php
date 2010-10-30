@@ -154,9 +154,9 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 
 		$count_placement=get_block_setting($block_id, 'count_placement', 'left');
-		print "<tr><td class=\"descriptionbox wrap width33\">";
-		print i18n::translate('Place counts before or after name?');
-		print "</td><td class=\"optionbox\">";
+		echo "<tr><td class=\"descriptionbox wrap width33\">";
+		echo i18n::translate('Place counts before or after name?');
+		echo "</td><td class=\"optionbox\">";
 		echo select_edit_control('count_placement', array('before'=>i18n::translate('before'), 'after'=>i18n::translate('after')), null, $count_placement, '');
 		echo '</td></tr>';
 

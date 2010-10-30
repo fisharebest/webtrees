@@ -43,9 +43,9 @@ print_header(PrintReady($controller->name)." ".i18n::translate('Hourglass chart'
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-print "<!-- // NOTE: Start table header -->";
-print "<table><tr><td valign=\"top\">";
-print "<h2>".i18n::translate('Hourglass chart').":<br />".PrintReady($controller->name)."</h2>";
+echo "<!-- // NOTE: Start table header -->";
+echo "<table><tr><td valign=\"top\">";
+echo "<h2>".i18n::translate('Hourglass chart').":<br />".PrintReady($controller->name)."</h2>";
 
 $controller->setupJavascript();
 
@@ -60,7 +60,7 @@ $gencount=0;
 ?>
 <!-- // NOTE: Start form and table -->
 	</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">
-	<input type="hidden" name="show_full" value="<?php print $controller->show_full; ?>" />
+	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
 	<table><tr>
 
 		<!-- // NOTE: Root ID -->
@@ -68,7 +68,7 @@ $gencount=0;
 	<?php echo i18n::translate('Root Person ID'), help_link('desc_rootid'); ?>
 	</td>
 	<td class="optionbox">
-	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php print $controller->pid; ?>" />
+	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $controller->pid; ?>" />
 	<?php print_findindi_link("pid",""); ?>
 	</td>
 
@@ -79,14 +79,14 @@ $gencount=0;
 	<td class="optionbox">
 	<input type="checkbox" value="
 	<?php
-	if ($controller->show_full) print "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-	else print "0\" onclick=\"document.people.show_full.value='1';";?>"
+	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
+	else echo "0\" onclick=\"document.people.show_full.value='1';";?>"
 	/>
 	</td>
 
 	<!-- // NOTE: Submit button -->
 	<td rowspan="3" class="topbottombar vmiddle">
-	<input type="submit" value="<?php print i18n::translate('View'); ?>" />
+	<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
 	</td></tr>
 
 	<!-- // NOTE: Generations -->
@@ -97,9 +97,9 @@ $gencount=0;
 	<select name="generations">
 	<?php
 	for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
-		print "<option value=\"".$i."\"" ;
-		if ($i == $controller->generations) print " selected=\"selected\"";
-		print ">".$i."</option>";
+		echo "<option value=\"".$i."\"" ;
+		if ($i == $controller->generations) echo " selected=\"selected\"";
+		echo ">".$i."</option>";
 	}
 	?>
 	</select>
@@ -112,14 +112,14 @@ $gencount=0;
 	<td class="optionbox">
 	<input type="checkbox" value="1" name="show_spouse"
 	<?php
-	if ($controller->show_spouse) print " checked=\"checked\""; ?> />
+	if ($controller->show_spouse) echo " checked=\"checked\""; ?> />
 	</td></tr>
 
 	<!-- // NOTE: Box width -->
 	<tr><td class="descriptionbox">
 	<?php echo i18n::translate('Box width'), help_link('box_width'); ?>
 	</td>
-	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php print $controller->box_width; ?>" />
+	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>" />
 	<b>%</b>
 	</td>
 
@@ -136,7 +136,7 @@ $gencount=0;
 		echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 	}
 ?>
-<div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") print "_rtl"; ?>" <?php print "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
+<div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") echo "_rtl"; ?>" <?php echo "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
 <table cellspacing="0" cellpadding="0" border="0"><tr>
 <!-- // descendancy -->
 <td valign="middle">

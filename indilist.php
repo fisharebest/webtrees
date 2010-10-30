@@ -268,7 +268,7 @@ if ($showList) {
 				}
 				if ($show_all=='no') {
 					echo '<h2 class="center">';
-					print i18n::translate('Individuals with surname %s', check_NN($surname));
+					echo i18n::translate('Individuals with surname %s', check_NN($surname));
 					echo '</h2>';
 				}
 				echo '<div class="alpha_index"><p class="center">';

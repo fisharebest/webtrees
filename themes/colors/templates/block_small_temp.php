@@ -38,19 +38,19 @@ if (!defined('WT_WEBTREES')) {
 }
 
 ?>
-<div id="<?php print $id; ?>" class="block" >
+<div id="<?php echo $id; ?>" class="block" >
 	<table class="blockheader" cellpadding="0" cellspacing="0" style="padding:0;margin:0;">
 		<tr>
 			<td class="blockh1" ></td>
 			<td class="blockh2" >
-				<div class="blockhc"><b><?php print $title ?></b></div>
+				<div class="blockhc"><b><?php echo $title ?></b></div>
 			</td>
 			<td class="blockh3"></td>
 		</tr>
 	</table>
 	<div class="blockcontent">
 		<div class="small_inner_block">
-		<?php print $content ?>
+		<?php echo $content ?>
 		</div>
 	</div>
 </div>

@@ -32,7 +32,7 @@ require './includes/session.php';
 print_simple_header(i18n::translate('Add/edit journal/news entry'));
 
 if (!WT_USER_ID) {
-	print i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	print_simple_footer();
 	exit;
 }
@@ -47,19 +47,19 @@ $text    =safe_POST('text', WT_REGEX_UNSAFE);
 if (empty($username)) $username=$GEDCOM;
 
 if ($action=="compose") {
-	print '<span class="subheaders">'.i18n::translate('Add/edit journal/news entry').'</span>';
+	echo '<span class="subheaders">'.i18n::translate('Add/edit journal/news entry').'</span>';
 	?>
 	<script language="JavaScript" type="text/javascript">
 		function checkForm(frm) {
 			if (frm.title.value=="") {
-				alert('<?php print i18n::translate('Please enter a title.'); ?>');
+				alert('<?php echo i18n::translate('Please enter a title.'); ?>');
 				document.messageform.title.focus();
 				return false;
 			}
 			<?php if (!array_key_exists('ckeditor', WT_Module::getActiveModules())) { //will be empty for FCK. FIXME, use FCK API to check for content.
 			?>
 			if (frm.text.value=="") {
-				alert('<?php print i18n::translate('Please enter some text for this News or Journal entry.'); ?>');
+				alert('<?php echo i18n::translate('Please enter some text for this News or Journal entry.'); ?>');
 				document.messageform.text.focus();
 				return false;
 			}
@@ -68,8 +68,8 @@ if ($action=="compose") {
 		}
 	</script>
 	<?php
-	print "<br /><form name=\"messageform\" method=\"post\" action=\"editnews.php?action=save&news_id=".$news_id."\" onsubmit=\"return checkForm(this);";
-	print "\">\n";
+	echo "<br /><form name=\"messageform\" method=\"post\" action=\"editnews.php?action=save&news_id=".$news_id."\" onsubmit=\"return checkForm(this);";
+	echo "\">";
 	if ($news_id) {
 		$news = getNewsItem($news_id);
 	} else {
@@ -79,12 +79,12 @@ if ($action=="compose") {
 		$news["title"] = "";
 		$news["text"] = "";
 	}
-	print "<input type=\"hidden\" name=\"username\" value=\"".$news["username"]."\" />\n";
-	print "<input type=\"hidden\" name=\"date\" value=\"".$news["date"]."\" />\n";
-	print "<table>\n";
-	print "<tr><td align=\"right\">".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>\n";
-	print "<tr><td valign=\"top\" align=\"right\">".i18n::translate('Entry Text:')."<br /></td>";
-	print "<td>";
+	echo "<input type=\"hidden\" name=\"username\" value=\"".$news["username"]."\" />";
+	echo "<input type=\"hidden\" name=\"date\" value=\"".$news["date"]."\" />";
+	echo "<table>";
+	echo "<tr><td align=\"right\">".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>";
+	echo "<tr><td valign=\"top\" align=\"right\">".i18n::translate('Entry Text:')."<br /></td>";
+	echo "<td>";
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
 		$oCKeditor = new CKEditor();
@@ -95,12 +95,12 @@ if ($action=="compose") {
 		$oCKeditor->config['DefaultLanguage'] = 'en';
 		$oCKeditor->editor('text', $news["text"]);
 	} else { //use standard textarea
-		print "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
+		echo "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
 	}
-	print "<br /></td></tr>\n";
-	print "<tr><td></td><td><input type=\"submit\" value=\"".i18n::translate('Save')."\" /></td></tr>\n";
-	print "</table>\n";
-	print "</form>\n";
+	echo "<br /></td></tr>";
+	echo "<tr><td></td><td><input type=\"submit\" value=\"".i18n::translate('Save')."\" /></td></tr>";
+	echo "</table>";
+	echo "</form>";
 } else if ($action=="save") {
 	$date=time()-$_SESSION["timediff"];
 	if (empty($title)) $title="No Title";
@@ -114,11 +114,11 @@ if ($action=="compose") {
 	$message["title"] = $title;
 	$message["text"] = $text;
 	if (addNews($message)) {
-		print i18n::translate('News/Journal entry successfully saved.');
+		echo i18n::translate('News/Journal entry successfully saved.');
 	}
 } else if ($action=="delete") {
 	if (deleteNews($news_id)) echo i18n::translate('The news/journal entry has been deleted.');
 }
-print "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".i18n::translate('Close Window')."</a><br /></center>";
+echo "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".i18n::translate('Close Window')."</a><br /></center>";
 
 print_simple_footer();

@@ -44,11 +44,11 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 <script language="JavaScript" type="text/javascript">
 <!--
 	function checknames(frm) {
-		action = "<?php print $controller->action ?>";
+		action = "<?php echo $controller->action ?>";
 		if (action == "general")
 		{
 			if (frm.query.value.length<2) {
-				alert("<?php print i18n::translate('Please enter more than one character')?>");
+				alert("<?php echo i18n::translate('Please enter more than one character')?>");
 				frm.query.focus();
 				return false;
 			}
@@ -70,7 +70,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 				if (place.length >= 2)
 					message = false;
 				if(message) {
-					alert("<?php print i18n::translate('Please enter more than one character')?>");
+					alert("<?php echo i18n::translate('Please enter more than one character')?>");
 					return false;
 				}
 			}
@@ -85,7 +85,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 				if (place != "")
 					message = false;
 				if (message) {
-					alert("<?php print i18n::translate('Please enter a Given name, Last name, or Place in addition to Year')?>");
+					alert("<?php echo i18n::translate('Please enter a Given name, Last name, or Place in addition to Year')?>");
 					frm.firstname.focus();
 					return false;
 				}
@@ -97,7 +97,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			if(frm.subaction.value=='basic')
 			{
 				if (frm.multiquery.value.length < 2) {
-					alert("<?php print i18n::translate('Please enter more than one character')?>");
+					alert("<?php echo i18n::translate('Please enter more than one character')?>");
 					return false;
 				}
 			}
@@ -126,10 +126,10 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 					<?php if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) { ?>
 					if(gender.length < 1)
 					{
-						alert("<?php print i18n::translate('Please enter one of the following:  Name, Birth Date, Birth Place, Death Date, Death Place, and Gender ')?>");
+						alert("<?php echo i18n::translate('Please enter one of the following:  Name, Birth Date, Birth Place, Death Date, Death Place, and Gender ')?>");
 						return false;
 					}
-					alert("<?php print i18n::translate('Please search again with more information than just gender')?>");
+					alert("<?php echo i18n::translate('Please search again with more information than just gender')?>");
 					<?php } ?>
 					return false;
 				}
@@ -146,11 +146,11 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 //-->
 </script>
 
-<h2 class="center"><?php print $controller->getPageTitle(); ?></h2>
+<h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->printResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php">
-<input type="hidden" name="action" value="<?php print $controller->action; ?>" />
+<input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
 <script type="text/javascript">
 	function paste_char(value,lang,mag) {
@@ -169,51 +169,51 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php print i18n::translate('Enter search terms'); ?>
+			<?php echo i18n::translate('Enter search terms'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
-			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) print $controller->myquery; ?>" size="40" />
+			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) echo $controller->myquery; ?>" size="40" />
 			<?php print_specialchar_link('firstfocus', false); ?>
 
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="4">
-			<input tabindex="2" type="submit" value="<?php print i18n::translate('Search') ?>" />
+			<input tabindex="2" type="submit" value="<?php echo i18n::translate('Search') ?>" />
 		</td>
 	</tr>
 	<!-- // Choice where to search -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php print i18n::translate('Search for'); ?>
+			<?php echo i18n::translate('Search for'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox"
 				<?php
 	if (isset ($controller->srindi) || !$controller->isPostBack)
-		print " checked=\"checked\" ";
+		echo " checked=\"checked\" ";
 ?>
 				value="yes" name="srindi" />
-				<?php print i18n::translate('Individuals'); ?><br />
+				<?php echo i18n::translate('Individuals'); ?><br />
 			<input type="checkbox"
 				<?php
 	if (isset ($controller->srfams))
-		print " checked=\"checked\" ";
+		echo " checked=\"checked\" ";
 ?>
 				value="yes" name="srfams" />
-				<?php print i18n::translate('Families'); ?><br />
+				<?php echo i18n::translate('Families'); ?><br />
 			<input type="checkbox"
 				<?php
 	if (isset ($controller->srsour))
-		print " checked=\"checked\" ";
+		echo " checked=\"checked\" ";
 ?>
 				value="yes" name="srsour" />
-				<?php print i18n::translate('Sources'); ?><br />
+				<?php echo i18n::translate('Sources'); ?><br />
 			<input type="checkbox"
 				<?php
 	if (isset ($controller->srnote))
-		print " checked=\"checked\" ";
+		echo " checked=\"checked\" ";
 ?>
 				value="yes" name="srnote" />
-				<?php print i18n::translate('Shared Notes'); ?><br />
+				<?php echo i18n::translate('Shared Notes'); ?><br />
 		</td>
 	</tr>
 	<!-- Choice to Exclude non-genealogical data -->
@@ -225,16 +225,16 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			<input type="radio" name="tagfilter" value="on"
 				<?php
 	if (($controller->tagfilter == "on") || ($controller->tagfilter == ""))
-		print " checked=\"checked\" ";
+		echo " checked=\"checked\" ";
 ?> />
-				<?php print i18n::translate('Exclude some non-genealogical data'); ?><br />
+				<?php echo i18n::translate('Exclude some non-genealogical data'); ?><br />
 			<input type="radio" name="tagfilter" value="off"
 				<?php
 
 	if ($controller->tagfilter == "off")
-		print " checked=\"checked\" ";
+		echo " checked=\"checked\" ";
 ?> />
-				<?php print i18n::translate('Off'); ?>
+				<?php echo i18n::translate('Off'); ?>
 		</td>
 	</tr>
 	<!-- Choice to show related persons/families (associates) -->
@@ -245,7 +245,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox" name="showasso" value="on"
 				<?php
-	if ($controller->showasso == "on") print " checked=\"checked\" "; ?> />
+	if ($controller->showasso == "on") echo " checked=\"checked\" "; ?> />
 				<?php echo i18n::translate('Show related persons/families'); ?>
 		</td>
 	</tr>
@@ -270,12 +270,12 @@ if ($controller->action == "replace")
 		</td>
 	</tr>
 	<tr>
-		<td class="list_label" style="padding: 5px;"><?php print i18n::translate('Replace with'); ?></td>
+		<td class="list_label" style="padding: 5px;"><?php echo i18n::translate('Replace with'); ?></td>
 		<td class="list_value" style="padding: 5px;"><input tabindex="1" name="replace" value="" type="text"/></td>
 	</tr>
 	<!-- // Choice where to search -->
 	<tr>
-		<td class="list_label" style="padding: 5px;"><?php print i18n::translate('Search for'); ?></td>
+		<td class="list_label" style="padding: 5px;"><?php echo i18n::translate('Search for'); ?></td>
 		<td class="list_value" style="padding: 5px;">
 			<script type="text/javascript">
 			<!--
@@ -293,13 +293,13 @@ if ($controller->action == "replace")
 				}
 			//-->
 			</script>
-			<input checked="checked" onclick="checkAll(this);" value="yes" name="replaceAll" type="checkbox"/><?php print i18n::translate('Entire record'); ?>
+			<input checked="checked" onclick="checkAll(this);" value="yes" name="replaceAll" type="checkbox"/><?php echo i18n::translate('Entire record'); ?>
 			<br/>
 			<hr />
-			<input checked="checked" disabled="disabled" value="yes" name="replaceNames" type="checkbox"/><?php print i18n::translate('Individuals'); ?>
+			<input checked="checked" disabled="disabled" value="yes" name="replaceNames" type="checkbox"/><?php echo i18n::translate('Individuals'); ?>
 			<br/>
-			<input checked="checked" disabled="disabled" value="yes" name="replacePlaces" type="checkbox"/><?php print i18n::translate('Place'); ?>
-			<input checked="checked" disabled="disabled" value="yes" name="replacePlacesWord" type="checkbox"/><?php print i18n::translate('Whole words only'); ?>
+			<input checked="checked" disabled="disabled" value="yes" name="replacePlaces" type="checkbox"/><?php echo i18n::translate('Place'); ?>
+			<input checked="checked" disabled="disabled" value="yes" name="replacePlacesWord" type="checkbox"/><?php echo i18n::translate('Whole words only'); ?>
 			<br/>
 
 		</td>
@@ -318,76 +318,76 @@ if ($controller->action == "soundex") {
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" width="35%">
-			<?php print i18n::translate('Given name'); ?>
+			<?php echo i18n::translate('Given name'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="3" type="text" id="firstfocus" name="firstname" autocomplete="off" value="<?php print $controller->myfirstname; ?>" />
+			<input tabindex="3" type="text" id="firstfocus" name="firstname" autocomplete="off" value="<?php echo $controller->myfirstname; ?>" />
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="6">
-			<input tabindex="7" type="submit" value="<?php print i18n::translate('Search'); ?>" />
+			<input tabindex="7" type="submit" value="<?php echo i18n::translate('Search'); ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Last name'); ?>
+			<?php echo i18n::translate('Last name'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="4" type="text" name="lastname" autocomplete="off" value="<?php print $controller->mylastname; ?>" />
+			<input tabindex="4" type="text" name="lastname" autocomplete="off" value="<?php echo $controller->mylastname; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Place'); ?>
+			<?php echo i18n::translate('Place'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="5" type="text" name="place" value="<?php print $controller->myplace; ?>" />
+			<input tabindex="5" type="text" name="place" value="<?php echo $controller->myplace; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Year'); ?>
+			<?php echo i18n::translate('Year'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="6" type="text" name="year" value="<?php print $controller->myyear; ?>" />
+			<input tabindex="6" type="text" name="year" value="<?php echo $controller->myyear; ?>" />
 		</td>
 	</tr>
 	<!-- Soundex type options (Russell, DaitchM) -->
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Soundex type:'); ?>
+			<?php echo i18n::translate('Soundex type:'); ?>
 		</td>
 		<td class="list_value" >
 			<input type="radio" name="soundex" value="Russell"
-				<?php if ($controller->soundex == "Russell") print " checked=\"checked\" "; ?> />
-			<?php print i18n::translate('Basic'); ?><br />
+				<?php if ($controller->soundex == "Russell") echo " checked=\"checked\" "; ?> />
+			<?php echo i18n::translate('Basic'); ?><br />
 			<input type="radio" name="soundex" value="DaitchM"
-				<?php if ($controller->soundex == "DaitchM" || $controller->soundex == "") print " checked=\"checked\" "; ?> />
-			<?php print i18n::translate('Daitch-Mokotoff'); ?>
+				<?php if ($controller->soundex == "DaitchM" || $controller->soundex == "") echo " checked=\"checked\" "; ?> />
+			<?php echo i18n::translate('Daitch-Mokotoff'); ?>
 		</td>
 	</tr>
 
 	<!-- Individuals' names to print options (Names with hit, All names) -->
 	<!-- <tr>
 		<td class="list_label">
-			<?php  print i18n::translate('Individuals\'<br />names to print:'); ?>
+			<?php  echo i18n::translate('Individuals\'<br />names to print:'); ?>
 		</td>
 		<td class="list_value">
 			<input type="radio" name="nameprt" value="hit"
-				<?php if (($controller->nameprt == "hit") || ($controller->nameprt == "")) print " checked=\"checked\" "; ?> />
-				<?php print i18n::translate('Names with hit') ?><br />
+				<?php if (($controller->nameprt == "hit") || ($controller->nameprt == "")) echo " checked=\"checked\" "; ?> />
+				<?php echo i18n::translate('Names with hit') ?><br />
 			<input type="radio" name="nameprt" value="all"
-				<?php if ($controller->nameprt == "all") print " checked=\"checked\" "; ?> />
-				<?php print i18n::translate('All names'); ?>
+				<?php if ($controller->nameprt == "all") echo " checked=\"checked\" "; ?> />
+				<?php echo i18n::translate('All names'); ?>
 		</td>
 	</tr> -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php print i18n::translate('Associates'); ?>
+			<?php echo i18n::translate('Associates'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox" name="showasso" value="on"
-				<?php if ($controller->showasso == "on") print " checked=\"checked\" "; ?> />
-				<?php print i18n::translate('Show related persons/families'); ?>
+				<?php if ($controller->showasso == "on") echo " checked=\"checked\" "; ?> />
+				<?php echo i18n::translate('Show related persons/families'); ?>
 		</td>
 	</tr>
 				<?php
@@ -404,7 +404,7 @@ if ($controller->action == "multisite") {
 	</tr>
 	<tr>
 		<td class="list_label" >
-			<?php print i18n::translate('Sites to search'); ?>
+			<?php echo i18n::translate('Sites to search'); ?>
 		</td>
 		<td colspan="2" class="list_value" align="center">
 			<table>
@@ -415,20 +415,20 @@ if ($controller->action == "multisite") {
 	$i = 0;
 	if ($controller->Sites) {
 		foreach ($controller->Sites as $server) {
-			print "<input tabindex=\"$i\" type=\"checkbox\" ";
+			echo "<input tabindex=\"$i\" type=\"checkbox\" ";
 			$vartemp = "server".$i;
 			if (isset ($_REQUEST["$vartemp"])) {
 				if ($_REQUEST["$vartemp"] == "on")
-					print "checked=\"checked\" value=\"on\" ";
+					echo "checked=\"checked\" value=\"on\" ";
 			} else
 				if (!$controller->isPostBack)
-					print "checked=\"checked\" value=\"on\" ";
+					echo "checked=\"checked\" value=\"on\" ";
 			$controller->inputFieldNames[] = "server".$i;
-			print "name=\"server".$i."\" />".$server['name']."<br />";
+			echo "name=\"server".$i."\" />".$server['name']."<br />";
 			$i ++;
 		}
 	} else {
-		print i18n::translate('No known Servers<br />No results will be found');
+		echo i18n::translate('No known Servers<br />No results will be found');
 	}
 ?>
 					</td>
@@ -439,76 +439,76 @@ if ($controller->action == "multisite") {
 	<!-- // this is for the basic site search involving just a query string text -->
 	<tr>
 		<td colspan="3" class="facts_label02">
-			<?php print i18n::translate('Basic site search'); ?>
+			<?php echo i18n::translate('Basic site search'); ?>
 		</td>
 	</tr>
 		<td class="list_label">
-			<?php print i18n::translate('search'); ?>
+			<?php echo i18n::translate('search'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php print $i ?>" type="text" name="multiquery" value="<?php print $controller->mymultiquery; ?>" />
+			<input tabindex="<?php echo $i ?>" type="text" name="multiquery" value="<?php echo $controller->mymultiquery; ?>" />
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="1">
-			<input tabindex="<?php print ($i+2); ?>" type="submit" value="<?php print i18n::translate('Search'); ?>" onclick="document.searchform.subaction.value='basic';"/>
+			<input tabindex="<?php echo ($i+2); ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>" onclick="document.searchform.subaction.value='basic';"/>
 		</td>
 	</tr>
 	<!-- // this is for the advanced site search -->
 	<tr>
 		<td class="facts_label02" colspan="3">
-			<?php print i18n::translate('Advanced site search'); ?>
+			<?php echo i18n::translate('Advanced site search'); ?>
 		</td>
 	</tr>
 	<!-- // Advanced search terms -->
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Name: '); ?>
+			<?php echo i18n::translate('Name: '); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php print ($i+3); ?>" type="text" name="name" value="<?php print $controller->myname; ?>" />
+			<input tabindex="<?php echo ($i+3); ?>" type="text" name="name" value="<?php echo $controller->myname; ?>" />
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="6">
-			<input tabindex="<?php print ($i+9); ?>" type="submit" value="<?php print i18n::translate('Search'); ?>"
+			<input tabindex="<?php echo ($i+9); ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>"
 				onclick="document.searchform.subaction.value='advanced';"/>
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Birth date: '); ?>
+			<?php echo i18n::translate('Birth date: '); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?print ($i+4); ?>" type="text" name="birthdate" value="<?php print $controller->mybirthdate; ?>" />
+			<input tabindex="<?php echo ($i+4); ?>" type="text" name="birthdate" value="<?php echo $controller->mybirthdate; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Birth Place: '); ?>
+			<?php echo i18n::translate('Birth Place: '); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php print ($i+5); ?> " type="text" name="birthplace" value="<?php print $controller->mybirthplace; ?>" />
+			<input tabindex="<?php echo ($i+5); ?> " type="text" name="birthplace" value="<?php echo $controller->mybirthplace; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Death date: '); ?>
+			<?php echo i18n::translate('Death date: '); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php print ($i+6); ?>" type="text" name="deathdate" value="<?php print $controller->mydeathdate; ?>" />
+			<input tabindex="<?php echo ($i+6); ?>" type="text" name="deathdate" value="<?php echo $controller->mydeathdate; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Death Place: '); ?>
+			<?php echo i18n::translate('Death Place: '); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php ($i+7); ?>" type="text" name="deathplace" value="<?php print $controller->mydeathplace; ?>" />
+			<input tabindex="<?php ($i+7); ?>" type="text" name="deathplace" value="<?php echo $controller->mydeathplace; ?>" />
 		</td>
 	</tr>
 	<tr>
 		<td class="list_label">
-			<?php print i18n::translate('Gender: '); ?>
+			<?php echo i18n::translate('Gender: '); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="<?php ($i+8); ?>" type="text" name="gender" value="<?php print $controller->mygender; ?>" />
+			<input tabindex="<?php ($i+8); ?>" type="text" name="gender" value="<?php echo $controller->mygender; ?>" />
 		</td>
 	</tr>
 	<?php
@@ -522,7 +522,7 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 ?>
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php print i18n::translate('Databases to search in'); ?>
+			<?php echo i18n::translate('Databases to search in'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;" colspan="2">
 			<?php
@@ -532,10 +532,10 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 		foreach ($all_gedcoms as $ged_id=>$gedcom) {
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
 			$controller->inputFieldNames[] = "$str";
-			print "<input type=\"checkbox\" ";
+			echo "<input type=\"checkbox\" ";
 			if (isset ($_REQUEST["$str"]))
-				print "checked=\"checked\" ";
-			print "value=\"yes\" name=\"".$str."\""." /><span dir=$TEXT_DIRECTION>".PrintReady(get_gedcom_setting($ged_id, 'title'), true)."</span><br />";
+				echo "checked=\"checked\" ";
+			echo "value=\"yes\" name=\"".$str."\""." /><span dir=$TEXT_DIRECTION>".PrintReady(get_gedcom_setting($ged_id, 'title'), true)."</span><br />";
 		}
 ?>
 		</td>
@@ -548,63 +548,63 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 <!--  not currently used
 	<tr>
 		<td class="list_label" style="padding: 5px;" >
-			<?php print i18n::translate('Results per page'); ?>
+			<?php echo i18n::translate('Results per page'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;" colspan="2">
 			<select name="resultsPerPage">
-				<option value="10" <?php if ($controller->resultsPerPage == 10) print " selected=\"selected\""; ?> >10</option>
-				<option value="20" <?php if ($controller->resultsPerPage == 20) print " selected=\"selected\""; ?> >20</option>
-				<option value="30" <?php if ($controller->resultsPerPage == 30) print " selected=\"selected\""; ?> >30</option>
-				<option value="50" <?php if ($controller->resultsPerPage == 50) print " selected=\"selected\""; ?> >50</option>
-				<option value="100"<?php if ($controller->resultsPerPage == 100)print " selected=\"selected\""; ?>>100</option>
+				<option value="10" <?php if ($controller->resultsPerPage == 10) echo " selected=\"selected\""; ?> >10</option>
+				<option value="20" <?php if ($controller->resultsPerPage == 20) echo " selected=\"selected\""; ?> >20</option>
+				<option value="30" <?php if ($controller->resultsPerPage == 30) echo " selected=\"selected\""; ?> >30</option>
+				<option value="50" <?php if ($controller->resultsPerPage == 50) echo " selected=\"selected\""; ?> >50</option>
+				<option value="100"<?php if ($controller->resultsPerPage == 100)echo " selected=\"selected\""; ?>>100</option>
 			</select>
 		</td>
 	</tr>
 	-->
 	<tr>
 		<td class="list_label" style="padding: 5px;" >
-			<?php print i18n::translate('Other Searches'); ?>
+			<?php echo i18n::translate('Other Searches'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px; text-align:center; " colspan="2" >
 			<?php
 
 if ($controller->action == "general") {
-	print "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-	print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
+	echo "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
+	echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
 	if(WT_USER_CAN_EDIT) {
-		print " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
+		echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 	}
 	if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 		if (count($controller->Sites) > 0) {
 
 
-			print " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
+			echo " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
 		}
 	}
 }
 else if ($controller->action == "replace")
 {
-	print "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
-	print "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-	print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
+	echo "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
+	echo "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
+	echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
 		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 			if (count($controller->Sites) > 0) {
 
-				print " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
+				echo " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
 			}
 		}
 }
 else
 	if ($controller->action == "soundex") {
-		print "<a href='?action=general'>".i18n::translate('General Search')."</a>";
-		print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
+		echo "<a href='?action=general'>".i18n::translate('General Search')."</a>";
+		echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
 		if(WT_USER_CAN_EDIT)
 		{
-			print " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
+			echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 		}
 		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 			if (count($controller->Sites) > 0) {
-				print " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
+				echo " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
 			}
 		}
 	}
@@ -613,12 +613,12 @@ else
 		{
 			if(WT_USER_CAN_EDIT)
 			{
-				print "<a href='?action=replace'>".i18n::translate('Search and replace')."</a> | ";
+				echo "<a href='?action=replace'>".i18n::translate('Search and replace')."</a> | ";
 			}
 
-			print "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
-			print "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-			print " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a></td></tr>";
+			echo "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
+			echo "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
+			echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a></td></tr>";
 		}
 
 ?>

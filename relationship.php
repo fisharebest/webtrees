@@ -122,15 +122,15 @@ function paste_id(value) {
 	pastefield.value=value;
 }
 </script>
-<div id="relationship_chart_options<?php print ($TEXT_DIRECTION=="ltr")?"":"_rtl";?>" style="position: relative; z-index:90; width:98%;">
-<h2><?php print PrintReady($title_string);?></h2><br />
+<div id="relationship_chart_options<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl";?>" style="position: relative; z-index:90; width:98%;">
+<h2><?php echo PrintReady($title_string);?></h2><br />
 <!-- // Print the form to change the number of displayed generations -->
 <?php
 	$Dbaseyoffset += 110; ?>
 	<form name="people" method="get" action="relationship.php">
-	<input type="hidden" name="path_to_find" value="<?php print $path_to_find ?>" />
+	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find ?>" />
 
-	<table class="list_table <?php print $TEXT_DIRECTION ?>" style="text-align:<?php print ($TEXT_DIRECTION=="ltr"?"left":"right");?>; margin:0;">
+	<table class="list_table <?php echo $TEXT_DIRECTION ?>" style="text-align:<?php echo ($TEXT_DIRECTION=="ltr"?"left":"right");?>; margin:0;">
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">
@@ -150,7 +150,7 @@ function paste_id(value) {
 	<?php echo i18n::translate('Person 1'), help_link('relationship_id'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php print $pid1 ?>" />
+	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1 ?>" />
 	<?php
 	print_findindi_link("pid1","");?>
 	</td>
@@ -163,11 +163,11 @@ function paste_id(value) {
 	<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input type="hidden" name="show_full" value="<?php print $show_full ?>" />
+	<input type="hidden" name="show_full" value="<?php echo $show_full ?>" />
 		<?php
-	print "<input tabindex=\"3\" type=\"checkbox\" name=\"showfull\" value=\"0\"";
-	if ($show_full) print " checked=\"checked\"";
-	print " onclick=\"document.people.show_full.value='".(!$show_full)."';\" />";?>
+	echo "<input tabindex=\"3\" type=\"checkbox\" name=\"showfull\" value=\"0\"";
+	if ($show_full) echo " checked=\"checked\"";
+	echo " onclick=\"document.people.show_full.value='".(!$show_full)."';\" />";?>
 	</td></tr>
 
 	<!-- // Person 2 -->
@@ -175,7 +175,7 @@ function paste_id(value) {
 	<?php echo i18n::translate('Person 2'), help_link('relationship_id'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php print $pid2 ?>" />
+	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2 ?>" />
 		<?php
 		print_findindi_link("pid2","");?>
 	</td>
@@ -188,7 +188,7 @@ function paste_id(value) {
 	<?php echo i18n::translate('Show oldest top'), help_link('oldest_top'); ?>
 	</td><td class="optionbox">
 	<input tabindex="4" type="checkbox" name="asc" value="-1"
-	<?php if ($asc==-1) print " checked=\"checked\"";?> />
+	<?php if ($asc==-1) echo " checked=\"checked\"";?> />
 	</td></tr>
 
 	<!-- // Show path -->
@@ -205,19 +205,19 @@ function paste_id(value) {
 			$check_node=$node;
 		}
 		foreach($_SESSION["relationships"] as $indexval => $node) {
-			if ($i==0) print i18n::translate('Show path').": </td><td class=\"list_value\" style=\"padding: 3px;\">";
-			if ($i>0) print " | ";
+			if ($i==0) echo i18n::translate('Show path').": </td><td class=\"list_value\" style=\"padding: 3px;\">";
+			if ($i>0) echo " | ";
 			if ($i==$path_to_find){
-				print "<span class=\"error\" style=\"valign: middle\">".($i+1)."</span>";
+				echo "<span class=\"error\" style=\"valign: middle\">".($i+1)."</span>";
 				$new_path=false;
 			}
 			else {
-				print "<a href=\"relationship.php?pid1={$pid1}&amp;pid2={$pid2}&amp;path_to_find={$i}&amp;followspouse={$followspouse}&amp;show_full={$show_full}&amp;asc={$asc}\">".($i+1)."</a>";
+				echo "<a href=\"relationship.php?pid1={$pid1}&amp;pid2={$pid2}&amp;path_to_find={$i}&amp;followspouse={$followspouse}&amp;show_full={$show_full}&amp;asc={$asc}\">".($i+1)."</a>";
 			}
 			$i++;
 		}
-		if (($new_path)&&($path_to_find<$i+1)&&($check_node)) print " | <span class=\"error\">".($i+1)."</span>";
-		print "</td>";
+		if (($new_path)&&($path_to_find<$i+1)&&($check_node)) echo " | <span class=\"error\">".($i+1)."</span>";
+		echo "</td>";
 	} else {
 		if ((!empty($pid1))&&(!empty($pid2))) {
 			if ((!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid1, WT_GED_ID)))&&(!showLivingNameById($pid1))) {
@@ -290,7 +290,7 @@ function paste_id(value) {
 
 	<!-- // View button -->
 	<td class="topbottombar vmiddle center" colspan="2">
-	<input tabindex="7" type="submit" value="<?php print i18n::translate('View')?>" />
+	<input tabindex="7" type="submit" value="<?php echo i18n::translate('View')?>" />
 	</td></tr>
 
 
@@ -301,12 +301,12 @@ if ($show_full==0) {
 	echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 }
 ?>
-<div id="relationship_chart<?php print ($TEXT_DIRECTION=="ltr")?"":"_rtl";?>" style="position:relative; z-index:1; width:98%;">
+<div id="relationship_chart<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl";?>" style="position:relative; z-index:1; width:98%;">
 <?php
 $maxyoffset = $Dbaseyoffset;
 if ((!empty($pid1))&&(!empty($pid2))) {
 	if (!$disp) {
-		print "<br /><br />";
+		echo "<br /><br />";
 		print_privacy_error();
 	}
 	else {
@@ -358,7 +358,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				$lArrow = $WT_IMAGES["rarrow"];
 			}
 			foreach($node["path"] as $index=>$pid) {
-				print "<!-- Node:{$index} -->";
+				echo "<!-- Node:{$index} -->";
 				$linex = $xoffset;
 				$liney = $yoffset;
 				$mfstyle = "NN";
@@ -458,11 +458,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						if ($asc==1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-($lh+$Dbyspacing);
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2+($asc+1)/2*$lh;
-						print "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
+						echo "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny-$asc*$lh;
-						print "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
+						echo "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
 					}
 					$previous2=$previous;
 					$previous="child";
@@ -478,20 +478,20 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 
 				if ($index>0) {
 					if ($TEXT_DIRECTION=="rtl" && $line!=$WT_IMAGES["hline"]) {
-						print "<div id=\"line$index\" dir=\"ltr\" style=\"background:none; position:absolute; right:".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"right\">";
-						print "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
-						print "<br />";
-						print i18n::translate($node["relations"][$index])."";
-						print "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
+						echo "<div id=\"line$index\" dir=\"ltr\" style=\"background:none; position:absolute; right:".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"right\">";
+						echo "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
+						echo "<br />";
+						echo i18n::translate($node["relations"][$index])."";
+						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
 					}
 					else {
-						print "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
-						print "<br />";
-						print "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
-						if ($lh == 3) print "<br />"; // note: $lh==3 means horiz arrow
-						print i18n::translate($node["relations"][$index])."";
+						echo "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
+						echo "<br />";
+						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
+						if ($lh == 3) echo "<br />"; // note: $lh==3 means horiz arrow
+						echo i18n::translate($node["relations"][$index])."";
 					}
-					print "</div>";
+					echo "</div>";
 				}
 				// Determine the z-index for this box
 				$boxNum ++;
@@ -501,12 +501,12 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 					$zIndex = 200 - ($colNum * $depth + $rowNum);
 				}
 
-				print "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
+				echo "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
 				print_pedigree_person($pid, 1);
-				print "</td></tr></table></div>";
+				echo "</td></tr></table></div>";
 			}
 
-			print "<div style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":1px; top:".abs($Dbaseyoffset-70)."px; z-index:1;\">";
+			echo "<div style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":1px; top:".abs($Dbaseyoffset-70)."px; z-index:1;\">";
 			echo '<h4>', i18n::translate('Relationship: %s', get_relationship_name($node)), '</h4></div>';
 		}
 	}
@@ -519,7 +519,7 @@ $maxyoffset += 100;
 	relationship_chart_div = document.getElementById("relationship_chart");
 	if (!relationship_chart_div) relationship_chart_div = document.getElementById("relationship_chart_rtl");
 	if (relationship_chart_div) {
-		relationship_chart_div.style.height = <?php print ($maxyoffset-50); ?> + "px";
+		relationship_chart_div.style.height = <?php echo ($maxyoffset-50); ?> + "px";
 		relationship_chart_div.style.width = "100%";
 	}
 </script>

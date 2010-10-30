@@ -43,7 +43,7 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 <script language="javascript" type="text/javascript">
 <!--
 	function reorder_media() {
-	var win02 = window.open("edit_interface.php?action=reorder_media&pid=<?php print $pid; ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, height=840, width=450 ");
+	var win02 = window.open("edit_interface.php?action=reorder_media&pid=<?php echo $pid; ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, height=840, width=450 ");
 	if (window.focus) {win02.focus();}
 	}
 -->
@@ -59,14 +59,12 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 
 	// If media exists and is greater than 1 item ---------------------
 	if ($tot_med_ct>1) {
-		print "<table border=\"0\" width=\"100%\"><tr>";
-		// print "<td class=\"width10 center wrap\" valign=\"top\"></td>";
+		echo "<table border=\"0\" width=\"100%\"><tr>";
+		// echo "<td class=\"width10 center wrap\" valign=\"top\"></td>";
 			//Popup Reorder Media
-			print "<td class=\"width15 center wrap\" valign=\"top\">";
-			print "<button type=\"button\" title=\"". i18n::translate('Re-order media')."\" onclick=\"reorder_media();\">". i18n::translate('Re-order media') ."</button>";
-		print "</td>";
-		//print "<td width=\"5%\">&nbsp;</td>";
-		print "\n";
-		print "</tr></table>";
+			echo "<td class=\"width15 center wrap\" valign=\"top\">";
+			echo "<button type=\"button\" title=\"". i18n::translate('Re-order media')."\" onclick=\"reorder_media();\">". i18n::translate('Re-order media') ."</button>";
+		echo "</td>";
+		//echo "<td width=\"5%\">&nbsp;</td>";
+		echo "</tr></table>";
 	}
-?>

@@ -429,7 +429,7 @@ if ($show == "yes") {
 	$IconRDarrow = "<img src=\"".$WT_IMAGES["rdarrow"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 	$IconLDarrow = "<img src=\"".$WT_IMAGES["ldarrow"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 
-	print"<table class=\"list_table\">";
+	echo "<table class=\"list_table\">";
 
 	// echo page back, page number, page forward controls
 
@@ -657,7 +657,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 	// echo page back, page number, page forward controls
 	echo "<tr><td colspan=\"2\">";
 
-	print"<table class=\"list_table width100\">";
+	echo "<table class=\"list_table width100\">";
 	echo "<tr>";
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
 	if ($TEXT_DIRECTION=="ltr") {

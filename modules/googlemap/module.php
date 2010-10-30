@@ -103,15 +103,15 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	<tr>
 		<td><?php
 		if (!array_key_exists('googlemap', WT_Module::getActiveModules())) {
-			print "<table class=\"facts_table\">\n";
-			print "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>\n";
+			echo "<table class=\"facts_table\">";
+			echo "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>";
 			if (WT_USER_IS_ADMIN) {
-				print "<tr><td align=\"center\" colspan=\"2\">\n";
-				print "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
-				print "</td>";
-				print "</tr>\n";
+				echo "<tr><td align=\"center\" colspan=\"2\">";
+				echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+				echo "</td>";
+				echo "</tr>";
 			}
-			print "\n\t</table>\n<br />";
+			echo "</table><br />";
 			?> <script language="JavaScript" type="text/javascript">
 			<!--
 				function ResizeMap () {}
@@ -122,47 +122,47 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$tNew = str_replace(array("&HIDE_GOOGLEMAP=true", "&HIDE_GOOGLEMAP=false", "action=ajax&module=".$this->getName()."&"), "", $_SERVER["REQUEST_URI"]);
 			$tNew = str_replace("&", "&amp;", $tNew);
 			if($SESSION_HIDE_GOOGLEMAP=="true") {
-				print "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false#".$this->getName()."\">";
-				print "<img src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Activate')."\" title=\"".i18n::translate('Activate')."\" />";
-				print " ".i18n::translate('Activate')."</a></span>\n";
+				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false#".$this->getName()."\">";
+				echo "<img src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Activate')."\" title=\"".i18n::translate('Activate')."\" />";
+				echo " ".i18n::translate('Activate')."</a></span>";
 			} else {
-				print "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"" .$tNew."&amp;HIDE_GOOGLEMAP=true#".$this->getName()."\">";
-				print "<img src=\"".$WT_IMAGES["minus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Deactivate')."\" title=\"".i18n::translate('Deactivate')."\" />";
-				print " ".i18n::translate('Deactivate')."</a></span>\n";
+				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"" .$tNew."&amp;HIDE_GOOGLEMAP=true#".$this->getName()."\">";
+				echo "<img src=\"".$WT_IMAGES["minus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Deactivate')."\" title=\"".i18n::translate('Deactivate')."\" />";
+				echo " ".i18n::translate('Deactivate')."</a></span>";
 			}
 
 			if (!$this->controller->indi->canDisplayName()) {
-				print "\n\t<table class=\"facts_table\">";
-				print "<tr><td class=\"facts_value\">";
+				echo "<table class=\"facts_table\">";
+				echo "<tr><td class=\"facts_value\">";
 				print_privacy_error();
-				print "</td></tr>";
-				print "\n\t</table>\n<br />";
-				print "<script type=\"text/javascript\">\n";
-				print "function ResizeMap ()\n{\n}\n</script>\n";
+				echo "</td></tr>";
+				echo "</table><br />";
+				echo "<script type=\"text/javascript\">";
+				echo "function ResizeMap (){}</script>";
 			} else {
 				if($SESSION_HIDE_GOOGLEMAP=="false") {
-					print "<table width=\"100%\" border=\"0\" class=\"facts_table\">\n";
-					print "<tr><td valign=\"top\">\n";
-					print "<div id=\"googlemap_left\">\n";
-					print "<img src=\"images/hline.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\" />";
-					print "<div id=\"map_pane\" style=\"border: 1px solid gray; color:black; width: 100%; height: ".$GOOGLEMAP_YSIZE."px\"></div>\n";
+					echo "<table width=\"100%\" border=\"0\" class=\"facts_table\">";
+					echo "<tr><td valign=\"top\">";
+					echo "<div id=\"googlemap_left\">";
+					echo "<img src=\"images/hline.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\" />";
+					echo "<div id=\"map_pane\" style=\"border: 1px solid gray; color:black; width: 100%; height: ".$GOOGLEMAP_YSIZE."px\"></div>";
 					if (WT_USER_IS_ADMIN) {
-						print "<table width=\"100%\"><tr>\n";
-						print "<td width=\"33%\" align=\"left\">\n";
-						print "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
-						print "</td>\n";
-						print "<td width=\"33%\" align=\"center\">\n";
-						print "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=places\">".i18n::translate('Edit geographic place locations')."</a>";
-						print "</td>\n";
-						print "<td width=\"33%\" align=\"right\">\n";
-						print "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=placecheck\">".i18n::translate('Place Check')."</a>";
-						print "</td>\n";
-						print "</tr></table>\n";
+						echo "<table width=\"100%\"><tr>";
+						echo "<td width=\"33%\" align=\"left\">";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+						echo "</td>";
+						echo "<td width=\"33%\" align=\"center\">";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=places\">".i18n::translate('Edit geographic place locations')."</a>";
+						echo "</td>";
+						echo "<td width=\"33%\" align=\"right\">";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=placecheck\">".i18n::translate('Place Check')."</a>";
+						echo "</td>";
+						echo "</tr></table>";
 					}
-					print "</div>\n";
-					print "</td>\n";
-					print "<td valign=\"top\" width=\"30%\">\n";
-					print "<div id=\"map_content\">\n";
+					echo "</div>";
+					echo "</td>";
+					echo "<td valign=\"top\" width=\"30%\">";
+					echo "<div id=\"map_content\">";
 					$famids = array();
 					$families = $this->controller->indi->getSpouseFamilies();
 					foreach ($families as $famid=>$family) {
@@ -171,15 +171,15 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					$this->controller->indi->add_family_facts(false);
 					create_indiv_buttons();
 					build_indiv_map($this->controller->indi->getIndiFacts(), $famids);
-					print "</div>\n";
-					print "</td>";
-					print "</tr></table>\n";
+					echo "</div>";
+					echo "</td>";
+					echo "</tr></table>";
 
 				}
 			}
 		}
 		// start
-		print "<img src=\"".$WT_IMAGES["spacer"]."\" id=\"marker6\" width=\"1\" height=\"1\" alt=\"\" />";
+		echo "<img src=\"".$WT_IMAGES["spacer"]."\" id=\"marker6\" width=\"1\" height=\"1\" alt=\"\" />";
 		// end
 		?>
 		</td>

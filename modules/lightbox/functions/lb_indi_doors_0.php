@@ -43,21 +43,21 @@ if (!defined('WT_WEBTREES')) {
 	if ($MULTI_MEDIA){
 		if (!file_exists("modules/googlemap/defaultconfig.php")) {  ?>
 			<?php if (file_exists("modules/lightbox/album.php") ) {?>
-				<dd id="door8"><a href="javascript:;" onclick="tabswitch(8); return false;" ><?php print i18n::translate('Album') ?></a></dd>
+				<dd id="door8"><a href="javascript:;" onclick="tabswitch(8); return false;" ><?php echo i18n::translate('Album') ?></a></dd>
 			<?php }
 		}elseif (file_exists("modules/googlemap/defaultconfig.php")) {  ?>
 			<?php if (file_exists("modules/lightbox/album.php") ) {?>
-				<dd id="door9"><a href="javascript:;" onclick="tabswitch(9); return false;" ><?php print i18n::translate('Album') ?></a></dd>
+				<dd id="door9"><a href="javascript:;" onclick="tabswitch(9); return false;" ><?php echo i18n::translate('Album') ?></a></dd>
 			<?php }
 		}
 	}
  ?>
 
-	<dd id="door5"><a href="javascript:;" onclick="tabswitch(5); return false;" ><?php print i18n::translate('Close Relatives')?></a></dd>
-	<dd id="door6"><a href="javascript:;" onclick="tabswitch(6); return false;" ><?php print i18n::translate('Tree')?></a></dd>
-	<dd id="door7"><a href="javascript:;" onclick="tabswitch(7); return false;" ><?php print i18n::translate('Research Assistant')?></a></dd>
+	<dd id="door5"><a href="javascript:;" onclick="tabswitch(5); return false;" ><?php echo i18n::translate('Close Relatives')?></a></dd>
+	<dd id="door6"><a href="javascript:;" onclick="tabswitch(6); return false;" ><?php echo i18n::translate('Tree')?></a></dd>
+	<dd id="door7"><a href="javascript:;" onclick="tabswitch(7); return false;" ><?php echo i18n::translate('Research Assistant')?></a></dd>
 	<?php if (file_exists("modules/googlemap/defaultconfig.php")) { ?>
-		<dd id="door8"><a href="javascript:;" onclick="tabswitch(8); if (loadedTabs[8]) {ResizeMap(); ResizeMap();} return false;" ><?php print i18n::translate('Map')?></a></dd>
+		<dd id="door8"><a href="javascript:;" onclick="tabswitch(8); if (loadedTabs[8]) {ResizeMap(); ResizeMap();} return false;" ><?php echo i18n::translate('Map')?></a></dd>
 	<?php } ?>
-<!-- <dd id="door10"><a href="javascript:;" onclick="tabswitch(10); return false;" ><?php print "Spare Tab" ?></a></dd>  -->
-	<dd id="door0"><a href="javascript:;" onclick="tabswitch(0); if (loadedTabs[8]) {ResizeMap(); ResizeMap();} return false;" ><?php print i18n::translate('All')?></a></dd>
+<!-- <dd id="door10"><a href="javascript:;" onclick="tabswitch(10); return false;" ><?php echo "Spare Tab" ?></a></dd>  -->
+	<dd id="door0"><a href="javascript:;" onclick="tabswitch(0); if (loadedTabs[8]) {ResizeMap(); ResizeMap();} return false;" ><?php echo i18n::translate('All')?></a></dd>

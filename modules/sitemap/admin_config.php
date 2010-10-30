@@ -41,11 +41,9 @@ if (WT_USER_IS_ADMIN) { ?>
 	  <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Sitemap'); ?></td>
    </tr>
    <tr>
-      <td class="optionbox"><a href="module.php?mod=sitemap"><?php print i18n::translate('Generate Sitemap files');?></a><?php echo help_link('SITEMAP','sitemap');?>
+      <td class="optionbox"><a href="module.php?mod=sitemap"><?php echo i18n::translate('Generate Sitemap files');?></a><?php echo help_link('SITEMAP','sitemap');?>
 	  </td>
       <td class="optionbox">&nbsp;
 	  </td>
    </tr>
 <?php }
-
-?>

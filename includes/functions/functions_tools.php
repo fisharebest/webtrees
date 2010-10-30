@@ -230,7 +230,7 @@ function xref_change($tag="RIN")
 				$rin = trim($rmatch[1]);
 				$fcontents = str_replace("@$xref@", "@$rin@", $fcontents);
 			}
-			else   print "<span class=\"error\">No $tag found in record<br /></span>\n";
+			else echo "<span class=\"error\">No $tag found in record<br /></span>";
 		}
 	}
 	return true;

@@ -300,15 +300,15 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo "</td>";
 		//-- Death anniversary
 		if ($tiny) {
-			print "<td class=\"list_value_wrap rela\">";
+			echo "<td class=\"list_value_wrap rela\">";
 			if ($death_dates[0]->isOK())
 				echo "<span class=\"age\">", GedcomDate::GetAgeYears($death_dates[0]), "</span>";
 			else
 				echo "&nbsp;";
-			print '</td>';
+			echo '</td>';
 		}
 		//-- Age at death
-		print "<td class=\"list_value_wrap\">";
+		echo "<td class=\"list_value_wrap\">";
 		if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
 			$age = GedcomDate::GetAgeYears($birth_dates[0], $death_dates[0]);
 			$age_jd = $death_dates[0]->MinJD()-$birth_dates[0]->MinJD();
@@ -617,10 +617,10 @@ function print_fam_table($datalist, $legend="", $option="") {
 				echo '<a name="', $wage_jd, '" class="list_item age">', $wage, '</a>';
 				$marr_by_age[max(0, min($max_age, $wage))] .= $wife->getSex();
 			} else {
-				print "&nbsp;";
+				echo "&nbsp;";
 			}
 		} else {
-			print "&nbsp;";
+			echo "&nbsp;";
 		}
 		echo "</td>";
 		//-- Marriage date
@@ -872,7 +872,7 @@ function print_sour_table($datalist, $legend=null) {
 		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			print '<td class="list_value_wrap rela">'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td class="list_value_wrap rela">'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
 		echo "</tr>";
 	}
@@ -965,7 +965,7 @@ function print_note_table($datalist, $legend=null) {
 		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			print '<td class="list_value_wrap rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td class="list_value_wrap rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
 		echo "</tr>";
 	}
@@ -1116,7 +1116,7 @@ function print_media_table($datalist, $legend="") {
 */
 		//-- Last change
 		if ($SHOW_LAST_CHANGE)
-			print "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
+			echo "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
 		echo "</tr>";
 	}
 	echo "</table>";
@@ -1388,9 +1388,9 @@ function print_changes_table($change_ids) {
 		echo $exp[1];
 		echo "</td>";
 		//-- Last change date/time
-		print "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
+		echo "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
 		//-- Last change user
-		print "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
+		echo "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
 		echo "</tr>";
 	}
 	//-- table footer

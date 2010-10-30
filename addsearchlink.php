@@ -35,7 +35,7 @@ print_simple_header(i18n::translate('Add Local Link'));
 
 //-- only allow users with editing access to this page
 if (!WT_USER_CAN_EDIT) {
-	print i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	print_simple_footer();
 	exit;
 }
@@ -57,8 +57,8 @@ if(isset($pid) && isset($server) && isset($indiName))
 			<form method="post" name="addRemoteRelationship" action="addremotelink.php">
 				<input type="hidden" name="action" value="addlink" />
 				<input type="hidden" name="location" value="remote" />
-				<input type="hidden" name="cbExistingServers" value="<?php print $server; ?>" />
-				<input type="hidden" name="txtPID" value="<?php print $pid; ?>" />
+				<input type="hidden" name="cbExistingServers" value="<?php echo $server; ?>" />
+				<input type="hidden" name="txtPID" value="<?php echo $pid; ?>" />
 
 				<table class="facts_table" align="center">
 					<tr>
@@ -98,8 +98,7 @@ if(isset($pid) && isset($server) && isset($indiName))
 </table>
 
 <?php
+} else {
+	echo "<br/><center><b><font color=\"red\">Oh, now you're hacking!</font></b></center><br/>";
 }
-else {
-	print "<br/><center><b><font color=\"red\">Oh, now you're hacking!</font></b></center><br/>";
-}
-print_footer(); ?>
+print_footer();

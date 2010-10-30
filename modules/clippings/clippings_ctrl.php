@@ -393,7 +393,7 @@ class ClippingsController extends BaseController {
 			// add the ged file to the root of the zip file (strip off the index_directory)
 			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => $INDEX_DIRECTORY.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
 			$v_list = $archive->create($this->media_list, PCLZIP_OPT_COMMENT, $comment);
-			if ($v_list == 0) print "Error : ".$archive->errorInfo(true)."</td></tr>";
+			if ($v_list == 0) echo "Error : ".$archive->errorInfo(true)."</td></tr>";
 			else {
 				$openedFile = fopen($fname,"rb");
 				$this->download_data = fread($openedFile,filesize($fname));
@@ -404,7 +404,7 @@ class ClippingsController extends BaseController {
 		}
 		else
 		{
-			print i18n::translate('Cannot create')." ".$INDEX_DIRECTORY."$tempFileName ".i18n::translate('Check access rights on this directory.')."<br /><br />";
+			echo i18n::translate('Cannot create')." ".$INDEX_DIRECTORY."$tempFileName ".i18n::translate('Check access rights on this directory.')."<br /><br />";
 		}
 	}
 	/**
