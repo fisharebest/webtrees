@@ -102,27 +102,12 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		if (count($usermessages)==0) {
 			$content .= i18n::translate('You have no pending messages.')."<br />";
 		} else {
-			$content .= '
-				<script language="JavaScript" type="text/javascript">
-				<!--
-					function select_all() {
-						';
-			foreach ($usermessages as $key=>$message) {
-				if (isset($message["id"])) $key = $message["id"];
-				$content .= '
-							var cb = document.getElementById("cb_message'.$key.'");
-							if (cb) {
-								if (!cb.checked) cb.checked = true;
-								else cb.checked = false;
-							}
-							';
+			$content .= WT_JS_START.'function select_all() {';
+			foreach ($usermessages as $message) {
+				$content .= 'var cb=document.getElementById("cb_message'.$message["id"].'");';
+				$content .= 'cb.checked=!cb.checked;';
 			}
-			$content .= '
-					return false;
-				}
-				//-->
-				</script>
-			';
+			$content .= 'return false;}'.WT_JS_END;
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"deletemessage\" />";
 			$content .= "<table class=\"list_table\"><tr>";
 			$content .= "<td class=\"list_label\">".i18n::translate('Delete')."<br /><a href=\"javascript:;\" onclick=\"return select_all();\">".i18n::translate('All')."</a></td>";
