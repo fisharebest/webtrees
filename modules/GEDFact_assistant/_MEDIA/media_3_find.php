@@ -533,7 +533,7 @@ if ($action=="filter") {
 				echo $uplink, "</td></tr>";
 			}
 			echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION\" colspan=\"2\">";
-			echo "<a href=\"find.php?directory=".rawurlencode($directory)."&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}"\">", i18n::translate('External objects'), "</a>";
+			echo "<a href=\"find.php?directory=".rawurlencode($directory)."&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}\">", i18n::translate('External objects'), "</a>";
 			echo "</td></tr>";
 			foreach ($dirs as $indexval => $dir) {
 				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
