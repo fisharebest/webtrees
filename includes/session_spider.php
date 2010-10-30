@@ -199,6 +199,7 @@ $known_spiders = array(
 	'Googlebot',
 	'Yahoo Slurp',
 	'msnbot',
+	'bingbot',
 	'Ask Jeeves',
 	'Mediapartners-Google',
 	'Feedfetcher-Google',
