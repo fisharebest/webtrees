@@ -231,21 +231,21 @@ class MediaController extends BaseController{
 		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
-				$link = "mediaviewer.php?mid={$this->pid}&show_changes=yes";
+				$link = "mediaviewer.php?mid={$this->pid}&amp;show_changes=yes";
 			} else {
 				$label = i18n::translate('Click here to hide changes.');
-				$link = "mediaviewer.php?mid={$this->pid}&show_changes=no";
+				$link = "mediaviewer.php?mid={$this->pid}&samp;how_changes=no";
 			}
-			$submenu = new Menu($label, encode_url($link));
+			$submenu = new Menu($label, $link);
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("mediaviewer.php?mid={$this->pid}&action=undo"));
+				$submenu = new Menu(i18n::translate('Undo all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('notes');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("mediaviewer.php?mid={$this->pid}&action=accept"));
+				$submenu = new Menu(i18n::translate('Accept all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=accept");
 				$submenu->addIcon('notes');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -275,8 +275,7 @@ class MediaController extends BaseController{
 
 		// delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$submenu = new Menu(i18n::translate('Remove object'));
-			$submenu->addLink(encode_url("media.php?action=removeobject&xref=".$this->pid));
+			$submenu = new Menu(i18n::translate('Remove object'), "media.php?action=removeobject&amp;xref=".$this->pid);
 			$submenu->addOnclick("return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."')");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -284,7 +283,7 @@ class MediaController extends BaseController{
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("mediaviewer.php?action=addfav&mid={$this->mid}&gid={$this->mid}"));
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), "mediaviewer.php?action=addfav&amp;mid={$this->mid}&amp;gid={$this->mid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

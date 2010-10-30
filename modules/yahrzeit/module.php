@@ -116,7 +116,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($yahrzeits as $yahrzeit)
 				if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$days) {
 					$ind=person::GetInstance($yahrzeit['id']);
-					$content .= "<a href=\"".encode_url($ind->getLinkUrl())."\" class=\"list_item name2\">".$ind->getFullName()."</a>".$ind->getSexImage();
+					$content .= "<a href=\"".$ind->getHtmlUrl()."\" class=\"list_item name2\">".$ind->getFullName()."</a>".$ind->getSexImage();
 					$content .= "<div class=\"indent\">";
 					$content .= $yahrzeit['date']->Display(true);
 					$content .= ', '.i18n::translate('%s year anniversary', $yahrzeit['anniv']);
@@ -145,13 +145,13 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<tr>";
 					// Record name(s)
 					$name=$ind->getFullName();
-					$url=$ind->getLinkUrl();
+					$url=$ind->getHtmlUrl();
 					$content .= "<td class=\"list_value_wrap\" align=\"".get_align($name)."\">";
-					$content .= "<a href=\"".encode_url($ind->getLinkUrl())."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
+					$content .= "<a href=\"".$url."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
 					$content .= $ind->getSexImage();
 					$addname=$ind->getAddName();
 					if ($addname) {
-						$content .= "<br /><a href=\"".encode_url($url)."\" class=\"list_item\">".PrintReady($addname)."</a>";
+						$content .= "<br /><a href=\"".$url."\" class=\"list_item\">".PrintReady($addname)."</a>";
 					}
 					$content .= "</td>";
 
@@ -260,4 +260,3 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 }
-?>

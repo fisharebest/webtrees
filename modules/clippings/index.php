@@ -111,7 +111,7 @@ if ($controller->action=='add') {
 $ct = count($cart);
 
 if ($controller->privCount>0) {
-	print "<span class=\"error\">".i18n::translate('Some items could not be added due to privacy restrictions')."</span><br /><br />\n";
+	print "<span class=\"error\">".i18n::translate('Some items could not be added due to privacy restrictions')."</span><br /><br />";
 }
 
 if ($ct==0) {
@@ -154,7 +154,7 @@ if ($ct==0) {
 	}
 
 	// -- end new lines
-	print "\r\n\t\t<br /><br />".i18n::translate('Your Clippings Cart is empty.')."<br /><br />";
+	print "<br /><br />".i18n::translate('Your Clippings Cart is empty.')."<br /><br />";
 } else {
 	if ($controller->action != 'download' && $controller->action != 'add') { ?>
 		<table><tr><td class="width33" valign="top" rowspan="3">
@@ -301,7 +301,7 @@ if ($ct==0) {
 			<td class="list_value">
 			<?php
 			$record=GedcomRecord::getInstance($clipping['id']);
-			if ($record) echo '<a href="', encode_url($record->getLinkUrl()), '">', PrintReady($record->getListName()), '</a>';
+			if ($record) echo '<a href="', $record->getHtmlUrl(), '">', PrintReady($record->getListName()), '</a>';
 			?>
 			</td>
 			<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;item=<?php echo $i;?>"><img src="<?php echo $WT_IMAGES["remove"];?>" border="0" alt="<?php echo i18n::translate('Remove')?>" title="<?php echo i18n::translate('Remove');?>" /></a></td>
@@ -316,4 +316,3 @@ if ($ct==0) {
 }
 if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
 print_footer();
-?>

@@ -50,12 +50,12 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$title=get_gedcom_setting(WT_GED_ID, 'title');
 		$content = "<div class=\"center\">";
-		$content .= "<br />".format_timestamp(client_time())."<br />\n";
+		$content .= "<br />".format_timestamp(client_time())."<br />";
 		if ($SHOW_COUNTER)
-			$content .=  i18n::translate('Hit Count:')." ".$hitCount."<br />\n";
-		$content .=  "\n<br />";
+			$content .=  i18n::translate('Hit Count:')." ".$hitCount."<br />";
+		$content .=  "<br />";
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('".encode_url("index_edit.php?name=".WT_GEDCOM."&ctype=gedcom")."', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".i18n::translate('Customize this GEDCOM Home Page')."</a><br />\n";
+			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_GEDCOM."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".i18n::translate('Customize this GEDCOM Home Page')."</a><br />";
 		}
 		$content .=  "</div>";
 

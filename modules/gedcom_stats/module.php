@@ -78,7 +78,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$title='';
 		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('".encode_url("index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}")."', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
+			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 		}
 		$title.=i18n::translate('GEDCOM Statistics').help_link('index_stats');
@@ -104,12 +104,12 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
-			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'.encode_url("indilist.php?surname_sublist=no&ged=".WT_GEDCOM).'">'.$stats->totalIndividuals().'</a></div></td></tr>';
+			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDCOM.'">'.$stats->totalIndividuals().'</a></div></td></tr>';
 			$content.='<tr><td class="facts_label">'.i18n::translate('Males').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexMales().'<br />'.$stats->totalSexMalesPercentage().'%</div></td></tr>';
 			$content.='<tr><td class="facts_label">'.i18n::translate('Females').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexFemales().'<br />'.$stats->totalSexFemalesPercentage().'%</div></td></tr>';
 		}
 		if ($stat_surname) {
-			$content .= '<tr><td class="facts_label">'.i18n::translate('Total surnames').'</td><td class="facts_value"><div dir="rtl"><a href="'.encode_url("indilist.php?show_all=yes&surname_sublist=yes&ged=".WT_GEDCOM).'">'.$stats->totalSurnames().'</a></div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.i18n::translate('Total surnames').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=".WT_GEDCOM.'">'.$stats->totalSurnames().'</a></div></td></tr>';
 		}
 		if ($stat_fam) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Families').'</td><td class="facts_value"><div dir="rtl"><a href="famlist.php">'.$stats->totalFamilies().'</a></div></td></tr>';
@@ -219,7 +219,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 						if ($i>0) {
 							$content .= ', ';
 						}
-						$content .= '<a href="'.encode_url("indilist.php?ged=".WT_GEDCOM."&surname=".$surname['name']).'">'.PrintReady($surname['name']).'</a>';
+						$content .= '<a href="'."indilist.php?ged=".WT_GEDCOM."&amp;surname=".rawurlencode($surname['name']).'">'.PrintReady($surname['name']).'</a>';
 						$i++;
 					}
 				}

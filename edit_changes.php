@@ -169,7 +169,7 @@ if ($changed_gedcoms) {
 				$record=new GedcomRecord($change->gedcom);
 			}
 			$output.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM().'<br />';
-			$output.='<a href="javascript:;" onclick="return show_diff(\''.encode_url($record->getLinkUrl().'&show_changes=yes').'\');">'.i18n::translate('View Change Diff').'</a> | ';
+			$output.='<a href="javascript:;" onclick="return show_diff(\''.$record->getHtmlUrl().'&amp;show_changes=yes'.'\');">'.i18n::translate('View Change Diff').'</a> | ';
 			$output.="<a href=\"javascript:show_gedcom_record('".$change->xref."');\">".i18n::translate('View GEDCOM Record')."</a> | ";
 			$output.="<a href=\"javascript:;\" onclick=\"return edit_raw('".$change->xref."');\">".i18n::translate('Edit raw GEDCOM record').'</a><br />';
 			$output.='<div class="indent">';
@@ -183,7 +183,7 @@ if ($changed_gedcoms) {
 			$output.='<td class="list_label">'.i18n::translate('Undo').'</td>';
 			$output.='</tr>';
 		}
-		$output .= '<td class="list_value"><a href="'.encode_url("edit_changes.php?action=accept&change_id={$change->change_id}").'">'.i18n::translate('Accept').'</a></td>';
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.i18n::translate('Accept').'</a></td>';
 		$output .= '<td class="list_value"><b>';
 		if ($change->old_gedcom=='') {
 			$output.=i18n::translate('Append record');
@@ -195,10 +195,10 @@ if ($changed_gedcoms) {
 		echo '</b></td>';
 		$output .= "<td class=\"list_value\"><a href=\"javascript:;\" onclick=\"return reply('".$change->user_name."', '".i18n::translate('Review GEDCOM Changes')."')\" alt=\"".i18n::translate('Send Message')."\">";
 		$output .= PrintReady($change->real_name);
-		$output .= PrintReady("&nbsp;(".$change->user_name.")")."</a></td>";
-		$output .= "<td class=\"list_value\">".$change->change_time."</td>";
-		$output .= "<td class=\"list_value\">".$change->gedcom_name."</td>";
-		$output .= "<td class=\"list_value\"><a href=\"".encode_url("edit_changes.php?action=undo&change_id={$change->change_id}")."\">".i18n::translate('Undo')."</a></td>";
+		$output .= PrintReady('&nbsp;('.$change->user_name.')').'</a></td>';
+		$output .= '<td class="list_value">'.$change->change_time.'</td>';
+		$output .= '<td class="list_value">'.$change->gedcom_name.'</td>';
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.i18n::translate('Undo').'</a></td>';
 		$output.='</tr>';
 	}
 	$output .= '</table></td></tr></td></tr></table>';
@@ -217,7 +217,7 @@ if ($changed_gedcoms) {
 	$count = 0;
 	foreach ($changed_gedcoms as $gedcom_name) {
 		if ($count!=0) $output2.='<br />';
-		$output2 .= '<a href="'.encode_url("edit_changes.php?action=acceptall&ged={$gedcom_name}")."\">$gedcom_name - ".i18n::translate('Accept all changes').'</a>';
+		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged='.rawurlencode($gedcom_name).'">'.$gedcom_name.' - '.i18n::translate('Accept all changes').'</a>';
 		$count ++;
 	}
 	$output2 .= '</td>';
@@ -230,7 +230,7 @@ if ($changed_gedcoms) {
 		if ($count!=0) {
 			$output2.='<br />';
 		}
-		$output2 .= '<a href="'.encode_url("edit_changes.php?action=undoall&ged={$gedcom_name}")."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to undo all of the changes for this GEDCOM?')."');\">$gedcom_name - ".i18n::translate('Undo all changes').'</a>';
+		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged='.rawurlencode($gedcom_name)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to undo all of the changes for this GEDCOM?')."');\">$gedcom_name - ".i18n::translate('Undo all changes').'</a>';
 		$count++;
 	}
 	$output2 .= '</td></tr></table>';

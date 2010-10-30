@@ -152,7 +152,7 @@ class TimelineController extends BaseController {
 			if (!is_null($this->people[$i])) {
 				if (!$this->people[$i]->canDisplayDetails()) {
 					if ($this->people[$i]->canDisplayName()) {
-						print "&nbsp;<a href=\"".encode_url($this->people[$i]->getLinkUrl())."\">".PrintReady($this->people[$i]->getFullName())."</a>";
+						print "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".PrintReady($this->people[$i]->getFullName())."</a>";
 						print_privacy_error();
 						print "<br />";
 						$printed = true;
@@ -213,14 +213,14 @@ class TimelineController extends BaseController {
 				$xoffset += abs($tyoffset);
 				$placements[$place] = $yoffset;
 
-				print "\n\t\t<div id=\"fact$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($xoffset):"right: ".($xoffset))."px; top:".($yoffset)."px; font-size: 8pt; height: ".($this->bheight)."px; \" onmousedown=\"factMD(this, '".$factcount."', ".($yoffset-$tyoffset).");\">\n";
-				print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>\n";
+				print "<div id=\"fact$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($xoffset):"right: ".($xoffset))."px; top:".($yoffset)."px; font-size: 8pt; height: ".($this->bheight)."px; \" onmousedown=\"factMD(this, '".$factcount."', ".($yoffset-$tyoffset).");\">";
+				print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
 				print "<img src=\"".$WT_IMAGES["hline"]."\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" hspace=\"0\" width=\"10\" vspace=\"0\" alt=\"\" style=\"padding-";
 				if ($TEXT_DIRECTION=="ltr") print "left";
 				else print "right";
-				print ": 3px;\" />\n";
+				print ": 3px;\" />";
 				$col = $event->temp % 6;
-				print "</td><td valign=\"top\" class=\"person".$col."\">\n";
+				print "</td><td valign=\"top\" class=\"person".$col."\">";
 				if (count($this->pids) > 6) print $event->getParentObject()->getFullName()." - ";
 				$indi=$event->getParentObject();
 				print $event->getLabel();
@@ -286,19 +286,19 @@ class TimelineController extends BaseController {
 					if ($p==count($this->pids)) $p = $event->temp;
 					$col = $p % 6;
 					if ($spouse->getXref()!=$this->pids[$p]) {
-						echo ' <a href="', $spouse->getLinkUrl(), '">', $spouse->getFullName(), '</a>';
+						echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a>';
 					}
 					else {
 						$ct = preg_match("/2 _WTFS @(.*)@/", $factrec, $match);
 						if ($ct>0) {
-							print " <a href=\"".encode_url("family.php?famid={$match[1]}&ged={$GEDCOM}")."\">";
+							print " <a href=\"family.php?famid={$match[1]}&amp;ged={$GEDCOM}\">";
 							if ($event->getParentObject()->canDisplayName()) print $event->getParentObject()->getFullName();
 							else print i18n::translate('Private');
 							print "</a>";
 						}
 					}
 				}
-				print "</td></tr></table>\n";
+				print "</td></tr></table>";
 				print "</div>";
 				if ($TEXT_DIRECTION=='ltr') {
 					$img = "dline2";
@@ -321,9 +321,9 @@ class TimelineController extends BaseController {
 					}
 				}
 				//-- print the diagnal line
-				print "\n\t\t<div id=\"dbox$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+25):"right: ".($basexoffset+25))."px; top:".($dyoffset)."px; font-size: 8pt; height: ".(abs($tyoffset))."px; width: ".(abs($tyoffset))."px;";
+				print "<div id=\"dbox$factcount\" style=\"position:absolute; ".($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+25):"right: ".($basexoffset+25))."px; top:".($dyoffset)."px; font-size: 8pt; height: ".(abs($tyoffset))."px; width: ".(abs($tyoffset))."px;";
 				print " background-image: url('".$WT_IMAGES[$img]."');";
-				print " background-position: 0% $ypos; \" >\n";
-				print "</div>\n";
+				print " background-position: 0% $ypos; \" >";
+				print "</div>";
 	}
 }

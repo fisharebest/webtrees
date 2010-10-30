@@ -984,14 +984,14 @@ function process_uploadMedia_form() {
 				}
 			}
 			// Let's see if there are any errors generated and print it
-			if (!empty($error)) echo '<span class="error">', $error, "</span><br />\n";
+			if (!empty($error)) echo '<span class="error">', $error, "</span><br />";
 			// No errors found then tell the user all is successful
 			else {
 				print i18n::translate('Upload successful.')."<br /><br />";
 				$imgsize = findImageSize($folderName.$mediaFile);
 				$imgwidth = $imgsize[0]+40;
 				$imgheight = $imgsize[1]+150;
-				print "<a href=\"#\" onclick=\"return openImage('".encode_url($folderName.$mediaFile)."', $imgwidth, $imgheight);\">".$mediaFile."</a>";
+				print "<a href=\"#\" onclick=\"return openImage('".htmlspecialchars($folderName.$mediaFile)."', $imgwidth, $imgheight);\">".$mediaFile."</a>";
 				print"<br /><br />";
 			}
 		}
@@ -1028,7 +1028,7 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 	if (empty($filesize)) $filesize = "2M";
 
 	// Print the form
-	echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', encode_url($URL), '">';
+	echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', $URL, '">';
 	echo '<input type="hidden" name="action" value="upload" />';
 	echo '<input type="hidden" name="showthumb" value="', $showthumb, '" />';
 	echo '<table class="list_table ', $TEXT_DIRECTION, ' width100">';
@@ -1083,20 +1083,20 @@ function show_mediaUpload_form($URL='media.php', $showthumb=false) {
 			echo '</td>';
 			echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
 
-			echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">', "\n";
+			echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 			echo '<option';
 			echo ' value="/"> ', i18n::translate('Choose: '), ' </option>';
-			if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', i18n::translate('Other folder... please type in'), "</option>\n";
+			if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', i18n::translate('Other folder... please type in'), "</option>";
 			foreach ($mediaFolders as $f) {
 				if (!strpos($f, ".svn")) {    //Do not print subversion directories
 					// Strip $MEDIA_DIRECTORY from the folder name
 					if (substr($f, 0, strlen($MEDIA_DIRECTORY)) == $MEDIA_DIRECTORY) $f = substr($f, strlen($MEDIA_DIRECTORY));
 					if ($f == '') $f = '/';
 					echo '<option value="', $f, '"';
-					echo '>', $f, "</option>\n";
+					echo '>', $f, "</option>";
 				}
 			}
-			print "</select></span>\n";
+			print "</select></span>";
 			if (WT_USER_IS_ADMIN) {
 				echo '<br /><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value="" onblur="checkpath(this)" /></span>';
 				if ($i==1) echo '<br /><sub>', i18n::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
@@ -1135,15 +1135,15 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
 	// NOTE: add a table and form to easily add new values to the table
-	echo "<form method=\"post\" name=\"newmedia\" action=\"addmedia.php\" enctype=\"multipart/form-data\">\n";
-	echo "<input type=\"hidden\" name=\"action\" value=\"", $action, "\" />\n";
-	echo "<input type=\"hidden\" name=\"ged\" value=\"", WT_GEDCOM, "\" />\n";
-	echo "<input type=\"hidden\" name=\"pid\" value=\"", $pid, "\" />\n";
+	echo "<form method=\"post\" name=\"newmedia\" action=\"addmedia.php\" enctype=\"multipart/form-data\">";
+	echo "<input type=\"hidden\" name=\"action\" value=\"", $action, "\" />";
+	echo "<input type=\"hidden\" name=\"ged\" value=\"", WT_GEDCOM, "\" />";
+	echo "<input type=\"hidden\" name=\"pid\" value=\"", $pid, "\" />";
 	if (!empty($linktoid)) {
-		echo "<input type=\"hidden\" name=\"linktoid\" value=\"", $linktoid, "\" />\n";
+		echo "<input type=\"hidden\" name=\"linktoid\" value=\"", $linktoid, "\" />";
 	}
-	echo "<input type=\"hidden\" name=\"level\" value=\"", $level, "\" />\n";
-	echo "<table class=\"facts_table center ", $TEXT_DIRECTION, "\">\n";
+	echo "<input type=\"hidden\" name=\"level\" value=\"", $level, "\" />";
+	echo "<table class=\"facts_table center ", $TEXT_DIRECTION, "\">";
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
 	if ($action == "newentry") {
 		echo i18n::translate('Add a new media item');
@@ -1159,7 +1159,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		print_findindi_link("gid", "");
 		print_findfamily_link("gid");
 		print_findsource_link("gid");
-		echo "<br /><sub>", i18n::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), "</sub></td></tr>\n";
+		echo "<br /><sub>", i18n::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), "</sub></td></tr>";
 	}
 	$gedrec=find_gedcom_record($pid, WT_GED_ID, true);
 
@@ -1233,11 +1233,11 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			$folder = $parts["dirname"] . "/";
 		}
 
-		echo "\n<tr>";
-		echo "<td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">\n";
+		echo "<tr>";
+		echo "<td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
 		echo "<input name=\"oldFilename\" type=\"hidden\" value=\"" . htmlspecialchars($fileName) . "\" />";
 		echo i18n::translate('File name on server'), help_link('upload_server_file');
-		echo "</td>\n";
+		echo "</td>";
 		echo "<td class=\"optionbox wrap $TEXT_DIRECTION wrap\">";
 		if (WT_USER_GEDCOM_ADMIN) {
 			echo "<input name=\"filename\" type=\"text\" value=\"" . htmlspecialchars($fileName) . "\" size=\"40\"";
@@ -1273,11 +1273,11 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		//-- don't let regular users change the location of media items
 		if ($action!='update' || WT_USER_GEDCOM_ADMIN) {
 			$mediaFolders = get_media_folders();
-			echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">', "\n";
+			echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 			echo '<option';
 			if ($folder == '/') echo ' selected="selected"';
 			echo ' value="/"> ', i18n::translate('Choose: '), ' </option>';
-			if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', i18n::translate('Other folder... please type in'), "</option>\n";
+			if (WT_USER_IS_ADMIN) echo '<option value="other" disabled>', i18n::translate('Other folder... please type in'), "</option>";
 			foreach ($mediaFolders as $f) {
 				if (!strpos($f, ".svn")) {    //Do not print subversion directories
 					// Strip $MEDIA_DIRECTORY from the folder name
@@ -1286,10 +1286,10 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 					echo '<option value="', $f, '"';
 					if ($folder == $f && $f != '/')
 						echo ' selected="selected"';
-					echo '>', $f, "</option>\n";
+					echo '>', $f, "</option>";
 				}
 			}
-			print "</select></span>\n";
+			print "</select></span>";
 		}
 		else echo $folder;
 		echo '<input name="oldFolder" type="hidden" value="', addslashes($folder), '" />';
@@ -1468,18 +1468,18 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	}
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">\n";
+		echo i18n::translate('Admin Option'), help_link('no_update_CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />\n";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />\n";
+		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
-		echo "</td></tr>\n";
+		echo "</td></tr>";
 	}
-	print "</table>\n";
+	print "</table>";
 ?>
 		<script language="JavaScript" type="text/javascript">
 			var formid = '<?php echo $formid; ?>';
@@ -1502,7 +1502,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	print_add_layer("SHARED_NOTE", 1);
 	print_add_layer("RESN", 1);
 	print "<input type=\"submit\" value=\"" . i18n::translate('Save') . "\" />";
-	print "</form>\n";
+	print "</form>";
 }
 
 // looks in both the standard and protected media directories
@@ -1583,7 +1583,7 @@ function PrintMediaLinks($links, $size = "small") {
 		if ($prev_record && $prev_record->getType()!=$record->getType()) {
 			echo '<br />';
 		}
-		echo '<br /><a href="', encode_url($record->getLinkUrl()), '">';
+		echo '<br /><a href="', $record->getHtmlUrl(), '">';
 		switch ($record->getType()) {
 		case 'INDI':
 			echo i18n::translate('View Person');

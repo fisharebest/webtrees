@@ -64,7 +64,7 @@ class stats {
 	function _setGedcom($gedcom) {
 		$this->_gedcom = $gedcom;
 		$this->_ged_id = PrintReady(get_id_from_gedcom($gedcom));
-		$this->_gedcom_url = encode_url($gedcom);
+		$this->_gedcom_url = rawurlencode($gedcom);
 	}
 
 	/**
@@ -300,7 +300,7 @@ class stats {
 		}
 		if (!$highlight) {return '';}
 		$imgsize=findImageSize($highlight);
-		return "<a href=\"".encode_url("{$this->_server_url}index.php?ctype=gedcom&ged={$this->_gedcom_url}")."\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" class=\"gedcom_highlight\" alt=\"\" /></a>";
+		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
 	function gedcomHighlightLeft() {
@@ -316,7 +316,7 @@ class stats {
 			return '';
 		}
 		$imgsize=findImageSize($highlight);
-		return "<a href=\"".encode_url("{$this->_server_url}index.php?ctype=gedcom&ged={$this->_gedcom_url}")."\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"left\" class=\"gedcom_highlight\" alt=\"\" /></a>";
+		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"left\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
 	function gedcomHighlightRight() {
@@ -332,7 +332,7 @@ class stats {
 			return '';
 		}
 		$imgsize=findImageSize($highlight);
-		return "<a href=\"".encode_url("{$this->_server_url}index.php?ctype=gedcom&ged={$this->_gedcom_url}")."\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"right\" class=\"gedcom_highlight\" alt=\"\" /></a>";
+		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"right\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -406,7 +406,7 @@ class stats {
 				i18n::translate('Without sources').' - '.round($tot_indi_per,1).'%';
 		$chart_title =  i18n::translate('With sources').' ['.round($tot_sindi_per,1).'%], '.
 						i18n::translate('Without sources').' ['.round($tot_indi_per,1).'%]';
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
 	function totalIndividualsPercentage() {
@@ -445,7 +445,7 @@ class stats {
 				i18n::translate('Without sources').' - '.round($tot_fam_per,1).'%';
 		$chart_title =  i18n::translate('With sources').' ['.round($tot_sfam_per,1).'%], '.
 						i18n::translate('Without sources').' ['.round($tot_fam_per,1).'%]';
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
 	function totalFamiliesPercentage() {
@@ -654,7 +654,7 @@ class stats {
 				i18n::translate('Males').' ['.round($tot_m,1).'%], '.
 				i18n::translate('Females').' ['.round($tot_f,1).'%], '.
 				i18n::translate_c('unknown people', 'Unknown').' ['.round($tot_u,1).'%]';
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_f, $tot_m));
 			$chl =
@@ -662,7 +662,7 @@ class stats {
 				i18n::translate('Males').' - '.round($tot_m,1).'%';
 			$chart_title =  i18n::translate('Males').' ['.round($tot_m,1).'%], '.
 							i18n::translate('Females').' ['.round($tot_f,1).'%]';
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
 	}
 
@@ -728,7 +728,7 @@ class stats {
 				i18n::translate('Living').' ['.round($tot_l,1).'%], '.
 				i18n::translate('Dead').' ['.round($tot_d,1).'%], '.
 				i18n::translate_c('unknown people', 'Unknown').' ['.round($tot_u,1).'%]';
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_l, $tot_d));
 			$chl =
@@ -736,7 +736,7 @@ class stats {
 				i18n::translate('Dead').' - '.round($tot_d,1).'%|';
 			$chart_title =  i18n::translate('Living').' ['.round($tot_l,1).'%], '.
 							i18n::translate('Dead').' ['.round($tot_d,1).'%]';
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
 	}
 
@@ -863,7 +863,7 @@ class stats {
 		$chart_title = substr($chart_title,0,-2);
 		$chd = self::_array_to_extended_encoding($mediaCounts);
 		$chl = substr($mediaTypes,0,-1);
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -951,7 +951,7 @@ class stats {
 				$result=$date->Display(true);
 				break;
 			case 'name':
-				$result="<a href=\"".$record->getLinkUrl()."\">".$record->getFullName()."</a>";
+				$result="<a href=\"".$record->getHtmlUrl()."\">".$record->getFullName()."</a>";
 				break;
 			case 'place':
 				$fact=GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
@@ -1215,7 +1215,7 @@ class stats {
 		foreach ($all_db_countries as $country_code=>$country) {
 			$top10[]="\t<li>";
 			foreach ($country as $country_name=>$tot) {
-				$place = '<a href="'.encode_url(get_place_url($country_name)).'" class="list_item">'.$all_countries[$country_code].'</a>';
+				$place = '<a href="'.get_place_url($country_name).'" class="list_item">'.$all_countries[$country_code].'</a>';
 				$top10[].=$place." ".PrintReady("[".$tot."]");
 			}
 			$top10[].="</li>\n";
@@ -1232,7 +1232,7 @@ class stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$place = '<a href="'.encode_url(get_place_url($place)).'" class="list_item">'.PrintReady($place).'</a>';
+			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
 			$top10[]="\t<li>".$place." ".PrintReady("[".$count."]")."</li>\n";
 			if ($i++==10) break;
 		}
@@ -1247,7 +1247,7 @@ class stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$place = '<a href="'.encode_url(get_place_url($place)).'" class="list_item">'.PrintReady($place).'</a>';
+			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
 			$top10[]="\t<li>".$place." ".PrintReady("[".$count."]")."</li>\n";
 			if ($i++==10) break;
 		}
@@ -1262,7 +1262,7 @@ class stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$place = '<a href="'.encode_url(get_place_url($place)).'" class="list_item">'.PrintReady($place).'</a>';
+			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
 			$top10[]="\t<li>".$place." ".PrintReady("[".$count."]")."</li>\n";
 			if ($i++==10) break;
 		}
@@ -1322,7 +1322,7 @@ class stats {
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Births by century')."\" title=\"".i18n::translate('Births by century')."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Births by century')."\" title=\"".i18n::translate('Births by century')."\" />";
 		}
 		if (!isset($rows)) return 0;
 		return $rows;
@@ -1380,7 +1380,7 @@ class stats {
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Deaths by century')."\" title=\"".i18n::translate('Deaths by century')."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Deaths by century')."\" title=\"".i18n::translate('Deaths by century')."\" />";
 		}
 		if (!isset($rows)) {return 0;}
 		return $rows;
@@ -1511,7 +1511,7 @@ class stats {
 				$result=floor($row['age']/365.25);
 				break;
 			case 'name':
-				$result="<a href=\"".encode_url($person->getLinkUrl())."\">".$person->getFullName()."</a>";
+				$result="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a>";
 				break;
 		}
 		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
@@ -1568,9 +1568,9 @@ class stats {
 			$age = get_age_at_event($age, true);
 			if ($person->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[]="\t<li><a href=\"".encode_url($person->getLinkUrl())."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
+					$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
 				} else {
-					$top10[]="<a href=\"".encode_url($person->getLinkUrl())."\">".PrintReady($person->getFullName()."</a> [".$age."]");
+					$top10[]="<a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]");
 				}
 			}
 		}
@@ -1635,9 +1635,9 @@ class stats {
 			}
 			$age = get_age_at_event($age, true);
 			if ($type == 'list') {
-				$top10[]="\t<li><a href=\"".encode_url($person->getLinkUrl())."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
+				$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
 			} else {
-				$top10[]="<a href=\"".encode_url($person->getLinkUrl())."\">".PrintReady($person->getFullName()."</a> [".$age."]");
+				$top10[]="<a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]");
 			}
 		}
 		if ($type == 'list') {
@@ -1769,7 +1769,7 @@ class stats {
 				$half = floor(count($counter)/2);
 				$chtt = substr_replace($title, '|', $counter[$half], 1);
 			}
-			return '<img src="'.encode_url("http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt={$chtt}&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl={$chxl}&amp;chdl=".i18n::translate('Males').'|'.i18n::translate('Females').'|'.i18n::translate('Average age at death'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average age related to death century')."\" title=\"".i18n::translate('Average age related to death century')."\" />";
+			return '<img src="'."http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|N*f1*,000000,0,-1,11,1|N*f1*,000000,1,-1,11,1&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".rawurlencode($chtt)."&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."&amp;chdl=".rawurlencode(i18n::translate('Males').'|'.i18n::translate('Females').'|'.i18n::translate('Average age at death'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average age related to death century')."\" title=\"".i18n::translate('Average age related to death century')."\" />";
 		} else {
 			$sex_search = '';
 			$years = '';
@@ -1908,7 +1908,7 @@ class stats {
 				}
 				break;
 			case 'name':
-				$result="<a href=\"".encode_url($record->getLinkUrl())."\">".PrintReady($record->getFullName())."</a>";
+				$result="<a href=\"".$record->getHtmlUrl()."\">".PrintReady($record->getFullName())."</a>";
 				break;
 			case 'place':
 				$fact=$record->getFactByType($row['fact']);
@@ -2056,7 +2056,7 @@ class stats {
 				}
 				break;
 			case 'name':
-				$result="<a href=\"".encode_url($family->getLinkUrl())."\">".$person->getFullName().'</a>';
+				$result="<a href=\"".$family->getHtmlUrl()."\">".$person->getFullName().'</a>';
 				break;
 			case 'age':
 				$age = $row['age'];
@@ -2187,9 +2187,9 @@ class stats {
 			if (($husb->getAllDeathDates() && $wife->getAllDeathDates()) || !$husb->isDead() || !$wife->isDead()) {
 				if ($family->canDisplayDetails()) {
 					if ($type == 'list') {
-						$top10[] = "\t<li><a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
+						$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
 					} else {
-						$top10[] = "<a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [".$age."]");
+						$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]");
 					}
 				}
 				if (++$i==$total) break;
@@ -2260,9 +2260,9 @@ class stats {
 			$age = get_age_at_event($age, true);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [".$age."]");
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]");
 				}
 			}
 		}
@@ -2322,7 +2322,7 @@ class stats {
 				}
 				break;
 			case 'name':
-				$result="<a href=\"".encode_url($person->getLinkUrl())."\">".$person->getFullName().'</a>';
+				$result="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName().'</a>';
 				break;
 			case 'age':
 				$age = $row['age'];
@@ -2414,7 +2414,7 @@ class stats {
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Marriages by century')."\" title=\"".i18n::translate('Marriages by century')."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Marriages by century')."\" title=\"".i18n::translate('Marriages by century')."\" />";
 		}
 		return $rows;
 	}
@@ -2490,7 +2490,7 @@ class stats {
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Divorces by century')."\" title=\"".i18n::translate('Divorces by century')."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Divorces by century')."\" title=\"".i18n::translate('Divorces by century')."\" />";
 		}
 		return $rows;
 	}
@@ -2613,7 +2613,7 @@ class stats {
 				$half = floor(count($counter)/2);
 				$chtt = substr_replace(i18n::translate('Average age in century of marriage'), '|', $counter[$half], 1);
 			}
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt={$chtt}&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl={$chxl}&amp;chdl=".i18n::translate('Males')."|".i18n::translate('Females')."|".i18n::translate('Average age'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average age in century of marriage')."\" title=\"".i18n::translate('Average age in century of marriage')."\" />";
+			return "<img src=\""."http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".rawurlencode($chtt)."&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."&amp;chdl=".rawurlencode(i18n::translate('Males')."|".i18n::translate('Females')."|".i18n::translate('Average age'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average age in century of marriage')."\" title=\"".i18n::translate('Average age in century of marriage')."\" />";
 		} else {
 			$years = '';
 			if ($year1>=0 && $year2>=0) {
@@ -2780,7 +2780,7 @@ class stats {
 				$result=$row['tot'];
 				break;
 			case 'name':
-				$result="<a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()).'</a>';
+				$result="<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()).'</a>';
 				break;
 		}
 		// Statistics are used by RSS feeds, etc., so need absolute URLs.
@@ -2809,9 +2809,9 @@ class stats {
 			$family=Family::getInstance($rows[$c]['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".i18n::translate('children')."]")."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".i18n::translate('children')."]")."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".i18n::translate('children')."]");
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".i18n::translate('children')."]");
 				}
 			}
 		}
@@ -2873,9 +2873,9 @@ class stats {
 			$child2 = Person::getInstance($fam['ch2']);
 			if ($type == 'name') {
 				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-					$return = "<a href=\"".encode_url($child2->getLinkUrl())."\">".PrintReady($child2->getFullName())."</a> ";
+					$return = "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
 					$return .= i18n::translate('and')." ";
-					$return .= "<a href=\"".encode_url($child1->getLinkUrl())."\">".PrintReady($child1->getFullName())."</a>";
+					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
 					$return .= " <a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>\n";
 				} else {
 					$return = i18n::translate('This information is private and cannot be shown.');
@@ -2898,9 +2898,9 @@ class stats {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 						$return = "\t<li>";
-						$return .= "<a href=\"".encode_url($child2->getLinkUrl())."\">".PrintReady($child2->getFullName())."</a> ";
+						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
 						$return .= i18n::translate('and')." ";
-						$return .= "<a href=\"".encode_url($child1->getLinkUrl())."\">".PrintReady($child1->getFullName())."</a>";
+						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
 						$return .= " [".$age."]";
 						$return .= " <a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>";
 						$return .= "\t</li>\n";
@@ -2909,9 +2909,9 @@ class stats {
 					}
 				} else if (!$one && $child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 					$return = "\t<li>";
-					$return .= "<a href=\"".encode_url($child2->getLinkUrl())."\">".PrintReady($child2->getFullName())."</a> ";
+					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
 					$return .= i18n::translate('and')." ";
-					$return .= "<a href=\"".encode_url($child1->getLinkUrl())."\">".PrintReady($child1->getFullName())."</a>";
+					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
 					$return .= " [".$age."]";
 					$return .= " <a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>";
 					$return .= "\t</li>\n";
@@ -2981,13 +2981,12 @@ class stats {
 					$per = round(100 * $row['tot'] / $tot, 0);
 				}
 				$chd .= self::_array_to_extended_encoding(array($per));
-				$chl[] = strip_tags(unhtmlentities($family->getFullName())).' - '.$row['tot'];
+				$chl[] = rawurlencode(strip_tags(unhtmlentities($family->getFullName())).' - '.$row['tot']);
 			}
 		}
 		$chl = join('|', $chl);
 
-		// the following does not print Arabic letters in names - encode_url shows still the letters
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Largest families')."\" title=\"".i18n::translate('Largest families')."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Largest families')."\" title=\"".i18n::translate('Largest families')."\" />";
 	}
 
 	function totalChildren() {
@@ -3042,7 +3041,7 @@ class stats {
 			$chm = substr($chm,0,-1);
 			if ($max<=5) $chxl .= "1:||".i18n::translate('century')."|2:|0|1|2|3|4|5|3:||".i18n::translate('Number of children')."|";
 			else $chxl .= "1:||".i18n::translate('century')."|2:|0|1|2|3|4|5|6|7|8|9|10|3:||".i18n::translate('Number of children')."|";
-			return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl={$chxl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average number of children per family')."\" title=\"".i18n::translate('Average number of children per family')."\" />";
+			return "<img src=\"http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Average number of children per family')."\" title=\"".i18n::translate('Average number of children per family')."\" />";
 		} else {
 			if ($sex=='M') {
 				$sql = "SELECT num, COUNT(*) AS total FROM "
@@ -3119,9 +3118,9 @@ class stats {
 			$family=Family::getInstance($row['family']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName())."</a></li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName())."</a></li>\n";
 				} else {
-					$top10[] = "<a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName())."</a>";
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName())."</a>";
 				}
 			}
 		}
@@ -3203,7 +3202,7 @@ class stats {
 			$chxl .= $n."|";
 		}
 		$chxl .= "3:||".i18n::translate('Total families')."|";
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:".($i-1).",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl={$chxl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Number of families without children')."\" title=\"".i18n::translate('Number of families without children')."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0:".($i-1).",3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF,ffffff00&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".i18n::translate('Number of families without children')."\" title=\"".i18n::translate('Number of families without children')."\" />";
 	}
 
 	function _topTenGrandFamilyQuery($type='list', $params=null) {
@@ -3241,9 +3240,9 @@ class stats {
 			$family=Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".i18n::translate('grandchildren')."]")."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".i18n::translate('grandchildren')."]")."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".encode_url($family->getLinkUrl())."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".i18n::translate('grandchildren')."]");
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".i18n::translate('grandchildren')."]");
 				}
 			}
 		}
@@ -3367,7 +3366,7 @@ class stats {
 		$chart_title .= i18n::translate('Other').' - '.($tot_indi-$tot);
 
 		$chl = join('|', $chl);
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=".rawurlencode($chl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
 
@@ -3530,7 +3529,7 @@ class stats {
 		$chart_title .= i18n::translate('Other').' - '.($tot_indi-$tot);
 
 		$chl = join('|', $chl);
-		return "<img src=\"".encode_url("http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}")."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=".rawurlencode($chl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
 ///////////////////////////////////////////////////////////////////////////////

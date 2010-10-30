@@ -455,9 +455,9 @@ class LifespanController extends BaseController {
 						$place = $val->getPlace();
 						$trans = translate_fact($fact);
 						if (isset($eventinformation[$evntwdth])) {
-							$eventinformation[$evntwdth] .= "<br />\n".$trans."<br />\n".strip_tags($date->Display(false, '', NULL, false))." ".$place;
+							$eventinformation[$evntwdth] .= "<br />".$trans."<br />".strip_tags($date->Display(false, '', NULL, false))." ".$place;
 						} else {
-							$eventinformation[$evntwdth]= $fact."-fact, ".$trans."<br />\n".strip_tags($date->Display(false, '', NULL, false))." ".$place;
+							$eventinformation[$evntwdth]= $fact."-fact, ".$trans."<br />".strip_tags($date->Display(false, '', NULL, false))." ".$place;
 						}
 					}
 				}
@@ -465,7 +465,7 @@ class LifespanController extends BaseController {
 				$bdate=$value->getEstimatedBirthDate();
 				$ddate=$value->getEstimatedDeathDate();
 				if ($width > ($minlength +110)) {
-					echo "\n<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
+					echo "<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
 					foreach($eventinformation as $evtwidth=>$val){
 						echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
 						$text = explode("-fact, ", $val);
@@ -475,11 +475,11 @@ class LifespanController extends BaseController {
 						echo "</b><span>", PrintReady($val), "</span></a></div>";
 					}
 					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
-					echo "\n\t<table><tr>\n\t\t<td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
+					echo "<table><tr><td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
 					echo abbreviate_fact('BIRT');
 					echo "</b><span>", $value->getSexImage(), $indiName, "<br/>", translate_fact('BIRT'), " ", strip_tags($bdate->Display(false)), " ", PrintReady($value->getBirthPlace()), "</span></a></td>" ,
-						"\n\t\t<td align=\"left\" width=\"100%\"><a href=\"", encode_url($value->getLinkUrl()), "\">", $value->getSexImage(), $indiName, ":  $lifespan </a></td>" ,
-						"\n\t\t<td width=\"15\">";
+						"<td align=\"left\" width=\"100%\"><a href=\"", $value->getHtmlUrl(), "\">", $value->getSexImage(), $indiName, ":  $lifespan </a></td>" ,
+						"<td width=\"15\">";
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
 							print "<a class=\"showit\" href=\"#\"><b>";
@@ -493,7 +493,7 @@ class LifespanController extends BaseController {
 
 				} else {
 					if ($width > $minlength +5) {
-						echo "\n<div style=\"text-align: left; position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
+						echo "<div style=\"text-align: left; position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
 						foreach($eventinformation as $evtwidth=>$val){
 							print "<div style=\"position:absolute; left:".$evtwidth." \"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
 							$text = explode("-fact,", $val);
@@ -503,12 +503,12 @@ class LifespanController extends BaseController {
 							print "</b><span>".PrintReady($val)."</span></a></div>";
 						}
 						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
-						print "\n\t<table dir=\"ltr\"><tr>\n\t\t<td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
+						print "<table dir=\"ltr\"><tr><td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
 						echo abbreviate_fact('BIRT');
 						if (!$birthReal) print "*";
 						print "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."</span></a></td>" .
-						"<td align=\"left\" width=\"100%\"><a href=\"".encode_url($value->getLinkUrl())."\">".$value->getSexImage().$indiName."</a></td>" .
-						"\n\t\t<td width=\"15\">";
+						"<td align=\"left\" width=\"100%\"><a href=\"".$value->getHtmlUrl()."\">".$value->getSexImage().$indiName."</a></td>" .
+						"<td width=\"15\">";
 						if ($value->isDead()) {
 							if ($deathReal || $value->isDead()) {
 								print "<a class=\"showit\" href=\"#\"><b>";
@@ -520,16 +520,16 @@ class LifespanController extends BaseController {
 						print "</td></tr></table>";
 						echo '</div>';
 					} else {
-						echo "\n<div style=\"text-align: left; position: absolute;top:", $Y, "px; left:", $startPos, "px;width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">" ;
+						echo "<div style=\"text-align: left; position: absolute;top:", $Y, "px; left:", $startPos, "px;width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">" ;
 
 						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
-						print "<a class=\"showit\" href=\"".encode_url($value->getLinkUrl())."\"><b>";
+						print "<a class=\"showit\" href=\"".$value->getHtmlUrl()."\"><b>";
 						echo abbreviate_fact('BIRT');
 						print "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."<br/>";
 						foreach($eventinformation as $evtwidth=>$val){
 							$text = explode("-fact,", $val);
 							$val = $text[1];
-							print $val."<br />\n";
+							print $val."<br />";
 						}
 						if ($value->isDead() && $deathReal) print translate_fact('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace());
 						print "</span></a>";
@@ -554,7 +554,7 @@ class LifespanController extends BaseController {
 			if (!$this->people[$i]->canDisplayDetails()) {
 				if ($this->people[$i]->canDisplayName()) {
 					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $this->people[$i]->getFullName()));
-					print "&nbsp;<a href=\"".encode_url($this->people[$i]->getLinkUrl())."\">".$indiName."</a>";
+					print "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$indiName."</a>";
 					print_privacy_error();
 					print "<br />";
 					$printed = true;

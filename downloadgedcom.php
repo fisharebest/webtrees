@@ -94,7 +94,7 @@ if ($action == "download" && $zip == "yes") {
 	else {
 		unlink(filename_decode($gedname));
 		if ($removeTempDir) rmdir(filename_decode($temppath));
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url("downloadbackup.php?fname={$zipname}", false));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH."downloadbackup.php?fname=".$zipname);
 		exit;
 	}
 	exit;

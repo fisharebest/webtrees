@@ -37,9 +37,13 @@ define('WT_CLASS_NOTE_PHP', '');
 require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 
 class Note extends GedcomRecord {
-	// Generate a URL that links to this record
-	public function getLinkUrl() {
-		return parent::_getLinkUrl('note.php?nid=');
+	// Generate a URL to this record, suitable for use in HTML
+	public function getHtmlUrl() {
+		return parent::_getLinkUrl('note.php?nid=', '&amp;');
+	}
+	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	public function getRawUrl() {
+		return parent::_getLinkUrl('note.php?nid=', '&');
 	}
 
 	// The 'name' of a note record is the first line.  This can be
@@ -59,4 +63,3 @@ class Note extends GedcomRecord {
 		return parent::_getAllNames('NOTE', '0 @'.WT_REGEX_XREF.'@');
 	}
 }
-?>

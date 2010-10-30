@@ -614,16 +614,16 @@ function build_indiv_map($indifacts, $famids) {
 	}
 
 	if ($i == 0) {
-		echo "<table class=\"facts_table\">\n";
+		echo "<table class=\"facts_table\">";
 		echo "<tr><td colspan=\"2\" class=\"facts_value\">".i18n::translate('No map data for this person');
 		//echo "<script language=\"JavaScript\" type=\"text/javascript\">tabstyles[5]='tab_cell_inactive_empty'; document.getElementById('pagetab5').className='tab_cell_inactive_empty';</script>";
-		echo "</td></tr>\n";
-		echo "<script type=\"text/javascript\">\n";
-		echo "function ResizeMap ()\n{\n}\n</script>\n";
+		echo "</td></tr>";
+		echo "<script type=\"text/javascript\">";
+		echo "function ResizeMap(){}</script>";
 		if (WT_USER_IS_ADMIN) {
-			echo "<tr><td align=\"center\" colspan=\"2\">\n";
+			echo "<tr><td align=\"center\" colspan=\"2\">";
 			echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
-			echo "</td></tr>\n";
+			echo "</td></tr>";
 		}
 	} else {
 		?>
@@ -632,8 +632,8 @@ function build_indiv_map($indifacts, $famids) {
 			var bounds = new GLatLngBounds();
 		<?php
 		foreach ($markers as $marker)
-			echo "bounds.extend(new GLatLng({$marker["lati"]}, {$marker["lng"]}));\n";
-		echo "SetBoundaries(bounds);\n";
+			echo "bounds.extend(new GLatLng({$marker["lati"]}, {$marker["lng"]}));";
+		echo "SetBoundaries(bounds);";
 
 		echo "var icon = new GIcon();";
 		echo "icon.image = \"http://maps.google.com/intl/pl_ALL/mapfiles/marker.png\";";
@@ -641,7 +641,7 @@ function build_indiv_map($indifacts, $famids) {
 		echo "icon.iconAnchor = new GPoint(10, 34);";
 		echo "icon.infoWindowAnchor = new GPoint(5, 1);";
 
-		echo "\nmarkers.clear();\n";
+		echo "markers.clear();";
 		$indexcounter = 0;
 		for ($j=1; $j<=$i; $j++) {
 			// Use @ because some installations give warnings (but not errors?) about UTF-8
@@ -656,27 +656,27 @@ function build_indiv_map($indifacts, $famids) {
 				if ($multimarker == 0) {        // Only one location with this long/lati combination
 					$markers[$j]["placed"] = "yes";
 					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) {
-						echo "var Marker{$j}_flag = new GIcon();\n";
-						echo " Marker{$j}_flag.image = \"modules/googlemap/images/marker_yellow.png\";\n";
-						echo " Marker{$j}_flag.shadow = \"modules/googlemap/images/shadow50.png\";\n";
-						echo " Marker{$j}_flag.iconSize = new GSize(20, 34);\n";
-						echo " Marker{$j}_flag.shadowSize = new GSize(37, 34);\n";
-						echo " Marker{$j}_flag.iconAnchor = new GPoint(10, 34);\n";
-						echo " Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-						echo "var Marker{$j} = new GMarker(new GLatLng(0, 0), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});\n";
+						echo "var Marker{$j}_flag = new GIcon();";
+						echo " Marker{$j}_flag.image = \"modules/googlemap/images/marker_yellow.png\";";
+						echo " Marker{$j}_flag.shadow = \"modules/googlemap/images/shadow50.png\";";
+						echo " Marker{$j}_flag.iconSize = new GSize(20, 34);";
+						echo " Marker{$j}_flag.shadowSize = new GSize(37, 34);";
+						echo " Marker{$j}_flag.iconAnchor = new GPoint(10, 34);";
+						echo " Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);";
+						echo "var Marker{$j} = new GMarker(new GLatLng(0, 0), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});";
 					} else if (empty($markers[$j]["icon"])) {
-						echo "var Marker{$j} = new GMarker(new GLatLng({$markers[$j]["lati"]}, {$markers[$j]["lng"]}), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
+						echo "var Marker{$j} = new GMarker(new GLatLng({$markers[$j]["lati"]}, {$markers[$j]["lng"]}), {icon:icon, title:\"", addslashes($tooltip), "\"});";
 					} else {
-						echo "var Marker{$j}_flag = new GIcon();\n";
-						echo "    Marker{$j}_flag.image = \"", $markers[$j]["icon"], "\";\n";
-						echo "    Marker{$j}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-						echo "    Marker{$j}_flag.iconSize = new GSize(25, 15);\n";
-						echo "    Marker{$j}_flag.shadowSize = new GSize(35, 45);\n";
-						echo "    Marker{$j}_flag.iconAnchor = new GPoint(1, 45);\n";
-						echo "    Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-						echo "var Marker{$j} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});\n";
+						echo "var Marker{$j}_flag = new GIcon();";
+						echo "    Marker{$j}_flag.image = \"", $markers[$j]["icon"], "\";";
+						echo "    Marker{$j}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";";
+						echo "    Marker{$j}_flag.iconSize = new GSize(25, 15);";
+						echo "    Marker{$j}_flag.shadowSize = new GSize(35, 45);";
+						echo "    Marker{$j}_flag.iconAnchor = new GPoint(1, 45);";
+						echo "    Marker{$j}_flag.infoWindowAnchor = new GPoint(5, 1);";
+						echo "var Marker{$j} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:Marker{$j}_flag, title:\"", addslashes($tooltip), "\"});";
 					}
-					echo "GEvent.addListener(Marker{$j}, \"click\", function() {\n";
+					echo "GEvent.addListener(Marker{$j}, \"click\", function() {";
 					echo "Marker{$j}.openInfoWindowHtml(\"<div class='iwstyle'>";
 					echo PrintReady($markers[$j]["fact"]);
 					if (!empty($markers[$j]['info']))
@@ -684,7 +684,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (!empty($markers[$j]["name"])) {
 						$person=Person::getInstance($markers[$j]['name']);
 						if ($person) {
-							echo ': <a href=\"', $person->getLinkUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
+							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
 						}
 					}
 					echo "<br />";
@@ -701,20 +701,20 @@ function build_indiv_map($indifacts, $famids) {
 						echo "<br /><br />", i18n::translate('This place has no coordinates');
 						if (WT_USER_IS_ADMIN)
 							echo '<br /><a href=\"module.php?mod=googlemap&mod_action=places&display=inactive\">', i18n::translate('Edit geographic location'), '</a>';
-						echo "\");\n";
+						echo "\");";
 					}
 					else if (!$GOOGLEMAP_COORD){
-						echo "\");\n";
+						echo "\");";
 					} else {
 						echo "<br /><br />";
 						if ($markers[$j]["lati"]>'0'){echo "N", str_replace('-', '', $markers[$j]["lati"]);}else{ echo str_replace('-', 'S', $markers[$j]["lati"]);}
 						echo ", ";
 						if ($markers[$j]["lng"]>'0'){echo "E", str_replace('-', '', $markers[$j]["lng"]);}else{ echo str_replace('-', 'W', $markers[$j]["lng"]);}
-						echo "\");\n";
+						echo "\");";
 					}
-					echo "});\n";
-					echo "markers.push(Marker{$j});\n";
-					echo "map.addOverlay(Marker{$j});\n";
+					echo "});";
+					echo "markers.push(Marker{$j});";
+					echo "map.addOverlay(Marker{$j});";
 					$markers[$j]["index"] = $indexcounter;
 					$markers[$j]["tabindex"] = 0;
 					$indexcounter = $indexcounter + 1;
@@ -723,18 +723,18 @@ function build_indiv_map($indifacts, $famids) {
 					$markersindex = 0;
 					$markers[$j]["placed"] = "yes";
 					if (empty($markers[$j]["icon"])) {
-						echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
+						echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:icon, title:\"", addslashes($tooltip), "\"});";
 					} else {
-						echo "var Marker{$j}_{$markersindex}_flag = new GIcon();\n";
-						echo "    Marker{$j}_{$markersindex}_flag.image = \"", $markers[$j]["icon"], "\";\n";
-						echo "    Marker{$j}_{$markersindex}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-						echo "    Marker{$j}_{$markersindex}_flag.iconSize = new GSize(25, 15);\n";
-						echo "    Marker{$j}_{$markersindex}_flag.shadowSize = new GSize(35, 45);\n";
-						echo "    Marker{$j}_{$markersindex}_flag.iconAnchor = new GPoint(1, 45);\n";
-						echo "    Marker{$j}_{$markersindex}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-						echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:Marker{$j}_{$markersindex}_flag, title:\"", addslashes($tooltip), "\"});\n";
+						echo "var Marker{$j}_{$markersindex}_flag = new GIcon();";
+						echo "    Marker{$j}_{$markersindex}_flag.image = \"", $markers[$j]["icon"], "\";";
+						echo "    Marker{$j}_{$markersindex}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";";
+						echo "    Marker{$j}_{$markersindex}_flag.iconSize = new GSize(25, 15);";
+						echo "    Marker{$j}_{$markersindex}_flag.shadowSize = new GSize(35, 45);";
+						echo "    Marker{$j}_{$markersindex}_flag.iconAnchor = new GPoint(1, 45);";
+						echo "    Marker{$j}_{$markersindex}_flag.infoWindowAnchor = new GPoint(5, 1);";
+						echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", $markers[$j]["lati"], ", ", $markers[$j]["lng"], "), {icon:Marker{$j}_{$markersindex}_flag, title:\"", addslashes($tooltip), "\"});";
 					}
-					echo "var Marker{$j}_{$markersindex}Info = [\n";
+					echo "var Marker{$j}_{$markersindex}Info = [";
 					$markers[$j]["index"] = $indexcounter;
 					$markers[$j]["tabindex"] = $tabcounter;
 					$tabcounter = $tabcounter + 1;
@@ -744,7 +744,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (!empty($markers[$j]["name"])) {
 						$person=Person::getInstance($markers[$j]['name']);
 						if ($person) {
-							echo ': <a href=\"', $person->getLinkUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
+							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
 						}
 					}
 					echo "<br />";
@@ -773,34 +773,33 @@ function build_indiv_map($indifacts, $famids) {
 							if ($tabcounter == 4) {
 								// Use @ because some installations give warnings (but not errors?) about UTF-8
 								$tooltip=@html_entity_decode(strip_tags(tool_tip_text($markers[$k])), ENT_QUOTES, 'UTF-8');
-								echo "\n";
-								echo "];\n";
-								echo "GEvent.addListener(Marker{$j}_{$markersindex}, \"click\", function(tabToSelect) {\n";
-								echo "if (tabToSelect>0) \n";
-								echo "Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info, {selectedTab: tabToSelect});\n";
-								echo "else Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info);\n";
-								echo "});\n";
-								echo "markers.push(Marker{$j}_{$markersindex});\n";
-								echo "map.addOverlay(Marker{$j}_{$markersindex});\n";
+								echo "];";
+								echo "GEvent.addListener(Marker{$j}_{$markersindex}, \"click\", function(tabToSelect) {";
+								echo "if (tabToSelect>0) ";
+								echo "Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info, {selectedTab: tabToSelect});";
+								echo "else Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info);";
+								echo "});";
+								echo "markers.push(Marker{$j}_{$markersindex});";
+								echo "map.addOverlay(Marker{$j}_{$markersindex});";
 								$indexcounter = $indexcounter + 1;
 								$tabcounter = 0;
 								$markersindex = $markersindex + 1;
 
 								if (empty($markers[$j]["icon"])) {
-									echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", ($markers[$j]["lati"]-(0.0015*$markersindex)), ", ", ($markers[$j]["lng"]+(0.0025*$markersindex)), "), {icon:icon, title:\"", addslashes($tooltip), "\"});\n";
+									echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", ($markers[$j]["lati"]-(0.0015*$markersindex)), ", ", ($markers[$j]["lng"]+(0.0025*$markersindex)), "), {icon:icon, title:\"", addslashes($tooltip), "\"});";
 								} else {
-									echo "var Marker{$j}_{$markersindex}_flag = new GIcon();\n";
-									echo "    Marker{$j}_{$markersindex}_flag.image = \"", $markers[$j]["icon"], "\";\n";
-									echo "    Marker{$j}_{$markersindex}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
-									echo "    Marker{$j}_{$markersindex}_flag.iconSize = new GSize(25, 15);\n";
-									echo "    Marker{$j}_{$markersindex}_flag.shadowSize = new GSize(35, 45);\n";
-									echo "    Marker{$j}_{$markersindex}_flag.iconAnchor = new GPoint(1, 45);\n";
-									echo "    Marker{$j}_{$markersindex}_flag.infoWindowAnchor = new GPoint(5, 1);\n";
-									echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", ($markers[$j]["lati"]-(0.0015*$markersindex)), ", ", ($markers[$j]["lng"]+(0.0025*$markersindex)), "), {icon:Marker{$j}_{$markersindex}_flag, title:\"", addslashes($tooltip), "\"});\n";
+									echo "var Marker{$j}_{$markersindex}_flag = new GIcon();";
+									echo "    Marker{$j}_{$markersindex}_flag.image = \"", $markers[$j]["icon"], "\";";
+									echo "    Marker{$j}_{$markersindex}_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";";
+									echo "    Marker{$j}_{$markersindex}_flag.iconSize = new GSize(25, 15);";
+									echo "    Marker{$j}_{$markersindex}_flag.shadowSize = new GSize(35, 45);";
+									echo "    Marker{$j}_{$markersindex}_flag.iconAnchor = new GPoint(1, 45);";
+									echo "    Marker{$j}_{$markersindex}_flag.infoWindowAnchor = new GPoint(5, 1);";
+									echo "var Marker{$j}_{$markersindex} = new GMarker(new GLatLng(", ($markers[$j]["lati"]-(0.0015*$markersindex)), ", ", ($markers[$j]["lng"]+(0.0025*$markersindex)), "), {icon:Marker{$j}_{$markersindex}_flag, title:\"", addslashes($tooltip), "\"});";
 								}
-								echo "var Marker{$j}_{$markersindex}Info = [\n";
+								echo "var Marker{$j}_{$markersindex}Info = [";
 							} else {
-								echo ", \n";
+								echo ", ";
 							}
 							$markers[$k]["index"] = $indexcounter;
 							$markers[$k]["tabindex"] = $tabcounter;
@@ -811,7 +810,7 @@ function build_indiv_map($indifacts, $famids) {
 							if (!empty($markers[$k]["name"])) {
 								$person=Person::getInstance($markers[$k]['name']);
 								if ($person) {
-									echo ': <a href=\"', $person->getLinkUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
+									echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
 								}
 							}
 							echo "<br />";
@@ -835,15 +834,14 @@ function build_indiv_map($indifacts, $famids) {
 							}
 						}
 					}
-					echo "\n";
-					echo "];\n";
-					echo "GEvent.addListener(Marker{$j}_{$markersindex}, \"click\", function(tabToSelect) {\n";
-					echo "if (tabToSelect>0) \n";
-					echo "Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info, {selectedTab: tabToSelect});\n";
-					echo "else Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info);\n";
-					echo "});\n";
-					echo "markers.push(Marker{$j}_{$markersindex});\n";
-					echo "map.addOverlay(Marker{$j}_{$markersindex});\n";
+					echo "];";
+					echo "GEvent.addListener(Marker{$j}_{$markersindex}, \"click\", function(tabToSelect) {";
+					echo "if (tabToSelect>0) ";
+					echo "Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info, {selectedTab: tabToSelect});";
+					echo "else Marker{$j}_{$markersindex}.openInfoWindowTabsHtml(Marker{$j}_{$markersindex}Info);";
+					echo "});";
+					echo "markers.push(Marker{$j}_{$markersindex});";
+					echo "map.addOverlay(Marker{$j}_{$markersindex});";
 					$indexcounter = $indexcounter + 1;
 				}
 			}
@@ -861,7 +859,7 @@ function build_indiv_map($indifacts, $famids) {
 			if (!empty($marker["name"])) {
 				$person=Person::getInstance($marker['name']);
 				if ($person) {
-					echo '<a href="', $person->getLinkUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : i18n::translate('Private'), '</a>';
+					echo '<a href="', $person->getHtmlUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : i18n::translate('Private'), '</a>';
 				}
 				echo '<br />';
 			}
@@ -878,7 +876,7 @@ function build_indiv_map($indifacts, $famids) {
 		}
 		echo "</table></div><br />";
 	}
-	echo "\n<br />";
+	echo "<br />";
 
 	return $i;
 }

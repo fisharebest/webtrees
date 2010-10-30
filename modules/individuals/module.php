@@ -191,7 +191,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$private_count = 0;
 		foreach($indis as $person) {
 			if ($person->canDisplayName()) {
-				$out .= '<li><a href="'.encode_url($person->getLinkUrl()).'">'.$person->getSexImage().' '.$person->getListName().' ';
+				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getBirthDeathYears(false,'');
 					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
@@ -226,7 +226,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		foreach ($rows as $row) {
 			$person=Person::getInstance($row);
 			if ($person->canDisplayName()) {
-				$out .= '<li><a href="'.encode_url($person->getLinkUrl()).'">'.$person->getSexImage().' '.$person->getListName().' ';
+				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getBirthDeathYears(false,'');
 					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');

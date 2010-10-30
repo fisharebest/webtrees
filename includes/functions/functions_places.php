@@ -289,7 +289,7 @@ function print_place_subfields($element_id) {
 
 	$cols=40;
 	print "&nbsp;<a href=\"javascript:;\" onclick=\"expand_layer('".$element_id."_div'); toggleplace('".$element_id."'); return false;\"><img id=\"".$element_id."_div_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" />&nbsp;</a>";
-	print "<br /><div id=\"".$element_id."_div\" style=\"display: none; border-width:thin; border-style:none; padding:0px\">\n";
+	print "<br /><div id=\"".$element_id."_div\" style=\"display: none; border-width:thin; border-style:none; padding:0px\">";
 	// subtags creation : _0 _1 _2 etc...
 	$icountry=-1;
 	$istate=-1;
@@ -326,28 +326,28 @@ function print_place_subfields($element_id) {
 		print " onblur=\"updatewholeplace('".$element_id."'); splitplace('".$element_id."');\" ";
 		print " onchange=\"updatewholeplace('".$element_id."'); splitplace('".$element_id."');\" ";
 		print " onmouseout=\"updatewholeplace('".$element_id."'); splitplace('".$element_id."');\" ";
-		if ($icountry<$i and $i<=$icity) print " acdropdown=\"true\" autocomplete_list=\"url:".encode_url("places/getdata.php?localized=".WT_LOCALE."&field={$subtagname}&s=")."\" autocomplete=\"off\" autocomplete_matchbegin=\"false\"";
-		print " />\n";
+		if ($icountry<$i and $i<=$icity) print " acdropdown=\"true\" autocomplete_list=\"url:places/getdata.php?localized=".WT_LOCALE."&amp;field={$subtagname}&amp;s=\" autocomplete=\"off\" autocomplete_matchbegin=\"false\"";
+		print " />";
 		// country selector
 		if ($i==$icountry) {
 			print " <img id=\"".$element_id."_PLAC_CTRY_flag\" name=\"".$element_id."_PLAC_CTRY_flag\" src=\"places/flags/blank.gif\" class=\"brightflag border1\" style=\"vertical-align:bottom\" alt=\"\" /> ";
 			print "<select id=\"".$subtagid."_select\" name=\"".$subtagname."_select\" class=\"submenuitem\"";
 			print " onchange=\"setPlaceCountry(this.value, '".$element_id."');\"";
-			print " >\n";
-			print "<option value=\"???\">??? : ".i18n::translate('???')."</option>\n";
+			print " >";
+			print "<option value=\"???\">??? : ".i18n::translate('???')."</option>";
 			foreach (array_keys($iso3166) as $alpha3) {
 				if ($alpha3!="???") {
 					$txt=$alpha3." : ".i18n::translate($alpha3);
 					if (utf8_strlen($txt)>32) $txt = utf8_substr($txt, 0, 32).i18n::translate('…');
-					print "<option value=\"".$alpha3."\">".$txt."</option>\n";
+					print "<option value=\"".$alpha3."\">".$txt."</option>";
 				}
 			}
-			print "</select>\n";
+			print "</select>";
 		} else {
 			print_specialchar_link($subtagid, false);
 		}
 		// clickable map
-		if ($i<$icountry or $i>$icounty) print "<br />\n";
+		if ($i<$icountry or $i>$icounty) print "<br />";
 		else print "<div id='".$subtagname."_div' name='".$subtagname."_div' style='overflow:hidden; height:32px; width:auto; border-width:thin; border-style:none;'><img name='".$subtagname."_img' src='".$WT_IMAGES["spacer"]."' usemap='usemap' border='0' alt='' title='' style='height:inherit; width:inherit;' /></div>";
 	}
 	print "</div>";
@@ -359,13 +359,13 @@ function print_place_subfields($element_id) {
  */
 function get_place_url($gedcom_place) {
 	global $GEDCOM;
-	$exp = explode(",", $gedcom_place);
+	$exp = explode(', ', $gedcom_place);
 	$level = count($exp);
-	$url = "placelist.php?action=show&level=".$level;
+	$url = "placelist.php?action=show&amp;level=".$level;
 	for ($i=0; $i<$level; $i++) {
-		$url .= "&parent[".$i."]=".trim($exp[$level-$i-1]);
+		$url .= "&amp;parent[".$i."]=".rawurlencode($exp[$level-$i-1]);
 	}
-	$url .= "&ged=".$GEDCOM;
+	$url .= "&amp;ged=".rawurlencode($GEDCOM);
 	return $url;
 }
 

@@ -90,10 +90,6 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return "";
 	}
 
-	public function getLinkUrl(&$person) {
-
-	}
-
 	// TODO: These functions aren't really part of the WT_Module_Tab interface, as
 	// this module no longer provides a tab.
 	public function hasTabContent() {
@@ -168,7 +164,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]);?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($people["husb"]->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($people['husb']->getLinkUrl())."');\">";
+						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						print PrintReady($people["husb"]->getFullName());
 						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						print "</a>";
@@ -200,7 +196,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($people["wife"]->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($people['wife']->getLinkUrl())."');\">";
+						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						print PrintReady($people["wife"]->getFullName());
 						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						print "</a>";
@@ -247,7 +243,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 								print "<span style=\"font: 12px tahoma, arial, helvetica, sans-serif;\">".PrintReady($child->getFullName())."</span>";
 								print "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">" . $BirthYr . " - " . $DeathYr . "</span>";
 							}else{
-								print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($child->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($child->getLinkUrl())."');\">";
+								print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								print PrintReady($child->getFullName());
 								print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 								print "</a>";
@@ -311,7 +307,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($people["husb"]->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($people['husb']->getLinkUrl())."');\">";
+						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						print PrintReady($people["husb"]->getFullName());
 						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						print "</a>";
@@ -351,7 +347,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php print $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($people["wife"]->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($people['wife']->getLinkUrl())."');\">";
+						print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						print PrintReady($people["wife"]->getFullName());
 						print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						print "</a>";
@@ -386,7 +382,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($child->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($child->getLinkUrl())."');\">";
+							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							print PrintReady($child->getFullName());
 							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 							print "</a>";
@@ -449,7 +445,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							print PrintReady($people["husb"]->getFullName());
 							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						}else{
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($people["husb"]->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($people['husb']->getLinkUrl())."');\">";
+							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 							print PrintReady($people["husb"]->getFullName());
 							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 							print "</a>";
@@ -486,7 +482,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							print PrintReady($people["wife"]->getFullName());
 							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 						}else{
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($people["wife"]->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($people['wife']->getLinkUrl())."');\">";
+							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 							print PrintReady($people["wife"]->getFullName());
 							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 							print "</a>";
@@ -521,7 +517,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td align="center" class="<?php print $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".encode_url($child->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($child->getLinkUrl())."');\">";
+							print "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							print PrintReady($child->getFullName());
 							print "<font size=\"1\"><br />" . $BirthYr . " - " . $DeathYr . "</font>";
 							print "</a>";
@@ -619,7 +615,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 								}else{
 									$title = $husb->getXref()." :".i18n::translate('Individual information');
 								}
-								$parentlinks .= "<a id=\"phusb\" href=\"".encode_url($husb->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($husb->getLinkUrl())."');\">";
+								$parentlinks .= "<a id=\"phusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
 								$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 								$parentlinks .= "</a>";
 								$parentlinks .= "<br />";
@@ -641,7 +637,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 								}else{
 									$title = $wife->getXref()." :".i18n::translate('Individual information');
 								}
-								$parentlinks .= "<a id=\"pwife\" href=\"".encode_url($wife->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($wife->getLinkUrl())."');\">";
+								$parentlinks .= "<a id=\"pwife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
 								$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 								$parentlinks .= "</a>";
 								$parentlinks .= "<br />";
@@ -677,7 +673,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 									}else{
 										$title = $husb->getXref()." :".i18n::translate('Individual information');
 									}
-									$parentlinks .= "<a id=\"shusb\" href=\"".encode_url($husb->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($husb->getLinkUrl())."');\">";
+									$parentlinks .= "<a id=\"shusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
 									$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 									$parentlinks .= "</a>";
 									$parentlinks .= "<br />";
@@ -701,7 +697,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 									}else{
 										$title = $wife->getXref()." :".i18n::translate('Individual information');
 									}
-									$parentlinks .= "<a id=\"swife\" href=\"".encode_url($wife->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($wife->getLinkUrl())."');\">";
+									$parentlinks .= "<a id=\"swife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
 									$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 									$parentlinks .= "</a>";
 									$parentlinks .= "<br />";
@@ -732,7 +728,7 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 								}else{
 									$title = $spouse->getXref()." :".i18n::translate('Individual information');
 								}
-								$spouselinks .= "<a id=\"spouse\" href=\"".encode_url($spouse->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($spouse->getLinkUrl())."');\">";
+								$spouselinks .= "<a id=\"spouse\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
 								$spouselinks .= "&nbsp;".PrintReady($spouse->getFullName());
 								$spouselinks .= "</a>";
 								$spouselinks .= "<br />";
@@ -748,18 +744,18 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 							if ($child) {
 								if ($hasChildren == 'No') {
 									$hasChildren = 'Yes';
-									$spouselinks .= "\n<ul class=\"clist ".$TEXT_DIRECTION."\">";
+									$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
 								}
 								$persons="Yes";
 								$title = i18n::translate('Individual information').": ".$child->getXref();
-								$spouselinks .= "\n<li id=\"flyout3\">";
-								$spouselinks .= "<a href=\"".encode_url($child->getLinkUrl())."\" onclick=\"return familyNavLoad('".encode_url($child->getLinkUrl())."');\">";
+								$spouselinks .= "<li id=\"flyout3\">";
+								$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								$spouselinks .= PrintReady($child->getFullName());
 								$spouselinks .= "</a>";
 							}
 						}
 						if ($hasChildren == 'Yes') {
-							$spouselinks .= "\n</ul>";
+							$spouselinks .= "</ul>";
 						} else {
 							$spouselinks .= "<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".i18n::translate('This family remained childless')."<br />";
 						}
@@ -767,17 +763,16 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 				}
 
 				if ($persons != "Yes") {
-					$spouselinks  .= "&nbsp;(".i18n::translate('none').")\n\t\t";
+					$spouselinks  .= "&nbsp;(".i18n::translate('none').")";
 				}
 				if ($person_parent != "Yes") {
-					$parentlinks .= "&nbsp;(".i18n::translate_c('unknown family', 'unknown').")\n\t\t";
+					$parentlinks .= "&nbsp;(".i18n::translate_c('unknown family', 'unknown').")";
 				}
 				if ($person_step != "Yes") {
-					$step_parentlinks .= "&nbsp;(".i18n::translate_c('unknown family', 'unknown').")\n\t\t";
+					$step_parentlinks .= "&nbsp;(".i18n::translate_c('unknown family', 'unknown').")";
 				}
 			}
 		}
 	}
 }
-
 }

@@ -110,23 +110,6 @@ function safe_REQUEST($arr, $var, $regex=WT_REGEX_NOSCRIPT, $default=null) {
 	}
 }
 
-function encode_url($url, $entities=true) {
-	$url = decode_url($url, $entities); // Make sure we don't do any double conversions
-	$url = str_replace(array(' ', '+', '@#', '"', "'"), array('%20', '%2b', '@%23', '%22', '%27'), $url);
-	if ($entities) {
-		$url = htmlspecialchars($url);
-	}
-	return $url;
-}
-
-function decode_url($url, $entities=true) {
-	if ($entities) {
-		$url = html_entity_decode($url, ENT_COMPAT, 'UTF-8');
-	}
-	$url = rawurldecode($url); // GEDCOM names can legitimately contain " " and "+"
-	return $url;
-}
-
 function preg_match_recursive($regex, $var) {
 	if (is_scalar($var)) {
 		return preg_match($regex, $var);
@@ -315,7 +298,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 		if (stristr($errstr, "by reference")==true) {
 			return;
 		}
-		$fmt_msg="\n<br />ERROR {$errno}: {$errstr}<br />\n";
+		$fmt_msg="<br />ERROR {$errno}: {$errstr}<br />";
 		$log_msg="ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
 		// Possibly calling it generates an error, which causes infinite recursion??
@@ -341,7 +324,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 					$fmt_msg.=" in function <b>".$backtrace[$i+1]['function']."</b>";
 					$log_msg.=" in function ".$backtrace[$i+1]['function'];
 				}
-				$fmt_msg.="<br />\n";
+				$fmt_msg.="<br />";
 			}
 		}
 		echo $fmt_msg;
@@ -366,7 +349,6 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
  */
 function get_first_tag($level, $tag, $gedrec, $num=1) {
 	$temp = get_sub_record($level, $level." ".$tag, $gedrec, $num)."\n";
-	$temp = str_replace("\r\n", "\n", $temp);
 	$length = strpos($temp, "\n");
 	if ($length===false) {
 		$length = strlen($temp);
@@ -405,7 +387,7 @@ function get_sub_record($level, $tag, $gedrec, $num=1) {
 	$pos1=0;
 	$subrec = "";
 	$tag = trim($tag);
-	$searchTarget = "~[\r\n]".$tag."[\s]~";
+	$searchTarget = "~[\n]".$tag."[\s]~";
 	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
 	if ($ct==0) {
 		$tag = preg_replace('/(\w+)/', "_$1", $tag);
@@ -713,7 +695,7 @@ function breakConts($newline) {
 	}
 
 	$newged = "";
-	$newlines = preg_split("/\r?\n/", rtrim(stripLRMRLM($newline)));
+	$newlines = preg_split("/\n/", rtrim(stripLRMRLM($newline)));
 	for ($k=0; $k<count($newlines); $k++) {
 		if ($k>0) {
 			$newlines[$k] = "{$level} CONT ".$newlines[$k];
@@ -3075,10 +3057,10 @@ function get_query_string() {
 		foreach ($_GET as $key => $value) {
 			if ($key != "view") {
 				if (!is_array($value)) {
-					$qstring .= "{$key}={$value}&";
+					$qstring .= "&amp;{$key}={$value}";
 				} else {
 					foreach ($value as $k=>$v) {
-						$qstring .= "{$key}[{$k}]={$v}&";
+						$qstring .= "&amp;{$key}[{$k}]={$v}";
 					}
 				}
 			}
@@ -3088,11 +3070,11 @@ function get_query_string() {
 			foreach ($_POST as $key => $value) {
 				if ($key != "view") {
 					if (!is_array($value)) {
-						$qstring .= "{$key}={$value}&";
+						$qstring .= "&amp;{$key}={$value}";
 					} else {
 						foreach ($value as $k=>$v) {
 							if (!is_array($v)) {
-								$qstring .= "{$key}[{$k}]={$v}&";
+								$qstring .= "&amp;{$key}[{$k}]={$v}";
 							}
 						}
 					}
@@ -3100,8 +3082,8 @@ function get_query_string() {
 			}
 		}
 	}
-	$qstring = rtrim($qstring, "&"); // Remove trailing "&"
-	return encode_url($qstring);
+	$qstring = substr($qstring, 5); // Remove leading "&amp;"
+	return $qstring;
 }
 
 //This function works with a specified generation limit.  It will completely fill
@@ -3363,28 +3345,28 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 			switch ($type) {
 			case 'url_flv':
-				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = 'js/jw_player/flvVideo.php?flvVideo='.rawurlencode($fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'local_flv':
-				$url = encode_url('js/jw_player/flvVideo.php?flvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = 'js/jw_player/flvVideo.php?flvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_wmv':
-				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.($fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = 'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode($fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'local_audio':
 			case 'local_wmv':
-				$url = encode_url('js/jw_player/wmvVideo.php?wmvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = 'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_image':
 			case 'local_image':
-				$url = encode_url($fileName) . "\" rel=\"clearbox[general]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = $fileName . "\" rel=\"clearbox[general]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_picasa':
 			case 'url_page':
 			case 'url_other':
 			case 'local_page':
 			// case 'local_other':
-				$url = encode_url($fileName) . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = $fileName . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_streetview':
 				if (WT_SCRIPT_NAME != "media.php") {
@@ -3397,32 +3379,32 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 		// Lightbox is not installed or Lightbox is not appropriate for this media type
 		switch ($type) {
 		case 'url_flv':
-			$url = "javascript:;\" onclick=\" var winflv = window.open('".encode_url('js/jw_player/flvVideo.php?flvVideo='.($fileName)) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
+			$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.rawurlencode($fileName) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
 			break 2;
 		case 'local_flv':
-			$url = "javascript:;\" onclick=\" var winflv = window.open('".encode_url('js/jw_player/flvVideo.php?flvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
+			$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
 			break 2;
 		case 'url_wmv':
-			$url = "javascript:;\" onclick=\" var winwmv = window.open('".encode_url('js/jw_player/wmvVideo.php?wmvVideo='.($fileName)) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
+			$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode($fileName) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
 			break 2;
 		case 'local_wmv':
 		case 'local_audio':
-			$url = "javascript:;\" onclick=\" var winwmv = window.open('".encode_url('js/jw_player/wmvVideo.php?wmvVideo='.(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
+			$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName) . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
 			break 2;
 		case 'url_image':
 			$imgsize = findImageSize($fileName);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
-			$url = "javascript:;\" onclick=\"var winimg = window.open('".encode_url($fileName)."', 'winimg', 'width=".$imgwidth.", height=".$imgheight.", left=200, top=200'); if (window.focus) {winimg.focus();}";
+			$url = "javascript:;\" onclick=\"var winimg = window.open('".$fileName."', 'winimg', 'width=".$imgwidth.", height=".$imgheight.", left=200, top=200'); if (window.focus) {winimg.focus();}";
 			break 2;
 		case 'url_picasa':
 		case 'url_page':
 		case 'url_other':
 		case 'local_other';
-			$url = "javascript:;\" onclick=\"var winurl = window.open('".encode_url($fileName)."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
+			$url = "javascript:;\" onclick=\"var winurl = window.open('".$fileName."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 			break 2;
 		case 'local_page':
-			$url = "javascript:;\" onclick=\"var winurl = window.open('".encode_url(WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName)."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
+			$url = "javascript:;\" onclick=\"var winurl = window.open('".WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 			break 2;
 		case 'url_streetview':
 			echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $fileName, '&amp;output=svembed"></iframe>';
@@ -3430,7 +3412,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			break 2;
 		}
 		if ($USE_MEDIA_VIEWER && $obeyViewerOption) {
-			$url = encode_url('mediaviewer.php?mid='.$mid);
+			$url = 'mediaviewer.php?mid='.$mid;
 		} else {
 			$imgsize = findImageSize($fileName);
 			$imgwidth = $imgsize[0]+40;

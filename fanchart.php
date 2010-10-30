@@ -278,7 +278,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$ty=round($cy - $mr * -sin($rad));
 				$imagemap .= "$tx, $ty";
 				// add action url
-				$tempURL = $person->getLinkUrl();
+				$tempURL = $person->getHtmlUrl();
 				$imagemap .= "\" href=\"$tempURL\" ";
 				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}";
 				$count=0;
@@ -294,12 +294,12 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-					echo "<br /><a href=\"".encode_url("relationship.php?pid1=".WT_USER_GEDCOM_ID."&pid2={$pid}&ged={$GEDCOM}")."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
+					echo "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged={$GEDCOM}"."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
 				}
 				echo "<br /><a href=\"descendancy.php?pid=$pid\" >".i18n::translate('Descendancy chart')."</a>";
 				echo "<br /><a href=\"ancestry.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
 				echo "<br /><a href=\"compact.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact Chart')."</a>";
-				echo "<br /><a href=\"".encode_url($tempURL)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
+				echo "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
 				echo "<br /><a href=\"hourglass.php?pid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
 				echo "<br /><a href=\"treenav.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
 				if ($sosa>=1) {
@@ -322,14 +322,14 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 									else $spid=$parents["WIFE"];
 									$person=Person::getInstance($spid);
 									if ($person) {
-										echo '<br /><a href="', $person->getLinkUrl(), '" class="name1">', $person->getFullName(), '</a>';
+										echo '<br /><a href="', $person->getHtmlUrl(), '" class="name1">', $person->getFullName(), '</a>';
 									}
 								}
 								$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
 								for ($i=0; $i<$num; $i++) {
 									$person=Person::getInstance($smatch[$i][1]);
 									if ($person) {
-										echo '<br />&nbsp;&nbsp;<a href="', $person->getLinkUrl(), '" class="name1">&lt; ', $person->getFullName(), '</a>';
+										echo '<br />&nbsp;&nbsp;<a href="', $person->getHtmlUrl(), '" class="name1">&lt; ', $person->getFullName(), '</a>';
 									}
 								}
 							}
@@ -346,7 +346,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 									if ($cpid!=$pid) {
 										$person=Person::getInstance($cpid);
 										if ($person) {
-											echo '<br />&nbsp;&nbsp;<a href="', $person->getLinkUrl(), '" class="name1"> ', $person->getFullName(), '</a>';
+											echo '<br />&nbsp;&nbsp;<a href="', $person->getHtmlUrl(), '" class="name1"> ', $person->getFullName(), '</a>';
 										}
 									}
 								}

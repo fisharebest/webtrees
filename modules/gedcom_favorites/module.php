@@ -183,14 +183,14 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center $TEXT_DIRECTION\">";
 			foreach($userfavs as $key=>$favorite) {
 				if (isset($favorite["id"])) $key=$favorite["id"];
-				$removeFavourite = "<a class=\"font9\" href=\"".encode_url("index.php?ctype=$ctype&action=deletefav&fv_id={$key}")."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".i18n::translate('Remove')."</a><br />\n";
+				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype=$ctype&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".i18n::translate('Remove')."</a><br />";
 				$content .= "<tr><td>";
 				if ($favorite["type"]=="URL") {
-					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">\n";
+					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">";
 					if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 					$content .= "<a href=\"".$favorite["url"]."\"><b>".PrintReady($favorite["title"])."</b></a>";
 					$content .= "<br />".PrintReady($favorite["note"]);
-					$content .= "</div>\n";
+					$content .= "</div>";
 				} else {
 					$record=GedcomRecord::getInstance($favorite['gid']);
 					if ($record && $record->canDisplayDetails()) {
@@ -200,13 +200,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							if (strpos($indirec, "\n1 SEX F")!==false) $content .= "F";
 							elseif (strpos($indirec, "\n1 SEX M")!==false) $content .= "";
 							else $content .= "NN";
-							$content .= "\">\n";
+							$content .= "\">";
 							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 							ob_start();
 							print_pedigree_person($favorite["gid"], $style, 1, $key);
 							$content .= ob_get_clean();
 							$content .= PrintReady($favorite["note"]);
-							$content .= "</div>\n";
+							$content .= "</div>";
 						} else {
 							$record=GedcomRecord::getInstance($favorite['gid']);
 							$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box\">";
@@ -221,9 +221,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 						}
 					}
 				}
-				$content .= "</td></tr>\n";
+				$content .= "</td></tr>";
 			}
-			$content .= "</table>\n";
+			$content .= "</table>";
 		}
 		if (WT_USER_GEDCOM_ADMIN) {
 		$content .= '
@@ -240,33 +240,33 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$uniqueID = floor(microtime() * 1000000);
 			$content .= "<b><a href=\"javascript://".i18n::translate('Add a new favorite')." \" onclick=\"expand_layer('add_ged_fav{$uniqueID}'); return false;\"><img id=\"add_ged_fav_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"\" />&nbsp;".i18n::translate('Add a new favorite')."</a></b>";
 			$content .= help_link('index_add_favorites');
-			$content .= "<br /><div id=\"add_ged_fav{$uniqueID}\" style=\"display: none;\">\n";
-			$content .= "<form name=\"addgfavform\" method=\"get\" action=\"index.php\">\n";
-			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\" />\n";
-			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />\n";
-			$content .= "<input type=\"hidden\" name=\"favtype\" value=\"gedcom\" />\n";
-			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\" />\n";
+			$content .= "<br /><div id=\"add_ged_fav{$uniqueID}\" style=\"display: none;\">";
+			$content .= "<form name=\"addgfavform\" method=\"get\" action=\"index.php\">";
+			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\" />";
+			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />";
+			$content .= "<input type=\"hidden\" name=\"favtype\" value=\"gedcom\" />";
+			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\" />";
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center {$TEXT_DIRECTION}\">";
 			$content .= "<tr><td>".i18n::translate('Enter a Person, Family, or Source ID')." <br />";
 			$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\" />";
 
-			$content .= print_findindi_link("gid{$uniqueID}",'',true)."\n";
-			$content .= print_findfamily_link("gid{$uniqueID}",'',true)."\n";
-			$content .= print_findsource_link("gid{$uniqueID}",'',true)."\n";
-			$content .= print_findrepository_link("gid{$uniqueID}",'',true)."\n";
-			$content .= print_findnote_link("gid{$uniqueID}",'',true)."\n";
-			$content .= print_findmedia_link("gid{$uniqueID}",'1','',true)."\n";
+			$content .= print_findindi_link("gid{$uniqueID}",'',true);
+			$content .= print_findfamily_link("gid{$uniqueID}",'',true);
+			$content .= print_findsource_link("gid{$uniqueID}",'',true);
+			$content .= print_findrepository_link("gid{$uniqueID}",'',true);
+			$content .= print_findnote_link("gid{$uniqueID}",'',true);
+			$content .= print_findmedia_link("gid{$uniqueID}",'1','',true);
 
-			$content .= "\n<br />".i18n::translate('OR<br />Enter a URL and a title');
-			$content .= "\n<table><tr><td>".translate_fact('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\" /></td></tr>";
-			$content .= "\n<tr><td>".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\" /></td></tr></table>";
-			if ($block) $content .= "\n</td></tr><tr><td><br />";
-			else $content .= "\n</td><td>";
-			$content .= "\n".i18n::translate('Enter an optional note about this favorite');
-			$content .= "\n<br /><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
-			$content .= "</td></tr></table>\n";
-			$content .= "\n<br /><input type=\"submit\" value=\"".i18n::translate('Add')."\" style=\"font-size: 8pt; \" />";
-			$content .= "\n</form></div>\n";
+			$content .= "<br />".i18n::translate('OR<br />Enter a URL and a title');
+			$content .= "<table><tr><td>".translate_fact('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\" /></td></tr>";
+			$content .= "<tr><td>".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\" /></td></tr></table>";
+			if ($block) $content .= "</td></tr><tr><td><br />";
+			else $content .= "</td><td>";
+			$content .= "".i18n::translate('Enter an optional note about this favorite');
+			$content .= "<br /><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
+			$content .= "</td></tr></table>";
+			$content .= "<br /><input type=\"submit\" value=\"".i18n::translate('Add')."\" style=\"font-size: 8pt; \" />";
+			$content .= "</form></div>";
 		}
 
 		if ($template) {

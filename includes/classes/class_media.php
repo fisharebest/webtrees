@@ -250,9 +250,13 @@ class Media extends GedcomRecord {
 		$this->filepropset = true;
 	}
 
-	// Generate a URL that links to this record
-	public function getLinkUrl() {
-		return parent::_getLinkUrl('mediaviewer.php?mid=');
+	// Generate a URL to this record, suitable for use in HTML
+	public function getHtmlUrl() {
+		return parent::_getLinkUrl('mediaviewer.php?mid=', '&amp;');
+	}
+	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	public function getRawUrl() {
+		return parent::_getLinkUrl('mediaviewer.php?mid=', '&');
 	}
 
 	/**
@@ -306,6 +310,4 @@ class Media extends GedcomRecord {
 		print_media_links('1 OBJE @'.$this->getXref().'@', 1, $this->getXref());
 		return ob_get_clean();
 	}
-
 }
-?>

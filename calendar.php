@@ -140,7 +140,7 @@ for($d=1; $d<=$days_in_month; $d++) {
 	if ($d==$cal_date->d)
 		echo "<span class=\"error\">{$d_fmt}</span>";
 	else
-		echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$d_fmt}</a>";
+		echo "<a href=\"calendar.php?cal={$cal}&amp;day={$d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}"."\">{$d_fmt}</a>";
 	echo ' | ';
 }
 $tmp=new GedcomDate($today->Format('%@ %A %O %E')); // Need a GedcomDate object to get localisation
@@ -154,18 +154,18 @@ for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
 	if ($n==$cal_date->m)
 		$month_name="<span class=\"error\">{$month_name}</span>";
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$m}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$month_name}</a>";
+	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$m}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$month_name}</a>";
 	echo ' | ';
 }
-echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day=".min($cal_date->d, $today->DaysInMonth())."&month={$today_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
+echo "<a href=\"calendar.php?cal={$cal}&amp;day=".min($cal_date->d, $today->DaysInMonth())."&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
 // Year selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo i18n::translate('Year'), help_link('annivers_year_select'), '</td>';
 echo "<td class=\"optionbox vmiddle\">";
-echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year=".($cal_date->y==1?-1:$cal_date->y-1)."&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">-1</a>";
+echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==1?-1:$cal_date->y-1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">-1</a>";
 echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"7\" /> ";
-echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year=".($cal_date->y==-1?1:$cal_date->y+1)."&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">+1</a>";
-echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$today->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\"><b>".$today->Format('%Y')."</b></a>";
+echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
+echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
 echo "</td> ";
 // Filtering options
 echo "<td class=\"descriptionbox vmiddle\">";
@@ -193,20 +193,20 @@ if ($filtersx=="") {
 	echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('All People'));
 	echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('All People')), ' | ';
 } else {
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=&action={$action}")."\">";
+	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=&amp;action={$action}\">";
 	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('All People'));
 	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('All People')), '</a> | ';
 }
 if ($filtersx=="M") {
 	echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('Males')), ' | ';
 } else {
-	echo "<a href=\"", encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=M&action={$action}"), "\">";
+	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=M&amp;action={$action}\">";
 	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), '</a> | ';
 }
 if ($filtersx=="F")
 	echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('Females')), ' | ';
 else {
-	echo "<a href=\"", encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx=F&action={$action}"), "\">";
+	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=F&amp;action={$action}\">";
 	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), '</a>';
 }
 echo "</td>";
@@ -267,17 +267,17 @@ echo '<tr><td class="topbottombar" colspan="4">';
 if ($action=='today') {
 	echo "<span class=\"error\">", i18n::translate('View Day'), "</span>";
 } else {
-	echo "<a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=today")."\">", i18n::translate('View Day'), "</a>";
+	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=today\">", i18n::translate('View Day'), "</a>";
 }
 if ($action=='calendar') {
 	echo " | <span class=\"error\">", i18n::translate('View Month'), "</span>";
 } else {
-	echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=calendar")."\">", i18n::translate('View Month'), "</a>";
+	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=calendar\">", i18n::translate('View Month'), "</a>";
 }
 if ($action=='year') {
 	echo " | <span class=\"error\">", i18n::translate('View Year'), "</span>";
 } else {
-	echo " | <a href=\"".encode_url("calendar.php?cal={$cal}&day={$cal_date->d}&month={$cal_month}&year={$cal_date->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action=year")."\">", i18n::translate('View Year'), "</a>";
+	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", i18n::translate('View Year'), "</a>";
 }
 echo help_link('day_month');
 echo '</td><td class="topbottombar" colspan="4">';
@@ -299,12 +299,12 @@ foreach (array(
 		} else {
 			$newcalesc=urlencode($tmp->CALENDAR_ESCAPE());
 			$tmpmonth=$tmp->FormatGedcomMonth();
-			echo "<a href=\"".encode_url("calendar.php?cal={$newcalesc}&day={$tmp->d}&month={$tmpmonth}&year={$tmp->y}&filterev={$filterev}&filterof={$filterof}&filtersx={$filtersx}&action={$action}")."\">{$cal_name}</a>";
+			echo "<a href=\"calendar.php?cal={$newcalesc}&amp;day={$tmp->d}&amp;month={$tmpmonth}&amp;year={$tmp->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$cal_name}</a>";
 		}
 	}
 }
 echo "</td></tr>";
-echo "</table>\n</form>\n";
+echo "</table></form>";
 
 // Convert event filter option to a list of gedcom event codes
 if ($filterev=='all') {
@@ -570,7 +570,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 
 	foreach ($list as $id=>$facts) {
 		$tmp=GedcomRecord::GetInstance($id);
-		echo "{$tag1}<a href=\"".encode_url($tmp->getLinkUrl())."\">".PrintReady($tmp->getFullName())."</a>&nbsp;";
+		echo $tag1, '<a href="', $tmp->getHtmlUrl(), '">', PrintReady($tmp->getFullName()), '</a> ';
 		if ($show_sex_symbols && $tmp->getType()=='INDI')
 			switch ($tmp->getSex()) {
 			case 'M':
@@ -585,8 +585,6 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 				echo Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate_c('unknown gender', 'Unknown'));
 				break;
 			}
-			echo "<div class=\"indent\">".$facts."</div>{$tag2}";
+			echo '<div class="indent">', $facts, '</div>', $tag2;
 	}
 }
-
-?>

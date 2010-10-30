@@ -6,7 +6,7 @@
  * Copyright (C) 2010 webtrees development team.
  *
  * Derived from PhpGedView
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2008 PGV Development Team. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,12 +15,12 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  * @package webtrees
  * @version $Id$
@@ -44,37 +44,31 @@ $f2 = 0;
 /* @var $event Event */
 foreach($subfacts as $indexval => $event) {
 	if ($event->canShow()) {
-			if ($f2>0) print "<br />\n";
-			$f2++;
-			// handle ASSO record
+		if ($f2>0) print "<br />";
+		$f2++;
+		// handle ASSO record
 		if ($event->getTag()=='ASSO') {
 			print_asso_rela_record($pid, $event->getGedComRecord(), false);
-				continue;
-			}
+			continue;
+		}
 		$fact = $event->getTag();
 		$details = $event->getDetail();
-		print "<span class=\"details_label\">";
-		print $event->getLabel();
-		print "</span> ";
+		echo '<span class="details_label">', $event->getLabel(), '</span> ';
 		$details = $event->getDetail();
 		if ($details!="Y" && $details!="N") print PrintReady($details);
 		echo format_fact_date($event, false, false, $fact, $pid, $person->getGedcomRecord());
-			//-- print spouse name for marriage events
+		//-- print spouse name for marriage events
 		$famid = $event->getFamilyId();
 		$spouseid = $event->getSpouseId();
 		if (!empty($spouseid)) {
 			$spouse = Person::getInstance($spouseid);
 			if (!is_null($spouse)) {
-				print " <a href=\"".encode_url("individual.php?pid={$spouseid}&ged=$GEDCOM")."\">";
-				print PrintReady($spouse->getFullName());
-				print "</a>";
-				print " - ";
-				}
+				echo ' <a href="', $spouse->getHtmlUrl().'">', PrintReady($spouse->getFullName()), '</a> - ';
 			}
-		if (!empty($famid)) {
-				print "<a href=\"family.php?famid=$famid\">[".i18n::translate('View Family')."]</a>\n";
-			}
-		echo format_fact_place($event, true, true);
 		}
+		if (!empty($famid)) {
+			echo "<a href=\"family.php?famid=$famid\">[".i18n::translate('View Family')."]</a>";
+		}
+		echo format_fact_place($event, true, true);
 	}
-?>
+}

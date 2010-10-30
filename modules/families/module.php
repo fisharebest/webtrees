@@ -190,7 +190,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$private_count = 0;
 		foreach($families as $family) {
 			if ($family->canDisplayName()) {
-				$out .= '<li><a href="'.encode_url($family->getLinkUrl()).'">'.$family->getFullName().' ';
+				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {
 					$bd = $family->getMarriageYear();
 					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
@@ -244,7 +244,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		foreach ($rows as $row) {
 			$family=Family::getInstance($row);
 			if ($family->canDisplayName()) {
-				$out .= '<li><a href="'.encode_url($family->getLinkUrl()).'">'.$family->getFullName().' ';
+				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {
 					$bd = $family->getMarriageYear();
 					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');

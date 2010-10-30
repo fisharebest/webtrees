@@ -371,9 +371,13 @@ class Family extends GedcomRecord {
 		return array();
 	}
 
-	// Generate a URL that links to this record
-	public function getLinkUrl() {
-		return parent::_getLinkUrl('family.php?famid=');
+	// Generate a URL to this record, suitable for use in HTML
+	public function getHtmlUrl() {
+		return parent::_getLinkUrl('family.php?famid=', '&amp;');
+	}
+	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	public function getRawUrl() {
+		return parent::_getLinkUrl('family.php?famid=', '&');
 	}
 
 	// Get an array of structures containing all the names in the record

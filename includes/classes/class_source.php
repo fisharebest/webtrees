@@ -45,9 +45,13 @@ class Source extends GedcomRecord {
 		return get_gedcom_value('AUTH', 1, $this->gedrec, '', false);
 	}
 
-	// Generate a URL that links to this record
-	public function getLinkUrl() {
-		return parent::_getLinkUrl('source.php?sid=');
+	// Generate a URL to this record, suitable for use in HTML
+	public function getHtmlUrl() {
+		return parent::_getLinkUrl('source.php?sid=', '&amp;');
+	}
+	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	public function getRawUrl() {
+		return parent::_getLinkUrl('source.php?sid=', '&');
 	}
 
 	// Get an array of structures containing all the names in the record
@@ -55,4 +59,3 @@ class Source extends GedcomRecord {
 		return parent::_getAllNames('TITL', 1);
 	}
 }
-?>

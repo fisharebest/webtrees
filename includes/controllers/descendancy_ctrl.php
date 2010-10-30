@@ -110,7 +110,7 @@ class DescendancyController extends BaseController {
 	//-- if the person is from another gedcom then forward to the correct site
 	/*
 	if ($this->indi->isRemote()) {
-		header('Location: '.encode_url(decode_url($this->indi->getLinkUrl(), false)));
+		header('Location: '.$this->indi->getRawUrl());
 		exit;
 	}
 	*/
@@ -152,10 +152,10 @@ function print_child_descendancy(&$person, $depth) {
 	//print_r($person);
 	print "<li>";
 	print "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-	if ($depth==$this->generations) print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>\n";
+	if ($depth==$this->generations) print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>";
 	else {
 		print "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
-		print "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>\n";
+		print "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>";
 	}
 	print_pedigree_person($person->getXref(), 1, 0, $personcount);
 	print "</td>";
@@ -170,7 +170,7 @@ function print_child_descendancy(&$person, $depth) {
 			$parid=$parents["HUSB"];
 			if ($parid=="") $parid=$parents["WIFE"];
 			if ($parid!="") {
-				print_url_arrow($parid.$personcount.$person->getXref(), encode_url("?pid={$parid}&generations={$this->generations}&chart_style={$this->chart_style}&show_full={$this->show_full}&box_width={$this->box_width}"), i18n::translate('Start at parents'), 2);
+				print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", i18n::translate('Start at parents'), 2);
 				$personcount++;
 			}
 		}
@@ -194,7 +194,7 @@ function print_child_descendancy(&$person, $depth) {
 	print "</span>";
 	print "</td></tr>";
 	print "</table>";
-	print "</li>\r\n";
+	print "</li>";
 
 	// loop for each spouse
 	$sfam = $person->getSpouseFamilies();
@@ -233,7 +233,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		print "<a href=\"#\" onclick=\"expand_layer('".$famid.$personcount."'); return false;\" class=\"top\"><img id=\"".$famid.$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
-			echo ' <a href="', encode_url($family->getLinkUrl()), '" class="details1">';
+			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
 			$marriage->print_simple_fact();
 			echo '</a>';
 		}
@@ -256,7 +256,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 				$parid=$parents["HUSB"];
 				if ($parid=="") $parid=$parents["WIFE"];
 				if ($parid!="") {
-					print_url_arrow($parid.$personcount.$person->getXref(), encode_url("?pid={$parid}&generations={$this->generations}&show_full={$this->show_full}&box_width={$this->box_width}"), i18n::translate('Start at parents'), 2);
+					print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", i18n::translate('Start at parents'), 2);
 					$personcount++;
 				}
 			}
@@ -279,13 +279,13 @@ function print_family_descendancy(&$person, &$family, $depth) {
 			}
 		}
 		print "</td></tr></table>";
-		print "</li>\r\n";
+		print "</li>";
 		if ($depth>1) foreach ($children as $child) {
 			$personcount++;
 			$this->print_child_descendancy($child, $depth-1);
 		}
-		print "</ul>\r\n";
-		print "</li>\r\n";
+		print "</ul>";
+		print "</li>";
 	}
 }
 }

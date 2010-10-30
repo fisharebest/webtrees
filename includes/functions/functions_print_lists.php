@@ -126,7 +126,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<th class=\"list_label\" style=\"display:none\">BIRT</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">DEAT</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">TREE</th>";
-	echo "</tr></thead>\n";
+	echo "</tr></thead>";
 	//-- table body
 	echo "<tbody>";
 	$hidden = 0;
@@ -198,7 +198,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				$class='list_item';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', encode_url($person->getLinkUrl()), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, "<br/>";
+			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, "<br/>";
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_$table_id details1", 'none');
@@ -210,7 +210,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		if ($option=='sosa') {
 			echo
 				'<td class="list_value_wrap"><a href="',
-				encode_url('relationship.php?pid1='.$datalist[1].'&pid2='.$person->getXref()),
+				'relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(),
 				'" title="', i18n::translate('Relationship Chart'), '"',
 				' name="', $key, '" class="list_item name2">', $key, '</a></td>';
 		}
@@ -257,7 +257,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 					echo get_place_short($birth_place), ' ';
 				} else {
 					echo '<div align="', get_align($birth_place), '">';
-					echo '<a href="', encode_url(get_place_url($birth_place)), '" class="list_item" title="', $birth_place, '">';
+					echo '<a href="', get_place_url($birth_place), '" class="list_item" title="', $birth_place, '">';
 					echo PrintReady(get_place_short($birth_place)), '</a>';
 					echo '</div>';
 				}
@@ -269,7 +269,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Number of children
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap\">";
-			echo "<a href=\"", encode_url($person->getLinkUrl()), "\" class=\"list_item\" name=\"", $person->getNumberOfChildren(), "\">", $person->getNumberOfChildren(), "</a>";
+			echo "<a href=\"", $person->getHtmlUrl(), "\" class=\"list_item\" name=\"", $person->getNumberOfChildren(), "\">", $person->getNumberOfChildren(), "</a>";
 			echo "</td>";
 		}
 		//-- Death date
@@ -328,7 +328,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 					echo get_place_short($death_place), ' ';
 				} else {
 					echo '<div align="', get_align($death_place), '">';
-					echo '<a href="', encode_url(get_place_url($death_place)), '" class="list_item" title="', $death_place, '">';
+					echo '<a href="', get_place_url($death_place), '" class="list_item" title="', $death_place, '">';
 					echo PrintReady(get_place_short($death_place)), '</a>';
 					echo '</div>';
 				}
@@ -373,7 +373,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 			echo "L"; // leaves
 		}
 		echo "</td>";
-		echo "</tr>\n";
+		echo "</tr>";
 		$unique_indis[$person->getXref()]=true;
 	}
 	echo "</tbody>";
@@ -408,7 +408,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<td style=\"display:none\">TREE</td>";
 	echo "</tr>";
 	echo "</tfoot>";
-	echo "</table>\n";
+	echo "</table>";
 	echo "</div>";
 	//-- charts
 	echo "<div class=\"", $table_id, "-charts\" style=\"display:none\">";
@@ -421,7 +421,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	print_chart_by_age($deat_by_age, i18n::translate('Age related to death year'));
 	echo "</td></tr></table>";
 	echo "</div>";
-	echo "</fieldset>\n";
+	echo "</fieldset>";
 }
 
 /**
@@ -497,9 +497,9 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<th style=\"display:none\">MARR</th>";
 	echo "<th style=\"display:none\">DEAT</th>";
 	echo "<th style=\"display:none\">TREE</th>";
-	echo "</tr></thead>\n";
+	echo "</tr></thead>";
 	//-- table body
-	echo "<tbody>\n";
+	echo "<tbody>";
 	$hidden = 0;
 	$num = 0;
 	$d100y=new GedcomDate(date('Y')-100);  // 100 years ago
@@ -546,10 +546,10 @@ function print_fam_table($datalist, $legend="", $option="") {
 		if (!$husb->isDead()) $tdclass .= " alive";
 		if (!$husb->getChildFamilyIds()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($names[$n1]['list']), "\">";
-		echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
+		echo "<a href=\"", $family->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
 		if ($tiny) echo $husb->getSexImage();
 		if ($n1!=$n2) {
-			echo "<br /><a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\">", PrintReady($names[$n2]['list']), "</a>";
+			echo "<br /><a href=\"", $family->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($names[$n2]['list']), "</a>";
 		}
 		// Husband parents
 		echo $husb->getPrimaryParentsNames("parents_$table_id details1", "none");
@@ -592,10 +592,10 @@ function print_fam_table($datalist, $legend="", $option="") {
 		if (!$wife->isDead()) $tdclass .= " alive";
 		if (!$wife->getChildFamilyIds()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($names[$n1]['list']), "\">";
-		echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
+		echo "<a href=\"", $family->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
 		if ($tiny) echo $wife->getSexImage();
 		if ($n1!=$n2) {
-			echo "<br /><a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\">", PrintReady($names[$n2]['list']), "</a>";
+			echo "<br /><a href=\"", $family->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($names[$n2]['list']), "</a>";
 		}
 		// Wife parents
 		echo $wife->getPrimaryParentsNames("parents_$table_id details1", "none");
@@ -677,7 +677,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 					echo get_place_short($marriage_place), ' ';
 				} else {
 					echo '<div align="', get_align($marriage_place), '">';
-					echo '<a href="', encode_url(get_place_url($marriage_place)), '" class="list_item" title="', $marriage_place, '">';
+					echo '<a href="', get_place_url($marriage_place), '" class="list_item" title="', $marriage_place, '">';
 					echo PrintReady(get_place_short($marriage_place)), '</a>';
 					echo '</div>';
 				}
@@ -689,7 +689,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		//-- Number of children
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap\">";
-			echo "<a href=\"", encode_url($family->getLinkUrl()), "\" class=\"list_item\" name=\"", $family->getNumberOfChildren(), "\">", $family->getNumberOfChildren(), "</a>";
+			echo "<a href=\"", $family->getHtmlUrl(), "\" class=\"list_item\" name=\"", $family->getNumberOfChildren(), "\">", $family->getNumberOfChildren(), "</a>";
 			echo "</td>";
 		}
 		//-- Last change
@@ -730,7 +730,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 			echo "L"; // leaves
 		}
 		echo "</td>";
-		echo "</tr>\n";
+		echo "</tr>";
 	}
 	echo "</tbody>";
 	//-- table footer
@@ -759,7 +759,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<td style=\"display:none\">DEAT</td>";
 	echo "<td style=\"display:none\">TREE</td>";
 	echo "</tr></tfoot>";
-	echo "</table>\n";
+	echo "</table>";
 	echo "</div>";
 	//-- charts
 	echo "<div class=\"", $table_id, "-charts\" style=\"display:none\">";
@@ -772,7 +772,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	print_chart_by_age($marr_by_age, i18n::translate('Age in year of marriage'));
 	echo "</td></tr></table>";
 	echo "</div>";
-	echo "</fieldset>\n";
+	echo "</fieldset>";
 }
 
 /**
@@ -837,7 +837,7 @@ function print_sour_table($datalist, $legend=null) {
 		if (!$source || !$source->canDisplayDetails()) {
 			continue;
 		}
-		$link_url=encode_url($source->getLinkUrl());
+		$link_url=$source->getHtmlUrl();
 		//-- Counter
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
 		//-- Source name(s)
@@ -874,7 +874,7 @@ function print_sour_table($datalist, $legend=null) {
 		if ($SHOW_LAST_CHANGE) {
 			print '<td class="list_value_wrap rela">'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
-		echo "</tr>\n";
+		echo "</tr>";
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
@@ -945,7 +945,7 @@ function print_note_table($datalist, $legend=null) {
 		if (!$note->canDisplayDetails()) {
 			continue;
 		}
-		$link_url=encode_url($note->getLinkUrl());
+		$link_url=$note->getHtmlUrl();
 		//-- Counter
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
 		//-- Shared Note name(s)
@@ -967,7 +967,7 @@ function print_note_table($datalist, $legend=null) {
 		if ($SHOW_LAST_CHANGE) {
 			print '<td class="list_value_wrap rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
-		echo "</tr>\n";
+		echo "</tr>";
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
@@ -1016,15 +1016,15 @@ function print_repo_table($repos, $legend='') {
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
 		//-- Repository name(s)
 		$name = $repo->getFullName();
-		echo '<td class="list_value_wrap" align="', get_align($name), '"><a href="', encode_url($repo->getLinkUrl()), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
+		echo '<td class="list_value_wrap" align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
 		$addname=$repo->getAddName();
 		if ($addname) {
-			echo '<br /><a href="', encode_url($repo->getLinkUrl()), '" class="list_item">', PrintReady(htmlspecialchars($addname)), '</a>';
+			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', PrintReady(htmlspecialchars($addname)), '</a>';
 		}
 		echo '</td>';
 		//-- Linked SOURces
 		$tmp=$repo->countLinkedSources();
-		echo '<td class="list_value_wrap"><a href="', encode_url($repo->getLinkUrl()), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td class="list_value_wrap"><a href="', $repo->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td class="list_value_wrap rela">', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
@@ -1060,7 +1060,7 @@ function print_media_table($datalist, $legend="") {
 	echo "<th class=\"list_label\">", i18n::translate('Families'), "</th>";
 	echo "<th class=\"list_label\">", i18n::translate('Sources'), "</th>";
 	if ($SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
-	echo "</tr>\n";
+	echo "</tr>";
 	//-- table body
 	$n = 0;
 	foreach ($datalist as $key => $value) {
@@ -1077,12 +1077,12 @@ function print_media_table($datalist, $legend="") {
 		//-- Object name(s)
 		$name = $media->getFullName();
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
-		echo "<a href=\"", encode_url($media->getLinkUrl()), "\" class=\"list_item name2\">";
+		echo "<a href=\"", $media->getHtmlUrl(), "\" class=\"list_item name2\">";
 		if ($media->canDisplayDetails())
 			echo '<img src=', thumbnail_file($media->file, false), ' height="15" /> ';
 		echo PrintReady($name), "</a>";
 		if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
-			echo "<br /><a href=\"", encode_url($media->getLinkUrl()), "\">", basename($media->file), "</a>";
+			echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->file), "</a>";
 		//echo "<br />", $media->getFiletype();
 		//echo "&nbsp;&nbsp;", $media->width, "x", $media->height;
 		//echo "&nbsp;&nbsp;", $media->getFilesize(), "kB";
@@ -1091,13 +1091,13 @@ function print_media_table($datalist, $legend="") {
 
 		//-- Linked INDIs
 		$tmp=$media->countLinkedIndividuals();
-		echo '<td class="list_value_wrap"><a href="', encode_url($media->getLinkUrl()), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Linked FAMs
 		$tmp=$media->countLinkedfamilies();
-		echo '<td class="list_value_wrap"><a href="', encode_url($media->getLinkUrl()), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Linked SOURces
 		$tmp=$media->countLinkedSources();
-		echo '<td class="list_value_wrap"><a href="', encode_url($media->getLinkUrl()), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 /*
 		//-- Linked records
 		foreach (array("INDI", "FAM", "SOUR") as $rectype) {
@@ -1110,17 +1110,17 @@ function print_media_table($datalist, $legend="") {
 			}
 			sort($resu);
 			echo "<td class=\"list_value_wrap\" align=\"", get_align(@$resu[0]), "\">";
-			foreach ($resu as $txt) echo "<a href=\"", encode_url($record->getLinkUrl()), "\" class=\"list_item\">", PrintReady("&bull; ".$txt), "</a><br />";
+			foreach ($resu as $txt) echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady("&bull; ".$txt), "</a><br />";
 			echo "</td>";
 		}
 */
 		//-- Last change
 		if ($SHOW_LAST_CHANGE)
 			print "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
-		echo "</tr>\n";
+		echo "</tr>";
 	}
-	echo "</table>\n";
-	echo "</fieldset>\n";
+	echo "</table>";
+	echo "</fieldset>";
 }
 
 // Print a table of surnames.
@@ -1345,7 +1345,7 @@ function print_changes_table($change_ids) {
 	echo "<th style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
 	echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
-	echo "</tr>\n";
+	echo "</tr>";
 	//-- table body
 	$n = 0;
 	$NMAX = 1000;
@@ -1362,20 +1362,20 @@ function print_changes_table($change_ids) {
 		//-- Record name(s)
 		$name = $record->getFullName();
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
-		echo "<a href=\"", encode_url($record->getLinkUrl()), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($name), "</a>";
+		echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($name), "</a>";
 		if ($record->getType()=="INDI") {
 			echo $record->getSexImage();
 			$indi=true;
 		}
 		$addname=$record->getAddName();
 		if ($addname) {
-			echo "<br /><a href=\"", encode_url($record->getLinkUrl()), "\" class=\"list_item\">", PrintReady($addname), "</a>";
+			echo "<br /><a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($addname), "</a>";
 		}
 		if ($record->getType()=='INDI') {
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($record->getAllNames() as $name) {
 					if ($name['type']=='_MARNM') {
-						echo "<br /><a title=\"_MARNM\" href=\"", encode_url($record->getLinkUrl()), "\" class=\"list_item\">", PrintReady($name['full']), "</a>";
+						echo "<br /><a title=\"_MARNM\" href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($name['full']), "</a>";
 					}
 				}
 			}
@@ -1391,7 +1391,7 @@ function print_changes_table($change_ids) {
 		print "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
 		//-- Last change user
 		print "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
-		echo "</tr>\n";
+		echo "</tr>";
 	}
 	//-- table footer
 	echo "<tr class=\"sortbottom\">";
@@ -1410,7 +1410,7 @@ function print_changes_table($change_ids) {
 	echo "<td></td>";
 	echo "<td></td>";
 	echo "</tr>";
-	echo "</table>\n";
+	echo "</table>";
 }
 
 /**
@@ -1472,11 +1472,11 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<th class=\"list_label\">".translate_fact('DATE')."</th>";
 			$return .= "<th class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".i18n::translate('Anniversary')."\" title=\"".i18n::translate('Anniversary')."\" border=\"0\" /></th>";
 			$return .= "<th class=\"list_label\">".translate_fact('EVEN')."</th>";
-			$return .= "</tr>\n";
+			$return .= "</tr>";
 		}
 
 		$value['name'] = $record->getListName();
-		$value['url'] = $record->getLinkUrl();
+		$value['url'] = $record->getHtmlUrl();
 		if ($record->getType()=="INDI") {
 			$value['sex'] = $record->getSexImage();
 		} else {
@@ -1505,7 +1505,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$name = implode("<div></div>", $exp); // <div></div> is better here than <br />
 		}
 		$return .= "<td class=\"list_value_wrap\" align=\"".get_align($name)."\">";
-		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
+		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
 			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
@@ -1528,10 +1528,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "</td>";
 		//-- Event name
 		$return .= "<td class=\"list_value_wrap\">";
-		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item\">".translate_fact($value['fact'])."</a>";
+		$return .= "<a href=\"".$value['url']."\" class=\"list_item\">".translate_fact($value['fact'])."</a>";
 		$return .= "&nbsp;</td>";
 
-		$return .= "</tr>\n";
+		$return .= "</tr>";
 	}
 
 	if ($output!=0) {
@@ -1545,7 +1545,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "<td></td>";
 		$return .= "<td></td>";
 		$return .= "</tr>";
-		$return .= "</table>\n";
+		$return .= "</table>";
 	}
 
 	// Print a final summary message about restricted/filtered facts
@@ -1631,7 +1631,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		$output ++;
 
 		$value['name'] = $record->getListName();
-		$value['url'] = $record->getLinkUrl();
+		$value['url'] = $record->getHtmlUrl();
 		if ($record->getType()=="INDI") {
 			$value['sex'] = $record->getSexImage();
 		} else {
@@ -1648,11 +1648,11 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	}
 
 	foreach($filtered_events as $value) {
-		$return .= "<a href=\"".encode_url($value['url'])."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($value['name'])."</a>".$value['sex'];
+		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($value['name'])."</a>".$value['sex'];
 		$return .= "<br /><div class=\"indent\">";
 		$return .= translate_fact($value['fact']).' - '.$value['date']->Display(true);
 		if ($value['anniv']!=0) $return .= " (" . i18n::translate('%s year anniversary', $value['anniv']).")";
-		if (!empty($value['plac'])) $return .= " - <a href=\"".encode_url(get_place_url($value['plac']))."\">".$value['plac']."</a>";
+		if (!empty($value['plac'])) $return .= " - <a href=\"".get_place_url($value['plac'])."\">".$value['plac']."</a>";
 		$return .= "</div>";
 	}
 

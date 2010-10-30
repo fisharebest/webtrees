@@ -56,7 +56,7 @@ class MenuBar {
 		$gedcom_titles=get_gedcom_titles();
 		if (count($gedcom_titles)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 			foreach ($gedcom_titles as $gedcom_title) {
-				$submenu = new Menu(PrintReady($gedcom_title->gedcom_title, true), encode_url('index.php?ctype=gedcom&ged='.$gedcom_title->gedcom_name));
+				$submenu = new Menu(PrintReady($gedcom_title->gedcom_title, true), 'index.php?ctype=gedcom&amp;ged='.$gedcom_title->gedcom_name);
 				if (!empty($WT_IMAGES['gedcom'])) {
 					$submenu->addIcon('gedcom');
 				}
@@ -109,7 +109,7 @@ class MenuBar {
 		}
 		if (WT_USER_GEDCOM_ID) {
 			//-- my_pedigree submenu
-			$submenu = new Menu(i18n::translate('My Pedigree'), encode_url("pedigree.php?rootid=".WT_USER_GEDCOM_ID."&show_full={$showFull}&talloffset={$showLayout}"));
+			$submenu = new Menu(i18n::translate('My Pedigree'), "pedigree.php?rootid=".WT_USER_GEDCOM_ID."&amp;show_full={$showFull}&amp;talloffset={$showLayout}");
 			if (!empty($WT_IMAGES["pedigree"]))
 				$submenu->addIcon('pedigree');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_pedigree");
@@ -185,9 +185,9 @@ class MenuBar {
 		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
 
 		//-- main charts menu item
-		$link = "pedigree.php?ged=".WT_GEDCOM."&show_full={$showFull}&talloffset={$showLayout}";
-		if ($rootid) $link .= "&rootid={$rootid}";
-		$menu = new Menu(i18n::translate('Charts'), encode_url($link), "down");
+		$link = "pedigree.php?ged=".WT_GEDCOM."&amp;show_full={$showFull}&amp;talloffset={$showLayout}";
+		if ($rootid) $link .= "&amp;rootid={$rootid}";
+		$menu = new Menu(i18n::translate('Charts'), $link, "down");
 		$menu->addIcon('charts');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_pedigree");
 
@@ -215,9 +215,9 @@ class MenuBar {
 			switch ($menuType) {
 			case "pedigree":
 				//-- pedigree
-				$link = "pedigree.php?ged=".WT_GEDCOM."&show_full={$showFull}&talloffset={$showLayout}";
-				if ($rootid) $link .= "&rootid={$rootid}";
-				$submenu = new Menu(i18n::translate('Pedigree Chart'), encode_url($link));
+				$link = "pedigree.php?ged=".WT_GEDCOM."&amp;show_full={$showFull}&amp;talloffset={$showLayout}";
+				if ($rootid) $link .= "&amp;rootid={$rootid}";
+				$submenu = new Menu(i18n::translate('Pedigree Chart'), $link);
 				$submenu->addIcon('pedigree');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_pedigree");
 				$menu->addSubmenu($submenu);
@@ -226,8 +226,8 @@ class MenuBar {
 			case "descendancy":
 				//-- descendancy
 				$link = "descendancy.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&pid={$rootid}&show_full={$showFull}";
-				$submenu = new Menu(i18n::translate('Descendancy chart'), encode_url($link));
+				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
+				$submenu = new Menu(i18n::translate('Descendancy chart'), $link);
 				$submenu->addIcon('descendant');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_descendant");
 				$menu->addSubmenu($submenu);
@@ -236,8 +236,8 @@ class MenuBar {
 			case "ancestry":
 				//-- ancestry
 				$link = "ancestry.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&rootid={$rootid}&show_full={$showFull}";
-				$submenu = new Menu(i18n::translate('Ancestry chart'), encode_url($link));
+				if ($rootid) $link .= "&amp;rootid={$rootid}&amp;show_full={$showFull}";
+				$submenu = new Menu(i18n::translate('Ancestry chart'), $link);
 				$submenu->addIcon('ancestry');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_ancestry");
 				$menu->addSubmenu($submenu);
@@ -246,8 +246,8 @@ class MenuBar {
 			case "compact":
 				//-- compact
 				$link = "compact.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&rootid=".$rootid;
-				$submenu = new Menu(i18n::translate('Compact Chart'), encode_url($link));
+				if ($rootid) $link .= "&amp;rootid=".$rootid;
+				$submenu = new Menu(i18n::translate('Compact Chart'), $link);
 				$submenu->addIcon('ancestry');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_ancestry");
 				$menu->addSubmenu($submenu);
@@ -256,8 +256,8 @@ class MenuBar {
 			case "fanchart":
 				//-- fan chart
 				$link = "fanchart.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&rootid=".$rootid;
-				$submenu = new Menu(i18n::translate('Circle diagram'), encode_url($link));
+				if ($rootid) $link .= "&amp;rootid=".$rootid;
+				$submenu = new Menu(i18n::translate('Circle diagram'), $link);
 				$submenu->addIcon('fanchart');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_fanchart");
 				$menu->addSubmenu($submenu);
@@ -266,8 +266,8 @@ class MenuBar {
 			case "hourglass":
 				//-- hourglass
 				$link = "hourglass.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&pid={$rootid}&show_full={$showFull}";
-				$submenu = new Menu(i18n::translate('Hourglass chart'), encode_url($link));
+				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
+				$submenu = new Menu(i18n::translate('Hourglass chart'), $link);
 				$submenu->addIcon('hourglass');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_hourglass");
 				$menu->addSubmenu($submenu);
@@ -276,8 +276,8 @@ class MenuBar {
 			case "familybook":
 				//-- familybook
 				$link = "familybook.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&pid={$rootid}&show_full={$showFull}";
-				$submenu = new Menu(i18n::translate('Family book chart'), encode_url($link));
+				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
+				$submenu = new Menu(i18n::translate('Family book chart'), $link);
 				$submenu->addIcon('fambook');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_fambook");
 				$menu->addSubmenu($submenu);
@@ -304,7 +304,7 @@ class MenuBar {
 						switch ($menuType) {
 						case "parentTimeLine":
 							// charts / parents_timeline
-							$submenu = new Menu(i18n::translate('Show couple on timeline chart'), encode_url('timeline.php?pids[0]='.$controller->getHusband().'&pids[1]='.$controller->getWife()));
+							$submenu = new Menu(i18n::translate('Show couple on timeline chart'), 'timeline.php?pids[0]='.$controller->getHusband().'&amp;pids[1]='.$controller->getWife());
 							if (!empty($WT_IMAGES["timeline"])) {
 								$submenu->addIcon('timeline');
 							}
@@ -314,7 +314,7 @@ class MenuBar {
 
 						case "childTimeLine":
 							// charts / children_timeline
-							$submenu = new Menu(i18n::translate('Show children on timeline chart'), encode_url('timeline.php?'.$controller->getChildrenUrlTimeline()));
+							$submenu = new Menu(i18n::translate('Show children on timeline chart'), 'timeline.php?'.$controller->getChildrenUrlTimeline());
 							if (!empty($WT_IMAGES["timeline"])) {
 								$submenu->addIcon('timeline');
 							}
@@ -324,7 +324,7 @@ class MenuBar {
 
 						case "familyTimeLine":
 							// charts / family_timeline
-							$submenu = new Menu(i18n::translate('Show family on timeline chart'), encode_url('timeline.php?pids[0]='.$controller->getHusband().'&pids[1]='.$controller->getWife().'&'.$controller->getChildrenUrlTimeline(2)));
+							$submenu = new Menu(i18n::translate('Show family on timeline chart'), 'timeline.php?pids[0]='.$controller->getHusband().'&amp;pids[1]='.$controller->getWife().'&amp;'.$controller->getChildrenUrlTimeline(2));
 							if (!empty($WT_IMAGES["timeline"])) {
 								$submenu->addIcon('timeline');
 							}
@@ -341,8 +341,8 @@ class MenuBar {
 			case "lifespan":
 				//-- lifespan
 				$link = "lifespan.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&pids[]={$rootid}&addFamily=1";
-				$submenu = new Menu(i18n::translate('Lifespan chart'), encode_url($link));
+				if ($rootid) $link .= "&amp;pids[]={$rootid}&amp;addFamily=1";
+				$submenu = new Menu(i18n::translate('Lifespan chart'), $link);
 				$submenu->addIcon('timeline');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_timeline");
 				$menu->addSubmenu($submenu);
@@ -374,12 +374,12 @@ class MenuBar {
 								if ($person instanceof Person) {
 									$submenu = new Menu(
 										i18n::translate('Relationship Chart').': '.PrintReady($person->getFullName()),
-										encode_url("relationship.php?pid1={$pid2}&pid2={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+										"relationship.php?pid1={$pid2}&amp;pid2={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDCOM
 									);
 								} else {
 									$submenu = new Menu(
 										i18n::translate('Relationship Chart'),
-										encode_url("relationship.php?pid1={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
+										"relationship.php?pid1={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDCOM
 									);
 								}
 								$submenu->addIcon('relationship');
@@ -387,9 +387,9 @@ class MenuBar {
 								$menu->addSubmenu($submenu);
 							} else {
 								$submenu = new Menu(
-										i18n::translate('Relationship Chart'),
-										encode_url("relationship.php?pid1={$pid1}&pretty=2&followspouse=1&ged=".WT_GEDCOM)
-									);
+									i18n::translate('Relationship Chart'),
+									"relationship.php?pid1={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDCOM
+								);
 								$submenu->addIcon('relationship');
 								$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_relationship");
 								$menu->addSubmenu($submenu);
@@ -402,7 +402,7 @@ class MenuBar {
 
 			case "statistics":
 				//-- statistics plot
-				$submenu = new Menu(i18n::translate('Statistics'), encode_url("statistics.php?ged=".WT_GEDCOM));
+				$submenu = new Menu(i18n::translate('Statistics'), "statistics.php?ged=".WT_GEDCOM);
 				$submenu->addIcon('statistic');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_statistic");
 				$menu->addSubmenu($submenu);
@@ -411,8 +411,8 @@ class MenuBar {
 			case "treenav":
 				//-- interactive tree
 				$link = "treenav.php?ged=".WT_GEDCOM;
-				if ($rootid) $link .= "&rootid=".$rootid;
-				$submenu = new Menu(i18n::translate('Interactive tree'), encode_url($link));
+				if ($rootid) $link .= "&amp;rootid=".$rootid;
+				$submenu = new Menu(i18n::translate('Interactive tree'), $link);
 				$submenu->addIcon('tree');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_gedcom");
 				$menu->addSubmenu($submenu);
@@ -421,9 +421,9 @@ class MenuBar {
 			//added for pedigree_map
 			case "pedigree_map":
 				//-- pedigree map
-				$link = "module.php?ged=".WT_GEDCOM."&mod=googlemap&mod_action=pedigree_map";
-				if ($rootid) $link .= "&rootid=".$rootid;
-				$submenu = new Menu(i18n::translate('Pedigree Map'), encode_url($link));
+				$link = "module.php?ged=".WT_GEDCOM."&amp;mod=googlemap&amp;mod_action=pedigree_map";
+				if ($rootid) $link .= "&amp;rootid=".$rootid;
+				$submenu = new Menu(i18n::translate('Pedigree Map'), $link);
 				global $WT_IMAGES;
 				$WT_IMAGES['pedigree_map']='modules/googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');
@@ -463,13 +463,12 @@ class MenuBar {
 			//-- main lists menu item
 			$link = "indilist.php?ged=".WT_GEDCOM;
 			if ($style=="sub") {
-				$link .= "&surname={$surname}";
-				$menu = new Menu(i18n::translate('Lists'), encode_url($link));
+				$link .= "&amp;surname={$surname}";
+				$menu = new Menu(i18n::translate('Lists'), $link);
 				$menu->addIcon('lists');
 				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_small_indis");
-			}
-			else {
-				$menu = new Menu(i18n::translate('Lists'), encode_url($link), "down");
+			} else {
+				$menu = new Menu(i18n::translate('Lists'), $link, "down");
 				$menu->addIcon('lists');
 				$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_indis");
 			}
@@ -477,7 +476,7 @@ class MenuBar {
 			//-- gedcom list
 			if (get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 				foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-					$submenu = new Menu(i18n::translate('Individuals')." - ".PrintReady(get_gedcom_setting($ged_id, 'title')), encode_url('indilist.php?ged='.$gedcom));
+					$submenu = new Menu(i18n::translate('Individuals')." - ".PrintReady(get_gedcom_setting($ged_id, 'title')), 'indilist.php?ged='.$gedcom);
 					$submenu->addIcon('gedcom');
 					$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_gedcom");
 					$menu->addSubmenu($submenu);
@@ -488,12 +487,11 @@ class MenuBar {
 		//-- main lists menu item
 		$link = "indilist.php?ged=".WT_GEDCOM;
 		if ($style=="sub") {
-			$link .= "&surname=".$surname;
-			$menu = new Menu(i18n::translate('Lists'), encode_url($link));
+			$link .= "&amp;surname=".$surname;
+			$menu = new Menu(i18n::translate('Lists'), $link);
 			$menu->addIcon('lists');
 			$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_indis");
-		}
-		else {
+		} else {
 			$menu = new Menu(i18n::translate('Lists'), $link, "down");
 			$menu->addIcon('lists');
 			$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_indis");
@@ -518,8 +516,8 @@ class MenuBar {
 			case "individual":
 				//-- indi list sub menu
 				$link = "indilist.php?ged=".WT_GEDCOM;
-				if ($surname) $link .= "&surname=".$surname;
-				$submenu = new Menu(i18n::translate('Individuals'), encode_url($link));
+				if ($surname) $link .= "&amp;surname=".$surname;
+				$submenu = new Menu(i18n::translate('Individuals'), $link);
 				$submenu->addIcon('indis');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_indis");
 				$menu->addSubmenu($submenu);
@@ -547,7 +545,7 @@ class MenuBar {
 
 			case "source":
 				//-- source
-				$submenu = new Menu(i18n::translate('Sources'), encode_url('sourcelist.php?ged='.WT_GEDCOM));
+				$submenu = new Menu(i18n::translate('Sources'), 'sourcelist.php?ged='.WT_GEDCOM);
 				$submenu->addIcon('menu_source');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_source");
 				$menu->addSubmenu($submenu);
@@ -555,7 +553,7 @@ class MenuBar {
 
 			case "note":
 				//-- shared note
-				$submenu = new Menu(i18n::translate('Shared Notes'), encode_url('notelist.php?ged='.WT_GEDCOM));
+				$submenu = new Menu(i18n::translate('Shared Notes'), 'notelist.php?ged='.WT_GEDCOM);
 				$submenu->addIcon('menu_note');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_notes");
 				$menu->addSubmenu($submenu);
@@ -571,7 +569,7 @@ class MenuBar {
 
 			case "places":
 				//-- places
-				$submenu = new Menu(i18n::translate('Place hierarchy'), encode_url('placelist.php?ged='.WT_GEDCOM));
+				$submenu = new Menu(i18n::translate('Place hierarchy'), 'placelist.php?ged='.WT_GEDCOM);
 				$submenu->addIcon('place');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_place");
 				$menu->addSubmenu($submenu);
@@ -579,7 +577,7 @@ class MenuBar {
 
 			case "media":
 				//-- medialist
-				$submenu = new Menu(i18n::translate('Multimedia'), encode_url('medialist.php?ged='.WT_GEDCOM));
+				$submenu = new Menu(i18n::translate('Multimedia'), 'medialist.php?ged='.WT_GEDCOM);
 				$submenu->addIcon('menu_media');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_media");
 				$menu->addSubmenu($submenu);
@@ -603,21 +601,21 @@ class MenuBar {
 			return $menu;
 		}
 		//-- main calendar menu item
-		$menu = new Menu(i18n::translate('Calendar'), encode_url('calendar.php?ged='.WT_GEDCOM), "down");
+		$menu = new Menu(i18n::translate('Calendar'), 'calendar.php?ged='.WT_GEDCOM, "down");
 		$menu->addIcon('calendar');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_calendar");
 		//-- viewday sub menu
-		$submenu = new Menu(i18n::translate('View Day'), encode_url('calendar.php?ged='.WT_GEDCOM));
+		$submenu = new Menu(i18n::translate('View Day'), 'calendar.php?ged='.WT_GEDCOM);
 		$submenu->addIcon('calendar');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_calendar");
 		$menu->addSubmenu($submenu);
 		//-- viewmonth sub menu
-		$submenu = new Menu(i18n::translate('View Month'), encode_url("calendar.php?ged=".WT_GEDCOM."&action=calendar"));
+		$submenu = new Menu(i18n::translate('View Month'), "calendar.php?ged=".WT_GEDCOM."&amp;action=calendar");
 		$submenu->addIcon('calendar');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_calendar");
 		$menu->addSubmenu($submenu);
 		//-- viewyear sub menu
-		$submenu = new Menu(i18n::translate('View Year'), encode_url("calendar.php?ged=".WT_GEDCOM."&action=year"));
+		$submenu = new Menu(i18n::translate('View Year'), "calendar.php?ged=".WT_GEDCOM."&amp;action=year");
 		$submenu->addIcon('calendar');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_calendar");
 		$menu->addSubmenu($submenu);
@@ -642,7 +640,7 @@ class MenuBar {
 			$ff="";
 		}
 
-		$menu = new Menu(i18n::translate('Reports'), encode_url('reportengine.php?ged='.WT_GEDCOM), "down");
+		$menu = new Menu(i18n::translate('Reports'), 'reportengine.php?ged='.WT_GEDCOM, "down");
 		$menu->addIcon('reports');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_reports");
 
@@ -666,27 +664,27 @@ class MenuBar {
 			return null;
 		}
 		//-- main search menu item
-		$menu = new Menu(i18n::translate('Search'), encode_url('search.php?ged='.WT_GEDCOM), "down");
+		$menu = new Menu(i18n::translate('Search'), 'search.php?ged='.WT_GEDCOM, "down");
 		$menu->addIcon('search');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_search");
 		//-- search_general sub menu
-		$submenu = new Menu(i18n::translate('General Search'), encode_url("search.php?ged=".WT_GEDCOM."&action=general"));
+		$submenu = new Menu(i18n::translate('General Search'), "search.php?ged=".WT_GEDCOM."&amp;action=general");
 		$submenu->addIcon('search');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
 		$menu->addSubmenu($submenu);
 		//-- search_soundex sub menu
-		$submenu = new Menu(i18n::translate('Soundex Search'), encode_url("search.php?ged=".WT_GEDCOM."&action=soundex"));
+		$submenu = new Menu(i18n::translate('Soundex Search'), "search.php?ged=".WT_GEDCOM."&amp;action=soundex");
 		$submenu->addIcon('search');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
 		$menu->addSubmenu($submenu);
 		//-- advanced search
-		$submenu = new Menu(i18n::translate('Advanced search'), encode_url("search_advanced.php?ged=".WT_GEDCOM));
+		$submenu = new Menu(i18n::translate('Advanced search'), "search_advanced.php?ged=".WT_GEDCOM);
 		$submenu->addIcon('search');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
 		$menu->addSubmenu($submenu);
 		//-- search_replace sub menu
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new Menu(i18n::translate('Search and replace'), encode_url("search.php?ged=".WT_GEDCOM."&action=replace"));
+			$submenu = new Menu(i18n::translate('Search and replace'), "search.php?ged=".WT_GEDCOM."&amp;action=replace");
 			$submenu->addIcon('search');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
 			$menu->addSubmenu($submenu);
@@ -696,7 +694,7 @@ class MenuBar {
 		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
 			$sitelist = get_server_list();
 			if (count($sitelist)>0) {
-				$submenu = new Menu(i18n::translate('Multi Site Search'), encode_url("search.php?ged=".WT_GEDCOM."&action=multisite"));
+				$submenu = new Menu(i18n::translate('Multi Site Search'), "search.php?ged=".WT_GEDCOM."&amp;action=multisite");
 				$submenu->addIcon('search');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
 				$menu->addSubmenu($submenu);
@@ -804,7 +802,7 @@ class MenuBar {
 			$menu=new Menu(i18n::translate('Theme'));
 			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
 			foreach (get_theme_names() as $themename=>$themedir) {
-				$submenu=new Menu($themename, $url.'&amp;theme='.$themedir);
+				$submenu=new Menu($themename, $url.'&amp;theme='.rawurlencode($themedir));
 				if ($themedir==WT_THEME_DIR) {
 					$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 				} else {
@@ -822,24 +820,11 @@ class MenuBar {
 	* @return Menu the menu item
 	*/
 	public static function getColorMenu($COLOR_THEME_LIST) {
-		isset($_SERVER["QUERY_STRING"]) == true?$tqstring = "?".$_SERVER["QUERY_STRING"]:$tqstring = "";
-		$frompage = WT_SCRIPT_NAME.decode_url($tqstring);
-		if (isset($_REQUEST['mod'])) {
-			if (!strstr($frompage, "?")) {
-				if (!strstr($frompage, "%3F")) ;
-				else $frompage .= "?";
-			}
-			if (!strstr($frompage, "&mod") || !strstr($frompage, "?mod")) $frompage .= "&mod=".$_REQUEST['mod'];
-		}
-		if (substr($frompage,-1) == "?") $frompage = substr($frompage,0,-1);
-		if (substr($frompage,-1) == "&") $frompage = substr($frompage,0,-1);
-		// encode frompage address in other case we lost the all variables on theme change
-		$frompage = base64_encode($frompage);
+		$url=WT_SCRIPT_NAME.'?'.get_query_string();
 		$menu=new Menu(i18n::translate('Color Palette'));
 		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
 		foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
-			//$submenu=new Menu($colorName, encode_url("colorchange.php?frompage={$frompage}&mycolor={$colorChoice}"));
-			$submenu=new Menu($colorName, encode_url(WT_SCRIPT_NAME.'?'.$_SERVER['QUERY_STRING']."&themecolor={$colorChoice}"));
+			$submenu=new Menu($colorName, $url.'&amp;themecolor='.rawurlencode($colorChoice));
 			$menu->addSubMenu($submenu);
 		}
 		return $menu;
@@ -944,7 +929,7 @@ class MenuBar {
 					case 'OBJE':
 						$obj=GedcomRecord::getInstance($fav['gid']);
 						if ($obj && $obj->canDisplayName()) {
-							$submenu=new Menu(PrintReady($obj->getFullName()), encode_url($obj->getLinkUrl()));
+							$submenu=new Menu(PrintReady($obj->getFullName()), $obj->getHtmlUrl());
 							$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 							$menu->addSubMenu($submenu);
 						}
@@ -976,7 +961,7 @@ class MenuBar {
 				case 'OBJE':
 					$obj=GedcomRecord::getInstance($fav['gid']);
 					if ($obj && $obj->canDisplayName()) {
-						$submenu=new Menu(PrintReady($obj->getFullName()), encode_url($obj->getLinkUrl()));
+						$submenu=new Menu(PrintReady($obj->getFullName()), $obj->getHtmlUrl());
 						$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 						$menu->addSubMenu($submenu);
 					}

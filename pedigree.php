@@ -239,14 +239,14 @@ for($i=($controller->treesize-1); $i>=0; $i--) {
 			if (($curgen==1)&&(count(find_family_ids($controller->treeid[$i]))>0)) {
 				$did = 1;
 				if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) $did++;
-				echo '<a href="', encode_url("pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&rootid={$controller->treeid[$did]}&show_full={$controller->show_full}&talloffset={$controller->talloffset}"), '" ';
+				echo '<a href=pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $controller->treeid[$did], '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $controller->talloffset, ' ';
 				echo "onmouseover=\"swap_image('arrow$i', 2);\" onmouseout=\"swap_image('arrow$i', 2);\">";
 				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["uarrow"], '" border="0" alt="" />';
 				echo '</a>';
 			}
-			echo "\n\t\t</div>";
+			echo "</div>";
 		}
-		echo "\n\t\t<div id=\"box";
+		echo "<div id=\"box";
 		if (empty($controller->treeid[$i])) echo "$iref";
 		else echo $controller->treeid[$i];
 		if ($TEXT_DIRECTION=="rtl") echo ".1.$iref\" style=\"position:absolute; right:";
@@ -257,11 +257,11 @@ for($i=($controller->treesize-1); $i>=0; $i--) {
 
 		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth+$widthadd), "px; height:", $controller->pbheight, "px; ";
 		echo "z-index: ", $zindex, ";\">";
-		echo "\n\t\t\t<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" dir=\"$TEXT_DIRECTION\">";
+		echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" dir=\"$TEXT_DIRECTION\">";
 		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
 			echo "<tr><td>";
-			echo "\n\t\t\t<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" hspace=\"0\" vspace=\"0\" alt=\"\" />";
-			echo "\n\t\t\t</td><td width=\"100%\">";
+			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" hspace=\"0\" vspace=\"0\" alt=\"\" />";
+			echo "</td><td width=\"100%\">";
 		}
 		else echo "<tr><td width=\"100%\">";
 		if (!isset($controller->treeid[$i])) $controller->treeid[$i] = false;
@@ -270,14 +270,14 @@ for($i=($controller->treesize-1); $i>=0; $i--) {
 			$did = 1;
 			if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) $did++;
 			if ($talloffset==3) {
-				echo "\n\t\t\t\t</td></tr><tr><td align=\"center\">";
-				echo "<a href=\"", encode_url("pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&rootid={$controller->treeid[$did]}&show_full={$controller->show_full}&talloffset={$controller->talloffset}"), "\" ";
+				echo "</td></tr><tr><td align=\"center\">";
+				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$controller->talloffset}\" ";
 				echo "onmouseover=\"swap_image('arrow$i', 3);\" onmouseout=\"swap_image('arrow$i', 3);\">";
 				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\" />";
 			}
 			else if ($talloffset < 2) {
-				echo "\n\t\t\t\t</td><td valign=\"middle\">";
-				echo "<a href=\"", encode_url("pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&rootid={$controller->treeid[$did]}&show_full={$controller->show_full}&talloffset={$talloffset}"), "\" ";
+				echo "</td><td valign=\"middle\">";
+				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\" ";
 				if ($TEXT_DIRECTION=="rtl") {
 					echo "onmouseover=\"swap_image('arrow$i', 0);\" onmouseout=\"swap_image('arrow$i', 0);\">";
 					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\" />";
@@ -289,7 +289,7 @@ for($i=($controller->treesize-1); $i>=0; $i--) {
 				echo "</a>";
 			}
 		}
-		echo "\n\t\t\t</td></tr></table>\n\t\t</div>";
+		echo "</td></tr></table></div>";
 	}
 }
 
@@ -335,13 +335,13 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			echo "<img id=\"darrow\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\" />";
 		}
 		echo "</a>";
-		echo "\n\t\t</div>";
+		echo "</div>";
 		$yoffset += ($controller->pbheight / 2)+10;
-		echo "\n\t\t<div id=\"childbox\" dir=\"";
+		echo "<div id=\"childbox\" dir=\"";
 		if ($TEXT_DIRECTION=="rtl") echo "rtl\" style=\"position:absolute; right:";
 		else echo "ltr\" style=\"position:absolute; left:";
 		echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
-		echo "\n\t\t\t<table class=\"person_box\"><tr><td>";
+		echo "<table class=\"person_box\"><tr><td>";
 		foreach($famids as $ind=>$family) {
 			if ($family!=null) {
 				$husb = $family->getHusbId();
@@ -349,7 +349,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 				if($controller->rootid!=$husb) $spid=$family->getHusband();
 				else $spid=$family->getWife();
 				if (!empty($spid)) {
-					echo "\n\t\t\t\t<a href=\"", encode_url("pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&rootid=".$spid->getXref()."&show_full={$controller->show_full}&talloffset={$talloffset}"), "\"><span ";
+					echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spid->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					if ($spid->canDisplayName()) {
 						$name = $spid->getFullName();
 						$name = rtrim($name);
@@ -362,7 +362,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 
 				$children = $family->getChildren();
 				foreach($children as $ind2=>$child) {
-					echo "\n\t\t\t\t&nbsp;&nbsp;<a href=\"", encode_url("pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&rootid=".$child->getXref()."&show_full={$controller->show_full}&talloffset={$talloffset}"), "\"><span ";
+					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					if ($child->canDisplayName()) {
 						$name = $child->getFullName();
 						$name = rtrim($name);
@@ -382,7 +382,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 				if (count($children)==2) echo '<span class="name1"><br />', i18n::translate('Sibling'), '<br /></span>';
 				foreach($children as $ind2=>$child) {
 					if (!$controller->rootPerson->equals($child) && !is_null($child)) {
-						echo "\n\t\t\t\t&nbsp;&nbsp;<a href=\"", encode_url("pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&rootid=".$child->getXref()."&show_full={$controller->show_full}&talloffset={$talloffset}"), "\"><span ";
+						echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 						if ($child->canDisplayName()) {
 							$name = $child->getFullName();
 							$name = rtrim($name);
@@ -395,8 +395,8 @@ if ($controller->rootPerson->canDisplayDetails()) {
 				}
 			}
 		}
-		echo "\n\t\t\t</td></tr></table>";
-		echo "\n\t\t</div>";
+		echo "</td></tr></table>";
+		echo "</div>";
 	}
 }
 // -- print html footer

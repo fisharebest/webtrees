@@ -37,9 +37,13 @@ define('WT_CLASS_REPOSITORY_PHP', '');
 require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 
 class Repository extends GedcomRecord {
-	// Generate a URL that links to this record
-	public function getLinkUrl() {
-		return parent::_getLinkUrl('repo.php?rid=');
+	// Generate a URL to this record, suitable for use in HTML
+	public function getHtmlUrl() {
+		return parent::_getLinkUrl('repo.php?rid=', '&amp;');
+	}
+	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	public function getRawUrl() {
+		return parent::_getLinkUrl('repo.php?rid=', '&');
 	}
 
 	// Get an array of structures containing all the names in the record
@@ -47,4 +51,3 @@ class Repository extends GedcomRecord {
 		return parent::_getAllNames('NAME', 1);
 	}
 }
-?>

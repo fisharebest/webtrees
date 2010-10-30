@@ -201,7 +201,7 @@ if ($action=='createuser' || $action=='edituser2') {
 				addMessage($message); */
 			}
 			// Reload the form cleanly, to allow the user to verify their changes
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url("useradmin.php?action=edituser&username={$username}&ged={$ged}", false));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH."useradmin.php?action=edituser&username=".rawurlencode($username)."&ged=".rawurlencode($ged));
 			exit;
 		}
 	}
@@ -274,7 +274,7 @@ if ($action=="edituser") {
 			<tr>
 				<td class="topbottombar" colspan="2">
 				<input type="submit" value="<?php echo i18n::translate('Update user account'); ?>" />
-				<input type="button" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
+				<input type="button" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo "useradmin.php?action=listusers&amp;filter={$filter}&amp;usrlang={$usrlang}"; ?>';"/>
 				</td>
 			</tr>
 			<tr>
@@ -393,7 +393,7 @@ if ($action=="edituser") {
 										$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
 										$person=Person::getInstance($pid);
 										if ($person) {
-											echo '<div class="list_item"><a href="', encode_url("individual.php?pid={$pid}&ged={$ged_name}"), '">', PrintReady($person->getFullName()), '</a></div>';
+											echo '<div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
 										}
 									echo '</td>',						
 									// GEDCOM INDI Record ID
@@ -406,7 +406,7 @@ if ($action=="edituser") {
 										$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
 										$person=Person::getInstance($pid);
 										if ($person) {
-											echo ' <div class="list_item"><a href="', encode_url("individual.php?pid={$pid}&ged={$ged_name}"), '">', PrintReady($person->getFullName()), '</a></div>';
+											echo ' <div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
 										}
 									echo '</td>',
 									// Access level
@@ -453,7 +453,7 @@ if ($action=="edituser") {
 			<tr>
 				<td class="topbottombar" colspan="2">
 					<input type="submit" value="<?php echo i18n::translate('Update user account'); ?>" />
-					<input type="button" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo encode_url("useradmin.php?action=listusers&filter={$filter}&usrlang={$usrlang}"); ?>';"/>
+					<input type="button" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='<?php echo "useradmin.php?action=listusers&amp;filter={$filter}&amp;usrlang={$usrlang}"; ?>';"/>
 				</td>
 			</tr>
 		</table>
@@ -565,7 +565,7 @@ jQuery(document).ready(function(){
 		}
 		echo '</td>';
 		$userName = getUserFullName($user_id);
-		echo "<td class=\"optionbox\"><a class=\"edit_link\" href=\"", encode_url("useradmin.php?action=edituser&username={$user_name}&filter={$filter}&usrlang={$usrlang}&ged={$ged}"), "\" title=\"", i18n::translate('Edit'), "\">", $userName;
+		echo "<td class=\"optionbox\"><a class=\"edit_link\" href=\"useradmin.php?action=edituser&amp;username={$user_name}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged={$ged}\" title=\"", i18n::translate('Edit'), "\">", $userName;
 		if ($TEXT_DIRECTION=="ltr") echo getLRM();
 		else                        echo getRLM();
 		echo "</a></td>";
@@ -1107,7 +1107,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 		$ind = 1;
 		echo "<tr><td class=\"font11\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 		if ($geds["number"] == 0) echo $geds["name"];
-		else echo "<a href=\"", encode_url("useradmin.php?action=listusers&filter=gedadmin&ged=".$geds["ged"]), "\">", $geds["name"], "</a>";
+		else echo "<a href=\"useradmin.php?action=listusers&amp;filter=gedadmin&amp;ged=", rawurlencode($geds["ged"]), "\">", $geds["name"], "</a>";
 		echo "</td><td class=\"font11\">", $geds["number"], "</td></tr>";
 	}
 	echo "<tr><td class=\"font11\"></td></tr><tr><td class=\"font11\">";

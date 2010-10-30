@@ -212,7 +212,7 @@ function paste_id(value) {
 				$new_path=false;
 			}
 			else {
-				print "<a href=\"".encode_url("relationship.php?pid1={$pid1}&pid2={$pid2}&path_to_find={$i}&followspouse={$followspouse}&show_full={$show_full}&asc={$asc}")."\">".($i+1)."</a>\n";
+				print "<a href=\"relationship.php?pid1={$pid1}&amp;pid2={$pid2}&amp;path_to_find={$i}&amp;followspouse={$followspouse}&amp;show_full={$show_full}&amp;asc={$asc}\">".($i+1)."</a>";
 			}
 			$i++;
 		}
@@ -227,7 +227,7 @@ function paste_id(value) {
 			}
 			if ($disp) {
 				echo i18n::translate('Show path'), ": </td>";
-				echo "\n\t\t<td class=\"optionbox\">";
+				echo "<td class=\"optionbox\">";
 				echo " <span class=\"error vmmiddle\">";
 				$check_node = get_relationship($pid1, $pid2, $followspouse, 0, true, $path_to_find);
 				echo $check_node ? "1" : "&nbsp;".i18n::translate('No results found.'), "</span></td>";
@@ -358,7 +358,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				$lArrow = $WT_IMAGES["rarrow"];
 			}
 			foreach($node["path"] as $index=>$pid) {
-				print "\r\n\r\n<!-- Node:{$index} -->\r\n";
+				print "<!-- Node:{$index} -->";
 				$linex = $xoffset;
 				$liney = $yoffset;
 				$mfstyle = "NN";
@@ -392,11 +392,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						if ($asc==-1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-$lh;
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2-($asc-1)/2*$lh;
-						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>\n";
+						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>";
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny+$asc*$lh;
-						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>\n";
+						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>";
 					}
 					$previous2=$previous;
 					$previous="parent";
@@ -458,11 +458,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						if ($asc==1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-($lh+$Dbyspacing);
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2+($asc+1)/2*$lh;
-						print "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>\n";
+						print "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny-$asc*$lh;
-						print "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>\n";
+						print "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
 					}
 					$previous2=$previous;
 					$previous="child";
@@ -479,19 +479,19 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				if ($index>0) {
 					if ($TEXT_DIRECTION=="rtl" && $line!=$WT_IMAGES["hline"]) {
 						print "<div id=\"line$index\" dir=\"ltr\" style=\"background:none; position:absolute; right:".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"right\">";
-						print "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\" />\n";
+						print "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
 						print "<br />";
-						print i18n::translate($node["relations"][$index])."\n";
-						print "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />\n";
+						print i18n::translate($node["relations"][$index])."";
+						print "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
 					}
 					else {
-						print "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\" />\n";
+						print "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
 						print "<br />";
-						print "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />\n";
+						print "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
 						if ($lh == 3) print "<br />"; // note: $lh==3 means horiz arrow
-						print i18n::translate($node["relations"][$index])."\n";
+						print i18n::translate($node["relations"][$index])."";
 					}
-					print "</div>\n";
+					print "</div>";
 				}
 				// Determine the z-index for this box
 				$boxNum ++;
@@ -503,7 +503,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 
 				print "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
 				print_pedigree_person($pid, 1);
-				print "</td></tr></table></div>\n";
+				print "</td></tr></table></div>";
 			}
 
 			print "<div style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":1px; top:".abs($Dbaseyoffset-70)."px; z-index:1;\">";
@@ -525,5 +525,3 @@ $maxyoffset += 100;
 </script>
 <?php
 print_footer();
-
-?>

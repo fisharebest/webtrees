@@ -179,21 +179,21 @@ class NoteController extends BaseController {
 		// show/hide changes
 		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), encode_url("note.php?nid={$this->nid}&show_changes=yes"));
+				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "note.php?nid={$this->nid}&amp;show_changes=yes");
 				$submenu->addIcon('edit_note');
 			} else {
-				$submenu = new Menu(i18n::translate('Click here to hide changes.'), encode_url("note.php?nid={$this->nid}&show_changes=no"));
+				$submenu = new Menu(i18n::translate('Click here to hide changes.'), "note.php?nid={$this->nid}&amp;show_changes=no");
 				$submenu->addIcon('edit_note');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("note.php?nid={$this->nid}&action=undo"));
+				$submenu = new Menu(i18n::translate('Undo all changes'), "note.php?nid={$this->nid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('notes');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("note.php?nid={$this->nid}&action=accept"));
+				$submenu = new Menu(i18n::translate('Accept all changes'), "note.php?nid={$this->nid}&amp;action=accept");
 				$submenu->addIcon('notes');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -231,7 +231,7 @@ class NoteController extends BaseController {
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("note.php?action=addfav&nid={$this->nid}&gid={$this->nid}"));
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), "note.php?action=addfav&amp;nid={$this->nid}&amp;gid={$this->nid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

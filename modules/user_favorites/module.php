@@ -181,7 +181,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center $TEXT_DIRECTION\">";
 			foreach($userfavs as $key=>$favorite) {
 				if (isset($favorite["id"])) $key=$favorite["id"];
-				$removeFavourite = "<a class=\"font9\" href=\"".encode_url("index.php?ctype={$ctype}&action=deletefav&fv_id={$key}")."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".i18n::translate('Remove')."</a><br />";
+				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".i18n::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".i18n::translate('Remove')."</a><br />";
 				$current_gedcom = $GEDCOM;
 				$GEDCOM = $favorite["file"];
 				$content .= "<tr><td>";
@@ -245,18 +245,18 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= "<tr><td>".i18n::translate('Enter a Person, Family, or Source ID')." <br />";
 		$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\" />";
 
-		$content .= print_findindi_link("gid{$uniqueID}",'',true)."\n";
-		$content .= print_findfamily_link("gid{$uniqueID}",'',true)."\n";
-		$content .= print_findsource_link("gid{$uniqueID}",'',true)."\n";
-		$content .= print_findrepository_link("gid{$uniqueID}",'',true)."\n";
-		$content .= print_findnote_link("gid{$uniqueID}",'',true)."\n";
-		$content .= print_findmedia_link("gid{$uniqueID}",'1','',true)."\n";
+		$content .= print_findindi_link("gid{$uniqueID}",'',true);
+		$content .= print_findfamily_link("gid{$uniqueID}",'',true);
+		$content .= print_findsource_link("gid{$uniqueID}",'',true);
+		$content .= print_findrepository_link("gid{$uniqueID}",'',true);
+		$content .= print_findnote_link("gid{$uniqueID}",'',true);
+		$content .= print_findmedia_link("gid{$uniqueID}",'1','',true);
 
 		$content .= "<br />".i18n::translate('OR<br />Enter a URL and a title');
 		$content .= "<table><tr><td>".translate_fact('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\" /></td></tr>";
 		$content .= "<tr><td>".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\" /></td></tr></table>";
-		if ($block) $content .= "\n</td></tr><tr><td><br />";
-		else $content .= "\n</td><td>";
+		if ($block) $content .= "</td></tr><tr><td><br />";
+		else $content .= "</td><td>";
 		$content .= i18n::translate('Enter an optional note about this favorite');
 		$content .= "<br /><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
 		$content .= "</td></tr></table>";

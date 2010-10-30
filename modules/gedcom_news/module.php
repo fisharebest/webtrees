@@ -122,11 +122,11 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 					break;
 				}
 			}
-			$content .= "<div class=\"news_box\" id=\"{$news['anchor']}\">\n";
+			$content .= "<div class=\"news_box\" id=\"{$news['anchor']}\">";
 
 			// Look for $GLOBALS substitutions in the News title
 			$newsTitle = embed_globals($news['title']);
-			$content .= "<div class=\"news_title\">".PrintReady($newsTitle)."</div>\n";
+			$content .= "<div class=\"news_title\">".PrintReady($newsTitle)."</div>";
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date'])."</div>";
 			if ($news["text"]==strip_tags($news["text"])) {
 				// No HTML?
@@ -137,9 +137,9 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			if(WT_USER_GEDCOM_ADMIN) {
 				$content .= "<hr size=\"1\" />"
 				."<a href=\"javascript:;\" onclick=\"editnews('".$news['id']."'); return false;\">".i18n::translate('Edit')."</a> | "
-				."<a href=\"".encode_url("index.php?action=deletenews&news_id=".$news['id']."&ctype={$ctype}")."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this News entry?')."');\">".i18n::translate('Delete')."</a><br />";
+				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this News entry?')."');\">".i18n::translate('Delete')."</a><br />";
 			}
-			$content .= "</div>\n";
+			$content .= "</div>";
 		}
 		$printedAddLink = false;
 		if (WT_USER_GEDCOM_ADMIN) {
@@ -148,7 +148,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($limit=='date' || $limit=='count') {
 			if ($printedAddLink) $content .= "&nbsp;&nbsp;|&nbsp;&nbsp;";
-			$content .= "<a href=\"".encode_url("index.php?gedcom_news_archive=yes&ctype={$ctype}")."\">".i18n::translate('View archive')."</a>";
+			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">".i18n::translate('View archive')."</a>";
 			$content .= help_link('gedcom_news_archive').'<br />';
 		}
 

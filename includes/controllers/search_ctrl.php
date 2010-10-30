@@ -357,7 +357,7 @@ class SearchController extends BaseController {
 		if (isset ($this->query)) {
 			$record=GedcomRecord::getInstance($this->query);
 			if ($record && $record->canDisplayDetails()) {
-				header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($record->getLinkUrl(), false));
+				header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$record->getRawUrl());
 				exit;
 			}
 		}
@@ -429,28 +429,28 @@ class SearchController extends BaseController {
 			if (count($this->myindilist)==1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
 				$indi=$this->myindilist[0];
 				if (!count_linked_indi($indi->getXref(), 'ASSO', $indi->getGedId()) && !count_linked_fam($indi->getXref(), 'ASSO', $indi->getGedId()) && $indi->canDisplayName()) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($indi->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && count($this->myfamlist)==1 && !$this->mysourcelist && !$this->mynotelist) {
 				$fam=$this->myfamlist[0];
 				if ($fam->canDisplayName()) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($fam->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$fam->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist)==1 && !$this->mynotelist) {
 				$sour=$this->mysourcelist[0];
 				if ($sour->canDisplayName()) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($sour->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$sour->getRawUrl());
 					exit;
 				}
 			}
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist)==1) {
 				$note=$this->mynotelist[0];
 				if ($note->canDisplayName()) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($note->getLinkUrl(), false));
+					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$note->getRawUrl());
 					exit;
 				}
 			}
@@ -636,7 +636,7 @@ class SearchController extends BaseController {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist)==1 && $this->action!="replace") {
 			$indi=$this->myindilist[0];
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($indi->getLinkUrl(), false));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 			exit;
 		}
 		usort($this->myindilist, array('GedcomRecord', 'Compare'));
@@ -860,11 +860,11 @@ class SearchController extends BaseController {
 												print "<tr><td><table id=\"multiResultsInTbl\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" ><tr>";
 											}
 											$displayed_once = true;
-											print "<td class=\"list_label\" colspan=\"2\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" >".i18n::translate('Site: ')."<a href=\"".encode_url($siteURL)."\" target=\"_blank\">".$siteName."</a>".i18n::translate(' contained the following')."</td></tr>";
+											print "<td class=\"list_label\" colspan=\"2\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" >".i18n::translate('Site: ')."<a href=\"".$siteURL."\" target=\"_blank\">".$siteName."</a>".i18n::translate(' contained the following')."</td></tr>";
 										}
 										print "<tr><td class=\"list_value $TEXT_DIRECTION\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" valign=\"center\" ><ul>";
 										print "<li class=\"$TEXT_DIRECTION\" dir=\"$TEXT_DIRECTION\">";
-										print "<a href=\"".encode_url("{$siteURL}/individual.php?pid={$person->PID}&ged={$serviceClient->gedfile}")."\" target=\"_blank\">";
+										print "<a href=\"{$siteURL}/individual.php?pid={$person->PID}&amp;ged={$serviceClient->gedfile}\" target=\"_blank\">";
 										$pageResultsNum += 1;
 										print "<b>".$person->getFullName()."</b>";
 										if (!empty ($person->PID)) {
@@ -884,14 +884,14 @@ class SearchController extends BaseController {
 
 										/*******************************  Remote Links Per Result *************************************************/
 										if (WT_USER_CAN_EDIT) {
-											print "<td class=\"list_value $TEXT_DIRECTION\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" >"."<ul style=\"list-style: NONE\"><li><a href=\"javascript:;\" "."onclick=\"return open_link('".$key."', '".$person->PID."', '".$person->getFullName()."');\">"."<b>".i18n::translate('Add Local Link')."</b></a></ul></li></td></tr>\n";
+											print "<td class=\"list_value $TEXT_DIRECTION\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" >"."<ul style=\"list-style: NONE\"><li><a href=\"javascript:;\" "."onclick=\"return open_link('".$key."', '".$person->PID."', '".$person->getFullName()."');\">"."<b>".i18n::translate('Add Local Link')."</b></a></ul></li></td></tr>";
 										}
 									}
 								}
 
 								print "</table>";
 
-								print "\n\t\t&nbsp;</td></tr></table>";
+								print "&nbsp;</td></tr></table>";
 							}
 							if ($this->multiTotalResults > 0) {
 								print "</tr><tr><td align=\"left\">Displaying individuals ";
@@ -1012,15 +1012,15 @@ class SearchController extends BaseController {
 		foreach ($inputFieldNames as $key => $value) {
 			$controllerVar = $this->getValue($value);
 			if (!empty ($controllerVar)) {
-				$tempURL .= "&{$value}={$controllerVar}";
+				$tempURL .= "&amp;{$value}={$controllerVar}";
 			}
 		}
-		$tempURL .= "&resultsPageNum={$pageNum}";
+		$tempURL .= "&amp;resultsPageNum={$pageNum}";
 		foreach($this->sgeds as $i=>$key) {
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $key);
-			$tempURL .= "&{$str}=yes";
+			$tempURL .= "&amp;{$str}=yes";
 		}
-		print encode_url($tempURL);
+		print $tempURL;
 	}
 
 	function getValue($varName) {

@@ -97,7 +97,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 					$content.='<tr valign="top">';
 					$content.='<td class="list_value_wrap">'.str_replace('<a', '<a name="'.$todo['date']->MinJD().'"', $todo['date']->Display(false)).'</td>';
 					$name=$record->getListName();
-					$content.='<td class="list_value_wrap" align="'.get_align(WT_GEDCOM).'"><a href="'.encode_url($record->getLinkUrl()).'">'.PrintReady($name).'</a></td>';
+					$content.='<td class="list_value_wrap" align="'.get_align(WT_GEDCOM).'"><a href="'.$record->getHtmlUrl().'">'.PrintReady($name).'</a></td>';
 					if ($show_unassigned || $show_other) {
 						$content.='<td class="list_value_wrap">'.$user_name.'</td>';
 					}
@@ -182,4 +182,3 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 }
-?>

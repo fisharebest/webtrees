@@ -49,7 +49,7 @@ if (!isset($action)) $action="";
 print_header(i18n::translate('Administration'));
 $pending_changes=WT_DB::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
 if ($pending_changes) {
-	$d_wt_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Accept / Reject Changes').help_link('edit_changes.php')."</a>\n";
+	$d_wt_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Accept / Reject Changes').help_link('edit_changes.php')."</a>";
 } else {
 	$d_wt_changes = '&nbsp;';
 }
@@ -89,12 +89,12 @@ echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_EN
 		if (WT_USER_IS_ADMIN) {
 			if ($verify_msg) {
 				echo "<br />";
-				echo "<a href=\"".encode_url("useradmin.php?action=listusers&filter=admunver")."\" class=\"error\">".i18n::translate('User accounts awaiting verification by admin')."</a>";
+				echo "<a href=\"useradmin.php?action=listusers&amp;filter=admunver"."\" class=\"error\">".i18n::translate('User accounts awaiting verification by admin')."</a>";
 				echo "<br /><br />";
 			}
 			if ($warn_msg) {
 				echo "<br />";
-				echo "<a href=\"".encode_url("useradmin.php?action=listusers&filter=warnings")."\" class=\"error\" >".i18n::translate('One or more user accounts have warnings')."</a>";
+				echo "<a href=\"useradmin.php?action=listusers&amp;filter=warnings"."\" class=\"error\" >".i18n::translate('One or more user accounts have warnings')."</a>";
 				echo "<br /><br />";
 			}
 		}

@@ -579,7 +579,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$titleLength = strpos($mytitle."\n", "\n");
 	$title = substr($mytitle, 0, $titleLength);
 
-	$imgurl = "http://chart.apis.google.com/chart?cht=bvg&chs=950x300&chf=bg,s,ffffff00|c,s,ffffff00&chtt=".$title."&".$datastring."&".$colorstring."&chbh=";
+	$imgurl = "http://chart.apis.google.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".$title."&amp;".$datastring."&amp;".$colorstring."&amp;chbh=";
 	if (count($ydata) > 3) {
 		$imgurl .= "5,1";
 	} elseif (count($ydata) < 2) {
@@ -587,7 +587,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	} else {
 		$imgurl .= "20,3";
 	}
-	$imgurl .= "&chxt=x,x,y,y&chxl=0:|";
+	$imgurl .= "&amp;chxt=x,x,y,y&amp;chxl=0:|";
 	for($i=0; $i<count($xdata); $i++) {
 		$imgurl .= $xdata[$i]."|";
 	}
@@ -618,7 +618,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	//only show legend if y-data is non-2-dimensional
 	if (count($ydata) > 1) {
-		$imgurl .= "&chdl=";
+		$imgurl .= "&amp;chdl=";
 		for($i=0; $i<count($legend); $i++){
 			$imgurl .= $legend[$i];
 			if (!($i == (count($legend)-1))){
@@ -630,7 +630,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	//$title = strstr($mytitle, '|', true);
 	$title = substr($mytitle, 0, strpos($mytitle, '|'));
 	echo "<center><div class=\"statistics_chart\">";
-	echo "<img src=\"", encode_url($imgurl), "\" width=\"950\" height=\"300\" border=\"0\" alt=\"", $title, "\" title=\"", $title, "\"/>";
+	echo "<img src=\"", $imgurl, "\" width=\"950\" height=\"300\" border=\"0\" alt=\"", $title, "\" title=\"", $title, "\"/>";
 	echo "</div></center><br /><br />";
 }
 
@@ -956,5 +956,5 @@ default:
 }
 echo "<br /><div class =\"center noprint\">";
 echo "<input type=\"button\" value=\"", i18n::translate('Close Window'), "\" onclick=\"window.close()\" /><br /><br />";
-echo "</div>\n";
+echo "</div>";
 print_simple_footer();

@@ -134,7 +134,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						case 'SOUR':
 						case 'OBJE':
 							$content.=$block ? '<br />' : ' ';
-							$content.='<a href="'.encode_url($record->getLinkUrl().'&show_changes=yes').'">'.i18n::translate('View Change Diff').'</a>';
+							$content.='<a href="'.$record->getHtmlUrl().'&amp;show_changes=yes'.'">'.i18n::translate('View Change Diff').'</a>';
 							break;
 						}
 						$content.='<br />';
@@ -199,4 +199,3 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 }
-?>

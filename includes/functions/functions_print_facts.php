@@ -141,8 +141,8 @@ function print_fact(&$eventObj, $noedit=false) {
 		$factref = $fact;
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
-		echo "\n\t\t<tr class=\"", $rowID, "\">";
-		echo "\n\t\t\t<td class=\"descriptionbox $styleadd width20\">";
+		echo "<tr class=\"", $rowID, "\">";
+		echo "<td class=\"descriptionbox $styleadd width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
@@ -165,7 +165,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		else $factref = $fact;
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
-		echo "\n\t\t<tr class=\"", $rowID, "\">";
+		echo "<tr class=\"", $rowID, "\">";
 		echo "<td class=\"descriptionbox $styleadd width20\">";
 		if ($SHOW_FACT_ICONS)
 			echo $eventObj->Icon(), ' ';
@@ -215,7 +215,7 @@ function print_fact(&$eventObj, $noedit=false) {
 		if (preg_match("/_WTS @(.*)@/", $factrec, $match)) {
 			$spouse=Person::getInstance($match[1]);
 			if ($spouse) {
-				echo " <a href=\"", encode_url($spouse->getLinkUrl()), "\">";
+				echo " <a href=\"", $spouse->getHtmlUrl(), "\">";
 				if ($spouse->canDisplayName()) {
 					echo PrintReady($spouse->getFullName());
 				} else {
@@ -225,7 +225,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			}
 			if ($spouse) echo " - ";
 			if (empty($SEARCH_SPIDER)) {
-				echo "<a href=\"", encode_url("family.php?famid={$pid}"), "\">";
+				echo "<a href=\"family.php?famid={$pid}\">";
 				echo i18n::translate('View Family');
 				echo "</a>";
 				echo "<br />";
@@ -241,7 +241,7 @@ function print_fact(&$eventObj, $noedit=false) {
 				$gedrec=GedcomRecord::getInstance($match[1]);
 				if (is_object($gedrec)) {
 					if ($gedrec->getType()=='INDI') {
-						echo '<a href="', encode_url($gedrec->getLinkUrl()), '">', $gedrec->getFullName(), '</a><br />';
+						echo '<a href="', $gedrec->getHtmlUrl(), '">', $gedrec->getFullName(), '</a><br />';
 					} elseif ($fact=='REPO') {
 						print_repository_record($match[1]);
 					} else {
@@ -294,14 +294,14 @@ function print_fact(&$eventObj, $noedit=false) {
 		if ($ct>0) echo PrintReady($match[1]);
 		// -- print PLACe, TEMPle and STATus
 		echo '<div class="place">', format_fact_place($eventObj, true, true, true), '</div>';
-		if (preg_match("/ (PLAC)|(STAT)|(TEMP)|(SOUR) /", $factrec)>0 || ($event && $fact!="ADDR")) print "<br />\n";
+		if (preg_match("/ (PLAC)|(STAT)|(TEMP)|(SOUR) /", $factrec)>0 || ($event && $fact!="ADDR")) print "<br />";
 		// -- print BURIal -> CEMEtery
 		$ct = preg_match("/2 CEME (.*)/", $factrec, $match);
 		if ($ct>0) {
 			if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/CEME.gif"))
 				//echo $eventObj->Icon(), ' '; // echo incorrect fact icon !!!
 				echo "<img src=\"".WT_THEME_DIR."images/facts/CEME.gif\" alt=\"".translate_fact('CEME')."\" title=\"".translate_fact('CEME')."\" align=\"middle\" /> ";
-			echo "<b>", translate_fact('CEME'), ":</b> ", $match[1], "<br />\n";
+			echo "<b>", translate_fact('CEME'), ":</b> ", $match[1], "<br />";
 		}
 		//-- print address structure
 		if ($fact!="ADDR") {
@@ -331,7 +331,7 @@ function print_fact(&$eventObj, $noedit=false) {
 			echo "<br/><span class=\"label\">", translate_fact('FAMC'), ":</span> ";
 			$family=Family::getInstance($match[1]);
 			if ($family) { // May be a pointer to a non-existant record
-				echo '<a href="', $family->getLinkUrl(), '">', $family->getFullName(), '</a>';
+				echo '<a href="', $family->getHtmlUrl(), '">', $family->getFullName(), '</a>';
 			} else {
 				echo '<span class="error">', $match[1], '</span>';
 			}
@@ -407,7 +407,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	}
 	echo "<br />";
 	echo "</td>";
-	echo "\n\t\t</tr>";
+	echo "</tr>";
 }
 //------------------- end print fact function
 
@@ -438,7 +438,7 @@ function print_submitter_info($sid) {
 function print_repository_record($xref) {
 	$repository=Repository::getInstance($xref);
 	if ($repository && $repository->canDisplayDetails()) {
-		echo '<a class="field" href="', $repository->getLinkUrl(), '">', $repository->getFullName(), '</a><br />';
+		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br />';
 		print_address_structure($repository->getGedcomRecord(), 1);
 		print_fact_notes($repository->getGedcomRecord(), 1);
 	}
@@ -483,7 +483,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$srec = substr($factrec, $spos1, $spos2-$spos1);
 			$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
 			$data .= "<br />";
-			$data .= "\n\t\t<span class=\"label\">";
+			$data .= "<span class=\"label\">";
 			$elementID = $sid."-".floor(microtime()*1000000);
 			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
 			if ($lt>0) {
@@ -494,7 +494,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$data .= i18n::translate('Source').":</span> <span class=\"field\">";
 			$source=Source::getInstance($sid);
 			if ($source) {
-				$data .= "<a href=\"".encode_url($source->getLinkUrl())."\">".PrintReady($source->getFullName())."</a>";
+				$data .= "<a href=\"".$source->getHtmlUrl()."\">".PrintReady($source->getFullName())."</a>";
 			} else {
 				$data .= $sid;
 			}
@@ -574,24 +574,24 @@ function print_media_links($factrec, $level, $pid='') {
 				//LBox --------  change for Lightbox Album --------------------------------------------
 				if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
 					$name = trim($row["m_titl"]);
-					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">" . "\n";
+					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
 					require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 					$name = trim($row["m_titl"]);
-					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">" . "\n";
+					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				// extra for Streetview ----------------------------------------
 				} else if (WT_USE_LIGHTBOX && strpos($row["m_file"], 'http://maps.google.')===0) {
 					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
 				// --------------------------------------------------------------------------------------
 				} else if ($USE_MEDIA_VIEWER) {
-					echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
+					echo "<a href=\"mediaviewer.php?mid={$media_id}\">";
 				} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
 					echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
 				// extra for Streetview ----------------------------------------
 				} else if (strpos($row["m_file"], 'http://maps.google.')===0) {
 					echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
 				} else {
-					echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
+					echo "<a href=\"mediaviewer.php?mid={$media_id}\">";
 				}
 
 				echo "<img src=\"", $thumbnail, "\" border=\"0\" align=\"" , $TEXT_DIRECTION== "rtl"?"right": "left" , "\" class=\"thumbnail\"";
@@ -613,7 +613,7 @@ function print_media_links($factrec, $level, $pid='') {
 			}
 			echo "</td><td>";
 			if(empty($SEARCH_SPIDER)) {
-				echo "<a href=\"", encode_url("mediaviewer.php?mid={$media_id}"), "\">";
+				echo "<a href=\"mediaviewer.php?mid={$media_id}\">";
 			}
 			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<i>" , getLRM() ,  PrintReady($mediaTitle), "</i>";
 			else echo "<i>", PrintReady($mediaTitle), "</i><br />";
@@ -624,15 +624,15 @@ function print_media_links($factrec, $level, $pid='') {
 			echo print_fact_notes($row["m_gedrec"], 1);
 			// NOTE: echo the format of the media
 			if (!empty($row["m_ext"])) {
-				echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $row["m_ext"], "</span>";
+				echo "<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $row["m_ext"], "</span>";
 				if($imgsize[2]!==false) {
-					echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">" , $imgsize[0] , ($TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ") , $imgsize[1] , "</span>";
+					echo "<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">" , $imgsize[0] , ($TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ") , $imgsize[1] , "</span>";
 				}
 			}
 			if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $row["m_gedrec"]), $match)) {
 				$media_date=new GedcomDate($match[1]);
 				$md = $media_date->Display(true);
-				echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
+				echo "<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
 			}
 			$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row["m_gedrec"], $match);
 			if ($ttype>0) {
@@ -643,16 +643,16 @@ function print_media_links($factrec, $level, $pid='') {
 				} else {
 					$mediaType = i18n::translate('Other');
 				}
-				echo "\n\t\t\t<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
+				echo "<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
 			}
 			//echo "</span>";
-			echo "<br />\n";
+			echo "<br />";
 			//-- print spouse name for marriage events
 			$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 			if ($ct>0) {
 				$spouse=Person::getInstance($match[1]);
 				if ($spouse) {
-					echo "<a href=\"", encode_url($spouse->getLinkUrl()), "\">";
+					echo "<a href=\"", $spouse->getHtmlUrl(), "\">";
 					if ($spouse->canDisplayName()) {
 						echo PrintReady($spouse->getFullName());
 					} else {
@@ -665,15 +665,15 @@ function print_media_links($factrec, $level, $pid='') {
 				if ($ct>0) {
 					$famid = trim($match[1]);
 					if(empty($SEARCH_SPIDER)) {
-						echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
-						echo "</a>\n";
+						echo "<a href=\"family.php?famid={$famid}\">", i18n::translate('View Family');
+						echo "</a>";
 					}
 				}
 			}
-			echo "<br />\n";
+			echo "<br />";
 			print_fact_notes($row["m_gedrec"], $nlevel);
 			print_fact_sources($row["m_gedrec"], $nlevel);
-			echo "</td></tr></table>\n";
+			echo "</td></tr></table>";
 		}
 		$objectNum ++;
 	}
@@ -699,9 +699,9 @@ function print_address_structure($factrec, $level) {
 	for($i=0; $i<$ct; $i++) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = "";
-		if ($level>1) $resultText .= "\n\t\t<span class=\"label\">".translate_fact('ADDR').": </span><br /><div class=\"indent\">";
+		if ($level>1) $resultText .= "<span class=\"label\">".translate_fact('ADDR').": </span><br /><div class=\"indent\">";
 		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
-		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1])."<br />\n";
+		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1])."<br />";
 		$resultText .= PrintReady(trim($omatch[$i][1]));
 		$cont = get_cont($nlevel, $arec);
 		if (!empty($cont)) $resultText .= str_replace(array(" ", "<br&nbsp;"), array("&nbsp;", "<br "), PrintReady($cont));
@@ -758,7 +758,7 @@ function print_address_structure($factrec, $level) {
 				$resultText .= "<br />".PrintReady($cmatch[1]);
 			}
 		}
-		if ($level>1) $resultText .= "</div>\n";
+		if ($level>1) $resultText .= "</div>";
 		// Here we can examine the resultant text and remove empty tags
 		echo $resultText;
 	}
@@ -768,36 +768,36 @@ function print_address_structure($factrec, $level) {
 	if ($ct>0) {
 		for($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
-			$resultText .= "\n\t\t<td><span class=\"label\"><b>".translate_fact('PHON').": </b></span></td><td><span class=\"field\">";
+			$resultText .= "<td><span class=\"label\"><b>".translate_fact('PHON').": </b></span></td><td><span class=\"field\">";
 			$resultText .= getLRM() . $omatch[$i][1] . getLRM();
-			$resultText .= "</span></td></tr>\n";
+			$resultText .= "</span></td></tr>";
 		}
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
-			$resultText .= "\n\t\t<td><span class=\"label\"><b>".translate_fact('FAX').": </b></span></td><td><span class=\"field\">";
+			$resultText .= "<td><span class=\"label\"><b>".translate_fact('FAX').": </b></span></td><td><span class=\"field\">";
 			$resultText .= getLRM() . $omatch[$i][1] . getLRM();
-			$resultText .= "</span></td></tr>\n";
+			$resultText .= "</span></td></tr>";
 		}
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
-			$resultText .= "\n\t\t<td><span class=\"label\"><b>".translate_fact('EMAIL').": </b></span></td><td><span class=\"field\">";
-			$resultText .= "<a href=\"mailto:".$omatch[$i][1]."\">".$omatch[$i][1]."</a>\n";
-			$resultText .= "</span></td></tr>\n";
+			$resultText .= "<td><span class=\"label\"><b>".translate_fact('EMAIL').": </b></span></td><td><span class=\"field\">";
+			$resultText .= "<a href=\"mailto:".$omatch[$i][1]."\">".$omatch[$i][1]."</a>";
+			$resultText .= "</span></td></tr>";
 		}
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for($i=0; $i<$ct; $i++) {
 			$resultText .= "<tr>";
-			$resultText .= "\n\t\t<td><span class=\"label\"><b>".translate_fact($omatch[$i][1]).": </b></span></td><td><span class=\"field\">";
-			$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>\n";
-			$resultText .= "</span></td></tr>\n";
+			$resultText .= "<td><span class=\"label\"><b>".translate_fact($omatch[$i][1]).": </b></span></td><td><span class=\"field\">";
+			$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>";
+			$resultText .= "</span></td></tr>";
 		}
 	}
 	$resultText .= "</table>";
@@ -856,11 +856,11 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 				echo "</div>";
 			} else {echo translate_fact($factname, $parent);}
 			echo "</td>";
-			echo "\n\t\t\t<td class=\"optionbox $styleadd wrap\">";
-			//echo "\n\t\t\t<td class=\"facts_value$styleadd\">";
+			echo "<td class=\"optionbox $styleadd wrap\">";
+			//echo "<td class=\"facts_value$styleadd\">";
 			$source=Source::getInstance($sid);
 			if ($source) {
-				echo "<a href=\"", encode_url($source->getLinkUrl()), "\">", PrintReady($source->getFullName()), "</a>";
+				echo "<a href=\"", $source->getHtmlUrl(), "\">", PrintReady($source->getFullName()), "</a>";
 				// PUBL
 				$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
 				if (!empty($text)) {
@@ -879,7 +879,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 				if ($cs>0) {
 					echo "<br /><span class=\"label\">", translate_fact('EVEN'), " </span><span class=\"field\">", $cmatch[1], "</span>";
 					$cs = preg_match("/".($nlevel+1)." ROLE (.*)/", $srec, $cmatch);
-					if ($cs>0) echo "\n\t\t\t<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"label\">", translate_fact('ROLE'), " </span><span class=\"field\">$cmatch[1]</span>";
+					if ($cs>0) echo "<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"label\">", translate_fact('ROLE'), " </span><span class=\"field\">$cmatch[1]</span>";
 				}
 				if ($source) {
 					echo printSourceStructure(getSourceStructure($srec));
@@ -1093,7 +1093,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				}
 				$text .= get_cont(1, $noterec);
 				$text = expand_urls($text);
-				$text = PrintReady($text)." <br />\n";
+				$text = PrintReady($text)." <br />";
 				// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
 				if ( strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php') ) {
 					require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
@@ -1119,7 +1119,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
 				echo help_link('RESN');
 			}
-			echo "<br />\n";
+			echo "<br />";
 			print_fact_sources($nrec, $nlevel);
 		}
 		echo "</td></tr>";
@@ -1347,7 +1347,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$isExternal = isFileExternal($thumbnail);
 
 	$linenum = 0;
-	echo "\n\t\t<tr><td class=\"descriptionbox $styleadd width20\">";
+	echo "<tr><td class=\"descriptionbox $styleadd width20\">";
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($rowm['m_media'], $rowm['m_gedrec'])) && ($styleadd!="change_old")) {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">";
 			echo "<img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". translate_fact('OBJE'). "</a>";
@@ -1411,7 +1411,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 
 	if(empty($SEARCH_SPIDER)) {
-		echo "<a href=\"", encode_url("mediaviewer.php?mid={$rowm['m_media']}"), "\">";
+		echo "<a href=\"mediaviewer.php?mid={$rowm['m_media']}\">";
 	}
 	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
 		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle));
@@ -1420,10 +1420,10 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
-	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle));
+	if (!empty($addtitle)) echo "<br />", PrintReady(htmlspecialchars($addtitle));
 	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
-	if (!empty($addtitle)) echo "<br />\n", PrintReady(htmlspecialchars($addtitle));
+	if (!empty($addtitle)) echo "<br />", PrintReady(htmlspecialchars($addtitle));
 	echo "</i>";
 	if(empty($SEARCH_SPIDER)) {
 		echo "</a>";
@@ -1431,15 +1431,15 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	// NOTE: echo the format of the media
 	if (!empty($rowm["m_ext"])) {
-		echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $rowm["m_ext"], "</span>";
+		echo "<br /><span class=\"label\">", translate_fact('FORM'), ": </span> <span class=\"field\">", $rowm["m_ext"], "</span>";
 		if(isset($imgsize) and $imgsize[2]!==false) {
-			echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM(). " ") : " x ", $imgsize[1], "</span>";
+			echo "<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM(). " ") : " x ", $imgsize[1], "</span>";
 		}
 	}
 	if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $rowm["m_gedrec"]), $match)) {
 		$media_date=new GedcomDate($match[1]);
 		$md = $media_date->Display(true);
-		echo "\n\t\t\t<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
+		echo "<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
 	}
 	$ttype = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
 	if ($ttype>0) {
@@ -1450,10 +1450,10 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		} else {
 			$mediaType = i18n::translate('Other');
 		}
-		echo "\n\t\t\t<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
+		echo "<br /><span class=\"label\">", i18n::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
 	}
 	echo "</span>";
-	echo "<br />\n";
+	echo "<br />";
 	//-- print spouse name for marriage events
 	if ($rowm['mm_gid']!=$pid) {
 		$spouse=null;
@@ -1467,7 +1467,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			}
 		}
 		if ($spouse) {
-			echo "<a href=\"", $spouse->getLinkUrl(), "\">";
+			echo "<a href=\"", $spouse->getHtmlUrl(), "\">";
 			if ($spouse->canDisplayName()) {
 				echo PrintReady($spouse->getFullName());
 			} else {
@@ -1478,10 +1478,10 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		if(empty($SEARCH_SPIDER)) {
 			if ($spouse) echo " - ";
 			$famid = $rowm['mm_gid'];
-			echo "<a href=\"", encode_url("family.php?famid={$famid}"), "\">", i18n::translate('View Family');
-			echo "</a>\n";
+			echo "<a href=\"family.php?famid={$famid}\">", i18n::translate('View Family');
+			echo "</a>";
 		}
-		echo "<br />\n";
+		echo "<br />";
 	}
 	//-- don't show _PRIM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
@@ -1489,7 +1489,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		if (!empty($prim)) {
 			echo "<span class=\"label\">", translate_fact('_PRIM'), ":</span> ";
 			if ($prim=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
-			echo "<br />\n";
+			echo "<br />";
 		}
 	}
 	//-- don't show _THUM option to regular users
@@ -1498,7 +1498,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		if (!empty($thum)) {
 			echo "<span class=\"label\">", translate_fact('_THUM'), ":</span> ";
 			if ($thum=="Y") echo i18n::translate('Yes'); else echo i18n::translate('No');
-			echo "<br />\n";
+			echo "<br />";
 		}
 	}
 	print_fact_notes($rowm["m_gedrec"], 1);

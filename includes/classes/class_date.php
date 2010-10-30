@@ -604,30 +604,31 @@ class CalendarDate {
 	// Create a URL that links this date to the WT calendar
 	function CalendarURL($date_fmt="") {
 		global $DATE_FORMAT;
-		if (empty($date_fmt))
+		if (empty($date_fmt)) {
 			$date_fmt=$DATE_FORMAT;
+		}
 		$URL='calendar.php?cal='.$this->CALENDAR_ESCAPE();
 		$action="year";
 		if (strpos($date_fmt, "Y")!==false
 		||  strpos($date_fmt, "y")!==false) {
-			$URL.='&year='.$this->FormatGedcomYear();
+			$URL.='&amp;year='.$this->FormatGedcomYear();
 		}
 		if (strpos($date_fmt, "F")!==false
 		||  strpos($date_fmt, "M")!==false
 		||  strpos($date_fmt, "m")!==false
 		||  strpos($date_fmt, "n")!==false) {
-			$URL.='&month='.$this->FormatGedcomMonth();
+			$URL.='&amp;month='.$this->FormatGedcomMonth();
 			if ($this->m>0)
 				$action="calendar";
 		}
 		if (strpos($date_fmt, "d")!==false
 		||  strpos($date_fmt, "D")!==false
 		||  strpos($date_fmt, "j")!==false) {
-			$URL.='&day='.$this->FormatGedcomDay();
+			$URL.='&amp;day='.$this->FormatGedcomDay();
 			if ($this->d>0)
 				$action="today";
 		}
-		return encode_url($URL.'&action='.$action);
+		return $URL.'&amp;action='.$action;
 	}
 } // class CalendarDate
 

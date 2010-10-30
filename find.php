@@ -697,7 +697,7 @@ if ($action=="filter") {
 			$levels = explode("/", $thumbdir);
 			$pthumb = "";
 			for($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
-			$uplink = "<a href=\"".encode_url("find.php?directory={$pdir}&thumbdir={$pthumb}&level=".($level-1)."{$thumbget}&type=media&choose={$choose}")."\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a><br />";
+			$uplink = "<a href=\"find.php?directory={$pdir}&amp;thumbdir={$pthumb}&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a><br />";
 		}
 
 		// Start of media directory table
@@ -720,11 +720,11 @@ if ($action=="filter") {
 				echo $uplink, "</td></tr>";
 			}
 			echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION\" colspan=\"2\">";
-			echo "<a href=\"", encode_url("find.php?directory={$directory}&thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&level={$level}{$thumbget}&external_links=http&type=media&choose={$choose}"), "\">", i18n::translate('External objects'), "</a>";
+			echo "<a href=\"find.php?directory={$directory}&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}\">", i18n::translate('External objects'), "</a>";
 			echo "</td></tr>";
 			foreach ($dirs as $indexval => $dir) {
 				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
-				echo "<a href=\"", encode_url("find.php?directory={$directory}{$dir}/&thumbdir={$directory}{$dir}/&level=".($level+1)."{$thumbget}&type=media&choose={$choose}"), "\"><span dir=\"ltr\">", $dir, "</span></a>";
+				echo "<a href=\"find.php?directory={$directory}{$dir}/&amp;thumbdir={$directory}{$dir}/&amp;level=".($level+1)."{$thumbget}&amp;type=media&amp;choose={$choose}\"><span dir=\"ltr\">", $dir, "</span></a>";
 				echo "</td></tr>";
 			}
 		}
@@ -800,7 +800,7 @@ if ($action=="filter") {
 							foreach ($media["LINKS"] as $indi => $type_record) {
 								if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
 								$record=GedcomRecord::getInstance($indi);
-								echo '<br /><a href="', encode_url($record->getLinkUrl()), '">';
+								echo '<br /><a href="', $record->getHtmlUrl(), '">';
 								switch($type_record) {
 								case 'INDI':
 									echo i18n::translate('View Person'), ' - ';
@@ -879,7 +879,7 @@ if ($action=="filter") {
 		if ($repo_list) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			foreach ($repo_list as $repo) {
-				echo '<li><a href="', $repo->getLinkUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getListName(),'</span></a></li>';
+				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getListName(),'</span></a></li>';
 			}
 			echo "</ul></td></tr>";
 			echo "<tr><td class=\"list_label\">", i18n::translate('Repositories found'), " ", count($repo_list);
@@ -905,7 +905,7 @@ if ($action=="filter") {
 			usort($mynotelist, array('GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mynotelist as $note) {
-				echo '<li><a href="', $note->getLinkUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getListName(),'</span></a></li>';
+				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getListName(),'</span></a></li>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Shared Notes found'), ' ', count($mynotelist), '</td></tr>';
 		}
@@ -927,7 +927,7 @@ if ($action=="filter") {
 			usort($mysourcelist, array('GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mysourcelist as $source) {
-				echo '<li><a href="', $source->getLinkUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';
+				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total Sources'), ' ', count($mysourcelist), '</td></tr>';
 		}

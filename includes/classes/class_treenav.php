@@ -114,9 +114,9 @@ class TreeNav {
 							$fam = null;
 							$this->drawPerson($father, 2, 1, $fam);
 						}
-						else print "<br />\n";
+						else print "<br />";
 					}
-					else print "<br />\n";
+					else print "<br />";
 				}
 				else {
 					$spouse = $person->getCurrentSpouse();
@@ -128,11 +128,11 @@ class TreeNav {
 								$fam = null;
 								$this->drawPerson($mother, 2, 1, $fam);
 							}
-							else print "<br />\n";
+							else print "<br />";
 						}
-						else print "<br />\n";
+						else print "<br />";
 					}
-					else print "<br />\n";
+					else print "<br />";
 				}
 			}
 			else {
@@ -307,7 +307,7 @@ class TreeNav {
 			$thumbnail .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 			echo $thumbnail;
 		} ?>
-		<a href="<?php print $person->getLinkUrl(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;"><?php print $person->getSexImage().PrintReady($name); ?></a>
+		<a href="<?php print $person->getHtmlUrl(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;"><?php print $person->getSexImage().PrintReady($name); ?></a>
 		<img src="<?php print WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"];?>" border="0" width="15" onclick="<?php print $this->name;?>.newRoot('<?php print $person->getXref();?>', <?php print $this->name;?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
 		</span><br />
 		<div class="details1 indent">
@@ -345,7 +345,7 @@ class TreeNav {
 					$thumbnail .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
 					echo $thumbnail;
 				} ?>
-				<a href="<?php print $spouse->getLinkUrl(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;">
+				<a href="<?php print $spouse->getHtmlUrl(); ?>" onclick="if (!<?php print $this->name;?>.collapseBox) return false;">
 				<?php print $spouse->getSexImage().PrintReady($name); ?></a>
 				<img src="<?php print WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"];?>" border="0" width="15" onclick="<?php print $this->name;?>.newRoot('<?php print $spouse->getXref();?>', <?php print $this->name;?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
 				<br />
@@ -428,7 +428,7 @@ class TreeNav {
 				$imgheight = $imgsize[1]+150;
 
 				if (!empty($object['mid']) && $USE_MEDIA_VIEWER) {
-					$thumbnail .= "<a href=\"".encode_url("mediaviewer.php?mid=".$object['mid'])."\" >";
+					$thumbnail .= "<a href=\"mediaviewer.php?mid=".$object['mid']."\" >";
 				} else {
 					$thumbnail .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."',$imgwidth, $imgheight);\">";
 				}
@@ -516,8 +516,8 @@ class TreeNav {
 							if (!is_null($spouse)) {
 								$name = $spouse->getFullName();
 								print PrintReady($spouse->getSexImage('small', $style)." ".$name);
-								print "<br />\n";
-							} else print "<br />\n";
+								print "<br />";
+							} else print "<br />";
 						}
 						?>
 						</div>
@@ -540,7 +540,7 @@ class TreeNav {
 								<tr>
 									<?php /* there is a IE JavaScript bug where the "id" has to be the same as the "name" in order to use the document.getElementsByName() function */ ?>
 									<td <?php if ($gen==0 && !empty($father)) print 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'f\');"'; ?>>
-										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else print "<br />\n";?>
+										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else print "<br />";?>
 									</td>
 								</tr>
 								<?php
@@ -558,7 +558,7 @@ class TreeNav {
 								?>
 								<tr>
 									<td <?php if ($gen==0 && !empty($mother)) print 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'m\');"'; ?>>
-										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else print"<br />\n";?>
+										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else print"<br />";?>
 									</td>
 								</tr>
 								<?php } } ?>
@@ -643,7 +643,7 @@ class TreeNav {
 						?><br />
 						<?php if (!is_null($spouse)) {$name = $spouse->getFullName();
 						print PrintReady($spouse->getSexImage('small', $style)." ".$name);
-						} else print "<br />\n"; ?>
+						} else print "<br />"; ?>
 
 						</div>
 					</td>
@@ -665,13 +665,13 @@ class TreeNav {
 								<tr>
 									<?php /* there is a IE JavaScript bug where the "id" has to be the same as the "name" in order to use the document.getElementsByName() function */ ?>
 									<td <?php if ($gen==0 && !empty($father)) print 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'f\');"'; ?>>
-										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else print "<br />\n";?>
+										<?php if (!empty($father)) $this->drawPerson($father, $gen-1, 1, $cfamily); else print "<br />";?>
 									</td>
 								</tr>
 								<tr>
 								<?php /* print the mother */ ?>
 									<td <?php if ($gen==0 && !empty($mother)) print 'id="'.$this->name.'_pload" name="'.$this->name.'_pload" onclick="'.$this->name.'.loadParent(this, \''.$person->getXref().'\', \'m\');"'; ?>>
-										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else print"<br />\n";?>
+										<?php if (!empty($mother)) $this->drawPerson($mother, $gen-1, 1, $mcfamily); else print"<br />";?>
 									</td>
 								</tr>
 							</tbody>

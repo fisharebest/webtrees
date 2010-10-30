@@ -173,21 +173,21 @@ class RepositoryController extends BaseController {
 		// show/hide changes
 		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), encode_url("repo.php?rid={$this->rid}&show_changes=yes"));
+				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "repo.php?rid={$this->rid}&amp;show_changes=yes");
 				$submenu->addIcon('edit_repo');
 			} else {
-				$submenu = new Menu(i18n::translate('Click here to hide changes.'), encode_url("repo.php?rid={$this->rid}&show_changes=no"));
+				$submenu = new Menu(i18n::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
 				$submenu->addIcon('edit_repo');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("repo.php?rid={$this->rid}&action=undo"));
+				$submenu = new Menu(i18n::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_repo');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("repo.php?rid={$this->rid}&action=accept"));
+				$submenu = new Menu(i18n::translate('Accept all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
 				$submenu->addIcon('edit_repo');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -225,7 +225,7 @@ class RepositoryController extends BaseController {
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url("repo.php?action=addfav&rid={$this->rid}&gid={$this->rid}"));
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

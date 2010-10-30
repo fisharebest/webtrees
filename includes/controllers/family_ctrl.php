@@ -235,7 +235,7 @@ class FamilyController extends BaseController {
 			$link .= 'pids[0]='.$husb;
 			$c++;
 			if ($wife) {
-				$link .= '&pids[1]='.$wife;
+				$link .= '&amp;pids[1]='.$wife;
 				$c++;
 			}
 		} else if ($wife) {
@@ -244,7 +244,7 @@ class FamilyController extends BaseController {
 		}
 
 		// charts menu
-		$menu = new Menu(i18n::translate('Charts'), encode_url('timeline.php?'.$link));
+		$menu = new Menu(i18n::translate('Charts'), 'timeline.php?'.$link);
 		$menu->addIcon('timeline');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		// Build a sortable list of submenu items and then sort it in localized name order
@@ -260,7 +260,7 @@ class FamilyController extends BaseController {
 			switch ($menuType) {
 			case "parentTimeLine":
 				// charts / parents_timeline
-				$submenu = new Menu(i18n::translate('Show couple on timeline chart'), encode_url('timeline.php?'.$link));
+				$submenu = new Menu(i18n::translate('Show couple on timeline chart'), 'timeline.php?'.$link);
 				$submenu->addIcon('timeline');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -268,7 +268,7 @@ class FamilyController extends BaseController {
 
 			case "childTimeLine":
 				// charts / children_timeline
-				$submenu = new Menu(i18n::translate('Show children on timeline chart'), encode_url('timeline.php?'.$this->getChildrenUrlTimeline()));
+				$submenu = new Menu(i18n::translate('Show children on timeline chart'), 'timeline.php?'.$this->getChildrenUrlTimeline());
 				$submenu->addIcon('timeline');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -276,7 +276,7 @@ class FamilyController extends BaseController {
 
 			case "familyTimeLine":
 				// charts / family_timeline
-				$submenu = new Menu(i18n::translate('Show family on timeline chart'), encode_url('timeline.php?'.$link.'&'.$this->getChildrenUrlTimeline($c)));
+				$submenu = new Menu(i18n::translate('Show family on timeline chart'), 'timeline.php?'.$link.'&amp;'.$this->getChildrenUrlTimeline($c));
 				$submenu->addIcon('timeline');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -336,22 +336,22 @@ class FamilyController extends BaseController {
 		if (find_updated_record($this->getFamilyID(), WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
 				$label = i18n::translate('This record has been updated.  Click here to show changes.');
-				$link = $this->family->getLinkUrl().'&show_changes=yes';
+				$link = $this->family->getHtmlUrl().'&amp;show_changes=yes';
 			} else {
 				$label = i18n::translate('Click here to hide changes.');
-				$link = $this->family->getLinkUrl().'&show_changes=no';
+				$link = $this->family->getHtmlUrl().'&amp;show_changes=no';
 			}
-			$submenu = new Menu($label, encode_url($link));
+			$submenu = new Menu($label, $link);
 			$submenu->addIcon('edit_fam');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), encode_url("family.php?famid={$this->famid}&action=undo"));
+				$submenu = new Menu(i18n::translate('Undo all changes'), "family.php?famid={$this->famid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_fam');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Accept all changes'), encode_url("family.php?famid={$this->famid}&action=accept"));
+				$submenu = new Menu(i18n::translate('Accept all changes'), "family.php?famid={$this->famid}&amp;action=accept");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -389,7 +389,7 @@ class FamilyController extends BaseController {
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), encode_url('family.php?action=addfav&famid='.$this->getFamilyID().'&gid='.$this->getFamilyID()));
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), 'family.php?action=addfav&amp;famid='.$this->getFamilyID().'&gamp;id='.$this->getFamilyID());
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

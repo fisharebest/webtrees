@@ -110,7 +110,7 @@ if ($action=='login') {
 		$url .= "&ged=".$ged;
 		$url = str_replace(array("&&", ".php&", ".php?&"), array("&", ".php?", ".php?"), $url);
 
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($url, false));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
 		exit;
 	} else {
 		$message = i18n::translate('Unable to authenticate user.');
@@ -146,7 +146,7 @@ if ($type=="full") {
 } else {
 	print_simple_header(i18n::translate('webtrees user login'));
 }
-echo "<div class=\"center\">\n";
+echo "<div class=\"center\">";
 
 echo "<table class=\"center width60 ltr\"><tr><td>";
 switch ($WELCOME_TEXT_AUTH_MODE){
@@ -176,7 +176,7 @@ echo '</td></tr></table><br /><br />';
 		<input type="hidden" name="type" value="<?php print htmlspecialchars($type); ?>" />
 		<input type="hidden" name="usertime" value="" />
 		<?php
-		if (!empty($message)) print "<span class='error'><br /><b>$message</b><br /><br /></span>\r\n";
+		if (!empty($message)) print "<span class='error'><br /><b>$message</b><br /><br /></span>";
 		?>
 		<!--table-->
 		<table class="center facts_table width50">

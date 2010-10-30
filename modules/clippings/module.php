@@ -74,36 +74,36 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			return new Menu("", "", "");
 		}
 		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), encode_url('module.php?mod=clippings&mod_action=index&amp;ged='.$GEDCOM), "down");
+		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.$GEDCOM, "down");
 		$menu->addIcon('clippings');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_clippings");
 		if (isset($controller->indi) && $controller->indi->canDisplayDetails()) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->pid}&type=indi"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->pid}&amp;type=indi");
 			$submenu->addIcon('clippings');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->family) && $controller->family->canDisplayDetails()) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->famid}&type=fam"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->famid}&amp;type=fam");
 			$submenu->addIcon('clippings');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->mediaobject) && $controller->mediaobject->canDisplayDetails()) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->mid}&type=obje"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->mid}&amp;type=obje");
 			$submenu->addIcon('clippings');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->source) && $controller->source->canDisplayDetails()) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->sid}&type=sour"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->sid}&amp;type=sour");
 			$submenu->addIcon('clippings');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->note) && $controller->note->canDisplayDetails()) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->nid}&type=note"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->nid}&amp;type=note");
 			$submenu->addIcon('clippings');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->repository) && $controller->repository->canDisplayDetails()) {
-			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), encode_url("module.php?mod=clippings&mod_action=index&action=add&id={$controller->rid}&type=repo"));
+			$submenu = new Menu(i18n::translate('Add to Clippings Cart'), "module.php?mod=clippings&mod_action=index&action=add&id={$controller->rid}&type=repo");
 			$submenu->addIcon('clippings');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
 			$menu->addSubmenu($submenu);
@@ -315,7 +315,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						}
 						$record=GedcomRecord::getInstance($clipping['id']);
 						if ($record) {
-							$out .= '<a href="'.encode_url($record->getLinkUrl()).'">';
+							$out .= '<a href="'.$record->getHtmlUrl().'">';
 							if ($record->getType()=="INDI") $out .=$record->getSexImage();
 							$out .= ' '.$record->getFullName().' ';
 							if ($record->getType()=="INDI" && $record->canDisplayDetails()) {

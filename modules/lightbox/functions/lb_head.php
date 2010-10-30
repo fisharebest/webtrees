@@ -100,7 +100,6 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 				print "</a>";
 				print "</td>";
 				// print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
 				print "<a href=\"javascript:goto_config_lightbox()\">";
@@ -108,13 +107,11 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 				print "</a>";
 				print "</td>";
 	        //    print "<td width=\"5%\">&nbsp;</td>";
-	            print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
 				print "&nbsp;&nbsp;&nbsp;";
 	            print "<a href=\"javascript:goto_config_lightbox()\">";
 				print "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".i18n::translate('Lightbox-Album Configuration')."\" alt=\"".i18n::translate('Lightbox-Album Configuration')."\" />" ;
 				print "</a>";
-				print "\n";
 			}
         }
 
@@ -128,7 +125,6 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 	            print " </a> ";
 	            print "</td>";
 	            //print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
 	            print "<a href=\"javascript: album_add()\"> ";
@@ -136,13 +132,11 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 	            print " </a> ";
 	            print "</td>";
 	            //print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
 				print "&nbsp;&nbsp;&nbsp;";
 	            print "<a href=\"javascript: album_add()\"> ";
 				print "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".i18n::translate('Add a new Multimedia Object to this Individual')."\" />" ;
 	            print "</a>";
-				print "\n";
 			}
         }
 
@@ -156,7 +150,6 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 	            print " </a> ";
 	            print "</td>";
 				//    print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
 	            print "<a href=\"javascript: album_link()\"> ";
@@ -169,7 +162,6 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 	            print "<a href=\"javascript: album_link()\">";
 				print "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".i18n::translate('Link this Individual to an existing Multimedia Object')."\" />" ;
 	            print "</a> ";
-				print "\n";
 			}else{
 			}
         }
@@ -178,25 +170,23 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 		if (WT_USER_CAN_EDIT) {
 			if ($LB_AL_HEAD_LINKS == "both") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"".encode_url(WT_SCRIPT_NAME."?pid={$pid}&tab={$tabno}&reorder=1")."\">" ;
+				print "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
 				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media')."\" alt=\"".i18n::translate('Re-order media')."\" /><br />" ;
 				print "" . i18n::translate('Re-order media') . "&nbsp;";
 				print '</a>';
 				print "</td>";
 				// print "<input type=\"hidden\" name=\"reorder\" value=\"1\" />";
 				//print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
-				print "<a href=\"".encode_url(WT_SCRIPT_NAME."?pid={$pid}&tab={$tabno}&reorder=1")."\">" ;
+				print "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
 				print "" . i18n::translate('Re-order media') . "&nbsp;";
 				print '</a>';
 				print "</td>";
 				//print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
 				print "&nbsp;&nbsp;&nbsp;";
-				print "<a href=\"".encode_url(WT_SCRIPT_NAME."?pid={$pid}&tab={$tabno}&reorder=1")."\">" ;
+				print "<a href=\"".WT_SCRIPT_NAME."?pid={$pid}&amp;tab={$tabno}&amp;reorder=1\">" ;
 				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media')."\" alt=\"".i18n::translate('Re-order media')."\" />" ;
 				print '</a>';
 				//print "<td width=\"5%\">&nbsp;</td>";
@@ -215,7 +205,6 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 				print '</a>';
 				print "</td>";
 				//print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "text") {
 				print "<td class=\"width15 center wrap\" valign=\"top\">";
 				print "<a href=\"javascript: reorder_media()\">" ;
@@ -224,14 +213,12 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 				print '</a>';
 				print "</td>";
 				//print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}else if ($LB_AL_HEAD_LINKS == "icon") {
 				print "&nbsp;&nbsp;&nbsp;&nbsp;";
 				print "<a href=\"javascript: reorder_media()\">" ;
 				print "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".i18n::translate('Re-order media (window)')."\" alt=\"".i18n::translate('Re-order media (window)')."\" /><br />" ;
 				print '</a>';
 				//print "<td width=\"5%\">&nbsp;</td>";
-				print "\n";
 			}
 		}
 

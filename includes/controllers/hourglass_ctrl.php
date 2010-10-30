@@ -136,7 +136,7 @@ class HourglassController extends BaseController {
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-1));
 		foreach($families as $famid => $family) {
-			print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">\n";
+			print "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$parents = find_parents($famid);
 			$height="100%";
 			print "<tr>";
@@ -156,7 +156,7 @@ class HourglassController extends BaseController {
 			//-- recursively get the father's family
 			$this->print_person_pedigree($parents["HUSB"], $count+1);
 			print "</td>";
-			print "</tr>\n<tr>\n";
+			print "</tr><tr>";
 			print "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
 			print "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 			print "<td>";
@@ -211,7 +211,7 @@ class HourglassController extends BaseController {
 
 		print "<table id=\"table_$pid\" align=\"".$tablealign."\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 		print "<tr>";
-		print "<td align=\"$tablealign\" width=\"100%\">\n";
+		print "<td align=\"$tablealign\" width=\"100%\">";
 		$numkids = 0;
 		$families = $person->getSpouseFamilies();
 		$famcount = count($families);
@@ -262,10 +262,10 @@ class HourglassController extends BaseController {
 					print "</tr>";
 
 				}
-				print "</table>\n";
+				print "</table>";
 
 			}
-			print "</td>\n";
+			print "</td>";
 			print "<td width=\"$bwidth\">";
 		}
 
@@ -274,14 +274,14 @@ class HourglassController extends BaseController {
 			$numkids = 1;
 			$tbwidth = $bwidth+16;
 			for($j=$count; $j<$this->dgenerations; $j++) {
-				print "<div style=\"width: ".($tbwidth)."px;\"><br /></div>\n</td>\n<td width=\"$bwidth\">";
+				print "<div style=\"width: ".($tbwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
 			}
 			$kcount = 0;
 			foreach($families as $famid=>$family) $kcount+=$family->getNumberOfChildren();
 			if ($kcount==0) {
-				print "<div style=\"width: ".($this->arrwidth)."px;\"><br /></div>\n</td>\n<td width=\"$bwidth\">";
+				print "<div style=\"width: ".($this->arrwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
 			} else {
-				print "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\" /></a></div>\n";
+				print "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\" /></a></div>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach($families as $famid => $family) {
@@ -294,7 +294,7 @@ class HourglassController extends BaseController {
 						}
 					}
 				}
-				print "</td>\n<td width=\"$bwidth\">";
+				print "</td><td width=\"$bwidth\">";
 			}
 		}
 
@@ -344,20 +344,20 @@ class HourglassController extends BaseController {
 				}
 				// NOTE: If statement OK
 				if ($num>0) {
-					print "\n\t\t<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
+					print "<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
 					print " style=\"position:absolute; width:".$bwidth."px; \">";
 					print "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
 					print "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" border=\"0\" alt=\"\" />";
 					print "</a><br />";
-					print "\n\t\t<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
-					print "\n\t\t\t<table class=\"person_box\"><tr><td>";
+					print "<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
+					print "<table class=\"person_box\"><tr><td>";
 
 					foreach($famids as $famid=>$family) {
 						if (!is_null($family)) {
 							$spouse = $family->getSpouse($person);
 							if (!empty($spouse)) {
 								$spid = $spouse->getXref();
-								print "\n\t\t\t\t<a href=\"".encode_url("hourglass.php?pid={$spid}&show_spouse={$this->show_spouse}&show_full={$this->show_full}&generations={$this->generations}&box_width={$this->box_width}")."\"><span ";
+								print "<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $spouse->getFullName();
 								$name = rtrim($name);
 								if (hasRTLText($name))
@@ -371,7 +371,7 @@ class HourglassController extends BaseController {
 							$children = $family->getChildren();
 							foreach($children as $id=>$child) {
 								$cid = $child->getXref();
-								print "\n\t\t\t\t&nbsp;&nbsp;<a href=\"".encode_url("hourglass.php?pid={$cid}&show_spouse={$this->show_spouse}&show_full={$this->show_full}&generations={$this->generations}&box_width={$this->box_width}")."\"><span ";
+								print "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $child->getFullName();
 								$name = rtrim($name);
 								if (hasRTLText($name))
@@ -395,7 +395,7 @@ class HourglassController extends BaseController {
 								$husb = $family->getHusband();
 								if (!empty($husb)) {
 									$spid = $husb->getXref();
-									print "\n\t\t\t\t&nbsp;&nbsp;<a href=\"".encode_url("hourglass.php?pid={$spid}&show_spouse={$this->show_spouse}&show_full={$this->show_full}&generations={$this->generations}&box_width={$this->box_width}")."\"><span ";
+									print "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 									$name = $husb->getFullName();
 									$name = rtrim($name);
 									if (hasRTLText($name))
@@ -407,7 +407,7 @@ class HourglassController extends BaseController {
 								$husb = $family->getWife();
 								if (!empty($husb)) {
 									$spid = $husb->getXref();
-									print "\n\t\t\t\t&nbsp;&nbsp;<a href=\"".encode_url("hourglass.php?pid={$spid}&show_spouse={$this->show_spouse}&show_full={$this->show_full}&generations={$this->generations}&box_width={$this->box_width}")."\"><span ";
+									print "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 									$name = $husb->getFullName();
 									$name = rtrim($name);
 									if (hasRTLText($name))
@@ -424,7 +424,7 @@ class HourglassController extends BaseController {
 							foreach($children as $id=>$child) {
 								$cid = $child->getXref();
 								if ($cid!=$pid) {
-									print "\n\t\t\t\t&nbsp;&nbsp;<a href=\"".encode_url("hourglass.php?pid={$cid}&show_spouse={$this->show_spouse}&show_full={$this->show_full}&generations={$this->generations}&box_width={$this->box_width}")."\"><span ";
+									print "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 									$name = $child->getFullName();
 									$name = rtrim($name);
 									if (hasRTLText($name))
@@ -437,9 +437,9 @@ class HourglassController extends BaseController {
 							}
 						}
 					}
-					print "\n\t\t\t</td></tr></table>";
-					print "\n\t\t</div>";
-					print "\n\t\t</div>";
+					print "</td></tr></table>";
+					print "</div>";
+					print "</div>";
 				}
 			}
 		}

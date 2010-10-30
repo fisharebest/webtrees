@@ -330,7 +330,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($stories as $story) {
 				$indi=Person::getInstance($story->xref);
 				if ($indi) {
-					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName()."</a>";
+					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
 					$name=$story->xref;
 				}
@@ -371,7 +371,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($stories as $story) {
 				$indi=Person::getInstance($story->xref);
 				if ($indi) {
-					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName()."</a>";
+					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
 					$name=$story->xref;
 				}

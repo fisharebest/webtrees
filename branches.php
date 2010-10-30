@@ -104,7 +104,7 @@ if ($surn) {
 	echo "</fieldset>";
 	if ($rootid) {
 		$person = Person::getInstance($rootid);
-		echo "<p class=\"center\">", i18n::translate('Pedigree chart root person'), " : <a title=\"", $person->getXref(), "\" href=\"{$person->getLinkUrl()}\">{$person->getFullName()}</a>";
+		echo "<p class=\"center\">", i18n::translate('Pedigree chart root person'), " : <a title=\"", $person->getXref(), "\" href=\"{$person->getHtmlUrl()}\">{$person->getFullName()}</a>";
 		echo "<br />".i18n::translate('Direct line ancestors')." : ", count($_SESSION['user_ancestors']), "</p>";
 	}
 }
@@ -143,7 +143,7 @@ function print_fams($person, $famid=null) {
 		$sosa = "<a dir=$TEXT_DIRECTION target=\"_blank\" class=\"details1 {$person->getBoxStyle()}\" title=\"Sosa\" href=\"relationship.php?pid2=".WT_USER_ROOT_ID."&pid1=".$person->getXref()."\">&nbsp;{$sosa}&nbsp;</a>".sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		"<a target=\"_blank\" class=\"{$class}\" title=\"".$person->getXref()."\" href=\"{$person->getLinkUrl()}\">".PrintReady($person_name)."</a> ".
+		"<a target=\"_blank\" class=\"{$class}\" title=\"".$person->getXref()."\" href=\"{$person->getHtmlUrl()}\">".PrintReady($person_name)."</a> ".
 		$person->getBirthDeathYears()." {$sosa}";
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
@@ -188,7 +188,7 @@ function print_fams($person, $famid=null) {
 			}
 			list($surn2, $givn2) = explode(", ", $spouse_name.", x");
 			$txt .= $spouse->getSexImage().
-				"<a target=\"_blank\" class=\"{$class}\" title=\"".$family->getXref()."\" href=\"{$family->getLinkUrl()}\">".PrintReady($givn2)."</a> ".
+				"<a target=\"_blank\" class=\"{$class}\" title=\"".$family->getXref()."\" href=\"{$family->getHtmlUrl()}\">".PrintReady($givn2)."</a> ".
 				"<a class=\"{$class}\" title=\"{$surn2}\" href=\"javascript:document.surnlist.surn.value='{$surn2}';document.surnlist.submit();\">".PrintReady($surn2)."</a> ".
 				$spouse->getBirthDeathYears()." {$sosa2}";
 		}

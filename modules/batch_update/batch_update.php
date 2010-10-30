@@ -108,7 +108,7 @@ class batch_update {
 						'</table><br/><table class="list_table width100"><tr valign="middle"><td class="list_label center width20">'.
 						self::createSubmitButton(i18n::translate('&lt; Previous'), $this->prev_xref).
 						self::createSubmitButton(i18n::translate('Next &gt;'), $this->next_xref).
-						'</td><td class="optionbox width80"><h1><a href="'.$object->getLinkUrl().'">'.$object->getFullName().'</a>'.
+						'</td><td class="optionbox width80"><h1><a href="'.$object->getHtmlUrl().'">'.$object->getFullName().'</a>'.
 						'</h1></td>'.
 						'</tr><tr><td valign="top" class="list_label center width20">'.
 						'<br/>'.implode('<br/>',$this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'<br/>'.
@@ -371,8 +371,8 @@ class base_plugin {
 
 	// Default previewer for plugins with no custom preview.
 	function getActionPreview($xref, $gedrec) {
-		$old_lines=preg_split('/[\r\n]+/', $gedrec);
-		$new_lines=preg_split('/[\r\n]+/', $this->updateRecord($xref, $gedrec));
+		$old_lines=preg_split('/[\n]+/', $gedrec);
+		$new_lines=preg_split('/[\n]+/', $this->updateRecord($xref, $gedrec));
 		// Find matching lines using longest-common-subsequence algorithm.
 		$lcs=self::LCS($old_lines, $new_lines, 0, count($old_lines)-1, 0, count($new_lines)-1);
 

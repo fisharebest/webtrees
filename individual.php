@@ -80,7 +80,7 @@ function open_link_remote(pid){
 }
 
 function showchanges() {
-	window.location = '<?php echo $controller->indi->getLinkUrl(); ?>&show_changes=yes';
+	window.location = '<?php echo $controller->indi->getRawUrl(); ?>&show_changes=yes';
 }
 <?php } ?>
 
@@ -201,7 +201,7 @@ jQuery(document).ready(function(){
 			if ($controller->indi->isRemote()) {
 				echo '<br />';
 				echo i18n::translate('The information for this individual was linked from a remote site.');//<br />--><!--take this out if you want break the remote site and the fact that it was remote into two separate lines
-				echo '<a href="', encode_url($controller->indi->getLinkUrl()), '">', $controller->indi->getLinkTitle(), '</a>';
+				echo '<a href="', $controller->indi->getHtmlUrl(), '">', $controller->indi->getLinkTitle(), '</a>';
 			}
 			// if indivual is not a remote individual
 			// if information for this individual is based on this local site

@@ -135,7 +135,7 @@ if (isset($_SESSION['Medialist'])) {
 // if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 print_header(i18n::translate('MultiMedia Objects'));
-echo "\n\t<div class=\"center\"><h2>", i18n::translate('MultiMedia Objects'), "</h2></div>\n\t";
+echo "<div class=\"center\"><h2>", i18n::translate('MultiMedia Objects'), "</h2></div>";
 
 // Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
@@ -221,14 +221,14 @@ $_SESSION['Medialist'] = $medialist;
 					else $folder = "ALL";
 				}
 					$folders = array_merge(array("ALL"), get_media_folders());
-					echo "<span dir=\"ltr\"><select name=\"folder\">\n";
+					echo "<span dir=\"ltr\"><select name=\"folder\">";
 				foreach($folders as $f) {
 					echo "<option value=\"", $f, "\"";
 					if ($folder==$f) echo " selected=\"selected\"";
 					echo ">";
 					if ($f=="ALL") echo i18n::translate('All');
 					else echo $f;
-					echo "</option>\n";
+					echo "</option>";
 				}
 				echo "</select></span><br />";
 		//} else echo $MEDIA_DIRECTORY, "<input name=\"folder\" type=\"hidden\" value=\"ALL\" />";
@@ -419,7 +419,7 @@ if ($show == "yes") {
 		if ($start+$count > $ct) $count = $ct-$start;
 	} else $ct = "0";
 
-	echo "\n\t<div align=\"center\">", i18n::translate('Media Objects found'), " ", $ct, " <br /><br />";
+	echo "<div align=\"center\">", i18n::translate('Media Objects found'), " ", $ct, " <br /><br />";
 	if ($ct>0) {
 
 	$currentPage = ((int) ($start / $max)) + 1;
@@ -429,37 +429,37 @@ if ($show == "yes") {
 	$IconRDarrow = "<img src=\"".$WT_IMAGES["rdarrow"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 	$IconLDarrow = "<img src=\"".$WT_IMAGES["ldarrow"]."\" width=\"20\" height=\"20\" border=\"0\" alt=\"\" />";
 
-	print"\n\t<table class=\"list_table\">\n";
+	print"<table class=\"list_table\">";
 
 	// echo page back, page number, page forward controls
 
-	echo "\n<tr><td colspan=\"2\">\n";
-	echo "\n\t<table class=\"list_table width100\">\n";
+	echo "<tr><td colspan=\"2\">";
+	echo "<table class=\"list_table width100\">";
 
-	echo "\n<tr>\n";
+	echo "<tr>";
 
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start=0&amp;max={$max}\">", $IconLDarrow, "</a>";
 			}
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconLarrow, "</a>";
 			}
 		}
 	} else {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$lastStart}&amp;max={$max}\">", $IconRDarrow, "</a>";
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconRarrow, "</a>";
 			}
 		}
 	}
@@ -474,11 +474,11 @@ if ($show == "yes") {
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconRarrow, "</a>";
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$lastStart}&amp;max={$max}\">", $IconRDarrow, "</a>";
 			}
 		}
 	} else {
@@ -486,20 +486,20 @@ if ($show == "yes") {
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconLarrow, "</a>";
 			}
 			if ($currentPage > 1) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start=0&amp;max={$max}\">", $IconLDarrow, "</a>";
 			}
 		}
 	}
 	echo "</td>";
 
-	echo "</tr>\n</table></td></tr>";
+	echo "</tr></table></td></tr>";
 
 	// -- echo the array
-	echo "\n<tr>\n";
+	echo "<tr>";
 
 	for ($i=0; $i<$count; $i++) {
 
@@ -516,10 +516,10 @@ if ($show == "yes") {
 			else $name = basename($media["FILE"]);
 		}
 
-		if ($columns == "1") echo "\n\t\t\t<td class=\"list_value_wrap\" width=\"80%\">";
-		if ($columns == "2") echo "\n\t\t\t<td class=\"list_value_wrap\" width=\"50%\">";
+		if ($columns == "1") echo "<td class=\"list_value_wrap\" width=\"80%\">";
+		if ($columns == "2") echo "<td class=\"list_value_wrap\" width=\"50%\">";
 
-		echo "<table class=\"$TEXT_DIRECTION\">\n\t<tr>\n\t\t<td valign=\"top\" style=\"white-space: normal;\">";
+		echo "<table class=\"$TEXT_DIRECTION\"><tr><td valign=\"top\" style=\"white-space: normal;\">";
 
 		//Get media item Notes
 		$haystack = $media["GEDCOM"];
@@ -539,7 +539,7 @@ if ($show == "yes") {
 		echo '<img src="', $mediaInfo['thumb'], '" align="center" class="thumbnail" border="none"', $mediaInfo['width'];
 		echo ' alt="', PrintReady(htmlspecialchars($name)), '" title="', PrintReady(htmlspecialchars($name)), '" /></a>';
 
-		echo "</td>\n\t\t", '<td class="list_value_wrap" style="border: none;" width="100%">';
+		echo "</td>", '<td class="list_value_wrap" style="border: none;" width="100%">';
 
 		if (WT_USE_LIGHTBOX) {
 			if (WT_USER_CAN_EDIT) {
@@ -559,7 +559,7 @@ if ($show == "yes") {
 					if ($LB_ML_THUMB_LINKS == "both" || $LB_ML_THUMB_LINKS == "text") {
 						echo i18n::translate('Edit Details') ;
 					}
-					echo "</a>" . "\n";
+					echo "</a>";
 					echo "</td>";
 
 					// ---------- Link Media to person, family or source  ---------------
@@ -581,7 +581,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 					if ($LB_ML_THUMB_LINKS == "both" || $LB_ML_THUMB_LINKS == "text") {
 						echo i18n::translate('View Details') ;
 					}
-					echo "</a>" . "\n" ;
+					echo "</a>";
 					echo "</td>";
 
 					echo "</tr></table>";
@@ -624,11 +624,11 @@ Plus other Media Options - MediaViewer page') . "\" />";
 		if (!$isExternal && $media["EXISTS"]) {
 			$imageTypes = array("", "GIF", "JPG", "PNG", "SWF", "PSD", "BMP", "TIFF", "TIFF", "JPC", "JP2", "JPX", "JB2", "SWC", "IFF", "WBMP", "XBM");
 			if (!empty($imgsize[2])) {
-				echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageTypes[$imgsize[2]], "</span>";
+				echo "<span class=\"label\"><br />", i18n::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageTypes[$imgsize[2]], "</span>";
 			} else if (empty($imgsize[2])) {
 				$path_end=substr($media["FILE"], strlen($media["FILE"])-5);
 				$imageType = strtoupper(substr($path_end, strpos($path_end, ".")+1));
-				echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageType, "</span>";
+				echo "<span class=\"label\"><br />", i18n::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageType, "</span>";
 			}
 
 			$fileSize = media_filesize($media["FILE"]);
@@ -636,7 +636,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			echo "&nbsp;&nbsp;&nbsp;<span class=\"field\" style=\"direction: ltr;\">", $sizeString, "</span>";
 
 			if ($imgsize[2]!==false) {
-				echo "\n\t\t\t<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ", $imgsize[1], "</span>";
+				echo "<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ", $imgsize[1], "</span>";
 			}
 		}
 			echo "<div style=\"white-space: normal; width: 95%;\">";
@@ -646,41 +646,41 @@ Plus other Media Options - MediaViewer page') . "\" />";
 
 		PrintMediaLinks($media["LINKS"], "small");
 
-			echo "</td></tr></table>\n";
+			echo "</td></tr></table>";
 			echo "</td>";
-			if ($columns == "1") echo "\n\t\t</tr>\n\t\t<tr>";
+			if ($columns == "1") echo "</tr><tr>";
 			if (($columns == "2") && ($i%2 == 1 && $i < ($count-1)))
-			echo "\n\t\t</tr>\n\t\t<tr>";
+			echo "</tr><tr>";
 	}
-	echo "\n\t\t</tr>";
+	echo "</tr>";
 
 	// echo page back, page number, page forward controls
-	echo "\n<tr><td colspan=\"2\">\n";
+	echo "<tr><td colspan=\"2\">";
 
-	print"\n\t<table class=\"list_table width100\">\n";
-	echo "\n<tr>\n";
+	print"<table class=\"list_table width100\">";
+	echo "<tr>";
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"left":"right", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start=0&amp;max={$max}\">", $IconLDarrow, "</a>";
 			}
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconLarrow, "</a>";
 			}
 		}
 	} else {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$lastStart}&amp;max={$max}\">", $IconRDarrow, "</a>";
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconRarrow, "</a>";
 			}
 		}
 	}
@@ -692,11 +692,11 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconRarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconRarrow, "</a>";
 			}
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$lastStart}&max={$max}"), "\">", $IconRDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$lastStart}&amp;max={$max}\">", $IconRDarrow, "</a>";
 			}
 		}
 	} else {
@@ -704,19 +704,19 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			if ($start>0) {
 				$newstart = $start-$max;
 				if ($start<0) $start = 0;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start={$newstart}&max={$max}"), "\">", $IconLarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start={$newstart}&amp;max={$max}\">", $IconLarrow, "</a>";
 			}
 			if ($currentPage > 1) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo "<a href=\"", encode_url("medialist.php?action=no&search=no&folder={$folder}&sortby={$sortby}&subdirs={$subdirs}&filter1={$filter1}&filter_type={$filter_type}&filter2={$filter2}&columns={$columns}&thumbnail={$thumbnail}&apply_filter={$apply_filter}&start=0&max={$max}"), "\">", $IconLDarrow, "</a>\n";
+				echo "<a href=\"medialist.php?action=no&amp;search=no&amp;folder=", rawurlencode($folder), "&amp;sortby={$sortby}&amp;subdirs={$subdirs}&amp;filter1=", rawurlencode($filter1), "&amp;filter_type={$filter_type}&amp;filter2=", rawurlencode($filter2), "&amp;columns={$columns}&amp;thumbnail={$thumbnail}&amp;apply_filter={$apply_filter}&amp;start=0&amp;max={$max}\">", $IconLDarrow, "</a>";
 			}
 		}
 	}
 	echo "</td>";
-	echo "</tr>\n</table></td></tr>";
+	echo "</tr></table></td></tr>";
 	echo "</table><br />";
 }
-echo "\n</div>\n";
+echo "</div>";
 }
 // ************************  END = 'Print the medialist array' ************************
 print_footer();

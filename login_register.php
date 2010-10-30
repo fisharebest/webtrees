@@ -314,7 +314,7 @@ switch ($action) {
 
 			//-- check referer for possible spam attack
 			if (!isset($_SERVER['HTTP_REFERER']) || stristr($_SERVER['HTTP_REFERER'],"login_register.php")===false) {
-				print "<center><br /><span class=\"error\">Invalid page referer.</span>\n";
+				print "<center><br /><span class=\"error\">Invalid page referer.</span>";
 				print "<br /><br /></center>";
 				AddToLog('Invalid page referer while trying to register a user.  Possible spam attack.', 'auth');
 				exit;
@@ -547,7 +547,7 @@ switch ($action) {
 		break;
 
 	default :
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.encode_url($url));
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
 		break;
 }
 

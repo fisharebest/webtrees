@@ -1563,9 +1563,13 @@ class Person extends GedcomRecord {
 		return $txt;
 	}
 
-	// Generate a URL that links to this record
-	public function getLinkUrl() {
-		return parent::_getLinkUrl('individual.php?pid=');
+	// Generate a URL to this record, suitable for use in HTML
+	public function getHtmlUrl() {
+		return parent::_getLinkUrl('individual.php?pid=', '&amp;');
+	}
+	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
+	public function getRawUrl() {
+		return parent::_getLinkUrl('individual.php?pid=', '&');
 	}
 
 	// If this object has no name, what do we call it?
