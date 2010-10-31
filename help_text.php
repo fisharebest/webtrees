@@ -4086,7 +4086,7 @@ case 'useradmin_auto_accept':
 	break;
 
 case 'useradmin_can_admin':
-	$title=i18n::translate('Site administtatot check box');
+	$title=i18n::translate('Site administrator check box');
 	$text=i18n::translate('If this box is checked, the user will have full site administration rights across all GEDCOM files. These rights include administrator access to all gedcoms <strong>plus</strong> the ability to change: <ul><li>site settings</li><li>user settings</li><li>module settings</li></ul>');
 	break;
 
