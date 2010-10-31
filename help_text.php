@@ -4086,8 +4086,8 @@ case 'useradmin_auto_accept':
 	break;
 
 case 'useradmin_can_admin':
-	$title=i18n::translate('User can administer check box');
-	$text=i18n::translate('If this box is checked, the user will have the same rights that you have.<dl><dt>These rights include:</dt><dd>Add / Remove / Edit Users</dd><dd>Broadcast messages to all users</dd><dd>Edit Welcome messages</dd><dd>Edit and configure language files</dd><dt></dt><dd>Upgrade <b>webtrees</b></dd><dd>Change program and GEDCOM configurations</dd><dd>Administer the GEDCOMs</dd><dd>Change Privacy settings</dd><dd>And anything else that is not mentioned here.</dd></dl><br />The user <u>cannot</u> change anything on your server outside <b>webtrees</b>.');
+	$title=i18n::translate('Site administtatot check box');
+	$text=i18n::translate('If this box is checked, the user will have full site administration rights across all GEDCOM files. These rights include administrator access to all gedcoms <strong>plus</strong> the ability to change: <ul><li>site settings</li><li>user settings</li><li>module settings</li></ul>');
 	break;
 
 case 'useradmin_can_edit':
