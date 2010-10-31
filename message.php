@@ -131,7 +131,6 @@ if (($action=="send")&&(isset($_SESSION["good_to_send"]))&&($_SESSION["good_to_s
 			$message["body"] = $body;
 			$message["created"] = $time;
 			$message["method"] = $method;
-			$message["url"] = $url.'&amp;ged='.$GEDCOM;
 			if ($i>0) $message["no_from"] = true;
 			if (addMessage($message)) {
 				$to_user_id=get_user_id($to);

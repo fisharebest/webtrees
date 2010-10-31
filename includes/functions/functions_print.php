@@ -450,7 +450,7 @@ function print_header($title) {
 	';
 	$javascript .= '
 	function message(username, method, url, subject) {
-		if ((!url)||(url=="")) url=\''.urlencode(WT_SCRIPT_NAME."?".$QUERY_STRING).'\';
+		if ((!url)||(url=="")) url=\''.urlencode(WT_SCRIPT_NAME.'?'.get_query_string()).'\';
 		if ((!subject)||(subject=="")) subject="";
 		window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
 		return false;
