@@ -38,7 +38,6 @@ $theme_name = "webtrees"; // need double quotes, as file is scanned/parsed by sc
 $stylesheet       = WT_THEME_DIR.'style.css';
 $rtl_stylesheet   = WT_THEME_DIR.'style_rtl.css';
 $print_stylesheet = WT_THEME_DIR.'print.css';
-$toplinks         = WT_THEME_DIR.'toplinks.php';
 $headerfile       = WT_THEME_DIR.'header.php';
 $footerfile       = WT_THEME_DIR.'footer.php';
 $WT_USE_HELPIMG   = true;

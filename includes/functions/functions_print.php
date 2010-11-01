@@ -375,7 +375,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 function print_header($title) {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $QUERY_STRING, $action, $query, $theme_name;
-	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $toplinks, $THEME_DIR, $print_headerfile;
+	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $THEME_DIR, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION;
 
 	header('Content-Type: text/html; charset=UTF-8');
