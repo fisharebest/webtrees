@@ -98,7 +98,7 @@ function split_align_text($data, $maxlen) {
  */
 function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style, $name, $TEXT_DIRECTION;
-	global $stylesheet, $WT_IMAGES, $LINK_ICONS, $GEDCOM, $fanChart;
+	global $WT_IMAGES, $$GEDCOM, $fanChart;
 
 	// check for GD 2.x library
 	if (!defined("IMG_ARC_PIE")) {
