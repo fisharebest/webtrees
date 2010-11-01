@@ -127,6 +127,7 @@ if (isset($controller)) {
 // 'open' = Sidebar initially open, [default] + normally auto pinned
 // 'closed' = Sidebar initially closed, + normally auto unpinned
 $sidebar_state = 'open';
+global $GOOGLEMAP_MAP_TYPE;
 
 echo '<script type="text/javascript" src="js/jquery/jquery.scrollfollow.js"></script>';
 echo WT_JS_START;
