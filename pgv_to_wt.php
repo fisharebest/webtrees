@@ -123,7 +123,7 @@ if ($error || empty($PGV_PATH)) {
 	$pgv_dirs=array();
 	$dir=opendir(realpath('..'));
 	while (($subdir=readdir($dir))!==false) {
-		if (is_dir('../'.$subdir) && preg_match('/pgv|gedview/i', $subdir) && file_exists('../'.$subdir.'/config.php')) {
+		if (preg_match('/pgv|gedview/i', $subdir) && is_dir('../'.$subdir) && file_exists('../'.$subdir.'/config.php')) {
 			$pgv_dirs[]='../'.$subdir;
 		}
 	}
