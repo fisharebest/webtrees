@@ -123,7 +123,7 @@ if ($error || empty($PGV_PATH)) {
 	$pgv_dirs=array();
 	$dir=opendir(realpath('..'));
 	while (($subdir=readdir($dir))!==false) {
-		if (preg_match('/pgv|gedview/i', $subdir) && is_dir('../'.$subdir) && file_exists('../'.$subdir.'/config.php')) {
+		if (preg_match('/pgv|gedview|gene/i', $subdir) && is_dir('../'.$subdir) && file_exists('../'.$subdir.'/config.php')) {
 			$pgv_dirs[]='../'.$subdir;
 		}
 	}
@@ -757,11 +757,11 @@ WT_DB::exec(
 	" WHERE  us2.setting_value AND gs2.setting_value"
 );
 
-self::exec(
+WT_DB::exec(
 	"DELETE FROM `##gedcom_setting` WHERE setting_name IN ('MAX_RELATION_PATH_LENGTH', 'USE_RELATIONSHIP_PRIVACY')"
 );
 
-self::exec(
+WT_DB::exec(
 	"DELETE FROM `##user_setting` WHERE setting_name IN ('relationship_privacy', 'max_relation_path_length')"
 );
 
