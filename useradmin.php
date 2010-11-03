@@ -326,35 +326,27 @@ if ($action=="edituser") {
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Admin comments on user'), help_link('useradmin_comment'); ?></td>
-				<td class="optionbox wrap"><textarea cols="50" rows="5" name="new_comment"><?php $tmp = PrintReady(get_user_setting($user_id, 'comment')); echo $tmp; ?></textarea></td>
+				<td class="optionbox wrap"><textarea cols="40" rows="5" name="new_comment"><?php $tmp = PrintReady(get_user_setting($user_id, 'comment')); echo $tmp; ?></textarea></td>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Admin warning at date'), help_link('useradmin_comment_exp'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="new_comment_exp" id="new_comment_exp" value="<?php echo get_user_setting($user_id, 'comment_exp'); ?>" />&nbsp;&nbsp;<?php print_calendar_popup("new_comment_exp"); ?></td>
 			</tr>
 			<tr>
-				<td colspan="3" class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('edituser_change_lang'); ?></td><td class="optionbox wrap" valign="top">
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('edituser_change_lang'); ?></td><td class="optionbox wrap" valign="top">
 					<?php
 						echo edit_field_language('user_language', get_user_setting($user_id, 'language'));
 					?>
 				</td>
-			</tr>
-			<?php
-			if (get_site_setting('ALLOW_USER_THEMES')) {
-				?>
-				<tr><td colspan="3" class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('Theme'), help_link('THEME'); ?></td><td class="optionbox wrap" valign="top">
+				<td class="descriptionbox wrap" valign="top" align="left"><?php echo i18n::translate('Theme'), help_link('THEME'); ?></td><td class="optionbox wrap" valign="top">
 				<select name="user_theme" dir="ltr">
 				<option value=""><?php echo i18n::translate('&lt;default theme&gt;'); ?></option>
 				<?php
 				foreach (get_theme_names() as $themename=>$themedir) {
-				echo "<option value=\"", $themedir, "\"";
-				if ($themedir == get_user_setting($user_id, 'theme')) echo " selected=\"selected\"";
-				echo ">", $themename, "</option>";
+					echo "<option value=\"", $themedir, "\"";
+					if ($themedir == get_user_setting($user_id, 'theme')) echo " selected=\"selected\"";
+					echo ">", $themename, "</option>";
 				}
 				?></select>
 				</td>
-				</tr>
-				<?php
-			}
-			?>
 			<tr>
 				<td colspan="3" class="descriptionbox wrap"><?php echo i18n::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
 				<td class="optionbox wrap">
@@ -553,10 +545,11 @@ jQuery(document).ready(function() {
 		}
 		echo '</td>';
 		$userName = getUserFullName($user_id);
-		echo "<td class=\"optionbox\"><a class=\"edit_link\" href=\"useradmin.php?action=edituser&amp;username={$user_name}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged={$ged}\" title=\"", i18n::translate('Edit'), "\">", $userName;
-		if ($TEXT_DIRECTION=="ltr") echo getLRM();
-		else                        echo getRLM();
-		echo "</a></td>";
+		echo "<td class=\"optionbox\"><a class=\"edit_link\" href=\"useradmin.php?action=edituser&amp;username={$user_name}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged={$ged}\" title=\"", i18n::translate('Edit'), "\">", $userName, '</a>';
+		if (get_user_setting($user_id, 'canadmin')) {
+			echo '<div class="warning">', i18n::translate('Site administrator'), '</div>';
+		}
+		echo "</td>";
 		if (get_user_setting($user_id, "comment_exp")) {
 			if ((strtotime(get_user_setting($user_id, "comment_exp")) != "-1") && (strtotime(get_user_setting($user_id, "comment_exp")) < time("U"))) echo "<td class=\"optionbox red\">", $user_name;
 			else echo "<td class=\"optionbox wrap\">", $user_name;
@@ -575,9 +568,6 @@ jQuery(document).ready(function() {
 		echo "</a>";
 		echo "<div id=\"user-geds", $k, "\" style=\"display:none\">";
 		echo "<ul>";
-		if (get_user_setting($user_id, 'canadmin')) {
-			echo "<li class=\"warning\">", i18n::translate('User can administer'), "</li>";
-		}
 		foreach ($all_gedcoms as $ged_id=>$ged_name) {
 			switch (get_user_gedcom_setting($user_id, $ged_id, 'canedit')) {
 			case 'admin':  echo '<li class="warning">', i18n::translate('Admin GEDCOM'); break;
