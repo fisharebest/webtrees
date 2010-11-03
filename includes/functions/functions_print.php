@@ -495,7 +495,7 @@ function print_footer() {
 	if (!isset($footer_count)) $footer_count = 1;
 	else $footer_count++;
 	echo "<!-- begin footer -->";
-	require $footerfile;
+	require WT_ROOT.$footerfile;
 	if (function_exists("load_behaviour")) {
 		load_behaviour();  // @see function_print_lists.php
 	}
