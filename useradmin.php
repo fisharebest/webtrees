@@ -48,11 +48,11 @@ foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
 }
 $ALL_EDIT_OPTIONS=array(
-	'none'=>i18n::translate_c('User access level', 'None'),
-	'access'=>i18n::translate_c('User access level', 'Access'),
-	'edit'=>i18n::translate_c('User access level', 'Edit'),
-	'accept'=>i18n::translate_c('User access level', 'Accept'),
-	'admin'=>i18n::translate_c('User access level', 'Admin GEDCOM')
+	'none'=>i18n::translate('None'),
+	'access'=>i18n::translate('Access'),
+	'edit'=>i18n::translate('Edit'),
+	'accept'=>i18n::translate('Accept'),
+	'admin'=>i18n::translate('Admin GEDCOM')
 );
 
 // Extract form actions (GET overrides POST if both set)
@@ -314,7 +314,7 @@ if ($action=="edituser") {
 				<td class="optionbox wrap"><input type="checkbox" name="editaccount" value="1" <?php if (get_user_setting($user_id, 'editaccount')) echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Site administrator'), help_link('useradmin_can_admin'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('User can administer'), help_link('useradmin_can_admin'); ?></td>
 				<?php
 					// Forms won't send the value of checkboxes if they are disabled, so use a hidden field
 					echo '<td class="optionbox wrap">';
