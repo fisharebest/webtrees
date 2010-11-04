@@ -842,7 +842,7 @@ class MenuBar {
 		$menu->addClass("langmenuitem$ff", "langmenuitem_hover$ff", "submenu$ff", "icon_language");
 
 		foreach (i18n::installed_languages() as $lang=>$name) {
-			$submenu=new Menu($name, WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING.'&amp;lang='.$lang));
+			$submenu=new Menu(i18n::translate('%1$s (%2$s)', $name, $lang), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING.'&amp;lang='.$lang));
 			if ($lang==WT_LOCALE) {
 				$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 			} else {
