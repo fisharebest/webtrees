@@ -60,6 +60,7 @@ function reformat_record_import($rec) {
 	$newrec='';
 	foreach ($matches as $n=>$match) {
 		list(, $level, $xref, $tag, $data)=$match;
+		$tag=strtoupper($tag); // Tags should always be upper case
 		switch ($tag) {
 		// Convert PGV tags to WT
 		case '_PGVU':
