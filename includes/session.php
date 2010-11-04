@@ -428,7 +428,7 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 			} else {
 				$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
 			}
-			header('Location: '.get_site_setting('LOGIN_URL').'?url='.urlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.$url));
+			header('Location: '.get_site_setting('LOGIN_URL').'?url='.rawurlencode($url));
 			exit;
 		}
 	}
