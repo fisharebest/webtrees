@@ -37,7 +37,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_PRINT_LISTS_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_person.php';
 require_once WT_ROOT.'includes/functions/functions_places.php';
 require_once WT_ROOT.'includes/cssparser.inc.php';
 
@@ -437,7 +436,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 	if (count($datalist)<1) return;
 	$tiny = (count($datalist)<=500);
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_family.php';
 	require_once WT_ROOT.'includes/classes/class_stats.php';
 	$stats = new stats($GEDCOM);
 	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge())+1;
@@ -788,7 +786,6 @@ function print_sour_table($datalist, $legend=null) {
 		return;
 	}
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_source.php';
 
 	echo '<fieldset><legend><img src="', $WT_IMAGES['source'], '" align="middle" alt="" /> ';
 	if ($legend) {
@@ -914,7 +911,6 @@ function print_note_table($datalist, $legend=null) {
 		return;
 	}
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_note.php';
 
 	if (!empty($WT_IMAGES["menu_note"])) {
 		echo '<fieldset><legend><img src="', $WT_IMAGES["menu_note"], '" align="middle" alt="" /> ';
@@ -991,7 +987,6 @@ function print_repo_table($repos, $legend='') {
 		return;
 	}
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_repository.php';
 
 	echo '<fieldset><legend><img src="', $WT_IMAGES['repository'], '" align="middle" alt="" />';
 	if ($legend) {
@@ -1045,7 +1040,6 @@ function print_media_table($datalist, $legend="") {
 
 	if (count($datalist)<1) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_media.php';
 
 	if ($legend == "") $legend = i18n::translate('Media');
 	$legend = "<img src=\"".$WT_IMAGES["media"]."\" alt=\"\" align=\"middle\" /> ".$legend;
@@ -1334,7 +1328,6 @@ function print_changes_table($change_ids) {
 	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION;
 	if (!$change_ids) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 	$indi = false;
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
@@ -1423,7 +1416,6 @@ function print_changes_table($change_ids) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
 	global $TEXT_DIRECTION, $WT_IMAGES;
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 
 	// Did we have any output?  Did we skip anything?
