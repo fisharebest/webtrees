@@ -147,28 +147,35 @@ class i18n {
 
 	// Check which languages are installed
 	static public function installed_languages() {
-		if (isset($_SESSION['installed_languages'])) {
-			return $_SESSION['installed_languages'];
-		} else {
+		//if (isset($_SESSION['installed_languages'])) {
+			//return $_SESSION['installed_languages'];
+		//} else
+ 		{
 			$_SESSION['installed_languages']=array();
 			$d=opendir(WT_ROOT.'language');
 			while (($f=readdir($d))!==false) {
-				if (preg_match('/^([a-z][a-z][a-z]?(@[a-z]+|_[A-Z][A-Z])?)\.mo$/', $f, $match)) {
+				if (preg_match('/^(([a-z][a-z][a-z]?)(@[a-z]+|_[A-Z][A-Z])?)\.mo$/', $f, $match)) {
 					// TODO: gettext() and ZF use different standards for locale names :-(
 					if ($match[1]=='sr@latin' || $match[1]=='zh_CN') {
 						// TODO:
 						continue;
 					}
-					$_SESSION['installed_languages'][$match[1]]=Zend_Locale::getTranslation($match[1], 'language', $match[1]);
+					// Sort by the transation of the base language, then the variant.
+					// e.g. English|British English, Portuguese|Brazilian Portuguese
+					$_SESSION['installed_languages'][$match[1]]=
+						Zend_Locale::getTranslation($match[2], 'language', $match[2]).'|'.
+						Zend_Locale::getTranslation($match[1], 'language', $match[1]);
 				}
 			}
 			closedir($d);
 			if (empty($_SESSION['installed_languages'])) {
 				die('There are no lanuages installed.  You must include at least one xx.mo file in /language/');
 			}
-			// Sort by either language code or language name...
-			//uasort($_SESSION['installed_languages'], 'utf8_strcasecmp');
-			ksort($_SESSION['installed_languages']);
+			// Sort by the combined language/language name...
+			uasort($_SESSION['installed_languages'], 'utf8_strcasecmp');
+			foreach ($_SESSION['installed_languages'] as &$value) {
+				list(,$value)=explode('|', $value);
+			}
 			return $_SESSION['installed_languages'];
 		}
 	}
