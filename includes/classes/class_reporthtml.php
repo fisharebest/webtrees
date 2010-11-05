@@ -237,7 +237,7 @@ class ReportBaseHTML extends ReportBase {
 		}
 		//-- body
 		echo "
-</div>", WT_JS_START, "document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin, "pt';", WT_JS_END,
+</div>", WT_JS_START, "document.getElementById('headerdiv').style.height='", $this->topmargin + $this->headermargin + 10, "pt';", WT_JS_END,
 "<div id=\"bodydiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt; height:100%;\">";
 		$this->Y = 0;
 		$this->maxY = 0;
