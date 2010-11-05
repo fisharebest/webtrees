@@ -593,9 +593,9 @@ function print_user_links() {
 	global $QUERY_STRING, $SEARCH_SPIDER;
 
 	if (WT_USER_ID) {
-		echo '<a href="edituser.php">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
+		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<a href="admin.php">', i18n::translate('Administration'), '</a> | ';
+			echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
 		}
 		echo logout_link();
 	} else {
@@ -617,12 +617,12 @@ function login_link($extra='') {
 			$href.= rawurlencode('?'.$QUERY_STRING);
 		}
 	}
-	return '<a href="' . $href . '" ' . $extra . '>' . i18n::translate('Login') . '</a>';
+	return '<a href="' . $href . '" ' . $extra . ' class="link">' . i18n::translate('Login') . '</a>';
 }
 
 // Generate a logout link
 function logout_link($extra='') {
-	return '<a href="index.php?logout=1" ' . $extra . '>' . i18n::translate('Logout') . '</a>';
+	return '<a href="index.php?logout=1" ' . $extra . ' class="link">' . i18n::translate('Logout') . '</a>';
 }
 
 // Print a link to allow email/messaging contact with a user
