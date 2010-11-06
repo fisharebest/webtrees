@@ -159,6 +159,7 @@ $WT_IMAGES['source'] = WT_THEME_DIR.'images/source.gif';
 $WT_IMAGES['statistic'] = WT_THEME_DIR.'images/statistic.gif';
 $WT_IMAGES['target'] = 'images/buttons/target.gif';
 $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.gif';
+$WT_IMAGES['trashcan'] = 'images/trashcan.gif';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 

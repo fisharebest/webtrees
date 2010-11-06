@@ -157,6 +157,7 @@ $WT_IMAGES=array(
 	'slide_open'=>WT_THEME_DIR.'images/open.png',
 	'spacer'=>WT_THEME_DIR.'images/spacer.gif',
 	'stop'=>WT_THEME_DIR.'images/stop.gif',
+	'trashcan'=>WT_THEME_DIR.'images/trashcan.gif',
 	'uarrow'=>WT_THEME_DIR.'images/uarrow.gif',
 	'uarrow2'=>WT_THEME_DIR.'images/uarrow2.gif',
 	'uarrow3'=>WT_THEME_DIR.'images/uarrow3.gif',

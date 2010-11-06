@@ -120,6 +120,7 @@ $WT_IMAGES['rarrow2'] = WT_THEME_DIR.'images/rarrow2.gif';
 $WT_IMAGES['rdarrow'] = WT_THEME_DIR.'images/rdarrow.gif';
 $WT_IMAGES['remove'] = WT_THEME_DIR.'images/remove.gif';
 $WT_IMAGES['spacer'] = WT_THEME_DIR.'images/spacer.gif';
+$WT_IMAGES['trashcan'] = 'images/trashcan.gif';
 $WT_IMAGES['uarrow'] = WT_THEME_DIR.'images/uarrow.gif';
 $WT_IMAGES['uarrow2'] = WT_THEME_DIR.'images/uarrow2.gif';
 $WT_IMAGES['uarrow3'] = WT_THEME_DIR.'images/uarrow3.gif';

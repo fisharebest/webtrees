@@ -153,8 +153,7 @@ function warnuser(cbox) {
 
 		echo "<div style=\"margin-bottom:2px;\">";
 		echo "<table><tr><td>";
-		if (isset($WT_IMAGES["trashcan"]["medium"])) echo "<img src=\"".$WT_IMAGES["trashcan"]["medium"]."\" align=\"left\" alt=\"\" />";
-		else echo "<img src=\"images/trashcan.gif\" align=\"left\" alt=\"\" />";
+		echo '<img src="', $WT_IMAGES['trashcan'], '" align="left" alt="" />';
 		echo "</td>";
 		echo "<td valign=\"top\"><ul id=\"trashlist\">";
 		echo "</ul></td></tr></table>";

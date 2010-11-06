@@ -148,6 +148,7 @@ $WT_IMAGES=array(
 	'rdarrow'=>WT_THEME_DIR.'images/rdarrow.gif',
 	'remove'=>WT_THEME_DIR.'images/remove.gif',
 	'spacer'=>WT_THEME_DIR.'images/spacer.gif',
+	'trashcan'=>WT_THEME_DIR.'images/trashcan.gif',
 	'uarrow'=>WT_THEME_DIR.'images/uarrow.gif',
 	'uarrow2'=>WT_THEME_DIR.'images/uarrow2.gif',
 	'uarrow3'=>WT_THEME_DIR.'images/uarrow3.gif',
