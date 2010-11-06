@@ -64,8 +64,8 @@
 }
 
 /* Navigator and Flyout menu Styles */
-.nam a:hover{
-color:red;
+.nam a:hover {
+	color:red;
 }
 .nav_content {
 	width: 235px;
@@ -89,7 +89,7 @@ color:red;
 	left: 40px;
 	padding: 3px;
 }
-.flyout2 a:hover{
+.flyout2 a:hover {
 	color:#ff0000;
 	background-color:DarkSlateGray !important;
 }

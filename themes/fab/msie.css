@@ -1,10 +1,4 @@
-/*
- * @version $Id: msie.css 7170 2010-03-05 21:35:28Z rob $
- */
-
-/* 
- * IE workarounds for opacity
- */
+/* @version $Id$ */
 
 .rela {
 	filter: alpha(opacity=67);
