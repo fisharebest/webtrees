@@ -69,7 +69,6 @@ function full_rmdir($dir) {
 
 // Vars
 $ajaxdeleted = false;
-$elements = array();
 $locked_by_context = array('index.php', 'config.ini.php');
 
 // If we are storing the media in the data directory (this is the
@@ -83,135 +82,77 @@ if (
 }
 
 print_header(i18n::translate('Cleanup data directory'));
-echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>',
-	'<h2 class="center">', i18n::translate('Cleanup data directory'), '</h2>';
-
-echo i18n::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'), '<br /><br />', i18n::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'), '<br />', i18n::translate('Files marked with %s have important settings or pending change data and should only be deleted if you are sure you know what you are doing.', '<img src="./images/RESN_locked.gif" alt="" />');
+echo
+	'<p class="center">',
+	'<input type="button" value="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" />',
+	'</p>',
+	'<h2 class="center">', i18n::translate('Cleanup data directory'), '</h2>',
+	'<p>',
+	i18n::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'),
+	'</p><p>',
+	i18n::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'),
+	'</p>';
 
 //post back
-if (isset($_REQUEST["to_delete"])) {
-	echo "<span class=\"error\">", i18n::translate('Deleted files:'), "</span><br/>";
-	foreach ($_REQUEST["to_delete"] as $k=>$v) {
+if (isset($_REQUEST['to_delete'])) {
+	echo '<div class="error">', i18n::translate('Deleted files:'), '</div>';
+	foreach ($_REQUEST['to_delete'] as $k=>$v) {
 		if (is_dir($INDEX_DIRECTORY.$v)) {
 			full_rmdir($INDEX_DIRECTORY.$v);
 		} elseif (file_exists($INDEX_DIRECTORY.$v)) {
 			unlink($INDEX_DIRECTORY.$v);
 		}
-		echo "<span class=\"error\">", $v, "</span><br/>";
-	}
-
-}
-
-require_once WT_ROOT.'js/prototype.js.htm';
-require_once WT_ROOT.'js/scriptaculous.js.htm';
-
-?>
-<script type="text/javascript">
-<!--
-function warnuser(cbox) {
-	if (cbox.checked) {
-		if (!confirm('<?php echo i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) cbox.checked = false;
-	}
-}
-//-->
-</script>
-<form name="delete_form" method="post" action="">
-<table>
-	<tr>
-		<td>
-		<ul id="reorder_list">
-		<?php
-		$dir = dir($INDEX_DIRECTORY);
-
-		$path = $INDEX_DIRECTORY; // snag our path
-		$entryList = array();
-		while (false !== ($entry = $dir->read())) {
-			$entryList[] = $entry;
-		}
-		sort($entryList);
-		foreach ($entryList as $entry) {
-			if ($entry{0} != '.') {
-				if (in_array($entry, $locked_by_context)) {
-					echo "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
-					echo "<img src=\"./images/RESN_confidential.gif\" alt=\"\" />&nbsp;&nbsp;";
-					echo "<span class=\"name2\">".$entry."</span>";
-				}
-				else {
-					echo "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
-					echo "<input type=\"checkbox\" name=\"to_delete[]\" value=\"".$entry."\" />";
-					echo $entry;
-					$elements[] = "li_".$entry;
-				}
-				echo "</li>";
-			}
-		}
-		?>
-		</ul>
-		</td>
-		<td valign="top" id="trash" class="facts_value02"><?php
-		$dir->close();
-
-		echo "<div style=\"margin-bottom:2px;\">";
-		echo "<table><tr><td>";
-		echo '<img src="', $WT_IMAGES['trashcan'], '" align="left" alt="" />';
-		echo "</td>";
-		echo "<td valign=\"top\"><ul id=\"trashlist\">";
-		echo "</ul></td></tr></table>";
-		echo "</div>";
-
-		?> <script type="text/javascript" language="javascript">
-	<!--
-	new Effect.BlindDown('reorder_list', {duration: 1});
-
-		<?php
-		foreach ($elements as $key=>$val)
-		{
-			echo "new Draggable('".$val."', {revert:true});";
-		}
-		?>
-
-	Droppables.add('trash', {
-	hoverclass: 'facts_valuered',
-	onDrop: function(element)
-	{
-		if (element.attributes.warn) {
-			if (!confirm('<?php echo i18n::translate('This file contains important information such as language settings or pending change data.  Are you sure you want to delete this file?'); ?>')) return;
-		}
-		$('trashlist').innerHTML +=
-			'<li class="facts_value">'+ element.attributes.name.value +'<input type="hidden" name="to_delete[]" value="'+element.attributes.name.value+'"/></li>' ;
-			element.style.display = "none";
-			// element.className='facts_valuered';
-		}});
-function ul_clear()
-{
-	$('trashlist').innerHTML = "";
-
-	list = document.getElementById('reorder_list');
-	children = list.childNodes;
-	for (i=0; i<children.length; i++) {
-		node = children[i];
-		if (node.tagName=='li' || node.tagName=='LI') {
-			//node.className='facts_value';
-			node.style.display='list-item';
-		}
+		echo '<div class="error">', $v, '</div>';
 	}
 }
 
-function removeAll() {
-	var elements = document.getElementsByName('to_delete[]');
-	for (i=0; i<elements.length; i++) {
-		node = elements[i];
-		if (!node.attributes.warn) node.checked = true;
-	}
-	document.delete_form.submit();
+echo '<form name="delete_form" method="post" action=""><table><tr><td>';
+
+$dir=dir($INDEX_DIRECTORY);
+$entries=array();
+while (false !== ($entry=$dir->read())) {
+	$entries[]=$entry;
 }
-// -->
-</script>
-		<button type="submit"><?php echo i18n::translate('Delete'); ?></button>
-		<button type="button" onclick="ul_clear(); return false;"><?php echo i18n::translate('Cancel'); ?></button><br /><br />
-		<button type="button" onclick="removeAll(); return false;"><?php echo i18n::translate('Remove all nonessential files'); ?></button>
-		</td>
-	</tr>
-</table>
-</form>
-<?php print_footer();
+sort($entries);
+foreach ($entries as $entry) {
+	if ($entry[0] != '.') {
+		echo '<div class="facts_value" name="', $entry, '">';
+		if (in_array($entry, $locked_by_context)) {
+			echo '<img src="./images/RESN_confidential.gif" alt="" /> <span class="name2">', $entry, '</span>';
+		} else {
+			echo '<input type="checkbox" name="to_delete[]" value="', $entry, '" />', $entry;
+		}
+		echo '</div>';
+	}
+}
+$dir->close();
+echo
+	'</td><td valign="top" id="trash" class="facts_value02">',
+	'<div style="margin-bottom:2px;">',
+	'<table><tr><td>',
+	'<img src="', $WT_IMAGES['trashcan'], '" align="left" alt="" />',
+	'</td>',
+	'<td valign="top"><ul id="trashlist">',
+	'</ul></td></tr></table>',
+	'</div>',
+	WT_JS_START,
+	'function ul_clear() {',
+	' var elements=document.getElementsByName("to_delete[]");',
+	' for (i=0; i<elements.length; i++) {',
+	'  elements[i].checked=false;',
+	' }',
+	'}',
+	'function removeAll() {',
+	' var elements=document.getElementsByName("to_delete[]");',
+	' for (i=0; i<elements.length; i++) {',
+	'  elements[i].checked=true;',
+	' }',
+	'	document.delete_form.submit();',
+	'}',
+	WT_JS_END,
+	'<button type="submit">', i18n::translate('Delete'), '</button>',
+	'<button type="button" onclick="ul_clear(); return false;">', i18n::translate('Cancel'), '</button><br /><br />',
+	'<button type="button" onclick="removeAll(); return false;">', i18n::translate('Remove all nonessential files'), '</button>',
+	'</td></tr></table></form>';
+
+print_footer();
