@@ -45,3 +45,6 @@ body {
 	width: 20px;
 	height: 20px;
 }
+
+.makeMenu li ul { left: 0; right: auto; }
+.makeMenu li ul li { text-align: right; }
