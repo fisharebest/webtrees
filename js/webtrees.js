@@ -1139,11 +1139,14 @@ var monthLabels = new Array();
   	var dateField = document.getElementById(dateFieldId);
   	if (!dateField) return false;
 
-  	var dateStr = dateField.value;
-  	var date = new Date();
-  	if (dateStr!="" && dateStr.indexOf("@")==-1) date = new Date(dateStr);
-  	if (!date) return;
-
+		/* Javascript calendar functions only work with precise gregorian dates "D M Y" or "Y" */
+		var greg_regex = /((\d+ (JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC) )?\d+)/;
+		if (greg_regex.exec(dateField.value)) {
+			var date = new Date(RegExp.$1);
+		} else {
+			var date = new Date();
+		}
+		
   	dateDiv.innerHTML = cal_generateSelectorContent(dateFieldId, dateDivId, date);
   	if (dateDiv.style.visibility=='hidden') {
   		dateDiv.style.visibility = 'visible';
