@@ -39,7 +39,7 @@ $ctype=safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'u
 
 // A request to see a user page, but not logged in?
 if (!WT_USER_ID && $ctype=='user') {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode('index.php&ctype=user'));
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode('index.php?ctype=user'));
 	exit;
 }
 
