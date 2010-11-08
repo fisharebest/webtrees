@@ -3421,7 +3421,7 @@ case 'edituser_email':
 
 case 'edituser_gedcomid':
 	$title=i18n::translate('Individual record');
-	$text=i18n::translate('This is an identification number that links you to your own data in the database.<br /><br />You cannot change this ID; it\'s set by the administrator.  If you think that this ID is not correct, you should contact the administrator to have it changed.');
+	$text=i18n::translate('This is a link to your own record in the family tree.  If this is the wrong person, contact an administrator.');
 	break;
 
 case 'edituser_realname':
