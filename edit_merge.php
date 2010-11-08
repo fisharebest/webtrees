@@ -294,7 +294,6 @@ if ($action=="choose") {
 	echo "<a href=\"javascript:iopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"6\"> ", i18n::translate('Find individual ID'), "</a> |";
 	echo " <a href=\"javascript:fopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"8\"> ", i18n::translate('Find Family ID'), "</a> |";
 	echo " <a href=\"javascript:sopen_find(document.merge.gid1, document.merge.ged);\" tabindex=\"10\"> ", i18n::translate('Find Source ID'), "</a>";
-	echo help_link('rootid');
 	echo "</td></tr><tr><td class=\"list_label\">&nbsp;";
 	echo i18n::translate('Merge From ID:');
 	echo "&nbsp;</td><td>";
@@ -311,7 +310,6 @@ if ($action=="choose") {
 	echo "<a href=\"javascript:iopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"7\"> ", i18n::translate('Find individual ID'), "</a> |";
 	echo "<a href=\"javascript:fopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"9\"> ", i18n::translate('Find Family ID'), "</a> |";
 	echo "<a href=\"javascript:sopen_find(document.merge.gid2, document.merge.ged2);\" tabindex=\"11\"> ", i18n::translate('Find Source ID'), "</a>";
-	echo help_link('rootid');
 	echo "</td></tr><tr><td colspan=\"2\">";
 	echo "<input type=\"submit\" value=\"", i18n::translate('Merge records'), "\"  tabindex=\"3\"/>\n";
 	echo "</td></tr></table>";
