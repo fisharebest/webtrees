@@ -134,8 +134,8 @@ if (isset($_SESSION['Medialist'])) {
 // Disable autocomplete
 // if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-print_header(i18n::translate('MultiMedia Objects'));
-echo "<div class=\"center\"><h2>", i18n::translate('MultiMedia Objects'), "</h2></div>";
+print_header(i18n::translate('Multimedia objects'));
+echo "<div class=\"center\"><h2>", i18n::translate('Multimedia objects'), "</h2></div>";
 
 // Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
