@@ -205,7 +205,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $MULTI_MEDIA;                  $MULTI_MEDIA                  =get_gedcom_setting($ged_id, 'MULTI_MEDIA');
 	global $NOTE_ID_PREFIX;               $NOTE_ID_PREFIX               =get_gedcom_setting($ged_id, 'NOTE_ID_PREFIX');
 	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               =get_gedcom_setting($ged_id, 'NO_UPDATE_CHAN');
-	global $PAGE_AFTER_LOGIN;             $PAGE_AFTER_LOGIN             =get_gedcom_setting($ged_id, 'PAGE_AFTER_LOGIN');
 	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        =get_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS');
 	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              =get_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT');
 	global $PEDIGREE_ROOT_ID;             $PEDIGREE_ROOT_ID             =get_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID');

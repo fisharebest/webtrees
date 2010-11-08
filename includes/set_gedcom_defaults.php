@@ -92,7 +92,6 @@ set_gedcom_setting($ged_id, 'NOTE_FACTS_QUICK',             '');
 set_gedcom_setting($ged_id, 'NOTE_FACTS_UNIQUE',            '');
 set_gedcom_setting($ged_id, 'NOTE_ID_PREFIX',               'N');
 set_gedcom_setting($ged_id, 'NO_UPDATE_CHAN',               false);
-set_gedcom_setting($ged_id, 'PAGE_AFTER_LOGIN',             'mypage');
 set_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS',        true);
 set_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT',              true);
 set_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID',             '');

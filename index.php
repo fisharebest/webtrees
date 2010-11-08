@@ -31,28 +31,16 @@
 define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
 
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-if (isset($_REQUEST['ctype'])) $ctype = $_REQUEST['ctype'];
-$news_id = safe_GET('news_id');
+// The only option for action is "ajax"
+$action=safe_REQUEST($_REQUEST, 'action', 'ajax');
 
-$time = client_time();
+// The default view depends on whether we are logged in
+$ctype=safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
-if (!isset($action)) $action='';
-
-// Visitors should see any links to a user page, but they may be
-// following a link after an inactivity logout.
-if (!WT_USER_ID) {
-	if (!empty($ctype) && $ctype=='user') {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=index.php&ctype=user');
-		exit;
-	} else {
-		$ctype = 'gedcom';
-	}
-}
-
-if (empty($ctype)) {
-	if ($PAGE_AFTER_LOGIN == 'welcome') $ctype = 'gedcom';
-	else $ctype = 'user';
+// A request to see a user page, but not logged in?
+if (!WT_USER_ID && $ctype=='user') {
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode('index.php&ctype=user'));
+	exit;
 }
 
 //-- get the blocks list
@@ -61,9 +49,6 @@ if ($ctype=='user') {
 } else {
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
-
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
 
 $all_blocks=WT_Module::getActiveBlocks();
 
@@ -92,6 +77,9 @@ if ($action=='ajax') {
 	}
 	exit;
 }
+
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 if ($ctype=='user') {
 	$helpindex = 'mypage_portal';

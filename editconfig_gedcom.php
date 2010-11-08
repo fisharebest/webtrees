@@ -164,7 +164,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MULTI_MEDIA',                  safe_POST_bool('NEW_MULTI_MEDIA'));
 	set_gedcom_setting(WT_GED_ID, 'NOTE_ID_PREFIX',               safe_POST('NEW_NOTE_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN',               safe_POST_bool('NEW_NO_UPDATE_CHAN'));
-	set_gedcom_setting(WT_GED_ID, 'PAGE_AFTER_LOGIN',             safe_POST('NEW_PAGE_AFTER_LOGIN'));
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS',        safe_POST_bool('NEW_PEDIGREE_FULL_DETAILS'));
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_LAYOUT',              safe_POST_bool('NEW_PEDIGREE_LAYOUT'));
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID',             safe_POST('NEW_PEDIGREE_ROOT_ID'));
@@ -960,17 +959,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 						</td>
 						<td class="optionbox width60">
 							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo i18n::translate('Page to show after login'), help_link('PAGE_AFTER_LOGIN'); ?>
-						</td>
-						<td class="optionbox width60">
-							<select name="NEW_PAGE_AFTER_LOGIN">
-								<option value="welcome" <?php if ($PAGE_AFTER_LOGIN=='welcome') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Home'); ?></option>
-								<option value="mypage" <?php if ($PAGE_AFTER_LOGIN=='mypage') echo " selected=\"selected\""; ?>><?php echo i18n::translate('My Page'); ?></option>
-							</select>
 						</td>
 					</tr>
 					<tr>

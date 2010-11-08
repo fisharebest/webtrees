@@ -424,7 +424,7 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 			basicHTTPAuthenticateUser();
 		} else {
 			if (WT_SCRIPT_NAME=='index.php') {
-				$url='index.php?ctype=gedcom&ged='.WT_GEDCOM;
+				$url='index.php?ged='.WT_GEDCOM;
 			} else {
 				$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
 			}

@@ -2383,11 +2383,6 @@ case 'NOTE_ID_PREFIX':
 	$text=i18n::translate('When a new note record is added online in <b>webtrees</b>, a new ID for that note will be generated automatically. The note ID will have this prefix.');
 	break;
 
-case 'PAGE_AFTER_LOGIN':
-	$title=i18n::translate('Page to show after login');
-	$text=i18n::translate('Which page should users see after they have logged in?<br /><br />The choice made here determines whether a successful Login causes My Page or the Home Page to appear when the login is done from the Home Page.<br /><br />A Login done from the link at the top of every other page will return the user to that page.');
-	break;
-
 case 'PEDIGREE_FULL_DETAILS':
 	$title=i18n::translate('Show birth and death details on charts');
 	$text=i18n::translate('This option controls whether or not to show the Birth and Death details of an individual on charts.');

@@ -52,7 +52,7 @@ if (empty($url)) {
 	// If we came here by means of a URL like http://mysite.com/foo/login.php
 	// we don't have a proper login URL, and session cookies haven't been set yet
 	// We'll re-load the page to properly determine cookie support
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=index.php&ctype=user');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=index.php');
 }
 
 $message='';
@@ -94,7 +94,7 @@ if ($action=='login') {
 				$url = "individual.php?pid=".$pid;
 			} else {
 				//-- user does not have a pid?  Go to My Page
-				$url = "index.php?ctype=user";
+				$url = "index.php";
 			}
 		}
 
@@ -122,22 +122,15 @@ if ($action=='login') {
 		if ((isset($_SERVER['HTTP_REFERER'])) && ((stristr($_SERVER['HTTP_REFERER'],$tSERVER_URL)!==false)||(stristr($_SERVER['HTTP_REFERER'],$tLOGIN_URL)!==false))) {
 			$url = basename($_SERVER['HTTP_REFERER']);
 			if (stristr($url, ".php")===false) {
-				$url = "index.php?ctype=gedcom&ged=$GEDCOM";
+				$url = "index.php?ged=$GEDCOM";
 			}
 		}
 		else {
 			if (isset($url)) {
 				if (stristr($url,WT_SERVER_NAME.WT_SCRIPT_PATH)!==false) $url = WT_SERVER_NAME.WT_SCRIPT_PATH;
 			}
-			//else $url = WT_SERVER_NAME.WT_SCRIPT_PATH;
-			/* - commented out based on UI feedback
-			else $url = "index.php?ctype=user";
-			*/
 			else $url = "individual.php";
 		}
-	}
-	else if (stristr($url, "index.php")&&!stristr($url, "ctype=")) {
-		$url.="&ctype=gedcom";
 	}
 }
 
