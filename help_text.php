@@ -3376,7 +3376,10 @@ case 'edit_add_unlinked_source':
 
 case 'edit_edit_raw':
 	$title=i18n::translate('Edit raw GEDCOM record');
-	$text=i18n::translate('This page allows you to edit the raw GEDCOM record.  You should use this page with caution; it requires a good understanding of the GEDCOM 5.5.1 Standard.  For more information on the GEDCOM 5.5.1 Standard, refer to Help topic <b>GEDCOM file</b>.<br /><br /><b>webtrees</b> provides many ways to add and edit information, but there could be occasions when you may want to edit the raw GEDCOM structure.  When possible, you should use the provided forms for adding information, but when that is impossible, you can use this form.  Upon submitting the form, your information will be checked for basic conformance to the Standard and the CHAN record will be updated.');
+	$text=
+		i18n::translate('This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix.').
+		'<br/><br/>'.
+		/* I18N: %s is a URL */ i18n::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/images/Ged551-5.pdf">http://wiki.webtrees.net/images/Ged551-5.pdf</a>');
 	break;
 
 case 'edit_SOUR_EVEN':
