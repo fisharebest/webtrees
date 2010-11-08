@@ -164,7 +164,7 @@ echo '</td></tr>';
 $person=Person::getInstance(WT_USER_GEDCOM_ID);
 if ($person) {
 	echo '<tr><td class="descriptionbox wrap">';
-	echo i18n::translate('GEDCOM INDI record ID'), help_link('edituser_gedcomid'), '</td><td class="optionbox">';
+	echo i18n::translate('Individual record'), help_link('edituser_gedcomid'), '</td><td class="optionbox">';
 	echo $person->format_list('span');
 	echo '</td></tr>';
 }
@@ -188,7 +188,7 @@ echo i18n::translate('Confirm password'), help_link('edituser_conf_password'), '
 echo '<input type="password" name="form_pass2" /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo i18n::translate('Change language'), help_link('edituser_change_lang');
+echo i18n::translate('Language'), help_link('edituser_change_lang');
 echo '</td><td class="optionbox" valign="top">';
 echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language'));
 echo '</td></tr>';
