@@ -253,7 +253,7 @@ if ($action=="edituser") {
 			var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
 			var newIDx = "gedcomid"+idNum;
 			if (jQuery('#'+newIDx).val()=='') {
-				alert("<?php echo i18n::translate('You must enter a GEDCOM INDI record ID before you can set the maximum relationship path length'); ?>");
+				alert("<?php echo i18n::translate('You must select an individual record before you can restrict the user to close relatives.'); ?>");
 				jQuery(this).val('');
 			}
 		});
@@ -314,7 +314,7 @@ if ($action=="edituser") {
 				<td class="optionbox wrap"><input type="checkbox" name="editaccount" value="1" <?php if (get_user_setting($user_id, 'editaccount')) echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('User can administer'), help_link('useradmin_can_admin'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Administrator'), help_link('useradmin_can_admin'); ?></td>
 				<?php
 					// Forms won't send the value of checkboxes if they are disabled, so use a hidden field
 					echo '<td class="optionbox wrap">';
@@ -331,7 +331,7 @@ if ($action=="edituser") {
 				<td class="optionbox wrap"><input type="text" name="new_comment_exp" id="new_comment_exp" value="<?php echo get_user_setting($user_id, 'comment_exp'); ?>" />&nbsp;&nbsp;<?php print_calendar_popup("new_comment_exp"); ?></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('edituser_change_lang'); ?></td><td class="optionbox wrap" valign="top">
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Language'), help_link('edituser_change_lang'); ?></td><td class="optionbox wrap" valign="top">
 					<?php
 						echo edit_field_language('user_language', get_user_setting($user_id, 'language'));
 					?>
@@ -355,22 +355,21 @@ if ($action=="edituser") {
 			</tr>
 			<!-- access and relationship path details -->
 			<tr>
-				<td class="subbar" colspan="4"><?php print i18n::translate('GEDCOM access and relationship privacy settings'); ?></td>
+				<td class="subbar" colspan="4"><?php print i18n::translate('Family tree access and settings'); ?></td>
 			</tr>
 			<tr>
 				<td colspan="4">
 					<table class="width100">
 						<tr>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM name'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Family tree'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM INDI record ID'), help_link('useradmin_gedcomid'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Maximum relationship path length'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
 						</tr>
 						<?php
 							foreach ($all_gedcoms as $ged_id=>$ged_name) {
 								echo '<tr>',
-									// GEDCOM name
 									'<td class="optionbox wrap">', $ged_name, '</td>',
 									//Pedigree root person
 									'<td class="optionbox wrap">';
@@ -397,7 +396,6 @@ if ($action=="edituser") {
 											echo ' <div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
 										}
 									echo '</td>',
-									// Access level
 									'<td class="optionbox wrap">';
 										$varname='canedit'.$ged_id;
 										echo '<select name="', $varname, '" id="', $varname, '">';
@@ -547,7 +545,7 @@ jQuery(document).ready(function() {
 		$userName = getUserFullName($user_id);
 		echo "<td class=\"optionbox\"><a class=\"edit_link\" href=\"useradmin.php?action=edituser&amp;username={$user_name}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged={$ged}\" title=\"", i18n::translate('Edit'), "\">", $userName, '</a>';
 		if (get_user_setting($user_id, 'canadmin')) {
-			echo '<div class="warning">', i18n::translate('Site administrator'), '</div>';
+			echo '<div class="warning">', i18n::translate('Administrator'), '</div>';
 		}
 		echo "</td>";
 		if (get_user_setting($user_id, "comment_exp")) {
@@ -692,7 +690,7 @@ if ($action == "createform") {
 				var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
 				var newIDx = "gedcomid"+idNum;
 				if (jQuery('#'+newIDx).val()=='') {
-				    alert("<?php echo i18n::translate('You must enter a GEDCOM INDI record ID before you can set the maximum relationship path length'); ?>");
+				    alert("<?php echo i18n::translate('You must specify an individual record before you can set the maximum relationship path length'); ?>");
 					jQuery(this).val('');
 				}
 			});
@@ -754,7 +752,7 @@ if ($action == "createform") {
 				<td class="optionbox wrap"><input type="checkbox" name="editaccount" value="1" <?php echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Site administrator'), help_link('useradmin_can_admin'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Administrator'), help_link('useradmin_can_admin'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="canadmin" value="1" /></td>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="visibleonline" value="1" <?php echo "checked=\"checked\""; ?> /></td>
@@ -768,7 +766,7 @@ if ($action == "createform") {
 			</tr>
 			<?php } ?>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Change language'), help_link('useradmin_change_lang'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Language'), help_link('useradmin_change_lang'); ?></td>
 				<td colspan="3" class="optionbox wrap" valign="top"><?php echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language')); ?></td>
 			</tr>
 			<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>
@@ -795,22 +793,21 @@ if ($action == "createform") {
 			</tr>
 			<!-- access and relationship path details -->
 			<tr>
-				<td class="subbar" colspan="4"><?php print i18n::translate('GEDCOM access and relationship privacy settings'); ?></td>
+				<td class="subbar" colspan="4"><?php print i18n::translate('Family tree access and settings'); ?></td>
 			</tr>
 			<tr>
 				<td colspan="4">
 					<table class="width100">
 						<tr>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM name'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Family tree'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('GEDCOM INDI record ID'), help_link('useradmin_gedcomid'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Maximum relationship path length'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
 						</tr>
 						<?php
 							foreach ($all_gedcoms as $ged_id=>$ged_name) {
 								echo '<tr>',
-									// GEDCOM name
 									'<td class="optionbox wrap">', $ged_name, '</td>',
 									//Pedigree root person
 									'<td class="optionbox wrap">';
@@ -822,7 +819,6 @@ if ($action == "createform") {
 										$varname='gedcomid'.$ged_id;
 										echo '<input type="text" name="',$varname, '" id="',$varname, '" value="" />' ,print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',
-									// Access level
 									'<td class="optionbox wrap">';
 										$varname='canedit'.$ged_id;
 										echo '<select name="', $varname, '">';

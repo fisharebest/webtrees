@@ -2414,7 +2414,7 @@ case 'PEDIGREE_SHOW_GENDER':
 	break;
 
 case 'RELATIONSHIP_PATH_LENGTH':
-	$title=i18n::translate('Maximum relationship path length');
+	$title=i18n::translate('Restrict to immediate family');
 	$text=
 		i18n::translate('Where a user is associated to an individual in the database, you can prevent them from accessing the details of distant relations.  You specify the number of relationship steps that the user is allowed to see.  This option only affects access to living people, access to dead people is covered by the global privacy settings.').
 		'<br/><br/>'.
@@ -3881,7 +3881,7 @@ case 'register_comments':
 	break;
 
 case 'register_gedcomid':
-	$title=i18n::translate('GEDCOM INDI record ID');
+	$title=i18n::translate('Individual record');
 	$text=i18n::translate('Every person in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don\'t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you.');
 	break;
 
@@ -4109,8 +4109,8 @@ case 'useradmin_editaccount':
 	break;
 
 case 'useradmin_gedcomid':
-	$title=i18n::translate('GEDCOM INDI record ID');
-	$text=i18n::translate('The GEDCOM INDI record ID identifies the user.  It has to be set by the administrator.<br /><br />This ID is used as the ID on several pages such as <b>My Individual Record</b> and <b>My Pedigree</b>.<br /><br />You can set the user\'s GEDCOM ID separately for each GEDCOM.  If a user does not have a record in a GEDCOM, you leave that box empty.');
+	$title=i18n::translate('Individual record');
+	$text=i18n::translate('The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty.');
 	break;
 
 case 'useradmin_rootid':
