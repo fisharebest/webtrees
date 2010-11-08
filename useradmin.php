@@ -685,12 +685,12 @@ if ($action == "createform") {
 			pastefield.value=value;
 		}
 		jQuery(document).ready(function() {
-		    jQuery('.relpath').change(function() {
-			    var fieldIDx = jQuery(this).attr('id');
+			jQuery('.relpath').change(function() {
+				var fieldIDx = jQuery(this).attr('id');
 				var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
 				var newIDx = "gedcomid"+idNum;
 				if (jQuery('#'+newIDx).val()=='') {
-				    alert("<?php echo i18n::translate('You must specify an individual record before you can set the maximum relationship path length'); ?>");
+					alert("<?php echo i18n::translate('You must specify an individual record before you can restrict the user to their immediate family.'); ?>");
 					jQuery(this).val('');
 				}
 			});
