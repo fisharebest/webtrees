@@ -48,11 +48,11 @@ foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
 }
 $ALL_EDIT_OPTIONS=array(
-	'none'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Public'),
-	'access'=> /* I18N: Listbox entry; name of a role */ i18n::translate('Member'),
-	'edit'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Editor'),
-	'accept'=> /* I18N: Listbox entry; name of a role */ i18n::translate('Moderator'),
-	'admin' => /* I18N: Listbox entry; name of a role */ i18n::translate('Manager')
+	'none'=>i18n::translate('None'),
+	'access'=>i18n::translate('Access'),
+	'edit'=>i18n::translate('Edit'),
+	'accept'=>i18n::translate('Accept'),
+	'admin'=>i18n::translate('Admin GEDCOM')
 );
 
 // Extract form actions (GET overrides POST if both set)
@@ -253,7 +253,7 @@ if ($action=="edituser") {
 			var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
 			var newIDx = "gedcomid"+idNum;
 			if (jQuery('#'+newIDx).val()=='') {
-				alert("<?php echo i18n::translate('You must select an individual record before you can restrict the user to close relatives.'); ?>");
+				alert("<?php echo i18n::translate('You must specify an individual record before you can restrict the user to their immediate family.'); ?>");
 				jQuery(this).val('');
 			}
 		});
@@ -308,13 +308,13 @@ if ($action=="edituser") {
 				<td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" value="1" <?php if (get_user_setting($user_id, 'verified_by_admin')) echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Automatically accept changes made by this user'), help_link('auto_accept'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Automatically accept changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="new_auto_accept" value="1" <?php if (get_user_setting($user_id, 'auto_accept')) echo "checked=\"checked\""; ?> /></td>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="editaccount" value="1" <?php if (get_user_setting($user_id, 'editaccount')) echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Administrator'), help_link('role'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Administrator'), help_link('useradmin_can_admin'); ?></td>
 				<?php
 					// Forms won't send the value of checkboxes if they are disabled, so use a hidden field
 					echo '<td class="optionbox wrap">';
@@ -362,9 +362,9 @@ if ($action=="edituser") {
 					<table class="width100">
 						<tr>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Family tree'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Default person on charts'), help_link('useradmin_rootid'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Role'), help_link('role'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
 						</tr>
 						<?php
@@ -746,13 +746,13 @@ if ($action == "createform") {
 				<td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" value="1" checked="checked" /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Automatically accept changes made by this user'), help_link('auto_accept'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Automatically accept changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="new_auto_accept" value="1" /></td>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="editaccount" value="1" <?php echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('Administrator'), help_link('role'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Administrator'), help_link('useradmin_can_admin'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="canadmin" value="1" /></td>
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="visibleonline" value="1" <?php echo "checked=\"checked\""; ?> /></td>
@@ -800,9 +800,9 @@ if ($action == "createform") {
 					<table class="width100">
 						<tr>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Family tree'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Default person on charts'), help_link('useradmin_rootid'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
-							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Role'), help_link('role'); ?></th>
+							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Access level'), help_link('useradmin_can_edit'); ?></th>
 							<th class="descriptionbox nowrap width20 center"><?php echo i18n::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
 						</tr>
 						<?php
