@@ -169,7 +169,7 @@ echo
 	i18n::translate('User'), ' <input name="user" size="12" value="', htmlspecialchars($user), '" /> ',
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('Gedcom'), ' <input name="gedc" size="12" value="', htmlspecialchars($gedc), '" ', WT_USER_IS_ADMIN ? '' : 'disabled', '/> ',
+	i18n::translate('Family tree'), ' <input name="gedc" size="12" value="', htmlspecialchars($gedc), '" ', WT_USER_IS_ADMIN ? '' : 'disabled', '/> ',
 	'</td>',
 	'<td class="descriptionbox" rowspan="2" nowrap valign="middle">',
 	'<input type="submit" value="', i18n::translate('Filter'), '"/> ',
@@ -216,7 +216,7 @@ if ($rows) {
 		'<td class="descriptionbox" nowrap>', i18n::translate('Message'), '</td>',
 		'<td class="descriptionbox" nowrap>', i18n::translate('IP address'), '</td>',
 		'<td class="descriptionbox" nowrap>', i18n::translate('User'), '</td>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('GEDCOM'), '</td>',
+		'<td class="descriptionbox" nowrap>', i18n::translate('Family tree'), '</td>',
 		'</tr>';
 
 	foreach ($rows as $row) {
