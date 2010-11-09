@@ -48,7 +48,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		global $WT_IMAGES, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
-		$title=/* A greeting; %s is the user's name */ i18n::translate('Welcome %s', getUserFullName(WT_USER_ID));
+		$title=/* I18N: A greeting; %s is the user's name */ i18n::translate('Welcome %s', getUserFullName(WT_USER_ID));
 
 		$content = "<table class=\"blockcontent\" cellspacing=\"0\" cellpadding=\"0\" style=\" width: 100%; direction:ltr;\"><tr>";
 		$content .= "<td class=\"tab_active_bottom\" colspan=\"3\" ></td></tr><tr>";
