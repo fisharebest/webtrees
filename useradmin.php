@@ -514,7 +514,7 @@ jQuery(document).ready(function() {
 	<th><?php echo i18n::translate('Real name'); ?></th>
 	<th><?php echo i18n::translate('User name'); ?></th>
 	<th><?php echo i18n::translate('Language'); ?></th>
-	<th><a href="javascript: <?php echo i18n::translate('Privileges'); ?>" onclick="<?php
+	<th><a href="javascript: <?php echo i18n::translate('Role'); ?>" onclick="<?php
 	$k = 1;
 	for ($i=1, $max=count($users)+1; $i<=$max; $i++) echo "expand_layer('user-geds", $i, "'); ";
 	echo " return false;\"><img id=\"user-geds", $k, "_img\" src=\"";
@@ -522,7 +522,7 @@ jQuery(document).ready(function() {
 	echo "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" /></a>";
 	echo "<div id=\"user-geds", $k, "\" style=\"display:none\">";
 	echo "</div>&nbsp;";
-	echo i18n::translate('Privileges'); ?></th>
+	echo i18n::translate('Role'); ?></th>
 	<th><?php echo i18n::translate('Date registered'); ?></th>
 	<th><?php echo i18n::translate('Last logged in'); ?></th>
 	<th><?php echo i18n::translate('User verified himself'); ?></th>
