@@ -179,7 +179,7 @@ if ($changed_gedcoms) {
 			$output.='<td class="list_label">'.i18n::translate('Type').'</td>';
 			$output.='<td class="list_label">'.i18n::translate('User').'</td>';
 			$output.='<td class="list_label">'.i18n::translate('Date').'</td>';
-			$output.='<td class="list_label">GEDCOM</td>';
+			$output.='<td class="list_label">'.i18n::translate('Family tree').'</td>';
 			$output.='<td class="list_label">'.i18n::translate('Undo').'</td>';
 			$output.='</tr>';
 		}
