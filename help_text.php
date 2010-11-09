@@ -2615,7 +2615,7 @@ case 'SHOW_LIST_PLACES':
 
 case 'SHOW_LIVING_NAMES':
 	$title=i18n::translate('Show living names');
-	$text=i18n::translate('Should the names of living people be shown to the public?');
+	$text=i18n::translate('Should the names of living people be shown to visitors?');
 	break;
 
 case 'SHOW_MARRIED_NAMES':
@@ -3905,7 +3905,7 @@ case 'role':
 		'</dd>'.
 		'<dl>'.
 		'<dt>'.i18n::translate('Member').'</dt><dd>'.
-		i18n::translate('This role has all the permissions of the public role, plus any additional access granted by the family tree configuration.').
+		i18n::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.').
 		'</dd>'.
 		'<dl>'.
 		'<dt>'.i18n::translate('Editor').'</dt><dd>'.
