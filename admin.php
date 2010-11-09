@@ -49,7 +49,7 @@ if (!isset($action)) $action="";
 print_header(i18n::translate('Administration'));
 $pending_changes=WT_DB::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
 if ($pending_changes) {
-	$d_wt_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Accept / Reject Changes').help_link('edit_changes.php')."</a>";
+	$d_wt_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Moderate pending changes').help_link('edit_changes.php')."</a>";
 } else {
 	$d_wt_changes = '&nbsp;';
 }

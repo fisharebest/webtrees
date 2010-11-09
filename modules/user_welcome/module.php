@@ -48,16 +48,16 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		global $WT_IMAGES, $THEME_DIR;
 
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('Welcome')." ".getUserFullName(WT_USER_ID);
+		$title=/* A greeting; %s is the user's name */ i18n::translate('Welcome %s', getUserFullName(WT_USER_ID));
 
 		$content = "<table class=\"blockcontent\" cellspacing=\"0\" cellpadding=\"0\" style=\" width: 100%; direction:ltr;\"><tr>";
 		$content .= "<td class=\"tab_active_bottom\" colspan=\"3\" ></td></tr><tr>";
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
-			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"edituser.php\"><img class=\"block\" src=\"".$WT_IMAGES["mypage"]."\" border=\"0\" alt=\"".i18n::translate('My account')."\" title=\"".i18n::translate('My account')."\" /><br />".i18n::translate('My account')."</a></td>";
+			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"edituser.php\"><img class=\"block\" src=\"".$WT_IMAGES["mypage"]."\" border=\"0\" alt=\"".i18n::translate('My account')."\" /><br />".i18n::translate('My account')."</a></td>";
 		}
 		if (WT_USER_GEDCOM_ID) {
 			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"pedigree.php?rootid=".WT_USER_GEDCOM_ID."\"><img class=\"block\" src=\"".$WT_IMAGES["pedigree"]."\" border=\"0\" alt=\"".i18n::translate('My Pedigree')."\" title=\"".i18n::translate('My Pedigree')."\" /><br />".i18n::translate('My Pedigree')."</a></td>";
-			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"individual.php?pid=".WT_USER_GEDCOM_ID."\"><img class=\"block\" src=\"".$WT_IMAGES["indis"]."\" border=\"0\" alt=\"".i18n::translate('My Individual Record')."\" title=\"".i18n::translate('My Individual Record')."\" /><br />".i18n::translate('My Individual Record')."</a></td>";
+			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"individual.php?pid=".WT_USER_GEDCOM_ID."\"><img class=\"block\" src=\"".$WT_IMAGES["indis"]."\" border=\"0\" alt=\"".i18n::translate('My individual record')."\" /><br />".i18n::translate('My individual record')."</a></td>";
 		}
 		$content .= "</tr><tr><td class=\"center\" colspan=\"3\">";
 		$content .= "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', 'top=50,left=10,width=705,height=355,scrollbars=1,resizable=1');\">".i18n::translate('Customize My Page')."</a>";

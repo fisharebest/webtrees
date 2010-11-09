@@ -35,12 +35,12 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Recent Changes');
+		return i18n::translate('Recent changes');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Recent Changes block will list all of the changes that have been made to the database in the last month.  This block can help you stay current with the changes that have been made.  Changes are detected automatically, using the CHAN tag defined in the GEDCOM Standard.');
+		return i18n::translate('This block lists the changes that have been made to all family trees within a specified number of days.');
 	}
 
 	// Implement class WT_Module_Block
@@ -75,7 +75,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 		}
-		$title.= i18n::translate('Recent Changes').help_link('recent_changes', $this->getName());
+		$title.= i18n::translate('Recent changes').help_link('recent_changes', $this->getName());
 
 		$content = "";
 	// Print block content

@@ -35,12 +35,12 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Pending Changes');
+		return i18n::translate('Pending changes');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Pending Changes block will give users with Edit rights a list of the records that have been changed online and that still need to be reviewed and accepted.  These changes are pending acceptance or rejection.<br /><br />If this block is enabled, users with Accept rights will receive an email once a day notifying them that changes need to be reviewed.');
+		return i18n::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
 	}
 
 	// Implement class WT_Module_Block
@@ -108,10 +108,10 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 					$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 				}
-				$title.=i18n::translate('Review GEDCOM changes').help_link('review_changes');
+				$title.=i18n::translate('Pending changes').help_link('review_changes', $this->getName());
 				$content = "";
 				if (WT_USER_CAN_ACCEPT) {
-					$content .= "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Accept / Reject Changes')."</a><br />";
+					$content .= "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('There are pending changes for you to moderate.')."</a><br />";
 				}
 				if ($sendmail=="yes") {
 					$content .= i18n::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br />";

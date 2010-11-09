@@ -49,10 +49,8 @@ echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 						echo execution_stats();
 			}
 			if (exists_pending_change()) {
-				echo '<br />';
-				echo i18n::translate('Changes have been made to this GEDCOM.');
-				echo ' <a href="javascript:;" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
-				echo i18n::translate('Accept / Reject Changes');
+				echo '<br /><a href="javascript:;" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+				echo i18n::translate('There are pending changes for you to moderate.');
 				echo '</a>';
 			}
 	echo '</div>',

@@ -85,9 +85,9 @@ $error_msg='';
 
 $PRIVACY_CONSTANTS=array(
 	'none'        =>i18n::translate('Show to public'),
-	'privacy'     =>i18n::translate('Show only to authenticated users'),
-	'confidential'=>i18n::translate('Show only to admin users'),
-	'hidden'      =>i18n::translate('Hide even from admin users')
+	'privacy'     =>i18n::translate('Show to members'),
+	'confidential'=>i18n::translate('Show to managers'),
+	'hidden'      =>i18n::translate('Hide from everyone')
 );
 
 switch (safe_POST('action')) {

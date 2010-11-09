@@ -193,7 +193,7 @@ class SourceController extends BaseController {
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_sour');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Accept all changes'), "source.php?sid={$this->sid}&amp;action=accept");
+				$submenu = new Menu(i18n::translate('Approve all changes'), "source.php?sid={$this->sid}&amp;action=accept");
 				$submenu->addIcon('edit_sour');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);

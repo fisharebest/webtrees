@@ -351,7 +351,7 @@ class FamilyController extends BaseController {
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_fam');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Accept all changes'), "family.php?famid={$this->famid}&amp;action=accept");
+				$submenu = new Menu(i18n::translate('Approve all changes'), "family.php?famid={$this->famid}&amp;action=accept");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);

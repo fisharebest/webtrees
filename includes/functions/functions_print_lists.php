@@ -1397,7 +1397,7 @@ function print_changes_table($change_ids) {
 		echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", i18n::translate('Show parents'), "</label><br />";
 	}
 	echo i18n::translate('Total changes'), ": ", $n;
-	if ($n>=$NMAX) echo "<br /><span class=\"warning\">", i18n::translate('Recent Changes'), " &gt; ", $NMAX, "</span>";
+	if ($n>=$NMAX) echo "<br /><span class=\"warning\">", i18n::translate('Recent changes'), " &gt; ", $NMAX, "</span>";
 	echo "</td>";
 	echo "<td style=\"display:none\">GIVN</td>";
 	echo "<td></td>";

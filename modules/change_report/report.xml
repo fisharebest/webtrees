@@ -49,7 +49,7 @@
 
 			<!-- Pending changes section Header -->
 			<if condition="$pending=='yes'">
-				<Cell align="center" height="20" newline="1" style="header2"><var var="i18n::translate('Pending Changes')" /></Cell>
+				<Cell align="center" height="20" newline="1" style="header2"><var var="i18n::translate('Pending changes')" /></Cell>
 				<TextBox border="1" height="12" width="$idwidth">
 					<Text style="label"> </Text>
 				</TextBox>
@@ -96,7 +96,7 @@
 			</if>
 
 			<!-- Recent Changes Section Header -->
-			<Cell align="center" height="20" newline="1" style="header2"><var var="i18n::translate('Recent Changes')" /> <var var="changeRangeStart" date="1" /> - <var var="changeRangeEnd" date="1" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header2"><var var="i18n::translate('Recent changes')" /> <var var="changeRangeStart" date="1" /> - <var var="changeRangeEnd" date="1" /></Cell>
 			<TextBox border="1" height="12" width="$idwidth">
 				<Text style="label"> </Text>
 			</TextBox>

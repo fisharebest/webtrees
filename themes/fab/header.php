@@ -105,7 +105,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				echo ' | <li><a href="admin.php" class="link">', i18n::translate('Administration'), '</a></li>';
 			}
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending Changes'), '</a></li>';
+				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending changes'), '</a></li>';
 			}
 		} else {
 			echo '<li>', login_link(), '</li>';

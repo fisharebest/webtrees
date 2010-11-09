@@ -45,9 +45,9 @@ echo "\n\t<br />";
 if ($SHOW_STATS || WT_DEBUG) {
     echo execution_stats();
 }
-echo "\n\t<br />";
+echo "<br />";
 if (exists_pending_change()) {
-	echo "<br />", i18n::translate('Changes have been made to this GEDCOM.'), " <a href=\"javascript:;\" onclick=\"window.open('edit_changes.php', '_blank', 'width=600, height=500, resizable=1, scrollbars=1'); return false;\">", i18n::translate('Accept / Reject Changes'), "</a>\n";
+	echo "<br /><a href=\"javascript:;\" onclick=\"window.open('edit_changes.php', '_blank', 'width=600, height=500, resizable=1, scrollbars=1'); return false;\">", i18n::translate('There are pending changes for you to moderate.'), "</a>";
 }
 echo "</div>";
 echo "</div> <!-- close div id=\"footer\" -->\n";

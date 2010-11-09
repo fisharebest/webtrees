@@ -2411,7 +2411,7 @@ case 'PEDIGREE_SHOW_GENDER':
 case 'RELATIONSHIP_PATH_LENGTH':
 	$title=i18n::translate('Restrict to immediate family');
 	$text=
-		i18n::translate('Where a user is associated to an individual in the database, you can prevent them from accessing the details of distant relations.  You specify the number of relationship steps that the user is allowed to see.  This option only affects access to living people, access to dead people is covered by the global privacy settings.').
+		i18n::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.').
 		'<br/><br/>'.
 		i18n::translate('For example, if you specify a path length of 2, the person will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).').
 		'<br/><br/>'.
@@ -3133,9 +3133,7 @@ case 'add_new_gedcom':
 case 'add_note':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new note');
-	$text=i18n::translate('If you have a note to add to this record, this is the place to do so.<br /><br />Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that\'s all.')
-	. '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
-	. i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
+	$text=i18n::translate('If you have a note to add to this record, this is the place to do so.<br /><br />Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that\'s all.');
 	break;
 
 case 'add_opf_child':
@@ -3151,9 +3149,7 @@ case 'add_person':
 case 'add_shared_note':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new shared note');
-	$text=i18n::translate('When you click the <b>Add a new Shared Note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.')
-	. '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
-	. i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
+	$text=i18n::translate('When you click the <b>Add a new Shared Note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.');
 	break;
 
 case 'add_sibling':
@@ -3169,9 +3165,7 @@ case 'add_son_daughter':
 case 'add_source':
 	// This is a general help text for multiple pages
 	$title=i18n::translate('Add a new source citation');
-	$text=i18n::translate('Here you can add a source <b>Citation</b> to this record.<br /><br />Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br /><br />Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.')
-	. '<br /><br />~' . i18n::translate('General info about adding') . '~<br />'
-	. i18n::translate('When you have added a fact, note, source, or multimedia file to a record in the database, the addition still has to be approved by a user who has Accept rights.<br /><br />Until the changes have been Accepted, they are identified as "pending" by a differently colored border.  All users with Edit rights can see these changes as well as the original information.  Users who do not have Edit rights will only see the original information. When the addition has been Accepted, the borders will disappear and the new data will display normally, replacing the old.  At that time, users without Edit rights will see the new data too.');
+	$text=i18n::translate('Here you can add a source <b>Citation</b> to this record.<br /><br />Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the Citation.<br /><br />Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.');
 	break;
 
 case 'add_wife':
@@ -3287,11 +3281,6 @@ case 'default_gedcom':
 case 'delete_gedcom':
 	$title=i18n::translate('Delete GEDCOM');
 	$text=i18n::translate('<b>webtrees</b> creates its database from a GEDCOM file that was previously uploaded. When you select <b>Delete</b>, that section of the database will be erased.  You have to confirm your Delete request.<br /><br />Unless you have deliberately removed it outside <b>webtrees</b>, the original GEDCOM file will remain in the directory into which it was uploaded.  If you later want to work with that GEDCOM file again, you don\'t have to upload it again. You can choose the <b>Add GEDCOM</b> function.');
-	break;
-
-case 'delete_name':
-	$title=i18n::translate('Delete name');
-	$text=i18n::translate('<b>Edit name</b><br />When you click this link, another window will open.  There you can edit the name of the person.  Just type the changes into the boxes and click the button, close the window, and that\'s it.<br /><br /><b>DELETE NAME</b><br />By clicking this option you will mark this Name to be deleted from the database.  Note that deleting the name is completely different from deleting the individual.  Deleting the name just removes the name from the person. The person will <u>not</u> be deleted.  If it is an AKA that you want to delete, the person still has his other names.  If it is the <u>only</u> name that you want to remove, the person will still not be deleted, but will now be recorded as <b>(unknown)</b>.  The person will also not be disconnected from any other to relatives, sources, notes, etc.<br /><br />How does it work?<br />You will be asked to confirm your deletion request.  If you decide to continue, it can take a little time before you see a message that the name is deleted.<br /><br />When you continue with your visit, you will notice that the name is still visible and can be used as if the deletion had not occurred.<br /><br /><b>This is <u>not</u> an error.</b>  The site admin will get a message that a change has been made to the database, and that you removed the name.<br />The administrator can accept or reject your change. Only after the administrator has accepted your change will the deletion actually occur <u>irreversibly</u>.  If there is any doubt about your change, the administrator will contact you.');
 	break;
 
 case 'desc_generations':
@@ -3905,9 +3894,35 @@ case 'reorder_families':
 	$text=i18n::translate('Families on the Close Relatives tab are displayed in the order in which they appear in the individual\'s GEDCOM record.  Families are not sorted by the marriage date because often the marriage dates are unknown but the order of the marriages <u>is</u> known.<br /><br />This option will allow you to change the order of the families in which they are listed on the Close Relatives tab.  If you want to sort the families by their marriage dates, there is a button you can press that will automatically do this for you.');
 	break;
 
-case 'review_changes':
-	$title=i18n::translate('Review GEDCOM changes');
-	$text=i18n::translate('This block will list all of the records that have been changed online and that still need to be reviewed and accepted into the database.');
+case 'role':
+	$title=i18n::translate('Role');
+	$text=
+		i18n::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.').
+		'<br/><br>'.
+		'<dl>'.
+		'<dt>'.i18n::translate('Public').'</dt><dd>'.
+		i18n::translate('Everybody has this role, including visitors to the site and search engines.').
+		'</dd>'.
+		'<dl>'.
+		'<dt>'.i18n::translate('Member').'</dt><dd>'.
+		i18n::translate('This role has all the permissions of the public role, plus any additional access granted by the family tree configuration.').
+		'</dd>'.
+		'<dl>'.
+		'<dt>'.i18n::translate('Editor').'</dt><dd>'.
+		i18n::translate('This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the "automatically accept changes" option enabled.').
+		'</dd>'.
+		'<dl>'.
+		'<dt>'.i18n::translate('Moderator').'</dt><dd>'.
+		i18n::translate('This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users.').
+		'</dd>'.
+		'<dl>'.
+		'<dt>'.i18n::translate('Manager').'</dt><dd>'.
+		i18n::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.').
+		'</dd>'.
+		'<dl>'.
+		'<dt>'.i18n::translate('Administrator').'</dt><dd>'.
+		i18n::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules.').
+		'</dd>';
 	break;
 
 case 'rootid':
@@ -4084,19 +4099,10 @@ case 'upload_thumbnail_file':
 	break;
 
 case 'useradmin_auto_accept':
-	$title=i18n::translate('Automatically accept changes made by this user');
-	$text=i18n::translate('By checking this box you are allowing the system to automatically accept any edit changes made by this user.  The user must also have accept privileges on the GEDCOM in order for this setting to take effect.');
+	$title=i18n::translate('Automatically approve changes made by this user');
+	$text=i18n::translate('Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator\'s approval.');
 	break;
 
-case 'useradmin_can_admin':
-	$title=i18n::translate('User can administer');
-	$text=i18n::translate('If this box is checked, the user will have the same rights that you have.<dl><dt>These rights include:</dt><dd>Add / Remove / Edit Users</dd><dd>Broadcast messages to all users</dd><dd>Edit Welcome messages</dd><dd>Edit and configure language files</dd><dt></dt><dd>Upgrade <b>webtrees</b></dd><dd>Change program and GEDCOM configurations</dd><dd>Administer the GEDCOMs</dd><dd>Change Privacy settings</dd><dd>And anything else that is not mentioned here.</dd></dl><br />The user <u>cannot</u> change anything on your server outside <b>webtrees</b>.');
-	break;
-
-case 'useradmin_can_edit':
-	$title=i18n::translate('Access level');
-	$text=i18n::translate('The user can have different access and editing privileges for each genealogical database in the system.<ul><li><b>None:</b> The user cannot access the private data in this GEDCOM.</li><li><b>Access:</b> The user cannot edit or accept data into the database but can see the private data.</li><li><b>Edit:</b> The user can edit values but another user with <b>Accept</b> privileges must approve the changes before they are added to the database and made public.</li><li><b>Accept:</b> The user can edit.  He can also edit and approve changes made by other users.</li><li><b>Admin GEDCOM:</b> The user edit and approve changes made by other users.  The user can also edit configuration and privacy settings for <u>this</u> GEDCOM.</li></ul>System administrators, identified through the <b>User can administer</b> check box, are automatically given <b>Admin GEDCOM</b> privileges.');
-	break;
 
 case 'useradmin_editaccount':
 	$title=i18n::translate('Edit account information');

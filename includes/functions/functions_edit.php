@@ -140,9 +140,9 @@ function edit_language_checkboxes($field_prefix, $languages) {
 function edit_field_access_level($name, $selected='', $extra='') {
 	$ACCESS_LEVEL=array(
 		WT_PRIV_PUBLIC=>i18n::translate('Show to public'),
-		WT_PRIV_USER  =>i18n::translate('Show only to authenticated users'),
-		WT_PRIV_NONE  =>i18n::translate('Show only to admin users'),
-		WT_PRIV_HIDE  =>i18n::translate('Hide even from admin users')
+		WT_PRIV_USER  =>i18n::translate('Show to members'),
+		WT_PRIV_NONE  =>i18n::translate('Show to managers'),
+		WT_PRIV_HIDE  =>i18n::translate('Hide from everyone')
 	);
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }

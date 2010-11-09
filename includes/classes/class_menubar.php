@@ -115,7 +115,7 @@ class MenuBar {
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_pedigree");
 			$menu->addSubmenu($submenu);
 			//-- my_indi submenu
-			$submenu = new Menu(i18n::translate('My Individual Record'), "individual.php?pid=".WT_USER_GEDCOM_ID);
+			$submenu = new Menu(i18n::translate('My individual record'), "individual.php?pid=".WT_USER_GEDCOM_ID);
 			$submenu->addIcon('indis');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_indis");
 			$menu->addSubmenu($submenu);
