@@ -46,7 +46,6 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 if (!isset($action)) $action="";
 
-print_header(i18n::translate('Administration'));
 $pending_changes=WT_DB::prepare("SELECT 1 FROM `##change` WHERE status='pending' LIMIT 1")->fetchOne();
 if ($pending_changes) {
 	$d_wt_changes = "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('Moderate pending changes').help_link('edit_changes.php')."</a>";
@@ -69,156 +68,151 @@ foreach (get_all_users() as $user_id=>$user_name) {
 	}
 }
 
-echo WT_JS_START, 'function showchanges() {window.location.reload();}', WT_JS_END;
-?>
-<script type="text/javascript">
-//<![CDATA[
-  jQuery(document).ready(function() {
-    jQuery("#tabs").tabs();
-  });
-//]]>
-  </script>
-<table class="center <?php echo $TEXT_DIRECTION; ?> width90">
-	<tr>
-		<td colspan="2" class="center"><?php
-		echo '<h2>', WT_WEBTREES, ' ', WT_VERSION_TEXT, '<br />', i18n::translate('Administration'), '</h2>';
-		echo i18n::translate('Current Server Time:');
-		echo " ".format_timestamp(time());
-		echo "<br />".i18n::translate('Current User Time:');
-		echo " ".format_timestamp(client_time());
-		if (WT_USER_IS_ADMIN) {
-			if ($verify_msg) {
-				echo "<br />";
-				echo "<a href=\"useradmin.php?action=listusers&amp;filter=admunver"."\" class=\"error\">".i18n::translate('User accounts awaiting verification by admin')."</a>";
-				echo "<br /><br />";
-			}
-			if ($warn_msg) {
-				echo "<br />";
-				echo "<a href=\"useradmin.php?action=listusers&amp;filter=warnings"."\" class=\"error\" >".i18n::translate('One or more user accounts have warnings')."</a>";
-				echo "<br /><br />";
-			}
-		}
-		?></td>
-	</tr>
+print_header(i18n::translate('Administration'));
+echo
+	WT_JS_START,
+	'function showchanges() {window.location.reload();}',
+  'jQuery(document).ready(function() {',
+  ' jQuery("#tabs").tabs();',
+  '});',
+	'function manageservers() {',
+	' window.open("manageservers.php", "", "top=50,left=50,width=700,height=500,scrollbars=1,resizable=1");',
+	'}',
+	WT_JS_END,
+	'<div class="center">',
+	'<h2>', i18n::translate('Administration'), ' - ', WT_WEBTREES, ' ', WT_VERSION_TEXT, '</h2>',
+	'<p>',
+	i18n::translate('Current Server Time:'), ' ', format_timestamp(time()),
+	"<br />".
+	i18n::translate('Current User Time:'), ' ', format_timestamp(client_time()),
+	'</p>';
 
-	<tr><td colspan="2">
-
-	<div id="tabs" class="width100">
-	<!-- Tabs -->
-	<ul>
-		<li><a href="#info"><span><?php echo i18n::translate('Other Administration'); ?></span></a></li>
-		<?php if (WT_USER_IS_ADMIN) { ?>
-			<li><a href="#site"><span><?php echo i18n::translate('Site administration'); ?></span></a></li>
-		<?php } ?>
-		<li><a href="#gedcom"><span><?php echo i18n::translate('Data and GEDCOM administration'); ?></span></a></li>
-		<?php
-			$modules = WT_Module::getInstalledModules();
-			if (WT_USER_IS_ADMIN || count($modules)>0) { ?>
-				<li><a href="#modules" onclick="window.location='module_admin.php';" ><span><?php echo i18n::translate('Module administration'); ?></span></a></li>
-		<?php } ?>
-	</ul>
-	<!-- Other admin -->
-	<div id="info">
-		<table class="center <?php echo $TEXT_DIRECTION; ?> width100">
-			<tr>
-				<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Informational'); ?></td>
-			</tr>
-			<tr>
-				<td class="optionbox width50">
-					<a href="readme.html" target="manual" title="<?php echo i18n::translate('View readme.html file'); ?>"><?php echo i18n::translate('README documentation'); ?></a>
-				</td>
-				<td class="optionbox width50">
-					<a href="wtinfo.php?action=phpinfo" title="<?php echo i18n::translate('Show PHP information page'); ?>"><?php echo i18n::translate('PHP information'); ?></a>
-					<?php echo help_link('phpinfo'); ?>
-				</td>
-			</tr>
-	<?php if (WT_USER_CAN_EDIT) {
-		?>
-		<tr>
-			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Unlinked Records'); ?></td>
-		</tr>
-		<tr>
-			<td class="optionbox with50">
-				<a href="javascript: <?php echo i18n::translate('Add an unlinked person'); ?> "onclick="addnewchild(''); return false;"><?php echo i18n::translate('Add an unlinked person'); ?></a><?php echo help_link('edit_add_unlinked_person'); ?>
-			</td>
-			<td class="optionbox width50">
-				<a href="javascript: <?php echo i18n::translate('Add an unlinked source'); ?> "onclick="addnewsource(''); return false;"><?php echo i18n::translate('Add an unlinked source'); ?></a><?php echo help_link('edit_add_unlinked_source'); ?>
-			</td>
-		</tr>
-		<tr>
-			<td class="optionbox with50">
-				<a href="javascript: <?php echo i18n::translate('Add an unlinked note'); ?> "onclick="addnewnote(''); return false;"><?php echo i18n::translate('Add an unlinked note'); ?></a><?php echo help_link('edit_add_unlinked_note'); ?>
-			</td>
-			<td class="optionbox width50">
-				&nbsp;
-			</td>
-		</tr>
-		</table>
-		</div>
-		<?php
+if (WT_USER_IS_ADMIN) {
+	if ($verify_msg) {
+		echo "<p>";
+		echo "<a href=\"useradmin.php?action=listusers&amp;filter=admunver"."\" class=\"error\">".i18n::translate('User accounts awaiting verification by admin')."</a>";
+		echo "</p>";
 	}
-	if (WT_USER_IS_ADMIN) {
-		?>
-		<!-- Site admin -->
-		<div id="site">
-		<table class="center <?php echo $TEXT_DIRECTION; ?> width100">
-		<tr>
-            <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Site administration'); ?></td>
-		</tr>
-		<tr>
-			<td class="optionbox width50"><a
-				href="siteconfig.php"><?php echo i18n::translate('Configuration'); ?></a><?php echo help_link('help_editconfig.php'); ?></td>
-			<td class="optionbox width50"><a
-				href="manageservers.php"><?php echo i18n::translate('Manage sites'); ?></a><?php echo help_link('help_managesites'); ?></td>
-		</tr>
-		<tr>
-			<td class="optionbox width50"><a
-				href="useradmin.php"><?php echo i18n::translate('User administration'); ?></a><?php echo help_link('help_useradmin.php'); ?></td>
-				<td class="optionbox width50"><a href="logs.php"><?php echo i18n::translate('Logs'); ?></a><?php echo help_link('logs.php'); ?></td>
-		</tr>
-		</table>
-		</div>
-		<?php
-	} ?>
-	<!-- GEDCOM admin -->
-	<div id="gedcom">
-		<table class="center <?php echo $TEXT_DIRECTION; ?> width100">
-			<tr>
-			<td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('Data and GEDCOM administration'); ?></td>
-			</tr>
-			<tr>
-				<td class="optionbox width50"><a
-					href="editgedcoms.php"><?php echo i18n::translate('GEDCOM administration'); ?></a><?php echo help_link('gedcom_administration'); ?></td>
-				<td class="optionbox width50"><a
-					href="edit_merge.php"><?php echo i18n::translate('Merge records'); ?></a><?php echo help_link('help_edit_merge.php'); ?></td>
-			</tr>
-			<tr>
-				<td class="optionbox width50"><?php if (WT_USER_IS_ADMIN) {  echo '<a href="dir_editor.php">', i18n::translate('Cleanup data directory'), '</a>', help_link('help_dir_editor.php'); } ?></td>
-				<td class="optionbox width50"><?php if (WT_USER_CAN_EDIT) {  echo '<a href="module.php?mod=batch_update&mod_action=batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php'); } ?></td>
-			</tr>
-			<?php if ($pending_changes) { ?>
-				<tr>
-					<td colspan="2" class="optionbox" style="text-align:center; "><?php echo $d_wt_changes; ?></td>
-				</tr>
-			<?php } ?>
-		</table>
-	</div>
-	<!-- Module admin -->
-	<?php if (WT_USER_IS_ADMIN || count($modules)>0) {
-		echo '<div id="modules">';
-			// Added by BH ------------------------
-			echo i18n::translate('Loading...');
-			// ------------------------------------
-		echo '</div>';
-	} ?>
-</div>
-</td>
-</tr></table>
-	<?php
-	echo WT_JS_START;
-	echo 'function manageservers() {';
-	echo ' window.open("manageservers.php", "", "top=50,left=50,width=700,height=500,scrollbars=1,resizable=1");';
-	echo '}';
-	echo WT_JS_END;
-echo '<br /><br />';
+	if ($warn_msg) {
+		echo "<p>";
+		echo "<a href=\"useradmin.php?action=listusers&amp;filter=warnings"."\" class=\"error\" >".i18n::translate('One or more user accounts have warnings')."</a>";
+		echo "</p>";
+	}
+}
+
+echo
+	'</div>',
+	'<div id="tabs" class="width100">',
+	'<!-- Tabs -->', 
+	'<ul>',
+	'<li><a href="#gedcom"><span>', i18n::translate('Family tree administration'), '</span></a></li>';
+
+if (WT_USER_IS_ADMIN) {
+	echo '<li><a href="#site"><span>', i18n::translate('Site administration'), '</span></a></li>';
+	$modules = WT_Module::getInstalledModules();
+	if ($modules) {
+		echo
+			'<li><a href="#modules" onclick="window.location=\'module_admin.php\';">',
+			i18n::translate('Module administration'),
+			'</a></li>';
+	}
+	echo
+		'<li><a href="#users" onclick="window.location=\'useradmin.php\';">',
+		i18n::translate('User administration'),
+		'</a></li>',
+		'<li><a href="#multimedia" onclick="window.location=\'media.php\';">',
+		i18n::translate('Manage multimedia'),
+		'</a></li>';
+}
+
+echo
+	'</ul>',
+	'<!-- GEDCOM admin -->',
+	'<div id="gedcom">',
+	'<table class="center ', $TEXT_DIRECTION, ' width100">',
+	'<tr>',
+	'<td colspan="2" class="topbottombar" style="text-align:center; ">', i18n::translate('Family tree administration'), '</td>',
+	'</tr>',
+	'<tr>',
+	'<td class="optionbox width50"><a href="editgedcoms.php">',
+	i18n::translate('GEDCOM administration'), '</a>', help_link('gedcom_administration'), '</td>',
+	'<td class="optionbox with50">',
+	'<a href="javascript:;" onclick="addnewchild(\'\'); return false;">', i18n::translate('Add an unlinked person'), '</a>',
+	help_link('edit_add_unlinked_person'),
+	'</td>',
+	'</tr>',
+	'<tr>',
+	'<td class="optionbox width50">';
+
+if (WT_USER_CAN_EDIT) {
+	echo '<a href="module.php?mod=batch_update&mod_action=batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php');
+} else {
+	echo '&nbsp;';
+}
+
+echo '</td>';
+
+echo
+	'<td class="optionbox with50">',
+	'<a href="javascript:;" onclick="addnewnote(\'\'); return false;">', i18n::translate('Add an unlinked note'), '</a>',
+	help_link('edit_add_unlinked_note'),
+	'</td>',
+	'</tr>',
+	'<tr>',
+	'<td class="optionbox width50"><a href="edit_merge.php">',
+	i18n::translate('Merge records'), '</a>', help_link('help_edit_merge.php'),
+	'</td>',
+	'<td class="optionbox width50">',
+	'<a href="javascript:;" onclick="addnewsource(\'\'); return false;">', i18n::translate('Add an unlinked source'), '</a>',
+	help_link('edit_add_unlinked_source'),
+	'</td>',
+	'</tr>';
+
+if ($pending_changes) {
+	echo '<tr><td colspan="2" class="optionbox">', $d_wt_changes, '</td></tr>';
+}
+
+echo
+	'</table>',
+	'</div>';
+
+if (WT_USER_IS_ADMIN) {
+	echo
+		'<!-- Site admin -->',
+		'<div id="site">',
+		'<table class="center ', $TEXT_DIRECTION, ' width100">',
+		'<tr>',
+		'<td colspan="2" class="topbottombar" style="text-align:center; ">', i18n::translate('Site administration'), '</td>',
+		'</tr>',
+		'<tr>',
+		'<td class="optionbox width50"><a	href="siteconfig.php">', i18n::translate('Configuration'), '</a>', help_link('help_editconfig.php'), '</td>',
+		'<td class="optionbox width50"><a href="manageservers.php">', i18n::translate('Manage sites'), '</a>', help_link('help_managesites'), '</td>',
+		'</tr>',
+		'<tr>',
+		'<td class="optionbox width50">',
+		'<a href="readme.html" target="manual">', i18n::translate('README documentation'), '</a>',
+		'</td>',
+		'<td class="optionbox width50">',
+		'<a href="logs.php">', i18n::translate('Logs'), '</a>', help_link('logs.php'),
+		'</td>',
+		'</tr>',
+		'<tr>',
+		'<td class="optionbox width50">',
+		'<a href="dir_editor.php">', i18n::translate('Cleanup data directory'), '</a>', help_link('help_dir_editor.php'),
+		'</td>',
+		'<td class="optionbox width50">',
+		'<a href="wtinfo.php?action=phpinfo">', i18n::translate('PHP information'), '</a>', help_link('phpinfo'),
+		'</td>',
+		'</tr>',
+		'</table>',
+		'</div>',
+		'<!-- Module admin -->';
+	
+	if ($modules) {
+		echo '<div id="modules">', i18n::translate('Loading...'), '</div>';
+	}
+	echo '<div id="users">', i18n::translate('Loading...'), '</div>';
+	echo '<div id="multimedia">', i18n::translate('Loading...'), '</div>';
+}
+echo '</div></td></tr></table>';
 print_footer();
