@@ -48,7 +48,7 @@ foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
 }
 $ALL_EDIT_OPTIONS=array(
-	'none'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Public'),
+	'none'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Visitor'),
 	'access'=> /* I18N: Listbox entry; name of a role */ i18n::translate('Member'),
 	'edit'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Editor'),
 	'accept'=> /* I18N: Listbox entry; name of a role */ i18n::translate('Moderator'),

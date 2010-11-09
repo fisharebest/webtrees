@@ -3900,7 +3900,7 @@ case 'role':
 		i18n::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.').
 		'<br/><br>'.
 		'<dl>'.
-		'<dt>'.i18n::translate('Public').'</dt><dd>'.
+		'<dt>'.i18n::translate('Visitors').'</dt><dd>'.
 		i18n::translate('Everybody has this role, including visitors to the site and search engines.').
 		'</dd>'.
 		'<dl>'.

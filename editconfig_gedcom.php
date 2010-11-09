@@ -84,7 +84,7 @@ $errors=false;
 $error_msg='';
 
 $PRIVACY_CONSTANTS=array(
-	'none'        =>i18n::translate('Show to public'),
+	'none'        =>i18n::translate('Show to visitors'),
 	'privacy'     =>i18n::translate('Show to members'),
 	'confidential'=>i18n::translate('Show to managers'),
 	'hidden'      =>i18n::translate('Hide from everyone')
