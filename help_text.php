@@ -4124,14 +4124,15 @@ case 'useradmin_user_default_tab':
 	$text=i18n::translate('This setting allows you to specify which tab is opened automatically when this user accesses the Individual Information page.  If allowed to edit their account, the user can change this setting later.');
 	break;
 
-case 'useradmin_verbyadmin':
-	$title=i18n::translate('User approved by admin');
-	$text=i18n::translate('If a user has used the Self Registration module and has verified himself, the last step, before his account will become active, is your approval.<br /><br />After you have approved the user\'s application for a new account, the user will receive an email message.  The message will tell the user that his account is now active.  He can login with the user name and password that he supplied when he applied for the account.');
-	break;
-
-case 'useradmin_verified':
-	$title=i18n::translate('User verified himself');
-	$text=i18n::translate('<b>Self Registration</b><br />A user can apply for a new account by means of the <b>self registration</b> module.<br /><br />When he does so, he will receive an email message with a link to verify his application.  After the applicant has acted on the instructions in that email, you will see this box checked, and you can proceed with the next step, <b>User approved by Admin</b>.  You should wait with your approval as long as this box is not checked.<br /><br /><b>Add user manually</b><br />If you use this form to add a user manually, you will find this box checked already.');
+case 'useradmin_verification':
+	$title=i18n::translate('Account approval and email verification');
+	$text=i18n::translate('When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the "email verified" option is selected automatically.').
+		'<br/><br/>'.
+		i18n::translate('If an administrator creates a user account, the verification email is not sent, and the email must be verified manually.').
+		'<br/><br/>'.
+		i18n::translate('You should not approve an account unless you know that the email address is correct.').
+		'<br/><br/>'.
+		i18n::translate('A user will not be able to login until both the "email verified" and "approved by administrator" options are selected.');
 	break;
 
 case 'useradmin_visibleonline':

@@ -302,9 +302,9 @@ if ($action=="edituser") {
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('User verified himself'), help_link('useradmin_verified'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Email verified'), help_link('useradmin_verification'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="verified" value="1" <?php if (get_user_setting($user_id, 'verified')) echo "checked=\"checked\""; ?> /></td>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Approved by administrator'), help_link('useradmin_verification'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" value="1" <?php if (get_user_setting($user_id, 'verified_by_admin')) echo "checked=\"checked\""; ?> /></td>
 			</tr>
 			<tr>
@@ -525,8 +525,8 @@ jQuery(document).ready(function() {
 	echo i18n::translate('Role'); ?></th>
 	<th><?php echo i18n::translate('Date registered'); ?></th>
 	<th><?php echo i18n::translate('Last logged in'); ?></th>
-	<th><?php echo i18n::translate('User verified himself'); ?></th>
-	<th><?php echo i18n::translate('User approved by admin'); ?></th>
+	<th><?php echo i18n::translate('Email verified'); ?></th>
+	<th><?php echo i18n::translate('Approved by administrator'); ?></th>
 	<th><?php echo i18n::translate('Delete'); ?></th>
 	</tr>
 	</thead>
@@ -747,9 +747,9 @@ if ($action == "createform") {
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('User verified himself'), help_link('useradmin_verified'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Email verified'), help_link('useradmin_verification'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="verified" value="1" checked="checked" /></td>
-				<td class="descriptionbox wrap"><?php echo i18n::translate('User approved by admin'), help_link('useradmin_verbyadmin'); ?></td>
+				<td class="descriptionbox wrap"><?php echo i18n::translate('Approved by administrator'), help_link('useradmin_verification'); ?></td>
 				<td class="optionbox wrap"><input type="checkbox" name="verified_by_admin" value="1" checked="checked" /></td>
 			</tr>
 			<tr>
