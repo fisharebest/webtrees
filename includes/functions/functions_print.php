@@ -567,23 +567,6 @@ function execution_stats() {
 	);
 }
 
-//-- print a form to change the language
-function print_lang_form($option=0) {
-	$language_menu=MenuBar::getLanguageMenu();
-	if (empty($language_menu)) {
-		return;
-	}
-	echo '<div class="lang_form">';
-	switch($option) {
-	case 1:
-		echo $language_menu->getMenu();
-		break;
-	default:
-		echo $language_menu->getMenuAsDropdown();
-		break;
-	}
-	echo '</div>';
-}
 /**
 * print user links
 *

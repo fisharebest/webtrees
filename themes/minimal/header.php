@@ -105,7 +105,10 @@ if (!defined('WT_WEBTREES')) {
 				if ($menu) {
 					echo $menu->getMenuAsDropdown();
 				}
-				print_lang_form();
+				$menu=MenuBar::getLanguageMenu();
+				if ($menu) {
+					echo $menu->getMenuAsDropdown();
+				}
 			?>
 			</td>
 			<td style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
