@@ -1463,8 +1463,8 @@ class GedcomDate {
 
 	// Convert an individual gedcom date string into a CalendarDate object
 	static function ParseDate($date) {
-		// Calendar escape specified? - use it
-		if (preg_match('/^(@#[^@]+@) ?(.*)/', $date, $match)) {
+		// Valid calendar escape specified? - use it
+		if (preg_match('/^(@#d(?:gregorian|julian|hebrew|hijri|french r|roman)+@) ?(.*)/', $date, $match)) {
 			$cal=$match[1];
 			$date=$match[2];
 		} else {
