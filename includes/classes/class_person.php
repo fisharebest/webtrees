@@ -1321,8 +1321,8 @@ class Person extends GedcomRecord {
 		$dDate=$this->getEstimatedDeathDate();
 		if (!$bDate->isOK()) return;
 
-		if ($SHOW_RELATIVES_EVENTS && file_exists(WT_ROOT.'languages/histo.'.WT_LOCALE.'.php')) {
-			require WT_ROOT.'languages/histo.'.WT_LOCALE.'.php';
+		if ($SHOW_RELATIVES_EVENTS && file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+			require get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
 			foreach ($histo as $indexval=>$hrec) {
 				$sdate=new GedcomDate(get_gedcom_value('DATE', 2, $hrec, '', false));
 				if ($sdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && GedcomDate::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
