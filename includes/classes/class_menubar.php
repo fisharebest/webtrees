@@ -824,6 +824,11 @@ class MenuBar {
 		$menu->addIcon('gedcom');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_gedcom");
 
+		// Don't list favorites on private sites and for search engines
+		if (!WT_USER_ID && $REQUIRE_AUTHENTICATION || $SEARCH_SPIDER) {
+			return $menu;
+		}
+
 		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
 			$gedfavs=gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM);
 		} else {
