@@ -108,17 +108,21 @@ if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
 ?>
 <table class="header" style="background:url('<?php echo WT_THEME_DIR; ?>images/clouds.gif')" >
 <?php
-	echo '<tr>',
-		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >',
-		 '<div class="title">';
+	echo '<tr><td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" ><div class="title">';
 	print_gedcom_title_link(TRUE);
 
 if (empty($SEARCH_SPIDER)) {
-	echo '<td valign="middle" align="center">',
-		 '<div class="blanco" style="COLOR: #6699ff;" >';
-	print_user_links();
-	echo '</div>',
-		 '</td>',
+	echo '<td valign="middle" align="center"><div class="blanco" style="COLOR: #6699ff;" >';
+	if (WT_USER_ID) {
+		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
+		if (WT_USER_GEDCOM_ADMIN) {
+			echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
+		}
+		echo logout_link();
+	} elseif (empty($SEARCH_SPIDER)) {
+		echo login_link();
+	}
+	echo '</div></td>',
 		 '<td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >';
 ?>
 	<div style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>">

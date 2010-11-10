@@ -567,27 +567,6 @@ function execution_stats() {
 	);
 }
 
-/**
-* print user links
-*
-* this function will print login/logout links and other links based on user privileges
-*/
-function print_user_links() {
-	global $QUERY_STRING, $SEARCH_SPIDER;
-
-	if (WT_USER_ID) {
-		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
-		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
-		}
-		echo logout_link();
-	} else {
-		if (empty($SEARCH_SPIDER)) {
-			echo login_link();
-		}
-	}
-}
-
 // Generate a login link
 function login_link($extra='') {
 	global $QUERY_STRING;

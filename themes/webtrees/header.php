@@ -96,7 +96,18 @@ if ($view!='simple') {
 			'<td><img src="', WT_THEME_DIR, 'images/header.jpg" width="281" height="50" alt="" /></td>',
 			'<td width="100%">',
 					'<div align="center">',
-						'<b>', print_user_links(), '</b>',
+					'<b>';
+	if (WT_USER_ID) {
+		echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
+		if (WT_USER_GEDCOM_ADMIN) {
+			echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
+		}
+		echo logout_link();
+	} elseif (empty($SEARCH_SPIDER)) {
+		echo login_link();
+	}
+ 	echo '</b>',
+
 					'</div>',
 					'<div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">',
 						'<ul class="makeMenu" align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" >';
