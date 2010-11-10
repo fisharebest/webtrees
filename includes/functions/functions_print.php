@@ -1178,26 +1178,6 @@ function write_align_with_textdir_check($t_dir, $return=false)
 	if ($return) return $out;
 	echo $out;
 }
-//-- print theme change dropdown box
-function print_theme_dropdown($style=0) {
-	global $ALLOW_THEME_DROPDOWN;
-
-	if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-		echo '<div class="theme_form">';
-		$theme_menu=MenuBar::getThemeMenu();
-		switch ($style) {
-		case 0:
-			echo $theme_menu->getMenuAsDropdown();
-			break;
-		case 1:
-			echo $theme_menu->getMenu();
-			break;
-		}
-		echo '</div>';
-	} else {
-		echo '&nbsp;';
-	}
-}
 
 /**
 * Prepare text with parenthesis for printing

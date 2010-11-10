@@ -123,7 +123,15 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#84beff" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/barra.gif');">
 			 <tr class="blanco">
 				<td width="10" height="40"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="18" alt="" /></td>
-				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" ><?php print_theme_dropdown(1); ?><?php print_favorite_selector(1); ?></div></td>
+				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" >
+					<?php
+					$menu=MenuBar::getThemeMenu();
+					if ($menu) {
+						echo $menu->getMenu();
+					}
+					print_favorite_selector(1);
+				?>
+				</div></td>
 				<td><div align="center" ><?php print_user_links(); ?></div></td>
 				<td width="120" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
 					<div class="makeMenu"><?php

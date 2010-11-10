@@ -100,8 +100,13 @@ if (!defined('WT_WEBTREES')) {
 			</td>
 			<?php if (empty($SEARCH_SPIDER)) { ?>
 			<td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
-				<?php print_theme_dropdown(); ?>
-				<?php print_lang_form(); ?>
+			<?php
+				$menu=MenuBar::getThemeMenu();
+				if ($menu) {
+					echo $menu->getMenuAsDropdown();
+				}
+				print_lang_form();
+			?>
 			</td>
 			<td style="white-space: normal;" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
 				<form action="search.php" method="get">
