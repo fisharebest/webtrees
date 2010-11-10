@@ -180,25 +180,7 @@ class Menu {
 		}
 	}
 
-	// Get the menu as a list of icons
-	function getMenuAsIcons() {
-		if ($this->separator || !$this->link && !$this->submenus) {
-			return '';
-		}
-		$icons=array();
-		if ($this->icon) {
-			$icons[]='<a href="'.$this->link.'"><img onmouseover="this.className=\''.$this->hoverclass.'\'" onmouseout="this.className=\''.$this->class.'\'" class="'.$this->class.'" src="'.$this->icon.'" alt="'.$this->label.'" title="'.$this->label.'" /></a>';
-		}
-		if ($this->submenus) {
-			foreach ($this->submenus as $submenu) {
-				$icons[]=$submenu->getMenuAsIcons();
-			}
-		}
-		return join(' ', $icons);
-	}
-
-	function getMenu()
-	{
+	function getMenu() {
 		global $menucount, $TEXT_DIRECTION, $WT_IMAGES;
 
 		if (!isset($menucount)) {
