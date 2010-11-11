@@ -263,7 +263,7 @@ if ($controller->action == "replace")
 	</tr>
 	<!-- // search terms -->
 	<tr>
-		<td class="list_label" style="padding: 5px;"><?php echo i18n::translate('Enter Search terms'); ?></td>
+		<td class="list_label" style="padding: 5px;"><?php echo i18n::translate('Search for'); ?></td>
 		<td class="list_value" style="padding: 5px;"><input tabindex="1" id="firstfocus" name="query" value="" type="text"/></td>
 			<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="3">
 			<input tabindex="2" type="submit" value="<?php echo i18n::translate('Search'); ?>" />
@@ -275,7 +275,7 @@ if ($controller->action == "replace")
 	</tr>
 	<!-- // Choice where to search -->
 	<tr>
-		<td class="list_label" style="padding: 5px;"><?php echo i18n::translate('Search for'); ?></td>
+		<td class="list_label" style="padding: 5px;"><?php echo i18n::translate('Search'); ?></td>
 		<td class="list_value" style="padding: 5px;">
 			<script type="text/javascript">
 			<!--
