@@ -297,7 +297,7 @@ if ($action=="edituser") {
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
 				<td class="optionbox wrap">
 					<?php
-						echo edit_field_contact('new_contact_method', get_user_setting(WT_USER_ID, 'contactmethod'));
+						echo edit_field_contact('new_contact_method', get_user_setting($user_id, 'contactmethod'));
 					?>
 				</td>
 			</tr>
@@ -742,7 +742,7 @@ if ($action == "createform") {
 				<td class="descriptionbox wrap"><?php echo i18n::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
 				<td class="optionbox wrap">
 					<?php
-						echo edit_field_contact('new_contact_method', get_site_setting('STORE_MESSAGES') ? 'messaging2' : 'messaging3');
+						echo edit_field_contact('new_contact_method');
 					?>
 				</td>
 			</tr>
