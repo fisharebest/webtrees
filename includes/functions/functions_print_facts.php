@@ -196,10 +196,6 @@ function print_fact(&$eventObj, $noedit=false) {
 	echo "<td class=\"optionbox $styleadd wrap\" $align>";
 	//echo "<td class=\"facts_value facts_value$styleadd\">";
 	if ((canDisplayFact($pid, WT_GED_ID, $factrec))) {
-		if (isset($resn_value)) {
-			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
-			echo help_link('RESN');
-		}
 		// -- first print TYPE for some facts
 		if ($fact!="EVEN" && $fact!="FACT") {
 			if (preg_match("/2 TYPE (.*)/", $factrec, $match)) {
