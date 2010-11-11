@@ -2351,7 +2351,7 @@ case 'MEMORY_LIMIT':
 	ini_restore('memory_limit');
 	$dflt_mem=ini_get('memory_limit');
 	$title=i18n::translate('Memory limit');
-	$text=i18n::translate('By default, your server allows scripts to use %s of memory.', $dflt_mem).
+	$text= /* I18N: %s is an amount of memory, such as 32MB */ i18n::translate('By default, your server allows scripts to use %s of memory.', $dflt_mem).
 		' '.
 		i18n::translate('You can request a higher or lower limit, although the server may ignore this request.').
 		' '.
