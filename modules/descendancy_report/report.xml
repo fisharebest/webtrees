@@ -59,7 +59,7 @@
 
 					<TextBox border="" height="40" newline="1">
 						<Text style="name"><GetPersonName id="" /> </Text>
-<!-- main -->			<if condition="$sources==1">
+<!-- main -->					<if condition="$sources==1">
 							<RepeatTag tag="SOUR">
 								<Footnote>
 									<Gedcom id="@SOUR">
@@ -152,7 +152,7 @@
 											<Text style="label1">  <var var="i18n::translate('He ')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
-										<Text style="label1"> <var var="i18n::translate('She ')" /> </Text>
+										<Text style="label1"> <var var="i18n::translate_c('MALE', 'married')" /> </Text>
 										<if condition="$sources==1">
 											<RepeatTag tag="MARR:SOUR">
 												<Footnote>
@@ -169,7 +169,7 @@
 									<if condition="$marrExists=='true'">
 										<Gedcom id="@WIFE">
 											<Text style="name"> <GetPersonName id="" /> </Text>
-<!-- wife -->									<if condition="$sources==1">
+<!-- wife -->											<if condition="$sources==1">
 													<RepeatTag tag="SOUR">
 														<Footnote>
 															<Gedcom id="@SOUR">
@@ -218,7 +218,7 @@
 									<if condition="$marrExists=='true'">
 										<Gedcom id="@HUSB">
 											<Text style="name"> <GetPersonName id="" /> </Text>
-<!-- husband -->							<if condition="$sources==1">
+<!-- husband -->									<if condition="$sources==1">
 												<RepeatTag tag="SOUR">
 													<Footnote>
 														<Gedcom id="@SOUR">
@@ -457,7 +457,7 @@
 										<TextBox height="20" newline="1">
 											<Text style="label1"><var var="familyChildRoman" /></Text>
 											<Text style="name">  <GetPersonName id="" /> </Text>
-<!-- children -->							<if condition="$sources==1">
+<!-- children -->									<if condition="$sources==1">
 												<RepeatTag tag="SOUR">
 													<Footnote>
 														<Gedcom id="@SOUR">
