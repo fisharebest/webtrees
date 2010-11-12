@@ -1760,3 +1760,7 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 .place {
 	padding-top: 5px;
 }
+
+.logo {
+	text-align: center;
+}

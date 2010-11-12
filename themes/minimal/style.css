@@ -1557,3 +1557,7 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	float:left;
 	padding: 5px 5px 0 0;
 }
+
+.logo {
+	text-align: center;
+}
