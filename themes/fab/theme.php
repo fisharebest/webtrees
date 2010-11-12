@@ -32,10 +32,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Remove non-standard tags.
-$date_and_time=array();
-unset ($level2_tags['CEME']);
-
 $theme_name="F.A.B."; // need double quotes, as file is scanned/parsed by script
 $stylesheet=WT_THEME_DIR.'style.css';
 $headerfile=WT_THEME_DIR.'header.php';
