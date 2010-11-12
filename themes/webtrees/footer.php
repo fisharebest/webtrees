@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 echo '</div>';
 // closing div id=\"content\"
-echo '<div id="footer" class="', $TEXT_DIRECTION, ' width99 center">';
+echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 	echo contact_links();
 	echo
 		'<p class="logo">',

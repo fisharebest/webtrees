@@ -674,7 +674,7 @@ a:hover .nameZoom {
 	clear: both;
 	color: black;
 	font: 12px tahoma, arial, helvetica, sans-serif;
-	width: 99%;
+	text-align: center;
 }
 
 /*-- index.php specific style sheets -- */
