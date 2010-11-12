@@ -2169,7 +2169,7 @@ function GetPersonNameSHandler($attrs) {
 				//short-circuit with the faster strlen
 				if (strlen($name)>$attrs["truncate"] && utf8_strlen($name)>$attrs["truncate"]) {
 					$name = preg_replace("/\(.*\) ?/", "", $name); //removes () and text inbetween - what about ", [ and { etc?
-					$words = explode(" ", $name);
+					$words = preg_split('/[, -]+/', $name); // names separated with space, comma or hyphen - any others?
 					$name = $words[count($words)-1];
 					for ($i=count($words)-2; $i>=0; $i--) {
 						$len = utf8_strlen($name);
