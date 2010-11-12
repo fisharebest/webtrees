@@ -582,8 +582,7 @@ echo "<th class=\"descriptionbox\">", translate_fact('LONG'), "</th>";
 echo "<th class=\"descriptionbox\">".i18n::translate('Zoom factor')."</th>";
 echo "<th class=\"descriptionbox\">".i18n::translate('Icon')."</th>";
 echo "<th class=\"descriptionbox\" colspan=\"2\">";
-echo help_link('PL_EDIT_LOCATION','googlemap');
-echo i18n::translate('Edit geographic location'), "</th></tr>";
+echo i18n::translate('Edit geographic location'), help_link('PL_EDIT_LOCATION','googlemap'), "</th></tr>";
 if (count($placelist) == 0)
 	echo "<tr><td colspan=\"7\" class=\"facts_value\">", i18n::translate('No places found'), "</td></tr>";
 foreach ($placelist as $place) {
