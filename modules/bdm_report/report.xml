@@ -145,9 +145,11 @@
 							: <GedcomValue tag="BIRT:DATE" />
 							<br />  <var var="i18n::translate('Place')" />
 							: <GedcomValue tag="BIRT:PLAC" />
-							<br />  <var var="i18n::translate('Source')" />
+							<br />  <var var="i18n::translate('Source')" /> 
 							: <RepeatTag tag="BIRT:SOUR">
-								<GedcomValue tag="SOUR" /> 
+								<Gedcom id="@SOUR">
+									<GedcomValue tag="TITL" />
+								</Gedcom>
 							</RepeatTag>
 							<SetVar name="moreB" value="1" />
 						</RepeatTag>
@@ -171,7 +173,9 @@
 								: <GedcomValue tag="MARR:PLAC" />
 								<br />  <var var="i18n::translate('Source')" />
 								: <RepeatTag tag="MARR:SOUR">
-									<GedcomValue tag="SOUR" /> 
+									<Gedcom id="@SOUR">
+										<GedcomValue tag="TITL" /> 
+									</Gedcom>
 								</RepeatTag>
 								<br />
 								<var var="i18n::translate('Spouse')" />
@@ -201,7 +205,9 @@
 							: <GedcomValue tag="DEAT:PLAC" />
 							<br />  <var var="i18n::translate('Source')" />
 							: <RepeatTag tag="DEAT:SOUR">
-								<GedcomValue tag="SOUR" /> 
+								<Gedcom id="@SOUR">
+									<GedcomValue tag="TITL" /> 
+								</Gedcom>
 							</RepeatTag>
 							<SetVar name="moreD" value="1" />
 						</RepeatTag>

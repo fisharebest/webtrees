@@ -149,10 +149,12 @@
 									<Gedcom id="MARR">
 										<SetVar name="marrExists" value="true" />
 										<if condition="$printPronoun=='true'" >
-											<Text style="label1">  <var var="i18n::translate('He ')" /> </Text>
+											<Text style="label1">  <var var="i18n::translate('He married')" /> </Text>
+										</if>
+										<if condition="$printPronoun=='false'" >
+											<Text style="label1">  <var var="i18n::translate_c('MALE', 'married')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
-										<Text style="label1"> <var var="i18n::translate_c('MALE', 'married')" /> </Text>
 										<if condition="$sources==1">
 											<RepeatTag tag="MARR:SOUR">
 												<Footnote>
@@ -198,10 +200,12 @@
 									<Gedcom id="MARR">
 										<SetVar name="marrExists" value="true" />
 										<if condition="$printPronoun=='true'" >
-											<Text style="label1">  <var var="i18n::translate('She ')" /> </Text>
+											<Text style="label1">  <var var="i18n::translate('She married')" /> </Text>
+										</if>
+										<if condition="$printPronoun=='false'" >
+											<Text style="label1"> <var var="i18n::translate_c('FEMALE', 'married')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
-										<Text style="label1"> <var var="i18n::translate_c('FEMALE', 'married')" /> </Text>
 										<if condition="$sources==1">
 											<RepeatTag tag="MARR:SOUR">
 												<Footnote>
@@ -266,11 +270,10 @@
 											<Gedcom id="BIRT">
 												<if condition="$printPronoun=='true'">
 													<SetVar name="printPeriod" value="true" />
-													<Text style="label1">  <var var="i18n::translate('She ')" /></Text>
+													<Text style="label1">  <var var="i18n::translate('She was born')" /></Text>
 													<SetVar name="printPronoun" value="false" />
 												</if>
 												<SetVar name="birtExist" value="true" />
-												<Text style="label1"> <var var="i18n::translate_c('FEMALE', 'was born')" /> </Text>
 												<if condition="$sources==1">
 													<RepeatTag tag="BIRT:SOUR">
 														<Footnote>
@@ -332,11 +335,10 @@
 											<Gedcom id="BIRT">
 												<SetVar name="printPeriod" value="true" />
 												<if condition="$printPronoun=='true'">
-													<Text style="label1">  <var var="i18n::translate('He ')" /></Text>
+													<Text style="label1">  <var var="i18n::translate('He was born')" /></Text>
 													<SetVar name="printPronoun" value="false" />
 												</if>
 												<SetVar name="birtExist" value="true" />
-												<Text style="label1"> <var var="i18n::translate_c('MALE', 'was born')" /> </Text>
 												<if condition="$sources==1">
 													<RepeatTag tag="BIRT:SOUR">
 														<Footnote>

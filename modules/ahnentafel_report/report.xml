@@ -46,12 +46,9 @@
 		<Body>
 			<Relatives id="$pid" group="direct-ancestors" sortby="none" maxgen="$maxgen" showempty="true">
 				<SetVar name="gender" value="m" />
-				<SetVar name="pronoun" value="i18n::translate('He ')" />
 				<if condition="@SEX=='F'">
-					<SetVar name="pronoun" value="i18n::translate('She ')" />
 					<SetVar name="gender" value="f" />
 				</if>
-				<SetVar name="printPronoun" value=" " />
 				<if condition="$generation!=@generation">
 					<if condition="$empty_name=='t'" >
 						<TextBox width="50" height="20">
@@ -115,12 +112,12 @@
 						</if>
 						<!-- Individual, birth... -->
 						<Gedcom id="BIRT">
-							<Text style="text"><var var="printPronoun" />
+							<Text style="text">
 								<if condition="$gender=='m'">
-									<var var="i18n::translate_c('MALE', 'was born')" /> 
+									<var var="i18n::translate_c('MALE', 'was born')" />
 								</if>
 								<if condition="$gender=='f'">
-									<var var="i18n::translate_c('FEMALE', 'was born')" /> 
+									<var var="i18n::translate_c('FEMALE', 'was born')" />
 								</if>
 							</Text>
 							<if condition="$sources==1">
@@ -145,18 +142,17 @@
 								<Text style="text"><var var="i18n::translate(' but the details are unknown')" /></Text>
 							</if>
 							<Text style="text">.</Text>
-							<SetVar name="printPronoun" value="$pronoun" />
 						</Gedcom>
 
 						<!-- 	Sentence 2
 								Individual, christened... -->
 						<Gedcom id="CHR">
-							<Text style="text">  <var var="printPronoun" />
+							<Text style="text"> 
 								<if condition="$gender=='m'">
-									<var var="i18n::translate_c('MALE', 'was christened')" /> 
+									<var var="i18n::translate('He was christened')" />
 								</if>
 								<if condition="$gender=='f'">
-									<var var="i18n::translate_c('FEMALE', 'was christened')" /> 
+									<var var="i18n::translate('She was christened')" />
 								</if>
 							</Text>
 							<if condition="$sources==1">
@@ -181,7 +177,6 @@
 								<Text style="text"><var var="i18n::translate(' but the details are unknown')" /></Text>
 							</if>
 							<Text style="text">.</Text>
-							<SetVar name="printPronoun" value="$pronoun" />
 						</Gedcom>
 						<SetVar name="cpid" value="@ID" />
 						<if condition="$cpid!=$spid">
@@ -194,12 +189,12 @@
 								</if>
 								<Gedcom id="MARR">
 									<if condition="$spid!='' and @DATE!='' and @PLAC!=''">
-										<Text style="text"><br /><var var="printPronoun" />
+										<Text style="text"><br />
 											<if condition="$gender=='m'">
-												<var var="i18n::translate_c('MALE', 'married')" /> 
+												<var var="i18n::translate('He married')" />
 											</if>
 											<if condition="$gender=='f'">
-												<var var="i18n::translate_c('FEMALE', 'married')" /> 
+												<var var="i18n::translate('She married')" />
 											</if>
 										</Text>
 										<if condition="$sources==1">
@@ -228,18 +223,17 @@
 											<Text style="text"><var var="i18n::translate(' but the details are unknown')" /></Text>
 										</if>
 										<Text style="text">.</Text>
-										<SetVar name="printPronoun" value="$pronoun" />
 									</if>
 								</Gedcom>
 							</Gedcom>
 						</if>
 						<Gedcom id="DEAT">
-							<Text style="text"><br /><var var="printPronoun" />
+							<Text style="text"><br />
 								<if condition="$gender=='m'">
-									<var var="i18n::translate_c('MALE', 'died')" /> 
+									<var var="i18n::translate('He died')" />
 								</if>
 								<if condition="$gender=='f'">
-									<var var="i18n::translate_c('FEMALE', 'died')" /> 
+									<var var="i18n::translate('She died')" />
 								</if>
 							</Text>
 							<if condition="$sources==1">
@@ -261,18 +255,17 @@
 								<Text style="text"><var var="i18n::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></Text>
 							</if>
 							<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')">
-								<Text style="text"> <var var="i18n::translate(' but the details are unknown')" /></Text>
+								<Text style="text"><var var="i18n::translate(' but the details are unknown')" /></Text>
 							</if>
 							<Text style="text">.  </Text>
-							<SetVar name="printPronoun" value="$pronoun" />
 						</Gedcom>
 						<Gedcom id="BURI">
-							<Text style="text"><var var="printPronoun" />
+							<Text style="text">
 								<if condition="$gender=='m'">
-									<var var="i18n::translate_c('MALE', 'was buried')" /> 
+									<var var="i18n::translate('He was buried')" />
 								</if>
 								<if condition="$gender=='f'">
-									<var var="i18n::translate_c('FEMALE', 'was buried')" /> 
+									<var var="i18n::translate('She was buried')" />
 								</if>
 							</Text>
 							<if condition="$sources==1">
@@ -297,7 +290,6 @@
 								<Text style="text"><var var="i18n::translate(' but the details are unknown')" /></Text>
 							</if>
 							<Text style="text">.</Text>
-							<SetVar name="printPronoun" value="$pronoun" />
 						</Gedcom>
 					</TextBox>
 					<if condition="$notes==1">

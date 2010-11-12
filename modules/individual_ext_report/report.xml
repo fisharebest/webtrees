@@ -222,7 +222,7 @@
 										</Footnote>
 									</RepeatTag>
 								</if>
-								<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+								<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 							</TextBox>
 						</Gedcom>
 						<!-- mother -->
@@ -242,7 +242,7 @@
 										</Footnote>
 									</RepeatTag>
 								</if>
-								<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+								<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 							</TextBox>
 						</Gedcom>
 						<!-- siblings -->
@@ -266,7 +266,7 @@
 												</Footnote>
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Sister -->
@@ -286,7 +286,7 @@
 												</Footnote>
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Sibling -->
@@ -306,7 +306,7 @@
 												</Footnote>
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 							</Gedcom>
@@ -348,7 +348,7 @@
 											</Footnote>
 										</RepeatTag>
 									</if>
-									<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+									<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 								</TextBox>
 							</if>
 							<!-- wife -->
@@ -368,7 +368,7 @@
 											</Footnote>
 										</RepeatTag>
 									</if>
-									<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+									<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 								</TextBox>
 							</if>
 						</Gedcom>
@@ -393,7 +393,7 @@
 												</Footnote>
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Daughter -->
@@ -413,7 +413,7 @@
 												</Footnote>
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 								<!-- Unknown gender for Child -->
@@ -433,7 +433,7 @@
 												</Footnote>
 											</RepeatTag>
 										</if>
-										<Text color="$tcolor" style="text"> ( <var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom> )</Text>
+										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
 									</TextBox>
 								</if>
 							</Gedcom>
