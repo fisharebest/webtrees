@@ -393,7 +393,12 @@ function print_header($title) {
 	}
 	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
 	$query_string = $QUERY_STRING;
-	$javascript=WT_JS_START.'
+	$javascript=
+		'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>'.
+		'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>'.
+		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>'.
+		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>'.
+		WT_JS_START.'
 		/* setup some javascript variables */
 		var query = "'.$query_string.'";
 		var textDirection = "'.$TEXT_DIRECTION.'";

@@ -76,10 +76,6 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>',
-	'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>',
-	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>',
-	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>',
 	$javascript,
 	'</head>',
 	'<body id="body" ',$bodyOnLoad, '>';

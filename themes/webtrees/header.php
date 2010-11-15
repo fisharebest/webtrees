@@ -74,10 +74,6 @@ if ($view!="simple") {
 }
 echo
 	$javascript,
-	'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>',
-	'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>',
-	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>',
-	'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>',
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
 	'<link type="text/css" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" rel="Stylesheet" />';
 if ($TEXT_DIRECTION=='rtl') {
