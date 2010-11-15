@@ -68,7 +68,7 @@ if ($PGV_PATH) {
 		// The easiest way to do this is to exec() the file - but not lines containing require or PHP tags
 		$config_php=preg_replace(
 			array(
-				'/^\s*(include|require).*/',
+				'/^\s*(include|require).*/m',
 				'/.*<\?php.*/',
 				'/.*\?>.*/'
 			), '', $config_php
