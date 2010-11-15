@@ -396,8 +396,10 @@ function print_header($title) {
 	$javascript=
 		'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>'.
 		'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>'.
+		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>'. // Deprecated - use datatables
+		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>'. // Deprecated - use datatables
+		'<script type="text/javascript" src="js/jquery/jquery.jeditable.js"></script>'.
+		'<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>'.
 		WT_JS_START.'
 		/* setup some javascript variables */
 		var query = "'.$query_string.'";
