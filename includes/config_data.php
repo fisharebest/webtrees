@@ -45,8 +45,8 @@ $UNKNOWN_NN=array(
 	'greek'     =>'(άγνωστος/η)',
 	'russian'   =>'(неопределено)',
 	'han'       =>'(未知)',
-	'latin'     =>'(unknown)',
-	'common'    =>'(unknown)',
+	'latin'     =>i18n::translate_c('surname', '(unknown)'),
+	'common'    =>i18n::translate_c('surname', '(unknown)'),
 );
 
 // Unknown givne name in various scripts
@@ -57,8 +57,8 @@ $UNKNOWN_PN=array(
 	'greek'     =>'(άγνωστος/η)',
 	'russian'   =>'(неопределено)',
 	'han'       =>'(未知)',
-	'latin'     =>'(unknown)',
-	'common'    =>'(unknown)',
+	'latin'     =>i18n::translate_c('given name', '(unknown)'),
+	'common'    =>i18n::translate_c('given name', '(unknown)'),
 );
 
 // Type attribute of a media object
