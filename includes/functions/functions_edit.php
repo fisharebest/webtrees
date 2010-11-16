@@ -44,7 +44,7 @@ function edit_field_inline($name, $value) {
 	return
 		'<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
 		WT_JS_START .
-		'$("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"' . i18n::translate('OK') . '", style:"inherit"})' .
+		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"' . i18n::translate('OK') . '", style:"inherit"})' .
 		WT_JS_END;
 }
 
@@ -94,7 +94,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $extra=''
 		(array_key_exists($selected, $values) ? htmlspecialchars($values[$selected]) : '').
 		'</span>' .
 		WT_JS_START .
-		'$("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"' . i18n::translate('OK') . '", style:"inherit", callback:function(value, settings) {$(this).innerHTML=settings.data[value];} })' .
+		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"' . i18n::translate('OK') . '", style:"inherit", callback:function(value, settings) {$(this).innerHTML=settings.data[value];} })' .
 		WT_JS_END;
 }
 
