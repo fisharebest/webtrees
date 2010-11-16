@@ -217,6 +217,13 @@ function edit_field_language($name, $selected='', $extra='') {
 	return select_edit_control($name, i18n::installed_languages(), null, $selected, $extra);
 }
 
+// An inline-editing version of edit_field_language()
+function edit_field_language_inline($name, $selected=false, $extra='') {
+	return select_edit_control_inline(
+		$name, i18n::installed_languages(), null, $selected, $extra
+	);
+}
+
 // Print an edit control for a username
 function edit_field_username($name, $selected='', $extra='') {
 	$all_users=WT_DB::prepare(
