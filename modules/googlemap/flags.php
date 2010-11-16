@@ -226,7 +226,7 @@ else {
 			<td class="optionbox" colspan="4">
 				<?php echo help_link('PLE_FLAGS','googlemap'); ?>
 				<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
-					<option value="States"><?php echo /* Parts of a country */ i18n::translate('States'); ?></option>
+					<option value="States"><?php echo /* I18N: Parts of a country */ i18n::translate('States'); ?></option>
 					<?php foreach ($stateList as $state_key=>$state_name) {
 						echo "<option value=\"", $state_key, "\"";
 						if ($stateSelected == $state_key) echo " selected=\"selected\" ";
