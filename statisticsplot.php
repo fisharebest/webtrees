@@ -579,7 +579,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$titleLength = strpos($mytitle."\n", "\n");
 	$title = substr($mytitle, 0, $titleLength);
 
-	$imgurl = "http://chart.apis.google.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".$title."&amp;".$datastring."&amp;".$colorstring."&amp;chbh=";
+	$imgurl = "http://chart.apis.google.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".rawurlencode($title)."&amp;".$datastring."&amp;".$colorstring."&amp;chbh=";
 	if (count($ydata) > 3) {
 		$imgurl .= "5,1";
 	} elseif (count($ydata) < 2) {
@@ -592,7 +592,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		$imgurl .= $xdata[$i]."|";
 	}
 
-	$imgurl .= "1:||||".$xtitle."|2:|";
+	$imgurl .= "1:||||".rawurlencode($xtitle)."|2:|";
 	$imgurl .= "0|";
 	if ($percentage) {
 		for ($i=1; $i<11; $i++) {
@@ -614,13 +614,13 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 				$imgurl .= round($ymax*$i/10, 0)."|";
 			}
 		}
-		$imgurl .= "3:||".$ytitle."|";
+		$imgurl .= "3:||".rawurlencode($ytitle)."|";
 	}
 	//only show legend if y-data is non-2-dimensional
 	if (count($ydata) > 1) {
 		$imgurl .= "&amp;chdl=";
 		for ($i=0; $i<count($legend); $i++) {
-			$imgurl .= $legend[$i];
+			$imgurl .= rawurlencode($legend[$i]);
 			if (!($i == (count($legend)-1))) {
 				$imgurl .= "|";
 			}
@@ -630,7 +630,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	//$title = strstr($mytitle, '|', true);
 	$title = substr($mytitle, 0, strpos($mytitle, '|'));
 	echo "<center><div class=\"statistics_chart\">";
-	echo "<img src=\"", $imgurl, "\" width=\"950\" height=\"300\" border=\"0\" alt=\"", $title, "\" title=\"", $title, "\"/>";
+	echo "<img src=\"", $imgurl, "\" width=\"950\" height=\"300\" border=\"0\" alt=\"", htmlspecialchars($title), "\" title=\"", htmlspecialchars($title), "\"/>";
 	echo "</div></center><br /><br />";
 }
 
