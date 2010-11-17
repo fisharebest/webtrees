@@ -139,9 +139,9 @@ if ($type=="full") {
 } else {
 	print_simple_header(i18n::translate('webtrees user login'));
 }
-echo "<div class=\"center\">";
+echo '<div class="center">';
 
-echo "<table class=\"center width60 ltr\"><tr><td>";
+echo '<table class="center width60"><tr><td>';
 switch ($WELCOME_TEXT_AUTH_MODE) {
 case 1:
 	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
@@ -207,7 +207,7 @@ if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
 	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=register"><?php echo i18n::translate('Request new user account'); ?></a></td></tr>
 	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('Lost your password?'), help_link('new_password'); ?></td>
 	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=pwlost"><?php echo i18n::translate('Request new password'); ?></a></td></tr>
-	<tr><td class="topbottombar ltr" colspan="2">&nbsp;</td></tr>
+	<tr><td class="topbottombar" colspan="2">&nbsp;</td></tr>
 	</table>
 <?php
 }
