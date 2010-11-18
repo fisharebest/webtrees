@@ -70,7 +70,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	// Implement class WT_Module_Block
-	public function getBlock($block_id, $template=true) {
+	public function getBlock($block_id, $template=true, $cfg=null) {
 	}
 
 	// Implement class WT_Module_Block
@@ -125,7 +125,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 			}
 		}
-		return $html;		
+		if (WT_USER_GEDCOM_ADMIN && !$html) {
+			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
+			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&xref='.$this->controller->indi->getXref().'">';
+			$html.=i18n::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br />';
+		}
+		return $html;
 	}
 
 	// Implement class WT_Module_Tab
@@ -154,7 +159,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
-		
+
 			if (safe_POST_bool('save')) {
 				$block_id=safe_POST('block_id');
 				if ($block_id) {
@@ -172,7 +177,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					));
 					$block_id=WT_DB::getInstance()->lastInsertId();
 				}
-				set_block_setting($block_id, 'title',		safe_POST('title',		WT_REGEX_UNSAFE)); // allow html
+				set_block_setting($block_id, 'title', safe_POST('title', WT_REGEX_UNSAFE)); // allow html
 				set_block_setting($block_id, 'story_body',  safe_POST('story_body', WT_REGEX_UNSAFE)); // allow html
 				$languages=array();
 				foreach (i18n::installed_languages() as $code=>$name) {
@@ -202,7 +207,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					$title='';
 					$story_body='';
 					$gedcom_id=WT_GED_ID;
-					$xref='';
+					$xref=safe_GET('xref', WT_REGEX_XREF);
 				}
 				?>
 				<script language="JavaScript" type="text/javascript">
@@ -249,6 +254,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
 				print_findindi_link("xref", "pid");
+				if ($xref) {
+					$person=Person::getInstance($xref);
+					if ($person) {
+						echo ' ', $person->format_list('span');
+					}
+				}
 				echo '</td></tr>';
 				$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
 				echo '<tr><td class="descriptionbox wrap width33">';
@@ -265,7 +276,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				exit;
 			}
 		} else {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 	}
@@ -286,7 +297,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				"DELETE FROM `##block` WHERE block_id=?"
 			)->execute(array($block_id));
 		} else {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 	}
@@ -319,7 +330,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($stories as $story) {
 				$indi=Person::getInstance($story->xref);
 				if ($indi) {
-					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName()."</a>";
+					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
 					$name=$story->xref;
 				}
@@ -333,13 +344,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			echo '</table>';
 			print_footer();
 		} else {
-			header("Location: index.php");
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
 	}
 	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=show_list"
 	// No privacy restrictions included here though - so use with care!
-	private function show_list() { 
+	private function show_list() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
 			print_header($this->getTitle());
@@ -360,7 +371,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			foreach ($stories as $story) {
 				$indi=Person::getInstance($story->xref);
 				if ($indi) {
-					$name="<a href=\"".$indi->getLinkUrl()."#stories\">".$indi->getFullName()."</a>";
+					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
 					$name=$story->xref;
 				}
@@ -373,5 +384,5 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			}
 			echo '</table>';
 			print_footer();
-	}	
+	}
 }
