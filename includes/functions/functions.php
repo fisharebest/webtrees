@@ -149,7 +149,6 @@ function trim_recursive($var) {
 function fetch_remote_file($host, $path, $timeout=3) {
 	$fp=@fsockopen($host, '80', $errno, $errstr, $timeout );
 	if (!$fp) {
-		echo "Error - cannot access remote site";
 		return null;
 	}
 
@@ -165,6 +164,26 @@ function fetch_remote_file($host, $path, $timeout=3) {
 	$response=substr($response, strpos($response, "\r\n\r\n") + 4);
 
 	return $response;
+}
+
+// Check with the webtrees.net server for the latest version of webtrees.
+// Fetching the remote file can be slow, and place an excessive load on
+// the webtrees.net server, so only check it infrequently, and cache the result.
+function fetch_latest_version() {
+	$last_update_timestamp=get_site_setting('LATEST_WT_VERSION_TIMESTAMP');
+	if ($last_update_timestamp < time()-24*60*60) {
+		$latest_version_txt=fetch_remote_file('webtrees.net', '/latest-version.txt');
+		if ($latest_version_txt) {
+			set_site_setting('LATEST_WT_VERSION', $latest_version_txt);
+			set_site_setting('LATEST_WT_VERSION_TIMESTAMP', time());
+			return $latest_version_txt;
+		} else {
+			// Cannot connect to server - use cached version (if we have one)
+			return get_site_setting('LATEST_WT_VERSION');
+		}
+	} else {
+		return get_site_setting('LATEST_WT_VERSION');
+	}
 }
 
 // Convert a file upload PHP error code into user-friendly text
