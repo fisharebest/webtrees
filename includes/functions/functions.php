@@ -144,6 +144,29 @@ function trim_recursive($var) {
 	}
 }
 
+// Fetch a remote file.  Stream wrappers are disabled on
+// many hosts, and do not allow the detection of timeout.
+function fetch_remote_file($host, $path, $timeout=3) {
+	$fp=@fsockopen($host, '80', $errno, $errstr, $timeout );
+	if (!$fp) {
+		echo "Error - cannot access remote site";
+		return null;
+	}
+
+	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nKeep-Alive: 300\r\nConnection: keep-alive\r\n\r\n");
+
+	$response='';
+	while ($data=fread($fp, 65536)) {
+		$response.=$data;
+	}
+	fclose($fp);
+
+	// The response includes headers, a blank line, then the content
+	$response=substr($response, strpos($response, "\r\n\r\n") + 4);
+
+	return $response;
+}
+
 // Convert a file upload PHP error code into user-friendly text
 function file_upload_error_text($error_code) {
 	switch ($error_code) {
