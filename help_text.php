@@ -3043,11 +3043,6 @@ case 'statistics.php':
 	$text=i18n::translate('This page lets you determine the criteria for producing a graphical display of various statistics from your database.');
 	break;
 
-case 'statisticsplot.php':
-	$title=i18n::translate('Statistics plot');
-	$text=i18n::translate('This page lets you determine the criteria for producing a graphical display of various statistics from your database.');
-	break;
-
 case 'timeline.php':
 	$title=i18n::translate('Timeline chart');
 	$text=i18n::translate('On this chart you can display one or more persons along a timeline.  You can, for example, visualize the status of two or more persons at a certain moment.<br /><br />If you click the <b>Time Line</b> link on an other page you will already see one person on the Time Line.  If you clicked the <b>Time Line</b> menu item in a page header, you have to supply the starting person\'s ID.');
