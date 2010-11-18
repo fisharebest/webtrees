@@ -364,7 +364,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				} else {
 					$name=$story->xref;
 				}
-				if ($indi->getFullName() != i18n::translate('Private')) {
+				if ($indi->canDisplayDetails()) {
 					echo '<tr><td class="list_value">';
 					echo get_block_setting($story->block_id, 'title');
 					echo '<td class="list_value_wrap">', $name, '</td>';
