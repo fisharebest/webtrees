@@ -196,22 +196,11 @@ $_SESSION['Medialist'] = $medialist;
 	<input type="hidden" name="action" value="filter" />
 	<input type="hidden" name="search" value="yes" />
 	<table class="list-table center width75 <?php echo $TEXT_DIRECTION; ?>">
-	<?php
-	if ($TEXT_DIRECTION=='ltr') {
-		$legendAlign = 'align="right"';
-		$left = "float: left;";
-		$right = "float: right;";
-	} else {
-		$legendAlign = 'align="left"';
-		$left = "float: right;";
-		$right = "float: left;";
-	}
-	?>
 	<!-- Build the form cells -->
 	<tr>
 <!-- // NOTE: Row 1, left: -->
 	<!-- // begin select media folders -->
-		<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+		<td class="descriptionbox wrap width25">
 			<?php echo i18n::translate('Media directory'), help_link('view_server_folder'); ?></td>
 		<td class="optionbox wrap width25">
 			<?php
@@ -237,7 +226,7 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // end select media folders -->
 <!-- // NOTE: Row 1 right: -->
 	<!-- begin sort files -->
-			<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+			<td class="descriptionbox wrap width25">
 					<?php echo i18n::translate('Sort by title or file name'), help_link('sortby'); ?>
 			</td>
 			<td class="optionbox wrap width25"><select name="sortby">
@@ -251,7 +240,7 @@ $_SESSION['Medialist'] = $medialist;
 	</tr><tr>
 <!-- // NOTE: Row 2 left:-->
 	<!-- // begin sub directories -->
-			<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+			<td class="descriptionbox wrap width25">
 				<?php echo i18n::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
 			<td class="optionbox wrap width25">
 				<?php //if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
@@ -264,7 +253,7 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // end subdirectories -->
 <!-- // NOTE: Row 2 right:-->
 	<!-- // begin media objects per page -->
-			<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+			<td class="descriptionbox wrap width25">
 				<?php echo i18n::translate('Media objects per page'), help_link('media_objects_pp');; ?>
 			</td>
 			<td class="optionbox wrap width25">
@@ -282,7 +271,7 @@ $_SESSION['Medialist'] = $medialist;
 	</tr><tr>
 <!-- // NOTE: Row 3 left:-->
 	<!-- // begin search filter -->
-			<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+			<td class="descriptionbox wrap width25">
 				<?php echo i18n::translate('Search filters'), help_link('medialist_filters'); ?>
 			</td>
 			<td class="optionbox wrap width25">
@@ -302,7 +291,7 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // end search filter -->
 <!-- // NOTE: Row 3 right:-->
 	<!-- // begin columns per page -->
-			<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+			<td class="descriptionbox wrap width25">
 				<?php echo i18n::translate('Columns per page'), help_link('media_columns_pp'); ?>
 				<br />
 			<?php echo i18n::translate('Show thumbnails'), help_link('media_thumbs'); ?>
@@ -334,7 +323,7 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // end search buttons  -->
 <!-- // NOTE: Row 4 right:-->
 	<!-- // thumbnail option  -->
-			<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
+			<td class="descriptionbox wrap width25">
 				<?php if (WT_USER_IS_ADMIN) { ?>
 					<?php echo i18n::translate('Exclude media links'), help_link('media_links'); ?>
 				<?php } ?>
