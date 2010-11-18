@@ -1008,7 +1008,7 @@ case 'editsource':
 case 'editnote':
 	?>
 	<b><?php echo i18n::translate('Edit Shared Note'), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br /><br />
-	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
+	<form method="post" action="edit_interface.php" >
 		<input type="hidden" name="action" value="update" />
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
 
@@ -1016,6 +1016,12 @@ case 'editnote':
 		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
 			$note_content=$n1match[1].get_cont(1, $gedrec, false);
+			
+			$num_note_lines=0;
+			foreach (preg_split("/\r?\n/", $note_content, -1 ) as $j=>$line) {
+				$num_note_lines++;
+			}
+	
 		} else {
 			$note_content='';
 		}
@@ -1046,6 +1052,7 @@ case 'editnote':
 			?>
 		</table>
 		<br /><br />
+		<input type="hidden" name="num_note_lines" value="<?php echo $num_note_lines; ?>" />
 		<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
 	</form>
 	<?php
@@ -1176,6 +1183,7 @@ case 'update':
 	 */
 	if (isset($_REQUEST['pids_array_add'])) $pids_array = $_REQUEST['pids_array_add'];
 	if (isset($_REQUEST['pids_array_edit'])) $pids_array = $_REQUEST['pids_array_edit'];
+	if (isset($_REQUEST['num_note_lines'])) $num_note_lines = $_REQUEST['num_note_lines'];
 
 	if (isset($pids_array) && $pids_array!="no_array") {
 		$cens_pids=explode(', ', $pids_array);
@@ -1242,7 +1250,9 @@ case 'update':
 				$fields = explode(' ', $gedlines[$linenum]);
 				$glevel = $fields[0];
 				$i++;
-				while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) $i++;
+				while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) {
+					$i++;				
+				}
 			}
 
 			if (!isset($glevels)) $glevels = array();
@@ -1269,15 +1279,28 @@ case 'update':
 			if (!empty($SURN)) $newged .= "2 SURN $SURN\n";
 			if (!empty($NSFX)) $newged .= "2 NSFX $NSFX\n";
 
-			if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
+			if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];			
 			if (!empty($NOTE)) {
+				$num_lines=0;
+				foreach (preg_split("/\r?\n/", $NOTE, -1 ) as $j=>$line) {
+					$num_lines++;
+				}
 				foreach (preg_split("/\r?\n/", $NOTE, -1 ) as $k=>$line) {
 					if ($k==0) {
 						$gedlines[$k] = "0 @{$pid}@ NOTE {$line}\n";
+					} else if ($line != null && $k <= $num_lines) {
+						$gedlines[$k] = "1 CONT {$line}\n";					
+					} else if ($line == null && $k < $num_lines-1) {
+						$gedlines[$k] = "1 CONT \n";
 					} else {
-						$gedlines[$k] = "1 CONT {$line}\n";
+						if ($line == null) {
+							for ($x=0; $x<=($num_note_lines-$num_lines); $x++) {
+								$gedlines[$k+($x)] = null.'\n';
+							}
+						} 
 					}
 				}
+				$gedlines[$k+1] = '\n';
 			}
 
 			//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
@@ -1334,16 +1357,30 @@ case 'update':
 				if (!empty($SURN)) $newged .= "2 SURN $SURN\n";
 				if (!empty($NSFX)) $newged .= "2 NSFX $NSFX\n";
 
-				if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];
+				if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];							
 				if (!empty($NOTE)) {
-					foreach (preg_split("/\r?\n/", $NOTE) as $k=>$line) {
+					$num_lines=0;
+					foreach (preg_split("/\r?\n/", $NOTE, -1 ) as $j=>$line) {
+						$num_lines++;
+					}
+					foreach (preg_split("/\r?\n/", $NOTE, -1 ) as $k=>$line) {
 						if ($k==0) {
 							$gedlines[$k] = "0 @{$pid}@ NOTE {$line}\n";
+						} else if ($line != null && $k <= $num_lines) {
+							$gedlines[$k] = "1 CONT {$line}\n";					
+						} else if ($line == null && $k < $num_lines-1) {
+							$gedlines[$k] = "1 CONT \n";
 						} else {
-							$gedlines[$k] = "1 CONT {$line}\n";
+							if ($line == null) {
+								for ($x=0; $x<=($num_note_lines-$num_lines); $x++) {
+									$gedlines[$k+($x)] = null.'\n';
+								}
+							}
 						}
 					}
+					$gedlines[$k+1] = '\n';
 				}
+				
 				//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
 				//-- _HEB/ROMN/FONE have to be before _AKA, even if _AKA exists in input and the others are now added
 				if (!empty($ROMN)) $newged .= "2 ROMN $ROMN\n";
