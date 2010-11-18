@@ -63,7 +63,7 @@ class tmglatlon_bu_plugin extends base_plugin {
 	static function updateRecord($xref, $gedrec) {
 		$gedrec = preg_replace_callback(
 			"/^(2 PLAC(.*)), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])/m",
-			array('plugin', '_updateRecord_callback'),
+			array('tmglatlon_bu_plugin', '_updateRecord_callback'),
 			$gedrec
 		);
 		return $gedrec;
