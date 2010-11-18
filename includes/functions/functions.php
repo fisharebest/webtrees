@@ -2939,7 +2939,7 @@ function get_theme_names() {
 					$themename = trim($match[1]);
 				else
 					$themename = "themes/$entry";
-				$themes[$themename] = "themes/$entry/";
+				$themes[i18n::translate('%s', $themename)] = "themes/$entry/";
 			}
 		}
 		$d->close();

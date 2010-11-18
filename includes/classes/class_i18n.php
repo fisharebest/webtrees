@@ -206,13 +206,16 @@ class i18n {
 					// For each embedded string, if the text-direction is the opposite of the
 					// page language, then wrap it in directional indicators.  This will stop
 					// weakly-directional characters being displayed in the wrong sequence.
+					// We need to use unicode control characters instead of <span dir="rtl">
+					// because we must use it in contexts (such as titles, select/options) where
+					// markup is not permitted.
 					if (self::$dir=='ltr') {
 						if (utf8_direction($arg)=='rtl') {
-							$arg='&lrm;'.$arg.'&lrm;';
+							$arg='&#x202B;'.$arg.'&#x202C;';
 						}
 					} else {
 						if (utf8_direction($arg)=='ltr') {
-							$arg='&rlm;'.$arg.'&rlm;';
+							$arg='&#x202A;'.$arg.'&#x202C;';
 						}
 					}
 				}
