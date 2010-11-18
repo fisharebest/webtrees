@@ -250,7 +250,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		else {
 			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
 			if ($place2['place'] == "Unknown") echo "'><br />";
-			else echo urlencode($place2['place']), "'><br />";
+			else echo addslashes($place2['place']), "'><br />";
 		}
 		if (($place2["icon"] != NULL) && ($place2['icon'] != "")) {
 			echo "<img src=\'", $place2['icon'], "'>&nbsp;&nbsp;";
@@ -267,22 +267,22 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo PrintReady(addslashes($place2['place']));
+					echo addslashes($place2['place']);
 				}
 			}
 		} else {
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == "Unknown") {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo PrintReady(addslashes(i18n::translate('unknown').$placelevels));
+					echo addslashes(i18n::translate('unknown').$placelevels);
 				} else {
 					echo i18n::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo PrintReady(addslashes($place2['place'].$placelevels));
+					echo addslashes($place2['place'].$placelevels);
 				} else {
-					echo PrintReady(addslashes($place2['place']));
+					echo addslashes($place2['place']);
 				}
 			}
 		}
@@ -298,7 +298,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		echo "<br />", i18n::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
 			echo "<br /><a href='module.php?mod=googlemap&mod_action=places&parent=", $levelm, "&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
-		echo "</div></td>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), PrintReady(addslashes($place2['place']))), "\");\n";
+		echo "</div></td>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
 		$long = str_replace(array('E', 'W', ','), array('', '-', '.'), $place2['long']);
@@ -333,7 +333,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			if ($place2['place'] == "Unknown") {
 				echo "'><br />";
 			} else {
-				echo urlencode($place2['place']), "'><br />";
+				echo addslashes($place2['place']), "'><br />";
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
@@ -351,22 +351,22 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo PrintReady(addslashes($place2['place']));
+					echo addslashes($place2['place']);
 				}
 			}
 		} else {
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == "Unknown") {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo PrintReady(addslashes(i18n::translate('unknown').$placelevels));
+					echo addslashes(i18n::translate('unknown').$placelevels);
 				} else {
 					echo i18n::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo PrintReady(addslashes($place2['place'].$placelevels));
+					echo addslashes($place2['place'].$placelevels);
 				} else {
-					echo PrintReady(addslashes($place2['place']));
+					echo addslashes($place2['place']);
 				}
 			}
 		}
@@ -379,7 +379,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				print_how_many_people($level+1, $parent);
 			}
 		}
-		$temp=PrintReady(addslashes($place2['place']));
+		$temp=addslashes($place2['place']);
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD) {
 			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
