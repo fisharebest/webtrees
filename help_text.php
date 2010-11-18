@@ -3233,11 +3233,6 @@ case 'box_width':
 	$text=i18n::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 	break;
 
-case 'chart_area':
-	$title=i18n::translate('Chart area');
-	$text=i18n::translate('Select the geographical area that you want to see on the map. You can choose:<p style="padding-left: 25px"><b>World</b>&nbsp;&nbsp;shows all continents.<br /><b>Europe</b>&nbsp;&nbsp;shows Europe.<br /><b>South America</b>&nbsp;&nbsp;shows South America.<br /><b>Asia</b>&nbsp;&nbsp;shows Asia.<br /><b>Middle East</b>&nbsp;&nbsp;shows the Middle East.<br /><b>Africa</b>&nbsp;&nbsp;shows Africa.</p>');
-	break;
-
 case 'chart_style':
 	$title=i18n::translate('Chart style');
 	$text=i18n::translate('Two chart styles are available:<ul><li><b>List</b><br />Vertical tree, with collapsible/expandable families.</li><li><b>Booklet</b><br />One family per page, with parents, grandparents, and all recorded children.<br /><br />This format is easy to print to give to your relatives.</li></ul>');

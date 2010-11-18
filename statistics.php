@@ -653,7 +653,7 @@ if (isset($content) && $content==1) {
 			<br />
 			</div>
 			<?php
-			echo i18n::translate('Geographical area'), help_link('chart_area');
+			echo i18n::translate('Geographical area');
 			?>
 			<br /><select id="chart_shows" name="chart_shows">
 				<option value="world" selected="selected"><?php echo i18n::translate('World'); ?></option>
