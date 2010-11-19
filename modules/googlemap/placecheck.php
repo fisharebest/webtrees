@@ -224,7 +224,11 @@ case 'go':
 	echo "<td class='descriptionbox' colspan='", $span, "' align='center'><strong>", i18n::translate('GoogleMap Places Table Data'), "</strong></td></tr>";
 	echo "<tr>";
 	while ($cols<$max) {
-		echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(i18n::translate('Level')), "&nbsp;", $cols+1, "</strong></td>";
+		if ($cols == 0) {
+			echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(i18n::translate('Country')), "</strong></td>";
+		} else {
+			echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(i18n::translate('Level')), "&nbsp;", $cols+1, "</strong></td>";
+		}
 		$cols++;
 	}
 	echo "</tr><tr>";
