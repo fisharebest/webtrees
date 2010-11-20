@@ -234,7 +234,7 @@ foreach ($gedcoms as $gedcom) {
 			'<table class="gedcom_table" width="100%">',
 			'<tr><td class="list_label" width="20%">', i18n::translate('GEDCOM name'),
 			'</td><td class="list_value"><a href="index.php?ctype=gedcom&ged=', urlencode($gedcom->gedcom_name), '">', htmlspecialchars($gedcom->gedcom_name), ' - ',
-			htmlspecialchars(get_gedcom_setting($gedcom->gedcom_id, 'title')), '</a>',
+			i18n::translate('%s', get_gedcom_setting($gedcom->gedcom_id, 'title')), '</a>',
 			'</td></tr><tr><td class="list_label">', i18n::translate('GEDCOM administration'),
 			'</td><td class="list_value">';
 
