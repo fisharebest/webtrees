@@ -47,7 +47,13 @@ function print_level_config_table($level) {
 		<table class="facts_table">
 			<tr>
 				<td class="descriptionbox" colspan="2">
-					<?php echo i18n::translate('Level'), " ", $level; ?>
+					<?php
+					if ($level==1) {
+						echo i18n::translate('Country');
+					} else {
+						echo i18n::translate('Level'), " ", $level;
+					}
+					?>
 				</td>
 			</tr>
 			<tr>

@@ -72,10 +72,10 @@ echo "<td class='optionbox'><select name='openinnew'>";
 echo "<option value='0' ", $openinnew?" selected='selected'":"", ">".i18n::translate('Same tab/window')."</option>";
 echo "<option value='1' ", $openinnew?" selected='selected'":"", ">".i18n::translate('New tab/window')."</option>";
 echo "</select></td></tr>";
-//Option box to select top level place within Gedcom
-echo "<tr><td class='descriptionbox'>", i18n::translate('Top Level Place'), "</td>";
+//Option box to select Country within Gedcom
+echo "<tr><td class='descriptionbox'>", i18n::translate('Country'), "</td>";
 echo "<td class='optionbox'><select name='country'>";
-echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Top Level...'), "</option>";
+echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Country...'), "</option>";
 echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
 $rows=
 	WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
@@ -90,11 +90,11 @@ foreach ($rows as $id=>$place) {
 }
 echo "</select></td></tr>";
 
-//Option box to select level one place within the selected top level
+//Option box to select level 2 place within the selected Country
 if ($country!='XYZ') {
-	echo "<tr><td class='descriptionbox'>", i18n::translate('Level One Place'), "</td>";
+	echo "<tr><td class='descriptionbox'>", i18n::translate('Level 2 Place'), "</td>";
 	echo "<td class='optionbox'><select name='state'>";
-	echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Next Level...'), "</option>";
+	echo "<option value='XYZ' selected='selected'>", i18n::translate('Select Level 2 Place...'), "</option>";
 	echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
 	$places=
 		WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
