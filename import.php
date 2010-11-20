@@ -154,6 +154,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 				WT_JS_START,
 				'alert("', /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ i18n::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");',
 				WT_JS_END;
+		case 'WINDOWS':
 		case 'CP1252':
 		case 'ISO8859-1':
 		case 'ISO-8859-1':
