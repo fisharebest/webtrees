@@ -960,7 +960,7 @@ class HebrewDate extends JewishDate {
 		case 6:  if ($leap_year) return 'אדר א׳'; else return 'אדר';
 		case 7:  return 'אדר ב׳';
 		case 8:  return 'ניסן';
-		case 9:  return 'איי�';
+		case 9:  return 'אייר';
 		case 10: return 'סיוון';
 		case 11: return 'תמוז';
 		case 12: return 'אב';
