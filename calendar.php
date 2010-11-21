@@ -55,7 +55,7 @@ if (empty($filterof)) $filterof='all';
 if (empty($filtersx)) $filtersx='';
 
 // Create a CalendarDate from the parameters
-$cal=urldecode($cal);
+
 // advance-year "year range"
 if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 	if (strlen($match[1]) > strlen($match[2]))
@@ -76,7 +76,6 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 		$year=$ged_date->date1->y; // need negative year for year entry field.
 	}
 $cal_date=&$ged_date->date1;
-$cal=urlencode($cal);
 
 // Invalid month?  Pick a sensible one.
 if ($cal_date->CALENDAR_ESCAPE()=='@#DHEBREW@' && $cal_date->m==7 && $cal_date->y!=0 && !$cal_date->IsLeapYear())
@@ -117,6 +116,9 @@ echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\"    />";
 echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\"    />";
 echo '<table class="facts_table '.$TEXT_DIRECTION.' width100">';
 echo '<tr><td class="facts_label" colspan="8"><h2>';
+
+// All further uses of $cal are to generate URLs
+$cal=rawurlencode($cal);
 
 switch ($action) {
 case 'today':
