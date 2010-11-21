@@ -61,8 +61,17 @@ class MediaController extends BaseController{
 				if (strpos($requestedfile, $MEDIA_DIRECTORY) !== false) {
 					// strip off the wt directory and media directory from the requested url so just the image information is left
 					$filename = substr($requestedfile, strpos($requestedfile, $MEDIA_DIRECTORY) + strlen($MEDIA_DIRECTORY) - 1);
+					// strip any remaining query string from the requested file
+					if (strpos($filename, '?') !== false) {
+						$filename = substr($filename, 0, strpos($filename, '?'));
+					}
 					// if user requested a thumbnail, lookup permissions based on the original image
 					$filename = str_replace('/thumbs', '', $filename);
+				} else {
+					// the MEDIA_DIRECTORY of the current GEDCOM was not part of the requested file
+					// either the requested file is in a different GEDCOM (with a different MEDIA_DIRECTORY)
+					// or the Media Firewall is being called from outside the MEDIA_DIRECTORY
+					// this condition can be detected by the media firewall by calling controller->getServerFilename()
 				}
 			}
 		}
@@ -395,6 +404,10 @@ class MediaController extends BaseController{
 	* @return string
 	*/
 	function getServerFilename() {
-		return $this->mediaobject->getServerFilename();
+		if ($this->mediaobject) {
+			return $this->mediaobject->getServerFilename();
+		} else {
+			return false;
+		}
 	}
 }

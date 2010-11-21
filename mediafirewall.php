@@ -65,7 +65,7 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 	$maxlen = 100;
 	$numchars = utf8_strlen($line1);
 	if ($numchars > $maxlen) {
-		$line1 = utf8_substr($line1, $maxlen);
+		$line1 = utf8_substr($line1, 0, $maxlen);
 		$numchars = $maxlen;
 	}
 	$line1 = reverseText($line1);
@@ -315,11 +315,14 @@ $serverFilename = $controller->getServerFilename();
 if (!$serverFilename) {
 	// either the server is not setting the REQUEST_URI variable as we expect,
 	// or the media firewall is being used from outside the media directory
+	// or the media file requested is in a different GEDCOM
 	$requestedfile = ( isset($_SERVER['REQUEST_URI']) ) ? $_SERVER['REQUEST_URI'] : "REQUEST_URI NOT SET";
 	$exp = explode("?", $requestedfile);
 	$pathinfo = pathinfo($exp[0]);
 	$ext = @strtolower($pathinfo['extension']);
-	if (!$debug_mediafirewall) sendErrorAndExit($ext, i18n::translate('Error: The Media Firewall was launched from a directory other than the media directory.'), $requestedfile);
+	// reminder: sendErrorAndExit limits error text to 100 chars
+	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below 
+	sendErrorAndExit($ext, i18n::translate('Error: Media file is in a different GEDCOM, or Media Firewall was launched from the wrong directory.'), $requestedfile);
 }
 
 $isThumb = false;
@@ -405,7 +408,7 @@ if ($usewatermark) {
 $mimetype = $controller->mediaobject->getMimetype();
 
 // setup the etag.  use enough info so that if anything important changes, the etag won't match
-$etag_string = basename($serverFilename).$filetime.WT_USER_ACCESS_LEVEL.$SHOW_NO_WATERMARK;
+$etag_string = basename($serverFilename).$filetime.WT_GEDCOM.WT_USER_ACCESS_LEVEL.$SHOW_NO_WATERMARK;
 $etag = dechex(crc32($etag_string));
 
 // parse IF_MODIFIED_SINCE header from client
