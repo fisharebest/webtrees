@@ -1279,7 +1279,7 @@ case 'update':
 			if (!empty($SURN)) $newged .= "2 SURN $SURN\n";
 			if (!empty($NSFX)) $newged .= "2 NSFX $NSFX\n";
 
-			if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];			
+			if (isset($_REQUEST['NOTE'])) $NOTE = $_REQUEST['NOTE'];							
 			if (!empty($NOTE)) {
 				$num_lines=0;
 				foreach (preg_split("/\r?\n/", $NOTE, -1 ) as $j=>$line) {
@@ -1291,16 +1291,18 @@ case 'update':
 					} else if ($line != null && $k <= $num_lines) {
 						$gedlines[$k] = "1 CONT {$line}\n";					
 					} else if ($line == null && $k < $num_lines-1) {
-						$gedlines[$k] = "1 CONT \n";
+						$gedlines[$k] = "1 CONT\n";
 					} else {
 						if ($line == null) {
 							for ($x=0; $x<=($num_note_lines-$num_lines); $x++) {
-								$gedlines[$k+($x)] = null.'\n';
+								$gedlines[$k+($x)] = null."\n";
 							}
-						} 
+						}
 					}
 				}
-				$gedlines[$k+1] = '\n';
+				if ($gedlines[$numlines] != "1 CONT\n") {
+					$gedlines[$k+1] = "1 CONT\n";
+				}
 			}
 
 			//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
@@ -1369,7 +1371,7 @@ case 'update':
 						} else if ($line != null && $k <= $num_lines) {
 							$gedlines[$k] = "1 CONT {$line}\n";					
 						} else if ($line == null && $k < $num_lines-1) {
-							$gedlines[$k] = "1 CONT \n";
+							$gedlines[$k] = "1 CONT\n";
 						} else {
 							if ($line == null) {
 								for ($x=0; $x<=($num_note_lines-$num_lines); $x++) {
@@ -1378,7 +1380,9 @@ case 'update':
 							}
 						}
 					}
-					$gedlines[$k+1] = '\n';
+					if ($gedlines[$numlines] != "1 CONT\n") {
+						$gedlines[$k+1] = "1 CONT\n";
+					}
 				}
 				
 				//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
