@@ -322,7 +322,7 @@ if (!$serverFilename) {
 	$ext = @strtolower($pathinfo['extension']);
 	// reminder: sendErrorAndExit limits error text to 100 chars
 	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below 
-	sendErrorAndExit($ext, i18n::translate('Error: Media file is in a different GEDCOM, or Media Firewall was launched from the wrong directory.'), $requestedfile);
+	sendErrorAndExit($ext, i18n::translate('No Media Found'), $requestedfile);
 }
 
 $isThumb = false;
