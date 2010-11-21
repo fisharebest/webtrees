@@ -2974,9 +2974,9 @@ function get_theme_names() {
 		$themes = array();
 		$d = dir(WT_ROOT.'themes');
 		while (false !== ($entry = $d->read())) {
-			if ($entry{0}!="." && $entry!="CVS" && !stristr($entry, "svn") && is_dir(WT_ROOT.'themes/'.$entry) && file_exists(WT_ROOT.'themes/'.$entry.'/theme.php')) {
-				$themefile = implode("", file(WT_ROOT.'themes/'.$entry.'/theme.php'));
-				$tt = preg_match("/theme_name\s*=\s*\"(.*)\";/", $themefile, $match);
+			if ($entry[0]!='.' && $entry[0]!='_' && is_dir(WT_ROOT.'themes/'.$entry) && file_exists(WT_ROOT.'themes/'.$entry.'/theme.php')) {
+				$themefile = implode('', file(WT_ROOT.'themes/'.$entry.'/theme.php'));
+				$tt = preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match);
 				if ($tt>0)
 					$themename = trim($match[1]);
 				else
@@ -2985,7 +2985,7 @@ function get_theme_names() {
 			}
 		}
 		$d->close();
-		uksort($themes, "utf8_strcasecmp");
+		uksort($themes, 'utf8_strcasecmp');
 	}
 	return $themes;
 }
