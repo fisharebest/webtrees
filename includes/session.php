@@ -453,33 +453,35 @@ if (WT_USER_ID) {
 }
 
 // Set the theme
-if (get_site_setting('ALLOW_USER_THEMES')) {
-	// Requested change of theme?
-	$THEME_DIR=safe_GET('theme', get_theme_names());
-	unset($_GET['theme']);
-	// Last theme used?
-	if (!$THEME_DIR && isset($_SESSION['theme_dir']) && in_array($_SESSION['theme_dir'], get_theme_names())) {
-		$THEME_DIR=$_SESSION['theme_dir'];
+if (!defined('WT_THEME_DIR')) {
+	if (get_site_setting('ALLOW_USER_THEMES')) {
+		// Requested change of theme?
+		$THEME_DIR=safe_GET('theme', get_theme_names());
+		unset($_GET['theme']);
+		// Last theme used?
+		if (!$THEME_DIR && isset($_SESSION['theme_dir']) && in_array($_SESSION['theme_dir'], get_theme_names())) {
+			$THEME_DIR=$_SESSION['theme_dir'];
+		}
 	}
+	if (!$THEME_DIR) {
+		// User cannot choose (or has not chosen) a theme.
+		// 1) gedcom setting
+		// 2) site setting
+		// 3) webtrees
+		// 4) first one found
+		$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+		if (!in_array($THEME_DIR, get_theme_names())) {
+			$THEME_DIR=get_site_setting('THEME_DIR', 'themes/webtrees/');
+		}
+		if (!in_array($THEME_DIR, get_theme_names())) {
+			$THEME_DIR='themes/webtrees/';
+		}
+		if (!in_array($THEME_DIR, get_theme_names())) {
+			list($THEME_DIR)=get_theme_names();
+		}
+	}
+	define('WT_THEME_DIR', $THEME_DIR);
 }
-if (!$THEME_DIR) {
-	// User cannot choose (or has not chosen) a theme.
-	// 1) gedcom setting
-	// 2) site setting
-	// 3) webtrees
-	// 4) first one found
-	$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
-	if (!in_array($THEME_DIR, get_theme_names())) {
-		$THEME_DIR=get_site_setting('THEME_DIR', 'themes/webtrees/');
-	}
-	if (!in_array($THEME_DIR, get_theme_names())) {
-		$THEME_DIR='themes/webtrees/';
-	}
-	if (!in_array($THEME_DIR, get_theme_names())) {
-		list($THEME_DIR)=get_theme_names();
-	}
-}
-define('WT_THEME_DIR', $THEME_DIR);
 
 // Remember this setting
 $_SESSION['theme_dir']=WT_THEME_DIR;
