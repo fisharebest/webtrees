@@ -61,9 +61,10 @@ class MediaController extends BaseController{
 				if (strpos($requestedfile, $MEDIA_DIRECTORY) !== false) {
 					// strip off the wt directory and media directory from the requested url so just the image information is left
 					$filename = substr($requestedfile, strpos($requestedfile, $MEDIA_DIRECTORY) + strlen($MEDIA_DIRECTORY) - 1);
-					// strip any remaining query string from the requested file
-					if (strpos($filename, '?') !== false) {
-						$filename = substr($filename, 0, strpos($filename, '?'));
+					// strip the ged param if it was passed on the querystring
+					// would be better if this could remove any querystring, but '?' are valid in unix filenames
+					if (strpos($filename, '?ged=') !== false) {
+						$filename = substr($filename, 0, strpos($filename, '?ged='));
 					}
 					// if user requested a thumbnail, lookup permissions based on the original image
 					$filename = str_replace('/thumbs', '', $filename);
