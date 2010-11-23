@@ -94,7 +94,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $extra=''
 		(array_key_exists($selected, $values) ? htmlspecialchars($values[$selected]) : '').
 		'</span>' .
 		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"' . i18n::translate('OK') . '", style:"inherit", callback:function(value, settings) {jQuery(this).innerHTML=settings.data[value];} })' .
+		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"' . i18n::translate('OK') . '", style:"inherit", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} })' .
 		WT_JS_END;
 }
 
