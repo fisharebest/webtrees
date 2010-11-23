@@ -92,7 +92,7 @@ echo "</select></td></tr>";
 
 //Option box to select level 2 place within the selected Country
 if ($country!='XYZ') {
-	echo "<tr><td class='descriptionbox'>", /* Part of a country, state/region/county */ i18n::translate('Subdivision'), "</td>";
+	echo "<tr><td class='descriptionbox'>", /* I18N: Part of a country, state/region/county */ i18n::translate('Subdivision'), "</td>";
 	echo "<td class='optionbox'><select name='state'>";
 	echo "<option value='XYZ' selected='selected'>", i18n::translate('&lt;select&gt;'), "</option>";
 	echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
