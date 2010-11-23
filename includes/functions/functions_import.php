@@ -557,6 +557,8 @@ function reformat_record_import($rec) {
 		case 'DATA':
 		case 'CONT':
 		case 'FILE':
+			// convert backslashes in filenames to forward slashes
+			$data = preg_replace("/\\\/", "/", $data);
 			// Don't strip tabs, even though they are not valid in gedcom data.
 			if ($newrec) {
 				$newrec.="\n";
