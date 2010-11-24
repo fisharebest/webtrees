@@ -2246,7 +2246,14 @@ case 'HIDE_LIVE_PEOPLE':
 
 case 'INDEX_DIRECTORY':
 	$title=i18n::translate('Data file directory');
-	$text=i18n::translate('The path to a readable and writable directory where <b>webtrees</b> should store data files (include the trailing "/").  <b>webtrees</b> does not require this directory\'s name to be "data".  You can choose any name you like.<br /><br />For security, this directory should be placed somewhere in the server\'s file space that is not accessible from the Internet. An example of such a structure follows:<br /><b>webtrees:</b> dir1/dir2/dir3/webtrees<br /><b>Index:</b> dir1/dir4/dir5/dir6/data<br /><br />For the example shown, you would enter <b>../../dir4/dir5/dir6/data/</b> in this field.');
+	$text=
+		i18n::translate('<b>webtrees</b> requires a directory with read/write permission, where it can create temporary files and export data.  By default, it uses the data/ directory.').
+	'<br/><br/>'.
+		i18n::translate('Some site administrators prefer not to have writable files or directories in the public HTML directory.  By specifying an alternative location to write data, you can make the existing data/ directory read-only.  Note that the file data/config.ini.php cannot be moved, and must remain in this location.').
+	'<br/><br/>'.
+		i18n::translate('If your server does not support ".htaccess" files (e.g. Microsoft IIS), and you cannot set access controls for this directory, then you should move this directory to another location.').
+	'<br/><br/>'.
+		i18n::translate('The directory can be specified in full (e.g. /home/user_name/genealogy_data/) or relative to the installation directory (e.g. ../../genealogy_data/).');
 	break;
 
 case 'INDI_FACTS_ADD':
