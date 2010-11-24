@@ -320,9 +320,8 @@ if (!$serverFilename) {
 	$exp = explode("?", $requestedfile);
 	$pathinfo = pathinfo($exp[0]);
 	$ext = @strtolower($pathinfo['extension']);
-	// reminder: sendErrorAndExit limits error text to 100 chars
 	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below 
-	sendErrorAndExit($ext, i18n::translate('No Media Found'), $requestedfile);
+	sendErrorAndExit($ext, i18n::translate('The media file was not found in this family tree'), $requestedfile);
 }
 
 $isThumb = false;
@@ -338,7 +337,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/thumbs/')) {
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.
-	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('No Media Found'), $serverFilename);
+	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('The media file was not found in this family tree'), $serverFilename);
 }
 
 if (empty($controller->pid)) {
@@ -347,7 +346,7 @@ if (empty($controller->pid)) {
 		// only show these files to admin users
 		// bail since current user is not admin
 		// Note: the 404 error status is still in effect.
-		// if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('Privacy restrictions prevent you from viewing this item'), $serverFilename);
+		// if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('The media file was not found in this family tree'), $serverFilename);
 	}
 }
 
@@ -355,7 +354,7 @@ if (empty($controller->pid)) {
 if (!$controller->mediaobject->canDisplayDetails()) {
 	// if no permissions, bail
 	// Note: the 404 error status is still in effect
-	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('Privacy restrictions prevent you from viewing this item'));
+	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('The media file was not found in this family tree'));
 }
 
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
