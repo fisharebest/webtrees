@@ -3086,27 +3086,23 @@ function get_query_string() {
 	$qstring = "";
 	if (!empty($_GET)) {
 		foreach ($_GET as $key => $value) {
-			if ($key != "view") {
-				if (!is_array($value)) {
-					$qstring .= "&amp;{$key}={$value}";
-				} else {
-					foreach ($value as $k=>$v) {
-						$qstring .= "&amp;{$key}[{$k}]={$v}";
-					}
+			if (!is_array($value)) {
+				$qstring .= '&amp;'.rawurlencode($key)."=".rawurlencode($value);
+			} else {
+				foreach ($value as $k=>$v) {
+					$qstring .= '&amp;'.rawurlencode($key).'['.rawurlencode($k).']='.rawurlencode($v);
 				}
 			}
 		}
 	} else {
 		if (!empty($_POST)) {
 			foreach ($_POST as $key => $value) {
-				if ($key != "view") {
-					if (!is_array($value)) {
-						$qstring .= "&amp;{$key}={$value}";
-					} else {
-						foreach ($value as $k=>$v) {
-							if (!is_array($v)) {
-								$qstring .= "&amp;{$key}[{$k}]={$v}";
-							}
+				if (!is_array($value)) {
+					$qstring .= '&amp;'.rawurlencode($key)."=".rawurlencode($value);
+				} else {
+					foreach ($value as $k=>$v) {
+						if (!is_array($v)) {
+							$qstring .= '&amp;'.rawurlencode($key).'['.rawurlencode($k).']='.rawurlencode($v);
 						}
 					}
 				}
