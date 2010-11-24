@@ -3016,23 +3016,6 @@ function filename_encode($filename) {
 		return $filename;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Remove empty and duplicate values from a URL query string
-////////////////////////////////////////////////////////////////////////////////
-function normalize_query_string($query) {
-	$components=array();
-	foreach (preg_split('/(^\?|\&(amp;)*)/', urldecode($query), -1, PREG_SPLIT_NO_EMPTY) as $component)
-		if (strpos($component, '=')!==false) {
-			list ($key, $data)=explode('=', $component, 2);
-			if (!empty($data)) $components[$key]=$data;
-		}
-	$new_query='';
-	foreach ($components as $key=>$data)
-		$new_query.=(empty($new_query)?'?':'&amp;').$key.'='.$data;
-
-	return $new_query;
-}
-
 function getfilesize($bytes) {
 	if ($bytes>=1099511627776) {
 		return round($bytes/1099511627776, 2)." TB";
@@ -3078,39 +3061,36 @@ function in_arrayr($needle, $haystack) {
 	return false;
 }
 
-/**
- * function to build an URL querystring from GET or POST variables
- * @return string
- */
-function get_query_string() {
-	$qstring = "";
-	if (!empty($_GET)) {
-		foreach ($_GET as $key => $value) {
-			if (!is_array($value)) {
-				$qstring .= '&amp;'.rawurlencode($key)."=".rawurlencode($value);
-			} else {
-				foreach ($value as $k=>$v) {
-					$qstring .= '&amp;'.rawurlencode($key).'['.rawurlencode($k).']='.rawurlencode($v);
-				}
-			}
-		}
+// Function to build an URL querystring from GET variables
+// Optionally, add/replace specified values
+function get_query_url($overwrite=null) {
+	if (empty($_GET)) {
+		$get=array();
 	} else {
-		if (!empty($_POST)) {
-			foreach ($_POST as $key => $value) {
-				if (!is_array($value)) {
-					$qstring .= '&amp;'.rawurlencode($key)."=".rawurlencode($value);
-				} else {
-					foreach ($value as $k=>$v) {
-						if (!is_array($v)) {
-							$qstring .= '&amp;'.rawurlencode($key).'['.rawurlencode($k).']='.rawurlencode($v);
-						}
-					}
-				}
+		$get=$_GET;
+	}
+	if (is_array($overwrite)) {
+		foreach ($overwrite as $key=>$value) {
+			$get[$key]=$value;
+		}
+	}
+
+	$query_string='';
+	foreach ($get as $key=>$value) {
+		if (!is_array($value)) {
+			$query_string.='&amp;' . rawurlencode($key) . '=' . rawurlencode($value);
+		} else {
+			foreach ($value as $k=>$v) {
+				$query_string.='&amp;' . rawurlencode($key) . '[' . rawurlencode($k) . ']=' . rawurlencode($v);
 			}
 		}
 	}
-	$qstring = substr($qstring, 5); // Remove leading "&amp;"
-	return $qstring;
+	$query_string=substr($query_string, 5); // Remove leading '&amp;'
+	if ($query_string) {
+		return WT_SCRIPT_NAME.'?'.$query_string;
+	} else {
+		return WT_SCRIPT_NAME;
+	}
 }
 
 //This function works with a specified generation limit.  It will completely fill

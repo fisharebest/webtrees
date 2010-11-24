@@ -101,6 +101,7 @@ class FamilyController extends BaseController {
 				);
 				user_favorites_WT_Module::addFavorite($favorite);
 			}
+			unset($_GET['action']);
 			break;
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
@@ -115,7 +116,8 @@ class FamilyController extends BaseController {
 				}
 				$this->family = new Family($gedrec);
 				$this->parents = find_parents($_REQUEST['famid']);
-				}
+			}
+			unset($_GET['action']);
 			break;
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
@@ -131,6 +133,7 @@ class FamilyController extends BaseController {
 				$this->family = new Family($gedrec);
 				$this->parents = find_parents($this->famid);
 			}
+			unset($_GET['action']);
 			break;
 		}
 

@@ -676,7 +676,7 @@ class MenuBar {
 	* @return Menu the menu item
 	*/
 	public static function getHelpMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $QUERY_STRING, $helpindex, $action;
+		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $helpindex, $action;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if (!empty($SEARCH_SPIDER)) {
@@ -734,9 +734,9 @@ class MenuBar {
 		//-- add show/hide context_help
 		$menu->addSeparator();
 		if ($_SESSION["show_context_help"])
-			$submenu = new Menu(i18n::translate('Hide contextual help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=no"));
+			$submenu = new Menu(i18n::translate('Hide contextual help'), get_query_url(array('show_context_help'=>'no')));
 		else
-			$submenu = new Menu(i18n::translate('Show contextual help'), WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING."&amp;show_context_help=yes"));
+			$submenu = new Menu(i18n::translate('Show contextual help'), get_query_url(array('show_context_help'=>'yes')));
 		$submenu->addIcon('help');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		$menu->addSubmenu($submenu);
@@ -751,11 +751,10 @@ class MenuBar {
 		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN;
 
 		if ($ALLOW_THEME_DROPDOWN && !$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES')) {
-			$url=WT_SCRIPT_NAME.'?'.get_query_string();
 			$menu=new Menu(i18n::translate('Theme'));
 			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
 			foreach (get_theme_names() as $themename=>$themedir) {
-				$submenu=new Menu($themename, $url.'&amp;theme='.rawurlencode($themedir));
+				$submenu=new Menu($themename, get_query_url(array('theme'=>$themedir)));
 				if ($themedir==WT_THEME_DIR) {
 					$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 				} else {
@@ -773,11 +772,10 @@ class MenuBar {
 	* @return Menu the menu item
 	*/
 	public static function getColorMenu($COLOR_THEME_LIST) {
-		$url=WT_SCRIPT_NAME.'?'.get_query_string();
 		$menu=new Menu(i18n::translate('Color Palette'));
 		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
 		foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
-			$submenu=new Menu($colorName, $url.'&amp;themecolor='.rawurlencode($colorChoice));
+			$submenu=new Menu($colorName, get_query_url(array('themecolor'=>$colorChoice)));
 			$menu->addSubMenu($submenu);
 		}
 		return $menu;
@@ -787,7 +785,7 @@ class MenuBar {
 	* @return Menu the menu item
 	*/
 	public static function getLanguageMenu() {
-		global $QUERY_STRING, $WT_IMAGES, $TEXT_DIRECTION;
+		global $WT_IMAGES, $TEXT_DIRECTION;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
@@ -795,7 +793,7 @@ class MenuBar {
 		$menu->addClass("langmenuitem$ff", "langmenuitem_hover$ff", "submenu$ff", "icon_language");
 
 		foreach (i18n::installed_languages() as $lang=>$name) {
-			$submenu=new Menu($name, WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING.'&amp;lang='.$lang));
+			$submenu=new Menu($name, get_query_url(array('lang'=>$lang)));
 			if ($lang==WT_LOCALE) {
 				$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 			} else {
@@ -814,7 +812,7 @@ class MenuBar {
 	* @return Menu the menu item
 	*/
 	public static function getFavoritesMenu() {
-		global $REQUIRE_AUTHENTICATION, $GEDCOM, $QUERY_STRING, $WT_IMAGES, $TEXT_DIRECTION;
+		global $REQUIRE_AUTHENTICATION, $GEDCOM, $WT_IMAGES, $TEXT_DIRECTION;
 		global $SEARCH_SPIDER;
 		global $controller; // Pages with a controller can be added to the favorites
 
@@ -864,7 +862,7 @@ class MenuBar {
 					default:
 						break 2;
 					}
-					$submenu=new Menu('<em>'.i18n::translate('Add to My Favorites').'</em>', WT_SCRIPT_NAME.normalize_query_string($QUERY_STRING.'&amp;action=addfav&amp;gid='.$gid));
+					$submenu=new Menu('<em>'.i18n::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)));
 					$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 					$menu->addSubMenu($submenu);
 					break;

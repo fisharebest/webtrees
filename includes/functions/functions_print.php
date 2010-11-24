@@ -374,7 +374,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 */
 function print_header($title) {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
-	global $GEDCOM, $GEDCOM_TITLE, $QUERY_STRING, $action, $query, $theme_name;
+	global $GEDCOM, $GEDCOM_TITLE, $action, $query, $theme_name;
 	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $THEME_DIR, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION;
 
@@ -392,7 +392,6 @@ function print_header($title) {
 		$title.=' - '.$META_TITLE;
 	}
 	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
-	$query_string = $QUERY_STRING;
 	$javascript=
 		'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>'.
 		'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>'.
@@ -402,7 +401,6 @@ function print_header($title) {
 		'<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>'.
 		WT_JS_START.'
 		/* setup some javascript variables */
-		var query = "'.$query_string.'";
 		var textDirection = "'.$TEXT_DIRECTION.'";
 		var browserType = "'.$BROWSERTYPE.'";
 		var themeName = "'.$theme_name.'";
@@ -457,7 +455,7 @@ function print_header($title) {
 	';
 	$javascript .= '
 	function message(username, method, url, subject) {
-		if ((!url)||(url=="")) url=\''.urlencode(WT_SCRIPT_NAME.'?'.get_query_string()).'\';
+		if ((!url)||(url=="")) url=\''.addslashes(get_query_url()).'\';
 		if ((!subject)||(subject=="")) subject="";
 		window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
 		return false;
@@ -497,7 +495,7 @@ function print_simple_header($title) {
 
 // -- print the html to close the page
 function print_footer() {
-	global $SHOW_STATS, $QUERY_STRING, $footerfile, $printlink, $theme_name, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
+	global $SHOW_STATS, $footerfile, $printlink, $theme_name, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
 	if (!isset($footer_count)) $footer_count = 1;
 	else $footer_count++;
@@ -576,15 +574,11 @@ function execution_stats() {
 
 // Generate a login link
 function login_link($extra='') {
-	global $QUERY_STRING;
 
 	if (WT_SCRIPT_NAME=='login.php') {
 		$href='#';
 	} else {
-		$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.WT_SCRIPT_NAME;
-		if ($QUERY_STRING) {
-			$href.= rawurlencode('?'.$QUERY_STRING);
-		}
+		$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url());
 	}
 	return '<a href="' . $href . '" ' . $extra . ' class="link">' . i18n::translate('Login') . '</a>';
 }
@@ -697,7 +691,7 @@ function contact_menus($ged_id=WT_GED_ID) {
 
 //-- print user favorites
 function print_favorite_selector($option=0) {
-	global $GEDCOM, $QUERY_STRING;
+	global $GEDCOM;
 	global $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $WT_IMAGES, $SEARCH_SPIDER;
 	global $controller; // Pages with a controller can be added to the favorites
 
@@ -755,8 +749,7 @@ function print_favorite_selector($option=0) {
 			$menu->addSubMenu($submenu);
 
 			if ($gid!='') {
-				$url=$url=WT_SCRIPT_NAME.'?'.get_query_string(array('action'=>'addfav', 'gid'=>$gid));
-				$submenu = new Menu('<em>'.i18n::translate('Add to My Favorites').'</em>', $url, "right");
+				$submenu = new Menu('<em>'.i18n::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)), "right");
 				$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 				$menu->addSubMenu($submenu);
 			}
@@ -813,7 +806,7 @@ function print_favorite_selector($option=0) {
 	default:
 		echo '<form class="favorites_form" name="favoriteform" action="', WT_SCRIPT_NAME, '"';
 		echo " method=\"post\" onsubmit=\"return false;\">";
-		echo "<select name=\"fav_id\" class=\"header_select\" onchange=\"if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value!='') window.location=document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value; if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value=='add') window.location='", WT_SCRIPT_NAME, normalize_query_string("{$QUERY_STRING}&amp;action=addfav&amp;gid={$gid}"), "';\">";
+		echo "<select name=\"fav_id\" class=\"header_select\" onchange=\"if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value!='') window.location=document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value; if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value=='add') window.location='", get_query_url(array('action'=>'addfav', 'gid'=>$gid)), "';\">";
 		echo "<option value=\"\">", i18n::translate('Favorites'), "</option>";
 		if (WT_USER_NAME && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			if (count($userfavs)>0 || $gid!='') {

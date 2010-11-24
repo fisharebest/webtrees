@@ -35,9 +35,7 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Only admin users can access this page
 if (!WT_USER_IS_ADMIN) {
-	$LOGIN_URL=get_site_setting('LOGIN_URL');
-	$loginURL = "$LOGIN_URL?url=".urlencode(WT_SCRIPT_NAME."?".$QUERY_STRING);
-	header('Location: '.$loginURL);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
 

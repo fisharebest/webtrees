@@ -82,6 +82,7 @@ class NoteController extends BaseController {
 				);
 				user_favorites_WT_Module::addFavorite($favorite);
 			}
+			unset($_GET['action']);
 			break;
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
@@ -96,6 +97,7 @@ class NoteController extends BaseController {
 				}
 				$this->note = new Note($gedrec);
 			}
+			unset($_GET['action']);
 			break;
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
@@ -110,6 +112,7 @@ class NoteController extends BaseController {
 				}
 				$this->note = new Note($gedrec);
 			}
+			unset($_GET['action']);
 			break;
 		}
 

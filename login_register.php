@@ -93,7 +93,6 @@ switch ($action) {
 		break;
 
 	case "requestpw" :
-		$QUERY_STRING = "";
 		print_header(i18n::translate('Lost password request'));
 		echo "<div class=\"center\">";
 		$user_id=get_user_id($user_name);
@@ -326,7 +325,6 @@ switch ($action) {
 			}
 			$_SESSION["good_to_send"] = false;
 
-		$QUERY_STRING = "";
 		if (isset($user_name)) {
 			print_header(i18n::translate('New Account confirmation'));
 			echo "<div class=\"center\">";
@@ -471,7 +469,6 @@ switch ($action) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
 		}
-		$QUERY_STRING = "";
 		AddToLog("User attempted to verify hashcode: ".$user_name, 'auth');
 
 		// Change to the new user's language

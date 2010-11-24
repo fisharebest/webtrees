@@ -63,6 +63,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($fv_id) {
 				self::deleteFavorite($fv_id);
 			}
+			unset($_GET['action']);
 			break;
 		case 'addfav':
 			$gid     =safe_GET('gid');
@@ -115,6 +116,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$favorite['title'] = $favtitle;
 				self::addFavorite($favorite);
 			}
+			unset($_GET['action']);
 			break;
 		}
 
