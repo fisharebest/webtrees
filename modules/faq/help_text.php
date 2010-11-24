@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'add_faq_item':
-	$title=i18n::translate('FAQ - Frequently Asked Questions');
+	$title=i18n::translate('Frequently asked questions');
 	$text=
 		i18n::translate('FAQs are lists of questions and answers, which allow you to explain the site\'s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.').
 		'<br/><br/>'.

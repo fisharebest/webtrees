@@ -166,7 +166,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
 			echo '<table class="center list_table">';
 			echo '<tr><td class="topbottombar" colspan="2">';
-			echo i18n::translate('FAQ - Frequently Asked Questions'), help_link('add_faq_item', $this->getName());
+			echo i18n::translate('Frequently asked questions'), help_link('add_faq_item', $this->getName());
 			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
 			echo i18n::translate('Question');
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
