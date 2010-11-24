@@ -152,14 +152,7 @@ case 'replace_import':
 	exit;
 }
 
-$gedcoms=WT_DB::prepare(
-	"SELECT gedcom_id, gedcom_name FROM `##gedcom` ORDER BY gedcom_name"
-)->fetchAll();
-
-$all_gedcoms=array();
-foreach ($gedcoms as $gedcom) {
-	$all_gedcoms[$gedcom->gedcom_id]=$gedcom->gedcom_name;
-}
+$gedcoms=get_all_gedcoms();
 
 print_header(i18n::translate('GEDCOM administration'));
 
@@ -227,55 +220,55 @@ case 'importform':
 
 
 // List the gedcoms available to this user
-foreach ($gedcoms as $gedcom) {
-	if (userGedcomAdmin(WT_USER_ID, $gedcom->gedcom_id)) {
+foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
+	if (userGedcomAdmin(WT_USER_ID, $gedcom_id)) {
 
 		echo
 			'<table class="gedcom_table" width="100%">',
 			'<tr><td class="list_label" width="20%">', i18n::translate('GEDCOM name'),
-			'</td><td class="list_value"><a href="index.php?ctype=gedcom&ged=', urlencode($gedcom->gedcom_name), '">', htmlspecialchars($gedcom->gedcom_name), ' - ',
-			i18n::translate('%s', get_gedcom_setting($gedcom->gedcom_id, 'title')), '</a>',
+			'</td><td class="list_value"><a href="index.php?ctype=gedcom&ged=', urlencode($gedcom_name), '">', htmlspecialchars($gedcom_name), ' - ',
+			i18n::translate('%s', get_gedcom_setting($gedcom_id, 'title')), '</a>',
 			'</td></tr><tr><td class="list_label">', i18n::translate('GEDCOM administration'),
 			'</td><td class="list_value">';
 
 		// The third row shows an optional progress bar and a list of maintenance options
 		$importing=WT_DB::prepare(
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=0 LIMIT 1"
-		)->execute(array($gedcom->gedcom_id))->fetchOne();
+		)->execute(array($gedcom_id))->fetchOne();
 		if ($importing) {
 			echo
-				'<div id="import', $gedcom->gedcom_id, '"></div>',
+				'<div id="import', $gedcom_id, '"></div>',
 				WT_JS_START,
-				'jQuery("#import', $gedcom->gedcom_id, '").load("import.php?gedcom_id=', $gedcom->gedcom_id, '&keep_media=', safe_POST('keep_media'.$gedcom->gedcom_id), '");',
+				'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '&keep_media=', safe_POST('keep_media'.$gedcom_id), '");',
 				WT_JS_END,
-				'<table border="0" width="100%" id="actions', $gedcom->gedcom_id, '" style="display:none">';
+				'<table border="0" width="100%" id="actions', $gedcom_id, '" style="display:none">';
 		} else {
-			echo '<table border="0" width="100%" id="actions', $gedcom->gedcom_id, '">';
+			echo '<table border="0" width="100%" id="actions', $gedcom_id, '">';
 		}
 		echo
 			'<tr align="center">',
 			// configuration
-			'<td><a href="editconfig_gedcom.php?ged=', rawurlencode($gedcom->gedcom_name), '">', i18n::translate('Configuration'), '</a>',
+			'<td><a href="editconfig_gedcom.php?ged=', rawurlencode($gedcom_name), '">', i18n::translate('Configuration'), '</a>',
 			help_link('gedcom_configfile'),
 			'</td>',
 			// export
-			'<td><a href="javascript:" onclick="window.open(\'', "export_gedcom.php?export=", rawurlencode($gedcom->gedcom_name), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', i18n::translate('Export'), '</a>',
+			'<td><a href="javascript:" onclick="window.open(\'', "export_gedcom.php?export=", rawurlencode($gedcom_name), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', i18n::translate('Export'), '</a>',
 			help_link('export_gedcom'),
 			'</td>',
 			// import
-			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom->gedcom_id, '">', i18n::translate('Import'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom_id, '">', i18n::translate('Import'), '</a>',
 			help_link('import_gedcom'),
 			'</td>',
 			// download
-			'<td><a href="downloadgedcom.php?ged=', rawurlencode($gedcom->gedcom_name),'">', i18n::translate('Download'), '</a>',
+			'<td><a href="downloadgedcom.php?ged=', rawurlencode($gedcom_name),'">', i18n::translate('Download'), '</a>',
 			help_link('download_gedcom'),
 			'</td>',
 			// upload
-			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom->gedcom_id, '">', i18n::translate('Upload'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom_id, '">', i18n::translate('Upload'), '</a>',
 			help_link('upload_gedcom'),
 			'</td>',
 			// delete
-			'<td><a href="editgedcoms.php?action=delete&ged=', rawurlencode($gedcom->gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(i18n::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom->gedcom_name)),'\');">', i18n::translate('Delete'), '</a>',
+			'<td><a href="editgedcoms.php?action=delete&ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(i18n::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', i18n::translate('Delete'), '</a>',
 			help_link('delete_gedcom'),
 			'</td></tr></table></td></tr></table><br />';
 	}
@@ -299,9 +292,9 @@ if (WT_USER_IS_ADMIN) {
 		echo '<option value="" selected="selected"></option>';
 	}
 	foreach ($gedcoms as $gedcom) {
-		echo '<option value="', urlencode($gedcom->gedcom_name), '"';
-		if ($DEFAULT_GEDCOM==$gedcom->gedcom_name) echo ' selected="selected"';
-		echo '>', htmlspecialchars($gedcom->gedcom_name), '</option>';
+		echo '<option value="', urlencode($gedcom_name), '"';
+		if ($DEFAULT_GEDCOM==$gedcom_name) echo ' selected="selected"';
+		echo '>', htmlspecialchars($gedcom_name), '</option>';
 	}
 	echo
 		'</select>',
@@ -315,7 +308,7 @@ if (WT_USER_IS_ADMIN) {
 	$d=opendir($INDEX_DIRECTORY);
 	$files=false;
 	while (($f=readdir($d))!==false) {
-		if (!in_array($f, $all_gedcoms) && !is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
+		if (!in_array($f, $gedcoms) && !is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
 			$fp=fopen($INDEX_DIRECTORY.$f, 'rb');
 			$header=fread($fp, 64);
 			fclose($fp);
