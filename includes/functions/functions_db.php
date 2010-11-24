@@ -2062,7 +2062,7 @@ function set_site_setting($setting_name, $setting_value) {
 
 function get_all_gedcoms() {
 	return
-		WT_DB::prepare("SELECT gedcom_id, gedcom_name FROM `##gedcom`")
+		WT_DB::prepare("SELECT SQL_CACHE gedcom_id, gedcom_name FROM `##gedcom` WHERE gedcom_id>0 ORDER BY gedcom_name")
 		->fetchAssoc();
 }
 
@@ -2072,6 +2072,7 @@ function get_gedcom_titles() {
 			"SELECT SQL_CACHE g.gedcom_id, g.gedcom_name, COALESCE(gs.setting_value, g.gedcom_name) AS gedcom_title".
 			" FROM `##gedcom` g".
 			" LEFT JOIN `##gedcom_setting` gs ON (g.gedcom_id=gs.gedcom_id AND gs.setting_name=?)".
+			" WHERE g.gedcom_id>0".
 			" ORDER BY 3"
 		)
 		->execute(array('title'))
@@ -2152,9 +2153,10 @@ function create_user($username, $realname, $email, $password) {
 	} catch (PDOException $ex) {
 		// User already exists?
 	}
-	return
+	$user_id=
 		WT_DB::prepare("SELECT user_id FROM `##user` WHERE user_name=?")
 		->execute(array($username))->fetchOne();
+	return $user_id;
 }
 
 function rename_user($user_id, $new_username) {
@@ -2180,11 +2182,11 @@ function delete_user($user_id) {
 function get_all_users($order='ASC', $key='realname') {
 	if ($key=='username') {
 		return
-			WT_DB::prepare("SELECT user_id, user_name FROM `##user` ORDER BY user_name")
+			WT_DB::prepare("SELECT user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY user_name")
 			->fetchAssoc();
 	} elseif ($key=='realname') {
 		return
-			WT_DB::prepare("SELECT user_id, user_name FROM `##user` ORDER BY real_name")
+			WT_DB::prepare("SELECT user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY real_name")
 			->fetchAssoc();
 	} else {
 		return
@@ -2192,6 +2194,7 @@ function get_all_users($order='ASC', $key='realname') {
 				"SELECT u.user_id, user_name".
 				" FROM `##user` u".
 				" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name=?)".
+				" WHERE u.user_id>0".
 				" ORDER BY us1.setting_value {$order}"
 			)->execute(array($key))
 			->fetchAssoc();
@@ -2200,7 +2203,7 @@ function get_all_users($order='ASC', $key='realname') {
 
 function get_user_count() {
 	return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##user`")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##user` WHERE user_id>0")
 			->fetchOne();
 }
 
@@ -2213,14 +2216,14 @@ function get_user_by_email($email) {
 
 function get_admin_user_count() {
 	return
-		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=?")
+		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE setting_name=? AND setting_value=? AND user_id>0")
 		->execute(array('canadmin', '1'))
 		->fetchOne();
 }
 
 function get_non_admin_user_count() {
 	return
-		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE  setting_name=? AND setting_value<>?")
+		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user_setting` WHERE  setting_name=? AND setting_value<>? AND user_id>0")
 		->execute(array('canadmin', '1'))
 		->fetchOne();
 }
