@@ -126,7 +126,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				));
 				$block_id=WT_DB::getInstance()->lastInsertId();
 			}
-			set_block_setting($block_id, 'header', safe_POST('header'));
+			set_block_setting($block_id, 'header', safe_POST('header', WT_REGEX_UNSAFE));
 			set_block_setting($block_id, 'faqbody',   safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
 			$languages=array();
 			foreach (i18n::installed_languages() as $code=>$name) {
@@ -166,12 +166,12 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
 			echo '<table class="center list_table">';
 			echo '<tr><td class="topbottombar" colspan="2">';
-			echo i18n::translate('Add FAQ item'), help_link('add_faq_item', $this->getName());
+			echo i18n::translate('FAQ - Frequently Asked Questions'), help_link('add_faq_item', $this->getName());
 			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('FAQ header'), help_link('add_faq_header', $this->getName());
+			echo i18n::translate('Question');
 			echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
 			echo '<tr><td class="descriptionbox" colspan="2">';
-			echo i18n::translate('FAQ body'), help_link('add_faq_body', $this->getName());
+			echo i18n::translate('Answer');
 			echo '</td></tr><tr><td class="optionbox" colspan="2">';
 			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			// use CKeditor module
