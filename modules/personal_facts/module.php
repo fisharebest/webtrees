@@ -97,11 +97,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			$n_chil=1;
 			$n_gchi=1;
 			$n_ggch=1;
-			foreach ($indifacts as $key => $value) {
-				if ($value->getTag()=='DEAT' || $value->getTag()=='CREM' || $value->getTag()=='BURI') {
+			foreach ($indifacts as $value) {
+				if (strstr(WT_EVENTS_DEAT, $value->getTag())) {
 					$yetdied = true;
 				}
-
 				if (!is_null($value->getFamilyId())) {
 					if (!$yetdied) {
 						print_fact($value, $this->controller->canedit==false);

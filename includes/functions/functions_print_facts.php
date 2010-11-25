@@ -73,7 +73,7 @@ function expand_urls($text) {
  */
 function print_fact(&$eventObj, $noedit=false) {
 	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
-	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
+	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $FACTS_M, $FACTS_F, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $n_ggch, $SEARCH_SPIDER;
 
 	if (!$eventObj->canShow()) {
@@ -81,7 +81,7 @@ function print_fact(&$eventObj, $noedit=false) {
 	}
 
 	$fact = $eventObj->getTag();
-	if ($HIDE_GEDCOM_ERRORS && !array_key_exists($fact, $FACTS)) {
+	if ($HIDE_GEDCOM_ERRORS && !array_key_exists($fact, $FACTS) && !array_key_exists($fact, $FACTS_M) && !array_key_exists($fact, $FACTS_F)) {
 		return;
 	}
 

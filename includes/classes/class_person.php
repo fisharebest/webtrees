@@ -949,8 +949,7 @@ class Person extends GedcomRecord {
 	function add_parents_facts(&$person, $sosa=1) {
 		global $SHOW_RELATIVES_EVENTS;
 
-		if (is_null($person)) return;
-		if (!$SHOW_RELATIVES_EVENTS) return;
+		if (is_null($person) || !$SHOW_RELATIVES_EVENTS) return;
 
 		switch ($sosa) {
 		case 1: $rela=''; break;
@@ -979,6 +978,8 @@ class Person extends GedcomRecord {
 						$fact='_DEAT_GGPA';
 					}
 					if (strstr($SHOW_RELATIVES_EVENTS, $fact)) {
+						if ($sosa==3) $fact='_DEAT_GPA1';
+						else $fact='_DEAT_GPA2';
 						foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 							$srec = $sEvent->getGedcomRecord();
 							if (GedcomDate::Compare($bDate, $sEvent->getDate())<0 && GedcomDate::Compare($sEvent->getDate(), $dDate)<=0) {
@@ -1095,8 +1096,15 @@ class Person extends GedcomRecord {
 				// grandchildren
 				if ($option=='_GCHI') {
 					$rela='chichi';
-					if ($sex=='F') $rela='chidau';
-					if ($sex=='M') $rela='chison';
+					$parent_sex = Person::getInstance($except)->getSex();
+					if ($sex=='F') {          $rela='chidau';
+						if ($parent_sex=='F') { $rela='daudau';  $op='_GCH1';}
+						if ($parent_sex=='M') { $rela='sondau';  $op='_GCH2';}
+					}
+					if ($sex=='M')          { $rela='chison';
+						if ($parent_sex=='F') { $rela='dauson';  $op='_GCH1';}
+						if ($parent_sex=='M') { $rela='sonson';  $op='_GCH2';}
+					}
 				}
 				// great-grandchildren
 				if ($option=='_GGCH') {
@@ -1149,8 +1157,11 @@ class Person extends GedcomRecord {
 						$srec = $sEvent->getGedcomRecord();
 						$sgdate=$sEvent->getDate();
 						if ($option=='_CHIL' || $sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-							if (isset($op)) $factrec='1 _'.$sEvent->getTag().$op;
-							else $factrec='1 _'.$sEvent->getTag().$option;
+							if (isset($op)) {
+								$factrec='1 _'.$sEvent->getTag().$op;
+							} else {
+								$factrec='1 _'.$sEvent->getTag().$option;
+							}
 							$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
 							if (!$sEvent->canShow()) {
 								$factrec.='\n2 RESN privacy';
@@ -1161,7 +1172,6 @@ class Person extends GedcomRecord {
 							if (!in_array($event, $this->indifacts)) {
 								$this->indifacts[]=$event;
 							}
-							break;
 						}
 					}
 				}
@@ -1219,7 +1229,7 @@ class Person extends GedcomRecord {
 				// add children of children = grandchildren
 				if ($option=='_CHIL') {
 					foreach ($child->getSpouseFamilies() as $sfamid=>$sfamily) {
-						$this->add_children_facts($sfamily, '_GCHI');
+						$this->add_children_facts($sfamily, '_GCHI', $child->getXref());
 					}
 				}
 				// add children of grandchildren = great-grandchildren
@@ -1321,7 +1331,7 @@ class Person extends GedcomRecord {
 		$dDate=$this->getEstimatedDeathDate();
 		if (!$bDate->isOK()) return;
 
-		if ($SHOW_RELATIVES_EVENTS && file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+		if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
 			require get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
 			foreach ($histo as $indexval=>$hrec) {
 				$sdate=new GedcomDate(get_gedcom_value('DATE', 2, $hrec, '', false));
