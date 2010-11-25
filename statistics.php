@@ -781,19 +781,19 @@ if (isset($content) && $content==1) {
 		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab0" title="<?php echo i18n::translate('Individuals'); ?>" href="statistics.php?ged=<?php echo rawurlencode($GEDCOM); ?>&content=1&tab=0"><span>
+				<a name="pagetab0" title="<?php echo i18n::translate('Individuals'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=0"><span>
 					<?php echo i18n::translate('Individuals'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab1" title="<?php echo i18n::translate('Families'); ?>" href="statistics.php?ged=<?php echo rawurlencode($GEDCOM); ?>&content=1&tab=1"><span>
+				<a name="pagetab1" title="<?php echo i18n::translate('Families'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=1"><span>
 					<?php echo i18n::translate('Families'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab2" title="<?php echo i18n::translate('Others'); ?>" href="statistics.php?ged=<?php echo rawurlencode($GEDCOM); ?>&content=1&tab=2"><span>
+				<a name="pagetab2" title="<?php echo i18n::translate('Others'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=2"><span>
 					<?php echo i18n::translate('Others'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab3" title="<?php echo i18n::translate('Own charts'); ?>" href="statistics.php?ged=<?php echo rawurlencode($GEDCOM); ?>&content=1&tab=3"><span>
+				<a name="pagetab3" title="<?php echo i18n::translate('Own charts'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=3"><span>
 					<?php echo i18n::translate('Own charts'); ?></span></a>
 			</li>
 		</ul>

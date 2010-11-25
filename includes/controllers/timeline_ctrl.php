@@ -55,16 +55,11 @@ class TimelineController extends BaseController {
 	* Initialization function
 	*/
 	function init() {
-		global $GEDCOM_ID_PREFIX;
-
 		$this->baseyear = date("Y");
 		//-- new pid
 		$newpid=safe_GET_xref('newpid');
 		if ($newpid) {
 			$indirec = find_person_record($newpid, WT_GED_ID);
-			if (empty($indirec) && $GEDCOM_ID_PREFIX) {
-				if (stristr($newpid, $GEDCOM_ID_PREFIX)===false) $newpid = $GEDCOM_ID_PREFIX.$newpid;
-			}
 		}
 
 		if (safe_GET('clear', '1')=='1') {
@@ -167,7 +162,7 @@ class TimelineController extends BaseController {
 	}
 
 	function print_time_fact($event) {
-		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements, $familyfacts, $GEDCOM;
+		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements, $familyfacts;
 
 		/* @var $event Event */
 		$factrec = $event->getGedComRecord();
@@ -291,7 +286,7 @@ class TimelineController extends BaseController {
 					else {
 						$ct = preg_match("/2 _WTFS @(.*)@/", $factrec, $match);
 						if ($ct>0) {
-							echo " <a href=\"family.php?famid={$match[1]}&amp;ged=".rawurlencode($GEDCOM)."\">";
+							echo " <a href=\"family.php?famid={$match[1]}&amp;ged=".WT_GEDURL."\">";
 							if ($event->getParentObject()->canDisplayName()) echo $event->getParentObject()->getFullName();
 							else echo i18n::translate('Private');
 							echo "</a>";

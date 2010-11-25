@@ -64,9 +64,9 @@ if (get_site_setting('ALLOW_CHANGE_GEDCOM') && count($all_gedcoms)>1) {
 	}
 } else {
 	$title=i18n::translate('Home page');
-	echo '<a href="index.php?ged=', rawurlencode($GEDCOM), '"><b>', $title, '</b></a><br />';
+	echo '<a href="index.php?ged=', WT_GEDURL, '"><b>', $title, '</b></a><br />';
 	$title=i18n::translate('Individuals');
-	echo '<a href="indilist.php?ged=', rawurlencode($GEDCOM), '"><b>', $title, '</b></a><br />';
+	echo '<a href="indilist.php?ged=', WT_GEDURL, '"><b>', $title, '</b></a><br />';
 }
 
 echo '</body></html>';

@@ -67,14 +67,14 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SEARCH_SPIDER, $controller;
+		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ($SEARCH_SPIDER) {
 			return new Menu("", "", "");
 		}
 		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.rawurlencode($GEDCOM), "down");
+		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, "down");
 		$menu->addIcon('clippings');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_clippings");
 		if (isset($controller->indi) && $controller->indi->canDisplayDetails()) {
@@ -123,7 +123,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $cart, $GEDCOM;
+		global $WT_IMAGES, $cart;
 
 		$out = '';
 
@@ -160,7 +160,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		global $GEDCOM, $cart;
+		global $cart;
 		$controller = new ClippingsController();
 		$this->controller = $controller;
 		$add = safe_GET_xref('add','');
@@ -178,7 +178,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$clipping = array ();
 				$clipping['type'] = strtolower($record->getType());
 				$clipping['id'] = $add;
-				$clipping['gedcom'] = $GEDCOM;
+				$clipping['gedcom'] = WT_GEDCOM;
 				$ret = $controller->add_clipping($clipping);
 				if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
 				if ($ret) return $this->askAddOptions($record);
@@ -289,7 +289,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	}
 
 	public function getCartList() {
-		global $WT_IMAGES, $cart, $GEDCOM;
+		global $WT_IMAGES, $cart;
 
 		$out ='<ul>';
 		$ct = count($cart);
@@ -300,7 +300,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$tag = strtoupper(substr($clipping['type'], 0, 4)); // source => SOUR
 				//print_r($clipping);
 				//-- don't show clippings from other gedcoms
-				if ($clipping['gedcom']==$GEDCOM) {
+				if ($clipping['gedcom']==WT_GEDCOM) {
 					$icon='';
 					if ($tag=='INDI') $icon = "indis";
 					if ($tag=='FAM' ) $icon = "sfamily";

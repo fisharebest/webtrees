@@ -42,7 +42,7 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.'includes/controllers/pedigree_ctrl.php';
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
-global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $GEDCOM;
+global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES;
 
 // Default is show for both of these.
 $hideflags = safe_GET('hideflags');
@@ -104,7 +104,7 @@ echo PrintReady($controller->getPersonName())."</h2>";
 	//-->
 </script>
 </td><td width="50px">&nbsp;</td><td>
-	  <form name="people" method="get" action="module.php?ged=<?php echo rawurlencode($GEDCOM); ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
+	  <form name="people" method="get" action="module.php?ged=<?php echo WT_GEDURL; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
 		<input type="hidden" name="mod" value="googlemap" />
 		<input type="hidden" name="mod_action" value="pedigree_map" />
 		<table class="pedigree_table <?php echo $TEXT_DIRECTION; ?>" width="555">
@@ -662,7 +662,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				echo "var point = new GLatLng(" . $lat[$i] . "," . $lon[$i]. ");\n";
 				echo "var marker = createMarker(point, \"" . addslashes($name). "\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 				echo "<div class='iwstyle'>";
-				echo "<a href='module.php?ged=".rawurlencode($GEDCOM)."&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+				echo "<a href='module.php?ged=".WT_GEDURL."&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 				if ($hideflags) echo "&hideflags=1";
 				if ($hidelines) echo "&hidelines=1";
 				if ($clustersize != 5) echo "&clustersize=". $clustersize; // ignoring the default of 5
