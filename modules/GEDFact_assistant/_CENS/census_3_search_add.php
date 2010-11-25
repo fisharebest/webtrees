@@ -180,7 +180,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value" style="text-decoration:none;" >
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -314,7 +314,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -464,7 +464,7 @@ if (!defined('WT_WEBTREES')) {
 										<td align="left" class="facts_value">
 											<font size=1>
 												<?php
-												echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+												echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 												echo $headImg2;
 												echo "</a>";
 												?>
@@ -633,7 +633,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -780,7 +780,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -917,7 +917,7 @@ if (!defined('WT_WEBTREES')) {
 									<td align="left" class="facts_value">
 										<font size=1>
 											<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 											echo $headImg2;
 											echo "</a>";
 											?>
@@ -1077,7 +1077,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -1224,7 +1224,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>
@@ -1364,7 +1364,7 @@ if (!defined('WT_WEBTREES')) {
 								<td align="left" class="facts_value">
 									<font size=1>
 										<?php
-										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+										echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										echo $headImg2;
 										echo "</a>";
 										?>

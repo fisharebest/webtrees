@@ -582,7 +582,7 @@ jQuery(document).ready(function() {
 			}
 			$uged = get_user_gedcom_setting($user_id, $ged_id, 'gedcomid');
 			if ($uged) {
-				echo ' <a href="individual.php?pid=', $uged, '&amp;ged=', urlencode($ged_name), '">', $ged_name, '</a></li>';
+				echo ' <a href="individual.php?pid=', $uged, '&amp;ged=', rawurlencode($ged_name), '">', $ged_name, '</a></li>';
 			} else {
 				echo ' ', $ged_name, '</li>';
 			}
@@ -610,7 +610,7 @@ jQuery(document).ready(function() {
 		echo get_user_setting($user_id, 'verified_by_admin') ? i18n::translate('Yes') : i18n::translate('No');
 		echo '</td><td class="optionbox wrap">';
 		if (WT_USER_ID!=$user_id) { // You cannot delete yourself
-			echo '<a href="useradmin.php?action=deleteuser&amp;username=', urlencode($user_name), '&amp;filter=', urlencode($filter), '&amp;usrlang=', urlencode($usrlang), '&amp;ged=', urlencode($ged), '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete the user'), ' ', htmlspecialchars($user_name), '\');">', i18n::translate('Delete'), '</a>';
+			echo '<a href="useradmin.php?action=deleteuser&amp;username=', urlencode($user_name), '&amp;filter=', urlencode($filter), '&amp;usrlang=', urlencode($usrlang), '&amp;ged=', rawurlencode($ged), '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete the user'), ' ', htmlspecialchars($user_name), '\');">', i18n::translate('Delete'), '</a>';
 		} else {
 			echo '&nbsp;';
 		}

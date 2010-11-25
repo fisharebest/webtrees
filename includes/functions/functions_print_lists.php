@@ -1143,9 +1143,9 @@ function format_surname_table($surnames, $type) {
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.urlencode($GEDCOM);
+			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
 		} else {
-			$url=$type.'.php?alpha=,&amp;ged='.urlencode($GEDCOM);
+			$url=$type.'.php?alpha=,&amp;ged='.rawurlencode($GEDCOM);
 		}
 		// Row counter
 		++$row_num;
@@ -1237,8 +1237,8 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 				'weight'=>count($indis),
 				'params'=>array(
 					'url'=>$surn ?
-						$type.'.php?surname='.urlencode($surn).'&amp;ged='.urlencode(WT_GEDCOM) :
-						$type.'.php?alpha=,&amp;ged='.urlencode(WT_GEDCOM)
+						$type.'.php?surname='.urlencode($surn).'&amp;ged='.WT_GEDURL :
+						$type.'.php?alpha=,&amp;ged='.WT_GEDURL
 				)
 			));
 		}
@@ -1257,9 +1257,9 @@ function format_surname_list($surnames, $style, $totals) {
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indilist
 		if ($surn) {
-			$url='indilist.php?surname='.urlencode($surn).'&amp;ged='.urlencode($GEDCOM);
+			$url='indilist.php?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
 		} else {
-			$url='indilist.php?alpha=,&amp;ged='.urlencode($GEDCOM);
+			$url='indilist.php?alpha=,&amp;ged='.rawurlencode($GEDCOM);
 		}
 		// If all the surnames are just case variants, then merge them into one
 		// Comment out this block if you want SMITH listed separately from Smith

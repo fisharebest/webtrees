@@ -149,7 +149,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value" >
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -230,7 +230,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -334,7 +334,7 @@ if (!defined('WT_WEBTREES')) {
 							<td align="left" class="facts_value">
 								<font size=1>
 									<?php
-									echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+									echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -448,7 +448,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -539,7 +539,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -633,7 +633,7 @@ if (!defined('WT_WEBTREES')) {
 						<td align="left" class="facts_value" >
 							<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -732,7 +732,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value" >
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["husb"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -828,7 +828,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$people["wife"]->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -926,7 +926,7 @@ if (!defined('WT_WEBTREES')) {
 					<td align="left" class="facts_value">
 						<font size=1>
 							<?php
-							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom={$GEDCOM}\">";
+							echo "<a href=\"edit_interface.php?action=addmedia_links&amp;noteid=newnote&amp;pid=".$child->getXref()."&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 							echo $headImg2;
 							echo "</a>";
 							?>
@@ -1239,7 +1239,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$marn  = $nam[1]['surname'];
 										}
 
-										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom={$GEDCOM}\">";
+										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										$parentlinks .= PrintReady($husb->getFullName());
 										$parentlinks .= "</a>";
 									} else {
@@ -1277,7 +1277,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
 											$marn  = $nam[1]['surname'];
 										}
-										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom={$GEDCOM}\">";
+										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".rawurlencode($GEDCOM)."\">";
 										$parentlinks .= PrintReady($wife->getFullName());
 										$parentlinks .= "</a>";
 									} else {

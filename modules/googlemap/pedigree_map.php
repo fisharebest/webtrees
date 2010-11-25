@@ -104,7 +104,7 @@ echo PrintReady($controller->getPersonName())."</h2>";
 	//-->
 </script>
 </td><td width="50px">&nbsp;</td><td>
-	  <form name="people" method="get" action="module.php?ged=<?php echo $GEDCOM; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
+	  <form name="people" method="get" action="module.php?ged=<?php echo rawurlencode($GEDCOM); ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
 		<input type="hidden" name="mod" value="googlemap" />
 		<input type="hidden" name="mod_action" value="pedigree_map" />
 		<table class="pedigree_table <?php echo $TEXT_DIRECTION; ?>" width="555">
@@ -222,7 +222,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 			else { // The place is in the table but has empty values
 				if (!empty($name)) {
 					if (!empty($missing)) $missing .= ",\n ";
-					$addlist = "<a href=\"individual.php?pid=" . $pid . "\">". $name . "</a>";
+					$addlist = '<a href="'.$person->getHtmlUrl().'">'. $name . '</a>';
 					$missing .= $addlist;
 					$miscount++;
 				}
@@ -231,7 +231,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		else { // There was no place, or not listed in the map table
 			if (!empty($name)) {
 				if (!empty($missing)) $missing .= ",\n ";
-				$addlist = "<a href=\"individual.php?pid=" . $pid . "\">". $name . "</a>";
+				$addlist = '<a href="'.$person->getHtmlUrl().'">'. $name . '</a>';
 				$missing .= $addlist;
 				$miscount++;
 			}
@@ -598,7 +598,8 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		// end of add image
 
 		$dataleft  = $image . $event . addslashes($name);
-		$datamid   = " <span><a href='individual.php?pid=". $pid . "' id='alturl' title='" . i18n::translate('Individual information') . "'>";
+		$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . i18n::translate('Individual information') . "'>";
+		
 		if ($TEXT_DIRECTION == "rtl") $datamid .= PrintReady("(".$pid.")");
 		else $datamid .= "(". $pid . ")";
 		$datamid  .= "</a></span>";
@@ -661,7 +662,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				echo "var point = new GLatLng(" . $lat[$i] . "," . $lon[$i]. ");\n";
 				echo "var marker = createMarker(point, \"" . addslashes($name). "\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
 				echo "<div class='iwstyle'>";
-				echo "<a href='module.php?ged={$GEDCOM}&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+				echo "<a href='module.php?ged=".rawurlencode($GEDCOM)."&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 				if ($hideflags) echo "&hideflags=1";
 				if ($hidelines) echo "&hidelines=1";
 				if ($clustersize != 5) echo "&clustersize=". $clustersize; // ignoring the default of 5

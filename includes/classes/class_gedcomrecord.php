@@ -307,7 +307,7 @@ class GedcomRecord {
 			$url=$link.rawurlencode($this->getXref()).$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id));
 		} else {
 			// If the record was created from a text string, assume the current gedcom
-			$url=$link.rawurlencode($this->getXref()).$separator.'ged='.rawurlencode(WT_GEDCOM);
+			$url=$link.rawurlencode($this->getXref()).$separator.'ged='.WT_GEDURL;
 		}
 		if ($this->isRemote()) {
 			list($servid, $aliaid)=explode(':', $this->rfn);

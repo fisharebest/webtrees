@@ -143,7 +143,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$printedAddLink = false;
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"javascript:;\" onclick=\"addnews('".urlencode(WT_GEDCOM)."'); return false;\">".i18n::translate('Add a News article')."</a>";
+			$content .= "<a href=\"javascript:;\" onclick=\"addnews('".WT_GEDURL."'); return false;\">".i18n::translate('Add a News article')."</a>";
 			$printedAddLink = true;
 		}
 		if ($limit=='date' || $limit=='count') {

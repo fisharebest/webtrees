@@ -47,7 +47,7 @@ if (!defined('WT_WEBTREES')) {
 			style="<?php echo $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php echo $icons; ?>
 		</div>
 		<?php echo $thumbnail; ?>
-		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo $GEDCOM; ?>">
+		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
 		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
 			<?php echo $name.$addname; ?>
 		</span>

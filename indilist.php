@@ -155,12 +155,12 @@ foreach ($initials as $letter=>$count) {
 	if ($count) {
 		if ($showList && $letter==$alpha && $show_all=='no') {
 			if ($surname) {
-				$html='<a href="indilist.php?alpha='.urlencode($letter).'" class="warning" title="'.$count.'">'.$html.'</a>';
+				$html='<a href="indilist.php?alpha='.urlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
 			} else {
 				$html='<span class="warning" title="'.$count.'">'.$html.'</span>';
 			}
 		} else {
-			$html='<a href="indilist.php?alpha='.urlencode($letter).'" title="'.$count.'">'.$html.'</a>';
+			$html='<a href="indilist.php?alpha='.urlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
 		}
 	}
 	$list[]=$html;
@@ -171,7 +171,7 @@ if (!$SEARCH_SPIDER) {
 	if ($show_all=='yes') {
 		$list[]='<span class="warning">'.i18n::translate('All').'</span>';
 	} else {
-		$list[]='<a href="indilist.php?show_all=yes">'.i18n::translate('All').'</a>';
+		$list[]='<a href="indilist.php?show_all=yes'.'&amp;ged='.WT_GEDURL.'">'.i18n::translate('All').'</a>';
 	}
 }
 echo '<div class="alpha_index"><p class="center">';
@@ -185,19 +185,19 @@ if (!$SEARCH_SPIDER) {
 	echo '<p class="center">';
 	if ($alpha!='@' && $alpha!=',' && !$surname) {
 		if ($surname_sublist=='yes') {
-			echo '<a href="', $url, '&amp;surname_sublist=no">', i18n::translate('Skip surname lists'), '</a>';
+			echo '<a href="', $url, '&amp;surname_sublist=no'.'&amp;ged='.WT_GEDURL.'">', i18n::translate('Skip surname lists'), '</a>';
 			echo help_link('skip_sublist');
 		} else {
-			echo '<a href="', $url, '&amp;surname_sublist=yes">', i18n::translate('Show surname lists'), '</a>';
+			echo '<a href="', $url, '&amp;surname_sublist=yes'.'&amp;ged='.WT_GEDURL.'">', i18n::translate('Show surname lists'), '</a>';
 			echo help_link('skip_sublist');
 		}
 		echo '&nbsp;&nbsp;&nbsp;';
 	}
 	if ($showList) {
 		if ($SHOW_MARRIED_NAMES) {
-			echo '<a href="', $url, '&amp;show_marnm=no">', i18n::translate('Exclude married names'), '</a>';
+			echo '<a href="', $url, '&amp;show_marnm=no'.'&amp;ged='.WT_GEDURL.'">', i18n::translate('Exclude married names'), '</a>';
 		} else {
-			echo '<a href="', $url, '&amp;show_marnm=yes">', i18n::translate('Include married names'), '</a>';
+			echo '<a href="', $url, '&amp;show_marnm=yes'.'&amp;ged='.WT_GEDURL.'">', i18n::translate('Include married names'), '</a>';
 		}
 		echo help_link('show_marnm');
 		echo '</p>';
@@ -253,7 +253,7 @@ if ($showList) {
 						if ($showList && $givn_initial==$falpha && $show_all_firstnames=='no') {
 							$html='<span class="warning" title="'.$count.'">'.$html.'</span>';
 						} else {
-							$html='<a href="'.$url.'&amp;falpha='.$givn_initial.'" title="'.$count.'">'.$html.'</a>';
+							$html='<a href="'.$url.'&amp;falpha='.$givn_initial.'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
 						}
 					}
 					$list[]=$html;
@@ -263,7 +263,7 @@ if ($showList) {
 					if ($show_all_firstnames=='yes') {
 						$list[]='<span class="warning">'.i18n::translate('All').'</span>';
 					} else {
-						$list[]='<a href="'.$url.'&amp;show_all_firstnames=yes">'.i18n::translate('All').'</a>';
+						$list[]='<a href="'.$url.'&amp;show_all_firstnames=yes'.'&amp;ged='.WT_GEDURL.'">'.i18n::translate('All').'</a>';
 					}
 				}
 				if ($show_all=='no') {

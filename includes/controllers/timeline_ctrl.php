@@ -291,7 +291,7 @@ class TimelineController extends BaseController {
 					else {
 						$ct = preg_match("/2 _WTFS @(.*)@/", $factrec, $match);
 						if ($ct>0) {
-							echo " <a href=\"family.php?famid={$match[1]}&amp;ged={$GEDCOM}\">";
+							echo " <a href=\"family.php?famid={$match[1]}&amp;ged=".rawurlencode($GEDCOM)."\">";
 							if ($event->getParentObject()->canDisplayName()) echo $event->getParentObject()->getFullName();
 							else echo i18n::translate('Private');
 							echo "</a>";

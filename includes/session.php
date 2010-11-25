@@ -343,6 +343,7 @@ if (!$ged_id) {
 }
 define('WT_GEDCOM', $GEDCOM);
 define('WT_GED_ID', $ged_id);
+define('WT_GEDURL', rawurlencode(WT_GEDCOM));
 
 load_gedcom_settings(WT_GED_ID);
 

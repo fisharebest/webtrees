@@ -325,7 +325,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 				&nbsp;&nbsp;
 				<button id="buttonShow_<?php echo $sid; ?>" type="button" onclick="showSite('<?php echo $sid; ?>');"><?php echo i18n::translate('Show Details'); ?></button>
 				&nbsp;&nbsp;
-				<button type="button" onclick="window.open('source.php?sid=<?php echo $sid; ?>&ged=<?php echo $GEDCOM; ?>')"><?php echo i18n::translate('View Connections'); ?></button>
+				<button type="button" onclick="window.open('source.php?sid=<?php echo $sid; ?>&ged=<?php echo rawurlencode($GEDCOM); ?>')"><?php echo i18n::translate('View Connections'); ?></button>
 				&nbsp;&nbsp;
 				<?php echo PrintReady($serverTitle); ?>
 				<div id="siteDetails_<?php echo $sid; ?>" style="display:none">

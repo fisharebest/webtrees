@@ -104,21 +104,21 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
-			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDCOM.'">'.$stats->totalIndividuals().'</a></div></td></tr>';
+			$content.='<tr><td class="facts_label">'.i18n::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.$stats->totalIndividuals().'</a></div></td></tr>';
 			$content.='<tr><td class="facts_label">'.i18n::translate('Males').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexMales().'<br />'.$stats->totalSexMalesPercentage().'%</div></td></tr>';
 			$content.='<tr><td class="facts_label">'.i18n::translate('Females').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexFemales().'<br />'.$stats->totalSexFemalesPercentage().'%</div></td></tr>';
 		}
 		if ($stat_surname) {
-			$content .= '<tr><td class="facts_label">'.i18n::translate('Total surnames').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=".WT_GEDCOM.'">'.$stats->totalSurnames().'</a></div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.i18n::translate('Total surnames').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=".WT_GEDURL.'">'.$stats->totalSurnames().'</a></div></td></tr>';
 		}
 		if ($stat_fam) {
-			$content .= '<tr><td class="facts_label">'.i18n::translate('Families').'</td><td class="facts_value"><div dir="rtl"><a href="famlist.php">'.$stats->totalFamilies().'</a></div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.i18n::translate('Families').'</td><td class="facts_value"><div dir="rtl"><a href="famlist.php?ged='.WT_GEDURL.'">'.$stats->totalFamilies().'</a></div></td></tr>';
 		}
 		if ($stat_sour) {
-			$content .= '<tr><td class="facts_label">'.i18n::translate('Sources').'</td><td class="facts_value"><div dir="rtl"><a href="sourcelist.php">'.$stats->totalSources().'</a></div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.i18n::translate('Sources').'</td><td class="facts_value"><div dir="rtl"><a href="sourcelist.php?ged='.WT_GEDURL.'">'.$stats->totalSources().'</a></div></td></tr>';
 		}
 		if ($stat_media && $MULTI_MEDIA==true) {
-			$content .= '<tr><td class="facts_label">'.i18n::translate('Media objects').'</td><td class="facts_value"><div dir="rtl"><a href="medialist.php">'.$stats->totalMedia().'</a></div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.i18n::translate('Media objects').'</td><td class="facts_value"><div dir="rtl"><a href="medialist.php?ged='.WT_GEDURL.'">'.$stats->totalMedia().'</a></div></td></tr>';
 		}
 		if ($stat_repo) {
 			$content .= '<tr><td class="facts_label">'.i18n::translate('Repositories').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalRepositories().'</div></td></tr>';
@@ -204,7 +204,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$content .= '</table></td></tr></table>';
 		if ($stat_link) {
-			$content .= '<a href="statistics.php"><b>'.i18n::translate('View statistics as graphs').'</b></a><br />';
+			$content .= '<a href="statistics.php?ged='.WT_GEDURL.'"><b>'.i18n::translate('View statistics as graphs').'</b></a><br />';
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
@@ -219,7 +219,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 						if ($i>0) {
 							$content .= ', ';
 						}
-						$content .= '<a href="'."indilist.php?ged=".WT_GEDCOM."&amp;surname=".rawurlencode($surname['name']).'">'.PrintReady($surname['name']).'</a>';
+						$content .= '<a href="'."indilist.php?ged=".WT_GEDURL."&amp;surname=".rawurlencode($surname['name']).'">'.PrintReady($surname['name']).'</a>';
 						$i++;
 					}
 				}

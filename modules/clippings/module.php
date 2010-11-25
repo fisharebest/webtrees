@@ -74,7 +74,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			return new Menu("", "", "");
 		}
 		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.$GEDCOM, "down");
+		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.rawurlencode($GEDCOM), "down");
 		$menu->addIcon('clippings');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_clippings");
 		if (isset($controller->indi) && $controller->indi->canDisplayDetails()) {

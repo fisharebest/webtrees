@@ -104,35 +104,35 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 				// NOTE: Start div I.$pid.$personcount.$count.links
 				$personlinks .= "<table class=\"person_box$isF\"><tr><td class=\"details1\">";
 				// NOTE: Zoom
-				$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged={$GEDCOM}\" $mouseAction1><b>".i18n::translate('Pedigree Tree')."</b></a>";
+				$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".i18n::translate('Pedigree Tree')."</b></a>";
 
 				if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
-					$personlinks .= "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Pedigree Map')."</b></a>";
+					$personlinks .= "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Pedigree Map')."</b></a>";
 				}
 				$username = WT_USER_NAME;
 				if (!empty($username)) {
 					$myid=WT_USER_GEDCOM_ID;
 					if ($myid && $myid!=$pid) {
-						$personlinks .= "<br /><a href=\"relationship.php?show_full={$PEDIGREE_FULL_DETAILS}&amp;pid1={$myid}&amp;pid2={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;pretty=2&amp;followspouse=1&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Relationship to me')."</b></a>";
+						$personlinks .= "<br /><a href=\"relationship.php?show_full={$PEDIGREE_FULL_DETAILS}&amp;pid1={$myid}&amp;pid2={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;pretty=2&amp;followspouse=1&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Relationship to me')."</b></a>";
 					}
 				}
 
-				$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged={$GEDCOM}\" $mouseAction1><b>".i18n::translate('Descendancy chart')."</b></a><br />";
+				$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".i18n::translate('Descendancy chart')."</b></a><br />";
 
 				if (file_exists(WT_ROOT.'ancestry.php')) {
-					$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Ancestry chart')."</b></a><br />";
+					$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Ancestry chart')."</b></a><br />";
 				}
 				if (file_exists(WT_ROOT.'compact.php')) {
-					$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Compact Chart')."</b></a><br />";
+					$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Compact Chart')."</b></a><br />";
 				}
 				if (file_exists(WT_ROOT.'fanchart.php') and defined("IMG_ARC_PIE") and function_exists("imagettftext")) {
-					$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Circle diagram')."</b></a><br />";
+					$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Circle diagram')."</b></a><br />";
 				}
 				if (file_exists(WT_ROOT.'hourglass.php')) {
-					$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged={$GEDCOM}&amp;show_spouse={$show_spouse}\" ".$mouseAction1."><b>".i18n::translate('Hourglass chart')."</b></a><br />";
+					$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\" ".$mouseAction1."><b>".i18n::translate('Hourglass chart')."</b></a><br />";
 				}
 				if (file_exists(WT_ROOT.'treenav.php')) {
-					$personlinks .= "<a href=\"treenav.php?rootid={$pid}&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Interactive tree')."</b></a><br />";
+					$personlinks .= "<a href=\"treenav.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Interactive tree')."</b></a><br />";
 				}
 
 				$fams = $person->getSpouseFamilies();
@@ -144,7 +144,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 						$children = $family->getChildren();
 						$num = count($children);
 						if ((!empty($spouse))||($num>0)) {
-							$personlinks .= "<a href=\"family.php?famid={$famid}&amp;show_full=1&amp;ged={$GEDCOM}\" ".$mouseAction1."><b>".i18n::translate('Family with spouse')."</b></a><br />";
+							$personlinks .= "<a href=\"family.php?famid={$famid}&amp;show_full=1&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Family with spouse')."</b></a><br />";
 							if (!empty($spouse)) {
 								$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\" $mouseAction1>";
 								if ($spouse->canDisplayName()) $personlinks .= PrintReady($spouse->getFullName());
@@ -183,32 +183,32 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 			if ($LINK_ICONS!="disabled") {
 				$click_link="javascript:;";
 				if (WT_SCRIPT_NAME=='pedigree.php') {
-					$click_link="pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged={$GEDCOM}";
+					$click_link="pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM);
 					$whichID=$pid;
 				}
 
 				if (WT_SCRIPT_NAME=='hourglass.php') {
-					$click_link="hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged={$GEDCOM}";
+					$click_link="hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM);
 					$whichID=$pid;
 				}
 
 				if (WT_SCRIPT_NAME=='ancestry.php') {
-					$click_link="ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged={$GEDCOM}";
+					$click_link="ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM);
 					$whichID=$pid;
 				}
 
 				if (WT_SCRIPT_NAME=='descendancy.php') {
-					$click_link="descendancy.php?show_full={$PEDIGREE_FULL_DETAILS}&amp;pid={$pid}&amp;generations={$generations}&box_width={$box_width}&amp;ged={$GEDCOM}";
+					$click_link="descendancy.php?show_full={$PEDIGREE_FULL_DETAILS}&amp;pid={$pid}&amp;generations={$generations}&box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM);
 					$whichID=$pid;
 				}
 
 				if (WT_SCRIPT_NAME=='family.php' && !empty($famid)) {
-					$click_link="family.php?famid={$famid}&amp;show_full=1&amp;ged={$GEDCOM}";
+					$click_link="family.php?famid={$famid}&amp;show_full=1&amp;ged=".rawurlencode($GEDCOM);
 					$whichID=$famid;
 				}
 
 				if (WT_SCRIPT_NAME=='individual.php') {
-					$click_link="individual.php?pid={$pid}&amp;ged={$GEDCOM}";
+					$click_link="individual.php?pid={$pid}&amp;ged=".rawurlencode($GEDCOM);
 					$whichID=$pid;
 				}
 
@@ -1347,7 +1347,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 				if (!$relationship) {
 					$relationship=i18n::translate('Relationship Chart');
 				}
-				$relationship=' - <a href="relationship.php?pid1='.$pid.'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship.'</a>';
+				$relationship=' - <a href="relationship.php?pid1='.$pid.'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship.'</a>';
 				break;
 			case 'FAM':
 				$relationship='';
@@ -1359,14 +1359,14 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 						if (!$relationship1) {
 							$relationship1=i18n::translate('Relationship Chart');
 						}
-						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship1.'<img src="'.$WT_IMAGES['sex_m_9x9'].'" class="gender_image" /></a>';
+						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship1.'<img src="'.$WT_IMAGES['sex_m_9x9'].'" class="gender_image" /></a>';
 					}
 					if ($parents["WIFE"]) {
 						$relationship2=get_relationship_name(get_relationship($parents["WIFE"], $amatch[1], true, 4));
 						if (!$relationship2) {
 							$relationship2=i18n::translate('Relationship Chart');
 						}
-						$relationship.=' - <a href="relationship.php?pid1='.$parents["WIFE"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship2.'<img src="'.$WT_IMAGES['sex_f_9x9'].'" class="gender_image" /></a>';
+						$relationship.=' - <a href="relationship.php?pid1='.$parents["WIFE"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship2.'<img src="'.$WT_IMAGES['sex_f_9x9'].'" class="gender_image" /></a>';
 					}
 				}
 				break;
@@ -1410,7 +1410,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 						$relationship=i18n::translate('Relationship Chart');
 					}
 				}
-				$relationship=' - <a href="relationship.php?pid1='.$pid.'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship.'</a>';
+				$relationship=' - <a href="relationship.php?pid1='.$pid.'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship.'</a>';
 				break;
 			case 'FAM':
 				$relationship='';
@@ -1422,14 +1422,14 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 						if (!$relationship1) {
 							$relationship1=i18n::translate('Relationship Chart');
 						}
-						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship1.'<img src="'.$WT_IMAGES['sex_m_9x9'].'" class="gender_image" /></a>';
+						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship1.'<img src="'.$WT_IMAGES['sex_m_9x9'].'" class="gender_image" /></a>';
 					}
 					if ($parents["WIFE"]) {
 						$relationship2=get_relationship_name(get_relationship($parents["WIFE"], $amatch[1], true, 4));
 						if (!$relationship2) {
 							$relationship2=i18n::translate('Relationship Chart');
 						}
-						$relationship.=' - <a href="relationship.php?pid1='.$parents["WIFE"].'&amp;pid2='.$amatch[1].'&amp;ged='.urlencode(WT_GEDCOM).'">'.$relationship2.'<img src="'.$WT_IMAGES['sex_f_9x9'].'" class="gender_image" /></a>';
+						$relationship.=' - <a href="relationship.php?pid1='.$parents["WIFE"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship2.'<img src="'.$WT_IMAGES['sex_f_9x9'].'" class="gender_image" /></a>';
 					}
 				}
 				break;

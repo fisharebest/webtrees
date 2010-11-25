@@ -1008,7 +1008,7 @@ class SearchController extends BaseController {
 		*/
 	function printQueryString($inputFieldNames, $pageNum) {
 		global $GEDCOM;
-		$tempURL = "search.php?ged={$GEDCOM}";
+		$tempURL = "search.php?ged=".rawurlencode($GEDCOM);
 		foreach ($inputFieldNames as $key => $value) {
 			$controllerVar = $this->getValue($value);
 			if (!empty ($controllerVar)) {
