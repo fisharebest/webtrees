@@ -1070,31 +1070,38 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				$text .= get_cont($nlevel, $nrec);
 				$text = expand_urls($text);
 				$text = PrintReady($text);
-			}
-			else {
-				//-- print linked note records
-				$noterec = find_gedcom_record($nid, $ged_id, true);
-				$nt = preg_match("/0 @$nid@ NOTE (.*)/", $noterec, $n1match);
-				$text = "";
-				$centitl = "";
-				if ($nt>0) {
-					// If Census assistant installed, enable hotspot link on shared note title ---------------------
-					if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
-						$centitl  = str_replace("~~", "", trim($n1match[1]));
-						$centitl  = str_replace("<br />", "", $centitl);
-						$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
-					} else {
+			} else {
+				//-- print linked/shared note records
+				$note=Note::getInstance($nid);
+			  	if ($note) {
+					$noterec=$note->getGedcomRecord();				
+					$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
+					$text = "";
+					$centitl = "";
+					if ($nt>0) {
+						// If Census assistant installed, enable hotspot link on shared note title ---------------------
+						if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
+							$centitl  = str_replace("~~", "", trim($n1match[1]));
+							$centitl  = str_replace("<br />", "", $centitl);
+							$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
+						} else {
 						$text = preg_replace("/~~/", "<br />", trim($n1match[1]));
+						}
 					}
-				}
-				$text .= get_cont(1, $noterec);
-				$text = expand_urls($text);
-				$text = PrintReady($text)." <br />";
-				// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
-				if (strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
-					require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
-				} else {
-					$text = $centitl."".$text;
+					$text .= get_cont(1, $noterec);
+					$text = expand_urls($text);
+					$text = PrintReady($text)." <br />";
+					// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
+					if (strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
+						require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
+					} else {
+						$text = $centitl."".$text;
+					}
+			  	} else {
+					$text  = '<span class="error">' . i18n::translate('** WARNING **<br />There is no shared note with id = ') . $nid . '</span>';
+					if (WT_USER_CAN_EDIT) {
+						$text .= '<span class="error">' . i18n::translate('<br />Choose Edit and verify the shared note id by clicking on the icon "Find Shared Note".') . '</span>';
+			  		}			  
 				}
 			}
 

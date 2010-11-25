@@ -41,7 +41,9 @@ $controller=new NoteController();
 $controller->init();
 
 // Tell addmedia.php what to link to
-$linkToID=$controller->nid;
+// $linkToID=$controller->nid;
+// preg_match("/0 @$nid@ NOTE (.*)/i", $noterec, $n1match);
+
 
 print_header($controller->getPageTitle());
 
@@ -60,8 +62,13 @@ else if ($controller->note->isMarkedDeleted()) {
 	echo '<span class="error">', i18n::translate('This record has been marked for deletion upon admin approval.'), '</span>';
 }
 
-$noterec = find_gedcom_record($controller->nid, WT_GED_ID);
-$pnoterec = privatize_gedcom(find_gedcom_record($controller->nid, WT_GED_ID));
+$note=Note::getInstance($controller->nid);
+if ($note) {
+	$noterec=$note->getGedcomRecord();
+	$pnoterec = privatize_gedcom($note->getGedcomRecord());
+	preg_match("/$controller->nid/i", $noterec, $notematch);
+	$linkToID=$notematch[0];
+}
 if ($noterec!=$pnoterec) {
 	print_privacy_error();
 	print_footer();
@@ -90,11 +97,11 @@ echo '</span><br />';
 echo '<table class="facts_table">';
 echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 // Shared Note details ---------------------
-$nt = preg_match("/0 @$controller->nid@ NOTE(.*)/", $noterec, $n1match);
+$nt = preg_match("/0 @$controller->nid@ NOTE(.*)/i", $noterec, $n1match);
 if ($nt==1) {
 	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
 } else {
-	$note = "No Text";
+	$note = i18n::translate('No Text');
 }
 echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 	if (WT_USER_CAN_EDIT) {

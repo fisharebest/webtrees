@@ -1293,8 +1293,11 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	// field value
 	$islink = (substr($value, 0, 1)=="@" and substr($value, 0, 2)!="@#");
-	if ($islink) $value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
-	else $value=trim(substr($tag, strlen($fact)+3));
+	if ($islink) {
+		$value=trim(trim(substr($tag, strlen($fact)+3)), " @\r");
+	} else { 
+		$value=trim(substr($tag, strlen($fact)+3));
+	}
 	if ($fact=='REPO' || $fact=='SOUR' || $fact=='OBJE' || $fact=='FAMC')
 		$islink = true;
 
@@ -1466,8 +1469,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// retrieve linked NOTE
-	if ($fact=="NOTE" && $islink) {
-		$noteid = $value;
+	if ($fact=="NOTE" && $islink) {		
+		$note1=Note::getInstance($value);
+		if ($note1) {
+			$noterec=$note1->getGedcomRecord();
+			preg_match("/$value/i", $noterec, $notematch);
+			$value=$notematch[0];
+		}		
 	}
 
 	if (in_array($fact, $emptyfacts)&& (empty($value) || $value=="y" || $value=="Y")) {
