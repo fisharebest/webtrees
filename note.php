@@ -40,11 +40,6 @@ $nonfacts = array();
 $controller=new NoteController();
 $controller->init();
 
-// Tell addmedia.php what to link to
-// $linkToID=$controller->nid;
-// preg_match("/0 @$nid@ NOTE (.*)/i", $noterec, $n1match);
-
-
 print_header($controller->getPageTitle());
 
 // LightBox
@@ -53,6 +48,7 @@ if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
 }
 
+// If note does not currently exist
 if (!$controller->note) {
 	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
@@ -62,6 +58,7 @@ else if ($controller->note->isMarkedDeleted()) {
 	echo '<span class="error">', i18n::translate('This record has been marked for deletion upon admin approval.'), '</span>';
 }
 
+// Tell addmedia.php what to link to
 $note=Note::getInstance($controller->nid);
 if ($note) {
 	$noterec=$note->getGedcomRecord();
@@ -69,6 +66,8 @@ if ($note) {
 	preg_match("/$controller->nid/i", $noterec, $notematch);
 	$linkToID=$notematch[0];
 }
+
+// If note is private to current logged in user
 if ($noterec!=$pnoterec) {
 	print_privacy_error();
 	print_footer();
@@ -96,6 +95,7 @@ echo '<span class="name_head">', PrintReady(htmlspecialchars($controller->note->
 echo '</span><br />';
 echo '<table class="facts_table">';
 echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
+
 // Shared Note details ---------------------
 $nt = preg_match("/0 @$controller->nid@ NOTE(.*)/i", $noterec, $n1match);
 if ($nt==1) {
