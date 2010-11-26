@@ -99,8 +99,9 @@ class MediaController extends BaseController{
 		}
 
 		if (is_null($this->mediaobject)) return false;
-
 		$this->mediaobject->ged_id=WT_GED_ID; // This record is from a file
+
+		$this->mid=$this->mediaobject->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {

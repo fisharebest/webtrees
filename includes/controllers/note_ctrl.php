@@ -59,13 +59,15 @@ class NoteController extends BaseController {
 		$this->note->ged_id=WT_GED_ID; // This record is from a file
 
 		if (!$this->note->canDisplayDetails()) {
-			print_header(i18n::translate('Private')." ".i18n::translate('Shared Note Information'));
+			print_header(i18n::translate('Shared note'));
 			print_privacy_error();
 			print_footer();
 			exit;
 		}
 
 		$this->uname = WT_USER_NAME;
+
+		$this->nid=$this->note->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {

@@ -59,13 +59,15 @@ class SourceController extends BaseController {
 		$this->source->ged_id=WT_GED_ID; // This record is from a file
 
 		if (!$this->source->canDisplayDetails()) {
-			print_header(i18n::translate('Private')." ".i18n::translate('Source Information'));
+			print_header(i18n::translate('Source'));
 			print_privacy_error();
 			print_footer();
 			exit;
 		}
 
 		$this->uname = WT_USER_NAME;
+
+		$this->sid=$this->source->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {

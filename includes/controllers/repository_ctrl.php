@@ -59,13 +59,15 @@ class RepositoryController extends BaseController {
 		$this->repository->ged_id=WT_GED_ID; // This record is from a file
 
 		if (!$this->repository->canDisplayDetails()) {
-			print_header(i18n::translate('Private')." ".i18n::translate('Repository information'));
+			print_header(i18n::translate('Repository'));
 			print_privacy_error();
 			print_footer();
 			exit;
 		}
 
 		$this->uname = WT_USER_NAME;
+
+		$this->rid=$this->repository->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {

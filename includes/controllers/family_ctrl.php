@@ -86,6 +86,8 @@ class FamilyController extends BaseController {
 		$this->famrec = $this->family->getGedcomRecord();
 		$this->display = $this->family->canDisplayName();
 
+		$this->famid=$this->family->getXref(); // Correct upper/lower case mismatch
+
 		//-- perform the desired action
 		switch($this->action) {
 		case 'addfav':
@@ -161,7 +163,7 @@ class FamilyController extends BaseController {
 		}
 
 		if ($this->showLivingHusb == false && $this->showLivingWife == false) {
-			print_header(i18n::translate('Private')." ".i18n::translate('Family information'));
+			print_header(i18n::translate('Family'));
 			print_privacy_error();
 			print_footer();
 			exit;

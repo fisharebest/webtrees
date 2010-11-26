@@ -40,6 +40,9 @@ $nonfacts = array();
 $controller=new NoteController();
 $controller->init();
 
+// Tell addmedia.php what to link to
+$linkToID=$controller->nid;
+
 print_header($controller->getPageTitle());
 
 // LightBox
@@ -56,22 +59,6 @@ if (!$controller->note) {
 }
 else if ($controller->note->isMarkedDeleted()) {
 	echo '<span class="error">', i18n::translate('This record has been marked for deletion upon admin approval.'), '</span>';
-}
-
-// Tell addmedia.php what to link to
-$note=Note::getInstance($controller->nid);
-if ($note) {
-	$noterec=$note->getGedcomRecord();
-	$pnoterec = privatize_gedcom($note->getGedcomRecord());
-	preg_match("/$controller->nid/i", $noterec, $notematch);
-	$linkToID=$notematch[0];
-}
-
-// If note is private to current logged in user
-if ($noterec!=$pnoterec) {
-	print_privacy_error();
-	print_footer();
-	exit;
 }
 
 echo WT_JS_START;
@@ -147,7 +134,6 @@ if ($controller->userCanEdit()) {
 	echo '</td></tr>';
 }
 echo '</table><br /><br /></td></tr><tr class="center"><td colspan="2">';
-
 
 // Individuals linked to this shared note
 if ($controller->note->countLinkedIndividuals()) {
