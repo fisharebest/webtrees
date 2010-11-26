@@ -36,7 +36,8 @@ if (!WT_USER_IS_ADMIN) {
 
 switch (safe_POST('action')) {
 case 'update':
-	$data_directory= safe_POST('data_directory');
+	$data_directory= str_replace('\\','/',safe_POST('data_directory'));
+	if (substr ($data_directory, -1) != "/") $data_directory = $data_directory . "/";
 	if ($data_directory && is_dir($data_directory) && is_readable($data_directory) && is_writable($data_directory)) {
 		set_site_setting('INDEX_DIRECTORY', $data_directory);
 	}
