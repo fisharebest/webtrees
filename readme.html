@@ -89,7 +89,6 @@ To install <b>webtrees</b>, you need:
 			</ul>
 	</ul>
 	<li>MySQL 5.0.13 or later. <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration.</li>
-	<li>If you are using MySQL 5.1.31 or later, or 5.0.85 or later, the setting MAX_ALLOWED_PACKET must be larger than your largest GEDCOM file. If you run your own server you can set this in my.ini. Otherwise you may need to ask your web-host to increase it. <a href="https://bugs.launchpad.net/webtrees/+bug/622194">This is a known bug</a>.</li>
 	</ul>
 <hr width="100%">
 <!-- INSTALLATION -->
@@ -156,6 +155,7 @@ When or if you change your genealogy data outside of <b>webtrees</b>, it is not 
 <br /><br />
 The area most at risk of intrusion would be the /data folder that contains your config.ini.php file, and various temporary files. If you are concerned there may be a risk there is a very simple test you can do: try to fetch <b>config.ini.php</b> by typing <b>http:// </b><i>url to your site</i><b> /data/config.ini.php</b> in your web browser. 
 <br /><br />
+The most likely result is an "access denied" message like this:
 <table border="1px" cellpadding="5px" cellspacing="0">
 	<tr>
 		<td>
