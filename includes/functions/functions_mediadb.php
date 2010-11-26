@@ -1608,8 +1608,8 @@ function PrintMediaLinks($links, $size = "small") {
 
 function get_media_id_from_file($filename) {
 	return
-		WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file LIKE ?")
-		->execute(array("%{$filename}"))
+		WT_DB::prepare("SELECT m_media FROM `##media` WHERE m_file LIKE ? AND m_gedfile=?")
+		->execute(array("%{$filename}", WT_GED_ID))
 		->fetchOne();
 }
 //returns an array of rows from the database containing the Person ID's for the people associated with this picture
