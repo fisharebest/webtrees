@@ -1986,8 +1986,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'fatbro': return i18n::translate_c('father\'s brother', 'uncle');
 	case 'fatchi': return i18n::translate_c('father\'s child', 'half-sibling');
 	case 'fatdau': return i18n::translate_c('father\'s daughter', 'half-sister');
-	case 'fatfat': return i18n::translate_c('father\'s father', 'grandfather');
-	case 'fatmot': return i18n::translate_c('father\'s mother', 'grandmother');
+	case 'fatfat': return i18n::translate_c('father\'s father', 'paternal grandfather');
+	case 'fatmot': return i18n::translate_c('father\'s mother', 'paternal grandmother');
 	case 'fatpar': return i18n::translate_c('father\'s parent', 'grandparent');
 	case 'fatsib': return i18n::translate_c('father\'s sibling', 'aunt/uncle');
 	case 'fatsis': return i18n::translate_c('father\'s sister', 'aunt');
@@ -2004,9 +2004,9 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	case 'motbro': return i18n::translate_c('mother\'s brother', 'uncle');
 	case 'motchi': return i18n::translate_c('mother\'s child', 'half-sibling');
 	case 'motdau': return i18n::translate_c('mother\'s daughter', 'half-sister');
-	case 'motfat': return i18n::translate_c('mother\'s father', 'grandfather');
+	case 'motfat': return i18n::translate_c('mother\'s father', 'maternal grandfather');
 	case 'mothus': return i18n::translate_c('mother\'s husband', 'step-father');
-	case 'motmot': return i18n::translate_c('mother\'s mother', 'grandmother');
+	case 'motmot': return i18n::translate_c('mother\'s mother', 'maternal grandmother');
 	case 'motpar': return i18n::translate_c('mother\'s parent', 'grandparent');
 	case 'motsib': return i18n::translate_c('mother\'s sibling', 'aunt/uncle');
 	case 'motsis': return i18n::translate_c('mother\'s sister', 'aunt');
