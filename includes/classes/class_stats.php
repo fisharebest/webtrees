@@ -2876,7 +2876,7 @@ class stats {
 					$return = "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
 					$return .= i18n::translate('and')." ";
 					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
-					$return .= " <a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>\n";
+					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".i18n::translate('View Family')."]</a>\n";
 				} else {
 					$return = i18n::translate('This information is private and cannot be shown.');
 				}
@@ -2902,7 +2902,7 @@ class stats {
 						$return .= i18n::translate('and')." ";
 						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
 						$return .= " [".$age."]";
-						$return .= " <a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>";
+						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".i18n::translate('View Family')."]</a>";
 						$return .= "\t</li>\n";
 						$top10[] = $return;
 						$dist[] = $fam['family'];
@@ -2913,7 +2913,7 @@ class stats {
 					$return .= i18n::translate('and')." ";
 					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
 					$return .= " [".$age."]";
-					$return .= " <a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>";
+					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".i18n::translate('View Family')."]</a>";
 					$return .= "\t</li>\n";
 					$top10[] = $return;
 				}
@@ -2923,7 +2923,7 @@ class stats {
 					$return .= "<br />".i18n::translate('and')."<br />";
 					$return .= $child1->format_list('span', false, $child1->getFullName());
 					//$return .= "<br />[".$age."]";
-					$return .= "<br /><a href=\"family.php?famid=".$fam['family']."\">[".i18n::translate('View Family')."]</a>\n";
+					$return .= "<br /><a href=\"".$family->getHtmlUrl()."\">[".i18n::translate('View Family')."]</a>\n";
 					return $return;
 				}
 			}

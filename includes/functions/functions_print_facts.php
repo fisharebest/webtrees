@@ -219,12 +219,13 @@ function print_fact(&$eventObj, $noedit=false) {
 				}
 				echo "</a>";
 			}
-			if ($spouse) echo " - ";
 			if (empty($SEARCH_SPIDER)) {
-				echo "<a href=\"family.php?famid={$pid}\">";
-				echo i18n::translate('View Family');
-				echo "</a>";
-				echo "<br />";
+				$family = Family::getInstance($pid);
+				if ($family) {
+					if ($spouse) echo " - ";
+					echo '<a href="', $family->getHtmlUrl(), '">', i18n::translate('View Family'), '</a>';
+					echo '<br />';
+				}
 			}
 		}
 		// -- find date for each fact
@@ -656,13 +657,15 @@ function print_media_links($factrec, $level, $pid='') {
 					}
 					echo "</a>";
 				}
-				if ($spouse && empty($SEARCH_SPIDER)) echo " - ";
-				$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
-				if ($ct>0) {
-					$famid = trim($match[1]);
-					if (empty($SEARCH_SPIDER)) {
-						echo "<a href=\"family.php?famid={$famid}\">", i18n::translate('View Family');
-						echo "</a>";
+				if (empty($SEARCH_SPIDER)) {
+					$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
+					if ($ct>0) {
+						$famid = trim($match[1]);
+						$family = Family::getInstance($famid);
+						if ($family) {
+							if ($spouse) echo " - ";
+							echo '<a href="', $family->getHtmlUrl(), '">', i18n::translate('View Family'), '</a>';
+						}
 					}
 				}
 			}
@@ -1479,10 +1482,12 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			echo "</a>";
 		}
 		if (empty($SEARCH_SPIDER)) {
-			if ($spouse) echo " - ";
 			$famid = $rowm['mm_gid'];
-			echo "<a href=\"family.php?famid={$famid}\">", i18n::translate('View Family');
-			echo "</a>";
+			$family = Family::getInstance($famid);
+			if ($family) {
+				if ($spouse) echo " - ";
+				echo '<a href="', $family->getHtmlUrl(), '">', i18n::translate('View Family'), '</a>';
+			}
 		}
 		echo "<br />";
 	}

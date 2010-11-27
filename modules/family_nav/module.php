@@ -135,7 +135,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom:4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
+				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
@@ -270,7 +270,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\"href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
+				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
@@ -403,7 +403,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"family.php?famid=".$famid."\" onclick=\"return familyNavLoad('family.php?famid=".$famid."');\">";
+				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".i18n::translate('Immediate Family')."</b>";
 				echo "</a>";
 				?>

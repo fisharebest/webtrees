@@ -50,7 +50,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		return 20;
 	}
 
-	function printFamilyHeader($famid, $label) {
+	function printFamilyHeader($url, $label) {
 		global $WT_IMAGES, $SEARCH_SPIDER;
 
 		echo '<table>
@@ -60,7 +60,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			echo '<td><span class="subheaders">', $label, '</span>';
 			if (empty($SEARCH_SPIDER)) {
-				echo ' - <a href="family.php?famid=', $famid, '">', i18n::translate('View Family'), '</a>';
+				echo ' - <a href="', $url, '">', i18n::translate('View Family'), '</a>';
 			 }
 			echo '</td>
 			</tr>
@@ -392,7 +392,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		//-- parent families
 		foreach ($families as $famid=>$family) {
 			$people = $this->controller->buildFamilyList($family, "parents");
-			$this->printFamilyHeader($famid, $this->controller->indi->getChildFamilyLabel($family));
+			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getChildFamilyLabel($family));
 			?>
 			<table class="facts_table">
 				<?php
@@ -406,7 +406,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		//-- step families
 		foreach ($this->controller->indi->getStepFamilies() as $famid=>$family) {
 			$people = $this->controller->buildFamilyList($family, "step");
-			$this->printFamilyHeader($famid, $this->controller->indi->getStepFamilyLabel($family));
+			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getStepFamilyLabel($family));
 			?>
 			<table class="facts_table">
 				<?php
@@ -421,7 +421,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$families = $this->controller->indi->getSpouseFamilies();
 		foreach ($families as $famid=>$family) {
 			$people = $this->controller->buildFamilyList($family, "spouse");
-			$this->printFamilyHeader($famid, $this->controller->indi->getSpouseFamilyLabel($family));
+			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getSpouseFamilyLabel($family));
 			?>
 			<table class="facts_table">
 				<?php

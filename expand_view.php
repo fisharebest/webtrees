@@ -62,12 +62,15 @@ foreach ($subfacts as $indexval => $event) {
 		$spouseid = $event->getSpouseId();
 		if (!empty($spouseid)) {
 			$spouse = Person::getInstance($spouseid);
-			if (!is_null($spouse)) {
-				echo ' <a href="', $spouse->getHtmlUrl().'">', PrintReady($spouse->getFullName()), '</a> - ';
+			if ($spouse) {
+				echo ' <a href="', $spouse->getHtmlUrl(), '">', PrintReady($spouse->getFullName()), '</a> - ';
 			}
 		}
 		if (!empty($famid)) {
-			echo "<a href=\"family.php?famid=$famid\">[".i18n::translate('View Family')."]</a>";
+			$family = Family::getInstance($famid);
+			if ($family) {
+				echo '<a href="', $family->getHtmlUrl(), '">[',i18n::translate('View Family'), ']</a>';
+			}
 		}
 		echo format_fact_place($event, true, true);
 	}

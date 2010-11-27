@@ -69,7 +69,7 @@ $show_full = "1";
 		var recwin = window.open("gedrecord.php?pid=<?php echo $controller->getFamilyID(); ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
 	}
 	function showchanges() {
-		window.location = 'family.php?famid=<?php echo $controller->famid; ?>&show_changes=yes';
+		window.location = '<?php echo $controller->family->getRawUrl(); ?>&show_changes=yes';
 	}
 //-->
 </script>

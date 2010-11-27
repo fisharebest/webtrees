@@ -287,7 +287,7 @@ class ClippingsController extends BaseController {
 						}
 						$filetext .= trim($record) . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH."individual.php?pid={$clipping['id']}&ged={$clipping['gedcom']}\n";
+						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH."individual.php?pid={$clipping['id']}&ged=" . rawurlencode($clipping['gedcom']) . "\n";
 						break;
 
 					case 'fam':
@@ -317,12 +317,12 @@ class ClippingsController extends BaseController {
 
 						$filetext .= trim($record) . "\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid={$clipping['id']}&ged={$clipping['gedcom']}\n";
+						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid={$clipping['id']}&ged=" . rawurlencode($clipping['gedcom']) . "\n";
 						break;
 
 					case 'source':
 						$filetext .= trim($record) . "\n";
-						$filetext .= "1 NOTE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid={$clipping['id']}&ged={$clipping['gedcom']}\n";
+						$filetext .= "1 NOTE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid={$clipping['id']}&ged=" . rawurlencode($clipping['gedcom']) . "\n";
 						break;
 
 					default:

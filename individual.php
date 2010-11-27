@@ -243,7 +243,7 @@ if (!$controller->indi->canDisplayDetails()) {
 				echo '<li class="ui-state-default ui-corner-top ui-tabs-selected"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 			} elseif ($tab->canLoadAjax()) {
 				// AJAX tabs load later
-				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="individual.php?action=ajax&amp;module=', $tab->getName(), '&amp;pid=', $controller->pid, '">';
+				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
 			} else {
 				// Non-AJAX tabs load immediately (search engines don't load ajax)
 				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';

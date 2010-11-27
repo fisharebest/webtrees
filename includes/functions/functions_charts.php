@@ -188,7 +188,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	}
 	echo "</tr></table>";
 	if ($sosa!=0) {
-		echo "<a href=\"family.php?famid=$famid\" class=\"details1\">";
+		echo '<a href="', $family->getHtmlUrl(), '" class="details1">';
 		echo str_repeat("&nbsp;", 10);
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
@@ -354,9 +354,9 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 					$famids = find_sfamily_ids($chil);
 					$maxfam = count($famids)-1;
 					for ($f=0; $f<=$maxfam; $f++) {
-						$famid = $famids[$f];
-						if (!$famid) continue;
-						$parents = find_parents($famid);
+						$famid_child = $famids[$f];
+						if (!$famid_child) continue;
+						$parents = find_parents($famid_child);
 						if (!$parents) continue;
 						if ($parents["HUSB"] == $chil) $spouse = $parents["WIFE"];
 						else $spouse =  $parents["HUSB"];
@@ -374,10 +374,10 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							echo "</td>";
 						}
 						echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
-						$famrec = find_family_record($famid, $ged_id);
+						$famrec = find_family_record($famid_child, $ged_id);
 						$marrec = get_sub_record(1, "1 MARR", $famrec);
 						$divrec = get_sub_record(1, "1 DIV",  $famrec);
-						if (canDisplayFact($famid, $ged_id, $marrec)) {
+						if (canDisplayFact($famid_child, $ged_id, $marrec)) {
 							// marriage date
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $marrec, $match);
 							if ($ct>0) echo "<span class=\"date\">".trim($match[1])."</span>";
@@ -387,11 +387,14 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						}
 						echo "<br /><img width=\"100%\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\" />";
 						// family link
-						if ($famid) {
-							echo "<br />";
-							echo "<a class=\"details1\" href=\"family.php?famid=$famid\">";
-							// TODO: shouldn't there be something inside this <a></a>
-							echo "</a>";
+						if ($famid_child) {
+							$family_child = Family::getInstance($famid_child);
+							if ($family_child) {
+								echo "<br />";
+								echo '<a class="details1" href="', $family_child->getHtmlUrl(), '">';
+								// TODO: shouldn't there be something inside this <a></a>
+								echo "</a>";
+							}
 						}
 						echo "</td>";
 						// spouse information
@@ -403,7 +406,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						echo "</td>";
 						// cousins
 						if ($show_cousins) {
-							print_cousins($famid, $personcount);
+							print_cousins($famid_child, $personcount);
 							$personcount++;
 						}
 					}
@@ -426,8 +429,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 			echo "</td></tr>";
 		}
 		// message 'no children' except for sosa
-   }
-   else if ($sosa<1) {
+	}
+	else if ($sosa<1) {
 		echo "<tr><td valign=\"top\" >";
 
 		$nchi = "";
@@ -442,16 +445,16 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		if ($nchi=="0") echo "<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" title=\"".i18n::translate('This family remained childless')."\" /> ".i18n::translate('This family remained childless');
 		//else echo i18n::translate('No children');
 		echo "</td></tr>";
-   }
-   else {
+	}
+	else {
 		echo "<tr>";
 		print_sosa_number($sosa, $childid);
 		echo "<td valign=\"top\">";
 		print_pedigree_person($childid, 1, 0, $personcount);
 		$personcount++;
 		echo "</td></tr>";
-   }
-   echo "</table><br />";
+	}
+	echo "</table><br />";
 }
 /**
  * print the facts table for a family
