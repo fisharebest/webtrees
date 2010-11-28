@@ -90,6 +90,14 @@ class Media extends GedcomRecord {
 	}
 
 	/**
+	 * get the media icon filename
+	 * @return string
+	 */
+	function getMediaIcon() {
+		return media_icon_file($this->file);
+	}
+
+	/**
 	 * get the media file name
 	 * @return string
 	 */

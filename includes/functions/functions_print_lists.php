@@ -1325,15 +1325,14 @@ function format_surname_list($surnames, $style, $totals) {
  * @param array $datalist contain records that were extracted from the database.
  */
 function print_changes_table($change_ids) {
-	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION;
+	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
 	if (!$change_ids) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	$indi = false;
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
-	//echo "<td></td>";
+	echo "<th></th>";
 	echo "<th class=\"list_label\">", i18n::translate('Record'), "</th>";
 	echo "<th style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
@@ -1350,21 +1349,47 @@ function print_changes_table($change_ids) {
 		}
 		//-- Counter
 		echo "<tr>";
-		//echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
+		echo "<td class=\"list_value_wrap rela list_item\">";
+		switch ($record->getType()) {
+		case "INDI":
+			echo $record->getSexImage('small', '', '', false);
+			$indi=true;
+			break;
+		case "FAM":
+			echo '<img src="', $WT_IMAGES['cfamily'], '" title="" alt="" height="12" />';
+			$indi = false;
+			break;
+		case "OBJE":
+			echo '<img src="', $record->getMediaIcon(), '" title="" alt="" height="12" />';
+			$indi = false;
+			break;
+		case "NOTE":
+			echo '<img src="', $WT_IMAGES['note'], '" title="" alt="" height="12" />';
+			$indi = false;
+			break;
+		case "SOUR":
+			echo '<img src="', $WT_IMAGES['source'], '" title="" alt="" height="12" />';
+			$indi = false;
+			break;
+		case "REPO":
+			echo '<img src="', $WT_IMAGES['repository'], '" title="" alt="" height="12" />';
+			$indi = false;
+			break;
+		default:
+			$indi = false;
+			break;
+		}
+		echo "</td>";
 		++$n;
 		//-- Record name(s)
 		$name = $record->getFullName();
 		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
 		echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($name), "</a>";
-		if ($record->getType()=="INDI") {
-			echo $record->getSexImage();
-			$indi=true;
-		}
 		$addname=$record->getAddName();
 		if ($addname) {
 			echo "<br /><a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($addname), "</a>";
 		}
-		if ($record->getType()=='INDI') {
+		if ($indi) {
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($record->getAllNames() as $name) {
 					if ($name['type']=='_MARNM') {
@@ -1388,7 +1413,7 @@ function print_changes_table($change_ids) {
 	}
 	//-- table footer
 	echo "<tr class=\"sortbottom\">";
-	//echo "<td></td>";
+	echo "<td></td>";
 	echo "<td class=\"list_label\">";
 	if ($n>1 && $indi) {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';

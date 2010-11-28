@@ -606,10 +606,6 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 
 	if (strlen($filename) == 0)
 		return false;
-	if (!isset ($generateThumb))
-		$generateThumb = true;
-	if (!isset ($overwrite))
-		$overwrite = false;
 
 	// NOTE: Lets get the file details
 	if (isFileExternal($filename))
@@ -663,6 +659,82 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 			$which = "";
 	}
 	return $WT_IMAGES["media{$which}"];
+}
+
+/**
+* Generates the icon filename and path
+*
+* The full file path is taken and turned into the location of the icon file.
+*
+* @param string $filename The full filename of the media item
+* @return string the location of the icon file
+*/
+function media_icon_file($filename, $generateThumb = true, $overwrite = false) {
+	global $MEDIA_DIRECTORY, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
+
+	if (strlen($filename) == 0)
+		return false;
+
+	$filename = check_media_depth($filename, "NOTRUNC");
+	// -- Classify the incoming media file
+	if (preg_match('~^https?://~i', $filename)) $type = 'url_';
+	else $type = 'local_';
+	if ((preg_match('/\.flv$/i', $filename) || preg_match('~^https?://.*\.youtube\..*/watch\?~i', $filename)) && is_dir(WT_ROOT.'js/jw_player')) {
+		$type .= 'flv';
+	} else if (preg_match('~^https?://picasaweb*\.google\..*/.*/~i', $filename)) {
+		$type .= 'picasa';
+	} else if (preg_match('/\.(jpg|jpeg|gif|png)$/i', $filename)) {
+		$type .= 'image';
+	} else if (preg_match('/\.pdf$/i', $filename)) {
+		$type .= 'pdf';
+	} else if (preg_match('/\.(doc|txt)$/i', $filename)) {
+		$type .= 'document';
+	} else if (preg_match('/\.mp3$/i', $filename)) {
+		$type .= 'audio';
+	} else if (preg_match('/\.(avi|wmv)$/i', $filename)) {
+		$type .= 'wmv';
+	} else if (strpos($filename, 'http://maps.google.')===0) {
+		$type .= 'streetview';
+	} else {
+		$type .= 'other';
+	}
+	// $type is now: (url | local) _ (flv | picasa | image | pdf | document| audio | wmv | streetview |other)
+	switch ($type) {
+		case 'url_flv':
+			$thumb = isset($WT_IMAGES["media_flashrem"]) ? $WT_IMAGES["media_flashrem"] : 'images/media/flashrem.png';
+			break;
+		case 'local_flv':
+			$thumb = isset($WT_IMAGES["media_flash"]) ? $WT_IMAGES["media_flash"] : 'images/media/flash.png';
+			break;
+		case 'url_wmv':
+			$thumb = isset($WT_IMAGES["media_wmvrem"]) ? $WT_IMAGES["media_wmvrem"] : 'images/media/wmvrem.png';
+			break;
+		case 'local_wmv':
+			$thumb = isset($WT_IMAGES["media_wmv"]) ? $WT_IMAGES["media_wmv"] : 'images/media/wmv.png';
+			break;
+		case 'url_picasa':
+			$thumb = isset($WT_IMAGES["media_picasa"]) ? $WT_IMAGES["media_picasa"] : 'images/media/picasa.png';
+			break;
+		case 'url_other':
+			$thumb = isset($WT_IMAGES["media_globe"]) ? $WT_IMAGES["media_globe"] : 'images/media/globe.png';
+			break;
+		case 'url_pdf':
+		case 'local_pdf':
+			$thumb = isset($WT_IMAGES["media_pdf"]) ? $WT_IMAGES["media_pdf"] : 'images/media/pdf.gif';
+			break;
+		case 'url_document':
+		case 'local_document':
+			$thumb = isset($WT_IMAGES["media_doc"]) ? $WT_IMAGES["media_doc"] : 'images/media/doc.gif';
+			break;
+		case 'url_audio':
+		case 'local_audio':
+			$thumb = isset($WT_IMAGES["media_audio"]) ? $WT_IMAGES["media_audio"] : 'images/media/audio.png';
+			break;
+		default:
+			$thumb = $WT_IMAGES["media"];
+	}
+	// Return an icon image
+	return $thumb;
 }
 
 /**
