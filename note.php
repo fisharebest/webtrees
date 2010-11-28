@@ -84,6 +84,7 @@ echo '<table class="facts_table">';
 echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 
 // Shared Note details ---------------------
+$noterec=$controller->note->getGedcomRecord();
 $nt = preg_match("/0 @$controller->nid@ NOTE(.*)/i", $noterec, $n1match);
 if ($nt==1) {
 	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
