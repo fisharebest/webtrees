@@ -250,27 +250,21 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 			'<tr align="center">',
 			// configuration
 			'<td><a href="editconfig_gedcom.php?ged=', rawurlencode($gedcom_name), '">', i18n::translate('Configuration'), '</a>',
-			help_link('gedcom_configfile'),
 			'</td>',
 			// export
 			'<td><a href="javascript:" onclick="window.open(\'', "export_gedcom.php?export=", rawurlencode($gedcom_name), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', i18n::translate('Export'), '</a>',
-			help_link('export_gedcom'),
 			'</td>',
 			// import
 			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom_id, '">', i18n::translate('Import'), '</a>',
-			help_link('import_gedcom'),
 			'</td>',
 			// download
 			'<td><a href="downloadgedcom.php?ged=', rawurlencode($gedcom_name),'">', i18n::translate('Download'), '</a>',
-			help_link('download_gedcom'),
 			'</td>',
 			// upload
 			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom_id, '">', i18n::translate('Upload'), '</a>',
-			help_link('upload_gedcom'),
 			'</td>',
 			// delete
 			'<td><a href="editgedcoms.php?action=delete&ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(i18n::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', i18n::translate('Delete'), '</a>',
-			help_link('delete_gedcom'),
 			'</td></tr></table></td></tr></table><br />';
 	}
 }
@@ -279,10 +273,10 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 if (WT_USER_IS_ADMIN) {
 	echo
 		'<br/><table class="gedcom_table"><tr>',
-		'<td class="list_label">', i18n::translate('Default GEDCOM'),      help_link('default_gedcom'), '</td>',
-		'<td class="list_label">', i18n::translate('Add a new GEDCOM'),    help_link('add_gedcom'),     '</td>',
-		'<td class="list_label">', i18n::translate('Upload a new GEDCOM'), help_link('upload_gedcom'),  '</td>',
-		'<td class="list_label">', i18n::translate('Create a new GEDCOM'), help_link('add_new_gedcom'), '</td>',
+		'<td class="list_label">', i18n::translate('Default GEDCOM'), help_link('default_gedcom'), '</td>',
+		'<td class="list_label">', i18n::translate('Add a new GEDCOM'), '</td>',
+		'<td class="list_label">', i18n::translate('Upload a new GEDCOM'), '</td>',
+		'<td class="list_label">', i18n::translate('Create a new GEDCOM'), '</td>',
 		'</tr><tr>',
 		'<td class="list_value_wrap">',
 		'<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
