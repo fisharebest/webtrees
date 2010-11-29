@@ -1720,7 +1720,7 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				ob_start();
 				print_fact_notes($placerec, 3);
-				$html.=ob_get_contents();
+				$html.='<br />'.ob_get_contents();
 				ob_end_clean();
 			}
 		}
