@@ -280,28 +280,28 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				// add action url
 				$tempURL = $person->getHtmlUrl();
 				$imagemap .= "\" href=\"$tempURL\" ";
-				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}";
+				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}&amp;ged=".rawurlencode($GEDCOM);
 				$count=0;
 				$lbwidth=200;
 				echo "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute; >";
 				echo "left:".$tx."px; top:".$ty."px; width: ".($lbwidth)."px; visibility:hidden; z-index:'100';\">";
 				echo "<table class=\"person_box\"><tr><td class=\"details1\">";
-				echo "<a href=\"individual.php?pid=$pid\" class=\"name1\">" . PrintReady($name);
+				echo "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . PrintReady($name);
 				if (!empty($addname)) echo "<br />" . PrintReady($addname);
 				echo "</a>";
-				echo "<br /><a href=\"pedigree.php?rootid=$pid\" >".i18n::translate('Pedigree Tree')."</a>";
+				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" >".i18n::translate('Pedigree Tree')."</a>";
 				if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
-					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
+					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-					echo "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged={$GEDCOM}"."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
+					echo "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
 				}
-				echo "<br /><a href=\"descendancy.php?pid=$pid\" >".i18n::translate('Descendancy chart')."</a>";
-				echo "<br /><a href=\"ancestry.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
-				echo "<br /><a href=\"compact.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact Chart')."</a>";
+				echo "<br /><a href=\"descendancy.php?pid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" >".i18n::translate('Descendancy chart')."</a>";
+				echo "<br /><a href=\"ancestry.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
+				echo "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact Chart')."</a>";
 				echo "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
-				echo "<br /><a href=\"hourglass.php?pid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
-				echo "<br /><a href=\"treenav.php?rootid=$pid\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
+				echo "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
+				echo "<br /><a href=\"treenav.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
 				if ($sosa>=1) {
 					$famids = find_sfamily_ids($pid);
 					//-- make sure there is more than 1 child in the family with parents

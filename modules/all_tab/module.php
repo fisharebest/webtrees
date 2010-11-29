@@ -78,7 +78,7 @@ class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($tab->getName()!=$this->getName()) {
 				$out.=
 					' if (!tabCache["'.$tab->getName().'"]) {'.
-					'  jQuery("#'.$tab->getName().'").load("individual.php?action=ajax&module='.$tab->getName().'&pid='.$this->controller->pid.'");'.
+					'  jQuery("#'.$tab->getName().'").load("'.$this->controller->indi->getRawUrl().'&action=ajax&module='.$tab->getName().'");'.
 					'  tabCache["'.$tab->getName().'"] = true;'.
 					' }';
 			}

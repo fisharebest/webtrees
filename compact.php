@@ -343,7 +343,7 @@ function print_td_person($n) {
 			}
 		}
 
-		$text .= "<a class=\"name1\" href=\"individual.php?pid=$pid\" title=\"$title\"> ";
+		$text .= "<a class=\"name1\" href=\"".$indi->getHtmlUrl()."\" title=\"$title\"> ";
 		$text .= PrintReady(htmlspecialchars(strip_tags($name)));
 		if ($addname) $text .= "<br />" . PrintReady($addname);
 		$text .= "</a>";

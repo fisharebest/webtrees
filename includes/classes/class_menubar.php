@@ -91,12 +91,12 @@ class MenuBar {
 		}
 
 		//-- main menu
-		$menu = new Menu(i18n::translate('My Page'), "index.php?ctype=user", "down");
+		$menu = new Menu(i18n::translate('My Page'), "index.php?ctype=user&amp;ged=".WT_GEDURL, "down");
 		$menu->addIcon('mypage');
 		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_mypage");
 
 		//-- mypage submenu
-		$submenu = new Menu(i18n::translate('My Page'), "index.php?ctype=user");
+		$submenu = new Menu(i18n::translate('My Page'), "index.php?ctype=user&amp;ged=".WT_GEDURL);
 		$submenu->addIcon('mypage');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_mypage");
 		$menu->addSubmenu($submenu);

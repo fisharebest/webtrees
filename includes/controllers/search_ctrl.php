@@ -864,7 +864,7 @@ class SearchController extends BaseController {
 										}
 										echo "<tr><td class=\"list_value $TEXT_DIRECTION\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" valign=\"center\" ><ul>";
 										echo "<li class=\"$TEXT_DIRECTION\" dir=\"$TEXT_DIRECTION\">";
-										echo "<a href=\"{$siteURL}/individual.php?pid={$person->PID}&amp;ged={$serviceClient->gedfile}\" target=\"_blank\">";
+										echo "<a href=\"{$siteURL}/individual.php?pid={$person->PID}&amp;ged=".rawurlencode($serviceClient->gedfile)."\" target=\"_blank\">";
 										$pageResultsNum += 1;
 										echo "<b>".$person->getFullName()."</b>";
 										if (!empty ($person->PID)) {

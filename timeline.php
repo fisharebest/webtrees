@@ -283,11 +283,11 @@ $controller->checkPrivacy();
 				echo $indi->getSexImage('large', '', i18n::translate_c('unknown gender', 'Unknown'));
 			}
 		?>
-			<a href="individual.php?pid=<?php echo $pid; ?>">&nbsp;<?php echo PrintReady($indi->getFullName()); ?><br /><br />
+			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo PrintReady($indi->getFullName()); ?><br /><br />
 			<?php $addname = $indi->getAddName(); if (strlen($addname) > 0) echo PrintReady($addname); ?>
 			</a>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
-				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>" >
+				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
 				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
 				<span class="details1"><br />
@@ -303,7 +303,7 @@ $controller->checkPrivacy();
 			?>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
 				<br />
-				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>" >
+				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
 				<span class="details1"><?php echo i18n::translate('Remove person'), help_link('remove_person'); ?></span></a>
 			<br />
 		<?php } ?>
@@ -324,14 +324,14 @@ $controller->checkPrivacy();
 		$scalemod = round($controller->scale*.2) + 1;
 		?>
 		<td class="list_value" style="padding: 5px">
-			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>"><img src="<?php echo $WT_IMAGES['zoomin']; ?>" title="<?php echo i18n::translate('Zoom in'); ?>" alt="<?php echo i18n::translate('Zoom in'); ?>" border="0" /></a><br />
-			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>"><img src="<?php echo $WT_IMAGES['zoomout']; ?>" title="<?php echo i18n::translate('Zoom out'); ?>" alt="<?php echo i18n::translate('Zoom out'); ?>" border="0" /></a><br />
-			<input type="button" value="<?php echo i18n::translate('Clear Chart'); ?>" onclick="window.location = 'timeline.php?clear=1';" />
+			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>"><img src="<?php echo $WT_IMAGES['zoomin']; ?>" title="<?php echo i18n::translate('Zoom in'); ?>" alt="<?php echo i18n::translate('Zoom in'); ?>" border="0" /></a><br />
+			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>"><img src="<?php echo $WT_IMAGES['zoomout']; ?>" title="<?php echo i18n::translate('Zoom out'); ?>" alt="<?php echo i18n::translate('Zoom out'); ?>" border="0" /></a><br />
+			<input type="button" value="<?php echo i18n::translate('Clear Chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>&amp;clear=1';" />
 		</td>
 	<?php } ?>
 	</tr>
 </table>
-<br /><a href="lifespan.php"><b><?php echo i18n::translate('Show Lifespan chart'); ?></b></a>
+<br /><a href="lifespan.php?ged=<?php echo WT_GEDURL; ?>"><b><?php echo i18n::translate('Show Lifespan chart'); ?></b></a>
 </form>
 <?php
 if (count($controller->people)>0) {
