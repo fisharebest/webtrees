@@ -156,7 +156,7 @@ function edit_language_checkboxes($field_prefix, $languages) {
 	$i=0;
 	foreach (i18n::installed_languages() as $code=>$name) {
 		$content = '<input type="checkbox" name="'.$field_prefix.$code.'" id="'.$field_prefix.$code.'"';
-		if (strpos("@{$languages}@", $code)!==false) {
+		if (strpos(",{$languages},", ",{$code},")!==false) {
 			$content .= 'checked="checked"';
 		}
 		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';

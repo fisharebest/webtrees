@@ -134,9 +134,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					$languages[]=$code;
 				}
 			}
-			if (!$languages) {
-				$languages[]=WT_LOCALE;
-			}
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 			$this->config();
 		} else {
@@ -200,7 +197,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				echo '</select>';
 			echo '</td></tr>';
 
-			$languages=get_block_setting($block_id, 'languages', WT_LOCALE);
+			$languages=get_block_setting($block_id, 'languages');
 			echo '<tr><td class="descriptionbox wrap width33">';
 			echo i18n::translate('Show this block for which languages?');
 			echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
