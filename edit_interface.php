@@ -1300,7 +1300,7 @@ case 'update':
 						}
 					}
 				}
-				if ($gedlines[$numlines] != "1 CONT\n") {
+				if ($gedlines[$num_lines] != "1 CONT\n") {
 					$gedlines[$k+1] = "1 CONT\n";
 				}
 			}
@@ -1380,7 +1380,7 @@ case 'update':
 							}
 						}
 					}
-					if ($gedlines[$numlines] != "1 CONT\n") {
+					if ($gedlines[$num_lines] != "1 CONT\n") {
 						$gedlines[$k+1] = "1 CONT\n";
 					}
 				}
