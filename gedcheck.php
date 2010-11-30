@@ -84,7 +84,7 @@ else {
 	$default_ged=$tmp[0];       // First gedcom in directory
 }
 
-$ged          =safe_POST('ged', array_keys($all_geds), $default_ged);
+$ged          =safe_POST('ged', preg_quote_array(array_keys($all_geds)), $default_ged);
 $err_level    =safe_POST('err_level',    '[0-3]', $critical); // Higher numbers are more picky.
 $openinnew    =safe_POST('openinnew',    '[01]',  '0');    // Open links in same/new tab/window
 $context_lines=safe_POST('context_lines','[0-5]', '2');    // Lines of context to display

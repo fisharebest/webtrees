@@ -46,7 +46,7 @@ if (empty($gedcoms)) {
 }
 
 // Which gedcom have we requested to export
-$export = safe_GET('export', $gedcoms);
+$export = safe_GET('export', preg_quote_array($gedcoms));
 
 print_simple_header(i18n::translate('Export'));
 

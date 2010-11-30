@@ -36,7 +36,7 @@ require_once WT_ROOT.'includes/functions/functions_export.php';
 if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
 if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
 
-$ged              = safe_GET('ged',              get_all_gedcoms());
+$ged              = safe_GET('ged',              preg_quote_array(get_all_gedcoms()));
 $action           = safe_GET('action',           'download');
 $remove           = safe_GET('remove',           'yes', 'no');
 $convert          = safe_GET('convert',          'yes', 'no');

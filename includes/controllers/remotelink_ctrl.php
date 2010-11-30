@@ -82,15 +82,15 @@ class RemoteLinkController extends BaseController {
 		$this->form_location         =safe_POST('location');
 		$this->form_txtURL           =safe_POST('txtURL', WT_REGEX_URL);
 		$this->form_txtTitle         =safe_POST('txtTitle', '[^<>"%{};]+');
-		$this->form_txtGID           =safe_POST('txtGID', $this->gedcom_list);
+		$this->form_txtGID           =safe_POST('txtGID', preg_quote_array($this->gedcom_list));
 		$this->form_txtUsername      =safe_POST('txtUsername', WT_REGEX_USERNAME);
 		$this->form_txtPassword      =safe_POST('txtPassword', WT_REGEX_PASSWORD);
 		$this->form_cbExistingServers=safe_POST('cbExistingServers', array_keys($this->server_list));
 		$this->form_txtCB_Title      =safe_POST('txtCB_Title', '[^<>"%{};]+');
-		$this->form_txtCB_GID        =safe_POST('txtCB_GID', $this->gedcom_list);
+		$this->form_txtCB_GID        =safe_POST('txtCB_GID', preg_quote_array($this->gedcom_list));
 		$this->form_txtFS_URL        =safe_POST('txtFS_URL', WT_REGEX_URL);
 		$this->form_txtFS_Title      =safe_POST('txtFS_Title', '[^<>"%{};]+');
-		$this->form_txtFS_GID        =safe_POST('txtFS_GID', $this->gedcom_list);
+		$this->form_txtFS_GID        =safe_POST('txtFS_GID', preg_quote_array($this->gedcom_list));
 		$this->form_txtFS_Username   =safe_POST('txtFS_Username', WT_REGEX_USERNAME);
 		$this->form_txtFS_Password   =safe_POST('txtFS_Password', WT_REGEX_PASSWORD);
 

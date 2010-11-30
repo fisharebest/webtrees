@@ -40,7 +40,7 @@ $username    =safe_POST('username', WT_REGEX_USERNAME);
 $password    =safe_POST('password', WT_REGEX_PASSWORD);
 $usertime    =safe_POST('usertime');
 $pid         =safe_POST('pid',      WT_REGEX_XREF);
-$ged         =safe_POST('ged',      get_all_gedcoms(), $GEDCOM);
+$ged         =safe_POST('ged',      preg_quote_array(get_all_gedcoms()), $GEDCOM);
 $help_message=safe_GET('help_message');
 
 // Some variables can come from the URL as well as the form
