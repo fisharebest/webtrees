@@ -180,7 +180,7 @@ function wt_href($tag, $xref, $name='')
 	global $WT_LINK, $target, $ged;
 	$text=($name=='' ? "$tag $xref" : "$name ($xref)");
 	if (isset($WT_LINK[$tag]) && get_id_from_gedcom($ged)) {
-		return '&lrm;<a href="'.$WT_LINK[$tag].str_replace('@','',$xref).'"&amp;ged='.$ged.$target.'>'.$text.'</a>&lrm;';
+		return '&lrm;<a href="'.$WT_LINK[$tag].str_replace('@','',$xref).'&amp;ged='.rawurlencode($ged).'"'.$target.'>'.$text.'</a>&lrm;';
 	} else {
 		return "&lrm;$tag $xref&lrm;";
 	}
