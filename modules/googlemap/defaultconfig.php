@@ -45,7 +45,7 @@ global $GOOGLEMAP_ENABLED;
 $GOOGLEMAP_ENABLED     = get_module_setting('googlemap', 'GM_ENABLED',     '0'); // Enable or disable Googlemap
 
 global $GOOGLEMAP_API_KEY;
-$GOOGLEMAP_API_KEY     = get_module_setting('googlemap', 'GM_API_KEY',     'Fill in your key here. Request key from http://www.google.com/apis/maps/');  // Fill in your key here. Request key from http://www.google.com/apis/maps/
+$GOOGLEMAP_API_KEY     = get_module_setting('googlemap', 'GM_API_KEY',     'Fill in your key here. Request key from http://code.google.com/apis/maps/signup.html');  // Fill in your key here. Request key from http://code.google.com/apis/maps/signup.html
 
 global $GOOGLEMAP_MAP_TYPE;
 $GOOGLEMAP_MAP_TYPE    = get_module_setting('googlemap', 'GM_MAP_TYPE',    'G_NORMAL_MAP');  // possible values: G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP or G_HYBRID_MAP.
