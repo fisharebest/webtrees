@@ -1280,19 +1280,15 @@ case 'update':
 			if (!empty($SURN)) $newged .= "2 SURN $SURN\n";
 			if (!empty($NSFX)) $newged .= "2 NSFX $NSFX\n";
 			
-			if (!empty($NOTE)) {						
-				foreach(array('0 @N','1 CONT') as $del){ // lose the 0 @Nxx@ NOTE & 1 CONT lines
-    				$code = 'return strpos($e,' . "'$del') !==0;";
-    				$cmpfunc = create_function('$e', $code);
-    				$gedlines = array_filter($gedlines, $cmpfunc);
-				}				
-				$NOTE = trim($NOTE) . "\n"; // make sure only one line ending on the end
-				$tempnote = preg_split('/\r?\n/', $NOTE);
+			if (!empty($NOTE)) {			
+				$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
+				$gedlines = array_filter($gedlines, $cmpfunc);
+				$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 				$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
 				foreach($tempnote as &$line) {
     				$line = trim("1 CONT " . $line,' ');
 				}
-				$gedlines = array_merge($title,$tempnote,$gedlines);
+				$gedlines = array_merge($title,$tempnote,$gedlines);	
 			}
 
 			//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
@@ -1349,20 +1345,16 @@ case 'update':
 				if (!empty($SPFX)) $newged .= "2 SPFX $SPFX\n";
 				if (!empty($SURN)) $newged .= "2 SURN $SURN\n";
 				if (!empty($NSFX)) $newged .= "2 NSFX $NSFX\n";
-						
-				if (!empty($NOTE)) {									
-					foreach(array('0 @N','1 CONT') as $del){ // lose the 0 @Nxx@ NOTE & 1 CONT lines
-    					$code = 'return strpos($e,' . "'$del') !==0;";
-    					$cmpfunc = create_function('$e', $code);
-    					$gedlines = array_filter($gedlines, $cmpfunc);
-					}				
-					$NOTE = trim($NOTE) . "\n"; // make sure only one line ending on the end
-					$tempnote = preg_split('/\r?\n/', $NOTE);
+					
+				if (!empty($NOTE)) {				
+					$cmpfunc = create_function('$e', 'return strpos($e,"0 @N") !==0 && strpos($e,"1 CONT") !==0;');
+					$gedlines = array_filter($gedlines, $cmpfunc);
+					$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
 					$title[] = "0 @$pid@ NOTE " . array_shift($tempnote);
 					foreach($tempnote as &$line) {
     					$line = trim("1 CONT " . $line,' ');
 					}
-					$gedlines = array_merge($title,$tempnote,$gedlines);
+					$gedlines = array_merge($title,$tempnote,$gedlines);	
 				}
 				
 				//-- Refer to Bug [ 1329644 ] Add Married Name - Wrong Sequence
