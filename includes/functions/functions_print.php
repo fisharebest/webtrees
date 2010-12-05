@@ -1405,7 +1405,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 					$label='';
 				} else {
 					// An naturally occuring ASSO event
-					$relationship=get_relationship_name(get_relationship($pid, $amatch[1], true, 4));
+					$relationship=get_relationship_name(get_relationship($pid, $amatch[1], true, 4, true));
 					if (!$relationship) {
 						$relationship=i18n::translate('Relationship Chart');
 					}

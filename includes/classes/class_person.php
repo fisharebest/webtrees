@@ -979,7 +979,7 @@ class Person extends GedcomRecord {
 					}
 					if (strstr($SHOW_RELATIVES_EVENTS, $fact)) {
 						if ($sosa==3) $fact='_DEAT_GPA1';
-						else $fact='_DEAT_GPA2';
+						else if ($sosa==4) $fact='_DEAT_GPA2';
 						foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 							$srec = $sEvent->getGedcomRecord();
 							if (GedcomDate::Compare($bDate, $sEvent->getDate())<0 && GedcomDate::Compare($sEvent->getDate(), $dDate)<=0) {
