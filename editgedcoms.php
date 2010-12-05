@@ -286,7 +286,7 @@ if (WT_USER_IS_ADMIN) {
 	if (empty($DEFAULT_GEDCOM)) {
 		echo '<option value="" selected="selected"></option>';
 	}
-	foreach ($gedcoms as $gedcom) {
+	foreach ($gedcoms as $gedcom_name) {
 		echo '<option value="', urlencode($gedcom_name), '"';
 		if ($DEFAULT_GEDCOM==$gedcom_name) echo ' selected="selected"';
 		echo '>', htmlspecialchars($gedcom_name), '</option>';
