@@ -167,12 +167,10 @@ WT_DB::exec("UPDATE `##log` SET user_id=NULL");
 WT_DB::exec("DELETE FROM `##change`");
 WT_DB::exec("DELETE FROM `##block_setting`");
 WT_DB::exec("DELETE FROM `##block`");
-WT_DB::exec("DELETE FROM `##user_gedcom_setting`");
-WT_DB::exec("DELETE FROM `##user_setting`");
 WT_DB::exec("DELETE FROM `##message`");
-WT_DB::exec("DELETE FROM `##user`");
-WT_DB::exec("DELETE FROM `##user_setting`");
-WT_DB::exec("DELETE FROM `##user`");
+WT_DB::exec("DELETE FROM `##user_gedcom_setting` WHERE user_id>0");
+WT_DB::exec("DELETE FROM `##user_setting`        WHERE user_id>0");
+WT_DB::exec("DELETE FROM `##user`                WHERE user_id>0");
 
 ////////////////////////////////////////////////////////////////////////////////
 if (ob_get_level() == 0) ob_start();

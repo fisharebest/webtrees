@@ -2073,7 +2073,7 @@ function get_gedcom_titles() {
 			" FROM `##gedcom` g".
 			" LEFT JOIN `##gedcom_setting` gs ON (g.gedcom_id=gs.gedcom_id AND gs.setting_name=?)".
 			" WHERE g.gedcom_id>0".
-			" ORDER BY 3"
+			" ORDER BY g.sort_order, 3"
 		)
 		->execute(array('title'))
 		->fetchAll();

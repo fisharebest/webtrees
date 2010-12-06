@@ -566,10 +566,12 @@ try {
 	$TBLPREFIX=$_POST['tblpfx'];
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom` (".
-		" gedcom_id     INTEGER AUTO_INCREMENT                        NOT NULL,".
-		" gedcom_name   VARCHAR(255)                                  NOT NULL,".
+		" gedcom_id     INTEGER AUTO_INCREMENT NOT NULL,".
+		" gedcom_name   VARCHAR(255)           NOT NULL,".
+		" sort_order    INTEGER                NOT NULL DEFAULT 0,".
 		" PRIMARY KEY     (gedcom_id),".
-		" UNIQUE  KEY ux1 (gedcom_name)".
+		" UNIQUE  KEY ux1 (gedcom_name),".
+		"         KEY ix1 (sort_order)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -958,35 +960,17 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'canadmin', '1')"
-	);
-	$dbh->exec(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'language', '".Zend_Registry::get('Zend_Locale')."')"
-	);
-	$dbh->exec(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'verified', '1')"
-	);
-	$dbh->exec(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'verified_by_admin', '1')"
-	);
-	$dbh->exec(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'editaccount', '1')"
-	);
-	$dbh->exec(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'auto_accept', '0')"
-	);
-	$dbh->exec(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'visibleonline', '1')"
+		" (1, 'canadmin',          '1'),".
+		" (1, 'language',          '".Zend_Registry::get('Zend_Locale')."'),".
+		" (1, 'verified',          '1'),".
+		" (1, 'verified_by_admin', '1'),".
+		" (1, 'editaccount',       '1'),".
+		" (1, 'auto_accept',       '0'),".
+		" (1, 'visibleonline',     '1')"
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '4'),".
+		"('WT_SCHEMA_VERSION',               '5'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
@@ -996,10 +980,6 @@ try {
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
 		"('LOGIN_URL',                       'login.php'),".
-		// Don't set these.  On some servers, trying to set them causes problems.
-		// So, the default behaviour is now to use the defaults.
-		//"('MEMORY_LIMIT',                    '".addcslashes($_POST['maxmem'], "'")."M'),".
-		//"('MAX_EXECUTION_TIME',              '".addcslashes($_POST['maxcpu'], "'")."'),".
 		"('SMTP_ACTIVE',                     '".addcslashes($_POST['smtpuse'], "'")."'),".
 		"('SMTP_HOST',                       '".addcslashes($_POST['smtpserv'], "'")."'),".
 		"('SMTP_HELO',                       '".addcslashes($_POST['smtpsender'], "'")."'),".
