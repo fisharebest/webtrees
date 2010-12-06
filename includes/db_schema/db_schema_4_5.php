@@ -77,9 +77,9 @@ set_site_setting($schema_name, $next_version);
 @unlink(WT_ROOT.'modules/lightbox/functions/lb_indi_tabs_0.php');
 @unlink(WT_ROOT.'modules/lightbox/functions/lb_indi_tabs_1.php');
 // Removed in 1.0.6
-@unlink(WT_ROOT.'includes/functions/functions.ar.php');
-@unlink(WT_ROOT.'includes/functions/functions.en.php');
-@unlink(WT_ROOT.'includes/functions/functions.fr.php');
-@unlink(WT_ROOT.'includes/functions/functions.pl.php');
-@unlink(WT_ROOT.'includes/functions/functions.tr.php');
+@unlink(WT_ROOT.'includes/extras/functions.ar.php');
+@unlink(WT_ROOT.'includes/extras/functions.en.php');
+@unlink(WT_ROOT.'includes/extras/functions.fr.php');
+@unlink(WT_ROOT.'includes/extras/functions.pl.php');
+@unlink(WT_ROOT.'includes/extras/functions.tr.php');
 @rmdir (WT_ROOT.'includes/extras');
