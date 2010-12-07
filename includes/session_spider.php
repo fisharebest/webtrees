@@ -171,10 +171,7 @@ if ($quitReason != "") {
 
 // The search list has been reversed.  Whitelist all browsers, and
 // mark everything else as a spider/bot.
-// Java/ Axis/ and PEAR required for GDBI and our own cross site communication.
 $real_browsers = array(
-	'PHP-SOAP',
-	'PGVAgent',
 	'MSIE ',
 	'Opera',
 	'Firefox',
@@ -184,9 +181,6 @@ $real_browsers = array(
 	'http://www.avantbrowser.com',
 	'BlackBerry',
 	'Lynx',
-	'Java/',
-	'PEAR',
-	'Axis/',
 	'MSFrontPage',
 	'RssReader',
 	'Liferea/',
@@ -239,6 +233,12 @@ else {
 	$real = true;
 }
 
+if (WT_SCRIPT_NAME=='genservice.php') {
+	// Robots look very similar to remote-link requests.  Allow them to
+	// access the remote linking service.
+	$real=true;
+}
+	
 if (!$real) {
 	$bot_name = $ua;
 	// strip out several common strings that clutter the User Agent.
