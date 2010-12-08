@@ -137,7 +137,13 @@ class Event {
 
 	// Check whether this fact is protected against edit
 	public function canEdit() {
-		return WT_USER_GEDCOM_ADMIN || strpos($this->gedcomRecord, "\n2 RESN locked")===false;
+		// Managers can edit anything
+		// Members cannot edit RESN, CHAN and locked records
+		return
+			WT_USER_GEDCOM_ADMIN ||
+			strpos($this->gedcomRecord, "\n2 RESN locked")===false &&
+			$this->getTag()!='RESN' &&
+			$this->getTag()!='CHAN';
 	}
 
 	/**

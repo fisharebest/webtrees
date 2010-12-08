@@ -369,14 +369,14 @@ function canDisplayFact($xref, $ged_id, $gedrec) {
 	}
 
 	// Does this record have a RESN?
-	if (strpos($gedrec, "\n2 RESN none")) {
-		return true;
+	if (strpos($gedrec, "\n2 RESN confidential")) {
+		return WT_PRIV_NONE>=WT_USER_ACCESS_LEVEL;
 	}
 	if (strpos($gedrec, "\n2 RESN privacy")) {
 		return WT_PRIV_USER>=WT_USER_ACCESS_LEVEL;
 	}
-	if (strpos($gedrec, "\n2 RESN confidential")) {
-		return WT_PRIV_NONE>=WT_USER_ACCESS_LEVEL;
+	if (strpos($gedrec, "\n2 RESN none")) {
+		return true;
 	}
 
 	// Does this record have a default RESN?
