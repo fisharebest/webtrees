@@ -536,6 +536,7 @@ $nondatefacts=array(
 	'PUBL',
 	'REFN',
 	'REPO',
+	'RESN',
 	'SEX',
 	'SOUR',
 	'SSN',
