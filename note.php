@@ -110,12 +110,8 @@ echo "</td></tr>";
 
 $notefacts=$controller->note->getFacts();
 foreach ($notefacts as $fact) {
-	if ($fact && $fact->getTag()!='CONT') {
-		if ($fact->getTag()=='NOTE' ) {
-			print_fact($fact);
-		} else {
-			print_fact($fact);
-		}
+	if ($fact->getTag()!='CONT') {
+		print_fact($fact);
 	}
 }
 

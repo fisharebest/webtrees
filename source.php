@@ -79,13 +79,7 @@ echo '<table class="facts_table">';
 
 $sourcefacts=$controller->source->getFacts();
 foreach ($sourcefacts as $fact) {
-	if ($fact) {
-		if ($fact->getTag()=='NOTE') {
-			print_main_notes($fact->getGedcomRecord(), 1, $controller->sid, $fact->getLineNumber());
-		} else {
-			print_fact($fact);
-		}
-	}
+	print_fact($fact);
 }
 
 // Print media

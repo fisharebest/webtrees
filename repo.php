@@ -79,13 +79,7 @@ echo '<table class="facts_table">';
 
 $repositoryfacts=$controller->repository->getFacts();
 foreach ($repositoryfacts as $fact) {
-	if ($fact) {
-		if ($fact->getTag()=='NOTE') {
-			print_main_notes($fact->getGedcomRecord(), 1, $controller->rid, $fact->getLineNumber());
-		} else {
-			print_fact($fact);
-		}
-	}
+	print_fact($fact);
 }
 
 // Print media
