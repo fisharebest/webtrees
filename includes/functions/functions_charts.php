@@ -296,8 +296,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		echo "<br />";
 		echo "<span class='nowrap font12'>";
 		echo "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . i18n::translate('Add a child to this family') . "</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".Person::sexImage('M', 'small', i18n::translate('Son'     ))."]</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".Person::sexImage('F', 'small', i18n::translate('Daughter'))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".Person::sexImage('M', 'small', '', i18n::translate('Son'     ))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".Person::sexImage('F', 'small', '', i18n::translate('Daughter'))."]</a>";
 		echo help_link('add_child');
 		echo "</span>";
 		echo "<br /><br />";
