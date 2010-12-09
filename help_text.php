@@ -128,39 +128,9 @@ case 'BAPM':
 	// (Wes Groleau)
 	break;
 
-case 'BAPM:DATE':
-	$title=translate_fact('BAPM:DATE');
-	$text=''; //('Date of baptism.');
-	break;
-
-case 'BAPM:PLAC':
-	$title=translate_fact('BAPM:PLAC');
-	$text=''; //('Place of baptism');
-	break;
-
-case 'BAPM:SOUR':
-	$title=translate_fact('BAPM:SOUR');
-	$text=''; //('Source for baptism');
-	break;
-
 case 'BARM':
 	$title=translate_fact('BARM');
 	$text=''; //('The ceremonial event held when a Jewish boy reaches age 13.');
-	break;
-
-case 'BARM:DATE':
-	$title=translate_fact('BARM:DATE');
-	$text=''; //('Date of bar mitzvah');
-	break;
-
-case 'BARM:PLAC':
-	$title=translate_fact('BARM:PLAC');
-	$text=''; //('Place of bar mitzvah');
-	break;
-
-case 'BARM:SOUR':
-	$title=translate_fact('BARM:SOUR');
-	$text=''; //('Source for bar mitzvah');
 	break;
 
 case 'BASM':
@@ -168,39 +138,9 @@ case 'BASM':
 	$text=''; //('The ceremonial event held when a Jewish girl reaches age 13, also known as "Bat Mitzvah."');
 	break;
 
-case 'BASM:DATE':
-	$title=translate_fact('BASM:DATE');
-	$text=''; //('Date of bas mitzvah');
-	break;
-
-case 'BASM:PLAC':
-	$title=translate_fact('BASM:PLAC');
-	$text=''; //('Place of bas mitzvah');
-	break;
-
-case 'BASM:SOUR':
-	$title=translate_fact('BASM:SOUR');
-	$text=''; //('Source for bas mitzvah');
-	break;
-
 case 'BIRT':
 	$title=translate_fact('BIRT');
 	$text=''; //('The event of entering into life.');
-	break;
-
-case 'BIRT:DATE':
-	$title=translate_fact('BIRT:DATE');
-	$text=''; //('Date of birth');
-	break;
-
-case 'BIRT:PLAC':
-	$title=translate_fact('BIRT:PLAC');
-	$text=''; //('Place of birth');
-	break;
-
-case 'BIRT:SOUR':
-	$title=translate_fact('BIRT:SOUR');
-	$text=''; //('Source for birth');
 	break;
 
 case 'BLES':
@@ -216,21 +156,6 @@ case 'BLOB':
 case 'BURI':
 	$title=translate_fact('BURI');
 	$text=''; //('The event of the proper disposing of the mortal remains of a deceased person.');
-	break;
-
-case 'BURI:DATE':
-	$title=translate_fact('BURI:DATE');
-	$text=''; //('Date of burial');
-	break;
-
-case 'BURI:PLAC':
-	$title=translate_fact('BURI:PLAC');
-	$text=''; //('Place of burial');
-	break;
-
-case 'BURI:SOUR':
-	$title=translate_fact('BURI:SOUR');
-	$text=''; //('Source for burial');
 	break;
 
 case 'CALN':
@@ -278,21 +203,6 @@ case 'CHR':
 	$text=''; //('The religious event of baptizing and/or naming a child.');
 	break;
 
-case 'CHR:DATE':
-	$title=translate_fact('CHR:DATE');
-	$text=''; //('Date of christening');
-	break;
-
-case 'CHR:PLAC':
-	$title=translate_fact('CHR:PLAC');
-	$text=''; //('Place of christening');
-	break;
-
-case 'CHR:SOUR':
-	$title=translate_fact('CHR:SOUR');
-	$text=''; //('Source for christening');
-	break;
-
 case 'CHRA':
 	$title=translate_fact('CHRA');
 	$text=''; //('The religious event of baptizing and/or naming an adult person.');
@@ -330,24 +240,6 @@ case 'CONF':
 	$text=''; //('The religious event of conferring the gift of the Holy Ghost and, among protestants, full church membership.');
 	break;
 
-case 'CONF:DATE':
-case 'CONL:DATE':
-	$title=translate_fact('CONF:DATE');
-	$text=''; //('Date of confirmation');
-	break;
-
-case 'CONF:PLAC':
-case 'CONL:PLAC':
-	$title=translate_fact('CONF:PLAC');
-	$text=''; //('Place of confirmation');
-	break;
-
-case 'CONF:SOUR':
-case 'CONL:SOUR':
-	$title=translate_fact('CONF:SOUR');
-	$text=''; //('Source for confirmation');
-	break;
-
 case 'CONL':
 	$title=translate_fact('CONL');
 	$text=''; //('The religious event by which a person receives membership in the LDS Church.');
@@ -378,11 +270,6 @@ case 'DATA':
 	$text=''; //('Pertaining to stored automated information.');
 	break;
 
-case 'DATA:DATE':
-	$title=translate_fact('DATA:DATE');
-	$text=''; //('Date of these data.');
-	break;
-
 case 'DATE':
 	$title=translate_fact('DATE');
 	$text=''; //('The time of an event in a calendar format.');
@@ -391,26 +278,6 @@ case 'DATE':
 case 'DEAT':
 	$title=translate_fact('DEAT');
 	$text=''; //('The event when mortal life terminates.');
-	break;
-
-case 'DEAT:CAUS':
-	$title=translate_fact('DEAT:CAUS');
-	$text=''; //('Cause of death');
-	break;
-
-case 'DEAT:DATE':
-	$title=translate_fact('DEAT:DATE');
-	$text=''; //('Date of death');
-	break;
-
-case 'DEAT:PLAC':
-	$title=translate_fact('DEAT:PLAC');
-	$text=''; //('Place of death');
-	break;
-
-case 'DEAT:SOUR':
-	$title=translate_fact('DEAT:SOUR');
-	$text=''; //('Source for death');
 	break;
 
 case 'DESC':
@@ -471,21 +338,6 @@ case 'ENGA':
 	$text=''; //('An event of recording or announcing an agreement between two people to become married.');
 	break;
 
-case 'ENGA:DATE':
-	$title=translate_fact('ENGA:DATE');
-	$text=''; //('Date of engagement.');
-	break;
-
-case 'ENGA:PLAC':
-	$title=translate_fact('ENGA:PLAC');
-	$text=''; //('Place of engagement.');
-	break;
-
-case 'ENGA:SOUR':
-	$title=translate_fact('ENGA:SOUR');
-	$text=''; //('Source for engagement.');
-	break;
-
 case 'EVEN':
 	$title=translate_fact('EVEN');
 	$text=''; //('Pertaining to a noteworthy happening related to an individual, a group, or an organization.  An EVENt structure is usually qualified or classified by a subordinate use of the TYPE tag.');
@@ -506,66 +358,6 @@ case 'FAMC':
 	$text=''; //('Identifies the family in which an individual appears as a child.');
 	break;
 
-case 'FAMC:HUSB:BIRT:PLAC':
-	$title=translate_fact('FAMC:HUSB:BIRT:PLAC');
-	$text='';
-	break;
-
-case 'FAMC:HUSB:FAMC:HUSB:GIVN':
-	$title=translate_fact('FAMC:HUSB:FAMC:HUSB:GIVN');
-	$text='';
-	break;
-
-case 'FAMC:HUSB:FAMC:WIFE:GIVN':
-	$title=translate_fact('FAMC:HUSB:FAMC:WIFE:GIVN');
-	$text='';
-	break;
-
-case 'FAMC:HUSB:GIVN':
-	$title=translate_fact('FAMC:HUSB:GIVN');
-	$text='';
-	break;
-
-case 'FAMC:HUSB:OCCU':
-	$title=translate_fact('FAMC:HUSB:OCCU');
-	$text='';
-	break;
-
-case 'FAMC:HUSB:OCCU':
-	$title=translate_fact('FAMC:HUSB:OCCU');
-	$text='';
-	break;
-
-case 'FAMC:MARR:PLAC':
-	$title=translate_fact('FAMC:MARR:PLAC');
-	$text='';
-	break;
-
-case 'FAMC:MARR:PLAC':
-	$title=translate_fact('FAMC:MARR:PLAC');
-	$text='';
-	break;
-
-case 'FAMC:WIFE:FAMC:HUSB:GIVN':
-	$title=translate_fact('FAMC:WIFE:FAMC:HUSB:GIVN');
-	$text='';
-	break;
-
-case 'FAMC:WIFE:FAMC:WIFE:GIVN':
-	$title=translate_fact('FAMC:WIFE:FAMC:WIFE:GIVN');
-	$text='';
-	break;
-
-case 'FAMC:WIFE:GIVN':
-	$title=translate_fact('FAMC:WIFE:GIVN');
-	$text='';
-	break;
-
-case 'FAMC:WIFE:SURN':
-	$title=translate_fact('FAMC:WIFE:SURN');
-	$text='';
-	break;
-
 case 'FAMF':
 	$title=translate_fact('FAMF');
 	$text=''; //('Pertaining to, or the name of, a family file. Names stored in a file that are assigned to a family for doing temple ordinance work.');
@@ -576,71 +368,6 @@ case 'FAMS':
 	$text=''; //('Identifies the family in which an individual appears as a spouse.');
 	break;
 
-case 'FAMS:CENS:DATE':
-	$title=translate_fact('FAMS:CENS:DATE');
-	$text='';
-	break;
-
-case 'FAMS:CENS:PLAC':
-	$title=translate_fact('FAMS:CENS:PLAC');
-	$text='';
-	break;
-
-case 'FAMS:CHIL:BIRT:PLAC':
-	$title=translate_fact('FAMS:CHIL:BIRT:PLAC');
-	$text='';
-	break;
-
-case 'FAMS:DIV:DATE':
-	$title=translate_fact('FAMS:DIV:DATE');
-	$text='';
-	break;
-
-case 'FAMS:DIV:PLAC':
-	$title=translate_fact('FAMS:DIV:PLAC');
-	$text='';
-	break;
-
-case 'FAMS:MARR:DATE':
-	$title=translate_fact('FAMS:MARR:DATE');
-	$text='';
-	break;
-
-case 'FAMS:MARR:PLAC':
-	$title=translate_fact('FAMS:MARR:PLAC');
-	$text='';
-	break;
-
-case 'FAMS:NOTE':
-	$title=translate_fact('FAMS:NOTE');
-	$text='';
-	break;
-
-case 'FAMS:SLGS:DATE':
-	$title=translate_fact('FAMS:SLGS:DATE');
-	$text='';
-	break;
-
-case 'FAMS:SLGS:PLAC':
-	$title=translate_fact('FAMS:SLGS:PLAC');
-	$text='';
-	break;
-
-case 'FAMS:SLGS:TEMP':
-	$title=translate_fact('FAMS:SLGS:TEMP');
-	$text='';
-	break;
-
-case 'FAMS:SPOUSE:BIRT:PLAC':
-	$title=translate_fact('FAMS:SPOUSE:BIRT:PLAC');
-	$text='';
-	break;
-
-case 'FAMS:SPOUSE:DEAT:PLAC':
-	$title=translate_fact('FAMS:SPOUSE:DEAT:PLAC');
-	$text='';
-	break;
-
 case 'FAX':
 	$title=translate_fact('FAX');
 	$text=i18n::translate('Enter the FAX number including the country and area code.<br /><br />Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
@@ -649,21 +376,6 @@ case 'FAX':
 case 'FCOM':
 	$title=translate_fact('FCOM');
 	$text=''; //('A religious rite, the first act of sharing in the Lord\'s supper as part of church worship.');
-	break;
-
-case 'FCOM:DATE':
-	$title=translate_fact('FCOM:DATE');
-	$text=''; //('Date of First Communion');
-	break;
-
-case 'FCOM:PLAC':
-	$title=translate_fact('FCOM:PLAC');
-	$text=''; //('Place of First Communion');
-	break;
-
-case 'FCOM:SOUR':
-	$title=translate_fact('FCOM:SOUR');
-	$text=''; //('Source for First Communion');
 	break;
 
 case 'FILE':
@@ -756,21 +468,6 @@ case 'MARB':
 	$text='';
 	break;
 
-case 'MARB:DATE':
-	$title=translate_fact('MARB:DATE');
-	$text='';
-	break;
-
-case 'MARB:PLAC':
-	$title=translate_fact('MARB:PLAC');
-	$text='';
-	break;
-
-case 'MARB:SOUR':
-	$title=translate_fact('MARB:SOUR');
-	$text='';
-	break;
-
 case 'MARC':
 	$title=translate_fact('MARC');
 	$text='';
@@ -783,21 +480,6 @@ case 'MARL':
 
 case 'MARR':
 	$title=translate_fact('MARR');
-	$text='';
-	break;
-
-case 'MARR:':
-	$title=translate_fact('MARR');
-	$text='';
-	break;
-
-case 'MARR:PLAC':
-	$title=translate_fact('MARR:PLAC');
-	$text='';
-	break;
-
-case 'MARR:SOUR':
-	$title=translate_fact('MARR:SOUR');
 	$text='';
 	break;
 
@@ -834,16 +516,6 @@ case 'MEDI':
 case 'NAME':
 	$title=translate_fact('NAME');
 	$text=i18n::translate('This is the most important field in a person\'s Name record.<br /><br />This field should be filled automatically as the other fields are filled in, but it is provided so that you can edit the information according to your personal preference.<br /><br />The name in this field should be entered according to the GEDCOM 5.5.1 standards with the surname surrounded by forward slashes "/".  As an example, the name "John Robert Finlay Jr." should be entered like this: "John Robert /Finlay/ Jr.".');
-	break;
-
-case 'NAME:FONE':
-	$title=translate_fact('NAME:FONE');
-	$text='';
-	break;
-
-case 'NAME:_HEB':
-	$title=translate_fact('NAME:_HEB');
-	$text='';
 	break;
 
 case 'NATI':
@@ -924,21 +596,6 @@ case 'PHON':
 case 'PLAC':
 	$title=translate_fact('PLAC');
 	$text=i18n::translate('Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br /><br />For example, a place like Salt Lake City would be entered as "Salt Lake City, Salt Lake, Utah, USA".<br /><br />Let\'s examine each part of this place.  The first part, "Salt Lake City," is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, "Salt Lake," is the county.  "Utah" is the state, and "USA" is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br /><br />If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn\'t know the county for Salt Lake City.  You should then record it like this: "Salt Lake City, , Utah, USA".  Suppose you only know that a person was born in Utah.  You would enter the information like this: ", , Utah, USA".  <br /><br />You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
-	break;
-
-case 'PLAC:FONE':
-	$title=translate_fact('PLAC:FONE');
-	$text='';
-	break;
-
-case 'PLAC:ROMN':
-	$title=translate_fact('PLAC:ROMN');
-	$text='';
-	break;
-
-case 'PLAC:_HEB':
-	$title=translate_fact('PLAC:_HEB');
-	$text='';
 	break;
 
 case 'POST':
@@ -1078,11 +735,6 @@ case 'STAT':
 	$text=i18n::translate('This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program.');
 	break;
 
-case 'STAT:DATE':
-	$title=translate_fact('STAT:DATE');
-	$text='';
-	break;
-
 case 'SUBM':
 	$title=translate_fact('SUBM');
 	$text='';
@@ -1121,21 +773,6 @@ case 'TIME':
 case 'TITL':
 	$title=translate_fact('TITL');
 	$text=i18n::translate('Enter a title for the item you are editing.  If this is a title for a multimedia item, enter a descriptive title that will identify that item to the user.');
-	break;
-
-case 'TITL:FONE':
-	$title=translate_fact('TITL:FONE');
-	$text='';
-	break;
-
-case 'TITL:ROMN':
-	$title=translate_fact('TITL:ROMN');
-	$text='';
-	break;
-
-case 'TITL:_HEB':
-	$title=translate_fact('TITL:_HEB');
-	$text='';
 	break;
 
 case 'TRLR':
@@ -1331,21 +968,6 @@ case '_BIRT_SIBL':
 
 case '_BRTM':
 	$title=translate_fact('_BRTM');
-	$text='';
-	break;
-
-case '_BRTM:DATE':
-	$title=translate_fact('_BRTM:DATE');
-	$text='';
-	break;
-
-case '_BRTM:PLAC':
-	$title=translate_fact('_BRTM:PLAC');
-	$text='';
-	break;
-
-case '_BRTM:SOUR':
-	$title=translate_fact('_BRTM:SOUR');
 	$text='';
 	break;
 
