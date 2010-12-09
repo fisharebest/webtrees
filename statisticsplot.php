@@ -43,7 +43,7 @@ function bimo() {
 	global $z_as, $months, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsBirth(false);
+		$num = $stats->_statsBirth(false);
 		foreach ($num as $values) {
 			foreach ($months as $key=>$month) {
 				if ($month==$values['d_month']) {
@@ -54,7 +54,7 @@ function bimo() {
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsBirth(false, true);
+		$num = $stats->_statsBirth(false, true);
 		foreach ($num as $values) {
 			foreach ($months as $key=>$month) {
 				if ($month==$values['d_month']) {
@@ -73,7 +73,7 @@ function bimo() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsBirth(false, false, $zstart, $boundary);
+			$num = $stats->_statsBirth(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($months as $key=>$month) {
 					if ($month==$values['d_month']) {
@@ -100,7 +100,7 @@ function demo() {
 	global $z_as, $months, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsDeath(false);
+		$num = $stats->_statsDeath(false);
 		foreach ($num as $values) {
 			foreach ($months as $key=>$month) {
 				if ($month==$values['d_month']) {
@@ -111,7 +111,7 @@ function demo() {
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsDeath(false, true);
+		$num = $stats->_statsDeath(false, true);
 		foreach ($num as $values) {
 			foreach ($months as $key=>$month) {
 				if ($month==$values['d_month']) {
@@ -130,7 +130,7 @@ function demo() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsDeath(false, false, $zstart, $boundary);
+			$num = $stats->_statsDeath(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($months as $key=>$month) {
 					if ($month==$values['d_month']) {
@@ -149,7 +149,7 @@ function mamo() {
 	global $z_as, $months, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsMarr(false, false);
+		$num = $stats->_statsMarr(false, false);
 		foreach ($num as $values) {
 			foreach ($months as $key=>$month) {
 				if ($month==$values['d_month']) {
@@ -162,7 +162,7 @@ function mamo() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsMarr(false, false, $zstart, $boundary);
+			$num = $stats->_statsMarr(false, false, $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($months as $key=>$month) {
 					if ($month==$values['d_month']) {
@@ -181,7 +181,7 @@ function mamo1() {
 	global $z_as, $months, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsMarr(false, true);
+		$num = $stats->_statsMarr(false, true);
 		$indi=array();
 		$fam=array();
 		foreach ($num as $values) {
@@ -202,7 +202,7 @@ function mamo1() {
 		$indi=array();
 		$fam=array();
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsMarr(false, true, $zstart, $boundary);
+			$num = $stats->_statsMarr(false, true, $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['indi'], $indi) && !in_array($values['fams'], $fam)) {
 					foreach ($months as $key=>$month) {
@@ -234,7 +234,7 @@ function agbi() {
 	global $z_as, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsAge(false, 'BIRT');
+		$num = $stats->_statsAge(false, 'BIRT');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
 				fill_ydata(0, floor($age_value/365.25), 1);
@@ -243,14 +243,14 @@ function agbi() {
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsAge(false, 'BIRT', 'M');
+		$num = $stats->_statsAge(false, 'BIRT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
 				fill_ydata(0, floor($age_value/365.25), 1);
 				$n1++;
 			}
 		}
-		$num = $stats->statsAge(false, 'BIRT', 'F');
+		$num = $stats->_statsAge(false, 'BIRT', 'F');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
 				fill_ydata(1, floor($age_value/365.25), 1);
@@ -261,7 +261,7 @@ function agbi() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsAge(false, 'BIRT', 'BOTH', $zstart, $boundary);
+			$num = $stats->_statsAge(false, 'BIRT', 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($values as $age_value) {
 					fill_ydata($boundary, floor($age_value/365.25), 1);
@@ -278,7 +278,7 @@ function agde() {
 	global $z_as, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsAge(false, 'DEAT');
+		$num = $stats->_statsAge(false, 'DEAT');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
 				fill_ydata(0, floor($age_value/365.25), 1);
@@ -287,14 +287,14 @@ function agde() {
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsAge(false, 'DEAT', 'M');
+		$num = $stats->_statsAge(false, 'DEAT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
 				fill_ydata(0, floor($age_value/365.25), 1);
 				$n1++;
 			}
 		}
-		$num = $stats->statsAge(false, 'DEAT', 'F');
+		$num = $stats->_statsAge(false, 'DEAT', 'F');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
 				fill_ydata(1, floor($age_value/365.25), 1);
@@ -305,7 +305,7 @@ function agde() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsAge(false, 'DEAT', 'BOTH', $zstart, $boundary);
+			$num = $stats->_statsAge(false, 'DEAT', 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($values as $age_value) {
 					fill_ydata($boundary, floor($age_value/365.25), 1);
@@ -322,24 +322,24 @@ function agma() {
 	global $z_as, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsMarrAge(false, 'M');
+		$num = $stats->_statsMarrAge(false, 'M');
 		foreach ($num as $values) {
 			fill_ydata(0, floor($values['age']/365.25), 1);
 			$n1++;
 		}
-		$num = $stats->statsMarrAge(false, 'F');
+		$num = $stats->_statsMarrAge(false, 'F');
 		foreach ($num as $values) {
 			fill_ydata(0, floor($values['age']/365.25), 1);
 			$n1++;
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsMarrAge(false, 'M');
+		$num = $stats->_statsMarrAge(false, 'M');
 		foreach ($num as $values) {
 			fill_ydata(0, floor($values['age']/365.25), 1);
 			$n1++;
 		}
-		$num = $stats->statsMarrAge(false, 'F');
+		$num = $stats->_statsMarrAge(false, 'F');
 		foreach ($num as $values) {
 			fill_ydata(1, floor($values['age']/365.25), 1);
 			$n1++;
@@ -348,12 +348,12 @@ function agma() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsMarrAge(false, 'M', $zstart, $boundary);
+			$num = $stats->_statsMarrAge(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
 				fill_ydata($boundary, floor($values['age']/365.25), 1);
 				$n1++;
 			}
-			$num = $stats->statsMarrAge(false, 'F', $zstart, $boundary);
+			$num = $stats->_statsMarrAge(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
 				fill_ydata($boundary, floor($values['age']/365.25), 1);
 				$n1++;
@@ -368,7 +368,7 @@ function agma1() {
 	global $z_as, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsMarrAge(false, 'M');
+		$num = $stats->_statsMarrAge(false, 'M');
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['indi'], $indi)) {
@@ -377,7 +377,7 @@ function agma1() {
 				$indi[]=$values['indi'];
 			}
 		}
-		$num = $stats->statsMarrAge(false, 'F');
+		$num = $stats->_statsMarrAge(false, 'F');
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['indi'], $indi)) {
@@ -388,7 +388,7 @@ function agma1() {
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsMarrAge(false, 'M');
+		$num = $stats->_statsMarrAge(false, 'M');
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['indi'], $indi)) {
@@ -397,7 +397,7 @@ function agma1() {
 				$indi[]=$values['indi'];
 			}
 		}
-		$num = $stats->statsMarrAge(false, 'F');
+		$num = $stats->_statsMarrAge(false, 'F');
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['indi'], $indi)) {
@@ -411,7 +411,7 @@ function agma1() {
 		$zstart = 0;
 		$indi=array();
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsMarrAge(false, 'M', $zstart, $boundary);
+			$num = $stats->_statsMarrAge(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['indi'], $indi)) {
 					fill_ydata($boundary, floor($values['age']/365.25), 1);
@@ -419,7 +419,7 @@ function agma1() {
 					$indi[]=$values['indi'];
 				}
 			}
-			$num = $stats->statsMarrAge(false, 'F', $zstart, $boundary);
+			$num = $stats->_statsMarrAge(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['indi'], $indi)) {
 					fill_ydata($boundary, floor($values['age']/365.25), 1);
@@ -438,19 +438,19 @@ function nuch() {
 	global $z_as, $zgrenzen, $stats, $n1;
 
 	if ($z_as == 300) {
-		$num = $stats->statsChildren(false);
+		$num = $stats->_statsChildren(false);
 		foreach ($num as $values) {
 			fill_ydata(0, $values['f_numchil'], $values['total']);
 			$n1+=$values['f_numchil']*$values['total'];
 		}
 	}
 	else if ($z_as == 301) {
-		$num = $stats->statsChildren(false, 'M');
+		$num = $stats->_statsChildren(false, 'M');
 		foreach ($num as $values) {
 			fill_ydata(0, $values['num'], $values['total']);
 			$n1+=$values['num']*$values['total'];
 		}
-		$num = $stats->statsChildren(false, 'F');
+		$num = $stats->_statsChildren(false, 'F');
 		foreach ($num as $values) {
 			fill_ydata(1, $values['num'], $values['total']);
 			$n1+=$values['num']*$values['total'];
@@ -459,7 +459,7 @@ function nuch() {
 	else {
 		$zstart = 0;
 		foreach ($zgrenzen as $boundary) {
-			$num = $stats->statsChildren(false, 'BOTH', $zstart, $boundary);
+			$num = $stats->_statsChildren(false, 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				fill_ydata($boundary, $values['f_numchil'], $values['total']);
 				$n1+=$values['f_numchil']*$values['total'];
@@ -935,16 +935,16 @@ case '21':
 	set_params(21, "FAM", false, false, i18n::translate('Number of children'), i18n::translate('children'), $y_as, $xga, $zgp, "nuch");  //plot Number of children
 	break;
 case '1':
-	echo $stats->chartDistribution($chart_shows, $chart_type, $surname);
+	echo $stats->chartDistribution(array($chart_shows, $chart_type, $surname));
 	break;
 case '2':
-	echo $stats->chartDistribution($chart_shows, 'birth_distribution_chart');
+	echo $stats->chartDistribution(array($chart_shows, 'birth_distribution_chart'));
 	break;
 case '3':
-	echo $stats->chartDistribution($chart_shows, 'death_distribution_chart');
+	echo $stats->chartDistribution(array($chart_shows, 'death_distribution_chart'));
 	break;
 case '4':
-	echo $stats->chartDistribution($chart_shows, 'marriage_distribution_chart');
+	echo $stats->chartDistribution(array($chart_shows, 'marriage_distribution_chart'));
 	break;
 case '8':
 case '9':

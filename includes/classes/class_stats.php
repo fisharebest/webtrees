@@ -1057,8 +1057,11 @@ class stats {
 			->fetchOne();
 	}
 
-	function chartDistribution($chart_shows='world', $chart_type='', $surname='') {
+	function chartDistribution($params = null) {
 		global $iso3166, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3, $WT_STATS_MAP_X, $WT_STATS_MAP_Y;
+		if ($params !== null && isset($params[0])) {$chart_shows = $params[0];} else {$chart_shows='world';}
+		if ($params !== null && isset($params[1])) {$chart_type = $params[1];} else {$chart_type='';}
+		if ($params !== null && isset($params[2])) {$surname = $params[2];} else {$surname='';}
 
 		if ($this->totalPlaces()==0) {
 			return '';
@@ -1270,7 +1273,7 @@ class stats {
 		return "<ul>\n{$top10}</ul>\n";
 	}
 
-	function statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsBirth($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -1328,7 +1331,7 @@ class stats {
 		return $rows;
 	}
 
-	function statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsDeath($simple=true, $sex=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -1400,6 +1403,8 @@ class stats {
 	function lastBirthName() {return $this->_mortalityQuery('name', 'DESC', 'BIRT');}
 	function lastBirthPlace() {return $this->_mortalityQuery('place', 'DESC', 'BIRT');}
 
+	function statsBirth($params=null) {return $this->_statsBirth(true, false, -1, -1, $params);}
+
 	//
 	// Death
 	//
@@ -1413,6 +1418,8 @@ class stats {
 	function lastDeathYear() {return $this->_mortalityQuery('year', 'DESC', 'DEAT');}
 	function lastDeathName() {return $this->_mortalityQuery('name', 'DESC', 'DEAT');}
 	function lastDeathPlace() {return $this->_mortalityQuery('place', 'DESC', 'DEAT');}
+
+	function statsDeath($params=null) {return $this->_statsDeath(true, false, -1, -1, $params);}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Lifespan                                                                  //
@@ -1698,7 +1705,7 @@ class stats {
 		}
 	}
 
-	function statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
+	function _statsAge($simple=true, $related='BIRT', $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '230x250';}
 			$sizes = explode('x', $size);
@@ -1812,6 +1819,7 @@ class stats {
 	}
 
 	// Both Sexes
+	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
 
 	function longestLife() {return $this->_longlifeQuery('full', 'BOTH');}
 	function longestLifeAge() {return $this->_longlifeQuery('age', 'BOTH');}
@@ -2343,7 +2351,7 @@ class stats {
 		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
 	}
 
-	function statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -2419,7 +2427,7 @@ class stats {
 		return $rows;
 	}
 
-	function statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
+	function _statsDiv($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
@@ -2508,6 +2516,7 @@ class stats {
 	function lastMarriageName() {return $this->_mortalityQuery('name', 'DESC', 'MARR');}
 	function lastMarriagePlace() {return $this->_mortalityQuery('place', 'DESC', 'MARR');}
 
+	function statsMarr($params=null) {return $this->_statsMarr(true, false, -1, -1, $params);}
 	//
 	// Divorce
 	//
@@ -2520,8 +2529,10 @@ class stats {
 	function lastDivorceYear() {return $this->_mortalityQuery('year', 'DESC', 'DIV');}
 	function lastDivorceName() {return $this->_mortalityQuery('name', 'DESC', 'DIV');}
 	function lastDivorcePlace() {return $this->_mortalityQuery('place', 'DESC', 'DIV');}
+	
+	function statsDiv($params=null) {return $this->_statsDiv(true, false, -1, -1, $params);}
 
-	function statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
+	function _statsMarrAge($simple=true, $sex='M', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '200x250';}
 			$sizes = explode('x', $size);
@@ -2681,6 +2692,8 @@ class stats {
 	function oldestMarriageMale() {return $this->_marriageQuery('full', 'DESC', 'M');}
 	function oldestMarriageMaleName() {return $this->_marriageQuery('name', 'DESC', 'M');}
 	function oldestMarriageMaleAge($show_years=false) {return $this->_marriageQuery('age', 'DESC', 'M', $show_years);}
+	
+	function statsMarrAge($params=null) {return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params);}
 
 	function ageBetweenSpousesMF($params=null) {return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null);}
 	function ageBetweenSpousesMFList($params=null) {return $this->_ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null);}
@@ -3002,7 +3015,7 @@ class stats {
 		return sprintf('%.2f', $row['tot']);
 	}
 
-	function statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
+	function _statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 			$sizes = explode('x', $size);
@@ -3083,6 +3096,8 @@ class stats {
 		}
 	}
 
+	function statsChildren($params=null) {return $this->_statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null);}
+
 	function topAgeBetweenSiblingsName($params=null) {return $this->_ageBetweenSiblingsQuery($type='name', $params=null);}
 	function topAgeBetweenSiblings($params=null) {return $this->_ageBetweenSiblingsQuery($type='age', $params=null);}
 	function topAgeBetweenSiblingsFullName($params=null) {return $this->_ageBetweenSiblingsQuery($type='nolist', $params=null);}
@@ -3102,8 +3117,9 @@ class stats {
 	}
 
 
-	function noChildrenFamiliesList($type='list') {
+	function noChildrenFamiliesList($params = null) {
 		global $TEXT_DIRECTION;
+		if (isset($params[0]) && $params[0] != '') {$type = strtolower($params[0]);} else {$type = 'list';}
 		$rows=self::_runSQL(''
 			.' SELECT'
 				.' f_id AS family'
@@ -3138,8 +3154,10 @@ class stats {
 		return $top10;
 	}
 
-	function chartNoChildrenFamilies($year1=-1, $year2=-1, $params=null) {
+	function chartNoChildrenFamilies($params=null) {
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
+		if (isset($params[1]) && $params[1] != '') {$year1 = $params[1];} else {$year1 = -1;}
+		if (isset($params[2]) && $params[2] != '') {$year2 = $params[2];} else {$year2 = -1;}
 		$sizes = explode('x', $size);
 		if ($year1>=0 && $year2>=0) {
 			$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
