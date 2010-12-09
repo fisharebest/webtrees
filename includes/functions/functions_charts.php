@@ -585,8 +585,6 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
 	echo "<br />";
 	echo "<table width=\"95%\"><tr><td valign=\"top\" style=\"width: " . ($pbwidth) . "px;\">";
 	print_family_children($famid, $childid, $sosa, $label, $personcount);
-	echo "</td><td valign=\"top\">";
-	if ($sosa == 0) print_family_facts(Family::getInstance($famid), $sosa);
 	echo "</td></tr></table>";
 	echo "<br />";
 }
