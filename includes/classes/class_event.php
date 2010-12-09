@@ -441,7 +441,8 @@ class Event {
 				"SLGC", "BAPL", "CONL", "ENDL", "SLGS",
 				"ADDR", "PHON", "EMAIL", "_EMAIL", "EMAL", "FAX", "WWW", "URL", "_URL",
 				"AFN", "REFN", "_PRMN", "REF", "RIN", "_UID",
-				"CHAN", "_TODO"
+				"CHAN", "_TODO",
+				"NOTE", "SOUR", "OBJE"
 			));
 
 		// Facts from same families stay grouped together
