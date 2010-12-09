@@ -153,8 +153,9 @@ class i18n {
 			$d=opendir(WT_ROOT.'language');
 			while (($f=readdir($d))!==false) {
 				if (preg_match('/^(([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', $f, $match)) {
-					// launchpad does not support language variants such as sr@latin.
-					// Until it does, we cannot support variants such as sr@latin
+					// launchpad does not support language variants.
+					// Until it does, we cannot support languages such as sr@latin
+					// See http://zendframework.com/issues/browse/ZF-7485
 
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
@@ -173,7 +174,7 @@ class i18n {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.
 				if (substr($value, -1)=='|') {
-					$value=rtrim($value, '|');
+					list($value,)=explode('|', $value);
 				} else {
 					list(,$value)=explode('|', $value);
 				}
