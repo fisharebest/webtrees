@@ -842,22 +842,7 @@ class JewishDate extends CalendarDate {
 	}
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		// TODO: Do these have short names?
-		switch ($n) {
-		case 1:  return i18n::translate('Tishrei');
-		case 2:  return i18n::translate('Heshvan');
-		case 3:  return i18n::translate('Kislev');
-		case 4:  return i18n::translate('Tevet');
-		case 5:  return i18n::translate('Shevat');
-		case 6:  if ($leap_year) return i18n::translate('Adar'); else return i18n::translate('Adar I');
-		case 7:  return i18n::translate('Adar II');
-		case 8:  return i18n::translate('Nissan');
-		case 9:  return i18n::translate('Iyar');
-		case 10: return i18n::translate('Sivan');
-		case 11: return i18n::translate('Tamuz');
-		case 12: return i18n::translate('Av');
-		case 13: return i18n::translate('Elul');
-		default: return '';
-		}
+		return self::NUM_TO_MONTH_NOMINATIVE($n, $leap_year);
 	}
 	static function NUM_TO_GEDCOM_MONTH($n, $leap_year) {
 		// TODO: Do these have short names in English?
