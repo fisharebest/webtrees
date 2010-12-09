@@ -460,9 +460,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
  * print the facts table for a family
  *
  * @param string $famid family gedcom ID
- * @param int $sosa optional child sosa number
  */
-function print_family_facts(&$family, $sosa = 0) {
+function print_family_facts(&$family) {
 	global $pbwidth, $pbheight;
 	global $nonfacts;
 	global $TEXT_DIRECTION, $GEDCOM;
@@ -488,37 +487,29 @@ function print_family_facts(&$family, $sosa = 0) {
 				if ($value->getTag()!="SOUR" && $value->getTag()!="OBJE" && $value->getTag()!="NOTE")
 					print_fact($value);
 			}
-			// do not print otheritems for sosa
-			if ($sosa == 0) {
-				foreach ($indifacts as $key => $value) {
-					$fact = $value->getTag();
-					// -- handle special source fact case
-					if ($fact == "SOUR") {
-						print_main_sources($value->getGedComRecord(), 1, $famid, $value->getLineNumber());
-					}
-					// -- handle special note fact case
-					else if ($fact == "NOTE") {
-						print_main_notes($value->getGedComRecord(), 1, $famid, $value->getLineNumber());
-					}
+			foreach ($indifacts as $key => $value) {
+				$fact = $value->getTag();
+				// -- handle special source fact case
+				if ($fact == "SOUR") {
+					print_main_sources($value->getGedComRecord(), 1, $famid, $value->getLineNumber());
 				}
-				// NOTE: Print the media
-				print_main_media($famid);
+				// -- handle special note fact case
+				else if ($fact == "NOTE") {
+					print_main_notes($value->getGedComRecord(), 1, $famid, $value->getLineNumber());
+				}
 			}
-		}
-		else {
-			if ($sosa==0) {
-				echo "<span class=\"subheaders\">" . i18n::translate('Family Group Information');
-				echo "</span><br />";
-			}
+			// NOTE: Print the media
+			print_main_media($famid);
+		} else {
+			echo "<span class=\"subheaders\">" . i18n::translate('Family Group Information');
+			echo "</span><br />";
 			echo "<table class=\"facts_table\">";
-			if ($sosa == 0) {
-				echo "<tr><td class=\"messagebox\" colspan=\"2\">";
-				echo i18n::translate('No facts for this family.');
-				echo "</td></tr>";
-			}
+			echo "<tr><td class=\"messagebox\" colspan=\"2\">";
+			echo i18n::translate('No facts for this family.');
+			echo "</td></tr>";
 		}
 		// -- new fact link
-		if ($sosa==0 && WT_USER_CAN_EDIT) {
+		if (WT_USER_CAN_EDIT) {
 			print_add_new_fact($famid, $indifacts, "FAM");
 
 			// -- new note
