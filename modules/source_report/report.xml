@@ -61,7 +61,7 @@
 			<if condition="$sortby=='BIRT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><var var="i18n::translate('Birth Date')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><var var="translate_fact('BIRT:DATE')" /></Cell>
 			<!-- Name of the fact that contains the source -->
 			<Cell border="1" style="list_label" width="$fact"><var var="i18n::translate('Event')" /></Cell>
 			<!-- Date of the fact -->
