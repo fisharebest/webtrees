@@ -42,7 +42,7 @@
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='DEAT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$datewidth">
-				<Text style="label"><var var="i18n::translate('Death Date')" /></Text>
+				<Text style="label"><var var="translate_fact('DEAT:DATE')" /></Text>
 			</TextBox>
 			<!-- should print and sort by burial date -->
 
