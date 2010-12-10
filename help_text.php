@@ -3757,7 +3757,7 @@ echo '<div class="helpheader">', nl2br($title), '</div>';
 echo '<div class="helpcontent">', nl2br($text),'</div>';
 echo '<div class="helpfooter"><br />';
 echo '<a href="javascript:;" onclick="window.history.go(-1)">','<img src="', $WT_IMAGES["larrow"], '" alt="<"><br />';
-echo '<a href="help_text.php?help=help_contents_help"><b>', i18n::translate('Help Contents'), '</b></a><br />';
+echo '<a href="help_text.php?help=help_contents_help"><b>', i18n::translate('Help contents'), '</b></a><br />';
 echo '<a href="javascript:;" onclick="window.close();"><b>', i18n::translate('Close Window'), '</b></a>';
 echo '</div>';
 print_simple_footer();

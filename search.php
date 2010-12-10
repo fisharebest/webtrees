@@ -213,7 +213,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		echo " checked=\"checked\" ";
 ?>
 				value="yes" name="srnote" />
-				<?php echo i18n::translate('Shared Notes'); ?><br />
+				<?php echo i18n::translate('Shared notes'); ?><br />
 		</td>
 	</tr>
 	<!-- Choice to Exclude non-genealogical data -->

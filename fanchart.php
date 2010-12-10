@@ -298,7 +298,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				}
 				echo "<br /><a href=\"descendancy.php?pid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" >".i18n::translate('Descendancy chart')."</a>";
 				echo "<br /><a href=\"ancestry.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
-				echo "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact Chart')."</a>";
+				echo "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact chart')."</a>";
 				echo "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
 				echo "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
 				echo "<br /><a href=\"treenav.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";

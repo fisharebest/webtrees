@@ -966,7 +966,7 @@ jQuery(document).ready(function() {
 					echo i18n::translate('The media Firewall is ENABLED but your media may still be located in the Standard Media Directory').'<br />';
 					echo i18n::translate('Choose either').'<br />';
 					echo i18n::translate('(a) Click the "Move ALL to Protected" button to move your media to the protected directory').'<br />';
-					echo i18n::translate('OR').'<br />';
+					echo i18n::translate('or').'<br />';
 					echo i18n::translate('(b) Disable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
 					echo '</div>';
 				}
@@ -982,7 +982,7 @@ jQuery(document).ready(function() {
 					echo i18n::translate('The media Firewall is DISABLED but your media may still be located in the Protected Media Directory').'<br />';
 					echo i18n::translate('Choose either').'<br />';
 					echo i18n::translate('(a) Click the "Move ALL to Standard" button to move your media to the standard directory').'<br />';
-					echo i18n::translate('OR').'<br />';
+					echo i18n::translate('or').'<br />';
 					echo i18n::translate('(b) Re-enable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
 					echo '</div>';
 					echo "<input type=\"submit\" value=\"".i18n::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";

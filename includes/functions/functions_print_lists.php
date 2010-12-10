@@ -210,7 +210,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 			echo
 				'<td class="list_value_wrap"><a href="',
 				'relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(),
-				'" title="', i18n::translate('Relationship Chart'), '"',
+				'" title="', i18n::translate('Relationship chart'), '"',
 				' name="', $key, '" class="list_item name2">', $key, '</a></td>';
 		}
 		//-- Birth date
@@ -803,7 +803,7 @@ function print_sour_table($datalist, $legend=null) {
 	echo '<th class="list_label">', i18n::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Families'), '</th>';
 	echo '<th class="list_label">', i18n::translate('Media'), '</th>';
-	echo '<th class="list_label">', i18n::translate('Shared Notes'), '</th>';
+	echo '<th class="list_label">', i18n::translate('Shared notes'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
 	}
@@ -920,7 +920,7 @@ function print_note_table($datalist, $legend=null) {
 	if ($legend) {
 		echo $legend;
 	} else {
-		echo i18n::translate('Shared Notes');
+		echo i18n::translate('Shared notes');
 	}
 	echo '</legend>';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID

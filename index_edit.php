@@ -335,9 +335,9 @@ if ($action=="configure") {
 	echo "<tr>";
 	// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
 	echo "<td class=\"optionbox width20px center vmiddle\">";
-		echo "<a tabindex=\"-1\" onclick=\"move_up_block('main_select');\" title=\"".i18n::translate('Move Up')."\">".$IconUarrow."</a>";
+		echo "<a tabindex=\"-1\" onclick=\"move_up_block('main_select');\" title=\"".i18n::translate('Move up')."\">".$IconUarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_down_block('main_select');\" title=\"".i18n::translate('Move Down')."\">".$IconDarrow."</a>";
+		echo "<a tabindex=\"-1\" onclick=\"move_down_block('main_select');\" title=\"".i18n::translate('Move down')."\">".$IconDarrow."</a>";
 		echo "<br /><br />";
 		echo help_link('block_move_up');
 
@@ -389,9 +389,9 @@ if ($action=="configure") {
 	echo "</td>";
 	// NOTE: Row 2 column 7: Up/Down buttons for right block list
 	echo "<td class=\"optionbox width20 vmiddle\">";
-		echo "<a tabindex=\"-1\" onclick=\"move_up_block('right_select');\" title=\"".i18n::translate('Move Up')."\">".$IconUarrow."</a>";
+		echo "<a tabindex=\"-1\" onclick=\"move_up_block('right_select');\" title=\"".i18n::translate('Move up')."\">".$IconUarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_down_block('right_select');\" title=\"".i18n::translate('Move Down')."\">".$IconDarrow."</a>";
+		echo "<a tabindex=\"-1\" onclick=\"move_down_block('right_select');\" title=\"".i18n::translate('Move down')."\">".$IconDarrow."</a>";
 		echo "<br /><br />";
 		echo help_link('block_move_up');
 	echo "</td>";

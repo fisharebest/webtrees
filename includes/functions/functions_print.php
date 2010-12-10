@@ -123,7 +123,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 					$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Ancestry chart')."</b></a><br />";
 				}
 				if (file_exists(WT_ROOT.'compact.php')) {
-					$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Compact Chart')."</b></a><br />";
+					$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Compact chart')."</b></a><br />";
 				}
 				if (file_exists(WT_ROOT.'fanchart.php') and defined("IMG_ARC_PIE") and function_exists("imagettftext")) {
 					$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".i18n::translate('Circle diagram')."</b></a><br />";
@@ -1345,7 +1345,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 			case 'INDI':
 				$relationship=get_relationship_name(get_relationship($pid, $amatch[1], true, 4));
 				if (!$relationship) {
-					$relationship=i18n::translate('Relationship Chart');
+					$relationship=i18n::translate('Relationship chart');
 				}
 				$relationship=' - <a href="relationship.php?pid1='.$pid.'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship.'</a>';
 				break;
@@ -1357,14 +1357,14 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 					if ($parents["HUSB"]) {
 						$relationship1=get_relationship_name(get_relationship($parents["HUSB"], $amatch[1], true, 4));
 						if (!$relationship1) {
-							$relationship1=i18n::translate('Relationship Chart');
+							$relationship1=i18n::translate('Relationship chart');
 						}
 						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship1.'<img src="'.$WT_IMAGES['sex_m_9x9'].'" class="gender_image" /></a>';
 					}
 					if ($parents["WIFE"]) {
 						$relationship2=get_relationship_name(get_relationship($parents["WIFE"], $amatch[1], true, 4));
 						if (!$relationship2) {
-							$relationship2=i18n::translate('Relationship Chart');
+							$relationship2=i18n::translate('Relationship chart');
 						}
 						$relationship.=' - <a href="relationship.php?pid1='.$parents["WIFE"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship2.'<img src="'.$WT_IMAGES['sex_f_9x9'].'" class="gender_image" /></a>';
 					}
@@ -1407,7 +1407,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 					// An naturally occuring ASSO event
 					$relationship=get_relationship_name(get_relationship($pid, $amatch[1], true, 4, true));
 					if (!$relationship) {
-						$relationship=i18n::translate('Relationship Chart');
+						$relationship=i18n::translate('Relationship chart');
 					}
 				}
 				$relationship=' - <a href="relationship.php?pid1='.$pid.'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship.'</a>';
@@ -1420,14 +1420,14 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 					if ($parents["HUSB"]) {
 						$relationship1=get_relationship_name(get_relationship($parents["HUSB"], $amatch[1], true, 4));
 						if (!$relationship1) {
-							$relationship1=i18n::translate('Relationship Chart');
+							$relationship1=i18n::translate('Relationship chart');
 						}
 						$relationship.=' - <a href="relationship.php?pid1='.$parents["HUSB"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship1.'<img src="'.$WT_IMAGES['sex_m_9x9'].'" class="gender_image" /></a>';
 					}
 					if ($parents["WIFE"]) {
 						$relationship2=get_relationship_name(get_relationship($parents["WIFE"], $amatch[1], true, 4));
 						if (!$relationship2) {
-							$relationship2=i18n::translate('Relationship Chart');
+							$relationship2=i18n::translate('Relationship chart');
 						}
 						$relationship.=' - <a href="relationship.php?pid1='.$parents["WIFE"].'&amp;pid2='.$amatch[1].'&amp;ged='.WT_GEDURL.'">'.$relationship2.'<img src="'.$WT_IMAGES['sex_f_9x9'].'" class="gender_image" /></a>';
 					}

@@ -43,7 +43,7 @@ $name   =$person->getFullName();
 $addname=$person->getAddName();
 
 // -- print html header information
-print_header(PrintReady($name) . " " . i18n::translate('Compact Chart'));
+print_header(PrintReady($name) . " " . i18n::translate('Compact chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -57,7 +57,7 @@ if (WT_USE_LIGHTBOX) {
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">";
-echo "<h2>" . i18n::translate('Compact Chart') . ":";
+echo "<h2>" . i18n::translate('Compact chart') . ":";
 echo "<br />".PrintReady($name) ;
 if ($addname != "") echo "<br />" . PrintReady($addname);
 echo "</h2>";
@@ -403,9 +403,9 @@ function print_arrow_person($n, $arrow_dir) {
 		}
 	}
 	if ($TEXT_DIRECTION=="ltr") {
-		$title = i18n::translate('Compact Chart').": ".$pid;
+		$title = i18n::translate('Compact chart').": ".$pid;
 	} else {
-		$title = $pid." :".i18n::translate('Compact Chart');
+		$title = $pid." :".i18n::translate('Compact chart');
 	}
 	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
 	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";

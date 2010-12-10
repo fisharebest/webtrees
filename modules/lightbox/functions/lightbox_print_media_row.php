@@ -250,7 +250,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			}
 			if (WT_USER_CAN_EDIT) {
 				// Edit Media
-				$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('Edit Media') . "&nbsp;&nbsp;", "#", "right");
+				$submenu = new Menu("&nbsp;&nbsp;" . i18n::translate('Edit media') . "&nbsp;&nbsp;", "#", "right");
 				$submenu->addOnclick("return window.open('addmedia.php?action=editmedia&amp;pid={$rowm['m_media']}&amp;linktoid={$rowm['mm_gid']}', '_blank', 'top=50,left=50,width=600,height=700,resizable=1,scrollbars=1');");
 				$submenu->addClass($submenu_class, $submenu_hoverclass);
 				$menu->addSubMenu($submenu);

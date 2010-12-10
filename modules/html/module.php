@@ -335,7 +335,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($gedcom == '__current__') {$sel_current = ' selected="selected"';} else {$sel_current = '';}
 			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
 			echo "<tr><td class=\"descriptionbox wrap width33\">"
-				.i18n::translate('Family Tree')
+				.i18n::translate('Family tree')
 				.help_link('index_htmlplus_gedcom')
 				."</td><td class=\"optionbox\">"
 				."<select name=\"gedcom\">"

@@ -196,13 +196,13 @@ class MenuBar {
 		$menuList["pedigree"] = i18n::translate('Pedigree Chart');
 		if (file_exists(WT_ROOT.'descendancy.php')) $menuList["descendancy"] = i18n::translate('Descendancy chart');
 		if (file_exists(WT_ROOT.'ancestry.php')) $menuList["ancestry"] = i18n::translate('Ancestry chart');
-		if (file_exists(WT_ROOT.'compact.php')) $menuList["compact"] = i18n::translate('Compact Chart');
+		if (file_exists(WT_ROOT.'compact.php')) $menuList["compact"] = i18n::translate('Compact chart');
 		if (file_exists(WT_ROOT.'fanchart.php') && function_exists("imagettftext")) $menuList["fanchart"] = i18n::translate('Circle diagram');
 		if (file_exists(WT_ROOT.'hourglass.php')) $menuList["hourglass"] = i18n::translate('Hourglass chart');
 		if (file_exists(WT_ROOT.'familybook.php')) $menuList["familybook"] = i18n::translate('Family book chart');
 		if (file_exists(WT_ROOT.'timeline.php')) $menuList["timeline"] = i18n::translate('Timeline chart');
 		if (file_exists(WT_ROOT.'lifespan.php')) $menuList["lifespan"] = i18n::translate('Lifespan chart');
-		if (file_exists(WT_ROOT.'relationship.php')) $menuList["relationship"] = i18n::translate('Relationship Chart');
+		if (file_exists(WT_ROOT.'relationship.php')) $menuList["relationship"] = i18n::translate('Relationship chart');
 		if (file_exists(WT_ROOT.'statistics.php')) $menuList["statistics"] = i18n::translate('Statistics');
 		if (file_exists(WT_ROOT.'treenav.php')) $menuList["treenav"] = i18n::translate('Interactive tree');
 		if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
@@ -373,12 +373,12 @@ class MenuBar {
 								$person=Person::getInstance($pid2);
 								if ($person instanceof Person) {
 									$submenu = new Menu(
-										i18n::translate('Relationship Chart').': '.PrintReady($person->getFullName()),
+										i18n::translate('Relationship chart').': '.PrintReady($person->getFullName()),
 										"relationship.php?pid1={$pid2}&amp;pid2={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
 									);
 								} else {
 									$submenu = new Menu(
-										i18n::translate('Relationship Chart'),
+										i18n::translate('Relationship chart'),
 										"relationship.php?pid1={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
 									);
 								}
@@ -387,7 +387,7 @@ class MenuBar {
 								$menu->addSubmenu($submenu);
 							} else {
 								$submenu = new Menu(
-									i18n::translate('Relationship Chart'),
+									i18n::translate('Relationship chart'),
 									"relationship.php?pid1={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
 								);
 								$submenu->addIcon('relationship');
@@ -474,7 +474,7 @@ class MenuBar {
 			'medialist.php' =>i18n::translate('Multimedia'),
 			'placelist.php' =>i18n::translate('Place hierarchy'),
 			'repolist.php'  =>i18n::translate('Repositories'),
-			'notelist.php'  =>i18n::translate('Shared Notes'),
+			'notelist.php'  =>i18n::translate('Shared notes'),
 			'sourcelist.php'=>i18n::translate('Sources')
 		);
 		asort($menuList);
@@ -701,7 +701,7 @@ class MenuBar {
 			$submenu->addOnclick("return helpPopup('".$helpindex."');");
 		$menu->addSubmenu($submenu);
 		//-- help_contents sub menu
-		$submenu = new Menu(i18n::translate('Help Contents'), "#");
+		$submenu = new Menu(i18n::translate('Help contents'), "#");
 		$submenu->addIcon('help');
 		$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_help");
 		$submenu->addOnclick("return helpPopup('help_contents_help');");

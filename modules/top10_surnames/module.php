@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Top Surnames');
+		return i18n::translate('Top surnames');
 	}
 
 	// Extend class WT_Module

@@ -74,7 +74,7 @@ if (empty($pid1)) {
 $check_node = true;
 $disp = true;
 
-$title_string .= i18n::translate('Relationship Chart');
+$title_string .= i18n::translate('Relationship chart');
 // -- print html header information
 print_header($title_string);
 
@@ -134,7 +134,7 @@ function paste_id(value) {
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">
-	<?php echo i18n::translate('Relationship Chart'); ?>
+	<?php echo i18n::translate('Relationship chart'); ?>
 	</td>
 
 	<!-- // Empty space -->

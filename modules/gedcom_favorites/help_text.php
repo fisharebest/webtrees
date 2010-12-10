@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'recent_changes':
-	$title=i18n::translate('GEDCOM Favorites block');
+	$title=i18n::translate('GEDCOM favorites block');
 	$text=i18n::translate('The GEDCOM Favorites block gives the administrator the ability to designate individuals from the database so that their information is easily accessible to all.  This is a way to highlight people who are important in your family history.');
 	$text.='<ul><li>';
 

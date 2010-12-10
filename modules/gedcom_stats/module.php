@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/classes/class_module.php';
 class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('GEDCOM Statistics');
+		return i18n::translate('GEDCOM statistics');
 	}
 
 	// Extend class WT_Module
@@ -81,7 +81,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
 		}
-		$title.=i18n::translate('GEDCOM Statistics').help_link('index_stats');
+		$title.=i18n::translate('GEDCOM statistics').help_link('index_stats');
 
 		require_once WT_ROOT.'includes/classes/class_stats.php';
 		$stats=new stats(WT_GEDCOM);
