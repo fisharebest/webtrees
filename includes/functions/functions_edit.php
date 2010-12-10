@@ -183,19 +183,6 @@ function edit_field_access_level($name, $selected='', $extra='') {
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }
 
-// Print an edit control for logging frequency
-function edit_field_log_frequency($name, $selected='', $extra='') {
-	$LOG_FREQUENCY=array(
-		'none'    =>i18n::translate('Disable logging'),
-		'daily'   =>i18n::translate('Daily'),
-		'weekly'  =>i18n::translate('Weekly'),
-		'monthly' =>i18n::translate('Monthly'),
-		'yearly'  =>i18n::translate('Yearly'),
-		'database'=>i18n::translate('Database')
-	);
-	return select_edit_control($name, $LOG_FREQUENCY, null, $selected, $extra);
-}
-
 // Print an edit control for a contact method field
 function edit_field_contact($name, $selected='', $extra='') {
 	// Different ways to contact the users
