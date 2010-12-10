@@ -247,7 +247,7 @@ class MenuBar {
 				//-- compact
 				$link = "compact.php?ged=".WT_GEDURL;
 				if ($rootid) $link .= "&amp;rootid=".$rootid;
-				$submenu = new Menu(i18n::translate('Compact Chart'), $link);
+				$submenu = new Menu(i18n::translate('Compact chart'), $link);
 				$submenu->addIcon('ancestry');
 				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_ancestry");
 				$menu->addSubmenu($submenu);
