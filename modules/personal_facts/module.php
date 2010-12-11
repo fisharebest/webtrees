@@ -52,7 +52,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS, $n_chil, $n_gchi, $n_ggch;
+		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS, $n_chil, $n_gchi;
 
 		/*if (isset($_COOKIE['row_rela'])) $EXPAND_RELATIVES_EVENTS = ($_COOKIE['row_rela']);
 		if (isset($_COOKIE['row_histo'])) $EXPAND_HISTO_EVENTS = ($_COOKIE['row_histo']);
@@ -96,7 +96,6 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			$yetdied=false;
 			$n_chil=1;
 			$n_gchi=1;
-			$n_ggch=1;
 			foreach ($indifacts as $value) {
 				if (strstr(WT_EVENTS_DEAT, $value->getTag())) {
 					$yetdied = true;

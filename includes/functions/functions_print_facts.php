@@ -73,7 +73,7 @@ function expand_urls($text) {
 function print_fact(&$eventObj) {
 	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $FACTS_M, $FACTS_F, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
-	global $n_chil, $n_gchi, $n_ggch, $SEARCH_SPIDER;
+	global $n_chil, $n_gchi, $SEARCH_SPIDER;
 
 	if (!$eventObj->canShow()) {
 		return;
@@ -153,9 +153,8 @@ function print_fact(&$eventObj) {
 				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><div class=\"deletelink\"><span class=\"link_text\">".i18n::translate('Delete')."</span></div></a>";
 			echo "</div>";
 		} else {echo translate_fact($factref, $label_person);}
-		if ($fact=="_BIRT_CHIL" and isset($n_chil)) echo "<br />", i18n::translate('#%d', $n_chil++);
-		if ($fact=="_BIRT_GCHI" and isset($n_gchi)) echo "<br />", i18n::translate('#%d', $n_gchi++);
-		if ($fact=="_BIRT_GGCH" and isset($n_ggch)) echo "<br />", i18n::translate('#%d', $n_ggch++);
+		if ($fact=="_BIRT_CHIL") echo "<br />", i18n::translate('#%d', $n_chil++);
+		if (preg_match("/_BIRT_GCH[I12]/", $fact)) echo "<br />", i18n::translate('#%d', $n_gchi++);
 		echo "</td>";
 	} else {
 		if ($fact == "OBJE") return false;

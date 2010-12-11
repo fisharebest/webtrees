@@ -815,38 +815,13 @@ case '_ADOP_CHIL':
 	$text='';
 	break;
 
-case '_ADOP_COUS':
-	$title=translate_fact('_ADOP_COUS');
-	$text='';
-	break;
-
-case '_ADOP_FSIB':
-	$title=translate_fact('_ADOP_FSIB');
-	$text='';
-	break;
-
 case '_ADOP_GCHI':
 	$title=translate_fact('_ADOP_GCHI');
 	$text='';
 	break;
 
-case '_ADOP_GGCH':
-	$title=translate_fact('_ADOP_GGCH');
-	$text='';
-	break;
-
 case '_ADOP_HSIB':
 	$title=translate_fact('_ADOP_HSIB');
-	$text='';
-	break;
-
-case '_ADOP_MSIB':
-	$title=translate_fact('_ADOP_MSIB');
-	$text='';
-	break;
-
-case '_ADOP_NEPH':
-	$title=translate_fact('_ADOP_NEPH');
 	$text='';
 	break;
 
@@ -876,38 +851,13 @@ case '_BAPM_CHIL':
 	$text='';
 	break;
 
-case '_BAPM_COUS':
-	$title=translate_fact('_BAPM_COUS');
-	$text='';
-	break;
-
-case '_BAPM_FSIB':
-	$title=translate_fact('_BAPM_FSIB');
-	$text='';
-	break;
-
 case '_BAPM_GCHI':
 	$title=translate_fact('_BAPM_GCHI');
 	$text='';
 	break;
 
-case '_BAPM_GGCH':
-	$title=translate_fact('_BAPM_GGCH');
-	$text='';
-	break;
-
 case '_BAPM_HSIB':
 	$title=translate_fact('_BAPM_HSIB');
-	$text='';
-	break;
-
-case '_BAPM_MSIB':
-	$title=translate_fact('_BAPM_MSIB');
-	$text='';
-	break;
-
-case '_BAPM_NEPH':
-	$title=translate_fact('_BAPM_NEPH');
 	$text='';
 	break;
 
@@ -926,38 +876,13 @@ case '_BIRT_CHIL':
 	$text='';
 	break;
 
-case '_BIRT_COUS':
-	$title=translate_fact('_BIRT_COUS');
-	$text='';
-	break;
-
-case '_BIRT_FSIB':
-	$title=translate_fact('_BIRT_FSIB');
-	$text='';
-	break;
-
 case '_BIRT_GCHI':
 	$title=translate_fact('_BIRT_GCHI');
 	$text='';
 	break;
 
-case '_BIRT_GGCH':
-	$title=translate_fact('_BIRT_GGCH');
-	$text='';
-	break;
-
 case '_BIRT_HSIB':
 	$title=translate_fact('_BIRT_HSIB');
-	$text='';
-	break;
-
-case '_BIRT_MSIB':
-	$title=translate_fact('_BIRT_MSIB');
-	$text='';
-	break;
-
-case '_BIRT_NEPH':
-	$title=translate_fact('_BIRT_NEPH');
 	$text='';
 	break;
 
@@ -976,33 +901,13 @@ case '_BURI_CHIL':
 	$text='';
 	break;
 
-case '_BURI_COUS':
-	$title=translate_fact('_BURI_COUS');
-	$text='';
-	break;
-
 case '_BURI_FATH':
 	$title=translate_fact('_BURI_FATH');
 	$text='';
 	break;
 
-case '_BURI_FSIB':
-	$title=translate_fact('_BURI_FSIB');
-	$text='';
-	break;
-
 case '_BURI_GCHI':
 	$title=translate_fact('_BURI_GCHI');
-	$text='';
-	break;
-
-case '_BURI_GGCH':
-	$title=translate_fact('_BURI_GGCH');
-	$text='';
-	break;
-
-case '_BURI_GGPA':
-	$title=translate_fact('_BURI_GGPA');
 	$text='';
 	break;
 
@@ -1021,16 +926,6 @@ case '_BURI_MOTH':
 	$text='';
 	break;
 
-case '_BURI_MSIB':
-	$title=translate_fact('_BURI_MSIB');
-	$text='';
-	break;
-
-case '_BURI_NEPH':
-	$title=translate_fact('_BURI_NEPH');
-	$text='';
-	break;
-
 case '_BURI_SIBL':
 	$title=translate_fact('_BURI_SIBL');
 	$text='';
@@ -1046,38 +941,13 @@ case '_CHR_CHIL':
 	$text='';
 	break;
 
-case '_CHR_COUS':
-	$title=translate_fact('_CHR_COUS');
-	$text='';
-	break;
-
-case '_CHR_FSIB':
-	$title=translate_fact('_CHR_FSIB');
-	$text='';
-	break;
-
 case '_CHR_GCHI':
 	$title=translate_fact('_CHR_GCHI');
 	$text='';
 	break;
 
-case '_CHR_GGCH':
-	$title=translate_fact('_CHR_GGCH');
-	$text='';
-	break;
-
 case '_CHR_HSIB':
 	$title=translate_fact('_CHR_HSIB');
-	$text='';
-	break;
-
-case '_CHR_MSIB':
-	$title=translate_fact('_CHR_MSIB');
-	$text='';
-	break;
-
-case '_CHR_NEPH':
-	$title=translate_fact('_CHR_NEPH');
 	$text='';
 	break;
 
@@ -1096,33 +966,13 @@ case '_CREM_CHIL':
 	$text='';
 	break;
 
-case '_CREM_COUS':
-	$title=translate_fact('_CREM_COUS');
-	$text='';
-	break;
-
 case '_CREM_FATH':
 	$title=translate_fact('_CREM_FATH');
 	$text='';
 	break;
 
-case '_CREM_FSIB':
-	$title=translate_fact('_CREM_FSIB');
-	$text='';
-	break;
-
 case '_CREM_GCHI':
 	$title=translate_fact('_CREM_GCHI');
-	$text='';
-	break;
-
-case '_CREM_GGCH':
-	$title=translate_fact('_CREM_GGCH');
-	$text='';
-	break;
-
-case '_CREM_GGPA':
-	$title=translate_fact('_CREM_GGPA');
 	$text='';
 	break;
 
@@ -1138,16 +988,6 @@ case '_CREM_HSIB':
 
 case '_CREM_MOTH':
 	$title=translate_fact('_CREM_MOTH');
-	$text='';
-	break;
-
-case '_CREM_MSIB':
-	$title=translate_fact('_CREM_MSIB');
-	$text='';
-	break;
-
-case '_CREM_NEPH':
-	$title=translate_fact('_CREM_NEPH');
 	$text='';
 	break;
 
@@ -1171,33 +1011,13 @@ case '_DEAT_CHIL':
 	$text='';
 	break;
 
-case '_DEAT_COUS':
-	$title=translate_fact('_DEAT_COUS');
-	$text='';
-	break;
-
 case '_DEAT_FATH':
 	$title=translate_fact('_DEAT_FATH');
 	$text='';
 	break;
 
-case '_DEAT_FSIB':
-	$title=translate_fact('_DEAT_FSIB');
-	$text='';
-	break;
-
 case '_DEAT_GCHI':
 	$title=translate_fact('_DEAT_GCHI');
-	$text='';
-	break;
-
-case '_DEAT_GGCH':
-	$title=translate_fact('_DEAT_GGCH');
-	$text='';
-	break;
-
-case '_DEAT_GGPA':
-	$title=translate_fact('_DEAT_GGPA');
 	$text='';
 	break;
 
@@ -1213,16 +1033,6 @@ case '_DEAT_HSIB':
 
 case '_DEAT_MOTH':
 	$title=translate_fact('_DEAT_MOTH');
-	$text='';
-	break;
-
-case '_DEAT_MSIB':
-	$title=translate_fact('_DEAT_MSIB');
-	$text='';
-	break;
-
-case '_DEAT_NEPH':
-	$title=translate_fact('_DEAT_NEPH');
 	$text='';
 	break;
 
@@ -1321,16 +1131,6 @@ case '_FA13':
 	$text='';
 	break;
 
-case '_FAMC_EMIG':
-	$title=translate_fact('_FAMC_EMIG');
-	$text='';
-	break;
-
-case '_FAMC_RESI':
-	$title=translate_fact('_FAMC_RESI');
-	$text='';
-	break;
-
 case '_FNRL':
 	$title=translate_fact('_FNRL');
 	$text='';
@@ -1381,11 +1181,6 @@ case '_MARB_CHIL':
 	$text='';
 	break;
 
-case '_MARB_COUS':
-	$title=translate_fact('_MARB_COUS');
-	$text='';
-	break;
-
 case '_MARB_FAMC':
 	$title=translate_fact('_MARB_FAMC');
 	$text='';
@@ -1396,18 +1191,8 @@ case '_MARB_FATH':
 	$text='';
 	break;
 
-case '_MARB_FSIB':
-	$title=translate_fact('_MARB_FSIB');
-	$text='';
-	break;
-
 case '_MARB_GCHI':
 	$title=translate_fact('_MARB_GCHI');
-	$text='';
-	break;
-
-case '_MARB_GGCH':
-	$title=translate_fact('_MARB_GGCH');
 	$text='';
 	break;
 
@@ -1418,16 +1203,6 @@ case '_MARB_HSIB':
 
 case '_MARB_MOTH':
 	$title=translate_fact('_MARB_MOTH');
-	$text='';
-	break;
-
-case '_MARB_MSIB':
-	$title=translate_fact('_MARB_MSIB');
-	$text='';
-	break;
-
-case '_MARB_NEPH':
-	$title=translate_fact('_MARB_NEPH');
 	$text='';
 	break;
 
@@ -1456,11 +1231,6 @@ case '_MARR_CHIL':
 	$text='';
 	break;
 
-case '_MARR_COUS':
-	$title=translate_fact('_MARR_COUS');
-	$text='';
-	break;
-
 case '_MARR_FAMC':
 	$title=translate_fact('_MARR_FAMC');
 	$text='';
@@ -1471,18 +1241,8 @@ case '_MARR_FATH':
 	$text='';
 	break;
 
-case '_MARR_FSIB':
-	$title=translate_fact('_MARR_FSIB');
-	$text='';
-	break;
-
 case '_MARR_GCHI':
 	$title=translate_fact('_MARR_GCHI');
-	$text='';
-	break;
-
-case '_MARR_GGCH':
-	$title=translate_fact('_MARR_GGCH');
 	$text='';
 	break;
 
@@ -1493,16 +1253,6 @@ case '_MARR_HSIB':
 
 case '_MARR_MOTH':
 	$title=translate_fact('_MARR_MOTH');
-	$text='';
-	break;
-
-case '_MARR_MSIB':
-	$title=translate_fact('_MARR_MSIB');
-	$text='';
-	break;
-
-case '_MARR_NEPH':
-	$title=translate_fact('_MARR_NEPH');
 	$text='';
 	break;
 
@@ -1656,38 +1406,13 @@ case '__BRTM_CHIL':
 	$text='';
 	break;
 
-case '__BRTM_COUS':
-	$title=translate_fact('__BRTM_COUS');
-	$text='';
-	break;
-
-case '__BRTM_FSIB':
-	$title=translate_fact('__BRTM_FSIB');
-	$text='';
-	break;
-
 case '__BRTM_GCHI':
 	$title=translate_fact('__BRTM_GCHI');
 	$text='';
 	break;
 
-case '__BRTM_GGCH':
-	$title=translate_fact('__BRTM_GGCH');
-	$text='';
-	break;
-
 case '__BRTM_HSIB':
 	$title=translate_fact('__BRTM_HSIB');
-	$text='';
-	break;
-
-case '__BRTM_MSIB':
-	$title=translate_fact('__BRTM_MSIB');
-	$text='';
-	break;
-
-case '__BRTM_NEPH':
-	$title=translate_fact('__BRTM_NEPH');
 	$text='';
 	break;
 

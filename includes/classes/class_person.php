@@ -955,10 +955,6 @@ class Person extends GedcomRecord {
 		case 1: $rela=''; break;
 		case 2: $rela='fat'; break;
 		case 3: $rela='mot'; break;
-		case 4: $rela='fatfat'; break;
-		case 5: $rela='fatmot'; break;
-		case 6: $rela='motfat'; break;
-		case 7: $rela='motmot'; break;
 		default: return; // End recursion at G-G-Parent
 		}
 
@@ -972,14 +968,12 @@ class Person extends GedcomRecord {
 					// add parent death
 					if ($sosa==1) {
 						$fact=$parent->getSex()=='F' ? '_DEAT_MOTH' : '_DEAT_FATH';
-					} elseif ($sosa<4) {
-						$fact='_DEAT_GPAR';
 					} else {
-						$fact='_DEAT_GGPA';
+						$fact='_DEAT_GPAR';
 					}
 					if (strstr($SHOW_RELATIVES_EVENTS, $fact)) {
-						if ($sosa==3) $fact='_DEAT_GPA1';
-						else if ($sosa==4) $fact='_DEAT_GPA2';
+						if ($sosa==2) $fact='_DEAT_GPA1';
+						elseif ($sosa==3) $fact='_DEAT_GPA2';
 						foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 							$srec = $sEvent->getGedcomRecord();
 							if (GedcomDate::Compare($bDate, $sEvent->getDate())<0 && GedcomDate::Compare($sEvent->getDate(), $dDate)<=0) {
@@ -1075,8 +1069,6 @@ class Person extends GedcomRecord {
 		global $SHOW_RELATIVES_EVENTS;
 
 		if ($option=='1') $option='_SIBL';
-		if ($option=='2') $option='_FSIB';
-		if ($option=='3') $option='_MSIB';
 		if (strstr($SHOW_RELATIVES_EVENTS, $option)===false) return;
 
 		// Only include events between birth and death
@@ -1106,12 +1098,6 @@ class Person extends GedcomRecord {
 						if ($parent_sex=='M') { $rela='sonson';  $op='_GCH2';}
 					}
 				}
-				// great-grandchildren
-				if ($option=='_GGCH') {
-					$rela='chichichi';
-					if ($sex=='F') $rela='chichidau';
-					if ($sex=='M') $rela='chichison';
-				}
 				// stepsiblings
 				if ($option=='_HSIB') {
 					$rela='parchi';
@@ -1123,31 +1109,6 @@ class Person extends GedcomRecord {
 					$rela='sib';
 					if ($sex=='F') $rela='sis';
 					if ($sex=='M') $rela='bro';
-				}
-				// uncles/aunts
-				if ($option=='_FSIB' or $option=='_MSIB') {
-					$rela='parsib';
-					if ($sex=='F') $rela='parsis';
-					if ($sex=='M') $rela='parbro';
-				}
-				// firstcousins
-				if ($option=='_COUS') {
-					$rela='parsibchi';
-					if ($sex=='F') $rela='parsibdau';
-					if ($sex=='M') $rela='parsibson';
-				}
-				// nephew/niece
-				if ($option=='_NEPH') {
-					$rela='sibchi';
-					$parent_sex = Person::getInstance($except)->getSex();
-					if ($sex=='F') {          $rela='sibdau';
-						if ($parent_sex=='F') { $rela='sisdau';  $op='_NIE1';}
-						if ($parent_sex=='M') { $rela='brodau';  $op='_NIE2';}
-					}
-					if ($sex=='M')          { $rela='sibson';
-						if ($parent_sex=='F') { $rela='sisson';  $op='_NEP1';}
-						if ($parent_sex=='M') { $rela='broson';  $op='_NEP2';}
-					}
 				}
 				// add child birth
 				if (strstr($SHOW_RELATIVES_EVENTS, '_BIRT'.$option)) {
@@ -1230,24 +1191,6 @@ class Person extends GedcomRecord {
 				if ($option=='_CHIL') {
 					foreach ($child->getSpouseFamilies() as $sfamid=>$sfamily) {
 						$this->add_children_facts($sfamily, '_GCHI', $child->getXref());
-					}
-				}
-				// add children of grandchildren = great-grandchildren
-				if ($option=='_GCHI') {
-					foreach ($child->getSpouseFamilies() as $sfamid=>$sfamily) {
-						$this->add_children_facts($sfamily, '_GGCH');
-					}
-				}
-				// add children of siblings = nephew/niece
-				if ($option=='_SIBL') {
-					foreach ($child->getSpouseFamilies() as $sfamid=>$sfamily) {
-						$this->add_children_facts($sfamily, '_NEPH', $child->getXref());
-					}
-				}
-				// add children of uncle/aunt = firstcousins
-				if ($option=='_FSIB' or $option=='_MSIB') {
-					foreach ($child->getSpouseFamilies() as $sfamid=>$sfamily) {
-						$this->add_children_facts($sfamily, '_COUS');
 					}
 				}
 			}
