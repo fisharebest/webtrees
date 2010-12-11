@@ -140,10 +140,10 @@ class Event {
 		// Managers can edit anything
 		// Members cannot edit RESN, CHAN and locked records
 		return
-			WT_USER_GEDCOM_ADMIN ||
-			strpos($this->gedcomRecord, "\n2 RESN locked")===false &&
-			$this->getTag()!='RESN' &&
-			$this->getTag()!='CHAN';
+			$this->parentObject && $this->parentObject->canEdit() && (
+				WT_USER_GEDCOM_ADMIN ||
+				WT_USER_CAN_EDIT && strpos($this->gedcomRecord, "\n2 RESN locked")===false && $this->getTag()!='RESN' && $this->getTag()!='CHAN'
+			);
 	}
 
 	/**

@@ -69,9 +69,8 @@ function expand_urls($text) {
  *
  * prints a fact record designed for the personal facts and details page
  * @param Event $eventObj The Event object to print
- * @param boolean $noedit Hide or show edit links
  */
-function print_fact(&$eventObj, $noedit=false) {
+function print_fact(&$eventObj) {
 	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $FACTS_M, $FACTS_F, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $n_ggch, $SEARCH_SPIDER;
@@ -80,7 +79,8 @@ function print_fact(&$eventObj, $noedit=false) {
 		return;
 	}
 
-	$fact = $eventObj->getTag();
+	$noedit=!$eventObj->canEdit();
+	$fact  = $eventObj->getTag();
 	if ($HIDE_GEDCOM_ERRORS && !array_key_exists($fact, $FACTS) && !array_key_exists($fact, $FACTS_M) && !array_key_exists($fact, $FACTS_F)) {
 		return;
 	}

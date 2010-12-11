@@ -103,10 +103,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 				if (!is_null($value->getFamilyId())) {
 					if (!$yetdied) {
-						print_fact($value, $this->controller->canedit==false);
+						print_fact($value);
 					}
 				} else {
-					print_fact($value, $this->controller->canedit==false);
+					print_fact($value);
 				}
 				$FACT_COUNT++;
 			}
