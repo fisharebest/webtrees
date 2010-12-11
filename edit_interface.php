@@ -555,7 +555,7 @@ case 'linkspouse':
 	echo "<td class=\"facts_value\"><input id=\"spouseid\" type=\"text\" name=\"spid\" size=\"8\" /> ";
 	print_findindi_link("spouseid", "");
 	echo "</td></tr>";
-	add_simple_tag("0 MARR");
+	add_simple_tag("0 MARR Y");
 	add_simple_tag("0 DATE", "MARR");
 	add_simple_tag("0 PLAC", "MARR");
 	if (WT_USER_IS_ADMIN) {

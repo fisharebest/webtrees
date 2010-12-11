@@ -1904,7 +1904,13 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 // Add some empty tags to create a new fact
 function addSimpleTags($fact) {
 	global $ADVANCED_PLAC_FACTS;
-	add_simple_tag("0 {$fact}");
+
+	// Since we are adding a spouse, the default is "MARR Y"
+	if ($fact=='MARR') {
+		add_simple_tag("0 {$fact} Y");
+	} else {
+		add_simple_tag("0 {$fact}");
+	}
 	add_simple_tag("0 DATE", $fact, translate_fact("{$fact}:DATE"));
 	add_simple_tag("0 PLAC", $fact, translate_fact("{$fact}:PLAC"));
 
