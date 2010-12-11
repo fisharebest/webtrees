@@ -38,9 +38,8 @@ $controller->init();
 
 // Print the top header
 print_header(i18n::translate('Advanced search'));
+echo WT_JS_START;
 ?>
-<script language="JavaScript" type="text/javascript">
-<!--
 	function checknames(frm) {
 		action = "<?php echo $controller->action; ?>";
 
@@ -117,22 +116,24 @@ print_header(i18n::translate('Advanced search'));
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='';
-		opt.text='<?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?>';
+		/* The translation strings use HTML entities, but javascript does not.  See bug 687980 */
+		opt.text='<?php echo html_entity_decode(i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='5';
-		opt.text='<?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?>';
+		opt.text='<?php echo html_entity_decode(i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='10';
-		opt.text='<?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?>';
+		opt.text='<?php echo html_entity_decode(i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		var spc = document.createTextNode(' ');
 		elm.appendChild(spc);
 		elm.appendChild(sel);
 	}
-//-->
-</script>
+<?php
+echo WT_JS_END;
+?>
 
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->PrintResults(); ?>
