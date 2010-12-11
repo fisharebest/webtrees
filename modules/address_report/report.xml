@@ -42,7 +42,7 @@
 
 		<Body>
 			<SetVar name="email" value="" />
-			<SetVar name="addrfilter" value="ADDR CONTAINS " />
+			<SetVar name="addrfilter" value=":ADDR CONTAINS " />
 			<SetVar name="addrfilter2" value="" />
 			<if condition="$address != ''">
 				<SetVar name="addrfilter2" value="ADDR SUBCONTAINS $address" />
