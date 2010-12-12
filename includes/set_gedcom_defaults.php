@@ -130,7 +130,7 @@ set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             true);
 set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         '9');
 set_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS',   false);
 set_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION',        true);
-set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        '_BIRT_CHIL,_BIRT_GCHI,_BIRT_HSIB,_BIRT_SIBL,_DEAT_CHIL,_DEAT_FATH,_DEAT_GCHI,_DEAT_GPAR,_DEAT_MOTH,_DEAT_SIBL,_DEAT_SPOU,_MARR_CHIL,_MARR_FATH,_MARR_GCHI,_MARR_MOTH');
+set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU');
 set_gedcom_setting($ged_id, 'SHOW_SPIDER_TAGLINE',          true);
 set_gedcom_setting($ged_id, 'SHOW_STATS',                   false);
 set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             'S');

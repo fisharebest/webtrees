@@ -1225,11 +1225,8 @@ print_header(i18n::translate('GEDCOM configuration'));
 									array('_BIRT_GCHI', '_MARR_GCHI', '_DEAT_GCHI'),
 									array('_BIRT_CHIL', '_MARR_CHIL', '_DEAT_CHIL'),
 									array('_BIRT_SIBL', '_MARR_SIBL', '_DEAT_SIBL'),
-									array('_BIRT_HSIB', '_MARR_HSIB', '_DEAT_HSIB'),
 									array(null,         null,         '_DEAT_SPOU'),
-									array(null,         '_MARR_FATH', '_DEAT_FATH'),
-									array(null,         '_MARR_FAMC', null        ),
-									array(null,         '_MARR_MOTH', '_DEAT_MOTH'),
+									array(null,         '_MARR_PARE', '_DEAT_PARE'),
 									array(null,         null,         '_DEAT_GPAR'),
 								);
 								foreach ($rel_events as $row) {

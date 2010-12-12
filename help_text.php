@@ -820,11 +820,6 @@ case '_ADOP_GCHI':
 	$text='';
 	break;
 
-case '_ADOP_HSIB':
-	$title=translate_fact('_ADOP_HSIB');
-	$text='';
-	break;
-
 case '_ADOP_SIBL':
 	$title=translate_fact('_ADOP_SIBL');
 	$text='';
@@ -856,11 +851,6 @@ case '_BAPM_GCHI':
 	$text='';
 	break;
 
-case '_BAPM_HSIB':
-	$title=translate_fact('_BAPM_HSIB');
-	$text='';
-	break;
-
 case '_BAPM_SIBL':
 	$title=translate_fact('_BAPM_SIBL');
 	$text='';
@@ -878,11 +868,6 @@ case '_BIRT_CHIL':
 
 case '_BIRT_GCHI':
 	$title=translate_fact('_BIRT_GCHI');
-	$text='';
-	break;
-
-case '_BIRT_HSIB':
-	$title=translate_fact('_BIRT_HSIB');
 	$text='';
 	break;
 
@@ -916,11 +901,6 @@ case '_BURI_GPAR':
 	$text='';
 	break;
 
-case '_BURI_HSIB':
-	$title=translate_fact('_BURI_HSIB');
-	$text='';
-	break;
-
 case '_BURI_MOTH':
 	$title=translate_fact('_BURI_MOTH');
 	$text='';
@@ -943,11 +923,6 @@ case '_CHR_CHIL':
 
 case '_CHR_GCHI':
 	$title=translate_fact('_CHR_GCHI');
-	$text='';
-	break;
-
-case '_CHR_HSIB':
-	$title=translate_fact('_CHR_HSIB');
 	$text='';
 	break;
 
@@ -978,11 +953,6 @@ case '_CREM_GCHI':
 
 case '_CREM_GPAR':
 	$title=translate_fact('_CREM_GPAR');
-	$text='';
-	break;
-
-case '_CREM_HSIB':
-	$title=translate_fact('_CREM_HSIB');
 	$text='';
 	break;
 
@@ -1023,11 +993,6 @@ case '_DEAT_GCHI':
 
 case '_DEAT_GPAR':
 	$title=translate_fact('_DEAT_GPAR');
-	$text='';
-	break;
-
-case '_DEAT_HSIB':
-	$title=translate_fact('_DEAT_HSIB');
 	$text='';
 	break;
 
@@ -1196,11 +1161,6 @@ case '_MARB_GCHI':
 	$text='';
 	break;
 
-case '_MARB_HSIB':
-	$title=translate_fact('_MARB_HSIB');
-	$text='';
-	break;
-
 case '_MARB_MOTH':
 	$title=translate_fact('_MARB_MOTH');
 	$text='';
@@ -1243,11 +1203,6 @@ case '_MARR_FATH':
 
 case '_MARR_GCHI':
 	$title=translate_fact('_MARR_GCHI');
-	$text='';
-	break;
-
-case '_MARR_HSIB':
-	$title=translate_fact('_MARR_HSIB');
 	$text='';
 	break;
 
@@ -1408,11 +1363,6 @@ case '__BRTM_CHIL':
 
 case '__BRTM_GCHI':
 	$title=translate_fact('__BRTM_GCHI');
-	$text='';
-	break;
-
-case '__BRTM_HSIB':
-	$title=translate_fact('__BRTM_HSIB');
 	$text='';
 	break;
 
