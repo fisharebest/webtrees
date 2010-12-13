@@ -422,8 +422,8 @@ case 'edit':
 			// Shared Note addition ------------
 			if ($level1type!="SHARED_NOTE" && $level1type!="NOTE") print_add_layer("SHARED_NOTE");
 			if ($level1type!="OBJE" && $level1type!="REPO" && $MULTI_MEDIA) print_add_layer("OBJE");
-			//-- RESN missing in new structure, RESN can be added to all level 1 tags
-			if (!in_array("RESN", $tags)) print_add_layer("RESN");
+			// RESN can be added to all level 1 tags
+			print_add_layer("RESN");
 		}
 	}
 
@@ -476,8 +476,8 @@ case 'add':
 			if ($fact!="REPO") print_add_layer("OBJE");
 		}
 	}
-	//-- RESN missing in new structure, RESN can be added to all level 1 tags
-	if (!in_array("RESN", $tags)) print_add_layer("RESN");
+	// RESN can be added to all level 1 tags
+	print_add_layer("RESN");
 
 	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Add'), "\" /><br />";
 	echo "</form>";
@@ -998,8 +998,7 @@ case 'editsource':
 	print_add_layer("NOTE");
 	print_add_layer("SHARED_NOTE");
 	print_add_layer("OBJE");
-	//-- RESN missing in new structure, RESN can be added to all level 1 tags
-	if ($tag && !in_array("RESN", $tags)) print_add_layer("RESN");
+	print_add_layer("RESN");
 	echo "<br /><input type=\"submit\" value=\"", i18n::translate('Save'), "\" /><br />";
 	echo "</form>";
 	break;
