@@ -467,9 +467,6 @@ function print_header($title) {
 	$bodyOnLoad = '';
 	$bodyOnLoad .= " onload=\"";
 	if (!empty($ONLOADFUNCTION)) $bodyOnLoad .= $ONLOADFUNCTION;
-	if ($TEXT_DIRECTION=="rtl") {
-		$bodyOnLoad .= " maxscroll = document.documentElement.scrollLeft;";
-	}
 	$bodyOnLoad .= "\"";
 	require WT_ROOT.$headerfile;
 
