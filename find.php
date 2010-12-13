@@ -144,8 +144,11 @@ case "specialchar":
 	$action="filter";
 	break;
 case "facts":
-	$ONLOADFUNCTION = 'initPickFact();';
 	print_simple_header(i18n::translate('Find fact tags'));
+	echo
+		WT_JS_START,
+		'jQuery(document).ready(function(){ initPickFact(); });'
+		WT_JS_END;
 	break;
 }
 

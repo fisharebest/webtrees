@@ -82,7 +82,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 	<?php } ?>
 	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>modules.css" rel="Stylesheet" />
 </head>
-<body id="body" <?php echo $bodyOnLoad; ?>>
+<body id="body">
 <!-- begin header section -->
 <?php if ($view!='simple') { ?>
 <div id="header" class="<?php echo $TEXT_DIRECTION; ?>">

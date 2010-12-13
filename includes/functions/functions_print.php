@@ -376,7 +376,7 @@ function print_header($title) {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $action, $query, $theme_name;
 	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $THEME_DIR, $print_headerfile;
-	global $WT_IMAGES, $TEXT_DIRECTION, $ONLOADFUNCTION, $REQUIRE_AUTHENTICATION;
+	global $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 
 	header('Content-Type: text/html; charset=UTF-8');
 
@@ -464,10 +464,6 @@ function print_header($title) {
 	var whichhelp = \'help_'.WT_SCRIPT_NAME.'&action='.$action.'\';
 	//-->
 	'.WT_JS_END.'<script src="js/webtrees.js" language="JavaScript" type="text/javascript"></script>';
-	$bodyOnLoad = '';
-	$bodyOnLoad .= " onload=\"";
-	if (!empty($ONLOADFUNCTION)) $bodyOnLoad .= $ONLOADFUNCTION;
-	$bodyOnLoad .= "\"";
 	require WT_ROOT.$headerfile;
 
 	// Allow the browser to format the header/menus while we generate the page

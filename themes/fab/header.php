@@ -78,7 +78,7 @@ if (WT_USE_LIGHTBOX) {
 echo
 	$javascript,
 	'</head>',
-	'<body id="body" ',$bodyOnLoad, '>';
+	'<body id="body">';
 
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo '<div id="header" class="block">';
