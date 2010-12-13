@@ -1063,7 +1063,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	echo "<tr><td class=\"font11\">", i18n::translate('Total number of users'), "</td><td class=\"font11\">", $totusers, "</td></tr>";
 
 	echo "<tr><td class=\"font11\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-	if ($adminusers == 0) echo i18n::translate('Site Administrators');
+	if ($adminusers == 0) echo i18n::translate('Administrators');
 	else echo "<a href=\"useradmin.php?action=listusers&amp;filter=adminusers\">", i18n::translate('Administrators'), "</a>";
 	echo "</td><td class=\"font11\">", $adminusers, "</td></tr>";
 

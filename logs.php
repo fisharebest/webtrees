@@ -45,7 +45,7 @@ $text=safe_GET('text');
 $ip  =safe_GET('ip');
 $user=safe_GET('user');
 if (WT_USER_IS_ADMIN) {
-	// Site admins can see all logs
+	// Administrators can see all logs
 	$gedc=safe_GET('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
