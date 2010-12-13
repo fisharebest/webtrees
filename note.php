@@ -85,12 +85,9 @@ echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 
 // Shared Note details ---------------------
 $noterec=$controller->note->getGedcomRecord();
-$nt = preg_match("/0 @$controller->nid@ NOTE(.*)/i", $noterec, $n1match);
-if ($nt==1) {
-	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
-} else {
-	$note = i18n::translate('No Text');
-}
+preg_match("/0 @{$controller->nid}@ NOTE(.*)/", $noterec, $n1match);
+$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
+
 echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 	if (WT_USER_CAN_EDIT) {
 		echo '<a href="javascript: edit_note()" title="', i18n::translate('Edit'), '">';

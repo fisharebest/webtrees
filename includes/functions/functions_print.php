@@ -886,7 +886,6 @@ function print_favorite_selector($option=0) {
 function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false, $npage=false) {
 	global $WT_IMAGES, $EXPAND_SOURCES, $EXPAND_NOTES;
 
-	if (!isset($EXPAND_NOTES)) $EXPAND_NOTES = $EXPAND_SOURCES; // FIXME
 	$elementID = "N-".floor(microtime()*1000000);
 	$text = trim($text);
 
