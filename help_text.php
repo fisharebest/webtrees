@@ -806,21 +806,6 @@ case 'WWW':
 	$text='';
 	break;
 
-case '_ADOP_CHIL':
-	$title=translate_fact('_ADOP_CHIL');
-	$text='';
-	break;
-
-case '_ADOP_GCHI':
-	$title=translate_fact('_ADOP_GCHI');
-	$text='';
-	break;
-
-case '_ADOP_SIBL':
-	$title=translate_fact('_ADOP_SIBL');
-	$text='';
-	break;
-
 case '_ADPF':
 	$title=translate_fact('_ADPF');
 	$text='';
@@ -837,38 +822,8 @@ case '_AKAN':
 	$text='';
 	break;
 
-case '_BAPM_CHIL':
-	$title=translate_fact('_BAPM_CHIL');
-	$text='';
-	break;
-
-case '_BAPM_GCHI':
-	$title=translate_fact('_BAPM_GCHI');
-	$text='';
-	break;
-
-case '_BAPM_SIBL':
-	$title=translate_fact('_BAPM_SIBL');
-	$text='';
-	break;
-
 case '_BIBL':
 	$title=translate_fact('_BIBL');
-	$text='';
-	break;
-
-case '_BIRT_CHIL':
-	$title=translate_fact('_BIRT_CHIL');
-	$text='';
-	break;
-
-case '_BIRT_GCHI':
-	$title=translate_fact('_BIRT_GCHI');
-	$text='';
-	break;
-
-case '_BIRT_SIBL':
-	$title=translate_fact('_BIRT_SIBL');
 	$text='';
 	break;
 
@@ -877,133 +832,13 @@ case '_BRTM':
 	$text='';
 	break;
 
-case '_BURI_CHIL':
-	$title=translate_fact('_BURI_CHIL');
-	$text='';
-	break;
-
-case '_BURI_FATH':
-	$title=translate_fact('_BURI_FATH');
-	$text='';
-	break;
-
-case '_BURI_GCHI':
-	$title=translate_fact('_BURI_GCHI');
-	$text='';
-	break;
-
-case '_BURI_GPAR':
-	$title=translate_fact('_BURI_GPAR');
-	$text='';
-	break;
-
-case '_BURI_MOTH':
-	$title=translate_fact('_BURI_MOTH');
-	$text='';
-	break;
-
-case '_BURI_SIBL':
-	$title=translate_fact('_BURI_SIBL');
-	$text='';
-	break;
-
-case '_BURI_SPOU':
-	$title=translate_fact('_BURI_SPOU');
-	$text='';
-	break;
-
-case '_CHR_CHIL':
-	$title=translate_fact('_CHR_CHIL');
-	$text='';
-	break;
-
-case '_CHR_GCHI':
-	$title=translate_fact('_CHR_GCHI');
-	$text='';
-	break;
-
-case '_CHR_SIBL':
-	$title=translate_fact('_CHR_SIBL');
-	$text='';
-	break;
-
 case '_COML':
 	$title=translate_fact('_COML');
 	$text='';
 	break;
 
-case '_CREM_CHIL':
-	$title=translate_fact('_CREM_CHIL');
-	$text='';
-	break;
-
-case '_CREM_FATH':
-	$title=translate_fact('_CREM_FATH');
-	$text='';
-	break;
-
-case '_CREM_GCHI':
-	$title=translate_fact('_CREM_GCHI');
-	$text='';
-	break;
-
-case '_CREM_GPAR':
-	$title=translate_fact('_CREM_GPAR');
-	$text='';
-	break;
-
-case '_CREM_MOTH':
-	$title=translate_fact('_CREM_MOTH');
-	$text='';
-	break;
-
-case '_CREM_SIBL':
-	$title=translate_fact('_CREM_SIBL');
-	$text='';
-	break;
-
-case '_CREM_SPOU':
-	$title=translate_fact('_CREM_SPOU');
-	$text='';
-	break;
-
 case '_DBID':
 	$title=translate_fact('_DBID');
-	$text='';
-	break;
-
-case '_DEAT_CHIL':
-	$title=translate_fact('_DEAT_CHIL');
-	$text='';
-	break;
-
-case '_DEAT_FATH':
-	$title=translate_fact('_DEAT_FATH');
-	$text='';
-	break;
-
-case '_DEAT_GCHI':
-	$title=translate_fact('_DEAT_GCHI');
-	$text='';
-	break;
-
-case '_DEAT_GPAR':
-	$title=translate_fact('_DEAT_GPAR');
-	$text='';
-	break;
-
-case '_DEAT_MOTH':
-	$title=translate_fact('_DEAT_MOTH');
-	$text='';
-	break;
-
-case '_DEAT_SIBL':
-	$title=translate_fact('_DEAT_SIBL');
-	$text='';
-	break;
-
-case '_DEAT_SPOU':
-	$title=translate_fact('_DEAT_SPOU');
 	$text='';
 	break;
 
@@ -1137,36 +972,6 @@ case '_INTE':
 	$text='';
 	break;
 
-case '_MARB_CHIL':
-	$title=translate_fact('_MARB_CHIL');
-	$text='';
-	break;
-
-case '_MARB_FAMC':
-	$title=translate_fact('_MARB_FAMC');
-	$text='';
-	break;
-
-case '_MARB_FATH':
-	$title=translate_fact('_MARB_FATH');
-	$text='';
-	break;
-
-case '_MARB_GCHI':
-	$title=translate_fact('_MARB_GCHI');
-	$text='';
-	break;
-
-case '_MARB_MOTH':
-	$title=translate_fact('_MARB_MOTH');
-	$text='';
-	break;
-
-case '_MARB_SIBL':
-	$title=translate_fact('_MARB_SIBL');
-	$text='';
-	break;
-
 case '_MARI':
 	$title=translate_fact('_MARI');
 	$text='';
@@ -1175,41 +980,6 @@ case '_MARI':
 case '_MARNM':
 	$title=translate_fact('_MARNM');
 	$text=i18n::translate('Enter the married name for this person, using the same formatting rules that apply to the Name field.  This field is optional.<br /><br />For example, if Mary Jane Brown married John White, you might enter (without the quotation marks, of course)<ul><li>American usage:&nbsp;&nbsp;"Mary Jane Brown /White/"</li><li>European usage:&nbsp;&nbsp;"Mary Jane /White/"</li><li>Alternate European usage:&nbsp;&nbsp;"Mary Jane /White-Brown/" or "Mary Jane /Brown-White/"</li></ul>You should do this only if Mary Brown began calling herself by the new name after marrying John White.  In some places, Quebec (Canada) for example, it\'s illegal for names to be changed in this way.<br /><br />Men sometimes change their name after marriage, most often using the hyphenated form but occasionally taking the wife\'s surname.');
-	break;
-
-case '_MARNM_SURN':
-	$title=translate_fact('_MARNM_SURN');
-	$text='';
-	break;
-
-case '_MARR_CHIL':
-	$title=translate_fact('_MARR_CHIL');
-	$text='';
-	break;
-
-case '_MARR_FAMC':
-	$title=translate_fact('_MARR_FAMC');
-	$text='';
-	break;
-
-case '_MARR_FATH':
-	$title=translate_fact('_MARR_FATH');
-	$text='';
-	break;
-
-case '_MARR_GCHI':
-	$title=translate_fact('_MARR_GCHI');
-	$text='';
-	break;
-
-case '_MARR_MOTH':
-	$title=translate_fact('_MARR_MOTH');
-	$text='';
-	break;
-
-case '_MARR_SIBL':
-	$title=translate_fact('_MARR_SIBL');
-	$text='';
 	break;
 
 case '_MBON':
@@ -1351,22 +1121,6 @@ case '_YART':
 	$title=translate_fact('_YART');
 	$text='';
 	break;
-
-case '__BRTM_CHIL':
-	$title=translate_fact('__BRTM_CHIL');
-	$text='';
-	break;
-
-case '__BRTM_GCHI':
-	$title=translate_fact('__BRTM_GCHI');
-	$text='';
-	break;
-
-case '__BRTM_SIBL':
-	$title=translate_fact('__BRTM_SIBL');
-	$text='';
-	break;
-
 
 	//////////////////////////////////////////////////////////////////////////////
 	// This section contains an entry for every configuration item

@@ -1463,7 +1463,7 @@ function format_parents_age($pid, $birth_date=null) {
 						// Highlight mothers who die in childbirth or shortly afterwards
 						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
 							$class='parentdeath';
-							$title=translate_fact('_DEAT_MOTH');
+							$title=translate_fact('_DEAT_PARE', $parent);
 						} else {
 							$title=i18n::translate('Mother\'s age');
 						}
@@ -1472,7 +1472,7 @@ function format_parents_age($pid, $birth_date=null) {
 						// Highlight fathers who die before the birth
 						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
 							$class='parentdeath';
-							$title=translate_fact('_DEAT_FATH');
+							$title=translate_fact('_DEAT_PARE', $parent);
 						} else {
 							$title=i18n::translate('Father\'s age');
 						}
