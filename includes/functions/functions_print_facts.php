@@ -1036,11 +1036,11 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					echo translate_fact('NOTE');
 				}
 				echo "</a>";
-			echo "<div class=\"editfacts\">";
+				echo "<div class=\"editfacts\">";
 				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"editlink\"><span class=\"link_text\">".i18n::translate('Edit')."</span></span></a>";
 				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"copylink\"><span class=\"link_text\">".i18n::translate('Copy')."</span></span></a>";
 				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"deletelink\"><span class=\"link_text\">".i18n::translate('Delete')."</span></span></a>";
-			echo "</div>";
+				echo "</div>";
 			}
 		} else {
 			if ($level<2) {
@@ -1079,7 +1079,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			} else {
 				//-- print linked/shared note records
 				$note=Note::getInstance($nid);
-			  	if ($note) {
+				if ($note) {
 					$noterec=$note->getGedcomRecord();				
 					$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
 					$text = "";
@@ -1091,7 +1091,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 							$centitl  = str_replace("<br />", "", $centitl);
 							$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
 						} else {
-						$text = preg_replace("/~~/", "<br />", trim($n1match[1]));
+							$text = preg_replace("/~~/", "<br />", trim($n1match[1]));
 						}
 					}
 					$text .= get_cont(1, $noterec);
@@ -1103,11 +1103,6 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					} else {
 						$text = $centitl."".$text;
 					}
-			  	} else {
-					$text  = '<span class="error">' . i18n::translate('** WARNING **<br />There is no shared note with id = ') . $nid . '</span>';
-					if (WT_USER_CAN_EDIT) {
-						$text .= '<span class="error">' . i18n::translate('<br />Choose Edit and verify the shared note id by clicking on the icon "Find Shared Note".') . '</span>';
-			  		}			  
 				}
 			}
 
