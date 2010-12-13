@@ -71,7 +71,7 @@ function expand_urls($text) {
  * @param Event $eventObj The Event object to print
  */
 function print_fact(&$eventObj) {
-	global $nonfacts, $GEDCOM, $RESN_CODES, $WORD_WRAPPED_NOTES;
+	global $nonfacts, $GEDCOM, $WORD_WRAPPED_NOTES;
 	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $FACTS_M, $FACTS_F, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $SEARCH_SPIDER;
 
@@ -132,9 +132,6 @@ function print_fact(&$eventObj) {
 	if (count($lines)<2 && $event=="") {
 		return;
 	}
-	// See if RESN tag prevents display or edit/delete
-	$resn_tag = preg_match("/2 RESN (.+)/", $factrec, $match);
-	if ($resn_tag == "1") $resn_value = $match[1];
 	// Assume that all recognised tags are translated.
 	// -- handle generic facts
 	if ($fact!="EVEN" && $fact!="FACT" && $fact!="OBJE") {
@@ -271,8 +268,28 @@ function print_fact(&$eventObj) {
 				echo getLRM(), $event, ' ' , getLRM();
 			} elseif (strstr('FILE ', $fact.' ')) {
 				if ($SHOW_MEDIA_FILENAME || WT_USER_GEDCOM_ADMIN) echo getLRM(), $event, ' ' , getLRM();
-			} elseif ($fact=='RESN' && array_key_exists($event, $RESN_CODES)) {
-				echo $RESN_CODES[$event];
+			} elseif ($fact=='RESN') {
+				echo '<span class="field">';
+				switch ($event) {
+				case 'none':
+					// Note: "1 RESN none" is not valid gedcom, and the GUI will not let you add it.
+					// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
+					echo '<img src="images/RESN_none.gif" /> ', i18n::translate('Show to visitors');
+					break;
+				case 'privacy':
+					echo '<img src="images/RESN_privacy.gif" /> ', i18n::translate('Show to members');
+					break;
+				case 'confidential':
+					echo '<img src="images/RESN_confidential.gif" /> ', i18n::translate('Show to managers');
+					break;
+				case 'locked':
+					echo '<img src="images/RESN_locked.gif" /> ', i18n::translate('Only managers can edit');
+					break;
+				default:
+					echo $event;
+					break;
+				}
+				echo '</span>';
 			} elseif ($event!='Y') {
 				if (!strstr('ADDR _CREM ', substr($fact, 0, 5).' ')) {
 					if ($factref=='file_size' || $factref=='image_size') {
@@ -320,10 +337,31 @@ function print_fact(&$eventObj) {
 				echo $match[1];
 			}
 		}
-		// -- Find RESN tag
-		if (isset($resn_value)) {
-			echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
-			echo help_link('RESN');
+		// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
+		if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
+			foreach ($matches[1] as $match) {
+				echo '<br/><span class="label">', translate_fact('RESN'), ':</span> <span class="field">';
+				switch ($match) {
+				case 'none':
+					// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
+					// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+					echo '<img src="images/RESN_none.gif" /> ', i18n::translate('Show to visitors');
+					break;
+				case 'privacy':
+					echo '<img src="images/RESN_privacy.gif" /> ', i18n::translate('Show to members');
+					break;
+				case 'confidential':
+					echo '<img src="images/RESN_confidential.gif" /> ', i18n::translate('Show to managers');
+					break;
+				case 'locked':
+					echo '<img src="images/RESN_locked.gif" /> ', i18n::translate('Only managers can edit');
+					break;
+				default:
+					echo $match;
+					break;
+				}
+				echo '</span>';
+			}
 		}
 		if (preg_match("/\n2 FAMC @(.+)@/", $factrec, $match)) {
 			echo "<br/><span class=\"label\">", translate_fact('FAMC'), ":</span> ";
@@ -805,7 +843,7 @@ function print_address_structure($factrec, $level) {
 }
 
 function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $RESN_CODES, $WT_IMAGES;
+	global $WT_IMAGES;
 
 	if (!canDisplayFact($pid, WT_GED_ID, $factrec)) {
 		return;
@@ -869,13 +907,31 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 					echo "<br /><span class=\"label\">", translate_fact('PUBL'), ": </span>";
 					echo $text;
 				}
-				// See if RESN tag prevents display or edit/delete
-				$resn_tag = preg_match("/2 RESN (.*)/", $factrec, $rmatch);
-				if ($resn_tag > 0) $resn_value = strtolower(trim($rmatch[1]));
-				// -- Find RESN tag
-				if (isset($resn_value)) {
-					echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
-					echo help_link('RESN');
+				// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
+				if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
+					foreach ($matches[1] as $match) {
+						echo '<br/><span class="label">', translate_fact('RESN'), ':</span> <span class="field">';
+						switch ($match) {
+						case 'none':
+							// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
+							// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+							echo '<img src="images/RESN_none.gif" /> ', i18n::translate('Show to visitors');
+							break;
+						case 'privacy':
+							echo '<img src="images/RESN_privacy.gif" /> ', i18n::translate('Show to members');
+							break;
+						case 'confidential':
+							echo '<img src="images/RESN_confidential.gif" /> ', i18n::translate('Show to managers');
+							break;
+						case 'locked':
+							echo '<img src="images/RESN_locked.gif" /> ', i18n::translate('Only managers can edit');
+							break;
+						default:
+							echo $match;
+							break;
+						}
+						echo '</span>';
+					}
 				}
 				$cs = preg_match("/$nlevel EVEN (.*)/", $srec, $cmatch);
 				if ($cs>0) {
@@ -1001,7 +1057,7 @@ function getSourceStructure($srec) {
  * @param boolean $noedit Whether or not to allow this fact to be edited
  */
 function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $GEDCOM, $RESN_CODES, $WT_IMAGES, $TEXT_DIRECTION;
+	global $GEDCOM, $WT_IMAGES, $TEXT_DIRECTION;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$styleadd="";
@@ -1115,14 +1171,34 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		if (!empty($text)) {
 			echo $text;
 			if (!empty($noterec)) print_fact_sources($noterec, 1);
-			// See if RESN tag prevents display or edit/delete
-			$resn_tag = preg_match("/2 RESN (.*)/", $factrec, $rmatch);
-			if ($resn_tag > 0) $resn_value = strtolower(trim($rmatch[1]));
-			// -- Find RESN tag
-			if (isset($resn_value)) {
-				echo '<img src="images/RESN_', $resn_value, '.gif" alt="', $RESN_CODES[$resn_value], '" title="', $RESN_CODES[$resn_value], '" />';
-				echo help_link('RESN');
+
+			// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
+			if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
+				foreach ($matches[1] as $match) {
+					echo '<br/><span class="label">', translate_fact('RESN'), ':</span> <span class="field">';
+					switch ($match) {
+					case 'none':
+						// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
+						// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
+						echo '<img src="images/RESN_none.gif" /> ', i18n::translate('Show to visitors');
+						break;
+					case 'privacy':
+						echo '<img src="images/RESN_privacy.gif" /> ', i18n::translate('Show to members');
+						break;
+					case 'confidential':
+						echo '<img src="images/RESN_confidential.gif" /> ', i18n::translate('Show to managers');
+						break;
+					case 'locked':
+						echo '<img src="images/RESN_locked.gif" /> ', i18n::translate('Only managers can edit');
+						break;
+					default:
+						echo $match;
+						break;
+					}
+					echo '</span>';
+				}
 			}
+
 			echo "<br />";
 			print_fact_sources($nrec, $nlevel);
 		}

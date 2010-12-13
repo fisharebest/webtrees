@@ -651,13 +651,9 @@ case 'RESI':
 case 'RESN':
 	$title=translate_fact('RESN');
 	$text=
-		i18n::translate('Apart from general privacy settings, <b>webtrees</b> has the ability to set restrictions on viewing and editing fact information for individuals and families. The restrictions can be set by anyone who is allowed to edit the information, unless privacy or formerly set restrictions prohibit this.').
-		'<br /><br />'.i18n::translate('The following values can be used:').
-		'<br /><ul><li><b>'.i18n::translate_c('Restriction status', 'None').'</b><br />'.i18n::translate('Administrators, managers, and editors can change the information. Fact information can be viewed according to privacy settings as applied by the administrator or manager.').
-		'</li><li><b>'.i18n::translate_c('Restriction status', 'Do not change').'</b><br />'.i18n::translate('This setting has no influence on the visibility of the fact data. It restricts editing rights to administrators and managers. If the information applies to the user himself, he can also view and, assuming he has editing rights, edit it.').
-		'</li><li><b>'.i18n::translate_c('Restriction status', 'Privacy').'</b><br />'.i18n::translate('Administrators and managers can view and edit the information. If the information applies to the user himself, he can also view and, assuming he has editing rights, edit it. It will be hidden from all other users regardless of their login status.').
-		'</li><li><b>'.i18n::translate_c('Restriction status', 'Confidential').'</b><br />'.i18n::translate('Only administrators and managers can view and edit the information. It will be hidden from all other users regardless of their login status.').
-		'</li></ul>';
+		i18n::translate('Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it.').
+		'<br /><br />'.
+		i18n::translate('Note that if a user account is linked to a record, then that user will always be able to view that record.');
 	break;
 
 case 'RETI':
