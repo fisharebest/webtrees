@@ -123,7 +123,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
-		if (preg_match('/\n1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
+		if (preg_match('/\n[ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
 			$charset=strtoupper($match[1]);
 		} else {
 			$charset='ASCII';
