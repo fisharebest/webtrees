@@ -296,6 +296,22 @@ $cfg=array(
 	'gc_maxlifetime'  => get_site_setting('SESSION_TIME'),
 	'cookie_path'     => WT_SCRIPT_PATH,
 );
+
+// Search engines don't send cookies, and so create a new session with every visit.
+// Make sure they always use the same one
+if ($SEARCH_SPIDER) {
+	Zend_Session::setId('search_engine_'.$_SERVER['REMOTE_ADDR']);
+}
+
+// If we're using remote linking, the session ID is in the body of the POST request
+if (
+	WT_SCRIPT_NAME=='genservice.php' &&
+	isset($HTTP_RAW_POST_DATA) &&
+	preg_match('/<SID xsi:type="xsd:string">([a-z0-9]+)<\/SID>/', $HTTP_RAW_POST_DATA, $match)
+) {
+	Zend_Session::setId($match[1]);
+}
+
 Zend_Session::start($cfg);
 
 // Register a session "namespace" to store session data.  This is better than

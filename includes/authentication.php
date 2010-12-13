@@ -62,8 +62,8 @@ function authenticateUser($user_name, $password, $basic=false) {
 		$dbpassword=get_user_password($user_id);
 		if (crypt($password, $dbpassword)==$dbpassword) {
 			if (get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin') || get_user_setting($user_id, 'canadmin')) {
-				//-- reset the user's session
-				$_SESSION = array();
+				// Whenever we change our authorisation level change the session ID
+				Zend_Session::regenerateId();
 				$_SESSION['wt_user'] = $user_id;
 				AddToLog(($basic ? 'Basic HTTP Authentication' :'Login'). ' Successful', 'auth');
 				return $user_id;

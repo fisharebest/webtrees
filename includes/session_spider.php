@@ -332,15 +332,10 @@ try {
 				$SEARCH_SPIDER = 'Manual Search Engine entry of '.$_SERVER['REMOTE_ADDR'];
 			}
 		}
-		$bot_name = 'MAN'.$_SERVER['REMOTE_ADDR'];
-		Zend_Session::setId(gen_spider_session_name($bot_name, ''));
 	}
 } catch (PDOException $ex) {
 	// Initial installation?  Site Down?  Fail silently.
 }
-
-if ((empty($SEARCH_SPIDER)) && (!empty($_SESSION['last_spider_name']))) // user following a search engine listing in,
-Zend_Session::regenerateId();
 
 if (!empty($SEARCH_SPIDER)) {
 	$spidertime = time();

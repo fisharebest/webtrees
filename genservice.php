@@ -29,27 +29,7 @@
 
 define('WT_SCRIPT_NAME', 'genservice.php');
 require './includes/session.php';
-
-/**
- * we have to manually pull the SID from the SOAP request
- * in order to set the correct session during initialization.
- */
-//Only include and set the session if it's not a wsdl request
-if (!isset($_SERVER['QUERY_STRING']) || strstr($_SERVER['QUERY_STRING'],'wsdl')===false)
-{
-	if (isset($HTTP_RAW_POST_DATA)) {
-	//-- set the session id
-	// <ns4:SID>6ca1b44936bf4zb7202e6bd8ce4bkcbd</ns4:SID>
-		$ct = preg_match("~<\w*:SID>(.*)</\w*:SID>~", $HTTP_RAW_POST_DATA, $match);
-		if ($ct>0) Zend_Session::setId(trim($match[1]));
-
-		//-- set the gedcom id
-		$ct = preg_match("~<\w*:gedcom_id>(.*)</\w*:gedcom_id>~", $HTTP_RAW_POST_DATA, $match);
-		if ($ct>0) $_REQUEST['ged'] = trim($match[1]);
-
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
-	}
-}
+require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Our SOAP library uses lots of deprecated features - ignore them
 if (version_compare(PHP_VERSION, '5.3')>0) {
