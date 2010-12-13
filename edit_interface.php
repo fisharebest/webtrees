@@ -664,7 +664,7 @@ case 'addnewsource':
 	?>
 		function check_form(frm) {
 			if (frm.TITL.value=="") {
-				alert('<?php echo i18n::translate('You must provide a ').translate_fact('TITL'); ?>');
+				alert('<?php echo i18n::translate('You must provide a source title'); ?>');
 				frm.TITL.focus();
 				return false;
 			}
@@ -1064,7 +1064,7 @@ case 'addnewrepository':
 	?>
 		function check_form(frm) {
 			if (frm.NAME.value=="") {
-				alert('<?php echo i18n::translate('You must provide a Repository name'); ?>');
+				alert('<?php echo i18n::translate('You must provide a repository name'); ?>');
 				frm.NAME.focus();
 				return false;
 			}
