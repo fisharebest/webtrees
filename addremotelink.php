@@ -41,7 +41,7 @@ print_simple_header(i18n::translate('Add Remote Link'));
 $pid=safe_REQUEST($_REQUEST, 'pid', WT_REGEX_XREF);
 $action=safe_POST('action', array('addlink'));
 
-//-- only allow gedcom admins to create remote links
+//-- only allow managers to create remote links
 if (!$controller->canAccess()) {
 	echo '<span class="error">', i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.'), '<br />';
 	if (!WT_USER_GEDCOM_ADMIN) {

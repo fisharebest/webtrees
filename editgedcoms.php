@@ -25,7 +25,7 @@
 define('WT_SCRIPT_NAME', 'editgedcoms.php');
 require './includes/session.php';
 
-// The gedcom admin page is for gedcom administrators only!
+// The gedcom admin page is for managers only!
 if (!WT_USER_GEDCOM_ADMIN) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;

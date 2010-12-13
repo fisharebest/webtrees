@@ -40,7 +40,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/classes/class_serviceclient.php';
 
 print_header(i18n::translate('Manage sites'));
-//-- only allow gedcom admins here
+//-- only allow managers here
 if (!WT_USER_GEDCOM_ADMIN) {
 	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	//-- display messages as to why the editing access was denied

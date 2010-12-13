@@ -239,7 +239,7 @@ function convert_media_path($rec, $path, $slashes) {
  * $gedcom:         GEDCOM to be exported
  * $gedout:         Handle of output file
  * $exportOptions:  array of options for this Export operation as follows:
- *  'privatize':    which Privacy rules apply?  (none, visitor, user, GEDCOM admin, site admin)
+ *  'privatize':    which Privacy rules apply?  (none, visitor, user, manager)
  *  'toANSI':       should the output be produced in ANSI instead of UTF-8?  (yes, no)
  *  'noCustomTags': should custom tags be removed?  (yes, no)
  *  'path':         what constant should prefix all media file paths?  (eg: media/  or c:\my pictures\my family

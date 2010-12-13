@@ -134,8 +134,8 @@ print_header(i18n::translate('Download GEDCOM'));
 			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo i18n::translate('None'); ?><br />
 			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
 		<?php } ?>
-		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo i18n::translate('Authenticated user'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo i18n::translate('GEDCOM administrator'); ?><br />
+		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo i18n::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo i18n::translate('Manager'); ?><br />
 		</td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>

@@ -461,8 +461,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<td class="list_value">
 		<input type="radio" name="privatize_export" value="none" '.$radioPrivatizeNone.'/>&nbsp;'.i18n::translate('None').'<br />
 		<input type="radio" name="privatize_export" value="visitor" '.$radioPrivatizeVisitor.'/>&nbsp;'.i18n::translate('Visitor').'<br />
-		<input type="radio" name="privatize_export" value="user" '.$radioPrivatizeUser.'/>&nbsp;'.i18n::translate('Authenticated user').'<br />
-		<input type="radio" name="privatize_export" value="gedadmin" '.$radioPrivatizeGedadmin.'/>&nbsp;'.i18n::translate('GEDCOM administrator').'</td></tr>
+		<input type="radio" name="privatize_export" value="user" '.$radioPrivatizeUser.'/>&nbsp;'.i18n::translate('Member').'<br />
+		<input type="radio" name="privatize_export" value="gedadmin" '.$radioPrivatizeGedadmin.'/>&nbsp;'.i18n::translate('Administrator').'</td></tr>
 
 		<tr><td class="descriptionbox width50 wrap">'.i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)').help_link('utf8_ansi').'</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes" /></td></tr>

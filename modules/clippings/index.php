@@ -203,8 +203,8 @@ if ($ct==0) {
 		<td class="list_value">
 		<input type="radio" name="privatize_export" value="none" <?php echo $radioPrivatizeNone; ?>/>&nbsp;<?php echo i18n::translate('None'); ?><br />
 		<input type="radio" name="privatize_export" value="visitor" <?php echo $radioPrivatizeVisitor; ?>/>&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
-		<input type="radio" name="privatize_export" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo i18n::translate('Authenticated user'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo i18n::translate('GEDCOM administrator'); ?>
+		<input type="radio" name="privatize_export" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo i18n::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo i18n::translate('Manager'); ?>
 		</td></tr>
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>

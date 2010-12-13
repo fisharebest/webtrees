@@ -101,10 +101,10 @@ define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 define('WT_AUTOCOMPLETE_LIMIT', 500);
 
 // Privacy constants
-define('WT_PRIV_PUBLIC',  2); // Allows non-authenticated public visitors to view the marked information
-define('WT_PRIV_USER',    1); // Allows authenticated users to access the marked information
-define('WT_PRIV_NONE',    0); // Allows admin users to access the marked information
-define('WT_PRIV_HIDE',   -1); // Hide the item to all users including the admin
+define('WT_PRIV_PUBLIC',  2); // Allows visitors to view the marked information
+define('WT_PRIV_USER',    1); // Allows members to access the marked information
+define('WT_PRIV_NONE',    0); // Allows managers to access the marked information
+define('WT_PRIV_HIDE',   -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
 define ('WT_ROOT', realpath(dirname(dirname(__FILE__))).DIRECTORY_SEPARATOR);

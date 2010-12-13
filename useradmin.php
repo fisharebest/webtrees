@@ -1020,7 +1020,7 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 	$nverusers = 0;      // Users not verified by admin but verified themselves
 	$adminusers = 0;     // Administrators
 	$userlang = array(); // Array for user languages
-	$gedadmin = array(); // Array for gedcom admins
+	$gedadmin = array(); // Array for managers
 	foreach (get_all_users() as $user_id=>$user_name) {
 		$totusers = $totusers + 1;
 		if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) $warnusers++;
@@ -1064,10 +1064,10 @@ echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return t
 
 	echo "<tr><td class=\"font11\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 	if ($adminusers == 0) echo i18n::translate('Site Administrators');
-	else echo "<a href=\"useradmin.php?action=listusers&amp;filter=adminusers\">", i18n::translate('Site Administrators'), "</a>";
+	else echo "<a href=\"useradmin.php?action=listusers&amp;filter=adminusers\">", i18n::translate('Administrators'), "</a>";
 	echo "</td><td class=\"font11\">", $adminusers, "</td></tr>";
 
-	echo "<tr><td class=\"font11\">", i18n::translate('GEDCOM Administrators'), "</td></tr>";
+	echo "<tr><td class=\"font11\">", i18n::translate('Managers'), "</td></tr>";
 	asort($gedadmin);
 	$ind = 0;
 	foreach ($gedadmin as $key=>$geds) {

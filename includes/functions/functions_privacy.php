@@ -304,7 +304,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 			$relationship=get_relationship($pgv_USER_GEDCOM_ID, $xref, true, WT_USER_PATH_LENGTH);
 			return $cache[$cache_key]=($relationship!==false);
 		}
-		// No restriction found - show living people to authenticated users only:
+		// No restriction found - show living people to members only:
 		return WT_PRIV_USER>=$pgv_USER_ACCESS_LEVEL;
 	case 'FAM':
 		// Hide a family if either spouse is private
