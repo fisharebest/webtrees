@@ -698,8 +698,8 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_FAMC_(RESI_EMIG)/', '', $SHOW_RELATIVES_EVENTS);
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_MARR_(MOTH|FATH|FAMC)/', '_MARR_PARE', $SHOW_RELATIVES_EVENTS);
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_DEAT_(MOTH|FATH)/', '_DEAT_PARE', $SHOW_RELATIVES_EVENTS);
-	preg_match_all('/[_A-Z]+/', $setting, $match);
-	set_gedcom_setting($gedcom_id, 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
+	preg_match_all('/[_A-Z]+/', $SHOW_RELATIVES_EVENTS, $match);
+	set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
 
 	@set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        $SHOW_RELATIVES_EVENTS);
 	@set_gedcom_setting($ged_id, 'SHOW_SPIDER_TAGLINE',          $SHOW_SPIDER_TAGLINE);
