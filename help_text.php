@@ -2176,7 +2176,7 @@ case 'add_note':
 	break;
 
 case 'add_opf_child':
-	$title=i18n::translate('Add a new child to create one-parent family');
+	$title=i18n::translate('Add a child to create a one-parent family');
 	$text=i18n::translate('By clicking this link, you can add a <u>new</u> child to this person, creating a one-parent family.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
 	break;
 
