@@ -739,11 +739,11 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 						}
 
 						// Children ------------------------------   @var $child Person
-						$hasChildren = 'No';
+						$hasChildren = false;
 						foreach ($children as $c=>$child) {
 							if ($child) {
-								if ($hasChildren == 'No') {
-									$hasChildren = 'Yes';
+								if (!$hasChildren) {
+									$hasChildren = true;
 									$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
 								}
 								$persons="Yes";
@@ -754,10 +754,18 @@ function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
 								$spouselinks .= "</a>";
 							}
 						}
-						if ($hasChildren == 'Yes') {
+						if ($hasChildren) {
 							$spouselinks .= "</ul>";
-						} else {
-							$spouselinks .= "<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".i18n::translate('This family remained childless')."<br />";
+						} 
+						if (!$hasChildren) {
+							$numchil = $family->getNumberOfChildren();
+							if ($numchil==0) {
+								$spouselinks .= "<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".i18n::translate('This family remained childless')."<br />";
+							} else if ($numchil==1) {
+								$spouselinks .= i18n::translate('1 child');
+							} else {
+								$spouselinks .= $numchil.'&nbsp;'.i18n::translate('children');
+							}
 						}
 					}
 				}
