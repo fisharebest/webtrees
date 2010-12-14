@@ -75,6 +75,7 @@ class GedcomRecord {
 			if (preg_match('/^0 (?:@('.WT_REGEX_XREF.')@ )?('.WT_REGEX_TAG.')/', $data, $match)) {
 				$this->xref=$match[1];
 				$this->type=$match[2];
+				$this->ged_id=WT_GED_ID;
 			}
 		}
 
