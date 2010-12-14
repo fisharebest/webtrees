@@ -63,17 +63,6 @@ class FamilyController extends BaseController {
 		$this->family = Family::getInstance($this->famid);
 
 		if (empty($this->famrec)) {
-			$ct = preg_match('/(\w+):(.+)/', $this->famid, $match);
-			if ($ct>0) {
-				$servid = trim($match[1]);
-				$remoteid = trim($match[2]);
-				require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-				$service = ServiceClient::getInstance($servid);
-				if (!is_null($service)) {
-					$newrec= $service->mergeGedcomRecord($remoteid, "0 @".$this->famid."@ FAM\n1 RFN ".$this->famid, false);
-					$this->famrec = $newrec;
-				}
-			}
 			//-- if no record was found create a default empty one
 			if (find_updated_record($this->famid, WT_GED_ID)!==null) {
 				$this->famrec = "0 @".$this->famid."@ FAM\n";

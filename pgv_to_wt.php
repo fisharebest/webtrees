@@ -687,7 +687,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES',           $SHOW_MARRIED_NAMES);
 	@set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          $SHOW_MEDIA_DOWNLOAD);
 	@set_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME',          $SHOW_MEDIA_FILENAME);
-	@set_gedcom_setting($ged_id, 'SHOW_MULTISITE_SEARCH',        $SHOW_MULTISITE_SEARCH);
 	@set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             $SHOW_PARENTS_AGE);
 	@set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         $SHOW_PEDIGREE_PLACES);
 	@set_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS',   $SHOW_PRIVATE_RELATIONSHIPS);
@@ -1051,19 +1050,10 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_remotelinks => wt_remotelinks ...</p>'; ob_flush(); flush(); usleep(50000);
-WT_DB::prepare(
-	"REPLACE INTO `##remotelinks` (r_gid, r_linkid, r_file)".
-	" SELECT r_gid, r_linkid, r_file FROM `{$DBNAME}`.`{$TBLPREFIX}remotelinks`"
-)->execute();
-
-////////////////////////////////////////////////////////////////////////////////
-
 echo '<p>pgv_sources => wt_sources ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
-	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_dbid, s_gedcom)".
-	" SELECT s_id, s_file, s_name, s_dbid, ".
-	" REPLACE(s_gedcom, '\n2 _PGVU ', '\n2 _WT_USER ')".
+	"REPLACE INTO `##sources` (s_id, s_file, s_name, s_gedcom)".
+	" SELECT s_id, s_file, s_name, REPLACE(s_gedcom, '\n2 _PGVU ', '\n2 _WT_USER ')".
 	" FROM `{$DBNAME}`.`{$TBLPREFIX}sources`"
 )->execute();
 

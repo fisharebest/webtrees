@@ -302,69 +302,34 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			foreach ($current_objes as $media_id=>$value) {
 				while ($value>0) {
 					$objSubrec = array_pop($obje_links[$media_id]);
-					//-- check if we need to get the object from a remote location
-					$ct = preg_match("/(.*):(.*)/", $media_id, $match);
-					if ($ct>0) {
-						require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-						$client = ServiceClient::getInstance($match[1]);
-						if (!is_null($client)) {
-							$newrec = $client->getRemoteRecord($match[2]);
-							$row['m_media'] = $media_id;
-							$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
-							$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
-							if (empty($row['m_titl'])) {
-								$row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-							}
-							$row['m_gedrec'] = $newrec;
-							$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
-							$ext = "";
-							if ($et>0) $ext = substr(trim($ematch[1]), 1);
-							$row['m_ext'] = $ext;
-							$row['mm_gid'] = $pid;
-							$row['mm_gedrec'] = get_sub_record($objSubrec{0}, $objSubrec, $gedrec);
-							if ($newrec && isset($rowm['m_file'])) {
-								// -----
-							} else {
-								echo "<li class=\"li_new\" >";
-								echo "<center><table class=\"pic\" border=\"0\" ></center>";
-								echo "<tr><td align=\"center\" colspan=\"4\">";
-								echo $row['m_media'];
-								echo "</td></tr>";
-
-								$res =  lightbox_print_media_row('new', $row, $pid);
-								$media_found = $media_found || $res;
-							}
-						}
+					$row = array();
+					$newrec = find_gedcom_record($media_id, $ged_id, true);
+					$row['m_media'] = $media_id;
+					$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
+					$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
+					if (empty($row['m_titl'])) {
+						$row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
+					}
+					$row['m_gedrec'] = $newrec;
+					$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
+					$ext = "";
+					if ($et>0) {
+						$ext = substr(trim($ematch[1]), 1);
+					}
+					$row['m_ext'] = $ext;
+					$row['mm_gid'] = $pid;
+					$row['mm_gedrec'] = get_sub_record($objSubrec{0}, $objSubrec, $gedrec);
+					if ($newrec && isset($rowm['m_file'])) {
+						// -----
 					} else {
-						$row = array();
-						$newrec = find_gedcom_record($media_id, $ged_id, true);
-						$row['m_media'] = $media_id;
-						$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
-						$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
-						if (empty($row['m_titl'])) {
-							$row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
-						}
-						$row['m_gedrec'] = $newrec;
-						$et = preg_match("/(\.\w+)$/", $row['m_file'], $ematch);
-						$ext = "";
-						if ($et>0) {
-							$ext = substr(trim($ematch[1]), 1);
-						}
-						$row['m_ext'] = $ext;
-						$row['mm_gid'] = $pid;
-						$row['mm_gedrec'] = get_sub_record($objSubrec{0}, $objSubrec, $gedrec);
-						if ($newrec && isset($rowm['m_file'])) {
-							// -----
-						} else {
-							echo "<li class=\"li_new\" >";
-							echo "<center><table class=\"pic\" border=\"0\" ></center>";
-							echo "<tr><td align=\"center\" colspan=\"4\">";
-							echo $row['m_media'];
-							echo "</td></tr>";
+						echo "<li class=\"li_new\" >";
+						echo "<center><table class=\"pic\" border=\"0\" ></center>";
+						echo "<tr><td align=\"center\" colspan=\"4\">";
+						echo $row['m_media'];
+						echo "</td></tr>";
 
-							$res =  lightbox_print_media_row('new', $row, $pid);
-							$media_found = $media_found || $res;
-						}
+						$res =  lightbox_print_media_row('new', $row, $pid);
+						$media_found = $media_found || $res;
 					}
 					$value--;
 				}

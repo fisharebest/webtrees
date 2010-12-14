@@ -505,14 +505,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 			</tr>
 <?php } ?>
-			<?php if (WT_USER_GEDCOM_ADMIN) { ?>
-			<tr>
-				<td class="facts_value">
-				<a href="javascript:;" onclick="return open_link_remote('<?php echo $this->controller->pid; ?>');"><?php echo i18n::translate('Link remote person'); ?></a>
-				<?php echo help_link('link_remote'); ?>
-				</td>
-			</tr>
-			<?php } ?>
 		</table>
 		<?php } ?>
 		<br />

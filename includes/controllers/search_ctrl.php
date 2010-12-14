@@ -47,8 +47,6 @@ class SearchController extends BaseController {
 	var $indiResultsPrinted = -1;
 	var $famResultsPrinted = -1;
 	var $srcResultsPrinted = -1;
-	var $multiResultsPerPage = -1;
-	var $multiTotalResults = -1;
 	var $query;
 	var $myquery = "";
 	//var $soundex = "Russell";
@@ -57,8 +55,6 @@ class SearchController extends BaseController {
 	var $nameprt = "";
 	var $tagfilter = "on";
 	var $showasso = "off";
-	var $multiquery="";
-	var $mymultiquery;
 	var $name="";
 	var $myname;
 	var $birthdate="";
@@ -80,12 +76,10 @@ class SearchController extends BaseController {
 	var $year="";
 	var $myyear;
 	var $sgeds = array ();
-	var $Sites = array ();
 	var $myindilist = array ();
 	var $mysourcelist = array ();
 	var $myfamlist = array ();
 	var $mynotelist = array ();
-	var $multisiteResults = array ();
 	var $inputFieldNames = array ();
 	var $replace = false;
 	var $replaceNames = false;
@@ -134,7 +128,7 @@ class SearchController extends BaseController {
 		}
 
 		// Aquire all the variables values from the $_REQUEST
-		$varNames = array ("isPostBack", "action", "topsearch", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "tagfilter", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "multiTotalResults", "srcResultsPrinted", "multiResultsPerPage", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
+		$varNames = array ("isPostBack", "action", "topsearch", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "tagfilter", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
 		$this->setRequestValues($varNames);
 
 		if (!$this->isPostBack) {
@@ -156,9 +150,6 @@ class SearchController extends BaseController {
 		} else {
 			$this->sgeds[WT_GED_ID] = $GEDCOM;
 		}
-
-		// Retrieve the sites that can be searched
-		$this->Sites = get_server_list();
 
 		// vars use for soundex search
 		if (!empty ($_REQUEST["firstname"])) {
@@ -194,14 +185,6 @@ class SearchController extends BaseController {
 			$this->myquery=htmlspecialchars(implode(' ', array($this->firstname, $this->lastname, $this->place)));
 		};
 
-		// vars use for multisite search
-		if (!empty ($_REQUEST["multiquery"])) {
-			$this->multiquery = $_REQUEST["multiquery"];
-			$this->mymultiquery = $this->multiquery;
-		} else {
-			$this->multiquery="";
-			$this->mymultiquery = "";
-		}
 		if (!empty ($_REQUEST["name"])) {
 			$this->name = $_REQUEST["name"];
 			$this->myname = $this->name;
@@ -261,7 +244,6 @@ class SearchController extends BaseController {
 		$this->inputFieldNames[] = "soundex";
 		$this->inputFieldNames[] = "nameprt";
 		$this->inputFieldNames[] = "subaction";
-		$this->inputFieldNames[] = "multiquery";
 		$this->inputFieldNames[] = "name";
 		$this->inputFieldNames[] = "birthdate";
 		$this->inputFieldNames[] = "birthplace";
@@ -285,10 +267,6 @@ class SearchController extends BaseController {
 		case 'replace':
 			$this->SearchAndReplace();
 			return;
-		case 'multisite':
-			$this->MultiSiteSearch();
-			break;
-
 		}
 	}
 
@@ -300,8 +278,6 @@ class SearchController extends BaseController {
 			return i18n::translate('Soundex Search');
 		case 'replace':
 			return i18n::translate('Search and replace');
-		case 'multisite':
-			return i18n::translate('Multi Site Search');
 		}
 	}
 
@@ -643,77 +619,6 @@ class SearchController extends BaseController {
 		usort($this->myfamlist, array('GedcomRecord', 'Compare'));
 	}
 
-	/**
-	 *
-	 */
-	function MultiSiteSearch() {
-		require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-
-		if (!empty ($this->Sites) && count($this->Sites) > 0) {
-			$this->myindilist = array ();
-			// This first tests to see if it just a basic site search
-			if (!empty ($this->multiquery) && ($this->subaction == "basic")) {
-				// Find out if the string is longer then one char if dont perform the search
-				if (strlen($this->multiquery) > 1) {
-					$my_query = $this->multiquery;
-					// Now see if there is a query left after the cleanup
-					if (trim($my_query) != "") {
-						// Cleanup the querystring so it can be used in a database query
-						$my_query = "%".preg_replace("/\s+/", "%", $my_query)."%";
-					}
-				}
-
-			} else
-			if (($this->subaction == "advanced") && (!empty ($this->myname) || !empty ($this->mybirthdate) || !empty ($this->mybirthplace) || !empty ($this->deathdate) || !empty ($this->mydeathplace) || !empty ($this->mygender))) {
-				//Building the query string up
-				$my_query = '';
-				if (!empty ($this->myname)) {
-					$my_query .= "NAME=".$this->myname;
-				}
-				if (!empty ($this->mybirthdate)) {
-					if ($my_query != '')
-					$my_query .= '&';
-					$my_query .= "BIRTHDATE=".$this->mybirthdate;
-				}
-				if (!empty ($this->mybirthplace)) {
-					if ($my_query != '')
-					$my_query .= '&';
-					$my_query .= "BIRTHPLACE=".$this->mybirthplace;
-				}
-				if (!empty ($this->deathdate)) {
-					if ($my_query != '')
-					$my_query .= '&';
-					$my_query .= "DEATHDATE=".$this->deathdate;
-				}
-				if (!empty ($this->mydeathplace)) {
-					if ($my_query != '')
-					$my_query .= '&';
-					$my_query."DEATHPLACE=".$this->mydeathplace;
-				}
-				if (!empty ($this->mygender)) {
-					if ($my_query != '')
-					$my_query .= '&';
-					$my_query .= "GENDER=".$this->mygender;
-				}
-			}
-
-			if (!empty ($my_query)) {
-				$this->multisiteResults = array ();
-				// loop through the selected site to search
-				$i = 0;
-				foreach ($this->Sites as $key => $site) {
-					$vartemp = "server".$i;
-					if (isset ($_REQUEST["$vartemp"])) {
-						$serviceClient = ServiceClient :: getInstance($key);
-						$result = $serviceClient->search($my_query);
-						$this->multisiteResults[$key] = $result;
-					}
-					$i++;
-				}
-			}
-		}
-	}
-
 	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		global $GEDCOM, $TEXT_DIRECTION, $WT_IMAGES;
@@ -801,122 +706,6 @@ class SearchController extends BaseController {
 			// Prints the Paged Results: << 1 2 3 4 >> links if there are more than $this->resultsPerPage results
 			if ($this->resultsPerPage >= 1 && $this->totalGeneralResults > $this->resultsPerPage) {
 				$this->printPageResultsLinks($this->inputFieldNames, $this->totalGeneralResults, $this->resultsPerPage);
-			}
-		}
-
-		// ----- section to search and display results for multisite
-		if ($this->action == "multisite") {
-			// Only Display 5 results per 2 sites if the total results per page is 10
-			$sitesChecked = 0;
-			$i = 0;
-			foreach ($this->Sites as $server) {
-				$siteName = "server".$i;
-				if (isset ($_REQUEST["$siteName"]))
-				$sitesChecked ++;
-				$i ++;
-			}
-			if ($sitesChecked >= 1) {
-				$this->multiResultsPerPage = $this->resultsPerPage / $sitesChecked;
-
-				if (!empty ($this->Sites) && count($this->Sites) > 0) {
-					$no_results_found = false;
-					// Start output here, because from the indi's we may have printed some fams which need the column header.
-					echo "<br />";
-					echo "<div class=\"center\">";
-
-					if (isset ($this->multisiteResults) && (count($this->multisiteResults) > 0)) {
-						$this->totalResults = 0;
-						$this->multiTotalResults = 0;
-						$somethingPrinted = true;
-						foreach ($this->multisiteResults as $key => $siteResults) {
-							require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-							$serviceClient = ServiceClient :: getInstance($key);
-							$siteName = $serviceClient->getServiceTitle();
-							$siteURL = dirname($serviceClient->getURL());
-
-							echo "<table id=\"multiResultsOutTbl\" class=\"list_table, $TEXT_DIRECTION\" align=\"center\">";
-
-							if (isset ($siteResults) && !empty ($siteResults->persons)) {
-								$displayed_once = false;
-								$personlist = $siteResults->persons;
-
-								/***************************************************** PAGING HERE **********************************************************************/
-
-								//set the total results and only get the results for this page
-								$this->multiTotalResults += count($personlist);
-								if ($this->totalResults < $this->multiTotalResults)
-								$this->totalResults = $this->multiTotalResults;
-								$personlist = $this->getPagedResults($personlist, $this->multiResultsPerPage);
-								$pageResultsNum = 0;
-								foreach ($personlist as $index => $person) {
-									//if there is a name to display then diplay it
-									if (!empty ($person->gedcomName)) {
-										if (!$displayed_once) {
-											if (!$no_results_found) {
-												$no_results_found = true;
-												echo "<tr><td class=\"list_label\" colspan=\"2\" width=\"100%\">";
-													if (isset($WT_IMAGES["indis"])) echo "<img src=\"".$WT_IMAGES["indis"]."\" border=\"0\" width=\"25\" alt=\"\" /> ";
-												echo i18n::translate('People')."</td></tr>";
-												echo "<tr><td><table id=\"multiResultsInTbl\" align=\"center\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" ><tr>";
-											}
-											$displayed_once = true;
-											echo "<td class=\"list_label\" colspan=\"2\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" >".i18n::translate('Site: ')."<a href=\"".$siteURL."\" target=\"_blank\">".$siteName."</a>".i18n::translate(' contained the following')."</td></tr>";
-										}
-										echo "<tr><td class=\"list_value $TEXT_DIRECTION\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" valign=\"center\" ><ul>";
-										echo "<li class=\"$TEXT_DIRECTION\" dir=\"$TEXT_DIRECTION\">";
-										echo "<a href=\"{$siteURL}/individual.php?pid={$person->PID}&amp;ged=".rawurlencode($serviceClient->gedfile)."\" target=\"_blank\">";
-										$pageResultsNum += 1;
-										echo "<b>".$person->getFullName()."</b>";
-										if (!empty ($person->PID)) {
-											echo " (".$person->PID.")";
-										}
-										if (!empty ($person->birthDate) || !empty ($person->birthPlace)) {
-											echo " -- <i>";
-											if (!empty ($person->birthDate)) {
-												echo " ".$person->birthDate;
-											}
-											if (!empty ($person->birthPlace)) {
-												echo " ".$person->birthPlace;
-											}
-											echo "</i>";
-										}
-										echo "</a></li></ul></td>";
-
-										/*******************************  Remote Links Per Result *************************************************/
-										if (WT_USER_CAN_EDIT) {
-											echo "<td class=\"list_value $TEXT_DIRECTION\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" >"."<ul style=\"list-style: NONE\"><li><a href=\"javascript:;\" "."onclick=\"return open_link('".$key."', '".$person->PID."', '".$person->getFullName()."');\">"."<b>".i18n::translate('Add Local Link')."</b></a></ul></li></td></tr>";
-										}
-									}
-								}
-
-								echo "</table>";
-
-								echo "&nbsp;</td></tr></table>";
-							}
-							if ($this->multiTotalResults > 0) {
-								echo "</tr><tr><td align=\"left\">Displaying individuals ";
-								echo (($this->multiResultsPerPage * $this->resultsPageNum) + 1)." ".i18n::translate('to')." ". (($this->multiResultsPerPage * $this->resultsPageNum) + $pageResultsNum);
-								echo " ".i18n::translate('of')." ". ($this->multiTotalResults)."</td></tr></table>";
-								$this->multiTotalResults = 0;
-							} else
-							echo "</tr></table>";
-						}
-						echo "</table>";
-					}
-					echo '</div>';
-					if (!$no_results_found && $this->multiTotalResults == 0 && (isset ($this->multiquery) || isset ($this->name) || isset ($this->birthdate) || isset ($this->birthplace) || isset ($this->deathdate) || isset ($this->deathplace) || isset ($this->gender))) {
-						echo "<table align=\"center\" \><td class=\"warning\" style=\" text-align: center;\"><font color=\"red\"><b><i>".i18n::translate('No results found.')."</i></b></font><br /></td></tr></table>";
-					}
-				}
-			} else
-			if ($sitesChecked < 1 && $this->isPostBack) {
-				echo "<table align=\"center\" \><tr><td class=\"warning\" style=\" text-align: center;\"><font color=\"red\"><b><i>".i18n::translate('Be sure to select at least one remote site.')."</i></b></font><br /></td></tr></table>";
-			}
-
-			echo "</table>";
-			// Prints the Paged Results: << 1 2 3 4 >> links if there are more than $this->resultsPerPage results
-			if ($this->resultsPerPage > 1 && $this->totalResults > $this->resultsPerPage) {
-				$this->printPageResultsLinks($this->inputFieldNames, $this->totalResults, $this->multiResultsPerPage);
 			}
 		}
 		return $somethingPrinted; // whether anything printed

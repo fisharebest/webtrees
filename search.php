@@ -121,26 +121,12 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 					message = false;
 				if (dplace.length > 1)
 					message = false;
-				if (message)
-				{
-					<?php if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) { ?>
-					if (gender.length < 1)
-					{
-						alert("<?php echo i18n::translate('Please enter one of the following:  Name, Birth Date, Birth Place, Death Date, Death Place, and Gender '); ?>");
-						return false;
-					}
-					alert("<?php echo i18n::translate('Please search again with more information than just gender'); ?>");
-					<?php } ?>
+				if (message) {
 					return false;
 				}
 			}
 		}
 		return true;
-	}
-
-	function open_link(server, pid, indiName) {
-		window.open("addsearchlink.php?server="+server+"&pid="+pid+"&indiName="+indiName, "_blank", "top=50,left=50,width=600,height=500,scrollbars=1,scrollable=1,resizable=1");
-		return false;
 	}
 
 //-->
@@ -574,41 +560,17 @@ if ($controller->action == "general") {
 	if (WT_USER_CAN_EDIT) {
 		echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 	}
-	if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
-		if (count($controller->Sites) > 0) {
-
-
-			echo " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
-		}
-	}
-}
-else if ($controller->action == "replace")
-{
+} else if ($controller->action == "replace") {
 	echo "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
 	echo "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
 	echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
-		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
-			if (count($controller->Sites) > 0) {
-
-				echo " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
-			}
-		}
-}
-else
-	if ($controller->action == "soundex") {
+} else if ($controller->action == "soundex") {
 		echo "<a href='?action=general'>".i18n::translate('General Search')."</a>";
 		echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a>";
-		if (WT_USER_CAN_EDIT)
-		{
+		if (WT_USER_CAN_EDIT) {
 			echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 		}
-		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
-			if (count($controller->Sites) > 0) {
-				echo " | <a href='?action=multisite'>".i18n::translate('Multi Site Search')."</a></td></tr>";
-			}
-		}
-	}
-	else
+	} else
 		if ($controller->action == "multisite")
 		{
 			if (WT_USER_CAN_EDIT)

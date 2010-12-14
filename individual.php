@@ -74,11 +74,6 @@ function show_gedcom_record(shownew) {
 	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->pid; ?>"+fromfile, "_blank", "top=50,left=50,width=600,height=400,scrollbars=1,scrollable=1,resizable=1");
 }
 <?php if (WT_USER_CAN_EDIT) { ?>
-function open_link_remote(pid) {
-	window.open("addremotelink.php?pid="+pid, "_blank", "top=50,left=50,width=600,height=500,scrollbars=1,scrollable=1,resizable=1");
-	return false;
-}
-
 function showchanges() {
 	window.location = '<?php echo $controller->indi->getRawUrl(); ?>&show_changes=yes';
 }
@@ -190,19 +185,6 @@ jQuery(document).ready(function() {
 				require WT_ROOT.'includes/hitcount.php';
 				echo i18n::translate('Hit Count:'), " ", $hitCount;
 			}
-			// if individual is a remote individual
-			// if information for this information is based on a remote site
-			if ($controller->indi->isRemote()) {
-				echo '<br />';
-				echo i18n::translate('The information for this individual was linked from a remote site.');//<br />--><!--take this out if you want break the remote site and the fact that it was remote into two separate lines
-				echo '<a href="', $controller->indi->getHtmlUrl(), '">', $controller->indi->getLinkTitle(), '</a>';
-			}
-			// if indivual is not a remote individual
-			// if information for this individual is based on this local site
-			// this is not need to be printed, but may be uncommented if desired
-			/*else
-				echo("This is a local individual.");
-			}*/
 		?>
 	</div>
 

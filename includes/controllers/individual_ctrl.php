@@ -70,19 +70,7 @@ class IndividualController extends BaseController {
 			$gedrec = find_person_record($this->pid, WT_GED_ID);
 		}
 		if (empty($gedrec)) {
-			$ct = preg_match('/(\w+):(.+)/', $this->pid, $match);
-			if ($ct>0) {
-				$servid = trim($match[1]);
-				$remoteid = trim($match[2]);
-				require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-				$service = ServiceClient::getInstance($servid);
-				if ($service != null) {
-					$newrec= $service->mergeGedcomRecord($remoteid, "0 @".$this->pid."@ INDI\n1 RFN ".$this->pid, false);
-					$gedrec = $newrec;
-				}
-			} else {
-				$gedrec = "0 @".$this->pid."@ INDI\n";
-			}
+			$gedrec = "0 @".$this->pid."@ INDI\n";
 		}
 
 		if (WT_USER_ID) {
@@ -94,7 +82,7 @@ class IndividualController extends BaseController {
 		}
 
 		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null) {
-				$this->indi = new Person($gedrec, false);
+				$this->indi = new Person($gedrec);
 				$this->indi->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$this->indi) {
 			return false;
@@ -154,38 +142,8 @@ class IndividualController extends BaseController {
 		//-- if the user can edit and there are changes then get the new changes
 		if ($this->show_changes && WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->pid, WT_GED_ID);
-			if ($newrec) {
-				//-- get the changed record from the file
-				//print("jkdsakjhdkjsadkjsakjdhsakd".$newrec);
-				$remoterfn = get_gedcom_value("RFN", 1, $newrec);
-			} else {
-				$remoterfn = get_gedcom_value("RFN", 1, $gedrec);
-			}
-			// print "remoterfn=".$remoterfn;
-			//-- get an updated record from the web service
-			if (!empty($remoterfn)) {
-				$parts = explode(':', $remoterfn);
-				if (count($parts)==2) {
-					$servid = $parts[0];
-					$aliaid = $parts[1];
-					if (!empty($servid)&&!empty($aliaid)) {
-						require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-						$serviceClient = ServiceClient::getInstance($servid);
-						if (!is_null($serviceClient)) {
-							if (!empty($newrec)) $mergerec = $serviceClient->mergeGedcomRecord($aliaid, $newrec, true);
-							else $mergerec = $serviceClient->mergeGedcomRecord($aliaid, $gedrec, true);
-							if ($serviceClient->type=="remote") {
-								$newrec = $mergerec;
-							}
-							else {
-								$gedrec = $mergerec;
-							}
-						}
-					}
-				}
-			}
 			if (!empty($newrec)) {
-				$this->diffindi = new Person($newrec, false);
+				$this->diffindi = new Person($newrec);
 				$this->diffindi->setChanged(true);
 				$gedrec = $newrec;
 			}

@@ -291,13 +291,6 @@ function edit_field_default_tab($name, $selected='', $extra='') {
 	return select_edit_control($name, $tabs, null, $selected, $extra);
 }
 
-//-- this function creates a new unique connection
-//-- and adds it to the connections file
-//-- it returns the connection identifier
-function newConnection() {
-	return WT_SESSION_NAME."\t".Zend_Session::getId()."\n";
-}
-
 /**
 * Check if the given gedcom record has changed since the last session access
 * This is used to check if the gedcom record changed between the time the user

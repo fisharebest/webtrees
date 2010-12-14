@@ -1650,27 +1650,6 @@ function get_top_surnames($ged_id, $min, $max) {
 	}
 }
 
-/**
-* get a list of remote servers
-*/
-function get_server_list($ged_id=WT_GED_ID) {
-	$sitelist = array();
-
-	$rows=WT_DB::prepare("SELECT s_id, s_name, s_gedcom, s_file FROM `##sources` WHERE s_file=? AND s_dbid=? ORDER BY s_name")
-		->execute(array($ged_id, 'Y'))
-		->fetchAll();
-	foreach ($rows as $row) {
-		$source = array();
-		$source["name"] = $row->s_name;
-		$source["gedcom"] = $row->s_gedcom;
-		$source["gedfile"] = $row->s_file;
-		$source["url"] = get_gedcom_value("URL", 1, $row->s_gedcom);
-		$sitelist[$row->s_id] = $source;
-	}
-
-	return $sitelist;
-}
-
 function delete_fact($linenum, $pid, $gedrec) {
 	global $linefix;
 
@@ -1713,20 +1692,6 @@ function delete_fact($linenum, $pid, $gedrec) {
 			}
 		}
 	}
-}
-
-/**
-* get_remote_id Recieves a RFN key and returns a Stub ID if the RFN exists
-*
-* @param mixed $rfn RFN number to see if it exists
-* @access public
-* @return gid Stub ID that contains the RFN number. Returns false if it didn't find anything
-*/
-function get_remote_id($rfn) {
-	return
-		WT_DB::prepare("SELECT r_gid FROM `##remotelinks` WHERE r_linkid=? AND r_file=?")
-		->execute(array($rfn, WT_GED_ID))
-		->fetchOne();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

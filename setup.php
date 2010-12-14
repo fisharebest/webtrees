@@ -771,16 +771,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}remotelinks` (".
-		" r_gid    VARCHAR(20)  NOT NULL,".
-		" r_linkid VARCHAR(255)     NULL,".
-		" r_file   INTEGER      NOT NULL,".
-		" KEY ix1 (r_gid),".
-		" KEY ix2 (r_linkid),".
-		" KEY ix3 (r_file)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}media_mapping` (".
 		" mm_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" mm_media   VARCHAR(20)            NOT NULL,".
@@ -819,11 +809,9 @@ try {
 		" s_file   INTEGER        NOT NULL,".
 		" s_name   VARCHAR(255)   NOT NULL,".
 		" s_gedcom MEDIUMTEXT     NOT NULL,".
-		" s_dbid   ENUM('N', 'Y')     NULL,".
 		" PRIMARY KEY     (s_id, s_file),".
 		" UNIQUE  KEY ux1 (s_file, s_id),".
-		"         KEY ix1 (s_name),".
-		"         KEY ix2 (s_dbid)".
+		"         KEY ix1 (s_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(

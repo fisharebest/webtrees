@@ -48,7 +48,7 @@ define('WT_DEBUG_SQL',  false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 6);
+define('WT_SCHEMA_VERSION', 7);
 
 // Regular expressions for validating user input, etc.
 define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
@@ -301,15 +301,6 @@ $cfg=array(
 // Make sure they always use the same one
 if ($SEARCH_SPIDER) {
 	Zend_Session::setId('search_engine_'.$_SERVER['REMOTE_ADDR']);
-}
-
-// If we're using remote linking, the session ID is in the body of the POST request
-if (
-	WT_SCRIPT_NAME=='genservice.php' &&
-	isset($HTTP_RAW_POST_DATA) &&
-	preg_match('/<SID xsi:type="xsd:string">([a-z0-9]+)<\/SID>/', $HTTP_RAW_POST_DATA, $match)
-) {
-	Zend_Session::setId($match[1]);
 }
 
 Zend_Session::start($cfg);

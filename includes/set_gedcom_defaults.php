@@ -124,7 +124,6 @@ set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            WT_PRIV_USER);
 set_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES',           true);
 set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          false);
 set_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME',          false);
-set_gedcom_setting($ged_id, 'SHOW_MULTISITE_SEARCH',        WT_PRIV_NONE);
 set_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK',            WT_PRIV_USER);
 set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             true);
 set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         '9');

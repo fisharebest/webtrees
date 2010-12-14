@@ -48,7 +48,7 @@ class Family extends GedcomRecord {
 	private $_isNotMarried = null;
 
 	// Create a Family object from either raw GEDCOM data or a database row
-	function __construct($data, $simple=true) {
+	function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			if ($data['f_husb']) {

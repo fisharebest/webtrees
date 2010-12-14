@@ -106,14 +106,6 @@ class DescendancyController extends BaseController {
 
 	$this->descPerson = Person::getInstance($this->pid);
 	$this->name=$this->descPerson->getFullName();
-
-	//-- if the person is from another gedcom then forward to the correct site
-	/*
-	if ($this->indi->isRemote()) {
-		header('Location: '.$this->indi->getRawUrl());
-		exit;
-	}
-	*/
 	}
 
 	/**

@@ -41,14 +41,12 @@ require_once WT_ROOT.'includes/classes/class_repository.php';
 require_once WT_ROOT.'includes/classes/class_note.php';
 require_once WT_ROOT.'includes/classes/class_media.php';
 require_once WT_ROOT.'includes/classes/class_event.php';
-require_once WT_ROOT.'includes/classes/class_serviceclient.php';
 
 class GedcomRecord {
 	protected $xref       =null;  // The record identifier
 	protected $type       =null;  // INDI, FAM, etc.
 	public    $ged_id     =null;  // The gedcom file, only set if this record comes from the database
 	protected $gedrec     =null;  // Raw gedcom text (privatised)
-	protected $rfn        =null;
 	protected $facts      =null;
 	protected $changeEvent=null;
 	public    $disp       =true;  // Can we display details of this object
@@ -62,7 +60,7 @@ class GedcomRecord {
 	protected $_getSecondaryName=null;
 
 	// Create a GedcomRecord object from either raw GEDCOM data or a database row
-	public function __construct($data, $simple=false) {
+	public function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			$this->xref  =$data['xref'];
@@ -76,24 +74,6 @@ class GedcomRecord {
 				$this->xref=$match[1];
 				$this->type=$match[2];
 				$this->ged_id=WT_GED_ID;
-			}
-		}
-
-		//-- lookup the record from another gedcom
-		$remoterfn = get_gedcom_value('RFN', 1, $this->gedrec);
-		if (!empty($remoterfn)) {
-			$parts = explode(':', $remoterfn);
-			if (count($parts)==2) {
-				$servid = $parts[0];
-				$aliaid = $parts[1];
-				if (!empty($servid)&&!empty($aliaid)) {
-					$serviceClient = ServiceClient::getInstance($servid);
-					if (!is_null($serviceClient)) {
-						if (!$simple || $serviceClient->type=='local') {
-							$this->gedrec = $serviceClient->mergeGedcomRecord($aliaid, $this->gedrec, true);
-						}
-					}
-				}
 			}
 		}
 
@@ -156,16 +136,6 @@ class GedcomRecord {
 				$data=fetch_gedcom_record($pid, $ged_id);
 			}
 
-			// If we didn't find the record in the database, it may be remote
-			if (!$data && strpos($pid, ':')) {
-				list($servid, $remoteid)=explode(':', $pid);
-				$service=ServiceClient::getInstance($servid);
-				if ($service) {
-					// TYPE will be replaced with the type from the remote record
-					$data=$service->mergeGedcomRecord($remoteid, "0 @{$pid}@ TYPE\n1 RFN {$pid}", false);
-				}
-			}
-
 			// If we didn't find the record in the database, it may be new/pending
 			if (!$data && WT_USER_CAN_EDIT && ($data=find_gedcom_record($pid, $ged_id, true))!='') {
 				$is_pending=true;
@@ -218,8 +188,6 @@ class GedcomRecord {
 
 		// Store it in the cache
 		$gedcom_record_cache[$object->xref][$object->ged_id]=&$object;
-		//-- also store it using its reference id (sid:pid and local gedcom for remote links)
-		$gedcom_record_cache[$pid][$ged_id]=&$object;
 		return $object;
 	}
 
@@ -272,21 +240,6 @@ class GedcomRecord {
 	}
 
 	/**
-	* is this person from another server
-	* @return boolean  return true if this person was linked from another server
-	*/
-	public function isRemote() {
-		if (is_null($this->rfn)) $this->rfn = get_gedcom_value('RFN', 1, $this->gedrec);
-		if (empty($this->rfn) || $this->xref!=$this->rfn) return false;
-
-		$parts = explode(':', $this->rfn);
-		if (count($parts)==2) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
 	* check if this object is equal to the given object
 	* @param GedcomRecord $obj
 	*/
@@ -306,55 +259,11 @@ class GedcomRecord {
 	protected function _getLinkUrl($link, $separator) {
 		if ($this->ged_id) {
 			// If the record was created from the database, we know the gedcom
-			$url=$link.rawurlencode($this->getXref()).$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id));
+			return $link.$this->getXref().$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id));
 		} else {
 			// If the record was created from a text string, assume the current gedcom
-			$url=$link.rawurlencode($this->getXref()).$separator.'ged='.WT_GEDURL;
+			return $link.$this->getXref().$separator.'ged='.WT_GEDURL;
 		}
-		if ($this->isRemote()) {
-			list($servid, $aliaid)=explode(':', $this->rfn);
-			if ($aliaid && $servid) {
-				$serviceClient = ServiceClient::getInstance($servid);
-				if ($serviceClient) {
-					$surl = $serviceClient->getURL();
-					$url = $link.$aliaid;
-					if ($serviceClient->getType()=='remote') {
-						if (!empty($surl)) {
-							$url = dirname($surl).'/'.$url;
-						}
-					} else {
-						$url = $surl.$url;
-					}
-					$gedcom = $serviceClient->getGedfile();
-					if ($gedcom) {
-						$url .= $separator.'ged='.rawurlencode($gedcom);
-					}
-				}
-			}
-		}
-		return $url;
-	}
-
-	/**
-	* Get the title that should be used in the link
-	* @return string
-	*/
-	public function getLinkTitle() {
-		$title = get_gedcom_setting($this->ged_id, 'title');
-		if ($this->isRemote()) {
-			$parts = explode(':', $this->rfn);
-			if (count($parts)==2) {
-				$servid = $parts[0];
-				$aliaid = $parts[1];
-				if (!empty($servid)&&!empty($aliaid)) {
-					$serviceClient = ServiceClient::getInstance($servid);
-					if (!empty($serviceClient)) {
-						$title = $serviceClient->getTitle();
-					}
-				}
-			}
-		}
-		return $title;
 	}
 
 	// Get an HTML link to this object, for use in sortable lists.

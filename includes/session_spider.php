@@ -225,20 +225,13 @@ if ($ua != "") {
 			}
 		}
 	}
-}
-else {
+} else {
 	// For the people who firewall identifying information
 	// Switch real to false if you wish to restrict these connections.
 	$ua = "Browser User Agent Empty";
 	$real = true;
 }
 
-if (WT_SCRIPT_NAME=='genservice.php') {
-	// Robots look very similar to remote-link requests.  Allow them to
-	// access the remote linking service.
-	$real=true;
-}
-	
 if (!$real) {
 	$bot_name = $ua;
 	// strip out several common strings that clutter the User Agent.

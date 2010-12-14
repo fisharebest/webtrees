@@ -68,7 +68,7 @@ class Person extends GedcomRecord {
 	private $_getEstimatedDeathDate=null;
 
 	// Create a Person object from either raw GEDCOM data or a database row
-	function __construct($data, $simple=true) {
+	function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			$this->isdead=$data['i_isdead'];
@@ -77,7 +77,7 @@ class Person extends GedcomRecord {
 			// Construct from raw GEDCOM data
 		}
 
-		parent::__construct($data, $simple);
+		parent::__construct($data);
 
 		$this->dispname=$this->disp || showLivingNameById($this->xref);
 	}

@@ -1687,11 +1687,6 @@ case 'SHOW_MEDIA_FILENAME':
 	$text=i18n::translate('The Media Viewer can show the name of the Media file being viewed.  This option determines whether that file name is shown to users or not.<br /><br />You may want to hide the file name for security reasons.');
 	break;
 
-case 'SHOW_MULTISITE_SEARCH':
-	$title=i18n::translate('Show multi-site search');
-	$text=i18n::translate('Multi-site search allows users to search across multiple <b>webtrees</b> websites which you have setup in the Manage Sites administration area or remotely linked to.  This option controls whether the Multi-site Search feature is available to everyone or only to authenticated users.');
-	break;
-
 case 'SHOW_NO_WATERMARK':
 	$title=i18n::translate('Who can view non-watermarked images?');
 	$text=i18n::translate('If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here.');
@@ -1880,11 +1875,6 @@ case 'addmedia.php':
 	$text='';
 	break;
 
-case 'addsearchlink.php':
-	$title=i18n::translate('Add a local link');
-	$text='';
-	break;
-
 case 'admin.php':
 	$title=i18n::translate('Administration');
 	$text=/* I18N: do not translate this text - it will be updated very soon */i18n::translate('On this page you will find links to the configuration pages, administration pages, documentation, and log files.<br /><br /><b>Current Server Time:</b>, just below the page title, shows the time of the server on which your site is hosted. This means that if the server is located in New York while you\'re in France, the time shown will be six hours less than your local time, unless, of course, the server is running on Greenwich Mean Time (GMT).  The time shown is the server time when you opened or refreshed this page.');
@@ -2002,6 +1992,7 @@ case 'logs.php':
 
 case 'manageservers.php':
 	$title=i18n::translate('Manage sites');
+	// This text is out of date
 	$text=i18n::translate('On this page you can add remote sites and ban IP addresses.<br /><br />Remote sites can be added by providing the site title, URL, database id(optional), username, and password for the remote web service.<br /><br />IP address banning is accomplished by supplying any valid IP address range. For example, 212.10.*.*  Remote sites within the IP address ranges in the Banned list will not be able to access your web service.  You can ban specific IP addresses too.');
 	break;
 
@@ -2669,26 +2660,6 @@ case 'link_new_wife':
 case 'link_person_id':
 	$title=i18n::translate('Person ID');
 	$text=i18n::translate('In this field you enter the ID of the person you are linking to (e.g. I100).');
-	break;
-
-case 'link_remote':
-	$title=i18n::translate('Link remote person');
-	$text=''; // TODO: The original help text refered to the PGV wiki site (http://wiki.phpgedview.net/en/index.php?title=How_To:Remote_Link_Individuals_Across_Websites_And_Databases).  We should write an equivalent page for WT.
-	break;
-
-case 'link_remote_location':
-	$title=i18n::translate('Site location');
-	$text=i18n::translate('This option allows you to choose whether data for the person you are linking to is on the same site but in a different genealogical database set, or whether the data is on a different site accessible through the Internet.<br /><br />If the person is on the same site, you will be asked to select the dataset identifier and enter the person\'s ID.<br /><br />For a remote site, you will be asked to enter its URL, a database identifier, and the person\'s remote ID.');
-	break;
-
-case 'link_remote_rel':
-	$title=i18n::translate('Relationship to current person');
-	$text=i18n::translate('Use this option to select the relationship the remote person has to the person you are linking them with on your site.  For example, selecting <i>Father</i> would mean that the person on the remote site is the father of the person you are linking them to locally.');
-	break;
-
-case 'link_remote_site':
-	$title=i18n::translate('Site');
-	$text=i18n::translate('In this section you specify the parameters that are required to connect to the remote site hosting the data you are linking to. You have the option of choosing from a list of known sites that you have used before, or entering the Site URL and Database ID for a new one.<br /><br />In the <b>Site URL</b> field, you enter the URL to access the web services description file (WDSL) which tells <b>webtrees</b> how to access the data on the remote site.  For a remote <b>webtrees</b> website, the URL to the WSDL file will look like this: <u>http://www.remotesite.com/webtrees/genservice.php?wsdl</u><br /><br />The <b>Database ID</b> field is used to enter an optional database identifier for remote sites that require one.  For <b>webtrees</b> sites, this is the name of the GEDCOM file. <br /><br />The <b>Username</b> and the <b>Password</b> fields are only necessary if the database requires it.');
 	break;
 
 case 'link_wife':

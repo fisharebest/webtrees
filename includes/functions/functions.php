@@ -294,7 +294,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_MARRIED_NAMES;           $SHOW_MARRIED_NAMES           =get_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES');
 	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD');
 	global $SHOW_MEDIA_FILENAME;          $SHOW_MEDIA_FILENAME          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME');
-	global $SHOW_MULTISITE_SEARCH;        $SHOW_MULTISITE_SEARCH        =get_gedcom_setting($ged_id, 'SHOW_MULTISITE_SEARCH');
 	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            =get_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK');
 	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             =get_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE');
 	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         =get_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES');
@@ -974,25 +973,6 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 	$objectB = array();
 	$objectC = array();
 	$objectD = array();
-
-	//-- handle finding the media of remote objects
-	$ct = preg_match("/(.*):(.*)/", $pid, $match);
-	if ($ct>0) {
-		require_once WT_ROOT.'includes/classes/class_serviceclient.php';
-		$client = ServiceClient::getInstance($match[1]);
-		if (!is_null($client)) {
-			$mt = preg_match_all('/\n\d OBJE @('.WT_REGEX_XREF.')@/', $indirec, $matches, PREG_SET_ORDER);
-			for ($i=0; $i<$mt; $i++) {
-				$mediaObj = Media::getInstance($matches[$i][1]);
-				$mrec = $mediaObj->getGedcomRecord();
-				if (!empty($mrec)) {
-					$file = get_gedcom_value("FILE", 1, $mrec);
-					$row = array($matches[$i][1], $file, $mrec, $matches[$i][0]);
-					$media[] = $row;
-				}
-			}
-		}
-	}
 
 	//-- find all of the media items for a person
 	$media=
@@ -3560,9 +3540,4 @@ function pathinfo_utf($path) {
 	}
 
 	return array('dirname'=>$dirname, 'basename'=>$basename, 'extension'=>$extension, 'filename'=>$filename);
-}
-
-// optional extra file
-if (file_exists(WT_ROOT.'includes/functions.extra.php')) {
-	require WT_ROOT.'includes/functions.extra.php';
 }

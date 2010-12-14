@@ -610,7 +610,7 @@ class MenuBar {
 	* @return Menu the menu item
 	*/
 	public static function getSearchMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MULTISITE_SEARCH, $SEARCH_SPIDER;
+		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ((!file_exists(WT_ROOT.'search.php')) || (!empty($SEARCH_SPIDER))) {
@@ -641,17 +641,6 @@ class MenuBar {
 			$submenu->addIcon('search');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
 			$menu->addSubmenu($submenu);
-		}
-
-		//-- search_multisite sub menu
-		if ($SHOW_MULTISITE_SEARCH >= WT_USER_ACCESS_LEVEL) {
-			$sitelist = get_server_list();
-			if (count($sitelist)>0) {
-				$submenu = new Menu(i18n::translate('Multi Site Search'), "search.php?ged=".WT_GEDURL."&amp;action=multisite");
-				$submenu->addIcon('search');
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_search");
-				$menu->addSubmenu($submenu);
-			}
 		}
 		return $menu;
 	}
