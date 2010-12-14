@@ -302,7 +302,7 @@ if (strstr($action, 'addchild')) {
 	}
 	echo help_link('edit_add_parent');
 } elseif (strstr($action, 'addopfchild')) {
-	echo '<b>', i18n::translate('Add a child to create a one-parent family'), '</b>', help_link('edit_add_child');
+	echo '<b>', i18n::translate('Add a child to create a one-parent family'), '</b>', help_link('add_opf_child');
 }
 //------------------------------------------------------------------------------
 switch ($action) {
