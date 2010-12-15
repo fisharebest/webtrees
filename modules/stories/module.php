@@ -66,7 +66,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&mod_action=config';
+		return 'module.php?mod='.$this->getName().'&amp;mod_action=config';
 	}
 
 	// Implement class WT_Module_Block
@@ -127,7 +127,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		}
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
-			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&xref='.$this->controller->indi->getXref().'">';
+			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&amp;xref='.$this->controller->indi->getXref().'">';
 			$html.=i18n::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br />';
 		}
 		return $html;
