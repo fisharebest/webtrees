@@ -145,9 +145,9 @@ function print_fact(&$eventObj) {
 		if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">". translate_fact($factref, $label_person). "</a>";
 			echo "<div class=\"editfacts\">";
-				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><div class=\"editlink\"><span class=\"link_text\">".i18n::translate('Edit')."</span></div></a>";
-				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><div class=\"copylink\"><span class=\"link_text\">".i18n::translate('Copy')."</span></div></a>";
-				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><div class=\"deletelink\"><span class=\"link_text\">".i18n::translate('Delete')."</span></div></a>";
+			echo "<div class=\"editlink\"><a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"link_text\">".i18n::translate('Edit')."</span></a></div>";
+			echo "<div class=\"copylink\"><a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"link_text\">".i18n::translate('Copy')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"link_text\">".i18n::translate('Delete')."</span></a></div>";
 			echo "</div>";
 		} else {echo translate_fact($factref, $label_person);}
 		if ($fact=="_BIRT_CHIL") echo "<br />", i18n::translate('#%d', $n_chil++);
@@ -171,9 +171,9 @@ function print_fact(&$eventObj) {
 			else if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
 				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">". $factref. "</a>";
 				echo "<div class=\"editfacts\">";
-				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><div class=\"editlink\"><span class=\"link_text\">".i18n::translate('Edit')."</span></div></a>";
-				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><div class=\"copylink\"><span class=\"link_text\">".i18n::translate('Copy')."</span></div></a>";
-				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><div class=\"deletelink\"><span class=\"link_text\">".i18n::translate('Delete')."</span></div></a>";
+				echo "<div class=\"editlink\"><a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"link_text\">".i18n::translate('Edit')."</span></a></div>";
+				echo "<div class=\"copylink\"><a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"link_text\">".i18n::translate('Copy')."</span></a></div>";
+				echo "<div class=\"deletelink\"><a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"link_text\">".i18n::translate('Delete')."</span></a></div>";
 				echo "</div>";
 			} else {
 				echo $factref;
@@ -181,9 +181,9 @@ function print_fact(&$eventObj) {
 		} else if (!$noedit && WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\">". translate_fact($factref, $label_person). "</a>";
 			echo "<div class=\"editfacts\">";
-				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><div class=\"editlink\"><span class=\"link_text\">".i18n::translate('Edit')."</span></div></a>";
-				echo "<a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><div class=\"copylink\"><span class=\"link_text\">".i18n::translate('Copy')."</span></div></a>";
-				echo "<a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><div class=\"deletelink\"><span class=\"link_text\">".i18n::translate('Delete')."</span></div></a>";
+			echo "<div class=\"editlink\"><a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Edit')."\"><span class=\"link_text\">".i18n::translate('Edit')."</span></a></div>";
+			echo "<div class=\"copylink\"><a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Copy')."\"><span class=\"link_text\">".i18n::translate('Copy')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".i18n::translate('Delete')."\"><span class=\"link_text\">".i18n::translate('Delete')."</span></a></div>";
 			echo "</div>";
 		} else {
 			echo translate_fact($factref, $label_person);
