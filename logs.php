@@ -203,10 +203,8 @@ if ($rows) {
 		echo ' | <a href="', $url, min($total_rows-$limit, $offset+$limit), '">', i18n::translate('next'), '</a>';
 		echo ' | <a href="', $url, $total_rows-$limit, '">', i18n::translate('last'), '</a>';
 	}
-	if (WT_USER_IS_ADMIN) {
-		echo ' | <a href="', $url, '&amp;export=yes">', i18n::translate('export'), '</a>';
-		echo ' | <a href="', $url, '&amp;delete=yes" onclick="return confirm(\'', htmlspecialchars(i18n::plural('Permanently delete this %s record?', 'Permanently delete these %s records?', $total_rows, $total_rows)) , '\')">', i18n::translate('delete'), '</a>';
-	}
+	echo ' | <a href="', $url, '&amp;export=yes">', i18n::translate('export'), '</a>';
+	echo ' | <a href="', $url, '&amp;delete=yes" onclick="return confirm(\'', htmlspecialchars(i18n::plural('Permanently delete this %s record?', 'Permanently delete these %s records?', $total_rows, $total_rows)) , '\')">', i18n::translate('delete'), '</a>';
 
 	echo
 		'</p>',
