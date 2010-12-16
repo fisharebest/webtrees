@@ -185,13 +185,6 @@ echo '</td></tr></table><br /><br />';
 			<tr>
 				<td class="topbottombar" colspan="2">
 					<input type="submit" value="<?php echo i18n::translate('Login'); ?>" />
-					<?php
-					if ($REQUIRE_AUTHENTICATION) {
-						echo help_link('login_buttons_aut');
-					} else {
-						echo help_link('login_buttons');
-					}
-					?>
 				</td>
 			</tr>
 		</table>
