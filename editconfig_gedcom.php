@@ -410,7 +410,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 <table class="center <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
 		<td colspan="2">
-			<div id="tabs" class="">
+			<div id="tabs">
 				<ul>
 					<li><a href="#file-options"><span><?php echo i18n::translate('GEDCOM Basics'); ?></span></a></li>
 					<li><a href="#privacy"><span><?php echo i18n::translate('Privacy'); ?></span></a></li>
