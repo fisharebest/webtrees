@@ -160,7 +160,7 @@ echo
 	'</tr>',
 	'<tr>',
 	'<td class="optionbox width50"><a href="edit_merge.php">',
-	i18n::translate('Merge records'), '</a>', help_link('help_edit_merge.php'),
+	i18n::translate('Merge records'), '</a>', help_link('edit_merge'),
 	'</td>',
 	'<td class="optionbox width50">',
 	'<a href="javascript:;" onclick="addnewsource(\'\'); return false;">', i18n::translate('Add an unlinked source'), '</a>',

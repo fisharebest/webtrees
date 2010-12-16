@@ -51,7 +51,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-echo "<h2>", i18n::translate('Pedigree Tree'), ":";
+echo "<h2>", i18n::translate('Pedigree Tree'), help_link('pedigree_tree');
 echo '<br />', PrintReady($controller->name);
 if ($controller->addname!="") {
 	echo '<br />', PrintReady($controller->addname);

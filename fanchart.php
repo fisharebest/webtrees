@@ -417,7 +417,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
-echo "<h2>" . i18n::translate('Circle diagram') . ":";
+echo "<h2>" . i18n::translate('Circle diagram'), help_link('fan_chart');
 echo "<br />".PrintReady($name);
 if ($addname != "") echo "<br />" . PrintReady($addname);
 echo "</h2>";

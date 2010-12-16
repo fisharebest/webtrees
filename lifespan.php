@@ -58,7 +58,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	//-->
 	</script>
 
-<h2><?php echo i18n::translate('Lifespan chart'); ?></h2>
+<h2><?php echo i18n::translate('Lifespan chart'), help_link('lifespan_chart'); ?></h2>
 <table><tr><td>
 <form name="people" action="lifespan.php">
 

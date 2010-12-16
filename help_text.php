@@ -1867,268 +1867,6 @@ case 'ZOOM_BOXES':
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////
-	// This section should contain an entry for every page.
-	//////////////////////////////////////////////////////////////////////////////
-
-case 'addmedia.php':
-	$title=i18n::translate('Add a new media item');
-	$text='';
-	break;
-
-case 'admin.php':
-	$title=i18n::translate('Administration');
-	$text=/* I18N: do not translate this text - it will be updated very soon */i18n::translate('On this page you will find links to the configuration pages, administration pages, documentation, and log files.<br /><br /><b>Current Server Time:</b>, just below the page title, shows the time of the server on which your site is hosted. This means that if the server is located in New York while you\'re in France, the time shown will be six hours less than your local time, unless, of course, the server is running on Greenwich Mean Time (GMT).  The time shown is the server time when you opened or refreshed this page.');
-	break;
-
-case 'ancestry.php':
-	$title=i18n::translate('Ancestry chart');
-	$text=i18n::translate('The Ancestry page is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but with more details and alternate <a href="?help=chart_style">Chart style</a> displays.<br /><br />Each ancestry is shown with a unique number, calculated according to the <i>Sosa-Stradonitz</i> system:<div style="padding-left:30px;"><b>Even</b> numbers for men (child*2)<br /><b>Odd</b> numbers for women (husband+1) except for <b>1</b></div><br />Example:<br /><div style="padding-left:30px;">The root person is <b>1</b>, regardless of gender.<br /><b>1</b>\'s father is <b>2</b> (<b>1</b> * 2), mother is <b>3</b> (<b>2</b> + 1).<br /><b>2</b>\'s father is <b>4</b> (<b>2</b> * 2), mother is <b>5</b> (<b>4</b> + 1).<br /><b>3</b>\'s father is <b>6</b> (<b>3</b> * 2), mother is <b>7</b> (<b>6</b> + 1).<br /><b>7</b>\'s father is <b>14</b> (<b>7</b> * 2), mother is <b>15</b> (<b>14</b> +1).</div><br />etc.');
-	break;
-
-case 'branches.php':
-	$title=i18n::translate('Branches');
-	$text='';
-	break;
-
-case 'calendar.php':
-	// menu
-	$title=i18n::translate('Anniversary calendar');
-	$text=i18n::translate('The anniversary calendar shows the persons and families who are linked to an event at a certain day or month or during a certain period of time. It has an advanced filtering system to select the right date, period, and events for you.<ul><li><a href="?help=annivers_date_select"><b>Day:</b></a></li><li><a href="?help=annivers_month_select"><b>Month:</b></a></li><li><a href="?help=annivers_year_select"><b>Year:</b></a></li><li><a href="?help=annivers_show"><b>Show / Show events of:</b></a></li><li><a href="?help=annivers_sex"><b>Gender</b></a></li><li><a href="?help=annivers_event"><b>Event</b></a></li><li><a href="?help=day_month"><b>View day / View month / View year</b></a></li><li><a href="?help=annivers_tip"><b>Tip</b></a></li></ul>');
-	break;
-
-case 'compact.php':
-	$title=i18n::translate('Compact chart');
-	$text='';
-	break;
-
-case 'descendancy.php':
-	$title=i18n::translate('Descendancy chart');
-	$text=i18n::translate('This page will show the descendants of a person.<br /><br />You can choose a starting (root) person for this Descendancy chart or you can be linked to this page by clicking the <b>Descendancy Chart</b> link on another page.  Click on Arrow icons to navigate this tree in the direction of the arrow.  Click on the Chart icon in any Person box to change the root of the tree to that person.');
-	break;
-
-case 'edit_merge.php':
-	$title=i18n::translate('Merge records');
-	$text=i18n::translate('This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br /><br />This is useful for people who have merged GEDCOMs and now have many people, families, and sources that are the same.<br /><br />The page consists of three steps.<br /><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br />In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br />In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent.');
-	break;
-
-case 'editconfig_gedcom.php':
-	$title=i18n::translate('GEDCOM configuration');
-	$text=i18n::translate('Each genealogical database is configured independently, and this form allows you to change the settings for the current GEDCOM.');
-	break;
-
-case 'edituser.php':
-	$title=i18n::translate('My account');
-	$text=i18n::translate('Here you can change your settings and preferences.<br /><br />You can change your user name, full name, password, language, email address, theme of the site, and preferred contact method.<br /><br />You cannot change the GEDCOM INDI record ID; that has to be done by an administrator.');
-	break;
-
-case 'family.php':
-	$title=i18n::translate('Family');
-	$text=i18n::translate('This page will show you an overview of the family that you chose on a previous page.<br /><br />From top to bottom you will see the Personal Details boxes of the husband and his parents, the wife and her parents, and the children.<br /><br />The layout and contents of the Person Boxes are the same as the boxes that you already know from the Pedigree and Descendancy pages.<br /><br />To the right of the Parent boxes you may see an arrow if more ancestors exist in the file. When you click that arrow, you will move up a generation to show you a new family page with the previous parents now listed as the husband and wife.<br /><br />At the right side within the name box you may see a Zoom (magnifying glass) icon which you can click to reveal more details about the individual. When you click the name you will be taken to the Individual Information page of that person.<br /><br />Also at the right side you will find a small menu to take you to pages with charts or more information.  Some of these menu items also have sub-menus which will appear when your mouse pointer approaches the parent menu item.<br /><br />The Family Group Information box shows all known facts and information about this family, such as marriage, multimedia objects, and notes. In the Fact Information box, clicking a place will take you to the Place list, where all other families and individuals who are connected to that place are shown. Clicking a date will jump to the Day calendar, which will show all events that happened on that day and month in history. Multi-media objects can be clicked; this will open a new window in which the object is viewed. When you click on the picture caption, you will see the picture on the MultiMedia page. If you click on a Source link, the details of that source will be displayed on the Source page.<br /><br />Below the name boxes of the children you find the <b>Add a child to this Family</b> link.  Next to the name boxes of the children you see the <b>Family Group Information</b> link.  If you have enough rights, you can edit, delete, and add data and facts here.<br /><br />As with the Individual Information page, you will see a menu at the top right of the page.  Entries in this menu take you to other pages where you can get information about this family or perform other tasks related to this family.<br />');
-	break;
-
-case 'familybook.php':
-	$title=i18n::translate('Family book chart');
-	$text=i18n::translate('This chart is very similar to the Hourglass chart.  It will show the ancestors and descendants of the selected root person on the same chart.  It will also show the descendants of the root person in the same Hourglass format.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />Each descendant of the root person will become the root person of an additional hourglass chart, printed on the same page.  This process repeats until the specified number of descendant generations have been printed.');
-	break;
-
-case 'famlist.php':
-	$title=i18n::translate('Families');
-	$text=i18n::translate('On this page you can display a list of families.  The names will be displayed with surnames first and sorted into alphabetical order.<br /><br />The output of the Name list depends on:<ol><li>The letter you clicked in the Alphabetical index.</li><li>Whether you clicked "Skip" or "Show" Surname List.</li></ol>You can search on the husband\'s or the wife\'s surname;  both are included in the list.<br /><br />More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
-case 'fanchart.php':
-	$title=i18n::translate('Circle diagram page');
-	$text=i18n::translate('The Circle Diagram is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but in a more graphical way.<br /><br />The Root person is shown in the center, his parents on the first ring, grandparents on the second ring, and so on.<br /><br />Years of birth and death are printed under the name when known.<br /><br />Clicking on a name on the chart will open a links menu specific to that person.  From this menu you can choose to center the diagram on that person or on one of that person\'s close relatives, or you can jump to that person\'s Individual Information page or a different chart for that person.');
-	break;
-
-case 'gedcheck.php':
-	$title=i18n::translate('GEDCOM checker');
-	$text='';
-	break;
-
-case 'hourglass.php':
-	$title=i18n::translate('Hourglass chart');
-	$text=i18n::translate('The Hourglass chart will show the ancestors and descendants of the selected root person on the same chart.  This chart is a mix between the Descendancy chart and the Pedigree chart.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />If there is a downwards arrow on the screen under the root person, clicking on it will display a list of the root person\'s close family members that you can use the navigate down the chart.  Selecting a name from this list will reload the chart with the selected person as the new root person.');
-	break;
-
-case 'index.php':
-	// This page does not have its own "help with this page".  Instead, it uses either index_portal, or mypage_portal
-	break;
-
-case 'indilist.php':
-	$title=i18n::translate('Individuals');
-	$text=i18n::translate('On this page you can display a list of individuals.  The names will be displayed with surnames first and sorted into alphabetical order.<br /><br />The output of the Name list depends on:<ol><li>The letter you clicked in the Alphabetical index.</li><li>Whether you clicked "Skip" or "Show" Surname List.</li></ol>More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
-case 'individual.php':
-	$title=i18n::translate('Individual');
-	$text=i18n::translate('All details of a person are displayed on this page.<br /><br />If there is a picture available, you will see it at the top left side.  You will see the names of the person next to the picture.<br /><br />Names can have notes and sources attached to them. If any of the names have notes or sources, you will see them listed under the names they relate to.<br /><br />A person might have an AKA (maybe he\'s known under another name). If that is the case, it will be displayed.<br /><br />If you have Edit rights to this person, you will also see <b>Edit</b> and <b>Delete</b> links next to the items that you can edit.<br /><br />On this page you see tab sheets for <b>Personal Facts and Details</b>, <b>Notes</b>, <b>Sources</b>, <b>Media</b>, and <b>Close Relatives</b>.  These tab sheets show you all the information about this individual that is stored in the database.<br /><ul><li>The <b>Personal Facts and Details</b> tab will show you the facts and details about this person and any fact from their marriages. Clicking on any date on this tab will take you to the Anniversary Calendar for that date, so that you can see other events that happened on the same day. Clicking on a place will take you to the Place Hierarchy where you can view other people who had events in the same place. For marriage and other family related facts, the name of the person\'s spouse is available so that you can view the spouse and a link to the family record is also provided.</li><li>The <b>Notes</b> tab will show you any general notes relating to this person.</li><li>The <b>Sources</b> tab will show you all of the <u>general</u> sources for this person. These sources are <u>not</u> linked to individual facts, not even the person\'s name; they are associated with the individual himself.  Clicking on the title of a source will take you to a more detailed Source Information page that will display other people who are also linked to the same source.</li><li>The <b>Media</b> tab will list all of the pictures and other media items that are attached to this individual. Clicking on a thumbnail of the picture will open up a larger view of the image. Clicking on the picture caption will show you the picture on the MultiMedia page.</li><li>The <b>Close Relatives</b> tab lists this person\'s parents and siblings as well as all of the spouses and children that this person has had. These persons will be listed in boxes similar to the charts that you may have already seen.</li></ul>On the right of the screen you will find a box with links.  Many of the links in the box are the same as the links in the menus. For example, clicking on the <b>Pedigree Chart</b> link on the side links will take you to the Pedigree chart for this person. This is different from the menu links, because clicking on the <b>Pedigree Chart</b> link in the menu will take you back to the default Pedigree chart for this database.<br /><br />One of the links that might appear in this list if it has been enabled by the admin, is the <b>View GEDCOM Record</b> link. This link will show you the raw GEDCOM record of this individual.<br /><br />If the Clippings Cart has been enabled by the site admin, you will also have a link that will allow you to add this person to your Clippings Cart.<br /><br />The <b>Relationship to me</b> link will only appear if you are logged in and have been assigned an ID in the GEDCOM. This link will take you to the Pedigree chart and show you how you are related to this person.<br /><br />More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
-case 'inverselink.php':
-	$title=i18n::translate('Link media');
-	$text=i18n::translate('Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages.');
-	break;
-
-case 'lifespan.php':
-	$title=i18n::translate('Lifespan chart');
-	$text=i18n::translate('On this chart you can display one or more persons along a horizontal timeline.  This chart allows you to see how the lives of different people overlapped.<br /><br />You can add people to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more people to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br /><br />You can also add people to the chart by searching for them by date range or locality.');
-	break;
-
-case 'login.php':
-	$title=i18n::translate('The login page');
-	$text=i18n::translate('On this page you can login, request a new password, or request a new user account.<br /><br />In order to access \'My page\', you must be a registered user on the system.  On \'My page\' you can bookmark your favorite people, keep a user journal, manage messages, see other logged in users, and customize various aspects of <b>webtrees</b> pages.<br /><br />Enter your username and password in the appropriate fields to login to \'My page\'.');
-	break;
-
-case 'login_register.php':
-	$title=i18n::translate('Request new user account');
-	$text=i18n::translate('The amount of data that can be publicly viewed on this website may be limited due to applicable law concerning privacy protection. Many people do not want their personal data publicly available on the Internet. Personal data could be misused for spam or identity theft.<br /><br />Access to this site is permitted to every visitor who has a user account. After the administrator has verified and approved your account application, you will be able to login.<br /><br />If Relationship Privacy has been activated you will only be able to access your own close relatives\' private information after logging in. The administrator can also allow database editing for certain users, so that they can change or add information.<br /><br />If you need any further support, please use the link below to contact the administrator.');
-	break;
-
-case 'logs.php':
-	$title=i18n::translate('Logs');
-	$text='';
-	break;
-
-case 'manageservers.php':
-	$title=i18n::translate('Manage sites');
-	// This text is out of date
-	$text=i18n::translate('On this page you can add remote sites and ban IP addresses.<br /><br />Remote sites can be added by providing the site title, URL, database id(optional), username, and password for the remote web service.<br /><br />IP address banning is accomplished by supplying any valid IP address range. For example, 212.10.*.*  Remote sites within the IP address ranges in the Banned list will not be able to access your web service.  You can ban specific IP addresses too.');
-	break;
-
-case 'media.php':
-	$title=i18n::translate('Manage multimedia');
-	$text='';
-	break;
-
-case 'medialist.php':
-	$title=i18n::translate('Multimedia objects');
-	$text=i18n::translate('This page lists all of the multimedia objects available for this GEDCOM (family tree) file.<br /><br />To display the list, first make your selections from the range of filtering options displayed at the top of the page. On the basis of those settings, after clicking "Search" you will see thumbnails, descriptions, and links for each media object.<br /><br />For each item you can then choose to view a full sized, image, its details, or go to one of the people of families it is linked to');
-	break;
-
-case 'mediaviewer.php':
-	$title=i18n::translate('Multimedia object');
-	$text='';
-	break;
-
-case 'module_admin.php':
-	$title=i18n::translate('Module administration');
-	$text='';
-	break;
-
-case 'note.php':
-	$title=i18n::translate('Shared note');
-	$text='';
-	break;
-
-case 'notelist.php':
-	$title=i18n::translate('Shared notes');
-	$text='';
-	break;
-
-case 'pedigree.php':
-	$title=i18n::translate('The pedigree page');
-	$text=i18n::translate('A pedigree is an enumeration of all ancestors of the starting person.  Users who are not logged in see the pedigree of the starting (root) person chosen by the site administrator.  Logged in users can select their own starting (root) person.<br /><br />In this context, "All ancestors" means the father and mother, their parents, and so on.  The pedigree is displayed graphically; you don\'t have to struggle through pages of text to determine your ancestors.<br /><br />All individuals are displayed in Name boxes on the screen.<br /><ul><li><b>Name boxes on the pedigree</b><br />If the Pedigree page is set to show details, you will see the person\'s name and birth and death dates.  You can click on a person\'s name to take you directly to the Individual Information page of that person.<br /><br />When <b>Show details</b> is on there are two icons inside the name box.</li><li><b>Pedigree icon inside the Name box</b><br />When the option <b>Show Details</b> is on, you see a Pedigree icon in the Name box. Depending on the site settings, you have to hover over the icon or click on it.  When you click on or hover over this icon, a small sub-menu appears.<br /><br />The items <b>Pedigree Tree</b> and <b>Descendancy Chart</b> are similar to those items in the main menu, but the difference is that the starting person is now the individual of mentioned in the Name box.  You also see <b>Family with Spouse</b>. Underneath that you see the name of the spouse followed by the names of the children.  All names are clickable.</li><li><b>Magnifying glass inside the Name box</b><br />Depending on the site settings, you have to hover over the icon or click on it.  This magnifies the Name box so that more details will be displayed.  You will see more dates and events. Names are clickable.</li><li><b>Arrows</b><br />On the left or right of the leftmost or rightmost Name boxes you may see arrows.  When you click on these arrows the screen display will shift in the direction of the arrow.</li></ul>');
-	break;
-
-case 'placelist.php':
-	$title=i18n::translate('Place hierarchy');
-	$text=i18n::translate('(or Persons Per Place)<br /><br />This page will show you a hierarchy of the places in the GEDCOM and which individuals or families are connected to a location.<br /><br />If there is any connection between an individual or family and an event at a certain location, <b>webtrees</b> will find it.<br /><br />The results are displayed in a two-column list, one column for individuals and one for families.');
-	break;
-
-case 'relationship.php':
-	$title=i18n::translate('Relationship chart');
-	$text=i18n::translate('On this page you can display the relationship between any two people.  These people do not have to be directly related by blood line;  any relation will be found.');
-	break;
-
-case 'repo.php':
-	$title=i18n::translate('Repository');
-	$text=i18n::translate('The details of the Repository are displayed here. Together with Sources, Repositories are very important to genealogical researchers.  With accurate Source and Repository information, you can follow the trail another researcher used to find the information.  You should be able to find that same information again.<br /><br />On this page you may see information about the Repository\'s title, address, email and webpage.<br /><br />After the repository details, will be a list of all sources that are linked to this repository. This allows you to see all of the information that was obtained from a particular repository.<br /><br />If enabled by the site admin, you will have one or two more menu icons on this page:<br /><b>View GEDCOM Record</b>, which shows the information in GEDCOM format.<br /><b>Add to Clippings Cart</b>, which enables you to store this information in your Clippings Cart. From there you can download the information in GEDCOM file format and import it into your own genealogy program.<br /><br />More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
-case 'repolist.php':
-	$title=i18n::translate('Repositories');
-	$text=i18n::translate('A list of repositories is displayed on this page.<br /><br />The names of the repositories are sorted into alphabetical order.<br /><br /><b>REPOSITORIES</b><br />Without repositories we cannot build our database. There is a source for all information stored in the database, and that source is kept in a repository. Repositories can be the personal archive of a person, an institution, a public database, a government or church records office, an Internet resource, etc. To get access to a source we will want to know where and in what place it is. All necessary information to find a source should be stored in the Repository record.<br /><br />A repository can be linked to many sources.');
-	break;
-
-case 'reportengine.php':
-	$title=i18n::translate('Reports');
-	$text=i18n::translate('This page allows you to generate reports, which can be saved on your computer.  You can view these reports at a later time, without being connected to <b>webtrees</b> or the internet.  Reports are available in two formats: PDF (for printing) and HTML (for viewing on screen).').
-		'<br/><br/>'.
-		i18n::translate('Since reports can contain private data, some may only be available when you are logged in.  The site administrator can configure access levels using the module administration page.');
-	break;
-
-case 'search.php':
-	$title=i18n::translate('Search');
-	$text=i18n::translate('Although this page looks very simple, there is a very powerful and complicated search engine behind the two forms.  Most genealogy web sites just let you search for a name.  <b>webtrees</b> lets you search for almost anything.<br /><br />The Search box on the left of the screen is the same as the Search box in each page header.<br /><br />If you are looking for people in connection to a certain year, just type the year. The program will find all connections for you.<br /><br />Looking for a name, or place?  Just type in the name or place, completely or just a part of it, and <b>webtrees</b> does the rest.<br /><br /><b>Soundex search method</b><br />With the search boxes on the right, you can search for names of persons and places, even if you don\'t know precisely how to write the name.<br /><br />When there are several genealogical databases on one site and the administrator has enabled switching between them, your search will return the results for all of them.<br /><br />You will find more help about these two boxes by clicking the <b>?</b> above the boxes.');
-	break;
-
-case 'search_advanced.php':
-	$title=i18n::translate('Advanced search');
-	$text='';
-	break;
-
-case 'search_engine.php':
-	$title=i18n::translate('Search engine spider');
-	$text=i18n::translate('<b>webtrees</b> automatically provides search engines with smaller data files with fewer links.  The data is limited to the individual and immediate family, without adding information about grand parents or grand children.  Many reports and server-intensive pages like the calendar are off limits to the spiders.<br /><br />Attempts by the spiders to go to those pages result in showing this page.  If you are seeing this text, the software believes you are a search engine spider.  Below is the list of pages that are allowed to be spidered and will provide the abbreviated data.<br /><br />Real users who follow search engine links into this site will see the full pages and data, and not this page.');
-	break;
-
-case 'source.php':
-	$title=i18n::translate('Source');
-	$text=i18n::translate('The details of the source are displayed on this page. Sources are very important to genealogical researchers and will allow you to follow the trail another researcher used to find the information.<br /><br />You can see information about the source\'s title, author, publication, and the repository where the source was looked up. Because of the many different types of sources, some sources may have more information than others.<br /><br />If a multimedia object such as a scan of a document is connected to the source, you can view that object by clicking the object. When you click on the object name, you will see the object on the MultiMedia page.<br /><br />Following the source details there is a list of all individuals and families who are connected to this source. This allows you to identify all items that were obtained from that data source.<br /><br />When the administrator has enabled these features, you will have one or two additional menu icons on this page:<ol><li><b>View GEDCOM Record</b><br />which shows the information in GEDCOM format.</li><li><b>Add to Clippings Cart</b><br />which enables you to store this information in your Clippings Cart for later downloading and importing into your own genealogy program.</li></ol><br />More help is available by clicking the <b>?</b> next to items on the page.');
-	break;
-
-case 'sourcelist.php':
-	$title=i18n::translate('Sources');
-	$text=i18n::translate('A list of sources is displayed on this page.<br /><br />Unlike the Individual Information and Family pages, there is no alphabetical index.<br /><br />A source can be an individual, a public database, an institution, an Internet resource, etc.  Because of the completely random nature of genealogical sources, it is impossible to find a sort order that is meaningful in all cases. However, <b>webtrees</b> <u>does</u> sort the Source names into alphabetical order.<br /><br /><b>SOURCES</b><br />Without sources we cannot build our database. There is a source for every item of information in the database. The source can be a relative, an institution, a public database, government or private records, an Internet resource, etc.<br /><br />A source can be linked to many persons. One person can also be linked to many sources. You can have different sources for every event, whether it is birth date, profession, marriage, children, etc.');
-	break;
-
-case 'statistics.php':
-	$title=i18n::translate('Statistics page');
-	$text=i18n::translate('This page lets you determine the criteria for producing a graphical display of various statistics from your database.');
-	break;
-
-case 'timeline.php':
-	$title=i18n::translate('Timeline chart');
-	$text=i18n::translate('On this chart you can display one or more persons along a timeline.  You can, for example, visualize the status of two or more persons at a certain moment.<br /><br />If you click the <b>Time Line</b> link on an other page you will already see one person on the Time Line.  If you clicked the <b>Time Line</b> menu item in a page header, you have to supply the starting person\'s ID.');
-	break;
-
-case 'treenav.php':
-	$title=i18n::translate('Interactive tree');
-	$text=
-		i18n::translate('Use the Interactive Tree to view the entire family tree of a person in both directions.  This view is similar to the Hourglass view in that it shows both ancestors and descendants of a given root person.  This chart gives you a more compact view by showing boxes for couples or families instead of just individuals.').
-		'<br /><ul><li><b>'.i18n::translate('Scrolling').'</b><br />'.
-		i18n::translate('Whenever your mouse cursor changes to a Move icon, you can click and drag the tree to view other portions of the tree.  As you drag the tree future generations will automatically expand until there are no more generations left to view in that direction.').
-		'<br /></li><li><b>'.i18n::translate('Zoom').'</b><br />'.
-		i18n::translate('You can use the icons on the left of the tree to zoom in and out.  Zooming out will allow you to see more of the tree on the screen at a time.  As you zoom out the text can become difficult to read; when your mouse hovers over a box you will get an enlarged view of what is inside it.').
-		'<br /></li><li><b>'.i18n::translate('Expanding Details').'</b><br />'.
-		i18n::translate('Clicking on any box will expand the box and display a more detailed view.  While in expanded mode, clicking on a person\'s name will open their Individual Information page.').
-		'<br />'.
-		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
-		'<br />'.
-		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['button_family'].'" width="15px" height="15px" alt="">').
-		'<br /></li><li><b>'.i18n::translate('Toggle Spouses').'</b><br />'.
-		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily'].'" width="15px" height="15px" alt="">').
-		'<br /></li><li><b>'.i18n::translate('Large Tree').'</b>'.
-		'<br />'.
-		i18n::translate('The Interactive Tree is available from many different pages including the Tree tab on the Individual Information page and the Charts block on the Home Page.  When viewing the tree from one of these other pages, you will also have a Tree icon under the Zoom icons.').
-		'<br />'.
-		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
-		'</li></ul>';
-	break;
-
-case 'uploadmedia.php':
-	$title=i18n::translate('Upload media files');
-	$text=''; // TODO: This text is broken - you cannot embed variables like this.  Use %s instead.  But it probably wants completely rewriting and splitting into paragraphs.
-	// 'Uploading media files is quite straightforward.  Here is a little additional information.<br /><br /><b>Thumbnails</b><br />Thumbnails should have a size somewhere around 100px width.  The thumbnail <u>must</u> be named identically to the full-size version.  If your system can generate thumbnails automatically, you will see a notice to that effect on the Upload Media page.<br /><br /><b>Uploading</b><br />Files will be uploaded automatically to the directory <b>#GLOBALS[MEDIA_DIRECTORY]#</b> for the full-sized version and to <b>#GLOBALS[MEDIA_DIRECTORY]#thumbs/</b> for the thumbnails.<br /><br />See <a href=\"readme.html\" target=\"_blank\"><b>ReadMe.html</b></a> for more information.';
-	break;
-
-case 'useradmin.php':
-	$title=i18n::translate('User administration');
-	$text=i18n::translate('On this page you can administer the current users and add new users.<br /><br /><b>User List</b><br />In this table the current users, their status, and their rights are displayed.  You can <b>delete</b> or <b>edit</b> users.<br /><br /><b>Add a new user</b><br />This form is almost the same as the one users see on the  <b>My Account</b> page.<br /><br />For several subjects we did not make special Help text for the administrator. In those cases you will see the following message:');
-	break;
-
-	//////////////////////////////////////////////////////////////////////////////
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
 
@@ -2211,6 +1949,11 @@ case 'age_differences':
 case 'alpha':
 	$title=i18n::translate('Alphabetical index');
 	$text=i18n::translate('Clicking a letter in the Alphabetical index will display a list of the names that start with the letter you clicked.<br /><br />The second to last item in the Alphabetical index can be <b>(unknown)</b>.  This entry will be present when there are people in the database whose surname has not been recorded or does not contain any recognizable letters.  Unknown surnames are often recorded as <b>?</b>, and these will be recognized as <b>(unknown)</b>.  This will also happen if the person is unknown.<br /><br /><b>Note:</b><br />Surnames entered as, for example, <b>Nn</b>, <b>NN</b>, <b>Unknown</b>, or even <b>N.N.</b> will <u>not</u> be found in the <b>(unknown)</b> list. Instead, you will find these persons by clicking <b>N</b> or <b>U</b> because these are the initial letters of those names.  <b>webtrees</b> cannot possibly account for all possible ways of entering unknown surnames;  there is no recognized convention for this.<br /><br />At the end of the Alphabetical index you see <b>ALL</b>. When you click on this item, you will see a list of all surnames in the database.<br /><br /><b>Missing letters?</b><br />If your Alphabetical index appears to be incomplete, with missing letters, your database doesn\'t contain any surnames that start with that missing letter.');
+	break;
+
+case 'ancestry_chart':
+	$title=i18n::translate('Ancestry chart');
+	$text=i18n::translate('The Ancestry page is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but with more details and alternate <a href="?help=chart_style">Chart style</a> displays.<br /><br />Each ancestry is shown with a unique number, calculated according to the <i>Sosa-Stradonitz</i> system:<div style="padding-left:30px;"><b>Even</b> numbers for men (child*2)<br /><b>Odd</b> numbers for women (husband+1) except for <b>1</b></div><br />Example:<br /><div style="padding-left:30px;">The root person is <b>1</b>, regardless of gender.<br /><b>1</b>\'s father is <b>2</b> (<b>1</b> * 2), mother is <b>3</b> (<b>2</b> + 1).<br /><b>2</b>\'s father is <b>4</b> (<b>2</b> * 2), mother is <b>5</b> (<b>4</b> + 1).<br /><b>3</b>\'s father is <b>6</b> (<b>3</b> * 2), mother is <b>7</b> (<b>6</b> + 1).<br /><b>7</b>\'s father is <b>14</b> (<b>7</b> * 2), mother is <b>15</b> (<b>14</b> +1).</div><br />etc.');
 	break;
 
 case 'annivers_date_select':
@@ -2381,6 +2124,11 @@ case 'edit_edit_raw':
 		/* I18N: %s is a URL */ i18n::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/images/Ged551-5.pdf">http://wiki.webtrees.net/images/Ged551-5.pdf</a>');
 	break;
 
+case 'edit_merge':
+	$title=i18n::translate('Merge records');
+	$text=i18n::translate('This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br /><br />This is useful for people who have merged GEDCOMs and now have many people, families, and sources that are the same.<br /><br />The page consists of three steps.<br /><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br />In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br />In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent.');
+	break;
+
 case 'edit_SOUR_EVEN':
 	$title=i18n::translate('Edit source event');
 	$text=i18n::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br /><br />Select the events that are recorded by this source from the list of events provided. The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>. The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source. For example, "Oneida, Idaho, USA" would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. "Idaho, USA" would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
@@ -2458,6 +2206,16 @@ case 'fambook_descent':
 	$text=i18n::translate('This value determines the number of descendant generations of the root person that will be printed in Hourglass format.');
 	break;
 
+case 'family_book_chart':
+	$title=i18n::translate('Family book chart');
+	$text=i18n::translate('This chart is very similar to the Hourglass chart.  It will show the ancestors and descendants of the selected root person on the same chart.  It will also show the descendants of the root person in the same Hourglass format.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />Each descendant of the root person will become the root person of an additional hourglass chart, printed on the same page.  This process repeats until the specified number of descendant generations have been printed.');
+	break;
+
+case 'fan_chart':
+	$title=i18n::translate('Circle diagram');
+	$text=i18n::translate('The Circle Diagram is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but in a more graphical way.<br /><br />The Root person is shown in the center, his parents on the first ring, grandparents on the second ring, and so on.<br /><br />Years of birth and death are printed under the name when known.<br /><br />Clicking on a name on the chart will open a links menu specific to that person.  From this menu you can choose to center the diagram on that person or on one of that person\'s close relatives, or you can jump to that person\'s Individual Information page or a different chart for that person.');
+	break;
+
 case 'fan_style':
 	$title=i18n::translate('Fan style');
 	$text=i18n::translate('This option controls the appearance of the diagram.<ul><li><b>1/2</b><br />Half circle 180&deg; diagram</li><li><b>3/4</b><br />Three-quarter 270&deg; diagram, sometimes called <i>Angel wing</i></li><li><b>4/4</b><br />Full circle 360&deg; diagram</li></ul>');
@@ -2522,14 +2280,11 @@ case 'help_contents_help':
 	$title=i18n::translate('Help contents');
 	$text=
 			'<table><tr><td><span class="helpstart">'.i18n::translate('Help items').'</span>
-			<ul><li><a href="?help=add_media">'.i18n::translate('Add media').'</a></li><li><a href="?help=ancestry.php">'.i18n::translate('Ancestry chart').'</a></li><li><a href="?help=calendar.php">'.i18n::translate('Calendar').'</a></li><li><a href="?help=fanchart.php">'.i18n::translate('Circle diagram').'</a></li><li><a href="?help=module.php?mod=clippings&mod_action=index">'
-			.i18n::translate('Clippings cart').'</a></li><li><a href="?help=descendancy.php">'.i18n::translate('Descendancy chart').'</a></li><li><a href="?help=famlist.php">'.i18n::translate('Families').'</a></li><li><a href="?help=familybook.php">'
-			.i18n::translate('Family book chart').'</a></li><li><a href="?help=family.php">'.i18n::translate('Family information').'</a></li><li><a href="?help=faq.php">'.i18n::translate('FAQ list').'</a></li><li><a href="?help=gedcom_info">'.i18n::translate('GEDCOM information').'</a></li><li><a href="?help=index_portal">'.i18n::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.i18n::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
-			.i18n::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.i18n::translate('Individuals').'</a></li><li><a href="?help=treenav.php">'.i18n::translate('Interactive tree').'</a></li><li><a href="?help=login.php">'
+			<ul><li><a href="?help=ancestry.php">'.i18n::translate('Ancestry chart').'</a></li><li><a href="?help=fanchart.php">'.i18n::translate('Circle diagram').'</a></li><li><a href="?help=familybook.php">'
+			.i18n::translate('Family book chart').'</a></li><li><a href="?help=gedcom_info">'.i18n::translate('GEDCOM information').'</a></li><li><a href="?help=index_portal">'.i18n::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.i18n::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
+			.i18n::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.i18n::translate('Individuals').'</a></li><li><a href="?help=treenav">'.i18n::translate('Interactive tree').'</a></li><li><a href="?help=login.php">'
 			.i18n::translate('Login').'</a></li><li><a href="?help=pls_note11">'.i18n::translate('Lost password request').'</a></li><li><a href="?help=medialist.php">'.i18n::translate('Multimedia').'</a></li><li><a href="?help=edituser.php">'
-			.i18n::translate('My account').'</a></li><li><a href="?help=mypage_portal">'.i18n::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.i18n::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.i18n::translate('Pedigree Tree').'</a></li><li><a href="?help=placelist.php">'
-			.i18n::translate('Place hierarchy').'</a></li><li><a href="?help=relationship.php">'.i18n::translate('Relationship chart').'</a></li><li><a href="?help=reportengine.php">'.i18n::translate('Reports').'</a></li><li><a href="?help=login_register.php">'.i18n::translate('Request new user account').'</a></li><li><a href="?help=search">'.i18n::translate('Search').'</a></li><li><a href="?help=source.php">'.i18n::translate('Source').'</a></li><li><a href="?help=sourcelist.php">'
-			.i18n::translate('Sources').'</a></li><li><a href="?help=timeline.php">'.i18n::translate('Timeline chart').'</a></li><li><a href="?help=edituser_username">'.i18n::translate('Username').'</a></li></ul></td>';
+			.i18n::translate('My account').'</a></li><li><a href="?help=mypage_portal">'.i18n::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.i18n::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.i18n::translate('Pedigree Tree').'</a></li><li><a href="?help=timeline.php">'.i18n::translate('Timeline chart').'</a></li><li><a href="?help=edituser_username">'.i18n::translate('Username').'</a></li></ul></td>';
 		if (WT_USER_IS_ADMIN) {
 			$text.='<td valign="top"><span class="helpstart">'.i18n::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.i18n::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.i18n::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
 			.i18n::translate('FAQ List: Edit').'</a></li><li><a href="?help=edit_gedcoms">'.i18n::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=edit_config_gedcom">'.i18n::translate('GEDCOM: Configure').'</a></li><li><a href="?help=default_gedcom">'.i18n::translate('GEDCOM: Default').'</a></li><li><a href="readme.html">'.i18n::translate('View readme.html file').'</a></li><li><a href="?help=help_useradmin.php">'.i18n::translate('User administration').'</a></li></ul></td>';
@@ -2540,6 +2295,11 @@ case 'help_contents_help':
 case 'help_editconfig.php':
 	$title=i18n::translate('Configure webtrees');
 	$text=i18n::translate('On this page you can configure the global settings for <b>webtrees</b>.  You can do this after you have installed <b>webtrees</b> and are running it for the first time.<br /><br />As these settings are <b>global</b>, they are for the whole program and for all genealogical databases you use with <b>webtrees</b>.<br /><br />Each genealogical database also has additional configuration options that you set after clicking the <b>Click here to administer GEDCOMs</b> link on this page.<br /><br />You can also access the GEDCOM Administration function from the main Admin page, whose link is found under the My Page icon or in the header of most pages.  On the Admin page, the relevant link is called <b>Manage GEDCOMs and edit Privacy.</b>');
+	break;
+
+case 'hourglass_chart':
+	$title=i18n::translate('Hourglass chart');
+	$text=i18n::translate('The Hourglass chart will show the ancestors and descendants of the selected root person on the same chart.  This chart is a mix between the Descendancy chart and the Pedigree chart.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />If there is a downwards arrow on the screen under the root person, clicking on it will display a list of the root person\'s close family members that you can use the navigate down the chart.  Selecting a name from this list will reload the chart with the selected person as the new root person.');
 	break;
 
 case 'include_media':
@@ -2635,6 +2395,11 @@ case 'index_top10_pageviews':
 case 'index_welcome':
 	$title=i18n::translate('Welcome block');
 	$text=i18n::translate('The Welcome block shows you the current database title, the date and time, and, if enabled by the admin, the Hit Counter.<br /><br />The Hit Counter is only available in the Welcome block and on the Individual Information page.  The counter counts the "Hits" of these pages. That means it counts how many times these pages are visited.  The counter does not check the Internet address of a visitor; every visit to a page from <u>any</u> remote location counts as another Hit.');
+	break;
+
+case 'lifespan_chart':
+	$title=i18n::translate('Lifespan chart');
+	$text=i18n::translate('On this chart you can display one or more persons along a horizontal timeline.  This chart allows you to see how the lives of different people overlapped.<br /><br />You can add people to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more people to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br /><br />You can also add people to the chart by searching for them by date range or locality.');
 	break;
 
 case 'link_child':
@@ -2751,6 +2516,11 @@ case 'oldest_top':
 case 'password':
 	$title=i18n::translate('Password');
 	$text=i18n::translate('In this box you type your password.<br /><br /><b>The password is case sensitive.</b>  This means that <b>MyPassword</b> is <u>not</u> the same as <b>mypassword</b> or <b>MYPASSWORD</b>.');
+	break;
+
+case 'pedigree_tree':
+	$title=i18n::translate('Pedigree Tree');
+	$text=i18n::translate('A pedigree is an enumeration of all ancestors of the starting person.  Users who are not logged in see the pedigree of the starting (root) person chosen by the site administrator.  Logged in users can select their own starting (root) person.<br /><br />In this context, "All ancestors" means the father and mother, their parents, and so on.  The pedigree is displayed graphically; you don\'t have to struggle through pages of text to determine your ancestors.<br /><br />All individuals are displayed in Name boxes on the screen.<br /><ul><li><b>Name boxes on the pedigree</b><br />If the Pedigree page is set to show details, you will see the person\'s name and birth and death dates.  You can click on a person\'s name to take you directly to the Individual Information page of that person.<br /><br />When <b>Show details</b> is on there are two icons inside the name box.</li><li><b>Pedigree icon inside the Name box</b><br />When the option <b>Show Details</b> is on, you see a Pedigree icon in the Name box. Depending on the site settings, you have to hover over the icon or click on it.  When you click on or hover over this icon, a small sub-menu appears.<br /><br />The items <b>Pedigree Tree</b> and <b>Descendancy Chart</b> are similar to those items in the main menu, but the difference is that the starting person is now the individual of mentioned in the Name box.  You also see <b>Family with Spouse</b>. Underneath that you see the name of the spouse followed by the names of the children.  All names are clickable.</li><li><b>Magnifying glass inside the Name box</b><br />Depending on the site settings, you have to hover over the icon or click on it.  This magnifies the Name box so that more details will be displayed.  You will see more dates and events. Names are clickable.</li><li><b>Arrows</b><br />On the left or right of the leftmost or rightmost Name boxes you may see arrows.  When you click on these arrows the screen display will shift in the direction of the arrow.</li></ul>');
 	break;
 
 case 'PGV_WIZARD':
@@ -3029,9 +2799,38 @@ case 'talloffset':
 	$text=i18n::translate('With this option you determine the page layout orientation.<br /><br />Changing this setting might be useful if you want to make a screen print or if you have a different type of screen.<ul><li><b>Portrait</b> mode will make the tree taller, such that a 4 generation chart should fit on a single page printed vertically.</li><li><b>Landscape</b> mode will make a wider tree that should print on a single page printed horizontally.</li><li><b>Oldest at top</b> mode rotates the chart, but not its boxes, by 90 degrees counter-clockwise, so that the oldest generation is at the top of the chart.</li><li><b>Oldest at bottom</b> mode rotates the chart, but not its boxes, by 90 degrees clockwise, so that the oldest generation is at the bottom of the chart.</li></ul>');
 	break;
 
+case 'timeline_chart':
+	$title=i18n::translate('Timeline chart');
+	$text=i18n::translate('On this chart you can display one or more persons along a timeline.  You can, for example, visualize the status of two or more persons at a certain moment.<br /><br />If you click the <b>Time Line</b> link on an other page you will already see one person on the Time Line.  If you clicked the <b>Time Line</b> menu item in a page header, you have to supply the starting person\'s ID.');
+	break;
+
 case 'timeline_control':
 	$title=i18n::translate('Timeline control');
 	$text=i18n::translate('Click the drop down menu to change the speed at which the timeline scrolls.<br/><br/>~Begin Year~<br/>Enter the starting year of the range.<br/><br/>~End Year~<br/>Enter the ending year of the range.<br/><br/>~Search~<br/>Click the Search button to begin searching for events that occurred within the range identified by the Begin Year and End Year fields.');
+	break;
+
+case 'treenav':
+	$title=i18n::translate('Interactive tree');
+	$text=
+		i18n::translate('Use the Interactive Tree to view the entire family tree of a person in both directions.  This view is similar to the Hourglass view in that it shows both ancestors and descendants of a given root person.  This chart gives you a more compact view by showing boxes for couples or families instead of just individuals.').
+		'<br /><ul><li><b>'.i18n::translate('Scrolling').'</b><br />'.
+		i18n::translate('Whenever your mouse cursor changes to a Move icon, you can click and drag the tree to view other portions of the tree.  As you drag the tree future generations will automatically expand until there are no more generations left to view in that direction.').
+		'<br /></li><li><b>'.i18n::translate('Zoom').'</b><br />'.
+		i18n::translate('You can use the icons on the left of the tree to zoom in and out.  Zooming out will allow you to see more of the tree on the screen at a time.  As you zoom out the text can become difficult to read; when your mouse hovers over a box you will get an enlarged view of what is inside it.').
+		'<br /></li><li><b>'.i18n::translate('Expanding Details').'</b><br />'.
+		i18n::translate('Clicking on any box will expand the box and display a more detailed view.  While in expanded mode, clicking on a person\'s name will open their Individual Information page.').
+		'<br />'.
+		i18n::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
+		'<br />'.
+		i18n::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['button_family'].'" width="15px" height="15px" alt="">').
+		'<br /></li><li><b>'.i18n::translate('Toggle Spouses').'</b><br />'.
+		i18n::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily'].'" width="15px" height="15px" alt="">').
+		'<br /></li><li><b>'.i18n::translate('Large Tree').'</b>'.
+		'<br />'.
+		i18n::translate('The Interactive Tree is available from many different pages including the Tree tab on the Individual Information page and the Charts block on the Home Page.  When viewing the tree from one of these other pages, you will also have a Tree icon under the Zoom icons.').
+		'<br />'.
+		i18n::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
+		'</li></ul>';
 	break;
 
 case 'upload_media_file':

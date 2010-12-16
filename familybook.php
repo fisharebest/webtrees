@@ -226,9 +226,8 @@ if (WT_USE_LIGHTBOX) {
 }
 // ==========================================================================================
 
-echo "<!-- // NOTE: Start table header -->";
-echo "<table><tr><td valign=\"top\">";
-echo "<h2>".i18n::translate('Family book chart').":<br />".PrintReady($name)."</h2>";
+echo '<table><tr><td valign="top">';
+echo '<h2>'.i18n::translate('Family book chart'), help_link('family_book_chart'), '<br />', PrintReady($name), '</h2>';
 ?>
 
 <script language="JavaScript" type="text/javascript">

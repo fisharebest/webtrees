@@ -43,9 +43,8 @@ print_header(PrintReady($controller->name)." ".i18n::translate('Hourglass chart'
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-echo "<!-- // NOTE: Start table header -->";
-echo "<table><tr><td valign=\"top\">";
-echo "<h2>".i18n::translate('Hourglass chart').":<br />".PrintReady($controller->name)."</h2>";
+echo '<table><tr><td valign="top">';
+echo '<h2>', i18n::translate('Hourglass chart'), help_link('hourglass_chart'), '<br />', PrintReady($controller->name), '</h2>';
 
 $controller->setupJavascript();
 
