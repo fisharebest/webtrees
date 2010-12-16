@@ -92,40 +92,6 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			}
 			return true;
 		}
-		else if (action == "multisite")
-		{
-			if (frm.subaction.value=='basic')
-			{
-				if (frm.multiquery.value.length < 2) {
-					alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
-					return false;
-				}
-			}
-			else if (frm.subaction.value == 'advanced')
-			{
-				message = true;
-				name = frm.name.value;
-				bdate = frm.birthdate.value;
-				bplace = frm.birthplace.value;
-				ddate = frm.deathdate.value;
-				dplace = frm.deathplace.value;
-				gender = frm.gender.value;
-
-				if (name.length > 1)
-					message = false;
-				if (bdate.length > 1)
-					message = false;
-				if (bplace.length > 1)
-					message = false;
-				if (ddate.length > 1)
-					message = false;
-				if (dplace.length > 1)
-					message = false;
-				if (message) {
-					return false;
-				}
-			}
-		}
 		return true;
 	}
 
@@ -380,126 +346,6 @@ if ($controller->action == "soundex") {
 
 }
 
-/**************************************************** Multi Site Search Form *************************************************************/
-if ($controller->action == "multisite") {
-?>
-					<input type="hidden" name="subaction" value="basic" />
-					<td colspan="3" class="facts_label03" style="text-align:center; ">
-						<?php echo i18n::translate('Multi Site Search'), help_link('multi_site_search'); ?>
-					</td>
-	</tr>
-	<tr>
-		<td class="list_label" >
-			<?php echo i18n::translate('Sites to search'); ?>
-		</td>
-		<td colspan="2" class="list_value" align="center">
-			<table>
-				<tr>
-					<td align="left" >
-						<?php
-
-	$i = 0;
-	if ($controller->Sites) {
-		foreach ($controller->Sites as $server) {
-			echo "<input tabindex=\"$i\" type=\"checkbox\" ";
-			$vartemp = "server".$i;
-			if (isset ($_REQUEST["$vartemp"])) {
-				if ($_REQUEST["$vartemp"] == "on")
-					echo "checked=\"checked\" value=\"on\" ";
-			} else
-				if (!$controller->isPostBack)
-					echo "checked=\"checked\" value=\"on\" ";
-			$controller->inputFieldNames[] = "server".$i;
-			echo "name=\"server".$i."\" />".$server['name']."<br />";
-			$i ++;
-		}
-	} else {
-		echo i18n::translate('No known Servers<br />No results will be found');
-	}
-?>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-	<!-- // this is for the basic site search involving just a query string text -->
-	<tr>
-		<td colspan="3" class="facts_label02">
-			<?php echo i18n::translate('Basic site search'); ?>
-		</td>
-	</tr>
-		<td class="list_label">
-			<?php echo i18n::translate('search'); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php echo $i; ?>" type="text" name="multiquery" value="<?php echo $controller->mymultiquery; ?>" />
-		</td>
-		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="1">
-			<input tabindex="<?php echo ($i+2); ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>" onclick="document.searchform.subaction.value='basic';"/>
-		</td>
-	</tr>
-	<!-- // this is for the advanced site search -->
-	<tr>
-		<td class="facts_label02" colspan="3">
-			<?php echo i18n::translate('Advanced site search'); ?>
-		</td>
-	</tr>
-	<!-- // Advanced search terms -->
-	<tr>
-		<td class="list_label">
-			<?php echo i18n::translate('Name: '); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php echo ($i+3); ?>" type="text" name="name" value="<?php echo $controller->myname; ?>" />
-		</td>
-		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="6">
-			<input tabindex="<?php echo ($i+9); ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>"
-				onclick="document.searchform.subaction.value='advanced';"/>
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo i18n::translate('Birth date: '); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php echo ($i+4); ?>" type="text" name="birthdate" value="<?php echo $controller->mybirthdate; ?>" />
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo i18n::translate('Birth Place: '); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php echo ($i+5); ?> " type="text" name="birthplace" value="<?php echo $controller->mybirthplace; ?>" />
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo i18n::translate('Death date: '); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php echo ($i+6); ?>" type="text" name="deathdate" value="<?php echo $controller->mydeathdate; ?>" />
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo i18n::translate('Death Place: '); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php ($i+7); ?>" type="text" name="deathplace" value="<?php echo $controller->mydeathplace; ?>" />
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo i18n::translate('Gender: '); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="<?php ($i+8); ?>" type="text" name="gender" value="<?php echo $controller->mygender; ?>" />
-		</td>
-	</tr>
-	<?php
-
-}
 // If the search is a general or soundex search then possibly display checkboxes for the gedcoms
 if ($controller->action == "general" || $controller->action == "soundex") {
 	$all_gedcoms=get_all_gedcoms();
@@ -570,19 +416,7 @@ if ($controller->action == "general") {
 		if (WT_USER_CAN_EDIT) {
 			echo " | <a href='?action=replace'>".i18n::translate('Search and replace')."</a>";
 		}
-	} else
-		if ($controller->action == "multisite")
-		{
-			if (WT_USER_CAN_EDIT)
-			{
-				echo "<a href='?action=replace'>".i18n::translate('Search and replace')."</a> | ";
-			}
-
-			echo "<a href='?action=general'>".i18n::translate('General Search')."</a> | ";
-			echo "<a href='?action=soundex'>".i18n::translate('Soundex Search')."</a>";
-			echo " | <a href='search_advanced.php'>".i18n::translate('Advanced search')."</a></td></tr>";
-		}
-
+	}
 ?>
 		</td>
 	</tr>
@@ -592,8 +426,8 @@ if ($controller->action == "general") {
 <?php
 
 echo "<br /><br /><br />";
-// set the focus on the first field unless multisite or some search results have been printed
-if (($controller->action != "multisite") && !$somethingPrinted ) {
+// set the focus on the first field unless some search results have been printed
+if (!$somethingPrinted) {
 ?>
 	<script language="JavaScript" type="text/javascript">
 	<!--
