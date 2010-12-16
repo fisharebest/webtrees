@@ -111,7 +111,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', translate_fact('NAME'), '</a></th>';
 	echo "<th class=\"list_label\" style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
-	if ($option=="sosa") echo "<th class=\"list_label\">Sosa</th>";
+	if ($option=="sosa") echo "<th class=\"list_label\">", /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ i18n::translate('Sosa'), "</th>";
 	echo "<th class=\"list_label\">", translate_fact('BIRT'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", i18n::translate('Anniversary'), "\" title=\"", i18n::translate('Anniversary'), "\" border=\"0\" /></td>";
 	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
