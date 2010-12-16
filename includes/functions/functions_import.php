@@ -38,7 +38,6 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FUNCTIONS_IMPORT_PHP', '');
 
 require_once WT_ROOT.'includes/classes/class_media.php';
-require_once WT_ROOT.'includes/functions/functions_lang.php';
 require_once WT_ROOT.'includes/functions/functions_export.php';
 
 // Tidy up a gedcom record on import, so that we can access it consistently/efficiently.

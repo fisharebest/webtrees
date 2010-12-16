@@ -34,6 +34,17 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FUNCTIONS_NAME_PHP', '');
 
 /**
+ * Takes a string and converts certain characters in the string to others for the purpose of soundex searches
+ */
+function Character_Substitute($input)
+{
+	$stringsToReplace = array("/AE/", "/ae/", "/OE/", "/oe/", "/UE/", "/ue/", "/ss/", "/SS/");
+	$replacements =     array("Ä",   "ä",   "Ö",   "ö",   "Ü",   "ü",   "ß",   "ß");
+
+	preg_replace($stringsToReplace, $replacements, $input);
+}
+
+/**
  * Get array of common surnames
  *
  * This function returns a simple array of the most common surnames
