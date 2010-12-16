@@ -71,7 +71,9 @@ if ($export) {
 
 		$end = microtime(true);
 		fclose($gedout);
-		@unlink($filename);
+		if (file_exists($filename)) {
+			unlink($filename);
+		}
 		rename($filename.'.tmp', $filename);
 		$stat = stat($filename);
 		echo sprintf('<p>%d bytes, %0.3f seconds</p>', $stat['size'], $end-$start);
