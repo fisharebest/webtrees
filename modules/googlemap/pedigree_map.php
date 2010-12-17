@@ -569,7 +569,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		if ($i+1 >= pow(2, $curgen)) {
 			$curgen++;
 		}
-		$relationship=get_relationship_name(get_relationship($controller->rootid, $pid, false));
+		$relationship=get_relationship_name(get_relationship($controller->rootid, $pid, false, 0, true));
 		if (empty($relationship)) $relationship=i18n::translate('self');
 		$event = "<img src='modules/googlemap/images/sq".$curgen.".png' width='10' height='10'>".
 			 "<strong>&nbsp;".$relationship.":&nbsp;</strong>";
