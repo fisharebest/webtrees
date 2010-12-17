@@ -91,14 +91,14 @@ $ADOP_CODES=array(
 );
 
 // GEDCOM ADOP Female codes
-$ADOP_CODES=array(
+$ADOP_CODES_F=array(
 	'BOTH'=>i18n::translate_c('FEMALE', 'Adopted by both parents'),
 	'HUSB'=>i18n::translate_c('FEMALE', 'Adopted by father'),
 	'WIFE'=>i18n::translate_c('FEMALE', 'Adopted by mother'),
 );
 
 // GEDCOM ADOP Male codes
-$ADOP_CODES=array(
+$ADOP_CODES_M=array(
 	'BOTH'=>i18n::translate_c('MALE', 'Adopted by both parents'),
 	'HUSB'=>i18n::translate_c('MALE', 'Adopted by father'),
 	'WIFE'=>i18n::translate_c('MALE', 'Adopted by mother'),
