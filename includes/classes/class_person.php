@@ -949,7 +949,10 @@ class Person extends GedcomRecord {
 		case 1:
 			// Add siblings and half-siblings
 			foreach ($person->getChildFamilies() as $family) {
-				foreach (array($family->getHusband(), $family->getWife()) as $spouse) {
+				$husb_wife = array();
+				if ($family->getHusband()) $husb_wife[]=$family->getHusband();
+				if ($family->getWife()) $husb_wife[]=$family->getWife();
+				foreach ($husb_wife as $spouse) {
 					foreach ($spouse->getSpouseFamilies() as $sfamily) {
 						if ($family->getHusbId()==$sfamily->getHusbId() && $family->getWifeId()==$sfamily->getWifeId()) {
 							// Both parents the same - siblings
@@ -963,8 +966,8 @@ class Person extends GedcomRecord {
 			}
 			// Add grandparents
 			foreach ($person->getChildFamilies() as $family) {
-				$this->add_parents_facts($family->getHusband(), 2);
-				$this->add_parents_facts($family->getWife   (), 3);
+				if ($family->getHusband()) $this->add_parents_facts($family->getHusband(), 2);
+				if ($family->getWife())    $this->add_parents_facts($family->getWife   (), 3);
 			}
 			break;
 		}
