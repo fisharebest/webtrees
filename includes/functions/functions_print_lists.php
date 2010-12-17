@@ -1007,6 +1007,9 @@ function print_repo_table($repos, $legend='') {
 	//-- table body
 	$n=0;
 	foreach ($repos as $repo) {
+		if (!$repo->canDisplayDetails()) {
+			continue;
+		}
 		//-- Counter
 		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
 		//-- Repository name(s)
