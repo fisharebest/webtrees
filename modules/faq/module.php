@@ -46,26 +46,26 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
-		case 'edit':
-			$this->edit();
+		case 'admin_config':
+			$this->config();
 			break;
-		case 'delete':
+		case 'admin_delete':
 			$this->delete();
 			$this->config();
 			break;
-		case 'moveup':
-			$this->moveup();
+		case 'admin_edit':
+			$this->edit();
+			break;
+		case 'admin_movedown':
+			$this->movedown();
 			$this->config();
 			break;
-		case 'movedown':
-			$this->movedown();
+		case 'admin_moveup':
+			$this->moveup();
 			$this->config();
 			break;
 		case 'show':
 			$this->show();
-			break;
-		case 'config':
-			$this->config();
 			break;
 		default:
 			die("Internal error - unknown action: $mod_action");
@@ -74,7 +74,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&mod_action=config';
+		return 'module.php?mod='.$this->getName().'&mod_action=admin_config';
 	}
 
 	// Implement class WT_Module_Block
@@ -301,7 +301,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo '<div class="faq_italic">', i18n::translate('Click on a title to go straight to it, or scroll down to read them all');
 			if (WT_USER_GEDCOM_ADMIN) {
 				echo '<div style="float:right;">',
-						'<a href="module.php?mod=faq&mod_action=config">', i18n::translate('Click here to Add, Edit, or Delete'), '</a>',
+						'<a href="module.php?mod=faq&mod_action=admin_config">', i18n::translate('Click here to Add, Edit, or Delete'), '</a>',
 				'</div>';
 			}
 		echo '</div>';
@@ -385,7 +385,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 		echo '<table class="list_table width100">';
 		echo '<tr><td class="width20 list_label" colspan="5">';
-		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add FAQ item'), '</a>';
+		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', i18n::translate('Add FAQ item'), '</a>';
 		echo help_link('add_faq_item', $this->getName());
 		echo '</td></tr>';
 		if (empty($faqs)) {
@@ -409,21 +409,21 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				if ($faq->block_order==$min_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["uarrow"], '" border="0" alt="" /></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["uarrow"], '" border="0" alt="" /></a>';
 					echo help_link('moveup_faq_item', $this->getName());
 				}
 				echo '</td><td class="optionbox center">';
 				if ($faq->block_order==$max_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["darrow"], '" border="0" alt="" /></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["darrow"], '" border="0" alt="" /></a>';
 					echo help_link('movedown_faq_item', $this->getName());
 				}
 				echo '</td><td class="optionbox center">';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $faq->block_id, '">', i18n::translate('Edit'), '</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '">', i18n::translate('Edit'), '</a>';
 				echo help_link('edit_faq_item', $this->getName());
 				echo '</td><td class="optionbox center">';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this FAQ entry?'), '\');">', i18n::translate('Delete'), '</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this FAQ entry?'), '\');">', i18n::translate('Delete'), '</a>';
 				echo help_link('delete_faq_item', $this->getName());
 				echo '</td>';
 				// NOTE: Print the body text of the current item
