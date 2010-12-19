@@ -344,7 +344,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 		}
 	}
 
-	// Level 1 tags (except INDI and FAM) can be controlled by global tag settings
+	// Level 0 tags (except INDI and FAM) can be controlled by global tag settings
 	if (isset($global_facts[$type])) {
 		return $cache[$cache_key]=($global_facts[$type]>=$pgv_USER_ACCESS_LEVEL);
 	}
