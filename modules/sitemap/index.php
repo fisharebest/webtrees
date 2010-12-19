@@ -75,7 +75,6 @@ if ($action=="sendFiles") {
 	header('Content-Disposition: attachment; filename="'.$filename.'"');
 
 	echo "<?xml version='1.0' encoding='UTF-8' ?>\n";
-	echo "<?xml-stylesheet type=\"text/xsl\" href=\"", WT_SERVER_NAME.WT_SCRIPT_PATH, "modules/sitemap/gss.xsl\" ?>\n";
 	echo "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n";
 	echo " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
 	echo " xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9\n";
@@ -187,7 +186,6 @@ if ($action=="sendIndex") {
 	header('Content-Disposition: attachment; filename="SitemapIndex.xml"');
 
 	echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
-	echo "<?xml-stylesheet type=\"text/xsl\" href=\"", WT_SERVER_NAME, WT_SCRIPT_PATH, "modules/sitemap/gss.xsl\" ?>\n";
 	echo "<sitemapindex xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n";
 	echo "xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9\"\n";
 	echo "url=\"http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd\"\n";
