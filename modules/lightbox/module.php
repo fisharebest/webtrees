@@ -51,7 +51,6 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		switch($mod_action) {
 		case 'admin_config':
 		case 'album':
-		case 'lb_editconfig':
 			// TODO: these files should be methods in this class
 			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
 			break;
@@ -60,7 +59,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&mod_action=lb_editconfig';
+		return 'module.php?mod='.$this->getName().'&mod_action=admin_config';
 	}
 
 	// Implement WT_Module_Tab
