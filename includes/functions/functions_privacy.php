@@ -315,7 +315,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 				}
 			}
 		}
-		return true;
+		return $cache[$cache_key]=true;
 	case 'OBJE':
 		// Hide media objects that are linked to private records
 		foreach (get_media_relations($xref) as $gid=>$type2) {
