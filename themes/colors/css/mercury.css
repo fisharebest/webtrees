@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 9566 2010-09-26 22:15:23Z rob $
+* $Id: ash.css 9634 2010-10-07 16:28:39Z rob $
 */
 
 .something {
@@ -32,9 +32,9 @@ color: #707070;
 /*	Define Tbl hdrs and Light Text Colors	*/
 
 .descriptionbox,
-.descriptionbox a,
+#personal_facts_content a,
 .topbottombar,
-.topbottombar a,
+.topbottombar a, 
 .list_label, 
 .list_label a,
 .facts_label,
@@ -1830,24 +1830,31 @@ padding: 0 10px;
 
 /*--- edit links ---*/
 
+#personal_facts_content a {
+background: transparent;
+}
+
 .edit_link:after { /* used only on the user list */
 	content: " " url(../images/edit_sm.png);
 }
 
-td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
-	color: #707070;
+td.descriptionbox  a { 
 }
 
 .editfacts { /* a container for the following three links */
-	float: left;
-	margin-top: 15px;
+	clear: left;
+	padding-top: 15px;
+}
+
+.editfacts  a:hover { 
+	background-color: transparent;
 }
 
 .link_text {
 	visibility : hidden;
 }
 
-.editlink  {
+.editlink, editlink  {
 	background: url(../images/edit_sm.png) no-repeat left center;
 	width: 20px;
 	float: left;
@@ -1864,6 +1871,3 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 20px;
 	float: left;
 }
-
-
-

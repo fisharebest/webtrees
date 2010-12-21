@@ -45,7 +45,6 @@ color: #ffffff;
 /*	Define Tbl hdrs and Light Text Colors	*/
 
 .descriptionbox,
-.descriptionbox a,
 .topbottombar,
 .topbottombar a,
 .list_label, 
@@ -60,7 +59,6 @@ color: #ffffff;
 	background:#95B8E0;
 	color: #003399;
 }
-
 /*	Define TopLink Color				*/
 
 #toplinks {
@@ -1851,12 +1849,7 @@ padding: 0 10px;
 	content: " " url(images/edit_sm.png);
 }
 
-td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
-	color: #ffffff;
-}
-
-.link_text {
-	visibility : hidden;
+td.descriptionbox  a { 
 }
 
 .editfacts { /* a container for the following three links */
@@ -1864,7 +1857,15 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	padding-top: 15px;
 }
 
-.editlink  {
+.editfacts  a:hover { 
+	background-color: transparent;
+}
+
+.link_text {
+	visibility : hidden;
+}
+
+.editlink, editlink  {
 	background: url(images/edit_sm.png) no-repeat left center;
 	width: 20px;
 	float: left;
