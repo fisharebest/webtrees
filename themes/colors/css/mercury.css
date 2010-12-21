@@ -32,7 +32,7 @@ color: #707070;
 /*	Define Tbl hdrs and Light Text Colors	*/
 
 .descriptionbox,
-#personal_facts_content a,
+.descriptionbox a,
 .topbottombar,
 .topbottombar a, 
 .list_label, 
@@ -1830,7 +1830,7 @@ padding: 0 10px;
 
 /*--- edit links ---*/
 
-#personal_facts_content a {
+.descriptionbox a {
 background: transparent;
 }
 
