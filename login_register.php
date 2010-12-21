@@ -370,7 +370,7 @@ switch ($action) {
 				i18n::init($user_language);
 				$mail_body = "";
 				$mail_body .= i18n::translate('Hello %s ...', $user_realname) . "\r\n\r\n";
-				$mail_body .= i18n::translate('A request was received at %s to create a webtrees account with your email address %s.', WT_SERVER_NAME.WT_SCRIPT_PATH, $user_email) . "  ";
+				$mail_body .= /* I18N: %s placeholders are the site URL and an email address */ i18n::translate('A request was received at %s to create a webtrees account with your email address %s.', WT_SERVER_NAME.WT_SCRIPT_PATH, $user_email) . "  ";
 				$mail_body .= i18n::translate('Information about the request is shown under the link below.') . "\r\n\r\n";
 				$mail_body .= i18n::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . "\r\n\r\n";
 				if ($TEXT_DIRECTION=="rtl") {
@@ -500,7 +500,7 @@ switch ($action) {
 
 				$mail_body = "";
 				$mail_body .= i18n::translate('Hello Administrator ...') . "\r\n\r\n";
-				$mail_body .= i18n::translate('User %s (%s) has confirmed their request for an account.', $user_name, getUserFullName($user_id)) . "\r\n\r\n";
+				$mail_body .= /* I18N: User <login-id> (<real name>) has ... */ i18n::translate('User %s (%s) has confirmed their request for an account.', $user_name, getUserFullName($user_id)) . "\r\n\r\n";
 				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) $mail_body .= i18n::translate('Please click on the link below to login to your site.  You must Edit the user to activate the account so that he can login to your site.') . "\r\n";
 				else $mail_body .= i18n::translate('You do not have to take any action; the user can now login.') . "\r\n";
 
