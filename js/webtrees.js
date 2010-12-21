@@ -531,11 +531,15 @@ function valid_date(datefield) {
 	}
 
 	// Shortcuts for date ranges
-	datestr=datestr.replace(/^[~*]([\w ]+)$/, "ABT $1");
-	datestr=datestr.replace(/^[>+]([\w ]+)$/, "AFT $1");
-	datestr=datestr.replace(/^([\w ]+)[-/]$/, "AFT $1");
-	datestr=datestr.replace(/^[</-]([\w ]+)$/, "BEF $1");
+	datestr=datestr.replace(/^[>]([\w ]+)$/, "AFT $1");
+	datestr=datestr.replace(/^[<]([\w ]+)$/, "BEF $1");
+	datestr=datestr.replace(/^([\w ]+)[-]$/, "FROM $1");
+	datestr=datestr.replace(/^[-]([\w ]+)$/, "TO $1");
+	datestr=datestr.replace(/^[~]([\w ]+)$/, "ABT $1");
+	datestr=datestr.replace(/^[*]([\w ]+)$/, "EST $1");
+	datestr=datestr.replace(/^[#]([\w ]+)$/, "CAL $1");
 	datestr=datestr.replace(/^([\w ]+) ?- ?([\w ]+)$/, "BET $1 AND $2");
+	datestr=datestr.replace(/^([\w ]+) ?~ ?([\w ]+)$/, "FROM $1 TO $2");
 	if (datestr.match(/^=([\d ()\/+*-]+)$/)) datestr=eval(RegExp.$1);
 
 	// Americans frequently enter dates as SEPTEMBER 20, 1999

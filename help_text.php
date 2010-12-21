@@ -272,7 +272,180 @@ case 'DATA':
 
 case 'DATE':
 	$title=translate_fact('DATE');
-	$text=''; //('The time of an event in a calendar format.');
+	$CALENDAR_FORMAT=null; // Don't perform conversions here - it will confuse the examples!
+	$dates=array(
+		'1900'                     =>new GedcomDate('1900'),
+		'JAN 1900'                 =>new GedcomDate('JAN 1900'),
+		'FEB 1900'                 =>new GedcomDate('FEB 1900'),
+		'MAR 1900'                 =>new GedcomDate('MAR 1900'),
+		'APR 1900'                 =>new GedcomDate('APR 1900'),
+		'MAY 1900'                 =>new GedcomDate('MAY 1900'),
+		'JUN 1900'                 =>new GedcomDate('JUN 1900'),
+		'JUL 1900'                 =>new GedcomDate('JUL 1900'),
+		'AUG 1900'                 =>new GedcomDate('AUG 1900'),
+		'SEP 1900'                 =>new GedcomDate('SEP 1900'),
+		'OCT 1900'                 =>new GedcomDate('OCT 1900'),
+		'NOV 1900'                 =>new GedcomDate('NOV 1900'),
+		'DEC 1900'                 =>new GedcomDate('DEC 1900'),
+		'11 DEC 1913'              =>new GedcomDate('11 DEC 1913'),
+		'01 FEB 2003'              =>new GedcomDate('01 FEB 2003'),
+		'ABT 1900'                 =>new GedcomDate('ABT 1900'),
+		'EST 1900'                 =>new GedcomDate('EST 1900'),
+		'CAL 1900'                 =>new GedcomDate('CAL 1900'),
+		'INT 1900 (...)'           =>new GedcomDate('INT 1900 (...)'),
+		'@#DJULIAN@ 44 B.C.'       =>new GedcomDate('@#DJULIAN@ 44 B.C.'),
+		'@#DJULIAN@ 14 JAN 1700'   =>new GedcomDate('@#DJULIAN@ 14 JAN 1700'),
+		'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'   =>new GedcomDate('BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'),
+		'@#DJULIAN@ 20 FEB 1742/43'=>new GedcomDate('@#DJULIAN@ 20 FEB 1742/43'),
+		'FROM 1900 TO 1910'        =>new GedcomDate('FROM 1900 TO 1910'),
+		'FROM 1900'                =>new GedcomDate('FROM 1900'),
+		'TO 1910'                  =>new GedcomDate('TO 1910'),
+		'BET 1900 AND 1910'        =>new GedcomDate('BET 1900 AND 1910'),
+		'BET JAN 1900 AND MAR 1900'=>new GedcomDate('BET JAN 1900 AND MAR 1900'),
+		'BET APR 1900 AND JUN 1900'=>new GedcomDate('BET APR 1900 AND JUN 1900'),
+		'BET JUL 1900 AND SEP 1900'=>new GedcomDate('BET JUL 1900 AND SEP 1900'),
+		'BET OCT 1900 AND DEC 1900'=>new GedcomDate('BET 1900 AND DEC 1900'),
+		'AFT 1900'                 =>new GedcomDate('AFT 1900'),
+		'BEF 1910'                 =>new GedcomDate('BEF 1910'),
+		// Hijri dates
+		'@#DHIJRI@ 1497'           =>new GedcomDate('@#DHIJRI@ 1497'),
+		'@#DHIJRI@ MUHAR 1497'     =>new GedcomDate('@#DHIJRI@ MUHAR 1497'),
+		'ABT @#DHIJRI@ SAFAR 1497' =>new GedcomDate('ABT @#DHIJRI@ SAFAR 1497'),
+		'BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'=>new GedcomDate('BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'),
+		'FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'=>new GedcomDate('FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'),
+		'AFT @#DHIJRI@ RAJAB 1497' =>new GedcomDate('AFT @#DHIJRI@ RAJAB 1497'),
+		'BEF @#DHIJRI@ SHAAB 1497' =>new GedcomDate('BEF @#DHIJRI@ SHAAB 1497'),
+		'ABT @#DHIJRI@ RAMAD 1497' =>new GedcomDate('ABT @#DHIJRI@ RAMAD 1497'),
+		'FROM @#DHIJRI@ SHAWW 1497'=>new GedcomDate('FROM @#DHIJRI@ SHAWW 1497'),
+		'TO @#DHIJRI@ DHUAQ 1497'  =>new GedcomDate('TO @#DHIJRI@ DHUAQ 1497'),
+		'@#DHIJRI@ 03 DHUAH 1497'  =>new GedcomDate('@#DHIJRI@ 03 DHUAH 1497'),
+		// French dates
+		'@#DFRENCH R@ 12'           =>new GedcomDate('@#DFRENCH R@ 12'),
+		'@#DFRENCH R@ VEND 12'     =>new GedcomDate('@#DFRENCH R@ VEND 12'),
+		'ABT @#DFRENCH R@ BRUM 12' =>new GedcomDate('ABT @#DFRENCH R@ BRUM 12'),
+		'BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'=>new GedcomDate('BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'),
+		'FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'=>new GedcomDate('FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'),
+		'AFT @#DFRENCH R@ GERM 12' =>new GedcomDate('AFT @#DFRENCH R@ GERM 12'),
+		'BEF @#DFRENCH R@ FLOR 12' =>new GedcomDate('BEF @#DFRENCH R@ FLOR 12'),
+		'ABT @#DFRENCH R@ PRAI 12' =>new GedcomDate('ABT @#DFRENCH R@ PRAI 12'),
+		'FROM @#DFRENCH R@ MESS 12'=>new GedcomDate('FROM @#DFRENCH R@ MESS 12'),
+		'TO @#DFRENCH R@ THER 12'  =>new GedcomDate('TO @#DFRENCH R@ THER 12'),
+		'EST @#DFRENCH R@ FRUC 12'  =>new GedcomDate('EST @#DFRENCH R@ FRUC 12'),
+		'@#DFRENCH R@ 03 COMP 12'  =>new GedcomDate('@#DFRENCH R@ 03 COMP 12'),
+		// Jewish dates
+		'@#DHEBREW@ 5481'           =>new GedcomDate('@#DHEBREW@ 5481'),
+		'@#DHEBREW@ TSH 5481'     =>new GedcomDate('@#DHEBREW@ TSH 5481'),
+		'ABT @#DHEBREW@ CSH 5481' =>new GedcomDate('ABT @#DHEBREW@ CSH 5481'),
+		'BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'=>new GedcomDate('BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'),
+		'FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'=>new GedcomDate('FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'),
+		'AFT @#DHEBREW@ ADS 5481' =>new GedcomDate('AFT @#DHEBREW@ ADS 5481'),
+		'BEF @#DHEBREW@ NSN 5481' =>new GedcomDate('BEF @#DHEBREW@ NSN 5481'),
+		'ABT @#DHEBREW@ IYR 5481' =>new GedcomDate('ABT @#DHEBREW@ IYR 5481'),
+		'FROM @#DHEBREW@ SVN 5481'=>new GedcomDate('FROM @#DHEBREW@ SVN 5481'),
+		'TO @#DHEBREW@ TMZ 5481'  =>new GedcomDate('TO @#DHEBREW@ TMZ 5481'),
+		'EST @#DHEBREW@ AAV 5481'  =>new GedcomDate('EST @#DHEBREW@ AAV 5481'),
+		'@#DHEBREW@ 03 ELL 5481'  =>new GedcomDate('@#DHEBREW@ 03 ELL 5481'),
+	);
+
+	foreach ($dates as &$date) {
+		$date=strip_tags($date->Display());
+	}
+	// These shortcuts work differently for different languages
+	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT)))) {
+	case 'YMD':
+		$example1='11/12/1913'; // Note: we ignore the DMY order if it doesn't make sense.
+		$example2='03/02/01';
+		break;
+	case 'MDY':
+		$example1='12/11/1913';
+		$example2='02/01/03';
+		break;
+	case 'DMY':
+	default:
+		$example1='11/12/1913';
+		$example2='01/02/03';
+		break;
+	}
+	$example1.='<br/>'.str_replace('/', '-', $example1).'<br/>'.str_replace('/', '.', $example1);
+	$example2.='<br/>'.str_replace('/', '-', $example2).'<br/>'.str_replace('/', '.', $example2);
+	$text=
+		'<p>'.i18n::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.').'</p>'.
+		'<table border="1">'.
+		'<tr><th>'.i18n::translate('Date').'</th><th>'.i18n::translate('Format').'</th><th>'.i18n::translate('Shortcut').'</th></tr>'.
+		'<tr><td>'.$dates['1900'].'</td><td><tt>1900</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['JAN 1900'].'<br/>'.$dates['FEB 1900'].'<br/>'.$dates['MAR 1900'].'<br/>'.$dates['APR 1900'].'<br/>'.$dates['MAY 1900'].'<br/>'.$dates['JUN 1900'].'<br/>'.$dates['JUL 1900'].'<br/>'.$dates['AUG 1900'].'<br/>'.$dates['SEP 1900'].'<br/>'.$dates['OCT 1900'].'<br/>'.$dates['NOV 1900'].'<br/>'.$dates['DEC 1900'].'</td><td><tt>JAN 1900<br/>FEB 1900<br/>MAR 1900<br/>APR 1900<br/>MAY 1900<br/>JUN 1900<br/>JUL 1900<br/>AUG 1900<br/>SEP 1900<br/>OCT 1900<br/>NOV 1900<br/>DEC 1900</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['11 DEC 1913'].'</td><td><tt>11 DEC 1913</tt></td><td><tt>'.$example1.'</tt></td></tr>'.
+		'<tr><td>'.$dates['01 FEB 2003'].'</td><td><tt>01 FEB 2003</tt></td><td><tt>'.$example2.'</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT 1900'].'</td><td><tt>ABT 1900</tt></td><td><tt>~1900</tt></td></tr>'.
+		'<tr><td>'.$dates['EST 1900'].'</td><td><tt>EST 1900</tt></td><td><tt>*1900</tt></td></tr>'.
+		'<tr><td>'.$dates['CAL 1900'].'</td><td><tt>CAL 1900</tt></td><td><tt>#1900</tt></td></tr>'.
+		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt>INT 1900 (...)</tt></td><td>&nbsp;</td></tr>'.
+		'</table>'.
+		'<p>'.i18n::translate('Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range.').'</p>'.
+		'<table border="1">'.
+		'<tr><th>'.i18n::translate('Date range').'</th><th>'.i18n::translate('Format').'</th><th>'.i18n::translate('Shortcut').'</th></tr>'.
+		'<tr><td>'.$dates['BET 1900 AND 1910'].'</td><td><tt>BET 1900 AND 1910</tt></td><td><tt>1900-1910</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT 1900'].'</td><td><tt>AFT 1900</tt></td><td><tt>&gt;1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF 1910'].'</td><td><tt>BEF 1910</tt></td><td><tt>&lt;1910</tt></td></tr>'.
+		'<tr><td>'.$dates['BET JAN 1900 AND MAR 1900'].'</td><td><tt>BET JAN 1900 AND MAR 1900</tt></td><td><tt>Q1 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET APR 1900 AND JUN 1900'].'</td><td><tt>BET APR 1900 AND JUN 1900</tt></td><td><tt>Q2 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET JUL 1900 AND SEP 1900'].'</td><td><tt>BET JUL 1900 AND SEP 1900</tt></td><td><tt>Q3 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET OCT 1900 AND DEC 1900'].'</td><td><tt>BET OCT 1900 AND DEC 1900</tt></td><td><tt>Q4 1900</tt></td></tr>'.
+		'</table>'.
+		'<p>'.i18n::translate('Date periods are used to indicate that a fact, such as an occupation, continued for a period of time.').'</p>'.
+		'<table border="1">'.
+		'<tr><th>'.i18n::translate('Date period').'</th><th>'.i18n::translate('Format').'</th><th>'.i18n::translate('Shortcut').'</th></tr>'.
+		'<tr><td>'.$dates['FROM 1900 TO 1910'].'</td><td><tt>FROM 1900 TO 1910</tt></td><td><tt>1900~1910</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM 1900'].'</td><td><tt>FROM 1900</tt></td><td><tt>-1900</tt></td></tr>'.
+		'<tr><td>'.$dates['TO 1910'].'</td><td><tt>TO 1910</tt></td><td><tt>1900-</tt></td></tr>'.
+		'</table>'.
+		'<p>'.i18n::translate('Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous.').'</p>'.
+		'<table border="1">'.
+		'<tr><th>'.i18n::translate('Date').'</th><th>'.i18n::translate('Format').'</th></tr>'.
+		'<tr><td colspan="2" align="center">'.i18n::translate('Julian').'</td></tr>'.
+		'<tr><td>'.$dates['@#DJULIAN@ 14 JAN 1700'].'</td><td><tt>@#DJULIAN@ 14 JAN 1700</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DJULIAN@ 44 B.C.'].'</td><td><tt>@#DJULIAN@ 44 B.C.</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DJULIAN@ 20 FEB 1742/43'].'</td><td><tt>@#DJULIAN@ 20 FEB 1742/43</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'].'</td><td><tt>BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</tt></td></tr>'.
+		'<tr><td colspan="2" align="center">'.i18n::translate('Jewish').'</td></tr>'.
+		'<tr><td>'.$dates['@#DHEBREW@ 5481'].'</td><td><tt>@#DHEBREW@ 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHEBREW@ TSH 5481'].'</td><td><tt>@#DHEBREW@ TSH 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHEBREW@ CSH 5481'].'</td><td><tt>ABT @#DHEBREW@ CSH 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'].'</td><td><tt>BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'].'</td><td><tt>FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHEBREW@ ADS 5481'].'</td><td><tt>AFT @#DHEBREW@ ADS 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF @#DHEBREW@ NSN 5481'].'</td><td><tt>BEF @#DHEBREW@ NSN 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHEBREW@ IYR 5481'].'</td><td><tt>ABT @#DHEBREW@ IYR 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHEBREW@ SVN 5481'].'</td><td><tt>FROM @#DHEBREW@ SVN 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['TO @#DHEBREW@ TMZ 5481'].'</td><td><tt>TO @#DHEBREW@ TMZ 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['EST @#DHEBREW@ AAV 5481'].'</td><td><tt>EST @#DHEBREW@ AAV 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHEBREW@ 03 ELL 5481'].'</td><td><tt>@#DHEBREW@ 03 ELL 5481</tt></td></tr>'.
+		'<tr><td colspan="2" align="center">'.i18n::translate('Hijri').'</td></tr>'.
+		'<tr><td>'.$dates['@#DHIJRI@ 1497'].'</td><td><tt>@#DHIJRI@ 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHIJRI@ MUHAR 1497'].'</td><td><tt>@#DHIJRI@ MUHAR 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHIJRI@ SAFAR 1497'].'</td><td><tt>ABT @#DHIJRI@ SAFAR 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'].'</td><td><tt>BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'].'</td><td><tt>FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHIJRI@ RAJAB 1497'].'</td><td><tt>AFT @#DHIJRI@ RAJAB 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF @#DHIJRI@ SHAAB 1497'].'</td><td><tt>BEF @#DHIJRI@ SHAAB 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHIJRI@ RAMAD 1497'].'</td><td><tt>ABT @#DHIJRI@ RAMAD 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHIJRI@ SHAWW 1497'].'</td><td><tt>FROM @#DHIJRI@ SHAWW 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['TO @#DHIJRI@ DHUAQ 1497'].'</td><td><tt>TO @#DHIJRI@ DHUAQ 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHIJRI@ 03 DHUAH 1497'].'</td><td><tt>@#DHIJRI@ 03 DHUAH 1497</tt></td></tr>'.
+		'<tr><td colspan="2" align="center">'.i18n::translate('French').'</td></tr>'.
+		'<tr><td>'.$dates['@#DFRENCH R@ 12'].'</td><td><tt>@#DFRENCH R@ 12</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DFRENCH R@ VEND 12'].'</td><td><tt>@#DFRENCH R@ VEND 12</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DFRENCH R@ BRUM 12'].'</td><td><tt>ABT @#DFRENCH R@ BRUM 12</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'].'</td><td><tt>BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'].'</td><td><tt>FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DFRENCH R@ GERM 12'].'</td><td><tt>AFT @#DFRENCH R@ GERM 12</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF @#DFRENCH R@ FLOR 12'].'</td><td><tt>BEF @#DFRENCH R@ FLOR 12</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DFRENCH R@ PRAI 12'].'</td><td><tt>ABT @#DFRENCH R@ PRAI 12</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DFRENCH R@ MESS 12'].'</td><td><tt>FROM @#DFRENCH R@ MESS 12</tt></td></tr>'.
+		'<tr><td>'.$dates['TO @#DFRENCH R@ THER 12'].'</td><td><tt>TO @#DFRENCH R@ THER 12</tt></td></tr>'.
+		'<tr><td>'.$dates['EST @#DFRENCH R@ FRUC 12'].'</td><td><tt>EST @#DFRENCH R@ FRUC 12</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DFRENCH R@ 03 COMP 12'].'</td><td><tt>@#DFRENCH R@ 03 COMP 12</tt></td></tr>'.
+		'</table>';
 	break;
 
 case 'DEAT':
@@ -2036,11 +2209,6 @@ case 'day_month':
 	$text=i18n::translate('<ul><li>The <b>View Day</b> button will display the events of the chosen date in a list. All years are scanned, so only the day and month can be set here. Changing the year will have no effect.  You can reduce the list by choosing the option <b>Recent years</b> or <b>Living people</b>.<br /><br />Ages in the list will be calculated from the current year.</li><li>The <b>View Month</b> button will display a calendar diagram of the chosen month and year. Here too you can reduce the lists by choosing the option <b>Recent years</b> or <b>Living people</b>.<br /><br />You will get a realistic impression of what a calendar on the wall of your ancestors looked like by choosing a year in the past in combination with <b>Recent years</b>. All ages on the calendar are shown relative to the year in the Year box.</li><li>The <b>View Year</b> button will show you a list of events of the chosen year.  Here too you can reduce the list by choosing the option <b>Recent years</b> or <b>Living people</b>.<br /><br />You can show events for a range of years.  Just type the beginning and ending years of the range, with a dash <b>-</b> between them.  Examples:<br /><b>1992-4</b> for all events from 1992 to 1994<br /><b>1976-1984</b> for all events from 1976 to 1984<br /><br />To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits. For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.</li></ul>When you want to <b>change the year</b> you <b>have</b> to press one of these three buttons.  All other settings remain as they were.');
 	break;
 
-case 'def_gedcom_date':
-	$title=i18n::translate('Dates in a GEDCOM file');
-	$text=i18n::translate('Although the date field allows for free-form entry (meaning you can type in whatever you want), there are some rules about how dates should be entered according to the GEDCOM 5.5.1 standard.<ol><li>A full date is entered in the form DD MMM YYYY.  For example, <b>01&nbsp;MAR&nbsp;1801</b> or <b>14&nbsp;DEC&nbsp;1950</b>.</li><li>If you are missing a part of the date, you can omit that part.  E.g. <b>MAR&nbsp;1801</b> or <b>14&nbsp;DEC</b>.</li><li>If you are not sure or the date is not confirmed, you could enter <b>ABT&nbsp;MAR&nbsp;1801</b> (abt = about), <b>BEF&nbsp;20&nbsp;DEC&nbsp;1950</b> (bef = before), <b>AFT&nbsp;1949</b> (aft = after)</li><li>Date ranges are entered as <b>FROM&nbsp;MAR&nbsp;1801&nbsp;TO&nbsp;20&nbsp;DEC&nbsp;1810</b> or as <b>BET&nbsp;MAR&nbsp;1801&nbsp;AND&nbsp;20&nbsp;DEC&nbsp;1810</b> (bet = between)<br /><br />The <b>FROM</b> form indicates that the event being described happened continuously between the stated dates and is used with events such as employment. The <b>BET</b> form indicates a single occurrence of the event, sometime between the stated dates and is used with events such as birth.<br /><br />Imprecise dates, where the day of the month or the month is missing, are always interpreted as the first or last possible date, depending on whether that imprecise date occurs before or after the separating keyword.  For example, <b>FEB&nbsp;1804</b> is interpreted as <b>01&nbsp;FEB&nbsp;1804</b> when it occurs before the TO or AND, and as <b>29&nbsp;FEB&nbsp;1804</b> when it occurs after the TO or AND.</li></ol><b>Be sure to enter dates and abbreviations in <u>English</u>,</b> because then the GEDCOM file is exchangeable and <b>webtrees</b> can translate all dates and abbreviations properly into the currently active language.  Furthermore, <b>webtrees</b> does calculations using these dates. If improper dates are entered into date fields, <b>webtrees</b> will not be able to calculate properly.<br /><br />You can click on the Calendar icon for help selecting a date.');
-	break;
-
 case 'default_gedcom':
 	$title=i18n::translate('Default GEDCOM');
 	$text=i18n::translate('If you have more than one genealogical database, you can set here which of them will be the default.<br /><br />This default will be shown to all visitors and users who have not yet logged in.<br /><br />Users who can edit their account settings can override this default.  In that case, the user\'s preferred database will be shown after login.');
@@ -2233,7 +2401,7 @@ case 'gedcom_administration':
 
 case 'gedcom_info':
 	$title=i18n::translate('GEDCOM information');
-	$text=i18n::translate('<span class="helpstart">GEDCOM definition</span><br /><br />A quote from the Introduction to the GEDCOM 5.5.1 Standard:<div class="list_value_wrap">GEDCOM was developed by the Family History Department of The Church of Jesus Christ of Latter-day Saints (LDS Church) to provide a flexible, uniform format for exchanging computerized genealogical data.&nbsp; GEDCOM is an acronym for <i><b>GE</b></i>nealogical <i><b>D</b></i>ata <i><b>Com</b></i>munication.&nbsp; Its purpose is to foster the sharing of genealogical information and the development of a wide range of inter-operable software products to assist genealogists, historians, and other researchers.</div><br />A copy of the GEDCOM 5.5.1 <u>draft</u> Standard, to which <b>webtrees</b> adheres, can be downloaded in PDF format here:&nbsp; <a href="http://www.phpgedview.net/ged551-5.pdf" target="_blank">GEDCOM 5.5.1 Standard</a>  This Standard is only available in English.<br /><br />The GEDCOM file contains all the information about the family. All facts, dates, events, etc. are stored here. GEDCOM files have to follow strict rules because they must be exchangeable between many programs, independent of platforms or operating systems.<br /><br /><span class="helpstart">Dates in a GEDCOM file</span><br /><br />Although the date field allows for free-form entry (meaning you can type in whatever you want), there are some rules about how dates should be entered according to the GEDCOM 5.5.1 standard.<ol><li>A full date is entered in the form DD MMM YYYY.  For example, <b>01&nbsp;MAR&nbsp;1801</b> or <b>14&nbsp;DEC&nbsp;1950</b>.</li><li>If you are missing a part of the date, you can omit that part.  E.g. <b>MAR&nbsp;1801</b> or <b>14&nbsp;DEC</b>.</li><li>If you are not sure or the date is not confirmed, you could enter <b>ABT&nbsp;MAR&nbsp;1801</b> (abt = about), <b>BEF&nbsp;20&nbsp;DEC&nbsp;1950</b> (bef = before), <b>AFT&nbsp;1949</b> (aft = after)</li><li>Date ranges are entered as <b>FROM&nbsp;MAR&nbsp;1801&nbsp;TO&nbsp;20&nbsp;DEC&nbsp;1810</b> or as <b>BET&nbsp;MAR&nbsp;1801&nbsp;AND&nbsp;20&nbsp;DEC&nbsp;1810</b> (bet = between)<br /><br />The <b>FROM</b> form indicates that the event being described happened continuously between the stated dates and is used with events such as employment. The <b>BET</b> form indicates a single occurrence of the event, sometime between the stated dates and is used with events such as birth.<br /><br />Imprecise dates, where the day of the month or the month is missing, are always interpreted as the first or last possible date, depending on whether that imprecise date occurs before or after the separating keyword.  For example, <b>FEB&nbsp;1804</b> is interpreted as <b>01&nbsp;FEB&nbsp;1804</b> when it occurs before the TO or AND, and as <b>29&nbsp;FEB&nbsp;1804</b> when it occurs after the TO or AND.</li></ol><b>Be sure to enter dates and abbreviations in <u>English</u>,</b> because then the GEDCOM file is exchangeable and <b>webtrees</b> can translate all dates and abbreviations properly into the currently active language.  Furthermore, <b>webtrees</b> does calculations using these dates. If improper dates are entered into date fields, <b>webtrees</b> will not be able to calculate properly.<br /><br />You can click on the Calendar icon for help selecting a date.<br /><br /><span class="helpstart">Location levels</span><br /><br />This shows the levels that are displayed now.  The list box showing places is actually a sublist of the leftmost level.<br /><br />EXAMPLE:<br />The default order is City, County, State/Province, Country.<br />If the current level is "Top Level", the box will list all the countries in the database.<br />If the current level is "U.S.A., Top Level", the box will list all the states in the U.S.A.<br />etc.<br /><br />You can click a level to go back one or more steps.');
+	$text=''; // This need rewriting.  The old text was: '<span class="helpstart">GEDCOM definition</span><br /><br />A quote from the Introduction to the GEDCOM 5.5.1 Standard:<div class="list_value_wrap">GEDCOM was developed by the Family History Department of The Church of Jesus Christ of Latter-day Saints (LDS Church) to provide a flexible, uniform format for exchanging computerized genealogical data.&nbsp; GEDCOM is an acronym for <i><b>GE</b></i>nealogical <i><b>D</b></i>ata <i><b>Com</b></i>munication.&nbsp; Its purpose is to foster the sharing of genealogical information and the development of a wide range of inter-operable software products to assist genealogists, historians, and other researchers.</div><br />A copy of the GEDCOM 5.5.1 <u>draft</u> Standard, to which <b>webtrees</b> adheres, can be downloaded in PDF format here:&nbsp; <a href="http://www.phpgedview.net/ged551-5.pdf" target="_blank">GEDCOM 5.5.1 Standard</a>  This Standard is only available in English.<br /><br />The GEDCOM file contains all the information about the family. All facts, dates, events, etc. are stored here. GEDCOM files have to follow strict rules because they must be exchangeable between many programs, independent of platforms or operating systems.<br /><br /><span class="helpstart">Dates in a GEDCOM file</span><br /><br />Although the date field allows for free-form entry (meaning you can type in whatever you want), there are some rules about how dates should be entered according to the GEDCOM 5.5.1 standard.<ol><li>A full date is entered in the form DD MMM YYYY.  For example, <b>01&nbsp;MAR&nbsp;1801</b> or <b>14&nbsp;DEC&nbsp;1950</b>.</li><li>If you are missing a part of the date, you can omit that part.  E.g. <b>MAR&nbsp;1801</b> or <b>14&nbsp;DEC</b>.</li><li>If you are not sure or the date is not confirmed, you could enter <b>ABT&nbsp;MAR&nbsp;1801</b> (abt = about), <b>BEF&nbsp;20&nbsp;DEC&nbsp;1950</b> (bef = before), <b>AFT&nbsp;1949</b> (aft = after)</li><li>Date ranges are entered as <b>FROM&nbsp;MAR&nbsp;1801&nbsp;TO&nbsp;20&nbsp;DEC&nbsp;1810</b> or as <b>BET&nbsp;MAR&nbsp;1801&nbsp;AND&nbsp;20&nbsp;DEC&nbsp;1810</b> (bet = between)<br /><br />The <b>FROM</b> form indicates that the event being described happened continuously between the stated dates and is used with events such as employment. The <b>BET</b> form indicates a single occurrence of the event, sometime between the stated dates and is used with events such as birth.<br /><br />Imprecise dates, where the day of the month or the month is missing, are always interpreted as the first or last possible date, depending on whether that imprecise date occurs before or after the separating keyword.  For example, <b>FEB&nbsp;1804</b> is interpreted as <b>01&nbsp;FEB&nbsp;1804</b> when it occurs before the TO or AND, and as <b>29&nbsp;FEB&nbsp;1804</b> when it occurs after the TO or AND.</li></ol><b>Be sure to enter dates and abbreviations in <u>English</u>,</b> because then the GEDCOM file is exchangeable and <b>webtrees</b> can translate all dates and abbreviations properly into the currently active language.  Furthermore, <b>webtrees</b> does calculations using these dates. If improper dates are entered into date fields, <b>webtrees</b> will not be able to calculate properly.<br /><br />You can click on the Calendar icon for help selecting a date.<br /><br /><span class="helpstart">Location levels</span><br /><br />This shows the levels that are displayed now.  The list box showing places is actually a sublist of the leftmost level.<br /><br />EXAMPLE:<br />The default order is City, County, State/Province, Country.<br />If the current level is "Top Level", the box will list all the countries in the database.<br />If the current level is "U.S.A., Top Level", the box will list all the states in the U.S.A.<br />etc.<br /><br />You can click a level to go back one or more steps.'
 	break;
 
 case 'gedcom_news_archive':

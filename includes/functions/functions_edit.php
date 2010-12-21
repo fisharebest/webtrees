@@ -1415,9 +1415,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		// Do not print on GEDFact Assistant window
 	} else {
 		if (!in_array($fact, $emptyfacts)) {
-			if ($fact=="DATE") {
-				echo help_link('def_gedcom_date');
-			} elseif ($fact=="FORM" && $upperlevel!='OBJE') {
+			if ($fact=="FORM" && $upperlevel!='OBJE') {
 				echo help_link('FORM');
 			} elseif ($fact=="NOTE" && $islink) {
 				if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
