@@ -228,14 +228,12 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				} else
 				if ($record->getType() == 'INDI') {
 					if ($others == 'parents') {
-						$famids = find_family_ids($record->getXref());
-						foreach ($famids as $indexval => $famid) {
+						foreach ($record->getChildFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
-							$clipping['id'] = $famid;
-							$ret = $controller->add_clipping($clipping);
-							if ($ret) {
-								$controller->add_family_members($famid);
+							$clipping['id'] = $family->getXref();
+							if ($controller->add_clipping($clipping)) {
+								$controller->add_family_members($family->getXref());
 							}
 						}
 					} else
@@ -246,25 +244,23 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						$controller->add_ancestors_to_cart_families($record->getXref(), $controller->level2);
 					} else
 					if ($others == 'members') {
-						$famids = find_sfamily_ids($record->getXref());
-						foreach ($famids as $indexval => $famid) {
+						foreach ($record->getSpouseFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
-							$clipping['id'] = $famid;
-							$ret = $controller->add_clipping($clipping);
-							if ($ret)
-							$controller->add_family_members($famid);
+							$clipping['id'] = $family->getXref();
+							if ($controller->add_clipping($clipping)) {
+								$controller->add_family_members($family->getXref());
+							}
 						}
 					} else
 					if ($others == 'descendants') {
-						$famids = find_sfamily_ids($record->getXref());
-						foreach ($famids as $indexval => $famid) {
+						foreach ($record->getSpouseFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
-							$clipping['id'] = $famid;
-							$ret = $controller->add_clipping($clipping);
-							if ($ret)
-							$controller->add_family_descendancy($famid, $controller->level3);
+							$clipping['id'] = $family->getXref();
+							if ($controller->add_clipping($clipping)) {
+								$controller->add_family_descendancy($family->getXref(), $controller->level3);
+							}
 						}
 					}
 				}

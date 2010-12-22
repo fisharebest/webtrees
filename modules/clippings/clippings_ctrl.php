@@ -180,14 +180,12 @@ class ClippingsController extends BaseController {
 				} else
 				if ($this->type == 'indi') {
 					if ($others == 'parents') {
-						$famids = find_family_ids($this->id);
-						foreach ($famids as $indexval => $famid) {
+						foreach (Person::getInstance($this->id)->getChildFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
-							$clipping['id'] = $famid;
-							$ret = $this->add_clipping($clipping);
-							if ($ret) {
-								$this->add_family_members($famid);
+							$clipping['id'] = $family->getXref();
+							if ($this->add_clipping($clipping)) {
+								$this->add_family_members($family->getXref());
 							}
 						}
 					} else
@@ -198,25 +196,23 @@ class ClippingsController extends BaseController {
 						$this->add_ancestors_to_cart_families($this->id, $this->level2);
 					} else
 					if ($others == 'members') {
-						$famids = find_sfamily_ids($this->id);
-						foreach ($famids as $indexval => $famid) {
+						foreach (Person::getInstance($this->id)->getSpouseFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
-							$clipping['id'] = $famid;
-							$ret = $this->add_clipping($clipping);
-							if ($ret)
-							$this->add_family_members($famid);
+							$clipping['id'] = $family->getXref();
+							if ($this->add_clipping($clipping)) {
+								$this->add_family_members($family->getXref());
+							}
 						}
 					} else
 					if ($others == 'descendants') {
-						$famids = find_sfamily_ids($this->id);
-						foreach ($famids as $indexval => $famid) {
+						foreach (Person::getInstance($this->id)->getSpouseFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
-							$clipping['id'] = $famid;
-							$ret = $this->add_clipping($clipping);
-							if ($ret)
-							$this->add_family_descendancy($famid, $this->level3);
+							$clipping['id'] = $family->getXref();
+							if ($this->add_clipping($clipping)) {
+								$this->add_family_descendancy($family->getXref(), $this->level3);
+							}
 						}
 					}
 				}
@@ -521,7 +517,7 @@ class ClippingsController extends BaseController {
 			}
 			$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
 			for ($i = 0; $i < $num; $i++) {
-				$cfamids = find_sfamily_ids($smatch[$i][1]);
+				$cfamids = Person::getInstance($smatch[$i][1])->getSpouseFamilyIds();
 				if (count($cfamids) > 0) {
 					foreach ($cfamids as $indexval => $cfamid) {
 						if (!id_in_cart($cfamid)) {
@@ -575,7 +571,7 @@ class ClippingsController extends BaseController {
 	//-- recursively adds direct-line ancestors to cart
 	function add_ancestors_to_cart($pid, $level="") {
 		global $cart;
-		$famids = find_family_ids($pid);
+		$famids = Person::getInstance($pid)->getChildFamilyIds();
 		if (count($famids) > 0) {
 			foreach ($famids as $indexval => $famid) {
 				if ($level=="" || $level > 0) {
@@ -609,7 +605,7 @@ class ClippingsController extends BaseController {
 	//-- recursively adds direct-line ancestors and their families to the cart
 	function add_ancestors_to_cart_families($pid, $level="") {
 		global $cart;
-		$famids = find_family_ids($pid);
+		$famids = Person::getInstance($pid)->getChildFamilyIds();
 		if (count($famids) > 0) {
 			foreach ($famids as $indexval => $famid) {
 				if ($level=="" || $level > 0) {
