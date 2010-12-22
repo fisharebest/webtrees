@@ -209,20 +209,13 @@ function print_family_descendancy(&$person, &$family, $depth) {
 	if (is_null($family)) return;
 	if (is_null($person)) return;
 
-	$famrec = $family->getGedcomRecord();
-	$famid = $family->getXref();
-	$parents = find_parents($famid);
-	if ($parents) {
-
-		// spouse id
-		$id = $parents["WIFE"];
-		if ($id==$person->getXref()) $id = $parents["HUSB"];
-
+	$spouse=$family->getSpouse($person);
+	if ($spouse) {
 		// print marriage info
 		echo "<li>";
 		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\" />";
 		echo "<span class=\"details1\" style=\"white-space: nowrap; \" >";
-		echo "<a href=\"#\" onclick=\"expand_layer('".$famid.$personcount."'); return false;\" class=\"top\"><img id=\"".$famid.$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
@@ -232,17 +225,16 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		echo '</span>';
 
 		// print spouse
-		echo "<ul style=\"list-style: none; display: block;\" id=\"".$famid.$personcount."\">";
+		echo "<ul style=\"list-style: none; display: block;\" id=\"".$family->getXref().$personcount."\">";
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-		print_pedigree_person($id, 1, 0, $personcount);
+		print_pedigree_person($spouse->getXref(), 1, 0, $personcount);
 		echo "</td>";
 
 		// check if spouse has parents and add an arrow
 		echo "<td>&nbsp;</td>";
 		echo "<td>";
-		$sfamids = find_family_ids($id);
-		foreach ($sfamids as $indexval => $sfamid) {
+		foreach ($spouse->getChildFamilyIds() as $sfamid) {
 			$parents = find_parents($sfamid);
 			if ($parents) {
 				$parid=$parents["HUSB"];
