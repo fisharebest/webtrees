@@ -145,7 +145,7 @@ echo
 	'<td class="optionbox width50">';
 
 if (WT_USER_CAN_EDIT) {
-	echo '<a href="module.php?mod=batch_update&mod_action=batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php');
+	echo '<a href="module.php?mod=batch_update&mod_action=admin_batch_update">', i18n::translate('Batch Update'), '</a>', help_link('help_batch_update.php');
 } else {
 	echo '&nbsp;';
 }
