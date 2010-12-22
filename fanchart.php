@@ -327,7 +327,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 						echo '<br /><span class="name1">', i18n::translate('Sibling'), '</span>';
 					}
 					foreach ($children as $sibling) {
-						if ($sibling->getXref()!=$person->getXref()) {
+						if (!$sibling->equals($person)) {
 							echo '<br />&nbsp;&nbsp;<a href="', $sibling->getHtmlUrl(), '" class="name1"> ', $sibling->getFullName(), '</a>';
 						}
 					}
