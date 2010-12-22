@@ -152,8 +152,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	if ($talloffset < 2) {
 		$xoffset = $controller->offsetarray[$i]["x"];
 		$yoffset = $controller->offsetarray[$i]["y"];
-	}
-	else {
+	} else {
 		$xoffset = $controller->offsetarray[$i]["y"];
 		$yoffset = $controller->offsetarray[$i]["x"];
 	}
@@ -231,7 +230,10 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			$iref = $i;
 		}
 
-		if ($curgen==1 && count(find_family_ids($controller->treeid[$i]))>0) {
+		// Can we go back to an earlier generation?
+		$can_go_back=$curgen==1 && Person::getInstance($controller->treeid[$i]) && Person::getInstance($controller->treeid[$i])->getChildFamilies();
+
+		if ($can_go_back) {
 			$widthadd = 20;
 		} elseif ($curgen >2 && $curgen < $controller->PEDIGREE_GENERATIONS) {
 			$widthadd = 10;
@@ -244,7 +246,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				echo 'ltr" style="position:absolute; left:';
 			}
 			echo ($xoffset+$controller->pbwidth/2-5), 'px; top:', ($yoffset-20), 'px; width:10px; height:10px; ">';
-			if ($curgen==1 && count(find_family_ids($controller->treeid[$i]))>0) {
+			if ($can_go_back) {
 				$did = 1;
 				if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) {
 					$did++;
@@ -288,7 +290,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			$controller->treeid[$i] = false;
 		}
 		print_pedigree_person($controller->treeid[$i], 1, $iref, 1);
-		if ($curgen==1 && count(find_family_ids($controller->treeid[$i]))>0) {
+		if ($can_go_back) {
 			$did = 1;
 			if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) {
 				$did++;
