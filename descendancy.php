@@ -142,10 +142,7 @@ case 1: //-- booklet
 		echo '<span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
 	}
 	$show_cousins = true;
-	$famids = find_sfamily_ids($controller->pid);
-	if (count($famids)) {
-		$controller->print_child_family($controller->descPerson, $controller->generations);
-	}
+	$controller->print_child_family($controller->descPerson, $controller->generations);
 	break;
 case 2: //-- Individual list
 	$descendants=indi_desc($controller->descPerson, $controller->generations, array());
