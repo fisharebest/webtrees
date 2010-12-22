@@ -674,34 +674,6 @@ function get_sosa_name($sosa) {
 
 
 /**
- * find last family ID where this person is a spouse
- *
- * @param string $pid individual ID
- * @return string last sfam ID
- */
-function find_last_sfam($pid) {
-	$famids = find_sfamily_ids($pid);
-	$f = count($famids);
-	if ($f<1) return false;
-	else return $famids[$f-1];
-}
-
-/**
- * find last spouse for this person
- *
- * @param string $pid individual ID
- * @return string last spouse ID
- */
-function find_last_spouse($pid) {
-	$famid = find_last_sfam($pid);
-	if (!$famid) return false;
-	$parents = find_parents($famid);
-	if (!$parents) return false;
-	if ($parents["HUSB"] == $pid) return $parents["WIFE"];
-	else return $parents["HUSB"];
-}
-
-/**
  * print cousins list
  *
  * @param string $famid family ID
