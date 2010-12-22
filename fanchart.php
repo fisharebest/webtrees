@@ -183,20 +183,26 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 		// draw each cell
 		while ($sosa >= $p2) {
 			$pid=$treeid[$sosa];
-			if (!empty($pid)) {
+			if ($pid) {
 				$indirec=find_gedcom_record($pid, WT_GED_ID, WT_USER_CAN_EDIT);
 
-				if ($sosa%2) $bg=$bgcolorF;
-				else $bg=$bgcolorM;
-				if ($sosa==1) {
-					$bg=$bgcolor; // sex unknown
-					if (strpos($indirec, "\n1 SEX F")!==false) $bg=$bgcolorF;
-					elseif (strpos($indirec, "\n1 SEX M")!==false) $bg=$bgcolorM;
-				}
-				ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 				$person =Person::getInstance($pid);
 				$name   =$person->getFullName();
 				$addname=$person->getAddName();
+
+				switch($person->getSex()) {
+				case 'M':
+					$bg=$bgcolorM;
+					break;
+				case 'F':
+					$bg=$bgcolorF;
+					break;
+				case 'U':
+					$bg=$bgcolor;
+					break;
+				}
+
+				ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
 //$name = str_replace(array('<span class="starredname">', '</span>'), '', $name);
 //$addname = str_replace(array('<span class="starredname">', '</span>'), '', $addname);
@@ -280,28 +286,28 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				// add action url
 				$tempURL = $person->getHtmlUrl();
 				$imagemap .= "\" href=\"$tempURL\" ";
-				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}&amp;ged=".rawurlencode($GEDCOM);
+				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}&amp;ged=".WT_GEDURL;
 				$count=0;
 				$lbwidth=200;
 				echo "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute; >";
 				echo "left:".$tx."px; top:".$ty."px; width: ".($lbwidth)."px; visibility:hidden; z-index:'100';\">";
 				echo "<table class=\"person_box\"><tr><td class=\"details1\">";
-				echo "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . PrintReady($name);
-				if (!empty($addname)) echo "<br />" . PrintReady($addname);
+				echo "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
+				if (!empty($addname)) echo "<br />" . $addname;
 				echo "</a>";
-				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" >".i18n::translate('Pedigree Tree')."</a>";
+				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".i18n::translate('Pedigree Tree')."</a>";
 				if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
-					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
+					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Pedigree Map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-					echo "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
+					echo "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Relationship to me')."</a>";
 				}
-				echo "<br /><a href=\"descendancy.php?pid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" >".i18n::translate('Descendancy chart')."</a>";
-				echo "<br /><a href=\"ancestry.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
-				echo "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact chart')."</a>";
+				echo "<br /><a href=\"descendancy.php?pid=$pid&amp;ged=".WT_GEDURL."\" >".i18n::translate('Descendancy chart')."</a>";
+				echo "<br /><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Ancestry chart')."</a>";
+				echo "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Compact chart')."</a>";
 				echo "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
-				echo "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
-				echo "<br /><a href=\"treenav.php?rootid=$pid&amp;ged=".rawurlencode($GEDCOM)."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
+				echo "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
+				echo "<br /><a href=\"treenav.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
 				if ($sosa>=1) {
 					$famids = find_sfamily_ids($pid);
 					//-- make sure there is more than 1 child in the family with parents
@@ -309,7 +315,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 					$num=0;
 					for ($f=0; $f<count($cfamids); $f++) {
 						$famrec = find_family_record($cfamids[$f], WT_GED_ID);
-						if ($famrec) $num += preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
+						if ($famrec) $num += preg_match_all('/\n1 CHIL @(.*)@/', $famrec, $smatch,PREG_SET_ORDER);
 					}
 					if ($famids ||($num>1)) {
 						//-- spouse(s) and children
@@ -358,7 +364,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				echo "</div>";
 				$imagemap .= " onclick=\"show_family_box('".$pid.".".$count."', 'relatives'); return false;\"";
 				$imagemap .= " onmouseout=\"family_box_timeout('".$pid.".".$count."'); return false;\"";
-				$imagemap .= " alt=\"".PrintReady(strip_tags($name))."\" title=\"".PrintReady(strip_tags($name))."\" />";
+				$imagemap .= " alt=\"".htmlspecialchars(strip_tags($name))."\" title=\"".htmlspecialchars(strip_tags($name))."\" />";
 			}
 			$deg1-=$angle;
 			$deg2-=$angle;
@@ -410,7 +416,7 @@ $name   =$person->getFullName();
 $addname=$person->getAddName();
 
 // -- print html header information
-print_header(PrintReady($name) . " " . i18n::translate('Circle diagram'));
+print_header($name . " " . i18n::translate('Circle diagram'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -418,8 +424,8 @@ if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
 echo "<h2>" . i18n::translate('Circle diagram'), help_link('fan_chart');
-echo "<br />".PrintReady($name);
-if ($addname != "") echo "<br />" . PrintReady($addname);
+echo "<br />".$name;
+if ($addname != "") echo "<br />" . $addname;
 echo "</h2>";
 
 // -- print the form to change the number of displayed generations
