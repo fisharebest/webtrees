@@ -150,7 +150,7 @@ class HourglassController extends BaseController {
 			echo "<td id=\"td_".$ARID."\">";
 
 			//-- print an Ajax arrow on the last generation of the adult male
-			if ($count==$this->generations-1 && (count(find_family_ids($ARID))>0) && !is_null (find_family_ids($ARID))) {
+			if ($count==$this->generations-1 && Person::getInstance($ARID)->getChildFamilies()) {
 				echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
 			}
 			//-- recursively get the father's family
@@ -168,7 +168,7 @@ class HourglassController extends BaseController {
 
 
 			//-- print an ajax arrow on the last generation of the adult female
-			if ($count==$this->generations-1 && (count(find_family_ids($ARID))>0) && !is_null (find_family_ids($ARID))) {
+			if ($count==$this->generations-1 && Person::getInstance($ARID)->getChildFamilies()) {
 				echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
 			}
 
