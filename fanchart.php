@@ -308,60 +308,32 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				echo "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Circle diagram')."</a>";
 				echo "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Hourglass chart')."</a>";
 				echo "<br /><a href=\"treenav.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".i18n::translate('Interactive tree')."</a>";
-				if ($sosa>=1) {
-					$famids = find_sfamily_ids($pid);
-					//-- make sure there is more than 1 child in the family with parents
-					$cfamids = find_family_ids($pid);
-					$num=0;
-					for ($f=0; $f<count($cfamids); $f++) {
-						$famrec = find_family_record($cfamids[$f], WT_GED_ID);
-						if ($famrec) $num += preg_match_all('/\n1 CHIL @(.*)@/', $famrec, $smatch,PREG_SET_ORDER);
+				// spouse(s) and children
+				foreach ($person->getSpouseFamilies() as $family) {
+					$spouse=$family->getSpouse($person);
+					if ($spouse) {
+						echo '<br /><a href="', $spouse->getHtmlUrl(), '" class="name1">', $spouse->getFullName(), '</a>';
 					}
-					if ($famids ||($num>1)) {
-						//-- spouse(s) and children
-						for ($f=0; $f<count($famids); $f++) {
-							$famrec = find_family_record(trim($famids[$f]), WT_GED_ID);
-							if ($famrec) {
-								$parents = find_parents($famids[$f]);
-								if ($parents) {
-									if ($pid!=$parents["HUSB"]) $spid=$parents["HUSB"];
-									else $spid=$parents["WIFE"];
-									$person=Person::getInstance($spid);
-									if ($person) {
-										echo '<br /><a href="', $person->getHtmlUrl(), '" class="name1">', $person->getFullName(), '</a>';
-									}
-								}
-								$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
-								for ($i=0; $i<$num; $i++) {
-									$person=Person::getInstance($smatch[$i][1]);
-									if ($person) {
-										echo '<br />&nbsp;&nbsp;<a href="', $person->getHtmlUrl(), '" class="name1">&lt; ', $person->getFullName(), '</a>';
-									}
-								}
-							}
-						}
-						//-- siblings
-						for ($f=0; $f<count($cfamids); $f++) {
-							$famrec = find_family_record($cfamids[$f], WT_GED_ID);
-							if ($famrec) {
-								$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch,PREG_SET_ORDER);
-								if ($num>2) echo "<br /><span class=\"name1\">".i18n::translate('Siblings')."</span>";
-								if ($num==2) echo "<br /><span class=\"name1\">".i18n::translate('Sibling')."</span>";
-								for ($i=0; $i<$num; $i++) {
-									$cpid = $smatch[$i][1];
-									if ($cpid!=$pid) {
-										$person=Person::getInstance($cpid);
-										if ($person) {
-											echo '<br />&nbsp;&nbsp;<a href="', $person->getHtmlUrl(), '" class="name1"> ', $person->getFullName(), '</a>';
-										}
-									}
-								}
-							}
+					foreach ($family->getChildren() as $child) {
+						echo '<br />&nbsp;&nbsp;<a href="', $child->getHtmlUrl(), '" class="name1">&lt; ', $child->getFullName(), '</a>';
+					}
+				}
+				// siblings
+				foreach ($person->getChildFamilies() as $family) {
+					$children=$family->getChildren();
+					if (count($children)>2) {
+						echo '<br /><span class="name1">', i18n::translate('Siblings'), '</span>';
+					} elseif (count($children)==2) {
+						echo '<br /><span class="name1">', i18n::translate('Sibling'), '</span>';
+					}
+					foreach ($children as $sibling) {
+						if ($sibling->getXref()!=$person->getXref()) {
+							echo '<br />&nbsp;&nbsp;<a href="', $sibling->getHtmlUrl(), '" class="name1"> ', $sibling->getFullName(), '</a>';
 						}
 					}
 				}
-				echo "</td></tr></table>";
-				echo "</div>";
+				echo '</td></tr></table>';
+				echo '</div>';
 				$imagemap .= " onclick=\"show_family_box('".$pid.".".$count."', 'relatives'); return false;\"";
 				$imagemap .= " onmouseout=\"family_box_timeout('".$pid.".".$count."'); return false;\"";
 				$imagemap .= " alt=\"".htmlspecialchars(strip_tags($name))."\" title=\"".htmlspecialchars(strip_tags($name))."\" />";
