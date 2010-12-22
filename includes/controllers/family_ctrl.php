@@ -186,7 +186,11 @@ class FamilyController extends BaseController {
 	}
 
 	function getChildren() {
-		return find_children_in_record($this->famrec);
+		if (preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->famrec, $match)) {
+			return $match[1];
+		} else {
+			return array();
+		}
 	}
 
 	function getChildrenUrlTimeline($start=0) {

@@ -846,50 +846,6 @@ function find_parents_in_record($famrec) {
 	return $parents;
 }
 
-/**
- * find the children in a family
- *
- * find and return an array containing the children of the given family record
- * @author John Finlay (yalnifj)
- * @param string $famid the gedcom xref id for the family
- * @param string $me an xref id of a child to ignore, useful when you want to get a person's
- * siblings but do want to include them as well
- * @return array
- */
-function find_children($famid, $me='') {
-	$famrec = find_gedcom_record($famid, WT_GED_ID, true);
-	if (empty($famrec)) {
-		return false;
-	}
-	return find_children_in_record($famrec);
-}
-
-/**
- * find the children in a family record
- *
- * find and return an array containing the children of the given family record
- * @author John Finlay (yalnifj)
- * @param string $famrec the gedcom record of the family to search in
- * @param string $me an xref id of a child to ignore, useful when you want to get a person's
- * siblings but do want to include them as well
- * @return array
- */
-function find_children_in_record($famrec, $me='') {
-	$children = array();
-	if (empty($famrec)) {
-		return $children;
-	}
-
-	$num = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $famrec, $match, PREG_SET_ORDER);
-	for ($i=0; $i<$num; $i++) {
-		$child = trim($match[$i][1]);
-		if ($child!=$me) {
-			$children[] = $child;
-		}
-	}
-	return $children;
-}
-
 // ************************************************* START OF MULTIMEDIA FUNCTIONS ********************************* //
 /**
  * find the highlighted media object for a gedcom entity
