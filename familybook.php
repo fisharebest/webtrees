@@ -147,9 +147,9 @@ function print_descendency($person, $count) {
 function print_person_pedigree($pid, $count) {
 	global $generations, $SHOW_EMPTY_BOXES, $WT_IMAGES, $bheight, $bhalfheight;
 	if ($count>=$generations) return;
-	$famids = find_family_ids($pid);
 	$hheight = ($bhalfheight+3) * pow(2,($generations-$count-1));
-	foreach ($famids as $indexval => $famid) {
+	foreach (Person::getInstance($pid)->getChildFamilies() as $family) {
+		$famid=$family->getXref();
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 		$parents = find_parents($famid);
 		$height="100%";
