@@ -273,8 +273,6 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
 	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
 
-	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	$family=Family::getInstance($famid);
 	$children=$family->getChildrenIds();
 	$numchil=$family->getNumberOfChildren();
@@ -310,7 +308,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	$oldchildren = array();
 	if (WT_USER_CAN_EDIT) {
 		if (!isset($_REQUEST['show_changes']) || $_REQUEST['show_changes']=='yes') {
-			$newrec = find_gedcom_record($famid, $ged_id, true);
+			$newrec = find_gedcom_record($famid, WT_GED_ID, true);
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
 			if ($ct > 0) {
 				$oldchil = array();
@@ -351,7 +349,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 				echo "</td>";
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
-					$famids = find_sfamily_ids($chil);
+					$famids = Person::getInstance($chil)->getSpouseFamilyIds();
 					$maxfam = count($famids)-1;
 					for ($f=0; $f<=$maxfam; $f++) {
 						$famid_child = $famids[$f];
@@ -374,10 +372,10 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							echo "</td>";
 						}
 						echo "<td class=\"details1\" valign=\"middle\" align=\"center\">";
-						$famrec = find_family_record($famid_child, $ged_id);
+						$famrec = find_family_record($famid_child, WT_GED_ID);
 						$marrec = get_sub_record(1, "1 MARR", $famrec);
 						$divrec = get_sub_record(1, "1 DIV",  $famrec);
-						if (canDisplayFact($famid_child, $ged_id, $marrec)) {
+						if (canDisplayFact($famid_child, WT_GED_ID, $marrec)) {
 							// marriage date
 							$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $marrec, $match);
 							if ($ct>0) echo "<span class=\"date\">".trim($match[1])."</span>";
@@ -434,11 +432,11 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		echo "<tr><td valign=\"top\" >";
 
 		$nchi = "";
-		$famrec = find_gedcom_record($famid, $ged_id, true);
+		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 		if ($ct>0) $nchi = $match[1];
 		else {
-			$famrec = find_family_record($famid, $ged_id);
+			$famrec = find_family_record($famid, WT_GED_ID);
 			$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 			if ($ct>0) $nchi = $match[1];
 		}
