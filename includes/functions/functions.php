@@ -890,65 +890,6 @@ function find_children_in_record($famrec, $me='') {
 	return $children;
 }
 
-/**
- * find all child family ids
- *
- * searches an individual gedcom record and returns an array of the FAMC ids where this person is a
- * child in the family, but only those families that are allowed to be seen by current user
- * @param string $pid the gedcom xref id for the person to look in
- * @return array array of family ids
- */
-function find_family_ids($pid) {
-	$indirec=find_person_record($pid, WT_GED_ID);
-	return find_visible_families_in_record($indirec, "FAMC");
-}
-
-/**
- * find all spouse family ids
- *
- * searches an individual gedcom record and returns an array of the FAMS ids where this person is a
- * spouse in the family, but only those families that are allowed to be seen by current user
- * @param string $pid the gedcom xref id for the person to look in
- * @return array array of family ids
- */
-function find_sfamily_ids($pid) {
-	$indirec=find_person_record($pid, WT_GED_ID);
-	return find_visible_families_in_record($indirec, "FAMS");
-}
-
-/**
- * find all family ids in the given record
- *
- * searches an individual gedcom record and returns an array of the FAMS|C ids
- * @param string $indirec the gedcom record for the person to look in
- * @param string $tag  The family tag to look for
- * @return array array of family ids
- */
-function find_families_in_record($indirec, $tag) {
-	preg_match_all("/\n1 {$tag} @(".WT_REGEX_XREF.')@/', $indirec, $match);
-	return $match[1];
-}
-
-/**
- * find all family ids in the given record that should be visible to the current user
- *
- * searches an individual gedcom record and returns an array of the FAMS|C ids that are visible
- * @param string $indirec the gedcom record for the person to look in
- * @param string $tag  The family tag to look for, FAMS or FAMC
- * @return array array of family ids
- */
-function find_visible_families_in_record($indirec, $tag) {
-	$allfams = find_families_in_record($indirec, $tag);
-	$visiblefams = array();
-	// select only those that are visible to current user
-	foreach ($allfams as $key=>$famid) {
-		if (canDisplayRecord(WT_GED_ID, find_family_record($famid, WT_GED_ID))) {
-			$visiblefams[] = $famid;
-		}
-	}
-	return $visiblefams;
-}
-
 // ************************************************* START OF MULTIMEDIA FUNCTIONS ********************************* //
 /**
  * find the highlighted media object for a gedcom entity
