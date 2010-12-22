@@ -95,13 +95,13 @@ foreach ($vars as $name=>$var) {
 		if (empty($gedcom)) {
 			$action="setup";
 		}
+		// If we wanted a FAM, and were given an INDI, look for a spouse
 		if ($type[$name]=="FAM") {
-			if (preg_match("/0 @.*@ INDI/", $gedcom)>0) {
-				$fams = find_sfamily_ids($var);
-				if (!empty($fams[0])) {
-					$gedcom = find_family_record($fams[0], WT_GED_ID);
+			if (preg_match("/0 @.+@ INDI/", $gedcom)>0) {
+				if (preg_match('/\n1 FAMS @(.+)@/', $gedcom, $match)) {
+					$gedcom = find_family_record($match[1], WT_GED_ID);
 					if (!empty($gedcom)) {
-						$vars[$name] = $fams[0];
+						$vars[$name] = $match[1];
 					} else {
 						$action="setup";
 					}
@@ -252,12 +252,13 @@ elseif ($action=="setup") {
 							if (!empty($famid)) {
 								$input["default"] = $famid;
 							} else {
-								$famid = find_sfamily_ids(check_rootid($input["default"]));
-								if (empty($famid)) {
-									$famid = find_family_ids(check_rootid($input["default"]));
-								}
-								if (isset($famid[0])) {
-									$input["default"] = $famid[0];
+								// Default the FAM to the first spouse family of the default INDI
+								$person=Person::getInstance(check_rootid($input["default"]));
+								if ($person) {
+									$sfams=$person->getSpouseFamilies();
+									if ($sfams) {
+										$input["default"] = reset($sfams)->getXref();
+									}
 								}
 							}
 						}
