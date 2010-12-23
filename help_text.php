@@ -304,7 +304,7 @@ case 'DATE':
 		'BET JAN 1900 AND MAR 1900'=>new GedcomDate('BET JAN 1900 AND MAR 1900'),
 		'BET APR 1900 AND JUN 1900'=>new GedcomDate('BET APR 1900 AND JUN 1900'),
 		'BET JUL 1900 AND SEP 1900'=>new GedcomDate('BET JUL 1900 AND SEP 1900'),
-		'BET OCT 1900 AND DEC 1900'=>new GedcomDate('BET 1900 AND DEC 1900'),
+		'BET OCT 1900 AND DEC 1900'=>new GedcomDate('BET OCT 1900 AND DEC 1900'),
 		'AFT 1900'                 =>new GedcomDate('AFT 1900'),
 		'BEF 1910'                 =>new GedcomDate('BEF 1910'),
 		// Hijri dates
