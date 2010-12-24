@@ -2506,6 +2506,12 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 						return i18n::translate_c('(a woman\'s) great x%d nephew/niece',  'great x%d nephew/niece', $down-3);
 					}
 				}
+			case 'he': // Source: Meliza Amity
+				switch ($last) {
+				case 'son': return i18n::translate('great x%d nephew', $down-1);
+				case 'dau': return i18n::translate('great x%d niece', $down-1);
+				case 'chi': return i18n::translate('great x%d nephew/niece', $down-1);
+				}
 			case 'it': // Source: Michele Locati.
 			case 'en':
 			default:
