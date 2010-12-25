@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 /*
-    <script type="text/javascript" src="js/conio/prototype.js"></script>
+    <script type="text/javascript" src="js/prototype/prototype.js"></script>
     <script type="text/javascript" src="js/scriptaculous/scriptaculous.js"></script>
 */
 ?>
