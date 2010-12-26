@@ -1335,8 +1335,7 @@ function print_changes_table($change_ids) {
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
-	echo "<th></th>";
-	echo "<th class=\"list_label\">", i18n::translate('Record'), "</th>";
+	echo "<th colspan=\"2\" class=\"list_label\">", i18n::translate('Record'), "</th>";
 	echo "<th style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
 	echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
