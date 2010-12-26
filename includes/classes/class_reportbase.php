@@ -1244,6 +1244,7 @@ class Line extends Element {
  * @global array $elementHandler
  */
 $elementHandler = array();
+$elementHandler["AgeAtDeath"]["start"]       = "AgeAtDeathSHandler";
 $elementHandler["br"]["start"]               = "brSHandler";
 $elementHandler["Body"]["start"]             = "BodySHandler";
 $elementHandler["Cell"]["end"]               = "CellEHandler";
@@ -1495,7 +1496,7 @@ function characterData($parser, $data) {
 }
 
 /**
-* XML <StyleSHandler /> elemnt handler
+* XML <StyleSHandler /> element handler
 *
 * @param array $attrs an array of key value pairs for the attributes
 * @see ReportBase::$defaultFont
@@ -1532,7 +1533,7 @@ function StyleSHandler($attrs) {
 }
 
 /**
-* XML <Doc> start elemnt handler
+* XML <Doc> start element handler
 *
 * Sets up the basics of the document proparties
 * @param array $attrs an array of key value pairs for the attributes
@@ -1615,7 +1616,7 @@ function DocSHandler($attrs) {
 }
 
 /**
-* XML </Doc> end elemnt handler
+* XML </Doc> end element handler
 *
 * @see DocSHandler()
 */
@@ -1625,7 +1626,7 @@ function DocEHandler() {
 }
 
 /**
-* XML <Header> start elemnt handler
+* XML <Header> start element handler
 *
 * @see ReportBase::setProcessing()
 */
@@ -1638,7 +1639,7 @@ function HeaderSHandler() {
 }
 
 /**
-* XML <PageHeader> start elemnt handler
+* XML <PageHeader> start element handler
 *
 * @param array $attrs an array of key value pairs for the attributes
 * @see PageHeaderEHandler()
@@ -1653,7 +1654,7 @@ function PageHeaderSHandler($attrs) {
 }
 
 /**
-* XML <PageHeaderEHandler> end elemnt handler
+* XML <PageHeaderEHandler> end element handler
 *
 * @see PageHeaderSHandler()
 */
@@ -1667,7 +1668,7 @@ function PageHeaderEHandler() {
 }
 
 /**
-* XML <BodySHandler> start elemnt handler
+* XML <BodySHandler> start element handler
 */
 function BodySHandler() {
 	global $wt_report;
@@ -1675,7 +1676,7 @@ function BodySHandler() {
 }
 
 /**
-* XML <FooterSHandler> start elemnt handler
+* XML <FooterSHandler> start element handler
 */
 function FooterSHandler() {
 	global $wt_report;
@@ -1683,7 +1684,7 @@ function FooterSHandler() {
 }
 
 /**
-* XML <Cell> start elemnt handler
+* XML <Cell> start element handler
 *
 * @param array $attrs an array of key value pairs for the attributes
 * @see CellEHandler()
@@ -1815,7 +1816,7 @@ function CellSHandler($attrs) {
 }
 
 /**
-* XML </Cell> end elemnt handler
+* XML </Cell> end element handler
 *
 * @see CellSHandler()
 * @final
@@ -1828,7 +1829,7 @@ function CellEHandler() {
 }
 
 /**
-* XML <Now /> elemnt handler
+* XML <Now /> element handler
 *
 * @see Element::addText()
 * @final
@@ -1841,7 +1842,7 @@ function NowSHandler() {
 }
 
 /**
-* XML <PageNum /> elemnt handler
+* XML <PageNum /> element handler
 *
 * @see Element::addText()
 * @final
@@ -1852,7 +1853,7 @@ function PageNumSHandler() {
 }
 
 /**
-* XML <TotalPages /> elemnt handler
+* XML <TotalPages /> element handler
 *
 * @see Element::addText()
 * @final
@@ -1948,7 +1949,7 @@ function GedcomEHandler() {
 }
 
 /**
-* XML <TextBoxSHandler> start elemnt handler
+* XML <TextBoxSHandler> start element handler
 *
 * @param array $attrs an array of key value pairs for the attributes
 * @see TextBoxEHandler()
@@ -2072,7 +2073,7 @@ function TextBoxSHandler($attrs) {
 }
 
 /**
-* XML <TextBoxEHandler> end elemnt handler
+* XML <TextBoxEHandler> end element handler
 *
 * @see TextBoxSHandler()
 */
@@ -2119,7 +2120,7 @@ function TextEHandler() {
 }
 
 /**
-* XML <GetPersonName> start elemnt handler
+* XML <GetPersonName> start element handler
 * Get the name
 * 1. id is empty - current GEDCOM record
 * 2. id is set with a record id
@@ -2201,7 +2202,7 @@ function GetPersonNameSHandler($attrs) {
 }
 
 /**
-* XML <GedcomValue> start elemnt handler
+* XML <GedcomValue> start element handler
 *
 * @param array $attrs an array of key value pairs for the attributes
 */
@@ -2263,7 +2264,7 @@ function GedcomValueSHandler($attrs) {
 }
 
 /**
-* XML <RepeatTag> start elemnt handler
+* XML <RepeatTag> start element handler
 *
 * @see RepeatTagEHandler()
 * @param array $attrs an array of key value pairs for the attributes
@@ -2335,7 +2336,7 @@ function RepeatTagSHandler($attrs) {
 }
 
 /**
-* XML </ RepeatTag> end elemnt handler
+* XML </ RepeatTag> end element handler
 *
 * @see RepeatTagSHandler()
 */
@@ -2575,7 +2576,7 @@ function FactsSHandler($attrs) {
 }
 
 /**
-* XML </ Facts> end elemnt handler
+* XML </ Facts> end element handler
 *
 * @see FactsSHandler()
 */
@@ -2867,6 +2868,60 @@ function FootnoteTextsSHandler() {
 }
 
 /**
+* XML <AgeAtDeath /> element handler
+*
+* @see Element::addText()
+* @final
+*/
+function AgeAtDeathSHandler() {
+	global $currentElement, $gedrec, $fact, $desc;
+
+	$id = "";
+	$match = array();
+	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
+		$person=Person::getInstance($match[1]);
+		// Recorded age
+		$fact_age=get_gedcom_value('AGE', 2, $gedrec);
+		if ($fact_age=='') {
+			$fact_age=get_gedcom_value('DATE:AGE', 2, $gedrec);
+		}
+		$husb_age=get_gedcom_value('HUSB:AGE', 2, $gedrec);
+		$wife_age=get_gedcom_value('WIFE:AGE', 2, $gedrec);
+		// Calculated age
+		$birth_date=$person->getBirthDate();
+		// Can't use getDeathDate(), as this also gives BURI/CREM events, which
+		// wouldn't give the correct "days after death" result for people with
+		// no DEAT.
+		$death_event=$person->getFactByType('DEAT');
+		if ($death_event) {
+			$death_date=$death_event->getDate();
+		} else {
+			$death_date=new GedcomDate('');
+		}
+		$value = '';
+		if (GedcomDate::Compare($birth_date, $death_date)<=0 || !$person->isDead()) {
+			$age=GedcomDate::GetAgeGedcom($birth_date, $death_date);
+			// Only show calculated age if it differs from recorded age
+			if ($age!='' && $age!="0d") {
+				if (
+					$fact_age!='' && $fact_age!=$age ||
+					$fact_age=='' && $husb_age=='' && $wife_age=='' ||
+					$husb_age!='' && $person->getSex()=='M' && $husb_age!=$age ||
+					$wife_age!='' && $person->getSex()=='F' && $wife_age!=$age
+				) {
+					$value = get_age_at_event($age, false);
+					$abbrev = substr($value, 0, strpos($value, ' ')+5);
+					if ($value !== $abbrev) {
+						$value = $abbrev.'.';
+					}
+				}
+			}
+		}
+		$currentElement->addText($value);
+	}
+}
+
+/**
 * XML element Forced line break handler - HTML code
 *
 */
@@ -3061,7 +3116,7 @@ function ImageSHandler($attrs) {
 }
 
 /**
-* XML <Line> elemnt handler
+* XML <Line> element handler
 *
 * @param array $attrs an array of key value pairs for the attributes
 */
@@ -3118,7 +3173,7 @@ function LineSHandler($attrs) {
 }
 
 /**
-* XML <List> start elemnt handler
+* XML <List> start element handler
 *
 * @see ListEHandler()
 * @param array $attrs an array of key value pairs for the attributes
@@ -3453,7 +3508,7 @@ function ListSHandler($attrs) {
 }
 
 /**
-* XML <List> end elemnt handler
+* XML <List> end element handler
 * @see ListSHandler()
 */
 function ListEHandler() {
@@ -3535,7 +3590,7 @@ function ListEHandler() {
 }
 
 /**
-* XML <ListTotal> elemnt handler
+* XML <ListTotal> element handler
 *
 * Prints the total number of records in a list
 * The total number is collected from
@@ -3692,7 +3747,7 @@ function RelativesSHandler($attrs) {
 }
 
 /**
-* XML </ Relatives> end elemnt handler
+* XML </ Relatives> end element handler
 *
 * @see RelativesSHandler()
 */
@@ -3781,7 +3836,7 @@ function RelativesEHandler() {
 }
 
 /**
-* XML <Generation /> elemnt handler
+* XML <Generation /> element handler
 *
 * Prints the number of generations
 * @todo no info on wiki
@@ -3796,7 +3851,7 @@ function GenerationSHandler() {
 }
 
 /**
-* XML <NewPage /> elemnt handler
+* XML <NewPage /> element handler
 *
 * Has to be placed in an element (header, pageheader, body or footer)
 * @final
@@ -3846,7 +3901,7 @@ function HTMLEHandler($tag) {
 }
 
 /**
-* XML <TitleSHandler> start elemnt handler
+* XML <TitleSHandler> start element handler
 *
 * @todo add to wiki
 * @see TitleEHandler()
@@ -3858,7 +3913,7 @@ function TitleSHandler() {
 }
 
 /**
-* XML </TitleEHandler> end elemnt handler
+* XML </TitleEHandler> end element handler
 *
 * @see TitleSHandler()
 * @final
@@ -3869,7 +3924,7 @@ function TitleEHandler() {
 }
 
 /**
-* XML <DescriptionSHandler> start elemnt handler
+* XML <DescriptionSHandler> start element handler
 *
 * @todo add to wiki
 * @see DescriptionEHandler()
@@ -3881,7 +3936,7 @@ function DescriptionSHandler() {
 }
 
 /**
-* XML </DescriptionEHandler> end elemnt handler
+* XML </DescriptionEHandler> end element handler
 *
 * @see DescriptionSHandler()
 * @final
