@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<Title><var var="i18n::translate('Fact Sources')" /></Title>
-	<Description>Prints a list of individuals and families with a specific source for facts</Description>
+	<Description>Prints a list of individuals and families with a specific source for facts or records</Description>
 
 	<Input name="sid" lookup="SOUR" default="" type="text"><var var="i18n::translate('Find Source ID')" /></Input>
+	<Input name="stype" type="select" default="facts" options="facts=>i18n::translate('facts')|records=>i18n::translate('records')"><var var="i18n::translate('Source type')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')"><var var="i18n::translate('Sort by')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
@@ -41,11 +42,12 @@
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="i18n::translate('Page')" /> <PageNum /> <var var="i18n::translate('of')" /> <TotalPages /></Cell>
 			<!-- Source Title -->
 			<Gedcom id="$sid">
-				<Cell align="center" newline="1" style="header2"><GedcomValue tag="TITL" /> (<var var="sid"/>)</Cell>
+				<Cell align="center" newline="1" style="header2"><GedcomValue tag="TITL" /></Cell>
 			</Gedcom>
 		</Header>
 
 		<Body>
+		<if condition="$stype=='facts'">
 			<!-- List type -->
 			<Cell align="center" newline="1" style="listtype"><var var="i18n::translate('Individuals')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
@@ -65,9 +67,9 @@
 			<!-- Name of the fact that contains the source -->
 			<Cell border="1" style="list_label" width="$fact"><var var="i18n::translate('Event')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell border="1" style="list_label" width="$dateevent"><var var="i18n::translate('Date')" /></Cell>
+			<Cell border="1" style="list_label" width="$dateevent"><var var="translate_fact('DATE')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="i18n::translate('Source')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="translate_fact('SOUR:PAGE')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual List -->
@@ -78,7 +80,7 @@
 				<SetVar name="printedsource" value="$printedsource + 1" />
 
 				<!-- Individual Name -->
-				<Cell style="list_value" width="$nameindi"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+				<Cell style="list_value" width="$nameindi"><GetPersonName id="" /></Cell>
 				<!-- Birth date -->
 				<Cell style="list_value" width="$datebirth"><GedcomValue tag="BIRT:DATE" /></Cell>
 				<Facts ignore="$ignore">
@@ -134,6 +136,7 @@
 				<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total individuals')"/>: <var var="printedsource" /></Cell>
 			</if>
 
+			<NewPage />
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>
 			<Cell align="center" newline="1" style="listtype"><var var="i18n::translate('Families')" /></Cell>
@@ -143,9 +146,9 @@
 			<!-- Name of the fact that contains the source -->
 			<Cell border="1" style="list_label" width="$fact"><var var="i18n::translate('Event')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="i18n::translate('Date')" /></Cell>
+			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="translate_fact('DATE')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="i18n::translate('Source')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="translate_fact('SOUR:PAGE')" /></Cell>
 
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>
@@ -157,7 +160,7 @@
 				<SetVar name="printedsource" value="$printedsource + 1" />
 
 				<!-- Family Name -->
-				<Cell style="list_value" width="$namefam"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)</Cell>
+				<Cell style="list_value" width="$namefam"><GetPersonName id="" /></Cell>
 				<Facts ignore="$ignore">
 					<SetVar name="printfact" value="0" />
 					<RepeatTag tag="@fact:SOUR">
@@ -231,6 +234,109 @@
 				<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total families')"/>: <var var="printedsource" /></Cell>
 			</if>
 			<TextBox height="$vspace" newline="1" padding="0"/>
+		</if>
+		<if condition="$stype=='records'">
+			<!-- List type -->
+			<Cell align="center" newline="1" style="listtype"><var var="i18n::translate('Individuals')" /></Cell>
+			<TextBox height="$vspace" newline="1" padding="0"/>
+
+			<!-- Individual Name -->
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='NAME'">
+				<SetVar name="fill" value="#AAAAAA" />
+			</if>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><var var="i18n::translate('Name')" /></Cell>
+			<!-- Birth date -->
+			<SetVar name="fill" value="" />
+			<if condition="$sortby=='BIRT:DATE'">
+				<SetVar name="fill" value="#AAAAAA" />
+			</if>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$fact"><var var="translate_fact('BIRT:DATE')" /></Cell>
+			<Cell border="1" style="list_label" width="$dateevent"><var var="translate_fact('BIRT:PLAC')" /></Cell>
+			<Cell border="1" style="list_label" width="$fact"><var var="translate_fact('DEAT:DATE')" /></Cell>
+			<Cell border="1" style="list_label" width="$dateevent"><var var="translate_fact('DEAT:PLAC')" /></Cell>
+			<!-- Detailed source text -->
+			<Cell border="1" newline="1" style="list_label"><var var="translate_fact('SOUR:PAGE')" /></Cell>
+			<TextBox height="$vspace" newline="1" padding="0"/>
+
+			<!-- Individual List -->
+			<List list="individual" filter1="SOUR CONTAINS @$sid@" sortby="$sortby">
+				<!-- Printed List counter -->
+				<SetVar name="printedsource" value="$printedsource + 1" />
+				<!-- Individual Name -->
+				<Cell style="list_value" width="$nameindi"><GetPersonName id="" /></Cell>
+				<!-- Birth date -->
+				<Cell style="list_value" width="$dateevent"><GedcomValue tag="BIRT:DATE" /></Cell>
+				<!-- Birth place -->
+				<Cell style="list_value" width="$fact"><GedcomValue tag="BIRT:PLAC" /></Cell>
+				<!-- Death date -->
+				<Cell style="list_value" width="$dateevent"><GedcomValue tag="DEAT:DATE" /></Cell>
+				<!-- Death place -->
+				<Cell style="list_value" width="$fact"><GedcomValue tag="DEAT:PLAC" /></Cell>
+				<!-- Detailed source text -->
+				<Cell style="list_value" newline="1">
+					<GedcomValue tag="SOUR:PAGE"/>
+					<if condition="@SOUR:DATA:TEXT!=''">
+						<br /><GedcomValue tag="SOUR:DATA:TEXT"/>
+					</if>
+				</Cell>	
+			</List>
+
+			<!-- Print the list counter -->
+			<if condition="$printedsource==0">
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total individuals')"/>: 0</Cell>
+			</if>
+			<if condition="$printedsource > 0">
+				<TextBox height="$vspace" newline="1" padding="0"/>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total individuals')"/>: <var var="printedsource" /></Cell>
+			</if>
+			<NewPage />
+			<!-- Family List -->
+			<TextBox height="$vspace" newline="1" padding="0"/>
+			<Cell align="center" newline="1" style="listtype"><var var="i18n::translate('Families')" /></Cell>
+			<TextBox height="$vspace" newline="1" padding="0"/>
+			<!-- Family Name -->
+			<Cell border="1" style="list_label" width="$namefam"><var var="i18n::translate('Name')" /></Cell>
+			<!-- Name of the fact that contains the source -->
+			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="translate_fact('MARR:DATE')" /></Cell>
+			<!-- Date of the fact -->
+			<Cell border="1" style="list_label" width="$fact"><var var="translate_fact('MARR:PLAC')" /></Cell>
+			<!-- Detailed source text -->
+			<Cell border="1" newline="1" style="list_label"><var var="translate_fact('SOUR:PAGE')" /></Cell>
+
+			<!-- Family List -->
+			<TextBox height="$vspace" newline="1" padding="0"/>
+			<SetVar name="printedsource" value="0" />
+			<List list="family" filter1="SOUR CONTAINS @$sid@" sortby="MARR:DATE">
+				<SetVar name="printsource" value="0" />
+				<!-- Printed List counter -->
+				<SetVar name="printedsource" value="$printedsource + 1" />
+
+				<!-- Family Name -->
+				<Cell style="list_value" width="$namefam"><GetPersonName id="" /></Cell>
+				<!-- Date of the fact -->
+				<Cell style="list_value" width="$dateevent"><GedcomValue tag="MARR:DATE"/></Cell>
+				<!-- Place of the fact -->
+				<Cell style="list_value" width="$fact"><GedcomValue tag="MARR:PLAC"/></Cell>
+				<!-- Detailed source text -->
+				<Cell style="list_value" newline="1">
+					<GedcomValue tag="SOUR:PAGE"/>
+					<if condition="@SOUR:DATA:TEXT!=''">
+						<br /><GedcomValue tag="SOUR:DATA:TEXT"/>
+					</if>
+				</Cell>
+			</List>
+
+			<!-- Print the list counter -->
+			<if condition="$printedsource==0">
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total families')"/>: 0</Cell>
+			</if>
+			<if condition="$printedsource > 0">
+				<TextBox height="$vspace" newline="1" padding="0"/>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="i18n::translate('Total families')"/>: <var var="printedsource" /></Cell>
+			</if>
+			<TextBox height="$vspace" newline="1" padding="0"/>
+		</if>
 		</Body>
 
 		<Footer>
