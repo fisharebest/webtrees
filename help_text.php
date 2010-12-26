@@ -2385,7 +2385,7 @@ case 'fan_chart':
 	break;
 
 case 'fan_style':
-	$title=i18n::translate('Fan style');
+	$title=i18n::translate('Circle diagram');
 	$text=i18n::translate('This option controls the appearance of the diagram.<ul><li><b>1/2</b><br />Half circle 180&deg; diagram</li><li><b>3/4</b><br />Three-quarter 270&deg; diagram, sometimes called <i>Angel wing</i></li><li><b>4/4</b><br />Full circle 360&deg; diagram</li></ul>');
 	break;
 
