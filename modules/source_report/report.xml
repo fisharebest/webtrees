@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
+<!-- $Id:  -->
 	<Title><var var="i18n::translate('Fact Sources')" /></Title>
 	<Description>Prints a list of individuals and families with a specific source for facts or records</Description>
 
@@ -27,14 +28,14 @@
 	<Style name="list_value" font="$fonts" size="8"/>
 
 	<SetVar name="nameindi" value="200" />
-	<SetVar name="namefam" value="270" />
 	<SetVar name="datebirth" value="120" />
+	<SetVar name="namefam" value="$nameindi + $datebirth" />
 	<SetVar name="fact" value="100" />
 	<SetVar name="dateevent" value="110" />
 	<SetVar name="vspace" value="5" />
 	<SetVar name="printedsource" value="0" />
 	<SetVar name="moresourcespaceindi" value="$nameindi + $datebirth" />
-	<SetVar name="ignore" value="CHAN,CHIL,FAMC,FAMS,HUSB,NAME,NOTE,OBJE,SEX,SOUR,TITL,WIFE,_UID,_WT_OBJE_SORT"/>
+	<SetVar name="ignore" value="CHAN,CHIL,FAMC,FAMS,HUSB,OBJE,RESN,SEX,SOUR,TITL,WIFE,_UID,_WT_OBJE_SORT"/>
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
@@ -95,7 +96,7 @@
 
 					<if condition="$printfact==1">
 						<SetVar name="printsource" value="0" />
-						<!-- Intend the fact line if more then one fact has source -->
+						<!-- Indent the fact line if more then one fact has source -->
 						<if condition="$moresource==1">
 							<Cell style="list_value" width="$moresourcespaceindi"> </Cell>
 						</if>
@@ -106,6 +107,7 @@
 						<Cell style="list_value" width="$dateevent"><GedcomValue tag="@fact:DATE"/></Cell>
 						<!-- Detailed source text -->
 						<Cell style="list_value" newline="1">
+							<SetVar name="repeatedSource" value="0" />
 							<RepeatTag tag="@fact:SOUR">
 								<Gedcom id="@SOUR">
 									<if condition="@ID==$sid">
@@ -113,9 +115,16 @@
 									</if>
 								</Gedcom>
 								<if condition="$printsource==1">
+									<if condition="$repeatedSource==1">; </if>
+									<if condition="@SOUR:PAGE!='' or @SOUR:DATA:TEXT!=''">
+										<SetVar name="repeatedSource" value="1" />
+									</if>
 									<GedcomValue tag="SOUR:PAGE"/>
 									<if condition="@SOUR:DATA:TEXT!=''">
-										<br /><GedcomValue tag="SOUR:DATA:TEXT"/>
+										<if condition="@SOUR:PAGE!=''">
+											<br />
+										</if>
+										<GedcomValue tag="SOUR:DATA:TEXT" />
 									</if>
 									<SetVar name="printsource" value="0" />
 								</if>
@@ -173,7 +182,7 @@
 
 					<if condition="$printfact==1">
 						<SetVar name="printsource" value="0" />
-						<!-- Intend the fact line if more then one fact has source -->
+						<!-- Indent the fact line if more then one fact has source -->
 						<if condition="$moresource==1">
 							<Cell style="list_value" width="$namefam"> </Cell>
 						</if>
@@ -204,6 +213,7 @@
 						<Cell style="list_value" width="$dateevent"><GedcomValue tag="@fact:DATE"/></Cell>
 						<!-- Detailed source text -->
 						<Cell style="list_value" newline="1">
+							<SetVar name="repeatedSource" value="0" />
 							<RepeatTag tag="@fact:SOUR">
 								<Gedcom id="@SOUR">
 									<if condition="@ID==$sid">
@@ -211,9 +221,16 @@
 									</if>
 								</Gedcom>
 								<if condition="$printsource==1">
+									<if condition="$repeatedSource==1">; </if>
+									<if condition="@SOUR:PAGE!='' or @SOUR:DATA:TEXT!=''">
+										<SetVar name="repeatedSource" value="1" />
+									</if>
 									<GedcomValue tag="SOUR:PAGE"/>
 									<if condition="@SOUR:DATA:TEXT!=''">
-										<br /><GedcomValue tag="SOUR:DATA:TEXT"/>
+										<if condition="@SOUR:PAGE!=''">
+											<br />
+										</if>
+										<GedcomValue tag="SOUR:DATA:TEXT" />
 									</if>
 									<SetVar name="printsource" value="0" />
 								</if>

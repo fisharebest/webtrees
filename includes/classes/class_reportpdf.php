@@ -1288,6 +1288,8 @@ class FootnotePDF extends Footnote {
 			$pdf->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		// Set the link to this y/page position
 		$pdf->SetLink($this->addlink, -1, -1);
 		// Print first the source number
