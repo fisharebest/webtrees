@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id: report.xml 10021 2010-12-10 15:09:34Z lukasz $ -->
+<!-- $Id$ -->
 	<Title><var var="i18n::translate('Occupation Report')" /></Title>
 	<Description>Prints a list of individuals occupation matching specific criteria</Description>
 	<Input name="occupation" lookup="OCCU" type="text"><var var="translate_fact('OCCU')" /> </Input>
