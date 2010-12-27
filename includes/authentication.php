@@ -363,7 +363,8 @@ function addMessage($message) {
 			$from = hex4email($fromFullName, 'UTF-8'). " <".getUserEmail($user_id_from).">";
 		else
 			$from = getUserEmail($user_id_from);
-		$email2 = i18n::translate('You sent the following message to a webtrees user:')."\r\n\r\n".$email2;
+		$toFullName=getUserFullName($user_id_to);
+		$email2 = i18n::translate('You sent the following message to a webtrees user:').' '.$toFullName."\r\n\r\n".$email2;
 
 	}
 	if ($message["method"]!="messaging") {
@@ -385,8 +386,8 @@ function addMessage($message) {
 			}
 			if (!$user_id_from) {
 				$header2 = $WEBTREES_EMAIL;
-			} elseif (isset($to)) {
-				$header2 = $to;
+			} else {
+				$header2 = getUserEmail($user_id_to);;
 			}
 			if (!empty($header2)) {
 				webtreesMail($from, $header2, $subject2, $email2);
