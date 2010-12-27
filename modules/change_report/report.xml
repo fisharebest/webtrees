@@ -27,15 +27,13 @@
 
 	<if condition="$pageorient=='landscape'">
 		<!-- landscape orientation -->
-		<SetVar name="idwidth" value="50"/>
-		<SetVar name="namewidth" value="220"/>
+		<SetVar name="namewidth" value="270"/>
 		<SetVar name="datewidth" value="300"/>
 	</if>
 	
 	<if condition="$pageorient=='portrait'">
 		<!-- portrait orientation -->
-		<SetVar name="idwidth" value="40"/>
-		<SetVar name="namewidth" value="170"/>
+		<SetVar name="namewidth" value="210"/>
 		<SetVar name="datewidth" value="190"/>
 	</if>
 
@@ -50,10 +48,6 @@
 			<!-- Pending changes section Header -->
 			<if condition="$pending=='yes'">
 				<Cell align="center" height="20" newline="1" style="header2"><var var="i18n::translate('Pending changes')" /></Cell>
-				<TextBox border="1" height="12" width="$idwidth">
-					<Text style="label"> </Text>
-				</TextBox>
-
 				<SetVar name="fill" value="" />
 				<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
 				<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
@@ -72,9 +66,6 @@
 
 				<!-- Pending Changes Section Data -->
 				<List list="pending" sortby="$sortby">
-					<TextBox height="12" width="$idwidth">
-						<Text style="text"><GedcomValue tag="@id" /></Text>
-					</TextBox>
 					<TextBox height="12" width="$namewidth">
 						<Text style="text"><GetPersonName id="" /></Text>
 					</TextBox>
@@ -97,10 +88,6 @@
 
 			<!-- Recent Changes Section Header -->
 			<Cell align="center" height="20" newline="1" style="header2"><var var="i18n::translate('Recent changes')" /> <var var="changeRangeStart" date="1" /> - <var var="changeRangeEnd" date="1" /></Cell>
-			<TextBox border="1" height="12" width="$idwidth">
-				<Text style="label"> </Text>
-			</TextBox>
-
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
@@ -121,10 +108,6 @@
 
 			<!-- Recent Changes Section Data -->
 			<List list="individual" filter1="CHAN:DATE LTE $changeRangeEnd" filter2="CHAN:DATE GTE $changeRangeStart" sortby="$sortby">
-				<TextBox height="12" width="$idwidth">
-					<Text style="text"><GedcomValue tag="@id" /></Text>
-				</TextBox>
-
 				<TextBox height="12" width="$namewidth">
 					<Text style="text"><GetPersonName id="" /></Text>
 				</TextBox>

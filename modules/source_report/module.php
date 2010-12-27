@@ -60,6 +60,11 @@ class source_report_WT_Module extends WT_Module implements WT_Module_Report {
 		$menu->addIcon('menu_source');
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menus[]=$menu;
+		
+		$menu=new Menu(i18n::translate('Sources Report'), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_s.xml');
+		$menu->addIcon('menu_source');
+		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
+		$menus[]=$menu;
 
 		return $menus;
 	}

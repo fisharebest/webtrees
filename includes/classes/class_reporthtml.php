@@ -630,6 +630,8 @@ class CellHTML extends Cell {
 			return;
 		}
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
 		// Setup the style name
 		if ($html->getCurrentStyle() != $this->styleName) {
@@ -1147,6 +1149,8 @@ class TextHTML extends Text {
 			$html->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 
 		// If any text at all
 		if (!empty($temptext)) {

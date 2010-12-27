@@ -5,7 +5,7 @@
 	<Description>Prints a list of individuals related to a specific person</Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="i18n::translate('Enter Individual ID')" /></Input>
 	<Input name="relatives" type="select" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><var var="i18n::translate('Choose relatives')" /></Input>
-	<Input name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|ID=>i18n::translate('ID number')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')|DEAT:DATE=>i18n::translate('Date of death')"><var var="i18n::translate('Sort by')" /></Input>
+	<Input name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|NAME=>i18n::translate('Name')|BIRT:DATE=>i18n::translate('Date of birth')|DEAT:DATE=>i18n::translate('Date of death')"><var var="i18n::translate('Sort by')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
 	<Input name="pageorient" type="select" default="landscape" options="landscape=>i18n::translate('Landscape')|portrait=>i18n::translate('Portrait')"><var var="i18n::translate('Orientation')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
@@ -20,15 +20,13 @@
 
 	<if condition="$pageorient=='landscape'">
 		<!-- landscape orientation -->
-		<SetVar name="idwidth" value="50"/>
-		<SetVar name="namewidth" value="180"/>
+		<SetVar name="namewidth" value="230"/>
 		<SetVar name="birthwidth" value="250"/>
 	</if>
 	
 	<if condition="$pageorient=='portrait'">
 		<!-- portrait orientation -->
-		<SetVar name="idwidth" value="45"/>
-		<SetVar name="namewidth" value="155"/>
+		<SetVar name="namewidth" value="200"/>
 		<SetVar name="birthwidth" value="160"/>
 	</if>
 
@@ -37,12 +35,6 @@
 		<Header>
 			<Cell align="center" height="20" newline="1" style="header"><var var="i18n::translate('Relatives Report')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="i18n::translate('Page')" /> <PageNum /> <var var="i18n::translate('of')" /> <TotalPages /></Cell>
-
-			<SetVar name="fill" value="" />
-			<if condition="$sortby=='ID'">
-				<SetVar name="fill" value="#AAAAAA" />
-			</if>
-			<Cell bgcolor="$fill" border="1" style="label" width="$idwidth"> </Cell>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
@@ -67,9 +59,6 @@
 
 			<Relatives id="$pid" group="$relatives" sortby="$sortby">
 				<TextBox height="1" newline="1"/>
-				<TextBox height="12" width="$idwidth">
-					<Text style="text"><GedcomValue tag="@id" /></Text>
-				</TextBox>
 				<TextBox height="12" width="$namewidth">
 					<Text style="text"><GetPersonName id="" /></Text>
 				</TextBox>

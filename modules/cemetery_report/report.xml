@@ -64,7 +64,7 @@
 		</Header>
 		<Body>
 			<List list="individual" filter1="BURI:PLAC CONTAINS $deathplace" sortby="$sortby">
-				<Cell style="text" width="$namewidth"><GetPersonName id="" /> - (<GedcomValue tag="@id" />)
+				<Cell style="text" width="$namewidth"><GetPersonName id="" />
 					<if condition="$adlist=='_MARNM'">
 						<RepeatTag tag="NAME:_MARNM">
 							<br /><GedcomValue tag="_MARNM" />

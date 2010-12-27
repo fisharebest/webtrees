@@ -7,7 +7,7 @@
 	<Input name="relatives" type="select" options="child-family=>i18n::translate('Parents and siblings')|spouse-family=>i18n::translate('Spouses and children')|direct-ancestors=>i18n::translate('Direct line ancestors')|ancestors=>i18n::translate('Direct line ancestors and their families')|descendants=>i18n::translate('Descendants')|all=>i18n::translate('All')"><var var="i18n::translate('Choose relatives')"/></Input>
 	<Input name="maxgen" type="select" default="4" options="*=>*|1=>1|2=>2|3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|10=>10"><var var="i18n::translate('Generations')"/></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="none=>i18n::translate('None')|BIRT:DATE=>i18n::translate('Date of birth')|NAME=>i18n::translate('Name')"><var var="i18n::translate('Sort by')"/></Input>
-	<Input name="sources" type="checkbox" default="0"><var var="i18n::translate('Show sources?')"/></Input>
+	<Input name="sources" type="checkbox" default="1"><var var="i18n::translate('Show sources?')"/></Input>
 	<Input name="notes" type="checkbox" default="1"><var var="i18n::translate('Show notes?')"/></Input>
 	<Input name="photos" type="select" default="highlighted" options="none=>i18n::translate('None')|all=>i18n::translate('All')|highlighted=>i18n::translate('Highlighted image')"><var var="i18n::translate('Show photos?')"/></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
@@ -99,19 +99,35 @@
 				<SetVar name="newpage" value="1"/>
 				<SetVar name="sex" value="@SEX"/>
 				<SetVar name="mid" value="@ID"/>
-				<!-- Individual name with LEVEL 1 source-->
+				<!-- Individual name -->
 				<TextBox newline="1">
 					<Text style="pageheader"><GetPersonName id=""/> </Text>
-					<if condition="($sources==1) and (@SOUR!='')">
+					<if condition="$sources==1">
+						<!-- print level 1 sources -->
 						<RepeatTag tag="SOUR">
-							<SetVar name="source_exist" value="1"/>
 							<Footnote>
 								<Gedcom id="@SOUR">
-									<GedcomValue tag="TITL" />
+									<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+									«<GedcomValue tag="TITL" />»
+									<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 								</Gedcom>
-								<if condition="@PAGE!=''">: </if>
-								<GedcomValue tag="SOUR:PAGE"/> <GedcomValue tag="SOUR:DATA:TEXT"/>
+								<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+								<GedcomValue tag="SOUR:DATA:TEXT" />
 							</Footnote>
+							<SetVar name="source_exist" value="1"/>
+						</RepeatTag>
+						<!-- print level 2 sources attached to NAME -->
+						<RepeatTag tag="NAME:SOUR">
+							<Footnote>
+								<Gedcom id="@SOUR">
+									<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+									«<GedcomValue tag="TITL" />»
+									<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+								</Gedcom>
+								<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+								<GedcomValue tag="SOUR:DATA:TEXT" />
+							</Footnote>
+							<SetVar name="source_exist" value="1" />
 						</RepeatTag>
 					</if>
 				</TextBox>
@@ -138,18 +154,18 @@
 						<Text color="$tcolor" style="fact"><var var="@fact"/>  </Text>
 						<Text color="$tcolor" style="text"><GedcomValue tag="@fact:DATE"/>  </Text>
 						<!-- look for fact level 2 sources -->
-						<if condition="($sources==1) and (@SOUR!='')">
+						<if condition="$sources==1">
 							<RepeatTag tag="@fact:SOUR">
-								<SetVar name="source_exist" value="1"/>
 								<Footnote>
 									<Gedcom id="@SOUR">
-										<GedcomValue tag="TITL"/>
+										<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+										«<GedcomValue tag="TITL" />»
+										<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 									</Gedcom>
-									<!-- Source text to footnotes -->
-									<if condition="@PAGE!=''">: </if>
-									<!-- Additional Details of the source -->
-									<GedcomValue tag="SOUR:PAGE"/> <GedcomValue tag="SOUR:DATA:TEXT"/>
+									<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+									<GedcomValue tag="SOUR:DATA:TEXT" />
 								</Footnote>
+								<SetVar name="source_exist" value="1" />
 							</RepeatTag>
 						</if>
 					</TextBox>
@@ -157,7 +173,15 @@
 					<if condition="@desc!=''">
 						<TextBox bgcolor="$fbbgcolor" border="1" newline="1" width="$width2">
 							<Text color="$tcolor" style="text">
-								<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
+								<if condition="@desc=='Y'">
+									<var var="i18n::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
+								</if>
+								<if condition="@desc=='N'">
+									<var var="i18n::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
+								</if>
+								<if condition="@desc!='Y' and @desc!='N'">
+									<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
+								</if>
 							</Text>
 							<Gedcom id="@_PGVS">
 								<if condition="@SEX=='M'">
@@ -173,7 +197,6 @@
 					<!-- facts without descriptions -->
 					<if condition="@desc==''">
 						<TextBox bgcolor="$fbbgcolor" border="1" newline="1" width="$width2">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Place')"/>  </Text>
 							<Text color="$tcolor" style="text">
 								<GedcomValue tag="@fact:PLAC"/>
 								<!-- Print only when exist to reduce some spaces in the text, might avoid a line break -->
@@ -210,16 +233,32 @@
 							<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 								<Text color="$tcolor" style="text"><var var="i18n::translate('Father')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-								<if condition="($sources==1) and (@SOUR!='')">
+								<if condition="$sources==1">
+									<!-- print level 1 sources -->
 									<RepeatTag tag="SOUR">
-										<SetVar name="source_exist" value="1"/>
 										<Footnote>
 											<Gedcom id="@SOUR">
-												<GedcomValue tag="TITL"/>
+												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+												«<GedcomValue tag="TITL" />»
+												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 											</Gedcom>
-											<if condition="@PAGE!=''">: </if>
-											<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+											<GedcomValue tag="SOUR:DATA:TEXT" />
 										</Footnote>
+										<SetVar name="source_exist" value="1"/>
+									</RepeatTag>
+									<!-- print level 2 sources attached to NAME -->
+									<RepeatTag tag="NAME:SOUR">
+										<Footnote>
+											<Gedcom id="@SOUR">
+												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+												«<GedcomValue tag="TITL" />»
+												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+											</Gedcom>
+											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+											<GedcomValue tag="SOUR:DATA:TEXT" />
+										</Footnote>
+										<SetVar name="source_exist" value="1" />
 									</RepeatTag>
 								</if>
 								<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -230,16 +269,32 @@
 							<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 								<Text color="$tcolor" style="text"><var var="i18n::translate('Mother')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-								<if condition="($sources==1) and (@SOUR!='')">
+								<if condition="$sources==1">
+									<!-- print level 1 sources -->
 									<RepeatTag tag="SOUR">
-										<SetVar name="source_exist" value="1"/>
 										<Footnote>
 											<Gedcom id="@SOUR">
-												<GedcomValue tag="TITL"/>
+												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+												«<GedcomValue tag="TITL" />»
+												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 											</Gedcom>
-											<if condition="@PAGE!=''">: </if>
-											<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+											<GedcomValue tag="SOUR:DATA:TEXT" />
 										</Footnote>
+										<SetVar name="source_exist" value="1"/>
+									</RepeatTag>
+									<!-- print level 2 sources attached to NAME -->
+									<RepeatTag tag="NAME:SOUR">
+										<Footnote>
+											<Gedcom id="@SOUR">
+												<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+												«<GedcomValue tag="TITL" />»
+												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+											</Gedcom>
+											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+											<GedcomValue tag="SOUR:DATA:TEXT" />
+										</Footnote>
+										<SetVar name="source_exist" value="1" />
 									</RepeatTag>
 								</if>
 								<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -254,16 +309,32 @@
 									<TextBox bgcolor="$mbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="i18n::translate('Brother')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="($sources==1) and (@SOUR!='')">
+										<if condition="$sources==1">
+											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
-												<SetVar name="source_exist" value="1"/>
 												<Footnote>
 													<Gedcom id="@SOUR">
-														<GedcomValue tag="TITL"/>
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
-													<if condition="@PAGE!=''">: </if>
-													<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
+												<SetVar name="source_exist" value="1"/>
+											</RepeatTag>
+											<!-- print level 2 sources attached to NAME -->
+											<RepeatTag tag="NAME:SOUR">
+												<Footnote>
+													<Gedcom id="@SOUR">
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+													</Gedcom>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
+												</Footnote>
+												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
 										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -274,16 +345,32 @@
 									<TextBox bgcolor="$fbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="i18n::translate('Sister')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="($sources==1) and (@SOUR!='')">
+										<if condition="$sources==1">
+											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
-											<SetVar name="source_exist" value="1"/>
 												<Footnote>
 													<Gedcom id="@SOUR">
-														<GedcomValue tag="TITL"/>
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
-													<if condition="@PAGE!=''">: </if>
-													<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
+												<SetVar name="source_exist" value="1"/>
+											</RepeatTag>
+											<!-- print level 2 sources attached to NAME -->
+											<RepeatTag tag="NAME:SOUR">
+												<Footnote>
+													<Gedcom id="@SOUR">
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+													</Gedcom>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
+												</Footnote>
+												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
 										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -294,16 +381,32 @@
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="($sources==1) and (@SOUR!='')">
+										<if condition="$sources==1">
+											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
-												<SetVar name="source_exist" value="1"/>
 												<Footnote>
 													<Gedcom id="@SOUR">
-														<GedcomValue tag="TITL"/>
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
-													<if condition="@PAGE!=''">: </if>
-													<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
+												<SetVar name="source_exist" value="1"/>
+											</RepeatTag>
+											<!-- print level 2 sources attached to NAME -->
+											<RepeatTag tag="NAME:SOUR">
+												<Footnote>
+													<Gedcom id="@SOUR">
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+													</Gedcom>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
+												</Footnote>
+												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
 										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -336,16 +439,32 @@
 								<TextBox bgcolor="$mbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="i18n::translate('Husband')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-									<if condition="($sources==1) and (@SOUR!='')">
+									<if condition="$sources==1">
+										<!-- print level 1 sources -->
 										<RepeatTag tag="SOUR">
-											<SetVar name="source_exist" value="1"/>
 											<Footnote>
 												<Gedcom id="@SOUR">
-													<GedcomValue tag="TITL"/>
+													<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+													«<GedcomValue tag="TITL" />»
+													<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 												</Gedcom>
-												<if condition="@PAGE!=''">: </if>
-												<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+												<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+												<GedcomValue tag="SOUR:DATA:TEXT" />
 											</Footnote>
+											<SetVar name="source_exist" value="1"/>
+										</RepeatTag>
+										<!-- print level 2 sources attached to NAME -->
+										<RepeatTag tag="NAME:SOUR">
+											<Footnote>
+												<Gedcom id="@SOUR">
+													<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+													«<GedcomValue tag="TITL" />»
+													<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+												</Gedcom>
+												<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+												<GedcomValue tag="SOUR:DATA:TEXT" />
+											</Footnote>
+											<SetVar name="source_exist" value="1" />
 										</RepeatTag>
 									</if>
 									<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -356,16 +475,32 @@
 								<TextBox bgcolor="$fbgcolor" border="1" newline="1" width="$width">
 									<Text color="$tcolor" style="text"><var var="i18n::translate('Wife')"/>  </Text>
 									<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-									<if condition="($sources==1) and (@SOUR!='')">
+									<if condition="$sources==1">
+										<!-- print level 1 sources -->
 										<RepeatTag tag="SOUR">
-											<SetVar name="source_exist" value="1"/>
 											<Footnote>
 												<Gedcom id="@SOUR">
-													<GedcomValue tag="TITL"/>
+													<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+													«<GedcomValue tag="TITL" />»
+													<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 												</Gedcom>
-												<if condition="@PAGE!=''">: </if>
-												<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+												<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+												<GedcomValue tag="SOUR:DATA:TEXT" />
 											</Footnote>
+											<SetVar name="source_exist" value="1"/>
+										</RepeatTag>
+										<!-- print level 2 sources attached to NAME -->
+										<RepeatTag tag="NAME:SOUR">
+											<Footnote>
+												<Gedcom id="@SOUR">
+													<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+													«<GedcomValue tag="TITL" />»
+													<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+												</Gedcom>
+												<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+												<GedcomValue tag="SOUR:DATA:TEXT" />
+											</Footnote>
+											<SetVar name="source_exist" value="1" />
 										</RepeatTag>
 									</if>
 									<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -381,16 +516,32 @@
 									<TextBox bgcolor="$mbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="i18n::translate('Son')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="($sources==1) and (@SOUR!='')">
+										<if condition="$sources==1">
+											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
-												<SetVar name="source_exist" value="1"/>
 												<Footnote>
 													<Gedcom id="@SOUR">
-														<GedcomValue tag="TITL"/>
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
-													<if condition="@PAGE!=''">: </if>
-													<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
+												<SetVar name="source_exist" value="1"/>
+											</RepeatTag>
+											<!-- print level 2 sources attached to NAME -->
+											<RepeatTag tag="NAME:SOUR">
+												<Footnote>
+													<Gedcom id="@SOUR">
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+													</Gedcom>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
+												</Footnote>
+												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
 										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -401,16 +552,32 @@
 									<TextBox bgcolor="$fbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="i18n::translate('Daughter')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="($sources==1) and (@SOUR!='')">
+										<if condition="$sources==1">
+											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
-												<SetVar name="source_exist" value="1"/>
 												<Footnote>
 													<Gedcom id="@SOUR">
-														<GedcomValue tag="TITL"/>
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
-													<if condition="@PAGE!=''">: </if>
-													<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
+												<SetVar name="source_exist" value="1"/>
+											</RepeatTag>
+											<!-- print level 2 sources attached to NAME -->
+											<RepeatTag tag="NAME:SOUR">
+												<Footnote>
+													<Gedcom id="@SOUR">
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+													</Gedcom>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
+												</Footnote>
+												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
 										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -421,16 +588,32 @@
 									<TextBox bgcolor="$ugbgcolor" border="1" left="15" newline="1" width="$width1">
 										<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id=""/> </Text>
-										<if condition="($sources==1) and (@SOUR!='')">
+										<if condition="$sources==1">
+											<!-- print level 1 sources -->
 											<RepeatTag tag="SOUR">
-												<SetVar name="source_exist" value="1"/>
 												<Footnote>
 													<Gedcom id="@SOUR">
-														<GedcomValue tag="TITL"/>
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
-													<if condition="@PAGE!=''">: </if>
-													<GedcomValue tag="PAGE"/> <GedcomValue tag="DATA:TEXT"/>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
+												<SetVar name="source_exist" value="1"/>
+											</RepeatTag>
+											<!-- print level 2 sources attached to NAME -->
+											<RepeatTag tag="NAME:SOUR">
+												<Footnote>
+													<Gedcom id="@SOUR">
+														<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+														«<GedcomValue tag="TITL" />»
+														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
+													</Gedcom>
+													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+													<GedcomValue tag="SOUR:DATA:TEXT" />
+												</Footnote>
+												<SetVar name="source_exist" value="1" />
 											</RepeatTag>
 										</if>
 										<Text color="$tcolor" style="text"> (<var var="i18n::translate('Birth')"/>: <GedcomValue tag="BIRT:DATE"/> <GedcomValue tag="BIRT:PLAC"/><Gedcom id="DEAT"> - <var var="i18n::translate('Death')"/>: <GedcomValue tag="DEAT:DATE"/> <GedcomValue tag="DEAT:PLAC"/></Gedcom>)</Text>
@@ -443,8 +626,8 @@
 				</RepeatTag>
 			</Relatives>
 		</Body>
-		<!-- print the sources -->
-		<if condition="($sources==1) and ($source_exist==1)">
+		<!-- if the sources were on, print the source citations as footnotes -->
+		<if condition="$source_exist==1">
 			<!-- add a new page -->
 			<NewPage/>
 			<Body>

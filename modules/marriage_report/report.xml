@@ -44,7 +44,7 @@
 				<Text style="label"><var var="i18n::translate('Date')" /></Text>
 			</TextBox>
 
-			<TextBox border="1" height="12" width="225">
+			<TextBox border="1" height="12" width="150">
 				<Text style="label"><var var="i18n::translate('Place')" /></Text>
 			</TextBox>
 
@@ -78,7 +78,7 @@
 					<TextBox height="12" width="200">
 						<Text style="text"><GetPersonName id="@HUSB" /></Text>
 						<Text style="spouse">
-							<br />   <GetPersonName id="@WIFE" />  (<GedcomValue tag="@id" />)
+							<br />   <GetPersonName id="@WIFE" />
 						</Text>
 					</TextBox>
 
@@ -86,7 +86,7 @@
 						<Text style="text"><GedcomValue tag="MARR:DATE" newline="1" /></Text>
 					</TextBox>
 
-					<TextBox height="12" width="225">
+					<TextBox height="12" width="150">
 						<Text style="text"><GedcomValue tag="MARR:PLAC" /></Text>
 					</TextBox>
 
@@ -97,8 +97,12 @@
 							<RepeatTag tag="MARR:SOUR">
 								<Gedcom id="@SOUR">
 									<if condition="$usebr==1"><br /></if>
-									<GedcomValue tag="TITL" />
+									<if condition="@AUTH!=''"><GedcomValue tag="AUTH" />, </if>
+									«<GedcomValue tag="TITL" />»
+									<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 								</Gedcom>
+								<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+								<GedcomValue tag="SOUR:DATA:TEXT" />
 								<SetVar name="usebr" value="1"/>
 							</RepeatTag>
 						</Text>

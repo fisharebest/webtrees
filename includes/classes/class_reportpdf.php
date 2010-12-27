@@ -661,7 +661,8 @@ class CellPDF extends Cell {
 			$pdf->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
-
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		$match = array();
 		// Indicates if the cell background must be painted (1) or transparent (0)
 		if ($this->fill == 1) {
@@ -1143,7 +1144,9 @@ class TextPDF extends Text {
 			$pdf->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
-
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		
 		// Paint the text color or they might use inherited colors by the previous function
 		$match = array();
 		if (preg_match("/#?(..)(..)(..)/", $this->color, $match)) {
@@ -1288,8 +1291,8 @@ class FootnotePDF extends Footnote {
 			$pdf->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
-		// underline �title� part of Source item
-		$temptext = str_replace(array('�', '�'), array('<u>', '</u>'), $temptext);
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		// Set the link to this y/page position
 		$pdf->SetLink($this->addlink, -1, -1);
 		// Print first the source number
