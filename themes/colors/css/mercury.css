@@ -275,7 +275,7 @@ color:#f50;
 .ui-widget-header { border: 1px solid #fff; background: #C6C8D2 !important;  opacity: 0.67;  filter: alpha(opacity = 67);}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
-.ui-state-default a:link { color: #000000;}
+.ui-state-default a:link { color: #707070;}
 .ui-state-active a:link { color: #707070;}
 
 .ui-tabs-nav li.ui-tabs-selected { background: #fff; }
