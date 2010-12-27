@@ -5,9 +5,6 @@
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
- * Copyright (C) 2010 John Finlay
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -33,34 +30,42 @@ if (!defined('WT_WEBTREES')) {
 }
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-class source_report_WT_Module extends WT_Module implements WT_Module_Report {
+class ancestry_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Sources Report');
+		return i18n::translate('Ancestry Report');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Prints a list of individuals and families with a specific source');
+		return i18n::translate('Prints an Ancestral report for the selected individual');
 	}
 
 	// Extend class WT_Module
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return WT_PRIV_PUBLIC;
 	}
 
 	// Implement WT_Module_Report - a module can provide many reports
 	public function getReportMenus() {
-		global $WT_IMAGES, $TEXT_DIRECTION;
+		global $controller, $WT_IMAGES, $TEXT_DIRECTION;
 
 		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 
+		if ($controller && isset($controller->pid)) {
+			$pid='&amp;pid='.$controller->pid;
+		} elseif ($controller && isset($controller->rootid)) {
+			$pid='&amp;pid='.$controller->rootid;
+		} else {
+			$pid='';
+		}
+
 		$menus=array();
-		$menu=new Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml');
-		$menu->addIcon('menu_source');
+		$menu=new Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
+		$menu->addIcon('ancestry');
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menus[]=$menu;
-		
+
 		return $menus;
 	}
 }

@@ -5,9 +5,6 @@
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
- * Derived from PhpGedView
- * Copyright (C) 2010 John Finlay
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -33,15 +30,15 @@ if (!defined('WT_WEBTREES')) {
 }
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-class source_report_WT_Module extends WT_Module implements WT_Module_Report {
+class fact_sources_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Sources Report');
+		return i18n::translate('Fact Sources');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Prints a list of individuals and families with a specific source');
+		return i18n::translate('Prints a list of individuals and families with a specific source for facts or records');
 	}
 
 	// Extend class WT_Module
