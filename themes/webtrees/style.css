@@ -743,7 +743,7 @@ a:hover .nameZoom {
 
 /*-- descendancy chart specific stylesheets --*/
 #descendancy_chart ul {
-	background-image: url(../../images/vline.gif);
+	background-image:url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
@@ -763,7 +763,7 @@ a:hover .nameZoom {
 
 /*-- descendancy chart rtl specific stylesheets --*/
 #descendancy_chart_rtl ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: right top;
 	list-style: none;
@@ -794,7 +794,7 @@ a:hover .nameZoom {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
@@ -814,7 +814,7 @@ a:hover .nameZoom {
 
 /*-- ancestry chart rtl specific stylesheets --*/
 #ancestry_chart_rtl ul {
-	background-image: url(../../images/vline.gif);
+	background-image: url(images/vline.gif);
 	background-repeat: repeat-y;
 	background-position: right top;
 	list-style: none;
