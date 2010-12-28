@@ -600,8 +600,8 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		$dataleft  = $image . $event . addslashes($name);
 		$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . i18n::translate('Individual information') . "'>";
 		
-		if ($TEXT_DIRECTION == "rtl") $datamid .= PrintReady("(".$pid.")");
-		else $datamid .= "(". $pid . ")";
+		if ($TEXT_DIRECTION == "rtl") $datamid .= PrintReady("(".i18n::translate('View Person').")");
+		else $datamid .= "(".i18n::translate('View Person').")";
 		$datamid  .= "</a></span>";
 		$dataright = "<br /><strong>". i18n::translate('Birth:') . "&nbsp;</strong>" .
 				addslashes($bdate->Display(false))."<br />".$bplace;
