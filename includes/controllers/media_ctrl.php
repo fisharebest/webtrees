@@ -163,7 +163,7 @@ class MediaController extends BaseController{
 	*/
 	function getPageTitle() {
 		if ($this->mediaobject) {
-			return $this->mediaobject->getFullName()." - ".$this->mediaobject->getXref();
+			return $this->mediaobject->getFullName()." - ".i18n::translate('Multimedia Information');
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}

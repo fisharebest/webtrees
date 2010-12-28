@@ -141,7 +141,7 @@ class NoteController extends BaseController {
 	*/
 	function getPageTitle() {
 		if ($this->note) {
-			return $this->note->getFullName()." - ".$this->nid." - ".i18n::translate('Shared Note Information');
+			return $this->note->getFullName()." - ".i18n::translate('Shared Note Information');
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}

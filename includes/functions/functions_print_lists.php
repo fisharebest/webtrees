@@ -1068,53 +1068,54 @@ function print_media_table($datalist, $legend="") {
 			if (is_null($media)) $media = Media::getInstance($key);
 			if (is_null($media)) continue;
 		}
-		//-- Counter
-		echo "<tr>";
-		echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
-		//-- Object name(s)
-		$name = $media->getFullName();
-		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
-		echo "<a href=\"", $media->getHtmlUrl(), "\" class=\"list_item name2\">";
-		if ($media->canDisplayDetails())
+		if ($media->canDisplayDetails()) {
+			//-- Counter
+			echo "<tr>";
+			echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
+			//-- Object name(s)
+			$name = $media->getFullName();
+			echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
+			echo "<a href=\"", $media->getHtmlUrl(), "\" class=\"list_item name2\">";
 			echo '<img src=', thumbnail_file($media->file, false), ' height="15" /> ';
-		echo PrintReady($name), "</a>";
-		if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
-			echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->file), "</a>";
-		//echo "<br />", $media->getFiletype();
-		//echo "&nbsp;&nbsp;", $media->width, "x", $media->height;
-		//echo "&nbsp;&nbsp;", $media->getFilesize(), "kB";
-		if ($media->getNote()) echo "<br />", print_fact_notes("1 NOTE ".$media->getNote(), 1);
-		echo "</td>";
-
-		//-- Linked INDIs
-		$tmp=$media->countLinkedIndividuals();
-		echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
-		//-- Linked FAMs
-		$tmp=$media->countLinkedfamilies();
-		echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
-		//-- Linked SOURces
-		$tmp=$media->countLinkedSources();
-		echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
-/*
-		//-- Linked records
-		foreach (array("INDI", "FAM", "SOUR") as $rectype) {
-			$resu = array();
-			foreach ($value["LINKS"] as $k=>$v) {
-				if ($v!=$rectype) continue;
-				$record = GedcomRecord::getInstance($k);
-				$txt = $record->getListName();
-				$resu[] = $txt;
-			}
-			sort($resu);
-			echo "<td class=\"list_value_wrap\" align=\"", get_align(@$resu[0]), "\">";
-			foreach ($resu as $txt) echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady("&bull; ".$txt), "</a><br />";
+			echo PrintReady($name), "</a>";
+			if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
+				echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->file), "</a>";
+			//echo "<br />", $media->getFiletype();
+			//echo "&nbsp;&nbsp;", $media->width, "x", $media->height;
+			//echo "&nbsp;&nbsp;", $media->getFilesize(), "kB";
+			if ($media->getNote()) echo "<br />", print_fact_notes("1 NOTE ".$media->getNote(), 1);
 			echo "</td>";
+
+			//-- Linked INDIs
+			$tmp=$media->countLinkedIndividuals();
+			echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+			//-- Linked FAMs
+			$tmp=$media->countLinkedfamilies();
+			echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+			//-- Linked SOURces
+			$tmp=$media->countLinkedSources();
+			echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+			/*
+			//-- Linked records
+			foreach (array("INDI", "FAM", "SOUR") as $rectype) {
+				$resu = array();
+				foreach ($value["LINKS"] as $k=>$v) {
+					if ($v!=$rectype) continue;
+					$record = GedcomRecord::getInstance($k);
+					$txt = $record->getListName();
+					$resu[] = $txt;
+				}
+				sort($resu);
+				echo "<td class=\"list_value_wrap\" align=\"", get_align(@$resu[0]), "\">";
+				foreach ($resu as $txt) echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady("&bull; ".$txt), "</a><br />";
+				echo "</td>";
+			}
+			*/
+			//-- Last change
+			if ($SHOW_LAST_CHANGE)
+				echo "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
+			echo "</tr>";
 		}
-*/
-		//-- Last change
-		if ($SHOW_LAST_CHANGE)
-			echo "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
-		echo "</tr>";
 	}
 	echo "</table>";
 	echo "</fieldset>";

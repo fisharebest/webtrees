@@ -141,7 +141,7 @@ class SourceController extends BaseController {
 	*/
 	function getPageTitle() {
 		if ($this->source) {
-			return $this->source->getFullName()." - ".$this->sid." - ".i18n::translate('Source Information');
+			return $this->source->getFullName()." - ".i18n::translate('Source Information');
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
