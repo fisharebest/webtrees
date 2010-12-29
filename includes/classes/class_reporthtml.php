@@ -630,8 +630,8 @@ class CellHTML extends Cell {
 			return;
 		}
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		// underline Â«titleÂ» part of Source item
+		$temptext = str_replace(array('Â«', 'Â»'), array('<u>', '</u>'), $temptext);
 
 		// Setup the style name
 		if ($html->getCurrentStyle() != $this->styleName) {
@@ -1149,8 +1149,8 @@ class TextHTML extends Text {
 			$html->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		// underline Â«titleÂ» part of Source item
+		$temptext = str_replace(array('Â«', 'Â»'), array('<u>', '</u>'), $temptext);
 
 		// If any text at all
 		if (!empty($temptext)) {
@@ -1326,8 +1326,8 @@ class FootnoteHTML extends Footnote {
 		}
 
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+		// underline Â«titleÂ» part of Source item
+		$temptext = str_replace(array('Â«', 'Â»'), array('<u>', '</u>'), $temptext);
 		echo "\n<div><a name=\"footnote", $this->num, "\"></a>";
 		$html->write($this->num. ". ". $temptext);
 		echo "</div>";
