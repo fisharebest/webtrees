@@ -682,7 +682,7 @@ function print_cousins($famid, $personcount="1") {
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family=Family::getInstance($famid);
-	$fchildren=$family->getChildrenIds();
+	$fchildren=$family->getChildren();
 
 	$kids = count($fchildren);
 	$save_show_full = $show_full;
@@ -697,12 +697,12 @@ function print_cousins($famid, $personcount="1") {
 		if ($kids>1) echo "<td rowspan=\"".$kids."\" valign=\"middle\" align=\"right\"><img width=\"3px\" height=\"". (($bheight+5) * ($kids-1)) ."px\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\" /></td>";
 		$ctkids = count($fchildren);
 		$i = 1;
-		foreach ($fchildren as $indexval => $fchil) {
+		foreach ($fchildren as $fchil) {
 			echo "<td><img width=\"10px\" height=\"3px\" style=\"padding-";
 			if ($TEXT_DIRECTION=="ltr") echo "right";
 			else echo "left";
 			echo ": 2px;\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td>";
-			print_pedigree_person($fchil, 1 , 0, $personcount);
+			print_pedigree_person($fchil->getXref(), 1 , 0, $personcount);
 			$personcount++;
 			echo "</td></tr>";
 			if ($i < $ctkids) {
@@ -711,8 +711,7 @@ function print_cousins($famid, $personcount="1") {
 			}
 		}
 		echo "</table>";
-	}
-	else {
+	} else {
 		$famrec = find_family_record($famid, $ged_id);
 		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 		if ($ct>0) $nchi = $match[1];

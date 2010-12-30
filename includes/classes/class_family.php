@@ -184,15 +184,15 @@ class Family extends GedcomRecord {
 	function loadChildren() {
 		if ($this->children_loaded) return;
 		$this->childrenIds = array();
-		$this->numChildren = preg_match_all('/1\s*CHIL\s*@(.*)@/', $this->gedrec, $smatch, PREG_SET_ORDER);
+		$this->numChildren = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->gedrec, $smatch, PREG_SET_ORDER);
 		for ($i=0; $i<$this->numChildren; $i++) {
-			//-- get the childs ids
-			$chil = trim($smatch[$i][1]);
-			$this->childrenIds[] = $chil;
+			$this->childrenIds[] = $smatch[$i][1];
 		}
 		foreach ($this->childrenIds as $t=>$chil) {
 			$child=Person::getInstance($chil);
-			if (!is_null($child)) $this->children[] = $child;
+			if ($child) {
+				$this->children[] = $child;
+			}
 		}
 		$this->children_loaded = true;
 	}
@@ -205,7 +205,7 @@ class Family extends GedcomRecord {
 
 		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->gedrec);
 		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->gedrec);
-		$nchi3=preg_match_all('/1\s*CHIL\s*@(.*)@/', $this->gedrec, $smatch);
+		$nchi3=preg_match_all('/\n1 CHIL @(.*)@/', $this->gedrec, $smatch);
 		return $this->numChildren=max($nchi1, $nchi2, $nchi3);
 	}
 
