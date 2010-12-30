@@ -47,7 +47,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $WT_IMAGES, $PEDIGREE_ROOT_ID, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight, $THEME_DIR;
+		global $ctype, $WT_IMAGES, $PEDIGREE_ROOT_ID, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
 
 		$details=get_block_setting($block_id, 'details', false);
 		$type   =get_block_setting($block_id, 'type', 'treenav');
@@ -152,9 +152,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if ($block) {
-				require $THEME_DIR.'templates/block_small_temp.php';
+				require WT_THEME_DIR.'templates/block_small_temp.php';
 			} else {
-				require $THEME_DIR.'templates/block_main_temp.php';
+				require WT_THEME_DIR.'templates/block_main_temp.php';
 			}
 		} else {
 			return $content;

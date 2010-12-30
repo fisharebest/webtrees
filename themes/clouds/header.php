@@ -87,7 +87,7 @@ echo
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
 if ($BROWSERTYPE!='other') { ?>
-	<link rel="stylesheet" href="<?php echo $THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 <?php
 }
 

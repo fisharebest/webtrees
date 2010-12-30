@@ -45,7 +45,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_IMAGES, $THEME_DIR;
+		global $WT_IMAGES;
 
 		$id=$this->getName().$block_id;
 		$title=/* I18N: A greeting; %s is the user's name */ i18n::translate('Welcome %s', getUserFullName(WT_USER_ID));
@@ -66,7 +66,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= "</td></tr></table>";
 
 		if ($template) {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}

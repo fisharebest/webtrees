@@ -30,25 +30,11 @@
  */
 
 ?>
-<?php if ($THEME_DIR=="themes/simplygreen/" || $THEME_DIR=="themes/simplyred/" || $THEME_DIR=="themes/simplyblue/") { ?>
-	<script>
-	var txtcolor="#ffffff";
-	</script>
-<?php } else { ?>
+
 	<script>
 	var txtcolor="#000000";
 	</script>
-<?php } ?>
 
-<?php if ($THEME_DIR=="themes/simplygreen/" || $THEME_DIR=="themes/simplyred/" || $THEME_DIR=="themes/simplyblue/") { ?>
-	<style type="text/css">
-	<!--
-	#addlinkQueue td, th { padding: 0.2em; }
-	.classy0 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #ffffff; font-size: 10px; }
-	.classy1 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #ffffff; font-size: 10px; }
-	-->
-	</style>
-<?php } else { ?>
 	<style type="text/css">
 	<!--
 	#addlinkQueue td, th { padding: 0.2em; }
@@ -56,7 +42,7 @@
 	.classy1 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #000000; font-size: 10px; }
 	-->
 	</style>
-<?php }
+<?php 
 
 // Various JavaScript variables required --------------------------------- ?>
 <script language="javascript" type="text/javascript">

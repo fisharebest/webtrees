@@ -53,7 +53,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_IMAGES, $TEXT_DIRECTION, $ctype, $THEME_DIR;
+		global $WT_IMAGES, $TEXT_DIRECTION, $ctype;
 
 		switch (safe_GET('action')) {
 		case 'deletenews':
@@ -153,7 +153,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($template) {
-			require $THEME_DIR.'templates/block_main_temp.php';
+			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {
 			return $content;
 		}
