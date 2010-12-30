@@ -88,7 +88,7 @@ class IndividualController extends BaseController {
 			return false;
 		}
 
-		$this->$pid=$this->indi->getXref(); // Correct upper/lower case mismatch
+		$this->pid=$this->indi->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {
