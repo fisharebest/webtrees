@@ -60,20 +60,18 @@ class FamilyController extends BaseController {
 
 		$this->famid = safe_GET_xref('famid');
 
-		$this->family = Family::getInstance($this->famid);
+		$gedrec = find_family_record($this->famid, WT_GED_ID);
 
-		if (empty($this->famrec)) {
-			//-- if no record was found create a default empty one
-			if (find_updated_record($this->famid, WT_GED_ID)!==null) {
-				$this->famrec = "0 @".$this->famid."@ FAM\n";
-				$this->family = new Family($this->famrec);
-			} else if (!$this->family) {
-				return false;
-			}
+		if (empty($gedrec)) {
+			$gedrec = "0 @".$this->famid."@ FAM\n";
 		}
 
-		$this->famrec = $this->family->getGedcomRecord();
-		$this->display = $this->family->canDisplayName();
+		if (find_family_record($this->famid, WT_GED_ID) || find_updated_record($this->famid, WT_GED_ID)!==null) {
+				$this->family = new Family($gedrec);
+				$this->family->ged_id=WT_GED_ID; // This record is from a file
+		} else if (!$this->family) {
+			return false;
+		}
 
 		$this->famid=$this->family->getXref(); // Correct upper/lower case mismatch
 
@@ -127,24 +125,24 @@ class FamilyController extends BaseController {
 		}
 
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && find_updated_record($this->famid, WT_GED_ID)!==null) {
-			$newrec = find_gedcom_record($this->famid, WT_GED_ID, true);
-			$this->difffam = new Family($newrec);
-			$this->difffam->setChanged(true);
+		if ($this->show_changes && WT_USER_CAN_EDIT) {
+			$newrec = find_updated_record($this->famid, WT_GED_ID);
+			if (!empty($newrec)) {
+				$this->difffam = new Family($newrec);
+				$this->difffam->setChanged(true);
+			}
+		}
+
+		if ($this->show_changes) {
 			$this->family->diffMerge($this->difffam);
 		}
+
 		$this->parents = array('HUSB'=>$this->family->getHusbId(), 'WIFE'=>$this->family->getWifeId());
 
 		//-- check if we can display both parents
 		if ($this->display == false) {
 			$this->showLivingHusb = showLivingNameById($this->parents['HUSB']);
 			$this->showLivingWife = showLivingNameById($this->parents['WIFE']);
-		}
-
-		//-- make sure we have the true id from the record
-		$ct = preg_match("/0 @(.*)@/", $this->famrec, $match);
-		if ($ct > 0) {
-			$this->famid = trim($match[1]);
 		}
 
 		if ($this->showLivingHusb == false && $this->showLivingWife == false) {
@@ -163,10 +161,6 @@ class FamilyController extends BaseController {
 
 	function getFamilyID() {
 		return $this->famid;
-	}
-
-	function getFamilyRecord() {
-		return $this->famrec;
 	}
 
 	function getHusband() {
