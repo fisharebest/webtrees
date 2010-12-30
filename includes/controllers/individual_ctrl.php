@@ -56,12 +56,10 @@ class IndividualController extends BaseController {
 
 	function init() {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM;
-		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE, $pid;
+		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE;
 		global $Fam_Navigator;
 
 		$this->pid = safe_GET_xref('pid');
-
-		$pid = $this->pid;
 
 		$gedrec = find_person_record($this->pid, WT_GED_ID);
 
