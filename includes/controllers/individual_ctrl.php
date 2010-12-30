@@ -145,7 +145,6 @@ class IndividualController extends BaseController {
 			if (!empty($newrec)) {
 				$this->diffindi = new Person($newrec);
 				$this->diffindi->setChanged(true);
-				$gedrec = $newrec;
 			}
 		}
 

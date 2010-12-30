@@ -97,8 +97,8 @@ class FamilyController extends BaseController {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->famid, WT_GED_ID);
-				$this->show_changes = false;
-				$this->accept_success = true;
+				$this->show_changes=false;
+				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				if (empty($gedrec)) {
@@ -106,15 +106,14 @@ class FamilyController extends BaseController {
 					exit;
 				}
 				$this->family = new Family($gedrec);
-				$this->parents = find_parents($_REQUEST['famid']);
 			}
 			unset($_GET['action']);
 			break;
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->famid, WT_GED_ID);
-				$this->show_changes = false;
-				$this->accept_success = true;
+				$this->show_changes=false;
+				$this->accept_success=true;
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
@@ -122,7 +121,6 @@ class FamilyController extends BaseController {
 					exit;
 				}
 				$this->family = new Family($gedrec);
-				$this->parents = find_parents($this->famid);
 			}
 			unset($_GET['action']);
 			break;
@@ -134,8 +132,6 @@ class FamilyController extends BaseController {
 			$this->difffam = new Family($newrec);
 			$this->difffam->setChanged(true);
 			$this->family->diffMerge($this->difffam);
-			//$this->famrec = $newrec;
-			//$this->family = new Family($this->famrec);
 		}
 		$this->parents = array('HUSB'=>$this->family->getHusbId(), 'WIFE'=>$this->family->getWifeId());
 
