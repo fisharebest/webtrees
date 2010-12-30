@@ -175,21 +175,13 @@ class FamilyController extends BaseController {
 		return null;
 	}
 
-	function getChildren() {
-		if (preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->famrec, $match)) {
-			return $match[1];
-		} else {
-			return array();
+	// $tags is an array of HUSB/WIFE/CHIL
+	function getTimelineIndis($tags) {
+		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->family->getGedcomRecord(), $matches);
+		foreach ($matches[1] as &$match) {
+			$match='pids[]='.$match;
 		}
-	}
-
-	function getChildrenUrlTimeline($start=0) {
-		$children = $this->getChildren();
-		$c = count($children);
-		for ($i = 0; $i < $c; $i++) {
-			$children[$i] = 'pids['.($i + $start).']='.$children[$i];
-		}
-		return join('&amp;', $children);
+		return implode('&amp;', $matches[1]);
 	}
 
 	/**

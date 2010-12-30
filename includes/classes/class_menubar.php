@@ -304,7 +304,7 @@ class MenuBar {
 						switch ($menuType) {
 						case "parentTimeLine":
 							// charts / parents_timeline
-							$submenu = new Menu(i18n::translate('Show couple on timeline chart'), 'timeline.php?pids[0]='.$controller->getHusband().'&amp;pids[1]='.$controller->getWife().'&amp;ged='.WT_GEDURL);
+							$submenu = new Menu(i18n::translate('Show couple on timeline chart'), 'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE')).'&amp;ged='.WT_GEDURL);
 							if (!empty($WT_IMAGES["timeline"])) {
 								$submenu->addIcon('timeline');
 							}
@@ -314,7 +314,7 @@ class MenuBar {
 
 						case "childTimeLine":
 							// charts / children_timeline
-							$submenu = new Menu(i18n::translate('Show children on timeline chart'), 'timeline.php?'.$controller->getChildrenUrlTimeline().'&amp;ged='.WT_GEDURL);
+							$submenu = new Menu(i18n::translate('Show children on timeline chart'), 'timeline.php?'.$controller->getTimelineIndis(array('CHIL')).'&amp;ged='.WT_GEDURL);
 							if (!empty($WT_IMAGES["timeline"])) {
 								$submenu->addIcon('timeline');
 							}
@@ -324,7 +324,7 @@ class MenuBar {
 
 						case "familyTimeLine":
 							// charts / family_timeline
-							$submenu = new Menu(i18n::translate('Show family on timeline chart'), 'timeline.php?pids[0]='.$controller->getHusband().'&amp;pids[1]='.$controller->getWife().'&amp;'.$controller->getChildrenUrlTimeline(2).'&amp;ged='.WT_GEDURL);
+							$submenu = new Menu(i18n::translate('Show family on timeline chart'), 'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE','CHIL')).'&amp;ged='.WT_GEDURL);
 							if (!empty($WT_IMAGES["timeline"])) {
 								$submenu->addIcon('timeline');
 							}
