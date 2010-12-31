@@ -106,7 +106,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing father
 		if ($type=="parents" && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if ($this->controller->canedit) {
+			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add a new father'); ?></td>
@@ -117,7 +117,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing husband
 		if ($type=="spouse" && $this->controller->indi->equals($people["wife"]) && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if ($this->controller->canedit) {
+			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add husband'); ?></td>
@@ -152,7 +152,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing mother
 		if ($type=="parents" && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if ($this->controller->canedit) {
+			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add a new mother'); ?></td>
@@ -163,7 +163,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing wife
 		if ($type=="spouse" && $this->controller->indi->equals($people["husb"]) && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if ($this->controller->canedit) {
+			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo i18n::translate('Add wife'); ?></td>
@@ -238,7 +238,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						if (empty($wife) && !empty($husb)) echo translate_fact('_NMAR', $husb);
 						else if (empty($husb) && !empty($wife)) echo translate_fact('_NMAR', $wife);
 						else echo translate_fact('_NMAR');
-					} else if ($family->getMarriageRecord()=="" && $this->controller->canedit) {
+					} else if ($family->getMarriageRecord()=="" && $this->controller->indi->canEdit()) {
 						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".i18n::translate('Add marriage details')."</a>";
 					} else {
 						$factdetail = explode(' ', trim($family->getMarriageRecord()));
@@ -319,7 +319,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$elderdate = $child->getBirthDate();
 			++$key;
 		}
-		if (isset($family) && $this->controller->canedit) {
+		if (isset($family) && $this->controller->indi->canEdit()) {
 			if ($type == "spouse") {
 				$child_u = i18n::translate('Add a son or daughter');
 				$child_m = i18n::translate('Son');
@@ -376,7 +376,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$personcount=0;
 		$families = $this->controller->indi->getChildFamilies();
 		if (count($families)==0) {
-			if ($this->controller->canedit) {
+			if ($this->controller->indi->canEdit()) {
 				?>
 				<table class="facts_table">
 					<tr>
@@ -440,7 +440,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		</script>
 		<br />
 		<?php
-		if ($this->controller->canedit) {
+		if ($this->controller->indi->canEdit()) {
 		?>
 		<table class="facts_table">
 		<?php if (count($families)>1) { ?>
