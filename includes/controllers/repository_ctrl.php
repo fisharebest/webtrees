@@ -39,7 +39,6 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class RepositoryController extends BaseController {
 	var $rid;
 	var $repository = null;
-	var $uname = "";
 	var $diffrepository = null;
 	var $accept_success = false;
 	var $canedit = false;
@@ -47,16 +46,16 @@ class RepositoryController extends BaseController {
 	function init() {
 		$this->rid = safe_GET_xref('rid');
 
-		$repositoryrec = find_other_record($this->rid, WT_GED_ID);
+		$gedrec = find_other_record($this->rid, WT_GED_ID);
 
-		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
-			$repositoryrec = "0 @".$this->rid."@ REPO\n";
-		} else if (!$repositoryrec) {
+		if (find_other_record($this->rid, WT_GED_ID) || find_updated_record($this->rid, WT_GED_ID)!==null) {
+			$this->repository = new Repository($gedrec);
+			$this->repository->ged_id=WT_GED_ID; // This record is from a file
+		} else if (!$gedrec) {
 			return false;
 		}
 
-		$this->repository = new Repository($repositoryrec);
-		$this->repository->ged_id=WT_GED_ID; // This record is from a file
+		$this->rid=$this->repository->getXref(); // Correct upper/lower case mismatch
 
 		if (!$this->repository->canDisplayDetails()) {
 			print_header(i18n::translate('Repository'));
@@ -64,10 +63,6 @@ class RepositoryController extends BaseController {
 			print_footer();
 			exit;
 		}
-
-		$this->uname = WT_USER_NAME;
-
-		$this->rid=$this->repository->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {
@@ -118,19 +113,16 @@ class RepositoryController extends BaseController {
 			break;
 		}
 
-		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && ($newrec = find_updated_record($this->rid, WT_GED_ID))!==null) {
-			$this->diffrepository = new Repository($newrec);
-			$this->diffrepository->setChanged(true);
-			$repositoryrec = $newrec;
+		if ($this->show_changes && WT_USER_CAN_EDIT) {
+			$newrec = find_updated_record($this->rid, WT_GED_ID);
+			if (!empty($newrec)) {
+				$this->diffrepository = new Repository($newrec);
+				$this->diffrepository->setChanged(true);
+			}
 		}
 
-		if ($this->repository->canDisplayDetails()) {
-			$this->canedit = WT_USER_CAN_EDIT;
-		}
-
-		if ($this->show_changes && $this->canedit) {
+		if ($this->show_changes) {
 			$this->repository->diffMerge($this->diffrepository);
 		}
 	}
@@ -145,13 +137,6 @@ class RepositoryController extends BaseController {
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
-	}
-	/**
-	* check if use can edit this person
-	* @return boolean
-	*/
-	function userCanEdit() {
-		return $this->canedit;
 	}
 
 	/**

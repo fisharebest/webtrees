@@ -86,7 +86,7 @@ foreach ($repositoryfacts as $fact) {
 print_main_media($controller->rid);
 
 // new fact link
-if ($controller->userCanEdit()) {
+if ($controller->repository->canEdit()) {
 	print_add_new_fact($controller->rid, $repositoryfacts, 'REPO');
 	// new media
 	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
