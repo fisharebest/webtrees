@@ -67,8 +67,8 @@ class FamilyController extends BaseController {
 		}
 
 		if (find_family_record($this->famid, WT_GED_ID) || find_updated_record($this->famid, WT_GED_ID)!==null) {
-				$this->family = new Family($gedrec);
-				$this->family->ged_id=WT_GED_ID; // This record is from a file
+			$this->family = new Family($gedrec);
+			$this->family->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$this->family) {
 			return false;
 		}

@@ -116,7 +116,7 @@ foreach ($notefacts as $fact) {
 print_main_media($controller->nid);
 
 // new fact link
-if ($controller->userCanEdit()) {
+if ($controller->note->canEdit()) {
 	print_add_new_fact($controller->nid, $notefacts, 'NOTE');
 	// new media
 	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';

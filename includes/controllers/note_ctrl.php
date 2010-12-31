@@ -39,7 +39,6 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class NoteController extends BaseController {
 	var $nid;
 	var $note = null;
-	var $uname = "";
 	var $diffnote = null;
 	var $accept_success = false;
 	var $canedit = false;
@@ -47,16 +46,16 @@ class NoteController extends BaseController {
 	function init() {
 		$this->nid = safe_GET_xref('nid');
 
-		$noterec = find_other_record($this->nid, WT_GED_ID);
+		$gedrec = find_other_record($this->nid, WT_GED_ID);
 
-		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
-			$noterec = "0 @".$this->nid."@ NOTE\n";
-		} else if (!$noterec) {
+		if (find_other_record($this->nid, WT_GED_ID) || find_updated_record($this->nid, WT_GED_ID)!==null) {
+			$this->note = new Note($gedrec);
+			$this->note->ged_id=WT_GED_ID; // This record is from a file
+		} else if (!$gedrec) {
 			return false;
 		}
 
-		$this->note = new Note($noterec);
-		$this->note->ged_id=WT_GED_ID; // This record is from a file
+		$this->nid=$this->note->getXref(); // Correct upper/lower case mismatch
 
 		if (!$this->note->canDisplayDetails()) {
 			print_header(i18n::translate('Shared note'));
@@ -64,10 +63,6 @@ class NoteController extends BaseController {
 			print_footer();
 			exit;
 		}
-
-		$this->uname = WT_USER_NAME;
-
-		$this->nid=$this->note->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {
@@ -118,19 +113,16 @@ class NoteController extends BaseController {
 			break;
 		}
 
-		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && ($newrec = find_updated_record($this->nid, WT_GED_ID))!==null) {
-			$this->diffnote = new Note($newrec);
-			$this->diffnote->setChanged(true);
-			$noterec = $newrec;
+		if ($this->show_changes && WT_USER_CAN_EDIT) {
+			$newrec = find_updated_record($this->nid, WT_GED_ID);
+			if (!empty($newrec)) {
+				$this->diffnote = new Note($newrec);
+				$this->diffnote->setChanged(true);
+			}
 		}
 
-		if ($this->note->canDisplayDetails()) {
-			$this->canedit = WT_USER_CAN_EDIT;
-		}
-
-		if ($this->show_changes && $this->canedit) {
+		if ($this->show_changes) {
 			$this->note->diffMerge($this->diffnote);
 		}
 	}
@@ -145,13 +137,6 @@ class NoteController extends BaseController {
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
-	}
-	/**
-	* check if use can edit this person
-	* @return boolean
-	*/
-	function userCanEdit() {
-		return $this->canedit;
 	}
 
 	/**
