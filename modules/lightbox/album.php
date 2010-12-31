@@ -39,6 +39,7 @@ global $edit, $controller, $tabno, $_REQUEST, $thumb_edit, $n, $LB_URL_WIDTH, $L
 global $reorder, $rownum, $sort_i, $GEDCOM;
 
 $reorder=safe_get('reorder', '1', '0');
+$pid=$this->controller->indi->getXref();
 
 // Get Javascript variables from lb_config.php ---------------------------
 require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';

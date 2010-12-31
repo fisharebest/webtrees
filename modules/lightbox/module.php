@@ -80,11 +80,11 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION, $is_media;
 		global $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec ;
 		global $edit ;
-		global $pid, $tabno;
+		global $tabno;
 		global $Fam_Navigator, $NAV_ALBUM;
 
 		ob_start();
-		require_once 'modules/lightbox/functions/lb_head.php';
+		require WT_ROOT.'modules/lightbox/functions/lb_head.php';
 
 		$media_found = false;
 		if (!$this->controller->indi->canDisplayDetails()) {
@@ -94,9 +94,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			echo "</td></tr>";
 			echo "</table>";
 		} else {
-			if (file_exists("modules/lightbox/album.php")) {
-				include_once('modules/lightbox/album.php');
-			}
+			require WT_ROOT.'modules/lightbox/album.php';
 		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
