@@ -86,7 +86,7 @@ foreach ($sourcefacts as $fact) {
 print_main_media($controller->sid);
 
 // new fact link
-if ($controller->userCanEdit()) {
+if ($controller->source->canEdit()) {
 	print_add_new_fact($controller->sid, $sourcefacts, 'SOUR');
 	// new media
 	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';

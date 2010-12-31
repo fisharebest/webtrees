@@ -39,7 +39,6 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class SourceController extends BaseController {
 	var $sid;
 	var $source = null;
-	var $uname = "";
 	var $diffsource = null;
 	var $accept_success = false;
 	var $canedit = false;
@@ -47,16 +46,16 @@ class SourceController extends BaseController {
 	function init() {
 		$this->sid = safe_GET_xref('sid');
 
-		$sourcerec = find_source_record($this->sid, WT_GED_ID);
+		$gedrec = find_source_record($this->sid, WT_GED_ID);
 
-		if (find_updated_record($this->sid, WT_GED_ID)!==null) {
-			$sourcerec = "0 @".$this->sid."@ SOUR\n";
-		} else if (!$sourcerec) {
+		if (find_source_record($this->sid, WT_GED_ID) || find_updated_record($this->sid, WT_GED_ID)!==null) {
+			$this->source = new Source($gedrec);
+			$this->source->ged_id=WT_GED_ID; // This record is from a file
+		} else if (!$gedrec) {
 			return false;
 		}
 
-		$this->source = new Source($sourcerec);
-		$this->source->ged_id=WT_GED_ID; // This record is from a file
+		$this->rid=$this->source->getXref(); // Correct upper/lower case mismatch
 
 		if (!$this->source->canDisplayDetails()) {
 			print_header(i18n::translate('Source'));
@@ -64,10 +63,6 @@ class SourceController extends BaseController {
 			print_footer();
 			exit;
 		}
-
-		$this->uname = WT_USER_NAME;
-
-		$this->sid=$this->source->getXref(); // Correct upper/lower case mismatch
 
 		//-- perform the desired action
 		switch($this->action) {
@@ -118,19 +113,16 @@ class SourceController extends BaseController {
 			break;
 		}
 
-		//-- check for the user
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT && ($newrec = find_updated_record($this->sid, WT_GED_ID))!==null) {
-			$this->diffsource = new Source($newrec);
-			$this->diffsource->setChanged(true);
-			$sourcerec = $newrec;
+		if ($this->show_changes && WT_USER_CAN_EDIT) {
+			$newrec = find_updated_record($this->sid, WT_GED_ID);
+			if (!empty($newrec)) {
+				$this->diffsource = new Source($newrec);
+				$this->diffsource->setChanged(true);
+			}
 		}
 
-		if ($this->source->canDisplayDetails()) {
-			$this->canedit = WT_USER_CAN_EDIT;
-		}
-
-		if ($this->show_changes && $this->canedit) {
+		if ($this->show_changes) {
 			$this->source->diffMerge($this->diffsource);
 		}
 	}
@@ -145,13 +137,6 @@ class SourceController extends BaseController {
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
-	}
-	/**
-	* check if use can edit this person
-	* @return boolean
-	*/
-	function userCanEdit() {
-		return $this->canedit;
 	}
 
 	/**
