@@ -41,7 +41,6 @@ class RepositoryController extends BaseController {
 	var $repository = null;
 	var $diffrepository = null;
 	var $accept_success = false;
-	var $canedit = false;
 
 	function init() {
 		$this->rid = safe_GET_xref('rid');

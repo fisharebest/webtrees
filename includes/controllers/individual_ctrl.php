@@ -44,7 +44,6 @@ class IndividualController extends BaseController {
 	var $accept_success = false;
 	var $default_tab = '';
 
-	var $canedit = false;
 	var $name_count = 0;
 	var $total_names = 0;
 	var $SEX_COUNT = 0;
@@ -150,11 +149,6 @@ class IndividualController extends BaseController {
 			$this->indi->diffMerge($this->diffindi);
 		}
 
-		//-- only allow editors or users who are editing their own individual or their immediate relatives
-		if ($this->indi->canDisplayDetails()) {
-			$this->canedit = WT_USER_CAN_EDIT;
-		}
-
 		// Initialise tabs
 		$this->tabs = WT_Module::getActiveTabs();
 		foreach ($this->tabs as $mod) {
@@ -243,13 +237,7 @@ class IndividualController extends BaseController {
 		if (WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD && $this->indi->canDisplayDetails())
 			return true;
 	}
-	/**
-	* check if use can edit this person
-	* @return boolean
-	*/
-	function userCanEdit() {
-		return $this->canedit;
-	}
+
 	/**
 	* get the highlighted object HTML
 	* @return string HTML string for the <img> tag

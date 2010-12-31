@@ -41,7 +41,6 @@ class NoteController extends BaseController {
 	var $note = null;
 	var $diffnote = null;
 	var $accept_success = false;
-	var $canedit = false;
 
 	function init() {
 		$this->nid = safe_GET_xref('nid');

@@ -41,7 +41,6 @@ class SourceController extends BaseController {
 	var $source = null;
 	var $diffsource = null;
 	var $accept_success = false;
-	var $canedit = false;
 
 	function init() {
 		$this->sid = safe_GET_xref('sid');
