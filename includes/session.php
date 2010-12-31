@@ -270,7 +270,7 @@ require WT_ROOT.'includes/session_spider.php';
 // Search engines are only allowed to see certain pages.
 if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
 	'family.php', 'famlist.php', 'index.php', 'indilist.php', 'individual.php',
-	'media.php', 'medialist.php', 'note.php', 'notelist.php', 'repo.php', 'repolist.php',
+	'medialist.php', 'note.php', 'notelist.php', 'repo.php', 'repolist.php',
 	'search_engine.php', 'site-unavailable.php', 'source.php', 'sourcelist.php'
 ))) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'search_engine.php');
