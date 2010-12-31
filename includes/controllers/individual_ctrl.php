@@ -324,7 +324,7 @@ class IndividualController extends BaseController {
 		echo '<div id="name1">';
 			echo '<dl><dt class="label">', i18n::translate('Name'), '</dt>';
 			echo '<dd class="field">', PrintReady($dummy->getFullName());
-				if ($this->userCanEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
+				if ($this->indi->canEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>";
 				}
@@ -400,7 +400,7 @@ class IndividualController extends BaseController {
 				break;
 			}
 			if ($this->SEX_COUNT>1) {
-				if ($this->userCanEdit() && strpos($factrec, "WT_OLD")===false) {
+				if ($this->indi->canEdit() && strpos($factrec, "WT_OLD")===false) {
 					if ($event->getLineNumber()=="new") {
 						echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".i18n::translate('Edit')."</a>";
 					} else {
