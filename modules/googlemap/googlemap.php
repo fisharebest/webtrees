@@ -622,7 +622,7 @@ function build_indiv_map($indifacts, $famids) {
 		echo "function ResizeMap() {}</script>";
 		if (WT_USER_IS_ADMIN) {
 			echo "<tr><td align=\"center\" colspan=\"2\">";
-			echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+			echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
 			echo "</td></tr>";
 		}
 	} else {
@@ -700,7 +700,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) {
 						echo "<br /><br />", i18n::translate('This place has no coordinates');
 						if (WT_USER_IS_ADMIN)
-							echo '<br /><a href=\"module.php?mod=googlemap&mod_action=places&display=inactive\">', i18n::translate('Edit geographic location'), '</a>';
+							echo '<br /><a href=\"module.php?mod=googlemap&mod_action=admin_places&display=inactive\">', i18n::translate('Edit geographic location'), '</a>';
 						echo "\");";
 					}
 					else if (!$GOOGLEMAP_COORD) {

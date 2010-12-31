@@ -48,7 +48,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config{
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
-		case 'index':
+		case 'admin_index':
 			// TODO: these files should be methods in this class
 			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
 			break;
@@ -57,6 +57,6 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config{
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=index';
+		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_index';
 	}
 }

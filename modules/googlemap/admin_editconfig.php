@@ -197,7 +197,7 @@ if ($action=="update" && !isset($security_user)) {
 	//-->
 </script>
 
-<form method="post" name="configform" action="module.php?mod=googlemap&mod_action=editconfig">
+<form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_editconfig">
 <input type="hidden" name="action" value="update" />
 
 <table class="facts_table">
@@ -430,7 +430,7 @@ if ($action=="update" && !isset($security_user)) {
 <table class="facts_table">
 	<tr>
 		<td class="descriptionbox" colspan="2" align="center">
-			<a href="module.php?mod=googlemap&mod_action=places"><?php echo i18n::translate('Edit geographic place locations'); ?></a>
+			<a href="module.php?mod=googlemap&mod_action=admin_places"><?php echo i18n::translate('Edit geographic place locations'); ?></a>
 		</td>
 	<tr>
 		<td class="descriptionbox" colspan="2" align="center">

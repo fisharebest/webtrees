@@ -555,7 +555,7 @@ foreach (array_reverse($where_am_i, true) as $id=>$place) {
 			echo i18n::translate('unknown');
 		}
 	} else {
-		echo "<a href=\"module.php?mod=googlemap&mod_action=places&parent={$id}&display={$display}\">";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&parent={$id}&display={$display}\">";
 		if ($place != "Unknown") {
 			echo PrintReady($place), "</a>";
 		} else {
@@ -564,8 +564,8 @@ foreach (array_reverse($where_am_i, true) as $id=>$place) {
 	}
 	echo " - ";
 }
-echo "<a href=\"module.php?mod=googlemap&mod_action=places&parent=0&display=$display\">".i18n::translate('Top Level')."</a>";
-echo "<br /><br /><form name=\"active\" method=\"post\" action=\"module.php?mod=googlemap&mod_action=places&parent=$parent&display=$display\">";
+echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&parent=0&display=$display\">".i18n::translate('Top Level')."</a>";
+echo "<br /><br /><form name=\"active\" method=\"post\" action=\"module.php?mod=googlemap&mod_action=admin_places&parent=$parent&display=$display\">";
 echo "\n<table><tr><td class=\"optionbox\">", i18n::translate('Click here to show inactive places'), ": <input type=\"checkbox\" name=\"display\" value=\"inactive\"";
 if ($display == 'inactive') echo " checked=\"checked\"";
 echo ">\n<input type=\"submit\" value=\"", i18n::translate('View'), "\" >";
@@ -586,7 +586,7 @@ echo i18n::translate('Edit geographic location'), help_link('PL_EDIT_LOCATION','
 if (count($placelist) == 0)
 	echo "<tr><td colspan=\"7\" class=\"facts_value\">", i18n::translate('No places found'), "</td></tr>";
 foreach ($placelist as $place) {
-	echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=googlemap&mod_action=places&parent={$place['place_id']}&display={$display}\">";
+	echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=googlemap&mod_action=admin_places&parent={$place['place_id']}&display={$display}\">";
 	if ($place["place"] != "Unknown")
 			echo PrintReady($place["place"]), "</a></td>";
 		else
@@ -630,24 +630,24 @@ foreach ($placelist as $place) {
 			<td class="optionbox" colspan="2"><a href="javascript:;" onclick="add_place_location(<?php echo $parent; ?>);return false;"><?php echo i18n::translate('Add place'); ?></a><?php echo help_link('PL_ADD_LOCATION','googlemap'); ?></td>
 		</tr>
 		<tr>
-			<td class="optionbox"><a href="module.php?mod=googlemap&mod_action=places&action=ImportGedcom&mode=curr"><?php echo i18n::translate('Import from current GEDCOM'); ?></a><?php echo help_link('PL_IMPORT_GEDCOM','googlemap'); ?></td>
-			<td class="optionbox"><a href="module.php?mod=googlemap&mod_action=places&action=ImportGedcom&mode=all"><?php echo i18n::translate('Import from all GEDCOMs'); ?></a><?php echo help_link('PL_IMPORT_ALL_GEDCOM','googlemap'); ?></td>
+			<td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportGedcom&mode=curr"><?php echo i18n::translate('Import from current GEDCOM'); ?></a><?php echo help_link('PL_IMPORT_GEDCOM','googlemap'); ?></td>
+			<td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportGedcom&mode=all"><?php echo i18n::translate('Import from all GEDCOMs'); ?></a><?php echo help_link('PL_IMPORT_ALL_GEDCOM','googlemap'); ?></td>
 		</tr>
 		<tr>
-			<td class="optionbox" colspan="2"><a href="module.php?mod=googlemap&mod_action=places&action=ImportFile&mode=add"><?php echo i18n::translate('Import from file'); ?></a><?php echo help_link('PL_IMPORT_FILE','googlemap'); ?></td>
+			<td class="optionbox" colspan="2"><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportFile&mode=add"><?php echo i18n::translate('Import from file'); ?></a><?php echo help_link('PL_IMPORT_FILE','googlemap'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox">
 <?php
 	if (count($where_am_i)<=4) {
-		echo "<a href=\"module.php?mod=googlemap&mod_action=places&action=ExportFile&parent={$parent}\">";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent={$parent}\">";
 		echo i18n::translate('Export current view to file'), "</a>";
 		echo help_link('PL_EXPORT_FILE','googlemap');
 	} else {
 		echo "&nbsp;";
 	}
 	echo "</td><td class=\"optionbox\">";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=places&action=ExportFile&parent=0\">";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent=0\">";
 	echo i18n::translate('Export all locations to file'), "</a>";
 	echo help_link('PL_EXPORT_ALL_FILE','googlemap');
 	echo "</td></tr></table><br />";

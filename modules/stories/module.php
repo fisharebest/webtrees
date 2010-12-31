@@ -46,17 +46,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
-		case 'edit':
+		case 'admin_edit':
 			$this->edit();
 			break;
-		case 'delete':
+		case 'admin_delete':
 			$this->delete();
 			$this->config();
 			break;
-		case 'config':
+		case 'admin_config':
 			$this->config();
 			break;
-		case 'show_list':
+		case 'admin_show_list':
 			$this->show_list();
 			break;
 		default:
@@ -66,7 +66,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=config';
+		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
 	// Implement class WT_Module_Block
@@ -120,14 +120,14 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$html.='<div class="news_title center">'.get_block_setting($block_id, 'title').'</div>';
 				$html.='<div>'.get_block_setting($block_id, 'story_body').'</div><br />';
 				if (WT_USER_CAN_EDIT) {
-					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&amp;block_id='.$block_id.'">';
+					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
 					$html.=i18n::translate('Edit story').'</a></div><br />';
 				}
 			}
 		}
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
-			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=edit&amp;xref='.$this->controller->indi->getXref().'">';
+			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$this->controller->indi->getXref().'">';
 			$html.=i18n::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br />';
 		}
 		return $html;
@@ -315,7 +315,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 			echo '<table class="list_table">';
 			echo '<tr><td class="list_label" colspan="4">';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit">', i18n::translate('Add story'), '</a>';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', i18n::translate('Add story'), '</a>';
 			echo help_link('add_story', $this->getName());
 			echo '</td></tr>';
 			if (count($stories)>0) {
@@ -334,8 +334,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<tr><td class="optionbox center">';
 				echo get_block_setting($story->block_id, 'title');
 				echo '<td class="list_value_wrap">', $name, '</td>';
-				echo '<td class="optionbox center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a></td>';
-				echo '<td class="optionbox center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
+				echo '<td class="optionbox center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '">', i18n::translate('Edit'), '</a></td>';
+				echo '<td class="optionbox center"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', i18n::translate('Are you sure you want to delete this story?'), '\');">', i18n::translate('Delete'), '</a>';
 				echo '</td></tr>';
 			}
 			echo '</table>';
@@ -345,7 +345,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			exit;
 		}
 	}
-	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=show_list"
+	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=admin_show_list"
 	// No privacy restrictions included here though - so use with care!
 	private function show_list() {
 		global $WT_IMAGES, $TEXT_DIRECTION;

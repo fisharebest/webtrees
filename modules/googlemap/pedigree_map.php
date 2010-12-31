@@ -78,7 +78,7 @@ if (!$GOOGLEMAP_ENABLED) {
 	echo "<tr><td class=\"facts_value\">", i18n::translate('GoogleMap module disabled'), "</td></tr>\n";
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
 		echo "</td></tr>\n";
 	}
 	echo "</table><br />";
@@ -251,13 +251,13 @@ echo " background-image: url('images/loading.gif'); background-position: center;
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
 	echo "<tr><td align=\"left\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"center\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=places\">", i18n::translate('Edit geographic place locations'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", i18n::translate('Edit geographic place locations'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"right\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=placecheck\">", i18n::translate('Place Check'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_placecheck\">", i18n::translate('Place Check'), "</a>";
 	echo "</td></tr>\n";
 	echo "</table>\n";
 }

@@ -54,7 +54,7 @@ echo "<div align=\"center\" style=\"width: 99%;\"><h1>", i18n::translate('Place 
 
 //Start of User Defined options
 echo "<table border='0' width='100%' height='100px' overflow='auto';>";
-echo "<form method='post' name='placecheck' action='module.php?mod=googlemap&amp;mod_action=placecheck'>";
+echo "<form method='post' name='placecheck' action='module.php?mod=googlemap&amp;mod_action=admin_placecheck'>";
 echo "<tr valign='top'>";
 echo "<td>";
 echo "<table align='left'>";

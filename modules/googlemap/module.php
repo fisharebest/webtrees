@@ -49,11 +49,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_config':
-		case 'editconfig':
+		case 'admin_editconfig':
 		case 'flags':
 		case 'pedigree_map':
-		case 'placecheck':
-		case 'places':
+		case 'admin_placecheck':
+		case 'admin_places':
 		case 'places_edit':
 			// TODO: these files should be methods in this class
 			require_once WT_ROOT.'modules/googlemap/googlemap.php';
@@ -107,7 +107,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>";
 			if (WT_USER_IS_ADMIN) {
 				echo "<tr><td align=\"center\" colspan=\"2\">";
-				echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+				echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
 				echo "</td>";
 				echo "</tr>";
 			}
@@ -149,13 +149,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if (WT_USER_IS_ADMIN) {
 						echo "<table width=\"100%\"><tr>";
 						echo "<td width=\"33%\" align=\"left\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
 						echo "</td>";
 						echo "<td width=\"33%\" align=\"center\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=places\">".i18n::translate('Edit geographic place locations')."</a>";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_places\">".i18n::translate('Edit geographic place locations')."</a>";
 						echo "</td>";
 						echo "<td width=\"33%\" align=\"right\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=placecheck\">".i18n::translate('Place Check')."</a>";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_placecheck\">".i18n::translate('Place Check')."</a>";
 						echo "</td>";
 						echo "</tr></table>";
 					}

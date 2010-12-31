@@ -89,7 +89,7 @@ function getHighestIndex() {
 
 $where_am_i=place_id_to_hierarchy($placeid);
 $level=count($where_am_i);
-$link = 'module.php?mod=googlemap&mod_action=places&parent='.$placeid;
+$link = 'module.php?mod=googlemap&mod_action=admin_places&parent='.$placeid;
 
 if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 	$statement=

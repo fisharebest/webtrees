@@ -82,7 +82,7 @@ if ($action=="sendFiles") {
 
 	if (isset($welcome)) {
 		echo " <url>\n";
-		echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "index.php?command=gedcom&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
+		echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "index.php?ctype=gedcom&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
 		echo " <changefreq>", $welcome_update, "</changefreq>\n";
 		echo " <priority>0.", $welcome_priority, "</priority>\n";
 		echo " </url>\n";
@@ -232,7 +232,7 @@ if ($action=="generate") {
 		if (isset($_POST["GEDCOM_{$ged_id}"])) {
 			$filecounter += 1;
 			$sitemapFilename = "SM_".str_ireplace(".ged",".xml",$gedcom);
-			echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=index&amp;action=sendFiles&amp;index=", $ged_id, "&amp;gedcom_name=", rawurlencode($gedcom), "&filename=", $sitemapFilename;
+			echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=admin_index&amp;action=sendFiles&amp;index=", $ged_id, "&amp;gedcom_name=", rawurlencode($gedcom), "&filename=", $sitemapFilename;
 			if (isset($_POST["welcome_page"])) echo "&welcome=true&welcome_priority=", $welcome_priority, "&welcome_update=", $welcome_update;
 			if (isset($_POST["indi_recs"])) echo "&indi_rec=true&indirec_priority=", $indirec_priority, "&indirec_update=", $indirec_update;
 			if (isset($_POST["indi_list"])) echo "&indi_lists=true&indilist_priority=", $indilist_priority, "&indilist_update=", $indilist_update;
@@ -243,7 +243,7 @@ if ($action=="generate") {
 		}
 	}
 	if ($filecounter > 1) {
-		echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=index&amp;action=sendIndex";
+		echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=admin_index&amp;action=sendIndex";
 		foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 			if (isset($_POST["GEDCOM_{$ged_id}"])) {
 				echo "&filenames[", $ged_id, "]=", $gedcom;
@@ -261,7 +261,7 @@ if ($action=="") {
 
 <h3><?php echo i18n::translate('Generate Sitemap files'), help_link('SITEMAP','sitemap'); ?></h3>
 
-<form method="post" enctype="multipart/form-data" id="sitemap" name="sitemap" action="module.php?mod=sitemap&amp;mod_action=index">
+<form method="post" enctype="multipart/form-data" id="sitemap" name="sitemap" action="module.php?mod=sitemap&amp;mod_action=admin_index">
 	<input type="hidden" name="action" value="generate" />
 	<table class="facts_table width100">
 		<tr>
