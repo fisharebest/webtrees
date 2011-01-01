@@ -151,8 +151,6 @@ class MediaController extends BaseController{
 			unset($_GET['action']);
 			break;
 		}
-
-		}
 	}
 
 	/**
