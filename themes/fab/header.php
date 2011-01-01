@@ -86,9 +86,9 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	if ($SEARCH_SPIDER) {
 		// Search engines get a reduced menu
 		$menu_items=array(
-			MenuBar::getGedcomMenu(),
-			MenuBar::getListsMenu(),
-			MenuBar::getCalendarMenu()
+			WT_MenuBar::getGedcomMenu(),
+			WT_MenuBar::getListsMenu(),
+			WT_MenuBar::getCalendarMenu()
 		);
 	} else {
 		// Options for real users
@@ -106,14 +106,14 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		} else {
 			echo '<li>', login_link(), '</li>';
 		}
-		echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
-		$language_menu=MenuBar::getLanguageMenu();
+		echo '<span class="link"> | ', WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+		$language_menu=WT_MenuBar::getLanguageMenu();
 		if ($language_menu) {
 			echo ' | ', $language_menu->getMenuAsList();
 		}
 		global $ALLOW_THEME_DROPDOWN;
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+			echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
 		}
 		echo
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
@@ -123,18 +123,18 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'</form>',
 			'</ul></div>';
 		$menu_items=array(
-			MenuBar::getGedcomMenu(),
-			MenuBar::getMyPageMenu(),
-			MenuBar::getChartsMenu(),
-			MenuBar::getListsMenu(),
-			MenuBar::getCalendarMenu(),
-			MenuBar::getReportsMenu(),
-			MenuBar::getSearchMenu(),
+			WT_MenuBar::getGedcomMenu(),
+			WT_MenuBar::getMyPageMenu(),
+			WT_MenuBar::getChartsMenu(),
+			WT_MenuBar::getListsMenu(),
+			WT_MenuBar::getCalendarMenu(),
+			WT_MenuBar::getReportsMenu(),
+			WT_MenuBar::getSearchMenu(),
 		);
-		foreach (MenuBar::getModuleMenus() as $menu) {
+		foreach (WT_MenuBar::getModuleMenus() as $menu) {
 			$menu_items[]=$menu;
 		}
-		$menu_items[]=MenuBar::getHelpMenu();
+		$menu_items[]=WT_MenuBar::getHelpMenu();
 
 		echo
 			'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',

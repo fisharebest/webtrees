@@ -731,7 +731,7 @@ if (check_media_structure()) {
 		if ($TEXT_DIRECTION=="rtl") $classSuffix = "_rtl";
 
 		// main link displayed on page
-		$menu = new Menu();
+		$menu = new WT_Menu();
 
 		// GEDFact assistant Add Media Links =======================
 		if (file_exists('modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
@@ -744,17 +744,17 @@ if (check_media_structure()) {
 		} else {
 			$menu->addLabel(i18n::translate('Set link'));
 			$menu->addOnclick("return ilinkitem('$mediaid', 'person')");
-			$submenu = new Menu(i18n::translate('To Person'));
+			$submenu = new WT_Menu(i18n::translate('To Person'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'person')");
 			$menu->addSubMenu($submenu);
 
-			$submenu = new Menu(i18n::translate('To Family'));
+			$submenu = new WT_Menu(i18n::translate('To Family'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'family')");
 			$menu->addSubMenu($submenu);
 
-			$submenu = new Menu(i18n::translate('To Source'));
+			$submenu = new WT_Menu(i18n::translate('To Source'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'source')");
 			$menu->addSubMenu($submenu);

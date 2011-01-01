@@ -29,7 +29,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/classes/class_menu.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Note extends WT_Controller_Base {
@@ -147,12 +146,12 @@ class WT_Controller_Note extends WT_Controller_Base {
 			$ff="";
 		}
 		// edit menu
-		$menu = new Menu(i18n::translate('Edit'));
+		$menu = new WT_Menu(i18n::translate('Edit'));
 		$menu->addIcon('edit_note');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new Menu(i18n::translate('Edit note'));
+			$submenu = new WT_Menu(i18n::translate('Edit note'));
 			$submenu->addOnclick('return edit_note(\''.$this->nid.'\');');
 			$submenu->addIcon('edit_note');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -164,21 +163,21 @@ class WT_Controller_Note extends WT_Controller_Base {
 		// show/hide changes
 		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "note.php?nid={$this->nid}&amp;show_changes=yes");
+				$submenu = new WT_Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "note.php?nid={$this->nid}&amp;show_changes=yes");
 				$submenu->addIcon('edit_note');
 			} else {
-				$submenu = new Menu(i18n::translate('Click here to hide changes.'), "note.php?nid={$this->nid}&amp;show_changes=no");
+				$submenu = new WT_Menu(i18n::translate('Click here to hide changes.'), "note.php?nid={$this->nid}&amp;show_changes=no");
 				$submenu->addIcon('edit_note');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), "note.php?nid={$this->nid}&amp;action=undo");
+				$submenu = new WT_Menu(i18n::translate('Undo all changes'), "note.php?nid={$this->nid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('notes');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Approve all changes'), "note.php?nid={$this->nid}&amp;action=accept");
+				$submenu = new WT_Menu(i18n::translate('Approve all changes'), "note.php?nid={$this->nid}&amp;action=accept");
 				$submenu->addIcon('notes');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -189,13 +188,13 @@ class WT_Controller_Note extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
+			$submenu = new WT_Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->nid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
+			$submenu = new WT_Menu(i18n::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -208,7 +207,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new Menu(i18n::translate('Delete this Shared Note'));
+			$submenu = new WT_Menu(i18n::translate('Delete this Shared Note'));
 			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Shared Note?')."')) return deletenote('".$this->nid."'); else return false;");
 			$submenu->addIcon('edit_note');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -216,7 +215,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), "note.php?action=addfav&amp;nid={$this->nid}&amp;gid={$this->nid}");
+		$submenu = new WT_Menu(i18n::translate('Add to My Favorites'), "note.php?action=addfav&amp;nid={$this->nid}&amp;gid={$this->nid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

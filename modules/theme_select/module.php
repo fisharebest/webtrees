@@ -47,9 +47,9 @@ class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
 		$title=i18n::translate('Change theme').help_link('change_theme');
-		$menu=MenuBar::getThemeMenu();
+		$menu=WT_MenuBar::getThemeMenu();
 		if ($menu) {
-			$content='<br /><div class="center theme_form">'.MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';
+			$content='<br /><div class="center theme_form">'.WT_MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';
 
 			if ($template) {
 				require WT_THEME_DIR.'templates/block_main_temp.php';

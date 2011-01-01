@@ -39,9 +39,9 @@ function color_theme_dropdown($style=0) {
 	if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
 		switch ($style) {
 		case 0:
-			return '<div class="color_form">'.MenuBar::getColorMenu($COLOR_THEME_LIST)->getMenuAsDropdown().'</div>';
+			return '<div class="color_form">'.WT_MenuBar::getColorMenu($COLOR_THEME_LIST)->getMenuAsDropdown().'</div>';
 		case 1:
-			return '<div class="color_form">'.MenuBar::getColorMenu($COLOR_THEME_LIST)->getMenu().'</div>';
+			return '<div class="color_form">'.WT_MenuBar::getColorMenu($COLOR_THEME_LIST)->getMenu().'</div>';
 		}
 	}
 	return '&nbsp;';

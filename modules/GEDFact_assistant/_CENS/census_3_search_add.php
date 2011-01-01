@@ -164,10 +164,10 @@ if (!defined('WT_WEBTREES')) {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 								}									
 							}
-							$menu = new Menu($people["husb"]->getLabel());
+							$menu = new WT_Menu($people["husb"]->getLabel());
 							$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censdate);
 							$slabel .= $parentlinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
 
 							?>
@@ -299,10 +299,10 @@ if (!defined('WT_WEBTREES')) {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
 								}									
 							}
-							$menu = new Menu($people["wife"]->getLabel());
+							$menu = new WT_Menu($people["wife"]->getLabel());
 							$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
 							$slabel .= $parentlinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
 							?>
 							<tr>
@@ -439,10 +439,10 @@ if (!defined('WT_WEBTREES')) {
 									}									
 								}
 
-								$menu = new Menu($child->getLabel());
+								$menu = new WT_Menu($child->getLabel());
 								$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
 								$slabel .= $spouselinks;
-								$submenu = new Menu($slabel);
+								$submenu = new WT_Menu($slabel);
 								$menu->addSubMenu($submenu);
 
 								if ($child->getXref()==$pid) {
@@ -611,7 +611,7 @@ if (!defined('WT_WEBTREES')) {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 								}									
 							}
-							$menu = new Menu();
+							$menu = new WT_Menu();
 							if ($people["husb"]->getLabel() == ".") {
 								$menu->addLabel(i18n::translate('Step-Father'));
 							} else {
@@ -619,7 +619,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censyear);
 							$slabel .= $parentlinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
 							if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
 							if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
@@ -758,7 +758,7 @@ if (!defined('WT_WEBTREES')) {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
 								}									
 							}
-							$menu = new Menu();
+							$menu = new WT_Menu();
 							if ($people["wife"]->getLabel() == ".") {
 								$menu->addLabel(i18n::translate('Step-Mother'));
 							} else {
@@ -766,7 +766,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
 							$slabel .= $parentlinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
 							if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
 							if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
@@ -900,10 +900,10 @@ if (!defined('WT_WEBTREES')) {
 										$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];									
 									}									
 								}
-								$menu = new Menu($child->getLabel());
+								$menu = new WT_Menu($child->getLabel());
 								$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
 								$slabel .= $spouselinks;
-								$submenu = new Menu($slabel);
+								$submenu = new WT_Menu($slabel);
 								$menu->addSubMenu($submenu);
 								if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($child->getDeathYear()); }
 								if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($child->getBirthYear()); }
@@ -1054,10 +1054,10 @@ if (!defined('WT_WEBTREES')) {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 								}									
 							}
-							$menu = new Menu($people["husb"]->getLabel());
+							$menu = new WT_Menu($people["husb"]->getLabel());
 							$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $people["husb"]->getLabel(), $censyear);
 							$slabel .= $parentlinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
 							if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
 							if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
@@ -1201,10 +1201,10 @@ if (!defined('WT_WEBTREES')) {
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$husbnam;
 								}									
 							}
-							$menu = new Menu($people["wife"]->getLabel());
+							$menu = new WT_Menu($people["wife"]->getLabel());
 							$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $people["wife"]->getLabel(), $censyear);
 							$slabel .= $parentlinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
 							if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
 							if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
@@ -1349,10 +1349,10 @@ if (!defined('WT_WEBTREES')) {
 									$chfulmn = rtrim($chnam[$i]['givn'],'*')."&nbsp;".$chnam[$i]['surname'];									
 								}									
 							}
-							$menu = new Menu($child->getLabel());
+							$menu = new WT_Menu($child->getLabel());
 							$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
 							$slabel .= $spouselinks;
-							$submenu = new Menu($slabel);
+							$submenu = new WT_Menu($slabel);
 							$menu->addSubmenu($submenu);
 							?>
 							<tr>

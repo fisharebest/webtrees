@@ -64,7 +64,7 @@ class ahnentafel_report_WT_Module extends WT_Module implements WT_Module_Report 
 		}
 
 		$menus=array();
-		$menu=new Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
+		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
 		$menu->addIcon('ancestry');
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menus[]=$menu;

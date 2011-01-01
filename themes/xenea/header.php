@@ -121,7 +121,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				<td width="10" height="40"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="18" alt="" /></td>
 				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" >
 					<?php
-					$menu=MenuBar::getThemeMenu();
+					$menu=WT_MenuBar::getThemeMenu();
 					if ($menu) {
 						echo $menu->getMenu();
 					}
@@ -143,7 +143,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				</div></td>
 				<td width="120" align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" >
 					<div class="makeMenu"><?php
-						$language_menu=MenuBar::getLanguageMenu();
+						$language_menu=WT_MenuBar::getLanguageMenu();
 						if ($language_menu) {
 							echo $language_menu->getMenuAsList();
 						}
@@ -164,41 +164,41 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 			&nbsp;
 		</td>
 		<?php
-		$menu=MenuBar::getGedcomMenu();
+		$menu=WT_MenuBar::getGedcomMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getMyPageMenu();
+		$menu=WT_MenuBar::getMyPageMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getChartsMenu();
+		$menu=WT_MenuBar::getChartsMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getListsMenu();
+		$menu=WT_MenuBar::getListsMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getCalendarMenu();
+		$menu=WT_MenuBar::getCalendarMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getReportsMenu();
+		$menu=WT_MenuBar::getReportsMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getSearchMenu();
+		$menu=WT_MenuBar::getSearchMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menus=MenuBar::getModuleMenus();
+		$menus=WT_MenuBar::getModuleMenus();
 		foreach ($menus as $menu) {
 			if ($menu) {
 				echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 			}
 		}
-		$menu=MenuBar::getHelpMenu();
+		$menu=WT_MenuBar::getHelpMenu();
 		if ($menu) {
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}

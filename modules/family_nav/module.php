@@ -142,7 +142,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			</tr>
 			<?php
 			if (isset($people["husb"])) {
-				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel());
+				$menu = new WT_Menu("&nbsp;" . $people["husb"]->getLabel());
 				// $menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -151,7 +151,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
-				$submenu = new Menu($slabel);
+				$submenu = new WT_Menu($slabel);
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
@@ -172,7 +172,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 
 			if (isset($people["wife"])) {
-				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel());
+				$menu = new WT_Menu("&nbsp;" . $people["wife"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -181,7 +181,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
-				$submenu = new Menu($slabel);
+				$submenu = new WT_Menu($slabel);
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
@@ -205,7 +205,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$elderdate = $family->getMarriageDate();
 				foreach ($people["children"] as $key=>$child) {
 					if ($pid != $child->getXref()) {
-						$menu = new Menu("&nbsp;" . $child->getLabel());
+						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
 						//$menu->addClass("", "", "submenu");
 						if ($TEXT_DIRECTION=="ltr") {
 							$menu->addClass("", "", "submenu flyout2");
@@ -214,7 +214,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						}
 						$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 						$slabel .= $spouselinks."<a>";
-						$submenu = new Menu($slabel);
+						$submenu = new WT_Menu($slabel);
 						$menu->addSubMenu($submenu);
 					}
 					?>
@@ -273,7 +273,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 			//if (isset($people["husb"]) && $people["husb"]->getLabel() == ".") {
 			if (isset($people["husb"]) ) {
-				$menu = new Menu();
+				$menu = new WT_Menu();
 				if ($people["husb"]->getLabel() == ".") {
 					$menu->addLabel(i18n::translate('Step-Father'));
 				} else {
@@ -287,7 +287,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
-				$submenu = new Menu($slabel);
+				$submenu = new WT_Menu($slabel);
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
@@ -311,7 +311,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$styleadd = "";
 			//if (isset($people["wife"]) && $people["wife"]->getLabel() == ".") {
 			if (isset($people["wife"]) ) {
-				$menu = new Menu();
+				$menu = new WT_Menu();
 				if ($people["wife"]->getLabel() == ".") {
 					$menu->addLabel(i18n::translate('Step-Mother'));
 				} else {
@@ -325,7 +325,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
-				$submenu = new Menu($slabel);
+				$submenu = new WT_Menu($slabel);
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
@@ -348,7 +348,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (isset($people["children"])) {
 				$elderdate = $family->getMarriageDate();
 				foreach ($people["children"] as $key=>$child) {
-					$menu = new Menu($child->getLabel());
+					$menu = new WT_Menu($child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
@@ -357,7 +357,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}
 					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= $spouselinks."<a>";
-					$submenu = new Menu($slabel);
+					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
 					?>
 					<tr>
@@ -404,7 +404,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 			$styleadd = "";
 			if (isset($people["husb"]) && $spousetag == 'HUSB') {
-				$menu = new Menu("&nbsp;" . $people["husb"]->getLabel());
+				$menu = new WT_Menu("&nbsp;" . $people["husb"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -413,7 +413,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
-				$submenu = new Menu($slabel);
+				$submenu = new WT_Menu($slabel);
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
@@ -440,7 +440,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 
 			if (isset($people["wife"]) && $spousetag == 'WIFE') {
-				$menu = new Menu("&nbsp;" . $people["wife"]->getLabel());
+				$menu = new WT_Menu("&nbsp;" . $people["wife"]->getLabel());
 				//$menu->addClass("", "", "submenu");
 				if ($TEXT_DIRECTION=="ltr") {
 					$menu->addClass("", "", "submenu flyout2");
@@ -449,7 +449,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
 				$slabel .= $parentlinks."<a>";
-				$submenu = new Menu($slabel);
+				$submenu = new WT_Menu($slabel);
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
@@ -478,7 +478,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$styleadd = "";
 			if (isset($people["children"])) {
 				foreach ($people["children"] as $key=>$child) {
-					$menu = new Menu("&nbsp;" . $child->getLabel());
+					$menu = new WT_Menu("&nbsp;" . $child->getLabel());
 					//$menu->addClass("", "", "submenu");
 					if ($TEXT_DIRECTION=="ltr") {
 						$menu->addClass("", "", "submenu flyout2");
@@ -487,7 +487,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}
 					$slabel = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
 					$slabel .= $spouselinks."<a>";
-					$submenu = new Menu($slabel);
+					$submenu = new WT_Menu($slabel);
 					$menu->addSubmenu($submenu);
 					?>
 					<tr>

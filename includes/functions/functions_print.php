@@ -39,7 +39,6 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FUNCTIONS_PRINT_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/classes/class_menubar.php';
 
 /**
 * print the information for an individual chart box
@@ -733,22 +732,22 @@ function print_favorite_selector($option=0) {
 	echo "<div class=\"favorites_form\">";
 	switch($option) {
 	case 1:
-		$menu = new Menu(i18n::translate('Favorites'), "#", "right", "down");
+		$menu = new WT_Menu(i18n::translate('Favorites'), "#", "right", "down");
 		$menu->addClass("favmenuitem", "favmenuitem_hover", "favsubmenu");
 		if (count($userfavs)>0 || $gid!='') {
-			$submenu = new Menu("<strong>".i18n::translate('My Favorites')."</strong>", "#", "right");
+			$submenu = new WT_Menu("<strong>".i18n::translate('My Favorites')."</strong>", "#", "right");
 			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 			$menu->addSubMenu($submenu);
 
 			if ($gid!='') {
-				$submenu = new Menu('<em>'.i18n::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)), "right");
+				$submenu = new WT_Menu('<em>'.i18n::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)), "right");
 				$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 				$menu->addSubMenu($submenu);
 			}
 
 			foreach ($userfavs as $key=>$favorite) {
 				$GEDCOM = $favorite["file"];
-				$submenu = new Menu();
+				$submenu = new WT_Menu();
 				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
 					$submenu->addLink($favorite["url"]);
 					$submenu->addLabel(PrintReady($favorite["title"]), "right");
@@ -770,12 +769,12 @@ function print_favorite_selector($option=0) {
 			}
 		}
 		if (count($gedcomfavs)>0) {
-			$submenu = new Menu("<strong>".i18n::translate('This GEDCOM\'s Favorites')."</strong>", "#", "right");
+			$submenu = new WT_Menu("<strong>".i18n::translate('This GEDCOM\'s Favorites')."</strong>", "#", "right");
 			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 			$menu->addSubMenu($submenu);
 			foreach ($gedcomfavs as $key=>$favorite) {
 				$GEDCOM = $favorite["file"];
-				$submenu = new Menu();
+				$submenu = new WT_Menu();
 				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
 					$submenu->addLink($favorite["url"]);
 					$submenu->addLabel(PrintReady($favorite["title"]), "right");

@@ -107,11 +107,11 @@ if (!defined('WT_WEBTREES')) {
 			<?php if (empty($SEARCH_SPIDER)) { ?>
 			<td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>" valign="middle" >
 			<?php
-				$menu=MenuBar::getThemeMenu();
+				$menu=WT_MenuBar::getThemeMenu();
 				if ($menu) {
 					echo $menu->getMenuAsDropdown();
 				}
-				$menu=MenuBar::getLanguageMenu();
+				$menu=WT_MenuBar::getLanguageMenu();
 				if ($menu) {
 					echo $menu->getMenuAsDropdown();
 				}
@@ -136,49 +136,49 @@ if (!defined('WT_WEBTREES')) {
 <table width="100%" border="1" cellspacing="0">
 	<tr>
 		<?php
-		$menu=MenuBar::getGedcomMenu();
+		$menu=WT_MenuBar::getGedcomMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getMyPageMenu();
+		$menu=WT_MenuBar::getMyPageMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getChartsMenu();
+		$menu=WT_MenuBar::getChartsMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getListsMenu();
+		$menu=WT_MenuBar::getListsMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getCalendarMenu();
+		$menu=WT_MenuBar::getCalendarMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getReportsMenu();
+		$menu=WT_MenuBar::getReportsMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menu=MenuBar::getSearchMenu();
+		$menu=WT_MenuBar::getSearchMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 		}
-		$menus=MenuBar::getModuleMenus();
+		$menus=WT_MenuBar::getModuleMenus();
 		foreach ($menus as $menu) {
 			if ($menu) {
 				$menu->addIcon(null);
 				echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
 			}
 		}
-		$menu=MenuBar::getHelpMenu();
+		$menu=WT_MenuBar::getHelpMenu();
 		if ($menu) {
 			$menu->addIcon(null);
 			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';

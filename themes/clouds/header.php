@@ -141,49 +141,49 @@ echo '<table id="toplinks">',
 		'<td class="toplinks_left">',
 		'<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
 			'<tr>';
-	$menu=MenuBar::getGedcomMenu();
+	$menu=WT_MenuBar::getGedcomMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getMyPageMenu();
+	$menu=WT_MenuBar::getMyPageMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getChartsMenu();
+	$menu=WT_MenuBar::getChartsMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getListsMenu();
+	$menu=WT_MenuBar::getListsMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getCalendarMenu();
+	$menu=WT_MenuBar::getCalendarMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getReportsMenu();
+	$menu=WT_MenuBar::getReportsMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getSearchMenu();
+	$menu=WT_MenuBar::getSearchMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menus=MenuBar::getModuleMenus();
+	$menus=WT_MenuBar::getModuleMenus();
 		foreach ($menus as $menu) {
 			if ($menu) {
 				$menu->addLabel('', 'none');
 				echo '<td>', $menu->getMenu(), '</td>';
 			}
 		}
-	$menu=MenuBar::getHelpMenu();
+	$menu=WT_MenuBar::getHelpMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
@@ -193,14 +193,14 @@ echo '<table id="toplinks">',
 	if (empty($SEARCH_SPIDER)) {
 		echo '<td class="toplinks_right">';
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
-		echo MenuBar::getFavoritesMenu()->getMenuAsList();
+		echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
 		global $ALLOW_THEME_DROPDOWN;
-		$language_menu=MenuBar::getLanguageMenu();
+		$language_menu=WT_MenuBar::getLanguageMenu();
 		if ($language_menu) {
 			echo ' | ', $language_menu->getMenuAsList();
 		}
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+			echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
 		}
 		echo '</ul></div></td>';
 	}

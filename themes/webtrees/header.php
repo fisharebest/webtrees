@@ -108,12 +108,12 @@ if ($view!='simple') {
 					'<div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">',
 						'<ul class="makeMenu" align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" >';
 								if (!$SEARCH_SPIDER) {
-									echo MenuBar::getFavoritesMenu()->getMenuAsList();
+									echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
 									global $ALLOW_THEME_DROPDOWN;
 									if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-										echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+										echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
 									}
-									$language_menu=MenuBar::getLanguageMenu();
+									$language_menu=WT_MenuBar::getLanguageMenu();
 									if ($language_menu) {
 										echo ' | ', $language_menu->getMenuAsList();
 									}
@@ -149,41 +149,41 @@ if ($view!='simple') {
 		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
 		'<table id="topMenu" width="100%">',
 			'<tr>';
-				$menu=MenuBar::getGedcomMenu();
+				$menu=WT_MenuBar::getGedcomMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menu=MenuBar::getMyPageMenu();
+				$menu=WT_MenuBar::getMyPageMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menu=MenuBar::getChartsMenu();
+				$menu=WT_MenuBar::getChartsMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menu=MenuBar::getListsMenu();
+				$menu=WT_MenuBar::getListsMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menu=MenuBar::getCalendarMenu();
+				$menu=WT_MenuBar::getCalendarMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menu=MenuBar::getReportsMenu();
+				$menu=WT_MenuBar::getReportsMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menu=MenuBar::getSearchMenu();
+				$menu=WT_MenuBar::getSearchMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}
-				$menus=MenuBar::getModuleMenus();
+				$menus=WT_MenuBar::getModuleMenus();
 				foreach ($menus as $m=>$menu) {
 					if ($menu) {
 						echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 					}
 				}
-				$menu=MenuBar::getHelpMenu();
+				$menu=WT_MenuBar::getHelpMenu();
 				if ($menu) {
 					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
 				}

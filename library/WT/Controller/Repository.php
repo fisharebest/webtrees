@@ -29,7 +29,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/classes/class_menu.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 class WT_Controller_Repository extends WT_Controller_Base {
@@ -147,7 +146,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			$ff="";
 		}
 		// edit menu
-		$menu = new Menu(i18n::translate('Edit'));
+		$menu = new WT_Menu(i18n::translate('Edit'));
 		$menu->addIcon('edit_repo');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
@@ -158,21 +157,21 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// show/hide changes
 		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "repo.php?rid={$this->rid}&amp;show_changes=yes");
+				$submenu = new WT_Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "repo.php?rid={$this->rid}&amp;show_changes=yes");
 				$submenu->addIcon('edit_repo');
 			} else {
-				$submenu = new Menu(i18n::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
+				$submenu = new WT_Menu(i18n::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
 				$submenu->addIcon('edit_repo');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
+				$submenu = new WT_Menu(i18n::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_repo');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Approve all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
+				$submenu = new WT_Menu(i18n::translate('Approve all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
 				$submenu->addIcon('edit_repo');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -183,13 +182,13 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
+			$submenu = new WT_Menu(i18n::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->rid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new Menu(i18n::translate('View GEDCOM Record'));
+			$submenu = new WT_Menu(i18n::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -202,7 +201,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new Menu(i18n::translate('Delete repository'));
+			$submenu = new WT_Menu(i18n::translate('Delete repository'));
 			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
 			$submenu->addIcon('edit_repo');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -210,7 +209,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
+		$submenu = new WT_Menu(i18n::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

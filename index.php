@@ -50,6 +50,7 @@ if ($ctype=='user') {
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
 
+require_once WT_ROOT.'includes/classes/class_module.php';
 $all_blocks=WT_Module::getActiveBlocks();
 
 // We generate individual blocks using AJAX

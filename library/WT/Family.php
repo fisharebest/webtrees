@@ -304,7 +304,7 @@ class WT_Family extends WT_GedcomRecord {
 	function getMarriageYear($est = true, $cal = '') {
 		// TODO - change the design to use julian days, not gregorian years.
 		$mdate = $this->getMarriageDate();
-		$mdate = $mdate->WT_Date();
+		$mdate = $mdate->MinDate();
 		if ($cal) $mdate = $mdate->convert_to_cal($cal);
 		return $mdate->y;
 	}

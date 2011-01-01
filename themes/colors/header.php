@@ -126,14 +126,14 @@ if ($view!='simple') {
 		} else {
 			echo '<li>', login_link('class="icon_color"'), '</li>';
 		}
-		echo '<span class="link"> | ', MenuBar::getFavoritesMenu()->getMenuAsList();
-		$language_menu=MenuBar::getLanguageMenu();
+		echo '<span class="link"> | ', WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+		$language_menu=WT_MenuBar::getLanguageMenu();
 		if ($language_menu) {
 			echo ' | ', $language_menu->getMenuAsList();
 		}
 		global $ALLOW_THEME_DROPDOWN;
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-			echo ' | ', MenuBar::getThemeMenu()->getMenuAsList();
+			echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
 		}
 		echo
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
@@ -154,49 +154,49 @@ if ($view!='simple') {
 		'<table id="toplinks"><tr><td class="toplinks_left">',
 		'<table align="', $TEXT_DIRECTION=="ltr"?"left":"right", '">',
 		'<tr>';
-	$menu=MenuBar::getGedcomMenu();
+	$menu=WT_MenuBar::getGedcomMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getMyPageMenu();
+	$menu=WT_MenuBar::getMyPageMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getChartsMenu();
+	$menu=WT_MenuBar::getChartsMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getListsMenu();
+	$menu=WT_MenuBar::getListsMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getCalendarMenu();
+	$menu=WT_MenuBar::getCalendarMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getReportsMenu();
+	$menu=WT_MenuBar::getReportsMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menu=MenuBar::getSearchMenu();
+	$menu=WT_MenuBar::getSearchMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
 	}
-	$menus=MenuBar::getModuleMenus();
+	$menus=WT_MenuBar::getModuleMenus();
 	foreach ($menus as $m=>$menu) {
 		if ($menu) {
 			$menu->addLabel('', 'none');
 			echo '<td>', $menu->getMenu(), '</td>';
 		}
 	}
-	$menu=MenuBar::getHelpMenu();
+	$menu=WT_MenuBar::getHelpMenu();
 	if ($menu) {
 		$menu->addLabel('', 'none');
 		echo '<td>', $menu->getMenu(), '</td>';
