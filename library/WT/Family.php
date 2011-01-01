@@ -249,14 +249,14 @@ class WT_Family extends WT_GedcomRecord {
 	 * parse marriage record
 	 */
 	function _parseMarriageRecord() {
-		$this->marriage = new Event(trim(get_sub_record(1, '1 MARR', $this->gedrec)), -1);
+		$this->marriage = new WT_Event(trim(get_sub_record(1, '1 MARR', $this->gedrec)), -1);
 		$this->marriage->setParentObject($this);
 	}
 
 	/**
 	 * get the marriage event
 	 *
-	 * @return Event
+	 * @return WT_Event
 	 */
 	function getMarriage() {
 		if (is_null($this->marriage)) $this->_parseMarriageRecord();

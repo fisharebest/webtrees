@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/classes/class_event.php';
-
 class WT_GedcomRecord {
 	protected $xref       =null;  // The record identifier
 	protected $type       =null;  // INDI, FAM, etc.
@@ -640,10 +638,10 @@ class WT_GedcomRecord {
 	}
 
 	/**
-	* Get the first Event for the given Fact type
+	* Get the first WT_Event for the given Fact type
 	*
 	* @param string $fact
-	* @return Event
+	* @return WT_Event
 	*/
 	public function getFactByType($factType) {
 		$this->parseFacts();
@@ -662,7 +660,7 @@ class WT_GedcomRecord {
 	* Return an array of events that match the given types
 	*
 	* @param mixed $factTypes  may be a single string or an array of strings
-	* @return Event
+	* @return WT_Event
 	*/
 	public function getAllFactsByType($factTypes) {
 		$this->parseFacts();
@@ -692,7 +690,7 @@ class WT_GedcomRecord {
 	/**
 	* Get the CHAN event for this record
 	*
-	* @return Event
+	* @return WT_Event
 	*/
 	public function getChangeEvent() {
 		if (is_null($this->changeEvent)) {
@@ -733,7 +731,7 @@ class WT_GedcomRecord {
 			}
 			if ($i==$lct||$line{0}==1) {
 				if ($i>1) {
-					$event = new Event($factrec, $linenum);
+					$event = new WT_Event($factrec, $linenum);
 					$fact = $event->getTag();
 					if ($nfacts==NULL || !in_array($fact, $nfacts)) {
 						$event->setParentObject($this);

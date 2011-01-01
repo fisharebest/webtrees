@@ -41,7 +41,7 @@ $pid = safe_get('pid');
 // echo $pid;
 
 $year = "1901";
-$censevent  = new Event("1 CENS\n2 DATE 03 MAR".$year."");
+$censevent  = new WT_Event("1 CENS\n2 DATE 03 MAR".$year."");
 $censdate   = $censevent->getDate();
 $censyear   = $censdate->date1->y;
 $ctry       = "UK";

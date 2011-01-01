@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/classes/class_event.php';
-
 class WT_Person extends WT_GedcomRecord {
 	var $indifacts = array();
 	var $otherfacts = array();
@@ -874,7 +872,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		//-- add a new sex fact if one was not found
 		if (!$sexfound) {
-			$this->globalfacts[] = new Event('1 SEX U', 'new');
+			$this->globalfacts[] = new WT_Event('1 SEX U', 'new');
 		}
 	}
 	/**
@@ -900,7 +898,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 			$facts = $family->getFacts();
 			$hasdiv = false;
-			/* @var $event Event */
+			/* @var $event WT_Event */
 			foreach ($facts as $event) {
 				$fact = $event->getTag();
 				if ($fact=='DIV') $hasdiv = true;
@@ -1002,7 +1000,7 @@ class WT_Person extends WT_GedcomRecord {
 								} else {
 									$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".$rela."fat";
 								}
-								$event=new Event($factrec, 0);
+								$event=new WT_Event($factrec, 0);
 								$event->setParentObject($this);
 								$this->indifacts[] = $event;
 							}
@@ -1049,7 +1047,7 @@ class WT_Person extends WT_GedcomRecord {
 								if (!$sEvent->canShow()) {
 									$factrec .= "\n2 RESN privacy";
 								}
-								$event = new Event($factrec, 0);
+								$event = new WT_Event($factrec, 0);
 								$event->setParentObject($this);
 								$this->indifacts[] = $event;
 							}
@@ -1130,7 +1128,7 @@ class WT_Person extends WT_GedcomRecord {
 							$factrec.='\n2 RESN privacy';
 						}
 						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".$rela;
-						$event = new Event($factrec, 0);
+						$event = new WT_Event($factrec, 0);
 						$event->setParentObject($this);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
@@ -1157,7 +1155,7 @@ class WT_Person extends WT_GedcomRecord {
 							$factrec.='\n2 RESN privacy';
 						}
 						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".$rela;
-						$event = new Event($factrec, 0);
+						$event = new WT_Event($factrec, 0);
 						$event->setParentObject($this);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
@@ -1191,7 +1189,7 @@ class WT_Person extends WT_GedcomRecord {
 						}
 						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".$rela;
 						$factrec.="\n2 ASSO @".$sfamily->getSpouseId($child->getXref())."@\n3 RELA ".$rela2;
-						$event = new Event($factrec, 0);
+						$event = new WT_Event($factrec, 0);
 						$event->setParentObject($this);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
@@ -1235,7 +1233,7 @@ class WT_Person extends WT_GedcomRecord {
 					case 'F': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA wif"; break;
 					case 'U': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA spo"; break;
 					}
-					$event = new Event($srec, 0);
+					$event = new WT_Event($srec, 0);
 					$event->setParentObject($this);
 					$this->indifacts[] = $event;
 				}
@@ -1271,7 +1269,7 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($histo as $indexval=>$hrec) {
 				$sdate=new WT_Date(get_gedcom_value('DATE', 2, $hrec, '', false));
 				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
-					$event = new Event($hrec);
+					$event = new WT_Event($hrec);
 					$event->setParentObject($this);
 					$this->indifacts[] = $event;
 				}
@@ -1350,7 +1348,7 @@ class WT_Person extends WT_GedcomRecord {
 						}
 					}
 					if (!$found) {
-						$event = new Event($factrec);
+						$event = new WT_Event($factrec);
 						$event->setParentObject($this);
 						$this->indifacts[] = $event;
 					}

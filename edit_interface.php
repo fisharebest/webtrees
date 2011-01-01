@@ -365,7 +365,7 @@ case 'editraw':
 				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 			}
 			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-			$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+			$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 			echo format_fact_date($event, false, true);
 			echo "</td></tr>";
 			echo "</table>";
@@ -405,7 +405,7 @@ case 'edit':
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
 		echo "</td></tr>";
 	}
@@ -456,7 +456,7 @@ case 'add':
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
 		echo "</td></tr>";
 	}
@@ -528,7 +528,7 @@ case 'addfamlink':
 			echo '<input type="checkbox" name="preserve_last_changed" />';
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) record'), '<br />';
-		$event = new Event(get_sub_record(1, '1 CHAN', $gedrec));
+		$event = new WT_Event(get_sub_record(1, '1 CHAN', $gedrec));
 		echo format_fact_date($event, false, true);
 		echo '</td></tr>';
 	}
@@ -567,7 +567,7 @@ case 'linkspouse':
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
 		echo "</td></tr>";
 	}
@@ -708,7 +708,7 @@ case 'addnewsource':
 					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 				}
 				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-				$event = new Event(get_sub_record(1, "1 CHAN", ""));
+				$event = new WT_Event(get_sub_record(1, "1 CHAN", ""));
 				echo format_fact_date($event, false, true);
 				echo "</td></tr>";
 			}
@@ -822,7 +822,7 @@ case 'addnewnote':
 					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 				}
 				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-				$event = new Event(get_sub_record(1, "1 CHAN", ""));
+				$event = new WT_Event(get_sub_record(1, "1 CHAN", ""));
 				echo format_fact_date($event, false, true);
 				echo "</td></tr>";
 			}
@@ -990,7 +990,7 @@ case 'editsource':
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-		$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 		echo format_fact_date($event, false, true);
 		echo "</td></tr>";
 	}
@@ -1044,7 +1044,7 @@ case 'editnote':
 						echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 					}
 					echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-					$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+					$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 					echo format_fact_date($event, false, true);
 					echo "</td></tr>";
 				}
@@ -1108,7 +1108,7 @@ case 'addnewrepository':
 					echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 				}
 				echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-				$event = new Event(get_sub_record(1, "1 CHAN", ""));
+				$event = new WT_Event(get_sub_record(1, "1 CHAN", ""));
 				echo format_fact_date($event, false, true);
 				echo "</td></tr>";
 			}
@@ -2012,7 +2012,7 @@ case 'reorder_children':
 				echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 			}
 			echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
-			$event = new Event(get_sub_record(1, "1 CHAN", $gedrec));
+			$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
 			echo format_fact_date($event, false, true);
 			echo "</td></tr></table></center><br />";
 		}

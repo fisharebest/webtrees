@@ -1238,8 +1238,8 @@ function sort_facts(&$arr) {
 	}
 
 	//-- sort each type of array
-	usort($dated, array("Event", "CompareDate"));
-	usort($nondated, array("Event", "CompareType"));
+	usort($dated, array("WT_Event", "CompareDate"));
+	usort($nondated, array("WT_Event", "CompareType"));
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);
@@ -1250,7 +1250,7 @@ function sort_facts(&$arr) {
 	// while there is anything in the dated array continue merging
 	while ($i<$dc) {
 		// compare each fact by type to merge them in order
-		if ($j<$nc && Event::CompareType($dated[$i], $nondated[$j])>0) {
+		if ($j<$nc && WT_Event::CompareType($dated[$i], $nondated[$j])>0) {
 			$arr[$k] = $nondated[$j];
 			$j++;
 		}

@@ -327,19 +327,19 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		$facts = $this->mediaobject->getFacts($ignore);
 		sort_facts($facts);
-		//if ($includeFileName) $facts[] = new Event("1 FILE ".$this->mediaobject->getFilename());
+		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename());
 		$mediaType = $this->mediaobject->getMediatype();
-		if (array_key_exists($mediaType, $MEDIA_TYPES)) $facts[] = new Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
-		else $facts[] = new Event("1 TYPE ".i18n::translate('Other'));
+		if (array_key_exists($mediaType, $MEDIA_TYPES)) $facts[] = new WT_Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
+		else $facts[] = new WT_Event("1 TYPE ".i18n::translate('Other'));
 
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
-			if ($includeFileName) $newfacts[] = new Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
-			$newfacts[] = new Event("1 FORM ".$newmedia->getFiletype());
+			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
+			$newfacts[] = new WT_Event("1 FORM ".$newmedia->getFiletype());
 			$mediaType = $newmedia->getMediatype();
-			if (array_key_exists($mediaType, $MEDIA_TYPES)) $newfacts[] = new Event("1 TYPE ".$mediaType);
-			else $newfacts[] = new Event("1 TYPE ".i18n::translate('Other'));
+			if (array_key_exists($mediaType, $MEDIA_TYPES)) $newfacts[] = new WT_Event("1 TYPE ".$mediaType);
+			else $newfacts[] = new WT_Event("1 TYPE ".i18n::translate('Other'));
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
 			for ($i=0; $i<count($facts); $i++) {
@@ -372,11 +372,11 @@ class WT_Controller_Media extends WT_Controller_Base {
 		if ($this->mediaobject->fileExists()) {
 			// get height and width of image, when available
 			if ($this->mediaobject->getWidth()) {
-				$facts[] = new Event("1 EVEN " . '<span dir="ltr">' . $this->mediaobject->getWidth()." x ".$this->mediaobject->getHeight() . '</span>' . "\n2 TYPE image_size");
+				$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $this->mediaobject->getWidth()." x ".$this->mediaobject->getHeight() . '</span>' . "\n2 TYPE image_size");
 			}
 			//Prints the file size
 			//Rounds the size of the image to 2 decimal places
-			$facts[] = new Event("1 EVEN " . '<span dir="ltr">' . round($this->mediaobject->getFilesizeraw()/1024, 2)." kb" . '</span>' . "\n2 TYPE file_size");
+			$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . round($this->mediaobject->getFilesizeraw()/1024, 2)." kb" . '</span>' . "\n2 TYPE file_size");
 		}
 
 		sort_facts($facts);

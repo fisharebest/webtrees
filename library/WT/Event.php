@@ -1,45 +1,34 @@
 <?php
-/**
- * Class that defines an event details object
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2008  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @author Joel A. Bruce
- * @version $Id$
- *
- */
+// Class that defines an event details object
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2008  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-define('WT_CLASS_EVENT_PHP', '');
-
-/**
- * Event
- *
- */
-class Event {
+class WT_Event {
 // These objects need further refinement in their implementations and parsing
 // var $address = null;
 // var $notes = array(); //[0..*]: string
@@ -96,7 +85,7 @@ class Event {
 	 *
 	 * @param string $subrecord
 	 * @param int $lineNumber
-	 * @return Event
+	 * @return WT_Event
 	 */
 	function __construct($subrecord, $lineNumber=-1) {
 		if (preg_match('/^1 ('.WT_REGEX_TAG.') *(.*)/', $subrecord, $match)) {
@@ -224,7 +213,7 @@ class Event {
 	}
 
 	/**
-	 * The Person/Family record where this Event came from
+	 * The Person/Family record where this WT_Event came from
 	 *
 	 * @return GedcomRecord
 	 */
@@ -349,8 +338,8 @@ class Event {
 	/**
 	 * Static Helper functions to sort events
 	 *
-	 * @param Event $a
-	 * @param Event $b
+	 * @param WT_Event $a
+	 * @param WT_Event $b
 	 * @return int
 	 */
 	static function CompareDate(&$a, &$b) {
@@ -368,7 +357,7 @@ class Event {
 			$ret = $a->sortOrder - $b->sortOrder;
 			//-- if dates are the same they should be ordered by their fact type
 			if ($ret==0) {
-				$ret = Event::CompareType($a, $b);
+				$ret = WT_Event::CompareType($a, $b);
 			}
 		}
 		return $ret;
@@ -377,8 +366,8 @@ class Event {
 	/**
 	 * Static method to Compare two events by their type
 	 *
-	 * @param Event $a
-	 * @param Event $b
+	 * @param WT_Event $a
+	 * @param WT_Event $b
 	 * @return int
 	 */
 	static function CompareType(&$a, &$b) {

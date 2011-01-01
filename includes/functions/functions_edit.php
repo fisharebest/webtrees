@@ -864,7 +864,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		}
 		echo i18n::translate('Do not update the CHAN (Last Change) record'), "<br />";
 		if (isset($famrec)) {
-			$event = new Event(get_sub_record(1, "1 CHAN", $famrec));
+			$event = new WT_Event(get_sub_record(1, "1 CHAN", $famrec));
 			echo format_fact_date($event, false, true);
 		}
 		echo "</td></tr>";
