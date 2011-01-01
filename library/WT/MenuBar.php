@@ -104,43 +104,6 @@ class WT_MenuBar {
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_indis");
 			$menu->addSubmenu($submenu);
 		}
-		if (WT_USER_GEDCOM_ADMIN) {
-			$menu->addSeparator();
-			//-- admin submenu
-			$submenu = new WT_Menu(i18n::translate('Administration'), "admin.php");
-			$submenu->addIcon('admin');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
-			$menu->addSubmenu($submenu);
-			//-- manage_gedcoms submenu
-			$submenu = new WT_Menu(i18n::translate('GEDCOM administration'), "editgedcoms.php");
-			$submenu->addIcon('admin');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
-			$menu->addSubmenu($submenu);
-			//-- user_admin submenu
-			if (WT_USER_IS_ADMIN) {
-				$submenu = new WT_Menu(i18n::translate('User administration'), "useradmin.php");
-				$submenu->addIcon('admin');
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
-				$menu->addSubmenu($submenu);
-				//-- manage_media submenu
-				if (is_writable($MEDIA_DIRECTORY) && $MULTI_MEDIA) {
-					$submenu = new WT_Menu(i18n::translate('Manage multimedia'), "media.php?ged=".WT_GEDURL);
-					$submenu->addIcon('menu_media');
-					$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_media");
-					$menu->addSubmenu($submenu);
-				}
-			}
-		}
-		if (WT_USER_CAN_EDIT) {
-			//-- upload_media submenu
-			if (is_writable($MEDIA_DIRECTORY) && $MULTI_MEDIA) {
-				$menu->addSeparator();
-				$submenu = new WT_Menu(i18n::translate('Upload media files'), "uploadmedia.php?ged=".WT_GEDURL);
-				$submenu->addIcon('menu_media');
-				$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_menu_media");
-				$menu->addSubmenu($submenu);
-			}
-		}
 		return $menu;
 	}
 
