@@ -32,12 +32,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_PERSON_PHP', '');
+define('WT_WT_PERSON_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/classes/class_event.php';
 
-class Person extends GedcomRecord {
+class WT_Person extends WT_GedcomRecord {
 	var $indifacts = array();
 	var $otherfacts = array();
 	var $globalfacts = array();
@@ -575,7 +574,7 @@ class Person extends GedcomRecord {
 		if (is_null($this->spouseFamilies)) {
 			$this->spouseFamilies=array();
 			foreach ($this->getSpouseFamilyIds() as $famid) {
-				$family=Family::getInstance($famid);
+				$family=WT_Family::getInstance($famid);
 				if (is_null($family)) {
 					echo '<span class="warning">', i18n::translate('Unable to find family with ID'), ' ', $famid, '</span>';
 				} else {
@@ -633,7 +632,7 @@ class Person extends GedcomRecord {
 		if (is_null($this->childFamilies)) {
 			$this->childFamilies=array();
 			foreach ($this->getChildFamilyIds() as $famid) {
-				$family=Family::getInstance($famid);
+				$family=WT_Family::getInstance($famid);
 				if (is_null($family)) {
 					echo '<span class="warning">', i18n::translate('Unable to find family with ID'), ' ', $famid, '</span>';
 				} else {
@@ -832,7 +831,7 @@ class Person extends GedcomRecord {
 		if (WT_USER_CAN_EDIT && $this->canDisplayDetails()) {
 			$newrec = find_updated_record($this->xref, $this->ged_id);
 			if (!is_null($newrec)) {
-				$new = new Person($newrec);
+				$new = new WT_Person($newrec);
 				$new->setChanged(true);
 				return $new;
 			}

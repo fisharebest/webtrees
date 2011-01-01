@@ -140,7 +140,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["husb"])) {
 
 							//-- Parents Husbands Parents --------------------------------------
-							$gparent=Person::getInstance($people["husb"]->getXref());
+							$gparent=WT_Person::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -264,7 +264,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["wife"])) {
 
 							//-- Parents Wifes Parent Family ---------------------------
-							$gparent=Person::getInstance($people["wife"]->getXref());
+							$gparent=WT_Person::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -587,7 +587,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["husb"])) {
 
 							//-- Step Husbands Parent Family --------------------------------------
-							$gparent=Person::getInstance($people["husb"]->getXref());
+							$gparent=WT_Person::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -723,7 +723,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["wife"])) {
 
 							//-- Step Wifes Parent Family --------------------------------------
-							$gparent=Person::getInstance($people["wife"]->getXref());
+							$gparent=WT_Person::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -1030,7 +1030,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["husb"])) {
 
 							//-- Spouse Husbands Parents --------------------------------------
-							$gparent=Person::getInstance($people["husb"]->getXref());
+							$gparent=WT_Person::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -1165,7 +1165,7 @@ if (!defined('WT_WEBTREES')) {
 						if (isset($people["wife"])) {
 
 							//-- Spouse Wifes Parents --------------------------------------
-							$gparent=Person::getInstance($people["wife"]->getXref());
+							$gparent=WT_Person::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
 							foreach ($fams as $famid=>$family) {
 								if (!is_null($family)) {
@@ -1489,7 +1489,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
-	$person=Person::getInstance($pid);
+	$person=WT_Person::getInstance($pid);
 	if ($pid==false || empty($person)) {
 		$spouselinks  = false;
 		$parentlinks  = false;
@@ -1566,7 +1566,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							if ($husb) {
 								//-- Parent Husbands Parents ----------------------
-								$gparent=Person::getInstance($husb->getXref());
+								$gparent=WT_Person::getInstance($husb->getXref());
 								$parfams = $gparent->getChildFamilies();
 								foreach ($parfams as $famid=>$pfamily) {
 									if (!is_null($pfamily)) {
@@ -1658,7 +1658,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							if ($wife) {
 								//-- Parent Wifes Parents ----------------------
-								$gparent=Person::getInstance($wife->getXref());
+								$gparent=WT_Person::getInstance($wife->getXref());
 								$parfams = $gparent->getChildFamilies();
 								foreach ($parfams as $famid=>$pfamily) {
 									if (!is_null($pfamily)) {
@@ -1795,7 +1795,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								if ($husb) {
 									//-- Step Husbands Parents -----------------------------
-									$gparent=Person::getInstance($husb->getXref());
+									$gparent=WT_Person::getInstance($husb->getXref());
 									$parfams = $gparent->getChildFamilies();
 									foreach ($parfams as $famid=>$pfamily) {
 										if (!is_null($pfamily)) {
@@ -1890,7 +1890,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								if ($wife) {
 									//-- Step Wifes Parents ---------------------------
-									$gparent=Person::getInstance($wife->getXref());
+									$gparent=WT_Person::getInstance($wife->getXref());
 									$parfams = $gparent->getChildFamilies();
 									foreach ($parfams as $famid=>$pfamily) {
 										if (!is_null($pfamily)) {
@@ -2026,7 +2026,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							if ($spouse) {
 
 								//-- Spouse Parents -----------------------------
-								$gparent=Person::getInstance($spouse->getXref());
+								$gparent=WT_Person::getInstance($spouse->getXref());
 								$spousefams = $gparent->getChildFamilies();
 								foreach ($spousefams as $famid=>$pfamily) {
 									if (!is_null($pfamily)) {
@@ -2134,7 +2134,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$persons="Yes";
 
 								//-- Childs Parents ---------------------
-								$gparent=Person::getInstance($child->getXref());
+								$gparent=WT_Person::getInstance($child->getXref());
 								$fams = $gparent->getChildFamilies();
 								$chfams = $gparent->getSpouseFamilies();
 								foreach ($fams as $famid=>$family) {

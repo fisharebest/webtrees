@@ -370,8 +370,8 @@ class MenuBar {
 					foreach (array_unique($to) as $pid2) {
 						if ($pid1!=$pid2 || $pid1=='' || $pid2=='') {
 							if (isset($controller) && !empty($controller->indi)) {
-								$person=Person::getInstance($pid2);
-								if ($person instanceof Person) {
+								$person=WT_Person::getInstance($pid2);
+								if ($person instanceof WT_Person) {
 									$submenu = new Menu(
 										i18n::translate('Relationship chart').': '.PrintReady($person->getFullName()),
 										"relationship.php?pid1={$pid2}&amp;pid2={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
@@ -449,7 +449,7 @@ class MenuBar {
 				list($surname)=explode(',', $controller->indi->getSortName());
 			}
 			if (isset($controller->rootid)) {
-				$person = Person::getInstance($controller->rootid);
+				$person = WT_Person::getInstance($controller->rootid);
 				list($surname)=explode(',', $person->getSortName());
 			}
 		}
@@ -824,19 +824,19 @@ class MenuBar {
 				while (WT_USER_ID && isset($controller)) {
 					// Get the right $gid from each supported controller type
 					switch (get_class($controller)) {
-					case 'IndividualController':
+					case 'WT_Controller_Individual':
 						$gid = $controller->pid;
 						break;
-					case 'FamilyController':
+					case 'WT_Controller_Family':
 						$gid = $controller->famid;
 						break;
-					case 'MediaController':
+					case 'WT_Controller_Media':
 						$gid = $controller->mid;
 						break;
-					case 'SourceController':
+					case 'WT_Controller_Source':
 						$gid = $controller->sid;
 						break;
-					case 'RepositoryController':
+					case 'WT_Controller_Repository':
 						$gid = $controller->rid;
 						break;
 					default:
@@ -859,7 +859,7 @@ class MenuBar {
 					case 'FAM':
 					case 'SOUR':
 					case 'OBJE':
-						$obj=GedcomRecord::getInstance($fav['gid']);
+						$obj=WT_GedcomRecord::getInstance($fav['gid']);
 						if ($obj && $obj->canDisplayName()) {
 							$submenu=new Menu(PrintReady($obj->getFullName()), $obj->getHtmlUrl());
 							$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
@@ -891,7 +891,7 @@ class MenuBar {
 				case 'FAM':
 				case 'SOUR':
 				case 'OBJE':
-					$obj=GedcomRecord::getInstance($fav['gid']);
+					$obj=WT_GedcomRecord::getInstance($fav['gid']);
 					if ($obj && $obj->canDisplayName()) {
 						$submenu=new Menu(PrintReady($obj->getFullName()), $obj->getHtmlUrl());
 						$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');

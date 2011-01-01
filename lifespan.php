@@ -33,13 +33,12 @@
 
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/controllers/lifespan_ctrl.php';
 
 // GEDCOM elements that will be found but should not be displayed
 $nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "OBJE", "SEX", "NAME", "SOUR", "NOTE", "BAPL", "ENDL", "SLGC", "SLGS", "_TODO", "_WT_OBJE_SORT", "CHAN", "HUSB", "WIFE", "CHIL", "BIRT", "DEAT", "BURI");// DEATH OF SIBLING:  DEATH OF HALF SIBLING DEATH OF MOTHER DEATH OF FATHER DEATH OF CHILD
 $nonfamfacts = array("CHAN", "HUSB", "WIFE", "CHIL");
 
-$controller = new LifespanController();
+$controller = new WT_Controller_Lifespan();
 $controller->init();
 
 $zoomfactor = 10;

@@ -192,24 +192,24 @@ echo "<td class=\"descriptionbox vmiddle\">";
 echo i18n::translate('Gender'), help_link('annivers_sex'), '</td>';
 echo "<td class=\"optionbox vmiddle\">";
 if ($filtersx=="") {
-	echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('All People'));
-	echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('All People')), ' | ';
+	echo WT_Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('All People'));
+	echo WT_Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('All People')), ' | ';
 } else {
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=&amp;action={$action}\">";
-	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('All People'));
-	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('All People')), '</a> | ';
+	echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('All People'));
+	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('All People')), '</a> | ';
 }
 if ($filtersx=="M") {
-	echo Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('Males')), ' | ';
+	echo WT_Person::sexImage('M', 'large', 'vertical-align: middle', i18n::translate('Males')), ' | ';
 } else {
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=M&amp;action={$action}\">";
-	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), '</a> | ';
+	echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), '</a> | ';
 }
 if ($filtersx=="F")
-	echo Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('Females')), ' | ';
+	echo WT_Person::sexImage('F', 'large', 'vertical-align: middle', i18n::translate('Females')), ' | ';
 else {
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=F&amp;action={$action}\">";
-	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), '</a>';
+	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), '</a>';
 }
 echo "</td>";
 echo "<td class=\"descriptionbox vmiddle\">";
@@ -437,10 +437,10 @@ case 'today':
 	echo "<td class=\"descriptionbox\">", i18n::translate('Total individuals'), " ";
 	echo count($indis);
 	echo "<br />";
-	echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), "&nbsp;{$males}&nbsp;&nbsp;&nbsp;&nbsp;";
-	echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), "&nbsp;{$females}&nbsp;&nbsp;&nbsp;&nbsp;";
+	echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Males')), "&nbsp;{$males}&nbsp;&nbsp;&nbsp;&nbsp;";
+	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Females')), "&nbsp;{$females}&nbsp;&nbsp;&nbsp;&nbsp;";
 	if (count($indis)!=$males+$females)
-		echo Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate('All People')), '&nbsp;', count($indis)-$males-$females;
+		echo WT_Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate('All People')), '&nbsp;', count($indis)-$males-$females;
 	echo "</td>";
 	echo "<td class=\"descriptionbox\">", i18n::translate('Total families'), " ".count($fams)."</td>";
 	echo "</tr></table>";
@@ -520,7 +520,7 @@ function apply_filter($facts, $filterof, $filtersx) {
 	$filtered=array();
 	$hundred_years=WT_SERVER_JD-36525;
 	foreach ($facts as $fact) {
-		$tmp=GedcomRecord::GetInstance($fact['id']);
+		$tmp=WT_GedcomRecord::GetInstance($fact['id']);
 		// Filter on sex
 		if ($fact['objtype']=='INDI' && $filtersx!='' && $filtersx!=$tmp->getSex())
 			continue;
@@ -571,20 +571,20 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 	global $WT_IMAGES, $males, $females;
 
 	foreach ($list as $id=>$facts) {
-		$tmp=GedcomRecord::GetInstance($id);
+		$tmp=WT_GedcomRecord::GetInstance($id);
 		echo $tag1, '<a href="', $tmp->getHtmlUrl(), '">', PrintReady($tmp->getFullName()), '</a> ';
 		if ($show_sex_symbols && $tmp->getType()=='INDI')
 			switch ($tmp->getSex()) {
 			case 'M':
-				echo Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Male'));
+				echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', i18n::translate('Male'));
 				++$males;
 				break;
 			case 'F':
-				echo Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Female'));
+				echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', i18n::translate('Female'));
 				++$females;
 				break;
 			default:
-				echo Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate_c('unknown gender', 'Unknown'));
+				echo WT_Person::sexImage('U', 'small', 'vertical-align: middle', i18n::translate_c('unknown gender', 'Unknown'));
 				break;
 			}
 			echo '<div class="indent">', $facts, '</div>', $tag2;

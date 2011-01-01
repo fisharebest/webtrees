@@ -31,12 +31,10 @@ if (!defined('WT_WEBTREES')) {
 define('WT_MEDIA_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class MediaController extends BaseController{
+class WT_Controller_Media extends WT_Controller_Base {
 	var $mid;
 	var $mediaobject;
 	var $show_changes=true;
@@ -86,14 +84,14 @@ class MediaController extends BaseController{
 				$this->mid = false;
 				// create a very basic gedcom record for this file so that the functions of the media object will work
 				// this is used by the media firewall when requesting an object that exists in the media firewall directory but not in the gedcom
-				$this->mediaobject = new Media("0 @"."0"."@ OBJE\n1 FILE ".$filename);
+				$this->mediaobject = new WT_Media("0 @"."0"."@ OBJE\n1 FILE ".$filename);
 			}
 		}
 
 		//checks to see if the Media ID ($this->mid) is set. If the Media ID isn't set then there isn't any information avaliable for that picture the picture doesn't exist.
 		if ($this->mid) {
 			//This creates a Media Object from the getInstance method of the Media Class. It takes the Media ID ($this->mid) and creates the object.
-			$this->mediaobject = Media::getInstance($this->mid);
+			$this->mediaobject = WT_Media::getInstance($this->mid);
 			//This sets the controller ID to be the Media ID
 			$this->pid = $this->mid;
 		}
@@ -131,7 +129,7 @@ class MediaController extends BaseController{
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->mediaobject = new Media($mediarec);
+				$this->mediaobject = new WT_Media($mediarec);
 			}
 			unset($_GET['action']);
 			break;
@@ -146,7 +144,7 @@ class MediaController extends BaseController{
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->mediaobject = new Media($mediarec);
+				$this->mediaobject = new WT_Media($mediarec);
 			}
 			unset($_GET['action']);
 			break;
@@ -338,7 +336,7 @@ class MediaController extends BaseController{
 		else $facts[] = new Event("1 TYPE ".i18n::translate('Other'));
 
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
-			$newmedia = new Media($newrec);
+			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
 			if ($includeFileName) $newfacts[] = new Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
 			$newfacts[] = new Event("1 FORM ".$newmedia->getFiletype());

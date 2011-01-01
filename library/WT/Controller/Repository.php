@@ -1,5 +1,5 @@
 <?php
-// Controller for the Source Page
+// Controller for the Repository Page
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2010 webtrees development team.
@@ -28,36 +28,34 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_SOURCE_CTRL_PHP', '');
+define('WT_REPOSITORY_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class SourceController extends BaseController {
-	var $sid;
-	var $source = null;
-	var $diffsource = null;
+class WT_Controller_Repository extends WT_Controller_Base {
+	var $rid;
+	var $repository = null;
+	var $diffrepository = null;
 	var $accept_success = false;
 
 	function init() {
-		$this->sid = safe_GET_xref('sid');
+		$this->rid = safe_GET_xref('rid');
 
-		$gedrec = find_source_record($this->sid, WT_GED_ID);
+		$gedrec = find_other_record($this->rid, WT_GED_ID);
 
-		if (find_source_record($this->sid, WT_GED_ID) || find_updated_record($this->sid, WT_GED_ID)!==null) {
-			$this->source = new Source($gedrec);
-			$this->source->ged_id=WT_GED_ID; // This record is from a file
+		if (find_other_record($this->rid, WT_GED_ID) || find_updated_record($this->rid, WT_GED_ID)!==null) {
+			$this->repository = new WT_Repository($gedrec);
+			$this->repository->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$gedrec) {
 			return false;
 		}
 
-		$this->rid=$this->source->getXref(); // Correct upper/lower case mismatch
+		$this->rid=$this->repository->getXref(); // Correct upper/lower case mismatch
 
-		if (!$this->source->canDisplayDetails()) {
-			print_header(i18n::translate('Source'));
+		if (!$this->repository->canDisplayDetails()) {
+			print_header(i18n::translate('Repository'));
 			print_privacy_error();
 			print_footer();
 			exit;
@@ -70,7 +68,7 @@ class SourceController extends BaseController {
 				$favorite = array(
 					'username' => WT_USER_NAME,
 					'gid'      => $_REQUEST['gid'],
-					'type'     => 'SOUR',
+					'type'     => 'REPO',
 					'file'     => WT_GEDCOM,
 					'url'      => '',
 					'note'     => '',
@@ -82,31 +80,31 @@ class SourceController extends BaseController {
 			break;
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
-				accept_all_changes($this->sid, WT_GED_ID);
+				accept_all_changes($this->rid, WT_GED_ID);
 				$this->show_changes=false;
 				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
-				$gedrec = find_source_record($this->sid, WT_GED_ID);
+				$gedrec = find_other_record($this->rid, WT_GED_ID);
 				if (empty($gedrec)) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->source = new Source($gedrec);
+				$this->repository = new WT_Repository($gedrec);
 			}
 			unset($_GET['action']);
 			break;
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
-				reject_all_changes($this->sid, WT_GED_ID);
+				reject_all_changes($this->rid, WT_GED_ID);
 				$this->show_changes=false;
 				$this->accept_success=true;
-				$gedrec = find_source_record($this->sid, WT_GED_ID);
+				$gedrec = find_other_record($this->rid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->source = new Source($gedrec);
+				$this->repository = new WT_Repository($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -114,15 +112,15 @@ class SourceController extends BaseController {
 
 		//-- if the user can edit and there are changes then get the new changes
 		if ($this->show_changes && WT_USER_CAN_EDIT) {
-			$newrec = find_updated_record($this->sid, WT_GED_ID);
+			$newrec = find_updated_record($this->rid, WT_GED_ID);
 			if (!empty($newrec)) {
-				$this->diffsource = new Source($newrec);
-				$this->diffsource->setChanged(true);
+				$this->diffrepository = new WT_Repository($newrec);
+				$this->diffrepository->setChanged(true);
 			}
 		}
 
 		if ($this->show_changes) {
-			$this->source->diffMerge($this->diffsource);
+			$this->repository->diffMerge($this->diffrepository);
 		}
 	}
 
@@ -131,8 +129,8 @@ class SourceController extends BaseController {
 	* @return string
 	*/
 	function getPageTitle() {
-		if ($this->source) {
-			return $this->source->getFullName()." - ".i18n::translate('Source Information');
+		if ($this->repository) {
+			return $this->repository->getFullName()." - ".$this->rid." - ".i18n::translate('Repository information');
 		} else {
 			return i18n::translate('Unable to find record with ID');
 		}
@@ -144,7 +142,7 @@ class SourceController extends BaseController {
 	function getEditMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
 
-		if (!$this->source) return null;
+		if (!$this->repository) return null;
 		if ($TEXT_DIRECTION=="rtl") {
 			$ff="_rtl";
 		} else {
@@ -152,38 +150,32 @@ class SourceController extends BaseController {
 		}
 		// edit menu
 		$menu = new Menu(i18n::translate('Edit'));
-		$menu->addIcon('edit_sour');
+		$menu->addIcon('edit_repo');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new Menu(i18n::translate('Edit Source'));
-			$submenu->addOnclick('return edit_source(\''.$this->sid.'\');');
-			$submenu->addIcon('edit_sour');
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-			$menu->addSubmenu($submenu);
-
-			$menu->addSeparator();
+			// For consistency with other controllers, we need an "edit repo" option
 		}
 
 		// show/hide changes
-		if (find_updated_record($this->sid, WT_GED_ID)!==null) {
+		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "source.php?sid={$this->sid}&amp;show_changes=yes");
-				$submenu->addIcon('edit_sour');
+				$submenu = new Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "repo.php?rid={$this->rid}&amp;show_changes=yes");
+				$submenu->addIcon('edit_repo');
 			} else {
-				$submenu = new Menu(i18n::translate('Click here to hide changes.'), "source.php?sid={$this->sid}&amp;show_changes=no");
-				$submenu->addIcon('edit_sour');
+				$submenu = new Menu(i18n::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
+				$submenu->addIcon('edit_repo');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new Menu(i18n::translate('Undo all changes'), "source.php?sid={$this->sid}&amp;action=undo");
+				$submenu = new Menu(i18n::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
-				$submenu->addIcon('edit_sour');
+				$submenu->addIcon('edit_repo');
 				$menu->addSubmenu($submenu);
-				$submenu = new Menu(i18n::translate('Approve all changes'), "source.php?sid={$this->sid}&amp;action=accept");
-				$submenu->addIcon('edit_sour');
+				$submenu = new Menu(i18n::translate('Approve all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
+				$submenu->addIcon('edit_repo');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
@@ -194,7 +186,7 @@ class SourceController extends BaseController {
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new Menu(i18n::translate('Edit raw GEDCOM record'));
-			$submenu->addOnclick("return edit_raw('".$this->sid."');");
+			$submenu->addOnclick("return edit_raw('".$this->rid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
@@ -212,15 +204,15 @@ class SourceController extends BaseController {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new Menu(i18n::translate('Delete this Source'));
-			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Source?')."')) return deletesource('".$this->sid."'); else return false;");
-			$submenu->addIcon('edit_sour');
+			$submenu = new Menu(i18n::translate('Delete repository'));
+			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
+			$submenu->addIcon('edit_repo');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
-		$submenu = new Menu(i18n::translate('Add to My Favorites'), "source.php?action=addfav&amp;sid={$this->sid}&amp;gid={$this->sid}");
+		$submenu = new Menu(i18n::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

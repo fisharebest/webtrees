@@ -74,7 +74,6 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$content='';
 
 		require_once WT_ROOT.'js/sorttable.js.htm';
-		require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 
 		$table_id = 'ID'.floor(microtime()*1000000); // sorttable requires a unique ID
 		$content .= '<table id="'.$table_id.'" class="sortable list_table center">';
@@ -90,7 +89,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$found=false;
 		$end_jd=$show_future ? 99999999 : WT_CLIENT_JD;
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
-			$record=GedcomRecord::getInstance($todo['id']);
+			$record=WT_GedcomRecord::getInstance($todo['id']);
 			if ($record && $record->canDisplayDetails()) {
 				$user_name=get_gedcom_value('_WT_USER', 2, $todo['factrec']);
 				if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {

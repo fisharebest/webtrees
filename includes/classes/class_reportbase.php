@@ -1918,7 +1918,7 @@ function GedcomSHandler($attrs) {
 		}
 	}
 	if (!empty($newgedrec)) {
-		$gedObj = new GedcomRecord($newgedrec);
+		$gedObj = new WT_GedcomRecord($newgedrec);
 		array_push($gedrecStack, array($gedrec, $fact, $desc));
 		$gedrec = $gedObj->getGedcomRecord();
 		if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $gedrec, $match)) {
@@ -2154,7 +2154,7 @@ function GetPersonNameSHandler($attrs) {
 		}
 	}
 	if (!empty($id)) {
-		$record = GedcomRecord::getInstance($id);
+		$record = WT_GedcomRecord::getInstance($id);
 		if (is_null($record)) {
 			return;
 		}
@@ -2531,7 +2531,7 @@ function FactsSHandler($attrs) {
 	}
 
 	if (empty($attrs["diff"]) && !empty($id)) {
-		$record = GedcomRecord::getInstance($id);
+		$record = WT_GedcomRecord::getInstance($id);
 		$facts = $record->getFacts(explode(",", $tag));
 		if (!is_array($facts)) {
 			$facts = array($facts);
@@ -2546,25 +2546,25 @@ function FactsSHandler($attrs) {
 	} else {
 		global $nonfacts;
 		$nonfacts = preg_split("/[\s,;:]/", $tag);
-		$record = new GedcomRecord($gedrec);
+		$record = new WT_GedcomRecord($gedrec);
 		switch ($record->getType()) {
 			case "INDI":
-				$record=new Person($gedrec);
+				$record=new WT_Person($gedrec);
 				break;
 			case "FAM":
-				$record=new Family($gedrec);
+				$record=new WT_Family($gedrec);
 				break;
 			case "SOUR":
-				$record=new Source($gedrec);
+				$record=new WT_Source($gedrec);
 				break;
 			case "REPO":
-				$record=new Repository($gedrec);
+				$record=new WT_Repository($gedrec);
 				break;
 			case "NOTE":
-				$record=new Note($gedrec);
+				$record=new WT_Note($gedrec);
 				break;
 		}
-		$oldrecord = GedcomRecord::getInstance($record->getXref());
+		$oldrecord = WT_GedcomRecord::getInstance($record->getXref());
 		$oldrecord->diffMerge($record);
 		$facts = $oldrecord->getFacts();
 		foreach ($facts as $fact) {
@@ -2879,7 +2879,7 @@ function AgeAtDeathSHandler() {
 	$id = "";
 	$match = array();
 	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
-		$person=Person::getInstance($match[1]);
+		$person=WT_Person::getInstance($match[1]);
 		// Recorded age
 		$fact_age=get_gedcom_value('AGE', 2, $gedrec);
 		if ($fact_age=='') {
@@ -3216,7 +3216,7 @@ function ListSHandler($attrs) {
 			)->execute(array(WT_GED_ID))->fetchAll();
 			$list=array();
 			foreach ($rows as $row) {
-				$list[]=new GedcomRecord($row->gedcom);
+				$list[]=new WT_GedcomRecord($row->gedcom);
 			}
 			break;
 		case "individual":
@@ -3654,7 +3654,7 @@ function RelativesSHandler($attrs) {
 	}
 
 	$list = array();
-	$person = Person::getInstance($id);
+	$person = WT_Person::getInstance($id);
 	if (!empty($person)) {
 		$list[$id] = $person;
 		switch ($group) {

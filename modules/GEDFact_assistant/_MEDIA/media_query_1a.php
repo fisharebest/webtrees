@@ -58,23 +58,23 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 	$values = array_values($links);
 	$i=1;
 	foreach ($keys as $link) {
-		$record=GedcomRecord::getInstance($link);
+		$record=WT_GedcomRecord::getInstance($link);
 		echo "<tr ><td>";
 		echo $i;
 		echo "</td><td id=\"existId_", $i, "\" class=\"row2\">";
 			echo $link;
 		echo "</td><td>";
 		if ($record->getType()=='INDI') {
-			$idrecord=Person::getInstance($link);
+			$idrecord=WT_Person::getInstance($link);
 		} elseif ($record->getType()=='FAM') {
-			$idrecord=Family::getInstance($link);
+			$idrecord=WT_Family::getInstance($link);
 			if ($idrecord->getHusbId()) {
 				$head=$idrecord->getHusbId();
 			} else {
 				$head=$idrecord->getWifeId();
 			}
 		} elseif ($record->getType()=='SOUR') {
-			$idrecord=Source::getInstance($link);
+			$idrecord=WT_Source::getInstance($link);
 		} else {
 
 		}

@@ -32,7 +32,6 @@
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/classes/class_person.php';
 
 $show_full=$PEDIGREE_FULL_DETAILS;
 if (isset($_REQUEST['show_full'])) $show_full = $_REQUEST['show_full'];
@@ -89,7 +88,7 @@ if (WT_USE_LIGHTBOX) {
 
 if ($pid1) {
 	//-- check if the id is valid
-	$person=Person::getInstance($pid1);
+	$person=WT_Person::getInstance($pid1);
 	if ($person) {
 		$title_string.=':<br />'.$person->getFullName();
 		$pid1=$person->getXref(); // i1 => I1
@@ -103,7 +102,7 @@ if ($pid1) {
 }
 if ($pid2) {
 	//-- check if the id is valid
-	$person=Person::getInstance($pid2);
+	$person=WT_Person::getInstance($pid2);
 	if ($person) {
 		$title_string.=' '.i18n::translate('and').' '.$person->getFullName();
 		$pid2=$person->getXref(); // i2 => I2

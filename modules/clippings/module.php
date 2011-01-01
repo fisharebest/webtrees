@@ -142,13 +142,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$out .= $this->getCartList();
 			$root = null;
 			if ($this->controller->pid && !id_in_cart($this->controller->pid)) {
-				$root = GedcomRecord::getInstance($this->controller->pid);
+				$root = WT_GedcomRecord::getInstance($this->controller->pid);
 				if ($root && $root->canDisplayDetails())
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$root->getXref().'" class="add_cart">
 					<img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.i18n::translate('Add %s to cart', $root->getListName()).'</a>';
 			}
 			else if ($this->controller->famid && !id_in_cart($this->controller->pid)) {
-				$fam = Family::getInstance($this->controller->famid);
+				$fam = WT_Family::getInstance($this->controller->famid);
 				if ($fam && $fam->canDisplayDetails()) {
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$fam->getXref().'" class="add_cart"> '.i18n::translate('Add %s to cart', $fam->getFullName()).'</a><br />';
 				}
@@ -161,7 +161,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	// Impelement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		global $cart;
-		$controller = new ClippingsController();
+		$controller = new WT_Controller_Clippings();
 		$this->controller = $controller;
 		$add = safe_GET_xref('add','');
 		$add1 = safe_GET_xref('add1','');
@@ -171,7 +171,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		$controller->level2 = safe_GET('level2');
 		$controller->level3 = safe_GET('level3');
 		if (!empty($add)) {
-			$record = GedcomRecord::getInstance($add);
+			$record = WT_GedcomRecord::getInstance($add);
 			if ($record) {
 				$controller->id=$record->getXref();
 				$controller->type=$record->getType();
@@ -185,7 +185,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			}
 		}
 		else if (!empty($add1)) {
-			$record = GedcomRecord::getInstance($add1);
+			$record = WT_GedcomRecord::getInstance($add1);
 			if ($record) {
 				$controller->id=$record->getXref();
 				$controller->type=strtolower($record->getType());
@@ -309,7 +309,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						if (!empty($icon)) {
 							$out .= '<img src="'.$WT_IMAGES[$icon].'" border="0" alt="'.$tag.'" title="'.$tag.'" width="20" />';
 						}
-						$record=GedcomRecord::getInstance($clipping['id']);
+						$record=WT_GedcomRecord::getInstance($clipping['id']);
 						if ($record) {
 							$out .= '<a href="'.$record->getHtmlUrl().'">';
 							if ($record->getType()=="INDI") $out .=$record->getSexImage();

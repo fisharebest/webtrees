@@ -34,9 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_CLIPPINGS_CTRL', '');
 
-require_once WT_ROOT.'includes/classes/class_person.php';
 require_once WT_ROOT.'includes/functions/functions.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 
 function same_group($a, $b) {
@@ -68,7 +66,7 @@ function id_in_cart($id) {
 /**
 * Main controller class for the Clippings page.
 */
-class ClippingsController extends BaseController {
+class WT_Controller_Clippings extends WT_Controller_Base {
 
 	var $download_data;
 	var $media_list = array();
@@ -88,10 +86,10 @@ class ClippingsController extends BaseController {
 	/**
 	 * @param string $thing the id of the person
 	 */
-	function ClippingsControllerRoot() {
-		parent :: BaseController();
+	function __construct() {
+		parent::__construct();
 	}
-	//----------------beginning of function definitions for ClippingsControllerRoot
+	//----------------beginning of function definitions for WT_Controller_Clippings
 	function init() {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM, $cart;
 
@@ -122,7 +120,7 @@ class ClippingsController extends BaseController {
 		if ($this->action == 'add') {
 			if (empty($this->type) && !empty($this->id)) {
 				$this->type="";
-				$obj = GedcomRecord::getInstance($this->id);
+				$obj = WT_GedcomRecord::getInstance($this->id);
 				if (is_null($obj)) {
 					$this->id="";
 					$this->action="";
@@ -180,7 +178,7 @@ class ClippingsController extends BaseController {
 				} else
 				if ($this->type == 'indi') {
 					if ($others == 'parents') {
-						foreach (Person::getInstance($this->id)->getChildFamilies() as $family) {
+						foreach (WT_Person::getInstance($this->id)->getChildFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
 							$clipping['id'] = $family->getXref();
@@ -196,7 +194,7 @@ class ClippingsController extends BaseController {
 						$this->add_ancestors_to_cart_families($this->id, $this->level2);
 					} else
 					if ($others == 'members') {
-						foreach (Person::getInstance($this->id)->getSpouseFamilies() as $family) {
+						foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
 							$clipping['id'] = $family->getXref();
@@ -206,7 +204,7 @@ class ClippingsController extends BaseController {
 						}
 					} else
 					if ($others == 'descendants') {
-						foreach (Person::getInstance($this->id)->getSpouseFamilies() as $family) {
+						foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
 							$clipping['id'] = $family->getXref();
@@ -517,7 +515,7 @@ class ClippingsController extends BaseController {
 			}
 			$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
 			for ($i = 0; $i < $num; $i++) {
-				$cfamids = Person::getInstance($smatch[$i][1])->getSpouseFamilyIds();
+				$cfamids = WT_Person::getInstance($smatch[$i][1])->getSpouseFamilyIds();
 				if (count($cfamids) > 0) {
 					foreach ($cfamids as $indexval => $cfamid) {
 						if (!id_in_cart($cfamid)) {
@@ -571,7 +569,7 @@ class ClippingsController extends BaseController {
 	//-- recursively adds direct-line ancestors to cart
 	function add_ancestors_to_cart($pid, $level="") {
 		global $cart;
-		$famids = Person::getInstance($pid)->getChildFamilyIds();
+		$famids = WT_Person::getInstance($pid)->getChildFamilyIds();
 		if (count($famids) > 0) {
 			foreach ($famids as $indexval => $famid) {
 				if ($level=="" || $level > 0) {
@@ -605,7 +603,7 @@ class ClippingsController extends BaseController {
 	//-- recursively adds direct-line ancestors and their families to the cart
 	function add_ancestors_to_cart_families($pid, $level="") {
 		global $cart;
-		$famids = Person::getInstance($pid)->getChildFamilyIds();
+		$famids = WT_Person::getInstance($pid)->getChildFamilyIds();
 		if (count($famids) > 0) {
 			foreach ($famids as $indexval => $famid) {
 				if ($level=="" || $level > 0) {

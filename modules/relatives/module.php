@@ -340,8 +340,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_value">
 					<a href="javascript:;" onclick="return addnewchild('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
 					<span style='white-space:nowrap;'>
-						<a href="javascript:;" onclick="return addnewchild('<?php echo $family->getXref(); ?>','M');"><?php echo Person::sexImage('M', 'small', '', $child_m); ?></a>
-						<a href="javascript:;" onclick="return addnewchild('<?php echo $family->getXref(); ?>','F');"><?php echo Person::sexImage('F', 'small', '', $child_f); ?></a>
+						<a href="javascript:;" onclick="return addnewchild('<?php echo $family->getXref(); ?>','M');"><?php echo WT_Person::sexImage('M', 'small', '', $child_m); ?></a>
+						<a href="javascript:;" onclick="return addnewchild('<?php echo $family->getXref(); ?>','F');"><?php echo WT_Person::sexImage('F', 'small', '', $child_f); ?></a>
 					</span>
 					<?php
 						if ($type=='spouse') {

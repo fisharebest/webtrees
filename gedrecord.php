@@ -30,7 +30,6 @@
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 header('Content-Type: text/html; charset=UTF-8');
 
 $pid=safe_GET_xref('pid');
@@ -50,7 +49,7 @@ if (!$SHOW_GEDCOM_RECORD && !WT_USER_CAN_ACCEPT) {
 	exit;
 }
 
-$obj=GedcomRecord::getInstance($pid);
+$obj=WT_GedcomRecord::getInstance($pid);
 
 if (is_null($obj) || !$obj->canDisplayDetails()) {
 	print_privacy_error();

@@ -31,13 +31,11 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FAMILY_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class FamilyController extends BaseController {
+class WT_Controller_Family extends WT_Controller_Base {
 	var $famid = '';
 	var $family = null;
 	var $difffam = null;
@@ -67,7 +65,7 @@ class FamilyController extends BaseController {
 		}
 
 		if (find_family_record($this->famid, WT_GED_ID) || find_updated_record($this->famid, WT_GED_ID)!==null) {
-			$this->family = new Family($gedrec);
+			$this->family = new WT_Family($gedrec);
 			$this->family->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$this->family) {
 			return false;
@@ -103,7 +101,7 @@ class FamilyController extends BaseController {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->family = new Family($gedrec);
+				$this->family = new WT_Family($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -118,7 +116,7 @@ class FamilyController extends BaseController {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->family = new Family($gedrec);
+				$this->family = new WT_Family($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -128,7 +126,7 @@ class FamilyController extends BaseController {
 		if ($this->show_changes && WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->famid, WT_GED_ID);
 			if (!empty($newrec)) {
-				$this->difffam = new Family($newrec);
+				$this->difffam = new WT_Family($newrec);
 				$this->difffam->setChanged(true);
 			}
 		}

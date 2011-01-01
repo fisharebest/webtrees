@@ -64,8 +64,8 @@ if ($action!="choose") {
 		$gedrec2 = find_gedcom_record($gid2, get_id_from_gedcom($ged2), true);
 
 		// Fetch the original XREF - may differ in case from the supplied value
-		$tmp=new Person($gedrec1); $gid1=$tmp->getXref();
-		$tmp=new Person($gedrec2); $gid2=$tmp->getXref();
+		$tmp=new WT_Person($gedrec1); $gid1=$tmp->getXref();
+		$tmp=new WT_Person($gedrec2); $gid2=$tmp->getXref();
 
 		if (empty($gedrec1)) {
 			echo '<span class="error">', i18n::translate('Unable to find record with ID'), ':</span> ', $gid1, ', ', $ged;
@@ -230,7 +230,7 @@ if ($action!="choose") {
 					}
 
 					replace_gedrec($gid1, WT_GED_ID, $newgedrec);
-					$rec=GedcomRecord::getInstance($gid1);
+					$rec=WT_GedcomRecord::getInstance($gid1);
 					echo '<br />', i18n::translate('Record %s successfully updated.', $rec->getXrefLink()), '<br />';
 					$fav_count=update_favorites($gid2, $gid1);
 					if ($fav_count > 0) {

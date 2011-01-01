@@ -31,7 +31,6 @@
 
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
-require WT_ROOT.'includes/controllers/ancestry_ctrl.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
@@ -47,7 +46,7 @@ $nonfacts[] = "";
 $nonfamfacts[] = "UID";
 $nonfamfacts[] = "";
 
-$controller=new AncestryController();
+$controller=new WT_Controller_Ancestry();
 $controller->init();
 
 print_header($controller->name . " " . i18n::translate('Ancestry chart'));
@@ -212,7 +211,7 @@ case 1:
 	$treeid=ancestry_array($controller->rootid, $PEDIGREE_GENERATIONS-1);
 	foreach ($treeid as $i=>$pid) {
 		if ($pid) {
-			$person=Person::getInstance($pid);
+			$person=WT_Person::getInstance($pid);
 			if (!is_null($person)) {
 				$famids=$person->getChildFamilies();
 				foreach ($famids as $famid=>$family) {
@@ -240,7 +239,7 @@ case 3:
 	$treeid=ancestry_array($controller->rootid, $PEDIGREE_GENERATIONS-1);
 	$famlist=array();
 	foreach ($treeid as $pid) {
-		$person=Person::getInstance($pid);
+		$person=WT_Person::getInstance($pid);
 		if (is_null($person)) {
 			continue;
 		}

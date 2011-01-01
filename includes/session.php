@@ -118,10 +118,10 @@ ini_set('error_reporting', E_ALL | E_STRICT);
 ini_set('display_errors', '1');
 error_reporting(E_ALL | E_STRICT);
 
-// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX classes
+// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance();
+Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 
 // Check configuration issues that affect various versions of PHP
 if (version_compare(PHP_VERSION, '6.0', '<')) {
@@ -187,7 +187,6 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_name.php';
 require WT_ROOT.'includes/functions/functions_db.php';
-require WT_ROOT.'includes/classes/class_wt_db.php';
 
 set_error_handler('wt_error_handler');
 

@@ -419,7 +419,7 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		$person=Person::getInstance($row);
+		$person=WT_Person::getInstance($row);
 		$person->setPrimaryName($row['n_num']);
 		// We need to clone $person, as we may have multiple references to the
 		// same person in this list, and the "primary name" would otherwise
@@ -462,7 +462,7 @@ function get_famlist_fams($surn='', $salpha='', $galpha='', $marnm, $ged_id=null
 			->fetchAll(PDO::FETCH_ASSOC);
 
 		foreach ($rows as $row) {
-			$list[]=Family::getInstance($row);
+			$list[]=WT_Family::getInstance($row);
 		}
 	}
 	usort($list, array('GedcomRecord', 'Compare'));
@@ -531,7 +531,7 @@ function fetch_linked_indi($xref, $link, $ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Person::getInstance($row);
+		$list[]=WT_Person::getInstance($row);
 	}
 	return $list;
 }
@@ -547,7 +547,7 @@ function fetch_linked_fam($xref, $link, $ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Family::getInstance($row);
+		$list[]=WT_Family::getInstance($row);
 	}
 	return $list;
 }
@@ -563,7 +563,7 @@ function fetch_linked_note($xref, $link, $ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Note::getInstance($row);
+		$list[]=WT_Note::getInstance($row);
 	}
 	return $list;
 }
@@ -579,7 +579,7 @@ function fetch_linked_sour($xref, $link, $ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Source::getInstance($row);
+		$list[]=WT_Source::getInstance($row);
 	}
 	return $list;
 }
@@ -595,7 +595,7 @@ function fetch_linked_obje($xref, $link, $ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Media::getInstance($row);
+		$list[]=WT_Media::getInstance($row);
 	}
 	return $list;
 }
@@ -894,7 +894,7 @@ function get_source_list($ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Source::getInstance($row);
+		$list[]=WT_Source::getInstance($row);
 	}
 	usort($list, array('GedcomRecord', 'Compare'));
 	return $list;
@@ -910,7 +910,7 @@ function get_repo_list($ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Repository::getInstance($row);
+		$list[]=WT_Repository::getInstance($row);
 	}
 	usort($list, array('GedcomRecord', 'Compare'));
 	return $list;
@@ -925,7 +925,7 @@ function get_note_list($ged_id) {
 
 	$list=array();
 	foreach ($rows as $row) {
-		$list[]=Note::getInstance($row);
+		$list[]=WT_Note::getInstance($row);
 	}
 	usort($list, array('GedcomRecord', 'Compare'));
 	return $list;
@@ -949,7 +949,7 @@ function search_indis_custom($join, $where, $order) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$list[]=Person::getInstance($row);
+		$list[]=WT_Person::getInstance($row);
 	}
 	// Switch privacy file if necessary
 	if ($GED_ID!=WT_GED_ID) {
@@ -976,7 +976,7 @@ function search_fams_custom($join, $where, $order) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$list[]=Family::getInstance($row);
+		$list[]=WT_Family::getInstance($row);
 	}
 	// Switch privacy file if necessary
 	if ($GED_ID!=WT_GED_ID) {
@@ -1024,7 +1024,7 @@ function search_indis($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=Person::getInstance($row);
+		$record=WT_Person::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$gedrec=utf8_strtoupper($record->getGedcomRecord());
 		if ($skip) {
@@ -1077,7 +1077,7 @@ function search_indis_names($query, $geds, $match) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$indi=Person::getInstance($row);
+		$indi=WT_Person::getInstance($row);
 		if ($indi->canDisplayName()) {
 			$indi->setPrimaryName($row['n_num']);
 			// We need to clone $indi, as we may have multiple references to the
@@ -1157,7 +1157,7 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$indi=Person::getInstance($row);
+		$indi=WT_Person::getInstance($row);
 		if ($indi->canDisplayName()) {
 			$list[]=$indi;
 		}
@@ -1220,7 +1220,7 @@ function search_indis_dates($day, $month, $year, $facts) {
 	$list=array();
 	$rows=WT_DB::prepare($sql)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		$list[]=Person::getInstance($row);
+		$list[]=WT_Person::getInstance($row);
 	}
 	return $list;
 }
@@ -1242,7 +1242,7 @@ function search_indis_daterange($start, $end, $facts) {
 	$list=array();
 	$rows=WT_DB::prepare($sql)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
-		$list[]=Person::getInstance($row);
+		$list[]=WT_Person::getInstance($row);
 	}
 	return $list;
 }
@@ -1296,7 +1296,7 @@ function search_fams($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=Family::getInstance($row);
+		$record=WT_Family::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$gedrec=utf8_strtoupper($record->getGedcomRecord());
 		if ($skip) {
@@ -1350,7 +1350,7 @@ function search_fams_names($query, $geds, $match) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$indi=Family::getInstance($row);
+		$indi=WT_Family::getInstance($row);
 		if ($indi->canDisplayName()) {
 			$list[]=$indi;
 		}
@@ -1401,7 +1401,7 @@ function search_sources($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=Source::getInstance($row);
+		$record=WT_Source::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$gedrec=utf8_strtoupper($record->getGedcomRecord());
 		if ($skip) {
@@ -1460,7 +1460,7 @@ function search_notes($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=Note::getInstance($row);
+		$record=WT_Note::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$gedrec=utf8_strtoupper($record->getGedcomRecord());
 		if ($skip) {
@@ -1836,9 +1836,9 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
 				if ($row['type']=='INDI') {
-					$record=Person::getInstance($row);
+					$record=WT_Person::getInstance($row);
 				} else {
-					$record=Family::getInstance($row);
+					$record=WT_Family::getInstance($row);
 				}
 				// Generate a regex to match the retrieved date - so we can find it in the original gedcom record.
 				// TODO having to go back to the original gedcom is lame.  This is why it is so slow, and needs

@@ -31,12 +31,10 @@ if (!defined('WT_WEBTREES')) {
 define('WT_NOTE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class NoteController extends BaseController {
+class WT_Controller_Note extends WT_Controller_Base {
 	var $nid;
 	var $note = null;
 	var $diffnote = null;
@@ -48,7 +46,7 @@ class NoteController extends BaseController {
 		$gedrec = find_other_record($this->nid, WT_GED_ID);
 
 		if (find_other_record($this->nid, WT_GED_ID) || find_updated_record($this->nid, WT_GED_ID)!==null) {
-			$this->note = new Note($gedrec);
+			$this->note = new WT_Note($gedrec);
 			$this->note->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$gedrec) {
 			return false;
@@ -91,7 +89,7 @@ class NoteController extends BaseController {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->note = new Note($gedrec);
+				$this->note = new WT_Note($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -106,7 +104,7 @@ class NoteController extends BaseController {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->note = new Note($gedrec);
+				$this->note = new WT_Note($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -116,7 +114,7 @@ class NoteController extends BaseController {
 		if ($this->show_changes && WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->nid, WT_GED_ID);
 			if (!empty($newrec)) {
-				$this->diffnote = new Note($newrec);
+				$this->diffnote = new WT_Note($newrec);
 				$this->diffnote->setChanged(true);
 			}
 		}

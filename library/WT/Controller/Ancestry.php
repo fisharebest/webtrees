@@ -31,9 +31,8 @@ if (!defined('WT_WEBTREES')) {
 define('WT_ANCESTRY_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 
-class AncestryController extends BaseController {
+class WT_Controller_Ancestry extends WT_Controller_Base {
 	var $pid = "";
 	var $user = false;
 	var $accept_success = false;
@@ -84,7 +83,7 @@ class AncestryController extends BaseController {
 		$pbwidth = $bwidth+12;
 		$pbheight = $bheight+14;
 
-		$this->ancestry = Person::getInstance($this->rootid);
+		$this->ancestry = WT_Person::getInstance($this->rootid);
 		$this->name     = $this->ancestry->getFullName();
 		$this->addname  = $this->ancestry->getAddName();
 
@@ -102,7 +101,7 @@ class AncestryController extends BaseController {
 	function print_child_ascendancy($pid, $sosa, $depth) {
 		global $TEXT_DIRECTION, $OLD_PGENS, $WT_IMAGES, $Dindent, $SHOW_EMPTY_BOXES, $pidarr, $box_width;
 
-		$person = Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		// child
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td><a name=\"sosa".$sosa."\"></a>";

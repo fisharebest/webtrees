@@ -38,7 +38,7 @@ $showthumbs=safe_GET('showthumbs', '1', '0');
 // Validate form variables
 $rootid=check_rootid($rootid);
 
-$person =Person::getInstance($rootid);
+$person =WT_Person::getInstance($rootid);
 $name   =$person->getFullName();
 $addname=$person->getAddName();
 
@@ -301,7 +301,7 @@ function print_td_person($n) {
 	}
 
 	if ($pid) {
-		$indi=Person::getInstance($pid);
+		$indi=WT_Person::getInstance($pid);
 		$name=$indi->getFullName();
 		$addname=$indi->getAddName();
 

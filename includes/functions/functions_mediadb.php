@@ -565,7 +565,7 @@ function filterMedia($media, $filter, $acceptExt) {
 		return true;
 
 	//-- Accept when filter string contained in Media item's title
-	$record=Media::getInstance($media['XREF']);
+	$record=WT_Media::getInstance($media['XREF']);
 	if ($record) {
 		foreach ($record->getAllNames() as $name) {
 			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
@@ -580,7 +580,7 @@ function filterMedia($media, $filter, $acceptExt) {
 	//-- Accept when filter string contained in name of any item
 	//-- this Media item is linked to.  (Privacy already checked)
 	foreach ($links as $id=>$type) {
-		$record=GedcomRecord::getInstance($id);
+		$record=WT_GedcomRecord::getInstance($id);
 		foreach ($record->getAllNames() as $name) {
 			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
 				return true;
@@ -1615,7 +1615,7 @@ function PrintMediaLinks($links, $size = "small") {
 	$linkList = array ();
 
 	foreach ($links as $id => $type) {
-		$record=GedcomRecord::getInstance($id);
+		$record=WT_GedcomRecord::getInstance($id);
 		if ($record && $record->canDisplaydetails()) {
 			switch ($record->getType()) {
 			case 'INDI':

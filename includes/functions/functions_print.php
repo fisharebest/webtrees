@@ -65,7 +65,7 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 	// NOTE: Start div out-rand()
-	$person=Person::getInstance($pid);
+	$person=WT_Person::getInstance($pid);
 	if ($pid==false || empty($person)) {
 		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; padding: 2px; overflow: hidden;\">";
 		echo "<br />";
@@ -709,19 +709,19 @@ function print_favorite_selector($option=0) {
 	if (WT_USER_NAME && isset($controller)) {
 		// Get the right $gid from each supported controller type
 		switch (get_class($controller)) {
-		case 'IndividualController':
+		case 'WT_Controller_Individual':
 			$gid = $controller->pid;
 			break;
-		case 'FamilyController':
+		case 'WT_Controller_Family':
 			$gid = $controller->famid;
 			break;
-		case 'MediaController':
+		case 'WT_Controller_Media':
 			$gid = $controller->mid;
 			break;
-		case 'SourceController':
+		case 'WT_Controller_Source':
 			$gid = $controller->sid;
 			break;
-		case 'RepositoryController':
+		case 'WT_Controller_Repository':
 			$gid = $controller->rid;
 			break;
 		default:
@@ -755,7 +755,7 @@ function print_favorite_selector($option=0) {
 					$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 					$menu->addSubMenu($submenu);
 				} else {
-					$record=GedcomRecord::getInstance($favorite["gid"]);
+					$record=WT_GedcomRecord::getInstance($favorite["gid"]);
 					if ($record && $record->canDisplayName()) {
 						$submenu->addLink($record->getHtmlUrl());
 						$slabel = PrintReady($record->getFullName());
@@ -782,7 +782,7 @@ function print_favorite_selector($option=0) {
 					$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 					$menu->addSubMenu($submenu);
 				} else {
-					$record=GedcomRecord::getInstance($favorite["gid"]);
+					$record=WT_GedcomRecord::getInstance($favorite["gid"]);
 					if ($record && $record->canDisplayName()) {
 						$submenu->addLink($record->getHtmlUrl());
 						$slabel = PrintReady($record->getFullName());
@@ -815,22 +815,22 @@ function print_favorite_selector($option=0) {
 				} else {
 					switch ($favorite['type']) {
 					case 'INDI':
-						$record=Person::getInstance($favorite["gid"]);
+						$record=WT_Person::getInstance($favorite["gid"]);
 						break;
 					case 'FAM':
-						$record=Family::getInstance($favorite["gid"]);
+						$record=WT_Family::getInstance($favorite["gid"]);
 						break;
 					case 'SOUR':
-						$record=Source::getInstance($favorite["gid"]);
+						$record=WT_Source::getInstance($favorite["gid"]);
 						break;
 					case 'REPO':
-						$record=Repository::getInstance($favorite["gid"]);
+						$record=WT_Repository::getInstance($favorite["gid"]);
 						break;
 					case 'OBJE':
-						$record=Media::getInstance($favorite["gid"]);
+						$record=WT_Media::getInstance($favorite["gid"]);
 						break;
 					default:
-						$record=GedcomRecord::getInstance($favorite["gid"]);
+						$record=WT_GedcomRecord::getInstance($favorite["gid"]);
 						break;
 					}
 					if ($record && $record->canDisplayName()) {
@@ -850,7 +850,7 @@ function print_favorite_selector($option=0) {
 					echo "<option value=\"", $favorite["url"], "\">", PrintReady($favorite["title"]);
 					echo "</option>";
 				} else {
-					$record=GedcomRecord::getInstance($favorite["gid"]);
+					$record=WT_GedcomRecord::getInstance($favorite["gid"]);
 					if ($record && $record->canDisplayName()) {
 						$name=$record->getFullName();
 						echo "<option value=\"", $record->getHtmlUrl(), "\">", $name, "</option>";
@@ -1142,7 +1142,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 	global $action, $firstname, $lastname, $place, $year;
 	global $TEXT_DIRECTION_array, $TEXT_DIRECTION, $controller;
 	// Check whether Search page highlighting should be done or not
-	if (isset($controller) && $controller instanceof SearchController && $controller->query) {
+	if (isset($controller) && $controller instanceof WT_Controller_Search && $controller->query) {
 		$query=$controller->query;
 		$HighlightOK=true;
 	} else {
@@ -1327,7 +1327,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 
 	// Level 1 ASSO
 	if (preg_match('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $factrec, $amatch)) {
-		$person=Person::getInstance($amatch[1]);
+		$person=WT_Person::getInstance($amatch[1]);
 		$sex='';
 		if ($person) {
 			$name=$person->getFullName();
@@ -1377,7 +1377,7 @@ function print_asso_rela_record($pid, $factrec, $linebr=false, $type='INDI') {
 	// Level 2 ASSO
 	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@(\n[3-9].*)*/', $factrec, $amatches, PREG_SET_ORDER);
 	foreach ($amatches as $amatch) {
-		$person=Person::getInstance($amatch[1]);
+		$person=WT_Person::getInstance($amatch[1]);
 		if ($person) $sex=$person->getSex();
 		else $sex='';
 		if (preg_match('/\n3 RELA (.+)/', $amatch[0], $rmatch)) {
@@ -1442,7 +1442,7 @@ function format_parents_age($pid, $birth_date=null) {
 
 	$html='';
 	if ($SHOW_PARENTS_AGE) {
-		$person=Person::getInstance($pid);
+		$person=WT_Person::getInstance($pid);
 		$families=$person->getChildFamilies();
 		// Where an indi has multiple birth records, we need to know the
 		// date of it.  For person boxes, etc., use the default birth date.
@@ -1583,7 +1583,7 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 		}
 		else if (!is_null($person) && $person->getType()=='FAM') {
 			$indirec=find_person_record($pid, $ged_id);
-			$indi=new Person($indirec);
+			$indi=new WT_Person($indirec);
 			$birth_date=$indi->getBirthDate();
 			$death_date=$indi->getDeathDate();
 			$ageText = '';
@@ -1744,7 +1744,7 @@ function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM"
 	global $TEXT_DIRECTION;
 
 	$html='';
-	$person = GedcomRecord::getInstance($key);
+	$person = WT_GedcomRecord::getInstance($key);
 	if (is_null($person)) return;
 	foreach ($majorfacts as $indexval => $fact) {
 		$event = $person->getFactByType($fact);

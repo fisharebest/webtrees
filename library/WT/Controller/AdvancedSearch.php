@@ -30,9 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_ADVANCED_SEARCH_PHP', '');
 
-require_once WT_ROOT.'includes/controllers/search_ctrl.php';
-
-class AdvancedSearchController extends SearchController {
+class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 
 	var $fields = array();
 	var $values = array();
@@ -42,7 +40,7 @@ class AdvancedSearchController extends SearchController {
 	/**
 	 * constructor
 	 */
-	function AdvancedSearchController() {
+	function __construct() {
 		parent::__construct();
 	}
 	/**
@@ -423,7 +421,7 @@ class AdvancedSearchController extends SearchController {
 			$row['ged_id']=$row['i_file'];
 			$row['type'] = 'INDI';
 			$row['gedrec'] = $row['i_gedcom'];
-			$object = Person::getInstance($row);
+			$object = WT_Person::getInstance($row);
 			$this->myindilist[$row['i_id']] = $object;
 		}
 		$this->fields = $keepfields;

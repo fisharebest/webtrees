@@ -35,9 +35,8 @@
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
-require WT_ROOT.'includes/controllers/pedigree_ctrl.php';
 
-$controller = new PedigreeController();
+$controller = new WT_Controller_Pedigree();
 $controller->init();
 
 // -- echo html header information
@@ -231,7 +230,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		}
 
 		// Can we go back to an earlier generation?
-		$can_go_back=$curgen==1 && Person::getInstance($controller->treeid[$i]) && Person::getInstance($controller->treeid[$i])->getChildFamilies();
+		$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
 
 		if ($can_go_back) {
 			$widthadd = 20;

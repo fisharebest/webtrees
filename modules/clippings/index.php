@@ -34,7 +34,7 @@ require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
 
 global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM, $WT_IMAGES;
 
-$controller = new ClippingsController();
+$controller = new WT_Controller_Clippings();
 $controller->init();
 
 // -- print html header information
@@ -51,7 +51,7 @@ if (count($cart)==0) { ?>
 <?php }
 
 if ($controller->action=='add') {
-	$person = GedcomRecord::getInstance($controller->id);
+	$person = WT_GedcomRecord::getInstance($controller->id);
 	echo "<b>".$person->getFullName()."</b>";
 	if ($controller->type=='fam') { ?>
 		<form action="module.php" method="get">
@@ -300,7 +300,7 @@ if ($ct==0) {
 			<td class="list_value ltr"><?php echo $clipping['id']; ?></td>
 			<td class="list_value">
 			<?php
-			$record=GedcomRecord::getInstance($clipping['id']);
+			$record=WT_GedcomRecord::getInstance($clipping['id']);
 			if ($record) echo '<a href="', $record->getHtmlUrl(), '">', PrintReady($record->getListName()), '</a>';
 			?>
 			</td>

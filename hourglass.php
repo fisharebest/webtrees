@@ -33,9 +33,8 @@
 
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/controllers/hourglass_ctrl.php';
 
-$controller = new HourglassController();
+$controller = new WT_Controller_Hourglass();
 $controller->init();
 
 // -- print html header information

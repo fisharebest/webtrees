@@ -47,7 +47,7 @@ $ctry       = "UK";
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;
 
-$person=Person::getInstance($pid);
+$person=WT_Person::getInstance($pid);
 // var_dump($person->getAllNames());
 $nam = $person->getAllNames();
 if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($person->getDeathYear()); }

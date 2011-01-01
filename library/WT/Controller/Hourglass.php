@@ -30,8 +30,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_HOURGLASS_CTRL_PHP', '');
 
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/classes/class_person.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
@@ -47,7 +45,7 @@ $nonfacts[] = "";
 $nonfamfacts[] = "UID";
 $nonfamfacts[] = "";
 
-class HourglassController extends BaseController {
+class WT_Controller_Hourglass extends WT_Controller_Base {
 	var $pid = "";
 
 	var $accept_success = false;
@@ -110,7 +108,7 @@ class HourglassController extends BaseController {
 		// Validate parameters
 		$this->pid=check_rootid($this->pid);
 
-		$this->hourPerson = Person::getInstance($this->pid);
+		$this->hourPerson = WT_Person::getInstance($this->pid);
 		$this->name=$this->hourPerson->getFullName();
 
 		//Checks how many generations of descendency is for the person for formatting purposes
@@ -130,7 +128,7 @@ class HourglassController extends BaseController {
 		global $SHOW_EMPTY_BOXES, $WT_IMAGES, $bhalfheight;
 
 		if ($count>=$this->generations) return;
-		$person = Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		if (is_null($person)) return;
 		$families = $person->getChildFamilies();
 		//-- calculate how tall the lines should be
@@ -150,7 +148,7 @@ class HourglassController extends BaseController {
 			echo "<td id=\"td_".$ARID."\">";
 
 			//-- print an Ajax arrow on the last generation of the adult male
-			if ($count==$this->generations-1 && Person::getInstance($ARID)->getChildFamilies()) {
+			if ($count==$this->generations-1 && WT_Person::getInstance($ARID)->getChildFamilies()) {
 				echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
 			}
 			//-- recursively get the father's family
@@ -168,7 +166,7 @@ class HourglassController extends BaseController {
 
 
 			//-- print an ajax arrow on the last generation of the adult female
-			if ($count==$this->generations-1 && Person::getInstance($ARID)->getChildFamilies()) {
+			if ($count==$this->generations-1 && WT_Person::getInstance($ARID)->getChildFamilies()) {
 				echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
 			}
 
@@ -193,7 +191,7 @@ class HourglassController extends BaseController {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $bhalfheight, $lastGenSecondFam;
 
 		if ($count>$this->dgenerations) return 0;
-		$person = Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		if (is_null($person)) return;
 
 		$tablealign = "right";
@@ -458,7 +456,7 @@ class HourglassController extends BaseController {
 	 */
 	function max_descendency_generations($pid, $depth) {
 		if ($depth > $this->generations) return $depth;
-		$person = Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		if (is_null($person)) return $depth;
 		$famids = $person->getSpouseFamilies();
 		if ($person->getNumberOfChildren()==0) return $depth-1;

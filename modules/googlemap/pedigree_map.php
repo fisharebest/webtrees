@@ -39,7 +39,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'includes/controllers/pedigree_ctrl.php';
 require WT_ROOT.'modules/googlemap/defaultconfig.php';
 
 global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES;
@@ -48,7 +47,7 @@ global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $
 $hideflags = safe_GET('hideflags');
 $hidelines = safe_GET('hidelines');
 
-$controller = new PedigreeController();
+$controller = new WT_Controller_Pedigree();
 $controller->init();
 
 // Default of 5
@@ -199,7 +198,7 @@ $missing = "";
 for ($i=0; $i<($controller->treesize); $i++) {
 	// -- check to see if we have moved to the next generation
 	if ($i+1 >= pow(2, $curgen)) {$curgen++;}
-	$person = Person::getInstance($controller->treeid[$i]);
+	$person = WT_Person::getInstance($controller->treeid[$i]);
 	if (!empty($person)) {
 		$pid = $controller->treeid[$i];
 		$name = $person->getFullName();
@@ -556,7 +555,7 @@ $colored_line = array("1"=>"#FF0000","2"=>"#0000FF","3"=>"#00FF00",
 
 for ($i=0; $i<($controller->treesize); $i++) {
 	// moved up to grab the sex of the individuals
-	$person = Person::getInstance($controller->treeid[$i]);
+	$person = WT_Person::getInstance($controller->treeid[$i]);
 	if (!empty($person)) {
 		$pid = $controller->treeid[$i];
 		$indirec = $person->getGedcomRecord();

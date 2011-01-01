@@ -387,7 +387,7 @@ if ($level > 0) {
 		$mysourcelist = array();
 		$myfamlist = array();
 		foreach ($positions as $position) {
-			$record=GedcomRecord::getInstance($position);
+			$record=WT_GedcomRecord::getInstance($position);
 			switch ($record->getType()) {
 			case 'INDI':
 				$myindilist[]=$record;

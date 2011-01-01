@@ -194,7 +194,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<br />".PrintReady($favorite["note"]);
 					$content .= "</div>";
 				} else {
-					$record=GedcomRecord::getInstance($favorite['gid']);
+					$record=WT_GedcomRecord::getInstance($favorite['gid']);
 					if ($record && $record->canDisplayDetails()) {
 						if ($favorite["type"]=="INDI") {
 							$indirec = find_person_record($favorite["gid"], WT_GED_ID);
@@ -210,7 +210,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							$content .= PrintReady($favorite["note"]);
 							$content .= "</div>";
 						} else {
-							$record=GedcomRecord::getInstance($favorite['gid']);
+							$record=WT_GedcomRecord::getInstance($favorite['gid']);
 							$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box\">";
 							if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 							if ($record) {

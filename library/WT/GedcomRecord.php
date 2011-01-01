@@ -32,17 +32,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_GEDCOMRECORD_PHP', '');
+define('WT_WT_GEDCOMRECORD_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_person.php';
-require_once WT_ROOT.'includes/classes/class_family.php';
-require_once WT_ROOT.'includes/classes/class_source.php';
-require_once WT_ROOT.'includes/classes/class_repository.php';
-require_once WT_ROOT.'includes/classes/class_note.php';
-require_once WT_ROOT.'includes/classes/class_media.php';
 require_once WT_ROOT.'includes/classes/class_event.php';
 
-class GedcomRecord {
+class WT_GedcomRecord {
 	protected $xref       =null;  // The record identifier
 	protected $type       =null;  // INDI, FAM, etc.
 	public    $ged_id     =null;  // The gedcom file, only set if this record comes from the database
@@ -157,25 +151,25 @@ class GedcomRecord {
 		}
 		switch($type) {
 		case 'INDI':
-			$object=new Person($data);
+			$object=new WT_Person($data);
 			break;
 		case 'FAM':
-			$object=new Family($data);
+			$object=new WT_Family($data);
 			break;
 		case 'SOUR':
-			$object=new Source($data);
+			$object=new WT_Source($data);
 			break;
 		case 'OBJE':
-			$object=new Media($data);
+			$object=new WT_Media($data);
 			break;
 		case 'REPO':
-			$object=new Repository($data);
+			$object=new WT_Repository($data);
 			break;
 		case 'NOTE':
-			$object=new Note($data);
+			$object=new WT_Note($data);
 			break;
 		default:
-			$object=new GedcomRecord($data);
+			$object=new WT_GedcomRecord($data);
 			break;
 		}
 

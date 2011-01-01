@@ -51,7 +51,7 @@ $bhalfheight = (int) ($bheight / 2);
 
 // -- root id
 $pid   =check_rootid($pid);
-$person=Person::getInstance($pid);
+$person=WT_Person::getInstance($pid);
 $name  =$person->getFullName();
 
 function print_descendency($person, $count) {
@@ -148,7 +148,7 @@ function print_person_pedigree($pid, $count) {
 	global $generations, $SHOW_EMPTY_BOXES, $WT_IMAGES, $bheight, $bhalfheight;
 	if ($count>=$generations) return;
 	$hheight = ($bhalfheight+3) * pow(2,($generations-$count-1));
-	foreach (Person::getInstance($pid)->getChildFamilies() as $family) {
+	foreach (WT_Person::getInstance($pid)->getChildFamilies() as $family) {
 		$famid=$family->getXref();
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 		$parents = find_parents($famid);

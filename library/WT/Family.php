@@ -32,11 +32,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_FAMILY_PHP', '');
+define('WT_WT_FAMILY_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
-
-class Family extends GedcomRecord {
+class WT_Family extends WT_GedcomRecord {
 	private $husb = null;
 	private $wife = null;
 	private $children = array();
@@ -52,10 +50,10 @@ class Family extends GedcomRecord {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			if ($data['f_husb']) {
-				$this->husb=Person::getInstance($data['f_husb']);
+				$this->husb=WT_Person::getInstance($data['f_husb']);
 			}
 			if ($data['f_wife']) {
-				$this->wife=Person::getInstance($data['f_wife']);
+				$this->wife=WT_Person::getInstance($data['f_wife']);
 			}
 			if (preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $data['gedrec'], $matches)) {
 				$this->childrenIds=$matches[1];
@@ -68,10 +66,10 @@ class Family extends GedcomRecord {
 		} else {
 			// Construct from raw GEDCOM data
 			if (preg_match('/^1 HUSB @(.+)@/m', $data, $match)) {
-				$this->husb=Person::getInstance($match[1]);
+				$this->husb=WT_Person::getInstance($match[1]);
 			}
 			if (preg_match('/^1 WIFE @(.+)@/m', $data, $match)) {
-				$this->wife=Person::getInstance($match[1]);
+				$this->wife=WT_Person::getInstance($match[1]);
 			}
 			if (preg_match_all('/^1 CHIL @(.+)@/m', $data, $match)) {
 				$this->childrenIds=$match[1];
@@ -189,7 +187,7 @@ class Family extends GedcomRecord {
 			$this->childrenIds[] = $smatch[$i][1];
 		}
 		foreach ($this->childrenIds as $t=>$chil) {
-			$child=Person::getInstance($chil);
+			$child=WT_Person::getInstance($chil);
 			if ($child) {
 				$this->children[] = $child;
 			}
@@ -221,7 +219,7 @@ class Family extends GedcomRecord {
 		if (WT_USER_CAN_EDIT && $this->canDisplayDetails()) {
 			$newrec = find_updated_record($this->xref, $this->ged_id);
 			if (!is_null($newrec)) {
-				$newfamily = new Family($newrec);
+				$newfamily = new WT_Family($newrec);
 				$newfamily->setChanged(true);
 				return $newfamily;
 			}
@@ -381,8 +379,8 @@ class Family extends GedcomRecord {
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
 		if (is_null($this->_getAllNames)) {
-			$husb=$this->husb ? $this->husb : new Person('1 SEX M');
-			$wife=$this->wife ? $this->wife : new Person('1 SEX F');
+			$husb=$this->husb ? $this->husb : new WT_Person('1 SEX M');
+			$wife=$this->wife ? $this->wife : new WT_Person('1 SEX F');
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
 			$husb_names=$husb->getAllNames();
 			foreach ($husb_names as $n=>$husb_name) {

@@ -917,7 +917,7 @@ if ($action=="filter") {
 							echo i18n::translate('This media object is linked to the following:'), "<br />";
 							foreach ($media["LINKS"] as $indi => $type_record) {
 								if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
-								$record=GedcomRecord::getInstance($indi);
+								$record=WT_GedcomRecord::getInstance($indi);
 								echo '<br /><a href="', $record->getHtmlUrl(), '">';
 								switch($type_record) {
 								case 'INDI':

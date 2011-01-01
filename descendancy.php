@@ -29,7 +29,6 @@
 
 define('WT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
-require WT_ROOT.'includes/controllers/descendancy_ctrl.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
@@ -45,7 +44,7 @@ $nonfacts[] = "";
 $nonfamfacts[] = "UID";
 $nonfamfacts[] = "";
 
-$controller=new DescendancyController();
+$controller=new WT_Controller_Descendancy();
 $controller->init();
 
 print_header($controller->name." ".i18n::translate('Descendancy chart'));

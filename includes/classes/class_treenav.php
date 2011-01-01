@@ -33,7 +33,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_CLASS_TREENAV_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_person.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 class TreeNav {
@@ -58,8 +57,8 @@ class TreeNav {
 		if ($rootid!='none') {
 			$rootid = check_rootid($rootid);
 			$this->zoomLevel = $zoom;
-			$this->rootPerson = Person::getInstance($rootid);
-			if (is_null($this->rootPerson)) $this->rootPerson = new Person('');
+			$this->rootPerson = WT_Person::getInstance($rootid);
+			if (is_null($this->rootPerson)) $this->rootPerson = new WT_Person('');
 		}
 
 		$this->name = $name;
@@ -260,7 +259,7 @@ class TreeNav {
 		if (!empty($_REQUEST['famid'])) {
 			$famid = $_REQUEST['famid'];
 			if ($famid!='all') {
-				$family = Family::getInstance($_REQUEST['famid']);
+				$family = WT_Family::getInstance($_REQUEST['famid']);
 				if (!empty($family)) $families[] = $family;
 			}
 			else {

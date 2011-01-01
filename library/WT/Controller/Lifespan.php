@@ -31,14 +31,12 @@ if (!defined('WT_WEBTREES')) {
 define('WT_LIFESPAN_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/classes/class_person.php';
 
 function compare_people($a, $b) {
 	return GedcomDate::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 }
 
-class LifespanController extends BaseController {
+class WT_Controller_Lifespan extends WT_Controller_Base {
 	var $pids = array ();
 	var $people = array();
 	var $scale = 2;
@@ -88,11 +86,11 @@ class LifespanController extends BaseController {
 		//--new pid
 		$newpid=safe_GET_xref('newpid');
 		if ($newpid) {
-			$person = Person::getInstance($newpid);
+			$person = WT_Person::getInstance($newpid);
 			if (is_null($person) && $GEDCOM_ID_PREFIX) {
 				//-- allow the user to enter the id without the "I" prefix
 				$newpid = $GEDCOM_ID_PREFIX.$newpid;
-				$person = Person::getInstance($newpid);
+				$person = WT_Person::getInstance($newpid);
 			}
 			//-- make sure we have the id from the gedcom record
 			else $newpid = $person->getXref();
@@ -147,7 +145,7 @@ class LifespanController extends BaseController {
 				foreach ($this->pids as $key => $value) {
 					if ($value != $remove) {
 						$this->pids[$key] = $value;
-						$person = Person::getInstance($value);
+						$person = WT_Person::getInstance($value);
 						// get_place_positions() returns families as well as individuals.
 						if ($person && $person->getType()=='INDI') {
 							$bdate = $person->getEstimatedBirthDate();
@@ -224,7 +222,7 @@ class LifespanController extends BaseController {
 	*/
 	function addFamily($newpid, $gen=0) {
 		if (!empty ($newpid)) {
-			$person = Person::getInstance($newpid);
+			$person = WT_Person::getInstance($newpid);
 			if (is_null($person)) return;
 			$this->pids[] = $newpid;
 			$families = $person->getSpouseFamilies();

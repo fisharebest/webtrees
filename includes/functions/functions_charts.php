@@ -34,8 +34,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_CHARTS_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_person.php';
-
 /**
  * print a table cell with sosa number
  *
@@ -80,7 +78,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string $famid family gedcom ID
  */
 function print_family_header($famid) {
-	$family=Family::getInstance($famid);
+	$family=WT_Family::getInstance($famid);
 	if ($family) {
 		echo '<p class="name_head">', PrintReady($family->getFullName()), '</p>';
 	}
@@ -100,13 +98,13 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	$family = Family::getInstance($famid);
+	$family = WT_Family::getInstance($famid);
 	if (is_null($family)) return;
 
 	$husb = $family->getHusband();
-	if (is_null($husb)) $husb = new Person('');
+	if (is_null($husb)) $husb = new WT_Person('');
 	$wife = $family->getWife();
-	if (is_null($wife)) $wife = new Person('');
+	if (is_null($wife)) $wife = new WT_Person('');
 
 	if (!is_null($husb)) {
 		$tempID = $husb->getXref();
@@ -273,7 +271,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
 	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
 
-	$family=Family::getInstance($famid);
+	$family=WT_Family::getInstance($famid);
 	$children=$family->getChildrenIds();
 	$numchil=$family->getNumberOfChildren();
 	echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"2\"><tr>";
@@ -294,8 +292,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		echo "<br />";
 		echo "<span class='nowrap font12'>";
 		echo "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . i18n::translate('Add a child to this family') . "</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".Person::sexImage('M', 'small', '', i18n::translate('Son'     ))."]</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".Person::sexImage('F', 'small', '', i18n::translate('Daughter'))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', i18n::translate('Son'     ))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', i18n::translate('Daughter'))."]</a>";
 		echo help_link('add_child');
 		echo "</span>";
 		echo "<br /><br />";
@@ -349,7 +347,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 				echo "</td>";
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
-					$famids = Person::getInstance($chil)->getSpouseFamilyIds();
+					$famids = WT_Person::getInstance($chil)->getSpouseFamilyIds();
 					$maxfam = count($famids)-1;
 					for ($f=0; $f<=$maxfam; $f++) {
 						$famid_child = $famids[$f];
@@ -386,7 +384,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						echo "<br /><img width=\"100%\" height=\"3\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\" />";
 						// family link
 						if ($famid_child) {
-							$family_child = Family::getInstance($famid_child);
+							$family_child = WT_Family::getInstance($famid_child);
 							if ($family_child) {
 								echo "<br />";
 								echo '<a class="details1" href="', $family_child->getHtmlUrl(), '">';
@@ -612,7 +610,7 @@ function ancestry_array($rootid, $maxgen=0) {
 		$treeid[($i * 2)] = false; // -- father
 		$treeid[($i * 2) + 1] = false; // -- mother
 		if (!empty($treeid[$i])) {
-			$person = Person::getInstance($treeid[$i]);
+			$person = WT_Person::getInstance($treeid[$i]);
 			$family = $person->getPrimaryChildFamily();
 			// Store the prefered parents
 			if (!empty($family)) {
@@ -681,7 +679,7 @@ function print_cousins($famid, $personcount="1") {
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	$family=Family::getInstance($famid);
+	$family=WT_Family::getInstance($famid);
 	$fchildren=$family->getChildren();
 
 	$kids = count($fchildren);

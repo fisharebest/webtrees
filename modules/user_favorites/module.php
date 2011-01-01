@@ -207,7 +207,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 						$content .= ob_get_clean();
 						$content .= PrintReady($favorite["note"]);
 					} else {
-						$record=GedcomRecord::getInstance($favorite['gid']);
+						$record=WT_GedcomRecord::getInstance($favorite['gid']);
 						$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box\">";
 						if ($ctype=="user" || WT_USER_IS_ADMIN) $content .= $removeFavourite;
 						if ($record) {

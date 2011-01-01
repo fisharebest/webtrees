@@ -35,7 +35,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_media.php';
 require_once WT_ROOT.'includes/functions/functions_utf-8.php';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1047,7 +1046,7 @@ function event_sort($a, $b) {
 
 function event_sort_name($a, $b) {
 	if ($a['jd']==$b['jd']) {
-		return GedcomRecord::compare($a['record'], $b['record']);
+		return WT_GedcomRecord::compare($a['record'], $b['record']);
 	} else {
 		return $a['jd']-$b['jd'];
 	}
@@ -1670,25 +1669,25 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	foreach ($resnode['path'] as $n=>$pid) {
 		switch ($resnode['relations'][$n]) {
 		case 'parent':
-			switch (Person::getInstance($pid)->getSex()) {
+			switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M': $resnode['relations'][$n]='father'; break;
 			case 'F': $resnode['relations'][$n]='mother'; break;
 			}
 			break;
 		case 'child':
-			switch (Person::getInstance($pid)->getSex()) {
+			switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M': $resnode['relations'][$n]='son'; break;
 			case 'F': $resnode['relations'][$n]='daughter'; break;
 			}
 			break;
 		case 'spouse':
-			switch (Person::getInstance($pid)->getSex()) {
+			switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M': $resnode['relations'][$n]='husband'; break;
 			case 'F': $resnode['relations'][$n]='wife'; break;
 			}
 			break;
 		case 'sibling':
-			switch (Person::getInstance($pid)->getSex()) {
+			switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M': $resnode['relations'][$n]='brother'; break;
 			case 'F': $resnode['relations'][$n]='sister'; break;
 			}
@@ -1801,8 +1800,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		// TODO: Update all the "3 RELA " values in class_person
 		return '<span class="error">'.$path.'</span>';
 	}
-	$person1=Person::GetInstance($pid1);
-	$person2=Person::GetInstance($pid2);
+	$person1=WT_Person::GetInstance($pid1);
+	$person2=WT_Person::GetInstance($pid2);
 	$sex1=$person1 ? $person1->getSex() : 'U';
 
 	switch ($path) {
@@ -3008,12 +3007,12 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 	while (count($genlist)>0) {
 		$id = array_shift($genlist);
 		if (strpos($id, "empty")===0) continue; // id can be something like "empty7"
-		$person = Person::getInstance($id);
+		$person = WT_Person::getInstance($id);
 		$famids = $person->getChildFamilies();
 		if (count($famids)>0) {
 			if ($show_empty) {
 				for ($i=0;$i<$num_skipped;$i++) {
-					$list["empty" . $total_num_skipped] = new Person('');
+					$list["empty" . $total_num_skipped] = new WT_Person('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 					array_push($genlist, "empty" . $total_num_skipped);
 					$total_num_skipped++;
@@ -3027,14 +3026,14 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 					$list[$husband->getXref()] = $husband;
 					$list[$husband->getXref()]->generation = $list[$id]->generation+1;
 				} elseif ($show_empty) {
-					$list["empty" . $total_num_skipped] = new Person('');
+					$list["empty" . $total_num_skipped] = new WT_Person('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 				}
 				if ($wife) {
 					$list[$wife->getXref()] = $wife;
 					$list[$wife->getXref()]->generation = $list[$id]->generation+1;
 				} elseif ($show_empty) {
-					$list["empty" . $total_num_skipped] = new Person('');
+					$list["empty" . $total_num_skipped] = new WT_Person('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 				}
 				if ($generations == -1 || $list[$id]->generation+1 < $generations) {
@@ -3065,10 +3064,10 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 		} else
 			if ($show_empty) {
 				if ($skipped_gen > $list[$id]->generation) {
-					$list["empty" . $total_num_skipped] = new Person('');
+					$list["empty" . $total_num_skipped] = new WT_Person('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 					$total_num_skipped++;
-					$list["empty" . $total_num_skipped] = new Person('');
+					$list["empty" . $total_num_skipped] = new WT_Person('');
 					$list["empty" . $total_num_skipped]->generation = $list[$id]->generation+1;
 					array_push($genlist, "empty" . ($total_num_skipped - 1));
 					array_push($genlist, "empty" . $total_num_skipped);
@@ -3082,7 +3081,7 @@ function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_emp
 
 //--- copied from class_reportpdf.php
 function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
-	$person = Person::getInstance($pid);
+	$person = WT_Person::getInstance($pid);
 	if ($person==null) return;
 	if (!isset($list[$pid])) {
 		$list[$pid] = $person;

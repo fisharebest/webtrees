@@ -34,11 +34,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_MEDIA_PHP', '');
+define('WT_WT_MEDIA_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
-
-class Media extends GedcomRecord {
+class WT_Media extends WT_GedcomRecord {
 	var $title         =null;
 	var $file          =null;
 	var $ext           ='';

@@ -28,9 +28,8 @@
  * @subpackage Census Assistant
  * @version $Id$
  */
-// require_once './config.php';
-require_once 'includes/controllers/individual_ctrl.php';
-$controller = new IndividualController();
+
+$controller = new WT_Controller_Individual();
 $controller->init();
 
 global $USE_THUMBS_MAIN, $tabno;

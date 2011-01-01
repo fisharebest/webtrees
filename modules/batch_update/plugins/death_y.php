@@ -42,7 +42,7 @@ class death_y_bu_plugin extends base_plugin {
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {
-		return !preg_match('/^1\s+'.WT_EVENTS_DEAT.'\b/m', $gedrec) && Person::getInstance($xref)->isDead();
+		return !preg_match('/^1\s+'.WT_EVENTS_DEAT.'\b/m', $gedrec) && WT_Person::getInstance($xref)->isDead();
 	}
 
 	static function updateRecord($xref, $gedrec) {

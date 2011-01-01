@@ -31,9 +31,8 @@
 
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/controllers/family_ctrl.php';
 
-$controller = new FamilyController();
+$controller = new WT_Controller_Family();
 $controller->init();
 
 print_header($controller->getPageTitle());

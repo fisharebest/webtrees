@@ -1,6 +1,6 @@
 <?php
 /**
- * Class file for a Repository (REPO) object
+ * Class file for a Source (SOUR) object
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
@@ -32,22 +32,28 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_REPOSITORY_PHP', '');
+define('WT_WT_SOURCE_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
+class WT_Source extends WT_GedcomRecord {
+	/**
+	 * get the author of this source record
+	 * @return string
+	 */
+	public function getAuth() {
+		return get_gedcom_value('AUTH', 1, $this->gedrec, '', false);
+	}
 
-class Repository extends GedcomRecord {
 	// Generate a URL to this record, suitable for use in HTML
 	public function getHtmlUrl() {
-		return parent::_getLinkUrl('repo.php?rid=', '&amp;');
+		return parent::_getLinkUrl('source.php?sid=', '&amp;');
 	}
 	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
 	public function getRawUrl() {
-		return parent::_getLinkUrl('repo.php?rid=', '&');
+		return parent::_getLinkUrl('source.php?sid=', '&');
 	}
 
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
-		return parent::_getAllNames('NAME', 1);
+		return parent::_getAllNames('TITL', 1);
 	}
 }

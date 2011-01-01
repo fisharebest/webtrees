@@ -31,10 +31,8 @@ if (!defined('WT_WEBTREES')) {
 define('WT_TIMELINE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/classes/class_person.php';
 
-class TimelineController extends BaseController {
+class WT_Controller_Timeline extends WT_Controller_Base {
 	var $bheight = 30;
 	var $placements = array();
 	var $familyfacts = array();
@@ -82,7 +80,7 @@ class TimelineController extends BaseController {
 		foreach ($this->pids as $key=>$value) {
 			if ($value!=$remove) {
 				$newpids[] = $value;
-				$person = Person::getInstance($value);
+				$person = WT_Person::getInstance($value);
 				if (!is_null($person)) $this->people[] = $person;
 			}
 		}
@@ -232,13 +230,13 @@ class TimelineController extends BaseController {
 					for ($p=0; $p<count($this->pids); $p++) {
 						if ($this->pids[$p]==$husbid) {
 							$husb=$family->getHusband();
-							if (is_null($husb)) $husb = new Person('');
+							if (is_null($husb)) $husb = new WT_Person('');
 							$hdate=$husb->getBirthDate();
 							if ($hdate->isOK()) $ageh=get_age_at_event(GedcomDate::GetAgeGedcom($hdate, $gdate), false);
 						}
 						else if ($this->pids[$p]==$wifeid) {
 							$wife=$family->getWife();
-							if (is_null($wife)) $wife = new Person('');
+							if (is_null($wife)) $wife = new WT_Person('');
 							$wdate=$wife->getBirthDate();
 							if ($wdate->isOK()) $agew=get_age_at_event(GedcomDate::GetAgeGedcom($wdate, $gdate), false);
 						}
@@ -273,7 +271,7 @@ class TimelineController extends BaseController {
 					}
 				}
 				//-- print spouse name for marriage events
-				$spouse = Person::getInstance($event->getSpouseId());
+				$spouse = WT_Person::getInstance($event->getSpouseId());
 				if ($spouse) {
 					for ($p=0; $p<count($this->pids); $p++) {
 						if ($this->pids[$p]==$spouse->getXref()) break;

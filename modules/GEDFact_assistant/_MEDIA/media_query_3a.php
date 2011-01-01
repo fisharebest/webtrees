@@ -36,11 +36,11 @@ $iid2 = safe_GET('iid');
 
 print_simple_header(i18n::translate('Link media'));
 
-$record=GedcomRecord::getInstance($iid2);
+$record=WT_GedcomRecord::getInstance($iid2);
 $headjs="";
 if ($record) {
 	if ($record->getType()=='FAM') {
-		$idrecord=Family::getInstance($iid2);
+		$idrecord=WT_Family::getInstance($iid2);
 		if ($idrecord->getHusbId()) {
 			$headjs=$idrecord->getHusbId();
 		} else {

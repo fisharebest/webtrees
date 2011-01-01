@@ -242,7 +242,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '<ul>';
 		$private_count = 0;
 		foreach ($rows as $row) {
-			$family=Family::getInstance($row);
+			$family=WT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {

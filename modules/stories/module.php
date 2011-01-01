@@ -252,7 +252,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
 				print_findindi_link("xref", "pid");
 				if ($xref) {
-					$person=Person::getInstance($xref);
+					$person=WT_Person::getInstance($xref);
 					if ($person) {
 						echo ' ', $person->format_list('span');
 					}
@@ -325,7 +325,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</td><td class="list_label center width10">', i18n::translate('Delete'), help_link('delete_story', $this->getName()), '</tr>';
 			}
 			foreach ($stories as $story) {
-				$indi=Person::getInstance($story->xref);
+				$indi=WT_Person::getInstance($story->xref);
 				if ($indi) {
 					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
@@ -366,7 +366,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</td><td class="list_label">', i18n::translate('Person');
 			}
 			foreach ($stories as $story) {
-				$indi=Person::getInstance($story->xref);
+				$indi=WT_Person::getInstance($story->xref);
 				if ($indi) {
 					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {

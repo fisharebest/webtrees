@@ -159,14 +159,14 @@ if ($changed_gedcoms) {
 			$prev_gedcom_id=$change->gedcom_id;
 			$output.='<tr><td class="list_value '.$TEXT_DIRECTION.'">';
 			$GEDCOM=$change->gedcom_name;
-			$record=GedcomRecord::getInstance($change->xref);
+			$record=WT_GedcomRecord::getInstance($change->xref);
 			if (!$record) {
 				// When a record has been both added and deleted, then
 				// neither the original nor latest version will exist.
 				// This prevents us from displaying it...
 				// This generates a record of some sorts from the last-but-one
 				// version of the record.
-				$record=new GedcomRecord($change->gedcom);
+				$record=new WT_GedcomRecord($change->gedcom);
 			}
 			$output.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM().'<br />';
 			$output.='<a href="javascript:;" onclick="return show_diff(\''.$record->getHtmlUrl().'&amp;show_changes=yes'.'\');">'.i18n::translate('View Change Diff').'</a> | ';

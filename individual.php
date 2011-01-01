@@ -31,7 +31,6 @@
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-require WT_ROOT.'includes/controllers/individual_ctrl.php';
 
 $showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 
@@ -40,7 +39,7 @@ $nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "CHIL", "HUSB", "WIFE", "RFN", 
 
 $nonfamfacts = array(/*"NCHI",*/ "UID", "");
 
-$controller=new IndividualController();
+$controller=new WT_Controller_Individual();
 $controller->init();
 
 // tell tabs that use jquery that it is already loaded

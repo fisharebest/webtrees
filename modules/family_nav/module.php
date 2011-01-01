@@ -34,7 +34,6 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/classes/class_module.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/controllers/individual_ctrl.php';
 
 class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
@@ -66,15 +65,15 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if ($this->controller) {
 			$root = null;
 			if ($this->controller->pid) {
-				$root = Person::getInstance($this->controller->pid);
+				$root = WT_Person::getInstance($this->controller->pid);
 			}
 			else if ($this->controller->famid) {
-				$fam = Family::getInstance($this->controller->famid);
+				$fam = WT_Family::getInstance($this->controller->famid);
 				if ($fam) $root = $fam->getHusband();
 				if (!$root) $root = $fam->getWife();
 			}
 			if ($root!=null) {
-				$this->controller = new IndividualController();
+				$this->controller = new WT_Controller_Individual();
 				$this->controller->indi=$root;
 				$this->controller->pid=$root->getXref();
 				$this->setController($this->controller);
@@ -543,7 +542,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
 		if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
-		$person=Person::getInstance($pid);
+		$person=WT_Person::getInstance($pid);
 		if ($pid==false || empty($person)) {
 			$spouselinks  = false;
 			$parentlinks  = false;

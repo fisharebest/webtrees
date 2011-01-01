@@ -123,10 +123,10 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if ($this->controller) {
 			$root = null;
 			if ($this->controller->pid) {
-				$root = Person::getInstance($this->controller->pid);
+				$root = WT_Person::getInstance($this->controller->pid);
 			}
 			else if ($this->controller->famid) {
-				$fam = Family::getInstance($this->controller->famid);
+				$fam = WT_Family::getInstance($this->controller->famid);
 				if ($fam) $root = $fam->getHusband();
 				if (!$root) $root = $fam->getWife();
 			}
@@ -203,7 +203,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '<ul>';
 		$private_count = 0;
 		foreach ($rows as $row) {
-			$person=Person::getInstance($row);
+			$person=PWT_erson::getInstance($row);
 			if ($person->canDisplayName()) {
 				$out .= $this->getPersonLi($person);
 			}
@@ -216,7 +216,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function loadSpouses($pid, $generations=0) {
 		$out = '<ul>';
-		$person = Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		if ($person->canDisplayDetails()) {
 			$families = $person->getSpouseFamilies();
 			foreach ($families as $family) {
@@ -232,7 +232,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function loadChildren($famid, $generations=0) {
 		$out = '<ul>';
-		$family = Family::getInstance($famid);
+		$family = WT_Family::getInstance($famid);
 		if ($family->canDisplayDetails()) {
 			$children = $family->getChildren();
 			if (count($children)>0) {

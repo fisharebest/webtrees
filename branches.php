@@ -103,7 +103,7 @@ if ($surn) {
 	echo "</ol>";
 	echo "</fieldset>";
 	if ($rootid) {
-		$person = Person::getInstance($rootid);
+		$person = WT_Person::getInstance($rootid);
 		echo "<p class=\"center\">", i18n::translate('Pedigree chart root person'), " : <a title=\"", $person->getXref(), "\" href=\"{$person->getHtmlUrl()}\">{$person->getFullName()}</a>";
 		echo "<br />".i18n::translate('Direct line ancestors')." : ", count($_SESSION['user_ancestors']), "</p>";
 	}
@@ -205,7 +205,7 @@ function print_fams($person, $famid=null) {
 function load_ancestors_array($xref, $sosa=1) {
 	if ($xref) {
 		$_SESSION['user_ancestors'][$sosa] = $xref;
-		$person = Person::getInstance($xref);
+		$person = WT_Person::getInstance($xref);
 		$famc = $person->getPrimaryChildFamily();
 		if ($famc) {
 			load_ancestors_array($famc->getHusbId(), $sosa*2);
@@ -237,7 +237,7 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 		->fetchAll();
 	$data=array();
 	foreach ($rows as $row) {
-		$data[$row->n_id]=Person::getInstance($row->n_id);
+		$data[$row->n_id]=WT_Person::getInstance($row->n_id);
 	}
 	return $data;
 }

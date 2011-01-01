@@ -31,7 +31,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/classes/class_module.php';
-require_once WT_ROOT.'includes/controllers/hourglass_ctrl.php';
 require_once WT_ROOT.'includes/classes/class_treenav.php';
 
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
@@ -74,7 +73,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$PEDIGREE_FULL_DETAILS = $show_full;
 
 		if ($type!='treenav') {
-			$controller = new HourglassController();
+			$controller = new WT_Controller_Hourglass();
 			$controller->init($pid,0,3);
 			$controller->setupJavascript();
 		} else {
@@ -82,11 +81,11 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$nav->generations = 2;
 		}
 
-		$person = Person::getInstance($pid);
+		$person = WT_Person::getInstance($pid);
 		if ($person==null) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
-			$person = Person::getInstance($pid);
+			$person = WT_Person::getInstance($pid);
 		}
 
 		$id=$this->getName().$block_id;
@@ -225,7 +224,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5" />
 				<?php
 				print_findindi_link('pid','');
-				$root=Person::getInstance($pid);
+				$root=WT_Person::getInstance($pid);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 				}

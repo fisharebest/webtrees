@@ -376,7 +376,7 @@ if ($action=="edituser") {
 										$pid=get_user_gedcom_setting($user_id, $ged_id, 'rootid');
 										echo $pid, '" />', print_findindi_link($varname, "", false, false, $ged_name);
 										$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
-										$person=Person::getInstance($pid);
+										$person=WT_Person::getInstance($pid);
 										if ($person) {
 											echo '<div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
 										}
@@ -389,7 +389,7 @@ if ($action=="edituser") {
 										echo $pid, '" />';
 										print_findindi_link($varname, "", false, false, $ged_name);
 										$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
-										$person=Person::getInstance($pid);
+										$person=WT_Person::getInstance($pid);
 										if ($person) {
 											echo ' <div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
 										}

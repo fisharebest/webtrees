@@ -1025,7 +1025,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	if (!isset($OLD_PGENS)) $OLD_PGENS = $DEFAULT_PEDIGREE_GENERATIONS;
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 
-	$person=Person::getInstance($pid);
+	$person=WT_Person::getInstance($pid);
 	if ($pid==false || empty($person)) {
 		$spouselinks  = false;
 		$parentlinks  = false;

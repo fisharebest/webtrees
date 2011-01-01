@@ -756,7 +756,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || (strpos($namerec, '2 _MARNM')!==false))
 		$adv_name_fields['_MARNM']='';
 
-	$person = Person::getInstance($pid);
+	$person = WT_Person::getInstance($pid);
 	foreach ($adv_name_fields as $tag=>$dummy) {
 		// Edit existing tags
 		if (preg_match_all("/2 $tag (.+)/", $namerec, $match))
@@ -1461,7 +1461,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	// retrieve linked NOTE
 	if ($fact=="NOTE" && $islink) {		
-		$note1=Note::getInstance($value);
+		$note1=WT_Note::getInstance($value);
 		if ($note1) {
 			$noterec=$note1->getGedcomRecord();
 			preg_match("/$value/i", $noterec, $notematch);
@@ -1696,7 +1696,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && ($action=="add" || $action=="edit" ) && $pid) {
 				// Check if a CENS event ---------------------------
 				if ($event_add=="census_add") {
-					$type_pid=GedcomRecord::getInstance($pid);
+					$type_pid=WT_GedcomRecord::getInstance($pid);
 					if ($type_pid->getType()=="INDI" ) {
 						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -1727,7 +1727,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo $date->Display(false);
 		}
 		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
-			$record=GedcomRecord::getInstance($value);
+			$record=WT_GedcomRecord::getInstance($value);
 			if ($record) {
 				echo ' ', PrintReady($record->getFullName()), ' (', $value, ')';
 			}
@@ -1741,7 +1741,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo getRLM(), $date->Display(false), getRLM();
 		}
 		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
-			$record=GedcomRecord::getInstance($value);
+			$record=WT_GedcomRecord::getInstance($value);
 			if ($record) {
 				echo getRLM(), PrintReady($record->getFullName()), ' ', getLRM(), '(', $value, ') ', getLRM(), getRLM();
 			}
@@ -2410,7 +2410,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 
 		if ($type!="DATA" && $type!="CONT") {
 			$tags[]=$type;
-			$person = Person::getInstance($pid);
+			$person = WT_Person::getInstance($pid);
 			$subrecord = $level.' '.$type.' '.$text;
 			if ($inSource && $type=="DATE") {
 				add_simple_tag($subrecord, '', translate_fact($label, $person));

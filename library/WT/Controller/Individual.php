@@ -31,13 +31,11 @@ if (!defined('WT_WEBTREES')) {
 define('WT_INDIVIDUAL_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/classes/class_module.php';
 
-class IndividualController extends BaseController {
+class WT_Controller_Individual extends WT_Controller_Base {
 	var $pid = '';
 	var $indi = null;
 	var $diffindi = null;
@@ -79,7 +77,7 @@ class IndividualController extends BaseController {
 		}
 
 		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null) {
-				$this->indi = new Person($gedrec);
+				$this->indi = new WT_Person($gedrec);
 				$this->indi->ged_id=WT_GED_ID; // This record is from a file
 		} else if (!$this->indi) {
 			return false;
@@ -115,7 +113,7 @@ class IndividualController extends BaseController {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->indi = new Person($gedrec);
+				$this->indi = new WT_Person($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -130,7 +128,7 @@ class IndividualController extends BaseController {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->indi = new Person($gedrec);
+				$this->indi = new WT_Person($gedrec);
 			}
 			unset($_GET['action']);
 			break;
@@ -140,7 +138,7 @@ class IndividualController extends BaseController {
 		if ($this->show_changes && WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->pid, WT_GED_ID);
 			if (!empty($newrec)) {
-				$this->diffindi = new Person($newrec);
+				$this->diffindi = new WT_Person($newrec);
 				$this->diffindi->setChanged(true);
 			}
 		}
@@ -319,7 +317,7 @@ class IndividualController extends BaseController {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
-		$dummy=new Person($factrec);
+		$dummy=new WT_Person($factrec);
 		$dummy->setPrimaryName(0);
 		echo '<div id="name1">';
 			echo '<dl><dt class="label">', i18n::translate('Name'), '</dt>';
@@ -390,13 +388,13 @@ class IndividualController extends BaseController {
 			echo '<dd class="field">';
 			switch ($sex) {
 			case 'M':
-				echo i18n::translate('Male'), Person::sexImage('M', 'small', '', i18n::translate('Male'));
+				echo i18n::translate('Male'), WT_Person::sexImage('M', 'small', '', i18n::translate('Male'));
 				break;
 			case 'F':
-				echo i18n::translate('Female'), Person::sexImage('F', 'small', '', i18n::translate('Female'));
+				echo i18n::translate('Female'), WT_Person::sexImage('F', 'small', '', i18n::translate('Female'));
 				break;
 			case 'U':
-				echo i18n::translate_c('unknown gender', 'Unknown'), Person::sexImage('U', 'small', '', i18n::translate_c('unknown gender', 'Unknown'));
+				echo i18n::translate_c('unknown gender', 'Unknown'), WT_Person::sexImage('U', 'small', '', i18n::translate_c('unknown gender', 'Unknown'));
 				break;
 			}
 			if ($this->SEX_COUNT>1) {

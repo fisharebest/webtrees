@@ -936,7 +936,7 @@ class stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
-		$record=GedcomRecord::getInstance($row['d_gid']);
+		$record=WT_GedcomRecord::getInstance($row['d_gid']);
 		switch($type) {
 			default:
 			case 'full':
@@ -954,7 +954,7 @@ class stats {
 				$result="<a href=\"".$record->getHtmlUrl()."\">".$record->getFullName()."</a>";
 				break;
 			case 'place':
-				$fact=GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
+				$fact=WT_GedcomRecord::getInstance($row['d_gid'])->getFactByType($row['d_fact']);
 				$result=format_fact_place($fact, true, true, true);
 				break;
 		}
@@ -1504,7 +1504,7 @@ class stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
-		$person=Person::getInstance($row['id']);
+		$person=WT_Person::getInstance($row['id']);
 		switch($type) {
 			default:
 			case 'full':
@@ -1563,7 +1563,7 @@ class stats {
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person = Person::getInstance($row['deathdate']);
+			$person = WT_Person::getInstance($row['deathdate']);
 			$age = $row['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
@@ -1631,7 +1631,7 @@ class stats {
 		if (!isset($rows)) {return 0;}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person=Person::getInstance($row['id']);
+			$person=WT_Person::getInstance($row['id']);
 			$age = (WT_CLIENT_JD-$row['age']);
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
@@ -1894,7 +1894,7 @@ class stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
-		$record=GedcomRecord::getInstance($row['id']);
+		$record=WT_GedcomRecord::getInstance($row['id']);
 		switch($type) {
 			default:
 			case 'full':
@@ -2052,8 +2052,8 @@ class stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
-		if (isset($row['famid'])) $family=Family::getInstance($row['famid']);
-		if (isset($row['i_id'])) $person=Person::getInstance($row['i_id']);
+		if (isset($row['famid'])) $family=WT_Family::getInstance($row['famid']);
+		if (isset($row['i_id'])) $person=WT_Person::getInstance($row['i_id']);
 		switch($type) {
 			default:
 			case 'full':
@@ -2175,7 +2175,7 @@ class stats {
 		$top10 = array();
 		$i = 0;
 		foreach ($rows as $fam=>$age) {
-			$family = Family::getInstance($fam);
+			$family = WT_Family::getInstance($fam);
 			if ($type == 'name') {
 				return $family->format_list('span', false, $family->getFullName());
 			}
@@ -2255,7 +2255,7 @@ class stats {
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $fam) {
-			$family=Family::getInstance($fam['family']);
+			$family=WT_Family::getInstance($fam['family']);
 			if ($fam['age']<0) break;
 			$age = $fam['age'];
 			if (floor($age/365.25)>0) {
@@ -2319,7 +2319,7 @@ class stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
-		if (isset($row['id'])) $person=Person::getInstance($row['id']);
+		if (isset($row['id'])) $person=WT_Person::getInstance($row['id']);
 		switch($type) {
 			default:
 			case 'full':
@@ -2779,7 +2779,7 @@ class stats {
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
-		$family=Family::getInstance($row['id']);
+		$family=WT_Family::getInstance($row['id']);
 		switch($type) {
 			default:
 			case 'full':
@@ -2819,7 +2819,7 @@ class stats {
 		if (count($rows) < $total) {$total = count($rows);}
 		$top10 = array();
 		for ($c = 0; $c < $total; $c++) {
-			$family=Family::getInstance($rows[$c]['id']);
+			$family=WT_Family::getInstance($rows[$c]['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
 					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".i18n::translate('children')."]")."</li>\n";
@@ -2881,9 +2881,9 @@ class stats {
 		$top10 = array();
 		if ($one) $dist = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam['family']);
-			$child1 = Person::getInstance($fam['ch1']);
-			$child2 = Person::getInstance($fam['ch2']);
+			$family = WT_Family::getInstance($fam['family']);
+			$child1 = WT_Person::getInstance($fam['ch1']);
+			$child2 = WT_Person::getInstance($fam['ch2']);
 			if ($type == 'name') {
 				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 					$return = "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
@@ -2986,7 +2986,7 @@ class stats {
 		$chd = '';
 		$chl = array();
 		foreach ($rows as $row) {
-			$family=Family::getInstance($row['id']);
+			$family=WT_Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($tot==0) {
 					$per = 0;
@@ -3131,7 +3131,7 @@ class stats {
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$family=Family::getInstance($row['family']);
+			$family=WT_Family::getInstance($row['family']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
 					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName())."</a></li>\n";
@@ -3255,7 +3255,7 @@ class stats {
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$family=Family::getInstance($row['id']);
+			$family=WT_Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
 					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".i18n::translate('grandchildren')."]")."</li>\n";

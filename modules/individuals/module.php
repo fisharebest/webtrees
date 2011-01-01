@@ -224,7 +224,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '<ul>';
 		$private_count = 0;
 		foreach ($rows as $row) {
-			$person=Person::getInstance($row);
+			$person=WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {

@@ -77,11 +77,11 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo '<div id="', $table_id, '-table" class="center">';
 	//-- filter buttons
 	echo "<button type=\"button\" class=\"SEX_M\" title=\"", i18n::translate('Show only males.'), "\" >";
-	echo Person::sexImage('M', 'large'), "&nbsp;</button> ";
+	echo WT_Person::sexImage('M', 'large'), "&nbsp;</button> ";
 	echo "<button type=\"button\" class=\"SEX_F\" title=\"", i18n::translate('Show only females.'), "\" >";
-	echo Person::sexImage('F', 'large'), "&nbsp;</button> ";
+	echo WT_Person::sexImage('F', 'large'), "&nbsp;</button> ";
 	echo "<button type=\"button\" class=\"SEX_U\" title=\"", i18n::translate('Show only persons of whom the gender is not known.'), "\" >";
-	echo Person::sexImage('U', 'large'), "&nbsp;</button> ";
+	echo WT_Person::sexImage('U', 'large'), "&nbsp;</button> ";
 	echo " <input type=\"text\" size=\"4\" id=\"aliveyear\" value=\"", date('Y'), "\" /> ";
 	echo "<button type=\"button\" class=\"alive_in_year\" title=\"", i18n::translate('Show persons alive in the indicated year.'), "\" >";
 	echo i18n::translate('Alive in Year'), "</button> ";
@@ -137,12 +137,12 @@ function print_indi_table($datalist, $legend="", $option="") {
 		if (is_object($value)) { // Array of objects
 			$person=$value;
 		} elseif (!is_array($value)) { // Array of IDs
-			$person = Person::getInstance($value);
+			$person = WT_Person::getInstance($value);
 		} else { // Array of search results
 			$gid = $key;
 			if (isset($value["gid"])) $gid = $value["gid"]; // from indilist
 			if (isset($value[4])) $gid = $value[4]; // from indilist ALL
-			$person = Person::getInstance($gid);
+			$person = WT_Person::getInstance($gid);
 		}
 		/* @var $person Person */
 		if (is_null($person)) continue;
@@ -505,20 +505,20 @@ function print_fam_table($datalist, $legend="", $option="") {
 		if (is_object($value)) { // Array of objects
 			$family=$value;
 		} elseif (!is_array($value)) { // Array of IDs
-			$family=Family::getInstance($value);
+			$family=WT_Family::getInstance($value);
 		} else { // Array of search results
 			$gid = "";
 			if (isset($value["gid"])) $gid = $value["gid"];
-			if (isset($value["gedcom"])) $family = new Family($value["gedcom"]);
-			else $family = Family::getInstance($gid);
+			if (isset($value["gedcom"])) $family = new WT_Family($value["gedcom"]);
+			else $family = WT_Family::getInstance($gid);
 		}
 		if (is_null($family)) continue;
 		if ($family->getType() !== "FAM") continue;
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
-		if (is_null($husb)) $husb = new Person('');
+		if (is_null($husb)) $husb = new WT_Person('');
 		$wife = $family->getWife();
-		if (is_null($wife)) $wife = new Person('');
+		if (is_null($wife)) $wife = new WT_Person('');
 		if (!$husb->canDisplayName() || !$wife->canDisplayName()) {
 			$hidden++;
 			continue;
@@ -815,9 +815,9 @@ function print_sour_table($datalist, $legend=null) {
 		if (is_object($value)) { // Array of objects
 			$source=$value;
 		} elseif (!is_array($value)) { // Array of IDs
-			$source=Source::getInstance($key); // from placelist
+			$source=WT_Source::getInstance($key); // from placelist
 			if (is_null($source)) {
-				$source=Source::getInstance($value);
+				$source=WT_Source::getInstance($value);
 			}
 			unset($value);
 		} else { // Array of search results
@@ -826,9 +826,9 @@ function print_sour_table($datalist, $legend=null) {
 				$gid=$value['gid'];
 			}
 			if (isset($value['gedcom'])) {
-				$source=new Source($value['gedcom']);
+				$source=new WT_Source($value['gedcom']);
 			} else {
-				$source=Source::getInstance($gid);
+				$source=WT_Source::getInstance($gid);
 			}
 		}
 		if (!$source || !$source->canDisplayDetails()) {
@@ -1064,8 +1064,8 @@ function print_media_table($datalist, $legend="") {
 		if (is_object($value)) { // Array of objects
 			$media=$value;
 		} else {
-			$media = new Media($value["GEDCOM"]);
-			if (is_null($media)) $media = Media::getInstance($key);
+			$media = new WT_Media($value["GEDCOM"]);
+			if (is_null($media)) $media = WT_Media::getInstance($key);
 			if (is_null($media)) continue;
 		}
 		if ($media->canDisplayDetails()) {
@@ -1101,7 +1101,7 @@ function print_media_table($datalist, $legend="") {
 				$resu = array();
 				foreach ($value["LINKS"] as $k=>$v) {
 					if ($v!=$rectype) continue;
-					$record = GedcomRecord::getInstance($k);
+					$record = WT_GedcomRecord::getInstance($k);
 					$txt = $record->getListName();
 					$resu[] = $txt;
 				}
@@ -1346,7 +1346,7 @@ function print_changes_table($change_ids) {
 	$NMAX = 1000;
 	foreach ($change_ids as $change_id) {
 		if ($n>=$NMAX) break;
-		$record=GedcomRecord::getInstance($change_id);
+		$record=WT_GedcomRecord::getInstance($change_id);
 		if (!$record || !$record->canDisplayDetails()) {
 			continue;
 		}
@@ -1623,7 +1623,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	$filtered_events = array();
 
 	foreach (get_events_list($startjd, $endjd, $events) as $value) {
-		$record = GedcomRecord::getInstance($value['id']);
+		$record = WT_GedcomRecord::getInstance($value['id']);
 		//-- only living people ?
 		if ($only_living) {
 			if ($record->getType()=="INDI" && $record->isDead()) {

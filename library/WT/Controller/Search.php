@@ -31,9 +31,7 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_SEARCH_CTRL_PHP', '');
 
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
-
-class SearchController extends BaseController {
+class WT_Controller_Search extends WT_Controller_Base {
 	var $isPostBack = false;
 	var $topsearch;
 	var $srfams;
@@ -331,7 +329,7 @@ class SearchController extends BaseController {
 
 		// Then see if an ID is typed in. If so, we might want to jump there.
 		if (isset ($this->query)) {
-			$record=GedcomRecord::getInstance($this->query);
+			$record=WT_GedcomRecord::getInstance($this->query);
 			if ($record && $record->canDisplayDetails()) {
 				header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$record->getRawUrl());
 				exit;

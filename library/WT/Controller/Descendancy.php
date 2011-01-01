@@ -30,12 +30,9 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_DESCENDANCY_PHP', '');
 
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-require_once WT_ROOT.'includes/classes/class_person.php';
-
-class DescendancyController extends BaseController {
+class WT_Controller_Descendancy extends WT_Controller_Base {
 	var $pid = "";
 	var $descPerson = null;
 
@@ -104,7 +101,7 @@ class DescendancyController extends BaseController {
 	if (strlen($this->name)<30) $this->cellwidth="420";
 	else $this->cellwidth=(strlen($this->name)*14);
 
-	$this->descPerson = Person::getInstance($this->pid);
+	$this->descPerson = WT_Person::getInstance($this->pid);
 	$this->name=$this->descPerson->getFullName();
 	}
 

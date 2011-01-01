@@ -140,7 +140,7 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
-// Build Relatives navigator from includes/controllers/individual_ctrl
+// Build Relatives navigator from individual controller
 //------------------------------------------------------------------------------
 /*
 	echo '<td valign="top" align="center" width="220px">';

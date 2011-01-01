@@ -337,7 +337,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
 		)->execute(array($xref, $ged_id))->fetchOneColumn();
 		foreach ($linked_gids as $linked_gid) {
-			$linked_record=GedcomRecord::getInstance($linked_gid);
+			$linked_record=WT_GedcomRecord::getInstance($linked_gid);
 			if (!$linked_record->canDisplayDetails()) {
 				return $cache[$cache_key]=false;
 			}

@@ -161,7 +161,7 @@ echo i18n::translate('Real name'), help_link('edituser_realname'), '</td><td cla
 echo '<input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '" />';
 echo '</td></tr>';
 
-$person=Person::getInstance(WT_USER_GEDCOM_ID);
+$person=WT_Person::getInstance(WT_USER_GEDCOM_ID);
 if ($person) {
 	echo '<tr><td class="descriptionbox wrap">';
 	echo i18n::translate('Individual record'), help_link('edituser_gedcomid'), '</td><td class="optionbox">';
@@ -169,7 +169,7 @@ if ($person) {
 	echo '</td></tr>';
 }
 
-$person=Person::getInstance(WT_USER_ROOT_ID);
+$person=WT_Person::getInstance(WT_USER_ROOT_ID);
 echo '<tr><td class="descriptionbox wrap">';
 echo i18n::translate('Pedigree chart root person'), help_link('edituser_rootid'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '" />';

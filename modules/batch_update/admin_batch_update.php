@@ -101,7 +101,7 @@ class batch_update {
 			} else {
 				if ($this->curr_xref) {
 					// Create an object, so we can get the latest version of the name.
-					$object=GedcomRecord::getInstance($this->curr_xref);
+					$object=WT_GedcomRecord::getInstance($this->curr_xref);
 					$object->setGedcomRecord($this->record);
 
 					$html.=

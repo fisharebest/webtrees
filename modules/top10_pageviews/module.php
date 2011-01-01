@@ -90,7 +90,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<table>";
 				}
 				foreach ($top10 as $id=>$count) {
-					$record=GedcomRecord::getInstance($id);
+					$record=WT_GedcomRecord::getInstance($id);
 					if ($record && $record->canDisplayDetails()) {
 						$content .= '<tr valign="top">';
 						if ($count_placement=='before') {

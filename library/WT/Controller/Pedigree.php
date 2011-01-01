@@ -29,10 +29,8 @@ if (!defined('WT_WEBTREES')) {
 define('WT_PEDIGREE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/controllers/basecontrol.php';
-require_once WT_ROOT.'includes/classes/class_person.php';
 
-class PedigreeController extends BaseController {
+class WT_Controller_Pedigree extends WT_Controller_Base {
 	var $log2;
 	var $rootid;
 	var $name;
@@ -89,8 +87,8 @@ class PedigreeController extends BaseController {
 		// Validate parameters
 		$this->rootid=check_rootid($this->rootid);
 
-		$this->rootPerson = Person::getInstance($this->rootid);
-		if (is_null($this->rootPerson)) $this->rootPerson = new Person('');
+		$this->rootPerson = WT_Person::getInstance($this->rootid);
+		if (is_null($this->rootPerson)) $this->rootPerson = new WT_Person('');
 		$this->name     = $this->rootPerson->getFullName();
 		$this->addname  = $this->rootPerson->getAddName();
 

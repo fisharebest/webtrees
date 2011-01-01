@@ -33,9 +33,8 @@
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/controllers/timeline_ctrl.php';
 
-$controller = new TimelineController();
+$controller = new WT_Controller_Timeline();
 $controller->init();
 
 print_header(i18n::translate('Timeline'));

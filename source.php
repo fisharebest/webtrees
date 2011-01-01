@@ -29,7 +29,6 @@
 
 define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
-require WT_ROOT.'includes/controllers/source_ctrl.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // We have finished writing session data, so release the lock
@@ -37,7 +36,7 @@ Zend_Session::writeClose();
 
 $nonfacts = array();
 
-$controller=new SourceController();
+$controller=new WT_Controller_Source();
 $controller->init();
 
 // Tell addmedia.php what to link to

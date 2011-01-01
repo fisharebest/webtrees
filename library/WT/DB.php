@@ -3,8 +3,6 @@
 // Class file for the database access.  Extend PHP's native PDO and
 // PDOStatement classes to provide database access with logging, etc.
 //
-// See documentation at http://wiki.phpgedview.net/en/index.php?title=WT_Database_Functions
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2010 webtrees development team.
 //
@@ -33,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_WT_DB_PHP', '');
+define('WT_WT_DB_PHP', '');
 
 class WT_DB {
 	//////////////////////////////////////////////////////////////////////////////
@@ -272,139 +270,5 @@ class WT_DB {
 				die("Internal error while updating {$schema_name} to {$next_version}");
 			}
 		}
-	}
-}
-
-class WT_DBStatement {
-	//////////////////////////////////////////////////////////////////////////////
-	// CONSTRUCTION
-	// Decorate a PDOStatement object.
-	// See http://en.wikipedia.org/wiki/Decorator_pattern
-	//////////////////////////////////////////////////////////////////////////////
-	private $pdostatement=null;
-
-	// Keep track of calls to execute(), so we can do it automatically
-	private $executed=false;
-
-	// Keep a copy of the bind variables, for logging
-	private $bind_variables=array();
-
-	// Our constructor just takes a copy of the object to be decorated
-	public function __construct(PDOStatement $statement) {
-		$this->pdostatement=$statement;
-	}
-
-	// Need this function to load BLOB values from streams
-	public function bindParam($num, &$value, $type) {
-		$this->pdostatement->bindParam($num, $value, $type);
-		return $this;
-	}
-
-	//////////////////////////////////////////////////////////////////////////////
-	// FLUENT INTERFACE
-	// Add automatic calling of execute() and closeCursor()
-	// See http://en.wikipedia.org/wiki/Fluent_interface
-	//////////////////////////////////////////////////////////////////////////////
-	public function __call($function, $params) {
-		switch ($function) {
-		case 'closeCursor':
-			$this->executed=false;
-			// no break;
-		case 'bindColumn':
-		case 'bindParam':
-		case 'bindValue':
-			// TODO: bind variables need to be stored in $this->bind_variables so we can log them
-		case 'setAttribute':
-		case 'setFetchMode':
-			// Functions that return no values become fluent
-			call_user_func_array(array($this->pdostatement, $function), $params);
-			return $this;
-		case 'execute':
-			if ($this->executed) {
-				trigger_error('WT_DBStatement::execute() called twice.', E_USER_ERROR);
-			} else {
-				if ($params) {
-					$this->bind_variables=$params[0];
-					foreach ($params[0] as &$param) {
-						if ($param===false) {
-							// For consistency, otherwise true=>'1' and false=>''
-							$param=0;
-						}
-					}
-				}
-				$start=microtime(true);
-				$result=call_user_func_array(array($this->pdostatement, $function), $params);
-				$end=microtime(true);
-				$this->executed=!preg_match('/^(insert|delete|update|create|alter) /i', $this->pdostatement->queryString);
-				WT_DB::logQuery($this->pdostatement->queryString, $this->pdostatement->rowCount(), $end-$start, $this->bind_variables);
-				return $this;
-			}
-		case 'fetch':
-		case 'fetchColumn':
-		case 'fetchObject':
-		case 'fetchAll':
-			// Automatically execute the query
-			if (!$this->executed) {
-				$this->execute();
-				$this->executed=true;
-			}
-			// no break;
-		default:
-			return call_user_func_array(array($this->pdostatement, $function), $params);
-		}
-	}
-
-	//////////////////////////////////////////////////////////////////////////////
-	// FUNCTIONALITY ENHANCEMENTS
-	//////////////////////////////////////////////////////////////////////////////
-
-	// Fetch one row, and close the cursor.  e.g. SELECT * FROM foo WHERE pk=bar
-	public function fetchOneRow($fetch_style=PDO::FETCH_OBJ) {
-		if (!$this->executed) {
-			$this->execute();
-		}
-		$row=$this->pdostatement->fetch($fetch_style);
-		$this->pdostatement->closeCursor();
-		$this->executed=false;
-		return $row ? $row : null;
-	}
-
-	// Fetch one value and close the cursor.  e.g. SELECT MAX(foo) FROM bar
-	public function fetchOne($default=null) {
-		if (!$this->executed) {
-			$this->execute();
-		}
-		$row=$this->pdostatement->fetch(PDO::FETCH_NUM);
-		$this->pdostatement->closeCursor();
-		$this->executed=false;
-		return is_array($row) ? $row[0] : $default;
-	}
-
-	// Fetch two columns, and return an associative array of col1=>col2
-	public function fetchAssoc() {
-		if (!$this->executed) {
-			$this->execute();
-		}
-		$rows=array();
-		while ($row=$this->pdostatement->fetch(PDO::FETCH_NUM)) {
-			$rows[$row[0]]=$row[1];
-		}
-		$this->pdostatement->closeCursor();
-		$this->executed=false;
-		return $rows;
-	}
-
-	// Fetch all the first column, as an array
-	public function fetchOneColumn() {
-		if (!$this->executed) {
-			$this->execute();
-		}
-		$list=array();
-		while ($row=$this->pdostatement->fetch(PDO::FETCH_NUM)) {
-			$list[]=$row[0];
-		}
-		$this->pdostatement->closeCursor();
-		$this->executed=false;
-		return $list;
 	}
 }

@@ -332,7 +332,7 @@ function tool_tip_text($marker) {
 	if (!empty($marker['info']))
 		$tool_tip.=": {$marker['info']}";
 	if (!empty($marker['name'])) {
-		$person=Person::getInstance($marker['name']);
+		$person=WT_Person::getInstance($marker['name']);
 		if ($person && $person->canDisplayName()) {
 			$tool_tip.=": ".PrintReady($person->getFullName());
 		}
@@ -535,7 +535,7 @@ function build_indiv_map($indifacts, $famids) {
 				if ($famrec) {
 					$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
 					for ($j=0; $j<$num; $j++) {
-						$person=Person::getInstance($smatch[$j][1]);
+						$person=WT_Person::getInstance($smatch[$j][1]);
 						if ($person->canDisplayDetails()) {
 							$srec = find_person_record($smatch[$j][1], WT_GED_ID);
 							$birthrec = '';
@@ -682,7 +682,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (!empty($markers[$j]['info']))
 						echo ': ', addslashes($markers[$j]['info']);
 					if (!empty($markers[$j]["name"])) {
-						$person=Person::getInstance($markers[$j]['name']);
+						$person=WT_Person::getInstance($markers[$j]['name']);
 						if ($person) {
 							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
 						}
@@ -742,7 +742,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (!empty($markers[$j]['info']))
 						echo ': ', addslashes($markers[$j]['info']);
 					if (!empty($markers[$j]["name"])) {
-						$person=Person::getInstance($markers[$j]['name']);
+						$person=WT_Person::getInstance($markers[$j]['name']);
 						if ($person) {
 							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
 						}
@@ -808,7 +808,7 @@ function build_indiv_map($indifacts, $famids) {
 							if (!empty($markers[$k]['info']))
 								echo ': ', addslashes($markers[$k]['info']);
 							if (!empty($markers[$k]["name"])) {
-								$person=Person::getInstance($markers[$k]['name']);
+								$person=WT_Person::getInstance($markers[$k]['name']);
 								if ($person) {
 									echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
 								}
@@ -857,7 +857,7 @@ function build_indiv_map($indifacts, $famids) {
 			if (!empty($marker["info"]))
 				echo "<span class=\"field\">{$marker["info"]}</span><br />";
 			if (!empty($marker["name"])) {
-				$person=Person::getInstance($marker['name']);
+				$person=WT_Person::getInstance($marker['name']);
 				if ($person) {
 					echo '<a href="', $person->getHtmlUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : i18n::translate('Private'), '</a>';
 				}

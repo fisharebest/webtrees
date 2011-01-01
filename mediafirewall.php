@@ -31,12 +31,11 @@
 
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/controllers/media_ctrl.php';
 
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
-$controller = new MediaController();
+$controller = new WT_Controller_Media();
 $controller->init();
 
 $debug_mediafirewall   = 0; // set to 1 if you want to see media firewall values displayed instead of images

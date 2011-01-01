@@ -444,7 +444,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php
 								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
 								if ($PEDIGREE_ROOT_ID) {
-									$person=Person::getInstance($PEDIGREE_ROOT_ID);
+									$person=WT_Person::getInstance($PEDIGREE_ROOT_ID);
 									if ($person) {
 										echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 									} else {
@@ -746,7 +746,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 			foreach ($rows as $row) {
 				echo '<tr><td class="optionbox" width="*">';
 				if ($row->xref) {
-					$record=GedcomRecord::getInstance($row->xref);
+					$record=WT_GedcomRecord::getInstance($row->xref);
 					if ($record) {
 						$name=$record->getFullName();
 					} else {

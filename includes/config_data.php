@@ -1636,13 +1636,13 @@ $FACTS_REPO=array(
 function translate_fact($fact, $person=null) {
 	global $FACTS, $FACTS_M, $FACTS_F, $FACTS_REPO;
 
-	if ($person instanceof Person && $person->getSex()=='M' && array_key_exists($fact, $FACTS_M)) {
+	if ($person instanceof WT_Person && $person->getSex()=='M' && array_key_exists($fact, $FACTS_M)) {
 		return $FACTS_M[$fact];
 	}
-	if ($person instanceof Person && $person->getSex()=='F' && array_key_exists($fact, $FACTS_F)) {
+	if ($person instanceof WT_Person && $person->getSex()=='F' && array_key_exists($fact, $FACTS_F)) {
 		return $FACTS_F[$fact];
 	}
-	if ($person instanceof Repository && array_key_exists($fact, $FACTS_REPO)) {
+	if ($person instanceof WT_Repository && array_key_exists($fact, $FACTS_REPO)) {
 		return $FACTS_REPO[$fact];
 	}
 	if (array_key_exists($fact, $FACTS)) {

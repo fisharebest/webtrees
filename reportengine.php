@@ -253,7 +253,7 @@ elseif ($action=="setup") {
 								$input["default"] = $famid;
 							} else {
 								// Default the FAM to the first spouse family of the default INDI
-								$person=Person::getInstance(check_rootid($input["default"]));
+								$person=WT_Person::getInstance(check_rootid($input["default"]));
 								if ($person) {
 									$sfams=$person->getSpouseFamilies();
 									if ($sfams) {

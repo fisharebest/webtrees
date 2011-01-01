@@ -255,17 +255,17 @@ if (!isset($type)) {
 }
 $level0type = $type;
 if ($type=='INDI') {
-	$record=Person::getInstance($pid);
+	$record=WT_Person::getInstance($pid);
 	echo '<b>', PrintReady($record->getFullName()), '</b><br />';
 } elseif ($type=='FAM') {
 	if (!empty($pid)) {
-		$record=Family::getInstance($pid);
+		$record=WT_Family::getInstance($pid);
 	} else {
-		$record=Family::getInstance($famid);
+		$record=WT_Family::getInstance($famid);
 	}
 	echo '<b>', PrintReady($record->getFullName()), '</b><br />';
 } elseif ($type=='SOUR') {
-	$record=Source::getInstance($pid);
+	$record=WT_Source::getInstance($pid);
 	echo '<b>', PrintReady($record->getFullName()), '&nbsp;&nbsp;&nbsp;';
 	if ($TEXT_DIRECTION=='rtl') {
 		echo getRLM();
@@ -512,7 +512,7 @@ case 'addfamlink':
 	echo '</td></tr>';
 	if ($famtag=='CHIL') {
 		echo '<tr><td class="facts_label">', i18n::translate('Pedigree'), '</td><td class="facts_value">';
-		switch (Person::getInstance($pid)->getSex()) {
+		switch (WT_Person::getInstance($pid)->getSex()) {
 		case 'M': echo edit_field_pedi_m('pedigree'); break;
 		case 'F': echo edit_field_pedi_f('pedigree'); break;
 		case 'U': echo edit_field_pedi_u('pedigree'); break;
@@ -586,7 +586,7 @@ case 'linkspouse':
 //------------------------------------------------------------------------------
 case 'linkfamaction':
 	// Make sure we have the right ID (f123 vs. F123)
-	$famid=Family::getInstance($famid)->getXref();
+	$famid=WT_Family::getInstance($famid)->getXref();
 	$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 	if (!empty($famrec)) {
 		$itag = "FAMC";
@@ -1427,8 +1427,8 @@ case 'addchildaction':
 		$gedrec = "";
 		if (!empty($famid)) {
 			// Insert new child at the right place [ 1686246 ]
-			$newchild = Person::getInstance($xref);
-			$family = Family::getInstance($famid);
+			$newchild = WT_Person::getInstance($xref);
+			$family = WT_Family::getInstance($famid);
 			if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
 			$gedrec = $family->getGedcomRecord();
 			$done = false;
@@ -1704,7 +1704,7 @@ case 'addopfchildaction':
 	}
 
 	$famrec="0 @$newfamxref@ FAM\n1 CHIL @{$newindixref}@";
-	$person=Person::getInstance($pid);
+	$person=WT_Person::getInstance($pid);
 	if ($person->getSex()=='F') {
 		$famrec.="\n1 WIFE @{$pid}@";
 	} else {
@@ -1962,7 +1962,7 @@ case 'reorder_children':
 		<ul id="reorder_list">
 		<?php
 			// reorder children in modified families [ 1840895 ]
-			$family = Family::getInstance($pid);
+			$family = WT_Family::getInstance($pid);
 			$ids = $family->getChildrenIds();
 			if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
 			$children = array();
@@ -2026,8 +2026,7 @@ case 'reorder_children':
 	break;
 //------------------------------------------------------------------------------
 case 'changefamily':
-	require_once WT_ROOT.'includes/classes/class_family.php';
-	$family = new Family($gedrec);
+	$family = new WT_Family($gedrec);
 	$father = $family->getHusband();
 	$mother = $family->getWife();
 	$children = $family->getChildren();
@@ -2170,8 +2169,7 @@ case 'changefamily':
 	break;
 //------------------------------------------------------------------------------
 case 'changefamily_update':
-	require_once WT_ROOT.'includes/classes/class_family.php';
-	$family = new Family($gedrec);
+	$family = new WT_Family($gedrec);
 	$father = $family->getHusband();
 	$mother = $family->getWife();
 	$children = $family->getChildren();
@@ -2354,7 +2352,7 @@ case 'reorder_fams':
 		<input type="hidden" name="option" value="bymarriage" />
 		<ul id="reorder_list">
 		<?php
-			$person = Person::getInstance($pid);
+			$person = WT_Person::getInstance($pid);
 			$fams = $person->getSpouseFamilies();
 			if ((!empty($option))&&($option=="bymarriage")) {
 				uasort($fams, array('Family', 'CompareMarrDate'));

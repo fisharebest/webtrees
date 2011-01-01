@@ -32,11 +32,10 @@
 
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/controllers/media_ctrl.php';
 
 $nonfacts=array();
 
-$controller = new MediaController();
+$controller = new WT_Controller_Media();
 $controller->init();
 
 

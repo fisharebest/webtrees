@@ -169,7 +169,7 @@ if ($action == "choose" && $paramok) {
 	if ($linktoid=="") {
 		// ----
 	} else {
-		$record=Person::getInstance($linktoid);
+		$record=WT_Person::getInstance($linktoid);
 		echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
 		if ($TEXT_DIRECTION=="rtl") echo getRLM();
 		echo '(', $linktoid, ')';

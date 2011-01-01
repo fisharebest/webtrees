@@ -125,7 +125,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					" GROUP BY xref"
 				)->execute(array(WT_GED_ID))->fetchAll();
 				foreach ($changes as $change) {
-					$record=GedcomRecord::getInstance($change->xref);
+					$record=WT_GedcomRecord::getInstance($change->xref);
 					if ($record->canDisplayDetails()) {
 						$content.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM();
 						switch ($record->getType()) {

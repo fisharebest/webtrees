@@ -56,7 +56,7 @@ if ($pid=="") {
 	echo "<br /><br />";
 } else {
 
-	$person=Person::getInstance($pid);
+	$person=WT_Person::getInstance($pid);
 	// var_dump($person->getAllNames());
 	$nam = $person->getAllNames();
 	if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($person->getDeathYear()); }

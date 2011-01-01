@@ -38,8 +38,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_PRINT_FACTS_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_person.php';
-
 /**
  * Turn URLs in text into HTML links.  Insert breaks into long URLs
  * so that the browser can word-wrap.
@@ -100,11 +98,11 @@ function print_fact(&$eventObj) {
 	// Who is this fact about?  Need it to translate fact label correctly
 	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
 		// Event of close relative
-		$label_person=Person::getInstance($match[1]);
+		$label_person=WT_Person::getInstance($match[1]);
 	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $factrec, $match)) {
 		// Event of close relative
-		$label_person=Person::getInstance($match[1]);
-	} else if ($parent instanceof Family) {
+		$label_person=WT_Person::getInstance($match[1]);
+	} else if ($parent instanceof WT_Family) {
 		// Family event
 		$husb = $parent->getHusband();
 		$wife = $parent->getWife();
@@ -207,7 +205,7 @@ function print_fact(&$eventObj) {
 		}
 		//-- print spouse name for marriage events
 		if (preg_match("/_WTS @(.*)@/", $factrec, $match)) {
-			$spouse=Person::getInstance($match[1]);
+			$spouse=WT_Person::getInstance($match[1]);
 			if ($spouse) {
 				echo " <a href=\"", $spouse->getHtmlUrl(), "\">";
 				if ($spouse->canDisplayName()) {
@@ -218,7 +216,7 @@ function print_fact(&$eventObj) {
 				echo "</a>";
 			}
 			if (empty($SEARCH_SPIDER)) {
-				$family = Family::getInstance($pid);
+				$family = WT_Family::getInstance($pid);
 				if ($family) {
 					if ($spouse) echo " - ";
 					echo '<a href="', $family->getHtmlUrl(), '">', i18n::translate('View Family'), '</a>';
@@ -233,7 +231,7 @@ function print_fact(&$eventObj) {
 			echo " ";
 			$ct = preg_match("/@(.*)@/", $event, $match);
 			if ($ct>0) {
-				$gedrec=GedcomRecord::getInstance($match[1]);
+				$gedrec=WT_GedcomRecord::getInstance($match[1]);
 				if (is_object($gedrec)) {
 					if ($gedrec->getType()=='INDI') {
 						echo '<a href="', $gedrec->getHtmlUrl(), '">', $gedrec->getFullName(), '</a><br />';
@@ -365,7 +363,7 @@ function print_fact(&$eventObj) {
 		}
 		if (preg_match("/\n2 FAMC @(.+)@/", $factrec, $match)) {
 			echo "<br/><span class=\"label\">", translate_fact('FAMC'), ":</span> ";
-			$family=Family::getInstance($match[1]);
+			$family=WT_Family::getInstance($match[1]);
 			if ($family) { // May be a pointer to a non-existant record
 				echo '<a href="', $family->getHtmlUrl(), '">', $family->getFullName(), '</a>';
 			} else {
@@ -472,7 +470,7 @@ function print_submitter_info($sid) {
  * @param string $sid  the Gedcom Xref ID of the repository to print
  */
 function print_repository_record($xref) {
-	$repository=Repository::getInstance($xref);
+	$repository=WT_Repository::getInstance($xref);
 	if ($repository && $repository->canDisplayDetails()) {
 		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br />';
 		print_address_structure($repository->getGedcomRecord(), 1);
@@ -528,7 +526,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				else $data .= i18n::translate('Hide Details')."\" title=\"".i18n::translate('Hide Details')."\" /></a> ";
 			}
 			$data .= i18n::translate('Source').":</span> <span class=\"field\">";
-			$source=Source::getInstance($sid);
+			$source=WT_Source::getInstance($sid);
 			if ($source) {
 				$data .= "<a href=\"".$source->getHtmlUrl()."\">".PrintReady($source->getFullName())."</a>";
 			} else {
@@ -686,7 +684,7 @@ function print_media_links($factrec, $level, $pid='') {
 			//-- print spouse name for marriage events
 			$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 			if ($ct>0) {
-				$spouse=Person::getInstance($match[1]);
+				$spouse=WT_Person::getInstance($match[1]);
 				if ($spouse) {
 					echo "<a href=\"", $spouse->getHtmlUrl(), "\">";
 					if ($spouse->canDisplayName()) {
@@ -700,7 +698,7 @@ function print_media_links($factrec, $level, $pid='') {
 					$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
 					if ($ct>0) {
 						$famid = trim($match[1]);
-						$family = Family::getInstance($famid);
+						$family = WT_Family::getInstance($famid);
 						if ($family) {
 							if ($spouse) echo " - ";
 							echo '<a href="', $family->getHtmlUrl(), '">', i18n::translate('View Family'), '</a>';
@@ -872,7 +870,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT
-			$parent=GedcomRecord::getInstance($pid);
+			$parent=WT_GedcomRecord::getInstance($pid);
 			if ($factname == "EVEN" || $factname=="FACT") {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
@@ -898,7 +896,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "</td>";
 			echo "<td class=\"optionbox $styleadd wrap\">";
 			//echo "<td class=\"facts_value$styleadd\">";
-			$source=Source::getInstance($sid);
+			$source=WT_Source::getInstance($sid);
 			if ($source) {
 				echo "<a href=\"", $source->getHtmlUrl(), "\">", PrintReady($source->getFullName()), "</a>";
 				// PUBL
@@ -1110,7 +1108,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT
-			$parent=GedcomRecord::getInstance($pid);
+			$parent=WT_GedcomRecord::getInstance($pid);
 			if ($factname == "EVEN" || $factname=="FACT") {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
@@ -1134,7 +1132,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				$text = PrintReady($text);
 			} else {
 				//-- print linked/shared note records
-				$note=Note::getInstance($nid);
+				$note=WT_Note::getInstance($nid);
 				if ($note) {
 					$noterec=$note->getGedcomRecord();				
 					$nt = preg_match("/^0 @[^@]+@ NOTE (.*)/", $noterec, $n1match);
@@ -1516,10 +1514,10 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		$parents = find_parents($rowm['mm_gid']);
 		if ($parents) {
 			if (!empty($parents['HUSB']) && $parents['HUSB']!=$pid) {
-				$spouse = Person::getInstance($parents['HUSB']);
+				$spouse = WT_Person::getInstance($parents['HUSB']);
 			}
 			if (!empty($parents['WIFE']) && $parents['WIFE']!=$pid) {
-				$spouse = Person::getInstance($parents['WIFE']);
+				$spouse = WT_Person::getInstance($parents['WIFE']);
 			}
 		}
 		if ($spouse) {
@@ -1533,7 +1531,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		}
 		if (empty($SEARCH_SPIDER)) {
 			$famid = $rowm['mm_gid'];
-			$family = Family::getInstance($famid);
+			$family = WT_Family::getInstance($famid);
 			if ($family) {
 				if ($spouse) echo " - ";
 				echo '<a href="', $family->getHtmlUrl(), '">', i18n::translate('View Family'), '</a>';

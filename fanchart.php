@@ -186,7 +186,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 			if ($pid) {
 				$indirec=find_gedcom_record($pid, WT_GED_ID, WT_USER_CAN_EDIT);
 
-				$person =Person::getInstance($pid);
+				$person =WT_Person::getInstance($pid);
 				$name   =$person->getFullName();
 				$addname=$person->getAddName();
 
@@ -383,7 +383,7 @@ $PEDIGREE_GENERATIONS=safe_GET_integer('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_
 // Validate form parameters
 $rootid = check_rootid($rootid);
 
-$person =Person::getInstance($rootid);
+$person =WT_Person::getInstance($rootid);
 $name   =$person->getFullName();
 $addname=$person->getAddName();
 

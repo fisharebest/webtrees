@@ -32,11 +32,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_NOTE_PHP', '');
+define('WT_WT_NOTE_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_gedcomrecord.php';
-
-class Note extends GedcomRecord {
+class WT_Note extends WT_GedcomRecord {
 	// Generate a URL to this record, suitable for use in HTML
 	public function getHtmlUrl() {
 		return parent::_getLinkUrl('note.php?nid=', '&amp;');

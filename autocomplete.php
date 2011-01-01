@@ -127,7 +127,7 @@ function autocomplete_INDI($FILTER, $OPTION) {
 	// current INDI/FAM [, current event date]
 	if ($OPTION) {
 		list($pid, $event_date) = explode("|", $OPTION."|");
-		$record=GedcomRecord::getInstance($pid); // INDI or FAM
+		$record=WT_GedcomRecord::getInstance($pid); // INDI or FAM
 		$tmp=new GedcomDate($event_date);
 		$event_jd=$tmp->JD();
 		// INDI
@@ -152,7 +152,7 @@ function autocomplete_INDI($FILTER, $OPTION) {
 	$rows=get_autocomplete_INDI($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$person=Person::getInstance($row);
+		$person=WT_Person::getInstance($row);
 		if ($person->canDisplayName()) {
 			// filter ASSOciate
 			if ($OPTION && $event_jd) {
@@ -217,7 +217,7 @@ function autocomplete_FAM($FILTER, $OPTION) {
 	$rows=get_autocomplete_FAM($FILTER, $ids);
 	$data=array();
 	foreach ($rows as $row) {
-		$family = Family::getInstance($row);
+		$family = WT_Family::getInstance($row);
 		if ($family->canDisplayName()) {
 			$data[$row["xref"]] =
 				$family->getFullName().
@@ -238,7 +238,7 @@ function autocomplete_NOTE($FILTER) {
 	$rows=get_autocomplete_NOTE($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$note = Note::getInstance($row);
+		$note = WT_Note::getInstance($row);
 		if ($note->canDisplayName()) {
 			$data[$row["xref"]] = $note->getFullName();
 		}
@@ -255,7 +255,7 @@ function autocomplete_SOUR($FILTER) {
 	$rows=get_autocomplete_SOUR($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$source = Source::getInstance($row);
+		$source = WT_Source::getInstance($row);
 		if ($source->canDisplayName()) {
 			$data[$row["xref"]] = $source->getFullName();
 		}
@@ -272,7 +272,7 @@ function autocomplete_SOUR_TITL($FILTER) {
 	$rows=get_autocomplete_SOUR_TITL($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$source = Source::getInstance($row);
+		$source = WT_Source::getInstance($row);
 		if ($source->canDisplayName()) {
 			$data[] = $source->getFullName();
 		}
@@ -289,7 +289,7 @@ function autocomplete_INDI_BURI_CEME($FILTER) {
 	$rows=get_autocomplete_INDI_BURI_CEME($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$person = Person::getInstance($row);
+		$person = WT_Person::getInstance($row);
 		if ($person->canDisplayDetails()) {
 			$i = 1;
 			do {
@@ -313,7 +313,7 @@ function autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION) {
 	$rows=get_autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION);
 	$data=array();
 	foreach ($rows as $row) {
-		$person = Person::getInstance($row);
+		$person = WT_Person::getInstance($row);
 		if ($person->canDisplayDetails()) {
 			// a single INDI may have multiple level 1 and level 2 sources
 			for ($level=1; $level<=2; $level++) {
@@ -340,7 +340,7 @@ function autocomplete_FAM_SOUR_PAGE($FILTER, $OPTION) {
 	$rows=get_autocomplete_FAM_SOUR_PAGE($FILTER, $OPTION);
 	$data=array();
 	foreach ($rows as $row) {
-		$family = Family::getInstance($row);
+		$family = WT_Family::getInstance($row);
 		if ($family->canDisplayDetails()) {
 			// a single FAM may have multiple level 1 and level 2 sources
 			for ($level=1; $level<=2; $level++) {
@@ -377,7 +377,7 @@ function autocomplete_REPO($FILTER) {
 	$rows=get_autocomplete_REPO($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$repository = Repository::getInstance($row);
+		$repository = WT_Repository::getInstance($row);
 		if ($repository->canDisplayName()) {
 			$data[$row["xref"]] = $repository->getFullName();
 		}
@@ -394,7 +394,7 @@ function autocomplete_REPO_NAME($FILTER) {
 	$rows=get_autocomplete_REPO_NAME($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$repository = Repository::getInstance($row);
+		$repository = WT_Repository::getInstance($row);
 		if ($repository->canDisplayName()) {
 			$data[] = $repository->getFullName();
 		}
@@ -411,7 +411,7 @@ function autocomplete_OBJE($FILTER) {
 	$rows=get_autocomplete_OBJE($FILTER);
 	$data=array();
 	foreach ($rows as $row) {
-		$media = Media::getInstance($row["m_media"]);
+		$media = WT_Media::getInstance($row["m_media"]);
 		if ($media && $media->canDisplayDetails()) {
 			$data[$row["m_media"]] =
 				"<img alt=\"".

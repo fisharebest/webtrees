@@ -148,7 +148,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '" />';
 				print_findindi_link("linktopid", "");
 			} else {
-				$record=Person::getInstance($linktoid);
+				$record=WT_Person::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
@@ -163,7 +163,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '" />';
 				print_findfamily_link("linktofamid");
 			} else {
-				$record=Family::getInstance($linktoid);
+				$record=WT_Family::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
@@ -178,7 +178,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '" />';
 				print_findsource_link("linktosid");
 			} else {
-				$record=Source::getInstance($linktoid);
+				$record=WT_Source::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
@@ -191,7 +191,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '" />';
 			} else {
-				$record=Repository::getInstance($linktoid);
+				$record=WT_Repository::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';
@@ -205,7 +205,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '" />';
 			} else {
-				$record=Note::getInstance($linktoid);
+				$record=WT_Note::getInstance($linktoid);
 				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
 				if ($TEXT_DIRECTION=="rtl") echo getRLM();
 				echo '(', $linktoid, ')';

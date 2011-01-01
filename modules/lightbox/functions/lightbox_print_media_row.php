@@ -129,7 +129,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	if (canDisplayFact($pid, $rowm['m_file'], $rowm['mm_gedrec'])) {
 
 		//  Get the title of the media
-		$media=Media::getInstance($rowm["m_media"]);
+		$media=WT_Media::getInstance($rowm["m_media"]);
 		$rawTitle = $rowm["m_titl"];
 		if (empty($rawTitle)) $rawTitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
 		if (empty($rawTitle)) $rawTitle = basename($rowm["m_file"]);
