@@ -41,7 +41,7 @@ $WT_USE_HELPIMG   = true;
 //- main icons
 $WT_IMAGES=array(
 	'webtrees'=>WT_THEME_DIR.'images/webtrees_s.png',
-	'help'=>WT_THEME_DIR.'images/help.jpg',
+	'help'=>WT_THEME_DIR.'images/help.png',
 	'email'=>WT_THEME_DIR.'images/email.png',
 	'open'=>WT_THEME_DIR.'images/open.png',
 	'close'=>WT_THEME_DIR.'images/close.png',

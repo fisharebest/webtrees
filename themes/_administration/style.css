@@ -49,6 +49,8 @@ img {border:none;}
 .indent {padding-left:15px;}
 h3 {margin:0}
 h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
+#page_help{text-align:right;}
+#page_help img{ height: 24px; margin: -5px; padding: 0; width: 24px;}
 
 /* HEADER */
 #admin_head  {position:relative; height:70px; margin-bottom:10px; background-image: url("images/header.png"); background-repeat:no-repeat; background-position:top left;}

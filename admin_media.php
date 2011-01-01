@@ -306,13 +306,13 @@ if (check_media_structure()) {
 	// Check if Media Directory is writeable or if Media features are enabled
 	// If one of these is not true then do not continue
 	if (!dir_is_writable($MEDIA_DIRECTORY) || !$MULTI_MEDIA) {
-		echo "<span class=\"error\"><b>";
+		echo "<p class=\"error\"><b>";
 		echo WT_I18N::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
-		echo "</b></span><br />";
+		echo "</b></p>";
 	} else {
 		show_mediaUpload_form(WT_SCRIPT_NAME, $showthumb); // We have the green light to upload media, echo the form
 	}
-	echo "</div><br />";
+	echo "</div>";
 
 	ob_start(); // Save output until action table has been printed
 
@@ -764,6 +764,8 @@ if (check_media_structure()) {
 
 	$savedOutput = ob_get_clean();
 
+	// "Help for this page" link
+	echo '<div id="page_help">', help_link('manage_media'), '</div>';
 ?>
 
 	<form name="managemedia" method="post" onsubmit="return checknames(this);" action="<?php echo WT_SCRIPT_NAME; ?>">
