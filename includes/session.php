@@ -470,6 +470,8 @@ if (!defined('WT_THEME_DIR')) {
 		if (!$THEME_DIR && isset($_SESSION['theme_dir']) && in_array($_SESSION['theme_dir'], get_theme_names())) {
 			$THEME_DIR=$_SESSION['theme_dir'];
 		}
+	} else {
+		$THEME_DIR='';
 	}
 	if (!$THEME_DIR) {
 		// User cannot choose (or has not chosen) a theme.
