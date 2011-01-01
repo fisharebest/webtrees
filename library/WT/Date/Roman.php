@@ -1,11 +1,17 @@
 <?php
-// Class file for a Repository (REPO) object
+// Classes for Gedcom Date/Calendar functionality.
+//
+// Definitions for the Roman calendar
+// TODO The 5.5.1 gedcom spec mentions this calendar, but gives no details of
+// how it is to be represented....  This class is just a place holder so that
+// webtrees won't compain if it receives one.
+//
+// NOTE: Since different calendars start their days at different times, (civil
+// midnight, solar midnight, sunset, sunrise, etc.), we convert on the basis of
+// midday.
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,6 +27,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
+// @author Greg Roach
 // @version $Id$
 
 if (!defined('WT_WEBTREES')) {
@@ -28,18 +35,16 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class WT_Repository extends WT_GedcomRecord {
-	// Generate a URL to this record, suitable for use in HTML
-	public function getHtmlUrl() {
-		return parent::_getLinkUrl('repo.php?rid=', '&amp;');
-	}
-	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
-	public function getRawUrl() {
-		return parent::_getLinkUrl('repo.php?rid=', '&');
+class WT_Date_Roman extends WT_Date_Calendar {
+	static function CALENDAR_ESCAPE() {
+		return '@#DROMAN@';
 	}
 
-	// Get an array of structures containing all the names in the record
-	public function getAllNames() {
-		return parent::_getAllNames('NAME', 1);
+	function FormatGedcomYear() {
+		return sprintf('%04dAUC',$this->y);
+	}
+
+	function FormatLongYear() {
+		return $this->y.'AUC';
 	}
 }

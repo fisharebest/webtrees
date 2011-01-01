@@ -441,22 +441,11 @@ class ReportBase {
 
 	// static callback functions to sort data
 	static function CompareBirthDate($x, $y) {
-		return GedcomDate::Compare($x->getBirthDate(), $y->getBirthDate());
+		return WT_Date::Compare($x->getBirthDate(), $y->getBirthDate());
 	}
 	static function CompareDeathDate($x, $y) {
-		return GedcomDate::Compare($x->getDeathDate(), $y->getDeathDate());
+		return WT_Date::Compare($x->getDeathDate(), $y->getDeathDate());
 	}
-
-	/**
-	* @deprecated
-	* @todo Is this a deprecated function or a future feature?
-	*
-	function get_type() {
-		// remove this die line only if it's cousing problem - It confirms that it's not used
-		die("<strong>REPORT ERROR ReportBase::get_type: </strong> It is used");
-		return "ReportBase";
-	}
-*/
 }
 
 /**
@@ -2466,7 +2455,7 @@ function varSHandler($attrs) {
 	// Check if variable is set as a date and reformat the date
 	if (isset($attrs["date"])) {
 		if ($attrs["date"] === "1") {
-			$g = new GedcomDate($var);
+			$g = new WT_Date($var);
 			$var = $g->Display();
 		}
 	}
@@ -2896,11 +2885,11 @@ function AgeAtDeathSHandler() {
 		if ($death_event) {
 			$death_date=$death_event->getDate();
 		} else {
-			$death_date=new GedcomDate('');
+			$death_date=new WT_Date('');
 		}
 		$value = '';
-		if (GedcomDate::Compare($birth_date, $death_date)<=0 || !$person->isDead()) {
-			$age=GedcomDate::GetAgeGedcom($birth_date, $death_date);
+		if (WT_Date::Compare($birth_date, $death_date)<=0 || !$person->isDead()) {
+			$age=WT_Date::GetAgeGedcom($birth_date, $death_date);
 			// Only show calculated age if it differs from recorded age
 			if ($age!='' && $age!="0d") {
 				if (
@@ -3233,7 +3222,7 @@ function ListSHandler($attrs) {
 					if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 						$sql_join[]="JOIN `##dates` AS {$attr} ON ({$attr}.d_file={$sql_col_prefix}file AND {$attr}.d_gid={$sql_col_prefix}id)";
 						$sql_where[]="{$attr}.d_fact='{$match[1]}'";
-						$date=new GedcomDate($match[3]);
+						$date=new WT_Date($match[3]);
 						if ($match[2]=="LTE") {
 							$sql_where[]="{$attr}.d_julianday2<=".$date->minJD();
 						} else {
@@ -3437,18 +3426,18 @@ function ListSHandler($attrs) {
 					switch ($expr) {
 						case "GTE":
 								if ($t=="DATE") {
-									$date1 = new GedcomDate($v);
-									$date2 = new GedcomDate($val);
-									$keep = (GedcomDate::Compare($date1, $date2)>=0);
+									$date1 = new WT_Date($v);
+									$date2 = new WT_Date($val);
+									$keep = (WT_Date::Compare($date1, $date2)>=0);
 								} elseif ($val >= $v) {
 									$keep=true;
 								}
 							break;
 						case "LTE":
 								if ($t=="DATE") {
-									$date1 = new GedcomDate($v);
-									$date2 = new GedcomDate($val);
-									$keep = (GedcomDate::Compare($date1, $date2)<=0);
+									$date1 = new WT_Date($v);
+									$date2 = new WT_Date($val);
+									$keep = (WT_Date::Compare($date1, $date2)<=0);
 								} elseif ($val >= $v) {
 									$keep=true;
 								}

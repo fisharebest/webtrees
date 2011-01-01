@@ -2,7 +2,7 @@
 // Controller for the Shared Note Page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2009 PGV Development Team.  All rights reserved.
@@ -27,8 +27,6 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_NOTE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/classes/class_menu.php';

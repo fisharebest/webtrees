@@ -130,7 +130,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<tbody>";
 	$hidden = 0;
 	$n = 0;
-	$d100y=new GedcomDate(date('Y')-100);  // 100 years ago
+	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	$dateY = date("Y");
 	$unique_indis=array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key => $value) {
@@ -234,13 +234,13 @@ function print_indi_table($datalist, $legend="", $option="") {
 			} else {
 				echo '<span class="date"><a name="', $birth_jd, '"/>&nbsp;</span>'; // span needed for alive-in-year filter
 			}
-			$birth_dates[0]=new GedcomDate('');
+			$birth_dates[0]=new WT_Date('');
 		}
 		echo '</td>';
 		//-- Birth anniversary
 		if ($tiny) {
 			echo '<td class="list_value_wrap rela">';
-			$bage =GedcomDate::GetAgeYears($birth_dates[0]);
+			$bage =WT_Date::GetAgeYears($birth_dates[0]);
 			if (empty($bage)) {
 				echo "&nbsp;";
 			} else {
@@ -294,14 +294,14 @@ function print_indi_table($datalist, $legend="", $option="") {
 			} else {
 				echo '<span class="date"><a name="', $death_jd, '">&nbsp;</span>'; // span needed for alive-in-year filter
 			}
-			$death_dates[0]=new GedcomDate('');
+			$death_dates[0]=new WT_Date('');
 		}
 		echo "</td>";
 		//-- Death anniversary
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap rela\">";
 			if ($death_dates[0]->isOK())
-				echo "<span class=\"age\">", GedcomDate::GetAgeYears($death_dates[0]), "</span>";
+				echo "<span class=\"age\">", WT_Date::GetAgeYears($death_dates[0]), "</span>";
 			else
 				echo "&nbsp;";
 			echo '</td>';
@@ -309,7 +309,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Age at death
 		echo "<td class=\"list_value_wrap\">";
 		if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
-			$age = GedcomDate::GetAgeYears($birth_dates[0], $death_dates[0]);
+			$age = WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
 			$age_jd = $death_dates[0]->MinJD()-$birth_dates[0]->MinJD();
 			echo '<a name="', $age_jd, '" class="list_item age">', $age, '</a>';
 			if (!isset($unique_indis[$person->getXref()])) {
@@ -346,7 +346,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo "</td>";
 		//-- Filtering by birth date
 		echo "<td style=\"display:none\">";
-		if (!$person->canDisplayDetails() || GedcomDate::Compare($birth_dates[0], $d100y)>0) {
+		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_dates[0], $d100y)>0) {
 			echo "Y100";
 		} else {
 			echo "YES";
@@ -355,7 +355,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Filtering by death date
 		echo "<td style=\"display:none\">";
 		if ($person->isDead()) {
-			if (GedcomDate::Compare($death_dates[0], $d100y)>0) {
+			if (WT_Date::Compare($death_dates[0], $d100y)>0) {
 				echo "Y100";
 			} else {
 				echo "YES";
@@ -500,7 +500,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<tbody>";
 	$hidden = 0;
 	$num = 0;
-	$d100y=new GedcomDate(date('Y')-100);  // 100 years ago
+	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	foreach ($datalist as $key => $value) {
 		if (is_object($value)) { // Array of objects
 			$family=$value;
@@ -564,7 +564,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 				$birt_by_decade[floor($hdate->gregorianYear()/10)*10] .= $husb->getSex();
 			}
 			if ($mdate->isOK()) {
-				$hage=GedcomDate::GetAgeYears($hdate, $mdate);
+				$hage=WT_Date::GetAgeYears($hdate, $mdate);
 				$hage_jd = $mdate->MinJD()-$hdate->MinJD();
 				echo '<a name="', $hage_jd, '" class="list_item age">', $hage, '</a>';
 				$marr_by_age[max(0, min($max_age, $hage))] .= $husb->getSex();
@@ -610,7 +610,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 				$birt_by_decade[floor($wdate->gregorianYear()/10)*10] .= $wife->getSex();
 			}
 			if ($mdate->isOK()) {
-				$wage=GedcomDate::GetAgeYears($wdate, $mdate);
+				$wage=WT_Date::GetAgeYears($wdate, $mdate);
 				$wage_jd = $mdate->MinJD()-$wdate->MinJD();
 				echo '<a name="', $wage_jd, '" class="list_item age">', $wage, '</a>';
 				$marr_by_age[max(0, min($max_age, $wage))] .= $wife->getSex();
@@ -662,7 +662,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		//-- Marriage anniversary
 		if ($tiny) {
 			echo "<td class=\"list_value_wrap rela\">";
-			$mage=GedcomDate::GetAgeYears($mdate);
+			$mage=WT_Date::GetAgeYears($mdate);
 			if (empty($mage)) echo "&nbsp;";
 			else echo "<span class=\"age\">", $mage, "</span>";
 			echo "</td>";
@@ -698,7 +698,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		if (!$family->canDisplayDetails() || !$mdate->isOK()) {
 			echo "U";
 		} else {
-			if (GedcomDate::Compare($mdate, $d100y)>0) {
+			if (WT_Date::Compare($mdate, $d100y)>0) {
 				echo "Y100";
 			} else {
 				echo "YES";

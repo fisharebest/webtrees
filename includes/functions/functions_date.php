@@ -33,8 +33,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_DATE_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_date.php';
-
 /**
 * translate gedcom age string
 *
@@ -134,10 +132,10 @@ function timestamp_to_jd($time) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Convert a unix-style timestamp into a GedcomDate object
+// Convert a unix-style timestamp into a WT_Date object
 ////////////////////////////////////////////////////////////////////////////////
 function timestamp_to_gedcom_date($time) {
-	return new GedcomDate(strtoupper(date('j M Y', $time)));
+	return new WT_Date(strtoupper(date('j M Y', $time)));
 }
 
 ////////////////////////////////////////////////////////////////////////////////

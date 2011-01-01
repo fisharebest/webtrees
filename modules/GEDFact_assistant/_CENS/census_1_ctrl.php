@@ -38,11 +38,11 @@ global $summary, $theme_name, $censyear, $censdate;
 
 $pid = safe_get('pid');
 
-$censdate  = new GedcomDate("31 MAR 1901");
+$censdate  = new WT_Date("31 MAR 1901");
 $censyear   = $censdate->date1->y;
 
 $ctry       = "UK";
-// $married    = GedcomDate::Compare($censdate, $marrdate);
+// $married    = WT_Date::Compare($censdate, $marrdate);
 
 // === Set $married to "Not married as we only want the Birth name here" ===
 $married=-1;

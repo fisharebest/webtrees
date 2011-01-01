@@ -838,7 +838,7 @@ function update_dates($xref, $ged_id, $gedrec) {
 			if (($fact=='FACT' || $fact=='EVEN') && preg_match("/\n2 TYPE ([A-Z]{3,5})/", $match[0], $tmatch)) {
 				$fact=$tmatch[1];
 			}
-			$date=new GedcomDate($match[2]);
+			$date=new WT_Date($match[2]);
 			$sql_insert_date->execute(array($date->date1->d, $date->date1->Format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->CALENDAR_ESCAPE()));
 			if ($date->date2) {
 				$sql_insert_date->execute(array($date->date2->d, $date->date2->Format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->CALENDAR_ESCAPE()));

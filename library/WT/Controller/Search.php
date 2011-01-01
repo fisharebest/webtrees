@@ -2,7 +2,7 @@
 // Controller for the Search Page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_SEARCH_CTRL_PHP', '');
 
 class WT_Controller_Search extends WT_Controller_Base {
 	var $isPostBack = false;

@@ -54,25 +54,25 @@ if (empty($filterev)) $filterev='bdm';
 if (empty($filterof)) $filterof='all';
 if (empty($filtersx)) $filtersx='';
 
-// Create a CalendarDate from the parameters
+// Create a WT_Date_Calendar from the parameters
 
 // advance-year "year range"
 if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 	if (strlen($match[1]) > strlen($match[2]))
 		$match[2]=substr($match[1], 0, strlen($match[1])-strlen($match[2])).$match[2];
-	$ged_date=new GedcomDate("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
+	$ged_date=new WT_Date("FROM {$cal} {$match[1]} TO {$cal} {$match[2]}");
 	$action='year';
 } else
 	// advanced-year "decade/century wildcard"
 	if (preg_match('/^(\d+)(\?+)$/', $year, $match)) {
 		$y1=$match[1].str_replace('?', '0', $match[2]);
 		$y2=$match[1].str_replace('?', '9', $match[2]);
-		$ged_date=new GedcomDate("FROM {$cal} {$y1} TO {$cal} {$y2}");
+		$ged_date=new WT_Date("FROM {$cal} {$y1} TO {$cal} {$y2}");
 		$action='year';
 	} else {
 		if ($year<0)
 			$year=(-$year)."B.C."; // need BC to parse date
-		$ged_date=new GedcomDate("{$cal} {$day} {$month} {$year}");
+		$ged_date=new WT_Date("{$cal} {$day} {$month} {$year}");
 		$year=$ged_date->date1->y; // need negative year for year entry field.
 	}
 $cal_date=&$ged_date->date1;
@@ -138,14 +138,14 @@ echo '<tr><td class="descriptionbox vmiddle">';
 echo i18n::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="7" class="optionbox">';
 for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
-	$tmp=new GedcomDate($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
+	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
 	if ($d==$cal_date->d)
 		echo "<span class=\"error\">{$d_fmt}</span>";
 	else
 		echo "<a href=\"calendar.php?cal={$cal}&amp;day={$d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}"."\">{$d_fmt}</a>";
 	echo ' | ';
 }
-$tmp=new GedcomDate($today->Format('%@ %A %O %E')); // Need a GedcomDate object to get localisation
+$tmp=new WT_Date($today->Format('%@ %A %O %E')); // Need a WT_Date object to get localisation
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(true, NULL, array()).'</b></a>';
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
@@ -483,7 +483,7 @@ case 'calendar':
 				echo '&nbsp;';
 		else {
 			// Format the day number using the calendar
-			$tmp=new GedcomDate($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
+			$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
 			if ($d==$today->d && $cal_date->m==$today->m)
 				echo "<span class=\"cal_day current_day\">{$d_fmt}</span>";
 			else

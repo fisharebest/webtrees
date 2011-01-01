@@ -45,7 +45,7 @@ $censevent  = new Event("1 CENS\n2 DATE 03 MAR".$year."");
 $censdate   = $censevent->getDate();
 $censyear   = $censdate->date1->y;
 $ctry       = "UK";
-// $married    = GedcomDate::Compare($censdate, $marrdate);
+// $married    = WT_Date::Compare($censdate, $marrdate);
 $married=-1;
 
 

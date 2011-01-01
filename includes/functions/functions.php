@@ -656,7 +656,7 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='', $convert=true) {
 		$value = trim($value);
 		//-- if it is a date value then convert the date
 		if ($convert && $t=="DATE") {
-			$g = new GedcomDate($value);
+			$g = new WT_Date($value);
 			$value = $g->Display();
 			if (!empty($truncate)) {
 				if (utf8_strlen($value)>$truncate) {
@@ -1146,8 +1146,8 @@ function compare_facts_date($arec, $brec) {
 		return 0;
 	}
 
-	$adate = new GedcomDate($amatch[1]);
-	$bdate = new GedcomDate($bmatch[1]);
+	$adate = new WT_Date($amatch[1]);
+	$bdate = new WT_Date($bmatch[1]);
 	// If either date can't be parsed, don't sort.
 	if (!$adate->isOK() || !$bdate->isOK()) {
 		if (preg_match('/2 _SORT (\d+)/', $arec, $match1) && preg_match('/2 _SORT (\d+)/', $brec, $match2)) {

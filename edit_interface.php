@@ -1433,7 +1433,7 @@ case 'addchildaction':
 			$gedrec = $family->getGedcomRecord();
 			$done = false;
 			foreach ($family->getChildren() as $key=>$child) {
-				if (GedcomDate::Compare($newchild->getEstimatedBirthDate(), $child->getEstimatedBirthDate())<0) {
+				if (WT_Date::Compare($newchild->getEstimatedBirthDate(), $child->getEstimatedBirthDate())<0) {
 					// new child is older : insert before
 					$gedrec = str_replace("1 CHIL @".$child->getXref()."@",
 																"1 CHIL @$xref@\n1 CHIL @".$child->getXref()."@",

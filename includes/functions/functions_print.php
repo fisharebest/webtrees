@@ -1454,7 +1454,7 @@ function format_parents_age($pid, $birth_date=null) {
 			$family=current($families);
 			// Allow for same-sex parents
 			foreach (array($family->getHusband(), $family->getWife()) as $parent) {
-				if ($parent && $age=GedcomDate::GetAgeYears($parent->getBirthDate(), $birth_date)) {
+				if ($parent && $age=WT_Date::GetAgeYears($parent->getBirthDate(), $birth_date)) {
 					$deatdate=$parent->getDeathDate();
 					$class='';
 					switch ($parent->getSex()) {
@@ -1518,7 +1518,7 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 
 	// Calculated age
 	if (preg_match('/2 DATE (.+)/', $factrec, $match)) {
-		$date=new GedcomDate($match[1]);
+		$date=new WT_Date($match[1]);
 		$html.=' '.$date->Display($anchor && !$SEARCH_SPIDER);
 		// time
 		if ($time) {
@@ -1547,12 +1547,12 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 				if ($death_event) {
 					$death_date=$death_event->getDate();
 				} else {
-					$death_date=new GedcomDate('');
+					$death_date=new WT_Date('');
 				}
 				$ageText = '';
-				if ((GedcomDate::Compare($date, $death_date)<=0 || !$person->isDead()) || $fact=='DEAT') {
+				if ((WT_Date::Compare($date, $death_date)<=0 || !$person->isDead()) || $fact=='DEAT') {
 					// Before death, print age
-					$age=GedcomDate::GetAgeGedcom($birth_date, $date);
+					$age=WT_Date::GetAgeGedcom($birth_date, $date);
 					// Only show calculated age if it differs from recorded age
 					if ($age!='') {
 						if (
@@ -1567,11 +1567,11 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 						}
 					}
 				}
-				if ($fact!='DEAT' && GedcomDate::Compare($date, $death_date)>=0) {
+				if ($fact!='DEAT' && WT_Date::Compare($date, $death_date)>=0) {
 					// After death, print time since death
-					$age=get_age_at_event(GedcomDate::GetAgeGedcom($death_date, $date), true);
+					$age=get_age_at_event(WT_Date::GetAgeGedcom($death_date, $date), true);
 					if ($age!='') {
-						if (GedcomDate::GetAgeGedcom($death_date, $date)=="0d") {
+						if (WT_Date::GetAgeGedcom($death_date, $date)=="0d") {
 							$ageText = '('.i18n::translate('on the date of death').')';
 						} else {
 							$ageText = '('.$age.' '.i18n::translate('after death').')';
@@ -1587,8 +1587,8 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 			$birth_date=$indi->getBirthDate();
 			$death_date=$indi->getDeathDate();
 			$ageText = '';
-			if (GedcomDate::Compare($date, $death_date)<=0) {
-				$age=GedcomDate::GetAgeGedcom($birth_date, $date);
+			if (WT_Date::Compare($date, $death_date)<=0) {
+				$age=WT_Date::GetAgeGedcom($birth_date, $date);
 				// Only show calculated age if it differs from recorded age
 				if ($age!='' && $age>0) {
 					if (
@@ -1728,7 +1728,7 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 		if (preg_match('/2 STAT (.*)/', $factrec, $match)) {
 			$html.='<br />'.i18n::translate('Status').': '.(array_key_exists($match[1], $STATUS_CODES) ? $STATUS_CODES[$match[1]] : $match[1]);
 			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
-				$date=new GedcomDate($match[1]);
+				$date=new WT_Date($match[1]);
 				$html.=', '.translate_fact('STAT:DATE').': '.$date->Display(false);
 			}
 		}
@@ -1812,7 +1812,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 				echo '<option value="clipboard_', $key, '">', $fact_type;
 				// TODO use the event class to store/parse the clipboard events
 				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
-					$tmp=new GedcomDate($match[1]);
+					$tmp=new WT_Date($match[1]);
 					echo '; ', $tmp->minDate()->Format('%Y');
 				}
 				if (preg_match('/^2 PLAC ([^,\n]+)/m', $fact['factrec'], $match)) {

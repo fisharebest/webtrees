@@ -152,7 +152,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 
 							//-- Parents Husbands Details --------------------------------------
-							$married = GedcomDate::Compare($censdate, $marrdate);
+							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam     = $people["husb"]->getAllNames();
 							$fulln   = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln   = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -276,7 +276,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 
 							//-- Wifes Details --------------------------------------
-							$married = GedcomDate::Compare($censdate, $marrdate);
+							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam     = $people["wife"]->getAllNames();
 							$fulln   = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln   = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -423,7 +423,7 @@ if (!defined('WT_WEBTREES')) {
 								$marrdate="";
 								foreach ($child->getSpouseFamilies() as $childfamily) {
 									$marrdate=$childfamily->getMarriageDate();
-									$married = GedcomDate::Compare($censdate, $marrdate);
+									$married = WT_Date::Compare($censdate, $marrdate);
 								}
 								$nam   = $child->getAllNames();
 								$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
@@ -599,7 +599,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 
 							//-- Step Husbands Details --------------------------------------
-							$married = GedcomDate::Compare($censdate, $marrdate);
+							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam   = $people["husb"]->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -735,7 +735,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 
 							//-- Step Wifes Details --------------------------------------
-							$married = GedcomDate::Compare($censdate, $marrdate);
+							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam   = $people["wife"]->getAllNames();
 							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -1042,7 +1042,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 
 							//-- Spouse Husbands Details --------------------------------------
-							$married = GedcomDate::Compare($censdate, $marrdate);
+							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam     = $people["husb"]->getAllNames();
 							$fulln   = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							$fulln   = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -1177,7 +1177,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 
 							//-- Spouse Wifes Details --------------------------------------
-							$married = GedcomDate::Compare($censdate, $marrdate);
+							$married = WT_Date::Compare($censdate, $marrdate);
 							$nam     = $people["wife"]->getAllNames();
 							$fulln   = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 							//$fulln   = str_replace('"', '\"', $fulln);
@@ -1315,7 +1315,7 @@ if (!defined('WT_WEBTREES')) {
 							$marrdate="";
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate=$childfamily->getMarriageDate();
-								$married = GedcomDate::Compare($censdate, $marrdate);
+								$married = WT_Date::Compare($censdate, $marrdate);
 							}
 
 							// Get Child's Children
@@ -1532,7 +1532,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				$fams = $person->getChildFamilies();
 				foreach ($fams as $famid=>$family) {
 					$marrdate = $family->getMarriageDate();
-					$married  = GedcomDate::Compare($censdate, $marrdate);
+					$married  = WT_Date::Compare($censdate, $marrdate);
 
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);
@@ -1677,7 +1677,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								$tmp=$wife->getXref();
 								if ($wife->canDisplayName()) {
-									$married = GedcomDate::Compare($censdate, $marrdate);
+									$married = WT_Date::Compare($censdate, $marrdate);
 									$nam   = $wife->getAllNames();
 									$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 									$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -1760,7 +1760,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				$fams = $person->getStepFamilies();
 				foreach ($fams as $famid=>$family) {
 					$marrdate = $family->getMarriageDate();
-					$married  = GedcomDate::Compare($censdate, $marrdate);
+					$married  = WT_Date::Compare($censdate, $marrdate);
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);
 						$wife = $family->getWife($person);
@@ -1909,7 +1909,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 									$tmp=$wife->getXref();
 									if ($wife->canDisplayName()) {
-										$married = GedcomDate::Compare($censdate, $marrdate);
+										$married = WT_Date::Compare($censdate, $marrdate);
 										$nam   = $wife->getAllNames();
 										$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 										$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -1997,7 +1997,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						$children = $family->getChildren();
 						$num = count($children);
 						$marrdate = $family->getMarriageDate();
-						$married  = GedcomDate::Compare($censdate, $marrdate);						
+						$married  = WT_Date::Compare($censdate, $marrdate);						
 						$is_wife = $family->getWife();
 						
 						//-- Get Spouse's Children's Name, DOB, DOD --------------------------
@@ -2045,7 +2045,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								$tmp=$spouse->getXref();
 								if ($spouse->canDisplayName()) {
-									$married = GedcomDate::Compare($censdate, $marrdate);
+									$married = WT_Date::Compare($censdate, $marrdate);
 									$nam   = $spouse->getAllNames();
 									$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 									$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
@@ -2169,7 +2169,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$chhusbnam=null;
 								foreach ($child->getSpouseFamilies() as $childfamily) {
 									$marrdate=$childfamily->getMarriageDate();
-									$married = GedcomDate::Compare($censdate, $marrdate);
+									$married = WT_Date::Compare($censdate, $marrdate);
 									if ($childfamily->getHusband()) {
 										$chhusbnam = $childfamily->getHusband()->getAllNames();
 									}

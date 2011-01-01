@@ -338,7 +338,7 @@ function tool_tip_text($marker) {
 		}
 	}
 	if (!empty($marker['date'])) {
-		$date=new GedcomDate($marker['date']);
+		$date=new WT_Date($marker['date']);
 		$tool_tip.=" - ".$date->Display(false);
 	}
 	return $tool_tip;
@@ -694,7 +694,7 @@ function build_indiv_map($indifacts, $famids) {
 						echo preg_replace("/\"/", "\\\"", print_fact_place_map($markers[$j]["placerec"]));
 					}
 					if (!empty($markers[$j]["date"])) {
-						$date=new GedcomDate($markers[$j]["date"]);
+						$date=new WT_Date($markers[$j]["date"]);
 						echo "<br />", addslashes($date->Display(true));
 					}
 					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) {
@@ -754,7 +754,7 @@ function build_indiv_map($indifacts, $famids) {
 						echo preg_replace("/\"/", "\\\"", print_fact_place_map($markers[$j]["placerec"]));
 					}
 					if (!empty($markers[$j]["date"])) {
-						$date=new GedcomDate($markers[$j]["date"]);
+						$date=new WT_Date($markers[$j]["date"]);
 						echo "<br />", addslashes($date->Display(true));
 					}
 					if (!$GOOGLEMAP_COORD) {
@@ -820,7 +820,7 @@ function build_indiv_map($indifacts, $famids) {
 								echo preg_replace("/\"/", "\\\"", print_fact_place_map($markers[$k]["placerec"]));
 							}
 							if (!empty($markers[$k]["date"])) {
-								$date=new GedcomDate($markers[$k]["date"]);
+								$date=new WT_Date($markers[$k]["date"]);
 								echo "<br />", addslashes($date->Display(true));
 							}
 							if (!$GOOGLEMAP_COORD) {
@@ -869,7 +869,7 @@ function build_indiv_map($indifacts, $famids) {
 				echo print_fact_place_map($marker["placerec"]), "<br />";
 			}
 			if (!empty($marker['date'])) {
-				$date=new GedcomDate($marker['date']);
+				$date=new WT_Date($marker['date']);
 				echo $date->Display(true), "<br />";
 			}
 			echo "</td></tr>";

@@ -74,7 +74,7 @@ function is_dead($indirec, $gedcom_id) {
 	// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the person is dead
 	preg_match_all('/\n2 DATE (.+)/', $indirec, $date_matches);
 	foreach ($date_matches[1] as $date_match) {
-		$date=new GedcomDate($date_match);
+		$date=new WT_Date($date_match);
 		if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
 			return true;
 		}
@@ -89,7 +89,7 @@ function is_dead($indirec, $gedcom_id) {
 		if (!empty($parents['HUSB'])) {
 			preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['HUSB'], $gedcom_id), $date_matches);
 			foreach ($date_matches[1] as $date_match) {
-				$date=new GedcomDate($date_match);
+				$date=new WT_Date($date_match);
 				// Assume fathers are no more than 40 years older than their children
 				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
 					return true;
@@ -99,7 +99,7 @@ function is_dead($indirec, $gedcom_id) {
 		if (!empty($parents['WIFE'])) {
 			preg_match_all('/\n2 DATE (.+)/', find_person_record($parents['WIFE'], $gedcom_id), $date_matches);
 			foreach ($date_matches[1] as $date_match) {
-				$date=new GedcomDate($date_match);
+				$date=new WT_Date($date_match);
 				// Assume mothers are no more than 40 years older than their children
 				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
 					return true;
@@ -115,7 +115,7 @@ function is_dead($indirec, $gedcom_id) {
 		// Check all marriage events
 		preg_match_all('/\n1 (?:'.WT_EVENTS_MARR.')(?:\n[2-9].+)*\n2 DATE (.+)/', $indirec, $date_matches);
 		foreach ($date_matches[1] as $date_match) {
-			$date=new GedcomDate($date_match);
+			$date=new WT_Date($date_match);
 			// Assume marriage occurs after age of 10
 			if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-10)) {
 				return true;
@@ -131,7 +131,7 @@ function is_dead($indirec, $gedcom_id) {
 			}
 			preg_match_all('/\n2 DATE (.+)/', find_person_record($spid, $gedcom_id), $date_matches);
 			foreach ($date_matches[1] as $date_match) {
-				$date=new GedcomDate($date_match);
+				$date=new WT_Date($date_match);
 				// Assume max age difference between spouses of 40 years
 				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
 					return true;
@@ -145,7 +145,7 @@ function is_dead($indirec, $gedcom_id) {
 			preg_match_all('/\n2 DATE (.+)/', $childrec, $date_matches);
 			// Assume children born after age of 15
 			foreach ($date_matches[1] as $date_match) {
-				$date=new GedcomDate($date_match);
+				$date=new WT_Date($date_match);
 				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-15)) {
 					return true;
 				}
@@ -159,7 +159,7 @@ function is_dead($indirec, $gedcom_id) {
 					preg_match_all('/\n2 DATE (.+)/', $grandchildrec, $date_matches);
 					// Assume grandchildren born after age of 30
 					foreach ($date_matches[1] as $date_match) {
-						$date=new GedcomDate($date_match);
+						$date=new WT_Date($date_match);
 						if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-30)) {
 							return true;
 						}
@@ -278,7 +278,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 			if ($KEEP_ALIVE_YEARS_BIRTH) {
 				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
-					$date=new GedcomDate($match[1]);
+					$date=new WT_Date($match[1]);
 					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_BIRTH > date('Y')) {
 						$keep_alive=true;
 						break;
@@ -288,7 +288,7 @@ function canDisplayRecord($ged_id, $gedrec) {
 			if ($KEEP_ALIVE_YEARS_DEATH) {
 				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $gedrec, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
-					$date=new GedcomDate($match[1]);
+					$date=new WT_Date($match[1]);
 					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_DEATH > date('Y')) {
 						$keep_alive=true;
 						break;

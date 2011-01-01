@@ -389,7 +389,7 @@ function print_fact(&$eventObj) {
 		if (!empty($data_rec)) {
 			for ($even_num=1; $even_rec=get_sub_record(2, "2 EVEN", $data_rec, $even_num); ++$even_num) {
 				$tmp1=get_gedcom_value('EVEN', 2, $even_rec, $truncate='', $convert=false);
-				$tmp2=new GedcomDate(get_gedcom_value('DATE', 3, $even_rec, $truncate='', $convert=false));
+				$tmp2=new WT_Date(get_gedcom_value('DATE', 3, $even_rec, $truncate='', $convert=false));
 				$tmp3=get_gedcom_value('PLAC', 3, $even_rec, $truncate='', $convert=false);
 				$fact_string = "";
 				if ($even_num>1)
@@ -425,7 +425,7 @@ function print_fact(&$eventObj) {
 						}
 						echo htmlspecialchars($match[$i][2]);
 						$sub_rec = get_sub_record(2, "2 ".$factref, $factrec, 1);
-						$tmp=new GedcomDate(get_gedcom_value('DATE', 3, $sub_rec, $truncate='', $convert=false));
+						$tmp=new WT_Date(get_gedcom_value('DATE', 3, $sub_rec, $truncate='', $convert=false));
 						if ($tmp->Display(true)!="&nbsp;") echo " - ".$tmp->Display(true);
 						echo "<br />";
 					}
@@ -664,7 +664,7 @@ function print_media_links($factrec, $level, $pid='') {
 				}
 			}
 			if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $row["m_gedrec"]), $match)) {
-				$media_date=new GedcomDate($match[1]);
+				$media_date=new WT_Date($match[1]);
 				$md = $media_date->Display(true);
 				echo "<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
 			}
@@ -978,7 +978,7 @@ function printSourceStructure($textSOUR) {
 
 	if ($textSOUR['DATE'] || count($textSOUR['TEXT'])) {
 		if ($textSOUR['DATE']) {
-			$date=new GedcomDate($textSOUR['DATE']);
+			$date=new WT_Date($textSOUR['DATE']);
 			$html.='<div class="indent"><span class="label">'.translate_fact('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
@@ -1491,7 +1491,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		}
 	}
 	if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $rowm["m_gedrec"]), $match)) {
-		$media_date=new GedcomDate($match[1]);
+		$media_date=new WT_Date($match[1]);
 		$md = $media_date->Display(true);
 		echo "<br /><span class=\"label\">", translate_fact('DATE'), ": </span> ", $md;
 	}

@@ -1,38 +1,32 @@
 <?php
-/**
-* Class file for a person
-*
-* webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
-* @package webtrees
-* @subpackage DataModel
-* @version $Id$
-*/
+// Class file for a person
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_WT_PERSON_PHP', '');
 
 require_once WT_ROOT.'includes/classes/class_event.php';
 
@@ -83,12 +77,12 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Static helper function to sort an array of people by birth date
 	static function CompareBirtDate($x, $y) {
-		return GedcomDate::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
+		return WT_Date::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
 	}
 
 	// Static helper function to sort an array of people by death date
 	static function CompareDeatDate($x, $y) {
-		return GedcomDate::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
+		return WT_Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
 	}
 
 	/**
@@ -130,10 +124,10 @@ class WT_Person extends WT_GedcomRecord {
 					}
 				}
 				if (is_null($this->_getBirthDate)) {
-					$this->_getBirthDate=new GedcomDate('');
+					$this->_getBirthDate=new WT_Date('');
 				}
 			} else {
-				$this->_getBirthDate=new GedcomDate("(".i18n::translate('Private').")");
+				$this->_getBirthDate=new WT_Date("(".i18n::translate('Private').")");
 			}
 		}
 		return $this->_getBirthDate;
@@ -213,10 +207,10 @@ class WT_Person extends WT_GedcomRecord {
 					}
 				}
 				if (is_null($this->_getDeathDate)) {
-					$this->_getDeathDate=new GedcomDate('');
+					$this->_getDeathDate=new WT_Date('');
 				}
 			} else {
-				$this->_getDeathDate=new GedcomDate("(".i18n::translate('Private').")");
+				$this->_getDeathDate=new WT_Date("(".i18n::translate('Private').")");
 			}
 		}
 		return $this->_getDeathDate;
@@ -267,7 +261,7 @@ class WT_Person extends WT_GedcomRecord {
 		if ($age_at_death
 			&& $this->getBirthYear() && empty($this->getBirthDate()->qual1)
 			&& $this->getDeathYear() && empty($this->getDeathDate()->qual1)) {
-			$age = get_age_at_event(GedcomDate::GetAgeGedcom($this->getBirthDate(), $this->getDeathDate()), false);
+			$age = get_age_at_event(WT_Date::GetAgeGedcom($this->getBirthDate(), $this->getDeathDate()), false);
 			if (!empty($age)) {
 				$tmp .= '<span class="age"> ('.i18n::translate('Age').' '.$age.')</span>';
 			}
@@ -404,10 +398,10 @@ class WT_Person extends WT_GedcomRecord {
 					}
 				}
 				if ($min && $max) {
-					list($y)=GregorianDate::JDtoYMD(floor((max($min)+min($max))/2));
-					$this->_getEstimatedBirthDate=new GedcomDate("EST {$y}");
+					list($y)=WT_Date_Gregorian::JDtoYMD(floor((max($min)+min($max))/2));
+					$this->_getEstimatedBirthDate=new WT_Date("EST {$y}");
 				} else {
-					$this->_getEstimatedBirthDate=new GedcomDate(''); // always return a date object
+					$this->_getEstimatedBirthDate=new WT_Date(''); // always return a date object
 				}
 			}
 		}
@@ -429,10 +423,10 @@ class WT_Person extends WT_GedcomRecord {
 					if ($tmp2->MaxJD()<WT_SERVER_JD) {
 						$this->_getEstimatedDeathDate=$tmp2;
 					} else {
-						$this->_getEstimatedDeathDate=new GedcomDate(''); // always return a date object
+						$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object
 					}
 				} else {
-					$this->_getEstimatedDeathDate=new GedcomDate(''); // always return a date object
+					$this->_getEstimatedDeathDate=new WT_Date(''); // always return a date object
 				}
 			}
 		}
@@ -987,7 +981,7 @@ class WT_Person extends WT_GedcomRecord {
 					if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT'.($sosa==1 ? '_PARE' : '_GPAR'))) {
 						foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 							$srec = $sEvent->getGedcomRecord();
-							if (GedcomDate::Compare($bDate, $sEvent->getDate())<0 && GedcomDate::Compare($sEvent->getDate(), $dDate)<=0) {
+							if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
 								switch ($sosa) {
 								case 1:
 									$factrec='1 _'.$sEvent->getTag().'_PARE';
@@ -1045,7 +1039,7 @@ class WT_Person extends WT_GedcomRecord {
 						if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
 							$sEvent = $sfamily->getMarriage();
 							$srec = $sEvent->getGedcomRecord();
-							if (GedcomDate::Compare($bDate, $sEvent->getDate())<0 && GedcomDate::Compare($sEvent->getDate(), $dDate)<=0) {
+							if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
 								$factrec = '1 '.$fact;
 								$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
 								$factrec .= "\n2 ASSO @".$parent->getXref().'@';
@@ -1122,7 +1116,7 @@ class WT_Person extends WT_GedcomRecord {
 					$srec = $sEvent->getGedcomRecord();
 					$sgdate=$sEvent->getDate();
 					// Always show _BIRT_CHIL, even if the dates are not known
-					if ($option=='_CHIL' || $sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
+					if ($option=='_CHIL' || $sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
 						$factrec='1 _'.$sEvent->getTag();
 						if ($option=='_GCHI' && $relation=='son') {
 							$factrec.='_GCH1';
@@ -1149,7 +1143,7 @@ class WT_Person extends WT_GedcomRecord {
 				foreach ($child->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 					$sgdate=$sEvent->getDate();
 					$srec = $sEvent->getGedcomRecord();
-					if ($sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
+					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
 						$factrec='1 _'.$sEvent->getTag();
 						if ($option=='_GCHI' && $relation=='son') {
 							$factrec.='_GCH1';
@@ -1177,7 +1171,7 @@ class WT_Person extends WT_GedcomRecord {
 					$sEvent = $sfamily->getMarriage();
 					$sgdate=$sEvent->getDate();
 					$srec = $sEvent->getGedcomRecord();
-					if ($sgdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && GedcomDate::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
+					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
 						$factrec='1 _'.$sEvent->getTag();
 						if ($option=='_GCHI' && $relation=='son') {
 							$factrec.='_GCH1';
@@ -1233,7 +1227,7 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($spouse->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 				$sdate=$sEvent->getDate();
 				$srec = $sEvent->getGedcomRecord();
-				if ($sdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && GedcomDate::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
+				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
 					$srec=preg_replace('/^1 .*/', '1 _'.$sEvent->getTag().'_SPOU ', $srec);
 					$srec.="\n".get_sub_record(2, '2 ASSO @'.$this->xref.'@', $srec);
 					switch ($spouse->getSex()) {
@@ -1276,7 +1270,7 @@ class WT_Person extends WT_GedcomRecord {
 			require get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
 			foreach ($histo as $indexval=>$hrec) {
 				$sdate=new GedcomDate(get_gedcom_value('DATE', 2, $hrec, '', false));
-				if ($sdate->isOK() && GedcomDate::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && GedcomDate::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
+				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
 					$event = new Event($hrec);
 					$event->setParentObject($this);
 					$this->indifacts[] = $event;

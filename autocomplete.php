@@ -128,7 +128,7 @@ function autocomplete_INDI($FILTER, $OPTION) {
 	if ($OPTION) {
 		list($pid, $event_date) = explode("|", $OPTION."|");
 		$record=WT_GedcomRecord::getInstance($pid); // INDI or FAM
-		$tmp=new GedcomDate($event_date);
+		$tmp=new WT_Date($event_date);
 		$event_jd=$tmp->JD();
 		// INDI
 		$indi_birth_jd = 0;

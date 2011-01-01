@@ -717,7 +717,7 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 
 	$monthdata= array();
 	for ($i=0; $i<12; ++$i) {
-		$monthdata[$i]=GregorianDate::NUM_TO_MONTH_NOMINATIVE($i+1, false);
+		$monthdata[$i]=WT_Date_Gregorian::NUM_TO_MONTH_NOMINATIVE($i+1, false);
 
 	}
 

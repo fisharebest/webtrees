@@ -1723,7 +1723,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	// current value
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($fact=="DATE") {
-			$date=new GedcomDate($value);
+			$date=new WT_Date($value);
 			echo $date->Display(false);
 		}
 		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
@@ -1737,7 +1737,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}
 	} else {
 		if ($fact=="DATE") {
-			$date=new GedcomDate($value);
+			$date=new WT_Date($value);
 			echo getRLM(), $date->Display(false), getRLM();
 		}
 		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {

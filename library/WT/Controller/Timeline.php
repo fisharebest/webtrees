@@ -2,7 +2,7 @@
 // Controller for the timeline chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -27,8 +27,6 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_TIMELINE_CTRL_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
@@ -232,13 +230,13 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 							$husb=$family->getHusband();
 							if (is_null($husb)) $husb = new WT_Person('');
 							$hdate=$husb->getBirthDate();
-							if ($hdate->isOK()) $ageh=get_age_at_event(GedcomDate::GetAgeGedcom($hdate, $gdate), false);
+							if ($hdate->isOK()) $ageh=get_age_at_event(WT_Date::GetAgeGedcom($hdate, $gdate), false);
 						}
 						else if ($this->pids[$p]==$wifeid) {
 							$wife=$family->getWife();
 							if (is_null($wife)) $wife = new WT_Person('');
 							$wdate=$wife->getBirthDate();
-							if ($wdate->isOK()) $agew=get_age_at_event(GedcomDate::GetAgeGedcom($wdate, $gdate), false);
+							if ($wdate->isOK()) $agew=get_age_at_event(WT_Date::GetAgeGedcom($wdate, $gdate), false);
 						}
 					}
 					if (!empty($ageh) && $ageh > 0) {

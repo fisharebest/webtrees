@@ -35,8 +35,6 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_CLASS_EVENT_PHP', '');
 
-require_once WT_ROOT.'includes/classes/class_date.php';
-
 /**
  * Event
  *
@@ -180,11 +178,11 @@ class Event {
 	/**
 	 * Get the date object for this event
 	 *
-	 * @return GedcomDate
+	 * @return WT_Date
 	 */
 	function getDate($estimate = true) {
 		if (is_null($this->date))
-			$this->date=new GedcomDate($this->getValue('DATE'));
+			$this->date=new WT_Date($this->getValue('DATE'));
 
 		if (!$estimate && $this->dest) return null;
 		return $this->date;
@@ -193,7 +191,7 @@ class Event {
 	/**
 	 * Set the date of this event.  This method should only be used to force a date.
 	 *
-	 * @param GedcomDate $date
+	 * @param WT_Date $date
 	 */
 	function setDate(&$date) {
 		$this->date = $date;
@@ -312,7 +310,7 @@ class Event {
 		if ($date->date1->y==0 && is_object($this->parentObject) && $this->parentObject->getType()=='INDI')
 			$date=$this->parentObject->getEstimatedBirthDate();
 
-		$gdate=new GregorianDate($date->MinDate());
+		$gdate=new WT_Date_Gregorian($date->MinDate());
 		$century=floor($gdate->y/100).'00';
 		$decade=floor($gdate->y/10).'0';
 
@@ -364,7 +362,7 @@ class Event {
 		} elseif (is_null($bdate) && !is_null($b->sortDate)) {
 			$ret = $a->sortOrder - $b->sortOrder;
 		} else {
-			$ret = GedcomDate::Compare($adate, $bdate);
+			$ret = WT_Date::Compare($adate, $bdate);
 		}
 		if ($ret==0) {
 			$ret = $a->sortOrder - $b->sortOrder;

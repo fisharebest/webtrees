@@ -1252,8 +1252,8 @@ function search_indis_year_range($startyear, $endyear) {
 	// TODO: We should use Julian-days, rather than gregorian years,
 	// to allow
 	// the lifespan chart, etc., to use other calendars.
-	$startjd=GregorianDate::YMDtoJD($startyear, 1, 1);
-	$endjd  =GregorianDate::YMDtoJD($endyear+1, 1, 1)-1;
+	$startjd=WT_Date_Gregorian::YMDtoJD($startyear, 1, 1);
+	$endjd  =WT_Date_Gregorian::YMDtoJD($endyear+1, 1, 1)-1;
 
 	return search_indis_daterange($startjd, $endjd, '');
 }
@@ -1709,7 +1709,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 	}
 
 	$found_facts=array();
-	foreach (array(new GregorianDate($jd), new JulianDate($jd), new FrenchRDate($jd), new JewishDate($jd), new HijriDate($jd)) as $anniv) {
+	foreach (array(new WT_Date_Gregorian($jd), new WT_Date_Julian($jd), new WT_Date_French($jd), new WT_Date_Jewish($jd), new WT_Date_Hijri($jd)) as $anniv) {
 		// Build a SQL where clause to match anniversaries in the appropriate calendar.
 		$where="WHERE d_type='".$anniv->CALENDAR_ESCAPE()."'";
 		// SIMPLE CASES:
@@ -1746,7 +1746,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				// 1 KSL includes 30 CSH (if this year didn't have 30 CSH)
 				// 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
 				if ($anniv->d==1) {
-					$tmp=new JewishDate(array($anniv->y, 'csh', 1));
+					$tmp=new WT_Date_Jewish(array($anniv->y, 'csh', 1));
 					if ($tmp->DaysInMonth()==29) {
 						$where.=" AND (d_day<=1 AND d_mon=3 OR d_day=30 AND d_mon=2)";
 					} else {
@@ -1764,7 +1764,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 			case 4:
 				// 1 TVT includes 30 KSL (if this year didn't have 30 KSL)
 				if ($anniv->d==1) {
-					$tmp=new JewishDate($anniv->y, 'ksl', 1);
+					$tmp=new WT_Date_Jewish($anniv->y, 'ksl', 1);
 					if ($tmp->DaysInMonth()==29) {
 						$where.=" AND (d_day<=1 AND d_mon=4 OR d_day=30 AND d_mon=3)";
 					} else {
@@ -1854,7 +1854,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				$ged_date_regex="/2 DATE.*(".($row['d_day']>0 ? "0?{$row['d_day']}\s*" : "").$row['d_month']."\s*".($row['d_year']!=0 ? $year_regex : "").")/i";
 				foreach (get_all_subrecords($row['gedrec'], $skipfacts, false, false) as $factrec) {
 					if (preg_match("/(^1 {$row['d_fact']}|^1 (FACT|EVEN).*\n2 TYPE {$row['d_fact']})/s", $factrec) && preg_match($ged_date_regex, $factrec) && preg_match('/2 DATE (.+)/', $factrec, $match)) {
-						$date=new GedcomDate($match[1]);
+						$date=new WT_Date($match[1]);
 						if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
 							$plac=$match[1];
 						} else {
@@ -1936,7 +1936,7 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 			$ged_date_regex="/2 DATE.*(".($row[4]>0 ? "0?{$row[4]}\s*" : "").$row[5]."\s*".($row[6]!=0 ? $year_regex : "").")/i";
 			foreach (get_all_subrecords($row[1], $skipfacts, false, false) as $factrec) {
 				if (preg_match("/(^1 {$row[7]}|^1 (FACT|EVEN).*\n2 TYPE {$row[7]})/s", $factrec) && preg_match($ged_date_regex, $factrec) && preg_match('/2 DATE (.+)/', $factrec, $match)) {
-					$date=new GedcomDate($match[1]);
+					$date=new WT_Date($match[1]);
 					if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
 						$plac=$match[1];
 					} else {

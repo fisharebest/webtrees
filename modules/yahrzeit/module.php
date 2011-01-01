@@ -89,24 +89,24 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		// ...then adjust dates
 		foreach ($yahrzeits as $key=>$yahrzeit) {
 			if (strpos('1 DEAT', $yahrzeit['factrec'])!==false) { // Just DEAT, not _YART
-				$today=new JewishDate($yahrzeit['jd']);
+				$today=new WT_Date_Jewish($yahrzeit['jd']);
 				$hd=$yahrzeit['date']->MinDate();
-				$hd1=new JewishDate($hd);
+				$hd1=new WT_Date_Jewish($hd);
 				$hd1->y+=1;
 				$hd1->SetJDFromYMD();
 				// Special rules.  See http://www.hebcal.com/help/anniv.html
 				// Everything else is taken care of by our standard anniversary rules.
 				if ($hd->d==30 && $hd->m==2 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 CSH
 					// Last day in CSH
-					$yahrzeit[$key]['jd']=JewishDate::YMDtoJD($today->y, 3, 1)-1;
+					$yahrzeit[$key]['jd']=WT_Date_Jewish::YMDtoJD($today->y, 3, 1)-1;
 				}
 				if ($hd->d==30 && $hd->m==3 && $hd->y!=0 && $hd1->DaysInMonth()<30) { // 30 KSL
 					// Last day in KSL
-					$yahrzeit[$key]['jd']=JewishDate::YMDtoJD($today->y, 4, 1)-1;
+					$yahrzeit[$key]['jd']=WT_Date_Jewish::YMDtoJD($today->y, 4, 1)-1;
 				}
 				if ($hd->d==30 && $hd->m==6 && $hd->y!=0 && $today->DaysInMonth()<30 && !$today->IsLeapYear()) { // 30 ADR
 					// Last day in SHV
-					$yahrzeit[$key]['jd']=JewishDate::YMDtoJD($today->y, 6, 1)-1;
+					$yahrzeit[$key]['jd']=WT_Date_Jewish::YMDtoJD($today->y, 6, 1)-1;
 				}
 			}
 		}
@@ -160,8 +160,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= $exp[1];
 					$content .= "</td>";
 
-					$today=new JewishDate($yahrzeit['jd']);
-					$td=new GedcomDate($today->Format('%@ %A %O %E'));
+					$today=new WT_Date_Jewish($yahrzeit['jd']);
+					$td=new WT_Date($today->Format('%@ %A %O %E'));
 
 					// death/yahrzeit event date
 					$content .= "<td class=\"list_value_wrap\">";

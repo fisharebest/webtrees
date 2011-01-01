@@ -1,38 +1,32 @@
 <?php
-/**
- * Class file for a Family
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage DataModel
- * @version $Id$
- */
+// Class file for a Family
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_WT_FAMILY_PHP', '');
 
 class WT_Family extends WT_GedcomRecord {
 	private $husb = null;
@@ -170,7 +164,7 @@ class WT_Family extends WT_GedcomRecord {
 
 	// Static helper function to sort an array of families by marriage date
 	static function CompareMarrDate($x, $y) {
-		return GedcomDate::Compare($x->getMarriageDate(), $y->getMarriageDate());
+		return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
 	}
 
 	/**
@@ -295,7 +289,7 @@ class WT_Family extends WT_GedcomRecord {
 	 */
 	function getMarriageDate() {
 		if (!$this->canDisplayDetails()) {
-			return new GedcomDate('');
+			return new WT_Date('');
 		}
 		if (is_null($this->marriage)) {
 			$this->_parseMarriageRecord();
@@ -310,7 +304,7 @@ class WT_Family extends WT_GedcomRecord {
 	function getMarriageYear($est = true, $cal = '') {
 		// TODO - change the design to use julian days, not gregorian years.
 		$mdate = $this->getMarriageDate();
-		$mdate = $mdate->MinDate();
+		$mdate = $mdate->WT_Date();
 		if ($cal) $mdate = $mdate->convert_to_cal($cal);
 		return $mdate->y;
 	}

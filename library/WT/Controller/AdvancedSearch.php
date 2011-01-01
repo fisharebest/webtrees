@@ -2,7 +2,7 @@
 // Controller for the Advanced Search Page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
@@ -28,18 +28,12 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_ADVANCED_SEARCH_PHP', '');
-
 class WT_Controller_AdvancedSearch extends WT_Controller_Search {
-
 	var $fields = array();
 	var $values = array();
 	var $plusminus = array();
 	var $errors = array();
 
-	/**
-	 * constructor
-	 */
 	function __construct() {
 		parent::__construct();
 	}
@@ -270,7 +264,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 					$datesTable = true;
 				}
 				$sqlwhere .= " AND (d_fact='".$parts[0]."'";
-				$date = new GedcomDate($value);
+				$date = new WT_Date($value);
 				if ($date->isOK()) {
 					$jd1 = $date->date1->minJD;
 					if ($date->date2) $jd2 = $date->date2->maxJD;

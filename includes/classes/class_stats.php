@@ -271,7 +271,7 @@ class stats {
 
 		$head=find_other_record('HEAD', $this->_ged_id);
 		if (preg_match("/1 DATE (.+)/", $head, $match)) {
-			$date=new GedcomDate($match[1]);
+			$date=new WT_Date($match[1]);
 			return $date->Display(false, $DATE_FORMAT); // Override $PUBLIC_DATE_FORMAT
 		}
 		return '';
@@ -283,7 +283,7 @@ class stats {
 			->execute(array($this->_ged_id, 'CHAN'))
 			->fetchOneRow();
 		if ($row) {
-			$date=new GedcomDate("{$row->d_day} {$row->d_month} {$row->d_year}");
+			$date=new WT_Date("{$row->d_day} {$row->d_month} {$row->d_year}");
 			return $date->Display(false);
 		} else {
 			return self::gedcomDate();
@@ -947,7 +947,7 @@ class stats {
 				}
 				break;
 			case 'year':
-				$date=new GedcomDate($row['d_type'].' '.$row['d_year']);
+				$date=new WT_Date($row['d_type'].' '.$row['d_year']);
 				$result=$date->Display(true);
 				break;
 			case 'name':
@@ -1905,7 +1905,7 @@ class stats {
 				}
 				break;
 			case 'year':
-				$date=new GedcomDate($row['type'].' '.$row['year']);
+				$date=new WT_Date($row['type'].' '.$row['year']);
 				$result=$date->Display(true);
 				break;
 			case 'type':

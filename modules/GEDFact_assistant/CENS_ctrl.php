@@ -45,7 +45,7 @@ global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 		if (!($controller->indi->isDead())) {
 			// If alive display age
 			$bdate=$controller->indi->getBirthDate();
-			$age = GedcomDate::GetAgeGedcom($bdate);
+			$age = WT_Date::GetAgeGedcom($bdate);
 			if ($age!="")
 				$summary.= "<span class=\"label\">".i18n::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
 		}
