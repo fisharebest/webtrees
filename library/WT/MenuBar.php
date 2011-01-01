@@ -30,13 +30,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/classes/class_module.php';
-
 class WT_MenuBar {
-	/**
-	* get the menu with links to the gedcom portals
-	* @return WT_Menu the menu item
-	*/
 	public static function getGedcomMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES;
 
@@ -67,10 +61,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get the mypage menu
-	* @return WT_Menu the menu item
-	*/
 	public static function getMyPageMenu() {
 		global $MEDIA_DIRECTORY, $MULTI_MEDIA;
 		global $TEXT_DIRECTION, $WT_IMAGES;
@@ -154,10 +144,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get the menu for the charts
-	* @return WT_Menu the menu item
-	*/
 	public static function getChartsMenu($rootid='') {
 		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
@@ -430,10 +416,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get the menu for the lists
-	* @return WT_Menu the menu item
-	*/
 	public static function getListsMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $MULTI_MEDIA, $SEARCH_SPIDER, $controller;
 
@@ -535,10 +517,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get the menu for the calendar
-	* @return WT_Menu the menu item
-	*/
 	public static function getCalendarMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 
@@ -599,10 +577,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get the search menu
-	* @return WT_Menu the menu item
-	*/
 	public static function getSearchMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER;
 
@@ -639,10 +613,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get an array of module menu objects
-	* @return array
-	*/
 	public static function getModuleMenus() {
 		$menus=array();
 		foreach (WT_Module::getActiveMenus() as $module) {
@@ -654,10 +624,6 @@ class WT_MenuBar {
 		return $menus;
 	}
 
-	/**
-	* get the help menu
-	* @return WT_Menu the menu item
-	*/
 	public static function getHelpMenu() {
 		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $helpindex, $action;
 
@@ -717,10 +683,6 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	/**
-	* get the menu with links change to each theme
-	* @return WT_Menu the menu item
-	*/
 	public static function getThemeMenu() {
 		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN;
 
@@ -741,10 +703,7 @@ class WT_MenuBar {
 			return null;
 		}
 	}
-	/**
-	* get the menu with links change to each color themes subcolor type
-	* @return WT_Menu the menu item
-	*/
+
 	public static function getColorMenu($COLOR_THEME_LIST) {
 		$menu=new WT_Menu(i18n::translate('Color Palette'));
 		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', "icon_small_theme");
@@ -754,10 +713,7 @@ class WT_MenuBar {
 		}
 		return $menu;
 	}
-	/**
-	* get the menu with links to change language
-	* @return WT_Menu the menu item
-	*/
+
 	public static function getLanguageMenu() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
@@ -781,10 +737,7 @@ class WT_MenuBar {
 			return null;
 		}
 	}
-	/**
-	* get the menu with links to the user/gedcom favorites
-	* @return WT_Menu the menu item
-	*/
+
 	public static function getFavoritesMenu() {
 		global $REQUIRE_AUTHENTICATION, $GEDCOM, $WT_IMAGES, $TEXT_DIRECTION;
 		global $SEARCH_SPIDER;

@@ -29,8 +29,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_MODULE_PHP', '');
-
 // Modules can optionally implement the following interfaces.
 interface WT_Module_Block {
 	public function getBlock($block_id);
