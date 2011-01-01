@@ -3470,13 +3470,13 @@ function ListSHandler($attrs) {
 
 	switch ($sortby) {
 		case "NAME":
-			uasort($list, array("GedcomRecord", "Compare"));
+			uasort($list, array("WT_GedcomRecord", "Compare"));
 			break;
 		case "ID":
-			uasort($list, array("GedcomRecord", "CompareId"));
+			uasort($list, array("WT_GedcomRecord", "CompareId"));
 			break;
 		case "CHAN":
-			uasort($list, array("GedcomRecord", "CompareChanDate"));
+			uasort($list, array("WT_GedcomRecord", "CompareChanDate"));
 			break;
 		case "BIRT:DATE":
 			uasort($list, array("Person", "CompareBirtDate"));
@@ -3700,10 +3700,10 @@ function RelativesSHandler($attrs) {
 
 	switch ($sortby) {
 		case "NAME":
-			uasort($list, array("GedcomRecord", "Compare"));
+			uasort($list, array("WT_GedcomRecord", "Compare"));
 			break;
 		case "ID":
-			uasort($list, array("GedcomRecord", "CompareId"));
+			uasort($list, array("WT_GedcomRecord", "CompareId"));
 			break;
 		case "BIRT:DATE":
 			uasort($list, array("ReportBase", "CompareBirthDate"));
@@ -3794,7 +3794,7 @@ function RelativesEHandler() {
 			if (strpos($key, "empty")===0) {
 				continue; // key can be something like "empty7"
 			}
-			$tmp=GedcomRecord::getInstance($key);
+			$tmp=WT_GedcomRecord::getInstance($key);
 			$gedrec = $tmp->getGedcomRecord();
 			//-- start the sax parser
 			$repeat_parser = xml_parser_create();
