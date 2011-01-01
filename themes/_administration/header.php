@@ -39,7 +39,7 @@ echo
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
-	'<div id="title"><a href="administration.php">', i18n::translate('Administration'), '</a></div>',
+	'<div id="title"><a href="admin.php">', i18n::translate('Administration'), '</a></div>',
 	'<div id="links">',
 	'<a href="index.php">', i18n::translate('My page'), '</a> | ',
 	logout_link(),
@@ -64,7 +64,7 @@ echo
 // Side menu 
 	'<div id="admin_menu" class="ui-widget-content">',
 	'<ul>',
-	'<li><a ', (WT_SCRIPT_NAME=="administration.php" ? 'class="current" ' : ''), 'href="administration.php">',
+	'<li><a ', (WT_SCRIPT_NAME=="admin.php" ? 'class="current" ' : ''), 'href="admin.php">',
 	i18n::translate('Administration'),
 	'</a></li>';
 if (WT_USER_IS_ADMIN) {

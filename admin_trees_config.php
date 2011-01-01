@@ -31,7 +31,7 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'administration.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
 	exit;
 }
 
