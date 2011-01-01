@@ -3277,7 +3277,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 				$url = $fileName . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_streetview':
-				if (WT_SCRIPT_NAME != "media.php") {
+				if (WT_SCRIPT_NAME != "admin_media.php") {
 					echo  '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'. $fileName. '&amp;output=svembed"></iframe>';
 				}
 				break 2;

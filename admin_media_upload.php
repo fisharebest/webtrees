@@ -27,7 +27,7 @@
  * @version $Id$
  */
 
-define('WT_SCRIPT_NAME', 'uploadmedia.php');
+define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
@@ -84,6 +84,6 @@ if (!dir_is_writable($MEDIA_DIRECTORY) || !$MULTI_MEDIA) {
 	echo i18n::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
 	echo "</b></span><br />";
 } else {
-	show_mediaUpload_form('uploadmedia.php', false); // We have the green light to upload media, print the form
+	show_mediaUpload_form(WT_SCRIPT_NAME, false); // We have the green light to upload media, print the form
 }
 print_footer();

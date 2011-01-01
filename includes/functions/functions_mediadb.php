@@ -1076,7 +1076,7 @@ function process_uploadMedia_form() {
 * @param string $URL  the URL the input form is to execute when the "Submit" button is pressed
 * @param bool   $showthumb the setting of the "show thumbnail" option (required by media.php)
 */
-function show_mediaUpload_form($URL='media.php', $showthumb=false) {
+function show_mediaUpload_form($URL, $showthumb=false) {
 	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
 
 	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');

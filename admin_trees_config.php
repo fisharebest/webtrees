@@ -22,17 +22,16 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Admin
  * @version $Id$
  */
 
-define('WT_SCRIPT_NAME', 'editconfig_gedcom.php');
+define('WT_SCRIPT_NAME', 'admin_trees_config.php');
+
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'administration.php');
 	exit;
 }
 
@@ -360,12 +359,12 @@ case 'update':
 			$news["date"] = client_time();
 			addNews($news);
 		}
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 		exit;
 	}
 }
 
-print_header(i18n::translate('GEDCOM configuration'));
+print_header(i18n::translate('Configure family tree'));
 ?>
 <script type="text/javascript">
 //<![CDATA[
@@ -385,21 +384,6 @@ print_header(i18n::translate('GEDCOM configuration'));
 </script>
 
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="editconfig_gedcom.php">
-
-<table class="facts_table center <?php echo $TEXT_DIRECTION; ?>">
-	<tr>
-		<td colspan="2" class="facts_label">
-			<?php
-				echo "<h2>", i18n::translate('GEDCOM configuration'), " - ";
-				echo PrintReady(get_gedcom_setting(WT_GED_ID, 'title'));
-				echo "</h2>";
-				echo "<a href=\"editgedcoms.php\"><b>";
-				echo i18n::translate('Return to the GEDCOM management menu');
-				echo "</b></a><br /><br />";
-			?>
-		</td>
-	</tr>
-</table>
 
 <input type="hidden" name="action" value="update" />
 <?php
@@ -444,7 +428,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 							<?php
 								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
 								if ($PEDIGREE_ROOT_ID) {
-									$person=WT_Person::getInstance($PEDIGREE_ROOT_ID);
+									$person=Person::getInstance($PEDIGREE_ROOT_ID);
 									if ($person) {
 										echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 									} else {
@@ -710,7 +694,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 				explode(',', get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'NOTE_FACTS_UNIQUE')),
 				explode(',', get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE')),
 				explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD')), explode(',', get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE')),
-				array('SOUR', 'REPO', 'OBJE', 'NOTE', 'SUBM', 'SUBN')
+				array('SOUR', 'REPO', 'OBJE', '_PRIM', '_THUM', 'NOTE', 'SUBM', 'SUBN')
 			));
 
 			foreach ($tags as $tag) {
@@ -745,7 +729,7 @@ print_header(i18n::translate('GEDCOM configuration'));
 			foreach ($rows as $row) {
 				echo '<tr><td class="optionbox" width="*">';
 				if ($row->xref) {
-					$record=WT_GedcomRecord::getInstance($row->xref);
+					$record=GedcomRecord::getInstance($row->xref);
 					if ($record) {
 						$name=$record->getFullName();
 					} else {
@@ -1673,9 +1657,11 @@ print_header(i18n::translate('GEDCOM configuration'));
 			<table class="facts_table" border="0">
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
-						<input type="submit" value="<?php echo i18n::translate('Save configuration'); ?>" />
+						<div class="btn">
+						<button type="submit" tabindex="<?php echo ++$i; ?>" value="<?php echo i18n::translate('Save configuration'); ?>" /><span><?php echo i18n::translate('Save configuration'); ?></span></button>				
 						&nbsp;&nbsp;
-						<input type="reset" value="<?php echo i18n::translate('Reset'); ?>" />
+						<button type="reset" tabindex="<?php echo ++$i; ?>" value="<?php echo i18n::translate('Reset'); ?>" /><span><?php echo i18n::translate('Reset'); ?></span></button>
+						</div>
 					</td>
 				</tr>
 			</table>
@@ -1683,6 +1669,5 @@ print_header(i18n::translate('GEDCOM configuration'));
 	</tr>
 </table>
 </form>
-<br />
 <?php
 print_footer();

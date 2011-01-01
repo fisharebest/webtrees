@@ -460,7 +460,10 @@ if (WT_USER_ID) {
 }
 
 // Set the theme
-if (!defined('WT_THEME_DIR')) {
+if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && substr(safe_GET('mod_action'), 0, 5)=='admin') {
+	// Administration scripts begin with 'admin' and use a special administration theme
+	define('WT_THEME_DIR', 'themes/_administration/');
+} else {
 	if (get_site_setting('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
 		$THEME_DIR=safe_GET('theme', get_theme_names());

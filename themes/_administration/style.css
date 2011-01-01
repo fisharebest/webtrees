@@ -1,0 +1,282 @@
+/**
+ * Style for Admiistration pages
+ *
+ * Use this stylesheet to customize the display of your site.
+ * To learn more about CSS visit http://www.w3.org/TR/REC-CSS2/
+ *
+ * webtrees:Web based Family History software
+ * Copyright (C) 2010 webtrees development team.
+ *
+ * Derived from PhpGedView
+ * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * @package webtrees
+ * @subpackage Administration
+ * @version $Id:admin_style.css 9851 2010-11-15 21:16:14Z nigel $
+ */
+
+/* general styles */
+body { font-size:12px; margin:10px;}
+.ui-widget-content a {text-decoration:none;}
+.ui-widget-content a.current {color:#E17009; font-weight:bold;}
+.ui-widget-content a:hover {color:red; cursor:hand; cursor:pointer;}
+.ui-widget-header {padding:5px;}
+.css_right {float:right;}
+input.ui-button { padding:1px 3px;}
+input, textarea {	color:black; padding-left:3px; padding-right:3px;}
+fieldset {margin:8px 8px 4px 8px;}
+legend {font-style:italic; font-weight:bold;	padding:0 5px 5px; align:top;}
+img {border:none;}
+.icon {border:none;	padding-left:0pt;padding-right:5pt;}
+.warning, .error, .red {	font-weight:bold; color:red;}
+.accepted { font-weight:bold; color:green;}
+.center {text-align:center;}
+.nowrap {white-space:nowrap;}
+.indent {padding-left:15px;}
+h3 {margin:0}
+h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
+
+/* HEADER */
+#admin_head  {position:relative; height:70px; margin-bottom:10px; background-image: url("images/header.png"); background-repeat:no-repeat; background-position:top left;}
+#title  {position:absolute; left:47%; top: 20px; font-size:18px; font-weight:bold;}
+#info  {position:absolute; right:10px; bottom:0;text-align:right;}
+#links {position:absolute; left:10px; bottom:0; display:inline;margin-bottom:5px;}
+#links li {display:inline;position:relative;white-space:nowrap;}
+#links li ul {display:none;	position:absolute;left:0px;top:1.5em; background: url("images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border: 1px solid #D9D6C4;z-index:999;}
+#links li ul li {display:block; padding: 0 5px;text-align:left;}
+#links, #links li ul {list-style:none;margin:0;	padding:1px;}
+#links li:hover > ul {display:block;}
+
+/* SIDE and CONTENT panels */
+#admin_menu, #admin_content {min-height:720px;}
+
+/* SIDE MENU */
+#admin_menu {padding:10px 0 10px 5px; width:200px; float:left; position:absolute; color:#2E6E9E;}
+#admin_menu ul {list-style: none outside none; margin:0 0 0 -30px;}
+#admin_menu li ul {list-style: none outside none; margin:0 0 0 -20px;}
+#admin_menu li ul span {font-style: italic; font-weight:bold;}
+
+/* CONTENT */
+#admin_content {margin-left:220px; padding:10px; }
+
+/* FOOTER */
+#admin_footer {float:left; text-align:center; width:100%; margin-top:30px;}
+
+/* INDEX */
+#admin_index {}
+
+/* All DASHBOARD BLOCKS */
+#about, #block1 , #block2, #block3{background:OldLace; padding:5px; border:1px inset #D9D6C4;}
+#about h2, #block1 h2, #block2 h2, #block3 h2 {margin:0;}
+#tree_stats h3, #changes h3  {text-align:left; }
+#block1, #block2, #block3 {height:540px; overflow:auto; width:31%;}
+#block1  {float:left;}
+#block2  {margin: 0 auto;}
+#block3  {float:right;}
+#about {margin-bottom:10px;}
+#tree_stats th, #changes th {padding: 0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
+#tree_stats td, #changes td {padding-right:10px; width:30px; text-align:right; white-space:nowrap;}
+#tree_stats .ui-accordion-content, #changes .ui-accordion-content {padding: 1em 0;}
+#tree_stats.ui-widget, #changes.ui-widget {font-size: 100% !important;}
+.ui-accordion .ui-accordion-content-active {
+    display: block;
+}
+
+/*SITE CONFIG */
+.editable {width:100%; display:block}
+.editable:hover {color:red; cursor:pointer; cursor:hand;} /* both cursors needed for cross-browser support */
+.editable input, select {padding:0;}
+.site_config {padding: 0;}/*  table */
+.site_config th {text-align:left; padding:0 0 1px 3px;font-size:105%;} /* sub-headings, both cols */
+.site_config th+th { font-style:italic;font-size:95%;} /* sub-headings, right col */
+.site_config td {white-space:normal;padding:3px 3px 3px 30px;} /* left-col */
+.site_config td+td {background-color:#dcdcdc; width:250px; padding:3px;} /* right/col */
+
+/*SITE LOGS */
+.site_logs {padding: 0;}/*  table */
+.site_logs td {background-color:#dcdcdc; width:250px; padding:3px; text-align:right;}
+.site_logs td+td {text-align:center;}
+table#log_list   {width:100%}
+#log_list_length {float:left;}
+#log_list_filter {float:right;}
+#log_list_info {float:left;}
+#log_list_paginate {float:right;}
+
+/* USER List */
+table#list   {width:100%}
+#list th {text-align:left;white-space:nowrap;}
+#list img {padding-left:15px; width:25px; vertical-align:middle;}
+#list img.open {width:16px; vertical-align:middle;}
+#list .yes_no img {width:16px; vertical-align:middle;}
+#list .name {padding-right:5px;}
+#list .description {font-size:10px;	color:#666666;	width:35%;}
+.dataTables_paginate {float:right;text-align:right;}
+.paging_full_numbers .fg-button {cursor:pointer;padding:2px 6px;}
+td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
+.edit_link {white-space:nowrap;}
+.edit_link:after {content:" " url("../images/edit.png");}
+.details td {vertical-align:top; border-right:1px solid #808080; padding-right:20px;}
+.details th {font-weight:bold; vertical-align:top; padding-left:20px;}
+.details ul {margin:0; padding:0 0 0 20px;}
+.odd {background-color:#dfd;}
+.even {background-color:#efe;}
+#list_length {float:left;}
+#list_filter {float:right;}
+#list_info {float:left;}
+#list_paginate {float:right;}
+#user-list_length {float:left;}
+#user-list_filter {float:right;}
+#user-list_info {float:left;}
+#user-list_paginate {float:right;}
+
+/* USER add */
+table#adduser   {width:100%;}
+#adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
+#adduser td, #adduser td+td+td {background-color:#eceadf;white-space:normal;padding:3px 3px 3px 10px;width:25%;} /* left-cols */
+#adduser td+td, #adduser td+td+td+td {background-color:#dcdcdc; width:250px; padding:3px;} /* right-cols */
+
+table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
+#adduser2 th {background-color:#dcdcdc; text-align:left; padding:0;font-size:100%;white-space:nowrap;}
+#adduser2 td, #adduser2 td+td, #adduser2 td+td+td, #adduser2 td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
+#adduser2 td+td+td+td {text-align:center;}
+
+/* GEDCOM config tables */
+.facts_table {text-align:left;width:100%;}
+.config {}
+.descriptionbox  {border-bottom:solid #81a9cb 1px;vertical-align:top;white-space:nowrap;padding:3px;background-color:#DFEFFC;}
+.optionbox {	border-bottom:solid #81a9cb 1px;vertical-align:top;white-space:nowrap;padding:3px;}
+.subbar {background-color:#d1d9ef;border:solid #81a9cb 1px;font-size:11px;font-weight:bold;vertical-align:top;white-space:nowrap;padding:3px;}
+
+/* README */
+#readme {font-size:12px; padding:10px; }
+#readme 	h1 {font-size:16px; font-weight:bold; margin-top:0; }
+#readme 	h2 {font-size:14px; font-weight:bold; margin-top:0; }
+#readme 	h3 {font-size:14px; font-weight:bold; margin:14px 0; }
+#readme	li {line-height:150%;}
+#readme	.back {float:right;}
+
+/* PHP INFO */
+#phpinfo table.heading  {padding:3px;	text-align:center;width:100%;}
+
+/* MANAGE GEDCOMS */
+.gedcom_table th {font-weight:bold; font-size:14px; text-align:left; width: 15%}
+.gedcom_table th+th {width: 80%}
+.gedcom_table2 {margin-top: 20px; width:85%;}
+.gedcom_table2 th {font-weight:bold; font-size:14px; text-align:center;}
+.gedcom_table2 td {text-align:center;}
+
+/* help text pop-ups */
+.help {
+	cursor:help;
+}
+
+.helpcontent {
+	margin-left:10px;
+	margin-right:10px;
+}
+
+.helpfooter {
+	margin:10px;
+}
+
+.helpheader {
+	margin:10px;
+	font-size:18px;
+	font-weight:bold;
+	color:black;
+}
+
+.helpstart {
+	margin:10px;
+	font-size:14px;
+	color:blue;
+	text-decoration:none;
+	font-weight: bold;
+}
+
+.helptext {
+	font-size:12px;
+	color:black;
+}
+/*------------------------------------------------*/
+/* General Info page */
+
+
+/* GEDCOM management */
+
+table#gedcom_table {
+	border-bottom:solid #81a9cb 1px;
+	vertical-align:top;
+	white-space:nowrap;
+	padding:3px;
+	width:100%;
+}
+
+table#gedcom_table .gedcom  {
+	font-weight:bold;
+	font-size:12px;
+	width:40%;
+}
+
+table#gedcom_table .defaults  {
+	font-weight:bold;
+	font-size:12px;
+	text-align:center;
+	width:25%;
+	color:#666666;
+}
+
+table#site_config {
+	font-size:12px;
+}/
+
+
+.facts_table, .facts_table_rtl {
+	width:100%;
+}
+
+.facts_value {
+	border-bottom:solid #81a9cb 1px;
+	text-align:left;
+	padding:3px;
+}
+
+/* jQuery UI CSS customisations 
+.css_right {float:right;}
+.ui-toolbar {padding:5px;}*/
+
+/* Text direction 
+.ltr {text-align:left;}
+.rtl {text-align:right;	direction:rtl;}*/
+
+/*#admin_content dt {
+	float:left;
+	width:300px;
+}
+
+#admin_content dd {
+	color:	grey;
+	font-size:14px;
+	font-style:italic;
+	padding-top:3px;
+}*/
+
+/* Drag-n-drop sorting for modules, etc. */
+.sortme {
+	cursor: move;
+}
+

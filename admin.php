@@ -120,7 +120,7 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a href="#users" onclick="window.location=\'useradmin.php\';">',
 		i18n::translate('User administration'),
 		'</a></li>',
-		'<li><a href="#multimedia" onclick="window.location=\'media.php\';">',
+		'<li><a href="#multimedia" onclick="window.location=\'admin_media.php\';">',
 		i18n::translate('Manage multimedia'),
 		'</a></li>';
 }
