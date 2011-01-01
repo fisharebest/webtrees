@@ -65,7 +65,7 @@ class WT_Stats {
 	*/
 	function getAllTags() {
 		$examples = array();
-		$methods = get_class_methods('stats');
+		$methods = get_class_methods('WT_Stats');
 		$c = count($methods);
 		for ($i=0; $i < $c; $i++) {
 			if ($methods[$i][0] == '_' || in_array($methods[$i], self::$_not_allowed)) {
@@ -3287,22 +3287,22 @@ class WT_Stats {
 		if (is_array($params) && isset($params[2]) && $params[2] != '') {$sorting = strtolower($params[2]);} else {$sorting = 'alpha';}
 		$surname_list = get_common_surnames($threshold);
 		if (count($surname_list) == 0) return '';
-		uasort($surname_list, array('stats', '_name_total_rsort'));
+		uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
 		if ($maxtoshow>0) $surname_list = array_slice($surname_list, 0, $maxtoshow);
 
 		switch($sorting) {
 			default:
 			case 'alpha':
-				uasort($surname_list, array('stats', '_name_name_sort'));
+				uasort($surname_list, array('WT_Stats', '_name_name_sort'));
 				break;
 			case 'ralpha':
-				uasort($surname_list, array('stats', '_name_name_rsort'));
+				uasort($surname_list, array('WT_Stats', '_name_name_rsort'));
 				break;
 			case 'count':
-				uasort($surname_list, array('stats', '_name_total_sort'));
+				uasort($surname_list, array('WT_Stats', '_name_total_sort'));
 				break;
 			case 'rcount':
-				uasort($surname_list, array('stats', '_name_total_rsort'));
+				uasort($surname_list, array('WT_Stats', '_name_total_rsort'));
 				break;
 		}
 
@@ -3337,7 +3337,7 @@ class WT_Stats {
 		$tot_indi = $this->totalIndividuals();
 		$surnames = get_common_surnames($threshold);
 		if (count($surnames) <= 0) {return '';}
-		uasort($surnames, array('stats', '_name_total_rsort'));
+		uasort($surnames, array('WT_Stats', '_name_total_rsort'));
 		$surnames = array_slice($surnames, 0, $maxtoshow);
 		$all_surnames = array();
 		foreach (array_keys($surnames) as $n=>$surname) {
