@@ -42,7 +42,7 @@ if (!isset($action)) $action = "";
 
 if ($action == "phpinfo") {
 	$helpindex = "phpinfo_help";
-	print_header(i18n::translate('PHP information'));
+	print_header(WT_I18N::translate('PHP information'));
 
 	echo '<div>';
 

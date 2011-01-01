@@ -31,18 +31,18 @@ if (!defined('WT_WEBTREES')) {
 class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Theme Select');
+		return WT_I18N::translate('Theme Select');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Theme Select block displays the Theme selector even when the Change Theme feature is disabled.');
+		return WT_I18N::translate('The Theme Select block displays the Theme selector even when the Change Theme feature is disabled.');
 	}
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('Change theme').help_link('change_theme');
+		$title=WT_I18N::translate('Change theme').help_link('change_theme');
 		$menu=WT_MenuBar::getThemeMenu();
 		if ($menu) {
 			$content='<br /><div class="center theme_form">'.WT_MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';

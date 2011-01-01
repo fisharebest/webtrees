@@ -145,44 +145,44 @@ if ($offset<0) {
 $sql2.=" LIMIT {$limit} OFFSET {$offset}";
 $rows=WT_DB::prepare($sql2)->execute($args)->fetchAll();
 
-print_header(i18n::translate('Logs'));
+print_header(WT_I18N::translate('Logs'));
 
 echo
 	'<br/><form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
 	'<table class="list_table"><tr>',
-	'<td class="topbottombar" colspan="7">', i18n::translate('Logs'), '</td>',
+	'<td class="topbottombar" colspan="7">', WT_I18N::translate('Logs'), '</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox" nowrap>',
 	// I18N: %s are both user-input date fields
-	i18n::translate('From %s to %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" />', '<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
+	WT_I18N::translate('From %s to %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" />', '<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('Type'), ' ', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
+	WT_I18N::translate('Type'), ' ', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('Message'), ' <input name="text" size="12" value="', htmlspecialchars($text), '" /> ',
+	WT_I18N::translate('Message'), ' <input name="text" size="12" value="', htmlspecialchars($text), '" /> ',
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('IP address'), ' <input name="ip" size="12" value="', htmlspecialchars($ip), '" /> ',
+	WT_I18N::translate('IP address'), ' <input name="ip" size="12" value="', htmlspecialchars($ip), '" /> ',
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('User'), ' <input name="user" size="12" value="', htmlspecialchars($user), '" /> ',
+	WT_I18N::translate('User'), ' <input name="user" size="12" value="', htmlspecialchars($user), '" /> ',
 	'</td>',
 	'<td class="descriptionbox" nowrap>',
-	i18n::translate('Family tree'), ' <input name="gedc" size="12" value="', htmlspecialchars($gedc), '" ', WT_USER_IS_ADMIN ? '' : 'disabled', '/> ',
+	WT_I18N::translate('Family tree'), ' <input name="gedc" size="12" value="', htmlspecialchars($gedc), '" ', WT_USER_IS_ADMIN ? '' : 'disabled', '/> ',
 	'</td>',
 	'<td class="descriptionbox" rowspan="2" nowrap valign="middle">',
-	'<input type="submit" value="', i18n::translate('Filter'), '"/> ',
+	'<input type="submit" value="', WT_I18N::translate('Filter'), '"/> ',
 	'</td>',
 	'</tr><tr>',
 	'<td class="descriptionbox" nowrap colspan="6">',
-	i18n::translate('Results per page'), ' ', select_edit_control('limit', array('10'=>'10', '25'=>'25','50'=>'50','100'=>'100','1000'=>'1000'), null, $limit, ''),
+	WT_I18N::translate('Results per page'), ' ', select_edit_control('limit', array('10'=>'10', '25'=>'25','50'=>'50','100'=>'100','1000'=>'1000'), null, $limit, ''),
 	'</td></tr></table></form>';
 
 if ($rows) {
 	echo
 		'<p align="center">',
-		i18n::translate('Showing results %d to %d of %d', $offset+1, min($offset+$limit, $total_rows), $total_rows);
+		WT_I18N::translate('Showing results %d to %d of %d', $offset+1, min($offset+$limit, $total_rows), $total_rows);
 
 	$url=
 		WT_SCRIPT_NAME.'?from='.urlencode($from).
@@ -196,25 +196,25 @@ if ($rows) {
 		'&amp;offset=';
 
 	if ($offset>0) {
-		echo ' | <a href="', $url, 0, '">', i18n::translate_c('first page', 'first'), '</a>';
-		echo ' | <a href="', $url, max(0, $offset-$limit), '">', i18n::translate('previous'), '</a>';
+		echo ' | <a href="', $url, 0, '">', WT_I18N::translate_c('first page', 'first'), '</a>';
+		echo ' | <a href="', $url, max(0, $offset-$limit), '">', WT_I18N::translate('previous'), '</a>';
 	}
 	if ($offset+$limit<$total_rows) {
-		echo ' | <a href="', $url, min($total_rows-$limit, $offset+$limit), '">', i18n::translate('next'), '</a>';
-		echo ' | <a href="', $url, $total_rows-$limit, '">', i18n::translate('last'), '</a>';
+		echo ' | <a href="', $url, min($total_rows-$limit, $offset+$limit), '">', WT_I18N::translate('next'), '</a>';
+		echo ' | <a href="', $url, $total_rows-$limit, '">', WT_I18N::translate('last'), '</a>';
 	}
-	echo ' | <a href="', $url, '&amp;export=yes">', i18n::translate('export'), '</a>';
-	echo ' | <a href="', $url, '&amp;delete=yes" onclick="return confirm(\'', htmlspecialchars(i18n::plural('Permanently delete this %s record?', 'Permanently delete these %s records?', $total_rows, $total_rows)) , '\')">', i18n::translate('delete'), '</a>';
+	echo ' | <a href="', $url, '&amp;export=yes">', WT_I18N::translate('export'), '</a>';
+	echo ' | <a href="', $url, '&amp;delete=yes" onclick="return confirm(\'', htmlspecialchars(WT_I18N::plural('Permanently delete this %s record?', 'Permanently delete these %s records?', $total_rows, $total_rows)) , '\')">', WT_I18N::translate('delete'), '</a>';
 
 	echo
 		'</p>',
 		'<table class="list_table"><tr>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('Timestamp'), '</td>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('Type'), '</td>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('Message'), '</td>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('IP address'), '</td>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('User'), '</td>',
-		'<td class="descriptionbox" nowrap>', i18n::translate('Family tree'), '</td>',
+		'<td class="descriptionbox" nowrap>', WT_I18N::translate('Timestamp'), '</td>',
+		'<td class="descriptionbox" nowrap>', WT_I18N::translate('Type'), '</td>',
+		'<td class="descriptionbox" nowrap>', WT_I18N::translate('Message'), '</td>',
+		'<td class="descriptionbox" nowrap>', WT_I18N::translate('IP address'), '</td>',
+		'<td class="descriptionbox" nowrap>', WT_I18N::translate('User'), '</td>',
+		'<td class="descriptionbox" nowrap>', WT_I18N::translate('Family tree'), '</td>',
 		'</tr>';
 
 	foreach ($rows as $row) {

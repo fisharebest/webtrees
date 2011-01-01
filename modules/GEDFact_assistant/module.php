@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class GEDFact_assistant_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Census assistant');
+		return WT_I18N::translate('Census assistant');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('The census assistant provides a simple way to enter census transcripts and link them to each person listed in the census.');
+		return WT_I18N::translate('The census assistant provides a simple way to enter census transcripts and link them to each person listed in the census.');
 	}
 
 	// Extend WT_Module

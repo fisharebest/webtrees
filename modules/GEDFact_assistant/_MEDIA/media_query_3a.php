@@ -34,7 +34,7 @@ require '../../../includes/session.php';
 
 $iid2 = safe_GET('iid');
 
-print_simple_header(i18n::translate('Link media'));
+print_simple_header(WT_I18N::translate('Link media'));
 
 $record=WT_GedcomRecord::getInstance($iid2);
 $headjs="";
@@ -63,7 +63,7 @@ if ($record) {
 	?>
 	<script language="JavaScript" type="text/javascript">
 	function insertId() {
-		window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo i18n::translate('Not a valid Individual, Family or Source ID'); ?>');
+		window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid Individual, Family or Source ID'); ?>');
 		window.close();
 	}
 	</script>

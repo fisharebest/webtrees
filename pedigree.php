@@ -51,7 +51,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-echo "<h2>", i18n::translate('Pedigree Tree'), help_link('pedigree_tree');
+echo "<h2>", WT_I18N::translate('Pedigree Tree'), help_link('pedigree_tree');
 echo '<br />', PrintReady($controller->name);
 if ($controller->addname!="") {
 	echo '<br />', PrintReady($controller->addname);
@@ -72,21 +72,21 @@ echo '</h2>';
 		<table class="list_table <?php echo $TEXT_DIRECTION; ?>" width="500" align="center">
 			<tr>
 				<td colspan="4" class="topbottombar" style="text-align:center; ">
-					<?php echo i18n::translate('Options:'); ?>
+					<?php echo WT_I18N::translate('Options:'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Root Person ID'), help_link('rootid'); ?>
+					<?php echo WT_I18N::translate('Root Person ID'), help_link('rootid'); ?>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?>
+					<?php echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Orientation'), help_link('talloffset'); ?>
+					<?php echo WT_I18N::translate('Orientation'), help_link('talloffset'); ?>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
+					<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
 				</td>
 			</tr>
 
@@ -107,7 +107,7 @@ echo '</h2>';
 					</select>
 				</td>
 				<td class="optionbox">
-					<?php echo select_edit_control('talloffset', array(0=>i18n::translate('Portrait'), 1=>i18n::translate('Landscape'), 2=>i18n::translate('Oldest at top'), 3=>i18n::translate('Oldest at bottom')), null, $talloffset); ?>
+					<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
 				</td>
 				<td class="optionbox">
 					<input type="checkbox" value="<?php
@@ -117,14 +117,14 @@ echo '</h2>';
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="4">
-					<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
+					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 				</td>
 			</tr>
 		</table>
 	</form>
 <?php
 	if ($show_full==0) {
-		echo '<span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 	}
 ?>
 	</td></tr>
@@ -338,10 +338,10 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			}
 			echo $addxoffset, "px; top:", $yoffset, "px; width:10px; height:10px; \">";
 			if ($TEXT_DIRECTION=="rtl") {
-				echo "<a href=\"javascript: ", i18n::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
+				echo "<a href=\"javascript: ", WT_I18N::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
 				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\" />";
 			} else {
-				echo "<a href=\"javascript: ", i18n::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
+				echo "<a href=\"javascript: ", WT_I18N::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
 				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\" />";
 			}
 			break;
@@ -349,21 +349,21 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 			echo $basexoffset, "px; top:", $yoffset, "px; width:10px; height:10px; \">";
 			if ($TEXT_DIRECTION=="rtl") {
-				echo "<a href=\"javascript: ", i18n::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
+				echo "<a href=\"javascript: ", WT_I18N::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
 				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\" />";
 			} else {
-				echo "<a href=\"javascript: ", i18n::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
+				echo "<a href=\"javascript: ", WT_I18N::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
 				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\" />";
 			}
 			break;
 		case 2:
 			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset+$controller->pbheight/2+10), "px; width:10px; height:10px; \">";
-			echo "<a href=\"javascript: ", i18n::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('darrow', 3);\" onmouseout=\"swap_image('darrow', 3);\">";
+			echo "<a href=\"javascript: ", WT_I18N::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('darrow', 3);\" onmouseout=\"swap_image('darrow', 3);\">";
 			echo "<img id=\"darrow\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\" />";
 			break;
 		case 3:
 			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset-$controller->pbheight/2-10), "px; width:10px; height:10px; \">";
-			echo "<a href=\"javascript: ", i18n::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('uarrow', 2);\" onmouseout=\"swap_image('uarrow', 2);\">";
+			echo "<a href=\"javascript: ", WT_I18N::translate('Show'), "\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('uarrow', 2);\" onmouseout=\"swap_image('uarrow', 2);\">";
 			echo "<img id=\"uarrow\" src=\"", $WT_IMAGES["uarrow"], "\" border=\"0\" alt=\"\" />";
 			break;
 		}
@@ -392,7 +392,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 					if ($spid->canDisplayName()) {
 						$name = $spid->getFullName();
 					} else {
-						$name = i18n::translate('Private');
+						$name = WT_I18N::translate('Private');
 					}
 					if (hasRTLText($name)) {
 						echo 'class="name2">';
@@ -409,7 +409,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 					if ($child->canDisplayName()) {
 						$name = $child->getFullName();
 					} else {
-						$name = i18n::translate('Private');
+						$name = WT_I18N::translate('Private');
 					}
 					if (hasRTLText($name)) {
 						echo "class=\"name2\">&lt; ";
@@ -426,10 +426,10 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			if ($family!=null) {
 				$children = $family->getChildren();
 				if (count($children)>2) {
-					echo '<span class="name1"><br />', i18n::translate('Siblings'), '<br /></span>';
+					echo '<span class="name1"><br />', WT_I18N::translate('Siblings'), '<br /></span>';
 				}
 				if (count($children)==2) {
-					echo '<span class="name1"><br />', i18n::translate('Sibling'), '<br /></span>';
+					echo '<span class="name1"><br />', WT_I18N::translate('Sibling'), '<br /></span>';
 				}
 				foreach ($children as $ind2=>$child) {
 					if (!$controller->rootPerson->equals($child) && !is_null($child)) {
@@ -437,7 +437,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 						if ($child->canDisplayName()) {
 							$name = $child->getFullName();
 						} else {
-							$name = i18n::translate('Private');
+							$name = WT_I18N::translate('Private');
 						}
 						if (hasRTLText($name)) {
 							echo 'class="name2"> ';

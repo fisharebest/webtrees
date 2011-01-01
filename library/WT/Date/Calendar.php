@@ -131,86 +131,86 @@ class WT_Date_Calendar {
 	// We put these in the base class, to save duplicating it in the Julian and Gregorian calendars
 	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('NOMINATIVE', 'January');
-		case 2:  return i18n::translate_c('NOMINATIVE', 'February');
-		case 3:  return i18n::translate_c('NOMINATIVE', 'March');
-		case 4:  return i18n::translate_c('NOMINATIVE', 'April');
-		case 5:  return i18n::translate_c('NOMINATIVE', 'May');
-		case 6:  return i18n::translate_c('NOMINATIVE', 'June');
-		case 7:  return i18n::translate_c('NOMINATIVE', 'July');
-		case 8:  return i18n::translate_c('NOMINATIVE', 'August');
-		case 9:  return i18n::translate_c('NOMINATIVE', 'September');
-		case 10: return i18n::translate_c('NOMINATIVE', 'October');
-		case 11: return i18n::translate_c('NOMINATIVE', 'November');
-		case 12: return i18n::translate_c('NOMINATIVE', 'December');
+		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'January');
+		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'February');
+		case 3:  return WT_I18N::translate_c('NOMINATIVE', 'March');
+		case 4:  return WT_I18N::translate_c('NOMINATIVE', 'April');
+		case 5:  return WT_I18N::translate_c('NOMINATIVE', 'May');
+		case 6:  return WT_I18N::translate_c('NOMINATIVE', 'June');
+		case 7:  return WT_I18N::translate_c('NOMINATIVE', 'July');
+		case 8:  return WT_I18N::translate_c('NOMINATIVE', 'August');
+		case 9:  return WT_I18N::translate_c('NOMINATIVE', 'September');
+		case 10: return WT_I18N::translate_c('NOMINATIVE', 'October');
+		case 11: return WT_I18N::translate_c('NOMINATIVE', 'November');
+		case 12: return WT_I18N::translate_c('NOMINATIVE', 'December');
 		default: return '';
 		}
 	}
 	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('GENITIVE', 'January');
-		case 2:  return i18n::translate_c('GENITIVE', 'February');
-		case 3:  return i18n::translate_c('GENITIVE', 'March');
-		case 4:  return i18n::translate_c('GENITIVE', 'April');
-		case 5:  return i18n::translate_c('GENITIVE', 'May');
-		case 6:  return i18n::translate_c('GENITIVE', 'June');
-		case 7:  return i18n::translate_c('GENITIVE', 'July');
-		case 8:  return i18n::translate_c('GENITIVE', 'August');
-		case 9:  return i18n::translate_c('GENITIVE', 'September');
-		case 10: return i18n::translate_c('GENITIVE', 'October');
-		case 11: return i18n::translate_c('GENITIVE', 'November');
-		case 12: return i18n::translate_c('GENITIVE', 'December');
+		case 1:  return WT_I18N::translate_c('GENITIVE', 'January');
+		case 2:  return WT_I18N::translate_c('GENITIVE', 'February');
+		case 3:  return WT_I18N::translate_c('GENITIVE', 'March');
+		case 4:  return WT_I18N::translate_c('GENITIVE', 'April');
+		case 5:  return WT_I18N::translate_c('GENITIVE', 'May');
+		case 6:  return WT_I18N::translate_c('GENITIVE', 'June');
+		case 7:  return WT_I18N::translate_c('GENITIVE', 'July');
+		case 8:  return WT_I18N::translate_c('GENITIVE', 'August');
+		case 9:  return WT_I18N::translate_c('GENITIVE', 'September');
+		case 10: return WT_I18N::translate_c('GENITIVE', 'October');
+		case 11: return WT_I18N::translate_c('GENITIVE', 'November');
+		case 12: return WT_I18N::translate_c('GENITIVE', 'December');
 		default: return '';
 		}
 	}
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('LOCATIVE', 'January');
-		case 2:  return i18n::translate_c('LOCATIVE', 'February');
-		case 3:  return i18n::translate_c('LOCATIVE', 'March');
-		case 4:  return i18n::translate_c('LOCATIVE', 'April');
-		case 5:  return i18n::translate_c('LOCATIVE', 'May');
-		case 6:  return i18n::translate_c('LOCATIVE', 'June');
-		case 7:  return i18n::translate_c('LOCATIVE', 'July');
-		case 8:  return i18n::translate_c('LOCATIVE', 'August');
-		case 9:  return i18n::translate_c('LOCATIVE', 'September');
-		case 10: return i18n::translate_c('LOCATIVE', 'October');
-		case 11: return i18n::translate_c('LOCATIVE', 'November');
-		case 12: return i18n::translate_c('LOCATIVE', 'December');
+		case 1:  return WT_I18N::translate_c('LOCATIVE', 'January');
+		case 2:  return WT_I18N::translate_c('LOCATIVE', 'February');
+		case 3:  return WT_I18N::translate_c('LOCATIVE', 'March');
+		case 4:  return WT_I18N::translate_c('LOCATIVE', 'April');
+		case 5:  return WT_I18N::translate_c('LOCATIVE', 'May');
+		case 6:  return WT_I18N::translate_c('LOCATIVE', 'June');
+		case 7:  return WT_I18N::translate_c('LOCATIVE', 'July');
+		case 8:  return WT_I18N::translate_c('LOCATIVE', 'August');
+		case 9:  return WT_I18N::translate_c('LOCATIVE', 'September');
+		case 10: return WT_I18N::translate_c('LOCATIVE', 'October');
+		case 11: return WT_I18N::translate_c('LOCATIVE', 'November');
+		case 12: return WT_I18N::translate_c('LOCATIVE', 'December');
 		default: return '';
 		}
 	}
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('INSTRUMENTAL', 'January');
-		case 2:  return i18n::translate_c('INSTRUMENTAL', 'February');
-		case 3:  return i18n::translate_c('INSTRUMENTAL', 'March');
-		case 4:  return i18n::translate_c('INSTRUMENTAL', 'April');
-		case 5:  return i18n::translate_c('INSTRUMENTAL', 'May');
-		case 6:  return i18n::translate_c('INSTRUMENTAL', 'June');
-		case 7:  return i18n::translate_c('INSTRUMENTAL', 'July');
-		case 8:  return i18n::translate_c('INSTRUMENTAL', 'August');
-		case 9:  return i18n::translate_c('INSTRUMENTAL', 'September');
-		case 10: return i18n::translate_c('INSTRUMENTAL', 'October');
-		case 11: return i18n::translate_c('INSTRUMENTAL', 'November');
-		case 12: return i18n::translate_c('INSTRUMENTAL', 'December');
+		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'January');
+		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'February');
+		case 3:  return WT_I18N::translate_c('INSTRUMENTAL', 'March');
+		case 4:  return WT_I18N::translate_c('INSTRUMENTAL', 'April');
+		case 5:  return WT_I18N::translate_c('INSTRUMENTAL', 'May');
+		case 6:  return WT_I18N::translate_c('INSTRUMENTAL', 'June');
+		case 7:  return WT_I18N::translate_c('INSTRUMENTAL', 'July');
+		case 8:  return WT_I18N::translate_c('INSTRUMENTAL', 'August');
+		case 9:  return WT_I18N::translate_c('INSTRUMENTAL', 'September');
+		case 10: return WT_I18N::translate_c('INSTRUMENTAL', 'October');
+		case 11: return WT_I18N::translate_c('INSTRUMENTAL', 'November');
+		case 12: return WT_I18N::translate_c('INSTRUMENTAL', 'December');
 		default: return '';
 		}
 	}
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('Abbreviation for January',   'Jan');
-		case 2:  return i18n::translate_c('Abbreviation for February',  'Feb');
-		case 3:  return i18n::translate_c('Abbreviation for March',     'Mar');
-		case 4:  return i18n::translate_c('Abbreviation for April',     'Apr');
-		case 5:  return i18n::translate_c('Abbreviation for May',       'May');
-		case 6:  return i18n::translate_c('Abbreviation for June',      'Jun');
-		case 7:  return i18n::translate_c('Abbreviation for July',      'Jul');
-		case 8:  return i18n::translate_c('Abbreviation for August',    'Aug');
-		case 9:  return i18n::translate_c('Abbreviation for September', 'Sep');
-		case 10: return i18n::translate_c('Abbreviation for October',   'Oct');
-		case 11: return i18n::translate_c('Abbreviation for November',  'Nov');
-		case 12: return i18n::translate_c('Abbreviation for December',  'Dec');
+		case 1:  return WT_I18N::translate_c('Abbreviation for January',   'Jan');
+		case 2:  return WT_I18N::translate_c('Abbreviation for February',  'Feb');
+		case 3:  return WT_I18N::translate_c('Abbreviation for March',     'Mar');
+		case 4:  return WT_I18N::translate_c('Abbreviation for April',     'Apr');
+		case 5:  return WT_I18N::translate_c('Abbreviation for May',       'May');
+		case 6:  return WT_I18N::translate_c('Abbreviation for June',      'Jun');
+		case 7:  return WT_I18N::translate_c('Abbreviation for July',      'Jul');
+		case 8:  return WT_I18N::translate_c('Abbreviation for August',    'Aug');
+		case 9:  return WT_I18N::translate_c('Abbreviation for September', 'Sep');
+		case 10: return WT_I18N::translate_c('Abbreviation for October',   'Oct');
+		case 11: return WT_I18N::translate_c('Abbreviation for November',  'Nov');
+		case 12: return WT_I18N::translate_c('Abbreviation for December',  'Dec');
 		default: return '';
 		}
 	}
@@ -242,24 +242,24 @@ class WT_Date_Calendar {
 	}
 	static function LONG_DAYS_OF_WEEK($n) {
 		switch ($n) {
-		case 0: return i18n::translate('Monday');
-		case 1: return i18n::translate('Tuesday');
-		case 2: return i18n::translate('Wednesday');
-		case 3: return i18n::translate('Thursday');
-		case 4: return i18n::translate('Friday');
-		case 5: return i18n::translate('Saturday');
-		case 6: return i18n::translate('Sunday');
+		case 0: return WT_I18N::translate('Monday');
+		case 1: return WT_I18N::translate('Tuesday');
+		case 2: return WT_I18N::translate('Wednesday');
+		case 3: return WT_I18N::translate('Thursday');
+		case 4: return WT_I18N::translate('Friday');
+		case 5: return WT_I18N::translate('Saturday');
+		case 6: return WT_I18N::translate('Sunday');
 		}
 	}
 	static function SHORT_DAYS_OF_WEEK($n) {
 		switch ($n) {
-		case 0: return i18n::translate('Mon');
-		case 1: return i18n::translate('Tue');
-		case 2: return i18n::translate('Wed');
-		case 3: return i18n::translate('Thu');
-		case 4: return i18n::translate('Fri');
-		case 5: return i18n::translate('Sat');
-		case 6: return i18n::translate('Sun');
+		case 0: return WT_I18N::translate('Mon');
+		case 1: return WT_I18N::translate('Tue');
+		case 2: return WT_I18N::translate('Wed');
+		case 3: return WT_I18N::translate('Thu');
+		case 4: return WT_I18N::translate('Fri');
+		case 5: return WT_I18N::translate('Sat');
+		case 6: return WT_I18N::translate('Sun');
 		}
 	}
 	static function YMDtoJD($y, $m, $d) {

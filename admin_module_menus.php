@@ -128,7 +128,7 @@ if ($action=='update_mods') {
 	}
 }
 
-print_header(i18n::translate('Module administration'));
+print_header(WT_I18N::translate('Module administration'));
 
 echo WT_JS_START; ?>
 
@@ -154,9 +154,9 @@ echo WT_JS_START; ?>
 			<table id="menus_table" class="list_table">
 				<thead>
 					<tr>
-					<th class="list_label"><?php echo i18n::translate('Menu'); ?></th>
-					<th class="list_label"><?php echo i18n::translate('Order'); ?></th>
-					<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
+					<th class="list_label"><?php echo WT_I18N::translate('Menu'); ?></th>
+					<th class="list_label"><?php echo WT_I18N::translate('Order'); ?></th>
+					<th class="list_label"><?php echo WT_I18N::translate('Access level'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -191,7 +191,7 @@ echo WT_JS_START; ?>
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
+			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
 		</form>
 	</div>
 </div>

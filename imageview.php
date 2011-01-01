@@ -32,7 +32,7 @@ require './includes/session.php';
 
 $filename=safe_GET('filename');
 
-print_simple_header(i18n::translate('Image viewer'));
+print_simple_header(WT_I18N::translate('Image viewer'));
 
 ?>
 <script language="JavaScript" type="text/javascript">
@@ -174,13 +174,13 @@ print_simple_header(i18n::translate('Image viewer'));
 echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
 $isExternal = isFileExternal($filename);
 if (!$isExternal && !media_exists($filename) ) {
-	echo "<span class=\"error\">".i18n::translate('File not found.')."&nbsp;".$filename."</span>";
-	echo "<br /><br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".i18n::translate('Close Window')."</a></div>";
+	echo "<span class=\"error\">".WT_I18N::translate('File not found.')."&nbsp;".$filename."</span>";
+	echo "<br /><br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".WT_I18N::translate('Close Window')."</a></div>";
 } else {
 	echo "<center><font size=\"6\"><a href=\"javascript:;\" onclick=\"zoomin(); return false;\">+</a> <a href=\"javascript:;\" onclick=\"zoomout();\">&ndash;</a> </font>";
 	echo "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%";
-	echo "<input type=\"button\" value=\"".i18n::translate('Reset')."\" onclick=\"resetimage(); return false;\" />";
-	echo "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".urlencode(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".i18n::translate('View image details')."</a>";
+	echo "<input type=\"button\" value=\"".WT_I18N::translate('Reset')."\" onclick=\"resetimage(); return false;\" />";
+	echo "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".urlencode(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
 	echo "</center>";
 	$imgsize = findImageSize($filename);
 	$imgwidth = $imgsize[0]+2;
@@ -197,5 +197,5 @@ if (!$isExternal && !media_exists($filename) ) {
 echo "</form>";
 echo "<div style=\"position: relative; \">";
 echo "</div>";
-echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".i18n::translate('Close Window')."</a></div><br />";
+echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div><br />";
 print_simple_footer();

@@ -113,7 +113,7 @@ if ($action=='login') {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
 		exit;
 	} else {
-		$message = i18n::translate('Unable to authenticate user.');
+		$message = WT_I18N::translate('Unable to authenticate user.');
 	}
 } else {
 	$tSERVER_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), WT_SERVER_NAME.WT_SCRIPT_PATH);
@@ -135,25 +135,25 @@ if ($action=='login') {
 }
 
 if ($type=="full") {
-	print_header(i18n::translate('webtrees user login'));
+	print_header(WT_I18N::translate('webtrees user login'));
 } else {
-	print_simple_header(i18n::translate('webtrees user login'));
+	print_simple_header(WT_I18N::translate('webtrees user login'));
 }
 echo '<div class="center">';
 
 echo '<table class="center width60"><tr><td>';
 switch ($WELCOME_TEXT_AUTH_MODE) {
 case 1:
-	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
+	echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
 	break;
 case 2:
-	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+	echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>authorized</u> users only.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
 	break;
 case 3:
-	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+	echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to <u>family members only</u>.<br /><br />If you have a user account you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 	break;
 case 4:
-	echo i18n::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.');
+	echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access is permitted to users who have an account and a password for this website.');
 	if (get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD')) {
 		echo '<p>', get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
 	}
@@ -173,33 +173,33 @@ echo '</td></tr></table><br /><br />';
 		?>
 		<!--table-->
 		<table class="center facts_table width50">
-			<tr><td class="topbottombar" colspan="2"><?php echo i18n::translate('Login'); ?></td></tr>
+			<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Login'); ?></td></tr>
 			<tr>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('User name'), help_link('username'); ?></td>
+				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo WT_I18N::translate('User name'), help_link('username'); ?></td>
 				<td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" size="20" class="formField" /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('Password'), help_link('password'); ?></td>
+				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
 				<td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" name="password" size="20" class="formField" /></td>
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="2">
-					<input type="submit" value="<?php echo i18n::translate('Login'); ?>" />
+					<input type="submit" value="<?php echo WT_I18N::translate('Login'); ?>" />
 				</td>
 			</tr>
 		</table>
 </form><br /><br />
 <?php
 
-if (!isset($_COOKIE[WT_SESSION_NAME])) echo "<center><div class=\"error width50\">".i18n::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.')."</div></center><br /><br />";
+if (!isset($_COOKIE[WT_SESSION_NAME])) echo "<center><div class=\"error width50\">".WT_I18N::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.')."</div></center><br /><br />";
 
 if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
 	<table class="center facts_table width50">
-	<tr><td class="topbottombar" colspan="2"><?php echo i18n::translate('Account Information'); ?></td></tr>
-	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('No account?'), help_link('new_user'); ?></td>
-	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=register"><?php echo i18n::translate('Request new user account'); ?></a></td></tr>
-	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo i18n::translate('Lost your password?'), help_link('new_password'); ?></td>
-	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=pwlost"><?php echo i18n::translate('Request new password'); ?></a></td></tr>
+	<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Account Information'); ?></td></tr>
+	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo WT_I18N::translate('No account?'), help_link('new_user'); ?></td>
+	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=register"><?php echo WT_I18N::translate('Request new user account'); ?></a></td></tr>
+	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo WT_I18N::translate('Lost your password?'), help_link('new_password'); ?></td>
+	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=pwlost"><?php echo WT_I18N::translate('Request new password'); ?></a></td></tr>
 	<tr><td class="topbottombar" colspan="2">&nbsp;</td></tr>
 	</table>
 <?php

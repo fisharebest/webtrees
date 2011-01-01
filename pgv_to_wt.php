@@ -39,7 +39,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(i18n::translate('PhpGedView to webtrees transfer wizard'));
+print_header(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
 
 echo
 	'<style type="text/css">
@@ -61,7 +61,7 @@ $PGV_PATH=safe_POST('PGV_PATH');
 
 if ($PGV_PATH) {
 	if (!is_dir($PGV_PATH) || !is_readable($PGV_PATH.'/config.php')) {
-		$error=i18n::translate('The specified directory does not contain an installation of PhpGedView');
+		$error=WT_I18N::translate('The specified directory does not contain an installation of PhpGedView');
 	} else {
 		// Load the configuration settings
 		$config_php=file_get_contents($PGV_PATH.'/config.php');
@@ -82,7 +82,7 @@ if ($PGV_PATH) {
 		}
 		$wt_config=parse_ini_file(WT_ROOT.'data/config.ini.php');
 		if ($DBHOST!=$wt_config['dbhost']) {
-			$error=i18n::translate('PhpGedView must use the same database as <b>webtrees</b>');
+			$error=WT_I18N::translate('PhpGedView must use the same database as <b>webtrees</b>');
 			unset($wt_config);
 		} else {
 			unset($wt_config);
@@ -91,17 +91,17 @@ if ($PGV_PATH) {
 					"SELECT site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'"
 				)->fetchOne();
 				if ($PGV_SCHEMA_VERSION<10) {
-					$error=i18n::translate('The version of %s is too old', 'PhpGedView');
+					$error=WT_I18N::translate('The version of %s is too old', 'PhpGedView');
 				} elseif ($PGV_SCHEMA_VERSION>14) {
-					$error=i18n::translate('The version of %s is too new', 'PhpGedView');
+					$error=WT_I18N::translate('The version of %s is too new', 'PhpGedView');
 				}
 			} catch (PDOException $ex) {
 				$error=
 					/* I18N: %s is a database name/identifier */
-					i18n::translate('<b>webtrees</b> cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
+					WT_I18N::translate('<b>webtrees</b> cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
 					'<br/>'.
 					/* I18N: %s is an error message */
-					i18n::translate('MySQL gave the error: %s', $ex->getMessage());
+					WT_I18N::translate('MySQL gave the error: %s', $ex->getMessage());
 			}
 		}
 	}
@@ -112,7 +112,7 @@ if ($error || empty($PGV_PATH)) {
 	echo '<div id="container">';
 	echo
 		'<h2>',
-		i18n::translate('PhpGedView to <b>webtrees</b> transfer wizard'),
+		WT_I18N::translate('PhpGedView to <b>webtrees</b> transfer wizard'),
 		help_link('PGV_WIZARD'),
 		'</h2>';
 	if ($error) {
@@ -131,9 +131,9 @@ if ($error || empty($PGV_PATH)) {
 
 	echo
 		'<form action="', WT_SCRIPT_NAME, '" method="post">',
-		'<p>', i18n::translate('Where is your PhpGedView installation?'), '</p>',
+		'<p>', WT_I18N::translate('Where is your PhpGedView installation?'), '</p>',
 		'<dl>',
-		'<dt>',i18n::translate('Installation directory'), '</dt>';
+		'<dt>',WT_I18N::translate('Installation directory'), '</dt>';
 	switch (count($pgv_dirs)) {
 	case '0':
 		echo '<dd><input type="text" name="PGV_PATH" size="40" value=""></dd>';
@@ -153,7 +153,7 @@ if ($error || empty($PGV_PATH)) {
 	}
 	echo
 		'</dl>',
-		'<div class="center"><input type="submit" value="'.i18n::translate('next').'"></div>',
+		'<div class="center"><input type="submit" value="'.WT_I18N::translate('next').'"></div>',
 		'</form>',
 		'</div>';
 	exit;
@@ -1071,4 +1071,4 @@ WT_DB::prepare(
 
 WT_DB::exec("COMMIT");
 
-echo '<p><b><a href="editgedcoms.php">', i18n::translate('Click here to continue'), '</a></b></p>';
+echo '<p><b><a href="editgedcoms.php">', WT_I18N::translate('Click here to continue'), '</a></b></p>';

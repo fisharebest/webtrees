@@ -358,7 +358,7 @@ class WT_GedcomRecord {
 					$this->_addName($this->getType(), $this->getFallBackName(), null);
 				}
 			} else {
-				$this->_addName($this->getType(), i18n::translate('Private'), null);
+				$this->_addName($this->getType(), WT_I18N::translate('Private'), null);
 			}
 		}
 		return $this->_getAllNames;
@@ -507,7 +507,7 @@ class WT_GedcomRecord {
 			$tmp=$this->getAllNames();
 			return $tmp[$this->getPrimaryName()]['full'];
 		} else {
-			return i18n::translate('Private');
+			return WT_I18N::translate('Private');
 		}
 	}
 	public function getSortName() {
@@ -520,7 +520,7 @@ class WT_GedcomRecord {
 			$tmp=$this->getAllNames();
 			return $tmp[$this->getPrimaryName()]['list'];
 		} else {
-			return i18n::translate('Private');
+			return WT_I18N::translate('Private');
 		}
 	}
 	// Get the fullname in an alternative character set

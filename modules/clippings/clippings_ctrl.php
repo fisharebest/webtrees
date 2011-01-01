@@ -398,7 +398,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		}
 		else
 		{
-			echo i18n::translate('Cannot create')." ".$INDEX_DIRECTORY."$tempFileName ".i18n::translate('Check access rights on this directory.')."<br /><br />";
+			echo WT_I18N::translate('Cannot create')." ".$INDEX_DIRECTORY."$tempFileName ".WT_I18N::translate('Check access rights on this directory.')."<br /><br />";
 		}
 	}
 	/**

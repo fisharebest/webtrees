@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html <?php echo i18n::html_markup(); ?>>
+<html <?php echo WT_I18N::html_markup(); ?>>
 <head>
 <title>Help window</title>
 <script language="JavaScript">

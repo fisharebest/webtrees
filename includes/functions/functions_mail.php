@@ -89,7 +89,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		//wrap message in html
 		$htmlMessage = "";
 		$htmlMessage .= "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
-		$htmlMessage .= "<html xmlns=\"http://www.w3.org/1999/xhtml\" ".i18n::html_markup().">";
+		$htmlMessage .= "<html xmlns=\"http://www.w3.org/1999/xhtml\" ".WT_I18N::html_markup().">";
 		$htmlMessage .= "<head>";
 		$htmlMessage .= "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
 		$htmlMessage .= "</head>";
@@ -108,7 +108,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		$htmlMessage .= "\n\n--$boundary2\n";
 		$htmlMessage .= "Content-Type: text/html; \n\tcharset=\"UTF-8\";\n\tformat=\"flowed\"\nContent-Transfer-Encoding: 8bit\n\n";
 		$htmlMessage .= "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
-		$htmlMessage .= "<html xmlns=\"http://www.w3.org/1999/xhtml\" ".i18n::html_markup().">";
+		$htmlMessage .= "<html xmlns=\"http://www.w3.org/1999/xhtml\" ".WT_I18N::html_markup().">";
 		$htmlMessage .= "<head>";
 		$htmlMessage .= "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
 		$htmlMessage .= "</head>";
@@ -180,8 +180,8 @@ function webtreesMail($to, $from, $subject, $message) {
 		$mail_object->Body = $message;
 		// attempt to send mail
 		if (!$mail_object->Send()) {
-			echo i18n::translate('Message was not sent'), '<br />';
-			echo /* I18N: %s is an error message */ i18n::translate('Mailer error: %s',  $mail_object->ErrorInfo), '<br />';
+			echo WT_I18N::translate('Message was not sent'), '<br />';
+			echo /* I18N: %s is an error message */ WT_I18N::translate('Mailer error: %s',  $mail_object->ErrorInfo), '<br />';
 			return false;
 		} else {
 			// SMTP OK

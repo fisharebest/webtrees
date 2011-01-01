@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Individuals');
+		return WT_I18N::translate('Individuals');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a sidebar which allows for easy navigation of individuals in a list format.');
+		return WT_I18N::translate('Adds a sidebar which allows for easy navigation of individuals in a list format.');
 	}
 
 	// Implement WT_Module_Sidebar
@@ -83,7 +83,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		jQuery(document).ready(function() {
 			jQuery("#sb_indi_name").focus(function() {this.select();});
-			jQuery("#sb_indi_name").blur(function() {if (this.value=="") this.value="'.i18n::translate('Search').'";});
+			jQuery("#sb_indi_name").blur(function() {if (this.value=="") this.value="'.WT_I18N::translate('Search').'";});
 			var timerid = null;
 			jQuery("#sb_indi_name").keyup(function(e) {
 				if (timerid) window.clearTimeout(timerid);
@@ -125,15 +125,15 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		//-->
 		</script>
 		<form method="post" action="sidebar.php" onsubmit="return false;">
-		<input type="text" name="sb_indi_name" id="sb_indi_name" value="'.i18n::translate('Search').'" />
+		<input type="text" name="sb_indi_name" id="sb_indi_name" value="'.WT_I18N::translate('Search').'" />
 		<p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
 				case '@':
-					$html=i18n::translate('(unknown)');
+					$html=WT_I18N::translate('(unknown)');
 					break;
 				case ',':
-					$html=i18n::translate('None');
+					$html=WT_I18N::translate('None');
 					break;
 				default:
 					$html=$letter;
@@ -194,7 +194,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.i18n::translate('Private').' ('.$private_count.')</li>';
+		if ($private_count>0) $out .= '<li>'.WT_I18N::translate('Private').' ('.$private_count.')</li>';
 		$out .= '</ul>';
 		return $out;
 	}
@@ -209,7 +209,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				" FROM `##individuals`, `##name`".
 				" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 				" AND i_id=n_id AND i_file=n_file AND i_file=?".
-				" ORDER BY n_sort COLLATE '".i18n::$collation."'".
+				" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'".
 				" LIMIT 50"
 			)
 			->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
@@ -229,7 +229,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.PrintReady(i18n::translate('Private').' ('.$private_count.')').'</li>';
+		if ($private_count>0) $out .= '<li>'.PrintReady(WT_I18N::translate('Private').' ('.$private_count.')').'</li>';
 		$out .= '</ul>';
 		return $out;
 	}

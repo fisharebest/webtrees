@@ -49,7 +49,7 @@ $filename = $controller->getLocalFilename();
 print_header($controller->getPageTitle());
 
 if (!$controller->mediaobject) {
-	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
+	echo "<b>", WT_I18N::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
 }
@@ -70,7 +70,7 @@ if (WT_USE_LIGHTBOX) {
 		<td class="name_head" colspan="2">
 			<?php echo PrintReady($controller->mediaobject->getFullName()); ?>
 			<?php echo PrintReady($controller->mediaobject->getAddName()); ?> <br /><br />
-			<?php if ($controller->mediaobject->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
+			<?php if ($controller->mediaobject->isMarkedDeleted()) echo "<span class=\"error\">".WT_I18N::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
 		</td>
 	</tr>
 	<tr>
@@ -103,7 +103,7 @@ if (WT_USE_LIGHTBOX) {
 
 					// If download
 					if ($SHOW_MEDIA_DOWNLOAD) {
-						echo "<br /><br /><a href=\"".$filename."\">".i18n::translate('Download File')."</a><br/>";
+						echo "<br /><br /><a href=\"".$filename."\">".WT_I18N::translate('Download File')."</a><br/>";
 					}
 
 					// else the file is not external and does not exist
@@ -111,7 +111,7 @@ if (WT_USE_LIGHTBOX) {
 					?>
 					<img src="<?php echo $controller->mediaobject->getThumbnail(); ?>" border="0" width="100" alt="<?php echo $controller->mediaobject->getFullName(); ?>" title="<?php echo PrintReady(htmlspecialchars($controller->mediaobject->getFullName())); ?>" />
 					<span class="error">
-						<?php echo i18n::translate('File not found.'); ?>
+						<?php echo WT_I18N::translate('File not found.'); ?>
 					</span>
 					<?php
 				}
@@ -138,7 +138,7 @@ if (WT_USE_LIGHTBOX) {
 	</tr>
 	<tr>
 		<td class="center" colspan="2">
-			<br /><b><?php echo i18n::translate('The image relates to:'); ?></b><br /><br />
+			<br /><b><?php echo WT_I18N::translate('The image relates to:'); ?></b><br /><br />
 			<?php
 
 				// Individuals linked to this media object

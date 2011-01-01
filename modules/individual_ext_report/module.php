@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class individual_ext_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Close Relatives Report');
+		return WT_I18N::translate('Close Relatives Report');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Close Relatives Report');
+		return WT_I18N::translate('Close Relatives Report');
 	}
 
 	// Extend class WT_Module

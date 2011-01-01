@@ -101,7 +101,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function getPageTitle() {
-		if ($this->action=="advanced") return i18n::translate('Advanced search');
+		if ($this->action=="advanced") return WT_I18N::translate('Advanced search');
 		else parent :: getPageTitle();
 	}
 
@@ -427,13 +427,13 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		if (count($this->myindilist)>0) {
 			echo '<br /><div class="center">';
 			uasort($this->myindilist, array('GedcomRecord', 'Compare'));
-			print_indi_table($this->myindilist, i18n::translate('Individuals')." @ ".PrintReady(get_gedcom_setting(WT_GEDCOM, 'title'), true));
+			print_indi_table($this->myindilist, WT_I18N::translate('Individuals')." @ ".PrintReady(get_gedcom_setting(WT_GEDCOM, 'title'), true));
 			echo "</div>";
 		}
 		else {
 			$ret = false;
 			if ($this->isPostBack) {
-				echo '<br /><div class="warning" style=" text-align: center;"><i>', i18n::translate('No results found.'), '</i><br /></div>';
+				echo '<br /><div class="warning" style=" text-align: center;"><i>', WT_I18N::translate('No results found.'), '</i><br /></div>';
 			}
 		}
 		return $ret;

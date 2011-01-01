@@ -57,7 +57,7 @@ if (!defined('WT_WEBTREES')) {
 			<div id="inout2-<?php echo $boxID; ?>" style="display: block;"><?php echo $BirthDeath; ?></div>
 		</div>
 		<div id="inout-<?php echo $boxID; ?>" style="display: none;">
-			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo i18n::translate('Loading...'); ?></div>
+			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo WT_I18N::translate('Loading...'); ?></div>
 		</div>
 </td></tr></table>
 </div>

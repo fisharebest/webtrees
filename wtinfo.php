@@ -41,11 +41,11 @@ if (!isset($action)) $action = "";
 
 if ($action == "phpinfo") {
 	$helpindex = "phpinfo_help";
-	print_header(i18n::translate('PHP information'));
+	print_header(WT_I18N::translate('PHP information'));
 
 	echo '<div class="center">';
-	echo '<p><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
-	echo '<p><h2>', i18n::translate('PHP information'), '</h2></p>';
+	echo '<p><input TYPE="button" VALUE="', WT_I18N::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
+	echo '<p><h2>', WT_I18N::translate('PHP information'), '</h2></p>';
 
 	ob_start();
 
@@ -76,7 +76,7 @@ if ($action == "phpinfo") {
 	$php_info = substr($php_info, $offset);
 
 	echo $php_info;
-	echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
+	echo '<p class="center"><input TYPE="button" VALUE="', WT_I18N::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
 	echo '</div>';
 }
 

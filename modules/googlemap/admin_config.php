@@ -42,21 +42,21 @@ if (file_exists('modules/googlemap/config.php')) {
 	require 'modules/googlemap/config.php';
 }
 
-print_header(i18n::translate('GoogleMap Configuration'));
+print_header(WT_I18N::translate('GoogleMap Configuration'));
 
 if (WT_USER_IS_ADMIN) { ?>
 <table class="center">
    <tr>
-	  <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo i18n::translate('GoogleMap Configuration'); ?></td>
+	  <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo WT_I18N::translate('GoogleMap Configuration'); ?></td>
    </tr>
    <tr>
-      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_editconfig"><?php echo i18n::translate('Manage GoogleMap configuration'); ?></a><?php echo help_link('GOOGLEMAP_CONFIG','googlemap'); ?>
+      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_editconfig"><?php echo WT_I18N::translate('Manage GoogleMap configuration'); ?></a><?php echo help_link('GOOGLEMAP_CONFIG','googlemap'); ?>
 	  </td>
-      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_places"><?php echo i18n::translate('Edit geographic place locations'); ?></a><?php echo help_link('PLE_EDIT','googlemap'); ?>
+      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_places"><?php echo WT_I18N::translate('Edit geographic place locations'); ?></a><?php echo help_link('PLE_EDIT','googlemap'); ?>
 	  </td>
    </tr>
    <tr>
-      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_placecheck"><?php echo i18n::translate('Place Check'); ?></a><?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
+      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_placecheck"><?php echo WT_I18N::translate('Place Check'); ?></a><?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
 	  </td>
       <td class="optionbox">&nbsp;
 	  </td>

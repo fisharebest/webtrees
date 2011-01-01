@@ -58,13 +58,13 @@ function get_age_at_event($agestring, $show_years) {
 			'/(\d+)w/ie'
 		),
 		array(
-			i18n::translate('Child'),
-			i18n::translate('Infant'),
-			i18n::translate('Stillborn'),
-			($show_years || preg_match('/[dm]/', $agestring)) ? "i18n::plural('%d year', '%d years', '$1' , '$1')" : '$1',
-			"i18n::plural('%d month', '%d months', '$1' , '$1')",
-			"i18n::plural('%d day', '%d days', '$1' , '$1')",
-			"i18n::plural('%d week', '%d weeks', '$1' , '$1')"
+			WT_I18N::translate('Child'),
+			WT_I18N::translate('Infant'),
+			WT_I18N::translate('Stillborn'),
+			($show_years || preg_match('/[dm]/', $agestring)) ? "WT_I18N::plural('%d year', '%d years', '$1' , '$1')" : '$1',
+			"WT_I18N::plural('%d month', '%d months', '$1' , '$1')",
+			"WT_I18N::plural('%d day', '%d days', '$1' , '$1')",
+			"WT_I18N::plural('%d week', '%d weeks', '$1' , '$1')"
 		),
 		$agestring
 	);
@@ -104,17 +104,17 @@ function format_timestamp($time) {
 	if (strpos('%a', $TIME_FORMAT)!==false || strpos('%A', $TIME_FORMAT)!==false) {
 		$fmt=date('His', $time);
 		if ($fmt=='000000') {
-			$TIME_FORMAT=str_replace('%A', i18n::translate('MIDNIGHT'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', i18n::translate('midnight'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('MIDNIGHT'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('midnight'), $TIME_FORMAT);
 		} elseif ($fmt=='120000') {
-			$TIME_FORMAT=str_replace('%A', i18n::translate('NOON'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', i18n::translate('noon'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('NOON'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('noon'), $TIME_FORMAT);
 		} elseif ($fmt>'120000') {
-			$TIME_FORMAT=str_replace('%A', i18n::translate('P.M.'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', i18n::translate('p.m.'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('P.M.'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('p.m.'), $TIME_FORMAT);
 		} else {
-			$TIME_FORMAT=str_replace('%A', i18n::translate('A.M.'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', i18n::translate('a.m.'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('A.M.'), $TIME_FORMAT);
+			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('a.m.'), $TIME_FORMAT);
 		}
 	}
 */

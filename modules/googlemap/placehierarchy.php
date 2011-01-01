@@ -179,13 +179,13 @@ function create_map() {
 	if (WT_USER_IS_ADMIN) {
 		echo "<table style=\"width: ", $GOOGLEMAP_PH_XSIZE, "px\">";
 		echo "<tr><td align=\"left\">\n";
-		echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Manage GoogleMap configuration'), "</a>";
 		echo "</td>\n";
 		echo "<td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", i18n::translate('Edit geographic place locations'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
 		echo "</td>\n";
 		echo "<td align=\"right\">\n";
-		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_placecheck\">", i18n::translate('Place Check'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_placecheck\">", WT_I18N::translate('Place Check'), "</a>";
 		echo "</td></tr>\n";
 		echo "</table>\n";
 	}
@@ -231,7 +231,7 @@ function print_how_many_people($level, $parent) {
 			$place_count_fam=$place['tot'];
 		}
 	}
-	echo "<br /><br />", i18n::translate('Individuals'), ": ", $place_count_indi, ", ", i18n::translate('Families'), ": ", $place_count_fam;
+	echo "<br /><br />", WT_I18N::translate('Individuals'), ": ", $place_count_indi, ", ", WT_I18N::translate('Families'), ": ", $place_count_fam;
 }
 
 function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false) {
@@ -261,7 +261,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo i18n::translate('unknown');
+					echo WT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -274,9 +274,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == "Unknown") {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo addslashes(i18n::translate('unknown').$placelevels);
+					echo addslashes(WT_I18N::translate('unknown').$placelevels);
 				} else {
-					echo i18n::translate('unknown');
+					echo WT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -295,9 +295,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				print_how_many_people($level+1, $parent);
 			}
 		}
-		echo "<br />", i18n::translate('This place has no coordinates');
+		echo "<br />", WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=", $levelm, "&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
+			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=", $levelm, "&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
 		echo "</div></td>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
@@ -345,7 +345,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				if (!$GM_DISP_SHORT_PLACE) {
 					echo addslashes(substr($placelevels, 2));
 				} else {
-					echo i18n::translate('unknown');
+					echo WT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -358,9 +358,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			$placename = $place2['place'].$placelevels;
 			if ($place2['place'] == "Unknown") {
 				if (!$GM_DISP_SHORT_PLACE) {
-					echo addslashes(i18n::translate('unknown').$placelevels);
+					echo addslashes(WT_I18N::translate('unknown').$placelevels);
 				} else {
-					echo i18n::translate('unknown');
+					echo WT_I18N::translate('unknown');
 				}
 			} else {
 				if (!$GM_DISP_SHORT_PLACE) {
@@ -455,11 +455,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		var button4 = document.createElement('li');
 		var button5 = document.createElement('li');
 
-		button1.innerHTML = '<?php echo i18n::translate('Redraw map'); ?>';
-		button2.innerHTML = '<?php echo i18n::translate('Map'); ?>';
-		button3.innerHTML = '<?php echo i18n::translate('Satellite'); ?>';
-		button4.innerHTML = '<?php echo i18n::translate('Hybrid'); ?>';
-		button5.innerHTML = '<?php echo i18n::translate('Terrain'); ?>';
+		button1.innerHTML = '<?php echo WT_I18N::translate('Redraw map'); ?>';
+		button2.innerHTML = '<?php echo WT_I18N::translate('Map'); ?>';
+		button3.innerHTML = '<?php echo WT_I18N::translate('Satellite'); ?>';
+		button4.innerHTML = '<?php echo WT_I18N::translate('Hybrid'); ?>';
+		button5.innerHTML = '<?php echo WT_I18N::translate('Terrain'); ?>';
 
 		button1.onclick = function() { <?php
 			if ($numfound>1) {
@@ -564,10 +564,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 							echo "icon_type.infoWindowAnchor = new GPoint(5, 1);\n";
 							echo "var point = new GLatLng(0, 0);\n";
 							echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><b>";
-							echo substr($placelevels, 2), "</b><br />", i18n::translate('This place has no coordinates');
+							echo substr($placelevels, 2), "</b><br />", WT_I18N::translate('This place has no coordinates');
 							if (WT_USER_IS_ADMIN)
-								echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
-							echo "<br /></div></td>\", icon_type, \"", i18n::translate('Edit geographic location'), "\");\n";
+								echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
+							echo "<br /></div></td>\", icon_type, \"", WT_I18N::translate('Edit geographic location'), "\");\n";
 							echo "place_map.addOverlay(marker);\n";
 							echo "bounds.extend(point);\n";
 							break;
@@ -596,7 +596,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				}
 			}
 			else if ($level>0) { //if unknown place display the upper level place
-				$placelevels = ", ".i18n::translate('unknown').$placelevels;
+				$placelevels = ", ".WT_I18N::translate('unknown').$placelevels;
 				$linklevels .= "&amp;parent[".$level."]=";
 				$break = false;
 				for ($i=1;$i<=$GM_MAX_NOF_LEVELS;$i++) {
@@ -621,10 +621,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		echo "icon_type.image = \"modules/googlemap/images/marker_yellow.png\"";
 		echo "var point = new GLatLng(0, 0);\n";
 		echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'>";
-		echo "<br />", i18n::translate('This place has no coordinates');
+		echo "<br />", WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", i18n::translate('Edit geographic location'), "</a>";
-		echo "<br /></div></td>\", icon_type, \"", i18n::translate('Edit geographic location'), "\");\n";
+			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
+		echo "<br /></div></td>\", icon_type, \"", WT_I18N::translate('Edit geographic location'), "\");\n";
 		echo "place_map.addOverlay(marker);\n";
 		echo "bounds.extend(point);\n";
 	}

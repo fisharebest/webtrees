@@ -63,7 +63,7 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 		// echo "<td class=\"width10 center wrap\" valign=\"top\"></td>";
 			//Popup Reorder Media
 			echo "<td class=\"width15 center wrap\" valign=\"top\">";
-			echo "<button type=\"button\" title=\"". i18n::translate('Re-order media')."\" onclick=\"reorder_media();\">". i18n::translate('Re-order media') ."</button>";
+			echo "<button type=\"button\" title=\"". WT_I18N::translate('Re-order media')."\" onclick=\"reorder_media();\">". WT_I18N::translate('Re-order media') ."</button>";
 		echo "</td>";
 		//echo "<td width=\"5%\">&nbsp;</td>";
 		echo "</tr></table>";

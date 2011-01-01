@@ -48,12 +48,12 @@ if (empty($gedcoms)) {
 // Which gedcom have we requested to export
 $export = safe_GET('export', preg_quote_array($gedcoms));
 
-print_simple_header(i18n::translate('Export'));
+print_simple_header(WT_I18N::translate('Export'));
 
 if ($export) {
 	$ged_id = get_id_from_gedcom($export);
 	$filename = get_site_setting('INDEX_DIRECTORY').$export;
-	echo '<h1>', i18n::translate('Export'), '</h1>';
+	echo '<h1>', WT_I18N::translate('Export'), '</h1>';
 	echo '<p>', htmlspecialchars(filename_decode($export)), ' => ', $filename, '</p>';
 	flush();
 	$gedout = fopen($filename.'.tmp', 'w');
@@ -89,5 +89,5 @@ if ($export) {
 	echo '</ul>';
 }
 
-echo '<p><a href="javascript: ', i18n::translate('Close Window'), '" onclick="window.close();">', i18n::translate('Close Window'), '</a></p>';
+echo '<p><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 print_simple_footer();

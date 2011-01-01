@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Pedigree Chart');
+		return WT_I18N::translate('Pedigree Chart');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Pedigree Chart');
+		return WT_I18N::translate('Pedigree Chart');
 	}
 
 	// Extend class WT_Module
@@ -59,12 +59,12 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		}
 
 		$menus=array();
-		$menu=new WT_Menu($this->getTitle().' - '.i18n::translate('Portrait'), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_portrait.xml'.$pid);
+		$menu=new WT_Menu($this->getTitle().' - '.WT_I18N::translate('Portrait'), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_portrait.xml'.$pid);
 		$menu->addIcon('pedigree');
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menus[]=$menu;
 
-		$menu=new WT_Menu($this->getTitle().' - '.i18n::translate('Landscape'), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_landscape.xml'.$pid);
+		$menu=new WT_Menu($this->getTitle().' - '.WT_I18N::translate('Landscape'), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report_landscape.xml'.$pid);
 		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
 		$menu->addIcon('pedigree');
 		$menus[]=$menu;

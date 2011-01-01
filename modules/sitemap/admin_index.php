@@ -205,28 +205,28 @@ if ($action=="sendIndex") {
 	exit;
 }
 
-print_header(i18n::translate('Generate Sitemap files'));
+print_header(WT_I18N::translate('Generate Sitemap files'));
 
 if ($action=="generate") {
 	echo "<h3>";
-	echo i18n::translate('Generate Sitemap files');
+	echo WT_I18N::translate('Generate Sitemap files');
 	echo help_link('SITEMAP','sitemap');
 	echo "</h3>\n";
 	echo "<table class=\"facts_table\">\n";
-	echo "<tr><td class=\"topbottombar\">", i18n::translate('Selected items to store in Sitemap:'), "</td></tr>\n";
-	if (isset($_POST["welcome_page"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Home page'), "</td></tr>\n";
-	if (isset($_POST["indi_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual information'), "</td></tr>\n";
-	if (isset($_POST["indi_list"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Individual List'), "</td></tr>\n";
-	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family information'), "</td></tr>\n";
-	if (isset($_POST["fam_list"])) echo "<tr><td class=\"optionbox\">", i18n::translate('Family List'), "</td></tr>\n";
-	if (isset($_POST["GEDCOM_Privacy"])) echo "<tr><td class=\"optionbox\">", i18n::translate('No links to private information'), "</td></tr>\n";
+	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('Selected items to store in Sitemap:'), "</td></tr>\n";
+	if (isset($_POST["welcome_page"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Home page'), "</td></tr>\n";
+	if (isset($_POST["indi_recs"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Individual information'), "</td></tr>\n";
+	if (isset($_POST["indi_list"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Individual List'), "</td></tr>\n";
+	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Family information'), "</td></tr>\n";
+	if (isset($_POST["fam_list"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Family List'), "</td></tr>\n";
+	if (isset($_POST["GEDCOM_Privacy"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('No links to private information'), "</td></tr>\n";
 
-	echo "<tr><td class=\"topbottombar\">", i18n::translate('GEDCOMs to store in Sitemap:'), "</td></tr>\n";
+	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('GEDCOMs to store in Sitemap:'), "</td></tr>\n";
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 		if (isset($_POST["GEDCOM_{$ged_id}"])) echo "<tr><td class=\"optionbox\">", get_gedcom_setting($ged_id, 'title'), "</td></tr>\n";
 	}
 
-	echo "<tr><td class=\"topbottombar\">", i18n::translate('The following Sitemap files have been generated and can be downloaded:'), "</td></tr>\n";
+	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('The following Sitemap files have been generated and can be downloaded:'), "</td></tr>\n";
 	$filecounter = 0;
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 		if (isset($_POST["GEDCOM_{$ged_id}"])) {
@@ -251,7 +251,7 @@ if ($action=="generate") {
 		}
 		echo "\">SitemapIndex.xml</a></td></tr>\n";
 	}
-	echo "<tr><td class=\"topbottombar\">", i18n::translate('Place all the files in the root of your webtrees installation.'), "</td></tr>\n";
+	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('Place all the files in the root of your webtrees installation.'), "</td></tr>\n";
 	echo "</table>\n";
 	echo "<br />\n";
 }
@@ -259,13 +259,13 @@ if ($action=="generate") {
 if ($action=="") {
 ?>
 
-<h3><?php echo i18n::translate('Generate Sitemap files'), help_link('SITEMAP','sitemap'); ?></h3>
+<h3><?php echo WT_I18N::translate('Generate Sitemap files'), help_link('SITEMAP','sitemap'); ?></h3>
 
 <form method="post" enctype="multipart/form-data" id="sitemap" name="sitemap" action="module.php?mod=sitemap&amp;mod_action=admin_index">
 	<input type="hidden" name="action" value="generate" />
 	<table class="facts_table width100">
 		<tr>
-			<td class="descriptionbox wrap width30"><?php echo i18n::translate('GEDCOMs to store in Sitemap:'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></td>
+			<td class="descriptionbox wrap width30"><?php echo WT_I18N::translate('GEDCOMs to store in Sitemap:'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></td>
 			<td class="optionbox" colspan="3">
 <?php
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
@@ -278,20 +278,20 @@ if ($action=="") {
 			<td class="descriptionbox wrap width30">
 			</td>
 			<td class="optionbox" colspan="3">
-				<input type="checkbox" name="GEDCOM_Privacy" checked><?php echo i18n::translate('No links to private information'); ?>
+				<input type="checkbox" name="GEDCOM_Privacy" checked><?php echo WT_I18N::translate('No links to private information'); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width30" rowspan="6">
-				<?php echo i18n::translate('Selected items to store in Sitemap:'), help_link('SM_ITEM_SELECT','sitemap'); ?>
+				<?php echo WT_I18N::translate('Selected items to store in Sitemap:'), help_link('SM_ITEM_SELECT','sitemap'); ?>
 			</td>
-			<td class="topbottombar"><?php echo i18n::translate('Item'); ?></td>
-			<td class="topbottombar"><?php echo i18n::translate('Priority'); ?></td>
-			<td class="topbottombar"><?php echo i18n::translate('Updates'); ?></td>
+			<td class="topbottombar"><?php echo WT_I18N::translate('Item'); ?></td>
+			<td class="topbottombar"><?php echo WT_I18N::translate('Priority'); ?></td>
+			<td class="topbottombar"><?php echo WT_I18N::translate('Updates'); ?></td>
 		</tr>
 		<tr>
 			<td class="optionbox">
-				<input type="checkbox" name="welcome_page" checked><?php echo i18n::translate('Home page'); ?>
+				<input type="checkbox" name="welcome_page" checked><?php echo WT_I18N::translate('Home page'); ?>
 			</td>
 			<td class="optionbox">
 				<select name="welcome_priority">
@@ -308,18 +308,18 @@ if ($action=="") {
 			</td>
 			<td class="optionbox">
 				<select name="welcome_update">
-					<option value="always"><?php echo i18n::translate('always'); ?></option>
-					<option value="hourly"><?php echo i18n::translate('hourly'); ?></option>
-					<option value="daily"><?php echo i18n::translate('daily'); ?></option>
-					<option value="weekly"><?php echo i18n::translate('weekly'); ?></option>
-					<option value="monthly" selected="selected"><?php echo i18n::translate('monthly'); ?></option>
-					<option value="yearly"><?php echo i18n::translate('yearly'); ?></option>
-					<option value="never"><?php echo i18n::translate('never'); ?></option>
+					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
+					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
+					<option value="daily"><?php echo WT_I18N::translate('daily'); ?></option>
+					<option value="weekly"><?php echo WT_I18N::translate('weekly'); ?></option>
+					<option value="monthly" selected="selected"><?php echo WT_I18N::translate('monthly'); ?></option>
+					<option value="yearly"><?php echo WT_I18N::translate('yearly'); ?></option>
+					<option value="never"><?php echo WT_I18N::translate('never'); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_recs" checked><?php echo i18n::translate('Individual information'); ?></td>
+			<td class="optionbox"><input type="checkbox" name="indi_recs" checked><?php echo WT_I18N::translate('Individual information'); ?></td>
 			<td class="optionbox">
 				<select name="indirec_priority">
 					<option value="1">0.1</option>
@@ -335,18 +335,18 @@ if ($action=="") {
 			</td>
 			<td class="optionbox">
 				<select name="indirec_update">
-					<option value="always"><?php echo i18n::translate('always'); ?></option>
-					<option value="hourly"><?php echo i18n::translate('hourly'); ?></option>
-					<option value="daily"><?php echo i18n::translate('daily'); ?></option>
-					<option value="weekly"><?php echo i18n::translate('weekly'); ?></option>
-					<option value="monthly" selected="selected"><?php echo i18n::translate('monthly'); ?></option>
-					<option value="yearly"><?php echo i18n::translate('yearly'); ?></option>
-					<option value="never"><?php echo i18n::translate('never'); ?></option>
+					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
+					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
+					<option value="daily"><?php echo WT_I18N::translate('daily'); ?></option>
+					<option value="weekly"><?php echo WT_I18N::translate('weekly'); ?></option>
+					<option value="monthly" selected="selected"><?php echo WT_I18N::translate('monthly'); ?></option>
+					<option value="yearly"><?php echo WT_I18N::translate('yearly'); ?></option>
+					<option value="never"><?php echo WT_I18N::translate('never'); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_list"><?php echo i18n::translate('Individual List'); ?></td>
+			<td class="optionbox"><input type="checkbox" name="indi_list"><?php echo WT_I18N::translate('Individual List'); ?></td>
 			<td class="optionbox">
 				<select name="indilist_priority">
 					<option value="1">0.1</option>
@@ -362,18 +362,18 @@ if ($action=="") {
 			</td>
 			<td class="optionbox">
 				<select name="indilist_update">
-					<option value="always"><?php echo i18n::translate('always'); ?></option>
-					<option value="hourly"><?php echo i18n::translate('hourly'); ?></option>
-					<option value="daily"><?php echo i18n::translate('daily'); ?></option>
-					<option value="weekly"><?php echo i18n::translate('weekly'); ?></option>
-					<option value="monthly" selected="selected"><?php echo i18n::translate('monthly'); ?></option>
-					<option value="yearly"><?php echo i18n::translate('yearly'); ?></option>
-					<option value="never"><?php echo i18n::translate('never'); ?></option>
+					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
+					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
+					<option value="daily"><?php echo WT_I18N::translate('daily'); ?></option>
+					<option value="weekly"><?php echo WT_I18N::translate('weekly'); ?></option>
+					<option value="monthly" selected="selected"><?php echo WT_I18N::translate('monthly'); ?></option>
+					<option value="yearly"><?php echo WT_I18N::translate('yearly'); ?></option>
+					<option value="never"><?php echo WT_I18N::translate('never'); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_recs" checked><?php echo i18n::translate('Family information'); ?></td>
+			<td class="optionbox"><input type="checkbox" name="fam_recs" checked><?php echo WT_I18N::translate('Family information'); ?></td>
 			<td class="optionbox">
 				<select name="famrec_priority">
 					<option value="1">0.1</option>
@@ -389,18 +389,18 @@ if ($action=="") {
 			</td>
 			<td class="optionbox">
 				<select name="famrec_update">
-					<option value="always"><?php echo i18n::translate('always'); ?></option>
-					<option value="hourly"><?php echo i18n::translate('hourly'); ?></option>
-					<option value="daily"><?php echo i18n::translate('daily'); ?></option>
-					<option value="weekly"><?php echo i18n::translate('weekly'); ?></option>
-					<option value="monthly" selected="selected"><?php echo i18n::translate('monthly'); ?></option>
-					<option value="yearly"><?php echo i18n::translate('yearly'); ?></option>
-					<option value="never"><?php echo i18n::translate('never'); ?></option>
+					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
+					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
+					<option value="daily"><?php echo WT_I18N::translate('daily'); ?></option>
+					<option value="weekly"><?php echo WT_I18N::translate('weekly'); ?></option>
+					<option value="monthly" selected="selected"><?php echo WT_I18N::translate('monthly'); ?></option>
+					<option value="yearly"><?php echo WT_I18N::translate('yearly'); ?></option>
+					<option value="never"><?php echo WT_I18N::translate('never'); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_list"><?php echo i18n::translate('Family List'); ?></td>
+			<td class="optionbox"><input type="checkbox" name="fam_list"><?php echo WT_I18N::translate('Family List'); ?></td>
 			<td class="optionbox">
 				<select name="famlist_priority">
 					<option value="1">0.1</option>
@@ -416,18 +416,18 @@ if ($action=="") {
 			</td>
 			<td class="optionbox">
 				<select name="famlist_update">
-					<option value="always"><?php echo i18n::translate('always'); ?></option>
-					<option value="hourly"><?php echo i18n::translate('hourly'); ?></option>
-					<option value="daily"><?php echo i18n::translate('daily'); ?></option>
-					<option value="weekly"><?php echo i18n::translate('weekly'); ?></option>
-					<option value="monthly" selected="selected"><?php echo i18n::translate('monthly'); ?></option>
-					<option value="yearly"><?php echo i18n::translate('yearly'); ?></option>
-					<option value="never"><?php echo i18n::translate('never'); ?></option>
+					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
+					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
+					<option value="daily"><?php echo WT_I18N::translate('daily'); ?></option>
+					<option value="weekly"><?php echo WT_I18N::translate('weekly'); ?></option>
+					<option value="monthly" selected="selected"><?php echo WT_I18N::translate('monthly'); ?></option>
+					<option value="yearly"><?php echo WT_I18N::translate('yearly'); ?></option>
+					<option value="never"><?php echo WT_I18N::translate('never'); ?></option>
 				</select>
 			</td>
 		</tr>
 	</table>
-	<center><input id="savebutton" type="submit" value="<?php echo i18n::translate('Generate'); ?>" /></center><br /><br />
+	<center><input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Generate'); ?>" /></center><br /><br />
 </form>
 
 <?php

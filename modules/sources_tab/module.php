@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Sources');
+		return WT_I18N::translate('Sources');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the sources linked to an individual.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the sources linked to an individual.');
 	}
 
 	// Implement WT_Module_Tab
@@ -67,7 +67,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td></td>
 				<td class="descriptionbox rela">
 					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_SOURCES) echo " checked=\"checked\""; ?> onclick="toggleByClassName('TR', 'row_sour2');" />
-					<label for="checkbox_sour2"><?php echo i18n::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
+					<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 
 				</td>
 			</tr>
@@ -83,14 +83,14 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			foreach ($this->controller->getIndiFacts() as $key => $factrec) {
 					print_main_sources($factrec->getGedcomRecord(), 2, $this->controller->pid, $factrec->getLineNumber(), true);
 			}
-			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Source citations for this individual.')."</td></tr>";
+			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Source citations for this individual.')."</td></tr>";
 			//-- New Source Link
 			if ($this->controller->indi->canEdit()) {
 			?>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Add Source Citation'), help_link('add_source'); ?></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Add Source Citation'), help_link('add_source'); ?></td>
 					<td class="facts_value">
-					<a href="javascript:;" onclick="add_new_record('<?php echo $this->controller->pid; ?>','SOUR'); return false;"><?php echo i18n::translate('Add a new source citation'); ?></a>
+					<a href="javascript:;" onclick="add_new_record('<?php echo $this->controller->pid; ?>','SOUR'); return false;"><?php echo WT_I18N::translate('Add a new source citation'); ?></a>
 					<br />
 					</td>
 				</tr>

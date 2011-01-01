@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Tree');
+		return WT_I18N::translate('Tree');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the interactive tree for the given individual.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the interactive tree for the given individual.');
 	}
 
 	// Implement WT_Module_Tab

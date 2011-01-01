@@ -31,8 +31,8 @@ header('Content-Type: application/opensearchdescription+xml; charset=utf-8');
 
 echo '<?xml version="1.0" encoding="UTF-8" ?>';
 echo '<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">';
-echo '<ShortName>' . get_gedcom_setting(WT_GED_ID, 'title') . ' ' . i18n::translate('Search')  . '</ShortName>';
-echo '<Description>' .  get_gedcom_setting(WT_GED_ID, 'title') . ' ' . i18n::translate('Search') . '</Description>';
+echo '<ShortName>' . get_gedcom_setting(WT_GED_ID, 'title') . ' ' . WT_I18N::translate('Search')  . '</ShortName>';
+echo '<Description>' .  get_gedcom_setting(WT_GED_ID, 'title') . ' ' . WT_I18N::translate('Search') . '</Description>';
 echo '<InputEncoding>UTF-8</InputEncoding>';
 echo '<Url type="text/html" template="' . WT_SERVER_NAME.WT_SCRIPT_PATH. 'search.php?action=general&amp;topsearch=yes&amp;query={searchTerms}"/>';
 echo '<Url type="application/x-suggestions+json" template="' . WT_SERVER_NAME.WT_SCRIPT_PATH. 'autocomplete.php?limit=20&amp;field=NAME&amp;fmt=json&amp;q={searchTerms}"/>';

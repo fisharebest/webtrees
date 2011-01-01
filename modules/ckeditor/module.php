@@ -31,11 +31,11 @@ if (!defined('WT_WEBTREES')) {
 class ckeditor_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('CKEditor');
+		return WT_I18N::translate('CKEditor');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds CKEditor for text editing in FAQ, News, HTML, and Stories modules.');
+		return WT_I18N::translate('Adds CKEditor for text editing in FAQ, News, HTML, and Stories modules.');
 	}
 }

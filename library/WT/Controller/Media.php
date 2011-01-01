@@ -154,9 +154,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 	*/
 	function getPageTitle() {
 		if ($this->mediaobject) {
-			return $this->mediaobject->getFullName()." - ".i18n::translate('Multimedia Information');
+			return $this->mediaobject->getFullName()." - ".WT_I18N::translate('Multimedia Information');
 		} else {
-			return i18n::translate('Unable to find record with ID');
+			return WT_I18N::translate('Unable to find record with ID');
 		}
 	}
 
@@ -184,12 +184,12 @@ class WT_Controller_Media extends WT_Controller_Base {
 		}
 
 		// edit menu
-		$menu = new WT_Menu(i18n::translate('Edit'));
+		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_media');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(i18n::translate('Edit media'));
+			$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
 			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->pid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -197,9 +197,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 			// main link displayed on page
 			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
-				$submenu = new WT_Menu(i18n::translate('Manage links'));
+				$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
 			} else {
-				$submenu = new WT_Menu(i18n::translate('Set link'));
+				$submenu = new WT_Menu(WT_I18N::translate('Set link'));
 			}
 
 			// GEDFact assistant Add Media Links =======================
@@ -212,17 +212,17 @@ class WT_Controller_Media extends WT_Controller_Base {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','person');");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 
-				$ssubmenu = new WT_Menu(i18n::translate('To Person'));
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','person');");
 				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addSubMenu($ssubmenu);
 
-				$ssubmenu = new WT_Menu(i18n::translate('To Family'));
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','family');");
 				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addSubMenu($ssubmenu);
 
-				$ssubmenu = new WT_Menu(i18n::translate('To Source'));
+				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','source');");
 				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addSubMenu($ssubmenu);
@@ -235,10 +235,10 @@ class WT_Controller_Media extends WT_Controller_Base {
 		// show/hide changes
 		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$label = i18n::translate('This record has been updated.  Click here to show changes.');
+				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
 				$link = "mediaviewer.php?mid={$this->pid}&amp;show_changes=yes";
 			} else {
-				$label = i18n::translate('Click here to hide changes.');
+				$label = WT_I18N::translate('Click here to hide changes.');
 				$link = "mediaviewer.php?mid={$this->pid}&samp;how_changes=no";
 			}
 			$submenu = new WT_Menu($label, $link);
@@ -246,11 +246,11 @@ class WT_Controller_Media extends WT_Controller_Base {
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(i18n::translate('Undo all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=undo");
+				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('notes');
 				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(i18n::translate('Approve all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=accept");
+				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=accept");
 				$submenu->addIcon('notes');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -261,13 +261,13 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(i18n::translate('Edit raw GEDCOM record'));
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(i18n::translate('View GEDCOM Record'));
+			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -280,15 +280,15 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$submenu = new WT_Menu(i18n::translate('Remove object'), "media.php?action=removeobject&amp;xref=".$this->pid);
-			$submenu->addOnclick("return confirm('".i18n::translate('Are you sure you want to remove this object from the database?')."')");
+			$submenu = new WT_Menu(WT_I18N::translate('Remove object'), "media.php?action=removeobject&amp;xref=".$this->pid);
+			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
-		$submenu = new WT_Menu(i18n::translate('Add to My Favorites'), "mediaviewer.php?action=addfav&amp;mid={$this->mid}&amp;gid={$this->mid}");
+		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "mediaviewer.php?action=addfav&amp;mid={$this->mid}&amp;gid={$this->mid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);
@@ -330,7 +330,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename());
 		$mediaType = $this->mediaobject->getMediatype();
 		if (array_key_exists($mediaType, $MEDIA_TYPES)) $facts[] = new WT_Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
-		else $facts[] = new WT_Event("1 TYPE ".i18n::translate('Other'));
+		else $facts[] = new WT_Event("1 TYPE ".WT_I18N::translate('Other'));
 
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
@@ -339,7 +339,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 			$newfacts[] = new WT_Event("1 FORM ".$newmedia->getFiletype());
 			$mediaType = $newmedia->getMediatype();
 			if (array_key_exists($mediaType, $MEDIA_TYPES)) $newfacts[] = new WT_Event("1 TYPE ".$mediaType);
-			else $newfacts[] = new WT_Event("1 TYPE ".i18n::translate('Other'));
+			else $newfacts[] = new WT_Event("1 TYPE ".WT_I18N::translate('Other'));
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
 			for ($i=0; $i<count($facts); $i++) {

@@ -46,11 +46,11 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=placelist.php');
 	exit;
 }
-print_header(i18n::translate('Place Check').' - '.WT_GEDCOM);
+print_header(WT_I18N::translate('Place Check').' - '.WT_GEDCOM);
 
 $target=$openinnew ? "target='_blank'" : "";
 
-echo "<div align=\"center\" style=\"width: 99%;\"><h1>", i18n::translate('Place Check'), "</h1></div>";
+echo "<div align=\"center\" style=\"width: 99%;\"><h1>", WT_I18N::translate('Place Check'), "</h1></div>";
 
 //Start of User Defined options
 echo "<table border='0' width='100%' height='100px' overflow='auto';>";
@@ -58,25 +58,25 @@ echo "<form method='post' name='placecheck' action='module.php?mod=googlemap&amp
 echo "<tr valign='top'>";
 echo "<td>";
 echo "<table align='left'>";
-echo "<tr><td colspan='2'class='descriptionbox' align='center'><strong>", i18n::translate('PlaceCheck List Options'), "</strong></td></tr>";
+echo "<tr><td colspan='2'class='descriptionbox' align='center'><strong>", WT_I18N::translate('PlaceCheck List Options'), "</strong></td></tr>";
 //Option box to select gedcom
-echo "<tr><td class='descriptionbox'>".i18n::translate('GEDCOM File:')."</td>";
+echo "<tr><td class='descriptionbox'>".WT_I18N::translate('GEDCOM File:')."</td>";
 echo "<td class='optionbox'><select name='gedcom_id'>";
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	echo '<option value="', $ged_id, '"', $ged_id==$gedcom_id?' selected="selected"':'', '>', htmlspecialchars($gedcom), '</option>';
 }
 echo "</select></td></tr>";
 //Option box for 'Open in new window'
-echo "<tr><td class='descriptionbox'>".i18n::translate('Open links in')."</td>";
+echo "<tr><td class='descriptionbox'>".WT_I18N::translate('Open links in')."</td>";
 echo "<td class='optionbox'><select name='openinnew'>";
-echo "<option value='0' ", $openinnew?" selected='selected'":"", ">".i18n::translate('Same tab/window')."</option>";
-echo "<option value='1' ", $openinnew?" selected='selected'":"", ">".i18n::translate('New tab/window')."</option>";
+echo "<option value='0' ", $openinnew?" selected='selected'":"", ">".WT_I18N::translate('Same tab/window')."</option>";
+echo "<option value='1' ", $openinnew?" selected='selected'":"", ">".WT_I18N::translate('New tab/window')."</option>";
 echo "</select></td></tr>";
 //Option box to select Country within Gedcom
-echo "<tr><td class='descriptionbox'>", i18n::translate('Country'), "</td>";
+echo "<tr><td class='descriptionbox'>", WT_I18N::translate('Country'), "</td>";
 echo "<td class='optionbox'><select name='country'>";
-echo "<option value='XYZ' selected='selected'>", /* I18N: first/default option in a drop-down listbox */ i18n::translate('&lt;select&gt;'), "</option>";
-echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
+echo "<option value='XYZ' selected='selected'>", /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), "</option>";
+echo "<option value='XYZ'>", WT_I18N::translate('All'), "</option>";
 $rows=
 	WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 	->fetchAssoc();
@@ -92,10 +92,10 @@ echo "</select></td></tr>";
 
 //Option box to select level 2 place within the selected Country
 if ($country!='XYZ') {
-	echo "<tr><td class='descriptionbox'>", /* I18N: Part of a country, state/region/county */ i18n::translate('Subdivision'), "</td>";
+	echo "<tr><td class='descriptionbox'>", /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), "</td>";
 	echo "<td class='optionbox'><select name='state'>";
-	echo "<option value='XYZ' selected='selected'>", i18n::translate('&lt;select&gt;'), "</option>";
-	echo "<option value='XYZ'>", i18n::translate('All'), "</option>";
+	echo "<option value='XYZ' selected='selected'>", WT_I18N::translate('&lt;select&gt;'), "</option>";
+	echo "<option value='XYZ'>", WT_I18N::translate('All'), "</option>";
 	$places=
 		WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 		->execute(array($par_id))
@@ -112,9 +112,9 @@ if (!isset ($_POST["matching"])) {$matching=0;} else {$matching=1;}
 echo "<td>";
 echo "<table>";
 echo "<tr><td colspan='2' class='descriptionbox' align='center'>";
-echo "<strong>", i18n::translate('List filtering options'), "</strong>", help_link('PLACECHECK_FILTER','googlemap');
+echo "<strong>", WT_I18N::translate('List filtering options'), "</strong>", help_link('PLACECHECK_FILTER','googlemap');
 echo "</td></tr><tr><td class='descriptionbox'>";
-echo i18n::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
+echo WT_I18N::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
 echo "</td><td class='optionbox'><input type=\"checkbox\" name=\"matching\" value=\"active\"";
 if ($matching==1) {
 	echo " checked=\"checked\"";
@@ -126,17 +126,17 @@ echo "</td>";
 //Show Key table
 echo "<td rowspan='2'>";
 echo "<table align='right'>";
-echo "<tr><td colspan='4' align='center' class='descriptionbox'><strong>", i18n::translate('Key to colors used below'), "</strong></td></tr>";
-echo "<tr><td class='facts_value error'>", translate_fact('PLAC'), "</td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place and its coordinates do not exist in the GoogleMap tables.'), "</font></td></tr>";
-echo "<tr><td class='facts_value'><a>", translate_fact('PLAC'), "</a></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place exists in the GoogleMap tables, but has no coordinates.'), "</font></td></tr>";
-echo "<tr><td class='facts_value'><strong>".i18n::translate('unknown')."</font></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.'), "</font></td></tr>";
-echo "<tr><td class='facts_value'><a>".i18n::translate('unknown')."</a></td><td class='facts_value' align='center'>N55.0</td><td align='center' class='facts_value'>W75.0</td><td class='facts_value'><font size=\"-2\">", i18n::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.'), "</font></td></tr>";
+echo "<tr><td colspan='4' align='center' class='descriptionbox'><strong>", WT_I18N::translate('Key to colors used below'), "</strong></td></tr>";
+echo "<tr><td class='facts_value error'>", translate_fact('PLAC'), "</td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", WT_I18N::translate('This place and its coordinates do not exist in the GoogleMap tables.'), "</font></td></tr>";
+echo "<tr><td class='facts_value'><a>", translate_fact('PLAC'), "</a></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", WT_I18N::translate('This place exists in the GoogleMap tables, but has no coordinates.'), "</font></td></tr>";
+echo "<tr><td class='facts_value'><strong>".WT_I18N::translate('unknown')."</font></td><td class='facts_value error' align='center '><strong>X</strong></td><td align='center' class='facts_value error'><strong>X</strong></td><td class='facts_value'><font size=\"-2\">", WT_I18N::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.'), "</font></td></tr>";
+echo "<tr><td class='facts_value'><a>".WT_I18N::translate('unknown')."</a></td><td class='facts_value' align='center'>N55.0</td><td align='center' class='facts_value'>W75.0</td><td class='facts_value'><font size=\"-2\">", WT_I18N::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.'), "</font></td></tr>";
 echo "</table>";
 echo "</td>";
 echo "</tr>";
 echo "<tr>";
 echo "<td colspan='2'>";
-echo "<input type='submit' value='".i18n::translate('Show')."' $target><input type='hidden' name='action' value='go'>";
+echo "<input type='submit' value='".WT_I18N::translate('Show')."' $target><input type='hidden' name='action' value='go'>";
 echo "</td>";
 echo "</tr>";
 echo "</form>";
@@ -146,7 +146,7 @@ echo "<hr />";
 switch ($action) {
 case 'go':
 	//Identify gedcom file
-	echo "<strong>", i18n::translate('Place list for GEDCOM file'), ": </strong>", htmlspecialchars(get_gedcom_setting($gedcom_id, 'title')), "<br /><br />";
+	echo "<strong>", WT_I18N::translate('Place list for GEDCOM file'), ": </strong>", htmlspecialchars(get_gedcom_setting($gedcom_id, 'title')), "<br /><br />";
 	//Select all '2 PLAC ' tags in the file and create array
 	$place_list=array();
 	$ged_data=WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
@@ -220,21 +220,21 @@ case 'go':
 	$cols=0;
 	$span=$max*3+3;
 	echo "<table class='facts_table' width='100%'><tr>";
-	echo "<td rowspan='3' class='descriptionbox' align='center'><strong>", i18n::translate('GEDCOM File Place Data<br />(2 PLAC tag)'), "</strong></td>";
-	echo "<td class='descriptionbox' colspan='", $span, "' align='center'><strong>", i18n::translate('GoogleMap Places Table Data'), "</strong></td></tr>";
+	echo "<td rowspan='3' class='descriptionbox' align='center'><strong>", WT_I18N::translate('GEDCOM File Place Data<br />(2 PLAC tag)'), "</strong></td>";
+	echo "<td class='descriptionbox' colspan='", $span, "' align='center'><strong>", WT_I18N::translate('GoogleMap Places Table Data'), "</strong></td></tr>";
 	echo "<tr>";
 	while ($cols<$max) {
 		if ($cols == 0) {
-			echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(i18n::translate('Country')), "</strong></td>";
+			echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(WT_I18N::translate('Country')), "</strong></td>";
 		} else {
-			echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(i18n::translate('Level')), "&nbsp;", $cols+1, "</strong></td>";
+			echo "<td class='descriptionbox' colspan='3' align='center'><strong>", PrintReady(WT_I18N::translate('Level')), "&nbsp;", $cols+1, "</strong></td>";
 		}
 		$cols++;
 	}
 	echo "</tr><tr>";
 	$cols=0;
 	while ($cols<$max) {
-		echo "<td class='descriptionbox' align='center'><strong>", translate_fact('PLAC'), "</strong></td><td class='descriptionbox' align='center'><strong>", i18n::translate('Latitude'), "</strong><td class='descriptionbox' align='center'><strong>", i18n::translate('Longitude'), "</strong></td></td>";
+		echo "<td class='descriptionbox' align='center'><strong>", translate_fact('PLAC'), "</strong></td><td class='descriptionbox' align='center'><strong>", WT_I18N::translate('Latitude'), "</strong><td class='descriptionbox' align='center'><strong>", WT_I18N::translate('Longitude'), "</strong></td></td>";
 		$cols++;
 	}
 	echo "</tr>";
@@ -287,12 +287,12 @@ case 'go':
 			}
 
 			if ($row['pl_place']!='') {
-				$placestr2=$mapstr_edit.$id."&amp;level=".$level.$mapstr3.$mapstr5.i18n::translate('Zoom=').$row['pl_zoom'].$mapstr6.$row['pl_placerequested'].$mapstr8;
+				$placestr2=$mapstr_edit.$id."&amp;level=".$level.$mapstr3.$mapstr5.WT_I18N::translate('Zoom=').$row['pl_zoom'].$mapstr6.$row['pl_placerequested'].$mapstr8;
 				if ($row['pl_place']=='unknown')
 					$matched[$x]++;
 			} else {
 				if ($levels[$z]=="unknown") {
-					$placestr2=$mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(i18n::translate('unknown')))."</strong>".$mapstr8;$matched[$x]++;
+					$placestr2=$mapstr_add.$id."&amp;level=".$level.$mapstr3.$mapstr7."<strong>".rtrim(ltrim(WT_I18N::translate('unknown')))."</strong>".$mapstr8;$matched[$x]++;
 				} else {
 					$placestr2=$mapstr_add.$id."&amp;place_name=".urlencode($levels[$z])."&amp;level=".$level.$mapstr3.$mapstr7.'<span class="error">'.rtrim(ltrim($levels[$z])).'</span>'.$mapstr8;$matched[$x]++;
 				}
@@ -339,12 +339,12 @@ case 'go':
 	}
 
 	// echo final row of table
-	echo "<tr><td colspan=\"2\" class=\"list_label\">", i18n::translate('Total unique places'), ": ", $countrows, "</td></tr></table><br /><br />";
+	echo "<tr><td colspan=\"2\" class=\"list_label\">", WT_I18N::translate('Total unique places'), ": ", $countrows, "</td></tr></table><br /><br />";
 	break;
 default:
 	// Do not run until user selects a gedcom/place/etc.
 	// Instead, show some useful help info.
-	echo "<p>", i18n::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</p><hr />";
+	echo "<p>", WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</p><hr />";
 	break;
 }
 

@@ -39,13 +39,13 @@ require_once WT_ROOT.'includes/functions/functions.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-print_header(i18n::translate('Manage sites'));
+print_header(WT_I18N::translate('Manage sites'));
 //-- only allow managers here
 if (!WT_USER_GEDCOM_ADMIN) {
-	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	//-- display messages as to why the editing access was denied
-	if (!WT_USER_GEDCOM_ADMIN) echo "<br />".i18n::translate('This user name cannot edit this GEDCOM.');
-	echo "<br /><br /><div class=\"center\"><a href=\"javascript: ".i18n::translate('Close Window')."\" onclick=\"window.close();\">".i18n::translate('Close Window')."</a></div>";
+	if (!WT_USER_GEDCOM_ADMIN) echo "<br />".WT_I18N::translate('This user name cannot edit this GEDCOM.');
+	echo "<br /><br /><div class=\"center\"><a href=\"javascript: ".WT_I18N::translate('Close Window')."\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";
 	print_footer();
 	exit;
 }
@@ -102,10 +102,10 @@ if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $
 		}
 	} else {
 		if ($action=='addBanned') {
-			$errorBanned=i18n::translate('Invalid IP address.');
+			$errorBanned=WT_I18N::translate('Invalid IP address.');
 		}
 		if ($action=='addSearch') {
-			$errorSearch=i18n::translate('Invalid IP address.');
+			$errorSearch=WT_I18N::translate('Invalid IP address.');
 		}
 	}
 	$action='showForm';
@@ -119,10 +119,10 @@ function showSite(siteID) {
 	buttonShow = document.getElementById("buttonShow_"+siteID);
 	siteDetails = document.getElementById("siteDetails_"+siteID);
 	if (siteDetails.style.display=='none') {
-		buttonShow.innerHTML='<?php echo i18n::translate('Hide Details'); ?>';
+		buttonShow.innerHTML='<?php echo WT_I18N::translate('Hide Details'); ?>';
 		siteDetails.style.display='block';
 	} else {
-		buttonShow.innerHTML='<?php echo i18n::translate('Show Details'); ?>';
+		buttonShow.innerHTML='<?php echo WT_I18N::translate('Show Details'); ?>';
 		siteDetails.style.display='none';
 	}
 }
@@ -136,7 +136,7 @@ echo '<table>',
 	'<form name="searchengineform" action="', WT_SCRIPT_NAME, '" method="post">',
 	'<table>',
 		'<tr>',
-		'<td><h3>', i18n::translate('Manually mark Search Engines by IP'). help_link('help_manual_search_engines'), '</h3></td>',
+		'<td><h3>', WT_I18N::translate('Manually mark Search Engines by IP'). help_link('help_manual_search_engines'), '</h3></td>',
 		'</tr>',
 		'<tr>',
 		'<td>',
@@ -148,13 +148,13 @@ echo '<table>',
 			foreach ($search_engines as $ip_address=>$ip_comment) {
 				echo '<tr><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
 				echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td><td class="button">';
-				echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', i18n::translate('Remove'), '</button>';
+				echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', WT_I18N::translate('Remove'), '</button>';
 				echo '</td></tr>';
 			}
 			echo '<tr><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorSearch) ? '':$address, '" /></span></td>';
 			echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
-			echo '<br />', i18n::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addSearch"/>';
-				echo '<input type="submit" value="', i18n::translate('Add'), '" />';
+			echo '<br />', WT_I18N::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addSearch"/>';
+				echo '<input type="submit" value="', WT_I18N::translate('Add'), '" />';
 			echo '</td></tr>';
 
 			if (!empty($errorSearch)) {
@@ -174,7 +174,7 @@ echo '<table>',
 	<table>
 		<tr>
 			<td>
-				<h3><?php echo i18n::translate('Ban Sites by IP').help_link('help_banning'); ?></h3>
+				<h3><?php echo WT_I18N::translate('Ban Sites by IP').help_link('help_banning'); ?></h3>
 			</td>
 		</tr>
 		<tr>
@@ -186,13 +186,13 @@ $banned=WT_DB::prepare($sql)->fetchAssoc();
 foreach ($banned as $ip_address=>$ip_comment) {
 	echo '<tr><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
 	echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td><td class="button">';
-	echo '<button name="deleteBanned" value="', $ip_address, '" type="submit">', i18n::translate('Remove'), '</button>';
+	echo '<button name="deleteBanned" value="', $ip_address, '" type="submit">', WT_I18N::translate('Remove'), '</button>';
 	echo '</td></tr>';
 }
 echo '<tr><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorBanned) ? '':$address, '" /></span></td>';
 echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
-echo '<br />', i18n::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addBanned"/>';
-echo '<input type="submit" value="', i18n::translate('Add'), '" />';
+echo '<br />', WT_I18N::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addBanned"/>';
+echo '<input type="submit" value="', WT_I18N::translate('Add'), '" />';
 echo '</td></tr>';
 
 if (!empty($errorBanned)) {

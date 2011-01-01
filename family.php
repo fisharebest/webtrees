@@ -38,7 +38,7 @@ $controller->init();
 print_header($controller->getPageTitle());
 // completely prevent display if privacy dictates so
 if (!$controller->family) {
-	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
+	echo "<b>", WT_I18N::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
 }
@@ -59,7 +59,7 @@ $PEDIGREE_FULL_DETAILS = "1"; // Override GEDCOM configuration
 $show_full = "1";
 
 ?>
-<?php if ($controller->family->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
+<?php if ($controller->family->isMarkedDeleted()) echo "<span class=\"error\">".WT_I18N::translate('This record has been marked for deletion upon admin approval.')."</span>"; ?>
 <script language="JavaScript" type="text/javascript">
 <!--
 	function show_gedcom_record(shownew) {
@@ -74,7 +74,7 @@ $show_full = "1";
 </script>
 <?php
 if (empty($SEARCH_SPIDER) && $controller->accept_success) {
-	echo "<b>".i18n::translate('Changes successfully accepted into database')."</b><br />";
+	echo "<b>".WT_I18N::translate('Changes successfully accepted into database')."</b><br />";
 }
 ?>
 <table align="center" width="95%">
@@ -92,8 +92,8 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 		<td> <!--//parents pedigree chart and Family Details//-->
 			<table align="left" width="100%">
 				<tr>
-					<td class="subheaders" valign="top"><?php echo i18n::translate('Parents'); ?></td>
-					<td class="subheaders" valign="top"><?php echo i18n::translate('Grandparents'); ?></td>
+					<td class="subheaders" valign="top"><?php echo WT_I18N::translate('Parents'); ?></td>
+					<td class="subheaders" valign="top"><?php echo WT_I18N::translate('Grandparents'); ?></td>
 				</tr>
 				<tr>
 					<td colspan="2">
@@ -103,11 +103,11 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 						if (WT_USER_CAN_EDIT) {
 							$husb = $controller->getHusband();
 							if (empty($husb)) { ?>
-			<a href="javascript <?php echo i18n::translate('Add a new father'); ?>" onclick="return addnewparentfamily('', 'HUSB', '<?php echo $controller->famid; ?>');"><?php echo i18n::translate('Add a new father'), help_link('edit_add_parent'); ?></a><br />
+			<a href="javascript <?php echo WT_I18N::translate('Add a new father'); ?>" onclick="return addnewparentfamily('', 'HUSB', '<?php echo $controller->famid; ?>');"><?php echo WT_I18N::translate('Add a new father'), help_link('edit_add_parent'); ?></a><br />
 						<?php }
 							$wife = $controller->getWife();
 							if (empty($wife))  { ?>
-			<a href="javascript <?php echo i18n::translate('Add a new mother'); ?>" onclick="return addnewparentfamily('', 'WIFE', '<?php echo $controller->famid; ?>');"><?php echo i18n::translate('Add a new mother'), help_link('edit_add_parent'); ?></a><br />
+			<a href="javascript <?php echo WT_I18N::translate('Add a new mother'); ?>" onclick="return addnewparentfamily('', 'WIFE', '<?php echo $controller->famid; ?>');"><?php echo WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'); ?></a><br />
 						<?php }
 						}
 						?>
@@ -130,6 +130,6 @@ if (empty($SEARCH_SPIDER))
 	print_footer();
 else {
 	if ($SHOW_SPIDER_TAGLINE)
-		echo i18n::translate('Search Engine Spider Detected').": ".$SEARCH_SPIDER;
+		echo WT_I18N::translate('Search Engine Spider Detected').": ".$SEARCH_SPIDER;
 	echo "</div></body></html>";
 }

@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Pending changes');
+		return WT_I18N::translate('Pending changes');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
+		return WT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
 	}
 
 	// Implement class WT_Module_Block
@@ -83,8 +83,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						$message = array();
 						$message["to"]=$user_name;
 						$message["from"] = $WEBTREES_EMAIL;
-						$message["subject"] = i18n::translate('webtrees - Review changes');
-						$message["body"] = i18n::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes.');
+						$message["subject"] = WT_I18N::translate('webtrees - Review changes');
+						$message["body"] = WT_I18N::translate('Online changes have been made to a genealogical database.  These changes need to be reviewed and accepted before they will appear to all users.  Please use the URL below to enter that webtrees site and login to review the changes.');
 						$message["method"] = get_user_setting($user_id, 'contactmethod');
 						$message["url"] = WT_SERVER_NAME.WT_SCRIPT_PATH;
 						$message["no_from"] = true;
@@ -102,16 +102,16 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						$name = WT_USER_NAME;
 					}
 					$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-					$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+					$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 				}
-				$title.=i18n::translate('Pending changes').help_link('review_changes', $this->getName());
+				$title.=WT_I18N::translate('Pending changes').help_link('review_changes', $this->getName());
 				$content = "";
 				if (WT_USER_CAN_ACCEPT) {
-					$content .= "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".i18n::translate('There are pending changes for you to moderate.')."</a><br />";
+					$content .= "<a href=\"javascript:;\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('There are pending changes for you to moderate.')."</a><br />";
 				}
 				if ($sendmail=="yes") {
-					$content .= i18n::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br />";
-					$content .= i18n::translate('Next email reminder will be sent after ').format_timestamp($LAST_CHANGE_EMAIL+(60*60*24*$days))."<br /><br />";
+					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br />";
+					$content .= WT_I18N::translate('Next email reminder will be sent after ').format_timestamp($LAST_CHANGE_EMAIL+(60*60*24*$days))."<br /><br />";
 				}
 				$changes=WT_DB::prepare(
 					"SELECT xref".
@@ -130,7 +130,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						case 'SOUR':
 						case 'OBJE':
 							$content.=$block ? '<br />' : ' ';
-							$content.='<a href="'.$record->getHtmlUrl().'&amp;show_changes=yes'.'">'.i18n::translate('View Change Diff').'</a>';
+							$content.='<a href="'.$record->getHtmlUrl().'&amp;show_changes=yes'.'">'.WT_I18N::translate('View Change Diff').'</a>';
 							break;
 						}
 						$content.='<br />';
@@ -180,16 +180,16 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$sendmail=get_block_setting($block_id, 'sendmail', true);
 		$days=get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Send out reminder emails?');
+		echo WT_I18N::translate('Send out reminder emails?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('sendmail', $sendmail);
 		echo '<br />';
-		echo i18n::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2' />";
+		echo WT_I18N::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2' />";
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ i18n::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

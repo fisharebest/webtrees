@@ -47,7 +47,7 @@ if ($SHOW_STATS || WT_DEBUG) {
 }
 echo "<br />";
 if (exists_pending_change()) {
-	echo "<br /><a href=\"javascript:;\" onclick=\"window.open('edit_changes.php', '_blank', 'width=600, height=500, resizable=1, scrollbars=1'); return false;\">", i18n::translate('There are pending changes for you to moderate.'), "</a>";
+	echo "<br /><a href=\"javascript:;\" onclick=\"window.open('edit_changes.php', '_blank', 'width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('There are pending changes for you to moderate.'), "</a>";
 }
 echo "</div>";
 echo "</div> <!-- close div id=\"footer\" -->\n";

@@ -57,7 +57,7 @@ class batch_update {
 	function main() {
 		// HTML common to all pages
 		$html=
-			print_header(i18n::translate('Batch Update')).
+			print_header(WT_I18N::translate('Batch Update')).
 			self::getJavascript().
 			'<form id="batch_update_form" action="module.php" method="get">'.
 			'<input type="hidden" name="mod" value="batch_update">'.
@@ -66,7 +66,7 @@ class batch_update {
 			'<input type="hidden" name="action" value="">'. // will be set by javascript for next update
 			'<input type="hidden" name="data"   value="">'. // will be set by javascript for next update
 			'<table class="list_table width100"><tr valign="top">'.
-			'<td class="list_label">'.i18n::translate('GEDCOM File:').'</td>'.
+			'<td class="list_label">'.WT_I18N::translate('GEDCOM File:').'</td>'.
 			'<td class="optionbox wrap"><select name="GEDCOM" onchange="reset_reload();">';
 
 		$all_gedcoms=get_all_gedcoms();
@@ -74,7 +74,7 @@ class batch_update {
 		foreach ($all_gedcoms as $ged_id=>$gedcom) {
 			$html.='<option value="'.$gedcom.'"'.($ged_id==WT_GED_ID ? ' selected="selected"' : '').'>'.get_gedcom_setting($ged_id, 'title').'</option>';
 		}
-		$html.='</select></td></tr><tr valign="top"><td class="list_label">'.i18n::translate('Batch Update').':</td><td class="optionbox wrap"><select name="plugin" onchange="reset_reload();">';
+		$html.='</select></td></tr><tr valign="top"><td class="list_label">'.WT_I18N::translate('Batch Update').':</td><td class="optionbox wrap"><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html.='<option value="" selected="selected"></option>';
 		}
@@ -89,7 +89,7 @@ class batch_update {
 		$html.='</td></tr>';
 
 		if (!get_user_setting(WT_USER_ID, 'auto_accept'))
-			$html.='<tr><td colspan="2" class="error">'.i18n::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</td></tr>';
+			$html.='<tr><td colspan="2" class="error">'.WT_I18N::translate('Your user account does not have "automatically approve changes" enabled.  You will only be able to change one record at a time.').'</td></tr>';
 
 		// If a plugin is selected, display the details
 		if ($this->PLUGIN) {
@@ -106,8 +106,8 @@ class batch_update {
 
 					$html.=
 						'</table><br/><table class="list_table width100"><tr valign="middle"><td class="list_label center width20">'.
-						self::createSubmitButton(i18n::translate('&lt; Previous'), $this->prev_xref).
-						self::createSubmitButton(i18n::translate('Next &gt;'), $this->next_xref).
+						self::createSubmitButton(WT_I18N::translate('&lt; Previous'), $this->prev_xref).
+						self::createSubmitButton(WT_I18N::translate('Next &gt;'), $this->next_xref).
 						'</td><td class="optionbox width80"><h1><a href="'.$object->getHtmlUrl().'">'.$object->getFullName().'</a>'.
 						'</h1></td>'.
 						'</tr><tr><td valign="top" class="list_label center width20">'.
@@ -116,7 +116,7 @@ class batch_update {
 						$this->PLUGIN->getActionPreview($this->curr_xref, $this->record);
 						'</td></tr>';
 				} else {
-					$html.='<tr><td colspan=2>'.i18n::translate('Nothing found.').'</td></tr>';
+					$html.='<tr><td colspan=2>'.WT_I18N::translate('Nothing found.').'</td></tr>';
 				}
 			}
 		}
@@ -348,10 +348,10 @@ class base_plugin {
 	// Default option is just the "don't update CHAN record"
 	function getOptionsForm() {
 		return
-			'<tr valign="top"><td class="list_label width20">'.i18n::translate('Update the CHAN record').':</td>'.
+			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Update the CHAN record').':</td>'.
 			'<td class="optionbox wrap"><select name="chan" onchange="this.form.submit();">'.
-			'<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.i18n::translate('No') .'</option>'.
-			'<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.i18n::translate('Yes').'</option>'.
+			'<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.WT_I18N::translate('No') .'</option>'.
+			'<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.WT_I18N::translate('Yes').'</option>'.
 			'</select></td></tr>';
 	}
 
@@ -359,12 +359,12 @@ class base_plugin {
 	function getActionButtons($xref) {
 		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
 			return array(
-				batch_update::createSubmitButton(i18n::translate('Update'),     $xref, 'update'),
-				batch_update::createSubmitButton(i18n::translate('Update all'), $xref, 'update_all')
+				batch_update::createSubmitButton(WT_I18N::translate('Update'),     $xref, 'update'),
+				batch_update::createSubmitButton(WT_I18N::translate('Update all'), $xref, 'update_all')
 			);
 		} else {
 			return array(
-				batch_update::createSubmitButton(i18n::translate('Update'),     $xref, 'update')
+				batch_update::createSubmitButton(WT_I18N::translate('Update'),     $xref, 'update')
 			);
 		}
 	}

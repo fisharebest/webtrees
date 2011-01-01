@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('GEDCOM Welcome');
+		return WT_I18N::translate('GEDCOM Welcome');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The GEDCOM Welcome block works the same as the User Welcome block.  It welcomes the visitor to the site and displays the title of the currently active database as well as the current date and time.');
+		return WT_I18N::translate('The GEDCOM Welcome block works the same as the User Welcome block.  It welcomes the visitor to the site and displays the title of the currently active database as well as the current date and time.');
 	}
 
 	// Implement class WT_Module_Block
@@ -48,10 +48,10 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = "<div class=\"center\">";
 		$content .= "<br />".format_timestamp(client_time())."<br />";
 		if ($SHOW_COUNTER)
-			$content .=  i18n::translate('Hit Count:')." ".$hitCount."<br />";
+			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br />";
 		$content .=  "<br />";
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".i18n::translate('Customize this GEDCOM Home Page')."</a><br />";
+			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".WT_I18N::translate('Customize this GEDCOM Home Page')."</a><br />";
 		}
 		$content .=  "</div>";
 

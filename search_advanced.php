@@ -36,7 +36,7 @@ $controller=new WT_Controller_AdvancedSearch();
 $controller->init();
 
 // Print the top header
-print_header(i18n::translate('Advanced search'));
+print_header(WT_I18N::translate('Advanced search'));
 echo WT_JS_START;
 ?>
 	function checknames(frm) {
@@ -111,20 +111,20 @@ echo WT_JS_START;
 		sel.name = 'plusminus['+row+']';
 		var opt = document.createElement('option');
 		opt.value='';
-		opt.text='<?php echo i18n::translate('Exact date'); ?>';
+		opt.text='<?php echo WT_I18N::translate('Exact date'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='';
 		/* The translation strings use HTML entities, but javascript does not.  See bug 687980 */
-		opt.text='<?php echo html_entity_decode(i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='5';
-		opt.text='<?php echo html_entity_decode(i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 5, 5), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='10';
-		opt.text='<?php echo html_entity_decode(i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		var spc = document.createTextNode(' ');
 		elm.appendChild(spc);
@@ -143,7 +143,7 @@ echo WT_JS_END;
 <table id="field_table" class="list_table <?php echo $TEXT_DIRECTION; ?>" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center; ">
-			<?php echo i18n::translate('Advanced search'), help_link('advanced_search'); ?>
+			<?php echo WT_I18N::translate('Advanced search'), help_link('advanced_search'); ?>
 		</td>
 	</tr>
 	<!-- // search terms -->
@@ -166,10 +166,10 @@ echo WT_JS_END;
 			<?php if (preg_match("/^NAME:/", $currentFieldSearch)>0) {
 				?>
 				<select name="fields[<?php echo $i; ?>]">
-					<option value="<?php echo $currentField; ?>:EXACT"<?php if (preg_match("/:EXACT$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
-					<option value="<?php echo $currentField; ?>:BEGINS"<?php if (preg_match("/:BEGINS$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
-					<option value="<?php echo $currentField; ?>:CONTAINS"<?php if (preg_match("/:CONTAINS$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
-					<option value="<?php echo $currentField; ?>:SDX"<?php if (preg_match("/:SDX$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
+					<option value="<?php echo $currentField; ?>:EXACT"<?php if (preg_match("/:EXACT$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
+					<option value="<?php echo $currentField; ?>:BEGINS"<?php if (preg_match("/:BEGINS$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
+					<option value="<?php echo $currentField; ?>:CONTAINS"<?php if (preg_match("/:CONTAINS$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Contains'); ?></option>
+					<option value="<?php echo $currentField; ?>:SDX"<?php if (preg_match("/:SDX$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Sounds like'); ?></option>
 				</select>
 			<?php } else { ?>
 			<input type="hidden" name="fields[<?php echo $i; ?>]" value="<?php echo $controller->getField($i); ?>" />
@@ -177,10 +177,10 @@ echo WT_JS_END;
 			if (preg_match("/:DATE$/", $currentFieldSearch)>0) {
 				?>
 				<select name="plusminus[<?php echo $i; ?>]">
-					<option value=""><?php echo i18n::translate('Exact date'); ?></option>
-					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) echo " selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
-					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) echo "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
-					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) echo "selected=\"selected\""; ?>><?php echo i18n::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
+					<option value=""><?php echo WT_I18N::translate('Exact date'); ?></option>
+					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==2) echo " selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 2, 2); ?></option>
+					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==5) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 5, 5); ?></option>
+					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i]==10) echo "selected=\"selected\""; ?>><?php echo WT_I18N::plural('&plusmn;%d year','&plusmn;%d years', 10, 10); ?></option>
 				</select>
 			<?php } ?>
 		</td>
@@ -218,7 +218,7 @@ echo WT_JS_END;
 					<!--  father -->
 					<tr>
 						<td colspan="2" class="facts_label03" style="text-align:center; ">
-							<?php echo i18n::translate('Father'); ?>
+							<?php echo WT_I18N::translate('Father'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -228,10 +228,10 @@ echo WT_JS_END;
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>" />
 							<select name="fields[<?php echo $j; ?>]">
-								<option value="FAMC:HUSB:NAME:GIVN:EXACT"<?php if ($fatherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
-								<option value="FAMC:HUSB:NAME:GIVN:BEGINS"<?php if ($fatherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:HUSB:NAME:GIVN:CONTAINS"<?php if ($fatherGivnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
-								<option value="FAMC:HUSB:NAME:GIVN:SDX"<?php if ($fatherGivnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:EXACT"<?php if ($fatherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:BEGINS"<?php if ($fatherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:CONTAINS"<?php if ($fatherGivnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Contains'); ?></option>
+								<option value="FAMC:HUSB:NAME:GIVN:SDX"<?php if ($fatherGivnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -243,10 +243,10 @@ echo WT_JS_END;
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>" />
 							<select name="fields[<?php echo $j; ?>]">
-								<option value="FAMC:HUSB:NAME:SURN:EXACT"<?php if ($fatherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
-								<option value="FAMC:HUSB:NAME:SURN:BEGINS"<?php if ($fatherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:HUSB:NAME:SURN:CONTAINS"<?php if ($fatherSurnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
-								<option value="FAMC:HUSB:NAME:SURN:SDX"<?php if ($fatherSurnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:EXACT"<?php if ($fatherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:BEGINS"<?php if ($fatherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:CONTAINS"<?php if ($fatherSurnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Contains'); ?></option>
+								<option value="FAMC:HUSB:NAME:SURN:SDX"<?php if ($fatherSurnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 					</tr>
@@ -255,7 +255,7 @@ echo WT_JS_END;
 					<tr><td colspan="2">&nbsp;</td></tr>
 					<tr>
 						<td colspan="2" class="facts_label03" style="text-align:center; ">
-							<?php echo i18n::translate('Mother'); ?>
+							<?php echo WT_I18N::translate('Mother'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -265,10 +265,10 @@ echo WT_JS_END;
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>" />
 							<select name="fields[<?php echo $j; ?>]">
-								<option value="FAMC:WIFE:NAME:GIVN:EXACT"<?php if ($motherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
-								<option value="FAMC:WIFE:NAME:GIVN:BEGINS"<?php if ($motherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:WIFE:NAME:GIVN:CONTAINS"<?php if ($motherGivnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
-								<option value="FAMC:WIFE:NAME:GIVN:SDX"<?php if ($motherGivnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:EXACT"<?php if ($motherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:BEGINS"<?php if ($motherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:CONTAINS"<?php if ($motherGivnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Contains'); ?></option>
+								<option value="FAMC:WIFE:NAME:GIVN:SDX"<?php if ($motherGivnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 						<?php $j++; ?>
@@ -280,10 +280,10 @@ echo WT_JS_END;
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>" />
 							<select name="fields[<?php echo $j; ?>]">
-								<option value="FAMC:WIFE:NAME:SURN:EXACT"<?php if ($motherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Exact'); ?></option>
-								<option value="FAMC:WIFE:NAME:SURN:BEGINS"<?php if ($motherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Begins with'); ?></option>
-								<option value="FAMC:WIFE:NAME:SURN:CONTAINS"<?php if ($motherSurnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Contains'); ?></option>
-								<option value="FAMC:WIFE:NAME:SURN:SDX"<?php if ($motherSurnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo i18n::translate('Sounds like'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:EXACT"<?php if ($motherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:BEGINS"<?php if ($motherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:CONTAINS"<?php if ($motherSurnOption == 'CONTAINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Contains'); ?></option>
+								<option value="FAMC:WIFE:NAME:SURN:SDX"<?php if ($motherSurnOption == 'SDX') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Sounds like'); ?></option>
 							</select>
 						</td>
 						<?php $j++; ?>
@@ -299,8 +299,8 @@ echo WT_JS_END;
 	<?php } ?>
 	<tr>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  colspan="10">
-			<a href="#" onclick="addFields();"><?php echo i18n::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo i18n::translate('Search'); ?>" />
+			<a href="#" onclick="addFields();"><?php echo WT_I18N::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>" />
 		</td>
 	</tr>
 </table>

@@ -204,7 +204,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if ($this->indi) {
 			return $this->indi->getFullName();
 		} else {
-			return i18n::translate('Unable to find record with ID');
+			return WT_I18N::translate('Unable to find record with ID');
 		}
 	}
 
@@ -316,11 +316,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$dummy=new WT_Person($factrec);
 		$dummy->setPrimaryName(0);
 		echo '<div id="name1">';
-			echo '<dl><dt class="label">', i18n::translate('Name'), '</dt>';
+			echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 			echo '<dd class="field">', PrintReady($dummy->getFullName());
 				if ($this->indi->canEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
-					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Edit'), "</a> | ";
-					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", i18n::translate('Delete'), "</a>";
+					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Edit'), "</a> | ";
+					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Delete'), "</a>";
 				}
 			echo '</dd>';
 			echo '</dl>';
@@ -380,26 +380,26 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				echo ' class="nameblue"';
 			}
 			echo '>';
-			echo '<dl><dt class="label">', i18n::translate('Gender'), '</dt>';
+			echo '<dl><dt class="label">', WT_I18N::translate('Gender'), '</dt>';
 			echo '<dd class="field">';
 			switch ($sex) {
 			case 'M':
-				echo i18n::translate('Male'), WT_Person::sexImage('M', 'small', '', i18n::translate('Male'));
+				echo WT_I18N::translate('Male'), WT_Person::sexImage('M', 'small', '', WT_I18N::translate('Male'));
 				break;
 			case 'F':
-				echo i18n::translate('Female'), WT_Person::sexImage('F', 'small', '', i18n::translate('Female'));
+				echo WT_I18N::translate('Female'), WT_Person::sexImage('F', 'small', '', WT_I18N::translate('Female'));
 				break;
 			case 'U':
-				echo i18n::translate_c('unknown gender', 'Unknown'), WT_Person::sexImage('U', 'small', '', i18n::translate_c('unknown gender', 'Unknown'));
+				echo WT_I18N::translate_c('unknown gender', 'Unknown'), WT_Person::sexImage('U', 'small', '', WT_I18N::translate_c('unknown gender', 'Unknown'));
 				break;
 			}
 			if ($this->SEX_COUNT>1) {
 				if ($this->indi->canEdit() && strpos($factrec, "WT_OLD")===false) {
 					if ($event->getLineNumber()=="new") {
-						echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".i18n::translate('Edit')."</a>";
+						echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".WT_I18N::translate('Edit')."</a>";
 					} else {
-							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"edit_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".i18n::translate('Edit')."</a> | ";
-							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".i18n::translate('Delete')."</a>";
+							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"edit_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Edit')."</a> | ";
+							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Delete')."</a>";
 					}
 				}
 			}
@@ -424,7 +424,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$ff="";
 		}
 		// edit menu
-		$menu = new WT_Menu(i18n::translate('Edit'));
+		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_indi');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
@@ -432,21 +432,21 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			//--make sure the totals are correct
 			$this->getGlobalFacts();
 			if ($this->total_names<2) {
-				$submenu = new WT_Menu(i18n::translate('Edit name'));
+				$submenu = new WT_Menu(WT_I18N::translate('Edit name'));
 				$submenu->addOnclick("return edit_name('".$this->pid."', $this->NAME_LINENUM);");
 				$submenu->addIcon('edit_indi');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
 			}
 
-			$submenu = new WT_Menu(i18n::translate('Add new Name'));
+			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
-				$submenu = new WT_Menu(i18n::translate('Edit gender'));
+				$submenu = new WT_Menu(WT_I18N::translate('Edit gender'));
 				if ($this->SEX_LINENUM=="new") {
 					$submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
 				} else {
@@ -458,7 +458,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			}
 
 			if (count($this->indi->getSpouseFamilyIds())>1) {
-				$submenu = new WT_Menu(i18n::translate('Reorder families'));
+				$submenu = new WT_Menu(WT_I18N::translate('Reorder families'));
 				$submenu->addOnclick("return reorder_families('".$this->pid."');");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -471,10 +471,10 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		// show/hide changes
 		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$label = i18n::translate('This record has been updated.  Click here to show changes.');
+				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
 				$link = $this->indi->getHtmlUrl().'&amp;show_changes=yes';
 			} else {
-				$label = i18n::translate('Click here to hide changes.');
+				$label = WT_I18N::translate('Click here to hide changes.');
 				$link = $this->indi->getHtmlUrl().'&amp;show_changes=no';
 			}
 			$submenu = new WT_Menu($label, $link);
@@ -483,11 +483,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(i18n::translate('Undo all changes'), $this->indi->getHtmlUrl()."&amp;action=undo");
+				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), $this->indi->getHtmlUrl()."&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_indi');
 				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(i18n::translate('Approve all changes'), $this->indi->getHtmlUrl()."&amp;action=accept");
+				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), $this->indi->getHtmlUrl()."&amp;action=accept");
 				$submenu->addIcon('edit_indi');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -498,13 +498,13 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $this->canShowGedcomRecord()) {
-			$submenu = new WT_Menu(i18n::translate('Edit raw GEDCOM record'));
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(i18n::translate('View GEDCOM Record'));
+			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -517,7 +517,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(i18n::translate('Delete this individual'));
+			$submenu = new WT_Menu(WT_I18N::translate('Delete this individual'));
 			$submenu->addOnclick("return deleteperson('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
@@ -525,7 +525,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		}
 
 		// add to favorites
-		$submenu = new WT_Menu(i18n::translate('Add to My Favorites'), $this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid);
+		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), $this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid);
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);
@@ -613,52 +613,52 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if (!is_object($family)) return $people;
 		$labels = array();
 		if ($type=="parents") {
-			$labels["parent"] = i18n::translate('Parent');
-			$labels["mother"] = i18n::translate('Mother');
-			$labels["father"] = i18n::translate('Father');
-			$labels["sibling"] = i18n::translate('Sibling');
-			$labels["sister"] = i18n::translate('Sister');
-			$labels["brother"] = i18n::translate('Brother');
+			$labels["parent"] = WT_I18N::translate('Parent');
+			$labels["mother"] = WT_I18N::translate('Mother');
+			$labels["father"] = WT_I18N::translate('Father');
+			$labels["sibling"] = WT_I18N::translate('Sibling');
+			$labels["sister"] = WT_I18N::translate('Sister');
+			$labels["brother"] = WT_I18N::translate('Brother');
 		}
 		if ($type=="step") {
-			$labels["parent"] = i18n::translate('Step-Parent');
-			$labels["mother"] = i18n::translate('Step-Mother');
-			$labels["father"] = i18n::translate('Step-Father');
-			$labels["sibling"] = i18n::translate('Half-Sibling');
-			$labels["sister"] = i18n::translate('Half-Sister');
-			$labels["brother"] = i18n::translate('Half-Brother');
+			$labels["parent"] = WT_I18N::translate('Step-Parent');
+			$labels["mother"] = WT_I18N::translate('Step-Mother');
+			$labels["father"] = WT_I18N::translate('Step-Father');
+			$labels["sibling"] = WT_I18N::translate('Half-Sibling');
+			$labels["sister"] = WT_I18N::translate('Half-Sister');
+			$labels["brother"] = WT_I18N::translate('Half-Brother');
 		}
 		if ($type=="spouse") {
 			if ($family->isNotMarried()) {
-				$labels["parent"] = i18n::translate('Partner');
-				$labels["mother"] = i18n::translate('Partner');
-				$labels["father"] = i18n::translate('Partner');
+				$labels["parent"] = WT_I18N::translate('Partner');
+				$labels["mother"] = WT_I18N::translate('Partner');
+				$labels["father"] = WT_I18N::translate('Partner');
 			} elseif ($family->isDivorced()) {
-				$labels["parent"] = i18n::translate('Ex-Spouse');
-				$labels["mother"] = i18n::translate('Ex-Wife');
-				$labels["father"] = i18n::translate('Ex-Husband');
+				$labels["parent"] = WT_I18N::translate('Ex-Spouse');
+				$labels["mother"] = WT_I18N::translate('Ex-Wife');
+				$labels["father"] = WT_I18N::translate('Ex-Husband');
 			} else {
 				$marr_rec = $family->getMarriageRecord();
 				if (!empty($marr_rec)) {
 					$type = $family->getMarriageType();
 					if (empty($type) || stristr($type, "partner")===false) {
-						$labels["parent"] = i18n::translate('Spouse');
-						$labels["mother"] = i18n::translate('Wife');
-						$labels["father"] = i18n::translate('Husband');
+						$labels["parent"] = WT_I18N::translate('Spouse');
+						$labels["mother"] = WT_I18N::translate('Wife');
+						$labels["father"] = WT_I18N::translate('Husband');
 					} else {
-						$labels["parent"] = i18n::translate('Partner');
-						$labels["mother"] = i18n::translate('Partner');
-						$labels["father"] = i18n::translate('Partner');
+						$labels["parent"] = WT_I18N::translate('Partner');
+						$labels["mother"] = WT_I18N::translate('Partner');
+						$labels["father"] = WT_I18N::translate('Partner');
 					}
 				} else {
-					$labels["parent"] = i18n::translate('Spouse');
-					$labels["mother"] = i18n::translate('Wife');
-					$labels["father"] = i18n::translate('Husband');
+					$labels["parent"] = WT_I18N::translate('Spouse');
+					$labels["mother"] = WT_I18N::translate('Wife');
+					$labels["father"] = WT_I18N::translate('Husband');
 				}
 			}
-			$labels["sibling"] = i18n::translate('Child');
-			$labels["sister"] = i18n::translate('Daughter');
-			$labels["brother"] = i18n::translate('Son');
+			$labels["sibling"] = WT_I18N::translate('Child');
+			$labels["sister"] = WT_I18N::translate('Daughter');
+			$labels["brother"] = WT_I18N::translate('Son');
 		}
 		$newhusb = null;
 		$newwife = null;
@@ -676,8 +676,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if ($type=="step") {
 			$fams = $this->indi->getChildFamilies();
 			foreach ($fams as $key=>$fam) {
-				if ($fam->hasParent($husb)) $labels["father"] = i18n::translate('Father');
-				if ($fam->hasParent($wife)) $labels["mother"] = i18n::translate('Mother');
+				if ($fam->hasParent($husb)) $labels["father"] = WT_I18N::translate('Father');
+				if ($fam->hasParent($wife)) $labels["mother"] = WT_I18N::translate('Mother');
 			}
 		}
 		//-- set the label for the husband

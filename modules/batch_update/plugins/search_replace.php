@@ -41,11 +41,11 @@ class search_replace_bu_plugin extends base_plugin {
 	var $error  =null; // Message for bad user parameters
 
 	static function getName() {
-		return i18n::translate('Search and replace');
+		return WT_I18N::translate('Search and replace');
 	}
 
 	static function getDescription() {
-		return i18n::translate('Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching.');
+		return WT_I18N::translate('Search and/or replace data in your GEDCOM using simple searches or advanced pattern matching.');
 	}
 
 	// Default is to operate on INDI records
@@ -86,7 +86,7 @@ class search_replace_bu_plugin extends base_plugin {
 			$ct=-1;
 			$ct=@preg_match('/'.$this->search.'/', '');
 			if ($ct==-1) {
-				$this->error='<br/><span class="error">'.i18n::translate('The regex appears to contain an error.  It can\'t be used.').'</span>';
+				$this->error='<br/><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can\'t be used.').'</span>';
 			}
 			break;
 		}
@@ -94,35 +94,35 @@ class search_replace_bu_plugin extends base_plugin {
 
 	function getOptionsForm() {
 		$descriptions=array(
-			'exact'=>i18n::translate('Match the exact text, even if it occurs in the middle of a word.'),
-			'words'=>i18n::translate('Match the exact text, unless it occurs in the middle of a word.'),
-			'wildcards'=>i18n::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
-			'regex'=>i18n::translate('Regular expressions are an advanced pattern matching technique.  See <a href="http://php.net/manual/en/regexp.reference.php" target="_new">php.net/manual/en/regexp.reference.php</a> for futher details.'),
+			'exact'=>WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
+			'words'=>WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
+			'wildcards'=>WT_I18N::translate('Use a &laquo;?&raquo; to match a single character, use &laquo;*&raquo; to match zero or more characters.'),
+			'regex'=>WT_I18N::translate('Regular expressions are an advanced pattern matching technique.  See <a href="http://php.net/manual/en/regexp.reference.php" target="_new">php.net/manual/en/regexp.reference.php</a> for futher details.'),
 		);
 
 		return
-			'<tr valign="top"><td class="list_label width20">'.i18n::translate('Search text/pattern').':</td>'.
+			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Search text/pattern').':</td>'.
 			'<td class="optionbox wrap">'.
 			'<input name="search" size="40" value="'.htmlspecialchars($this->search).
 			'" onchange="this.form.submit();"></td></tr>'.
 
-			'<tr valign="top"><td class="list_label width20">'.i18n::translate('Replacement text').':</td>'.
+			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Replacement text').':</td>'.
 			'<td class="optionbox wrap">'.
 			'<input name="replace" size="40" value="'.htmlspecialchars($this->replace).
 			'" onchange="this.form.submit();"></td></tr>'.
 
-			'<tr valign="top"><td class="list_label width20">'.i18n::translate('Search method').':</td>'.
+			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Search method').':</td>'.
 			'<td class="optionbox wrap"><select name="method" onchange="this.form.submit();">'.
-			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.i18n::translate('Exact text')    .'</option>'.
-			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.i18n::translate('Whole words only')    .'</option>'.
-			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.i18n::translate('Wildcards').'</option>'.
-			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.i18n::translate('Regular expression')    .'</option>'.
+			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>'.
+			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
+			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>'.
+			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
 			'</select><br/><i>'.$descriptions[$this->method].'</i>'.$this->error.'</td></tr>'.
 
-			'<tr valign="top"><td class="list_label width20">'.i18n::translate('Case insensitive').':</td>'.
+			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Case insensitive').':</td>'.
 			'<td class="optionbox wrap">'.
 			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
-			'<br/><i>'.i18n::translate('Tick this box to match both upper and lower case letters.').'</i></td></tr>'.
+			'<br/><i>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</i></td></tr>'.
 			parent::getOptionsForm();
 	}
 }

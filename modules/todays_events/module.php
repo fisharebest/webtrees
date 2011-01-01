@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('On This Day');
+		return WT_I18N::translate('On This Day');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The On This Day, in Your History... block shows anniversaries of events for today.  You can configure the amount of detail shown.');
+		return WT_I18N::translate('The On This Day, in Your History... block shows anniversaries of events for today.  You can configure the amount of detail shown.');
 	}
 
 	// Implement class WT_Module_Block
@@ -67,9 +67,9 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 				$name = WT_USER_NAME;
 			}
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title.=i18n::translate('On This Day ...').help_link('index_onthisday');
+		$title.=WT_I18N::translate('On This Day ...').help_link('index_onthisday');
 
 		$content = "";
 		switch ($infoStyle) {
@@ -127,35 +127,35 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$filter=get_block_setting($block_id, 'filter', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show only events of living people?');
+		echo WT_I18N::translate('Show only events of living people?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show only Births, Deaths, and Marriages?');
+		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation style'), help_link('style');
+		echo WT_I18N::translate('Presentation style'), help_link('style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('List'), 'table'=>WT_I18N::translate('Table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Sort Style'), help_link('sort_style');
+		echo WT_I18N::translate('Sort Style'), help_link('sort_style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array('alpha'=>i18n::translate('Alphabetically'), 'anniv'=>i18n::translate('By Anniversary')), null, $sortStyle, '');
+		echo select_edit_control('sortStyle', array('alpha'=>WT_I18N::translate('Alphabetically'), 'anniv'=>WT_I18N::translate('By Anniversary')), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ i18n::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

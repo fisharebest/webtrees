@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class fact_sources_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Fact Sources');
+		return WT_I18N::translate('Fact Sources');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Prints a list of individuals and families with a specific source for facts or records');
+		return WT_I18N::translate('Prints a list of individuals and families with a specific source for facts or records');
 	}
 
 	// Extend class WT_Module

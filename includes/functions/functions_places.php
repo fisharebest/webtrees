@@ -42,10 +42,10 @@ function get_plac_label() {
 	$HEAD_PLAC = get_sub_record(1, "1 PLAC", $HEAD);
 	$HEAD_PLAC_FORM = get_sub_record(1, "2 FORM", $HEAD_PLAC);
 	$HEAD_PLAC_FORM = substr($HEAD_PLAC_FORM, 7);
-	if (empty($HEAD_PLAC_FORM)) $HEAD_PLAC_FORM = i18n::translate('City, County, State/Province, Country');
+	if (empty($HEAD_PLAC_FORM)) $HEAD_PLAC_FORM = WT_I18N::translate('City, County, State/Province, Country');
 	$plac_label = explode(',', $HEAD_PLAC_FORM);
 	$plac_label = array_reverse($plac_label);
-	if ($HEAD_PLAC_FORM == i18n::translate('City, County, State/Province, Country')) $plac_label[0] = translate_fact('CTRY');
+	if ($HEAD_PLAC_FORM == WT_I18N::translate('City, County, State/Province, Country')) $plac_label[0] = translate_fact('CTRY');
 
 	return $plac_label;
 }
@@ -142,7 +142,7 @@ function setup_place_subfields($element_id) {
 			else if (ctry.length==3) elt.value=ctry;
 			if (ctry=='') ctry='???';
 			<?php global $iso3166; foreach (array_keys($iso3166) as $alpha3) { ?>
-			else if (ctry=='<?php echo addslashes(i18n::translate($alpha3)); ?>') ctry='<?php echo $alpha3; ?>';
+			else if (ctry=='<?php echo addslashes(WT_I18N::translate($alpha3)); ?>') ctry='<?php echo $alpha3; ?>';
 			<?php } ?>
 			else if (ctry.length!=3) ctry=ctry.substr(0,3);
 			pdir='places/'+ctry+'/';
@@ -313,12 +313,12 @@ function print_place_subfields($element_id) {
 		echo "<small>";
 		// Translate certain tags.  The should be specified in english, as the gedcom file format is english.
 		switch (strtolower($plac_label[$i])) {
-		case 'country':  echo i18n::translate('Country'); break;
-		case 'state':    echo i18n::translate('State'); break;
-		case 'province': echo i18n::translate('Province'); break;
-		case 'county':   echo i18n::translate('County'); break;
-		case 'city':     echo i18n::translate('City'); break;
-		case 'parish':   echo i18n::translate('Parish'); break;
+		case 'country':  echo WT_I18N::translate('Country'); break;
+		case 'state':    echo WT_I18N::translate('State'); break;
+		case 'province': echo WT_I18N::translate('Province'); break;
+		case 'county':   echo WT_I18N::translate('County'); break;
+		case 'city':     echo WT_I18N::translate('City'); break;
+		case 'parish':   echo WT_I18N::translate('Parish'); break;
 		default:         echo $plac_label[$i]; break;
 		}
 		echo "</small><br />";
@@ -334,11 +334,11 @@ function print_place_subfields($element_id) {
 			echo "<select id=\"".$subtagid."_select\" name=\"".$subtagname."_select\" class=\"submenuitem\"";
 			echo " onchange=\"setPlaceCountry(this.value, '".$element_id."');\"";
 			echo " >";
-			echo "<option value=\"???\">??? : ".i18n::translate('???')."</option>";
+			echo "<option value=\"???\">??? : ".WT_I18N::translate('???')."</option>";
 			foreach (array_keys($iso3166) as $alpha3) {
 				if ($alpha3!="???") {
-					$txt=$alpha3." : ".i18n::translate($alpha3);
-					if (utf8_strlen($txt)>32) $txt = utf8_substr($txt, 0, 32).i18n::translate('…');
+					$txt=$alpha3." : ".WT_I18N::translate($alpha3);
+					if (utf8_strlen($txt)>32) $txt = utf8_substr($txt, 0, 32).WT_I18N::translate('…');
 					echo "<option value=\"".$alpha3."\">".$txt."</option>";
 				}
 			}

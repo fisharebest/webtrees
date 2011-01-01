@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class ahnentafel_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Ahnentafel Report');
+		return WT_I18N::translate('Ahnentafel Report');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Ahnentafel Report');
+		return WT_I18N::translate('Ahnentafel Report');
 	}
 
 	// Extend class WT_Module

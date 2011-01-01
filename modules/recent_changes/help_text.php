@@ -32,13 +32,13 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'recent_changes':
-	$title=i18n::translate('Recent changes block');
-	$text=i18n::translate('This block shows you the most recent changes to the GEDCOM as recorded by the CHAN GEDCOM tag.');
+	$title=WT_I18N::translate('Recent changes block');
+	$text=WT_I18N::translate('This block shows you the most recent changes to the GEDCOM as recorded by the CHAN GEDCOM tag.');
 	$text.='<ul><li>';
-	$text.=i18n::translate('Number of days to show: This is the number of days that <b>webtrees</b> should use when searching for events');
-	$text.=' (<i>'.i18n::plural('maximum %d day', 'maximum %d days', 30, 30).'</i>).';
+	$text.=WT_I18N::translate('Number of days to show: This is the number of days that <b>webtrees</b> should use when searching for events');
+	$text.=' (<i>'.WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30).'</i>).';
 	$text.='</li><li>';
-	$text.=i18n::translate('Should this block be hidden when it is empty?: Provides the option to hide the block if there are no changes to display.');
+	$text.=WT_I18N::translate('Should this block be hidden when it is empty?: Provides the option to hide the block if there are no changes to display.');
 	$text.='</li></ul>';
 	break;
 }

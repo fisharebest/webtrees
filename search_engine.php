@@ -38,15 +38,15 @@ require './includes/session.php';
 header('Content-Type: text/html; charset=UTF-8');
 
 echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
-echo '<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '><head>';
+echo '<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '><head>';
 echo '<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 echo '<meta name="robots" content="noindex,follow" />';
 echo '<meta name="generator" content="', WT_WEBTREES, ' - ', WT_WEBTREES_URL, '" />';
-echo '<title>', i18n::translate('Search Engine Spider Detected'), '</title>';
+echo '<title>', WT_I18N::translate('Search Engine Spider Detected'), '</title>';
 echo '</head><body>';
-echo '<div class="helptext">', i18n::translate('webtrees automatically provides search engines with smaller data files with fewer links.  The data is limited to the individual and immediate family, without adding information about grand parents or grand children.  Many reports and server-intensive pages like the calendar are off limits to the spiders.<br /><br />Attempts by the spiders to go to those pages result in showing this page.  If you are seeing this text, the software believes you are a search engine spider.  Below is the list of pages that are allowed to be spidered and will provide the abbreviated data.<br /><br />Real users who follow search engine links into this site will see the full pages and data, and not this page.');
+echo '<div class="helptext">', WT_I18N::translate('webtrees automatically provides search engines with smaller data files with fewer links.  The data is limited to the individual and immediate family, without adding information about grand parents or grand children.  Many reports and server-intensive pages like the calendar are off limits to the spiders.<br /><br />Attempts by the spiders to go to those pages result in showing this page.  If you are seeing this text, the software believes you are a search engine spider.  Below is the list of pages that are allowed to be spidered and will provide the abbreviated data.<br /><br />Real users who follow search engine links into this site will see the full pages and data, and not this page.');
 if ($SEARCH_SPIDER) {
-	echo '<br /><br />', i18n::translate('Search Engine Spider Detected'), ': ', $SEARCH_SPIDER, '<br />';
+	echo '<br /><br />', WT_I18N::translate('Search Engine Spider Detected'), ': ', $SEARCH_SPIDER, '<br />';
 }
 echo '</div><br />';
 
@@ -54,18 +54,18 @@ echo '</div><br />';
 $all_gedcoms=get_all_gedcoms();
 if (get_site_setting('ALLOW_CHANGE_GEDCOM') && count($all_gedcoms)>1) {
 	foreach ($all_gedcoms as $ged_id=>$gedcom) {
-		$title=i18n::translate('Home page').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
+		$title=WT_I18N::translate('Home page').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
 		echo '<a href="index.php?ged=', rawurlencode($gedcom), '"><b>', $title, '</b></a><br />';
 	}
 	echo '<br />';
 	foreach ($all_gedcoms as $ged_id=>$gedcom) {
-		$title=i18n::translate('Individuals').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
+		$title=WT_I18N::translate('Individuals').' - '.PrintReady(get_gedcom_setting($ged_id, 'title'));
 		echo '<a href="indilist.php?ged=', rawurlencode($gedcom), '"><b>', $title, '</b></a><br />';
 	}
 } else {
-	$title=i18n::translate('Home page');
+	$title=WT_I18N::translate('Home page');
 	echo '<a href="index.php?ged=', WT_GEDURL, '"><b>', $title, '</b></a><br />';
-	$title=i18n::translate('Individuals');
+	$title=WT_I18N::translate('Individuals');
 	echo '<a href="indilist.php?ged=', WT_GEDURL, '"><b>', $title, '</b></a><br />';
 }
 

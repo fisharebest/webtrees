@@ -47,8 +47,8 @@ $filter1 = safe_GET('filter1');
 $filter1 = stripLRMRLM($filter1);
 $filter2 = safe_GET('filter2');
 $filter2 = stripLRMRLM($filter2);
-$or = i18n::translate('or');
-$and = i18n::translate('and');
+$or = WT_I18N::translate('or');
+$and = WT_I18N::translate('and');
 $filter_type = safe_GET('filter_type', array($or, $and), $or);
 $columns = safe_GET('columns', array('1', '2'), '2');
 $currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=="on") ? false : true;
@@ -134,8 +134,8 @@ if (isset($_SESSION['Medialist'])) {
 // Disable autocomplete
 // if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-print_header(i18n::translate('Multimedia objects'));
-echo "<div class=\"center\"><h2>", i18n::translate('Multimedia objects'), "</h2></div>";
+print_header(WT_I18N::translate('Multimedia objects'));
+echo "<div class=\"center\"><h2>", WT_I18N::translate('Multimedia objects'), "</h2></div>";
 
 // Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
@@ -201,7 +201,7 @@ $_SESSION['Medialist'] = $medialist;
 <!-- // NOTE: Row 1, left: -->
 	<!-- // begin select media folders -->
 		<td class="descriptionbox wrap width25">
-			<?php echo i18n::translate('Media directory'), help_link('view_server_folder'); ?></td>
+			<?php echo WT_I18N::translate('Media directory'), help_link('view_server_folder'); ?></td>
 		<td class="optionbox wrap width25">
 			<?php
 				//if ($MEDIA_DIRECTORY_LEVELS > 0) {
@@ -215,7 +215,7 @@ $_SESSION['Medialist'] = $medialist;
 					echo "<option value=\"", $f, "\"";
 					if ($folder==$f) echo " selected=\"selected\"";
 					echo ">";
-					if ($f=="ALL") echo i18n::translate('All');
+					if ($f=="ALL") echo WT_I18N::translate('All');
 					else echo $f;
 					echo "</option>";
 				}
@@ -227,13 +227,13 @@ $_SESSION['Medialist'] = $medialist;
 <!-- // NOTE: Row 1 right: -->
 	<!-- begin sort files -->
 			<td class="descriptionbox wrap width25">
-					<?php echo i18n::translate('Sort by title or file name'), help_link('sortby'); ?>
+					<?php echo WT_I18N::translate('Sort by title or file name'), help_link('sortby'); ?>
 			</td>
 			<td class="optionbox wrap width25"><select name="sortby">
 				<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>>
-					<?php echo i18n::translate('Sort by title'); ?></option>
+					<?php echo WT_I18N::translate('Sort by title'); ?></option>
 				<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>>
-					<?php echo i18n::translate('Sort by file name'); ?></option>
+					<?php echo WT_I18N::translate('Sort by file name'); ?></option>
 				</select>
 			</td>
 	<!-- //end sort files -->
@@ -241,20 +241,20 @@ $_SESSION['Medialist'] = $medialist;
 <!-- // NOTE: Row 2 left:-->
 	<!-- // begin sub directories -->
 			<td class="descriptionbox wrap width25">
-				<?php echo i18n::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
+				<?php echo WT_I18N::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
 			<td class="optionbox wrap width25">
 				<?php //if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
 				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
 			</td>
 				<?php
-				//} else echo i18n::translate('none');{ ?>
+				//} else echo WT_I18N::translate('none');{ ?>
 			</td>
 				<?php // } ?>
 	<!-- // end subdirectories -->
 <!-- // NOTE: Row 2 right:-->
 	<!-- // begin media objects per page -->
 			<td class="descriptionbox wrap width25">
-				<?php echo i18n::translate('Media objects per page'), help_link('media_objects_pp');; ?>
+				<?php echo WT_I18N::translate('Media objects per page'), help_link('media_objects_pp');; ?>
 			</td>
 			<td class="optionbox wrap width25">
 				<select name="max">
@@ -272,7 +272,7 @@ $_SESSION['Medialist'] = $medialist;
 <!-- // NOTE: Row 3 left:-->
 	<!-- // begin search filter -->
 			<td class="descriptionbox wrap width25">
-				<?php echo i18n::translate('Search filters'), help_link('medialist_filters'); ?>
+				<?php echo WT_I18N::translate('Search filters'), help_link('medialist_filters'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 		<!-- // begin Text field for filter and "submit" button -->
@@ -292,9 +292,9 @@ $_SESSION['Medialist'] = $medialist;
 <!-- // NOTE: Row 3 right:-->
 	<!-- // begin columns per page -->
 			<td class="descriptionbox wrap width25">
-				<?php echo i18n::translate('Columns per page'), help_link('media_columns_pp'); ?>
+				<?php echo WT_I18N::translate('Columns per page'), help_link('media_columns_pp'); ?>
 				<br />
-			<?php echo i18n::translate('Show thumbnails'), help_link('media_thumbs'); ?>
+			<?php echo WT_I18N::translate('Show thumbnails'), help_link('media_thumbs'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 				<select name="columns">
@@ -317,15 +317,15 @@ $_SESSION['Medialist'] = $medialist;
 			<td class="descriptionbox wrap width25">
 			</td>
 			<td class="optionbox wrap width25">
-				<input type="submit" name="apply_filter" value="<?php echo i18n::translate('Search'); ?>" />
-				<input type="submit" name="reset" value="<?php echo i18n::translate('Reset'); ?>" />
+				<input type="submit" name="apply_filter" value="<?php echo WT_I18N::translate('Search'); ?>" />
+				<input type="submit" name="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
 			</td>
 	<!-- // end search buttons  -->
 <!-- // NOTE: Row 4 right:-->
 	<!-- // thumbnail option  -->
 			<td class="descriptionbox wrap width25">
 				<?php if (WT_USER_IS_ADMIN) { ?>
-					<?php echo i18n::translate('Exclude media links'), help_link('media_links'); ?>
+					<?php echo WT_I18N::translate('Exclude media links'), help_link('media_links'); ?>
 				<?php } ?>
 			</td>
 			<td class="optionbox wrap width25">
@@ -408,7 +408,7 @@ if ($show == "yes") {
 		if ($start+$count > $ct) $count = $ct-$start;
 	} else $ct = "0";
 
-	echo "<div align=\"center\">", i18n::translate('Media Objects found'), " ", $ct, " <br /><br />";
+	echo "<div align=\"center\">", WT_I18N::translate('Media Objects found'), " ", $ct, " <br /><br />";
 	if ($ct>0) {
 
 	$currentPage = ((int) ($start / $max)) + 1;
@@ -455,7 +455,7 @@ if ($show == "yes") {
 
 	echo "</td>";
 
-	echo "<td align=\"center\">", i18n::translate('Page %s of %s', $currentPage, $lastPage), "</td>";
+	echo "<td align=\"center\">", WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), "</td>";
 
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"right":"left", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
@@ -538,15 +538,15 @@ if ($show == "yes") {
 
 					// ---------- Edit Media --------------------
 					echo "<td class=\"width33 wrap center font9\" valign=\"top\">";
-					echo "<a href=\"javascript:;\" title=\"" . i18n::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid={$media['XREF']}&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
+					echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid={$media['XREF']}&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
 					if ($LB_ML_THUMB_LINKS == "icon" || $LB_ML_THUMB_LINKS == "both") {
-						echo "<img src=\"modules/lightbox/images/image_edit.gif\" alt=\"\" class=\"icon\" title=\"" . i18n::translate('Edit this Media Item\'s Details') . "\" />&nbsp;&nbsp;&nbsp;" ;
+						echo "<img src=\"modules/lightbox/images/image_edit.gif\" alt=\"\" class=\"icon\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" />&nbsp;&nbsp;&nbsp;" ;
 					}
 					if ($LB_ML_THUMB_LINKS == "both") {
 						echo "<br />";
 					}
 					if ($LB_ML_THUMB_LINKS == "both" || $LB_ML_THUMB_LINKS == "text") {
-						echo i18n::translate('Edit Details') ;
+						echo WT_I18N::translate('Edit Details') ;
 					}
 					echo "</a>";
 					echo "</td>";
@@ -558,17 +558,17 @@ if ($show == "yes") {
 
 					// ---------- View Media Details (mediaviewer) --------------------
 					echo "<td class=\"width33 wrap center font9\" valign=\"top\">";
-					echo "<a href=\"mediaviewer.php?mid=" . $media["XREF"] . "\" title=\"" . i18n::translate('View this Media Item\'s Details 
+					echo "<a href=\"mediaviewer.php?mid=" . $media["XREF"] . "\" title=\"" . WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page') . "\">";
 					if ($LB_ML_THUMB_LINKS == "icon" || $LB_ML_THUMB_LINKS == "both") {
-						echo "&nbsp;&nbsp;&nbsp;<img src=\"modules/lightbox/images/image_view.gif\" alt=\"\" class=\"icon\" title=\"" . i18n::translate('View this Media Item\'s Details 
+						echo "&nbsp;&nbsp;&nbsp;<img src=\"modules/lightbox/images/image_view.gif\" alt=\"\" class=\"icon\" title=\"" . WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page') . "\" />";
 					}
 					if ($LB_ML_THUMB_LINKS == "both") {
 						echo "<br />";
 					}
 					if ($LB_ML_THUMB_LINKS == "both" || $LB_ML_THUMB_LINKS == "text") {
-						echo i18n::translate('View Details') ;
+						echo WT_I18N::translate('View Details') ;
 					}
 					echo "</a>";
 					echo "</td>";
@@ -587,13 +587,13 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			$name_disp2 = basename($media['FILE']);
 			if ($isExternal) $name_disp2 = "URL";
 			$name_disp3 = $media['FILE'];
-			$name_disp4 = i18n::translate('Filename');
+			$name_disp4 = WT_I18N::translate('Filename');
 		} else {
 			$name_disp1 = basename($media['FILE']);
 			if ($isExternal) $name_disp1 = "URL";
 			$name_disp2 = $name;
 			$name_disp3 = $media['FILE'];
-			$name_disp4 = i18n::translate('Title');
+			$name_disp4 = WT_I18N::translate('Title');
 		}
 
 		echo "<a href=\"mediaviewer.php?mid=".$media["XREF"]."\">";
@@ -602,22 +602,22 @@ Plus other Media Options - MediaViewer page') . "\" />";
 
 		if ($showFile) {
 				echo "<br /><br /><sub><span dir=\"ltr\"><b>", PrintReady($name_disp4), ": </b>", PrintReady($name_disp2), "</span></sub>";
-				echo "<br /><sub><span dir=\"ltr\"><b>", i18n::translate('Location'), ": </b>", PrintReady($name_disp3), "</span></sub>";
+				echo "<br /><sub><span dir=\"ltr\"><b>", WT_I18N::translate('Location'), ": </b>", PrintReady($name_disp3), "</span></sub>";
 //}
 		}
 		echo "<br />";
 
 		if (!$isExternal && !$media["EXISTS"]) {
-			echo "<br /><span class=\"error\">", i18n::translate('File not found.'), " <span dir=\"ltr\">", PrintReady($media["FILE"]), "</span></span>";
+			echo "<br /><span class=\"error\">", WT_I18N::translate('File not found.'), " <span dir=\"ltr\">", PrintReady($media["FILE"]), "</span></span>";
 		}
 		if (!$isExternal && $media["EXISTS"]) {
 			$imageTypes = array("", "GIF", "JPG", "PNG", "SWF", "PSD", "BMP", "TIFF", "TIFF", "JPC", "JP2", "JPX", "JB2", "SWC", "IFF", "WBMP", "XBM");
 			if (!empty($imgsize[2])) {
-				echo "<span class=\"label\"><br />", i18n::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageTypes[$imgsize[2]], "</span>";
+				echo "<span class=\"label\"><br />", WT_I18N::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageTypes[$imgsize[2]], "</span>";
 			} else if (empty($imgsize[2])) {
 				$path_end=substr($media["FILE"], strlen($media["FILE"])-5);
 				$imageType = strtoupper(substr($path_end, strpos($path_end, ".")+1));
-				echo "<span class=\"label\"><br />", i18n::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageType, "</span>";
+				echo "<span class=\"label\"><br />", WT_I18N::translate('Media Format'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imageType, "</span>";
 			}
 
 			$fileSize = media_filesize($media["FILE"]);
@@ -625,7 +625,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 			echo "&nbsp;&nbsp;&nbsp;<span class=\"field\" style=\"direction: ltr;\">", $sizeString, "</span>";
 
 			if ($imgsize[2]!==false) {
-				echo "<span class=\"label\"><br />", i18n::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ", $imgsize[1], "</span>";
+				echo "<span class=\"label\"><br />", WT_I18N::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ", $imgsize[1], "</span>";
 			}
 		}
 			echo "<div style=\"white-space: normal; width: 95%;\">";
@@ -674,7 +674,7 @@ Plus other Media Options - MediaViewer page') . "\" />";
 		}
 	}
 	echo "</td>";
-	echo "<td align=\"center\">", i18n::translate('Page %s of %s', $currentPage, $lastPage), "</td>";
+	echo "<td align=\"center\">", WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), "</td>";
 	echo "<td class=\"width30\" align=\"", $TEXT_DIRECTION == "ltr"?"right":"left", "\">";
 	if ($TEXT_DIRECTION=="ltr") {
 		if ($ct>$max) {

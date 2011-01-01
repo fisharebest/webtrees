@@ -33,12 +33,12 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Upcoming Events');
+		return WT_I18N::translate('Upcoming Events');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Upcoming Events block shows anniversaries of events that will occur in the near future.  You can configure the amount of detail shown, and the administrator can configure how far into the future this block will look.');
+		return WT_I18N::translate('The Upcoming Events block shows anniversaries of events that will occur in the near future.  You can configure the amount of detail shown, and the administrator can configure how far into the future this block will look.');
 	}
 
 	// Implement class WT_Module_Block
@@ -67,9 +67,9 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		$title='';
 		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 			$title.="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title.= i18n::translate('Upcoming Events').help_link('upcoming_events', $this->getName());
+		$title.= WT_I18N::translate('Upcoming Events').help_link('upcoming_events', $this->getName());
 
 		$content = "";
 		switch ($infoStyle) {
@@ -128,43 +128,43 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$days=get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Number of days to show');
+		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '" />';
-		echo ' <i>', i18n::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</i>';
+		echo ' <i>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</i>';
 		echo '</td></tr>';
 
 		$filter=get_block_setting($block_id, 'filter',     true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show only events of living people?');
+		echo WT_I18N::translate('Show only events of living people?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
 		$onlyBDM=get_block_setting($block_id, 'onlyBDM',    false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show only Births, Deaths, and Marriages?');
+		echo WT_I18N::translate('Show only Births, Deaths, and Marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation style');
+		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('List'), 'table'=>WT_I18N::translate('Table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Sort Style');
+		echo WT_I18N::translate('Sort Style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array('alpha'=>i18n::translate('Alphabetically'), 'anniv'=>i18n::translate('By Anniversary')), null, $sortStyle, '');
+		echo select_edit_control('sortStyle', array('alpha'=>WT_I18N::translate('Alphabetically'), 'anniv'=>WT_I18N::translate('By Anniversary')), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ i18n::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

@@ -45,7 +45,7 @@ function get_tag($txt,$tag){
 	return $arr;
 }
 	
-print_header(i18n::translate("README documentation"));
+print_header(WT_I18N::translate("README documentation"));
 
 echo '<div id="readme">';
 

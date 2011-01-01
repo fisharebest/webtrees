@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php echo i18n::html_markup(); ?>>
+<html xmlns="http://www.w3.org/1999/xhtml" <?php echo WT_I18N::html_markup(); ?>>
 	<head>
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 		<?php if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") { ?>
@@ -94,9 +94,9 @@ if (!defined('WT_WEBTREES')) {
 			<td align="center" valign="middle">
 			<?php
 				if (WT_USER_ID) {
-					echo '<a href="edituser.php" class="link">', i18n::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
+					echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
 					if (WT_USER_GEDCOM_ADMIN) {
-						echo '<a href="admin.php" class="link">', i18n::translate('Administration'), '</a> | ';
+						echo '<a href="admin.php" class="link">', WT_I18N::translate('Administration'), '</a> | ';
 					}
 					echo logout_link();
 				} elseif (empty($SEARCH_SPIDER)) {
@@ -121,7 +121,7 @@ if (!defined('WT_WEBTREES')) {
 				<form action="search.php" method="get">
 					<input type="hidden" name="action" value="general" />
 					<input type="hidden" name="topsearch" value="yes" />
-					<input type="text" name="query" size="15" value="<?php echo i18n::translate('Search'); ?>" onfocus="if (this.value == '<?php echo i18n::translate('Search'); ?>') this.value=''; focusHandler();" onblur="if (this.value == '') this.value='<?php echo i18n::translate('Search'); ?>';" />
+					<input type="text" name="query" size="15" value="<?php echo WT_I18N::translate('Search'); ?>" onfocus="if (this.value == '<?php echo WT_I18N::translate('Search'); ?>') this.value=''; focusHandler();" onblur="if (this.value == '') this.value='<?php echo WT_I18N::translate('Search'); ?>';" />
 					<input type="submit" name="search" value=" &gt; " />
 				</form>
 				<?php print_favorite_selector(); ?>

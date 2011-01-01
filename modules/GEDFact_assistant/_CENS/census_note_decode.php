@@ -50,8 +50,8 @@
 		$text = str_replace(".b.".'Occupation',   "<span class=\"note1\" alt=\"".'Occupation'."\"   title=\"".'Occupation'."\">  <b>".'Occupation'."</span>",   $text);
 		$text = str_replace(".b.".'Birthplace', "<span class=\"note1\" alt=\"".'Birthplace (Full format)'."\" title=\"".'Birthplace (Full format)'."\"><b>".'Birthplace'."</span>", $text);
 		$text = str_replace(".b.".'BP',     "<span class=\"note1\" alt=\"".'Birthplace - (Chapman format)'."\"     title=\"".'Birthplace - (Chapman format)'."\">    <b>".'BP'."</span>",     $text);
-		$text = str_replace(".b.".'FBP',    "<span class=\"note1\" alt=\"".i18n::translate('Father\'s Birthplace - (Chapman format)')."\"    title=\"".i18n::translate('Father\'s Birthplace - (Chapman format)')."\">   <b>".'FBP'."</span>",    $text);
-		$text = str_replace(".b.".'MBP',    "<span class=\"note1\" alt=\"".i18n::translate('Mother\'s Birthplace - (Chapman format)')."\"    title=\"".i18n::translate('Mother\'s Birthplace - (Chapman format)')."\">   <b>".'MBP'."</span>",    $text);
+		$text = str_replace(".b.".'FBP',    "<span class=\"note1\" alt=\"".WT_I18N::translate('Father\'s Birthplace - (Chapman format)')."\"    title=\"".WT_I18N::translate('Father\'s Birthplace - (Chapman format)')."\">   <b>".'FBP'."</span>",    $text);
+		$text = str_replace(".b.".'MBP',    "<span class=\"note1\" alt=\"".WT_I18N::translate('Mother\'s Birthplace - (Chapman format)')."\"    title=\"".WT_I18N::translate('Mother\'s Birthplace - (Chapman format)')."\">   <b>".'MBP'."</span>",    $text);
 		$text = str_replace(".b.".'NL',     "<span class=\"note1\" alt=\"".'If Foreign Born - Native Language'."\"     title=\"".'If Foreign Born - Native Language'."\">    <b>".'NL'."</span>",     $text);
 		$text = str_replace(".b.".'YUS',  "<span class=\"note1\" alt=\"".'If Foreign Born - Years in the USA'."\"  title=\"".'If Foreign Born - Years in the USA'."\"> <b>".'YUS'."</span>",  $text);
 		$text = str_replace(".b.".'YOI',    "<span class=\"note1\" alt=\"".'If Foreign Born - Year of Immigration'."\"    title=\"".'If Foreign Born - Year of Immigration'."\">   <b>".'YOI'."</span>",    $text);

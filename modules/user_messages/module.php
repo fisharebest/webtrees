@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('User Messages');
+		return WT_I18N::translate('User Messages');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The User Messages block shows a list of the messages that have been sent to the active user.');
+		return WT_I18N::translate('The User Messages block shows a list of the messages that have been sent to the active user.');
 	}
 
 	// Implement class WT_Module_Block
@@ -68,19 +68,19 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$usermessages = getUserMessages(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('My Messages').help_link('mypage_message');
+		$title=WT_I18N::translate('My Messages').help_link('mypage_message');
 		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
 		$title .= "(".count($usermessages).")";
 		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
 
 		$content = "";
-		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".i18n::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
+		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
 		if (get_user_count()>1) {
-			$content .= '<br />'.i18n::translate('Send Message')." <select name=\"touser\">";
+			$content .= '<br />'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
 			if (WT_USER_IS_ADMIN) {
-				$content .= "<option value=\"all\">".i18n::translate('Broadcast to all users')."</option>";
-				$content .= "<option value=\"never_logged\">".i18n::translate('Send message to users who have never logged in')."</option>";
-				$content .= "<option value=\"last_6mo\">".i18n::translate('Send message to users who have not logged in for 6 months')."</option>";
+				$content .= "<option value=\"all\">".WT_I18N::translate('Broadcast to all users')."</option>";
+				$content .= "<option value=\"never_logged\">".WT_I18N::translate('Send message to users who have never logged in')."</option>";
+				$content .= "<option value=\"last_6mo\">".WT_I18N::translate('Send message to users who have not logged in for 6 months')."</option>";
 			}
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
@@ -93,10 +93,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "</option>";
 				}
 			}
-			$content .= "</select> <input type=\"button\" value=\"".i18n::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', ''); return false;\" /><br /><br />";
+			$content .= "</select> <input type=\"button\" value=\"".WT_I18N::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', ''); return false;\" /><br /><br />";
 		}
 		if (count($usermessages)==0) {
-			$content .= i18n::translate('You have no pending messages.')."<br />";
+			$content .= WT_I18N::translate('You have no pending messages.')."<br />";
 		} else {
 			$content .= WT_JS_START.'function select_all() {';
 			foreach ($usermessages as $message) {
@@ -106,10 +106,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= 'return false;}'.WT_JS_END;
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"deletemessage\" />";
 			$content .= "<table class=\"list_table\"><tr>";
-			$content .= "<td class=\"list_label\">".i18n::translate('Delete')."<br /><a href=\"javascript:;\" onclick=\"return select_all();\">".i18n::translate('All')."</a></td>";
-			$content .= "<td class=\"list_label\">".i18n::translate('Subject:')."</td>";
-			$content .= "<td class=\"list_label\">".i18n::translate('Date Sent:')."</td>";
-			$content .= "<td class=\"list_label\">".i18n::translate('Email Address:')."</td>";
+			$content .= "<td class=\"list_label\">".WT_I18N::translate('Delete')."<br /><a href=\"javascript:;\" onclick=\"return select_all();\">".WT_I18N::translate('All')."</a></td>";
+			$content .= "<td class=\"list_label\">".WT_I18N::translate('Subject:')."</td>";
+			$content .= "<td class=\"list_label\">".WT_I18N::translate('Date Sent:')."</td>";
+			$content .= "<td class=\"list_label\">".WT_I18N::translate('Email Address:')."</td>";
 			$content .= "</tr>";
 			foreach ($usermessages as $key=>$message) {
 				if (isset($message["id"])) $key = $message["id"];
@@ -117,7 +117,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\" /></td>";
 				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message["subject"]));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
-				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"".i18n::translate('Show Details')."\" title=\"".i18n::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
+				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
 				$content .= "<td class=\"list_value_wrap\">".$message["created"]."</td>";
 				$content .= "<td class=\"list_value_wrap\">";
 				$user_id=get_user_id($message["from"]);
@@ -142,12 +142,12 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 					$message["subject"]="RE:".$message["subject"];
 				}
 				if ($user_id) {
-					$content .= "<a href=\"javascript:;\" onclick=\"reply('".$user_id."', '".$message["subject"]."'); return false;\">".i18n::translate('Reply')."</a> | ";
+					$content .= "<a href=\"javascript:;\" onclick=\"reply('".$user_id."', '".$message["subject"]."'); return false;\">".WT_I18N::translate('Reply')."</a> | ";
 				}
-				$content .= "<a href=\"index.php?action=deletemessage&amp;message_id={$key}\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">".i18n::translate('Delete')."</a></div></td></tr>";
+				$content .= "<a href=\"index.php?action=deletemessage&amp;message_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">".WT_I18N::translate('Delete')."</a></div></td></tr>";
 			}
 			$content .= "</table>";
-			$content .= "<input type=\"submit\" value=\"".i18n::translate('Delete Selected Messages')."\" /><br />";
+			$content .= "<input type=\"submit\" value=\"".WT_I18N::translate('Delete Selected Messages')."\" /><br />";
 		}
 		$content .= "</form>";
 
@@ -189,7 +189,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ i18n::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

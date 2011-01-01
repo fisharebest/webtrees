@@ -240,17 +240,17 @@ class WT_Date {
 		// Localise the date
 		switch ($q1.$q2) {
 		case '':       $tmp=$d1.$conv1; break;
-		case 'abt':    /* I18N: Gedcom ABT dates     */ $tmp=i18n::translate('about %s',            $d1.$conv1); break;
-		case 'cal':    /* I18N: Gedcom CAL dates     */ $tmp=i18n::translate('calculated %s',       $d1.$conv1); break;
-		case 'est':    /* I18N: Gedcom EST dates     */ $tmp=i18n::translate('estimated %s',        $d1.$conv1); break;
-		case 'int':    /* I18N: Gedcom INT dates     */ $tmp=i18n::translate('interpreted %s (%s)', $d1.$conv1, $this->text); break;
-		case 'bef':    /* I18N: Gedcom BEF dates     */ $tmp=i18n::translate('before %s',           $d1.$conv1); break;
-		case 'aft':    /* I18N: Gedcom AFT dates     */ $tmp=i18n::translate('after %s',            $d1.$conv1); break;
-		case 'from':   /* I18N: Gedcom FROM dates    */ $tmp=i18n::translate('from %s',             $d1.$conv1); break;
-		case 'to':     /* I18N: Gedcom TO dates      */ $tmp=i18n::translate('to %s',               $d1.$conv1); break;
-		case 'betand': /* I18N: Gedcom BET-AND dates */ $tmp=i18n::translate('between %s and %s',   $d1.$conv1, $d2.$conv2); break;
-		case 'fromto': /* I18N: Gedcom FROM-TO dates */ $tmp=i18n::translate('from %s to %s',       $d1.$conv1, $d2.$conv2); break;
-		default: $tmp=i18n::translate('Invalid date'); break; // e.g. BET without AND
+		case 'abt':    /* I18N: Gedcom ABT dates     */ $tmp=WT_I18N::translate('about %s',            $d1.$conv1); break;
+		case 'cal':    /* I18N: Gedcom CAL dates     */ $tmp=WT_I18N::translate('calculated %s',       $d1.$conv1); break;
+		case 'est':    /* I18N: Gedcom EST dates     */ $tmp=WT_I18N::translate('estimated %s',        $d1.$conv1); break;
+		case 'int':    /* I18N: Gedcom INT dates     */ $tmp=WT_I18N::translate('interpreted %s (%s)', $d1.$conv1, $this->text); break;
+		case 'bef':    /* I18N: Gedcom BEF dates     */ $tmp=WT_I18N::translate('before %s',           $d1.$conv1); break;
+		case 'aft':    /* I18N: Gedcom AFT dates     */ $tmp=WT_I18N::translate('after %s',            $d1.$conv1); break;
+		case 'from':   /* I18N: Gedcom FROM dates    */ $tmp=WT_I18N::translate('from %s',             $d1.$conv1); break;
+		case 'to':     /* I18N: Gedcom TO dates      */ $tmp=WT_I18N::translate('to %s',               $d1.$conv1); break;
+		case 'betand': /* I18N: Gedcom BET-AND dates */ $tmp=WT_I18N::translate('between %s and %s',   $d1.$conv1, $d2.$conv2); break;
+		case 'fromto': /* I18N: Gedcom FROM-TO dates */ $tmp=WT_I18N::translate('from %s to %s',       $d1.$conv1, $d2.$conv2); break;
+		default: $tmp=WT_I18N::translate('Invalid date'); break; // e.g. BET without AND
 		}
 
 		// Return at least one printable character, for better formatting in tables.

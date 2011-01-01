@@ -50,7 +50,7 @@ global $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 			$bdate=$controller->indi->getBirthDate();
 			$age = WT_Date::GetAgeGedcom($bdate);
 			//if ($age!="") {
-				//$summary.= "<span class=\"label\">".i18n::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
+				//$summary.= "<span class=\"label\">".WT_I18N::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
 			//}
 		}
 		$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);

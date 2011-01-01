@@ -34,11 +34,11 @@ if (!defined('WT_WEBTREES')) {
 
 class name_format_bu_plugin extends base_plugin {
 	static function getName() {
-		return i18n::translate('Fix name slashes and spaces');
+		return WT_I18N::translate('Fix name slashes and spaces');
 	}
 
 	static function getDescription() {
-		return i18n::translate('Correct NAME records of the form \'John/DOE/\' or \'John /DOE\', as produced by older genealogy programs.');
+		return WT_I18N::translate('Correct NAME records of the form \'John/DOE/\' or \'John /DOE\', as produced by older genealogy programs.');
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {

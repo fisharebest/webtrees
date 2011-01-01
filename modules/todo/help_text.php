@@ -32,23 +32,23 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'todo':
-	$title=i18n::translate('"To Do" block');
-	$text=i18n::translate('This block helps you keep track of <b>_TODO</b> tasks in the database.<br /><br />To add &quot;To Do&quot; tasks to your records, you may first need amend the GEDCOM configuration so that the <b>_TODO</b> fact is in the list of facts that can be added to the records of individuals, families, sources, and repositories.  Each of these lists, which you will find in the Edit Options section of the GEDCOM configuration, is independent.  The order of the list entries is not important; you can add the new entries at the beginning of each list.');
+	$title=WT_I18N::translate('"To Do" block');
+	$text=WT_I18N::translate('This block helps you keep track of <b>_TODO</b> tasks in the database.<br /><br />To add &quot;To Do&quot; tasks to your records, you may first need amend the GEDCOM configuration so that the <b>_TODO</b> fact is in the list of facts that can be added to the records of individuals, families, sources, and repositories.  Each of these lists, which you will find in the Edit Options section of the GEDCOM configuration, is independent.  The order of the list entries is not important; you can add the new entries at the beginning of each list.');
 	break;
 
 case 'todo_show_future':
-	$title=i18n::translate('Show future tasks');
-	$text=i18n::translate('Show &quot;To Do&quot; tasks that have a date in the future.  Otherwise only items with a date in the past are shown.');
+	$title=WT_I18N::translate('Show future tasks');
+	$text=WT_I18N::translate('Show &quot;To Do&quot; tasks that have a date in the future.  Otherwise only items with a date in the past are shown.');
 	break;
 
 case 'todo_show_other':
-	$title=i18n::translate('Show other users\' tasks');
-	$text=i18n::translate('Show &quot;To Do&quot; tasks assigned to other users');
+	$title=WT_I18N::translate('Show other users\' tasks');
+	$text=WT_I18N::translate('Show &quot;To Do&quot; tasks assigned to other users');
 	break;
 
 case 'todo_show_unassigned':
-	$title=i18n::translate('Show unassigned tasks');
-	$text=i18n::translate('Show &quot;To Do&quot; tasks that are not assigned to any user');
+	$title=WT_I18N::translate('Show unassigned tasks');
+	$text=WT_I18N::translate('Show &quot;To Do&quot; tasks that are not assigned to any user');
 	break;
 
 }

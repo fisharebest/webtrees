@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Googlemap');
+		return WT_I18N::translate('Googlemap');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which maps the events of an individual and their close relatives on a Google map.');
+		return WT_I18N::translate('Adds a tab to the individual page which maps the events of an individual and their close relatives on a Google map.');
 	}
 
 	// Extend WT_Module
@@ -98,10 +98,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<td><?php
 		if (!array_key_exists('googlemap', WT_Module::getActiveModules())) {
 			echo "<table class=\"facts_table\">";
-			echo "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".i18n::translate('GoogleMap module disabled')."</td></tr>";
+			echo "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('GoogleMap module disabled')."</td></tr>";
 			if (WT_USER_IS_ADMIN) {
 				echo "<tr><td align=\"center\" colspan=\"2\">";
-				echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+				echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".WT_I18N::translate('Manage GoogleMap configuration')."</a>";
 				echo "</td>";
 				echo "</tr>";
 			}
@@ -117,12 +117,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$tNew = str_replace("&", "&amp;", $tNew);
 			if ($SESSION_HIDE_GOOGLEMAP=="true") {
 				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false#".$this->getName()."\">";
-				echo "<img src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Activate')."\" title=\"".i18n::translate('Activate')."\" />";
-				echo " ".i18n::translate('Activate')."</a></span>";
+				echo "<img src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".WT_I18N::translate('Activate')."\" title=\"".WT_I18N::translate('Activate')."\" />";
+				echo " ".WT_I18N::translate('Activate')."</a></span>";
 			} else {
 				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"" .$tNew."&amp;HIDE_GOOGLEMAP=true#".$this->getName()."\">";
-				echo "<img src=\"".$WT_IMAGES["minus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".i18n::translate('Deactivate')."\" title=\"".i18n::translate('Deactivate')."\" />";
-				echo " ".i18n::translate('Deactivate')."</a></span>";
+				echo "<img src=\"".$WT_IMAGES["minus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".WT_I18N::translate('Deactivate')."\" title=\"".WT_I18N::translate('Deactivate')."\" />";
+				echo " ".WT_I18N::translate('Deactivate')."</a></span>";
 			}
 
 			if (!$this->controller->indi->canDisplayName()) {
@@ -143,13 +143,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					if (WT_USER_IS_ADMIN) {
 						echo "<table width=\"100%\"><tr>";
 						echo "<td width=\"33%\" align=\"left\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".i18n::translate('Manage GoogleMap configuration')."</a>";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".WT_I18N::translate('Manage GoogleMap configuration')."</a>";
 						echo "</td>";
 						echo "<td width=\"33%\" align=\"center\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_places\">".i18n::translate('Edit geographic place locations')."</a>";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_places\">".WT_I18N::translate('Edit geographic place locations')."</a>";
 						echo "</td>";
 						echo "<td width=\"33%\" align=\"right\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_placecheck\">".i18n::translate('Place Check')."</a>";
+						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_placecheck\">".WT_I18N::translate('Place Check')."</a>";
 						echo "</td>";
 						echo "</tr></table>";
 					}

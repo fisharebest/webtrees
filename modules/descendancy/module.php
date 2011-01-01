@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Descendancy');
+		return WT_I18N::translate('Descendancy');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a sidebar which allows for easy navigation of individuals in a descendants tree-view format.');
+		return WT_I18N::translate('Adds a sidebar which allows for easy navigation of individuals in a descendants tree-view format.');
 	}
 
 	// Implement WT_Module_Sidebar
@@ -80,7 +80,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		jQuery(document).ready(function(){
 			jQuery("#sb_desc_name").focus(function(){this.select();});
-			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="'.i18n::translate('Search').'";});
+			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="'.WT_I18N::translate('Search').'";});
 			var dtimerid = null;
 			jQuery("#sb_desc_name").keyup(function(e) {
 				if (dtimerid) window.clearTimeout(dtimerid);
@@ -111,7 +111,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		//-->
 		</script>
 		<form method="post" action="sidebar.php" onsubmit="return false;">
-		<input type="text" name="sb_desc_name" id="sb_desc_name" value="'.i18n::translate('Search').'" />';
+		<input type="text" name="sb_desc_name" id="sb_desc_name" value="'.WT_I18N::translate('Search').'" />';
 		$out .= '</form><div id="sb_desc_content">';
 
 		if ($this->controller) {
@@ -203,7 +203,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.i18n::translate('Private').' ('.$private_count.')</li>';
+		if ($private_count>0) $out .= '<li>'.WT_I18N::translate('Private').' ('.$private_count.')</li>';
 		$out .= '</ul>';
 		return $out;
 	}
@@ -235,10 +235,10 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					if ($child->canDisplayName()) $out .= $this->getPersonLi($child, $generations-1);
 					else $private++;
 				}
-				if ($private>0) $out .= '<li class="sb_desc_indi_li">'.i18n::translate('Private').' ('.$private.')</li>';
+				if ($private>0) $out .= '<li class="sb_desc_indi_li">'.WT_I18N::translate('Private').' ('.$private.')</li>';
 			}
 			else {
-				$out .= i18n::translate('No children');
+				$out .= WT_I18N::translate('No children');
 			}
 		}
 		$out .= "</ul>";

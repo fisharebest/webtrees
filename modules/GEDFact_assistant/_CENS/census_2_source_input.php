@@ -515,7 +515,7 @@ global $TEXT_DIRECTION;
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		document.getElementById('Titl').value = '<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household'); ?>';
+		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
@@ -956,7 +956,7 @@ global $TEXT_DIRECTION;
 
 <div class="optionbox cens_sour">
 	<div class="cens_sour_country">
-		<span><?php echo i18n::translate('Country'); ?><br /></span>
+		<span><?php echo WT_I18N::translate('Country'); ?><br /></span>
 		<select id="censCtry" name="censCtry" >
 			<option id="UKOPT" name="UKOPT" value="UK">UK</option>
 			<option id="USOPT" name="USOPT" value="USA">USA</option>
@@ -997,7 +997,7 @@ global $TEXT_DIRECTION;
 			<table><tr><td nowrap="nowrap">
 			<br />
 			<?php
-				// echo "&nbsp;".i18n::translate('Date').":&nbsp;&nbsp;";
+				// echo "&nbsp;".WT_I18N::translate('Date').":&nbsp;&nbsp;";
 				echo "<font size=2>";
 			// Input renamed as type=hidden to hide the date field ----- //
 			// Note Input field is still required ---------------------- //
@@ -1011,7 +1011,7 @@ global $TEXT_DIRECTION;
 	</div>
 
 	<div class="cens_sour_year">
-		<span><?php echo i18n::translate('Year'); ?><br /></span>
+		<span><?php echo WT_I18N::translate('Year'); ?><br /></span>
 		<select style = "background:#ffaaaa;";
 				onchange = "if (this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
@@ -1023,9 +1023,9 @@ global $TEXT_DIRECTION;
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Title'); ?></div>
+			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
 			<script type="text/javascript">
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo i18n::translate('Census transcript'),' - ',$wholename, ' - ', i18n::translate('Household'); ?>" />');
+				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>" />');
 			</script>
 		</div>
 		<div class="cens_sour_1">
@@ -1033,11 +1033,11 @@ global $TEXT_DIRECTION;
 			<input id="citation" name="citation" type="text" value="<?php echo ""; ?>" />
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Place'); ?></div>
+			<div class="cens_sour_2"><?php echo WT_I18N::translate('Place'); ?></div>
 			<input id="locality" name="locality" type="text" value="<?php echo ""; ?>" />
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo i18n::translate('Notes'); ?></div>
+			<div class="cens_sour_2"><?php echo WT_I18N::translate('Notes'); ?></div>
 			<input id="notes" name="notes" type="text" value="<?php echo ""; ?>" />
 		</div>
 	</div>

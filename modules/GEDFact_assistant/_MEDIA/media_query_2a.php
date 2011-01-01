@@ -35,7 +35,7 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 }
 ?>
 
-<html <?php echo i18n::html_markup(); ?>>
+<html <?php echo WT_I18N::html_markup(); ?>>
 <head>
 <script language="javascript">
 

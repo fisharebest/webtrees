@@ -103,9 +103,9 @@ function media_reorder_row($rtype, $rowm, $pid) {
 			if (array_key_exists($varName, $MEDIA_TYPES)) {
 				$mediaType = $MEDIA_TYPES[$varName];
 			} else {
-				$mediaType = i18n::translate('Other');
+				$mediaType = WT_I18N::translate('Other');
 			}
-			// echo "<br /><span class=\"label\">".i18n::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
+			// echo "<br /><span class=\"label\">".WT_I18N::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
 		}
 
 		echo "</td><td>&nbsp;</td>";

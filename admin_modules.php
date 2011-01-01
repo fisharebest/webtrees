@@ -120,7 +120,7 @@ if ($action=='update_mods') {
 	}
 }
 
-print_header(i18n::translate('Module administration'));
+print_header(WT_I18N::translate('Module administration'));
 ?>
 <style type="text/css">
 <!--
@@ -185,16 +185,16 @@ print_header(i18n::translate('Module administration'));
 			<table id="installed_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 					<tr>
-					<th><?php echo i18n::translate('Enabled'); ?></th>
-					<th><?php echo i18n::translate('Module Name'); ?></th>
-					<th><?php echo i18n::translate('Description'); ?></th>
-					<th><?php echo i18n::translate('Menu'); ?></th>
-					<th><?php echo i18n::translate('Tab'); ?></th>
-					<th><?php echo i18n::translate('Sidebar'); ?></th>
-					<th><?php echo i18n::translate('Block'); ?></th>
-					<th><?php echo i18n::translate('Chart'); ?></th>
-					<th><?php echo i18n::translate('Report'); ?></th>
-					<th><?php echo i18n::translate('Theme'); ?></th>
+					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
+					<th><?php echo WT_I18N::translate('Module Name'); ?></th>
+					<th><?php echo WT_I18N::translate('Description'); ?></th>
+					<th><?php echo WT_I18N::translate('Menu'); ?></th>
+					<th><?php echo WT_I18N::translate('Tab'); ?></th>
+					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
+					<th><?php echo WT_I18N::translate('Block'); ?></th>
+					<th><?php echo WT_I18N::translate('Chart'); ?></th>
+					<th><?php echo WT_I18N::translate('Report'); ?></th>
+					<th><?php echo WT_I18N::translate('Theme'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -207,13 +207,13 @@ print_header(i18n::translate('Module administration'));
 						?>
 						<td><?php echo $module->getTitle(); ?></td>
 						<td><?php echo $module->getDescription(); ?></td>
-						<td><?php if ($module instanceof WT_Module_Menu) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-						<td><?php if ($module instanceof WT_Module_Tab) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-						<td><?php if ($module instanceof WT_Module_Sidebar) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-						<td><?php if ($module instanceof WT_Module_Block) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-						<td><?php if ($module instanceof WT_Module_Chart) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-						<td><?php if ($module instanceof WT_Module_Report) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
-						<td><?php if ($module instanceof WT_Module_Theme) echo i18n::translate('Yes'); else echo i18n::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Menu) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Tab) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Sidebar) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Block) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Chart) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Report) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
+						<td><?php if ($module instanceof WT_Module_Theme) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
 						</tr>
 					<?php
 					}
@@ -237,7 +237,7 @@ print_header(i18n::translate('Module administration'));
 					</select>
 				<!--</form>-->
 			</div>
-			<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
+			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
 		</form>
 	</div>
 </div>

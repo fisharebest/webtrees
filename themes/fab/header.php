@@ -42,7 +42,7 @@ if ($TEXT_DIRECTION=='ltr') {
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />',
@@ -98,10 +98,10 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				'<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li>',
 				' | <li>', logout_link(), '</li>';
 			if (WT_USER_GEDCOM_ADMIN) {
-				echo ' | <li><a href="admin.php" class="link">', i18n::translate('Administration'), '</a></li>';
+				echo ' | <li><a href="admin.php" class="link">', WT_I18N::translate('Administration'), '</a></li>';
 			}
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending changes'), '</a></li>';
+				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 			}
 		} else {
 			echo '<li>', login_link(), '</li>';
@@ -119,7 +119,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'</span> | <form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="20" value="', i18n::translate('Search'), '" onfocus="if (this.value==\'', i18n::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', i18n::translate('Search'), '\';" />',
+			'<input type="text" name="query" size="20" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
 			'</form>',
 			'</ul></div>';
 		$menu_items=array(

@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Page Menu');
+		return WT_I18N::translate('Page Menu');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a menu to the menu bar which provides page specific options.');
+		return WT_I18N::translate('Adds a menu to the menu bar which provides page specific options.');
 	}
 
 	// Implement WT_Module_Menu

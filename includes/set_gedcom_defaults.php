@@ -163,7 +163,7 @@ set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       false);
 set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           false);
 set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   'click');
 set_gedcom_setting($ged_id, 'imported',                     0);
-set_gedcom_setting($ged_id, 'title',                        i18n::translate('Genealogy from [%s]', $ged_name));
+set_gedcom_setting($ged_id, 'title',                        WT_I18N::translate('Genealogy from [%s]', $ged_name));
 
 ////////////////////////////////////////////////////////////////////////////////
 // Default restriction settings

@@ -49,7 +49,7 @@ $nonfamfacts[] = "";
 $controller=new WT_Controller_Ancestry();
 $controller->init();
 
-print_header($controller->name . " " . i18n::translate('Ancestry chart'));
+print_header($controller->name . " " . WT_I18N::translate('Ancestry chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -60,7 +60,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-echo '<h2>', i18n::translate('Ancestry chart'), help_link('ancestry_chart');
+echo '<h2>', WT_I18N::translate('Ancestry chart'), help_link('ancestry_chart');
 echo '<br />', PrintReady($controller->name);
 if ($controller->addname!="") {
 	echo '<br />', PrintReady($controller->addname);
@@ -76,19 +76,19 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 
 	<!-- // NOTE: Root ID -->
 <tr>
-	<td class="descriptionbox"><?php echo i18n::translate('Root Person ID'), help_link('rootid'); ?></td>
+	<td class="descriptionbox"><?php echo WT_I18N::translate('Root Person ID'), help_link('rootid'); ?></td>
 <td class="optionbox">
 <input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlspecialchars($controller->rootid); ?>" />
 <?php print_findindi_link("rootid", ""); ?>
 </td>
 
 <!-- // NOTE: Box width -->
-<td class="descriptionbox"><?php echo i18n::translate('Box width'), help_link('box_width'); ?></td>
+<td class="descriptionbox"><?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?></td>
 <td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>" /> <b>%</b>
 </td>
 
 <!-- // NOTE: chart style -->
-<td rowspan="2" class="descriptionbox"><?php echo i18n::translate('Layout'), help_link('chart_style'); ?></td>
+<td rowspan="2" class="descriptionbox"><?php echo WT_I18N::translate('Layout'), help_link('chart_style'); ?></td>
 <td rowspan="2" class="optionbox">
 <input type="radio" name="chart_style" value="0"
 <?php
@@ -96,13 +96,13 @@ if ($controller->chart_style=="0") {
 	echo ' checked="checked"';
 }
 echo ' onclick="statusDisable(\'cousins\');';
-echo '" />', i18n::translate('List');
+echo '" />', WT_I18N::translate('List');
 echo '<br /><input type="radio" name="chart_style" value="1"';
 if ($controller->chart_style=="1") {
 	echo ' checked="checked"';
 }
 echo ' onclick="statusEnable(\'cousins\');';
-echo '" />', i18n::translate('Booklet');
+echo '" />', WT_I18N::translate('Booklet');
 ?>
 
 <!-- // NOTE: show cousins -->
@@ -119,32 +119,32 @@ if ($controller->show_cousins) {
 	echo '0" onclick="document.people.show_cousins.value=\'1\';"';
 }
 echo ' />';
-echo i18n::translate('Show cousins'), help_link('show_cousins');
+echo WT_I18N::translate('Show cousins'), help_link('show_cousins');
 
 echo '<br /><input type="radio" name="chart_style" value="2"';
 if ($controller->chart_style=="2") {
 	echo ' checked="checked" ';
 }
 echo ' onclick="statusDisable(\'cousins\');"';
-echo ' />', i18n::translate('Individuals');
+echo ' />', WT_I18N::translate('Individuals');
 echo '<br /><input type="radio" name="chart_style" value="3"';
 echo ' onclick="statusDisable(\'cousins\');"';
 if ($controller->chart_style=="3") {
 	echo ' checked="checked" ';
 }
-echo ' />', i18n::translate('Families');
+echo ' />', WT_I18N::translate('Families');
 ?>
 </td>
 
 <!-- // NOTE: submit -->
 <td rowspan="2" class="facts_label03">
-<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
+<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 </td></tr>
 
 <!-- // NOTE: generations -->
 <tr><td class="descriptionbox">
 <?php
-echo i18n::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?></td>
+echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?></td>
 
 <td class="optionbox">
 <select name="PEDIGREE_GENERATIONS">
@@ -165,7 +165,7 @@ if ($i==$OLD_PGENS) {
 
 <td class="descriptionbox">
 <?php
-echo i18n::translate('Show Details'), help_link('show_full');
+echo WT_I18N::translate('Show Details'), help_link('show_full');
 ?>
 </td>
 <td class="optionbox">
@@ -186,7 +186,7 @@ if ($controller->show_full) {
 
 <?php
 if ($show_full==0) {
-	echo '<span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
+	echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
 }
 
 switch ($controller->chart_style) {
@@ -231,7 +231,7 @@ case 2:
 	// Individual list
 	$treeid=ancestry_array($controller->rootid, $PEDIGREE_GENERATIONS);
 	echo '<div class="center">';
-	print_indi_table($treeid, i18n::translate('Ancestry chart').' : '.PrintReady($controller->name), 'sosa');
+	print_indi_table($treeid, WT_I18N::translate('Ancestry chart').' : '.PrintReady($controller->name), 'sosa');
 	echo '</div>';
 	break;
 case 3:
@@ -248,7 +248,7 @@ case 3:
 		}
 	}
 	echo '<div class="center">';
-	print_fam_table($famlist, i18n::translate('Ancestry chart').' : '.PrintReady($controller->name));
+	print_fam_table($famlist, WT_I18N::translate('Ancestry chart').' : '.PrintReady($controller->name));
 	echo '</div>';
 	break;
 }

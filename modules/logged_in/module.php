@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Logged In Users');
+		return WT_I18N::translate('Logged In Users');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Logged In Users block shows a list of the users who are currently logged in.');
+		return WT_I18N::translate('The Logged In Users block shows a list of the users who are currently logged in.');
 	}
 
 	// Implement class WT_Module_Block
@@ -53,23 +53,23 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$id=$this->getName().$block_id;
-		$title=i18n::translate('Users Logged In').help_link('index_loggedin', $this->getName());
+		$title=WT_I18N::translate('Users Logged In').help_link('index_loggedin', $this->getName());
 		$content='<table width="90%">';
 		$LoginUsers=count($loggedusers);
 		if ($LoginUsers==0 && $NumAnonymous==0) {
-			$content.='<tr><td><b>' . i18n::translate('No logged-in and no anonymous users') . '</b></td></tr>';
+			$content.='<tr><td><b>' . WT_I18N::translate('No logged-in and no anonymous users') . '</b></td></tr>';
 		}
 		if ($NumAnonymous>0) {
-			$content.='<tr><td><b>' . i18n::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous) . '</b></td></tr>';
+			$content.='<tr><td><b>' . WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous) . '</b></td></tr>';
 		}
 		if ($LoginUsers>0) {
-			$content.='<tr><td><b>' . i18n::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers) . '</b></td></tr>';
+			$content.='<tr><td><b>' . WT_I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers) . '</b></td></tr>';
 		}
 		if (WT_USER_ID) {
 			foreach ($loggedusers as $user_id=>$user_name) {
 				$content .= "<tr><td><br />".PrintReady(getUserFullName($user_id))." - ".$user_name;
 				if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-					$content .= "<br /><a href=\"javascript:;\" onclick=\"return message('" . $user_id . "');\">" . i18n::translate('Send Message') . "</a>";
+					$content .= "<br /><a href=\"javascript:;\" onclick=\"return message('" . $user_id . "');\">" . WT_I18N::translate('Send Message') . "</a>";
 				}
 				$content .= "</td></tr>";
 			}

@@ -113,44 +113,44 @@ if ($action == "download") {
 	exit;
 }
 
-print_header(i18n::translate('Download GEDCOM'));
+print_header(WT_I18N::translate('Download GEDCOM'));
 
 ?>
-<div class="center"><h2><?php echo i18n::translate('Download GEDCOM'); ?></h2></div>
+<div class="center"><h2><?php echo WT_I18N::translate('Download GEDCOM'); ?></h2></div>
 <br />
 <form name="convertform" method="get">
 	<input type="hidden" name="action" value="download" />
 	<input type="hidden" name="ged" value="<?php echo $ged; ?>" />
 	<table class="list_table width50" border="0" valign="top">
-	<tr><td colspan="2" class="facts_label03"><?php echo i18n::translate('Options:'); ?></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Zip File(s)'), help_link('download_zipped'); ?></td>
+	<tr><td colspan="2" class="facts_label03"><?php echo WT_I18N::translate('Options:'); ?></td></tr>
+	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Zip File(s)'), help_link('download_zipped'); ?></td>
 		<td class="list_value"><input type="checkbox" name="zip" value="yes" checked="checked" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 		<td class="list_value">
 		<?php if (WT_USER_IS_ADMIN) { ?>
-			<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo i18n::translate('None'); ?><br />
-			<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
+			<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+			<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
 		<?php } else { ?>
-			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo i18n::translate('None'); ?><br />
-			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
+			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
 		<?php } ?>
-		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo i18n::translate('Member'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo i18n::translate('Manager'); ?><br />
+		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?><br />
 		</td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
 		<td class="list_value"><input type="checkbox" name="remove" value="yes" checked="checked" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media path to'), help_link('convertPath'); ?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
 		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $conv_path, getLRM(); ?>" /></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
+	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
 		<td class="list_value">
-		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Forward slashes : /'); ?><br />
-		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo i18n::translate('Backslashes : \\'); ?>
+		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?><br />
+		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;&nbsp;<?php echo WT_I18N::translate('Backslashes : \\'); ?>
 		</td></tr>
 	<tr><td class="facts_label03" colspan="2">
-	<input type="submit" value="<?php echo i18n::translate('Download Now'); ?>" />
-	<input type="button" value="<?php echo i18n::translate('Back'); ?>" onclick="window.location='editgedcoms.php';"/></td></tr>
+	<input type="submit" value="<?php echo WT_I18N::translate('Download Now'); ?>" />
+	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='editgedcoms.php';"/></td></tr>
 	</table>
 </form>
 <?php

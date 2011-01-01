@@ -39,12 +39,12 @@ try {
 class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('GEDCOM News');
+		return WT_I18N::translate('GEDCOM News');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The GEDCOM News block shows the visitor news releases or articles posted by an admin user.<br /><br />The News block is a good place to announce a significant database update, a family reunion, or the birth of a child.');
+		return WT_I18N::translate('The GEDCOM News block shows the visitor news releases or articles posted by an admin user.<br /><br />The News block is a good place to announce a significant database update, a family reunion, or the birth of a child.');
 	}
 
 	// Implement class WT_Module_Block
@@ -90,9 +90,9 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				$name = WT_USER_NAME;
 			}
 			$title.="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title .= i18n::translate('News');
+		$title .= WT_I18N::translate('News');
 		if (WT_USER_GEDCOM_ADMIN) {
 			$title .= help_link('index_gedcom_news_adm');
 		} else {
@@ -101,7 +101,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = "";
 		if (count($usernews) == 0)
 		{
-			$content .= i18n::translate('No News articles have been submitted.').'<br />';
+			$content .= WT_I18N::translate('No News articles have been submitted.').'<br />';
 		}
 		$c = 0;
 		$td = time();
@@ -132,19 +132,19 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			// Print Admin options for this News item
 			if (WT_USER_GEDCOM_ADMIN) {
 				$content .= "<hr size=\"1\" />"
-				."<a href=\"javascript:;\" onclick=\"editnews('".$news['id']."'); return false;\">".i18n::translate('Edit')."</a> | "
-				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".i18n::translate('Are you sure you want to delete this News entry?')."');\">".i18n::translate('Delete')."</a><br />";
+				."<a href=\"javascript:;\" onclick=\"editnews('".$news['id']."'); return false;\">".WT_I18N::translate('Edit')."</a> | "
+				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".WT_I18N::translate('Delete')."</a><br />";
 			}
 			$content .= "</div>";
 		}
 		$printedAddLink = false;
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"javascript:;\" onclick=\"addnews('".WT_GEDURL."'); return false;\">".i18n::translate('Add a News article')."</a>";
+			$content .= "<a href=\"javascript:;\" onclick=\"addnews('".WT_GEDURL."'); return false;\">".WT_I18N::translate('Add a News article')."</a>";
 			$printedAddLink = true;
 		}
 		if ($limit=='date' || $limit=='count') {
 			if ($printedAddLink) $content .= "&nbsp;&nbsp;|&nbsp;&nbsp;";
-			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">".i18n::translate('View archive')."</a>";
+			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">".WT_I18N::translate('View archive')."</a>";
 			$content .= help_link('gedcom_news_archive').'<br />';
 		}
 
@@ -186,18 +186,18 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		$limit=get_block_setting($block_id, 'limit', 'nolimit');
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
-			i18n::translate('Limit display by:'), help_link('gedcom_news_limit'),
+			WT_I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
 			'</td><td class="optionbox"><select name="limit"><option value="nolimit"',
 			($limit == 'nolimit'?' selected="selected"':'').">",
-			i18n::translate('No limit')."</option>",
-			'<option value="date"'.($limit == 'date'?' selected="selected"':'').">".i18n::translate('Age of item')."</option>",
-			'<option value="count"'.($limit == 'count'?' selected="selected"':'').">".i18n::translate('Number of items')."</option>",
+			WT_I18N::translate('No limit')."</option>",
+			'<option value="date"'.($limit == 'date'?' selected="selected"':'').">".WT_I18N::translate('Age of item')."</option>",
+			'<option value="count"'.($limit == 'count'?' selected="selected"':'').">".WT_I18N::translate('Number of items')."</option>",
 			'</select></td></tr>';
 
 		// Flag to look for
 		$flag=get_block_setting($block_id, 'flag', 0);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Limit:'), help_link('gedcom_news_flag');
+		echo WT_I18N::translate('Limit:'), help_link('gedcom_news_flag');
 		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$flag.'" /></td></tr>';
 	}
 }

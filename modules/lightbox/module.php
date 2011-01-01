@@ -33,12 +33,12 @@ require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Album');
+		return WT_I18N::translate('Album');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab (Album) to the individual page which an alternate way to view and work with media.');
+		return WT_I18N::translate('Adds a tab (Album) to the individual page which an alternate way to view and work with media.');
 	}
 
 	// Extend WT_Module

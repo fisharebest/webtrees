@@ -88,7 +88,7 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	function FormatLongYear() {
 		if ($this->y<0) {
 			// I18N: Number of years "before christ"
-			return i18n::translate('%d B.C.', -$this->y);
+			return WT_I18N::translate('%d B.C.', -$this->y);
 		} else {
 			if ($this->new_old_style) {
 				return sprintf('%d/%02d', $this->y-1, $this->y % 100);

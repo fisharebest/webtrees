@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Media');
+		return WT_I18N::translate('Media');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the media items linked to an individual.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the media items linked to an individual.');
 	}
 
 	// Implement WT_Module_Tab
@@ -75,15 +75,15 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		else {
 			$media_found = print_main_media($this->controller->pid, 0, true);
-			if (!$media_found) echo "<tr><td id=\"no_tab4\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no media objects for this individual.')."</td></tr>";
+			if (!$media_found) echo "<tr><td id=\"no_tab4\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no media objects for this individual.')."</td></tr>";
 			//-- New Media link
 			if (WT_USER_CAN_EDIT && $this->controller->indi->canDisplayDetails()) {
 		?>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Add media'), help_link('add_media'); ?></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Add media'), help_link('add_media'); ?></td>
 					<td class="facts_value">
-						<a href="javascript:;" onclick="window.open('addmedia.php?action=showmediaform&linktoid=<?php echo $this->controller->pid; ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo i18n::translate('Add a new media item'); ?></a><br />
-						<a href="javascript:;" onclick="window.open('inverselink.php?linktoid=<?php echo $this->controller->pid; ?>&linkto=person', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;"><?php echo i18n::translate('Link to an existing Media item'); ?></a>
+						<a href="javascript:;" onclick="window.open('addmedia.php?action=showmediaform&linktoid=<?php echo $this->controller->pid; ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media item'); ?></a><br />
+						<a href="javascript:;" onclick="window.open('inverselink.php?linktoid=<?php echo $this->controller->pid; ?>&linkto=person', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;"><?php echo WT_I18N::translate('Link to an existing Media item'); ?></a>
 					</td>
 				</tr>
 			<?php

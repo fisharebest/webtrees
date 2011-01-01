@@ -38,12 +38,12 @@ $controller = new WT_Controller_Hourglass();
 $controller->init();
 
 // -- print html header information
-print_header(PrintReady($controller->name)." ".i18n::translate('Hourglass chart'));
+print_header(PrintReady($controller->name)." ".WT_I18N::translate('Hourglass chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 echo '<table><tr><td valign="top">';
-echo '<h2>', i18n::translate('Hourglass chart'), help_link('hourglass_chart'), '<br />', PrintReady($controller->name), '</h2>';
+echo '<h2>', WT_I18N::translate('Hourglass chart'), help_link('hourglass_chart'), '<br />', PrintReady($controller->name), '</h2>';
 
 $controller->setupJavascript();
 
@@ -63,7 +63,7 @@ $gencount=0;
 
 		<!-- // NOTE: Root ID -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Root Person ID'), help_link('desc_rootid'); ?>
+	<?php echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'); ?>
 	</td>
 	<td class="optionbox">
 	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $controller->pid; ?>" />
@@ -72,7 +72,7 @@ $gencount=0;
 
 	<!-- // NOTE: Show Details -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
+	<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
 	</td>
 	<td class="optionbox">
 	<input type="checkbox" value="
@@ -84,12 +84,12 @@ $gencount=0;
 
 	<!-- // NOTE: Submit button -->
 	<td rowspan="3" class="topbottombar vmiddle">
-	<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
+	<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 	</td></tr>
 
 	<!-- // NOTE: Generations -->
 	<tr><td class="descriptionbox" >
-	<?php echo i18n::translate('Generations'), help_link('desc_generations'); ?>
+	<?php echo WT_I18N::translate('Generations'), help_link('desc_generations'); ?>
 	</td>
 	<td class="optionbox">
 	<select name="generations">
@@ -105,7 +105,7 @@ $gencount=0;
 
 	<!-- // NOTE: Show spouses -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Show spouses'), help_link('show_spouse'); ?>
+	<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 	</td>
 	<td class="optionbox">
 	<input type="checkbox" value="1" name="show_spouse"
@@ -115,7 +115,7 @@ $gencount=0;
 
 	<!-- // NOTE: Box width -->
 	<tr><td class="descriptionbox">
-	<?php echo i18n::translate('Box width'), help_link('box_width'); ?>
+	<?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?>
 	</td>
 	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>" />
 	<b>%</b>
@@ -131,7 +131,7 @@ $gencount=0;
 	</td></tr></table>
 <?php
 	if ($show_full==0) {
-		echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+		echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 	}
 ?>
 <div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") echo "_rtl"; ?>" <?php echo "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >

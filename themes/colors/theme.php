@@ -54,20 +54,20 @@ function color_theme_dropdown($style=0) {
  */
 
 $COLOR_THEME_LIST=array(
-	'aquamarine'      => /* I18N: This is the name of theme color-scheme */ i18n::translate('Aqua Marine'),
-	'ash'             => /* I18N: This is the name of theme color-scheme */ i18n::translate('Ash'),
-	'belgianchocolate'=> /* I18N: This is the name of theme color-scheme */ i18n::translate('Belgian Chocolate'),
-	'bluelagoon'      => /* I18N: This is the name of theme color-scheme */ i18n::translate('Blue Lagoon'),
-	'bluemarine'      => /* I18N: This is the name of theme color-scheme */ i18n::translate('Blue Marine'),
-	'coldday'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Cold Day'),
-	'greenbeam'       => /* I18N: This is the name of theme color-scheme */ i18n::translate('Green Beam'),
-	'mediterranio'    => /* I18N: This is the name of theme color-scheme */ i18n::translate('Mediterranio'),
-	'mercury'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Mercury'),
-	'nocturnal'       => /* I18N: This is the name of theme color-scheme */ i18n::translate('Nocturnal'),
-	'olivia'          => /* I18N: This is the name of theme color-scheme */ i18n::translate('Olivia'),
-	'pinkplastic'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Pink Plastic'),
-	'shinytomato'     => /* I18N: This is the name of theme color-scheme */ i18n::translate('Shiny Tomato'),
-	'tealtop'         => /* I18N: This is the name of theme color-scheme */ i18n::translate('Teal Top'),
+	'aquamarine'      => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Aqua Marine'),
+	'ash'             => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Ash'),
+	'belgianchocolate'=> /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Belgian Chocolate'),
+	'bluelagoon'      => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Blue Lagoon'),
+	'bluemarine'      => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Blue Marine'),
+	'coldday'         => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Cold Day'),
+	'greenbeam'       => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Green Beam'),
+	'mediterranio'    => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Mediterranio'),
+	'mercury'         => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Mercury'),
+	'nocturnal'       => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Nocturnal'),
+	'olivia'          => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Olivia'),
+	'pinkplastic'     => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Pink Plastic'),
+	'shinytomato'     => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Shiny Tomato'),
+	'tealtop'         => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Teal Top'),
 );
 
 if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {

@@ -191,7 +191,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			$marriage->print_simple_fact();
-		} else echo i18n::translate('Private');
+		} else echo WT_I18N::translate('Private');
 		echo "</a>";
 	}
 	else echo "<br />";
@@ -276,14 +276,14 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	$numchil=$family->getNumberOfChildren();
 	echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"2\"><tr>";
 	if ($sosa>0) echo "<td></td>";
-	echo "<td><span class=\"subheaders\">".i18n::translate('Children')."</span>";
+	echo "<td><span class=\"subheaders\">".WT_I18N::translate('Children')."</span>";
 	echo '<span class="font11">&nbsp;&nbsp;', getLRM(), '(';
 	if ($numchil==0) {
-		echo i18n::translate('No children');
+		echo WT_I18N::translate('No children');
 	} else if ($numchil==1) {
-		echo i18n::translate('1 child');
+		echo WT_I18N::translate('1 child');
 	} else {
-		echo $numchil, '&nbsp;', i18n::translate('children');
+		echo $numchil, '&nbsp;', WT_I18N::translate('children');
 	}
 	echo ')', getLRM(), '</span>';
 	echo "<br />";
@@ -291,9 +291,9 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		echo "<br />";
 		echo "<span class='nowrap font12'>";
-		echo "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . i18n::translate('Add a child to this family') . "</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', i18n::translate('Son'     ))."]</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', i18n::translate('Daughter'))."]</a>";
+		echo "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', WT_I18N::translate('Son'     ))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', WT_I18N::translate('Daughter'))."]</a>";
 		echo help_link('add_child');
 		echo "</span>";
 		echo "<br /><br />";
@@ -438,8 +438,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 			$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 			if ($ct>0) $nchi = $match[1];
 		}
-		if ($nchi=="0") echo "<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" title=\"".i18n::translate('This family remained childless')."\" /> ".i18n::translate('This family remained childless');
-		//else echo i18n::translate('No children');
+		if ($nchi=="0") echo "<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" title=\"".WT_I18N::translate('This family remained childless')."\" /> ".WT_I18N::translate('This family remained childless');
+		//else echo WT_I18N::translate('No children');
 		echo "</td></tr>";
 	}
 	else {
@@ -474,7 +474,7 @@ function print_family_facts(&$family) {
 		// -- find all the fact information
 		$indifacts = $family->getFacts();
 
-		echo '<span class="subheaders">', i18n::translate('Family Group Information'), '</span>';
+		echo '<span class="subheaders">', WT_I18N::translate('Family Group Information'), '</span>';
 		echo '<table class="facts_table">';
 		if ($indifacts) {
 			sort_facts($indifacts);
@@ -483,7 +483,7 @@ function print_family_facts(&$family) {
 			}
 			print_main_media($famid);
 		} else {
-			echo '<tr><td class="messagebox" colspan="2">', i18n::translate('No facts for this family.'), '</td></tr>';
+			echo '<tr><td class="messagebox" colspan="2">', WT_I18N::translate('No facts for this family.'), '</td></tr>';
 		}
 		// -- new fact link
 		if (WT_USER_CAN_EDIT) {
@@ -491,32 +491,32 @@ function print_family_facts(&$family) {
 
 			// -- new note
 			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('Add Note'), help_link('add_note');
+			echo WT_I18N::translate('Add Note'), help_link('add_note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','NOTE');\">", i18n::translate('Add a new note'), '</a>';
+			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
 			echo '</td></tr>';
 
 			// -- new shared note
 			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('Add Shared Note'), help_link('add_shared_note');
+			echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">", i18n::translate('Add a new shared note'), '</a>';
+			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
 			echo '</td></tr>';
 
 			// -- new media
 			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('Add media'), help_link('add_media');
+			echo WT_I18N::translate('Add media'), help_link('add_media');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript: ", i18n::translate('Add media'), "\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">", i18n::translate('Add a new media item'), '</a>';
+			echo "<a href=\"javascript: ", WT_I18N::translate('Add media'), "\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Add a new media item'), '</a>';
 			echo '<br />';
-			echo "<a href=\"javascript:;\" onclick=\"window.open('inverselink.php?linktoid={$famid}&linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">", i18n::translate('Link to an existing Media item'), '</a>';
+			echo "<a href=\"javascript:;\" onclick=\"window.open('inverselink.php?linktoid={$famid}&linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Link to an existing Media item'), '</a>';
 			echo '</td></tr>';
 
 			// -- new source citation
 			echo '<tr><td class="descriptionbox">';
-			echo i18n::translate('Add Source Citation'), help_link('add_source');
+			echo WT_I18N::translate('Add Source Citation'), help_link('add_source');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SOUR');\">", i18n::translate('Add a new source citation'), '</a>';
+			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
 			echo '</td></tr>';
 			// -- end new objects
 		}
@@ -714,7 +714,7 @@ function print_cousins($famid, $personcount="1") {
 		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 		if ($ct>0) $nchi = $match[1];
 		else $nchi = "";
-		if ($nchi=="0") echo "&nbsp;<img src=\"images/small/childless.gif\" alt=\"".i18n::translate('This family remained childless')."\" title=\"".i18n::translate('This family remained childless')."\" />";
+		if ($nchi=="0") echo "&nbsp;<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" title=\"".WT_I18N::translate('This family remained childless')."\" />";
 	}
 	$show_full = $save_show_full;
 	if ($save_show_full) {

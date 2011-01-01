@@ -251,12 +251,12 @@ class WT_Controller_Pedigree extends WT_Controller_Base {
 	 * @return string the title of the page to go in the <title> tags
 	 */
 	function getPageTitle() {
-		return $this->getPersonName()." ".i18n::translate('Pedigree Tree');
+		return $this->getPersonName()." ".WT_I18N::translate('Pedigree Tree');
 	}
 
 	function getPersonName() {
 		if (is_null($this->rootPerson)) {
-			return i18n::translate('unknown');
+			return WT_I18N::translate('unknown');
 		} else {
 			return $this->rootPerson->getFullName();
 		}

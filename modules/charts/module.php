@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Charts block');
+		return WT_I18N::translate('Charts block');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Charts block allows you to place a chart on the Home or My Page.  You can configure the block to show an ancestors, descendants, hourglass view, or an interactive tree.  You can also choose the root person for the chart.');
+		return WT_I18N::translate('The Charts block allows you to place a chart on the Home or My Page.  You can configure the block to show an ancestors, descendants, hourglass view, or an interactive tree.  You can also choose the root person for the chart.');
 	}
 
 	// Implement class WT_Module_Block
@@ -87,27 +87,27 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$title='';
 		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=700,height=400,scrollbars=1,resizable=1'); return false;\">";
-			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
 		if ($person) {
 			switch($type) {
 				case 'pedigree':
-					$title .= i18n::translate('Pedigree tree of %s', $person->getFullName());
+					$title .= WT_I18N::translate('Pedigree tree of %s', $person->getFullName());
 					break;
 				case 'descendants':
-					$title .= i18n::translate('Descendancy chart of %s', $person->getFullName());
+					$title .= WT_I18N::translate('Descendancy chart of %s', $person->getFullName());
 					break;
 				case 'hourglass':
-					$title .= i18n::translate('Hourglass chart of %s', $person->getFullName());
+					$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
 					break;
 				case 'treenav':
-					$title .= i18n::translate('Interactive tree of %s', $person->getFullName());
+					$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
 					break;
 			}
 			$title .= help_link('index_charts', $this->getName());
 			$content = "<script src=\"js/webtrees.js\" language=\"JavaScript\" type=\"text/javascript\"></script>";
 			if ($show_full==0) {
-				$content .= '<center><span class="details2">'.i18n::translate('Click on any of the boxes to get more information about that person.').'</span></center><br />';
+				$content .= '<center><span class="details2">'.WT_I18N::translate('Click on any of the boxes to get more information about that person.').'</span></center><br />';
 			}
 			$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 			if ($type=='descendants' || $type=='hourglass') {
@@ -141,7 +141,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$content .= "</tr></table>";
 		} else {
-			$content=i18n::translate('You must select an individual and chart type in the block configuration settings.');
+			$content=WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
 		if ($template) {
@@ -193,28 +193,28 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	?>
-		<tr><td class="descriptionbox wrap width33"><?php echo i18n::translate('Chart type'); ?></td>
+		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">
 			<select name="type">
-				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Pedigree Tree'); ?></option>
-				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Descendancy chart'); ?></option>
-				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Hourglass chart'); ?></option>
+				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Pedigree Tree'); ?></option>
+				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Descendancy chart'); ?></option>
+				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hourglass chart'); ?></option>
 				<?php if (file_exists(WT_ROOT.'includes/classes/class_treenav.php')) { ?>
-				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo i18n::translate('Interactive tree'); ?></option>
+				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Interactive tree'); ?></option>
 				<?php } ?>
 			</select>
 		</td></tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo i18n::translate('Show Details'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show Details'); ?></td>
 		<td class="optionbox">
 			<select name="details">
-					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo i18n::translate('No'); ?></option>
-					<option value="yes" <?php if ($details) echo " selected=\"selected\""; ?>><?php echo i18n::translate('Yes'); ?></option>
+					<option value="no" <?php if (!$details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('No'); ?></option>
+					<option value="yes" <?php if ($details) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Yes'); ?></option>
 			</select>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo i18n::translate('Root Person ID'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Root Person ID'); ?></td>
 			<td class="optionbox">
 				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5" />
 				<?php
@@ -232,7 +232,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$block=get_block_setting($block_id, 'block', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ i18n::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

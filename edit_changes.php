@@ -41,7 +41,7 @@ $change_id=safe_GET('change_id');
 $index    =safe_GET('index');
 $ged      =safe_GET('ged');
 
-print_simple_header(/* I18N: Moderate as a verb, not adjective  */ i18n::translate('Moderate pending changes'));
+print_simple_header(/* I18N: Moderate as a verb, not adjective  */ WT_I18N::translate('Moderate pending changes'));
 echo WT_JS_START;
 ?>
 	function show_gedcom_record(xref) {
@@ -58,7 +58,7 @@ echo WT_JS_START;
 	}
 <?php
 echo WT_JS_END;
-echo '<div class="center"><span class="subheaders">', i18n::translate('Moderate pending changes'), '</span><br /><br />';
+echo '<div class="center"><span class="subheaders">', WT_I18N::translate('Moderate pending changes'), '</span><br /><br />';
 
 switch ($action) {
 case 'undo':
@@ -169,36 +169,36 @@ if ($changed_gedcoms) {
 				$record=new WT_GedcomRecord($change->gedcom);
 			}
 			$output.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM().'<br />';
-			$output.='<a href="javascript:;" onclick="return show_diff(\''.$record->getHtmlUrl().'&amp;show_changes=yes'.'\');">'.i18n::translate('View Change Diff').'</a> | ';
-			$output.="<a href=\"javascript:show_gedcom_record('".$change->xref."');\">".i18n::translate('View GEDCOM Record')."</a> | ";
-			$output.="<a href=\"javascript:;\" onclick=\"return edit_raw('".$change->xref."');\">".i18n::translate('Edit raw GEDCOM record').'</a><br />';
+			$output.='<a href="javascript:;" onclick="return show_diff(\''.$record->getHtmlUrl().'&amp;show_changes=yes'.'\');">'.WT_I18N::translate('View Change Diff').'</a> | ';
+			$output.="<a href=\"javascript:show_gedcom_record('".$change->xref."');\">".WT_I18N::translate('View GEDCOM Record')."</a> | ";
+			$output.="<a href=\"javascript:;\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br />';
 			$output.='<div class="indent">';
-			$output.=i18n::translate('The following changes were made to this record:').'<br />';
+			$output.=WT_I18N::translate('The following changes were made to this record:').'<br />';
 			$output.='<table class="list_table"><tr>';
-			$output.='<td class="list_label">'.i18n::translate('Accept').'</td>';
-			$output.='<td class="list_label">'.i18n::translate('Type').'</td>';
-			$output.='<td class="list_label">'.i18n::translate('User').'</td>';
-			$output.='<td class="list_label">'.i18n::translate('Date').'</td>';
-			$output.='<td class="list_label">'.i18n::translate('Family tree').'</td>';
-			$output.='<td class="list_label">'.i18n::translate('Undo').'</td>';
+			$output.='<td class="list_label">'.WT_I18N::translate('Accept').'</td>';
+			$output.='<td class="list_label">'.WT_I18N::translate('Type').'</td>';
+			$output.='<td class="list_label">'.WT_I18N::translate('User').'</td>';
+			$output.='<td class="list_label">'.WT_I18N::translate('Date').'</td>';
+			$output.='<td class="list_label">'.WT_I18N::translate('Family tree').'</td>';
+			$output.='<td class="list_label">'.WT_I18N::translate('Undo').'</td>';
 			$output.='</tr>';
 		}
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.i18n::translate('Accept').'</a></td>';
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=accept&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Accept').'</a></td>';
 		$output .= '<td class="list_value"><b>';
 		if ($change->old_gedcom=='') {
-			$output.=i18n::translate('Append record');
+			$output.=WT_I18N::translate('Append record');
 		} elseif ($change->new_gedcom=='') {
-			$output.=i18n::translate('Delete record');
+			$output.=WT_I18N::translate('Delete record');
 		} else {
-			$output.=i18n::translate('Replace record');
+			$output.=WT_I18N::translate('Replace record');
 		}
 		echo '</b></td>';
-		$output .= "<td class=\"list_value\"><a href=\"javascript:;\" onclick=\"return reply('".$change->user_name."', '".i18n::translate('Moderate pending changes')."')\" alt=\"".i18n::translate('Send Message')."\">";
+		$output .= "<td class=\"list_value\"><a href=\"javascript:;\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send Message')."\">";
 		$output .= PrintReady($change->real_name);
 		$output .= PrintReady('&nbsp;('.$change->user_name.')').'</a></td>';
 		$output .= '<td class="list_value">'.$change->change_time.'</td>';
 		$output .= '<td class="list_value">'.$change->gedcom_name.'</td>';
-		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.i18n::translate('Undo').'</a></td>';
+		$output .= '<td class="list_value"><a href="edit_changes.php?action=undo&amp;ged='.rawurlencode($change->gedcom_name).'&amp;change_id='.$change->change_id.'">'.WT_I18N::translate('Undo').'</a></td>';
 		$output.='</tr>';
 	}
 	$output .= '</table></td></tr></td></tr></table>';
@@ -206,16 +206,16 @@ if ($changed_gedcoms) {
 	//-- Now for the global Action bar:
 	$output2 = '<br /><table class="list_table">';
 	// Row 1 column 1: title "Accept all"
-	$output2 .= '<tr><td class="list_label">'.i18n::translate('Approve all changes').'</td>';
+	$output2 .= '<tr><td class="list_label">'.WT_I18N::translate('Approve all changes').'</td>';
 	// Row 1 column 2: title "Undo all"
-	$output2 .= '<td class="list_label">'.i18n::translate('Undo all changes').'</td></tr>';
+	$output2 .= '<td class="list_label">'.WT_I18N::translate('Undo all changes').'</td></tr>';
 
 	// Row 2 column 1: action "Accept all"
 	$output2 .= '<tr><td class="list_value">';
 	$count = 0;
 	foreach ($changed_gedcoms as $gedcom_name) {
 		if ($count!=0) $output2.='<br />';
-		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged='.rawurlencode($gedcom_name).'">'.$gedcom_name.' - '.i18n::translate('Approve all changes').'</a>';
+		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged='.rawurlencode($gedcom_name).'">'.$gedcom_name.' - '.WT_I18N::translate('Approve all changes').'</a>';
 		$count ++;
 	}
 	$output2 .= '</td>';
@@ -226,7 +226,7 @@ if ($changed_gedcoms) {
 		if ($count!=0) {
 			$output2.='<br />';
 		}
-		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged='.rawurlencode($gedcom_name)."\" onclick=\"return confirm('".i18n::translate('Are you sure you want to undo all of the changes for this GEDCOM?')."');\">$gedcom_name - ".i18n::translate('Undo all changes').'</a>';
+		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged='.rawurlencode($gedcom_name)."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to undo all of the changes for this GEDCOM?')."');\">$gedcom_name - ".WT_I18N::translate('Undo all changes').'</a>';
 		$count++;
 	}
 	$output2 .= '</td></tr></table>';
@@ -234,7 +234,7 @@ if ($changed_gedcoms) {
 	echo
 		$output2, $output, $output2, '<br /><br />',
 		'<a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">',
-		i18n::translate('Close Window'),
+		WT_I18N::translate('Close Window'),
 		'</a>';
 } else {
 	// No pending changes - refresh the parent window and close this one

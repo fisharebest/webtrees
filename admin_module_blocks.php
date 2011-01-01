@@ -124,7 +124,7 @@ if ($action=='update_mods') {
 	}
 }
 
-print_header(i18n::translate('Module administration'));
+print_header(WT_I18N::translate('Module administration'));
 ?>
 
 <div align="center">
@@ -134,8 +134,8 @@ print_header(i18n::translate('Module administration'));
 			<table id="blocks_table" class="list_table">
 				<thead>
 					<tr>
-					<th class="list_label"><?php echo i18n::translate('Block'); ?></th>
-					<th class="list_label"><?php echo i18n::translate('Access level'); ?></th>
+					<th class="list_label"><?php echo WT_I18N::translate('Block'); ?></th>
+					<th class="list_label"><?php echo WT_I18N::translate('Access level'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -168,7 +168,7 @@ print_header(i18n::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo i18n::translate('Save'); ?>" />
+			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
 		</form>
 	</div>
 </div>

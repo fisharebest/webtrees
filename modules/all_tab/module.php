@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class all_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('All');
+		return WT_I18N::translate('All');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the contents of all other active tabs.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the contents of all other active tabs.');
 	}
 
 	// Implement WT_Module_Tab

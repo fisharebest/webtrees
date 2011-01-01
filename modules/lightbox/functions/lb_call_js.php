@@ -40,24 +40,24 @@ global $tabno, $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
 
 <script language="javascript" type="text/javascript">
 
-	var CB_ImgDetails = "<?php echo i18n::translate('Details'); ?>"; // = "Details"
-	var CB_Detail_Info = "<?php echo i18n::translate('View this Media Item Details ...  Plus other Media Options - MediaViewer page'); ?>"; // = "View this Media Item......etc"
-	var CB_ImgNotes = "<?php echo i18n::translate('Notes'); ?>"; // = "Notes"
+	var CB_ImgDetails = "<?php echo WT_I18N::translate('Details'); ?>"; // = "Details"
+	var CB_Detail_Info = "<?php echo WT_I18N::translate('View this Media Item Details ...  Plus other Media Options - MediaViewer page'); ?>"; // = "View this Media Item......etc"
+	var CB_ImgNotes = "<?php echo WT_I18N::translate('Notes'); ?>"; // = "Notes"
 	var CB_Note_Info = "<?php echo ''; ?>"; // = ""
-	var CB_Pause_SS = "<?php echo i18n::translate('Pause Slideshow'); ?>"; // = "Pause Slideshow"
-	var CB_Start_SS = "<?php echo i18n::translate('Start Slideshow'); ?>"; // = "Start Slideshow"
-	var CB_Music = "<?php echo i18n::translate('Turn Music On/Off'); ?>"; // = "Music On/Off "
-	var CB_Zoom_Off = "<?php echo i18n::translate('Disable Zoom'); ?>"; // = "Disable Zoom"
-	var CB_Zoom_On = "<?php echo i18n::translate('Zoom is enabled ... Use mousewheel or i and o keys to zoom in and out'); ?>"; // = "Zoom is Enabled"
-	var CB_Close_Win = "<?php echo i18n::translate('Close Lightbox window'); ?>"; // = "Close Lightbox Window"
+	var CB_Pause_SS = "<?php echo WT_I18N::translate('Pause Slideshow'); ?>"; // = "Pause Slideshow"
+	var CB_Start_SS = "<?php echo WT_I18N::translate('Start Slideshow'); ?>"; // = "Start Slideshow"
+	var CB_Music = "<?php echo WT_I18N::translate('Turn Music On/Off'); ?>"; // = "Music On/Off "
+	var CB_Zoom_Off = "<?php echo WT_I18N::translate('Disable Zoom'); ?>"; // = "Disable Zoom"
+	var CB_Zoom_On = "<?php echo WT_I18N::translate('Zoom is enabled ... Use mousewheel or i and o keys to zoom in and out'); ?>"; // = "Zoom is Enabled"
+	var CB_Close_Win = "<?php echo WT_I18N::translate('Close Lightbox window'); ?>"; // = "Close Lightbox Window"
 	var CB_Balloon = "<?php echo "false"; ?>"; // Notes Tooltip Balloon or not
 
 	<?php if ($TEXT_DIRECTION=="rtl") { ?>
 		var CB_Alignm = "<?php echo "right"; ?>"; // Notes RTL Tooltip Balloon Text align
-		var CB_ImgNotes2 = "<?php echo i18n::translate('Notes'); ?>"; // Notes RTL Tooltip for Full Image
+		var CB_ImgNotes2 = "<?php echo WT_I18N::translate('Notes'); ?>"; // Notes RTL Tooltip for Full Image
 	<?php } else { ?>
 		var CB_Alignm = "<?php echo "left"; ?>"; // Notes LTR Tooltip Balloon Text align
-		var CB_ImgNotes2 = "<?php echo i18n::translate('Notes'); ?>"; // Notes LTR Tooltip for Full Image
+		var CB_ImgNotes2 = "<?php echo WT_I18N::translate('Notes'); ?>"; // Notes LTR Tooltip for Full Image
 	<?php } ?>
 
 	<?php if ($LB_MUSIC_FILE == "") { ?>

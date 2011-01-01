@@ -54,12 +54,12 @@ $level = safe_GET('level');
 if (empty($action)) $action = "find";
 if (empty($display)) $display = "hierarchy";
 
-if ($display=="hierarchy") print_header(i18n::translate('Place hierarchy'));
-else print_header(i18n::translate('Place List'));
+if ($display=="hierarchy") print_header(WT_I18N::translate('Place hierarchy'));
+else print_header(WT_I18N::translate('Place List'));
 
 echo "\n\t<div class=\"center\">";
-if ($display=="hierarchy") echo "<h2>", i18n::translate('Place hierarchy'), "</h2>\n\t";
-else echo "<h2>", i18n::translate('Place List'), "</h2>\n\t";
+if ($display=="hierarchy") echo "<h2>", WT_I18N::translate('Place hierarchy'), "</h2>\n\t";
+else echo "<h2>", WT_I18N::translate('Place List'), "</h2>\n\t";
 
 // Make sure the "parent" array has no holes
 if (isset($parent) && is_array($parent)) {
@@ -118,14 +118,14 @@ if ($display=="hierarchy") {
 	if ($level>0) {
 		//-- link to search results
 		if ((($level>1)||($parent[0]!=""))&&($numfound>0)) {
-			echo $numfound, " ", i18n::translate('Place connections found'), ": ";
+			echo $numfound, " ", WT_I18N::translate('Place connections found'), ": ";
 		}
 		//-- breadcrumb
 		$numls = count($parent)-1;
 		$num_place="";
 		//-- place and page text orientation is opposite -> top level added at the beginning of the place text
 		echo "<a href=\"?level=0\">";
-		if ($numls>=0 && (($TEXT_DIRECTION=="ltr" && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=="rtl" && !hasRtLText($parent[$numls])))) echo i18n::translate('Top Level'), ", ";
+		if ($numls>=0 && (($TEXT_DIRECTION=="ltr" && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=="rtl" && !hasRtLText($parent[$numls])))) echo WT_I18N::translate('Top Level'), ", ";
 		echo "</a>";
 			for ($i=$numls; $i>=0; $i--) {
 			echo "<a href=\"?level=", ($i+1);
@@ -140,7 +140,7 @@ if ($display=="hierarchy") {
 			}
 			echo "\">";
 			if (trim($parent[$i])=="") {
-				echo i18n::translate('unknown');
+				echo WT_I18N::translate('unknown');
 			} else {
 				echo PrintReady($parent[$i]);
 			}
@@ -158,7 +158,7 @@ if ($display=="hierarchy") {
 	echo "<a href=\"?level=0\">";
 	//-- place and page text orientation is the same -> top level added at the end of the place text
 	if ($level==0 || ($numls>=0 && (($TEXT_DIRECTION=="rtl" && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=="ltr" && !hasRtLText($parent[$numls]))))) {
-		echo i18n::translate('Top Level');
+		echo WT_I18N::translate('Top Level');
 	}
 	echo '</a>', help_link('ppp_levels');
 
@@ -176,7 +176,7 @@ if ($display=="hierarchy") {
 				// search country code using current language countries table
 				// TODO: use translations from all languages
 				foreach (array_keys($iso3166) as $alpha3) {
-					if (utf8_strtoupper(i18n::translate($alpha3)) == $country) {
+					if (utf8_strtoupper(WT_I18N::translate($alpha3)) == $country) {
 						$country = $alpha3;
 						break;
 					}
@@ -284,7 +284,7 @@ if ($display=="hierarchy") {
 		$linklevels .= "&amp;parent[$j]=".urlencode($parent[$j]);
 		if ($use_googlemap) {
 			if (trim($parent[$j])=="") {
-				$placelevels = ", ".i18n::translate('unknown').$placelevels;
+				$placelevels = ", ".WT_I18N::translate('unknown').$placelevels;
 			} else {
 				$placelevels = ", ".$parent[$j].$placelevels;
 			}
@@ -307,12 +307,12 @@ if ($display=="hierarchy") {
 				echo "colspan=\"2\"";
 			}
 			echo ">&nbsp;";
-			echo "<img src=\"", $WT_IMAGES["place"], "\" border=\"0\" title=\"", i18n::translate('Place'), "\" alt=\"", i18n::translate('Place'), "\" />&nbsp;&nbsp;";
+			echo "<img src=\"", $WT_IMAGES["place"], "\" border=\"0\" title=\"", WT_I18N::translate('Place'), "\" alt=\"", WT_I18N::translate('Place'), "\" />&nbsp;&nbsp;";
 			if ($level>0) {
-				echo " ", i18n::translate('Place Hierarchy after'), ": ";
+				echo " ", WT_I18N::translate('Place Hierarchy after'), ": ";
 				echo PrintReady($num_place);
 			} else {
-				echo i18n::translate('Place hierarchy');
+				echo WT_I18N::translate('Place hierarchy');
 			}
 			echo help_link('ppp_placelist');
 			echo "</td></tr><tr><td class=\"list_value\"><ul>";
@@ -326,7 +326,7 @@ if ($display=="hierarchy") {
 		echo " type=\"square\">\n<a href=\"?action=", $action, "&amp;level=", $level+1, $linklevels;
 		echo "&amp;parent[", $level, "]=", urlencode($value), "\" class=\"list_item\">";
 
-		if (trim($value)=="") echo i18n::translate('unknown');
+		if (trim($value)=="") echo WT_I18N::translate('unknown');
 		else echo PrintReady($value);
 		if ($use_googlemap) $place_names[$i]=trim($value);
 		echo "</a></li>\n";
@@ -352,7 +352,7 @@ if ($display=="hierarchy") {
 				echo "colspan=\"2\"";
 			}
 			echo ">\n\t";
-			echo i18n::translate('View all records found in this place');
+			echo WT_I18N::translate('View all records found in this place');
 			echo help_link('ppp_view_records');
 			echo "</td></tr><tr><td class=\"list_value\" ";
 			if ($ct1 > 20) {
@@ -367,7 +367,7 @@ if ($display=="hierarchy") {
 			}
 			echo "\"><span class=\"formField\">";
 			if (trim($value)=="") {
-				echo i18n::translate('unknown');
+				echo WT_I18N::translate('unknown');
 			} else {
 				echo PrintReady($value);
 			}
@@ -408,9 +408,9 @@ if ($level > 0) {
 		usort($myfamlist,    array('GedcomRecord', 'Compare'));
 		usort($mysourcelist, array('GedcomRecord', 'Compare'));
 		// echo each of the tables
-		print_indi_table($myindilist,   i18n::translate('Individuals').' @ '.$title);
-		print_fam_table ($myfamlist,    i18n::translate('Families'   ).' @ '.$title);
-		print_sour_table($mysourcelist, i18n::translate('Sources'    ).' @ '.$title);
+		print_indi_table($myindilist,   WT_I18N::translate('Individuals').' @ '.$title);
+		print_fam_table ($myfamlist,    WT_I18N::translate('Families'   ).' @ '.$title);
+		print_sour_table($mysourcelist, WT_I18N::translate('Sources'    ).' @ '.$title);
 	}
 }
 
@@ -422,15 +422,15 @@ if ($display=="list") {
 	$placelist = array_unique($placelist);
 	uasort($placelist, "utf8_strcasecmp");
 	if (count($placelist)==0) {
-		echo "<b>", i18n::translate('No results found.'), "</b><br />";
+		echo "<b>", WT_I18N::translate('No results found.'), "</b><br />";
 	} else {
 		echo "\n\t<table class=\"list_table $TEXT_DIRECTION\"";
 		if ($TEXT_DIRECTION=="rtl") echo " dir=\"rtl\"";
 		echo ">\n\t\t<tr>\n\t\t<td class=\"list_label\" ";
 		$ct = count($placelist);
 		echo " colspan=\"", $ct>20 ? "3" : "2", "\">&nbsp;";
-		echo "<img src=\"", $WT_IMAGES["place"], "\" border=\"0\" title=\"", i18n::translate('Place'), "\" alt=\"", i18n::translate('Place'), "\" />&nbsp;&nbsp;";
-		echo i18n::translate('Place List');
+		echo "<img src=\"", $WT_IMAGES["place"], "\" border=\"0\" title=\"", WT_I18N::translate('Place'), "\" alt=\"", WT_I18N::translate('Place'), "\" />&nbsp;&nbsp;";
+		echo WT_I18N::translate('Place List');
 		echo help_link('ppp_placelist');
 		echo "</td></tr><tr><td class=\"list_value_wrap\"><ul>";
 		$i=0;
@@ -444,7 +444,7 @@ if ($display=="list") {
 				$linklevels .= "&amp;parent[$level]=".urlencode($place);
 				$level++;
 				if ($level>1) $revplace .= ", ";
-				if ($place=="") $revplace .= i18n::translate('unknown');
+				if ($place=="") $revplace .= WT_I18N::translate('unknown');
 				else $revplace .= $place;
 			}
 			if (begRTLText($revplace)) {
@@ -464,7 +464,7 @@ if ($display=="list") {
 		echo "\n\t\t</ul></td></tr>\n\t\t";
 		if ($i>1) {
 			echo "<tr><td>";
-			if ($i>0) echo i18n::translate('Total unique places'), " ", $i;
+			if ($i>0) echo WT_I18N::translate('Total unique places'), " ", $i;
 			echo "</td></tr>\n";
 		}
 		echo "\n\t\t</table>";
@@ -472,19 +472,19 @@ if ($display=="list") {
 }
 
 echo "<br /><a href=\"?display=";
-if ($display=="list") echo "hierarchy\">", i18n::translate('Show Places in Hierarchy');
-else echo "list\">", i18n::translate('Show All Places in a List');
+if ($display=="list") echo "hierarchy\">", WT_I18N::translate('Show Places in Hierarchy');
+else echo "list\">", WT_I18N::translate('Show All Places in a List');
 echo "</a><br /><br />\n";
 if ($hasplaceform) {
 	$placeheader = substr($header, $hasplaceform);
 	$ct = preg_match("/2 FORM (.*)/", $placeheader, $match);
 	if ($ct>0) {
-		echo i18n::translate('Places are encoded in the form: ').$match[1];
+		echo WT_I18N::translate('Places are encoded in the form: ').$match[1];
 		echo help_link('ppp_match_one');
 	}
 }
 else {
-	echo i18n::translate('Places are encoded in the form: '), i18n::translate('City, County, State/Province, Country'), "  ", i18n::translate('(Default)'), help_link('ppp_default_form');
+	echo WT_I18N::translate('Places are encoded in the form: '), WT_I18N::translate('City, County, State/Province, Country'), "  ", WT_I18N::translate('(Default)'), help_link('ppp_default_form');
 }
 echo "<br /><br /></div>";
 if ($use_googlemap && $display=="hierarchy") map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);

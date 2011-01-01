@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Personal Facts');
+		return WT_I18N::translate('Personal Facts');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the facts of an individual and their close relatives.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the facts of an individual and their close relatives.');
 	}
 
 	// Implement WT_Module_Tab
@@ -68,7 +68,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			$indifacts = $this->controller->getIndiFacts();
 			if (count($indifacts)==0) { ?>
 				<tr>
-					<td id="no_tab1" colspan="2" class="facts_value"><?php echo i18n::translate('There are no Facts for this individual.'); ?>
+					<td id="no_tab1" colspan="2" class="facts_value"><?php echo WT_I18N::translate('There are no Facts for this individual.'); ?>
 					</td>
 				</tr>
 			<?php }
@@ -78,10 +78,10 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td valign="top"></td>
 				<td class="descriptionbox rela">
 					<input id="checkbox_rela_facts" type="checkbox" <?php if ($EXPAND_RELATIVES_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_rela');" />
-					<label for="checkbox_rela_facts"><?php echo i18n::translate('Events of close relatives'); ?></label>
+					<label for="checkbox_rela_facts"><?php echo WT_I18N::translate('Events of close relatives'); ?></label>
 					<?php if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) { ?>
 						<input id="checkbox_histo" type="checkbox" <?php if ($EXPAND_HISTO_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_histo');" />
-						<label for="checkbox_histo"><?php echo i18n::translate('Historical facts'); ?></label>
+						<label for="checkbox_histo"><?php echo WT_I18N::translate('Historical facts'); ?></label>
 					<?php } ?>
 				</td>
 			</tr>

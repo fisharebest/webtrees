@@ -157,7 +157,7 @@ function print_child_descendancy(&$person, $depth) {
 			$parid=$parents["HUSB"];
 			if ($parid=="") $parid=$parents["WIFE"];
 			if ($parid!="") {
-				print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", i18n::translate('Start at parents'), 2);
+				print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
 				$personcount++;
 			}
 		}
@@ -210,7 +210,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		echo "<li>";
 		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\" />";
 		echo "<span class=\"details1\" style=\"white-space: nowrap; \" >";
-		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".WT_I18N::translate('View Family')."\" /></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
@@ -235,7 +235,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 				$parid=$parents["HUSB"];
 				if ($parid=="") $parid=$parents["WIFE"];
 				if ($parid!="") {
-					print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", i18n::translate('Start at parents'), 2);
+					print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
 					$personcount++;
 				}
 			}
@@ -254,7 +254,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 			if (strpos($family->getGedcomRecord(), "\n1 NCHI 0")) {
 				echo translate_fact('NCHI').": ".count($children);
 			} else {
-				echo i18n::translate('No children');
+				echo WT_I18N::translate('No children');
 			}
 		}
 		echo "</td></tr></table>";

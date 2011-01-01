@@ -179,7 +179,7 @@ function get_indilist_salpha($marnm, $fams, $ged_id) {
 	$alphas=array();
 	// This logic relies on the database's collation rules to ensure that accented letters
 	// and digraphs appear in the correct listing.
-	foreach (explode(' ', i18n::$alphabet) as $letter) {
+	foreach (explode(' ', WT_I18N::$alphabet) as $letter) {
 		$query="SELECT COUNT(DISTINCT i_id) FROM `##individuals`";
 		if ($marnm) {
 			$query.=" JOIN `##name` ON (i_id=n_id AND i_file=n_file)";
@@ -189,10 +189,10 @@ function get_indilist_salpha($marnm, $fams, $ged_id) {
 		if ($fams) {
 			$query.=" JOIN `##link` ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
 		}
-		$query.=" WHERE n_file=? AND n_sort LIKE '{$letter}%' COLLATE '".i18n::$collation."'";
-		foreach (explode(' ', i18n::$alphabet) as $letter2) {
+		$query.=" WHERE n_file=? AND n_sort LIKE '{$letter}%' COLLATE '".WT_I18N::$collation."'";
+		foreach (explode(' ', WT_I18N::$alphabet) as $letter2) {
 			if ($letter!=$letter2 && strpos($letter, $letter2)!==0) {
-				$query.=" AND n_sort NOT LIKE '{$letter2}%' COLLATE '".i18n::$collation."'";
+				$query.=" AND n_sort NOT LIKE '{$letter2}%' COLLATE '".WT_I18N::$collation."'";
 			}
 		}
 		$alphas[$letter]=WT_DB::prepare($query)->execute(array(WT_GED_ID))->fetchOne();
@@ -211,8 +211,8 @@ function get_indilist_salpha($marnm, $fams, $ged_id) {
 		$query.=" JOIN `##link` ON (i_id=l_from AND i_file=l_file AND l_type='FAMS')";
 	}
 	$query.=" WHERE n_file=?";
-	foreach (explode(' ', i18n::$alphabet) as $letter) {
-		$query.=" AND n_surn NOT LIKE '{$letter}%' COLLATE '".i18n::$collation."'";
+	foreach (explode(' ', WT_I18N::$alphabet) as $letter) {
+		$query.=" AND n_surn NOT LIKE '{$letter}%' COLLATE '".WT_I18N::$collation."'";
 	}
 	$query.=" GROUP BY LEFT(n_surn, 1)";
 	foreach (WT_DB::prepare($query)->execute(array(WT_GED_ID))->fetchAssoc() as $letter=>$count) {
@@ -244,7 +244,7 @@ function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
 	$alphas=array();
 	// This logic relies on the database's collation rules to ensure that accented letters
 	// and digraphs appear in the correct listing.
-	foreach (explode(' ', i18n::$alphabet) as $letter) {
+	foreach (explode(' ', WT_I18N::$alphabet) as $letter) {
 		$query="SELECT COUNT(DISTINCT i_id) FROM `##individuals`";
 		if ($marnm) {
 			$query.=" JOIN `##name` ON (i_id=n_id AND i_file=n_file)";
@@ -256,14 +256,14 @@ function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
 		}
 		$query.=" WHERE n_file=?";
 		if ($surn) {
-			$query.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
+			$query.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".WT_I18N::$collation."'";
 		} elseif ($salpha) {
-			$query.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".i18n::$collation."'";
+			$query.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".WT_I18N::$collation."'";
 		}
-		$query.=" AND n_givn LIKE '".$letter."%' COLLATE '".i18n::$collation."'";
-		foreach (explode(' ', i18n::$alphabet) as $letter2) {
+		$query.=" AND n_givn LIKE '".$letter."%' COLLATE '".WT_I18N::$collation."'";
+		foreach (explode(' ', WT_I18N::$alphabet) as $letter2) {
 			if ($letter!=$letter2 && strpos($letter, $letter2)!==0) {
-				$query.=" AND n_givn NOT LIKE '{$letter2}%' COLLATE '".i18n::$collation."'";
+				$query.=" AND n_givn NOT LIKE '{$letter2}%' COLLATE '".WT_I18N::$collation."'";
 			}
 		}
 		$alphas[$letter]=WT_DB::prepare($query)->execute(array(WT_GED_ID))->fetchOne();
@@ -283,13 +283,13 @@ function get_indilist_galpha($surn, $salpha, $marnm, $fams, $ged_id) {
 	}
 	$query.=" WHERE n_file=?";
 	if ($surn) {
-		$query.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
+		$query.=" AND n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".WT_I18N::$collation."'";
 	} elseif ($salpha) {
-		$query.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".i18n::$collation."'";
+		$query.=" AND n_sort LIKE ".WT_DB::quote("{$salpha}%,%")." COLLATE '".WT_I18N::$collation."'";
 	}
-	$query.=" AND n_givn LIKE '".$letter."%' COLLATE '".i18n::$collation."'";
-	foreach (explode(' ', i18n::$alphabet) as $letter) {
-		$query.=" AND n_givn NOT LIKE '{$letter}%' COLLATE '".i18n::$collation."'";
+	$query.=" AND n_givn LIKE '".$letter."%' COLLATE '".WT_I18N::$collation."'";
+	foreach (explode(' ', WT_I18N::$alphabet) as $letter) {
+		$query.=" AND n_givn NOT LIKE '{$letter}%' COLLATE '".WT_I18N::$collation."'";
 	}
 	$query.=" GROUP BY LEFT(n_givn, 1)";
 	foreach (WT_DB::prepare($query)->execute(array(WT_GED_ID))->fetchAssoc() as $letter=>$count) {
@@ -333,18 +333,18 @@ function get_indilist_surns($surn, $salpha, $marnm, $fams, $ged_id) {
 	} elseif ($surn) {
 		// Specific surname
 		$sql.=
-			" AND n_surn LIKE ".WT_DB::quote($surn)." COLLATE '".i18n::$collation."'".
-			" ORDER BY n_surn COLLATE '".i18n::$collation."'";
+			" AND n_surn LIKE ".WT_DB::quote($surn)." COLLATE '".WT_I18N::$collation."'".
+			" ORDER BY n_surn COLLATE '".WT_I18N::$collation."'";
 	} elseif ($salpha) {
 		// Surname initial
 		$sql.=
-			" AND n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'".
-			" ORDER BY n_surn COLLATE '".i18n::$collation."'";
+			" AND n_surn LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".WT_I18N::$collation."'".
+			" ORDER BY n_surn COLLATE '".WT_I18N::$collation."'";
 	} else {
 		// All surnames
 		$sql.=
 			" AND n_surn NOT IN ('', '@N.N.')".
-			" ORDER BY n_surn COLLATE '".i18n::$collation."'";
+			" ORDER BY n_surn COLLATE '".WT_I18N::$collation."'";
 	}
 
 	$list=array();
@@ -389,32 +389,32 @@ function get_indilist_indis($surn='', $salpha='', $galpha='', $marnm=false, $fam
 	if ($surn) {
 		// Match a surname, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},{$galpha}%")." COLLATE '".i18n::$collation."'";
+			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},{$galpha}%")." COLLATE '".WT_I18N::$collation."'";
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".i18n::$collation."'";
+			$where[]="n_sort LIKE ".WT_DB::quote("{$surn},%")." COLLATE '".WT_I18N::$collation."'";
 		}
 	} elseif ($salpha==',') {
 		// Match a surname-less name, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote(",{$galpha}%")." COLLATE '".i18n::$collation."'";
+			$where[]="n_sort LIKE ".WT_DB::quote(",{$galpha}%")." COLLATE '".WT_I18N::$collation."'";
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote(",%")." COLLATE '".i18n::$collation."'";
+			$where[]="n_sort LIKE ".WT_DB::quote(",%")." COLLATE '".WT_I18N::$collation."'";
 		}
 	} elseif ($salpha) {
 		// Match a surname initial, with or without a given initial
 		if ($galpha) {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%,{$galpha}%")." COLLATE '".i18n::$collation."'";
+			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%,{$galpha}%")." COLLATE '".WT_I18N::$collation."'";
 		} else {
-			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".i18n::$collation."'";
+			$where[]="n_sort LIKE ".WT_DB::quote("{$salpha}%")." COLLATE '".WT_I18N::$collation."'";
 		}
 	} elseif ($galpha) {
 		// Match all surnames with a given initial
-		$where[]="n_sort LIKE ".WT_DB::quote("%,{$galpha}%")." COLLATE '".i18n::$collation."'";
+		$where[]="n_sort LIKE ".WT_DB::quote("%,{$galpha}%")." COLLATE '".WT_I18N::$collation."'";
 	} else {
 		// Match all individuals
 	}
 
-	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".i18n::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".i18n::$collation."'";
+	$sql.=" WHERE ".implode(' AND ', $where)." ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '".WT_I18N::$collation."', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '".WT_I18N::$collation."'";
 
 	$list=array();
 	$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -526,7 +526,7 @@ function fetch_linked_indi($xref, $link, $ged_id) {
 		" JOIN `##link` ON (i_file=l_file AND i_id=l_from)".
 		" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)".
 		" WHERE i_file=? AND l_type=? AND l_to=?".
-		" ORDER BY n_sort COLLATE '".i18n::$collation."'"
+		" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -558,7 +558,7 @@ function fetch_linked_note($xref, $link, $ged_id) {
 		" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
 		" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
 		" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?".
-		" ORDER BY n_sort COLLATE '".i18n::$collation."'"
+		" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -574,7 +574,7 @@ function fetch_linked_sour($xref, $link, $ged_id) {
 			" JOIN `##link` ON (s_file=l_file AND s_id=l_from)".
 			" LEFT JOIN `##name` ON (s_file=n_file AND s_id=n_id AND n_num=0)".
 			" WHERE s_file=? AND l_type=? AND l_to=?".
-			" ORDER BY n_sort COLLATE '".i18n::$collation."'"
+			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
 		)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -590,7 +590,7 @@ function fetch_linked_obje($xref, $link, $ged_id) {
 		" JOIN `##link` ON (m_gedfile=l_file AND m_media=l_from)".
 		" LEFT JOIN `##name` ON (m_gedfile=n_file AND m_media=n_id AND n_num=0)".
 		" WHERE m_gedfile=? AND l_type=? AND l_to=?".
-		" ORDER BY n_sort COLLATE '".i18n::$collation."'"
+		" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
 	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
 
 	$list=array();
@@ -1006,7 +1006,7 @@ function search_indis($query, $geds, $match, $skip) {
 
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]="i_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
+		$querysql[]="i_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
 	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex FROM `##individuals` WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
@@ -1060,7 +1060,7 @@ function search_indis_names($query, $geds, $match) {
 	// Convert the query into a SQL expression
 	$querysql=array();
 	foreach ($query as $q) {
-		$querysql[]="n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
+		$querysql[]="n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 	$sql="SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, n_num FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (".implode(" {$match} ", $querysql).') AND i_file IN ('.implode(',', $geds).')';
 
@@ -1278,7 +1278,7 @@ function search_fams($query, $geds, $match, $skip) {
 
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]="f_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
+		$querysql[]="f_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
 	$sql="SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` WHERE (".implode(" {$match} ", $querysql).') AND f_file IN ('.implode(',', $geds).')';
@@ -1332,7 +1332,7 @@ function search_fams_names($query, $geds, $match) {
 	// Convert the query into a SQL expression
 	$querysql=array();
 	foreach ($query as $q) {
-		$querysql[]="(husb.n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."' OR wife.n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."')";
+		$querysql[]="(husb.n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."' OR wife.n_full LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."')";
 	}
 
 	$sql="SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` LEFT OUTER JOIN `##name` husb ON f_husb=husb.n_id AND f_file=husb.n_file LEFT OUTER JOIN `##name` wife ON f_wife=wife.n_id AND f_file=wife.n_file WHERE (".implode(" {$match} ", $querysql).') AND f_file IN ('.implode(',', $geds).')';
@@ -1383,7 +1383,7 @@ function search_sources($query, $geds, $match, $skip) {
 
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]="s_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
+		$querysql[]="s_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
 	$sql="SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec FROM `##sources` WHERE (".implode(" {$match} ", $querysql).') AND s_file IN ('.implode(',', $geds).')';
@@ -1442,7 +1442,7 @@ function search_notes($query, $geds, $match, $skip) {
 
 	foreach ($query as $q) {
 		$queryregex[]=preg_quote(utf8_strtoupper($q), '/');
-		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".i18n::$collation."'";
+		$querysql[]="o_gedcom LIKE ".WT_DB::quote("%{$q}%")." COLLATE '".WT_I18N::$collation."'";
 	}
 
 	$sql="SELECT 'NOTE' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec FROM `##other` WHERE (".implode(" {$match} ", $querysql).") AND o_type='NOTE' AND o_file IN (".implode(',', $geds).')';
@@ -1656,7 +1656,7 @@ function delete_fact($linenum, $pid, $gedrec) {
 	if (!empty($linenum)) {
 		if ($linenum==0) {
 			delete_gedrec($pid, WT_GED_ID);
-			echo i18n::translate('GEDCOM record successfully deleted.');
+			echo WT_I18N::translate('GEDCOM record successfully deleted.');
 		} else {
 			$gedlines = explode("\n", $gedrec);
 			// NOTE: The array_pop is used to kick off the last empty element on the array

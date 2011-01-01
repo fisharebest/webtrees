@@ -1,43 +1,39 @@
 <?php
-/**
- * Class to support internationalisation (i18n) functionality.
- *
- * Copyright (C) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @author Greg Roach
- * @version $Id$
- *
- * We use gettext to provide translation.  You should configure xgettext to
- * search for:
- * translate()
- * plural()
- *
- * We wrap the Zend_Translate gettext library, to allow us to add extra
- * functionality, such as mixed RTL and LTR text.
- */
+// Class to support internationalisation (i18n) functionality.
+//
+// Copyright (C) 2010 Greg Roach
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @author Greg Roach
+// @version $Id$
+//
+// We use gettext to provide translation.  You should configure xgettext to
+// search for:
+// translate()
+// plural()
+//
+// We wrap the Zend_Translate gettext library, to allow us to add extra
+// functionality, such as mixed RTL and LTR text.
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-define('WT_CLASS_I18N_PHP', '');
-
-class i18n {
+class WT_I18N {
 	static private $locale='';
 	static private $dir='';
 	static private $list_separator;
@@ -132,15 +128,15 @@ class i18n {
 		self::$dir=$TEXT_DIRECTION;
 
 		// I18N: This is a space separated list of initial letters for lists of names, etc.  Multi-letter characters are OK, e.g. "A B C CS D DZ DZS E F G GY H ..."  You may use upper/lowers case, such as "D Dz Dzs".
-		self::$alphabet=i18n::translate('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z');
+		self::$alphabet=WT_I18N::translate('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z');
 
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-		self::$collation=i18n::translate('utf8_unicode_ci');
+		self::$collation=WT_I18N::translate('utf8_unicode_ci');
 
 		// I18N: This is the puncutation symbol used to separate the first items in a list.  e.g. the <comma><space> in "red, green, yellow and blue"
-		self::$list_separator=i18n::noop('LANGUAGE_LIST_SEPARATOR');
+		self::$list_separator=WT_I18N::noop('LANGUAGE_LIST_SEPARATOR');
 		// I18N: This is the puncutation symbol used to separate the final items in a list.  e.g. the <space>and<space> in "red, green, yellow and blue"
-		self::$list_separator_last=i18n::noop('LANGUAGE_LIST_SEPARATOR_LAST');
+		self::$list_separator_last=WT_I18N::noop('LANGUAGE_LIST_SEPARATOR_LAST');
 
 		return $locale;
 	}
@@ -191,14 +187,14 @@ class i18n {
 		return 'lang="'.$lang.'" xml:lang="'.$lang.'" dir="'.$dir.'"';
 	}
 
-	// echo i18n::translate('Hello World!');
-	// echo i18n::translate('The %s sat on the mat', 'cat');
+	// echo WT_I18N::translate('Hello World!');
+	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
 	static public function translate(/* var_args */) {
 		$args=func_get_args();
 		$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
 		foreach ($args as &$arg) {
 			if (is_array($arg)) {
-				$arg=i18n::make_list($arg);
+				$arg=WT_I18N::make_list($arg);
 			}
 		}
 		foreach ($args as $n=>&$arg) {
@@ -228,8 +224,8 @@ class i18n {
 	}
 
 	// Context sensitive version of translate.
-	// echo i18n::translate_c('NOMINATIVE', 'January');
-	// echo i18n::translate_c('GENITIVE',   'January');
+	// echo WT_I18N::translate_c('NOMINATIVE', 'January');
+	// echo WT_I18N::translate_c('GENITIVE',   'January');
 	static public function translate_c(/* var_args */) {
 		$args=func_get_args();
 		$msgid=$args[0]."\x04".$args[1];
@@ -241,7 +237,7 @@ class i18n {
 		unset ($args[1]);
 		foreach ($args as &$arg) {
 			if (is_array($arg)) {
-				$arg=i18n::make_list($arg);
+				$arg=WT_I18N::make_list($arg);
 			}
 		}
 		// TODO: for each embedded string, if the text-direction is the opposite of the
@@ -258,9 +254,9 @@ class i18n {
 		return Zend_Registry::get('Zend_Translate')->_($string);
 	}
 
-	// echo i18n::plural('There is an error', 'There are errors', $num_errors);
-	// echo i18n::plural('There is one error', 'There are %d errors', $num_errors);
-	// echo i18n::plural('There is %$1d %$2s cat', 'There are %$1d %$2s cats', $num, $num, $colour);
+	// echo WT_I18N::plural('There is an error', 'There are errors', $num_errors);
+	// echo WT_I18N::plural('There is one error', 'There are %d errors', $num_errors);
+	// echo WT_I18N::plural('There is %$1d %$2s cat', 'There are %$1d %$2s cats', $num, $num, $colour);
 	static public function plural(/* var_args */) {
 		$args=func_get_args();
 		$string=Zend_Registry::get('Zend_Translate')->plural($args[0], $args[1], $args[2]);
@@ -293,33 +289,33 @@ class i18n {
 		switch ($string) {
 		case 'STILLBORN':
 			// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (stillborn)
-			return i18n::translate('(stillborn)');
+			return WT_I18N::translate('(stillborn)');
 		case 'INFANT':
 			// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (in infancy)
-			return i18n::translate('(in infancy)');
+			return WT_I18N::translate('(in infancy)');
 		case 'CHILD':
 			// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (in childhood)
-			return i18n::translate('(in childhood)');
+			return WT_I18N::translate('(in childhood)');
 		}
 		$age=array();
 		if (preg_match('/(\d+)y/', $string, $match)) {
 			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
 			$years=$match[1];
-			$age[]=i18n::plural('%d year', '%d years', $years, $years);
+			$age[]=WT_I18N::plural('%d year', '%d years', $years, $years);
 		} else {
 			$years=-1;
 		}
 		if (preg_match('/(\d+)m/', $string, $match)) {
 			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
-			$age[]=i18n::plural('%d month', '%d months', $match[1], $match[1]);
+			$age[]=WT_I18N::plural('%d month', '%d months', $match[1], $match[1]);
 		}
 		if (preg_match('/(\d+)w/', $string, $match)) {
 			// I18N: Part of an age string. e.g 7 weeks and 3 days
-			$age[]=i18n::plural('%d week', '%d weeks', $match[1], $match[1]);
+			$age[]=WT_I18N::plural('%d week', '%d weeks', $match[1], $match[1]);
 		}
 		if (preg_match('/(\d+)d/', $string, $match)) {
 			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
-			$age[]=i18n::plural('%d day', '%d days', $match[1], $match[1]);
+			$age[]=WT_I18N::plural('%d day', '%d days', $match[1], $match[1]);
 		}
 		// If an age is just a number of years, only show the number
 		if (count($age)==1 && $years>=0) {
@@ -328,17 +324,17 @@ class i18n {
 		if ($age) {
 			if (!substr_compare($string, '<', 0, 1)) {
 				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged less than 21 years)
-				return i18n::translate('(aged less than %s)', $age);
+				return WT_I18N::translate('(aged less than %s)', $age);
 			} elseif (!substr_compare($string, '>', 0, 1)) {
 				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged more than 21 years)
-				return i18n::translate('(aged more than %s)', $age);
+				return WT_I18N::translate('(aged more than %s)', $age);
 			} else {
 				// I18N: Description of someone's age at an event.  e.g Died 14 Jan 1900 (aged 43 years)
-				return i18n::translate('(aged %s)', $age);
+				return WT_I18N::translate('(aged %s)', $age);
 			}
 		} else {
 			// Not a valid string?
-			return i18n::translate('(aged %s)', $string);
+			return WT_I18N::translate('(aged %s)', $string);
 		}
 	}
 
@@ -387,21 +383,21 @@ class i18n {
 		// We must AVOID combining phrases to make sentences.
 		if ($seconds>$year) {
 			$years=floor($seconds/$year);
-			return i18n::plural('%d year ago', '%d years ago', $years, $years);
+			return WT_I18N::plural('%d year ago', '%d years ago', $years, $years);
 		} elseif ($seconds>$month) {
 			$months=floor($seconds/$month);
-			return i18n::plural('%d month ago', '%d months ago', $months, $months);
+			return WT_I18N::plural('%d month ago', '%d months ago', $months, $months);
 		} elseif ($seconds>$day) {
 			$days=floor($seconds/$day);
-			return i18n::plural('%d day ago', '%d days ago', $days, $days);
+			return WT_I18N::plural('%d day ago', '%d days ago', $days, $days);
 		} elseif ($seconds>$hour) {
 			$hours=floor($seconds/$hour);
-			return i18n::plural('%d hour ago', '%d hours ago', $hours, $hours);
+			return WT_I18N::plural('%d hour ago', '%d hours ago', $hours, $hours);
 		} elseif ($seconds>$minute) {
 			$minutes=floor($seconds/$minute);
-			return i18n::plural('%d minute ago', '%d minutes ago', $minutes, $minutes);
+			return WT_I18N::plural('%d minute ago', '%d minutes ago', $minutes, $minutes);
 		} else {
-			return i18n::plural('%d second ago', '%d seconds ago', $seconds, $seconds);
+			return WT_I18N::plural('%d second ago', '%d seconds ago', $seconds, $seconds);
 		}
 	}
 }

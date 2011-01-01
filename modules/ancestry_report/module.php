@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class ancestry_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Ancestry Report');
+		return WT_I18N::translate('Ancestry Report');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Prints an Ancestral report for the selected individual');
+		return WT_I18N::translate('Prints an Ancestral report for the selected individual');
 	}
 
 	// Extend class WT_Module

@@ -50,24 +50,24 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 	} else {
 		switch ($linkto) {
 		case 'person':
-			$toitems = i18n::translate('To Person');
+			$toitems = WT_I18N::translate('To Person');
 			break;
 		case 'family':
-			$toitems = i18n::translate('To Family');
+			$toitems = WT_I18N::translate('To Family');
 			break;
 		case 'source':
-			$toitems = i18n::translate('To Source');
+			$toitems = WT_I18N::translate('To Source');
 			break;
 		case 'repository':
-			$toitems = i18n::translate('To Repository');
+			$toitems = WT_I18N::translate('To Repository');
 			break;
 		case 'note':
-			$toitems = i18n::translate('To Shared Note');
+			$toitems = WT_I18N::translate('To Shared Note');
 			break;
 		}
 	}
 
-	print_simple_header(i18n::translate('Link media')." ".$toitems);
+	print_simple_header(WT_I18N::translate('Link media')." ".$toitems);
 
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -115,8 +115,8 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
 		echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 		echo '<tr><td class="topbottombar" colspan="2">';
-		echo i18n::translate('Link media'), help_link('add_media_linkid'), ' ', $toitems;
-		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', i18n::translate('Media ID'), '</td>';
+		echo WT_I18N::translate('Link media'), help_link('add_media_linkid'), ' ', $toitems;
+		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media ID'), '</td>';
 		echo '<td class="optionbox wrap">';
 		if (!empty($mediaid)) {
 			//-- Get the title of this existing Media item
@@ -142,7 +142,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		echo '<tr><td class="descriptionbox">';
 
 		if ($linkto == "person") {
-			echo i18n::translate('Enter Individual ID'), "</td>";
+			echo WT_I18N::translate('Enter Individual ID'), "</td>";
 			echo '<td class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '" />';
@@ -157,7 +157,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 
 		if ($linkto == "family") {
-			echo i18n::translate('Family'), '</td>';
+			echo WT_I18N::translate('Family'), '</td>';
 			echo '<td class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '" />';
@@ -172,7 +172,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 
 		if ($linkto == "source") {
-			echo i18n::translate('Source'), "</td>";
+			echo WT_I18N::translate('Source'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '" />';
@@ -186,7 +186,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 			}
 		}
 		if ($linkto == "repository") {
-			echo i18n::translate('Repository'), "</td>";
+			echo WT_I18N::translate('Repository'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '" />';
@@ -200,7 +200,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 
 		if ($linkto == "note") {
-			echo i18n::translate('Shared note'), "</td>";
+			echo WT_I18N::translate('Shared note'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '" />';
@@ -214,18 +214,18 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 
 		echo '</td></tr>';
-		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', i18n::translate('Set link'), '" /></td></tr>';
+		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Set link'), '" /></td></tr>';
 		echo '</table>';
 		echo '</form>';
-		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', i18n::translate('Close Window'), '</a><br /></center>';
+		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
 		print_simple_footer();
 	} elseif ($action == "update" && $paramok) {
 		linkMedia($mediaid, $linktoid);
-		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', i18n::translate('Close Window'), '</a><br /></center>';
+		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
 		print_simple_footer();
 	} else {
 		echo '<center>nothing to do<center>';
-		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', i18n::translate('Close Window'), '</a><br /></center>';
+		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
 		print_simple_footer();
 	}
 }

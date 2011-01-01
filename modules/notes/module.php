@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Notes');
+		return WT_I18N::translate('Notes');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the notes of an individual.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the notes of an individual.');
 	}
 
 	// Implement WT_Module_Tab
@@ -66,7 +66,7 @@ if (!$this->controller->indi->canDisplayDetails()) {
 			type="checkbox"
 			<?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?>
 			onclick="toggleByClassName('TR', 'row_note2');" /> <label
-			for="checkbox_note2"><?php echo i18n::translate('Show all notes'); ?></label>
+			for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
 			<?php echo help_link('show_fact_sources'); ?>
 		</td>
 	</tr>
@@ -94,21 +94,21 @@ if (!$this->controller->indi->canDisplayDetails()) {
 			print_main_notes($factrec->getGedcomRecord(), $i, $this->controller->pid, $factrec->getLineNumber(), true);
 		}
 	}
-	if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".i18n::translate('There are no Notes for this individual.')."</td></tr>";
+	if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
 	//-- New Note Link
 	if ($this->controller->indi->canEdit()) {
 		?>
 	<tr>
-		<td class="facts_label"><?php echo i18n::translate('Add Note'), help_link('add_note'); ?></td>
+		<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
 		<td class="facts_value"><a href="javascript:;"
-			onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo i18n::translate('Add a new note'); ?></a>
+			onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
 		<br />
 		</td>
 	</tr>
 	<tr>
-		<td class="facts_label"><?php echo i18n::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
+		<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
 		<td class="facts_value"><a href="javascript:;"
-			onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo i18n::translate('Add a new shared note'); ?></a>
+			onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
 		<br />
 		</td>
 	</tr>

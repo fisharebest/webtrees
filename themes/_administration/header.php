@@ -27,7 +27,7 @@ if (!defined('WT_WEBTREES')) {
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ', i18n::html_markup(), '>',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
@@ -39,9 +39,9 @@ echo
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
-	'<div id="title"><a href="admin.php">', i18n::translate('Administration'), '</a></div>',
+	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
 	'<div id="links">',
-	'<a href="index.php">', i18n::translate('My page'), '</a> | ',
+	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
 	logout_link(),
 	'<span>';
 	$language_menu=WT_MenuBar::getLanguageMenu();
@@ -50,41 +50,41 @@ echo
 		}
 	echo '</span>';
 	if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-	echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', i18n::translate('Pending changes'), '</a></li>';
+	echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 	}
 	echo '</div>',
 	'<div id="info">',
 	WT_WEBTREES, ' ', WT_VERSION_TEXT,
 	'<br />',
-	i18n::translate('Current Server Time:'), ' ', format_timestamp(time()),
+	WT_I18N::translate('Current Server Time:'), ' ', format_timestamp(time()),
 	'<br />',
-	i18n::translate('Current User Time:'), ' ', format_timestamp(client_time()),
+	WT_I18N::translate('Current User Time:'), ' ', format_timestamp(client_time()),
 	'</div>',
 	'</div>',
 // Side menu 
 	'<div id="admin_menu" class="ui-widget-content">',
 	'<ul>',
 	'<li><a ', (WT_SCRIPT_NAME=="admin.php" ? 'class="current" ' : ''), 'href="admin.php">',
-	i18n::translate('Administration'),
+	WT_I18N::translate('Administration'),
 	'</a></li>';
 if (WT_USER_IS_ADMIN) {
 	echo
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_config.php" ? 'class="current" ' : ''), 'href="admin_site_config.php">',
-		i18n::translate('Server configuration'),
+		WT_I18N::translate('Server configuration'),
 		'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_logs.php" ? 'class="current" ' : ''), 'href="admin_site_logs.php">',
-		i18n::translate('Logs'),
+		WT_I18N::translate('Logs'),
 		'</a></li>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_site_readme.php" ? 'class="current" ' : ''), 'href="admin_site_readme.php">', i18n::translate('README documentation'), '</a></li>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_site_info.php" ? 'class="current" ' : ''), 'href="admin_site_info.php?action=phpinfo">', i18n::translate('PHP information'), '</a></li>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_site_manageservers.php" ? 'class="current" ' : ''), 'href="admin_site_ipaddress.php">', i18n::translate('Manage sites'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_site_readme.php" ? 'class="current" ' : ''), 'href="admin_site_readme.php">', WT_I18N::translate('README documentation'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_site_info.php" ? 'class="current" ' : ''), 'href="admin_site_info.php?action=phpinfo">', WT_I18N::translate('PHP information'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_site_manageservers.php" ? 'class="current" ' : ''), 'href="admin_site_ipaddress.php">', WT_I18N::translate('Manage sites'), '</a></li>',
 		'</ul></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_trees_manage.php" ? 'class="current" ' : ''), 'href="admin_trees_manage.php">',
-		i18n::translate('Family trees'),
+		WT_I18N::translate('Family trees'),
 		'</a></li>';
 } else {
-	echo '<li>', i18n::translate('Family trees'), '</li>';
+	echo '<li>', WT_I18N::translate('Family trees'), '</li>';
 }
 echo '<li><ul>';
 //-- gedcom list
@@ -100,40 +100,40 @@ echo '</ul></li>';
 if (WT_USER_IS_ADMIN) {
 	echo
 		'<li><a ', (WT_SCRIPT_NAME=="admin_users_list.php" ? 'class="current" ' : ''), 'href="useradmin.php">',
-		i18n::translate('Users'),
+		WT_I18N::translate('Users'),
 		'</a></li>',
 		'<li><ul>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_users_add.php" ? 'class="current" ' : ''), 'href="admin_users_add.php?action=createform">', i18n::translate('Add user'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_users_add.php" ? 'class="current" ' : ''), 'href="admin_users_add.php?action=createform">', WT_I18N::translate('Add user'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="#" ? 'class="current" ' : ''), 'href="useradmin.php">',
-		i18n::translate('Bulk messaging'),
+		WT_I18N::translate('Bulk messaging'),
 		'</a></li>',
 		'</ul></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_media.php" ? 'class="current" ' : ''), 'href="admin_media.php">',
-		i18n::translate('Media'),
+		WT_I18N::translate('Media'),
 		'</a></li>',
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_media_upload.php" ? 'class="current" ' : ''), 'href="admin_media_upload.php">',
-		i18n::translate('Upload media files'),
+		WT_I18N::translate('Upload media files'),
 		'</a></li>',
 		'</ul></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_modules.php" ? 'class="current" ' : ''), 'href="admin_modules.php">',
-		i18n::translate('Modules'),
+		WT_I18N::translate('Modules'),
 		'</a></li>',
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_menus.php" ? 'class="current" ' : ''), 'href="admin_module_menus.php">',
-		i18n::translate('Menus'),
+		WT_I18N::translate('Menus'),
 		'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_tabs.php" ? 'class="current" ' : ''), 'href="admin_module_tabs.php">',
-		i18n::translate('Tabs'),
+		WT_I18N::translate('Tabs'),
 		'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_blocks.php" ? 'class="current" ' : ''), 'href="admin_module_blocks.php">',
-		i18n::translate('Blocks'),
+		WT_I18N::translate('Blocks'),
 		'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_sidebar.php" ? 'class="current" ' : ''), 'href="admin_module_sidebar.php">',
-		i18n::translate('Sidebar'),
+		WT_I18N::translate('Sidebar'),
 		'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_module_reports.php" ? 'class="current" ' : ''), 'href="admin_module_reports.php">',
-		i18n::translate('Reports'),
+		WT_I18N::translate('Reports'),
 		'</a></li>',
 		'</ul></li>';
 	foreach (WT_Module::getInstalledModules() as $module) {

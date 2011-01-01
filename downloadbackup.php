@@ -35,7 +35,7 @@ $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
 $fname=safe_GET('fname');
 
 if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
-	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	exit;
 }
 

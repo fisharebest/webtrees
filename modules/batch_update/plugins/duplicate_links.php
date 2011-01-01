@@ -34,11 +34,11 @@ if (!defined('WT_WEBTREES')) {
 
 class duplicate_links_bu_plugin extends base_plugin {
 	static function getName() {
-		return i18n::translate('Remove duplicate links');
+		return WT_I18N::translate('Remove duplicate links');
 	}
 
 	static function getDescription() {
-		return i18n::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
+		return WT_I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
 	}
 
 	// Default is to operate on INDI records

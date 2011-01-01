@@ -57,7 +57,7 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $success=false; // If successful, we close this window automatically
 
-print_simple_header(i18n::translate('Add a new media item'));
+print_simple_header(WT_I18N::translate('Add a new media item'));
 $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {
@@ -73,21 +73,21 @@ if ($action=='update' || $action=='newentry') {
 }
 
 if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
-	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	//-- display messages as to why the editing access was denied
 	if (!WT_USER_CAN_EDIT) {
-		echo '<br />', i18n::translate('This user name cannot edit this GEDCOM.');
+		echo '<br />', WT_I18N::translate('This user name cannot edit this GEDCOM.');
 	}
 	if (!$ALLOW_EDIT_GEDCOM) {
-		echo '<br />', i18n::translate('Editing this GEDCOM has been disabled by the administrator.');
+		echo '<br />', WT_I18N::translate('Editing this GEDCOM has been disabled by the administrator.');
 	}
 	if (!$disp) {
-		echo '<br />', i18n::translate('Privacy settings prevent you from editing this record.');
+		echo '<br />', WT_I18N::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) {
-			echo '<br />', i18n::translate('You have no access to'), ' pid ', $pid;
+			echo '<br />', WT_I18N::translate('You have no access to'), ' pid ', $pid;
 		}
 	}
-	echo '<br /><br /><div class="center"><a href="javascript: ', i18n::translate('Close Window'), '" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', i18n::translate('Close Window'), '</a></div>';
+	echo '<br /><br /><div class="center"><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
 	print_simple_footer();
 	exit;
 }
@@ -123,7 +123,7 @@ echo WT_JS_START;
 		if (value.substr(0, 1) == "/") value = value.substr(1, value.length-1);
 		result = value.split("/");
 		if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
-			alert('<?php echo i18n::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS); ?>');
+			alert('<?php echo WT_I18N::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS); ?>');
 			folder.focus();
 			return false;
 		}
@@ -193,11 +193,11 @@ if ($action=='newentry') {
 			$newFile = $realFolderName.$mediaFile;
 			// Copy main media file into the destination directory
 			if (file_exists(filename_decode($newFile))) {
-				$error .= i18n::translate('Media file already exists.').'&nbsp;&nbsp;'.$newFile.'<br />';
+				$error .= WT_I18N::translate('Media file already exists.').'&nbsp;&nbsp;'.$newFile.'<br />';
 			} else {
 				if (!move_uploaded_file($_FILES['mediafile']['tmp_name'], filename_decode($newFile))) {
 					// the file cannot be copied
-					$error .= i18n::translate('There was an error uploading your file.').'<br />'.file_upload_error_text($_FILES['mediafile']['error']).'<br />';
+					$error .= WT_I18N::translate('There was an error uploading your file.').'<br />'.file_upload_error_text($_FILES['mediafile']['error']).'<br />';
 				} else {
 					@chmod(filename_decode($newFile), WT_PERM_FILE);
 					AddToLog("Media file {$folderName}{$mediaFile} uploaded", 'media');
@@ -208,11 +208,11 @@ if ($action=='newentry') {
 			$newThum = $realThumbFolderName.$mediaFile;
 			// Copy user-supplied thumbnail file into the destination directory
 			if (file_exists(filename_decode($newThum))) {
-				$error .= i18n::translate('Media thumbnail already exists.').'&nbsp;&nbsp;'.$newThum.'<br />';
+				$error .= WT_I18N::translate('Media thumbnail already exists.').'&nbsp;&nbsp;'.$newThum.'<br />';
 			} else {
 				if (!move_uploaded_file($_FILES['thumbnail']['tmp_name'], filename_decode($newThum))) {
 					// the file cannot be copied
-					$error .= i18n::translate('There was an error uploading your file.').'<br />'.file_upload_error_text($_FILES['thumbnail']['error']).'<br />';
+					$error .= WT_I18N::translate('There was an error uploading your file.').'<br />'.file_upload_error_text($_FILES['thumbnail']['error']).'<br />';
 				} else {
 					@chmod(filename_decode($newThum), WT_PERM_FILE);
 					AddToLog("Media file {$thumbFolderName}{$mediaFile} uploaded", 'media');
@@ -223,7 +223,7 @@ if ($action=='newentry') {
 			// Copy user-supplied thumbnail file into the main destination directory
 			if (!copy(filename_decode($whichFile1), filename_decode($whichFile2))) {
 				// the file cannot be copied
-				$error .= i18n::translate('There was an error uploading your file.').'<br />'.i18n::translate('The file %s could not be copied from %s', $realThumbFolderName.$mediaFile, $realThumbFolderName.$mediaFile).'<br />';
+				$error .= WT_I18N::translate('There was an error uploading your file.').'<br />'.WT_I18N::translate('The file %s could not be copied from %s', $realThumbFolderName.$mediaFile, $realThumbFolderName.$mediaFile).'<br />';
 			} else {
 				@chmod(filename_decode($whichFile2), WT_PERM_FILE);
 				AddToLog("Media file {$folderName}{$mediaFile} copied from {$thumbFolderName}{$mediaFile}", 'media');
@@ -239,9 +239,9 @@ if ($action=='newentry') {
 						$thumbnail = $thumbFolderName.$mediaFile;
 						$okThumb = generate_thumbnail($folderName.$mediaFile, $thumbnail, 'OVERWRITE');
 						if (!$okThumb) {
-							$error .= i18n::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
+							$error .= WT_I18N::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
 						} else {
-							echo i18n::translate('Thumbnail %s generated automatically.', $thumbnail);
+							echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
 							echo '<br />';
 							AddToLog("Media thumbnail {$thumbnail} generated", 'media');
 						}
@@ -272,7 +272,7 @@ if ($action=='newentry') {
 				}
 			}
 			if ($mediaFile=='') {
-				echo '<span class="error">', i18n::translate('Blank name or illegal characters in name'), '</span><br />';
+				echo '<span class="error">', WT_I18N::translate('Blank name or illegal characters in name'), '</span><br />';
 				$finalResult = false;
 			} else $finalResult = true;
 		} else {
@@ -302,11 +302,11 @@ if ($action=='newentry') {
 			$finalResult = true;
 			if ($filename!=$oldFilename || $folder!=$oldFolder) {
 				if ($multi_gedcom) {
-					echo '<span class="error">', i18n::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'), '<br /><br /><b>';
+					echo '<span class="error">', WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'), '<br /><br /><b>';
 					if ($filename!=$oldFilename) {
-						echo i18n::translate('Media file could not be moved or renamed.');
+						echo WT_I18N::translate('Media file could not be moved or renamed.');
 					} else {
-						echo i18n::translate('Media file could not be moved.');
+						echo WT_I18N::translate('Media file could not be moved.');
 					}
 					echo '</b></span><br />';
 					$finalResult = false;
@@ -342,13 +342,13 @@ if ($action=='newentry') {
 					if ($folder!=$oldFolder) $mediaAction = $mediaAction + 2;
 
 					if (!$isMain) {
-						echo i18n::translate(
+						echo WT_I18N::translate(
 							'Media file %s does not exist.',
 							'<span class="filename">'.$oldFolder.$oldFilename.'</span>'
 						);
 					} else {
 						if ($okMain) {
-							echo i18n::translate(
+							echo WT_I18N::translate(
 								'Media file %1$s successfully renamed to %2$s.',
 								'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
 								'<span class="filename">'.$folder.$filename.'</span>'
@@ -356,7 +356,7 @@ if ($action=='newentry') {
 						} else {
 							$finalResult = false;
 							echo '<span class="error">';
-							echo i18n::translate(
+							echo WT_I18N::translate(
 								'Media file %1$s could not be renamed to %2$s.',
 								'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
 								'<span class="filename">'.$folder.$filename.'</span>'
@@ -367,13 +367,13 @@ if ($action=='newentry') {
 					echo '<br />';
 
 					if (!$isThum) {
-						echo i18n::translate(
+						echo WT_I18N::translate(
 							'Thumbnail file %s does not exist.',
 							'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldFolder).$oldFilename.'</span>'
 						);
 					} else {
 						if ($okThum) {
-							echo i18n::translate(
+							echo WT_I18N::translate(
 								'Thumbnail file %1$s successfully renamed to %2$s.',
 								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldFolder).$oldFilename.'</span>',
 								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $folder).$filename.'</span>'
@@ -381,7 +381,7 @@ if ($action=='newentry') {
 						} else {
 							$finalResult = false;
 							echo '<span class="error">';
-							echo i18n::translate(
+							echo WT_I18N::translate(
 								'Thumbnail file %1$s could not be renamed to %2$s.',
 								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldFolder).$oldFilename.'</span>',
 								'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $folder).$filename.'</span>'
@@ -426,13 +426,13 @@ if ($action=='newentry') {
 				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
 				$success=true;
 			} else {
-				echo "<a href=\"javascript://OBJE $mediaid\" onclick=\"openerpasteid('$mediaid'); return false;\">", i18n::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br /><br />";
+				echo "<a href=\"javascript://OBJE $mediaid\" onclick=\"openerpasteid('$mediaid'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br /><br />";
 				echo WT_JS_START;
 				echo "openerpasteid('", $mediaid, "');";
 				echo WT_JS_END;
 			}
 		}
-		echo i18n::translate('Update successful');
+		echo WT_I18N::translate('Update successful');
 	}
 }
 // **** end action 'newentry'
@@ -471,11 +471,11 @@ if ($action == 'update') {
 
 	if ($filename!=$oldFilename || $folder!=$oldFolder) {
 		if ($multi_gedcom) {
-			echo '<span class="error">', i18n::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'), '<br /><br /><b>';
+			echo '<span class="error">', WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'), '<br /><br /><b>';
 			if ($filename!=$oldFilename) {
-				echo i18n::translate('Media file could not be moved or renamed.');
+				echo WT_I18N::translate('Media file could not be moved or renamed.');
 			} else {
-				echo i18n::translate('Media file could not be moved.');
+				echo WT_I18N::translate('Media file could not be moved.');
 			}
 			echo '</b></span><br />';
 			$finalResult = false;
@@ -511,13 +511,13 @@ if ($action == 'update') {
 			if ($folder!=$oldFolder) $mediaAction = $mediaAction + 2;
 
 			if (!$isMain) {
-				echo i18n::translate(
+				echo WT_I18N::translate(
 					'Media file %s does not exist.',
 					'<span class="filename">'.$oldFolder.$oldFilename.'</span>'
 				);
 			} else {
 				if ($okMain) {
-					echo i18n::translate(
+					echo WT_I18N::translate(
 						'Media file %1$s successfully renamed to %2$s.',
 						'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
 						'<span class="filename">'.$folder.$filename.'</span>'
@@ -525,7 +525,7 @@ if ($action == 'update') {
 				} else {
 					$finalResult = false;
 					echo '<span class="error">';
-					echo i18n::translate(
+					echo WT_I18N::translate(
 						'Media file %1$s could not be renamed to %2$s.',
 						'<span class="filename">'.$oldFolder.$oldFilename.'</span>',
 						'<span class="filename">'.$folder.$filename.'</span>'
@@ -536,13 +536,13 @@ if ($action == 'update') {
 			echo '<br />';
 
 			if (!$isThum) {
-				echo i18n::translate(
+				echo WT_I18N::translate(
 					'Thumbnail file %s does not exist.',
 					'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldFolder).$oldFilename.'</span>'
 				);
 			} else {
 				if ($okThum) {
-					echo i18n::translate(
+					echo WT_I18N::translate(
 						'Thumbnail file %1$s successfully renamed to %2$s.',
 						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldFolder).$oldFilename.'</span>',
 						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $folder).$filename.'</span>'
@@ -550,7 +550,7 @@ if ($action == 'update') {
 				} else {
 					$finalResult = false;
 					echo '<span class="error">';
-					echo i18n::translate(
+					echo WT_I18N::translate(
 						'Thumbnail file %1$s could not be renamed to %2$s.',
 						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $oldFolder).$oldFilename.'</span>',
 						'<span class="filename">'.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $folder).$filename.'</span>'
@@ -593,7 +593,7 @@ if ($action == 'update') {
 	}
 
 	if ($finalResult) {
-		echo i18n::translate('Update successful');
+		echo WT_I18N::translate('Update successful');
 		$success=true;
 	}
 }
@@ -603,7 +603,7 @@ if ($action == 'update') {
 if ($action=='delete') {
 	if (delete_gedrec($pid, WT_GED_ID)) {
 		AddToLog('Media ID '.$pid.' successfully deleted.', 'edit');
-		echo i18n::translate('Update successful');
+		echo WT_I18N::translate('Update successful');
 		$success=true;
 	}
 }
@@ -635,7 +635,7 @@ if ($success && !WT_DEBUG) {
 		WT_JS_END;
 } else {
 	echo '<br />';
-	echo '<div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">'.i18n::translate('Close Window').'</a></div>';
+	echo '<div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">'.WT_I18N::translate('Close Window').'</a></div>';
 	echo '<br />';
 }
 print_simple_footer();

@@ -106,7 +106,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 		// Get the query and remove slashes
 		if (isset ($_REQUEST["query"])) {
 			// Reset the "Search" text from the page header
-			if ($_REQUEST["query"] == i18n::translate('Search') || strlen($_REQUEST["query"])<2 || preg_match("/^\.+$/", $_REQUEST["query"])>0) {
+			if ($_REQUEST["query"] == WT_I18N::translate('Search') || strlen($_REQUEST["query"])<2 || preg_match("/^\.+$/", $_REQUEST["query"])>0) {
 				$this->query="";
 				$this->myquery="";
 			} else {
@@ -269,11 +269,11 @@ class WT_Controller_Search extends WT_Controller_Base {
 	function getPageTitle() {
 		switch ($this->action) {
 		case 'general':
-			return i18n::translate('General Search');
+			return WT_I18N::translate('General Search');
 		case 'soundex':
-			return i18n::translate('Soundex Search');
+			return WT_I18N::translate('Soundex Search');
 		case 'replace':
-			return i18n::translate('Search and replace');
+			return WT_I18N::translate('Search and replace');
 		}
 	}
 
@@ -638,7 +638,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_indi_table($datalist, i18n::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_indi_table($datalist, WT_I18N::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
 				// Split families by gedcom
@@ -654,7 +654,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_fam_table($datalist, i18n::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_fam_table($datalist, WT_I18N::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
 				// Split sources by gedcom
@@ -670,7 +670,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_sour_table($datalist, i18n::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_sour_table($datalist, WT_I18N::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
 				// Split notes by gedcom
@@ -686,16 +686,16 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_note_table($datalist, i18n::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_note_table($datalist, WT_I18N::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
 					}
 				}
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);
 			} else
 			if (isset ($this->query)) {
-				echo "<br /><div class=\"warning\" style=\" text-align: center;\"><i>".i18n::translate('No results found.')."</i><br />";
+				echo "<br /><div class=\"warning\" style=\" text-align: center;\"><i>".WT_I18N::translate('No results found.')."</i><br />";
 				if (!isset ($this->srindi) && !isset ($this->srfams) && !isset ($this->srsour) && !isset ($this->srnote)) {
-					echo "<i>".i18n::translate('Be sure to select an option to search for.')."</i><br />";
+					echo "<i>".WT_I18N::translate('Be sure to select an option to search for.')."</i><br />";
 				}
 				echo '</div>';
 			}
@@ -749,7 +749,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 	 * in the query string usually from input values in a form i.e. 'action', 'query', 'showasso' etc.
 	 */
 	function printPageResultsLinks($inputFieldNames, $totalResults, $resultsPerPage) {
-		echo "<br /><table align='center'><tr><td>".i18n::translate('Result Page')." &nbsp;&nbsp;";
+		echo "<br /><table align='center'><tr><td>".WT_I18N::translate('Result Page')." &nbsp;&nbsp;";
 		// Prints the '<<' linking to the previous page if it's not on the first page
 		if ($this->resultsPageNum > 0) {
 			echo " <a href='";

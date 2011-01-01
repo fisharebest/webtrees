@@ -51,7 +51,7 @@ Zend_Session::writeClose();
 print_header($controller->getPageTitle());
 
 if (!$controller->indi) {
-	echo "<b>", i18n::translate('Unable to find record with ID'), "</b><br /><br />";
+	echo "<b>", WT_I18N::translate('Unable to find record with ID'), "</b><br /><br />";
 	print_footer();
 	exit;
 }
@@ -102,8 +102,8 @@ jQuery(document).ready(function() {
 
 <div id="indi_main_blocks">
 	<?php
-		if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", i18n::translate('Changes successfully accepted into database'), "</b><br />";
-		if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".i18n::translate('This record has been marked for deletion upon admin approval.')."</span>";
+		if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", WT_I18N::translate('Changes successfully accepted into database'), "</b><br />";
+		if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".WT_I18N::translate('This record has been marked for deletion upon admin approval.')."</span>";
 		if (strlen($controller->indi->getAddName()) > 0) echo "<span class=\"name_head\">", PrintReady($controller->indi->getAddName()), "</span><br />";
 	?>
 	<div id="indi_header">
@@ -155,7 +155,7 @@ jQuery(document).ready(function() {
 									if (!$controller->indi->isDead()) {
 										$bdate=$controller->indi->getBirthDate();
 										$age = WT_Date::GetAgeGedcom($bdate);
-										if ($age!="") $summary.= "<dl><dt class=\"label\">".i18n::translate('Age')."</dt><span class=\"field\">".get_age_at_event($age, true)."</span></dl>";
+										if ($age!="") $summary.= "<dl><dt class=\"label\">".WT_I18N::translate('Age')."</dt><span class=\"field\">".get_age_at_event($age, true)."</span></dl>";
 									}
 									$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
 									if ($SHOW_LDS_AT_GLANCE) {
@@ -182,7 +182,7 @@ jQuery(document).ready(function() {
 			if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 				//print indi counter only if displaying a non-private person
 				require WT_ROOT.'includes/hitcount.php';
-				echo i18n::translate('Hit Count:'), " ", $hitCount;
+				echo WT_I18N::translate('Hit Count:'), " ", $hitCount;
 			}
 		?>
 	</div>
@@ -255,7 +255,7 @@ echo WT_JS_END;
 
 if ($SEARCH_SPIDER) {
 	if ($SHOW_SPIDER_TAGLINE)
-		echo i18n::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
+		echo WT_I18N::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
 	echo "</div></body></html>";
 } else {
 	print_footer();

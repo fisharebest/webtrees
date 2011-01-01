@@ -125,7 +125,7 @@ class WT_Person extends WT_GedcomRecord {
 					$this->_getBirthDate=new WT_Date('');
 				}
 			} else {
-				$this->_getBirthDate=new WT_Date("(".i18n::translate('Private').")");
+				$this->_getBirthDate=new WT_Date("(".WT_I18N::translate('Private').")");
 			}
 		}
 		return $this->_getBirthDate;
@@ -148,7 +148,7 @@ class WT_Person extends WT_GedcomRecord {
 					$this->_getBirthPlace='';
 				}
 			} else {
-				$this->_getBirthPlace=i18n::translate('Private');
+				$this->_getBirthPlace=WT_I18N::translate('Private');
 			}
 		}
 		return $this->_getBirthPlace;
@@ -171,7 +171,7 @@ class WT_Person extends WT_GedcomRecord {
 					$this->_getBirthPlace='';
 				}
 			} else {
-				$this->_getBirthPlace=i18n::translate('Private');
+				$this->_getBirthPlace=WT_I18N::translate('Private');
 			}
 		}
 		$censbirthplace = $this->_getBirthPlace;
@@ -208,7 +208,7 @@ class WT_Person extends WT_GedcomRecord {
 					$this->_getDeathDate=new WT_Date('');
 				}
 			} else {
-				$this->_getDeathDate=new WT_Date("(".i18n::translate('Private').")");
+				$this->_getDeathDate=new WT_Date("(".WT_I18N::translate('Private').")");
 			}
 		}
 		return $this->_getDeathDate;
@@ -231,7 +231,7 @@ class WT_Person extends WT_GedcomRecord {
 					$this->_getDeathPlace='';
 				}
 			} else {
-				$this->_getDeathPlace=i18n::translate('Private');
+				$this->_getDeathPlace=WT_I18N::translate('Private');
 			}
 		}
 		return $this->_getDeathPlace;
@@ -261,7 +261,7 @@ class WT_Person extends WT_GedcomRecord {
 			&& $this->getDeathYear() && empty($this->getDeathDate()->qual1)) {
 			$age = get_age_at_event(WT_Date::GetAgeGedcom($this->getBirthDate(), $this->getDeathDate()), false);
 			if (!empty($age)) {
-				$tmp .= '<span class="age"> ('.i18n::translate('Age').' '.$age.')</span>';
+				$tmp .= '<span class="age"> ('.WT_I18N::translate('Age').' '.$age.')</span>';
 			}
 		}
 		if ($classname) {
@@ -524,24 +524,24 @@ class WT_Person extends WT_GedcomRecord {
 				if ($gap>1 && $gap<180 && $counter>0) $label .= "<img alt=\"\" src=\"images/warning.gif\" /> ";
 				// children with same date means twin
 				/**if ($gap==0 && $counter>1) {
-					if ($this->getSex()=='M') $label .= i18n::translate('Twin brother');
-					else if ($this->getSex()=='F') $label .= i18n::translate('Twin sister');
-					else $label .= i18n::translate('Twin');
+					if ($this->getSex()=='M') $label .= WT_I18N::translate('Twin brother');
+					else if ($this->getSex()=='F') $label .= WT_I18N::translate('Twin sister');
+					else $label .= WT_I18N::translate('Twin');
 					}**/
 				// gap in years or months
 				$gap = round($gap*12/365.25); // months
 				if (($gap==12)||($gap==-12)) {
-					$label .= i18n::plural('%d year', '%d years', round($gap/12), round($gap/12));
+					$label .= WT_I18N::plural('%d year', '%d years', round($gap/12), round($gap/12));
 				} elseif ($gap>23 or $gap<-23) {
-					$label .= i18n::plural('%d year', '%d years', round($gap/12), round($gap/12));
+					$label .= WT_I18N::plural('%d year', '%d years', round($gap/12), round($gap/12));
 				} elseif ($gap!=0) {
-					$label .= i18n::plural('%d month', '%d months', $gap, $gap);
+					$label .= WT_I18N::plural('%d month', '%d months', $gap, $gap);
 				}
 				$label .= '</div>';
 			}
 		}
 		// I18N: This is an abbreviation for a number.  i.e. #7 means number 7
-		if ($counter) $label .= '<div class="'.$TEXT_DIRECTION.'">'.i18n::translate('#%d', $counter).'</div>';
+		if ($counter) $label .= '<div class="'.$TEXT_DIRECTION.'">'.WT_I18N::translate('#%d', $counter).'</div>';
 		$label .= $this->label;
 		if ($gap!=0 && $counter<1) $label .= '<br />&nbsp;';
 		return $label;
@@ -568,7 +568,7 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($this->getSpouseFamilyIds() as $famid) {
 				$family=WT_Family::getInstance($famid);
 				if (is_null($family)) {
-					echo '<span class="warning">', i18n::translate('Unable to find family with ID'), ' ', $famid, '</span>';
+					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $famid, '</span>';
 				} else {
 					// only include family if it is displayable by current user
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
@@ -626,7 +626,7 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($this->getChildFamilyIds() as $famid) {
 				$family=WT_Family::getInstance($famid);
 				if (is_null($family)) {
-					echo '<span class="warning">', i18n::translate('Unable to find family with ID'), ' ', $famid, '</span>';
+					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $famid, '</span>';
 				} else {
 					// only include family if it is displayable by current user
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
@@ -748,13 +748,13 @@ class WT_Person extends WT_GedcomRecord {
 			$famlink = get_sub_record(1, '1 FAMC @'.$family->getXref().'@', $this->gedrec);
 			if (preg_match('/2 PEDI (.*)/', $famlink, $fmatch)) {
 				switch ($fmatch[1]) {
-				case 'adopted': return i18n::translate('Family with adoptive parents');
-				case 'foster':  return i18n::translate('Family with foster parents');
-				case 'sealing': return i18n::translate('Family with sealing parents');
+				case 'adopted': return WT_I18N::translate('Family with adoptive parents');
+				case 'foster':  return WT_I18N::translate('Family with foster parents');
+				case 'sealing': return WT_I18N::translate('Family with sealing parents');
 				}
 			}
 		}
-		return i18n::translate('Family with parents');
+		return WT_I18N::translate('Family with parents');
 	}
 	/**
 	* get the correct label for a step family
@@ -772,16 +772,16 @@ class WT_Person extends WT_GedcomRecord {
 				$wife = $fam->getWife();
 				$husb = $fam->getHusband();
 				if ((is_null($husb) || !$husb->equals($father)) && (is_null($wife)||$wife->equals($mother))) {
-					if ($mother->getSex()=='M') $label = i18n::translate('Father\'s Family with ');
-					else $label = i18n::translate('Mother\'s Family with ');
+					if ($mother->getSex()=='M') $label = WT_I18N::translate('Father\'s Family with ');
+					else $label = WT_I18N::translate('Mother\'s Family with ');
 					if (!is_null($father)) $label .= $father->getFullName();
-					else $label .= i18n::translate('unknown person');
+					else $label .= WT_I18N::translate('unknown person');
 				}
 				else if ((is_null($wife) || !$wife->equals($mother)) && (is_null($husb)||$husb->equals($father))) {
-					if ($father->getSex()=='F') $label = i18n::translate('Mother\'s Family with ');
-					else $label = i18n::translate('Father\'s Family with ');
+					if ($father->getSex()=='F') $label = WT_I18N::translate('Mother\'s Family with ');
+					else $label = WT_I18N::translate('Father\'s Family with ');
 					if (!is_null($mother)) $label .= $mother->getFullName();
-					else $label .= i18n::translate('unknown person');
+					else $label .= WT_I18N::translate('unknown person');
 				}
 				if ($label!='Unknown Family') return $label;
 			}
@@ -795,7 +795,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getSpouseFamilyLabel($family) {
 		if (is_null($family)) {
-			$spouse=i18n::translate('unknown person');
+			$spouse=WT_I18N::translate('unknown person');
 		} else {
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
@@ -804,11 +804,11 @@ class WT_Person extends WT_GedcomRecord {
 			} elseif ($this->equals($wife) && !is_null($husb)) {
 				$spouse = $husb->getFullName();
 			} else {
-				$spouse = i18n::translate('unknown person');
+				$spouse = WT_I18N::translate('unknown person');
 			}
 		}
 		// I18N: %s is the spouse name
-		return i18n::translate('Family with %s', $spouse);
+		return WT_I18N::translate('Family with %s', $spouse);
 	}
 	/**
 	* get updated Person
@@ -1303,7 +1303,7 @@ class WT_Person extends WT_GedcomRecord {
 					}
 					// add an event record
 					$factrec = "1 EVEN\n2 TYPE ".$label.'<br/>[ <span class="details_label">';
-					$factrec .= i18n::translate($rela);
+					$factrec .= WT_I18N::translate($rela);
 					$factrec.='</span> ]'.$sdate."\n".get_sub_record(2, '2 PLAC', $srec);
 					if (!$event->canShow()) $factrec .= "\n2 RESN privacy";
 					if ($associate->getType()=='FAM') {
@@ -1490,7 +1490,7 @@ class WT_Person extends WT_GedcomRecord {
 			// want the default name, not the one selected for display on the indilist.
 			$primary=$husb->getPrimaryName();
 			$husb->setPrimaryName(null);
-			$txt .= i18n::translate('Father').': '.PrintReady($husb->getListName()).'<br />';
+			$txt .= WT_I18N::translate('Father').': '.PrintReady($husb->getListName()).'<br />';
 			$husb->setPrimaryName($primary);
 		}
 		$wife = $fam->getWife();
@@ -1499,7 +1499,7 @@ class WT_Person extends WT_GedcomRecord {
 			// want the default name, not the one selected for display on the indilist.
 			$primary=$wife->getPrimaryName();
 			$wife->setPrimaryName(null);
-			$txt .= i18n::translate('Mother').': '.PrintReady($wife->getListName());
+			$txt .= WT_I18N::translate('Mother').': '.PrintReady($wife->getListName());
 			$wife->setPrimaryName($primary);
 		}
 		$txt .= '</div>';
@@ -1686,8 +1686,8 @@ class WT_Person extends WT_GedcomRecord {
 		// from that character set.  Otherwise use the one in the language file.
 		if (strpos($givn, '@P.N.')!==false || $surn=='@N.N.' || $surns[0]=='@N.N.') {
 			if (strpos($givn, '@P.N.')!==false && ($surn=='@N.N.' || $surns[0]=='@N.N.')) {
-				$PN=i18n::translate('(unknown)');
-				$NN=i18n::translate('(unknown)');
+				$PN=WT_I18N::translate('(unknown)');
+				$NN=WT_I18N::translate('(unknown)');
 			} else {
 				if ($surn!=='')
 					$PN=$UNKNOWN_PN[utf8_script($surn)];

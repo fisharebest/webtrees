@@ -117,37 +117,37 @@ require WT_ROOT.'includes/specialchars.php';
 
 switch ($type) {
 case "indi":
-	print_simple_header(i18n::translate('Find individual ID'));
+	print_simple_header(WT_I18N::translate('Find individual ID'));
 	break;
 case "fam":
-	print_simple_header(i18n::translate('Find Family List'));
+	print_simple_header(WT_I18N::translate('Find Family List'));
 	break;
 case "media":
-	print_simple_header(i18n::translate('Find media'));
+	print_simple_header(WT_I18N::translate('Find media'));
 	$action="filter";
 	break;
 case "place":
-	print_simple_header(i18n::translate('Find Place'));
+	print_simple_header(WT_I18N::translate('Find Place'));
 	$action="filter";
 	break;
 case "repo":
-	print_simple_header(i18n::translate('Repositories'));
+	print_simple_header(WT_I18N::translate('Repositories'));
 	$action="filter";
 	break;
 case "note":
-	print_simple_header(i18n::translate('Find Shared Note'));
+	print_simple_header(WT_I18N::translate('Find Shared Note'));
 	$action="filter";
 	break;
 case "source":
-	print_simple_header(i18n::translate('Find Source'));
+	print_simple_header(WT_I18N::translate('Find Source'));
 	$action="filter";
 	break;
 case "specialchar":
-	print_simple_header(i18n::translate('Find Special Characters'));
+	print_simple_header(WT_I18N::translate('Find Special Characters'));
 	$action="filter";
 	break;
 case "facts":
-	print_simple_header(i18n::translate('Find fact tags'));
+	print_simple_header(WT_I18N::translate('Find fact tags'));
 	echo
 		WT_JS_START,
 		'jQuery(document).ready(function(){ initPickFact(); });',
@@ -199,7 +199,7 @@ echo WT_JS_START;
 		if (document.forms[0].subclick) button = document.forms[0].subclick.value;
 		else button = "";
 		if (frm.filter.value.length<2&button!="all") {
-			alert("<?php echo i18n::translate('Please enter more than one character'); ?>");
+			alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
 			frm.filter.focus();
 			return false;
 		}
@@ -236,31 +236,31 @@ echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 widt
 
 switch ($type) {
 case "indi":
-	echo i18n::translate('Find individual ID');
+	echo WT_I18N::translate('Find individual ID');
 	break;
 case "fam":
-	echo i18n::translate('Find Family List');
+	echo WT_I18N::translate('Find Family List');
 	break;
 case "media":
-	echo i18n::translate('Find media');
+	echo WT_I18N::translate('Find media');
 	break;
 case "place":
-	echo i18n::translate('Find Place');
+	echo WT_I18N::translate('Find Place');
 	break;
 case "repo":
-	echo i18n::translate('Repositories');
+	echo WT_I18N::translate('Repositories');
 	break;
 case "note":
-	echo i18n::translate('Find Shared Note');
+	echo WT_I18N::translate('Find Shared Note');
 	break;
 case "source":
-	echo i18n::translate('Find Source');
+	echo WT_I18N::translate('Find Source');
 	break;
 case "specialchar":
-	echo i18n::translate('Find Special Characters');
+	echo WT_I18N::translate('Find Special Characters');
 	break;
 case "facts":
-	echo i18n::translate('Find fact tags');
+	echo WT_I18N::translate('Find fact tags');
 	break;
 }
 
@@ -280,12 +280,12 @@ if ($type == "indi") {
 /*
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" value=\"", i18n::translate('Filter'), "\" /><br />";
+	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Filter'), "\" /><br />";
 	echo "</td></tr></table>";
 */
 	echo "</form></div>";
@@ -301,12 +301,12 @@ if ($type == "fam") {
 	echo "<input type=\"hidden\" name=\"multiple\" value=\"$multiple\" />";
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" value=\"", i18n::translate('Filter'), "\" /><br />";
+	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Filter'), "\" /><br />";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -325,7 +325,7 @@ if ($type == "media" && $MULTI_MEDIA) {
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Media contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Media contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo help_link('simple_filter');
@@ -333,12 +333,12 @@ if ($type == "media" && $MULTI_MEDIA) {
 	echo "<tr><td class=\"list_label width10\" wstyle=\"padding: 5px;\">";
 	echo "<input type=\"checkbox\" name=\"showthumb\" value=\"true\"";
 	if ($showthumb) echo "checked=\"checked\"";
-	echo "onclick=\"javascript: this.form.submit();\" />", i18n::translate('Show thumbnails');
+	echo "onclick=\"javascript: this.form.submit();\" />", WT_I18N::translate('Show thumbnails');
 	echo help_link('show_thumb');
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", i18n::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", i18n::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
+	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
+	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -353,13 +353,13 @@ if ($type == "place") {
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Place contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Place contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", i18n::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", i18n::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
+	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
+	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -374,13 +374,13 @@ if ($type == "repo") {
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Repository contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Repository contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", i18n::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", i18n::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
+	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
+	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -395,13 +395,13 @@ if ($type == "note") {
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Shared Note contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Shared Note contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", i18n::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", i18n::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
+	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
+	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -416,13 +416,13 @@ if ($type == "source") {
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo i18n::translate('Source contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo WT_I18N::translate('Source contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
 	echo "\" />";
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", i18n::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", i18n::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
+	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
+	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\" />";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -438,14 +438,14 @@ if ($type == "specialchar") {
 	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label\" style=\"padding: 5px;\">";
 	echo "<select id=\"language_filter\" name=\"language_filter\" onchange=\"submit();\">";
-	echo "<option value=\"\">", i18n::translate('Change language'), "</option>";
+	echo "<option value=\"\">", WT_I18N::translate('Change language'), "</option>";
 	$language_options = "";
 	foreach ($specialchar_languages as $key=>$value) {
 		$language_options.= "<option value=\"$key\">$value</option>";
 	}
 	$language_options = str_replace("\"$language_filter\"", "\"$language_filter\" selected", $language_options);
 	echo $language_options;
-	echo "</select><br /><a href=\"javascript:;\" onclick=\"setMagnify()\">", i18n::translate('Magnify'), "</a>";
+	echo "</select><br /><a href=\"javascript:;\" onclick=\"setMagnify()\">", WT_I18N::translate('Magnify'), "</a>";
 	echo "</td></tr></table>";
 	echo "</form></div>";
 }
@@ -615,26 +615,26 @@ if ($type == "facts") {
 	<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th>&nbsp;</th>
-			<th><?php echo i18n::translate('Tag'); ?></th>
-			<th><?php echo i18n::translate('Description'); ?></th>
+			<th><?php echo WT_I18N::translate('Tag'); ?></th>
+			<th><?php echo WT_I18N::translate('Description'); ?></th>
 		</tr></thead>
 		<tbody id="tbDefinedTags">
 		</tbody>
 	</table></div>
 
 	<table id="tabDefinedTagsShow"><tbody><tr>
-		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo i18n::translate('Show only selected tags'); ?> (<span id="layCurSelectedCount"></span>)</a></td>
-		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo i18n::translate('Show all tags'); ?></a></td>
+		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo WT_I18N::translate('Show only selected tags'); ?> (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo WT_I18N::translate('Show all tags'); ?></a></td>
 	</tr></tbody></table>
 
 	<table id="tabFilterAndCustom"><tbody>
-		<tr><td><?php echo i18n::translate('Filter'); ?>:</td><td><input type="text" id="tbxFilter" /></td></tr>
-		<tr><td><?php echo i18n::translate('Custom tags'); ?>:</td><td><input type="text" id="tbxCustom" value="<?php echo addslashes(implode(',', $preselCustom)); ?>" /></td></tr>
+		<tr><td><?php echo WT_I18N::translate('Filter'); ?>:</td><td><input type="text" id="tbxFilter" /></td></tr>
+		<tr><td><?php echo WT_I18N::translate('Custom tags'); ?>:</td><td><input type="text" id="tbxCustom" value="<?php echo addslashes(implode(',', $preselCustom)); ?>" /></td></tr>
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();"><?php echo i18n::translate('Accept'); ?></button></td>
-		<td><button onclick="window.close();return false"><?php echo i18n::translate('Cancel'); ?></button></td>
+		<td><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();"><?php echo WT_I18N::translate('Accept'); ?></button></td>
+		<td><button onclick="window.close();return false"><?php echo WT_I18N::translate('Cancel'); ?></button></td>
 	<tr></tbody></table>
 	<?php
 	echo "</td></tr></table>";
@@ -645,7 +645,7 @@ echo "</td></tr>";
 echo "</table>"; // Close table with find options
 
 echo "<br />";
-echo "<a href=\"javascript:;\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", i18n::translate('Close Window'), "</a><br />";
+echo "<a href=\"javascript:;\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", WT_I18N::translate('Close Window'), "</a><br />";
 echo "<br />";
 
 if ($action=="filter") {
@@ -666,15 +666,15 @@ if ($action=="filter") {
 				$wholename = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 				$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
 				$fulln = str_replace('"', '\'', $fulln); // Replace double quotes
-				$fulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulln);
-				$fulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulln);
+				$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+				$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 				$givn  = rtrim($nam[0]['givn'],'*');
 				$surn  = $nam[0]['surname'];
 				if (isset($nam[1])) {
 					$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
 					$fulmn = str_replace('"', '\'', $fulmn); // Replace double quotes
-					$fulmn = str_replace("@N.N.", "(".i18n::translate('unknown').")", $fulmn);
-					$fulmn = str_replace("@P.N.", "(".i18n::translate('unknown').")", $fulmn);
+					$fulmn = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulmn);
+					$fulmn = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulmn);
 					$marn  = $nam[1]['surname'];
 				} else {
 					$fulmn = $fulln;
@@ -713,8 +713,8 @@ if ($action=="filter") {
 						$chnam   = $child->getAllNames();
 						$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 						$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-						$chfulln = str_replace("@N.N.", "(".i18n::translate('unknown').")", $chfulln);
-						$chfulln = str_replace("@P.N.", "(".i18n::translate('unknown').")", $chfulln); // Child's Full Name
+						$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
+						$chfulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $chfulln); // Child's Full Name
 						$chdob   = ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // Child's Date of Birth (Julian)
 						if (!isset($chdob)) { $chdob = ""; }
 						$chdod   = ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // Child's Date of Death (Julian)
@@ -766,10 +766,10 @@ if ($action=="filter") {
 			echo "<hr />";
 			
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total individuals'), ' ', count($myindilist), '</tr></td>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total individuals'), ' ', count($myindilist), '</tr></td>';
 		} else {
 			echo "<td class=\"list_value_wrap\">";
-			echo i18n::translate('No results found.');
+			echo WT_I18N::translate('No results found.');
 			echo "</td></tr>";
 		}
 		echo "</table>";
@@ -791,10 +791,10 @@ if ($action=="filter") {
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total families'), ' ', count($myfamlist), '</tr></td>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total families'), ' ', count($myfamlist), '</tr></td>';
 		} else {
 			echo "<td class=\"list_value_wrap\">";
-			echo i18n::translate('No results found.');
+			echo WT_I18N::translate('No results found.');
 			echo "</td></tr>";
 		}
 		echo "</table>";
@@ -824,7 +824,7 @@ if ($action=="filter") {
 		// Tell the user where he is
 		echo "<tr>";
 			echo "<td class=\"topbottombar\" colspan=\"2\">";
-				echo i18n::translate('Current directory');
+				echo WT_I18N::translate('Current directory');
 				echo "<br />";
 				echo substr($directory, 0, -1);
 			echo "</td>";
@@ -838,7 +838,7 @@ if ($action=="filter") {
 				echo $uplink, "</td></tr>";
 			}
 			echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION\" colspan=\"2\">";
-			echo "<a href=\"find.php?directory={$directory}&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}\">", i18n::translate('External objects'), "</a>";
+			echo "<a href=\"find.php?directory={$directory}&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}\">", WT_I18N::translate('External objects'), "</a>";
 			echo "</td></tr>";
 			foreach ($dirs as $indexval => $dir) {
 				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
@@ -908,35 +908,35 @@ if ($action=="filter") {
 							echo "<a href=\"javascript:;\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
 						}
 						else echo "<a href=\"javascript:;\" onclick=\"pasteid('", $media["XREF"], "', '", addslashes($media["TITL"]), "', '", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
-						echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", i18n::translate('View'), "</a><br />";
-						if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<br /><span class=\"error\">", i18n::translate('The filename entered does not exist.'), "</span><br />";
+						echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a><br />";
+						if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<br /><span class=\"error\">", WT_I18N::translate('The filename entered does not exist.'), "</span><br />";
 						else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
-							echo "<br /><sub>&nbsp;&nbsp;", i18n::translate('Image Dimensions'), " -- ", $imgsize[0], "x", $imgsize[1], "</sub><br />";
+							echo "<br /><sub>&nbsp;&nbsp;", WT_I18N::translate('Image Dimensions'), " -- ", $imgsize[0], "x", $imgsize[1], "</sub><br />";
 						}
 						if ($media["LINKED"]) {
-							echo i18n::translate('This media object is linked to the following:'), "<br />";
+							echo WT_I18N::translate('This media object is linked to the following:'), "<br />";
 							foreach ($media["LINKS"] as $indi => $type_record) {
 								if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
 								$record=WT_GedcomRecord::getInstance($indi);
 								echo '<br /><a href="', $record->getHtmlUrl(), '">';
 								switch($type_record) {
 								case 'INDI':
-									echo i18n::translate('View Person'), ' - ';
+									echo WT_I18N::translate('View Person'), ' - ';
 									break;
 								case 'FAM':
-									echo i18n::translate('View Family'), ' - ';
+									echo WT_I18N::translate('View Family'), ' - ';
 									break;
 								case 'SOUR':
-									echo i18n::translate('View Source'), ' - ';
+									echo WT_I18N::translate('View Source'), ' - ';
 									break;
 								case 'OBJE':
-									echo i18n::translate('View Object'), ' - ';
+									echo WT_I18N::translate('View Object'), ' - ';
 									break;
 								}
 								echo PrintReady($record->getFullName()), '</a>';
 							}
 						} else {
-							echo i18n::translate('This media object is not linked to any GEDCOM record.');
+							echo WT_I18N::translate('This media object is not linked to any GEDCOM record.');
 						}
 						echo "</td>";
 					}
@@ -945,7 +945,7 @@ if ($action=="filter") {
 		}
 		else {
 			echo "<tr><td class=\"list_value_wrap\">";
-			echo i18n::translate('No results found.');
+			echo WT_I18N::translate('No results found.');
 			echo "</td></tr>";
 		}
 		echo "</table>";
@@ -978,12 +978,12 @@ if ($action=="filter") {
 					echo "<li><a href=\"javascript:;\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
 				}
 				echo "</ul></td></tr>";
-				echo "<tr><td class=\"list_label\">", i18n::translate('Places found'), " ", $ctplace;
+				echo "<tr><td class=\"list_label\">", WT_I18N::translate('Places found'), " ", $ctplace;
 				echo "</td></tr>";
 			}
 			else {
 				echo "<tr><td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
-				echo i18n::translate('No results found.');
+				echo WT_I18N::translate('No results found.');
 				echo "</td></tr>";
 			}
 		}
@@ -1000,12 +1000,12 @@ if ($action=="filter") {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getListName(),'</span></a></li>';
 			}
 			echo "</ul></td></tr>";
-			echo "<tr><td class=\"list_label\">", i18n::translate('Repositories found'), " ", count($repo_list);
+			echo "<tr><td class=\"list_label\">", WT_I18N::translate('Repositories found'), " ", count($repo_list);
 			echo "</td></tr>";
 		}
 		else {
 			echo "<tr><td class=\"list_value_wrap\">";
-			echo i18n::translate('No results found.');
+			echo WT_I18N::translate('No results found.');
 			echo "</td></tr>";
 		}
 		echo "</table>";
@@ -1025,10 +1025,10 @@ if ($action=="filter") {
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getListName(),'</span></a></li>';
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Shared Notes found'), ' ', count($mynotelist), '</td></tr>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</td></tr>';
 		}
 		else {
-			echo '<tr><td class="list_value_wrap">', i18n::translate('No results found.'), '</td></tr>';
+			echo '<tr><td class="list_value_wrap">', WT_I18N::translate('No results found.'), '</td></tr>';
 		}
 		echo '</table>';
 	}
@@ -1047,10 +1047,10 @@ if ($action=="filter") {
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', i18n::translate('Total Sources'), ' ', count($mysourcelist), '</td></tr>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total Sources'), ' ', count($mysourcelist), '</td></tr>';
 		}
 		else {
-			echo '<tr><td class="list_value_wrap">', i18n::translate('No results found.'), '</td></tr>';
+			echo '<tr><td class="list_value_wrap">', WT_I18N::translate('No results found.'), '</td></tr>';
 		}
 		echo '</table>';
 	}

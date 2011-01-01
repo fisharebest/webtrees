@@ -97,8 +97,8 @@ case 'user_list':
 		$row[3]=edit_field_inline('user-email-'.    $row[0], $row[3]);
 		$row[4]=edit_field_language_inline('user_setting-language-'.    $row[0], $row[4]);
 		if ($row[0]==WT_USER_ID) {
-			$row[7]=$row[7] ? i18n::translate('yes') : i18n::translate('no');
-			$row[8]=$row[7] ? i18n::translate('yes') : i18n::translate('no');
+			$row[7]=$row[7] ? WT_I18N::translate('yes') : WT_I18N::translate('no');
+			$row[8]=$row[7] ? WT_I18N::translate('yes') : WT_I18N::translate('no');
 		} else {
 			// Cannot approve/unapprove your own account
 			$row[7]=edit_field_yes_no_inline('user_setting-verified-'.         $row[0], $row[7]);

@@ -640,11 +640,11 @@ function calc_axis($xas_grenzen) {
 	if ($x_as==21 && $hulpar[0]==1) {
 		$xdata[0] = 0;
 	} elseif ($x_as==16 && $hulpar[0]==0) {
-		$xdata[0] = i18n::translate('before');
+		$xdata[0] = WT_I18N::translate('before');
 	} elseif ($x_as==16 && $hulpar[0]<0) {
-		$xdata[0] = i18n::translate('over')." ".$hulpar[0];
+		$xdata[0] = WT_I18N::translate('over')." ".$hulpar[0];
 	} else {
-		$xdata[0] = i18n::translate('less than')." ".$hulpar[0];
+		$xdata[0] = WT_I18N::translate('less than')." ".$hulpar[0];
 	}
 	$xgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
@@ -669,7 +669,7 @@ function calc_axis($xas_grenzen) {
 		$xmax = $i+1;
 	else
 		$xmax = $i;
-	$xdata[$xmax] = i18n::translate('over')." ".$hulpar[$i-1];
+	$xdata[$xmax] = WT_I18N::translate('over')." ".$hulpar[$i-1];
 	$xgrenzen[$xmax] = 10000;
 	$xmax = $xmax+1;
 	if ($xmax > 20) $xmax = 20;
@@ -684,7 +684,7 @@ function calc_legend($grenzen_zas) {
 	$hulpar = explode(",", $grenzen_zas);
 	$i=1;
 	// I18N: %d is a year
-	$legend[0] = i18n::translate('before %d', $hulpar[0]);
+	$legend[0] = WT_I18N::translate('before %d', $hulpar[0]);
 	$zgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
 		$i1 = $i-1;
@@ -695,7 +695,7 @@ function calc_legend($grenzen_zas) {
 	$zmax = $i;
 	$zmax1 = $zmax-1;
 	// I18N: %d is a year
-	$legend[$zmax] = i18n::translate('from %d', $hulpar[$zmax1]);
+	$legend[$zmax] = WT_I18N::translate('from %d', $hulpar[$zmax1]);
 	$zgrenzen[$zmax] = 10000;
 	$zmax = $zmax+1;
 	if ($zmax > 8) $zmax=8;
@@ -708,7 +708,7 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 	global $stats;
 
 	if (!function_exists($myfunc)) {
-		echo $myfunc, " ", i18n::translate(' not implemented:');
+		echo $myfunc, " ", WT_I18N::translate(' not implemented:');
 		exit;
 	}
 
@@ -728,7 +728,7 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		$zgiven = $zg;
 		$title = $titstr;
 		$xtitle = $xt;
-		$ytitle = i18n::translate('numbers');
+		$ytitle = WT_I18N::translate('numbers');
 		$grenzen_xas = $gx;
 		$grenzen_zas = $gz;
 		if ($xg == true) {
@@ -743,15 +743,15 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		if ($y_as == 201) {
 			$percentage = false;
 			if ($current == 13 || $current == 15 || $current == 16 || $current == 21) {
-				$ytitle = i18n::translate('Total families');
+				$ytitle = WT_I18N::translate('Total families');
 			} elseif ($current == 14) {
-				$ytitle = i18n::translate('Number of children');
+				$ytitle = WT_I18N::translate('Number of children');
 			} else {
-				$ytitle = i18n::translate('Total individuals');
+				$ytitle = WT_I18N::translate('Total individuals');
 			}
 		} elseif ($y_as == 202) {
 			$percentage = true;
-			$ytitle = i18n::translate('percentage');
+			$ytitle = WT_I18N::translate('percentage');
 		}
 		$male_female = false;
 		if ($z_as == 300) {
@@ -762,12 +762,12 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		} elseif ($z_as == 301) {
 			$male_female = true;
 			$zgiven = true;
-			$legend[0] = i18n::translate('Male');
-			$legend[1] = i18n::translate('Female');
+			$legend[0] = WT_I18N::translate('Male');
+			$legend[1] = WT_I18N::translate('Female');
 			$zmax = 2;
-			$xtitle = $xtitle.i18n::translate(' per gender');
+			$xtitle = $xtitle.WT_I18N::translate(' per gender');
 		} elseif ($z_as == 302) {
-			$xtitle= $xtitle.i18n::translate(' per time period');
+			$xtitle= $xtitle.WT_I18N::translate(' per time period');
 		}
 		//-- reset the data array
 		for ($i=0; $i<$zmax; $i++) {
@@ -777,12 +777,12 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		}
 		$myfunc();
 		if ($indfam == "IND") {
-			$hstr = $title."|" .i18n::translate('Counts ')." ".$n1." ".i18n::translate('of')." ".$nrpers;
+			$hstr = $title."|" .WT_I18N::translate('Counts ')." ".$n1." ".WT_I18N::translate('of')." ".$nrpers;
 		} elseif ($x_as==21) {
-			$hstr = $title."|" .i18n::translate('Counts ')." ".$n1." ".i18n::translate('of')." ".$stats->totalChildren();
+			$hstr = $title."|" .WT_I18N::translate('Counts ')." ".$n1." ".WT_I18N::translate('of')." ".$stats->totalChildren();
 		}
 		else {
-			$hstr = $title."|" .i18n::translate('Counts ')." ".$n1." ".i18n::translate('of')." ".$nrfam;
+			$hstr = $title."|" .WT_I18N::translate('Counts ')." ".$n1." ".WT_I18N::translate('of')." ".$nrfam;
 		}
 		myplot($hstr, $zmax, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
@@ -797,13 +797,13 @@ function print_sources_stats_chart($type) {
 	switch ($type) {
 	case '9':
 		echo '<div id="google_charts" class="center">';
-		echo '<b>', i18n::translate('Individuals with sources'), '</b><br /><br />';
+		echo '<b>', WT_I18N::translate('Individuals with sources'), '</b><br /><br />';
 		echo $stats->chartIndisWithSources($params);
 		echo '</div><br />';
 		break;
 	case '8':
 		echo '<div id="google_charts" class="center">';
-		echo '<b>', i18n::translate('Families with sources'), '</b><br /><br />';
+		echo '<b>', WT_I18N::translate('Families with sources'), '</b><br /><br />';
 		echo $stats->chartFamsWithSources($params);
 		echo '</div><br />';
 		break;
@@ -874,8 +874,8 @@ else {
 	unset($savedInput);
 }
 
-print_simple_header(i18n::translate('Statistics plot'));
-echo "<center><h2>", i18n::translate('Statistics plot'), "</h2>";
+print_simple_header(WT_I18N::translate('Statistics plot'));
+echo "<center><h2>", WT_I18N::translate('Statistics plot'), "</h2>";
 echo "</center><br />";
 
 $nrpers = $_SESSION[$GEDCOM."nrpers"];
@@ -885,11 +885,11 @@ $nrfemale = $_SESSION[$GEDCOM."nrfemale"];
 
 //-- out of range values
 if (($y_as < 201) || ($y_as > 202)) {
-	echo i18n::translate('%s not implemented', $y_as), "<br/>";
+	echo WT_I18N::translate('%s not implemented', $y_as), "<br/>";
 	exit;
 }
 if (($z_as < 300) || ($z_as > 302)) {
-	echo i18n::translate('%s not implemented', $z_as), "<br/>";
+	echo WT_I18N::translate('%s not implemented', $z_as), "<br/>";
 	exit;
 }
 
@@ -899,37 +899,37 @@ $g_xas = "1,2,3,4,5,6,7,8,9,10,11,12"; //should not be needed. but just for mont
 switch ($x_as) {
 case '11':
 	//--------- nr, type, xgiven, zgiven, title, xtitle, ytitle, boundaries_x, boundaries-z, function
-	set_params(11, "IND", true, false, i18n::translate('Month of birth'),  i18n::translate('month'), $y_as, $g_xas, $zgp, "bimo");
+	set_params(11, "IND", true, false, WT_I18N::translate('Month of birth'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, "bimo");
 	break;
 case '12':
-	set_params(12, "IND", true, false, i18n::translate('Month of death'),  i18n::translate('month'), $y_as, $g_xas, $zgp, "demo");
+	set_params(12, "IND", true, false, WT_I18N::translate('Month of death'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, "demo");
 	break;
 case '13':
-	set_params(13, "FAM", true, false, i18n::translate('Month of marriage'),  i18n::translate('month'), $y_as, $g_xas, $zgp, "mamo");
+	set_params(13, "FAM", true, false, WT_I18N::translate('Month of marriage'),  WT_I18N::translate('month'), $y_as, $g_xas, $zgp, "mamo");
 	break;
 case '14':
-	set_params(14, "FAM", true, false, i18n::translate('Month of birth of first child in a relation'), i18n::translate('month'), $y_as, $g_xas, $zgp, "bimo1");
+	set_params(14, "FAM", true, false, WT_I18N::translate('Month of birth of first child in a relation'), WT_I18N::translate('month'), $y_as, $g_xas, $zgp, "bimo1");
 	break;
 case '15':
-	set_params(15, "FAM", true, false, i18n::translate('Month of first marriage'), i18n::translate('month'), $y_as, $g_xas, $zgp, "mamo1");
+	set_params(15, "FAM", true, false, WT_I18N::translate('Month of first marriage'), WT_I18N::translate('month'), $y_as, $g_xas, $zgp, "mamo1");
 	break;
 case '16':
-	set_params(16, "FAM", false, false, i18n::translate('Months between marriage and first child'), i18n::translate('Months between marriage and birth of first child'), $y_as, $xgm, $zgp, "mamam");
+	set_params(16, "FAM", false, false, WT_I18N::translate('Months between marriage and first child'), WT_I18N::translate('Months between marriage and birth of first child'), $y_as, $xgm, $zgp, "mamam");
 	break;
 case '17':
-	set_params(17, "IND", false, false, i18n::translate('Age related to birth year'), i18n::translate('age'), $y_as, $xgl, $zgp, "agbi");
+	set_params(17, "IND", false, false, WT_I18N::translate('Age related to birth year'), WT_I18N::translate('age'), $y_as, $xgl, $zgp, "agbi");
 	break;
 case '18':
-	set_params(18, "IND", false, false, i18n::translate('Age related to death year'), i18n::translate('age'), $y_as, $xgl, $zgp, "agde");
+	set_params(18, "IND", false, false, WT_I18N::translate('Age related to death year'), WT_I18N::translate('age'), $y_as, $xgl, $zgp, "agde");
 	break;
 case '19':
-	set_params(19, "IND", false, false, i18n::translate('Age in year of marriage'), i18n::translate('age'), $y_as, $xglm, $zgp, "agma");
+	set_params(19, "IND", false, false, WT_I18N::translate('Age in year of marriage'), WT_I18N::translate('age'), $y_as, $xglm, $zgp, "agma");
 	break;
 case '20':
-	set_params(20, "IND", false, false, i18n::translate('Age in year of first marriage'), i18n::translate('age'), $y_as, $xglm, $zgp, "agma1");
+	set_params(20, "IND", false, false, WT_I18N::translate('Age in year of first marriage'), WT_I18N::translate('age'), $y_as, $xglm, $zgp, "agma1");
 	break;
 case '21':
-	set_params(21, "FAM", false, false, i18n::translate('Number of children'), i18n::translate('children'), $y_as, $xga, $zgp, "nuch");  //plot Number of children
+	set_params(21, "FAM", false, false, WT_I18N::translate('Number of children'), WT_I18N::translate('children'), $y_as, $xga, $zgp, "nuch");  //plot Number of children
 	break;
 case '1':
 	echo $stats->chartDistribution(array($chart_shows, $chart_type, $surname));
@@ -948,10 +948,10 @@ case '9':
 	print_sources_stats_chart($x_as);
 	break;
 default:
-	echo i18n::translate('%s not implemented', $x_as), "<br/>";
+	echo WT_I18N::translate('%s not implemented', $x_as), "<br/>";
 	exit;
 }
 echo "<br /><div class =\"center noprint\">";
-echo "<input type=\"button\" value=\"", i18n::translate('Close Window'), "\" onclick=\"window.close()\" /><br /><br />";
+echo "<input type=\"button\" value=\"", WT_I18N::translate('Close Window'), "\" onclick=\"window.close()\" /><br /><br />";
 echo "</div>";
 print_simple_footer();

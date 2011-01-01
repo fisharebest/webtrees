@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class source_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Sources Report');
+		return WT_I18N::translate('Sources Report');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Prints a list of individuals and families with a specific source');
+		return WT_I18N::translate('Prints a list of individuals and families with a specific source');
 	}
 
 	// Extend class WT_Module

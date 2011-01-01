@@ -385,11 +385,11 @@ function create_indiv_buttons() {
 		var button4 = document.createElement('li');
 		var button5 = document.createElement('li');
 
-		button1.innerHTML = '<?php echo i18n::translate('Redraw map'); ?>';
-		button2.innerHTML = '<?php echo i18n::translate('Map'); ?>';
-		button3.innerHTML = '<?php echo i18n::translate('Satellite'); ?>';
-		button4.innerHTML = '<?php echo i18n::translate('Hybrid'); ?>';
-		button5.innerHTML = '<?php echo i18n::translate('Terrain'); ?>';
+		button1.innerHTML = '<?php echo WT_I18N::translate('Redraw map'); ?>';
+		button2.innerHTML = '<?php echo WT_I18N::translate('Map'); ?>';
+		button3.innerHTML = '<?php echo WT_I18N::translate('Satellite'); ?>';
+		button4.innerHTML = '<?php echo WT_I18N::translate('Hybrid'); ?>';
+		button5.innerHTML = '<?php echo WT_I18N::translate('Terrain'); ?>';
 
 		button1.onclick = function() { javascript:ResizeMap(); return false; };
 		button2.onclick = function() { map.setMapType(G_NORMAL_MAP); return false; };
@@ -551,11 +551,11 @@ function build_indiv_map($indifacts, $famids) {
 										$i = $i + 1;
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 										if (strpos($srec, "\n1 SEX F")!==false) {
-											$markers[$i]["fact"] = i18n::translate('Daughter');
+											$markers[$i]["fact"] = WT_I18N::translate('Daughter');
 											$markers[$i]["class"]  = "person_boxF";
 										} else
 											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]["fact"] = i18n::translate('Son');
+												$markers[$i]["fact"] = WT_I18N::translate('Son');
 												$markers[$i]["class"]  = "person_box";
 											} else {
 												$markers[$i]["fact"]     = translate_fact('CHIL');
@@ -586,11 +586,11 @@ function build_indiv_map($indifacts, $famids) {
 												$markers[$i]["fact"]     = translate_fact('CHIL');
 												$markers[$i]["class"]    = "option_boxNN";
 												if (strpos($srec, "\n1 SEX F")!==false) {
-													$markers[$i]["fact"] = i18n::translate('Daughter');
+													$markers[$i]["fact"] = WT_I18N::translate('Daughter');
 													$markers[$i]["class"]  = "person_boxF";
 												}
 												if (strpos($srec, "\n1 SEX M")!==false) {
-													$markers[$i]["fact"] = i18n::translate('Son');
+													$markers[$i]["fact"] = WT_I18N::translate('Son');
 													$markers[$i]["class"]  = "person_box";
 												}
 												$markers[$i]["icon"] = $latlongval["icon"];
@@ -615,14 +615,14 @@ function build_indiv_map($indifacts, $famids) {
 
 	if ($i == 0) {
 		echo "<table class=\"facts_table\">";
-		echo "<tr><td colspan=\"2\" class=\"facts_value\">".i18n::translate('No map data for this person');
+		echo "<tr><td colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('No map data for this person');
 		//echo "<script language=\"JavaScript\" type=\"text/javascript\">tabstyles[5]='tab_cell_inactive_empty'; document.getElementById('pagetab5').className='tab_cell_inactive_empty';</script>";
 		echo "</td></tr>";
 		echo "<script type=\"text/javascript\">";
 		echo "function ResizeMap() {}</script>";
 		if (WT_USER_IS_ADMIN) {
 			echo "<tr><td align=\"center\" colspan=\"2\">";
-			echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", i18n::translate('Manage GoogleMap configuration'), "</a>";
+			echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Manage GoogleMap configuration'), "</a>";
 			echo "</td></tr>";
 		}
 	} else {
@@ -684,7 +684,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (!empty($markers[$j]["name"])) {
 						$person=WT_Person::getInstance($markers[$j]['name']);
 						if ($person) {
-							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
+							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : WT_I18N::translate('Private'), '</a>';
 						}
 					}
 					echo "<br />";
@@ -698,9 +698,9 @@ function build_indiv_map($indifacts, $famids) {
 						echo "<br />", addslashes($date->Display(true));
 					}
 					if (($markers[$j]["lati"] == NULL) || ($markers[$j]["lng"] == NULL) || (($markers[$j]["lati"] == "0") && ($markers[$j]["lng"] == "0"))) {
-						echo "<br /><br />", i18n::translate('This place has no coordinates');
+						echo "<br /><br />", WT_I18N::translate('This place has no coordinates');
 						if (WT_USER_IS_ADMIN)
-							echo '<br /><a href=\"module.php?mod=googlemap&mod_action=admin_places&display=inactive\">', i18n::translate('Edit geographic location'), '</a>';
+							echo '<br /><a href=\"module.php?mod=googlemap&mod_action=admin_places&display=inactive\">', WT_I18N::translate('Edit geographic location'), '</a>';
 						echo "\");";
 					}
 					else if (!$GOOGLEMAP_COORD) {
@@ -744,7 +744,7 @@ function build_indiv_map($indifacts, $famids) {
 					if (!empty($markers[$j]["name"])) {
 						$person=WT_Person::getInstance($markers[$j]['name']);
 						if ($person) {
-							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
+							echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : WT_I18N::translate('Private'), '</a>';
 						}
 					}
 					echo "<br />";
@@ -810,7 +810,7 @@ function build_indiv_map($indifacts, $famids) {
 							if (!empty($markers[$k]["name"])) {
 								$person=WT_Person::getInstance($markers[$k]['name']);
 								if ($person) {
-									echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : i18n::translate('Private'), '</a>';
+									echo ': <a href=\"', $person->getRawUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : WT_I18N::translate('Private'), '</a>';
 								}
 							}
 							echo "<br />";
@@ -859,7 +859,7 @@ function build_indiv_map($indifacts, $famids) {
 			if (!empty($marker["name"])) {
 				$person=WT_Person::getInstance($marker['name']);
 				if ($person) {
-					echo '<a href="', $person->getHtmlUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : i18n::translate('Private'), '</a>';
+					echo '<a href="', $person->getHtmlUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : WT_I18N::translate('Private'), '</a>';
 				}
 				echo '<br />';
 			}

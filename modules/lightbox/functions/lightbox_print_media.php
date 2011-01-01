@@ -129,7 +129,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	// Set type of media from call in album
 	switch ($kind) {
 	case 1:
-		$tt=i18n::translate('Photo');
+		$tt=WT_I18N::translate('Photo');
 		$sqlmm.="AND (m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
 		$vars[]='%TYPE photo%';
 		$vars[]='%TYPE map%';
@@ -137,7 +137,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		$vars[]='%TYPE tombstone%';
 		break;
 	case 2:
-		$tt=i18n::translate('Document');
+		$tt=WT_I18N::translate('Document');
 		$sqlmm.="AND (m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
 		$vars[]='%TYPE card%';
 		$vars[]='%TYPE certificate%';
@@ -147,14 +147,14 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		$vars[]='%TYPE newspaper%';
 		break;
 	case 3:
-		$tt=i18n::translate('Census');
+		$tt=WT_I18N::translate('Census');
 		$sqlmm.="AND (m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
 		$vars[]='%TYPE electronic%';
 		$vars[]='%TYPE fiche%';
 		$vars[]='%TYPE film%';
 		break;
 	case 4:
-		$tt=i18n::translate('Other');
+		$tt=WT_I18N::translate('Other');
 		$sqlmm.="AND (m_gedrec NOT LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ? OR m_gedrec LIKE ?)";
 		$vars[]='%TYPE %';
 		$vars[]='%TYPE coat%';
@@ -165,7 +165,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		break;
 	case 5:
 	default:
-		$tt      = i18n::translate('Not in DB');
+		$tt      = WT_I18N::translate('Not in DB');
 		break;
 	}
 
@@ -357,7 +357,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			echo '</td></tr></table>' . "\n";
 			if ($kind==3 && $numm > 0) {
 				echo "<font size='1'>";
-				echo i18n::translate('"UK census images have been obtained from "The National Archives", the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.
+				echo WT_I18N::translate('"UK census images have been obtained from "The National Archives", the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.
 Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
 ');
 				echo "</font>";

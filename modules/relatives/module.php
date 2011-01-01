@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Relatives');
+		return WT_I18N::translate('Relatives');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Adds a tab to the individual page which displays the families and close relatives of an individual.');
+		return WT_I18N::translate('Adds a tab to the individual page which displays the families and close relatives of an individual.');
 	}
 
 	// Implement WT_Module_Tab
@@ -54,7 +54,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			echo '<td><span class="subheaders">', $label, '</span>';
 			if (empty($SEARCH_SPIDER)) {
-				echo ' - <a href="', $url, '">', i18n::translate('View Family'), '</a>';
+				echo ' - <a href="', $url, '">', WT_I18N::translate('View Family'), '</a>';
 			 }
 			echo '</td>
 			</tr>
@@ -103,8 +103,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Add a new father'); ?></td>
-					<td class="facts_value"><a href="javascript <?php echo i18n::translate('Add a new father'); ?>" onclick="return addnewparentfamily('<?php echo $this->controller->pid; ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo i18n::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Add a new father'); ?></td>
+					<td class="facts_value"><a href="javascript <?php echo WT_I18N::translate('Add a new father'); ?>" onclick="return addnewparentfamily('<?php echo $this->controller->pid; ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 				</tr>
 				<?php
 			}
@@ -114,8 +114,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Add husband'); ?></td>
-					<td class="facts_value"><a href="javascript:;" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo i18n::translate('Add a husband to this family'); ?></a></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
+					<td class="facts_value"><a href="javascript:;" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -149,8 +149,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Add a new mother'); ?></td>
-					<td class="facts_value"><a href="javascript:;" onclick="return addnewparentfamily('<?php echo $this->controller->pid; ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo i18n::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Add a new mother'); ?></td>
+					<td class="facts_value"><a href="javascript:;" onclick="return addnewparentfamily('<?php echo $this->controller->pid; ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 				</tr>
 				<?php
 			}
@@ -160,8 +160,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
-					<td class="facts_label"><?php echo i18n::translate('Add wife'); ?></td>
-					<td class="facts_value"><a href="javascript:;" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo i18n::translate('Add a wife to this family'); ?></a></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
+					<td class="facts_value"><a href="javascript:;" onclick="return addnewspouse('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
 				</tr>
 				<?php
 			}
@@ -233,14 +233,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						else if (empty($husb) && !empty($wife)) echo translate_fact('_NMAR', $wife);
 						else echo translate_fact('_NMAR');
 					} else if ($family->getMarriageRecord()=="" && $this->controller->indi->canEdit()) {
-						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".i18n::translate('Add marriage details')."</a>";
+						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".WT_I18N::translate('Add marriage details')."</a>";
 					} else {
 						$factdetail = explode(' ', trim($family->getMarriageRecord()));
 						if (isset($factdetail) && count($factdetail) == 3) {
 							if (strtoupper($factdetail[2]) == "Y") {
-								echo '<span class="details_label">', $marr_fact, ': </span>', i18n::translate('Yes');
+								echo '<span class="details_label">', $marr_fact, ': </span>', WT_I18N::translate('Yes');
 							} else if (strtoupper($factdetail[2]) == "N") {
-								echo '<span class="details_label">', $marr_fact, ': </span>', i18n::translate('No');
+								echo '<span class="details_label">', $marr_fact, ': </span>', WT_I18N::translate('No');
 							}
 						} else {
 							echo '<span class="details_label">', $marr_fact, '</span>';
@@ -315,20 +315,20 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		if (isset($family) && $this->controller->indi->canEdit()) {
 			if ($type == "spouse") {
-				$child_u = i18n::translate('Add a son or daughter');
-				$child_m = i18n::translate('Son');
-				$child_f = i18n::translate('Daughter');
+				$child_u = WT_I18N::translate('Add a son or daughter');
+				$child_m = WT_I18N::translate('Son');
+				$child_f = WT_I18N::translate('Daughter');
 			}
 			else {
-				$child_u = i18n::translate('Add a brother or sister');
-				$child_m = i18n::translate('Brother');
-				$child_f = i18n::translate('Sister');
+				$child_u = WT_I18N::translate('Add a brother or sister');
+				$child_m = WT_I18N::translate('Brother');
+				$child_f = WT_I18N::translate('Sister');
 			}
 		?>
 			<tr>
 				<td class="facts_label">
 					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
-					<a href="javascript:;" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><img src="images/topdown.gif" alt="" border="0" /> <?php echo i18n::translate('Re-order children'); ?></a>
+					<a href="javascript:;" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><img src="images/topdown.gif" alt="" border="0" /> <?php echo WT_I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
 				<td class="facts_value">
@@ -364,7 +364,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<table class="facts_table"><tr><td style="width:20%; padding:4px"></td><td class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="toggleByClassName('DIV', 'elderdate');" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>/>
-		<label for="checkbox_elder"><?php echo i18n::translate('Show date differences'), help_link('age_differences'); ?></label>
+		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'), help_link('age_differences'); ?></label>
 		</td></tr></table>
 		<?php
 		$personcount=0;
@@ -374,10 +374,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				?>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $this->controller->pid; ?>', 'HUSB');"><?php echo i18n::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $this->controller->pid; ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $this->controller->pid; ?>', 'WIFE');"><?php echo i18n::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $this->controller->pid; ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 					</tr>
 				</table>
 				<?php
@@ -440,33 +440,33 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php if (count($families)>1) { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return reorder_families('<?php echo $this->controller->pid; ?>');"><?php echo i18n::translate('Reorder families'); ?></a>
+				<a href="javascript:;" onclick="return reorder_families('<?php echo $this->controller->pid; ?>');"><?php echo WT_I18N::translate('Reorder families'); ?></a>
 				<?php echo help_link('reorder_families'); ?>
 				</td>
 			</tr>
 		<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return add_famc('<?php echo $this->controller->pid; ?>');"><?php echo i18n::translate('Link this person to an existing family as a child'); ?></a>
+				<a href="javascript:;" onclick="return add_famc('<?php echo $this->controller->pid; ?>');"><?php echo WT_I18N::translate('Link this person to an existing family as a child'); ?></a>
 				<?php echo help_link('link_child'); ?>
 				</td>
 			</tr>
 			<?php if ($this->controller->indi->getSex()!="F") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return addspouse('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo i18n::translate('Add a new wife'); ?></a>
+				<a href="javascript:;" onclick="return addspouse('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
 				<?php echo help_link('add_wife'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return linkspouse('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo i18n::translate('Add a wife using an existing person'); ?></a>
+				<a href="javascript:;" onclick="return linkspouse('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing person'); ?></a>
 				<?php echo help_link('link_new_wife'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return add_fams('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo i18n::translate('Link this person to an existing family as a husband'); ?></a>
+				<a href="javascript:;" onclick="return add_fams('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo WT_I18N::translate('Link this person to an existing family as a husband'); ?></a>
 				<?php echo help_link('link_new_husb'); ?>
 				</td>
 			</tr>
@@ -474,19 +474,19 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($this->controller->indi->getSex()!="M") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return addspouse('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo i18n::translate('Add a new husband'); ?></a>
+				<a href="javascript:;" onclick="return addspouse('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
 				<?php echo help_link('add_husband'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return linkspouse('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo i18n::translate('Add a husband using an existing person'); ?></a>
+				<a href="javascript:;" onclick="return linkspouse('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing person'); ?></a>
 				<?php echo help_link('link_husband'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return add_fams('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo i18n::translate('Link this person to an existing family as a wife'); ?></a>
+				<a href="javascript:;" onclick="return add_fams('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo WT_I18N::translate('Link this person to an existing family as a wife'); ?></a>
 				<?php echo help_link('link_wife'); ?>
 				</td>
 			</tr>
@@ -494,7 +494,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 <?php if (WT_USER_CAN_ACCEPT) { // NOTE this function is restricted to ACCEPTORS because another bug prevents pending changes being shown on the close relatives tab of the indi page. Once that bug is fixed, this function can be opened up to all! ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return addopfchild('<?php echo $this->controller->pid; ?>','U');"><?php echo i18n::translate('Add a child to create a one-parent family'); ?></a>
+				<a href="javascript:;" onclick="return addopfchild('<?php echo $this->controller->pid; ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
 				<?php echo help_link('add_opf_child'); ?>
 				</td>
 			</tr>

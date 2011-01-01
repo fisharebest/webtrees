@@ -107,7 +107,7 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 		// if we are using mod rewrite, there will be no error status.  be sure to set it
 		header('HTTP/1.0 404 Not Found');
 		header('Status: 404 Not Found');
-		echo "<html ", i18n::html_markup(), "><body>\n";
+		echo "<html ", WT_I18N::html_markup(), "><body>\n";
 		echo "<!-- filler space so IE will display the custom 404 error -->";
 		echo "<!-- filler space so IE will display the custom 404 error -->";
 		echo "<!-- filler space so IE will display the custom 404 error -->";
@@ -320,7 +320,7 @@ if (!$serverFilename) {
 	$pathinfo = pathinfo($exp[0]);
 	$ext = @strtolower($pathinfo['extension']);
 	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below 
-	sendErrorAndExit($ext, i18n::translate('The media file was not found in this family tree'), $requestedfile);
+	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'), $requestedfile);
 }
 
 $isThumb = false;
@@ -336,7 +336,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/thumbs/')) {
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.
-	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('The media file was not found in this family tree'), $serverFilename);
+	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
 }
 
 if (empty($controller->pid)) {
@@ -345,7 +345,7 @@ if (empty($controller->pid)) {
 		// only show these files to admin users
 		// bail since current user is not admin
 		// Note: the 404 error status is still in effect.
-		// if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('The media file was not found in this family tree'), $serverFilename);
+		// if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
 	}
 }
 
@@ -353,7 +353,7 @@ if (empty($controller->pid)) {
 if (!$controller->mediaobject->canDisplayDetails()) {
 	// if no permissions, bail
 	// Note: the 404 error status is still in effect
-	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), i18n::translate('The media file was not found in this family tree'));
+	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('The media file was not found in this family tree'));
 }
 
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
@@ -531,7 +531,7 @@ if ($generatewatermark) {
 
 	} else {
 		// this image is defective.  log it
-		AddToLog("Media Firewall error: >".i18n::translate('This media file is broken and cannot be watermarked')."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
+		AddToLog("Media Firewall error: >".WT_I18N::translate('This media file is broken and cannot be watermarked')."< in file >".$serverFilename."< (".getImageInfoForLog($serverFilename).") memory used: ".memory_get_usage(), 'media');
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

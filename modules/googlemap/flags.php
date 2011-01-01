@@ -43,11 +43,11 @@ if (!isset($countrySelected)) $countrySelected="Countries";
 if (isset($_REQUEST['stateSelected'])) $stateSelected = $_REQUEST['stateSelected'];
 if (!isset($stateSelected)) $stateSelected="States";
 
-print_simple_header(i18n::translate('Select flag'));
+print_simple_header(WT_I18N::translate('Select flag'));
 
 if (!is_dir('./places/flags/')) {
-	echo '<br /><div class="optionbox wrap">', i18n::translate('<b>The flags directory doesn\'t exist</b><br /><br />To make the flags work make sure that ./places/flags directory exists and contains flags files.'), '</div><br />';
-	echo '<div class="center"><a href="javascript:;" onclick="window.close();">', i18n::translate('Close Window'), "</a></div><br />\n";
+	echo '<br /><div class="optionbox wrap">', WT_I18N::translate('<b>The flags directory doesn\'t exist</b><br /><br />To make the flags work make sure that ./places/flags directory exists and contains flags files.'), '</div><br />';
+	echo '<div class="center"><a href="javascript:;" onclick="window.close();">', WT_I18N::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
@@ -94,13 +94,13 @@ if ($action == "ChangeFlag") {
 		function edit_close() {
 <?php if ($_POST["selcountry"] == "Countries") { ?>
 			window.opener.document.editplaces.icon.value = "places/flags/<?php echo $flags[$_POST["FLAGS"]]; ?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag'); ?></a>";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } else if ($_POST["selstate"] != "States"){ ?>
 			window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag'); ?></a>";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } else { ?>
 			window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo i18n::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo i18n::translate('Remove flag'); ?></a>";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } ?>
 			window.close();
 		}
@@ -111,7 +111,7 @@ if ($action == "ChangeFlag") {
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", i18n::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
@@ -183,13 +183,13 @@ else {
 	<input type="hidden" name="action" value="ChangeFlag" />
 	<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>" />
 	<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>" />
-	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo i18n::translate('Save'); ?>" /><br />
+	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
 	<table class="facts_table">
 		<tr>
 			<td class="optionbox" colspan="4">
 				<?php echo help_link('PLE_FLAGS','googlemap'); ?>
 				<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
-					<option value="Countries"><?php echo i18n::translate('Countries'); ?></option>
+					<option value="Countries"><?php echo WT_I18N::translate('Countries'); ?></option>
 					<?php foreach ($countryList as $country_key=>$country_name) {
 						echo "<option value=\"", $country_key, "\"";
 						if ($countrySelected == $country_key) echo " selected=\"selected\" ";
@@ -226,7 +226,7 @@ else {
 			<td class="optionbox" colspan="4">
 				<?php echo help_link('PLE_FLAGS','googlemap'); ?>
 				<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
-					<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ i18n::translate('Subdivision'); ?></option>
+					<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
 					<?php foreach ($stateList as $state_key=>$state_name) {
 						echo "<option value=\"", $state_key, "\"";
 						if ($stateSelected == $state_key) echo " selected=\"selected\" ";
@@ -251,9 +251,9 @@ else {
 ?>
 		</tr>
 	</table>
-	<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo i18n::translate('Save'); ?>" /><br />
+	<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
 </form>
 <?php
-echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", i18n::translate('Close Window'), "</a></div><br />\n";
+echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
 
 print_simple_footer();

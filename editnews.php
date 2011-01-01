@@ -29,10 +29,10 @@
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
-print_simple_header(i18n::translate('Add/edit journal/news entry'));
+print_simple_header(WT_I18N::translate('Add/edit journal/news entry'));
 
 if (!WT_USER_ID) {
-	echo i18n::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	print_simple_footer();
 	exit;
 }
@@ -47,19 +47,19 @@ $text    =safe_POST('text', WT_REGEX_UNSAFE);
 if (empty($username)) $username=$GEDCOM;
 
 if ($action=="compose") {
-	echo '<span class="subheaders">'.i18n::translate('Add/edit journal/news entry').'</span>';
+	echo '<span class="subheaders">'.WT_I18N::translate('Add/edit journal/news entry').'</span>';
 	?>
 	<script language="JavaScript" type="text/javascript">
 		function checkForm(frm) {
 			if (frm.title.value=="") {
-				alert('<?php echo i18n::translate('Please enter a title.'); ?>');
+				alert('<?php echo WT_I18N::translate('Please enter a title.'); ?>');
 				document.messageform.title.focus();
 				return false;
 			}
 			<?php if (!array_key_exists('ckeditor', WT_Module::getActiveModules())) { //will be empty for FCK. FIXME, use FCK API to check for content.
 			?>
 			if (frm.text.value=="") {
-				alert('<?php echo i18n::translate('Please enter some text for this News or Journal entry.'); ?>');
+				alert('<?php echo WT_I18N::translate('Please enter some text for this News or Journal entry.'); ?>');
 				document.messageform.text.focus();
 				return false;
 			}
@@ -82,8 +82,8 @@ if ($action=="compose") {
 	echo "<input type=\"hidden\" name=\"username\" value=\"".$news["username"]."\" />";
 	echo "<input type=\"hidden\" name=\"date\" value=\"".$news["date"]."\" />";
 	echo "<table>";
-	echo "<tr><td align=\"right\">".i18n::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>";
-	echo "<tr><td valign=\"top\" align=\"right\">".i18n::translate('Entry Text:')."<br /></td>";
+	echo "<tr><td align=\"right\">".WT_I18N::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>";
+	echo "<tr><td valign=\"top\" align=\"right\">".WT_I18N::translate('Entry Text:')."<br /></td>";
 	echo "<td>";
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
@@ -98,7 +98,7 @@ if ($action=="compose") {
 		echo "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
 	}
 	echo "<br /></td></tr>";
-	echo "<tr><td></td><td><input type=\"submit\" value=\"".i18n::translate('Save')."\" /></td></tr>";
+	echo "<tr><td></td><td><input type=\"submit\" value=\"".WT_I18N::translate('Save')."\" /></td></tr>";
 	echo "</table>";
 	echo "</form>";
 } else if ($action=="save") {
@@ -114,11 +114,11 @@ if ($action=="compose") {
 	$message["title"] = $title;
 	$message["text"] = $text;
 	if (addNews($message)) {
-		echo i18n::translate('News/Journal entry successfully saved.');
+		echo WT_I18N::translate('News/Journal entry successfully saved.');
 	}
 } else if ($action=="delete") {
-	if (deleteNews($news_id)) echo i18n::translate('The news/journal entry has been deleted.');
+	if (deleteNews($news_id)) echo WT_I18N::translate('The news/journal entry has been deleted.');
 }
-echo "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".i18n::translate('Close Window')."</a><br /></center>";
+echo "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".WT_I18N::translate('Close Window')."</a><br /></center>";
 
 print_simple_footer();

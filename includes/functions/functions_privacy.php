@@ -456,7 +456,7 @@ function privatize_gedcom($gedrec) {
 						}
 					}
 				} else {
-					$newrec.="\n1 NAME ".i18n::translate('Private');
+					$newrec.="\n1 NAME ".WT_I18N::translate('Private');
 				}
 				// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
 				if (preg_match_all('/\n1 FAM[CS] @('.WT_REGEX_XREF.')@/', $gedrec, $matches, PREG_SET_ORDER)) {
@@ -483,22 +483,22 @@ function privatize_gedcom($gedrec) {
 				}
 				break;
 			case 'NOTE':
-				$newrec="0 @{$gid}@ {$type} ".i18n::translate('Private');
+				$newrec="0 @{$gid}@ {$type} ".WT_I18N::translate('Private');
 				break;
 			case 'SOUR':
-				$newrec="0 @{$gid}@ {$type}\n1 TITL ".i18n::translate('Private');
+				$newrec="0 @{$gid}@ {$type}\n1 TITL ".WT_I18N::translate('Private');
 				break;
 			case 'REPO':
 			case 'SUBM':
-				$newrec="0 @{$gid}@ {$type}\n1 NAME ".i18n::translate('Private');
+				$newrec="0 @{$gid}@ {$type}\n1 NAME ".WT_I18N::translate('Private');
 				break;
 			case 'SUBN':
-				$newrec="0 @{$gid}@ {$type}\n1 FAMF ".i18n::translate('Private');
+				$newrec="0 @{$gid}@ {$type}\n1 FAMF ".WT_I18N::translate('Private');
 				break;
 			case 'OBJE':
 			default:
 				// Other objects have no name/title, so add an inline note
-				$newrec="0 @{$gid}@ {$type}\n1 NOTE ".i18n::translate('Private');
+				$newrec="0 @{$gid}@ {$type}\n1 NOTE ".WT_I18N::translate('Private');
 			}
 			return $newrec;
 		}

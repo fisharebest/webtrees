@@ -32,8 +32,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'recent_changes':
-	$title=i18n::translate('User Messages');
-	$text=i18n::translate('The User Messages block shows a list of the messages that have been sent to the active user.');
+	$title=WT_I18N::translate('User Messages');
+	$text=WT_I18N::translate('The User Messages block shows a list of the messages that have been sent to the active user.');
 	$text.='<ul><li>';
 
 	// TODO: Other options of this block

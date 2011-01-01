@@ -73,7 +73,7 @@ if (empty($pid1)) {
 $check_node = true;
 $disp = true;
 
-$title_string .= i18n::translate('Relationship chart');
+$title_string .= WT_I18N::translate('Relationship chart');
 // -- print html header information
 print_header($title_string);
 
@@ -104,7 +104,7 @@ if ($pid2) {
 	//-- check if the id is valid
 	$person=WT_Person::getInstance($pid2);
 	if ($person) {
-		$title_string.=' '.i18n::translate('and').' '.$person->getFullName();
+		$title_string.=' '.WT_I18N::translate('and').' '.$person->getFullName();
 		$pid2=$person->getXref(); // i2 => I2
 	} else {
 		$pid2='';
@@ -133,7 +133,7 @@ function paste_id(value) {
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">
-	<?php echo i18n::translate('Relationship chart'); ?>
+	<?php echo WT_I18N::translate('Relationship chart'); ?>
 	</td>
 
 	<!-- // Empty space -->
@@ -141,12 +141,12 @@ function paste_id(value) {
 
 	<!-- // Options header -->
 	<td colspan="2" class="topbottombar center">
-	<?php echo i18n::translate('Options:'); ?>
+	<?php echo WT_I18N::translate('Options:'); ?>
 	</td></tr>
 
 	<!-- // Person 1 -->
 	<tr><td class="descriptionbox">
-	<?php echo i18n::translate('Person 1'), help_link('relationship_id'); ?>
+	<?php echo WT_I18N::translate('Person 1'), help_link('relationship_id'); ?>
 	</td>
 	<td class="optionbox vmiddle">
 	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>" />
@@ -159,7 +159,7 @@ function paste_id(value) {
 
 	<!-- // Show details -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
+	<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
 	</td>
 	<td class="optionbox vmiddle">
 	<input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />
@@ -171,7 +171,7 @@ function paste_id(value) {
 
 	<!-- // Person 2 -->
 	<tr><td class="descriptionbox">
-	<?php echo i18n::translate('Person 2'), help_link('relationship_id'); ?>
+	<?php echo WT_I18N::translate('Person 2'), help_link('relationship_id'); ?>
 	</td>
 	<td class="optionbox vmiddle">
 	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>" />
@@ -184,7 +184,7 @@ function paste_id(value) {
 
 	<!-- // Show oldest top -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Show oldest top'), help_link('oldest_top'); ?>
+	<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
 	</td><td class="optionbox">
 	<input tabindex="4" type="checkbox" name="asc" value="-1"
 	<?php if ($asc==-1) echo " checked=\"checked\""; ?> />
@@ -204,7 +204,7 @@ function paste_id(value) {
 			$check_node=$node;
 		}
 		foreach ($_SESSION["relationships"] as $indexval => $node) {
-			if ($i==0) echo i18n::translate('Show path').": </td><td class=\"list_value\" style=\"padding: 3px;\">";
+			if ($i==0) echo WT_I18N::translate('Show path').": </td><td class=\"list_value\" style=\"padding: 3px;\">";
 			if ($i>0) echo " | ";
 			if ($i==$path_to_find) {
 				echo "<span class=\"error\" style=\"valign: middle\">".($i+1)."</span>";
@@ -225,11 +225,11 @@ function paste_id(value) {
 				$disp = false;
 			}
 			if ($disp) {
-				echo i18n::translate('Show path'), ": </td>";
+				echo WT_I18N::translate('Show path'), ": </td>";
 				echo "<td class=\"optionbox\">";
 				echo " <span class=\"error vmmiddle\">";
 				$check_node = get_relationship($pid1, $pid2, $followspouse, 0, true, $path_to_find);
-				echo $check_node ? "1" : "&nbsp;".i18n::translate('No results found.'), "</span></td>";
+				echo $check_node ? "1" : "&nbsp;".WT_I18N::translate('No results found.'), "</span></td>";
 				$prt = true;
 			}
 		}
@@ -243,7 +243,7 @@ function paste_id(value) {
 
 	<!-- // Check relationships by marriage -->
 	<td class="descriptionbox">
-	<?php echo i18n::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
+	<?php echo WT_I18N::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
 	</td>
 	<td class="optionbox" id="followspousebox">
 	<input tabindex="6" type="checkbox" name="followspouse" value="1"
@@ -260,9 +260,9 @@ function paste_id(value) {
 			echo "<td class=\"topbottombar wrap vmiddle center\" colspan=\"2\">";
 			if (isset($_SESSION["relationships"])) {
 				if ($path_to_find==0) {
-					echo "<span class=\"error\">", i18n::translate('No link between the two individuals could be found.'), "</span><br />";
+					echo "<span class=\"error\">", WT_I18N::translate('No link between the two individuals could be found.'), "</span><br />";
 				} else {
-					echo "<span class=\"error\">", i18n::translate('No other link between the two individuals could be found.'), "</span><br />";
+					echo "<span class=\"error\">", WT_I18N::translate('No other link between the two individuals could be found.'), "</span><br />";
 				}
 			}
 			if (!$followspouse) {
@@ -271,11 +271,11 @@ function paste_id(value) {
 				document.getElementById("followspousebox").className='facts_valuered';
 				</script>
 				<?php
-				echo "<input class=\"error\" type=\"submit\" value=\"", i18n::translate('Check relationships by marriage'), "\" onclick=\"people.followspouse.checked='checked';\"/>";
+				echo "<input class=\"error\" type=\"submit\" value=\"", WT_I18N::translate('Check relationships by marriage'), "\" onclick=\"people.followspouse.checked='checked';\"/>";
 			}
 			echo '</td>';
 		} else {
-			echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", i18n::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\" />";
+			echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", WT_I18N::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\" />";
 			echo help_link('next_path');
 			echo '</td>';
 		}
@@ -289,7 +289,7 @@ function paste_id(value) {
 
 	<!-- // View button -->
 	<td class="topbottombar vmiddle center" colspan="2">
-	<input tabindex="7" type="submit" value="<?php echo i18n::translate('View'); ?>" />
+	<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 	</td></tr>
 
 
@@ -297,7 +297,7 @@ function paste_id(value) {
 </div>
 <?php
 if ($show_full==0) {
-	echo '<br /><span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+	echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 }
 ?>
 <div id="relationship_chart<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl"; ?>" style="position:relative; z-index:1; width:98%;">
@@ -480,7 +480,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						echo "<div id=\"line$index\" dir=\"ltr\" style=\"background:none; position:absolute; right:".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"right\">";
 						echo "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
 						echo "<br />";
-						echo i18n::translate($node["relations"][$index])."";
+						echo WT_I18N::translate($node["relations"][$index])."";
 						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
 					}
 					else {
@@ -488,7 +488,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						echo "<br />";
 						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
 						if ($lh == 3) echo "<br />"; // note: $lh==3 means horiz arrow
-						echo i18n::translate($node["relations"][$index])."";
+						echo WT_I18N::translate($node["relations"][$index])."";
 					}
 					echo "</div>";
 				}
@@ -506,7 +506,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 			}
 
 			echo "<div style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":1px; top:".abs($Dbaseyoffset-70)."px; z-index:1;\">";
-			echo '<h4>', i18n::translate('Relationship: %s', get_relationship_name($node)), '</h4></div>';
+			echo '<h4>', WT_I18N::translate('Relationship: %s', get_relationship_name($node)), '</h4></div>';
 		}
 	}
 }

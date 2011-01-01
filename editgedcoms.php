@@ -104,8 +104,8 @@ case 'new_ged':
 	if (!$gedcom_id) {
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
 		// I18N: This should be a common/default/placeholder name of a person.  Put slashes around the surname.
-		$john_doe=i18n::translate('John /DOE/');
-		$note=i18n::translate('Edit this individual and replace their details with your own');
+		$john_doe=WT_I18N::translate('John /DOE/');
+		$note=WT_I18N::translate('Edit this individual and replace their details with your own');
 		WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
 		WT_DB::prepare(
 			"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
@@ -154,11 +154,11 @@ case 'replace_import':
 
 $gedcoms=get_all_gedcoms();
 
-print_header(i18n::translate('GEDCOM administration'));
+print_header(WT_I18N::translate('GEDCOM administration'));
 
-echo '<p class="center"><input TYPE="button" VALUE="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
+echo '<p class="center"><input TYPE="button" VALUE="', WT_I18N::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" /></p>';
 
-echo '<h2 class="center">', i18n::translate('GEDCOM administration'), '</h2>';
+echo '<h2 class="center">', WT_I18N::translate('GEDCOM administration'), '</h2>';
 
 // Process GET actions
 switch (safe_GET('action')) {
@@ -170,9 +170,9 @@ case 'importform':
 	if (!$gedcom_name) {
 		break;
 	}
-	echo '<p>', i18n::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
+	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).  
-	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($gedcom_name), '\') return confirm(\'', htmlspecialchars(i18n::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
+	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($gedcom_name), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '" />';
 	if (safe_GET('action')=='uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload" />';
@@ -202,19 +202,19 @@ case 'importform':
 			}
 			echo '</select>';
 		} else {
-			echo '<p>', i18n::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', $INDEX_DIRECTORY);
+			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', $INDEX_DIRECTORY);
 			echo '</form>';
 			echo '<br /><br />';
-			echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', i18n::translate('Cancel'), '" /></form>';
+			echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', WT_I18N::translate('Cancel'), '" /></form>';
 			print_footer();
 			exit;
 		}
 	}
 	echo '<br /><br /><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
-	echo i18n::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
-	echo '<br /><br /><input type="submit" value="', i18n::translate('Save'), '" /></form>';
+	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
+	echo '<br /><br /><input type="submit" value="', WT_I18N::translate('Save'), '" /></form>';
 	echo '</form>';
-	echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', i18n::translate('Cancel'), '" /></form>';
+	echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', WT_I18N::translate('Cancel'), '" /></form>';
 	print_footer();
 	exit;
 }
@@ -226,10 +226,10 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 
 		echo
 			'<table class="gedcom_table" width="100%">',
-			'<tr><td class="list_label" width="20%">', i18n::translate('GEDCOM name'),
+			'<tr><td class="list_label" width="20%">', WT_I18N::translate('GEDCOM name'),
 			'</td><td class="list_value"><a href="index.php?ctype=gedcom&ged=', rawurlencode($gedcom_name), '">', htmlspecialchars($gedcom_name), ' - ',
-			i18n::translate('%s', get_gedcom_setting($gedcom_id, 'title')), '</a>',
-			'</td></tr><tr><td class="list_label">', i18n::translate('GEDCOM administration'),
+			WT_I18N::translate('%s', get_gedcom_setting($gedcom_id, 'title')), '</a>',
+			'</td></tr><tr><td class="list_label">', WT_I18N::translate('GEDCOM administration'),
 			'</td><td class="list_value">';
 
 		// The third row shows an optional progress bar and a list of maintenance options
@@ -249,22 +249,22 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 		echo
 			'<tr align="center">',
 			// configuration
-			'<td><a href="editconfig_gedcom.php?ged=', rawurlencode($gedcom_name), '">', i18n::translate('Configuration'), '</a>',
+			'<td><a href="editconfig_gedcom.php?ged=', rawurlencode($gedcom_name), '">', WT_I18N::translate('Configuration'), '</a>',
 			'</td>',
 			// export
-			'<td><a href="javascript:" onclick="window.open(\'', "export_gedcom.php?export=", rawurlencode($gedcom_name), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', i18n::translate('Export'), '</a>',
+			'<td><a href="javascript:" onclick="window.open(\'', "export_gedcom.php?export=", rawurlencode($gedcom_name), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', WT_I18N::translate('Export'), '</a>',
 			'</td>',
 			// import
-			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom_id, '">', i18n::translate('Import'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom_id, '">', WT_I18N::translate('Import'), '</a>',
 			'</td>',
 			// download
-			'<td><a href="downloadgedcom.php?ged=', rawurlencode($gedcom_name),'">', i18n::translate('Download'), '</a>',
+			'<td><a href="downloadgedcom.php?ged=', rawurlencode($gedcom_name),'">', WT_I18N::translate('Download'), '</a>',
 			'</td>',
 			// upload
-			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom_id, '">', i18n::translate('Upload'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom_id, '">', WT_I18N::translate('Upload'), '</a>',
 			'</td>',
 			// delete
-			'<td><a href="editgedcoms.php?action=delete&ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(i18n::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', i18n::translate('Delete'), '</a>',
+			'<td><a href="editgedcoms.php?action=delete&ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
 			'</td></tr></table></td></tr></table><br />';
 	}
 }
@@ -273,10 +273,10 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 if (WT_USER_IS_ADMIN) {
 	echo
 		'<br/><table class="gedcom_table"><tr>',
-		'<td class="list_label">', i18n::translate('Default GEDCOM'), help_link('default_gedcom'), '</td>',
-		'<td class="list_label">', i18n::translate('Add a new GEDCOM'), '</td>',
-		'<td class="list_label">', i18n::translate('Upload a new GEDCOM'), '</td>',
-		'<td class="list_label">', i18n::translate('Create a new GEDCOM'), '</td>',
+		'<td class="list_label">', WT_I18N::translate('Default GEDCOM'), help_link('default_gedcom'), '</td>',
+		'<td class="list_label">', WT_I18N::translate('Add a new GEDCOM'), '</td>',
+		'<td class="list_label">', WT_I18N::translate('Upload a new GEDCOM'), '</td>',
+		'<td class="list_label">', WT_I18N::translate('Create a new GEDCOM'), '</td>',
 		'</tr><tr>',
 		'<td class="list_value_wrap">',
 		'<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
@@ -299,7 +299,7 @@ if (WT_USER_IS_ADMIN) {
 		$INDEX_DIRECTORY,
 		'<input type="hidden" name="action" value="add_ged" />',
 		'<select name="ged_name" onchange="document.addform.submit();" />',
-		'<option>', i18n::translate('Select a file'), '</option>',
+		'<option>', WT_I18N::translate('Select a file'), '</option>',
 	$d=opendir($INDEX_DIRECTORY);
 	$files=false;
 	while (($f=readdir($d))!==false) {
@@ -327,7 +327,7 @@ if (WT_USER_IS_ADMIN) {
 		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
 		'<input type="hidden" name="action" value="new_ged" />',
 		'<input name="ged_name" />',
-		' <input type="submit" value="', i18n::translate('Save') , '"/>',
+		' <input type="submit" value="', WT_I18N::translate('Save') , '"/>',
 		'</form>',
 		'</td>',
 		'</tr></table><br/>';
@@ -337,7 +337,7 @@ if (WT_USER_IS_ADMIN) {
 			echo
 				'<div class="center">',
 				'<a style="color:green; font-weight:bold;" href="pgv_to_wt.php">',
-				i18n::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
+				WT_I18N::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
 				'</a>',
 				help_link('PGV_WIZARD'),
 				'</div>';

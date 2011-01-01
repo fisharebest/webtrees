@@ -38,7 +38,7 @@ $controller = new WT_Controller_Clippings();
 $controller->init();
 
 // -- print html header information
-print_header(i18n::translate('Clippings cart'));
+print_header(WT_I18N::translate('Clippings cart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -47,7 +47,7 @@ echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(
 echo WT_JS_END;
 
 if (count($cart)==0) { ?>
-<h2><?php echo i18n::translate('Family Tree Clippings Cart'); ?></h2>
+<h2><?php echo WT_I18N::translate('Family Tree Clippings Cart'); ?></h2>
 <?php }
 
 if ($controller->action=='add') {
@@ -58,15 +58,15 @@ if ($controller->action=='add') {
 		<input type="hidden" name="mod" value="clippings" />
 		<input type="hidden" name="mod_action" value="index" />
 		<table>
-			<tr><td class="topbottombar"><?php echo i18n::translate('Which other links from this family would you like to add?'); ?>
+			<tr><td class="topbottombar"><?php echo WT_I18N::translate('Which other links from this family would you like to add?'); ?>
 			<input type="hidden" name="id" value="<?php echo $controller->id; ?>" />
 			<input type="hidden" name="type" value="<?php echo $controller->type; ?>" />
 			<input type="hidden" name="action" value="add1" /></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" checked value="none" /><?php echo i18n::translate('Add just this family record.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="parents" /><?php echo i18n::translate('Add parents\' records together with this family record.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="members" /><?php echo i18n::translate('Add parents\' and children\'s records together with this family record.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="descendants" /><?php echo i18n::translate('Add parents\' and all descendants\' records together with this family record.'); ?></td></tr>
-			<tr><td class="topbottombar"><input type="submit" value="<?php echo i18n::translate('Continue Adding'); ?>" /></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" checked value="none" /><?php echo WT_I18N::translate('Add just this family record.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="parents" /><?php echo WT_I18N::translate('Add parents\' records together with this family record.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="members" /><?php echo WT_I18N::translate('Add parents\' and children\'s records together with this family record.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="descendants" /><?php echo WT_I18N::translate('Add parents\' and all descendants\' records together with this family record.'); ?></td></tr>
+			<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>" /></td></tr>
 
 		</table>
 		</form>
@@ -76,20 +76,20 @@ if ($controller->action=='add') {
 		<input type="hidden" name="mod" value="clippings" />
 		<input type="hidden" name="mod_action" value="index" />
 		<table>
-			<tr><td class="topbottombar"><?php echo i18n::translate('Which links from this person would you also like to add?'); ?>
+			<tr><td class="topbottombar"><?php echo WT_I18N::translate('Which links from this person would you also like to add?'); ?>
 			<input type="hidden" name="id" value="<?php echo $controller->id; ?>" />
 			<input type="hidden" name="type" value="<?php echo $controller->type; ?>" />
 			<input type="hidden" name="action" value="add1" /></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" checked value="none" /><?php echo i18n::translate('Add just this person.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="parents" /><?php echo i18n::translate('Add this person, his parents, and siblings.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors" /><?php echo i18n::translate('Add this person and his direct line ancestors.'); ?><br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo i18n::translate('Number of generations:'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"/></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies" /><?php echo i18n::translate('Add this person, his direct line ancestors, and their families.'); ?><br >
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo i18n::translate('Number of generations:'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');" /></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="members" /><?php echo i18n::translate('Add this person, his spouse, and children.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants" /><?php echo i18n::translate('Add this person, his spouse, and all descendants.'); ?><br >
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo i18n::translate('Number of generations:'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');" /></td></tr>
-			<tr><td class="topbottombar"><input type="submit" value="<?php echo i18n::translate('Continue Adding'); ?>" />
+			<tr><td class="optionbox"><input type="radio" name="others" checked value="none" /><?php echo WT_I18N::translate('Add just this person.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="parents" /><?php echo WT_I18N::translate('Add this person, his parents, and siblings.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors" /><?php echo WT_I18N::translate('Add this person and his direct line ancestors.'); ?><br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo WT_I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"/></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies" /><?php echo WT_I18N::translate('Add this person, his direct line ancestors, and their families.'); ?><br >
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo WT_I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');" /></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="members" /><?php echo WT_I18N::translate('Add this person, his spouse, and children.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants" /><?php echo WT_I18N::translate('Add this person, his spouse, and all descendants.'); ?><br >
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo WT_I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');" /></td></tr>
+			<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>" />
 		</table>
 		</form>
 	<?php } else if ($controller->type=='sour')  { ?>
@@ -97,13 +97,13 @@ if ($controller->action=='add') {
 		<input type="hidden" name="mod" value="clippings" />
 		<input type="hidden" name="mod_action" value="index" />
 		<table>
-			<tr><td class="topbottombar"><?php echo i18n::translate('Which records linked to this source should be added?'); ?>
+			<tr><td class="topbottombar"><?php echo WT_I18N::translate('Which records linked to this source should be added?'); ?>
 			<input type="hidden" name="id" value="<?php echo $controller->id; ?>" />
 			<input type="hidden" name="type" value="<?php echo $controller->type; ?>" />
 			<input type="hidden" name="action" value="add1" /></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" checked value="none" /><?php echo i18n::translate('Add just this source.'); ?></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="linked" /><?php echo i18n::translate('Add this source and families/people linked to it.'); ?></td></tr>
-			<tr><td class="topbottombar"><input type="submit" value="<?php echo i18n::translate('Continue Adding'); ?>" />
+			<tr><td class="optionbox"><input type="radio" name="others" checked value="none" /><?php echo WT_I18N::translate('Add just this source.'); ?></td></tr>
+			<tr><td class="optionbox"><input type="radio" name="others" value="linked" /><?php echo WT_I18N::translate('Add this source and families/people linked to it.'); ?></td></tr>
+			<tr><td class="topbottombar"><input type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>" />
 		</table>
 		</form>
 	<?php }
@@ -111,7 +111,7 @@ if ($controller->action=='add') {
 $ct = count($cart);
 
 if ($controller->privCount>0) {
-	echo "<span class=\"error\">".i18n::translate('Some items could not be added due to privacy restrictions')."</span><br /><br />";
+	echo "<span class=\"error\">".WT_I18N::translate('Some items could not be added due to privacy restrictions')."</span><br /><br />";
 }
 
 if ($ct==0) {
@@ -119,7 +119,7 @@ if ($ct==0) {
 	// -- new lines, added by Jans, to display helptext when cart is empty
 	if ($controller->action!='add') {
 
-		echo i18n::translate('The Clippings Cart allows you to take extracts ("clippings") from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br /><ul><li>How to take clippings?<br />This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br />Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
+		echo WT_I18N::translate('The Clippings Cart allows you to take extracts ("clippings") from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br /><ul><li>How to take clippings?<br />This is really simple. Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name. There you will see the <b>Add to Clippings Cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br />Once you have items in your cart, you can download them just by clicking the <b>Download Now</b> link.  Follow the instructions and links.</li></ul>');
 
 		echo WT_JS_START;
 		echo 'var pastefield;';
@@ -132,7 +132,7 @@ if ($ct==0) {
 		<table>
 		<tr>
 			<td colspan="2" class="topbottombar" style="text-align:center; ">
-				<?php echo i18n::translate('Add Individual By ID'), help_link('add_by_id', $this->getName()); ?>
+				<?php echo WT_I18N::translate('Add Individual By ID'), help_link('add_by_id', $this->getName()); ?>
 			</td>
 		</tr>
 		<tr>
@@ -144,7 +144,7 @@ if ($ct==0) {
 				<?php print_findindi_link('cart_item_id', ''); ?>
 				<?php print_findfamily_link('cart_item_id', ''); ?>
 				<?php print_findsource_link('cart_item_id', ''); ?>
-				<input type="submit" value="<?php echo i18n::translate('Add'); ?>"/>
+				<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"/>
 
 			</td>
 		</tr>
@@ -154,7 +154,7 @@ if ($ct==0) {
 	}
 
 	// -- end new lines
-	echo "<br /><br />".i18n::translate('Your Clippings Cart is empty.')."<br /><br />";
+	echo "<br /><br />".WT_I18N::translate('Your Clippings Cart is empty.')."<br /><br />";
 } else {
 	if ($controller->action != 'download' && $controller->action != 'add') { ?>
 		<table><tr><td class="width33" valign="top" rowspan="3">
@@ -163,11 +163,11 @@ if ($ct==0) {
 		<input type="hidden" name="mod_action" value="index" />
 		<input type="hidden" name="action" value="download" />
 		<table>
-		<tr><td colspan="2" class="topbottombar"><h2><?php echo i18n::translate('File Information'); ?></h2></td></tr>
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Zip File(s)'), help_link('zip'); ?></td>
+		<tr><td colspan="2" class="topbottombar"><h2><?php echo WT_I18N::translate('File Information'); ?></h2></td></tr>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Zip File(s)'), help_link('zip'); ?></td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked" /></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked="checked" /></td></tr>
 
 		<?php
@@ -199,31 +199,31 @@ if ($ct==0) {
 		}
 		?>
 
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 		<td class="list_value">
-		<input type="radio" name="privatize_export" value="none" <?php echo $radioPrivatizeNone; ?>/>&nbsp;<?php echo i18n::translate('None'); ?><br />
-		<input type="radio" name="privatize_export" value="visitor" <?php echo $radioPrivatizeVisitor; ?>/>&nbsp;<?php echo i18n::translate('Visitor'); ?><br />
-		<input type="radio" name="privatize_export" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo i18n::translate('Member'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo i18n::translate('Manager'); ?>
+		<input type="radio" name="privatize_export" value="none" <?php echo $radioPrivatizeNone; ?>/>&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+		<input type="radio" name="privatize_export" value="visitor" <?php echo $radioPrivatizeVisitor; ?>/>&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
+		<input type="radio" name="privatize_export" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
 		</td></tr>
 
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes" /></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
 		<td class="optionbox"><input type="checkbox" name="remove" value="yes" checked="checked" /></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media path to'), help_link('convertPath'); ?></td>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
 		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $controller->conv_path, getLRM(); ?>" /></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap"><?php echo i18n::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
+		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
 		<td class="list_value">
-		<input type="radio" name="conv_slashes" value="forward" <?php if ($controller->conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;<?php echo i18n::translate('Forward slashes : /'); ?><br />
-		<input type="radio" name="conv_slashes" value="backward" <?php if ($controller->conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;<?php echo i18n::translate('Backslashes : \\'); ?>
+		<input type="radio" name="conv_slashes" value="forward" <?php if ($controller->conv_slashes=='forward') echo "checked=\"checked\" "; ?>/>&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?><br />
+		<input type="radio" name="conv_slashes" value="backward" <?php if ($controller->conv_slashes=='backward') echo "checked=\"checked\" "; ?>/>&nbsp;<?php echo WT_I18N::translate('Backslashes : \\'); ?>
 		</td></tr>
 
 		<tr><td class="topbottombar" colspan="2">
-		<input type="submit" value="<?php echo i18n::translate('Download Now'); ?>" />
+		<input type="submit" value="<?php echo WT_I18N::translate('Download Now'); ?>" />
 		</form>
 		</td></tr>
 		</table>
@@ -246,7 +246,7 @@ if ($ct==0) {
 		<table>
 		<tr>
 			<td colspan="2" class="topbottombar" style="text-align:center; ">
-				<?php echo i18n::translate('Add Individual By ID'), help_link('add_by_id', $this->getName()); ?>
+				<?php echo WT_I18N::translate('Add Individual By ID'), help_link('add_by_id', $this->getName()); ?>
 			</td>
 		</tr>
 		<tr>
@@ -258,7 +258,7 @@ if ($ct==0) {
 				<?php print_findindi_link('cart_item_id', ''); ?>
 				<?php print_findfamily_link('cart_item_id', ''); ?>
 				<?php print_findsource_link('cart_item_id', ''); ?>
-				<input type="submit" value="<?php echo i18n::translate('Add'); ?>"/>
+				<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"/>
 
 			</td>
 		</tr>
@@ -267,18 +267,18 @@ if ($ct==0) {
 
 
 	<?php } ?>
-	<br /><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo i18n::translate('Empty Cart'); ?></a><?php echo help_link('empty_cart', $this->getName()); ?>
+	<br /><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo WT_I18N::translate('Empty Cart'); ?></a><?php echo help_link('empty_cart', $this->getName()); ?>
 	</td></tr>
 
-	<tr><td class="topbottombar"><h2><?php echo i18n::translate('Family Tree Clippings Cart'), help_link('clip_cart', $this->getName()); ?></h2></td></tr>
+	<tr><td class="topbottombar"><h2><?php echo WT_I18N::translate('Family Tree Clippings Cart'), help_link('clip_cart', $this->getName()); ?></h2></td></tr>
 
 	<tr><td valign="top">
 	<table id="mycart" class="sortable list_table width100">
 		<tr>
-			<th class="list_label"><?php echo i18n::translate('Type'); ?></th>
-			<th class="list_label"><?php echo i18n::translate('ID'); ?></th>
-			<th class="list_label"><?php echo i18n::translate('Name / Description'); ?></th>
-			<th class="list_label"><?php echo i18n::translate('Remove'); ?></th>
+			<th class="list_label"><?php echo WT_I18N::translate('Type'); ?></th>
+			<th class="list_label"><?php echo WT_I18N::translate('ID'); ?></th>
+			<th class="list_label"><?php echo WT_I18N::translate('Name / Description'); ?></th>
+			<th class="list_label"><?php echo WT_I18N::translate('Remove'); ?></th>
 		</tr>
 <?php
 	for ($i=0; $i<$ct; $i++) {
@@ -304,7 +304,7 @@ if ($ct==0) {
 			if ($record) echo '<a href="', $record->getHtmlUrl(), '">', PrintReady($record->getListName()), '</a>';
 			?>
 			</td>
-			<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;item=<?php echo $i; ?>"><img src="<?php echo $WT_IMAGES["remove"]; ?>" border="0" alt="<?php echo i18n::translate('Remove'); ?>" title="<?php echo i18n::translate('Remove'); ?>" /></a></td>
+			<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;item=<?php echo $i; ?>"><img src="<?php echo $WT_IMAGES["remove"]; ?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" title="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
 		</tr>
 		<?php
 		}

@@ -47,73 +47,73 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	}
 	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('NOMINATIVE', 'Tishrei');
-		case 2:  return i18n::translate_c('NOMINATIVE', 'Heshvan');
-		case 3:  return i18n::translate_c('NOMINATIVE', 'Kislev');
-		case 4:  return i18n::translate_c('NOMINATIVE', 'Tevet');
-		case 5:  return i18n::translate_c('NOMINATIVE', 'Shevat');
-		case 6:  if ($leap_year) return i18n::translate_c('NOMINATIVE', 'Adar'); else return i18n::translate_c('NOMINATIVE', 'Adar I');
-		case 7:  return i18n::translate_c('NOMINATIVE', 'Adar II');
-		case 8:  return i18n::translate_c('NOMINATIVE', 'Nissan');
-		case 9:  return i18n::translate_c('NOMINATIVE', 'Iyar');
-		case 10: return i18n::translate_c('NOMINATIVE', 'Sivan');
-		case 11: return i18n::translate_c('NOMINATIVE', 'Tamuz');
-		case 12: return i18n::translate_c('NOMINATIVE', 'Av');
-		case 13: return i18n::translate_c('NOMINATIVE', 'Elul');
+		case 1:  return WT_I18N::translate_c('NOMINATIVE', 'Tishrei');
+		case 2:  return WT_I18N::translate_c('NOMINATIVE', 'Heshvan');
+		case 3:  return WT_I18N::translate_c('NOMINATIVE', 'Kislev');
+		case 4:  return WT_I18N::translate_c('NOMINATIVE', 'Tevet');
+		case 5:  return WT_I18N::translate_c('NOMINATIVE', 'Shevat');
+		case 6:  if ($leap_year) return WT_I18N::translate_c('NOMINATIVE', 'Adar'); else return WT_I18N::translate_c('NOMINATIVE', 'Adar I');
+		case 7:  return WT_I18N::translate_c('NOMINATIVE', 'Adar II');
+		case 8:  return WT_I18N::translate_c('NOMINATIVE', 'Nissan');
+		case 9:  return WT_I18N::translate_c('NOMINATIVE', 'Iyar');
+		case 10: return WT_I18N::translate_c('NOMINATIVE', 'Sivan');
+		case 11: return WT_I18N::translate_c('NOMINATIVE', 'Tamuz');
+		case 12: return WT_I18N::translate_c('NOMINATIVE', 'Av');
+		case 13: return WT_I18N::translate_c('NOMINATIVE', 'Elul');
 		default: return '';
 		}
 	}
 	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('GENITIVE', 'Tishrei');
-		case 2:  return i18n::translate_c('GENITIVE', 'Heshvan');
-		case 3:  return i18n::translate_c('GENITIVE', 'Kislev');
-		case 4:  return i18n::translate_c('GENITIVE', 'Tevet');
-		case 5:  return i18n::translate_c('GENITIVE', 'Shevat');
-		case 6:  if ($leap_year) return i18n::translate_c('GENITIVE', 'Adar'); else return i18n::translate_c('GENITIVE', 'Adar I');
-		case 7:  return i18n::translate_c('GENITIVE', 'Adar II');
-		case 8:  return i18n::translate_c('GENITIVE', 'Nissan');
-		case 9:  return i18n::translate_c('GENITIVE', 'Iyar');
-		case 10: return i18n::translate_c('GENITIVE', 'Sivan');
-		case 11: return i18n::translate_c('GENITIVE', 'Tamuz');
-		case 12: return i18n::translate_c('GENITIVE', 'Av');
-		case 13: return i18n::translate_c('GENITIVE', 'Elul');
+		case 1:  return WT_I18N::translate_c('GENITIVE', 'Tishrei');
+		case 2:  return WT_I18N::translate_c('GENITIVE', 'Heshvan');
+		case 3:  return WT_I18N::translate_c('GENITIVE', 'Kislev');
+		case 4:  return WT_I18N::translate_c('GENITIVE', 'Tevet');
+		case 5:  return WT_I18N::translate_c('GENITIVE', 'Shevat');
+		case 6:  if ($leap_year) return WT_I18N::translate_c('GENITIVE', 'Adar'); else return WT_I18N::translate_c('GENITIVE', 'Adar I');
+		case 7:  return WT_I18N::translate_c('GENITIVE', 'Adar II');
+		case 8:  return WT_I18N::translate_c('GENITIVE', 'Nissan');
+		case 9:  return WT_I18N::translate_c('GENITIVE', 'Iyar');
+		case 10: return WT_I18N::translate_c('GENITIVE', 'Sivan');
+		case 11: return WT_I18N::translate_c('GENITIVE', 'Tamuz');
+		case 12: return WT_I18N::translate_c('GENITIVE', 'Av');
+		case 13: return WT_I18N::translate_c('GENITIVE', 'Elul');
 		default: return '';
 		}
 	}
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('LOCATIVE', 'Tishrei');
-		case 2:  return i18n::translate_c('LOCATIVE', 'Heshvan');
-		case 3:  return i18n::translate_c('LOCATIVE', 'Kislev');
-		case 4:  return i18n::translate_c('LOCATIVE', 'Tevet');
-		case 5:  return i18n::translate_c('LOCATIVE', 'Shevat');
-		case 6:  if ($leap_year) return i18n::translate_c('LOCATIVE', 'Adar'); else return i18n::translate_c('LOCATIVE', 'Adar I');
-		case 7:  return i18n::translate_c('LOCATIVE', 'Adar II');
-		case 8:  return i18n::translate_c('LOCATIVE', 'Nissan');
-		case 9:  return i18n::translate_c('LOCATIVE', 'Iyar');
-		case 10: return i18n::translate_c('LOCATIVE', 'Sivan');
-		case 11: return i18n::translate_c('LOCATIVE', 'Tamuz');
-		case 12: return i18n::translate_c('LOCATIVE', 'Av');
-		case 13: return i18n::translate_c('LOCATIVE', 'Elul');
+		case 1:  return WT_I18N::translate_c('LOCATIVE', 'Tishrei');
+		case 2:  return WT_I18N::translate_c('LOCATIVE', 'Heshvan');
+		case 3:  return WT_I18N::translate_c('LOCATIVE', 'Kislev');
+		case 4:  return WT_I18N::translate_c('LOCATIVE', 'Tevet');
+		case 5:  return WT_I18N::translate_c('LOCATIVE', 'Shevat');
+		case 6:  if ($leap_year) return WT_I18N::translate_c('LOCATIVE', 'Adar'); else return WT_I18N::translate_c('LOCATIVE', 'Adar I');
+		case 7:  return WT_I18N::translate_c('LOCATIVE', 'Adar II');
+		case 8:  return WT_I18N::translate_c('LOCATIVE', 'Nissan');
+		case 9:  return WT_I18N::translate_c('LOCATIVE', 'Iyar');
+		case 10: return WT_I18N::translate_c('LOCATIVE', 'Sivan');
+		case 11: return WT_I18N::translate_c('LOCATIVE', 'Tamuz');
+		case 12: return WT_I18N::translate_c('LOCATIVE', 'Av');
+		case 13: return WT_I18N::translate_c('LOCATIVE', 'Elul');
 		default: return '';
 		}
 	}
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		switch ($n) {
-		case 1:  return i18n::translate_c('INSTRUMENTAL', 'Tishrei');
-		case 2:  return i18n::translate_c('INSTRUMENTAL', 'Heshvan');
-		case 3:  return i18n::translate_c('INSTRUMENTAL', 'Kislev');
-		case 4:  return i18n::translate_c('INSTRUMENTAL', 'Tevet');
-		case 5:  return i18n::translate_c('INSTRUMENTAL', 'Shevat');
-		case 6:  if ($leap_year) return i18n::translate_c('INSTRUMENTAL', 'Adar'); else return i18n::translate_c('INSTRUMENTAL', 'Adar I');
-		case 7:  return i18n::translate_c('INSTRUMENTAL', 'Adar II');
-		case 8:  return i18n::translate_c('INSTRUMENTAL', 'Nissan');
-		case 9:  return i18n::translate_c('INSTRUMENTAL', 'Iyar');
-		case 10: return i18n::translate_c('INSTRUMENTAL', 'Sivan');
-		case 11: return i18n::translate_c('INSTRUMENTAL', 'Tamuz');
-		case 12: return i18n::translate_c('INSTRUMENTAL', 'Av');
-		case 13: return i18n::translate_c('INSTRUMENTAL', 'Elul');
+		case 1:  return WT_I18N::translate_c('INSTRUMENTAL', 'Tishrei');
+		case 2:  return WT_I18N::translate_c('INSTRUMENTAL', 'Heshvan');
+		case 3:  return WT_I18N::translate_c('INSTRUMENTAL', 'Kislev');
+		case 4:  return WT_I18N::translate_c('INSTRUMENTAL', 'Tevet');
+		case 5:  return WT_I18N::translate_c('INSTRUMENTAL', 'Shevat');
+		case 6:  if ($leap_year) return WT_I18N::translate_c('INSTRUMENTAL', 'Adar'); else return WT_I18N::translate_c('INSTRUMENTAL', 'Adar I');
+		case 7:  return WT_I18N::translate_c('INSTRUMENTAL', 'Adar II');
+		case 8:  return WT_I18N::translate_c('INSTRUMENTAL', 'Nissan');
+		case 9:  return WT_I18N::translate_c('INSTRUMENTAL', 'Iyar');
+		case 10: return WT_I18N::translate_c('INSTRUMENTAL', 'Sivan');
+		case 11: return WT_I18N::translate_c('INSTRUMENTAL', 'Tamuz');
+		case 12: return WT_I18N::translate_c('INSTRUMENTAL', 'Av');
+		case 13: return WT_I18N::translate_c('INSTRUMENTAL', 'Elul');
 		default: return '';
 		}
 	}

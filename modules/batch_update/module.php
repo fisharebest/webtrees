@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 	// Extend WT_Module
 	public function getTitle() {
-		return i18n::translate('Batch Update');
+		return WT_I18N::translate('Batch Update');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return i18n::translate('Perform bulk updates and corrections on your GEDCOM data');
+		return WT_I18N::translate('Perform bulk updates and corrections on your GEDCOM data');
 	}
 
 	// Extend WT_Module

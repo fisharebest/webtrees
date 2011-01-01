@@ -621,7 +621,7 @@ function import_record($gedrec, $ged_id, $update) {
 		$xref=$match[1];
 		$type=$match[1];
 	} else {
-		echo i18n::translate('Invalid GEDCOM format'), '<br /><pre>', $gedrec, '</pre>';
+		echo WT_I18N::translate('Invalid GEDCOM format'), '<br /><pre>', $gedrec, '</pre>';
 		return;
 	}
 
@@ -632,7 +632,7 @@ function import_record($gedrec, $ged_id, $update) {
 		if (preg_match('/0 @('.WT_REGEX_XREF.')@ ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
 			list(,$xref, $type)=$match;
 		} else {
-			echo i18n::translate('Invalid GEDCOM format'), '<br /><pre>', $gedrec, '</pre>';
+			echo WT_I18N::translate('Invalid GEDCOM format'), '<br /><pre>', $gedrec, '</pre>';
 			return;
 		}
 	}

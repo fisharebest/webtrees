@@ -30,7 +30,7 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 //global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
 
-print_header(i18n::translate('Administration'));
+print_header(WT_I18N::translate('Administration'));
 
 // Check for updates
 $latest_version_txt=fetch_latest_version();
@@ -52,13 +52,13 @@ $all_gedcoms = get_all_gedcoms();
 // Display a series of "blocks" of general information, vary according to admin or manager.
 echo '<div id="about">';
 echo
-	'<h2>', i18n::translate('About webtrees'), '</h2>',
-	'<p>', i18n::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks. Administrators can upgrade to the lastest version with a single click, whenever the page reports that a new version is available.'), '</p>',
-	'<p>' ,i18n::translate('Your installed  version of <b>webtrees</b> is: %s', WT_VERSION_TEXT),'</p>';
+	'<h2>', WT_I18N::translate('About webtrees'), '</h2>',
+	'<p>', WT_I18N::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks. Administrators can upgrade to the lastest version with a single click, whenever the page reports that a new version is available.'), '</p>',
+	'<p>' ,WT_I18N::translate('Your installed  version of <b>webtrees</b> is: %s', WT_VERSION_TEXT),'</p>';
 if (version_compare(WT_VERSION, $latest_version)>0) {
-	echo '<p>' ,i18n::translate('The latest stable <b>webtrees</b> version is: %s', $latest_version), '&nbsp;<span class="accepted">' ,i18n::translate('No upgrade required.'), '</span></p>';
+	echo '<p>' ,WT_I18N::translate('The latest stable <b>webtrees</b> version is: %s', $latest_version), '&nbsp;<span class="accepted">' ,WT_I18N::translate('No upgrade required.'), '</span></p>';
 } else {
-	echo '<p class="warning">' ,i18n::translate('We recommend you click here to upgrade to the latest stable webtrees version: %s', $latest_version), '</p>';
+	echo '<p class="warning">' ,WT_I18N::translate('We recommend you click here to upgrade to the latest stable webtrees version: %s', $latest_version), '</p>';
 }
 echo '</div>';
 
@@ -75,7 +75,7 @@ $stats=new WT_Stats(WT_GEDCOM);
 	$gedadmin  =array(); // Array for managers
 
 echo
-	'<h2>', i18n::translate('User information'), '</h2>';
+	'<h2>', WT_I18N::translate('User information'), '</h2>';
 
 foreach(get_all_users() as $user_id=>$user_name) {
 	$totusers = $totusers + 1;
@@ -121,45 +121,45 @@ foreach(get_all_users() as $user_id=>$user_name) {
 
 echo
 	'<table>',
-	'<tr><td>', i18n::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
-	'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="user_admin.php?action=listusers&amp;filter=adminusers">', i18n::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
-	'<tr><td colspan="2">', i18n::translate('Managers'), '</td></tr>';
+	'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
+	'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="user_admin.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
+	'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
 foreach ($gedadmin as $key=>$geds) {
 	echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="user_admin.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '">', $geds['name'], '</a></td><td>', $geds['number'], '</td></tr>';
 }
 echo '<tr><td>';
 if ($warnusers == 0) {
-	echo i18n::translate('Users with warnings');
+	echo WT_I18N::translate('Users with warnings');
 } else {
-	echo '<a href="user_admin.php?action=listusers&amp;filter=warnings">', i18n::translate('Users with warnings'), '</a>';
+	echo '<a href="user_admin.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
 }
 echo '</td><td>', $warnusers, '</td></tr><tr><td>';
 if ($applusers == 0) {
-	echo i18n::translate('Unverified by User');
+	echo WT_I18N::translate('Unverified by User');
 } else {
-	echo '<a href="user_admin.php?action=listusers&amp;filter=usunver">', i18n::translate('Unverified by User'), '</a>';
+	echo '<a href="user_admin.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
 }
 echo '</td><td>', $applusers, '</td></tr><tr><td>';
 if ($nverusers == 0) {
-	echo i18n::translate('Unverified by Administrator');
+	echo WT_I18N::translate('Unverified by Administrator');
 } else {
-	echo '<a href="user_admin.php?action=listusers&amp;filter=admunver">', i18n::translate('Unverified by Administrator'), '</a>';
+	echo '<a href="user_admin.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
 }
 echo '</td><td>', $nverusers, '</td></tr>';
-echo '<tr><td colspan="2">', i18n::translate('Users\' languages'), '</td></tr>';
+echo '<tr><td colspan="2">', WT_I18N::translate('Users\' languages'), '</td></tr>';
 foreach ($userlang as $key=>$ulang) {
 	echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="user_admin.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
 }
 echo
 	'</tr>',
-	'<tr><td colspan="2">', i18n::translate('Users logged in'), '</td></tr>',
+	'<tr><td colspan="2">', WT_I18N::translate('Users logged in'), '</td></tr>',
 	'<tr><td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;', $stats->_usersLoggedIn(), '</td></tr>',
 	'</table>';
 echo '</div>'; // id=block2
 
 echo
 	'<div id="block3">',
-	'<h2>', i18n::translate('Recent changes'), '</h2>',
+	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
 	'<div id="changes">';
 $n=0;
 foreach ($all_gedcoms as $ged_id=>$gedcom) {
@@ -171,13 +171,13 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<h3>', get_gedcom_setting($ged_id, 'title'), '</h3>',
 		'<div>',
 		'<table>',
-		'<tr><td>&nbsp;</td><td><u>', i18n::translate('Today'), '</u></td><td><u>', i18n::translate('This week'), '</u></td><td><u>', i18n::translate('This month'), '</u></td>',
-		'<tr><th>', i18n::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', i18n::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', i18n::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', i18n::translate('Repositories'), '</th><td>', count_changes_today($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($REPO_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', i18n::translate('Media objects'), '</th><td>', count_changes_today($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($MEDIA_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', i18n::translate('Notes'), '</th><td>', count_changes_today($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($NOTE_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><td>&nbsp;</td><td><u>', WT_I18N::translate('Today'), '</u></td><td><u>', WT_I18N::translate('This week'), '</u></td><td><u>', WT_I18N::translate('This month'), '</u></td>',
+		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>', count_changes_today($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($REPO_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', count_changes_today($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($MEDIA_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', count_changes_today($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($NOTE_ID_PREFIX, $ged_id), '</td></tr>',
 		'</table>',
 		'</div>';
 }
@@ -190,7 +190,7 @@ echo
 
 echo
 	'<div id="block2">',
-	'<h2>', i18n::translate('Family tree statistics'), '</h2>',
+	'<h2>', WT_I18N::translate('Family tree statistics'), '</h2>',
 	'<div id="tree_stats">';
 $n=0;
 foreach ($all_gedcoms as $ged_id=>$gedcom) {
@@ -204,22 +204,22 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<div>',
 		'<table>',
 		'<tr><th><a href="indilist.php?ged=',  rawurlencode($gedcom), '">',
-		i18n::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
+		WT_I18N::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
 		'</td></tr>',
 		'<tr><th><a href="famlist.php?ged=',   rawurlencode($gedcom), '">',
-		i18n::translate('Families'), '</a></th><td>', $stats->totalFamilies(),
+		WT_I18N::translate('Families'), '</a></th><td>', $stats->totalFamilies(),
 		'</td></tr>',
 		'<tr><th><a href="sourlist.php?ged=',  rawurlencode($gedcom), '">',
-		i18n::translate('Sources'), '</a></th><td>', $stats->totalSources(),
+		WT_I18N::translate('Sources'), '</a></th><td>', $stats->totalSources(),
 		'</td></tr>',
 		'<tr><th><a href="repolist.php?ged=',  rawurlencode($gedcom), '">',
-		i18n::translate('Repositories'), '</a></th><td>', $stats->totalRepositories(),
+		WT_I18N::translate('Repositories'), '</a></th><td>', $stats->totalRepositories(),
 		'</td></tr>',
 		'<tr><th><a href="medialist.php?ged=', rawurlencode($gedcom), '">',
-		i18n::translate('Media objects'), '</a></th><td>', $stats->totalMedia(),
+		WT_I18N::translate('Media objects'), '</a></th><td>', $stats->totalMedia(),
 		'</td></tr>',
 		'<tr><th><a href="notelist.php?ged=',  rawurlencode($gedcom), '">',
-		i18n::translate('Notes'), '</a></th><td>', $stats->totalNotes(),
+		WT_I18N::translate('Notes'), '</a></th><td>', $stats->totalNotes(),
 		'</td></tr>',
 		'</table>',
 		'</div>';

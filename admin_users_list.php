@@ -40,7 +40,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(i18n::translate('User administration'));
+print_header(WT_I18N::translate('User administration'));
 
 ?>
 <script type="text/javascript">
@@ -102,8 +102,8 @@ print_header(i18n::translate('User administration'));
 	{
 		var aData = oTable.fnGetData( nTr );
 		var sOut = '<table class="details">';
-		sOut += '<tr><th>'+'<?php echo i18n::translate('Role');?>'+': </th><td>'+aData[5]+'</td>';
-		sOut += '<th>'+'<?php echo i18n::translate('Language');?>'+': </th><td>'+aData[4]+'</td></tr>';
+		sOut += '<tr><th>'+'<?php echo WT_I18N::translate('Role');?>'+': </th><td>'+aData[5]+'</td>';
+		sOut += '<th>'+'<?php echo WT_I18N::translate('Language');?>'+': </th><td>'+aData[4]+'</td></tr>';
 		sOut += '</table>';
 		
 		return sOut;
@@ -120,23 +120,23 @@ foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
 }
 $ALL_EDIT_OPTIONS=array(
-	'none'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Visitor'),
-	'access'=> /* I18N: Listbox entry; name of a role */ i18n::translate('Member'),
-	'edit'  => /* I18N: Listbox entry; name of a role */ i18n::translate('Editor'),
-	'accept'=> /* I18N: Listbox entry; name of a role */ i18n::translate('Moderator'),
-	'admin' => /* I18N: Listbox entry; name of a role */ i18n::translate('Manager')
+	'none'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor'),
+	'access'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member'),
+	'edit'  => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor'),
+	'accept'=> /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Moderator'),
+	'admin' => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager')
 );
 
 // Extract form actions (GET overrides POST if both set)
 $action                  =safe_POST('action',  $ALL_ACTIONS);
-$usrlang                 =safe_POST('usrlang', array_keys(i18n::installed_languages()));
+$usrlang                 =safe_POST('usrlang', array_keys(WT_I18N::installed_languages()));
 $username                =safe_POST('username', WT_REGEX_USERNAME);
 $filter                  =safe_POST('filter'   );
 $sort                    =safe_POST('sort'     );
 $ged                     =safe_POST('ged'      );
 
 $action                  =safe_GET('action',   $ALL_ACTIONS,                            $action);
-$usrlang                 =safe_GET('usrlang',  array_keys(i18n::installed_languages()), $usrlang);
+$usrlang                 =safe_GET('usrlang',  array_keys(WT_I18N::installed_languages()), $usrlang);
 $username                =safe_GET('username', WT_REGEX_USERNAME,                      $username);
 $filter                  =safe_GET('filter',   WT_REGEX_NOSCRIPT,                      $filter);
 $sort                    =safe_GET('sort',     WT_REGEX_NOSCRIPT,                      $sort);
@@ -149,7 +149,7 @@ $pass1                   =safe_POST('pass1',        WT_REGEX_PASSWORD);
 $pass2                   =safe_POST('pass2',        WT_REGEX_PASSWORD);
 $emailaddress            =safe_POST('emailaddress', WT_REGEX_EMAIL);
 $user_theme              =safe_POST('user_theme',               $ALL_THEME_DIRS);
-$user_language           =safe_POST('user_language',            array_keys(i18n::installed_languages()), WT_LOCALE);
+$user_language           =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
 $new_contact_method      =safe_POST('new_contact_method');
 $new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
 $new_comment_exp         =safe_POST('new_comment_exp'           );
@@ -222,14 +222,14 @@ ob_start();
 		'<thead>',
 		'<tr>',
 		'<th>User ID</th>',
-		'<th>', i18n::translate('Real name'), '</th>',
-		'<th>', i18n::translate('User name'), '</th>',
-		'<th>', i18n::translate('Email'), '</th>',
-		'<th>', i18n::translate('Language'), '</th>',
-		'<th>', i18n::translate('Date registered'), '</th>',
-		'<th>', i18n::translate('Last logged in'), '</th>',
-		'<th>', i18n::translate('Verified '), '</th>',
-		'<th>', i18n::translate('Approved'), '</th>',
+		'<th>', WT_I18N::translate('Real name'), '</th>',
+		'<th>', WT_I18N::translate('User name'), '</th>',
+		'<th>', WT_I18N::translate('Email'), '</th>',
+		'<th>', WT_I18N::translate('Language'), '</th>',
+		'<th>', WT_I18N::translate('Date registered'), '</th>',
+		'<th>', WT_I18N::translate('Last logged in'), '</th>',
+		'<th>', WT_I18N::translate('Verified '), '</th>',
+		'<th>', WT_I18N::translate('Approved'), '</th>',
 		'</tr>',
 		'</thead>',
 		'<tbody>',
@@ -258,31 +258,31 @@ ob_start();
 		'<table id="list">',
 			'<thead>',
 				'<tr>',
-					'<th>', i18n::translate('Message'), '</th>',
-					'<th>', i18n::translate('Real name'), '</th>',
-					'<th>', i18n::translate('User name'), '</th>',
-//					'<th>', i18n::translate('Languages'), '</th>',
-//					'<th>', i18n::translate('Role'), '</th>',
-					'<th>', i18n::translate('Date registered'), '</th>',
-					'<th>', i18n::translate('Last logged in'), '</th>',
-					'<th>', i18n::translate('Verified '), '</th>',
-					'<th>', i18n::translate('Approved'), '</th>',
-					'<th>', i18n::translate('Delete'), '</th>',
+					'<th>', WT_I18N::translate('Message'), '</th>',
+					'<th>', WT_I18N::translate('Real name'), '</th>',
+					'<th>', WT_I18N::translate('User name'), '</th>',
+//					'<th>', WT_I18N::translate('Languages'), '</th>',
+//					'<th>', WT_I18N::translate('Role'), '</th>',
+					'<th>', WT_I18N::translate('Date registered'), '</th>',
+					'<th>', WT_I18N::translate('Last logged in'), '</th>',
+					'<th>', WT_I18N::translate('Verified '), '</th>',
+					'<th>', WT_I18N::translate('Approved'), '</th>',
+					'<th>', WT_I18N::translate('Delete'), '</th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>';
 				foreach($users as $user_id=>$user_name) {
 					echo "<tr><td>";
 					if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'contactmethod')!='none') {
-						echo "<a href=\"javascript:;\" onclick=\"return message('", $user_name, "');\"><img src=\"".$WT_IMAGES['email']."\" \"alt=\"", i18n::translate('Send Message'), "\" title=\"", i18n::translate('Send Message'), "\" /></a>";
+						echo "<a href=\"javascript:;\" onclick=\"return message('", $user_name, "');\"><img src=\"".$WT_IMAGES['email']."\" \"alt=\"", WT_I18N::translate('Send Message'), "\" title=\"", WT_I18N::translate('Send Message'), "\" /></a>";
 					} else {
 						echo '&nbsp;';
 					}
 					echo '</td>';
 					$userName = getUserFullName($user_id);
-					echo "<td><a class=\"edit_link\" href=\"useradmin.php?action=edituser&amp;username={$user_name}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged={$ged}\" title=\"", i18n::translate('Edit'), "\">", $userName, '</a>';
+					echo "<td><a class=\"edit_link\" href=\"useradmin.php?action=edituser&amp;username={$user_name}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged={$ged}\" title=\"", WT_I18N::translate('Edit'), "\">", $userName, '</a>';
 					if (get_user_setting($user_id, 'canadmin')) {
-						echo '<div class="warning">', i18n::translate('Administrator'), '</div>';
+						echo '<div class="warning">', WT_I18N::translate('Administrator'), '</div>';
 					}
 					echo "</td>";
 					if (get_user_setting($user_id, "comment_exp")) {
@@ -333,22 +333,22 @@ ob_start();
 					echo '</td>';
 					echo '<td>';
 						if ((int)get_user_setting($user_id, 'reg_timestamp') > (int)get_user_setting($user_id, 'sessiontime')) {
-							echo i18n::translate('Never'), '<br />', i18n::time_ago(time() - (int)get_user_setting($user_id, 'reg_timestamp'));
+							echo WT_I18N::translate('Never'), '<br />', WT_I18N::time_ago(time() - (int)get_user_setting($user_id, 'reg_timestamp'));
 						} else {
-							echo format_timestamp((int)get_user_setting($user_id, 'sessiontime')), '<br />', i18n::time_ago(time() - (int)get_user_setting($user_id, 'sessiontime'));
+							echo format_timestamp((int)get_user_setting($user_id, 'sessiontime')), '<br />', WT_I18N::time_ago(time() - (int)get_user_setting($user_id, 'sessiontime'));
 						}
 					echo '</td>',
 					'<td class="center">';
-						if (get_user_setting($user_id, 'verified')) echo i18n::translate('Yes');
-						else echo i18n::translate('No');
+						if (get_user_setting($user_id, 'verified')) echo WT_I18N::translate('Yes');
+						else echo WT_I18N::translate('No');
 					echo '</td>',
 					'<td class="center">';
-						if (get_user_setting($user_id, 'verified_by_admin')) echo i18n::translate('Yes');
-						else echo i18n::translate('No');
+						if (get_user_setting($user_id, 'verified_by_admin')) echo WT_I18N::translate('Yes');
+						else echo WT_I18N::translate('No');
 					echo '</td>',
 					'<td>';
 						if (WT_USER_ID!=$user_id)
-							echo "<a href=\"user_admin.php?action=deleteuser&amp;username=", rawurlencode($user_name)."&amp;sort={$sort}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged=", rawurlencode($ged), "\" onclick=\"return confirm('", i18n::translate('Are you sure you want to delete the user'), " $user_name');\"><img src=\"images/delete.png\" alt=\"", i18n::translate('Delete'), "\" title=\"", i18n::translate('Delete'), "\" /></a>";
+							echo "<a href=\"user_admin.php?action=deleteuser&amp;username=", rawurlencode($user_name)."&amp;sort={$sort}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged=", rawurlencode($ged), "\" onclick=\"return confirm('", WT_I18N::translate('Are you sure you want to delete the user'), " $user_name');\"><img src=\"images/delete.png\" alt=\"", WT_I18N::translate('Delete'), "\" title=\"", WT_I18N::translate('Delete'), "\" /></a>";
 					echo '</td>',
 				'</tr>';
 				}

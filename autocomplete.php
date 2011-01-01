@@ -196,7 +196,7 @@ function autocomplete_INDI($FILTER, $OPTION) {
 			// display
 			$data[$person->getXref()]=$person->getFullName();
 			if ($OPTION && $event_date && $person->getBirthDate()->isOK()) {
-				$data[$person->getXref()].=" <span class=\"age\">(".i18n::translate('Age')." ".$person->getBirthDate()->MinDate()->getAge(false, $event_jd).")</span>";
+				$data[$person->getXref()].=" <span class=\"age\">(".WT_I18N::translate('Age')." ".$person->getBirthDate()->MinDate()->getAge(false, $event_jd).")</span>";
 			} else {
 				$data[$person->getXref()].=" <u>".ltrim($person->getBirthYear(), "0")."-".ltrim($person->getDeathYear(), "0")."</u>";
 			}

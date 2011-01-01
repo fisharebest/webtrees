@@ -36,11 +36,11 @@ class married_names_bu_plugin extends base_plugin {
 	var $surname=null; // User option: add or replace husband's surname
 
 	static function getName() {
-		return i18n::translate('Add missing married names');
+		return WT_I18N::translate('Add missing married names');
 	}
 
 	static function getDescription() {
-		return i18n::translate('You can make it easier to search for married women by recording their married name.<br />However not all women take their husband\'s surname, so beware of introducing incorrect information into your database.');
+		return WT_I18N::translate('You can make it easier to search for married women by recording their married name.<br />However not all women take their husband\'s surname, so beware of introducing incorrect information into your database.');
 	}
 
 	function doesRecordNeedUpdate($xref, $gedrec) {
@@ -106,11 +106,11 @@ class married_names_bu_plugin extends base_plugin {
 	function getOptionsForm() {
 		return
 			parent::getOptionsForm().
-			'<tr valign="top"><td class="list_label width20">'.i18n::translate('Surname Option').'</td>'.
+			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Surname Option').'</td>'.
 			'<td class="optionbox"><select name="surname" onchange="reset_reload();"><option value="replace"'.
 			($this->surname=='replace' ? ' selected="selected"' : '').
-			'">'.i18n::translate('Wife\'s surname replaced by husband\'s surname').'</option><option value="add"'.
+			'">'.WT_I18N::translate('Wife\'s surname replaced by husband\'s surname').'</option><option value="add"'.
 			($this->surname=='add' ? ' selected="selected"' : '').
-			'">'.i18n::translate('Wife\'s maiden surname becomes new given name').'</option></select></td></tr>';
+			'">'.WT_I18N::translate('Wife\'s maiden surname becomes new given name').'</option></select></td></tr>';
 	}
 }

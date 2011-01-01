@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Upcoming Yahrzeiten');
+		return WT_I18N::translate('Upcoming Yahrzeiten');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Upcoming Yahrzeiten block shows anniversaries of death dates that will occur in the near future.  You can configure the period shown, and the Administrator can configure how far into the future this block will look.');
+		return WT_I18N::translate('The Upcoming Yahrzeiten block shows anniversaries of death dates that will occur in the near future.  You can configure the period shown, and the Administrator can configure how far into the future this block will look.');
 	}
 
 	// Implement class WT_Module_Block
@@ -59,11 +59,11 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\"><img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure')."\" /></a>";
+			$title="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\"><img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		} else {
 			$title='';
 		}
-		$title.= i18n::translate('Upcoming Yahrzeiten').help_link('yahrzeit', $this->getName());
+		$title.= WT_I18N::translate('Upcoming Yahrzeiten').help_link('yahrzeit', $this->getName());
 		$content='';
 
 		// The standard anniversary rules cover most of the Yahrzeit rules, we just
@@ -115,7 +115,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= "<a href=\"".$ind->getHtmlUrl()."\" class=\"list_item name2\">".$ind->getFullName()."</a>".$ind->getSexImage();
 					$content .= "<div class=\"indent\">";
 					$content .= $yahrzeit['date']->Display(true);
-					$content .= ', '.i18n::translate('%s year anniversary', $yahrzeit['anniv']);
+					$content .= ', '.WT_I18N::translate('%s year anniversary', $yahrzeit['anniv']);
 					$content .= "</div>";
 				}
 			break;
@@ -128,7 +128,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<th class=\"list_label\">".translate_fact('NAME')."</th>";
 			$content .= "<th style=\"display:none\">GIVN</th>";
 			$content .= "<th class=\"list_label\">".translate_fact('DATE')."</th>";
-			$content .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"".i18n::translate('Anniversary')."\" title=\"".i18n::translate('Anniversary')."\" border=\"0\" /></th>";
+			$content .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
 			$content .= "<th class=\"list_label\">".translate_fact('_YART')."</th>";
 			$content .= "</tr>";
 
@@ -186,7 +186,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<tr class=\"sortbottom\">";
 			$content .= "<td class=\"list_label\">";
 			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="images/topdown.gif" alt="" border="0" /> '.translate_fact('GIVN').'</a><br />';
-			$content .= i18n::translate('Total Names').": ".$count;
+			$content .= WT_I18N::translate('Total Names').": ".$count;
 			$content .= '</td>';
 			$content .= '<td style="display:none">GIVN</td>';
 			$content .= '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
@@ -234,22 +234,22 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$days=get_block_setting($block_id, 'days', 7);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Number of days to show');
+		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="'.$days.'" />';
-		echo ' <i>', i18n::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</i>';
+		echo ' <i>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</i>';
 		echo '</td></tr>';
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Presentation style');
+		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>i18n::translate('List'), 'table'=>i18n::translate('Table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('List'), 'table'=>WT_I18N::translate('Table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ i18n::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

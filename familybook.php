@@ -198,7 +198,7 @@ function print_family_book($person, $descent) {
 		$firstrun=true;
 		echo
 			'<h2 style="text-align:center">',
-			/* I18N: A title/heading. %s is a person's name */ i18n::translate('Family of %s', $person->getFullName()),
+			/* I18N: A title/heading. %s is a person's name */ WT_I18N::translate('Family of %s', $person->getFullName()),
 			'</h2><table cellspacing="0" cellpadding="0" border="0"><tr><td valign="middle">';
 		$dgenerations = $generations;
 		print_descendency($person, 1);
@@ -215,7 +215,7 @@ function print_family_book($person, $descent) {
 }
 
 // -- print html header information
-print_header(PrintReady($name)." ".i18n::translate('Family book chart'));
+print_header(PrintReady($name)." ".WT_I18N::translate('Family book chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -227,7 +227,7 @@ if (WT_USE_LIGHTBOX) {
 // ==========================================================================================
 
 echo '<table><tr><td valign="top">';
-echo '<h2>'.i18n::translate('Family book chart'), help_link('family_book_chart'), '<br />', PrintReady($name), '</h2>';
+echo '<h2>'.WT_I18N::translate('Family book chart'), help_link('family_book_chart'), '<br />', PrintReady($name), '</h2>';
 ?>
 
 <script language="JavaScript" type="text/javascript">
@@ -250,7 +250,7 @@ $gencount=0;
 <table><tr>
 
 <td class="descriptionbox">
-	<?php echo i18n::translate('Root Person ID'), help_link('desc_rootid'); ?>
+	<?php echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'); ?>
 </td>
 <td class="optionbox">
 	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $pid; ?>" />
@@ -258,7 +258,7 @@ $gencount=0;
 </td>
 
 <td class="descriptionbox">
-<?php echo i18n::translate('Show Details'), help_link('show_full'); ?>
+<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
 </td>
 <td class="optionbox">
 <input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />
@@ -268,11 +268,11 @@ else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>" />
 </td>
 
 <td rowspan="4" class="topbottombar vmiddle">
-<input type="submit" value="<?php echo i18n::translate('View'); ?>" />
+<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 </td></tr>
 
 <tr><td class="descriptionbox">
-<?php echo i18n::translate('Generations'), help_link('desc_generations'); ?>
+<?php echo WT_I18N::translate('Generations'), help_link('desc_generations'); ?>
 </td>
 <td class="optionbox">
 <select name="generations">
@@ -287,7 +287,7 @@ for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 </td>
 
 <td class="descriptionbox">
-	<?php echo i18n::translate('Show spouses'), help_link('show_spouse'); ?>
+	<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 </td>
 <td class="optionbox">
 <input type="checkbox" value="1" name="show_spouse"
@@ -296,7 +296,7 @@ if ($show_spouse) echo " checked=\"checked\""; ?> />
 </td></tr>
 
 <tr><td class="descriptionbox">
-	<?php echo i18n::translate('Box width'), help_link('box_width'); ?>
+	<?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?>
 </td>
 <td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $box_width; ?>" />
 <b>%</b>
@@ -305,7 +305,7 @@ if ($show_spouse) echo " checked=\"checked\""; ?> />
 <td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
 
 <tr><td class="descriptionbox">
-	<?php echo i18n::translate('Descent Steps'), help_link('fambook_descent'); ?>
+	<?php echo WT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
 </td>
 <td class="optionbox"><input type="text" size="3" name="descent" value="<?php echo $descent; ?>" />
 </td>

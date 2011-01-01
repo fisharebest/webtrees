@@ -47,7 +47,7 @@ $nonfamfacts[] = "";
 $controller=new WT_Controller_Descendancy();
 $controller->init();
 
-print_header($controller->name." ".i18n::translate('Descendancy chart'));
+print_header($controller->name." ".WT_I18N::translate('Descendancy chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -58,7 +58,7 @@ if (WT_USE_LIGHTBOX) {
 }
 // ==========================================================================================
 
-echo '<table><tr><td valign="top"><h2>', i18n::translate('Descendancy chart'), ':<br />', PrintReady($controller->name), '</h2>';
+echo '<table><tr><td valign="top"><h2>', WT_I18N::translate('Descendancy chart'), ':<br />', PrintReady($controller->name), '</h2>';
 echo WT_JS_START;
 echo 'var pastefield; function paste_id(value) {pastefield.value=value;}';
 echo WT_JS_END;
@@ -68,43 +68,43 @@ echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" acti
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
 echo '<table class="list_table ', $TEXT_DIRECTION, '">';
 echo '<tr><td class="descriptionbox">';
-echo i18n::translate('Root Person ID'), help_link('desc_rootid'), '</td>';
+echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'), '</td>';
 echo '<td class="optionbox">';
 echo '<input class="pedigree_form" type="text" id="pid" name="pid" size="3" value="', $controller->pid, '" />';
 print_findindi_link("pid", "");
 echo '</td>';
 echo '<td class="descriptionbox">';
-echo i18n::translate('Box width'), help_link('box_width'), '</td>';
+echo WT_I18N::translate('Box width'), help_link('box_width'), '</td>';
 echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '" />';
 echo '<b>%</b></td>';
 echo '<td rowspan="2" class="descriptionbox">';
-echo i18n::translate('Layout'), help_link('chart_style');
+echo WT_I18N::translate('Layout'), help_link('chart_style');
 echo '</td><td rowspan="2" class="optionbox">';
 echo '<input type="radio" name="chart_style" value="0"';
 if ($controller->chart_style==0) {
 	echo ' checked="checked"';
 }
-echo '/>', i18n::translate('List');
+echo '/>', WT_I18N::translate('List');
 echo '<br /><input type="radio" name="chart_style" value="1"';
 if ($controller->chart_style==1) {
 	echo ' checked="checked"';
 }
-echo '/>', i18n::translate('Booklet');
+echo '/>', WT_I18N::translate('Booklet');
 echo '<br /><input type="radio" name="chart_style" value="2"';
 if ($controller->chart_style==2) {
 	echo ' checked="checked"';
 }
-echo ' />', i18n::translate('Individuals');
+echo ' />', WT_I18N::translate('Individuals');
 echo '<br /><input type="radio" name="chart_style" value="3"';
 if ($controller->chart_style==3) {
 	echo ' checked="checked"';
 }
-echo ' />', i18n::translate('Families');
+echo ' />', WT_I18N::translate('Families');
 echo '</td><td rowspan="2" class="topbottombar">';
-echo '<input type="submit" value="', i18n::translate('View'), '" />';
+echo '<input type="submit" value="', WT_I18N::translate('View'), '" />';
 echo '</td></tr>';
 echo '<tr><td class="descriptionbox">';
-echo i18n::translate('Generations'), help_link('desc_generations'), '</td>';
+echo WT_I18N::translate('Generations'), help_link('desc_generations'), '</td>';
 echo '<td class="optionbox"><select name="generations">';
 for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	echo '<option value="', $i, '"';
@@ -114,7 +114,7 @@ for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	echo '>', $i, '</option>';
 }
 echo '</select></td><td class="descriptionbox">';
-echo i18n::translate('Show Details'), help_link('show_full');
+echo WT_I18N::translate('Show Details'), help_link('show_full');
 echo '</td><td class="optionbox"><input type="checkbox" value="';
 if ($controller->show_full) {
 	echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"';
@@ -124,13 +124,13 @@ if ($controller->show_full) {
 echo '/></td></tr></table></form>';
 echo '</td></tr></table>';
 if (is_null($controller->descPerson)) {
-	echo '<span class="error">', i18n::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';
+	echo '<span class="error">', WT_I18N::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';
 }
 
 switch ($controller->chart_style) {
 case 0: //-- list
 	if ($show_full==0) {
-		echo '<span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
+		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
 	}
 	echo '<ul style="list-style: none; display: block;" id="descendancy_chart', $TEXT_DIRECTION=='rtl' ? '_rtl' : '', '">';
 	$controller->print_child_descendancy($controller->descPerson, $controller->generations);
@@ -138,7 +138,7 @@ case 0: //-- list
 	break;
 case 1: //-- booklet
 	if ($show_full==0) {
-		echo '<span class="details2">', i18n::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
+		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
 	}
 	$show_cousins = true;
 	$controller->print_child_family($controller->descPerson, $controller->generations);
@@ -146,13 +146,13 @@ case 1: //-- booklet
 case 2: //-- Individual list
 	$descendants=indi_desc($controller->descPerson, $controller->generations, array());
 	echo '<div class="center">';
-	print_indi_table($descendants, i18n::translate('Descendancy chart').' : '.PrintReady($controller->name));
+	print_indi_table($descendants, WT_I18N::translate('Descendancy chart').' : '.PrintReady($controller->name));
 	echo '</div>';
 	break;
 case 3: //-- Family list
 	$descendants=fam_desc($controller->descPerson, $controller->generations, array());
 	echo '<div class="center">';
-	print_fam_table($descendants, i18n::translate('Descendancy chart').' : '.PrintReady($controller->name));
+	print_fam_table($descendants, WT_I18N::translate('Descendancy chart').' : '.PrintReady($controller->name));
 	echo '</div>';
 	break;
 }

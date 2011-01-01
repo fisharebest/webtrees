@@ -32,8 +32,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'recent_changes':
-	$title=i18n::translate('User Favorites');
-	$text=i18n::translate('The User Favorites block shows the user a list of his favorite people in the database so that he can easily link to them.');
+	$title=WT_I18N::translate('User Favorites');
+	$text=WT_I18N::translate('The User Favorites block shows the user a list of his favorite people in the database so that he can easily link to them.');
 	$text.='<ul><li>';
 
 	// TODO: Other options of this block

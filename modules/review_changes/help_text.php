@@ -32,8 +32,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'review_changes':
-	$title=i18n::translate('Pending Changes block');
-	$text=i18n::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
+	$title=WT_I18N::translate('Pending Changes block');
+	$text=WT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.');
 
 	// TODO: Other options of this block
 

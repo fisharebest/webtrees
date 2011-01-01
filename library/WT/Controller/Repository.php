@@ -52,7 +52,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		$this->rid=$this->repository->getXref(); // Correct upper/lower case mismatch
 
 		if (!$this->repository->canDisplayDetails()) {
-			print_header(i18n::translate('Repository'));
+			print_header(WT_I18N::translate('Repository'));
 			print_privacy_error();
 			print_footer();
 			exit;
@@ -127,9 +127,9 @@ class WT_Controller_Repository extends WT_Controller_Base {
 	*/
 	function getPageTitle() {
 		if ($this->repository) {
-			return $this->repository->getFullName()." - ".$this->rid." - ".i18n::translate('Repository information');
+			return $this->repository->getFullName()." - ".$this->rid." - ".WT_I18N::translate('Repository information');
 		} else {
-			return i18n::translate('Unable to find record with ID');
+			return WT_I18N::translate('Unable to find record with ID');
 		}
 	}
 
@@ -146,7 +146,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			$ff="";
 		}
 		// edit menu
-		$menu = new WT_Menu(i18n::translate('Edit'));
+		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_repo');
 		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
 
@@ -157,21 +157,21 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// show/hide changes
 		if (find_updated_record($this->rid, WT_GED_ID)!==null) {
 			if (!$this->show_changes) {
-				$submenu = new WT_Menu(i18n::translate('This record has been updated.  Click here to show changes.'), "repo.php?rid={$this->rid}&amp;show_changes=yes");
+				$submenu = new WT_Menu(WT_I18N::translate('This record has been updated.  Click here to show changes.'), "repo.php?rid={$this->rid}&amp;show_changes=yes");
 				$submenu->addIcon('edit_repo');
 			} else {
-				$submenu = new WT_Menu(i18n::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
+				$submenu = new WT_Menu(WT_I18N::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
 				$submenu->addIcon('edit_repo');
 			}
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(i18n::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
+				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$submenu->addIcon('edit_repo');
 				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(i18n::translate('Approve all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
+				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
 				$submenu->addIcon('edit_repo');
 				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 				$menu->addSubmenu($submenu);
@@ -182,13 +182,13 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(i18n::translate('Edit raw GEDCOM record'));
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->rid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(i18n::translate('View GEDCOM Record'));
+			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
 			if ($this->show_changes && WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -201,15 +201,15 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(i18n::translate('Delete repository'));
-			$submenu->addOnclick("if (confirm('".i18n::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
+			$submenu = new WT_Menu(WT_I18N::translate('Delete repository'));
+			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
 			$submenu->addIcon('edit_repo');
 			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
-		$submenu = new WT_Menu(i18n::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
+		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
 		$submenu->addIcon('favorites');
 		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
 		$menu->addSubmenu($submenu);

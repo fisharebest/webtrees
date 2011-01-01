@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class bdm_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Births, Deaths, Marriages');
+		return WT_I18N::translate('Births, Deaths, Marriages');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('Births, Deaths, Marriages');
+		return WT_I18N::translate('Births, Deaths, Marriages');
 	}
 
 	// Extend class WT_Module

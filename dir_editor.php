@@ -81,21 +81,21 @@ if (
 	$locked_by_context[]=trim($MEDIA_DIRECTORY, '/');
 }
 
-print_header(i18n::translate('Cleanup data directory'));
+print_header(WT_I18N::translate('Cleanup data directory'));
 echo
 	'<p class="center">',
-	'<input type="button" value="', i18n::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" />',
+	'<input type="button" value="', WT_I18N::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" />',
 	'</p>',
-	'<h2 class="center">', i18n::translate('Cleanup data directory'), '</h2>',
+	'<h2 class="center">', WT_I18N::translate('Cleanup data directory'), '</h2>',
 	'<p>',
-	i18n::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'),
+	WT_I18N::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'),
 	'</p><p>',
-	i18n::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'),
+	WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'),
 	'</p>';
 
 //post back
 if (isset($_REQUEST['to_delete'])) {
-	echo '<div class="error">', i18n::translate('Deleted files:'), '</div>';
+	echo '<div class="error">', WT_I18N::translate('Deleted files:'), '</div>';
 	foreach ($_REQUEST['to_delete'] as $k=>$v) {
 		if (is_dir($INDEX_DIRECTORY.$v)) {
 			full_rmdir($INDEX_DIRECTORY.$v);
@@ -150,9 +150,9 @@ echo
 	'	document.delete_form.submit();',
 	'}',
 	WT_JS_END,
-	'<button type="submit">', i18n::translate('Delete'), '</button>',
-	'<button type="button" onclick="ul_clear(); return false;">', i18n::translate('Cancel'), '</button><br /><br />',
-	'<button type="button" onclick="removeAll(); return false;">', i18n::translate('Remove all nonessential files'), '</button>',
+	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
+	'<button type="button" onclick="ul_clear(); return false;">', WT_I18N::translate('Cancel'), '</button><br /><br />',
+	'<button type="button" onclick="removeAll(); return false;">', WT_I18N::translate('Remove all nonessential files'), '</button>',
 	'</td></tr></table></form>';
 
 print_footer();

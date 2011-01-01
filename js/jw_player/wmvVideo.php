@@ -30,7 +30,7 @@
  * @author Brian Holland
  */
  ?>
-<html xmlns="http://www.w3.org/1999/xhtml" <?php // echo i18n::html_markup(); ?>>
+<html xmlns="http://www.w3.org/1999/xhtml" <?php // echo WT_I18N::html_markup(); ?>>
 <head>
 	<META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980 1:00:00 GMT">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">

@@ -44,7 +44,7 @@ class WT_Note extends WT_GedcomRecord {
 		if (utf8_strlen($value)<100) {
 			parent::_addName($type, $value, $gedrec);
 		} else {
-			parent::_addName($type, utf8_substr($value, 0, 100).i18n::translate('…'), $gedrec);
+			parent::_addName($type, utf8_substr($value, 0, 100).WT_I18N::translate('…'), $gedrec);
 		}
 	}
 

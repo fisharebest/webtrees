@@ -32,8 +32,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'recent_changes':
-	$title=i18n::translate('Most Viewed Items');
-	$text=i18n::translate('This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings.');
+	$title=WT_I18N::translate('Most Viewed Items');
+	$text=WT_I18N::translate('This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings.');
 	$text.='<ul><li>';
 
 	// TODO: Other options of this block

@@ -35,7 +35,7 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 }
 ?>
 
-<html <?php echo i18n::html_markup(); ?>>
+<html <?php echo WT_I18N::html_markup(); ?>>
 <head>
 </head>
 <body>
@@ -48,10 +48,10 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 	echo "<tr>";
 	echo '<td class="topbottombar" width="15"  style="font-weight:100;" >#</td>';
 	echo '<td class="topbottombar" width="50"  style="font-weight:100;" >ID:</td>';
-	echo '<td class="topbottombar" width="340" style="font-weight:100;" >', i18n::translate('Name'), '</td>';
-	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', i18n::translate('Keep'), '</td>';
-	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', i18n::translate('Remove'), '</td>';
-	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', i18n::translate('Navigator'), '</td>';
+	echo '<td class="topbottombar" width="340" style="font-weight:100;" >', WT_I18N::translate('Name'), '</td>';
+	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Keep'), '</td>';
+	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Remove'), '</td>';
+	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Navigator'), '</td>';
 	echo "</tr>";
 
 	$keys = array_keys($links);
@@ -82,16 +82,16 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 		$nam = $idrecord->getFullName();
 		echo $nam;
 		echo "</td>";
-		echo "<td align='center'><input alt='", i18n::translate('Keep Link in list'), "', title='", i18n::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked /></td>";
-		echo "<td align='center'><input alt='", i18n::translate('Remove Link from list'), "', title='", i18n::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "' /></td>";
+		echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked /></td>";
+		echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "' /></td>";
 
 		if ($record->getType()=='INDI') {
 			?>
-			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo i18n::translate('Open Family Navigator'); ?>" title="<?php echo i18n::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $link; ?>');" /></a></td>
+			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $link; ?>');" /></a></td>
 			<?php
 		} elseif ($record->getType()=='FAM') {
 			?>
-			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo i18n::translate('Open Family Navigator'); ?>" title="<?php echo i18n::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $head; ?>');" /></a></td>
+			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $head; ?>');" /></a></td>
 			<?php
 		} else {
 			echo '<td></td>';

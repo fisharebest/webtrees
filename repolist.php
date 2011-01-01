@@ -31,8 +31,8 @@ define('WT_SCRIPT_NAME', 'repolist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-print_header(i18n::translate('Repositories'));
-echo '<div class="center"><h2>', i18n::translate('Repositories'), '</h2>';
+print_header(WT_I18N::translate('Repositories'));
+echo '<div class="center"><h2>', WT_I18N::translate('Repositories'), '</h2>';
 print_repo_table(get_repo_list(WT_GED_ID));
 echo '</div>';
 print_footer();

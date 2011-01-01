@@ -32,8 +32,8 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 case 'recent_changes':
-	$title=i18n::translate('Top 10 Given Names');
-	$text=i18n::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
+	$title=WT_I18N::translate('Top 10 Given Names');
+	$text=WT_I18N::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
 	$text.='<ul><li>';
 
 	// TODO: Other options of this block

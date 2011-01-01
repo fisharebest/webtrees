@@ -342,7 +342,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 				if ($num>0) {
 					echo "<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
 					echo " style=\"position:absolute; width:".$bwidth."px; \">";
-					echo "<a href=\"javascript: ".i18n::translate('Show')."\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
+					echo "<a href=\"javascript: ".WT_I18N::translate('Show')."\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
 					echo "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" border=\"0\" alt=\"\" />";
 					echo "</a><br />";
 					echo "<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
@@ -387,7 +387,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 					foreach ($cfamids as $famid=>$family) {
 						if (!is_null($family)) {
 							if (!is_null($family->getHusband()) || !is_null($family->getWife())) {
-								echo "<span class=\"name1\"><br />".i18n::translate('Parents')."<br /></span>";
+								echo "<span class=\"name1\"><br />".WT_I18N::translate('Parents')."<br /></span>";
 								$husb = $family->getHusband();
 								if (!empty($husb)) {
 									$spid = $husb->getXref();
@@ -415,8 +415,8 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 							}
 							$children = $family->getChildren();
 							$num = $family->getNumberOfChildren();
-							if ($num>2) echo "<span class=\"name1\"><br />".i18n::translate('Siblings')."<br /></span>";
-							if ($num==2) echo "<span class=\"name1\"><br />".i18n::translate('Sibling')."<br /></span>";
+							if ($num>2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Siblings')."<br /></span>";
+							if ($num==2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Sibling')."<br /></span>";
 							foreach ($children as $id=>$child) {
 								$cid = $child->getXref();
 								if ($cid!=$pid) {

@@ -33,12 +33,12 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return i18n::translate('Random Media');
+		return WT_I18N::translate('Random Media');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return i18n::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br />The administrator determines whether this block can show media items associated with persons or events.');
+		return WT_I18N::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br />The administrator determines whether this block can show media items associated with persons or events.');
 	}
 
 	// Implement class WT_Module_Block
@@ -181,9 +181,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					$name = WT_USER_NAME;
 				}
 				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".i18n::translate('Configure').'" /></a>';
+				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'" /></a>';
 			}
-			$title .= i18n::translate('Random Picture');
+			$title .= WT_I18N::translate('Random Picture');
 			$title .= help_link('index_media');
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {
@@ -192,13 +192,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$image = "rarrow";
 				}
-				$linkNextImage = "<a href=\"javascript: ".i18n::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".i18n::translate('Next image')."\" title=\"".i18n::translate('Next image')."\" /></a>";
+				$linkNextImage = "<a href=\"javascript: ".WT_I18N::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".WT_I18N::translate('Next image')."\" title=\"".WT_I18N::translate('Next image')."\" /></a>";
 
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
-				$content .= "<a href=\"javascript: ".i18n::translate('Play')."/".i18n::translate('Stop')."\" onclick=\"togglePlay(); return false;\">";
-				if (isset($WT_IMAGES[$image])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]}\" border=\"0\" alt=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" title=\"".i18n::translate('Play')."/".i18n::translate('Stop')."\" />";
-				else $content .= i18n::translate('Play')."/".i18n::translate('Stop');
+				$content .= "<a href=\"javascript: ".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" onclick=\"togglePlay(); return false;\">";
+				if (isset($WT_IMAGES[$image])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]}\" border=\"0\" alt=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" />";
+				else $content .= WT_I18N::translate('Play')."/".WT_I18N::translate('Stop');
 				$content .= "</a>";
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
 				$content .= '</div>'.WT_JS_START.'
@@ -370,9 +370,9 @@ function openPic(filename, width, height) {
 
 		$filter=get_block_setting($block_id, 'filter', 'all');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show only persons, events, or all?'), help_link('random_media_persons_or_all');
+		echo WT_I18N::translate('Show only persons, events, or all?'), help_link('random_media_persons_or_all');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi'=>i18n::translate('Persons'), 'event'=>i18n::translate('Events'), 'all'=>i18n::translate('All')), null, $filter, '');
+		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Persons'), 'event'=>WT_I18N::translate('Events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
 
 		$filters=array(
@@ -408,7 +408,7 @@ function openPic(filename, width, height) {
 		);
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Filter'), help_link('random_media_filter');
+		echo WT_I18N::translate('Filter'), help_link('random_media_filter');
 ?>
 	</td>
 		<td class="optionbox">
@@ -486,14 +486,14 @@ function openPic(filename, width, height) {
 
 		$controls=get_block_setting($block_id, 'controls', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Show slideshow controls?'), help_link('random_media_ajax_controls');
+		echo WT_I18N::translate('Show slideshow controls?'), help_link('random_media_ajax_controls');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('controls', $controls);
 		echo '</td></tr>';
 
 		$start=get_block_setting($block_id, 'start', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo i18n::translate('Start slideshow on page load?'), help_link('random_media_start_slide');
+		echo WT_I18N::translate('Start slideshow on page load?'), help_link('random_media_start_slide');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('start', $start);
 		echo '</td></tr>';

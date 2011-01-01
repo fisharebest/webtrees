@@ -377,8 +377,7 @@ define('WT_CLIENT_JD', timestamp_to_jd(client_time()));
 define('WT_USER_ID', getUserId());
 
 // With no parameters, init() looks to the environment to choose a language
-require WT_ROOT.'includes/classes/class_i18n.php';
-define('WT_LOCALE', i18n::init());
+define('WT_LOCALE', WT_I18N::init());
 
 // Application configuration data - things that aren't (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';

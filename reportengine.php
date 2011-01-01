@@ -137,14 +137,14 @@ if (!empty($report)) {
 
 //-- choose a report to run
 if ($action=="choose") {
-	print_header(i18n::translate('Choose a report to run'));
+	print_header(WT_I18N::translate('Choose a report to run'));
 
 	echo "<br /><br />\n<form name=\"choosereport\" method=\"get\" action=\"reportengine.php\">\n";
 	echo "<input type=\"hidden\" name=\"action\" value=\"setup\" />\n";
 	echo "<input type=\"hidden\" name=\"output\" value=\"", $output, "\" />\n";
 	echo "<table class=\"facts_table width40 center ", $TEXT_DIRECTION, " \">";
-	echo "<tr><td class=\"topbottombar\" colspan=\"2\">", i18n::translate('Choose a report to run'), "</td></tr>";
-	echo "<tr><td class=\"descriptionbox wrap width33 vmiddle\">", i18n::translate('Select report'), "</td>";
+	echo "<tr><td class=\"topbottombar\" colspan=\"2\">", WT_I18N::translate('Choose a report to run'), "</td></tr>";
+	echo "<tr><td class=\"descriptionbox wrap width33 vmiddle\">", WT_I18N::translate('Select report'), "</td>";
 	echo "<td class=\"optionbox\"><select onchange=\"this.form.submit();\" name=\"report\">\n";
 	foreach ($reports as $file=>$report) {
 		if ($report["access"] >= WT_USER_ACCESS_LEVEL) {
@@ -152,7 +152,7 @@ if ($action=="choose") {
 		}
 	}
 	echo "</select></td></tr>\n";
-	echo "<tr><td class=\"topbottombar\" colspan=\"2\"><input type=\"submit\" value=\"", i18n::translate('Click here to continue'), "\" /></td></tr>";
+	echo "<tr><td class=\"topbottombar\" colspan=\"2\"><input type=\"submit\" value=\"", WT_I18N::translate('Click here to continue'), "\" /></td></tr>";
 	echo "</table></form>\n<br /><br />\n";
 
 	print_footer();
@@ -160,7 +160,7 @@ if ($action=="choose") {
 
 //-- setup report to run
 elseif ($action=="setup") {
-	print_header(i18n::translate('Enter report values'));
+	print_header(WT_I18N::translate('Enter report values'));
 
 	if ($ENABLE_AUTOCOMPLETE) {
 		require_once WT_ROOT."js/autocomplete.js.htm";
@@ -168,7 +168,7 @@ elseif ($action=="setup") {
 
 	//-- make sure the report exists
 	if (!file_exists($report)) {
-		echo "<span class=\"error\">", i18n::translate('File not found.'), "</span> ", $report, "\n";
+		echo "<span class=\"error\">", WT_I18N::translate('File not found.'), "</span> ", $report, "\n";
 	} else {
 		require_once WT_ROOT."includes/reportheader.php";
 		$report_array = array();
@@ -208,8 +208,8 @@ elseif ($action=="setup") {
 		echo "<input type=\"hidden\" name=\"report\" value=\"", $report, "\" />\n";
 
 		echo "<table class=\"facts_table width50 center ", $TEXT_DIRECTION, " \">";
-		echo "<tr><td class=\"topbottombar\" colspan=\"2\">", i18n::translate('Enter report values'), "</td></tr>";
-		echo "<tr><td class=\"descriptionbox width30 wrap\">", i18n::translate('Selected Report'), "</td><td class=\"optionbox\">", $report_array["title"], "</td></tr>\n";
+		echo "<tr><td class=\"topbottombar\" colspan=\"2\">", WT_I18N::translate('Enter report values'), "</td></tr>";
+		echo "<tr><td class=\"descriptionbox width30 wrap\">", WT_I18N::translate('Selected Report'), "</td><td class=\"optionbox\">", $report_array["title"], "</td></tr>\n";
 
 		$doctitle = trim($report_array["title"]);
 		if (!isset($report_array["inputs"])) {
@@ -233,7 +233,7 @@ elseif ($action=="setup") {
 					}
 					echo "<tr><td class=\"descriptionbox wrap\">\n";
 					echo "<input type=\"hidden\" name=\"varnames[]\" value=\"", $input["name"], "\" />\n";
-					echo i18n::translate($input["value"]), "</td><td class=\"optionbox\">";
+					echo WT_I18N::translate($input["value"]), "</td><td class=\"optionbox\">";
 					if (!isset($input["type"])) {
 						$input["type"] = "text";
 					}
@@ -285,7 +285,7 @@ elseif ($action=="setup") {
 						foreach ($options as $indexval => $option) {
 							$opt = explode('=>', $option);
 							list($value, $display)=$opt;
-							if (substr($display, 0, 15)=='i18n::translate' || substr($display, 0, 14)=='translate_fact') {
+							if (substr($display, 0, 15)=='WT_I18N::translate' || substr($display, 0, 14)=='translate_fact') {
 								eval("\$display=$display;");
 							}
 							echo "\t<option value=\"", htmlspecialchars($value), "\"";
@@ -307,7 +307,7 @@ elseif ($action=="setup") {
 						} elseif ($input["lookup"]=="SOUR") {
 							print_findsource_link($input["name"]);
 						} elseif ($input["lookup"]=="DATE") {
-							$text = i18n::translate('Select a date');
+							$text = WT_I18N::translate('Select a date');
 							if (isset($WT_IMAGES["button_calendar"])) {
 								$Link = "<img src=\"".$WT_IMAGES["button_calendar"]."\" name=\"a_".$input["name"]."\" id=\"a_".$input["name"]."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 							} else {
@@ -339,8 +339,8 @@ elseif ($action=="setup") {
 		</td></tr>
 		<?php
 		echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
-		echo " <input type=\"submit\" value=\"", i18n::translate('Download report'), "\" ;\"/>";
-		echo " <input type=\"submit\" value=\"", i18n::translate('Cancel'), "\" onclick=\"document.setupreport.elements['action'].value='setup'; \"/>";
+		echo " <input type=\"submit\" value=\"", WT_I18N::translate('Download report'), "\" ;\"/>";
+		echo " <input type=\"submit\" value=\"", WT_I18N::translate('Cancel'), "\" onclick=\"document.setupreport.elements['action'].value='setup'; \"/>";
 		echo "</td></tr></table></form><br /><br />\n";
 		echo WT_JS_START, "document.title = \"", $doctitle, "\"", WT_JS_END;
 	}

@@ -43,7 +43,7 @@ $name   =$person->getFullName();
 $addname=$person->getAddName();
 
 // -- print html header information
-print_header(PrintReady($name) . " " . i18n::translate('Compact chart'));
+print_header(PrintReady($name) . " " . WT_I18N::translate('Compact chart'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -57,7 +57,7 @@ if (WT_USE_LIGHTBOX) {
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">";
-echo "<h2>" . i18n::translate('Compact chart') . ":";
+echo "<h2>" . WT_I18N::translate('Compact chart') . ":";
 echo "<br />".PrintReady($name) ;
 if ($addname != "") echo "<br />" . PrintReady($addname);
 echo "</h2>";
@@ -79,7 +79,7 @@ echo "<tr>";
 
 // NOTE: Root ID
 echo "<td class=\"descriptionbox\">";
-echo i18n::translate('Root Person ID'), help_link('rootid'), "</td>";
+echo WT_I18N::translate('Root Person ID'), help_link('rootid'), "</td>";
 echo "<td class=\"optionbox vmiddle\">";
 echo "<input class=\"pedigree_form\" type=\"text\" name=\"rootid\" id=\"rootid\" size=\"3\" value=\"$rootid\" />";
 print_findindi_link("rootid","");
@@ -87,13 +87,13 @@ echo "</td>";
 
 // NOTE: submit
 echo "<td class=\"facts_label03\" rowspan=\"3\">";
-echo "<input type=\"submit\" value=\"".i18n::translate('View')."\" />";
+echo "<input type=\"submit\" value=\"".WT_I18N::translate('View')."\" />";
 echo "</td></tr>";
 
 if ($SHOW_HIGHLIGHT_IMAGES) {
 	echo "<tr>";
 	echo "<td class=\"descriptionbox\">";
-	echo i18n::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES');
+	echo WT_I18N::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES');
 	echo "</td>";
 	echo "<td class=\"optionbox\">";
 	echo "<input name=\"showthumbs\" type=\"checkbox\" value=\"1\"";
@@ -295,9 +295,9 @@ function print_td_person($n) {
 	$pid = $treeid[$n];
 
 	if ($TEXT_DIRECTION=="ltr") {
-		$title = i18n::translate('Individual information').": ".$pid;
+		$title = WT_I18N::translate('Individual information').": ".$pid;
 	} else {
-		$title = $pid." :".i18n::translate('Individual information');
+		$title = $pid." :".WT_I18N::translate('Individual information');
 	}
 
 	if ($pid) {
@@ -403,9 +403,9 @@ function print_arrow_person($n, $arrow_dir) {
 		}
 	}
 	if ($TEXT_DIRECTION=="ltr") {
-		$title = i18n::translate('Compact chart').": ".$pid;
+		$title = WT_I18N::translate('Compact chart').": ".$pid;
 	} else {
-		$title = $pid." :".i18n::translate('Compact chart');
+		$title = $pid." :".WT_I18N::translate('Compact chart');
 	}
 	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
 	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";

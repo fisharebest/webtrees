@@ -113,9 +113,9 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 		echo "</td>";
 		echo "<td>";
 		if ($TEXT_DIRECTION=="ltr") {
-			$label = i18n::translate('Ancestry chart').": ".$pid;
+			$label = WT_I18N::translate('Ancestry chart').": ".$pid;
 		} else {
-			$label = $pid." :".i18n::translate('Ancestry chart');
+			$label = $pid." :".WT_I18N::translate('Ancestry chart');
 		}
 		if ($sosa>1) print_url_arrow($pid, "?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;show_full={$this->show_full}&amp;box_width={$box_width}&amp;chart_style={$this->chart_style}", $label, 3);
 		echo "</td>";
@@ -148,12 +148,12 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 		if (($parents || $SHOW_EMPTY_BOXES) && $new && $depth>0) {
 			// print marriage info
 			echo "<span class=\"details1\" style=\"white-space: nowrap;\" >";
-			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"$Dindent\" border=\"0\" align=\"middle\" alt=\"\" /><a href=\"javascript: ".i18n::translate('View Family')."\" onclick=\"expand_layer('sosa_".$sosa."'); return false;\" class=\"top\"><img id=\"sosa_".$sosa."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".i18n::translate('View Family')."\" /></a> ";
-			echo "&nbsp;<span class=\"person_box\">&nbsp;".($sosa*2)."&nbsp;</span>&nbsp;".i18n::translate('and');
+			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"$Dindent\" border=\"0\" align=\"middle\" alt=\"\" /><a href=\"javascript: ".WT_I18N::translate('View Family')."\" onclick=\"expand_layer('sosa_".$sosa."'); return false;\" class=\"top\"><img id=\"sosa_".$sosa."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".WT_I18N::translate('View Family')."\" /></a> ";
+			echo "&nbsp;<span class=\"person_box\">&nbsp;".($sosa*2)."&nbsp;</span>&nbsp;".WT_I18N::translate('and');
 			echo "&nbsp;<span class=\"person_boxF\">&nbsp;".($sosa*2+1)." </span>&nbsp;";
 			if (!empty($family)) {
 				$marriage = $family->getMarriage();
-				if ($marriage->canShow()) $marriage->print_simple_fact(); else echo i18n::translate('Private');
+				if ($marriage->canShow()) $marriage->print_simple_fact(); else echo WT_I18N::translate('Private');
 			}
 			echo "</span>";
 			// display parents recursively

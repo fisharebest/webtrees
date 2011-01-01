@@ -241,16 +241,16 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 					}
 					if (!empty($ageh) && $ageh > 0) {
 						if (empty($agew)) {
-							echo '<span class="age"> ', i18n::translate('Age'), ' ', $ageh, '</span>';
+							echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
 						} else {
-							echo '<span class="age"> ', i18n::translate('Husband\'s age'), ' ', $ageh, ' ';
+							echo '<span class="age"> ', WT_I18N::translate('Husband\'s age'), ' ', $ageh, ' ';
 						}
 					}
 					if (!empty($agew) && $agew > 0) {
 						if (empty($ageh)) {
-							echo '<span class="age"> ', i18n::translate('Age'), ' ', $agew, '</span>';
+							echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $agew, '</span>';
 						} else {
-							echo i18n::translate('Wife\'s age'), ' ', $agew, '</span>';
+							echo WT_I18N::translate('Wife\'s age'), ' ', $agew, '</span>';
 						}
 					}
 				}
@@ -284,7 +284,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 						if ($ct>0) {
 							echo " <a href=\"family.php?famid={$match[1]}&amp;ged=".WT_GEDURL."\">";
 							if ($event->getParentObject()->canDisplayName()) echo $event->getParentObject()->getFullName();
-							else echo i18n::translate('Private');
+							else echo WT_I18N::translate('Private');
 							echo "</a>";
 						}
 					}
