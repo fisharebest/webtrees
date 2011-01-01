@@ -59,8 +59,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		require_once WT_ROOT.'includes/classes/class_stats.php';
-		$stats=new Stats(WT_GEDCOM);
+		$stats=new WT_Stats(WT_GEDCOM);
 
 		$id=$this->getName().$block_id;
 		$title='';

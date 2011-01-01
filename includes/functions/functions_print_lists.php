@@ -55,8 +55,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	if (count($datalist)<1) return;
 	$tiny = (count($datalist)<=500);
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_stats.php';
-	$stats = new stats($GEDCOM);
+	$stats = new WT_Stats($GEDCOM);
 
 	// Bad data can cause "longest life" to be huge, blowing memory limits
 	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge())+1;
@@ -436,8 +435,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	if (count($datalist)<1) return;
 	$tiny = (count($datalist)<=500);
 	require_once WT_ROOT.'js/sorttable.js.htm';
-	require_once WT_ROOT.'includes/classes/class_stats.php';
-	$stats = new stats($GEDCOM);
+	$stats = new WT_Stats($GEDCOM);
 	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge())+1;
 	//-- init chart data
 	for ($age=0; $age<=$max_age; $age++) $marr_by_age[$age]="";

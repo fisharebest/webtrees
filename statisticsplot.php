@@ -32,11 +32,8 @@
 
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/classes/class_stats.php';
-/*
- * Initiate the stats object.
- */
-$stats = new stats($GEDCOM);
+
+$stats = new WT_Stats($GEDCOM);
 
 // Month of birth
 function bimo() {

@@ -37,8 +37,8 @@ require WT_ROOT.'modules/googlemap/googlemap.php';
 if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
 	require WT_ROOT.'modules/googlemap/defaultconfig.php';
 }
-require_once WT_ROOT.'includes/classes/class_stats.php';
-$stats = new stats($GEDCOM);
+
+$stats = new WT_Stats($GEDCOM);
 
 function check_exist_table() {
 	return WT_DB::table_exists("##placelocation");

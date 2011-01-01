@@ -83,8 +83,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$title.=i18n::translate('GEDCOM statistics').help_link('index_stats');
 
-		require_once WT_ROOT.'includes/classes/class_stats.php';
-		$stats=new stats(WT_GEDCOM);
+		$stats=new WT_Stats(WT_GEDCOM);
 
 		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br />";
 

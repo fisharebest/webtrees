@@ -34,7 +34,6 @@
 
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/classes/class_stats.php';
 
 // check for on demand content loading
 if (isset($_REQUEST['tab'])) {
@@ -50,7 +49,7 @@ if (isset($content) && $content==1) {
 	/*
 	* Initiate the stats object.
 	*/
-	$stats = new stats($GEDCOM);
+	$stats = new WT_Stats($GEDCOM);
 
 	if ($tab==0) { ?>
 		<div id="pagetab0" class="<?php echo $TEXT_DIRECTION; ?>">
