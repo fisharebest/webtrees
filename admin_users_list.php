@@ -348,7 +348,7 @@ ob_start();
 					echo '</td>',
 					'<td>';
 						if (WT_USER_ID!=$user_id)
-							echo "<a href=\"user_admin.php?action=deleteuser&amp;username=", rawurlencode($user_name)."&amp;sort={$sort}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged=", rawurlencode($ged), "\" onclick=\"return confirm('", WT_I18N::translate('Are you sure you want to delete the user'), " $user_name');\"><img src=\"images/delete.png\" alt=\"", WT_I18N::translate('Delete'), "\" title=\"", WT_I18N::translate('Delete'), "\" /></a>";
+							echo "<a href=\"useradmin.php?action=deleteuser&amp;username=", rawurlencode($user_name)."&amp;sort={$sort}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged=", rawurlencode($ged), "\" onclick=\"return confirm('", WT_I18N::translate('Are you sure you want to delete the user'), " $user_name');\"><img src=\"images/delete.png\" alt=\"", WT_I18N::translate('Delete'), "\" title=\"", WT_I18N::translate('Delete'), "\" /></a>";
 					echo '</td>',
 				'</tr>';
 				}
