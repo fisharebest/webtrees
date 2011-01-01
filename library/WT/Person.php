@@ -112,7 +112,7 @@ class WT_Person extends WT_GedcomRecord {
 
 	/**
 	* get birth date
-	* @return GedcomDate the birth date
+	* @return WT_Date the birth date
 	*/
 	function getBirthDate() {
 		if (is_null($this->_getBirthDate)) {
@@ -195,7 +195,7 @@ class WT_Person extends WT_GedcomRecord {
 
 	/**
 	* get death date
-	* @return GedcomDate the death date in the GEDCOM format of '1 JAN 2006'
+	* @return WT_Date the death date in the GEDCOM format of '1 JAN 2006'
 	*/
 	function getDeathDate($estimate = true) {
 		if (is_null($this->_getDeathDate)) {
@@ -1269,7 +1269,7 @@ class WT_Person extends WT_GedcomRecord {
 		if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
 			require get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
 			foreach ($histo as $indexval=>$hrec) {
-				$sdate=new GedcomDate(get_gedcom_value('DATE', 2, $hrec, '', false));
+				$sdate=new WT_Date(get_gedcom_value('DATE', 2, $hrec, '', false));
 				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
 					$event = new Event($hrec);
 					$event->setParentObject($this);

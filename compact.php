@@ -351,7 +351,7 @@ function print_td_person($n) {
 		if ($indi->canDisplayDetails()) {
 			$text.="<span class='details1'>";
 			$text.=$indi->getBirthYear().'-'.$indi->getDeathYear();
-			$age=GedcomDate::GetAgeYears($indi->getBirthDate(), $indi->getDeathDate());
+			$age=WT_Date::GetAgeYears($indi->getBirthDate(), $indi->getDeathDate());
 			if ($age) {
 				$text.=" <span class=\"age\">".PrintReady("({$age})")."</span>";
 			}
