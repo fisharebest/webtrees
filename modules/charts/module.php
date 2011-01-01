@@ -31,7 +31,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/classes/class_module.php';
-require_once WT_ROOT.'includes/classes/class_treenav.php';
 
 class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
@@ -77,7 +76,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$controller->init($pid,0,3);
 			$controller->setupJavascript();
 		} else {
-			$nav = new TreeNav($pid, 'blocknav',-1);
+			$nav = new WT_TreeNav($pid, 'blocknav',-1);
 			$nav->generations = 2;
 		}
 

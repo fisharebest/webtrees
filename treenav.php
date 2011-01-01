@@ -33,7 +33,6 @@
 
 define('WT_SCRIPT_NAME', 'treenav.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/classes/class_treenav.php';
 
 $zoom = 0;
 $rootid = '';
@@ -41,7 +40,7 @@ $name = 'nav';
 if (isset($_REQUEST['zoom'])) $zoom = $_REQUEST['zoom'];
 if (isset($_REQUEST['rootid'])) $rootid = $_REQUEST['rootid'];
 if (!empty($_REQUEST['jsname'])) $name = $_REQUEST['jsname'];
-$nav = new TreeNav($rootid, $name, $zoom);
+$nav = new WT_TreeNav($rootid, $name, $zoom);
 $nav->generations=6;
 $nav->zoomLevel-=1;
 print_header(i18n::translate('Interactive tree'));

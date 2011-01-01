@@ -33,7 +33,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/classes/class_module.php';
-require_once WT_ROOT.'includes/classes/class_treenav.php';
 
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
@@ -66,7 +65,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		ob_start();
-		$inav = new TreeNav($this->controller->pid,'treetab');
+		$inav = new WT_TreeNav($this->controller->pid,'treetab');
 		$inav->generations = 5;
 		$inav->zoomLevel = -1;
 		$inav->drawViewport('treetab', "auto", "600px");
