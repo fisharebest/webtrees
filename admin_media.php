@@ -446,7 +446,7 @@ if (check_media_structure()) {
  * @name $action->thumbnail
  */
 	if ($action == "thumbnail") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		// TODO: add option to generate thumbnails for all images on page
 		// Cycle through $medialist and skip all exisiting thumbs
@@ -496,7 +496,7 @@ if (check_media_structure()) {
 
 	// Move single file and optionally its corresponding thumbnail to protected dir
 	if ($action == "moveprotected") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
@@ -518,7 +518,7 @@ if (check_media_structure()) {
 
 	// Move single file and its corresponding thumbnail to standard dir
 	if ($action == "movestandard") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
@@ -538,7 +538,7 @@ if (check_media_structure()) {
 
 	// Move entire dir and all subdirs to protected dir
 	if ($action == "movedirprotected") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Move to protected')."<br />";
 		move_files(substr($directory, 0, -1), true);
@@ -548,7 +548,7 @@ if (check_media_structure()) {
 
 	// Move entire dir and all subdirs to standard dir
 	if ($action == "movedirstandard") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Move to standard')."<br />";
 		move_files(substr(get_media_firewall_path($directory), 0, -1), false);
@@ -557,7 +557,7 @@ if (check_media_structure()) {
 	}
 
 	if ($action == "setpermsfix") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Correct read/write/execute permissions')."<br />";
 		set_perms(substr($directory, 0, -1));
@@ -591,7 +591,7 @@ if (check_media_structure()) {
 
 	// Delete file
 	if ($action == "deletefile") {
-		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		$xrefs = array($xref);
 		$onegedcom = true;
