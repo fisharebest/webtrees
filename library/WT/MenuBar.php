@@ -106,7 +106,7 @@ class WT_MenuBar {
 		}
 		if (WT_USER_GEDCOM_ADMIN) {
 			//-- admin submenu
-			$submenu = new WT_Menu(WT_i18n::translate('Administration'), "admin.php");
+			$submenu = new WT_Menu(WT_I18N::translate('Administration'), "admin.php");
 			$submenu->addIcon('admin');
 			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff", "", "icon_small_admin");
 			$menu->addSubmenu($submenu);
