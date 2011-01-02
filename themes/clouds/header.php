@@ -110,12 +110,8 @@ if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
 if (empty($SEARCH_SPIDER)) {
 	echo '<td valign="middle" align="center"><div class="blanco" style="COLOR: #6699ff;" >';
 	if (WT_USER_ID) {
-		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
-		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<a href="admin.php" class="link">', WT_I18N::translate('Administration'), '</a> | ';
-		}
-		echo logout_link();
-	} elseif (empty($SEARCH_SPIDER)) {
+		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
+	} else {
 		echo login_link();
 	}
 	echo '</div></td>',

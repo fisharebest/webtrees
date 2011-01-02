@@ -131,11 +131,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				<td><div align="center" >
 				<?php
 					if (WT_USER_ID) {
-						echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a><br />';
-						if (WT_USER_GEDCOM_ADMIN) {
-							echo '<a href="admin.php" class="link">', WT_I18N::translate('Administration'), '</a> | ';
-						}
-						echo logout_link();
+						echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
 					} elseif (empty($SEARCH_SPIDER)) {
 						echo login_link();
 					}

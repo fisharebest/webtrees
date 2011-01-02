@@ -94,12 +94,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		// Options for real users
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
 		if (WT_USER_ID) {
-			echo
-				'<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li>',
-				' | <li>', logout_link(), '</li>';
-			if (WT_USER_GEDCOM_ADMIN) {
-				echo ' | <li><a href="admin.php" class="link">', WT_I18N::translate('Administration'), '</a></li>';
-			}
+			echo '<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li> | <li>', logout_link(), '</li>';
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 			}
