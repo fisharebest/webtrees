@@ -317,8 +317,8 @@ if (check_media_structure()) {
 	ob_start(); // Save output until action table has been printed
 
 	if ($action == "deletedir") {
-		echo "<table class=\"list_table width100\">";
-		echo "<tr><td class=\"messagebox\">";
+		echo "<table class=\"media_items\">";
+		echo "<tr><td>";
 		// Check if media directory and thumbs directory are empty
 		$clean = false;
 		$files = array();
@@ -446,7 +446,7 @@ if (check_media_structure()) {
  * @name $action->thumbnail
  */
 	if ($action == "thumbnail") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		// TODO: add option to generate thumbnails for all images on page
 		// Cycle through $medialist and skip all exisiting thumbs
@@ -496,7 +496,7 @@ if (check_media_structure()) {
 
 	// Move single file and optionally its corresponding thumbnail to protected dir
 	if ($action == "moveprotected") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
@@ -518,7 +518,7 @@ if (check_media_structure()) {
 
 	// Move single file and its corresponding thumbnail to standard dir
 	if ($action == "movestandard") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
@@ -538,7 +538,7 @@ if (check_media_structure()) {
 
 	// Move entire dir and all subdirs to protected dir
 	if ($action == "movedirprotected") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Move to protected')."<br />";
 		move_files(substr($directory, 0, -1), true);
@@ -548,7 +548,7 @@ if (check_media_structure()) {
 
 	// Move entire dir and all subdirs to standard dir
 	if ($action == "movedirstandard") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Move to standard')."<br />";
 		move_files(substr(get_media_firewall_path($directory), 0, -1), false);
@@ -557,7 +557,7 @@ if (check_media_structure()) {
 	}
 
 	if ($action == "setpermsfix") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Correct read/write/execute permissions')."<br />";
 		set_perms(substr($directory, 0, -1));
@@ -591,7 +591,7 @@ if (check_media_structure()) {
 
 	// Delete file
 	if ($action == "deletefile") {
-		echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION0\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		$xrefs = array($xref);
 		$onegedcom = true;
@@ -773,26 +773,30 @@ if (check_media_structure()) {
 	<input type="hidden" name="level" value="<?php echo $level; ?>" />
 	<input type="hidden" name="all" value="true" />
 	<input type="hidden" name="subclick" />
-	<table class="facts_table center width75 <?php echo $TEXT_DIRECTION; ?>">
-	<?php
-	if ($TEXT_DIRECTION=='ltr') $legendAlign = 'align="right"';
-	else $legendAlign = 'align="left"';
-	?>
-
-	<!-- // NOTE: Row 1 left: Sort sequence -->
-	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?></td>
-	<td class="optionbox wrap"><select name="sortby">
+	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
+	<tr align="center"><td class="wrap"><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?>
+	<select name="sortby">
 		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo translate_fact('TITL'); ?></option>
 		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo translate_fact('FILE'); ?></option>
 	</select></td>
+	<td class="wrap">
+		<?php echo WT_I18N::translate('Show thumbnails'), help_link('show_thumb'); ?>
+		<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
+	</td>
+	<td class="wrap"><?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?></td>
+	<td class="wrap"><a href="javascript: <?php echo WT_I18N::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media item')."</a>". help_link('add_media'); ?></td>
+	<?php
+		$tempURL = WT_SCRIPT_NAME.'?';
+		if (!empty($filter)) $tempURL .= 'filter='.rawurlencode($filter).'&amp;';
+		if (!empty($subclick)) $tempURL .= "subclick={$subclick}&amp;";
+		$tempURL .= "action=thumbnail&amp;sortby={$sortby}&amp;all=yes&amp;level={$level}&amp;directory=".rawurlencode($directory).$thumbget;
+		?>
+	<td class="wrap"><a href="<?php echo $tempURL; ?>"><?php echo WT_I18N::translate('Create missing thumbnails')."</a>". help_link('gen_missing_thumbs');?></td></tr>
+	</table>
 
-	<!-- // NOTE: Row 1 right, Upload media files -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo WT_I18N::translate('Upload media files'), help_link('upload_media'); ?></td>
-	<td class="optionbox wrap"><?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>"; ?></td></tr>
-
-	<!-- // NOTE: Row 2 left: Filter options -->
-	<tr><td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo WT_I18N::translate('Filter'), help_link('simple_filter'); ?></td>
-	<td class="optionbox wrap">
+	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
+	<tr align="center"><td><?php echo WT_I18N::translate('Folder')."</td><td>". WT_I18N::translate('Filter'), help_link('simple_filter'); ?></td><td rowspan="2"><input type="submit" name="all" value="<?php echo WT_I18N::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td></tr>
+	<tr align="center">	
 		<?php
 			// Directory pick list
 			if (empty($directory)) {
@@ -801,56 +805,38 @@ if (check_media_structure()) {
 			}
 			if ($MEDIA_DIRECTORY_LEVELS > 0) {
 				$folders = get_media_folders();
-				echo "<span dir=\"ltr\"><select name=\"directory\">";
+				echo "<td dir=\"ltr\"><select name=\"directory\">";
 				foreach ($folders as $f) {
 					echo "<option value=\"".$f."\"";
 					if ($directory==$f) echo " selected=\"selected\"";
 					echo ">{$f}</option>";
 				}
-				echo "</select></span><br />";
+				echo "</select></td>";
 			} else echo "<input name=\"directory\" type=\"hidden\" value=\"ALL\" />";
-		// Text field for filter
 		?>
-		<input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>" /><br /><input type="submit" name="search" value="<?php echo WT_I18N::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" />&nbsp;&nbsp;&nbsp;<input type="submit" name="all" value="<?php echo WT_I18N::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td>
-
-	<!-- // NOTE: Row 2 right: Add media -->
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo WT_I18N::translate('Add media'), help_link('add_media'); ?></td>
-	<td class="optionbox wrap"><a href="javascript: <?php echo WT_I18N::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media item'); ?></a></td></tr>
-
-	<!-- // NOTE: Row 3 left: Show thumbnails -->
-	<tr>
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>>
-		<?php echo WT_I18N::translate('Show thumbnails'), help_link('show_thumb'); ?>
-	</td>
-	<td class="optionbox wrap width25">
-		<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
-	</td>
-
-	<!-- // NOTE: Row 3 right: Generate missing thumbnails -->
-	<?php
-		$tempURL = WT_SCRIPT_NAME.'?';
-		if (!empty($filter)) $tempURL .= 'filter='.rawurlencode($filter).'&amp;';
-		if (!empty($subclick)) $tempURL .= "subclick={$subclick}&amp;";
-		$tempURL .= "action=thumbnail&amp;sortby={$sortby}&amp;all=yes&amp;level={$level}&amp;directory=".rawurlencode($directory).$thumbget;
-		?>
-	<td class="descriptionbox wrap width25" <?php echo $legendAlign; ?>><?php echo WT_I18N::translate('Missing thumbnails'), help_link('gen_missing_thumbs'); ?></td>
-	<td class="optionbox wrap"><a href="<?php echo $tempURL; ?>"><?php echo WT_I18N::translate('Create missing thumbnails'); ?></a></td></tr>
+		<!-- Text field for filter -->
+		<td><input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>" /><input type="submit" name="search" value="<?php echo WT_I18N::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" /></td>
+	</tr>
 	</table>
 </form>
 <script type="text/javascript">
 //<![CDATA[
 jQuery(document).ready(function() {
 // Table pageing
-	jQuery("#media_table")
-		.tablesorter({
-			sortList: [[<?php if ($showthumb) echo '2'; else echo '1'; ?>,0]], widgets: ['zebra'],
-			headers: { 0: { sorter: false }}
-		})
-		.tablesorterPager({
-			container: jQuery("#pager"),
-			positionFixed: false,
-			size: 15
-		});
+	
+		var oTable = jQuery('#media_table').dataTable( {
+		"oLanguage": {
+			"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records'
+		},
+		"bJQueryUI": true,
+		"bAutoWidth":false,
+		"aaSorting": [[ 1, "asc" ]],
+		"iDisplayLength": 10,
+		"sPaginationType": "full_numbers",
+		"aoColumnDefs": [
+			{ "bSortable": false, "aTargets": [ 0,1 ] }
+		]
+	});
 });
 //]]>
 </script>
@@ -865,7 +851,7 @@ jQuery(document).ready(function() {
 			$medialist=get_medialist(true, $directory, false, false, $showExternal);
 
 
-		// Get the list of media items
+// Get the list of media items
 /**
  * This is the default action for the page
  *
@@ -891,12 +877,12 @@ jQuery(document).ready(function() {
 			$uplink2 .= "\" alt=\"\" /></a>";
 		}
 		// Start of media directory table
-		echo "<table class=\"list_table width50 $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		// Tell the user where he is
 		echo "<tr>";
-		echo "<td class=\"topbottombar\" colspan=\"2\">";
+		echo "<td colspan=\"2\">";
 			echo WT_I18N::translate('Current directory');
-			echo "<br />";
+			echo ":&nbsp;&nbsp;&nbsp;";
 			if ($USE_MEDIA_FIREWALL) {
 				echo $MEDIA_FIREWALL_ROOTDIR;
 			}
@@ -952,7 +938,7 @@ jQuery(document).ready(function() {
 			$protected_files = count($files_fw);
 			$standard_files = count($files);
 
-			echo "<br />";
+//			echo "<br />";
 			echo "<form name=\"blah3\" action=\"".WT_SCRIPT_NAME."\" method=\"post\">";
 			echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
 			echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
@@ -974,7 +960,7 @@ jQuery(document).ready(function() {
 					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
 					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
 					echo help_link('move_mediadirs');
-					echo "<br />";
+			echo "&nbsp;&nbsp;&nbsp;";
 			}
 
 			if (!$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
@@ -989,7 +975,7 @@ jQuery(document).ready(function() {
 					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
 					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
 					echo help_link('move_mediadirs');
-					echo "<br />";
+			echo ":&nbsp;&nbsp;&nbsp;";
 				}
 			}
 
@@ -1004,10 +990,10 @@ jQuery(document).ready(function() {
 			sort($dirs);
 			if ($pdir != '') {
 				echo "<tr>";
-					echo "<td class=\"optionbox center width10\">";
+					echo "<td class=\" center\" width=\"10\">";
 						echo $uplink2;
 					echo "</td>";
-					echo "<td class=\"descriptionbox $TEXT_DIRECTION\">";
+					echo "<td class=\"$TEXT_DIRECTION\">";
 						echo $uplink;
 					echo "</td>";
 				echo "</tr>";
@@ -1016,7 +1002,7 @@ jQuery(document).ready(function() {
 			foreach ($dirs as $indexval => $dir) {
 				if ($dir{0}!=".") {
 				echo "<tr>";
-					echo "<td class=\"optionbox center width10\">";
+					echo "<td class=\" center\" width=\"10\">";
 						// directory options
 						echo "<form name=\"blah\" action=\"".WT_SCRIPT_NAME."\" method=\"post\">";
 						echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory.$dir."/\" />";
@@ -1034,7 +1020,7 @@ jQuery(document).ready(function() {
 
 						echo "</form>";
 					echo "</td>";
-					echo "<td class=\"descriptionbox $TEXT_DIRECTION\">";
+					echo "<td class=\"$TEXT_DIRECTION\">";
 						echo "<a href=\"".WT_SCRIPT_NAME."?directory=".rawurlencode($directory.$dir)."/&amp;sortby={$sortby}&amp;level=".($level+1).$thumbget."\">";
 						if ($TEXT_DIRECTION=="rtl") echo getRLM();
 						echo $dir;
@@ -1064,12 +1050,12 @@ jQuery(document).ready(function() {
 			?>
 <div align="center">
 <form class="tablesorter" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
-		<table id="media_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+		<table id="media_table">
 			<thead>
 				<tr>
-				<th><?php echo WT_I18N::translate('Edit options'); ?></th>
+				<th width="160px"><?php echo WT_I18N::translate('Edit options'); ?></th>
 				<?php if ($showthumb) { ?>
-				<th><?php echo WT_I18N::translate('Media'); ?></th>
+				<th width="160px"><?php echo WT_I18N::translate('Media'); ?></th>
 				<?php } ?>
 				<th><?php echo WT_I18N::translate('Description'); ?></th>
 				</tr>
@@ -1102,7 +1088,7 @@ jQuery(document).ready(function() {
 
 						// Show column with file operations options
 						$printDone = true;
-						echo "<tr><td class=\"optionbox $changeClass $TEXT_DIRECTION width20\">";
+						echo "<tr><td class=\" $changeClass $TEXT_DIRECTION\">";
 
 						if ($media["CHANGE"]!="delete") {
 							// Edit File
@@ -1211,7 +1197,7 @@ jQuery(document).ready(function() {
 
 						//-- Thumbnail field
 						if ($showthumb) {
-							echo "<td class=\"optionbox $changeClass $TEXT_DIRECTION width10\">";
+							echo "<td class=\" $changeClass $TEXT_DIRECTION\">";
 							// if Streetview object
 							if (strpos($media["FILE"], 'http://maps.google.')===0) {
 								echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media["FILE"], '&amp;output=svembed"></iframe>';
@@ -1224,7 +1210,7 @@ jQuery(document).ready(function() {
 						}
 
 						//-- name and size field
-						echo "<td class=\"optionbox $changeClass $TEXT_DIRECTION wrap\">";
+						echo "<td class=\" $changeClass $TEXT_DIRECTION wrap\">";
 						if ($media["TITL"]!="" && begRTLText($media["TITL"]) && $TEXT_DIRECTION=="ltr") {
 							if (!empty($media["XREF"])) {
 								echo "(".$media["XREF"].")";
@@ -1263,7 +1249,6 @@ jQuery(document).ready(function() {
 
 
 						if ($USE_MEDIA_FIREWALL) {
-							echo "<br /><br />";
 							if ($media["EXISTS"]) {
 								switch ($media["EXISTS"]) {
 								case 1:
@@ -1298,29 +1283,13 @@ jQuery(document).ready(function() {
 						break;
 					}
 				}
-				if ($passCount==1 && $printDone) echo "<tr><td class=\"optionbox\" colspan=\"3\">&nbsp;</td></tr>";
+				if ($passCount==1 && $printDone) echo "<tr><td class=\"\" colspan=\"3\">&nbsp;</td></tr>";
 			}
 			?>
 		</tbody>
 	</table>
-	</form><br />
-	<div id="pager" class="pager">
-		<form>
-			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
-			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
-			<input type="text" class="pagedisplay"/>
-			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
-			<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
-			<select class="pagesize">
-				<option value="10">10</option>
-				<option selected="selected"  value="15">15</option>
-				<option value="30">30</option>
-				<option value="40">40</option>
-				<option  value="50">50</option>
-				<option  value="100">100</option>
-			</select>
-		</form>
-	</div> <?php
+	</form>
+	<?php
 		}
 	}
 	?> </div> <?php

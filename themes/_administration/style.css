@@ -31,24 +31,29 @@
 
 /* general styles */
 body { font-size:12px; margin:10px;}
-.ui-widget-content a {text-decoration:none;}
-.ui-widget-content a.current {color:#E17009; font-weight:bold;}
-.ui-widget-content a:hover {color:red; cursor:hand; cursor:pointer;}
-.ui-widget-header {padding:5px;}
-.css_right {float:right;}
 input.ui-button { padding:1px 3px;}
 input, textarea {	color:black; padding-left:3px; padding-right:3px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold;	padding:0 5px 5px; align:top;}
 img {border:none;}
+h3 {margin:0}
+h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 .icon {border:none;	padding-left:0pt;padding-right:5pt;}
 .warning, .error, .red {	font-weight:bold; color:red;}
 .accepted { font-weight:bold; color:green;}
 .center {text-align:center;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
-h3 {margin:0}
-h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
+.ui-widget-content a {text-decoration:none;}
+.ui-widget-content a.current {color:#E17009; font-weight:bold;}
+.ui-widget-content a:hover {color:red; cursor:hand; cursor:pointer;}
+.ui-widget-header {padding:5px;}
+.css_right {float:right;}
+
+/* Drag-n-drop sorting for modules, etc. */
+.sortme {cursor: move;}
+
+/* Page Help links */
 #page_help{text-align:right;}
 #page_help img{ height: 24px; margin: -5px; padding: 0; width: 24px;}
 
@@ -188,105 +193,14 @@ table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
 #installed_table_paginate {float:right;}
 #installed_table th {min-width: 60px;}
 
-
-/* help text pop-ups */
-.help {
-	cursor:help;
-}
-
-.helpcontent {
-	margin-left:10px;
-	margin-right:10px;
-}
-
-.helpfooter {
-	margin:10px;
-}
-
-.helpheader {
-	margin:10px;
-	font-size:18px;
-	font-weight:bold;
-	color:black;
-}
-
-.helpstart {
-	margin:10px;
-	font-size:14px;
-	color:blue;
-	text-decoration:none;
-	font-weight: bold;
-}
-
-.helptext {
-	font-size:12px;
-	color:black;
-}
-/*------------------------------------------------*/
-/* General Info page */
-
-
-/* GEDCOM management */
-
-table#gedcom_table {
-	border-bottom:solid #81a9cb 1px;
-	vertical-align:top;
-	white-space:nowrap;
-	padding:3px;
-	width:100%;
-}
-
-table#gedcom_table .gedcom  {
-	font-weight:bold;
-	font-size:12px;
-	width:40%;
-}
-
-table#gedcom_table .defaults  {
-	font-weight:bold;
-	font-size:12px;
-	text-align:center;
-	width:25%;
-	color:#666666;
-}
-
-table#site_config {
-	font-size:12px;
-}/
-
-
-.facts_table, .facts_table_rtl {
-	width:100%;
-}
-
-.facts_value {
-	border-bottom:solid #81a9cb 1px;
-	text-align:left;
-	padding:3px;
-}
-
-/* jQuery UI CSS customisations 
-.css_right {float:right;}
-.ui-toolbar {padding:5px;}*/
-
-/* Text direction 
-.ltr {text-align:left;}
-.rtl {text-align:right;	direction:rtl;}*/
-
-/*#admin_content dt {
-	float:left;
-	width:300px;
-}
-
-#admin_content dd {
-	color:	grey;
-	font-size:14px;
-	font-style:italic;
-	padding-top:3px;
-}*/
-
-/* Drag-n-drop sorting for modules, etc. */
-.sortme {
-	cursor: move;
-}
+/* MANAGE MEDIA */
+table#media_table   {width:100%;}
+#media_table_length {float:left;}
+#media_table_filter {float:right;}
+#media_table_info {float:left;}
+#media_table_paginate {float:right;}
+#media_table th {min-width: 60px;}
+#media_table td {vertical-align:top; padding:5px;}
+.media_items {width:100%; margin:0;}
+.media_items td {background:OldLace; padding:5px; border:1px inset #D9D6C4;}
 

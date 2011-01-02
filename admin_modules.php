@@ -144,19 +144,19 @@ print_header(WT_I18N::translate('Module administration'));
 
   jQuery(document).ready(function() {
   
-  		var oTable = jQuery('#installed_table').dataTable( {
-			"oLanguage": {
-				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records'
-			},
-			"bJQueryUI": true,
-			"bAutoWidth":false,
-			"aaSorting": [[ 1, "asc" ]],
-			"iDisplayLength": 15,
-			"sPaginationType": "full_numbers",
-			"aoColumnDefs": [
-				{ "bSortable": false, "aTargets": [ 0 ] }
-			]
-		});
+	var oTable = jQuery('#installed_table').dataTable( {
+		"oLanguage": {
+			"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records'
+		},
+		"bJQueryUI": true,
+		"bAutoWidth":false,
+		"aaSorting": [[ 1, "asc" ]],
+		"iDisplayLength": 15,
+		"sPaginationType": "full_numbers",
+		"aoColumnDefs": [
+			{ "bSortable": false, "aTargets": [ 0 ] }
+		]
+	});
 });
 //]]>
 </script>

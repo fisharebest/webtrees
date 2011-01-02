@@ -428,7 +428,7 @@ print_header(WT_I18N::translate('Configure family tree'));
 							<?php
 								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
 								if ($PEDIGREE_ROOT_ID) {
-									$person=Person::getInstance($PEDIGREE_ROOT_ID);
+									$person=WT_Person::getInstance($PEDIGREE_ROOT_ID);
 									if ($person) {
 										echo ' <span class="list_item">', $person->getFullName(), ' ', $person->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 									} else {
