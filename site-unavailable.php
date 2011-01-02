@@ -36,7 +36,6 @@ set_include_path('library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 require 'includes/functions/functions.php';
-require 'includes/classes/class_i18n.php';
 define('WT_LOCALE', WT_I18N::init());
 
 header('Content-Type: text/html; charset=UTF-8');

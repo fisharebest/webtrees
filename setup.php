@@ -92,7 +92,6 @@ require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_edit.php';
-require 'includes/classes/class_i18n.php';
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 echo
