@@ -128,21 +128,19 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		if ($count>=$this->generations) return;
 		$person = WT_Person::getInstance($pid);
 		if (is_null($person)) return;
-		$families = $person->getChildFamilies();
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-1));
-		foreach ($families as $famid => $family) {
+		foreach ($person->getChildFamilies() as $family) {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
-			$parents = find_parents($famid);
 			$height="100%";
 			echo "<tr>";
 			echo "<td valign=\"bottom\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
 			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 			echo "<td>";
 			//-- print the father box
-			print_pedigree_person($parents["HUSB"]);
+			print_pedigree_person($family->getHusbId());
 			echo "</td>";
-			$ARID = $parents["HUSB"];
+			$ARID = $family->getHusbId();
 			echo "<td id=\"td_".$ARID."\">";
 
 			//-- print an Ajax arrow on the last generation of the adult male
@@ -150,16 +148,16 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 				echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
 			}
 			//-- recursively get the father's family
-			$this->print_person_pedigree($parents["HUSB"], $count+1);
+			$this->print_person_pedigree($family->getHusbId(), $count+1);
 			echo "</td>";
 			echo "</tr><tr>";
 			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
 			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 			echo "<td>";
 			//-- print the mother box
-			print_pedigree_person($parents["WIFE"]);
+			print_pedigree_person($family->getWifeId());
 			echo "</td>";
-			$ARID = $parents["WIFE"];
+			$ARID = $family->getWifeId();
 			echo "<td id=\"td_".$ARID."\">";
 
 
@@ -169,7 +167,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 			}
 
 			//-- recursively print the mother's family
-			$this->print_person_pedigree($parents["WIFE"], $count+1);
+			$this->print_person_pedigree($family->getWifeId(), $count+1);
 			echo "</td>";
 			echo "</tr>";
 			echo "</table>";
