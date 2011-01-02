@@ -199,9 +199,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Pedigree Tree'); ?></option>
 				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Descendancy chart'); ?></option>
 				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hourglass chart'); ?></option>
-				<?php if (file_exists(WT_ROOT.'includes/classes/class_treenav.php')) { ?>
 				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Interactive tree'); ?></option>
-				<?php } ?>
 			</select>
 		</td></tr>
 		<tr>
