@@ -419,7 +419,7 @@ if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {
 	if (!get_gedcom_setting(WT_GED_ID, 'imported') && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'logs.php', 'login.php', 'siteconfig.php', 'admin.php', 'addmedia.php', 'client.php', 'gedcheck.php', 'useradmin.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'pgv_to_wt.php'))) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
 		exit;
 	}
 

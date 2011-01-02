@@ -50,7 +50,7 @@ $_SESSION['exportConvPath'] = $conv_path; // remember this for the next Download
 $_SESSION['exportConvSlashes'] = $conv_slashes;
 
 if (!WT_USER_GEDCOM_ADMIN || !$ged) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'editgedcoms.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 	exit;
 }
 
@@ -150,7 +150,7 @@ print_header(WT_I18N::translate('Download GEDCOM'));
 		</td></tr>
 	<tr><td class="facts_label03" colspan="2">
 	<input type="submit" value="<?php echo WT_I18N::translate('Download Now'); ?>" />
-	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='editgedcoms.php';"/></td></tr>
+	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_trees_manage.php';"/></td></tr>
 	</table>
 </form>
 <?php

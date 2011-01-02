@@ -2,7 +2,7 @@
 /**
  * Perform an incremental import of a gedcom file.
  *
- * For each gedcom that needs importing, editgedcoms.php will create
+ * For each gedcom that needs importing, admin_trees_manage.php will create
  * a <div id="importNNN"></div>, where NNN is the gedcom ID.
  * It will then call import.php to load the div's contents using AJAX.
  *
@@ -67,7 +67,7 @@ $row=WT_DB::prepare(
 
 if ($row->import_offset==$row->import_total) {
 	set_gedcom_setting($gedcom_id, 'imported', true);
-	// Finished?  Show the maintenance links, similar to editgedcoms.php
+	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	WT_DB::exec("COMMIT");
 	echo
 		WT_JS_START,

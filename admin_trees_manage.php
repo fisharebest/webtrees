@@ -265,7 +265,7 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 			help_link('upload_gedcom'),
 			'</td>',
 			// delete
-			'<td><a href="editgedcoms.php?action=delete&ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
 			help_link('delete_gedcom'),
 			'</td></tr></table></td></tr></table><br />';
 	}
