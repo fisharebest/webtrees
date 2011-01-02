@@ -181,6 +181,14 @@ table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
 .gedcom_table2 th {font-weight:bold; font-size:14px; text-align:center;}
 .gedcom_table2 td {text-align:center;}
 
+/* MANAGE MODULES */
+#installed_table_length {float:left;}
+#installed_table_filter {float:right;}
+#installed_table_info {float:left;}
+#installed_table_paginate {float:right;}
+#installed_table th {min-width: 60px;}
+
+
 /* help text pop-ups */
 .help {
 	cursor:help;

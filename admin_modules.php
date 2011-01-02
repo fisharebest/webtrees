@@ -143,37 +143,20 @@ print_header(WT_I18N::translate('Module administration'));
   }
 
   jQuery(document).ready(function() {
-    //-- sortable menus and tabs tables
-    jQuery("#menus_table, #tabs_table, #sidebars_table").sortable({items: '.sortme', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
-
-    //-- update the order numbers after drag-n-drop sorting is complete
-    jQuery('#menus_table').bind('sortupdate', function(event, ui) {
-			var id = jQuery(this).attr('id');
-			reindexMods(id);
+  
+  		var oTable = jQuery('#installed_table').dataTable( {
+			"oLanguage": {
+				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records'
+			},
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"aaSorting": [[ 1, "asc" ]],
+			"iDisplayLength": 15,
+			"sPaginationType": "full_numbers",
+			"aoColumnDefs": [
+				{ "bSortable": false, "aTargets": [ 0 ] }
+			]
 		});
-
-    jQuery('#tabs_table').bind('sortupdate', function(event, ui) {
-		var id = jQuery(this).attr('id');
-		reindexMods(id);
-		});
-
-    jQuery('#sidebars_table').bind('sortupdate', function(event, ui) {
-		var id = jQuery(this).attr('id');
-		reindexMods(id);
-		});
-
-	// Table sorting and pageing
-	jQuery("#installed_table")
-		.tablesorter({
-			sortList: [[2,0], [3,0]], widgets: ['zebra'],
-			headers: { 0: { sorter: false }}
-		})
-		.tablesorterPager({
-			container: jQuery("#pager"),
-			positionFixed: false,
-			size: 15
-		});
-
 });
 //]]>
 </script>
@@ -186,7 +169,7 @@ print_header(WT_I18N::translate('Module administration'));
 				<thead>
 					<tr>
 					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
-					<th><?php echo WT_I18N::translate('Module Name'); ?></th>
+					<th width="100px"><?php echo WT_I18N::translate('Module Name'); ?></th>
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Menu'); ?></th>
 					<th><?php echo WT_I18N::translate('Tab'); ?></th>
@@ -220,23 +203,6 @@ print_header(WT_I18N::translate('Module administration'));
 					?>
 				</tbody>
 			</table>
-			<div id="pager" class="pager">
-				<!--<form>-->
-					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/first.png" class="first"/>
-					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/prev.png" class="prev"/>
-					<input type="text" class="pagedisplay"/>
-					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/next.png" class="next"/>
-					<img src="<?php echo WT_THEME_DIR; ?>images/jquery/last.png" class="last"/>
-					<select class="pagesize">
-						<option value="10">10</option>
-						<option selected="selected"  value="15">15</option>
-						<option value="30">30</option>
-						<option value="40">40</option>
-						<option  value="50">50</option>
-						<option  value="100">100</option>
-					</select>
-				<!--</form>-->
-			</div>
 			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
 		</form>
 	</div>
