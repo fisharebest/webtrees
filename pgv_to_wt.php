@@ -1071,4 +1071,4 @@ WT_DB::prepare(
 
 WT_DB::exec("COMMIT");
 
-echo '<p><b><a href="editgedcoms.php">', WT_I18N::translate('Click here to continue'), '</a></b></p>';
+echo '<p><b><a href="admin_trees_manage.php">', WT_I18N::translate('Click here to continue'), '</a></b></p>';
