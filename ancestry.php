@@ -212,16 +212,9 @@ case 1:
 	foreach ($treeid as $i=>$pid) {
 		if ($pid) {
 			$person=WT_Person::getInstance($pid);
-			if (!is_null($person)) {
-				$famids=$person->getChildFamilies();
-				foreach ($famids as $famid=>$family) {
-					$parents=find_parents_in_record($family->getGedcomRecord());
-					if ($parents) {
-						print_sosa_family($famid, $pid, $i);
-					} elseif ($i==1) {
-						// show empty family only if it is the first and only one
-						print_sosa_family('', $pid, $i);
-					}
+			if ($person) {
+				foreach ($person->getChildFamilies() as $family) {
+					print_sosa_family($family->getXref(), $pid, $i);
 				}
 			}
 		}
