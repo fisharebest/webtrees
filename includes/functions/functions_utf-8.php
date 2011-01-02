@@ -184,8 +184,8 @@ function utf8_strlen($string) {
 	return $utf8_len;
 }
 
-function utf8_strcmp($string1, $string2) {
-	// Language-specific conversions, e.g. Turkish dotless i
+function utf8_strcasecmp($string1, $string2) {
+	// Language-specific alphabet sequence
 	global $ALPHABET_lower, $ALPHABET_upper;
 
 	$strpos1=0;
@@ -213,63 +213,36 @@ function utf8_strcmp($string1, $string2) {
 			continue;
 		}
 		// Try the local alphabet first
-		if (($offset1=strpos($ALPHABET_lower, $chr1))!==false && ($offset2=strpos($ALPHABET_lower, $chr2))!==false) {
-			return $offset1-$offset2;
+		$offset1=strpos($ALPHABET_lower, $chr1);
+		if ($offset1===false) {
+			$offset1=strpos($ALPHABET_upper, $chr1);
 		}
-		if (($offset1=strpos($ALPHABET_upper, $chr1))!==false && ($offset2=strpos($ALPHABET_upper, $chr2))!==false) {
-			return $offset1-$offset2;
-		}
-		// Try the global alphabet next
-		if (($offset1=strpos(WT_UTF8_ALPHABET_LOWER, $chr1))!==false && ($offset2=strpos(WT_UTF8_ALPHABET_LOWER, $chr2))!==false) {
-			return $offset1-$offset2;
-		}
-		if (($offset1=strpos(WT_UTF8_ALPHABET_UPPER, $chr1))!==false && ($offset2=strpos(WT_UTF8_ALPHABET_UPPER, $chr2))!==false) {
-			return $offset1-$offset2;
-		}
-		// Just compare by unicode order
-		return strcmp($chr1, $chr2);
-	}
-	// Shortest string comes first.
-	return ($strlen1-$strpos1)-($strlen2-$strpos2);
-}
-
-function utf8_strcasecmp($string1, $string2) {
-	// Language-specific alphabet sequence
-	global $ALPHABET_upper;
-
-	$string1=utf8_strtoupper($string1);
-	$string2=utf8_strtoupper($string2);
-	$strpos1=0;
-	$strpos2=0;
-	$strlen1=strlen($string1);
-	$strlen2=strlen($string2);
-	while ($strpos1<$strlen1 && $strpos2<$strlen2) {
-		$byte1=ord($string1[$strpos1]);
-		$byte2=ord($string2[$strpos2]);
-		if (($byte1 & 0xE0)==0xC0) {
-			$chr1=$string1[$strpos1++].$string1[$strpos1++];
-		} elseif (($byte1 & 0xF0)==0xE0) {
-			$chr1=$string1[$strpos1++].$string1[$strpos1++].$string1[$strpos1++];
-		} else {
-			$chr1=$string1[$strpos1++];
-		}
-		if (($byte2 & 0xE0)==0xC0) {
-			$chr2=$string2[$strpos2++].$string2[$strpos2++];
-		} elseif (($byte2 & 0xF0)==0xE0) {
-			$chr2=$string2[$strpos2++].$string2[$strpos2++].$string2[$strpos2++];
-		} else {
-			$chr2=$string2[$strpos2++];
-		}
-		if ($chr1==$chr2) {
-			continue;
-		}
-		// Try the local alphabet first
-		if (($offset1=strpos($ALPHABET_upper, $chr1))!==false && ($offset2=strpos($ALPHABET_upper, $chr2))!==false) {
-			return $offset1-$offset2;
+		$offset2=strpos($ALPHABET_lower, $chr2);
+		if ($offset2===false) {
+			$offset2=strpos($ALPHABET_upper, $chr2);
+		}	
+		if ($offset1!==false && $offset2!==false) {
+			if ($offset1==$offset2) {
+				continue;
+			} else {
+				return $offset1-$offset2;
+			}
 		}
 		// Try the global alphabet next
-		if (($offset1=strpos(WT_UTF8_ALPHABET_UPPER, $chr1))!==false && ($offset2=strpos(WT_UTF8_ALPHABET_UPPER, $chr2))!==false) {
-			return $offset1-$offset2;
+		$offset1=strpos(WT_UTF8_ALPHABET_LOWER, $chr1);
+		if ($offset1===false) {
+			$offset1=strpos(WT_UTF8_ALPHABET_UPPER, $chr1);
+		}
+		$offset2=strpos(WT_UTF8_ALPHABET_LOWER, $chr2);
+		if ($offset2===false) {
+			$offset2=strpos(WT_UTF8_ALPHABET_UPPER, $chr2);
+		}	
+		if ($offset1!==false && $offset2!==false) {
+			if ($offset1==$offset2) {
+				continue;
+			} else {
+				return $offset1-$offset2;
+			}
 		}
 		// Just compare by unicode order
 		return strcmp($chr1, $chr2);
