@@ -38,7 +38,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br />The administrator determines whether this block can show media items associated with persons or events.');
+		return WT_I18N::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br /><br />The administrator determines whether this block can show media items associated with persons or events.');
 	}
 
 	// Implement class WT_Module_Block
