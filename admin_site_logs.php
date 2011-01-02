@@ -140,10 +140,18 @@ case 'load_json':
 			// MySQL numbers columns 1, 2, 3, ...
 			switch (safe_GET('sSortDir_'.$i)) {
 			case 'asc':
-				$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+				if ((int)safe_GET('iSortCol_'.$i)==0) {
+					$ORDER_BY.='log_id ASC '; // column 0 is "timestamp", using log_id gives the correct order for events in the same second
+				} else {
+					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' ASC ';
+				}
 				break;
 			case 'desc':
-				$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+				if ((int)safe_GET('iSortCol_'.$i)==0) {
+					$ORDER_BY.='log_id DESC ';
+				} else {
+					$ORDER_BY.=(1+(int)safe_GET('iSortCol_'.$i)).' DESC ';
+				}
 				break;
 			}
 			if ($i<$iSortingCols-1) {
@@ -226,7 +234,7 @@ echo
 					WT_I18N::translate('User'), '<br /><input name="user" size="12" value="', htmlspecialchars($user), '" /> ',
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Gedcom'), '<br /><input name="gedc" size="12" value="', htmlspecialchars($gedc), '" ', WT_USER_IS_ADMIN ? '' : 'disabled', '/> ',
+					WT_I18N::translate('Family tree'), '<br /><input name="gedc" size="12" value="', htmlspecialchars($gedc), '" ', WT_USER_IS_ADMIN ? '' : 'disabled', '/> ',
 				'</td>',
 				'<td class="button" rowspan="2">',
 					'<input type="submit" value="', WT_I18N::translate('Filter'), '" />',
@@ -250,7 +258,7 @@ if ($action) {
 					'<th>', WT_I18N::translate('Message'), '</th>',
 					'<th>', WT_I18N::translate('IP address'), '</th>',
 					'<th>', WT_I18N::translate('User'), '</th>',
-					'<th>', WT_I18N::translate('GEDCOM'), '</th>',
+					'<th>', WT_I18N::translate('Family tree'), '</th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>',
