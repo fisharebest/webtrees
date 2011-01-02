@@ -1103,45 +1103,42 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 	echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', $URL, '">';
 	echo '<input type="hidden" name="action" value="upload" />';
 	echo '<input type="hidden" name="showthumb" value="', $showthumb, '" />';
-	echo '<table class="list_table ', $TEXT_DIRECTION, ' width100">';
-	echo '<tr><td class="topbottombar" colspan="2">';
-		echo WT_I18N::translate('Upload media files'), '<br />', WT_I18N::translate('Maximum upload size: '), $filesize;
-	echo '</td></tr>';
+	echo '<p>', WT_I18N::translate('Upload media files'), ':&nbsp;&nbsp;', WT_I18N::translate('Maximum upload size: '), '<span class="accepted">', $filesize, '</span></p>';
 	// Print the Submit button for uploading the media
-	echo '<tr><td class="topbottombar" colspan="2">';
-		echo '<input type="submit" value="', WT_I18N::translate('Upload'), '" />';
-	echo '</td></tr>';
+	echo '<input type="submit" value="', WT_I18N::translate('Upload'), '" />';
 
 	// Print 5 forms for uploading images
 	for ($i=1; $i<6; $i++) {
-		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+		echo '<table class="upload_media ', $TEXT_DIRECTION, '">';
+		echo '<tr><th>', WT_I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
+		echo '<tr><td class="', $TEXT_DIRECTION, '">';
 		echo WT_I18N::translate('Media file to upload'), help_link('upload_media_file');
 		echo '</td>';
-		echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
+		echo '<td class="', $TEXT_DIRECTION, '">';
 		echo '<input name="mediafile', $i, '" type="file" size="40" />';
 		echo '</td></tr>';
 
 		if ($thumbSupport != "") {
-			echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+			echo '<tr><td class="', $TEXT_DIRECTION, '">';
 			echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
-			echo '</td><td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
+			echo '</td><td class="', $TEXT_DIRECTION, '">';
 			echo '<input type="checkbox" name="genthumb', $i, '" value="yes" checked="checked" />';
 			echo '&nbsp;&nbsp;&nbsp;', WT_I18N::translate('Generate thumbnail automatically from '), $thumbSupport;
 			echo '</td></tr>';
 		}
 
-		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+		echo '<tr><td class="', $TEXT_DIRECTION, '">';
 		echo WT_I18N::translate('Thumbnail to upload'), help_link('upload_thumbnail_file');
 		echo '</td>';
-		echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
+		echo '<td class="', $TEXT_DIRECTION, '">';
 		echo '<input name="thumbnail', $i, '" type="file" size="40" />';
 		echo '</td></tr>';
 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+			echo '<tr><td class="', $TEXT_DIRECTION, '">';
 			echo WT_I18N::translate('File name on server'), help_link('upload_server_file');
 			echo '</td>';
-			echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
+			echo '<td class="', $TEXT_DIRECTION, '">';
 			echo '<input name="filename', $i, '" type="text" size="40" />';
 			if ($i==1) echo "<br /><sub>", WT_I18N::translate('Do not change to keep original file name.'), "</sub>";
 			echo '</td></tr>';
@@ -1150,10 +1147,10 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 		}
 
 		if (WT_USER_GEDCOM_ADMIN && $MEDIA_DIRECTORY_LEVELS>0) {
-			echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+			echo '<tr><td class="', $TEXT_DIRECTION, '">';
 			echo WT_I18N::translate('Folder name on server'), help_link('upload_server_folder');
 			echo '</td>';
-			echo '<td class="optionbox ', $TEXT_DIRECTION, ' wrap">';
+			echo '<td class="', $TEXT_DIRECTION, '">';
 
 			echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 			echo '<option';
@@ -1177,18 +1174,11 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 		} else {
 			echo '<input name="folder', $i, '" type="hidden" value="" />';
 		}
-
-		if ($i!=5) {
-			echo '<tr><td colspan="2">&nbsp;</td></tr>';
-		}
+		echo '</table>';
 	}
-
 	// Print the Submit button for uploading the media
-	echo '<tr><td class="topbottombar" colspan="2">';
-		echo '<input type="submit" value="', WT_I18N::translate('Upload'), '" />';
-	echo '</td></tr>';
-
-	echo '</table></form>';
+	echo '<input type="submit" value="', WT_I18N::translate('Upload'), '" />';
+	echo '</form>';
 }
 
 

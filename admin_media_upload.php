@@ -69,9 +69,7 @@ print_header(WT_I18N::translate('Upload media files'));
 	}
 //-->
 </script>
-<center>
 <?php
-echo "<span class=\"subheaders\">".WT_I18N::translate('Upload media files')."</span><br /><br />";
 $action = safe_POST('action');
 if ($action == "upload") {
 	process_uploadMedia_form();

@@ -203,5 +203,10 @@ table#media_table   {width:100%;}
 #media_table th {min-width: 60px;}
 #media_table td {vertical-align:top; padding:5px;}
 .media_items {width:100%; margin:0;}
-.media_items td {background:OldLace; padding:5px; border:1px inset #D9D6C4;}
+.media_items td {background:OldLace; border:1px inset #D9D6C4;}
 
+/* UPLOAD MEDIA */
+table.upload_media {border-collapse: separate; border-spacing: 0; margin:10px 0;}
+.upload_media  th {font-weight:bold; text-align: left;}
+.upload_media  td {background:OldLace; border:1px inset #D9D6C4; border-right:0; padding:5px;}
+.upload_media td+td {border-left:0; padding-left:20px;}
