@@ -253,10 +253,4 @@ echo 'alert("webtrees.js: A javascript function is missing.  Please clear your W
 echo '}';
 echo WT_JS_END;
 
-if ($SEARCH_SPIDER) {
-	if ($SHOW_SPIDER_TAGLINE)
-		echo WT_I18N::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
-	echo "</div></body></html>";
-} else {
-	print_footer();
-}
+print_footer();

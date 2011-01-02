@@ -701,7 +701,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
 
 	@set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        $SHOW_RELATIVES_EVENTS);
-	@set_gedcom_setting($ged_id, 'SHOW_SPIDER_TAGLINE',          $SHOW_SPIDER_TAGLINE);
 	@set_gedcom_setting($ged_id, 'SHOW_STATS',                   $SHOW_STATS);
 	@set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             $SOURCE_ID_PREFIX);
 	@set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               $SOUR_FACTS_ADD);

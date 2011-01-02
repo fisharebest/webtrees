@@ -126,10 +126,4 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 </table>
 <br />
 <?php
-if (empty($SEARCH_SPIDER))
-	print_footer();
-else {
-	if ($SHOW_SPIDER_TAGLINE)
-		echo WT_I18N::translate('Search Engine Spider Detected').": ".$SEARCH_SPIDER;
-	echo "</div></body></html>";
-}
+print_footer();

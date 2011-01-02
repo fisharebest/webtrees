@@ -1890,11 +1890,6 @@ case 'SHOW_RELATIVES_EVENTS':
 	$text=WT_I18N::translate('Births, marriages, and deaths of relatives are important events in one\'s life. This option controls whether or not to show these events on the <i>Personal facts and details</i> tab on the Individual page.<br /><br />The events affected by this option are:<ul><li>Death of spouse</li><li>Birth and death of children</li><li>Death of parents</li><li>Birth and death of siblings</li><li>Death of grand-parents</li><li>Birth and death of parents\' siblings</li></ul>');
 	break;
 
-case 'SHOW_SPIDER_TAGLINE':
-	$title=WT_I18N::translate('Show spider tagline');
-	$text=WT_I18N::translate('On pages generated for search engines, display as the last line the particular search engine the page detected.  If this option is on, it can bias Google&reg; AdSense towards search engine optimization tools.');
-	break;
-
 case 'SHOW_STATS':
 	$title=WT_I18N::translate('Show execution statistics');
 	$text=WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.');

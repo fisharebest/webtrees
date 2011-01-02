@@ -204,7 +204,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION',        safe_POST_bool('NEW_SHOW_REGISTER_CAUTION'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        safe_POST('NEW_SHOW_RELATIVES_EVENTS'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_SPIDER_TAGLINE',          safe_POST_bool('NEW_SHOW_SPIDER_TAGLINE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_STATS',                   safe_POST_bool('NEW_SHOW_STATS'));
 	set_gedcom_setting(WT_GED_ID, 'SOURCE_ID_PREFIX',             safe_POST('NEW_SOURCE_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_ADD')));
@@ -1396,14 +1395,6 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 						<td class="optionbox width60">
 							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="descriptionbox nowrap">
-							<?php echo WT_I18N::translate('Spider tagline'), help_link('SHOW_SPIDER_TAGLINE'); ?>
-						</td>
-						<td class="optionbox width60">
-							<?php echo radio_buttons('NEW_SHOW_SPIDER_TAGLINE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_SPIDER_TAGLINE); ?>
 						</td>
 					</tr>
 					<tr>
