@@ -658,7 +658,7 @@ if ($action=="filter") {
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
-			usort($myindilist, array('GedcomRecord', 'Compare'));
+			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myindilist as $indi ) {
 			//	echo $indi->format_list('li', true);
 				
@@ -787,7 +787,7 @@ if ($action=="filter") {
 		if ($myfamlist) {
 			$curged = $GEDCOM;
 			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
-			usort($myfamlist, array('GedcomRecord', 'Compare'));
+			usort($myfamlist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
@@ -1020,7 +1020,7 @@ if ($action=="filter") {
 			$mynotelist = get_note_list(WT_GED_ID);
 		}
 		if ($mynotelist) {
-			usort($mynotelist, array('GedcomRecord', 'Compare'));
+			usort($mynotelist, array('WT_GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getListName(),'</span></a></li>';
@@ -1042,7 +1042,7 @@ if ($action=="filter") {
 			$mysourcelist = get_source_list(WT_GED_ID);
 		}
 		if ($mysourcelist) {
-			usort($mysourcelist, array('GedcomRecord', 'Compare'));
+			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';

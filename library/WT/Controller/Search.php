@@ -611,8 +611,8 @@ class WT_Controller_Search extends WT_Controller_Base {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, array('GedcomRecord', 'Compare'));
-		usort($this->myfamlist, array('GedcomRecord', 'Compare'));
+		usort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
+		usort($this->myfamlist, array('WT_GedcomRecord', 'Compare'));
 	}
 
 	function printResults() {
@@ -635,7 +635,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						print_indi_table($datalist, WT_I18N::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
@@ -651,7 +651,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						print_fam_table($datalist, WT_I18N::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
@@ -667,7 +667,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						print_sour_table($datalist, WT_I18N::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
@@ -683,7 +683,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 					}
 					if ($datalist) {
 						$somethingPrinted = true;
-						usort($datalist, array('GedcomRecord', 'Compare'));
+						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
 						print_note_table($datalist, WT_I18N::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));

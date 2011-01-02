@@ -465,7 +465,7 @@ function get_famlist_fams($surn='', $salpha='', $galpha='', $marnm, $ged_id=null
 			$list[]=WT_Family::getInstance($row);
 		}
 	}
-	usort($list, array('GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'Compare'));
 	return $list;
 }
 
@@ -896,7 +896,7 @@ function get_source_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[]=WT_Source::getInstance($row);
 	}
-	usort($list, array('GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'Compare'));
 	return $list;
 }
 
@@ -912,7 +912,7 @@ function get_repo_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[]=WT_Repository::getInstance($row);
 	}
-	usort($list, array('GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'Compare'));
 	return $list;
 }
 
@@ -927,7 +927,7 @@ function get_note_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[]=WT_Note::getInstance($row);
 	}
-	usort($list, array('GedcomRecord', 'Compare'));
+	usort($list, array('WT_GedcomRecord', 'Compare'));
 	return $list;
 }
 

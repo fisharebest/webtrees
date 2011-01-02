@@ -426,7 +426,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$ret = true;
 		if (count($this->myindilist)>0) {
 			echo '<br /><div class="center">';
-			uasort($this->myindilist, array('GedcomRecord', 'Compare'));
+			uasort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
 			print_indi_table($this->myindilist, WT_I18N::translate('Individuals')." @ ".PrintReady(get_gedcom_setting(WT_GEDCOM, 'title'), true));
 			echo "</div>";
 		}

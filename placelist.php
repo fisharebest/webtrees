@@ -404,9 +404,9 @@ if ($level > 0) {
 		$title = ""; foreach ($parent as $k=>$v) $title = $v.", ".$title;
 		$title = PrintReady(substr($title, 0, -2))." ";
 		// Sort each of the tables by Name
-		usort($myindilist,   array('GedcomRecord', 'Compare'));
-		usort($myfamlist,    array('GedcomRecord', 'Compare'));
-		usort($mysourcelist, array('GedcomRecord', 'Compare'));
+		usort($myindilist,   array('WT_GedcomRecord', 'Compare'));
+		usort($myfamlist,    array('WT_GedcomRecord', 'Compare'));
+		usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
 		// echo each of the tables
 		print_indi_table($myindilist,   WT_I18N::translate('Individuals').' @ '.$title);
 		print_fam_table ($myfamlist,    WT_I18N::translate('Families'   ).' @ '.$title);
