@@ -211,7 +211,7 @@ echo
 			'<tr>',
 				'<td>',
 					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s To %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" /><br />', '&nbsp;&nbsp;&nbsp;<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
+					WT_I18N::translate('From %s to %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" /><br />', '&nbsp;&nbsp;&nbsp;<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
 				'</td>',
 				'<td>',
 					WT_I18N::translate('Type'), '<br />', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
