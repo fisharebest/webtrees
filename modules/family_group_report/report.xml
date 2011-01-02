@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="i18n::translate('Family Group Report')" /></Title>
+	<Title><var var="WT_I18N::translate('Family Group Report')" /></Title>
 	<Description>Prints a PAF style family group record</Description>
 	<!-- User inputs for the report -->
-	<Input name="famid" lookup="FAM" type="text" default=""><var var="i18n::translate('Enter Family ID')" /></Input>
-	<Input name="sources" type="checkbox" default="1"><var var="i18n::translate('Show sources?')" /></Input>
-	<Input name="notes" type="checkbox" default="1"><var var="i18n::translate('Show notes?')" /></Input>
-	<Input name="photos" type="checkbox" default="1"><var var="i18n::translate('Show photos?')" /></Input>
-	<Input name="blanks" type="checkbox" default="0"><var var="i18n::translate('Print basic events when blank?')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
-	<Input name="colors" type="checkbox" default="1"><var var="i18n::translate('Use colors')"/></Input>
+	<Input name="famid" lookup="FAM" type="text" default=""><var var="WT_I18N::translate('Enter Family ID')" /></Input>
+	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>
+	<Input name="notes" type="checkbox" default="1"><var var="WT_I18N::translate('Show notes?')" /></Input>
+	<Input name="photos" type="checkbox" default="1"><var var="WT_I18N::translate('Show photos?')" /></Input>
+	<Input name="blanks" type="checkbox" default="0"><var var="WT_I18N::translate('Print basic events when blank?')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Input name="colors" type="checkbox" default="1"><var var="WT_I18N::translate('Use colors')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="18" />
@@ -83,15 +83,15 @@
 		<SetVar name="wifeid" value="@WIFE" />
 
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="i18n::translate('Family Group Report')" /></Cell>
-			<Cell align="rightrtl" newline="1" style="pagenum"><var var="i18n::translate('Page')" /> <PageNum /> <var var="i18n::translate('of')" /> <TotalPages /></Cell>
+			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Family Group Report')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 
 		<Body>
 			<Gedcom id="$famid">
 				<!-- Print the Family name with Level 1 sources -->
 				<TextBox newline="1">
-					<Text style="pageheader"><var var="i18n::translate('Family')" /> <GetPersonName id=""/> </Text>
+					<Text style="pageheader"><var var="WT_I18N::translate('Family')" /> <GetPersonName id=""/> </Text>
 					<if condition="$sources==1">
 						<!-- print level 1 sources -->
 						<RepeatTag tag="SOUR">
@@ -139,7 +139,7 @@
 				<Gedcom id="@HUSB">
 					<!-- print the name and any level 1 sources -->
 					<TextBox bgcolor="$malebox_bgcolor" border="1" width="$width" newline="1">
-						<Text color="$tcolor" style="text"><var var="i18n::translate('Husband')" />  </Text>
+						<Text color="$tcolor" style="text"><var var="WT_I18N::translate('Husband')" />  </Text>
 						<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 						<if condition="$sources==1">
 							<!-- print level 1 sources -->
@@ -174,7 +174,7 @@
 					<if condition="$blanks==1 or @BIRT:DATE!='' or @BIRT:PLAC!=''">
 						<!-- print Birth -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Birth')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Birth')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="BIRT:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BIRT:SOUR">
@@ -198,7 +198,7 @@
 					<if condition="$blanks==1 or @CHR:DATE!='' or @CHR:PLAC!=''">
 						<!-- print Christening -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Christening')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Christening')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="CHR:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="CHR:SOUR">
@@ -244,10 +244,10 @@
 							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<Text color="$tcolor" style="text">
 									<if condition="@desc=='Y'">
-										<var var="i18n::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
+										<var var="WT_I18N::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 									<if condition="@desc=='N'">
-										<var var="i18n::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
+										<var var="WT_I18N::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 									<if condition="@desc!='Y' and @desc!='N'">
 										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
@@ -267,7 +267,7 @@
 					<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 						<!-- print Death -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Death')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Death')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="DEAT:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="DEAT:SOUR">
@@ -329,7 +329,7 @@
 						</if>
 						<!-- Now for the real BURI information -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Burial')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Burial')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="BURI:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BURI:SOUR">
@@ -355,7 +355,7 @@
 						<if condition="$blanks==1 or @MARR:DATE!='' or @MARR:PLAC!=''">
 							<!-- print Marriage -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('Marriage')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Marriage')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="MARR:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="MARR:SOUR">
@@ -401,10 +401,10 @@
 								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 									<Text color="$tcolor" style="text">
 										<if condition="@desc=='Y'">
-											<var var="i18n::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+											<var var="WT_I18N::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
 										</if>
 										<if condition="@desc=='N'">
-											<var var="i18n::translate('No')" />  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+											<var var="WT_I18N::translate('No')" />  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
 										</if>
 										<if condition="@desc!='Y' and @desc!='N'">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
@@ -425,14 +425,14 @@
 					<!-- print the father and mother of the main husband -->
 					<Gedcom id="@FAMC">
 						<TextBox bgcolor="$malebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Father')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Father')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@HUSB" /></Text>
 							<Gedcom id="@HUSB">
 								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 							</Gedcom>
 						</TextBox>
 						<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Mother')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Mother')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@WIFE" /></Text>
 							<Gedcom id="@WIFE">
 								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
@@ -443,7 +443,7 @@
 					<if condition="$notes==1">
 						<RepeatTag tag="NOTE">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$width1" newline="1">
-								<Text color="$tcolor" style="name"><var var="i18n::translate('Note')" />  </Text>
+								<Text color="$tcolor" style="name"><var var="WT_I18N::translate('Note')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="NOTE" /></Text>
 							</TextBox>
 						</RepeatTag>
@@ -456,7 +456,7 @@
 				<Gedcom id="@WIFE">
 					<!-- print the name and sources -->
 					<TextBox bgcolor="$femalebox_bgcolor" border="1" width="$width" newline="1">
-						<Text color="$tcolor" style="text"><var var="i18n::translate('Wife')" />  </Text>
+						<Text color="$tcolor" style="text"><var var="WT_I18N::translate('Wife')" />  </Text>
 						<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 						<if condition="$sources==1">
 							<!-- print level 1 sources -->
@@ -491,7 +491,7 @@
 					<if condition="$blanks==1 or @BIRT:DATE!='' or @BIRT:PLAC!=''">
 						<!-- print Birth -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Birth')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Birth')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="BIRT:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BIRT:SOUR">
@@ -515,7 +515,7 @@
 					<if condition="$blanks==1 or @CHR:DATE!='' or @CHR:PLAC!=''">
 						<!-- print Christening -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Christening')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Christening')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="CHR:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="CHR:SOUR">
@@ -561,10 +561,10 @@
 							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<Text color="$tcolor" style="text">
 									<if condition="@desc=='Y'">
-										<var var="i18n::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
+										<var var="WT_I18N::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 									<if condition="@desc=='N'">
-										<var var="i18n::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
+										<var var="WT_I18N::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 									<if condition="@desc!='Y' and @desc!='N'">
 										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
@@ -584,7 +584,7 @@
 					<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 						<!-- print Death -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Death')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Death')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="DEAT:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="DEAT:SOUR">
@@ -646,7 +646,7 @@
 						</if>
 						<!-- Now for the real BURI information -->
 						<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Burial')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Burial')" />  </Text>
 							<Text color="$tcolor" style="text"><GedcomValue tag="BURI:DATE" /> </Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BURI:SOUR">
@@ -671,14 +671,14 @@
 					<!-- print the wife's parents -->
 					<Gedcom id="@FAMC">
 						<TextBox bgcolor="$malebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Father')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Father')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@HUSB" /></Text>
 							<Gedcom id="@HUSB">
 								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
 							</Gedcom>
 						</TextBox>
 						<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-							<Text color="$tcolor" style="fact"><var var="i18n::translate('Mother')" />  </Text>
+							<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Mother')" />  </Text>
 							<Text color="$tcolor" style="name"><GetPersonName id="@WIFE" /></Text>
 							<Gedcom id="@WIFE">
 								<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
@@ -690,7 +690,7 @@
 					<if condition="$notes==1">
 						<RepeatTag tag="NOTE">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$width1" newline="1">
-								<Text color="$tcolor" style="name"><var var="i18n::translate('Note')" />  </Text>
+								<Text color="$tcolor" style="name"><var var="WT_I18N::translate('Note')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="NOTE" /></Text>
 							</TextBox>
 						</RepeatTag>
@@ -702,7 +702,7 @@
 				<!-- print the children box in gray or color -->
 				<TextBox border="1" width="$width" newline="1" bgcolor="$sectionbox_bgcolor">
 					<Text color="$tcolor" style="text">
-						<var var="i18n::translate('Children')" />  <var var="i18n::translate('List each child in order of birth.')" />
+						<var var="WT_I18N::translate('Children')" />  <var var="WT_I18N::translate('List each child in order of birth.')" />
 					</Text>
 				</TextBox>
 
@@ -712,7 +712,7 @@
 						<!-- Print the male child's name -->
 						<if condition="@SEX=='M'">
 							<TextBox bgcolor="$malebox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<Text color="$tcolor" style="text"><var var="i18n::translate('Son')"/>  </Text>
+								<Text color="$tcolor" style="text"><var var="WT_I18N::translate('Son')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 								<if condition="$sources==1">
 									<!-- print level 1 sources -->
@@ -747,7 +747,7 @@
 						<!-- Print the female child's name -->
 						<if condition="@SEX=='F'">
 							<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<Text color="$tcolor" style="text"><var var="i18n::translate('Daughter')"/>  </Text>
+								<Text color="$tcolor" style="text"><var var="WT_I18N::translate('Daughter')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 								<if condition="$sources==1">
 									<!-- print level 1 sources -->
@@ -782,7 +782,7 @@
 						<!-- Print the unknown gender child's name -->
 						<if condition="(@SEX=='U') or (@SEX=='')">
 							<TextBox bgcolor="$unknowngenderbox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<Text color="$tcolor" style="text"><var var="i18n::translate('Gender')"/> <var var="i18n::translate_c('unknown gender', 'Unknown')"/>  </Text>
+								<Text color="$tcolor" style="text"><var var="WT_I18N::translate('Gender')"/> <var var="WT_I18N::translate_c('unknown gender', 'Unknown')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 								<if condition="$sources==1">
 									<!-- print level 1 sources -->
@@ -818,7 +818,7 @@
 						<if condition="$blanks==1 or @BIRT:DATE!='' or @BIRT:PLAC!=''">
 							<!-- print Birth -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('Birth')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Birth')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="BIRT:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="BIRT:SOUR">
@@ -842,7 +842,7 @@
 						<if condition="$blanks==1 or @CHR:DATE!='' or @CHR:PLAC!=''">
 							<!-- print Christening -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('Christening')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Christening')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="CHR:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="CHR:SOUR">
@@ -888,10 +888,10 @@
 								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 									<Text color="$tcolor" style="text">
 										<if condition="@desc=='Y'">
-											<var var="i18n::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
+											<var var="WT_I18N::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
 										</if>
 										<if condition="@desc=='N'">
-											<var var="i18n::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
+											<var var="WT_I18N::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
 										</if>
 										<if condition="@desc!='Y' and @desc!='N'">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
@@ -911,7 +911,7 @@
 						<if condition="$blanks==1 or @DEAT:DATE!='' or @DEAT:PLAC!=''">
 							<!-- print Death -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('Death')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Death')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="DEAT:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="DEAT:SOUR">
@@ -973,7 +973,7 @@
 							</if>
 							<!-- Now for the real BURI information -->
 							<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$dwidth">
-								<Text color="$tcolor" style="fact"><var var="i18n::translate('Burial')" />  </Text>
+								<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Burial')" />  </Text>
 								<Text color="$tcolor" style="text"><GedcomValue tag="BURI:DATE" /> </Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="BURI:SOUR">
@@ -1002,7 +1002,7 @@
 							<Gedcom id="@FAMS">
 								<if condition="$spid==@HUSB">
 									<TextBox bgcolor="$femalebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-										<Text color="$tcolor" style="fact"><var var="i18n::translate('Wife')" />  </Text>
+										<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Wife')" />  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id="@WIFE" /></Text>
 										<Gedcom id="@WIFE">
 											<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
@@ -1011,7 +1011,7 @@
 								</if>
 								<if condition="$spid==@WIFE">
 									<TextBox bgcolor="$malebox_bgcolor" border="1" left="15" width="$width1" newline="1">
-										<Text color="$tcolor" style="fact"><var var="i18n::translate('Husband')" />  </Text>
+										<Text color="$tcolor" style="fact"><var var="WT_I18N::translate('Husband')" />  </Text>
 										<Text color="$tcolor" style="name"><GetPersonName id="@HUSB" /></Text>
 										<Gedcom id="@HUSB">
 											<Text color="$tcolor" style="text"> (<varLetter var="BIRT" /> <GedcomValue tag="BIRT:DATE"/><Gedcom id="DEAT"> - <varLetter var="DEAT" /> <GedcomValue tag="DEAT:DATE"/></Gedcom>)</Text>
@@ -1025,7 +1025,7 @@
 						<if condition="$notes==1">
 							<RepeatTag tag="NOTE">
 								<TextBox bgcolor="$factbox_bgcolor" border="1" left="15" width="$width1" newline="1">
-									<Text color="$tcolor" style="name"><var var="i18n::translate('Note')" />  </Text>
+									<Text color="$tcolor" style="name"><var var="WT_I18N::translate('Note')" />  </Text>
 									<Text color="$tcolor" style="text"><GedcomValue tag="NOTE" /></Text>
 								</TextBox>
 							</RepeatTag>
@@ -1042,7 +1042,7 @@
 			<if condition="$source_exist==1">
 				<NewPage />
 				<TextBox newline="1" width="$width">
-					<Text style="pageheader"><br /><var var="i18n::translate('Sources')" /><br /><br /></Text>
+					<Text style="pageheader"><br /><var var="WT_I18N::translate('Sources')" /><br /><br /></Text>
 					<FootnoteTexts />
 				</TextBox>
 			</if>

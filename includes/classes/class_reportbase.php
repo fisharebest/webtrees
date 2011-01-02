@@ -2448,7 +2448,7 @@ function varSHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array(translate_fact($tfact), $desc), $var);
-		if (substr($var, 0, 15) == 'WT_I18N::translate' || substr($var, 0, 14)=='translate_fact') {
+		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 14)=='translate_fact') {
 			eval("\$var=$var;");
 		}
 	}
@@ -2691,7 +2691,7 @@ function SetVarSHandler($attrs) {
 		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
 		$i++;
 	}
-	if (substr($value, 0, 15) == 'WT_I18N::translate' || substr($value, 0, 14)=='translate_fact') {
+	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($value, 0, 14)=='translate_fact') {
 		eval("\$value = $value;");
 	}
 	// Arithmetic functions

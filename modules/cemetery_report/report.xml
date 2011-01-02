@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 <!-- $Id$ -->
-	<Title><var var="i18n::translate('Cemetery Report')" /></Title>
+	<Title><var var="WT_I18N::translate('Cemetery Report')" /></Title>
 	<Description>Prints a list of individuals burial places matching specific cemetery criteria</Description>
-	<Input name="deathplace" lookup="PLAC" type="text"><var var="i18n::translate('Burial Place contains')" /> </Input>
-	<Input name="sortby" type="select" default="NAME" options="none=>i18n::translate('None')|ID=>i18n::translate('ID number')|NAME=>i18n::translate('Name')|DEAT:DATE=>i18n::translate('Date of death')"><var var="i18n::translate('Sort by')" /></Input>
-	<Input name="adlist" type="select" default="none" options="none=>i18n::translate('None')|_MARNM=>translate_fact('_MARNM')|HUSB=>i18n::translate('Husband')"><var var="i18n::translate('Name List')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>i18n::translate_c('paper size','Letter')|A3=>i18n::translate_c('paper size', 'A3')|A4=>i18n::translate_c('paper size','A4')|legal=>i18n::translate_c('paper size','Legal')"><var var="i18n::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>i18n::translate_c('font name', 'Arial')|dejavusans=>i18n::translate_c('font name', 'DejaVu')|helvetica=>i18n::translate_c('font name', 'Helvetica')"><var var="i18n::translate('Font')"/></Input>
+	<Input name="deathplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Burial Place contains')" /> </Input>
+	<Input name="sortby" type="select" default="NAME" options="none=>WT_I18N::translate('None')|ID=>WT_I18N::translate('ID number')|NAME=>WT_I18N::translate('Name')|DEAT:DATE=>WT_I18N::translate('Date of death')"><var var="WT_I18N::translate('Sort by')" /></Input>
+	<Input name="adlist" type="select" default="none" options="none=>WT_I18N::translate('None')|_MARNM=>translate_fact('_MARNM')|HUSB=>WT_I18N::translate('Husband')"><var var="WT_I18N::translate('Name List')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="16" style="b" />
@@ -30,13 +30,13 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="i18n::translate('Cemetery Report')" /></Cell>
-			<Cell align="rightrtl" newline="1" style="pagenum"><var var="i18n::translate('Page')" /> <PageNum /> <var var="i18n::translate('of')" /> <TotalPages /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Cemetery Report')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 
 			<SetVar name="fill" value="" />
 			<if condition="($sortby=='NAME') or ($sortby=='ID')"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$namewidth">
-				<Text style="label"><var var="i18n::translate('Name')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Name')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
@@ -49,17 +49,17 @@
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BURI'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$cemewidth">
-				<Text style="label"><var var="i18n::translate('Cemetery')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Cemetery')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='PLAC'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$placewidth">
-				<Text style="label"><var var="i18n::translate('Place')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Place')" /></Text>
 			</TextBox>
 
 			<TextBox border="1" newline="1">
-				<Text style="label"><var var="i18n::translate('Note')" /></Text>
+				<Text style="label"><var var="WT_I18N::translate('Note')" /></Text>
 			</TextBox>
 		</Header>
 		<Body>
@@ -83,7 +83,7 @@
 				<Cell style="text" width="$placewidth"><GedcomValue tag="BURI:PLAC" /></Cell>
 				<Cell newline="1" style="text"><GedcomValue tag="BURI:NOTE" /></Cell>
 			</List>
-			<Cell align="rightrtl" newline="1" style="label"><br /><var var="i18n::translate('Total individuals')" />: <ListTotal /></Cell>
+			<Cell align="rightrtl" newline="1" style="label"><br /><var var="WT_I18N::translate('Total individuals')" />: <ListTotal /></Cell>
 		</Body>
 		<Footer>
 			<Cell align="rightrtl" newline="1" style="date"><Now /></Cell>

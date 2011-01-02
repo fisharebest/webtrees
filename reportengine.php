@@ -285,7 +285,7 @@ elseif ($action=="setup") {
 						foreach ($options as $indexval => $option) {
 							$opt = explode('=>', $option);
 							list($value, $display)=$opt;
-							if (substr($display, 0, 15)=='WT_I18N::translate' || substr($display, 0, 14)=='translate_fact') {
+							if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 14)=='translate_fact') {
 								eval("\$display=$display;");
 							}
 							echo "\t<option value=\"", htmlspecialchars($value), "\"";
