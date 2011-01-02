@@ -3,7 +3,7 @@
  * UI for online updating of the GEDCOM config file.
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -728,7 +728,7 @@ print_header(WT_I18N::translate('Configure family tree'));
 			foreach ($rows as $row) {
 				echo '<tr><td class="optionbox" width="*">';
 				if ($row->xref) {
-					$record=GedcomRecord::getInstance($row->xref);
+					$record=WT_GedcomRecord::getInstance($row->xref);
 					if ($record) {
 						$name=$record->getFullName();
 					} else {
