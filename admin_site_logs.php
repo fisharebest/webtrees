@@ -186,7 +186,7 @@ echo WT_JS_START;
 			},
 			"bJQueryUI": true,
 			"bAutoWidth":false,
-			"aaSorting": [[ 1, "desc" ]],
+			"aaSorting": [[ 0, "desc" ]],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers",
 		});
