@@ -357,13 +357,203 @@ elseif ($action=="run") {
 	switch ($output) {
 		case "HTML":
 			header('Content-type: text/html; charset=UTF-8');
-			require_once WT_ROOT."includes/classes/class_reporthtml.php";
+			$wt_report = new WT_Report_HTML();
+			$ReportRoot = $wt_report;
 			break;
 		case "PDF":
 		default:
-			require_once WT_ROOT."includes/classes/class_reportpdf.php";
+			$wt_report = new WT_Report_PDF();
+			$ReportRoot = $wt_report;
 			break;
 	}
+
+	$ascii_langs = array("en", "da", "nl", "fr", "he", "hu", "de", "nn", "es");
+
+	//-- setup special characters array to force embedded fonts
+	$SpecialOrds = $RTLOrd;
+	for ($i=195; $i<215; $i++) $SpecialOrds[] = $i;
+
+	if (!isset($embed_fonts)) {
+		if (in_array(WT_LOCALE, $ascii_langs)) {
+			$embed_fonts = false;
+		} else {
+			$embed_fonts = true;
+		}
+	}
+
+	/**
+	 * element handlers array
+	 *
+	 * Converts XML element names into functions
+	 * @global array $elementHandler
+	 */
+	$elementHandler = array();
+	$elementHandler["AgeAtDeath"]["start"]       = "AgeAtDeathSHandler";
+	$elementHandler["br"]["start"]               = "brSHandler";
+	$elementHandler["Body"]["start"]             = "BodySHandler";
+	$elementHandler["Cell"]["end"]               = "CellEHandler";
+	$elementHandler["Cell"]["start"]             = "CellSHandler";
+	$elementHandler["Description"]["end"]        = "DescriptionEHandler";
+	$elementHandler["Description"]["start"]      = "DescriptionSHandler";
+	$elementHandler["Doc"]["end"]                = "DocEHandler";
+	$elementHandler["Doc"]["start"]              = "DocSHandler";
+	$elementHandler["Report"]["end"]             = "";
+	$elementHandler["Report"]["start"]           = "";
+	$elementHandler["Facts"]["end"]              = "FactsEHandler";
+	$elementHandler["Facts"]["start"]            = "FactsSHandler";
+	$elementHandler["Footer"]["start"]           = "FooterSHandler";
+	$elementHandler["Footnote"]["end"]           = "FootnoteEHandler";
+	$elementHandler["Footnote"]["start"]         = "FootnoteSHandler";
+	$elementHandler["FootnoteTexts"]["start"]    = "FootnoteTextsSHandler";
+	$elementHandler["Gedcom"]["end"]             = "GedcomEHandler";
+	$elementHandler["Gedcom"]["start"]           = "GedcomSHandler";
+	$elementHandler["GedcomValue"]["start"]      = "GedcomValueSHandler";
+	$elementHandler["Generation"]["start"]       = "GenerationSHandler";
+	$elementHandler["GetPersonName"]["start"]    = "GetPersonNameSHandler";
+	$elementHandler["Header"]["start"]           = "HeaderSHandler";
+	$elementHandler["HighlightedImage"]["start"] = "HighlightedImageSHandler";
+	$elementHandler["if"]["end"]                 = "ifEHandler";
+	$elementHandler["if"]["start"]               = "ifSHandler";
+	$elementHandler["Image"]["start"]            = "ImageSHandler";
+	$elementHandler["Input"]["end"]              = "";
+	$elementHandler["Input"]["start"]            = "";
+	$elementHandler["Line"]["start"]             = "LineSHandler";
+	$elementHandler["List"]["end"]               = "ListEHandler";
+	$elementHandler["List"]["start"]             = "ListSHandler";
+	$elementHandler["ListTotal"]["start"]        = "ListTotalSHandler";
+	$elementHandler["NewPage"]["start"]          = "NewPageSHandler";
+	$elementHandler["Now"]["start"]              = "NowSHandler";
+	$elementHandler["PageHeader"]["end"]         = "PageHeaderEHandler";
+	$elementHandler["PageHeader"]["start"]       = "PageHeaderSHandler";
+	$elementHandler["PageNum"]["start"]          = "PageNumSHandler";
+	$elementHandler["Relatives"]["end"]          = "RelativesEHandler";
+	$elementHandler["Relatives"]["start"]        = "RelativesSHandler";
+	$elementHandler["RepeatTag"]["end"]          = "RepeatTagEHandler";
+	$elementHandler["RepeatTag"]["start"]        = "RepeatTagSHandler";
+	$elementHandler["SetVar"]["start"]           = "SetVarSHandler";
+	$elementHandler["Style"]["start"]            = "StyleSHandler";
+	$elementHandler["Text"]["end"]               = "TextEHandler";
+	$elementHandler["Text"]["start"]             = "TextSHandler";
+	$elementHandler["TextBox"]["end"]            = "TextBoxEHandler";
+	$elementHandler["TextBox"]["start"]          = "TextBoxSHandler";
+	$elementHandler["Title"]["end"]              = "TitleEHandler";
+	$elementHandler["Title"]["start"]            = "TitleSHandler";
+	$elementHandler["TotalPages"]["start"]       = "TotalPagesSHandler";
+	$elementHandler["var"]["start"]              = "varSHandler";
+	$elementHandler["varLetter"]["start"]        = "varLetterSHandler";
+	$elementHandler["sp"]["start"]               = "spSHandler";
+
+	/**
+	* A new object of the currently used element class
+	*
+	* @global object $currentElement
+	*/
+	$currentElement = new Element();
+
+	/**
+	 * Should character data be printed
+	 *
+	 * This variable is turned on or off by the element handlers to tell whether the inner character
+	 * Data should be printed
+	 * @global boolean $printData
+	 */
+	$printData = false;
+
+	/**
+	* Title collector. Mark it if it has already been used
+	*
+	* @global boolean $reportTitle
+	*/
+	$reportTitle = false;
+
+	/**
+	* Description collector. Mark it if it has already been used
+	*
+	* @global boolean $reportDescription
+	*/
+	$reportDescription = false;
+
+	/**
+	 * Print data stack
+	 *
+	 * As the XML is being processed there will be times when we need to turn on and off the
+	 * <var>$printData</var> variable as we encounter entinties in the XML.  The stack allows us to
+	 * keep track of when to turn <var>$printData</var> on and off.
+	 * @global array $printDataStack
+	 */
+	$printDataStack = array();
+
+	/**
+	* @todo add info
+	* @global array $wt_reportStack
+	*/
+	$wt_reportStack = array();
+
+	/**
+	* @todo add info
+	* @global array $gedrecStack
+	*/
+	$gedrecStack = array();
+
+	/**
+	* @todo add info
+	* @global array $repeatsStack
+	*/
+	$repeatsStack = array();
+
+	/**
+	* @todo add info
+	* @global array $parserStack
+	*/
+	$parserStack = array();
+
+	/**
+	* @todo add info
+	* @global array $repeats
+	*/
+	$repeats = array();
+
+	/**
+	* @todo add info
+	* @global string $gedrec
+	*/
+	$gedrec = "";
+
+	/**
+	* @todo add info
+	* @global ???? $repeatBytes
+	*/
+	$repeatBytes = 0;
+
+	/**
+	* @todo add info
+	* @global resource $parser
+	*/
+	$parser = "";
+
+	/**
+	* @todo add info
+	* @global int $processRepeats
+	*/
+	$processRepeats = 0;
+
+	/**
+	* @todo add info
+	* @global ???? $processIfs
+	*/
+	$processIfs = 0;
+
+	/**
+	* @todo add info
+	* @global ???? $processGedcoms
+	*/
+	$processGedcoms = 0;
+
+	/**
+	 * Wether or not to print footnote
+	 * true = print, false = don't print
+	 */
+	$processFootnote = true;
 
 	//-- start the sax parser
 	$xml_parser = xml_parser_create();

@@ -36,12 +36,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-/**
-* @todo add info
-*/
-define('WT_CLASS_REPORTPDF_PHP', '');
-
-require_once WT_ROOT."includes/classes/class_reportbase.php";
 require_once WT_ROOT."library/tcpdf/tcpdf.php";
 
 /**
@@ -50,7 +44,7 @@ require_once WT_ROOT."library/tcpdf/tcpdf.php";
 * @package webtrees
 * @subpackage Reports
 */
-class ReportBasePDF extends ReportBase {
+class WT_Report_PDF extends WT_Report_Base {
 	/**
 	* PDF compression - Zlib extension is required
 	* @var boolean const
@@ -73,7 +67,7 @@ class ReportBasePDF extends ReportBase {
 	public $pdf;
 
 	/**
-	* PDF Setup - ReportBasePDF
+	* PDF Setup - WT_Report_PDF
 	*/
 	function setup() {
 		parent::setup();
@@ -98,7 +92,7 @@ class ReportBasePDF extends ReportBase {
 			$appversion .= " ".WT_VERSION_TEXT;
 		}
 		$this->pdf->SetCreator($appversion." (".parent::pgv_url.")");
-		// Not implemented yet - ReportBase::setup()
+		// Not implemented yet - WT_Report_Base::setup()
 		//$this->pdf->SetAuthor($this->rauthor);
 		$this->pdf->SetTitle($this->title);
 		$this->pdf->SetSubject($this->rsubject);
@@ -116,7 +110,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Add an element - ReportBasePDF
+	* Add an element - WT_Report_PDF
 	* @param object|string &$element Object or string
 	*/
 	function addElement($element) {
@@ -139,21 +133,21 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Clear the Header - ReportBasePDF
+	* Clear the Header - WT_Report_PDF
 	*/
 	function clearHeader() {
 		$this->pdf->clearHeader();
 	}
 
 	/**
-	* Clear the Page Header - ReportBasePDF
+	* Clear the Page Header - WT_Report_PDF
 	*/
 	function clearPageHeader() {
 		$this->pdf->clearPageHeader();
 	}
 
 	/**
-	* Create a new Cell object - ReportBasePDF
+	* Create a new Cell object - WT_Report_PDF
 	*
 	* @param int $width cell width (expressed in points)
 	* @param int $height cell height (expressed in points)
@@ -176,7 +170,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Create a new TextBox object - ReportBasePDF
+	* Create a new TextBox object - WT_Report_PDF
 	*
 	* @param float $width Text box width
 	* @param float $height Text box height
@@ -197,7 +191,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Create a new Text object- ReportBasePDF
+	* Create a new Text object- WT_Report_PDF
 	*
 	* @param string $style The name of the text style
 	* @param string $color HTML color code
@@ -208,7 +202,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Create a new Footnote object - ReportBasePDF
+	* Create a new Footnote object - WT_Report_PDF
 	* @param string $style Style name
 	* @return FootnotePDF
 	*/
@@ -217,7 +211,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Create a new Page Header object - ReportBasePDF
+	* Create a new Page Header object - WT_Report_PDF
 	* @return PageHeaderPDF
 	*/
 	function createPageHeader() {
@@ -225,7 +219,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Create a new image object - ReportBasePDF
+	* Create a new image object - WT_Report_PDF
 	* @param string $file File name
 	* @param mixed $x
 	* @param mixed $y
@@ -240,7 +234,7 @@ class ReportBasePDF extends ReportBase {
 	}
 
 	/**
-	* Create a new line object - ReportBasePDF
+	* Create a new line object - WT_Report_PDF
 	* @param mixed $x1
 	* @param mixed $y1
 	* @param mixed $x2
@@ -606,14 +600,6 @@ class PDF extends TCPDF {
 	}
 
 } //-- END PDF
-
-/**
-* Report Base object of ReportBase class inherited by ReportBasePDF
-* @global ReportBasePDF $wt_report
-*/
-$wt_report = new ReportBasePDF();
-
-$ReportRoot = $wt_report;
 
 /**
 * Cell element - PDF

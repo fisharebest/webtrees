@@ -34,17 +34,13 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_CLASS_REPORTHTML_PHP', '');
-
-require_once WT_ROOT."includes/classes/class_reportbase.php";
-
 /**
 * Main WT Report Class for HTML
 *
 * @package webtrees
 * @subpackage Reports
 */
-class ReportBaseHTML extends ReportBase {
+class WT_Report_HTML extends WT_Report_Base {
 	/**
 	* Cell padding
 	* @var int
@@ -121,7 +117,7 @@ class ReportBaseHTML extends ReportBase {
 
 
 	/**
-	* HTML Setup - ReportBaseHTML
+	* HTML Setup - WT_Report_HTML
 	*/
 	function setup() {
 		parent::setup();
@@ -275,7 +271,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Create a new Cell object - ReportBaseHTML
+	* Create a new Cell object - WT_Report_HTML
 	*
 	* @param int $width cell width (expressed in points)
 	* @param int $height cell height (expressed in points)
@@ -326,7 +322,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Clear the Header - ReportBaseHTML
+	* Clear the Header - WT_Report_HTML
 	*/
 	function clearHeader() {
 		$this->headerElements = array();
@@ -339,7 +335,7 @@ class ReportBaseHTML extends ReportBase {
 
 
 	/**
-	* Update the Page Number and set a new Y if max Y is larger - ReportBaseHTML
+	* Update the Page Number and set a new Y if max Y is larger - WT_Report_HTML
 	* @todo add page break - <p style='page-break-before:always' />
 	*/
 	function AddPage() {
@@ -359,7 +355,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Uppdate max Y to keep track it incase of a pagebreak - ReportBaseHTML
+	* Uppdate max Y to keep track it incase of a pagebreak - WT_Report_HTML
 	* @param float $y
 	*/
 	function addMaxY($y) {
@@ -374,7 +370,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Checks the Footnote and numbers them - ReportBaseHTML
+	* Checks the Footnote and numbers them - WT_Report_HTML
 	* @param object &$footnote
 	* @return boolen false if not numbered before | object if already numbered
 	*/
@@ -399,14 +395,14 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Clear the Page Header - ReportBaseHTML
+	* Clear the Page Header - WT_Report_HTML
 	*/
 	function clearPageHeader() {
 		$this->pageHeaderElements = array();
 	}
 
 	/**
-	* Count the number of lines - ReportBaseHTML
+	* Count the number of lines - WT_Report_HTML
 	* @param string &$str
 	* @return int Number of lines. 0 if empty line
 	*/
@@ -438,7 +434,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Get the maximum width from current position to the margin - ReportBaseHTML
+	* Get the maximum width from current position to the margin - WT_Report_HTML
 	* @return float
 	*/
 	function getRemainingWidth() {
@@ -455,7 +451,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Get a text height in points - ReportBaseHTML
+	* Get a text height in points - WT_Report_HTML
 	* @param &$str
 	* @return int
 	*/
@@ -467,7 +463,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Get the current X position - ReportBaseHTML
+	* Get the current X position - WT_Report_HTML
 	* @return float
 	*/
 	function GetX() {
@@ -475,7 +471,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Get the current Y position - ReportBaseHTML
+	* Get the current Y position - WT_Report_HTML
 	* @return float
 	*/
 	function GetY() {
@@ -483,7 +479,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Get the current page number - ReportBaseHTML
+	* Get the current page number - WT_Report_HTML
 	* @return int
 	*/
 	function PageNo() {
@@ -495,7 +491,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Set the X position - ReportBaseHTML
+	* Set the X position - WT_Report_HTML
 	* @param float $x
 	*/
 	function SetX($x) {
@@ -503,7 +499,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Set the Y position - ReportBaseHTML
+	* Set the Y position - WT_Report_HTML
 	* Also updates Max Y position
 	* @param float $y
 	*/
@@ -515,7 +511,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Set the X and Y position - ReportBaseHTML
+	* Set the X and Y position - WT_Report_HTML
 	* Also updates Max Y position
 	* @param float $x
 	* @param float $y
@@ -527,7 +523,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Wrap text - ReportBaseHTML
+	* Wrap text - WT_Report_HTML
 	* @param string &$str Text to wrap
 	* @param int $width Width in points the text has to fit into
 	* @return string
@@ -554,7 +550,7 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 	/**
-	* Write text - ReportBaseHTML
+	* Write text - WT_Report_HTML
 	* @param string $text Text to print
 	* @param string $color HTML RGB color code (Ex: #001122)
 	*/
@@ -578,17 +574,6 @@ class ReportBaseHTML extends ReportBase {
 	}
 
 } //-- end Report
-
-
-/**
-* Report Base class of ReportBaseHTML
-*
-* @global class $wt_report
-* @ignore
-*/
-$wt_report = new ReportBaseHTML();
-
-$ReportRoot = $wt_report;
 
 
 /**
@@ -622,7 +607,7 @@ class CellHTML extends Cell {
 
 	/**
 	* HTML Cell renderer
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	*/
 	function render(&$html) {
 
@@ -1138,7 +1123,7 @@ class TextHTML extends Text {
 
 	/**
 	* @todo temporary fix
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	* @param int $curx
 	* @param boolean $attrib Is is called from a different element?
 	*/
@@ -1190,7 +1175,7 @@ class TextHTML extends Text {
 	* Returns the height in points of the text element
 	*
 	* The height is already calculated in getWidth()
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	* @return float 0
 	*/
 	function getHeight(&$html) {
@@ -1205,7 +1190,7 @@ class TextHTML extends Text {
 
 	/**
 	* Get the width of text and wrap it too
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	* @return array
 	*/
 	function getWidth(&$html) {
@@ -1301,7 +1286,7 @@ class FootnoteHTML extends Footnote {
 
 	/**
 	* HTML Footnotes number renderer
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	*/
 	function render(&$html) {
 		$html->setCurrentStyle("footnotenum");
@@ -1317,7 +1302,7 @@ class FootnoteHTML extends Footnote {
 	* Write the Footnote text
 	* Uses style name "footnote" by default
 	*
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	*/
 	function renderFootnote(&$html) {
 
@@ -1338,7 +1323,7 @@ class FootnoteHTML extends Footnote {
 	/**
 	* Calculates the Footnotes height
 	*
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	* @param $cellWidth The width of the cell to use it for text wraping
 	* @return Footnote height in points
 	*/
@@ -1360,7 +1345,7 @@ class FootnoteHTML extends Footnote {
 	* Get the width of text
 	* Breaks up a text into lines if needed
 	*
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	* @return array
 	*/
 	function getWidth(&$html) {
@@ -1479,7 +1464,7 @@ class ImageHTML extends Image {
 
 	/**
 	* Image renderer
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	*/
 	function render(&$html) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
@@ -1532,7 +1517,7 @@ class ImageHTML extends Image {
 	* Get the image height
 	* This would be called from the TextBox only for multiple images
 	* so we add a bit bottom space between the images
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	* @return float
 	*/
 	function getHeight(&$html) {
@@ -1562,7 +1547,7 @@ class LineHTML extends Line {
 
 	/**
 	* HTML line renderer
-	* @param ReportBaseHTML &$html
+	* @param WT_Report_HTML &$html
 	*/
 	function render(&$html) {
 		if ($this->x1==".") $this->x1=$html->GetX();
