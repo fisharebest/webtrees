@@ -44,6 +44,9 @@ if ($action == "phpinfo") {
 	$helpindex = "phpinfo_help";
 	print_header(WT_I18N::translate('PHP information'));
 
+// "Help for this page" link
+echo '<div id="page_help">', help_link('phpinfo'), '</div>';
+
 	echo '<div>';
 
 	ob_start();

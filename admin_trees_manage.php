@@ -157,6 +157,9 @@ $gedcoms=get_all_gedcoms();
 
 print_header(WT_I18N::translate('Manage family trees'));
 
+// "Help for this page" link
+echo '<div id="page_help">', help_link('gedcom_administration'), '</div>';
+
 // Process GET actions
 switch (safe_GET('action')) {
 case 'uploadform':

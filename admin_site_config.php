@@ -37,6 +37,9 @@ if (!WT_USER_IS_ADMIN) {
 
 print_header(WT_I18N::translate('Server configuration'));
 
+// "Help for this page" link
+echo '<div id="page_help">', help_link('help_editconfig.php'), '</div>';
+
 echo
 	// Display the config items inline, rather than using a form.
 	'<table class="site_config"><tr>',
