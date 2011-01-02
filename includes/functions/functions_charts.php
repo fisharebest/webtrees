@@ -73,18 +73,6 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 }
 
 /**
- * print family header
- *
- * @param string $famid family gedcom ID
- */
-function print_family_header($famid) {
-	$family=WT_Family::getInstance($famid);
-	if ($family) {
-		echo '<p class="name_head">', PrintReady($family->getFullName()), '</p>';
-	}
-}
-
-/**
  * print the parents table for a family
  *
  * @param string $famid family gedcom ID
@@ -115,7 +103,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		if (!empty($tempID)) echo "<a name=\"{$tempID}\"></a>";
 	}
 	if ($sosa != 0) {
-		print_family_header($famid);
+		echo '<p class="name_head">', $family->getFullName(), '</p>';
 	}
 	// -- get the new record and parents if in editing show changes mode
 	if (find_gedcom_record($famid, $ged_id) != find_gedcom_record($famid, $ged_id, WT_USER_CAN_EDIT)) {

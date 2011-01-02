@@ -80,7 +80,7 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 <table align="center" width="95%">
 	<tr>
 		<td>
-		<?php print_family_header($controller->famid); ?>
+			<p class="name_head"><?php echo $controller->family->getFullName(); ?></p>
 		</td>
 	</tr>
 </table>
