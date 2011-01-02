@@ -122,6 +122,7 @@ table#log_list   {width:100%}
 #log_list_filter {float:right;}
 #log_list_info {float:left;}
 #log_list_paginate {float:right;}
+#log_list th {min-width: 90px;}
 
 /* USER List */
 table#list   {width:100%}
