@@ -383,7 +383,7 @@ print_header(WT_I18N::translate('Configure family tree'));
 //-->
 </script>
 
-<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="editconfig_gedcom.php">
+	<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 
 <input type="hidden" name="action" value="update" />
 <?php
