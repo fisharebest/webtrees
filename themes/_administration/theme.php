@@ -50,6 +50,7 @@ $WT_IMAGES=array(
 	'zoomout'=>WT_THEME_DIR.'images/zoomout.gif',
 	'minus'=>WT_THEME_DIR.'images/minus.gif',
 	'plus'=>WT_THEME_DIR.'images/open.png',
+	'remove'=>WT_THEME_DIR.'images/delete.png',
 	'rarrow2'=>WT_THEME_DIR.'images/rarrow2.gif',
 	'larrow2'=>WT_THEME_DIR.'images/larrow2.gif',
 	'darrow2'=>WT_THEME_DIR.'images/darrow2.gif',

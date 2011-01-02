@@ -880,7 +880,7 @@ jQuery(document).ready(function() {
 		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		// Tell the user where he is
 		echo "<tr>";
-		echo "<td colspan=\"2\">";
+		echo "<td colspan=\"4\">";
 			echo WT_I18N::translate('Current directory');
 			echo ":&nbsp;&nbsp;&nbsp;";
 			if ($USE_MEDIA_FIREWALL) {
@@ -1012,14 +1012,14 @@ jQuery(document).ready(function() {
 						echo "<input type=\"hidden\" name=\"action\" value=\"\" />";
 						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
 						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\" />";
+						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\" /></td>";
 						if ($USE_MEDIA_FIREWALL) {
-							echo "<br /><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" />";
-							echo "<br /><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" />";
+							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" /></td>";
+							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" /></td>";
 						}
 
 						echo "</form>";
-					echo "</td>";
+			//	echo "</td>";
 					echo "<td class=\"$TEXT_DIRECTION\">";
 						echo "<a href=\"".WT_SCRIPT_NAME."?directory=".rawurlencode($directory.$dir)."/&amp;sortby={$sortby}&amp;level=".($level+1).$thumbget."\">";
 						if ($TEXT_DIRECTION=="rtl") echo getRLM();
