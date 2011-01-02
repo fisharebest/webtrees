@@ -915,7 +915,7 @@ case 'SUBN':
 	break;
 
 case 'SURN':
-	$john_doe=WT_I18N::translate('John /DOE/'); // Same text used in editgedcoms.php
+	$john_doe=WT_I18N::translate('John /DOE/'); // Same text used in admin_trees_manage.php
 	$fullname=str_replace('/', '', $john_doe);
 	list(,$surname)=explode('/', $john_doe);
 	$title=translate_fact('SURN');
