@@ -731,7 +731,7 @@ if (check_media_structure()) {
 		if ($TEXT_DIRECTION=="rtl") $classSuffix = "_rtl";
 
 		// main link displayed on page
-		$menu = new Menu();
+		$menu = new WT_Menu();
 
 		// GEDFact assistant Add Media Links =======================
 		if (file_exists('modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
