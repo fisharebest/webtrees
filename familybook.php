@@ -149,9 +149,7 @@ function print_person_pedigree($pid, $count) {
 	if ($count>=$generations) return;
 	$hheight = ($bhalfheight+3) * pow(2,($generations-$count-1));
 	foreach (WT_Person::getInstance($pid)->getChildFamilies() as $family) {
-		$famid=$family->getXref();
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
-		$parents = find_parents($famid);
 		$height="100%";
 		echo "<tr>";
 		if ($count<$generations-1) {
@@ -159,10 +157,10 @@ function print_person_pedigree($pid, $count) {
 			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 		}
 		echo "<td rowspan=\"2\">";
-		print_pedigree_person($parents["HUSB"]);
+		print_pedigree_person($family->getHusbId());
 		echo "</td>";
 		echo "<td rowspan=\"2\">";
-		print_person_pedigree($parents["HUSB"], $count+1);
+		print_person_pedigree($family->getHusbId(), $count+1);
 		echo "</td>";
 		echo "</tr><tr><td height=\"".$hheight."\"";
 		if ($count<$generations-1) {
@@ -174,10 +172,10 @@ function print_person_pedigree($pid, $count) {
 			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 		}
 		echo "<td rowspan=\"2\">";
-		print_pedigree_person($parents["WIFE"]);
+		print_pedigree_person($family->getWifeId());
 		echo "</td>";
 		echo "<td rowspan=\"2\">";
-		print_person_pedigree($parents["WIFE"], $count+1);
+		print_person_pedigree($family->getWifeId(), $count+1);
 		echo "</td>";
 		echo "</tr>";
 		if ($count<$generations-1) {
