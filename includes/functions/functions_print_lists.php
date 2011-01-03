@@ -159,7 +159,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		//-- Indi name(s)
 		$tdclass = "list_value_wrap";
 		if (!$person->isDead()) $tdclass .= " alive";
-		if (!$person->getChildFamilyIds()) $tdclass .= " patriarch";
+		if (!$person->getChildFamilies()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($person->getListName()), "\">";
 		list($surn, $givn)=explode(',', $person->getSortName());
 		// If we're showing search results, then the highlighted name is not
@@ -365,7 +365,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo "</td>";
 		//-- Roots or Leaves ?
 		echo "<td style=\"display:none\">";
-		if (!$person->getChildFamilyIds()) {
+		if (!$person->getChildFamilies()) {
 			echo "R"; // roots
 		} elseif (!$person->isDead() && $person->getNumberOfChildren()<1) {
 			echo "L"; // leaves
@@ -540,7 +540,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$n2=$husb->getSecondaryName();
 		$tdclass = "list_value_wrap";
 		if (!$husb->isDead()) $tdclass .= " alive";
-		if (!$husb->getChildFamilyIds()) $tdclass .= " patriarch";
+		if (!$husb->getChildFamilies()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($names[$n1]['list']), "\">";
 		echo "<a href=\"", $family->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
 		if ($tiny) echo $husb->getSexImage();
@@ -586,7 +586,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$n2=$wife->getSecondaryName();
 		$tdclass = "list_value_wrap";
 		if (!$wife->isDead()) $tdclass .= " alive";
-		if (!$wife->getChildFamilyIds()) $tdclass .= " patriarch";
+		if (!$wife->getChildFamilies()) $tdclass .= " patriarch";
 		echo "<td class=\"", $tdclass, "\" align=\"", get_align($names[$n1]['list']), "\">";
 		echo "<a href=\"", $family->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($names[$n1]['list']), "</a>";
 		if ($tiny) echo $wife->getSexImage();
@@ -720,7 +720,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		echo "</td>";
 		//-- Roots or Leaves
 		echo "<td style=\"display:none\">";
-		if (!$husb->getChildFamilyIds() && !$wife->getChildFamilyIds()) {
+		if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) {
 			echo "R"; // roots
 		} elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren()<1) {
 			echo "L"; // leaves
