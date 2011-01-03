@@ -171,54 +171,33 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			if ($record) {
 				$controller->id=$record->getXref();
 				$controller->type=$record->getType();
-				$clipping = array ();
-				$clipping['type'] = strtolower($record->getType());
-				$clipping['id'] = $add;
-				$clipping['gedcom'] = WT_GEDCOM;
-				$ret = $controller->add_clipping($clipping);
+				$ret = $controller->add_clipping($record);
 				if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
 				if ($ret) return $this->askAddOptions($record);
 			}
-		}
-		else if (!empty($add1)) {
+		} elseif (!empty($add1)) {
 			$record = WT_Person::getInstance($add1);
 			if ($record) {
 				$controller->id=$record->getXref();
 				$controller->type=strtolower($record->getType());
 				if ($others == 'parents') {
 					foreach ($record->getChildFamilies() as $family) {
-						$clipping = array ();
-						$clipping['type'] = "fam";
-						$clipping['id'] = $family->getXref();
-						if ($controller->add_clipping($clipping)) {
-							$controller->add_family_members($family->getXref());
-						}
+						$controller->add_clipping($family);
+						$controller->add_family_members($family);
 					}
-				} else
-				if ($others == 'ancestors') {
-					$controller->add_ancestors_to_cart($record->getXref(), $controller->level1);
-				} else
-				if ($others == 'ancestorsfamilies') {
-					$controller->add_ancestors_to_cart_families($record->getXref(), $controller->level2);
-				} else
-				if ($others == 'members') {
+				} elseif ($others == 'ancestors') {
+					$controller->add_ancestors_to_cart($record, $controller->level1);
+				} elseif ($others == 'ancestorsfamilies') {
+					$controller->add_ancestors_to_cart_families($record, $controller->level2);
+				} elseif ($others == 'members') {
 					foreach ($record->getSpouseFamilies() as $family) {
-						$clipping = array ();
-						$clipping['type'] = "fam";
-						$clipping['id'] = $family->getXref();
-						if ($controller->add_clipping($clipping)) {
-							$controller->add_family_members($family->getXref());
-						}
+						$controller->add_clipping($family);
+						$controller->add_family_members($family);
 					}
-				} else
-				if ($others == 'descendants') {
+				} elseif ($others == 'descendants') {
 					foreach ($record->getSpouseFamilies() as $family) {
-						$clipping = array ();
-						$clipping['type'] = "fam";
-						$clipping['id'] = $family->getXref();
-						if ($controller->add_clipping($clipping)) {
-							$controller->add_family_descendancy($family->getXref(), $controller->level3);
-						}
+						$controller->add_clipping($family);
+						$controller->add_family_descendancy($family, $controller->level3);
 					}
 				}
 			}

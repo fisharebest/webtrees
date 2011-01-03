@@ -93,9 +93,9 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
 		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $_SESSION['exportConvSlashes']);
 		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
-		$this->level1 = safe_GET('level1');
-		$this->level2 = safe_GET('level2');
-		$this->level3 = safe_GET('level3');
+		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
+		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
+		$this->level3 = safe_GET('level3', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$others = safe_GET('others');
 		$item = safe_GET('item');
 		if (!isset($cart)) $cart = $_SESSION['cart'];
@@ -121,85 +121,50 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		}
 
 		if ($this->action == 'add1') {
-			$clipping = array ();
-			$clipping['type'] = $this->type;
-			$clipping['id'] = $this->id;
-			$clipping['gedcom'] = $GEDCOM;
-			$ret = $this->add_clipping($clipping);
-			if ($ret) {
-				if ($this->type == 'sour') {
-					if ($others == 'linked') {
-						foreach (fetch_linked_indi($this->id, 'SOUR', WT_GED_ID) as $indi) {
-							if ($indi->canDisplayName()) {
-								$this->add_clipping(array('type'=>'indi', 'id'=>$indi->getXref()));
-							}
-						}
-						foreach (fetch_linked_fam($this->id, 'SOUR', WT_GED_ID) as $fam) {
-							if ($fam->canDisplayName()) {
-								$this->add_clipping(array('type'=>'fam', 'id'=>$fam->getXref()));
-							}
-						}
+			$this->add_clipping(WT_GedcomRecord::getInstance($this->id));
+			if ($this->type == 'sour') {
+				if ($others == 'linked') {
+					foreach (fetch_linked_indi($this->id, 'SOUR', WT_GED_ID) as $indi) {
+						$this->add_clipping($indi);
+					}
+					foreach (fetch_linked_fam($this->id, 'SOUR', WT_GED_ID) as $fam) {
+						$this->add_clipping($fam);
 					}
 				}
-				if ($this->type == 'fam') {
-					if ($others == 'parents') {
-						$parents = find_parents($this->id);
-						if (!empty ($parents["HUSB"])) {
-							$clipping = array ();
-							$clipping['type'] = "indi";
-							$clipping['id'] = $parents["HUSB"];
-							$ret = $this->add_clipping($clipping);
-						}
-						if (!empty ($parents["WIFE"])) {
-							$clipping = array ();
-							$clipping['type'] = "indi";
-							$clipping['id'] = $parents["WIFE"];
-							$ret = $this->add_clipping($clipping);
-						}
-					} else
-					if ($others == "members") {
-						$this->add_family_members($this->id);
-					} else
-					if ($others == "descendants") {
-						$this->add_family_descendancy($this->id);
+			}
+			if ($this->type == 'fam') {
+				if ($others == 'parents') {
+					$this->add_clipping($obj->getHusband());
+					$this->add_clipping($obj->getWife());
+				} else
+				if ($others == "members") {
+					$this->add_family_members(WT_Family::getInstance($this->id));
+				} else
+				if ($others == "descendants") {
+					$this->add_family_descendancy(WT_Family::getInstance($this->id));
+				}
+			} else
+			if ($this->type == 'indi') {
+				if ($others == 'parents') {
+					foreach (WT_Person::getInstance($this->id)->getChildFamilies() as $family) {
+						$this->add_family_members($family);
 					}
 				} else
-				if ($this->type == 'indi') {
-					if ($others == 'parents') {
-						foreach (WT_Person::getInstance($this->id)->getChildFamilies() as $family) {
-							$clipping = array ();
-							$clipping['type'] = "fam";
-							$clipping['id'] = $family->getXref();
-							if ($this->add_clipping($clipping)) {
-								$this->add_family_members($family->getXref());
-							}
-						}
-					} else
-					if ($others == 'ancestors') {
-						$this->add_ancestors_to_cart($this->id, $this->level1);
-					} else
-					if ($others == 'ancestorsfamilies') {
-						$this->add_ancestors_to_cart_families($this->id, $this->level2);
-					} else
-					if ($others == 'members') {
-						foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
-							$clipping = array ();
-							$clipping['type'] = "fam";
-							$clipping['id'] = $family->getXref();
-							if ($this->add_clipping($clipping)) {
-								$this->add_family_members($family->getXref());
-							}
-						}
-					} else
-					if ($others == 'descendants') {
-						foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
-							$clipping = array ();
-							$clipping['type'] = "fam";
-							$clipping['id'] = $family->getXref();
-							if ($this->add_clipping($clipping)) {
-								$this->add_family_descendancy($family->getXref(), $this->level3);
-							}
-						}
+				if ($others == 'ancestors') {
+					$this->add_ancestors_to_cart(WT_Person::getInstance($this->id), $this->level1);
+				} else
+				if ($others == 'ancestorsfamilies') {
+					$this->add_ancestors_to_cart_families(WT_Person::getInstance($this->id), $this->level2);
+				} else
+				if ($others == 'members') {
+					foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
+						$this->add_family_members($family);
+					}
+				} else
+				if ($others == 'descendants') {
+					foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
+						$this->add_clipping($family);
+						$this->add_family_descendancy($family, $this->level3);
 					}
 				}
 			}
@@ -427,8 +392,16 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	 */
 	function add_clipping($clipping) {
 		global $cart, $MULTI_MEDIA, $GEDCOM;
-		if (($clipping['id'] == false) || ($clipping['id'] == ""))
-		return false;
+
+		if (!$clipping || !$clipping->canDisplayName()) {
+			return;
+		}
+
+		$clipping=array(
+			'type'  =>strtolower($clipping->getType()),
+			'id'    =>$clipping->getXref(),
+			'gedcom'=>get_id_from_gedcom($clipping->getGedId())
+		);
 
 		if (!self::id_in_cart($clipping['id'])) {
 			$clipping['gedcom'] = $GEDCOM;
@@ -446,47 +419,23 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			$gedrec = find_gedcom_record($clipping['id'], WT_GED_ID);
 			$st = preg_match_all("/\d SOUR @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $st; $i++) {
-				if (canDisplayRecord(WT_GED_ID, find_source_record($match[$i][1], WT_GED_ID))) {
-					// add SOUR
-					$clipping = array ();
-					$clipping['type'] = "source";
-					$clipping['id'] = $match[$i][1];
-					$clipping['gedcom'] = $GEDCOM;
-					$this->add_clipping($clipping);
-					// add REPO
-					$sourec = find_gedcom_record($match[$i][1], WT_GED_ID);
-					$rt = preg_match_all("/\d REPO @(.*)@/", $sourec, $rmatch, PREG_SET_ORDER);
-					for ($j = 0; $j < $rt; $j++) {
-						if (canDisplayRecord(WT_GED_ID, find_other_record($rmatch[$j][1], WT_GED_ID))) {
-							$clipping = array ();
-							$clipping['type'] = "repository";
-							$clipping['id'] = $rmatch[$j][1];
-							$clipping['gedcom'] = $GEDCOM;
-							$this->add_clipping($clipping);
-						}
-					}
+				// add SOUR
+				$this->add_clipping(WT_Source::getInstance($match[$i][1]));
+				// add REPO
+				$sourec = find_gedcom_record($match[$i][1], WT_GED_ID);
+				$rt = preg_match_all("/\d REPO @(.*)@/", $sourec, $rmatch, PREG_SET_ORDER);
+				for ($j = 0; $j < $rt; $j++) {
+					$this->add_clipping(WT_Repository::getInstance($rmatch[$j][1]));
 				}
 			}
 			$nt = preg_match_all("/\d NOTE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $nt; $i++) {
-				if (canDisplayRecord(WT_GED_ID, find_other_record($match[$i][1], WT_GED_ID))) {
-					$clipping = array ();
-					$clipping['type'] = "note";
-					$clipping['id'] = $match[$i][1];
-					$clipping['gedcom'] = $GEDCOM;
-					$this->add_clipping($clipping);
-				}
+				$this->add_clipping(WT_Note::getInstance($match[$i][1]));
 			}
 			if ($MULTI_MEDIA) {
 				$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
 				for ($i = 0; $i < $nt; $i++) {
-					if (canDisplayRecord(WT_GED_ID, find_media_record($match[$i][1], WT_GED_ID))) {
-						$clipping = array ();
-						$clipping['type'] = "obje";
-						$clipping['id'] = $match[$i][1];
-						$clipping['gedcom'] = $GEDCOM;
-						$this->add_clipping($clipping);
-					}
+					$this->add_clipping(WT_Media::getInstance($match[$i][1]));
 				}
 			}
 		}
@@ -494,153 +443,61 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	}
 
 	// --------------------------------- Recursive function to traverse the tree
-	function add_family_descendancy($famid, $level="") {
-		global $cart;
-
-		if (!$famid)
+	function add_family_descendancy($family, $level) {
+		if (!$family) {
 			return;
-		$famrec = find_family_record($famid, WT_GED_ID);
-		if ($famrec) {
-			$parents = find_parents_in_record($famrec);
-			if (!empty ($parents["HUSB"])) {
-				$clipping = array ();
-				$clipping['type'] = "indi";
-				$clipping['id'] = $parents["HUSB"];
-				$this->add_clipping($clipping);
-			}
-			if (!empty ($parents["WIFE"])) {
-				$clipping = array ();
-				$clipping['type'] = "indi";
-				$clipping['id'] = $parents["WIFE"];
-				$this->add_clipping($clipping);
-			}
-			$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
-			for ($i = 0; $i < $num; $i++) {
-				$cfamids = WT_Person::getInstance($smatch[$i][1])->getSpouseFamilyIds();
-				if (count($cfamids) > 0) {
-					foreach ($cfamids as $indexval => $cfamid) {
-						if (!self::id_in_cart($cfamid)) {
-							$clipping = array ();
-							$clipping['type'] = "fam";
-							$clipping['id'] = $cfamid;
-							$ret = $this->add_clipping($clipping); // add the childs family
-							if ($level=="" || $level>0) {
-								if ($level!="") $level--;
-								$this->add_family_descendancy($cfamid, $level); // recurse on the childs family
-							}
-						}
-					}
-				} else {
-					$clipping = array ();
-					$clipping['type'] = "indi";
-					$clipping['id'] = $smatch[$i][1];
-					$this->add_clipping($clipping);
+		}
+		$this->add_clipping($family->getHusband());
+		$this->add_clipping($family->getWife());
+		foreach ($family->getChildren() as $child) {
+			$this->add_clipping($child);
+			foreach ($child->getSpouseFamilies() as $child_family) {
+				$this->add_clipping($child_family);
+				if ($level>0) {
+					$this->add_family_descendancy($child_family, $level-1); // recurse on the childs family
 				}
 			}
 		}
 	}
 
-	function add_family_members($famid) {
-		global $cart;
-		$parents = find_parents($famid);
-		if (!empty ($parents["HUSB"])) {
-			$clipping = array ();
-			$clipping['type'] = "indi";
-			$clipping['id'] = $parents["HUSB"];
-			$this->add_clipping($clipping);
+	// Add a family, and all its members
+	function add_family_members($family) {
+		if (!$family) {
+			return;
 		}
-		if (!empty ($parents["WIFE"])) {
-			$clipping = array ();
-			$clipping['type'] = "indi";
-			$clipping['id'] = $parents["WIFE"];
-			$this->add_clipping($clipping);
-		}
-		$famrec = find_family_record($famid, WT_GED_ID);
-		if ($famrec) {
-			$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
-			for ($i = 0; $i < $num; $i++) {
-				$clipping = array ();
-				$clipping['type'] = "indi";
-				$clipping['id'] = $smatch[$i][1];
-				$this->add_clipping($clipping);
-			}
+		$this->add_clipping($family);
+		$this->add_clipping($family->getHusband());
+		$this->add_clipping($family->getWife());
+		foreach ($family->getChildren() as $child) {
+			$this->add_clipping($child);
 		}
 	}
 
 	//-- recursively adds direct-line ancestors to cart
-	function add_ancestors_to_cart($pid, $level="") {
-		global $cart;
-		$famids = WT_Person::getInstance($pid)->getChildFamilyIds();
-		if (count($famids) > 0) {
-			foreach ($famids as $indexval => $famid) {
-				if ($level=="" || $level > 0) {
-					if ($level!="") $level = $level -1;
-					$clipping = array ();
-					$clipping['type'] = "fam";
-					$clipping['id'] = $famid;
-					$ret = $this->add_clipping($clipping);
-					if ($ret) {
-						$parents = find_parents($famid);
-						if (!empty ($parents["HUSB"])) {
-							$clipping = array ();
-							$clipping['type'] = "indi";
-							$clipping['id'] = $parents["HUSB"];
-							$this->add_clipping($clipping);
-							$this->add_ancestors_to_cart($parents["HUSB"], $level);
-						}
-						if (!empty ($parents["WIFE"])) {
-							$clipping = array ();
-							$clipping['type'] = "indi";
-							$clipping['id'] = $parents["WIFE"];
-							$this->add_clipping($clipping);
-							$this->add_ancestors_to_cart($parents["WIFE"], $level);
-						}
-					}
-				}
+	function add_ancestors_to_cart($person, $level) {
+		if (!$person) {
+			return;
+		}
+		$this->add_clipping($person);
+		if ($level>0) {
+			foreach ($person->getChildFamilies() as $family) {
+				$this->add_clipping($family);
+				$this->add_ancestors_to_cart($family->getHusband(), $level-1);
+				$this->add_ancestors_to_cart($family->getWife(), $level-1);
 			}
 		}
 	}
 
 	//-- recursively adds direct-line ancestors and their families to the cart
-	function add_ancestors_to_cart_families($pid, $level="") {
-		global $cart;
-		$famids = WT_Person::getInstance($pid)->getChildFamilyIds();
-		if (count($famids) > 0) {
-			foreach ($famids as $indexval => $famid) {
-				if ($level=="" || $level > 0) {
-					if ($level!="")$level = $level -1;
-					$clipping = array ();
-					$clipping['type'] = "fam";
-					$clipping['id'] = $famid;
-					$ret = $this->add_clipping($clipping);
-					if ($ret) {
-						$parents = find_parents($famid);
-						if (!empty ($parents["HUSB"])) {
-							$clipping = array ();
-							$clipping['type'] = "indi";
-							$clipping['id'] = $parents["HUSB"];
-							$ret = $this->add_clipping($clipping);
-							$this->add_ancestors_to_cart_families($parents["HUSB"], $level);
-						}
-						if (!empty ($parents["WIFE"])) {
-							$clipping = array ();
-							$clipping['type'] = "indi";
-							$clipping['id'] = $parents["WIFE"];
-							$ret = $this->add_clipping($clipping);
-							$this->add_ancestors_to_cart_families($parents["WIFE"], $level);
-						}
-						$famrec = find_family_record($famid, WT_GED_ID);
-						if ($famrec) {
-							$num = preg_match_all("/1\s*CHIL\s*@(.*)@/", $famrec, $smatch, PREG_SET_ORDER);
-							for ($i = 0; $i < $num; $i++) {
-								$clipping = array ();
-								$clipping['type'] = "indi";
-								$clipping['id'] = $smatch[$i][1];
-								$this->add_clipping($clipping);
-							}
-						}
-					}
-				}
+	function add_ancestors_to_cart_families($person, $level) {
+		if (!$person) {
+			return;
+		}
+		if ($level>0) {
+			foreach ($person->getChildFamilies() as $family) {
+				$this->add_family_members($family);
+				$this->add_ancestors_to_cart_families($family->getHusband(), $level-1);
+				$this->add_ancestors_to_cart_families($family->getWife(), $level-1);
 			}
 		}
 	}
