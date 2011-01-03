@@ -3,7 +3,7 @@
  * UI for online updating of the GEDCOM configuration.
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -276,7 +276,7 @@ if (WT_USER_IS_ADMIN) {
 	echo
 		'<table class="gedcom_table2"><tr>',
 		'<th>', WT_I18N::translate('Default GEDCOM'),      help_link('default_gedcom'), '</th>',
-		'<th>', WT_I18N::translate('Add a new GEDCOM'),    help_link('add_gedcom'),     '</h',
+		'<th>', WT_I18N::translate('Add a new GEDCOM'),    help_link('add_gedcom'),     '</th>',
 		'<th>', WT_I18N::translate('Upload a new GEDCOM'), help_link('upload_gedcom'),  '</th>',
 		'<th>', WT_I18N::translate('Create a new GEDCOM'), help_link('add_new_gedcom'), '</th>',
 		'</tr><tr>',
