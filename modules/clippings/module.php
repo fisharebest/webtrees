@@ -28,6 +28,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
+
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {

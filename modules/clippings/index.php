@@ -30,8 +30,6 @@
  * @version $Id$
  */
 
-require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
-
 global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM, $WT_IMAGES;
 
 $controller = new WT_Controller_Clippings();
