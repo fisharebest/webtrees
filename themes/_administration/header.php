@@ -99,7 +99,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 echo '</ul></li>';
 if (WT_USER_IS_ADMIN) {
 	echo
-		'<li><a ', (WT_SCRIPT_NAME=="admin_users_list.php" ? 'class="current" ' : ''), 'href="admin_users_list.php">',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_users_list.php" ? 'class="current" ' : ''), 'href="useradmin.php">',
 		WT_I18N::translate('Users'),
 		'</a></li>',
 		'<li><ul>',
