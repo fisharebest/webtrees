@@ -147,42 +147,6 @@ echo WT_JS_END;
 $disp = false;
 $success = false;
 
-/**
-* Check if the given gedcom record has any RESN editing restrictions
-* This is used to prevent raw editing and deletion of records that are locked
-* @param string $gedrec
-* @return boolean
-*/
-function checkFactEdit($gedrec) {
-	if (WT_USER_GEDCOM_ADMIN) {
-		return true;
-	}
-
-	$ct = preg_match("/2 RESN ((privacy)|(locked))/i", $gedrec, $match);
-	if ($ct > 0) {
-		$match[1] = strtolower(trim($match[1]));
-
-		$gt = preg_match("/0 @(.+)@ (.+)/", $gedrec, $gmatch);
-		if ($gt > 0) {
-			$gid = trim($gmatch[1]);
-			$type = trim($gmatch[2]);
-			if (WT_USER_GEDCOM_ID == $gid) {
-				return true;
-			}
-			if ($type=='FAM') {
-				$parents = find_parents_in_record($gedrec);
-				if (WT_USER_GEDCOM_ID == $parents["HUSB"] || WT_USER_GEDCOM_ID == $parents["WIFE"]) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	return true;
-}
-//-- end checkFactEdit function
-
 if (!empty($pid)) {
 	if (($pid!="newsour") && ($pid!="newrepo") && ($noteid!="newnote")) {
 		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
@@ -332,7 +296,7 @@ case 'delete':
 //------------------------------------------------------------------------------
 //-- echo a form to edit the raw gedcom record in a large textarea
 case 'editraw':
-	if (!checkFactEdit($gedrec)) {
+	if (!WT_Person::getInstance($pid)->canEdit()) {
 		echo "<br />", WT_I18N::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) {
 			echo "<br />", WT_I18N::translate('You have no access to'), " pid $pid.";
@@ -1722,7 +1686,7 @@ case 'addopfchildaction':
 	break;
 //------------------------------------------------------------------------------
 case 'deleteperson':
-	if (!checkFactEdit($gedrec)) {
+	if (!WT_Person::getInstance($pid)->canEdit()) {
 		echo "<br />", WT_I18N::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) echo "<br />", WT_I18N::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", WT_I18N::translate('You have no access to'), " famid $famid.";
@@ -1732,7 +1696,7 @@ case 'deleteperson':
 	break;
 //------------------------------------------------------------------------------
 case 'deletefamily':
-	if (!checkFactEdit($gedrec)) {
+	if (!WT_Person::getInstance($pid)->canEdit()) {
 		echo "<br />", WT_I18N::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) echo "<br />", WT_I18N::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", WT_I18N::translate('You have no access to'), " famid $famid.";
