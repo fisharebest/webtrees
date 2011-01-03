@@ -239,3 +239,7 @@ table#batch_update2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 #batch_update2  td+td {text-align:left; border:2px inset LightGrey;}
 #batch_update2  pre {margin:0; padding:5px;}
 
+/* FAQ MODULE */
+table#faq_module, table#faq_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0 0 10px 0; padding:5px; width:918px;}
+#faq_module  th {font-size:105%; font-weight:bold; text-align: left; vertical-align:top;}
+#faq_module2  th, #faq_module2  td {vertical-align:top; text-align:left;}

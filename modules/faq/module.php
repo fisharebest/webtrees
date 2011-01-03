@@ -154,18 +154,18 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				$gedcom_id=WT_GED_ID;
 			}
 
+			// "Help for this page" link
+			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
 			echo '<form name="faq" method="post" action="#">';
 			echo '<input type="hidden" name="save" value="1" />';
 			echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
-			echo '<table class="center list_table">';
-			echo '<tr><td class="topbottombar" colspan="2">';
-			echo WT_I18N::translate('Frequently asked questions'), help_link('add_faq_item', $this->getName());
-			echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
+			echo '<table id="faq_module">';
+			echo '<tr><th>';
 			echo WT_I18N::translate('Question');
-			echo '</td></tr><tr><td class="optionbox" colspan="2"><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
-			echo '<tr><td class="descriptionbox" colspan="2">';
+			echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
+			echo '<tr><th>';
 			echo WT_I18N::translate('Answer');
-			echo '</td></tr><tr><td class="optionbox" colspan="2">';
+			echo '</th></tr><tr><td>';
 			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			// use CKeditor module
 				require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
@@ -181,28 +181,27 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '<textarea name="faqbody" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
 			}
 			echo '</td></tr>';
-			echo '<tr><td class="descriptionbox">';
-			echo WT_I18N::translate('FAQ position'), help_link('add_faq_order', $this->getName());
-			echo '</td><td class="descriptionbox">';
-			echo WT_I18N::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName());
-			echo '</td></tr><tr><td class="optionbox"><input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '" /></td>';
-			echo '<td class="optionbox">';
+			echo '</table><table id="faq_module2">';
+			echo '<tr>';
+			echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
+			echo '<th>', WT_I18N::translate('FAQ position'), help_link('add_faq_order', $this->getName()), '</th>';
+			echo '<th>', WT_I18N::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName()), '</th>';
+			echo '</tr><tr>';
+			echo '<td>';
+			$languages=get_block_setting($block_id, 'languages');
+			echo edit_language_checkboxes('lang_', $languages);
+			echo '</td><td>';
+			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '" /></td>';
+			echo '</td><td>';
 				echo '<select name="gedcom_id" tabindex="4" />';
 					echo '<option value="">', WT_I18N::translate('All'), '</option>';
 					echo '<option value="', WT_GED_ID, '" selected="selected">', htmlspecialchars(WT_GEDCOM), '</option';
 				echo '</select>';
 			echo '</td></tr>';
-
-			$languages=get_block_setting($block_id, 'languages');
-			echo '<tr><td class="descriptionbox wrap width33">';
-			echo WT_I18N::translate('Show this block for which languages?');
-			echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
-			echo edit_language_checkboxes('lang_', $languages);
-			echo '</td></tr>';
-
-			echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
-			echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></td></tr>';
 			echo '</table>';
+
+			echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
+			echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></p>';
 			echo '</form>';
 
 			print_footer();
@@ -390,7 +389,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			foreach ($faqs as $faq) {
 				echo '<tr>';
 				// NOTE: Print the position of the current item
-				echo '<td class="descriptionbox width20 $TEXT_DIRECTION" colspan="4">';
+				echo '<td class="descriptionbox width20 $TEXT_DIRECTION">';
 				echo WT_I18N::translate('Position item'), ': ', $faq->block_order, ', ';
 				if ($faq->gedcom_id==null) {
 					echo WT_I18N::translate('All');
