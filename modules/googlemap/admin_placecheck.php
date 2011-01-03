@@ -50,10 +50,14 @@ print_header(WT_I18N::translate('Place Check').' - '.WT_GEDCOM);
 
 $target=$openinnew ? "target='_blank'" : "";
 
-echo "<div align=\"center\" style=\"width: 99%;\"><h1>", WT_I18N::translate('Place Check'), "</h1></div>";
+echo '<table id="gm_config"><tr>',
+	'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Manage GoogleMap configuration'), '</a>', help_link('GOOGLEMAP_CONFIG','googlemap'), '</th>',
+	'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', help_link('PLE_EDIT','googlemap'), '</th>',
+	'<th><a ', (safe_GET('mod_action')=="admin_placecheck" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
+'</tr></table>';
 
 //Start of User Defined options
-echo "<table border='0' width='100%' height='100px' overflow='auto';>";
+echo "<table border='0' width='98%' height='100px' overflow='auto';>";
 echo "<form method='post' name='placecheck' action='module.php?mod=googlemap&amp;mod_action=admin_placecheck'>";
 echo "<tr valign='top'>";
 echo "<td>";
@@ -344,7 +348,7 @@ case 'go':
 default:
 	// Do not run until user selects a gedcom/place/etc.
 	// Instead, show some useful help info.
-	echo "<p>", WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</p><hr />";
+	echo "<p width=\"98%\">", WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</p><hr />";
 	break;
 }
 

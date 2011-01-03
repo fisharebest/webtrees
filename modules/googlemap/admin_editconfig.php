@@ -44,9 +44,9 @@ function print_level_config_table($level) {
 	global $GM_POSTFIX, $GM_PRE_POST_MODE, $GM_MAX_NOF_LEVELS;
 ?>
 	<div id="level<?php echo $level; ?>" style="display:<?php if ($GM_MAX_NOF_LEVELS >= $level) {echo "block";} else {echo "none";} ?>">
-		<table class="facts_table">
+		<table id="gm_levels">
 			<tr>
-				<td class="descriptionbox" colspan="2">
+				<td colspan="2">
 					<?php
 					if ($level==1) {
 						echo WT_I18N::translate('Country');
@@ -95,15 +95,16 @@ function print_level_config_table($level) {
 
 print_header(WT_I18N::translate('GoogleMap Configuration'));
 
-echo '<span class="subheaders">', WT_I18N::translate('GoogleMap Configuration'), '</span>';
-
 if (!WT_USER_IS_ADMIN) {
-	echo "<table class=\"facts_table\">";
-	echo "<tr><td colspan=\"2\" class=\"facts_value\">", WT_I18N::translate('Page only for Administrators');
-	echo "</td></tr></table>";
-	echo "<br /><br /><br />";
+	echo '<div>', WT_I18N::translate('Page only for Administrators'), '</div>';
 	print_footer();
 	exit;
+} else { 
+	echo '<table id="gm_config"><tr>',
+		'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Manage GoogleMap configuration'), '</a>', help_link('GOOGLEMAP_CONFIG','googlemap'), '</th>',
+		'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', help_link('PLE_EDIT','googlemap'), '</th>',
+		'<th><a ', (safe_GET('mod_action')=="admin_placecheck" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
+	'</tr></table>';
 }
 
 if ($action=="update" && !isset($security_user)) {
@@ -200,28 +201,18 @@ if ($action=="update" && !isset($security_user)) {
 <form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_editconfig">
 <input type="hidden" name="action" value="update" />
 
-<table class="facts_table">
+<table id="gm_edit_config">
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Enable GoogleMap'), help_link('GOOGLEMAP_ENABLE','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_ENABLE', $GOOGLEMAP_ENABLED); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Enable GoogleMap'), help_link('GOOGLEMAP_ENABLE','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_ENABLE', $GOOGLEMAP_ENABLED); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('GoogleMap API key'), help_link('GOOGLEMAP_API_KEY','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<input type="text" name="NEW_GM_API_KEY" value="<?php echo $GOOGLEMAP_API_KEY; ?>" size="60" />
-		</td>
+		<th><?php echo WT_I18N::translate('GoogleMap API key'), help_link('GOOGLEMAP_API_KEY','googlemap'); ?></th>
+		<td><input type="text" name="NEW_GM_API_KEY" value="<?php echo $GOOGLEMAP_API_KEY; ?>" size="60" /></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Default map type'), help_link('GOOGLEMAP_MAP_TYPE','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Default map type'), help_link('GOOGLEMAP_MAP_TYPE','googlemap'); ?></th>
+		<td>
 			<select name="NEW_GM_MAP_TYPE">
 				<option value="G_NORMAL_MAP" <?php if ($GOOGLEMAP_MAP_TYPE=="G_NORMAL_MAP") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Map'); ?></option>
 				<option value="G_SATELLITE_MAP" <?php if ($GOOGLEMAP_MAP_TYPE=="G_SATELLITE_MAP") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Satellite'); ?></option>
@@ -231,10 +222,8 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Size of map (in pixels)'), help_link('GOOGLEMAP_MAP_SIZE','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Size of map (in pixels)'), help_link('GOOGLEMAP_MAP_SIZE','googlemap'); ?></th>
+		<td>
 			<?php echo WT_I18N::translate('Width'); ?>
 			<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE; ?>" size="10" />
 			<?php echo WT_I18N::translate('Height'); ?>
@@ -242,18 +231,12 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Use Googlemap for Place Hierarchy'), help_link('GOOGLEMAP_PH','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', $GOOGLEMAP_PLACE_HIERARCHY); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Use Googlemap for Place Hierarchy'), help_link('GOOGLEMAP_PH','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', $GOOGLEMAP_PLACE_HIERARCHY); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Size of Place Hierarchy map (in pixels)'), help_link('GOOGLEMAP_PH_MAP_SIZE','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Size of Place Hierarchy map (in pixels)'), help_link('GOOGLEMAP_PH_MAP_SIZE','googlemap'); ?></th>
+		<td>
 			<?php echo WT_I18N::translate('Width'); ?>
 			<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE; ?>" size="10" />
 			<?php echo WT_I18N::translate('Height'); ?>
@@ -261,10 +244,8 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'), help_link('GOOGLEMAP_PH_MARKER','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'), help_link('GOOGLEMAP_PH_MARKER','googlemap'); ?></th>
+		<td>
 			<select name="NEW_GM_PH_MARKER">
 				<option value="G_DEFAULT_ICON" <?php if ($GOOGLEMAP_PH_MARKER=="G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Standard'); ?></option>
 				<option value="G_FLAG" <?php if ($GOOGLEMAP_PH_MARKER=="G_FLAG") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Flag'); ?></option>
@@ -272,50 +253,28 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $GM_DISP_SHORT_PLACE); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $GM_DISP_SHORT_PLACE); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Display indis and families count'), help_link('GM_DISP_COUNT','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_DISP_COUNT', $GM_DISP_COUNT); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Display indis and families count'), help_link('GM_DISP_COUNT','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_DISP_COUNT', $GM_DISP_COUNT); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Use mouse wheel for zoom'), help_link('GOOGLEMAP_PH_WHEEL','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_PH_WHEEL', $GOOGLEMAP_PH_WHEEL); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Use mouse wheel for zoom'), help_link('GOOGLEMAP_PH_WHEEL','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_PH_WHEEL', $GOOGLEMAP_PH_WHEEL); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Hide map controls'), help_link('GOOGLEMAP_PH_CONTROLS','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_PH_CONTROLS', $GOOGLEMAP_PH_CONTROLS); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Hide map controls'), help_link('GOOGLEMAP_PH_CONTROLS','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_PH_CONTROLS', $GOOGLEMAP_PH_CONTROLS); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Display Map Co-ordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
-			<?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?>
-		</td>
+		<th><?php echo WT_I18N::translate('Display Map Co-ordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?></th>
+		<td><?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
+		<td>
 			<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
 			<?php for ($j=1; $j < 15; $j++) { ?>
 			<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MIN_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
@@ -329,10 +288,8 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Precision'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Precision'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?></th>
+		<td>
 			<table>
 				<tr>
 					<td><?php echo WT_I18N::translate('Country'); ?>&nbsp;&nbsp;</td>
@@ -389,12 +346,12 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap"><?php echo WT_I18N::translate('Default top level value'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></td>
-		<td class="optionbox width60"><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20" /></td>
+		<th><?php echo WT_I18N::translate('Default top level value'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></th>
+		<td><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20" /></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap"><?php echo WT_I18N::translate('Number of levels'), help_link('GM_NOF_LEVELS','googlemap'); ?></td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Number of levels'), help_link('GM_NOF_LEVELS','googlemap'); ?></th>
+		<td>
 			<select name="NEW_GM_LEVEL_COUNT" dir="ltr" onchange="showSelectedLevels()">
 				<option value="1"<?php if ($GM_MAX_NOF_LEVELS == 1) echo " selected=\"selected\""; ?>>1</option>
 				<option value="2"<?php if ($GM_MAX_NOF_LEVELS == 2) echo " selected=\"selected\""; ?>>2</option>
@@ -409,10 +366,8 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox nowrap">
-			<?php echo WT_I18N::translate('Configuration per level'); ?>
-		</td>
-		<td class="optionbox width60">
+		<th><?php echo WT_I18N::translate('Configuration per level'); ?></th>
+		<td>
 			<?php
 				print_level_config_table(1);
 				print_level_config_table(2);
@@ -427,19 +382,11 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 </table>
-<table class="facts_table">
-	<tr>
-		<td class="descriptionbox" colspan="2" align="center">
-			<a href="module.php?mod=googlemap&mod_action=admin_places"><?php echo WT_I18N::translate('Edit geographic place locations'); ?></a>
-		</td>
-	<tr>
-		<td class="descriptionbox" colspan="2" align="center">
-			<input type="submit" value="<?php echo WT_I18N::translate('Save configuration'); ?>" onclick="closeHelp();" />
-			&nbsp;&nbsp;
-			<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
-		</td>
-	</tr>
-</table>
+<p>
+	<input type="submit" value="<?php echo WT_I18N::translate('Save configuration'); ?>" onclick="closeHelp();" />
+	&nbsp;&nbsp;
+	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
+</p>
 </form>
 <?php
 

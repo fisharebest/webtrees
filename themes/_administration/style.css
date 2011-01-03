@@ -218,7 +218,7 @@ table.upload_media {border-collapse: separate; border-spacing: 0; margin:10px 0;
 .upload_media  td {background:OldLace; border:1px inset #D9D6C4; border-right:0; padding:5px;}
 .upload_media td+td {border-left:0; padding-left:20px;}
 
-/*MANAGE SITES*/
+/* MANAGE SITES*/
 table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
 .sites  th {font-size:105%; font-weight:bold; text-align: left;}
 .sites  td {padding:5px;}
@@ -243,3 +243,11 @@ table#batch_update2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 table#faq_module, table#faq_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0 0 10px 0; padding:5px; width:918px;}
 #faq_module  th {font-size:105%; font-weight:bold; text-align: left; vertical-align:top;}
 #faq_module2  th, #faq_module2  td {vertical-align:top; text-align:left;}
+
+/* GOOGLEMAP MODULE*/
+table#gm_config {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0; width:98%;}
+#gm_config  th {font-size:105%; font-weight:bold; padding:5px; text-align: left;}
+table#gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0; width:98%;}
+#gm_edit_config  th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align: left; vertical-align:top;}
+#gm_edit_config  td {border-bottom:1px solid LightGrey; margin-left:20px;}
+

@@ -44,27 +44,16 @@ if (file_exists('modules/googlemap/config.php')) {
 
 print_header(WT_I18N::translate('GoogleMap Configuration'));
 
-if (WT_USER_IS_ADMIN) { ?>
-<table class="center">
-   <tr>
-	  <td colspan="2" class="topbottombar" style="text-align:center; "><?php echo WT_I18N::translate('GoogleMap Configuration'); ?></td>
-   </tr>
-   <tr>
-      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_editconfig"><?php echo WT_I18N::translate('Manage GoogleMap configuration'); ?></a><?php echo help_link('GOOGLEMAP_CONFIG','googlemap'); ?>
-	  </td>
-      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_places"><?php echo WT_I18N::translate('Edit geographic place locations'); ?></a><?php echo help_link('PLE_EDIT','googlemap'); ?>
-	  </td>
-   </tr>
-   <tr>
-      <td class="optionbox"><a href="module.php?mod=googlemap&mod_action=admin_placecheck"><?php echo WT_I18N::translate('Place Check'); ?></a><?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
-	  </td>
-      <td class="optionbox">&nbsp;
-	  </td>
-   </tr>
-</table>
-<?php
-print_footer();
+if (WT_USER_IS_ADMIN) { 
+	echo '<table id="gm_config"><tr>',
+		'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Manage GoogleMap configuration'), '</a>', help_link('GOOGLEMAP_CONFIG','googlemap'), '</th>',
+		'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', help_link('PLE_EDIT','googlemap'), '</th>',
+		'<th><a ', (safe_GET('mod_action')=="admin_placecheck" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
+		'</tr></table>';
+	print_footer();
 } else {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=module.php?mod=googlemap&mod_action=admin_config');
 	exit;
 }
+	
+
