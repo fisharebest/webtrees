@@ -78,7 +78,7 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 #admin_menu li ul span {font-style: italic; font-weight:bold;}
 
 /* CONTENT */
-#admin_content {margin-left:220px; padding:10px; }
+#admin_content {margin-left:220px; padding:10px;}
 
 /* FOOTER */
 #admin_footer {float:left; text-align:center; width:100%; margin-top:30px;}
@@ -89,7 +89,7 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 /* All DASHBOARD BLOCKS */
 #about, #block1 , #block2, #block3{background:OldLace; padding:5px; border:1px inset #D9D6C4;}
 #about h2, #block1 h2, #block2 h2, #block3 h2 {margin:0;}
-#tree_stats h3, #changes h3  {text-align:left; }
+#tree_stats h3, #changes h3  {text-align:left;}
 #block1, #block2, #block3 {height:540px; overflow:auto; width:31%;}
 #block1  {float:left;}
 #block2  {margin: 0 auto;}
@@ -99,22 +99,20 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 #tree_stats td, #changes td {padding-right:10px; width:30px; text-align:right; white-space:nowrap;}
 #tree_stats .ui-accordion-content, #changes .ui-accordion-content {padding: 1em 0;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size: 100% !important;}
-.ui-accordion .ui-accordion-content-active {
-    display: block;
-}
+.ui-accordion .ui-accordion-content-active {display: block;}
 
 /*SITE CONFIG */
 .editable {width:100%; display:block}
 .editable:hover {color:red; cursor:pointer; cursor:hand;} /* both cursors needed for cross-browser support */
 .editable input, select {padding:0;}
-.site_config {padding: 0;}/*  table */
+table.site_config {background:OldLace; border-collapse: separate; border-spacing: 0; border:1px inset #D9D6C4; padding:10px; margin: 0 10px;}
 .site_config th {text-align:left; padding:0 0 1px 3px;font-size:105%;} /* sub-headings, both cols */
 .site_config th+th { font-style:italic;font-size:95%;} /* sub-headings, right col */
 .site_config td {white-space:normal;padding:3px 3px 3px 30px;} /* left-col */
-.site_config td+td {background-color:#dcdcdc; width:250px; padding:3px;} /* right/col */
+.site_config td+td {background-color:#dcdcdc;  border-bottom: 1px solid OldLace; width:250px; padding:3px;} /* right/col */
 
 /*SITE LOGS */
-table.site_logs {background:OldLace; border-collapse: separate; border-spacing: 0; border:1px inset #D9D6C4; }
+table.site_logs {background:OldLace; border-collapse: separate; border-spacing: 0; border:1px inset #D9D6C4; margin:10px;}
 .site_logs td {width:250px; padding:5px; text-align:center;}
 table#log_list   {width:100%}
 #log_list_length {float:left;}
@@ -169,21 +167,25 @@ table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
 .subbar {background-color:#d1d9ef;border:solid #81a9cb 1px;font-size:11px;font-weight:bold;vertical-align:top;white-space:nowrap;padding:3px;}
 
 /* README */
-#readme {font-size:12px; padding:10px; }
-#readme 	h1 {font-size:16px; font-weight:bold; margin-top:0; }
-#readme 	h2 {font-size:14px; font-weight:bold; margin-top:0; }
-#readme 	h3 {font-size:14px; font-weight:bold; margin:14px 0; }
+#readme {font-size:12px; padding:10px 20px;}
+#readme 	h1 {font-size:16px; font-weight:bold; margin-top:0;}
+#readme 	h2 {font-size:14px; font-weight:bold; margin-top:0;}
+#readme 	h3 {font-size:14px; font-weight:bold; margin:14px 0;}
 #readme	li {line-height:150%;}
 #readme	.back {float:right;}
 
 /* PHP INFO */
-#phpinfo table.heading  {padding:3px;	text-align:center;width:100%;}
+div.php_info {padding:10px; text-align:center; width:100%;}
+table.php_info {border-collapse: separate; border-spacing: 0; text-align:left; width:98%}
+.php_info td {border-bottom:1px solid LightGrey; border-right:0;}
+.php_info td+td {border-left:0; padding-left:20px;}
 
 /* MANAGE GEDCOMS */
-.gedcom_table th {font-weight:bold; font-size:14px; text-align:left; width: 15%}
-.gedcom_table th+th {width: 80%}
-.gedcom_table2 {margin-top: 20px; width:85%;}
-.gedcom_table2 th {font-weight:bold; font-size:14px; text-align:center;}
+table.gedcom_table {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px; width:98%;}
+.gedcom_table th {font-weight:bold; font-size:105%; text-align:left; width:15%}
+.gedcom_table th+th {font-weight:normal; width: 80%}
+table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:20px 0; width:98%;}
+.gedcom_table2 th {font-weight:bold; font-size:105%; padding:5px; text-align:center;}
 .gedcom_table2 td {text-align:center;}
 
 /* MANAGE MODULES */
@@ -192,6 +194,12 @@ table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
 #installed_table_info {float:left;}
 #installed_table_paginate {float:right;}
 #installed_table th {min-width: 60px;}
+
+/* MANAGE MENUS */
+table.modules_table {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px; margin-bottom:10px;}
+.modules_table  th {border-bottom:2px solid LightGrey; font-weight:bold; font-size:105%;}
+.modules_table td {border-bottom:2px solid LightGrey; padding:3px;}
+.modules_table .modules_table2 td {border:0;}
 
 /* MANAGE MEDIA */
 table#media_table   {width:100%;}
@@ -206,11 +214,11 @@ table#media_table   {width:100%;}
 
 /* UPLOAD MEDIA */
 table.upload_media {border-collapse: separate; border-spacing: 0; margin:10px 0;}
-.upload_media  th {font-weight:bold; text-align: left;}
+.upload_media  th {font-size:105%; font-weight:bold; text-align: left;}
 .upload_media  td {background:OldLace; border:1px inset #D9D6C4; border-right:0; padding:5px;}
 .upload_media td+td {border-left:0; padding-left:20px;}
 
 /*MANAGE SITES*/
 table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
-.sites  th {font-weight:bold; text-align: left;}
+.sites  th {font-size:105%; font-weight:bold; text-align: left;}
 .sites  td {padding:5px;}

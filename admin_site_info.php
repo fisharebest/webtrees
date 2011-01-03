@@ -44,10 +44,10 @@ if ($action == "phpinfo") {
 	$helpindex = "phpinfo_help";
 	print_header(WT_I18N::translate('PHP information'));
 
-// "Help for this page" link
-echo '<div id="page_help">', help_link('phpinfo'), '</div>';
+	// "Help for this page" link
+	echo '<div id="page_help">', help_link('phpinfo'), '</div>';
 
-	echo '<div>';
+	echo '<div class="php_info">';
 
 	ob_start();
 
@@ -58,9 +58,9 @@ echo '<div id="page_help">', help_link('phpinfo'), '</div>';
 
 	$php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
 	$php_info    = str_replace("</body></html>", "", $php_info);
-	$php_info    = str_replace("<table", "<table class=\"facts_table ltr\"", $php_info);
-	$php_info    = str_replace("td class=\"e\"", "td class=\"facts_value\"", $php_info);
-	$php_info    = str_replace("td class=\"v\"", "td class=\"facts_value\"", $php_info);
+	$php_info    = str_replace("<table", "<table class=\"php_info ltr\"", $php_info);
+	$php_info    = str_replace("td class=\"e\"", "td", $php_info);
+	$php_info    = str_replace("td class=\"v\"", "td", $php_info);
 	$php_info    = str_replace("tr class=\"v\"", "tr", $php_info);
 	$php_info    = str_replace("tr class=\"h\"", "tr", $php_info);
 

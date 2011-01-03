@@ -166,7 +166,7 @@ echo '<table class="sites">',
 
 // Banned IP address table 
 echo '<table class="sites">',
-	 '<tr><td><form name="banIPform" action="<?php echo WT_SCRIPT_NAME; ?>" method="post">',
+	 '<tr><td><form name="banIPform" action="', WT_SCRIPT_NAME, '" method="post">',
 	 '<table>',
 	 '<tr><th>', WT_I18N::translate('Ban Sites by IP').help_link('help_banning'), '</th></tr>',
 	 '<tr><td>',

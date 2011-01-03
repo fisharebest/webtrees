@@ -151,12 +151,12 @@ echo WT_JS_START; ?>
 	<div id="tabs">
 		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods" />
-			<table id="menus_table" class="list_table">
+			<table id="menus_table" class="modules_table">
 				<thead>
 					<tr>
-					<th class="list_label"><?php echo WT_I18N::translate('Menu'); ?></th>
-					<th class="list_label"><?php echo WT_I18N::translate('Order'); ?></th>
-					<th class="list_label"><?php echo WT_I18N::translate('Access level'); ?></th>
+					<th><?php echo WT_I18N::translate('Menu'); ?></th>
+					<th><?php echo WT_I18N::translate('Order'); ?></th>
+					<th><?php echo WT_I18N::translate('Access level'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -164,11 +164,11 @@ echo WT_JS_START; ?>
 					$order = 1;
 					foreach (WT_Module::getInstalledMenus() as $module) { ?>
 					<tr class="sortme">
-						<td class="list_value"><?php echo $module->getTitle(); ?></td>
-						<td class="list_value"><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
+						<td><?php echo $module->getTitle(); ?></td>
+						<td><input type="text" size="5" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
 						</td>
-						<td class="list_value_wrap">
-							<table>
+						<td>
+							<table class="modules_table2">
 								<?php
 									foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 										$varname = 'menuaccess-'.$module->getName().'-'.$ged_id;

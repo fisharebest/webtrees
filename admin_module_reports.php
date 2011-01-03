@@ -131,11 +131,11 @@ print_header(WT_I18N::translate('Module administration'));
 	<div id="tabs">
 		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods" />
-			<table id="reports_table" class="list_table">
+			<table id="reports_table" class="modules_table">
 				<thead>
 					<tr>
-					<th class="list_label"><?php echo WT_I18N::translate('Report'); ?></th>
-					<th class="list_label"><?php echo WT_I18N::translate('Access level'); ?></th>
+					<th><?php echo WT_I18N::translate('Report'); ?></th>
+					<th><?php echo WT_I18N::translate('Access level'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -143,9 +143,9 @@ print_header(WT_I18N::translate('Module administration'));
 					$order = 1;
 					foreach (WT_Module::getInstalledReports() as $module) { ?>
 						<tr>
-							<td class="list_value"><?php echo $module->getTitle(); ?></td>
-							<td class="list_value_wrap">
-								<table>
+							<td><?php echo $module->getTitle(); ?></td>
+							<td>
+								<table class="modules_table2">
 									<?php
 									foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 										$varname = 'reportaccess-'.$module->getName().'-'.$ged_id;
