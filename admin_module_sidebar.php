@@ -2,7 +2,7 @@
 // Module Administration User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -155,6 +155,7 @@ echo WT_JS_START; ?>
 				<thead>
 					<tr>
 					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
+					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Order'); ?></th>
 					<th><?php echo WT_I18N::translate('Access level'); ?></th>
 					</tr>
@@ -165,6 +166,7 @@ echo WT_JS_START; ?>
 					foreach (WT_Module::getInstalledSidebars() as $module) { ?>
 						<tr class="sortme">
 							<td><?php echo $module->getTitle(); ?></td>
+							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
 							<td><input type="text" size="5" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>" />
 							</td>
 							<td>

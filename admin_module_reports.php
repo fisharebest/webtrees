@@ -2,7 +2,7 @@
 // Module Administration User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -135,6 +135,7 @@ print_header(WT_I18N::translate('Module administration'));
 				<thead>
 					<tr>
 					<th><?php echo WT_I18N::translate('Report'); ?></th>
+					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Access level'); ?></th>
 					</tr>
 				</thead>
@@ -144,6 +145,7 @@ print_header(WT_I18N::translate('Module administration'));
 					foreach (WT_Module::getInstalledReports() as $module) { ?>
 						<tr>
 							<td><?php echo $module->getTitle(); ?></td>
+							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
 							<td>
 								<table class="modules_table2">
 									<?php

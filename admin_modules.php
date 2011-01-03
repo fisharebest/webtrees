@@ -2,7 +2,7 @@
 // Module Administration User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -122,16 +122,6 @@ if ($action=='update_mods') {
 
 print_header(WT_I18N::translate('Module administration'));
 ?>
-<style type="text/css">
-<!--
-.sortme {
-	cursor: move;
-}
-.sortme img {
-	cursor: pointer;
-}
-//-->
-</style>
 <script type="text/javascript">
 //<![CDATA[
 
@@ -189,7 +179,7 @@ print_header(WT_I18N::translate('Module administration'));
 						echo '<tr><td>', two_state_checkbox('status-'.$module->getName(), $status=='enabled'), '</td>';
 						?>
 						<td><?php echo $module->getTitle(); ?></td>
-						<td><?php echo $module->getDescription(); ?></td>
+						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
 						<td><?php if ($module instanceof WT_Module_Menu) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
 						<td><?php if ($module instanceof WT_Module_Tab) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>
 						<td><?php if ($module instanceof WT_Module_Sidebar) echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No'); ?></td>

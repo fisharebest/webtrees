@@ -5,7 +5,7 @@
  * To learn more about CSS visit http://www.w3.org/TR/REC-CSS2/
  *
  * webtrees:Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -42,6 +42,8 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 .warning, .error, .red {	font-weight:bold; color:red;}
 .accepted { font-weight:bold; color:green;}
 .center {text-align:center;}
+.ltr {text-align:left;}
+.rtl {text-align:right;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
 .ui-widget-content a {text-decoration:none;}
