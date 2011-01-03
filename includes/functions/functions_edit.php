@@ -597,10 +597,17 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	// Inherit surname from parents, spouse or child
 	if (empty($namerec)) {
 		// We'll need the parent's name to set the child's surname
-		$famrec=find_gedcom_record($famid, WT_GED_ID, true);
-		$parents=find_parents_in_record($famrec);
-		$father_name=get_gedcom_value('NAME', 0, find_person_record($parents['HUSB'], WT_GED_ID));
-		$mother_name=get_gedcom_value('NAME', 0, find_person_record($parents['WIFE'], WT_GED_ID));
+		$family=WT_Family::getInstance($famid);
+		if ($family && $family->getHusband()) {
+			$father_name=get_gedcom_value('NAME', 0, $family->getHusband()->getGedcomRecord());
+		} else {
+			$father_name='';
+		}
+		if ($family && $family->getWife()) {
+			$mother_name=get_gedcom_value('NAME', 0, $family->getWife()->getGedcomRecord());
+		} else {
+			$mother_name='';
+		}
 		// We'll need the spouse/child's name to set the spouse/parent's surname
 		$prec=find_gedcom_record($pid, WT_GED_ID, true);
 		$indi_name=get_gedcom_value('NAME', 0, $prec);
