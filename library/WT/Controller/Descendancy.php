@@ -150,16 +150,14 @@ function print_child_descendancy(&$person, $depth) {
 	// check if child has parents and add an arrow
 	echo "<td>&nbsp;</td>";
 	echo "<td>";
-	$sfamids = $person->getChildFamilies();
-	foreach ($sfamids as $famid => $family) {
-		$parents = find_parents($famid);
-		if ($parents) {
-			$parid=$parents["HUSB"];
-			if ($parid=="") $parid=$parents["WIFE"];
-			if ($parid!="") {
-				print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
-				$personcount++;
-			}
+	foreach ($person->getChildFamilies() as $cfamily) {
+		$parid=$cfamily->getHusbId();
+		if (!$parid) {
+			$parent=$cfamily->getWifeId();
+		}
+		if ($parid) {
+			print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+			$personcount++;
 		}
 	}
 
@@ -229,15 +227,14 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		// check if spouse has parents and add an arrow
 		echo "<td>&nbsp;</td>";
 		echo "<td>";
-		foreach ($spouse->getChildFamilyIds() as $sfamid) {
-			$parents = find_parents($sfamid);
-			if ($parents) {
-				$parid=$parents["HUSB"];
-				if ($parid=="") $parid=$parents["WIFE"];
-				if ($parid!="") {
-					print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
-					$personcount++;
-				}
+		foreach ($spouse->getChildFamilies() as $cfamily) {
+			$parid=$cfamily->getHusbId();
+			if (!$parid) {
+				$parent=$cfamily->getWifeId();
+			}
+			if ($parid) {
+				print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+				$personcount++;
 			}
 		}
 		if ($this->show_full) echo "<br /><br />&nbsp;";
