@@ -38,7 +38,7 @@ class birth_y_bu_plugin extends base_plugin {
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('You can improve the performance of PGV by ensuring that all individuals have a &laquo;start of life&raquo; event.');
+		return WT_I18N::translate('You can improve the performance of <b>webtrees</b> by ensuring that all individuals have a &laquo;start of life&raquo; event.');
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {

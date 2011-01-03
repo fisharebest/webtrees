@@ -38,7 +38,7 @@ class death_y_bu_plugin extends base_plugin {
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('You can improve the performance of PGV by ensuring that all individuals have (where appropriate) an &laquo;end of life&raquo; event.');
+		return WT_I18N::translate('You can improve the performance of <b>webtrees</b> by ensuring that all individuals have (where appropriate) an &laquo;end of life&raquo; event.');
 	}
 
 	static function doesRecordNeedUpdate($xref, $gedrec) {

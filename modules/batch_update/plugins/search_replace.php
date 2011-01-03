@@ -101,26 +101,26 @@ class search_replace_bu_plugin extends base_plugin {
 		);
 
 		return
-			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Search text/pattern').':</td>'.
-			'<td class="optionbox wrap">'.
+			'<tr><th>'.WT_I18N::translate('Search text/pattern').':</th>'.
+			'<td>'.
 			'<input name="search" size="40" value="'.htmlspecialchars($this->search).
 			'" onchange="this.form.submit();"></td></tr>'.
 
-			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Replacement text').':</td>'.
-			'<td class="optionbox wrap">'.
+			'<tr><th>'.WT_I18N::translate('Replacement text').':</th>'.
+			'<td>'.
 			'<input name="replace" size="40" value="'.htmlspecialchars($this->replace).
 			'" onchange="this.form.submit();"></td></tr>'.
 
-			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Search method').':</td>'.
-			'<td class="optionbox wrap"><select name="method" onchange="this.form.submit();">'.
+			'<tr><th>'.WT_I18N::translate('Search method').':</th>'.
+			'<td><select name="method" onchange="this.form.submit();">'.
 			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>'.
 			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
 			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>'.
 			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
 			'</select><br/><i>'.$descriptions[$this->method].'</i>'.$this->error.'</td></tr>'.
 
-			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Case insensitive').':</td>'.
-			'<td class="optionbox wrap">'.
+			'<tr><th>'.WT_I18N::translate('Case insensitive').':</th>'.
+			'<td>'.
 			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
 			'<br/><i>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</i></td></tr>'.
 			parent::getOptionsForm();

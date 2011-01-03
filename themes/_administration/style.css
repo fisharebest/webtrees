@@ -222,3 +222,20 @@ table.upload_media {border-collapse: separate; border-spacing: 0; margin:10px 0;
 table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
 .sites  th {font-size:105%; font-weight:bold; text-align: left;}
 .sites  td {padding:5px;}
+
+/* CONFIG ALBUM MODULE */
+table#album_config {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
+#album_config  td {border-bottom:1px solid LightGrey; padding:5px;}
+#album_config  td+td {padding-left:20px;}
+#album_config  p {font-size: 95%; font-style: italic; font-weight:normal; margin:0 20px;}
+
+/* BATCH UPDATE MODULE */
+table#batch_update {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0; padding:5px;}
+#batch_update  th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align: left;}
+#batch_update  td {border-bottom:1px solid LightGrey; margin-left:20px;}
+table#batch_update2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0 0 0; width:98%;}
+#batch_update2  th {font-size:115%; font-weight:bold; padding:5px; text-align: left; width:100%}
+#batch_update2  td {text-align:center;}
+#batch_update2  td+td {text-align:left; border:2px inset LightGrey;}
+#batch_update2  pre {margin:0; padding:5px;}
+
