@@ -1510,34 +1510,15 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	echo "<br />";
 	//-- print spouse name for marriage events
 	if ($rowm['mm_gid']!=$pid) {
-		$spouse=null;
-		$parents = find_parents($rowm['mm_gid']);
-		if ($parents) {
-			if (!empty($parents['HUSB']) && $parents['HUSB']!=$pid) {
-				$spouse = WT_Person::getInstance($parents['HUSB']);
+		$person=WT_Person::getInstance($pid);
+		$family=WT_Family::getInstance($rowm['mm_gid']);
+		if ($family) {
+			$spouse=$family->getSpouse($person);
+			if ($spouse) {
+				echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
-			if (!empty($parents['WIFE']) && $parents['WIFE']!=$pid) {
-				$spouse = WT_Person::getInstance($parents['WIFE']);
-			}
+			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br />';
 		}
-		if ($spouse) {
-			echo "<a href=\"", $spouse->getHtmlUrl(), "\">";
-			if ($spouse->canDisplayName()) {
-				echo PrintReady($spouse->getFullName());
-			} else {
-				echo WT_I18N::translate('Private');
-			}
-			echo "</a>";
-		}
-		if (empty($SEARCH_SPIDER)) {
-			$famid = $rowm['mm_gid'];
-			$family = WT_Family::getInstance($famid);
-			if ($family) {
-				if ($spouse) echo " - ";
-				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
-			}
-		}
-		echo "<br />";
 	}
 	//-- don't show _PRIM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
