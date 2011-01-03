@@ -28,6 +28,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+require_once WT_ROOT.'includes/functions/functions_export.php';
+
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config{
 	// Extend WT_Module
 	public function getTitle() {
