@@ -36,7 +36,7 @@ class cemetery_report_WT_Module extends WT_Module implements WT_Module_Report {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Cemetery Report');
+		return WT_I18N::translate('Prints a list of individuals burial places matching specific cemetery criteria');
 	}
 
 	// Extend class WT_Module

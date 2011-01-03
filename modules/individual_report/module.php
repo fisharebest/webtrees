@@ -36,7 +36,7 @@ class individual_report_WT_Module extends WT_Module implements WT_Module_Report 
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Individual Report');
+		return WT_I18N::translate('Prints an individual record report');
 	}
 
 	// Extend class WT_Module

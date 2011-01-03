@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Description>Prints a pedigree chart in landscape mode</Description>
 	<Title><var var="WT_I18N::translate('Pedigree Chart')" /> - <var var="WT_I18N::translate('Landscape')" /></Title>	
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Enter Individual ID')" /></Input>

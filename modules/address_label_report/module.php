@@ -36,7 +36,7 @@ class address_label_report_WT_Module extends WT_Module implements WT_Module_Repo
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Address Labels');
+		return WT_I18N::translate('Prints address labels');
 	}
 
 	// Extend class WT_Module

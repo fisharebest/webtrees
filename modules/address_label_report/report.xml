@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Description>Prints address labels</Description>
 	<Title><var var="WT_I18N::translate('Address Labels')" /></Title>
 	<Input name="address" type="text"><var var="WT_I18N::translate('Show addresses that contain:')" /> </Input>

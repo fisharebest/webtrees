@@ -36,7 +36,7 @@ class death_report_WT_Module extends WT_Module implements WT_Module_Report {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Death Date and Place Report');
+		return WT_I18N::translate('Prints a list of individuals matching specific name and/or death criteria');
 	}
 
 	// Extend class WT_Module

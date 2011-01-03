@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Occupation Report')" /></Title>
 	<Description>Prints a list of individuals occupation matching specific criteria</Description>
 	<Input name="occupation" lookup="OCCU" type="text"><var var="translate_fact('OCCU')" /> </Input>

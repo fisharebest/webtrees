@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Ahnentafel Report')" /></Title>
 	<Description>Prints an Ahnentafel report for the selected individual</Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>

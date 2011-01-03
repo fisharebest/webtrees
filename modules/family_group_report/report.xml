@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Family Group Report')" /></Title>
-	<Description>Prints a PAF style family group record</Description>
+	<Description>Prints a family group report</Description>
 	<!-- User inputs for the report -->
 	<Input name="famid" lookup="FAM" type="text" default=""><var var="WT_I18N::translate('Enter Family ID')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>

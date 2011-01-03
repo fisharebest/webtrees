@@ -36,7 +36,7 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Expanded Relatives Report');
+		return WT_I18N::translate('Prints an expanded list of individuals related to a specific person');
 	}
 
 	// Extend class WT_Module

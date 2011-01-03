@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Cemetery Report')" /></Title>
 	<Description>Prints a list of individuals burial places matching specific cemetery criteria</Description>
 	<Input name="deathplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Burial Place contains')" /> </Input>

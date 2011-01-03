@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Descendancy Report')" /></Title>
-	<Description>Prints a descendant chart in portrait mode</Description>
+	<Description>Prints a descendant report for the selected individual</Description>
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
 	<Input name="maxgen" type="select" options="3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|*=>*"><var var="WT_I18N::translate('Generations')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>

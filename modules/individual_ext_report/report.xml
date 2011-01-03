@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-<!-- $Id$ -->
+	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Close Relatives Report')" /></Title>
 	<Description>Prints an individual record report showing close relatives</Description>
 	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Enter Individual ID')"/></Input>
