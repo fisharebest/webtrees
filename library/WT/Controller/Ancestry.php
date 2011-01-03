@@ -133,33 +133,26 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 			return;
 		}
 		// parents
-		$famids = $person->getChildFamilies();
-		$parents = false;
-		$famrec = "";
-		$famid = "";
-		foreach ($famids as $famid=>$family) {
-			if (!is_null($family)) {
-				$famrec = $family->getGedcomRecord();
-				$parents = find_parents_in_record($famrec);
-				if ($parents) break;
-			}
+		$family=$person->getPrimaryChildFamily();
+		if (!$family && $SHOW_EMPTY_BOXES) {
+			$family=new WT_Family('');
 		}
 
-		if (($parents || $SHOW_EMPTY_BOXES) && $new && $depth>0) {
+		if ($family && $new && $depth>0) {
 			// print marriage info
 			echo "<span class=\"details1\" style=\"white-space: nowrap;\" >";
 			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"$Dindent\" border=\"0\" align=\"middle\" alt=\"\" /><a href=\"javascript: ".WT_I18N::translate('View Family')."\" onclick=\"expand_layer('sosa_".$sosa."'); return false;\" class=\"top\"><img id=\"sosa_".$sosa."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".WT_I18N::translate('View Family')."\" /></a> ";
 			echo "&nbsp;<span class=\"person_box\">&nbsp;".($sosa*2)."&nbsp;</span>&nbsp;".WT_I18N::translate('and');
 			echo "&nbsp;<span class=\"person_boxF\">&nbsp;".($sosa*2+1)." </span>&nbsp;";
-			if (!empty($family)) {
-				$marriage = $family->getMarriage();
-				if ($marriage->canShow()) $marriage->print_simple_fact(); else echo WT_I18N::translate('Private');
+			$marriage = $family->getMarriage();
+			if ($marriage->canShow()) {
+				$marriage->print_simple_fact();
 			}
 			echo "</span>";
-			// display parents recursively
+			// display parents recursively - or show empty boxes
 			echo "<ul style=\"list-style: none; display: block;\" id=\"sosa_$sosa\">";
-			$this->print_child_ascendancy($parents["HUSB"], $sosa*2, $depth-1);
-			$this->print_child_ascendancy($parents["WIFE"], $sosa*2+1, $depth-1);
+			$this->print_child_ascendancy($family->getHusbId(), $sosa*2, $depth-1);
+			$this->print_child_ascendancy($family->getWifeId(), $sosa*2+1, $depth-1);
 			echo "</ul>";
 		}
 		echo "</li>";
