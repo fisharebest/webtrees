@@ -51,18 +51,6 @@ function same_group($a, $b) {
 	return 0;
 }
 
-function id_in_cart($id) {
-	global $cart, $GEDCOM;
-	$ct = count($cart);
-	for ($i = 0; $i < $ct; $i++) {
-		$temp = $cart[$i];
-		if ($temp['id'] == $id && $temp['gedcom'] == $GEDCOM) {
-			return true;
-		}
-	}
-	return false;
-}
-
 /**
 * Main controller class for the Clippings page.
 */
@@ -269,13 +257,13 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 					case 'indi':
 						$ft = preg_match_all("/1 FAMC @(.*)@/", $record, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							if (!id_in_cart($match[$k][1])) {
+							if (!self::id_in_cart($match[$k][1])) {
 								$record = preg_replace("/1 FAMC @" . $match[$k][1] . "@.*/", "", $record);
 							}
 						}
 						$ft = preg_match_all("/1 FAMS @(.*)@/", $record, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							if (!id_in_cart($match[$k][1])) {
+							if (!self::id_in_cart($match[$k][1])) {
 								$record = preg_replace("/1 FAMS @" . $match[$k][1] . "@.*/", "", $record);
 							}
 						}
@@ -287,7 +275,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 					case 'fam':
 						$ft = preg_match_all("/1 CHIL @(.*)@/", $record, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							if (!id_in_cart($match[$k][1])) {
+							if (!self::id_in_cart($match[$k][1])) {
 								/* if the child is not in the list delete the record of it */
 								$record = preg_replace("/1 CHIL @" . $match[$k][1] . "@.*/", "", $record);
 							}
@@ -295,7 +283,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 
 						$ft = preg_match_all("/1 HUSB @(.*)@/", $record, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							if (!id_in_cart($match[$k][1])) {
+							if (!self::id_in_cart($match[$k][1])) {
 								/* if the husband is not in the list delete the record of him */
 								$record = preg_replace("/1 HUSB @" . $match[$k][1] . "@.*/", "", $record);
 							}
@@ -303,7 +291,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 
 						$ft = preg_match_all("/1 WIFE @(.*)@/", $record, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
-							if (!id_in_cart($match[$k][1])) {
+							if (!self::id_in_cart($match[$k][1])) {
 								/* if the wife is not in the list delete the record of her */
 								$record = preg_replace("/1 WIFE @" . $match[$k][1] . "@.*/", "", $record);
 							}
@@ -365,6 +353,19 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			$this->download_clipping();
 		}
 	}
+
+	public static function id_in_cart($id) {
+		global $cart, $GEDCOM;
+		$ct = count($cart);
+		for ($i = 0; $i < $ct; $i++) {
+			$temp = $cart[$i];
+			if ($temp['id'] == $id && $temp['gedcom'] == $GEDCOM) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * Loads everything in the clippings cart into a zip file.
 	 */
@@ -429,7 +430,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		if (($clipping['id'] == false) || ($clipping['id'] == ""))
 		return false;
 
-		if (!id_in_cart($clipping['id'])) {
+		if (!self::id_in_cart($clipping['id'])) {
 			$clipping['gedcom'] = $GEDCOM;
 			$ged_id=get_id_from_gedcom($GEDCOM);
 			$gedrec=find_gedcom_record($clipping['id'], $ged_id);
@@ -518,7 +519,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				$cfamids = WT_Person::getInstance($smatch[$i][1])->getSpouseFamilyIds();
 				if (count($cfamids) > 0) {
 					foreach ($cfamids as $indexval => $cfamid) {
-						if (!id_in_cart($cfamid)) {
+						if (!self::id_in_cart($cfamid)) {
 							$clipping = array ();
 							$clipping['type'] = "fam";
 							$clipping['id'] = $cfamid;

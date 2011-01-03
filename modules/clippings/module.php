@@ -135,13 +135,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			<div id="sb_clippings_content">';
 			$out .= $this->getCartList();
 			$root = null;
-			if ($this->controller->pid && !id_in_cart($this->controller->pid)) {
+			if ($this->controller->pid && !WT_Controller_Clippings::id_in_cart($this->controller->pid)) {
 				$root = WT_GedcomRecord::getInstance($this->controller->pid);
 				if ($root && $root->canDisplayDetails())
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$root->getXref().'" class="add_cart">
 					<img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $root->getListName()).'</a>';
 			}
-			else if ($this->controller->famid && !id_in_cart($this->controller->pid)) {
+			else if ($this->controller->famid && !WT_Controller_Clippings::id_in_cart($this->controller->pid)) {
 				$fam = WT_Family::getInstance($this->controller->famid);
 				if ($fam && $fam->canDisplayDetails()) {
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$fam->getXref().'" class="add_cart"> '.WT_I18N::translate('Add %s to cart', $fam->getFullName()).'</a><br />';
