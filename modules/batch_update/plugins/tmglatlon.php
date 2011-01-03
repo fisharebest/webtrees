@@ -3,7 +3,7 @@
  * Batch Update plugin for phpGedView - convert TMG lat/lon data
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2008 Greg Roach.  All rights reserved.
@@ -38,7 +38,7 @@ class tmglatlon_bu_plugin extends base_plugin {
 	}
 
 	static function getDescription() {
-		return WT_I18N::translate('Converts The Master Genealogist\'s proprietary lat/lon format to the GEDCOM 5.5.1 standard that PGV can read.  Note: changes are not highlighted in the final output shown below.');
+		return WT_I18N::translate('Converts The Master Genealogist\'s proprietary lat/lon format to the GEDCOM 5.5.1 standard that <b>webtrees</b> can read.  Note: changes are not highlighted in the final output shown below.');
 	}
 
 	// the default getActionPreview crashes on certain records, override the preview to just show the "after" results instead of the changes
