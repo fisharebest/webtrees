@@ -384,7 +384,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		//-- parent families
-		foreach ($families as $famid=>$family) {
+		foreach ($families as $family) {
 			$people = $this->controller->buildFamilyList($family, "parents");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getChildFamilyLabel($family));
 			?>
@@ -398,7 +398,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//-- step families
-		foreach ($this->controller->indi->getStepFamilies() as $famid=>$family) {
+		foreach ($this->controller->indi->getStepFamilies() as $family) {
 			$people = $this->controller->buildFamilyList($family, "step");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getStepFamilyLabel($family));
 			?>
@@ -412,8 +412,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//-- spouses and children
-		$families = $this->controller->indi->getSpouseFamilies();
-		foreach ($families as $famid=>$family) {
+		foreach ($this->controller->indi->getSpouseFamilies() as $family) {
 			$people = $this->controller->buildFamilyList($family, "spouse");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getSpouseFamilyLabel($family));
 			?>

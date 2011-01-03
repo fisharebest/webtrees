@@ -113,7 +113,7 @@ if (!defined('WT_WEBTREES')) {
 		//-- Build Parent Family ---------------------------------------------------
 		$personcount=0;
 		$families = $this->indi->getChildFamilies();
-		foreach ($families as $famid=>$family) {
+		foreach ($families as $family) {
 			$label = $this->indi->getChildFamilyLabel($family);
 			$people = $this->buildFamilyList($family, "parents");
 			$marrdate = $family->getMarriageDate();
@@ -404,7 +404,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 
 		//-- Build step families ----------------------------------------------------------------
-		foreach ($this->indi->getStepFamilies() as $famid=>$family) {
+		foreach ($this->indi->getStepFamilies() as $family) {
 			$label = $this->indi->getStepFamilyLabel($family);
 			$people = $this->buildFamilyList($family, "step");
 			if ($people) {
@@ -688,7 +688,7 @@ if (!defined('WT_WEBTREES')) {
 		//-- Build Spouse Family ---------------------------------------------------
 		$families = $this->indi->getSpouseFamilies();
 		//$personcount = 0;
-		foreach ($families as $famid=>$family) {
+		foreach ($families as $family) {
 			$people = $this->buildFamilyList($family, "spouse");
 			if ($this->indi->equals($people["husb"])) {
 				$spousetag = 'WIFE';
@@ -1063,8 +1063,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				$person_step   = "";
 
 				//-- parent families --------------------------------------
-				$fams = $person->getChildFamilies();
-				foreach ($fams as $famid=>$family) {
+				foreach ($person->getChildFamilies() as $family) {
 
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);
@@ -1077,9 +1076,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						// Husband ------------------------------
 						if ($husb || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$famid;
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 							} else {
-								$title = $famid." :".WT_I18N::translate('Family book chart');
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 							}
 							if ($husb) {
 								$person_parent="Yes";
@@ -1132,9 +1131,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						// Wife ------------------------------
 						if ($wife || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$famid;
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 							} else {
-								$title = $famid." :".WT_I18N::translate('Family book chart');
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 							}
 							if ($wife) {
 								$person_parent="Yes";
@@ -1202,7 +1201,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 				//-- step families -----------------------------------------
 				$fams = $person->getStepFamilies();
-				foreach ($fams as $famid=>$family) {
+				foreach ($fams as $family) {
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);
 						$wife = $family->getWife($person);
@@ -1216,9 +1215,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							// Husband -----------------------
 							if (($husb || $num>0) && $husb->getLabel() != ".") {
 								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
+									$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
+									$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 								}
 								if ($husb) {
 									$person_step="Yes";
@@ -1255,9 +1254,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							// Wife ----------------------------
 							if ($wife || $num>0) {
 								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
+									$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
+									$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 								}
 								if ($wife) {
 									$person_step="Yes";
@@ -1291,8 +1290,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				}
 
 				// Spouse Families -------------------------------------- @var $family Family
-				$fams = $person->getSpouseFamilies();
-				foreach ($fams as $famid=>$family) {
+				foreach ($person->getSpouseFamilies() as $family) {
 					if (!is_null($family)) {
 						$spouse = $family->getSpouse($person);
 						$children = $family->getChildren();
@@ -1302,9 +1300,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						// Spouse ------------------------------
 						if ($spouse || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$famid;
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 							} else {
-								$title = $famid." :".WT_I18N::translate('Family book chart');
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 							}
 							if ($spouse) {
 								if ($TEXT_DIRECTION=="ltr") {

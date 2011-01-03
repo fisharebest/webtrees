@@ -681,25 +681,21 @@ if ($action=="filter") {
 				}
 
 				//-- Build Indi Parents Family to get FBP and MBP  -----------
-				$families = $indi->getChildFamilies();
-				foreach ($families as $famid=>$family) {
-					if (!is_null($family)) {
-						$father = $family->getHusband();
-						$mother = $family->getWife();
-						if (!is_null($father)) {
-							$FBP = $father->getBirthPlace();
-						}
-						if (!is_null($mother)) {
-							$MBP = $mother->getBirthPlace();
-						}
+				foreach ($indi->getChildFamilies() as $family) {
+					$father = $family->getHusband();
+					$mother = $family->getWife();
+					if (!is_null($father)) {
+						$FBP = $father->getBirthPlace();
+					}
+					if (!is_null($mother)) {
+						$MBP = $mother->getBirthPlace();
 					}
 				}
 				if (!isset($FBP)) { $FBP = "UNK, UNK, UNK, UNK"; }
 				if (!isset($MBP)) { $MBP = "UNK, UNK, UNK, UNK"; }
 
 				//-- Build Indi Spouse Family to get marriage Date ----------
-				$families = $indi->getSpouseFamilies();
-				foreach ($families as $famid=>$family) {
+				foreach ($indi->getSpouseFamilies() as $family) {
 					$marrdate = $family->getMarriageDate();
 					$marrdate = ($marrdate->minJD()+$marrdate->maxJD())/2;  // Julian
 					$children = $family->getChildren();

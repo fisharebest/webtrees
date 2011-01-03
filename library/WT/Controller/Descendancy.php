@@ -113,14 +113,12 @@ class WT_Controller_Descendancy extends WT_Controller_Base {
 		global $personcount;
 
 		if (is_null($person)) return;
-		$families = $person->getSpouseFamilies();
 		if ($depth<2) return;
-		foreach ($families as $famid => $family) {
+		foreach ($person->getSpouseFamilies() as $family) {
 			print_sosa_family($family->getXref(), "", -1, $label, $person->getXref(), $gpid, $personcount);
 			$personcount++;
-			$children = $family->getChildren();
 			$i=1;
-			foreach ($children as $child) {
+			foreach ($family->getChildren() as $child) {
 				$this->print_child_family($child, $depth-1, $label.($i++).".", $person->getXref());
 			}
 		}
@@ -182,8 +180,7 @@ function print_child_descendancy(&$person, $depth) {
 	echo "</li>";
 
 	// loop for each spouse
-	$sfam = $person->getSpouseFamilies();
-	foreach ($sfam as $famid => $family) {
+	foreach ($person->getSpouseFamilies() as $family) {
 		$personcount++;
 		$this->print_family_descendancy($person, $family, $depth);
 	}

@@ -122,7 +122,7 @@ if (!defined('WT_WEBTREES')) {
 						//-- Get Parents Children's Name, DOB, DOD --------------------------
 						if (isset($people["children"])) {
 							$chBLDarray = Array();
-							foreach ($people["children"] as $key=>$child) {
+							foreach ($people["children"] as $child) {
 								$chnam   = $child->getAllNames();
 								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 								$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
@@ -399,13 +399,13 @@ if (!defined('WT_WEBTREES')) {
 
 							//-- Parent's Children's Details --------------------------------------
 							$elderdate = $family->getMarriageDate();
-							foreach ($people["children"] as $key=>$child) {
+							foreach ($people["children"] as $child) {
 
 								// Get Child's Children's Name DOB DOD ----
 								$chBLDarray=Array();
 								foreach ($child->getSpouseFamilies() as $childfamily) {
 									$chchildren = $childfamily->getChildren();
-									foreach ($chchildren as $key=>$chchild) {
+									foreach ($chchildren as $chchild) {
 										$chnam   = $chchild->getAllNames();
 										$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 										$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
@@ -568,7 +568,7 @@ if (!defined('WT_WEBTREES')) {
 						//-- Get Children's Name, DOB, DOD --------------------------
 						if (isset($people["children"])) {
 							$chBLDarray = Array();
-							foreach ($people["children"] as $key=>$child) {
+							foreach ($people["children"] as $child) {
 								$chnam   = $child->getAllNames();
 								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 								$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
@@ -868,13 +868,13 @@ if (!defined('WT_WEBTREES')) {
 						$styleadd = "";
 						if (isset($people["children"])) {
 							$elderdate = $family->getMarriageDate();
-							foreach ($people["children"] as $key=>$child) {
+							foreach ($people["children"] as $child) {
 
 								// Get Child's Children
 								$chBLDarray=Array();
 								foreach ($child->getSpouseFamilies() as $childfamily) {
 									$chchildren = $childfamily->getChildren();
-									foreach ($chchildren as $key=>$chchild) {
+									foreach ($chchildren as $chchild) {
 										$chnam   = $chchild->getAllNames();
 										$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 										$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
@@ -1001,7 +1001,7 @@ if (!defined('WT_WEBTREES')) {
 					//-- Build Spouse Family ---------------------------------------------------
 					$families = $this->indi->getSpouseFamilies();
 					//$personcount = 0;
-					foreach ($families as $famid=>$family) {
+					foreach ($families as $family) {
 						$people = $this->buildFamilyList($family, "spouse");
 						if ($this->indi->equals($people["husb"])) {
 							$spousetag = 'WIFE';
@@ -1013,7 +1013,7 @@ if (!defined('WT_WEBTREES')) {
 						//-- Get Children's Name, DOB, DOD --------------------------
 						if (isset($people["children"])) {
 							$chBLDarray = Array();
-							foreach ($people["children"] as $key=>$child) {
+							foreach ($people["children"] as $child) {
 								$chnam   = $child->getAllNames();
 								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 								$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
@@ -1032,7 +1032,7 @@ if (!defined('WT_WEBTREES')) {
 							//-- Spouse Husbands Parents --------------------------------------
 							$gparent=WT_Person::getInstance($people["husb"]->getXref());
 							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $famid=>$family) {
+							foreach ($fams as $family) {
 								if (!is_null($family)) {
 									$phusb = $family->getHusband($gparent);
 									$pwife = $family->getWife($gparent);
@@ -1167,7 +1167,7 @@ if (!defined('WT_WEBTREES')) {
 							//-- Spouse Wifes Parents --------------------------------------
 							$gparent=WT_Person::getInstance($people["wife"]->getXref());
 							$fams = $gparent->getChildFamilies();
-							foreach ($fams as $famid=>$family) {
+							foreach ($fams as $family) {
 								if (!is_null($family)) {
 									$husb = $family->getHusband($gparent);
 									$wife = $family->getWife($gparent);
@@ -1308,7 +1308,7 @@ if (!defined('WT_WEBTREES')) {
 						}
 
 						// Spouse Children
-						foreach ($people["children"] as $key=>$child) {
+						foreach ($people["children"] as $child) {
 
 							// Get Spouse child's marriage status
 							$married="";
@@ -1322,7 +1322,7 @@ if (!defined('WT_WEBTREES')) {
 							$chBLDarray=Array();
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$chchildren = $childfamily->getChildren();
-								foreach ($chchildren as $key=>$chchild) {
+								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 									$chfulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $chfulln);
@@ -1530,7 +1530,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 				//-- Parent families --------------------------------------
 				$fams = $person->getChildFamilies();
-				foreach ($fams as $famid=>$family) {
+				foreach ($fams as $family) {
 					$marrdate = $family->getMarriageDate();
 					$married  = WT_Date::Compare($censdate, $marrdate);
 
@@ -1544,7 +1544,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Get Parent Children's Name, DOB, DOD --------------------------
 						if (isset($children)) {
 							$chBLDarray = Array();
-							foreach ($children as $key=>$child) {
+							foreach ($children as $child) {
 								$chnam   = $child->getAllNames();
 								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 								$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
@@ -1560,15 +1560,15 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Parent Husband ------------------------------
 						if ($husb || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$famid;
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 							} else {
-								$title = $famid." :".WT_I18N::translate('Family book chart');
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 							}
 							if ($husb) {
 								//-- Parent Husbands Parents ----------------------
 								$gparent=WT_Person::getInstance($husb->getXref());
 								$parfams = $gparent->getChildFamilies();
-								foreach ($parfams as $famid=>$pfamily) {
+								foreach ($parfams as $pfamily) {
 									if (!is_null($pfamily)) {
 										$phusb = $pfamily->getHusband($gparent);
 										$pwife = $pfamily->getWife($gparent);
@@ -1652,15 +1652,15 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Parent Wife ------------------------------
 						if ($wife || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$famid;
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 							} else {
-								$title = $famid." :".WT_I18N::translate('Family book chart');
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 							}
 							if ($wife) {
 								//-- Parent Wifes Parents ----------------------
 								$gparent=WT_Person::getInstance($wife->getXref());
 								$parfams = $gparent->getChildFamilies();
-								foreach ($parfams as $famid=>$pfamily) {
+								foreach ($parfams as $pfamily) {
 									if (!is_null($pfamily)) {
 										$pwhusb = $pfamily->getHusband($gparent);
 										$pwwife = $pfamily->getWife($gparent);
@@ -1758,7 +1758,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 				//-- Step families -----------------------------------------
 				$fams = $person->getStepFamilies();
-				foreach ($fams as $famid=>$family) {
+				foreach ($fams as $family) {
 					$marrdate = $family->getMarriageDate();
 					$married  = WT_Date::Compare($censdate, $marrdate);
 					if (!is_null($family)) {
@@ -1771,7 +1771,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Get StepParent's Children's Name, DOB, DOD --------------------------
 						if (isset($children)) {
 							$chBLDarray = Array();
-							foreach ($children as $key=>$child) {
+							foreach ($children as $child) {
 								$chnam   = $child->getAllNames();
 								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 								$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
@@ -1789,15 +1789,15 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						} else {
 							if (($husb || $num>0) && $husb->getLabel() != ".") {
 								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
+									$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
+									$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 								}
 								if ($husb) {
 									//-- Step Husbands Parents -----------------------------
 									$gparent=WT_Person::getInstance($husb->getXref());
 									$parfams = $gparent->getChildFamilies();
-									foreach ($parfams as $famid=>$pfamily) {
+									foreach ($parfams as $pfamily) {
 										if (!is_null($pfamily)) {
 											$phusb = $pfamily->getHusband($gparent);
 											$pwife = $pfamily->getWife($gparent);
@@ -1884,15 +1884,15 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						} else {
 							if ($wife || $num>0) {
 								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
+									$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
+									$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 								}
 								if ($wife) {
 									//-- Step Wifes Parents ---------------------------
 									$gparent=WT_Person::getInstance($wife->getXref());
 									$parfams = $gparent->getChildFamilies();
-									foreach ($parfams as $famid=>$pfamily) {
+									foreach ($parfams as $pfamily) {
 										if (!is_null($pfamily)) {
 											$pwhusb = $pfamily->getHusband($gparent);
 											$pwwife = $pfamily->getWife($gparent);
@@ -1991,7 +1991,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 				// Spouse Families ------------------------------------------
 				$fams = $person->getSpouseFamilies();
-				foreach ($fams as $famid=>$family) {
+				foreach ($fams as $family) {
 					if (!is_null($family)) {
 						$spouse = $family->getSpouse($person);
 						$children = $family->getChildren();
@@ -2003,7 +2003,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Get Spouse's Children's Name, DOB, DOD --------------------------
 						if (isset($children)) {
 							$chBLDarray = Array();
-							foreach ($children as $key=>$child) {
+							foreach ($children as $child) {
 								$chnam   = $child->getAllNames();
 								$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 								$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
@@ -2019,16 +2019,16 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						//-- Spouse -----------------------------------------
 						if ($spouse || $num>0) {
 							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$famid;
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
 							} else {
-								$title = $famid." :".WT_I18N::translate('Family book chart');
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
 							}
 							if ($spouse) {
 
 								//-- Spouse Parents -----------------------------
 								$gparent=WT_Person::getInstance($spouse->getXref());
 								$spousefams = $gparent->getChildFamilies();
-								foreach ($spousefams as $famid=>$pfamily) {
+								foreach ($spousefams as $pfamily) {
 									if (!is_null($pfamily)) {
 										$phusb = $pfamily->getHusband($gparent);
 										$pwife = $pfamily->getWife($gparent);
@@ -2137,7 +2137,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$gparent=WT_Person::getInstance($child->getXref());
 								$fams = $gparent->getChildFamilies();
 								$chfams = $gparent->getSpouseFamilies();
-								foreach ($fams as $famid=>$family) {
+								foreach ($fams as $family) {
 									if (!is_null($family)) {
 										$husb = $family->getHusband($gparent);
 										$wife = $family->getWife($gparent);
@@ -2150,7 +2150,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$chBLDarray=Array();
 								foreach ($child->getSpouseFamilies() as $childfamily) {
 									$chchildren = $childfamily->getChildren();
-									foreach ($chchildren as $key=>$chchild) {
+									foreach ($chchildren as $chchild) {
 										$chnam   = $chchild->getAllNames();
 										$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
 										$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here

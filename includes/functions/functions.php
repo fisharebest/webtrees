@@ -3088,43 +3088,38 @@ function add_descendancy(&$list, $pid, $parents=false, $generations=-1) {
 	if (!isset($list[$pid]->generation)) {
 		$list[$pid]->generation = 0;
 	}
-	$famids = $person->getSpouseFamilies();
-	if (count($famids)>0) {
-		foreach ($famids as $famid => $family) {
-			if ($family) {
-				if ($parents) {
-					$husband = $family->getHusband();
-					$wife = $family->getWife();
-					if ($husband) {
-						$list[$husband->getXref()] = $husband;
-						if (isset($list[$pid]->generation))
-							$list[$husband->getXref()]->generation = $list[$pid]->generation-1;
-						else
-							$list[$husband->getXref()]->generation = 1;
-					}
-					if ($wife) {
-						$list[$wife->getXref()] = $wife;
-						if (isset($list[$pid]->generation))
-							$list[$wife->getXref()]->generation = $list[$pid]->generation-1;
-						else
-							$list[$wife->getXref()]->generation = 1;
-					}
-				}
-				$children = $family->getChildren();
-				foreach ($children as $child) {
-					if ($child) {
-						$list[$child->getXref()] = $child;
-						if (isset($list[$pid]->generation))
-							$list[$child->getXref()]->generation = $list[$pid]->generation+1;
-						else
-							$list[$child->getXref()]->generation = 2;
-					}
-				}
-				if ($generations == -1 || $list[$pid]->generation+1 < $generations) {
-					foreach ($children as $child) {
-						add_descendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
-					}
-				}
+	foreach ($person->getSpouseFamilies() as $family) {
+		if ($parents) {
+			$husband = $family->getHusband();
+			$wife = $family->getWife();
+			if ($husband) {
+				$list[$husband->getXref()] = $husband;
+				if (isset($list[$pid]->generation))
+					$list[$husband->getXref()]->generation = $list[$pid]->generation-1;
+				else
+					$list[$husband->getXref()]->generation = 1;
+			}
+			if ($wife) {
+				$list[$wife->getXref()] = $wife;
+				if (isset($list[$pid]->generation))
+					$list[$wife->getXref()]->generation = $list[$pid]->generation-1;
+				else
+					$list[$wife->getXref()]->generation = 1;
+			}
+		}
+		$children = $family->getChildren();
+		foreach ($children as $child) {
+			if ($child) {
+				$list[$child->getXref()] = $child;
+				if (isset($list[$pid]->generation))
+					$list[$child->getXref()]->generation = $list[$pid]->generation+1;
+				else
+					$list[$child->getXref()]->generation = 2;
+			}
+		}
+		if ($generations == -1 || $list[$pid]->generation+1 < $generations) {
+			foreach ($children as $child) {
+				add_descendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
 			}
 		}
 	}

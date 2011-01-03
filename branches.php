@@ -158,7 +158,7 @@ function print_fams($person, $famid=null) {
 	if (count($person->getSpouseFamilies())<1) {
 		echo $current;
 	}
-	foreach ($person->getSpouseFamilies() as $f=>$family) {
+	foreach ($person->getSpouseFamilies() as $family) {
 		$txt = $current;
 		$spouse = $family->getSpouse($person);
 		if ($spouse) {

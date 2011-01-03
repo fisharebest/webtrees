@@ -103,7 +103,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	function get_media_count() {
 		if ($this->mediaCount===null) {
 			$ct = preg_match("/\d OBJE/", $this->controller->indi->getGedcomRecord());
-			foreach ($this->controller->indi->getSpouseFamilies() as $k=>$sfam)
+			foreach ($this->controller->indi->getSpouseFamilies() as $sfam)
 				$ct += preg_match("/\d OBJE/", $sfam->getGedcomRecord());
 			$this->mediaCount = $ct;
 		}

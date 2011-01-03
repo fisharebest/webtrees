@@ -378,7 +378,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 		}
 		echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
 		echo "<table class=\"person_box\"><tr><td>";
-		foreach ($famids as $ind=>$family) {
+		foreach ($famids as $family) {
 			if ($family!=null) {
 				$husb = $family->getHusbId();
 				$wife = $family->getWifeId();
@@ -404,7 +404,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 				}
 
 				$children = $family->getChildren();
-				foreach ($children as $ind2=>$child) {
+				foreach ($children as $child) {
 					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					if ($child->canDisplayName()) {
 						$name = $child->getFullName();
@@ -422,7 +422,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			}
 		}
 		//-- echo the siblings
-		foreach ($cfamids as $ind=>$family) {
+		foreach ($cfamids as $family) {
 			if ($family!=null) {
 				$children = $family->getChildren();
 				if (count($children)>2) {
@@ -431,7 +431,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 				if (count($children)==2) {
 					echo '<span class="name1"><br />', WT_I18N::translate('Sibling'), '<br /></span>';
 				}
-				foreach ($children as $ind2=>$child) {
+				foreach ($children as $child) {
 					if (!$controller->rootPerson->equals($child) && !is_null($child)) {
 						echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 						if ($child->canDisplayName()) {

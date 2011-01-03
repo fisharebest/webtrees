@@ -159,7 +159,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo "<div id=\"map_content\">";
 					$famids = array();
 					$families = $this->controller->indi->getSpouseFamilies();
-					foreach ($families as $famid=>$family) {
+					foreach ($families as $family) {
 						$famids[] = $family->getXref();
 					}
 					$this->controller->indi->add_family_facts(false);

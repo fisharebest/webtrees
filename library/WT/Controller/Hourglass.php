@@ -214,7 +214,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		$children = array();
 		if ($count < $this->dgenerations) {
 			//-- put all of the children in a common array
-			foreach ($families as $famid => $family) {
+			foreach ($families as $family) {
 				$famNum ++;
 				$chs = $family->getChildren();
 				foreach ($chs as $c=>$child) $children[] = $child;
@@ -271,14 +271,16 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 				echo "<div style=\"width: ".($tbwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
 			}
 			$kcount = 0;
-			foreach ($families as $famid=>$family) $kcount+=$family->getNumberOfChildren();
+			foreach ($families as $family) {
+				$kcount+=$family->getNumberOfChildren();
+			}
 			if ($kcount==0) {
 				echo "<div style=\"width: ".($this->arrwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
 			} else {
 				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\" /></a></div>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
-					foreach ($families as $famid => $family) {
+					foreach ($families as $family) {
 						/* @var $family Family */
 						if (!is_null($family)) {
 							$spouse = $family->getSpouse($person);
@@ -298,7 +300,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 
 		//----- Print the spouse
 		if ($this->show_spouse) {
-			foreach ($families as $famid => $family) {
+			foreach ($families as $family) {
 				/* @var $family Family */
 				if (!is_null($family)) {
 					$spouse = $family->getSpouse($person);
@@ -331,10 +333,8 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 				//-- make sure there is more than 1 child in the family with parents
 				$cfamids = $person->getChildFamilies();
 				$num=0;
-				foreach ($cfamids as $famid=>$family) {
-					if (!is_null($family)) {
-						$num += $family->getNumberOfChildren();
-					}
+				foreach ($cfamids as $family) {
+					$num += $family->getNumberOfChildren();
 				}
 				// NOTE: If statement OK
 				if ($num>0) {
@@ -346,88 +346,82 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 					echo "<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 					echo "<table class=\"person_box\"><tr><td>";
 
-					foreach ($famids as $famid=>$family) {
-						if (!is_null($family)) {
-							$spouse = $family->getSpouse($person);
-							if (!empty($spouse)) {
-								$spid = $spouse->getXref();
-								echo "<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-								$name = $spouse->getFullName();
-								$name = rtrim($name);
-								if (hasRTLText($name))
-								echo "class=\"name2\">";
-								else echo "class=\"name1\">";
-								echo PrintReady($name);
-								echo "<br /></span></a>";
+					foreach ($famids as $family) {
+						$spouse = $family->getSpouse($person);
+						if (!empty($spouse)) {
+							$spid = $spouse->getXref();
+							echo "<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+							$name = $spouse->getFullName();
+							if (hasRTLText($name))
+							echo "class=\"name2\">";
+							else echo "class=\"name1\">";
+							echo PrintReady($name);
+							echo "<br /></span></a>";
 
-							}
+						}
 
-							$children = $family->getChildren();
-							foreach ($children as $id=>$child) {
-								$cid = $child->getXref();
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-								$name = $child->getFullName();
-								$name = rtrim($name);
-								if (hasRTLText($name))
-								echo "class=\"name2\">&lt; ";
-								else echo "class=\"name1\">&lt; ";
-								echo PrintReady($name);
+						$children = $family->getChildren();
+						foreach ($children as $id=>$child) {
+							$cid = $child->getXref();
+							echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+							$name = $child->getFullName();
+							if (hasRTLText($name))
+							echo "class=\"name2\">&lt; ";
+							else echo "class=\"name1\">&lt; ";
+							echo PrintReady($name);
 
-								echo "<br /></span></a>";
+							echo "<br /></span></a>";
 
-							}
 						}
 					}
 					//-- do we need to print this arrow?
 					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /> ";
 
 					//-- print the siblings
-					foreach ($cfamids as $famid=>$family) {
-						if (!is_null($family)) {
-							if (!is_null($family->getHusband()) || !is_null($family->getWife())) {
-								echo "<span class=\"name1\"><br />".WT_I18N::translate('Parents')."<br /></span>";
-								$husb = $family->getHusband();
-								if (!empty($husb)) {
-									$spid = $husb->getXref();
-									echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-									$name = $husb->getFullName();
-									$name = rtrim($name);
-									if (hasRTLText($name))
-									echo "class=\"name2\">";
-									else echo "class=\"name1\">";
-									echo PrintReady($name);
-									echo "<br /></span></a>";
-								}
-								$husb = $family->getWife();
-								if (!empty($husb)) {
-									$spid = $husb->getXref();
-									echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-									$name = $husb->getFullName();
-									$name = rtrim($name);
-									if (hasRTLText($name))
-									echo "class=\"name2\">";
-									else echo "class=\"name1\">";
-									echo PrintReady($name);
-									echo "<br /></span></a>";
-								}
+					foreach ($cfamids as $family) {
+						if (!is_null($family->getHusband()) || !is_null($family->getWife())) {
+							echo "<span class=\"name1\"><br />".WT_I18N::translate('Parents')."<br /></span>";
+							$husb = $family->getHusband();
+							if (!empty($husb)) {
+								$spid = $husb->getXref();
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+								$name = $husb->getFullName();
+								$name = rtrim($name);
+								if (hasRTLText($name))
+								echo "class=\"name2\">";
+								else echo "class=\"name1\">";
+								echo PrintReady($name);
+								echo "<br /></span></a>";
 							}
-							$children = $family->getChildren();
-							$num = $family->getNumberOfChildren();
-							if ($num>2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Siblings')."<br /></span>";
-							if ($num==2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Sibling')."<br /></span>";
-							foreach ($children as $id=>$child) {
-								$cid = $child->getXref();
-								if ($cid!=$pid) {
-									echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-									$name = $child->getFullName();
-									$name = rtrim($name);
-									if (hasRTLText($name))
-									echo "class=\"name2\"> ";
-									else echo "class=\"name1\"> ";
-									echo PrintReady($name);
-									echo "<br /></span></a>";
+							$husb = $family->getWife();
+							if (!empty($husb)) {
+								$spid = $husb->getXref();
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+								$name = $husb->getFullName();
+								$name = rtrim($name);
+								if (hasRTLText($name))
+								echo "class=\"name2\">";
+								else echo "class=\"name1\">";
+								echo PrintReady($name);
+								echo "<br /></span></a>";
+							}
+						}
+						$children = $family->getChildren();
+						$num = $family->getNumberOfChildren();
+						if ($num>2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Siblings')."<br /></span>";
+						if ($num==2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Sibling')."<br /></span>";
+						foreach ($children as $id=>$child) {
+							$cid = $child->getXref();
+							if ($cid!=$pid) {
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+								$name = $child->getFullName();
+								$name = rtrim($name);
+								if (hasRTLText($name))
+								echo "class=\"name2\"> ";
+								else echo "class=\"name1\"> ";
+								echo PrintReady($name);
+								echo "<br /></span></a>";
 
-								}
 							}
 						}
 					}
@@ -457,7 +451,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		$famids = $person->getSpouseFamilies();
 		if ($person->getNumberOfChildren()==0) return $depth-1;
 		$maxdc = $depth;
-		foreach ($famids as $famid => $family) {
+		foreach ($famids as $family) {
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $family->getGedcomRecord(), $match, PREG_SET_ORDER);
 			for ($i=0; $i<$ct; $i++) {
 				$chil = trim($match[$i][1]);

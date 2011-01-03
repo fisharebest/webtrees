@@ -225,7 +225,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			$this->pids[] = $newpid;
 			$families = $person->getSpouseFamilies();
 			//-- foreach gets the spouse and children of the individual.
-			foreach ($families as $famID => $family) {
+			foreach ($families as $family) {
 				if ($newpid != $family->getHusbId()) {
 					if ($gen>0) $this->pids[] = addFamily($family->getHusbId(), $gen-1);
 					else $this->pids[] = $family->getHusbId();
@@ -242,7 +242,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			}
 			$families = $person->getChildFamilies();
 			//-- foreach gets the father, mother and sibblings of the individual.
-			foreach ($families as $famID => $family) {
+			foreach ($families as $family) {
 				if ($gen>0) $this->pids[] = addFamily($family->getHusbId(), $gen-1);
 				else $this->pids[] = $family->getHusbId();
 				if ($gen>0) $this->pids[] = addFamily($family->getWifeId(), $gen-1);

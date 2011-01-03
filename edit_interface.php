@@ -2319,15 +2319,15 @@ case 'reorder_fams':
 			$person = WT_Person::getInstance($pid);
 			$fams = $person->getSpouseFamilies();
 			if ((!empty($option))&&($option=="bymarriage")) {
-				uasort($fams, array('Family', 'CompareMarrDate'));
+				usort($fams, array('WT_Family', 'CompareMarrDate'));
 			}
 			$i=0;
-			foreach ($fams as $famid=>$family) {
-				echo "<li class=\"facts_value\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$famid\" >";
-				echo "<span class=\"name2\">", PrintReady($family->getFullName()), "</span><br />";
+			foreach ($fams as $family) {
+				echo '<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_', $family->getXref(), '" >';
+				echo '<span class="name2">', $family->getFullName(), '</span><br />';
 				echo $family->format_first_major_fact(WT_EVENTS_MARR, 2);
-				echo "<input type=\"hidden\" name=\"order[$famid]\" value=\"$i\"/>";
-				echo "</li>";
+				echo '<input type="hidden" name="order[', $family->getXref(), ']" value="', $i, '"/>';
+				echo '</li>';
 				$i++;
 			}
 		?>

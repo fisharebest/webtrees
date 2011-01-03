@@ -384,8 +384,7 @@ class WT_TreeNav {
 	*/
 	function drawAllChildren(&$person, $gen=2) {
 		if (!empty($person) && $gen>0) {
-			$fams = $person->getSpouseFamilies();
-			foreach ($fams as $famid=>$family) {
+			foreach ($person->getSpouseFamilies() as $family) {
 				$children = $family->getChildren();
 				$indichilds = array();
 				foreach ($children as $ci=>$child) {
@@ -504,8 +503,7 @@ class WT_TreeNav {
 							echo PrintReady($person->getSexImage('small', $style)." ".$name);
 						?><br />
 						<?php
-						$fams = $person->getSpouseFamilies();
-						foreach ($fams as $famid=>$family) {
+						foreach ($person->getSpouseFamilies() as $family) {
 							$spouse = $family->getSpouse($person);
 							if (!is_null($spouse)) {
 								$name = $spouse->getFullName();
@@ -538,8 +536,7 @@ class WT_TreeNav {
 									</td>
 								</tr>
 								<?php
-								$fams = $person->getSpouseFamilies();
-								foreach ($fams as $famid=>$family) {
+								foreach ($person->getSpouseFamilies() as $family) {
 									$spouse = $family->getSpouse($person);
 									$mother = null;
 									if ($spouse!=null) {

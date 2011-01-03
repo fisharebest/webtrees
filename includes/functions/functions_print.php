@@ -134,30 +134,25 @@ function print_pedigree_person($pid, $style=1, $count=0, $personcount="1") {
 					$personlinks .= "<a href=\"treenav.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Interactive tree')."</b></a><br />";
 				}
 
-				$fams = $person->getSpouseFamilies();
-				/* @var $family Family */
-				foreach ($fams as $famid=>$family) {
-					if (!is_null($family)) {
-						$spouse = $family->getSpouse($person);
+				foreach ($person->getSpouseFamilies() as $family) {
+					$spouse = $family->getSpouse($person);
 
-						$children = $family->getChildren();
-						$num = count($children);
-						if ((!empty($spouse))||($num>0)) {
-							$personlinks .= "<a href=\"".$family->getHtmlUrl()."&amp;show_full=1\" ".$mouseAction1."><b>".WT_I18N::translate('Family with spouse')."</b></a><br />";
-							if (!empty($spouse)) {
-								$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\" $mouseAction1>";
-								if ($spouse->canDisplayName()) $personlinks .= PrintReady($spouse->getFullName());
-								else $personlinks .= WT_I18N::translate('Private');
-								$personlinks .= "</a><br />";
-							}
-						}
-						/* @var $child Person */
-						foreach ($children as $c=>$child) {
-							$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\" $mouseAction1>";
-							if ($child->canDisplayName()) $personlinks .= PrintReady($child->getFullName());
+					$children = $family->getChildren();
+					$num = count($children);
+					if ((!empty($spouse))||($num>0)) {
+						$personlinks .= "<a href=\"".$family->getHtmlUrl()."&amp;show_full=1\" ".$mouseAction1."><b>".WT_I18N::translate('Family with spouse')."</b></a><br />";
+						if (!empty($spouse)) {
+							$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\" $mouseAction1>";
+							if ($spouse->canDisplayName()) $personlinks .= PrintReady($spouse->getFullName());
 							else $personlinks .= WT_I18N::translate('Private');
-							$personlinks .= "<br /></a>";
+							$personlinks .= "</a><br />";
 						}
+					}
+					foreach ($children as $child) {
+						$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\" $mouseAction1>";
+						if ($child->canDisplayName()) $personlinks .= PrintReady($child->getFullName());
+						else $personlinks .= WT_I18N::translate('Private');
+						$personlinks .= "<br /></a>";
 					}
 				}
 				$personlinks .= "</td></tr></table>";

@@ -3454,8 +3454,7 @@ function RelativesSHandler($attrs) {
 		$list[$id] = $person;
 		switch ($group) {
 			case "child-family":
-				$famids = $person->getChildFamilies();
-				foreach ($famids as $family) {
+				foreach ($person->getChildFamilies() as $family) {
 					$husband = $family->getHusband();
 					$wife = $family->getWife();
 					if (!empty($husband)) {
@@ -3471,8 +3470,7 @@ function RelativesSHandler($attrs) {
 				}
 				break;
 			case "spouse-family":
-				$famids = $person->getSpouseFamilies();
-				foreach ($famids as $family) {
+				foreach ($person->getSpouseFamilies() as $family) {
 				$husband = $family->getHusband();
 					$wife = $family->getWife();
 					if (!empty($husband)) {

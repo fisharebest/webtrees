@@ -377,7 +377,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		//-- spouse and children --------------------------------------------------
 		$families = $this->controller->indi->getSpouseFamilies();
-		foreach ($families as $famid=>$family) {
+		foreach ($families as $family) {
 			echo "<tr><td><br /></td><td></td></tr>";
 			?>
 			<tr>
@@ -680,64 +680,61 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}
 
 					// Spouse Families -------------------------------------- @var $family Family
-					$fams = $person->getSpouseFamilies();
-					foreach ($fams as $famid=>$family) {
-						if (!is_null($family)) {
-							$spouse = $family->getSpouse($person);
-							$children = $family->getChildren();
-							$num = count($children);
+					foreach ($person->getSpouseFamilies() as $family) {
+						$spouse = $family->getSpouse($person);
+						$children = $family->getChildren();
+						$num = count($children);
 
-							// Spouse ------------------------------
-							if ($spouse || $num>0) {
+						// Spouse ------------------------------
+						if ($spouse || $num>0) {
+							if ($TEXT_DIRECTION=="ltr") {
+								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
+							} else {
+								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
+							}
+							if ($spouse) {
 								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
+									$title = WT_I18N::translate('Individual information').": ".$spouse->getXref();
 								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
+									$title = $spouse->getXref()." :".WT_I18N::translate('Individual information');
 								}
-								if ($spouse) {
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Individual information').": ".$spouse->getXref();
-									} else {
-										$title = $spouse->getXref()." :".WT_I18N::translate('Individual information');
-									}
-									$spouselinks .= "<a id=\"spouse\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
-									$spouselinks .= "&nbsp;".PrintReady($spouse->getFullName());
-									$spouselinks .= "</a>";
-									$spouselinks .= "<br />";
-									if ($spouse->getFullName() != "") {
-										$persons = "Yes";
-									}
+								$spouselinks .= "<a id=\"spouse\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
+								$spouselinks .= "&nbsp;".PrintReady($spouse->getFullName());
+								$spouselinks .= "</a>";
+								$spouselinks .= "<br />";
+								if ($spouse->getFullName() != "") {
+									$persons = "Yes";
 								}
 							}
+						}
 
-							// Children ------------------------------   @var $child Person
-							$hasChildren = false;
-							foreach ($children as $c=>$child) {
-								if ($child) {
-									if (!$hasChildren) {
-										$hasChildren = true;
-										$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
-									}
-									$persons="Yes";
-									$title = WT_I18N::translate('Individual information').": ".$child->getXref();
-									$spouselinks .= "<li id=\"flyout3\">";
-									$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
-									$spouselinks .= PrintReady($child->getFullName());
-									$spouselinks .= "</a>";
+						// Children ------------------------------   @var $child Person
+						$hasChildren = false;
+						foreach ($children as $c=>$child) {
+							if ($child) {
+								if (!$hasChildren) {
+									$hasChildren = true;
+									$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
 								}
+								$persons="Yes";
+								$title = WT_I18N::translate('Individual information').": ".$child->getXref();
+								$spouselinks .= "<li id=\"flyout3\">";
+								$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+								$spouselinks .= PrintReady($child->getFullName());
+								$spouselinks .= "</a>";
 							}
-							if ($hasChildren) {
-								$spouselinks .= "</ul>";
-							} 
-							if (!$hasChildren) {
-								$numchil = $family->getNumberOfChildren();
-								if ($numchil==0) {
-									$spouselinks .= "<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".WT_I18N::translate('This family remained childless')."<br />";
-								} else if ($numchil==1) {
-									$spouselinks .= WT_I18N::translate('1 child');
-								} else {
-									$spouselinks .= $numchil.'&nbsp;'.WT_I18N::translate('children');
-								}
+						}
+						if ($hasChildren) {
+							$spouselinks .= "</ul>";
+						} 
+						if (!$hasChildren) {
+							$numchil = $family->getNumberOfChildren();
+							if ($numchil==0) {
+								$spouselinks .= "<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".WT_I18N::translate('This family remained childless')."<br />";
+							} else if ($numchil==1) {
+								$spouselinks .= WT_I18N::translate('1 child');
+							} else {
+								$spouselinks .= $numchil.'&nbsp;'.WT_I18N::translate('children');
 							}
 						}
 					}

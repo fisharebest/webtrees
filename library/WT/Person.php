@@ -572,7 +572,7 @@ class WT_Person extends WT_GedcomRecord {
 				} else {
 					// only include family if it is displayable by current user
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
-						$this->spouseFamilies[$famid] = $family;
+						$this->spouseFamilies[] = $family;
 					}
 				}
 			}
@@ -687,31 +687,27 @@ class WT_Person extends WT_GedcomRecord {
 	* @return array array of Family objects
 	*/
 	function getStepFamilies() {
-		$families = array();
-		$fams = $this->getChildFamilies();
-		foreach ($fams as $family) {
-			if (!is_null($family)) {
-				$father = $family->getHusband();
-				if (!is_null($father)) {
-					$pfams = $father->getSpouseFamilies();
-					foreach ($pfams as $key1=>$fam) {
-						if (!is_null($fam) && !isset($fams[$key1]) && ($fam->getNumberOfChildren() > 0)) {
-							$families[$key1] = $fam;
-						}
+		$step_families=array();
+		$families=$this->getChildFamilies();
+		foreach ($families as $family) {
+			$father=$family->getHusband();
+			if ($father) {
+				foreach ($father->getSpouseFamilies() as $step_family) {
+					if (!$family->equals($step_family)) {
+						$step_families[]=$step_family;
 					}
 				}
-				$mother = $family->getWife();
-				if (!is_null($mother)) {
-					$pfams = $mother->getSpouseFamilies();
-					foreach ($pfams as $key1=>$fam) {
-						if (!is_null($fam) && !isset($fams[$key1]) && ($fam->getNumberOfChildren() > 0)) {
-							$families[$key1] = $fam;
-						}
+			}
+			$mother=$family->getWife();
+			if ($mother) {
+				foreach ($mother->getSpouseFamilies() as $step_family) {
+					if (!$family->equals($step_family)) {
+						$step_families[]=$step_family;
 					}
 				}
 			}
 		}
-		return $families;
+		return $step_families;
 	}
 	/**
 	* get global facts
@@ -889,7 +885,6 @@ class WT_Person extends WT_GedcomRecord {
 		$this->parseFacts();
 		//-- Get the facts from the family with spouse (FAMS)
 		foreach ($this->getSpouseFamilies() as $family) {
-			if (is_null($family)) continue;
 			$updfamily = $family->getUpdatedFamily(); //-- updated family ?
 			$spouse = $family->getSpouse($this);
 
@@ -1014,8 +1009,8 @@ class WT_Person extends WT_GedcomRecord {
 					if (is_null($parent)) {
 						continue;
 					}
-					foreach ($parent->getSpouseFamilies() as $sfamid=>$sfamily) {
-						if ($sfamid==$famid) {
+					foreach ($parent->getSpouseFamilies() as $sfamily) {
+						if ($sfamily->equals($family)) {
 							if ($parent->getSex()=='F') {
 								// show current family marriage only once
 								continue;
