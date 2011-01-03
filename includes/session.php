@@ -495,7 +495,9 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 }
 
 // Remember this setting
-$_SESSION['theme_dir']=WT_THEME_DIR;
+if (WT_THEME_DIR!='themes/_administration/') {
+	$_SESSION['theme_dir']=WT_THEME_DIR;
+}
 
 require WT_ROOT.WT_THEME_DIR.'theme.php';
 
