@@ -260,7 +260,10 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
 
 	$family=WT_Family::getInstance($famid);
-	$children=$family->getChildrenIds();
+	$children=array();
+	foreach ($family->getChildren() as $child) {
+		$children[]=$child->getXref();
+	}
 	$numchil=$family->getNumberOfChildren();
 	echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"2\"><tr>";
 	if ($sosa>0) echo "<td></td>";
@@ -275,7 +278,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	}
 	echo ')', getLRM(), '</span>';
 	echo "<br />";
-	// moved to top of list, changed from style to class, and font12 added by Nigel
+
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		echo "<br />";
 		echo "<span class='nowrap font12'>";

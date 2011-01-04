@@ -1927,7 +1927,10 @@ case 'reorder_children':
 		<?php
 			// reorder children in modified families [ 1840895 ]
 			$family = WT_Family::getInstance($pid);
-			$ids = $family->getChildrenIds();
+			$ids = array();
+			foreach ($family->getChildren() as $child) {
+				$ids[]=$child->getXref();
+			}
 			if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
 			$children = array();
 			foreach ($family->getChildren() as $k=>$child) {

@@ -549,13 +549,13 @@ class WT_Person extends WT_GedcomRecord {
 	function getSpouseFamilies() {
 		global $SHOW_LIVING_NAMES;
 
-		if (is_null($this->_spouseFamilies)) {
+		if ($this->_spouseFamilies===null) {
 			$this->_spouseFamilies=array();
 			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
 				if (!$family) {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $pid, '</span>';
+					echo '<span class="warning">', WT_I18N::translate('Unable to find record with ID'), ' ', $pid, '</span>';
 				} else {
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
 						$this->_spouseFamilies[]=$family;
@@ -594,13 +594,13 @@ class WT_Person extends WT_GedcomRecord {
 	function getChildFamilies() {
 		global $SHOW_LIVING_NAMES;
 
-		if (is_null($this->_childFamilies)) {
+		if ($this->_childFamilies===null) {
 			$this->_childFamilies=array();
 			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
 				if (!$family) {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $pid, '</span>';
+					echo '<span class="warning">', WT_I18N::translate('Unable to find record with ID'), ' ', $pid, '</span>';
 				} else {
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
 						$this->_childFamilies[]=$family;

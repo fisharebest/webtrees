@@ -31,10 +31,8 @@ if (!defined('WT_WEBTREES')) {
 class WT_Family extends WT_GedcomRecord {
 	private $husb = null;
 	private $wife = null;
-	private $children = array();
-	private $childrenIds = array();
+	private $_children = null;
 	private $marriage = null;
-	private $children_loaded = false;
 	private $numChildren   = false;
 	private $_isDivorced   = null;
 	private $_isNotMarried = null;
@@ -49,9 +47,6 @@ class WT_Family extends WT_GedcomRecord {
 			if ($data['f_wife']) {
 				$this->wife=WT_Person::getInstance($data['f_wife']);
 			}
-			if (preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $data['gedrec'], $matches)) {
-				$this->childrenIds=$matches[1];
-			}
 			$this->numChildren=$data['f_numchil'];
 			// Check for divorce, etc. *before* we privatize the data so
 			// we can correctly label spouses/ex-spouses/partners
@@ -65,13 +60,8 @@ class WT_Family extends WT_GedcomRecord {
 			if (preg_match('/^1 WIFE @(.+)@/m', $data, $match)) {
 				$this->wife=WT_Person::getInstance($match[1]);
 			}
-			if (preg_match_all('/^1 CHIL @(.+)@/m', $data, $match)) {
-				$this->childrenIds=$match[1];
-			}
 			if (preg_match('/^1 NCHI (\d+)/m', $data, $match)) {
 				$this->numChildren=$match[1];
-			} else {
-				$this->numChildren=count($this->childrenIds);
 			}
 			// Check for divorce, etc. *before* we privatize the data so
 			// we can correctly label spouses/ex-spouses/partners
@@ -149,44 +139,26 @@ class WT_Family extends WT_GedcomRecord {
 	 * @return array array of children Persons
 	 */
 	function getChildren() {
-		if (!$this->children_loaded) $this->loadChildren();
-		return $this->children;
-	}
-
-	/**
-	 * get the children ids
-	 * @return array array of children ids
-	 */
-	function getChildrenIds() {
-		if (!$this->children_loaded) $this->loadChildren();
-		return $this->childrenIds;
+		if ($this->_children===null) {
+			$this->_children=array();
+			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
+			foreach ($match[1] as $pid) {
+				$child=WT_Person::getInstance($pid);
+				if ($child) {
+					if ($child->canDisplayName()) {
+						$this->_children[]=$child;
+					}
+				} else {
+					echo '<span class="warning">', WT_I18N::translate('Unable to find record with ID'), ' ', $pid, '</span>';
+				}
+			}
+		}
+		return $this->_children;
 	}
 
 	// Static helper function to sort an array of families by marriage date
 	static function CompareMarrDate($x, $y) {
 		return WT_Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
-	}
-
-	/**
-	 * Load the children from the database
-	 * We used to load the children when the family was created, but that has performance issues
-	 * because we often don't need all the children
-	 * now, children are only loaded as needed
-	 */
-	function loadChildren() {
-		if ($this->children_loaded) return;
-		$this->childrenIds = array();
-		$this->numChildren = preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->gedrec, $smatch, PREG_SET_ORDER);
-		for ($i=0; $i<$this->numChildren; $i++) {
-			$this->childrenIds[] = $smatch[$i][1];
-		}
-		foreach ($this->childrenIds as $t=>$chil) {
-			$child=WT_Person::getInstance($chil);
-			if ($child) {
-				$this->children[] = $child;
-			}
-		}
-		$this->children_loaded = true;
 	}
 
 	/**
@@ -197,7 +169,7 @@ class WT_Family extends WT_GedcomRecord {
 
 		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->gedrec);
 		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->gedrec);
-		$nchi3=preg_match_all('/\n1 CHIL @(.*)@/', $this->gedrec, $smatch);
+		$nchi3=count($this->getChildren());
 		return $this->numChildren=max($nchi1, $nchi2, $nchi3);
 	}
 
@@ -237,10 +209,12 @@ class WT_Family extends WT_GedcomRecord {
 	 * @param Person $person
 	 */
 	function hasChild(&$person) {
-		if (is_null($person)) return false;
-		$this->loadChildren();
-		foreach ($this->children as $key=>$child) {
-			if ($person->equals($child)) return true;
+		if ($person) {
+			foreach ($this->getChildren() as $child) {
+				if ($person->equals($child)) {
+					return true;
+				}
+			}
 		}
 		return false;
 	}
