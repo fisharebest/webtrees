@@ -457,7 +457,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$menu->addSubmenu($submenu);
 			}
 
-			if (count($this->indi->getSpouseFamilyIds())>1) {
+			if (count($this->indi->getSpouseFamilies())>1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Reorder families'));
 				$submenu->addOnclick("return reorder_families('".$this->pid."');");
 				$submenu->addIcon('edit_fam');

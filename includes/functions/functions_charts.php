@@ -179,7 +179,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			$marriage->print_simple_fact();
-		} else echo WT_I18N::translate('Private');
+		}
 		echo "</a>";
 	}
 	else echo "<br />";
@@ -335,13 +335,11 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 				echo "</td>";
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
-					$famids = WT_Person::getInstance($chil)->getSpouseFamilyIds();
+					$famids = WT_Person::getInstance($chil)->getSpouseFamilies();
 					$maxfam = count($famids)-1;
 					for ($f=0; $f<=$maxfam; $f++) {
-						$famid_child = $famids[$f];
-						if (!$famid_child) continue;
+						$famid_child = $famids[$f]->getXref();
 						$parents = find_parents($famid_child);
-						if (!$parents) continue;
 						if ($parents["HUSB"] == $chil) $spouse = $parents["WIFE"];
 						else $spouse =  $parents["HUSB"];
 						// multiple marriages
