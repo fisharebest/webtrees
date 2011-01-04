@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Missing relatives facts')" /></Title>
-	<Description>Prints a list of individuals who has missing information</Description>
+	<Description>Prints a list of individuals who have missing information</Description>
 	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Enter Individual ID')"/></Input>
 	<Input name="relatives" type="select" default="direct-ancestors" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')"/></Input>
 	<Input name="maxgen" type="select" default="*" options="*=>*|1=>1|2=>2|3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|10=>10"><var var="WT_I18N::translate('Generations')"/></Input>
