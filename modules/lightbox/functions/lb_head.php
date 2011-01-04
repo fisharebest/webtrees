@@ -45,24 +45,24 @@ $reorder=safe_get('reorder', '1', '0');
 <!--
 	function reorder_media() {
 	var win02 = window.open(
-	"edit_interface.php?action=reorder_media&pid=<?php echo $pid; ?>&currtab=album", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
+	"edit_interface.php?action=reorder_media&pid=<?php echo $this->controller->indi->getXref(); ?>&currtab=album", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ");
 	if (window.focus) {win02.focus();}
 	}
 
 	function album_add() {
 		win03 = window.open(
-		"addmedia.php?action=showmediaform&linktoid=<?php echo $pid; ?>", "win03", "resizable=1, scrollbars=1, top=50, HEIGHT=780, WIDTH=600 ");
+		"addmedia.php?action=showmediaform&linktoid=<?php echo $this->controller->indi->getXref(); ?>", "win03", "resizable=1, scrollbars=1, top=50, HEIGHT=780, WIDTH=600 ");
 		if (window.focus) {win03.focus();}
 	}
 
 	function album_link() {
 		win04 = window.open(
-		"inverselink.php?linktoid=<?php echo $pid; ?>&linkto=person", "win04", "resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ");
+		"inverselink.php?linktoid=<?php echo $this->controller->indi->getXref(); ?>&linkto=person", "win04", "resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ");
 		win04.focus()
 	}
 
 	function goto_config_lightbox() {
-		window.location = "module.php?mod=lightbox&mod_action=lb_editconfig&pid=<?php echo $pid; ?>&gedcom=<?php echo $GEDCOM; ?>#lightbox";
+		window.location = "module.php?mod=lightbox&mod_action=admin_config&pid=<?php echo $this->controller->indi->getXref(); ?>&gedcom=<?php echo $GEDCOM; ?>#lightbox";
 	}
 -->
 </script>
