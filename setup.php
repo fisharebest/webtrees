@@ -254,7 +254,11 @@ if (empty($_POST['dbpass'])) $_POST['dbpass']='';
 
 try {
 	$db_version_ok=false;
-	$dbh=new PDO('mysql:host='.$_POST['dbhost'].';port='.$_POST['dbport'], $_POST['dbuser'], $_POST['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
+	if (substr($_POST['dbhost'], 0, 1)=='/') {
+		$dbh=new PDO('mysql:unix_socket='.$_POST['dbhost'], $_POST['dbuser'], $_POST['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
+	} else {
+		$dbh=new PDO('mysql:host='.$_POST['dbhost'].';port='.$_POST['dbport'], $_POST['dbuser'], $_POST['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
+	}
 	$dbh->exec("SET NAMES 'utf8'");
 	foreach ($dbh->query("SHOW VARIABLES LIKE 'VERSION'") as $row) {
 		if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
