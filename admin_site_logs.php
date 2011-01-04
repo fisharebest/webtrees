@@ -29,8 +29,9 @@ define('WT_SCRIPT_NAME', 'admin_site_logs.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-// Only admin users can access this page
+// Only managers can access this page
 if (!WT_USER_GEDCOM_ADMIN) {
+	// TODO: Check if we are a manager in *any* gedcom, not just the current one
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }

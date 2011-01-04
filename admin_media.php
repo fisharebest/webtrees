@@ -54,6 +54,12 @@ require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
+// Only admin users can access this page
+if (!WT_USER_IS_ADMIN) {
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+	exit;
+}
+
 /**
  * This functions checks if an existing directory is physically writeable
  * The standard PHP function only checks for the R/O attribute and doesn't

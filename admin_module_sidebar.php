@@ -25,7 +25,8 @@ define('WT_SCRIPT_NAME', 'admin_module_sidebar.php');
 require 'includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-if (!WT_USER_GEDCOM_ADMIN) {
+// Only admin users can access this page
+if (!WT_USER_IS_ADMIN) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }

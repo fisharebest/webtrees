@@ -39,16 +39,13 @@ require_once WT_ROOT.'includes/functions/functions.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-print_header(WT_I18N::translate('Manage sites'));
-//-- only allow managers here
-if (!WT_USER_GEDCOM_ADMIN) {
-	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	//-- display messages as to why the editing access was denied
-	if (!WT_USER_GEDCOM_ADMIN) echo "<br />".WT_I18N::translate('This user name cannot edit this GEDCOM.');
-	echo "<br /><br /><div class=\"center\"><a href=\"javascript: ".WT_I18N::translate('Close Window')."\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";
-	print_footer();
+// Only admin users can access this page
+if (!WT_USER_IS_ADMIN) {
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
+
+print_header(WT_I18N::translate('Manage sites'));
 
 $action = safe_GET('action');
 if (empty($action)) $action = safe_POST('action');

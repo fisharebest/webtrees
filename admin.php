@@ -28,7 +28,13 @@ define('WT_SCRIPT_NAME', 'admin.php');
 
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
-//global $SOURCE_ID_PREFIX, $REPO_ID_PREFIX, $MEDIA_ID_PREFIX, $FAM_ID_PREFIX, $GEDCOM_ID_PREFIX;
+
+// Only managers can access this page
+if (!WT_USER_GEDCOM_ADMIN) {
+	// TODO: Check if we are a manager in *any* gedcom, not just the current one
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+	exit;
+}
 
 print_header(WT_I18N::translate('Administration'));
 
