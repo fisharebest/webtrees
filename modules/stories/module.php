@@ -213,20 +213,19 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if ($ENABLE_AUTOCOMPLETE) {
 					require WT_ROOT.'/js/autocomplete.js.htm';
 				}
+				// "Help for this page" link
+				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
 				echo '<form name="story" method="post" action="#">';
 				echo '<input type="hidden" name="save" value="1" />';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
 				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '" />';
-				echo '<table class="center list_table">';
-				echo '<tr><td class="topbottombar" colspan="2">';
-				echo WT_I18N::translate('Add story'), help_link('add_story', $this->getName());
-				echo '</td></tr><tr><td class="descriptionbox" colspan="2">';
-				echo '<tr><td class="descriptionbox" colspan="2">';
+				echo '<table id="story_module">';
+				echo '<tr><th>';
 				echo WT_I18N::translate('Story title'), help_link('story_title', $this->getName());
-				echo '</td></tr><tr><td class="optionbox" colspan="2"><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td></tr>';
-				echo '<tr><td class="descriptionbox" colspan="2">';
+				echo '</th></tr><tr><td><textarea name="title" rows="1" cols="90" tabindex="2">', htmlspecialchars($title), '</textarea></td></tr>';
+				echo '<tr><th>';
 				echo WT_I18N::translate('Story'), help_link('add_story', $this->getName());
-				echo '</td></tr><tr><td class="optionbox" colspan="2">';
+				echo '</th></tr><tr><td>';
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 				// use CKeditor module
 					require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
@@ -242,9 +241,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					echo '<textarea name="story_body" rows="10" cols="90" tabindex="2">', htmlspecialchars($story_body), '</textarea>';
 				}
 				echo '</td></tr>';
-				echo '<tr><td class="descriptionbox">';
-				echo WT_I18N::translate('Person');
-				echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
+				echo '</table><table id="story_module2">';
+				echo '<tr>';
+				echo '<th>', WT_I18N::translate('Person'), '</th>';
+				echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
+				echo '</tr>';
+				echo '<tr>';
+				echo '<td class="optionbox ', $TEXT_DIRECTION, '">';
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
 				print_findindi_link("xref", "pid");
 				if ($xref) {
@@ -253,16 +256,14 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						echo ' ', $person->format_list('span');
 					}
 				}
-				echo '</td></tr>';
+				echo '</td>';
 				$languages=get_block_setting($block_id, 'languages');
-				echo '<tr><td class="descriptionbox wrap width33">';
-				echo WT_I18N::translate('Show this block for which languages?');
-				echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
+				echo '<td class="optionbox ', $TEXT_DIRECTION, '">';
 				echo edit_language_checkboxes('lang_', $languages);
-				echo '</td></tr>';
-				echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
-				echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></td></tr>';
-				echo '</table>';
+				echo '</td></tr></table>';
+				echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
+				echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" />';
+				echo '</p>';
 				echo '</form>';
 
 				print_footer();

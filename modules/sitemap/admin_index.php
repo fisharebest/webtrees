@@ -259,14 +259,15 @@ if ($action=="generate") {
 if ($action=="") {
 ?>
 
-<h3><?php echo WT_I18N::translate('Generate Sitemap files'), help_link('SITEMAP','sitemap'); ?></h3>
+<!-- "Help for this page" link -->
+<div id="page_help"><?php echo  help_link('SITEMAP','sitemap'); ?></div>
 
 <form method="post" enctype="multipart/form-data" id="sitemap" name="sitemap" action="module.php?mod=sitemap&amp;mod_action=admin_index">
 	<input type="hidden" name="action" value="generate" />
-	<table class="facts_table width100">
+	<table id="site_map">
 		<tr>
-			<td class="descriptionbox wrap width30"><?php echo WT_I18N::translate('GEDCOMs to store in Sitemap:'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></td>
-			<td class="optionbox" colspan="3">
+			<th><?php echo WT_I18N::translate('GEDCOMs to store in Sitemap:'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></th>
+			<td colspan="3">
 <?php
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 		echo " <input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
@@ -275,25 +276,25 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width30">
-			</td>
-			<td class="optionbox" colspan="3">
+			<th>
+			</th>
+			<td colspan="3">
 				<input type="checkbox" name="GEDCOM_Privacy" checked><?php echo WT_I18N::translate('No links to private information'); ?>
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width30" rowspan="6">
+			<th rowspan="6">
 				<?php echo WT_I18N::translate('Selected items to store in Sitemap:'), help_link('SM_ITEM_SELECT','sitemap'); ?>
-			</td>
-			<td class="topbottombar"><?php echo WT_I18N::translate('Item'); ?></td>
-			<td class="topbottombar"><?php echo WT_I18N::translate('Priority'); ?></td>
-			<td class="topbottombar"><?php echo WT_I18N::translate('Updates'); ?></td>
+			</th>
+			<th><?php echo WT_I18N::translate('Item'); ?></th>
+			<th><?php echo WT_I18N::translate('Priority'); ?></th>
+			<th><?php echo WT_I18N::translate('Updates'); ?></th>
 		</tr>
 		<tr>
-			<td class="optionbox">
+			<td>
 				<input type="checkbox" name="welcome_page" checked><?php echo WT_I18N::translate('Home page'); ?>
 			</td>
-			<td class="optionbox">
+			<td>
 				<select name="welcome_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
@@ -306,7 +307,7 @@ if ($action=="") {
 					<option value="9">0.9</option>
 				</select>
 			</td>
-			<td class="optionbox">
+			<td>
 				<select name="welcome_update">
 					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
 					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
@@ -319,8 +320,8 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_recs" checked><?php echo WT_I18N::translate('Individual information'); ?></td>
-			<td class="optionbox">
+			<td><input type="checkbox" name="indi_recs" checked><?php echo WT_I18N::translate('Individual information'); ?></td>
+			<td>
 				<select name="indirec_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
@@ -333,7 +334,7 @@ if ($action=="") {
 					<option value="9">0.9</option>
 				</select>
 			</td>
-			<td class="optionbox">
+			<td>
 				<select name="indirec_update">
 					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
 					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
@@ -346,8 +347,8 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="indi_list"><?php echo WT_I18N::translate('Individual List'); ?></td>
-			<td class="optionbox">
+			<td><input type="checkbox" name="indi_list"><?php echo WT_I18N::translate('Individual List'); ?></td>
+			<td>
 				<select name="indilist_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
@@ -360,7 +361,7 @@ if ($action=="") {
 					<option value="9">0.9</option>
 				</select>
 			</td>
-			<td class="optionbox">
+			<td>
 				<select name="indilist_update">
 					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
 					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
@@ -373,8 +374,8 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_recs" checked><?php echo WT_I18N::translate('Family information'); ?></td>
-			<td class="optionbox">
+			<td><input type="checkbox" name="fam_recs" checked><?php echo WT_I18N::translate('Family information'); ?></td>
+			<td>
 				<select name="famrec_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
@@ -387,7 +388,7 @@ if ($action=="") {
 					<option value="9">0.9</option>
 				</select>
 			</td>
-			<td class="optionbox">
+			<td>
 				<select name="famrec_update">
 					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
 					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
@@ -400,8 +401,8 @@ if ($action=="") {
 			</td>
 		</tr>
 		<tr>
-			<td class="optionbox"><input type="checkbox" name="fam_list"><?php echo WT_I18N::translate('Family List'); ?></td>
-			<td class="optionbox">
+			<td><input type="checkbox" name="fam_list"><?php echo WT_I18N::translate('Family List'); ?></td>
+			<td>
 				<select name="famlist_priority">
 					<option value="1">0.1</option>
 					<option value="2">0.2</option>
@@ -414,7 +415,7 @@ if ($action=="") {
 					<option value="9">0.9</option>
 				</select>
 			</td>
-			<td class="optionbox">
+			<td>
 				<select name="famlist_update">
 					<option value="always"><?php echo WT_I18N::translate('always'); ?></option>
 					<option value="hourly"><?php echo WT_I18N::translate('hourly'); ?></option>
@@ -427,7 +428,7 @@ if ($action=="") {
 			</td>
 		</tr>
 	</table>
-	<center><input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Generate'); ?>" /></center><br /><br />
+	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Generate'); ?>" />
 </form>
 
 <?php

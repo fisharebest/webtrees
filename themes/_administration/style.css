@@ -155,11 +155,15 @@ table#adduser   {width:100%;}
 #adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
 #adduser td, #adduser td+td+td {background-color:#eceadf;white-space:normal;padding:3px 3px 3px 10px;width:25%;} /* left-cols */
 #adduser td+td, #adduser td+td+td+td {background-color:#dcdcdc; width:250px; padding:3px;} /* right-cols */
-
 table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
 #adduser2 th {background-color:#dcdcdc; text-align:left; padding:0;font-size:100%;white-space:nowrap;}
 #adduser2 td, #adduser2 td+td, #adduser2 td+td+td, #adduser2 td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
 #adduser2 td+td+td+td {text-align:center;}
+
+/* USER clean */
+table#clean  {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px;}
+#clean th {border-bottom:2px solid LightGrey; text-align:left; padding:5px; font-size:105%;}
+#clean td {border-bottom:1px solid LightGrey; padding:3px;}
 
 /* GEDCOM config tables */
 .facts_table {text-align:left;width:100%;}
@@ -268,7 +272,17 @@ table.gm_check_outer {border-collapse: separate; border-spacing: 0; height:100px
 div.gm_check_top {padding:5px;}
 #gm_check_title {padding: 5px;}
 #gm_check_title span {font-weight:bold;}
-div.gm_check_details {width:98%; max-height:420px; overflow:auto;}
+div.gm_check_details {width:100%; max-height:420px; overflow:auto;}
 table.gm_check_details {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0; width:100%;}
 .gm_check_details   th {border-right:1px solid LightGrey; border-left:1px solid LightGrey; border-bottom:2px solid LightGrey; border-top:0; font-size:95%; font-weight:bold; padding:2px; text-align: center;}
 .gm_check_details td {border:1px solid LightGrey; border-top:0; font-size:95%;}
+
+/* SITE MAP MODULE*/
+table#site_map {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0 0 10px;}
+#site_map  th {border-bottom:1px solid LightGrey; padding:5px; font-size:105%; font-weight:bold; text-align: left; vertical-align:top;}
+#site_map  td {border-bottom:1px solid LightGrey; padding:5px;}
+
+/* STORIES MODULE */
+table#story_module, table#story_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0 0 10px 0; padding:5px; width:918px;}
+#story_module  th {font-size:105%; font-weight:bold; text-align: left; vertical-align:top;}
+#story_module2  th, #story_module2  td {vertical-align:top; text-align:left;}
