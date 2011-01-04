@@ -264,7 +264,7 @@ table.gm_check_outer {border-collapse: separate; border-spacing: 0; height:100px
 .gm_check_top   th {border-bottom:2px solid LightGrey; font-size:105%; font-weight:bold; padding:5px; text-align: center; white-space:nowrap;}
 .gm_check_top  td {border-bottom:1px solid LightGrey; padding:3px; white-space:nowrap;}
 .gm_check_top  .check_comment {font-size:75%; white-space:normal;}
-.gm_check_top a, .gm_check_top a:hover {color:blue;}
+.gm_check_top a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:blue;}
 div.gm_check_top {padding:5px;}
 #gm_check_title {padding: 5px;}
 #gm_check_title span {font-weight:bold;}
