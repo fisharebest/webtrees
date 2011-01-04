@@ -48,7 +48,7 @@ echo
 	'<div id="admin_head" class="ui-widget-content">',
 	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
 	'<div id="links">',
-	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
+	'<a href="index.php">', WT_I18N::translate('My Page'), '</a> | ',
 	logout_link(),
 	'<span>';
 	$language_menu=WT_MenuBar::getLanguageMenu();
