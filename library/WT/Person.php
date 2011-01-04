@@ -34,10 +34,6 @@ class WT_Person extends WT_GedcomRecord {
 	var $globalfacts = array();
 	var $mediafacts = array();
 	var $facts_parsed = false;
-	var $fams = null;
-	var $famc = null;
-	var $spouseFamilies = null;
-	var $childFamilies = null;
 	var $label = '';
 	var $highlightedimage = null;
 	var $file = '';
@@ -47,6 +43,8 @@ class WT_Person extends WT_GedcomRecord {
 	var $generation; // used in some lists to keep track of this Person's generation in that list
 
 	// Cached results from various functions.
+	private $_spouseFamilies=null;
+	private $_childFamilies=null;
 	private $_getBirthDate=null;
 	private $_getBirthPlace=null;
 	private $_getAllBirthDates=null;
@@ -546,38 +544,26 @@ class WT_Person extends WT_GedcomRecord {
 		if ($gap!=0 && $counter<1) $label .= '<br />&nbsp;';
 		return $label;
 	}
-	/**
-	* get family with spouse ids
-	* @return array array of the FAMS ids
-	*/
-	function getSpouseFamilyIds() {
-		if (is_null($this->fams)) {
-			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
-			$this->fams=$match[1];
-		}
-		return $this->fams;
-	}
-	/**
-	* get the families with spouses
-	* @return array array of Family objects
-	*/
+
+	// Get a list of this person's spouse families
 	function getSpouseFamilies() {
 		global $SHOW_LIVING_NAMES;
-		if (is_null($this->spouseFamilies)) {
-			$this->spouseFamilies=array();
-			foreach ($this->getSpouseFamilyIds() as $famid) {
-				$family=WT_Family::getInstance($famid);
-				if (is_null($family)) {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $famid, '</span>';
+
+		if (is_null($this->_spouseFamilies)) {
+			$this->_spouseFamilies=array();
+			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
+			foreach ($match[1] as $pid) {
+				$family=WT_Family::getInstance($pid);
+				if (!$family) {
+					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $pid, '</span>';
 				} else {
-					// only include family if it is displayable by current user
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
-						$this->spouseFamilies[] = $family;
+						$this->_spouseFamilies[]=$family;
 					}
 				}
 			}
 		}
-		return $this->spouseFamilies;
+		return $this->_spouseFamilies;
 	}
 
 	/**
@@ -603,40 +589,28 @@ class WT_Person extends WT_GedcomRecord {
 		$nchi3=count(fetch_child_ids($this->xref, $this->ged_id));
 		return max($nchi1, $nchi2, $nchi3);
 	}
-	/**
-	* get family with child ids
-	* @return array array of the FAMC ids
-	*/
-	function getChildFamilyIds() {
-		if (is_null($this->famc)) {
-			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
-			$this->famc=$match[1];
-		}
-		return $this->famc;
-	}
-	/**
-	* get an array of families with parents
-	* @return array array of Family objects indexed by family id
-	*/
+	
+	// Get a list of this person's child families (i.e. their parents)
 	function getChildFamilies() {
 		global $SHOW_LIVING_NAMES;
 
-		if (is_null($this->childFamilies)) {
-			$this->childFamilies=array();
-			foreach ($this->getChildFamilyIds() as $famid) {
-				$family=WT_Family::getInstance($famid);
-				if (is_null($family)) {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $famid, '</span>';
+		if (is_null($this->_childFamilies)) {
+			$this->_childFamilies=array();
+			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
+			foreach ($match[1] as $pid) {
+				$family=WT_Family::getInstance($pid);
+				if (!$family) {
+					echo '<span class="warning">', WT_I18N::translate('Unable to find family with ID'), ' ', $pid, '</span>';
 				} else {
-					// only include family if it is displayable by current user
 					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
-						$this->childFamilies[$famid]=$family;
+						$this->_childFamilies[]=$family;
 					}
 				}
 			}
 		}
-		return $this->childFamilies;
+		return $this->_childFamilies;
 	}
+
 	/**
 	* get primary family with parents
 	* @return Family object
@@ -1453,16 +1427,31 @@ class WT_Person extends WT_GedcomRecord {
 				$this->globalfacts[]=$newfact;
 			}
 		}
-		$newfamids = $diff->getChildFamilyIds();
-		if (is_null($this->famc)) $this->getChildFamilyIds();
-		foreach ($newfamids as $id) {
-			if (!in_array($id, $this->famc)) $this->famc[]=$id;
+
+		foreach ($diff->getChildFamilies() as $diff_family) {
+			$exists=false;
+			foreach ($this->getChildFamilies() as $family) {
+				if ($family->equals($diff_family)) {
+					$exists=true;
+					break;
+				}
+			}
+			if (!$exists) {
+				$this->_childFamilies[]=$diff_family;
+			}
 		}
 
-		$newfamids = $diff->getSpouseFamilyIds();
-		if (is_null($this->fams)) $this->getSpouseFamilyIds();
-		foreach ($newfamids as $id) {
-			if (!in_array($id, $this->fams)) $this->fams[]=$id;
+		foreach ($diff->getSpouseFamilies() as $diff_family) {
+			$exists=false;
+			foreach ($this->getSpouseFamilies() as $family) {
+				if ($family->equals($diff_family)) {
+					$exists=true;
+					break;
+				}
+			}
+			if (!$exists) {
+				$this->_spouseFamilies[]=$diff_family;
+			}
 		}
 	}
 
