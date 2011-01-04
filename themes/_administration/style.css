@@ -85,9 +85,6 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 /* FOOTER */
 #admin_footer {float:left; text-align:center; width:100%; margin-top:30px;}
 
-/* INDEX */
-#admin_index {}
-
 /* All DASHBOARD BLOCKS */
 #about, #block1 , #block2, #block3{background:OldLace; padding:5px; border:1px inset #D9D6C4;}
 #about h2, #block1 h2, #block2 h2, #block3 h2 {margin:0;}
