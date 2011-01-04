@@ -63,7 +63,7 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 #admin_head  {position:relative; height:70px; margin-bottom:10px; background-image: url("images/header.png"); background-repeat:no-repeat; background-position:top left;}
 #title  {position:absolute; left:47%; top: 20px; font-size:18px; font-weight:bold;}
 #info  {position:absolute; right:10px; bottom:0;text-align:right;}
-#links {position:absolute; left:10px; bottom:0; display:inline;margin-bottom:5px;}
+#links {position:absolute; left:10px; bottom:0; display:inline;margin-bottom:5px; white-space:nowrap;}
 #links li {display:inline;position:relative;white-space:nowrap;}
 #links li ul {display:none;	position:absolute;left:0px;top:1.5em; background: url("images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border: 1px solid #D9D6C4;z-index:999;}
 #links li ul li {display:block; padding: 0 5px;text-align:left;}
