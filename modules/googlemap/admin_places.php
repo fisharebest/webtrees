@@ -317,14 +317,14 @@ if ($action=="ImportFile") {
 ?>
 <form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&mod_action=places">
 	<input type="hidden" name="action" value="ImportFile2" />
-	<table class="facts_table">
+	<table class="gm_plac_edit ">
 		<tr>
-			<td class="descriptionbox"><?php echo WT_I18N::translate('File containing places (CSV)'), help_link('PLIF_FILENAME','googlemap'); ?></td>
+			<th><?php echo WT_I18N::translate('File containing places (CSV)'), help_link('PLIF_FILENAME','googlemap'); ?></th>
 			<td><input type="file" name="placesfile" size="50"></td>
 		</tr>
 		<?php if (count($placefiles)>0) { ?>
 		<tr>
-			<td class="descriptionbox"><?php echo WT_I18N::translate('Server file containing places (CSV)'), help_link('PLIF_LOCALFILE','googlemap'); ?></td>
+			<th><?php echo WT_I18N::translate('Server file containing places (CSV)'), help_link('PLIF_LOCALFILE','googlemap'); ?></th>
 			<td>
 				<select name="localfile">
 					<option></option>
@@ -338,15 +338,15 @@ if ($action=="ImportFile") {
 		</tr>
 		<?php } ?>
 		<tr>
-			<td class="descriptionbox"><?php echo WT_I18N::translate('Clear all place-locations before import?'), help_link('PLIF_CLEAN','googlemap'); ?></td>
+			<th><?php echo WT_I18N::translate('Clear all place-locations before import?'), help_link('PLIF_CLEAN','googlemap'); ?></th>
 			<td><input type="checkbox" name="cleardatabase"></td>
 		</tr>
 		<tr>
-			<td class="descriptionbox"><?php echo WT_I18N::translate('Update existing places only?'), help_link('PLIF_UPDATE','googlemap'); ?></td>
+			<th><?php echo WT_I18N::translate('Update existing places only?'), help_link('PLIF_UPDATE','googlemap'); ?></th>
 			<td><input type="checkbox" name="updateonly"></td>
 		</tr>
 		<tr>
-			<td class="descriptionbox"><?php echo WT_I18N::translate('Overwrite location-data with data from file?'), help_link('PLIF_OVERWRITE','googlemap'); ?></td>
+			<th><?php echo WT_I18N::translate('Overwrite location-data with data from file?'), help_link('PLIF_OVERWRITE','googlemap'); ?></th>
 			<td><input type="checkbox" name="overwritedata"></td>
 		</tr>
 	</table>
@@ -575,8 +575,8 @@ echo ">&nbsp;&nbsp;<input type=\"submit\" value=\"", WT_I18N::translate('View'),
 echo "</div></form>";
 
 $placelist=get_place_list_loc($parent, $display);
-
-echo "<table id=\"gm_plac_edit\"><tr>";
+echo "<div class=\"gm_plac_edit\">";
+echo "<table class=\"gm_plac_edit\"><tr>";
 echo "<th>", translate_fact('PLAC'), "</th>";
 echo "<th>", translate_fact('LATI'), "</th>";
 echo "<th>", translate_fact('LONG'), "</th>";
@@ -624,6 +624,7 @@ foreach ($placelist as $place) {
 }
 ?>
 </table>
+</div>
 <?php
 ?>
 	<table id="gm_manage">

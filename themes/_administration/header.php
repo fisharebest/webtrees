@@ -35,7 +35,14 @@ echo
 	'<link rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
 	$javascript,
-	'</head>',
+	'</head>';
+?>
+	<!-- This is a script that claims solve all pre-IE9 compatability issues -->
+	<!--[if lt IE 9]>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	<![endif]-->	
+<?php
+echo	
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
