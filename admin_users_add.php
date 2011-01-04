@@ -40,7 +40,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(WT_I18N::translate('Add user'));
+print_header(WT_I18N::translate('Add a new user'));
 
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers');
@@ -101,14 +101,14 @@ asort($all_gedcoms);
 // Save new user info to the database
 if ($action=='createuser') {
 	if (($action=='createuser' && $username!=$oldusername) && get_user_id($username)) {
-		print_header(WT_I18N::translate('Add user'));
+		print_header(WT_I18N::translate('Add a new user'));
 		echo "<span class=\"error\">", WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), "</span><br />";
 	} elseif (($action=='createuser' || $action=='edituser2' && $emailaddress!=$oldemailaddress) && get_user_by_email($emailaddress)) {
-		print_header(WT_I18N::translate('Add user'));
+		print_header(WT_I18N::translate('Add a new user'));
 		echo "<span class=\"error\">", WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), "</span><br />";
 	} else {
 		if ($pass1!=$pass2) {
-			print_header(WT_I18N::translate('Add user'));
+			print_header(WT_I18N::translate('Add a new user'));
 			echo "<span class=\"error\">", WT_I18N::translate('Passwords do not match.'), "</span><br />";
 		} else {
 			// New user
