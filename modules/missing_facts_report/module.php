@@ -36,7 +36,7 @@ class missing_facts_report_WT_Module extends WT_Module implements WT_Module_Repo
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Prints a list of individuals who has missing information');
+		return WT_I18N::translate('Prints a list of individuals who have missing information');
 	}
 
 	// Extend class WT_Module
