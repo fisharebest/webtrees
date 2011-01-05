@@ -215,45 +215,29 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 				$col = $event->temp % 6;
 				echo "</td><td valign=\"top\" class=\"person".$col."\">";
 				if (count($this->pids) > 6) echo $event->getParentObject()->getFullName()." - ";
-				$indi=$event->getParentObject();
+				$record=$event->getParentObject();
 				echo $event->getLabel();
 				echo " -- ";
-				if (get_class($indi)=="WT_Person") {
+				if ($record instanceof WT_Person) {
 					echo format_fact_date($event);
-				}
-				if (get_class($indi)=="WT_Family") {
+				} elseif ($record instanceof WT_Family) {
 					echo $gdate->Display(false);
-					$family=$indi;
-					$husbid=$family->getHusbId();
-					$wifeid=$family->getWifeId();
-					//-- Retrieve husband and wife age
-					for ($p=0; $p<count($this->pids); $p++) {
-						if ($this->pids[$p]==$husbid) {
-							$husb=$family->getHusband();
-							if (is_null($husb)) $husb = new WT_Person('');
-							$hdate=$husb->getBirthDate();
-							if ($hdate->isOK()) $ageh=get_age_at_event(WT_Date::GetAgeGedcom($hdate, $gdate), false);
-						}
-						else if ($this->pids[$p]==$wifeid) {
-							$wife=$family->getWife();
-							if (is_null($wife)) $wife = new WT_Person('');
-							$wdate=$wife->getBirthDate();
-							if ($wdate->isOK()) $agew=get_age_at_event(WT_Date::GetAgeGedcom($wdate, $gdate), false);
-						}
+					if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
+						$ageh=get_age_at_event(WT_Date::GetAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
+					} else {
+						$ageh=null;
 					}
-					if (!empty($ageh) && $ageh > 0) {
-						if (empty($agew)) {
-							echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
-						} else {
-							echo '<span class="age"> ', WT_I18N::translate('Husband\'s age'), ' ', $ageh, ' ';
-						}
+					if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
+						$agew=get_age_at_event(WT_Date::GetAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
+					} else {
+						$agew=null;
 					}
-					if (!empty($agew) && $agew > 0) {
-						if (empty($ageh)) {
-							echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $agew, '</span>';
-						} else {
-							echo WT_I18N::translate('Wife\'s age'), ' ', $agew, '</span>';
-						}
+					if ($ageh && $agew) {
+						echo '<span class="age"> ', WT_I18N::translate('Husband\'s age'), ' ', $ageh, ' ', WT_I18N::translate('Wife\'s age'), ' ', $agew, '</span>';
+					} elseif ($ageh) {
+						echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
+					} elseif ($agew) {
+						echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
 					}
 				}
 				echo " ".PrintReady($desc);

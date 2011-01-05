@@ -360,7 +360,7 @@ if (count($controller->people)>0) {
 	echo "</div>";
 	sort_facts($controller->indifacts);
 	$factcount=0;
-	foreach ($controller->indifacts as $indexval => $fact) {
+	foreach ($controller->indifacts as $fact) {
 		$controller->print_time_fact($fact);
 		$factcount++;
 	}
