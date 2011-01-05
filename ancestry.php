@@ -194,7 +194,7 @@ case 0:
 	// List
 	$pidarr=array();
 	echo '<ul style="list-style: none; display: block;" id="ancestry_chart', $TEXT_DIRECTION=='rtl' ? '_rtl' : '', '">';
-	$controller->print_child_ascendancy($controller->rootid, 1, $OLD_PGENS-1);
+	$controller->print_child_ascendancy(WT_Person::getInstance($controller->rootid), 1, $OLD_PGENS-1);
 	echo '</ul>';
 	echo '<br />';
 	break;

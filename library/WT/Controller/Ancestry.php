@@ -96,14 +96,17 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 	 * @param int $sosa child sosa number
 	 * @param int $depth the ascendancy depth to show
 	 */
-	function print_child_ascendancy($pid, $sosa, $depth) {
+	function print_child_ascendancy($person, $sosa, $depth) {
 		global $TEXT_DIRECTION, $OLD_PGENS, $WT_IMAGES, $Dindent, $SHOW_EMPTY_BOXES, $pidarr, $box_width;
 
-		$person = WT_Person::getInstance($pid);
+		if ($person) {
+			$pid=$person->getXref();
+		} else {
+			$pid='';
+		}
 		// child
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td><a name=\"sosa".$sosa."\"></a>";
-		$new=($pid=="" or !isset($pidarr["$pid"]));
 		if ($sosa==1) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\" /></td><td>";
 		else {
 			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"2\" border=\"0\" alt=\"\" />";
@@ -122,6 +125,7 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 		echo "<td class=\"details1\">&nbsp;<span dir=\"ltr\" class=\"person_box". (($sosa==1)?"NN":(($sosa%2)?"F":"")) . "\">&nbsp;$sosa&nbsp;</span>&nbsp;";
 		echo "</td><td class=\"details1\">";
 		$relation ="";
+		$new=($pid=="" or !isset($pidarr["$pid"]));
 		if (!$new) $relation = "<br />[=<a href=\"#sosa".$pidarr["$pid"]."\">".$pidarr["$pid"]."</a> - ".get_sosa_name($pidarr["$pid"])."]";
 		else $pidarr["$pid"]=$sosa;
 		echo get_sosa_name($sosa).$relation;
@@ -151,8 +155,8 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 			echo "</span>";
 			// display parents recursively - or show empty boxes
 			echo "<ul style=\"list-style: none; display: block;\" id=\"sosa_$sosa\">";
-			$this->print_child_ascendancy($family->getHusbId(), $sosa*2, $depth-1);
-			$this->print_child_ascendancy($family->getWifeId(), $sosa*2+1, $depth-1);
+			$this->print_child_ascendancy($family->getHusband(), $sosa*2, $depth-1);
+			$this->print_child_ascendancy($family->getWife(), $sosa*2+1, $depth-1);
 			echo "</ul>";
 		}
 		echo "</li>";
