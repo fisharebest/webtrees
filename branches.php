@@ -45,14 +45,9 @@ if (empty($ged)) {
 	$ged = $GEDCOM;
 }
 
-//-- rootid
-$rootid = "";
-if (WT_USER_ID) {
-	$rootid = WT_USER_ROOT_ID;
-	if (empty($_SESSION['user_ancestors']) || $_SESSION['user_ancestors'][1]!==$rootid) {
-		unset($_SESSION['user_ancestors']);
-		load_ancestors_array($rootid);
-	}
+$user_ancestors=array();
+if (WT_USER_GEDCOM_ID) {
+	load_ancestors_array(WT_Person::getInstance(WT_USER_GEDCOM_ID), 1);
 }
 
 //-- random surname
@@ -102,16 +97,11 @@ if ($surn) {
 	}
 	echo "</ol>";
 	echo "</fieldset>";
-	if ($rootid) {
-		$person = WT_Person::getInstance($rootid);
-		echo "<p class=\"center\">", WT_I18N::translate('Pedigree chart root person'), " : <a title=\"", $person->getXref(), "\" href=\"{$person->getHtmlUrl()}\">{$person->getFullName()}</a>";
-		echo "<br />".WT_I18N::translate('Direct line ancestors')." : ", count($_SESSION['user_ancestors']), "</p>";
-	}
 }
 print_footer();
 
 function print_fams($person, $famid=null) {
-	global $UNKNOWN_NN, $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $surn, $surn_script, $TEXT_DIRECTION;
+	global $UNKNOWN_NN, $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $surn, $surn_script, $TEXT_DIRECTION, $user_ancestors;
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
@@ -137,7 +127,7 @@ function print_fams($person, $famid=null) {
 	// current indi
 	echo "<li>";
 	$class = "";
-	$sosa = @array_search($person->getXref(), $_SESSION['user_ancestors']);
+	$sosa = array_search($person->getXref(), $user_ancestors);
 	if ($sosa) {
 		$class = "search_hit";
 		$sosa = "<a dir=$TEXT_DIRECTION target=\"_blank\" class=\"details1 {$person->getBoxStyle()}\" title=\"Sosa\" href=\"relationship.php?pid2=".WT_USER_ROOT_ID."&pid1=".$person->getXref()."\">&nbsp;{$sosa}&nbsp;</a>".sosa_gen($sosa);
@@ -163,7 +153,7 @@ function print_fams($person, $famid=null) {
 		$spouse = $family->getSpouse($person);
 		if ($spouse) {
 			$class = "";
-			$sosa2 = @array_search($spouse->getXref(), $_SESSION['user_ancestors']);
+			$sosa2 = array_search($spouse->getXref(), $user_ancestors);
 			if ($sosa2) {
 				$class = "search_hit";
 				$sosa2 = "<a dir=$TEXT_DIRECTION target=\"_blank\" class=\"details1 {$spouse->getBoxStyle()}\" title=\"Sosa\" href=\"relationship.php?pid2=".WT_USER_ROOT_ID."&pid1=".$spouse->getXref()."\">&nbsp;{$sosa2}&nbsp;</a>".sosa_gen($sosa2);
@@ -202,14 +192,14 @@ function print_fams($person, $famid=null) {
 	echo "</li>";
 }
 
-function load_ancestors_array($xref, $sosa=1) {
-	if ($xref) {
-		$_SESSION['user_ancestors'][$sosa] = $xref;
-		$person = WT_Person::getInstance($xref);
-		$famc = $person->getPrimaryChildFamily();
-		if ($famc) {
-			load_ancestors_array($famc->getHusbId(), $sosa*2);
-			load_ancestors_array($famc->getWifeId(), $sosa*2+1);
+function load_ancestors_array($person, $sosa=1) {
+	global $user_ancestors;
+	if ($person) {
+		$user_ancestors[$sosa]=$person->getXref();
+		foreach ($person->getChildFamilies() as $family) {
+			foreach ($family->getSpouses() as $parent) {
+				load_ancestors_array($parent, $sosa*2+($parent->getSex()!='F'));
+			}
 		}
 	}
 }
