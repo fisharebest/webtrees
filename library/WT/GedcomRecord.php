@@ -95,20 +95,20 @@ class WT_GedcomRecord {
 			if (version_compare(PHP_VERSION, '5.3', '>=')) {
 				// If we know what sort of object we are, we can query the table directly.
 				switch (get_called_class()) {
-				case 'Person':
+				case 'WT_Person':
 					$data=fetch_person_record($pid, $ged_id);
 					break;
-				case 'Family':
+				case 'WT_Family':
 					$data=fetch_family_record($pid, $ged_id);
 					break;
-				case 'Source':
+				case 'WT_Source':
 					$data=fetch_source_record($pid, $ged_id);
 					break;
-				case 'Media':
+				case 'WT_Media':
 					$data=fetch_media_record($pid, $ged_id);
 					break;
-				case 'Repository':
-				case 'Note':
+				case 'WT_Repository':
+				case 'WT_Note':
 					$data=fetch_other_record($pid, $ged_id);
 					break;
 				default:
@@ -123,7 +123,7 @@ class WT_GedcomRecord {
 			}
 
 			// If we didn't find the record in the database, it may be new/pending
-			if (!$data && WT_USER_CAN_EDIT && ($data=find_gedcom_record($pid, $ged_id, true))!='') {
+			if (!$data && WT_USER_CAN_EDIT && ($data=find_updated_record($pid, $ged_id, true))!='') {
 				$is_pending=true;
 			}
 
