@@ -32,7 +32,7 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Occupation Report')" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Occupation report')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 
 			<SetVar name="fill" value="" />
