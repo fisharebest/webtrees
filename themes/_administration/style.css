@@ -1,14 +1,11 @@
 /**
- * Style for Admiistration pages
+ * Style for Admistration pages
  *
  * Use this stylesheet to customize the display of your site.
  * To learn more about CSS visit http://www.w3.org/TR/REC-CSS2/
  *
  * webtrees:Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+ * Copyright (C) 2010 to 2011 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -101,7 +98,7 @@ h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size: 100% !important;}
 .ui-accordion .ui-accordion-content-active {display: block;}
 
-/*SITE CONFIG */
+/*SERVER CONFIG */
 .editable {width:100%; display:block}
 .editable:hover {color:red; cursor:pointer; cursor:hand;} /* both cursors needed for cross-browser support */
 .editable input, select {padding:0;}
@@ -121,7 +118,42 @@ table#log_list   {width:100%}
 #log_list_paginate {float:right;}
 #log_list th {min-width: 90px;}
 
-/* USER List */
+/* README */
+#readme {font-size:12px; padding:10px 20px;}
+#readme 	h1 {font-size:16px; font-weight:bold; margin-top:0;}
+#readme 	h2 {font-size:14px; font-weight:bold; margin-top:0;}
+#readme 	h3 {font-size:14px; font-weight:bold; margin:14px 0;}
+#readme	li {line-height:150%;}
+#readme	.back {float:right;}
+
+/* PHP INFO */
+div.php_info {padding:10px; text-align:center; width:100%;}
+table.php_info {border-collapse: separate; border-spacing: 0; text-align:left; width:98%}
+.php_info td {border-bottom:1px solid LightGrey; border-right:0;}
+.php_info td+td {border-left:0; padding-left:20px;}
+
+/* MANAGE SITES*/
+table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
+.sites  th {font-size:105%; font-weight:bold; text-align: left;}
+.sites  td {padding:5px;}
+
+/* MANAGE FAMILY TREES */
+table.gedcom_table {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px; width:100%;}
+.gedcom_table th {font-weight:bold; font-size:105%; text-align:left; width:15%}
+.gedcom_table th+th {font-weight:normal; width: 80%}
+table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:20px 0; width:100%;}
+.gedcom_table2 th {font-weight:bold; font-size:105%; padding:5px; text-align:center;}
+.gedcom_table2 td {text-align:center;}
+
+/* FAMILY TREE CONFIG */
+#tabs {width:100%}
+#file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
+#file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table  {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; font-size: 90%; padding:5px; width:100%;}
+#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show  td, #edit-options td {border-bottom:1px solid LightGrey; vertical-align:top;}
+#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:left;}
+#relatives {margin-left:120px;}
+
+/* USER LIST */
 table#list   {width:100%}
 /*#list th {text-align:left;white-space:nowrap;}*/
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
@@ -148,7 +180,7 @@ td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 #user-list_info {float:left;}
 #user-list_paginate {float:right;}
 
-/* USER add */
+/* USER ADD */
 table#adduser   {width:100%;}
 #adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
 #adduser td, #adduser td+td+td {background-color:#eceadf;white-space:normal;padding:3px 3px 3px 10px;width:25%;} /* left-cols */
@@ -158,53 +190,13 @@ table#adduser2   {margin-left:30px; margin-bottom:20px; width:80%;}
 #adduser2 td, #adduser2 td+td, #adduser2 td+td+td, #adduser2 td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
 #adduser2 td+td+td+td {text-align:center;}
 
-/* USER clean */
+/* BULK MESSAGING */
+ /* no styles used */
+	
+/* USER CLEAN */
 table#clean  {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px;}
 #clean th {border-bottom:2px solid LightGrey; text-align:left; padding:5px; font-size:105%;}
 #clean td {border-bottom:1px solid LightGrey; padding:3px;}
-
-/* GEDCOM config tables */
-#tabs {width:100%}
-#file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
-#file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table  {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; font-size: 90%; padding:5px; width:100%;}
-#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show  td, #edit-options td {border-bottom:1px solid LightGrey; vertical-align:top;}
-#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; font-weight:bold; font-size: 110%;}
-#relatives {margin-left:120px;}
-
-/* README */
-#readme {font-size:12px; padding:10px 20px;}
-#readme 	h1 {font-size:16px; font-weight:bold; margin-top:0;}
-#readme 	h2 {font-size:14px; font-weight:bold; margin-top:0;}
-#readme 	h3 {font-size:14px; font-weight:bold; margin:14px 0;}
-#readme	li {line-height:150%;}
-#readme	.back {float:right;}
-
-/* PHP INFO */
-div.php_info {padding:10px; text-align:center; width:100%;}
-table.php_info {border-collapse: separate; border-spacing: 0; text-align:left; width:98%}
-.php_info td {border-bottom:1px solid LightGrey; border-right:0;}
-.php_info td+td {border-left:0; padding-left:20px;}
-
-/* MANAGE GEDCOMS */
-table.gedcom_table {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px; width:100%;}
-.gedcom_table th {font-weight:bold; font-size:105%; text-align:left; width:15%}
-.gedcom_table th+th {font-weight:normal; width: 80%}
-table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:20px 0; width:100%;}
-.gedcom_table2 th {font-weight:bold; font-size:105%; padding:5px; text-align:center;}
-.gedcom_table2 td {text-align:center;}
-
-/* MANAGE MODULES */
-#installed_table_length {float:left;}
-#installed_table_filter {float:right;}
-#installed_table_info {float:left;}
-#installed_table_paginate {float:right;}
-#installed_table th {min-width: 60px;}
-
-/* MANAGE MENUS */
-table.modules_table {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px; margin-bottom:10px;}
-.modules_table  th {border-bottom:2px solid LightGrey; font-weight:bold; font-size:105%;}
-.modules_table td {border-bottom:2px solid LightGrey; padding:3px;}
-.modules_table .modules_table2 td {border:0;}
 
 /* MANAGE MEDIA */
 table#media_table   {width:100%;}
@@ -225,10 +217,18 @@ table.upload_media {border-collapse: separate; border-spacing: 0; margin:10px 0;
 .upload_media  td {background:OldLace; border:1px inset #D9D6C4; border-right:0; padding:5px;}
 .upload_media td+td {border-left:0; padding-left:20px;}
 
-/* MANAGE SITES*/
-table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
-.sites  th {font-size:105%; font-weight:bold; text-align: left;}
-.sites  td {padding:5px;}
+/* MANAGE MODULES */
+#installed_table_length {float:left;}
+#installed_table_filter {float:right;}
+#installed_table_info {float:left;}
+#installed_table_paginate {float:right;}
+#installed_table th {min-width: 60px;}
+
+/* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS  */
+table.modules_table {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; padding:5px; margin-bottom:10px;}
+.modules_table  th {border-bottom:2px solid LightGrey; font-weight:bold; font-size:105%;}
+.modules_table td {border-bottom:2px solid LightGrey; padding:3px; min-width:120px; vertical-align:top;}
+.modules_table .modules_table2 td {border:0;}
 
 /* CONFIG ALBUM MODULE */
 table#album_config {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0;}
@@ -252,6 +252,7 @@ table#faq_module, table#faq_module2 {background:OldLace; border:1px inset #D9D6C
 #faq_module2  th, #faq_module2  td {vertical-align:top; text-align:left;}
 
 /* GOOGLEMAP MODULE*/
+/* Configure */
 table#gm_config {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0 auto 10px; width:100%;}
 #gm_config  th {font-size:105%; font-weight:bold; padding:5px; text-align: left;}
 table#gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0; width:98%;}
@@ -259,17 +260,18 @@ table#gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-colla
 #gm_edit_config  td {border-bottom:1px solid LightGrey; margin-left:20px;}
 #gm_breadcrumb, #gm_breadcrumb a { color:green; font-weight:bold; font=size:105%; padding:5px;}
 #gm_active {padding: 5px; vertical-align:top;}
+/* Place edit */
 table.gm_plac_edit {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0 0 10px 0; padding: 0 5px; width:100%;}
 div.gm_plac_edit {width:100%; max-height:535px; overflow:auto;}
 .gm_plac_edit   th {border-bottom:2px solid LightGrey; font-size:105%; font-weight:bold; padding:5px; text-align: left;}
 .gm_plac_edit  td {border-bottom:1px solid LightGrey;}
 table#gm_manage {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0 0;  padding: 0 5px; width:98%;}
 #gm_manage  td {border-bottom:1px solid LightGrey;}
+/* Place check */
 table.gm_check_outer {border-collapse: separate; border-spacing: 0; height:100px; overflow:auto; width:98%}
 .gm_check_top {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0;  padding: 0;}
 .gm_check_top   th {border-bottom:2px solid LightGrey; font-size:105%; font-weight:bold; padding:5px; text-align: center; white-space:nowrap;}
 .gm_check_top  td {border-bottom:1px solid LightGrey; padding:3px; white-space:nowrap;}
-.check_comment {font-size:75%; white-space:normal;}
 .gm_check_top a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:blue;}
 div.gm_check_top {padding:5px;}
 #gm_check_title {padding: 5px;}
