@@ -379,46 +379,30 @@ if ($controller->rootPerson->canDisplayDetails()) {
 		echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
 		echo "<table class=\"person_box\"><tr><td>";
 		foreach ($famids as $family) {
-			if ($family!=null) {
-				$husb = $family->getHusbId();
-				$wife = $family->getWifeId();
-				if ($controller->rootid!=$husb) {
-					$spid=$family->getHusband();
+			$spouse=$family->getSpouse(WT_Person::getInstance($controller->rootid));
+			if ($spouse) {
+				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+				$name = $spouse->getFullName();
+				if (hasRTLText($name)) {
+					echo 'class="name2">';
 				} else {
-					$spid=$family->getWife();
+					echo 'class="name1">';
 				}
-				if (!empty($spid)) {
-					echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spid->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-					if ($spid->canDisplayName()) {
-						$name = $spid->getFullName();
-					} else {
-						$name = WT_I18N::translate('Private');
-					}
-					if (hasRTLText($name)) {
-						echo 'class="name2">';
-					} else {
-						echo 'class="name1">';
-					}
-					echo PrintReady($name);
-					echo '<br /></span></a>';
-				}
+				echo PrintReady($name);
+				echo '<br /></span></a>';
+			}
 
-				$children = $family->getChildren();
-				foreach ($children as $child) {
-					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-					if ($child->canDisplayName()) {
-						$name = $child->getFullName();
-					} else {
-						$name = WT_I18N::translate('Private');
-					}
-					if (hasRTLText($name)) {
-						echo "class=\"name2\">&lt; ";
-					} else {
-						echo "class=\"name1\">&lt; ";
-					}
-					echo PrintReady($name);
-					echo '<br /></span></a>';
+			$children = $family->getChildren();
+			foreach ($children as $child) {
+				echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+				$name = $child->getFullName();
+				if (hasRTLText($name)) {
+					echo "class=\"name2\">&lt; ";
+				} else {
+					echo "class=\"name1\">&lt; ";
 				}
+				echo PrintReady($name);
+				echo '<br /></span></a>';
 			}
 		}
 		//-- echo the siblings
