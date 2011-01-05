@@ -47,6 +47,11 @@ $WT_IMAGES=array(
 	'open'=>WT_THEME_DIR.'images/open.png',
 	'close'=>WT_THEME_DIR.'images/close.png',
 	'button_indi'=>WT_THEME_DIR.'images/indi.gif',
+	'button_family'=>WT_THEME_DIR.'images/family.gif',
+	'button_media'=>WT_THEME_DIR.'images/media.gif',
+	'button_repository'=>WT_THEME_DIR.'images/repository.gif',
+	'button_source'=>WT_THEME_DIR.'images/source.gif',
+	'button_find_facts'=>WT_THEME_DIR.'images/find_facts.png',
 	'zoomin'=>WT_THEME_DIR.'images/zoomin.gif',
 	'zoomout'=>WT_THEME_DIR.'images/zoomout.gif',
 	'minus'=>WT_THEME_DIR.'images/minus.gif',
@@ -65,6 +70,10 @@ $WT_IMAGES=array(
 	'ldarrow'=>WT_THEME_DIR.'images/ldarrow.gif',
 	'ddarrow'=>WT_THEME_DIR.'images/ddarrow.gif',
 	'udarrow'=>WT_THEME_DIR.'images/udarrow.gif',
+	'sex_f_9x9'=>'images/sex_f_9x9.gif',
+	'sex_m_9x9'=>'images/sex_m_9x9.gif',
+	'sex_u_9x9'=>'images/sex_u_9x9.gif',
+
 	// media images
 	'media'=>WT_THEME_DIR.'images/media/media.png',
 	'media_audio'=>WT_THEME_DIR.'images/media/audio.png',

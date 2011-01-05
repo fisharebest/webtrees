@@ -405,24 +405,24 @@ print_header(WT_I18N::translate('Configure family tree'));
 				</ul>
 			<!-- GEDCOM BASICS -->
 			<div id="file-options">
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('GEDCOM title'), help_link('gedcom_title'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo WT_I18N::translate('Language'), help_link('LANGUAGE'); ?></td>
-						<td class="optionbox width60"><?php echo edit_field_language('GEDCOMLANG', $LANGUAGE); ?></td>
+						<td><?php echo WT_I18N::translate('Language'), help_link('LANGUAGE'); ?></td>
+						<td><?php echo edit_field_language('GEDCOMLANG', $LANGUAGE); ?></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Default person for pedigree and descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
 						</td>
-						<td class="optionbox width60 wrap">
+						<td class="  wrap">
 							<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo $PEDIGREE_ROOT_ID; ?>" size="5" />
 							<?php
 								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");
@@ -438,10 +438,10 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT">
 							<?php
 							foreach (array(
@@ -466,85 +466,85 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</select></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Display Hebrew thousands'), help_link('DISPLAY_JEWISH_THOUSANDS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_THOUSANDS', get_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_THOUSANDS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Display Hebrew gershayim'), help_link('DISPLAY_JEWISH_GERESHAYIM'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_DISPLAY_JEWISH_GERESHAYIM', get_gedcom_setting(WT_GED_ID, 'DISPLAY_JEWISH_GERESHAYIM')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Use RIN number instead of GEDCOM ID'), help_link('USE_RIN'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_USE_RIN', get_gedcom_setting(WT_GED_ID, 'USE_RIN')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Automatically create globally unique IDs'), help_link('GENERATE_GUID'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_GENERATE_UIDS', get_gedcom_setting(WT_GED_ID, 'GENERATE_UIDS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Add spaces where notes were wrapped'), help_link('WORD_WRAPPED_NOTES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_WORD_WRAPPED_NOTES', get_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES')); ?>
 						</td>
 					</tr>
 				</table>
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td colspan="6" class="subbar" colspan="2"><?php echo WT_I18N::translate('ID settings'); ?></td>
+						<th colspan="6" colspan="2"><?php echo WT_I18N::translate('ID settings'); ?></th>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Individual ID prefix'), help_link('GEDCOM_ID_PREFIX'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<input type="text" name="NEW_GEDCOM_ID_PREFIX" dir="ltr" value="<?php echo $GEDCOM_ID_PREFIX; ?>" size="5" />
 						</td>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Family ID prefix'), help_link('FAM_ID_PREFIX'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<input type="text" name="NEW_FAM_ID_PREFIX" dir="ltr" value="<?php echo $FAM_ID_PREFIX; ?>" size="5" />
 						</td>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Source ID prefix'), help_link('SOURCE_ID_PREFIX'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<input type="text" name="NEW_SOURCE_ID_PREFIX" dir="ltr" value="<?php echo $SOURCE_ID_PREFIX; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap"><?php echo WT_I18N::translate('Repository ID prefix'), help_link('REPO_ID_PREFIX'); ?></td>
-						<td class="optionbox"><input type="text" name="NEW_REPO_ID_PREFIX" dir="ltr" value="<?php echo $REPO_ID_PREFIX; ?>" size="5" />
+						<td><?php echo WT_I18N::translate('Repository ID prefix'), help_link('REPO_ID_PREFIX'); ?></td>
+						<td><input type="text" name="NEW_REPO_ID_PREFIX" dir="ltr" value="<?php echo $REPO_ID_PREFIX; ?>" size="5" />
 						</td>
-						<td class="descriptionbox nowrap"><?php echo WT_I18N::translate('Media ID prefix'), help_link('MEDIA_ID_PREFIX'); ?></td>
-						<td class="optionbox"><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php echo $MEDIA_ID_PREFIX; ?>" size="5" />
+						<td><?php echo WT_I18N::translate('Media ID prefix'), help_link('MEDIA_ID_PREFIX'); ?></td>
+						<td><input type="text" name="NEW_MEDIA_ID_PREFIX" dir="ltr" value="<?php echo $MEDIA_ID_PREFIX; ?>" size="5" />
 						</td>
-						<td class="descriptionbox nowrap"><?php echo WT_I18N::translate('Note ID prefix'), help_link('NOTE_ID_PREFIX'); ?></td>
-						<td class="optionbox"><input type="text" name="NEW_NOTE_ID_PREFIX" dir="ltr" value="<?php echo $NOTE_ID_PREFIX; ?>" size="5" />
+						<td><?php echo WT_I18N::translate('Note ID prefix'), help_link('NOTE_ID_PREFIX'); ?></td>
+						<td><input type="text" name="NEW_NOTE_ID_PREFIX" dir="ltr" value="<?php echo $NOTE_ID_PREFIX; ?>" size="5" />
 						</td>
 					</tr>
 				</table>
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="subbar" colspan="2"><?php echo WT_I18N::translate('Contact Information'); ?></td>
+						<td colspan="2"><?php echo WT_I18N::translate('Contact Information'); ?></td>
 					</tr>
 					<tr>
 						<?php
@@ -552,16 +552,16 @@ print_header(WT_I18N::translate('Configure family tree'));
 							$WEBTREES_EMAIL = "webtrees-noreply@".preg_replace("/^www\./i", "", $_SERVER["SERVER_NAME"]);
 						}
 						?>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('webtrees reply address'), help_link('WEBTREES_EMAIL'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php echo $WEBTREES_EMAIL; ?>" size="50" dir="ltr" /></td>
+						<td><input type="text" name="NEW_WEBTREES_EMAIL" value="<?php echo $WEBTREES_EMAIL; ?>" size="50" dir="ltr" /></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Genealogy contact'), help_link('CONTACT_USER_ID'); ?>
 						</td>
-						<td class="optionbox width60"><select name="NEW_CONTACT_USER_ID">
+						<td><select name="NEW_CONTACT_USER_ID">
 						<?php
 							$CONTACT_USER_ID=get_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID');
 							foreach (get_all_users() as $user_id=>$user_name) {
@@ -576,10 +576,10 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Support contact'), help_link('WEBMASTER_USER_ID'); ?>
 						</td>
-						<td class="optionbox width60"><select name="NEW_WEBMASTER_USER_ID">
+						<td><select name="NEW_WEBMASTER_USER_ID">
 						<?php
 							$WEBMASTER_USER_ID=get_gedcom_setting(WT_GED_ID, 'WEBMASTER_USER_ID');
 							foreach (get_all_users() as $user_id=>$user_name) {
@@ -594,54 +594,54 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php echo WT_I18N::translate('Web Site and META Tag Settings'); ?></td>
+						<td colspan="2"><?php echo WT_I18N::translate('Web Site and META Tag Settings'); ?></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Add to TITLE header tag'), help_link('META_TITLE'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" />
+						<td><input type="text" dir="ltr" name="NEW_META_TITLE" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'META_TITLE')); ?>" />
 						</td>
 					</tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Description META tag'), help_link('META_DESCRIPTION'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" /><br />
+						<td><input type="text" dir="ltr" name="NEW_META_DESCRIPTION" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION'); ?>" /><br />
 						<?php echo WT_I18N::translate('Leave this field empty to use the title of the currently active database.'); ?></td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Robots META tag'), help_link('META_ROBOTS'); ?>
 						</td>
-						<td class="optionbox width60"><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_ROBOTS'); ?>" /><br />
+						<td><input type="text" dir="ltr" name="NEW_META_ROBOTS" value="<?php echo get_gedcom_setting(WT_GED_ID, 'META_ROBOTS'); ?>" /><br />
 						</td>
 					</tr>
 				</table>
 			</div>
 			<!-- PRIVACY OPTIONS -->
 			<div id="privacy">
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php  echo radio_buttons('NEW_HIDE_LIVE_PEOPLE', array(false=>WT_I18N::translate('disable'),true=>WT_I18N::translate('enable')), $HIDE_LIVE_PEOPLE, ''); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show dead people'), help_link('SHOW_DEAD_PEOPLE'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<?php echo edit_field_access_level("SHOW_DEAD_PEOPLE", get_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php /* I18N: ... [who were] born in the last XX years or died in the last YY years */ echo WT_I18N::translate('Extend privacy to dead people'), help_link('KEEP_ALIVE'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<?php
 							echo
 								/* I18N: Extend privacy to dead people [who were] ... */
@@ -653,36 +653,36 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show private relationships'), help_link('SHOW_PRIVATE_RELATIONSHIPS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php  echo edit_field_yes_no('SHOW_PRIVATE_RELATIONSHIPS', get_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Age at which to assume a person is dead'), help_link('MAX_ALIVE_AGE'); ?>
 						</td>
-						<td class="optionbox">
+						<td>
 							<input type="text" name="MAX_ALIVE_AGE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'); ?>" size="5" />
 						</td>
 					</tr>
 				</table>
 				<br />
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="topbottombar" colspan="4">
+						<th colspan="4">
 							<?php echo WT_I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?>
-						</td>
+						</th>
 					</tr>
 			<?php
 
@@ -704,18 +704,18 @@ print_header(WT_I18N::translate('Configure family tree'));
 
 			uasort($all_tags, 'utf8_strcasecmp');
 
-			echo '<tr><td class="optionbox" width="*">';
+			echo '<tr><td width="*">';
 			echo '<input type="text" class="pedigree_form" name="xref" id="xref" size="6" />';
 			print_findindi_link("xref","");
 			print_findfamily_link("xref");
 			print_findsource_link("xref");
 			print_findrepository_link("xref");
 			print_findmedia_link("xref", "1media");
-			echo '</td><td class="optionbox" width="*">';
+			echo '</td><td width="*">';
 			echo select_edit_control('tag_type', $all_tags, '', null, null);
-			echo '</td><td class="optionbox" width="1">';
+			echo '</td><td width="1">';
 			echo select_edit_control('resn', $PRIVACY_CONSTANTS, null, 'privacy', null);
-			echo '</td><td class="optionbox" width="1">';
+			echo '</td><td width="1">';
 			echo '<input type="button" value="', WT_I18N::translate('Add'), '" onClick="document.configform.elements[\'action\'].value=\'add\';document.configform.submit();" />';
 			echo '<input type="hidden" name="default_resn_id" value="">'; // value set by JS
 			echo '</td></tr>';
@@ -726,7 +726,7 @@ print_header(WT_I18N::translate('Configure family tree'));
 				" ORDER BY xref IS NULL, tag_type IS NULL, xref, tag_type"
 			)->execute(array(WT_GED_ID))->fetchAll();
 			foreach ($rows as $row) {
-				echo '<tr><td class="optionbox" width="*">';
+				echo '<tr><td width="*">';
 				if ($row->xref) {
 					$record=WT_GedcomRecord::getInstance($row->xref);
 					if ($record) {
@@ -739,16 +739,16 @@ print_header(WT_I18N::translate('Configure family tree'));
 				} else {
 					echo '&nbsp;';
 				}
-				echo '</td><td class="optionbox" width="*">';
+				echo '</td><td width="*">';
 				if ($row->tag_type) {
 					// I18N: e.g. Marriage (MARR)
 					echo WT_I18N::translate('%1$s [%2$s]', translate_fact($row->tag_type), $row->tag_type);
 				} else {
 					echo '&nbsp;';
 				}
-				echo '</td><td class="optionbox" width="1">';
+				echo '</td><td width="1">';
 				echo $PRIVACY_CONSTANTS[$row->resn];
-				echo '</td><td class="optionbox" width="1">';
+				echo '</td><td width="1">';
 				echo '<input type="button" value="', WT_I18N::translate('Delete'), '" onClick="document.configform.elements[\'action\'].value=\'delete\';document.configform.elements[\'default_resn_id\'].value=\''.$row->default_resn_id.'\';document.configform.submit();" />';
 				echo '</td></tr>';
 			}
@@ -757,166 +757,166 @@ print_header(WT_I18N::translate('Configure family tree'));
 			</div>
 			<!--  MULTIMEDIA -->
 			<div id="config-media">
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Enable multimedia features'), help_link('MULTI_MEDIA'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php  echo edit_field_yes_no('NEW_MULTI_MEDIA', get_gedcom_setting(WT_GED_ID, 'MULTI_MEDIA')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2"><?php echo WT_I18N::translate('General'); ?></td>
+						<th colspan="2"><?php echo WT_I18N::translate('General'); ?></th>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Keep links'), help_link('MEDIA_EXTERNAL'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php  echo edit_field_yes_no('NEW_MEDIA_EXTERNAL', get_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Multimedia directory'), help_link('MEDIA_DIRECTORY'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" />
 							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<span class=\"error\">".WT_I18N::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>"; ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Multi-Media directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php echo $MEDIA_DIRECTORY_LEVELS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Width of generated thumbnails'), help_link('THUMBNAIL_WIDTH'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_THUMBNAIL_WIDTH" value="<?php echo $THUMBNAIL_WIDTH; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Automatically generate thumbnails'), help_link('AUTO_GENERATE_THUMBS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_AUTO_GENERATE_THUMBS', get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Use thumbnail'), help_link('USE_THUMBS_MAIN'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_USE_THUMBS_MAIN', get_gedcom_setting(WT_GED_ID, 'USE_THUMBS_MAIN')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Use silhouettes'), help_link('USE_SILHOUETTE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_USE_SILHOUETTE', get_gedcom_setting(WT_GED_ID, 'USE_SILHOUETTE')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_HIGHLIGHT_IMAGES', get_gedcom_setting(WT_GED_ID, 'SHOW_HIGHLIGHT_IMAGES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Use media viewer'), help_link('USE_MEDIA_VIEWER'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_USE_MEDIA_VIEWER', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show file name in media viewer'), help_link('SHOW_MEDIA_FILENAME'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_FILENAME', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_FILENAME')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show download link in media viewer'), help_link('SHOW_MEDIA_DOWNLOAD'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_MEDIA_DOWNLOAD', get_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('Media Firewall'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Use media firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php echo ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" /><br />
 						<?php echo WT_I18N::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Protect thumbnails of protected images'), help_link('MEDIA_FIREWALL_THUMBS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_MEDIA_FIREWALL_THUMBS', get_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Who can view non-watermarked images?'), help_link('SHOW_NO_WATERMARK'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_access_level("NEW_SHOW_NO_WATERMARK", $SHOW_NO_WATERMARK); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Add watermarks to thumbnails?'), help_link('WATERMARK_THUMB'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'WATERMARK_THUMB')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Store watermarked full size images on server?'), help_link('SAVE_WATERMARK_IMAGE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_IMAGE', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Store watermarked thumbnails on server?'), help_link('SAVE_WATERMARK_THUMB'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
 						</td>
 					</tr>
@@ -924,25 +924,25 @@ print_header(WT_I18N::translate('Configure family tree'));
 			</div>
 			<!-- ACCESS -->
 			<div id="access-options">
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('Visitor options'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
 						</td>
-						<td class="optionbox width60"><select name="NEW_WELCOME_TEXT_AUTH_MODE">
+						<td><select name="NEW_WELCOME_TEXT_AUTH_MODE">
 								<option value="0" <?php if ($WELCOME_TEXT_AUTH_MODE=='0') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('No predefined text'); ?></option>
 								<option value="1" <?php if ($WELCOME_TEXT_AUTH_MODE=='1') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Predefined text that states all users can request a user account'); ?></option>
 								<option value="2" <?php if ($WELCOME_TEXT_AUTH_MODE=='2') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Predefined text that states admin will decide on each request for a user account'); ?></option>
@@ -952,55 +952,55 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Standard header for custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST_HEAD'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_WELCOME_TEXT_CUST_HEAD', get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" rows="5" cols="60"><?php echo get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE); ?></textarea>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show acceptable use agreement on «Request new user account» page'), help_link('SHOW_REGISTER_CAUTION'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_REGISTER_CAUTION', get_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('User options'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Contextual Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Theme dropdown selector for theme changes'), help_link('ALLOW_THEME_DROPDOWN'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_ALLOW_THEME_DROPDOWN', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $ALLOW_THEME_DROPDOWN); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Default Theme'), help_link('THEME'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select name="NEW_THEME_DIR">
 								<?php
 									echo '<option value="">', WT_I18N::translate('&lt;default theme&gt;'), '</option>';
@@ -1020,56 +1020,56 @@ print_header(WT_I18N::translate('Configure family tree'));
 			</div>
 			<!-- LAYOUT -->
 			<div id="layout-options">
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('Names'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Underline names in quotes'), help_link('UNDERLINE_NAME_QUOTES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_UNDERLINE_NAME_QUOTES', get_gedcom_setting(WT_GED_ID, 'UNDERLINE_NAME_QUOTES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show married names on individual list'), help_link('SHOW_MARRIED_NAMES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_MARRIED_NAMES', get_gedcom_setting(WT_GED_ID, 'SHOW_MARRIED_NAMES')); ?>
 						</td>
 					</tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_COMMON_NAMES_THRESHOLD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'); ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Names to add to common surnames (comma separated)'), help_link('COMMON_NAMES_ADD'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_COMMON_NAMES_ADD" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD'); ?>" size="50" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Names to remove from common surnames (comma separated)'), help_link('COMMON_NAMES_REMOVE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_COMMON_NAMES_REMOVE" dir="ltr" value="<?php echo get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE'); ?>" size="50" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Surname list style'), help_link('SURNAME_LIST_STYLE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select name="NEW_SURNAME_LIST_STYLE">
 								<option value="style1" <?php if ($SURNAME_LIST_STYLE=="style1") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('list'); ?></option>
 								<option value="style2" <?php if ($SURNAME_LIST_STYLE=="style2") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('table'); ?></option>
@@ -1078,31 +1078,31 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Maximum number of surnames on individual list'), help_link('SUBLIST_TRIGGER_I'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('Charts'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Default pedigree chart layout'), help_link('PEDIGREE_LAYOUT'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select name="NEW_PEDIGREE_LAYOUT">
 								<option value="yes" <?php if ($PEDIGREE_LAYOUT) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Landscape'); ?></option>
 								<option value="no" <?php if (!$PEDIGREE_LAYOUT) echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Portrait'); ?></option>
@@ -1110,42 +1110,42 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Default pedigree generations'), help_link('DEFAULT_PEDIGREE_GENERATIONS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_DEFAULT_PEDIGREE_GENERATIONS" value="<?php echo $DEFAULT_PEDIGREE_GENERATIONS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Maximum pedigree generations'), help_link('MAX_PEDIGREE_GENERATIONS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_MAX_PEDIGREE_GENERATIONS" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Maximum descendancy generations'), help_link('MAX_DESCENDANCY_GENERATIONS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" name="NEW_MAX_DESCENDANCY_GENERATIONS" value="<?php echo $MAX_DESCENDANCY_GENERATIONS; ?>" size="5" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" size="5" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php echo $SHOW_PEDIGREE_PLACES; ?>" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Zoom boxes on charts'), help_link('ZOOM_BOXES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select name="NEW_ZOOM_BOXES">
 								<option value="disabled" <?php if ($ZOOM_BOXES=='disabled') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Disabled'); ?></option>
 								<option value="mouseover" <?php if ($ZOOM_BOXES=='mouseover') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Over'); ?></option>
@@ -1155,10 +1155,10 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('PopUp links on charts'), help_link('LINK_ICONS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select name="NEW_LINK_ICONS">
 								<option value="disabled" <?php if ($LINK_ICONS=='disabled') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Disabled'); ?></option>
 								<option value="mouseover" <?php if ($LINK_ICONS=='mouseover') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Over'); ?></option>
@@ -1167,33 +1167,35 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('Individual pages'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Default tab to show on individual page'), help_link('GEDCOM_DEFAULT_TAB'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_default_tab('NEW_GEDCOM_DEFAULT_TAB', get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Automatically expand list of events of close relatives'), help_link('EXPAND_RELATIVES_EVENTS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_EXPAND_RELATIVES_EVENTS', get_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td colspan="2">
 							<?php echo WT_I18N::translate('Show events of close relatives on individual page'), help_link('SHOW_RELATIVES_EVENTS'); ?>
 						</td>
-						<td class="optionbox width60">
+					</tr>
+					<tr>
+						<td>
 							<input type="hidden" name="NEW_SHOW_RELATIVES_EVENTS" value="<?php echo $SHOW_RELATIVES_EVENTS; ?>" />
-							<table>
+							<table id="relatives">
 								<?php
 								$rel_events=array(
 									array('_BIRT_GCHI', '_MARR_GCHI', '_DEAT_GCHI'),
@@ -1226,23 +1228,23 @@ print_header(WT_I18N::translate('Configure family tree'));
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('Other'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Place levels to show on lists'), help_link('SHOW_LIST_PLACES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" size="5" name="NEW_SHOW_LIST_PLACES" value="<?php echo $SHOW_LIST_PLACES; ?>" />
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Postal code position'), help_link('POSTAL_CODE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<select name="NEW_POSTAL_CODE">
 								<option value="yes" <?php if ($POSTAL_CODE) echo "selected=\"selected\""; ?>><?php echo ucfirst(WT_I18N::translate('after')); ?></option>
 								<option value="no" <?php if (!$POSTAL_CODE) echo "selected=\"selected\""; ?>><?php echo ucfirst(WT_I18N::translate('before')); ?></option>
@@ -1253,163 +1255,163 @@ print_header(WT_I18N::translate('Configure family tree'));
 			</div>
 			<!-- HIDE & SHOW -->
 			<div id="hide-show">
-				<table class="facts_table">
+				<table>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('On charts'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Empty boxes on pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_EMPTY_BOXES', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_EMPTY_BOXES); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Abbreviate chart labels'), help_link('ABBREVIATE_CHART_LABELS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_ABBREVIATE_CHART_LABELS', get_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Birth and death details on charts'), help_link('PEDIGREE_FULL_DETAILS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_PEDIGREE_FULL_DETAILS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $PEDIGREE_FULL_DETAILS); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Gender icon on charts'), help_link('PEDIGREE_SHOW_GENDER'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_PEDIGREE_SHOW_GENDER', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $PEDIGREE_SHOW_GENDER); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Age of parents next to child\'s birthdate'), help_link('SHOW_PARENTS_AGE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_PARENTS_AGE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_PARENTS_AGE); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('LDS ordinance codes in chart boxes'), help_link('SHOW_LDS_AT_GLANCE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_LDS_AT_GLANCE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_LDS_AT_GLANCE); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Other facts to show in charts'), help_link('CHART_BOX_TAGS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<input type="text" size="50" id="NEW_CHART_BOX_TAGS" name="NEW_CHART_BOX_TAGS" value="<?php echo $CHART_BOX_TAGS; ?>" dir="ltr" /><?php print_findfact_link("NEW_CHART_BOX_TAGS", $GEDCOM); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('On individual pages'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Fact icons'), help_link('SHOW_FACT_ICONS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_FACT_ICONS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_FACT_ICONS); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Automatically expand notes'), help_link('EXPAND_NOTES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_EXPAND_NOTES', get_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Automatically expand sources'), help_link('EXPAND_SOURCES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_EXPAND_SOURCES', get_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Show all notes and source references on notes and sources tabs'), help_link('SHOW_LEVEL2_NOTES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_LEVEL2_NOTES', get_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Date differences'), help_link('SHOW_AGE_DIFF'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_AGE_DIFF', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_AGE_DIFF); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Estimated dates for birth and death'), help_link('SHOW_EST_LIST_DATES'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_EST_LIST_DATES', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="subbar" colspan="2">
+						<th colspan="2">
 							<?php echo WT_I18N::translate('General'); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Allow users to see raw GEDCOM records'), help_link('SHOW_GEDCOM_RECORD'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo edit_field_yes_no('NEW_SHOW_GEDCOM_RECORD', get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD')); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('GEDCOM errors'), help_link('HIDE_GEDCOM_ERRORS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_HIDE_GEDCOM_ERRORS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), !$HIDE_GEDCOM_ERRORS); /* Note: name of object is reverse of description */ ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Hit counters'), help_link('SHOW_COUNTER'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_COUNTER', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_COUNTER); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_STATS); ?>
 						</td>
 					</tr>
 					<tr>
-						<td class="descriptionbox nowrap">
+						<td>
 							<?php echo WT_I18N::translate('GEDCOM record last change date on lists'), help_link('SHOW_LAST_CHANGE'); ?>
 						</td>
-						<td class="optionbox width60">
+						<td>
 							<?php echo radio_buttons('NEW_SHOW_LAST_CHANGE', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_LAST_CHANGE); ?>
 						</td>
 					</tr>
@@ -1417,225 +1419,225 @@ print_header(WT_I18N::translate('Configure family tree'));
 			</div>
 			<!-- EDIT -->
 			<div id="edit-options">
-				<table class="facts_table">
+				<table>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Online editing'), help_link('ALLOW_EDIT_GEDCOM'); ?>
 					</td>
-					<td class="optionbox width60"><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>WT_I18N::translate('disable'),true=>WT_I18N::translate('enable')), $ALLOW_EDIT_GEDCOM); ?>
+					<td><?php echo radio_buttons('NEW_ALLOW_EDIT_GEDCOM', array(false=>WT_I18N::translate('disable'),true=>WT_I18N::translate('enable')), $ALLOW_EDIT_GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2">
+					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Individual records'); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('All facts'), help_link('INDI_FACTS_ADD'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_INDI_FACTS_ADD" name="NEW_INDI_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_INDI_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Unique facts'), help_link('INDI_FACTS_UNIQUE'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_INDI_FACTS_UNIQUE" name="NEW_INDI_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_UNIQUE'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_INDI_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('New entry facts'), help_link('QUICK_REQUIRED_FACTS'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_QUICK_REQUIRED_FACTS" name="NEW_QUICK_REQUIRED_FACTS" value="<?php echo $QUICK_REQUIRED_FACTS; ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Quick facts'), help_link('INDI_FACTS_QUICK'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_INDI_FACTS_QUICK" name="NEW_INDI_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_QUICK'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_INDI_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2">
+					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Family records'); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('All facts'), help_link('FAM_FACTS_ADD'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_FAM_FACTS_ADD" name="NEW_FAM_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_FAM_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Unique facts'), help_link('FAM_FACTS_UNIQUE'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_FAM_FACTS_UNIQUE" name="NEW_FAM_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_UNIQUE'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_FAM_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('New entry facts'), help_link('QUICK_REQUIRED_FAMFACTS'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_QUICK_REQUIRED_FAMFACTS" name="NEW_QUICK_REQUIRED_FAMFACTS" value="<?php echo $QUICK_REQUIRED_FAMFACTS; ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_QUICK_REQUIRED_FAMFACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Quick facts'), help_link('FAM_FACTS_QUICK'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_FAM_FACTS_QUICK" name="NEW_FAM_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_QUICK'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_FAM_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2">
+					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Source records'); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('All facts'), help_link('SOUR_FACTS_ADD'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_SOUR_FACTS_ADD" name="NEW_SOUR_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_SOUR_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Unique facts'), help_link('SOUR_FACTS_UNIQUE'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_SOUR_FACTS_UNIQUE" name="NEW_SOUR_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_SOUR_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Quick facts'), help_link('SOUR_FACTS_QUICK'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_SOUR_FACTS_QUICK" name="NEW_SOUR_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_SOUR_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2">
+					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Repository records'); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('All facts'), help_link('REPO_FACTS_ADD'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_REPO_FACTS_ADD" name="NEW_REPO_FACTS_ADD" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_ADD'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_REPO_FACTS_ADD", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Unique facts'), help_link('REPO_FACTS_UNIQUE'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_REPO_FACTS_UNIQUE" name="NEW_REPO_FACTS_UNIQUE" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_UNIQUE'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_REPO_FACTS_UNIQUE", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Quick facts'), help_link('REPO_FACTS_QUICK'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_REPO_FACTS_QUICK" name="NEW_REPO_FACTS_QUICK" value="<?php echo get_gedcom_setting(WT_GED_ID, 'REPO_FACTS_QUICK'); ?>" size="60" dir="ltr" /><?php print_findfact_link("NEW_REPO_FACTS_QUICK", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2">
+					<th colspan="2">
 						<?php echo WT_I18N::translate('Advanced fact settings'); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Advanced name facts'), help_link('ADVANCED_NAME_FACTS'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_ADVANCED_NAME_FACTS" name="NEW_ADVANCED_NAME_FACTS" value="<?php echo $ADVANCED_NAME_FACTS; ?>" size="40" dir="ltr" /><?php print_findfact_link("NEW_ADVANCED_NAME_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Advanced place name facts'), help_link('ADVANCED_PLAC_FACTS'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<input type="text" id="NEW_ADVANCED_PLAC_FACTS" name="NEW_ADVANCED_PLAC_FACTS" value="<?php echo $ADVANCED_PLAC_FACTS; ?>" size="40" dir="ltr" /><?php print_findfact_link("NEW_ADVANCED_PLAC_FACTS", $GEDCOM); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="subbar" colspan="2">
+					<th colspan="2">
 						<?php echo WT_I18N::translate('Other settings'); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo edit_field_yes_no('NEW_SPLIT_PLACES', get_gedcom_setting(WT_GED_ID, 'SPLIT_PLACES')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo select_edit_control('NEW_SURNAME_TRADITION', array('paternal'=>WT_I18N::translate_c('Surname tradition', 'paternal'), 'spanish'=>WT_I18N::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>WT_I18N::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>WT_I18N::translate_c('Surname tradition', 'Icelandic'), 'polish'=>WT_I18N::translate_c('Surname tradition', 'Polish'), 'none'=>WT_I18N::translate_c('Surname tradition', 'none')), null, get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Use full source citations'), help_link('FULL_SOURCES'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo edit_field_yes_no('NEW_FULL_SOURCES', get_gedcom_setting(WT_GED_ID, 'FULL_SOURCES')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Source type'), help_link('PREFER_LEVEL2_SOURCES'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo select_edit_control('NEW_PREFER_LEVEL2_SOURCES', array(0=>WT_I18N::translate('none'), 1=>WT_I18N::translate('facts'), 2=>WT_I18N::translate('records')), null, get_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo radio_buttons('NEW_ENABLE_AUTOCOMPLETE', array(false=>WT_I18N::translate('disable'),true=>WT_I18N::translate('enable')), get_gedcom_setting(WT_GED_ID, 'ENABLE_AUTOCOMPLETE')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Use GeoNames database for autocomplete on places'), help_link('USE_GEONAMES'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo edit_field_yes_no('NEW_USE_GEONAMES', get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')); ?>
 					</td>
 				</tr>
 				<tr>
-					<td class="descriptionbox nowrap">
+					<td>
 						<?php echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN'); ?>
 					</td>
-					<td class="optionbox width60">
+					<td>
 						<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>
 					</td>
 				</tr>
@@ -1645,7 +1647,7 @@ print_header(WT_I18N::translate('Configure family tree'));
 	</tr>
 	<tr>
 		<td>
-			<table class="facts_table" border="0">
+			<table border="0">
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
 						<div class="btn">

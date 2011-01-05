@@ -39,13 +39,14 @@ img {border:none;}
 h3 {margin:0}
 h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 .icon {border:none;	padding-left:0pt;padding-right:5pt;}
-.warning, .error, .red {	font-weight:bold; color:red;}
+.warning, .error, .red  {	font-weight:bold; color:red;}
 .accepted {font-weight:bold; color:green;}
 .center {text-align:center;}
 .ltr {text-align:left;}
 .rtl {text-align:right;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
+.parentdeath {border: thin solid red; padding: 1px;}
 .ui-widget-content a {text-decoration:none;}
 .ui-widget-content a.current {color:#E17009; font-weight:bold;}
 .ui-widget-content a:hover {color:red; cursor:hand; cursor:pointer;}
@@ -163,11 +164,12 @@ table#clean  {background:OldLace; border:1px inset #D9D6C4; border-collapse: sep
 #clean td {border-bottom:1px solid LightGrey; padding:3px;}
 
 /* GEDCOM config tables */
-.facts_table {text-align:left;width:100%;}
-.config {}
-.descriptionbox  {border-bottom:solid #81a9cb 1px;vertical-align:top;white-space:nowrap;padding:3px;background-color:#DFEFFC;}
-.optionbox {	border-bottom:solid #81a9cb 1px;vertical-align:top;white-space:nowrap;padding:3px;}
-.subbar {background-color:#d1d9ef;border:solid #81a9cb 1px;font-size:11px;font-weight:bold;vertical-align:top;white-space:nowrap;padding:3px;}
+#tabs {width:100%}
+#file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
+#file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table  {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; font-size: 90%; padding:5px; width:100%;}
+#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show  td, #edit-options td {border-bottom:1px solid LightGrey; vertical-align:top;}
+#file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; font-weight:bold; font-size: 110%;}
+#relatives {margin-left:120px;}
 
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
