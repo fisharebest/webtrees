@@ -54,9 +54,6 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 		$this->baseyear = date("Y");
 		//-- new pid
 		$newpid=safe_GET_xref('newpid');
-		if ($newpid) {
-			$indirec = find_person_record($newpid, WT_GED_ID);
-		}
 
 		if (safe_GET('clear', '1')=='1') {
 			unset($_SESSION['timeline_pids']);
@@ -65,21 +62,26 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 			//-- pids array
 			$this->pids=safe_GET_xref('pids');
 		}
-		if (!is_array($this->pids)) $this->pids = array();
-		else {
+		if (!is_array($this->pids)) {
+			$this->pids = array();
+		} else {
 			//-- make sure that arrays are indexed by numbers
 			$this->pids = array_values($this->pids);
 		}
-		if (!empty($newpid) && !in_array($newpid, $this->pids)) $this->pids[] = $newpid;
+		if (!empty($newpid) && !in_array($newpid, $this->pids)) {
+			$this->pids[] = $newpid;
+		}
 		if (count($this->pids)==0) $this->pids[] = check_rootid("");
 		$remove = safe_GET_xref('remove');
 		//-- cleanup user input
 		$newpids = array();
-		foreach ($this->pids as $key=>$value) {
+		foreach ($this->pids as $value) {
 			if ($value!=$remove) {
 				$newpids[] = $value;
 				$person = WT_Person::getInstance($value);
-				if (!is_null($person)) $this->people[] = $person;
+				if ($person) {
+					$this->people[] = $person;
+				}
 			}
 		}
 		$this->pids = $newpids;
@@ -216,10 +218,10 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 				$indi=$event->getParentObject();
 				echo $event->getLabel();
 				echo " -- ";
-				if (get_class($indi)=="Person") {
+				if (get_class($indi)=="WT_Person") {
 					echo format_fact_date($event);
 				}
-				if (get_class($indi)=="Family") {
+				if (get_class($indi)=="WT_Family") {
 					echo $gdate->Display(false);
 					$family=$indi;
 					$husbid=$family->getHusbId();
