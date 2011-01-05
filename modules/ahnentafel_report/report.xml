@@ -6,9 +6,10 @@
 	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
 	<Input name="maxgen" type="select" options="3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|*=>*"><var var="WT_I18N::translate('Generations')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>
-	<Input name="notes" type="checkbox" default="1"><var var="WT_I18N::translate('Show notes?')" /></Input>
-	<Input name="morefacts" type="checkbox" default="0"><var var="WT_I18N::translate('Show occupations and residences')" /></Input>
-	<Input name="children" type="checkbox" default="0"><var var="WT_I18N::translate('Show children of ancestors')" /></Input>
+	<Input name="notes" type="checkbox" default="0"><var var="WT_I18N::translate('Show notes?')" /></Input>
+	<Input name="occu" type="checkbox" default="0"><var var="WT_I18N::translate('Show occupations?')" /></Input>
+	<Input name="resi" type="checkbox" default="0"><var var="WT_I18N::translate('Show residences?')" /></Input>
+	<Input name="children" type="checkbox" default="0"><var var="WT_I18N::translate('Show children of ancestors?')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
 	
@@ -205,15 +206,15 @@
 							</if>
 							<Text style="text">.</Text>
 						</Gedcom>
-						<if condition="$morefacts==1">
+						<if condition="$occu==1">
 							<!-- 	Individual, occupation... -->
 							<Gedcom id="OCCU">
 								<Text style="text"> 
 									<if condition="$gender=='m'">
-										<var var="WT_I18N::translate('He was a')" /> <GedcomValue tag="OCCU" level="1" /> 
+										<var var="WT_I18N::translate('His occupation was')" /> <GedcomValue tag="OCCU" level="1" /> 
 									</if>
 									<if condition="$gender=='f'">
-										<var var="WT_I18N::translate('She was a')" /> <GedcomValue tag="OCCU" level="1" /> 
+										<var var="WT_I18N::translate('Her occupation was')" /> <GedcomValue tag="OCCU" level="1" /> 
 									</if>
 								</Text>
 								<if condition="$sources==1">
@@ -236,20 +237,28 @@
 								<if condition="@PLAC!=''">
 									<Text style="text"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></Text>
 								</if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')">
-									<Text style="text"><var var="WT_I18N::translate(' but the details are unknown')" /></Text>
-								</if>
 								<Text style="text">.</Text>
 							</Gedcom>
+						</if>
+						<if condition="$resi==1">
 							<!-- 	Individual, residence... -->
 							<Gedcom id="RESI">
 								<Text style="text"> 
 									<if condition="$gender=='m'">
-										<var var="WT_I18N::translate('He lived')" /> <GedcomValue tag="RESI" level="1" /> 
+										<var var="WT_I18N::translate('He resided at')" /> 
 									</if>
 									<if condition="$gender=='f'">
-										<var var="WT_I18N::translate('She lived')" /> <GedcomValue tag="RESI" level="1" /> 
+										<var var="WT_I18N::translate('She resided at')" /> 
+									</if>								
+									<if condition="@ADDR!=''">
+										<GedcomValue tag="RESI:ADDR" level="1" />
 									</if>
+									<if condition="@ADDR==''">
+										<if condition="@PLAC!=''">
+											<GedcomValue tag="RESI:PLAC" level="1" />
+										</if>
+									</if>
+									
 								</Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="RESI:SOUR">
@@ -267,12 +276,6 @@
 								</if>
 								<if condition="@DATE!=''">
 									<Text style="text"><var var=" " /> <GedcomValue tag="DATE" level="2" /></Text>
-								</if>
-								<if condition="@PLAC!=''">
-									<Text style="text"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></Text>
-								</if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')">
-									<Text style="text"><var var="WT_I18N::translate(' but the details are unknown')" /></Text>
 								</if>
 								<Text style="text">.</Text>
 							</Gedcom>
