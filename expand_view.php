@@ -48,7 +48,7 @@ foreach ($subfacts as $indexval => $event) {
 		$f2++;
 		// handle ASSO record
 		if ($event->getTag()=='ASSO') {
-			print_asso_rela_record($pid, $event->getGedComRecord(), false);
+			print_asso_rela_record($event);
 			continue;
 		}
 		$fact = $event->getTag();

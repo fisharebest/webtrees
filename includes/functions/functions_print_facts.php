@@ -324,7 +324,7 @@ function print_fact(&$eventObj) {
 			print_address_structure($factrec, 1);
 		}
 		// -- Enhanced ASSOciates > RELAtionship
-		print_asso_rela_record($pid, $factrec, true, gedcom_record_type($pid, get_id_from_gedcom($GEDCOM)));
+		print_asso_rela_record($eventObj);
 		// -- find _WT_USER field
 		if (preg_match("/\n2 _WT_USER (.+)/", $factrec, $match)) {
 			$fullname=getUserFullname(getUserId($match[1])); // may not exist	
