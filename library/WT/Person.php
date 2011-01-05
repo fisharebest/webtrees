@@ -894,48 +894,36 @@ class WT_Person extends WT_GedcomRecord {
 			$this->add_asso_facts();
 		}
 	}
-	/**
-	* add parents events to individual facts array
-	*
-	* @param Person $person Person
-	* @param int    $sosa 1=parents, 2=father's parents, 3=mother's parents
-	* @return records added to indifacts array
-	*/
-	function add_parents_facts(&$person, $sosa) {
+	
+	// Add parents' (and parents' relatives') events to individual facts array
+	function add_parents_facts($person, $sosa) {
 		global $SHOW_RELATIVES_EVENTS;
 
-		// Deal with recursion.
 		switch ($sosa) {
 		case 1:
-			// Add siblings and half-siblings
 			foreach ($person->getChildFamilies() as $family) {
-				$husb_wife = array();
-				if ($family->getHusband()) $husb_wife[]=$family->getHusband();
-				if ($family->getWife()) $husb_wife[]=$family->getWife();
-				foreach ($husb_wife as $spouse) {
+				// Add siblings
+				$this->add_children_facts($family, '_SIBL', '');
+				foreach ($family->getSpouses() as $spouse) {
 					foreach ($spouse->getSpouseFamilies() as $sfamily) {
-						if ($family->getHusbId()==$sfamily->getHusbId() && $family->getWifeId()==$sfamily->getWifeId()) {
-							// Both parents the same - siblings
-							$this->add_children_facts($sfamily, '_SIBL', '');
-						} else {
-							// One parent the same - half-siblings
+						if (!$family->equals($sfamily)) {
+							// Add half-siblings
 							$this->add_children_facts($sfamily, '_HSIB', 'par');
 						}
 					}
+					// Add grandparents
+					$this->add_parents_facts($spouse, $spouse->getSex()=='F' ? 3 : 2);
 				}
 			}
-			// Add grandparents
-			foreach ($person->getChildFamilies() as $family) {
-				if ($family->getHusband()) $this->add_parents_facts($family->getHusband(), 2);
-				if ($family->getWife())    $this->add_parents_facts($family->getWife   (), 3);
-			}
+	
+			$rela='';
 			break;
-		}
-
-		switch ($sosa) {
-		case 1: $rela=''; break;
-		case 2: $rela='fat'; break;
-		case 3: $rela='mot'; break;
+		case 2:
+			$rela='fat';
+			break;
+		case 3:
+			$rela='mot';
+			break;
 		}
 
 		// Only include events between birth and death
@@ -1035,7 +1023,7 @@ class WT_Person extends WT_GedcomRecord {
 	* @param string $relation Relationship path indicator
 	* @return records added to indifacts array
 	*/
-	function add_children_facts(&$family, $option, $relation) {
+	function add_children_facts($family, $option, $relation) {
 		global $SHOW_RELATIVES_EVENTS;
 
 		// Deal with recursion.
@@ -1178,7 +1166,7 @@ class WT_Person extends WT_GedcomRecord {
 	* @param string $famrec family Gedcom record
 	* @return records added to indifacts array
 	*/
-	function add_spouse_facts(&$spouse, $famrec='') {
+	function add_spouse_facts($spouse, $famrec='') {
 		global $SHOW_RELATIVES_EVENTS;
 
 		// do not show if divorced

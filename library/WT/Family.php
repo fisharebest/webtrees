@@ -116,10 +116,21 @@ class WT_Family extends WT_GedcomRecord {
 	 * @return Person
 	 */
 	function &getSpouse(&$person) {
-		if (is_null($this->wife) or is_null($this->husb)) return null;
+		if (is_null($this->wife) || is_null($this->husb)) return null;
 		if ($this->wife->equals($person)) return $this->husb;
 		if ($this->husb->equals($person)) return $this->wife;
 		return null;
+	}
+
+	function getSpouses() {
+		$spouses=array();
+		if ($this->husb) {
+			$spouses[]=$this->husb;
+		}
+		if ($this->wife) {
+			$spouses[]=$this->wife;
+		}
+		return $spouses;
 	}
 
 	/**
