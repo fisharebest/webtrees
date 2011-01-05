@@ -1183,7 +1183,6 @@ echo WT_JS_START; ?>
 						// NOTE: Close column for file operations
 						echo "</td>";
 
-
 						$name = trim($media["TITL"]);
 						// Get media item Notes
 						$haystack = $media["GEDCOM"];
@@ -1196,6 +1195,22 @@ echo WT_JS_START; ?>
 
 						// Get info on how to handle this media file
 						$mediaInfo = mediaFileInfo($media["FILE"], $media["THUMB"], $media["XREF"], $name, $notes);
+						
+						$fileName2 = $media["FILE"];
+						$imgsize2 = findImageSize($media["FILE"]);
+						$imgwidth2 = $imgsize2[0];
+						$imgheight2 = $imgsize2[1];
+						?>
+						<script>
+							function PopupCenter(pageURL, title,w,h) {
+							var left = (screen.width/2)-(w/2);
+							var top = (screen.height/2)-(h/2);
+							var targetWin =  window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left); targetWin.resizeTo(w+17, h+85); if (window.focus) { targetWin.focus(); }
+							} 
+						</script>
+						<?php
+						$url2 = "javascript:void(0);\" onclick=\"var winimg = PopupCenter('".$fileName2."', 'winimg', $imgwidth2, $imgheight2);";
+
 
 						//-- Thumbnail field
 						if ($showthumb) {
@@ -1204,9 +1219,10 @@ echo WT_JS_START; ?>
 							if (strpos($media["FILE"], 'http://maps.google.')===0) {
 								echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media["FILE"], '&amp;output=svembed"></iframe>';
 							} else {
-								echo '<center><a href="', $mediaInfo['url'], '">';
+								//echo '<center><a href="', $mediaInfo['url'], '">';
+								echo '<center><a href="'.$url2.'">';
 								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail" border="none"', $mediaInfo['width'];
-								echo ' alt="', $name, '" /></a></center>';
+								echo ' title="', $name, '" /></a></center>';
 							}
 							echo '</td>';
 						}
@@ -1252,15 +1268,16 @@ echo WT_JS_START; ?>
 
 						if ($USE_MEDIA_FIREWALL) {
 							if ($media["EXISTS"]) {
+								echo "<br />";
 								switch ($media["EXISTS"]) {
 								case 1:
-									echo WT_I18N::translate('This media object is located on an external server');
+									echo "<br />".WT_I18N::translate('This media object is located on an external server');
 									break;
 								case 2:
-									echo WT_I18N::translate('This media object is in the standard media directory');
+									echo "<br />".WT_I18N::translate('This media object is in the standard media directory');
 									break;
 								case 3:
-									echo WT_I18N::translate('This media object is in the protected media directory');
+									echo "<br />".WT_I18N::translate('This media object is in the protected media directory');
 									break;
 								}
 								echo '<br />';
