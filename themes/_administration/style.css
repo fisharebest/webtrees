@@ -39,7 +39,7 @@ img {border:none;}
 h3 {margin:0}
 h4 {margin: 5px 3px; font-weight:normal; font-style:italic;}
 .icon {border:none;	padding-left:0pt;padding-right:5pt;}
-.warning, .error, .red  {	font-weight:bold; color:red;}
+.warning, .error, .red  {font-weight:bold; color:red;}
 .accepted {font-weight:bold; color:green;}
 .center {text-align:center;}
 .ltr {text-align:left;}
@@ -212,7 +212,9 @@ table#media_table   {width:100%;}
 #media_table_filter {float:right;}
 #media_table_info {float:left;}
 #media_table_paginate {float:right;}
-#media_table th {min-width: 60px;}
+#media_table th {min-width:200px;}
+#media_table th+th {min-width:120px;}
+#media_table th+th+th {width:*;}
 #media_table td {vertical-align:top; padding:5px;}
 .media_items {width:100%; margin:0;}
 .media_items td {background:OldLace; border:1px inset #D9D6C4;}
@@ -267,12 +269,12 @@ table.gm_check_outer {border-collapse: separate; border-spacing: 0; height:100px
 .gm_check_top {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:0;  padding: 0;}
 .gm_check_top   th {border-bottom:2px solid LightGrey; font-size:105%; font-weight:bold; padding:5px; text-align: center; white-space:nowrap;}
 .gm_check_top  td {border-bottom:1px solid LightGrey; padding:3px; white-space:nowrap;}
-.gm_check_top  .check_comment {font-size:75%; white-space:normal;}
+.check_comment {font-size:75%; white-space:normal;}
 .gm_check_top a, .gm_check_top a:hover, .gm_check_details a, .details:hover {color:blue;}
 div.gm_check_top {padding:5px;}
 #gm_check_title {padding: 5px;}
 #gm_check_title span {font-weight:bold;}
-div.gm_check_details {width:100%; max-height:420px; overflow:auto;}
+div.gm_check_details {width:100%; max-height:530px; overflow:auto;}
 table.gm_check_details {background:OldLace; border:1px inset #D9D6C4; border-collapse: separate; border-spacing: 0; margin:10px 0; width:100%;}
 .gm_check_details   th {border-right:1px solid LightGrey; border-left:1px solid LightGrey; border-bottom:2px solid LightGrey; border-top:0; font-size:95%; font-weight:bold; padding:2px; text-align: center;}
 .gm_check_details td {border:1px solid LightGrey; border-top:0; font-size:95%;}
