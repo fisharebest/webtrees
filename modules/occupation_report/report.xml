@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Occupation Report')" /></Title>
+	<Title><var var="WT_I18N::translate('Occupation report')" /></Title>
 	<Description>Prints a list of individuals occupation matching specific criteria</Description>
 	<Input name="occupation" lookup="OCCU" type="text"><var var="translate_fact('OCCU')" /> </Input>
 	<Input name="sortby" type="select" default="NAME" options="none=>WT_I18N::translate('None')|NAME=>WT_I18N::translate('Name')|BIRT:DATE=>translate_fact('BIRT:DATE')"><var var="WT_I18N::translate('Sort by')" /></Input>

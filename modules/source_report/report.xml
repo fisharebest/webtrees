@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Sources Report')" /></Title>
+	<Title><var var="WT_I18N::translate('Sources report')" /></Title>
 	<Description>Prints a list of individuals and families with a specific source</Description>
 
 	<Input name="sid" lookup="SOUR" default="" type="text"><var var="WT_I18N::translate('Find Source ID')" /></Input>
