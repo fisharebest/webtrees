@@ -3285,13 +3285,13 @@ function ListSHandler($attrs) {
 			uasort($list, array("WT_GedcomRecord", "CompareChanDate"));
 			break;
 		case "BIRT:DATE":
-			uasort($list, array("Person", "CompareBirtDate"));
+			uasort($list, array("WT_Person", "CompareBirtDate"));
 			break;
 		case "DEAT:DATE":
-			uasort($list, array("Person", "CompareDeatDate"));
+			uasort($list, array("WT_Person", "CompareDeatDate"));
 			break;
 		case "MARR:DATE":
-			uasort($list, array("Family", "CompareMarrDate"));
+			uasort($list, array("WT_Family", "CompareMarrDate"));
 			break;
 		default:
 			// unsorted or already sorted by SQL
