@@ -109,7 +109,7 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"2\" border=\"0\" alt=\"\" />";
 			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-2)."\" border=\"0\" alt=\"\" /></td><td>";
 		}
-		print_pedigree_person($pid, 1);
+		print_pedigree_person($person, 1);
 		echo "</td>";
 		echo "<td>";
 		if ($TEXT_DIRECTION=="ltr") {

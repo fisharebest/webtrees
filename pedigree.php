@@ -288,7 +288,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		if (!isset($controller->treeid[$i])) {
 			$controller->treeid[$i] = false;
 		}
-		print_pedigree_person($controller->treeid[$i], 1, $iref, 1);
+		print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);
 		if ($can_go_back) {
 			$did = 1;
 			if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) {

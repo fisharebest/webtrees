@@ -86,7 +86,7 @@ function print_descendency($person, $count) {
 						if ($i==0) $firstkids = $kids;
 						$numkids += $kids;
 					} else {
-						print_pedigree_person($child->getXref());
+						print_pedigree_person($child);
 						$numkids++;
 					}
 					echo "</td>";
@@ -130,12 +130,12 @@ function print_descendency($person, $count) {
 			echo '<br /><div style="height:', $bheight, 'px;width:', $bwidth, 'px;"><br /></div>';
 		}
 	}
-	print_pedigree_person($pid);
+	print_pedigree_person($person);
 
 	if ($show_spouse) {
 		foreach ($sfamilies as $family) {
 			echo '<br/>', $family->getMarriage()->print_simple_fact();
-			print_pedigree_person($family->getSpouseId($pid));
+			print_pedigree_person($family->getSpouse($person));
 		}
 	}
 
@@ -157,7 +157,7 @@ function print_person_pedigree($pid, $count) {
 			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 		}
 		echo "<td rowspan=\"2\">";
-		print_pedigree_person($family->getHusbId());
+		print_pedigree_person($family->getHusband());
 		echo "</td>";
 		echo "<td rowspan=\"2\">";
 		print_person_pedigree($family->getHusbId(), $count+1);
@@ -172,7 +172,7 @@ function print_person_pedigree($pid, $count) {
 			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 		}
 		echo "<td rowspan=\"2\">";
-		print_pedigree_person($family->getWifeId());
+		print_pedigree_person($family->getWife());
 		echo "</td>";
 		echo "<td rowspan=\"2\">";
 		print_person_pedigree($family->getWifeId(), $count+1);

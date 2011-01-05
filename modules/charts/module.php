@@ -122,7 +122,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($type!='hourglass') {
 					$content .= "<td valign=\"middle\">";
 					ob_start();
-					print_pedigree_person($person->getXref());
+					print_pedigree_person($person);
 					$content .= ob_get_clean();
 					$content .= "</td>";
 				}

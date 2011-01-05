@@ -199,7 +199,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 						$content .= "\">";
 						if ($ctype=="user" || WT_USER_IS_ADMIN) $content .= $removeFavourite;
 						ob_start();
-						print_pedigree_person($favorite["gid"], $style, 1, $key);
+						print_pedigree_person(WT_Person::getInstance($favorite["gid"]), $style, 1, $key);
 						$content .= ob_get_clean();
 						$content .= PrintReady($favorite["note"]);
 					} else {

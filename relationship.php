@@ -501,7 +501,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				}
 
 				echo "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
-				print_pedigree_person($pid, 1);
+				print_pedigree_person(WT_Person::getInstance($pid), 1);
 				echo "</td></tr></table></div>";
 			}
 

@@ -204,7 +204,7 @@ case 1:
 
 	// Booklet
 	// first page : show indi facts
-	print_pedigree_person($controller->rootid, 2, 1);
+	print_pedigree_person(WT_Person::getInstance($controller->rootid), 2, 1);
 	// expand the layer
 	echo WT_JS_START, 'expandbox("', $controller->rootid, '.1", 2);', WT_JS_END;
 	// process the tree

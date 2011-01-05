@@ -80,7 +80,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_labelblue"><?php echo $people["newhusb"]->getLabel(); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($people["newhusb"]); ?>">
-					<?php print_pedigree_person($people["newhusb"]->getXref(), 2, 0, $personcount++); ?>
+					<?php print_pedigree_person($people["newhusb"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -92,7 +92,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["husb"]->getLabel(); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?>">
-					<?php print_pedigree_person($people["husb"]->getXref(), 2, 0, $personcount++); ?>
+					<?php print_pedigree_person($people["husb"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -128,7 +128,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_labelblue"><?php echo $people["newwife"]->getLabel($elderdate); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($people["newwife"]); ?>">
-					<?php print_pedigree_person($people["newwife"]->getXref(), 2, 0, $personcount++); ?>
+					<?php print_pedigree_person($people["newwife"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -139,7 +139,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["wife"]->getLabel($elderdate); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?>">
-					<?php print_pedigree_person($people["wife"]->getXref(), 2, 0, $personcount++); ?>
+					<?php print_pedigree_person($people["wife"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
 			<?php
@@ -273,7 +273,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($child); ?>">
 				<?php
-				print_pedigree_person($child->getXref(), 2, 0, $personcount++);
+				print_pedigree_person($child, 2, 0, $personcount++);
 				?>
 				</td>
 			</tr>
@@ -289,7 +289,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($child); ?>">
 				<?php
-				print_pedigree_person($child->getXref(), 2, 0, $personcount++);
+				print_pedigree_person($child, 2, 0, $personcount++);
 				?>
 				</td>
 			</tr>
@@ -305,7 +305,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
 				<td class="<?php echo $this->controller->getPersonStyle($child); ?>">
 				<?php
-				print_pedigree_person($child->getXref(), 2, 0, $personcount++);
+				print_pedigree_person($child, 2, 0, $personcount++);
 				?>
 				</td>
 			</tr>

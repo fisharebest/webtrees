@@ -138,7 +138,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 			echo "<td>";
 			//-- print the father box
-			print_pedigree_person($family->getHusbId());
+			print_pedigree_person($family->getHusband());
 			echo "</td>";
 			$ARID = $family->getHusbId();
 			echo "<td id=\"td_".$ARID."\">";
@@ -155,7 +155,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 			echo "<td>";
 			//-- print the mother box
-			print_pedigree_person($family->getWifeId());
+			print_pedigree_person($family->getWife());
 			echo "</td>";
 			$ARID = $family->getWifeId();
 			echo "<td id=\"td_".$ARID."\">";
@@ -295,7 +295,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		}
 
 		echo "<table id=\"table2_$pid\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td>";
-		print_pedigree_person($pid);
+		print_pedigree_person(WT_Person::getInstance($pid));
 		echo "</td><td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" />";
 
 		//----- Print the spouse
@@ -311,7 +311,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 						$temph = $bheight;
 						$bwidth -= 10;
 						$bheight -= 10;
-						print_pedigree_person($spouse->getXref());
+						print_pedigree_person($spouse);
 						$bwidth = $tempw;
 						$bheight = $temph;
 						$numkids += 0.95;

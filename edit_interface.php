@@ -1951,7 +1951,7 @@ case 'reorder_children':
 				echo "<li style=\"cursor:move; margin-bottom:2px;\"";
 				if (!in_array($id, $ids)) echo " class=\"facts_valueblue\"";
 				echo " id=\"li_$id\" >";
-				print_pedigree_person($id, 2);
+				print_pedigree_person(WT_Person::getInstance($id), 2);
 				echo "<input type=\"hidden\" name=\"order[$id]\" value=\"$i\"/>";
 				echo "</li>";
 				$i++;

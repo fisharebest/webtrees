@@ -142,7 +142,7 @@ function print_child_descendancy(&$person, $depth) {
 		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\" />";
 		echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\" /></td><td>";
 	}
-	print_pedigree_person($person->getXref(), 1, 0, $personcount);
+	print_pedigree_person($person, 1, 0, $personcount);
 	echo "</td>";
 
 	// check if child has parents and add an arrow
@@ -218,7 +218,7 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		echo "<ul style=\"list-style: none; display: block;\" id=\"".$family->getXref().$personcount."\">";
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-		print_pedigree_person($spouse->getXref(), 1, 0, $personcount);
+		print_pedigree_person($spouse, 1, 0, $personcount);
 		echo "</td>";
 
 		// check if spouse has parents and add an arrow
