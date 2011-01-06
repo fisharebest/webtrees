@@ -159,7 +159,7 @@ foreach ($userlang as $key=>$ulang) {
 echo
 	'</tr>',
 	'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
-	'<tr><td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;', $stats->_usersLoggedIn(), '</td></tr>',
+	'<tr><td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;', $stats->_usersLoggedIn('list'), '</td></tr>',
 	'</table>';
 echo '</div>'; // id=block2
 

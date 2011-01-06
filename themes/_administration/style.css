@@ -97,6 +97,9 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 #tree_stats .ui-accordion-content, #changes .ui-accordion-content {padding:1em 0;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
+#block1 ul {list-style-type:none; padding:0px; margin:0 0 0 20px;}
+#block1 ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 0px; padding-left:14px;}
+#block1 td {padding: 0 10px 0 0;}
 
 /*SERVER CONFIG */
 .editable {width:100%; display:block}
