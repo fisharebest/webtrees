@@ -138,12 +138,10 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
 		echo "<td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td>";
 		$hparents = false;
-		foreach ($hfams as $hfamid=>$hfamily) {
-			if (!is_null($hfamily)) {
-				$hparents = find_parents_in_record($hfamily->getGedcomRecord());
-				$upfamid = $hfamid;
-				break;
-			}
+		foreach ($hfams as $hfamily) {
+			$hparents = find_parents_in_record($hfamily->getGedcomRecord());
+			$upfamid = $hfamily->getXref();
+			break;
 		}
 		if ($hparents or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 			// husband's father
@@ -211,12 +209,10 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight) . "\" alt=\"\" /></td>";
 		echo "<td><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td>";
 		$j = 0;
-		foreach ($hfams as $hfamid=>$hfamily) {
-			if (!is_null($hfamily)) {
-				$hparents = find_parents_in_record($hfamily->getGedcomRecord());
-				$upfamid = $hfamid;
-				break;
-			}
+		foreach ($hfams as $hfamily) {
+			$hparents = find_parents_in_record($hfamily->getGedcomRecord());
+			$upfamid = $hfamily->getXref();
+			break;
 		}
 		if ($hparents or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 			// wife's father
