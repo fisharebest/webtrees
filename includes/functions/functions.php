@@ -3210,7 +3210,7 @@ function isFileExternal($file) {
 /*
  * Get useful information on how to handle this media file
  */
-function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyViewerOption=true) {
+function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin='', $obeyViewerOption=true) {
 	global $THUMBNAIL_WIDTH, $WT_IMAGES;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
 	global $GEDCOM, $USE_MEDIA_VIEWER, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
@@ -3242,7 +3242,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 
 	// -- Determine the correct URL to open this media file
 	while (true) {
-		if (WT_USE_LIGHTBOX) {
+		if (WT_USE_LIGHTBOX && $admin!="ADMIN") {
 			// Lightbox is installed
 			require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 			switch ($type) {
@@ -3309,8 +3309,8 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $obeyVi
 			$url = "javascript:;\" onclick=\"var winurl = window.open('".WT_SERVER_NAME.WT_SCRIPT_PATH.$fileName."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 			break 2;
 		case 'url_streetview':
-			echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $fileName, '&amp;output=svembed"></iframe>';
-			$url = "#";
+			//echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $fileName, '&amp;output=svembed"></iframe>';
+			//$url = "#";
 			break 2;
 		}
 		if ($USE_MEDIA_VIEWER && $obeyViewerOption) {
