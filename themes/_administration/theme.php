@@ -79,6 +79,7 @@ $WT_IMAGES=array(
 	'media_audio'=>WT_THEME_DIR.'images/media/audio.png',
 	'media_doc'=>WT_THEME_DIR.'images/media/doc.png',
 	'media_flash'=>WT_THEME_DIR.'images/media/flash.png',
+	'media_flashrem'=>WT_THEME_DIR.'images/media/flash_rem.png',
 	'media_ged'=>WT_THEME_DIR.'images/media/ged.png',
 	'media_globe'=>WT_THEME_DIR.'images/media/globe.png',
 	'media_html'=>WT_THEME_DIR.'images/media/html.pmg',
@@ -86,5 +87,6 @@ $WT_IMAGES=array(
 	'media_pdf'=>WT_THEME_DIR.'images/media/pdf.png',
 	'media_tex'=>WT_THEME_DIR.'images/media/tex.png',
 	'media_wmv'=>WT_THEME_DIR.'images/media/wmv.png',
+	'media_wmvrem'=>WT_THEME_DIR.'images/media/wmv_rem.png',	
 );
 
