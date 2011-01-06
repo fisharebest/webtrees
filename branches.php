@@ -89,11 +89,17 @@ if ($surn) {
 	echo "<fieldset><legend>", WT_ICON_BRANCHES, " ", PrintReady($surn), "</legend>";
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
 	echo "<ol>";
-	foreach ($indis as $k=>$person) {
+	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
-		if (!$famc || (!array_key_exists($famc->getHusbId(), $indis)) && !array_key_exists($famc->getWifeId(), $indis)) {
-			print_fams($person);
+		// Don't show INDIs with parents in the list, as they will be shown twice.
+		if ($famc) {
+			foreach ($famc->getSpouses() as $parent) {
+				if (array_key_exists($parent->getXref(), $indis)) {
+					continue 2;
+				}
+			}
 		}
+		print_fams($person);
 	}
 	echo "</ol>";
 	echo "</fieldset>";
