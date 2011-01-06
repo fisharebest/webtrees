@@ -149,13 +149,11 @@ function print_child_descendancy(&$person, $depth) {
 	echo "<td>&nbsp;</td>";
 	echo "<td>";
 	foreach ($person->getChildFamilies() as $cfamily) {
-		$parid=$cfamily->getHusbId();
-		if (!$parid) {
-			$parent=$cfamily->getWifeId();
-		}
-		if ($parid) {
-			print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+		foreach ($cfamily->getSpouses() as $parent) {
+			print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?pid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
 			$personcount++;
+			// only show the arrow for one of the parents
+			break;
 		}
 	}
 
@@ -225,13 +223,11 @@ function print_family_descendancy(&$person, &$family, $depth) {
 		echo "<td>&nbsp;</td>";
 		echo "<td>";
 		foreach ($spouse->getChildFamilies() as $cfamily) {
-			$parid=$cfamily->getHusbId();
-			if (!$parid) {
-				$parent=$cfamily->getWifeId();
-			}
-			if ($parid) {
-				print_url_arrow($parid.$personcount.$person->getXref(), "?pid={$parid}&amp;generations={$this->generations}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+			foreach ($cfamily->getSpouses() as $parent) {
+				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?pid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
 				$personcount++;
+				// only show the arrow for one of the parents
+				break;
 			}
 		}
 		if ($this->show_full) echo "<br /><br />&nbsp;";
