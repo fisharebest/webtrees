@@ -436,7 +436,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if ($this->controller->indi->canEdit()) {
 		?>
 		<table class="facts_table">
-		<?php if (count($families)>1) { ?>
+		<?php
+			$families = $this->controller->indi->getSpouseFamilies();
+			if (count($families)>1) { ?>
 			<tr>
 				<td class="facts_value">
 				<a href="javascript:;" onclick="return reorder_families('<?php echo $this->controller->pid; ?>');"><?php echo WT_I18N::translate('Reorder families'); ?></a>
