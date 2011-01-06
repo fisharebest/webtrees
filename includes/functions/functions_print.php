@@ -1305,10 +1305,14 @@ function print_asso_rela_record($event) {
 	// To whom is this record an assocate?
 	if ($event->getParentObject() instanceof WT_Person) {
 		$associates=array($event->getParentObject());
-	} else {
+	} elseif ($event->getParentObject() instanceof WT_Family) {
 		// FAM links don't occur in GEDCOM, but are created by the
 		// "events of close relatives" code.
 		$associates=array($event->getParentObject()->getHusband(), $event->getParentObject()->getWife());
+	} else {
+		// This function gets called for all facts, including those
+		// on records such as source/media that do not have ASSO tags.
+		return;
 	}
 
 	// Level 1 ASSO
