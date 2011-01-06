@@ -46,6 +46,7 @@ echo
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
+	'<a href="', WT_WEBTREES_URL, '" title="', WT_WEBTREES, '" alt="', WT_WEBTREES, '"><img src="', $WT_IMAGES['webtrees'], '"/></a>',
 	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
 	'<div id="links">',
 	'<a href="index.php">', WT_I18N::translate('My Page'), '</a> | ',

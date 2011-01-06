@@ -40,7 +40,7 @@ $WT_USE_HELPIMG   = true;
 
 //- main icons
 $WT_IMAGES=array(
-	'webtrees'=>WT_THEME_DIR.'images/webtrees_s.png',
+	'webtrees'=>WT_THEME_DIR.'images/header.png',
 	'help'=>WT_THEME_DIR.'images/help.png',
 	'edit'=>WT_THEME_DIR.'images/edit.png',
 	'email'=>WT_THEME_DIR.'images/email.png',
