@@ -39,7 +39,8 @@ echo
 ?>
 	<!-- This is a script that claims solve all pre-IE9 compatability issues -->
 	<!--[if lt IE 9]>
-	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js" type="text/javascript">IE7_PNG_SUFFIX=".png";</script>
+	<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/ie7-squish.js" type="text/javascript"></script>
 	<![endif]-->	
 <?php
 echo	
@@ -148,7 +149,7 @@ if (WT_USER_IS_ADMIN) {
 		'</ul></li>';
 	foreach (WT_Module::getInstalledModules() as $module) {
 		if ($module instanceof WT_Module_Config) {
-			echo '<li><i><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></i></li>';
+			echo '<li><span><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></span></li>';
 		}
 	}
 }

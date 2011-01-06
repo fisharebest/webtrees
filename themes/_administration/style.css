@@ -75,7 +75,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 #admin_menu {padding:10px 0 10px 5px; width:200px; float:left; position:absolute; color:#2E6E9E;}
 #admin_menu ul {list-style:none outside none; margin:0 0 0 -30px;}
 #admin_menu li ul {list-style:none outside none; margin:0 0 0 -20px;}
-#admin_menu li ul span {font-style:italic; font-weight:bold;}
+#admin_menu li  span {font-style:italic;}
 
 /* CONTENT */
 #admin_content {margin-left:220px; padding:10px;}
