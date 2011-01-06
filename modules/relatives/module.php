@@ -412,7 +412,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		//-- spouses and children
-		foreach ($this->controller->indi->getSpouseFamilies() as $family) {
+		$families = $this->controller->indi->getSpouseFamilies();
+		foreach ($families as $family) {
 			$people = $this->controller->buildFamilyList($family, "spouse");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getSpouseFamilyLabel($family));
 			?>
@@ -437,7 +438,6 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<table class="facts_table">
 		<?php
-			$families = $this->controller->indi->getSpouseFamilies();
 			if (count($families)>1) { ?>
 			<tr>
 				<td class="facts_value">
