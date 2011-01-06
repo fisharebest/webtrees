@@ -144,11 +144,11 @@ function print_descendency($person, $count) {
 	return $numkids;
 }
 
-function print_person_pedigree($pid, $count) {
+function print_person_pedigree($person, $count) {
 	global $generations, $SHOW_EMPTY_BOXES, $WT_IMAGES, $bheight, $bhalfheight;
-	if ($count>=$generations) return;
+	if ($count>=$generations || !$person) return;
 	$hheight = ($bhalfheight+3) * pow(2,($generations-$count-1));
-	foreach (WT_Person::getInstance($pid)->getChildFamilies() as $family) {
+	foreach ($person->getChildFamilies() as $family) {
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 		$height="100%";
 		echo "<tr>";
@@ -160,7 +160,7 @@ function print_person_pedigree($pid, $count) {
 		print_pedigree_person($family->getHusband());
 		echo "</td>";
 		echo "<td rowspan=\"2\">";
-		print_person_pedigree($family->getHusbId(), $count+1);
+		print_person_pedigree($family->getHusband(), $count+1);
 		echo "</td>";
 		echo "</tr><tr><td height=\"".$hheight."\"";
 		if ($count<$generations-1) {
@@ -175,7 +175,7 @@ function print_person_pedigree($pid, $count) {
 		print_pedigree_person($family->getWife());
 		echo "</td>";
 		echo "<td rowspan=\"2\">";
-		print_person_pedigree($family->getWifeId(), $count+1);
+		print_person_pedigree($family->getWife(), $count+1);
 		echo "</td>";
 		echo "</tr>";
 		if ($count<$generations-1) {
@@ -201,7 +201,7 @@ function print_family_book($person, $descent) {
 		$dgenerations = $generations;
 		print_descendency($person, 1);
 		echo '</td><td valign="middle">';
-		print_person_pedigree($person->getXref(), 1);
+		print_person_pedigree($person, 1);
 		echo '</td></tr></table><br /><br /><hr style="page-break-after:always;"/><br /><br />';
 
 		foreach ($families as $family) {
