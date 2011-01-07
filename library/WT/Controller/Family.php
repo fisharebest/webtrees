@@ -44,7 +44,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 	var $display = false;
 	var $show_changes = true;
 	var $famrec = '';
-	var $link_relation = 0;
 	var $title = '';
 
 	function init() {
@@ -145,12 +144,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 			print_privacy_error();
 			print_footer();
 			exit;
-		}
-
-		if (empty($this->parents['HUSB']) || empty($this->parents['WIFE'])) {
-			$this->link_relation = 0;
-		} else {
-			$this->link_relation = 1;
 		}
 	}
 
