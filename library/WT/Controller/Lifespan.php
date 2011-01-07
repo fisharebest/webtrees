@@ -218,7 +218,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 	* the pids array
 	* @param string $newpid
 	*/
-	function addFamily($newpid, $gen=0) {
+	function addFamily($newpid) {
 		if (!empty ($newpid)) {
 			$person = WT_Person::getInstance($newpid);
 			if (is_null($person)) return;
@@ -227,31 +227,25 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			//-- foreach gets the spouse and children of the individual.
 			foreach ($families as $family) {
 				if ($newpid != $family->getHusbId()) {
-					if ($gen>0) $this->pids[] = addFamily($family->getHusbId(), $gen-1);
-					else $this->pids[] = $family->getHusbId();
+					$this->pids[] = $family->getHusbId();
 				}
 				if ($newpid != $family->getWifeId()) {
-					if ($gen>0) $this->pids[] = addFamily($family->getWifeId(), $gen-1);
-					else $this->pids[] = $family->getWifeId();
+					$this->pids[] = $family->getWifeId();
 				}
 				$children = $family->getChildren();
 				foreach ($children as $childID => $child) {
-					if ($gen>0) $this->pids[] = addFamily($child->getXref(), $gen-1);
-					else $this->pids[] = $child->getXref();
+					$this->pids[] = $child->getXref();
 				}
 			}
 			$families = $person->getChildFamilies();
 			//-- foreach gets the father, mother and sibblings of the individual.
 			foreach ($families as $family) {
-				if ($gen>0) $this->pids[] = addFamily($family->getHusbId(), $gen-1);
-				else $this->pids[] = $family->getHusbId();
-				if ($gen>0) $this->pids[] = addFamily($family->getWifeId(), $gen-1);
-				else $this->pids[] = $family->getWifeId();
+				$this->pids[] = $family->getHusbId();
+				$this->pids[] = $family->getWifeId();
 				$children = $family->getChildren();
 				foreach ($children as $childID => $child) {
 					if ($newpid != $child->getXref()) {
-						if ($gen>0) $this->pids[] = addFamily($child->getXref(), $gen-1);
-						else $this->pids[] = $child->getXref();
+						$this->pids[] = $child->getXref();
 					}
 				}
 			}
