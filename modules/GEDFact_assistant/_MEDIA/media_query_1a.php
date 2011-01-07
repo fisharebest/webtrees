@@ -42,7 +42,6 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 <?php
 
 	$links = get_media_relations($mediaid);
-	// var_dump($links);
 	echo "<table><tr><td>";
 	echo "<table id=\"existLinkTbl\" width=\"430\" cellspacing=\"1\" >";
 	echo "<tr>";
@@ -54,33 +53,15 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 	echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', WT_I18N::translate('Navigator'), '</td>';
 	echo "</tr>";
 
-	$keys = array_keys($links);
-	$values = array_values($links);
 	$i=1;
-	foreach ($keys as $link) {
+	foreach (array_keys($links) as $link) {
 		$record=WT_GedcomRecord::getInstance($link);
 		echo "<tr ><td>";
-		echo $i;
+		echo $i++;
 		echo "</td><td id=\"existId_", $i, "\" class=\"row2\">";
-			echo $link;
+		echo $link;
 		echo "</td><td>";
-		if ($record->getType()=='INDI') {
-			$idrecord=WT_Person::getInstance($link);
-		} elseif ($record->getType()=='FAM') {
-			$idrecord=WT_Family::getInstance($link);
-			if ($idrecord->getHusbId()) {
-				$head=$idrecord->getHusbId();
-			} else {
-				$head=$idrecord->getWifeId();
-			}
-		} elseif ($record->getType()=='SOUR') {
-			$idrecord=WT_Source::getInstance($link);
-		} else {
-
-		}
-
-		$nam = $idrecord->getFullName();
-		echo $nam;
+		echo $record->getFullName();
 		echo "</td>";
 		echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked /></td>";
 		echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "' /></td>";
@@ -90,6 +71,13 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $link; ?>');" /></a></td>
 			<?php
 		} elseif ($record->getType()=='FAM') {
+			if ($record->getHusband()) {
+				$head=$record->getHusband()->getXref();
+			} elseif ($record->getWife()) {
+				$head=$record->getWife()->getXref();
+			} else {
+				$head='';
+			}
 			?>
 			<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $head; ?>');" /></a></td>
 			<?php
@@ -97,7 +85,6 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 			echo '<td></td>';
 		}
 		echo '</tr>';
-		$i= $i+1;
 	}
 
 	echo "</table>";

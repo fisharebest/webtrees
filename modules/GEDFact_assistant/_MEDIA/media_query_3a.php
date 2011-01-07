@@ -32,19 +32,19 @@
 define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_MEDIA/media_query_3a.php');
 require '../../../includes/session.php';
 
+
 $iid2 = safe_GET('iid');
 
 print_simple_header(WT_I18N::translate('Link media'));
 
 $record=WT_GedcomRecord::getInstance($iid2);
-$headjs="";
 if ($record) {
+	$headjs='';
 	if ($record->getType()=='FAM') {
-		$idrecord=WT_Family::getInstance($iid2);
-		if ($idrecord->getHusbId()) {
-			$headjs=$idrecord->getHusbId();
-		} else {
-			$headjs=$idrecord->getWifeId();
+		if ($record->getHusband()) {
+			$headjs=$record->getHusband()->getXref();
+		} elseif ($record->getWife()) {
+			$headjs=$record->getWife()->getXref();
 		}
 	}
 	?>

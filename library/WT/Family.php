@@ -78,24 +78,6 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	/**
-	 * get the husbands ID
-	 * @return string
-	 */
-	function getHusbId() {
-		if (!is_null($this->husb)) return $this->husb->getXref();
-		else return '';
-	}
-
-	/**
-	 * get the wife ID
-	 * @return string
-	 */
-	function getWifeId() {
-		if (!is_null($this->wife)) return $this->wife->getXref();
-		else return '';
-	}
-
-	/**
 	 * get the husband's person object
 	 * @return Person
 	 */
