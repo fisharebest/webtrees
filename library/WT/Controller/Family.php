@@ -38,9 +38,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 	var $difffam = null;
 	var $accept_success = false;
 	var $user = null;
-	var $showLivingHusb = true;
-	var $showLivingWife = true;
-	var $parents = '';
 	var $display = false;
 	var $show_changes = true;
 	var $famrec = '';
@@ -129,21 +126,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 
 		if ($this->show_changes) {
 			$this->family->diffMerge($this->difffam);
-		}
-
-		$this->parents = array('HUSB'=>$this->family->getHusbId(), 'WIFE'=>$this->family->getWifeId());
-
-		//-- check if we can display both parents
-		if ($this->display == false) {
-			$this->showLivingHusb = showLivingNameById($this->parents['HUSB']);
-			$this->showLivingWife = showLivingNameById($this->parents['WIFE']);
-		}
-
-		if ($this->showLivingHusb == false && $this->showLivingWife == false) {
-			print_header(WT_I18N::translate('Family'));
-			print_privacy_error();
-			print_footer();
-			exit;
 		}
 	}
 
