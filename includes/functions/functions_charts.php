@@ -597,10 +597,13 @@ function ancestry_array($rootid, $maxgen=0) {
 		if (!empty($treeid[$i])) {
 			$person = WT_Person::getInstance($treeid[$i]);
 			$family = $person->getPrimaryChildFamily();
-			// Store the prefered parents
-			if (!empty($family)) {
-				$treeid[($i * 2)] = $family->getHusbId();
-				$treeid[($i * 2) + 1] = $family->getWifeId();
+			if ($family) {
+				if ($family->getHusband()) {
+					$treeid[$i*2]=$family->getHusband()->getXref();
+				}
+				if ($family->getWife()) {
+					$treeid[$i*2+1]=$family->getWife()->getXref();
+				}
 			}
 		}
 	}
