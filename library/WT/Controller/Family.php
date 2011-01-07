@@ -116,7 +116,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		}
 
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT) {
+		if (WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->famid, WT_GED_ID);
 			if (!empty($newrec)) {
 				$this->difffam = new WT_Family($newrec);
