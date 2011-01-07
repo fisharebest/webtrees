@@ -80,172 +80,145 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 		$this->deathMod = 0;
 		$this->endDate = $this->currentYear;
 
-
-		//--new pid
+		// Request parameters
 		$newpid=safe_GET_xref('newpid');
-		if ($newpid) {
-			$person = WT_Person::getInstance($newpid);
-			if (is_null($person) && $GEDCOM_ID_PREFIX) {
-				//-- allow the user to enter the id without the "I" prefix
-				$newpid = $GEDCOM_ID_PREFIX.$newpid;
-				$person = WT_Person::getInstance($newpid);
-			}
-			//-- make sure we have the id from the gedcom record
-			else $newpid = $person->getXref();
-		}
+		$remove=safe_GET_xref('remove');
+		$pids  =safe_GET_xref('pids');
+		$clear =safe_GET_bool('clear');
+		$addfam=safe_GET_bool('addFamily');
+		$place =safe_GET('place');
 
-		if (safe_GET('clear', '1')=='1') {
-			unset($_SESSION['timeline_pids']);
+		if ($clear) {
+			// Empty list
+			$this->pids=array();
+		} elseif (is_array($pids)) {
+			// List of specified records
+			$this->pids=$pids;
+		} elseif ($place) {
+			// All records found in a place
+			$this->pids=get_place_positions($place);
 		} else {
-			if (isset($_SESSION['timeline_pids']))
+			// Modify an existing list of records
+			if (isset($_SESSION['timeline_pids'])) {
 				$this->pids = $_SESSION['timeline_pids'];
-
-			if (!empty ($newpid))
-				$this->pids[] = $newpid;
-
-			//-- pids array
-			$pids=safe_GET_xref('pids');
-			if ($pids) {
-				$this->pids = $pids;
-				if (!empty ($newpid))
-					$this->pids[] = $newpid;
+			} else {
+				$this->pids=array();
 			}
-
-			//-- gets the immediate family for the individual being added if the include immediate family checkbox is checked.
-			if (safe_GET('addFamily', 'yes')=='yes') {
-				if (isset($newpid)) $this->addFamily($newpid);
-			}
-
-			$remove = safe_GET_xref('remove');
-
-			//-- always start with someone on the chart
-			if (count($this->pids)==0) {
-				$this->pids[] = $this->addFamily(check_rootid(""));
-			}
-
-			//-- limit to a certain place
-			$searchplace=safe_GET('place');
-			if (!empty($searchplace)) {
-				$place_pids = get_place_positions($searchplace);
-				if (count($place_pids)>0) {
-					$this->pids = $place_pids;
-				}
-			}
-
-			//-- store the people in the session
-			$_SESSION['timeline_pids'] = $this->pids;
-
-			$beginYear  =safe_GET_integer('beginYear', 0, date('Y')+100, 0);
-			$endYear    =safe_GET_integer('endYear',   0, date('Y')+100, 0);
-			if ($beginYear==0 || $endYear==0) {
-			//-- cleanup user input
-			$this->pids = array_unique($this->pids);  //removes duplicates
-				foreach ($this->pids as $key => $value) {
-					if ($value != $remove) {
-						$this->pids[$key] = $value;
-						$person = WT_Person::getInstance($value);
-						// get_place_positions() returns families as well as individuals.
-						if ($person && $person->getType()=='INDI') {
-							$bdate = $person->getEstimatedBirthDate();
-							$ddate = $person->getEstimatedDeathDate();
-
-							//--Checks to see if the details of that person can be viewed
-							if ($bdate->isOK() && $person->canDisplayDetails()) {
-								$this->people[] = $person;
-							}
-						}
+			if ($remove) {
+				foreach ($this->pids as $key=>$value) {
+					if ($value==$remove) {
+						unset($this->pids[$key]);
 					}
 				}
+			} elseif ($newpid) {
+				$person=WT_Person::getInstance($newpid);
+				$this->addFamily($person, $addfam);
+			} elseif (!$this->pids) {
+				$this->addFamily(WT_Person::getInstance(check_rootid("")), false);
 			}
+		}
+		$_SESSION['timeline_pids']=$this->pids;
 
 
-			//--Finds if the begin year and end year textboxes are not empty
-			else {
-				//-- reset the people array when doing a year range search
-				$this->people = array();
-				//Takes the begining year and end year passed by the postback and modifies them and uses them to populate
-				//the time line
-
-				//Variables to restrict the person boxes to the year searched.
-				//--Searches for individuals who had an even between the year begin and end years
-				$indis = search_indis_year_range($beginYear, $endYear);
-				//--Populates an array of people that had an event within those years
-
-				foreach ($indis as $person) {
-					if (empty($searchplace) || in_array($person->getXref(), $this->pids)) {
+		$beginYear  =safe_GET_integer('beginYear', 0, date('Y')+100, 0);
+		$endYear    =safe_GET_integer('endYear',   0, date('Y')+100, 0);
+		if ($beginYear==0 || $endYear==0) {
+		//-- cleanup user input
+		$this->pids = array_unique($this->pids);  //removes duplicates
+			foreach ($this->pids as $key => $value) {
+				if ($value != $remove) {
+					$this->pids[$key] = $value;
+					$person = WT_Person::getInstance($value);
+					// get_place_positions() returns families as well as individuals.
+					if ($person && $person->getType()=='INDI') {
 						$bdate = $person->getEstimatedBirthDate();
 						$ddate = $person->getEstimatedDeathDate();
+
 						//--Checks to see if the details of that person can be viewed
 						if ($bdate->isOK() && $person->canDisplayDetails()) {
 							$this->people[] = $person;
 						}
 					}
 				}
-				unset($_SESSION['timeline_pids']);
 			}
+		}
 
-			//--Sort the arrar in order of being year
-			uasort($this->people, "compare_people");
-			//If there is people in the array posted back this if occurs
-			if (isset ($this->people[0])) {
-				//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
-				$bdate = $this->people[0]->getEstimatedBirthDate();
-				$ddate = $this->people[0]->getEstimatedDeathDate();
-				$this->timelineMinYear=$bdate->gregorianYear();
-				$this->timelineMaxYear=$ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
-				foreach ($this->people as $key => $value) {
-					$bdate = $value->getEstimatedBirthDate();
-					$ddate = $value->getEstimatedDeathDate();
-					$this->timelineMinYear=min($this->timelineMinYear, $bdate->gregorianYear());
-					$this->timelineMaxYear=max($this->timelineMaxYear, $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y'));
+
+		//--Finds if the begin year and end year textboxes are not empty
+		else {
+			//-- reset the people array when doing a year range search
+			$this->people = array();
+			//Takes the begining year and end year passed by the postback and modifies them and uses them to populate
+			//the time line
+
+			//Variables to restrict the person boxes to the year searched.
+			//--Searches for individuals who had an even between the year begin and end years
+			$indis = search_indis_year_range($beginYear, $endYear);
+			//--Populates an array of people that had an event within those years
+
+			foreach ($indis as $person) {
+				if (empty($searchplace) || in_array($person->getXref(), $this->pids)) {
+					$bdate = $person->getEstimatedBirthDate();
+					$ddate = $person->getEstimatedDeathDate();
+					//--Checks to see if the details of that person can be viewed
+					if ($bdate->isOK() && $person->canDisplayDetails()) {
+						$this->people[] = $person;
+					}
 				}
-
-				if ($this->timelineMaxYear > $this->currentYear) {
-					$this->timelineMaxYear = $this->currentYear;
-				}
-
 			}
-			else {
-				// Sets the default timeline length
-				$this->timelineMinYear = date("Y") - 101;
-				$this->timelineMaxYear = date("Y");
+			unset($_SESSION['timeline_pids']);
+		}
+
+		//--Sort the arrar in order of being year
+		uasort($this->people, "compare_people");
+		//If there is people in the array posted back this if occurs
+		if (isset ($this->people[0])) {
+			//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
+			$bdate = $this->people[0]->getEstimatedBirthDate();
+			$ddate = $this->people[0]->getEstimatedDeathDate();
+			$this->timelineMinYear=$bdate->gregorianYear();
+			$this->timelineMaxYear=$ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
+			foreach ($this->people as $key => $value) {
+				$bdate = $value->getEstimatedBirthDate();
+				$ddate = $value->getEstimatedDeathDate();
+				$this->timelineMinYear=min($this->timelineMinYear, $bdate->gregorianYear());
+				$this->timelineMaxYear=max($this->timelineMaxYear, $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y'));
 			}
+
+			if ($this->timelineMaxYear > $this->currentYear) {
+				$this->timelineMaxYear = $this->currentYear;
+			}
+
+		}
+		else {
+			// Sets the default timeline length
+			$this->timelineMinYear = date("Y") - 101;
+			$this->timelineMaxYear = date("Y");
 		}
 	}
 
-	/**
-	* Add a person and his or her immediate family members to
-	* the pids array
-	* @param string $newpid
-	*/
-	function addFamily($newpid) {
-		if (!empty ($newpid)) {
-			$person = WT_Person::getInstance($newpid);
-			if (is_null($person)) return;
-			$this->pids[] = $newpid;
-			$families = $person->getSpouseFamilies();
-			//-- foreach gets the spouse and children of the individual.
-			foreach ($families as $family) {
-				if ($newpid != $family->getHusbId()) {
-					$this->pids[] = $family->getHusbId();
+	// Add a person (and optionally their immediate family members) to the pids array
+	function addFamily($person, $add_family) {
+		if ($person) {
+			$this->pids[]=$person->getXref();
+			if ($add_family) {
+				foreach ($person->getSpouseFamilies() as $family) {
+					$spouse=$family->getSpouse($person);
+					if ($spouse) {
+						$this->pids[]=$spouse->getXref();
+					}
+					foreach ($family->getChildren() as $child) {
+						$this->pids[]=$child->getXref();
+					}
 				}
-				if ($newpid != $family->getWifeId()) {
-					$this->pids[] = $family->getWifeId();
-				}
-				$children = $family->getChildren();
-				foreach ($children as $childID => $child) {
-					$this->pids[] = $child->getXref();
-				}
-			}
-			$families = $person->getChildFamilies();
-			//-- foreach gets the father, mother and sibblings of the individual.
-			foreach ($families as $family) {
-				$this->pids[] = $family->getHusbId();
-				$this->pids[] = $family->getWifeId();
-				$children = $family->getChildren();
-				foreach ($children as $childID => $child) {
-					if ($newpid != $child->getXref()) {
-						$this->pids[] = $child->getXref();
+				foreach ($person->getChildFamilies() as $family) {
+					foreach ($family->getSpouses() as $parent) {
+						$this->pids[]=$parent->getXref();
+					}
+					foreach ($family->getChildren() as $sibling) {
+						if (!$person->equals($sibling)) {
+							$this->pids[]=$sibling->getXref();
+						}
 					}
 				}
 			}
