@@ -26,7 +26,7 @@
  * @version $Id$
  */
 
-define('WT_SCRIPT_NAME', 'dir_editor.php');
+define('WT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -83,10 +83,7 @@ if (
 
 print_header(WT_I18N::translate('Cleanup data directory'));
 echo
-	'<p class="center">',
-	'<input type="button" value="', WT_I18N::translate('Return to Administration page'), '" onclick="javascript:window.location=\'admin.php\'" />',
-	'</p>',
-	'<h2 class="center">', WT_I18N::translate('Cleanup data directory'), '</h2>',
+	'<h3>', WT_I18N::translate('Cleanup data directory'), '</h3>',
 	'<p>',
 	WT_I18N::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'),
 	'</p><p>',
@@ -106,7 +103,7 @@ if (isset($_REQUEST['to_delete'])) {
 	}
 }
 
-echo '<form name="delete_form" method="post" action=""><table><tr><td>';
+echo '<form name="delete_form" method="post" action=""><table id="cleanup"><tr><td>';
 
 $dir=dir($INDEX_DIRECTORY);
 $entries=array();
@@ -114,25 +111,27 @@ while (false !== ($entry=$dir->read())) {
 	$entries[]=$entry;
 }
 sort($entries);
+echo '<div id="cleanup2">';
 foreach ($entries as $entry) {
 	if ($entry[0] != '.') {
-		echo '<div class="facts_value" name="', $entry, '">';
+		echo '<div name="', $entry, '">';
 		if (in_array($entry, $locked_by_context)) {
-			echo '<img src="./images/RESN_confidential.gif" alt="" /> <span class="name2">', $entry, '</span>';
+			echo '<img src="./images/RESN_confidential.gif" alt="" /> <span>', $entry, '</span>';
 		} else {
 			echo '<input type="checkbox" name="to_delete[]" value="', $entry, '" />', $entry;
 		}
 		echo '</div>';
 	}
 }
+echo '</div>';
 $dir->close();
 echo
 	'</td><td valign="top" id="trash" class="facts_value02">',
-	'<div style="margin-bottom:2px;">',
+	'<div id="cleanup3">',
 	'<table><tr><td>',
 	'<img src="', $WT_IMAGES['trashcan'], '" align="left" alt="" />',
 	'</td>',
-	'<td valign="top"><ul id="trashlist">',
+	'<td><ul id="trashlist">',
 	'</ul></td></tr></table>',
 	'</div>',
 	WT_JS_START,

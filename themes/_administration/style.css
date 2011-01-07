@@ -135,10 +135,29 @@ table.php_info {border-collapse:separate; border-spacing:0; text-align:left; wid
 .php_info td {border-bottom:1px solid LightGrey; border-right:0;}
 .php_info td+td {border-left:0; padding-left:20px;}
 
-/* MANAGE SITES*/
+/* MANAGE SITES */
 table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0;}
 .sites th {font-size:105%; font-weight:bold; text-align:left;}
 .sites td {padding:5px;}
+
+/* MERGE RECORDS */
+#merge p, #merge2 p, #merge3 p {font-weight:bold; font-size:105%;}
+#merge a {padding: 10px;}
+#merge table, #merge2 table, #merge3 table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0; padding:5px;}
+#merge td {padding: 5px;}
+#merge2 td, #merge3 td {border-bottom:1px solid LightGrey; vertical-align:top; }
+#merge3 th {font-weight:bold; text-align:left;}
+
+/* OTHER ADMIN */
+#other p {font-weight:bold; font-size:105%;}
+#other table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px;}
+#other td {border-bottom:1px solid LightGrey; padding:5px 0;}
+
+/* CLEANUP */
+#cleanup td {padding:5px; vertical-align:top;}
+#cleanup2 {background:OldLace; border:1px inset #D9D6C4; padding:5px;}
+#cleanup3 table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px;}
+#cleanup3 td {border-bottom:1px solid LightGrey; padding:5px 0;}
 
 /* MANAGE FAMILY TREES */
 table.gedcom_table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px; width:100%;}
@@ -293,3 +312,12 @@ table#site_map {background:OldLace; border:1px inset #D9D6C4; border-collapse:se
 table#story_module, table#story_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
 #story_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #story_module2 th, #story_module2 td {vertical-align:top; text-align:left;}
+
+/* Autocomplete styles*/
+.ac_input {background-color: #EEE8AA;}
+.ac_results {padding: 0px; border: 1px solid black;	background-color: white; overflow: hidden; z-index: 99999;}
+.ac_results ul {width: 100%;	list-style-position: outside; list-style: none;	padding: 0;	margin: 0;}
+.ac_results li {margin: 0px;	padding: 2px 5px;	cursor: default; display: block; font: menu;font-size: 12px; line-height: 14px;	overflow: hidden;}
+.ac_loading {background: white url(../../images/indicator.gif) right center no-repeat;}
+.ac_odd {background-color: #eee;}
+.ac_over {background-color: #0A246A;	color: white;}

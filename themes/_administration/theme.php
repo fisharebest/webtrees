@@ -70,6 +70,7 @@ $WT_IMAGES=array(
 	'ldarrow'=>WT_THEME_DIR.'images/ldarrow.gif',
 	'ddarrow'=>WT_THEME_DIR.'images/ddarrow.gif',
 	'udarrow'=>WT_THEME_DIR.'images/udarrow.gif',
+	'trashcan'=>WT_THEME_DIR.'images/trashcan.png',
 	'sex_f_9x9'=>'images/sex_f_9x9.gif',
 	'sex_m_9x9'=>'images/sex_m_9x9.gif',
 	'sex_u_9x9'=>'images/sex_u_9x9.gif',
