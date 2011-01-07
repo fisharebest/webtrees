@@ -122,12 +122,11 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 	 * @access public
 	 * @return void
 	 */
-	function print_person_pedigree($pid, $count) {
+	function print_person_pedigree($person, $count) {
 		global $SHOW_EMPTY_BOXES, $WT_IMAGES, $bhalfheight;
 
 		if ($count>=$this->generations) return;
-		$person = WT_Person::getInstance($pid);
-		if (is_null($person)) return;
+		if (!$person) return;
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-1));
 		foreach ($person->getChildFamilies() as $family) {
@@ -148,7 +147,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 				echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
 			}
 			//-- recursively get the father's family
-			$this->print_person_pedigree($family->getHusbId(), $count+1);
+			$this->print_person_pedigree($family->getHusband(), $count+1);
 			echo "</td>";
 			echo "</tr><tr>";
 			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
@@ -167,7 +166,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 			}
 
 			//-- recursively print the mother's family
-			$this->print_person_pedigree($family->getWifeId(), $count+1);
+			$this->print_person_pedigree($family->getWife(), $count+1);
 			echo "</td>";
 			echo "</tr>";
 			echo "</table>";
@@ -183,12 +182,12 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 	 * @access public
 	 * @return void
 	 */
-	function print_descendency($pid, $count, $showNav=true) {
+	function print_descendency($person, $count, $showNav=true) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bheight, $bwidth, $bhalfheight, $lastGenSecondFam;
 
 		if ($count>$this->dgenerations) return 0;
-		$person = WT_Person::getInstance($pid);
-		if (is_null($person)) return;
+		if (!$person) return;
+		$pid=$person->getXref();
 
 		$tablealign = "right";
 		$otablealign = "left";
@@ -196,7 +195,6 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 			$tablealign = "left";
 			$otablealign = "right";
 		}
-		echo "<!-- print_descendency for $pid -->";
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
 			if (isset($lastGenSecondFam)) echo "<br />";
@@ -230,7 +228,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 					$chil = $person2->getXref();
 					echo "<tr>";
 					echo "<td id=\"td_$chil\" class=\"$TEXT_DIRECTION\" align=\"$tablealign\">";
-					$kids = $this->print_descendency($chil, $count+1);
+					$kids = $this->print_descendency($person2, $count+1);
 					$numkids += $kids;
 					echo "</td>";
 
@@ -295,7 +293,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		}
 
 		echo "<table id=\"table2_$pid\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td>";
-		print_pedigree_person(WT_Person::getInstance($pid));
+		print_pedigree_person($person);
 		echo "</td><td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" />";
 
 		//----- Print the spouse

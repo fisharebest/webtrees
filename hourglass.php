@@ -139,12 +139,12 @@ $gencount=0;
 <!-- // descendancy -->
 <td valign="middle">
 <?php
-$controller->print_descendency($controller->pid, 1); ?>
+$controller->print_descendency(WT_Person::getInstance($controller->pid), 1); ?>
 </td>
 <!-- // pedigree -->
 <td valign="middle">
 <?php
-$controller->print_person_pedigree($controller->pid, 1); ?>
+$controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 1); ?>
 </td>
 </tr></table>
 </div>

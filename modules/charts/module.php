@@ -113,7 +113,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($type=='descendants' || $type=='hourglass') {
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_descendency($person->getXref(), 1, false);
+				$controller->print_descendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
@@ -128,7 +128,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$content .= "<td valign=\"middle\">";
 				ob_start();
-				$controller->print_person_pedigree($person->getXref(), 1);
+				$controller->print_person_pedigree($person, 1);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
