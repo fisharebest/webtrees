@@ -1022,8 +1022,9 @@ if (check_media_structure()) {
 		if (count($medialist) && ($subclick=='search' || $subclick=='all')) {
 			if (WT_USE_LIGHTBOX) {
 				// Get Lightbox config variables
-				require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
-				require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
+				// Following two lines are temporarily removed as they cause problems. BH 07/01/2011
+				//require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+				//require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
 			}
 
 			// Sort the media list according to the user's wishes
