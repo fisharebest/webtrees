@@ -101,14 +101,22 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 						<?php
 						echo print_family_parents($controller->getFamilyID());
 						if (WT_USER_CAN_EDIT) {
-							$husb = $controller->getHusband();
-							if (empty($husb)) { ?>
-			<a href="javascript <?php echo WT_I18N::translate('Add a new father'); ?>" onclick="return addnewparentfamily('', 'HUSB', '<?php echo $controller->famid; ?>');"><?php echo WT_I18N::translate('Add a new father'), help_link('edit_add_parent'); ?></a><br />
-						<?php }
-							$wife = $controller->getWife();
-							if (empty($wife))  { ?>
-			<a href="javascript <?php echo WT_I18N::translate('Add a new mother'); ?>" onclick="return addnewparentfamily('', 'WIFE', '<?php echo $controller->famid; ?>');"><?php echo WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'); ?></a><br />
-						<?php }
+							if ($controller->difffam) {
+								$husb=$controller->difffam->getHusband();
+							} else {
+								$husb=$controller->family->getHusband();
+							}
+							if (!$husb) {
+								echo '<a href="javascript: ', WT_I18N::translate('Add a new father'), '" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->famid, '\');">', WT_I18N::translate('Add a new father'), help_link('edit_add_parent'), '</a><br />';
+							}
+							if ($controller->difffam) {
+								$wife=$controller->difffam->getWife();
+							} else {
+								$wife=$controller->family->getWife();
+							}
+							if (!$wife)  {
+								echo '<a href="javascript: ', WT_I18N::translate('Add a new mother'), '" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->famid, '\');">', WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'), '</a><br />';
+							}
 						}
 						?>
 						</td></tr></table>

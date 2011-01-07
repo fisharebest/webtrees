@@ -151,18 +151,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 		return $this->famid;
 	}
 
-	function getHusband() {
-		if (!is_null($this->difffam)) return $this->difffam->getHusbId();
-		if ($this->family) return $this->parents['HUSB'];
-		return null;
-	}
-
-	function getWife() {
-		if (!is_null($this->difffam)) return $this->difffam->getWifeId();
-		if ($this->family) return $this->parents['WIFE'];
-		return null;
-	}
-
 	// $tags is an array of HUSB/WIFE/CHIL
 	function getTimelineIndis($tags) {
 		preg_match_all('/\n1 (?:'.implode('|', $tags).') @('.WT_REGEX_XREF.')@/', $this->family->getGedcomRecord(), $matches);
