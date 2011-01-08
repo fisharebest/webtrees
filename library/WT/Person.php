@@ -656,10 +656,8 @@ class WT_Person extends WT_GedcomRecord {
 		// birth=default => return an empty string
 		return ($pedi=='birth') ? '' : $pedi;
 	}
-	/**
-	* get the step families from the parents
-	* @return array array of Family objects
-	*/
+
+	// Get a list of step-families (that are not also adoptive/foster/etc. families)
 	function getStepFamilies() {
 		$step_families=array();
 		$families=$this->getChildFamilies();
@@ -667,7 +665,7 @@ class WT_Person extends WT_GedcomRecord {
 			$father=$family->getHusband();
 			if ($father) {
 				foreach ($father->getSpouseFamilies() as $step_family) {
-					if (!$family->equals($step_family)) {
+					if (!in_array($step_family, $families)) {
 						$step_families[]=$step_family;
 					}
 				}
@@ -675,7 +673,7 @@ class WT_Person extends WT_GedcomRecord {
 			$mother=$family->getWife();
 			if ($mother) {
 				foreach ($mother->getSpouseFamilies() as $step_family) {
-					if (!$family->equals($step_family)) {
+					if (!in_array($step_family, $families)) {
 						$step_families[]=$step_family;
 					}
 				}
