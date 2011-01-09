@@ -30,21 +30,5 @@ body {
 	height: 20px;
 }
 
-.menuitem_rtl .icon {
-	width: 50px;
-	height: 50px;
-}
-
-.menuitem_hover_rtl .icon {
-	width: 50px;
-	height: 50px;
-}
-
-.submenu_rtl .icon {
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
-}
-
 .makeMenu li ul { left: 0; right: auto; }
 .makeMenu li ul li { text-align: right; }

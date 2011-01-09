@@ -532,25 +532,22 @@ a:hover .nameZoom {
 	color: white;
 }
 
-.langmenuitem, .langmenuitem_rtl {
+.langmenuitem {
 	color: white;
 	font: bold 11px tahoma, arial, helvetica, sans-serif;
 	text-decoration: none;
 	padding: 1px;
 }
 
-.langmenuitem a, .langmenuitem_rtl a {
+.langmenuitem a {
 	color: white;
 }
 
-.langmenuitem_hover, .langmenuitem_hover_rtl {
+.langmenuitem_hover {
 	color: red;
 	font: bold 11px tahoma, arial, helvetica, sans-serif;
 	text-decoration: none;
 	padding: 1px;
-}
-.langmenuitem_rtl, .langmenuitem_hover_rtl {
-	text-align: left;
 }
 
 .thememenuitem  {
@@ -637,7 +634,7 @@ a:hover .nameZoom {
 	cursor: help;
 }
 
-.menuitem, .menuitem_rtl {
+.menuitem {
 	color: black;
 	font: normal 11px tahoma, arial, helvetica, sans-serif;
 	text-decoration: none;
@@ -645,7 +642,7 @@ a:hover .nameZoom {
 	padding: 1px;
 }
 
-.menuitem_hover, .menuitem_hover_rtl {
+.menuitem_hover {
 	color: black;
 	font: normal 11px tahoma, arial, helvetica, sans-serif;
 	text-decoration: none;
@@ -653,7 +650,7 @@ a:hover .nameZoom {
 	padding: 1px;
 }
 
-.submenu, .submenu_rtl {
+.submenu {
 	visibility: hidden;
 	position: absolute;
 	z-index: 100;
@@ -665,7 +662,7 @@ a:hover .nameZoom {
 	white-space: nowrap;
 }
 
-.submenuitem, .submenuitem_rtl {
+.submenuitem {
 	vertical-align: middle;
 	height: 22px;
 	color: black;
@@ -676,21 +673,13 @@ a:hover .nameZoom {
 	padding: 1px;
 }
 
-.submenuitem, .submenuitem_hover {
-	text-align: left;
-}
-
-.submenuitem_rtl, .submenuitem_hover_rtl {
-	text-align: right;
-}
-
-.submenuitem a, .submenuitem_rtl a, .submenuitem_hover a, .submenuitem_hover_rtl a {
+.submenuitem a, .submenuitem_hover a {
  	color: black;
 	display: inline-block;
 	vertical-align: middle;
 }
 
-.submenuitem_hover, .submenuitem_hover_rtl {
+.submenuitem_hover {
 	vertical-align: middle;
 	height: 22px;
 	color: black;

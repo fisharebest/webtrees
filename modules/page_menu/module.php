@@ -46,21 +46,17 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		global $TEXT_DIRECTION, $controller;
+		global $controller;
 
 		$menu = null;
 		if (empty($controller)) {
 			return null;
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
-			$ff = '_rtl';
-		} else {
-			$ff = '';
-		}
+
 		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
 			$menu = $controller->getEditMenu();
 			if ($menu) {
-				$menu->addClass('menuitem'.$ff, 'menuitem_hover'.$ff, 'submenu'.$ff, 'icon_large_gedcom');
+				$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
 				$menu->addLabel($menu->label, 'down');
 			}
 		}

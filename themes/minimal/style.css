@@ -547,35 +547,17 @@ table.center{
 	white-space: nowrap;
 }
 
-.submenu_rtl {
-	color: black;
-	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
-	text-align: center;
-	background-color: #eeeeee;
-	border: solid black 1px;
-	white-space: nowrap;
-}
-
 .submenuitem {
 	color: #555555;
 	text-decoration: none;
 	font: 11px tahoma, arial, helvetica, sans-serif;
 	background-color: #eeeeee;
 	white-space: nowrap;
-	text-align: left;
 	padding: 1px;
+	text-align: left;
 }
 
-.submenuitem_rtl {
-	color: #555555;
-	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
-	background-color: #eeeeee;
-	white-space: nowrap;
-	text-align: right;
-	padding: 1px;
-}
+html[dir='rtl'] .submenuitem { text-align: right; }
 
 .submenuitem_hover	{
 	color: black;
@@ -587,17 +569,7 @@ table.center{
 	padding: 1px;
 }
 
-.submenuitem_hover_rtl	{
-	color: black;
-	text-decoration: underline;
-	font: 11px tahoma, arial, helvetica, sans-serif;
-	background-color: white;
-	white-space: nowrap;
-	text-align: right;
-	padding: 1px;
-}
-
-.submenuitem a, .submenuitem_rtl a, .submenuitem_hover a, .submenuitem_hover_rtl a {
+.submenuitem a, .submenuitem_hover a {
 	display: inline-block;
 	vertical-align: middle;
 }

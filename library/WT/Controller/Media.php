@@ -37,7 +37,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 	var $show_changes=true;
 
 	function init() {
-		global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL, $GEDCOM;
+		global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL;
 
 		$filename = safe_GET('filename');
 		$this->mid = safe_GET_xref('mid');
@@ -168,14 +168,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+		global $SHOW_GEDCOM_RECORD;
 
 		if (!$this->mediaobject) return null;
-		if ($TEXT_DIRECTION=="rtl") {
-			$ff="_rtl";
-		} else {
-			$ff="";
-		}
 
 		$links = get_media_relations($this->pid);
 		$linktoid = "new";
@@ -186,13 +181,13 @@ class WT_Controller_Media extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_media');
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
 			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->pid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
 			$submenu->addIcon('edit_media');
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
@@ -206,25 +201,25 @@ class WT_Controller_Media extends WT_Controller_Base {
 			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','manage');");
 				$submenu->addIcon('edit_media');
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				// Do not print ssubmunu
 			} else {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','person');");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','person');");
-				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','family');");
-				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','source');");
-				$ssubmenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addSubMenu($ssubmenu);
 			}
 			$menu->addSubmenu($submenu);
@@ -242,17 +237,17 @@ class WT_Controller_Media extends WT_Controller_Base {
 				$link = "mediaviewer.php?mid={$this->pid}&samp;how_changes=no";
 			}
 			$submenu = new WT_Menu($label, $link);
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=undo");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addIcon('notes');
 				$menu->addSubmenu($submenu);
 				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=accept");
 				$submenu->addIcon('notes');
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -264,7 +259,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
@@ -274,7 +269,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -283,14 +278,14 @@ class WT_Controller_Media extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Remove object'), "media.php?action=removeobject&amp;xref=".$this->pid);
 			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
 			$submenu->addIcon('edit_media');
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "mediaviewer.php?action=addfav&amp;mid={$this->mid}&amp;gid={$this->mid}");
 		$submenu->addIcon('favorites');
-		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 		$menu->addSubmenu($submenu);
 
 		//-- get the link for the first submenu and set it as the link for the main menu
@@ -316,7 +311,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 	* @return array
 	*/
 	function getFacts($includeFileName=true) {
-		global $GEDCOM, $MEDIA_TYPES;
+		global $MEDIA_TYPES;
 
 		$ignore = array("TITL","FILE");
 		if ($this->show_changes) {

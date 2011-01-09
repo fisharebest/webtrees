@@ -164,9 +164,18 @@ img {
 	z-index:999;
 }
 
+html[dir='rtl'] .makeMenu li ul {
+	left:auto;
+	right:0px;
+}
+
 .makeMenu li ul li {
 	display:block;
 	text-align:left;
+}
+
+html[dir='rtl'] .makeMenu li ul li {
+	text-align:right;
 }
 
 .makeMenu, .makeMenu li ul {

@@ -63,45 +63,44 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Implement WT_Module_Menu
 	public function getMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $controller;
+		global $SEARCH_SPIDER, $controller;
 
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
 		if ($SEARCH_SPIDER) {
-			return new WT_Menu("", "", "");
+			return new WT_Menu('', '', '');
 		}
 		//-- main clippings menu item
-		$menu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, "down");
+		$menu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, 'down');
 		$menu->addIcon('clippings');
-		$menu->addClass("menuitem$ff", "menuitem_hover$ff", "submenu$ff", "icon_large_clippings");
+		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_clippings');
 		if (isset($controller->indi) && $controller->indi->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->pid}&amp;type=indi");
 			$submenu->addIcon('clippings');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass('submenuitem', 'submenuitem_hover');
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->family) && $controller->family->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->famid}&amp;type=fam");
 			$submenu->addIcon('clippings');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass('submenuitem', 'submenuitem_hover');
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->mediaobject) && $controller->mediaobject->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->mid}&amp;type=obje");
 			$submenu->addIcon('clippings');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass('submenuitem', 'submenuitem_hover');
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->source) && $controller->source->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->sid}&amp;type=sour");
 			$submenu->addIcon('clippings');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass('submenuitem', 'submenuitem_hover');
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->note) && $controller->note->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to Clippings Cart'), "module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id={$controller->nid}&amp;type=note");
 			$submenu->addIcon('clippings');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass('submenuitem', 'submenuitem_hover');
 			$menu->addSubmenu($submenu);
 		} else if (isset($controller->repository) && $controller->repository->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to Clippings Cart'), "module.php?mod=clippings&mod_action=index&action=add&id={$controller->rid}&type=repo");
 			$submenu->addIcon('clippings');
-			$submenu->addClass("submenuitem$ff", "submenuitem_hover$ff");
+			$submenu->addClass('submenuitem', 'submenuitem_hover');
 			$menu->addSubmenu($submenu);
 		}
 		return $menu;

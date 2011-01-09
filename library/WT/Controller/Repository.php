@@ -137,18 +137,14 @@ class WT_Controller_Repository extends WT_Controller_Base {
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $TEXT_DIRECTION, $WT_IMAGES, $GEDCOM, $SHOW_GEDCOM_RECORD;
+		global $SHOW_GEDCOM_RECORD;
 
 		if (!$this->repository) return null;
-		if ($TEXT_DIRECTION=="rtl") {
-			$ff="_rtl";
-		} else {
-			$ff="";
-		}
+
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_repo');
-		$menu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}", 'icon_large_gedcom');
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
 
 		if (WT_USER_CAN_EDIT) {
 			// For consistency with other controllers, we need an "edit repo" option
@@ -163,17 +159,17 @@ class WT_Controller_Repository extends WT_Controller_Base {
 				$submenu = new WT_Menu(WT_I18N::translate('Click here to hide changes.'), "repo.php?rid={$this->rid}&amp;show_changes=no");
 				$submenu->addIcon('edit_repo');
 			}
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "repo.php?rid={$this->rid}&amp;action=undo");
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addIcon('edit_repo');
 				$menu->addSubmenu($submenu);
 				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "repo.php?rid={$this->rid}&amp;action=accept");
 				$submenu->addIcon('edit_repo');
-				$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -185,7 +181,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->rid."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
@@ -195,7 +191,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -204,14 +200,14 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete repository'));
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
 			$submenu->addIcon('edit_repo');
-			$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
 		$submenu->addIcon('favorites');
-		$submenu->addClass("submenuitem{$ff}", "submenuitem_hover{$ff}", "submenu{$ff}");
+		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 		$menu->addSubmenu($submenu);
 
 		//-- get the link for the first submenu and set it as the link for the main menu

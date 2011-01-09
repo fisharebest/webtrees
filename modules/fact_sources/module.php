@@ -46,16 +46,12 @@ class fact_sources_WT_Module extends WT_Module implements WT_Module_Report {
 
 	// Implement WT_Module_Report - a module can provide many reports
 	public function getReportMenus() {
-		global $WT_IMAGES, $TEXT_DIRECTION;
-
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
-
 		$menus=array();
 		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml');
 		$menu->addIcon('menu_source');
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
 		$menus[]=$menu;
-		
+
 		return $menus;
 	}
 }

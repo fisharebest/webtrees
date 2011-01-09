@@ -46,9 +46,7 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 
 	// Implement WT_Module_Report - a module can provide many reports
 	public function getReportMenus() {
-		global $controller, $WT_IMAGES, $TEXT_DIRECTION;
-
-		if ($TEXT_DIRECTION=="rtl") $ff="_rtl"; else $ff="";
+		global $controller;
 
 		if ($controller && isset($controller->pid)) {
 			$pid='&amp;pid='.$controller->pid;
@@ -58,11 +56,10 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 			$pid='';
 		}
 
-
 		$menus=array();
 		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
 		$menu->addIcon('cfamily');
-		$menu->addClass("submenuitem$ff", "submenuitem_hover$ff", "submenu$ff", "icon_small_reports");
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
 		$menus[]=$menu;
 
 		return $menus;
