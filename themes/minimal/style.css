@@ -419,6 +419,11 @@ table.center{
 	padding-right: 5pt;
 }
 
+html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
+	padding-left: 5pt;
+	padding-right: 0pt;
+}
+
 .link {
 	font-size: 11px;
 	text-align: center;
