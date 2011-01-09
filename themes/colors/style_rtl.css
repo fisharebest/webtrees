@@ -44,11 +44,8 @@ padding-right: 10px;
 	padding-left: 15px;
 	padding-right: 5px;
 }
-.blockh2, .blockhc, .door {
+.blockh2, .blockhc {
 	direction: rtl;
-}
-.door dd {
-	float: right;
 }
 .toplinks_right {
 padding-left: 15px;

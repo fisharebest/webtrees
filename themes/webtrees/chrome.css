@@ -6,10 +6,6 @@
 	right:20px;
 	top:120px;
 }
-.door dd {
-	-moz-border-radius-topleft: 0.6em;
-	-moz-border-radius-topright: 0.6em;
-}
 
 #sidebar {  
 	margin-top: 18px !important;

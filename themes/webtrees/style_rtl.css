@@ -11,9 +11,3 @@ body {
 	direction: rtl;
 	text-align: right;
 }
-.door {
-	direction: rtl;
-}
-.door dd {
-	float: right;
-}

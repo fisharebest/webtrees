@@ -1330,19 +1330,6 @@ background: #dfeeff;
 	text-decoration:line-through !important;
 }
 
-.door {
-margin: 0px;
-padding: 0px;
-}
-
-.door dd {
-margin: 2px;
-padding: 2px 6px;
-height: 100%; float: left;
-font-weight: bold;
-display: none;
-}
-
 .note_details {
 display: none;
 }

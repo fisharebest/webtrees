@@ -1191,20 +1191,6 @@ h4 {
 	border: solid red 2px;
 }
 
-.door {
-	margin: 0;
-	padding: 0;
-}
-
-.door dd {
-	margin: 2px;
-	padding: 2px 6px;
-	height: 100%;
-	float: left;
-	font-weight: bold;
-	display: none;
-}
-
 .note_details {
 	display: none;
 }
