@@ -49,22 +49,28 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 .ui-widget-content a:hover {color:red; cursor:hand; cursor:pointer;}
 .ui-widget-header {padding:5px;}
 .css_right {float:right;}
+html[dir='rtl'] .css_right {float:left;}
 
 /* Drag-n-drop sorting for modules, etc. */
 .sortme {cursor:move;}
 
 /* Page Help links */
 #page_help{text-align:right;}
+html[dir='rtl'] #page_help{text-align:left;}
 #page_help img{ height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
 #admin_head {position:relative; height:70px; margin-bottom:10px;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
-#info {position:absolute; right:10px; bottom:0;text-align:right;}
-#links {position:absolute; left:10px; bottom:0; display:inline;margin-bottom:5px; white-space:nowrap;}
-#links li {display:inline;position:relative;white-space:nowrap;}
-#links li ul {display:none; position:absolute;left:0px;top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4;z-index:999;}
+#info {position:absolute; right:10px; bottom:0; text-align:right;}
+html[dir='rtl'] #info {right:auto; left:10px; text-align:left;}
+#links {position:absolute; left:10px; bottom:0; display:inline; margin-bottom:5px; white-space:nowrap;}
+html[dir='rtl'] #links {left:auto; right:10px;}
+#links li {display:inline; position:relative;}
+#links li ul {display:none; position:absolute; left:0px; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4; z-index:999;}
+html[dir='rtl'] #links li ul {left:auto; right:0px;}
 #links li ul li {display:block; padding:0 5px; text-align:left;}
+ html[dir='rtl'] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
 
@@ -73,33 +79,46 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 
 /* SIDE MENU */
 #admin_menu {padding:10px 0 10px 5px; width:200px; float:left; position:absolute; color:#2E6E9E;}
+html[dir='rtl'] #admin_menu {padding:10px 5px 10px 0; float:right;}
 #admin_menu ul {list-style:none outside none; margin:0 0 0 -30px;}
+html[dir='rtl'] #admin_menu ul {margin:0 -30px 0 0;}
 #admin_menu li ul {list-style:none outside none; margin:0 0 0 -20px;}
+html[dir='rtl'] #admin_menu li ul {margin:0 -20px 0 0;}
 #admin_menu li  span {font-style:italic;}
 
 /* CONTENT */
-#admin_content {margin-left:220px; padding:10px;}
+#admin_content {margin:0 0 0 220px; padding:10px;}
+html[dir='rtl'] #admin_content {margin:0 220px 0 0; padding:10px;}
 
 /* FOOTER */
 #admin_footer {float:left; text-align:center; width:100%; margin-top:30px;}
+html[dir='rtl'] #admin_footer {float:right; text-align:center;}
 
 /* All DASHBOARD BLOCKS */
 #about, #block1 , #block2, #block3{background:OldLace; padding:5px; border:1px inset #D9D6C4;}
 #about h2, #block1 h2, #block2 h2, #block3 h2 {margin:0;}
 #tree_stats h3, #changes h3 {text-align:left;}
+html[dir='rtl'] #tree_stats h3, html[dir='rtl'] #changes h3 {text-align:right;}
 #block1, #block2, #block3 {height:540px; overflow:auto; width:31%;}
 #block1 {float:left;}
+html[dir='rtl'] #block1 {float:right;}
 #block2 {margin:0 auto;}
 #block3 {float:right;}
+html[dir='rtl'] #block3 {float:left;}
 #about {margin-bottom:10px;}
 #tree_stats th, #changes th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
-#tree_stats td, #changes td {padding-right:10px; width:30px; text-align:right; white-space:nowrap;}
+html[dir='rtl'] #tree_stats th, html[dir='rtl'] #changes th {padding:0 0 0 ; text-align:right;}
+#tree_stats td, #changes td {padding:0 10px 0 0; width:30px; text-align:right; white-space:nowrap;}
+html[dir='rtl'] #tree_stats td, #changes td {padding:0 0 0 10px; text-align:left; white-space:nowrap;}
 #tree_stats .ui-accordion-content, #changes .ui-accordion-content {padding:1em 0;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 #block1 ul {list-style-type:none; padding:0px; margin:0 0 0 20px;}
-#block1 ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 0px; padding-left:14px;}
+html[dir='rtl'] #block1 ul {margin:0 20px 0 0;}
+#block1 ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 0px; padding:0 0 0 14px;}
+html[dir='rtl'] #block1 ul li {padding:0 14px 0 0;}
 #block1 td {padding: 0 10px 0 0;}
+html[dir='rtl'] #block1 td {padding: 0 0 0 10px;}
 
 /*SERVER CONFIG */
 .editable {width:100%; display:block}
