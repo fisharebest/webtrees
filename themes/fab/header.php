@@ -55,7 +55,7 @@ echo
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" />',
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'modules.css" />';
 
-if ($BROWSERTYPE!='other') {
+if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
 	echo '<link type="text/css" rel="stylesheet" href="',  WT_THEME_DIR, $BROWSERTYPE, '.css" />';
 }
 

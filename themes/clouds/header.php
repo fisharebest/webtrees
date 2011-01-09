@@ -86,7 +86,7 @@ echo
 	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
-if ($BROWSERTYPE!='other') { ?>
+if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
 	<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 <?php
 }

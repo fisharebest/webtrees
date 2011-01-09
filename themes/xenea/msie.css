@@ -13,3 +13,4 @@ a.showit:hover span {
 	filter: alpha(opacity=85);
 }
 
+form { margin-top: 0px; margin-bottom: 0px; }

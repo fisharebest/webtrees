@@ -49,7 +49,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		<title><?php echo htmlspecialchars($title); ?></title>
 		<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
 		<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
-		<?php if ($BROWSERTYPE!='other') { ?>
+		<?php if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
 			<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
 		<?php }
 		// Additional css files required (Only if Lightbox installed)
@@ -64,12 +64,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		} ?>
 
 	<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />
-	<?php if ($BROWSERTYPE == "msie") { ?>
-	<style type="text/css">
-		FORM { margin-top: 0px; margin-bottom: 0px; }
-	</style>
-	<?php }
-	if ($view!="simple") { ?>
+	<?php if ($view!="simple") { ?>
 		<?php if (!empty($META_DESCRIPTION)) { ?><meta name="description" content="<?php echo htmlspecialchars($META_DESCRIPTION); ?>" /><?php } ?>
 		<?php if (!empty($META_ROBOTS)) { ?><meta name="robots" content="<?php echo htmlspecialchars($META_ROBOTS); ?>" /><?php } ?>
 		<meta name="generator" content="<?php echo WT_WEBTREES, ' - ', WT_WEBTREES_URL; ?>" />
