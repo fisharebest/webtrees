@@ -422,6 +422,11 @@ a:hover .nameZoom {
 	padding-right: 5px;
 }
 
+html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
+	padding-left: 5px;
+	padding-right: 0;
+}
+
 .link {
 	font-size: 11px;
 	text-align: center;
