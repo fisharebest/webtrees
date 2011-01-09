@@ -19,16 +19,6 @@ html {
 .toplinks_left {
 padding-right: 10px;
 }
-#footer {
-	text-align: center;
-}
-.person_box, .person_boxF, .person_boxNN {
-	text-align: right;
-}
-.footer {
-	text-align: left;
-	direction: rtl;
-}
 .image {
 	margin-right: 0px;
 	margin-left: 15px;
@@ -43,9 +33,6 @@ padding-right: 10px;
 .blockhc {
 	padding-left: 15px;
 	padding-right: 5px;
-}
-.blockh2, .blockhc {
-	direction: rtl;
 }
 .toplinks_right {
 padding-left: 15px;
