@@ -433,6 +433,11 @@ a:hover .nameZoom {
 	padding-right: 5pt;
 }
 
+html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
+	padding-left: 5pt;
+	padding-right: 0pt;
+}
+
 .link {
 	font-size: 11px;
 	text-align: center;
@@ -448,7 +453,7 @@ a:hover .nameZoom {
 	background-color: #edf7fd;
 }
 
-.sublinks_table .icon {
+.sublinks_table .icon, .sublinks_table_rtl .icon {
 	vertical-align: middle;
 	width: 20px;
 	height: 20px;

@@ -17,15 +17,3 @@ body {
 .door dd {
 	float: right;
 }
-
-.icon, .adminicon {
-	border: none;
-	padding-left: 5pt;
-	padding-right: 0pt;
-}
-
-.sublinks_table_rtl .icon {
-	vertical-align: middle;
-	width: 20px;
-	height: 20px;
-}
