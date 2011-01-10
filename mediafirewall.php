@@ -548,9 +548,31 @@ if ($usewatermark) {
 // determine filesize of image (could be original or watermarked version)
 $filesize = filesize($serverFilename);
 
-// set one more header
-header("Content-Length: " . $filesize);
-// open the file and send it
-$fp = fopen($serverFilename, 'rb');
-fpassthru($fp);
+if(function_exists('fpassthru')){ 
+	// set content-length header, send file
+	header("Content-Length: " . $filesize);
+	$fp = fopen($serverFilename, 'rb');
+	fpassthru($fp);
+	exit;
+} elseif(function_exists('readfile')){ 
+	// set content-length header, send file
+	header("Content-Length: " . $filesize);
+	readfile($serverFilename);
+	exit;
+} elseif (isImageTypeSupported($type) && (hasMemoryForImage($serverFilename, $debug_verboseLogging))) {
+	// both fpassthru and readfile are disabled, use the imagecreatefrom* functions if possible
+	$imCreateFunc = 'imagecreatefrom'.$type;
+	$im = @$imCreateFunc($serverFilename);
+
+	if ($im) {
+		$imSendFunc = 'image'.$type;
+		// send the image
+		$imSendFunc($im);
+		imagedestroy($im);
+		exit;
+	}
+}
+
+// if we get this far, fpassthru and readfile are both disabled and the imagecreatefrom* functions are not available or did not work on this image.
+if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('Sorry, readfile and fpassthru are disabled on this server'), $serverFilename);
 exit;
