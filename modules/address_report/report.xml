@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Description>Prints a list of addresses</Description>
 	<Title><var var="WT_I18N::translate('Address List')" /></Title>
+	<Description><var var="WT_I18N::translate('A report of addresses, telephone numbers, and email addresses.')" /></Description>
 	<Input name="address" type="text"><var var="WT_I18N::translate('Show addresses that contain:')" /> </Input>
 	<Input name="sortby" type="select" options="NAME=>WT_I18N::translate('Name')|ID=>WT_I18N::translate('ID number')"><var var="WT_I18N::translate('Sort by')" /></Input>
 	<Input name="email_in" type="select" options="all=>WT_I18N::translate('All addresses')|noemail=>WT_I18N::translate('Addresses without emails')|onlyemail=>WT_I18N::translate('Only addresses with emails')"><var var="WT_I18N::translate('Include:')"/> </Input>

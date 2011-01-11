@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Death Date and Place Report')" /></Title>
-	<Description>Prints a list of individuals matching specific name and/or death criteria</Description>
+	<Description><var var="WT_I18N::translate('A report of people who died in a given time or place.')" /></Description>
 	<Input name="name" lookup="NAME" type="text"><var var="WT_I18N::translate('Name')" /></Input>
 	<Input name="deathplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Death Place contains')" /></Input>
 	<Input name="deathdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Death Date range start')" /></Input>

@@ -2,8 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Sources report')" /></Title>
-	<Description>Prints a list of individuals and families with a specific source</Description>
-
+	<Description><var var="WT_I18N::translate('A report of individuals which are supported by a given source.')" /></Description>
 	<Input name="sid" lookup="SOUR" default="" type="text"><var var="WT_I18N::translate('Find Source ID')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>WT_I18N::translate('Name')|BIRT:DATE=>WT_I18N::translate('Date of birth')|DEAT:DATE=>WT_I18N::translate('Date of death')"><var var="WT_I18N::translate('Sort by')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>

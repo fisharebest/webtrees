@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Changes Report')" /></Title>
-	<Description>Prints a list of individuals matching specific change criteria</Description>
+	<Description><var var="WT_I18N::translate('A report of recent and pending changes.')" /></Description>
 	<Input name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><var var="WT_I18N::translate('Starting range of change dates')" /></Input>
 	<Input name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><var var="WT_I18N::translate('Ending range of change dates')" /></Input>
 	<Input name="sortby" type="select" options="CHAN=>WT_I18N::translate('Last change')|NAME=>WT_I18N::translate('Name')|BIRT:DATE=>WT_I18N::translate('Date of birth')"><var var="WT_I18N::translate('Sort by')" /></Input>

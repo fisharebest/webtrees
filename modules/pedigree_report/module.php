@@ -31,12 +31,14 @@ if (!defined('WT_WEBTREES')) {
 class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Pedigree Chart');
+		// This text also appears in the .XML file - update both together
+		return /* I18N: Name of a report */ WT_I18N::translate('Pedigree Chart');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Prints a pedigree chart in portrait or landscape mode');
+		// This text also appears in the .XML file - update both together
+		return /* I18N: Description of a report */ WT_I18N::translate('A report of a person\'s ancestors, formatted as a tree.');
 	}
 
 	// Extend class WT_Module

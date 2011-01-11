@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Birth Date and Place Report')" /></Title>
-	<Description>Prints a list of individuals matching specific name and/or birth criteria</Description>
+	<Description><var var="WT_I18N::translate('A report of people who were born in a given time or place.')" /></Description>
 	<Input name="name" lookup="NAME" type="text"><var var="WT_I18N::translate('Name')" /></Input>
 	<Input name="birthplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Birth Place contains')" /></Input>
 	<Input name="birthdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Birth Date range start')" /></Input>

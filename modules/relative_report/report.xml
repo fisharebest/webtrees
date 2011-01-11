@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Relatives Report')" /></Title>
-	<Description>Prints a list of individuals related to a specific person</Description>
+	<Description><var var="WT_I18N::translate('A report of a person and a list their relatives.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
 	<Input name="relatives" type="select" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="none=>WT_I18N::translate('None')|NAME=>WT_I18N::translate('Name')|BIRT:DATE=>WT_I18N::translate('Date of birth')|DEAT:DATE=>WT_I18N::translate('Date of death')"><var var="WT_I18N::translate('Sort by')" /></Input>

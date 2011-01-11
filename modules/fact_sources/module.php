@@ -31,12 +31,14 @@ if (!defined('WT_WEBTREES')) {
 class fact_sources_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Fact Sources');
+		// This text also appears in the .XML file - update both together
+		return /* I18N: Name of a report */ WT_I18N::translate('Fact Sources');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Prints a list of individuals and families with a specific source for facts or records');
+		// This text also appears in the .XML file - update both together
+		return /* I18N: Description of a report */ WT_I18N::translate('A report of facts which are supported by a given source.');
 	}
 
 	// Extend class WT_Module

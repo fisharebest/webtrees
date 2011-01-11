@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Births, Deaths, Marriages')" /></Title>
-	<Description>Prints a list of birth, death, marriage events for individuals matching name or place criteria</Description>
+	<Description><var var="WT_I18N::translate('A report of vital records for a given date or place.')" /></Description>
 	<Input name="name" lookup="NAME" type="text"><var var="WT_I18N::translate('Name')" /></Input>
 	<Input name="bdmplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Place')" /></Input>
 	<Input name="birthdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Birth Date range start')" /></Input>

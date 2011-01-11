@@ -31,12 +31,14 @@ if (!defined('WT_WEBTREES')) {
 class missing_facts_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Missing relatives facts');
+		// This text also appears in the .XML file - update both together
+		return /* I18N: Name of a report */ WT_I18N::translate('Missing relatives facts');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Prints a list of individuals who have missing information');
+		// This text also appears in the .XML file - update both together
+		return /* I18N: Description of a report */ WT_I18N::translate('A report of unknown facts for a person and their relatives.');
 	}
 
 	// Extend class WT_Module

@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Cemetery Report')" /></Title>
-	<Description>Prints a list of individuals burial places matching specific cemetery criteria</Description>
+	<Description><var var="WT_I18N::translate('A report of people buried in a given place.')" /></Description>
 	<Input name="deathplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Burial Place contains')" /> </Input>
 	<Input name="sortby" type="select" default="NAME" options="none=>WT_I18N::translate('None')|ID=>WT_I18N::translate('ID number')|NAME=>WT_I18N::translate('Name')|DEAT:DATE=>WT_I18N::translate('Date of death')"><var var="WT_I18N::translate('Sort by')" /></Input>
 	<Input name="adlist" type="select" default="none" options="none=>WT_I18N::translate('None')|_MARNM=>translate_fact('_MARNM')|HUSB=>WT_I18N::translate('Husband')"><var var="WT_I18N::translate('Name List')" /></Input>

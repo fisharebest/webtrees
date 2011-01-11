@@ -2,7 +2,7 @@
 <Report>
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Occupation report')" /></Title>
-	<Description>Prints a list of individuals occupation matching specific criteria</Description>
+	<Description><var var="WT_I18N::translate('A report of people who had a given occupation.')" /></Description>
 	<Input name="occupation" lookup="OCCU" type="text"><var var="translate_fact('OCCU')" /> </Input>
 	<Input name="sortby" type="select" default="NAME" options="none=>WT_I18N::translate('None')|NAME=>WT_I18N::translate('Name')|BIRT:DATE=>translate_fact('BIRT:DATE')"><var var="WT_I18N::translate('Sort by')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
