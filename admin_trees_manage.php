@@ -155,7 +155,7 @@ case 'replace_import':
 
 $gedcoms=get_all_gedcoms();
 
-print_header(WT_I18N::translate('Manage family trees'));
+print_header(WT_I18N::translate('Family trees'));
 
 // "Help for this page" link
 echo '<div id="page_help">', help_link('gedcom_administration'), '</div>';

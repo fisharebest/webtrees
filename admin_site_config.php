@@ -35,7 +35,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(WT_I18N::translate('Server configuration'));
+print_header(WT_I18N::translate('Site configuration'));
 
 // "Help for this page" link
 echo '<div id="page_help">', help_link('help_editconfig.php'), '</div>';
@@ -43,7 +43,7 @@ echo '<div id="page_help">', help_link('help_editconfig.php'), '</div>';
 echo
 	// Display the config items inline, rather than using a form.
 	'<table class="site_config"><tr>',
-	'<th>', WT_I18N::translate('Server configuration'), '</th><th>&nbsp;</th>',
+	'<th>', WT_I18N::translate('Site configuration'), '</th><th>&nbsp;</th>',
 	'</tr><tr>',
 	'<td>', WT_I18N::translate('Data file directory'), help_link('INDEX_DIRECTORY'), '</td>',
 	'<td>', edit_field_inline('site_setting-INDEX_DIRECTORY', get_site_setting('INDEX_DIRECTORY')), '</td>',
@@ -81,7 +81,7 @@ echo
 	'<td>', WT_I18N::translate('Login URL'), help_link('LOGIN_URL'), '</td>',
 	'<td>', edit_field_inline('site_setting-LOGIN_URL', get_site_setting('LOGIN_URL')), '</td>',
 	'</tr><tr>',
-	'<th>', WT_I18N::translate('SMTP mail configuration'), '</th><th>&nbsp;</th>',
+	'<th>', WT_I18N::translate('Mail configuration'), '</th><th>&nbsp;</th>',
 	'</tr><tr>',
 	'<td>', WT_I18N::translate('Messages'), help_link('SMTP_ACTIVE'), '</td>',
 	'<td>', select_edit_control_inline('site_setting-SMTP_ACTIVE', array('internal'=>WT_I18N::translate('Use PHP mail to send messages'), 'external'=>WT_I18N::translate('Use SMTP to send messages'), 'disabled'=>WT_I18N::translate('Do not send messages')), null, get_site_setting('SMTP_ACTIVE')), '</td>',

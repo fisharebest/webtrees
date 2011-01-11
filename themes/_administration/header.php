@@ -80,7 +80,7 @@ if (WT_USER_IS_ADMIN) {
 	echo
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_config.php" ? 'class="current" ' : ''), 'href="admin_site_config.php">',
-		WT_I18N::translate('Server configuration'),
+		WT_I18N::translate('Site configuration'),
 		'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_logs.php" ? 'class="current" ' : ''), 'href="admin_site_logs.php">',
 		WT_I18N::translate('Logs'),
