@@ -35,27 +35,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $SESSION_HIDE_GOOGLEMAP;
-$SESSION_HIDE_GOOGLEMAP = "empty";
-if ((isset($_REQUEST["HIDE_GOOGLEMAP"])) && (empty($SEARCH_SPIDER))) {
-	if (stristr("true", $_REQUEST["HIDE_GOOGLEMAP"])) {
-		$SESSION_HIDE_GOOGLEMAP = "true";
-	}
-	if (stristr("false", $_REQUEST["HIDE_GOOGLEMAP"])) {
-		$SESSION_HIDE_GOOGLEMAP = "false";
-	}
-}
-
-// change the session values and store if needed.
-if ($SESSION_HIDE_GOOGLEMAP == "true") $_SESSION['hide_googlemap'] = true;
-if ($SESSION_HIDE_GOOGLEMAP == "false") $_SESSION['hide_googlemap'] = false;
-if ($SESSION_HIDE_GOOGLEMAP == "empty") {
-	if ((isset($_SESSION['hide_googlemap'])) && ($_SESSION['hide_googlemap'] == true))
-		$SESSION_HIDE_GOOGLEMAP = "true";
-	else
-		$SESSION_HIDE_GOOGLEMAP = "false";
-}
-
 // functions copied from print_fact_place
 function print_fact_place_map($factrec) {
 	$ct = preg_match("/2 PLAC (.*)/", $factrec, $match);

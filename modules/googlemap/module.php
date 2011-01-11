@@ -83,7 +83,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SEARCH_SPIDER, $SESSION_HIDE_GOOGLEMAP, $WT_IMAGES;
+		global $SEARCH_SPIDER, $WT_IMAGES;
 		global $GOOGLEMAP_ENABLED, $GOOGLEMAP_API_KEY, $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
 		global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
 		global $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD, $GOOGLEMAP_PH_CONTROLS;
@@ -113,18 +113,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			//-->
 			</script> <?php
 		} else {
-			$tNew = str_replace(array("&HIDE_GOOGLEMAP=true", "&HIDE_GOOGLEMAP=false", "action=ajax&module=".$this->getName()."&"), "", $_SERVER["REQUEST_URI"]);
-			$tNew = str_replace("&", "&amp;", $tNew);
-			if ($SESSION_HIDE_GOOGLEMAP=="true") {
-				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"".$tNew."&amp;HIDE_GOOGLEMAP=false#".$this->getName()."\">";
-				echo "<img src=\"".$WT_IMAGES["plus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".WT_I18N::translate('Activate')."\" title=\"".WT_I18N::translate('Activate')."\" />";
-				echo " ".WT_I18N::translate('Activate')."</a></span>";
-			} else {
-				echo "&nbsp;&nbsp;&nbsp;<span class=\"font9\"><a href=\"" .$tNew."&amp;HIDE_GOOGLEMAP=true#".$this->getName()."\">";
-				echo "<img src=\"".$WT_IMAGES["minus"]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"".WT_I18N::translate('Deactivate')."\" title=\"".WT_I18N::translate('Deactivate')."\" />";
-				echo " ".WT_I18N::translate('Deactivate')."</a></span>";
-			}
-
 			if (!$this->controller->indi->canDisplayName()) {
 				echo "<table class=\"facts_table\">";
 				echo "<tr><td class=\"facts_value\">";
@@ -134,7 +122,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo "<script type=\"text/javascript\">";
 				echo "function ResizeMap () {}</script>";
 			} else {
-				if ($SESSION_HIDE_GOOGLEMAP=="false") {
 					echo "<table width=\"100%\" border=\"0\" class=\"facts_table\">";
 					echo "<tr><td valign=\"top\">";
 					echo "<div id=\"googlemap_left\">";
@@ -169,7 +156,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo "</td>";
 					echo "</tr></table>";
 
-				}
+				
 			}
 		}
 		// start
