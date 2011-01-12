@@ -154,7 +154,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 	*/
 	function getPageTitle() {
 		if ($this->mediaobject) {
-			return $this->mediaobject->getFullName()." - ".WT_I18N::translate('Multimedia Information');
+			return $this->mediaobject->getFullName()." - ".WT_I18N::translate('Media file');
 		} else {
 			return WT_I18N::translate('Unable to find record with ID');
 		}
