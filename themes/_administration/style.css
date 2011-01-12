@@ -95,30 +95,30 @@ html[dir='rtl'] #admin_content {margin:0 220px 0 0; padding:10px;}
 html[dir='rtl'] #admin_footer {float:right; text-align:center;}
 
 /* All DASHBOARD BLOCKS */
-#about, #block1 , #block2, #block3{background:OldLace; padding:5px; border:1px inset #D9D6C4;}
-#about h2, #block1 h2, #block2 h2, #block3 h2 {margin:0;}
-#tree_stats h3, #changes h3 {text-align:left;}
-html[dir='rtl'] #tree_stats h3, html[dir='rtl'] #changes h3 {text-align:right;}
-#block1, #block2, #block3 {height:540px; overflow:auto; width:31%;}
-#block1 {float:left; white-space:nowrap; overflow-x:auto; overflow-y:hidden;}
-html[dir='rtl'] #block1 {float:right;}
-#block2 {margin:0 auto;}
-#block3 {float:right;}
-html[dir='rtl'] #block3 {float:left;}
-#about {margin-bottom:10px;}
-#tree_stats th, #changes th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal;}
-html[dir='rtl'] #tree_stats th, html[dir='rtl'] #changes th {padding:0 0 0 ; text-align:right;}
-#tree_stats td, #changes td {padding:0 10px 0 0; width:30px; text-align:right; white-space:nowrap;}
-html[dir='rtl'] #tree_stats td, #changes td {padding:0 0 0 10px; text-align:left; white-space:nowrap;}
-#tree_stats .ui-accordion-content, #changes .ui-accordion-content {padding:1em 0;}
+#about, #users , #trees, #recent{background:OldLace; padding:5px; border:1px inset #D9D6C4;}
+#about h2, #users h2, #trees h2, #recent h2 {margin:0;}
+#tree_stats h3, #recent h3 {text-align:left;}
+html[dir='rtl'] #tree_stats h3, html[dir='rtl'] #recent h3 {text-align:right;}
+#about, #users, #trees, #recent {height:340px; overflow:auto; width:48%;}
+#about {float:left; margin-bottom:10px;}
+#users {float:right; margin-bottom:10px; white-space:nowrap; overflow-x:hidden; overflow-y:auto;}
+html[dir='rtl'] #users {float:left;}
+#trees {clear:both; float:left; margin:0 auto;}
+#recent {float:right;}
+html[dir='rtl'] #recent {float:left;}
+#tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal; }
+html[dir='rtl'] #tree_stats th, html[dir='rtl'] #recent th {padding:0 0 0 ; text-align:right;}
+#tree_stats td, #recent td {padding:0 10px 0 0; width:30px; text-align:right; white-space:nowrap;}
+html[dir='rtl'] #tree_stats td, #recent td {padding:0 0 0 10px; text-align:left; white-space:nowrap;}
+#tree_stats .ui-accordion-content, #recent .ui-accordion-content {padding:1em 0;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
-#block1 ul {list-style-type:none; padding:0px; margin:0 0 0 20px;}
-html[dir='rtl'] #block1 ul {margin:0 20px 0 0;}
-#block1 ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 0px; padding:0 0 0 14px;}
-html[dir='rtl'] #block1 ul li {padding:0 14px 0 0;}
-#block1 td {padding: 0 10px 0 0;}
-html[dir='rtl'] #block1 td {padding: 0 0 0 10px;}
+#users ul {list-style-type:none; padding:0px; margin:0 0 0 20px;}
+html[dir='rtl'] #users ul {margin:0 20px 0 0;}
+#users ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 0px; padding:0 0 0 14px;}
+html[dir='rtl'] #users ul li {padding:0 14px 0 0;}
+#users td {padding: 0 10px 0 0;}
+html[dir='rtl'] #users td {padding: 0 0 0 10px;}
 
 /*SERVER CONFIG */
 .editable {width:100%; display:block}

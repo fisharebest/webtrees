@@ -70,7 +70,7 @@ echo '</div>';
 
 echo '<div id="x">';
 
-echo '<div id="block1">';
+echo '<div id="users">';
 $stats=new WT_Stats(WT_GEDCOM);
 	$totusers  =0;       // Total number of users
 	$warnusers =0;       // Users with warning
@@ -161,41 +161,10 @@ echo
 	'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
 	'<tr><td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;', $stats->_usersLoggedIn('list'), '</td></tr>',
 	'</table>';
-echo '</div>'; // id=block2
+echo '</div>'; // id=trees
 
 echo
-	'<div id="block3">',
-	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
-	'<div id="changes">';
-$n=0;
-foreach ($all_gedcoms as $ged_id=>$gedcom) {
-	if ($ged_id==WT_GED_ID) {
-		$accordian_element=$n;
-	}
-	++$n;
-	echo 
-		'<h3>', get_gedcom_setting($ged_id, 'title'), '</h3>',
-		'<div>',
-		'<table>',
-		'<tr><td>&nbsp;</td><td><u>', WT_I18N::translate('Day'), '</u></td><td><u>', WT_I18N::translate('Week'), '</u></td><td><u>', WT_I18N::translate('Month'), '</u></td>',
-		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>', count_changes_today($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($REPO_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', count_changes_today($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($MEDIA_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', count_changes_today($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($NOTE_ID_PREFIX, $ged_id), '</td></tr>',
-		'</table>',
-		'</div>';
-}
-echo
-	'</div>', // id=changes
-	WT_JS_START,
-	'jQuery("#changes").accordion({active:',$accordian_element,', icons:false});',
-	WT_JS_END,
-	'</div>'; // id=block3
-
-echo
-	'<div id="block2">',
+	'<div id="trees">',
 	'<h2>', WT_I18N::translate('Family trees'), '</h2>',
 	'<div id="tree_stats">';
 $n=0;
@@ -235,7 +204,39 @@ echo
 	WT_JS_START,
 	'jQuery("#tree_stats").accordion({active:',$accordian_element,', icons:false});',
 	WT_JS_END,
-	'</div>'; // id=block2
+	'</div>'; // id=trees
+
+echo
+	'<div id="recent">',
+	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
+	'<div id="changes">';
+$n=0;
+foreach ($all_gedcoms as $ged_id=>$gedcom) {
+	if ($ged_id==WT_GED_ID) {
+		$accordian_element=$n;
+	}
+	++$n;
+	echo 
+		'<h3>', get_gedcom_setting($ged_id, 'title'), '</h3>',
+		'<div>',
+		'<table>',
+		'<tr><td>&nbsp;</td><td><u>', WT_I18N::translate('Day'), '</u></td><td><u>', WT_I18N::translate('Week'), '</u></td><td><u>', WT_I18N::translate('Month'), '</u></td>',
+		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>', count_changes_today($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($REPO_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', count_changes_today($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($MEDIA_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', count_changes_today($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($NOTE_ID_PREFIX, $ged_id), '</td></tr>',
+		'</table>',
+		'</div>';
+}
+echo
+	'</div>', // id=changes
+	WT_JS_START,
+	'jQuery("#changes").accordion({active:',$accordian_element,', icons:false});',
+	WT_JS_END,
+	'</div>'; // id=recent
+
 
 echo '</div>'; // id=x
 	
