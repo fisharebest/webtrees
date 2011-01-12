@@ -177,7 +177,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<h3>', get_gedcom_setting($ged_id, 'title'), '</h3>',
 		'<div>',
 		'<table>',
-		'<tr><td>&nbsp;</td><td><u>', WT_I18N::translate('Today'), '</u></td><td><u>', WT_I18N::translate('This week'), '</u></td><td><u>', WT_I18N::translate('This month'), '</u></td>',
+		'<tr><td>&nbsp;</td><td><u>', WT_I18N::translate('Day'), '</u></td><td><u>', WT_I18N::translate('Week'), '</u></td><td><u>', WT_I18N::translate('Month'), '</u></td>',
 		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
 		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
 		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',

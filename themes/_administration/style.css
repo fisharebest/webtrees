@@ -100,7 +100,7 @@ html[dir='rtl'] #admin_footer {float:right; text-align:center;}
 #tree_stats h3, #changes h3 {text-align:left;}
 html[dir='rtl'] #tree_stats h3, html[dir='rtl'] #changes h3 {text-align:right;}
 #block1, #block2, #block3 {height:540px; overflow:auto; width:31%;}
-#block1 {float:left;}
+#block1 {float:left; white-space:nowrap; overflow-x:auto; overflow-y:hidden;}
 html[dir='rtl'] #block1 {float:right;}
 #block2 {margin:0 auto;}
 #block3 {float:right;}
