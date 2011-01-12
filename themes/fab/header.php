@@ -49,7 +49,7 @@ echo
 	'<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />',
 	'<meta name="generator" content="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" />',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico">',
+	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />',
 	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />',
 	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" />',
