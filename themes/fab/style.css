@@ -154,6 +154,16 @@ img {
 	white-space:nowrap;
 }
 
+.makeMenu li:before {
+	content:" | ";
+}
+.makeMenu li ul li:before {
+	content:"";
+}
+.makeMenu li:first-child:before {
+	content:"";
+}
+
 .makeMenu li ul {
 	display:none;
 	position:absolute;
@@ -184,7 +194,7 @@ html[dir='rtl'] .makeMenu li ul li {
 	padding:1px;
 }
 
-.makeMenu li:hover > ul {
+.makeMenu li:hover ul {
 	display:block;
 }
 
