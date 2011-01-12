@@ -77,6 +77,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
 		if (get_user_count()>1) {
 			$content .= '<br />'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
+			$content .= '<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
 					$content .= "<option value=\"".$user_name."\">".PrintReady(getUserFullName($user_id))." ";
