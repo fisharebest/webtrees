@@ -1696,7 +1696,7 @@ case 'deleteperson':
 	break;
 //------------------------------------------------------------------------------
 case 'deletefamily':
-	if (!WT_Person::getInstance($pid)->canEdit()) {
+	if (!WT_Person::getInstance($famid)->canEdit()) {
 		echo "<br />", WT_I18N::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) echo "<br />", WT_I18N::translate('You have no access to'), " pid $pid.";
 		if (!empty($famid)) echo "<br />", WT_I18N::translate('You have no access to'), " famid $famid.";
