@@ -103,9 +103,9 @@ echo '<li><ul>';
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	if (userGedcomAdmin(WT_USER_ID, $ged_id)) {
 		echo
-			'<li><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$ged_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.rawurlencode($gedcom).'">',
+			'<li><i><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$ged_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.rawurlencode($gedcom).'">',
 			htmlspecialchars(get_gedcom_setting($ged_id, 'title')),
-			'</a></li>';
+			'</a></i></li>';
 	}
 }
 echo '</ul></li>';
