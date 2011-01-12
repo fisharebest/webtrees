@@ -43,7 +43,7 @@ $keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
 if (empty($keep1)) $keep1=array();
 if (empty($keep2)) $keep2=array();
 
-print_header(WT_i18n::translate('Other administration'));
+print_header(WT_i18n::translate('Add unlinked records'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
