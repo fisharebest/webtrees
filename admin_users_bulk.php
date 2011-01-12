@@ -39,7 +39,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(/* I18N: An action, not a plural noun  */ WT_I18N::translate('Broadcast messages'));
+print_header(WT_I18N::translate('Send broadcast messages'));
 
 ?>
 

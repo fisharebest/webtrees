@@ -39,7 +39,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(WT_I18N::translate('User cleanup'));
+print_header(WT_I18N::translate('Delete inactive users'));
 
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers');
