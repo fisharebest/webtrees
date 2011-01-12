@@ -363,7 +363,7 @@ case 'update':
 	}
 }
 
-print_header(WT_I18N::translate('Configure family tree'));
+print_header(WT_I18N::translate('Family tree configuration'));
 ?>
 <script type="text/javascript">
 //<![CDATA[
