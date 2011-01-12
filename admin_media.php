@@ -1051,7 +1051,6 @@ echo WT_JS_START; ?>
 	});
 <?php echo WT_JS_END;?>
 
-<div align="center">
 <form class="tablesorter" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<table id="media_table">
 			<thead>
@@ -1300,7 +1299,6 @@ echo WT_JS_START; ?>
 	<?php
 		}
 	}
-	?> </div> <?php
 } else {
 	echo WT_I18N::translate('The media folder is corrupted.');
 }
