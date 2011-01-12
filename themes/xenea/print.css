@@ -453,11 +453,9 @@ th {
 	left: 0;
 }
 /*-- pedigree chart rtl specific stylesheets --*/
-#pedigree_chart_rtl {
-	position: absolute;
-	float: right;
-	top: 120px;
-	right: 0;
+html[dir='rtl'] #pedigree_chart {
+left:auto;
+right:0px;
 }
 
 /*-- descendancy chart specific stylesheets --*/

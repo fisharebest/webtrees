@@ -242,10 +242,9 @@ html[dir='rtl'] .makeMenu li ul li {
 }
 
 /*-- pedigree chart rtl specific stylesheets --*/
-#pedigree_chart_rtl {
-	position: relative;
-	top: -230px;
-	right: 10px;
+html[dir='rtl'] #pedigree_chart {
+left:auto;
+right:10px;
 }
 
 /* Printer friendliness */

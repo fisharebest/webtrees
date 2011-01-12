@@ -195,8 +195,8 @@ $fanChart = array(
 
 //-- This section defines variables for the pedigree chart
 $bwidth = 225; // -- width of boxes on pedigree chart
-$bheight = 78; // -- height of boxes on pedigree chart
-$baseyoffset = -20; // -- position the entire pedigree tree relative to the top of the page
+$bheight = 80; // -- height of boxes on pedigree chart
+$baseyoffset = 10; // -- position the entire pedigree tree relative to the top of the page
 $basexoffset = 10; // -- position the entire pedigree tree relative to the left of the page
 $bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart
 $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart

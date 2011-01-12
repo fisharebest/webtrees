@@ -1,10 +1,9 @@
 /*
  * @version $Id$$
  */
-#pedigree_chart_rtl{
-	position:absolute;
-	right:20px;
-	top:120px;
+html[dir='rtl'] #pedigree_chart {
+left:auto;
+right:20px;
 }
 
 #sidebar {  

@@ -710,15 +710,11 @@ img.block{
 	position: relative;
 	top: -240px;
 	left: 10px;
-	width: 99%;
 }
 /*-- pedigree chart rtl specific stylesheets --*/
-#pedigree_chart_rtl {
-	position: relative;
-	float: right;
-	top: -240px;
-	right: 10px;
-	width: 99%;
+html[dir='rtl'] #pedigree_chart {
+left:auto;
+right:10px;
 }
 
 /*-- descendancy chart specific stylesheets --*/

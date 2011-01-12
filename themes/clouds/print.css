@@ -37,7 +37,7 @@
 	left: 0px;
 }
 /*-- pedigree chart rtl specific stylesheets --*/
-#pedigree_chart_rtl {
+html[dir='rtl'] #pedigree_chart {
 	position: absolute;
 	float: right;
 	top: 0px;

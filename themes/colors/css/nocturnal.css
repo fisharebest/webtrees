@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 10159 2010-12-26 15:44:07Z greg $
+* $Id: ash.css 10406 2011-01-09 23:10:47Z veit $
 */
 
 .something {
@@ -427,16 +427,14 @@ text-align:right;
 
 #pedigree_chart {
 position:relative;
-top:-210px;
-left:5px;
-width:99%;
+top:-200px;
+left:0px;
+z-index: 1; 
 }
 
-#pedigree_chart_rtl {
-position:relative;
-top:-210px;
-right:5px;
-width:99%;
+html[dir='rtl'] #pedigree_chart {
+left:auto;
+right:0px;
 }
 
 #descendancy_chart ul {
@@ -452,7 +450,7 @@ padding-bottom: 0px;
 
 #descendancy_chart li {
 list-style: none;
-margin: 0px 0px 2px -15px;
+margin: 0px 0px 0px -15px;
 padding-top: 0px;
 padding-right: 0px;
 padding-bottom: 0px;
@@ -460,7 +458,6 @@ padding-bottom: 0px;
 
 #descendancy_chart_rtl ul {
 background-image:url(../images/vline.gif);
-background-image: url(../images/vline.gif);
 background-repeat: repeat-y;
 background-position: right top;
 list-style: none;
@@ -472,7 +469,7 @@ padding-left: 0px;
 
 #descendancy_chart_rtl li {
 list-style: none;
-margin: 0px -15px 2px 0px;
+margin: 0px -15px 0px 0px;
 padding: 0px 0px 0px 0px;
 }
 
@@ -501,7 +498,7 @@ padding-bottom:0px;
 
 #ancestry_chart li {
 list-style: none;
-margin:0 0 2px -15px;
+margin:0px 0px 2px -13px;
 padding-top:0px;
 padding-right:0px;
 padding-bottom:0px;
@@ -1003,7 +1000,7 @@ margin-bottom: 12px;
 
 #timeline_chart {
 position: relative;
-top: 50px;
+top: 0px;
 left: 0px;
 }
 
@@ -1774,7 +1771,7 @@ padding: 0 10px;
 	display:none;
 	position:absolute;
 	left:0px;
-	top:1.0em;
+	top: 1.0em;
 	background-color:#EEE;
 	border:thin solid #AAA;
 	z-index:999;
@@ -1792,21 +1789,6 @@ html[dir='rtl'] .makeMenu li ul {
 
 html[dir='rtl'] .makeMenu li ul li {
 	text-align:right;
-}
-
-.makeMenu li ul {
-	display:none;
-	position:absolute;
-	left:0px;
-	top: 1.0em;
-	background-color:#EEE;
-	border:thin solid #AAA;
-	z-index:999;
-}
-
-.makeMenu li ul li {
-	display:block;
-	text-align:left;
 }
 
 .makeMenu, .makeMenu li ul {
