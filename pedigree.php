@@ -129,8 +129,7 @@ echo '</h2>';
 ?>
 	</td></tr>
 </table>
-<div id="pedigree_chart<?php if ($TEXT_DIRECTION=="rtl") echo '_rtl'; ?>" <?php
-	echo 'style="z-index: 1;"'; ?> >
+<div id="pedigree_chart"> 
 <?php
 //-- echo the boxes
 $curgen = 1;
