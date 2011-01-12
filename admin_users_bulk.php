@@ -39,7 +39,7 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(WT_I18N::translate('User bulk messaging'));
+print_header(/* I18N: a plural noun (messages which are broadcast to many users), not an action  */ WT_I18N::translate('Broadcast messages'));
 
 ?>
 
