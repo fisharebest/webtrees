@@ -226,10 +226,10 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 
 		echo
 			'<table class="gedcom_table">',
-			'<tr><th>', WT_I18N::translate('GEDCOM name'),
+			'<tr><th>', WT_I18N::translate('Family tree'),
 			'</th><th class="accepted" a href="index.php?ctype=gedcom&ged=', rawurlencode($gedcom_name), '">', htmlspecialchars($gedcom_name), ' - ',
 			WT_I18N::translate('%s', get_gedcom_setting($gedcom_id, 'title')), '</a>',
-			'</th></tr><tr><th>', WT_I18N::translate('GEDCOM administration'),
+			'</th></tr><tr><th>', WT_I18N::translate('GEDCOM file'),
 			'</th><td>';
 
 		// The third row shows an optional progress bar and a list of maintenance options
