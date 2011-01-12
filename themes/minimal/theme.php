@@ -3,7 +3,7 @@
  * Minimal theme
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -48,7 +48,7 @@ $WT_IMAGES['sex_u_9x9'] = 'images/sex_u_9x9.gif';
 $WT_IMAGES['sex_m_15x15'] = 'images/sex_m_15x15.gif';
 $WT_IMAGES['sex_f_15x15'] = 'images/sex_f_15x15.gif';
 $WT_IMAGES['sex_u_15x15'] = 'images/sex_u_15x15.gif';
-//- PGV main icons
+//- WT main icons
 $WT_IMAGES['admin'] = WT_THEME_DIR.'images/admin.gif';
 $WT_IMAGES['ancestry'] = WT_THEME_DIR.'images/ancestry.gif';
 $WT_IMAGES['calendar'] = WT_THEME_DIR.'images/calendar.gif';
@@ -75,7 +75,7 @@ $WT_IMAGES['target'] = 'images/buttons/target.gif';
 $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.gif';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 
-//- PGV buttons for data entry pages
+//- WT buttons for data entry pages
 $WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
 $WT_IMAGES['button_addsource'] = WT_THEME_DIR.'images/buttons/addsource.gif';
 $WT_IMAGES['button_addnote'] = WT_THEME_DIR.'images/buttons/addnote.gif';
