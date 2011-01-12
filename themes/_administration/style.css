@@ -101,9 +101,11 @@ html[dir='rtl'] #admin_footer {float:right; text-align:center;}
 html[dir='rtl'] #tree_stats h3, html[dir='rtl'] #recent h3 {text-align:right;}
 #about, #users, #trees, #recent {height:340px; overflow:auto; width:48%;}
 #about {float:left; margin-bottom:10px;}
+html[dir='rtl'] #about {float:right;}
 #users {float:right; margin-bottom:10px; white-space:nowrap; overflow-x:hidden; overflow-y:auto;}
 html[dir='rtl'] #users {float:left;}
 #trees {clear:both; float:left; margin:0 auto;}
+html[dir='rtl'] #trees {float:right;}
 #recent {float:right;}
 html[dir='rtl'] #recent {float:left;}
 #tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal; }
