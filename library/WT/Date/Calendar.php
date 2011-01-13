@@ -589,7 +589,7 @@ class WT_Date_Calendar {
 		if (empty($date_fmt)) {
 			$date_fmt=$DATE_FORMAT;
 		}
-		$URL='calendar.php?cal='.$this->CALENDAR_ESCAPE();
+		$URL='calendar.php?cal='.rawurlencode($this->CALENDAR_ESCAPE());
 		$action="year";
 		if (strpos($date_fmt, "Y")!==false
 		||  strpos($date_fmt, "y")!==false) {
