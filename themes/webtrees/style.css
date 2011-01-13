@@ -782,10 +782,9 @@ right:10px;
 	left: 0px;
 }
 
-#relationship_chart_rtl {
-	position: relative;
-	top: -40px;
-	right: 10px;
+html[dir='rtl'] #relationship_chart {
+	left:auto;
+	right:10px;
 }
 
 /*-- ancestry chart specific stylesheets --*/
@@ -824,19 +823,6 @@ right:10px;
 	list-style: none;
 	margin: 0px -15px 2px 0px; /* top right bottom left */
 	padding: 0px 2px 0px 0px; /* top right bottom left */
-}
-
-/*-- relationship chart specific stylesheets --*/
-#relationship_chart {
-	position: relative;
-	top: -40px;
-	left: 0px;
-}
-
-#relationship_chart_rtl {
-	position: relative;
-	top: -40px;
-	right: 0px;
 }
 
 /*-- timeline chart specific styles --*/

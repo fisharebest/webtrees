@@ -489,10 +489,10 @@ right:0px;
 	top: -40px;
 	left: 0;
 }
-#relationship_chart_rtl {
-	position: relative;
-	top: -40px;
-	right: 10px;
+
+html[dir='rtl'] #relationship_chart {
+	left:auto;
+	right:10px;
 }
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {

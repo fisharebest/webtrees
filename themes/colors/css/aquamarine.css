@@ -285,9 +285,6 @@ color: #ffffff;
 
 /*	Start Standard Code					*/
 #content {
-width:auto;
-background:#FFF;
-margin:3px;
 padding:10px;
 }
 
@@ -477,12 +474,13 @@ padding: 0px 0px 0px 0px;
 position:relative;
 top:-40px;
 left:0;
+z-index: 1; 
+width: 98%;
 }
 
-#relationship_chart_rtl {
-position:relative;
-top:-40px;
-right:10px;
+html[dir='rtl'] #relationship_chart {
+left:auto;
+right:0px;
 }
 
 #ancestry_chart ul {
