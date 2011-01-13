@@ -109,7 +109,7 @@ html[dir='rtl'] #admin_footer {float:right; text-align:center;}
 
 /* DASHBOARD BLOCKS */
 #content_container {background:OldLace; padding:5px; border:1px inset #D9D6C4; height:570px; overflow:auto;}
-#about2 {border-right: 1px solid; float:left; height:565px; text-align:justify; overflow:auto; padding:0 30px 0 10px; width:46%;}
+#about2 {border-right: 1px solid; float:left; height:565px; text-align:justify; overflow:auto; padding:0 30px 0 10px; width:45%;}
 #gen_info {float:left; height:570px; margin-left:30px; paddding:0 10px; width:46%;}
 #users2, #trees2, #recent2 {min-height:300px !important;}
 #users2 {white-space:nowrap; overflow-x:auto; overflow-y:hidden;}
