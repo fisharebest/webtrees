@@ -55,6 +55,8 @@ if ($latest_version_txt) {
 // Load all available gedcoms
 $all_gedcoms = get_all_gedcoms();
 
+//echo '<div id="x">';
+
 // Display a series of "blocks" of general information, vary according to admin or manager.
 echo '<div id="about">';
 echo
@@ -68,7 +70,6 @@ if (version_compare(WT_VERSION, $latest_version)>0) {
 }
 echo '</div>';
 
-echo '<div id="x">';
 
 echo '<div id="users">';
 $stats=new WT_Stats(WT_GEDCOM);
@@ -178,6 +179,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<h3>', $stats->gedcomTitle(), '</h3>',
 		'<div>',
 		'<table>',
+		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Count'), '</span></td></tr>',
 		'<tr><th><a href="indilist.php?ged=',  rawurlencode($gedcom), '">',
 		WT_I18N::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
 		'</td></tr>',
@@ -220,7 +222,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<h3>', get_gedcom_setting($ged_id, 'title'), '</h3>',
 		'<div>',
 		'<table>',
-		'<tr><td>&nbsp;</td><td><u>', WT_I18N::translate('Day'), '</u></td><td><u>', WT_I18N::translate('Week'), '</u></td><td><u>', WT_I18N::translate('Month'), '</u></td>',
+		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Day'), '</span></td><td><span>', WT_I18N::translate('Week'), '</span></td><td><span>', WT_I18N::translate('Month'), '</span></td></tr>',
 		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
 		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
 		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',
@@ -238,6 +240,6 @@ echo
 	'</div>'; // id=recent
 
 
-echo '</div>'; // id=x
+//echo '</div>'; // id=x
 	
 print_footer();

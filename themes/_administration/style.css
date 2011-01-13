@@ -75,7 +75,7 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 #links li:hover > ul {display:block;}
 
 /* SIDE and CONTENT panels */
-#admin_menu, #admin_content {min-height:720px;}
+#admin_menu, #admin_content {min-height:580px;}
 
 /* SIDE MENU */
 #admin_menu {padding:10px 0 10px 5px; width:200px; float:left; position:absolute; color:#2E6E9E; white-space:nowrap; overflow:hidden;}
@@ -99,15 +99,11 @@ html[dir='rtl'] #admin_footer {float:right; text-align:center;}
 #about h2, #users h2, #trees h2, #recent h2 {margin:0;}
 #tree_stats h3, #recent h3 {text-align:left;}
 html[dir='rtl'] #tree_stats h3, html[dir='rtl'] #recent h3 {text-align:right;}
-#about, #users, #trees, #recent {height:340px; overflow:auto; width:48%;}
-#about {float:left; margin-bottom:10px;}
-html[dir='rtl'] #about {float:right;}
-#users {float:right; margin-bottom:10px; white-space:nowrap; overflow-x:hidden; overflow-y:auto;}
-html[dir='rtl'] #users {float:left;}
-#trees {clear:both; float:left; margin:0 auto;}
-html[dir='rtl'] #trees {float:right;}
-#recent {float:right;}
-html[dir='rtl'] #recent {float:left;}
+#about, #users, #trees, #recent {float:left; margin: 0 10px 10px 0; height: 274px; overflow:auto; width:46%; }
+#about {}
+html[dir='rtl'] #about, html[dir='rtl'] #users, html[dir='rtl'] #trees, html[dir='rtl'] #recent {float:right; margin: 0 0 10px 10px;}
+#users {white-space:nowrap; overflow-x:hidden; overflow-y:auto;}
+#trees {clear:both;}
 #tree_stats th, #recent th {padding:0 10px 0 0; text-align:left; white-space:nowrap; font-weight:normal; }
 html[dir='rtl'] #tree_stats th, html[dir='rtl'] #recent th {padding:0 0 0 ; text-align:right;}
 #tree_stats td, #recent td {padding:0 10px 0 0; width:30px; text-align:right; white-space:nowrap;}
@@ -121,6 +117,7 @@ html[dir='rtl'] #users ul {margin:0 20px 0 0;}
 html[dir='rtl'] #users ul li {padding:0 14px 0 0;}
 #users td {padding: 0 10px 0 0;}
 html[dir='rtl'] #users td {padding: 0 0 0 10px;}
+#trees span, #recent span {text-decoration:underline;}
 
 /*SERVER CONFIG */
 .editable {width:100%; display:block}
