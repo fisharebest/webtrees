@@ -767,7 +767,7 @@ if ($action=="add") {
 				<a href="javascript:;" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>
 <?php   }
 		else { ?>
-				<img alt="<?php echo WT_I18N::translate('Flag'); ?>" src="<?php echo $place_icon; ?>"/>&nbsp;&nbsp;
+				<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="<?php echo $place_icon; ?>"/>&nbsp;&nbsp;
 				<a href="javascript:;" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
 				<a href="javascript:;" onclick="remove_icon();return false;"><?php echo WT_I18N::translate('Remove flag'); ?></a>
 <?php   } ?>
