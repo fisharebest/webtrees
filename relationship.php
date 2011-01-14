@@ -121,7 +121,7 @@ function paste_id(value) {
 	pastefield.value=value;
 }
 </script>
-<div id="relationship_chart_options<?php echo ($TEXT_DIRECTION=="ltr")?"":"_rtl"; ?>" style="position: relative; z-index:90; width:98%;">
+<div id="relationship_chart_options" style="position: relative; z-index:90; width:98%;">
 <h2><?php echo PrintReady($title_string); ?></h2><br />
 <!-- // Print the form to change the number of displayed generations -->
 <?php
@@ -471,8 +471,6 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				$pxoffset = $xoffset;
 
 				// Adjust all box positions for proper placement with respect to other page elements
-				if ($BROWSERTYPE=="mozilla" && $TEXT_DIRECTION=="rtl") $pxoffset += 10;
-				else $pxoffset -= 3;
 				$pyoffset = $yoffset - 2;
 
 				if ($index>0) {
@@ -494,11 +492,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				}
 				// Determine the z-index for this box
 				$boxNum ++;
-				if ($TEXT_DIRECTION=="rtl" && $BROWSERTYPE=="mozilla") {
-					$zIndex = ($colNum * $depth - $rowNum + $depth);
-				} else {
-					$zIndex = 200 - ($colNum * $depth + $rowNum);
-				}
+				$zIndex = 200 - ($colNum * $depth + $rowNum);
 
 				echo "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex."; \"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
 				print_pedigree_person(WT_Person::getInstance($pid), 1);
@@ -516,7 +510,6 @@ $maxyoffset += 100;
 </div>
 <script language="JavaScript" type="text/javascript">
 	relationship_chart_div = document.getElementById("relationship_chart");
-	if (!relationship_chart_div) relationship_chart_div = document.getElementById("relationship_chart_rtl");
 	if (relationship_chart_div) {
 		relationship_chart_div.style.height = <?php echo ($maxyoffset-50); ?> + "px";
 		relationship_chart_div.style.width = "100%";
