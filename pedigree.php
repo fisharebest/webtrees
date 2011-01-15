@@ -211,9 +211,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	if (!empty($controller->treeid[$i]) || $SHOW_EMPTY_BOXES) {
 		// Work around a bug in FireFox that mis-places some boxes in Portrait RTL, resulting in
 		// vertical lines that themselves appear to be mis-placed.
-		if ($TEXT_DIRECTION=="rtl" && $BROWSERTYPE=="mozilla" && ($curgen <= 2)) {
-			$xoffset += 10;
-		}
+
 		if ($TEXT_DIRECTION=="rtl") {
 			$xoffset += $brborder; // Account for thickness of right box border
 		}
