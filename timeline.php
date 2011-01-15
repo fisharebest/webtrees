@@ -102,7 +102,6 @@ function factMD(divbox, num, mean) {
 function MM(e) {
 	if (ob) {
 		tldiv = document.getElementById("timeline_chart");
-		if (!tldiv) tldiv = document.getElementById("timeline_chart_rtl");
 		if (type==0) {
 			// age boxes
 			newy = 0;
@@ -427,7 +426,6 @@ if (count($controller->people)>0) {
 <script language="JavaScript" type="text/javascript">
 <!--
 	timeline_chart_div = document.getElementById("timeline_chart");
-	if (!timeline_chart_div) timeline_chart_div = document.getElementById("timeline_chart_rtl");
 	if (timeline_chart_div) timeline_chart_div.style.height = '<?php echo $baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale*1.1); ?>px';
 //-->
 </script>
