@@ -493,8 +493,9 @@ function print_footer() {
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
 	}
-	echo clustrmaps();
-	echo google_analytics();
+	if (array_key_exists('googleanalytics', WT_Module::getActiveModules())) {
+				echo googleanalytics_WT_Module::addCode();
+			}
 	echo '</body></html>';
 }
 
@@ -509,37 +510,6 @@ function print_simple_footer() {
 		echo WT_DB::getQueryLog();
 	}
 	echo '</body></html>';
-}
-
-// Generate code for google analytics
-function google_analytics() {
-	if (defined('WT_GOOGLE_ANALYTICS')) {
-		return '<script type="text/javascript">var gaJsHost=(("https:"==document.location.protocol)?"https://ssl.":"http://www.");document.write(unescape("%3Cscript src=\'"+gaJsHost+"google-analytics.com/ga.js\' type=\'text/javascript\'%3E%3C/script%3E"));</script><script type="text/javascript">var pageTracker=_gat._getTracker("'.WT_GOOGLE_ANALYTICS.'");pageTracker._initData();pageTracker._trackPageview();</script>';
-	} else {
-		return '';
-	}
-}
-
-// Generate code for clustrmaps
-// Enable by adding
-// define('WT_CLUSTRMAPS', 'your website address');
-// e.g. define('WT_CLUSTRMAPS', 'http://vidyasridhar.no-ip.org/');
-// to the end of your config.php
-
-function clustrmaps() {
-	if (defined('WT_CLUSTRMAPS')) {
-		return '<a
- href="http://www2.clustrmaps.com/counter/maps.php?url='.WT_CLUSTRMAPS.'"
- id="clustrMapsLink"><img
- src="http://www2.clustrmaps.com/counter/index2.php?url='.WT_CLUSTRMAPS.'"
- style="border: 0px none ;"
- alt="Locations of visitors to this page"
- title="Locations of visitors to this page" id="clustrMapsImg"
- onerror="this.onerror=null; this.src=\'http://clustrmaps.com/images/clustrmaps-back-soon.jpg\'; document.getElementById(\'clustrMapsLink\').href=\'http://clustrmaps.com\';">
-</a>';
-	} else {
-		return '';
-	}
 }
 
 /**
