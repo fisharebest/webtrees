@@ -300,7 +300,7 @@ if ($show_full==0) {
 	echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 }
 ?>
-<div id="relationship_chart" style="position:relative; z-index:1; width:98%;">
+<div id="relationship_chart">
 <?php
 $maxyoffset = $Dbaseyoffset;
 if ((!empty($pid1))&&(!empty($pid2))) {

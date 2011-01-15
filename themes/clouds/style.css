@@ -479,6 +479,8 @@ padding: 0px 0px 0px 0px;
 position:relative;
 top:-40px;
 left:0;
+z-index:1;
+width:98%;
 }
 
 html[dir='rtl'] #relationship_chart {
@@ -1850,4 +1852,3 @@ td.descriptionbox  a {
 	width: 20px;
 	float: left;
 }
-
