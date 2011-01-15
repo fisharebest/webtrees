@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 10442 2011-01-12 13:18:45Z rob $
+* $Id: ash.css 10454 2011-01-13 00:37:19Z rob $
 */
 
 .something {
@@ -1000,12 +1000,6 @@ margin-bottom: 12px;
 position: relative;
 top: 0px;
 left: 0px;
-}
-
-#timeline_chart_rtl {
-position: relative;
-top: 50px;
-right: 0px;
 }
 
 .person0 {
