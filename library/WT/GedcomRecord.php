@@ -235,11 +235,11 @@ class WT_GedcomRecord {
 
 	// Generate a URL to this record, suitable for use in HTML
 	public function getHtmlUrl() {
-		return self::_getLinkUrl('gedcomrecord.php?famid=', '&amp;');
+		return self::_getLinkUrl('gedrecord.php?pid=', '&amp;');
 	}
 	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
 	public function getRawUrl() {
-		return self::_getLinkUrl('gedcomrecord.php?famid=', '&');
+		return self::_getLinkUrl('gedrecord.php?pid=', '&');
 	}
 
 	protected function _getLinkUrl($link, $separator) {
