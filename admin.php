@@ -55,23 +55,6 @@ if ($latest_version_txt) {
 // Load all available gedcoms
 $all_gedcoms = get_all_gedcoms();
 
-//echo '<div id="x">';
-
-// Display a series of "blocks" of general information, vary according to admin or manager.
-echo '<div id="about">';
-echo
-	'<h2>', WT_I18N::translate('About webtrees'), '</h2>',
-	'<p>', WT_I18N::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks. Administrators can upgrade to the lastest version with a single click, whenever the page reports that a new version is available.'), '</p>',
-	'<p>' ,WT_I18N::translate('Your installed  version of <b>webtrees</b> is: %s', WT_VERSION_TEXT),'</p>';
-if (version_compare(WT_VERSION, $latest_version)>0) {
-	echo '<p>' ,WT_I18N::translate('The latest stable <b>webtrees</b> version is: %s', $latest_version), '&nbsp;<span class="accepted">' ,WT_I18N::translate('No upgrade required.'), '</span></p>';
-} else {
-	echo '<p class="warning">' ,WT_I18N::translate('We recommend you click here to upgrade to the latest stable <b>webtrees</b> version: %s', $latest_version), '</p>';
-}
-echo '</div>';
-
-
-echo '<div id="users">';
 $stats=new WT_Stats(WT_GEDCOM);
 	$totusers  =0;       // Total number of users
 	$warnusers =0;       // Users with warning
@@ -80,93 +63,112 @@ $stats=new WT_Stats(WT_GEDCOM);
 	$adminusers=0;       // Administrators
 	$userlang  =array(); // Array for user languages
 	$gedadmin  =array(); // Array for managers
+	
+// Display a series of "blocks" of general information, vary according to admin or manager.
+
+echo '<div id="content_container">';
+
+echo '<div id="x">';// div x - manages the accordion effect
+
+echo '<h2>', WT_I18N::translate('About webtrees'), '</h2>',
+	'<div id="about">',
+	'<p>', WT_I18N::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks. Administrators can upgrade to the lastest version with a single click, whenever the page reports that a new version is available.'), '</p>',
+	'<p>' ,WT_I18N::translate('Your installed  version of <b>webtrees</b> is: %s', WT_VERSION_TEXT),'</p>';
+if (version_compare(WT_VERSION, $latest_version)>0) {
+	echo '<p>' ,WT_I18N::translate('The latest stable <b>webtrees</b> version is: %s', $latest_version), '&nbsp;<span class="accepted">' ,WT_I18N::translate('No upgrade required.'), '</span></p>';
+} else {
+	echo '<p class="warning">' ,WT_I18N::translate('We recommend you click here to upgrade to the latest stable <b>webtrees</b> version: %s', $latest_version), '</p>';
+}
+echo
+	'</div>';
 
 echo
-	'<h2>', WT_I18N::translate('Users'), '</h2>';
+	'<h2>', WT_I18N::translate('Users'), '</h2>',
+	'<div id="users">'; //id = users
 
-foreach(get_all_users() as $user_id=>$user_name) {
-	$totusers = $totusers + 1;
-	if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
-		$warnusers++;
-	} else {
-		if (get_user_setting($user_id, 'comment_exp')) {
-			if ((strtotime(get_user_setting($user_id, 'comment_exp')) != "-1") && (strtotime(get_user_setting($user_id, 'comment_exp')) < time("U"))) {
+		foreach(get_all_users() as $user_id=>$user_name) {
+			$totusers = $totusers + 1;
+			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
 				$warnusers++;
-			}
-		}
-	}
-	if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
-		$nverusers++;
-	}
-	if (!get_user_setting($user_id, 'verified')) {
-		$applusers++;
-	}
-	if (get_user_setting($user_id, 'canadmin')) {
-		$adminusers++;
-	}
-	foreach ($all_gedcoms as $ged_id=>$ged_name) {
-		if (get_user_gedcom_setting($user_id, $ged_id, 'canedit')=='admin') {
-			$title=PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title')));
-			if (isset($gedadmin[$title])) {
-				$gedadmin[$title]["number"]++;
 			} else {
-				$gedadmin[$title]["name"] = $title;
-				$gedadmin[$title]["number"] = 1;
-				$gedadmin[$title]["ged"] = $ged_name;
+				if (get_user_setting($user_id, 'comment_exp')) {
+					if ((strtotime(get_user_setting($user_id, 'comment_exp')) != "-1") && (strtotime(get_user_setting($user_id, 'comment_exp')) < time("U"))) {
+						$warnusers++;
+					}
+				}
 			}
+			if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
+				$nverusers++;
+			}
+			if (!get_user_setting($user_id, 'verified')) {
+				$applusers++;
+			}
+			if (get_user_setting($user_id, 'canadmin')) {
+				$adminusers++;
+			}
+			foreach ($all_gedcoms as $ged_id=>$ged_name) {
+				if (get_user_gedcom_setting($user_id, $ged_id, 'canedit')=='admin') {
+					$title=PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title')));
+					if (isset($gedadmin[$title])) {
+						$gedadmin[$title]["number"]++;
+					} else {
+						$gedadmin[$title]["name"] = $title;
+						$gedadmin[$title]["number"] = 1;
+						$gedadmin[$title]["ged"] = $ged_name;
+					}
+				}
+			}
+			if ($user_lang=get_user_setting($user_id, 'language')) {
+				if (isset($userlang[$user_lang]))
+					$userlang[$user_lang]["number"]++;
+				else {
+					$userlang[$user_lang]["langname"] = Zend_Locale::getTranslation($user_lang, 'language', WT_LOCALE);
+					$userlang[$user_lang]["number"] = 1;
+				}
+			}
+		}	
+
+	echo
+		'<table>',
+		'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
+		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
+		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
+		foreach ($gedadmin as $key=>$geds) {
+			echo '<tr><td><div><a href="useradmin.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '">', $geds['name'], '</a></div></td><td>', $geds['number'], '</td></tr>';
 		}
+	echo '<tr><td>';
+	if ($warnusers == 0) {
+		echo WT_I18N::translate('Users with warnings');
+	} else {
+		echo '<a href="useradmin.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
 	}
-	if ($user_lang=get_user_setting($user_id, 'language')) {
-		if (isset($userlang[$user_lang]))
-			$userlang[$user_lang]["number"]++;
-		else {
-			$userlang[$user_lang]["langname"] = Zend_Locale::getTranslation($user_lang, 'language', WT_LOCALE);
-			$userlang[$user_lang]["number"] = 1;
-		}
+	echo '</td><td>', $warnusers, '</td></tr><tr><td>';
+	if ($applusers == 0) {
+		echo WT_I18N::translate('Unverified by User');
+	} else {
+		echo '<a href="useradmin.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
 	}
-}	
+	echo '</td><td>', $applusers, '</td></tr><tr><td>';
+	if ($nverusers == 0) {
+		echo WT_I18N::translate('Unverified by Administrator');
+	} else {
+		echo '<a href="useradmin.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
+	}
+	echo '</td><td>', $nverusers, '</td></tr>';
+	echo '<tr><td colspan="2">', WT_I18N::translate('Users\' languages'), '</td></tr>';
+	foreach ($userlang as $key=>$ulang) {
+		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
+	}
+	echo
+		'</tr>',
+		'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
+		'<tr><td colspan="2"><div>', $stats->_usersLoggedIn('list'), '</div></td></tr>',
+		'</table>';
+echo '</div>'; // id = users
 
 echo
-	'<table>',
-	'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
-	'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
-	'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
-foreach ($gedadmin as $key=>$geds) {
-	echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '">', $geds['name'], '</a></td><td>', $geds['number'], '</td></tr>';
-}
-echo '<tr><td>';
-if ($warnusers == 0) {
-	echo WT_I18N::translate('Users with warnings');
-} else {
-	echo '<a href="useradmin.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
-}
-echo '</td><td>', $warnusers, '</td></tr><tr><td>';
-if ($applusers == 0) {
-	echo WT_I18N::translate('Unverified by User');
-} else {
-	echo '<a href="useradmin.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
-}
-echo '</td><td>', $applusers, '</td></tr><tr><td>';
-if ($nverusers == 0) {
-	echo WT_I18N::translate('Unverified by Administrator');
-} else {
-	echo '<a href="useradmin.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
-}
-echo '</td><td>', $nverusers, '</td></tr>';
-echo '<tr><td colspan="2">', WT_I18N::translate('Users\' languages'), '</td></tr>';
-foreach ($userlang as $key=>$ulang) {
-	echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
-}
-echo
-	'</tr>',
-	'<tr><td colspan="2">', WT_I18N::translate('Users Logged In'), '</td></tr>',
-	'<tr><td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;', $stats->_usersLoggedIn('list'), '</td></tr>',
-	'</table>';
-echo '</div>'; // id=trees
-
-echo
-	'<div id="trees">',
 	'<h2>', WT_I18N::translate('Family trees'), '</h2>',
+	'<div id="trees">',// id=trees
 	'<div id="tree_stats">';
 $n=0;
 foreach ($all_gedcoms as $ged_id=>$gedcom) {
@@ -209,8 +211,9 @@ echo
 	'</div>'; // id=trees
 
 echo
-	'<div id="recent">',
 	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
+	'<div id="recent2">'; //id=recent
+	echo
 	'<div id="changes">';
 $n=0;
 foreach ($all_gedcoms as $ged_id=>$gedcom) {
@@ -231,7 +234,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', count_changes_today($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($NOTE_ID_PREFIX, $ged_id), '</td></tr>',
 		'</table>',
 		'</div>';
-}
+	}
 echo
 	'</div>', // id=changes
 	WT_JS_START,
@@ -239,7 +242,13 @@ echo
 	WT_JS_END,
 	'</div>'; // id=recent
 
+echo
+	'</div>', //id = "x"
+	WT_JS_START,
+	'jQuery("#x").accordion({active:0, icons:false});',
+	WT_JS_END,
+	'</div>'; //id = content_container
 
-//echo '</div>'; // id=x
-	
+
+
 print_footer();
