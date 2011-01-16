@@ -5,7 +5,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id: style_rtl.css 7896 2010-04-07 22:08:56Z greg $
+ * @version $Id$
  */
 body {
 	direction: rtl;
@@ -59,7 +59,7 @@ padding-right:0pt;
 	background-image: url(images/right1R.gif);
 }
 /* jquery css THEME adjustments for RTL */
-/* @version $Id: style_rtl.css 7896 2010-04-07 22:08:56Z greg $ */
+/* @version $Id$ */
 
 /* Tabs --------------------------------*/
 .ui-tabs { direction: rtl; }
