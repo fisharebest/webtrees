@@ -42,6 +42,8 @@ if (!WT_USER_IS_ADMIN) {
 
 print_header(WT_I18N::translate('Add a new user'));
 
+if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers');
 $ALL_THEMES_DIRS=array();
@@ -354,16 +356,16 @@ if ($action == "createform") {
 						<?php
 							foreach ($all_gedcoms as $ged_id=>$ged_name) {
 								echo '<tr>',
-									'<td >', $ged_name, '</td>',
+									'<td >', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
 									//Pedigree root person
 									'<td >';
 										$varname='rootid'.$ged_id;
-										echo '<input type="text" name="', $varname, '" id="', $varname, '" value="" />', print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="" />', print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td >';
 										$varname='gedcomid'.$ged_id;
-										echo '<input type="text" name="',$varname, '" id="',$varname, '" value="" />' ,print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="" />' ,print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',
 									'<td >';
 										$varname='canedit'.$ged_id;
@@ -384,7 +386,7 @@ if ($action == "createform") {
 											for ($n=0; $n<=10; ++$n) {
 												echo
 													'<option value="', $n, '">',
-													$n ? $n : '',
+													$n ? $n : WT_I18N::translate('No'),
 													'</option>';
 											}
 										echo '</select>',
