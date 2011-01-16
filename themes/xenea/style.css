@@ -885,6 +885,7 @@ html[dir='rtl'] #relationship_chart {
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
+	display: block;
 	margin: 0 0 0 15px; /* top right bottom left */
 	padding-top: 0;
 	padding-right: 0;

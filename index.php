@@ -25,7 +25,10 @@
 // @version $Id$
 
 define('WT_SCRIPT_NAME', 'index.php');
-require './includes/session.php';
+if (defined ('WT_ROOT')) {
+	require WT_ROOT.'includes/session.php';
+} else
+	require './includes/session.php';
 
 // The only option for action is "ajax"
 $action=safe_REQUEST($_REQUEST, 'action', 'ajax');

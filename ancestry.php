@@ -5,9 +5,9 @@
 * ($rootid=1, father=2, mother=3 ...)
 *
 * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
+* Copyright (C) 2010 webtrees development team.
+*
+* Derived from PhpGedView
 * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -193,7 +193,7 @@ switch ($controller->chart_style) {
 case 0:
 	// List
 	$pidarr=array();
-	echo '<ul style="list-style: none; display: block;" id="ancestry_chart">';
+	echo '<ul id="ancestry_chart">';
 	$controller->print_child_ascendancy(WT_Person::getInstance($controller->rootid), 1, $OLD_PGENS-1);
 	echo '</ul>';
 	echo '<br />';

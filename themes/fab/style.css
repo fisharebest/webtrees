@@ -577,6 +577,7 @@ html[dir='rtl'] #relationship_chart {
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
+	display: block;
 	margin: 0px 0px 0px 15px; /* top right bottom left */
 	padding-top: 0px;
 	padding-right: 0px;

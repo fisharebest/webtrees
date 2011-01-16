@@ -3,7 +3,7 @@
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
-* $Id: ash.css 10471 2011-01-15 13:25:38Z rob $
+* $Id$
 */
 
 .something {
@@ -477,6 +477,7 @@ background-image:url(../images/vline.gif);
 background-repeat:repeat-y;
 background-position:left top;
 list-style:none;
+display: block;
 margin:0 0 0 15px;
 padding-top:0px;
 padding-right:0px;
