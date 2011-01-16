@@ -132,7 +132,7 @@ case 0: //-- list
 	if ($show_full==0) {
 		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
 	}
-	echo '<ul style="list-style: none; display: block;" id="descendancy_chart', $TEXT_DIRECTION=='rtl' ? '_rtl' : '', '">';
+	echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
 	$controller->print_child_descendancy($controller->descPerson, $controller->generations);
 	echo '</ul>';
 	break;

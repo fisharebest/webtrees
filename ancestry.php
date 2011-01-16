@@ -193,7 +193,7 @@ switch ($controller->chart_style) {
 case 0:
 	// List
 	$pidarr=array();
-	echo '<ul style="list-style: none; display: block;" id="ancestry_chart', $TEXT_DIRECTION=='rtl' ? '_rtl' : '', '">';
+	echo '<ul style="list-style: none; display: block;" id="ancestry_chart">';
 	$controller->print_child_ascendancy(WT_Person::getInstance($controller->rootid), 1, $OLD_PGENS-1);
 	echo '</ul>';
 	echo '<br />';
