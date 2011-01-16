@@ -888,8 +888,12 @@ class WT_Stats {
 		$rows=self::_runSQL(''
 			."SELECT d_year, d_type, d_fact, d_gid"
 			." FROM `##dates`"
-			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0"
-			." ORDER BY d_julianday1 {$life_dir}, d_type LIMIT 1"
+			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1=("
+			." SELECT {$dmod}( d_julianday1 )"
+			." FROM `wt_dates`"
+			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )"
+ 			." LIMIT 1"
+
 		/*//testing - too slow
 			.' SELECT'
 				.' d2.d_year,'
