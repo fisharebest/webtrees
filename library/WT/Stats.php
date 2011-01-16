@@ -2767,8 +2767,11 @@ class WT_Stats {
 				." `##families`"
 			.' WHERE'
 				." f_file={$this->_ged_id}"
-			.' ORDER BY'
-				.' tot DESC LIMIT 1'
+				.' AND f_numchil = ('
+				.' SELECT max( f_numchil )'
+				." FROM `##families`" 
+				." WHERE f_file ={$this->_ged_id})" 
+				.' LIMIT 1'
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
