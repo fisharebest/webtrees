@@ -457,22 +457,10 @@ padding-right: 0px;
 padding-bottom: 0px;
 }
 
-#descendancy_chart_rtl ul {
-background-image:url(images/vline.gif);
-background-image: url(images/vline.gif);
-background-repeat: repeat-y;
-background-position: right top;
-list-style: none;
-margin: 0px 15px 5px 0px;
-padding-top: 0px;
-padding-bottom: 0px;
-padding-left: 0px;
-}
-
-#descendancy_chart_rtl li {
-list-style: none;
-margin: 0px -15px 2px 0px;
-padding: 0px 0px 0px 0px;
+html[dir='rtl'] #descendancy_chart ul {
+background-position:right top;
+margin:0px 15px 0px 0px;
+left:auto;
 }
 
 #relationship_chart {
@@ -507,21 +495,16 @@ padding-right:0px;
 padding-bottom:0px;
 }
 
-#ancestry_chart_rtl ul {
-background-image:url(images/vline.gif);
-background-repeat:repeat-y;
+html[dir='rtl'] #ancestry_chart ul {
 background-position:right top;
-list-style:none;
 margin:0px 15px 0px 0px;
-padding-top:0px;
-padding-bottom:0px;
-padding-left:0px;
+left:auto;
 }
 
-#ancestry_chart_rtl li {
-list-style: none;
-margin:0px -15px 2px 0px;
+html[dir='rtl'] #ancestry_chart li {
+margin:0px 0px 0px 0px;
 padding:0px 2px 0px 0px;
+left:auto;
 }
 
 .topheader {

@@ -861,21 +861,10 @@ right:0px;
 }
 
 /*-- descendancy chart rtl specific stylesheets --*/
-#descendancy_chart_rtl ul {
-	background-image: url(images/vline.gif);
-	background-repeat: repeat-y;
-	background-position: right top;
-	list-style: none;
-	margin: 0 15px 5px 0; /* top right bottom left */
-	padding-top: 0;
-	padding-bottom: 0;
-	padding-left: 0;
-}
-
-#descendancy_chart_rtl li {
-	list-style: none;
-	margin: 0 -15px 0 0; /* top right bottom left */
-	padding: 0;
+html[dir='rtl'] #descendancy_chart ul {
+background-position:right top;
+margin:0px 15px 0px 0px;
+left:auto;
 }
 
 /*-- relationship chart specific stylesheets --*/
@@ -911,21 +900,16 @@ html[dir='rtl'] #relationship_chart {
 }
 
 /*-- ancestry chart rtl specific stylesheets --*/
-#ancestry_chart_rtl ul {
-	background-image: url(images/vline.gif);
-	background-repeat: repeat-y;
-	background-position: right top;
-	list-style: none;
-	margin: 0 15px 0 0; /* top right bottom left */
-	padding-top: 0;
-	padding-bottom: 0;
-	padding-left: 0;
+html[dir='rtl'] #ancestry_chart ul {
+background-position:right top;
+margin:0px 15px 0px 0px;
+left:auto;
 }
 
-#ancestry_chart_rtl li {
-	list-style: none;
-	margin: 0 -15px 2px 0; /* top right bottom left */
-	padding: 0 2px 0 0; /* top right bottom left */
+html[dir='rtl'] #ancestry_chart li {
+margin:0px 0px 0px 0px;
+padding:0px 2px 0px 0px;
+left:auto;
 }
 
 /*-- timeline chart specific styles --*/
