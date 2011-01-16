@@ -3,7 +3,7 @@
  * Administrative User Interface.
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -114,7 +114,7 @@ if ($action=='deleteuser') {
 //NOTE: WORKING
 if ($action == "cleanup") {
 	?>
-	<form name="cleanupform" method="post" action="useradmin.php">
+	<form name="cleanupform" method="post" action="admin_users_clean.php">
 	<input type="hidden" name="action" value="cleanup2" />
 	<table id="clean" class="<?php echo $TEXT_DIRECTION; ?>">
 	<?php
@@ -124,7 +124,7 @@ if ($action == "cleanup") {
 	echo "<tr><th>", WT_I18N::translate('Number of months since the last login for a user\'s account to be considered inactive: '), "</th>";
 	echo "<td><select onchange=\"document.location=options[selectedIndex].value;\">";
 	for ($i=1; $i<=12; $i++) {
-		echo "<option value=\"useradmin.php?action=cleanup&amp;month=$i\"";
+		echo "<option value=\"admin_users_clean.php?action=cleanup&amp;month=$i\"";
 		if ($i == $month) echo " selected=\"selected\"";
 		echo " >", $i, "</option>";
 	}
@@ -141,7 +141,7 @@ if ($action == "cleanup") {
 		else
 			$datelogin = (int)get_user_setting($user_id, 'sessiontime');
 		if ((mktime(0, 0, 0, (int)date("m")-$month, (int)date("d"), (int)date("Y")) > $datelogin) && get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin')) {
-			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User\'s account has been inactive too long: ');
+			?><tr><td><?php echo $user_name, " - <b>", $userName, "</b><br />", WT_I18N::translate('User\'s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
 			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
@@ -177,7 +177,7 @@ if ($action == "cleanup") {
 	if ($ucnt >0) {
 		?><input type="submit" value="<?php echo WT_I18N::translate('Continue'); ?>" />&nbsp;&nbsp;<?php
 	} ?>
-	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='useradmin.php';"/>
+	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users_clean.php';"/>
 	</p>
 	</form><?php
 	print_footer();
