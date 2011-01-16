@@ -5,7 +5,7 @@
 * This page will allow you to merge 2 gedcom records
 *
 * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
 * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -278,7 +278,7 @@ if ($action=="choose") {
 		<td>',
 		WT_I18N::translate('Merge To ID:'),
 		'</td><td>
-		<input type="text" id="gid1" name="gid1" value="', $gid1, '" size="10" tabindex="1" />
+		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" />
 		<script type="text/javascript">document.getElementById("gid1").focus();</script>
 		<select name="ged" tabindex="4">';
 	$all_gedcoms=get_all_gedcoms();
@@ -290,15 +290,21 @@ if ($action=="choose") {
 		}
 		echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
 	}
+	$inditext = WT_I18N::translate('Find individual ID');
+	if (isset($WT_IMAGES["button_indi"])) $inditext = "<img src=\"".$WT_IMAGES["button_indi"]."\" alt=\"".$inditext."\" title=\"".$inditext."\" border=\"0\" align=\"middle\" />";
+	$famtext = WT_I18N::translate('Find Family ID');
+	if (isset($WT_IMAGES["button_family"])) $famtext = "<img src=\"".$WT_IMAGES["button_family"]."\" alt=\"".$famtext."\" title=\"".$famtext."\" border=\"0\" align=\"middle\" />";
+	$sourtext = WT_I18N::translate('Find Source ID');
+	if (isset($WT_IMAGES["button_source"])) $sourtext = "<img src=\"".$WT_IMAGES["button_source"]."\" alt=\"".$sourtext."\" title=\"".$sourtext."\" border=\"0\" align=\"middle\" />";
 	echo
 		'</select>
-		<a href="javascript:iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6">' , WT_I18N::translate('Find individual ID'), '</a> |
-		<a href="javascript:fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8">' , WT_I18N::translate('Find Family ID'), '</a> |
-		<a href="javascript:sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10">' , WT_I18N::translate('Find Source ID'), '</a>
+		<a href="javascript:iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6">', $inditext, '</a>
+		<a href="javascript:fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8">', $famtext, '</a>
+		<a href="javascript:sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10">', $sourtext, '</a>
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge From ID:'),
 		'</td><td>
-		<input type="text" name="gid2" value="', $gid2, '" size="10" tabindex="2"/>
+		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2"/>
 		<select name="ged2" tabindex="5">';
 	foreach ($all_gedcoms as $ged_id=>$ged_name) {
 		echo '<option value="', $ged_name, '"';
@@ -309,9 +315,9 @@ if ($action=="choose") {
 	}
 	echo
 		'</select>
-		<a href="javascript:iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7">', WT_I18N::translate('Find individual ID'), '</a> |
-		<a href="javascript:fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9">', WT_I18N::translate('Find Family ID'), '</a> |
-		<a href="javascript:sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11">', WT_I18N::translate('Find Source ID'), '</a>
+		<a href="javascript:iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7">', $inditext, '</a>
+		<a href="javascript:fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9">', $famtext, '</a>
+		<a href="javascript:sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11">',  $sourtext, '</a>
 		</td></tr><tr><td colspan="2">
 		</td></tr></table>
 		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3" />
