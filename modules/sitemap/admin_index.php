@@ -239,7 +239,7 @@ if ($action=="generate") {
 			if (isset($_POST["fam_recs"])) echo "&fam_rec=true&famrec_priority=", $famrec_priority, "&famrec_update=", $famrec_update;
 			if (isset($_POST["fam_list"])) echo "&fam_lists=true&famlist_priority=", $famlist_priority, "&famlist_update=", $famlist_update;
 			if (isset($_POST["GEDCOM_Privacy"])) echo "&no_private_links=1";
-			echo "\">", $sitemapFilename, "</a></td></tr>\n";
+			echo "\"><b>", $sitemapFilename, "</b></a></td></tr>\n";
 		}
 	}
 	if ($filecounter > 1) {
