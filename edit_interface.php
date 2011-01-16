@@ -296,7 +296,7 @@ case 'delete':
 //------------------------------------------------------------------------------
 //-- echo a form to edit the raw gedcom record in a large textarea
 case 'editraw':
-	if (!WT_Person::getInstance($pid)->canEdit()) {
+	if (!WT_GedcomRecord::getInstance($pid)->canEdit()) {
 		echo "<br />", WT_I18N::translate('Privacy settings prevent you from editing this record.');
 		if (!empty($pid)) {
 			echo "<br />", WT_I18N::translate('You have no access to'), " pid $pid.";
