@@ -262,13 +262,19 @@ class WT_DB {
 			// It will only be a problem if we can't subsequently create it.
 			$current_version=0;
 		}
-		while ($current_version<$target_version) {
-			$next_version=$current_version+1;
-			require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
-			// The updatescript should update the version or throw an exception
-			$current_version=(int)get_site_setting($schema_name);
-			if ($current_version!=$next_version) {
-				die("Internal error while updating {$schema_name} to {$next_version}");
+		if ($current_version<$target_version) {
+			while ($current_version<$target_version) {
+				$next_version=$current_version+1;
+				require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
+				// The updatescript should update the version or throw an exception
+				$current_version=(int)get_site_setting($schema_name);
+				if ($current_version!=$next_version) {
+					die("Internal error while updating {$schema_name} to {$next_version}");
+				}
+			}
+			// After an update, there may well be old files to delete.
+			if (file_exists($schema_dir.'delete_old_files.php')) {
+				require $schema_dir.'delete_old_files.php';
 			}
 		}
 	}
