@@ -158,7 +158,7 @@ table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse:separ
 #merge p, #merge2 p, #merge3 p {font-weight:bold; font-size:105%;}
 #merge a {padding: 10px;}
 #merge table, #merge2 table, #merge3 table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0; padding:5px;}
-#merge td {padding: 5px;}
+#merge td {padding: 5px; white-space:nowrap;}
 #merge2 td, #merge3 td {border-bottom:1px solid LightGrey; vertical-align:top; }
 #merge3 th {font-weight:bold; text-align:left;}
 
@@ -233,6 +233,7 @@ table#adduser2  {margin-left:30px; margin-bottom:20px; width:90%;}
 table#clean {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px;}
 #clean th {border-bottom:2px solid LightGrey; text-align:left; padding:5px; font-size:105%;}
 #clean td {border-bottom:1px solid LightGrey; padding:3px;}
+#clean td p {font-weight:bold;}
 
 /* MANAGE MEDIA */
 table#media_table  {width:100%;}
