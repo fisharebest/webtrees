@@ -665,7 +665,7 @@ class WT_Person extends WT_GedcomRecord {
 			$father=$family->getHusband();
 			if ($father) {
 				foreach ($father->getSpouseFamilies() as $step_family) {
-					if (!in_array($step_family, $families)) {
+					if (!in_array($step_family, $step_families, true)) {
 						$step_families[]=$step_family;
 					}
 				}
@@ -673,7 +673,7 @@ class WT_Person extends WT_GedcomRecord {
 			$mother=$family->getWife();
 			if ($mother) {
 				foreach ($mother->getSpouseFamilies() as $step_family) {
-					if (!in_array($step_family, $families)) {
+					if (!in_array($step_family, $step_families, true)) {
 						$step_families[]=$step_family;
 					}
 				}
