@@ -347,7 +347,12 @@ class WT_GedcomRecord {
 				$subsublevel=$sublevel+1;
 				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->gedrec, $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
-						$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
+						// Treat 1 NAME / 2 TYPE married the same as _MARNM
+						if ($match[1]=='NAME' && $match[3]=="\n2 TYPE married") {
+							$this->_addName('_MARNM', $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
+						} else {
+							$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
+						}
 						if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
 							foreach ($submatches as $submatch) {
 								$this->_addName($submatch[1], $submatch[2] ? $submatch[2] : $this->getFallBackName(), $submatch[0]);
