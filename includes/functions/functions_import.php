@@ -403,6 +403,14 @@ function reformat_record_import($rec) {
 		case 'PLAC':
 			// Consistent commas
 			$data=preg_replace('/ *, */', ', ', $data);
+			// The Master Genealogist stores LAT/LONG data in the PLAC field, e.g. Pennsylvania, USA, 395945N0751013W
+			if (preg_match('/(.*), (\d\d)(\d\d)(\d\d)([NS])(\d\d\d)(\d\d)(\d\d)([EW])$/', $data, $match)) {
+				$data=
+					$match[1]."\n".
+					($level+1)." MAP\n".
+					($level+2)." LATI ".($match[5].(round($match[2]+($match[3]/60)+($match[4]/3600),4)))."\n".
+					($level+2)." LONG ".($match[9].(round($match[6]+($match[7]/60)+($match[8]/3600),4)));
+			}
 			break;
 		case 'POSTAL_CODE':
 			$tag='POST';
