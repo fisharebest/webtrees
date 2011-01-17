@@ -87,9 +87,10 @@ define('WT_WEBTREES', true);
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
-set_include_path('library'.PATH_SEPARATOR.get_include_path());
+// Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
+set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
-Zend_Loader_Autoloader::getInstance();
+Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_edit.php';
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
