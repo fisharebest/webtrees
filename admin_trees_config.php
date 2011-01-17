@@ -508,7 +508,7 @@ print_header(WT_I18N::translate('Family tree configuration'));
 				</table>
 				<table>
 					<tr>
-						<th colspan="6" colspan="2"><?php echo WT_I18N::translate('ID settings'); ?></th>
+						<th colspan="6"><?php echo WT_I18N::translate('ID settings'); ?></th>
 					</tr>
 					<tr>
 						<td>
@@ -544,7 +544,7 @@ print_header(WT_I18N::translate('Family tree configuration'));
 				</table>
 				<table>
 					<tr>
-						<td colspan="2"><?php echo WT_I18N::translate('Contact Information'); ?></td>
+						<th colspan="2"><?php echo WT_I18N::translate('Contact Information'); ?></th>
 					</tr>
 					<tr>
 						<?php
@@ -593,8 +593,10 @@ print_header(WT_I18N::translate('Family tree configuration'));
 						</select>
 						</td>
 					</tr>
+				</table>
+				<table>
 					<tr>
-						<td colspan="2"><?php echo WT_I18N::translate('Web Site and META Tag Settings'); ?></td>
+						<th colspan="2"><?php echo WT_I18N::translate('Web Site and META Tag Settings'); ?></th>
 					</tr>
 					<tr>
 						<td>
