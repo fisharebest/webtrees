@@ -64,7 +64,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		case 'addfav':
 			$gid     =safe_GET('gid');
 			$favnote =safe_GET('favnote');
-			$favtype =safe_GET('favtype');
 			$url     =safe_GET('url', WT_REGEX_URL);
 			$favtitle=safe_GET('favtitle');
 
@@ -73,15 +72,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$ct = preg_match('/0 @(.*)@ (.*)/', $indirec, $match);
 				if ($indirec && $ct>0) {
 					$favorite = array();
-					if (empty($favtype)) {
-						if ($ctype=='user') $favtype = 'user';
-						else $favtype = 'gedcom';
-					}
-					if ($favtype=='gedcom') {
-						$favtype = WT_GEDCOM;
-					}
-					else $favtype=WT_GEDCOM;
-					$favorite['username'] = $favtype;
+					$favorite['username'] = WT_GEDCOM;
 					$favorite['gid'] = $gid;
 					$favorite['type'] = trim($match[2]);
 					$favorite['file'] = WT_GEDCOM;
@@ -95,18 +86,10 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($url) {
 				if (empty($favtitle)) $favtitle = $url;
 				$favorite = array();
-				if (!isset($favtype)) {
-					if ($ctype=='user') $favtype = 'user';
-					else $favtype = 'gedcom';
-				}
-				if ($favtype=='gedcom') {
-					$favtype = $GEDCOM;
-				}
-				else $favtype=WT_GEDCOM;
-				$favorite['username'] = $favtype;
+				$favorite['username'] = WT_GEDCOM;
 				$favorite['gid'] = '';
 				$favorite['type'] = 'URL';
-				$favorite['file'] = $GEDCOM;
+				$favorite['file'] = WT_GEDCOM;
 				$favorite['url'] = $url;
 				$favorite['note'] = $favnote;
 				$favorite['title'] = $favtitle;
@@ -242,7 +225,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<form name=\"addgfavform\" method=\"get\" action=\"index.php\">";
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\" />";
 			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />";
-			$content .= "<input type=\"hidden\" name=\"favtype\" value=\"gedcom\" />";
 			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\" />";
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center {$TEXT_DIRECTION}\">";
 			$content .= "<tr><td>".WT_I18N::translate('Enter a Person, Family, or Source ID')." <br />";
