@@ -1,33 +1,29 @@
 <?php
-/**
- * Media Firewall
- * Called when a 404 error occurs in the media directory
- * Serves images from the index directory
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *
- * @package webtrees
- * @version $Id$
- */
+// Media Firewall
+// Called when a 404 error occurs in the media directory
+// Serves images from the index directory
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
@@ -319,7 +315,7 @@ if (!$serverFilename) {
 	$exp = explode("?", $requestedfile);
 	$pathinfo = pathinfo($exp[0]);
 	$ext = @strtolower($pathinfo['extension']);
-	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below 
+	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below
 	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'), $requestedfile);
 }
 
@@ -548,31 +544,21 @@ if ($usewatermark) {
 // determine filesize of image (could be original or watermarked version)
 $filesize = filesize($serverFilename);
 
-if(function_exists('fpassthru')){ 
-	// set content-length header, send file
-	header("Content-Length: " . $filesize);
-	$fp = fopen($serverFilename, 'rb');
-	fpassthru($fp);
-	exit;
-} elseif(function_exists('readfile')){ 
-	// set content-length header, send file
-	header("Content-Length: " . $filesize);
-	readfile($serverFilename);
-	exit;
-} elseif (isImageTypeSupported($type) && (hasMemoryForImage($serverFilename, $debug_verboseLogging))) {
-	// both fpassthru and readfile are disabled, use the imagecreatefrom* functions if possible
-	$imCreateFunc = 'imagecreatefrom'.$type;
-	$im = @$imCreateFunc($serverFilename);
+// set content-length header, send file
+header("Content-Length: " . $filesize);
 
-	if ($im) {
-		$imSendFunc = 'image'.$type;
-		// send the image
-		$imSendFunc($im);
-		imagedestroy($im);
-		exit;
+// Some servers disable fpassthru() and readfile()
+if (function_exists('fpassthru')) {
+	$fp=fopen($serverFilename, 'rb');
+	fpassthru($fp);
+	fclose($fp);
+} elseif (function_exists('readfile')) {
+	readfile($serverFilename);
+} else {
+	$fp=fopen($serverFilename, 'rb');
+	while (!feof($fp)) {
+		echo fread($fp, 65536);
 	}
+	fclose($fp);
 }
 
-// if we get this far, fpassthru and readfile are both disabled and the imagecreatefrom* functions are not available or did not work on this image.
-if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('Sorry, readfile and fpassthru are disabled on this server'), $serverFilename);
-exit;
