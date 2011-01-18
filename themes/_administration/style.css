@@ -295,7 +295,7 @@ table#gm_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:s
 table#gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0; width:98%;}
 #gm_edit_config th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align:left; vertical-align:top;}
 #gm_edit_config td {border-bottom:1px solid LightGrey; margin-left:20px;}
-#gm_breadcrumb, #gm_breadcrumb a { color:green; font-weight:bold; font=size:105%; padding:5px;}
+#gm_breadcrumb, #gm_breadcrumb a { color:green; font-weight:bold; font-size:105%; padding:5px;}
 #gm_active {padding:5px; vertical-align:top;}
 /* Place edit */
 table.gm_plac_edit {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:0 5px; width:100%;}
