@@ -141,6 +141,7 @@ define('WT_DELETE_OLD_FILES', '');
 @unlink(WT_ROOT.'module_admin.php');
 @unlink(WT_ROOT.'modules/batch_update/batch_update.php');
 @unlink(WT_ROOT.'modules/batch_update/plugins/tmglatlon.php');
+@unlink(WT_ROOT.'modules/batch_update/plugins/birth_y.php');
 @unlink(WT_ROOT.'modules/googlemap/editconfig.php');
 @unlink(WT_ROOT.'modules/googlemap/placecheck.php');
 @unlink(WT_ROOT.'modules/googlemap/places.php');
@@ -195,4 +196,4 @@ define('WT_DELETE_OLD_FILES', '');
 @unlink(WT_ROOT.'webservice/wtServiceLogic.class.php');
 @rmdir (WT_ROOT.'webservice');
 @unlink(WT_ROOT.'wtinfo.php');
-// ...this list is complete, up to svn 10497
+// ...this list is complete, up to svn 10510
