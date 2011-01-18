@@ -174,7 +174,7 @@ $n=0;
 foreach ($all_gedcoms as $ged_id=>$gedcom) {
 	$stats = new WT_Stats($gedcom);
 	if ($ged_id==WT_GED_ID) {
-		$accordian_element=$n;
+		$accordion_element=$n;
 	}
 	++$n;
 	echo
@@ -206,7 +206,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 echo
 	'</div>', // id=tree_stats
 	WT_JS_START,
-	'jQuery("#tree_stats").accordion({active:',$accordian_element,', icons:false});',
+	'jQuery("#tree_stats").accordion({active:',$accordion_element,', icons:false});',
 	WT_JS_END,
 	'</div>'; // id=trees
 
@@ -218,7 +218,7 @@ echo
 $n=0;
 foreach ($all_gedcoms as $ged_id=>$gedcom) {
 	if ($ged_id==WT_GED_ID) {
-		$accordian_element=$n;
+		$accordion_element=$n;
 	}
 	++$n;
 	echo 
@@ -238,7 +238,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 echo
 	'</div>', // id=changes
 	WT_JS_START,
-	'jQuery("#changes").accordion({active:',$accordian_element,', icons:false});',
+	'jQuery("#changes").accordion({active:',$accordion_element,', icons:false});',
 	WT_JS_END,
 	'</div>'; // id=recent
 
