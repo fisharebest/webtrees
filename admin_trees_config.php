@@ -99,6 +99,16 @@ case 'delete':
 	exit;
 case 'add':
 	if ((safe_POST('xref') || safe_POST('tag_type')) && safe_POST('resn')) {
+		if (safe_POST('xref')=='') {
+			WT_DB::prepare(
+				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
+			)->execute(array(WT_GED_ID, safe_POST('tag_type')));
+		}
+		if (safe_POST('tag_type')=='') {
+			WT_DB::prepare(
+				"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
+			)->execute(array(WT_GED_ID, safe_POST('xref')));
+		}
 		WT_DB::prepare(
 			"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, ?)"
 		)->execute(array(WT_GED_ID, safe_POST('xref'), safe_POST('tag_type'), safe_POST('resn')));
